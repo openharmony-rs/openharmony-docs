@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=393e4c1fba444fc360bbd35a1699da817cae9a32 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
+<!-- md-trans-meta sourceCommit=088ae84b680041f6b0eea114d123d653da54b177 translatedAt=2026-11-16T01:43:01.696Z pushedAt=2026-11-16T12:50:14.189Z nl=2 -->
 
 ## Introduction
 The peer-to-peer (P2P) mode provides a point-to-point connection between devices in a WLAN. It enables the direct establishment of a TCP/IP connection between two stations (STAs) without the involvement of an access point (AP).
@@ -43,15 +43,15 @@ The following table describes the APIs used in this topic.
 ### Creating or Removing a P2P Group
 1. Import the Wi-Fi module.
    <!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
+   
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
-2. Enable Wi-Fi on the device.
+2. Enable Wi-Fi on the device. Before enabling, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Create or remove a P2P group.
    <!-- @[createGroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
+   
    ``` TypeScript
    async createGroup() {
      try {
@@ -88,7 +88,7 @@ The following table describes the APIs used in this topic.
 
      // Services to be processed after the persistent group is created.
    }
-   // Create a persistent group, and register a listener callback for the persistent group status changes.
+   // Create a persistent group, and register a listener callback for the persistent group state changes.
    wifiManager.on("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
    try {
      let config: wifiManager.WifiP2PConfig = {
@@ -124,15 +124,15 @@ The following table describes the APIs used in this topic.
 ### Setting Up a P2P Connection
 1. Import the Wi-Fi module.
    <!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-
+   
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
-2. Enable Wi-Fi on the device.
+2. Enable Wi-Fi on the device. Before enabling, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Register a callback for **p2pPeerDeviceChange** and set up a P2P connection in the callback implementation.
    <!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-
+   
    ``` TypeScript
    connectP2p(p2pScanInfo: wifiManager.WifiP2pDevice) {
      this.promptAction.showToast({
@@ -154,7 +154,7 @@ The following table describes the APIs used in this topic.
    ```
 5. Start P2P device discovery.
    <!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-
+   
    ``` TypeScript
    aboutToAppear() {
      // If Wi-Fi is enabled, record the status. Then, scan for P2P devices and obtain the connection information.
@@ -238,7 +238,7 @@ The following table describes the APIs used in this topic.
 
 ### Obtaining the IP Address of the Peer Device and Performing Socket Communication
 1. Import the Wi-Fi module.
-2. Enable Wi-Fi on the device.
+2. Enable Wi-Fi on the device. Before enabling, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Call [wifiP2pLinkedInfo.connectState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#p2pconnectstate) to check whether the P2P connection status is **CONNECTED**.
 5. Call [wifiP2pGroupInfo.goIpAddress](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifip2pgroupinfo) to obtain the P2P group IP address for socket communication.

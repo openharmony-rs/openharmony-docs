@@ -6,7 +6,7 @@ doctype: guide
 status: active
 ---
 
-# AVSession Kit示例代码汇总
+# AVSession Kit指南配套示例代码
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_7KSyM10J; @devil_red-->

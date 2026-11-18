@@ -36,19 +36,19 @@
 ## 接口说明
 
 > **说明：**
-> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅[API参考](../reference/apis-telephony-kit/js-apis-call.md)。
+> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅[@ohos.telephony.call (拨打电话)](../reference/apis-telephony-kit/js-apis-call.md)。
 
 |                                  接口名                                             | 描述                                                         |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| hasVoiceCapability(): boolean;                                                      | 判断是否具有语音功能，默认false。<br/>-true：是<br/>-false：否                                        |
+| hasVoiceCapability(): boolean;                                                      | 判断是否具有语音功能，默认true。<br/>-true：是<br/>-false：否                                        |
 |<!--DelRow--> dialCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 拨号。该接口为系统接口。                                      |
-| makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 转到拨号屏幕，显示被叫号码。                                  |
+| makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 跳转到拨号界面，并显示待拨出的号码。                                  |
 
-observer模块为开发者提供订阅和取消订阅通话业务状态的功能。具体API说明详见[接口文档](../reference/apis-telephony-kit/js-apis-observer.md)。
+observer模块为开发者提供订阅和取消订阅通话业务状态的功能。具体API说明详见[@ohos.telephony.observer (电话服务状态监听)](../reference/apis-telephony-kit/js-apis-observer.md)。
 
 | 接口名                                                       | 描述               |
 | ------------------------------------------------------------ | ------------------ |
-| on(type: 'callStateChange', options: { slotId: number }, callback: Callback<{ state: CallState, number: string }>): void; | 监听通话状态变化。 |
+| on(type: 'callStateChange', options: { slotId: number }, callback: Callback<[CallStateInfo](../reference/apis-telephony-kit/js-apis-observer.md#callstateinfo11)>): void; | 监听通话状态变化。 |
 
 ## 开发步骤
 
@@ -62,31 +62,33 @@ observer模块为开发者提供订阅和取消订阅通话业务状态的功能
 3. 调用hasVoiceCapability，确认当前设备是否支持拨号。
 4. 调用dialCall接口，拨打电话。
 5. （可选）订阅通话业务状态变化。
-   ```ts
-    // import需要的模块
-    import { call, observer } from '@kit.TelephonyKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    // 调用查询能力接口
-    let isSupport = call.hasVoiceCapability();
-    if (isSupport) {
-        // 如果设备支持呼叫能力，调用以下接口进行拨号
-        call.dialCall("13xxxx", (err: BusinessError) => {
-            console.error(`callback: dial call err->${JSON.stringify(err)}`);
-        })
-
-        // 订阅通话业务状态变化（可选）
-        class SlotId {slotId: number = 0}
-        class CallStateCallback {
-            state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
-            number: string = "";
-        }
-        let slotId: SlotId = {slotId: 0}
-        observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.info("call state change, data is:" + JSON.stringify(data));
-        });
-    }
+   <!-- @[DialCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/MakeCall/MakeCall/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { call, observer } from '@kit.TelephonyKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       // 调用查询能力接口
+       let isSupport = call.hasVoiceCapability();
+       if (isSupport) {
+           // 如果设备支持呼叫能力，调用以下接口进行拨号
+           call.dialCall('13xxxx', (err: BusinessError) => {
+               console.error(`callback: dial call err->${JSON.stringify(err)}`);
+           })
+   
+           // 订阅通话业务状态变化（可选）
+           class SlotId {public slotId: number = 0}
+           class CallStateCallback {
+               public state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
+               public number: string = '';
+           }
+           let slotId: SlotId = {slotId: 0}
+           observer.on('callStateChange', slotId, (data: CallStateCallback) => {
+               console.info('call state change, data is:' + JSON.stringify(data));
+           });
+       }
    ```
+
 <!--DelEnd-->
 ### 使用makeCall拨打电话
 
@@ -95,34 +97,35 @@ observer模块为开发者提供订阅和取消订阅通话业务状态的功能
 3. 调用makeCall接口，跳转到拨号界面并显示待拨号的号码。
 4. （可选）订阅通话业务状态变化。
 
-   ```ts
-    // import需要的模块
-    import { call, observer } from '@kit.TelephonyKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[MakeCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/MakeCall/MakeCall/entry/src/main/ets/pages/Index.ets) -->
    
-    // 调用查询能力接口
-    let isSupport = call.hasVoiceCapability();
-    if (isSupport) {
-        // 如果设备支持呼叫能力，则继续跳转到拨号界面，并显示拨号的号码
-        // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
-        call.makeCall("13xxxx", (err: BusinessError) => {
-            if (!err) {
-                console.info("make call success.");
-            } else {
-                console.error("make call fail, err is:" + JSON.stringify(err));
-            }
-        });
-        // 订阅通话业务状态变化（可选）
-        class SlotId {slotId: number = 0}
-        class CallStateCallback {
-            state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
-            number: string = "";
-        }
-        let slotId: SlotId = {slotId: 0}
-        observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.info("call state change, data is:" + JSON.stringify(data));
-        });
-    }
+   ``` TypeScript
+   import { call, observer } from '@kit.TelephonyKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+         // 调用查询能力接口
+         let isSupport = call.hasVoiceCapability();
+         if (isSupport) {
+             // 如果设备支持呼叫能力，则继续跳转到拨号界面，并显示拨号的号码
+             // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
+             call.makeCall('13xxxx', (err: BusinessError) => {
+                 if (!err) {
+                     console.info('make call success.');
+                 } else {
+                     console.error('make call fail, err is:' + JSON.stringify(err));
+                 }
+             });
+             // 订阅通话业务状态变化（可选）
+             class SlotId {public slotId: number = 0}
+             class CallStateCallback {
+                 public state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
+                 public number: string = '';
+             }
+             let slotId: SlotId = {slotId: 0}
+             observer.on('callStateChange', slotId, (data: CallStateCallback) => {
+                 console.info('call state change, data is:' + JSON.stringify(data));
+             });
+         }
    ```
 
 ## 相关实例

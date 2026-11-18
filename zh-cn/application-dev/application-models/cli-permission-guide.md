@@ -15,7 +15,7 @@ CLI命令通过系统权限机制进行访问管控，开发者在使用CLI前�
 
 | 权限名称 | 权限级别 | 授权方式 | 作用 |
 | -------- | -------- | -------- | -------- |
-| ohos.permission.CUSTOM_SANDBOX | normal | 系统授权（system_grant） | 允许应用自定义沙箱，是应用内通过fork+execvp调用CLI的前提条件。 |
+| ohos.permission.CUSTOM_SANDBOX | system_basic | 系统授权（system_grant） | 允许应用自定义沙箱，是应用内通过fork+execvp调用CLI的前提条件。 |
 
 1. 在应用工程的[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件示例)的`requestPermissions`字段中声明`ohos.permission.CUSTOM_SANDBOX`权限，详见[向应用申请权限](../security/AccessToken/determine-application-mode.md)。
 

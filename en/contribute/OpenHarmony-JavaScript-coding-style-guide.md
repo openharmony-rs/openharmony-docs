@@ -1,5 +1,7 @@
 # JavaScript Coding Style Guide
 
+<!-- md-trans-meta sourceCommit=ca78672f1b8af65e827c7eb0f993c1619ecaaf12 translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## Goal
 Rules are not perfect. Prohibiting features that are useful in specific situations can have an impact on code implementation, but we set the rules for the benefit of most programmers. If we identify a rule cannot be followed in the operations, we should work together to improve the rule. You are supposed to have the basic JavaScript language capabilities to refer to this guide, instead of learning the JavaScript language from it.
 
@@ -292,13 +294,13 @@ let pointY = 0;
 
 **Note:** Spaces reduce code density and increase code readability. The general rules are as follows:
 
-1. Add a spaces after keywords `if`、`elseif`、`else`、`switch`、`while`、`for`.
+1. Add a space after keywords `if`, `elseif`, `else`, `switch`, `while`, `for`.
 2. No space is added between the parentheses.
 3. Spaces must be added on both sides of the braces, except for simple scenarios such as `{}`.
 4. No space is added between multiple parentheses.
 5. No space is added after unary operators (`&`, `*`, `+`, `-`, `!`,etc.).
-6. Add a space on the left and right side of binary operators `=`、`+`、`-`、`*`、`/`、`%`、`|`、`&`、`||`、`&&`、`<`、`>`、`<=`、`>=`、`==`、`!=`、`===`、`!==`, etc.)
-7. Add a space on the left and right side of ternary operator （`?: `）.
+6. Add a space on the left and right side of binary operators `=`, `+`, `-`, `*`, `/`, `%`, `|`, `&`, `||`, `&&`, `<`, `>`, `<`, `>`, `==`, `!=`, `===`, `!==`, etc.
+7. Add a space on the left and right side of ternary operator `?: `.
 8. No space is added between the preceded or post-decrease (`++`, `--`) and variables.
 9. Add a space before a comma (`, `).
 10. Add a space after `//` in a single line.

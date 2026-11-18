@@ -42,7 +42,7 @@
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
      let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
      if (!photoProfilesArray || photoProfilesArray.length === 0) {
-       console.error('photoProfilesArray is null or []');
+       console.error(`photoProfilesArray is null or []`);
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
@@ -117,10 +117,10 @@
 onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
   photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
     if (err) {
-      console.error(`photoAssetAvailable error: ${err}.`);
+      console.error(`photoAssetAvailable error: ${err.code}.`);
       return;
     }
-    console.info('photoOutputCallBack photoAssetAvailable');
+    console.info(`photoOutputCallBack photoAssetAvailable`);
     // 开发者可通过photoAsset调用媒体库相关接口，自定义处理图片。
     // 处理方式一：调用媒体库落盘接口保存一阶段图，二阶段图就绪后媒体库会主动帮应用替换落盘图片。
     let accessHelper: photoAccessHelper.PhotoAccessHelper =

@@ -27,7 +27,7 @@ import { common } from '@kit.ConnectivityKit';
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| address    | string      | 否    | 否    | 表示蓝牙设备的地址，例如："XX:XX:XX:XX:XX:XX"。|
+| address    | string      | 否    | 否    | 表示蓝牙设备的地址，例如："11:22:33:44:55:66"。|
 | addressType     | [BluetoothAddressType](#bluetoothaddresstype)      | 否    | 否    | 表示地址类型为蓝牙设备的实际MAC地址或虚拟MAC地址。|
 | rawAddressType<sup>23+</sup>     | [BluetoothRawAddressType](#bluetoothrawaddresstype23)      | 否    | 是    | 表示地址类型为蓝牙协议定义的Public类型或Random类型。默认值请参见相关接口说明，未传入时使用系统默认地址类型。|
 

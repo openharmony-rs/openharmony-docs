@@ -1403,7 +1403,7 @@ struct CustomDialogUser {
 
 ![en-us_image_custom_dynamicRefreshwidth](figures/image-dynamicRefreshwidth.gif)
 
-### Example 14: Setting the Immersive Light Effect of a Dialog
+### Example 14: Setting the Immersive Light Effect of a Dialog Box
 
 This example uses [systemMaterial](#customdialogcontrolleroptions) to set the system material of a component, implementing the immersive light effect. After the system material is applied, the **CustomDialog** exhibits nonlinear deformation and edge light flow during its display.
 
@@ -1470,7 +1470,7 @@ With system material
 
 <!--Del--> <!--DelEnd-->
 
-### Example 15: Setting the Dialog to Adapt to Handedness
+### Example 15: Setting the Dialog Box to Adapt to Handedness
 
 This example uses the **adaptToHandedness** attribute in [CustomDialogControllerOptions](#customdialogcontrolleroptions) to set the dialog to adapt to the grip, so that the dialog follows the position offset of the component that triggers it.
 

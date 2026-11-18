@@ -81,7 +81,7 @@ struct WebComponent {
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -89,7 +89,7 @@ struct WebComponent {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resumeDownload')
@@ -97,7 +97,7 @@ struct WebComponent {
           try {
             webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('cancel')
@@ -105,7 +105,7 @@ struct WebComponent {
           try {
             this.download.cancel();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('pause')
@@ -113,7 +113,7 @@ struct WebComponent {
           try {
             this.download.pause();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resume')
@@ -121,7 +121,7 @@ struct WebComponent {
           try {
             this.download.resume();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -183,7 +183,7 @@ struct WebComponent {
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -191,7 +191,7 @@ struct WebComponent {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resumeDownload')
@@ -199,7 +199,7 @@ struct WebComponent {
           try {
             webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('cancel')
@@ -207,7 +207,7 @@ struct WebComponent {
           try {
             this.download.cancel();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('pause')
@@ -215,7 +215,7 @@ struct WebComponent {
           try {
             this.download.pause();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resume')
@@ -223,7 +223,7 @@ struct WebComponent {
           try {
             this.download.resume();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -285,7 +285,7 @@ struct WebComponent {
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -293,7 +293,7 @@ struct WebComponent {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resumeDownload')
@@ -301,7 +301,7 @@ struct WebComponent {
           try {
             webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('cancel')
@@ -309,7 +309,7 @@ struct WebComponent {
           try {
             this.download.cancel();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('pause')
@@ -317,7 +317,7 @@ struct WebComponent {
           try {
             this.download.pause();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resume')
@@ -325,7 +325,7 @@ struct WebComponent {
           try {
             this.download.resume();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -387,7 +387,7 @@ struct WebComponent {
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -395,7 +395,7 @@ struct WebComponent {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resumeDownload')
@@ -403,7 +403,7 @@ struct WebComponent {
           try {
             webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('cancel')
@@ -411,7 +411,7 @@ struct WebComponent {
           try {
             this.download.cancel();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('pause')
@@ -419,7 +419,7 @@ struct WebComponent {
           try {
             this.download.pause();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resume')
@@ -427,7 +427,7 @@ struct WebComponent {
           try {
             this.download.resume();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })

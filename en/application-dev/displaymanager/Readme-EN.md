@@ -10,7 +10,7 @@
 - [Display Management Overview](displayManager-overview.md)
 - [Obtaining Display Properties and Listening for Status Changes (C/C++)](native-display-manager.md)
 - [Obtaining Display Properties and Listening for Status Changes (ArkTS)](screenProperty-guideline.md)
-- [Coordinate Conversion for Extended Screens](extend-coordinate-transformation-guideline.md)
+- [Coordinate Conversion for Extended Screens](extended-coordinate-transformation-guideline.md)
 <!--Del-->
 - [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](virtualScreen-guideline-sys.md)
 <!--DelEnd-->

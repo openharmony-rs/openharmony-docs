@@ -13,11 +13,11 @@ status: active
 <!--Designer: @wulong158-->
 <!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0d8c45b21d8a570119acc3e826554bd3c3d6e189 translatedAt=2026-11-12T12:34:02.148Z nl=1 -->
+<!-- md-trans-meta sourceCommit=29fe405eb0852bd211030908da17409255f4ae4b translatedAt=2026-11-16T07:11:30.000Z nl=1 -->
 
 ## When to Use
 
-An [extended screen](display-terminology.md#extended-screen) is a logical screen that extends the [main screen](display-terminology.md#main-screen) to increase the usable screen space. After an extended screen is connected to a device, the mouse and windows can move between the main screen and the extended screen.
+An [extended screen](display-terminology.md#extended-screen) is a logical screen that extends the [main screen](display-terminology.md#main-screen) to increase the usable screen space. When a PC/2-in-1 device enters multi-screen mode after an external monitor is connected, the mouse and windows can move between the main screen and the extended screen.
 
 In multi-screen scenarios, the system and applications use different reference points to describe positions. The system describes the entire multi-screen space using the [global coordinate system](../windowmanager/window-terminology.md#global-coordinate-system), whose origin is the upper left corner of the main screen. Application UI layouts and touch and mouse event coordinates use the [relative coordinate system](../windowmanager/window-terminology.md#relative-coordinate-system), whose origin is the upper left corner of the screen where the application is located. The same position has different values in the two coordinate systems. Therefore, applications need to make the following adaptations for cross-screen operations:
 
@@ -33,7 +33,7 @@ The display mode is obtained through the `sourceMode` property of a `Display` ob
 
 After an external screen is connected and the device enters multi-screen mode, the following display modes are mainly involved:
 
-| Name   | Value  | Description                                                                                                                                                                                                                                                                            |
+| Name   | Value  | Description                                        |
 | ------ | --- | -------------------------------------------------- |
 | MAIN   | 1   | Indicates that the screen is currently the main screen. The main screen hosts the system's core UI (such as the taskbar) and the default interaction focus. Application windows are created and displayed on the main screen by default. When no external screen is connected, the device's built-in screen is the main screen.    |
 | EXTEND | 3   | Indicates extended display mode. A screen in this mode is an extended screen. It forms a continuous display space with the main screen, and its position relative to the main screen can be set. The mouse and windows can move between the main and extended screens. The global coordinates of the upper left corner of the extended screen can be obtained through the x and y properties of its Display object. Applications can create windows on the extended screen to display content different from that on the main screen. |
@@ -47,7 +47,7 @@ Applications can adapt to multi-screen scenarios based on the display mode. For 
 >
 > After an external screen is connected, users can change its display mode in system settings.
 >
-> When users switch the screen casting mode or connect or disconnect a monitor, the `sourceMode` of the affected screens changes. Applications can listen for changes through [display.on('add'|'remove'|'change')](../reference/apis-arkui/js-apis-display.md#displayonadd-remove-change) and query the mode again. For details, see the following development steps.
+> When users switch the screen casting mode or connect or disconnect a monitor, the `sourceMode` of the affected screens changes. Applications can listen for changes through [display.on('add' | 'remove' | 'change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change) and query the mode again. For details, see the following development steps.
 
 1. Obtain the display modes of all screens.
 
@@ -94,7 +94,7 @@ Applications can adapt to multi-screen scenarios based on the display mode. For 
 
 3. Listen for display mode changes.
 
-    When a screen is connected or removed, or its display mode changes (for example, when users switch the screen casting mode in system settings), an `'add'`, `'remove'`, or `'change'` event is triggered. Listen for these events through [display.on('add'|'remove'|'change')](../reference/apis-arkui/js-apis-display.md#displayonadd-remove-change), then query the display mode of each screen again in the callback to update application logic promptly.
+    When a screen is connected or removed, or its display mode changes (for example, when users switch the screen casting mode in system settings), an `'add'`, `'remove'`, or `'change'` event is triggered. Listen for these events through [display.on('add' | 'remove' | 'change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change), then query the display mode of each screen again in the callback to update application logic promptly.
 
     <!-- @[listen_source_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
@@ -133,7 +133,7 @@ The following two coordinate systems are used in multi-screen scenarios:
 - [Global coordinate system](../windowmanager/window-terminology.md#global-coordinate-system): uses the upper left corner of the main screen as the origin. In extended display mode, the main and extended screens are arranged according to their actual relative positions to form a continuous display space. The global coordinates of the upper left corner of any screen can be obtained through the `x` and `y` properties of its `Display` object. Only screens in `MAIN` (main screen) or `EXTEND` (extended screen) mode return actual coordinate values. Screens in other display modes (such as mirrored and heterogeneous screens) return the default value `0`.
 - [Relative coordinate system](../windowmanager/window-terminology.md#relative-coordinate-system): uses the upper left corner of a specified screen as the origin. Coordinate values represent positions within that screen. UI component coordinates and coordinates reported by touch or mouse events in an application are usually relative to the screen where the application is located.
 
-![extend-mode-coordinate-system](figures/extend-mode-coordinate-system.png)
+![extend-mode-coordinate-system](figures/extended-mode-coordinate-system.png)
 
 As shown above, consider a main screen with a resolution of 2560 x 1600 and an extended screen to its right with a resolution of 1920 x 1080. In extended display mode, the two screens form a continuous display space in the same global coordinate system.
 
@@ -249,5 +249,3 @@ The two coordinate systems are independent. When an operation spans screens, coo
         `message: ${exception.message}`);
     }
     ```
-
-<!--no_check-->

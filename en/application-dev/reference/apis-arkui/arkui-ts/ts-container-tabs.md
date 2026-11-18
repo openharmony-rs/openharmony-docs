@@ -1941,7 +1941,7 @@ Controls the preloading of specified child nodes in **Tabs**. After this API is 
 > 
 > - If the **TabsController** object is not bound to any **Tabs** component, calling this API directly throws a JS exception. Therefore, when using this API, it is recommended to catch the exception through try-catch.
 >
-> - When using **preloadItems** to preload tab pages, if you need to customize the content displayed on the tab bar, it is recommended to use **ComponentContent**. For a usage example, see [Example 10](./ts-container-tabcontent.md#).
+> - When using **preloadItems** to preload tab pages, if you need to customize the content displayed on the tab bar, it is recommended to use **ComponentContent**. For a usage example, see [Example 10](./ts-container-tabcontent.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

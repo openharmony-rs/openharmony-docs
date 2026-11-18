@@ -14,15 +14,13 @@ FolderStack继承自[Stack](ts-container-stack.md)（层叠布局）控件，新
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 从API版本26.1.0开始，该组件的悬停态能力对所有折叠设备生效。API版本26.1.0之前，该组件的悬停态能力针对<!--RP2-->双折叠<!--RP2End-->设计，只在双折叠设备生效。可通过[FoldStatus](ts-appendix-enums.md#foldstatus11)判断设备的折叠状态。
+> - 该组件的悬停态能力仅在窗口模式[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)为全屏模式时生效：从API版本26.1.0开始，支持所有折叠设备；API版本26.1.0之前，仅支持<!--RP2-->双折叠<!--RP2End-->设备。可通过[FoldStatus](ts-appendix-enums.md#foldstatus11)判断设备的折叠状态。
 >
 > - 当该组件的父组件为[if/else：条件渲染](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)节点时，折叠屏悬停能力将会失效。
 >
 > - folderStack如果不撑满页面全屏，作为普通Stack使用。
 >
 > - FolderStack在非悬停态时布局效果参考[Stack](ts-container-stack.md)，在悬停态时默认撑满父容器。如果不撑满页面全屏，作为普通Stack使用。
->
-> - FolderStack的悬停态能力仅在窗口模式[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)为全屏模式时才能生效。
 
 ## 子组件
 

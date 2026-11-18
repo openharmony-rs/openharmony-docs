@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=a90357cf8c366c16c3d0667bcce925e70718e96d translatedAt=2026-11-02T07:54:04.322Z pushedAt=2026-11-03T01:25:17.439Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a6852e07af10719772909bedca1b70c6b19fcc3c translatedAt=2026-11-13T12:15:26.450Z pushedAt=2026-11-16T02:06:53.340Z nl=1 -->
 
 Access Token Manager (atm) is a tool used to query and set the information such as permission and usage type of an application process. It provides the capability of access control based on the token ID, bundle name, and process name.
 
@@ -90,7 +90,7 @@ atm toggle -h
 # Enable the camera permission for user 0.
 atm toggle -r -s -i 0 -p ohos.permission.CAMERA -k 1
 
-# Obtain the toggle state of the camera permission for user 0.
+# Obtain the toggle status of the camera permission for user 0.
 atm toggle -r -o -i 0 -p ohos.permission.CAMERA
 ```
 
@@ -152,9 +152,7 @@ In the following table, **-d**<!--Del-->, **-r**, **-v**,<!--DelEnd--> and **-t*
 
 Example:
 
-Starting from API version 26.1.0, the following changes are introduced:
-- When querying permission definitions, a new field `binIndependentUsable` is added to the result, indicating whether the permission can be obtained independently by a BIN in a weak sandbox without the parent HAP declaring the permission.
-- When querying permission information, a new field `uid` is added to the result, indicating the uid of the system service or application.
+Starting from API version 26.1.0, when querying permission information, the displayed result includes a new field `uid`, which indicates the UID of the system service or application.
 
 ```bash
 #Query all permission definitions in the system.
@@ -172,7 +170,6 @@ atm dump -d -p *********
 #     "distributedSceneEnable": true,
 #     "isKernelEffect": true,
 #     "hasValue": true,
-#     "binIndependentUsable": false,
 # }
 
 #Display the help information about the atm dump command.

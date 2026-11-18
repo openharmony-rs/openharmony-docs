@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过监听进入与退出全屏事件实现网页视频的沉浸式全屏播放，包括调整组件显隐布局、切换横竖屏及处理侧滑退出全屏。"
+keywords: [全屏播放, 沉浸式, onFullScreenEnter, onFullScreenExit, setPreferredOrientation, 横竖屏切换]
+doctype: guide
+status: active
+---
+
 # Web组件支持视频沉浸式全屏播放
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

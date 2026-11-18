@@ -813,7 +813,7 @@ Updates the metadata of a file under the sync root path. Supports both placehold
 | const CloudDisk_SyncFolderPath syncFolderPath | The registered sync root path. |
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | The relative path information of the file whose metadata is to be updated. |
 | [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) placeholderInfo | The file metadata information to be updated. For details, see [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md). |
-| [const OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md) *customInfo | Optional opaque custom information. Pass NULL to retain the existing value. |
+| [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md) *customInfo | Optional opaque custom information. Pass NULL to retain the existing value. |
 
 **Returns:**
 

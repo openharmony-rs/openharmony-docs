@@ -39,7 +39,7 @@ enableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当使能佩戴检测成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -60,7 +60,7 @@ enableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 try {
-    wearDetection.enableWearDetection('XX:XX:XX:XX:XX:XX', (err) => {
+    wearDetection.enableWearDetection('11:22:33:44:55:66', (err) => {
         if (err) {
             console.error("enableWearDetection error");
         }
@@ -86,7 +86,7 @@ enableWearDetection(deviceId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -112,7 +112,7 @@ enableWearDetection(deviceId: string): Promise&lt;void&gt;
 
 ```js
 try {
-    wearDetection.enableWearDetection('XX:XX:XX:XX:XX:XX').then(() => {
+    wearDetection.enableWearDetection('11:22:33:44:55:66').then(() => {
         console.info("enableWearDetection");
     });
 } catch (err) {
@@ -136,7 +136,7 @@ disableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当禁用佩戴检测成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -157,7 +157,7 @@ disableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 ```js
 try {
-    wearDetection.disableWearDetection('XX:XX:XX:XX:XX:XX', (err) => {
+    wearDetection.disableWearDetection('11:22:33:44:55:66', (err) => {
         if (err) {
             console.error("disableWearDetection error");
         }
@@ -183,7 +183,7 @@ disableWearDetection(deviceId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -209,7 +209,7 @@ disableWearDetection(deviceId: string): Promise&lt;void&gt;
 
 ```js
 try {
-    wearDetection.disableWearDetection('XX:XX:XX:XX:XX:XX').then(() => {
+    wearDetection.disableWearDetection('11:22:33:44:55:66').then(() => {
         console.info("disableWearDetection");
     });
 } catch (err) {
@@ -233,7 +233,7 @@ isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为true表示支持佩戴检测能力，data为false表示不支持佩戴检测能力；否则为错误对象。 |
 
 **错误码**：
@@ -254,7 +254,7 @@ isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt
 
 ```js
 try {
-    wearDetection.isWearDetectionSupported('XX:XX:XX:XX:XX:XX', (err, supported) => {
+    wearDetection.isWearDetectionSupported('11:22:33:44:55:66', (err, supported) => {
         console.info('device support wear detection ' + supported);
     });
 } catch (err) {
@@ -278,7 +278,7 @@ isWearDetectionSupported(deviceId: string): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -304,7 +304,7 @@ isWearDetectionSupported(deviceId: string): Promise&lt;boolean&gt;
 
 ```js
 try {
-    wearDetection.isWearDetectionSupported('XX:XX:XX:XX:XX:XX').then((supported) => {
+    wearDetection.isWearDetectionSupported('11:22:33:44:55:66').then((supported) => {
         console.info('device support wear detection ' + supported);
     });
 } catch (err) {
@@ -328,7 +328,7 @@ isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;)
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为true表示佩戴检测能力已开启，data为false表示佩戴检测能力未开启；否则为错误对象。 |
 
 **错误码**：
@@ -349,7 +349,7 @@ isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;)
 
 ```js
 try {
-    wearDetection.isWearDetectionEnabled('XX:XX:XX:XX:XX:XX', (err, enabled) => {
+    wearDetection.isWearDetectionEnabled('11:22:33:44:55:66', (err, enabled) => {
         console.info('device enable wear detection ' + enabled);
     });
 } catch (err) {
@@ -373,7 +373,7 @@ isWearDetectionEnabled(deviceId: string): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -399,7 +399,7 @@ isWearDetectionEnabled(deviceId: string): Promise&lt;boolean&gt;
 
 ```js
 try {
-    wearDetection.isWearDetectionEnabled('XX:XX:XX:XX:XX:XX').then((enabled) => {
+    wearDetection.isWearDetectionEnabled('11:22:33:44:55:66').then((enabled) => {
         console.info('device enable wear detection ' + enabled);
     });
 } catch (err) {

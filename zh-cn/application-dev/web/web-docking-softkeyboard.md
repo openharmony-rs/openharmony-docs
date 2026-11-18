@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件与系统软键盘的对接，包括输入框W3C标准属性适配、软键盘自动弹出、避让模式设置及拦截系统软键盘实现自定义键盘输入。"
+keywords: [软键盘, inputmode, enterkeyhint, WebKeyboardAvoidMode, onInterceptKeyboardAttach, 软键盘避让, 自定义软键盘]
+doctype: guide
+status: active
+---
+
 # Web组件对接软键盘
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

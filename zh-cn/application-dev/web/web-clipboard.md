@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件与系统剪贴板交互的方式，包括菜单与键盘快捷键、W3C异步剪贴板接口与剪贴板事件监听，以及剪贴板权限申请与复制范围设置。"
+keywords: [剪贴板, Clipboard API, navigator.clipboard, writeText, readText, ClipboardItem, 剪贴板事件]
+doctype: guide
+status: active
+---
+
 # 使用Web组件与系统剪贴板交互处理网页内容
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

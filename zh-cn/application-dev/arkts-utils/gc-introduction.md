@@ -138,21 +138,21 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 - 触发机制：年轻代GC触发阈值在2MB-16MB，根据分配速度和存活率变化。
 - 功能描述：主要回收YoungSpace新分配的年轻代对象。
 - 场景：前台场景。
-- 日志关键词：`[ HPP YoungGC ]`
+- 日志关键词：`[ HPP YoungGC ]`。
 
 **Old GC**
 
 - 触发机制：老年代GC触发阈值在20MB到300MB之间变化。通常，第一次Old GC的阈值约为20MB，之后会根据对象存活率和内存占用情况进行调整。
 - 功能描述：对年轻代和部分老年代空间做整理压缩，其他空间做清理。触发频率比年轻代GC低很多，由于会做全量标记，因此GC时间会比年轻代GC长，单次耗时约5ms~10ms。
 - 场景：前台场景。
-- 日志关键词：`[ HPP OldGC ]`
+- 日志关键词：`[ HPP OldGC ]`。
 
 **Full GC**
 
 - 触发机制：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2MB，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
 - 功能描述：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
 - 场景：后台场景。
-- 日志关键词：`[ CompressGC ]`
+- 日志关键词：`[ CompressGC ]`。
 
 此后，Smart GC或Idle GC会从上述三种GC中选择。
 
@@ -166,7 +166,7 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 
 **Native绑定大小达到阈值触发GC**
 
-- 限制参数：`globalSpaceNativeLimit`
+- 限制参数：`globalSpaceNativeLimit`。
 - 策略描述：按条件进行全量标记和开启并发标记。
 
 **切换后台触发GC**
@@ -203,20 +203,20 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 **第一次Old GC后阈值的调整**
 
 - 策略描述：根据最小增长步长以及平均存活率调整OldSpace阈值限制。
-- 日志关键词：`AdjustOldSpaceLimit`
+- 日志关键词：`AdjustOldSpaceLimit`。
 
 **第二次及以后的Old GC对OldSpace和GlobalSpace阈值调整，以及增长因子的调整**
 
 - 策略描述：根据当前GC统计数据的变化，重新计算并调整newOldSpaceLimit、newGlobalSpaceLimit、globalSpaceNativeLimit及增长因子。
-- 日志关键词：`RecomputeLimits`
+- 日志关键词：`RecomputeLimits`。
 
 **Partial Old GC的CSet 选择策略**
 
 - 策略描述：Partial GC执行时，优先选择存活对象数量少、回收代价小的Region进行回收。
 - 典型日志：
-    - `Select CSet failure: number is too few`
-    - `Max evacuation size is 6_MB. The CSet Region number`
-    - `Select CSet success: number is`
+    - `Select CSet failure: number is too few`。
+    - `Max evacuation size is 6_MB. The CSet Region number`。
+    - `Select CSet success: number is`。
 
 ## Heap
 
@@ -369,8 +369,8 @@ Smart GC是一种智能GC抑制机制，在冷启动场景和性能敏感场景�
 
 **日志关键词**
 
-- 敏感场景：`SmartGC: set high sensitive status`
-- 冷启动场景：`SmartGC: app cold start just finished`
+- 敏感场景：`SmartGC: set high sensitive status`。
+- 冷启动场景：`SmartGC: app cold start just finished`。
 
 **交互流程**
 
@@ -459,7 +459,7 @@ C03F00/ArkCompiler: Heap average alive rate: 0.635325
 
 ### ArkTools.hintGC()
 
-- 调用方式：`ArkTools.hintGC()`
+- 调用方式：`ArkTools.hintGC()`。
 - 接口类型：ArkTS接口。
 - 调用后，VM会判断是否适合进行full GC。如果后台场景中内存预期存活率低于设定值，则触发full GC；若判断为敏感状态，则不触发。
 - 使用场景：开发者提示系统进行GC。

@@ -1,12 +1,11 @@
 # div
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:30.170Z pushedAt=2026-06-24T03:29:07.057Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-11-12T04:29:16.815Z pushedAt=2026-11-18T03:12:21.891Z nl=1 -->
 
 >  **NOTE**
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -17,39 +16,44 @@ The **\<div>** component is a basic container that is used as the root node of t
 
 None
 
+
 ## Child Components
 
 Supported
 
+
 ## Attributes
 
 The [universal attributes](js-components-common-attributes.md) are supported.
+
 
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
 <!--Table: 20%; 15%; 15%; 10%; 40%-->
-
 | Name                           | Type           | Default Value | Mandatory | Description                                                         |
 | ------------------------------ | -------------- | ------------ | ---- | ------------------------------------------------------------ |
 | flex-direction                 | string         | row          | No   | Main axis direction of the flex container. Available values are as follows:<br/>-&nbsp;**column**: Items are placed vertically from top to bottom.<br/>-&nbsp;**row**: Items are placed horizontally from left to right. |
 | flex-wrap                      | string         | nowrap       | No   | Whether items in the flex container are displayed in a single line or multiple lines. The value cannot be dynamically updated. Available values are as follows:<br/>-&nbsp;**nowrap**: Flex items are displayed in a single line.<br/>-&nbsp;**wrap**: Flex items are displayed in multiple lines. |
 | justify-content                | string         | flex-start   | No   | How items are aligned along the main axis of the flex container. Available values are as follows:<br/>-&nbsp;**flex-start**: Items are packed toward the start edge of the container along the main axis.<br/>-&nbsp;**flex-end**: Items are packed toward the end edge of the container along the main axis.<br/>-&nbsp;**center**: Items are packed toward the center of the container along the main axis.<br/>-&nbsp;**space-between**: Items are positioned with space between the rows.<br/>-&nbsp;**space-around**: Items are positioned with space before, between, and after the rows.<br/>-&nbsp;**space-evenly**<sup>5+</sup>: Items are distributed within the container along the main axis, with even space between each two. |
-| align-items                    | string         | stretch<br/> | No   | How items are aligned along the cross axis in a flex container. Available values are as follows:<br/>-&nbsp;**stretch**: Items are stretched to the same height or width as the container along the cross axis.<br/>-&nbsp;**flex-start**: Items are packed toward the start edge of the cross axis.<br/>-&nbsp;**flex-end**: Items are packed toward the end edge of the cross axis.<br/>-&nbsp;**center**: Items are packed toward the center of the cross axis.<br/>-&nbsp;**baseline**: In a vertical layout, items are aligned to the start of the cross axis, which means that this value is equivalent of **flex-start**. In a horizontal layout, items are aligned with the text baseline if there is text involved, and aligned to the bottom otherwise. |
+| align-items                    | string         | stretch<br/> | No   | How items are aligned along the cross axis in a flex container. Available values are as follows:<br/>-&nbsp;**stretch**: Items are stretched to the same height or width as the container along the cross axis.<br/>-&nbsp;**flex-start**: Items are packed toward the start edge of the cross axis.<br/>-&nbsp;**flex-end**: Items are packed toward the end edge of the cross axis.<br/>-&nbsp;**center**: Items are packed toward the center of the cross axis.<br/>-&nbsp;**baseline**: In a vertical layout, items are aligned to the start of the cross axis, which means that this value is equivalent to **flex-start**. In a horizontal layout, items are aligned with the text baseline if there is text involved, and aligned to the bottom otherwise. |
 | align-content                  | string         | flex-start   | No   | Multi-row alignment mode when there is extra space in the cross axis. Available values are as follows:<br/>-&nbsp;**flex-start**: All rows are packed toward the start edge of the cross axis. The start edge of the cross axis of the first row is aligned with the start edge of the cross axis of the container. All subsequent rows are aligned with the previous row.<br/>-&nbsp;**flex-end**: All rows are packed toward the end edge of the cross axis. The end of the cross axis of the last row is aligned with the end of the cross axis of the container. All subsequent rows are aligned with the previous row.<br/>-&nbsp;**center**: All rows are packed toward the center of the cross axis. Rows are close to each other and aligned with the center of the container. The spacing between the start edge of the container's cross axis and the first row is equal to the spacing between the end edge of the container's cross axis and the last row.<br/>-&nbsp;**space-between**: All rows are evenly distributed in the container. The spacing between two adjacent rows is the same. The start and end edges of the container's cross axis are aligned with the edges of the first and last rows, respectively.<br/>-&nbsp;**space-around**: All rows are evenly distributed in the container. The spacing between two adjacent rows is the same. The spacing between the start edge of the container's cross axis and the first row and that between the end edge and the last row are half of the spacing between two adjacent rows. |
-| grid-template-[columns \| rows]  | string         | 1 row, 1 column | No   | Number of rows and columns in the current grid layout. If this attribute is not set, one row and one column are displayed by default. This attribute is valid only when display is set to **grid**.<br/>Below are some example values of **grid-template-columns**:<br/>-&nbsp;**50px&nbsp;100px&nbsp;60px**: There are three columns. The first column is 50 px, the second column is 100 px, and the third column is 60 px.<br/>-&nbsp;**1fr&nbsp;1fr&nbsp;2fr**: There are three columns, and the width allowed by the parent component is divided into four equal shares. The first column occupies one share, the second column occupies one share, and the third column occupies two shares.<br/>-&nbsp;**30%&nbsp;20%&nbsp;50%**: There are three columns. The first column occupies 30% of the total width allowed by the parent component, the second column occupies 20%, and the third column occupies 50%.<br/>-&nbsp;**repeat(2,100px)**: There are two columns. The first column is 100 px, and the second column is 100 px.<br/>-&nbsp;**repeat(auto-fill,100px)**<sup>5+</sup>: Each column is 100 px and repeats to fill the cross axis. The number of columns is calculated based on the column size and the cross axis size.<br/>-&nbsp;**auto&nbsp;1fr&nbsp;1fr**: There are three columns. The first column is adaptive to the width required by its child components. The remaining space is divided into two equal shares, one share occupied by each of the rest two columns. |
+| grid-template-[columns \| rows]  | string         | 1 row, 1 column       | No   | Number of rows and columns in the current grid layout. If this attribute is not set, one row and one column are displayed by default. This attribute is valid only when **display** is set to **grid**.<br/>Below are some example values of **grid-template-columns**:<br/>-&nbsp;**50px&nbsp;100px&nbsp;60px**: There are three columns. The first column is 50 px, the second column is 100 px, and the third column is 60 px.<br/>-&nbsp;**1fr&nbsp;1fr&nbsp;2fr**: There are three columns, and the width allowed by the parent component is divided into four equal shares. The first column occupies one share, the second column occupies one share, and the third column occupies two shares.<br/>-&nbsp;**30%&nbsp;20%&nbsp;50%**: There are three columns. The first column occupies 30% of the total width allowed by the parent component, the second column occupies 20%, and the third column occupies 50%.<br/>-&nbsp;**repeat(2,100px)**: There are two columns. The first column is 100 px, and the second column is 100 px.<br/>-&nbsp;**repeat(auto-fill,100px)**<sup>5+</sup>: The maximum positive integer repetition count is calculated based on the size of 100 px per column and the cross-axis size, and the cross-axis filled according to that repetition count.<br/>-&nbsp;**auto&nbsp;1fr&nbsp;1fr**: There are three columns. The first column is adaptive to the width required by its child components. The remaining space is divided into two equal shares, one share occupied by each of the rest two columns. |
 | grid-[columns \| rows]-gap       | &lt;length&gt; | 0            | No   | Size of the gap between two consecutive rows or columns in a grid layout. You can also use **grid-gap** to set the same size of the gap between rows and columns. This attribute is valid only when **display** is set to **grid**. |
 | grid-row-[start \| end]          | number         | -            | No   | Start and end row numbers of the current item in the grid layout. This attribute is valid only when the item's parent component is a **\<div>** container whose **display** is set to **grid**. |
 | grid-column-[start \| end]       | number         | -            | No   | Start and end column numbers of the current item in the grid layout. This attribute is valid only when the item's parent component is a **\<div>** container whose **display** is set to **grid**. |
-| grid-auto-flow<sup>5+</sup>    | string         | -            | No   | How grid items are laid out automatically. Available values are as follows:<br/>-&nbsp;**row**: Elements are filled row by row. When there is no horizontal space in a row, a new row is added.<br/>-&nbsp;**column**: Elements are filled column by column. When there is no vertical space in a column, a new column is added. |
+| grid-auto-flow<sup>5+</sup>    | string         | -            | No   | How grid items are laid out automatically. Available values are as follows:<br/>-&nbsp;**row**: Elements are filled row by row. When there is not enough horizontal space in a row, a new row is added.<br/>-&nbsp;**column**: Elements are filled column by column. When there is not enough vertical space in a column, a new column is added. |
 | overflow<sup>6+</sup>          | string         | visible      | No   | Display mode when the content exceeds the container size. Available values are as follows:<br/>-&nbsp;**visible**: Displays the excess content outside the container.<br/>-&nbsp;**hidden**: Truncates the excess content.<br/>-&nbsp;**scroll**: Scrolls the content vertically, with a scrollbar provided.<br/>**scroll** works for elements whose size is fixed. By default, the scrolling direction is the same as the container direction. |
-| align-items<sup>6+</sup>       | string         | -            | No   | How items are aligned along the cross axis in a flex container. Available values are as follows:<br/>-&nbsp;**stretch**: Items are stretched to the same height or width as the flex container along the cross axis.<br/>-&nbsp;**flex-start**: Items are aligned to the start of the cross axis.<br/>-&nbsp;**flex-end**: Items are aligned to the end of the cross axis.<br/>-&nbsp;**center**: Items are aligned in the center of the cross axis.<br/>-&nbsp;**baseline**: In a vertical layout, items are aligned to the start of the cross axis, which means that this value is equivalent of **flex-start**. In a horizontal layout, items are aligned with the text baseline if there is text involved, and aligned to the bottom otherwise. |
+| align-items<sup>6+</sup>       | string         | -            | No   | How items are aligned along the cross axis in a flex container. Available values are as follows:<br/>-&nbsp;**stretch**: Items are stretched to the same height or width as the flex container along the cross axis.<br/>-&nbsp;**flex-start**: Items are aligned to the start of the cross axis.<br/>-&nbsp;**flex-end**: Items are aligned to the end of the cross axis.<br/>-&nbsp;**center**: Items are aligned in the center of the cross axis.<br/>-&nbsp;**baseline**: In a vertical layout, items are aligned to the start of the cross axis, which means that this value is equivalent to **flex-start**. In a horizontal layout, items are aligned with the text baseline if there is text involved, and aligned to the bottom otherwise. |
 | scrollbar-color<sup>6+</sup>   | &lt;color&gt;  | -            | No   | Color of the scrollbar.                                           |
 | scrollbar-width<sup>6+</sup>   | &lt;length&gt; | -            | No   | Width of the scrollbar.                                           |
-| overscroll-effect<sup>6+</sup> | string         | -            | No   | How the scrollbar behaves when it reaches the edge of the scrolling area. Available values are as follows:<br/>-&nbsp;**spring**: Similar to the physical dynamic effect of a spring. When the scrollbar reaches the edge, it can continue to scroll for a distance based on the initial speed or a touch event. It rebounds after being released.<br/>-&nbsp;**fade**: Similar to the physical dynamic effect of fade. When the scrollbar reaches the edge, a wave shape fades. The fade changes according to the speed and scrolling distance.<br/>-&nbsp;**none**: No effect when the scrollbar reaches the edge. |
+| overscroll-effect<sup>6+</sup> | string         | -            | No   | How the scrollbar behaves when it reaches the edge of the scrolling area. Available values are as follows:<br/>-&nbsp;**spring**: Similar to the physical animation effect of a spring. When the scrollbar reaches the edge, it can continue to scroll for a distance based on the initial speed or a touch event. It rebounds after being released.<br/>-&nbsp;**fade**: Similar to the physical animation effect of fade. When the scrollbar reaches the edge, a wave shape fades. The fade changes according to the speed and scrolling distance.<br/>-&nbsp;**none**: No effect when the scrollbar reaches the edge. |
+
 
 ## Events
+
+
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
@@ -84,10 +88,10 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 | dy     | number  | Offset for scrolling in the vertical direction, in px. |
 | smooth | boolean | Whether to enable smooth scrolling. **true** for smooth scrolling, **false** for non-smooth scrolling.         |
 
+
 ## Example
 
 1. Flex style
-
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -134,7 +138,6 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![div](figures/div.png)
 
 2. Flex wrap style
-
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -248,7 +251,6 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![Grid style](figures/Grid-style.png)
 
 4. Dragging<sup>7+</sup>
-
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -362,7 +364,6 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![div01](figures/div01.gif)
 
 5. Pinching<sup>7+</sup>
-
    ```html
    <!-- xxx.hml -->
    <div class="container">

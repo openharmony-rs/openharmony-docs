@@ -1,12 +1,11 @@
 # Custom Placeholder Nodes
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyang2022-->
-<!--Designer: @wangyang2022-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=82cbd61bf5a97c687ddb974e4186cc744a8f06f2 translatedAt=2026-08-05T01:25:14.212Z pushedAt=2026-08-05T02:27:52.924Z -->
+<!-- md-trans-meta sourceCommit=c1d045ee34ba178ea0d50ccb33a0b38e16ab0af6 translatedAt=2026-11-12T04:10:07.436Z pushedAt=2026-11-13T09:01:54.901Z nl=1 -->
 
 ArkUI provides two types of custom placeholder nodes: the built-in component [NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) and [ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md). They are used to display custom nodes and custom node trees.
 

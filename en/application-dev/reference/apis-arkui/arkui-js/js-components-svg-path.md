@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=61f91cca6aea307c81b473df54b72148114a4082 translatedAt=2026-11-12T04:46:43.288Z pushedAt=2026-11-18T06:52:55.982Z nl=1 -->
 
 >  **NOTE**
 >
@@ -29,7 +30,7 @@ The [universal attributes](js-components-svg-common-attributes.md) and the attri
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | - | No| Unique ID of the component.|
-| d | string | - | No| Shape of the path. The value contains a group of character instructions. Uppercase letters are absolute paths, and lowercase letters are relative paths.<br>The meanings of the letters are as follows:<br>-&nbsp;M/m&nbsp;=&nbsp;moveto<br>-&nbsp;L/l&nbsp;=&nbsp;lineto<br>-&nbsp;H/h&nbsp;=&nbsp;horizontal&nbsp;lineto<br>-&nbsp;V/v&nbsp;=&nbsp;vertical&nbsp;lineto<br>-&nbsp;C/c&nbsp;=&nbsp;curveto<br>-&nbsp;S/s&nbsp;=&nbsp;smooth&nbsp;curveto<br>-&nbsp;Q/q&nbsp;=&nbsp;quadratic&nbsp;Belzier&nbsp;curve<br>-&nbsp;T/t&nbsp;=&nbsp;smooth&nbsp;quadratic&nbsp;Belzier&nbsp;curveto<br>-&nbsp;A/a&nbsp;=&nbsp;elliptical&nbsp;Arc<br>-&nbsp;Z/z&nbsp;=&nbsp;closepath |
+| d | string | - | No | Shape of the path. The value contains a group of character instructions. Uppercase letters are absolute paths, and lowercase letters are relative paths.<br/>The meanings of the letters are as follows:<br/>-&nbsp;M/m&nbsp;=&nbsp;moveto<br/>-&nbsp;L/l&nbsp;=&nbsp;lineto<br/>-&nbsp;H/h&nbsp;=&nbsp;horizontal&nbsp;lineto<br/>-&nbsp;V/v&nbsp;=&nbsp;vertical&nbsp;lineto<br/>-&nbsp;C/c&nbsp;=&nbsp;curveto<br/>-&nbsp;S/s&nbsp;=&nbsp;smooth&nbsp;curveto<br/>-&nbsp;Q/q&nbsp;=&nbsp;quadratic&nbsp;Bezier&nbsp;curve<br/>-&nbsp;T/t&nbsp;=&nbsp;smooth&nbsp;quadratic&nbsp;Bezier&nbsp;curveto<br/>-&nbsp;A/a&nbsp;=&nbsp;elliptical&nbsp;Arc<br/>-&nbsp;Z/z&nbsp;=&nbsp;closepath |
 
 
 ## Example

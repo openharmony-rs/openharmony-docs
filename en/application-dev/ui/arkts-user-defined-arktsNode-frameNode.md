@@ -1,12 +1,11 @@
 # Custom Component Node (FrameNode)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyang2022-->
-<!--Designer: @wangyang2022-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=82cbd61bf5a97c687ddb974e4186cc744a8f06f2 translatedAt=2026-08-05T01:24:36.752Z pushedAt=2026-08-05T01:38:21.860Z -->
+<!-- md-trans-meta sourceCommit=52e866df3c3ddc8b32e6d7e3156f38dc8073ea0d translatedAt=2026-11-12T04:05:31.623Z pushedAt=2026-11-13T08:58:59.292Z nl=1 -->
 
 ## Overview
 
@@ -20,7 +19,7 @@ The aforementioned conversion process, which relies on additional data-driven bi
 
 This is where [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) comes into the picture. **FrameNode** represents an entity node in the component tree. It is used in conjunction with the custom placeholder container component, [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md), to construct a custom node tree inside the placeholder container. This node tree supports dynamic operations, including node addition, modification, and removal. Basic FrameNodes provide functionality for setting universal attributes and event callbacks, as well as comprehensive customization capabilities for measurement, layout, and rendering.
 
-Moreover, the ArkUI framework enables obtaining and traversing proxy FrameNode objects for built-in components, known as proxy nodes, which facilitate UI tree traversal and allow for obtaining specific information about built-in components or registering additional event listeners.
+Moreover, the ArkUI framework enables obtaining and traversing proxy FrameNode objects for system components, known as proxy nodes, which facilitate UI tree traversal and allow for obtaining specific information about system components or registering additional event listeners.
 
 ## Creating and Removing Nodes
 
@@ -36,7 +35,7 @@ You can create and remove nodes with **FrameNode**. You can create a custom inst
 
 ## Checking Whether a Node is Modifiable
 
-Use [isModifiable](../reference/apis-arkui/js-apis-arkui-frameNode.md#ismodifiable12) to check whether the current node is a proxy for a built-in component. If a FrameNode serves as a proxy, it cannot be modified, which means you cannot change its properties or the structure of its child nodes.
+Use [isModifiable](../reference/apis-arkui/js-apis-arkui-frameNode.md#ismodifiable12) to check whether the current node is a proxy for a system component. If a FrameNode serves as a proxy, it cannot be modified, which means you cannot change its properties or the structure of its child nodes.
 
 ## Obtaining the Corresponding RenderNode
 
@@ -44,7 +43,7 @@ Use the [getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getre
 
 > **NOTE**
 >
-> - You cannot obtain the RenderNode for a built-in component's proxy FrameNode.
+> - You cannot obtain the RenderNode for a system component's proxy FrameNode.
 > 
 > - In **BuilderNode**, you can use [getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode) to get the FrameNode object, and then use **getRenderNode** to obtain the RenderNode object of the corresponding root node.
 
@@ -365,7 +364,6 @@ struct Index {
   }
 }
 ```
-
 ## Using moveTo to Move an Imperative Node
 
 Use the [moveTo](../reference/apis-arkui/js-apis-arkui-frameNode.md#moveto18) API to move a FrameNode to a new parent node, enabling dynamic modifications to the node tree structure.
@@ -441,7 +439,6 @@ struct Index {
   }
 }
 ``` 
-
 ![moveToDemo](figures/moveToDemo.gif)
 
 ## Setting Universal Attributes and Event Callbacks
@@ -637,22 +634,21 @@ struct Index {
   }
 }
 ```
-
 ## Implementing Custom Measurement, Layout, and Drawing
 
-By overriding the [onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) API, you can customize the drawing content of the FrameNode. Use the [invalidate](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidate12) API to manually trigger a redraw of the node.
+By overriding the [onDraw()](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) API, you can customize the drawing content of the FrameNode. Use the [invalidate()](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidate12) API to manually trigger a redraw of the node.
 
-By overriding the [onMeasure](../reference/apis-arkui/js-apis-arkui-frameNode.md#onmeasure12) API, you can customize how the FrameNode measures its size. Use [measure](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12) to proactively pass layout constraints to initiate a remeasurement.
+By overriding the [onMeasure()](../reference/apis-arkui/js-apis-arkui-frameNode.md#onmeasure12) API, you can customize how the FrameNode measures its size. Use [measure()](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12) to proactively pass layout constraints to initiate a remeasurement.
 
-By overriding the [onLayout](../reference/apis-arkui/js-apis-arkui-frameNode.md#onlayout12) API, you can customize the layout of the FrameNode. Use [layout](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12) to proactively pass position information and initiate a re-layout.
+By overriding the [onLayout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#onlayout12) API, you can customize the layout of the FrameNode. Use [layout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12) to proactively pass position information and initiate a re-layout.
 
-Use [setNeedsLayout](../reference/apis-arkui/js-apis-arkui-frameNode.md#setneedslayout12) to mark the current node and trigger a re-layout in the next frame.
+Use [setNeedsLayout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#setneedslayout12) to mark the current node and trigger a re-layout in the next frame.
 
 > **NOTE**
 > 
 > - After a node is disposed and unbound, the FrameNode no longer represents an entity node. In this case, the **invalidate** call cannot update the previously bound node.
 > 
-> - Custom drawings made through the **onDraw** API cannot exceed the component's size.
+> - Custom drawings made through the **onDraw()** API cannot exceed the component's size.
 
 <!-- @[frameNodeDraw_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDraw.ets) --> 
 
@@ -806,7 +802,6 @@ struct Index {
   }
 }
 ```
-
 ## Searching for Nodes and Obtaining Basic Information
 
 **FrameNode** provides APIs for obtaining basic information about an entity node. For details about the returned information, see the FrameNode API documentation.
@@ -823,11 +818,11 @@ To obtain a FrameNode, use any of the following methods:
 >
 > 1. Currently, the following information can be obtained:
 >
-> - Node size: [getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12), [getUserConfigSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigsize12)
+>    - Node size: [getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12), [getUserConfigSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigsize12)
 > 
-> - Layout information: [getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12), [getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12), [getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12), [getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12), [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12), [getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12)
+>    - Layout information: [getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12), [getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12), [getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12), [getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12), [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12), [getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12)
 > 
-> - Node information: [getId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getid12), [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12), [getNodeType](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnodetype12), [getOpacity](../reference/apis-arkui/js-apis-arkui-frameNode.md#getopacity12), [isVisible](../reference/apis-arkui/js-apis-arkui-frameNode.md#isvisible12), [isClipToFrame](../reference/apis-arkui/js-apis-arkui-frameNode.md#iscliptoframe12), [isAttached](../reference/apis-arkui/js-apis-arkui-frameNode.md#isattached12), [getInspectorInfo](../reference/apis-arkui/js-apis-arkui-frameNode.md#getinspectorinfo12), [getCustomProperty](../reference/apis-arkui/js-apis-arkui-frameNode.md#getcustomproperty12)
+>    - Node information: [getId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getid12), [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12), [getNodeType](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnodetype12), [getOpacity](../reference/apis-arkui/js-apis-arkui-frameNode.md#getopacity12), [isVisible](../reference/apis-arkui/js-apis-arkui-frameNode.md#isvisible12), [isClipToFrame](../reference/apis-arkui/js-apis-arkui-frameNode.md#iscliptoframe12), [isAttached](../reference/apis-arkui/js-apis-arkui-frameNode.md#isattached12), [getInspectorInfo](../reference/apis-arkui/js-apis-arkui-frameNode.md#getinspectorinfo12), [getCustomProperty](../reference/apis-arkui/js-apis-arkui-frameNode.md#getcustomproperty12)
 >
 > 2. UINode-type nodes, such as JsView nodes, [Span](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-span.md), [ContainerSpan](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md), [ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [ForEach](../../application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md), [LazyForEach](../../application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md), and **if/else** components, cannot be obtained.
 
@@ -963,7 +958,6 @@ struct Index {
   }
 }
 ```
-
 ## Creating a FrameNode of a Specific Type Using typeNode
 
 When creating a FrameNode of a specific type using [typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12), you can retrieve the attribute information set by the user through the attribute retrieval API.
@@ -1043,7 +1037,7 @@ class MyNodeController extends NodeController {
   }
 
   getUserConfigPadding(frameNode: FrameNode) {
-    let userConfigPadding = frameNode?.getUserConfigPadding(); // Obtain the padding set by the user. 
+    let userConfigPadding = frameNode?.getUserConfigPadding(); // Obtain the padding set by the user.
     hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(userConfigPadding)}`, 'userConfigPadding');
   }
 
@@ -1291,7 +1285,6 @@ struct Index {
   }
 }
 ```
-
 ## Disassociating the Current FrameNode Object from the Entity FrameNode
 
 To disassociate the current **FrameNode** object from the entity FrameNode, call the [dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12) API.
@@ -1409,7 +1402,6 @@ struct Index {
   }
 }
 ```
-
 ## Checking FrameNode Reference Status
 
 Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values.
@@ -1481,7 +1473,6 @@ struct Index {
   }
 }
 ```
-
 ## Using the Lazy Loading Capability of FrameNode
 
 The [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) object is provided to replace the [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) function on the ArkTS side. It supports data lazy loading for custom nodes, enabling on-demand data iteration.
@@ -1704,7 +1695,6 @@ struct Index {
   }
 }
 ```
-
 ## Querying FrameNode Information in LazyForEach
 
 When a FrameNode contains [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, the [getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild15) API supports the [ExpandMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15) parameter to control child node expansion behavior.
@@ -1712,9 +1702,7 @@ When a FrameNode contains [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rend
 Currently, the following child node expansion modes are supported:
 
 - **ExpandMode.NOT_EXPAND**: Child nodes remain unexpanded. This mode is designed for accessing child nodes currently present in the main node tree when the FrameNode contains **LazyForEach** child nodes. The child node indexes are calculated based on the nodes currently present in the main tree.
-
 - **ExpandMode.EXPAND**: All child nodes are fully expanded. This mode provides access to all potential child nodes when the FrameNode contains **LazyForEach** child nodes. The child node indexes are calculated based on all child nodes.
-
 - **ExpandMode.LAZY_EXPAND**: The child nodes are expanded on demand. In this mode, when the FrameNode contains **LazyForEach** child nodes, main tree nodes are accessed without expansion, whereas non-main tree nodes are automatically expanded upon access. The child node indexes are calculated based on all child nodes.
 
 You can use [getFirstChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getfirstchildindexwithoutexpand15) and [getLastChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlastchildindexwithoutexpand15) to obtain the indexes of the first and last child nodes currently present in the main node tree. All child node indexes are calculated relative to the complete set of child nodes.
@@ -1983,10 +1971,9 @@ struct Index {
   }
 }
 ```
-
 ## Adjusting the Transformation Matrix of the Custom Drawing Canvas
 
-Starting from API version 12, you can override the default drawing method by overriding the [onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) method of FrameNode.
+Starting from API version 12, you can override the default drawing method by overriding the [onDraw()](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) method of FrameNode.
 
 Use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) to adjust the transformation matrix of the custom drawing canvas.
 
@@ -2133,7 +2120,6 @@ struct Index {
   }
 }
 ```
-
 ![FrameNode-canvas](./figures/frameNode-canvas.png)
 
 ## Updating the Current Frame Node
@@ -2236,7 +2222,6 @@ struct ListNodeTest {
 }
 
 ```
-
 ![invalidateAttributes](./figures/invalidateAttributes.png)
 
 ## Checking Whether a Node Is in Render State
@@ -2309,5 +2294,4 @@ struct Index {
   }
 }
 ```
-
 ![isInRenderState](./figures/isInRenderState.png)

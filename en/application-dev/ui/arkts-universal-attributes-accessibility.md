@@ -1,12 +1,11 @@
 # Supporting Accessibility
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=34803c6eb49ea8341f05c17ad6715ccbe035c98e translatedAt=2026-08-04T06:42:23.487Z pushedAt=2026-08-04T08:41:24.319Z -->
+<!-- md-trans-meta sourceCommit=51eb0aaff3da49a8b0f853b9c41d52698e595ed3 translatedAt=2026-11-12T04:02:43.986Z pushedAt=2026-11-13T08:53:48.032Z nl=1 -->
 
 ## Overview
 
@@ -25,26 +24,20 @@ When the [accessibility attributes](../reference/apis-arkui/arkui-ts/ts-universa
 ## Highlights
 
   1. Broaden user coverage: Apps adapted to assistive tools can precisely reach millions of visually impaired users who rely on assistive technologies, breaking down digital barriers and making your product accessible to a more comprehensive audience.
-
   2. Compliance with regulations and design standards: Adapting to assistive tools is a core measure to comply with global accessibility design standards. It not only meets the digital inclusion regulations of various countries/regions, but also aligns with the modern product design concept of "accessible to all."
-
   3. Social responsibilities fulfillment and brand value enhancement: Adapting to assistive tools is a concrete action to promote digital equity, demonstrate the brand's responsibility to respect all users and help build an accessibility environment, and improve brand awareness.
-
   4. Optimize the experience for all users: Core optimizations during the adaptation process (such as clear element descriptions, logical focus order, and compliant contrast ratios) not only serve users with disabilities but also enable general users to have a smoother experience in complex scenarios (such as bright light environments or one-handed operation).
-
   5. Lightweight adaptation without affecting core experience: Adapting to assistive tools does not require any changes to the core logic or UI design of the application. Only lightweight features are added to the ArkUI accessibility service, ensuring that the innovative characteristics and visual style of the product are fully retained while providing accessibility support.
 
 ## Assistive tools
 
 Assistive tools allow users with visual impairments to operate devices without looking at the screen. Based on the accessibility properties set by you, the enabled assistive tool can broadcast the details of the accessibility component through audio, including the component type, text content, operation result, and current status.
 
-Accessibility information can be correctly set for all interactive UI components, which is the prerequisite for an assistive tool to have the accessibility capability. The following three conditions must be met:
+For an application to have accessibility capability (so that it can be used normally by assistive tools), all interactive UI components must have accessibility information set correctly. That is, the following three requirements must be met.
 
   1. The component can be recognized by the accessibility service, meaning that you can set whether a component is recognizable by the accessibility service via [accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel).
-
   2. The component feature and operation information are provided (implemented by using the [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext) and [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription) attributes).
-
-  3. The actual status and behavior of the component can be transferred (implemented by using the [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13), and [accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18) attributes).
+  3. The actual status and role of the component can be transferred (implemented by using the [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13) and [accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18) attributes).
 
 <!--RP1--><!--RP1End-->
 
@@ -109,7 +102,7 @@ export struct AccessibilityTextCase02 {
 }
 ```
 
-## Setting Accessibility Notifications
+## Setting Accessibility Description
 
 The [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription) attribute is used to provide more detailed component description, helping users understand the operation to be performed and the possible consequences, especially when the consequences cannot be inferred from the component attributes or accessibility text. For example, it can explain why a component is unavailable, or convey information that the system's default usage hints cannot. This information is played after the text content. If the current control has a default usage hint (for example, for a component that can be tapped, the default usage hint is "Double-tap with one finger to execute"), the accessibility description will replace the system's usage hint, that is, only the accessibility description will be played.
 
@@ -158,6 +151,7 @@ export struct AccessibilityDescriptionCase02 {
   }
 }
 ```
+
 
 ## Setting Accessibility Groups
 
@@ -214,7 +208,7 @@ export struct AccessibilityGroupCase02 {
 
 The [accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute indicates the accessibility importance of a component and is used to control whether the component can be recognized by the accessibility service. It supports the following values:
 
-- **"auto"** (default): The component's recognizability is determined by the accessibility grouping service and ArkUI.
+- **"auto"** (default): The component's recognizability is determined by the accessibility assistance service and ArkUI.
 
 - **"yes"**: The component can be recognized by accessibility services.
 
@@ -251,7 +245,7 @@ export struct AccessibilityLevelCase01 {
 
 The [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13) attribute indicates whether a component is checked (such as two-state or three-state components like checkboxes and toggle buttons). It is suitable for scenarios where the "selected/unselected" semantics need to be explicitly conveyed. It supports the following values:
 
-- **undefined** (default): automatically determined by the system (depending on the component's own state, such as the **isOn** attribute of a **Toggle** component).
+- **undefined** (default): the selected state is determined by the component itself (depending on the component's own state, such as the **isOn** attribute of a **Toggle** component).
 
 - **false**: not selected.
 
@@ -276,13 +270,13 @@ Column() {
 
 The [accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13) attribute is used to indicate whether a component (for example, a single-select list or tab) is selected in single-select scenarios. It applies to scenarios requiring differentiation of "current selected items" (for example, single-select groups and navigation menus) and supports the following values:
 
-- **undefined** (default): automatically determined by the system.
+- **undefined** (default): the selected state is determined by the component itself.
 
 - **false**: not selected.
 
 - **true**: currently selected.
 
-Here is an example using the **Column** component to let the system determine its selection state when single-select is supported:
+Here is an example using the **Column** component to let the component determine its selection state when single-select is supported:
 
 <!-- @[accessibility_selected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
@@ -307,13 +301,13 @@ In ArkUI accessibility attributes, both [accessibilityChecked](../reference/apis
 | Use cases| Binary or ternary components, such as check boxes and toggles.| Mutually exclusive selection scenarios, such as single-select lists and tabs.|
 | Semantic Purpose | Physical state of the control (for example, whether a switch is toggled on). | Currently selected item (for example, the selected item in a list or the currently active tab). |
 | State Persistence | Usually needs to be explicitly saved (for example, via form submission). | Usually needs to be explicitly managed (for example, updated when switching tabs or list items). |
-| Typical Components | Checkbox, Toggle.         | List, Tabs.        |
+| Typical Components | Checkbox, Toggle. | ListItem, TabContent. |
 
 ## Setting Accessibility Virtual Nodes
 
-The [accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11) attribute is used to add virtual accessibility nodes to the custom drawing component. The assistive tool reads the information about these nodes instead of the actual displayed content.
+The [accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11) attribute is used to add accessibility virtual child nodes to self-drawn components. Assistive tools read the information of these nodes instead of the actually displayed content. For example, content drawn by [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) cannot be directly recognized by accessibility services. You can set placeholder components whose position and size match the drawn area through virtual nodes, so that accessibility services can recognize the self-drawn information in the corresponding area.
 
-This example uses the **Column** component. After setting **accessibilityVirtualNode**, "Text 2" can be recognized, focused, and announced by assistive tools in accessibility mode, while the UI still displays "Text 1."
+This example uses the **Canvas** component to draw two buttons, **"Submit"** and **"Reset"**, on the canvas, and sets placeholder components whose position and size match the drawn area in **CustomBuilder**. After **accessibilityVirtualNode** is set, **"Submit"** and **"Reset"** can be recognized, focused, and announced by assistive tools in accessibility mode, while the UI still displays only the content drawn on the canvas.
 
 <!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
 
@@ -321,26 +315,52 @@ This example uses the **Column** component. After setting **accessibilityVirtual
 @Entry
 @Component
 struct VirtualNodeExample {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  // Accessibility virtual child node. The placeholder component is used only for layout, not for display, and its position and size are consistent with the area where the drawn content is located on the canvas.
   @Builder customAccessibilityNode() {
-    Text('Text 2')
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
+    Stack() {
+      Text('Submit')
+        .position({ x: 50, y: 100 })
+        .width(100)
+        .height(50)
+      Text('Reset')
+        .position({ x: 200, y: 100 })
+        .width(100)
+        .height(50)
+    }
+    .width('100%')
+    .height('100%')
   }
 
   build() {
     Column() {
-      Text('Text 1')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
+      Canvas(this.context)
+        .width(350)
+        .height(300)
+        .onReady(() => {
+          // Draw the "Submit" button. The drawn content cannot be directly recognized by accessibility services.
+          this.context.fillStyle = '#007DFF';
+          this.context.fillRect(50, 100, 100, 50);
+          this.context.fillStyle = '#FFFFFF';
+          this.context.font = '30px sans-serif';
+          this.context.fillText('Submit', 70, 132);
+          // Draw the "Reset" button.
+          this.context.fillStyle = '#007DFF';
+          this.context.fillRect(200, 100, 100, 50);
+          this.context.fillStyle = '#FFFFFF';
+          this.context.fillText('Reset', 220, 132);
+        })
+        .accessibilityVirtualNode(this.customAccessibilityNode)
     }
-    .accessibilityVirtualNode(this.customAccessibilityNode)
   }
 }
 ```
 
 ## Recommendations
 
-- Priority control
+- Importance control
 
   Use **accessibilityLevel** to ensure key operations are recognizable.
 
@@ -356,7 +376,7 @@ struct VirtualNodeExample {
 
 This example demonstrates how to use **accessibilityText** and **accessibilityDescription** to customize the content announced by screen readers.
 
-Specifically, for the accessibility text content of this component, when the component has both a text attribute and an accessibility text attribute, only the accessibility text content is announced when the component is focused.
+If a component has both a text attribute and an accessibility text attribute, only the accessibility text content is announced when the component is focused (the system still supplements the component type and operation hint).
 
 <!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 

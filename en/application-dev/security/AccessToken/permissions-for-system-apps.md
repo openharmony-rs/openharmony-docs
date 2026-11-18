@@ -3954,6 +3954,20 @@ Allows a system service or system application to use the **instantshare** privat
 
 **Valid since**: 11
 
+## ohos.permission.ACCESS_INSTANTSHARE_RECOMMEND_DATA
+
+Allows an application to connect to a ServiceExtensionAbility that provides smart recommendation sharing data and obtain the shared data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | phones | TVs | tablets
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.ACCESS_MCP_AUTHORIZATION
 
 Allows the MCP host application to perform user account authorization and login for its sub-applications.
@@ -9875,6 +9889,34 @@ Allows an application to mount the specified file directory to the sandbox direc
 
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.MMA_OCCUPANT
+ 
+Allows an in-vehicle application to obtain occupant status, including seat occupancy and occupant types.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_CARSTATUS
+ 
+Allows an in-vehicle application to obtain the real-time status of vehicle components.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.MANAGE_CURSOR_STYLE
 
 Allows an application to manage mouse cursor styles.
@@ -9888,3 +9930,19 @@ Allows an application to manage mouse cursor styles.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.1.0
+
+## ohos.permission.MANAGE_DAEMON_SERVICE
+ 
+Allows a system application to manage daemon services.
+
+With this permission, the system application can query daemon service information and set their enablement status.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0

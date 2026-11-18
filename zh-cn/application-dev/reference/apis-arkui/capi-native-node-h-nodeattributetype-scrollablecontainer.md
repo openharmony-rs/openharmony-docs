@@ -775,7 +775,7 @@ NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD = 1002031
 
 | 参数项        | 描述                                                         |
 | ------------- | ------------------------------------------------------------ |
-| .value[0].i32 | 是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。默认值：1。 |
+| .value[0].i32 | 是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。默认值：0。 |
 
 **返回：**
 
@@ -2398,8 +2398,14 @@ NODE_GRID_SCROLL_TO_INDEX = 1013014
 ```
 
 滑动到指定index。<br>
-开启动效时，会对经过的所有子组件进行加载和布局计算，当大量加载子组件时会导致性能问题。<br>
+开启动效时，会对经过的所有子组件进行加载和布局计算，当大量加载子组件时会导致性能问题。从API版本26.1.0开始，可通过.value[4]?.i32设置快速滚动模式，减少中间子组件的创建或测量开销。<br>
 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+> **说明：**
+>
+> - 快速滚动模式不改变目标索引、对齐方式和额外偏移量的含义；未开启动效时，仍按原有方式跳转。
+> - 使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，如果目标项或中间项的跨行、跨列信息尚未确定，需先通过NODE_GRID_LAYOUT_OPTIONS配置完整、准确的跨度信息；该信息应覆盖影响目标位置的所有跨行跨列项，不能只提供目标项。缺少该信息时不保证滚动到目标位置，也不会自动降级为其他模式。
+> - 使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时，可按需创建中间GridItem以确认其跨行或跨列信息。
 
 **起始版本：** 23
 
@@ -2412,6 +2418,7 @@ NODE_GRID_SCROLL_TO_INDEX = 1013014
 | .value[1]?.i32 | 设置滑动到目标元素时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的目标元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)。默认值：ARKUI_SCROLL_ALIGNMENT_AUTO。 |
 | .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：vp。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。 |
+| .value[4]?.i32 | 快速滚动模式。参数类型为[OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode)。仅当.value[1]?.i32为1（开启动效）时生效。<br/>设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时跳过中间子组件的测量；设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时跳过中间子组件的创建和测量。<br/>默认值为OH_ARKUI_FAST_SCROLL_MODE_NONE，与不设置此参数时的行为相同。<br/>取值范围为0、1、2。传入其他值时按OH_ARKUI_FAST_SCROLL_MODE_NONE处理。此时不启用快速滚动优化，其余滚动参数仍按原有规则生效。该参数从API版本26.1.0开始支持。 |
 
 ## NODE_GRID_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING
 

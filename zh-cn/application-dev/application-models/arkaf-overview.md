@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍方舟智能开发框架ArkAF的概念、架构与工作流程，说明意图框架、Skill框架和端侧A2A框架三种能力开放机制。"
+keywords: [ArkAF, 方舟智能开发框架, 意图框架, Skill框架, 端侧A2A框架, 系统智能体, 能力开放]
+doctype: guide
+status: active
+---
 # 方舟智能开发框架概述
 
 <!--Kit: Ability Kit-->

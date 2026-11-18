@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=764c173d55ee046731be114ef2b885ad6cab525a translatedAt=2026-09-29T11:02:49.121Z pushedAt=2026-09-30T06:46:26.447Z -->
+<!-- md-trans-meta sourceCommit=385a54ad29cdee10d50937e17d1ef950d096066d translatedAt=2026-11-16T01:37:57.541Z pushedAt=2026-11-16T13:07:19.737Z nl=1 -->
 
 ## Overview
 
@@ -41,7 +41,7 @@ Different Bluetooth modules provide APIs applicable to different scenarios, help
   Establishes connections between Bluetooth devices and enables hands-free calls over the Hands-Free Profile (HFP), supporting functions such as two-way voice call and control. For details, see [@ohos.bluetooth.hfp](../reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md).
 
 - **HID module**<br>
-  Implements communication, wireless control, and data transmission between Bluetooth devices over Human Interface Device Profile (HID). For example, this module enables low-latency bidirectional communication between devices such as keyboards, mouse devices, and gamepads and hosts (such as phones, tablets, and PCs). For details, see [@ohos.bluetooth.hid](../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md).
+  Implements communication, wireless control, and data transmission between Bluetooth devices over Human Interface Device Profile (HID). For example, this module enables low-latency bidirectional communication between devices such as keyboards, mice, and gamepads and hosts (such as phones, tablets, and PCs). For details, see [@ohos.bluetooth.hid](../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md).
 
 - **PAN module**<br>
   Implements network sharing between devices over Personal Area Network (PAN). For example, this module supports Internet sharing between a phone and a PC. For details, see [@ohos.bluetooth.pan](../reference/apis-connectivity-kit/js-apis-bluetooth-pan.md).
