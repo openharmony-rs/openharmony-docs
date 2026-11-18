@@ -154,25 +154,25 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 字段含义详细说明：
 
-| 字段 | 含义 | 取值说明 |
-|------|------------|---|
-| WindowName | 窗口名称 | 应用自定义的窗口名称。如note0：表示为备忘录应用窗口；SystemUi_StatusBar：表示为系统状态栏窗口。 |
-| DisplayId | 显示设备ID | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕信息。 |
-| WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。 |
-| Pid | 进程ID | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。 |
-| Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；1000+：表示为应用子窗口（1001：表示为普通应用子窗）；2000+：表示为系统窗口。该值是系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同。 |
-| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
-| Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
-| Orientation | 窗口方向 | 窗口方向标识值。当前该字段为预留字段，无实际意义。 |
-| IsStartingWindow | 是否显示启动页 | 执行命令时当前窗口显示的内容。true：表示当前窗口显示的是[应用启动页](launch-page-overview.md)；false：表示当前窗口显示的是正常应用窗口内容。 |
-| FirstFrameCallbackCalled | 首帧回调状态 | 0：表示首帧回调未返回；1：表示首帧回调已返回。 |
-| VisibilityState | 可见性状态 | 窗口可见性。0：表示为窗口可见；1：表示为窗口隐藏；2：表示为窗口部分可见。 |
-| Focusable | 是否可获焦 | true：表示窗口可以获焦；false：表示窗口不可获焦。 |
-| DecoStatus | 装饰状态 | true：表示窗口装饰已启用（有标题栏等）；false：表示窗口无装饰。 |
-| IsPrivacyMode | 是否隐私模式 | 窗口隐私模式。true：表示为隐私窗口；false：表示为正常窗口。隐私窗口在不同设备上的截屏表现不同，详见[隐私模式](./screenshot-and-privacy-mode.md#规格表现)。 |
+| 字段 | 含义         | 取值说明                                                                                                                                |
+|------|------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| WindowName | 窗口名称       | 应用自定义的窗口名称。如note0：表示为备忘录应用窗口；SystemUi_StatusBar：表示为系统状态栏窗口。                                                                         |
+| DisplayId | 显示设备ID     | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕信息。   |
+| WinId | 窗口唯一标识符    | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。                                                                                                       |
+| Pid | 进程ID       | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。                                                                                                      |
+| Type | 窗口类型       | 窗口类型标识。1：表示为应用主窗口；1000+：表示为应用子窗口（1001：表示为普通应用子窗）；2000+：表示为系统窗口。该值是系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同。 |
+| Mode | 窗口模式       | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
+| Flag | 状态标志位      | 状态标识值。当前该字段为预留字段，无实际意义。                                                                                                             |
+| Orientation | 窗口方向       | 窗口方向标识值。当前该字段为预留字段，无实际意义。                                                                                                           |
+| IsStartingWindow | 是否显示启动页    | 执行命令时当前窗口显示的内容。true：表示当前窗口显示的是[应用启动页](launch-page-overview.md)；false：表示当前窗口显示的是正常应用窗口内容。 |
+| FirstFrameCallbackCalled | 首帧回调状态     | 0：表示首帧回调未返回；1：表示首帧回调已返回。                                                                                                            |
+| VisibilityState | 可见性状态      | 窗口可见性。0：表示为窗口可见；1：表示为窗口隐藏；2：表示为窗口部分可见。                                                                                              |
+| Focusable | 是否可获焦      | true：表示窗口可以获焦；false：表示窗口不可获焦。                                                                                                       |
+| DecoStatus | 装饰状态       | true：表示窗口装饰已启用（有标题栏等）；false：表示窗口无装饰。                                                                                                |
+| IsPrivacyMode | 是否隐私模式     | 窗口隐私模式。true：表示为隐私窗口；false：表示为正常窗口。隐私窗口在不同设备上的截屏表现不同，详见[隐私模式](./screenshot-and-privacy-mode.md#规格表现)。                                |
 | isSnapshotSkip | 截屏时是否跳过该窗口 | 标识截屏时是否跳过该窗口。0：表示截屏时不跳过该窗口；1：表示截屏时跳过该窗口。 |
-| WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
-| TouchHotAreas | 触摸热区 | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。 |
+| WindowRect | 窗口矩形区域     | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。                                              |
+| TouchHotAreas | 触摸热区       | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。                                                                                      |
 <!--RP1End-->
 
 常见问题定位：
@@ -321,18 +321,18 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 字段含义：
 
-| 字段 | 含义 | 说明 |
-|------|------|---|
-| `persistentId` | 窗口持久化ID | 窗口的唯一标识，用于定位具体窗口 |
-| `windowName` | 窗口名称 | 应用设置的窗口名称 |
-| `windowType` | 窗口类型 | 窗口类型值（如应用主窗口、子窗口等） |
-| `windowState` | 窗口状态 | 窗口当前状态（显示、隐藏等） |
-| `curWidth` | 当前宽度（vp） | 窗口当前实际宽度，单位为vp |
-| `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp |
-| `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小宽度。 |
-| `minHeight` | 最小高度限制（vp） | 系统规定的最小高度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。 |
+| 字段 | 含义 | 说明                                                                                                                                                                                                                                     |
+|------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `persistentId` | 窗口持久化ID | 窗口的唯一标识，用于定位具体窗口                                                                                                                                                                                                                       |
+| `windowName` | 窗口名称 | 应用设置的窗口名称                                                                                                                                                                                                                              |
+| `windowType` | 窗口类型 | 窗口类型值（如应用主窗口、子窗口等）                                                                                                                                                                                                                     |
+| `windowState` | 窗口状态 | 窗口当前状态（显示、隐藏等）                                                                                                                                                                                                                         |
+| `curWidth` | 当前宽度（vp） | 窗口当前实际宽度，单位为vp                                                                                                                                                                                                                         |
+| `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp                                                                                                                                                                                                                         |
+| `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小宽度。     |
+| `minHeight` | 最小高度限制（vp） | 系统规定的最小高度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。     |
 | `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最大尺寸阈值。 |
-| `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点 |
+| `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点                                                                                                                                                                                                             |
 
 **检测逻辑**
 
