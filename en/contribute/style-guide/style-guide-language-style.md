@@ -73,7 +73,7 @@
 
 [Rule] Use writing templates to ensure completeness:
 
-- OpenHarmony documentation follows a structured, modular approach. The [OpenHarmony Documentation Templates](../template) provide content templates for each information type based on reader needs. Choose the template that best matches your content to ensure complete coverage.
+- OpenHarmony documentation follows a structured, modular approach. The [OpenHarmony Documentation Templates](https://gitcode.com/openharmony/docs/tree/master/en/contribute/template) provide content templates for each information type based on reader needs. Choose the template that best matches your content to ensure complete coverage.
 
 - Do not delete sections marked as mandatory in a template.
 
@@ -183,7 +183,7 @@ Use the following common words consistently in OpenHarmony documentation.
 | information disclosure; data exposure | **Definition**: Data or information crosses an established security boundary into an unauthorized environment.<br>**Applies to**: User information, keys and credentials, sensitive log fields, and excessive fields returned by APIs.<br>**Examples**: information disclosure; data exposure. |
 | liquid or signal leakage | **Physical cases**: Physical liquids or signals cross an established security boundary into an unauthorized environment. These cases are separate from the information-security definition above. |
 
-[Rule] Keep the structure consistent within a document and across similar information. A consistent structure helps readers understand and find information. Choose the template that best matches your content from the [OpenHarmony Documentation Templates](../template) and follow its instructions.
+[Rule] Keep the structure consistent within a document and across similar information. A consistent structure helps readers understand and find information. Choose the template that best matches your content from the [OpenHarmony Documentation Templates](https://gitcode.com/openharmony/docs/tree/master/en/contribute/template) and follow its instructions.
 
 [Rule] Use consistent sentence patterns. This gives technical documentation a consistent style and follows readers' established expectations, making it easier to understand. For example, consistently use imperative sentences to describe actions.
 

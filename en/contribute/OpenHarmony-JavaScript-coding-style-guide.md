@@ -294,13 +294,13 @@ let pointY = 0;
 
 **Note:** Spaces reduce code density and increase code readability. The general rules are as follows:
 
-1. Add a spaces after keywords `if`、`elseif`、`else`、`switch`、`while`、`for`.
+1. Add a spaces after keywords `if`, `elseif`, `else`, `switch`, `while`, `for`.
 2. No space is added between the parentheses.
 3. Spaces must be added on both sides of the braces, except for simple scenarios such as `{}`.
 4. No space is added between multiple parentheses.
 5. No space is added after unary operators (`&`, `*`, `+`, `-`, `!`,etc.).
-6. Add a space on the left and right side of binary operators `=`、`+`、`-`、`*`、`/`、`%`、`|`、`&`、`||`、`&&`、`<`、`>`、`<=`、`>=`、`==`、`!=`、`===`、`!==`, etc.)
-7. Add a space on the left and right side of ternary operator （`?: `）.
+6. Add a space on the left and right side of binary operators `=`, `+`, `-`, `*`, `/`, `%`, `|`, `&`, `||`, `&&`, `<`, `>`, `<`, `>`, `==`, `!=`, `===`, `!==`, etc.
+7. Add a space on the left and right side of ternary operator `?: `.
 8. No space is added between the preceded or post-decrease (`++`, `--`) and variables.
 9. Add a space before a comma (`, `).
 10. Add a space after `//` in a single line.

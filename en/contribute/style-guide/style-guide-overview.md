@@ -8,7 +8,7 @@ This guide provides requirements and recommendations for the language style, doc
 Before writing OpenHarmony documentation, read this guide and follow the applicable requirements and recommendations.
 
 
-Also, choose the template that best matches your content from the [OpenHarmony Documentation Templates](../template) and follow its instructions. The templates provide guidance for specific document types and help you write more efficiently.
+Also, choose the template that best matches your content from the [OpenHarmony Documentation Templates](https://gitcode.com/openharmony/docs/tree/master/en/contribute/template) and follow its instructions. The templates provide guidance for specific document types and help you write more efficiently.
 
 
 This guide is updated regularly. Suggestions for improvement are welcome.

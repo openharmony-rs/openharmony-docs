@@ -50,7 +50,7 @@
 
 ## Documentation Structure (Application Development)
 
-Application development documentation: [Application Development](../application-dev/Readme-EN.md)
+Application development documentation: [Application Development](https://gitcode.com/openharmony/docs/tree/master/en/application-dev)
 
 Organize developer guides by functionality in folders directly under application-dev. For example, media contains media developer guides, and usb contains USB service developer guides. Store all API references in application/reference/apis.
 

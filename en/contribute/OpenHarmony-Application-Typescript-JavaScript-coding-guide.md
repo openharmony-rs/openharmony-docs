@@ -1016,3 +1016,5 @@ For details, see [@typescript-eslint/no-unsafe-return](https://github.com/typesc
 1. [JavaScript Coding Style Guide](OpenHarmony-JavaScript-coding-style-guide.md)
 1. [ESLint Rules](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules)
 1. High Performance JavaScript
+
+<!--no_check-->

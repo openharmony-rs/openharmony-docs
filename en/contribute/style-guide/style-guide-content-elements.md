@@ -341,9 +341,9 @@ See [Sample Code Style](style-guide-example-code-style.md).
 
 | Network Class | Address Range |
 | -------- | -------- |
-| A | 10.0.0.0～10.255.255.255 |
-| B | 172.16.0.0～172.31.255.255 |
-| C | 192.168.0.0～192.168.255.255 |
+| A | 10.0.0.0 to 10.255.255.255 |
+| B | 172.16.0.0 to 172.31.255.255 |
+| C | 192.168.0.0 to 192.168.255.255 |
 
 [Rule] When describing specific network topology or routing information, provide both the IP address and subnet mask.
 
