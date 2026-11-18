@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍窗口画布及CPU、GPU离屏画布的创建方法，以及通过XComponent显示绘制结果的流程。"
+keywords: [Canvas, NativeWindow, CPU后端Canvas, GPU后端Canvas, Bitmap, PixelMap, EGL]
+doctype: guide
+status: active
+---
+
 # 画布的获取与绘制结果的显示（C/C++）
 
 <!--Kit: ArkGraphics 2D-->

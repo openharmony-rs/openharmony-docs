@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍画布裁剪、矩阵变换及状态保存与恢复的方法，用于控制绘制区域和图形位置。"
+keywords: [Canvas, 画布裁剪, 矩阵变换, 平移, 缩放, 旋转, 倾斜变换]
+doctype: guide
+status: active
+---
+
 # 画布操作及状态处理（ArkTS）
 
 <!--Kit: ArkGraphics 2D-->

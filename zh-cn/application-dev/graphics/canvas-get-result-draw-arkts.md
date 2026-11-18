@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍通过RenderNode获取画布和基于PixelMap创建离屏画布的方法，以及如何将绘制结果显示到屏幕上。"
+keywords: [Canvas, RenderNode, PixelMap, 离屏绘制, 上屏显示, 自定义绘制]
+doctype: guide
+status: active
+---
+
 # 画布的获取与绘制结果的显示（ArkTS）
 
 <!--Kit: ArkGraphics 2D-->
