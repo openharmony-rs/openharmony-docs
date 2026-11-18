@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍字块和单字的绘制方法，并说明如何实现文字描边与渐变效果、使用主题字体及字体回退功能。"
+keywords: [TextBlob, 文字描边, 文字渐变, 主题字体, 单字绘制, 字体特征, 字体回退, 字形转换, 文本宽度测量]
+doctype: guide
+status: active
+---
+
 # 字块绘制（ArkTS）
 
 <!--Kit: ArkGraphics 2D-->
