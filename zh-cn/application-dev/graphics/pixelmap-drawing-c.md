@@ -90,6 +90,10 @@
 
    其中采样选项对象（OH_Drawing_SamplingOptions）表示了从原始像素数据（即Bitmap）中采样以生成新的像素值的具体方式，具体可见[drawing_sampling_options.h](../reference/apis-arkgraphics2d/capi-drawing-sampling-options-h.md)。
 
+   > **注意：**
+   >
+   > 通过Canvas相关接口绘制PixelMap时，仅支持像素格式为PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_ALPHA_8和PIXEL_FORMAT_RGBA_F16的PixelMap。
+
    <!-- @[ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
    ``` C++

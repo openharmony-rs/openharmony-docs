@@ -177,6 +177,10 @@
 
    drawImage()函数接受4个参数，第一个就是上文中创建的PixelMap，第二个是绘制图片位置的左上角x轴坐标，第三个是左上角y轴坐标，第四个为采样选项对象，默认为不使用任何参数构造的原始采样选项对象。
 
+   > **注意：**
+   >
+   > 通过Canvas相关接口绘制PixelMap时，仅支持像素格式为RGB_565、RGBA_8888、BGRA_8888、ALPHA_8和RGBA_F16的PixelMap。
+
    ArkTS-Dyn示例：
 
    <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
