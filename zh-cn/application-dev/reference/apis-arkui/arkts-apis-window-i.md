@@ -160,6 +160,31 @@
 >
 >  ![avoidArea](figures/avoidArea.png)
 
+## AvoidAreaInsets
+
+窗口的避让区边衬。
+
+避让区边衬表示由于[避让区](#avoidarea7)的存在，窗口内容在上下左右四个方向上需要避让的距离。
+
+> **说明：**
+>
+> 避让区边衬的计算不包含[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称   | 类型 | 只读 | 可选 | 说明                         |
+| ------ | -------- | ---- | ---- | ---------------------------- |
+| top    | number   | 否   | 否   | 窗口顶部需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+| left   | number   | 否   | 否   | 窗口左侧需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+| right  | number   | 否   | 否   | 窗口右侧需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+| bottom | number   | 否   | 否   | 窗口底部需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
 以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时需关注。
