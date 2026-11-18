@@ -131,7 +131,7 @@
        this.mediaLibSavePhotoSingle(context, photo.main)
      });
    }
-   
+
    mediaLibSavePhotoSingle(context: Context, imageObj: image.Image) {
      imageObj.getComponent(image.ComponentType.JPEG, async (errCode: BusinessError, component: image.Component) => {
        if (errCode || component === undefined) {
