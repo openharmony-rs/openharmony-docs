@@ -106,6 +106,6 @@
   - [slot](js-components-custom-slot.md)
   - [Lifecycle Definition](js-components-custom-lifecycle.md)
 - Global APIs<!--js-full-global-interface-->
-  - [Crown Rotation Event Monitor](js-components-common-monitorcrownevents.md)
+  - [Crown Rotation Event Monitoring](js-components-common-monitorcrownevents.md)
 - [Dynamic Component Creation](js-components-create-elements.md)
 - [Data Type Attributes](js-appendix-types.md)

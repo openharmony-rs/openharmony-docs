@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=02f1ea87b715fc9e1f4d61a21cdaf2d807cb5a11 translatedAt=2026-11-12T04:24:41.074Z pushedAt=2026-11-17T11:46:47.643Z nl=1 -->
+<!-- md-trans-meta sourceCommit=02f1ea87b715fc9e1f4d61a21cdaf2d807cb5a11 translatedAt=2026-11-12T04:24:41.074Z pushedAt=2026-11-18T07:14:47.436Z nl=1 -->
 
 >  **NOTE**
 >  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -79,7 +79,7 @@ Creates an animation effect on the component by passing in keyframe styles and a
 | --------- | ------- | ---------------------------------------- |
 | finished  | boolean | Read-only attribute, which indicates whether the animation playback is complete. The value **true** indicates the animation playback is complete, and **false** indicates the opposite.                      |
 | pending   | boolean | Read-only attribute, which indicates whether the animation is waiting for the completion of other asynchronous operations (for example, start an animation with a delay). The value **true** indicates the animation is waiting, and **false** indicates the opposite. |
-| playState | string  | Readable and writable. The animation execution states are as follows:<br>-&nbsp;**idle**: not executed, including finished or not started.<br>-&nbsp;**running**: the animation is running.<br>-&nbsp;**paused**: the animation playback is paused.<br>-&nbsp;**finished**: the animation playback is complete. |
+| playState | string  | Read-write attribute. The animation execution states are as follows:<br>-&nbsp;**idle**: not executed, including finished or not started.<br>-&nbsp;**running**: the animation is running.<br>-&nbsp;**paused**: the animation playback is paused.<br>-&nbsp;**finished**: the animation playback is complete. |
 | startTime | number  | Read-write attribute, which indicates the animation start time. This attribute is similar to **delay** in the **Options** attribute.  |
 
   The **animation** methods are as follows.
