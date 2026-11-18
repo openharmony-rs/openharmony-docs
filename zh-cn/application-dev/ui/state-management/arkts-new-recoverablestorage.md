@@ -6,23 +6,21 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架在应用被资源管控终止或异常退出场景下的数据恢复能力，开发者可以使用RecoverableStorage自动保存与恢复状态变量。
+为了增强状态管理框架在应用被资源管控终止或异常退出场景下的数据恢复能力，开发者可以使用[RecoverableStorage](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)自动保存与恢复状态变量。
 
-RecoverableStorage是应用程序中的可选单例对象。此对象的作用是：当应用被系统以资源管控方式终止（如低内存）或因JS_ERROR、APP_FREEZE异常退出时，自动保存所声明的状态变量的当前值；应用被系统重新拉起后，自动恢复这些值，实现UI无感恢复。
-
-与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用快照模型：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写入磁盘。界面无变化时不产生任何磁盘写入，恢复数据为临时数据（上滑删除应用即清除），适合保存页面草稿、滚动位置等轻量UI状态。
-
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)。
+RecoverableStorage是应用程序中的可选单例对象。此对象的作用是：当应用被系统以资源管控方式终止（如低内存）或因JS_ERROR、APP_FREEZE异常退出时，自动保存所声明的状态变量的当前值；应用被系统重新拉起后，配合页面栈和路由栈的恢复功能，同时读取此前保存的状态变量值，实现UI无感恢复。
 
 >**说明：**
 >
 >RecoverableStorage从API版本26.1.0开始支持。
+>
+>从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 ## 概述
 
 RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect-1)声明变量后，系统在存盘时机自动提取当前值；应用被系统恢复重启（系统携带恢复参数自动拉起，区别于手动打开）后，再次执行connect即可读回保存的值。
 
-与PersistenceV2的差异如下：
+与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用快照模型：仅在系统存盘时机（应用退后台时预备存档/异常发生时存档）一次性提取当前值，而非每次变量变更即写入磁盘。他们的差异如下：
 
 | 维度 | RecoverableStorage（快照） | PersistenceV2（实时持久化） |
 |------|---------------------------|----------------------|
@@ -32,6 +30,10 @@ RecoverableStorage是应用启动时创建的单例，提供资源管控终止/�
 | 适用场景 | 页面草稿、滚动位置等轻量UI状态 | 用户设置、历史记录等持久数据 |
 
 ## 使用前提
+
+在使能应用的恢复能力后，才可正常使用RecoverableStorage的恢复功能，否则RecoverableStorage中的数据将只停留在运行时内存中，无保存恢复能力。
+
+根据场景不同，可以通过以下方式使能应用恢复：
 
 ### 使能资源管控终止恢复
 
@@ -101,7 +103,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 1. 仅支持对象类型（`T extends object`），不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md)。类的成员属性支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
 
-2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，并通过`notifyOnError`告知开发者，不会导致应用崩溃。
+2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，系统侧将输出错误日志提示开发者。若connect时传入了`notifyOnError`，也会通过`notifyOnError`上报错误信息，不会导致应用崩溃。
 
 3. 须在自定义组件内调用，[component](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)参数传`this`（组件实例）。运行时校验component有效性，持有有效组件实例时在组件外调用亦可连接成功。
 
@@ -109,7 +111,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 5. 不支持[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等非内置类型。
 
-6. 对象之间相互引用（循环引用）时，仅当环上每个嵌套类字段在声明时初始化（如`peer: Node = new Node()`）或使用[\@Type](./arkts-new-observedV2-and-trace.md)标注类型后才能恢复；初始化为`null`且未标注\@Type的字段无法确定类型，该变量恢复时回退为默认值，并通过notifyOnError上报。
+6. 对象之间相互引用（循环引用）时，仅当环上每个嵌套类字段在声明时初始化（如`peer: Node = new Node()`）或使用[\@Type](./arkts-new-observedV2-and-trace.md)标注类型后才能恢复；初始化为`null`且未标注\@Type的字段无法确定类型，该变量恢复时回退为默认值，并在connect时传入`notifyOnError`的情况下通过`notifyOnError`上报。
 
 7. 典型用法为修改所连接对象的属性。对状态变量整体重新赋值（如`this.draft = new Draft()`）会使已保存的引用失效，此后的修改不被跟踪。
 

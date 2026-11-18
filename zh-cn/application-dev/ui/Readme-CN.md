@@ -75,13 +75,13 @@
       - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: 应用全局UI状态存储](state-management/arkts-new-appstoragev2.md)
         - [PersistenceV2: 持久化存储UI状态](state-management/arkts-new-persistencev2.md)
-        - [RecoverableStorage: 可恢复的UI状态存储](state-management/arkts-new-recoverablestorage.md)
     - 辅助接口<!--arkts-state-management-uiutils-->
       - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
       - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
       - [canBeObserved接口：判断对象是否可被观察](state-management/arkts-new-canBeObserved.md)
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
+      - [RecoverableStorage: 可恢复的UI状态存储](state-management/arkts-new-recoverablestorage.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
       - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
       - [!!语法：双向绑定](state-management/arkts-new-binding.md)
