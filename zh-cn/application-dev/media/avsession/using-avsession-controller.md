@@ -287,4 +287,4 @@ status: active
 
 - [本地媒体会话概述](local-avsession-overview.md)
 - [媒体会话提供方(ArkTS)](using-avsession-developer.md)
-- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
+- [AVSession Kit指南配套示例代码](avsession-kit-samples.md)
