@@ -257,7 +257,7 @@ uri是媒体库资产的唯一标识符。mediatool使用uri来判断需要操�
 
 可使用以下方式获取uri：
 
-* mediatool query 加上 -u 的选项可以返回对应媒体资产的uri。需要输入对应资产的显示名（在图库中展示的名字带后缀名）。
+* mediatool query加上-u的选项可以返回对应媒体资产的uri。需要输入对应资产的显示名（在图库中展示的名字带后缀名）。
 
 媒体库uri可以用于mediatool recv命令导出特定媒体库资产，也可以用于mediatool delete删除特定媒体库资产。
 
