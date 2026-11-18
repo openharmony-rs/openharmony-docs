@@ -1,20 +1,20 @@
 # Universal Attributes
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:20.136Z pushedAt=2026-06-24T01:23:54.412Z -->
+<!-- md-trans-meta sourceCommit=3594f4f7911eac49a1432a74a842b11a7e25b680 translatedAt=2026-11-12T04:45:53.930Z pushedAt=2026-11-18T06:48:08.591Z nl=1 -->
 
 >  **NOTE**
 >
 >  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
+
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| fill | &lt;color&gt; | black | No| Fill color of an element using the shorthand attribute. Attribute animations are supported.|
+| fill | &lt;color&gt; | black | No | Fill color of an element. Attribute animations are supported. |
 | fill-opacity | number | 1 | No| Opacity of a fill color. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
 | fill-rule | nonzero&nbsp;\|&nbsp;evenodd | nonzero | No | Fill rule.<br>**nonzero**: non-zero rule.<br>**evenodd**: even-odd rule. |
 | opacity | number | 1 | No| Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
