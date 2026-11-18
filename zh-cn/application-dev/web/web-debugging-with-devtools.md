@@ -27,7 +27,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 
    1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
-      <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
+      <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->  
       
       ``` TypeScript
       import { webview } from '@kit.ArkWeb';
@@ -44,7 +44,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
             // 配置Web开启无线调试模式，指定TCP Socket的端口。
             webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         }
       

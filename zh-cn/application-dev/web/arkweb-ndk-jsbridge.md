@@ -406,7 +406,7 @@ status: active
   ```
 
 * Node-API层代码
-  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->  
+  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->
   
   ``` C++
   // entry/src/main/cpp/hello.cpp
@@ -445,7 +445,7 @@ status: active
       }
   }
   
-  // 示例代码 ，注册了1个对象，2个方法
+  // 示例代码，注册了1个对象，2个方法
   static ArkWeb_JavaScriptValuePtr ProxyMethod1(
       const char *webTag, const ArkWeb_JavaScriptBridgeData *dataArray, size_t arraySize, void *userData)
   {
