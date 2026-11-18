@@ -20,7 +20,7 @@ RecoverableStorage是应用程序中的可选单例对象。此对象的作用�
 
 RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect-1)声明变量后，系统在存盘时机自动提取当前值；应用被系统恢复重启（系统携带恢复参数自动拉起，区别于手动打开）后，再次执行connect即可读回保存的值。
 
-与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用快照模型：仅在系统存盘时机（应用退后台时预备存档/异常发生时存档）一次性提取当前值，而非每次变量变更即写入磁盘。他们的差异如下：
+与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用快照模型：仅在系统存盘时机（应用退后台时预备存档/异常发生时存档）一次性提取当前值，而非每次变量变更即写入磁盘。它们的差异如下：
 
 | 维度 | RecoverableStorage（快照） | PersistenceV2（实时持久化） |
 |------|---------------------------|----------------------|
