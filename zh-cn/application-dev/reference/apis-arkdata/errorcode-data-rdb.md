@@ -18,11 +18,17 @@
 
 **错误信息**
 
-Inner error.
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
+
+  Inner error.
+
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
+
+  Inner error. Possible causes: 1. The number of bind args is incorrect; 2. Invalid args: table is empty or row is empty; 3. No transaction in session for rollback; 4. Failed to rename backup file; 5. Other inner errors.
 
 **错误描述**
 
-内部错误。
+内部错误。针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息中会携带具体错误原因，便于定位问题根因。
 
 **可能原因**
 
@@ -34,6 +40,7 @@ Inner error.
 6. 根密钥生成失败。HUKS生成根密钥失败，无法进一步生成加密数据库的密钥，因此调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等开库接口打开加密数据库会失败。
 7. 远程查询时，没有查询到数据。在对端数据库中不存在要查询的数据的情况下，调用[remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery)接口进行远程查询，获取到结果集后，再调用[goToFirstRow](arkts-apis-data-relationalStore-ResultSet.md#gotofirstrow)等接口获取数据会失败。
 8. 数据管理服务启动失败。在数据管理服务启动失败的情况下，无法设置分布式表，因此调用[setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables)等设置分布式表接口会失败。
+9. SQL绑定参数数量与占位符数量不匹配，调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)、[executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12)、[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)等接口执行SQL时会失败。
 
 **处理步骤**
 
@@ -60,7 +67,11 @@ Inner error.
    - 否：确保要查询的数据存在，再进行远程查询。
 8. 确认问题时间点附近，是否可搜索到关键日志：`Get distributed data manager failed`。
    - 是：数据管理服务启动失败，业务需要重试设置分布式表。
-   - 否：提供hilog系统日志，联系技术支撑人员定位。
+   - 否：转下一步。
+9. 排查业务代码中SQL语句的占位符数量与传入的绑定参数数量是否一致。
+   - 是：转下一步。
+   - 否：将占位符数量与绑定参数数量调整为一致后再执行SQL。
+10. 提供hilog系统日志，联系技术支撑人员定位。
 
 ## 14800001 无效的参数
 
@@ -216,11 +227,17 @@ The target instance is already closed.
 
 **错误信息**
 
-The database does not respond.
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
+
+  The database does not respond.
+
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
+
+  The database does not respond. database busy, dbName: {dbName}.
 
 **错误描述**
 
-数据库没有响应。
+数据库没有响应。针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息中会携带故障数据库名（不含绝对路径），便于定位是哪个数据库无响应。
 
 **可能原因**
 
@@ -575,11 +592,17 @@ SQLite：TEXT或BLOB超出大小限制。
 
 **错误信息**
 
-SQLite: Abort due to constraint violation.
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
+
+  SQLite: Abort due to constraint violation.
+
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
+
+  SQLite: Abort due to constraint violation. UNIQUE constraint failed: {tableName}.{columnName} database: {dbName} table: {tableName}.
 
 **错误描述**
 
-SQLite：由于违反约束而中止。
+SQLite：由于违反约束而中止。针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息中会携带约束冲突详情（表名、列名）和数据库名，便于定位冲突发生的具体位置。
 
 **可能原因**
 
@@ -594,7 +617,7 @@ SQLite：由于违反约束而中止。
 
 **处理步骤**
 
-1. 确认问题时间点附近，是否存在以`constraint failed`结尾的日志打印，该日志通常会指明具体的约束类型和涉及的表名、列名。
+1. 确认问题时间点附近，是否存在包含`constraint failed`的日志打印，该日志通常会指明具体的约束类型和涉及的表名、列名。
    - 是：根据日志中提示的约束类型，转对应步骤。
    - 否：转步骤2。
 2. 排查非空约束冲突：检查业务代码中[insert](arkts-apis-data-relationalStore-RdbStore.md#insert)或[update](arkts-apis-data-relationalStore-RdbStore.md#update)传入的数据，确认声明了NOT NULL的列是否被遗漏或赋值为NULL。
