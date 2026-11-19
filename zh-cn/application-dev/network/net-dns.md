@@ -87,6 +87,8 @@
            this.ipResult = JSON.stringify(data);
            hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
          });
+     }).catch((error: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `getDefaultNet error.: ${JSON.stringify(error)}`);
      });
    }
    ```
