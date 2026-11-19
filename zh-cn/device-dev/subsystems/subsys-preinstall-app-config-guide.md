@@ -69,7 +69,7 @@ hdc file recv /system/etc/app/install_list.json .
 
 ### 示例一
 
-```json
+```text
 /system/etc/app/uninstall_list.json
 {
     "uninstall_list" : ["/system/app/Hiworld"],  // 配置后，则Hiworld不会被安装
@@ -79,7 +79,7 @@ hdc file recv /system/etc/app/install_list.json .
 
 ### 示例二
 
-```json
+```text
 /system/etc/app/uninstall_list.json
 {
     "uninstall_list" : ["/system/app/Hiworld"],

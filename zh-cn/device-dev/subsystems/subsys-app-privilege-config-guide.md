@@ -33,7 +33,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 ### 示例
 
-```json
+```text
 {
     "version-name": "1.0.0",
     ...
@@ -78,7 +78,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 #### install_list_capability.json中配置
 
-```json
+```text
 {
     "install_list": [
         {
@@ -107,7 +107,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 1. 证书存放在[HarmonyAppProvision文件](../../application-dev/security/app-provision-structure.md)的distribution-certificate字段下，新建profile.cer文件，将证书的内容拷贝到profile.cer文件中。
 
-   ```json
+   ```text
    {
        ...
        "bundle-info": {
@@ -138,7 +138,9 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 3. 使用keytool工具，执行以下命令获取对应的证书指纹。
 
-   > 说明：keytool工具可以在DevEco Studio安装后的`\tools\openjdk\bin`目录中获取。
+   > **说明：**
+   >
+   > keytool工具可以在DevEco Studio安装后的`\tools\openjdk\bin`目录中获取。
 
    ```shell
    keytool -printcert -file profile.cer
@@ -158,7 +160,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 4. 将运行结果中的SHA256证书指纹去掉冒号后填入install_list_capability.json中的app_signature字段。
 
-    ```json
+    ```text
    {
        "install_list": [
             {
@@ -172,7 +174,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 #### install_list.json中配置
 
-```json
+```text
 {
      "install_list" : [
         {

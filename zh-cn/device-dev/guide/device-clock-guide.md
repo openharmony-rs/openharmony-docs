@@ -105,11 +105,11 @@
     ```js
     export default {
         timer: undefined,
-        //定义参数。
+        // 定义参数。
         data: {
-          hour: 0,   //定义小时。
-          minute: 0, //定义分钟。
-          second: 0  //定义秒。
+          hour: 0,   // 定义小时。
+          minute: 0, // 定义分钟。
+          second: 0  // 定义秒。
         },
         onInit () {
             this.updateTime();

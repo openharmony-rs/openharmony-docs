@@ -179,7 +179,7 @@ hpm init
 下方以bundle.json中定义为示例，以下示例的编译命令dist，采用hb编译框架描述。
 
   
-```json
+```text
 {
   "name": "@your/dist_name",
   "version": "2.2.0",
@@ -417,27 +417,27 @@ $ hpm install -g @scope/the_tool
 > - 在项目安装的Part，在执行hpm编译命令时可以通过引用环境变量DEP_SCOPE_bundle_name，例如：
 >     通过hpm i \@opensource/gn安装后，可以编辑bundle.json中的编译脚本，如下：
 >     
->   ```
->   "scripts": {
->       "build": "${DEP_OPENSOURCE_gn}/gn  --version"
->     },
+>   ```json5
+>    "scripts": {
+>    "build": "${DEP_OPENSOURCE_gn}/gn  --version"
+>    },
 >   ```
 > 
 >   然后就可以通过执行hpm build将调用gn的功能。
 > 
 > - 在全局安装的Part，可以通过设置系统环境变量，直接调用，或者hpm config set key value的方式，通过${key}/tool_name的方式引用，例如：
 >     
->   ```
->   hpm i -g @ohos/opensource/gn
->   hpm config BUILD_SYS_GN ~/.hpm/global/ohos_bundles/opensource/gn
+>   ```json5
+>    hpm i -g @ohos/opensource/gn
+>    hpm config BUILD_SYS_GN ~/.hpm/global/ohos_bundles/opensource/gn
 >   ```
 > 
 >     可以编辑bundle.json中的编译脚本，如下：
 >     
->   ```
->   "scripts": {
->       "build": "${BUILD_SYS_GN}/gn  --version"
->     },
+>   ```json5
+>    "scripts": {
+>    "build": "${BUILD_SYS_GN}/gn  --version"
+>    },
 >   ```
 > 
 >   然后就可以通过执行hpm build将调用gn的功能。

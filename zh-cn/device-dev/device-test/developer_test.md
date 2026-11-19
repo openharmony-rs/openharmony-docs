@@ -55,7 +55,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     0 upgraded, 0 newly installed, 0 to remove and 11 not upgraded.
     ```
 
-1. 安装setuptools插件，安装命令如下：
+3. 安装setuptools插件，安装命令如下：
     ```bash
     pip3 install setuptools
     ```
@@ -64,7 +64,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     Requirement already satisfied: setuptools in d:\programs\python37\lib\site-packages (41.2.0)
     ```
 
-1. 安装paramiko插件，安装命令如下：
+4. 安装paramiko插件，安装命令如下：
     ```bash
     pip3 install paramiko
     ```
@@ -74,7 +74,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     Successfully installed bcrypt-3.2.0 cffi-1.14.4 cryptography-3.3.1 paramiko-2.7.2 pycparser-2.20 pynacl-1.4.0
     ```
 
-1. 安装python的rsa插件，安装命令如下：
+5. 安装python的rsa插件，安装命令如下：
     ```bash
     pip3 install rsa
     ```
@@ -84,7 +84,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     Successfully installed pyasn1-0.4.8 rsa-4.7
     ```
 
-1. 安装串口插件pyserial，安装命令如下：
+6. 安装串口插件pyserial，安装命令如下：
     ```bash
     pip3 install pyserial
     ```
@@ -93,7 +93,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     Requirement already satisfied: pyserial in d:\programs\python37\lib\site-packages\pyserial-3.4-py3.7.egg (3.4)
     ```
 
-1. 如果设备仅支持串口输出测试结果，则需要安装NFS Server。
+7. 如果设备仅支持串口输出测试结果，则需要安装NFS Server。
 
     > **说明：**
     > 
@@ -113,7 +113,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     0 upgraded, 0 newly installed, 0 to remove and 11 not upgraded.
     ```
 
-1. 如果设备支持HDC连接，则需要安装HDC工具，安装流程请参考[HDC-OpenHarmony设备连接器](https://gitee.com/openharmony/developtools_hdc/blob/master/README_zh.md)。
+8. 如果设备支持HDC连接，则需要安装HDC工具，安装流程请参考[HDC-OpenHarmony设备连接器](https://gitee.com/openharmony/developtools_hdc/blob/master/README_zh.md)。
 
 
 ### 环境依赖检查
@@ -138,7 +138,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 
 
 - 单线程用例示例及编写步骤，以calculator_sub_test.cpp为例进行说明：
-    ```json5
+    ```text
     /*
      * Copyright (c) 2023 XXXX Device Co., Ltd.
      * Licensed under the Apache License, Version 2.0 (the "License");
@@ -274,10 +274,10 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
          */
         HWTEST_F(CalculatorSubTest, integer_sub_001, TestSize.Level1)
         {
-            //step 1:调用函数获取结果.
+            // step 1:调用函数获取结果.
             int actual = Sub(4，0)；
         
-            //Step 2:使用断言比较预期与实际结果.
+            // Step 2:使用断言比较预期与实际结果.
             EXPECT_EQ(4, actual);
         }
         ```
@@ -286,7 +286,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
         > @tc.require的取值必须以AR/SR或issue开头，如：issueI56WJ7。
 
 - 多线程用例示例及编写步骤，以base_object_test.cpp为例进行说明：
-    ```json5
+    ```text
     // 测试用例文件头注释信息及用例注释同单线程用例示例。
     
     #include "base_object.h"
@@ -374,7 +374,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 
     5. 测试用例实现，包含用例注释和逻辑实现。
 
-        ```json5
+        ```text
         // Step 1:待测函数，返回阶乘结果。
         int factorial(int n)
         {
@@ -528,10 +528,10 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
          * @tc.require: issueNumber
         */
         it("appInfoTest001", 0, function () {
-            //step 1:调用函数获取结果。
+            // step 1:调用函数获取结果。
             var info = app.getInfo()
 
-            //Step 2:使用断言比较预期与实际结果。
+            // Step 2:使用断言比较预期与实际结果。
             expect(info != null).assertEqual(true)
         })
     })
@@ -592,10 +592,10 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
          * @tc.require: issueNumber
         */
         it("appInfoTest001", 0, function () {
-            //step 1:调用函数获取结果。
+            // step 1:调用函数获取结果。
             var info = app.getInfo()
         
-            //Step 2:使用断言比较预期与实际结果。
+            // Step 2:使用断言比较预期与实际结果。
             expect(info != null).assertEqual(true)
         })
         ```
@@ -1150,7 +1150,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 **编译入口配置文件bundle.json**
 
 当完成用例编译配置文件编写后，需要进一步编写部件编译配置文件，以关联到具体的测试用例。
-```json
+```text
 "build": {
     "sub_component": [
         "//test/testfwk/developer_test/examples/app_info:app_info",  
@@ -1168,7 +1168,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
         "name": "//test/testfwk/developer_test/examples/detector:detector"
       }
     ],
-    "test": [ //配置模块calculator下的test。
+    "test": [ // 配置模块calculator下的test。
       "//test/testfwk/developer_test/examples/app_info/test:unittest",  
       "//test/testfwk/developer_test/examples/calculator/test:unittest",
       "//test/testfwk/developer_test/examples/calculator/test:fuzztest"
@@ -1530,54 +1530,54 @@ test/developertest/reports/xxxx_xx_xx_xx_xx_xx
 
 1. （可选执行）为了屏蔽非核心代码产生的冗余分支数据，可以在源码编译之前进入/test/testfwk/developer_test/localCoverage/restore_comment目录下执行：
 
-       ```shell
-       python3 build_before_generate.py
-       ```
+   ```shell
+   python3 build_before_generate.py
+   ```
 
    选择编译时要屏蔽的部件，执行命令例如：
 
-       ```text
-       run -tp partname
-       run -tp partname1 partname2
-       ```
+   ```text
+   run -tp partname
+   run -tp partname1 partname2
+   ```
 2. 编译版本之前首先修改编译选项，在涉及到的子系统build.gn文件中添加cflags或cflags_cc及ldflags选项，都需要加--coverage字段：
        
-       ```text
-       ldflags = [ "--coverage" ]
-       C:   cflags = [ "--coverage" ]
-       C++: cflags_cc = [ "--coverage" ]
-       ```
+   ```text
+   ldflags = [ "--coverage" ]
+   C:   cflags = [ "--coverage" ]
+   C++: cflags_cc = [ "--coverage" ]
+   ```
             
    **推荐：**     也可以参考窗口子系统的方式（推荐这种方式），参考链接：`https://gitee.com/openharmony/window_window_manager/pulls/1274/files`
 3. 执行覆盖率用例需要安装以下依赖包：
    
-       ```shell
-       1）安装lcov, 安装命令：sudo apt install lcov
-       2）安装dos2unix, 安装命令：apt install dos2unix.
-       3）安装lxml, 安装命令: pip install lxml
-       4）安装selectolax, 安装命令: pip install selectolax
-       5）安装CppHeaderParser, 安装命令 pip install CppHeaderParser
-       ```
+   ```shell
+   1）安装lcov, 安装命令：sudo apt install lcov
+   2）安装dos2unix, 安装命令：apt install dos2unix.
+   3）安装lxml, 安装命令: pip install lxml
+   4）安装selectolax, 安装命令: pip install selectolax
+   5）安装CppHeaderParser, 安装命令 pip install CppHeaderParser
+   ```
 
 4. 远程映射设备，修改user_config.xml中的ip号，设备映射方式查看上面介绍的远程端口映射。
 
-       ```text
-       <!-- 配置远程映射机器的IP(设备挂载的pc的ip) -->
-       <device type="usb-hdc">
-         \<ip\></ip>
-         \<port\></port>
-         \<sn\></sn>
-       </device>
-       ```
+   ```text
+   <!-- 配置远程映射机器的IP(设备挂载的pc的ip) -->
+   <device type="usb-hdc">
+     \<ip\></ip>
+     \<port\></port>
+     \<sn\></sn>
+   </device>
+   ```
 
 5. 执行 ./start.sh，输入运行命令，示例如下：
 
-       ```text
-       run -t UT -tp 部件名 -cov coverage
-       run -t UT -ss 子系统名 -cov coverage
-       run -t UT -ss 子系统名 -tp 部件名 -cov coverage
-       run -t UT MST ST -tp 部件名 -cov coverage
-       ```
+   ```text
+   run -t UT -tp 部件名 -cov coverage
+   run -t UT -ss 子系统名 -cov coverage
+   run -t UT -ss 子系统名 -tp 部件名 -cov coverage
+   run -t UT MST ST -tp 部件名 -cov coverage
+   ```
 
    > **注意：**
    >
