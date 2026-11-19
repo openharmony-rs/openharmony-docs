@@ -1388,6 +1388,28 @@ struct GridEts {
    在落入事件中，通过event.getData()取得统一数据，筛选文件记录并返回URI列表。示例只提取URI，文件的读取、复制、保存或打开由业务决定。
 
    <!-- @[virtual_drag_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/model/DropReceiver.ets) -->
+   
+   ``` TypeScript
+   // 获取落入数据中的文件URI，不读取文件内容。
+   export function getDroppedFileUris(event: DragEvent): string[] {
+     const uris: string[] = [];
+     const records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+     for (const record of records) {
+       if (!record.getTypes().includes(uniformTypeDescriptor.UniformDataType.FILE_URI)) {
+         continue;
+       }
+       const entry: uniformDataStruct.FileUri =
+         record.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+       if (entry.oriUri.length > 0) {
+         uris.push(entry.oriUri);
+       }
+     }
+     if (uris.length === 0) {
+       throw new Error('No file URI received');
+     }
+     return uris;
+   }
+   ```
 
 
 6. 处理文件URI。
