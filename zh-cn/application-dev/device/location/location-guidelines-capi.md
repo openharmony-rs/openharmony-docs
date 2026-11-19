@@ -99,17 +99,6 @@
         napi_get_boolean(env, isEnabled, &result);
         return result;
     }
-    // 在Init函数中补充接口。
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        napi_property_descriptor desc[] = {
-            {"ohLocationIsEnabled", NULL, OhLocationIsEnabled, NULL, NULL, NULL, napi_default, NULL},
-        };
-        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-        return exports;
-    }
-    EXTERN_C_END
    ```
 
 6. 定位位置变化。
@@ -119,7 +108,7 @@
    ``` c
    // 定义一个请求参数
    struct Location_RequestConfig *g_requestConfig = NULL;
-   void *mydata = NULL;
+   void *g_mydata = NULL;
    
    // 定义一个回调函数用来接收位置信息
    void reportLocation(Location_Info* location, void* userData)
@@ -128,8 +117,8 @@
        char additionalInfo[1024] = "";
        Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
        // 此处接收传回的userData与mydata做对比，判断是否为携带mydata字段的位置请求回调
-       if (mydata == userData) {
-           OH_LOG_INFO(LOG_APP, "userData is mydata");
+       if (g_mydata == userData) {
+           OH_LOG_INFO(LOG_APP, "userData is g_mydata");
        }
        return;
    }
@@ -142,10 +131,10 @@
        }
        OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
        OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
-       // mydata:用户自定义任意类型，触发reportLocation回调时会传回该字段，用于区分是否为携带mydata字段的位置请求回调
-       mydata = (void *)malloc(sizeof("mydata"));
+       // g_mydata:用户自定义任意类型，触发reportLocation回调时会传回该字段，用于区分是否为携带mydata字段的位置请求回调
+       g_mydata = (void *)malloc(sizeof("g_mydata"));
        napi_value result = NULL;
-       if (mydata == NULL) {
+       if (g_mydata == NULL) {
           int errCode = LOCATION_INVALID_PARAM;
           std::string errorMsg = GetErrorMsgFromErrorCode(errCode);
           napi_throw_error(env, std::to_string(errCode).c_str(), errorMsg.c_str());
@@ -153,7 +142,7 @@
           return result;
        }
 
-       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
+       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, g_mydata);
        int resultCode = OH_Location_StartLocating(g_requestConfig);
        if (resultCode != LOCATION_SUCCESS) {
            std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
@@ -173,9 +162,9 @@
            OH_Location_DestroyRequestConfig(g_requestConfig);
            g_requestConfig = NULL;
        }
-       if (mydata != NULL) {
-           free(mydata);
-           mydata = NULL;
+       if (g_mydata != NULL) {
+           free(g_mydata);
+           g_mydata = NULL;
        }
        napi_value result = NULL;
        if (resultCode != LOCATION_SUCCESS) {
@@ -187,22 +176,28 @@
        napi_create_int32(env, resultCode, &result);
        return result;
    }
-
-   // 在Init函数中补充接口。
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           {"ohLocationStartLocating", NULL, OhLocationStartLocating, NULL, NULL, NULL, napi_default, NULL},
-           {"ohLocationStopLocating", NULL, OhLocationStopLocating, NULL, NULL, NULL, napi_default, NULL},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
    ```
 
-7. 在types/libentry路径下index.d.ts文件中引入Napi接口。
+7. 在Init函数中补充接口
+
+   <!-- @[location_capi_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` c
+    EXTERN_C_START
+    static napi_value Init(napi_env env, napi_value exports)
+    {
+        napi_property_descriptor desc[] = {
+           {"ohLocationIsEnabled", nullptr, OhLocationIsEnabled, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"ohLocationStartLocating", nullptr, OhLocationStartLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"ohLocationStopLocating", nullptr, OhLocationStopLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
+        };
+        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+        return exports;
+    }
+    EXTERN_C_END
+   ```
+
+8. 在types/libentry路径下index.d.ts文件中引入Napi接口。
 
    <!-- @[location_capi_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/types/libentry/index.d.ts) -->
 
@@ -212,7 +207,7 @@
    export const ohLocationStopLocating: () => number;
    ```
 
-8. 删除Index.ets中的已废弃函数。
+9. 删除Index.ets中的已废弃函数。
 
    ```js
    .onClick(() => {

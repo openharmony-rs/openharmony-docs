@@ -37,6 +37,7 @@
 
    ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 3. 调用获取位置接口之前需要先判断位置开关是否打开。<br/>
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
@@ -44,7 +45,6 @@
    <!-- @[location_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
    ``` TypeScript
-   import { geoLocationManager } from '@kit.LocationKit';
    try {
        let locationEnabled = geoLocationManager.isLocationEnabled();
    } catch (err) {
@@ -62,8 +62,6 @@
       <!-- @[location_get_last_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
       ``` TypeScript
-      import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit';
       try {
           let location = geoLocationManager.getLastLocation();
       } catch (err) {
@@ -85,8 +83,6 @@
       <!-- @[location_get_current_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
       ``` TypeScript
-      import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit';
       let request: geoLocationManager.SingleLocationRequest = {
          'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_LOCATING_SPEED,
          'locatingTimeoutMs': 10000
@@ -118,7 +114,6 @@
    <!-- @[location_on_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
    ``` TypeScript
-   import { geoLocationManager } from '@kit.LocationKit';
    let request: geoLocationManager.ContinuousLocationRequest= {
       'interval': 1,
       'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION

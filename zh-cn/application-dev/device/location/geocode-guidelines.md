@@ -45,7 +45,6 @@
      <!-- @[geocode_is_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
       ``` TypeScript
-      import { geoLocationManager } from '@kit.LocationKit';
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
           if (!isAvailable) {

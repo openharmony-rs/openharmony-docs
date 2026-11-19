@@ -39,6 +39,8 @@
 
 3. 判断是否支持围栏功能
 
+   <!-- @[is_gnss_geofence_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+
    ``` TypeScript
    let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
    if (!isGnssGeoFeceSupported) {
