@@ -72301,18 +72301,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp",
-				"functions":[
-					{
-						"end_line":194,
-						"name":"preview_style_c_receive",
-						"start_line":164
-					},
-					{
-						"end_line":232,
-						"name":"preview_style_c_register",
-						"start_line":213
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/keyboard/PreviewInputMethod.ets",
@@ -74381,6 +74370,26 @@
 						"end_line":1948,
 						"name":"reload_session",
 						"start_line":1897
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/inputmethod/preview-text-style-guide-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":194,
+						"name":"preview_style_c_receive",
+						"start_line":164
+					},
+					{
+						"end_line":237,
+						"name":"preview_style_c_register",
+						"start_line":218
 					}
 				]
 			}
