@@ -5708,6 +5708,7 @@ zh-cn/application-dev/ui/state-management/arkts-wrapBuilder.md @zhangboren @zhan
 zh-cn/application-dev/ui/state-management/troubleshooting-state-manage.md @liwenzhen3 @zhangboren @zhang_yixin13
 zh-cn/application-dev/web/app-takeovers-web-media.md @zhangyao75477 @gzweioh @HelloShuo @ghiker
 zh-cn/application-dev/web/arkweb-glossary.md @runlei @shulssins @HelloShuo @ghiker
+zh-cn/application-dev/web/arkweb-kit-samples.md @sinat_22543221 @@hwt00888022 @HelloShuo @ghiker
 zh-cn/application-dev/web/arkweb-ndk-jsbridge.md @aohui @xuefuzhang @HelloShuo @ghiker
 zh-cn/application-dev/web/arkweb-ndk-page-data-channel.md @aohui @xuefuzhang @HelloShuo @ghiker
 zh-cn/application-dev/web/web-adsblock.md @aohui @xuefuzhang @HelloShuo @ghiker
