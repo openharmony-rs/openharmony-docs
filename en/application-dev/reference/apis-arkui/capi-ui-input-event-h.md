@@ -33,7 +33,7 @@ Provides ArkUI event definitions on the native side.
 | [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md) | ArkUI_TouchTestInfo | Defines touch test information. |
 | [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | Defines touch test information items. |
 | [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md) | ArkUI_TouchTestInfoItemHandle | Defines the handle of touch test information items. |
-| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md) | ArkUI_TouchTestInfoItemArray | Defines the handle array of touch test information items. |
+| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-eventmodule-arkui-touchtestinfoitemhandle8h.md) | ArkUI_TouchTestInfoItemArray | Defines the handle array of touch test information items. |
 
 ### Enums
 
@@ -4148,7 +4148,7 @@ Obtains the array of touch test information items.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | Pointer to the touch test information.|
-| [ArkUI_TouchTestInfoItemArray](./capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)* array | Pointer to the array of touch test information items.|
+| [ArkUI_TouchTestInfoItemArray](./capi-arkui-eventmodule-arkui-touchtestinfoitemhandle8h.md)* array | Pointer to the array of touch test information items.|
 | int32_t* size | Size of the array of touch test information items.|
 
 **Return value**
