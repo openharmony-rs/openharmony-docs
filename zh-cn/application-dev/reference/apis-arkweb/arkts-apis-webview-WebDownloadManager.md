@@ -233,9 +233,9 @@ static resumeDownload(webDownloadItem: WebDownloadItem): void
 
 > **说明：**
 >
->- 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)），必须先调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)完成初始化，否则接口调用无效。
+> - 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)），必须先调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)完成初始化，否则接口调用无效。
 >
->- 必须先调用[setDownloadDelegate](#setdownloaddelegate11)设置下载委托，否则会抛出错误码17100018。
+> - 必须先调用[setDownloadDelegate](#setdownloaddelegate11)设置下载委托，否则会抛出错误码17100018。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
