@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Image Component Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43; @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d40219683c51816f58311871d8c613eb009a7bdf translatedAt=2026-08-25T02:17:21.590Z pushedAt=2026-08-26T03:40:54.186Z -->
+<!-- md-trans-meta sourceCommit=4eb2d29a5d3b0d7fc081ea957fadbb3dc1266fcc translatedAt=2026-11-18T08:46:47.608Z pushedAt=2026-11-19T02:16:22.781Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -22,6 +21,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side for i
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
+
 ## NODE_IMAGE_SRC
 
 ```c
@@ -32,6 +32,7 @@ Image address for the [Image](arkui-ts/ts-basic-components-image.md) component. 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -58,6 +59,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -80,6 +82,7 @@ Interpolation effect of the image. This attribute can be set, reset, and obtaine
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -104,6 +107,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -126,6 +130,7 @@ Color filter of the image. This attribute can be set, reset, and obtained as req
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -154,6 +159,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -176,6 +182,7 @@ Placeholder image address attribute, which can be set, reset, and obtained as re
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -202,6 +209,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -224,6 +232,7 @@ Image rendering mode. This attribute can be set, reset, and obtained as required
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -248,6 +257,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -271,17 +281,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Fill color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Fill color, in 0xARGB format, for example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Fill color, in 0xARGB format.|
+| .value[0].u32 | Fill color, in 0xARGB format. |
 
 ## NODE_IMAGE_RESIZABLE
 
@@ -293,6 +304,7 @@ Resizable image options.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -326,6 +338,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -348,6 +361,7 @@ Decoding size of the image. This attribute works only when the target size is sm
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
+
 
 **Parameters**
 
@@ -374,6 +388,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 21
 
+
 **Parameters**
 
 | Name| Description|
@@ -396,6 +411,7 @@ Whether the image follows the system language direction, displaying a mirrored e
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
+
 
 **Parameters**
 
@@ -420,6 +436,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 21
 
+
 **Parameters**
 
 | Name| Description|
@@ -442,6 +459,7 @@ Whether to enable the AI analyzer, which supports subject recognition, text reco
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
+
 
 **Parameters**
 
@@ -466,6 +484,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 21
 
+
 **Parameters**
 
 | Name| Description|
@@ -488,6 +507,7 @@ Brightness attribute of the image in HDR mode, used to control brightness parame
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
+
 
 **Parameters**
 
@@ -512,6 +532,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 21
 
+
 **Parameters**
 
 | Name| Description|
@@ -534,6 +555,7 @@ Whether to enable the new SVG parsing capability, which allows you to set the sc
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
+
 
 **Parameters**
 
@@ -558,6 +580,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 21
 
+
 **Parameters**
 
 | Name| Description|
@@ -580,6 +603,7 @@ Placeholder image during the loading process. This attribute can be set, reset, 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -606,6 +630,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -631,6 +656,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -653,6 +679,7 @@ Image frame information set of the frame animation component. Dynamic update is 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -679,6 +706,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -701,6 +729,7 @@ Playback duration of the frame-by-frame animation. This attribute does not take 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -725,6 +754,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -747,6 +777,7 @@ Whether the image size is fixed at the component size. This attribute can be set
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -771,6 +802,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -794,6 +826,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -805,3 +838,27 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Number of times that the animation is played.|
+
+## NODE_IMAGE_ANIMATOR_INTERPOLATION
+
+```c
+NODE_IMAGE_ANIMATOR_INTERPOLATION = 19007
+```
+
+Interpolation effect for scaling frame images in the frame-by-frame animation. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Interpolation effect for scaling frame images. The parameter type is [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation). The default value is **ARKUI_IMAGE_INTERPOLATION_LOW**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Interpolation effect for scaling frame images. The parameter type is [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation). |
