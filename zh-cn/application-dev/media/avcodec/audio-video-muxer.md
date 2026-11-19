@@ -423,7 +423,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
     示例中buffer来自编码器输出的AVBuffer，封装前通过OH_AVBuffer_SetBufferAttr()设置当前数据的pts、size、flags等属性，通过GetAudioTrackId()/GetVideoTrackId()选择写的音视频轨，封装封面时必须一次写完一张图片。写入示例如下：
 
-    <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+    <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/core/Recorder.cpp) -->
     
     ``` C++
     void Recorder::AudioEncOutputThread()
