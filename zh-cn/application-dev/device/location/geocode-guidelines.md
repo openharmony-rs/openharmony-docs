@@ -33,7 +33,7 @@
 
 1. 导入geoLocationManager模块，所有与正地理编码和逆地理编码能力相关的功能API，都是通过该模块提供的。
    <!-- @[location_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
-   ```ts
+   ```TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 
