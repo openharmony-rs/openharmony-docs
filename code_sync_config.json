@@ -69367,16 +69367,75 @@
 						"end_line":437,
 						"name":"Muxer::Release",
 						"start_line":427
+					},
+					{
+						"end_line":23,
+						"name":"Muxer::Include",
+						"start_line":17
+					},
+					{
+						"end_line":125,
+						"name":"Muxer::SetFileLevelData",
+						"start_line":95
+					},
+					{
+						"end_line":150,
+						"name":"Muxer::AddAudioTrackByCreate",
+						"start_line":132
+					},
+					{
+						"end_line":200,
+						"name":"Muxer::AddVideoTrackByCreate",
+						"start_line":177
+					},
+					{
+						"end_line":268,
+						"name":"Muxer::AddAudioAuxiliaryTrack",
+						"start_line":246
+					},
+					{
+						"end_line":295,
+						"name":"Muxer::AddVideoAuxiliaryTrack",
+						"start_line":275
+					},
+					{
+						"end_line":314,
+						"name":"Muxer::AddCoverTrackByCreate",
+						"start_line":302
+					},
+					{
+						"end_line":328,
+						"name":"Muxer::CreateFormat",
+						"start_line":320
+					},
+					{
+						"end_line":352,
+						"name":"Muxer::AddFileData",
+						"start_line":334
+					},
+					{
+						"end_line":368,
+						"name":"Muxer::AddAACTrack",
+						"start_line":358
+					},
+					{
+						"end_line":382,
+						"name":"Muxer::SetVideoTrack",
+						"start_line":375
 					}
 				]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/core/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":768,
+						"end_line":252,
 						"name":"Recorder::AudioEncOutputThread",
-						"start_line":747
+						"start_line":212
 					}
 				]
 			}
