@@ -1469,7 +1469,7 @@ getAvoidAreaInsets(): AvoidAreaInsets
 
 获取当前窗口的避让区边衬。
 
-若需要获取指定类型避让区的原始形状（如挖孔区域），请使用[getWindowAvoidArea(type)](#getwindowavoidarea9)。
+若需要获取指定类型的避让区（如挖孔区域），请使用[getWindowAvoidArea()](#getwindowavoidarea9)。
 
 **起始版本：** 26.1.0
 
