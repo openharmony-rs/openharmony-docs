@@ -69334,9 +69334,9 @@
 						"start_line":31
 					},
 					{
-						"end_line":70,
+						"end_line":90,
 						"name":"Muxer::SetRotation",
-						"start_line":54
+						"start_line":74
 					},
 					{
 						"end_line":89,
@@ -69364,9 +69364,9 @@
 						"start_line":160
 					},
 					{
-						"end_line":183,
+						"end_line":437,
 						"name":"Muxer::Release",
-						"start_line":171
+						"start_line":427
 					}
 				]
 			},
