@@ -18877,7 +18877,7 @@ stopMicrophone(): void
 
 static setUserAgentClientHintsEnabled(enabled: boolean): void
 
-设置是否开启UserAgent Client Hints功能。
+设置是否开启User-Agent Client Hints功能。
 
 > **说明：**
 >
@@ -18889,16 +18889,19 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+| enabled | boolean | 是   | 是否开启User-Agent Client Hints功能。<br/>true表示开启，false表示不开启。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -18934,7 +18937,7 @@ struct WebComponent {
             metadata.setWow64(false);
             this.controller.setUserAgentMetadata(this.userAgent, metadata);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('getUserAgentMetadata').fontSize(20)
@@ -18960,7 +18963,7 @@ struct WebComponent {
             console.info("PlatformVersion:" + metadata.getPlatformVersion());
             console.info("Wow64:" + metadata.getWow64());
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'https://www.example.com', controller: this.controller })
@@ -18974,7 +18977,7 @@ struct WebComponent {
             console.info("isUserAgentClientHintsEnabled:", enabled);
             webview.WebviewController.setUserAgentClientHintsEnabled(true);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
     }
@@ -18982,34 +18985,7 @@ struct WebComponent {
 }
 ```
 
-## setUserAgentClientHintsEnabled<sup>24+</sup>
-
-static setUserAgentClientHintsEnabled(enabled: boolean): void
-
-设置是否开启User-Agent Client Hints功能。
-
-> **说明：**
->
-> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
->
-> 不使用该方法时，默认不开启User-Agent Client Hints功能。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名              | 类型    | 必填   |  说明 |
-| ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | 是   | 是否开启User-Agent Client Hints功能。<br/>true表示开启，false表示不开启。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 // xxx.ets
 'use static'
@@ -19048,7 +19024,7 @@ struct WebComponent {
             metadata.setWow64(false);
             this.controller.setUserAgentMetadata(this.userAgent, metadata);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('getUserAgentMetadata').fontSize(20)
@@ -19074,7 +19050,7 @@ struct WebComponent {
             console.info("PlatformVersion:" + metadata.getPlatformVersion());
             console.info("Wow64:" + metadata.getWow64());
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'https://www.example.com', controller: this.controller })
@@ -19088,7 +19064,7 @@ struct WebComponent {
             console.info("isUserAgentClientHintsEnabled:", enabled);
             webview.WebviewController.setUserAgentClientHintsEnabled(true);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
     }
@@ -19104,33 +19080,11 @@ static getUserAgentClientHintsEnabled(): boolean
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 24
 
-**返回值：**
-
-| 类型    | 说明                                     |
-| ------- | --------------------------------------- |
-| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
-
-**示例：**
-
-完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
-
-## getUserAgentClientHintsEnabled<sup>24+</sup>
-
-static getUserAgentClientHintsEnabled(): boolean
-
-查询UserAgent Client Hints功能当前是否开启。
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -19160,44 +19114,11 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 24
 
-**参数：**
-
-| 参数名              | 类型    | 必填   |  说明 |
-| ------------------ | ------- | ---- | ------------- |
-| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
-| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) | 是   | userAgent对应的UserAgentMetadata。可以先使用[getUserAgentMetadata](#getuseragentmetadata24)获取当前默认值，然后用相应方法进行修改。 |
-
-**示例：**
-
-完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
-
-## setUserAgentMetadata<sup>24+</sup>
-
-setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
-
-设置与User-Agent相对应的UserAgent Metadata数据。
-
-> **说明：**
->
-> User-Agent Metadata将用于填充用户代理客户端提示，它们可以提供客户端的品牌和版本信息、底层操作系统的品牌和主要版本，以及底层设备的详细信息。
->
-> 用户代理可以通过setCustomUserAgent、setAppCustomUserAgent或setUserAgentForHosts来设置。
->
-> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，且覆盖后的User-Agent包含系统默认的User-Agent，则将使用系统默认值。
->
-> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -19218,39 +19139,11 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 24
 
-**参数：**
-
-| 参数名              | 类型    | 必填   |  说明 |
-| ------------------ | ------- | ---- | ------------- |
-| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
-
-**返回值：**
-
-| 类型    | 说明                                     |
-| ------- | --------------------------------------- |
-| UserAgentMetadata | userAgent对应的[UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)。 |
-
-**示例：**
-
-完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
-
-## getUserAgentMetadata<sup>24+</sup>
-
-getUserAgentMetadata(userAgent: string): UserAgentMetadata
-
-查询userAgent对应的UserAgent Metadata信息。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
