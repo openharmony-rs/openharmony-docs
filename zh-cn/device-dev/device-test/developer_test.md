@@ -31,7 +31,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 | 操作系统          | Ubuntu20.04及以上                                            | 代码编译环境。                                                 |
 | Linux系统扩展组件 | libreadline-dev                                              | 命令行读取插件。                                               |
 | python            | 3.7.5版本及以上                                              | 测试框架语言。                                                 |
-| python插件        | pyserial 3.3及以上、paramiko2.7.1及以上、setuptools40.8.0及以上、rsa4.0及以上 | pserial：支持python的串口通信；paramiko：支持python使用SSH协议；setuptools：支持python方便创建和分发python包；rsa：支持python rsa加密。 |
+| python插件        | pyserial 3.3及以上、paramiko2.7.1及以上、setuptools40.8.0及以上、rsa4.0及以上 | pyserial：支持python的串口通信；paramiko：支持python使用SSH协议；setuptools：支持python方便创建和分发python包；rsa：支持python rsa加密。 |
 | NFS Server        | haneWIN NFS Server 1.2.50及以上或者 NFS v4及以上             | 支持设备通过串口连接，使用轻量、小型设备。                     |
 | HDC               | 1.2.0a                                                        | 支持设备通过HDC连接。                                         |
 
@@ -492,22 +492,22 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 	describe("AppInfoTest", function () {
 		beforeAll(function() {
 			// input testsuit setup step，setup invoked before all testcases.
-			console.info('beforeAll caled')
+			console.info('beforeAll called')
 		})
 		
 		afterAll(function() {
 			// input testsuit teardown step，teardown invoked after all testcases.
-			console.info('afterAll caled')
+			console.info('afterAll called')
 		})
 		
 		beforeEach(function() {
 			// input testcase setup step，setup invoked before each testcases.
-			console.info('beforeEach caled')
+			console.info('beforeEach called')
 		})
 		
 		afterEach(function() {
 			// input testcase teardown step，teardown invoked after each testcases.
-			console.info('afterEach caled')
+			console.info('afterEach called')
 		})
 
 		/*
@@ -554,22 +554,22 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 		describe("AppInfoTest", function () {
 			beforeAll(function() {
 				// input testsuit setup step，setup invoked before all testcases.
-				console.info('beforeAll caled')
+				console.info('beforeAll called')
 			})
 			
 			afterAll(function() {
 				// input testsuit teardown step，teardown invoked after all testcases.
-				console.info('afterAll caled')
+				console.info('afterAll called')
 			})
 			
 			beforeEach(function() {
 				// input testcase setup step，setup invoked before each testcases.
-				console.info('beforeEach caled')
+				console.info('beforeEach called')
 			})
 			
 			afterEach(function() {
 				// input testcase teardown step，teardown invoked after each testcases.
-				console.info('afterEach caled')
+				console.info('afterEach called')
 			})
 		```
 	4. 测试用例实现。
@@ -1090,7 +1090,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 		    "main.rs",
 		    "rust_add_test.rs",
              ...
-        }
+			]
         deps = [ ":rust_st_add" ]
     }
 
@@ -1318,7 +1318,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 	run -t UT -tp PartName -tm TestModuleName -ts CalculatorSubTest
 	run -t UT -ts base_object_test
 	run -t UT -ts base_object_test -tc AAFwkBaseObjectTest.BaseObject_test_001
-	run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.interger_sub_00l
+	run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.integer_sub_001
 	run -t UT -cov coverage
 	run -t UT -ra random
 	run -t UT -ts base_object_test --repeat 5
@@ -1420,7 +1420,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 	run -t UT -tp PartName -tm TestModuleName -ts CalculatorSubTest
 	run -t UT -ts base_object_test
 	run -t UT -ts base_object_test -tc AAFwkBaseObjectTest.BaseObject_test_001
-	run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.interger_sub_00l
+	run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.integer_sub_001
 	run -t -cov coverage
 	run -t UT -ra random
 	run -t UT -tp PartName -pd partdeps
@@ -1536,7 +1536,7 @@ test/developertest/reports/xxxx_xx_xx_xx_xx_xx
        4）安装selectolax, 安装命令: pip install selectolax
        5）安装CppHeaderParser, 安装命令 pip install CppHeaderParser
 
-4. 远程映射设备，修改usr_config.xml中的ip号，设备映射方式查看上面介绍的远程端口映射。
+4. 远程映射设备，修改user_config.xml中的ip号，设备映射方式查看上面介绍的远程端口映射。
 
        <!-- 配置远程映射机器的IP(设备挂载的pc的ip) -->
        <device type="usb-hdc">

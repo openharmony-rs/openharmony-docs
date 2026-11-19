@@ -134,7 +134,7 @@ hpm init
 
 1. 输入名称后回车（如mybundle2）。
 
-2. 接下来依次输入版本、描述等信息后，会在当前目录下会生成一个bundle.json文件。
+2. 接下来依次输入版本、描述等信息，完成后会在当前目录下生成一个bundle.json文件。
 
 3. 也可以打开bundle.json文件。
      
@@ -341,7 +341,7 @@ hpm publish
 
 2. 使用hpm install &lt;name&gt;命令安装依赖（依赖写入bundle.json的dependencies字段）。
 
-3. 代码中共引用头文件，实现功能。
+3. 在代码中引用组件提供的头文件，调用其接口实现所需功能。
 
 4. 使用hpm build命令执行编译，输出编译结果。
 
@@ -391,7 +391,7 @@ project
 }
 ```
 
-再执行hpm install命令，将会一次性将所有未安装的Part一次性全部下载并安装完成。
+再执行hpm install命令，即可一次性将所有未安装的Part下载并安装完成。
 
 
 ### 安装全局Part

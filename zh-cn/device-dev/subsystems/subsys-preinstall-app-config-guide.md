@@ -1,6 +1,6 @@
 # 预置应用配置与安装指导
 
-预置应用是指随设备出厂预置的应用。OpenHarmony支持在不同设备上对预置应用进行差异化配置，设备厂商可根据需要对与预置应用进行配置。
+预置应用是指随设备出厂预置的应用。OpenHarmony支持在不同设备上对预置应用进行差异化配置，设备厂商可根据需要与预置应用进行配置。
 
 ## 将应用配置为预置应用
 
@@ -63,11 +63,11 @@ hdc file recv /system/etc/app/install_list.json .
     hdc shell reboot
 ```
 
-# 预置不安装列表配置
+## 预置不安装列表配置
 
 [uninstall_list.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/uninstall_list.json)的配置优先级高于install_list.json,在该文件中配置后，则对应的预置应用不会安装。
 
-## 示例一
+### 示例一
 
 ```
 /system/etc/app/uninstall_list.json
@@ -77,7 +77,7 @@ hdc file recv /system/etc/app/install_list.json .
 }
 ```
 
-## 示例二
+### 示例二
 
 ```
 /system/etc/app/uninstall_list.json

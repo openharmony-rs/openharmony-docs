@@ -187,7 +187,7 @@ docker_dist是一个[HPM](https://hpm.harmonyos.com/)系统中的模板组件，
 
 ### 获取及编译源码
 
-执行编译。自动安装docker只能在Ubuntu环境下执行，如果其他环境，需要用户自行安装docker，然后拉取镜像，执行编译。
+执行编译。自动安装docker只能在Ubuntu环境下进行；如果在其他环境下，则需要用户自行安装docker，然后拉取镜像，执行编译。
 
 - 自动安装docker（Ubuntu环境）<br>
   以下命令可以帮助用户自动安装docker, 拉取镜像，并且在容器中开始运行对应解决方案的拉取和编译。
@@ -234,7 +234,8 @@ docker_dist是一个[HPM](https://hpm.harmonyos.com/)系统中的模板组件，
     
   ```
   # 拉取镜像 
-  docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:0.0.3# linux环境下的编译 
+  docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:0.0.3
+  # linux环境下的编译 
   hpm run distWithDocker solution={product}
   # windows下的编译，需要配置gitbash 
   hpm config set shellPath "gitbash路径"
