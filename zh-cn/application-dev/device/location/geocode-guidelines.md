@@ -35,7 +35,7 @@
 
    <!-- @[geocode_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 
@@ -44,7 +44,7 @@
 
      <!-- @[geocode_is_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
-      ```TypeScript
+      ``` TypeScript
       import { geoLocationManager } from '@kit.LocationKit';
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
@@ -61,7 +61,7 @@
      
      <!-- @[geocode_reverse_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
-      ```TypeScript
+      ``` TypeScript
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
       try {
           if (geoLocationManager.isGeocoderAvailable()) {
@@ -82,7 +82,7 @@
      
      <!-- @[geocode_forward_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
-      ```TypeScript
+      ``` TypeScript
       let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "上海市浦东新区张江路", "maxItems": 1};
       try {
           if (geoLocationManager.isGeocoderAvailable()) {

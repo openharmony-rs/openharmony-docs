@@ -35,7 +35,7 @@
    
    <!-- @[location_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 3. 调用获取位置接口之前需要先判断位置开关是否打开。<br/>
@@ -43,7 +43,7 @@
    
    <!-- @[location_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    try {
        let locationEnabled = geoLocationManager.isLocationEnabled();
@@ -61,7 +61,7 @@
    
       <!-- @[location_get_last_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-      ```TypeScript
+      ``` TypeScript
       import { geoLocationManager } from '@kit.LocationKit';
       import { BusinessError } from '@kit.BasicServicesKit';
       try {
@@ -84,7 +84,7 @@
    
       <!-- @[location_get_current_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-      ```TypeScript
+      ``` TypeScript
       import { geoLocationManager } from '@kit.LocationKit';
       import { BusinessError } from '@kit.BasicServicesKit';
       let request: geoLocationManager.SingleLocationRequest = {
@@ -117,7 +117,7 @@
    
    <!-- @[location_on_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    let request: geoLocationManager.ContinuousLocationRequest= {
       'interval': 1,
@@ -136,7 +136,7 @@
       
    <!-- @[location_off_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    // 该回调函数需要与on接口传入的回调函数保持一致。
    try {
       geoLocationManager.off('locationChange', locationCallback);

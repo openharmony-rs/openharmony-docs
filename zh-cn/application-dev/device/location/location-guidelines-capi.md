@@ -40,7 +40,7 @@
 
    <!-- @[location_capi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/CMakeLists.txt) -->
 
-   ```c
+   ``` c
    target_link_libraries(entry PUBLIC libace_napi.z.so)
    target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    target_link_libraries(entry PUBLIC liblocation_ndk.so)
@@ -50,7 +50,7 @@
 
    <!-- @[location_capi_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```c
+   ``` c
    #include "napi/native_api.h"
    #include "LocationKit/oh_location.h"
    #include "LocationKit/oh_location_type.h"
@@ -66,7 +66,7 @@
 
    <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/CMakeLists.txt) -->
 
-   ```c
+   ``` c
     std::string GetErrorMsgFromErrorCode(int errorCode)
     {
         switch(errorCode) {
@@ -116,7 +116,7 @@
 
    <!-- @[location_capi_locating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```c
+   ``` c
    // 定义一个请求参数
    struct Location_RequestConfig *g_requestConfig = NULL;
    void *mydata = NULL;
@@ -206,7 +206,7 @@
 
    <!-- @[location_capi_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/types/libentry/index.d.ts) -->
 
-   ```c
+   ``` c
    export const ohLocationIsEnabled: () => boolean;
    export const ohLocationStartLocating: () => number;
    export const ohLocationStopLocating: () => number;

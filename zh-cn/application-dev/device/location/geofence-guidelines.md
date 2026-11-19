@@ -31,7 +31,7 @@
 
    <!-- @[geofence_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { notificationManager } from '@kit.NotificationKit';
@@ -39,7 +39,7 @@
 
 3. 判断是否支持围栏功能
 
-   ```TypeScript
+   ``` TypeScript
    let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
    if (!isGnssGeoFeceSupported) {
        console.error("Current Device Do not Support GnssGeofence");
@@ -50,7 +50,7 @@
 
    <!-- @[geofence_create_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    let geofence: geoLocationManager.Geofence = {
        "latitude": 34.12, "longitude": 124.11, "radius": 10000.0, "expiration": 10000.0
    }
@@ -60,7 +60,7 @@
 
    <!-- @[geofence_transition_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    let transitionStatusList: Array<geoLocationManager.GeofenceTransitionEvent> = [
        geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
        geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
@@ -71,7 +71,7 @@
 
    <!-- @[geofence_notifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    // GEOFENCE_TRANSITION_EVENT_ENTER事件
    let notificationRequest1: notificationManager.NotificationRequest = {
        id: 1,
@@ -102,7 +102,7 @@
 
    <!-- @[geofence_add_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    // 把创建的通知对象存入Array中，存入顺序与transitionStatusList一致
    let notificationRequestList: Array<notificationManager.NotificationRequest> =
      [notificationRequest1, notificationRequest2];
@@ -145,7 +145,7 @@
 
    <!-- @[geofence_remove_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
 
-   ```TypeScript
+   ``` TypeScript
    // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
    let fenceId = 1;
    try {
