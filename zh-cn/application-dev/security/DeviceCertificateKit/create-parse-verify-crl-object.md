@@ -49,7 +49,7 @@ import { util } from '@kit.ArkTS';
 
 // ...
 // CRL示例
-function crlSample(): void {
+async function crlSample() {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
     // 将CRL数据从string转为Uint8Array。
@@ -58,13 +58,9 @@ function crlSample(): void {
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
-  // 创建X509CRL实例。
-  cert.createX509CRL(encodingBlob, (err, x509Crl) => {
-    if (err != null) {
-      // 创建X509CRL实例失败。
-      console.error(`createX509Crl failed, errCode: ${err.code}, errMsg:${err.message} `);
-      return;
-    }
+  try {
+    // 创建X509CRL实例。
+    let x509Crl = await cert.createX509CRL(encodingBlob);
     // 创建X509CRL实例成功。
     console.info('createX509CRL result: success.');
 
@@ -82,34 +78,17 @@ function crlSample(): void {
     let crlString = x509Crl.toString(cert.EncodingType.ENCODING_UTF8);
     console.info(`X509 CRL crlString: ${crlString}`);
 
-
     // 公钥的二进制数据需要传入@ohos.security.cryptoFramework的convertKey()方法去获取公钥对象。
-    try {
-      let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.info('createAsyKeyGenerator result: success.');
-      let pubEncodingBlob: cryptoFramework.DataBlob = {
-        data: pubKeyData,
-      };
-      keyGenerator.convertKey(pubEncodingBlob, null, (e, keyPair) => {
-        if (e == null) {
-          console.info('convertKey result: success.');
-          x509Crl.verify(keyPair.pubKey, (err, data) => {
-            if (err == null) {
-              // 签名验证成功。
-              console.info('verify result: success.');
-            } else {
-              // 签名验证失败。
-              console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
-            }
-          });
-        } else {
-          console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
-        }
-      })
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
-    }
+    let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
+    console.info('createAsyKeyGenerator result: success.');
+    let pubEncodingBlob: cryptoFramework.DataBlob = {
+      data: pubKeyData,
+    };
+    let keyPair = await keyGenerator.convertKey(pubEncodingBlob, null);
+    console.info('convertKey result: success.');
+    await x509Crl.verify(keyPair.pubKey);
+    // 签名验证成功。
+    console.info('verify result: success.');
 
     // 使用certFramework的createX509Cert()方法创建一个X509Cert实例。
     let certBlob: cert.EncodingBlob = {
@@ -118,40 +97,28 @@ function crlSample(): void {
     };
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
-    cert.createX509Cert(certBlob, (err, x509Cert) => {
-      if (err == null) {
-        try {
-          serial = x509Cert.getCertSerialNumber();
-          // 检查证书是否被吊销。
-          revokedFlag = x509Crl.isRevoked(x509Cert);
-          console.info(`revokedFlag is: ${revokedFlag}`);
-          if (!revokedFlag) {
-            console.info('the given x509Cert is not revoked.');
-            return;
-          }
-          // 根据序列号来获取被吊销的证书。
-          try {
-            let crlEntry = x509Crl.getRevokedCert(serial);
-            console.info('getRevokedCert result: success.');
-            let serialNumber = crlEntry.getSerialNumber();
-            console.info(`crlEntry serialNumber is: ${serialNumber}`);
+    let x509Cert = await cert.createX509Cert(certBlob);
+    serial = x509Cert.getCertSerialNumber();
+    // 检查证书是否被吊销。
+    revokedFlag = x509Crl.isRevoked(x509Cert);
+    console.info(`revokedFlag is: ${revokedFlag}`);
+    if (!revokedFlag) {
+      console.info('the given x509Cert is not revoked.');
+      return;
+    }
+    // 根据序列号来获取被吊销的证书。
+    let crlEntry = x509Crl.getRevokedCert(serial);
+    console.info('getRevokedCert result: success.');
+    let serialNumber = crlEntry.getSerialNumber();
+    console.info(`crlEntry serialNumber is: ${serialNumber}`);
 
-            // 获取被吊销证书的吊销日期。
-            let date = crlEntry.getRevocationDate();
-            console.info(`revocation date is: ${date}`);
-          } catch (error) {
-            let e: BusinessError = error as BusinessError;
-            console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
-          }
-        } catch (error) {
-          let e: BusinessError = error as BusinessError;
-          console.error(`isRevoked failed, errCode: ${e.code}, errMsg:${e.message}`);
-        }
-      } else {
-        console.error(`create x509 cert failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      }
-    })
-
-  });
+    // 获取被吊销证书的吊销日期。
+    let date = crlEntry.getRevocationDate();
+    console.info(`revocation date is: ${date}`);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`crlSample failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
+  }
 }
 ```

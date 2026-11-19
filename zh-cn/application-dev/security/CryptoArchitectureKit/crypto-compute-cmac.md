@@ -68,6 +68,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -110,6 +111,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -174,6 +176,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -222,6 +225,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
