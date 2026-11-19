@@ -1417,6 +1417,24 @@ struct GridEts {
    将获取到的URI列表交给业务处理。示例中的handleUris()仅提示接收数量，可替换为业务自己的处理逻辑。获取URI不代表文件内容已经读取或下载完成；需要验证按需提供内容时，可将文件拖到文件管理器等实际读取文件的应用。
 
    <!-- @[virtual_drag_js_drop_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private receive(event: DragEvent): void {
+     try {
+       this.handleUris(getDroppedFileUris(event));
+       event.setResult(DragResult.DRAG_SUCCESSFUL);
+     } catch (error) {
+       event.setResult(DragResult.DRAG_FAILED);
+       logSampleError('Get dropped URIs', error as Error);
+       this.getUIContext().getPromptAction().showToast({ message: $r('app.string.receive_failed') });
+     }
+   }
+   
+   private handleUris(uris: string[]): void {
+     // 业务可在此根据URI读取、复制或打开文件，示例仅提示已接收。
+     this.getUIContext().getPromptAction().showToast({ message: $r('app.string.uris_received', uris.length) });
+   }
+   ```
 
 
 ## 支持悬停检测
