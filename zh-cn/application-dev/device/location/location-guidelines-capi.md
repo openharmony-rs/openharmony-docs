@@ -64,7 +64,7 @@
 
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
 
-   <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` c
     std::string GetErrorMsgFromErrorCode(int errorCode)
