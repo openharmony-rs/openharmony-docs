@@ -819,10 +819,10 @@ ToolbarV2TitleConfigs的构造函数。
 
 | 名称       | 类型                                                          | 只读 | 可选 | 说明                                                                                                                         |
 | :--------- | :------------------------------------------------------------ | :--- | :--- | :--------------------------------------------------------------------------------------------------------------------------- |
-| fontSize   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的字体大小。<br />单位：vp。<br />默认值：20fp。<br />装饰器类型：@Trace                                                          |
+| fontSize   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的字体大小。<br />默认单位：vp。<br />默认值：20fp。<br />装饰器类型：@Trace                                                          |
 | fontColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 否   | 是   | 标题的字体颜色。<br />默认值：$r('sys.color.font_primary')。<br />装饰器类型：@Trace                                            |
 | fontWeight | [FontWeight](ts-appendix-enums.md#fontweight)                 | 否   | 是   | 标题的字体粗细。<br />默认值：FontWeight.Bold。<br />装饰器类型：@Trace                                                        |
-| minLength  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的最小宽度。<br />单位：vp。<br />工具栏空间不足时优先压缩标题宽度，最小压缩至该值。<br />默认值：48vp。<br />装饰器类型：@Trace        |
+| minLength  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的最小宽度。<br />默认单位：vp。<br />工具栏空间不足时优先压缩标题宽度，最小压缩至该值。<br />默认值：48vp。<br />装饰器类型：@Trace        |
 
 ### constructor
 
@@ -862,10 +862,10 @@ ToolbarV2TitleStyle的构造函数。
 
 | 名称       | 类型                                                          | 只读 | 可选 | 说明                                                       |
 | :--------- | :------------------------------------------------------------ | :--- | :--- | :--------------------------------------------------------- |
-| fontSize   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的字体大小。<br />单位：vp。<br />默认值：20fp。               |
+| fontSize   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的字体大小。<br />默认单位：vp。<br />默认值：20fp。               |
 | fontColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 否   | 是   | 标题的字体颜色。<br />默认值：$r('sys.color.font_primary')。 |
 | fontWeight | [FontWeight](ts-appendix-enums.md#fontweight)                 | 否   | 是   | 标题的字体粗细。<br />默认值：FontWeight.Bold。              |
-| minLength  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的最小宽度。<br />单位：vp。<br />工具栏空间不足时优先压缩标题宽度，最小压缩至该值。<br />默认值：48vp。               |
+| minLength  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的最小宽度。<br />默认单位：vp。<br />工具栏空间不足时优先压缩标题宽度，最小压缩至该值。<br />默认值：48vp。               |
 
 ## ToolbarV2OverflowMenuStyle
 
