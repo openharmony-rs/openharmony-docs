@@ -855,6 +855,7 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 | 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
@@ -931,6 +932,7 @@ addEvents(events: Event[]): Promise\<void>
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 | 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
@@ -1131,6 +1133,7 @@ deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 | 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 
 **示例**：
@@ -1214,6 +1217,7 @@ deleteEvents(ids: number[]): Promise\<void>
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 | 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 
 **示例**：
@@ -1492,6 +1496,7 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 | 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
@@ -1588,6 +1593,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 | 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
@@ -1856,6 +1862,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 | 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
