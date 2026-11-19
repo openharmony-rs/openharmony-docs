@@ -80,3 +80,4 @@ Enumerates the vibration priorities in different scenarios. A vibration with a h
 | VIBRATOR_USAGE_MEDIA = 6 | Media. Choose this option in media app scenarios such as music and videos. The vibration is synchronized with the media content to enhance the immersive experience.|
 | VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback. Choose this option in scenarios that require physical feedback, such as games and simulations. It provides physical interaction experiences such as physical key feedback and tactile force feedback. The vibration mode can be customized to simulate real touch sensations.|
 | VIBRATOR_USAGE_SIMULATED_REALITY = 8 | Simulated reality Choose this option for tactile feedback in immersive scenarios such as VR/AR. The vibration intensity and mode are precisely controllable to provide realistic environmental feedback.|
+| VIBRATOR_USAGE_MAX | Maximum value, no actual meaning. |

@@ -6,19 +6,13 @@
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
-@system.sensor模块是面向轻量穿戴（Lite Wearable）设备的传感器数据订阅模块，提供对加速度传感器、罗盘传感器、距离传感器、环境光传感器、计步传感器、气压计传感器、心率传感器、设备佩戴状态传感器、设备方向传感器及陀螺仪传感器的数据订阅与取消订阅能力。
-
-本模块用于帮助应用实时获取各类传感器数据变化通知，实现运动监测、健康追踪、环境感知、方向识别、屏幕自适应等功能。每种传感器均提供subscribe/unsubscribe配对接口，佩戴状态传感器额外提供getOnBodyState单次查询接口。
-
-非轻量穿戴设备类型，该模块从API version 8起不再维护，建议使用[@ohos.sensor](js-apis-sensor.md)模块替代。同一应用对同一传感器多次调用订阅接口时，仅最后一次调用生效。
-
-本模块采用"订阅-取消订阅"模式：通过sensor.on订阅传感器数据，系统按指定频率回调上报数据；不再需要时通过sensor.off取消订阅。on与off需配对使用，先订阅后取消。同一应用对同一传感器多次订阅仅最后一次生效。从API version 19开始，sensor.off新增sensorInfoParam参数，支持按deviceId和sensorIndex精确取消指定设备上的传感器回调，不传入时默认取消本地设备回调；API version 10的sensor.off不含此参数，仅支持取消本地设备回调。
+@ohos.sensor 模块是鸿蒙操作系统提供的传感器服务模块，属于 SensorServiceKit。本页面描述该模块的系统接口，支持订阅和取消订阅颜色传感器、吸收比率（SAR）传感器的数据。
 
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.sensor (传感器)](js-apis-sensor.md)。
 
 ## 导入模块
 
