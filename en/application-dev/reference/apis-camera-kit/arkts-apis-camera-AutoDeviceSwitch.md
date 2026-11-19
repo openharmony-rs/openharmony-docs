@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:24:06.348Z pushedAt=2026-11-19T11:46:56.182Z nl=1 -->
 
 **AutoDeviceSwitch** inherits from [AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md) and is used to enable or disable automatic camera switch. This capability can be used only on foldable devices. For details about the development, see [Practices for Automatic Camera Switching (ArkTS)](../../media/camera/camera-auto-switch.md).
 
@@ -58,7 +59,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function enableAutoDeviceSwitch(session: camera.PhotoSession, isEnable: boolean): void {
   try {
-    session.enableAutoDeviceSwitch(isEnable);
+    if (session.isAutoDeviceSwitchSupported()) {
+      session.enableAutoDeviceSwitch(isEnable);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}, error message: ${err.message}`);

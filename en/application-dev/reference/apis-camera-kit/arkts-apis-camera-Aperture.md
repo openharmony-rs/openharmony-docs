@@ -1,12 +1,11 @@
 # Interface (Aperture)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leoqsl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:09.254Z pushedAt=2026-06-25T06:57:19.543Z -->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:24:03.848Z pushedAt=2026-11-19T11:46:47.946Z nl=1 -->
 
 **Aperture** inherits from [ApertureQuery](arkts-apis-camera-ApertureQuery.md).
 
@@ -74,6 +73,7 @@ Sets a physical aperture. Obtain the aperture values that can be set at differen
 
 For example, the physical aperture can be set to **2.6** when **zoomRange** is within the range of [1, 4]. Therefore, you need to set the focal length to be within the range of [1, 4] using [setZoomRatio](arkts-apis-camera-Zoom.md#setzoomratio11) in order to set the physical aperture value to **2.6**.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -100,7 +100,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setPhysicalAperture(photoSession: camera.PhotoSession, aperture: number): void {
   try {
-    photoSession.setPhysicalAperture(aperture);
+    let apertures: Array<camera.PhysicalAperture> = photoSession.getSupportedPhysicalApertures();
+    let index = apertures.findIndex((apertureValue: camera.PhysicalAperture) =>
+      apertureValue.apertures.includes(aperture));
+    if (index < 0) {
+      console.error(`invalid aperture`);
+      return;
+    }
+    let curZoomValue = photoSession.getZoomRatio();
+    if (curZoomValue >= apertures[index].zoomRange.min && curZoomValue <= apertures[index].zoomRange.max) {
+      photoSession.setPhysicalAperture(aperture);
+    } else {
+      console.error(`current aperture: ${aperture} invalid in zoomRatio: ${curZoomValue}.`);
+      return;
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;

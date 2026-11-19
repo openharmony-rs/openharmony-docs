@@ -5,7 +5,7 @@
 <!--Designer: @leoqsl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8371749c7c3f8ef5ab377e8bcdd47d6eaee344bb translatedAt=2026-10-08T13:04:52.993Z pushedAt=2026-10-12T11:47:20.739Z -->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:30:37.317Z pushedAt=2026-11-19T11:52:24.729Z nl=1 -->
 
 **ManualExposure** inherits from [ManualExposureQuery](arkts-apis-camera-ManualExposureQuery.md).
 
@@ -81,7 +81,7 @@ The setting takes effect only when [ExposureMode](arkts-apis-camera-e.md#exposur
 
 | Parameter     | Type                          | Mandatory | Description                          |
 | -------- | -------------------------------| ---- | ----------------------------- |
-| exposureDuration   | number  | Yes  | Exposure duration, in microseconds.                |
+| exposureDuration   | number  | Yes   | Exposure duration, in μs. Obtain the supported exposure duration range using the [getSupportedExposureDurationRange](arkts-apis-camera-ManualExposureQuery.md#getsupportedexposuredurationrange24) API.                 |
 
 **Error codes**
 
@@ -98,6 +98,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setExposureDuration(photoSession: camera.PhotoSession, exposureDuration: number): void {
   try {
+    let durationRange = photoSession.getSupportedExposureDurationRange();
+    if (!durationRange.includes(exposureDuration)) {
+      console.error(`invalid exposureDuration.`);
+      return;
+    }
     photoSession.setExposureDuration(exposureDuration);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
