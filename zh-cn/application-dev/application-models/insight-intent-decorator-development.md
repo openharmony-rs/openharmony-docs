@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍从API 20开始使用装饰器开发标准意图和自定义意图的方法，涵盖意图执行器、意图实体及动态查询场景。"
+keywords: [装饰器开发, InsightIntentEntry, InsightIntentEntity, InsightIntentLink, 标准意图, 自定义意图, 意图实体查询]
+doctype: guide
+status: active
+---
 # 使用装饰器开发意图
 
 <!--Kit: Ability Kit-->

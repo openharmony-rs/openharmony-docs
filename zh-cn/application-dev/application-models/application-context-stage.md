@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "系统讲解Stage模型中各类Context的继承关系、获取方式，以及在文件路径、加密分区、生命周期监听等场景的使用方法。"
+keywords: [Context, ApplicationContext, UIAbilityContext, AbilityStageContext, ExtensionContext, 应用文件路径, 加密分区, 生命周期监听]
+doctype: guide
+status: active
+---
 # 应用上下文Context
 
 <!--Kit: Ability Kit-->
