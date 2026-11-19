@@ -585,6 +585,20 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    在`NODE_ON_DROP`分支将URI列表交给业务处理，并通过[OH_ArkUI_DragEvent_SetDragResult](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_setdragresult)设置拖拽结果。示例的`NotifyUris()`将URI列表传递给ArkTS侧的`handleUris()`。
 
    <!-- @[virtual_drag_c_drop_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   void OnDrop(ArkUI_DragEvent* event)
+   {
+       if (event == nullptr) {
+           return;
+       }
+       std::vector<std::string> uris;
+       const bool received = GetDroppedFileUris(event, uris);
+       const bool delivered = NotifyUris(uris); // 将URI列表交给业务回调。
+       OH_ArkUI_DragEvent_SetDragResult(event,
+           received && delivered ? ARKUI_DRAG_RESULT_SUCCESSFUL : ARKUI_DRAG_RESULT_FAILED);
+   }
+   ```
 
 
 回调参数、返回值及资源释放要求参见[OH_UDMF_VirtualFileOnRead](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileonread)、[OH_UDMF_VirtualFileOnCancel](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileoncancel)和[OH_UDMF_VirtualFileFinalize](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfilefinalize)。
