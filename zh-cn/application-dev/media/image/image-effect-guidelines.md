@@ -126,7 +126,7 @@ target_link_libraries(entry PUBLIC
 
    纹理输入场景是使用硬件GPU渲染的高性能场景，此场景下，应用需要提供合法的OpenGL上下文环境，并在正确的环境下，设置参数以及进行渲染操作。该场景还需要引入EGL、OpenGL ES以及色彩空间管理相关头文件，例如`#include <EGL/egl.h>`、`#include <GLES3/gl3.h>`、`#include <native_color_space_manager/native_color_space_manager.h>`。
 
-   纹理输入类型从API version 20开始支持。应用需要自行创建输入、输出纹理（例如通过`glGenTextures`创建），并保证输入纹理与输出纹理不是同一块纹理。纹理输入场景下，滤镜直接处理GPU纹理，仅支持输入、输出均为纹理缓冲（`EFFECT_BUFFER_TYPE_TEXTURE`）的滤镜，例如`Brightness`、`Contrast`；`Crop`等需要PixelMap信息的滤镜以及以像素缓冲注册的自定义滤镜不适用于纹理输入，需要从滤镜链中排除。
+   纹理输入类型从API版本20开始支持。应用需要自行创建输入、输出纹理（例如通过glGenTextures创建），并保证输入纹理与输出纹理不是同一块纹理。纹理输入场景下，滤镜直接处理GPU纹理，仅支持输入、输出均为纹理缓冲（EFFECT_BUFFER_TYPE_TEXTURE）的滤镜，例如Brightness、Contrast。Crop等需要PixelMap信息的滤镜以及以像素缓冲注册的自定义滤镜不适用于纹理输入，需要从滤镜链中排除。
 
    <!-- @[image_effect_texture_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
@@ -166,7 +166,7 @@ target_link_libraries(entry PUBLIC
        this.mSurfaceId = this.mXComponentController.getXComponentSurfaceId();
        // 调用native接口获取输入SurfaceId。
        this.mSurfaceId = imageEffect.getSurfaceId(this.mSurfaceId);
-       // 调用相机接口启动预览，将获取到的输入SurfaceId传递给相机框架
+       // 调用相机接口启动预览，将获取到的输入SurfaceId传递给相机框架。
        this.startPreview(this.mSurfaceId);
      })
      .width('100%')
