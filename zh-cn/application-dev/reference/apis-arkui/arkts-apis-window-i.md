@@ -516,6 +516,23 @@
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | focusOnShow | boolean  |  否  |  是  | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦，默认为true。该参数对主窗口、模态窗、dialog窗口不生效。|
 
+## WindowShowParams
+
+应用显示时的窗口参数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| windowFocused | boolean  |  否  |  是  | 窗口显示时是否自动获取焦点。true表示窗口显示时自动获取焦点，false表示窗口显示时不自动获取焦点。默认为true。|
+| raiseTop | boolean  |  否  |  是  | 窗口显示时是否自动抬升至顶层。true表示窗口显示时自动抬升至顶层，false表示窗口显示时不自动抬升至顶层。默认为true。<br>**说明：**<br>1. 该参数仅对应用主窗口生效；如需提升子窗口到应用内顶层，请使用[raiseToAppTop()](arkts-apis-window-Window.md#raisetoapptop14)。<br>2. 该参数仅调整应用主窗口之间的前后层级，不会使窗口位于层级更高的窗口（如画中画窗口、全局悬浮窗）之上；如需跨应用置顶，请使用[setWindowTopmost()](arkts-apis-window-Window.md#setwindowtopmost14)。|
+
 ## WindowSnapshotAnimationConfig
 
 窗口截图动画配置，仅支持在调用[maximizeWithOptions()](arkts-apis-window-Window.md#maximizewithoptions)或[recover()](arkts-apis-window-Window.md#recover)接口时配置。
