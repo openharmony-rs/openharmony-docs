@@ -284,6 +284,8 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 > - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟，不适宜使用在对性能敏感的场景。
 >
 > - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
+>
+> - 当未给CustomBuilder根组件设置宽高时，系统以屏幕尺寸作为默认测量约束，截取区域不超过屏幕范围。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
