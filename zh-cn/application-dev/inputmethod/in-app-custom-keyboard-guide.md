@@ -72,7 +72,8 @@ ArkTS-Dyn示例：
 
 <!-- @[manage_agent_sessions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/InAppCustomKeyboard/entry/src/main/ets/keyboard/InAppKeyboardSession.ets) -->
 
-```ts
+``` TypeScript
+
 import { inputMethodEngine } from '@kit.IMEKit';
 import type { KeyEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -305,7 +306,8 @@ ArkTS-Sta示例：
 
 <!-- @[manage_agent_sessions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/InAppCustomKeyboardSta/entry/src/main/ets/keyboard/InAppKeyboardSession.ets) -->
 
-```ts
+``` TypeScript
+
 import { inputMethodEngine } from '@kit.IMEKit';
 import type { KeyEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -548,7 +550,8 @@ ArkTS-Dyn示例：
 
 <!-- @[draw_keyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/InAppCustomKeyboard/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
+
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -760,7 +763,8 @@ ArkTS-Sta示例：
 
 <!-- @[draw_keyboard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/InAppCustomKeyboardSta/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
+
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
