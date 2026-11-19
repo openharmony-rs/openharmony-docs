@@ -151,6 +151,8 @@ genPrivacyTarget(targetElement: TargetElement, privacyProtocol: PrivacyProtocol)
 
 为给定元素生成隐私目标。隐私目标是搜索元素的加密表示，可用于隐私保护搜索而不泄露原始数据。使用Promise异步回调。
 
+<!--PR1><!--PR1End-->
+
 **起始版本**：26.0.1
 
 **原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
@@ -207,6 +209,8 @@ async function genTarget() {
 privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: PrivacyProtocol): Promise&lt;PrivacySearchResult&gt;
 
 执行隐私保护搜索。根据加密的隐私目标搜索给定的数据集元素，不向对方透露目标或数据集内容。使用Promise异步回调。
+
+<!--PR1><!--PR1End-->
 
 **起始版本**：26.0.1
 
@@ -273,6 +277,8 @@ async function search(privacyTarget: Uint8Array) {
 getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: PrivacyProtocol): Promise&lt;SearchResult&gt;
 
 获取隐私搜索结果与最终搜索结果。解密[privacySearch](#privacycomputationprivacysearch)返回的结果密文，获取最终匹配结果与可选的附加值。使用Promise异步回调。
+
+<!--PR1><!--PR1End-->
 
 **起始版本**：26.0.1
 
