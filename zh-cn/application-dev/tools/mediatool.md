@@ -19,8 +19,6 @@ mediatool是一个轻量级的命令行工具集合，为系统自带工具，�
 - 系统设置中开启开发者模式。
 - 使用hdc shell进入命令行执行模式。
 
-<!--DelEnd-->
-
 ### 导出命令（mediatool recv）
 
 ```shell
@@ -263,7 +261,7 @@ uri是媒体库资产的唯一标识符。mediatool使用uri来判断需要操�
 
 可使用以下方式获取uri：
 
-* mediatool query加上-u的选项可以返回对应媒体资产的uri。需要输入对应资产的显示名（在图库中展示的名字带后缀名）。
+* mediatool query加上-u的选项可以返回对应媒体资产的URI。需要输入对应资产的显示名，即在图库中展示的名字带后缀名。
 
 媒体库uri可以用于mediatool recv命令导出特定媒体库资产，也可以用于mediatool delete删除特定媒体库资产。
 
