@@ -332,7 +332,7 @@
            return nullptr;
        }
        OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Subscribe successful");
-       std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
+       SENSOR_CAPI_WAIT_FOR(std::chrono::milliseconds(SLEEP_TIME_MS));
        // 取消订阅传感器数据。
        ret = OH_Sensor_Unsubscribe(id, sensorSubscriber);
        if (ret != SENSOR_SUCCESS) {
