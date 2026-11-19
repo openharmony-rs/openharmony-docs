@@ -250,6 +250,81 @@ struct SectionExample {
 
 ![tabContentSidebarSection](figures/sidebarSection.png)
 
+### keepAlive
+
+keepAlive(keepAlive: Optional\<boolean\>)
+
+标记该TabContent为不可回收状态。当配置了[Tabs.cachedMaxCount](ts-container-tabs.md#cachedmaxcount19)时，若该TabContent的keepAlive设置为true，即使其超出缓存范围，也不会被缓存机制销毁。未通过该接口设置时，标记该TabContent为可回收状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ----- |
+| keepAlive | Optional\<boolean\> | 是 | 是否将该TabContent保持为常驻不可回收状态。<br/>设置为true时该TabContent不会被缓存机制销毁，设置为false时会被缓存机制销毁。<br/>设置undefined时恢复默认值false。 |
+
+**示例：**
+
+该示例通过[keepAlive](#keepalive)属性，设置该TabContent为不可回收状态。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct KeepAliveExample {
+  build() {
+    Tabs() {
+      TabContent() {
+        MyComponent({ color: '#00CB87' })
+      }.tabBar(SubTabBarStyle.of('green')).keepAlive(true) // 设置第一个页签内容页不受cachedMaxCount影响，页签切换时常驻不销毁
+
+      TabContent() {
+        MyComponent({ color: '#007DFF' })
+      }.tabBar(SubTabBarStyle.of('blue'))
+
+      TabContent() {
+        MyComponent({ color: '#FFBF00' })
+      }.tabBar(SubTabBarStyle.of('yellow'))
+
+      TabContent() {
+        MyComponent({ color: '#E67C92' })
+      }.tabBar(SubTabBarStyle.of('pink'))
+    }
+    .width(360)
+    .height(296)
+    .backgroundColor('#F1F3F5')
+    .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE) // 设置最多缓存3个子组件（当前页及两侧各1个）
+  }
+}
+
+@Component
+struct MyComponent {
+  private color: string = '';
+
+  aboutToAppear(): void {
+    console.info('aboutToAppear backgroundColor:' + this.color);
+  }
+
+  aboutToDisappear(): void {
+    console.info('aboutToDisappear backgroundColor:' + this.color);
+  }
+
+  build() {
+    Column()
+      .width('100%')
+      .height('100%')
+      .backgroundColor(this.color)
+  }
+}
+```
+
 ## TabBarOptions<sup>18+</sup>对象说明
 
 设置页签内的图片和文字内容。
