@@ -134,15 +134,15 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    // 从API version 20开始支持moov box位于mdat box前。默认值为0，设置1代表moov box位于mdat box前。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_MOOV_FRONT, 1);
    // 从API version 24开始支持设置纬度，值类型为float，范围为[-90.0, 90.0]。当需要设置地理位置信息时，纬度和经度是必选的，不能仅设置一种。
-   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LATITUDE, 39.9);
+   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LATITUDE, KEY_LATITUDE);
    // 从API version 24开始支持设置经度，值类型为float，范围为[-180.0, 180.0]。当需要设置地理位置信息时，纬度和经度是必选的，不能仅设置一种。
-   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LONGITUDE, 116.3);
+   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LONGITUDE, KEY_LONGITUDE);
    // 从API version 24开始支持设置海拔，值类型为float，设置地理位置信息时海拔是可选的。
-   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_ALTITUDE, 44.4);
+   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_ALTITUDE, KEY_ALTITUDE);
 
    // 设置用户自定义key（需要com.openharmony.开头）。
-   OH_AVFormat_SetIntValue(format, "com.openharmony.testInt", 1024); // 值类型为int32_t。
-   OH_AVFormat_SetFloatValue(format, "com.openharmony.testFloat", 1.024); // 值类型为float。
+   OH_AVFormat_SetIntValue(format, "com.openharmony.testInt", OPENHARMONY_TEST_INT); // 值类型为int32_t。
+   OH_AVFormat_SetFloatValue(format, "com.openharmony.testFloat", OPENHARMONY_TEST_FLOAT); // 值类型为float。
    OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256个字符。
    uint8_t testData[] = {1, 2, 3};
    // 从API version 20开始支持值类型为uint8_t*。 
@@ -169,8 +169,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat *formatAudio = OH_AVFormat_Create(); // 使用OH_AVFormat_Create创建format，这里以封装44100Hz采样率、2声道的AAC-LC音频为例。
    CHECK_AND_RETURN_RET_LOG(formatAudio != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create audio format failed");
    OH_AVFormat_SetStringValue(formatAudio, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_AAC); // 必填。
-   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_SAMPLE_RATE, 44100); // 必填。
-   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_CHANNEL_COUNT, 2); // 必填。
+   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_SAMPLE_RATE, AUD_SAMPLE_RATE); // 必填。
+   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_CHANNEL_COUNT, AUD_CHANNEL_COUNT); // 必填。
    OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_PROFILE, AAC_PROFILE_LC); // 选填。
    if (buffer != nullptr && size > 0) {
        OH_AVFormat_SetBuffer(formatAudio, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 选填。
@@ -222,8 +222,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat *formatVideo = OH_AVFormat_Create();
    CHECK_AND_RETURN_RET_LOG(formatVideo != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create video format failed");
    OH_AVFormat_SetStringValue(formatVideo, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_AVC); // 必填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, 1280); // 必填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, 720); // 必填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, KEY_WIDTH); // 必填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, KEY_HEIGHT); // 必填。
    if (buffer != nullptr && size > 0) {
        OH_AVFormat_SetBuffer(formatVideo, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 选填。
    }
@@ -302,8 +302,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat *audioAuxlFormat = OH_AVFormat_Create();
    CHECK_AND_RETURN_RET_LOG(audioAuxlFormat != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create audio format failed");
    OH_AVFormat_SetStringValue(audioAuxlFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_AAC); // 必填。
-   OH_AVFormat_SetIntValue(audioAuxlFormat, OH_MD_KEY_AUD_SAMPLE_RATE, 44100); // 必填。
-   OH_AVFormat_SetIntValue(audioAuxlFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, 2); // 必填。
+   OH_AVFormat_SetIntValue(audioAuxlFormat, OH_MD_KEY_AUD_SAMPLE_RATE, AUD_SAMPLE_RATE); // 必填。
+   OH_AVFormat_SetIntValue(audioAuxlFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, AUD_CHANNEL_COUNT); // 必填。
    OH_AVFormat_SetIntValue(audioAuxlFormat, OH_MD_KEY_PROFILE, AAC_PROFILE_LC); // 选填。
    OH_AVFormat_SetIntValue(audioAuxlFormat, OH_MD_KEY_TRACK_TYPE,
        static_cast<int32_t>(OH_MediaType::MEDIA_TYPE_AUXILIARY)); // 必填。
@@ -330,8 +330,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat *videoAuxlFormat = OH_AVFormat_Create();
    CHECK_AND_RETURN_RET_LOG(videoAuxlFormat != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create video format failed");
    OH_AVFormat_SetStringValue(videoAuxlFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_AVC); // 必填。
-   OH_AVFormat_SetIntValue(videoAuxlFormat, OH_MD_KEY_WIDTH, 1280); // 必填。
-   OH_AVFormat_SetIntValue(videoAuxlFormat, OH_MD_KEY_HEIGHT, 720); // 必填。
+   OH_AVFormat_SetIntValue(videoAuxlFormat, OH_MD_KEY_WIDTH, KEY_WIDTH); // 必填。
+   OH_AVFormat_SetIntValue(videoAuxlFormat, OH_MD_KEY_HEIGHT, KEY_HEIGHT); // 必填。
    OH_AVFormat_SetIntValue(videoAuxlFormat, OH_MD_KEY_TRACK_TYPE,
        static_cast<int32_t>(OH_MediaType::MEDIA_TYPE_AUXILIARY)); // 必填。
    OH_AVFormat_SetStringValue(videoAuxlFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, "vdep"); // 必填。
@@ -356,8 +356,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat *formatCover = OH_AVFormat_Create();
    CHECK_AND_RETURN_RET_LOG(formatCover != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create cover format failed");
    OH_AVFormat_SetStringValue(formatCover, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_IMAGE_JPG);
-   OH_AVFormat_SetIntValue(formatCover, OH_MD_KEY_WIDTH, 1280);
-   OH_AVFormat_SetIntValue(formatCover, OH_MD_KEY_HEIGHT, 720);
+   OH_AVFormat_SetIntValue(formatCover, OH_MD_KEY_WIDTH, KEY_WIDTH);
+   OH_AVFormat_SetIntValue(formatCover, OH_MD_KEY_HEIGHT, KEY_HEIGHT);
    
    int ret = OH_AVMuxer_AddTrack(muxer_, &coverTrackId, formatCover);
    OH_AVFormat_Destroy(formatCover); // 销毁。
