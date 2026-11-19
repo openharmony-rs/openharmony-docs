@@ -356,6 +356,7 @@
     - [modular_object_extension_context.h](capi-modular-object-extension-context-h.md)
     - [modular_object_extension_manager.h](capi-modular-object-extension-manager-h.md)
   - 结构体<!--ability-struct-->
+    - [OH_AT_PermissionsRequestResult](capi-abilityaccesscontrol-oh-at-permissionsrequestresult.md)
     - [AbilityBase_Element](capi-abilitybase-element.md)
     - [AbilityBase_Want](capi-abilitybase-want.md)
     - [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md)
