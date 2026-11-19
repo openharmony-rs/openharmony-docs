@@ -1362,7 +1362,7 @@ font.setThemeFontFollowed(true);
 console.info("font is theme font followed: " + font.isThemeFontFollowed());
 ```
 
-## isThemeFontFollowed()<sup>15+</sup>
+## isThemeFontFollowed<sup>15+</sup>
 
 isThemeFontFollowed(): boolean
 
