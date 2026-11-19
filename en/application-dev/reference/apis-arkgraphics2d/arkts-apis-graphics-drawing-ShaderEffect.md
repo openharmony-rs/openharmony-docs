@@ -235,7 +235,7 @@ Creates a **ShaderEffect** object that generates a radial gradient based on the 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes  | Center of the circle.|
-| radius   | number  | Yes  | Radius of the gradient. A negative number is invalid. The value is a floating point number.|
+| radius   | number  | Yes  | Radius of the gradient. A non-positive number is invalid. The value is a floating point number.|
 | colors | Array\<number> | Yes  | Array of colors to distribute between the center and ending shape of the circle. The values in the array are 32-bit (ARGB) unsigned integers.|
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | Yes  | Tile mode of the shader effect.|
 | pos | Array\<number> \| null | No  | Relative position of each color in the color array. The array length must be the same as that of **colors**. The first element in the array must be 0.0, the last element must be 1.0, and the middle elements must be between 0.0 and 1.0 and increase by index. The default value is null, indicating that colors are evenly distributed between the center and ending shape of the circle.|
