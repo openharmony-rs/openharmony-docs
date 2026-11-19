@@ -53,3 +53,7 @@ status: active
 | 页面数据通道 | [ArkWebJsBridge](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebJsBridge) | ArkTS、C/C++ | 使用PostWebMessage系列Native接口，演示C/C++侧建立应用与前端页面的数据通道并收发string与buffer消息。 |
 | 网络请求拦截 | [ArkWebSchemeHandler](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler) | ArkTS、C/C++ | 使用SchemeHandler拦截Web组件网络请求，演示HTTP(s)及自定义协议请求拦截并构造自定义响应头与响应体。 |
 | 崩溃信息收集 | [ArkWebGetDmpFiles](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles) | ArkTS、C/C++ | 使用Crashpad收集Web组件崩溃信息，演示渲染进程崩溃时dmp崩溃文件的获取、导出与查看，用于解析崩溃原因。 |
+<!--RP1--><!--RP1End-->
+<!--RP2--><!--RP2End-->
+<!--RP3--><!--RP3End-->
+<!--RP4--><!--RP4End-->
