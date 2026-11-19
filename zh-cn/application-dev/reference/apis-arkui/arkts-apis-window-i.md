@@ -531,21 +531,6 @@
 | windowFocused | boolean  |  否  |  是  | 窗口显示时是否自动获取焦点。true表示窗口显示时自动获取焦点，false表示窗口显示时不自动获取焦点。默认为true。|
 | raiseTop | boolean  |  否  |  是  | 窗口显示时是否自动抬升至顶层。true表示窗口显示时自动抬升至顶层，false表示窗口显示时不自动抬升至顶层。默认为true。<br>**说明：**<br>1. 该参数仅对应用主窗口生效；如需提升子窗口到应用内顶层，请使用[raiseToAppTop()](arkts-apis-window-Window.md#raisetoapptop14)。<br>2. 该参数仅调整应用主窗口之间的前后层级，不会使窗口位于层级更高的窗口（如画中画窗口、全局悬浮窗）之上；如需跨应用置顶，请使用[setWindowTopmost()](arkts-apis-window-Window.md#setwindowtopmost14)。|
 
-## WindowAnimationConfig<sup>20+</sup>
-
-窗口动画参数配置。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-| 名称     | 类型                                                      | 只读 | 可选 | 说明                                                         |
-| -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
-| curve    | [WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)           |  否  |  否   | 动画曲线类型。                                               |
-| duration | number                                                    |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
-| param    | [WindowAnimationCurveParam](arkts-apis-window-t.md#windowanimationcurveparam20) |  否  |  是   | 动画曲线参数，根据动画曲线类型决定是否必填。不设置，则默认为空。                 |
-| focusOnShow | boolean  |  否  |  是  | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦，默认为true。该参数对主窗口、模态窗、dialog窗口不生效。|
-
 ## WindowSnapshotAnimationConfig
 
 窗口截图动画配置，仅支持在调用[maximizeWithOptions()](arkts-apis-window-Window.md#maximizewithoptions)或[recover()](arkts-apis-window-Window.md#recover)接口时配置。
