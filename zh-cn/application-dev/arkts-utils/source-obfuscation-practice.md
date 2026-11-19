@@ -119,7 +119,7 @@ status: active
 2. 对于集成态HSP包的内部混淆效果，开发者可以参阅[HAP包混淆建议](#hap包混淆建议)中的所有建议。
 3. 集成态HSP包在发布后会被各方依赖，需要充分验证使用方开启混淆时HSP包接口可以被正常调用。
 
-> **说明**
+> **说明**：
 >
 > HSP生成`obfuscation.txt`的规则仅来源于当前模块的`consumer-rules.txt`文件。不包括依赖模块的`consumer-rules.txt`文件或`obfuscation.txt`文件。
 >

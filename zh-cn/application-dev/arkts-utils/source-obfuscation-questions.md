@@ -328,7 +328,7 @@ addNum
 <!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets) -->
 
 ``` TypeScript
-// 混淆前 
+// 混淆前
 // hsp模块
 export function addNum(a: number, b: number) {
   return a + b;

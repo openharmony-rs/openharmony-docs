@@ -331,7 +331,7 @@ status: active
 
 ## -remove-comments
 
-删除编译生成的声明文件中的JsDoc注释，效果如下：
+删除编译生成的声明文件中的JSDoc注释，效果如下：
 
 混淆前：
   <!-- @[optionExample_removeComments](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
@@ -348,7 +348,7 @@ status: active
   declare let count: number;
   ```
 
-使用[`-keep-comments`](./source-obfuscation-keep-options.md#-keep-comments)配置保留声明文件中的JsDoc注释。
+使用[`-keep-comments`](./source-obfuscation-keep-options.md#-keep-comments)配置保留声明文件中的JSDoc注释。
 
 >**说明**：
 >
@@ -617,7 +617,7 @@ status: active
 
 `// @KeepAsConsumer`：用来标记需要保留的名称，通常写在代码上一行，表示该名称在编译时不会被混淆。在HAR/HSP模块中，被@KeepAsConsumer标记的名称还会生成在obfuscation.txt中；在HAP模块中，@KeepAsConsumer和@KeepSymbol的效果相同。
 
-> **说明**
+> **说明**：
 >
 > 以上两种标记均为注释，不可去除"//"。
 
@@ -831,7 +831,7 @@ enum MyEnum {
 
 - 同时开启属性混淆（-enable-property-obfuscation）和字符串属性混淆（-enable-string-property-obfuscation）时，配置保留对象字面量（-keep-object-props）选项后，对象字面量中的属性名称和字符串属性名称会被收集到白名单中，不会被混淆。  
 
->**说明**
+>**说明**：
 >
 > 在开启属性混淆或者同时开启属性混淆和字符串属性混淆的情况下，-keep-object-props选项才会生效，否则该选项无效。
 
