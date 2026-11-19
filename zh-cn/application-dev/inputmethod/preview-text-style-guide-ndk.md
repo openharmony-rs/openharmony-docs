@@ -26,7 +26,7 @@ PreviewTextStyleJS示例工程中的C页面包含一个自绘编辑框和绑定/
 
 <!-- @[preview_style_c_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, uint32_t length,
     int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)
 {
@@ -63,7 +63,7 @@ int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const ch
 
 <!-- @[preview_style_c_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 auto result = OH_TextEditorProxy_SetSetPreviewTextFunc(textEditorProxy, SetPreviewTextFunc);
 if (result != IME_ERR_OK) {
     return result;
