@@ -367,15 +367,16 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    **方法二：用OH_AVFormat_CreateVideoFormat创建format**
 
-   ```c++
+   <!-- @[Muxer::CreateFormat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    int coverTrackId = -1;
    OH_AVFormat *formatCover = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_IMAGE_JPG, 1280, 720);
    
-   int ret = OH_AVMuxer_AddTrack(muxer, &coverTrackId, formatCover);
-   if (ret != AV_ERR_OK || coverTrackId < 0) {
-       // 添加封面失败。
-   }
+   int ret = OH_AVMuxer_AddTrack(muxer_, &coverTrackId, formatCover);
    OH_AVFormat_Destroy(formatCover); // 销毁。
+   CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && coverTrackId >= 0, AVCODEC_SAMPLE_ERR_ERROR,
+       "Add cover track failed, ret: %{public}d", ret);
    ```
 
 9. 调用OH_AVMuxer_Start()开始封装。
@@ -513,7 +514,9 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
 1. 添加头文件。
 
-   ```c++
+   <!-- @[Muxer::Include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    #include <multimedia/player_framework/native_avmuxer.h>
    #include <multimedia/player_framework/native_avcodec_base.h>
    #include <multimedia/player_framework/native_avformat.h>
@@ -538,19 +541,24 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
    > - 已定义的key必须在OH_AVMuxer_Start()前设置，用户自定义的key可以在OH_AVMuxer_Stop()前设置。
    > - flv格式不支持OH_MD_KEY_ENABLE_MOOV_FRONT。
 
-   ```c++
+   <!-- @[Muxer::AddFileData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    OH_AVFormat *format = OH_AVFormat_Create(); // 使用OH_AVFormat_Create创建format。
-
+   
    // 设置已定义的key。
-   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00.000000Z"); // 从API version 14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
-   OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test"); // 从API version 20开始支持设置备注。值类型为string。
-
+   // 从API version 14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00.000000Z");
+   // 从API version 20开始支持设置备注。值类型为string。
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test");
+   
    // 设置用户自定义key（需要com.openharmony.开头）。
    OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256个字符。
-
-   int ret = OH_AVMuxer_SetFormat(muxer, format); // 设置封装的format。
+   
+   int ret = OH_AVMuxer_SetFormat(muxer_, format); // 设置封装的format。
    if (ret != AV_ERR_OK) {
-      // 设置format失败，未找到有效待写入的key数据。
+       // 设置format失败，未找到有效待写入的key数据。
+       AVCODEC_SAMPLE_LOGW("Set format failed, ret: %{public}d", ret);
    }
    OH_AVFormat_Destroy(format); // 销毁。
    ```
@@ -562,18 +570,19 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
    > **说明：**
    >
    > 音频编解码类型为HE-AAC（AAC_PROFILE_HE或AAC_PROFILE_HE_V2）时，仅支持采样率大于等于16000Hz。
+
+   <!-- @[Muxer::AddAACTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
    
-   ```c++
+   ``` C++
    int audioTrackId = -1;
    // 以封装44100Hz采样率、2声道的AAC-LC音频为例。
    OH_AVFormat *formatAudio = OH_AVFormat_CreateAudioFormat(OH_AVCODEC_MIMETYPE_AUDIO_AAC, 44100, 2);
    OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_PROFILE, AAC_PROFILE_LC); // 选填。
-
-   int ret = OH_AVMuxer_AddTrack(muxer, &audioTrackId, formatAudio);
+   
+   int ret = OH_AVMuxer_AddTrack(muxer_, &audioTrackId, formatAudio);
    OH_AVFormat_Destroy(formatAudio);
-   if (ret != AV_ERR_OK || audioTrackId < 0) {
-       // 音频轨添加失败。
-   }
+   CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && audioTrackId >= 0, AVCODEC_SAMPLE_ERR_ERROR,
+       "Add audio track failed, ret: %{public}d", ret);
    ```
 
    示例中添加音频轨的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤5的方法二一致。
@@ -590,10 +599,14 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
    当视频轨需要设置色彩信息时，在使用OH_AVMuxer_AddTrack()之前先设置色彩信息相关key。
 
-   ```c++
+   <!-- @[Muxer::SetVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // 选填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // 选填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS,
+       OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS,
+       OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // 选填。
    OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_RANGE_FLAG, 1); // 选填。值为0代表limited range，值为1代表full range。
    ```
 
