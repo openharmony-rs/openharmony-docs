@@ -345,6 +345,56 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                }
    ```
 
+## 虚拟文件拖拽
+
+从API版本26.1.0开始，支持通过[OH_UDMF_SetFileUriVirtualEntry](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_setfileurivirtualentry)提供虚拟文件拖拽能力。起拖方先声明文件信息，在落入方读取时提供内容，适用于网络文件尚未完整下载、压缩内容尚未解压等场景。
+
+以下以拖拽文件或目录为例，介绍C API实现虚拟文件拖拽的基本步骤。完整示例请参考<!--RP2-->[VirtualFileDrag_C](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C)<!--RP2End-->。
+
+1. 定义虚拟文件回调。
+
+   实现[OH_UDMF_VirtualFileCallbacks](../reference/apis-arkdata/capi-udmf-oh-udmf-virtualfilecallbacks.md)中的回调，业务可替换为自己的数据源实现。
+
+   <!-- @[virtual_drag_c_callbacks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_provider.cpp) -->
+
+
+2. 创建拖拽数据。
+
+   通过[OH_UDMF_CreateVirtualFileInfo](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_createvirtualfileinfo)关联节点和回调，再通过[OH_UDMF_SetFileUriVirtualEntry](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_setfileurivirtualentry)构造拖拽数据。目录节点的构造参见[OH_UDMF_CreateVirtualDirectoryItem](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_createvirtualdirectoryitem)和[OH_UDMF_AddVirtualItemChild](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_addvirtualitemchild)。
+
+   <!-- @[virtual_drag_c_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_provider.cpp) -->
+
+
+3. 设置起拖数据。
+
+   注册[NODE_ON_DRAG_START和NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，通过[OH_ArkUI_DragEvent_SetData](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_setdata)设置起拖数据。完整节点初始化见示例中的`napi_init.cpp`。
+
+   <!-- @[virtual_drag_c_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
+
+
+4. 配置落入节点。
+
+   通过[OH_ArkUI_SetNodeAllowedDropDataTypes](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodealloweddropdatatypes)配置接收节点，并注册[NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
+
+   <!-- @[virtual_drag_c_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
+
+
+5. 获取文件URI。
+
+   在落入事件中，通过[OH_ArkUI_DragEvent_GetUdmfData](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_getudmfdata)取得数据，再使用[OH_UdmfRecord_GetFileUri](../reference/apis-arkdata/capi-udmf-h.md#oh_udmfrecord_getfileuri)和[OH_UdsFileUri_GetFileUri](../reference/apis-arkdata/capi-uds-h.md#oh_udsfileuri_getfileuri)提取文件URI。
+
+   <!-- @[virtual_drag_c_receive_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_receiver.cpp) -->
+
+
+6. 处理文件URI。
+
+   在`NODE_ON_DROP`分支将URI列表交给业务处理，并通过[OH_ArkUI_DragEvent_SetDragResult](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_setdragresult)设置拖拽结果。示例的`NotifyUris()`将URI列表传递给ArkTS侧的`handleUris()`。
+
+   <!-- @[virtual_drag_c_drop_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
+
+
+回调参数、返回值及资源释放要求参见[OH_UDMF_VirtualFileOnRead](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileonread)、[OH_UDMF_VirtualFileOnCancel](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileoncancel)和[OH_UDMF_VirtualFileFinalize](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfilefinalize)。
+
 ## DragAction主动发起拖拽
 
 除了通用拖拽以外，ArkUI还提供了使用C API实现主动发起拖拽的能力。以下以文本拖拽为例，详细介绍C-API实现主动发起拖拽的基本步骤，以及在开发过程中需要注意的事项。完整示例请参考<!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->。

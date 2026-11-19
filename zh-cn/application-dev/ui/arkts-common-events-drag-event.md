@@ -1272,6 +1272,55 @@ struct GridEts {
 
 ![patchDataProcess](figures/patchDataProcess.gif)
 
+### 虚拟文件拖拽
+
+从API版本26.1.0开始，支持通过[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri)提供虚拟文件拖拽能力。网络文件尚未完整下载、压缩包内文件尚未解压时，起拖方可以先提供文件信息，在落入方读取时提供文件内容。
+
+以下以拖拽文件或目录为例，介绍虚拟文件拖拽的实现步骤。完整示例请参考<!--RP2-->[VirtualFileDrag](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag)<!--RP2End-->。
+
+1. 定义虚拟文件和回调。
+
+   通过[VirtualFileItem](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#virtualfileitem)描述文件，通过[VirtualDirItem](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#virtualdiritem)描述目录。size为准确的字节数，modifyTime为毫秒时间戳；文件名不包含路径分隔符，目录层级通过subItems表示。
+
+   创建[VirtualFileInfo](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#virtualfileinfo)对象，设置根节点itemInfo和读取回调onRead。根据需要设置元数据回调onStat和取消回调onCancel。示例中的VirtualFileProvider根据文件id查找数据源，按需提供内存内容或解压后的文件内容。
+
+   <!-- @[virtual_drag_js_provider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/model/VirtualFileProvider.ets) -->
+
+
+2. 创建拖拽数据。
+
+   将虚拟文件信息设置到FileUri.virtualEntry，通过UnifiedRecord和UnifiedData创建拖拽数据。示例中的oriUri用于描述起拖方文件；落入方应使用落入事件实际获取的数据中的URI访问文件。
+
+   <!-- @[virtual_drag_js_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+
+
+3. 设置起拖数据。
+
+   设置组件的draggable属性为true，在onDragStart回调中通过event.setData()设置上述拖拽数据。
+
+   <!-- @[virtual_drag_js_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+
+
+4. 配置落入节点。
+
+   设置onDrop回调函数，接收拖拽数据。
+
+   <!-- @[virtual_drag_js_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+
+
+5. 获取文件URI。
+
+   在落入事件中，通过event.getData()取得统一数据，筛选文件记录并返回URI列表。示例只提取URI，文件的读取、复制、保存或打开由业务决定。
+
+   <!-- @[virtual_drag_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/model/DropReceiver.ets) -->
+
+
+6. 处理文件URI。
+
+   将获取到的URI列表交给业务处理。示例中的handleUris()仅提示接收数量，可替换为业务自己的处理逻辑。获取URI不代表文件内容已经读取或下载完成；需要验证按需提供内容时，可将文件拖到文件管理器等实际读取文件的应用。
+
+   <!-- @[virtual_drag_js_drop_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+
 
 ## 支持悬停检测
 Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的一项增强功能，允许用户在拖动过程中通过悬停在目标上自动触发视图跳转，提供了使用的便利性。建议在所有支持页面切换的区域均实现该功能。
