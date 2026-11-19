@@ -7312,7 +7312,7 @@ setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Pr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。具体限制参见IPC[约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)。 |
 | range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
 | style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
 
@@ -7375,7 +7375,7 @@ setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。具体限制参见IPC[约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)。 |
 | range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
 | style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
 
