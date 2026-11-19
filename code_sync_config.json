@@ -1247,7 +1247,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ModuleConfigurationFile04/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":68,
 						"name":"module_atomicService",
 						"start_line":16
 					}
