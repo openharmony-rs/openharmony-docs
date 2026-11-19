@@ -12,15 +12,18 @@
 
 从API版本26.1.0开始，输入法可以在设置预上屏文本时指定无下划线、实线、波浪线或虚线，并选择下划线颜色。系统编辑框由对应组件处理样式，自绘编辑框需要接收样式信息并自行绘制。
 
-输入法负责发送文本、范围和样式，编辑框负责显示。C接口提供自绘编辑框的接收回调和样式对象访问能力。本指南不将编辑框回调当作输入法发送接口使用。
+使用C/C++开发自绘编辑框时，参见[在自绘编辑框中接收预上屏样式（C/C++）](preview-text-style-guide-ndk.md)。
 
-## 开发准备
+## 约束与限制
 
-- 使用包含本次接口声明的SDK，运行设备须提供对应实现；仅更新SDK声明不能使设备获得运行能力。
-- 输入法应用已启用，当前编辑框已获焦并与输入法绑定。
-- 自绘编辑框已按[ArkTS开发指导](use-inputmethod-in-custom-edit-box.md)或[C/C++开发指导](use-inputmethod-in-custom-edit-box-ndk.md)实现文本插入、删除等编辑回调和绑定生命周期。
+- 当前编辑框须支持预上屏。输入法可调用`getEditorAttribute()`获取[EditorAttribute](../reference/apis-ime-kit/js-apis-inputmethodengine.md#editorattribute)，通过`isTextPreviewSupported`判断。`true`表示支持，`false`表示不支持。
+- 设置预上屏文本及样式时，当前编辑框须已获焦并与输入法绑定。
+- 以系统编辑组件TextInput为例，[enablePreviewText](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#enablepreviewtext12)默认开启预上屏。若已关闭，可将该属性设为true。
+- 自绘编辑框须接收样式回调并自行绘制下划线，参见[自绘编辑框接收样式](#自绘编辑框接收样式)。
 
 ## 输入法发送预上屏文本
+
+发送前，先启用输入法，并确认当前编辑框已获焦并与输入法绑定。
 
 1. 在DevEco Studio打开下方示例代码所在的PreviewTextStyleJS工程并安装到设备。首次运行前，需启用并切换到本示例的输入法。在设备已开启开发者模式并连接HDC后，依次执行以下命令。
 
@@ -144,9 +147,11 @@
 
 以下为Sample中编辑框接收预上屏文本和样式后的实际运行效果。
 
-![编辑框预上屏样式运行效果](figures/preview-text-style-js.jpeg)
+![编辑框预上屏样式运行效果](figures/preview-text-style-js.gif)
 
-## ArkTS自绘编辑框接收样式
+## 自绘编辑框接收样式
+
+先按[在自绘编辑框中使用输入法（ArkTS）](use-inputmethod-in-custom-edit-box.md)接入输入法框架。
 
 自绘编辑框保存文本、范围和样式，在UI上绘制下划线。仅在提供`underlineColor`时使用其RGB值，否则由编辑框处理，默认跟随光标颜色。如果同时订阅[on('setPreviewText')](../reference/apis-ime-kit/js-apis-inputmethod.md#onsetpreviewtext17)和[onSetPreviewTextWithStyle](../reference/apis-ime-kit/js-apis-inputmethod.md#onsetpreviewtextwithstyle)，两种回调都会触发，应避免重复处理预上屏文本内容。
 
@@ -243,77 +248,3 @@ private async connectEditor(): Promise<void> {
   this.status = $r('app.string.editor_connected_hint');
 }
 ```
-
-## C/C++自绘编辑框接收样式
-
-PreviewTextStyleJS示例工程中的C页面包含一个自绘编辑框和绑定/解绑按钮，可从默认页面点击“打开C编辑器”进入。工程链接libohinputmethod.so并包含相应公开头文件；文本插入、删除等回调及资源清理见[C/C++开发指导](use-inputmethod-in-custom-edit-box-ndk.md)。
-
-以下函数读取框架传入的样式对象。本示例使用g_textMutex互斥锁保护共享文本与样式状态的更新，页面随后读取该状态并绘制。样式对象是借用对象，不保存其指针，也不调用[OH_InputMethod_PreviewTextStyle_Destroy](../reference/apis-ime-kit/capi-inputmethod-preview-text-style-capi-h.md#oh_inputmethod_previewtextstyle_destroy)。该最小示例每次展示当前预上屏文本，光标固定在末尾；实际开发的自绘编辑框应结合start、end范围更新相应文本区间。
-
-函数先检查指针并读取下划线样式、颜色及颜色是否已设置；任一步失败即返回对应结果。读取成功后，将文本和样式数值复制到本示例的共享显示状态中。
-
-<!-- @[preview_style_c_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
-
-```cpp
-int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, uint32_t length,
-    int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)
-{
-    if (text == nullptr || style == nullptr) {
-        return IME_ERR_NULL_POINTER;
-    }
-    OH_InputMethod_UnderlineStyle kind = OH_INPUTMETHOD_UNDERLINE_STYLE_NONE;
-    uint32_t color = 0;
-    bool hasColor = false;
-    // 读取框架传入的样式对象，其生命周期由输入法框架管理。
-    // C接口接收非const指针，但此处仅读取框架持有的对象。
-    auto *readStyle = const_cast<OH_InputMethod_PreviewTextStyle *>(style);
-    auto result = OH_InputMethod_PreviewTextStyle_GetUnderlineStyle(readStyle, &kind);
-    if (result != IME_ERR_OK) {
-        return result;
-    }
-    result = OH_InputMethod_PreviewTextStyle_GetUnderlineColor(readStyle, &color);
-    if (result != IME_ERR_OK) {
-        return result;
-    }
-    result = OH_InputMethod_PreviewTextStyle_HasUnderlineColor(readStyle, &hasColor);
-    if (result != IME_ERR_OK) {
-        return result;
-    }
-    std::lock_guard<std::mutex> lock(g_textMutex);
-    g_display.ApplyStyled(text, length, static_cast<int32_t>(kind), color, hasColor);
-    return IME_ERR_OK;
-}
-```
-
-以下代码位于ConstructTextEditorProxy函数中，在其他必要编辑回调注册完成、调用[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前执行。示例同时调用OH_TextEditorProxy_SetSetPreviewTextFunc和OH_TextEditorProxy_SetSetPreviewTextWithStyleFunc注册回调。SetPreviewTextFunc不更新显示状态，文本和样式由SetPreviewTextWithStyleFunc处理，避免同一请求重复更新。
-
-注册后读取样式回调并核对函数指针，确认注册结果；原有预上屏回调和结束预上屏回调仍然保留。
-
-<!-- @[preview_style_c_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
-
-```cpp
-auto result = OH_TextEditorProxy_SetSetPreviewTextFunc(textEditorProxy, SetPreviewTextFunc);
-if (result != IME_ERR_OK) {
-    return result;
-}
-result = OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc(
-    textEditorProxy, SetPreviewTextWithStyleFunc);
-if (result != IME_ERR_OK) {
-    return result;
-}
-OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc registered = nullptr;
-result = OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc(textEditorProxy, &registered);
-if (result != IME_ERR_OK) {
-    return result;
-}
-if (registered != SetPreviewTextWithStyleFunc) {
-    return IME_ERR_UNDEFINED;
-}
-return OH_TextEditorProxy_SetFinishTextPreviewFunc(textEditorProxy, FinishTextPreviewFunc);
-```
-
-[OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc](../reference/apis-ime-kit/capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_getsetpreviewtextwithstylefunc)返回已注册的函数指针，不发送预上屏文本，也不代表完成绘制。[OH_TextEditorProxy_FinishTextPreviewFunc](../reference/apis-ime-kit/capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc)清除预上屏显示状态；解绑或离开页面时调用ReleaseCEditor释放输入连接和应用拥有的对象。
-
-以下为同一Sample中C编辑框的实际运行效果。
-
-![C编辑框预上屏样式运行效果](figures/preview-text-style-c.jpeg)

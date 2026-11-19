@@ -17,5 +17,6 @@
 - [Ime工具](inputmethod-hdc-commands-guide.md)
 - [不可获焦窗口中输入框与输入法交互指南](use-inputmethod-in-not-focusable-window.md)
 - [设置预上屏文本样式](preview-text-style-guide.md)
+- [在自绘编辑框中接收预上屏样式（C/C++）](preview-text-style-guide-ndk.md)
 - [实现应用内自定义键盘](in-app-custom-keyboard-guide.md)
 - [输入法开发服务术语](ime-kit-glossary.md)
