@@ -721,9 +721,7 @@ if (dataShareHelper != undefined) {
 
 cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
 
-使用有效的订阅者ID去清理无效订阅者ID的数据。
-
-订阅者ID不在有效订阅者ID列表中的模板将从服务端移除。仅支持静默访问。
+清理订阅者ID不在有效订阅者ID列表中的服务端模板。仅支持静默访问。
 
 **起始版本：** 26.1.0
 
