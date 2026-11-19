@@ -29,6 +29,6 @@ Result of fetching cloud file data.
 | -- | -- |
 | uint64_t offset | Starting offset of this data in the file, in bytes.<br>**Since:** 26.0.1 |
 | uint64_t size | Length of the data downloaded this time, in bytes.<br>**Since:** 26.0.1 |
-| uint64_t totalSize | Total size of the cloud file, in bytes. It is determined by the first [OH_CloudDisk_Execute()](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_execute) call and must stay the same in subsequent calls.<br>**Since:** 26.0.1 |
+| uint64_t totalSize | Total size of the cloud file, in bytes. It is determined when [OH_CloudDisk_Execute()](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_execute) is called for the first time. The size must be the same for subsequent calls.<br>**Since:** 26.0.1 |
 | [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) data | File data buffer.<br>**Since:** 26.0.1 |
 | bool isComplete | Whether this is the last block of data. true indicates that the current data block is the last block of file hydration; false indicates that more data remains to be transferred.<br>**Since:** 26.0.1 |
