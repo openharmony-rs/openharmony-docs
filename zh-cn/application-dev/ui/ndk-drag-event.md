@@ -356,6 +356,66 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    实现[OH_UDMF_VirtualFileCallbacks](../reference/apis-arkdata/capi-udmf-oh-udmf-virtualfilecallbacks.md)中的回调，业务可替换为自己的数据源实现。
 
    <!-- @[virtual_drag_c_callbacks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_provider.cpp) -->
+   
+   ``` C++
+   OH_UDMF_VirtualItem* OnStat(void* opaque, const char* id)
+   {
+       if (opaque == nullptr || id == nullptr) {
+           return nullptr;
+       }
+       auto* context = static_cast<ProviderContext*>(opaque);
+       std::lock_guard<std::mutex> lock(context->mutex);
+       auto source = context->files.find(id);
+       // 返回独立节点，返回后由UDMF接管，不能再次销毁该节点。
+       return source == context->files.end() ? nullptr : CreateFileItem(source->second);
+   }
+   
+   int OnRead(void* opaque, const char* id, int64_t offset, uint32_t length,
+       uint8_t* data, uint32_t* bytesRead)
+   {
+       if (opaque == nullptr || id == nullptr || data == nullptr || bytesRead == nullptr ||
+           offset < 0 || length == 0 || length > MAX_READ) {
+           return UDMF_ERR;
+       }
+       *bytesRead = 0; // 返回值表示成功或失败，实际读取长度通过bytesRead输出。
+       auto* context = static_cast<ProviderContext*>(opaque);
+       std::lock_guard<std::mutex> lock(context->mutex);
+       auto source = context->files.find(id);
+       if (source == context->files.end()) {
+           return UDMF_ERR;
+       }
+       SourceFile& file = source->second;
+       if (offset >= file.size) {
+           return UDMF_E_OK; // 成功且bytesRead为 0，表示已到文件末尾。
+       }
+       if (!PrepareFileContent(file)) {
+           return UDMF_ERR;
+       }
+       const auto count = static_cast<uint32_t>(std::min<int64_t>(length, file.size - offset));
+       if (static_cast<uint64_t>(offset) + count > file.content.size()) {
+           return UDMF_ERR;
+       }
+       // data由UDMF提供，本回调只填充数据，不释放、不保存该地址。
+       std::copy_n(file.content.data() + offset, count, data);
+       *bytesRead = count;
+       return UDMF_E_OK;
+   }
+   
+   int OnCancel(void* opaque, const char* const* idList, uint32_t count)
+   {
+       // 此示例无异步读取任务；真实提供方可在此停止对应id的待处理任务。
+       if (opaque == nullptr || (count > 0 && idList == nullptr)) {
+           return UDMF_ERR;
+       }
+       return UDMF_E_OK;
+   }
+   
+   void Finalize(void* opaque)
+   {
+       // UDMF最后一个相关引用释放后才调用此函数。
+       delete static_cast<ProviderContext*>(opaque);
+   }
+   ```
 
 
 2. 创建拖拽数据。
