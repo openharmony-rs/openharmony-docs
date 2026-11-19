@@ -115,10 +115,10 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    > 已定义的key必须在OH_AVMuxer_Start()前设置，用户自定义的key可以在OH_AVMuxer_Stop()前设置。
 
    <!-- @[Muxer::SetFileLevelData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
+   
    ``` C++
    OH_AVFormat *format = OH_AVFormat_Create(); // 使用OH_AVFormat_Create创建format。
-
+   
    // 设置已定义的key。
    // 从API version 14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
    OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00.000000Z");
@@ -131,19 +131,19 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LONGITUDE, KEY_LONGITUDE);
    // 从API version 24开始支持设置海拔，值类型为float，设置地理位置信息时海拔是可选的。
    OH_AVFormat_SetFloatValue(format, OH_MD_KEY_ALTITUDE, KEY_ALTITUDE);
-
+   
    // 设置用户自定义key（需要com.openharmony.开头）。
    OH_AVFormat_SetIntValue(format, "com.openharmony.testInt", OPENHARMONY_TEST_INT); // 值类型为int32_t。
    OH_AVFormat_SetFloatValue(format, "com.openharmony.testFloat", OPENHARMONY_TEST_FLOAT); // 值类型为float。
    OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256个字符。
    uint8_t testData[] = {1, 2, 3};
-   // 从API version 20开始支持值类型为uint8_t*。 
+   // 从API version 20开始支持值类型为uint8_t*。
    OH_AVFormat_SetBuffer(format, "com.openharmony.testBuffer", testData, sizeof(testData));
-
+   
    int ret = OH_AVMuxer_SetFormat(muxer_, format); // 设置封装的format。
    if (ret != AV_ERR_OK) {
-      // 设置format失败，未找到有效待写入的key数据。
-      AVCODEC_SAMPLE_LOGW("Set format failed, ret: %{public}d", ret);
+       // 设置format失败，未找到有效待写入的key数据。
+       AVCODEC_SAMPLE_LOGW("Set format failed, ret: %{public}d", ret);
    }
    OH_AVFormat_Destroy(format); // 销毁。
    ```
@@ -153,7 +153,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    **方法一：用OH_AVFormat_Create创建format**
 
    <!-- @[Muxer::AddAudioTrackByCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
+   
    ``` C++
    int audioTrackId = -1;
    uint8_t *buffer = nullptr; // 编码config data，如果没有可以不传。
@@ -304,7 +304,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
        "com.openharmony.audiomode.auxiliary"); // 必填。
    OH_AVFormat_SetIntBuffer(audioAuxlFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, audioAuxlTrackIDs,
        audioTrackIDsVector.size()); // 必填。
-
+   
    int ret = OH_AVMuxer_AddTrack(muxer_, &audioAuxlTrackId, audioAuxlFormat);
    OH_AVFormat_Destroy(audioAuxlFormat);
    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && audioAuxlTrackId >= 0, AVCODEC_SAMPLE_ERR_ERROR,
@@ -330,7 +330,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat_SetStringValue(videoAuxlFormat, OH_MD_KEY_TRACK_DESCRIPTION, "com.openharmony.moviemode.depth"); // 必填。
    OH_AVFormat_SetIntBuffer(videoAuxlFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, videoAuxlTrackIDs,
        videoTrackIDsVector.size()); // 必填。
-
+   
    int ret = OH_AVMuxer_AddTrack(muxer_, &videoAuxlTrackId, videoAuxlFormat);
    OH_AVFormat_Destroy(videoAuxlFormat);
    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && videoAuxlTrackId >= 0, AVCODEC_SAMPLE_ERR_ERROR,
