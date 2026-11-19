@@ -31,6 +31,7 @@ Invalid Parameter. Error message: messageInfo.
 4. appInfo列表为空。
 5. bundleName取值非法。
 6. context参数无效（仅[requestControlAppPermissionFromUser()](js-apis-abilityToolAccessCtrl.md#abilitytoolaccessctrlrequestcontrolapppermissionfromuser)接口）。
+7. callback参数无效（仅[registerControlComponentResultCallback()](js-apis-abilityToolAccessCtrl.md#abilitytoolaccessctrlregistercontrolcomponentresultcallback)接口）。
 
 **处理步骤**
 
