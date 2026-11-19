@@ -8,34 +8,26 @@
 
 ## 场景介绍
 
-从API版本26.1.0开始，普通Stage模型应用可调用[registerInAppProxyIme](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputmethodengineregisterinappproxyime)注册应用内代理输入法，在自身界面中绘制键盘组件，并通过代理接口操作同进程内类型匹配的编辑框。类型匹配是指编辑框的输入类型包含在注册选项inputPatternTypes中，省略该选项时匹配全部编辑框类型。
+从API版本26.1.0开始，普通Stage模型应用可调用[registerInAppProxyIme](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputmethodengineregisterinappproxyime)注册应用内代理输入法。应用在自身界面中绘制键盘组件。编辑框与代理绑定后，应用通过回调获取文本客户端，将按键对应的内容输入编辑框。代理对同进程、类型匹配的编辑框生效。
 
 该能力适用于需要自行提供输入界面的应用，例如：安全输入场景（银行密码键盘）、游戏输入场景（自定义游戏手柄）、特定领域输入场景（公式编辑器、符号面板）等。
 
-应用内代理输入法的典型使用流程：获取ProxyInputMethodAbility和ProxyKeyboardDelegate实例 -> 订阅inputStart、keyboardShow、keyboardHide事件（ProxyInputMethodAbility）及物理键盘按键/编辑框文本、光标、选区、属性变化事件（ProxyKeyboardDelegate） -> 调用registerInAppProxyIme注册代理 -> 在onInputStart回调中获取ProxyTextInputClient和ProxyKeyboardController -> 应用自行绘制并显示键盘组件 -> 通过ProxyTextInputClient操作编辑框文本 -> 隐藏键盘后调用hideSelf通知框架。
+如果需要提供其他应用可以使用的输入法，请参考[实现一个输入法应用](inputmethod-application-guide.md)。
 
 ## 约束与限制
 
-**调用者限制：**
-- 调用者为普通Stage模型应用。输入法Extension不能注册应用内代理，也不能获取代理相关对象，否则产生12800028错误码。
-- 使用支持API版本26.1.0及SystemCapability.MiscServices.InputMethodFramework的系统和SDK。
-
-**注册时机：**
-- 先通过[ProxyInputMethodAbility](../reference/apis-ime-kit/js-apis-inputmethodengine.md#proxyinputmethodability)和[ProxyKeyboardDelegate](../reference/apis-ime-kit/js-apis-inputmethodengine.md#proxykeyboarddelegate)订阅所需回调，再调用[registerInAppProxyIme](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputmethodengineregisterinappproxyime)注册代理。注册后编辑框可能立即触发绑定，若未提前订阅，可能错过绑定、键盘显示、光标变化等回调，导致无法获取文本客户端实例、显示自定义键盘或操作编辑框文本。
-- 调用者须在获焦状态下注册，未获焦时产生12800027错误。
-- 推荐在应用首次启动并监听到窗口获焦时完成注册，应用退出时注销。不建议在每次页面获焦时注册、失焦时注销，否则注册可能晚于编辑框绑定，导致先显示系统键盘再切换为自定义键盘。
-
-**参数约束：**
-- 省略options或inputPatternTypes时代理全部编辑框类型；指定数组时，数组须非空且元素均为PATTERN_*常量。重复注册会替换原选项。
-- 如需仅对特定类型的编辑框拉起自定义键盘（例如密码类型），则注册时通过[inputPatternTypes](../reference/apis-ime-kit/js-apis-inputmethodengine.md#registeroptions)指定对应的编辑框类型，未声明的类型仍使用系统输入法。
-
-**使用约束：**
-- 使用最近一次onInputStart回调传入的客户端实例。
-- 收到被动注销通知后清理本地会话引用；若应用当前获焦且仍需使用代理，应立即重新注册，否则在再次获焦时注册。
-- 自定义键盘使用过程中主动调用[unregisterInAppProxyIme](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputmethodengineunregisterinappproxyime)注销，会导致自定义键盘解绑并显示系统键盘。
-- 用户通过自定义键盘上的隐藏按钮隐藏自定义键盘时，应用需要调用[hideSelf](../reference/apis-ime-kit/js-apis-inputmethodengine.md#hideself)通知框架和编辑框。
+- 设备须支持SystemCapability.MiscServices.InputMethodFramework系统能力。
+- 应用内代理输入法仅供普通Stage模型应用使用。输入法扩展不能注册应用内代理或获取代理相关对象，否则返回错误码[12800028](../reference/apis-ime-kit/errorcode-inputmethod-framework.md#12800028-输入法extension不允许调用)。
 
 ## 开发步骤
+
+先通过[ProxyInputMethodAbility](../reference/apis-ime-kit/js-apis-inputmethodengine.md#proxyinputmethodability)和[ProxyKeyboardDelegate](../reference/apis-ime-kit/js-apis-inputmethodengine.md#proxykeyboarddelegate)订阅所需回调，再在应用获焦时调用[registerInAppProxyIme](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputmethodengineregisterinappproxyime)注册代理。注册选项见[RegisterOptions](../reference/apis-ime-kit/js-apis-inputmethodengine.md#registeroptions)。注册后编辑框可能立即触发绑定，因此应先完成订阅。
+
+建议在应用首次启动并监听到窗口获焦时注册代理，在应用退出时注销。若在每次页面获焦时注册、失焦时注销，注册可能晚于编辑框绑定，导致先显示系统键盘再切换为自定义键盘。
+
+收到onInputStart回调后，使用本次回调提供的文本客户端和键盘控制器。收到被动注销通知后，清理本地会话引用。若应用当前已获焦且仍需使用代理，应立即重新注册；否则在再次获焦时注册。
+
+使用自定义键盘期间，主动调用[unregisterInAppProxyIme](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputmethodengineunregisterinappproxyime)会解除自定义键盘与编辑框的绑定。编辑框仍需要输入法时，将显示系统键盘。
 
 在DevEco Studio中新建普通Stage模型的Empty Ability工程，然后创建会话管理类、绘制键盘页面并配置页面路由。
 
