@@ -15,6 +15,10 @@
 
 阅读时，建议先了解[约束与限制](#约束与限制)，再查阅[接口说明](#接口说明)和[控件命令格式](#控件命令格式)，最后参照[开发步骤](#开发步骤)完成接入。
 
+> **说明：**
+>
+> - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)<!--RP1End-->。
+
 ## 约束与限制
 
 调用前应确认目标实例、线程和节点有效性，并按下列要求管理请求及回调。
@@ -24,7 +28,7 @@
 > 目标实例、线程和节点有效性的可行确认方式：
 >
 > - **目标实例**：上下文从当前页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)获取，获取与复用限制见[管理上下文生命周期](ndk-ui-info-collect-tree.md#管理上下文生命周期)，不跨实例缓存；实例失效时注入接口同步返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，应重新获取有效实例的上下文后再提交。
-> - **线程**：在目标实例的UI线程上调用。可行方式是从ArkTS页面事件（如onClick）中发起调用，页面事件回调在UI线程执行，示例工程即按此模式提交命令；注入接口检测到线程违规会终止进程，该错误无法通过返回值确认或补救，只能通过调用来源保证。
+> - **线程**：在目标实例的UI线程上调用。可行方式是从ArkTS页面事件（如onClick）中发起调用，页面事件回调在UI线程执行，正常提交示例见[注入控件命令](#注入控件命令)；注入接口检测到线程违规会终止进程，该错误无法通过返回值确认或补救，只能通过调用来源保证。
 > - **节点**：注入前从最新一次采集结果中定位目标节点并读取整数节点ID，页面变化后重新采集定位；节点失效时注入接口同步返回[ARKUI_ERROR_CODE_NODE_NOT_FOUND](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，应重新定位后再决定是否提交，处理建议见[处理返回值](#处理返回值)。
 
 - 在目标Context的UI线程调用注入接口，非UI线程调用会终止进程；线程要求见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明。
@@ -100,17 +104,17 @@
 
 ## 开发步骤
 
-通用NDK接入、ArkTS与Native桥接及构建配置见[基于NDK构建UI概述](ndk-build-ui-overview.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。以下基于[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)，说明如何定位目标节点，以及如何提交控件命令并处理结果；代码片段需结合完整工程使用。
+通用NDK接入、ArkTS与Native桥接及构建配置见[基于NDK构建UI概述](ndk-build-ui-overview.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。以下基于UI信息采集和交互注入示例工程，说明如何定位目标节点，以及如何提交控件命令并处理结果；代码片段需结合完整工程使用。
 
 ### 定位目标节点
 
-打开示例工程的[CommandPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/CommandPage.ets)，选择需要操作的组件。页面为当前目标设置统一的字符串标识commandTarget。提交时通过控件树查找该标识，读取真实整数节点ID，再使用同一个[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)提交命令。
+打开示例工程，选择需要操作的组件。页面为当前目标设置统一的字符串标识commandTarget。提交时通过控件树查找该标识，读取真实整数节点ID，再使用同一个[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)提交命令。
 
-节点定位逻辑见[Collection.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/common/Collection.ets)。页面变化后应重新定位，不缓存旧节点ID作为长期有效引用；上下文获取与复用仍需遵循[管理上下文生命周期](ndk-ui-info-collect-tree.md#管理上下文生命周期)中的限制。
+节点定位逻辑可以参考[采集控件树信息](ndk-ui-info-collect-tree.md#解析结果并从页面调用)中的解析与查找函数。页面变化后应重新定位，不缓存旧节点ID作为长期有效引用；上下文获取与复用仍需遵循[管理上下文生命周期](ndk-ui-info-collect-tree.md#管理上下文生命周期)中的限制。
 
 ### 构造控件命令
 
-[napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) 中的 `InjectCommand` 是示例自行定义的NAPI桥接函数。它读取 Context、节点 ID 和 JSON 字符串，创建 `JSONWrapper` 对象后调用公开接口，并在调用返回后销毁自建 `JSONWrapper` 对象。示例中 64 KiB 的命令大小限制仅为应用层示例约束，并非平台本身新增的规格限制。
+示例的 `InjectCommand` 是自行定义的NAPI桥接函数。它读取 Context、节点 ID 和 JSON 字符串，创建 `JSONWrapper` 对象后调用公开接口，并在调用返回后销毁自建 `JSONWrapper` 对象。示例中 64 KiB 的命令大小限制仅为应用层示例约束，并非平台本身新增的规格限制。
 
 Arguments、ReadNodeId、GetContext、AddPending、RejectSubmission及参数计数与下标常量等辅助定义均位于同一源文件中。它们分别处理桥接参数、上下文复用和Promise任务，不属于SDK新增接口。
 
@@ -190,7 +194,7 @@ void OnCommand(OH_ArkUI_NativeModule_UIEventInjection_ResultCode resultCode, voi
 
 ### 注入控件命令
 
-[Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/types/libentry/Index.d.ts) 中的 `injectCommand` 返回 `Promise<CommandResult>`，其中 `result` 字段用于返回异步回调的执行结果，而非注入接口的同步返回值。`CommandResult` 和 `UIContext` 的定义及导入见示例文件。
+示例的 `injectCommand` 返回 `Promise<CommandResult>`，其中 `result` 字段用于返回异步回调的执行结果，而非注入接口的同步返回值。`CommandResult` 和 `UIContext` 的定义及导入见示例文件。
 
 <!-- @[ui_command_bridge_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
@@ -198,7 +202,7 @@ void OnCommand(OH_ArkUI_NativeModule_UIEventInjection_ResultCode resultCode, voi
 export const injectCommand: (context: UIContext, nodeId: number, command: string) => Promise<CommandResult>;
 ```
 
-[CommandPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/CommandPage.ets)中的submit方法从页面事件发起请求。collectTree、parseTree、requireNodeId及failure的导入和页面状态定义位于示例完整工程中，以下片段摘自该方法。
+示例的submit方法从页面事件发起请求。collectTree、parseTree、requireNodeId及failure的导入和页面状态定义位于示例完整工程中，以下片段摘自该方法。
 
 <!-- @[ui_command_submit_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/CommandPage.ets) -->
 

@@ -1,15 +1,10 @@
 # UI信息数据格式说明
 
 <!--Kit: ArkUI-->
-
 <!--Subsystem: ArkUI-->
-
 <!--Owner: @lushi871202-->
-
 <!--Designer: @lushi871202-->
-
 <!--Tester: @sally__-->
-
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -17,6 +12,10 @@
 从API版本26.1.0开始，应用可以通过[OH_ArkUI_NativeModule_UIJsonWrapper](../reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象，承载UI采集结果和控件命令，下文简称为JSONWrapper对象。该对象保存一个JSON字符串，本文提供JSON字符串构造方法，以及如何创建、读取和销毁JSONWrapper对象。
 
 JSONWrapper保存UTF-8编码的JSON文本，应用通过接口访问数据。JSONWrapper不是具有固定节点字段的结构体，其中的字段由具体采集或命令协议定义。
+
+> **说明：**
+>
+> - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)<!--RP1End-->。
 
 ## 接口说明
 
@@ -51,7 +50,7 @@ JSONWrapper关键接口如下表所示。具体API说明详见API参考[ui_json_
 
 ## 创建与使用JSONWrapper对象
 
-本节代码片段摘自[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)。
+本节代码片段摘自示例工程。
 
 ### 创建JSONWrapper对象
 
@@ -61,7 +60,7 @@ JSONWrapper关键接口如下表所示。具体API说明详见API参考[ui_json_
 
 <!-- @[ui_command_inject_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 napi_value InjectCommand(napi_env env, napi_callback_info info)
 {
     napi_value args[3];
@@ -109,7 +108,7 @@ napi_value InjectCommand(napi_env env, napi_callback_info info)
 
 [OH_ArkUI_NativeModule_UIJsonWrapperGetData](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata)与[OH_ArkUI_NativeModule_UIJsonWrapperGetSize](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetsize)的返回值说明见接口声明；两个接口都不创建结果对象，也不转移所有权。以下JsonString是示例的辅助函数，使用OH_ArkUI_NativeModule_UIJsonWrapperGetData取得以空字符结尾的字符串，并通过std::strlen计算长度，将已有JSONWrapper内容复制为ArkTS字符串；辅助函数JsonString只读取参数内容，不负责销毁对象。
 
-```C++
+``` C++
 napi_value JsonString(napi_env env, const OH_ArkUI_NativeModule_UIJsonWrapper* json)
 {
     const char* data = OH_ArkUI_NativeModule_UIJsonWrapperGetData(json);

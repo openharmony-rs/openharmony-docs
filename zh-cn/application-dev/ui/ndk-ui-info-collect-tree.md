@@ -11,6 +11,10 @@
 
 从API版本26.1.0开始，应用可以采集控件树信息，读取UI实例中的节点层级、节点ID和属性。应用可根据采集结果定位目标节点，或按需获取组件的交互信息、无障碍信息及高阶属性。
 
+> **说明：**
+>
+> - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)<!--RP1End-->。
+
 ## 约束与限制
 
 采集范围、结果大小和线程条件会影响请求是否成功，调用前应确认以下限制。
@@ -111,7 +115,7 @@
 
 ## 开发步骤
 
-以下步骤以[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)为上下文，取得目标UI实例后创建请求、采集并解析结果。同步和异步是可选路径，不需要依次执行。各接口返回值的判断与处理建议见[异常处理](#异常处理)；错误码定义和完整取值以各接口声明及[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)为准。
+以下步骤以示例工程为上下文，取得目标UI实例后创建请求、采集并解析结果。同步和异步是可选路径，不需要依次执行。各接口返回值的判断与处理建议见[异常处理](#异常处理)；错误码定义和完整取值以各接口声明及[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)为准。
 
 开发流程如下：
 
@@ -125,11 +129,11 @@
 
 ### 准备工程和目标页面
 
-通用NDK工程创建、ArkTS与Native桥接及构建配置见[基于NDK构建UI概述](ndk-build-ui-overview.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。本专题使用包含相关接口的API版本26.1.0或后续版本的SDK，并确保设备实现与SDK匹配。示例工程的Native依赖配置见[CMakeLists.txt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/CMakeLists.txt)。
+通用NDK工程创建、ArkTS与Native桥接及构建配置见[基于NDK构建UI概述](ndk-build-ui-overview.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。本专题使用包含相关接口的API版本26.1.0或后续版本的SDK，并确保设备实现与SDK匹配。
 
 树采集使用`<arkui/ui_info_collection.h>`，JSON对象使用`<arkui/ui_json_wrapper.h>`。请求结果的构造、读取及销毁规则见[UI信息数据格式说明](ndk-ui-info-data-structure.md)。
 
-[TreePage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/TreePage.ets)包含普通输入框和隐藏节点。应用通过当前页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)取得[ArkUI_ContextHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-context8h.md)，并从UI线程事件调用采集。树中的整数节点ID与组件通过.id()设置的字符串标识不同，业务定位时需区分两者。
+示例的采集目标包含普通输入框和隐藏节点。应用通过当前页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)取得[ArkUI_ContextHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-context8h.md)，并从UI线程事件调用采集。树中的整数节点ID与组件通过.id()设置的字符串标识不同，业务定位时需区分两者。
 
 ### 管理上下文生命周期
 
@@ -145,11 +149,11 @@
 
 ### 创建并配置请求
 
-[napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp)中的CreateRequest根据页面选项创建全量树或可见树请求，并分别设置五个开关。
+示例的CreateRequest根据页面选项创建全量树或可见树请求，并分别设置五个开关。
 
 <!-- @[ui_tree_create_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 Request CreateRequest(napi_env env, napi_value options)
 {
     Request request(nullptr, OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy);
@@ -200,7 +204,7 @@ Request CreateRequest(napi_env env, napi_value options)
 
 <!-- @[ui_tree_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 napi_value CollectTree(napi_env env, napi_callback_info info)
 {
     napi_value args[2];
@@ -233,7 +237,7 @@ CollectTreeAsync仍从目标UI线程提交，返回示例自行封装的Promise�
 
 <!-- @[ui_tree_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 napi_value CollectTreeAsync(napi_env env, napi_callback_info info)
 {
     napi_value args[2];
@@ -264,7 +268,7 @@ OnTree处理回调结果。完成回调把JSONWrapper所有权转移给应用，
 
 <!-- @[ui_tree_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 void OnTree(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode code,
     OH_ArkUI_NativeModule_UIJsonWrapper* json, void* userData)
 {
@@ -296,11 +300,11 @@ void OnTree(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode cod
 
 结果的schemaVersion为协议版本，treeInfo为根节点对象或null。应用按`$children`遍历，并通过compid匹配组件字符串标识、读取`$ID`整数标识。页面变化后重新获取目标，不把快照中的节点ID视为长期有效引用。
 
-[Collection.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/common/Collection.ets)声明当前示例使用的字段类型，并提供解析与查找函数。字段模型仅供应用读取所需信息，不是替代SDK声明的结构体。
+示例声明使用的字段类型，并提供解析与查找函数。字段模型仅供应用读取所需信息，不是替代SDK声明的结构体。
 
 <!-- @[ui_tree_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/common/Collection.ets) -->
 
-```TypeScript
+``` TypeScript
 export interface TreeNode {
   $ID?: number;
   $type?: string;
@@ -315,7 +319,7 @@ export interface TreeEnvelope {
 
 <!-- @[ui_tree_parse_find](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/common/Collection.ets) -->
 
-```TypeScript
+``` TypeScript
 export function parseTree(value: string): TreeEnvelope {
   const tree = JSON.parse(value) as TreeEnvelope;
   if (tree.schemaVersion !== 1) {
@@ -351,7 +355,7 @@ TreePage中的collect方法传入六个选项，选择同步或异步路径，�
 
 <!-- @[ui_tree_page_collect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/TreePage.ets) -->
 
-```TypeScript
+``` TypeScript
 private async collect(asynchronous: boolean): Promise<void> {
   if (this.busy) { return; }
   this.busy = true;
@@ -438,7 +442,6 @@ private async collect(asynchronous: boolean): Promise<void> {
 - 仅设置[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)等尺寸属性，或将[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)设置为零偏移，且布局后相对父节点无偏移的节点，仍会作为纯布局容器被省略。
 - 未设置任何位置属性，但因父节点布局产生偏移的节点，不会被省略。
 - 当前位置为(0, 0)、但存在过偏移量的节点，同样不会被省略。
-
 
 ### 采集成功但treeInfo为null是采集失败吗
 
