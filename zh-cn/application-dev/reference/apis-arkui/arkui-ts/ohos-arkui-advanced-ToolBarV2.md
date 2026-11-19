@@ -447,7 +447,7 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 
 | 参数名     | 类型                                                            | 必填 | 说明                                                                  |
 | ------- |---------------------------------------------------------------| -- | ------------------------------------------------------------------- |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效，超过则设置值无效。<br />当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0vp。 |
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效，超过则设置值无效。<br />默认单位：vp。<br />当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0vp。 |
 
 **返回值：**
 
@@ -472,7 +472,7 @@ height(height: LengthMetrics): ToolBarV2Modifier
 
 | 参数名    | 类型                                                                 | 必填 | 说明                                |
 | ------ | ------------------------------------------------------------------ | -- | --------------------------------- |
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏高度。<br />工具栏高度默认为56vp（不包含分割线）。 |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏高度。<br />默认单位：vp。<br />工具栏高度默认为56vp（不包含分割线）。 |
 
 **返回值：**
 
@@ -927,7 +927,7 @@ mainAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 
 | 参数名 | 类型                                                            | 必填 | 说明                                 |
 | ------ | --------------------------------------------------------------- | :--- | ------------------------------------ |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 沿布局方向的长度值。 |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 沿布局方向的长度值。<br />默认单位：vp。 |
 
 **返回值：**
 
@@ -957,7 +957,7 @@ crossAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 
 | 参数名 | 类型                                                            | 必填 | 说明                           |
 | ------ | --------------------------------------------------------------- | :--- | ------------------------------ |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 垂直于布局方向的宽度值。 |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 垂直于布局方向的宽度值。<br />默认单位：vp。 |
 
 **返回值：**
 
@@ -1070,8 +1070,8 @@ style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier
 
 | 名称           | 类型                                                            | 只读 | 可选 | 说明                                                                   |
 | :------------- | :-------------------------------------------------------------- | :--- | :--- | :--------------------------------------------------------------------- |
-| mainAxisStart  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 主轴起始端的内边距。水平方向时为左侧内边距，垂直方向时为顶部内边距。   |
-| mainAxisEnd    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 主轴结束端的内边距。水平方向时为右侧内边距，垂直方向时为底部内边距。   |
+| mainAxisStart  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 主轴起始端的内边距。水平方向时为左侧内边距，垂直方向时为顶部内边距。  <br />默认单位：vp。 |
+| mainAxisEnd    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 主轴结束端的内边距。水平方向时为右侧内边距，垂直方向时为底部内边距。  <br />默认单位：vp。 |
 
 ## ToolbarV2ItemGroupStyleOptions
 
@@ -1090,11 +1090,11 @@ style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier
 | 名称             | 类型                                                            | 只读 | 可选 | 说明                                                                                                                       |
 | :--------------- | :-------------------------------------------------------------- | :--- | :--- | :------------------------------------------------------------------------------------------------------------------------- |
 | placement        | [ToolbarV2ItemPlacement](#toolbarv2itemplacement)              | 否   | 是   | 分组在工具栏中的放置位置。分组placement优先于分组内单个子项的placement。<br />默认值：ToolbarV2ItemPlacement.MAIN。          |
-| space            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组内子项之间的间距。<br />默认值：0vp。                                                                                   |
+| space            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组内子项之间的间距。<br />默认单位：vp。<br />默认值：0vp。                                                                                   |
 | backgroundColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的背景色。<br />默认值：$r('sys.color.comp_background_primary')。                                                   |
 | padding          | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 分组容器的内边距。<br />默认值：undefined。<br />值为undefined时，值为12vp。设置为负值时，值为0vp。                                                                                 |
-| borderRadius     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的圆角半径。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。                                                                               |
-| borderWidth      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置分组边框宽度。                                                                               |
+| borderRadius     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的圆角半径。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。                                                                               |
+| borderWidth      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的边框宽度。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，不设置分组边框宽度。                                                                               |
 | borderColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置分组边框颜色。                                                                               |
 | stateEffect      | boolean                                                         | 否   | 是   | 是否显示分组内子项的按压态效果。true表示显示按压态效果；false表示不显示按压态效果。<br />默认值：true。                                                                        |
 
@@ -1129,11 +1129,11 @@ style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier
 | 名称             | 类型                                                            | 只读 | 可选 | 说明                                                                                                                       |
 | :--------------- | :-------------------------------------------------------------- | :--- | :--- | :------------------------------------------------------------------------------------------------------------------------- |
 | placement        | [ToolbarV2ItemPlacement](#toolbarv2itemplacement)              | 否   | 是   | 分组在工具栏中的放置位置。分组placement优先于分组内单个子项的placement。<br />默认值：ToolbarV2ItemPlacement.MAIN。<br />装饰器类型：@Trace |
-| space            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组内子项之间的间距。<br />默认值：0vp。<br />装饰器类型：@Trace                                                          |
+| space            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组内子项之间的间距。<br />默认单位：vp。<br />默认值：0vp。<br />装饰器类型：@Trace                                                          |
 | backgroundColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的背景色。<br />默认值：$r('sys.color.comp_background_primary')。<br />装饰器类型：@Trace                          |
 | padding          | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 分组容器的内边距。<br />默认值：undefined。<br />设置undefined时，内边距为12vp。设置为负值时，值为0vp。<br />装饰器类型：@Trace                                                        |
-| borderRadius     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的圆角半径。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。<br />装饰器类型：@Trace                                                      |
-| borderWidth      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置分组边框宽度。<br />装饰器类型：@Trace                                                      |
+| borderRadius     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的圆角半径。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。<br />装饰器类型：@Trace                                                      |
+| borderWidth      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的边框宽度。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，不设置分组边框宽度。<br />装饰器类型：@Trace                                                      |
 | borderColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置分组边框颜色。<br />装饰器类型：@Trace                                                      |
 | stateEffect      | boolean                                                         | 否   | 是   | 是否显示分组内子项的按压态效果。true表示显示按压态效果；false表示不显示按压态效果。<br />默认值：true。<br />装饰器类型：@Trace                                               |
 
@@ -1178,12 +1178,12 @@ ToolbarV2ItemGroupStyle的构造函数。
 | padding               | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 工具栏内边距。各边可独立设置。<br />默认值：undefined。<br />设置undefined时，内边距为4vp。设置为负值时，值为0vp。                                                                                                                                                                 |
 | backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。                                                                                                                                                  |
 | backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。                                                                                                                                                                                                  |
-| groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间、分组与独立子项之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。                                                                                                                                       |
+| groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间、分组与独立子项之间的间距。<br />默认单位：vp。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。                                                                                                                                       |
 | itemSize              | [Size](../js-apis-arkui-graphics.md#size)                       | 否   | 是   | 工具栏子项的尺寸。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。                                                                                       |
-| fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。                                                                                                                                    |
-| borderWidth           | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框宽度。                                                                                                                                                                              |
+| fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认单位：vp。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。                                                                                                                                    |
+| borderWidth           | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏边框宽度。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框宽度。                                                                                                                                                                              |
 | borderColor           | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框颜色。                                                                                                                                                                              |
-| borderRadius          | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏圆角半径。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。                                                                                                                                                                              |
+| borderRadius          | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏圆角半径。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。                                                                                                                                                                              |
 | stateEffect           | boolean                                                         | 否   | 是   | 是否启用按压态效果。true表示启用按压态效果；false表示不启用按压态效果。<br />默认值：true。                                                                                                                                                                               |
 
 ## ToolbarV2StyleConfigs
@@ -1219,12 +1219,12 @@ ToolbarV2ItemGroupStyle的构造函数。
 | padding               | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 工具栏内边距。各边可独立设置。<br />默认值：undefined。<br />设置undefined时，内边距为4vp。设置为负值时，值为0vp。<br />装饰器类型：@Trace                                                                                                                                        |
 | backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。<br />装饰器类型：@Trace                                                                                                                          |
 | backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。<br />默认值：undefined。<br />值为undefined时，不设置背景模糊样式。<br />装饰器类型：@Trace                                                                                                                                                  |
-| groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间、分组与独立子项之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。<br />装饰器类型：@Trace                                                                                                               |
+| groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间、分组与独立子项之间的间距。<br />默认单位：vp。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。<br />装饰器类型：@Trace                                                                                                               |
 | itemSize              | [Size](../js-apis-arkui-graphics.md#size)                       | 否   | 是   | 工具栏子项的尺寸。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。<br />装饰器类型：@Trace                                                                 |
-| fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。<br />装饰器类型：@Trace                                                                                                            |
-| borderWidth           | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框宽度。<br />装饰器类型：@Trace                                                                                                                                                      |
+| fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认单位：vp。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。<br />装饰器类型：@Trace                                                                                                            |
+| borderWidth           | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏边框宽度。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框宽度。<br />装饰器类型：@Trace                                                                                                                                                      |
 | borderColor           | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框颜色。<br />装饰器类型：@Trace                                                                                                                                                      |
-| borderRadius          | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏圆角半径。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。<br />装饰器类型：@Trace                                                                                                                                                      |
+| borderRadius          | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏圆角半径。<br />默认单位：vp。<br />默认值：undefined。<br />值为undefined时，默认为工具栏交叉轴长度的一半。<br />装饰器类型：@Trace                                                                                                                                                      |
 | stateEffect           | boolean                                                         | 否   | 是   | 是否启用按压态效果。true表示启用按压态效果；false表示不启用按压态效果。<br />默认值：true。<br />装饰器类型：@Trace                                                                                                                                                       |
 
 ### constructor
