@@ -93,3 +93,7 @@ status: active
 | 网络请求拦截 | [ArkWebSchemeHandler](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler) | ArkTS、C/C++ | 使用SchemeHandler拦截Web组件网络请求，演示HTTP(s)及自定义协议请求拦截并构造自定义响应头与响应体。 |
 | 网络请求拦截 | [ArkWebSchemeHandler](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebSchemeHandler) | ArkTS、C/C++ | 使用SchemeHandler拦截Web组件网络请求，以ArkTS静态范式演示HTTP(s)及自定义协议请求拦截与自定义响应构造。 |
 | 崩溃信息收集 | [ArkWebGetDmpFiles](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles) | ArkTS、C/C++ | 使用Crashpad收集Web组件崩溃信息，演示渲染进程崩溃时dmp崩溃文件的获取、导出与查看，用于解析崩溃原因。 |
+<!--RP1--><!--RP1End-->
+<!--RP2--><!--RP2End-->
+<!--RP3--><!--RP3End-->
+<!--RP4--><!--RP4End-->
