@@ -27,6 +27,8 @@ registerSuspendStateObserver(observer: SuspendStateObserver, stateList: Array&lt
 
 注册一个冻结状态观察者来监听应用冻结状态的变化。
 
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -86,6 +88,8 @@ unregisterSuspendStateObserver(observer: SuspendStateObserver): void
 
 注销先前注册的冻结状态观察者。
 
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -142,6 +146,8 @@ getSuspendStateByPidList(pidList: Array&lt;number&gt;): Array&lt;FreezeState&gt;
 
 根据进程的pid查询进程的冻结状态。
 
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -193,6 +199,8 @@ try {
 
 定义冻结状态变化的观察者。
 
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -204,6 +212,8 @@ try {
 onActive(pidList: Array&lt;number&gt;, uid: number): void
 
 当应用状态转换到活动状态时回调。
+
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,6 +252,8 @@ onDoze(pidList: Array&lt;number&gt;, uid: number): void
 
 当应用程序进入doze状态时回调。
 
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -279,6 +291,8 @@ onFrozen(pidList: Array&lt;number&gt;, uid: number): void
 
 当应用程序完全冻结时回调。
 
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -313,6 +327,8 @@ let observer: suspendManager.SuspendStateObserver = {
 ## FreezeState
 
 应用程序状态的枚举。
+
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
