@@ -1463,6 +1463,8 @@ static napi_value DehydrateFile(napi_env env, napi_callback_info info)
 - 云侧文件大小变化时，需先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件，再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符（重置会清空本地已水合数据，占位符回到未水合状态；若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可稍后重试或者取消水合后重试），详见下方示例代码。
 - 不要以本地文件大小判断文件实际数据量：未水合占位符的本地文件大小等于预设大小但本地无数据，应以应用自身记录的云侧文件大小为准。
 
+### 示例代码
+
 云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块，示例中cloudDisk为该工程对CAPI的ETS封装）：
 
 <!-- @[update_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/ets/pages/Index.ets) -->
