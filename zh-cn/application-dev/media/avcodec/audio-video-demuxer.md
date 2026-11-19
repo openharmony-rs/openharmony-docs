@@ -82,6 +82,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 2. 创建资源管理实例。
 
    示例支持三种输入方式，按优先级依次选择：uri（网络或本地路径）、自定义数据源（沙箱文件路径）、fd。
+
    fd方式下offset（文件起始偏移）、fileSize（文件大小）需与待解封装文件匹配：
    - fd指向单个资源文件时，offset为0、fileSize为资源文件大小。
    - fd指向多个连续拼接的资源文件时（如多个mp3二进制拼接）：offset、fileSize按待解封装文件实际偏移和大小设置。
