@@ -423,6 +423,58 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    通过[OH_UDMF_CreateVirtualFileInfo](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_createvirtualfileinfo)关联节点和回调，再通过[OH_UDMF_SetFileUriVirtualEntry](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_setfileurivirtualentry)构造拖拽数据。目录节点的构造参见[OH_UDMF_CreateVirtualDirectoryItem](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_createvirtualdirectoryitem)和[OH_UDMF_AddVirtualItemChild](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_addvirtualitemchild)。
 
    <!-- @[virtual_drag_c_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_provider.cpp) -->
+   
+   ``` C++
+   OH_UdmfData* CreateVirtualDragData(bool directory, bool compressed)
+   {
+       auto context = std::make_unique<ProviderContext>();
+       for (int index = 0; index < (directory ? DIRECTORY_FILE_COUNT : 1); ++index) {
+           if (!AddFile(*context, index, compressed)) {
+               return nullptr;
+           }
+       }
+       // 1. 声明根文件或目录；每个文件都必须设置准确大小。
+       auto* root = CreateRoot(*context, directory);
+       // 2. 将文件信息、回调和业务上下文组合为VirtualFileInfo。
+       OH_UDMF_VirtualFileCallbacks callbacks {};
+       callbacks.structSize = sizeof(callbacks);
+       callbacks.onStat = OnStat;
+       callbacks.onRead = OnRead;
+       callbacks.onCancel = OnCancel;
+       auto* info = OH_UDMF_CreateVirtualFileInfo(root, &callbacks, context.get(), Finalize);
+       OH_UDMF_DestroyVirtualItem(root);
+       if (info == nullptr) {
+           return nullptr; // context仍由调用方管理。
+       }
+       context.release(); // 创建成功，交由UDMF在最后一个引用释放后调用Finalize。
+       // 3. 附加到FileUri，再放入Record和UnifiedData，供起拖事件使用。
+       auto* uri = OH_UdsFileUri_Create();
+       auto* record = OH_UdmfRecord_Create();
+       auto* data = OH_UdmfData_Create();
+       bool ok = uri != nullptr && record != nullptr && data != nullptr;
+       if (ok) {
+           ok = OH_UdsFileUri_SetFileUri(uri, directory ? "file:///virtual/exported-documents" :
+               "file:///virtual/document-1.txt") == UDMF_E_OK &&
+               OH_UdsFileUri_SetFileType(uri, directory ? "general.directory" : "general.file") == UDMF_E_OK &&
+               OH_UDMF_SetFileUriVirtualEntry(uri, info) == UDMF_E_OK &&
+               OH_UdmfRecord_AddFileUri(record, uri) == UDMF_E_OK &&
+               OH_UdmfData_AddRecord(data, record) == UDMF_E_OK;
+       }
+       // 4. Record已持有独立引用，可释放临时包装对象。
+       // Clear只解除此临时FileUri的附加关系，不清除Record中已有的引用。
+       if (uri != nullptr) {
+           OH_UDMF_ClearFileUriVirtualEntry(uri);
+       }
+       OH_UDMF_DestroyVirtualFileInfo(info);
+       OH_UdsFileUri_Destroy(uri);
+       OH_UdmfRecord_Destroy(record);
+       if (!ok) {
+           OH_UdmfData_Destroy(data);
+           return nullptr;
+       }
+       return data;
+   }
+   ```
 
 
 3. 设置起拖数据。
