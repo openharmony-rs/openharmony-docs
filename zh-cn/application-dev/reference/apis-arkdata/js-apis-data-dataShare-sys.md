@@ -991,11 +991,13 @@ cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
 
 清理订阅者ID不在有效订阅者ID列表中的服务端模板。仅支持静默访问。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
