@@ -21,9 +21,9 @@
 
 - 在目标Context的UI线程调用注入接口，非UI线程调用会终止进程。
 - uniqueId必须属于传入的Context。应从当前树结果或节点查询接口取得整数ID，不使用组件`.id()`的字符串值代替。
-- 同一进程内，前一条命令完成前提交的新请求会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；限制解除时机与重试规则见[返回值说明](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)。
+- 同一进程内，前一条命令完成前提交的新请求会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；限制解除时机与重试规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的返回值说明。
 - 完成回调报告命令的即时处理结果，回调语义见[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)。验证最终效果时使用组件已有业务回调或后续业务操作，不阻塞UI线程等待。
-- 已受理请求的完成回调可能在实例销毁后到达；userData的所有权与有效性规则见[参数说明](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)，不能因页面退出提前释放。
+- 已受理请求的完成回调可能在实例销毁后到达；userData的所有权与有效性规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明，不能因页面退出提前释放。
 
 ## 接口说明
 
@@ -47,9 +47,9 @@
 {
   "schemaVersion": 1,
   "cmd": {
-    "type": "命令类型",
+    "type": "setText",
     "action_info": {
-      "value": ...
+      "value": "示例文本"
     }
   }
 }
@@ -65,7 +65,7 @@
 
 在连续编辑、选择、复制或切换内容时，按以下要求管理前置条件、请求顺序和资源。
 
-- 缺少必填字段或字段类型不符时，请求会被拒绝，返回值语义见[返回值说明](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)。
+- 缺少必填字段或字段类型不符时，请求会被拒绝，返回值语义见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的返回值说明。
 - 整数参数必须是有符号32位范围内的JSON整数，不能传入字符串或小数；可选字段省略与传入`null`含义不同。
 - 文本位置按目标组件的索引语义处理，不是UTF-8字节偏移；TextInput、TextArea使用UTF-16文本位置。
 - 参数类型校验不等于组件范围校验。负数、超出文本长度或超出子项数量的参数，按各命令的组件规则处理。
@@ -209,7 +209,7 @@ private async submit(): Promise<void> {
 
 示例通过异常路径处理参数或提交阶段失败，通过CommandResult.result显示异步执行结果。页面操作采用串行提交，并另行显示目标文本或选中索引，用于核对实际业务效果。
 
-创建JSONWrapper对象、提交命令和执行完成是三个阶段。排查时先确定失败发生在哪个阶段。错误码和结果码的定义分别见[ArkUI错误码](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)与[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)。
+创建JSONWrapper对象、提交命令和执行完成是三个阶段。排查时先确定失败发生在哪个阶段。错误码和结果码的定义分别见[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)与[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)。
 
 创建JSONWrapper对象的返回值和参数处理见[处理创建返回值](ndk-ui-info-data-structure.md#处理创建返回值)。对象创建失败时不继续提交命令；下文专门说明命令提交及执行结果。
 
@@ -232,7 +232,7 @@ private async submit(): Promise<void> {
 | 目标在执行前失效   | 提交时目标存在，但执行前节点被移除、页面退出，或目标与指定实例的关联发生变化。                 | 重新获取当前实例和目标节点，再判断是否需要提交新请求；与提交阶段的节点不存在错误分开记录。         |
 | 命令无法由组件处理 | 命令与组件不匹配，或组件状态、边界和配置不满足执行条件。                                       | 根据目标类型、参数和组件状态逐项检查，修正条件后再决定是否提交新请求。                             |
 
-自定义userData时，接口仅保留指针值，所有权与有效性要求见[回调参数说明](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)。
+自定义userData时，接口仅保留指针值，所有权与有效性要求见[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)的参数说明。
 
 ## 常见问题
 

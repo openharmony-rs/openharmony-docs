@@ -36,9 +36,9 @@ JSONWrapper保存UTF-8编码的JSON文本，应用通过公开函数访问数据
 {
   "schemaVersion": 1,
   "cmd": {
-    "type": ...,
+    "type": "setText",
     "action_info": {
-      ...
+      "value": "示例文本"
     }
   }
 }

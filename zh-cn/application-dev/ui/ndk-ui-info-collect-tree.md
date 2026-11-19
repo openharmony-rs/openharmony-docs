@@ -70,11 +70,11 @@
 
 候选节点还需通过保留判定，以下为逆向条件，命中任意一类即被保留，不会从结果树中省略：
 
-- **组件标识**：通过[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md)设置非空标识的节点会保留，结果中通过compid表示该标识。
-- **无障碍语义**：设置非空的[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)、[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)或[accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)，取值为true的[accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)，有效的[accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)，或已显式设置（显式设置为false时同样有效）的[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)、[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)等状态属性。
-- **交互与焦点**：配置[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)、[onMouse](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md)、[手势](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md)、非空的[responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md)、非默认的[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)、[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)、[tabIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)或有效的[keyboardShortcut](../reference/apis-arkui/arkui-ts/ts-universal-events-keyboardshortcut.md)等能力的节点会保留。仅创建空的事件对象，或布局组件默认具有焦点作用域，不会因此保留节点。
-- **回调与状态**：配置[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md)、[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md)、[onAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md)、[onSizeChange](../reference/apis-arkui/arkui-ts/ts-universal-component-size-change-event.md)等回调，或通过[enabled](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md)显式禁用节点，也会使节点保留。
-- **显示与位置**：布局容器具有自身需要呈现的外观或位置时，也可能保留。例如，非透明的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[border](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md)等配置可能使节点保留。布局后的实际位置不等同于是否显式设置[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)或[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)；仅根据[width、height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)等尺寸配置，不能判断过滤结果。
+- **组件标识**：通过[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)设置非空标识的节点会保留，结果中通过compid表示该标识。
+- **无障碍语义**：设置非空的[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)、[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)或[accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18)，取值为true的[accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)，有效的[accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)，或已显式设置（显式设置为false时同样有效）的[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)、[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)等状态属性。
+- **交互与焦点**：配置[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)、[onMouse](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)、[手势](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md)、非空的[responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)、非默认的[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)、[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[tabIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9)或有效的[keyboardShortcut](../reference/apis-arkui/arkui-ts/ts-universal-events-keyboardshortcut.md#keyboardshortcut)等能力的节点会保留。仅创建空的事件对象，或布局组件默认具有焦点作用域，不会因此保留节点。
+- **回调与状态**：配置[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)、[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)、[onAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md#onareachange)、[onSizeChange](../reference/apis-arkui/arkui-ts/ts-universal-component-size-change-event.md#onsizechange)等回调，或通过[enabled](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)显式禁用节点，也会使节点保留。
+- **显示与位置**：布局容器具有自身需要呈现的外观或位置时，也可能保留。例如，非透明的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[border](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#border)等配置可能使节点保留。布局后的实际位置不等同于是否显式设置[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)或[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)；仅根据[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)等尺寸配置，不能判断过滤结果。
 
 ### 节点输出示例
 
@@ -107,7 +107,7 @@
 
 ## 开发步骤
 
-以下步骤以[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)为上下文，取得目标UI实例后创建请求、采集并解析结果。同步和异步是可选路径，不需要依次执行。代码片段使用同一工程已有的辅助函数和页面状态。示例中的Request、TreeOptions、JsonString、AddPending、RejectSubmission、countNodes和failure等符号均为示例工程辅助代码，不属于SDK接口。各接口返回值的判断与处理建议见[异常处理](#异常处理)；错误码定义和完整取值以各接口声明及[ArkUI错误码](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)为准。
+以下步骤以[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)为上下文，取得目标UI实例后创建请求、采集并解析结果。同步和异步是可选路径，不需要依次执行。代码片段使用同一工程已有的辅助函数和页面状态。示例中的Request、TreeOptions、JsonString、AddPending、RejectSubmission、countNodes和failure等符号均为示例工程辅助代码，不属于SDK接口。各接口返回值的判断与处理建议见[异常处理](#异常处理)；错误码定义和完整取值以各接口声明及[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)为准。
 
 开发流程如下：
 
@@ -384,7 +384,7 @@ private async collect(asynchronous: boolean): Promise<void> {
 
 ### 处理请求创建与配置返回值
 
-[OH_ArkUI_NativeModule_UIAgentTreeRequestCreate](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestcreate)用于创建请求对象，返回值取值及可能原因见接口声明和[ArkUI错误码](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。创建成功后配置并使用请求，最后通过配套销毁接口销毁；请求为空时检查对象创建结果，不继续设置选项。请求销毁函数没有返回值。
+[OH_ArkUI_NativeModule_UIAgentTreeRequestCreate](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestcreate)用于创建请求对象，返回值取值及可能原因见接口声明和[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。创建成功后配置并使用请求，最后通过配套销毁接口销毁；请求为空时检查对象创建结果，不继续设置选项。请求销毁函数没有返回值。
 
 | 处理场景             | 建议处理                                          |
 | -------------------- | ------------------------------------------------- |
@@ -400,7 +400,7 @@ private async collect(asynchronous: boolean): Promise<void> {
 
 ### 处理同步采集返回值
 
-[OH_ArkUI_NativeModule_UIAgentGetTreeJson](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgettreejson)执行同步采集。返回值定义见接口声明和[ArkUI错误码](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。采集成功时读取结果并销毁JSONWrapper对象，treeInfo为null仍可能是正常结果。
+[OH_ArkUI_NativeModule_UIAgentGetTreeJson](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgettreejson)执行同步采集。返回值定义见接口声明和[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。采集成功时读取结果并销毁JSONWrapper对象，treeInfo为null仍可能是正常结果。
 
 | 处理场景           | 建议处理                                                |
 | ------------------ | ------------------------------------------------------- |
@@ -411,7 +411,7 @@ private async collect(asynchronous: boolean): Promise<void> {
 
 ### 处理异步提交与回调结果
 
-[OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgettreejsonasync)的直接返回值用于判断请求是否受理，不代表采集成功；具体定义见接口声明和[ArkUI错误码](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。请求已受理后通过回调检查采集结果。
+[OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgettreejsonasync)的直接返回值用于判断请求是否受理，不代表采集成功；具体定义见接口声明和[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。请求已受理后通过回调检查采集结果。
 
 | 提交场景           | 建议处理                                       |
 | ------------------ | ---------------------------------------------- |
@@ -419,7 +419,7 @@ private async collect(asynchronous: boolean): Promise<void> {
 | UI实例或线程无效   | 在有效实例的UI线程重新提交。                   |
 | 前一异步请求未完成 | 等前次回调完成后再决定是否提交，不反复重试。   |
 
-回调参数中的错误码（示例中为code）表示采集结果；JSON对象的所有权规则见[回调声明](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentjsoncallback)。不要把同步接口的完整返回值表当作异步提交接口的直接返回值清单。
+回调参数中的错误码（示例中为code）表示采集结果；JSON对象的所有权规则见[OH_ArkUI_NativeModule_UIAgentJsonCallback](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentjsoncallback)的参数说明。不要把同步接口的完整返回值表当作异步提交接口的直接返回值清单。
 
 ## 常见问题
 

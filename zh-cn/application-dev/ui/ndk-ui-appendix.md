@@ -198,7 +198,7 @@
 | colors[].colorSpace              | number          | 颜色空间的整数枚举值。                                                                                                                                            |
 | colors[].offset                  | string          | 色标位置，保留长度或百分比单位。                                                                                                                                  |
 | colors[].hdr                     | object          | 高动态范围（High Dynamic Range，HDR）颜色信息，含red、green、blue、alpha和headRoom（参考白以上的亮度余量）分量。                                                                          |
-| angle / direction                | number / string | linear的可选角度值/方向；angle单位为度（°），direction采用[GradientDirection.*](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#gradientdirection)字符串。 |
+| angle / direction                | number / string | linear的可选角度值/方向；angle单位为度（°），direction采用[GradientDirection](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#gradientdirection)枚举的字符串值。 |
 | centerX / centerY                | string          | sweep或radial的可选中心X坐标/Y坐标配置，保留单位。                                                                                                                |
 | startAngle / endAngle / rotation | number          | sweep的可选起始角度/终止角度/旋转值，单位均为度（°）。                                                                                                           |
 | horizontalSize / verticalSize    | string          | radial的可选水平尺寸/垂直尺寸，保留单位。                                                                                                                         |
