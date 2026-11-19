@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍网页alert、confirm、prompt三种JavaScript弹框的应用侧自定义实现，通过监听弹框请求并自定义弹窗组件处理用户确认与输入。"
+keywords: [Web弹框, onAlert, onConfirm, onPrompt, window.alert, window.confirm, window.prompt, AlertDialog, CustomContentDialog]
+doctype: guide
+status: active
+---
+
 # 使用Web组件显示网页弹框
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

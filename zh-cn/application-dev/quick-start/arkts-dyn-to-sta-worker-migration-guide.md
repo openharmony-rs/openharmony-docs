@@ -19,7 +19,7 @@ Worker API的使用场景是在后台线程中运行脚本，以执行耗时操�
 ## EAWorker介绍
 EAWorker的作用和使用场景和Worker API一样，主要作用是为应用程序提供一个多线程的运行环境，在后台线程中运行一个任务进行耗时操作，极大避免类似于计算密集型或高延迟的任务阻塞宿主线程的运行。
 
-为了兼容ArkTS-Dyn基于事件循环的异步能力（如[setTimeout](../reference/common/js-apis-timer.md#settimeout)、[setInterval](../reference/common/js-apis-timer.md#setinterval)），EAWorker API必须同时包含线程、事件循环和消息发送处理的API。与Worker API类似，EAWorker API中的线程API语言类似于Java Thread。在典型场景下，开发者创建一个EAWorker实例，并在创建时给构造器传递一个EAWorker需要执行的线程任务。EAWorker实例启动后，必须显式调用 [start](../reference/apis-arkts/eaworker_managed.md#start) 启动事件循环；停止时需通过 [quit](../reference/apis-arkts/eaworker_managed.md#quit)来结束事件循环。开发者通过[MessageHandler](../reference/apis-arkts/message_handler.md)定义消息[Message](../reference/apis-arkts/message.md)（消息队列中的一个消息，消息可以携带数据和回调函数）的处理逻辑，一个事件循环可以绑定多个`MessageHandler`来处理不同类型和来源的消息。消息的发送也通过调用`MessageHandler`的API来完成，因此不同的消息可以绑定不同的消息处理逻辑。
+为了兼容ArkTS-Dyn基于事件循环的异步能力（如[setTimeout](../reference/common/js-apis-timer.md#settimeout)、[setInterval](../reference/common/js-apis-timer.md#setinterval)），EAWorker API必须同时包含线程、事件循环和消息发送处理的API。与Worker API类似，EAWorker API中的线程API语言类似于Java Thread。在典型场景下，开发者创建一个EAWorker实例，并在创建时给构造器传递一个EAWorker需要执行的线程任务。EAWorker实例启动后，必须显式调用 [start](../reference/apis-arkts/eaworker-managed.md#start) 启动事件循环；停止时需通过 [quit](../reference/apis-arkts/eaworker-managed.md#quit)来结束事件循环。开发者通过[MessageHandler](../reference/apis-arkts/message-handler.md)定义消息[Message](../reference/apis-arkts/message.md)（消息队列中的一个消息，消息可以携带数据和回调函数）的处理逻辑，一个事件循环可以绑定多个`MessageHandler`来处理不同类型和来源的消息。消息的发送也通过调用`MessageHandler`的API来完成，因此不同的消息可以绑定不同的消息处理逻辑。
 
 EAWorker API中宿主线程和Worker线程的API没有区分，只有一种EAWorker API。所有EAWorker线程共享一个ArkTS-Sta运行时，除了EAWorker本身的开销外，不需要像Worker API一样创建独立的运行时。EAWorker线程之间的通信既可以通过消息传递，也可以利用ArkTS-Sta的共享内存特性。
 
@@ -1926,7 +1926,7 @@ ArkTS-Sta兼容ArkTS-Dyn基于事件循环的异步语义，如果允许单独�
 ### 如何进行异常处理
 ArkTS-Dyn中由于内存隔离的限制，当Worker发生未捕获异常时，会向宿主线程发送一个异常信息的消息，并触发jscrash从而导致程序终止退出。对于这种情况，需要在宿主线程对worker注册[ErrorCallback](../reference/apis-arkts/js-apis-worker.md#errorcallback18)来捕获worker上的未捕获异常，而不能在宿主线程通过运行时定义的try/catch机制进行异常处理。ArkTS-Sta中没有了内存隔离的限制，统一了所有线程的语义模型，可以由开发者来选择在合适的线程，通过try/catch机制来处理其他线程运行任务发生的未捕获异常。
 
-对于通过ArkTS-Sta的[EAWorker.run](../reference/apis-arkts/eaworker_managed.md#run)接口运行的可等待线程任务，ArkTS-Dyn设计范式中可以通过[Await](../reference/apis-arkts/job.md#await)来将其他线程任务中未捕获的异常转移到当前线程中，通过try/catch机制来处理。
+对于通过ArkTS-Sta的[EAWorker.run](../reference/apis-arkts/eaworker-managed.md#run)接口运行的可等待线程任务，ArkTS-Dyn设计范式中可以通过[Await](../reference/apis-arkts/job.md#await)来将其他线程任务中未捕获的异常转移到当前线程中，通过try/catch机制来处理。
 
 **ArkTS-Dyn**
 
@@ -1968,7 +1968,7 @@ try{
 }
 workerInstance.quit();
 ```
-由于ArkTS-Sta中的[MessageHandler](../reference/apis-arkts/message_handler.md)本质是通过[EAWorker.run](../reference/apis-arkts/eaworker_managed.md#run)去执行线程任务，所以在以下消息处理场景中，对于未捕获的异常，ArkTS-Dyn会发生jscrash并终止程序，而ArkTS-Sta则会在线程任务运行结束后，将未捕获的异常重定向于console中输出并清除未捕获的异常。
+由于ArkTS-Sta中的[MessageHandler](../reference/apis-arkts/message-handler.md)本质是通过[EAWorker.run](../reference/apis-arkts/eaworker-managed.md#run)去执行线程任务，所以在以下消息处理场景中，对于未捕获的异常，ArkTS-Dyn会发生jscrash并终止程序，而ArkTS-Sta则会在线程任务运行结束后，将未捕获的异常重定向于console中输出并清除未捕获的异常。
 
 **ArkTS-Dyn**
 

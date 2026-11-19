@@ -12,7 +12,7 @@
 
 ### \@ComponentV2
 
-\@ComponentV2装饰器用于装饰自定义组件：
+[\@ComponentV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2-static.md#componentv2)装饰器用于装饰自定义组件：
 
 - 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括[\@Local](./arkts-static-new-local.md)、[\@Param](./arkts-static-new-param.md)、[\@Once](./arkts-static-new-once.md)、[\@Event](./arkts-static-new-event.md)、[\@Provider、\@Consumer](./arkts-static-new-provider-and-consumer.md)。
 

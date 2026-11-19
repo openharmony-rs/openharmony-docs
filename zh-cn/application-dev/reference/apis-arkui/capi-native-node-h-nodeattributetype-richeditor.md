@@ -777,6 +777,102 @@ NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON = 22032
 | -- | -- |
 | .value[0].i32 | 是否在文本末尾显示密码图标，1表示显示密码图标，0表示不显示。 |
 
+## NODE_TEXT_EDITOR_ENABLE_AUTO_FILL
+
+```c
+NODE_TEXT_EDITOR_ENABLE_AUTO_FILL = 22034
+```
+
+设置TextEditor组件是否启用自动填充，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用自动填充，默认值0。0表示不启用，1表示启用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用自动填充。1表示启用，0表示不启用。 |
+
+## NODE_TEXT_EDITOR_CONTENT_TYPE
+
+```c
+NODE_TEXT_EDITOR_CONTENT_TYPE = 22035
+```
+
+设置TextEditor组件的自动填充类型，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)，用于自动填充场景指定内容类型。具体枚举值及适用场景请参考[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)枚举说明。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 自动填充内容类型枚举[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)，用于确定自动填充的内容类型。 |
+
+## NODE_TEXT_EDITOR_PASSWORD_RULES
+
+```c
+NODE_TEXT_EDITOR_PASSWORD_RULES = 22036
+```
+
+定义生成密码的规则。在触发自动填充时，所设置的密码规则会透传给密码保险箱，用于新密码的生成。支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .string | 定义生成密码的规则，用于在触发自动填充时透传给密码保险箱以控制新密码的生成。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .string | 定义生成密码的规则。 |
+
+## NODE_TEXT_EDITOR_ENABLE_FILL_ANIMATION 
+
+```c
+NODE_TEXT_EDITOR_ENABLE_FILL_ANIMATION  = 22037
+```
+
+设置TextEditor组件是否启用自动填充动效，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用自动填充动效。1表示启用，0表示不启用。默认值1。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用自动填充动效。1表示启用，0表示不启用。 |
+
 ## NODE_TEXT_EDITOR_SHOW_UNDERLINE
 
 ```c
@@ -818,19 +914,19 @@ NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
-| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
-| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
-| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+| .value[0].u32 | 表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | 表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | 表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | 表示禁用时下划线颜色，0xARGB类型。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
-| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
-| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
-| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+| .value[0].u32 | 表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | 表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | 表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | 表示禁用时下划线颜色，0xARGB类型。 |
 
 ## NODE_TEXT_EDITOR_CARET_STYLE
 

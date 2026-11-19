@@ -122,7 +122,7 @@ ArkTS-Sta: static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, t
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| ArkTS-Dyn: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md)<br/>ArkTS-Sta: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| undefined | 返回基于图片的着色器对象。 |
+| ArkTS-Dyn: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md)<br/>ArkTS-Sta: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| undefined | 返回基于图片的着色器对象。传入的图片对象无效时返回undefined。 |
 
 **错误码：**
 

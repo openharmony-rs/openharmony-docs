@@ -181,3 +181,21 @@ UIContext对象的解析策略。
 | ------ | ---- | ---------- |
 | KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 0 | 触摸到文本组件外部时，保留文本选中和手柄。 |
 | CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 1 | 触摸到文本组件外部时，清除文本选中和手柄。 |
+
+## NodeSensitiveInputEventType
+
+定义可通过节点敏感输入监听器上报的输入事件类型。事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)中与该类型匹配的成员字段承载。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| TOUCH | 0 | 上报的事件为触摸事件，事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)的touchEvent字段承载。 |
+| MOUSE | 1 | 上报的事件为鼠标事件，事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)的mouseEvent字段承载。 |
+| KEY | 2 | 上报的事件为按键事件，事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)的keyEvent字段承载。 |

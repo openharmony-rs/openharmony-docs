@@ -205,11 +205,11 @@ ArkTS-Dyn运行时采用单线程架构，其并发模型基于Worker API构建�
 
 ### 生命周期注意事项
 
-EAWorker的创建和销毁耗费性能，建议开发者合理管理已创建的EAWorker并重复使用。EAWorker空闲时也会一直运行，因此当不需要EAWorker时，可以调用[quit()](../reference/apis-arkts/eaworker_managed.md#quit)接口方法主动销毁EAWorker。调用`quit()`后，EAWorker会在处理完消息队列中的剩余任务后才退出。若EAWorker处于已销毁或正在销毁等非运行状态时，调用其功能接口，会抛出相应的错误。
+EAWorker的创建和销毁耗费性能，建议开发者合理管理已创建的EAWorker并重复使用。EAWorker空闲时也会一直运行，因此当不需要EAWorker时，可以调用[quit()](../reference/apis-arkts/eaworker-managed.md#quit)接口方法主动销毁EAWorker。调用`quit()`后，EAWorker会在处理完消息队列中的剩余任务后才退出。若EAWorker处于已销毁或正在销毁等非运行状态时，调用其功能接口，会抛出相应的错误。
 
 ## EAWorker基本用法示例
 
-1. 在宿主线程中通过调用EAWorker的[constructor()](../reference/apis-arkts/eaworker_managed.md#constructor)方法创建EAWorker对象，当前线程为宿主线程，并注册回调函数。
+1. 在宿主线程中通过调用EAWorker的[constructor()](../reference/apis-arkts/eaworker-managed.md#constructor)方法创建EAWorker对象，当前线程为宿主线程，并注册回调函数。
 
     ```ts
     // Index.ets

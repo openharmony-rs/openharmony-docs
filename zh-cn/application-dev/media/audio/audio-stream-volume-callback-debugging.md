@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "针对streamVolumeChange音量变化回调的注册报错、回调不触发、off失效等问题，介绍问题原因与定位流程。"
+keywords: [音量回调, streamVolumeChange, 回调不触发, 注册报错, off失效, 音量没反应, 监听不到音量变化, AudioVolumeManager, 音量监听]
+doctype: guide
+status: active
+---
 # 音量变化回调类问题定位指导
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -103,3 +110,10 @@
 
    - `on`/`off`的实例一致性：若`on`在实例A注册、`off`在实例B调用，取消不会生效，回调仍会触发。排查时需确认业务保存的实例引用是否一致。
    - 多实例场景：同一应用内若创建多个`AudioVolumeManager`实例，需确保每个实例独立管理其回调，避免`on`与`off`跨实例混用。
+
+## 相关主题推荐
+
+- [音频播放开发概述](audio-playback-overview.md)
+- [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)
+- [选择合适的播放流类型](using-right-streamusage-for-playback.md)
+- [播放音量管理](volume-management.md)

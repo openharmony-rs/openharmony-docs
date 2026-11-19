@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件与ArkUI可滚动容器嵌套滚动的两种方案：简单联动通过设置滚动模式实现，复杂场景由父组件统一派发滚动偏移量并自定义控制。"
+keywords: [嵌套滚动, nestedScroll, NestedScrollMode, setScrollable, scrollBy, onScrollFrameBegin, onGestureRecognizerJudgeBegin]
+doctype: guide
+status: active
+---
+
 # Web组件嵌套滚动
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

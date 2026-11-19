@@ -62,7 +62,7 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 | HARD_LIGHT  | 20   | 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。    | ![HARD_LIGHT](figures/BlendMode-HardLight.png) |
 | SOFT_LIGHT  | 21   | 柔光模式，根据源像素的亮度，柔和地变亮或变暗目标像素。             | ![SOFT_LIGHT](figures/BlendMode-SoftLight.png) |
 | DIFFERENCE  | 22   | 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d，计算源和目标像素颜色值的差异。 | ![DIFFERENCE](figures/BlendMode-Difference.png) |
-| EXCLUSION   | 23   | 排除模式，rc = s + d - two(s * d), ra = s + (1 - sa) * d，类似于DIFFERENCE，但对比度较低。 | ![EXCLUSION](figures/BlendMode-Exclusion.png) |
+| EXCLUSION   | 23   | 排除模式，rc = s + d - 2 * (s * d), ra = s + (1 - sa) * d，类似于DIFFERENCE，但对比度较低。 | ![EXCLUSION](figures/BlendMode-Exclusion.png) |
 | MULTIPLY    | 24   | 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d，源和目标像素的颜色值相乘，结果通常更暗。 | ![MULTIPLY](figures/BlendMode-Multiply.png) |
 | HUE         | 25   | 色相模式，使用源像素的色相，目标像素的饱和度和亮度。               | ![HUE](figures/BlendMode-Hue.png) |
 | SATURATION  | 26   | 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。             | ![SATURATION](figures/BlendMode-Saturation.png) |

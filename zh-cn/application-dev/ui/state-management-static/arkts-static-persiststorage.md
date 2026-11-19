@@ -26,7 +26,7 @@ import { PersistentStorage } from '@kit.ArkUI';
 
 PersistentStorage允许的类型和值有：
 
-- `number, string, boolean, enum` 等简单类型。
+- `number(等价于double), int, string, boolean, enum` 等简单类型。
 - 可以被`JSON.stringify()`和`JSON.parse()`或`JSON.parseUpdate()`重构的对象，但是对象中的成员方法不支持持久化。
 - 对于以下复杂类型，开发者必须传入[toJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#tojsontypet)和[fromJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#fromjsontypet)才能实现数据持久化：
 - 支持[Map](#装饰map类型变量)类型，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。且更新的值被持久化存储。详见[装饰Map类型变量](#装饰map类型变量)。
@@ -137,7 +137,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   4. 因为“aProp”对应的属性已经被持久化，所以在AppStorage中“aProp”的改变会触发PersistentStorage，将新的改变写入本地磁盘。
 
 - 后续启动应用：
-  1. 执行PersistentStorage.persistProp('aProp', 47)，首先在PersistentStorage本地文件查询“aProp”属性，成功查询到。
+  1. 执行PersistentStorage.persistProp\<number\>('aProp', 47)，首先在PersistentStorage本地文件查询“aProp”属性，成功查询到。
   2. 将在PersistentStorage查询到的值写入AppStorage中。
   3. 在Index组件里，\@StorageLink绑定的“aProp”为PersistentStorage写入AppStorage中的值，即为上一次退出应用存入的值。
 
@@ -150,13 +150,13 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 import { AppStorage, PersistentStorage } from '@kit.ArkUI';
 
-let aProp = AppStorage.setOrCreate('aProp', 47);
-PersistentStorage.persistProp('aProp', 48);
+let aProp = AppStorage.setOrCreate<number>('aProp', 47);
+PersistentStorage.persistProp<number>('aProp', 48);
 ```
 
-应用在非首次运行时，先执行AppStorage.setOrCreate('aProp', 47)：属性“aProp”在AppStorage中创建，其类型为number，其值设置为指定的默认值47。“aProp”是持久化的属性，所以会被写回PersistentStorage磁盘中，PersistentStorage存储的上次退出应用的值被覆盖。
+应用在非首次运行时，先执行AppStorage.setOrCreate\<number\>('aProp', 47)：属性“aProp”在AppStorage中创建，其类型为number，其值设置为指定的默认值47。“aProp”是持久化的属性，所以会被写回PersistentStorage磁盘中，PersistentStorage存储的上次退出应用的值被覆盖。
 
-PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“aProp”，值为刚刚使用AppStorage接口写入的47。
+PersistentStorage.persistProp\<number\>('aProp', 48)：在PersistentStorage中查找到“aProp”，值为刚刚使用AppStorage接口写入的47。
 
 ### 在PersistentStorage之后访问AppStorage中的属性
 
@@ -167,10 +167,11 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 
 import { AppStorage, PersistentStorage } from '@kit.ArkUI';
 
-PersistentStorage.persistProp('aProp', 48);
-if (AppStorage.get('aProp') > 50) {
+PersistentStorage.persistProp<int>('aProp', 48);
+const aProp = AppStorage.get<int>('aProp');
+if (aProp && aProp > 50) {
     // 如果PersistentStorage存储的值超过50，设置为47
-    AppStorage.setOrCreate('aProp',47);
+    AppStorage.setOrCreate<int>('aProp',47);
 }
 ```
 

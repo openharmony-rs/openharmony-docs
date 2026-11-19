@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍应用接管网页媒体播放，使用本地播放器（如AVPlayer）渲染视频、处理播控命令与状态上报，以增强画质等网页媒体播放体验。"
+keywords: [媒体托管, enableNativeMediaPlayer, onCreateNativeMediaPlayer, NativeMediaPlayerBridge, 同层渲染]
+doctype: guide
+status: active
+---
+
 # 托管网页中的媒体播放
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -81,7 +89,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)注册的回调函数。
 
-应用则需要调用onCreateNativeMediaPlayer来注册一个创建本地播放器的回调函数。
+应用则需要调用onCreateNativeMediaPlayer()来注册一个创建本地播放器的回调函数。
 
 该回调函数需要根据媒体信息来判断是否要创建一个本地播放器来接管当前的网页媒体资源。
 
@@ -686,7 +694,7 @@ ArkTS-Dyn示例：
     }
     onError() {
       // 通知ArkWeb内核，本地播放器出错了
-      console.info('AVPlayerListenerImpl.onError');
+      console.error('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
         this.handler.handleError(1, "Oops!");
@@ -1164,7 +1172,7 @@ ArkTS-Sta示例：
       this.handler.handleEnded();
     }
     onError() {
-      console.info('AVPlayerListenerImpl.onError');
+      console.error('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
         this.handler.handleError(webview.MediaError.NETWORK_ERROR, "Oops!");
@@ -1611,7 +1619,7 @@ ArkTS-Sta示例：
   }
   ```
 
-- 应用侧代码，视频播放示例, ./PlayerDemo.ets。
+- 应用侧代码，视频播放示例，./PlayerDemo.ets。XComponent创建方法请参考[自定义渲染(XComponent)](../ui/napi-xcomponent-guidelines.md)。
 
 ArkTS-Dyn示例：
   ```ts

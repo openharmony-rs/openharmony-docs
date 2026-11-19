@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ```c
-struct OH_Huks_CertChain {...}
+typedef struct OH_Huks_CertChain {...} OH_Huks_CertChain
 ```
 
 ## 概述

@@ -15,7 +15,7 @@
 
 **错误信息**
 
-The resource is unavailable as it is occupied by another thread.
+Access denied because the resource is occupied by another thread.
 
 **错误描述**
 
@@ -23,8 +23,7 @@ The resource is unavailable as it is occupied by another thread.
 
 **可能原因**
 
-1. 组件的服务资源正忙，无法使用。
-2. 当前资源正在被其他线程使用，无法完成操作。
+当前资源正在被其他线程使用，无法完成操作。
 
 **处理步骤**
 
@@ -297,12 +296,12 @@ Failed to crop the image.
 
 **可能原因**
 
-1. 裁剪参数设置错误。
+1. 裁剪参数设置错误。例如，当解码接口同时传入desiredSize参数和desiredRegion参数时，没有同时设置cropAndScaleStrategy参数。
 2. 图片数据错误。
 
 **处理步骤**
 
-请检查图片数据或修改正确的裁剪参数。
+请检查图片数据或修改正确的裁剪参数。如果解码接口同时传入desiredSize参数和desiredRegion参数，需要同时设置[cropAndScaleStrategy](arkts-apis-image-e.md#cropandscalestrategy18)参数，具体情况根据缩放与裁剪的先后顺序，按需设置。
 
 ## 62980110 图片源数据错误
 

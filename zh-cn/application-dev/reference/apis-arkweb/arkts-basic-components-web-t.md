@@ -412,6 +412,28 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 完整示例代码参考[onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22)。
 
+## OnMonitorBlankScreenCallback
+
+type OnMonitorBlankScreenCallback = (event: MonitoredBlankScreenEventInfo) => void
+
+Web组件检测到白屏时会触发回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| event | [MonitoredBlankScreenEventInfo](./arkts-basic-components-web-i.md#monitoredblankscreeneventinfo) | 是 | 检测到白屏时的详细信息。 |
+
+**示例：**
+
+完整示例代码参考[onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen)。
+
 ## OnCameraCaptureStateChangeCallback<sup>23+</sup>
 
 type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void

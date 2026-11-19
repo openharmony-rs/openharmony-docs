@@ -26,6 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [OH_InputMethod_UnderlineStyle](#oh_inputmethod_underlinestyle) | OH_InputMethod_UnderlineStyle | 预上屏文本的下划线样式枚举。 |
 | [InputMethod_KeyboardStatus](#inputmethod_keyboardstatus) | InputMethod_KeyboardStatus | 键盘状态。定义软键盘的显示和隐藏状态，用于在OH_TextEditorProxy_SendKeyboardStatusFunc回调中标识当前键盘状态。 |
 | [InputMethod_EnterKeyType](#inputmethod_enterkeytype) | InputMethod_EnterKeyType | 回车键功能类型。定义在不同输入场景下回车键的触发行为，用于配置编辑框回车键的功能语义。 |
 | [InputMethod_Direction](#inputmethod_direction) | InputMethod_Direction | 移动方向。该类型定义了在编辑框中光标或选择区域的移动方向，用于支持输入法应用实现光标移动、文本选择等编辑操作。 |
@@ -34,8 +35,28 @@
 | [InputMethod_CommandValueType](#inputmethod_commandvaluetype) | InputMethod_CommandValueType | 表示输入法扩展功能的私有数据类型。该类型定义了InputMethod_PrivateCommand中value的数据类型，用于支持输入法应用与客户端之间的私有参数传递。 |
 | [InputMethod_ErrorCode](#inputmethod_errorcode) | InputMethod_ErrorCode | 输入法错误码。该类型定义了输入法框架中可能出现的错误码，涵盖了参数检查失败、包管理异常、输入法应用异常、输入框客户端异常等各种错误场景。开发者应根据具体的错误码判断错误类型并采取相应的错误处理措施。详细错误处理说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。 |
 | [InputMethod_RequestKeyboardReason](#inputmethod_requestkeyboardreason) | InputMethod_RequestKeyboardReason | 表示请求键盘输入的原因。用于区分不同的键盘触发场景，以便输入法进行针对性适配。 |
+| [InputMethod_InputCapabilityType](#inputmethod_inputcapabilitytype) | InputMethod_InputCapabilityType | 系统输入能力类型。用于OH_InputMethod_InputMethodProxy_RequestSystemInputCapability指定请求的系统输入能力类型。 |
 
 ## 枚举类型说明
+
+### OH_InputMethod_UnderlineStyle
+
+```c
+enum OH_InputMethod_UnderlineStyle
+```
+
+**描述**
+
+预上屏文本的下划线样式枚举。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_NONE = 0 | 无下划线。 |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_SOLID = 1 | 实线下划线。 |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_WAVY = 2 | 波浪线下划线。 |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_DASHED = 3 | 虚线下划线。 |
 
 ### InputMethod_KeyboardStatus
 
@@ -234,6 +255,8 @@ enum InputMethod_ErrorCode
 | IME_ERR_SETTINGS = 12800007 | 输入法设置器异常。可能是输入法设置参数无效或权限不足，请检查设置参数和权限配置。该错误码在输入法设置服务无法正常处理配置变更时返回。 |
 | IME_ERR_IMMS = 12800008 | 输入法管理服务异常。可能是输入法管理服务未启动或异常终止，建议检查系统服务状态或重启输入法管理服务。该错误码在输入法管理服务（IMMS）无法正常工作时返回。 |
 | IME_ERR_DETACHED = 12800009 | 输入框未绑定。可能是输入框与输入法服务未建立连接，请调用绑定接口重新建立连接。该错误码在编辑框未通过OH_InputMethodController_Attach绑定输入法服务时调用需要绑定关系的接口时返回。 |
+| OH_INPUTMETHOD_ERR_NOT_DEFAULT_IME = 12800010 | 当前输入法应用不是系统配置的默认输入法。当调用[OH_InputMethod_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethod_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，若当前输入法不是系统配置的默认输入法，将返回此错误码。 |
+| OH_INPUTMETHOD_ERR_INPUT_TYPE_NOT_SUPPORTED = 12800029 | 输入类型不支持。当请求的输入能力类型在当前输入法中未配置对应子类型时返回此错误码。典型场景：调用[OH_InputMethod_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethod_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，当前输入法未配置翻译子类型。 |
 | IME_ERR_NULL_POINTER = 12802000 | 空指针异常。可能是传入的参数为空指针，请检查输入参数是否正确初始化。该错误码在C API接口收到NULL指针参数时返回，属于C语言特有的参数错误类型。开发者应在调用接口前确保所有指针参数均为非NULL。 |
 | IME_ERR_QUERY_FAILED = 12802001 | 查询失败。可能是查询条件无效或目标数据不存在，请检查查询参数和数据状态。该错误码在Get类接口的查询条件与实际数据不匹配时返回，典型场景：OH_PrivateCommand_GetBoolValue在value实际类型为int32_t时调用，将返回此错误码表示类型不匹配——命令中没有布尔值。 |
 
@@ -261,3 +284,23 @@ enum InputMethod_RequestKeyboardReason
 | IME_REQUEST_REASON_MOUSE = 1 | 表示键盘请求是由鼠标操作触发的。用户通过鼠标点击输入框区域触发键盘弹出，输入法应用可针对鼠标交互场景优化键盘行为（如提供更精确的光标定位、适配鼠标操作习惯的键盘布局）。适用于桌面设备或支持鼠标输入的平板设备场景。 |
 | IME_REQUEST_REASON_TOUCH = 2 | 表示键盘请求是由触摸操作触发的。用户通过手指触摸输入框区域触发键盘弹出，输入法应用可针对触摸交互场景优化键盘行为（如提供更大的按键间距、适配触摸操作的键盘布局）。适用于移动设备的手指触摸交互场景。 |
 | IME_REQUEST_REASON_OTHER = 20 | 表示键盘请求是由其他原因触发的，包括但不限于：程序主动调用ShowKeyboard/ShowTextInput接口、焦点自动切换、配置变更触发等非直接用户交互场景。输入法应用可针对此类场景做特殊适配（如不弹出过渡动画、使用紧凑键盘布局）。 |
+
+### InputMethod_InputCapabilityType
+
+```c
+enum InputMethod_InputCapabilityType
+```
+
+**描述**
+
+系统输入能力类型枚举，定义了可请求的系统输入能力类型。用于[OH_InputMethod_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethod_inputmethodproxy_requestsysteminputcapability)指定请求的系统输入能力类型。
+
+用途：标识请求的系统输入能力类型（翻译输入能力），用于应用请求输入法切换到对应的输入模式。
+
+取值建议：当需要请求输入法切换到翻译模式时使用IME_INPUT_CAPABILITY_TYPE_TRANSLATION。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| IME_INPUT_CAPABILITY_TYPE_TRANSLATION = 0 | 翻译输入能力。用于请求输入法切换到翻译模式。当前输入法须为系统配置的默认输入法，否则请求将被拒绝并返回[OH_INPUTMETHOD_ERR_NOT_DEFAULT_IME](#inputmethod_errorcode)错误码。 |

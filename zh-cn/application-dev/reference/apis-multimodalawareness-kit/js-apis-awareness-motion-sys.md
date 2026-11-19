@@ -161,7 +161,7 @@ onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.                                      |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
@@ -205,7 +205,7 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.                                      |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
@@ -251,7 +251,7 @@ onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.                                      |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
@@ -301,7 +301,7 @@ onHoverHandChange(detectionArea: HoverHandDetectionArea, callback: Callback&lt;H
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
 | 31500002 | Subscription failed. Possible causes: 1. Callback registration failure; 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
 
@@ -358,7 +358,7 @@ onHoverHandChange(detectionArea: HoverHandDetectionArea, duration: int, callback
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
 | 31500002 | Subscription failed. Possible causes: 1. Callback registration failure; 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
 

@@ -52,11 +52,7 @@
 
 3. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加所需源文件及动态库。
 
-   ```cmake
-   add_library(entry SHARED napi_init.cpp)
-   # 新增动态库依赖libhiappevent_ndk.z.so、libhilog_ndk.z.so（日志输出）及libohhicollie.so（hicollie检测）
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so libhiappevent_ndk.z.so)
-
+   ``` Text
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # 检查是否存在entry/build目录
@@ -64,10 +60,15 @@
    # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-
+   
+   add_library(entry SHARED napi_init.cpp)
+   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
+   # 新增动态库依赖libohhicollie.so（HiCollie对外检测接口）
+   target_link_libraries(entry PUBLIC libohhicollie.so)
    ```
 
 4. 编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，导入依赖的头文件，并定义LOG_TAG。
@@ -88,185 +89,188 @@
 
 5. 订阅系统事件：
 
-   - onReceive类型观察者
+   - onReceive类型观察者：
 
-   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，定义onReceive类型观察者相关函数：
-   <!-- @[App_Hicollie_Watcher_R_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
-   
-   ``` C++
-   // 定义一个变量，用来缓存创建的观察者的指针。
-   static HiAppEvent_Watcher *appHicollieWatcherR;
-   ```
+      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，定义onReceive类型观察者相关函数：
+      <!-- @[App_Hicollie_Watcher_R_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      // 定义一个变量，用来缓存创建的观察者的指针。
+      static HiAppEvent_Watcher *appHicollieWatcherR;
+      ```
 
-   <!-- @[App_Hicollie_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
-   
-   ``` C++
-   static void OnReceiveAppHicollie(const struct HiAppEvent_AppEventGroup *appEventGroups, int i, int j)
-   {
-       if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) == 0 &&
-           strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_HICOLLIE) == 0) {
-           Json::Value params;
-           Json::Reader reader(Json::Features::strictMode());
-           Json::FastWriter writer;
-           if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
-               auto time = params["time"].asInt64();
-               auto foreground = params["foreground"].asBool();
-               auto bundleVersion = params["bundle_version"].asString();
-               auto processName = params["process_name"].asString();
-               auto pid = params["pid"].asInt();
-               auto uid = params["uid"].asInt();
-               auto uuid = params["uuid"].asString();
-               auto exception = writer.write(params["exception"]);
-               auto hilogSize = params["hilog"].size();
-               auto peerBindSize =  params["peer_binder"].size();
-               auto memory =  writer.write(params["memory"]);
-               auto externalLog = writer.write(params["external_log"]);
-               auto logOverLimit = params["log_over_limit"].asBool();
-               auto externalCallbackLog = params["external_callback_log"].asString();
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
-                   bundleVersion.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s",
-                   externalCallbackLog.c_str());
-           }
-       }
-   }
-   
-   static void AppHicollieOnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups,
-       uint32_t groupLen)
-   {
-       for (int i = 0; i < groupLen; ++i) {
-           for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s",
-                   appEventGroups[i].appEventInfos[j].domain);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s",
-                   appEventGroups[i].appEventInfos[j].name);
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d",
-                   appEventGroups[i].appEventInfos[j].type);
-               OnReceiveAppHicollie(appEventGroups, i, j);
-           }
-       }
-   }
-   
-   static napi_value RegisterAppHicollieWatcherR(napi_env env, napi_callback_info info)
-   {
-       // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
-       appHicollieWatcherR = OH_HiAppEvent_CreateWatcher("appHicollieWatcherR");
-       // 设置订阅的事件为EVENT_APP_HICOLLIE。
-       const char *names[] = {EVENT_APP_HICOLLIE};
-       // 开发者订阅感兴趣的事件，此处订阅了系统事件。
-       OH_HiAppEvent_SetAppEventFilter(appHicollieWatcherR, DOMAIN_OS, 0, names, 1);
-       // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
-       OH_HiAppEvent_SetWatcherOnReceive(appHicollieWatcherR, AppHicollieOnReceive);
-       // 使观察者开始监听订阅的事件。
-       int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherR);
-       if (ret != 0) {
-           OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
-       }
-       return {};
-   }
-   ```
+      <!-- @[App_Hicollie_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      static void OnReceiveAppHicollie(const struct HiAppEvent_AppEventGroup *appEventGroups, int i, int j)
+      {
+          if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) == 0 &&
+              strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_HICOLLIE) == 0) {
+              Json::Value params;
+              Json::Reader reader(Json::Features::strictMode());
+              Json::FastWriter writer;
+              if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
+                  auto time = params["time"].asInt64();
+                  auto foreground = params["foreground"].asBool();
+                  auto bundleVersion = params["bundle_version"].asString();
+                  auto processName = params["process_name"].asString();
+                  auto pid = params["pid"].asInt();
+                  auto uid = params["uid"].asInt();
+                  auto uuid = params["uuid"].asString();
+                  auto exception = writer.write(params["exception"]);
+                  auto hilogSize = params["hilog"].size();
+                  auto peerBindSize =  params["peer_binder"].size();
+                  auto memory =  writer.write(params["memory"]);
+                  auto externalLog = writer.write(params["external_log"]);
+                  auto logOverLimit = params["log_over_limit"].asBool();
+                  auto externalCallbackLog = params["external_callback_log"].asString();
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                      bundleVersion.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s",
+                      externalCallbackLog.c_str());
+              }
+          }
+      }
+      
+      static void AppHicollieOnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups,
+          uint32_t groupLen)
+      {
+          for (int i = 0; i < groupLen; ++i) {
+              for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s",
+                      appEventGroups[i].appEventInfos[j].domain);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s",
+                      appEventGroups[i].appEventInfos[j].name);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d",
+                      appEventGroups[i].appEventInfos[j].type);
+                  OnReceiveAppHicollie(appEventGroups, i, j);
+              }
+          }
+      }
+      
+      static napi_value RegisterAppHicollieWatcherR(napi_env env, napi_callback_info info)
+      {
+          // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
+          appHicollieWatcherR = OH_HiAppEvent_CreateWatcher("appHicollieWatcherR");
+          // 设置订阅的事件为EVENT_APP_HICOLLIE。
+          const char *names[] = {EVENT_APP_HICOLLIE};
+          // 开发者订阅感兴趣的事件，此处订阅了系统事件。
+          OH_HiAppEvent_SetAppEventFilter(appHicollieWatcherR, DOMAIN_OS, 0, names, 1);
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
+          OH_HiAppEvent_SetWatcherOnReceive(appHicollieWatcherR, AppHicollieOnReceive);
+          // 使观察者开始监听订阅的事件。
+          int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherR);
+          if (ret != 0) {
+              OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
+          }
+          return {};
+      }
+      ```
 
-   - onTrigger类型观察者
+   - onTrigger类型观察者：
 
-   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，定义OnTrigger类型观察者相关函数：
-   <!-- @[App_Hicollie_Watcher_T_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
-   
-   ``` C++
-   // 定义一个变量，用来缓存创建的观察者的指针。
-   static HiAppEvent_Watcher *appHicollieWatcherT;
-   ```
+      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，定义OnTrigger类型观察者相关函数：
+      <!-- @[App_Hicollie_Watcher_T_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      // 定义一个变量，用来缓存创建的观察者的指针。
+      static HiAppEvent_Watcher *appHicollieWatcherT;
+      ```
 
-   <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
-   
-   ``` C++
-   // 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。
-   static void AppHicollieOnTake(const char *const *events, uint32_t eventLen)
-   {
-       Json::Reader reader(Json::Features::strictMode());
-       Json::FastWriter writer;
-       for (int i = 0; i < eventLen; ++i) {
-           Json::Value eventInfo;
-           if (reader.parse(events[i], eventInfo)) {
-               auto domain =  eventInfo["domain_"].asString();
-               auto name = eventInfo["name_"].asString();
-               auto type = eventInfo["type_"].asInt();
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", domain.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", name.c_str());
-               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", type);
-               if (domain ==  DOMAIN_OS && name == EVENT_APP_HICOLLIE) {
-                   auto time = eventInfo["time"].asInt64();
-                   auto foreground = eventInfo["foreground"].asBool();
-                   auto bundleVersion = eventInfo["bundle_version"].asString();
-                   auto processName = eventInfo["process_name"].asString();
-                   auto pid = eventInfo["pid"].asInt();
-                   auto uid = eventInfo["uid"].asInt();
-                   auto uuid = eventInfo["uuid"].asString();
-                   auto exception = writer.write(eventInfo["exception"]);
-                   auto hilogSize = eventInfo["hilog"].size();
-                   auto peerBindSize =  eventInfo["peer_binder"].size();
-                   auto memory =  writer.write(eventInfo["memory"]);
-                   auto externalLog = writer.write(eventInfo["external_log"]);
-                   auto logOverLimit = eventInfo["log_over_limit"].asBool();
-                   auto externalCallbackLog = eventInfo["external_callback_log"].asString();
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
-                       bundleVersion.c_str());
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s",
-                       processName.c_str());
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s",
-                       externalLog.c_str());
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
-                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s",
-                       externalCallbackLog.c_str());
-               }
-           }
-       }
-   }
-   
-   // 开发者可以自行实现订阅回调函数，以便对获取到的事件打点数据进行自定义处理。
-   static void AppHicollieOnTrigger(int row, int size)
-   {
-       // 接收回调后，获取指定数量的已接收事件。
-       OH_HiAppEvent_TakeWatcherData(appHicollieWatcherT, row, AppHicollieOnTake);
-   }
-   
-   static napi_value RegisterAppHicollieWatcherT(napi_env env, napi_callback_info info)
-   {
-       // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
-       appHicollieWatcherT = OH_HiAppEvent_CreateWatcher("appHicollieWatcherT");
-       // 设置订阅的事件为EVENT_APP_HICOLLIE。
-       const char *names[] = {EVENT_APP_HICOLLIE};
-       // 开发者订阅感兴趣的事件，此处订阅了系统事件。
-       OH_HiAppEvent_SetAppEventFilter(appHicollieWatcherT, DOMAIN_OS, 0, names, 1);
-       // 开发者设置已实现的回调函数，需OH_HiAppEvent_SetTriggerCondition设置的条件满足方可触发。
-       OH_HiAppEvent_SetWatcherOnTrigger(appHicollieWatcherT, AppHicollieOnTrigger);
-       // 开发者可以设置订阅触发回调的条件，此处是设置新增事件打点数量为1个时，触发onTrigger回调。
-       OH_HiAppEvent_SetTriggerCondition(appHicollieWatcherT, 1, 0, 0);
-       // 使观察者开始监听订阅的事件。
-       OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
-       return {};
-   }
-   ```
+      <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      // 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。
+      static void AppHicollieOnTake(const char *const *events, uint32_t eventLen)
+      {
+          Json::Reader reader(Json::Features::strictMode());
+          Json::FastWriter writer;
+          for (int i = 0; i < eventLen; ++i) {
+              Json::Value eventInfo;
+              if (reader.parse(events[i], eventInfo)) {
+                  auto domain =  eventInfo["domain_"].asString();
+                  auto name = eventInfo["name_"].asString();
+                  auto type = eventInfo["type_"].asInt();
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", domain.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", name.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", type);
+                  if (domain ==  DOMAIN_OS && name == EVENT_APP_HICOLLIE) {
+                      auto time = eventInfo["time"].asInt64();
+                      auto foreground = eventInfo["foreground"].asBool();
+                      auto bundleVersion = eventInfo["bundle_version"].asString();
+                      auto processName = eventInfo["process_name"].asString();
+                      auto pid = eventInfo["pid"].asInt();
+                      auto uid = eventInfo["uid"].asInt();
+                      auto uuid = eventInfo["uuid"].asString();
+                      auto exception = writer.write(eventInfo["exception"]);
+                      auto hilogSize = eventInfo["hilog"].size();
+                      auto peerBindSize =  eventInfo["peer_binder"].size();
+                      auto memory =  writer.write(eventInfo["memory"]);
+                      auto externalLog = writer.write(eventInfo["external_log"]);
+                      auto logOverLimit = eventInfo["log_over_limit"].asBool();
+                      auto externalCallbackLog = eventInfo["external_callback_log"].asString();
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                          bundleVersion.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s",
+                          processName.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s",
+                          externalLog.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s",
+                          externalCallbackLog.c_str());
+                  }
+              }
+          }
+      }
+      
+      // 开发者可以自行实现订阅回调函数，以便对获取到的事件打点数据进行自定义处理。
+      static void AppHicollieOnTrigger(int row, int size)
+      {
+          // 接收回调后，获取指定数量的已接收事件。
+          OH_HiAppEvent_TakeWatcherData(appHicollieWatcherT, row, AppHicollieOnTake);
+      }
+      
+      static napi_value RegisterAppHicollieWatcherT(napi_env env, napi_callback_info info)
+      {
+          // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
+          appHicollieWatcherT = OH_HiAppEvent_CreateWatcher("appHicollieWatcherT");
+          // 设置订阅的事件为EVENT_APP_HICOLLIE。
+          const char *names[] = {EVENT_APP_HICOLLIE};
+          // 开发者订阅感兴趣的事件，此处订阅了系统事件。
+          OH_HiAppEvent_SetAppEventFilter(appHicollieWatcherT, DOMAIN_OS, 0, names, 1);
+          // 开发者设置已实现的回调函数，需OH_HiAppEvent_SetTriggerCondition设置的条件满足方可触发。
+          OH_HiAppEvent_SetWatcherOnTrigger(appHicollieWatcherT, AppHicollieOnTrigger);
+          // 开发者可以设置订阅触发回调的条件，此处是设置新增事件打点数量为1个时，触发onTrigger回调。
+          OH_HiAppEvent_SetTriggerCondition(appHicollieWatcherT, 1, 0, 0);
+          // 使观察者开始监听订阅的事件。
+          int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
+          if (ret != 0) {
+              OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
+          }
+          return {};
+      }
+      ```
 
 6. 新增TestHiCollieTimerNdk函数。
 
@@ -278,7 +282,7 @@
    #include "hicollie/hicollie.h"
    ```
 
-   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
    // 定义回调函数
@@ -295,8 +299,10 @@
        HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // 注册HiCollieTimer函数执行时长超时检测一次性任务
        if (errorCode == HICOLLIE_SUCCESS) {  // HiCollieTimer任务注册成功
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // 打印任务id
-           sleep(2);  // 模拟执行耗时函数，在这里简单的将线程阻塞2s
+           sleep(2);  // 模拟执行耗时函数，在这里简单地将线程阻塞2s
            OH_HiCollie_CancelTimer(id);  // 根据id取消已注册任务
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
        return nullptr;
    }
@@ -376,7 +382,7 @@
    ```
 
    编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，页面新增触发TestHiCollieTimerNdk方法的按钮。
-   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[hicollie_timer_interface_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 添加点击事件，触发TestHiCollieTimerNdk方法。
@@ -423,34 +429,34 @@
 
 1. 移除事件观察者。
 
-   <!-- @[APP_Hicollie_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[APP_Hicollie_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->   
    
    ``` C++
    static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
    {
        // 使观察者停止监听事件
-       // ···
+       // ...
        OH_HiAppEvent_RemoveWatcher(appHicollieWatcherR);
        OH_HiAppEvent_RemoveWatcher(appHicollieWatcherT);
-       // ···
+       // ...
        return {};
    }
    ```
 
 2. 销毁事件观察者。
 
-   <!-- @[APP_Hicollie_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[APP_Hicollie_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->   
    
    ``` C++
    static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
    {
        // 销毁创建的观察者，并置eventWatcher为nullptr。
-       // ···
+       // ...
        OH_HiAppEvent_DestroyWatcher(appHicollieWatcherR);
        OH_HiAppEvent_DestroyWatcher(appHicollieWatcherT);
        appHicollieWatcherR = nullptr;
        appHicollieWatcherT = nullptr;
-       // ···
+       // ...
        return {};
    }
    ```

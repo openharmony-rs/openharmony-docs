@@ -959,7 +959,7 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 **系统能力**：SystemCapability.Notification.Notification
 
 > **说明：**
-> 从 API version 7开始支持，从API version 9开始废弃。建议使用[notificationManager.BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[notificationManager.BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)替代。
 
 | 名称   | 类型   | 必填 | 说明   |
 | ------ | ------ | --- |  ------ |
@@ -971,7 +971,7 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 **系统能力**：SystemCapability.Notification.Notification
 
 > **说明：**
-> 从 API version 7开始支持，从API version 9开始废弃。<!--Del-->建议使用[notificationManager.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey)替代。<!--DelEnd-->
+> 从API version 7开始支持，从API version 9开始废弃。<!--Del-->建议使用[notificationManager.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey)替代。<!--DelEnd-->
 
 | 名称  | 类型   | 可读 | 可写 | 说明     |
 | ----- | ------ | ---- | --- | -------- |

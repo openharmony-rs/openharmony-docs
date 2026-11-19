@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件隐私模式的开启与使用，该模式下Cookie、缓存等数据不持久化存储，组件销毁后即清除，并涵盖地理位置授权、内存数据清除与Cookie读写。"
+keywords: [隐私模式, incognitoMode, isIncognitoMode, 无痕浏览, allowGeolocation, deleteAllData, configCookieSync, clearAllCookiesSync, WebStorage]
+doctype: guide
+status: active
+---
+
 # 使用隐私模式 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -53,7 +61,7 @@
   }
   ```
 
-- 通过[isIncognitoMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isincognitomode11) 判断当前Web组件是否是隐私模式。
+- 通过[isIncognitoMode()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isincognitomode11) 判断当前Web组件是否是隐私模式。
 
   ArkTS-Dyn示例：
   <!-- @[determine_whether_the_current_web_component_is_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets) -->
@@ -272,7 +280,7 @@ ArkTS-Sta示例：
               // 以回调方式异步获取指定源的地理位置权限状态。
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
-                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
+                  console.error(`getAccessibleGeolocationAsync error: Code: ${error.code}, message: ${error.message}`);
                   return;
                 }
                 console.info('getAccessibleGeolocationAsync result: ' + result);
@@ -329,7 +337,7 @@ ArkTS-Sta示例：
 
 ## 隐私模式下清除内存中的Web数据
 
-- 通过[deleteAllData](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata)清除隐私模式下Web SQL当前使用的所有存储。
+- 通过[deleteAllData()](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata)清除隐私模式下Web SQL当前使用的所有存储。
 
   ArkTS-Dyn示例：
   <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
@@ -440,7 +448,7 @@ ArkTS-Sta示例：
 
 ## 隐私模式下管理Cookie
 
-- 通过[fetchCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11)获取隐私模式下指定url对应cookie的值。
+- 通过[fetchCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11)获取隐私模式下指定url对应cookie的值。
 
   ArkTS-Dyn示例：
   <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
@@ -505,7 +513,7 @@ ArkTS-Sta示例：
   }
   ```
 
-- 通过[configCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)设置隐私模式下指定url的单个cookie的值。
+- 通过[configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)设置隐私模式下指定url的单个cookie的值。
 
   ArkTS-Dyn示例：
   <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
@@ -568,7 +576,7 @@ ArkTS-Sta示例：
   }
   ```
 
-- 通过[existCookie](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie)查询隐私模式下是否存在cookie。
+- 通过[existCookie()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie)查询隐私模式下是否存在cookie。
 
   ArkTS-Dyn示例：
   <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
@@ -621,7 +629,7 @@ ArkTS-Sta示例：
   }
   ```
 
-- 通过[clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11)清除隐私模式下所有cookie。 
+- 通过[clearAllCookiesSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11)清除隐私模式下所有cookie。 
 
   ArkTS-Dyn示例：
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->

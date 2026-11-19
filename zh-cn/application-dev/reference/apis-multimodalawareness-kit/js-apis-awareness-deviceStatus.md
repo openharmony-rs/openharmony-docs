@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @saga2025-->
+<!--Designer: @osmanthusblossom-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -248,3 +248,137 @@ offSteadyStandingDetect(callback?: Callback&lt;SteadyStandingStatus&gt;): void
     console.info('off failed, err = ' + err);
   }
   ```
+
+## DropDetectionStatus
+
+定义手机跌落检测状态。
+
+表示设备的跌落检测状态，包括正常状态和跌落状态。
+
+**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| STATUS_NORMAL | 0 | 正常状态，表示设备处于正常握持或放置状态。 |
+| STATUS_DROPPED | 1 | 跌落状态，表示设备检测到跌落事件。 |
+
+## deviceStatus.onDropDetect
+
+onDropDetect(callback: Callback&lt;DropDetectionStatus&gt;): void
+
+订阅跌落检测事件。建议在不需要监听时调用offDropDetect()取消订阅，释放资源。
+
+**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| callback | Callback&lt;[DropDetectionStatus](#dropdetectionstatus)&gt; | 是 | 回调函数，返回手机跌落检测状态信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[设备状态感知错误码](errorcode-deviceStatus.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ---- | ---- |
+| 801 | Failed due to limited device capabilities. |
+| 32500001 | Service exception. |
+| 32500002 | Subscription failed. |
+
+**示例**：
+
+   ```ts
+   try {
+   deviceStatus.onDropDetect((status: deviceStatus.DropDetectionStatus) => {
+      if (status === deviceStatus.DropDetectionStatus.STATUS_DROPPED) {
+         console.info('Device drop detected!');
+         // 根据业务需要执行相应的保护措施。
+      } else if (status === deviceStatus.DropDetectionStatus.STATUS_NORMAL) {
+         console.info('Device returned to normal state');
+      }
+   });
+   } catch (error) {
+   const err = error as BusinessError;
+   console.error(`onDropDetect failed. Code: ${err.code}, message: ${err.message}`);
+   }
+   ```
+
+## deviceStatus.offDropDetect
+
+offDropDetect(callback?: Callback&lt;DropDetectionStatus&gt;): void
+
+取消订阅跌落检测事件。用于应用在退出页面或不再需要监听跌落事件的场景。调用后释放相关资源。
+
+**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| callback | Callback&lt;[DropDetectionStatus](#dropdetectionstatus)&gt; | 否 | 回调函数，返回手机跌落检测状态信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[设备状态感知错误码](errorcode-deviceStatus.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ---- | ---- |
+| 801 | Failed due to limited device capabilities. |
+| 32500001 | Service exception. |
+| 32500003 | Unsubscription failed. |
+
+**示例**：
+
+示例一：取消订阅该客户端订阅跌落检测事件的所有回调。
+
+   ```ts
+   try {
+      deviceStatus.offDropDetect();
+   } catch (err) {
+      console.error(`offDropDetect failed. Code: ${err.code}, message: ${err.message}`);
+   }
+   ```
+
+示例二：取消订阅该客户端订阅跌落检测事件的特定回调。
+
+   ```ts
+   import { Callback } from '@kit.BasicServicesKit';
+
+   // 定义callback变量。
+   const callback: Callback<deviceStatus.DropDetectionStatus> = (status: deviceStatus.DropDetectionStatus) => {
+      console.info(`Drop status: ${status}`);
+   };
+
+   // 以callback为回调函数，订阅设备跌落检测事件。
+   try {
+      deviceStatus.onDropDetect(callback);
+   } catch (err) {
+      console.error(`onDropDetect failed. Code: ${err.code}, message: ${err.message}`);
+   }
+
+   // 取消该客户端订阅设备跌落检测事件的特定回调函数。
+   try {
+      deviceStatus.offDropDetect(callback);
+   } catch (err) {
+      console.error(`offDropDetect failed. Code: ${err.code}, message: ${err.message}`);
+   }
+   ```

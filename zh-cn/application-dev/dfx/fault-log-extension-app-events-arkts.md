@@ -104,45 +104,91 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，示例代码如下：
 
-   ```ts
-   // 导入hiAppEvent依赖模块
-   import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
-       // 略去的代码...
-       // 在onCreate函数中添加系统事件的订阅,观察者A
+   ArkTS-Dyn示例：
+   <!-- @[fault_log_extension_arkts_dyn_code_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Faultlogger/FaultLogExtensionAbilityDyn/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   import { window } from '@kit.ArkUI';
+   // ...
        hiAppEvent.addWatcher ({
-          // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-          name: "EntryAbilityWatcherNormal",
-          // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
-          appEventFilters: [
-              {
-                  domain: hiAppEvent.domain.OS,
-                  names: [hiAppEvent.event.APP_FREEZE]
-              }
-          ],
-          // 故障发生后，正常重启执行观察者A处理事件回调
-          onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-              // 略去的代码...
-          }
+         // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+         name: 'EntryAbilityWatcherNormal',
+         // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
+         appEventFilters: [
+           {
+             domain: hiAppEvent.domain.OS,
+             names: [hiAppEvent.event.APP_FREEZE]
+           }
+         ],
+         // 故障发生后，正常重启执行观察者A处理事件回调
+         onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+   // ...
+         }
        });
        // 在onCreate函数中添加系统事件的订阅，观察者B
        hiAppEvent.addWatcher ({
-          // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-          name: "EntryAbilityWatcherExtension",
-          // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
-          appEventFilters: [
-              {
-                  domain: hiAppEvent.domain.OS,
-                  names: [hiAppEvent.event.APP_FREEZE]
-              }
-          ],
-          // 空实现，仅用于生成过滤规则，使故障事件在被处理前保留在应用沙箱内；
-          // 若应用正常重启，观察者A已处理相同事件，观察者B通过空处理消耗从沙箱获取的事件，不对事件重复处理。
-          onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-
-          }
+         // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+         name: 'EntryAbilityWatcherExtension',
+         // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
+         appEventFilters: [
+           {
+             domain: hiAppEvent.domain.OS,
+             names: [hiAppEvent.event.APP_FREEZE]
+           }
+         ],
+         // 空实现，仅用于生成过滤规则，使故障事件在被处理前保留在应用沙箱内；
+         // 若应用正常重启，观察者A已处理相同事件，观察者B通过空处理消耗从沙箱获取的事件，不对事件重复处理。
+         onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+   // ...
+         }
        });
-       // 略去的代码...
+   // ...
    ```
+
+   ArkTS-Sta示例：
+   <!-- @[fault_log_extension_arkts_sta_code_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/Faultlogger/FaultLogExtensionAbilitySta/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   
+   ``` TypeScript
+   import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+   // ...
+       hiAppEvent.addWatcher({
+         // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+         name: "EntryAbilityWatcherNormal",
+         // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
+         appEventFilters: [
+           {
+             domain: hiAppEvent.domain.OS,
+             names: [hiAppEvent.event.APP_FREEZE]
+           }
+         ],
+         // 故障发生后，正常重启执行观察者A处理事件回调
+         onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+   // ...
+         }
+       })
+   
+       // 在onCreate函数中添加系统事件的订阅，观察者B
+       hiAppEvent.addWatcher({
+         // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+         name: "EntryAbilityWatcherExtension",
+         // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
+         appEventFilters: [
+           {
+             domain: hiAppEvent.domain.OS,
+             names: [hiAppEvent.event.APP_FREEZE]
+           }
+         ],
+         // 空实现，仅用于生成过滤规则，使故障事件在被处理前保留在应用沙箱内；
+         // 若应用正常重启，观察者A已处理相同事件，观察者B通过空处理消耗从沙箱获取的事件，不对事件重复处理。
+         onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+   // ...
+         }
+       })
+   // ...
+   ```
+   
 
 3. 在“entry > src > main > ets” 路径下，新建faultlogextension/MyFaultLogExtensionAbility.ets文件。新建类MyFaultLogExtensionAbility继承FaultLogExtensionAbility，重写订阅功能相关的三个接口函数，代码示例如下：
 

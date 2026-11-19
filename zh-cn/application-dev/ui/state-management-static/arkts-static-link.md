@@ -1,6 +1,13 @@
 # \@Link装饰器：父子双向同步
 
-@Link装饰的变量与外部传入的状态变量数据源建立双向同步。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+[@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link-static.md#link-1)装饰的变量与外部传入的状态变量数据源建立双向同步。
 
 ## 概述
 

@@ -87,7 +87,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回介于0和100之间的数字。 |
+| int32_t | 表示当前电池电量百分比，有效取值范围为0到100之间的整数（包含0和100），返回-1则表示获取电池电量百分比失败。 |
 
 ### OH_BatteryInfo_GetPluggedType()
 

@@ -8,7 +8,7 @@
 
 [\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md#provider)和[\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md#consumer)用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
 
-\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中才能使用，在[\@Component](./arkts-create-custom-components.md)中使用会编译报错。
+\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中才能使用，在[\@Component](./arkts-create-custom-components.md#component)中使用会编译报错。
 
 \@Provider和\@Consumer提供了跨组件层级数据双向同步的能力。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
 

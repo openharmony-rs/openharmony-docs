@@ -7,20 +7,20 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-**pinAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的组成部分，专门用于管理PIN（密码）的安全策略。该模块提供了PIN有效期、PIN删除禁用状态、PIN复杂度校验策略等策略的配置与查询接口，供系统应用按照企业的安全要求定制锁屏密码策略。
+**pinAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的组成部分，专门用于管理PIN（密码）的安全策略。该模块提供了PIN有效期、PIN删除禁用状态、PIN历史校验范围、PIN复杂度校验策略等策略的配置与查询接口，供系统应用按照企业的安全要求定制锁屏密码策略。
 
 该模块主要用于以下场景：
 - 系统应用需要为指定用户设置PIN有效期，当PIN过期时提示用户重置密码。
 - 系统应用需要禁止用户删除PIN，保证密码凭据始终存在。
+- 系统应用需要设置PIN历史校验范围，限制用户修改的PIN不得跟最近若干个历史PIN重复。
 - 系统应用需要设置PIN复杂度校验策略，约束用户创建或修改锁屏密码时必须满足复杂度要求。
 - 设置界面需要查询当前已生效的PIN策略并回显。
 
+**起始版本：** 26.1.0
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块为系统接口。
+> - 本模块接口为系统接口。
 
 ## 关键Class/Interface介绍
 
@@ -34,6 +34,9 @@
 - **[pinAuth.getPinValidityPeriod](#pinauthgetpinvalidityperiod)**：查询指定用户的PIN有效期。
 - **[pinAuth.setPinDeletionDisabledState](#pinauthsetpindeletiondisabledstate)**：设置指定用户的PIN删除禁用状态。
 - **[pinAuth.getPinDeletionDisabledState](#pinauthgetpindeletiondisabledstate)**：查询指定用户的PIN删除禁用状态。
+- **[pinAuth.setPinHistoryCheckRange](#pinauthsetpinhistorycheckrange)**：设置指定用户的PIN历史校验范围。
+- **[pinAuth.getPinHistoryCheckRange](#pinauthgetpinhistorycheckrange)**：查询指定用户的PIN历史校验范围。
+- **[pinAuth.clearPinHistoryCheckRange](#pinauthclearpinhistorycheckrange)**：清除指定用户的PIN历史校验范围策略。
 - **[pinAuth.setPinComplexityPolicy](#pinauthsetpincomplexitypolicy)**：设置指定用户的PIN复杂度校验策略。
 - **[pinAuth.getPinComplexityPolicy](#pinauthgetpincomplexitypolicy)**：查询指定用户的PIN复杂度校验策略。
 
@@ -55,9 +58,16 @@ pinAuth.setPinComplexityPolicy(userId, {
 // 3. 禁止用户删除PIN。
 pinAuth.setPinDeletionDisabledState(userId, true);
 
-// 4. 查询当前生效的策略，供设置界面回显。
+// 4. 设置PIN历史校验范围（例如最近5次）。
+pinAuth.setPinHistoryCheckRange(userId, 5);
+
+// 5. 清除PIN历史校验范围策略。
+pinAuth.clearPinHistoryCheckRange(userId);
+
+// 6. 查询当前生效的策略，供设置界面回显。
 let validityPeriod = pinAuth.getPinValidityPeriod(userId);
 let deletionDisabled = pinAuth.getPinDeletionDisabledState(userId);
+let historyRange = pinAuth.getPinHistoryCheckRange(userId);
 let complexityPolicy = pinAuth.getPinComplexityPolicy(userId);
 ```
 
@@ -71,15 +81,15 @@ import { pinAuth } from '@kit.UserAuthenticationKit';
 
 PIN复杂度校验策略。用于定义用户创建或修改锁屏PIN时必须满足的复杂度规则，以及该规则的描述信息。
 
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -88,19 +98,23 @@ PIN复杂度校验策略。用于定义用户创建或修改锁屏PIN时必须�
 
 ## pinAuth.setPinValidityPeriod
 
-setPinValidityPeriod(userId: int, validityPeriod: long): void
+ArkTS-Dyn: setPinValidityPeriod(userId: number, validityPeriod: number): void
+
+ArkTS-Sta: setPinValidityPeriod(userId: int, validityPeriod: long): void
 
 设置PIN有效期。策略设置成功后，当PIN过期时，系统将弹出安全提示，要求用户重置PIN。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -163,19 +177,23 @@ try {
 
 ## pinAuth.getPinValidityPeriod
 
-getPinValidityPeriod(userId: int): long | undefined
+ArkTS-Dyn: getPinValidityPeriod(userId: number): number | undefined
+
+ArkTS-Sta: getPinValidityPeriod(userId: int): long | undefined
 
 查询PIN有效期。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -246,17 +264,19 @@ try {
 
 ## pinAuth.setPinDeletionDisabledState
 
-setPinDeletionDisabledState(userId: int, isDisabled: boolean): void
+ArkTS-Dyn: setPinDeletionDisabledState(userId: number, isDisabled: boolean): void
+
+ArkTS-Sta: setPinDeletionDisabledState(userId: int, isDisabled: boolean): void
 
 设置PIN删除功能的禁用状态。策略设置成功后，当该功能被禁用时，用户将无法删除PIN。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
@@ -320,17 +340,19 @@ try {
 
 ## pinAuth.getPinDeletionDisabledState
 
-getPinDeletionDisabledState(userId: int): boolean | undefined
+ArkTS-Dyn: getPinDeletionDisabledState(userId: number): boolean | undefined
+
+ArkTS-Sta: getPinDeletionDisabledState(userId: int): boolean | undefined
 
 查询PIN删除功能的禁用状态。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
@@ -403,19 +425,259 @@ try {
 }
 ```
 
-## pinAuth.setPinComplexityPolicy
+## pinAuth.setPinHistoryCheckRange
 
-setPinComplexityPolicy(userId: int, policy: PinComplexityPolicy): void
+ArkTS-Dyn: setPinHistoryCheckRange(userId: number, historyRange: number): void
 
-设置PIN复杂度校验策略及其描述。策略设置成功后，用户创建或修改锁屏PIN时，输入的PIN必须匹配策略中的复杂度正则表达式。
+ArkTS-Sta: setPinHistoryCheckRange(userId: int, historyRange: int): void
+
+设置PIN修改时的历史校验范围。策略设置成功后，用户修改PIN时不能重复使用最近指定数量的历史PIN。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 用户ID。策略对指定用户生效。取值为0时，策略对所有用户生效。取值限定为整数。 |
+| historyRange | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | PIN历史校验范围，表示修改PIN时不能重复使用的最近历史PIN的数量。取值范围为1~5的整数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12500002 | General operation error. |
+| 12500008 | The parameter is out of range. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { pinAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+// PIN历史校验范围，设置为5表示用户修改PIN时不能重复使用最近5次的历史PIN。
+let historyRange: number = 5;
+
+try {
+  pinAuth.setPinHistoryCheckRange(userId, historyRange);
+  console.info('set pin history check range successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to set pin history check range. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { pinAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@ohos.base';
+
+let userId: int = 100;
+// PIN历史校验范围，设置为5表示用户修改PIN时不能重复使用最近5次的历史PIN。
+let historyRange: int = 5;
+
+try {
+  pinAuth.setPinHistoryCheckRange(userId, historyRange);
+  console.info('set pin history check range successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to set pin history check range. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## pinAuth.getPinHistoryCheckRange
+
+ArkTS-Dyn: getPinHistoryCheckRange(userId: number): int | undefined
+
+ArkTS-Sta: getPinHistoryCheckRange(userId: int): int | undefined
+
+查询PIN修改时的历史校验范围。
+
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 用户ID。查询该用户已设置的PIN历史校验范围。取值限定为整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: int \| undefined | PIN历史校验范围，表示修改PIN时不能重复使用的最近历史PIN的数量。取值范围为1~5的整数。若未给指定用户设置该范围，则返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12500002 | General operation error. |
+| 12500008 | The parameter is out of range. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { pinAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+
+try {
+  let historyRange: number | undefined = pinAuth.getPinHistoryCheckRange(userId);
+  if (historyRange === undefined) {
+    console.info('pin history check range is not set.');
+  } else {
+    console.info(`pin history check range is ${historyRange}.`);
+  }
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to get pin history check range. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { pinAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@ohos.base';
+
+let userId: int = 100;
+
+try {
+  let historyRange: int | undefined = pinAuth.getPinHistoryCheckRange(userId);
+  if (historyRange === undefined) {
+    console.info('pin history check range is not set.');
+  } else {
+    console.info(`pin history check range is ${historyRange}.`);
+  }
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to get pin history check range. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## pinAuth.clearPinHistoryCheckRange
+
+ArkTS-Dyn: clearPinHistoryCheckRange(userId: number): void
+
+ArkTS-Sta: clearPinHistoryCheckRange(userId: int): void
+
+清除PIN历史校验范围策略。策略清除后，用户修改PIN时可以重复使用任意历史PIN。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 用户ID。策略对指定用户清除。取值为0时，清除所有用户的PIN历史校验范围策略。取值限定为整数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12500002 | General operation error. |
+| 12500008 | The parameter is out of range. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { pinAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+
+try {
+  pinAuth.clearPinHistoryCheckRange(userId);
+  console.info('clear pin history check range successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to clear pin history check range. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { pinAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@ohos.base';
+
+let userId: int = 100;
+
+try {
+  pinAuth.clearPinHistoryCheckRange(userId);
+  console.info('clear pin history check range successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to clear pin history check range. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## pinAuth.setPinComplexityPolicy
+
+ArkTS-Dyn: setPinComplexityPolicy(userId: number, policy: PinComplexityPolicy): void
+
+ArkTS-Sta: setPinComplexityPolicy(userId: int, policy: PinComplexityPolicy): void
+
+设置PIN复杂度校验策略及其描述。策略设置成功后，用户创建或修改锁屏PIN时，输入的PIN必须匹配策略中的复杂度正则表达式。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
@@ -485,17 +747,19 @@ try {
 
 ## pinAuth.getPinComplexityPolicy
 
-getPinComplexityPolicy(userId: int): PinComplexityPolicy | undefined
+ArkTS-Dyn: getPinComplexityPolicy(userId: number): PinComplexityPolicy | undefined
+
+ArkTS-Sta: getPinComplexityPolicy(userId: int): PinComplexityPolicy | undefined
 
 查询PIN复杂度校验策略及其描述。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 

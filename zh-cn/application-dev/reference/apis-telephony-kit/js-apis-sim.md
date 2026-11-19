@@ -31,7 +31,7 @@ isSimActive\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| slotId   | number                      | 是   | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2。|
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回指定卡槽是否激活。<br/>- true：激活。<br/>- false：未激活。                               |
 
 **示例：**
@@ -1015,6 +1015,7 @@ getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): 
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.  <br/> 适用版本：10-22           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
@@ -1071,6 +1072,7 @@ getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.  <br/> 适用版本：10-22           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |

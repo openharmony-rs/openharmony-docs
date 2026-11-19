@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍使用Node-API接口设置和获取ArkTS对象属性，包括属性的创建、读取、删除、枚举和存在性检查，支持完整的对象属性管理能力。"
 keywords: [Node-API, 属性, napi_set_property, napi_get_property, napi_delete_property, 可枚举属性, 自有属性, 属性管理]
 doctype: guide
@@ -432,7 +432,7 @@ import testNapi from 'libentry.so';
 export function napiHasOwnProperty() {
   let myObj = { 'myProperty': 1 };
   let inheritedObj = { 'inheritedProperty': 2 };
-  // The Object.setPrototypeOf method is not supported in DevEco Studio 4.1.0.400 and later versions, and must be used in TypeScript (TS).
+  // DevEco Studio 4.1.0.400及以后的版本不支持Object.setPrototypeOf方法，必须在TypeScript（TS）中使用。
   Object.setPrototypeOf(myObj, inheritedObj);
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_own_property my: %{public}s',
     testNapi.napiHasOwnProperty(myObj, 'myProperty'));

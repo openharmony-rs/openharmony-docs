@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "使用OHAudioSuite实时预览管线，在OH_AudioRenderer播放回调中调用RenderFrame，边播边处理、实时应用均衡器等音效。"
+keywords: [OHAudioSuite, 实时预览, 均衡器, 效果节点, 均衡器预置效果, AUDIOSUITE_PIPELINE_REALTIME_MODE]
+doctype: guide
+status: active
+---
+
 # 实时预览(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -14,8 +22,11 @@
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
+<!-- @[CMake_lib_suite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudio.so)
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 
 ### 添加头文件

@@ -859,7 +859,7 @@ onRouterPageUpdate(context: UIAbilityContext | UIContext, callback: Callback\<Ro
 **示例：**
 
 ```ts
-// used in UIAbility
+// 在UIAbility中使用
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { UIContext, window, uiObserver } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -888,7 +888,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 
-  // ... other function in EntryAbility
+  // EntryAbility中的其他函数
 }
 ```
 
@@ -944,7 +944,7 @@ offRouterPageUpdate(context: UIAbilityContext | UIContext, callback?: Callback\<
 **示例：**
 
 ```ts
-// used in UIAbility
+// 在UIAbility中使用
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { uiObserver, UIContext } from '@kit.ArkUI';
 
@@ -964,7 +964,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // ... other function in EntryAbility
+  // EntryAbility中的其他函数
 }
 ```
 
@@ -1426,7 +1426,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
+    // 主窗口已创建，为该Ability设置主页面
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -1439,17 +1439,17 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
+    // 主窗口已销毁，释放UI相关资源
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability已切换至前台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
-    // Ability has back to background
+    // Ability已切换至后台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }
@@ -1638,7 +1638,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
+    // 主窗口已创建，为该Ability设置主页面
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -1651,17 +1651,17 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
+    // 主窗口已销毁，释放UI相关资源
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability已切换至前台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
-    // Ability has back to background
+    // Ability已切换至后台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }

@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍使用Node-API扩展接口在当前线程中创建、切换和销毁上下文环境，支持模块化加载和上下文隔离，适用于需要独立globalThis对象的场景。"
 keywords: [Node-API, 上下文环境, napi_create_ark_context, napi_switch_ark_context, globalThis, 上下文隔离, 模块加载]
 doctype: guide
@@ -214,6 +214,8 @@ status: active
 |napi_delete_strong_reference | 否 |
 |napi_get_strong_reference_value | 否 |
 |napi_get_global_handle_count | 否 |
+|napi_open_microtask_scope | 否 |
+|napi_close_microtask_scope | 否 |
 |napi_throw_business_error | 是 |
 
 ## 不支持多运行时上下文环境调用的NAPI接口

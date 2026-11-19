@@ -465,7 +465,6 @@ import { bundleManager } from '@kit.MDMKit';
 
 try {
   // 参数需根据实际情况进行替换
-  // 参数需根据实际情况进行替换
   let result: Array<string> = bundleManager.getDisallowedInstallBundlesSync(null, 100);
   console.info(`Succeeded in getting disallowed install bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
@@ -693,7 +692,6 @@ import { bundleManager } from '@kit.MDMKit';
 
 try {
   // 参数需根据实际情况进行替换
-  // 参数需根据实际情况进行替换
   let result: Array<string> = bundleManager.getDisallowedUninstallBundlesSync(null, 100);
   console.info(`Succeeded in getting disallowed uninstall bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
@@ -767,7 +765,7 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true).then(() => {
 
 install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void>
 
-安装指定路径下的应用包。使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。自API版本26.0.0起，建议使用[installForResult](#bundlemanagerinstallforresult)，以获取更详细的错误码返回值。
+安装指定路径下的应用包。<!--RP2--><!--RP2End-->使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。自API版本26.0.0起，建议使用[installForResult](#bundlemanagerinstallforresult)，以获取更详细的错误码返回值。
 > **说明：**
 > 
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
@@ -860,7 +858,7 @@ bundleManager.install(wantTemp, hapFilePaths, installParam).then(() => {
 
 installForResult(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void\>
 
-安装指定路径下的应用包，并返回安装结果。使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
+安装指定路径下的应用包，并返回安装结果。<!--RP2--><!--RP2End-->使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
 
 > **说明：**
 > 
@@ -1444,6 +1442,130 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 ```
 
 
+## bundleManager.setDefaultApplication
+
+setDefaultApplication(type: DefaultApplicationType, bundleName: string, abilityName: string, accountId: number): void
+
+设置指定用户下某种类型应用的默认应用。设置后，该用户打开此类型的数据或链接时，由该应用处理。可通过[getDefaultApplicationBundleName](#bundlemanagergetdefaultapplicationbundlename)查询该类型当前生效的默认应用。
+
+> **说明：**
+>
+> 1. 设置后用户可以手动设置默认应用，用户设置可覆盖接口的设置。
+>
+> 2. 本接口支持跨用户设置，例如可以在100用户下为101用户设置默认应用，101用户下也可以为100用户设置默认应用。
+>
+> 3. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                                    | 必填 | 说明                                                         |
+| ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| type        | [DefaultApplicationType](#defaultapplicationtype)       | 是   | 默认应用的类型。                                             |
+| bundleName  | string                                                  | 是   | 应用的包名。取值范围：不能为空字符串。                       |
+| abilityName | string                                                  | 是   | 应用的ability名称。取值范围：不能为空字符串，且必须是bundleName对应应用中已存在的ability。 |
+| accountId   | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid.                         |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.MDMKit';
+
+let type: bundleManager.DefaultApplicationType = bundleManager.DefaultApplicationType.BROWSER;
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.mybrowser';
+let abilityName: string = 'com.example.mybrowser.MainAbility';
+let accountId: number = 100;
+
+try {
+  bundleManager.setDefaultApplication(type, bundleName, abilityName, accountId);
+  console.info('Succeeded in setting default application.');
+} catch (err) {
+  console.error(`Failed to set default application. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## bundleManager.getDefaultApplicationBundleName
+
+getDefaultApplicationBundleName(type: DefaultApplicationType, accountId: number): string
+
+获取指定用户下某种类型应用当前生效的默认应用的包名。
+
+> **说明：**
+>
+> 本接口支持跨用户查询，例如可以在100用户下查询101用户的默认应用，101用户下也可以查询100用户的默认应用。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| type      | [DefaultApplicationType](#defaultapplicationtype)       | 是   | 默认应用的类型。                                             |
+| accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| string | 默认应用的包名。若用户已手动修改该类型应用的默认应用，返回用户修改后的应用包名。若该类型尚未设置默认应用，返回空字符串。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid.                         |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.MDMKit';
+
+let type: bundleManager.DefaultApplicationType = bundleManager.DefaultApplicationType.BROWSER;
+let accountId: number = 100;
+
+try {
+  let bundleName: string = bundleManager.getDefaultApplicationBundleName(type, accountId);
+  console.info(`Succeeded in getting default application bundle name. Result is ${bundleName}`);
+} catch (err) {
+  console.error(`Failed to get default application bundle name. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
 ## InstallParam
 
 应用包安装需指定的参数信息。
@@ -1597,4 +1719,28 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | bundleName| string         | 否   | 否   | 应用的包名。                 |
 | appSize   | number         | 否   | 否   | 应用安装文件大小，单位为Byte。<br/>应用安装文件保存在以下目录：<br/>/data/storage/el1/bundle         |
 | dataSize  | number         | 否   | 否   | 应用的本地数据、分布式数据和数据库数据大小，单位为Byte。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明：**\${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。 |
+
+## DefaultApplicationType
+
+默认应用的类型。
+
+被设置的应用必须能够打开对应类型的数据，否则无法设置为该类型的默认应用。系统按照应用的ability中`skills`的配置进行判定，各类型的判定要求详见[默认应用类型的判定要求](../../mdm/mdm-kit-appendix.md#默认应用类型的判定要求)。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 值   | 说明                        |
+| --------- | ---- | --------------------------- |
+| BROWSER   | 0    | 浏览器应用。                |
+| IMAGE     | 1    | 图片查看应用。              |
+| AUDIO     | 2    | 音频播放应用。              |
+| VIDEO     | 3    | 视频播放应用。              |
+| PDF       | 4    | PDF查看应用。               |
+| WORD      | 5    | Word文档查看应用。          |
+| EXCEL     | 6    | Excel文档查看应用。         |
+| PPT       | 7    | PPT文档查看应用。           |
+| EMAIL     | 8    | 电子邮件应用。              |
 

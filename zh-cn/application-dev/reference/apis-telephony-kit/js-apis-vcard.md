@@ -40,7 +40,7 @@ ArkTS-Sta:  importVCard\(context: Context, filePath: string, accountId: int, cal
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(VCard file)文件地址。 |
-| accountId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是                  | 联系人账户ID。|
+| accountId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是                  | 联系人账户ID。<br>取值限定为整数。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。   |
 
 **错误码：**
@@ -119,7 +119,7 @@ ArkTS-Sta:  importVCard\(context: Context, filePath: string, accountId?: int\): 
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(VCard file)文件地址。 |
-| accountId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                      | 否   | 联系人账户ID。不传入时使用默认账户。 |
+| accountId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                      | 否   | 联系人账户ID。不传入时使用默认账户。<br>取值限定为整数。|
 
 **返回值：**
 

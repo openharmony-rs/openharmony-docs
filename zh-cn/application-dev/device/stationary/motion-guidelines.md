@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @osmanthusblossom-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -72,7 +72,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 定义回调函数接收操作手结果
+2. 定义回调函数接收操作手结果。
 
    <!-- @[motion_subscribe_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
@@ -82,7 +82,7 @@
    };
    ```
 
-3. 订阅操作手感知
+3. 订阅操作手感知。
 
    <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -98,7 +98,7 @@
    }
    ```
 
-4. 取消订阅操作手感知
+4. 取消订阅操作手感知。
 
    <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -114,7 +114,7 @@
    }
    ```
 
-5. 获取最新操作手状态
+5. 获取最新操作手状态。
 
    <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -177,7 +177,7 @@
    ```
 
 
-2. 定义回调函数接收握持手结果
+2. 定义回调函数接收握持手结果。
 
    <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
    
@@ -189,7 +189,7 @@
 
 
 
-3. 订阅握持手感知
+3. 订阅握持手感知。
 
    <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
    
@@ -207,7 +207,7 @@
 
 
 
-4. 取消订阅握持手感知
+4. 取消订阅握持手感知。
 
    <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
    

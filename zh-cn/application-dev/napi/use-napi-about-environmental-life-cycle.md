@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍使用Node-API接口将自定义数据与当前环境关联，通过napi_set_instance_data和napi_get_instance_data管理环境级别的数据，实现数据与环境生命周期的绑定。"
 keywords: [Node-API, 环境生命周期, instance_data, napi_set_instance_data, napi_get_instance_data, 数据关联, 环境绑定]
 doctype: guide

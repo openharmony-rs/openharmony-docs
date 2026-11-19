@@ -233,3 +233,4 @@ export default class DownloadExecutor extends InsightIntentExecutor {
 | inputParams | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。 | 对象 | 是 |
 | outputParams | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。 | 对象 | 是 |
 | entities | 表示意图实体定义，用于数据传递。 | 对象 | 是 |
+| permissions | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考，系统不会自动校验这些权限，权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 | 字符串数组 | 是 |

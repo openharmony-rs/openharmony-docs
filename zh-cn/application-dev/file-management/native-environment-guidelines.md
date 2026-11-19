@@ -32,16 +32,7 @@
 CMakeLists.txt中添加以下lib。
 
 ```txt
-target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
-```
-
-**添加头文件**
-
-```c++
-#include <cstdlib>
-#include <filemanagement/environment/oh_environment.h>
-#include <filemanagement/fileio/oh_fileio.h>
-#include <hilog/log.h>
+target_link_libraries(entry PUBLIC libohenvironment.so libhilog_ndk.z.so)
 ```
 
 1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
@@ -103,10 +94,6 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 4. 调用OH_Environment_GetUserDocumentDir接口获取用户Document目录沙箱路径，使用stat函数判断Document目录空间大小。示例代码如下所示：
 
-   使用前需要引入如下头文件：
-   ``` C++
-   #include <sys/stat.h>
-   ```
    <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->        
    
    ``` C++

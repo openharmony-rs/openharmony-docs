@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "汇总基础类库使用中的常见问题与解决方案：包括解析大文件XML内存溢出、定时器被误删除、Base64编码规则、HashSet和TreeSet添加已存在元素返回true、解析大量数字键JSON字符串等问题的原因与处理方法。"
 keywords: [基础库常见问题, XML内存溢出, 定时器误删除, Base64编码, HashSet, TreeSet, 数字键JSON解析]
 doctype: faq
@@ -25,7 +25,7 @@ status: active
 3. **编写解析代码**：使用libxml2提供的API实现流式解析逻辑。
 4. **XML对象处理**：当XML文件大小超过100MB时，建议在Native侧处理。
 
-关于如何在ArkTS侧引用编译生成的三方so库，请参考文档：[如何在ArkTS侧引用其他三方so库](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-21)。
+关于如何在ArkTS侧引用编译生成的三方so库，请参考文档：[如何在ArkTS侧引用其他三方so库](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/ndk-development-faq-0003)。
 
 libxml2库支持的回调函数主要如下所示：
 | 回调函数指针 | 触发时机 | 用途 |

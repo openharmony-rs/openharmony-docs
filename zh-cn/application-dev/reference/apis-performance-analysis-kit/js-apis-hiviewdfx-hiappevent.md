@@ -584,11 +584,11 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 | 名称             | 类型                                                |  只读  | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------|------ | ---- | ------------------------------------------------------------ |
-| name             | string                                              |  否   | 否   | 观察者名称，用于唯一标识观察者。首字符必须为字母字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName1、crash_Watcher等。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23                            |
-| triggerCondition | [TriggerCondition](#triggercondition)               |  否   | 是   | 订阅回调触发条件，需要与回调函数onTrigger一同传入才会生效。默认不触发。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23           |
-| appEventFilters  | [AppEventFilter](#appeventfilter)[]                 |  否   | 是   | 订阅过滤条件，在需要对订阅事件进行过滤时传入。默认不过滤事件。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23               |
-| onTrigger        | ArkTS-Dyn: (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void<br/>ArkTS-Sta: (curRow: int, curSize: int, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  否   | 是   | 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；  <br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
-| onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  否   | 是 | 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称； <br>appEventGroups：回调事件集合。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| name             | string                                              |  否   | 否   | 观察者名称，用于唯一标识观察者。首字符必须为字母字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName1、crash_Watcher等。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23                            |
+| triggerCondition | [TriggerCondition](#triggercondition)               |  否   | 是   | 订阅回调触发条件，需要与回调函数onTrigger一同传入才会生效。默认不触发。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23           |
+| appEventFilters  | [AppEventFilter](#appeventfilter)[]                 |  否   | 是   | 订阅过滤条件，在需要对订阅事件进行过滤时传入。默认不过滤事件。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23               |
+| onTrigger        | ArkTS-Dyn: (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void<br>ArkTS-Sta: (curRow: int, curSize: int, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  否   | 是   | 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；  <br>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  否   | 是 | 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称； <br>appEventGroups：回调事件集合。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
 
 > **说明：**
 >
@@ -608,9 +608,9 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                   |
 | ------- | ------ | ---- | ---- | -------------------------------------- |
-| row     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 满足触发回调的事件总数量，正整数。默认值0，不触发回调。传入负值时，会被置为默认值。             |
-| size    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 满足触发回调的事件总大小，正整数，单位为byte。默认值0，不触发回调。传入负值时，会被置为默认值。 |
-| timeOut | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 满足触发回调的超时时长，正整数，单位为30s。默认值0，不触发回调。传入负值时，会被置为默认值。    |
+| row     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 满足触发回调的事件总数量，正整数。默认值0，不触发回调。传入负值时，会被置为默认值。             |
+| size    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 满足触发回调的事件总大小，正整数，单位为byte。默认值0，不触发回调。传入负值时，会被置为默认值。 |
+| timeOut | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 满足触发回调的超时时长，正整数，单位为30s。默认值0，不触发回调。传入负值时，会被置为默认值。    |
 
 
 ## AppEventFilter
@@ -623,9 +623,9 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 | 名称       | 类型                      | 只读 | 可选 | 说明                     |
 | ---------- | ------------------------- | ---- | ---- | ------------------------ |
-| domain     | string                    | 否 | 否   | 需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用[Write](#hiappeventwrite-1)接口时传入的自定义事件信息（[AppEventInfo](#appeventinfo)）中的事件领域。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23     |
-| eventTypes | [EventType](#eventtype)[] | 否 | 是   | 需要订阅的事件类型集合。默认不进行过滤。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
-| names<sup>11+</sup>      | string[]                  | 否 | 是   | 需要订阅的事件名称集合。默认不进行过滤。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| domain     | string                    | 否 | 否   | 需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用[Write](#hiappeventwrite-1)接口时传入的自定义事件信息（[AppEventInfo](#appeventinfo)）中的事件领域。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23     |
+| eventTypes | [EventType](#eventtype)[] | 否 | 是   | 需要订阅的事件类型集合。默认不进行过滤。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| names<sup>11+</sup>      | string[]                  | 否 | 是   | 需要订阅的事件名称集合。默认不进行过滤。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
 
 > **说明：**
 >
@@ -693,7 +693,7 @@ ArkTS-Sta: setSize(size: int): void
 
 | 参数名 | 类型   | 必填 | 说明                                         |
 | ------ | ------ | ---- | -------------------------------------------- |
-| size   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 数据大小阈值，单位为byte。取值范围[0, 2^31-1]，超出范围会抛异常。 |
+| size   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 数据大小阈值，单位为byte。取值范围[0, 2^31-1]，超出范围会抛异常。 |
 
 **错误码：**
 
@@ -732,7 +732,7 @@ ArkTS-Sta: setRow(size: int): void
 
 | 参数名 | 类型   | 必填 | 说明                                         |
 | ------ | ------ | ---- | -------------------------------------------- |
-| size   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 事件条数，单位为条。取值范围(0, 2^31-1]，超出范围会抛异常。 |
+| size   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 事件条数，单位为条。取值范围(0, 2^31-1]，超出范围会抛异常。 |
 
 **错误码：**
 
@@ -775,7 +775,7 @@ ArkTS-Sta: takeNext(): AppEventPackage | null
 
 | 类型                                | 说明                                                   |
 | ----------------------------------- | ------------------------------------------------------ |
-| ArkTS-Dyn: [AppEventPackage](#appeventpackage)<br/>ArkTS-Sta: [AppEventPackage](#appeventpackage) \| null | 取出的事件包对象，订阅事件数据被全部取出后会返回null。 |
+| ArkTS-Dyn: [AppEventPackage](#appeventpackage)<br>ArkTS-Sta: [AppEventPackage](#appeventpackage) \| null | 取出的事件包对象，订阅事件数据被全部取出后会返回null。 |
 
 **示例：**
 
@@ -804,7 +804,7 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 | domain    | string                  | 否 | 否   | 事件领域。事件领域名称支持数字、字母、下划线字符，需要以字母开头且不能以下划线结尾，长度非空且不超过32个字符。 |
 | name      | string                  | 否 | 否   | 事件名称。首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过48个字符。 |
 | eventType | [EventType](#eventtype) | 否 | 否   | 事件类型。         |
-| params    | ArkTS-Dyn: object<br/>ArkTS-Sta: RecordData     | 否 | 否   | 事件参数对象，包含每个事件参数的参数名和参数值。**系统事件中params包含的字段已由各系统事件定义，具体字段含义在各类系统事件指南的介绍中，例如[崩溃事件介绍](../../dfx/hiappevent-watcher-crash-events.md)。** 针对应用事件，[Write](#hiappeventwrite-1)打点写入的参数由开发者定义，其规格如下：<br>- 参数名为string类型，首字符必须为字母字符或`$`字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName、\$123_name等。<br>- 参数值支持string、number、boolean、数组类型。string类型参数长度需在8*1024个字符以内，超出后会和对应的参数名一同被丢弃；number类型参数取值需在Number.MIN_SAFE_INTEGER~Number.MAX_SAFE_INTEGER范围内，超出可能会产生不确定值；数组类型参数中的元素类型只能全为string、number、boolean中的一种，且元素个数需在100以内，超出部分即从第101个元素开始会被丢弃。<br>- 参数个数需在32个以内，超出的参数会做丢弃处理。 |
+| params    | ArkTS-Dyn: object<br>ArkTS-Sta: RecordData     | 否 | 否   | 事件参数对象，包含每个事件参数的参数名和参数值。**系统事件中params包含的字段已由各系统事件定义，具体字段含义在各类系统事件指南的介绍中，例如[崩溃事件介绍](../../dfx/hiappevent-watcher-crash-events.md)。** 针对应用事件，[Write](#hiappeventwrite-1)打点写入的参数由开发者定义，其规格如下：<br>- 参数名为string类型，首字符必须为字母字符或`$`字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName、\$123_name等。<br>- 参数值支持string、number、boolean、数组类型。string类型参数长度需在8*1024个字符以内，超出后会和对应的参数名一同被丢弃；number类型参数取值需在Number.MIN_SAFE_INTEGER~Number.MAX_SAFE_INTEGER范围内，超出可能会产生不确定值；数组类型参数中的元素类型只能全为string、number、boolean中的一种，且元素个数需在100以内，超出部分即从第101个元素开始会被丢弃。<br>- 参数个数需在32个以内，超出的参数会做丢弃处理。 |
 
 
 ## AppEventPackage
@@ -815,11 +815,11 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 | 名称      | 类型     | 只读 | 可选 | 说明                           |
 | --------- | -------- | ---- | ---- | ------------------------------ |
-| packageId | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 否   | 事件包ID，从0开始自动递增。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23    |
-| row       | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 否   | 事件包的事件数量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23             |
-| size      | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 否   | 事件包的事件大小，单位为byte。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
-| data      | string[] | 否 | 否   | 事件包的事件信息。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23         |
-| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | 否 | 否   | 事件对象集合。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
+| packageId | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否 | 否   | 事件包ID，从0开始自动递增。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23    |
+| row       | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否 | 否   | 事件包的事件数量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23             |
+| size      | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否 | 否   | 事件包的事件大小，单位为byte。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| data      | string[] | 否 | 否   | 事件包的事件信息。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23         |
+| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | 否 | 否   | 事件对象集合。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
 
 
 ## AppEventGroup<sup>11+</sup>
@@ -1057,7 +1057,7 @@ ArkTS-Sta: addProcessor(processor: Processor): long
 
 | 类型    | 说明                   |
 | ------ | ---------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 所添加上报事件数据处理者的ID，标识唯一数据处理者，可用于移除数据处理者。 添加失败返回-1，添加成功返回大于0的值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 所添加上报事件数据处理者的ID，标识唯一数据处理者，可用于移除数据处理者。 添加失败返回-1，添加成功返回大于0的值。 |
 
 **示例：**
 
@@ -1122,7 +1122,7 @@ ArkTS-Sta: addProcessorFromConfig(processorName: string, configName?: string): P
 
 | 类型    | 说明                   |
 | ------ | ---------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回添加的事件数据处理者的唯一ID，可用于移除该数据处理者。 添加失败返回11105001错误码。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回添加的事件数据处理者的唯一ID，可用于移除该数据处理者。 添加失败返回11105001错误码。 |
 
 **错误码：**
 
@@ -1179,7 +1179,7 @@ ArkTS-Sta: removeProcessor(id: long): void
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------| ------- | ---- | --------------------------- |
-| id    | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是   | 上报事件数据处理者ID。值大于0。由调用[addProcessor](#hiappeventaddprocessor11)或[addProcessorFromConfig](#hiappeventaddprocessorfromconfig20)接口返回值所得。|
+| id    | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 上报事件数据处理者ID。值大于0。由调用[addProcessor](#hiappeventaddprocessor11)或[addProcessorFromConfig](#hiappeventaddprocessorfromconfig20)接口返回值所得。|
 
 **示例：**
 
@@ -1564,12 +1564,12 @@ hiAppEvent.configure(config2);
 <!--Table: auto; auto; 10%; 10%; auto-->
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| logType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 采集日志的类型。默认值：0。<br/>logType=0：其他选项均取默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值由用户自定义。<br/>logType=2：仅采集trace。<br>**说明**：<br> - logType=0时，仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。<br> - logType=2时，其他参数均不生效，无需设置。 |
-| ignoreStartupTime | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
-| sampleInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
-| sampleCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。<br>**说明**：<br/> - 2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此sampleCount的设置值不能超过系统按计算公式得出的最大值。<br/> - 4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。<br/> - 开发者要结合需求场景，进行合理的设置。 |
-| reportTimesPerApp | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>每分钟上报次数范围：[1, 3]。 |
-| autoStopSampling | boolean | 否 | 是 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true：超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+| logType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 采集日志的类型。默认值：0。<br>logType=0：其他选项均取默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br>logType=1：仅采集调用栈，触发检测的阈值由用户自定义。<br>logType=2：仅采集trace。<br>**说明**：<br> - logType=0时，仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。<br> - logType=2时，其他参数均不生效，无需设置。 |
+| ignoreStartupTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
+| sampleInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
+| sampleCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。<br>**说明**：<br> - 2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此sampleCount的设置值不能超过系统按计算公式得出的最大值。<br> - 4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。<br> - 开发者要结合需求场景，进行合理的设置。 |
+| reportTimesPerApp | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br>默认值：1，单位：次。<br>每分钟上报次数范围：[1, 3]。 |
+| autoStopSampling | boolean | 否 | 是 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br>true：超时结束或达到设置的采样次数，停止采样。<br>false：达到设置的采样次数时停止采样。<br>默认值：false。 |
 
 
 ## CpuUsageHighPolicy<sup>22+</sup>
@@ -1590,11 +1590,11 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
-| foregroundLoadThreshold    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 应用前台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：30。若设置值在阈值范围外，系统将取用默认值30。<br>**说明**：建议取值小于30。 |
-| backgroundLoadThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 应用后台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：10。若设置值在阈值范围外，系统将取用默认值10。<br>**说明**：建议取值小于10。 |
-| threadLoadThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 应用线程CPU高负载异常阈值，阈值范围：[15, 100]，单位：%，默认值：70。若设置值在阈值范围外，系统将取用默认值70。 |
-| perfLogCaptureCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
-| threadLoadInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
+| foregroundLoadThreshold    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 应用前台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：30。若设置值在阈值范围外，系统将取用默认值30。<br>**说明**：建议取值小于30。 |
+| backgroundLoadThreshold | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是   | 应用后台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：10。若设置值在阈值范围外，系统将取用默认值10。<br>**说明**：建议取值小于10。 |
+| threadLoadThreshold | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是   | 应用线程CPU高负载异常阈值，阈值范围：[15, 100]，单位：%，默认值：70。若设置值在阈值范围外，系统将取用默认值70。 |
+| perfLogCaptureCount | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
+| threadLoadInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
 
 ## AppCrashPolicy<sup>24+</sup>
 
@@ -1604,12 +1604,12 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br/>true：使能崩溃事件的页面切换日志。<br/>false：不使能崩溃事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br/>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| collectMinidump    | boolean | 否 | 是   | 是否使能[minidump](../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。<!--RP5--><br/>true：[params字段说明](../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br/>false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP5End--><br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| publishOnNextLaunch    | boolean | 否 | 是   | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。<br>true：使能固定在应用重启之后收到事件回调。<br>false：不使能固定在应用重启之后收到事件回调。<br>默认值：false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>**ArkTS-Dyn起始版本**：26.1.0<br/>**ArkTS-Sta起始版本**：26.1.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br>true：使能崩溃事件的页面切换日志。<br>false：不使能崩溃事件的页面切换日志。<br>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br>默认值：false。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br>false：打印所有VMA映射信息。<br>默认值：false。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| collectMinidump    | boolean | 否 | 是   | 是否使能[minidump](../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。<!--RP5--><br>true：[params字段说明](../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br>false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP5End--><br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| publishOnNextLaunch    | boolean | 否 | 是   | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。<br>true：使能固定在应用重启之后收到事件回调。<br>false：不使能固定在应用重启之后收到事件回调。<br>默认值：false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1625,7 +1625,7 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能应用冻屏事件的页面切换日志。<br/>true：使能应用冻屏事件的页面切换日志。<br/>false：不使能应用冻屏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能应用冻屏事件的页面切换日志。<br>true：使能应用冻屏事件的页面切换日志。<br>false：不使能应用冻屏事件的页面切换日志。<br>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
 
 ## ResourceOverlimitPolicy<sup>24+</sup>
 
@@ -1635,9 +1635,11 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生OOM时，不传递堆快照。<br/>"event_rawheap"：应用发生OOM时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| useRefinedLogFileName    | boolean | 否 | 是   | 是否使能事件日志文件名精细化开关。<br/>true：使能事件日志文件名精细化开关。<br/>false：不使能事件日志文件名精细化开关。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br>true：使能资源泄漏事件的页面切换日志。<br>false：不使能资源泄漏事件的页面切换日志。<br>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br>"event"：应用发生OOM时，不传递堆快照。<br>"event_rawheap"：应用发生OOM时，系统生成并传递堆快照。<br>**说明**：<br>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| useRefinedLogFileName    | boolean | 否 | 是   | 是否使能事件日志文件名精细化开关。<br>true：使能事件日志文件名精细化开关。<br>false：不使能事件日志文件名精细化开关。<br>默认值：false。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| jsvmHeapLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的JSVM堆日志。<br>true：使能资源泄漏事件的JSVM堆日志。<br>false：不使能资源泄漏事件的JSVM堆日志。<br>默认值：false。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。|
+| v8HeapLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的V8堆日志。<br>true：使能资源泄漏事件的V8堆日志。<br>false：不使能资源泄漏事件的V8堆日志。<br>默认值：false。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。|
 
 ## AddressSanitizerPolicy<sup>24+</sup>
 
@@ -1653,7 +1655,7 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能地址越界事件的页面切换日志。<br/>true：使能地址越界事件的页面切换日志。<br/>false：不使能地址越界事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能地址越界事件的页面切换日志。<br>true：使能地址越界事件的页面切换日志。<br>false：不使能地址越界事件的页面切换日志。<br>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
 
 ## Processor<sup>11+</sup>
 
@@ -1663,20 +1665,20 @@ hiAppEvent.configure(config2);
 
 | 名称                | 类型                     | 只读 | 可选 | 说明                                                                                                        |
 | ------------------- | ----------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------- |
-| name                | string                  | 否 | 否   | 数据处理者的名称。名称只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                                                                                          |
-| debugMode           | boolean                 | 否 | 是   | 是否开启debug模式，默认值为false。配置值为true表示开启debug模式，false表示不开启debug模式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23         |
-| routeInfo           | string                  | 否 | 是   | 服务器位置信息，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23          |
-| appId               | string                  | 否 | 是   | 应用id，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
-| onStartReport       | boolean                 | 否 | 是   | 数据处理者在启动时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23           |
-| onBackgroundReport  | boolean                 | 否 | 是   | 当应用程序进入后台时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23          |
-| periodReport        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否 | 是   | 事件定时上报时间周期，单位为秒。传入数值必须大于或等于0，小于0时会被置为默认值0，不进行定时上报。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23       |
-| batchReport         | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否 | 是   | 事件上报阈值，当事件条数达到阈值时上报事件。传入数值必须大于0且小于1000，不在数值范围内会被置为默认值0，不进行上报。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23         |
-| userIds             | string[]                | 否 | 是   | 数据处理者可以上报的用户ID的name数组。name对应[setUserId](#hiappeventsetuserid11)接口的name参数。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23    |
-| userProperties      | string[]                | 否 | 是   | 数据处理者可以上报的用户属性的name数组。name对应[setUserProperty](#hiappeventsetuserproperty11)接口的name参数。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23   |
-| eventConfigs        | [AppEventReportConfig](#appeventreportconfig11)[]  | 否 | 是   | 数据处理者可以上报的事件描述配置数组。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23               |
-| configId<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 数据处理者配置id。传入数值必须大于或等于0，小于0时会被置为默认值0。传入的值大于0时，与数据处理者的名称name共同唯一标识数据处理者。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| customConfigs<sup>12+</sup> | Record\<string, string> | 否 | 是 | 自定义扩展参数。传入参数名和参数值不符合规格会默认不配置扩展参数，其规格定义如下：<br>- 参数名为string类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>- 参数值为string类型，参数值长度需在1024个字符以内。<br>- 参数个数需在32个以内。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| configName<sup>20+</sup>    | string                  | 否 | 是   | <!--RP4-->数据处理者的配置名称，支持从配置文件中加载对应配置，默认为空。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23<!--RP4End-->|
+| name                | string                  | 否 | 否   | 数据处理者的名称。名称只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23                                                                                          |
+| debugMode           | boolean                 | 否 | 是   | 是否开启debug模式，默认值为false。配置值为true表示开启debug模式，false表示不开启debug模式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23         |
+| routeInfo           | string                  | 否 | 是   | 服务器位置信息，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23          |
+| appId               | string                  | 否 | 是   | 应用id，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
+| onStartReport       | boolean                 | 否 | 是   | 数据处理者在启动时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23           |
+| onBackgroundReport  | boolean                 | 否 | 是   | 当应用程序进入后台时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23          |
+| periodReport        | ArkTS-Dyn: number<br>ArkTS-Sta: int                  | 否 | 是   | 事件定时上报时间周期，单位为秒。传入数值必须大于或等于0，小于0时会被置为默认值0，不进行定时上报。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23       |
+| batchReport         | ArkTS-Dyn: number<br>ArkTS-Sta: int                  | 否 | 是   | 事件上报阈值，当事件条数达到阈值时上报事件。传入数值必须大于0且小于1000，不在数值范围内会被置为默认值0，不进行上报。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23         |
+| userIds             | string[]                | 否 | 是   | 数据处理者可以上报的用户ID的name数组。name对应[setUserId](#hiappeventsetuserid11)接口的name参数。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23    |
+| userProperties      | string[]                | 否 | 是   | 数据处理者可以上报的用户属性的name数组。name对应[setUserProperty](#hiappeventsetuserproperty11)接口的name参数。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23   |
+| eventConfigs        | [AppEventReportConfig](#appeventreportconfig11)[]  | 否 | 是   | 数据处理者可以上报的事件描述配置数组。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23               |
+| configId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 数据处理者配置id。传入数值必须大于或等于0，小于0时会被置为默认值0。传入的值大于0时，与数据处理者的名称name共同唯一标识数据处理者。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| customConfigs<sup>12+</sup> | Record\<string, string> | 否 | 是 | 自定义扩展参数。传入参数名和参数值不符合规格会默认不配置扩展参数，其规格定义如下：<br>- 参数名为string类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>- 参数值为string类型，参数值长度需在1024个字符以内。<br>- 参数个数需在32个以内。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| configName<sup>20+</sup>    | string                  | 否 | 是   | <!--RP4-->数据处理者的配置名称，支持从配置文件中加载对应配置，默认为空。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23<!--RP4End-->|
 
 
 ## AppEventReportConfig<sup>11+</sup>
@@ -1716,7 +1718,7 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 
 | 类型                       | 说明                |
 |--------------------------|-------------------|
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int \| long \| double     | 表示值类型为数字。         |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int \| long \| double     | 表示值类型为数字。         |
 | string                   | 表示值类型为字符串。        |
 | boolean                  | 表示值类型为布尔值。        |
 | Array&lt;string&gt;      | 表示值类型为字符串类型的数组。   |
@@ -1771,22 +1773,22 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 
 | 名称                      | 类型   | 只读   | 说明                 |
 | ------------------------- | ------ | ------ | -------------------- |
-| USER_LOGIN                | string | 是 | 用户登录事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23       |
-| USER_LOGOUT               | string | 是 | 用户登出事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23       |
-| DISTRIBUTED_SERVICE_START | string | 是 | 分布式服务启动事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
-| APP_CRASH<sup>11+</sup>   | string | 是 | 应用崩溃事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23       |
-| APP_FREEZE<sup>11+</sup>  | string | 是 | 应用冻屏事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23       |
-| APP_LAUNCH<sup>12+</sup>  | string | 是 | 应用启动耗时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23   |
-| SCROLL_JANK<sup>12+</sup> | string | 是 | 应用滑动丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23   |
-| CPU_USAGE_HIGH<sup>12+</sup> | string | 是 | 应用CPU高负载事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| BATTERY_USAGE<sup>12+</sup> | string | 是 | 应用24h功耗器件分解统计事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| RESOURCE_OVERLIMIT<sup>12+</sup> | string | 是 | 应用资源泄漏事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
-| APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23 |
-| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23 |
-| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
+| USER_LOGIN                | string | 是 | 用户登录事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23       |
+| USER_LOGOUT               | string | 是 | 用户登出事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23       |
+| DISTRIBUTED_SERVICE_START | string | 是 | 分布式服务启动事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| APP_CRASH<sup>11+</sup>   | string | 是 | 应用崩溃事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23       |
+| APP_FREEZE<sup>11+</sup>  | string | 是 | 应用冻屏事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23       |
+| APP_LAUNCH<sup>12+</sup>  | string | 是 | 应用启动耗时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23   |
+| SCROLL_JANK<sup>12+</sup> | string | 是 | 应用滑动丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23   |
+| CPU_USAGE_HIGH<sup>12+</sup> | string | 是 | 应用CPU高负载事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| BATTERY_USAGE<sup>12+</sup> | string | 是 | 应用24h功耗器件分解统计事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| RESOURCE_OVERLIMIT<sup>12+</sup> | string | 是 | 应用资源泄漏事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：21<br>**ArkTS-Sta起始版本**：23 |
+| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：21<br>**ArkTS-Sta起始版本**：23 |
+| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：23<br>**ArkTS-Sta起始版本**：23 |
 
 ## param
 

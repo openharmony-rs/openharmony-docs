@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供系统管理能力，包括NTP时间服务器设置、OTA升级策略管理、系统更新管理、按键事件处理策略、日志收集、设备激活锁管理等功能。适用于企业设备管理场景，帮助企业管理员统一管控设备系统配置、升级策略和安全策略，提升企业设备管理效率和安全性。
+本模块提供系统管理能力，包括NTP时间服务器设置、OTA升级策略管理、系统更新管理、按键事件处理策略、日志收集、设备激活锁管理、音量管理等功能。适用于企业设备管理场景，帮助企业管理员统一管控设备系统配置、升级策略和安全策略，提升企业设备管理效率和安全性。
 
 > **说明：**
 > 
@@ -1611,7 +1611,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-禁用/启用设备激活锁。使用Promise异步回调。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
+禁用/启用设备激活锁。使用Promise异步回调。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备（只支持PC/2in1企业设备）。
 
 > **说明：**
 >
@@ -2443,6 +2443,108 @@ systemManager.destroyExactTimer(timerId).then(() => {
 });
 ```
 
+## systemManager.setVolumeDegree
+
+setVolumeDegree(volumeType: AudioVolumeType, degree: number): void
+
+设置当前用户指定音量类型的音量值。适用于企业统一管控设备音量的场景，例如批量调整终端设备的媒体播放音量。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                 | 必填 | 说明                                                         |
+| ---------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量类型。 |
+| degree     | number                               | 是   | 音量值，取值范围：0～100。取值超出该范围时返回9200012错误码。在耳机佩戴状态下，由于安规限制，如果设置值超过当前设备安规要求的最大值，则设置为当前安规要求的最大值，并触发系统弹框提醒用户。对于PC/2in1设备，则不会显示该弹窗。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let volumeType: systemManager.AudioVolumeType = systemManager.AudioVolumeType.STREAM_MUSIC;
+let degree: number = 50;
+try {
+  systemManager.setVolumeDegree(volumeType, degree);
+  console.info('Succeeded in setting volume degree.');
+} catch (err) {
+  console.error(`Failed to set volume degree. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getVolumeDegree
+
+getVolumeDegree(volumeType: AudioVolumeType): number
+
+获取当前用户指定音量类型的音量值。适用于企业设备管理应用在下发音量策略前确认设备当前音量状态的场景。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                 | 必填 | 说明                                                         |
+| ---------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量类型。 |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| number | 指定音量类型的音量值，取值范围：0～100。                     |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let volumeType: systemManager.AudioVolumeType = systemManager.AudioVolumeType.STREAM_MUSIC;
+try {
+  let degree: number = systemManager.getVolumeDegree(volumeType);
+  console.info(`Succeeded in getting volume degree, degree is ${degree}.`);
+} catch (err) {
+  console.error(`Failed to get volume degree. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## SystemUpdateInfo
 
 待更新的系统版本信息。
@@ -2473,7 +2575,7 @@ systemManager.destroyExactTimer(timerId).then(() => {
 | delayUpdateTime | number   | 否   | 是 | 表示延迟升级时间（单位：小时）。 |
 | installStartTime        | number   | 否   | 是 | 表示指定安装窗口起始时间（时间戳）。 |
 | installEndTime | number   | 否   | 是 | 表示指定安装窗口结束时间（时间戳）。 |
-| disableSystemOtaUpdate<sup>20+</sup> | boolean   | 否   | 是 | 表示是否禁用在公网环境下升级。true表示禁用公网升级，false表示不禁用公网升级。如果作为[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)的入参，该字段可缺省，缺省时保持当前配置不变。当前配置可通过[systemManager.getOtaUpdatePolicy](#systemmanagergetotaupdatepolicy)接口获取。禁用公网升级后，可以采用内网升级。<!--RP4--><!--RP4End--> |
+| disableSystemOtaUpdate<sup>20+</sup> | boolean   | 否   | 是 | 表示是否禁用在公网环境下升级。true表示禁用公网升级，false表示不禁用公网升级。如果作为[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)的入参，该字段可缺省，缺省时保持当前配置不变。当前配置可通过[systemManager.getOtaUpdatePolicy](#systemmanagergetotaupdatepolicy)接口获取。禁用公网升级后，可以采用内网升级。推荐使用[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)禁用公网升级。 |
 
 ## PolicyType
 
@@ -2734,3 +2836,17 @@ callback(): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+## AudioVolumeType
+
+音量类型。通过[setVolumeDegree](#systemmanagersetvolumedegree)、[getVolumeDegree](#systemmanagergetvolumedegree)接口指定需要设置或查询的音量类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值  | 说明       |
+| ------------ | --- | ---------- |
+| STREAM_MUSIC | 1   | 媒体音量。 |

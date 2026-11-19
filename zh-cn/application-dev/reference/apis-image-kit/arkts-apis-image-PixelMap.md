@@ -323,7 +323,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -865,7 +865,7 @@ readPixelsSync(area: PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1495,7 +1495,7 @@ writePixelsSync(area: PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1880,7 +1880,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -2039,7 +2039,7 @@ getImageInfoSync(): ImageInfo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -2522,7 +2522,7 @@ ArkTS-Sta: opacitySync(rate: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -2835,7 +2835,7 @@ createAlphaPixelmapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -3211,7 +3211,7 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -3292,7 +3292,7 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -3301,7 +3301,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function scaleSync(pixelMap: image.PixelMap) {
+function scale(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
@@ -3362,7 +3362,7 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -3438,7 +3438,7 @@ ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel)
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -3511,7 +3511,7 @@ ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLe
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -3759,7 +3759,7 @@ clone(): Promise\<PixelMap>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| 501 | Access denied because the resource is occupied by another thread. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
 | 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -3821,7 +3821,7 @@ cloneSync(): PixelMap
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| 501 | Access denied because the resource is occupied by another thread. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
 | 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -4195,7 +4195,7 @@ ArkTS-Sta: translateSync(x: double, y: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -4566,7 +4566,7 @@ ArkTS-Sta: rotateSync(angle: double): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -4897,7 +4897,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -5254,7 +5254,7 @@ cropSync(region: Region): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -5657,7 +5657,7 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.          |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| 501 | Access denied because the resource is occupied by another thread. |
 | 62980173 | The DMA memory does not exist.          |
 | 62980302 | Memory copy failed. Possibly caused by invalid metadata value.          |
 
@@ -5752,7 +5752,7 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401|  Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| 501 | Access denied because the resource is occupied by another thread. |
 | 62980173 | The DMA memory does not exist.          |
 | 62980302 | Memory copy failed. Possibly caused by invalid metadata value.         |
 
@@ -5765,14 +5765,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型需为DMA_ALLOC内存类型，其创建方法请参考上方说明。
   let staticMetadata: image.HdrStaticMetadata = {
-    displayPrimariesX: [1.1, 1.1, 1.1],
-    displayPrimariesY: [1.2, 1.2, 1.2],
-    whitePointX: 1.1,
-    whitePointY: 1.2,
-    maxLuminance: 2.1,
-    minLuminance: 1.0,
-    maxContentLightLevel: 2.1,
-    maxFrameAverageLightLevel: 2.1,
+    displayPrimariesX: [0.1, 0.2, 0.3],
+    displayPrimariesY: [0.4, 0.5, 0.6],
+    whitePointX: 0.5,
+    whitePointY: 0.5,
+    maxLuminance: 65535,
+    minLuminance: 0,
+    maxContentLightLevel: 65535,
+    maxFrameAverageLightLevel: 8192,
   };
   pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
     console.info('Succeeded in setting the metadata.');
@@ -5787,14 +5787,14 @@ ArkTS-Sta示例：
 ```ts
 function setMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型需为DMA_ALLOC内存类型，其创建方法请参考上方说明。
   let staticMetadata: image.HdrStaticMetadata = {
-    displayPrimariesX: [1.1, 1.1, 1.1],
-    displayPrimariesY: [1.2, 1.2, 1.2],
-    whitePointX: 1.1,
-    whitePointY: 1.2,
-    maxLuminance: 2.1,
-    minLuminance: 1.0,
-    maxContentLightLevel: 2.1,
-    maxFrameAverageLightLevel: 2.1,
+    displayPrimariesX: [0.1, 0.2, 0.3],
+    displayPrimariesY: [0.4, 0.5, 0.6],
+    whitePointX: 0.5,
+    whitePointY: 0.5,
+    maxLuminance: 65535,
+    minLuminance: 0,
+    maxContentLightLevel: 65535,
+    maxFrameAverageLightLevel: 8192,
   };
   pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
     console.info('Succeeded in setting the metadata.');
@@ -5828,7 +5828,7 @@ setTransferDetached(detached: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -6264,7 +6264,7 @@ setMemoryNameSync(name: string): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401 | Parameter error. Possible causes: 1.The length of the input parameter is too long. 2.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| 501 | Access denied because the resource is occupied by another thread. |
 | 62980286 | Memory format not supported. |
 
 **示例：**

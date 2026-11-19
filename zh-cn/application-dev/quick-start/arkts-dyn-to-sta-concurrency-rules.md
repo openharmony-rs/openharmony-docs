@@ -84,7 +84,7 @@ ArkTS-Sta为内存天然共享模型，跨线程数据交互无需再依赖Actor
 
 **适配建议：**
 
-使用ArkTS-Sta提供的新线程[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)。
+使用ArkTS-Sta提供的新线程[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)。
 
 **示例：**
 

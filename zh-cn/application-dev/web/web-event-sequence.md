@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "梳理Web组件加载网页全流程中生命周期回调的触发时机与推荐用法，涵盖正常与异常加载场景、性能指标监听与页面卡死恢复方案。"
+keywords: [onPageBegin, onPageEnd, onControllerAttached, onLoadIntercept, onFirstContentfulPaint, onLargestContentfulPaint]
+doctype: guide
+status: active
+---
+
 # Web组件的生命周期
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -179,7 +187,6 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 // xxx.ets
-'use static'
 import { WebResourceRequest, WebResourceResponse, OnRenderExitedEvent, OnPageBeginEvent, RenderProcessNotRespondingReason, RenderProcessNotRespondingData, Entry, Component, Column, Row, Button, Web, Header } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { BusinessError, RecordData } from '@ohos.base';
@@ -344,7 +351,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   // 指定加载的页面。
-  url: string = "www.example.com";
+  url: string = 'www.example.com';
   build() {
     Column() {
       Web({ src: this.url, controller: this.controller })
@@ -394,7 +401,6 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 // xxx.ets
-'use static'
 import webview from '@ohos.web.webview';
 import hilog from '@ohos.hilog'
 import { OnRenderExitedEvent, RenderExitReason, Entry, Component, Column, Web } from '@ohos.arkui.component';

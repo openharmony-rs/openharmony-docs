@@ -101,7 +101,7 @@
     }
     ```
 
-6. 连接远端设备，建立端口通道。其中chosenDeviceAddr为从[发起星闪扫描](nearlink-device-discovery-guide.md#发起星闪扫描)结果中选择的设备地址，UUID需与步骤3中注册的保持一致。
+6. 连接远端设备，建立端口通道。其中chosenDeviceAddr为从[发起星闪扫描](nearlink-device-discovery-guide.md#发起星闪扫描)结果中选择的设备地址，UUID需与步骤3中注册的保持一致。连接参数中的frameType用于指定帧类型，默认值为FRAME_TYPE_1（参见[星闪常见问题 > 什么是帧类型](nearlink-faq-guide.md#什么是帧类型)）。
 
     <!-- @[datatransfer_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     

@@ -51,7 +51,7 @@ libnet_websocket.so
 ```
 ### 构建工程
 
-1. 在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
+1. 在源文件中编写调用该API的代码，接收ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
 
    <!-- @[websocket_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -99,8 +99,12 @@ libnet_websocket.so
    
    static void onClose(struct WebSocket *wsClient, WebSocket_CloseResult closeResult)
    {
-       (void)wsClient;
        OH_LOG_INFO(LOG_APP, "onClose: code: %{public}u, reason: %{public}s", closeResult.code, closeResult.reason);
+       // 收到连接关闭事件后，释放对应客户端的资源
+       if (wsClient == g_client) {
+           g_client = nullptr;
+       }
+       OH_WebSocketClient_Destroy(wsClient);
    }
    
    static napi_value ConnectWebsocket(napi_env env, napi_callback_info info)
@@ -181,14 +185,11 @@ libnet_websocket.so
            napi_create_int32(env, -1, &result);
            return result;
        }
-       // 关闭WebSocket连接
+       // 发起关闭请求，资源在onClose回调中释放
        int ret = OH_WebSocketClient_Close(g_client, {
                                                       .code = 0,
                                                       .reason = "Actively Close",
                                                   });
-       // 释放WebSocket资源并置空
-       OH_WebSocketClient_Destroy(g_client);
-       g_client = nullptr;
        napi_create_int32(env, ret, &result);
        return result;
    }
@@ -234,7 +235,7 @@ libnet_websocket.so
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
    ```
 
-4. 在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
+4. 在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接收一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
 
    <!-- @[websocket_defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
