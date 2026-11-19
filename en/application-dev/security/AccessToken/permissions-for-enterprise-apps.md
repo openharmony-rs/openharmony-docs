@@ -109,7 +109,7 @@ Allows an application to query the identities (such as names and IDs) of specifi
 
 With this permission, the application can query the identities of specified or all local accounts in the system. Based on the obtained identities, the application can further access or manage the target local accounts.
 
-<!--RP12--><!--RP12End-->
+<!--RP13--><!--RP13End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -227,7 +227,7 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 
 Allows an application to obtain domain account information.
 
-<!--RP11--><!--RP11End-->
+<!--RP12--><!--RP12End-->
 
 <!--RP2--><!--RP2End-->
 
