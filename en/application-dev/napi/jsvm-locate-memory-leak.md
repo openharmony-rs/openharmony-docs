@@ -9,8 +9,8 @@ status: active
 # Troubleshooting JSVM-API Memory Leaks
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=22baf984090461cd5ea4c03a32296adcf2f37702 translatedAt=2026-11-09T08:52:17.299Z nl=1 -->
