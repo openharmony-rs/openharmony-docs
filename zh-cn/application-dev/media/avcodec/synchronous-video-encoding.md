@@ -703,7 +703,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[recorder_buffer_input_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
    ```c++
-   //  获取首帧视频宽跨距和高跨距。
+   // 获取首帧视频宽跨距和高跨距。
    bool Recorder::InitSyncVideoInputContext()
    {
        if (!encContext_->isEncFirstFrame) {
