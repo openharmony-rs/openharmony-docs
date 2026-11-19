@@ -1,4 +1,4 @@
-# \@Reusable: Reusing Components
+# @Reusable: Reusing Components
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -6,7 +6,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=76658a410ba7a85f6958029575374196cc0322a7 translatedAt=2026-08-13T11:54:14.307Z pushedAt=2026-08-13T12:16:12.064Z -->
+<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-11-17T05:05:34.810Z pushedAt=2026-11-19T08:20:04.929Z nl=1 -->
 
 To reduce the performance overhead caused by repeatedly creating and destroying custom components, you can use **\@Reusable** to decorate custom components decorated by **\@Component**, thereby implementing component reuse. **\@Reusable** supports identifying different types of reusable components through **reuseId**, provides the **aboutToReuse** callback to receive reuse parameters, and supports configuring memory optimization policies. This decorator is applicable to scenarios that require repeatedly creating and destroying components, such as list scrolling and frequent switching of component display and hiding.
 
@@ -93,4 +93,3 @@ struct Child {
   }
 }
 ```
-<!--no_check-->
