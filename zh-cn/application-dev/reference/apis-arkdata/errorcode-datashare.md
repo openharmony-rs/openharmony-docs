@@ -155,6 +155,7 @@ The parameter format is incorrect or the value range is invalid.
 5. 检查接口传入的URI数组或者proxyData数组中的URI是否满足格式校验：<br>
     uri的固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写。
 
+<!--Del-->
 ## 15700016 订阅者列表参数错误
 
 **错误信息**
@@ -176,3 +177,4 @@ Parameter error.
 1. 检查接口传入的数组的长度是否超过50。
 
 2. 检查接口传入的数组的长度是否为0。
+<!--DelEnd-->
