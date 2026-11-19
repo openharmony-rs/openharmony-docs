@@ -710,8 +710,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
             // Destroy是编码器句柄的最终释放点。销毁后立即置空，避免后续调用继续使用失效句柄。
             const int32_t ret = OH_VideoEncoder_Destroy(encoder_);
             encoder_ = nullptr;
-            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
-                "Destroy failed, ret: %{public}d", ret);
+            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Destroy failed, ret: %{public}d", ret);
         }
         return AVCODEC_SAMPLE_ERR_OK;
     }
@@ -956,7 +955,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    if (bufferInfo == nullptr || bufferInfo->buffer == nullptr) {
        continue;
    }
-    /**
+   /**
     * // 示例：读取输入文件数据，将数据写入buffer，设置属性后送入编码器。
     * // 输入文件配置。
     * std::string_view inputFilePath = "/*yourpath*.yuv";
