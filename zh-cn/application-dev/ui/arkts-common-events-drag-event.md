@@ -1329,6 +1329,25 @@ struct GridEts {
    将虚拟文件信息设置到FileUri.virtualEntry，通过UnifiedRecord和UnifiedData创建拖拽数据。示例中的oriUri用于描述起拖方文件；落入方应使用落入事件实际获取的数据中的URI访问文件。
 
    <!-- @[virtual_drag_js_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private createDragData(): unifiedDataChannel.UnifiedData {
+     if (!this.provider) {
+       throw new Error('Prepare a file before dragging');
+     }
+     const entry: uniformDataStruct.VirtualFileInfo = this.provider.createVirtualEntry();
+     // oriUri是非空占位URI，不要求文件已存在；落入方使用实际获取的URI。
+     const fileUri: uniformDataStruct.FileUri = {
+       uniformDataType: 'general.file-uri',
+       oriUri: `file:///virtual/${encodeURIComponent(entry.itemInfo.name)}`,
+       fileType: entry.itemInfo.type === 'dir' ? 'general.directory' : 'general.file',
+       virtualEntry: entry
+     };
+     const record: unifiedDataChannel.UnifiedRecord = new unifiedDataChannel.UnifiedRecord(
+       uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
+     return new unifiedDataChannel.UnifiedData(record);
+   }
+   ```
 
 
 3. 设置起拖数据。
