@@ -279,7 +279,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ``` C++
    int32_t AudioDecoder::SetDecryptionConfig()
    {
-       // 根据DRM信息创建指定的DRM系统，以创建"com.clearplay.drm"为例。
+       // 根据DRM信息创建指定的DRM系统，以创建“com.clearplay.drm”为例。
        MediaKeySystem *system = nullptr;
        int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
        CHECK_AND_RETURN_RET_LOG(ret == DRM_ERR_OK && system != nullptr, AVCODEC_SAMPLE_ERR_ERROR,
@@ -293,7 +293,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            "Create media key session failed, ret: %{public}d", ret);
        
        // 获取许可证请求、设置许可证响应等。
-       // 设置解密配置，即将解密会话、安全通路标志(当前音频解密不支持安全通路，应设置为false)设置到解码器中。
+       // 设置解密配置，即将解密会话、安全通路标志（当前音频解密不支持安全通路，应设置为false）设置到解码器中。
        bool secureAudio = false;
        ret = OH_AudioCodec_SetDecryptionConfig(decoder_, session, secureAudio);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
