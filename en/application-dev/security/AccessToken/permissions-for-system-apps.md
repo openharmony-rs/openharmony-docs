@@ -5812,6 +5812,20 @@ Allows an in-vehicle application to obtain the real-time status of vehicle compo
 
 **Valid since**: 26.0.1
 
+## ohos.permission.MANAGE_CURSOR_STYLE
+
+Allows an application to manage mouse cursor styles.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 26.1.0
+
 ## ohos.permission.ALLOW_DIRECT_BOOT
 
 Allows an application to start after a device cold boot or restart, before the user unlocks the device for the first time.
