@@ -184,7 +184,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        int32_t height = 0;
        int32_t widthStride = 0;
        int32_t heightStride = 0;
-       OH_AVPixelFormat outputPixelFormat = AV_PIXEL_FORMAT_NV12;
        // 编码器同步锁。
        std::shared_mutex codecMutex;
        // 编码器输入队列。
@@ -725,7 +724,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 ### Buffer模式
 
-参考以下示例代码，可以完成Buffer模式下视频编码的全流程，实现异步模式的数据轮转。g，编码成H.264格式为例。
+参考以下示例代码，可以完成Buffer模式下视频编码的全流程，实现异步模式的数据轮转。此处以输入YUV视频数据，编码成H.264格式为例。
 
 1. 添加头文件。
 
@@ -942,17 +941,19 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    送入输入队列进行编码，以下示例中变量说明：
 
-   info的成员变量：
+   - info：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
+
+   bufferInfo的成员变量：
+
    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
    - bufferIndex：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
-   - attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
 
    <!-- @[recorder_video_buffer_input_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
    ```c++
    // 异步模式只消费OnNeedInputBuffer回调入队的Buffer和索引，不调用Query/Get接口。
    const auto bufferInfo = encContext_->inputBufferQueue.Dequeue(INPUT_WAIT_MS);
-   if (input == nullptr || input->buffer == nullptr) {
+   if (bufferInfo == nullptr || bufferInfo->buffer == nullptr) {
        continue;
    }
     /**
@@ -1008,13 +1009,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     * if (parameterRet != AV_ERR_OK) {
     *     // 异常处理。
     * }
-    * // 送入编码输入队列进行编码，index为对应输入队列的下标。
-    * OH_AVErrCode pushInputRet = OH_VideoEncoder_PushInputBuffer(videoEnc, bufferInfo->index);
-    * if (pushInputRet != AV_ERR_OK) {
-    *     // 异常处理。
-    * }
     */
    ```
+
    <!-- @[encoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
@@ -1159,6 +1156,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     <!-- @[encoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/output/video/RecorderVideoOutput.cpp) -->
 
     ```c++
+    // 获取输出buffer。
     std::shared_ptr<CodecBufferInfo> bufferInfo = encContext_->outputBufferQueue.Dequeue();
     // 开发者可根据业务需要，对输出数据进行保存/释放处理。
     // 示例：将编码完成帧数据buffer写入到对应输出文件中。

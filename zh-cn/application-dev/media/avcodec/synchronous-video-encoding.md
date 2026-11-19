@@ -60,6 +60,27 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 2. 定义全局变量（仅作示例，具体参数值，请根据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
+   struct CodecUserData {
+       SampleInfo *sampleInfo = nullptr;
+       bool isEncFirstFrame = false;
+
+       int32_t inputWidthStride = 0;
+       int32_t inputHeightStride = 0;
+       OH_AVPixelFormat inputPixelFormat = AV_PIXEL_FORMAT_NV12;
+       // 编码器同步锁。
+       std::shared_mutex codecMutex;
+       // 编码器输入队列。
+       CodecBufferQueue inputBufferQueue;
+       // 编码器输出队列。
+       CodecBufferQueue outputBufferQueue;
+
+       void ClearQueue()
+       {
+           inputBufferQueue.Flush();
+           outputBufferQueue.Flush();
+       }
+   };
+
    struct VideoSampleInfo {
        // 视频帧宽度。
        int32_t videoWidth = 0;
@@ -88,6 +109,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    // 编码器实例指针。
    OH_AVCodec *encoder_ = nullptr;
    std::unique_ptr<VideoEncoder> videoEncoder_ = nullptr;
+   CodecUserData *encContext_ = nullptr;
    ```
 
 ### Surface模式
@@ -174,7 +196,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 
    获取编码器Surface模式的OHNativeWindow输入，获取surface需要在调用OH_VideoEncoder_Prepare接口之前完成。
-   
 
    <!-- @[encoder_get_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
@@ -276,27 +297,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                    // 开发者可根据业务需要，对输出数据进行保存/释放处理。
                    /**
                     * 示例：将编码完成帧数据buffer写入到对应输出文件中。
-                    * // 获取编码后信息。
-                    * OH_AVCodecBufferAttr attr;
-                    * OH_AVErrCode getBufferRet = OH_AVBuffer_GetBufferAttr(buffer, &attr);
-                    * if (getBufferRet != AV_ERR_OK) {
-                    *     // 异常处理。
-                    * }
-                    * if (attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    *     // 尾帧处理。
-                    * }
-                    * // 将编码完成帧数据buffer写入到对应输出文件中。
                     * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                     * if (addr == nullptr) {
                     *    // 异常处理 。
                     * }
                     * if (outputFile != nullptr && outputFile->is_open()) {
                     *     outputFile->write(reinterpret_cast<char *>(addr), attr.size);
-                    * }
-                    * // 释放已完成写入的数据，index为对应输出队列下标。
-                    * OH_AVErrCode freeOutputRet = OH_VideoEncoder_FreeOutputBuffer(encoder_, info.bufferIndex);
-                    * if (freeOutputRet != AV_ERR_OK) {
-                    *     // 异常处理。
                     * }
                     */
                    return AVCODEC_SAMPLE_ERR_OK;
@@ -323,7 +329,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                }
            }
        }
-       // ...
+       AVCODEC_SAMPLE_LOGD("Output stream changed repeatedly, defer buffer acquisition to next poll");
        return AVCODEC_SAMPLE_ERR_AGAIN;
    }
    ```
@@ -746,8 +752,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    - 根据获取的索引（index），调用[OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)接口获取对应的缓冲区（buffer）实例。
    - 调用[OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)接口释放编码帧。
 
-   与Surface模式相同，此处不再赘述。
-
    编码器送帧处理循环：
 
    <!-- @[encoder_sync_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/output/video/RecorderVideoOutput.cpp) -->
@@ -796,27 +800,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                    // 开发者可根据业务需要，对输出数据进行保存/释放处理。
                    /**
                     * 示例：将编码完成帧数据buffer写入到对应输出文件中。
-                    * // 获取编码后信息。
-                    * OH_AVCodecBufferAttr attr;
-                    * OH_AVErrCode getBufferRet = OH_AVBuffer_GetBufferAttr(buffer, &attr);
-                    * if (getBufferRet != AV_ERR_OK) {
-                    *     // 异常处理。
-                    * }
-                    * if (attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    *     // 尾帧处理。
-                    * }
-                    * // 将编码完成帧数据buffer写入到对应输出文件中。
                     * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                     * if (addr == nullptr) {
                     *    // 异常处理 。
                     * }
                     * if (outputFile != nullptr && outputFile->is_open()) {
                     *     outputFile->write(reinterpret_cast<char *>(addr), attr.size);
-                    * }
-                    * // 释放已完成写入的数据，index为对应输出队列下标。
-                    * OH_AVErrCode freeOutputRet = OH_VideoEncoder_FreeOutputBuffer(encoder_, info.bufferIndex);
-                    * if (freeOutputRet != AV_ERR_OK) {
-                    *     // 异常处理。
                     * }
                     */
                    return AVCODEC_SAMPLE_ERR_OK;
@@ -843,7 +832,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                }
            }
        }
-       // ...
+       AVCODEC_SAMPLE_LOGD("Output stream changed repeatedly, defer buffer acquisition to next poll");
        return AVCODEC_SAMPLE_ERR_AGAIN;
    }
    ```
