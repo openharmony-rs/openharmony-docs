@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8edfbd95328595ad49c5cd196b130507a344067b translatedAt=2026-11-09T10:23:06.849Z pushedAt=2026-11-09T11:21:54.888Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ddf0648fd626d654edd412186b48ab04cc95ba6f translatedAt=2026-11-18T03:07:22.815Z pushedAt=2026-11-19T08:42:13.348Z nl=1 -->
 
 > **NOTE**
 >
@@ -466,7 +466,7 @@ Enumerates whether an audio stream can be recorded by other applications.
 | -------------------- | ---- | -------------------------------- |
 | PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorded or screen-projected by other applications and is not privacy-related.|
 | PRIVACY_TYPE_PRIVATE | 1    | The audio stream cannot be recorded or screen-projected by other applications.|
-| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br> For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) type cannot be recorded or screen-projected by other applications.<br> However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.|
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | The audio stream can be screen-projected and is privacy-related.<br> For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) type cannot be screen-projected.<br> However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be screen-projected.|
 
 ## ChannelBlendMode<sup>11+</sup>
 
