@@ -172,18 +172,16 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
 | 名称   | 类型 | 只读 | 可选 | 说明                         |
 | ------ | -------- | ---- | ---- | ---------------------------- |
-| top    | number   | 否   | 否   | 窗口顶部需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
-| left   | number   | 否   | 否   | 窗口左侧需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
-| right  | number   | 否   | 否   | 窗口右侧需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
-| bottom | number   | 否   | 否   | 窗口底部需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+| top    | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口顶部需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+| left   | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口左侧需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+| right  | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口右侧需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
+| bottom | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口底部需要避让的距离。单位为像素，取值限定为整数。 <br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0|
 
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 

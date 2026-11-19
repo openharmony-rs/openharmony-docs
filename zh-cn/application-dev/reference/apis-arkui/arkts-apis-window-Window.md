@@ -2036,8 +2036,6 @@ getAvoidAreaInsets(): AvoidAreaInsets
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
@@ -5248,8 +5246,6 @@ onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
@@ -5313,8 +5309,6 @@ offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
 取消订阅窗口避让区边衬的变化。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
