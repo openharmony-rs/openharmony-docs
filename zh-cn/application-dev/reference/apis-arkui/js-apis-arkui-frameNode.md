@@ -261,6 +261,10 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 向当前FrameNode派发输入事件，并可指定竞争策略。支持[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)、[MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)和[AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent)。KeyEvent请使用[dispatchKeyEvent](#dispatchkeyevent)派发。
 
+> **说明：**
+>
+> - 不建议组件的[hitTestBehavior](arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent时，继续使用dispatchInputEvent，会有事件序列异常的问题。
+
 **起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
