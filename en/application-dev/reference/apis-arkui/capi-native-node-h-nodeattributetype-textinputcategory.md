@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Text Input Component Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6; @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=00d8471aa555cf6cc5dfeff4258ec5a6b23f56d0 translatedAt=2026-08-25T02:27:25.541Z pushedAt=2026-08-27T01:21:39.196Z -->
+<!-- md-trans-meta sourceCommit=206bd97188fc4ec7832475ee377b959beb5bd8db translatedAt=2026-11-18T08:51:52.160Z pushedAt=2026-11-19T06:53:57.951Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -14,7 +13,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the attribute types that can be set by ArkUI on the native side for text input components including **TextInput** and **TextArea**. This attribute set supports various style and interaction configurations such as caret styles, placeholder text, input filtering, auto-fill, text selection, and counters. It is applicable to scenarios such as form input, search boxes, password input, and multi-line text editing, making it easier for you to uniformly manage the appearance and behavior of text input components.
+Enumerates the attribute types that can be set by ArkUI on the native side for text input components including **TextInput** and **TextArea**. This attribute set supports various style and interaction configurations such as caret styles, placeholder text, input filtering, autofill, text selection, and counters. It is applicable to scenarios such as form input, search boxes, password input, and multi-line text editing, making it easier for you to uniformly manage the appearance and behavior of text input components.
 
 **Since**: 12
 
@@ -32,6 +31,7 @@ Default placeholder text of the single-line text box. This attribute can be set,
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -56,6 +56,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -78,6 +79,7 @@ Caret color attribute, which can be set, reset, and obtained as required through
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -102,6 +104,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -124,6 +127,7 @@ Underline of the single-line text box. This attribute can be set, reset, and obt
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -148,6 +152,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -170,6 +175,7 @@ Type of the **Enter** key. This attribute can be set, reset, and obtained as req
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -194,6 +200,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -216,6 +223,7 @@ Default placeholder text font (including the size, weight, style, and font famil
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -246,6 +254,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -268,6 +277,7 @@ Text input type. This attribute can be set, reset, and obtained as required thro
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -292,6 +302,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -314,6 +325,7 @@ Whether to display the password icon at the end of the password text box. This a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -338,6 +350,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -361,11 +374,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Button style. The value is an enumerated value of [ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle). The default value is **ARKUI_CANCELBUTTON_STYLE_INPUT**, which indicates the clear button input style. |
+| .value[0].i32 | Button style. The value is an enumerated value of [ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle). The default value is **ARKUI_CANCELBUTTON_STYLE_INPUT**, which indicates the cancel button input style. |
 | .value[1]?.f32 | Icon size, in vp. Value range: [0, +∞). When a negative value is passed, the setting does not take effect. When not passed, the system default icon size is used. |
 | .value[2]?.u32 | Button icon color, in 0xARGB format, for example, **0xFFFF0000** indicates red. When not passed, the system default icon color is used. |
 | ?.string | Button icon address. The value is the local address of an image, for example, **/pages/icon.png**. When not passed, the system default clear icon is used. |
@@ -389,6 +403,7 @@ Text selection area, which will be highlighted, for the component that obtains f
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -414,6 +429,7 @@ Color of the underline when it is shown. This attribute takes effect only after 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -444,6 +460,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -454,7 +471,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether autofill is enabled. The value **1** means auto-fill is enabled, and **0** means the opposite. |
+| .value[0].i32 | Whether autofill is enabled. The value **1** means autofill is enabled, and **0** means the opposite. |
 
 ## NODE_TEXT_INPUT_CONTENT_TYPE
 
@@ -467,6 +484,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -477,7 +495,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype), used to determine the auto-filled content type. |
+| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype), used to determine the autofilled content type. |
 
 ## NODE_TEXT_INPUT_PASSWORD_RULES
 
@@ -489,6 +507,7 @@ Rules for generating passwords. When autofill is used, these rules are transpare
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -513,6 +532,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -536,6 +556,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -558,6 +579,7 @@ Text box style (default style or inline input style). The inline input style is 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -584,6 +606,7 @@ Returns the position information of the caret. If this API is called when the ca
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -609,6 +632,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 12
 
+
 **Returns**
 
 | Type| Description|
@@ -629,6 +653,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 12
 
+
 **Returns**
 
 | Type| Description|
@@ -645,6 +670,7 @@ Whether to hide the text selection menu when the text box is long-pressed, doubl
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -669,6 +695,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -691,6 +718,7 @@ Custom keyboard.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -717,6 +745,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -739,6 +768,7 @@ Whether to show the keyboard when the text box obtains focus. This attribute can
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -763,6 +793,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -785,6 +816,7 @@ Letter spacing of the [TextInput](arkui-ts/ts-basic-components-textinput.md) com
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -810,6 +842,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -832,6 +865,7 @@ Whether to enable half leading.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -856,6 +890,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -879,17 +914,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable the autofill animation. When enabled, the animation takes effect during auto-fill only for the input box whose [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) is set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**.<br>**1** to enable; **0** otherwise.<br>Default value: **1**. |
+| .value[0].i32 | Whether to enable the autofill animation. When enabled, the animation takes effect during autofill only for the input box whose [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) is set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**.<br>**1** to enable; **0** otherwise.<br>Default value: **1**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the autofill animation is enabled. The value **1** means enabled, and **0** means disabled. When enabled, the animation takes effect during auto-fill only for the input box whose [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) enumeration is set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**. |
+| .value[0].i32 | Whether the autofill animation is enabled. The value **1** means enabled, and **0** means disabled. When enabled, the animation takes effect during autofill only for the input box whose [ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype) enumeration is set to **ARKUI_TEXTINPUT_TYPE_PASSWORD**, **ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD**, or **ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD**. |
 
 ## NODE_TEXT_INPUT_LINE_HEIGHT
 
@@ -901,6 +937,7 @@ Line height of text in the text box. This attribute can be set, reset, and obtai
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -925,6 +962,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -947,6 +985,7 @@ Whether to show a counter and its style when the number of input characters exce
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -977,6 +1016,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -998,16 +1038,13 @@ NODE_TEXT_INPUT_ELLIPSIS_MODE = 7042
 Text ellipsis mode of the single-line text box. This attribute can be set, reset, and obtained as required through APIs.
 
 This attribute has the following configuration dependencies:
-
 - This attribute takes effect only when **NODE_TEXT_INPUT_TEXT_OVERFLOW** is set to **ARKUI_TEXT_OVERFLOW_ELLIPSIS**.
-
 - When **TEXT_OVERFLOW** is set to **ARKUI_TEXT_OVERFLOW_CLIP**, the **ELLIPSIS_MODE** setting does not take effect.
-
 - It is recommended to set **TEXT_OVERFLOW** to **ELLIPSIS** first, and then set **ELLIPSIS_MODE** to a specified ellipsis mode.<br>
-
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 24
+
 
 **Parameters**
 
@@ -1032,6 +1069,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1054,6 +1092,7 @@ Whether to enable leading punctuation compression of a text line. This attribute
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 23
+
 
 **Parameters**
 
@@ -1078,6 +1117,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -1100,6 +1140,7 @@ Whether the line height can be automatically adjusted based on the actual text h
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 23
+
 
 **Parameters**
 
@@ -1124,6 +1165,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -1147,6 +1189,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -1169,6 +1212,7 @@ Linear gradient effect of the text in the text box. This attribute can be set, r
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -1199,6 +1243,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1208,6 +1253,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Radius of the radial gradient, in vp. The value range is [0, +∞), and the default value is **0**. If a negative value is passed, the setting does not take effect. |
 | .value[3]?.i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient colors are not repeated, and **1** indicates that the gradient colors are repeated. The default value is **0**. |
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. <br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value. <br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Invalid values are not recommended. |
+
 
 **Returns**
 
@@ -1230,6 +1276,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -1251,7 +1298,8 @@ NODE_TEXT_INPUT_DECORATION = 7050
 Text decorative line style and color of the single-line text box. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since:** 26.0.0
+**Since**: 26.0.0
+
 
 **Parameters**
 
@@ -1276,6 +1324,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1288,6 +1337,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Whether punctuation hanging at the end of a line is enabled. The value **1** means punctuation hanging is enabled, and **0** means the opposite. |
 
+
 ## NODE_TEXT_AREA_PLACEHOLDER
 
 ```c
@@ -1298,6 +1348,7 @@ Default placeholder text of the multi-line text box. This attribute can be set, 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1322,6 +1373,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1344,6 +1396,7 @@ Maximum number of characters in the text input. This attribute can be set, reset
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1368,6 +1421,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1390,6 +1444,7 @@ Default placeholder text font (including the size, weight, style, and font famil
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1420,6 +1475,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1442,6 +1498,7 @@ Editable state for the multi-line text box. This attribute can be set and obtain
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1466,6 +1523,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1488,6 +1546,7 @@ Whether to show a counter and its style when the number of input characters exce
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1518,6 +1577,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1541,11 +1601,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the text box loses focus after the **Enter** key is pressed to submit information.<br>**1**: The text box loses focus. **0**: The text box does not lose focus.<br>Default value: **0**. |
+| .value[0].i32 | Whether the text box loses focus after the **Enter** key is pressed to submit information.<br>**1**: The text box loses focus. **0**: The text box does not lose focus.<br>When [NODE_TEXT_AREA_ENTER_KEY_TYPE](#node_text_area_enter_key_type) is set to **ARKUI_ENTER_KEY_TYPE_NEW_LINE**, the default value is **0**. For other **Enter** key types, the default value is **1**. |
 
 **Returns**
 
@@ -1563,6 +1624,7 @@ Regular expression for input filtering. Only inputs that comply with the regular
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1587,6 +1649,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1610,11 +1673,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Type of the Enter key. The value is an enumerated value of [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype). The default value is **ARKUI_ENTER_KEY_TYPE_DONE**, which indicates the completion style. |
+| .value[0].i32 | Type of the **Enter** key. The value is an enumerated value of [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype). The default value is **ARKUI_ENTER_KEY_TYPE_NEW_LINE**, indicating the **Enter** key is labeled "New line". |
 
 **Returns**
 
@@ -1632,6 +1696,7 @@ Whether to enable the input method when the **TextArea** component obtains focus
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1658,6 +1723,7 @@ Returns the position information of the caret. If this API is called when the ca
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1683,6 +1749,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 12
 
+
 **Returns**
 
 | Type| Description|
@@ -1703,6 +1770,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 12
 
+
 **Returns**
 
 | Type| Description|
@@ -1719,6 +1787,7 @@ Text selection range, which will be highlighted, when the component is focused. 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1745,6 +1814,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1767,6 +1837,7 @@ Autofill type.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1791,6 +1862,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1814,6 +1886,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1836,6 +1909,7 @@ Letter spacing of the **TextArea** component. This attribute can be set, reset, 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1861,6 +1935,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -1883,6 +1958,7 @@ Whether to enable half leading.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -1907,6 +1983,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -1929,6 +2006,7 @@ Maximum number of lines that can be displayed with the inline style in the editi
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -1953,6 +2031,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -1975,6 +2054,7 @@ Minimum number of lines for the node. This attribute can be set, reset, and obta
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -1999,6 +2079,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -2021,6 +2102,7 @@ Line height of text in the text box. This attribute can be set, reset, and obtai
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -2045,6 +2127,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -2067,6 +2150,7 @@ Whether to enable entity recognition for selected text, supporting the recogniti
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -2091,6 +2175,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -2113,6 +2198,7 @@ Custom keyboard of the text box. This attribute can be set, reset, and obtained 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -2139,6 +2225,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -2160,16 +2247,13 @@ NODE_TEXT_AREA_ELLIPSIS_MODE = 8038
 Text ellipsis mode of the multi-line text box. This attribute can be set, reset, and obtained as required through APIs.
 
 This attribute has the following configuration dependencies:
-
 - This attribute takes effect only when **NODE_TEXT_AREA_TEXT_OVERFLOW** is set to **ARKUI_TEXT_OVERFLOW_ELLIPSIS**.
-
 - When **TEXT_OVERFLOW** is set to **ARKUI_TEXT_OVERFLOW_CLIP**, the **ELLIPSIS_MODE** setting does not take effect.
-
 - It is recommended to set **TEXT_OVERFLOW** to **ELLIPSIS** first, and then set **ELLIPSIS_MODE** to a specified ellipsis position.<br>
-
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 24
+
 
 **Parameters**
 
@@ -2194,6 +2278,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -2212,10 +2297,11 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_AREA_COMPRESS_LEADING_PUNCTUATION = 8040
 ```
 
-Whether to enable the feature of compressing punctuations at the beginning of a text line. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to enable leading punctuation compression. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 23
+
 
 **Parameters**
 
@@ -2240,6 +2326,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -2262,6 +2349,7 @@ Whether the line height can be automatically adjusted based on the actual text h
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 23
+
 
 **Parameters**
 
@@ -2286,6 +2374,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -2308,6 +2397,7 @@ Text layout direction of the multi-line text box.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 23
+
 
 **Parameters**
 
@@ -2332,6 +2422,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -2355,6 +2446,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -2376,7 +2468,8 @@ NODE_TEXT_AREA_DECORATION = 8047
 Text decorative line style and color of the multi-line text box. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since:** 26.0.0
+**Since**: 26.0.0
+
 
 **Parameters**
 
@@ -2400,6 +2493,7 @@ Linear gradient effect of the text in the multi-line text box. This attribute ca
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -2430,6 +2524,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -2439,6 +2534,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Radius of the radial gradient. The value range is [0, +∞), and the default value is **0**. If a negative value is passed, the setting does not take effect. |
 | .value[3]?.i32 | Whether the gradient colors are repeated. The value **0** indicates that the gradient colors are not repeated, and **1** indicates that the gradient colors are repeated. The default value is **0**. |
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.<br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended. |
+
 
 **Returns**
 
@@ -2460,6 +2556,7 @@ Whether to enable punctuation hanging at the end of a line for the **TextArea** 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
