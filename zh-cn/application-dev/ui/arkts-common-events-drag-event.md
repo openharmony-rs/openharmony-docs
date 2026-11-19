@@ -1323,10 +1323,9 @@ struct GridEts {
    }
    ```
 
-
 2. 创建拖拽数据。
 
-   将虚拟文件信息设置到FileUri.virtualEntry，通过UnifiedRecord和UnifiedData创建拖拽数据。示例中的oriUri用于描述起拖方文件；落入方应使用落入事件实际获取的数据中的URI访问文件。
+   将虚拟文件信息设置到[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri15)，通过[UnifiedRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifiedrecord)和[UnifiedData](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)创建拖拽数据。示例中的oriUri用于描述起拖方文件；落入方应使用落入事件实际获取的数据中的URI访问文件。
 
    <!-- @[virtual_drag_js_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
    
@@ -1349,7 +1348,6 @@ struct GridEts {
    }
    ```
 
-
 3. 设置起拖数据。
 
    设置组件的draggable属性为true，在onDragStart回调中通过event.setData()设置上述拖拽数据。
@@ -1367,7 +1365,6 @@ struct GridEts {
    })
    ```
 
-
 4. 配置落入节点。
 
    设置onDrop回调函数，接收拖拽数据。
@@ -1381,7 +1378,6 @@ struct GridEts {
      .allowDrop([uniformTypeDescriptor.UniformDataType.FILE_URI])
      .onDrop((event: DragEvent) => { this.receive(event); })
    ```
-
 
 5. 获取文件URI。
 
@@ -1411,10 +1407,9 @@ struct GridEts {
    }
    ```
 
-
 6. 处理文件URI。
 
-   将获取到的URI列表交给业务处理。示例中的handleUris()仅提示接收数量，可替换为业务自己的处理逻辑。获取URI不代表文件内容已经读取或下载完成；需要验证按需提供内容时，可将文件拖到文件管理器等实际读取文件的应用。
+   将获取到的URI列表交给业务处理。获取URI不代表文件内容已经读取或下载完成；需要验证按需提供内容时，可将文件拖到文件管理器等实际读取文件的应用。
 
    <!-- @[virtual_drag_js_drop_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
    
