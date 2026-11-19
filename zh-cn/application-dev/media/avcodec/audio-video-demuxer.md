@@ -45,7 +45,7 @@ status: active
 > - 如需获取媒体库资源的文件描述符（fd），可参考[使用Picker选择媒体库资源](../medialibrary/photoAccessHelper-photoviewpicker.md)文档。
 > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
-### 在 CMake 脚本中链接动态库
+### 在CMake脚本中链接动态库
 
 ``` cmake
 target_link_libraries(sample PUBLIC libnative_media_codecbase.so)
@@ -186,7 +186,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    CHECK_AND_RETURN_RET_LOG(demuxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create demuxer failed");
    ```
 
-4. 注册DRM信息监听函数，接口参考[Demuxer_MediaKeySystemInfoCallback()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)（可选）。如果不是DRM码流或已获得DRM信息，可跳过此步骤。DRM信息内容参考[DRM_MediaKeySystemInfo](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)。
+4. （可选）注册DRM信息监听函数，接口参考[Demuxer_MediaKeySystemInfoCallback()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)。如果不是DRM码流或已获得DRM信息，可跳过此步骤。DRM信息内容参考[DRM_MediaKeySystemInfo](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)。
 
    设置DRM信息监听的接口，回调函数支持返回解封装器实例，适用于多个解封装器场景。
 
@@ -249,9 +249,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 5. 获取文件信息。
 
-   获取文件用户自定义属性（可选，若用户无需获取自定义属性，可跳过此步）。注意事项：
-   - customKey需与封装时写入的key完全一致（含完整命名层级）。例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
-   - value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API version 20起，支持buffer类型。
+   获取文件用户自定义属性（可选，若用户无需获取自定义属性，可跳过此步）。
+
+   > **注意事项：**
+   > - customKey需与封装时写入的key完全一致（含完整命名层级）。例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
+   > - value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API version 20起，支持buffer类型。
 
    <!-- @[Demuxer::GetCustomMetadataFormat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -266,7 +268,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    ```
 
-   获取文件轨道数等文件级属性（可选，若用户已知轨道信息，可跳过此步），具体支持信息参考附表 1。trackCount为0表示文件中无轨道，需根据业务做其他处理。
+   获取文件轨道数等文件级属性（可选，若用户已知轨道信息，可跳过此步），具体支持信息参考[文件级别属性支持范围](#文件级别属性支持范围)。trackCount为0表示文件中无轨道，需根据业务做其他处理。
 
    <!-- @[Demuxer::GetSourceFormat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -288,7 +290,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 6. 获取轨道index及信息（可选，若用户已知轨道信息，可跳过此步）。
 
-   遍历轨道获取轨道级属性，具体支持信息参考附表 2。不支持的类型不会修改trackType的值，注意trackType初始值建议设为非有效值（如-1），避免误用。
+   遍历轨道获取轨道级属性，具体支持信息参考[轨道级别属性支持范围](#轨道级别属性支持范围)。不支持的类型不会修改trackType的值，注意trackType初始值建议设为非有效值（如-1），避免误用。
 
    <!-- @[Demuxer::GetTrackInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -486,10 +488,10 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    ```
 
-   注意：
-   1. mpegts、mpg 格式文件使用OH_AVDemuxer_SeekToTime功能时，跳转到的位置可能为非关键帧。可在跳转后调用OH_AVDemuxer_ReadSampleBuffer，通过获取到的OH_AVCodecBufferAttr判断当前帧是否为关键帧。若非关键帧影响应用侧显示等功能，可在跳转后循环读取，获取到后续第一帧关键帧后，再进行解码等处理。
-   2. ogg格式文件使用OH_AVDemuxer_SeekToTime功能时，会跳转到传入时间millisecond所在时间间隔(秒)的起始处，可能会导致一定数量的帧误差。
-   3. demuxer的seek处理只针对解码行为一致的码流进行处理，如果seek后需要解码器重新配置参数，或者需要重新送入参数集的数据才可以正确解码的码流，seek后可能会出现花屏、解码卡死等问题。
+   > **注意：**
+   > 1. mpegts、mpg格式文件使用OH_AVDemuxer_SeekToTime功能时，跳转到的位置可能为非关键帧。可在跳转后调用OH_AVDemuxer_ReadSampleBuffer，通过获取到的OH_AVCodecBufferAttr判断当前帧是否为关键帧。若非关键帧影响应用侧显示等功能，可在跳转后循环读取，获取到后续第一帧关键帧后，再进行解码等处理。
+   > 2. ogg格式文件使用OH_AVDemuxer_SeekToTime功能时，会跳转到传入时间millisecond所在时间间隔(秒)的起始处，可能会导致一定数量的帧误差。
+   > 3. demuxer的seek处理只针对解码行为一致的码流进行处理，如果seek后需要解码器重新配置参数，或者需要重新送入参数集的数据才可以正确解码的码流，seek后可能会出现花屏、解码卡死等问题。
 
 9. 开始解封装，循环获取sample（以含音频、视频两轨的文件为例）。
 
@@ -583,7 +585,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     }
     ```
 
-    需要用户调用 OH_AVSource_Destroy、OH_AVDemuxer_Destroy 接口成功后，手动将实例置为nullptr，对同一实例重复调用会导致程序错误。Demuxer必须先于Source销毁。fd由应用侧管理，不由解封装模块关闭。
+    需要用户调用OH_AVSource_Destroy、OH_AVDemuxer_Destroy接口成功后，手动将实例置为nullptr，对同一实例重复调用会导致程序错误。Demuxer必须先于Source销毁。fd由应用侧管理，不由解封装模块关闭。
 
 ## 附表
 ### 文件级别属性支持范围
