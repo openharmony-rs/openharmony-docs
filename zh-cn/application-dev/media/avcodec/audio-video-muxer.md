@@ -372,7 +372,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    ``` C++
    int coverTrackId = -1;
    OH_AVFormat *formatCover = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_IMAGE_JPG, 1280, 720);
-   
+       
    int ret = OH_AVMuxer_AddTrack(muxer_, &coverTrackId, formatCover);
    OH_AVFormat_Destroy(formatCover); // 销毁。
    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && coverTrackId >= 0, AVCODEC_SAMPLE_ERR_ERROR,
@@ -430,12 +430,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     {
         while (true) {
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-    
+     
             std::shared_ptr<CodecBufferInfo> bufferInfo = audioEncContext_->outputBufferQueue.Dequeue();
             std::shared_lock<std::shared_mutex> codecLock(audioEncContext_->codecMutex);
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
             CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr, "Buffer queue is empty, continue");
-    
+     
             audioEncContext_->outputFrameCount++;
             AVCODEC_SAMPLE_LOGW(
                 "Audio Out buffer count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
@@ -545,16 +545,16 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
    
    ``` C++
    OH_AVFormat *format = OH_AVFormat_Create(); // 使用OH_AVFormat_Create创建format。
-   
+       
    // 设置已定义的key。
    // 从API version 14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
    OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00.000000Z");
    // 从API version 20开始支持设置备注。值类型为string。
    OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test");
-   
+       
    // 设置用户自定义key（需要com.openharmony.开头）。
    OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256个字符。
-   
+       
    int ret = OH_AVMuxer_SetFormat(muxer_, format); // 设置封装的format。
    if (ret != AV_ERR_OK) {
        // 设置format失败，未找到有效待写入的key数据。
@@ -578,7 +578,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
    // 以封装44100Hz采样率、2声道的AAC-LC音频为例。
    OH_AVFormat *formatAudio = OH_AVFormat_CreateAudioFormat(OH_AVCODEC_MIMETYPE_AUDIO_AAC, 44100, 2);
    OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_PROFILE, AAC_PROFILE_LC); // 选填。
-   
+       
    int ret = OH_AVMuxer_AddTrack(muxer_, &audioTrackId, formatAudio);
    OH_AVFormat_Destroy(formatAudio);
    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && audioTrackId >= 0, AVCODEC_SAMPLE_ERR_ERROR,
