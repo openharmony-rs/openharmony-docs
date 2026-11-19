@@ -422,12 +422,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     {
         while (true) {
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-
+    
             std::shared_ptr<CodecBufferInfo> bufferInfo = audioEncContext_->outputBufferQueue.Dequeue();
             std::shared_lock<std::shared_mutex> codecLock(audioEncContext_->codecMutex);
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
             CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr, "Buffer queue is empty, continue");
-
+    
             audioEncContext_->outputFrameCount++;
             AVCODEC_SAMPLE_LOGW(
                 "Audio Out buffer count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
