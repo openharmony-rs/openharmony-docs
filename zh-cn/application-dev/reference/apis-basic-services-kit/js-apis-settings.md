@@ -2,7 +2,7 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Applications-->
-<!--Owner: @YingCong-->
+<!--Owner: @wuminnan-->
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
 <!--Adviser: @fang-jinxu-->
