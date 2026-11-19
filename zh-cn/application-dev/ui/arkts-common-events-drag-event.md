@@ -1373,6 +1373,14 @@ struct GridEts {
    设置onDrop回调函数，接收拖拽数据。
 
    <!-- @[virtual_drag_js_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Text($r('app.string.drop_hint'))
+     .width('100%').height(120)
+     .backgroundColor($r('app.color.drag_drop_background'))
+     .allowDrop([uniformTypeDescriptor.UniformDataType.FILE_URI])
+     .onDrop((event: DragEvent) => { this.receive(event); })
+   ```
 
 
 5. 获取文件URI。
