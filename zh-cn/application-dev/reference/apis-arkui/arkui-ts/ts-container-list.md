@@ -813,15 +813,15 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置List的限位滚动策略，使List在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。内置对齐方式参考[示例20（设置滚动吸附对齐）](#示例20设置滚动吸附对齐)，自定义吸附位置参考[示例21（自定义滚动吸附位置）](#示例21自定义滚动吸附位置)。
-
-本接口与[scrollSnapAlign](#scrollsnapalign10)互斥，后设置者生效：设置本接口会清除scrollSnapAlign的配置，反之亦然。
+设置List的限位滚动策略，使List在滚动结束时按指定方式对齐子组件，或停在自定义的吸附位置。内置对齐方式参考[示例20（设置滚动吸附对齐）](#示例20设置滚动吸附对齐)，自定义吸附位置参考[示例21（自定义滚动吸附位置）](#示例21自定义滚动吸附位置)。
 
 > **说明：**
 >
-> - 最终吸附位置始终在合法滚动范围内。超出可滚动范围时，目标位置限制在可滚动范围的边界，因此首尾item可能无法完全按指定方式对齐。
-> - 启用限位滚动后，拖拽或通过滚动条滚动结束时也会触发限位滚动。
-> - [ListItemGroup](ts-container-listitemgroup.md)作为整体参与对齐；通过[lanes](#lanes9)设置多列布局时，主轴位置相同的item合并为同一个吸附位置参与对齐。
+> - 最终吸附位置始终在合法滚动范围内。例如对齐方式为ScrollSnapAlign.CENTER时，首尾子组件会停靠在可滚动边界处，而非视口中央。此行为与scrollSnapAlign不同：scrollSnapAlign以对齐效果优先，CENTER档位下首尾子组件仍会居中，列表可能露出空白区域。
+> - 启用限位滚动后，拖拽或鼠标框选操作结束时也会触发限位滚动。
+> - [ListItemGroup](ts-container-listitemgroup.md)作为整体参与对齐。
+> - 该属性与[scrollSnapAlign](#scrollsnapalign10)互斥，后设置者生效。
+> - scrollSnapStrategy的限位动画不受[scrollSnapAnimationSpeed](#scrollsnapanimationspeed22)影响，该属性仅影响scrollSnapAlign属性产生的限位动画速度。
 
 **起始版本：** 26.1.0
 
@@ -835,7 +835,7 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| strategy  | [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将item对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，List不做吸附对齐，按惯性自然滑行至停止。 |
+| strategy  | [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将子组件对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，List不做吸附对齐，按惯性自然滑行至停止。 |
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -3061,7 +3061,7 @@ struct ListExample {
 
 ### 示例20（设置滚动吸附对齐）
 
-本示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口设置ScrollSnapAlign.CENTER，使item在滚动结束时自动对齐到视口中央。
+本示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口设置ScrollSnapAlign.CENTER，使ListItem在滚动结束时自动对齐到视口中央。
 
 从API版本26.1.0开始，新增scrollSnapStrategy接口。
 
@@ -3111,7 +3111,7 @@ struct ListSnapExample {
 
 ### 示例21（自定义滚动吸附位置）
 
-本示例通过实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口，自定义List的吸附位置。每两个item（220vp）一组，抛滑后沿原方向吸附。
+本示例通过实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口，自定义List的吸附位置。每两个ListItem（220vp）一组，抛滑后沿原方向吸附。
 
 从API版本26.1.0开始，新增scrollSnapStrategy接口。
 
