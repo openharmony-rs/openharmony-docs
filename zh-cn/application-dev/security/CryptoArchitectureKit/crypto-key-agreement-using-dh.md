@@ -45,10 +45,12 @@
         console.info('DH output: ' + secret1.data);
       } else {
         console.error('DH result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -80,10 +82,12 @@
         console.info('DH output: ' + secret1.data);
       } else {
         console.error('DH result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
