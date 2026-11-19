@@ -30,13 +30,17 @@
 
 CMakeLists.txt中添加以下lib。
 
-```txt
-target_link_libraries(sample PUBLIC liboharchive.so)
+<!--@[archive_cmake_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/CMakeLists.txt)-->
+
+``` Text
+target_link_libraries(entry PUBLIC liboharchive.so)
 ```
 
 **添加头文件**
 
-```c++
+<!--@[archive_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
 #include <filemanagement/archive/oh_archive.h>
 ```
 

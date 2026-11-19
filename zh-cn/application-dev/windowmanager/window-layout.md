@@ -1,4 +1,4 @@
-# 窗口布局
+# 管理窗口位置与大小
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
@@ -9,16 +9,16 @@
 
 ## 场景介绍
 
-窗口布局是指对窗口的位置、大小属性进行设置和管理的能力。通过窗口布局能力，开发者可以灵活控制应用窗口在屏幕上的显示形态，实现多样化的界面呈现效果。
+管理窗口位置与大小是指对窗口的位置、大小属性进行设置和管理的能力。通过使用该能力，开发者可以灵活控制应用窗口在屏幕上的显示形态，实现多样化的界面呈现效果。
 
-窗口布局主要包含以下能力：
+管理窗口位置与大小主要包含以下能力：
 
 - [管理窗口尺寸限制或宽高比限制](#管理窗口尺寸限制或宽高比限制)：通过设置窗口的最小/最大尺寸限制、宽高比限制，可以约束窗口的可调整范围和显示比例。
 
 - [调整窗口位置与大小](#调整窗口位置与大小)：设置窗口在屏幕上的位置坐标以及窗口的宽高尺寸，并提供窗口位置及大小变化的查询、监听能力。
 
 
-合理运用窗口布局能力，可以帮助开发者：
+合理运用管理窗口位置与大小能力，可以帮助开发者：
 
 - 适配不同屏幕尺寸和窗口模式。
 
@@ -168,7 +168,7 @@ const TAG = 'IndexPage';
 
   | 接口 | 坐标系原点 | 说明 |
   | -------- | -------- | -------- |
-  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
+  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非自由窗口状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
   | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12)传入参数x、y<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15)传入参数x、y、moveConfiguration | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为主窗口左上顶点 | 移动窗口位置，调用生效后返回。 |
   | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y、moveConfiguration | 目标屏幕左上顶点 | 基于屏幕坐标移动窗口位置，调用生效后返回。 |
   | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | 主屏幕左上顶点（全局坐标系） | 基于[全局坐标系](window-terminology.md#global-coordinate-system全局坐标系)移动窗口位置。 |

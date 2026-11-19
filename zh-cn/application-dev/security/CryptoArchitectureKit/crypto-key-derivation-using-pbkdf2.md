@@ -18,7 +18,7 @@
    - algName：指定算法'PBKDF2'。
    - password：用于生成派生密钥的原始密码。
    
-      如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
+      如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、Base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
    - salt：盐值。
    - iterations：重复运算的次数，需要为正整数。
    - keySize：目标密钥的字节长度，需要为正整数。
@@ -41,18 +41,24 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function kdfAwait() {
-    let spec: cryptoFramework.PBKDF2Spec = {
-      algName: 'PBKDF2',
-      password: '123456',
-      salt: new Uint8Array(16),
-      iterations: 10000,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
-    let secret = await kdf.generateSecret(spec);
-    console.info('key derivation output: ' + secret.data);
+    try {
+      let spec: cryptoFramework.PBKDF2Spec = {
+        algName: 'PBKDF2',
+        password: '123456',
+        salt: new Uint8Array(16),
+        iterations: 10000,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+      let secret = await kdf.generateSecret(spec);
+      console.info('key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -89,17 +95,23 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function kdfSync() {
-    let spec: cryptoFramework.PBKDF2Spec = {
-      algName: 'PBKDF2',
-      password: '123456',
-      salt: new Uint8Array(16),
-      iterations: 10000,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
-    let secret = kdf.generateSecretSync(spec);
-    console.info('[Sync]key derivation output: ' + secret.data);
+    try {
+      let spec: cryptoFramework.PBKDF2Spec = {
+        algName: 'PBKDF2',
+        password: '123456',
+        salt: new Uint8Array(16),
+        iterations: 10000,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+      let secret = kdf.generateSecretSync(spec);
+      console.info('[Sync]key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```

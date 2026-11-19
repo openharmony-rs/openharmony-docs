@@ -18,7 +18,7 @@
 
 2. 应用如果需要长期访问某个文件或目录时，可以通过Picker选择文件或文件夹进行临时授权，然后利用persistPermission接口（[ohos.fileshare.persistPermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharepersistpermission11)）对授权进行持久化（在授权方同意被持久化的情况下，例如使用Picker选择文件场景，Picker会将权限授予当前应用，即可进行授权持久化），例如：文档编辑类应用本次编辑完一个用户文件，期望在历史记录中可以直接选中打开，无需再拉起Picker进行选择授权。
 
-    可使用canIUse接口，确认设备是否具有以下系统能力：SystemCapability.FileManagement.AppFileService.FolderAuthorization。
+    可使用canIUse()，确认设备是否具有以下系统能力：SystemCapability.FileManagement.AppFileService.FolderAuthorization。
 
     ```ts
     if (!canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization')) {
@@ -36,8 +36,7 @@
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { picker } from '@kit.CoreFileKit';
-    import { fileShare } from '@kit.CoreFileKit';
+    import { picker, fileShare } from '@kit.CoreFileKit';
     import { common } from '@kit.AbilityKit';
     import { preferences } from '@kit.ArkData';
     
@@ -82,7 +81,7 @@
     >
     > 1. 持久化授权文件信息建议应用在本地存储数据，供后续按需激活持久化文件。
     > 2. 持久化授权的数据存储在系统的数据库中，应用或者设备重启后需要激活已持久化的授权才可以正常使用[激活持久化授权](#激活已经持久化的权限访问文件或目录)。
-    > 3. 持久化权限接口(可以使用canIUse接口进行校验能力是否可用)，且需要申请对应的权限。
+    > 3. 持久化权限接口可以使用canIUse()进行校验能力是否可用，且需要申请对应的权限。
     > 4. 应用在卸载时会将之前的授权数据全部清除，重新安装后需要重新授权。
     > 5. 只能对已获取到的临时权限进行持久化授权操作，否则会报错。
 
@@ -99,8 +98,7 @@
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { picker } from '@kit.CoreFileKit';
-    import { fileShare } from '@kit.CoreFileKit';
+    import { picker, fileShare } from '@kit.CoreFileKit';
     import { common } from '@kit.AbilityKit';
     import { preferences } from '@kit.ArkData';
     
@@ -143,7 +141,7 @@
     >
     > 1. 示例中的URI来源自应用存储的持久化数据中。
     > 2. 只能对已获取到的持久化权限进行取消持久化授权操作，建议按照使用需求去取消对应的持久化权限。
-    > 3. 持久化权限接口(可以使用canIUse接口进行校验能力是否可用)，且需要申请对应的权限。
+    > 3. 持久化权限接口可以使用canIUse()进行校验能力是否可用，且需要申请对应的权限。
 
     **备注**：C/C++去持久化授权接口说明及开发指南具体参考：[OH_FileShare_RevokePermission去持久化授权接口](native-fileshare-guidelines.md)。
 
@@ -160,8 +158,7 @@ ohos.permission.FILE_ACCESS_PERSIST，具体参考[访问控制-申请应用权�
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { picker } from '@kit.CoreFileKit';
-import { fileShare } from '@kit.CoreFileKit';
+import { picker, fileShare } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { preferences } from '@kit.ArkData';
 
@@ -203,13 +200,13 @@ export async function activatePermissionExample(context: common.UIAbilityContext
 > 1. 示例中的URI来源自应用存储的持久化数据中。
 > 2. 建议按照使用需求去激活对应的持久化权限，不要盲目地全量激活。
 > 3. 如果激活失败显示未持久化的权限可以按照示例进行持久化。
-> 4. 持久化权限接口可以使用canIUse接口进行校验能力是否可用，且需要申请对应的权限。
+> 4. 持久化权限接口可以使用canIUse()进行校验能力是否可用，且需要申请对应的权限。
 
 **备注**：C/C++持久化授权激活接口说明及开发指南具体参考：[OH_FileShare_ActivatePermission持久化授权激活接口](native-fileshare-guidelines.md)。
 
 ## 持久化权限保留配置
 
-从API version 24开始，系统新增支持持久化权限保留能力。应用卸载时根据ohos.fileshare.supportPreservePersistentPermission标签保留持久化。再次安装时恢复上次已保留的持久化权限。
+从API version 24开始，系统新增支持持久化权限保留能力。应用卸载时根据ohos.fileshare.supportPreservePersistentPermission标签保留持久化权限。再次安装时恢复上次已保留的持久化权限。
 
 ### 配置方式
 
@@ -235,3 +232,15 @@ export async function activatePermissionExample(context: common.UIAbilityContext
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | name | 标识元信息名称，固定值为ohos.fileshare.supportPreservePersistentPermission。 | 字符串 | 该标签不可缺省。 |
+
+## 外接存储介质授权保留机制
+
+从API版本26.0.1开始，新增外接存储介质授权保留机制。
+
+当外接存储介质（如U盘、TF卡等）被拔出时，系统会清除该介质下所有的临时授权，并保留该介质下所有已持久化的授权记录。当同一介质再次插入时，系统自动恢复该介质下已保留的持久化授权至可用状态，无需用户重新授权。
+
+持久化授权记录的保留期限为 **30天**。当外接存储介质超过30天未再次插入，其对应的持久化授权记录将在任意外接介质插入时自动清理。
+
+> **说明：**
+>
+> 授权记录的30天保留期限基于系统时间计算。若系统时间被调整，保留期限的到期判断将以调整后的系统时间为准，可能导致授权记录提前清理或保留时间延长。

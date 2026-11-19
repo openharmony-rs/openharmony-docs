@@ -434,7 +434,7 @@ on(type: 'applicationState', observer: ApplicationStateObserver): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -510,7 +510,7 @@ onApplicationStateChange(observer: ApplicationStateObserver): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 16000050 | Internal error.                                              |
 
 **示例：**
@@ -601,7 +601,7 @@ on(type: 'applicationState', observer: ApplicationStateObserver, bundleNameList:
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -680,7 +680,7 @@ try {
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 16000050 | Internal error.                                              |
 
 **示例：**
@@ -771,7 +771,7 @@ off(type: 'applicationState', observerId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -863,7 +863,7 @@ offApplicationStateChange(observerId: int): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 16000050 | Internal error.                                              |
 
 **示例：**
@@ -965,7 +965,7 @@ off(type: 'applicationState', observerId: number, callback: AsyncCallback\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1056,7 +1056,7 @@ offApplicationStateChange(observerId: int, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 16000050 | Internal error.                                              |
 
 **示例：**
@@ -1170,7 +1170,7 @@ ArkTS-Sta: killProcessesByBundleName(bundleName: string, clearPageStack: boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | If the input parameter is not valid parameter. |
 | 16000050 | Internal error. |
 
@@ -1238,7 +1238,7 @@ ArkTS-Sta: isAppRunning(bundleName: string, appCloneIndex?: int): Promise\<boole
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16000073 | The app clone index is invalid. |
@@ -1326,6 +1326,146 @@ type AppStateData = _AppStateData
 | 类型                                                       | 说明           |
 | ---------------------------------------------------------- | -------------- |
 | _[AppStateData](js-apis-inner-application-appStateData.md) | 应用状态信息。 |
+
+## appManager.onFocusedApplicationChanged
+
+onFocusedApplicationChanged(observer: FocusedApplicationObserver): number
+
+注册获焦应用变化监听器。当获焦应用发生变化时，触发监听器回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| observer | [FocusedApplicationObserver](js-apis-inner-application-focusedApplicationObserver.md) | 是 | 获焦应用监听器，用于监听获焦应用变化。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 已注册监听器ID，调用方可以通过[offFocusedApplicationChanged](#appmanagerofffocusedapplicationchanged)传入该监听器ID来注销监听器。|
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 16000050 | Internal error. |
+| 16000165 | The number of registered observers has reached the upper limit. |
+
+**示例：**
+
+```ts
+import { appManager, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let focusedApplicationObserver: appManager.FocusedApplicationObserver = {
+  onFocusedApplicationChanged(info: appManager.FocusedApplicationInfo) {
+    console.info(`[appManager] onFocusedApplicationChanged: ${JSON.stringify(info)}`);
+  }
+};
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    try {
+      const observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
+      console.info(`[appManager] observerId: ${observerId}`);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+    console.info('Register appProcessStateObserver');
+  }
+}
+```
+
+## appManager.offFocusedApplicationChanged
+
+offFocusedApplicationChanged(observerId: number): void
+
+注销获焦应用变化监听器。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| observerId | number | 是 | 注册的获焦应用监听器ID，即[onFocusedApplicationChanged](#appmanageronfocusedapplicationchanged)返回的监听器ID。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 16000050 | Internal error. |
+| 16300004 | The observer does not exist. |
+
+**示例：**
+
+```ts
+import { appManager, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observerId = 0;
+
+let focusedApplicationObserver: appManager.FocusedApplicationObserver = {
+  onFocusedApplicationChanged(info: appManager.FocusedApplicationInfo) {
+    console.info(`[appManager] onFocusedApplicationChanged: ${JSON.stringify(info)}`);
+  }
+};
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    // 注册获焦应用监听器
+    try {
+      observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
+      console.info(`[appManager] observerId: ${observerId}`);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+  }
+
+  // 不再需要或应用退出时取消监听
+  onDestroy() {
+    // 注销获焦应用监听器
+    try {
+      appManager.offFocusedApplicationChanged(observerId);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+  }
+}
+```
 
 ## ApplicationStateObserver<sup>14+</sup>
 

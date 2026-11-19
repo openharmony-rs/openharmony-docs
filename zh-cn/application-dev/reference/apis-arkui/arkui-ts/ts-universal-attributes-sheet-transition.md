@@ -115,6 +115,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br />默认值：false <br /> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br /> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。<br/>默认值：ModalTransition.DEFAULT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
 | radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部和底部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 23<br/> **ArkTS-Sta起始版本：** 23 |
+| adaptToHandedness | [HandednessFollowMode](#handednessfollowmode) | 否 | 是 |半模态如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE，不适配握持习惯。<br>**说明：**<br>该属性仅在[preferType](#sheetoptions)设置为[SheetType.CENTER](#sheettype11枚举说明)（居中弹窗）时生效，其他弹窗样式下该属性不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 26.1.0<br/> **ArkTS-Sta起始版本：** 26.1.0 |
 
 ## SheetSize枚举说明
 
@@ -513,6 +514,26 @@ type SingleLengthDetent = [SheetSize | Length]
 | 类型      | 说明                          |
 | -----------| ---------------------------- |
 | [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)   | 挡位的高度，表示值类型为枚举或尺寸。 |
+
+## HandednessFollowMode
+
+type HandednessFollowMode = import('../api/@ohos.arkui.dialog').HandednessFollowMode
+
+握持习惯跟随模式的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 类型 | 说明 |
+| --- | --- |
+| import('../api/@ohos.arkui.dialog').[HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 握持习惯跟随模式的枚举。 |
 
 ## 示例
 ### 示例1（不同高度的半模态弹窗）
@@ -1147,3 +1168,73 @@ struct ContentCoverExample {
 }
 ```
 ![zh-cn_sheet](figures/sheet9_content_cover.gif)
+
+### 示例10（半模态适配握持习惯）
+
+该示例通过[SheetOptions](#sheetoptions)中的adaptToHandedness属性设置半模态适配握持习惯，使半模态跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[SheetOptions](#sheetoptions)中新增了adaptToHandedness属性。
+
+```ts
+// xxx.ets
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetHandednessExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Text('Sheet Content')
+        .margin(20)
+        .fontSize(20)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('Open sheet on left')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            preferType: SheetType.CENTER,
+            width: 400,
+            showClose: true,
+            title: { title: 'title', subtitle: 'subtitle' },
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR,
+          })
+
+        Button('Open sheet in center')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+
+        Button('Open sheet on right')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+      }
+      .justifyContent(FlexAlign.SpaceEvenly)
+      .width('100%')
+      .height('50%')
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![zh-cn_sheet](figures/sheetHandedness.gif)

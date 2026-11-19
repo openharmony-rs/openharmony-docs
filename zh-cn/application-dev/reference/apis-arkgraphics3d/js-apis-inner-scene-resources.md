@@ -309,7 +309,7 @@ function setinputs(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | image | [Image](#image) \| null | 否 | 否 | 基于物理渲染（PBR）属性纹理贴图，用于表达材质的纹理信息。|
 | factor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 基于物理渲染（PBR）属性因子，不同属性不同含义。|
-| sampler | [Sampler](#sampler20) | 否 | 是 | 纹理贴图采样器，默认使用放大、缩小和mipmap过滤模式为线性过滤（LINEAR），纹理贴图U、V、W方向的寻址模式为重复（REPEAT）。|
+| sampler | [Sampler](#sampler20) | 否 | 是 | 纹理贴图采样器，默认使用放大、缩小和mipmap过滤模式为线性过滤（LINEAR），纹理贴图U、V方向的寻址模式为重复（REPEAT）。|
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
 

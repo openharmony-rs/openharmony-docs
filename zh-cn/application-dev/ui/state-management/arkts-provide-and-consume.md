@@ -10,7 +10,7 @@
 
 其中\@Provide装饰的变量是在祖先组件中，可以理解为被“提供”给后代的状态变量。\@Consume装饰的变量是在后代组件中，去“消费（绑定）”祖先组件提供的变量。
 
-\@Provide/\@Consume是跨组件层级的双向同步。在阅读\@Provide和\@Consume文档前，建议开发者对UI范式基本语法和自定义组件有基本的了解。建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)，[声明式UI描述](./arkts-declarative-ui-description.md)，[创建自定义组件](./arkts-create-custom-components.md)。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
+\@Provide/\@Consume是跨组件层级的双向同步。在阅读\@Provide和\@Consume文档前，建议开发者对UI范式基本语法和自定义组件有基本的了解。建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)，[声明式UI描述](./arkts-declarative-ui-description.md)，[创建自定义组件](./arkts-create-custom-components.md)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
 > **说明：**
 >
@@ -1057,11 +1057,11 @@ BuilderNode支持\@Provide/\@Consume，需注意：
 5. \@Consume断开和\@Provide的连接，恢复成默认值时，会判断\@Consume装饰变量的值从和\@Provide变为\@Consume的默认值是否有变化，如果有变化，则会回调\@Consume以及与其有同步关系变量的\@Watch方法。
 
 在下面的例子中：
-1. 点击`add Child`:
+1. 点击`add Child`：
    - 构建BuilderNode下的子节点`Child`，`Child`中\@Consume未找到\@Provide，使用本地默认值`default value`初始化。
    - BuilderNode上树时，`Child`中\@Consume向上找到最近的`Index`中的\@Provide，将\@Consume从默认值更新为\@Provide的值，并回调\@Consume的\@Watch方法。
 2. \@Provide和\@Consume配对后，建立双向同步关系。点击```Text(`@Provide: ${this.message}`)```和```Text(`@Consume ${this.message}`)```，\@Provide和\@Consume绑定的Text组件刷新，并回调\@Provide和\@Consume的\@Watch方法。
-3. 点击`remove Child`, BuilderNode子节点下树，`Child`中的\@Consume和`Index`中的\@Provide断开连接，`Child`中的\@Consume恢复成默认值，并回调\@Consume的\@Watch方法。
+3. 点击`remove Child`，BuilderNode子节点下树，`Child`中的\@Consume和`Index`中的\@Provide断开连接，`Child`中的\@Consume恢复成默认值，并回调\@Consume的\@Watch方法。
 4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行[aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)。
 <!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->  
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS字符串的表示与操作，涵盖字符串字面量、模板字符串与插值、Unicode表示、拼接比较及常用处理方法。"
+keywords: [ArkTS, string, 字符串, 模板字符串, 字符串插值, Unicode, 字符串拼接, 子字符串]
+doctype: guide
+status: active
+---
+
 # 字符串
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

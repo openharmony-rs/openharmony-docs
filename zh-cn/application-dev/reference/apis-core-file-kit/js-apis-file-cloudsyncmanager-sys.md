@@ -345,7 +345,7 @@ ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData): Promise&lt;void&
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -412,7 +412,7 @@ ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData, callback: AsyncCa
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -733,8 +733,6 @@ cloudSyncManager.disableCloud(accountId, (err: BusinessError<void> | null): void
 清理本地云相关数据时的枚举。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
-
-**系统能力**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1073,7 +1071,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
 | 13900010 | Try again.                                                                                                                                                                        |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400006 | The same task is already in progress.                                                                                                                                             |
 
@@ -1403,7 +1401,7 @@ try {
   | 202 | The caller is not a system application. |
   | 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
   | 13900010 | Try again. |
-  | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+  | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
   | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
   **示例：**
@@ -1477,7 +1475,7 @@ getDowngradeDownloadTaskState(bundleNames: Array&lt;string&gt;): Promise&lt;Arra
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2. The length of the input parameter exceeds the upper limit. Maximum array length is 20. 3. The input parameter contains an invalid bundleName. |
 
 **示例**：
 

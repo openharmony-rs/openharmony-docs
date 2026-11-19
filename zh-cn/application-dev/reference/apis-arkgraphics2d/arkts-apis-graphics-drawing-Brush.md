@@ -839,7 +839,7 @@ ArkTS-Sta: getColorFilter(): ColorFilter | undefined
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器，用于对绘制内容进行颜色调整，如伽马校正、颜色矩阵变换等。获取颜色滤波器失败时返回undefined。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器，用于对绘制内容进行颜色调整，如伽马校正、颜色矩阵变换等。当前画刷未设置颜色滤波器时返回undefined。 |
 
 **示例：**
 

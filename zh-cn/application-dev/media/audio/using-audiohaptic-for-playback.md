@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导ArkTS开发者使用AudioHaptic实现音频与振动的同步播放，适用于输入法按键反馈、来电铃声随振等场景。"
+keywords: [音振协同, AudioHaptic, 振动播放, 音频播放, 按键反馈, 铃声振动]
+doctype: guide
+status: active
+---
 # 使用AudioHaptic开发音振协同播放功能(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -68,6 +75,8 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
        offset: hapticFile.offset,
        length: hapticFile.length,
      };
+     let idForFd = 0;
+   
      audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
        console.info(`Succeeded in registering source from fd, sourceId is ${value}.`);
        idForFd = value;
@@ -152,6 +161,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    
    ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
+   // idForFd为步骤1中获取的资源ID，这里以Fd注册的资源为例。
    audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
    
    let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
@@ -160,7 +170,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    ArkTS-Sta示例：
 
-   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
@@ -178,6 +188,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
    // ...
+       // idForFd为步骤1中获取的资源ID，这里以Fd注册的资源为例。
        audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
          console.info('Succeeded in creating player.');
          audioHapticPlayer = value;
@@ -320,6 +331,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
+   // idForFd为步骤1中获取的资源ID，这里以Fd注册的资源为例。
    audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
      console.info('Succeeded in unregistering source.');
      // ...

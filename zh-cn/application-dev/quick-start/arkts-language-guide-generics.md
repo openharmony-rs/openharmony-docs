@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS泛型的使用，涵盖泛型函数、泛型类、泛型接口、泛型约束，以及keyof、typeof、索引访问类型等类型操作符与泛型高级边界。"
+keywords: [ArkTS, 泛型, 泛型函数, 泛型类, 泛型约束, keyof, Record, 索引访问类型]
+doctype: guide
+status: active
+---
+
 # 泛型
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

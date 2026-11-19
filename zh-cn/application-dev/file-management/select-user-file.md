@@ -38,8 +38,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -173,8 +172,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

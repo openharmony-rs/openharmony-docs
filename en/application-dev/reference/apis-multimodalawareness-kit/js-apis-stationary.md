@@ -83,6 +83,14 @@ Subscribes to the device status.
 | reportLatencyNs  | number  | Yes  | Report delay, in ns. The value ranges from **1000000000** to **3000000000**.             |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | Yes  | Callback used to receive reported data.   |
 
+**Error codes**
+ 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                            |
+| ------------- | ------------------------------------------------------------ |
+| 801           | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+
 **Example**
 
 ```ts
@@ -107,6 +115,14 @@ Obtains the device status.
 | activity  | [ActivityType](#activitytype)  | Yes  | Device status type.             |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | Yes  | Callback used to receive reported data.   |
 
+**Error codes**
+ 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                            |
+| ------------- | ------------------------------------------------------------ |
+| 801           | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+
 **Example**
 
 ```ts
@@ -130,6 +146,14 @@ Unsubscribes from the device status.
 | activity  | [ActivityType](#activitytype)  | Yes  | Device status type.             |
 | event  | [ActivityEvent](#activityevent)  | Yes  | Event type.             |
 | callback | Callback<[ActivityResponse](#activityresponse)\>  | No  | Callback used to receive reported data. If no value or **undefined** is passed, all callbacks associated with the specified event in the process will be unregistered. |
+
+**Error codes**
+ 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                            |
+| ------------- | ------------------------------------------------------------ |
+| 801           | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 

@@ -1,4 +1,4 @@
-#  HarmonyAppProvision配置文件说明
+# HarmonyAppProvision配置文件说明
 在应用的开发过程中，应用的权限、签名信息等需要在HarmonyAppProvision配置文件（该文件在部分文档中也称为profile文件）中声明。
 
 ## 配置文件的内部结构

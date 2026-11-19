@@ -167,7 +167,7 @@ module.json5配置文件包含以下标签。
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | shareFiles | 标识应用沙箱中分享目录的配置文件路径，用于为应用文件提供有安全保障的开放范围，保护应用资产。只允许entry类型模块配置，取值为长度不超过255字节的字符串。具体使用方式请参考[应用共享目录配置](../file-management/share-app-file-configuration.md)。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | [skillProfiles](#skillprofiles标签) | 标识当前模块的技能配置信息，用于定义AI代理的技能能力。仅允许type字段取值为entry、feature、shared、skill的模块配置，对于skill类型的模块必须配置该标签。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。 | 对象数组 | 对于skill类型的模块，该标签不可缺省。对于其他类型的模块，该标签可缺省，缺省值为空。 |
-| [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。 | 对象数组 | 该标签可缺省，缺省值为空。 |
+| [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径及权限控制模式信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。| 对象数组 | 该标签可缺省，缺省值为空。 |
 | uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
 | srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
@@ -307,7 +307,7 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | startWindowBackground | 标识当前UIAbility组件启动页面背景颜色资源文件的索引，取值为长度不超过255字节的字符串。<br/>取值示例：$color:red。| 字符串 | 该标签不可缺省。 |
 | removeMissionAfterTerminate | 标识当前UIAbility组件销毁后，是否从任务列表中移除任务。<br/>-&nbsp;true表示销毁后移除任务。<br/>-&nbsp;false表示销毁后不移除任务。<br/>**说明：**<br/>2in1设备和平板设备的自由多窗模式下配置不生效，默认移除任务。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | allowSelfRedirect | 标识应用是否允许通过<!--RP16-->[App Linking](../application-models/app-linking-startup.md)<!--RP16End-->跳转自己。<br/>-&nbsp;true表示允许通过App Linking跳转自己。<br/>-&nbsp;false表示不允许通过App Linking跳转自己。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为true。 |
-| orientation | 标识当前UIAbility组件启动时的方向，支持配置枚举，或启动方向资源索引。<br/>**启动方向枚举支持的取值如下：**<br/>-&nbsp;unspecified：未指定方向，由系统自动判断显示方向。<br/>-&nbsp;landscape：横屏。<br/>-&nbsp;portrait：竖屏。<br/>-&nbsp;follow_recent：跟随背景窗口的旋转模式。<br/>-&nbsp;landscape_inverted：反向横屏。<br/>-&nbsp;portrait_inverted：反向竖屏。<br/>-&nbsp;auto_rotation：随传感器旋转。<br/>-&nbsp;auto_rotation_landscape：传感器横屏旋转，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait：传感器竖屏旋转，包括竖屏和反向竖屏。<br/>-&nbsp;auto_rotation_restricted：传感器开关打开，方向可随传感器旋转。<br/>-&nbsp;auto_rotation_landscape_restricted：传感器开关打开，方向可随传感器旋转为横屏，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait_restricted：传感器开关打开，方向可随传感器旋转为竖屏，包括竖屏和反向竖屏。<br/>-&nbsp;locked：传感器开关关闭，方向锁定。<br/>-&nbsp;auto_rotation_unspecified：受开关控制和由系统判定的自动旋转模式。<br/>-&nbsp;follow_desktop：跟随桌面的旋转模式。<br/>&nbsp;**配置启动方向的资源索引时**，取值为长度不超过255字节的字符串，配置示例：$string:orientation。<br/>**说明：**<br/>&nbsp;-&nbsp;从API version 14开始，支持配置启动方向资源索引。 | 字符串 | 该标签可缺省，缺省值为unspecified。 |
+| orientation | 标识当前UIAbility组件启动时的方向，支持配置枚举，或启动方向资源索引。<br/>**启动方向枚举支持的取值如下：**<br/>-&nbsp;unspecified：未指定方向，由系统自动判断显示方向。<br/>-&nbsp;landscape：横屏。<br/>-&nbsp;portrait：竖屏。<br/>-&nbsp;follow_recent：随背景窗口旋转。<br/>-&nbsp;landscape_inverted：反向横屏。<br/>-&nbsp;portrait_inverted：反向竖屏。<br/>-&nbsp;auto_rotation：随传感器旋转。<br/>-&nbsp;auto_rotation_landscape：随传感器横屏旋转，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait：随传感器竖屏旋转，包括竖屏和反向竖屏。<br/>-&nbsp;auto_rotation_restricted：系统旋转锁定开关关闭，方向可随传感器旋转。<br/>-&nbsp;auto_rotation_landscape_restricted：系统旋转锁定开关关闭，方向可随传感器旋转为横屏，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait_restricted：系统旋转锁定开关关闭，方向可随传感器旋转为竖屏，包括竖屏和反向竖屏。<br/>-&nbsp;locked：系统旋转锁定开关打开，方向锁定。<br/>-&nbsp;auto_rotation_unspecified：受系统旋转锁定开关控制和由系统判定的自动旋转模式。<br/>-&nbsp;follow_desktop：随桌面旋转。<br/>&nbsp;**配置启动方向的资源索引时**，取值为长度不超过255字节的字符串，配置示例：$string:orientation。<br/>**说明：**<br/>&nbsp;-&nbsp;从API version 14开始，支持配置启动方向资源索引。 | 字符串 | 该标签可缺省，缺省值为unspecified。 |
 | supportWindowMode | 标识当前UIAbility组件所支持的窗口模式。支持的取值如下：<br/>-&nbsp;fullscreen：全屏模式。<br/>-&nbsp;split：分屏模式。<br/>-&nbsp;floating：悬浮窗模式。<br/>在[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](./app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](./app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。<br/>此外，还可以通过metadata配置窗口模式，具体的配置规则和优先级请参考[metadata](#metadata标签)。 | 字符串数组 | 该标签可缺省，缺省值为<br/>["fullscreen",&nbsp;"split",&nbsp;"floating"]。 |
 | <!--DelRow-->priority | 标识当前UIAbility组件的优先级。[隐式查询](../application-models/explicit-implicit-want-mappings.md)时，优先级越高，UIAbility在返回列表越靠前。取值范围0~10，数值越大，优先级越高。<br/>**说明：**<br/>三方应用的配置不生效，需申请应用特权AllowAbilityPriorityQueried，详见[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)。 | 整型数值 | 该标签可缺省，缺省值为0。 |
 | maxWindowRatio | 标识当前UIAbility组件支持的最大的宽高比。该标签最小取值为0。 | 数值 | 该标签可缺省，缺省值为平台支持的最大的宽高比。 |
@@ -499,7 +499,7 @@ skills示例：
 |skills | 标识当前ExtensionAbility组件能够接收的[Want](../application-models/want-overview.md)的特征集。<br/>配置规则：entry包可以配置多个具有入口能力的skills标签（配置了ohos.want.action.home和entity.system.home）的ExtensionAbility，其中第一个配置了skills标签的ExtensionAbility中的label和icon作为服务或应用的label和icon。<br/>**说明：**<br/>服务的Feature包不支持配置具有入口能力的skills标签。<br/>应用的Feature包支持配置具有入口能力的skills标签。 | 数组 | 该标签可缺省，缺省值为空。 |
 | [metadata](#metadata标签) | 标识当前ExtensionAbility组件的元信息。<br/>**说明：**<br/>该标签在type为form时，不可缺省，且必须存在一个name为ohos.extension.form的对象值，其对应的resource值不能缺省，为服务卡片的二级资源引用。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | exported | 标识当前ExtensionAbility组件是否可以被其他应用调用。<br/>-&nbsp;true：表示可以被其他应用调用。<br/>-&nbsp;false：表示不可以被其他应用调用，包括无法被aa工具命令拉起应用。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| extensionProcessMode | 标识当前ExtensionAbility组件的进程模型，根据ExtensionAbility的类型不同，支持的配置项有所区别。支持的取值范围如下，默认值为bundle。<br/>-&nbsp;instance：表示该ExtensionAbility每个实例都各自运行在单独进程。<br/>-&nbsp;type：表示该ExtensionAbility的所有实例都运行在同一独立进程，与其他name的ExtensionAbility组件实例运行在不同进程。<br/>-&nbsp;bundle：表示该ExtensionAbility的实例与同包名下相同extensionType的ExtensionAbility实例运行在同一进程。<!--Del--><br/>-&nbsp;callerInstance：表示该ExtensionAbility实例运行在单独进程，进程的隔离粒度为调用方。同一调用方拉起的ExtensionAbility的实例运行在同一进程，不同调用方拉起的ExtensionAbility的实例运行在不同进程。从API版本26.0.0开始，支持该标签。<!--DelEnd--><br/>对于UIExtensionAbility及其子类，支持instance、type、bundle三种进程模型。<br/>对于类型为appService的ExtensionAbility，支持type和bundle两种进程模型。<!--Del--><br/>对于类型为sysPicker/mediaControl的ExtensionAbility，支持bundle、type、instance、callerInstance四种进程模型。<!--DelEnd--><!--RP10--><!--RP10End--> | 字符串 | 该标签可缺省，缺省值为bundle。 |
+| extensionProcessMode | 标识当前ExtensionAbility组件的进程模型，根据ExtensionAbility的类型不同，支持的配置项有所区别。支持的取值范围如下，默认值为bundle。<br/>-&nbsp;instance：表示该ExtensionAbility每个实例都各自运行在单独进程。<br/>-&nbsp;type：表示该ExtensionAbility的所有实例都运行在同一独立进程，与其他name的ExtensionAbility组件实例运行在不同进程。<br/>-&nbsp;bundle：表示该ExtensionAbility的实例与同包名下相同extensionType的ExtensionAbility实例运行在同一进程。<!--Del--><br/>-&nbsp;callerInstance：表示该ExtensionAbility实例运行在单独进程，进程的隔离粒度为调用方。同一调用方拉起的ExtensionAbility的实例运行在同一进程，不同调用方拉起的ExtensionAbility的实例运行在不同进程。从API版本26.0.0开始，支持该标签。<!--DelEnd--><br/>对于UIExtensionAbility及其子类，支持instance、type、bundle三种进程模型。<br/>对于类型为appService的ExtensionAbility，支持type和bundle两种进程模型。从API版本26.0.0开始，支持该标签。<!--Del--><br/>对于类型为sysPicker/mediaControl的ExtensionAbility，支持bundle、type、instance、callerInstance四种进程模型。<!--DelEnd--><!--RP10--><!--RP10End--> | 字符串 | 该标签可缺省，缺省值为bundle。 |
 | dataGroupIds | 标识当前ExtensionAbility组件的dataGroupId集合。如果当前ExtensionAbility组件所在的应用在应用市场申请的证书里groupIds也申请了某个dataGroupId，那么当前ExtensionAbility组件可以和应用共享这一个dataGroupId生成的目录，所以ExtensionAbility组件的dataGroupId需要是应用的签名证书中groupIds标签里配置的才能生效。 且该标签仅在当前ExtensionAbility组件存在独立的沙箱目录时生效。<!--RP8--><!--RP8End--> | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[独立进程配置](../application-models/process-model-overview.md#独立进程配置)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
@@ -623,6 +623,7 @@ extensionAbilities示例：
 |awc/webpage|通用网页浏览的ExtensionAbility。|
 |awc/newsfeed|信息流资讯业务的ExtensionAbility。|
 |assetCache<sup>24+</sup>|提供通用应用数据缓存能力的ExtensionAbility。三方应用配置不生效，当前配置仅在系统应用中有效。|
+|ukeyAuth|UKey认证扩展能力[UkeyAuthExtensionAbility](../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md)。从API版本26.0.1开始，支持该标签。|
 <!--RP9--><!--RP9End-->
 
 ## shortcuts标签
@@ -1330,18 +1331,19 @@ definePermissions标签示例：
 
 ## executableBinaryPaths标签
 
-标识应用内可执行二进制文件的路径信息，仅在PC/2in1设备上生效。从API version 24开始，支持该标签。
+标识应用内可执行二进制文件的路径及权限控制模式信息，仅在PC/2in1设备上生效。从API version 24开始，支持该标签。
 
 **表31** executableBinaryPaths标签说明
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | path | 标识可执行文件的路径。该路径是相对路径，必须以`libs/{abi}/`为前缀，其中`{abi}`为设备CPU架构类型（如arm64-v8a、x86_64、armeabi-v7a），即可执行二进制文件必须配置在`libs/{abi}/`目录下。 | 字符串 | 该标签不可缺省。 |
+| permissionControlMode | 标识可执行文件的权限控制模式。<br/>- "independent"：独立权限控制（按BIN自身声明的权限进行控制）；对应整型语义0。<br/>- "inheritParentProcess"：继承父进程权限控制模式；对应整型语义1。<br/>未配置或配置为未知/非法字符串字面量时，按"independent"处理。<br/>从API版本26.1.0开始支持。 | 字符串 | 该标签可缺省，缺省值为"independent"。 |
 
 
 executableBinaryPaths示例：
 
-<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->    
 
 ``` JSON5
 {
@@ -1349,7 +1351,8 @@ executableBinaryPaths示例：
     // ...
     "executableBinaryPaths": [
       {
-        "path": "libs/arm64-v8a/test.bin"
+        "path": "libs/arm64-v8a/test.bin",
+        "permissionControlMode": "independent"
       }
     ],
     // ...

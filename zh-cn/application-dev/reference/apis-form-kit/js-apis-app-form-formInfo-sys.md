@@ -42,6 +42,7 @@ import { formInfo } from '@kit.FormKit';
 | isStandbyAdapted<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否已适配灵动显示规则。<br/>-&nbsp;true：已适配灵动显示。<br/>-&nbsp;false：未适配灵动显示。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23|
 | isPrivacySensitive<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否是隐私敏感卡片。<br/>-&nbsp;true：是隐私敏感卡片。<br/>-&nbsp;false：不是隐私敏感卡片。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23|
 | isFontScaleFollowSystem | boolean  | 否    | 是     | 卡片的字体缩放是否跟随系统，默认值为true。<br/>-&nbsp;true：字体缩放跟随系统。<br/>-&nbsp;false：字体缩放不会跟随系统。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
+| enableTint | boolean  | 是    | 是     | 卡片是否使能赋色。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0  |
 
 ##  FormParam
 
@@ -61,7 +62,7 @@ import { formInfo } from '@kit.FormKit';
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述。 <br>**系统接口：** 此接口为系统接口。  <br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23|
 | FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
 | FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | 卡片字重缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | 卡片编辑能力颜色模式键值。 <br/>-1：表示自动跟随系统。<br/>0：表示深色模式。<br/>1：表示浅色模式。<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.2.0 <br/>**ArkTS-Sta起始版本：** 26.2.0  |
+| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | 卡片编辑能力颜色模式键值。 <br/>-1：表示自动跟随系统。<br/>0：表示深色模式。<br/>1：表示浅色模式。<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0  |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -191,8 +192,8 @@ import { formInfo } from '@kit.FormKit';
 | NO_SPACE       | 1    | 表示没有空间添加卡片。           |
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
-| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.0.1 |
-| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.0.1 |
+| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>适用版本：26.0.1 |
+| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>适用版本：26.0.1 |
 
 ## RenderingMode<sup>18+</sup>
 
@@ -226,7 +227,7 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|----|----|-----|
 | formId       | string  | 否  | 否  | 卡片id。|
 | isOverflow   | boolean | 否  | 否  | 动效请求类型标记，true 表示互动卡片请求触发动效，false 表示互动卡片请求取消动效。|
-| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 否 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
+| overflowInfo | [OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 否 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
 
 ## ChangeSceneAnimationStateRequest<sup>20+</sup>
 
@@ -382,7 +383,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 | moduleName | string | 否 | 否  | 卡片所属模块的模块名称。 |
 | abilityName | string | 否 | 否  | 卡片所属的Ability名称。 |
 | formName | string | 否 | 否  | 卡片名称。 |
-| dimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | 否 | 否  | 卡片规格。 |
+| dimension | [FormDimension](js-apis-app-form-formInfo.md#formdimension) | 否 | 否  | 卡片规格。 |
 | detailId | string | 否 | 否  | 卡片信息id。 |
 | displayName | string | 否 | 否  | 卡片展示名称。 |
 | description | string | 否 | 否  | 卡片描述。 |
@@ -676,7 +677,7 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | serviceName | string | 否 | 否 | 服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 服务显示名称。 |
 | displayId | string | 否 | 否 | 显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。默认值为空。 |
 
 ## PeerFormHostServiceInfo
 
@@ -697,10 +698,10 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | serviceName | string | 否 | 否 | 远端卡片使用方服务的服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 远端卡片使用方服务的服务显示名称。 |
 | displayId | string | 否 | 否 | 远端卡片使用方服务的显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。默认值为空。 |
 | deviceId | string | 否 | 否 | 远端卡片使用方服务的设备标识。 |
 | networkId | string | 否 | 否 | 远端卡片使用方服务的网络标识。 |
-| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务Id。 |
+| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务标识。 |
 
 ## PublishFormCrossDeviceResult
 
@@ -719,3 +720,22 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|------|----|------|
 | formId | string | 否 | 否 | 添加到远端卡片使用方服务的卡片标识。 |
+
+## FormColorInfo
+ 
+卡片赋色的颜色信息。
+ 
+**起始版本：** 26.1.0
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.Ability.Form
+ 
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+ 
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| color | string | 否 | 否 | 卡片赋色使用的颜色值，格式为'#RRGGBB'或'#AARRGGBB'，例如'#FF0000'。 |
+| position | number | 否 | 否 | 该颜色值在渐变色中的位置，取值范围为[0, 1]。 |

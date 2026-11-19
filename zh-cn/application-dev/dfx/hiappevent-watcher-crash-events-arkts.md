@@ -41,7 +41,7 @@
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的[崩溃事件自定义参数](hiappevent-watcher-crash-events.md#崩溃事件自定义参数设置)和[崩溃日志规格自定义参数](hiappevent-watcher-crash-events.md#seteventconfig接口说明)，示例代码如下：
 
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     // 构建崩溃事件的自定义参数
@@ -74,8 +74,8 @@
       let crashEventPolicy : hiAppEvent.EventPolicy = {
         "appCrashPolicy": { // 崩溃事件配置策略
           "pageSwitchLogEnable": true, // 从API version 24开始，支持使能页面切换日志
-          "collectMinidump": true // 从API版本26.0.0开始，支持使能minidump
-          "publishOnNextLaunch": true // 从API版本26.2.0开始，支持使能固定在重启后收到事件回调
+          "collectMinidump": true, // 从API版本26.0.0开始，支持使能minidump
+          "publishOnNextLaunch": true // 从API版本26.1.0开始，支持使能固定在重启后收到事件回调
         }
       };
       // 开发者可以设置崩溃事件配置策略
@@ -244,9 +244,9 @@
 
 ### 验证观察者是否订阅到崩溃事件
 
-从API版本26.2.0开始，若应用已经使能固定在重新启动之后收到事件回调，HiAppEvent会在应用重启后，将崩溃事件上报给已注册的监听并完成回调。
+从API版本26.1.0开始，若应用已经使能固定在重新启动之后收到事件回调，HiAppEvent会在应用重启后，将崩溃事件上报给已注册的监听并完成回调。
 
-在API版本26.2.0之前或应用未使能固定在应用重启后收到事件回调，事件回调将遵循“尽快送达”原则：
+在API版本26.1.0之前或应用未使能固定在应用重启后收到事件回调，事件回调将遵循“尽快送达”原则：
 
 - 故障日志生成后，一旦满足回调时机，立即执行回调；
 - 未能及时送达的事件回调，将保留至应用下次重启后再行送达。

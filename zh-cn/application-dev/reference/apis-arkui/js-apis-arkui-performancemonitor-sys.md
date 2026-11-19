@@ -88,6 +88,8 @@ end(scene: string): void
 
 用于标记用户场景结束，用户场景结束时调用此接口。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -107,6 +109,8 @@ performanceMonitor.end("LAUNCHER_APP_LAUNCH_FROM_ICON");
 recordInputEventTime(type: ActionType, sourceType: SourceType, time: number): void
 
 记录动效场景开始前，用户输入触发事件类型与时间。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

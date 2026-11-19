@@ -12,7 +12,7 @@ ArkTS-Sta线程间通信通常由以下几类能力组成：
 
 - 通过共享对象直接传递数据。
 - 通过[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)提交任务并获取返回结果，或使用Task.sendData向提交线程发送中间数据。
-- 通过[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)的run、postToMain、MessageHandler和Message在指定线程间投递任务或消息。
+- 通过[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)的run、postToMain、MessageHandler和Message在指定线程间投递任务或消息。
 - 通过并发容器、锁、原子操作和WorkerLocal管理共享状态和线程本地状态。
 
 > **说明：**
@@ -126,7 +126,7 @@ async function taskpoolProgress(): Promise<void> {
 
 EAWorker用于创建独占线程。开发者需要显式调用start启动线程，并在使用完毕后调用join或quit释放资源。
 
-可以通过[run](../reference/apis-arkts/eaworker_managed.md#run)向指定EAWorker提交任务，并通过返回的Promise获取结果。
+可以通过[run](../reference/apis-arkts/eaworker-managed.md#run)向指定EAWorker提交任务，并通过返回的Promise获取结果。
 
 ```ts
 // ArkTS-Sta示例
@@ -147,7 +147,7 @@ async function eaworkerRun(): Promise<void> {
 }
 ```
 
-EAWorker内部任务需要回到主线程执行逻辑时，可以使用[EAWorker.postToMain](../reference/apis-arkts/eaworker_managed.md#posttomain)。
+EAWorker内部任务需要回到主线程执行逻辑时，可以使用[EAWorker.postToMain](../reference/apis-arkts/eaworker-managed.md#posttomain)。
 
 ```ts
 // ArkTS-Sta示例
@@ -174,7 +174,7 @@ async function postToMain(): Promise<void> {
 
 ## EAWorker消息机制
 
-对于需要按消息类型分发、查询或移除待处理消息的场景，可以使用[MessageHandler](../reference/apis-arkts/message_handler.md)和[Message](../reference/apis-arkts/message.md)。MessageHandler定义消息处理逻辑，Message携带消息标识符、数据对象或回调函数。
+对于需要按消息类型分发、查询或移除待处理消息的场景，可以使用[MessageHandler](../reference/apis-arkts/message-handler.md)和[Message](../reference/apis-arkts/message.md)。MessageHandler定义消息处理逻辑，Message携带消息标识符、数据对象或回调函数。
 
 ```ts
 // ArkTS-Sta示例

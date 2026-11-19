@@ -1593,6 +1593,258 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 });
 ```
 
+### setAutomationControlStatus
+
+ArkTS-Dyn: setAutomationControlStatus(controllerTokenID: number, targetList: Array&lt;AutomationControlTargetParam&gt;): Promise&lt;Array&lt;AutomationControlSetResult&gt;&gt;
+
+ArkTS-Sta: setAutomationControlStatus(controllerTokenID: int, targetList: Array&lt;AutomationControlTargetParam&gt;): Promise&lt;Array&lt;AutomationControlSetResult&gt;&gt;
+
+设置控制方应用对目标应用的自动化控制开关状态，返回每个目标应用的设置结果。该开关状态包含允许和禁止。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| controllerTokenID | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 控制方应用的身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入 0 时返回错误码 12100001。 |
+| targetList | Array&lt;[AutomationControlTargetParam](#automationcontroltargetparam)&gt; | 是 | 被控制目标应用列表及其自动化控制开关状态。最大长度为1024且不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;Array&lt;[AutomationControlSetResult](#automationcontrolsetresult)&gt;&gt; | Promise对象，用于返回每个目标应用的设置结果，与targetList传入的应用顺序相同。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 12100001 | Invalid parameter. The controllerTokenID is 0, or the targetList is empty or exceeds 1024 entries. |
+| 12100002 | The specified controller tokenID does not exist, or the corresponding process is not an application process. |
+| 12100006 | The application specified by the controller tokenID is not allowed to perform automation control operations. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let controllerTokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+  let targetList: Array<abilityAccessCtrl.AutomationControlTargetParam> = [
+    { targetTokenID: 0, status: abilityAccessCtrl.AutomationControlStatus.ENABLED }
+  ];
+  atManager.setAutomationControlStatus(controllerTokenID, targetList).then((data: Array<abilityAccessCtrl.AutomationControlSetResult>) => {
+    console.info('setAutomationControlStatus success, results: ' + JSON.stringify(data));
+  }).catch((err: BusinessError): void => {
+    console.error(`setAutomationControlStatus fail, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let controllerTokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+  let targetList: Array<abilityAccessCtrl.AutomationControlTargetParam> = [
+    { targetTokenID: 0, status: abilityAccessCtrl.AutomationControlStatus.ENABLED }
+  ];
+  atManager.setAutomationControlStatus(controllerTokenID, targetList).then((data: Array<abilityAccessCtrl.AutomationControlSetResult>) => {
+    console.info('setAutomationControlStatus success, results: ' + JSON.stringify(data));
+  }).catch((err: Error): void => {
+    console.error(`setAutomationControlStatus fail, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+}
+```
+
+### getAutomationControlTargets
+
+ArkTS-Dyn: getAutomationControlTargets(controllerTokenID: number): Promise&lt;Array&lt;AutomationControlTargetResult&gt;&gt;
+
+ArkTS-Sta: getAutomationControlTargets(controllerTokenID: int): Promise&lt;Array&lt;AutomationControlTargetResult&gt;&gt;
+
+查询被指定应用自动化控制的目标应用的信息。返回目标应用列表及其状态。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| controllerTokenID | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 控制方应用的身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入 0 时返回错误码 12100002。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;Array&lt;[AutomationControlTargetResult](#automationcontroltargetresult)&gt;&gt; | Promise对象，用于返回目标应用及其自动化控制状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 12100002 | The specified controller tokenID does not exist, or the corresponding process is not an application process. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let controllerTokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+  atManager.getAutomationControlTargets(controllerTokenID).then((data: Array<abilityAccessCtrl.AutomationControlTargetResult>) => {
+    console.info('getAutomationControlTargets success, data: ' + JSON.stringify(data));
+  }).catch((err: BusinessError): void => {
+    console.error(`getAutomationControlTargets fail, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let controllerTokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+  atManager.getAutomationControlTargets(controllerTokenID).then((data: Array<abilityAccessCtrl.AutomationControlTargetResult>) => {
+    console.info('getAutomationControlTargets success, data: ' + JSON.stringify(data));
+  }).catch((err: Error): void => {
+    console.error(`getAutomationControlTargets fail, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+}
+```
+
+### getAutomationControlControllers
+
+ArkTS-Dyn: getAutomationControlControllers(targetTokenID: number): Promise&lt;Array&lt;AutomationControlControllerInfo&gt;&gt;
+
+ArkTS-Sta: getAutomationControlControllers(targetTokenID: int): Promise&lt;Array&lt;AutomationControlControllerInfo&gt;&gt;
+
+查询对目标应用有自动化控制能力的控制方应用。返回控制方应用信息列表。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| targetTokenID | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 目标被控制应用的身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入 0 时返回错误码 12100002。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;Array&lt;[AutomationControlControllerInfo](#automationcontrolcontrollerinfo)&gt;&gt; | Promise对象，用于返回控制方应用的列表，这些应用可对指定的目标应用进行自动化控制。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 12100002 | The specified target tokenID does not exist, or the corresponding process is not an application process. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let targetTokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+  atManager.getAutomationControlControllers(targetTokenID).then((data: Array<abilityAccessCtrl.AutomationControlControllerInfo>) => {
+    console.info('getAutomationControlControllers success, data: ' + JSON.stringify(data));
+  }).catch((err: BusinessError): void => {
+    console.error(`getAutomationControlControllers fail, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let targetTokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+  atManager.getAutomationControlControllers(targetTokenID).then((data: Array<abilityAccessCtrl.AutomationControlControllerInfo>) => {
+    console.info('getAutomationControlControllers success, data: ' + JSON.stringify(data));
+  }).catch((err: Error): void => {
+    console.error(`getAutomationControlControllers fail, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## PermissionStatusInfo
 
 表示权限状态信息。
@@ -1631,3 +1883,99 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 | ------------------ | ----- | ----------- |
 | CLOSED  | 0    | 表示关闭指定权限的弹窗开关。应用调用[requestPermissionsFromUser](js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)等接口请求该权限时，不会弹出权限弹窗。 |
 | OPEN | 1     | 表示开启指定权限的弹窗开关。应用调用[requestPermissionsFromUser](js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)等接口请求该权限时，会正常弹出权限弹窗。 |
+
+## AutomationControlStatus
+
+表示自动化控制开关状态的枚举。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| DISABLED | 0 | 禁止自动化控制。 |
+| ENABLED | 1 | 允许自动化控制。 |
+
+## AutomationControlSetResult
+
+设置目标应用自动化控制状态结果的枚举。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| SUCCESS | 0 | 成功。 |
+| TOKEN_ID_NOT_EXIST | 1 | 指定的 targetTokenID 不存在，或对应目标不是应用进程。 |
+
+## AutomationControlTargetParam
+
+表示目标应用及其自动化控制状态。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| targetTokenID | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 目标被控制应用的身份标识。 |
+| status | [AutomationControlStatus](#automationcontrolstatus) | 否 | 否 | 自动化控制状态。 |
+
+## AutomationControlTargetResult
+
+针对指定的控制方应用，对应的被自动化控制应用的信息和控制状态。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| targetTokenID | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 目标被控制应用的身份标识。 |
+| status | [AutomationControlStatus](#automationcontrolstatus) | 否 | 否 | 自动化控制状态。 |
+| bundleName | string | 否 | 否 | 目标被控制应用的包名。 |
+
+## AutomationControlControllerInfo
+
+对目标应用具有自动化控制权限的控制方应用信息。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| controllerTokenID | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 控制方应用的身份标识。 |
+| bundleName | string | 否 | 否 | 控制方应用的包名。 |

@@ -44,8 +44,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -172,8 +171,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -300,8 +298,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -309,8 +306,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Sta示例：
 
    ```ts
-   import { fileUri } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    import picker from '@ohos.file.picker';

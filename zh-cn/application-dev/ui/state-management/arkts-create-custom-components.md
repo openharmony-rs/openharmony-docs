@@ -101,7 +101,7 @@ struct ParentComponent {
 
 ### \@Entry
 
-[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的自定义组件将作为UI[页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
 
   > **说明：**
   >
@@ -287,10 +287,10 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 | [@ObjectLink](arkts-observed-and-objectlink.md) | 不支持 | 必选，需传入[@Observed](arkts-observed-and-objectlink.md)装饰的class实例（API version 19起可传入复杂类型）。 |
 | [@Provide](arkts-provide-and-consume.md) | 必选 | 可选，传入非undefined值时使用传入值，否则使用本地默认值。 |
 | [@Consume](arkts-provide-and-consume.md) | 不支持（API version 20起可选） | 不支持，通过别名/变量名匹配\@Provide初始化。 |
-| [@StorageProp](arkts-appstorage.md) | 必选 | 不支持，通过[AppStorage](arkts-appstorage.md)对应key初始化。 |
-| [@StorageLink](arkts-appstorage.md) | 必选 | 不支持，通过[AppStorage](arkts-appstorage.md)对应key初始化。 |
-| [@LocalStorageProp](arkts-localstorage.md) | 必选 | 不支持，通过[LocalStorage](arkts-localstorage.md)对应key初始化。 |
-| [@LocalStorageLink](arkts-localstorage.md) | 必选 | 不支持，通过[LocalStorage](arkts-localstorage.md)对应key初始化。 |
+| [@StorageProp](arkts-appstorage.md#storageprop) | 必选 | 不支持，通过[AppStorage](arkts-appstorage.md)对应key初始化。 |
+| [@StorageLink](arkts-appstorage.md#storagelink) | 必选 | 不支持，通过[AppStorage](arkts-appstorage.md)对应key初始化。 |
+| [@LocalStorageProp](arkts-localstorage.md#localstorageprop) | 必选 | 不支持，通过[LocalStorage](arkts-localstorage.md)对应key初始化。 |
+| [@LocalStorageLink](arkts-localstorage.md#localstoragelink) | 必选 | 不支持，通过[LocalStorage](arkts-localstorage.md)对应key初始化。 |
 
 **\@ComponentV2成员变量初始化规则**
 

@@ -706,8 +706,6 @@ export struct DefaultDrag {
                   event.setResult(DragResult.DROP_ENABLED);
                   event.dragBehavior = DragBehavior.COPY;
                 })
-                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
                 .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
                 .onDrop((dragEvent?: DragEvent) => {
                   // 获取拖拽数据
@@ -2610,7 +2608,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
        // 检查当前的状态
        if (context.state == DragSpringLoadingState.BEGIN) {
          // 检查用户所拖拽的数据类型是否自己能够处理的
-         boolean isICanHandle = false;
+         let isICanHandle: boolean = false;
          let dataSummary = context?.dragInfos?.dataSummary;
          if (dataSummary != undefined) {
            for (const [type, size] of dataSummary) {

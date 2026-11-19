@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解位运算符、可选链、空值合并、展开与剩余运算符等ArkTS高级运算符的概念与用法，并给出运算符优先级表及ArkTS相关限制说明。"
+keywords: [ArkTS, 高级运算符, 位运算符, 可选链, 空值合并, 展开运算符, satisfies, as const, 运算符优先级]
+doctype: guide
+status: active
+---
+
 # 高级运算符
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

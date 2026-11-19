@@ -1,6 +1,13 @@
 # \@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步
 
-\@Provider和\@Consumer用于跨组件层级数据双向同步，方便开发者不用拘泥于组件层级。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liwenzhen3-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+[\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider-static.md#provider-1)和[\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer-static.md#consumer-1)用于跨组件层级数据双向同步，方便开发者不用拘泥于组件层级。
 
 ## 概述
 

@@ -583,6 +583,8 @@ on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, option
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[onBarometerChange](#sensoronbarometerchange23)
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Dyn起始版本：** 9
@@ -5622,6 +5624,8 @@ off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): voi
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Dyn起始版本：** 9
@@ -5678,6 +5682,8 @@ off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Call
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[offBarometerChange](#sensoroffbarometerchange23)
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11499,7 +11505,7 @@ try {
 | GYROSCOPE                   | 2    | 陀螺仪传感器类型，用于测量设备的旋转角速度。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | AMBIENT_LIGHT               | 5    | 环境光传感器类型，用于测量环境光照强度。                                               |
 | MAGNETIC_FIELD              | 6    | 磁场传感器类型，用于测量设备周围的环境磁场强度。                                                 |
-| BAROMETER                   | 8    | 气压计传感器类型，用于测量大气压力。                                               |
+| BAROMETER                   | 8    | 气压计传感器类型，用于测量大气压力。<br/>**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 | HALL                        | 10   | 霍尔传感器类型，用于检测设备周围是否存在磁力吸引。                                                 |
 | PROXIMITY                   | 12   | 接近光传感器类型，用于检测物体与设备显示器的接近程度。                                               |
 | HUMIDITY                    | 13   | 湿度传感器类型，用于测量环境的相对湿度。                                               |
@@ -11963,6 +11969,8 @@ try {
 
 气压计传感器数据，继承于[Response](#response)。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Dyn起始版本：** 8
@@ -11972,7 +11980,7 @@ try {
 
 | 名称     | 类型   | 只读 | 可选 | 说明                   |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | number | 否   | 否   | 大气压力值。单位：hPa（百帕）。 |
+| pressure | number | 否   | 否   | 大气压力值。单位：hPa（百帕）。<br/>**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 
 ## HeartRateResponse

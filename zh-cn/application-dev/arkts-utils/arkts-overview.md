@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS语言的定位与核心能力：在TypeScript生态基础上强化开发期静态检查以提升健壮性与性能，提供基础语法、基础类库、TaskPool和Worker并发能力、Sendable引用传递机制，并由方舟编译运行时支撑高效执行。"
+keywords: [ArkTS简介, TypeScript扩展, 静态检查, 基础语法, 基础类库, 并发增强, Sendable, 方舟编译运行时]
+doctype: guide
+status: active
+---
+
 # ArkTS简介
 
 <!--Kit: ArkTS-->

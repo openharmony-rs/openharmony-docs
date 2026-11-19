@@ -2730,7 +2730,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | 参数名 | 类型                                 | 必填 | 说明                                                         |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql    | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
-| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整。默认值为空。 |
+| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整。默认值为空数组。 |
 
 **返回值：**
 

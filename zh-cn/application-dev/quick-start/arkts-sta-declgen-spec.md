@@ -2590,7 +2590,7 @@ ArkTS-Sta的普通函数重载目前在动态侧不可用，Declgen目前会删�
 
 从ArkTS-Dyn映射到ArkTS-Sta上下文，Declgen支持在`JSDOC`中使用tags标记源码，指导Declgen如何进行转换。
 
-> 注意：
+> **注意：**
 >
 > 用户需要自己保证添加的Interop tags正确性，Declgen不保证其正确性。
 
@@ -2720,7 +2720,7 @@ export declare class A {}
 
 ArkTS-Sta映射到ArkTS-Dyn上下文的Declgen支持在`JSDOC`中使用tags标记源码，指导Declgen如何进行转换。
 
-> 注意：
+> **注意：**
 >
 > 用户需要自己保证添加的Interop tags正确性，Declgen不保证其正确性。
 

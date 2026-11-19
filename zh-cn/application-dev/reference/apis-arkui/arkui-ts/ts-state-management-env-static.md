@@ -22,9 +22,15 @@ import { Env, SystemProperties, SystemEnvKey, WritableSystemEnvKey, ReadonlySyst
 
 ## Env
 
+@interface Env
+
 环境变量装饰器，用于获取系统环境变量信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 说明 |
 | --- | --- | --- |
@@ -85,6 +91,13 @@ protected constructor()
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
+
+### 属性
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | ------ |
+| DIRECTION | [WritableSystemEnvKey](#writablesystemenvkey) |布局方向系统环境变量参数，可作为[WithEnv](./ts-container-with-env.md)的[env](./ts-container-with-env.md#env)方法和[\@Env](#env)的参数用于指代布局方向的系统环境变量。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| FONT_SCALE | [WritableSystemEnvKey](#writablesystemenvkey) |字体缩放倍数系统环境变量参数，可作为[WithEnv](./ts-container-with-env.md)的[env](./ts-container-with-env.md#env)方法和[\@Env](#env)的参数用于指代字体缩放倍数的系统环境变量。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ReadonlyEnvKey
 

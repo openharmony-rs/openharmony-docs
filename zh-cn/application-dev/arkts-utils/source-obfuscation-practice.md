@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "面向HAP、HAR、HSP三种包类型的共享与复用特点，分别提供源码混淆推荐功能及按包依赖关系配置保留白名单的建议，避免共享代码被误混淆。"
+keywords: [混淆, 源码混淆, 混淆建议, HAP, HAR, HSP, 包类型, 白名单, 共享包]
+doctype: guide
+status: active
+---
+
 # 不同包类型的源码混淆建议
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

@@ -116,9 +116,9 @@ DrawingRenderingContext的尺寸信息。
 该示例实现了如何使用DrawingRenderingContext中的方法绘制图形。
 
 ```ts
+// xxx.ets
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-// xxx.ets
 @Entry
 @Component
 struct CanvasExample {
@@ -178,9 +178,9 @@ struct CanvasExample {
 该示例实现了通过[makeFromRawFile](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Typeface.md#makefromrawfile18)（从API version 18开始）加载自定义字体。并使用[drawTextBlob](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawtextblob)绘制文本，drawing接口绘制自定义文字时，不需要调用this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont)或者fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)提前注册字体，而是通过drawing.Typeface.[makeFromRawFile](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Typeface.md#makefromrawfile18)（从API version 18开始）传入rawfile目录下的自定义字体文件。
 
 ```ts
+// xxx.ets
 import { drawing } from '@kit.ArkGraphics2D';
 
-// xxx.ets
 @Entry
 @Component
 struct CanvasExample {

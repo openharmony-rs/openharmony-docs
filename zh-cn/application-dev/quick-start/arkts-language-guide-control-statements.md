@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS分支、循环、跳转等控制语句的语法与用法，涵盖函数内提前退出技巧及多版本多设备下的API可用性检测方法。"
+keywords: [ArkTS, 控制语句, 分支语句, 循环语句, switch, 跳转语句, 提前退出, API可用性检测]
+doctype: guide
+status: active
+---
+
 # 控制语句
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

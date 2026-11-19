@@ -1699,6 +1699,8 @@ export default class AccessibilityManager {
 | childrenTreeId             | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 表示元素的子组件树ID。默认值为-1。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0  |
 | customActions             | Array\<string>                                                             | 否  | 是  | 元素支持的自定义操作列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0  |
 | sourceType             | [AccessibilitySourceType](./js-apis-accessibility-sys.md#accessibilitysourcetype) | 否  | 是  | 组件来源类型，用于区分默认组件和新增、修改的虚拟组件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
+| windowScaleX             | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 窗口在X轴方向上的缩放比例。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1 |
+| windowScaleY             | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 窗口在Y轴方向上的缩放比例。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1 |
 
 **示例：**
 

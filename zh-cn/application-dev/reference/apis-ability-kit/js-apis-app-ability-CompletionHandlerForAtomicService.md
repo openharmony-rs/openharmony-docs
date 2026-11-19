@@ -120,7 +120,7 @@ export default class EntryAbility extends UIAbility {
       },
       // 定义原子化服务请求失败的回调函数
       onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
-        hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
+        hilog.error(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
       }
     };
     // 创建原子化服务对象

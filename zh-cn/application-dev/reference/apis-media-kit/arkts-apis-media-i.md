@@ -288,6 +288,11 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | videoFrameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的宽，单位为像素（px），下限为240P，上限受设备编码器能力限制。默认设置为源视频帧的宽。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
 | videoFrameHeight        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的高，单位为像素（px），下限为240P，上限受设备编码器能力限制。默认设置为源视频帧的高。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
 | enableBFrame<sup>20+</sup> | boolean | 否 |  是   | 转码使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| enableStableQualityMode            | boolean                        | 否   | 是   | 是否启用视频编码质量稳定模式，仅在视频编码格式为H.265且设备硬件支持的情况下生效。true表示启用，false表示不启用。<br>该参数为视频转码场景下的可选项，默认值为false。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0|
+| sqrFactor            | number                        | 否   | 是   | 设置SQR码控模式的质量参数。<br>取值为整数，取值范围为[0, 51]，值越小，编码输出码率越大，画质越高。<br>需要先设置enableStableQualityMode为true，SQR码控模式的质量参数设置才生效。<br>该参数为视频转码场景下的可选项，默认值为25。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0|
+| destHDRMode           | [DestHDRMode](arkts-apis-media-e.md#desthdrmode) | 否   | 是   | 指定目标文件的HDR格式。<br>当指定为AUTO_HDR_VIVID模式时，支持将HDR Vivid视频转码为新的HDR Vivid视频，其他格式视频转为SDR。<br>进行HDR Vivid视频转码时，必须设置视频编码格式为HEVC，且不支持添加水印。<br>该参数为视频转码场景下的可选项，默认值为SDR模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0|
+| startTime            | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 是   | 指定起始转码的时间点，单位为毫秒（ms）。<br>默认从源文件的起始处开始转码。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0| 
+| endTime            | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 是   | 指定结束转码的时间点，单位为毫秒（ms）。<br>默认转码到源文件的结束位置。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0| 
 
 
 ## AVMetadata<sup>11+</sup>
@@ -489,6 +494,7 @@ async function setupPlayer() {
 | preferredBufferDurationForPlaying<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 播放策略首选起播缓冲水线。当起播缓冲时间超过该值，开始播放。单位为秒（s），取值范围[0, 20]。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 | thresholdForAutoQuickPlay<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 智能追帧水线，单位为秒（s），取值应不小于2s，且需大于起播缓冲水线，默认设置为5s。<br>播放策略可以通过设置智能追帧水线来保证直播的实时性。flv直播场景下应用可按需设置，非flv直播场景暂不支持。网络状态的变化可能会导致播放器在某段时间内积压大量数据。播放器会定期检查当前播放时间与缓存中最新的帧时间戳之间的差值，当这个差值过大时，播放器将以1.2倍速开始智能追帧。[on('speedDone')](arkts-apis-media-AVPlayer.md#onspeeddone9)事件会回调特定值100，表示智能追帧开启成功。当差值小于起播缓冲水线时，则停止追帧并恢复到正常播放速度。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 | keepDecodingOnMute<sup>20+</sup>  | boolean | 否   | 是   | 表示在关闭视频媒体时解码器是否继续运行，用于方便快速打开媒体。目前仅支持视频。默认设置为false，表示当媒体关闭时，相应的解码器将停止运行以减少功耗。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| disableMedia | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 配置播放期间禁用的媒体类型。<br>只支持禁用音频或视频，取值为MediaType.MEDIA_TYPE_AUD或MediaType.MEDIA_TYPE_VID。<br>若未设置此参数，默认不禁用任何媒体类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 26.1.0<br> **ArkTS-Sta起始版本：** 26.1.0 |
 
 ## AVScreenCaptureStrategy<sup>20+</sup>
 
@@ -502,6 +508,9 @@ async function setupPlayer() {
 | enableBFrame | boolean | 否 | 是 | 录屏是否使能B帧编码。true表示录屏文件使能B帧编码，false表示录屏文件禁用B帧编码，默认是false。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，则正常录制不含B帧的视频，不会返回错误。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | privacyMaskMode<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 设置屏幕录制时对隐私窗口的屏蔽模式。<br> - 0：表示存在隐私窗口时，采用全屏屏蔽模式，默认是0。<br> - 1：表示存在隐私窗口时，采用隐私窗口屏蔽模式。<br> - 设置为其他值时返回错误。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | enablePause | boolean | 否 | 是 | 表示录屏过程中是否允许暂停录屏。<br>true表示允许，false表示不允许。默认是false。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| enableAEC | boolean | 否 | 是 | 表示当麦克风采集开启时，是否开启回声检测与回声消除功能。<br>true表示开启回声消除功能，false表示关闭回声消除功能，默认值为false。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| enableHDR | boolean | 否 | 是 | 录屏指定是否以HDR格式输出图像。<br> true表示图像为HDR格式，false表示图像为SDR格式。<br> 默认值为false。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| contentAutoPauseScenes | Array<[AVScreenCaptureAutoPauseCaptureScene](arkts-apis-media-e.md#avscreencaptureautopausecapturescene)> | 否 | 是 | 设置自动暂停屏幕内容采集的场景集合。<br>当采集会话运行时，若场景集合中的任一场景发生，系统将自动暂停屏幕内容采集。<br>可通过[resumeRecording](arkts-apis-media-AVScreenCaptureRecorder.md#resumerecording)方法恢复屏幕内容采集。<br>默认不自动暂停屏幕内容采集（即不设置该参数时的默认行为）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
@@ -622,3 +631,22 @@ async function setupPlayer() {
 | start | number | 否   | 否   | 基于时间的元数据相对整个媒体起始时间的偏移值。<br>取值限定为整数。<br>单位：毫秒。 |
 | duration | number | 否   | 否   | 基于时间的元数据的持续时长。<br>取值限定为整数。<br>单位：毫秒。 |
 | contents | Record<string, object> | 否   | 否   | 基于时间的元数据对应的键值对集合。 |
+
+## RectangleRegion
+
+矩形区域的配置参数，用于在[setCaptureArea](arkts-apis-media-AVScreenCaptureRecorder.md#setcapturearea)接口中指定屏幕录制时实际录制的区域。区域位置以屏幕左上角为原点计算，区域大小由宽度和高度确定。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| top    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域相对于屏幕顶部边缘的偏移量。<br>取值约束：该值必须为大于或等于0的整数。<br>单位为像素（px）。 |
+| left   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域相对于屏幕左边缘的偏移量。<br>取值约束：该值必须为大于或等于0的整数。<br>单位为像素（px）。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域的宽度。<br>取值约束：该值必须为大于0的整数，且left与width之和不能大于屏幕宽度。<br>单位为像素（px）。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域的高度。<br>取值约束：该值必须为大于0的整数，且top与height之和不能大于屏幕高度。<br>单位为像素（px）。 |

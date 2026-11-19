@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS接口的定义与实现，涵盖接口继承与组合、可选成员、泛型约束接口、多余属性检查及type与interface的区别。"
+keywords: [ArkTS, 接口, interface, 接口继承, 可选成员, 泛型约束, 多余属性检查, type区别]
+doctype: guide
+status: active
+---
+
 # 接口
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

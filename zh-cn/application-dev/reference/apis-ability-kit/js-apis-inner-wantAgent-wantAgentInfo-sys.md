@@ -18,7 +18,7 @@
 ## 导入模块
 
 ```ts
-import { wantAgent as abilityWantAgent } from '@kit.AbilityKit';
+import { wantAgent } from '@kit.AbilityKit';
 ```
 
 ## WantAgentInfo

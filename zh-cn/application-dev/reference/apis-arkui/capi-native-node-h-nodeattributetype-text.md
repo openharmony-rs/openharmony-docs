@@ -610,14 +610,14 @@ NODE_TEXT_LINE_SPACING = 1023
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 表示行间距值，单位为fp。取值范围：[0, +∞)。传入负数时参数不生效。 |
-| ?.object | 可选。指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于设置行间距选项。从API版本26.2.0开始支持。使用[OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create)创建对象，使用[OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy)销毁对象。 |
+| ?.object | 可选。指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于设置行间距选项。从API版本26.0.1开始支持。使用[OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create)创建对象，使用[OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy)销毁对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 表示行间距值，单位为fp。 |
-| .object | 指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于获取行间距选项。从API版本26.2.0开始支持。 |
+| .object | 指向[OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)对象的指针，用于获取行间距选项。从API版本26.0.1开始支持。 |
 
 ## NODE_FONT_FEATURE
 
@@ -1374,7 +1374,7 @@ NODE_TEXT_STROKE_WIDTH = 1057
 设置文本描边宽度，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -1398,7 +1398,7 @@ NODE_TEXT_STROKE_COLOR = 1058
 设置文本描边颜色，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -1422,7 +1422,7 @@ NODE_TEXT_STROKE_JOIN_STYLE = 1059
 设置文本描边拐角样式，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -1482,6 +1482,8 @@ NODE_SPAN_TEXT_BACKGROUND_STYLE = 2001
 | .value[2].f32 | 设置右上角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。 |
 | .value[3].f32 | 设置左下角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。 |
 | .value[4].f32 | 设置右下角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。 |
+| .value[5]?.f32 | 文本背景的边框宽度，单位为vp。可选。默认值为0。该参数从API版本26.1.0开始支持。 |
+| .value[6]?.u32 | 文本背景的边框颜色，0xARGB格式。可选。默认跟随字体颜色。该参数从API版本26.1.0开始支持。 |
 
 **返回：**
 
@@ -1492,6 +1494,8 @@ NODE_SPAN_TEXT_BACKGROUND_STYLE = 2001
 | .value[2].f32 | 右上角圆角半径，单位为vp。 |
 | .value[3].f32 | 左下角圆角半径，单位为vp。 |
 | .value[4].f32 | 右下角圆角半径，单位为vp。 |
+| .value[5].f32 | 文本背景的边框宽度，单位为vp。该参数从API版本26.1.0开始支持。 |
+| .value[6].u32 | 文本背景的边框颜色，0xARGB格式。该参数从API版本26.1.0开始支持。 |
 
 ## NODE_SPAN_BASELINE_OFFSET
 

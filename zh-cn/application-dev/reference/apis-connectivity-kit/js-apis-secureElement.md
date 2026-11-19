@@ -411,7 +411,7 @@ let seService : omapi.SEService;
 
 try {
     let version = seService.getVersion();
-    hilog.error(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
+    hilog.info(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
 } catch (error) {
     hilog.error(0x0000, 'testTag', 'getVersion error %{public}s', JSON.stringify(error));
 }
@@ -436,7 +436,7 @@ getName(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[NFC错误码](errorcode-nfc.md)。
+以下错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |

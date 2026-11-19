@@ -79,12 +79,14 @@ enum OH_ArkUI_NativeModule_RuntimeCheckType
 
 ArkUI C API的运行时检查类型枚举。<br>每种检查类型对应一种ArkUI C API的不当使用场景，用于在运行时检测开发者对C API的误用行为（如跨线程调用、访问已销毁对象等）。可通过[OH_ArkUI_NativeModule_SetRuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_setruntimecheckmode)为每种检查类型独立配置运行时检查模式，检查失败时的行为由所配置的运行时检查模式决定，模式取值见[OH_ArkUI_NativeModule_RuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0 | UI线程检查类型：部分ArkUI C API要求必须在UI线程调用，此类型用于检测这些API是否被非UI线程调用。 |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | 节点销毁检查类型：检测传递给C API的ArkUI_NodeHandle是否已经被销毁。 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | 节点销毁检查类型：检测传递给C API的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)是否已经被销毁。 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2 | 属性匹配检查类型：检测传递给[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)/[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)/[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)的[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)是否与节点实际组件类型匹配。 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3 | 多线程竞争检查类型：检测调用多线程API时，是否已有其他线程正在操作同一棵组件树。 |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckMode
 
@@ -96,7 +98,7 @@ enum OH_ArkUI_NativeModule_RuntimeCheckMode
 
 ArkUI C API运行时检查的模式枚举。<br>所有C API的运行时检查类型均使用本枚举中定义的相同模式集合设置检查失败时的行为，即每种检查类型都可以独立设置为以下三种模式之一。默认模式取决于应用程序的构建类型：以debug模式构建的应用默认为[OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)，以release模式构建的应用默认为[OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -180,7 +182,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_SetRuntimeCheckMode(OH_ArkUI_NativeModule_
 
 设置ArkUI C API的进程级运行时检查模式。<br>本函数配置特定运行时检查类型在检测到误用时的行为。该设置为进程级，在针对同一检查类型的下一次成功调用之前持续有效。<br>线程要求：本函数必须在UI线程上调用。从其他线程调用将立即终止应用程序，不会返回。线程检查在参数校验之前执行。<br>默认行为：如果未针对某个检查类型调用本函数，debug应用构建默认为[OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)，<br>release应用构建默认为[OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

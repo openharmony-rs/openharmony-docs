@@ -57,10 +57,9 @@
 
 3. 在"CMakeLists.txt"文件中，添加源文件和动态库。
 
-   ```cmake
-   add_library(entry SHARED napi_init.cpp)
-   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` cmake
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # 检查是否存在entry/build目录
@@ -68,7 +67,10 @@
    # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-
+   
+   add_library(entry SHARED napi_init.cpp)
+   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
@@ -96,7 +98,7 @@
 
       在"napi_init.cpp"文件中，定义onReceive类型观察者的方法：
 
-      <!-- @[Sys_Crash_Crash_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @[Sys_Crash_Crash_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
       
       ``` C++
       static void OnReceiveCrashEvent(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups,
@@ -104,26 +106,27 @@
       {
           for (int i = 0; i < groupLen; ++i) {
               for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s",
-                      appEventGroups[i].appEventInfos[j].domain);
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s",
-                      appEventGroups[i].appEventInfos[j].name);
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d",
-                      appEventGroups[i].appEventInfos[j].type);
-                  if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) != 0 ||
-                      strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_CRASH) != 0) {
+                  const struct HiAppEvent_AppEventInfo &appEventInfo = appEventGroups[i].appEventInfos[j];
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", appEventInfo.domain);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", appEventInfo.name);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", appEventInfo.type);
+                  if (strcmp(appEventInfo.domain, DOMAIN_OS) != 0 || strcmp(appEventInfo.name, EVENT_APP_CRASH) != 0) {
                       continue;
                   }
                   Json::Value params;
                   Json::Reader reader(Json::Features::strictMode());
                   Json::FastWriter writer;
-                  if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
+                  if (reader.parse(appEventInfo.params, params)) {
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld",
                           params["time"].asInt64());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.crash_type=%{public}s",
                           params["crash_type"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d",
                           params["foreground"].asBool());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.release_type=%{public}s",
+                          params["release_type"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.cpu_abi=%{public}s",
+                          params["cpu_abi"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
                           params["app_running_unique_id"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
@@ -162,30 +165,30 @@
           const char *names[] = {EVENT_APP_CRASH};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcherR, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceiveCrashEvent回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceiveCrashEvent回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcherR, OnReceiveCrashEvent);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcherR);
-
+      
           // 1. 创建配置对象
           HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
-
+      
           // 2. 设置各项配置参数
           // 开启寄存器扩展内存打印
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING, "true");
-
+      
           // 设置日志截断大小为 2MB
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES, "2097152");
-
+      
           // 开启简化 VMA 映射信息打印
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING, "true");
-
+      
           // 开启拼接应用日志
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG, "true");
-
+      
           // native崩溃场景，使能minidump
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_COLLECT_MINIDUMP, "true");
-
+      
           // 使能固定在应用重启之后收到事件回调。
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH, "true");
       
@@ -194,10 +197,10 @@
           if (ret == HIAPPEVENT_SUCCESS) {
               OH_LOG_INFO(LogType::LOG_APP, "Successfully set APP_CRASH event configurations.");
           }
-
+      
           // 4. 销毁配置对象
           OH_HiAppEvent_DestroyConfig(config);
-
+      
           return {};
       }
       ```
@@ -400,9 +403,9 @@
 
 ### 验证观察者是否订阅到崩溃事件
 
-从API版本26.2.0开始，若应用已经使能固定在重新启动之后收到事件回调，HiAppEvent会在应用重启后，将崩溃事件上报给已注册的监听并完成回调。
+从API版本26.1.0开始，若应用已经使能固定在重新启动之后收到事件回调，HiAppEvent会在应用重启后，将崩溃事件上报给已注册的监听并完成回调。
 
-在API版本26.2.0之前或应用未使能固定在应用重启后收到事件回调，事件回调将遵循“尽快送达”原则：
+在API版本26.1.0之前或应用未使能固定在应用重启后收到事件回调，事件回调将遵循“尽快送达”原则：
 
 - 故障日志生成后，一旦满足回调时机，立即执行回调；
 - 未能及时送达的事件回调，将保留至应用下次重启后再行送达。

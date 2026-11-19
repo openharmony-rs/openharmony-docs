@@ -283,7 +283,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 使用场景：在播放器应用中，用于监听并处理播放器状态变化、播放进度更新、缓冲状态等信息。常用于音乐播放器的状态显示、视频播放器的进度条更新、直播播放器的缓冲提示等场景。
 
-> 说明：
+> **说明：**
 >
 > 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。
 

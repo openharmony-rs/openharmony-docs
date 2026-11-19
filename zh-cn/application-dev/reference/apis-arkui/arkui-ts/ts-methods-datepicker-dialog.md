@@ -93,6 +93,7 @@ static show(options?: DatePickerDialogOptions)
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否  | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 | enableHapticFeedback<sup>18+</sup> | boolean | 否  | 是  | 设置是否开启触控反馈。<br />- true：开启触控反馈。<br />- false：不开启触控反馈。<br />默认值：true<br />**原子化服务API（仅ArkTS-Dyn）**： 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br />**说明**：<br/>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br/>2. 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：<br />"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | canLoop<sup>20+</sup> | boolean | 否 | 是 | 设置是否可循环滚动。<br/>默认值：true<br/>**说明：**<br/>true：可循环，年份随着月份的循环滚动进行联动加减，月份随着日的循环滚动进行联动加减。<br/>false：不可循环，年、月、日到达本列的顶部或底部时，无法再进行滚动，年、月、日之间也无法再联动加减。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE<br>**说明：**<br>当alignment不为DialogAlignment.Default，或者offset值不为0时，该接口不生效。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## LunarSwitchStyle<sup>14+</sup>对象说明
 
@@ -763,3 +764,69 @@ struct DatePickerDialogExample {
 ```
 
 ![DatePickerDialog](figures/DatePickerDialog_BackgroundEffect.png)
+
+### 示例12（设置弹窗适配握持习惯）
+
+该示例通过[DatePickerDialogOptions](#datepickerdialogoptions对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[DatePickerDialogOptions](#datepickerdialogoptions对象说明)中新增了adaptToHandedness属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// DatePickerDialogExampleDyn.ets
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DatePickerDialogExample {
+  private selectedDate: Date = new Date('2010-01-01');
+
+  build() {
+    Column() {
+      Button('DatePickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// DatePickerDialogExampleSta.ets
+
+import { Entry, Component, Column, Button } from '@ohos.arkui.component';
+import { HandednessFollowMode } from '@ohos.arkui.dialog';
+
+@Entry
+@Component
+struct DatePickerDialogExample {
+  private selectedDate: Date = new Date('2010-01-01');
+
+  build() {
+    Column() {
+      Button('DatePickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/datepickerdialoghandedness.gif)

@@ -362,7 +362,7 @@ Obtains the SDK minor API version. Starting from API version 26.0.0, the minor v
 
 | Type | Description |
 | -- | -- |
-| int | 0 ~ 99 - the sdk minor api version, the value is an integer.<br>-1 - not found the sdk minor api version number, or failed to invoke the internal interface.<br>If the API version of the system software is 26.0.1, sdkMinorApiVersion is 0. If the API version of the system software is 26.1.0, sdkMinorApiVersion is 1. |
+| int | 0 ~ 99 - the sdk minor api version, the value is an integer.<br>-1 - not found the sdk minor api version number, or failed to invoke the internal interface. |
 
 ### OH_GetSdkPatchApiVersion()
 
@@ -380,7 +380,7 @@ Obtains the SDK patch API version. Starting from API version 26.0.0, the patch v
 
 | Type | Description |
 | -- | -- |
-| int | 0 ~ 99 - the sdk patch api version, the value is an integer.<br>-1 - not found the sdk patch api version number, or failed to invoke the internal interface.<br>the sdk patch api version. The value is an integer. If the API version of the system software is 26.0.1, sdkPatchApiVersion is 1. If the API version of the system software is 26.1.0, sdkPatchApiVersion is 0. |
+| int | 0 ~ 99 - the sdk patch api version, the value is an integer.<br>-1 - not found the sdk patch api version number, or failed to invoke the internal interface. |
 
 ### OH_GetFirstApiVersion()
 

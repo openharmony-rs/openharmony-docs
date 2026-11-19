@@ -43,7 +43,7 @@
    // 监听cameraInput错误信息。
    void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
    {
-      OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode: %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "OnCameraInput errorCode: %{public}d", errorCode);
    }
 
    CameraInput_Callbacks* GetCameraInputListener(void)

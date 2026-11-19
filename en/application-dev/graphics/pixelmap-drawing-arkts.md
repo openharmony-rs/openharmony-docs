@@ -92,7 +92,7 @@ Drawing pixel maps using the **Drawing** APIs (ArkTS) depends on the **PixelMap*
 
 3. Draw the pixel map.
 
-   Use the **Canva** APIs to draw the pixel map. The following uses **drawImage()** as an example. For details about other ways and APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+   Use the **Canvas** APIs to draw the pixel map. The following uses **drawImage()** as an example. For details about other ways and APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
    The **drawImage()** function takes four parameters: (1) **PixelMap** created; (2) X coordinate of the upper left corner of the drawn image; (3) Y coordinate of the upper left corner; (4) sampling option object. By default, the original sampling option object is constructed without any parameter.
 

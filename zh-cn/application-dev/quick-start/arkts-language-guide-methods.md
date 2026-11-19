@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS类中方法的定义与使用，涵盖实例方法、静态方法、方法重载、继承中的方法及this参数标注与使用限制。"
+keywords: [ArkTS, 方法, 实例方法, 静态方法, 方法重载, 继承中的方法, this参数, this is类型守卫]
+doctype: guide
+status: active
+---
+
 # 方法
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

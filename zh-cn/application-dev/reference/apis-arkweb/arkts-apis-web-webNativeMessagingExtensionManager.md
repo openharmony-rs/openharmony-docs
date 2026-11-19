@@ -121,7 +121,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -158,7 +158,7 @@ class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtens
   }
 
   onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
-    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+    console.error(`onFailed, code:${code} errMsg:${errMsg}`);
   }
 }
 
@@ -237,7 +237,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -274,7 +274,7 @@ class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtens
   }
 
   onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
-    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+    console.error(`onFailed, code:${code} errMsg:${errMsg}`);
   }
 }
 
@@ -354,7 +354,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -391,7 +391,7 @@ class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtens
   }
 
   onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
-    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+    console.error(`onFailed, code:${code} errMsg:${errMsg}`);
   }
 }
 
@@ -491,7 +491,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -528,7 +528,7 @@ class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtens
   }
 
   onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
-    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+    console.error(`onFailed, code:${code} errMsg:${errMsg}`);
   }
 }
 

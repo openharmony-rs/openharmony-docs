@@ -965,8 +965,8 @@ struct PageTwoStack {
 
 在上述示例代码中：
 
-1.点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，点击这两个标签将其全部创建。回到Update标签，DelayUpdate标签未被选中，状态变量不会刷新。点击`Incr state`，日志中查询Appmonitor，Param和Child刷新。
+1. 点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，点击这两个标签将其全部创建。回到Update标签，DelayUpdate标签未被选中，状态变量不会刷新。点击`Incr state`，日志中查询Appmonitor，Param和Child刷新。
 
-2.切换到DelayUpdate标签，点击`Incr state`，日志中查询Appmonitor，存在2个打印。DelayUpdate中状态变量不会刷新与Update标签中相关的状态变量。
+2. 切换到DelayUpdate标签，点击`Incr state`，日志中查询Appmonitor，存在2个打印。DelayUpdate中状态变量不会刷新与Update标签中相关的状态变量。
 
-3.点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。
+3. 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。

@@ -1205,7 +1205,7 @@ struct DragandDropSorting {
 
 LazyForEach会构建并持有预加载区域内的子组件。
 
-从API version 26.2.0开始，当开发者需要主动释放这些预加载的子组件时，可以通过控制器[LazyForEachController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#lazyforeachcontroller)实现。
+从API version 26.1.0开始，当开发者需要主动释放这些预加载的子组件时，可以通过控制器[LazyForEachController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#lazyforeachcontroller)实现。
 
 使用方式：创建LazyForEachController对象，并在创建LazyForEach时通过[LazyForEachOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#lazyforeachoptions)的controller字段完成绑定；需要清理缓存时，调用控制器上的[clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#clearcache)方法。
 
