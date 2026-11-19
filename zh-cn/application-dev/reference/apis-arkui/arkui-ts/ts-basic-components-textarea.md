@@ -3134,8 +3134,13 @@ struct TextAreaExample {
       id: TextMenuItemId.of('create2'),
       icon: $r('app.media.startIcon'),
     };
+    // 查找并移除系统AI写作菜单项
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.AI_WRITER));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
     // 从API version 23开始支持TextMenuItemId.autoFill
-    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
+    targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
     if (targetIndex !== -1) {
       menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
     }
@@ -3194,9 +3199,7 @@ struct TextAreaExample {
   }
 }
 ```
-<!--RP4-->
-![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.png)
-<!--RP4End-->
+![textAreaEditMenuOptions](figures/textAreaEditMenuOptions-2.gif)
 
 ### 示例15（文本设置省略模式）
 
@@ -3366,7 +3369,7 @@ struct TextAreaExample {
 
 ### 示例17（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围<!--Del-->（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）<!--DelEnd-->。
+从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。
 <!--code_no_check-->
 ```json5
 // 开启应用缩放跟随系统
@@ -3395,36 +3398,14 @@ struct TextAreaExample {
   }
 }
 ```
-<!--RP1-->
 <!--code_no_check-->
 ```ts
 // xxx.ets
-import { abilityManager, Configuration } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct TextAreaExample {
-  @State currentFontSizeScale: number = 1;
   @State minFontScale: number = 0.85;
   @State maxFontScale: number = 2;
-
-  // 设置字体大小
-  async setFontScale(scale: number): Promise<void> {
-    let configInit: Configuration = {
-      fontSizeScale: scale
-    };
-    // 更新配置-字体大小，调用系统接口更新字体配置
-    // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION
-    abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to updateConfiguration. Code: ${err.code}, message: ${err.message}`);
-      } else {
-        this.currentFontSizeScale = scale;
-        console.info('updateConfiguration success.');
-      }
-    });
-  }
 
   build() {
     Column() {
@@ -3437,26 +3418,6 @@ struct TextAreaExample {
           .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
-      // 以下按钮只用做字体大小倍数调整，不在示例图中呈现
-      Column() {
-        Row() {
-          Button('1倍').onClick(() => {
-            this.setFontScale(1)
-          }).margin(10)
-          Button('1.75倍').onClick(() => {
-            this.setFontScale(1.75)
-          }).margin(10)
-        }
-
-        Row() {
-          Button('2倍').onClick(() => {
-            this.setFontScale(2)
-          }).margin(10)
-          Button('3.2倍').onClick(() => {
-            this.setFontScale(3.2)
-          }).margin(10)
-        }
-      }.margin({ top: 50 })
     }
   }
 }
@@ -3464,7 +3425,6 @@ struct TextAreaExample {
 | 系统字体缩放倍数为2倍 | 系统字体缩放倍数为3.2倍 |
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextArea_font_scale1.png)  | ![](figures/TextArea_font_scale2.png)  |
-<!--RP1End-->
 
 ### 示例18（设置选中指定区域的文本内容）
 
