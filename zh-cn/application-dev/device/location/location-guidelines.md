@@ -33,13 +33,17 @@
 
 2. 导入geoLocationManager模块，所有与基础定位能力相关的功能API，都是通过该模块提供的。
    
-   ```ts
+   <!-- @[location_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ```TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 3. 调用获取位置接口之前需要先判断位置开关是否打开。<br/>
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
+   
+   <!-- @[location_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```ts
+   ```TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    try {
        let locationEnabled = geoLocationManager.isLocationEnabled();
@@ -54,8 +58,10 @@
       如果系统当前没有缓存位置会返回错误码。<br/>
       推荐优先使用该接口获取位置，可以减少系统功耗。<br/>
       如果对位置的新鲜度比较敏感，可以先获取缓存位置，将位置中的时间戳与当前时间对比，若新鲜度不满足预期可以使用方式二获取位置。<br/>
+   
+      <!-- @[location_get_last_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-      ```ts
+      ```TypeScript
       import { geoLocationManager } from '@kit.LocationKit';
       import { BusinessError } from '@kit.BasicServicesKit';
       try {
@@ -75,8 +81,10 @@
          因为设备环境、设备所处状态、系统功耗管控策略等的影响，定位返回的时延会有较大波动，建议把单次定位超时时间设置为10秒。<br/>
          
       以快速定位策略(PRIORITY_LOCATING_SPEED)为例，调用方式如下：<br/>
+   
+      <!-- @[location_get_current_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-      ```ts
+      ```TypeScript
       import { geoLocationManager } from '@kit.LocationKit';
       import { BusinessError } from '@kit.BasicServicesKit';
       let request: geoLocationManager.SingleLocationRequest = {
@@ -106,8 +114,10 @@
       表示上报位置信息的时间间隔，单位是秒，默认值为1秒。如果对位置上报时间间隔无特殊要求，可以不填写该字段。
    
    以地图导航场景为例，调用方式如下：
+   
+   <!-- @[location_on_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```ts
+   ```TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    let request: geoLocationManager.ContinuousLocationRequest= {
       'interval': 1,
@@ -123,7 +133,10 @@
    }
    ```
    如果不主动结束定位可能导致设备功耗高，耗电快；建议在不需要获取定位信息时及时结束定位。
-   ```ts
+      
+   <!-- @[location_off_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ```TypeScript
    // 该回调函数需要与on接口传入的回调函数保持一致。
    try {
       geoLocationManager.off('locationChange', locationCallback);

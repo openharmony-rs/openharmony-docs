@@ -29,7 +29,9 @@
 
 2. 导入geoLocationManager模块、wantAgent模块和BusinessError模块。
 
-   ```ts
+   <!-- @[geofence_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+
+   ```TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { notificationManager } from '@kit.NotificationKit';
@@ -37,7 +39,7 @@
 
 3. 判断是否支持围栏功能
 
-   ```ts
+   ```TypeScript
    let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
    if (!isGnssGeoFeceSupported) {
        console.error("Current Device Do not Support GnssGeofence");
@@ -46,7 +48,9 @@
 
 4. 创建围栏。
 
-   ```ts
+   <!-- @[geofence_create_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+
+   ```TypeScript
    let geofence: geoLocationManager.Geofence = {
        "latitude": 34.12, "longitude": 124.11, "radius": 10000.0, "expiration": 10000.0
    }
@@ -54,7 +58,9 @@
 
 5. 指定APP需要监听的地理围栏事件类型，这里表示需要监听进入围栏和退出围栏事件。
 
-   ```ts
+   <!-- @[geofence_transition_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+
+   ```TypeScript
    let transitionStatusList: Array<geoLocationManager.GeofenceTransitionEvent> = [
        geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
        geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
@@ -63,7 +69,9 @@
 
 6. 创建GEOFENCE_TRANSITION_EVENT_ENTER、GEOFENCE_TRANSITION_EVENT_EXIT事件对应的通知对象。
 
-   ```ts
+   <!-- @[geofence_notifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+
+   ```TypeScript
    // GEOFENCE_TRANSITION_EVENT_ENTER事件
    let notificationRequest1: notificationManager.NotificationRequest = {
        id: 1,
@@ -92,7 +100,9 @@
 
 7. 添加围栏。
 
-   ```ts
+   <!-- @[geofence_add_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+
+   ```TypeScript
    // 把创建的通知对象存入Array中，存入顺序与transitionStatusList一致
    let notificationRequestList: Array<notificationManager.NotificationRequest> =
      [notificationRequest1, notificationRequest2];
@@ -133,7 +143,9 @@
 
 8. 删除围栏。
 
-   ```ts
+   <!-- @[geofence_remove_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+
+   ```TypeScript
    // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
    let fenceId = 1;
    try {

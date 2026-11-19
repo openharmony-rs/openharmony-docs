@@ -38,6 +38,8 @@
 
 3. CMakeLists.txt文件中引入动态依赖库。
 
+   <!-- @[location_capi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/CMakeLists.txt) -->
+
    ```c
    target_link_libraries(entry PUBLIC libace_napi.z.so)
    target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
@@ -45,6 +47,8 @@
    ```
 
 4. 在napi_init.cpp文件中编码，首先导入模块。
+
+   <!-- @[location_capi_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
    ```c
    #include "napi/native_api.h"
@@ -59,6 +63,8 @@
 5. 调用获取位置接口之前需要先判断位置开关是否打开。
 
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
+
+   <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/CMakeLists.txt) -->
 
    ```c
     std::string GetErrorMsgFromErrorCode(int errorCode)
@@ -107,6 +113,8 @@
    ```
 
 6. 定位位置变化。
+
+   <!-- @[location_capi_locating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
    ```c
    // 定义一个请求参数
@@ -195,6 +203,8 @@
    ```
 
 7. 在types/libentry路径下index.d.ts文件中引入Napi接口。
+
+   <!-- @[location_capi_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/types/libentry/index.d.ts) -->
 
    ```c
    export const ohLocationIsEnabled: () => boolean;
