@@ -471,59 +471,59 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 - 用例示例。
 
 	```js
-	/*
-	* Copyright (C) 2023 XXXX Device Co., Ltd.
-	* Licensed under the Apache License, Version 2.0 (the "License");
-	* you may not use this file except in compliance with the License.
-	* You may obtain a copy of the License at
-	*
-	*     http://www.apache.org/licenses/LICENSE-2.0
-	*
-	* Unless required by applicable law or agreed to in writing, software
-	* distributed under the License is distributed on an "AS IS" BASIS,
-	* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	* See the License for the specific language governing permissions and
-	* limitations under the License.
-	*/
-	import app from '@system.app'
+    /*
+    * Copyright (C) 2023 XXXX Device Co., Ltd.
+    * Licensed under the Apache License, Version 2.0 (the "License");
+    * you may not use this file except in compliance with the License.
+    * You may obtain a copy of the License at
+    *
+    *     http://www.apache.org/licenses/LICENSE-2.0
+    *
+    * Unless required by applicable law or agreed to in writing, software
+    * distributed under the License is distributed on an "AS IS" BASIS,
+    * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    * See the License for the specific language governing permissions and
+    * limitations under the License.
+    */
+    import app from '@system.app'
 
-	import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+    import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-	describe("AppInfoTest", function () {
-		beforeAll(function() {
-			// input testsuit setup step，setup invoked before all testcases.
-			console.info('beforeAll called')
-		})
-		
-		afterAll(function() {
-			// input testsuit teardown step，teardown invoked after all testcases.
-			console.info('afterAll called')
-		})
-		
-		beforeEach(function() {
-			// input testcase setup step，setup invoked before each testcases.
-			console.info('beforeEach called')
-		})
-		
-		afterEach(function() {
-			// input testcase teardown step，teardown invoked after each testcases.
-			console.info('afterEach called')
-		})
+    describe("AppInfoTest", function () {
+        beforeAll(function() {
+            // input testsuit setup step，setup invoked before all testcases.
+            console.info('beforeAll called')
+        })
+        
+        afterAll(function() {
+            // input testsuit teardown step，teardown invoked after all testcases.
+            console.info('afterAll called')
+        })
+        
+        beforeEach(function() {
+            // input testcase setup step，setup invoked before each testcases.
+            console.info('beforeEach called')
+        })
+        
+        afterEach(function() {
+            // input testcase teardown step，teardown invoked after each testcases.
+            console.info('afterEach called')
+        })
 
-		/*
-		* @tc.name:appInfoTest001
-		* @tc.desc:verify app info is not null
-		* @tc.type: FUNC
-		* @tc.require: issueNumber
-		*/
-		it("appInfoTest001", 0, function () {
-			//step 1:调用函数获取结果。
-			var info = app.getInfo()
+        /*
+        * @tc.name:appInfoTest001
+        * @tc.desc:verify app info is not null
+        * @tc.type: FUNC
+        * @tc.require: issueNumber
+        */
+        it("appInfoTest001", 0, function () {
+            //step 1:调用函数获取结果。
+            var info = app.getInfo()
 
-			//Step 2:使用断言比较预期与实际结果。
-			expect(info != null).assertEqual(true)
-		})
-	})
+            //Step 2:使用断言比较预期与实际结果。
+            expect(info != null).assertEqual(true)
+        })
+    })
 	```
 	详细内容介绍：
 	1. 添加测试用例文件头注释信息。
@@ -551,26 +551,26 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 		```
 	3. 定义测试套（测试类）。
 		```js
-		describe("AppInfoTest", function () {
-			beforeAll(function() {
-				// input testsuit setup step，setup invoked before all testcases.
-				console.info('beforeAll called')
-			})
-			
-			afterAll(function() {
-				// input testsuit teardown step，teardown invoked after all testcases.
-				console.info('afterAll called')
-			})
-			
-			beforeEach(function() {
-				// input testcase setup step，setup invoked before each testcases.
-				console.info('beforeEach called')
-			})
-			
-			afterEach(function() {
-				// input testcase teardown step，teardown invoked after each testcases.
-				console.info('afterEach called')
-			})
+        describe("AppInfoTest", function () {
+            beforeAll(function() {
+                // input testsuit setup step，setup invoked before all testcases.
+                console.info('beforeAll called')
+            })
+            
+            afterAll(function() {
+                // input testsuit teardown step，teardown invoked after all testcases.
+                console.info('afterAll called')
+            })
+            
+            beforeEach(function() {
+                // input testcase setup step，setup invoked before each testcases.
+                console.info('beforeEach called')
+            })
+            
+            afterEach(function() {
+                // input testcase teardown step，teardown invoked after each testcases.
+                console.info('afterEach called')
+            })
 		```
 	4. 测试用例实现。
 		```JS
@@ -1087,10 +1087,10 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     ohos_rust_unittest("rust_add_test") {
         module_out_path = module_output_path
         sources = [
-		    "main.rs",
-		    "rust_add_test.rs",
+            "main.rs",
+            "rust_add_test.rs",
              ...
-			]
+            ]
         deps = [ ":rust_st_add" ]
     }
 
@@ -1311,20 +1311,20 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 
     当选择完产品形态，可参考如下指令执行TDD测试用例。
 	```
-	run -t UT
-	run -t UT -tp PartName
-	run -t UT -tp PartName -tm TestModuleName
-	run -t UT -tp ability_base -ts base_object_test
-	run -t UT -tp PartName -tm TestModuleName -ts CalculatorSubTest
-	run -t UT -ts base_object_test
-	run -t UT -ts base_object_test -tc AAFwkBaseObjectTest.BaseObject_test_001
-	run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.integer_sub_001
-	run -t UT -cov coverage
-	run -t UT -ra random
-	run -t UT -ts base_object_test --repeat 5
-	run -hl
-	run -rh 3
-	run --retry
+    run -t UT
+    run -t UT -tp PartName
+    run -t UT -tp PartName -tm TestModuleName
+    run -t UT -tp ability_base -ts base_object_test
+    run -t UT -tp PartName -tm TestModuleName -ts CalculatorSubTest
+    run -t UT -ts base_object_test
+    run -t UT -ts base_object_test -tc AAFwkBaseObjectTest.BaseObject_test_001
+    run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.integer_sub_001
+    run -t UT -cov coverage
+    run -t UT -ra random
+    run -t UT -ts base_object_test --repeat 5
+    run -hl
+    run -rh 3
+    run --retry
 	```
 
 	
@@ -1413,21 +1413,21 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 
     测试框架在执行用例时会根据指令找到所需用例，自动实现用例编译，执行过程，完成自动化测试。
 	```
-	run -t UT
-	run -t UT -tp PartName
-	run -t UT -tp PartName -tm TestModuleName
-	run -t UT -tp ability_base -ts base_object_test
-	run -t UT -tp PartName -tm TestModuleName -ts CalculatorSubTest
-	run -t UT -ts base_object_test
-	run -t UT -ts base_object_test -tc AAFwkBaseObjectTest.BaseObject_test_001
-	run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.integer_sub_001
-	run -t -cov coverage
-	run -t UT -ra random
-	run -t UT -tp PartName -pd partdeps
-	run -t UT -ts base_object_test --repeat 5
-	run -hl
-	run -rh 3
-	run --retry
+    run -t UT
+    run -t UT -tp PartName
+    run -t UT -tp PartName -tm TestModuleName
+    run -t UT -tp ability_base -ts base_object_test
+    run -t UT -tp PartName -tm TestModuleName -ts CalculatorSubTest
+    run -t UT -ts base_object_test
+    run -t UT -ts base_object_test -tc AAFwkBaseObjectTest.BaseObject_test_001
+    run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.integer_sub_001
+    run -t -cov coverage
+    run -t UT -ra random
+    run -t UT -tp PartName -pd partdeps
+    run -t UT -ts base_object_test --repeat 5
+    run -hl
+    run -rh 3
+    run --retry
 	```
 	执行命令参数说明：
 	```
