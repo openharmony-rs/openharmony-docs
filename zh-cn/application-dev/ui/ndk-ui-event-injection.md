@@ -131,16 +131,13 @@ static void OnInjectionResult(OH_ArkUI_NativeModule_UIEventInjection_ResultCode 
 void InjectClickCommand(ArkUI_ContextHandle uiContext, double x, double y)
 {
     // 构造命令JSON并创建命令对象。
-    char json[256] = {0};
-    int len = snprintf(json, sizeof(json),
-        R"({"schemaVersion":1,"cmd":{"type":"click","mode":"auto",)"
-        R"("action_info":{"coordinates":{"x1":%.2f,"y1":%.2f}}}})",
-        x, y);
-    if (len <= 0 || len >= static_cast<int>(sizeof(json))) {
-        return; // JSON构造失败。
-    }
+    std::ostringstream oss;
+    oss << R"({"schemaVersion":1,"cmd":{"type":"click","mode":"auto",)"
+        << R"("action_info":{"coordinates":{"x1":)" << x << R"(,"y1":)" << y << R"(}}})";
+    std::string json = oss.str();
     OH_ArkUI_NativeModule_UIJsonWrapper* command = nullptr;
-    ArkUI_ErrorCode ret = OH_ArkUI_NativeModule_UIJsonWrapperCreate(json, static_cast<uint32_t>(len), &command);
+    ArkUI_ErrorCode ret = OH_ArkUI_NativeModule_UIJsonWrapperCreate(
+        json.c_str(), static_cast<uint32_t>(json.length()), &command);
     if (ret != ARKUI_ERROR_CODE_NO_ERROR || command == nullptr) {
         return; // JSON不合法或内存分配失败。
     }
