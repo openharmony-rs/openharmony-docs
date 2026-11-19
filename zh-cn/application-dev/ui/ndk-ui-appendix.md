@@ -9,74 +9,239 @@
 
 ## 控件命令参数与行为
 
-本附录集中列出控件命令的支持组件、参数、边界规则和组件行为。完整JSON结构、命令提交方式及返回码说明见[注入控件命令](ndk-ui-command-injection.md)。
+本附录集中列出控件命令的支持组件、参数、边界规则和组件行为。完整JSON结构、命令提交方式及返回码说明见[注入控件命令](ndk-ui-command-injection.md)，下文示例仅展示`cmd`对象。
 
-通用参数约定见[注入控件命令](ndk-ui-command-injection.md#命令使用建议)。下文仅补充各命令的组件差异、边界行为和结果处理规则。文中的`L`表示操作时的有效内容长度，`N`表示组件当前子项数量，范围`[start, end)`包含起点，不包含终点。
+通用参数约定见[注入控件命令](ndk-ui-command-injection.md#命令使用建议)。可选字段省略时按各命令的默认行为处理；显式传入`null`会因类型校验不通过被拒绝。下文仅补充各命令的组件差异、边界行为和结果处理规则。文中的`L`表示操作时的有效内容长度，`N`表示组件当前子项数量，范围`[start, end)`包含起点，不包含终点。
 
 ### setText
 
-- **支持组件**：[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)。
-- **参数**：必填`value`，类型为字符串；空字符串表示将内容设置为空。
-- **TextInput和TextArea行为**：替换当前文本，仍受输入过滤、最大长度和业务变更回调影响。
-- **RichEditor行为**：先请求删除现有内容，再插入新的文本Span；原有富文本样式和非文本Span不会保留，删除和插入分别遵循本附录deleteText和addText的处理规则。
-- **业务限制**：变更前回调拒绝时，组件可以恢复原文本及光标或选区状态。
+**示例**
+
+```json
+{
+  "type": "setText",
+  "action_info": {
+    "value": "示例文本"
+  }
+}
+```
+
+**支持组件**
+
+| 组件                                                                                       | 行为                                                                                                                       |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md) | 替换当前文本。                                                                                                              |
+| [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)           | 先请求删除现有内容，再插入新的文本Span；原有富文本样式和非文本Span不会保留，删除和插入分别遵循本附录deleteText和addText的处理规则。 |
+
+**参数**
+
+| 参数    | 必填 | 类型   | 说明                                       |
+| ------- | ---- | ------ | ------------------------------------------ |
+| `value` | 是   | string | 设置的文本内容；空字符串表示将内容设置为空。 |
+
+**约束与限制**
+
+- 文本修改仍受输入过滤、最大长度和业务变更回调影响。
+- 变更前回调拒绝时，组件可以恢复原文本及光标或选区状态。
 
 ### addText
 
-- **支持组件**：TextInput、TextArea、RichEditor。
-- **参数**：必填`value`，类型为字符串；可选`offset`，类型为整数，省略时在当前内容末尾追加。
-- **TextInput和TextArea行为**：省略`offset`或`offset > L`时追加到末尾；`offset < 0`时调整为0；`0 <= offset <= L`时在指定位置插入，不替换现有选区。
-- **RichEditor行为**：插入位置限制在有效内容范围内，并按Span边界、预上屏文本（输入法组合输入中尚未确认上屏的文本）和Symbol等特殊内容调整，不能按普通字符串字节偏移理解。
-- **空值处理**：`value`为空字符串时不插入内容；非空内容仍受输入过滤、最大长度和业务变更回调影响。
+**示例**
+
+```json
+{
+  "type": "addText",
+  "action_info": {
+    "value": "示例文本",
+    "offset": 5
+  }
+}
+```
+
+**支持组件**
+
+| 组件                | 行为                                                                                                                               |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| TextInput、TextArea | 省略`offset`或`offset > L`时追加到末尾；`offset < 0`时调整为0；`0 <= offset <= L`时在指定位置插入，不替换现有选区。               |
+| RichEditor          | 插入位置限制在有效内容范围内，并按Span边界、预上屏文本（输入法组合输入中尚未确认上屏的文本）和Symbol等特殊内容调整，不能按普通字符串字节偏移理解。 |
+
+**参数**
+
+| 参数     | 必填 | 类型    | 说明                               |
+| -------- | ---- | ------- | ---------------------------------- |
+| `value`  | 是   | string  | 追加或插入的文本内容。             |
+| `offset` | 否   | integer | 插入位置；省略时在当前内容末尾追加。 |
+
+**约束与限制**
+
+- `value`为空字符串时不插入内容。
+- 非空内容仍受输入过滤、最大长度和业务变更回调影响。
 
 ### deleteText
 
-- **支持组件**：TextInput、TextArea、RichEditor。
-- **参数**：可选`start`和`end`，类型均为整数，表示删除范围。
-- **TextInput和TextArea行为**：省略或传入负数的端点按0处理；端点先限制在`[0, L]`，起点大于终点时交换两端点；两端相等时不删除。
-- **RichEditor行为**：执行相同的缺省值处理和端点调整，并进一步按Span边界裁剪；没有有效交集时不删除。
-- **范围约定**：两端都省略得到`[0, 0)`，不表示删除全部内容；清空文本使用`setText`并传入空字符串。
+**示例**
+
+```json
+{
+  "type": "deleteText",
+  "action_info": {
+    "start": 0,
+    "end": 5
+  }
+}
+```
+
+**支持组件**
+
+| 组件                | 行为                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------- |
+| TextInput、TextArea | 省略或传入负数的端点按0处理；端点先限制在`[0, L]`，起点大于终点时交换两端点；两端相等时不删除。 |
+| RichEditor          | 执行相同的缺省值处理和端点调整，并进一步按Span边界裁剪；没有有效交集时不删除。                |
+
+**参数**
+
+| 参数    | 必填 | 类型    | 说明             |
+| ------- | ---- | ------- | ---------------- |
+| `start` | 否   | integer | 删除范围的起点。 |
+| `end`   | 否   | integer | 删除范围的终点。 |
+
+**约束与限制**
+
+- 两端都省略得到`[0, 0)`，不表示删除全部内容。
+- 清空文本使用`setText`并传入空字符串。
 
 ### selectText
 
-- **支持组件**：[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、TextInput、TextArea、RichEditor。
-- **参数**：必填`selectionStart`和`selectionEnd`，类型均为整数。
-- **Text、TextInput和TextArea行为**：负起点按0处理，负终点按L处理；超出范围的端点收敛到有效范围；起点大于终点时交换端点；相等端点形成空选区。
-- **Text限制**：组件需要处于允许选择的状态并具有有效布局；禁用、遮挡或不支持选择的状态可能使选择请求不生效。
-- **RichEditor行为**：先判断特殊值：两个端点均为-1时，在组件有焦点且不处于预上屏输入状态时选择全部；其他情况下端点分别限制到`[0, L]`，限制后起点大于或等于终点时清除选区，不交换端点。
-- **RichEditor限制**：无焦点或处于预上屏输入期间时，忽略选择请求。
+**示例**
+
+```json
+{
+  "type": "selectText",
+  "action_info": {
+    "selectionStart": 0,
+    "selectionEnd": 5
+  }
+}
+```
+
+**支持组件**
+
+| 组件                                                                                     | 行为                                                                                                                                                        |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、TextInput、TextArea | 负起点按0处理，负终点按L处理；超出范围的端点收敛到有效范围；起点大于终点时交换端点；相等端点形成空选区。                                                  |
+| RichEditor                                                                               | 先判断特殊值：两个端点均为-1时，在组件有焦点且不处于预上屏输入状态时选择全部；其他情况下端点分别限制到`[0, L]`，限制后起点大于或等于终点时清除选区，不交换端点。 |
+
+**参数**
+
+| 参数             | 必填 | 类型    | 说明                 |
+| ---------------- | ---- | ------- | -------------------- |
+| `selectionStart` | 是   | integer | 选区起点的文本位置。 |
+| `selectionEnd`   | 是   | integer | 选区终点的文本位置。 |
+
+**约束与限制**
+
+- Text：组件需要处于允许选择的状态并具有有效布局；禁用、遮挡或不支持选择的状态可能使选择请求不生效。
+- RichEditor：无焦点或处于预上屏输入期间时，忽略选择请求。
 
 ### copy
 
-- **支持组件**：Text、TextInput、TextArea、RichEditor。
-- **参数**：无额外参数，`action_info`使用空对象。
-- **TextInput和TextArea限制**：密码模式或`copyOption`为[None](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)时拒绝复制；没有有效选区、选区为空或复制前业务回调拒绝时，不执行默认复制。
-- **Text限制**：需要组件允许选择和复制，并且已有有效选区；组件处于不支持选择或复制的状态时不执行默认复制。
-- **RichEditor限制**：复制能力被禁用、受到限制或被业务[onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncopy12)回调阻止时，不执行默认复制。
+**示例**
+
+```json
+{
+  "type": "copy",
+  "action_info": {}
+}
+```
+
+**支持组件**
+
+| 组件 | 行为 |
+| ---- | ---- |
+| Text、TextInput、TextArea、RichEditor | 对当前有效选区执行默认复制。 |
+
+**参数**
+
+无额外参数，`action_info`使用空对象。
+
+**约束与限制**
+
+- TextInput和TextArea：密码模式或`copyOption`为[None](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)时拒绝复制；没有有效选区、选区为空或复制前业务回调拒绝时，不执行默认复制。
+- Text：需要组件允许选择和复制，并且已有有效选区；组件处于不支持选择或复制的状态时不执行默认复制。
+- RichEditor：复制能力被禁用、受到限制或被业务[onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncopy12)回调阻止时，不执行默认复制。
 
 ### swiperSwitch
 
-- **支持组件**：[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)。
-- **参数**：必填`direction`，取值为`forward`、`backward`或`index`；取值为`index`时还必须提供整数`index`。
-- **方向切换行为**：`forward`和`backward`分别请求切换到下一项或上一项内容；启用[swipeByGroup](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displaycount22)时按`displayCount`分组切换，否则按单项切换。
-- **索引切换行为**：`0 <= index < N`时请求切换到指定项；`index < 0`或`index >= N`时在组件执行阶段拒绝。
-- **状态限制**：循环、边界、隐藏子项、禁止滑动、子项不足两项、内容不足以滚动或正在切换时，均可能导致命令在执行阶段失败并通过完成回调返回失败结果；使用`index`模式不能绕过不可滚动状态。
-- **参数关系**：当`direction`为`forward`或`backward`时，额外传入的`index`不参与目标选择。
+**示例**
+
+```json
+{
+  "type": "swiperSwitch",
+  "action_info": {
+    "direction": "index",
+    "index": 2
+  }
+}
+```
+
+**支持组件**
+
+| 组件                                                             | 行为                                                                                                                                                         |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) | `forward`和`backward`分别请求切换到下一项或上一项内容；启用[swipeByGroup](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displaycount22)时按`displayCount`分组切换，否则按单项切换；`0 <= index < N`时请求切换到指定项。 |
+
+**参数**
+
+| 参数        | 必填     | 类型    | 说明                                            |
+| ----------- | -------- | ------- | ----------------------------------------------- |
+| `direction` | 是       | string  | 切换方式，取值为`forward`、`backward`或`index`。 |
+| `index`     | 条件必填 | integer | 目标项索引；`direction`为`index`时必填。         |
+
+**约束与限制**
+
+- `index < 0`或`index >= N`时，命令在组件执行阶段被拒绝。
+- 循环、边界、隐藏子项、禁止滑动、子项不足两项、内容不足以滚动或正在切换时，均可能导致命令在执行阶段失败并通过完成回调返回失败结果；使用`index`模式不能绕过不可滚动状态。
+- 当`direction`为`forward`或`backward`时，额外传入的`index`不参与目标选择。
 
 ### tabsSwitch
 
-- **支持组件**：[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)。
-- **参数**：必填`index`，类型为整数，指定目标页签。
-- **有效索引行为**：`0 <= index < N`时进入页签单击处理流程；重复选择当前项或组件状态限制可能使页面保持不变。
-- **越界行为**：存在子项时，`index < 0`或`index >= N`回退为0，再进入页签切换处理。
-- **空内容行为**：没有子项时不执行切换。
-- **业务限制**：页签单击处理或内容切换被业务逻辑拦截时，页面保持原状态。
+**示例**
+
+```json
+{
+  "type": "tabsSwitch",
+  "action_info": {
+    "index": 1
+  }
+}
+```
+
+**支持组件**
+
+| 组件                                                         | 行为                                                                                                                    |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) | `0 <= index < N`时进入页签单击处理流程；存在子项时，`index < 0`或`index >= N`回退为0，再进入页签切换处理；没有子项时不执行切换。 |
+
+**参数**
+
+| 参数    | 必填 | 类型    | 说明           |
+| ------- | ---- | ------- | -------------- |
+| `index` | 是   | integer | 指定目标页签。 |
+
+**约束与限制**
+
+- 重复选择当前项或组件状态限制可能使页面保持不变。
+- 页签单击处理或内容切换被业务逻辑拦截时，页面保持原状态。
 
 ## 控件树采集结果的字段解析
 
-本附录按默认字段、交互信息、无障碍信息、高阶视觉字段和高阶功能字段，说明控件树中的组件、key、值类型和字段语义。
+本附录提供控件树采集结果的解析说明。
 
-节点级字段保存于treeInfo或其`$children`中的节点对象中；组件字段按所属数据组读取。高阶视觉字段保存于advanced的visual对象中，高阶功能字段保存于advanced的functional对象中。表中key和取值均为采集输出的字面值，与公开TS枚举成员名不一定相同。`$attrs`为嵌套对象，其中字段按`node.$attrs.xxx`格式读取。
+采集结果中的字段分为**节点字段**（节点公共字段）和**组件字段**：
+- **节点字段**描述节点在控件树中的身份、类型和层级关系，所有节点（组件节点与语法节点）均会输出，直接保存于`treeInfo`或其`$children`的节点对象顶层。
+- **组件字段**描述具体UI组件的边界、状态与属性，仅组件节点输出，按所属数据组读取：基础字段和基础交互/无障碍字段位于节点对象顶层，组件属性位于`$attrs`对象中（按`node.$attrs.xxx`读取），高阶视觉字段和高阶功能字段分别位于`advanced.visual`和`advanced.functional`对象中。
+
+表中key和取值均为采集输出的字面值，与公开ArkTS枚举的成员名不一定相同。
 
 ### 默认字段
 
@@ -84,27 +249,34 @@
 
 | key           | 值类型        | 说明                                                |
 | --------------- | --------------- | ------------------------------------------------------------------- |
-| schemaVersion | number        | 顶层协议版本，当前为1。                             |
+| schemaVersion | number        | 顶层协议版本，当前取值为1。                         |
 | treeInfo      | object / null | 控件树根节点。                                    |
 
-下表为节点默认属性字段详解。
+树中的节点分为对应具体组件的组件节点，以及不对应具体组件的语法节点（如JsView节点、Span、ContainerSpan、ContentSlot、ForEach、LazyForEach、Repeat、IfElse等）。两类节点均输出以下公共字段：
 
-- **节点默认属性字段**
+- **节点公共字段**
 
-| key             | 值类型 | 说明                                                                                                                                               |
-| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$ID`             | number | 框架分配的整数节点ID。                                                                                                       |
-| `$type`           | string | 框架节点类型。                                                                                                         |
-| type            | string | 节点类型编码：custom表示自定义节点，build-in表示内置节点。                                                                                |
-| `$children`       | array  | 子节点对象数组。                                                                                                       |
+| key             | 值类型 | 说明                                 |
+| --------------- | -------- | ------------------------------------ |
+| `$ID`           | number | 框架分配的整数节点ID。               |
+| `$type`         | string | 框架节点类型。                       |
+| type            | string | 节点类型编码：custom表示JsView节点，build-in表示内置节点。 |
+| `$children`     | array  | 子节点对象数组；仅在节点有子节点且非内容边界组件时输出。 |
+
+组件节点额外输出以下字段：
+
+- **组件节点字段**
+
+| key             | 值类型 | 说明 |
+| --------------- | -------- | ---- |
 | `$rect`           | string | 节点应用变换后相对窗口的边界，坐标单位为px，以窗口左上角为原点，形式为`[left, top],[right, bottom]`，不是数值数组，也不是`[x, y, width, height]`。 |
-| compid          | string | 应用设置的组件字符串标识。                                                                                                                         |
-| active          | string | 节点激活状态，取值为false；节点处于激活状态时不输出该字段。                                                                                        |
-| visible         | string | 节点自身可见性状态，取值为false；节点可见时不输出该字段。                                                                                          |
-| opacity         | number | 节点透明度，不包含祖先透明度的累计值。                                                                                                             |
-| backgroundColor | string | 节点背景颜色字符串。                                                                                                                               |
-| `$attrs`          | object | 组件默认属性和采集属性。                                                                                                                           |
-| advanced        | object | 高阶视觉属性和高阶功能属性。高阶视觉字段和高阶功能字段采集均未开启时不输出该字段。                                                 |
+| compid          | string | 应用设置的组件字符串标识。 |
+| active          | string | 节点激活状态，取值为false；节点处于激活状态时不输出该字段。 |
+| visible         | string | 节点自身可见性状态，取值为false；节点可见时不输出该字段。 |
+| opacity         | number | 节点透明度，不包含祖先透明度的累计值；仅在已设置且不等于1.0时输出。 |
+| backgroundColor | string | 节点背景颜色字符串；仅在已设置背景颜色时输出。 |
+| `$attrs`          | object | 组件默认属性和采集属性。 |
+| advanced        | object | 高阶视觉属性和高阶功能属性。高阶视觉字段和高阶功能字段采集均未开启时不输出该字段；内容边界组件（Web、UIExtension、XComponent等）的节点不输出该字段。 |
 
 - **`$attrs`中的默认属性字段**
 
@@ -115,17 +287,17 @@
 
 ### 交互信息字段
 
-下表为交互信息字段详解，由[OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetinteractioninfo)开关控制输出。
+设置[OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetinteractioninfo)为true后，可以采集交互信息，交互信息字段及对应含义如下。
 
 - **基础交互信息字段**
 
 | key           | 值类型  | 说明                             |
 | --------------- | --------- | ---------------------------------- |
-| clickable     | boolean | 节点的单击能力。                   |
-| longClickable | boolean | 节点的长按能力。                   |
-| focusable     | boolean | 节点可获取焦点的能力。           |
-| scrollable    | boolean | 节点无障碍属性提供的可滚动能力。 |
-| editable      | boolean | 节点无障碍属性提供的可编辑能力。 |
+| clickable     | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| longClickable | boolean | 节点是否可长按。true表示可长按，false表示不可长按。 |
+| focusable     | boolean | 节点是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。 |
+| scrollable    | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| editable      | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
 
 - **`$attrs`中的交互信息字段**
 
@@ -134,7 +306,7 @@
 | [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md) | isOn          | string  | Switch开关状态，true表示开，false表示关。    |
 | Swiper                                                                   | scrollAbility | string  | Swiper滚动能力，见Swiper滚动能力表。         |
 | Swiper                                                                   | scrollAxis    | string  | 取值为horizontal（横向）或vertical（纵向）。 |
-| Swiper                                                                   | isLoop        | boolean | 是否启用循环。                               |
+| Swiper                                                                   | isLoop        | boolean | 是否启用循环。true表示启用，false表示未启用。                               |
 
 - **Swiper滚动能力表**
 
@@ -151,7 +323,7 @@
 
 | key                  | 值类型 | 说明                 |
 | ---------------------- | -------- | ---------------------- |
-| accessibilityContent | string | 节点无障碍描述文本。 |
+| accessibilityContent | string | 节点无障碍描述文本；仅在已设置无障碍文本时输出。 |
 
 ### 高阶视觉字段
 
@@ -192,7 +364,7 @@
 | key                              | 值类型          | 说明                                                                                                                                                              |
 | ---------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type                             | string          | linear、sweep或radial。                                                                                                                                           |
-| repeating                        | boolean         | 是否重复渐变。                                                                                                                                                    |
+| repeating                        | boolean         | 是否重复渐变。true表示重复，false表示不重复。                                                                                                                                                    |
 | colors                           | array           | 色标对象数组。                                                                                                                                                    |
 | colors[].color                   | string          | 色标颜色，例如"#FFFF0000"。                                                                                                                                       |
 | colors[].colorSpace              | number          | 颜色空间的整数枚举值。                                                                                                                                            |
@@ -219,7 +391,7 @@ Text的"from TextEngine paragraphs_ info"子字段：
 
 | key                                       | 值类型  | 说明                                    |
 | ------------------------------------------- | --------- | ----------------------------------------- |
-| DidExceedMaxLines                         | boolean | 是否超出最大行数。                      |
+| DidExceedMaxLines                         | boolean | 是否超出最大行数。true表示超出，false表示未超出。                      |
 | GetTextWidth / GetHeight                  | number  | 文本排版宽度/高度，单位为px。           |
 | GetLineCount                              | number  | 排版行数。                              |
 | GetLongestLine / GetLongestLineWithIndent | number  | 最长行宽/包含缩进的最长行宽，单位为px。 |
@@ -229,12 +401,12 @@ Text的"from TextEngine paragraphs_ info"子字段：
 | key                                   | 值类型          | 说明                                                           |
 | --------------------------------------- | ----------------- | ---------------------------------------------------------------- |
 | edgeEffect                            | string          | 边缘效果：NONE、SPRING或FADE。                                 |
-| edgeEffectAlwaysEnabled               | boolean         | 边缘效果是否始终启用。                                         |
+| edgeEffectAlwaysEnabled               | boolean         | 内容大小小于组件自身时，是否仍开启滑动效果。true表示开启，false表示关闭。                |
 | innerScrollBarState                   | string          | 内部滚动条显示模式：OFF、AUTO或ON。                            |
 | scrollBarHeight / scrollBarWidth      | string          | 滚动条高度和宽度，保留单位。                                   |
 | scrollBarColor                        | string          | 滚动条颜色。                                                   |
 | scrollBarMargin                       | string          | 滚动条边距，见滚动条边距格式表。                               |
-| fadingEdge                            | boolean         | 渐隐边缘开关。                                                 |
+| fadingEdge                            | boolean         | 是否启用渐隐边缘。true表示启用，false表示未启用。                                 |
 | fadingEdgeLength                      | string          | 渐隐边缘长度，保留单位。                                       |
 | clipContent                           | string          | 裁剪模式：DEFAULT、CONTENT_ONLY、BOUNDARY、SAFE_AREA或CUSTOM。 |
 | contentStartOffset / contentEndOffset | string / number | 公共滚动偏移配置；Scroll使用带vp单位的字符串，List使用px数值。 |
@@ -247,11 +419,11 @@ Text的"from TextEngine paragraphs_ info"子字段：
 | List                | currentOffset / startMainPos / endMainPos / contentMainSize | number  | 当前主轴偏移/布局起始位置/布局结束位置/内容主轴尺寸，单位均为px。 |
 | List                | contentStartOffset / contentEndOffset                       | number  | 内容主轴起始和结束处的预留偏移，单位为px。                        |
 | List                | lanes / laneGutter                                          | number  | 当前列数/已解析的列间距；前者为整数，后者单位为px。               |
-| List                | IsAtTop / IsAtBottom / chainAnimation                       | boolean | 是否处于列表起始边界/结束边界，是否使用链式动画。                 |
+| List                | IsAtTop / IsAtBottom / chainAnimation                       | boolean | 是否处于列表起始边界/结束边界，是否使用链式动画。true表示是，false表示否。                 |
 | List                | alignListItem                                               | number  | 列表项对齐方式的整数枚举值。                                      |
 | List、ListItemGroup | divider                                                     | object  | 分隔线对象，含strokeWidth、startMargin、endMargin和color。        |
 | ListItem            | curOffset / startNodeSize / endNodeSize                     | number  | 侧滑偏移/起始侧节点尺寸/结束侧节点尺寸，单位为px。                |
-| ListItem            | isSelected / isHover / isPressed / isLayouted               | boolean | 选中/悬停/按压/已布局状态。                                       |
+| ListItem            | isSelected / isHover / isPressed / isLayouted               | boolean | 是否选中/悬停/按压/已布局。true表示是，false表示否。                                       |
 | ListItem            | restoredOpacity                                             | number  | 禁用时保存的恢复透明度，不是当前生效透明度或布尔开关。            |
 | ListItemGroup       | headerMainSize / footerMainSize / spaceWidth                | number  | 头部/尾部主轴尺寸/间距，单位为px。                                |
 | ListItemGroup       | lanes / laneGutter                                          | number  | 当前列数/列间距；前者为整数，后者单位为px。                       |
@@ -269,7 +441,7 @@ Text的"from TextEngine paragraphs_ info"子字段：
 | Grid      | CellLength                                                                                         | string  | 单元长度，使用带vp单位的字符串。                                                                                           |
 | Grid      | AlignItems                                                                                         | string  | [GridItemAlignment](../reference/apis-arkui/arkui-ts/ts-container-grid.md#griditemalignment12枚举说明)的DEFAULT或STRETCH。 |
 | GridItem  | RowStart / RowEnd / ColumnStart / ColumnEnd                                                        | number  | 起始行、结束行、起始列和结束列整数索引。                                                                                   |
-| GridItem  | isSelected / isHover / isPressed                                                                   | boolean | 选中/悬停/按压状态。                                                                                                       |
+| GridItem  | isSelected / isHover / isPressed                                                                   | boolean | 是否选中/悬停/按压。true表示是，false表示否。                                                                                                       |
 | GridItem  | [GridItemStyle](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#griditemstyle11枚举说明) | string  | NONE或PLAIN。                                                                                                              |
 | WaterFlow | RowsTemplate / ColumnsTemplate                                                                     | string  | 行列模板字符串。                                                                                                           |
 | WaterFlow | ItemMinSize / ItemMaxSize                                                                          | object  | 最小和最大子项尺寸，含width和height。                                                                                      |
@@ -314,9 +486,9 @@ Text的"from TextEngine paragraphs_ info"子字段：
 | Swiper                                                                    | SwiperIndicatorType                                                                                | string                     | 当前指示器类型：DOT（圆点）、DIGIT（数字）或ARC_DOT（弧形）。                                                |
 | Swiper                                                                    | TextDirection                                                                                      | number                     | 解析后的布局方向整数枚举值；Auto方向已解析为实际布局方向。                                                         |
 | Swiper                                                                    | curve                                                                                              | string                     | 动画曲线描述。                                                                       |
-| Swiper指示器                                                              | isHover / isPressed / SwiperIndicatorType                                                          | boolean / boolean / string | 悬停状态/按压状态/指示器类型，类型取值同上。                                         |
-| Swiper箭头                                                                | isHover / isTouch                                                                                  | boolean                    | 悬停/触摸状态。                                                                      |
-| TabBar                                                                    | isRTL                                                                                              | boolean                    | 是否采用从右到左的布局。                                                             |
+| Swiper指示器                                                              | isHover / isPressed / SwiperIndicatorType                                                          | boolean / boolean / string | 是否悬停/是否按压/指示器类型，类型取值同上。true表示是，false表示否。                                         |
+| Swiper箭头                                                                | isHover / isTouch                                                                                  | boolean                    | 是否悬停/触摸。true表示是，false表示否。                                                                      |
+| TabBar                                                                    | isRTL                                                                                              | boolean                    | 是否采用从右到左的布局。true表示是，false表示否。                                                             |
 | TabBar                                                                    | animationCurve / animationDuration                                                                 | string / number            | 动画曲线描述和动画时长，时长单位为ms。                                               |
 | TabBar                                                                    | indicator / scrollMargin                                                                           | number                     | 指示器索引/滚动边距，后者单位为px。                                                  |
 | TabBar                                                                    | region                                                                                             | array                      | 页签栏渐变提示区域（TabBar边缘提示仍有未显示页签的渐变效果）状态：按各渐变区域顺序记录开关，true表示该侧开启渐变；某侧仍有未显示的页签时，对应区域为true。 |
@@ -338,7 +510,7 @@ SheetPage节点的字段放在advanced.visual["SheetPage Pattern"]对象中：
 | SheetThemeType                                                                                                         | string          | 当前Sheet主题类型描述。             |
 | currentOffset                                                                                                          | number          | 当前Sheet偏移值，单位为px。         |
 | height                                                                                                                 | string          | Sheet高度。                          |
-| [SheetMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetmode12枚举说明)           | number          | Sheet高度模式。                     |
+| sheetMode        | number | Sheet高度模式的整数枚举值，取值见[SheetMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetmode12枚举说明)；仅在已设置高度模式时输出。 |
 
 表中含空格、方括号或等号的key均为单个key的完整字面名称。
 
@@ -379,32 +551,32 @@ BackgroundImage、BorderImageSource和图片url的资源格式见资源引用表
 | key      | 值类型          | 说明         |
 | ---------- | ----------------- | --------------- |
 | url      | string / object | 图片来源。   |
-| syncLoad | boolean         | 同步加载配置。 |
+| syncLoad | boolean         | 是否同步加载图片。true表示同步加载，false表示异步加载。 |
 
 - **Text配置**
 
 | key               | 值类型  | 说明                     |
 | ------------------- | --------- | -------------------------- |
-| BindSelectionMenu | boolean | 自定义选择菜单绑定状态。 |
+| BindSelectionMenu | boolean | 是否绑定自定义选择菜单。true表示已绑定，false表示未绑定。 |
 
 - **TextInput和TextArea配置**
 
 | key            | 值类型  | 说明                         |
 | ----------------- | --------- | ------------------------------ |
-| CustomKeyboard | boolean | 自定义键盘节点或构建函数配置。 |
+| CustomKeyboard | boolean | 是否配置自定义键盘节点或构建函数。true表示已配置，false表示未配置。 |
 
 - **Swiper配置**
 
 | key          | 值类型  | 说明           |
 | -------------- | --------- | ---------------- |
-| disableSwipe | boolean | 是否禁用滑动。 |
+| disableSwipe | boolean | 是否禁用滑动。true表示禁用，false表示未禁用。 |
 
 - **SheetPage配置**
 
 | key            | 值类型  | 说明                                       |
 | ----------------- | --------- | -------------------------------------------- |
 | detents Size     | number  | Sheet档位配置数量。key中的空格为字段名的组成部分。 |
-| IsShouldDismiss | boolean | 关闭拦截回调配置。                           |
+| IsShouldDismiss | boolean | 是否配置关闭拦截回调。true表示已配置，false表示未配置。                           |
 
 - **滚动组件公共配置与回调**
 
@@ -413,16 +585,16 @@ BackgroundImage、BorderImageSource和图片url的资源格式见资源引用表
 | key                                | 值类型  | 说明                                                                                                                                                          |
 | ------------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | NestedScroll                       | string  | 嵌套滚动配置，参见[NestedScrollOptions](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明)，见嵌套滚动配置表。 |
-| backToTop                          | boolean | 返回顶部策略。                                                                                                                                                |
-| enableScrollInteraction            | boolean | 滚动交互配置。                                                                                                                                                |
+| backToTop                          | boolean | 是否支持点击状态栏回到顶部。true表示支持，false表示不支持。                                                                                                                                                |
+| enableScrollInteraction            | boolean | 是否支持滚动手势。true表示支持，false表示不支持。                                                                                                                                                |
 | friction / flingSpeedLimit         | number  | 摩擦系数和惯性滚动速度限制，速度单位为px/s。                                                                                                                  |
-| hasOnScrollStart / hasOnScrollStop | boolean | 滚动开始和停止回调配置。                                                                                                                                      |
-| hasOnWillScroll / hasOnDidScroll   | boolean | 滚动前和滚动后回调配置。                                                                                                                                      |
-| hasOnScrollBegin                   | boolean | 滚动帧开始回调配置，对应onScrollFrameBegin事件。                                                                                                                  |
-| hasOnReachStart / hasOnReachEnd    | boolean | 到达起始位置和末尾位置的回调配置。                                                                                                                            |
-| autoAdjustScrollBarMargin          | boolean | 是否自动调整滚动条边距。                                                                                                                                      |
-| isScrollable                       | boolean | 内部滚动条可滚动状态，true表示可滚动。                                                                                                                        |
-| isReverse                          | boolean | 反向滚动状态；WaterFlow中该字段表示当前是否为反向布局。                                                                                                          |
+| hasOnScrollStart / hasOnScrollStop | boolean | 是否已配置滚动开始和停止回调。true表示已配置，false表示未配置。                                                                                                                                      |
+| hasOnWillScroll / hasOnDidScroll   | boolean | 是否已配置滚动前和滚动后回调。true表示已配置，false表示未配置。                                                                                                                                      |
+| hasOnScrollBegin                   | boolean | 是否已配置滚动帧开始回调（对应onScrollFrameBegin事件）。true表示已配置，false表示未配置。                                                                                                                  |
+| hasOnReachStart / hasOnReachEnd    | boolean | 是否已配置到达起始位置和末尾位置的回调。true表示已配置，false表示未配置。                                                                                                                            |
+| autoAdjustScrollBarMargin          | boolean | 是否自动调整滚动条边距。true表示自动调整，false表示不自动调整。                                                                                                                                      |
+| isScrollable                       | boolean | 内部滚动条可滚动状态，true表示可滚动，false表示不可滚动。                                                                                                                        |
+| isReverse                          | boolean | 是否反向滚动；WaterFlow中该字段表示当前是否为反向布局。true表示是，false表示否。                                                                                                          |
 
 - **嵌套滚动配置表**
 
@@ -436,10 +608,10 @@ BackgroundImage、BorderImageSource和图片url的资源格式见资源引用表
 | ------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------- |
 | snapAlign                           | string  | [ScrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10枚举说明)对齐方式。 |
 | snapPagination                      | object  | 吸附间隔或位置配置，见吸附分页表。                                                                           |
-| enableSnapToStart / enableSnapToEnd | boolean | 是否允许吸附到起始和结束边界。                                                                               |
+| enableSnapToStart / enableSnapToEnd | boolean | 是否允许吸附到起始和结束边界。true表示允许，false表示不允许。                                                                               |
 | enablePaging                        | string  | ScrollPagingStatus状态：NONE（未启用分页）、INVALID（分页配置无效）或VALID（分页配置有效）。                                                               |
 | initialOffset                       | string  | 主轴初始偏移，保留单位。                                                                                     |
-| hasOnScrollEdge                     | boolean | 滚动边缘回调配置。                                                                                           |
+| hasOnScrollEdge                     | boolean | 是否已配置滚动边缘回调。true表示已配置，false表示未配置。                                                                                           |
 
 - **吸附分页表**
 
@@ -452,21 +624,21 @@ BackgroundImage、BorderImageSource和图片url的资源格式见资源引用表
 
 | 组件               | key                                                                                                    | 值类型  | 说明                                           |
 | -------------------- | -------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------ |
-| List               | multiSelectable / maintainVisibleContentPosition / stackFromEnd                                        | boolean | 多选、保持可见内容位置和从末尾排列配置。       |
+| List               | multiSelectable / maintainVisibleContentPosition / stackFromEnd                                        | boolean | 是否启用多选/保持可见内容位置/从末尾排列。true表示是，false表示否。       |
 | List               | sticky / scrollSnapAlign                                                                               | number  | 吸顶策略和滚动吸附对齐的整数枚举值。           |
-| List               | syncLoad                                                                                               | boolean | 同步加载配置。                                 |
-| List               | hasOnScrollIndex / hasOnScrollChange                                                                   | boolean | 索引变化和可见内容变化回调配置。               |
-| ListItem、GridItem | selectable                                                                                             | boolean | 当前可选择状态。                               |
+| List               | syncLoad                                                                                               | boolean | 是否同步加载List区域内所有子组件。true表示同步加载，false表示异步加载。                                 |
+| List               | hasOnScrollIndex / hasOnScrollChange                                                                   | boolean | 是否已配置索引变化和可见内容变化回调。true表示已配置，false表示未配置。               |
+| ListItem、GridItem | selectable                                                                                             | boolean | 是否可选。true表示可选，false表示不可选。                               |
 | ListItem           | startDeleteAreaDistance / endDeleteAreaDistance                                                        | number  | 起始侧和结束侧删除区域距离，单位为px。         |
-| ListItem           | hasStartDeleteArea / hasEndDeleteArea                                                                  | boolean | 起始侧和结束侧删除区域状态。                   |
+| ListItem           | hasStartDeleteArea / hasEndDeleteArea                                                                  | boolean | 是否存在起始侧/结束侧删除区域。true表示存在，false表示不存在。                   |
 | Grid               | [GridLayoutOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#gridlayoutoptions10对象说明) | object  | 网格布局选项，含irregularIndexes整数索引数组。 |
 | Grid               | CachedCount                                                                                            | number  | 缓存数量。                                     |
-| Grid               | ShowCache                                                                                              | boolean | 缓存项显示状态。                               |
-| Grid               | Editable / ScrollEnabled                                                                               | boolean | 编辑和滚动开关。                               |
+| Grid               | ShowCache                                                                                              | boolean | 是否显示缓存项。true表示显示，false表示不显示。                               |
+| Grid               | Editable / ScrollEnabled                                                                               | boolean | 是否可编辑/是否可滚动。true表示是，false表示否。                               |
 | WaterFlow          | CachedCount                                                                                            | number  | 缓存数量。                                     |
-| WaterFlow          | isReverse                                                                                              | boolean | 反向布局状态。                                 |
-| WaterFlow          | footer                                                                                                 | boolean | 尾部节点状态。                                 |
-| WaterFlow          | hasOnScrollIndex                                                                                       | boolean | 索引变化回调配置。                             |
+| WaterFlow          | isReverse                                                                                              | boolean | 是否反向布局。true表示是，false表示否。                                 |
+| WaterFlow          | footer                                                                                                 | boolean | 是否存在尾部节点。true表示存在，false表示不存在。                                 |
+| WaterFlow          | hasOnScrollIndex                                                                                       | boolean | 是否已配置索引变化回调。true表示已配置，false表示未配置。                             |
 | WaterFlow          | sections                                                                                               | array   | 分组配置对象数组，元素字段见WaterFlow分组字段。                             |
 
 - **WaterFlow分组字段**

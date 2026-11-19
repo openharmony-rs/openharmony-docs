@@ -9,39 +9,51 @@
 
 ## 概述
 
-从API版本26.1.0开始，应用可以向自身UI实例中的目标节点提交控件命令。
+从API版本26.1.0开始，应用可以向自身UI实例中的目标节点注入控件命令。
 
-本指南说明目标节点定位、JSON命令构造、请求提交、完成回调和最终效果验证。命令参数、组件行为和边界规则见附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。
+本指南说明从节点定位到效果验证的命令注入流程；命令参数与组件行为见附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。
 
-阅读时，建议先了解[约束与限制](#约束与限制)，再查阅[接口说明](#接口说明)和[命令格式](#命令格式)，最后参照[开发步骤](#开发步骤)完成接入。
+阅读时，建议先了解[约束与限制](#约束与限制)，再查阅[接口说明](#接口说明)和[控件命令格式](#控件命令格式)，最后参照[开发步骤](#开发步骤)完成接入。
 
 ## 约束与限制
 
 调用前应确认目标实例、线程和节点有效性，并按下列要求管理请求及回调。
 
-- 在目标Context的UI线程调用注入接口，非UI线程调用会终止进程。
-- uniqueId必须属于传入的Context。应从当前树结果或节点查询接口取得整数ID，不使用组件`.id()`的字符串值代替。
+> **说明：**
+>
+> 目标实例、线程和节点有效性的可行确认方式：
+>
+> - **目标实例**：上下文从当前页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)获取，获取与复用限制见[管理上下文生命周期](ndk-ui-info-collect-tree.md#管理上下文生命周期)，不跨实例缓存；实例失效时注入接口同步返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，应重新获取有效实例的上下文后再提交。
+> - **线程**：在目标实例的UI线程上调用。可行方式是从ArkTS页面事件（如onClick）中发起调用，页面事件回调在UI线程执行，示例工程即按此模式提交命令；注入接口检测到线程违规会终止进程，该错误无法通过返回值确认或补救，只能通过调用来源保证。
+> - **节点**：注入前从最新一次采集结果中定位目标节点并读取整数节点ID，页面变化后重新采集定位；节点失效时注入接口同步返回[ARKUI_ERROR_CODE_NODE_NOT_FOUND](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，应重新定位后再决定是否提交，处理建议见[处理返回值](#处理返回值)。
+
+- 在目标Context的UI线程调用注入接口，非UI线程调用会终止进程；线程要求见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明。
+- uniqueId必须属于传入的Context，具体见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明。应从当前树结果或节点查询接口取得整数ID，不使用组件`.id()`的字符串值代替。
 - 同一进程内，前一条命令完成前提交的新请求会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；限制解除时机与重试规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的返回值说明。
 - 完成回调报告命令的即时处理结果，回调语义见[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)。验证最终效果时使用组件已有业务回调或后续业务操作，不阻塞UI线程等待。
 - 已受理请求的完成回调可能在实例销毁后到达；userData的所有权与有效性规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明，不能因页面退出提前释放。
 
 ## 接口说明
 
-接口声明及结果枚举见[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md)。JSONWrapper对象的构造、创建、读取和销毁统一见[UI信息数据格式说明](ndk-ui-info-data-structure.md)。
+控件命令注入关键接口如下表所示。具体API说明详见API参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md)和[ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)。JSONWrapper对象的构造、创建、读取和销毁统一见[UI信息数据格式说明](ndk-ui-info-data-structure.md)。
 
-| 接口                                                                                                                                                            | 用途                                    |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| [OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)                        | 从JSON字符串创建JSONWrapper对象。       |
+**表1** 控件命令注入接口功能介绍
+
+| 接口名 | 描述 |
+| --- | --- |
+| [OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate) | 从JSON字符串创建JSONWrapper对象。 |
 | [OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand) | 向指定Context中的节点提交一条异步命令。 |
-| [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)                      | 销毁应用拥有的JSONWrapper对象。         |
+| [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁应用拥有的JSONWrapper对象。 |
 
-## 命令格式
+## 控件命令格式
 
 本节说明公共JSON结构、命令选择方法和使用建议。详细命令参数、组件行为和边界规则统一见附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。
 
-### 公共结构
+### JSONWrapper对象格式
 
-每次请求使用一个JSON对象描述一条命令。以下以设置文本为例，展示协议版本、命令类型和参数对象的位置。
+每次请求使用一个JSON对象描述一条命令：顶层为协议版本字段`schemaVersion`（固定取值1）和命令对象`cmd`；`cmd`包含命令类型`type`和命令参数`action_info`，即使命令不需要额外参数，也需保留空的`action_info`对象。顶层结构与固定字段、业务字段的公共说明见[UI信息数据格式说明](ndk-ui-info-data-structure.md#jsonwrapper对象格式)。
+
+以下以设置文本命令setText为例：
 
 ```json
 {
@@ -55,7 +67,17 @@
 }
 ```
 
-`cmd` 和 `action_info` 必须是对象，`type` 为命令类型字符串。即使命令不需要额外参数，也需保留空的 `action_info` 对象。
+样例中各字段的含义：
+
+| 字段 | 类别 | 含义 |
+|---|---|---|
+| `schemaVersion` | 固定字段 | 协议版本，固定取值1。 |
+| `cmd` | 业务字段 | 命令对象，承载命令类型和参数。 |
+| `cmd.type` | 业务字段 | 命令类型字符串，取值为支持的命令名，本例为setText。 |
+| `cmd.action_info` | 业务字段 | 命令参数对象；即使命令不需要额外参数，也需保留空对象。 |
+| `cmd.action_info.value` | 业务字段 | setText的必填参数：要设置的文本内容；空字符串表示将内容设置为空。 |
+
+各命令业务参数的必填与可选定义见附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。
 
 ### 命令选择
 
@@ -66,7 +88,7 @@
 在连续编辑、选择、复制或切换内容时，按以下要求管理前置条件、请求顺序和资源。
 
 - 缺少必填字段或字段类型不符时，请求会被拒绝，返回值语义见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的返回值说明。
-- 整数参数必须是有符号32位范围内的JSON整数，不能传入字符串或小数；可选字段省略与传入`null`含义不同。
+- 整数参数必须是有符号32位范围内的JSON整数，不能传入字符串或小数；可选字段省略与传入`null`含义不同，通用约定见[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。
 - 文本位置按目标组件的索引语义处理，不是UTF-8字节偏移；TextInput、TextArea使用UTF-16文本位置。
 - 参数类型校验不等于组件范围校验。负数、超出文本长度或超出子项数量的参数，按各命令的组件规则处理。
 - 提交前检查目标组件类型和当前状态。格式正确的命令发给不支持该命令的组件，也会在执行阶段失败，例如向Text提交setText。
@@ -78,15 +100,7 @@
 
 ## 开发步骤
 
-| 阶段     | 主要任务                                                  |
-| ---------- | ----------------------------------------------------------- |
-| 准备目标 | 获取有效UIContext，并通过控件树或节点查询获取目标整数ID。 |
-| 构造命令 | 按公共JSON结构选择命令和参数，创建JSONWrapper对象。       |
-| 提交请求 | 在目标UI线程提交命令，并处理同步返回值。                  |
-| 处理回调 | 在完成回调中读取执行结果，管理回调数据生命周期。          |
-| 验证效果 | 结合组件内容、选区或索引等业务状态确认最终效果。          |
-
-通用NDK接入、ArkTS与Native桥接及构建配置见[基于NDK构建UI概述](ndk-build-ui-overview.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。以下基于[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)，说明目标节点定位、命令提交和结果处理；代码片段需结合完整工程使用。
+通用NDK接入、ArkTS与Native桥接及构建配置见[基于NDK构建UI概述](ndk-build-ui-overview.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。以下基于[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)，说明如何定位目标节点，以及如何提交控件命令并处理结果；代码片段需结合完整工程使用。
 
 ### 定位目标节点
 
@@ -96,7 +110,7 @@
 
 ### 构造控件命令
 
-[napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) 中的 `InjectCommand` 是示例自行定义的 N-API 桥接函数。它读取 Context、节点 ID 和 JSON 字符串，创建 `JSONWrapper` 对象后调用公开接口，并在调用返回后销毁自建 `JSONWrapper` 对象。示例中 64 KiB 的命令大小限制仅为应用层示例约束，并非平台本身新增的规格限制。
+[napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) 中的 `InjectCommand` 是示例自行定义的NAPI桥接函数。它读取 Context、节点 ID 和 JSON 字符串，创建 `JSONWrapper` 对象后调用公开接口，并在调用返回后销毁自建 `JSONWrapper` 对象。示例中 64 KiB 的命令大小限制仅为应用层示例约束，并非平台本身新增的规格限制。
 
 Arguments、ReadNodeId、GetContext、AddPending、RejectSubmission及参数计数与下标常量等辅助定义均位于同一源文件中。它们分别处理桥接参数、上下文复用和Promise任务，不属于SDK新增接口。
 
@@ -174,7 +188,7 @@ void OnCommand(OH_ArkUI_NativeModule_UIEventInjection_ResultCode resultCode, voi
 }
 ```
 
-### 提交控件命令
+### 注入控件命令
 
 [Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/types/libentry/Index.d.ts) 中的 `injectCommand` 返回 `Promise<CommandResult>`，其中 `result` 字段用于返回异步回调的执行结果，而非注入接口的同步返回值。`CommandResult` 和 `UIContext` 的定义及导入见示例文件。
 
@@ -184,7 +198,7 @@ void OnCommand(OH_ArkUI_NativeModule_UIEventInjection_ResultCode resultCode, voi
 export const injectCommand: (context: UIContext, nodeId: number, command: string) => Promise<CommandResult>;
 ```
 
-[CommandPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/CommandPage.ets)中的submit方法从页面事件发起请求。collectTree、parseTree、requireNodeId及failure的导入和页面状态定义位于示例完整工程中，以下为该方法的同源片段。
+[CommandPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/CommandPage.ets)中的submit方法从页面事件发起请求。collectTree、parseTree、requireNodeId及failure的导入和页面状态定义位于示例完整工程中，以下片段摘自该方法。
 
 <!-- @[ui_command_submit_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/CommandPage.ets) -->
 
@@ -215,7 +229,7 @@ private async submit(): Promise<void> {
 
 ### 处理返回值
 
-命令提交接口的直接返回值用于判断请求是否受理。请求受理后，命令将进入异步执行流程。应用应先记录提交结果，再等待完成回调，切勿在提交后立即认为文字修改或动画已完成。
+命令注入接口的直接返回值用于判断请求是否受理。请求受理后，命令将进入异步执行流程。应用应先记录提交结果，再等待完成回调，切勿在提交后立即认为文字修改或动画已完成。
 
 | 处理场景             | 应用侧判断                                            | 建议处理                                                               |
 | ---------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------ |
