@@ -231,6 +231,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
 | rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br> ArkTS-Dyn：设置undefined时，异常将报错。<br> ArkTS-Sta：设置undefined时，数据库文件存储路径为默认路径。<br> **ArkTS-Dyn起始版本：** 24 <br> **ArkTS-Sta起始版本：** 24 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| walStartCheckpointSize | number                         | 否    | 是  | 启动checkpoint的大小阈值。当WAL文件大小达到这个值时，会触发将WAL内容合并回主数据库文件。单位：KB。取值范围：[16, 524288]。默认值：204800。 <br>**注意**： 较大的值会降低检查点频率，但会增加WAL文件大小和内存使用峰值。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 
 ## BackupConfig<sup>24+</sup>
 
