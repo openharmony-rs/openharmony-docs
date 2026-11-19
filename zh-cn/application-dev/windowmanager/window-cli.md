@@ -266,19 +266,19 @@ ohos-window screenshot [options]
 
 > **说明：**
 >
-> options不填时，默认截主屏幕。
+> options不填时，截取的是默认屏。
 
 ### 参数说明
 
 | 参数名 | 说明 |
 |------|------|
 | `--help` | 查看帮助信息，可选，指定本参数时会忽略其他参数。|
-| `--windowId <id>` | 指定待截图窗口的ID，可选，默认是屏幕截图。当传入值小于0，或指定的窗口不存在，或者是后台窗口、隐私窗口时，均返回ERR_INVALID_INPUT错误。只有指定本选项时才是窗口截图，不可与`--displayId`/`--rect`/`--excludeWindowIds`同时使用。|
-| `--displayId <id>` | 指定待截图的屏幕ID，可选，默认值为0。当传入值小于0，或指定的屏幕不存在时，均返回ERR_INVALID_INPUT错误。不可与`--windowId`同时使用。|
-| `--outputPath <path>` | 指定截图保存目录的路径，可选，默认保存在`/data/storage/el2/base/temp`目录下，参考[应用沙箱目录](../file-management/app-sandbox-directory.md#应用沙箱目录)。|
+| `--windowId <id>` | 指定待截图窗口的ID，可选，只有指定本选项时才是对窗口截图，否则是对屏幕截图。当传入值小于等于0，或指定的窗口不存在，或者是后台窗口、隐私窗口时，均返回ERR_INVALID_INPUT错误。不可与`--displayId`/`--rect`/`--excludeWindowIds`同时使用。|
+| `--displayId <id>` | 指定待截图的屏幕ID，可选，缺省时为默认屏。当传入值小于0，或指定的屏幕不存在时，均返回ERR_INVALID_INPUT错误。不可与`--windowId`同时使用。|
+| `--outputPath <path>` | 指定保存截图的目录路径，可选，默认保存在`/data/storage/el2/base/temp`目录下。当指定的路径不存在、没有写入权限，或者不是目录时，均返回ERR_INVALID_INPUT错误。应用有权限访问的目录可参考[应用沙箱目录](../file-management/app-sandbox-directory.md#应用沙箱目录)。|
 | `--rect <x,y,width,height>` | 指定屏幕截取矩形区域，可选，其中x和y表示矩形的左上角相对屏幕左上角顶点的坐标，width和height表示矩形的宽和高，单位均为px；当矩形超出屏幕范围时，会返回ERR_INVALID_INPUT错误。不可与`--excludeWindowIds`/`--windowId`同时使用。|
-| `--excludeWindowIds <id1,id2,...>` | 指定屏幕截图时需要排除的窗口的ID，可选，多个ID以英文逗号分隔。当传入值中有小于0或不存在的窗口时，均返回ERR_INVALID_INPUT错误。不可与`--rect`/`--windowId`同时使用。|
-| `--format <jpeg\|png>` | 指定截图的图片格式，可选，支持jpeg和png格式，默认jpeg格式。|
+| `--excludeWindowIds <id1,id2,...>` | 指定屏幕截图时需要排除的窗口的ID，可选，多个ID以英文逗号分隔，最多支持64个。当传入值中有小于等于0或不存在的窗口时，均返回ERR_INVALID_INPUT错误。不可与`--rect`/`--windowId`同时使用。|
+| `--format <jpeg\|png>` | 指定截图的图片格式，可选，支持jpeg和png格式，默认为jpeg格式。|
 
 ### 错误码
 
@@ -289,13 +289,15 @@ ohos-window screenshot [options]
 | ERR_DEVICE_NOT_SUPPORT | 设备不支持。 | 检查当前设备类型。 |
 | ERR_IPC_FAILED | IPC通信或服务连接失败。 | 请重试。 |
 | ERR_INTERNAL_ERROR | 内部错误。 | 请重试。 |
+| ERR_INVALID_OPERATION | 当前状态不允许该操作。 | 请在设备解锁后使用该命令。 |
+| ERR_INTERNAL_EMPTY | 未识别的底层错误。 | 请重试。 |
 
 ### 示例代码
 
 **命令示例：**
 
 ```bash
-# 全屏截图
+# 截取默认屏
 ohos-window screenshot
 
 # 对指定窗口截图，图片格式为jpeg，保存到自定义路径
@@ -304,7 +306,7 @@ ohos-window screenshot --windowId 100 --format jpeg --outputPath /app/data/
 # 截取指定矩形区域（x=100,y=200,width=300,height=400）
 ohos-window screenshot --rect 100,200,300,400
 
-# 全屏截图，排除窗口100和200
+# 截主屏幕，排除窗口100和200
 ohos-window screenshot --displayId 0 --excludeWindowIds 100,200
 ```
 
