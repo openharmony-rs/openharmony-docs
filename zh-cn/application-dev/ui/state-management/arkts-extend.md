@@ -19,6 +19,8 @@
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
 > 从API版本26.1.0开始，该装饰器支持传入可选的版本条件参数（VersionCondition）作为第二个参数。
+>
+> 从API版本26.1.0开始，该装饰器支持同类嵌套，即\@Extend装饰的方法中可以调用其他\@Extend装饰的方法，且嵌套时支持[版本条件参数（VersionCondition）](#版本条件参数versioncondition)。
 
 ## 装饰器使用说明
 
@@ -153,6 +155,8 @@
   ```
   
   ![](figures/arkts-extend-1.gif)
+
+- 从API版本26.1.0开始，\@Extend支持同类嵌套，即\@Extend装饰的方法中可以调用其他\@Extend装饰的方法。嵌套时支持[版本条件参数（VersionCondition）](#版本条件参数versioncondition)，携带版本条件的\@Extend方法，其扩展样式仅在声明的系统版本区间内生效。请参考用例[\@Extend同类嵌套的用法](#extend同类嵌套的用法)。
 
 ### 版本条件参数（VersionCondition）
 
@@ -391,14 +395,14 @@ struct FancyUse {
 const lowVersionExtendText: string = 'Lower version performance';
 const hightVersionExtendText: string = 'Higher version performance';
 
-// 低版本适配样式：仅在系统版本大于等于Api version 12且小于Api version 26.0.0时生效
+// 低版本适配样式：仅在系统版本大于等于12且小于26.0.0时生效
 @Extend(Text, { minApiVersion: 12, maxApiVersion: '26.0.0' })
 function lowVersionText(color: Color) {
   .fontColor(color)
   .fontSize(16)
 }
 
-// 高版本样式：仅在系统版本大于等于Api version 26.0.0时生效
+// 高版本适配样式：仅在系统版本大于等于26.0.0时生效
 @Extend(Text, { minApiVersion: '26.0.0' })
 function highVersionText(color: Color) {
   .fontColor(color)
@@ -431,3 +435,60 @@ struct VersionConditionUseDemo {
 **在系统版本大于等于API版本26.0.0的设备上表现如：**
 
 ![](figures/arkts-extend-versionCondition-high.png)
+
+### \@Extend同类嵌套的用法
+
+从API版本26.1.0开始，\@Extend支持同类嵌套，即\@Extend装饰的方法中可以调用其他\@Extend装饰的方法，将扩展样式逐层组合复用。被嵌套调用的\@Extend方法支持携带[版本条件参数](#版本条件参数versioncondition)，其扩展样式仅在声明的系统版本区间内生效，位于区间外时该部分样式不产生任何效果。下例中，嵌套样式同时调用公共样式、低版本样式与高版本样式，设备系统版本位于对应区间时自动呈现相应样式：
+<!-- @[Extend_Nested](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendNested.ets) -->
+
+``` TypeScript
+// 公共样式：不携带版本条件，在全部系统版本上生效
+@Extend(Text)
+function commonTextStyle() {
+  .fontSize(16)
+  .padding(10)
+}
+
+// 低版本样式：仅在系统版本大于等于12且小于26.0.0时生效
+@Extend(Text, { minApiVersion: 12, maxApiVersion: '26.0.0' })
+function lowVersionTextStyle() {
+  .fontColor(Color.Gray)
+}
+
+// 高版本样式：仅在系统版本大于等于26.0.0时生效
+@Extend(Text, { minApiVersion: '26.0.0' })
+function highVersionTextStyle() {
+  .fontColor(Color.Blue)
+  .fontWeight(700)
+}
+
+// 嵌套样式：同时嵌套调用公共样式、低版本样式与高版本样式，设备系统版本位于对应区间时自动呈现相应样式
+@Extend(Text)
+function nestedTextStyle() {
+  .commonTextStyle()
+  .lowVersionTextStyle()
+  .highVersionTextStyle()
+}
+
+@Entry
+@Component
+struct NestedExtendUseDemo {
+  build() {
+    Column({ space: 30 }) {
+      Text('FancyA')
+        .nestedTextStyle()
+    }
+    .width('90%')
+    .margin(20)
+    .borderWidth(1)
+  }
+}
+```
+
+**在系统版本小于API版本26.0.0的设备上表现如：**
+
+![](figures/arkts-extend-nested-low.png)
+
+**在系统版本大于等于API版本26.0.0的设备上表现如：**
+
+![](figures/arkts-extend-nested-high.png)

@@ -21,6 +21,8 @@
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
 > 从API版本26.1.0开始，\@Styles装饰器支持以调用形式`@Styles({...})`传入可选的版本条件参数（VersionCondition），用于声明样式的生效系统版本区间。
+>
+> 从API版本26.1.0开始，\@Styles装饰器支持同类嵌套，即\@Styles装饰的方法中可以调用其他\@Styles装饰的方法，且嵌套时支持[版本条件参数（VersionCondition）](#版本条件参数versioncondition)。
 
 ## 装饰器使用说明
 
@@ -29,6 +31,8 @@
 - \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内\@Styles和全局\@Styles的用法](#组件内styles和全局styles的用法)。
 
 - 组件内\@Styles的优先级高于全局\@Styles。框架会优先查找当前组件内的\@Styles，如果未找到，则会在全局范围内查找。
+
+- 从API版本26.1.0开始，\@Styles支持同类嵌套，即\@Styles装饰的方法中可以调用其他\@Styles装饰的方法。嵌套时支持[版本条件参数（VersionCondition）](#版本条件参数versioncondition)，携带版本条件的\@Styles方法，其样式仅在声明的系统版本区间内生效。请参考用例[\@Styles同类嵌套的用法](#styles同类嵌套的用法)。
 
 > **说明：**
 >
@@ -268,7 +272,7 @@ struct GlobalFancy {
 const lowVersionStyleText: string = 'Lower version performance';
 const hightVersionStylesText: string = 'Higher version performance';
 
-// 低版本适配样式：仅在系统版本大于等于Api Version 12且小于Api Version 18时生效
+// 低版本适配样式：仅在系统版本大于等于12且小于26.0.0时生效
 // '5.0.0'与12、'12'写法等价，均表示系统版本5.0.0
 @Styles({ minApiVersion: '5.0.0', maxApiVersion: '26.0.0' })
 function lowVersionStyle() {
@@ -277,7 +281,7 @@ function lowVersionStyle() {
   .height(60)
 }
 
-// 高版本样式：仅在系统版本大于等于Api Version 26.0.0时生效
+// 高版本适配样式：仅在系统版本大于等于26.0.0时生效
 @Styles({ minApiVersion: '26.0.0' })
 function highVersionStyle() {
   .backgroundColor('#64bb5c')
@@ -308,3 +312,59 @@ struct VersionConditionUseDemo {
 **在系统版本大于等于API Version 26.0.0的设备上表现如：**
 
 ![](figures/arkts-styles-versionCondition-high.png)
+
+### \@Styles同类嵌套的用法
+
+从API版本26.1.0开始，\@Styles支持同类嵌套，即\@Styles装饰的方法中可以调用其他\@Styles装饰的方法，将样式逐层组合复用。被嵌套调用的\@Styles方法支持携带[版本条件参数](#版本条件参数versioncondition)，其样式仅在声明的系统版本区间内生效，位于区间外时该部分样式不产生任何效果。下例中，嵌套样式同时调用公共样式、低版本样式与高版本样式，设备系统版本位于对应区间时自动呈现相应样式：
+<!-- @[Styles_Nested](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesNested.ets) -->
+
+``` TypeScript
+// 公共样式：不携带版本条件，在全部系统版本上生效
+@Styles
+function commonStyle() {
+  .width('90%')
+  .height(60)
+}
+
+// 低版本样式：仅在系统版本大于等于12且小于26.0.0时生效
+@Styles({ minApiVersion: 12, maxApiVersion: '26.0.0' })
+function lowVersionNestedStyle() {
+  .backgroundColor('#f7ce00')
+}
+
+// 高版本样式：仅在系统版本大于等于26.0.0时生效
+@Styles({ minApiVersion: '26.0.0' })
+function highVersionNestedStyle() {
+  .backgroundColor('#64bb5c')
+}
+
+// 嵌套样式：同时嵌套调用公共样式、低版本样式与高版本样式，设备系统版本位于对应区间时自动呈现相应样式
+@Styles
+function nestedStyle() {
+  .commonStyle()
+  .lowVersionNestedStyle()
+  .highVersionNestedStyle()
+}
+
+@Entry
+@Component
+struct NestedStylesUseDemo {
+  build() {
+    Column({ space: 30 }) {
+      Text('FancyA')
+        .nestedStyle()
+    }
+    .width('90%')
+    .margin(20)
+    .borderWidth(1)
+  }
+}
+```
+
+**在系统版本小于API版本26.0.0的设备上表现如：**
+
+![](figures/arkts-styles-nested-low.png)
+
+**在系统版本大于等于API版本26.0.0的设备上表现如：**
+
+![](figures/arkts-styles-nested-high.png)
