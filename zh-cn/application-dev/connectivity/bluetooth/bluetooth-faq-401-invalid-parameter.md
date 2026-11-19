@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "解释把可选属性显式设为undefined会报错误码401的原因，并给出省略该属性的写法。"
+keywords: [错误码401, Invalid parameter, 可选参数, 显式undefined, startScan调用失败, manufactureId, 参数校验]
+doctype: faq
+status: active
+---
+
 # 可选属性显式设置为undefined报401无效参数
 
 <!--Kit: Connectivity Kit-->

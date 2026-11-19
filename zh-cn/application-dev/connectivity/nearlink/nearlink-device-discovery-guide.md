@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "说明发起星闪广播与星闪扫描的步骤，含自定义UUID、帧类型和扫描过滤器的配置约束。"
+keywords: [星闪广播, 星闪扫描, startAdvertising, startScan, 扫描过滤器, 帧类型FRAME_TYPE, TLV广播数据解析, onDeviceFound, 错误码36100042]
+doctype: guide
+status: active
+---
+
 # 发现星闪设备
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

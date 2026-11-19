@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "说明通过端口通道建立星闪连接并收发数据的步骤，适用于大文件传输等大流量场景。"
+keywords: [星闪数据传输, 端口通道, createPort, dataTransfer.connect, writeData, onReadData, 发送队列拥塞, 逻辑链路, 链路加密]
+doctype: guide
+status: active
+---
+
 # 使用星闪传输数据
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

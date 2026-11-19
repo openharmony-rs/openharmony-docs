@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍发起蓝牙配对、订阅配对状态变化并连接已配对设备可用Profile的流程。"
+keywords: [蓝牙配对, 配对状态变化, BOND_STATE_BONDED, connection.pairDevice, 虚拟MAC地址, connectAllowedProfiles, getRemoteProfileUuids, Profile连接]
+doctype: guide
+status: active
+---
+
 # 配对与连接设备
 
 <!--Kit: Connectivity Kit-->

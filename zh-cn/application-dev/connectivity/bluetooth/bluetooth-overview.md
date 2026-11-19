@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "阐述传统蓝牙BR/EDR与低功耗蓝牙BLE在速率、功耗和通信范围上的差异，并说明蓝牙设备地址类型与中心/外围设备角色，帮助开发者选择合适的蓝牙技术方案。"
+keywords: [传统蓝牙, BR/EDR, 低功耗蓝牙, BLE, 蓝牙设备地址类型, 可解析私有地址, 中心设备, 外围设备]
+doctype: guide
+status: active
+---
+
 # 蓝牙服务开发概述
 
 <!--Kit: Connectivity Kit-->

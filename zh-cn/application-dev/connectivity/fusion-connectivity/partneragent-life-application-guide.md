@@ -1,8 +1,16 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "指导实现PartnerAgentExtensionAbility并注册伙伴设备，使其在蓝牙发现伙伴设备时被拉起。"
+keywords: [伙伴设备互通, PartnerAgentExtensionAbility, bindDevice, unbindDevice, onDeviceDiscovered, 应用可唤醒保活, getBoundDevices]
+doctype: guide
+status: active
+---
+
 # 伙伴设备与OpenHarmony设备互通的开发指南
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @guoxiadi-->
+<!--Owner: @enjoy_sunshine-->
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->

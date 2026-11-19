@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍SSAP服务端添加服务与响应读写、客户端连接与读写属性及订阅通知的开发步骤。"
+keywords: [SSAP, 星闪服务交互协议, SSAP服务端, SSAP客户端, addService, getServices, readProperty, notifyPropertyChanged, 属性变化通知]
+doctype: guide
+status: active
+---
+
 # 管理SSAP连接及服务
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

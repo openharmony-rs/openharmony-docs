@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "汇总星闪开发高频问题的现象与处理方式，涉及标准与自定义UUID区别、事件订阅权限、属性描述符作用、随机地址、帧类型选择、SSAP与端口选型及writeData发送失败。"
+keywords: [星闪常见问题, 标准UUID, 自定义UUID, 客户端属性值配置描述符, 星闪随机地址, 帧类型选择, SSAP与端口选型, writeData发送失败, 错误码36100044]
+doctype: faq
+status: active
+---
+
 # 星闪常见问题
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

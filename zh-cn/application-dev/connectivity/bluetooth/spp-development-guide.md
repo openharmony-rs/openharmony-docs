@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍基于SPP建立客户端与服务端连接并收发串口数据的步骤，含UUID服务与安全连接配置。"
+keywords: [SPP, 串口通信协议, sppListen, sppConnect, SPP_RFCOMM, UUID服务一致性, secure安全连接, socket数据传输]
+doctype: guide
+status: active
+---
+
 # 连接和传输数据
 
 <!--Kit: Connectivity Kit-->
