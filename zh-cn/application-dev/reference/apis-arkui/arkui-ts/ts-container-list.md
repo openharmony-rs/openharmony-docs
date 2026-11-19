@@ -414,8 +414,6 @@ scrollSnapAlign(value: ScrollSnapAlign)
 
 只支持item等高场景限位，不等高场景下限位对齐可能不准确。对齐动画期间[onWillScroll](ts-container-scrollable-common.md#onwillscroll12)事件上报的滚动操作来源类型为ScrollSource.FLING。
 
-从API版本26.1.0开始，本接口与[scrollSnapStrategy](#scrollsnapstrategy)互斥，不可同时生效：后设置者生效，设置其中任一接口会清除另一个接口的配置。需要支持不等高item对齐或自定义吸附位置时，推荐使用scrollSnapStrategy。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
