@@ -1172,11 +1172,11 @@ openInputMethodDetail(context: Context, bundleName: string, inputMethodId: strin
 
 **参数**：
 
-| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
-| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| bundleName      | string          | 是   | 拉起输入法的对应包名 |
-| inputMethodId   | string          | 是   | 输入法扩展在应用内唯一标识[id](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)。 |
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                       |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext，UIExtensionContext和InputMethodExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| bundleName      | string          | 是   | 拉起输入法的对应包名                                                                                                                                                               |
+| inputMethodId   | string          | 是   | 输入法扩展在应用内唯一标识[id](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)。                                                                                          |
 
 **错误码**：
 
