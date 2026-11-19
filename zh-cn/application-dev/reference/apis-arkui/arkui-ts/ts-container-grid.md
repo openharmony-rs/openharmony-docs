@@ -457,7 +457,7 @@ ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | count  | ArkTS-Dyn: number<br/> ArkTS-Sta: int&nbsp;\|&nbsp;undefined | 是   | 预加载的GridItem的数量。<br/>默认值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br/>通过状态变量单独更新count值时，Grid组件不会触发布局更新，缓存节点数量仅会在下次布局时更新。<br/>取值为undefined时，按默认值处理。 |
-| show  | ArkTS-Dyn: boolean<br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。 <br/> 默认值：false<br/>取值为undefined时，按默认值处理。 |
+| show  | ArkTS-Dyn: boolean<br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。 <br/> 默认值：false<br/>取值为undefined时，按默认值处理。<br/>当show设置为true时，首行完全越过可视区域底部（即首行完全移出可视区域）后，Grid会在预加载数量的基础上额外多显示1行。 |
 
 
 ### editMode<sup>8+</sup>
