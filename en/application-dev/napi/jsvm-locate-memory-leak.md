@@ -1,8 +1,8 @@
 # Troubleshooting JSVM-API Memory Leaks
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=32189e2ba3b294a1d89fd2708b346803b0768cdd translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
