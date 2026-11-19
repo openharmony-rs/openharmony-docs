@@ -1,7 +1,7 @@
 ---
 kits: ["AVCodec Kit / 音视频编解码服务"]
-description: "介绍通过AVCapability接口查询系统支持的编解码器及能力规格的方法，涵盖指定名称创建、软硬件差异化配置、多路编解码器创建、档位级别查询与DRM安全解码器筛选等场景。"
-keywords: [编码能力查询, 解码能力查询, 编解码器参数查询, 编解码器属性查询, DRM安全解码器查询, OH_AVCapability]
+description: "介绍通过AVCapability接口查询系统支持的编解码器及能力规格的方法，涵盖指定名称创建、软硬件差异化配置、多路编解码器创建、档位级别查询与DRM解码器筛选等场景。"
+keywords: [软硬件编解码器, 多路编解码器, 码控模式, 编解码档次和级别, DRM解码器, OH_AVCapability]
 doctype: guide
 status: active
 ---
@@ -859,20 +859,20 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 }
 ```
 
-### 筛选特定MIME类型的安全解码器（DRM播放场景）
-
-从API version 24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的"安全解码器"。
-
-开发者可以通过获取解码器列表，并结合MIME类型通过接口OH_AVCapability_IsSecure查询解码器类型，精准筛选出符合要求的安全解码器。
+### 筛选特定MIME类型的DRM解码器（DRM播放场景）
+ 
+从API version 24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的"DRM解码器"。
+ 
+开发者可以通过获取解码器列表，并结合MIME类型通过接口OH_AVCapability_IsSecure查询解码器类型，精准筛选出符合要求的DRM解码器。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCodec_GetCapabilityList              | 获取指定类型（如视频解码器）的所有编解码能力实例列表。 |
 | OH_AVCapability_GetMimeType               | 获取该能力实例对应的MIME类型字符串。 |
 | OH_AVCapability_CheckMimeType             | 校验该能力实例的MIME类型是否与目标类型一致。 |
-| OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理DRM资源的安全解码器。 |
+| OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理DRM资源的DRM解码器。 |
 
-开发者可通过以下代码实现H.264安全解码器的查询与初始化：
+开发者可通过以下代码实现H.264DRM解码器的查询与初始化：
 
 <!-- @[capability_secure_decoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
 
@@ -884,18 +884,18 @@ uint32_t count = 0;
 // 2. 获取所有视频解码器的能力列表。
 OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
 
-// 3. 遍历能力列表，筛选目标MIME类型的安全解码器并创建实例。
+// 3. 遍历能力列表，筛选目标MIME类型的DRM解码器并创建实例。
 OH_AVCodec *secureVideoDec = nullptr;
 for (uint32_t i = 0; capabilityList != nullptr && i < count; i++) {
     OH_AVCapability *cap = capabilityList[i];
-    // 4. 检查是否为目标的MIME类型，且必须是安全解码器。
+    // 4. 检查是否为目标的MIME类型，且必须是DRM解码器。
     if (!OH_AVCapability_CheckMimeType(cap, targetMime) || !OH_AVCapability_IsSecure(cap)) {
         continue;
     }
     // 5. 找到符合条件的解码器，获取其名称用于创建实例。
     secureVideoDec = OH_VideoDecoder_CreateByName(OH_AVCapability_GetName(cap));
     if (secureVideoDec != nullptr) {
-        // 6. 成功创建安全解码器，跳出循环执行后续业务。
+        // 6. 成功创建DRM解码器，跳出循环执行后续业务。
         break;
     }
 }
