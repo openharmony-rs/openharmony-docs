@@ -104,7 +104,9 @@ OE服务端应用使用OE Extension框架[content_embed_extension.h](../referenc
 ### 添加动态链接库
 在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库：
 
-```txt
+<!-- @[content_embed_server_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/CMakeLists.txt) -->  
+
+``` Text
 target_link_libraries(entry PUBLIC
     libcontent_embed_ndk.so
     libhilog_ndk.z.so
@@ -112,15 +114,21 @@ target_link_libraries(entry PUBLIC
     libpixelmap.so
     libability_runtime.so
     libability_base_want.so
-    libohfileuri.so
     libimage_source.so
+    libohfileuri.so
+    libuv.so
 )
 ```
 
 ### 导入头文件
 
-```cpp
+<!-- @[content_embed_server_include_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 #include <cstdint>
+#include <string>
+#include <vector>
+#include <unordered_map>
 #include <fstream>
 #include <hilog/log.h>
 #include <AbilityKit/ability_base/want.h>
@@ -133,7 +141,9 @@ target_link_libraries(entry PUBLIC
 
 ### 定义全局变量
 
-```cpp
+<!-- @[content_embed_server_global_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static ContentEmbed_ExtensionInstanceHandle g_instance = nullptr;
 ```
 
@@ -141,8 +151,12 @@ static ContentEmbed_ExtensionInstanceHandle g_instance = nullptr;
 
 当OE服务端应用的OE Extension被系统启动以响应OE客户端请求时，首先执行[OH_AbilityRuntime_OnNativeExtensionCreate](../reference/apis-ability-kit/capi-extension-ability-h.md#oh_abilityruntime_onnativeextensioncreate)函数，需在该函数中注册OE Extension回调，以响应客户端请求。
 
-```cpp
-extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_ExtensionInstance *instance, const char *abilityName) {
+<!-- @[content_embed_server_register_extension_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
+extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_ExtensionInstance *instance,
+                                                          const char *abilityName)
+{
     if (instance == nullptr) {
         OH_LOG_ERROR(LOG_APP, "instance is null");
         return;
@@ -186,7 +200,9 @@ extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_Extensi
 
 ### 实现创建和销毁生命周期回调函数
 
-```cpp
+<!-- @[content_embed_server_on_create_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void NativeOnCreate(ContentEmbed_ExtensionInstanceHandle instance, AbilityBase_Want *want)
 {
     OH_LOG_INFO(LOG_APP, "enter NativeOnCreate");
@@ -204,20 +220,25 @@ static void NativeOnDestroy(ContentEmbed_ExtensionInstanceHandle instance)
 
 当OE客户端调用[OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork)函数将客户端OE对象与服务端OE对象解除绑定时，系统会触发OE服务端的`RegisterOnObjectDetachFunc`回调，在该回调后服务端OE对象将失效。
 
-```cpp
+<!-- @[content_embed_server_on_object_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
 {
+    // ...
     ContentEmbed_ErrorCode ret = CE_ERR_OK;
     // 当OE文档是通过文件创建的时候执行该回调函数
     ret = OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc(object, NativeOnWriteToDataStream);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc failed, errCode: %{public}d.", ret);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc failed, errCode: %{public}d.", ret);
         return;
     }
     // 获取当前OE Extension的能力
     ret = OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc(object, NativeOnGetCapability);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc failed, errCode: %{public}d.", ret);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc failed, errCode: %{public}d.", ret);
         return;
     }
     // OE文档触发编辑操作
@@ -235,7 +256,8 @@ static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle inst
     // OE文档查询当前编辑状态
     ret = OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc(object, NativeOnGetEditStatusFunc);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc failed, errCode: %{public}d.", ret);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc failed, errCode: %{public}d.", ret);
         return;
     }
 }
@@ -243,6 +265,7 @@ static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle inst
 static void RegisterOnObjectDetachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
 {
     OH_LOG_INFO(LOG_APP, "enter RegisterOnObjectDetachFunc");
+    // ...
 }
 ```
 
@@ -250,43 +273,56 @@ static void RegisterOnObjectDetachFunc(ContentEmbed_ExtensionInstanceHandle inst
 
 当OE客户端通过新建对象类型或已存在文件来嵌入OE对象时，OE对象在OE客户端界面中可能呈现为文档快照（Snapshot），当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot)获取文档快照，此时会触发OE服务端的`NativeOnGetSnapshot`回调，在该回调中OE服务端应用需调用[OH_ContentEmbed_Extension_SetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_setsnapshot)设置OE文档快照。
 
-```cpp
+<!-- @[content_embed_server_on_get_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
 {
-    // 当前OE文档快照路径
-    std::string path = "/data/storage/el2/base/haps/entry/temp/snapshot_demo.png";
+    // ...
+    std::string objectKey = std::to_string(reinterpret_cast<uintptr_t>(object));
+    std::string path = "/data/storage/el2/base/haps/entry/temp/web_snapshot_" + objectKey + ".png";
     // 判断当前是否有UI生成的缩略图
     FILE *srcFile = fopen(path.c_str(), "rb");
     if (!srcFile) {
-        OH_LOG_ERROR(LOG_APP, "文件打开失败");
+        OH_LOG_ERROR(LOG_APP, "Open file failed");
         return;
     }
     int fd = fileno(srcFile);
-    // 创建ImageSource实例。
+    // 创建ImageSource实例
     OH_ImageSourceNative *source = nullptr;
     Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromFd(fd, &source);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreateFromFd failed, errCode: %{public}d.", errCode);
+        if (fclose(srcFile) != 0) {
+            OH_LOG_ERROR(LOG_APP, "NativeOnGetSnapshot fclose failed after CreateFromFd.");
+        }
         return;
     }
-    // 通过图片解码参数创建PixelMap对象。
+    // 通过图片解码参数创建PixelMap对象
     OH_DecodingOptions *ops = nullptr;
     OH_DecodingOptions_Create(&ops);
-    // 设置为AUTO会根据图片资源格式解码，如果图片资源为HDR资源则会解码为HDR的pixelmap。
+    // 设置为AUTO会根据图片资源格式解码，如果图片资源为HDR资源则会解码为HDR的pixelmap
     OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
     OH_PixelmapNative *resPixMap = nullptr;
-
-    // ops参数支持传入nullptr, 当不需要设置解码参数时，不用创建。
+    // ops参数支持传入nullptr, 当不需要设置解码参数时，不用创建
     errCode = OH_ImageSourceNative_CreatePixelmap(source, ops, &resPixMap);
     OH_DecodingOptions_Release(ops);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreatePixelmap failed, errCode: %{public}d.", errCode);
+        OH_ImageSourceNative_Release(source);
+        if (fclose(srcFile) != 0) {
+            OH_LOG_ERROR(LOG_APP, "NativeOnGetSnapshot fclose failed after CreatePixelmap.");
+        }
         return;
     }
     // 设置快照
     ContentEmbed_ErrorCode ret = OH_ContentEmbed_Extension_SetSnapshot(object, resPixMap);
-    // 释放ImageSource实例。
+    // 释放ImageSource实例
     OH_ImageSourceNative_Release(source);
+    OH_PixelmapNative_Release(resPixMap);
+    if (fclose(srcFile) != 0) {
+        OH_LOG_ERROR(LOG_APP, "NativeOnGetSnapshot fclose failed.");
+    }
 }
 ```
 
@@ -294,92 +330,162 @@ static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
 
 当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_DoEdit](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_doedit)通知OE服务端编辑OE文档，此时会触发OE服务端的`NativeOnDoEdit`回调，在该回调中OE服务端应用需调用[OH_ContentEmbed_Extension_ContextStartSelfUIAbility](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)或[OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)启动OE服务端应用的UIAbility编辑文档。
 
-```cpp
-static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
+<!-- @[content_embed_server_on_do_edit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
+constexpr const char* TEMP_CACHE_PATH_PREFIX = "/data/storage/el2/base/cache/temp_";
+constexpr const char* DOC_STREAM_NAME = "aaa";
+constexpr uint32_t BUNDLE_NAME_BUFFER_SIZE = 100;
+static void SetTempWantUri(AbilityBase_Want *want, const std::string &objectKey)
 {
-    ContentEmbed_ErrorCode ret = CE_ERR_OK;
-    ContentEmbed_Document* ceDocument;
-    // 获取当前OE文档
-    ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, &ceDocument);
-    if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument failed, errCode: %{public}d.", ret);
-        return;
+    // 设置文件路径
+    std::string tempPath = std::string(TEMP_CACHE_PATH_PREFIX) + objectKey + ".aaa";
+    char *tempFileUri = nullptr;
+    OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
+    if (tempFileUri != nullptr) {
+        OH_AbilityBase_SetWantUri(want, tempFileUri);
+        free(tempFileUri);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "SetTempWantUri GetUriFromPath returned null: %{public}s", tempPath.c_str());
     }
-    // 获取当前上下文实例
-    ContentEmbed_ExtensionContextHandle context;
-    ret = OH_ContentEmbed_Extension_GetContentEmbedContext(g_instance, &context);
-    if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedContext failed, errCode: %{public}d.", ret);
-        return;
+}
+
+static AbilityBase_Want* PrepareDoEditWant(ContentEmbed_Document* ceDocument, const std::string& objectKey,
+                                           char* bundleNameBuffer, uint32_t bundleNameBufferSize)
+{
+    // ...
+    int32_t writeLen = 0;
+    AbilityRuntime_ErrorCode abilityCode =
+        OH_AbilityRuntime_ApplicationContextGetBundleName(bundleNameBuffer, bundleNameBufferSize, &writeLen);
+    if (abilityCode != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
+        OH_LOG_ERROR(LOG_APP, "OnCreate get bundleName failed: %{public}d", abilityCode);
+        return nullptr;
     }
-    // 需要启动的UIAbility的信息
-    char* bundleName = "com.example.oeserverdemo"; // 服务端应用的包名
-    char* moduleName = "entry";
-    char* abilityName = "EntryAbility";
-    // 创建Want对象
+    const char* moduleName = "entry";
+    const char* abilityName = "EntryAbility";
     AbilityBase_Element element = {
-        .bundleName = bundleName,
-        .moduleName = moduleName,
-        .abilityName = abilityName,
+        .bundleName = bundleNameBuffer,
+        .moduleName = const_cast<char*>(moduleName),
+        .abilityName = const_cast<char*>(abilityName),
     };
     AbilityBase_Want* want = OH_AbilityBase_CreateWant(element);
-    // 获取OE文档的RootStorage
-    ContentEmbed_Storage *rootStorage = nullptr;
+    if (want == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "NativeOnDoEdit CreateWant failed");
+        return nullptr;
+    }
+    // ...
+    return want;
+}
+
+static bool WriteEmbeddedDocToTemp(ContentEmbed_Stream* childStream, AbilityBase_Want* want,
+                                   const std::string& objectKey)
+{
+    size_t bufferSize = 0;
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Stream_GetSize(childStream, &bufferSize);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_GetSize failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    ret = OH_ContentEmbed_Stream_Seek(childStream, 0);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Seek failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    unsigned char* buffer = nullptr;
+    size_t num = 0;
+    ret = OH_ContentEmbed_Stream_Read(childStream, &buffer, bufferSize, &num);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Read failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    std::string tempPath = std::string(TEMP_CACHE_PATH_PREFIX) + objectKey + ".aaa";
+    std::ofstream outputFile(tempPath, std::ios::out | std::ios::binary);
+    if (outputFile.is_open()) {
+        outputFile.write(reinterpret_cast<const char*>(buffer), bufferSize);
+        outputFile.close();
+        OH_LOG_INFO(LOG_APP, "Write data successful.");
+    } else {
+        OH_LOG_ERROR(LOG_APP, "Cannot open output file.");
+    }
+    SetTempWantUri(want, objectKey);
+    return true;
+}
+
+// ...
+
+static bool AcquireDoEditResources(ContentEmbed_ObjectHandle object, const std::string& objectKey,
+                                   ContentEmbed_Document** doc, ContentEmbed_ExtensionContextHandle* ctx,
+                                   AbilityBase_Want** want, char* bundleNameBuffer,
+                                   uint32_t bundleNameBufferSize)
+{
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, doc);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    ret = OH_ContentEmbed_Extension_GetContentEmbedContext(g_instance, ctx);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedContext failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    *want = PrepareDoEditWant(*doc, objectKey, bundleNameBuffer, bundleNameBufferSize);
+    return *want != nullptr;
+}
+
+static void ReleaseDoEditResources(AbilityBase_Want* want, ContentEmbed_Stream* childStream,
+                                   ContentEmbed_Storage* rootStorage)
+{
+    if (want != nullptr) {
+        OH_AbilityBase_DestroyWant(want);
+    }
+    if (childStream != nullptr) {
+        OH_ContentEmbed_DestroyStream(childStream);
+    }
+    if (rootStorage != nullptr) {
+        OH_ContentEmbed_DestroyStorage(rootStorage);
+    }
+}
+
+static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
+{
+    // ...
+    std::string objectKey = std::to_string(reinterpret_cast<uintptr_t>(object));
+    char bundleNameBuffer[BUNDLE_NAME_BUFFER_SIZE] = {};
+    ContentEmbed_Document* ceDocument = nullptr;
+    ContentEmbed_ExtensionContextHandle context = nullptr;
+    AbilityBase_Want* want = nullptr;
+    // 获取ceDocument、context、设置want
+    if (!AcquireDoEditResources(object, objectKey, &ceDocument, &context, &want,
+                                 bundleNameBuffer, BUNDLE_NAME_BUFFER_SIZE)) {
+        return;
+    }
+    ContentEmbed_ErrorCode ret = CE_ERR_OK;
+    ContentEmbed_Storage* rootStorage = nullptr;
+    ContentEmbed_Stream* childStream = nullptr;
     ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage failed, errCode: %{public}d.", ret);
+        ReleaseDoEditResources(want, childStream, rootStorage);
         return;
     }
-    // 判断document中是否有指定stream
-    ContentEmbed_Stream *childStream;
-    char* fileType = "aaa";
-    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, fileType, &childStream);
+    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, DOC_STREAM_NAME, &childStream);
     if (ret == CE_ERR_OK) {
-        size_t bufferSize;
-        // 获取OE文档流的大小
-        ret = OH_ContentEmbed_Stream_GetSize(childStream, &bufferSize);
-        if (ret != CE_ERR_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_GetSize failed, errCode: %{public}d.", ret);
+        if (!WriteEmbeddedDocToTemp(childStream, want, objectKey)) {
+            ReleaseDoEditResources(want, childStream, rootStorage);
             return;
         }
-        // Read之前需要将流位置重置
-        ret = OH_ContentEmbed_Stream_Seek(childStream, 0);
-        if (ret != CE_ERR_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Seek failed, errCode: %{public}d.", ret);
-            return;
-        }
-        unsigned char *buffer;
-        size_t num = 0;
-        // 读取流数据
-        ret = OH_ContentEmbed_Stream_Read(childStream, &buffer, bufferSize, &num);
-        if (ret != CE_ERR_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Read failed, errCode: %{public}d.", ret);
-            return;
-        }
-        std::string tempPath = "/data/storage/el2/base/cache/temp_demo.aaa";
-        // 创建输出文件流对象，并以二进制模式打开文件
-        std::ofstream outputFile(tempPath, std::ios::out | std::ios::binary);
-        // 检查文件是否成功打开
-        if (outputFile.is_open()) {
-            // 将缓冲区内容写入文件
-            outputFile.write(reinterpret_cast<const char*>(buffer), bufferSize);
-            // 关闭文件（析构函数会自动调用，但显式关闭是好习惯）
-            outputFile.close();
-            OH_LOG_INFO(LOG_APP, "数据写入成功.");
-        } else {
-            OH_LOG_ERROR(LOG_APP, "无法打开文件.");
-        }
-        char* tempFileUri;
-        OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
-        // 设置文件路径
-        OH_AbilityBase_SetWantUri(want, tempFileUri);
+    } else {
+        // ...
     }
     // 启动UIAbility 对文档进行编辑操作
     ret = OH_ContentEmbed_Extension_ContextStartSelfUIAbility(context, want);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_ContextStartSelfUIAbility failed, errCode: %{public}d.", ret);
+        ReleaseDoEditResources(want, childStream, rootStorage);
         return;
     }
+    ReleaseDoEditResources(want, childStream, rootStorage);
+    // ...
 }
 ```
 
@@ -387,7 +493,9 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
 
 当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetCapability](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getcapability)获取OE服务端具备的能力，此时会触发OE服务端的`NativeOnGetCapability`回调，在该回调中OE服务端应用通过给`bitmask`属性赋值，通知OE客户端自身具备的能力。
 
-```cpp
+<!-- @[content_embed_server_on_get_capability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bitmask)
 {
     if (!bitmask) {
@@ -402,7 +510,9 @@ static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bi
 
 当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetEditStatus](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_geteditstatus)获取OE文档编辑状态，此时会触发OE服务端的`NativeOnGetEditStatusFunc`回调，在该回调中OE服务端应用通知OE客户端文档编辑状态。
 
-```cpp
+<!-- @[content_embed_server_on_get_edit_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->
+
+``` C++
 static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *isEditing, bool *isModified)
 {
     if (!isEditing || !isModified) {
@@ -412,6 +522,7 @@ static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *is
     // 若文档未处于编辑态
     *isEditing = false;
     *isModified = false;
+    // ...
 }
 ```
 
@@ -419,7 +530,56 @@ static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *is
 
 当OE客户端通过已存在文件来嵌入OE对象且OE Extension被启动后，此时会触发OE服务端的`NativeOnWriteToDataStream`回调，在该回调中OE服务端需往OE文档中写入数据。
 
-```cpp
+<!-- @[content_embed_server_on_write_to_data_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
+// 获取名字为aaa的流
+constexpr const char* DOCUMENT_STREAM_NAME = "aaa";
+static ContentEmbed_ErrorCode OpenOrCreateChildStream(ContentEmbed_Document *document,
+                                                      ContentEmbed_Stream **stream)
+{
+    ContentEmbed_Storage *rootStorage = nullptr;
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Document_GetRootStorage(document, &rootStorage);
+    if (ret != CE_ERR_OK || rootStorage == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "OpenOrCreateChildStream GetRootStorage failed: %{public}d", ret);
+        return ret;
+    }
+    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, DOCUMENT_STREAM_NAME, stream);
+    if (ret != CE_ERR_OK) {
+        ret = OH_ContentEmbed_Storage_CreateStream(rootStorage, DOCUMENT_STREAM_NAME, stream);
+    }
+    OH_ContentEmbed_DestroyStorage(rootStorage);
+    if (ret != CE_ERR_OK || *stream == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "OpenOrCreateChildStream open/create stream failed: %{public}d", ret);
+        if (*stream != nullptr) {
+            OH_ContentEmbed_DestroyStream(*stream);
+            *stream = nullptr;
+        }
+        return ret;
+    }
+    return CE_ERR_OK;
+}
+
+static ContentEmbed_ErrorCode WriteFileToStream(ContentEmbed_Stream *stream, const std::string &filePath)
+{
+    std::ifstream oriFile(filePath, std::ios::binary);
+    if (!oriFile) {
+        OH_LOG_ERROR(LOG_APP, "WriteFileToStream open file failed: %{public}s", filePath.c_str());
+        return CE_ERR_FILE_OPERATION_FAILED;
+    }
+    oriFile.seekg(0, std::ios::end);
+    size_t oriFileSize = static_cast<size_t>(oriFile.tellg());
+    oriFile.seekg(0, std::ios::beg);
+    std::vector<unsigned char> buffer(oriFileSize);
+    oriFile.read(reinterpret_cast<char *>(buffer.data()), static_cast<std::streamsize>(oriFileSize));
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Stream_Seek(stream, 0);
+    OH_LOG_INFO(LOG_APP, "WriteFileToStream Seek ret: %{public}d", ret);
+    size_t num = 0;
+    ret = OH_ContentEmbed_Stream_Write(stream, buffer.data(), oriFileSize, &num);
+    OH_LOG_INFO(LOG_APP, "WriteFileToStream Write ret: %{public}d, num: %{public}zu", ret, num);
+    return ret;
+}
+
 static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
 {
     ContentEmbed_ErrorCode ret = CE_ERR_OK;
@@ -430,53 +590,35 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
         return;
     }
-    // 获取Root Storage
-    ContentEmbed_Storage *rootStorage = nullptr;
-    ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
+    ContentEmbed_Stream* destStream = nullptr;
+    ret = OpenOrCreateChildStream(ceDocument, &destStream);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OpenOrCreateChildStream failed: %{public}d", ret);
         return;
     }
-
-    ContentEmbed_Stream *destStream;
-    char* fileType = "aaa";
-    // 获取名字为aaa的流
-    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, fileType, &destStream);
-    if (ret != CE_ERR_OK) {
-        // 获取失败创建名字为aaa的流
-        ret = OH_ContentEmbed_Storage_CreateStream(rootStorage, fileType, &destStream);
-    }
     // 获取本地文件路径
-    char nativeFilePath[MAX_PATH_LENGTH];
+    char nativeFilePath[MAX_PATH_LENGTH] = {0};
     ret = OH_ContentEmbed_Document_GetNativeFilePath(ceDocument, nativeFilePath);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
+        OH_ContentEmbed_DestroyStream(destStream);
         return;
     }
-
-    std::string srcStreamPath = std::string(nativeFilePath);
-    std::ifstream oriFile(srcStreamPath, std::ios::binary);
-    if (!oriFile) {
-        OH_LOG_ERROR(LOG_APP, "File not found");
-        return;
-    }
-    oriFile.seekg(0, std::ios::end);
-    size_t oriFileSize = oriFile.tellg();
-    oriFile.seekg(0, std::ios::beg);
-    std::vector<unsigned char> buffer(oriFileSize);
-    oriFile.read(reinterpret_cast<char*>(buffer.data()), oriFileSize);
-    size_t num = 0;
-    // 往OE文档写数据
-    ret = OH_ContentEmbed_Stream_Write(destStream, buffer.data(), oriFileSize, &num);
+    // 读取本地文件，往OE文档写数据
+    ret = WriteFileToStream(destStream, nativeFilePath);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "WriteFileToStream ret: %{public}d", ret);
+        OH_ContentEmbed_DestroyStream(destStream);
         return;
     }
     // 刷新OE文档
     ret = OH_ContentEmbed_Document_Flush(ceDocument);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
+        OH_ContentEmbed_DestroyStream(destStream);
         return;
     }
+    OH_LOG_INFO(LOG_APP, "enter NativeOnWriteToDataStream %{public}p", object);
+    OH_ContentEmbed_DestroyStream(destStream);
 }
 ```
