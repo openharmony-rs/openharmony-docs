@@ -65,6 +65,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -105,6 +106,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -168,6 +170,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -214,6 +217,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -271,6 +275,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
