@@ -159,7 +159,7 @@
 | [void OH_Drawing_DestroyFontDescriptor(OH_Drawing_FontDescriptor* descriptor)](#oh_drawing_destroyfontdescriptor) | 释放字体描述对象占用的内存。 |
 | [OH_Drawing_FontParser* OH_Drawing_CreateFontParser(void)](#oh_drawing_createfontparser) | 构造字体解析对象，用于解析系统字体。 |
 | [void OH_Drawing_DestroyFontParser(OH_Drawing_FontParser* parser)](#oh_drawing_destroyfontparser) | 释放字体解析对象占用的内存。 |
-| [char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser, size_t* num)](#oh_drawing_fontparsergetsystemfontlist) | 获取系统字体名称列表。仅在Phone、PC/2in1设备上支持。 |
+| [char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser, size_t* num)](#oh_drawing_fontparsergetsystemfontlist) | 获取系统预置的、用户可选的字体名称列表，名称与系统语言环境相匹配。仅在Phone、PC/2in1设备上支持。 |
 | [void OH_Drawing_DestroySystemFontList(char** fontList, size_t num)](#oh_drawing_destroysystemfontlist) | 释放系统字体名称列表占用的内存。 |
 | [OH_Drawing_FontDescriptor* OH_Drawing_FontParserGetFontByName(OH_Drawing_FontParser* fontParser, const char* name)](#oh_drawing_fontparsergetfontbyname) | 根据传入的系统字体名称获取系统字体的相关信息。仅在Phone、PC/2in1设备上支持，其他设备上调用返回nullptr。 |
 | [OH_Drawing_LineMetrics* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typography* typography)](#oh_drawing_typographygetlinemetrics) | 获取排版对象的行位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。不再需要[OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)时，请使用[OH_Drawing_DestroyLineMetrics](capi-drawing-text-typography-h.md#oh_drawing_destroylinemetrics)接口释放该对象的指针。 |
@@ -2907,7 +2907,7 @@ char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser,
 
 **描述**
 
-获取系统字体名称列表。不再需要该列表时，请使用[OH_Drawing_DestroySystemFontList](#oh_drawing_destroysystemfontlist)释放内存。此接口仅在Phone、PC/2in1设备上支持。
+获取系统预置的、用户可选的字体名称列表，即“字体样式”设置中用户可选择的预置字体，不包含多语言回退字体、用户安装字体和应用内注册的自定义字体。返回的名称与系统语言环境相匹配，字体未提供当前语言的名称时返回其默认名称。该名称仅可用于[OH_Drawing_FontParserGetFontByName](#oh_drawing_fontparsergetfontbyname)查询字体详情，与[OH_Drawing_GetSystemFontFullNamesByType](capi-drawing-text-font-descriptor-h.md#oh_drawing_getsystemfontfullnamesbytype)返回的字体全名不通用，后者返回的名称不随系统语言变化，且支持按字体类型过滤（包含安装字体和自定义字体）。不再需要该列表时，请使用[OH_Drawing_DestroySystemFontList](#oh_drawing_destroysystemfontlist)释放内存。此接口仅在Phone、PC/2in1设备上支持。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -2919,13 +2919,13 @@ char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_FontParser](capi-drawing-oh-drawing-fontparser.md)* fontParser | 指向字体解析对象[OH_Drawing_FontParser](capi-drawing-oh-drawing-fontparser.md)的指针，由[OH_Drawing_CreateFontParser](capi-drawing-text-typography-h.md#oh_drawing_createfontparser)获取。 |
-| size_t* num | 返回获取到的系统字体名称数量。 |
+| size_t* num | 返回获取到的字体名称数量。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| char** | 返回获取到的系统字体列表。 |
+| char** | 返回获取到的字体名称列表（UTF-8编码），名称与系统语言环境相匹配。 |
 
 ### OH_Drawing_DestroySystemFontList()
 
