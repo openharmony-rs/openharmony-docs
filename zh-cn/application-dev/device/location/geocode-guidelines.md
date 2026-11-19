@@ -32,7 +32,7 @@
 > 正地理编码与逆地理编码功能需要访问后端服务，请确保设备联网，以进行信息获取。
 
 1. 导入geoLocationManager模块，所有与正地理编码和逆地理编码能力相关的功能API，都是通过该模块提供的。
-   <!-- @[Start location_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+   <!-- @[location_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
    ```
