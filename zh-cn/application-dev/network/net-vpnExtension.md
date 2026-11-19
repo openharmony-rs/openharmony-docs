@@ -355,7 +355,11 @@ let vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection
 vpnConnection.create(vpnConfig).then((data) => {
   hilog.info(0x0000, 'testTag', 'vpn create ' + JSON.stringify(data));
   // ...
-})
+}).catch((err: BusinessError) => {
+  // 如果 VPN 创建失败，捕获异常并处理
+  hilog.error(0x0000, 'testTag', 'developTag', 'vpn start Fail %{public}s', JSON.stringify(err) ?? '');
+  // ...
+});
 ```
 
 ## VPN Demo示例
