@@ -25,7 +25,7 @@ OpenHarmony为开发者提供了两种Docker环境，以帮助开发者快速完
 
 1. 安装Docker
    - 在Ubuntu中，可以使用下面的命令来安装Docker：
-      ```
+      ```shell
       sudo apt install docker.io
       ```
    - 其他系统的Docker安装请参考[Docker指导](https://docs.docker.com/engine/install/)。
@@ -33,7 +33,7 @@ OpenHarmony为开发者提供了两种Docker环境，以帮助开发者快速完
 2. 获取OpenHarmony源码
 
    请参考[获取源码](sourcecode-acquire.md)。
-   > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
+   > **说明：**
    > HPM Docker环境无需单独获取源码。
 
 3. 获取使用权限
@@ -50,11 +50,11 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
 
    获取小型系统镜像的命令为：
 
-   ```
+   ```text
    docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_small:3.2
    ```
    获取轻量系统镜像的命令为：
-   ```
+   ```text
    docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_mini:3.2
    ```
 
@@ -64,7 +64,7 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
 
    - Ubuntu系统：
      
-      ```
+      ```text
       # 进入小型系统Docker构建环境
       docker run -it -v $(pwd):/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_small:3.2
 
@@ -74,7 +74,7 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
 
    - Windows系统（假设源码目录为`D:\OpenHarmony`）：
 
-      ```
+      ```text
       # 进入小型系统Docker构建环境
       docker run -it -v D:\OpenHarmony:/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_small:3.2
 
@@ -82,7 +82,7 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
       docker run -it -v D:\OpenHarmony:/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_mini:3.2
       ```
 
-   > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
+   > **说明：**
    > `docker run -it -v $(pwd):/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_small:3.2` 这个命令的含义是，创建并运行一个新的OpenHarmony的Docker容器，这个容器运行在交互模式下，并且将当前目录映射到容器的/home/openharmony目录。
 
 ### 编译源码（轻量系统和小型系统）
@@ -91,7 +91,7 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
 
    执行`docker run`命令进入Docker容器后（此时位于`/home/openharmony`路径下），您可以通过如下编译脚本启动轻量系统类设备（参考内存≥128KiB）和小型系统类设备（参考内存≥1MiB）的编译。
 
-   ```
+   ```shell
    python3 build.py -p {product_name}@{company}
    ```
 
@@ -99,13 +99,13 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
    
    举个例子，如果您要编译的产品为`hisilicon`下的`ipcamera_hispark_taurus`，您可以输入以下命令来启动编译：
 
-   ```
+   ```shell
    python3 build.py -p ipcamera_hispark_taurus@hisilicon
    ```
 
    同样，如果您要编译的产品是`ohemu`下的`qemu_small_system_demo`，那么您可以输入以下命令来启动编译：
 
-   ```
+   ```shell
    python3 build.py -p qemu_small_system_demo@ohemu
    ```
 
@@ -113,7 +113,7 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
 
    在编译结束后，编译所生成的文件都会被存放在`out/{device_name}/`目录下，结果镜像输出在`out/{device_name}/packages/phone/images/`目录下。
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
+> **说明：**
 > 如需退出Docker，执行`exit`命令即可。这个命令会停止当前的Docker容器，并返回到您的操作系统。
 
 ### 搭建Docker环境（标准系统）
@@ -122,7 +122,7 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
 
    在搭建标准系统的Docker环境前，我们也需要先获取对应的Docker镜像。具体的命令如下：
      
-   ```
+   ```text
    docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
    ```
 
@@ -132,13 +132,13 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
      
    - Ubuntu系统
 
-      ```
+      ```text
       docker run -it -v $(pwd):/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
       ```
 
    - Windows系统（假设源码目录为`D:\OpenHarmony`）
 
-      ```
+      ```text
       docker run -it -v D:\OpenHarmony:/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
       ```
 
@@ -148,20 +148,21 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
 
    执行`docker run`命令进入Docker容器后（此时位于`/home/openharmony`路径下），您可以通过如下编译脚本启动标准系统类设备（参考内存≥128MB）的编译。
   
-   ```
+   ```shell
    ./build.sh --product-name {product_name} --ccache
    ```
 
    `{product_name}`为当前版本支持的平台。例如，您要编译的产品是`rk3568`，那么您可以输入以下命令来启动编译：
 
-   ```
+   ```shell
    ./build.sh --product-name rk3568 --ccache
    ```
 
 2. 查看编译结果\
+
    编译所生成的文件都归档在`out/{device_name}/`目录下，结果镜像输出在`out/{device_name}/packages/phone/images/`目录下。
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
+> **说明：**
 > 如需退出Docker，执行`exit`命令即可。这个命令会停止当前的Docker容器，并返回到您的操作系统。
 
 
@@ -176,7 +177,7 @@ docker_dist是一个[HPM](https://hpm.harmonyos.com/)系统中的模板组件，
 
    在任意工作目录中执行以下命令
      
-   ```
+   ```shell
    hpm init -t @ohos/docker_dist
    ```
 
@@ -197,7 +198,7 @@ docker_dist是一个[HPM](https://hpm.harmonyos.com/)系统中的模板组件，
   命令后接参数指定解决方案，格式如下：
 
     
-  ```
+  ```shell
   hpm run docker solution={product}
   ```
 
@@ -209,20 +210,20 @@ docker_dist是一个[HPM](https://hpm.harmonyos.com/)系统中的模板组件，
 
   1. 选择解决方案。
         
-      ```
+      ```js
       export solution={product}
       ```
 
       {product}为需编译的解决方案，如：\@ohos/hispark_taurus、\@ohos/hispark_aries、\@ohos/hispark_pegasus。
   2. 获取源码及执行编译。
         
-      ```
+      ```shell
       hpm run docker
       ```
 
     以上两种方式以\@ohos/hispark_taurus为例，执行成功结果如下：
     
-  ```
+  ```text
   ......
   ohos ipcamera_hispark_taurus build success!
   @ohos/hispark_taurus: distribution building completed.
@@ -232,7 +233,7 @@ docker_dist是一个[HPM](https://hpm.harmonyos.com/)系统中的模板组件，
   自行安装docker相关操作如下：
 
     
-  ```
+  ```shell
   # 拉取镜像 
   docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:0.0.3
   # linux环境下的编译 

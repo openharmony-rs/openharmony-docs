@@ -8,20 +8,20 @@
    
    命令查询结果如system、chipset、sys_prod、chip_prod等，并且返回的顺序越靠后优先级越高，如chip_prod的优先级高于system的优先级。本文以路径/system/etc/app/为例。
 
-```
+```shell
 hdc shell param get const.cust.config_dir_layer
 ```
 
-2. 在install_list.json中配置hap在设备上的路径。
+1. 在install_list.json中配置hap在设备上的路径。
 
-```
+```shell
 hdc shell mount -o rw,remount /
 hdc file recv /system/etc/app/install_list.json .
 ```
 
-3. 按照json中的配置方式，配置对应的字段。
+1. 按照json中的配置方式，配置对应的字段。
 
-```
+```json
 {
     "install_list" : [
         {
@@ -32,9 +32,9 @@ hdc file recv /system/etc/app/install_list.json .
 }
 ```
 
-4. 修改完成后，将install_list.json文件推送到设备上，并重启设备生效。
+1. 修改完成后，将install_list.json文件推送到设备上，并重启设备生效。
 
-```
+```shell
     hdc shell mount -o rw,remount /
     hdc file send install_list.json /system/etc/app/install_list.json
     hdc shell reboot
@@ -46,7 +46,7 @@ hdc file recv /system/etc/app/install_list.json .
 
 - 方法一：直接清空data，重启设备，应用会自动安装。
 
-```
+```shell
     hdc shell mount -o rw,remount / 
     hdc shell rm /data/* -rf
     hdc shell sync
@@ -57,7 +57,7 @@ hdc file recv /system/etc/app/install_list.json .
 
     如果应用之前已经安装过，这时推送新的hap到/system/app/路径下，需保证应用的版本号（Stage模型下对应app.json5配置文件中的[versionCode](../../application-dev/quick-start/app-configuration-file.md)标签；FA模型下对应配置文件中的[code](../../application-dev/quick-start/app-structure.md#version对象内部结构)标签）大于之前的版本号。 
 
-```
+```shell
     hdc shell mount -o rw,remount /
     hdc shell param set persist.bms.test-upgrade true
     hdc shell reboot
@@ -69,7 +69,7 @@ hdc file recv /system/etc/app/install_list.json .
 
 ### 示例一
 
-```
+```json
 /system/etc/app/uninstall_list.json
 {
     "uninstall_list" : ["/system/app/Hiworld"],  // 配置后，则Hiworld不会被安装
@@ -79,7 +79,7 @@ hdc file recv /system/etc/app/install_list.json .
 
 ### 示例二
 
-```
+```json
 /system/etc/app/uninstall_list.json
 {
     "uninstall_list" : ["/system/app/Hiworld"],
