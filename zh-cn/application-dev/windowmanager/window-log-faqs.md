@@ -71,7 +71,7 @@ total window num: 12
 | DisplayId | 显示设备ID | 屏幕设备的唯一标识，0表示主屏幕，多屏场景下可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕的DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
-| Type | 窗口类型 | 应用主窗口为1；应用子窗口为1000+（1001表示普通应用子窗）；系统窗口为2000+。该值是系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举（ArkTS接口枚举）取值不同。 |
+| Type | 窗口类型 | 应用主窗口为1；应用子窗口为1000+（1001表示普通应用子窗口）；系统窗口为2000+。该值是系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同。 |
 | Mode | 窗口模式 | 1表示全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
 | Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
@@ -83,15 +83,13 @@ Type字段取值与窗口类型的对应关系如下表所示：
 | Type取值 | 窗口类型 | 说明 |
 |------|------|------|
 | 1 | 应用主窗口 | 应用默认创建的主窗口，如示例中的note0（备忘录）、camera0（相机）。 |
-| 1001 | 普通应用子窗 | 通过createSubWindow()等接口创建的子窗口，如确认弹窗、菜单等。 |
-| 2000~2001 | 壁纸、桌面窗口 | 2000表示系统壁纸，2001表示Launcher桌面，如示例中的EntryView。 |
-| 2100+ | 应用之上的系统窗口 | 各类系统窗口，如输入法、Toast、状态栏、锁屏、导航条等，不同系统版本的具体取值存在差异，可通过窗口名称辅助判断，如示例中的SystemUi_StatusBar（状态栏）、ScreenLockWindow（锁屏）。 |
-| 2500+ | 系统子窗口 | 系统应用的子窗口。 |
+| 1001 | 普通应用子窗口 | 通过createSubWindow()等接口创建的子窗口，如确认弹窗、菜单等。 |
+| 2000+ | 系统窗口 | 主要为系统应用创建并使用的窗口（如状态栏、导航栏、桌面等），开发者通常不可创建；例外是全局悬浮窗，应用申请[ohos.permission.SYSTEM_FLOAT_WINDOW](../security/AccessToken/restricted-permissions.md#ohospermissionsystem_float_window)权限后可通过[createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)创建。该取值仅用于调试时识别窗口归属。 |
 
 > **说明：**
 >
 > - 上表仅列出调试中开发者可感知的常见取值，系统内部还存在其他窗口类型，此处不一一列举。
-> - 该取值为系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举（ArkTS接口枚举）取值不同，开发时请勿在应用代码中使用该数值。
+> - 该取值为系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同，开发时请勿在应用代码中使用该数值。
 
 ### 查看获焦窗口
 
@@ -157,7 +155,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | DisplayId | 显示设备ID     | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕信息。   |
 | WinId | 窗口唯一标识符    | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。                                                                                                       |
 | Pid | 进程ID       | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。                                                                                                      |
-| Type | 窗口类型       | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。                                                                                         |
+| Type | 窗口类型       | 窗口类型标识。1：表示为应用主窗口；1000+：表示为应用子窗口（1001：表示为普通应用子窗口）；2000+：表示为系统窗口。该值是系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同。 |
 | Mode | 窗口模式       | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
 | Flag | 状态标志位      | 状态标识值。当前该字段为预留字段，无实际意义。                                                                                                             |
 | Orientation | 窗口方向       | 窗口方向标识值。当前该字段为预留字段，无实际意义。                                                                                                           |
