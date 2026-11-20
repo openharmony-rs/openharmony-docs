@@ -52,7 +52,7 @@ const char *OH_BoardInfo_GetCpuId(void)
 ### OH_BoardInfo_GetBoardSn()
 
 ```c
-int32_t *OH_BoardInfo_GetBoardSn(char *boardSn)
+int32_t OH_BoardInfo_GetBoardSn(char *boardSn)
 ```
 
 **描述**
