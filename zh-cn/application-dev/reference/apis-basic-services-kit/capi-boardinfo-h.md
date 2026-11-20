@@ -16,7 +16,7 @@
 
 **系统能力：** SystemCapability.Startup.BoardInfo
 
-**起始版本：** 10
+**起始版本：** 26.1.0
 
 **相关模块：** [BoardInfo](capi-boardinfo.md)
 
