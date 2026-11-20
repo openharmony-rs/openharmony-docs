@@ -257,7 +257,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 | -------- | ------------------------------------------------------------ |
 | 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -730,7 +730,7 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 | -------- | ------------------------------------------------------------ |
 | 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Invalid number of parameters, expected 0 to 2 parameters.<br>2. Object is not a valid object.<br>3. Failed to extract callback.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. Failed to query the thumbnail. |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例：**
 
