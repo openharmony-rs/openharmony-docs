@@ -5,6 +5,7 @@
 <!--Designer: @leoqsl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:32:42.150Z pushedAt=2026-11-20T04:41:57.792Z nl=1 -->
 
 **OIS** inherits from [OISQuery](arkts-apis-camera-OISQuery.md).
 
@@ -27,6 +28,8 @@ setOISMode(mode: OISMode): void
 
 Sets the OIS mode.
 
+Before setting the OIS mode, call [isOISModeSupported](arkts-apis-camera-OISQuery.md#isoismodesupported24) to check whether the mode to be set supports the OIS capability.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
@@ -43,7 +46,7 @@ Sets the OIS mode.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, the inputDevice or the session is abnormal. |
 | 7400103 | Session not config. |
@@ -55,7 +58,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setOISMode(photoSession: camera.PhotoSession, mode: camera.OISMode): void {
   try {
-    photoSession.setOISMode(mode);
+    if (photoSession.isOISModeSupported(mode)) {
+      photoSession.setOISMode(mode);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setOISMode call failed. error code: ${err.code}`);
@@ -67,7 +72,7 @@ function setOISMode(photoSession: camera.PhotoSession, mode: camera.OISMode): vo
 
 setOISModeCustom(pitch: number, yaw: number): void
 
-Sets the OIS offset on each axis. This API can be called only when [OISMode](arkts-apis-camera-e.md#oismode24) is set to **CUSTOM**.
+Sets the custom OIS bias value for each axis. This API can be called only when [OISMode](arkts-apis-camera-e.md#oismode24) is **CUSTOM**. The current OIS mode is obtained through [getCurrentOISMode](arkts-apis-camera-OISQuery.md#getcurrentoismode24).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -86,7 +91,7 @@ Sets the OIS offset on each axis. This API can be called only when [OISMode](ark
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, the inputDevice or the session is abnormal. |
 | 7400103 | Session not config. |
@@ -97,6 +102,10 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function setOISModeCustom(photoSession: camera.PhotoSession, pitch: number, yaw: number): void {
+  if (photoSession.getCurrentOISMode() != camera.OISMode.CUSTOM) {
+    console.error(`current OISmode not supported for setting`);
+    return;
+  }
   try {
     photoSession.setOISModeCustom(pitch, yaw);
   } catch (error) {

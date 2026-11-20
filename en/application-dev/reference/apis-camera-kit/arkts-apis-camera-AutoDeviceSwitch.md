@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:24:06.348Z pushedAt=2026-11-19T11:46:56.182Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:24:06.348Z pushedAt=2026-11-20T01:06:22.860Z nl=1 -->
 
 **AutoDeviceSwitch** inherits from [AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md) and is used to enable or disable automatic camera switch. This capability can be used only on foldable devices. For details about the development, see [Practices for Automatic Camera Switching (ArkTS)](../../media/camera/camera-auto-switch.md).
 
@@ -45,7 +45,7 @@ Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupp
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                                                                                                                                      |
+| ID  | Error Message                                                                                                                                      |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed.<br>Applicable versions: 19+|
 | 7400102 | Operation not allowed.                                                                                                                         |

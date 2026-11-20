@@ -5,7 +5,7 @@
 <!--Designer: @leoqsl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:31:33.528Z pushedAt=2026-11-19T11:52:37.476Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:31:33.528Z pushedAt=2026-11-20T01:07:31.069Z nl=1 -->
 
 **ManualFocus** inherits from [ManualFocusQuery](arkts-apis-camera-ManualFocusQuery.md).
 
@@ -44,7 +44,7 @@ Before obtaining, [isFocusDistanceSupported](arkts-apis-camera-ManualFocusQuery.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |
@@ -91,7 +91,7 @@ Before setting, [isFocusDistanceSupported](arkts-apis-camera-ManualFocusQuery.md
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |
