@@ -119,7 +119,7 @@ wifi init success!
 
 ## 下一步学习
 
-恭喜，您已完成Hi3861 WLAN模组快速上手！建议您下一步进入的学习 。可参考：
+恭喜，您已完成Hi3861 WLAN模组快速上手！建议您进行下一步学习 。可参考：
 
 - [LED外设控制](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/guide/device-wlan-led-control.md)
 
