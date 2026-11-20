@@ -50413,6 +50413,16 @@
 						"start_line":1402
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":819,
+						"name":"update_on_cloud_size_change",
+						"start_line":784
+					}
+				]
 			}
 		]
 	},
