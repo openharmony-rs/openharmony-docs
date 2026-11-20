@@ -44,7 +44,7 @@
    ``` TypeScript
    let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
    if (!isGnssGeoFeceSupported) {
-       console.error("Current Device Do not Support GnssGeofence");
+       console.error('Current Device Do not Support GnssGeofence');
    }
    ```
 

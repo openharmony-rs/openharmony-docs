@@ -48,7 +48,7 @@
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
           if (!isAvailable) {
-              console.error("current device do not support geocoder");
+              console.error('current device do not support geocoder');
           }
       } catch (err) {
           console.error("errCode:" + err.code + ", message:"  + err.message);
