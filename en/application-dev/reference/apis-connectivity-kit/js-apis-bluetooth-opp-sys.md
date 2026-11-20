@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-10-09T13:09:50.078Z pushedAt=2026-10-10T07:09:25.221Z -->
+<!-- md-trans-meta sourceCommit=0c35e2da2a6ef71cfecc03dfb2bbc3c0f3345833 translatedAt=2026-11-18T04:02:59.989Z pushedAt=2026-11-20T09:22:31.326Z nl=1 -->
 
 The OPP module provides the Bluetooth-based file transfer functions, including sending files, receiving files, and obtaining the file transfer progress.
 
@@ -31,6 +31,8 @@ Creates an **OppServerProfile** instance.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -61,6 +63,10 @@ try {
 
 ## OppServerProfile
 
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+ 
+**Model restriction**: This API can be used only in the stage model.
+
 Represents the **OppServerProfile** class. Before using APIs of this class, you need to create an **OppServerProfile** instance by using the [createOppServerProfile ()](#createoppserverprofile).
 
 ### sendFile
@@ -74,6 +80,8 @@ Sends files over Bluetooth. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -150,6 +158,8 @@ Receives files over Bluetooth. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                         | Mandatory  | Description                      |
@@ -216,6 +226,8 @@ Subscribes to the progress and status changes of Bluetooth file transfer.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
@@ -273,11 +285,15 @@ Unsubscribes from the progress and status changes of Bluetooth file transfer.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The field has a fixed value of **transferStateChange**. After **off('transferStateChange')** is called, the file transfer progress and status change events will not be returned.|
+| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | No    | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [on('transferStateChange')](#ontransferstatechange). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.                  |
+
 
 **Error codes**
 
@@ -320,6 +336,8 @@ Subscribes to Bluetooth file transfer start events.
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -378,11 +396,14 @@ Unsubscribes from Bluetooth file transfer completion events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The field has a fixed value of **receiveIncomingFile**. After **off('receiveIncomingFile')** is called, an event will not be returned when file transfer stops.|
+| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | No    | Callback to unregister.<br>If this parameter is passed, it must be the same as the callback in [on('receiveIncomingFile')](#onreceiveincomingfile); if this parameter is not passed, all callbacks of this type are unregistered.                  |
 
 **Error codes**
 
@@ -424,6 +445,8 @@ Cancels Bluetooth file transfer. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -474,6 +497,8 @@ Obtains the information about the file that is being transferred. This API uses 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                                      | Description                        |
@@ -522,6 +547,8 @@ Sets the URI of the last received file. This API uses a promise to return the re
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -573,6 +600,8 @@ Describes the information about the file to be sent.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name             | Type                                    | Read-Only  | Optional  | Description                                      |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | filePath     | string                                   | No   | No   | URI of the file to be sent, for example, **file://media/Photo/1/IMG_1739266559_000/test.jpg**.|
@@ -586,6 +615,8 @@ Describes the file transfer information.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name             | Type                                    | Read-Only  | Optional  | Description                                      |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
@@ -608,6 +639,8 @@ Enumerates file transfer directions.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                   | Value | Description          |
 | --------------------- | ---- | ------------ |
 | OUTBOUND   | 0    | File sending.|
@@ -620,6 +653,8 @@ Enumerates the file transfer states.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name                   | Value | Description          |
 | --------------------- | ---- | ------------ |
@@ -635,6 +670,8 @@ Enumerates file transfer results.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                   | Value | Description          |
 | --------------------- | ---- | ------------ |
 | SUCCESS   | 0    | File transfer is successful.|
@@ -643,5 +680,5 @@ Enumerates file transfer results.
 | ERROR_NOT_ACCEPTABLE   | 3    | The peer device rejects the file transfer request.|
 | ERROR_CANCELED    | 4    | The peer device cancels the file transfer.     |
 | ERROR_CONNECTION_FAILED | 5    | The peer device is disconnected.    |
-| ERROR_TRANSFER   | 6    | An error occurs during file transfer.|
+| ERROR_TRANSFER_FAILED   | 6    | An error occurs during file transfer. |
 | ERROR_UNKNOWN    | 7    | An unknown error occurs.     |

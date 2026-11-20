@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c2b82fd2ac3c56b7fe6f5fc56e974fda85bda0ab translatedAt=2026-10-09T13:12:44.645Z pushedAt=2026-10-10T07:11:23.746Z -->
+<!-- md-trans-meta sourceCommit=daf75f1f61239abee91676a77a75fa10337682b8 translatedAt=2026-11-18T04:11:50.685Z pushedAt=2026-11-20T09:25:50.522Z nl=1 -->
 
 The **socket** module provides the Bluetooth socket function, which can be used to implement inter-device connection and data transmission. When two devices communicate via Bluetooth sockets, they can be distinguished as client and server based on their respective functions.
 
@@ -119,7 +119,6 @@ Obtains the (Protocol/Service Multiplexer [PSM](../../connectivity/bluetooth/ter
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// The server obtains the address of the client.
 let serverNumber = 1; // Set serverNumber to the value of serverNumber returned by the sppListen callback.
 try {
     let l2capPsm: number = socket.getL2capPsm(serverNumber);
@@ -648,7 +647,7 @@ Obtains the maximum size of data that can be received on the current socket link
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
-- The returned value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of received data is unlimited.
+- The return value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of received data is unlimited.
 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -687,7 +686,7 @@ Obtains the maximum size of data that can be sent on the current socket link typ
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
-- The returned value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of data to be sent is unlimited.
+- The return value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of data to be sent is unlimited.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

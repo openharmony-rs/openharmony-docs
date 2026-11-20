@@ -1,16 +1,18 @@
 # @ohos.nearlink.cdsm (CDSM Capability)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4a43d865f6fb58df26898b1b598954a98775ae97 translatedAt=2026-08-17T08:48:27.796Z pushedAt=2026-08-18T11:30:31.239Z -->
+<!-- md-trans-meta sourceCommit=37ca604503d451441f6924864481deef5fcc486f translatedAt=2026-11-18T04:16:29.773Z pushedAt=2026-11-20T09:28:01.966Z nl=1 -->
+
 
 This module provides the coordinated devices set management (CDSM) capability for NearLink, including querying and subscribing to the coordinated devices set information of NearLink.
 
+
 **Since**: 26.0.0
+
 
 ## Modules to Import
 
@@ -18,11 +20,14 @@ This module provides the coordinated devices set management (CDSM) capability fo
 import { cdsm } from '@kit.ConnectivityKit';
 ```
 
+
 ## cdsm.createCdsmClient
 
 createCdsmClient(address: string): CdsmClient
 
 Creates a CDSM client instance.
+
+Before calling this API, the application can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -50,15 +55,14 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100050 | Coordinated Devices Set Management not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { cdsm } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -72,6 +76,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## CdsmClient
 
@@ -88,6 +93,8 @@ An app only needs to create one [CdsmClient](#cdsmclient) instance for a remote 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+
 
 ### getCdsmInfo
 
@@ -115,12 +122,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { cdsm } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -135,6 +141,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### onCdsmInfoChange
 
@@ -157,7 +164,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;[CdsmInfo](#cdsminfo)&gt; | Yes | Callback used to return the CDSM information. |
 
 **Example** 
-
 ```typescript
 import { cdsm } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -175,6 +181,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offCdsmInfoChange
 
@@ -195,7 +202,6 @@ Unsubscribes from the CDSM information change event. This API uses an asynchrono
 | callback | Callback&lt;[CdsmInfo](#cdsminfo)&gt; | No | Callback used to return the CDSM information.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not specified, all callbacks used to listen for CDSM information change events are unregistered. |
 
 **Example** 
-
 ```typescript
 import { cdsm } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -215,6 +221,7 @@ try {
 }
 ```
 
+
 ## CdsmInfo
 
 Represents the CDSM information.
@@ -228,6 +235,7 @@ Represents the CDSM information.
 | Name | Type | Read-Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | members | [CdsmMemberInfo](#cdsmmemberinfo)[] | No | No | Array of member device information in the coordinated devices set. Each element in the array contains the device address and connection status. |
+
 
 ## CdsmMemberInfo
 
@@ -243,6 +251,7 @@ Represents the information about member devices in the coordinated devices set.
 | -------- | -------- | -------- | -------- | -------- |
 | address | string | No | No | Member device address. |
 | state | [CdsmConnectionState](#cdsmconnectionstate) | No | No | Member device connection state. |
+
 
 ## CdsmConnectionState
 

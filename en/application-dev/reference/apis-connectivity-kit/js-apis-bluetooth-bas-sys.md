@@ -6,17 +6,19 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2ad35b82ef90103e0aea46340195e6b86af251c2 translatedAt=2026-08-25T10:02:28.079Z pushedAt=2026-08-25T12:10:16.772Z -->
+<!-- md-trans-meta sourceCommit=8a0e36109bea79cc35522d2aee4c1b8ad683b256 translatedAt=2026-11-18T03:56:01.020Z pushedAt=2026-11-20T09:07:31.400Z nl=1 -->
 
 The BAS module provides APIs for battery services, including reading the battery level and listening for changes in the battery level of a peer device.
 
 **Since**: 26.0.0
+
 
 ## Modules to Import
 
 ```js
 import { bas } from '@kit.ConnectivityKit';
 ```
+
 
 ## bas.isBasSupported
 
@@ -58,18 +60,15 @@ try {
 }
 ```
 
+
 ## bas.getRemoteDeviceBatteryInfo
 
 getRemoteDeviceBatteryInfo(deviceId: BluetoothAddress): Promise&lt;BatteryInfo&gt;
 
 Queries the battery level of a peer device.
-
 - Before using this API, you are advised to use [isBasSupported](#basisbassupported) to check whether the local device supports obtaining the battery level of a peer device.
-
 - Only BLE peripheral devices that support the battery service (with UUID of **0000180F-0000-1000-8000-00805F9B34FB**) defined by the Bluetooth protocol can obtain the battery level.
-
 - You can obtain the battery level of the peer Bluetooth device from the callback of [onBatteryChange](#basonbatterychange).
-
 - This API can be used to obtain the battery level of the peer Bluetooth device based on the actual and random MAC addresses of the peer device.
 
 **Since**: 26.0.0
@@ -102,11 +101,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
 |2900001 | Service stopped.             |
 |2900003 | Bluetooth disabled.                |
 |2900004 | Remote device profile not supported.                |
-|2900099 | Operation failed. Possible causes: 1. Unregistered bas observer. 2. Bas observers exceeds the limit. 3. Bas request busy.                 |
+|2900099 | Operation failed.              |
 |2901003 | Connection not established.                |
 
 **Example**
@@ -129,14 +128,13 @@ try {
 }
 ```
 
+
 ## bas.onBatteryChange
 
 onBatteryChange(callback: Callback&lt;BatteryInfo&gt;): void
 
 Subscribes to battery level change events of a peer device.
-
 - Only BLE peripheral devices that support the battery service (with UUID of **0000180F-0000-1000-8000-00805F9B34FB**) defined by the Bluetooth protocol can report the battery level. This API cannot be used together with [connection.on('batteryChange')](js-apis-bluetooth-connection.md#connectiononbatterychange12).
-
 - When this API is called, the latest valid battery level of the device connected to the battery service is reported immediately. Subsequently, the battery level is reported only when it changes on the peer device.
 
 **Since**: 26.0.0
@@ -178,6 +176,7 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
 
 ## bas.offBatteryChange
 
@@ -227,6 +226,7 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
 
 ## BatteryInfo
 
