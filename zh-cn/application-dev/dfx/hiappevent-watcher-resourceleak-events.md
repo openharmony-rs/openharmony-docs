@@ -120,7 +120,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | fd | object | （resource_type为fd专有）文件描述符信息，详见fd属性。 |
 | thread | object | （resource_type为thread专有）线程信息，详见thread属性。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，请在日志文件处理完后及时删除。** |
-| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过2GB上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过2GB上限。true表示超过上限，日志写入失败；false表示未超过上限。若该字段未展示，说明本次泄漏不生成故障日志。 |
 | page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
 ### resource_type字段说明
@@ -129,6 +129,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | -------- | -------- |
 | pss_memory | pss内存泄漏。 |
 | rss_memory | rss内存泄漏。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
+| ashmem_memory | ashmem内存泄漏。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
 | ion_memory | ion内存泄漏。<br>**说明**：从API version 20开始，支持该字段。 |
 | gpu_memory | gpu内存泄漏。<br>**说明**：从API version 20开始，支持该字段。 |
 | js_heap | js内存泄漏。 |
@@ -148,7 +149,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | sys_avail_mem | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）可用内存大小，单位：KB。 |
 | sys_total_mem | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）总内存大小，单位：KB。 |
 | limit_size | number | （resource_type为js_heap专有）基线大小，单位：KB。 |
-| live_object_size | number | （resource_type为js_heap专有）实际使用内存大小，单位：KB。 |
+| live_object_size | number | （resource_type为js_heap专有）实际使用内存大小，单位：B。 |
 | rss_detail | object | （resource_type为rss_memory）RSS内存详细分布信息，详见[detail字段说明](#detail字段说明)。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
 | pss_detail | object | （resource_type为pss_memory）PSS内存详细分布信息，详见[detail字段说明](#detail字段说明)。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
 
