@@ -2742,7 +2742,7 @@ showAbility(params: ShowParams): Promise\<void>
 
 **示例：**
 
-EntryAbility.ts 示例请参考[showAbility<sup>12+</sup>](#showability12)
+EntryAbility.ts示例请参考[showAbility<sup>12+</sup>](#showability12)
 
 ArkTS-Dyn示例：
 
