@@ -94,7 +94,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        int64_t bitrate = BITRATE_10M;
        // HEVC档次。
        int32_t hevcProfile = HEVC_PROFILE_MAIN;
-       // 关键帧间隔时间，单位为ms。
+       // 关键帧间隔时间，单位为毫秒（ms）。
        int32_t iFrameInterval = 100;
        // 图形接口。
        OHNativeWindow *window = nullptr;
@@ -118,9 +118,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    通过名称创建编码器。示例中的变量说明如下：
 
-   - mime：视频格式，如OH_AVCODEC_MIMETYPE_VIDEO_AVC(H.264)，OH_AVCODEC_MIMETYPE_VIDEO_HEVC(H.265)。
+   - mime：视频格式，如OH_AVCODEC_MIMETYPE_VIDEO_AVC（H.264），OH_AVCODEC_MIMETYPE_VIDEO_HEVC（H.265）。
    - isEncoder：编码器为true，解码器为false。
-   - category：编解码器类别，HARDWARE硬件编解码，SOFTWARE为软件编解码。
+   - category：编解码器类别，HARDWARE为硬件编解码，SOFTWARE为软件编解码。
    - capability：编码器能力查询实例的指针。
 
    <!-- @[encoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
@@ -192,12 +192,11 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 3. 设置surface。
 
-   获取编码器Surface模式的OHNativeWindow输入，获取surface需要在调用OH_VideoEncoder_Prepare接口之前完成。
+   调用OH_VideoEncoder_GetSurface()获取OHNativeWindow，需要在调用OH_VideoEncoder_Prepare()之前完成。
 
    <!-- @[encoder_get_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
-   // 获取编码器Surface模式的OHNativeWindow输入，需要在调用OH_VideoEncoder_Prepare接口之前完成。
    // 通过OHNativeWindow*获取生产者待填充数据地址。
    int32_t VideoEncoder::GetSurface(SampleInfo &sampleInfo)
    {
@@ -720,7 +719,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        return true;
    }
    ```
-   跨距对齐处理，详情请参考[异步模式视频编码Buffer模式](video-encoding.md#buffer模式)“步骤-8. 写入编码图像”。
+   跨距对齐处理，详情请参考异步模式视频编码[Buffer模式](video-encoding.md#buffer模式)“步骤-8. 写入编码图像”。
 
    送入编码输入队列：
 

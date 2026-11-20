@@ -211,7 +211,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        int64_t bitrate = BITRATE_10M;
        // HEVC档次。
        int32_t hevcProfile = HEVC_PROFILE_MAIN;
-       // 关键帧间隔时间，单位为ms。
+       // 关键帧间隔时间，单位为毫秒（ms）。
        int32_t iFrameInterval = 100;
        // 图形接口。
        OHNativeWindow *window = nullptr;
@@ -245,9 +245,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    开发者可以通过名称或媒体类型创建编码器。
 
-   - mime：视频格式，如OH_AVCODEC_MIMETYPE_VIDEO_AVC(H.264)，OH_AVCODEC_MIMETYPE_VIDEO_HEVC(H.265)。
+   - mime：视频格式，如OH_AVCODEC_MIMETYPE_VIDEO_AVC（H.264），OH_AVCODEC_MIMETYPE_VIDEO_HEVC（H.265）。
    - isEncoder：编码器为true，解码器为false。
-   - category：编解码器类别，HARDWARE硬件编解码，SOFTWARE为软件编解码。
+   - category：编解码器类别，HARDWARE为硬件编解码，SOFTWARE为软件编解码。
    - capability：编码器能力查询实例的指针。
 
    方式一：通过名称创建编码器。
@@ -416,12 +416,11 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 6. 获取surface。
 
-   获取编码器Surface模式的OHNativeWindow输入，获取surface需要在调用OH_VideoEncoder_Prepare接口之前完成。
+   调用OH_VideoEncoder_GetSurface()获取OHNativeWindow，需要在调用OH_VideoEncoder_Prepare()之前完成。
 
    <!-- @[encoder_get_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
-   // 获取编码器Surface模式的OHNativeWindow输入，需要在调用OH_VideoEncoder_Prepare接口之前完成。
    // 通过OHNativeWindow*获取生产者待填充数据地址。
    int32_t VideoEncoder::GetSurface(SampleInfo &sampleInfo)
    {
@@ -942,8 +941,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    bufferInfo的成员变量：
 
-   - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
-   - bufferIndex：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
+   - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针。
+   - bufferIndex：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识。
 
    <!-- @[recorder_video_buffer_input_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
@@ -987,7 +986,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     * info.offset = 0;
     * // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     * info.pts = 0;
-    * // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
+    * // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值，如0（表示普通帧标识）。
     * info.flags = 0;
     * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     * if (setBufferRet != AV_ERR_OK) {
@@ -1124,7 +1123,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    在编码过程中，当最后一帧数据被送入编码输入队列时，需要设置info的flag标识为AVCODEC_BUFFER_FLAGS_EOS，通知编码器输入结束。
 
    以下示例中，info的成员变量：
-   - attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
+
+   attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
 
    <!-- @[recorder_video_buffer_eos_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
