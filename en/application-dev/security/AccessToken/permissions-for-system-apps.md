@@ -8740,7 +8740,7 @@ Allows an application to configure cellular network-related information.
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
-Allows an application to read cellular network–related information.
+Allows an application to read cellular network-related information.
 
 **Permission level**: system_basic
 
