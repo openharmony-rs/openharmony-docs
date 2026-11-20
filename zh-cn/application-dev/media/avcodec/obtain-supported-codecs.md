@@ -677,7 +677,7 @@ int32_t ret = OH_AVCapability_GetVideoHeightAlignment(capability, &heightAlignme
 if (ret != AV_ERR_OK || heightAlignment <= 0) {
     // 异常处理。
 }
-// 2. (可选) 对齐视频高（对齐值有效时才计算，避免除零）。
+// 2. (可选) 对齐视频高。对齐值有效时才计算，避免除零。
 if (heightAlignment > 0 && height % heightAlignment != 0) {
     height = (height + heightAlignment - 1) / heightAlignment * heightAlignment;
 }
