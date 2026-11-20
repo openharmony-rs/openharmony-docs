@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b185302a61b29d6c7085c43d14aa74b994e98e80 translatedAt=2026-11-18T09:28:41.841Z pushedAt=2026-11-20T07:04:09.649Z nl=1 -->
 
 > **NOTE**
 >
@@ -41,7 +42,7 @@ Operate the window that exists.
 **Possible Causes**<br>
 The application crashes when the [getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9-1) API is called during window destruction (such as using **onWindowStageDestroy** or performing page destruction).
 
-**Typical log information**<br>
+**Typical Log Information**<br>
 Fault log format:
 
 ```text
@@ -101,7 +102,7 @@ onWindowStageDestroy() {
 **Possible Causes**<br>
 When you call the [setResizeByDragEnabled()](arkts-apis-window-Window.md#setresizebydragenabled14) API in a subwindow to enable window resizing by dragging, error code 1300002 is returned, and the resizing cannot be implemented.
 
-**Typical log information**<br>
+**Typical Log Information**<br>
 View the error log in DevEco Studio or using the hdc tool:
 
 ```bash
@@ -157,7 +158,7 @@ windowStage.createSubWindowWithOptions('mySubWindow', options).then((windowClass
 **Possible Causes**<br>
 When you call [findWindow()](arkts-apis-window-f.md#windowfindwindow9) to search for a window that does not exist, the application crashes.
 
-**Typical log information**<br>
+**Typical Log Information**<br>
 Fault log format:
 
 ```text
@@ -213,7 +214,7 @@ if (currWindow) {
 **Possible Causes**<br>
 After creating a window object using [createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9), you call [destroyWindow()](arkts-apis-window-Window.md#destroywindow9). Before the window is destroyed, you call [createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9) again with the same name. As a result, the window fails to be created, and error code 1300002 is reported.
 
-**Typical log information**<br>
+**Typical Log Information**<br>
 Fault log format:
 
 ```text
@@ -281,7 +282,7 @@ let windowClass = await windowStage.createSubWindow(windowName);
 **Possible Causes**<br>
 You call the [off('avoidAreaChange')](arkts-apis-window-Window.md#offavoidareachange9) API during window destruction (such as using [onWindowStageDestroy](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy), [onDestroy](../apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy), or page destruction), the application crashes.
 
-**Typical log information**<br>
+**Typical Log Information**<br>
 ```text
 Error Name: Error
 Error Message: [window][off]msg: Unregister listener failed.
@@ -300,7 +301,7 @@ Key information:
 - According to the log stack, the location where **off('avoidAreaChange')** is called is not in the destruction callback such as **onWindowStageDestroy** or **onDestroy**.
 - The asynchronous task does not execute **off('avoidAreaChange')** after destruction.
 
-**Positive and negative cases**<br>
+**Positive and Negative Cases**<br>
 Negative case
 
 ```ts
@@ -322,6 +323,73 @@ onPageHide() {
   }
 }
 ```
+
+### Creating a Non-Secure Window Is Not Allowed Because a Modal UIExtension Exists
+**Possible Causes**
+
+A modal UIExtension has been launched in the application. When you create a non-secure window such as a subwindow, global floating window, or dialog window, the window creation fails because the modal UIExtension does not allow non-secure windows to cover it.
+
+**Typical Log Information**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: It is not allowed to create non-secure window when secure extension exists. Maybe blocked by:
+Error code: 1300002
+```
+
+Key information:
+- Error code: 1300002
+- Stack: call site of the API for creating a subwindow, global floating window, or dialog window
+- File name and line number: locate the specific code location
+- Modal UIExtension information: the package name of the modal UIExtension is listed after the error message.
+
+**Solution**
+
+Ensure that the modal UIExtension is closed before creating a window.
+
+### Process for Creating a Subwindow Is Different from That for Creating Its Parent Window
+**Possible Causes**
+
+The PID of the process that requests to create a subwindow is different from the PID of the process that creates the parent window of the subwindow, causing the subwindow creation to fail.
+
+**Typical Log Information**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: The parent window and the subwindow are not created by the same process
+Error code: 1300002
+```
+
+Key information:
+- Error code: 1300002
+- Stack: call site of **createSubWindowWithOptions()** or **createSubWindow()**
+- File name and line number: locate the specific code location
+
+**Solution**
+
+Ensure that the process for creating the subwindow is the same process that creates its parent window.
+
+### Exceeding the Maximum Number of Allowed Subwindow Nesting Levels
+**Possible Causes**
+
+When a subwindow is created within a subwindow (that is, subwindow nesting), the number of subwindow nesting levels is limited. If the maximum number of allowed nesting levels (10 levels) is exceeded, subwindow creation fails.
+
+**Typical Log Information**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: Subwindow level exceeds the maximum limit
+Error code: 1300002
+```
+
+Key information:
+- Error code: 1300002
+- Stack: call site of **createSubWindowWithOptions()**
+- File name and line number: locate the specific code location
+
+**Solution**
+
+Optimize the service logic to avoid creating subwindows with excessive nesting levels.
 
 ## 1300003 Abnormal Window Manager Service
 **Error Message**<br>
@@ -348,7 +416,7 @@ This error code is reported when the API does not have the required permissions 
 2. The window type is not supported.
 
 **Solution**<br>
-1. Ensure that you are interacting only with windows created within your own process. If you are referencing windows from other processes, remove those references or calls.<br>
+1. Check whether the window object of another process is operated. If yes, delete the related operation.<br>
 2. Ensure that the related operations are consistent with the supported window type.
 
 ### Failed to Call restore in a Subwindow
@@ -463,23 +531,21 @@ The window context has been destroyed when being operated.
 **Solution**<br>
 Before operating the window context, check whether it exists.
 
-<!--Del-->
-## 1300007 Application Startup Failure by WindowExtensionAbility
+## 1300007 Failed to Restore the Main Window of the Current Window to the Foreground
 
 **Error Message**<br>
-Failed to start the ability.
+Restore parent main window failed.
 
 **Description**<br>
-This error code is reported when a WindowExtensionAbility fails to start an application.
+This error code is reported when restoring the main window of the current window to the foreground fails.
 
 **Possible Causes**<br>
-Incorrect parameters are passed into the API used by the WindowExtensionAbility to start the application.
+1. The main window is in the **PAUSED** lifecycle state.<br>
+2. The main window is running in the background.
 
 **Solution**<br>
-Pass in the correct parameters.
-<!--DelEnd-->
+Ensure that the lifecycle state of the main window is normal and then perform related operations.
 
-<!--Del-->
 ## 1300008 Display Device Exception
 
 **Error Message**<br>
@@ -495,7 +561,6 @@ This error code is reported when the display device is abnormal.
 
 **Solution**<br>
 Ensure that the display device is normal.
-<!--DelEnd-->
 
 ## 1300009 Invalid Parent Window
 
@@ -767,7 +832,7 @@ This error code is reported when parameters are incorrect. For example, the para
 
 2. Ensure that the parameter length is within the allowed limits.
 
-3. Use the correct format for parameters.
+3. Use the correct format for the parameter.
 
 4. Check whether any mandatory parameter is not passed.
 
@@ -785,7 +850,7 @@ This error code is reported when creating a floating ball window fails.
 
 **Possible Causes**
 
-1. Incorrect parameters are passed in to start the floating ball.
+1. Invalid parameters are passed in to start the floating ball.
 
 2. Attempt to start the floating ball on an unsupported device.
 
@@ -833,7 +898,7 @@ This error code is reported when a repeated operation is performed on the floati
 
 2. Attempt to stop the floating ball after it has already stopped.
 
-3. Attempt to register the floating ball callback multiple times.
+3. Register the floating ball callback repeatedly.
 
 **Solution**
 
@@ -925,7 +990,7 @@ This error code is reported when launching an application window via the floatin
 
 **Possible Causes**
 
-1. Incorrect parameters are passed.
+1. The passed parameters are invalid.
 
 2. The application does not have the `ohos.permission.AUTO_RESTORE_MAIN_WINDOW` permission and the floating ball is not tapped before the application window is launched.
 
@@ -937,7 +1002,7 @@ This error code is reported when launching an application window via the floatin
 
 2. To launch the application window without user interaction, apply for the `ohos.permission.AUTO_RESTORE_MAIN_WINDOW` permission. Otherwise, launch the application window after the floating ball is tapped.
 
-3. Launch the window that belongs to the current application.
+3. Launch only the window of this application.
 
 ## 1300027 Cannot Change Template Type When Updating the Floating Ball
 
@@ -1096,6 +1161,24 @@ The floating ball window or PiP window has been started in the application.
 **Solution**
 
 Before starting the float view, stop the floating ball window and PiP window.
+
+## 1300035 Subwindow Creation Not Allowed
+
+**Error Message**
+
+ Creating a subwindow is not allowed in the current context.
+
+**Description**
+
+This error code is reported when creating a subwindow is not allowed in the current context.
+
+**Possible Causes**
+
+The application ability inherits from AgentUIExtensionAbility.
+
+**Solution**
+
+Before creating a subwindow, check whether the application ability inherits from AgentUIExtensionAbility.
 
 ## 1001 Window Null Pointer Exception<sup>(deprecated)</sup>
 **Error Message**<br>

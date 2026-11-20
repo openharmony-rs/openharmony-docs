@@ -5,7 +5,7 @@
 <!--Designer: @lushi871202 -->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T08:43:55.635Z pushedAt=2026-11-04T02:25:38.104Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0a098c28f31b3967b393e27b5d1a24adf477acc5 translatedAt=2026-11-18T09:22:37.345Z pushedAt=2026-11-20T06:08:24.888Z nl=1 -->
 
 ## Overview
 
@@ -35,6 +35,7 @@ Declares the APIs for injecting control commands into specified UI nodes, for us
 | -- | -- | -- |
 | [typedef void (\*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)](#oh_arkui_nativemodule_uieventinjectioncallback) | OH_ArkUI_NativeModule_UIEventInjectionCallback | Defines the callback for injection completion.<br>It is used to notify the dispatch result of the command and the immediate processing result of the component for the command, and does not wait for the component's delayed effect or rendering to complete. Each accepted request is called back exactly once on the original UI thread after the injection API returns. Callbacks on different UI threads are not guaranteed to be executed serially globally. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectcompositecommand) | - | Asynchronously injects a control command into the target UI node.<br>This API does not provide cancellation or a fixed completion timeout; completion depends on the task processing of the UI thread. A timeout on the caller side does not cancel an accepted request. Instance destruction does not cancel the completion callback of an accepted request. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | - | Asynchronously injects an interaction command with a non-precise target into the UI. |
 
 ### Variables
 
@@ -111,3 +112,57 @@ The creation API copies the JSON data, so the caller can release or reuse the or
 | Type | Description |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Returns **0** if the request is accepted, and the execution result is reported through callback. Returns a non-zero value if the request is rejected, in which case the command is not executed and the callback is not triggered.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the request is accepted.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **command** or **callback** is **NULL**, the command data is invalid, or the command submission fails.<br>Returns [ARKUI_ERROR_CODE_NODE_NOT_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the ArkUI node corresponding to the node ID (**uniqueId**) is not found within the **uiContext** instance.<br>Returns [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **uiContext** is **NULL**, or the corresponding UI instance is being destroyed or has become invalid.<br>Returns [ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the following error occurs: In the current process, the restriction imposed by the previous command on subsequent requests has not been lifted. After a command is accepted, other valid requests in the same process return this error code.<br>The framework lifts this restriction before invoking the completion callback. A command can be submitted again in the callback, but the parameter and UI thread requirements must still be met. A rejected request can be retried after the restriction is lifted, and whether it can be accepted still depends on other requests in the process. |
+
+### OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)
+```
+
+**Description**
+
+Asynchronously injects an interaction command with a non-precise target into the UI.
+
+This command expresses a high-level interaction intent (such as a click, content switch, scroll, back key, or key event) but does not target a specific component. The system determines how to execute the command based on the current mode.
+
+This command is carried by an [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object created by [OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate). The top-level structure of the command parameters is as follows:
+
+```text
+{
+  "schemaVersion": 1,
+  "cmd": {
+    "type": "<Command type>",
+    "mode": "<Execution mode>",
+    "action_info": { ... }
+  }
+}
+```
+
+When **type** takes the following values, the corresponding parameters are described as follows. Unless explicitly marked as required, all fields in **action_info** are optional.
+
+- **click**: **mode** is an optional parameter, and its default value is **"auto"**. **action_info.coordinates** contains **x1** and **y1** (both mandatory).
+- **content_switch**: **mode** must be set to **"target"**. **action_info.count** must be set to a positive integer (optional, default value is **1**). **action_info.direction** takes the value **"forward"** or **"backward"** (optional, default value is **"forward"**). **action_info.coordinates.pos** contains **x** and **y** (mandatory).
+- **scroll**: **mode** is an optional parameter, and its default value is **"auto"**. **action_info.direction** takes the value **"forward"**, **"backward"**, **"left"**, **"right"**, **"up"**, or **"down"** (optional, default value is **"forward"**). The value of **action_info.distance** is a non-negative physical pixel value (optional, default value is one third of the window height). **action_info.coordinates** contains **x1** and **y1** (mandatory), and **x2** and **y2** (optional).
+- **backpress**: no parameters.
+- **key**: **mode** is not used, and passing it does not affect execution. **action_info.code** indicates the virtual key code and must be a valid key code (mandatory).
+
+All position coordinates are relative to the window, in physical pixels (px). If a mandatory field is missing or a value is out of the valid range, the error code **ARKUI_ERROR_CODE_PARAM_INVALID** is returned.
+
+This API is thread-safe and can be called from any thread. It does not block the caller and is not async-signal-safe.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [Input parameter] Pointer to the UI instance. It cannot be null. |
+| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [Input parameter] Pointer to the configured JSON command. It cannot be null and must remain valid during the call. The framework does not retain this object. |
+| [OH_ArkUI_NativeModule_UIEventInjectionCallback](#oh_arkui_nativemodule_uieventinjectioncallback) callback | [Input parameter] Optional callback, invoked once when the injected command is executed. It can be empty. |
+| void *userData | [Input parameter] Pointer to the custom user data passed to the callback, which can be **NULL**. The framework does not take over the ownership of the data. The caller must keep it valid until the callback is complete. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode): The command is enqueued successfully.<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode): The parameter is invalid or a mandatory field is missing.<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode): The UI context is invalid. |

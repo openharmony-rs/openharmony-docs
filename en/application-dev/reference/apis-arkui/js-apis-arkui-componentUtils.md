@@ -1,11 +1,11 @@
 # @ohos.arkui.componentUtils (componentUtils)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3ddb6f7d5458e03f96ae5f64e626eb2fb03d26f6 translatedAt=2026-08-29T09:29:38.886Z pushedAt=2026-08-31T08:53:01.909Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-18T09:31:35.233Z pushedAt=2026-11-20T07:36:21.858Z nl=1 -->
 
 The **componentUtils** module provides API for obtaining the coordinates and size of the drawing area of a component. It is applicable to scenarios where the actual drawing area information of a component needs to be queried after the component layout is complete, helping you obtain layout results such as component sizes and positions.
 
@@ -26,7 +26,7 @@ import { componentUtils } from '@kit.ArkUI';
 
 getRectangleById(id: string): ComponentInfo
 
-Obtains a **ComponentInfo** object based on the component ID and synchronously returns the geometric properties of the component.
+Obtains the size, position, and transform information of a component by its ID, and returns the result to you synchronously.
 
 > **NOTE**
 >
@@ -84,7 +84,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | translate      | [TranslateResult](#translateresult)| No      | No    | Translation of the component.               |
 | scale          | [ScaleResult](#scaleresult) | No      | No    | Scaling of the component.               |
 | rotate         | [RotateResult](#rotateresult) | No      | No    | Rotation of the component.               |
-| transform      | [Matrix4Result](#matrix4result) | No      | No    | Affine matrix of the component, which is a 4x4 matrix object created based on the input parameter. |
+| transform      | [Matrix4Result](#matrix4result) | No       | No     | Affine matrix information, which is a number array with a length of 16.  |
 
 ## Size
 
@@ -217,7 +217,7 @@ struct Utils {
         })
         .width(300)
         .height(100)
-        .key('image_01')
+        .id('image_01')
       Button('getRectangleById')
         .onClick(() => {
           this.value = JSON.stringify(this.getUIContext()

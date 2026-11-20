@@ -1,11 +1,11 @@
 # Snapshot Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7011f4d66e76387ef9966b7144aff937ff0dfc5c translatedAt=2026-08-29T09:24:28.320Z pushedAt=2026-08-31T06:52:53.294Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-18T09:27:44.597Z pushedAt=2026-11-20T06:19:08.862Z nl=1 -->
 
 > **NOTE**
 >

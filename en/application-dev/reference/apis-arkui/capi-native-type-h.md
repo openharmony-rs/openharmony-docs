@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dbee05cab0d63a0ac6bd8603f262166672b34724 translatedAt=2026-08-29T09:58:12.721Z pushedAt=2026-08-31T01:20:45.674Z -->
+<!-- md-trans-meta sourceCommit=fa87f540c48dc933d8e82c090ab5f7f338c7a798 translatedAt=2026-11-18T09:01:19.097Z pushedAt=2026-11-20T01:44:36.610Z nl=1 -->
 
 ## Overview
 
@@ -29,22 +29,10 @@ Defines the common types for the native module.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | Defines an ArkUI native component object, which is used by the **ArkUI_NodeHandle** pointer to identify and pass component instances in native APIs.|
-| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md) | ArkUI_ContextCallback | Defines an event callback type, which is used to define the callback function and its user-defined data. When an API of this type is called to trigger a callback, the callback is invoked and **userData** is passed as a parameter.|
-| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) | ArkUI_NumberValue | Defines a numeric type used by ArkUI on the native side, including floating-point, signed integer, and unsigned integer types.|
 | [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md) | ArkUI_ColorStop | Defines a color stop, which is used to configure the gradient effect of a component. Multiple gradient styles can be defined by combining the color array and position array.|
-| [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md) | ArkUI_Rect | Defines a mask area.|
-| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | ArkUI_IntSize | Describes the width and height of a component.|
-| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) | ArkUI_IntOffset | Defines an offset, which describes the position of the current component relative to its parent component.|
 | [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | - | Defines a custom dialog box controller object for ArkUI on the native side.|
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | Defines the layout constraint, which is used to limit the size range during component layout. You can set the minimum and maximum size constraints. The constraint values are non-negative floating-point numbers. During component layout, the system limits the final size range of the component based on the constraint values to ensure that the layout result meets the constraints. This struct is applicable to scenarios where the size range of child components needs to be controlled during custom layout container design. For example, in a waterfall layout, the height of image cards can be limited; in a grid layout, the size of cells can be limited. It is also applicable to scenarios where the upper and lower limits of the component size need to be restricted. For example, the maximum width of an image display component can be limited to prevent stretching, and the minimum size can be limited in a responsive layout to ensure readability. This prevents the component size from exceeding the expected range, enabling more precise layout control, improving the predictability and stability of the layout, and enhancing the controllability of the interface.|
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) | ArkUI_DrawContext | Defines component drawing context, which is used to provide drawing context information during the drawing of a custom component. You can obtain the canvas pointer used for drawing and the size of the drawing area.|
-| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component object, which is used to identify and pass component instances in ArkUI native APIs, for example, creating, mounting, removing, or destroying component nodes.|
 | [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | Defines the handle to the custom dialog box controller of ArkUI on the native side.|
 | [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | Defines gesture collection interception information.|
-| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a context object of the ArkUI native UI, which is used to represent the UI context of the page where the component is located. The pointer type is [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md). You can obtain the context using [OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode) and use it as the context input parameter for APIs such as dragging, animation, and UI task scheduling.|
-| [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | Defines the pointer to the context object of ArkUI on the native side, which is used to represent the UI context of the page where the component is located. You can obtain the pointer through [OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode) or [OH_ArkUI_GetContextFromNapiValue](capi-native-node-napi-h.md#oh_arkui_getcontextfromnapivalue) and use it as the context input parameter for APIs such as UI task scheduling, animation, and focus control.|
-| [ArkUI_NodeContent*](capi-arkui-nativemodule-arkui-nodecontent8h.md) | ArkUI_NodeContentHandle | Defines the pointer to the node content on the native side, which is used to reference and pass the **NodeContent** instance in native APIs.|
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | Defines custom property information, which is used to represent the custom property of a component. You can use related APIs to add, remove, and obtain custom properties for ArkUI components, and obtain the string values of custom properties.|
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | Defines host window information.|
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines active child node information, which is used to store information about the FrameNode child nodes whose internal active state is **true**. You can query the number of child nodes and obtain child nodes by subscript. The instance of this struct is generated by calling **OH_ArkUI_NodeUtils_GetActiveChildrenInfo**. After using the instance, you must call **OH_ArkUI_ActiveChildrenInfo_Destroy** to destroy it.|
@@ -261,6 +249,10 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* color)](#oh_arkui_texteditortextstyle_gettextbackgroundcolor) | - | Obtains the text background color of the text style.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)](#oh_arkui_texteditortextstyle_settextbackgroundradius) | - | Sets the radius of the rounded corner of the text background of the text style.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)](#oh_arkui_texteditortextstyle_gettextbackgroundradius) | - | Obtains the radius of the rounded corner of the text background of the text style.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float borderWidth)](#oh_arkui_texteditortextstyle_settextbackgroundborderwidth) | - | Sets the border width of the text background of the text style. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float* borderWidth)](#oh_arkui_texteditortextstyle_gettextbackgroundborderwidth) | - | Obtains the border width of the text background of the text style. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t borderColor)](#oh_arkui_texteditortextstyle_settextbackgroundbordercolor) | - | Sets the border color of the text background of the text style. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* borderColor)](#oh_arkui_texteditortextstyle_gettextbackgroundbordercolor) | - | Obtains the border color of the text background of the text style. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditorstyledstringcontroller_settypingstyle) | - | Sets the typing style using the styled string controller.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditorstyledstringcontroller_gettypingstyle) | - | Obtains the typing style using the styled string controller.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorSpanType textEditorSpanType)](#oh_arkui_texteditorselectionmenuoptions_setspantype) | - | Sets the span type of the text selection menu in the text editor.|
@@ -840,7 +832,7 @@ Obtains the maximum width using a layout constraint.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Maximum width, in pixels.|
+| int32_t | Maximum width, in px.|
 
 ### OH_ArkUI_LayoutConstraint_GetMinWidth()
 
@@ -2169,7 +2161,7 @@ Sets the menu pop-up policy for selection options.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection option.|
-| [ArkUI_MenuPolicy ](#arkui_menupolicy) menuPolicy | Menu display policy.|
+| [ArkUI_MenuPolicy ](#arkui_menupolicy) menuPolicy | Menu pop-up policy.|
 
 ### OH_ArkUI_SelectionOptions_GetMenuPolicy()
 
@@ -2194,7 +2186,7 @@ Obtains the menu pop-up policy for selection options.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_MenuPolicy ](#arkui_menupolicy) | Menu display policy.|
+| [ArkUI_MenuPolicy ](#arkui_menupolicy) | Menu pop-up policy.|
 
 ### OH_ArkUI_TextMenuItem_SetContent()
 
@@ -4963,6 +4955,106 @@ Obtains the radius of the rounded corner of the text background of the text styl
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float borderWidth)
+```
+
+**Description**
+
+Sets the border width of the text background of the text style.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [Input parameter] Pointer to the text style of the **TextEditor** component. |
+| float borderWidth | [Input parameter] Border width of the text background. Unit: vp. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float* borderWidth)
+```
+
+**Description**
+
+Obtains the border width of the text background of the text style.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [Input parameter] Pointer to the text style of the **TextEditor** component. |
+| float* borderWidth | [Output parameter] Pointer to the border width of the text background. Unit: vp. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t borderColor)
+```
+
+**Description**
+
+Sets the border color of the text background of the text style.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [Input parameter] Pointer to the text style of the **TextEditor** component. |
+| uint32_t borderColor | [Input parameter] Border color of the text background, in 0xARGB format. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* borderColor)
+```
+
+**Description**
+
+Obtains the border color of the text background of the text style.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [Input parameter] Pointer to the text style of the **TextEditor** component. |
+| uint32_t* borderColor | [Output parameter] Pointer to the border color of the text background, in 0xARGB format. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_TextEditorStyledStringController_SetTypingStyle()
 

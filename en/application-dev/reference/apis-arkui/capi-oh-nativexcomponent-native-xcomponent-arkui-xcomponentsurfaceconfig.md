@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=86516607de4ae31b89a087b4feaa5c2b41c67026 translatedAt=2026-08-27T08:43:50.874Z pushedAt=2026-08-28T01:26:40.177Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T09:11:38.678Z pushedAt=2026-11-20T02:01:38.331Z nl=1 -->
 
 ```c
 typedef struct ArkUI_XComponentSurfaceConfig ArkUI_XComponentSurfaceConfig
@@ -13,7 +13,7 @@ typedef struct ArkUI_XComponentSurfaceConfig ArkUI_XComponentSurfaceConfig
 
 ## Overview
 
-Defines the surface configuration for setting whether the surface held by the **XComponent** component is treated as opaque during rendering. This is applicable to scenarios that require high **XComponent** rendering performance. Setting the surface to opaque reduces rendering composition overhead and improves rendering performance. Note that the surface should be set to opaque only when all the content actually rendered on it is opaque; otherwise, rendering exceptions may occur.
+Defines the configuration of the surface held by the **XComponent** component, which is used for setting whether the surface held by the **XComponent** component is treated as opaque during rendering. This is applicable to scenarios that require high **XComponent** rendering performance. Setting the surface to opaque reduces rendering composition overhead and improves rendering performance. Note that the surface should be set to opaque only when all the content actually rendered on it is opaque; otherwise, rendering exceptions may occur.
 
 **Since**: 22
 

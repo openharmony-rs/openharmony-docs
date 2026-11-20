@@ -3,13 +3,13 @@
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5f7a56053daa3c9ad71ed428e2208f2251406c59 translatedAt=2026-08-27T08:50:53.479Z pushedAt=2026-08-28T03:42:43.735Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:17:00.067Z pushedAt=2026-11-20T02:17:43.844Z nl=1 -->
 
 ## Overview
 
-Defines the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings in a small window. 
+Defines the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings in a small window.
 
 **File to include**: <window_manager/oh_window_pip.h>
 
