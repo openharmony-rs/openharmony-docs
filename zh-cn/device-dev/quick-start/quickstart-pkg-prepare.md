@@ -6,8 +6,8 @@
 在基于命令行方式开发的过程中，除下述[Windows环境要求](#windows环境要求)、[Ubuntu环境要求](#ubuntu环境要求)外，不对开发设备做另外的要求，请用户自行准备Windows环境、Ubuntu环境。本章节主要介绍通过Samba服务器实现Windows环境远程连接Ubuntu环境的方法。
 
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
-> OpenHarmony还为开发者提供了[Docker环境](../get-code/gettools-acquire.md)，整合的docker包在很大程度上简化了编译前的环境配置，习惯使用命令行的开发者也可以选择Docker环境进行编译 。
+> **说明：**
+> OpenHarmony还为开发者提供了[Docker环境](../get-code/gettools-acquire.md)，整合的Docker包在很大程度上简化了编译前的环境配置，习惯使用命令行的开发者也可以选择Docker环境进行编译 。
 
 
 进行工具安装之前，需要做如下准备。
@@ -38,21 +38,21 @@
 
 1. 安装Samba软件包。
    
-   ```
+   ```shell
    sudo apt-get install samba samba-common
    ```
 
-2. 修改Samba配置文件，配置共享信息。
+2. 修改Samba配置文件，配置共享信息。<br>
      打开配置文件：
      
-   ```
+   ```shell
    sudo gedit /etc/samba/smb.conf   
    ```
 
    在配置文件末尾添加以下配置信息（根据实际需要配置相关内容）：
 
    
-   ```
+   ```shell
    [Share]                    #在Windows中映射的根文件夹名称（此处以“Share”为例）
    comment = Shared Folder    #共享信息说明
    path = /home/share         #共享目录
@@ -67,13 +67,13 @@
 
 3. 添加Samba服务器用户和访问密码。
    
-   ```
+   ```shell
    sudo smbpasswd -a username   #用户名为Ubuntu用户名。输入命令后，根据提示设置密码。
    ```
 
 4. 重启Samba服务。
    
-   ```
+   ```shell
    sudo service smbd restart
    ```
 
