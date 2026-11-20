@@ -788,6 +788,69 @@ ArkTS-Sta示例：
 
 <!-- @[input_case_detached_switchToFixedPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
+``` TypeScript
+public switchToFixedPanel(): void {
+  if (this.mPanel === undefined) {
+    this.addLog('switchToFixedPanel panel is undefined');
+    return;
+  }
+  let dis: display.Display | undefined = undefined;
+  try {
+    dis = display.getDefaultDisplaySync();
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`switchToFixedPanel get display catch error: ${error.code} ${error.message}`);
+    return;
+  }
+  if (dis === undefined) {
+    this.addLog('switchToFixedPanel display is undefined');
+    return;
+  }
+  let screenWidth = Double.toInt(dis.width);
+  let screenHeight = Double.toInt(dis.height);
+  if (dis.width > dis.height) {
+    screenWidth = Double.toInt(dis.height);
+    screenHeight = Double.toInt(dis.width);
+  }
+  let keyHeight: int = Double.toInt(screenHeight * KEYBOARD_HEIGHT_RATE_PHONE);
+  let landHeight: int = Double.toInt(screenWidth * KEYBOARD_HEIGHT_RATE_PHONE);
+  let landscapeRect: window.Rect = {
+    left: 0,
+    top: screenWidth - landHeight,
+    width: screenHeight,
+    height: landHeight
+  };
+  let portraitRect: window.Rect = {
+    left: 0,
+    top: screenHeight - keyHeight,
+    width: screenWidth,
+    height: keyHeight
+  };
+  let panelRect: inputMethodEngine.PanelRect = {
+    landscapeRect: landscapeRect,
+    portraitRect: portraitRect
+  };
+  try {
+    this.mPanel!.updatePanelRectSync(inputMethodEngine.PanelFlag.FLG_FIXED, panelRect);
+    this.addLog(`switchToFixedPanel success`);
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`switchToFixedPanel catch error: ${error.code} ${error.message}`);
+  }
+  // 恢复普通键盘后，将热区重置为整个面板区域
+  let inputRegion: Array<window.Rect> = [
+    { left: 0, top: 0, width: screenWidth, height: keyHeight }
+  ];
+  try {
+    this.mPanel!.updateRegion(inputRegion);
+    this.addLog('switchToFixedPanel updateRegion success');
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`switchToFixedPanel updateRegion catch error: ${error.code} ${error.message}`);
+  }
+}
+```
+
 
 ## 实现效果
 
