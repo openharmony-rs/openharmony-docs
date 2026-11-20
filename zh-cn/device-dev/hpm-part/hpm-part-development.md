@@ -64,8 +64,8 @@ shellPath = C:\WINDOWS\System32\cmd.exe
 
 #### Network Settings
 # no_proxy = *.server.com
-# http_proxy = `http://user:pwd@proxy_server:port`
-# https_proxy = `http://user:pwd@proxy_server:port`
+# http_proxy = http://user:pwd@proxy_server:port
+# https_proxy = http://user:pwd@proxy_server:port
 # strictSsl = true
 
 #### Other Settings
@@ -209,7 +209,7 @@ hpm init
     "kernel": "liteos-a"
   },
   "keywords": ["hispark", "hi3516"],
-  "repository": "`https://gitee.com/openharmony/your-project`",
+  "repository": "https://gitee.com/openharmony/your-project",
   "license": "Apache V2"
 }
 ```

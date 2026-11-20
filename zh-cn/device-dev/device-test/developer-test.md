@@ -1333,7 +1333,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     run -t UT -tp PartName -tm TestModuleName -ts CalculatorSubTest
     run -t UT -ts base_object_test
     run -t UT -ts base_object_test -tc AAFwkBaseObjectTest.BaseObject_test_001
-    run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.integer_sub_001
+    run -t UT -ts CalculatorSubTest -tc CalculatorSubTest.interger_sub_00l
     run -t UT -cov coverage
     run -t UT -ra random
     run -t UT -ts base_object_test --repeat 5

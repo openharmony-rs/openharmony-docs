@@ -82,13 +82,13 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 {
     "install_list": [
         {
-            "bundleName": "com.example.kikakeyboard",
+            "bundleName": “com.example.kikakeyboard”,
             "singleton": true, // 应用安装到单用户下
             "keepAlive": true, // 应用常驻
             "runningResourcesApply": true, // 运行资源申请（CPU、事件通知、蓝牙等）
             "associatedWakeUp": true, // FA模型应用被关联唤醒
             "app_signature" : ["****"], // 当配置的证书指纹和hap的证书指纹一致才生效
-            "allowCommonEvent": ["usual.event.SCREEN_ON", "usual.event.THERMAL_LEVEL_CHANGED"],
+            "allowCommonEvent": [“usual.event.SCREEN_ON", "usual.event.THERMAL_LEVEL_CHANGED”],
             "allowAppDataNotCleared": true, // 不允许应用数据被删除
             "allowAppMultiProcess": true, //允许应用多实例
             "allowAppDesktopIconHide": true, //允许隐藏桌面图标
