@@ -228,6 +228,24 @@ Invalid input parameter. Possible causes:<br>The provided member must be a prope
 
 检查传入参数是否在PhotoKeys枚举范围之内。
 
+## 23800109 文件格式不正确
+
+**错误信息**
+
+Incorrect file format.
+
+**错误描述**
+
+文件格式不正确。
+
+**可能原因**
+
+传入的合一动态照片格式不正确，无法解析为合法的动态照片文件。
+
+**处理步骤**
+
+请检查文件是否为合法的合一动态照片格式。
+
 <!--Del-->
 ## 23800201 不支持的操作类型
 
