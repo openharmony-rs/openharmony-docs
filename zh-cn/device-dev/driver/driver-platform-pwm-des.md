@@ -76,8 +76,9 @@ PWM模块设备属性如表1所示，PWM模块提供的主要接口如表2所示
 | int32_t PwmSetConfig(DevHandle handle, struct PwmConfig \*config) | 设置PWM设备参数 |
 | int32_t PwmGetConfig(DevHandle handle, struct PwmConfig \*config) | 获取PWM设备参数 |
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
-> 本文涉及PWM的所有接口，支持内核态及用户态使用。
+>**说明：**
+>
+>本文涉及PWM的所有接口，支持内核态及用户态使用。
 
 ### 开发步骤
 
@@ -100,7 +101,9 @@ DevHandle PwmOpen(uint32_t num);
 | **参数** | **参数描述** |
 | -------- | -------- |
 | num | uint32_t类型，PWM设备号 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | handle | 打开PWM设备成功，返回PWM设备句柄 |
 | NULL | 打开PWM设备失败 |
 
@@ -146,7 +149,9 @@ int32_t PwmEnable(DevHandle handle);
 | **参数** | **参数描述** |
 | -------- | -------- |
 | handle | DevHandle类型，PWM设备句柄 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 使能PWM设备成功 |
 | 负数 | 使能PWM设备失败 |
 
@@ -171,7 +176,9 @@ int32_t PwmDisable(DevHandle handle);
 | **参数** | **参数描述** |
 | -------- | -------- |
 | handle | DevHandle类型，PWM设备句柄 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 禁用PWM设备成功 |
 | 负数 | 禁用PWM设备失败 |
 
@@ -197,7 +204,9 @@ int32_t PwmSetPeriod(DevHandle handle, uint32_t period);
 | -------- | -------- |
 | handle | DevHandle类型，PWM设备句柄 |
 | period | uint32_t类型，要设置的周期，单位为纳秒 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 设置PWM设备周期成功 |
 | 负数 | 设置PWM设备周期失败 |
 
@@ -223,7 +232,9 @@ int32_t PwmSetDuty(DevHandle handle, uint32_t duty);
 | -------- | -------- |
 | handle | DevHandle类型，PWM设备句柄 |
 | duty | uint32_t类型，要设置的占空时间，单位为纳秒 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 设置PWM设备占空时间成功 |
 | 负数 | 设置PWM设备占空时间失败 |
 
@@ -250,7 +261,9 @@ int32_t PwmSetPolarity(DevHandle handle, uint8_t polarity);
 | -------- | -------- |
 | handle | DevHandle类型，PWM设备句柄 |
 | polarity | uint8_t类型，要设置的极性，正/反 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 设置PWM设备极性成功 |
 | 负数 | 设置PWM设备极性失败 |
 
@@ -277,7 +290,9 @@ int32_t PwmSetConfig(DevHandle handle, struct PwmConfig *config);
 | -------- | -------- |
 | handle | DevHandle类型，PWM设备句柄 |
 | config | 结构体指针类型，配置参数 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 设置PWM设备参数成功 |
 | 负数 | 设置PWM设备参数失败 |
 
@@ -310,7 +325,9 @@ int32_t PwmGetConfig(DevHandle handle, struct PwmConfig *config);
 | -------- | -------- |
 | handle | DevHandle类型，PWM设备句柄 |
 | config | 结构体指针类型，配置参数 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 获取PWM设备参数成功 |
 | 负数 | 获取PWM设备参数失败 |
 

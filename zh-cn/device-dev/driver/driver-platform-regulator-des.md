@@ -105,7 +105,9 @@ DevHandle RegulatorOpen(const char *name);
 | 参数 | 参数描述 |
 | ---------- | ----------------------------- |
 | name | 字符指针，Regulator设备名称 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------------------- |
 | handle | 获取成功返回Regulator设备句柄 |
 | NULL | 获取失败 |
 
@@ -155,7 +157,9 @@ int32_t RegulatorEnable(DevHandle handle);
 | 参数 | 参数描述 |
 | ---------- | ----------------- |
 | handle | DevHandle类型，Regulator设备句柄 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------- |
 | HDF_SUCCESS | 使能Regulator设备成功 |
 | 负数 | 使能Regulator设备失败 |
 
@@ -165,7 +169,7 @@ int32_t ret;
 // 启用Regulator设备
 ret = RegulatorEnable(handle);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorEnable: enable regulator fail, ret:%d\n", ret);
     return ret;
 }
@@ -184,7 +188,9 @@ int32_t RegulatorDisable(DevHandle handle);
 | 参数 | 参数描述 |
 | ---------- | ----------------- |
 | handle | DevHandle类型，Regulator设备句柄 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------- |
 | HDF_SUCCESS | 禁用Regulator设备成功 |
 | 负数 | 禁用Regulator设备失败 |
 
@@ -194,7 +200,7 @@ int32_t ret;
 // 禁用Regulator设备
 ret = RegulatorDisable(handle);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorDisable: disable regulator fail, ret:%d\n", ret);
     return ret;
 }
@@ -214,7 +220,9 @@ int32_t RegulatorForceDisable(DevHandle handle);
 | 参数 | 参数描述 |
 | ---------- | ----------------- |
 | handle | DevHandle类型，Regulator设备句柄 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------- |
 | HDF_SUCCESS | 强制禁用Regulator设备成功 |
 | 负数 | 强制禁用Regulator设备失败 |
 
@@ -224,7 +232,7 @@ int32_t ret;
 // 强制禁用Regulator设备
 ret = RegulatorForceDisable(handle);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorForceDisable: force disable regulator fail, ret:%d\n", ret);
     return ret;
 }
@@ -243,19 +251,21 @@ int32_t RegulatorSetVoltage(DevHandle handle, uint32_t minUv, uint32_t maxUv);
 | handle | DevHandle类型，Regulator设备句柄 |
 | minUv | uint32_t类型，最小电压 |
 | maxUv | uint32_t类型，最大电压 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------- |
 | HDF_SUCCESS | 设置Regulator输出电压范围成功 |
 | 负数 | 设置Regulator输出电压范围失败 |
 
 ```c
 int32_t ret;
-int32_t minUv = 0;        // 最小电压为0µV
-int32_t maxUv = 20000;    // 最大电压为20000µV
+uint32_t minUv = 0;        // 最小电压为0µV
+uint32_t maxUv = 20000;    // 最大电压为20000µV
 
 // 设置Regulator电压输出电压范围
 ret = RegulatorSetVoltage(handle, minUv, maxUv);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorSetVoltage: regulator set Voltage fail, ret:%d\n", ret);
     return ret;
 }
@@ -274,7 +284,9 @@ int32_t RegulatorGetVoltage(DevHandle handle, uint32_t *voltage);
 | ---------- | ----------------- |
 | handle | DevHandle类型，Regulator设备句柄 |
 | voltage | uint32_t类型指针，待获取的Regulator电压 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------- |
 | HDF_SUCCESS | 获取Regulator电压成功 |
 | 负数 | 获取Regulator电压失败 |
 
@@ -285,7 +297,7 @@ uint32_t voltage;
 // 获取Regulator电压
 ret = RegulatorGetVoltage(handle, &voltage);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorGetVoltage: regulator get Voltage fail, ret:%d\n", ret);
     return ret;
 }
@@ -304,19 +316,21 @@ int32_t RegulatorSetCurrent(DevHandle handle, uint32_t minUa, uint32_t maxUa);
 | handle | DevHandle类型，Regulator设备句柄 |
 | minUa | uint32_t类型，最小电流 |
 | maxUa | uint32_t类型，最大电流 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------- |
 | HDF_SUCCESS | 设置Regulator输出电流范围成功 |
 | 负数 | 设置Regulator输出电流范围失败 |
 
 ```c
 int32_t ret;
-int32_t minUa = 0;	    // 最小电流为0μA
-int32_t maxUa = 200;    // 最大电流为200μA
+uint32_t minUa = 0;      // 最小电流为0μA
+uint32_t maxUa = 200;    // 最大电流为200μA
 
 // 设置Regulator输出电流范围
 ret = RegulatorSetCurrent(handle, minUa, maxUa);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorSetCurrent: regulator set current fail, ret:%d\n", ret);
     return ret;
 }
@@ -334,7 +348,9 @@ int32_t RegulatorGetCurrent(DevHandle handle, uint32_t *regCurrent);
 | ----------- | ----------------- |
 | handle | DevHandle类型，Regulator设备句柄 |
 | regCurrent | uint32_t类型指针，待获取的Regulator电流 |
+
 | **返回值** | **返回值描述** |
+| ----------- | ----------------- |
 | HDF_SUCCESS | 获取成功 |
 | 负数 | 获取失败 |
 
@@ -345,7 +361,7 @@ uint32_t regCurrent;
 // 获取Regulator电流
 ret = RegulatorGetCurrent(handle, &regCurrent);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorGetCurrent: regulator get current fail, ret:%d\n", ret);
     return ret;
 }
@@ -363,7 +379,9 @@ int32_t RegulatorGetStatus(DevHandle handle, uint32_t *status);
 | ---------- | ----------------- |
 | handle | DevHandle类型，Regulator设备句柄 |
 | status | uint32_t类型指针，待获取Regulator状态 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------- |
 | HDF_SUCCESS | 获取成功 |
 | 负数 | 获取失败 |
 
@@ -374,7 +392,7 @@ uint32_t status;
 // 获取Regulator状态
 ret = RegulatorGetStatus(handle, &status);
 if (ret != HDF_SUCCESS) {
-	// 错误处理
+    // 错误处理
     HDF_LOGE("RegulatorGetStatus: regulator get status fail, ret:%d\n", ret);
     return ret;
 }
@@ -392,32 +410,32 @@ void RegulatorTestSample(void)
     int32_t ret;
      
     /* Regulator设备名称 */
-	const char *name = "regulator_virtual_1";
-	DevHandle handle = NULL;
+    const char *name = "regulator_virtual_1";
+    DevHandle handle = NULL;
 
-	/* 获取Regulator设备句柄 */
-	handle = RegulatorOpen(name);
-	if (handle  == NULL) {
-    	HDF_LOGE("RegulatorOpen: failed!\n");
+    /* 获取Regulator设备句柄 */
+    handle = RegulatorOpen(name);
+    if (handle  == NULL) {
+        HDF_LOGE("RegulatorOpen: failed!\n");
         return;
-	}
+    }
 
-	/* 启用Regulator设备 */
-	ret = RegulatorEnable(handle);
-	if (ret != 0) {
-		HDF_LOGE("RegulatorEnable: failed, ret %d\n", ret);
+    /* 启用Regulator设备 */
+    ret = RegulatorEnable(handle);
+    if (ret != 0) {
+        HDF_LOGE("RegulatorEnable: failed, ret %d\n", ret);
         goto _ERR;
-	}
+    }
     
-    int32_t minUv = 0;		// 最小电压为0µV
-	int32_t maxUv = 20000;  // 最大电压为20000µV
+    int32_t minUv = 0;      // 最小电压为0µV
+    int32_t maxUv = 20000;  // 最大电压为20000µV
 
-	/* 设置Regulator输出电压范围 */
-	ret = RegulatorSetVoltage(handle, minUv, maxUv);
-	if (ret != 0) {
-		HDF_LOGE("RegulatorSetVoltage: failed, ret %d\n", ret);
+    /* 设置Regulator输出电压范围 */
+    ret = RegulatorSetVoltage(handle, minUv, maxUv);
+    if (ret != 0) {
+        HDF_LOGE("RegulatorSetVoltage: failed, ret %d\n", ret);
         goto _ERR;
-	}
+    }
     
     uint32_t voltage;
 
