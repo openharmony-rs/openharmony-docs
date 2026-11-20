@@ -675,11 +675,11 @@ struct Index {
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不渲染标题。<br />装饰器类型：@Trace                                                                                                        |
-| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。未设置、设置为空字符串或纯空白字符串，或资源解析失败时不显示副标题，标题回落为单行布局。<br />默认值：undefined。<br />装饰器类型：@Trace |
+| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。<br />默认值：undefined。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不显示副标题，标题回落为单行布局。<br />装饰器类型：@Trace |
 | placement | [ToolbarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。<br />默认值：ToolbarV2ItemPlacement.LEADING。<br />装饰器类型：@Trace |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。<br />装饰器类型：@Trace                                                                    |
 | style     | [ToolbarV2TitleStyle](#toolbarv2titlestyle)       | 否   | 是   | 标题样式。<br />默认值：undefined。<br />值为undefined时，使用默认样式。<br />装饰器类型：@Trace                                                                              |
-| subTitleStyle | [ToolbarV2TitleStyle](#toolbarv2titlestyle) | 否   | 是   | 副标题的样式。未设置时使用副标题默认样式：fontSize默认14fp、fontColor默认$r('sys.color.font_secondary')、fontWeight默认FontWeight.Regular；minLength对副标题不生效。<br />默认值：undefined。<br />值为undefined时，使用默认样式。<br />装饰器类型：@Trace |
+| subTitleStyle | [ToolbarV2TitleStyle](#toolbarv2titlestyle) | 否   | 是   | 副标题的样式。<br />默认值：undefined。<br />值为undefined时，使用副标题默认样式：fontSize默认14fp、fontColor默认$r('sys.color.font_secondary')、fontWeight默认FontWeight.Regular；minLength对副标题不生效。<br />装饰器类型：@Trace |
 
 ### constructor
 
@@ -720,11 +720,11 @@ ToolbarV2TitleConfigs的构造函数。
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------- |
 | content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 是   | 工具栏标题的文本内容。<br />默认值：空字符串。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不渲染标题。 |
-| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。未设置、设置为空字符串或纯空白字符串，或资源解析失败时不显示副标题，标题回落为单行布局。<br />默认值：undefined。 |
+| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。<br />默认值：undefined。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不显示副标题，标题回落为单行布局。 |
 | placement | [ToolbarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。<br />默认值：ToolbarV2ItemPlacement.LEADING。                |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。                                           |
 | style     | [ToolbarV2TitleStyle](#toolbarv2titlestyle)       | 否   | 是   | 标题样式。<br />默认值：undefined。<br />值为undefined时，使用默认样式。                                          |
-| subTitleStyle | [ToolbarV2TitleStyle](#toolbarv2titlestyle) | 否   | 是   | 副标题的样式。未设置时使用副标题默认样式：fontSize默认14fp、fontColor默认$r('sys.color.font_secondary')、fontWeight默认FontWeight.Regular；minLength对副标题不生效。<br />默认值：undefined。<br />值为undefined时，使用默认样式。 |
+| subTitleStyle | [ToolbarV2TitleStyle](#toolbarv2titlestyle) | 否   | 是   | 副标题的样式。<br />默认值：undefined。<br />值为undefined时，使用副标题默认样式：fontSize默认14fp、fontColor默认$r('sys.color.font_secondary')、fontWeight默认FontWeight.Regular；minLength对副标题不生效。 |
 
 ## ToolbarV2TitleStyle
 
