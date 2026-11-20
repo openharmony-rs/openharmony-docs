@@ -1,9 +1,9 @@
 # 富文本编辑（RichEditor）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @carnivore233-->
+<!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
-<!--Tester: @mateng_Holtens-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混排内容的输入操作，例如可以输入图文的评论区。具体用法参考[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件的API文档。
@@ -1586,5 +1586,36 @@ SystemMenu() {
 ```
 
 ![alt text](figures/richeditor_image_bindselectionmenu.gif)
+
+### 设置文本选择的AI菜单
+
+从API version 22开始，支持通过[enableSelectedDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableselecteddatadetector22)属性配置文本选择AI菜单功能。开启后，选中文本时文本选择菜单中将显示AI实体识别选项，例如选中网址时菜单中显示“打开链接”选项。
+
+<!-- @[richEditor_selectedDataDetector](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SelectedDataDetector.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct SelectedDataDetector {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+
+  build() {
+      Column({ space: 12 }) {
+        // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
+        RichEditor({ controller: this.controller })
+          .onReady(() => {
+            this.controller.addTextSpan($r('app.string.SelectedDataDetector_Text_One'), this.textSpanOptions);
+          })
+          .copyOptions(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+  }
+}
+```
+<!--RP2--><!--RP2End-->
 
 <!--RP1--><!--RP1End-->

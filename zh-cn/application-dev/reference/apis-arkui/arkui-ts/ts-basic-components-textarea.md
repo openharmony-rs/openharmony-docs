@@ -2438,41 +2438,74 @@ struct TextAreaExample {
 
 ![lineSpacing](figures/TextArea_lineSpacing.png)
 
-### 示例11（设置自动填充）
+### 示例11（设置文本着色器效果）
 
-从API version 12开始，该示例通过[contentType](#contenttype12)、[enableAutoFill](#enableautofill12)属性实现了文本自动填充的功能。
+该示例通过[shaderStyle](#shaderstyle)接口实现对TextArea组件内文本着色效果。
+
+从API版本26.0.0开始，新增shaderStyle接口。
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct TextAreaExample {
-  @State text: string = '';
-
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
   build() {
-    Column() {
-      // 邮箱地址自动填充类型
-      TextArea({ placeholder: 'input your email...' })
-        .width('95%')
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
         .height(40)
-        .margin(20)
-        .contentType(ContentType.EMAIL_ADDRESS)
-        .enableAutoFill(true)
-        .maxLength(20)
-      // 街道地址自动填充类型
-      TextArea({ placeholder: 'input your street address...' })
-        .width('95%')
+        .shaderStyle(this.linearGradientOptions1)
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
         .height(40)
-        .margin(20)
-        .contentType(ContentType.FULL_STREET_ADDRESS)
-        .enableAutoFill(true)
-        .maxLength(20)
-    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+        .shaderStyle(this.linearGradientOptions2)
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.radialGradientOptions)
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.colorShaderStyle)
+    }
   }
 }
 ```
-
-<!--RP5--><!--RP5End-->
+![TextAreaShaderStyle](figures/textAreaShaderStyle.png)
 
 ### 示例12（设置折行规则）
 
@@ -3642,99 +3675,3 @@ struct TextExample {
 
 ![textAreaOrphanCharOptimization](figures/textAreaOrphanCharOptimization.png)
 
-### 示例35（设置文本着色器效果）
-
-该示例通过[shaderStyle](#shaderstyle)接口实现对TextArea组件内文本着色效果。
-
-从API版本26.0.0开始，新增shaderStyle接口。
-
-```ts
-@Entry
-@Component
-struct ShaderColorStyle {
-  @State message: string = 'Hello World';
-  @State linearGradientOptions1: LinearGradientOptions =
-    {
-      angle: 45,
-      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
-    };
-  @State linearGradientOptions2: LinearGradientOptions =
-    {
-      direction: GradientDirection.LeftTop,
-      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
-      repeating: true,
-    };
-  @State radialGradientOptions: RadialGradientOptions =
-    {
-      center: [50, 50],
-      radius: 20,
-      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
-      repeating: true,
-    };
-  @State colorShaderStyle: ColorShaderStyle =
-    {
-      color: Color.Blue
-    };
-  build() {
-    Column({ space: 5 }) {
-      Text('angle为45°的线性渐变').fontSize(18).width('90%')
-        .margin({ top: 40, left: 40 })
-      TextArea({ text: this.message })
-        .fontSize(20)
-        .width('80%')
-        .height(40)
-        .shaderStyle(this.linearGradientOptions1)
-      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
-        .margin({ top: 40, left: 40 })
-      TextArea({ text: this.message })
-        .fontSize(20)
-        .width('80%')
-        .height(40)
-        .shaderStyle(this.linearGradientOptions2)
-      Text('径向渐变').fontSize(18).width('90%')
-        .margin({ top: 40, left: 40 })
-      TextArea({ text: this.message })
-        .fontSize(20)
-        .width('80%')
-        .height(40)
-        .shaderStyle(this.radialGradientOptions)
-      Text('纯色').fontSize(18).width('90%')
-        .margin({ top: 40, left: 40 })
-      TextArea({ text: this.message })
-        .fontSize(20)
-        .width('80%')
-        .height(40)
-        .shaderStyle(this.colorShaderStyle)
-    }
-  }
-}
-```
-![TextAreaShaderStyle](figures/textAreaShaderStyle.png)
-
-### 示例36（设置文本选择的AI菜单）
-
-该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
-
-从API version 22开始，新增enableSelectedDataDetector。
-
-```ts
-@Entry
-@Component
-struct Demo36 {
-  exampleText: string = '示例网址：www.example.com';
-
-  build() {
-    Column() {
-      Row() {
-        TextArea({ text: this.exampleText })
-          .copyOption(CopyOptions.LocalDevice)
-          .enableSelectedDataDetector(true)
-          .border({ width: 1, color: Color.Black })
-          .height(300)
-          .margin(10)
-      }
-    }
-  }
-}
-```
-<!--RP7--><!--RP7End-->
