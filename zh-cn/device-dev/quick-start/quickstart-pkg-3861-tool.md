@@ -20,9 +20,9 @@
 相关操作在Ubuntu环境下进行。
 
 
-### 安装Scons
+### 安装scons
 
-1. 运行如下命令，安装SCons安装包。
+1. 运行如下命令，安装scons安装包。
    
    ```
    python3 -m pip install scons
@@ -34,7 +34,7 @@
    scons -v
    ```
 
-     **图1** SCons安装成功界面，版本要求3.0.4以上  
+     **图1** scons安装成功界面，版本要求3.0.4以上  
 
    ![hi3861-scons-install-success](figures/hi3861-scons-install-success.png)
 
@@ -65,7 +65,7 @@
 
 3. 安装pycryptodome，任选如下一种方式。
      
-   安装升级文件签名依赖的Python组件包，包括：pycryptodome、six、ecdsa。安装ecdsa依赖six，请先安装six，再安装ecdsa。
+   安装升级文件签名依赖的python组件包，包括：pycryptodome、six、ecdsa。安装ecdsa依赖six，请先安装six，再安装ecdsa。
    - **命令行方式：**
      
      ```
@@ -214,7 +214,7 @@
     vim /opt/.bashrc
     ```
 
-    将以下命令拷贝到的最后一行，保存并退出。
+    将以下命令拷贝到最后一行，保存并退出。
     
     ```
     export PATH=/opt/gcc_riscv32/bin:$PATH
