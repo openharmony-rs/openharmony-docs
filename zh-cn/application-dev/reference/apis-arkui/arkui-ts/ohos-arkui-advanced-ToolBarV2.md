@@ -639,14 +639,14 @@ struct Index {
 
 定义高级工具栏的标题配置。设置后，承载该配置的子项仅作为标题的配置载体，不再作为普通子项渲染。
 
+工具栏空间不足时，优先压缩标题宽度，仍不足时按displayPriority从低到高折叠子项至溢出菜单。标题仅在水平布局（direction为[Axis](ts-appendix-enums.md#axis).Horizontal）时生效。未配置副标题时标题单行显示；配置副标题（subTitleContent）时，主标题在上、副标题在下分两行显示，副标题跟随标题的placement和visible。主标题与副标题均为单行显示，超出可用宽度时以省略号显示。
+
 > **说明：**
 >
 > - 普通子项指在工具栏中按自身content、icon或builder渲染为按钮、可点击并参与折叠与溢出菜单收纳的子项。作为标题载体时，该子项不显示content文本和icon图标，不响应action点击事件，不参与折叠与溢出菜单收纳；state、builder、itemSize、isShowSeparator、isShowText、activatedBackgroundColor、displayPriority、isShowOverflowMenu及accessibilityText、accessibilityDescription、accessibilityLevel等子项级字段均不生效。
 > - 标题区域由titleConfigs.placement决定，默认值为ToolbarV2ItemPlacement.LEADING；承载子项自身的placement不生效。
 > - content为ToolBarV2ItemOptions的必填字段，作为标题载体时仍需传入，但传入内容不渲染为子项文本，标题文本由titleConfigs.content决定。
 > - 标题与溢出菜单按钮默认不作为可收纳项，不会被折叠隐藏；极端空间不足时二者可能发生重叠，可通过减小titleConfigs.style.minLength或设置titleConfigs.visible为false隐藏标题来保障显示效果。
-
-工具栏空间不足时，优先压缩标题宽度，仍不足时按displayPriority从低到高折叠子项至溢出菜单。标题仅在水平布局（direction为[Axis](ts-appendix-enums.md#axis).Horizontal）时生效。未配置副标题时标题单行显示；配置副标题（subTitleContent）时，主标题在上、副标题在下分两行显示，副标题跟随标题的placement和visible。主标题与副标题均为单行显示，超出可用宽度时以省略号显示。
 
 **起始版本：** 26.1.0
 
@@ -674,7 +674,7 @@ struct Index {
 
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />装饰器类型：@Trace                                                                                                        |
+| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不渲染标题。<br />装饰器类型：@Trace                                                                                                        |
 | subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。未设置、设置为空字符串或纯空白字符串，或资源解析失败时不显示副标题，标题回落为单行布局。<br />默认值：undefined。<br />装饰器类型：@Trace |
 | placement | [ToolbarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。<br />默认值：ToolbarV2ItemPlacement.LEADING。<br />装饰器类型：@Trace |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。<br />装饰器类型：@Trace                                                                    |
@@ -719,7 +719,7 @@ ToolbarV2TitleConfigs的构造函数。
 
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------- |
-| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 是   | 工具栏标题的文本内容。<br />默认值：空字符串。                               |
+| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 是   | 工具栏标题的文本内容。<br />默认值：空字符串。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不渲染标题。 |
 | subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。未设置、设置为空字符串或纯空白字符串，或资源解析失败时不显示副标题，标题回落为单行布局。<br />默认值：undefined。 |
 | placement | [ToolbarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。<br />默认值：ToolbarV2ItemPlacement.LEADING。                |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。                                           |
