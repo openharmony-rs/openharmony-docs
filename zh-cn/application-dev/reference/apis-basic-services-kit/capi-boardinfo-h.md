@@ -12,7 +12,7 @@
 
 **引用文件：** <boardinfo.h>
 
-**库：** libboardinfo_ndk.z.so
+**库：** libboardinfo.so
 
 **系统能力：** SystemCapability.Startup.BoardInfo
 
