@@ -72,7 +72,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.InterfaceConfiguration) => {
   if (error) {
-    console.error("getIfaceConfig  callback error = " + JSON.stringify(error));
+    console.error("getIfaceConfig callback error = " + JSON.stringify(error));
   } else {
     console.info("getIfaceConfig callback mode = " + JSON.stringify(value.mode));
     console.info("getIfaceConfig callback ipAddr = " + JSON.stringify(value.ipAddr));
