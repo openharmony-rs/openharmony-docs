@@ -29,7 +29,7 @@
 1. 导入模块。
 
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_control_app_status.ets) -->
-
+   
    ``` TypeScript
    import { abilityToolAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
