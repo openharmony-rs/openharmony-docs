@@ -2907,7 +2907,7 @@ char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser,
 
 **描述**
 
-获取系统预置的风格字体名称列表，即“字体样式”设置中用户可选择的字体，不包含多语言回退字体、用户安装字体和应用内自定义字体。返回的名称为当前语言环境对应的字体名称；字体未提供当前语言的名称时，返回其默认名称。该名称仅可用于[OH_Drawing_FontParserGetFontByName](#oh_drawing_fontparsergetfontbyname)查询字体详情，与[OH_Drawing_GetSystemFontFullNamesByType](capi-drawing-text-font-descriptor-h.md#oh_drawing_getsystemfontfullnamesbytype)返回的字体全名不通用（后者不随语言环境变化，且支持按字体类型过滤，含已安装字体和自定义字体）。不再需要该列表时，请使用[OH_Drawing_DestroySystemFontList](#oh_drawing_destroysystemfontlist)释放内存。此接口仅在Phone、PC/2in1设备上支持。
+获取系统预置的风格字体名称列表，名称与当前语言环境相匹配。不再需要该列表时，请使用[OH_Drawing_DestroySystemFontList](#oh_drawing_destroysystemfontlist)释放内存。此接口仅在Phone、PC/2in1设备上支持。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
