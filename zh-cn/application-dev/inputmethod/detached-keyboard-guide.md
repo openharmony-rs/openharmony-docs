@@ -34,6 +34,62 @@
 
 <!-- @[input_case_detached_switchToDetachedPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
+``` TypeScript
+public switchToDetachedPanel(): void {
+  if (this.mPanel === undefined) {
+    this.addLog('switchToDetachedPanel panel is undefined');
+    return;
+  }
+  let dis: display.Display | undefined = undefined;
+  try {
+    dis = display.getPrimaryDisplaySync();
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`switchToDetachedPanel get display catch error: ${error.code} ${error.message}`);
+    return;
+  }
+  if (dis === undefined) {
+    this.addLog('switchToDetachedPanel display is undefined');
+    return;
+  }
+  let screenWidth = dis.width;
+  let screenHeight = dis.height;
+  if (dis.width > dis.height) {
+    screenWidth = dis.height;
+    screenHeight = dis.width;
+  }
+  let detachedHeight = Math.floor(screenHeight * KEYBOARD_DETACHED_HEIGHT_RATE);
+  let landHeight = Math.floor(screenWidth * KEYBOARD_DETACHED_HEIGHT_RATE)
+  let landscapeRect: window.Rect = {
+    left: 0,
+    top: screenWidth - landHeight,
+    width: screenHeight,
+    height: landHeight
+  };
+  let portraitRect: window.Rect = {
+    left: 0,
+    top: screenHeight - detachedHeight,
+    width: screenWidth,
+    height: detachedHeight
+  };
+  let panelRect: inputMethodEngine.PanelRect = {
+    landscapeRect: landscapeRect,
+    portraitRect: portraitRect
+  };
+  try {
+    this.mPanel.updatePanelRectSync(inputMethodEngine.PanelFlag.FLAG_DETACHED, panelRect);
+    this.mPanelWidth = dis.width;
+    this.mPanelHeight = dis.width > dis.height ? landHeight : detachedHeight;
+    this.addLog(`switchToDetachedPanel success, width = ${dis.width}, height = ${detachedHeight}`);
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`switchToDetachedPanel catch error: ${error.code} ${error.message}`);
+  }
+  // 将左右两半键盘区域设置为热区，中间透明区域不接收输入事件
+  this.refreshSplitHotZone(dis.width, detachedHeight);
+}
+```
+
 
 ### 设置分离态热区
 
