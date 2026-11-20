@@ -335,6 +335,7 @@
   - [NDK多实例场景开发](ndk-scope-task.md)
   - [NDK多线程创建组件](ndk-build-on-multi-thread.md)
   - [构建渲染节点](ndk-embed-render-components.md)
+  - [监听全局手势](ndk-sense-gestures-and-events.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->
