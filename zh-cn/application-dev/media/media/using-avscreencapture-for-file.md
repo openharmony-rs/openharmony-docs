@@ -84,12 +84,12 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    ``` C++
    void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
    {
-       // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
+       // 录屏时如果要获取麦克风或者内录，内录参数必填。如果内录和麦克风都设置了，两者参数设置需要一致。
        OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
    
        OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
        // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
-       // 为保证音频质量，此处音频比特率取值128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
+       // 为保证音频质量，此处音频比特率取值128000bit/s。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000bit/s或48000bit/s。
        OH_AudioEncInfo audioEncInfo = {
            .audioBitrate = 128000,
            .audioCodecformat = OH_AAC_LC
