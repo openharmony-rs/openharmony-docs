@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -332,7 +332,7 @@ ArkTS-Sta: static makeFromFileWithArguments(filePath: string, typefaceArguments:
 ArkTS-Dyn示例：
 
 ```ts
-import { RenderNode, DrawContext, $rawfile } from '@kit.ArkUI';
+import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class TextRenderNode extends RenderNode {
@@ -472,7 +472,7 @@ isBold(): boolean
 
 **示例：**
 
-``` ts
+```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 const font = new drawing.Font();
@@ -500,7 +500,7 @@ isItalic(): boolean
 
 **示例：**
 
-``` ts
+```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 const font = new drawing.Font();

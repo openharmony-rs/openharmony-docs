@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -12,6 +12,8 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 起始版本： 26.0.1。
 >
 > - 本模块使用屏幕物理像素单位px。
 >
@@ -44,7 +46,7 @@ ArkTS-Sta: beginRecording(width: int, height: int): Canvas \| undefined
 | 参数名 | 类型   | 必填 | 说明                                                           |
 | ------ | ------ | ---- | -------------------------------------------------------------- |
 | width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的宽度。单位为物理像素px，取值范围为int范围内的正整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta: 录制画布的宽度。单位为物理像素px，取值范围为大于0的整数。 |
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的高度。单位为物理像素px，取值范围为int范围内的正整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta:录制画布的高度。单位为物理像素px，取值范围为大于0的整数。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的高度。单位为物理像素px，取值范围为int范围内的正整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta: 录制画布的高度。单位为物理像素px，取值范围为大于0的整数。 |
 
 **返回值：**
 
@@ -52,7 +54,7 @@ ArkTS-Sta: beginRecording(width: int, height: int): Canvas \| undefined
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ArkTS-Dyn: [Canvas](arkts-apis-graphics-drawing-Canvas.md)<br>ArkTS-Sta: [Canvas](arkts-apis-graphics-drawing-Canvas.md) \| undefined | ArkTS-Dyn: 返回用于录制绘制指令的画布对象。在该画布上调用的绘制接口都会被录制为绘制指令。<br>ArkTS-Sta: 返回用于录制绘制指令的画布对象。在该画布上调用的绘制接口都会被录制为绘制指令。返回undefined表示录制画布创建失败。 |
 
- **错误码：**
+**错误码：**
 
 以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
 
@@ -70,7 +72,7 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     const recordCmdUtils = new drawing.RecordCmdUtils();
-    const recordCanvas = recordCmdUtils.beginRecording(200.0, 200.0);
+    const recordCanvas = recordCmdUtils.beginRecording(200, 200);
     const pen = new drawing.Pen();
     pen.setStrokeWidth(5);
     pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
@@ -128,9 +130,9 @@ ArkTS-Sta: finishRecording(): RecordCmd \| undefined
 
 **返回值：**
 
-| 类型           | 说明            |
-| -------------- | -------------- |
-| ArkTS-Dyn: [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd)<br>ArkTS-Sta: [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd) \| undefined | ArkTS-Dyn: 返回录制的绘制指令对象，可用于[Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd)回放绘制指令。<br>ArkTS-Sta: 返回录制的绘制指令对象，可用于[Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd)回放绘制指令。返回undefined表示录制失败。 |
+| 类型                                            | 说明                                       |
+| ----------------------------------------------- | ------------------------------------------ |
+| ArkTS-Dyn: [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd)<br>ArkTS-Sta: [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd) \| undefined | ArkTS-Dyn: 返回已录制的绘制指令对象，可用于[Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd)回放绘制指令。<br>ArkTS-Sta: 返回录制的绘制指令对象，可用于[Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd)回放绘制指令。返回undefined表示录制失败。 |
 
 **示例：**
 
@@ -142,7 +144,7 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     const recordCmdUtils = new drawing.RecordCmdUtils();
-    const recordCanvas = recordCmdUtils.beginRecording(200.0, 200.0);
+    const recordCanvas = recordCmdUtils.beginRecording(200, 200);
     const pen = new drawing.Pen();
     pen.setStrokeWidth(5);
     pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
@@ -188,7 +190,7 @@ ArkTS-Dyn: getHeight(): number
 
 ArkTS-Sta: getHeight(): int
 
-获取录制画布的高度。返回值为开始录制时通过[beginRecording](#beginrecording)传入的height值。
+获取录制画布的高度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -202,7 +204,7 @@ ArkTS-Sta: getHeight(): int
 
 | 类型 | 说明                                                  |
 | ---- | ----------------------------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回录制画布的高度，单位为物理像素px，与[beginRecording](#beginrecording)传入的height值相同。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回录制画布的高度，单位为物理像素px，与开始录制时通过[beginRecording](#beginrecording)传入的height值相同。 |
 
 **示例：**
 
@@ -219,7 +221,7 @@ ArkTS-Dyn: getWidth(): number
 
 ArkTS-Sta: getWidth(): int
 
-获取录制画布的宽度。返回值为开始录制时通过[beginRecording](#beginrecording)传入的width值。
+获取录制画布的宽度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -233,7 +235,7 @@ ArkTS-Sta: getWidth(): int
 
 | 类型 | 说明                                                  |
 | ---- | ----------------------------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回录制画布的宽度，单位为物理像素px，与[beginRecording](#beginrecording)传入的width值相同。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 返回录制画布的宽度，单位为物理像素px，与开始录制时通过[beginRecording](#beginrecording)传入的width值相同。 |
 
 **示例：**
 
