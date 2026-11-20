@@ -1274,9 +1274,9 @@ struct GridEts {
 
 ### 虚拟文件拖拽
 
-从API版本26.1.0开始，支持通过[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri)提供虚拟文件拖拽能力。网络文件尚未完整下载、压缩包内文件尚未解压时，起拖方可以先提供文件信息，在落入方读取时提供文件内容。
+从API版本26.1.0开始，支持通过[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri15)提供虚拟文件拖拽能力。网络文件尚未完整下载、压缩包内文件尚未解压时，起拖方可以先提供文件信息，在落入方读取时提供文件内容。
 
-以下以拖拽文件或目录为例，介绍虚拟文件拖拽的实现步骤。完整示例请参考<!--RP2-->[VirtualFileDrag](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag)<!--RP2End-->。
+以下以拖拽文件或目录为例，介绍虚拟文件拖拽的实现步骤。
 
 1. 定义虚拟文件和回调。
 
@@ -1350,7 +1350,7 @@ struct GridEts {
 
 3. 设置起拖数据。
 
-   设置组件的draggable属性为true，在onDragStart回调中通过event.setData()设置上述拖拽数据。
+   在onDragStart回调中通过event.setData()设置上述拖拽数据。
 
    <!-- @[virtual_drag_js_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
    

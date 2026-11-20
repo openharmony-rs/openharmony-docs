@@ -347,9 +347,9 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 ## 虚拟文件拖拽
 
-从API版本26.1.0开始，支持通过[OH_UDMF_SetFileUriVirtualEntry](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_setfileurivirtualentry)提供虚拟文件拖拽能力。起拖方先声明文件信息，在落入方读取时提供内容，适用于网络文件尚未完整下载、压缩内容尚未解压等场景。
+从API版本26.1.0开始，支持通过统一数据管理框架（UDMF）中的接口[OH_UDMF_SetFileUriVirtualEntry](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_setfileurivirtualentry)提供虚拟文件拖拽能力。起拖方先声明文件信息，在落入方读取时提供内容，适用于网络文件尚未完整下载、压缩内容尚未解压等场景。
 
-以下以拖拽文件或目录为例，介绍C API实现虚拟文件拖拽的基本步骤。完整示例请参考<!--RP2-->[VirtualFileDrag_C](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C)<!--RP2End-->。
+以下以拖拽文件或目录为例，介绍C API实现虚拟文件拖拽的基本步骤。
 
 1. 定义虚拟文件回调。
 
