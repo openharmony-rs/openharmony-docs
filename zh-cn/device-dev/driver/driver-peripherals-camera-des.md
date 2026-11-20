@@ -4,6 +4,7 @@
 ### 功能简介<a name="2"></a>
 
 OpenHarmony相机驱动框架模型对上实现相机HDI（Hardware Device Interface）接口，对下实现相机Pipeline模型，管理相机各个硬件设备。
+
 该驱动框架模型内部分为三层，依次为HDI实现层、框架层和设备适配层。各层基本概念如下：
 
 + HDI实现层：实现OHOS（OpenHarmony Operation System）相机标准南向接口。
@@ -48,6 +49,7 @@ Camera模块主要针对相机预览、拍照、视频流等场景，对这些�
 ### 接口说明<a name="6"></a>
 
 注：以下接口列举的为IDL接口描述生成的对应C++语言函数接口，接口声明见idl文件`/drivers/interface/camera/v1_1/`，获取路径为：[https://gitcode.com/openharmony/drivers_interface/tree/master/camera](https://gitcode.com/openharmony/drivers_interface/tree/master/camera)。
+
 在HDI使用中下发的配置参数不能超出GetCameraAbility上报的能力范围。即使通过UpdateSettings、CommitStreams、Capture等接口可以下发超出该范围的配置参数，且接口调用不会返回失败，但设置后的行为是不确定的。
 - icamera_device.h
 
@@ -77,15 +79,15 @@ Camera驱动的开发过程主要包含以下步骤：
 
     定义Camera的HdfDriverEntry结构体，该结构体中定义了CameraHost初始化的方法（代码目录drivers/peripheral/camera/interfaces/hdi_ipc/camera_host_driver.cpp）。
     ```c++
-   struct HdfDriverEntry g_cameraHostDriverEntry = {
-       .moduleVersion = 1,
-       .moduleName = "camera_service",
-       .Bind = HdfCameraHostDriverBind,
-       .Init = HdfCameraHostDriverInit,
-       .Release = HdfCameraHostDriverRelease,
-   };
-   HDF_INIT(g_cameraHostDriverEntry); // 将Camera的HdfDriverEntry结构体注册到HDF上
-   ```
+    struct HdfDriverEntry g_cameraHostDriverEntry = {
+        .moduleVersion = 1,
+        .moduleName = "camera_service",
+        .Bind = HdfCameraHostDriverBind,
+        .Init = HdfCameraHostDriverInit,
+        .Release = HdfCameraHostDriverRelease,
+    };
+    HDF_INIT(g_cameraHostDriverEntry); // 将Camera的HdfDriverEntry结构体注册到HDF上
+    ```
 
 2. 初始化Host服务
 
@@ -188,6 +190,7 @@ Camera驱动的开发过程主要包含以下步骤：
 4. 打开设备
 
    CameraHostProxy对象中有五个方法，分别是SetCallback、GetCameraIds、GetCameraAbility、OpenCamera和SetFlashlight。下面着重描述OpenCamera接口。
+
    CameraHostProxy的OpenCamera()接口通过CMD_CAMERA_HOST_OPEN_CAMERA调用远端CameraHostStubOpenCamera()接口并获取ICameraDevice对象。
 
    ```c++
@@ -811,7 +814,7 @@ Camera驱动的开发过程主要包含以下步骤：
            streamId, captureId, mode);
        std::lock_guard<std::mutex> l(metaDatalock_);
        if (mode == CAPTURE_SNAPSHOT) {
-           constexpr double latitude = 27.987500; // dummy data: Qomolangma latitde
+           constexpr double latitude = 27.987500; // dummy data: Qomolangma latitude
            constexpr double longitude = 86.927500; // dummy data: Qomolangma longituude
            constexpr double altitude = 8848.86; // dummy data: Qomolangma altitude
            constexpr size_t entryCapacity = 100;
@@ -961,14 +964,15 @@ Camera驱动的开发过程主要包含以下步骤：
    "-w | --set WB        Set white balance Cloudy\n"
    "-v | --video         capture Video of 10s\n"
    "-a | --Set AE        Set Auto exposure\n"
-   "-e | --Set Metadeta  Set Metadata\n"
+   "-e | --Set Metadata  Set Metadata\n"
    "-f | --Set Flashlight        Set flashlight ON 5s OFF\n"
    "-q | --quit          stop preview and quit this app\n");
    ```
 
-4. 编译用例         
+4. 编译用例
+
    在drivers/peripheral/camera/BUILD.gn文件中的deps中添加“init:ohos_camera_demo”，示例代码如下：
-   ```
+   ```c++
    deps = [
        "vdi_base/common/buffer_manager:camera_buffer_manager",
        "vdi_base/common/device_manager:camera_device_manager",
@@ -1008,7 +1012,7 @@ Camera Dump功能为Camera相关功能的开发提供测试保障，根据需要
 #### 源码目录说明
 
 
-```
+```c++
 /drivers/peripheral/camera/vdi_base/common/dump
 ├── include
 │   └── camera_dump.h    #Dump头文件
@@ -1077,20 +1081,20 @@ Dump配置文件为dump.config，存放在开发设备 /data/local/tmp 目录中
 #### 开启Dump功能
 1. 将配置文件发送到开发设备的目录 /data/local/tmp 中。
 
-   ```
+   ```c++
    hdc file send dump.config /data/local/tmp
    ```
 
 2. 修改Dump目录权限。
 
-   ```
+   ```c++
    hdc shell mount -o rw,remount /data
    hdc shell chmod 777 /data/ -R
    ```
 
 3. 打开Dump。
 
-   ```
+   ```c++
    hdc shell "hidumper -s 5100 -a '-host camera_host -o'"
    ```
 
@@ -1103,7 +1107,7 @@ Dump配置文件为dump.config，存放在开发设备 /data/local/tmp 目录中
 
 #### Dump结果
 打开Dump后，会在设备的 /data/local/tmp 目录中生成Dump调测数据文件，将数据文件发送到本地电脑中后即可查看。
-```
+```c++
 hdc file recv /data/local/tmp/xxxx.yuv ~/
 ```
 
