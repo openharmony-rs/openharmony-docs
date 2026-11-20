@@ -246,7 +246,7 @@ ArkTS-Sta: static createLinearGradient(startPt: common2D.Point, endPt: common2D.
 | colors | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 表示在两个点之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<double> \| null | 否   | ArkTS-Dyn: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当pos传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示颜色均匀分布在起点和终点之间。<br/>ArkTS-Sta: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当不传该参数，或者pos传入undefined时，默认为null，表示颜色均匀分布在起点和终点之间。 |
-| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | ArkTS-Dyn: 矩阵对象，用于对着色器做矩阵变换。当matrix传入undefined时，该方法将抛错误码。不传该参数时，s默认为null，表示单位矩阵。<br/>ArkTS-Sta: 矩阵对象，用于对着色器做矩阵变换。当不传该参数，或者matrix传入undefined时，默认为null，表示单位矩阵。 |
+| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | ArkTS-Dyn: 矩阵对象，用于对着色器做矩阵变换。当matrix传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示单位矩阵。<br/>ArkTS-Sta: 矩阵对象，用于对着色器做矩阵变换。当不传该参数，或者matrix传入undefined时，默认为null，表示单位矩阵。 |
 
 ![LinearGradient](figures/createLinearGradient.png)
 
