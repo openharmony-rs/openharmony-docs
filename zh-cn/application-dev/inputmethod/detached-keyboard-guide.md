@@ -193,6 +193,34 @@ ArkTS-Sta示例：
 
 <!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
+``` TypeScript
+// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
+public refreshSplitHotZone(width: int, height: int): void {
+  if (this.mPanel === undefined) {
+    this.addLog('refreshSplitHotZone panel is undefined');
+    return;
+  }
+  if (width <= 0 || height <= 0) {
+    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
+    return;
+  }
+  let halfWidth: int = Double.toInt(width * KEYBOARD_SPLIT_WIDTH_RATE);
+  let w: int = width;
+  let h: int = height;
+  let inputRegion: Array<window.Rect> = [
+    { left: 0, top: 0, width: halfWidth, height: h },
+    { left: w - halfWidth, top: 0, width: halfWidth, height: h }
+  ];
+  try {
+    this.mPanel!.updateRegion(inputRegion);
+    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
+  }
+}
+```
+
 
 ### 分离态键盘拖动
 
