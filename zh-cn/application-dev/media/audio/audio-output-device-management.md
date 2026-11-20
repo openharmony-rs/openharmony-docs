@@ -203,6 +203,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 > **说明：**
 >
 > - 如需在界面首次展示时获取设备信息，应先调用查询接口，并结合监听接口更新后续变化。
+> 
 > - 不再需要监听时，应调用[off('preferOutputDeviceChangeForRendererInfo')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#offpreferoutputdevicechangeforrendererinfo10)取消订阅。
 
 <!-- @[onPreferOutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
