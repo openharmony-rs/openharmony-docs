@@ -4271,9 +4271,9 @@ async function gzeofDemo(pathDir: string) {
   await gzip.gzopen(path, "wb");
   let writeBufferWithData = new ArrayBuffer(16);
   let uint8View = new Uint8Array(writeBufferWithData);
-  for (let i = 0; i < uint8View.length; i++) {
-    uint8View[i] = i;
-  }
+  uint8View.forEach((value: number, index: number) => {
+    uint8View[index] = index;
+  });
   let writeNum = await gzip.gzwrite(writeBufferWithData, 16)
   await gzip.gzclose();
   await gzip.gzopen(path, "rb");
