@@ -3,7 +3,7 @@
 ## 概述
 
 ### 功能简介
-该功能基于[Kconfiglib](https://github.com/ulfalizer/Kconfiglib)与[Kconfig]( https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html#introduction)实现，方便用户个性化配置OpenHarmony产品子系统部件。
+该功能基于[Kconfiglib](https://github.com/ulfalizer/Kconfiglib)与[Kconfig](https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html#introduction)实现，方便用户个性化配置OpenHarmony产品子系统部件。
 
 基于Kconfig实现的可视化配置功能具有以下优点：
 
@@ -12,7 +12,7 @@
 
 ### 基本概念
 
-- [Kconfig]( https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html#introduction) ：是一款Linux可视化配置文件格式。
+- [Kconfig](https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html#introduction) ：是一款Linux可视化配置文件格式。
 
 - [Kconfiglib](https://github.com/ulfalizer/Kconfiglib)：是一款基于Kconfig格式实现的Linux可视化配置工具。
 
@@ -52,7 +52,7 @@
 
    1. 点击方向键->选择子系统，进入子系统的部件列表。
 
-   2. 按回车健选择子系统。
+   2. 按回车键选择子系统。
 
    3. 输入`feature`时，注意用英语逗号隔开多项输入。
 
@@ -92,8 +92,6 @@
       输出文件默认为当前目录下：`product.json`， 也可以使用`python3 parse_kconf.py --out="example/out.json"`来指定输出文件位置。
 
       更多操作可查看`python3 parse_kconf.py -h`。
-
-​	
 
 ## 常见问题
 
