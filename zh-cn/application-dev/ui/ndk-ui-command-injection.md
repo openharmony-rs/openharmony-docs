@@ -13,7 +13,7 @@
 
 本指南说明从节点定位到效果验证的命令注入流程；命令参数与组件行为见附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。
 
-阅读时，建议先了解[约束与限制](#约束与限制)，再查阅[接口说明](#接口说明)和[控件命令格式](#控件命令格式)，最后参照[开发步骤](#开发步骤)完成接入。
+阅读时，建议先了解[约束与限制](#约束与限制)，再查阅[接口说明](#接口说明)和[控件命令格式](#控件命令格式)，结合[命令使用建议](#命令使用建议)，最后参照[开发步骤](#开发步骤)完成接入。
 
 > **说明：**
 >
@@ -28,14 +28,14 @@
 > 目标实例、线程和节点有效性的可行确认方式：
 >
 > - **目标实例**：上下文从当前页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)获取，获取与复用限制见[管理上下文生命周期](ndk-ui-info-collect-tree.md#管理上下文生命周期)，不跨实例缓存；实例失效时注入接口同步返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，应重新获取有效实例的上下文后再提交。
-> - **线程**：在目标实例的UI线程上调用。可行方式是从ArkTS页面事件（如onClick）中发起调用，页面事件回调在UI线程执行，正常提交示例见[注入控件命令](#注入控件命令)；注入接口检测到线程违规会终止进程，该错误无法通过返回值确认或补救，只能通过调用来源保证。
+> - **线程**：在目标实例的UI线程上调用。可行方式是从ArkTS页面事件（如onClick）中发起调用，页面事件回调在UI线程执行，正常提交示例见[开发步骤](#开发步骤)；注入接口检测到线程违规会终止进程，该错误无法通过返回值确认或补救，只能通过调用来源保证。
 > - **节点**：注入前从最新一次采集结果中定位目标节点并读取整数节点ID，页面变化后重新采集定位；节点失效时注入接口同步返回[ARKUI_ERROR_CODE_NODE_NOT_FOUND](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，应重新定位后再决定是否提交，处理建议见[处理返回值](#处理返回值)。
 
 - 在目标Context的UI线程调用注入接口，非UI线程调用会终止进程；线程要求见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明。
 - uniqueId必须属于传入的Context，具体见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明。应从当前树结果或节点查询接口取得整数ID，不使用组件`.id()`的字符串值代替。
-- 同一进程内，前一条命令完成前提交的新请求会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；限制解除时机与重试规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的返回值说明。
-- 完成回调报告命令的即时处理结果，回调语义见[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)。验证最终效果时使用组件已有业务回调或后续业务操作，不阻塞UI线程等待。
-- 已受理请求的完成回调可能在实例销毁后到达；userData的所有权与有效性规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明，不能因页面退出提前释放。
+- 同一进程内，前一条命令完成前不要提交新请求；此时提交会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，限制解除时机与重试规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的返回值说明。
+- 不要阻塞UI线程等待完成回调；完成回调仅报告命令的即时处理结果，回调语义见[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)，最终效果通过组件已有业务回调或后续业务操作验证。
+- 不能因页面退出提前释放userData；已受理请求的完成回调可能在实例销毁后到达，所有权与有效性规则见[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)的参数说明。
 
 ## 接口说明
 
@@ -81,13 +81,9 @@
 | `cmd.action_info` | 业务字段 | 命令参数对象；即使命令不需要额外参数，也需保留空对象。 |
 | `cmd.action_info.value` | 业务字段 | setText的必填参数：要设置的文本内容；空字符串表示将内容设置为空。 |
 
-各命令业务参数的必填与可选定义见附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。
+各命令业务参数的必填与可选定义见附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)。根据目标组件和操作目的在附录中查阅支持的命令、必填与可选参数、边界行为；文本索引、越界处理和业务拦截规则因组件而异，构造action_info前应确认对应说明。
 
-### 命令选择
-
-根据目标组件和操作目的，在附录[控件命令参数与行为](ndk-ui-appendix.md#控件命令参数与行为)中查阅支持的命令、必填和可选参数、边界行为。文本索引、越界处理和业务拦截规则因组件而异，构造action_info前应确认对应说明。
-
-### 命令使用建议
+## 命令使用建议
 
 在连续编辑、选择、复制或切换内容时，按以下要求管理前置条件、请求顺序和资源。
 
@@ -108,7 +104,7 @@
 
 ### 定位目标节点
 
-打开示例工程，选择需要操作的组件。页面为当前目标设置统一的字符串标识commandTarget。提交时通过控件树查找该标识，读取真实整数节点ID，再使用同一个[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)提交命令。
+控件命令通过整数节点ID寻址目标组件，节点ID来自最新采集结果或节点查询接口，因此提交命令前需要先定位目标节点。打开示例工程，选择需要操作的组件。页面为当前目标设置统一的字符串标识commandTarget。提交时通过控件树查找该标识，读取真实整数节点ID，再使用同一个[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)提交命令。也可不采集控件树直接获取节点ID，见[不采集控件树时如何获取目标节点ID](#不采集控件树时如何获取目标节点id)。
 
 节点定位逻辑可以参考[采集控件树信息](ndk-ui-info-collect-tree.md#解析结果并从页面调用)中的解析与查找函数。页面变化后应重新定位，不缓存旧节点ID作为长期有效引用；上下文获取与复用仍需遵循[管理上下文生命周期](ndk-ui-info-collect-tree.md#管理上下文生命周期)中的限制。
 
@@ -229,8 +225,6 @@ private async submit(): Promise<void> {
 
 创建JSONWrapper对象、提交命令和执行完成是三个阶段。排查时先确定失败发生在哪个阶段。错误码和结果码的定义分别见[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)与[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)。
 
-创建JSONWrapper对象的返回值和参数处理见[处理创建返回值](ndk-ui-info-data-structure.md#处理创建返回值)。对象创建失败时不继续提交命令；下文专门说明命令提交及执行结果。
-
 ### 处理返回值
 
 命令注入接口的直接返回值用于判断请求是否受理。请求受理后，命令将进入异步执行流程。应用应先记录提交结果，再等待完成回调，切勿在提交后立即认为文字修改或动画已完成。
@@ -254,7 +248,7 @@ private async submit(): Promise<void> {
 
 ## 常见问题
 
-以下问题用于区分组件业务事件、注入完成回调和最终界面效果，避免在条件未满足时重复提交。
+以下汇总命令注入过程中的常见问题。
 
 ### 为什么不能在组件回调内立即提交下一条命令
 
@@ -263,3 +257,7 @@ private async submit(): Promise<void> {
 ### 为什么复制命令执行后没有预期内容
 
 复制依赖有效选区和组件的复制配置。先通过目标组件确认选区，再提交复制命令。切勿将注入完成回调的结果等同于剪贴板内容的读取结果。
+
+### 不采集控件树时如何获取目标节点ID
+
+页面代码已持有目标组件的FrameNode引用时，可直接调用[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取整数节点ID，无需采集控件树；获取FrameNode引用的方式参见[自定义组件节点 (FrameNode)](arkts-user-defined-arktsNode-frameNode.md#查找节点及获取基础信息)。getUniqueId返回值大于0时才对应实体节点，非正值不应用于提交命令。该节点ID必须属于提交命令时传入的Context，见[约束与限制](#约束与限制)；组件销毁后节点ID随之失效，应重新定位目标节点。

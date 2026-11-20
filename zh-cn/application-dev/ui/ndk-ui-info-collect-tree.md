@@ -22,7 +22,7 @@
 - 同步和异步采集接口均须在目标实例的UI线程调用，要求见[OH_ArkUI_NativeModule_UIAgentGetTreeJson](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgettreejson)与[OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgettreejsonasync)的接口声明。
 - 前一个异步树请求尚未完成时，再次提交异步请求会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
 - 单次结果最多包含5000个节点，JSON大小不超过5 MiB。大小限制以紧凑格式JSON字节数为准；选择美化格式输出时，缩进和换行会增加字节数，格式化输出本身超过5 MiB的请求同样失败。超限时整体失败，采集结果为空。
-- 本接口只采集应用进程内的树形结构，如果应用使用了[Web](../reference/apis-arkweb/arkts-basic-components-web.md)、[UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md)跨进程组件或[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)，其内部内容不会采集。
+- 本接口只采集应用进程内的树形结构，如果应用使用了[Web](../reference/apis-arkweb/arkts-basic-components-web.md)<!--Del-->、[UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)跨进程组件<!--DelEnd-->或[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)，其内部内容不会采集。
 - 字段未出现时，不应直接视为取值为false或0，应按附录[控件树采集结果的字段解析](ndk-ui-appendix.md#控件树采集结果的字段解析)中该字段的输出条件判断语义。
 - 异步返回方式不会消除UI线程上的采集开销。控件树过于复杂的场景下进行采集可能严重影响应用正常业务或内存占用。避免高频调用采集接口。
 
@@ -72,7 +72,7 @@
 
 ### 纯布局节点判定
 
-开启[OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetfilterpurelayoutnodes)后，框架先判断节点是否属于候选节点范围，再判断节点是否具有需要保留的语义、交互、状态或显示信息；仅当节点是候选类型且无任何保留信息时，才会从结果树中省略；采集根节点不受该规则约束，始终保留。过滤只改变返回的JSON树，不修改应用的真实控件树，也不新增表示过滤状态的key。被省略节点的保留子节点会按原顺序提升到最近保留祖先的`$children`中；没有可保留子节点的节点从结果树中消失。
+开启[OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetfilterpurelayoutnodes)后，框架先判断节点是否属于候选节点范围，再判断节点是否具有需要保留的语义、交互、状态或显示信息；仅当节点是候选类型且无任何保留信息时，才会从结果树中省略；采集根节点不受该规则约束，始终保留。过滤只改变返回的JSON树，不修改应用的真实控件树，也不新增表示过滤状态的字段。被省略节点的保留子节点会按原顺序提升到最近保留祖先的`$children`中；没有可保留子节点的节点从结果树中消失。
 
 - **候选节点**：[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)和[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)。
 
@@ -86,7 +86,7 @@
 
 ### 节点输出示例
 
-同一节点可以同时具有默认信息、交互信息、无障碍信息和两个高阶属性组。字段是否出现以实际返回为准，不能凭schemaVersion推断某个可选属性一定存在，解析时按实际类型和完整路径检查。视觉和功能字段分别直接写入advanced.visual和advanced.functional。详细key、值类型和说明分别见附录中的[高阶视觉字段](ndk-ui-appendix.md#高阶视觉字段)和[高阶功能字段](ndk-ui-appendix.md#高阶功能字段)。以下为Text节点的局部格式示意，省略其余字段；数值仅用于说明类型，不是固定采集结果。
+同一节点可以同时具有默认信息、交互信息、无障碍信息和两个高阶属性组。字段是否出现以实际返回为准，不能凭schemaVersion推断某个可选属性一定存在，解析时按实际类型和完整路径检查。视觉和功能字段分别直接写入advanced.visual和advanced.functional。详细字段、值类型和说明分别见附录中的[高阶视觉字段](ndk-ui-appendix.md#高阶视觉字段)和[高阶功能字段](ndk-ui-appendix.md#高阶功能字段)。以下为Text节点的局部格式示意，省略其余字段；数值仅用于说明类型，不是固定采集结果。
 
 ```json
 {
@@ -451,7 +451,7 @@ private async collect(asynchronous: boolean): Promise<void> {
 
 字段未出现时，原因随所处层级（advanced对象、属性组、字段）而异，不应默认其取值为false或0。各字段是否输出，以附录[控件树采集结果的字段解析](ndk-ui-appendix.md#控件树采集结果的字段解析)中该字段的说明为准。可按下列层次排查：
 
-- **advanced对象未输出**：视觉和功能开关均关闭时，组件节点不输出advanced对象；开关开启后，语法节点（不对应具体组件，如JsView节点、Span、ForEach等），以及内容边界组件（Web、UIExtension、XComponent等）的节点（内部内容不展开）仍不输出advanced；其余组件节点始终输出。
+- **advanced对象未输出**：视觉和功能开关均关闭时，组件节点不输出advanced对象；开关开启后，语法节点（不对应具体组件，如JsView节点、Span、ForEach等），以及内容边界组件（Web<!--Del-->、UIExtensionComponent<!--DelEnd-->、XComponent等）的节点仍不输出advanced；其余组件节点始终输出。
 - **属性组为空对象**：开启的属性组没有可采集字段时，组对象为`{}`，不代表采集失败。
 - **字段未输出**，常见原因包括：
   - 开关未开启：交互信息、无障碍信息、高阶视觉、高阶功能开关分别控制各自的字段组。
@@ -461,7 +461,7 @@ private async collect(asynchronous: boolean): Promise<void> {
 
 ### 为什么读取不到含点号的字段
 
-需先区分两种情况：`$attrs`是节点上的嵌套对象，其中的字段（如Toggle的isOn、Swiper的scrollAxis）按`node.$attrs.isOn`层级读取，点访问有效；padding.right则是包含点号的完整key名称，位于advanced.visual下，读取方式为visual["padding.right"]，不能按visual.padding.right逐级取值。除嵌套路径外，key的大小写、空格和标点均属于名称的一部分。
+需先区分两种情况：`$attrs`是节点上的嵌套对象，其中的字段（如Toggle的isOn、Swiper的scrollAxis）按`node.$attrs.isOn`层级读取，点访问有效；padding.right则是包含点号的完整字段名，位于advanced.visual下，读取方式为visual["padding.right"]，不能按visual.padding.right逐级取值。除嵌套路径外，字段名的大小写、空格和标点均属于名称的一部分。
 
 ### 异步采集的回调为什么可能在提交调用返回前执行
 

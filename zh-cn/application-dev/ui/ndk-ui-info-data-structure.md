@@ -17,6 +17,15 @@ JSONWrapper保存UTF-8编码的JSON文本，应用通过接口访问数据。JSO
 >
 > - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)<!--RP1End-->。
 
+## 约束与限制
+
+- JSONWrapper对象不会被自动共享。把同一指针传给多个模块时，明确唯一销毁责任方，其他模块仅支持在对象销毁前使用。
+- JSONWrapper接口在满足对象生命周期要求的前提下可以在任意线程调用；同一有效对象的只读查询可以并发，销毁时不能有其他代码正在读取该对象或其数据。
+- JSONWrapper接口不会调用应用回调，也不提供异步完成或取消操作；不得从[信号处理函数](../dfx/cppcrash-guidelines.md#基本概念)调用。
+- 不同对象可独立操作。创建和销毁需要申请或释放内存，耗时会随系统状态波动，无法保证执行时长。
+- JSONWrapper对象可跨线程使用，不代表控件树采集或命令注入可以从任意线程调用。应分别遵循业务指南的线程约束。
+- 空采集内容仍可能对应成功的JSON对象；例如控件树返回带schemaVersion且treeInfo为null的结果，仍需按所有权释放JSONWrapper对象。
+
 ## 接口说明
 
 JSONWrapper关键接口如下表所示。具体API说明详见API参考[ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)。
@@ -54,7 +63,7 @@ JSONWrapper关键接口如下表所示。具体API说明详见API参考[ui_json_
 
 ### 创建JSONWrapper对象
 
-示例在ArkTS侧准备完整JSON字符串，Native侧由NAPI接口[napi_get_value_string_utf8](../napi/use-napi-about-string.md#napi_get_value_string_utf8)（将ArkTS string类型数据转为UTF-8编码的C字符串）得到字节缓冲和字节数，调用[OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)完成创建并检查返回码。代码中其余部分是NAPI桥接和一次使用示例：创建所得的command对象被传给[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)，提交与回调的完整说明见[注入控件命令](ndk-ui-command-injection.md)。
+示例在ArkTS侧准备完整JSON字符串，Native侧由NAPI接口[napi_get_value_string_utf8](../napi/use-napi-about-string.md#napi_get_value_string_utf8)（将ArkTS string类型数据转为UTF-8编码的C字符串）得到字节缓冲和字节数，调用[OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)完成创建并检查返回码，各错误码及可能原因见接口声明的返回值说明；失败时输出对象为空指针，不得继续使用它执行采集或注入。代码中其余部分是NAPI桥接和一次使用示例：创建所得的command对象被传给[OH_ArkUI_NativeModule_UIEventInjectCompositeCommand](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectcompositecommand)，提交与回调的完整说明见[注入控件命令](ndk-ui-command-injection.md)。
 
 示例函数在注入调用返回后销毁自己创建的JSONWrapper，该时机遵循注入接口对输入对象的生命周期要求，见[注入控件命令](ndk-ui-command-injection.md)。其他异步接口的输入对象按各自接口的生命周期要求管理；非空userData和完成回调的生命周期也应另行管理。
 
@@ -106,7 +115,7 @@ napi_value InjectCommand(napi_env env, napi_callback_info info)
 
 ### 读取JSONWrapper内容
 
-[OH_ArkUI_NativeModule_UIJsonWrapperGetData](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata)与[OH_ArkUI_NativeModule_UIJsonWrapperGetSize](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetsize)的返回值说明见接口声明；两个接口都不创建结果对象，也不转移所有权。以下JsonString是示例的辅助函数，使用OH_ArkUI_NativeModule_UIJsonWrapperGetData取得以空字符结尾的字符串，并通过std::strlen计算长度，将已有JSONWrapper内容复制为ArkTS字符串；辅助函数JsonString只读取参数内容，不负责销毁对象。
+[OH_ArkUI_NativeModule_UIJsonWrapperGetData](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata)与[OH_ArkUI_NativeModule_UIJsonWrapperGetSize](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetsize)的返回值说明见接口声明；两个接口都不创建结果对象，也不转移所有权，空输入时的返回值同样以接口声明为准，这类结果不能解释为已经成功采集到空业务内容。以下JsonString是示例的辅助函数，使用OH_ArkUI_NativeModule_UIJsonWrapperGetData取得以空字符结尾的字符串，并通过std::strlen计算长度，将已有JSONWrapper内容复制为ArkTS字符串；辅助函数JsonString只读取参数内容，不负责销毁对象。
 
 ``` C++
 napi_value JsonString(napi_env env, const OH_ArkUI_NativeModule_UIJsonWrapper* json)
@@ -141,25 +150,4 @@ napi_value JsonString(napi_env env, const OH_ArkUI_NativeModule_UIJsonWrapper* j
 | [OH_ArkUI_NativeModule_UIJsonWrapperGetData](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata)返回的字符串 | 随JSONWrapper存活，不能单独释放；销毁对象后，原指针失效。                                                                                                                  |
 | 创建时传入的原始data                                                                                                                                   | 仍由调用方管理；销毁JSONWrapper不会代替调用方释放原始输入缓冲区。                                                                                                          |
 
-销毁后应停止使用对象及其所有别名，避免重复销毁。向[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)传入空指针没有效果，已释放的指针也不能再次使用或再次销毁。
-
-## 约束与限制
-
-- JSONWrapper对象不会被自动共享。把同一指针传给多个模块时，明确唯一销毁责任方，其他模块仅支持在对象销毁前使用。
-- JSONWrapper接口在满足对象生命周期要求的前提下可以在任意线程调用；同一有效对象的只读查询可以并发，销毁时不能有其他代码正在读取该对象或其数据。
-- JSONWrapper接口不会调用应用回调，也不提供异步完成或取消操作；不得从[信号处理函数](../dfx/cppcrash-guidelines.md#基本概念)调用。
-- 不同对象可独立操作。创建和销毁需要申请或释放内存，耗时会随系统状态波动，无法保证执行时长。
-- JSONWrapper对象可跨线程使用，不代表控件树采集或命令注入可以从任意线程调用。应分别遵循业务指南的线程约束。
-- 空采集内容仍可能对应成功的JSON对象；例如控件树返回带schemaVersion且treeInfo为null的结果，仍需按所有权释放JSONWrapper对象。
-
-## 异常处理
-
-本节只说明对应JSONWrapper接口声明的返回结果。
-
-### 处理创建返回值
-
-调用[OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)后按返回值判断结果，各错误码及可能原因见接口声明的返回值说明。失败时输出对象为空指针，不得继续使用它执行采集或注入。
-
-### 处理读取和销毁结果
-
-读取函数不返回[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；空输入时的返回值见[OH_ArkUI_NativeModule_UIJsonWrapperGetData](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata)与[OH_ArkUI_NativeModule_UIJsonWrapperGetSize](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetsize)声明的返回值说明，这类结果不能解释为已经成功采集到空业务内容。[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)没有返回值。
+销毁后应停止使用对象及其所有别名，避免重复销毁。向[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)传入空指针没有效果，已释放的指针也不能再次使用或再次销毁；销毁接口没有返回值。

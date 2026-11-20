@@ -37,7 +37,7 @@
 
 | 参数    | 必填 | 类型   | 说明                                       |
 | ------- | ---- | ------ | ------------------------------------------ |
-| `value` | 是   | string | 设置的文本内容；空字符串表示将内容设置为空。 |
+| value | 是   | string | 设置的文本内容；空字符串表示将内容设置为空。 |
 
 **约束与限制**
 
@@ -69,8 +69,8 @@
 
 | 参数     | 必填 | 类型    | 说明                               |
 | -------- | ---- | ------- | ---------------------------------- |
-| `value`  | 是   | string  | 追加或插入的文本内容。             |
-| `offset` | 否   | integer | 插入位置；省略时在当前内容末尾追加。 |
+| value  | 是   | string  | 追加或插入的文本内容。             |
+| offset | 否   | integer | 插入位置；省略时在当前内容末尾追加。 |
 
 **约束与限制**
 
@@ -102,8 +102,8 @@
 
 | 参数    | 必填 | 类型    | 说明             |
 | ------- | ---- | ------- | ---------------- |
-| `start` | 否   | integer | 删除范围的起点。 |
-| `end`   | 否   | integer | 删除范围的终点。 |
+| start | 否   | integer | 删除范围的起点。 |
+| end   | 否   | integer | 删除范围的终点。 |
 
 **约束与限制**
 
@@ -135,8 +135,8 @@
 
 | 参数             | 必填 | 类型    | 说明                 |
 | ---------------- | ---- | ------- | -------------------- |
-| `selectionStart` | 是   | integer | 选区起点的文本位置。 |
-| `selectionEnd`   | 是   | integer | 选区终点的文本位置。 |
+| selectionStart | 是   | integer | 选区起点的文本位置。 |
+| selectionEnd   | 是   | integer | 选区终点的文本位置。 |
 
 **约束与限制**
 
@@ -194,8 +194,8 @@
 
 | 参数        | 必填     | 类型    | 说明                                            |
 | ----------- | -------- | ------- | ----------------------------------------------- |
-| `direction` | 是       | string  | 切换方式，取值为`forward`、`backward`或`index`。 |
-| `index`     | 条件必填 | integer | 目标项索引；`direction`为`index`时必填。         |
+| direction | 是       | string  | 切换方式，取值为`forward`、`backward`或`index`。 |
+| index     | 条件必填 | integer | 目标项索引；`direction`为`index`时必填。         |
 
 **约束与限制**
 
@@ -226,7 +226,7 @@
 
 | 参数    | 必填 | 类型    | 说明           |
 | ------- | ---- | ------- | -------------- |
-| `index` | 是   | integer | 指定目标页签。 |
+| index | 是   | integer | 指定目标页签。 |
 
 **约束与限制**
 
@@ -235,52 +235,56 @@
 
 ## 控件树采集结果的字段解析
 
-本附录提供控件树采集结果的解析说明。
+本附录提供控件树采集结果的解析说明。表中字段名和取值均为采集输出的字面值。
 
-采集结果中的字段分为**节点字段**（节点公共字段）和**组件字段**：
-- **节点字段**描述节点在控件树中的身份、类型和层级关系，所有节点（组件节点与语法节点）均会输出，直接保存于`treeInfo`或其`$children`的节点对象顶层。
-- **组件字段**描述具体UI组件的边界、状态与属性，仅组件节点输出，按所属数据组读取：基础字段和基础交互/无障碍字段位于节点对象顶层，组件属性位于`$attrs`对象中（按`node.$attrs.xxx`读取），高阶视觉字段和高阶功能字段分别位于`advanced.visual`和`advanced.functional`对象中。
-
-表中key和取值均为采集输出的字面值，与公开ArkTS枚举的成员名不一定相同。
+> **说明：**
+>
+> - **节点字段**描述节点在控件树中的身份、类型和层级关系，所有节点（组件节点与语法节点）均会输出，直接保存于`treeInfo`或其`$children`的节点对象顶层。
+> - **组件字段**描述具体UI组件的边界、状态与属性，仅组件节点输出，按所属数据组读取：基础字段和基础交互/无障碍字段位于节点对象顶层，组件属性位于`$attrs`对象中（按`node.$attrs.xxx`读取），高阶视觉字段和高阶功能字段分别位于`advanced.visual`和`advanced.functional`对象中。
+> - **保留单位**表示字段值为带单位后缀的字符串，单位后缀如px、vp、fp、%等。
 
 ### 默认字段
 
-以下字段描述采集结果的顶层格式。
+- **采集结果顶层字段**
 
-| key           | 值类型        | 说明                                                |
+采集结果本身是一个JSON对象，`schemaVersion`和`treeInfo`是它的顶层字段。
+
+| 字段           | 值类型        | 说明                                                |
 | --------------- | --------------- | ------------------------------------------------------------------- |
 | schemaVersion | number        | 顶层协议版本，当前取值为1。                         |
 | treeInfo      | object / null | 控件树根节点。                                    |
 
-树中的节点分为对应具体组件的组件节点，以及不对应具体组件的语法节点（如JsView节点、Span、ContainerSpan、ContentSlot、ForEach、LazyForEach、Repeat、IfElse等）。两类节点均输出以下公共字段：
+树中的节点分为对应具体组件的组件节点，以及不对应具体组件的语法节点（如JsView节点、[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)、[ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md)、ContentSlot、ForEach、LazyForEach、Repeat、IfElse等）。两类节点均输出以下公共字段：
 
 - **节点公共字段**
 
-| key             | 值类型 | 说明                                 |
+| 字段             | 值类型 | 说明                                 |
 | --------------- | -------- | ------------------------------------ |
-| `$ID`           | number | 框架分配的整数节点ID。               |
-| `$type`         | string | 框架节点类型。                       |
+| $ID           | number | 框架分配的整数节点ID。               |
+| $type         | string | 框架节点类型。                       |
 | type            | string | 节点类型编码：custom表示JsView节点，build-in表示内置节点。 |
-| `$children`     | array  | 子节点对象数组；仅在节点有子节点且非内容边界组件时输出。 |
+| $children     | array  | 子节点对象数组；仅在节点有子节点且非内容边界组件时输出。 |
 
 组件节点额外输出以下字段：
 
-- **组件节点字段**
+- **组件基础字段**
 
-| key             | 值类型 | 说明 |
+| 字段             | 值类型 | 说明 |
 | --------------- | -------- | ---- |
-| `$rect`           | string | 节点应用变换后相对窗口的边界，坐标单位为px，以窗口左上角为原点，形式为`[left, top],[right, bottom]`，不是数值数组，也不是`[x, y, width, height]`。 |
+| $rect           | string | 节点应用变换后相对窗口的边界，坐标单位为px，以窗口左上角为原点，形式为`[left, top],[right, bottom]`，不是数值数组，也不是`[x, y, width, height]`。 |
 | compid          | string | 应用设置的组件字符串标识。 |
-| active          | string | 节点激活状态，取值为false；节点处于激活状态时不输出该字段。 |
-| visible         | string | 节点自身可见性状态，取值为false；节点可见时不输出该字段。 |
+| active          | string | 节点激活状态，取值为"false"；节点处于激活状态时不输出该字段。 |
+| visible         | string | 节点自身可见性状态，取值为"false"；节点可见时不输出该字段。 |
 | opacity         | number | 节点透明度，不包含祖先透明度的累计值；仅在已设置且不等于1.0时输出。 |
 | backgroundColor | string | 节点背景颜色字符串；仅在已设置背景颜色时输出。 |
-| `$attrs`          | object | 组件默认属性和采集属性。 |
-| advanced        | object | 高阶视觉属性和高阶功能属性。高阶视觉字段和高阶功能字段采集均未开启时不输出该字段；内容边界组件（Web、UIExtension、XComponent等）的节点不输出该字段。 |
+| $attrs          | object | 组件默认属性和采集属性。 |
+| advanced        | object | 高阶视觉属性和高阶功能属性。高阶视觉字段和高阶功能字段采集均未开启时不输出该字段；内容边界组件（[Web](../reference/apis-arkweb/arkts-basic-components-web.md)<!--Del-->、[UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)<!--DelEnd-->、[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)等）的节点不输出该字段。 |
 
 - **`$attrs`中的默认属性字段**
 
-| key             | 值类型 | 说明                                                                                |
+滚动组件（[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)和[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)）在`$attrs`对象中输出以下默认属性字段：
+
+| 字段             | 值类型 | 说明                                                                                |
 | ----------------- | -------- | ------------------------------------------------------------------------------------- |
 | isScrollable    | string | 滚动方向和边界状态编码：false（内容不可滚动）、scrollBackward（往起始端方向已到边界）、scrollForward（往末尾端方向已到边界）或scrollBidirectional（未到边界，双向均可滚动）。 |
 | scrollDirection | string | vertical或horizontal，表示组件滚动方向。                                            |
@@ -291,7 +295,7 @@
 
 - **基础交互信息字段**
 
-| key           | 值类型  | 说明                             |
+| 字段           | 值类型  | 说明                             |
 | --------------- | --------- | ---------------------------------- |
 | clickable     | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
 | longClickable | boolean | 节点是否可长按。true表示可长按，false表示不可长按。 |
@@ -301,14 +305,14 @@
 
 - **`$attrs`中的交互信息字段**
 
-| 组件                                                                     | key           | 值类型  | 说明                                         |
+| 组件                                                                     | 字段           | 值类型  | 说明                                         |
 | -------------------------------------------------------------------------- | --------------- | --------- | ---------------------------------------------- |
 | [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md) | isOn          | string  | Switch开关状态，true表示开，false表示关。    |
-| Swiper                                                                   | scrollAbility | string  | Swiper滚动能力，见Swiper滚动能力表。         |
+| Swiper                                                                   | scrollAbility | string  | Swiper滚动能力，见Swiper滚动能力取值表。         |
 | Swiper                                                                   | scrollAxis    | string  | 取值为horizontal（横向）或vertical（纵向）。 |
 | Swiper                                                                   | isLoop        | boolean | 是否启用循环。true表示启用，false表示未启用。                               |
 
-- **Swiper滚动能力表**
+- **Swiper滚动能力取值表**
 
 | 值              | 说明                   |
 | ----------------- | ------------------------ |
@@ -321,7 +325,7 @@
 
 下表为无障碍信息字段详解，由[OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetaccessibilityinfo)开关控制输出。
 
-| key                  | 值类型 | 说明                 |
+| 字段                  | 值类型 | 说明                 |
 | ---------------------- | -------- | ---------------------- |
 | accessibilityContent | string | 节点无障碍描述文本；仅在已设置无障碍文本时输出。 |
 
@@ -329,16 +333,20 @@
 
 下表为高阶视觉字段详解，由[OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperties](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetcollectvisualproperties)开关控制输出。
 
+> **说明：**
+>
+> - 矩形类字段的通用格式为`RectT (x, y) - [w x h]`，其中x、y为矩形左上角坐标（即left、top），w、h为矩形的宽度和高度，其他为固定字符串；四个数值均保留两位小数。例如：`RectT (10.00, 20.00) - [100.00 x 50.00]`。
+
 - **通用几何与渲染字段**
 
-| key                                                                                                       | 值类型 | 说明                                                                                                        |
+| 字段                                                                                                       | 值类型 | 说明                                                                                                        |
 | ----------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| FrameRect                                                                                                 | string | 节点在父布局坐标系中的布局矩形，单位为px。格式为`RectT (x, y) - [w x h]`，位置和尺寸保留两位小数。          |
-| PaintRectWithoutTransform                                                                                 | string | 施加变换前的绘制矩形，采用父级绘制坐标，单位为px。格式为`RectT (x, y) - [w x h]`，与窗口坐标下的`$rect`不同。 |
+| FrameRect                                                                                                 | string | 节点在父布局坐标系中的布局矩形，单位为px。          |
+| PaintRectWithoutTransform                                                                                 | string | 施加变换前的绘制矩形，采用父级绘制坐标，单位为px。 |
 | BackgroundAlign                                                                                           | string | 背景对齐方式，格式为`Alignment (horizontal, vertical)`，horizontal和vertical保留1位小数。                   |
 | BorderColor / BorderWidth                                                                                 | string | 各边边框颜色和宽度，见边框字段格式表。                                                                      |
 | OuterBorderRadius / OuterBorderColor / OuterBorderWidth                                                   | string | 外边框圆角、颜色和宽度，见边框字段格式表。                                                                  |
-| LinearGradient / SweepGradient / RadialGradient / BorderImageGradient                                     | object | 线性/扫描/径向/边框图片渐变，见渐变对象字段表。                                                             |
+| LinearGradient / SweepGradient / RadialGradient / BorderImageGradient                                     | object | 线性/扫描/径向/边框图片渐变，见渐变对象子字段。                                                             |
 | [BlendMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blendmode11枚举说明) | number | 背景混合模式的整数枚举值。                                                                                  |
 | FrontBrightness / FrontGrayScale / FrontContrast / FrontSaturate / FrontSepia                             | string | 前景亮度/灰度/对比度/饱和度/褐色效果的配置字符串，保留返回值中的单位。                                      |
 | FrontHueRotate                                                                                            | number | 色相旋转配置值，单位为度（°）。                                                                            |
@@ -359,9 +367,13 @@
 | BorderWidth / OuterBorderWidth       | `[<左边宽度>,<右边宽度>,<顶部宽度>,<底部宽度>]`                                                | 按左、右、上、下顺序记录边框宽度，保留长度单位。           |
 | OuterBorderRadius / hostBorderRadius | `radiusTopLeft: <长度>radiusTopRight: <长度>radiusBottomLeft: <长度>radiusBottomRight: <长度>` | 记录四个角的圆角半径，保留长度单位；无对应值时使用`[NA]`。 |
 
-- **渐变对象字段表**
+示例：`leftColor: [#FF000000]rightColor: [#FF000000]topColor: [#FF000000]bottomColor: [#FF000000]`。
 
-| key                              | 值类型          | 说明                                                                                                                                                              |
+- **渐变对象子字段**
+
+通用几何与渲染字段中的LinearGradient、SweepGradient、RadialGradient和BorderImageGradient字段，值为渐变对象，包含以下子字段：
+
+| 字段                              | 值类型          | 说明                                                                                                                                                              |
 | ---------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type                             | string          | linear、sweep或radial。                                                                                                                                           |
 | repeating                        | boolean         | 是否重复渐变。true表示重复，false表示不重复。                                                                                                                                                    |
@@ -370,7 +382,8 @@
 | colors[].colorSpace              | number          | 颜色空间的整数枚举值。                                                                                                                                            |
 | colors[].offset                  | string          | 色标位置，保留长度或百分比单位。                                                                                                                                  |
 | colors[].hdr                     | object          | 高动态范围（High Dynamic Range，HDR）颜色信息，含red、green、blue、alpha和headRoom（参考白以上的亮度余量）分量。                                                                          |
-| angle / direction                | number / string | linear的可选角度值/方向；angle单位为度（°），direction采用[GradientDirection](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#gradientdirection)枚举的字符串值。 |
+| angle                             | number          | linear的可选角度值，单位为度（°）。                                                                                  |
+| direction                         | string          | linear的可选方向，采用[GradientDirection](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#gradientdirection)枚举的字符串值。 |
 | centerX / centerY                | string          | sweep或radial的可选中心X坐标/Y坐标配置，保留单位。                                                                                                                |
 | startAngle / endAngle / rotation | number          | sweep的可选起始角度/终止角度/旋转值，单位均为度（°）。                                                                                                           |
 | horizontalSize / verticalSize    | string          | radial的可选水平尺寸/垂直尺寸，保留单位。                                                                                                                         |
@@ -378,51 +391,59 @@
 
 - **文本组件字段**
 
-| 组件                                                                                    | key                              | 值类型 | 说明                                               |
+| 组件                                                                                    | 字段                              | 值类型 | 说明                                               |
 | ----------------------------------------------------------------------------------------- | ---------------------------------- | -------- | ---------------------------------------------------- |
-| Text                                                                                    | contentRect                      | string | 组件局部坐标下的文本内容矩形，位置和尺寸单位为px。 |
+| Text                                                                                    | contentRect                      | string | 组件局部坐标下的文本内容矩形，单位为px。 |
 | Text                                                                                    | fontScale / fontWeightScale      | number | 当前环境字体缩放比例和字重缩放比例。               |
 | Text                                                                                    | ForegroundColorStrategy          | number | 前景颜色策略整数枚举值。                           |
-| Text                                                                                    | from TextEngine paragraphs_ info | object | 文本段落管理信息。key中的空格为字段名的组成部分。 |
-| TextInput、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md) | FontColor                        | string | 文本颜色，支持组件主题颜色。                       |
+| Text                                                                                    | from TextEngine paragraphs_ info | object | 文本段落管理信息。参见Text段落信息子字段。 |
+| TextInput、TextArea | FontColor                        | string | 文本颜色，支持组件主题颜色。                       |
 | TextInput、TextArea                                                                     | textRect / contentRect           | string | 组件局部坐标下的文本矩形和内容区域矩形，单位为px。 |
 
-Text的"from TextEngine paragraphs_ info"子字段：
+- **Text段落信息子字段**
 
-| key                                       | 值类型  | 说明                                    |
+| 字段                                       | 值类型  | 说明                                    |
 | ------------------------------------------- | --------- | ----------------------------------------- |
 | DidExceedMaxLines                         | boolean | 是否超出最大行数。true表示超出，false表示未超出。                      |
 | GetTextWidth / GetHeight                  | number  | 文本排版宽度/高度，单位为px。           |
 | GetLineCount                              | number  | 排版行数。                              |
 | GetLongestLine / GetLongestLineWithIndent | number  | 最长行宽/包含缩进的最长行宽，单位为px。 |
 
-- **滚动组件公共字段**
+- **滚动组件字段**
 
-| key                                   | 值类型          | 说明                                                           |
+本节“滚动组件”包括Scroll、List、Grid和WaterFlow。
+
+| 字段                                   | 值类型          | 说明                                                           |
 | --------------------------------------- | ----------------- | ---------------------------------------------------------------- |
 | edgeEffect                            | string          | 边缘效果：NONE、SPRING或FADE。                                 |
 | edgeEffectAlwaysEnabled               | boolean         | 内容大小小于组件自身时，是否仍开启滑动效果。true表示开启，false表示关闭。                |
-| innerScrollBarState                   | string          | 内部滚动条显示模式：OFF、AUTO或ON。                            |
-| scrollBarHeight / scrollBarWidth      | string          | 滚动条高度和宽度，保留单位。                                   |
+| innerScrollBarState                   | string          | 内置滚动条显示模式：OFF、AUTO或ON。 |
+| scrollBarHeight / scrollBarWidth / scrollBarStartMargin | string | 滚动条高度/宽度/起始边距，保留单位。 |
 | scrollBarColor                        | string          | 滚动条颜色。                                                   |
-| scrollBarMargin                       | string          | 滚动条边距，见滚动条边距格式表。                               |
+| scrollBarMargin                       | string          | 滚动条边距，见滚动条边距格式表。 |
 | fadingEdge                            | boolean         | 是否启用渐隐边缘。true表示启用，false表示未启用。                                 |
 | fadingEdgeLength                      | string          | 渐隐边缘长度，保留单位。                                       |
 | clipContent                           | string          | 裁剪模式：DEFAULT、CONTENT_ONLY、BOUNDARY、SAFE_AREA或CUSTOM。 |
-| contentStartOffset / contentEndOffset | string / number | 公共滚动偏移配置；Scroll使用带vp单位的字符串，List使用px数值。 |
+| contentStartOffset / contentEndOffset | string / number | 公共滚动偏移配置；Scroll使用带vp单位的字符串，List使用px数值，表示内容主轴起始和结束处的预留偏移。 |
+| activeRect / trackRect                | string          | 内置滚动条滑块/轨道矩形，单位为px，采用宿主节点局部布局坐标。                                 |
+| touchRegion / hoverRegion             | string          | 触摸/悬停识别区域矩形；可能大于实际绘制区域，不能当作节点可见边界。                           |
+| normalWidth / activeWidth / touchWidth / hoverWidth | string | 常态/活动态/触摸区/悬停区宽度，保留单位。                                       |
+| shapeMode                             | string          | 形状模式：RECT（矩形）、ROUND（圆形）或DEFAULT（默认）。                           |
+| padding.right / padding.left / padding.bottom       | string          | 滚动条边距字段，值为带单位的长度字符串；字段名中的点号为字面量组成部分，非嵌套路径；仅输出right、left、bottom三个方向。 |
+| hostBorderRadius                      | string          | 宿主边框圆角，见边框字段格式表。                                                             |
+| startReservedHeight / endReservedHeight             | string          | 滚动条起始端/结束端保留高度，保留单位。                                                       |
 
 - **Scroll、List、ListItem和ListItemGroup字段**
 
-| 组件                | key                                                         | 值类型  | 说明                                                              |
+| 组件                | 字段                                                         | 值类型  | 说明                                                              |
 | --------------------- | ------------------------------------------------------------- | --------- | ------------------------------------------------------------------- |
 | Scroll              | currentOffset                                               | number  | 主轴当前滚动偏移，单位为px，不是窗口绝对坐标。                    |
 | List                | currentOffset / startMainPos / endMainPos / contentMainSize | number  | 当前主轴偏移/布局起始位置/布局结束位置/内容主轴尺寸，单位均为px。 |
-| List                | contentStartOffset / contentEndOffset                       | number  | 内容主轴起始和结束处的预留偏移，单位为px。                        |
 | List                | lanes / laneGutter                                          | number  | 当前列数/已解析的列间距；前者为整数，后者单位为px。               |
 | List                | IsAtTop / IsAtBottom / chainAnimation                       | boolean | 是否处于列表起始边界/结束边界，是否使用链式动画。true表示是，false表示否。                 |
 | List                | alignListItem                                               | number  | 列表项对齐方式的整数枚举值。                                      |
-| List、ListItemGroup | divider                                                     | object  | 分隔线对象，含strokeWidth、startMargin、endMargin和color。        |
-| ListItem            | curOffset / startNodeSize / endNodeSize                     | number  | 侧滑偏移/起始侧节点尺寸/结束侧节点尺寸，单位为px。                |
+| List、[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) | divider                                                     | object  | 分隔线对象，含strokeWidth、startMargin、endMargin和color。        |
+| [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)            | curOffset / startNodeSize / endNodeSize                     | number  | 侧滑偏移/起始侧节点尺寸/结束侧节点尺寸，单位为px。                |
 | ListItem            | isSelected / isHover / isPressed / isLayouted               | boolean | 是否选中/悬停/按压/已布局。true表示是，false表示否。                                       |
 | ListItem            | restoredOpacity                                             | number  | 禁用时保存的恢复透明度，不是当前生效透明度或布尔开关。            |
 | ListItemGroup       | headerMainSize / footerMainSize / spaceWidth                | number  | 头部/尾部主轴尺寸/间距，单位为px。                                |
@@ -431,7 +452,7 @@ Text的"from TextEngine paragraphs_ info"子字段：
 
 - **Grid、GridItem和WaterFlow字段**
 
-| 组件      | key                                                                                                | 值类型  | 说明                                                                                                                       |
+| 组件      | 字段                                                                                                | 值类型  | 说明                                                                                                                       |
 | ----------- | ---------------------------------------------------------------------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Grid      | currentOffset / contentEndPadding                                                                  | number  | 当前主轴偏移/内容末尾留白，单位为px。                                                                                      |
 | Grid      | startIndex / endIndex / crossCount                                                                 | number  | 布局起始索引/结束索引/交叉轴数量，均为整数。                                                                               |
@@ -440,45 +461,44 @@ Text的"from TextEngine paragraphs_ info"子字段：
 | Grid      | MaxCount / MinCount                                                                                | number  | 可显示的最大和最小行数或列数，均为整数。                                                                                                 |
 | Grid      | CellLength                                                                                         | string  | 单元长度，使用带vp单位的字符串。                                                                                           |
 | Grid      | AlignItems                                                                                         | string  | [GridItemAlignment](../reference/apis-arkui/arkui-ts/ts-container-grid.md#griditemalignment12枚举说明)的DEFAULT或STRETCH。 |
-| GridItem  | RowStart / RowEnd / ColumnStart / ColumnEnd                                                        | number  | 起始行、结束行、起始列和结束列整数索引。                                                                                   |
+| [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)  | RowStart / RowEnd / ColumnStart / ColumnEnd                                                        | number  | 起始行、结束行、起始列和结束列整数索引。                                                                                   |
 | GridItem  | isSelected / isHover / isPressed                                                                   | boolean | 是否选中/悬停/按压。true表示是，false表示否。                                                                                                       |
 | GridItem  | [GridItemStyle](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#griditemstyle11枚举说明) | string  | NONE或PLAIN。                                                                                                              |
 | WaterFlow | RowsTemplate / ColumnsTemplate                                                                     | string  | 行列模板字符串。                                                                                                           |
 | WaterFlow | ItemMinSize / ItemMaxSize                                                                          | object  | 最小和最大子项尺寸，含width和height。                                                                                      |
 | WaterFlow | footerHeight                                                                                       | number  | 尾部高度，单位为px。                                                                                                       |
 
-- **内部滚动条与ScrollBar字段**
-
-| key                                                 | 值类型 | 说明                                                                |
-| ----------------------------------------------------- | -------- | --------------------------------------------------------------------- |
-| activeRect / trackRect                              | string | 内部滚动条滑块/轨道矩形，单位为px，采用滚动条局部布局坐标。         |
-| touchRegion / hoverRegion                           | string | 触摸/悬停识别区域矩形；可能大于实际绘制区域，不能当作节点可见边界。 |
-| normalWidth / activeWidth / touchWidth / hoverWidth | string | 常态/活动态/触摸区/悬停区宽度，保留单位。                           |
-| shapeMode                                           | string | 形状模式：RECT（矩形）、ROUND（圆形）或DEFAULT（默认，跟随主题）。                                    |
-| padding.right / padding.left / padding.bottom       | string | 滚动条边距字段，值为带单位的长度字符串。                            |
-| hostBorderRadius                                    | string | 宿主边框圆角，见边框字段格式表。                                    |
-| startReservedHeight / endReservedHeight             | string | 滚动条起始端/结束端保留高度，保留单位。                             |
-| scrollBarHeight / scrollBarStartMargin              | string | 滚动条高度/起始边距，保留单位。                                     |
-| scrollBarMargin                                     | string | 滚动条边距，见滚动条边距格式表。                                    |
-
 - **滚动条边距格式表**
 
 | 字段                                          | 格式                                         | 说明                                                                                                                |
 | ----------------------------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | scrollBarMargin                               | `ScrollBarMargin start: <长度>, end: <长度>` | 起始端和结束端边距，参见[ScrollBarMargin](../reference/apis-arkui/arkui-ts/ts-types.md#scrollbarmargin20对象说明)。 |
-| padding.right / padding.left / padding.bottom | `<长度>`                                     | 对应方向的滚动条边距。                                                                                              |
+| padding.right / padding.left / padding.bottom | `<长度>`                                     | 对应方向的滚动条边距。 |
 
-- **外部ScrollBar节点字段**
+示例：`ScrollBarMargin start: 10.00vp, end: 10.00vp`。
 
-| key                                                                | 值类型 | 说明                                                                        |
+- **ScrollBar节点字段**
+
+独立ScrollBar组件在控件树中生成`$type`为`ScrollBar`的节点；本表为该节点输出的字段，区别于滚动组件字段表中输出在宿主节点上的内置滚动条字段。
+
+| 字段                                                                | 值类型 | 说明                                                                        |
 | -------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------- |
-| Axis | string | 外部ScrollBar的轴向：NONE、VERTICAL、HORIZONTAL或FREE；Axis为大写字段名称。 |
-| outerScrollBarState                                                | string | 外部滚动条显示模式：OFF、AUTO或ON。                                         |
+| Axis | string | [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)的轴向：NONE、VERTICAL、HORIZONTAL或FREE；Axis为大写字段名称。 |
+| outerScrollBarState                                                | string | 滚动条显示模式：OFF、AUTO或ON。 |
 | childRect                                                          | string | 滚动条子节点的局部布局矩形，位置和尺寸单位为px。                            |
+| activeRect / trackRect                              | string | 滚动条滑块/轨道矩形，单位为px，采用ScrollBar节点局部布局坐标。       |
+| touchRegion / hoverRegion                           | string | 触摸/悬停识别区域矩形；可能大于实际绘制区域，不能当作节点可见边界。 |
+| normalWidth / activeWidth / touchWidth / hoverWidth | string | 常态/活动态/触摸区/悬停区宽度，保留单位。                           |
+| shapeMode                                           | string | 形状模式：RECT（矩形）、ROUND（圆形）或DEFAULT（默认，跟随主题）。                                    |
+| padding.right / padding.left / padding.bottom       | string | 滚动条边距字段，值为带单位的长度字符串；字段名中的点号为字面量组成部分，非嵌套路径；仅输出right、left、bottom三个方向。 |
+| hostBorderRadius                                    | string | 宿主边框圆角，见边框字段格式表。                                    |
+| startReservedHeight / endReservedHeight             | string | 滚动条起始端/结束端保留高度，保留单位。                             |
+| scrollBarHeight / scrollBarStartMargin              | string | 滚动条高度/起始边距，保留单位。                                     |
+| scrollBarMargin                                     | string | 滚动条边距，见滚动条边距格式表。                                    |
 
 - **Swiper、指示器与页签字段**
 
-| 组件                                                                      | key                                                                                                | 值类型                     | 说明                                                                                 |
+| 组件                                                                      | 字段                                                                                                | 值类型                     | 说明                                                                                 |
 | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------- |
 | Swiper                                                                    | currentIndex / currentFirstIndex                                                                   | number                     | 当前索引/当前首项索引。                                                              |
 | Swiper                                                                    | currentOffset / fadeOffset / currentIndexOffset                                                    | number                     | 主轴当前偏移/边缘渐隐偏移/当前索引对应偏移，单位为px。                               |
@@ -486,20 +506,22 @@ Text的"from TextEngine paragraphs_ info"子字段：
 | Swiper                                                                    | SwiperIndicatorType                                                                                | string                     | 当前指示器类型：DOT（圆点）、DIGIT（数字）或ARC_DOT（弧形）。                                                |
 | Swiper                                                                    | TextDirection                                                                                      | number                     | 解析后的布局方向整数枚举值；Auto方向已解析为实际布局方向。                                                         |
 | Swiper                                                                    | curve                                                                                              | string                     | 动画曲线描述。                                                                       |
-| Swiper指示器                                                              | isHover / isPressed / SwiperIndicatorType                                                          | boolean / boolean / string | 是否悬停/是否按压/指示器类型，类型取值同上。true表示是，false表示否。                                         |
+| Swiper指示器                                                              | isHover / isPressed                                                                                 | boolean                    | 是否悬停/是否按压。true表示是，false表示否。                                                                      |
+| Swiper指示器                                                              | SwiperIndicatorType                                                                                 | string                     | 指示器类型，取值同Swiper的SwiperIndicatorType。                                                                   |
 | Swiper箭头                                                                | isHover / isTouch                                                                                  | boolean                    | 是否悬停/触摸。true表示是，false表示否。                                                                      |
 | TabBar                                                                    | isRTL                                                                                              | boolean                    | 是否采用从右到左的布局。true表示是，false表示否。                                                             |
-| TabBar                                                                    | animationCurve / animationDuration                                                                 | string / number            | 动画曲线描述和动画时长，时长单位为ms。                                               |
+| TabBar                                                                    | animationCurve                                                                                      | string                     | 动画曲线描述。                                                                                                     |
+| TabBar                                                                    | animationDuration                                                                                   | number                     | 动画时长，单位为ms。                                                                                               |
 | TabBar                                                                    | indicator / scrollMargin                                                                           | number                     | 指示器索引/滚动边距，后者单位为px。                                                  |
 | TabBar                                                                    | region                                                                                             | array                      | 页签栏渐变提示区域（TabBar边缘提示仍有未显示页签的渐变效果）状态：按各渐变区域顺序记录开关，true表示该侧开启渐变；某侧仍有未显示的页签时，对应区域为true。 |
 | TabBar | Axis | string | NONE、HORIZONTAL、VERTICAL或FREE。                                                   |
 | [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | [SelectedMode](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#selectedmode10枚举说明) | string                     | INDICATOR表示指示器选中样式，BOARD表示底板选中样式。                                 |
 
-- **Sheet字段**
+- **SheetPage字段**
 
 SheetPage节点的字段放在advanced.visual["SheetPage Pattern"]对象中：
 
-| key                                                                                                                    | 值类型          | 说明                                |
+| 字段                                                                                                                    | 值类型          | 说明                                |
 | ------------------------------------------------------------------------------------------------------------------------ | ----------------- | ------------------------------------- |
 | [SheetType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheettype11枚举说明)          | number          | 当前Sheet类型的整数枚举值。         |
 | SheetPage Node Height                                                                                                  | number          | Sheet页面高度值，单位为px。         |
@@ -509,14 +531,14 @@ SheetPage节点的字段放在advanced.visual["SheetPage Pattern"]对象中：
 | SheetMaxWidth / FitContent Height                                                                                      | number          | 最大宽度/自适应内容的高度，单位为px。 |
 | SheetThemeType                                                                                                         | string          | 当前Sheet主题类型描述。             |
 | currentOffset                                                                                                          | number          | 当前Sheet偏移值，单位为px。         |
-| height                                                                                                                 | string          | Sheet高度。                          |
+| height                                                                                                                 | string          | Sheet高度配置，值为带单位后缀的字符串，保留两位小数，例如"500.00vp"；百分比以百分数输出。仅在已设置高度时输出。 |
 | sheetMode        | number | Sheet高度模式的整数枚举值，取值见[SheetMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetmode12枚举说明)；仅在已设置高度模式时输出。 |
 
-表中含空格、方括号或等号的key均为单个key的完整字面名称。
+表中含空格、方括号、等号或点号的字段名均为完整字面名称。
 
 - **懒加载布局字段**
 
-| 组件                                                                                          | key                                                                 | 值类型 | 说明                                                          |
+| 组件                                                                                          | 字段                                                                 | 值类型 | 说明                                                          |
 | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------- | --------------------------------------------------------------- |
 | [LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)         | headerMainSize / footerMainSize / space / totalMainSize             | number | 头部主轴尺寸/尾部主轴尺寸/间距/总主轴尺寸，单位为px。         |
 | [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)           | headerMainSize / footerMainSize / spaceWidth / totalMainSize        | number | 头部主轴尺寸/尾部主轴尺寸/间距/总主轴尺寸，单位为px。         |
@@ -530,13 +552,15 @@ SheetPage节点的字段放在advanced.visual["SheetPage Pattern"]对象中：
 
 - **公共配置**
 
-| key               | 值类型          | 说明                                |
+| 字段               | 值类型          | 说明                                |
 | ------------------- | ----------------- | ------------------------------------- |
 | BackgroundImage   | string / object | 背景图片来源。                      |
 | BorderImageSource | string / object | 边框图片来源。                      |
 | keyboardShortcuts | array           | 快捷键对象数组，每项含value和keys。 |
 
-BackgroundImage、BorderImageSource和图片url的资源格式见资源引用表：
+- **资源引用格式表**
+
+BackgroundImage、BorderImageSource和图片url的资源格式如下：
 
 | 来源                                       | 值格式                             | 说明                                                                                        |
 | -------------------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------- |
@@ -548,82 +572,65 @@ BackgroundImage、BorderImageSource和图片url的资源格式见资源引用表
 
 - **Image配置**
 
-| key      | 值类型          | 说明         |
+| 字段      | 值类型          | 说明         |
 | ---------- | ----------------- | --------------- |
 | url      | string / object | 图片来源。   |
 | syncLoad | boolean         | 是否同步加载图片。true表示同步加载，false表示异步加载。 |
 
-- **Text配置**
+- **文本组件配置**
 
-| key               | 值类型  | 说明                     |
-| ------------------- | --------- | -------------------------- |
-| BindSelectionMenu | boolean | 是否绑定自定义选择菜单。true表示已绑定，false表示未绑定。 |
-
-- **TextInput和TextArea配置**
-
-| key            | 值类型  | 说明                         |
-| ----------------- | --------- | ------------------------------ |
-| CustomKeyboard | boolean | 是否配置自定义键盘节点或构建函数。true表示已配置，false表示未配置。 |
+| 组件 | 字段 | 值类型 | 说明 |
+| ---- | ---- | ------ | ---- |
+| Text | BindSelectionMenu | boolean | 是否绑定自定义选择菜单。true表示已绑定，false表示未绑定。 |
+| TextInput和TextArea | CustomKeyboard | boolean | 是否配置自定义键盘节点或构建函数。true表示已配置，false表示未配置。 |
 
 - **Swiper配置**
 
-| key          | 值类型  | 说明           |
+| 字段          | 值类型  | 说明           |
 | -------------- | --------- | ---------------- |
 | disableSwipe | boolean | 是否禁用滑动。true表示禁用，false表示未禁用。 |
 
 - **SheetPage配置**
 
-| key            | 值类型  | 说明                                       |
+| 字段            | 值类型  | 说明                                       |
 | ----------------- | --------- | -------------------------------------------- |
-| detents Size     | number  | Sheet档位配置数量。key中的空格为字段名的组成部分。 |
+| detents Size     | number  | Sheet档位配置数量。空格为字段名的组成部分。 |
 | IsShouldDismiss | boolean | 是否配置关闭拦截回调。true表示已配置，false表示未配置。                           |
 
 - **滚动组件公共配置与回调**
 
-本节“滚动组件”包括[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)和[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)。这些组件共享滚动公共配置和回调字段。
+本节“滚动组件”包括Scroll、List、Grid和WaterFlow。这些组件共享滚动公共配置和回调字段。
 
-| key                                | 值类型  | 说明                                                                                                                                                          |
+| 字段                                | 值类型  | 说明                                                                                                                                                          |
 | ------------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NestedScroll                       | string  | 嵌套滚动配置，参见[NestedScrollOptions](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明)，见嵌套滚动配置表。 |
+| NestedScroll                       | string  | 嵌套滚动配置，参见[NestedScrollOptions](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明)，见嵌套滚动格式表。 |
 | backToTop                          | boolean | 是否支持点击状态栏回到顶部。true表示支持，false表示不支持。                                                                                                                                                |
 | enableScrollInteraction            | boolean | 是否支持滚动手势。true表示支持，false表示不支持。                                                                                                                                                |
 | friction / flingSpeedLimit         | number  | 摩擦系数和惯性滚动速度限制，速度单位为px/s。                                                                                                                  |
 | hasOnScrollStart / hasOnScrollStop | boolean | 是否已配置滚动开始和停止回调。true表示已配置，false表示未配置。                                                                                                                                      |
 | hasOnWillScroll / hasOnDidScroll   | boolean | 是否已配置滚动前和滚动后回调。true表示已配置，false表示未配置。                                                                                                                                      |
-| hasOnScrollBegin                   | boolean | 是否已配置滚动帧开始回调（对应onScrollFrameBegin事件）。true表示已配置，false表示未配置。                                                                                                                  |
+| hasOnScrollBegin                   | boolean | 是否已配置滚动帧开始回调。true表示已配置，false表示未配置。                                                                                                                  |
 | hasOnReachStart / hasOnReachEnd    | boolean | 是否已配置到达起始位置和末尾位置的回调。true表示已配置，false表示未配置。                                                                                                                            |
 | autoAdjustScrollBarMargin          | boolean | 是否自动调整滚动条边距。true表示自动调整，false表示不自动调整。                                                                                                                                      |
-| isScrollable                       | boolean | 内部滚动条可滚动状态，true表示可滚动，false表示不可滚动。                                                                                                                        |
+| isScrollable                       | boolean | 滚动条可滚动状态，true表示可滚动，false表示不可滚动；位于advanced.functional，与$attrs中的同名isScrollable（string滚动状态编码）含义不同。 |
 | isReverse                          | boolean | 是否反向滚动；WaterFlow中该字段表示当前是否为反向布局。true表示是，false表示否。                                                                                                          |
 
-- **嵌套滚动配置表**
+- **嵌套滚动格式表**
 
 | 字段         | 格式                                                    | 说明                                                                                                                   |
 | -------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | NestedScroll | `NestedScrollOptions forward: <整数>, backward: <整数>` | 分别记录前向和后向[NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)整数值。 |
 
-- **Scroll配置**
+- **Scroll、List、ListItem、Grid、GridItem和WaterFlow配置**
 
-| key                                 | 值类型  | 说明                                                                                                         |
-| ------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------- |
-| snapAlign                           | string  | [ScrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10枚举说明)对齐方式。 |
-| snapPagination                      | object  | 吸附间隔或位置配置，见吸附分页表。                                                                           |
-| enableSnapToStart / enableSnapToEnd | boolean | 是否允许吸附到起始和结束边界。true表示允许，false表示不允许。                                                                               |
-| enablePaging                        | string  | ScrollPagingStatus状态：NONE（未启用分页）、INVALID（分页配置无效）或VALID（分页配置有效）。                                                               |
-| initialOffset                       | string  | 主轴初始偏移，保留单位。                                                                                     |
-| hasOnScrollEdge                     | boolean | 是否已配置滚动边缘回调。true表示已配置，false表示未配置。                                                                                           |
-
-- **吸附分页表**
-
-| 字段     | 格式   | 说明                                     |
-| ---------- | -------- | ------------------------------------------ |
-| interval | string | 吸附间隔，保留长度单位。                 |
-| offsets  | array  | 吸附位置数组，元素为带单位的长度字符串。 |
-
-- **List、ListItem、Grid、GridItem和WaterFlow配置**
-
-| 组件               | key                                                                                                    | 值类型  | 说明                                           |
+| 组件               | 字段                                                                                                    | 值类型  | 说明                                           |
 | -------------------- | -------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------ |
+| Scroll             | snapAlign                                                                                               | string  | [ScrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10枚举说明)对齐方式。 |
+| Scroll             | snapPagination                                                                                          | object  | 吸附间隔或位置配置，见吸附分页格式表。         |
+| Scroll             | enableSnapToStart / enableSnapToEnd                                                                     | boolean | 是否允许吸附到起始和结束边界。true表示允许，false表示不允许。 |
+| Scroll             | enablePaging                                                                                            | string  | ScrollPagingStatus状态：NONE（未启用分页）、INVALID（分页配置无效）或VALID（分页配置有效）。 |
+| Scroll             | initialOffset                                                                                           | string  | 主轴初始偏移，保留单位。                       |
+| Scroll             | hasOnScrollEdge                                                                                         | boolean | 是否已配置滚动边缘回调。true表示已配置，false表示未配置。 |
 | List               | multiSelectable / maintainVisibleContentPosition / stackFromEnd                                        | boolean | 是否启用多选/保持可见内容位置/从末尾排列。true表示是，false表示否。       |
 | List               | sticky / scrollSnapAlign                                                                               | number  | 吸顶策略和滚动吸附对齐的整数枚举值。           |
 | List               | syncLoad                                                                                               | boolean | 是否同步加载List区域内所有子组件。true表示同步加载，false表示异步加载。                                 |
@@ -636,16 +643,24 @@ BackgroundImage、BorderImageSource和图片url的资源格式见资源引用表
 | Grid               | ShowCache                                                                                              | boolean | 是否显示缓存项。true表示显示，false表示不显示。                               |
 | Grid               | Editable / ScrollEnabled                                                                               | boolean | 是否可编辑/是否可滚动。true表示是，false表示否。                               |
 | WaterFlow          | CachedCount                                                                                            | number  | 缓存数量。                                     |
-| WaterFlow          | isReverse                                                                                              | boolean | 是否反向布局。true表示是，false表示否。                                 |
 | WaterFlow          | footer                                                                                                 | boolean | 是否存在尾部节点。true表示存在，false表示不存在。                                 |
 | WaterFlow          | hasOnScrollIndex                                                                                       | boolean | 是否已配置索引变化回调。true表示已配置，false表示未配置。                             |
-| WaterFlow          | sections                                                                                               | array   | 分组配置对象数组，元素字段见WaterFlow分组字段。                             |
+| WaterFlow          | sections                                                                                               | array   | 分组配置对象数组，元素子字段见WaterFlow分组子字段。                             |
 
-- **WaterFlow分组字段**
+- **吸附分页格式表**
 
-| 组件      | key                  | 值类型 | 说明                                                   |
-| ----------- | ---------------------- | -------- | -------------------------------------------------------- |
-| WaterFlow | itemsCount           | number | 分组子项数量。                                         |
-| WaterFlow | crossCount           | number | 交叉轴数量。                                           |
-| WaterFlow | columnsGap / rowsGap | string | 列间距和行间距，保留单位。                             |
-| WaterFlow | margin               | object | 分组边距对象，含left、right、top、bottom、start和end。 |
+| 字段     | 格式   | 说明                                     |
+| ---------- | -------- | ------------------------------------------ |
+| interval | string | 吸附间隔，保留长度单位。                 |
+| offsets  | array  | 吸附位置数组，元素为带单位的长度字符串。 |
+
+- **WaterFlow分组子字段**
+
+WaterFlow的sections数组元素包含以下子字段：
+
+| 字段 | 值类型 | 说明 |
+| ---- | ------ | ---- |
+| itemsCount | number | 分组子项数量。 |
+| crossCount | number | 交叉轴数量。 |
+| columnsGap / rowsGap | string | 列间距和行间距，保留单位。 |
+| margin | object | 分组边距对象，含left、right、top、bottom、start和end。 |
