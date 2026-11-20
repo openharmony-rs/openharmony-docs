@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T02:11:10.918Z pushedAt=2026-11-05T06:51:54.891Z nl=1 -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T02:11:10.918Z pushedAt=2026-11-13T01:05:59.963Z nl=1 -->
 
 **List** is a list container component in ArkUI that presents continuous, multi-row or multi-column data of the same type, such as images and text, and supports vertical or horizontal scrolling. When used together with **LazyForEach** or **Repeat**, it supports lazy loading to improve the startup speed and reduce the memory usage in long-list scenarios. It also supports preloading to reduce frame loss during scrolling and improve smoothness, as well as single-column/multi-column layout, grouped lists, and sticky header/footer, making it suitable for scenarios such as message lists, product lists, and settings pages.
 

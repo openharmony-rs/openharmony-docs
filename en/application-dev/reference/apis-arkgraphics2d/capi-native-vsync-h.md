@@ -10,7 +10,7 @@
 
 ## Purpose
 
-This file declares the functions for obtaining and using native virtual synchronization (VSync).
+This file declares the functions for obtaining and using native vertical synchronization (VSync).
 
 <!--Del-->
 

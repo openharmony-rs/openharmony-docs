@@ -8,6 +8,16 @@
 
 录像是循环帧的捕获，同时也是相机应用的最重要功能之一。对于录像的流畅度，开发者可以参考拍照(C/C++)中的[开发步骤](native-camera-shooting.md#开发步骤)7，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
 
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+
+当前只提供录像流程及其接口介绍。对于单个流程（如[设备输入](native-camera-device-input.md)、[会话管理](native-camera-session-management.md)）的介绍请参考具体章节。
+
+## 开发流程
+
+在获取到相机支持的输出流能力后，开始创建录像流，开发流程如下。
+
+![Recording Development Process](figures/recording-ndk-development-process.png)
+
 ## 开发步骤
 
 详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
@@ -39,6 +49,7 @@
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include "ohcamera/camera_device.h"
    #include <window_manager/oh_display_info.h>
    #include <window_manager/oh_display_manager.h>
    
@@ -205,3 +216,6 @@
       return ret_;
   }
   ```
+
+<!--RP1-->
+<!--RP1End-->

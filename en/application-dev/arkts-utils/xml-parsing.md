@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark programming language"]
+description: "Describes how to use XmlPullParser to parse XML, including parsing XML tags and tag values, parsing XML attributes and attribute values, parsing XML event types and element information, and provides a complete scenario example that calls all parsing options, suitable for extracting business data from XML."
+keywords: [XML parsing, XmlPullParser, tag parsing, attribute parsing, event type, element information, parsing options]
+doctype: guide
+status: active
+---
+
 # XML Parsing
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:55:51.586Z pushedAt=2026-11-12T13:48:02.553Z nl=1 -->
 
 
 When using XML as a data carrier, it is necessary to parse relevant elements in practice. This typically includes three types of operations: [parsing XML tags and their values](#parsing-xml-tags-and-values), [parsing XML attributes and their values](#parsing-xml-attributes-and-values), and [parsing XML event types and element information](#parsing-xml-event-types-and-element-information). For example, in web services, XML is the foundation of the Simple Object Access Protocol (SOAP). SOAP messages, which are usually encapsulated in XML format and contain request and response parameters, are parsed by web services to process client requests and generate corresponding responses.
@@ -19,9 +28,9 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 | -------- | -------- | -------- | -------- |
 | supportDoctype | boolean | No| Whether to parse the document type. The value **true** means to parse the document type, and **false** means the opposite. The default value is **false**.|
 | ignoreNameSpace | boolean | No| Whether to ignore the namespace. If the namespace is ignored, it will not be parsed. The value **true** means to ignore the namespace, and **false** means the opposite. The default value is **false**.|
-| tagValueCallbackFunction | (name: string, value: string) =&gt; boolean | No| Callback used to return **tagValue**, which consists of XML tags and tag values. The default value is undefined, indicating that XML tags and their values are not parsed.|
-| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | No| Callback used to return **attributeValue**, which consists of an attribute and its value. The default value is undefined, indicating that XML attributes and their values are not parsed.|
-| tokenValueCallbackFunction | (eventType: EventType, value: ParseInfo) =&gt; boolean | No| Callback used to return **tokenValue**, which consists of the XML event type and the attributes of **parseInfo**. The default value is undefined, indicating that the XML event type is not parsed.|
+| tagValueCallbackFunction | (name: string, value: string) =&gt; boolean | No | Gets the tagValue() callback function to print XML tags and tag values. The default is undefined, which indicates unparsed XML tags and tag values. |
+| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | No | Gets the attributeValue() callback function to print XML attributes and attribute values. The default is undefined, which indicates unparsed XML attributes and attribute values. |
+| tokenValueCallbackFunction | (eventType: EventType, value: ParseInfo) =&gt; boolean | No | Gets the tokenValue() callback function to print the XML event type and the corresponding parseInfo attributes. The default is undefined, which indicates unparsed XML event types. |
 
 
 ## Precautions
@@ -70,7 +79,7 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 3. Customize a callback function. In this example, the callback function directly prints the tags and their values.
 
-   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) --> 
    
    ``` TypeScript
    function func(name: string, value: string): boolean {
@@ -84,7 +93,7 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
      if (name == 'title' || name == 'lens') {
        console.info('  ' + name);
      }
-     return true; // The value true means to continue parsing, and false means to stop parsing.
+     return true; // true: continue parsing. false: stop parsing.
    }
    ```
 
@@ -97,7 +106,7 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
    xmlParser.parseXml(options);
    ```
 
-   The output is as follows:
+   The output is as follows: 
 
    ```txt
    note
@@ -224,7 +233,7 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
    2 2 // First digit 2: <title> corresponds to event type START_TAG, which value is 2; second digit 2: The depth is 2.
    4 2 // First digit 4: "Play" corresponds to event type TEXT, which value is 4; second digit 2: The depth is 2.
    3 2 // First digit 3: </title> corresponds to event type END_TAG, which value is 3; second digit 2: The depth is 2.
-   3 1 // First digit 3: </note> corresponds to event type END_TAG, which value is 3; second digit 1: The depth is 1.
+   3 1 // 3: </note> corresponds to event type END_TAG with value 3. 1: depth is 1 (corresponding to <note>)
    1 0 // First digit 1: corresponds to event type END_DOCUMENT, which value is 1; second digit 0: The depth is 0.
    ```
 

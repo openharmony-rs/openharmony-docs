@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=df3e5e9df90d71f820cb188be6b068a9042c944e translatedAt=2026-11-03T01:49:37.145Z pushedAt=2026-11-05T06:51:32.522Z nl=1 -->
+<!-- md-trans-meta sourceCommit=df3e5e9df90d71f820cb188be6b068a9042c944e translatedAt=2026-11-03T01:49:37.145Z pushedAt=2026-11-13T01:05:59.906Z nl=1 -->
 
 This document summarizes the public enums in ArkUI development, for developers to look up the meanings and applicable scenarios of enum values.
 
@@ -1856,4 +1856,3 @@ Enumerates the clipping mode when the shadow is not filled.
 | ------ | ---- | ---------- |
 | DEFAULT_SHAPE | 0 | Clips the shadow based on the default shape (priority order: [shadowShape](ts-universal-attributes-image-effect.md#shadowshape) > [clipShape](ts-universal-attributes-sharp-clipping.md#clipshape12) > component boundary). |
 | BOUNDS_SHAPE | 1 | Clips the shadow based on the component boundary. |
-<!--no_check-->

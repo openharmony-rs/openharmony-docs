@@ -5,12 +5,12 @@
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:37.944Z pushedAt=2026-06-22T08:08:02.523Z -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:45:25.787Z pushedAt=2026-11-16T13:08:00.445Z nl=1 -->
 
 
 ## Function
 
-ArkData provides data storage, management, and sync capabilities. For example, you can store the Contacts application data in database for secure management and shared access, and synchronize the contacts information with a smart watch.
+ArkData provides data storage, data management, and data synchronization capabilities. For example, you can store the Contacts application data in a database for secure management and shared access, and synchronize the contacts information with a smart watch.
 - Unified data definition: provides unified data definitions, including the data types and structs, for different applications and devices.
 
 - Data storage: provides capabilities for persisting user preference data, key-value (KV) store data, and relational database (RDB) store data.
@@ -26,7 +26,7 @@ The database files created by an application are saved to the application sandbo
 
 The data management module includes preferences, KV data management (KV-Store), relational data management (RelatoinalStore), distributed data object (DataObject), cross-application data management (DataShare), and unified data management framework (UDMF). The interface layer provides standard JavaScript APIs for application development. The Frameworks & System service layer implements storage and sync of component data, and provides dependencies for SQLite and other subsystems.
 
-  **Figure 1** Data management architecture 
+  **Figure 1** Data management architecture
 
 ![dataManagement](figures/dataManagement.jpg)
 

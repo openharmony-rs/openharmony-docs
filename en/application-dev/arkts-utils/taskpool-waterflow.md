@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark programming language"]
+description: "Provides development guidance for using TaskPool to improve ArkUI waterfall rendering performance: put time-consuming operations such as database queries into a child thread and return the data. After the UI thread detects the data update, it renders the WaterFlow waterfall component, avoiding long waits on the main thread when processing large amounts of data."
+keywords: [waterfall rendering, WaterFlow, TaskPool, rendering performance optimization, child thread query, database read, UI data update]
+doctype: guide
+status: active
+---
+
 # ArkUI Waterfall Rendering
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:50:19.949Z pushedAt=2026-11-12T13:35:29.259Z nl=1 -->
 
 This topic describes how to use [TaskPool](../reference/apis-arkts/js-apis-taskpool.md) to improve the rendering performance of the [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) component. When the UI thread queries large volumes of data from the database and renders the data to the **WaterFlow** component, the UI may become unresponsive, negatively impacting user experience. To address this, we can offload data query to child threads and return the data to the UI thread using TaskPool APIs.
 
@@ -31,7 +40,7 @@ This example describes the following scenarios:
     }
     
     export function getImgFromDB() {
-      // Simulate the operation of querying the database and returning data.
+      // Simulate querying the database and return the data.
       let task = new taskpool.Task(query);
       task.onReceiveData(fillImg);
       taskpool.execute(task);
@@ -94,7 +103,7 @@ This example describes the following scenarios:
        })
      }
    
-     //Notify the controller that data has been deleted in batch.
+     // Notify the controller of batch data modification.
      notifyDatasetChange(operations: DataOperation[]): void {
        this.listeners.forEach(listener => {
          listener.onDatasetChange(operations);
@@ -165,8 +174,8 @@ This example describes the following scenarios:
    
      // Reload the data.
      public reload(): void {
-       this.dataArray.splice(1, 1);
        this.dataArray.splice(3, 2);
+       this.dataArray.splice(1, 1);
        this.notifyDataReload();
      }
    }
@@ -179,7 +188,6 @@ This example describes the following scenarios:
    ``` TypeScript
    import { WaterFlowDataSource } from './WaterFlowDataSource';
    import { getImgFromDB } from './Mock';
-   import resource from '../util/resource';
    
    // Simulate an image array.
    let img = new Array<string>(33);
@@ -249,13 +257,14 @@ This example describes the following scenarios:
                  // To simulate image loading, use the Text component to display the image. To load a JPG file, you can directly use the Image component.
                  // Reference: Image(this.img[item % 33]).objectFit(ImageFit.Contain).width('100%').layoutWeight(1)
                  if (img[item % 33] == null) {
-                   Text(resource.resourceToString($r('app.string.Image_loading')))
+                   Text($r('app.string.Image_loading')) // Load resources. Customize based on the actual project resources.
+                     .width('100%')
+                     .layoutWeight(1);
+                 } else {
+                   Text(img[item % 33])
                      .width('100%')
                      .layoutWeight(1);
                  }
-                 Text(img[item % 33])
-                   .width('100%')
-                   .layoutWeight(1);
                }
              }
              .onAppear(() => {
@@ -268,8 +277,8 @@ This example describes the following scenarios:
              })
              .width('100%')
              .height(this.itemHeightArray[item % 100])
-             .backgroundColor(this.colors[item % 5])
-           }, (item: string) => item)
+             .backgroundColor(this.colors[item % 6])
+           }, (item: number) => item.toString())
          }
          .columnsTemplate('1fr 1fr')
          .columnsGap(10)

@@ -91,12 +91,12 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 在无法填满回调所需长度数据的情况下，建议开发者返回audio.AudioDataCallbackResult.INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回audio.AudioDataCallbackResult.VALID。
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
      
      ``` TypeScript
      import { audio } from '@kit.AudioKit';
      import { BusinessError } from '@kit.BasicServicesKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { fileIo } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      // ...
      class Options {
@@ -115,7 +115,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
            return audio.AudioDataCallbackResult.INVALID;
          }
          try {
-           let bufferLength = fs.readSync(file.fd, buffer, options);
+           let bufferLength = fileIo.readSync(file.fd, buffer, options);
            bufferSize += buffer.byteLength;
            // 系统会判定buffer有效，正常播放。
            // ...
@@ -142,11 +142,11 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
      > - 在写数据回调中，避免与耗时业务耦合或等待其他业务操作，例如写数据时不要等待UI绘制。否则，可能会导致数据传输不及时，从而产生卡顿现象。
 
-     <!-- @[init_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
+     <!-- @[init_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->    
      
      ``` TypeScript
      import { BusinessError } from '@kit.BasicServicesKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { fileIo } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      // ...
      class Options {
@@ -290,12 +290,12 @@ AudioRenderer支持枚举类型[AudioSamplingRate](../../reference/apis-audio-ki
 
 下面展示了使用AudioRenderer渲染音频文件的示例代码。
 
-<!-- @[render_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
+<!-- @[render_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->        
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 // ...
 class Options {
@@ -335,7 +335,7 @@ async function initArguments(context: common.UIAbilityContext) {
       return audio.AudioDataCallbackResult.INVALID;
     }
     try {
-      let bufferLength = fs.readSync(file.fd, buffer, options);
+      let bufferLength = fileIo.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
       // 系统会判定buffer有效，正常播放。
       if (bufferSize > file.length) {

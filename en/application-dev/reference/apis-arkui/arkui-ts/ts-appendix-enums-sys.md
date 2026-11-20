@@ -1,12 +1,11 @@
 # Enums (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-08-28T01:36:52.810Z pushedAt=2026-08-28T08:22:51.134Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T01:48:28.556Z pushedAt=2026-11-13T01:05:59.895Z nl=1 -->
 
 >**NOTE**
 >
@@ -82,6 +81,7 @@ Enumerates distortion modes.
 | DISTORTION_ENABLED | 1 | The distortion effect is enabled when a system material is applied.|
 | DISTORTION_DISABLED | 2 | The distortion effect is disabled when a system material is applied.|
 
+
 ## EdgeLightMode
 
 Enumerates edge light modes.
@@ -96,6 +96,6 @@ Enumerates edge light modes.
 
 | Name    | Value| Description             |
 | ------ | --- | --------------- |
-| EDGELIGHT_AUTO | 0 | When the material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial) type is set, the automatic activation rules of the edge light effect vary with the component type. For components without special instructions at their APIs, the edge light effect is automatically activated based on the device computing power tier and the immersive light sensing configuration in system settings: on high-computing-power devices, the edge light animation is activated when the immersive light sensing configuration is strong or balanced, and is not activated when it is weak; on medium-computing-power devices, the edge light animation is activated when the immersive light sensing configuration is strong, and is not activated when it is balanced or weak; on low-computing-power devices, the edge light effect is not activated. |
+| EDGELIGHT_AUTO | 0 | When the material of the [IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial) type is set, the automatic activation rules of the edge light effect vary with the component type. For components without special instructions at their APIs, the edge light effect is automatically activated based on the device computing power level and the immersive light sensing configuration in system settings: on high-computing-power devices, the edge light animation is activated when the immersive light sensing configuration is strong or balanced, and is not activated when it is weak; on medium-computing-power devices, the edge light animation is activated when the immersive light sensing configuration is strong, and is not activated when it is balanced or weak; on low-computing-power devices, the edge light effect is not activated. |
 | EDGELIGHT_ENABLED | 1 | The edge light effect is enabled when a system material is applied.|
 | EDGELIGHT_DISABLED | 2 | The edge light effect is disabled when a system material is applied.|

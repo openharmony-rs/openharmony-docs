@@ -1,20 +1,21 @@
-# @ohos.util.LightWeightMap (Nonlinear Container LightWeightMap) 
+# @ohos.util.LightWeightMap (Nonlinear Container LightWeightMap)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=ee30fc06a4d48737c123d3032041ea2f72a0d534 translatedAt=2026-11-06T09:27:54.077Z pushedAt=2026-11-13T06:44:07.890Z nl=1 -->
 
-LightWeightMap stores key-value (KV) pairs. Each key must be unique and have only one value.
+LightWeightMap can be used to store key-value pairs with an association relationship, where the key is unique and each key corresponds to one value.
 
-LightWeightMap is based on generics and uses a lightweight structure. Its default initial capacity is 8, and it has the capacity doubled in each expansion.
+LightWeightMap is defined based on generics and uses a lightweight structure. The default capacity is 8, and each capacity expansion doubles the original capacity.
 
-The keys in such a set are searched using hash values, which are stored in an array.
+The lookup of keys in the collection relies on a hash algorithm. Hash values are stored in an array and then mapped to the corresponding keys and values.
 
-Compared with [HashMap](js-apis-hashmap.md), which can also store KV pairs, LightWeightMap occupies less memory.
+Both LightWeightMap and [HashMap](js-apis-hashmap.md) are containers used to store key-value pairs, but LightWeightMap occupies less memory.
 
-**Recommended use case**: Use LightWeightMap when you need to store and access KV pairs.
+**Recommended use cases:** When you need to store and access key-value pairs and are sensitive to memory usage (for example, when you need to maintain a large number of small key-value pair collections simultaneously or run in a memory-constrained environment), it is recommended to use LightWeightMap, which occupies less memory.
 
 This topic uses the following to identify the use of generics:
 - K: Key<br>
@@ -28,18 +29,18 @@ This topic uses the following to identify the use of generics:
 
 ## Specifications
 
-If the key stored in **LightWeightMap** is of the number type and the value is greater than **INT32_MAX** or less than **INT32_MIN**, the operation result of **LightWeightMap** may be different from the expected result.
+When the key stored in LightWeightMap is of the number type and its value is greater than INT32_MAX (that is, 2147483647) or less than INT32_MIN (that is, -2147483648), the result of operations on LightWeightMap may be inconsistent with expectations.
 
 This is because the storage structure changes in such cases.
 
-For example, **1758783600000** is greater than **INT32_MAX** and is stored as **TaggedDouble**; **1758783600** is less than **INT32_MIN** and is stored as **TaggedInt**. Due to these differences in storage modes, the hash algorithm will generate different hash values, leading to inconsistent mapping results and ultimately causing discrepancies from expected outcomes.
+For example, in the calculation of the key in the following example, 1758783600000 is greater than INT32_MAX, so it is stored as TaggedDouble; 1758783600 is less than INT32_MAX and greater than INT32_MIN, so it is stored as TaggedInt. Due to the difference in the storage methods above, different hash values are calculated when the hash algorithm is applied, which leads to different mapping results and produces a phenomenon inconsistent with expectations.
 
 ```ts
-let mp = new LightWeightMap<number, number>();
+let lightWeightMap = new LightWeightMap<number, number>();
 let key = 1758783600000 / 1000;  // 1758783600000 > INT32_MAX
-mp.set(key, 1001);
-console.info("result:", mp.hasKey(1758783600));  // result: false 
-console.info("result:", mp.hasKey(key));  // result: true
+lightWeightMap.set(key, 1001);
+console.info('result:', lightWeightMap.hasKey(1758783600));  // result: false 
+console.info('result:', lightWeightMap.hasKey(key));  // result: true
 ```
 
 ## Modules to Import
@@ -65,7 +66,7 @@ import { LightWeightMap } from '@kit.ArkTS';
 
 constructor()
 
-A constructor used to create a **LightWeightMap** instance.
+The constructor of LightWeightMap creates an empty LightWeightMap instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -114,7 +115,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-const lightWeightMap = new LightWeightMap<string, number>();
+let lightWeightMap = new LightWeightMap<string, number>();
 let result = lightWeightMap.isEmpty();
 console.info("result:", result);  // result: true
 ```
@@ -134,7 +135,7 @@ Checks whether this LightWeightMap contains all elements of the specified **Ligh
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| map | LightWeightMap<K, V> | Yes| **LightWeightMap** instance to be used for comparison.|
+| map | [LightWeightMap<K, V>](#lightweightmap) | Yes | LightWeightMap object used for comparison, determining whether the current instance contains all elements in this map. |
 
 **Return value**
 
@@ -144,11 +145,10 @@ Checks whether this LightWeightMap contains all elements of the specified **Ligh
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The hasAll method cannot be bound. |
 
 **Example**
@@ -157,9 +157,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
-let map = new LightWeightMap<string, number>();
-map.set("sparrow", 356);
-let result = lightWeightMap.hasAll(map); 
+let targetMap = new LightWeightMap<string, number>();
+targetMap.set("sparrow", 356);
+let result = lightWeightMap.hasAll(targetMap); 
 console.info("result = ", result); // result = true
 ```
 
@@ -168,7 +168,7 @@ console.info("result = ", result); // result = true
 
 hasKey(key: K): boolean
 
-Checks whether this LightWeightMap has the specified key.
+Determines whether LightWeightMap contains the specified key. When the key is of the number type and its value is greater than INT32_MAX or less than INT32_MIN, the result may be inconsistent with expectations. For details, see [Specifications](#specifications).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -178,7 +178,7 @@ Checks whether this LightWeightMap has the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Target key.|
+| key | K | Yes | Specified key. When key is of the number type and its value is greater than INT32_MAX or less than INT32_MIN, the result may be inconsistent with expectations. |
 
 **Return value**
 
@@ -218,7 +218,7 @@ Checks whether this LightWeightMap has the specified value.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | V | Yes| Target value.|
+| value | V | Yes | Value to determine whether it is contained. |
 
 **Return value**
 
@@ -247,7 +247,7 @@ console.info("result:", result);  // result: true
 
 increaseCapacityTo(minimumCapacity: number): void
 
-Increases the capacity of this LightWeightMap. If the passed-in capacity is greater than or equal to the number of elements in this LightWeightMap, the capacity is changed to the new capacity. If the passed-in capacity is less than the number of elements in this LightWeightMap, the capacity is not changed.
+Expands the capacity of the current LightWeightMap to the specified capacity. If the passed capacity value is greater than or equal to the number of elements in the current LightWeightMap, the capacity is expanded to the new capacity; if it is less, no change is made.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -257,15 +257,14 @@ Increases the capacity of this LightWeightMap. If the passed-in capacity is grea
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| minimumCapacity | number | Yes| Minimum number of elements to accommodate in this LightWeightMap.|
+| minimumCapacity | number | Yes | Number of elements to be accommodated. The value must be greater than or equal to 0. Capacity expansion takes effect when the value is greater than or equal to the current number of elements; otherwise, the capacity remains unchanged. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
 **Example**
@@ -279,7 +278,7 @@ lightWeightMap.increaseCapacityTo(10);
 
 get(key: K): V
 
-Obtains the value of the specified key in this LightWeightMap.
+Obtains the value corresponding to the specified key. When the key is of the number type and its value is greater than INT32_MAX or less than INT32_MIN, the result may be inconsistent with expectations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -320,7 +319,7 @@ console.info("result:", result);  // result: 356
 
 getIndexOfKey(key: K): number
 
-Obtains the index of the first occurrence of an element with the specified key in this LightWeightMap.
+Finds the index of the first occurrence of the key element. If not found, -1 is returned. When the key is of the number type and its value is greater than INT32_MAX or less than INT32_MIN, the result may be inconsistent with expectations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -361,7 +360,7 @@ console.info("result:", result);  // result: 0
 
 getIndexOfValue(value: V): number
 
-Obtains the index of the first occurrence of an element with the specified value in this LightWeightMap.
+Finds the index of the first occurrence of the specified value element. If not found, -1 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -371,7 +370,7 @@ Obtains the index of the first occurrence of an element with the specified value
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | V | Yes| Key of the element.|
+| value | V | Yes | Value whose first occurrence index is to be found. |
 
 **Return value**
 
@@ -412,21 +411,20 @@ Obtains the key of an element at the specified position in this LightWeightMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | The index to look up. Must be less than or equal to INT32_MAX, that is, 2147483647. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| K | Key obtained. If the key is not found, **undefined** is returned.|
+| K | Returns the key in the key-value pair of the element corresponding to the index. If not found, returns undefined. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The getKeyAt method cannot be bound. |
 
@@ -445,7 +443,7 @@ console.info("result:", result);  // result: squirrel
 
 setAll(map: LightWeightMap<K, V>): void
 
-Adds all elements in a LightWeightMap to this LightWeightMap.
+Adds all elements in one LightWeightMap to another LightWeightMap. If the target LightWeightMap already contains the same key, its corresponding value is updated.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -455,15 +453,14 @@ Adds all elements in a LightWeightMap to this LightWeightMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| map | LightWeightMap<K, V> | Yes| LightWeightMap whose elements are to be added to the current LightWeightMap.|
+| map | [LightWeightMap<K, V>](#lightweightmap) | Yes | LightWeightMap that provides elements to add. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The setAll method cannot be bound. |
 
 **Example**
@@ -482,7 +479,7 @@ console.info("result:", result);  // result: 356
 ### set
 set(key: K, value: V): Object
 
-Adds or updates an element in this LightWeightMap.
+Adds or updates a set of data in the LightWeightMap. After a successful call, if the key does not exist, a new key-value pair is added and length increases; if the key already exists, the corresponding value is updated.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -492,14 +489,14 @@ Adds or updates an element in this LightWeightMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Key of the target element.|
+| key | K | Yes | Key name for adding or updating member data. When key is of the number type and its value is greater than INT32_MAX or less than INT32_MIN, the result may be inconsistent with expectations. |
 | value | V | Yes| Value of the target element.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Object | LightWeightMap that contains the new element.|
+| Object | Returns the LightWeightMap instance object after addition or update. |
 
 **Error codes**
 
@@ -522,7 +519,7 @@ console.info("result:", result);  // result: squirrel:123
 
 remove(key: K): V
 
-Removes an element with the specified key from this LightWeightMap.
+Deletes the element mapped by the specified key. When the key is of the number type and its value is greater than INT32_MAX or less than INT32_MIN, the result may be inconsistent with expectations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -562,7 +559,7 @@ console.info("result:", result);  // result: 356
 
 removeAt(index: number): boolean
 
-Removes an element at the specified position from this LightWeightMap.
+Deletes the element corresponding to the specified index. After a successful call, if the index is valid, the key-value pair at that position is removed from the LightWeightMap and length decreases.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -572,7 +569,7 @@ Removes an element at the specified position from this LightWeightMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index position of the element to remove. Value range: [0, length-1], must be less than or equal to INT32_MAX, that is, 2147483647. |
 
 **Return value**
 
@@ -582,11 +579,10 @@ Removes an element at the specified position from this LightWeightMap.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The removeAt method cannot be bound. |
 
 **Example**
@@ -604,7 +600,7 @@ console.info("result:", result);  // result: true
 
 setValueAt(index: number, newValue: V): boolean
 
-Sets a value for an element at the specified position in this LightWeightMap.
+Replaces the value in the key-value pair corresponding to the specified index. After a successful call, the value of the key-value pair at the specified index is replaced with newValue.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -614,7 +610,7 @@ Sets a value for an element at the specified position in this LightWeightMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Specified index. Must be less than or equal to INT32_MAX, that is, 2147483647. |
 | newValue | V | Yes| Value of the target element to set.|
 
 **Return value**
@@ -625,11 +621,10 @@ Sets a value for an element at the specified position in this LightWeightMap.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The setValueAt method cannot be bound. |
 
@@ -658,7 +653,7 @@ Obtains the value of an element at the specified position in this LightWeightMap
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Specified index. Must be less than or equal to INT32_MAX, that is, 2147483647. |
 
 **Return value**
 
@@ -668,11 +663,10 @@ Obtains the value of an element at the specified position in this LightWeightMap
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The getValueAt method cannot be bound. |
 
@@ -744,6 +738,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// It is not recommended to use set, setValueAt, remove, or removeAt in keys, as this may cause infinite loops and other unpredictable risks. Use a for loop for insertion and deletion instead.
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
@@ -760,7 +755,7 @@ for (let key of keys) {
 
 values(): IterableIterator&lt;V&gt;
 
-Returns an iterator that contains all the values in this LightWeightMap.
+Returns a new iterator object that contains all the values in this map.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -783,6 +778,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// It is not recommended to use set, setValueAt, remove, or removeAt in values, which may cause unpredictable risks such as infinite loops. Use a for loop for insertion and deletion instead.
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
@@ -799,7 +795,7 @@ for (let value of values) {
 
 forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object): void
 
-Uses a callback to traverse the elements in this LightWeightMap and obtain their indexes.
+Traverses the elements and their key-value pair information on the instance object through a callback function.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -809,23 +805,22 @@ Uses a callback to traverse the elements in this LightWeightMap and obtain their
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked to traverse the elements in the LightWeightMap.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function used to traverse the elements and indexes in the LightWeightMap instance. |
+| thisArg | Object | No | Used as the this value when callbackFn is called. Pass this parameter when the this in the callback function needs to point to an object other than the current instance; omit it when the this reference does not need to be changed. When omitted, the default value is the current instance object. |
 
 callbackFn parameters
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | V | No| Value of the element that is currently traversed. The default value is the value of the first key-value pair.|
-| key | K | No| Key of the element that is currently traversed. The default value is the key of the first key-value pair.|
-| map | LightWeightMap<K, V> | No| Instance that calls the **forEach** API. The default value is this instance.|
+| value | V | No | Value of the element that is currently traversed. |
+| key | K | No | Key of the element that is currently traversed. |
+| map | [LightWeightMap<K, V>](#lightweightmap) | No | Instance object that currently calls the forEach method. The default value is the current instance object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
@@ -844,10 +839,10 @@ lightWeightMap.forEach((value: number, key: string) => {
 ```ts
 // You are not advised to use the set, setValueAt, remove, or removeAt APIs in forEach because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
 let lightWeightMap = new LightWeightMap<string, number>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightMap.set("sparrow" + i, 123);
 }
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightMap.remove("sparrow" + i);
 }
 ```
@@ -866,7 +861,7 @@ Returns an iterator that contains all the elements in this LightWeightMap.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator<[K, V]> | Iterator obtained.|
+| IterableIterator<[K, V]> | Returns an iterator object that contains all key-value pairs in this map. |
 
 **Error codes**
 
@@ -882,12 +877,12 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
-let iter = lightWeightMap.entries();
-let temp: IteratorResult<Object[]> = iter.next();
-while(!temp.done) {
+let iteratorResult = lightWeightMap.entries();
+let temp: IteratorResult<Object[]> = iteratorResult.next();
+while (!temp.done) {
   console.info("key:" + temp.value[0]);
   console.info("value:" + temp.value[1]);
-  temp = iter.next();
+  temp = iteratorResult.next();
 }
 ```
 ```ts
@@ -915,7 +910,7 @@ Concatenates the elements in this LightWeightMap into a string and returns the s
 
 | Type| Description|
 | -------- | -------- |
-| String | String obtained.|
+| String | Returns a string formed by concatenating the key-value pairs in this map. |
 
 **Error codes**
 
@@ -939,7 +934,7 @@ console.info("result:", result);  // result: sparrow:356,squirrel:123
 
 [Symbol.iterator]\(): IterableIterator&lt;[K, V]&gt;
 
-Returns an iterator. Each item of the iterator is a JavaScript object.
+Returns an iterator, where each item is a [K, V] array containing a key and a value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -1,10 +1,11 @@
 # OpenSL ES
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=03e07731f28ea3c4338c42628096ca0f42c1efd0 translatedAt=2026-11-06T12:18:57.075Z pushedAt=2026-11-13T11:27:29.813Z nl=1 -->
 
 > **NOTE**
 >
@@ -12,13 +13,13 @@
 
 ## Introduction
 
-Open Sound Library for Embedded Systems (OpenSL ES) is a set of audio acceleration standards for embedded systems. It provides objects and APIs for developers to implement high-performance, low-latency audio features. OpenHarmony implements some native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications. The table [Supported APIs](#supported-apis) list these APIs.
+OpenSL ES (Open Sound Library for Embedded Systems) is the embedded audio acceleration standard. It provides developers with standardized, high-performance, and low-latency objects and interfaces for audio function development. Compared with the open-source and free OpenSL ES, OpenHarmony implements some Native APIs based on the [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specification. The availability of the related interfaces is shown in the table [Supported APIs](#supported-apis).
 
 ## Introducing OpenSL ES
 
 To use OpenSL ES capabilities, include the following header files:
 
-```
+```c++
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_OpenHarmony.h>
 #include <SLES/OpenSLES_Platform.h>
@@ -26,7 +27,7 @@ To use OpenSL ES capabilities, include the following header files:
 
 Add the following dynamic link library to **CMakeLists.txt**:
 
-```
+```c++
 libOpenSLES.so
 ```
 
@@ -36,7 +37,7 @@ libOpenSLES.so
 | ------------------ | -------------------- | -------------------------------------------------------------------------------------|----------| -------------------- |
 |SLEngineItf         |CreateAudioPlayer     |CreateAudioPlayer(SLEngineItf self, SLObjectItf *pPlayer, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired) |Yes       |Creates an audio player.       |
 |SLEngineItf         |CreateAudioRecorder   |CreateAudioRecorder(SLEngineItf self, SLObjectItf *pRecorder, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|Yes       |Creates an audio recorder.       |
-|SLEngineItf         |CreateAudioOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|Yes       |Creates an audio output mixer.           |
+|SLEngineItf         |CreateOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|Yes        |Creates an output mix.            |
 |SLObjectItf         |Realize               |Realize(SLObjectItf self, SLboolean async)                                            |Yes       |Realizes an audio player.       |
 |SLObjectItf         |getState              |GetState(SLObjectItf self, SLuint32 *pState)                                           |Yes       |Obtains the state.            |
 |SLObjectItf         |getInterface          |GetInterface(SLObjectItf self, const SLInterfaceID iid, void *pInterface)              |Yes       |Obtains the interface.            |

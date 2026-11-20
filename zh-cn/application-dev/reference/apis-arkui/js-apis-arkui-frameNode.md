@@ -261,6 +261,10 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 向当前FrameNode派发输入事件，并可指定竞争策略。支持[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)、[MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)和[AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent)。KeyEvent请使用[dispatchKeyEvent](#dispatchkeyevent)派发。
 
+> **说明：**
+>
+> - 当组件的[hitTestBehavior](arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)设置HitTestMode.Transparent时，请勿继续使用dispatchInputEvent，会导致事件序列异常。
+
 **起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
@@ -290,7 +294,7 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 dispatchKeyEvent(event: KeyEvent): boolean
 
-向当前FrameNode派发按键事件。
+向当前FrameNode派发按键事件。[onKeyPreIme](./arkui-ts/ts-universal-events-key.md#onkeypreime12)不会触发该事件。
 
 **起始版本：** 26.1.0
 
@@ -3972,14 +3976,12 @@ TypedFrameNode继承自[FrameNode](#framenode-1)，用于声明具体类型的Fr
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型 | 只读 | 可选 | 说明                                                         |
 | ---------- | ---- | ---- | ---- | ------------------------------------------------------------ |
-| initialize | C    | 否   | 否   | 该接口用于传入对应组件的构造参数，以设置/更新组件的初始值。 |
-| attribute  | T    | 是   | 否   | 该接口用于获取对应组件的属性设置对象，以设置/更新组件的通用、私有属性。 |
+| initialize | C    | 否   | 否   | 该接口用于传入对应组件的构造参数，以设置/更新组件的初始值。<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
+| attribute  | T    | 是   | 否   | 该接口用于获取对应组件的属性设置对象，以设置/更新组件的通用、私有属性。<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 > **说明：**
 >

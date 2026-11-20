@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=03549490c8da5aa8e7aea81503480383b2dce6d7 translatedAt=2026-09-04T03:16:03.953Z pushedAt=2026-09-09T09:11:03.703Z -->
+<!-- md-trans-meta sourceCommit=738606f5486c126c23bfa72ac763b04445875809 translatedAt=2026-11-16T01:40:10.885Z pushedAt=2026-11-20T07:27:23.138Z nl=1 -->
 
 > **NOTE**
 >
@@ -183,7 +183,7 @@ The column index is out of range.
 
 **Possible Causes**
 
-1. When [getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex) is called with a column name that does not exist in the table, and its return value is then used as the input parameter of data retrieval APIs such as [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) or [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring), the interface execution fails.
+1. When [getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex) is called with a column name that does not exist in the table, and its return value is then used as the input parameter of data retrieval APIs such as [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) or [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring), the API execution fails.
 2. When the column index parameter passed in exceeds the valid range [0, number of table fields - 1], calling APIs such as [getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18), [getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18), [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong), and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) to retrieve data fails.
 
 **Solution**
@@ -584,12 +584,32 @@ This error code is reported if the database operation violates the constraint ru
 
 **Possible Causes**
 
-1. The data write operation violates the constraints on the database integrity.
-2. See SQLITE_CONSTRAINT.
+When data is written or updated by calling APIs such as [insert](arkts-apis-data-relationalStore-RdbStore.md#insert), [update](arkts-apis-data-relationalStore-RdbStore.md#update), [batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert), or [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql), the data violates the integrity constraint of the database. Common scenarios include:
+
+1. **NOT NULL** constraint conflict: a NULL value is inserted into or updated to a column declared as NOT NULL.
+2. **UNIQUE** constraint conflict: a value that duplicates existing data is inserted into or updated to a column declared as UNIQUE.
+3. **PRIMARY KEY** constraint conflict: a value that duplicates existing data is inserted into a primary key column. For an auto-increment primary key column using `INTEGER PRIMARY KEY AUTOINCREMENT`, this conflict is also triggered if an existing value is explicitly specified for insertion.
+4. **CHECK** constraint conflict: the inserted or updated value does not satisfy the CHECK condition defined on the column. For example, if `CHECK(age > 0)` is defined on a column, this error is reported when a negative `age` is inserted.
+5. **FOREIGN KEY** constraint conflict: the inserted or updated data references a foreign key value that does not exist in the parent table, or a foreign key reference exists in the child table when data in the parent table is deleted or updated.
+6.  See the related error scenarios of **SQLITE_CONSTRAINT**.
 
 **Solution**
 
-Check whether the data to be inserted or updated violates the constraints.
+1. Confirm whether there is a log print ending with `constraint failed` around the time the problem occurred. This log usually indicates the specific constraint type and the involved table name and column name.
+   - Yes: go to the corresponding step based on the constraint type indicated in the log.
+   - No: go to step 2.
+2. Troubleshoot the NOT NULL constraint conflict: check the data passed to [insert](arkts-apis-data-relationalStore-RdbStore.md#insert) or [update](arkts-apis-data-relationalStore-RdbStore.md#update) in the business code, and confirm whether the column declared as NOT NULL is omitted or assigned NULL.
+   - Yes: ensure that the NOT NULL column has a valid non-NULL value, then execute the write.
+   - No: Proceed to the next step.
+3. Troubleshoot unique constraint and primary key constraint conflicts: check whether the value of the UNIQUE column or primary key column in the data to be written duplicates the existing data in the table. For an auto-increment primary key column of `INTEGER PRIMARY KEY AUTOINCREMENT`, confirm whether an existing value is explicitly specified.
+   - Yes: use a different value, or delete the conflicting existing data first and then write. For an auto-increment primary key column, it is recommended not to explicitly specify the primary key value during insertion, and let the database assign it automatically.
+   - No: Proceed to the next step.
+4. Troubleshoot check constraint conflicts: check whether the value to be written satisfies the CHECK condition expression in the table definition.
+   - Yes: adjust the value to one that satisfies the CHECK condition.
+   - No: Proceed to the next step.
+5. Troubleshoot foreign key constraint conflicts: confirm that the inserted foreign key value exists in the parent table; when deleting or updating data in the parent table, confirm whether any child table data still references the row.
+   - Yes: first insert the corresponding data into the parent table, or first handle the referencing data in the child table (delete or update the child table reference), and then operate on the parent table.
+   - No: check whether a constraint conflict exists in the trigger in the SQL statement, and adjust the trigger logic or data.
 
 ## 14800033 SQLite: Data Types Mismatch
 
@@ -618,7 +638,7 @@ SQLite: Library used incorrectly.
 
 **Description**
 
-This error code is reported if the SQLite interface is used incorrectly.
+This error code is reported if the SQLite API is used incorrectly.
 
 **Possible Causes**
 

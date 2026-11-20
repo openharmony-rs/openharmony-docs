@@ -491,7 +491,7 @@
     - [Development Example for Platform Drivers](guide/device-driver-demo.md)
     - [Development Example for Peripheral Drivers](guide/device-outerdriver-demo.md)
 - Debugging
-  - [Development Self-Test Framework User Guide](device-test/developer_test.md)
+  - [Development Self-Test Framework User Guide](device-test/developer-test.md)
   - [xDevice User Guide](device-test/xdevice.md)
   - [Smartperf-Host User Guide](device-test/smartperf-host.md)
   - R&D Tools

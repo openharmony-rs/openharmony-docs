@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=de99d561629bcc58893e5180bb5167aeb0061dff translatedAt=2026-11-06T01:58:32.484Z pushedAt=2026-11-12T03:44:04.070Z nl=1 -->
 
 ## Overview
 
@@ -324,6 +325,7 @@ Enumerates the error codes.
 | -- | -- |
 | IMAGE_SUCCESS = 0 | Operation successful.|
 | IMAGE_BAD_PARAMETER = 401 | Invalid parameter.|
+| OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION = 202 | Permission verification failed. A non-system app calls a system API.<br>**Since:** 26.0.1 |
 | IMAGE_UNSUPPORTED_MIME_TYPE = 7600101 | Unsupported MIME type.|
 | IMAGE_UNKNOWN_MIME_TYPE = 7600102 | Unknown MIME type.|
 | IMAGE_TOO_LARGE = 7600103 | The data or image is too large.|
@@ -338,6 +340,7 @@ Enumerates the error codes.
 | IMAGE_UNSUPPORTED_MEMORY_FORMAT = 7600205 |  The memory format is not supported.<br>**Since**: 13|
 | IMAGE_INVALID_PARAMETER = 7600206 |  Invalid parameter.<br>**Since**: 19|
 | IMAGE_UNSUPPORTED_DATA_FORMAT = 7600207 |  Unsupported data format.<br>**Since**: 22|
+| OH_IMAGE_ERROR_DECOMPOSE_FAILED = 7600208 | Image decomposition failed.<br>**Since:** 26.0.1 |
 | IMAGE_ALLOC_FAILED = 7600301 | Failed to allocate the memory.|
 | IMAGE_COPY_FAILED = 7600302 | Failed to copy the memory.|
 | IMAGE_LOCK_UNLOCK_FAILED = 7600303 |  Failed to lock or unlock the memory.<br>**Since**: 15|
@@ -385,15 +388,15 @@ enum IMAGE_ALLOCATOR_MODE
 
 **Description**
 
-Enumerates the types of memory allocation for a PixelMap.
+The memory allocation type of Pixelmap.
 
 **Since**: 20
 
 | Enum Item| Description|
 | -- | -- |
-| IMAGE_ALLOCATOR_MODE_AUTO = 0 | The system determines the type of memory to allocate when creating a PixelMap.|
-| IMAGE_ALLOCATOR_MODE_DMA = 1 | Allocates a DMA-type memory buffer.|
-| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | Uses shared memory to create a PixelMap.|
+| IMAGE_ALLOCATOR_MODE_AUTO = 0 | Memory allocation type determined by the system. The system selects the memory type based on the image type, image size, platform capability, and other factors. |
+| IMAGE_ALLOCATOR_MODE_DMA = 1 | Direct memory access (DMA), which is suitable for scenarios with high requirements on decoding and rendering performance. Depending on the device hardware, blank padding bytes for memory alignment may be generated at the end of each row of pixels. |
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | Shared memory. |
 
 
 ## Function Description
@@ -709,3 +712,5 @@ Resource management: **newMetadata** returned by the API is managed by the calle
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_ALLOC_FAILED**: The memory allocation fails.<br>         **IMAGE_COPY_FAILED**: The memory copy fails.|
+
+

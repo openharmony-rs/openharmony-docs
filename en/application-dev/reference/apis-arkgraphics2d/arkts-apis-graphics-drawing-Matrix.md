@@ -563,7 +563,7 @@ Obtains a matrix value of a given index, which ranges from 0 to 8.
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| number | Value obtained, which is an integer.|
+| number | Value obtained, which is a floating point number.|
 
 **Error codes**
 

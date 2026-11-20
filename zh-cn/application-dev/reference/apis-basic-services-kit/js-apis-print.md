@@ -2331,8 +2331,8 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 | -------- | -------- | -------- | -------- |
 | printerName | string | 是 | 表示打印机名称。 |
 | uri | string | 是 | 表示打印机的URI。 |
-| ppdName | string | 否 | 表示打印机PPD驱动文件在文件系统中的名称。该名称由设备安装厂商驱动后生成，命名格式为“包名_模块名_文件名”，具体名称需向驱动厂商获取。当需要指定特定PPD驱动文件时传入此参数，不传入时系统自动匹配。 |
-| options | string | 否 | JSON对象字符串，表示打印机选项参数。预留字段，暂未启用。 |
+| ppdName | string | 否 | 表示打印机PPD驱动文件在文件系统中的名称，由设备安装厂商驱动后生成，命名格式为“包名_模块名_文件名”，具体名称需向驱动厂商获取。不传入、为空或传入"everywhere"时使用IPP Everywhere自动驱动模式（要求连接地址支持IPP，如ipp://、ipps://）；传入其他值时须为系统中已安装的PPD驱动名称。 |
+| options | string | 否 | JSON对象字符串，表示打印机选项参数。预留字段，暂未启用，传入空字符串即可。 |
 
 **返回值：**
 

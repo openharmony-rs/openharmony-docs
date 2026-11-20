@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=afa62f6f9caeee46dcb7c32ed6802f4a27c8b15e translatedAt=2026-11-16T01:39:45.803Z pushedAt=2026-11-20T07:27:11.012Z nl=1 -->
 
 ## Overview
 
@@ -60,15 +61,15 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()](#oh_rdb_createconfig) | - | Creates an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
-| [int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)](#oh_rdb_destroyconfig) | - | Destroys an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance created by [OH_Rdb_CreateConfig](capi-relational-store-h.md#oh_rdb_createconfig).|
+| [int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)](#oh_rdb_destroyconfig) | - | Destroys the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) object created by [OH_Rdb_CreateConfig()](#oh_rdb_createconfig). |
 | [int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir)](#oh_rdb_setdatabasedir) | - | Sets the database file path for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
 | [int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName)](#oh_rdb_setstorename) | - | Sets the database name for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
 | [int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName)](#oh_rdb_setbundlename) | - | Sets the bundle name for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
 | [int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName)](#oh_rdb_setmodulename) | - | Sets the module name for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
 | [int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted)](#oh_rdb_setencrypted) | - | Sets whether to encrypt the database for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
-| [int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)](#oh_rdb_setsecuritylevel) | - | Sets the database security level ([OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
-| [int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)](#oh_rdb_setarea) | - | Sets the security area level ([Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
-| [int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)](#oh_rdb_setdbtype) | - | Sets the database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.|
+| [int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)](#oh_rdb_setsecuritylevel) | - | Sets the database security level ([OH_Rdb_SecurityLevel](#oh_rdb_securitylevel)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance. |
+| [int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)](#oh_rdb_setarea) | - | Sets the security area level ([Rdb_SecurityArea](#rdb_securityarea)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance. |
+| [int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)](#oh_rdb_setdbtype) | - | Sets the database type ([Rdb_DBType](#rdb_dbtype)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance. |
 | [int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir)](#oh_rdb_setcustomdir) | - | Sets the custom directory of the database.|
 | [int OH_Rdb_SetReadOnly(OH_Rdb_ConfigV2 *config, bool readOnly)](#oh_rdb_setreadonly) | - | Sets whether the RDB store is in read-only mode.|
 | [int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t length)](#oh_rdb_setplugins) | - | Sets the dynamic library with specific capabilities (such as full-text search).|
@@ -76,7 +77,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)](#oh_rdb_istokenizersupported) | - | Checks whether the specified tokenizer is supported.|
 | [int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)](#oh_rdb_settokenizer) | - | Sets the tokenizer type.|
 | [int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)](#oh_rdb_setpersistent) | - | Sets whether to persist an RDB store.|
-| [const int *OH_Rdb_GetSupportedDbType(int *typeCount)](#oh_rdb_getsupporteddbtype) | - | Obtains the supported database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)).|
+| [const int *OH_Rdb_GetSupportedDbType(int *typeCount)](#oh_rdb_getsupporteddbtype) | - | Obtains all database types supported by the current system. |
 | [OH_VObject *OH_Rdb_CreateValueObject()](#oh_rdb_createvalueobject) | - | Creates an [OH_VObject](capi-rdb-oh-vobject.md) instance.|
 | [OH_VBucket *OH_Rdb_CreateValuesBucket()](#oh_rdb_createvaluesbucket) | - | Creates an [OH_VBucket](capi-rdb-oh-vbucket.md) instance.|
 | [OH_Predicates *OH_Rdb_CreatePredicates(const char *table)](#oh_rdb_createpredicates) | - | Creates an [OH_Predicates](capi-rdb-oh-predicates.md) instance.|
@@ -98,8 +99,8 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)](#oh_rdb_executequery) | - | Queries data in the database using the specified SQL statement. This API supports vector stores.|
 | [OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_executequeryv2) | - | Queries data in the database using the specified SQL statement. This API supports SQL parameter binding and vector stores.|
 | [int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)](#oh_rdb_begintransaction) | - | Begins the transaction before executing SQL statements.|
-| [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | Rolls back the SQL statements executed. Before using this function, call [OH_Rdb_BeginTransaction](#oh_rdb_begintransaction) to start a transaction.|
-| [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | Commits the executed SQL statements. Before using this function, call [OH_Rdb_BeginTransaction](#oh_rdb_begintransaction) to start a transaction.|
+| [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | Rolls back the SQL statements executed. Before using this function, call [OH_Rdb_BeginTransaction()](#oh_rdb_begintransaction) to start a transaction.|
+| [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | Commits the executed SQL statements. Before using this function, call [OH_Rdb_BeginTransaction()](#oh_rdb_begintransaction) to start a transaction.|
 | [int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)](#oh_rdb_begintranswithtrxid) | - | Begins a transaction. This API returns a transaction ID API and supports only vector stores.|
 | [int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_rollbackbytrxid) | - | Rolls back the executed SQL statements based on the specified transaction ID. This function supports only vector stores.|
 | [int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_commitbytrxid) | - | Commits the executed SQL statements based on the specified transaction ID. This API supports only vector stores.|
@@ -118,7 +119,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [typedef void (\*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails)](#rdb_synccallback) | Rdb_SyncCallback | Defines a callback for device-cloud sync.|
 | [int OH_Rdb_CloudSync(OH_Rdb_Store *store, Rdb_SyncMode mode, const char *tables[], uint32_t count,const Rdb_ProgressObserver *observer)](#oh_rdb_cloudsync) | - | Performs device-cloud sync.|
 | [int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)](#oh_rdb_subscribeautosyncprogress) | - | Subscribes to the auto sync progress of an RDB store.<br>The registered callback will be invoked to return the auto sync progress.|
-| [int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)](#oh_rdb_unsubscribeautosyncprogress) | - | Unsubscribes from the auto sync process of an RDB store.|
+| [int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)](#oh_rdb_unsubscribeautosyncprogress) | - | Unsubscribes from the auto sync progress of an RDB store. |
 | [int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_lockrow) | - | Locks data in an RDB store based on specified conditions. The locked data will be blocked from the device-cloud sync.|
 | [int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_unlockrow) | - | Unlocks data in an RDB store based on specified conditions.|
 | [OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length)](#oh_rdb_querylockedrow) | - | Queries the locked data in an RDB store.|
@@ -200,7 +201,7 @@ Enumerates the database kernel types.
 
 | Enum Item| Description|
 | -- | -- |
-| RDB_SQLITE = 1 | SQLite is used as the database kernel.|
+| RDB_SQLITE = 1 | SQLite is used as the database kernel. |
 | RDB_CAYLEY = 2 | Cayley is used as the database kernel.|
 | DBTYPE_BUTT = 64 | Maximum value of the database kernel type, which is an invalid value.|
 
@@ -389,7 +390,7 @@ int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)
 
 **Description**
 
-Destroys an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance created by [OH_Rdb_CreateConfig](capi-relational-store-h.md#oh_rdb_createconfig).
+Destroys the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) object created by [OH_Rdb_CreateConfig()](#oh_rdb_createconfig).
 
 **Since**: 14
 
@@ -528,7 +529,7 @@ Sets whether to encrypt the database for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-co
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite. After the database is created, this parameter cannot be modified directly. To change the database encryption status, call the [OH_Rdb_RekeyEx](capi-relational-store-h.md#oh_rdb_rekeyex) API.|
+| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite. After the database is created, this parameter cannot be modified directly. To change the database encryption status, call the [OH_Rdb_RekeyEx()](#oh_rdb_rekeyex) API. |
 
 **Returns**
 
@@ -544,7 +545,7 @@ int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 
 **Description**
 
-Sets the database security level ([OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.
+Sets the database security level ([OH_Rdb_SecurityLevel](#oh_rdb_securitylevel)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.
 
 This method must be called during database creation. Otherwise, the database file cannot be created, and the error code **RDB_E_INVALID_ARGS** is returned when the [OH_Rdb_CreateOrOpen](#oh_rdb_createoropen) API is called.
 
@@ -556,7 +557,7 @@ This method must be called during database creation. Otherwise, the database fil
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| int securityLevel | Database security level ([OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)).|
+| int securityLevel | Database security level [OH_Rdb_SecurityLevel](#oh_rdb_securitylevel). |
 
 **Returns**
 
@@ -572,7 +573,7 @@ int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 
 **Description**
 
-Sets the security area level ([Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.
+Sets the security area level ([Rdb_SecurityArea](#rdb_securityarea)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.
 
 This method must be called during database creation. Otherwise, the database file cannot be created, and the error code **RDB_E_INVALID_ARGS** is returned when the [OH_Rdb_CreateOrOpen](#oh_rdb_createoropen) API is called.
 
@@ -584,7 +585,7 @@ This method must be called during database creation. Otherwise, the database fil
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| int area | Database security area level ([Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)).|
+| int area | Database security area level [Rdb_SecurityArea](#rdb_securityarea). |
 
 **Returns**
 
@@ -600,7 +601,7 @@ int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)
 
 **Description**
 
-Sets the database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.
+Sets the database type ([Rdb_DBType](#rdb_dbtype)) for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.
 
 **Since**: 14
 
@@ -610,7 +611,7 @@ Sets the database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)) for
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| int dbType | Database kernel type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)).|
+| int dbType | Kernel type of the database [Rdb_DBType](#rdb_dbtype). |
 
 **Returns**
 
@@ -809,7 +810,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 **Description**
 
-Obtains the supported database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)).
+Obtains all database types supported by the current system.
 
 **Since**: 14
 
@@ -818,13 +819,13 @@ Obtains the supported database type ([Rdb_DBType](capi-relational-store-h.md#rdb
 
 | Parameter| Description|
 | -- | -- |
-| int *typeCount | Pointer to the length of the array of the supported database types obtained.|
+| int *typeCount | Pointer to the number of database types supported by the current system, that is, the array length of the return value. Returns nullptr when typeCount is nullptr. |
 
 **Returns**
 
 | Type        | Description|
 |------------| -- |
-| const int * | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
+| const int * | All database types supported by the current system. The elements are [Rdb_DBType](#rdb_dbtype) enum values, and the number is returned by typeCount. |
 
 ### OH_Rdb_CreateValueObject()
 
@@ -1311,14 +1312,14 @@ Statements starting with comments are not supported.
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| int64_t trxId | Transaction ID returned by [OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid). The value **0** indicates that no transaction is enabled.|
+| int64_t trxId | Transaction ID obtained by calling [OH_Rdb_BeginTransWithTrxId()](#oh_rdb_begintranswithtrxid). When set to 0, it indicates that the transaction is not enabled. |
 | const char *sql | SQL statement to execute.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. The possible causes are as follows:<br>The input parameter is a null pointer.<br>The current transaction ID is not obtained by calling [OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid).<br>The current transaction ID has been submitted by calling [OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid).<br>The current transaction ID has been rolled back by calling [OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid).<br>**store** or **sql** is **NULL**.<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported.|
+| int | Returns whether the operation is successful; returns the corresponding error code on failure.<br>RDB_OK indicates success.<br>RDB_E_INVALID_ARGS indicates invalid parameters. The possible causes are as follows:<br>The input parameter is a null pointer.<br>The current transaction ID is not obtained by calling [OH_Rdb_BeginTransWithTrxId()](#oh_rdb_begintranswithtrxid).<br>The current transaction ID has been submitted by calling [OH_Rdb_CommitByTrxId()](#oh_rdb_commitbytrxid).<br>The current transaction ID has been rolled back by calling [OH_Rdb_RollBackByTrxId()](#oh_rdb_rollbackbytrxid).<br>**store** or **sql** is **NULL**.<br>RDB_E_NOT_SUPPORTED indicates that the current operation is not supported. |
 
 **See**
 
@@ -1510,7 +1511,7 @@ Rolls back the executed SQL statements based on the specified transaction ID. Th
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. The possible causes are as follows:<br>The input parameter is a null pointer.<br>The current transaction ID is not obtained by calling [OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid).<br>The current transaction ID has been submitted by calling [OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid).<br>The current transaction ID has been rolled back by calling [OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid).<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported.|
+| int | Returns whether the operation is successful; returns the corresponding error code on failure.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates an invalid parameter. The possible causes are as follows:<br>The input parameter is a null pointer.<br>The current transaction ID is not obtained by calling [OH_Rdb_BeginTransWithTrxId()](#oh_rdb_begintranswithtrxid).<br>The current transaction ID has been submitted by calling [OH_Rdb_CommitByTrxId()](#oh_rdb_commitbytrxid).<br>The current transaction ID has been rolled back by calling [OH_Rdb_RollBackByTrxId()](#oh_rdb_rollbackbytrxid).<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported. |
 
 ### OH_Rdb_CommitByTrxId()
 
@@ -1536,7 +1537,7 @@ Commits the executed SQL statements based on the specified transaction ID. This 
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. The possible causes are as follows:<br>The input parameter is a null pointer.<br>The current transaction ID is not obtained by calling [OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid).<br>The current transaction ID has been submitted by calling [OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid).<br>The current transaction ID has been rolled back by calling [OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid).<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. The possible causes are as follows:<br>The input parameter is a null pointer.<br>The current transaction ID is not obtained by calling [OH_Rdb_BeginTransWithTrxId()](#oh_rdb_begintranswithtrxid).<br>The current transaction ID has been submitted by calling [OH_Rdb_CommitByTrxId()](#oh_rdb_commitbytrxid).<br>The current transaction ID has been rolled back by calling [OH_Rdb_RollBackByTrxId()](#oh_rdb_rollbackbytrxid).<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported. |
 
 **See**
 
@@ -1674,7 +1675,7 @@ Sets distributed database tables.
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | const char *tables[] |  Pointer to the names of the distributed tables to set.|
 | uint32_t count | Number of distributed database tables to be set.|
-| [Rdb_DistributedType](#rdb_distributedtype) type | [Rdb_DistributedType](capi-relational-store-h.md#rdb_distributedtype) of the table.|
+| [Rdb_DistributedType](#rdb_distributedtype) type | Distributed type of the table [Rdb_DistributedType](#rdb_distributedtype). |
 | const [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) *config | Pointer to the distributed configuration of a table ([Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)).|
 
 **Returns**
@@ -1775,7 +1776,7 @@ Registers an observer for an RDB store. The registered callback will be invoked 
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| [Rdb_SubscribeType](#rdb_subscribetype) type | Subscription type ([Rdb_SubscribeType](capi-relational-store-h.md#rdb_subscribetype)). If the value is **RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS**, the callback is called when the data in the local RDB store changes.|
+| [Rdb_SubscribeType](#rdb_subscribetype) type | Subscription type defined in [Rdb_SubscribeType](#rdb_subscribetype). If the value is **RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS**, the callback is called when the data in the local database changes. |
 | const [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) *observer | Pointer to the [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) instance.|
 
 **Returns**
@@ -1802,7 +1803,7 @@ Unregisters the observer of the specified type.
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| [Rdb_SubscribeType](#rdb_subscribetype) type | Subscription type ([Rdb_SubscribeType](capi-relational-store-h.md#rdb_subscribetype)).|
+| [Rdb_SubscribeType](#rdb_subscribetype) type | Subscription type defined in [Rdb_SubscribeType](#rdb_subscribetype). |
 | const [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) *observer | Pointer to the [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) instance. If this parameter is **nullptr**, all observers of this type will be unregistered.|
 
 **Returns**
@@ -1835,7 +1836,7 @@ Obtains the device-cloud sync statistics of a table.
 
 | Type| Description|
 | -- | -- |
-| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Returns a pointer to [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) if the operation is successful; returns NULL otherwise.|
+| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) * | Returns a pointer to [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) if the operation is successful; returns NULL otherwise. |
 
 **See**
 
@@ -1898,7 +1899,7 @@ Performs device-cloud sync.
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| [Rdb_SyncMode](#rdb_syncmode) mode | Type of the sync process ([Rdb_SyncMode](capi-relational-store-h.md#rdb_syncmode)).|
+| [Rdb_SyncMode](#rdb_syncmode) mode | Type of the sync process [Rdb_SyncMode](#rdb_syncmode). |
 | const char *tables[] |  Pointer to the names of the tables to be synced.|
 | uint32_t count | Number of tables to sync. If the value is **0**, all tables in the RDB store are synced.|
 | const [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) *observer | Pointer to the [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) instance.|
@@ -1943,7 +1944,7 @@ int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressOb
 
 **Description**
 
-Unsubscribes from the auto sync process of an RDB store.
+Unsubscribes from the automatic sync progress of an RDB store.
 
 **Since**: 11
 
@@ -1953,7 +1954,7 @@ Unsubscribes from the auto sync process of an RDB store.
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the target [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| const [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) *observer | Pointer to the [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) instance. If the pointer is null, all callbacks for the auto sync process will be unregistered.|
+| const [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) *observer | Pointer to the [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) instance. If the pointer is null, all callbacks of automatic sync progress will be unregistered. |
 
 **Returns**
 
@@ -2228,7 +2229,7 @@ Only one handler can be registered for each path.
 | -- | -- |
 | [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
 | void *context | Pointer to the context of the handler.|
-| const [Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
+| const [Rdb_CorruptedHandler()](#rdb_corruptedhandler) handler | Callback for processing database exceptions. |
 
 **Returns**
 
@@ -2256,7 +2257,7 @@ The handler and context must be the same as those during registration. Otherwise
 | -- | -- |
 | [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
 | void *context | Pointer to the context of the handler.|
-| const [Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
+| const [Rdb_CorruptedHandler()](#rdb_corruptedhandler) handler | Callback for processing database exceptions. |
 
 **Returns**
 

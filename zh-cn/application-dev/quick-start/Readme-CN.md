@@ -45,7 +45,7 @@
   - [初识ArkTS语言](arkts-get-started.md)
   - ArkTS语法<!--arkts-language-guide-->
     - [基础知识](arkts-language-guide-basics.md)
-    - [基本操作符](arkts-language-guide-basic-operators.md)
+    - [基本运算符](arkts-language-guide-basic-operators.md)
     - [字符串](arkts-language-guide-strings.md)
     - [集合类型](arkts-language-guide-collection-types.md)
     - [控制语句](arkts-language-guide-control-statements.md)
@@ -71,3 +71,5 @@
     - [从Swift到ArkTS的迁移指导](getting-started-with-arkts-for-swift-programmers.md)
 <!--RP2-->
 <!--RP2End-->
+- CLI工具<!--cli-tools-->
+  - [ohos-fontManager CLI工具](font-manager-cli.md)<!--font-manager-cli-->

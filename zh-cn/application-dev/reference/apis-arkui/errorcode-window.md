@@ -1039,6 +1039,26 @@ Updating static template-based floating balls is not supported.
 
 请删除已有的静态模板类型闪控球，然后创建新的闪控球。
 
+<!--Del-->
+## 1300029 窗口类型无效
+
+**错误信息**
+
+This window type is invalid.
+
+**错误描述**
+
+窗口类型不支持该操作。
+
+**可能原因**
+
+主窗、子窗、dialog、TYPE_FLOAT非系统窗类型不支持某些操作。
+
+**处理步骤**
+
+返回该错误码表示当前窗口类型不支持该操作，应用需要更改窗口类型。
+<!--DelEnd-->
+
 ## 1300030 重复操作闪控窗
 
 **错误信息**

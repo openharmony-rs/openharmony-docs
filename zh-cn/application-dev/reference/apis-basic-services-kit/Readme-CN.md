@@ -120,6 +120,7 @@
   - 模块<!--basic-services-module-->
     - [OH_CommonEvent](capi-oh-commonevent.md)
     - [DeviceInfo](capi-deviceinfo.md)
+    - [BoardInfo](capi-boardinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
     - [Scan](capi-oh-scan.md)

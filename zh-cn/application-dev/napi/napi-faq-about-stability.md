@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总Node-API开发中的稳定性问题，覆盖高概率闪退定位、多线程并发调用ArkTS方法的线程安全、napi_env缓存风险及HandleScope配对异常的排查与修复。"
+keywords: [Node-API, 稳定性, 多线程安全, napi_value, napi_env, napi_add_env_cleanup_hook, napi_open_handle_scope, 闪退, use-after-scope]
+doctype: faq
+status: active
+---
+
 # 稳定性相关问题汇总
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

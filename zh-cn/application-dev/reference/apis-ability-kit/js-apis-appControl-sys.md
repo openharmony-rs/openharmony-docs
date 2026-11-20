@@ -982,6 +982,157 @@ try {
 }
 ```
 
+## appControl.setRecoverDisposedRule
+
+setRecoverDisposedRule(rule: RecoverDisposedRule): void
+
+设置当前用户的恢复处置规则。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                                    |
+| ------ | -------- | ---- | --------------------------------------- |
+| rule   | [RecoverDisposedRule](#recoverdisposedrule) | 是   | 要设置的恢复处置规则。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700075 | The specified bundleName of want is not the same with caller. |
+| 17700101 | Bundle manager service exception. |
+
+**示例：**
+
+```ts
+import { Want, appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  abilityName: "EntryAbility"
+};
+let rule: appControl.RecoverDisposedRule = {
+  want: want,
+  recoverComponentType: appControl.RecoverComponentType.EXTENSION,
+  priority: 100
+};
+
+try {
+  appControl.setRecoverDisposedRule(rule);
+  console.info('setRecoverDisposedRule success');
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('setRecoverDisposedRule failed ' + message);
+}
+```
+
+## appControl.getRecoverDisposedRule
+
+getRecoverDisposedRule(): RecoverDisposedRule
+
+获取当前用户的恢复处置规则。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                        | 说明                 |
+| ------------------------- | ------------------ |
+| [RecoverDisposedRule](#recoverdisposedrule) | 返回的恢复处置规则。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700101 | Bundle manager service exception. |
+| 18400001 | The caller has not configured disposal rules. |
+
+**示例：**
+
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = appControl.getRecoverDisposedRule();
+  console.info('getRecoverDisposedRule successfully. Data: ' + JSON.stringify(data));
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getRecoverDisposedRule failed ' + message);
+}
+```
+
+## appControl.deleteRecoverDisposedRule
+
+deleteRecoverDisposedRule(): void
+
+删除当前用户的恢复处置规则。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700101 | Bundle manager service exception. |
+
+**示例：**
+
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  appControl.deleteRecoverDisposedRule();
+  console.info('deleteRecoverDisposedRule success');
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('deleteRecoverDisposedRule failed ' + message);
+}
+```
+
 ## DisposedRule<sup>11+</sup>
 
 标识拦截规则。
@@ -1000,7 +1151,7 @@ try {
 | priority | number | 否   | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
 | pageJump | [PageJumpMode](#pagejumpmode) | 否   | 是 | 指定目标应用被拦截时是否跳转到页面。默认值为PageJumpMode.PAGE_JUMP_WINDOW_SHOW。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
-### ComponentType<sup>11+</sup>
+## ComponentType<sup>11+</sup>
 
 标识功能组件类型。
 
@@ -1013,7 +1164,7 @@ try {
 | UI_ABILITY | 1    | UI基础功能类型。 |
 | UI_EXTENSION | 2    | UI扩展能力类型。 |
 
-### DisposedType<sup>11+</sup>
+## DisposedType<sup>11+</sup>
 
 标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。
 
@@ -1027,7 +1178,7 @@ try {
 | BLOCK_ABILITY | 2    | 应用指定的能力才会被禁用。 |
 | NON_BLOCK | 3 | 应用所有能力不会被禁用。 |
 
-### ControlType<sup>11+</sup>
+## ControlType<sup>11+</sup>
 
 标识拦截指定应用程序的不同策略。
 
@@ -1040,7 +1191,7 @@ try {
 | ALLOWED_LIST | 1    | 允许运行指定功能的列表。 |
 | DISALLOWED_LIST | 2    | 不允许运行指定功能的列表。 |
 
-### PageJumpMode
+## PageJumpMode
 
 标识目标应用被拦截时是否跳转到页面。
 
@@ -1071,7 +1222,7 @@ try {
 | uninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
 | priority | number | 否 | 否 | 卸载处置规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
 
-### UninstallComponentType<sup>15+</sup>
+## UninstallComponentType<sup>15+</sup>
 
 标识卸载时功能组件类型。
 
@@ -1097,3 +1248,38 @@ try {
 | appId        | string                          | 否   | 否   | 要被设置拦截规则应用的appId或appIdentifier。appId和appIdentifier可以标识同一个应用，因此针对同一应用如果用appIdentifier设置拦截规则，可以覆盖之前采用appId设置的，反之同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
 | appIndex     | number                          | 否   | 否   | 表示分身应用的索引，默认值为0。<br/> appIndex为0时，表示设置主应用的拦截规则。appIndex大于0时，表示设置指定分身应用的拦截规则。 |
 | disposedRule | [DisposedRule](#disposedrule11) | 否   | 否   | 表示对应用的拦截规则，包括拦截时将拉起能力的类型等。         |
+
+## RecoverDisposedRule
+
+描述应用的恢复处置规则。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+ **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | -------------- | ---- | ---- | --------------------------- |
+| want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被处置时展示的组件。 |
+| recoverComponentType | [RecoverComponentType](#recovercomponenttype)  | 否   | 否   | 拦截时被拉起的功能组件类型。 |
+| priority | number | 否 | 否 | 恢复处置规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
+
+## RecoverComponentType
+
+标识恢复时的功能组件类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+ **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称    | 值   | 说明                 |
+| ------- | ---- | -------------------- |
+| EXTENSION | 1    | 服务扩展能力类型。仅支持service类型的[ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities标签)。<br/>被拉起的ExtensionAbility通过want中bundleName、moduleName和abilityName字段共同确定。 |
+| UI_EXTENSION | 2    | UI扩展能力类型。<br/>被拉起的UIExtensionAbility通过want中bundleName、moduleName和abilityName字段共同确定，同时want.parameters中的ability.want.params.uiExtensionType字段需要配置为[UIExtensionAbility](../../application-models/uiextensionability-sys.md)的类型。 |

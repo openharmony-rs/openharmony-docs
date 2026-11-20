@@ -5,6 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @l30014443-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1aabe5cefa2e796ccc5dff047ed5cae026961d7d translatedAt=2026-11-03T01:51:02.067Z pushedAt=2026-11-13T01:05:59.909Z nl=1 -->
 
 Provides common drawing methods for the canvas drawing components [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) and [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md).
 
@@ -394,7 +395,7 @@ Performs a stroke operation based on the current path.
   }
   ```
 
-![stroke4](figures/stroke4.png)
+  ![stroke4](figures/stroke4.png)
 
 ## stroke
 
@@ -829,7 +830,7 @@ Creates a quadratic Bezier curve path.
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
  **Parameters**
-
+ 
 | Name | Type | Mandatory | Description |
 | ---- | ------ | ---- | -------------- |
 | cpx  | number | Yes | X-coordinate of the Bezier parameter.<br>Before API version 18, if **NaN** or **Infinity** is set, the entire path is not displayed; if **null** or **undefined** is set, the current API does not take effect. Since API version 18, if **NaN**, **Infinity**, **null**, or **undefined** is set, the current API does not take effect, and other path methods with valid parameters are drawn normally.<br>Default unit: vp |
@@ -1187,9 +1188,9 @@ Creates a rounded rectangle path. This method does not directly draw the content
 
 For details about the error codes, see [Canvas Component Error Codes](../errorcode-canvas.md).
 
-| ID | Error Message | Possible Cause |
-| -------- | -------- | -------- |
-| 103701   | Parameter error.| 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
+| ID | Error Message |
+| -------- | ---------------- |
+| 103701   | Parameter error. Possible causes: 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
 
 **Example**
 
@@ -1274,7 +1275,7 @@ Fills the current path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type | Mandatory | Description |
 | -------- | -------------- | ---- | ---------------------------------------- |
@@ -1324,14 +1325,14 @@ Fills the specified path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type | Mandatory | Description |
 | -------- | -------------- | ---- | ----------------- |
 | path | [Path2D](ts-components-canvas-path2d.md) | Yes | Path2D fill path.<br>Anomalous values **undefined** or **null** are treated as invalid. |
 | fillRule | [CanvasFillRule](#canvasfillrule) | No | Rule for filling the object.<br/>Optional values: "nonzero" and "evenodd".<br>Anomalous values **undefined** or **null** are treated as the default.<br>Default value: "nonzero" |
 
-**Example**
+**Example**   
 
 ```ts
 // xxx.ets
@@ -1371,7 +1372,7 @@ struct Fill {
 }
 ```
 
-![Yellow-trapezoid-02](figures/Yellow-trapezoid-02.jpg)
+ ![Yellow-trapezoid-02](figures/Yellow-trapezoid-02.jpg)
 
 ## clip
 
@@ -1385,7 +1386,7 @@ Sets the current path as the clipping path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type | Mandatory | Description |
 | -------- | -------------- | ---- | ---------------------------------------- |
@@ -1425,7 +1426,7 @@ Sets the current path as the clipping path.
   }
   ```
 
-![clip](figures/clip.png)
+  ![clip](figures/clip.png)
 
 ## clip
 
@@ -1439,7 +1440,7 @@ Sets the specified path as the clipping path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type | Mandatory   | Description                                       |
 | -------- | -------------- | ---- | ---------------------------------------- |
@@ -1603,7 +1604,7 @@ Restores the image transform and clipping state to the state before **saveLayer*
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## resetTransform
-
+ 
 resetTransform(): void
 
 Resets the current matrix to the identity matrix.
@@ -1648,7 +1649,7 @@ Resets the current matrix to the identity matrix.
     }
   }
   ```
-![en_image_0000001239032417](figures/image-ResetTransform.png)
+  ![en_image_0000001239032417](figures/image-ResetTransform.png)
 
 ## rotate
 
@@ -2533,7 +2534,7 @@ Fills a new rectangular area with [ImageData](ts-components-canvas-imagedata.md)
   }
   ```
 
-![PutImageData](figures/offPutImageData.png)
+  ![PutImageData](figures/offPutImageData.png)
 
 ## putImageData
 
@@ -2597,7 +2598,7 @@ Uses [ImageData](ts-components-canvas-imagedata.md) data to clip and fill a new 
   }
   ```
 
-![putImageData3](figures/putImageData3.png)
+  ![putImageData3](figures/putImageData3.png)
 
 ## setLineDash
 
@@ -2650,7 +2651,7 @@ Sets the dash line style of the canvas.
   ```
   ![Dotted-circle](figures/Dotted-circle.png)
 
-### transferFromImageBitmap
+## transferFromImageBitmap
 
 transferFromImageBitmap(bitmap: ImageBitmap): void
 
@@ -2926,7 +2927,7 @@ Creates a linear gradient.
   }
   ```
 
-![createLinearGradient2](figures/createLinearGradient2.png)
+  ![createLinearGradient2](figures/createLinearGradient2.png)
 
 ## createRadialGradient
 

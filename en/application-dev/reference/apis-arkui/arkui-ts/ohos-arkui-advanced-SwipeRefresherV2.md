@@ -1,12 +1,12 @@
 # SwipeRefresherV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=53787af5f94c98e730d62fcc5514158329723f73 translatedAt=2026-08-28T01:33:06.412Z pushedAt=2026-08-28T06:17:24.129Z -->
+<!-- md-trans-meta sourceCommit=ac775a54069be1728a015bce61b1790fc26fe1c8 translatedAt=2026-11-03T01:39:39.464Z pushedAt=2026-11-13T01:05:59.884Z nl=1 -->
+
 
 The **SwipeRefresherV2** component is used to implement the pull-to-refresh feature. It supports custom loading prompt text and loading state control, and is suitable for scenarios where pull-to-refresh interaction needs to be implemented on a page.
 
@@ -14,9 +14,9 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> - This component can only be used in the stage model.
+> - The APIs of this module can be used only in the stage model.
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **SwipeRefresherV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and mount the universal attributes or universal events on \_\_Common\_\_, rather than directly applying them to **SwipeRefresherV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **SwipeRefresherV2**.
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **SwipeRefresherV2**, the compilation toolchain will generate an additional node **\_\_Common\_\_** and mount the universal attributes or universal events on **\_\_Common\_\_**, rather than directly applying them to **SwipeRefresherV2** itself. This may cause the set universal attributes or universal events to fail to take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **SwipeRefresherV2**.
 
 **Since:** 26.0.0
 
@@ -52,10 +52,6 @@ Implements the pull-to-refresh feature. It is commonly used in scenarios where t
 | -------- | -------- | -------- | -------- |----------|
 | content | [ResourceStr](ts-types.md#resourcestr) | No | @Param | Text displayed when content is loading.<br/>Default value: an empty string.<br/>**Note:** If the text is wider than the column, it is truncated. |
 | isLoading | boolean | Yes | @Require<br/>@Param | Whether the content is currently being loaded.<br> **true**: The content is being loaded.<br> **false**: The content is not being loaded. |
-
-## Events
-
-The [universal events](ts-component-general-events.md) are not supported.
 
 ## Examples
 

@@ -1,16 +1,16 @@
 # Data Transfer and Processing
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:55.757Z pushedAt=2026-06-23T10:55:01.474Z -->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-11-12T04:40:37.661Z pushedAt=2026-11-18T03:59:50.436Z nl=1 -->
+
 
 ## Props
 
-You can use **props** to declare attributes of a custom component and pass the attributes to the child component. The supported types of **props** include String, Number, Boolean, Array, Object, and Function. Note that a camel case attribute name (**compProp**) should be converted to the kebab case format (**comp-prop**) when you reference the attribute in an external parent component. The following is a sample for adding **props** to a custom component and passing the attribute to the child component.
+You can use **props** to declare attributes of a custom component, and pass the parameters from the parent component to the child component by setting the attributes. The supported types of **props** include **String**, **Number**, **Boolean**, **Array**, and **Object**. Note that a camel case attribute name (**compProp**) should be converted to the kebab case format (**comp-prop**) when you reference the attribute in an external parent component. The following is a sample for adding **props** to a custom component and passing the parameter from the parent component to the child component.
 
 ```html
 <!-- comp.hml -->
@@ -66,7 +66,7 @@ In this example, a **\<text>** component is added to display the title. The titl
 <!-- xxx.hml -->
 <element name='comp' src='../common/component/comp/comp.hml'></element>
 <div class="container"> 
-   <comp title="Custom component"></comp>
+   <comp title="Custom component"></comp> 
 </div>
 ```
 
@@ -106,6 +106,7 @@ export default {
 }
 ```
 
+
 ## computed
 
 To improve the development efficiency, you can use a computed property to pre-process an attribute in a custom component before reading or setting the attribute. In the **computed** field, you can set a getter or setter to be triggered when the attribute is read or written, respectively. The following is an example:
@@ -140,4 +141,4 @@ export default {
 }
 ```
 
-The first computed property **message** has only a getter. The value of **message** changes depending on the **objTitle** value. The getter can only read but cannot set the value (such as **time** defined during initialization in **data**). You need a setter (such as **notice** in the sample code) to set the value of the computed property.
+The first computed property **message** declared here has only a getter function by default, and the value of **message** depends on the changes in **time** and **objTitle**. The getter function can only read but not change the value of a computed property. For example, when a value needs to be assigned to a computed property, such as **time** defined for initialization in **data**, a setter function can be provided, as shown by **notice** in the example.

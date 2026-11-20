@@ -75,6 +75,7 @@
   - [HiDebug错误码](errorcode-hiviewdfx-hidebug.md)
   - [HiDebug CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)
   - [HiDebug Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)
+  - [HiDebug SharedHeapObjectUsedSize错误码](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)
   - [HiCollie错误码](errorcode-hiviewdfx-hicollie.md)
   - [JsLeakWatcher错误码](errorcode-jsleakwatcher.md)
   - [应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)

@@ -5,6 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b8421fa94775fa4bceb1b522857b705478302935 translatedAt=2026-11-12T03:49:05.822Z pushedAt=2026-11-13T06:30:41.215Z nl=1 -->
 
 The [Menu](arkts-popup-and-menu-components-menu.md) component is a great option for creating menus, but it relies on a bound UI component to work. Since API version 18, however, the global API [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18) offers a more flexible solution. This API can be used directly or encapsulated in scenarios where no bound UI components are available, making it ideal for use cases such as event callbacks or when integrating with external systems.
 
@@ -27,7 +28,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
    });
  ```
  
- <!--Del-->![openMenu]  (figures/openMenu.gif)<!--DelEnd-->
+ <!--Del--> <!--DelEnd-->
 
 ### Creating a ComponentContent Instance
    
@@ -184,7 +185,7 @@ this.getUIContext().getPromptAction()
   });
 ```
    
-   <!--Del-->![openMenu] (figures/openMenu.gif)<!--DelEnd-->
+   <!--Del--> <!--DelEnd-->
 
 ## Closing the Menu
 
@@ -203,7 +204,7 @@ this.getUIContext().getPromptAction()
   });
 ```
    
-<!--Del-->![openMenu]  (figures/openMenu.gif)<!--DelEnd-->
+<!--Del--> <!--DelEnd-->
 
 > **NOTE**
 >

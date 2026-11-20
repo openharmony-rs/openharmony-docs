@@ -5,6 +5,7 @@
 <!--Designer: @GbuzhidaoR-->
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=0d88cc2609499932569930500f1a6723fd824448 translatedAt=2026-11-18T07:21:06.500Z pushedAt=2026-11-18T11:17:55.124Z nl=1 -->
 
 ## Overview
 
@@ -49,7 +50,7 @@ Currently, the APIs of Neural Network Runtime do not support multi-thread callin
 | [OH_NN_ReturnCode OH_NNExecutor_Run(OH_NNExecutor *executor)](#oh_nnexecutor_run) | Perform model inference through This API performs end-to-end model inference and computing on the device associated with the executor.|
 | [OH_NN_Memory *OH_NNExecutor_AllocateInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, size_t length)](#oh_nnexecutor_allocateinputmemory) | Applies for shared memory for a single model input on the device.|
 | [OH_NN_Memory *OH_NNExecutor_AllocateOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, size_t length)](#oh_nnexecutor_allocateoutputmemory) | Applies for shared memory for a single model output on the device.|
-| [void OH_NNExecutor_DestroyInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, OH_NN_Memory **memory)](#oh_nnexecutor_destroyinputmemory) | Releases the input memory pointed by the [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) instance. This API is used to release the memory instance created by calling [OH_NNExecutor_AllocateInputMemory](capi-neural-network-runtime-h.md#oh_nnexecutor_allocateinputmemory). If this API is not called, memory leakage occurs.|
+| [void OH_NNExecutor_DestroyInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, OH_NN_Memory **memory)](#oh_nnexecutor_destroyinputmemory) | Releases the input memory pointed by the [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) instance. This API is used to release the memory instance created by calling [OH_NNExecutor_AllocateInputMemory](capi-neural-network-runtime-h.md#oh_nnexecutor_allocateinputmemory). If this API is not called, memory leaks may occur.|
 | [void OH_NNExecutor_DestroyOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, OH_NN_Memory **memory)](#oh_nnexecutor_destroyoutputmemory) | Releases the output memory pointed by the [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) instance. This API needs to be called to release the memory instance created by calling [OH_NNExecutor_AllocateOutputMemory](capi-neural-network-runtime-h.md#oh_nnexecutor_allocateoutputmemory). Otherwise, memory leak will occur. The mapping between **outputIndex** and **memory** must be the same as that in memory instance creation. If **memory** or ***memory** is a null pointer, this API only prints the warning log and does not execute the release logic.|
 | [OH_NN_ReturnCode OH_NNExecutor_SetInputWithMemory(OH_NNExecutor *executor,uint32_t inputIndex,const OH_NN_Tensor *tensor,const OH_NN_Memory *memory)](#oh_nnexecutor_setinputwithmemory) | Specifies the hardware shared memory pointed by the [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) instance as the shared memory used by a single model input.|
 | [OH_NN_ReturnCode OH_NNExecutor_SetOutputWithMemory(OH_NNExecutor *executor,uint32_t outputIndex,const OH_NN_Memory *memory)](#oh_nnexecutor_setoutputwithmemory) | Specifies the hardware shared memory pointed by the [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) instance as the shared memory used by a single model output.|
@@ -342,13 +343,13 @@ You can use this API to add an operator to a model instance. The operator type i
 
 This API verifies the attributes of operator parameters and the number of input and output parameters. These attributes must be correctly set when [OH_NNModel_AddTensorToModel](capi-neural-network-runtime-h.md#oh_nnmodel_addtensortomodel) is called to add tensors.
 
-For details about the expected parameters, input attributes, and output attributes of each operator, see [OH_NN_OperationType](capi-neural-network-runtime-type-h.md#oh_nn_operationtype).
+For details about the expected parameters, input attributes, and output attributes of each operator, see [OH_NN_OperationType](capi-neural-network-runtime-type-h.md#oh_nn_operationtype). 
 
 **paramIndices**, **inputIndices**, and **outputIndices** store index values of tensors. Index values are determined by the sequence in which tensors are added to the model.
 
 For details about how to add a tensor, see [OH_NNModel_AddTensorToModel](capi-neural-network-runtime-h.md#oh_nnmodel_addtensortomodel).
 
-If unnecessary parameters are added for adding an operator, this API returns the error code [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode). If no operator parameter is set, the operator uses the default parameter value. For details about the default values, see OH_NN_OperationType](capi-neural-network-runtime-type-h.md#oh_nn_operationtype).
+If unnecessary parameters are added for adding an operator, this API returns the error code [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode). If no operator parameter is set, the operator uses the default parameter value. For details about the default values, see [OH_NN_OperationType](capi-neural-network-runtime-type-h.md#oh_nn_operationtype).
 
 **Since**: 9
 
@@ -538,7 +539,7 @@ Sets the data for a single model input.
 
 This API copies the data whose length is specified by **length** (in bytes) in **dataBuffer** to the shared memory of the underlying device.
 
-**inputIndex** specifies the input to be set and **tensor** sets tensor information such as the shape, type, and quantization parameters.
+**inputIndex** specifies the input to be set and **tensor** sets tensor information such as the shape, type, and quantization parameters. 
 
 NNRt supports models with dynamical shape input. For fixed shape input and dynamic shape input scenarios, this API uses different processing policies.
 
@@ -580,7 +581,7 @@ Sets the memory for a single model output.
 
 This method binds the buffer pointed by **dataBuffer** to the output specified by **outputIndex**. The length of the buffer is specified by **length**.
 
-After [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) is called to complete a single model inference, NNRt compares the length of the buffer pointed by **dataBuffer** with the length of the output data and returns different results based on the actual situation. 
+After [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) is called to complete a single model inference, NNRt compares the length of the buffer pointed by **dataBuffer** with the length of the output data and returns different results based on the actual situation.
 
 - If the memory size is greater than or equal to the data length, the API copies the inference result to the memory and returns [OH_NN_SUCCESS](capi-neural-network-runtime-type-h.md#oh_nn_returncode). You can read the inference result from **dataBuffer**.
 - If the memory size is less than the data length, the [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) API returns the error code [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) and generates a log indicating that the memory size is too small.
@@ -715,7 +716,7 @@ void OH_NNExecutor_DestroyInputMemory(OH_NNExecutor *executor, uint32_t inputInd
 
 Releases the input memory pointed by the [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) instance.
 
-This API is used to release the memory instance created by calling [OH_NNExecutor_AllocateInputMemory](capi-neural-network-runtime-h.md#oh_nnexecutor_allocateinputmemory). If this API is not called, memory leakage occurs.
+This API is used to release the memory instance created by calling [OH_NNExecutor_AllocateInputMemory](capi-neural-network-runtime-h.md#oh_nnexecutor_allocateinputmemory). If this API is not called, memory leaks may occur.
 
 The mapping between **inputIndex** and **memory** must be the same as that in memory instance creation. If **memory** or ***memory** is a null pointer, this API only prints the warning log and does not execute the release logic.
 
@@ -746,7 +747,7 @@ Releases the output memory pointed by the [OH_NN_Memory](capi-neuralnetworkrunti
 
 This API needs to be called to release the memory instance created by calling [OH_NNExecutor_AllocateOutputMemory](capi-neural-network-runtime-h.md#oh_nnexecutor_allocateoutputmemory). Otherwise, memory leak will occur.
 
-The mapping between **outputIndex** and **memory** must be the same as that in memory instance creation.
+The mapping between **outputIndex** and **memory** must be the same as that in memory instance creation. 
 
 If **memory** or ***memory** is a null pointer, this API only prints the warning log and does not execute the release logic.
 
@@ -839,3 +840,5 @@ By using this API, you can implement concurrent execution of input setting, comp
 | Type| Description|
 | -- | -- |
 | [OH_NN_ReturnCode](capi-neural-network-runtime-type-h.md#oh_nn_returncode) | Execution result of the function. If the operation is successful, **OH_NN_SUCCESS** is returned. If the operation fails, an error is returned. For details about the error codes, see [OH_NN_ReturnCode](capi-neural-network-runtime-type-h.md#oh_nn_returncode).|
+
+

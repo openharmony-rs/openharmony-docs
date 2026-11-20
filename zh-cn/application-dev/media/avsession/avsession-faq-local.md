@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "<!--RP2--><!--RP2End-->"
+keywords: [<!--RP3--><!--RP3End-->]
+doctype: faq
+status: active
+---
+
 # 本地媒体会话常见问题
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
@@ -104,3 +112,9 @@
      更多说明请参考[设置后台播放模式](avsession-background-scene.md#设置后台播放模式)。
 
 <!--RP1--><!--RP1End-->
+
+## 相关主题推荐
+
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [后台播放](avsession-background-scene.md)
+- [AVSession Kit简介](avsession-overview.md)

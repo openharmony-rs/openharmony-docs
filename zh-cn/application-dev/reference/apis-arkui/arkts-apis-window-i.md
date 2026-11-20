@@ -142,6 +142,29 @@
 >
 >  ![avoidArea](figures/avoidArea.png)
 
+## AvoidAreaInsets
+
+窗口的避让区边衬。
+
+避让区边衬表示由于[避让区](#avoidarea7)的存在，窗口内容在上下左右四个方向上需要避让的距离。
+
+> **说明：**
+>
+> 避让区边衬的计算不包括[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明                         |
+| ------ | -------- | ---- | ---- | ---------------------------- |
+| top    | number   | 否   | 否   | 窗口顶部需要避让的距离。单位为像素，取值限定为整数。 |
+| left   | number   | 否   | 否   | 窗口左侧需要避让的距离。单位为像素，取值限定为整数。 |
+| right  | number   | 否   | 否   | 窗口右侧需要避让的距离。单位为像素，取值限定为整数。 |
+| bottom | number   | 否   | 否   | 窗口底部需要避让的距离。单位为像素，取值限定为整数。 |
+
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
 以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时需关注。
@@ -442,6 +465,21 @@
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | focusOnShow | boolean  |  否  |  是  | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦。true表示自动获焦，false表示不自动获焦，默认为true。该参数对主窗口不生效，对子窗口(设置了模态属性[isModal](#subwindowoptions11))、模态窗[TYPE_DIALOG](arkts-apis-window-e.md#windowtype7)返回1300004错误码。|
+
+## WindowShowParams
+
+应用显示时的窗口参数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| windowFocused | boolean  |  否  |  是  | 窗口显示时是否自动获取焦点。true表示窗口显示时自动获取焦点，false表示窗口显示时不自动获取焦点。默认为true。|
+| raiseTop | boolean  |  否  |  是  | 窗口显示时是否自动抬升至顶层。true表示窗口显示时自动抬升至顶层，false表示窗口显示时不自动抬升至顶层。默认为true。<br>**说明：**<br>1. 该参数仅对应用主窗口生效；如需提升子窗口到应用内顶层，请使用[raiseToAppTop()](arkts-apis-window-Window.md#raisetoapptop14)。<br>2. 该参数仅调整应用主窗口之间的前后层级，不会使窗口位于层级更高的窗口（如画中画窗口、全局悬浮窗）之上；如需跨应用置顶，请使用[setWindowTopmost()](arkts-apis-window-Window.md#setwindowtopmost14)。|
 
 ## WindowAnimationConfig<sup>20+</sup>
 

@@ -1,16 +1,15 @@
 # SegmentButtonV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b2b128e6ae9db0e21508c1f5ba4ac681e09b681d translatedAt=2026-08-28T01:28:53.062Z pushedAt=2026-08-28T06:15:14.990Z -->
+<!-- md-trans-meta sourceCommit=4525b24c7c492d357f406b796636d16ca53b082c translatedAt=2026-11-03T01:35:21.425Z pushedAt=2026-11-13T01:05:59.886Z nl=1 -->
 
 The segmented button component is used to create tab-type, single-selection, or multi-selection capsule segmented buttons. It supports multiple option types such as text, icons, and symbols, as well as graphic-text hybrid configurations, and allows customization of fonts, colors, corner radii, and other styles. The tab segmented button is suitable for tab switching scenarios, the single-selection capsule segmented button is suitable for single-selection switching scenarios, and the multi-selection capsule segmented button is suitable for multi-selection filtering scenarios.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >
@@ -71,7 +70,8 @@ TabSegmentButtonV2({
   buttonPadding?: LengthMetrics, 
   languageDirection?: Direction,
   enableStateAnimation?: boolean,
-  backgroundSystemMaterial?: uiMaterial.Material
+  backgroundSystemMaterial?: uiMaterial.Material,
+  interactionMode?: SegmentButtonV2InteractionMode
 })
 ```
 
@@ -115,8 +115,9 @@ TabSegmentButtonV2({
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No   | @Param             | Color of the HM Symbol type icon for the unselected option in the segmented button.<br>Default value: `$r('sys.color.font_secondary')`<br>When the value is **undefined**, the default value is used.<br>**NOTE**<br>When **items** sets the **symbolModifier**/**fontColor** attribute, **itemSymbolFontColor** does not take effect.<br>When **backgroundSystemMaterial** is set to a system material with automatic color inversion, this attribute uses a special system resource that supports color inversion, and the color automatically adapts to the inverted color of the material background.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No   | @Param             | Color of the HM Symbol type icon for the selected option in the segmented button.<br>Default value: `$r('sys.color.font_primary')`<br>When the value is **undefined**, the default value is used.<br>**NOTE**<br>When **items** sets the **symbolModifier**/**fontColor** attribute, **itemSelectedSymbolFontColor** does not take effect.<br>When **backgroundSystemMaterial** is set to a system material with automatic color inversion, this attribute uses a special system resource that supports color inversion, and the color automatically adapts to the inverted color of the material background.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No   | @Param             | Layout direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of range, the default value is used.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
-| enableStateAnimation<sup>24+</sup>             | boolean                                                      | No   | @Param             | Whether to enable the attribute animation of the segmented button when the **selectedIndex** value is modified through a variable.<br>The value **true** enables the attribute animation of the segmented button. When this attribute is not configured or the value is **false**, the attribute animation of the segmented button is disabled and the default switching animation effect of the component is used.<br>Default value: **false**<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | @Param | System material of the background of the segmented button component. Different system materials have different attribute effects. After a material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When a system material is used, the segmented button supports the capability of the background of the selected item following the finger drag. The index of the selected item remains unchanged during the drag and is updated when the drag ends.<br>Default value: no material effect. <br>This member is read-only and cannot be changed.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. <br>**Model restriction:** This API can be used only in the stage model.|
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | No   | @Param             | Whether to enable the property animation of the segmented button when the **selectedIndex** value is modified through a variable.<br>The value **true** enables the property animation of the segmented button. When this attribute is not configured or the value is **false**, the property animation of the segmented button is disabled and the default switching animation effect of the component is used.<br>Default value: **false**<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | @Param | System material of the background of the segment button component. The component needs to be placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**, for the immersive light effect to take effect. Different system materials contain different properties that affect the effect. After the material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When the segment button uses a system material, it supports by default the selected item background following the finger drag. The selected item index remains unchanged during the drag and is updated when the drag ends. Since API version 26.1.0, you can select the drag mode through **interactionMode** while retaining the original material feedback.<br>Default value: no material effect. <br>This member is read-only and does not support modification.<br>**Since:** 26.0.0 <br>**Atomic service API:** Since API version 26.0.0, this API supports use in atomic services. <br>**Model restriction:** This API can be used only in the stage model.|
+| interactionMode | [SegmentButtonV2InteractionMode](#segmentbuttonv2interactionmode) | No | @Param | Drag interaction mode of the segment button.<br>Default value: **undefined**<br>When not set, or when the value is **undefined** or invalid, if **backgroundSystemMaterial** is configured, hand-following drag is used; otherwise, normal drag is used.<br>Switching the drag mode does not change the original material appearance, background scaling and slight displacement, selected item deformation, or the configured light source effect. When **backgroundSystemMaterial** is not configured, hand-following drag does not add a material effect.<br>Dragging does not trigger onItemClicked.<br>The selected item update is notified through the $selectedIndex callback. The parent component needs to update selectedIndex, or use !! for two-way binding.<br>This member is read-only and does not support modification.<br>**Since:** 26.1.0<br>**Atomic service API:** Since API version 26.1.0, this API supports use in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
 
 > **NOTE**
 >
@@ -159,7 +160,8 @@ CapsuleSegmentButtonV2({
   buttonPadding?: LengthMetrics,
   languageDirection?: Direction,
   enableStateAnimation?: boolean,
-  backgroundSystemMaterial?: uiMaterial.Material
+  backgroundSystemMaterial?: uiMaterial.Material,
+  interactionMode?: SegmentButtonV2InteractionMode
 })
 ```
 
@@ -203,8 +205,9 @@ CapsuleSegmentButtonV2({
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No   | @Param             | HM Symbol-type icon color of the unselected option in the segmented button.<br>Default value: `$r('sys.color.font_secondary')`<br>When the value is **undefined**, the default value is used.<br>**Note:**<br>When **items** sets the **symbolModifier**/**fontColor** attribute, **itemSymbolFontColor** does not take effect.<br>When **backgroundSystemMaterial** is set to a system material with automatic color inversion, this attribute uses a special system resource that supports color inversion, and the color automatically adapts to the inverted color of the material background.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No   | @Param             | HM Symbol-type icon color of the selected option in the segmented button.<br>Default value: `$r('sys.color.font_on_primary')`<br>When the value is **undefined**, the default value is used.<br>**Note:**<br>When **items** sets the **symbolModifier**/**fontColor** attribute, **itemSelectedSymbolFontColor** does not take effect.<br>When **backgroundSystemMaterial** is set to a system material with automatic color inversion, this attribute uses a special system resource that supports color inversion, and the color automatically adapts to the inverted color of the material background.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No   | @Param             | Layout direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of range, the default value is used.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
-| enableStateAnimation<sup>24+</sup>             | boolean                                                      | No   | @Param             | Whether to enable the attribute animation of the segmented button when the **selectedIndex** value is modified through a variable.<br>The value **true** means to enable the attribute animation of the segmented button; when this attribute is not configured or the value is **false**, the attribute animation of the segmented button is not enabled, and the default transition animation effect of the component is used.<br>Default value: **false**<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | @Param | System material of the background of the segmented button component. Different system materials have different attribute effects. After a material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When a system material is used, the segmented button supports the capability of the background of the selected item following the finger drag. The index of the selected item remains unchanged during the drag and is updated when the drag ends.<br>Default value: no material effect. <br>This member is read-only and cannot be changed.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.  <br>**Model restriction:** This API can be used only in the stage model.|
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | No   | @Param             | Whether to enable the property animation of the segmented button when the **selectedIndex** value is modified through a variable.<br>The value **true** means to enable the property animation of the segmented button; when this attribute is not configured or the value is **false**, the property animation of the segmented button is not enabled, and the default transition animation effect of the component is used.<br>Default value: **false**<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Param | System material of the background of the segment button component. The component must be placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**, for the immersive light effect to take effect. Different system materials contain different properties that affect the effect. After a material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When a system material is used, **SegmentButtonV2** by default supports the selected item background following the finger during dragging. The selected item index remains unchanged during dragging and is updated when dragging ends. Since API version 26.1.0, the drag mode can be selected through **interactionMode**, while the original material feedback is retained.<br>Default value: no material effect.<br>This member is read-only and cannot be modified.<br>**Since:** 26.0.0<br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
+| interactionMode | [SegmentButtonV2InteractionMode](#segmentbuttonv2interactionmode) | No | @Param | Drag interaction mode of the segment button.<br>Default value: **undefined**<br>When not set, or when the value is **undefined** or invalid, hand-following drag is used if **backgroundSystemMaterial** is configured; otherwise, normal drag is used.<br>Switching the drag mode does not change the original material appearance, background scaling and slight displacement, selected item deformation, or the configured light source effect. When **backgroundSystemMaterial** is not configured, hand-following drag does not add a material effect.<br>Dragging does not trigger **onItemClicked**.<br>The selected item update is notified through the **$selectedIndex** callback. The parent component needs to update **selectedIndex**, or use !! for two-way binding.<br>This member is read-only and cannot be modified.<br>**Since:** 26.1.0<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
 
 > **NOTE**
 >
@@ -304,7 +307,7 @@ Constructs a **SegmentButtonV2ItemOptions** instance.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                             | Mandatory| Description                      |
 | ----- | ----------------------------------------------------------------- | ---- | -------------------------- |
@@ -322,7 +325,7 @@ Checks whether the component contains mixed icon and text items.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Return value**
+**Return value** 
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
@@ -353,7 +356,7 @@ Checks whether the component contains mixed icon and text items.
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                               | No| Yes| [Accessibility description](ts-universal-attributes-accessibility.md#accessibilitydescription) of the segmented button item.<br>Default value: **""**<br>If the value is **undefined**, the default value is used.<br>**Decorator:** @Trace|
 | accessibilityLevel | string | No | Yes | Accessibility level of the segmented button item [accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel).<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
 
-> **Description**
+> **Description** 
 >
 > 1. If both **symbol** and **icon** are configured, **symbol** takes precedence.
 > 2. If both **symbol** and **symbolModifier** are configured with HM Symbol resources, the resources specified by **symbolModifier** take precedence.
@@ -370,7 +373,7 @@ Constructs a **SegmentButtonV2ItemOptions** instance.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                                     | Mandatory| Description                  |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
@@ -388,7 +391,7 @@ Checks whether the segmented button item has text and icon configured. Differenc
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Return value**
+**Return value** 
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
@@ -417,7 +420,7 @@ Defines segmented button item options.
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | [Accessibility description](ts-universal-attributes-accessibility.md#accessibilitydescription) of the segmented button item.<br>Default value: **""**<br>If the value is **undefined**, the default value is used.|
 | accessibilityLevel       | string                                                       | No   | Yes   | Accessibility level of the segmented button item. For details, see [accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel).<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used. |
 
-> **Description**
+> **Description** 
 >
 > 1. If both **symbol** and **icon** are configured, **symbol** takes precedence.
 > 2. If both **symbol** and **symbolModifier** are configured with HM Symbol resources, the resources specified by **symbolModifier** take precedence.
@@ -434,7 +437,7 @@ Defines a callback invoked when the selected segmented button item changes.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type  | Mandatory| Description              |
 | ------------- | ------ | ---- | ------------------ |
@@ -452,11 +455,30 @@ Defines a callback invoked when the selected segmented button items change.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name         | Type    | Mandatory| Description                  |
 | --------------- | -------- | ---- | ---------------------- |
 | selectedIndexes | number[] | Yes | Indexes of the selected items in the segmented button. The first item is numbered 0, and subsequent items are numbered in ascending order. |
+
+## SegmentButtonV2InteractionMode
+
+Enumerates the drag interaction modes for setting the drag mode of a single-select segment button.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name | Value | Description |
+| --- | --- | --- |
+| FOLLOWING_DRAG | 0 | Hand-following drag. When dragging starts from the currently selected item, the background of the selected item continuously follows the finger movement. The index of the selected item remains unchanged during dragging, and is updated through **$selectedIndex** when the finger is lifted. When **backgroundSystemMaterial** is not configured, enabling this mode does not add material deformation or light source effects. |
+| NORMAL_DRAG | 1 | Normal drag. When dragging starts from the currently selected item, the background of the selected item transitions according to the option positions, and the index of the selected item is updated through **$selectedIndex** when the finger drags across items. When **backgroundSystemMaterial** is configured, the original material feedback (including the configured light source effects) is retained. |
 
 ## Example
 
@@ -612,7 +634,7 @@ struct CapsuleSegmentButtonV2Example {
     // Sets the item text for the segmented button.
     { text: 'Phone' },
     { text: 'Tablet' },
-    { text: '2-in-1' }, 
+    { text: '2-in-1' },
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndex: number = 0;
@@ -742,7 +764,7 @@ struct MultiCapsuleSegmentButtonV2Example {
     // Sets the item text for the segmented button.
     { text: 'Phone' },
     { text: 'Tablet' },
-    { text: '2-in-1' }, 
+    { text: '2-in-1' },
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndexes: number[] = [0];
@@ -1049,7 +1071,6 @@ export struct VCard {
 <!--Del--> <!--DelEnd-->
 
 ### Example 6: Setting the Background Material
-
 The following example uses the **backgroundSystemMaterial** attribute to set a transparent background material for the segment button, enable automatic color inversion and interactive deformation effects, and customize the color of the feedback light effect.
 
 Since API version 26.0.0, the **backgroundSystemMaterial** attribute is added to [TabSegmentButtonV2](#tabsegmentbuttonv2) and [CapsuleSegmentButtonV2](#capsulesegmentbuttonv2).
@@ -1075,7 +1096,8 @@ struct SegmentButtonV2Example {
   ]);
   @Local imageSelectedIndex: number = 0;
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 12 }) {
       VCard({ title: 'Text Button' }) {
         TabSegmentButtonV2({
@@ -1110,7 +1132,6 @@ struct SegmentButtonV2Example {
           })
         })
       }
-
     }
     .linearGradient({
       angle: 180, // Gradient angle. 180 degrees means from top to bottom.
@@ -1123,6 +1144,15 @@ struct SegmentButtonV2Example {
     .height(225)
     .justifyContent(FlexAlign.Start)
     .padding(16)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // Page content.
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 
@@ -1154,6 +1184,8 @@ export struct VCard {
   }
 }
 ```
+
+The illustration in this example shows the strong effect on a high-computing-power device.
 
 <!--Del--> <!--DelEnd-->
 

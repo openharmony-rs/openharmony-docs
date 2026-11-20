@@ -1,5 +1,5 @@
 ---
-kits: ["NDK / Native Development Kit"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍使用Node-API扩展接口限制微任务的执行，控制微任务队列的执行时机，使微任务在原生逻辑完成后统一执行。"
 keywords: [Node-API, 微任务, napi_open_microtask_scope, napi_close_microtask_scope, Promise回调, 微任务作用域]
 doctype: guide
@@ -8,7 +8,7 @@ status: active
 
 # 使用扩展的Node-API接口限制微任务的执行
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->

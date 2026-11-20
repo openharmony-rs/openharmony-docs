@@ -47,7 +47,7 @@ constexpr uint64_t HITRACE_TAG_ACE = (1ULL << 39); // ACE development framework 
 constexpr uint64_t HITRACE_TAG_NOTIFICATION = (1ULL << 40); // Notification module tag.
 constexpr uint64_t HITRACE_TAG_MISC = (1ULL << 41); // Notification module tag.
 constexpr uint64_t HITRACE_TAG_MULTIMODALINPUT = (1ULL << 42); // Multi modal module tag.
-constexpr uint64_t HITRACE_TAG_SENSORS = (1ULL << 43); // Sensors mudule tag.
+constexpr uint64_t HITRACE_TAG_SENSORS = (1ULL << 43); // Sensors module tag.
 constexpr uint64_t HITRACE_TAG_MSDP = (1ULL << 44); // Multimodal Sensor Data Platform module tag.
 constexpr uint64_t HITRACE_TAG_DSOFTBUS = (1ULL << 45); // Distributed Softbus tag.
 constexpr uint64_t HITRACE_TAG_RPC = (1ULL << 46); // RPC and IPC tag.
@@ -85,8 +85,7 @@ HiTraceMeter主要提供抓取用户态和内核态Trace数据的命令行工具
 
 ### 约束与限制
 
-- HiTraceMeter所有功能与接口的实现都依赖于内核提供的ftrace功能，ftrace 是内核提供的一个 framework，采用 plugin 的方式支持开发人员添加更多种类的 trace 功能，因此使用HiTraceMeter之前要使能 ftrace，否则HiTraceMeter的功能无法使用（目前大部分Linux内核默认使能了ftrace，关于ftrace的详细介绍可查看内核ftrace相关资料 
-  [ftrace相关资料](https://blog.csdn.net/Luckiers/article/details/124646205) ）。
+- HiTraceMeter所有功能与接口的实现都依赖于内核提供的ftrace功能，ftrace 是内核提供的一个 framework，采用 plugin 的方式支持开发人员添加更多种类的 trace 功能，因此使用HiTraceMeter之前要使能 ftrace，否则HiTraceMeter的功能无法使用（目前大部分Linux内核默认使能了ftrace）。
 - HiTraceMeter仅限小型系统、标准系统下使用。
   
   
@@ -135,14 +134,14 @@ C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开�
 
 1. 编译依赖添加，需要修改的编译配置文件base\hiviewdfx\hitrace\cmd\BUILD.gn 。
    
-   ```
+   ```gn
    external_deps = [ "hitrace:hitrace_meter"]
    ```
 
 2. 头文件依赖添加。
    
    ```cpp
-   #include "hitrace_meter.h"//接口函数定义头文件
+   #include "hitrace_meter.h" // 接口函数定义头文件
    ```
 
 3. 接口调用，将需要跟踪的Trace value传入参数，目前HiTraceMeter支持的Trace Tag在基本概念hitrace_meter.h中都已列出，我们以OHOS这个Tag为例，假设我们需要获取func1，func2函数的Trace数据，参考下面实例，在shell中执行hitrace命令后会自动抓取Trace数据，抓到的Trace数据中包括了函数调用过程以及调用过程消耗的内存和时间，可用于分析代码调用流程，代码性能问题。
@@ -174,7 +173,7 @@ C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开�
 
 4. 使用方法，打点编译部署完成后，运行下面命令行来抓取Trace。然后在端侧shell里运行应用，可以抓取到Trace数据。
    
-   ```
+   ```shell
    hdc_std shell hitrace -t 10 ohos > .\myapp_demo.ftrace
    ```
    
@@ -218,7 +217,7 @@ C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开�
 
 2. 修改gn编译文件并编译，编译配置文件路径base\hiviewdfx\hitrace\cmd\BUILD.gn 。
    
-   ```
+   ```gn
    ohos_executable("hitrace_example") {
      sources = [ "example/hitrace_example.cpp" ]
    
@@ -240,13 +239,13 @@ C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开�
    
    ```shell
    hitrace --trace_begin ohos
-   hitrace_exampe
+   hitrace_example
    hitrace --trace_dump
    ```
    
     当我们看到Trace数据中有我们需要的Trace value时，说明成功抓取Trace，成功的数据如下所示：
    
-   ```
+   ```text
    <...>-1651    (-------) [002] ....   327.194136: tracing_mark_write: S|1650|H:testAsync 111
    <...>-1650    (-------) [001] ....   332.197640: tracing_mark_write: B|1650|H:testStart
    <...>-1650    (-------) [001] ....   333.198018: tracing_mark_write: B|1650|H:funcAStart
@@ -291,7 +290,7 @@ HiTraceMeter提供了可执行的二进制程序hitrace，设备刷openharmony�
 
 - 查询支持的label。
   
-  ```
+  ```shell
   
   hitrace -l
   
@@ -299,7 +298,7 @@ HiTraceMeter提供了可执行的二进制程序hitrace，设备刷openharmony�
   
   或者
   
-  ```
+  ```shell
   
   hitrace --list_categories
   
@@ -307,7 +306,7 @@ HiTraceMeter提供了可执行的二进制程序hitrace，设备刷openharmony�
 
 - 设置4M缓存，抓取10秒，抓取label为ability的trace信息。
   
-  ```
+  ```shell
   
   hitrace -b 4096 -t 10 --overwrite ability > /data/log/mytrace.ftrace
   
@@ -315,7 +314,7 @@ HiTraceMeter提供了可执行的二进制程序hitrace，设备刷openharmony�
 
 - 设置trace的输出时钟为mono。
   
-  ```
+  ```shell
   
   hitrace --trace_clock mono  -b 4096 -t 10 --overwrite ability > /data/log/mytrace.ftrace
   
@@ -323,7 +322,7 @@ HiTraceMeter提供了可执行的二进制程序hitrace，设备刷openharmony�
 
 - 抓取trace后进行压缩。
   
-  ```
+  ```shell
   
   hitrace -z  -b 4096 -t 10 --overwrite ability > /data/log/mytrace.ftrace
   

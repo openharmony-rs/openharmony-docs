@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:04.618Z pushedAt=2026-06-23T02:29:07.650Z -->
+<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-11-12T04:20:38.559Z pushedAt=2026-11-17T10:35:40.639Z nl=1 -->
 
 >  **NOTE**
 >
@@ -37,13 +37,13 @@ The **ImageData** object is an object that stores pixel data rendered on a [canv
 import promptAction from '@ohos.promptAction';
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
-    ctx.fillRect(0,0,200,200);
-    var imageData = ctx.createImageData(1,1);
+    ctx.fillRect(0, 0, 200, 200);
+    var imageData = ctx.createImageData(1, 1);
     promptAction.showToast({
-      message:imageData,
-      duration:5000
+      message: imageData,
+      duration: 5000
     })
   }
 }

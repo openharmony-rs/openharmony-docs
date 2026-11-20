@@ -51,7 +51,6 @@ queryDeviceInfo(deviceId?: number): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 |----------|-----------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. A non-system application cannot call a system API. |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
 | 26300001 | ExternalDeviceManager service exception.                              |
 
 **示例：**
@@ -103,7 +102,6 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 |----------|-----------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. A non-system application cannot call a system API. |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
 | 26300001 | ExternalDeviceManager service exception.                              |
 
 **示例：**

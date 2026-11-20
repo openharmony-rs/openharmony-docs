@@ -43,6 +43,7 @@
 - [点击回弹效果](ts-universal-attributes-click-effect.md)
 - [点击音效](ts-universal-attributes-click-sound.md)
 - [智慧手势响应](ts-universal-attributes-smart-gesture-shortcut.md)
+- [Agent输入管控](ts-universal-attributes-agent-control-mode.md)
 - [无障碍属性](ts-universal-attributes-accessibility.md)
 - [动态属性设置](ts-universal-attributes-attribute-modifier.md)
 - [动态手势设置](ts-universal-attributes-gesture-modifier.md)

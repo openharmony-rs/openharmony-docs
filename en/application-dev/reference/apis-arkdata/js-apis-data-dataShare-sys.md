@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=68d7b8030be7ba5da7e711fc0d0ad9a1a6eb2337 translatedAt=2026-09-04T03:27:35.694Z pushedAt=2026-09-09T09:11:03.715Z -->
+<!-- md-trans-meta sourceCommit=041c284f325ea6e155baec79d87319e42992ebd5 translatedAt=2026-11-16T01:54:23.926Z pushedAt=2026-11-20T07:27:40.515Z nl=1 -->
 
 The **DataShare** module allows an application to manage its own data and share data with other applications on the same device.
 
@@ -13,7 +13,7 @@ For details about the database types supported in silent scenarios, see [Silent 
 
 For details about the database types supported in non-silent scenarios, see [Sharing Data Using DataShareExtensionAbility](../../database/share-data-by-datashareextensionability-sys.md#constraints).
 
-> **NOTE**
+> **NOTE** 
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
@@ -56,7 +56,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700010 | The DataShareHelper fails to be initialized. |
 
@@ -115,7 +115,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700010 | The DataShareHelper fails to be initialized. |
 
@@ -179,7 +179,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700010 | The DataShareHelper fails to be initialized. |
 
@@ -242,7 +242,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI does not exist. |
 
@@ -297,7 +297,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 19+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI does not exist. |
 
@@ -445,7 +445,7 @@ Subscribes to the data change event of the data corresponding to the specified U
 
 **Notification triggering:** In non-silent scenarios, a notification is published to the subscribers of the specified URI when the [notifyChange](#notifychange-1) method is called. In silent scenarios, a notification is automatically published when the data is modified through silent access to the specified URI.
 
-**Specification limits**
+**Specification limits** 
 * Before OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 50 subscriptions globally.
 * Since OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 2500 subscriptions globally.
 
@@ -465,9 +465,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -494,7 +494,7 @@ Subscribes to the data change event of the data corresponding to the specified U
 
 **Notification triggering:** In non-silent scenarios, a notification carrying [ChangeInfo](#changeinfo12) is published to the subscribers of the specified URI when the [notifyChange](#notifychange12) method is called. In silent scenarios, a notification is automatically published when the data is modified through silent access to the specified URI, but the **ChangeInfo** in the callback notification is invalid in this case.
 
-**Specification limits**
+**Specification limits** 
 * Before OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 50 subscriptions globally.
 * Starting from OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 2500 subscriptions globally.
 
@@ -556,9 +556,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -641,10 +641,10 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI is not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -691,10 +691,10 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700011 | The URI is not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -752,9 +752,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -769,9 +769,9 @@ let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void 
   console.info("onCallback " + JSON.stringify(node.uri));
   console.info("onCallback " + JSON.stringify(node.templateId));
   console.info("onCallback " + node.data.length);
-  for (let i = 0; i < node.data.length; i++) {
-    console.info("onCallback " + typeof node.data[i] + " " + node.data[i]);
-  }
+  node.data.forEach((data) => {
+    console.info("onCallback " + typeof data + " " + data);
+  });
 }
 
 let uri = "datashareproxy://com.samples.datasharetest.DataShare";
@@ -815,9 +815,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -858,9 +858,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -870,15 +870,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onPublishCallback: (err: BusinessError, node: dataShare.PublishedDataChangeNode) => void = (err: BusinessError, node:dataShare.PublishedDataChangeNode): void => {
   console.info("onPublishCallback node bundleName " + JSON.stringify(node.bundleName));
   console.info("onPublishCallback node data size" + node.data.length);
-  for (let i = 0; i < node.data.length; i++) {
-    console.info("onPublishCallback node " + typeof node.data[i].data);
-    if (typeof node.data[i].data != 'string') {
-      let array: ArrayBuffer = node.data[i].data as ArrayBuffer;
-      let data: Uint8Array = new Uint8Array(array);
-      console.info("onPublishCallback " + i + " " + JSON.stringify(data));
+  node.data.forEach((data) => {
+    console.info("onPublishCallback node " + typeof data.data);
+    if (typeof data.data != 'string') {
+      let array: ArrayBuffer = data.data as ArrayBuffer;
+      let dataValue: Uint8Array = new Uint8Array(array);
+      console.info("onPublishCallback " + JSON.stringify(dataValue));
     }
-    console.info("onPublishCallback data " + i + " " + JSON.stringify(node.data[i]));
-  }
+    console.info("onPublishCallback data " + JSON.stringify(data));
+  });
 }
 let uris:Array<string> = ['city', 'datashareproxy://com.acts.ohos.data.datasharetest/appInfo', 'key2'];
 let subscriberId = '11';
@@ -916,9 +916,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -960,10 +960,10 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                   |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area is not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1010,10 +1010,10 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                   |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area does not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1062,10 +1062,10 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                   |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area is not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1102,10 +1102,10 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                   |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area does not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1148,10 +1148,10 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message                   |
 | -------- | -------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700012 | The data area does not exist.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1187,9 +1187,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1257,9 +1257,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1320,9 +1320,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1381,9 +1381,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1438,9 +1438,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1503,9 +1503,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1559,9 +1559,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1632,9 +1632,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1743,14 +1743,12 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).batchUpdate(record).then((data: Record<string, Array<number>>) => {
       // Traverse data to obtain the update result of each data record. value indicates the number of data records that are successfully updated. If value is less than 0, the update fails.
       let entries = Object.entries(data);
-      for (let i = 0; i < entries.length; i++) {
-        let key = entries[i][0];
-        let values = entries[i][1];
+      entries.forEach(([key, values]) => {
         console.info(`Update uri:${key}`);
-        for (const value of values) {
+        values.forEach((value) => {
           console.info(`Update result:${value}`);
-        }
-      }
+        });
+      });
     }).catch((err: BusinessError) => {
       console.error(`Failed to batch update. Code: ${err.code}, message: ${err.message}`);
     });
@@ -1786,9 +1784,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1847,9 +1845,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1897,7 +1895,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message    |
 | -------- | ------------ |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 19+ |
 | 15700000 | Inner error. |
 
 **Example**
@@ -1929,9 +1927,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -1976,9 +1974,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -2016,9 +2014,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -2063,9 +2061,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -2105,9 +2103,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Mandatory parameters are left unspecified.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Mandatory parameters are left unspecified. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 
@@ -2148,9 +2146,9 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 
 | ID| Error Message             |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error.Mandatory parameters are left unspecified.|
-| 15700013 | The DataShareHelper instance is already closed.|
+| 202      | Permission verification failed. A non-system application calls a system API. <br> Applicable versions: 12+ |
+| 401      | Parameter error.Mandatory parameters are left unspecified. <br> Applicable versions: 12+ |
+| 15700013 | The DataShareHelper instance is already closed. <br> Applicable versions: 12+ |
 
 **Example**
 

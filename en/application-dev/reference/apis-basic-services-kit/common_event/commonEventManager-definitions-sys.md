@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-09-29T09:38:51.800Z pushedAt=2026-10-08T02:39:02.465Z -->
+<!-- md-trans-meta sourceCommit=f262022edb325591fe74a49c669ddf14a854d5f4 translatedAt=2026-11-12T03:48:29.809Z pushedAt=2026-11-12T12:01:05.819Z nl=1 -->
 
 This topic provides a list of common events defined by the system.
 
@@ -15,7 +15,7 @@ Common event types are defined in [Support](../js-apis-commonEventManager-sys.md
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [System-Defined Common Events](../common_event/commonEventManager-definitions.md).
+> This topic describes only the system APIs provided by the module. For details about its public APIs, see [System Common Events](../common_event/commonEventManager-definitions.md).
 
 
 ## Ability Kit
@@ -585,7 +585,7 @@ When a device receives an SMS message, the event notification service is trigger
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value:** usual.event.SMS_RECEIVED_COMPLETED
+**Value:** "usual.event.SMS_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>

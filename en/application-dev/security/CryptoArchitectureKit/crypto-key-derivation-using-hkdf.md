@@ -6,26 +6,22 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=272d68dd445034a125b33915dfa7d6e1b2c27f73 translatedAt=2026-08-07T03:31:03.324Z pushedAt=2026-08-10T09:27:57.957Z -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:33:44.533Z pushedAt=2026-11-16T02:06:53.439Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [HKDF](crypto-key-derivation-overview.md#hkdf).
 
 ## How to Develop
-
 1. Create a [HKDFSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#hkdfspec12) object and use it as a parameter for key derivation.
 
    **HKDFSpec** is a child class of [KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11). You need to specify the following:
 
    - **algName**: algorithm to use, which is **'HKDF'**.
-
    - **key**: original key material.
 
-      If **key** is of the string type, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
-
+      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or Base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
+  
    - **salt**: salt value.
-
    - **info**: optional context and app-related information, which can be empty and is used to expand short keys.
-
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
 
 2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter `'HKDF|SHA256|EXTRACT_AND_EXPAND'` to create a key derivation function object (Kdf). The key derivation algorithm is HKDF, the HMAC digest algorithm is SHA256, and the mode is extract and expand.
@@ -43,33 +39,39 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 - Return the result using **await**:
 
   <!-- @[use_hkdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function kdfAwait() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.HKDFSpec = {
-      algName: 'HKDF',
-      key: keyData,
-      salt: saltData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-    let secret = await kdf.generateSecret(spec);
-    console.info('key derivation output: ' + secret.data);
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.HKDFSpec = {
+        algName: 'HKDF',
+        key: keyData,
+        salt: saltData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+      let secret = await kdf.generateSecret(spec);
+      console.info('key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
+
 - Return the result using a promise:
-
   <!-- @[use_hkdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -97,27 +99,34 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
   }
   ```
 
+
 - Return the result synchronously:
 
   <!-- @[use_hkdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function kdfSync() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.HKDFSpec = {
-      algName: 'HKDF',
-      key: keyData,
-      salt: saltData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-    let secret = kdf.generateSecretSync(spec);
-    console.info('[Sync]key derivation output: ' + secret.data);
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.HKDFSpec = {
+        algName: 'HKDF',
+        key: keyData,
+        salt: saltData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+      let secret = kdf.generateSecretSync(spec);
+      console.info('[Sync]key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```

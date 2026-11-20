@@ -1,12 +1,11 @@
 # Matrix2D
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:35:05.573Z pushedAt=2026-08-01T06:42:55.882Z -->
+<!-- md-trans-meta sourceCommit=995a4ca3e920338c4297efcb34b432fd4c05b496 translatedAt=2026-11-03T01:52:35.537Z pushedAt=2026-11-13T01:05:59.916Z nl=1 -->
 
 A matrix object used for graphic transformation in [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md), [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md), [CanvasPattern](ts-components-canvas-canvaspattern.md), and [Path2D](ts-components-canvas-path2d.md). It can perform scaling, rotation, translation, and other transformations on the matrix.
 
@@ -311,9 +310,13 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 
 Performs a left-multiply rotation operation on the current matrix, centered at the rotation point. It is commonly used in scenarios such as graphic rotation animation or image rotation processing.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -494,4 +497,3 @@ struct Scale {
 ```
 
 ![matrix-scale.png](figures/matrix-scale.png)
-<!--no_check-->

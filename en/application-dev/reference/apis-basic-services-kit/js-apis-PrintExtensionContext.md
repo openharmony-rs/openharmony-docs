@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=d9ce0c4979b7c4bdc149b31fa03dbef79e9b182c translatedAt=2026-11-12T04:35:34.767Z pushedAt=2026-11-12T12:23:05.444Z nl=1 -->
 
 **PrintExtensionContext** represents the context of **PrintExtensionAbility** and is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 

@@ -90,6 +90,7 @@ enum OH_AudioStream_Result
 | AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 | 非法状态。 |
 | AUDIOSTREAM_ERROR_SYSTEM = 3 | 系统通用错误。 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | 不支持的音频格式，如不支持的编码类型、采样格式等。<br>**起始版本：** 19 |
+| AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED = 201 | 权限被拒绝。<br>**起始版本：** 26.1.0 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | 不支持的音频流能力，例如功能或配置不支持。<br>**起始版本：** 26.0.0 |
 | AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | 音频服务进程异常结束。<br>**起始版本：** 26.0.0 |
 
@@ -193,6 +194,7 @@ enum OH_AudioStream_LatencyMode
 | -- | -- |
 | AUDIOSTREAM_LATENCY_MODE_NORMAL = 0 | 该模式代表一个普通时延的音频流。 |
 | AUDIOSTREAM_LATENCY_MODE_FAST = 1 | 该模式代表一个低时延的音频流。 |
+| AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2 | 该模式代表一个超低时延的音频流。<br>**起始版本：** 26.1.0 |
 
 ### OH_AudioStream_DirectPlaybackMode
 
@@ -386,6 +388,7 @@ enum OH_AudioStream_FastStatus
 | -- | -- |
 | AUDIOSTREAM_FASTSTATUS_NORMAL = 0 | 普通音频流状态。 |
 | AUDIOSTREAM_FASTSTATUS_FAST = 1 | 低时延音频流状态。 |
+| AUDIOSTREAM_FASTSTATUS_ULTRA_FAST = 2 | 超低时延音频流状态。<br>**起始版本：** 26.1.0 |
 
 ### OH_AudioStream_DeviceChangeReason
 
@@ -424,7 +427,7 @@ enum OH_AudioStream_PrivacyType
 | -- | -- |
 | AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0 | 表示音频流可以被其他应用录制或屏幕投射，不包含隐私类型的流。 |
 | AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1 | 表示音频流不可以被其他应用录制或屏幕投射。 |
-| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。<br>     例如，在PRIVACY_TYPE_PUBLIC策略下，[AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage)类型音频流不会被其他应用录制或屏幕投射。然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。<br>**起始版本：** 21 |
+| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | 表示音频流可以被屏幕投射，包含隐私类型的流。<br>     例如，在PRIVACY_TYPE_PUBLIC策略下，[AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage)类型音频流不会被屏幕投射。然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被屏幕投射。<br>**起始版本：** 21 |
 
 ### OH_AudioData_Callback_Result
 

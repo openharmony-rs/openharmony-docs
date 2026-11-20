@@ -25,15 +25,15 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 ### 配置方式
 
-1. 在[HarmonyAppProvision文件](../../application-dev/security/app-provision-structure.md)中添加字段”app-privilege-capabilities“，按需配置通用权限能力。
+1. 在[HarmonyAppProvision文件](../../application-dev/security/app-provision-structure.md)中添加字段”app-privilege-capabilities“，按需配置通用应用特权。
 2. 使用签名工具对[HarmonyAppProvision文件](../../application-dev/security/app-provision-structure.md)重新签名，生成p7b文件。
 3. 使用p7b文件签名HAP。
 
-参考：[应用签名](https://gitcode.com/openharmony/developtools_hapsigner#hap%E5%8C%85%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%85%B7 )。
+参考：[应用签名](https://gitcode.com/openharmony/developtools_hapsigner#hap%E5%8C%85%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%85%B7)。
 
 ### 示例
 
-```json
+```text
 {
     "version-name": "1.0.0",
     ...
@@ -78,7 +78,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 #### install_list_capability.json中配置
 
-```json
+```text
 {
     "install_list": [
         {
@@ -88,7 +88,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
             "runningResourcesApply": true, // 运行资源申请（CPU、事件通知、蓝牙等）
             "associatedWakeUp": true, // FA模型应用被关联唤醒
             "app_signature" : ["****"], // 当配置的证书指纹和hap的证书指纹一致才生效
-            "allowCommonEvent": [“usual.event.SCREEN_ON”, “usual.event.THERMAL_LEVEL_CHANGED”],
+            "allowCommonEvent": [“usual.event.SCREEN_ON", "usual.event.THERMAL_LEVEL_CHANGED”],
             "allowAppDataNotCleared": true, // 不允许应用数据被删除
             "allowAppMultiProcess": true, //允许应用多实例
             "allowAppDesktopIconHide": true, //允许隐藏桌面图标
@@ -98,7 +98,8 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
             "allowFormVisibleNotify": true, // 允许桌面卡片可见
             "allowAppShareLibrary": true, // 允许应用提供应用间HSP能力
             "allowMissionNotCleared": true // 允许Ability在任务列表中配置不可移除
-        },
+        }
+    ]
 }
 ```
 
@@ -106,11 +107,11 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 1. 证书存放在[HarmonyAppProvision文件](../../application-dev/security/app-provision-structure.md)的distribution-certificate字段下，新建profile.cer文件，将证书的内容拷贝到profile.cer文件中。
 
-   ```json
+   ```text
    {
        ...
        "bundle-info": {
-           "distribution-certificate": "-----BEGIN CERTIFICATE----\nMIICMzCCAbegAwIBAgIEaOC/zDAMBggqhkjOPQQDAwUAMk..." /证书的内容
+           "distribution-certificate": "-----BEGIN CERTIFICATE----\nMIICMzCCAbegAwIBAgIEaOC/zDAMBggqhkjOPQQDAwUAMk..." 
            ...
        }
        ...
@@ -118,7 +119,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
    ```
 
 2. 将profile.cer内容换行和去掉换行符。
-   ```
+   ```text
    -----BEGIN CERTIFICATE-----
    MIICMzCCAbegAwIBAgIEaOC/zDAMBggqhkjOPQQDAwUAMGMxCzAJBgNVBAYTAkNO
    MRQwEgYDVQQKEwtPcGVuSGFybW9ueTEZMBcGA1UECxMQT3Blbkhhcm1vbnkgVGVh
@@ -137,7 +138,9 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 3. 使用keytool工具，执行以下命令获取对应的证书指纹。
 
-   > 说明：keytool工具可以在DevEco Studio安装后的`\tools\openjdk\bin`目录中获取。
+   > **说明：**
+   >
+   > keytool工具可以在DevEco Studio安装后的`\tools\openjdk\bin`目录中获取。
 
    ```shell
    keytool -printcert -file profile.cer
@@ -157,21 +160,21 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 4. 将运行结果中的SHA256证书指纹去掉冒号后填入install_list_capability.json中的app_signature字段。
 
-    ```json
-   {
-       "install_list": [
-            {
-                ...
-                "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
-                ...
-            }
-        ]
-   }
-   ```
+    ```text
+    {
+    "install_list": [
+    {
+    ...
+    "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
+    ...
+    }
+    ]
+    }
+    ```
 
 #### install_list.json中配置
 
-```json
+```text
 {
      "install_list" : [
         {

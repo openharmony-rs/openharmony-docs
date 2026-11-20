@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍UIAbility组件的生命周期回调机制，涵盖onCreate、onWindowStageCreate、onForeground、onBackground、onDestroy等回调的触发时机、使用方法与常见问题处理。"
+keywords: [生命周期, onCreate, onForeground, onBackground, onDestroy, onNewWant, onWindowStageCreate, WindowStage]
+doctype: guide
+status: active
+---
 # UIAbility组件生命周期
 
 <!--Kit: Ability Kit-->

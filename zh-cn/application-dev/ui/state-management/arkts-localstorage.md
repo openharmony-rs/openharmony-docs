@@ -389,7 +389,7 @@ let linkToPropA: SubscribedAbstractProperty<number> = storageOne.link('PropA');
 @Entry(storageOne)
 @Component
 struct ParentTwo {
-  // @LocalStorageLink('PropA')在ParentTwo自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给"PropA"设置47
+  // @LocalStorageLink('PropA')在ParentTwo自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给“PropA”设置47
   @LocalStorageLink('PropA') storageLink: number = 1;
 
   build() {
@@ -645,7 +645,7 @@ struct PageFiveShareChange {
 }
 ```
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageFiveShareChange页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/router_map.json，并替换pageSourceFile为PageFiveShareChange页面的路径，并且在module.json5中添加："routerMap": "$profile:router_map"。
 ```json
 {
   "routerMap": [

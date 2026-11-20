@@ -1,25 +1,27 @@
 # stepper-item
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:36.049Z pushedAt=2026-06-23T10:38:24.496Z -->
+<!-- md-trans-meta sourceCommit=d1e4d0c1349312557d4315ff2b1c5d57de74d862 translatedAt=2026-11-12T04:38:39.207Z pushedAt=2026-11-18T03:42:31.281Z nl=1 -->
 
 >  **NOTE**
 > This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
 The **\<stepper-item>** component displays a step in the step navigator. This component is the child component of **\<stepper>**.
 
+
 ## Required Permissions
 
 None
 
+
 ## Child Components
 
 Supported
+
 
 ## Attributes
 
@@ -33,9 +35,10 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 | Name| Type| Default Value| Description|
 | -------- | -------- | -------- | -------- |
-| prevLabel | string | - | Text content of the previous button at the bottom of the step navigator.|
+| prevLabel | string | - | Text content of the previous button at the bottom of the step navigator. |
 | nextLabel | string | - | Text content of the next button at the bottom of the step navigator.|
 | status | string | normal | Initial status of the current step in the step navigator. Available values are as follows:<br>- **normal**: The right button is clickable and can navigate users to the next step when it is clicked.<br>- **disabled**: The right button is grayed out and unavailable.<br>- **waiting**: The right button is not displayed, and a progress bar is displayed instead.|
+
 
 ## Styles
 
@@ -56,6 +59,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 > 
 > - The **position** style is not supported.
 
+
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
@@ -65,9 +69,11 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | appear | - | Triggered when this step is displayed.|
 | disappear | - | Triggered when this step disappears.|
 
+
 ## Method
 
 The [universal methods](js-components-common-methods.md) are not supported.
+
 
 ## Example
 

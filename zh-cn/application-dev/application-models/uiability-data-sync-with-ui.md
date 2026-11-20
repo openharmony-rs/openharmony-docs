@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍UIAbility组件与UI之间数据同步的两种方式：使用EventHub进行事件发布订阅通信，以及使用AppStorage或LocalStorage进行应用级状态管理同步。"
+keywords: [数据同步, EventHub, AppStorage, LocalStorage, 事件通信, 发布订阅]
+doctype: guide
+status: active
+---
 # UIAbility组件与UI的数据同步
 
 <!--Kit: Ability Kit-->

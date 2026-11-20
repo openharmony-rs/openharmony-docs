@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍加速Web页面访问的方法，包括域名级预解析预连接、页面预加载、POST请求预获取、JavaScript预编译生成缓存及离线资源注入。"
+keywords: [页面加载加速, 预连接, prepareForPageLoad, prefetchPage, prefetchResource, clearPrefetchedResource, precompileJavaScript, injectOfflineResources, 编译缓存]
+doctype: guide
+status: active
+---
+
 # 加速Web页面的访问
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -217,7 +225,7 @@ export default class EntryAbility extends UIAbility {
 
 1. 首先，在EntryAbility中将[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../ui/state-management/arkts-localstorage.md)中。
 
-   <!-- @[save_the_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @[save_the_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets) -->    
    
    ``` TypeScript
    // EntryAbility.ets
@@ -230,7 +238,6 @@ export default class EntryAbility extends UIAbility {
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
      // ...
-     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
@@ -241,8 +248,6 @@ export default class EntryAbility extends UIAbility {
        });
      }
    
-     // ...
-     // ...
      // ...
    }
    ```
@@ -449,7 +454,7 @@ export default class EntryAbility extends UIAbility {
 
 1. 首先，在EntryAbility中将[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../ui/state-management/arkts-localstorage.md)中。
 
-   <!-- @[save_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @[save_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets) -->    
    
    ``` TypeScript
    // EntryAbility.ets
@@ -462,8 +467,6 @@ export default class EntryAbility extends UIAbility {
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
      // ...
-   
-     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
@@ -473,8 +476,6 @@ export default class EntryAbility extends UIAbility {
          this.storage.setOrCreate<UIContext>('uiContext', windowStage.getMainWindowSync().getUIContext());
        });
      }
-     // ...
-     // ...
      // ...
    }
    ```

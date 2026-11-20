@@ -518,6 +518,53 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+### onAccountSwitched
+
+onAccountSwitched(fromAccountId: number, toAccountId: number): void
+
+系统账号切换事件回调。当系统从当前账号切换到另一个账号时触发。与已有的[onAccountSwitched](#onaccountswitched18)相比，该回调同时提供切出账号ID和切入账号ID，便于更详细地跟踪账号切换过程。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_ACCOUNT_SWITCHED事件才能收到此回调。企业设备管理场景下，设备管理应用可订阅系统账号切换事件，并在该回调中上报事件，通知企业管理员。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ------- |
+| fromAccountId | number | 是 | 切换前的用户ID，即切出账号。 |
+| toAccountId | number | 是 | 切换后的用户ID，即切入账号。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_ACCOUNT_SWITCHED];
+try {
+  adminManager.subscribeManagedEventSync(wantTemp, events);
+  console.info('Succeeded in subscribing managed event.');
+} catch (err) {
+  console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
+}
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  // 由于文件中已有同名回调onAccountSwitched(accountId: number)（无toAccountId参数），实际调用时toAccountId必须写成可选参数，写法请参考示例代码。
+  onAccountSwitched(fromAccountId: number, toAccountId?: number) {
+    console.info(`Succeeded in calling onAccountSwitched callback, fromAccountId: ${fromAccountId}, toAccountId: ${toAccountId}`);
+  }
+}
+```
+
 ### onAccountRemoved<sup>18+</sup>
 
 onAccountRemoved(accountId: number): void
@@ -1099,6 +1146,42 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+### onSmsReceived
+
+onSmsReceived(smsInfo: common.SmsReceiveInfo): void
+
+短信接收回调。当设备收到短信时触发此回调。需要先通过[adminManager.subscribeSmsEvent](./js-apis-enterprise-adminManager.md#adminmanagersubscribesmsevent)接口订阅短信事件，系统接收到短信后才会触发此回调，适用于企业需要对设备收到的短信进行审计等场景。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                                   | 必填 | 说明                                                                                                          |
+| ------- | ---------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------- |
+| smsInfo | [common.SmsReceiveInfo](./js-apis-enterprise-common.md#smsreceiveinfo) | 是   | 短信接收信息，包含SIM卡槽号（slotId）、电话号码（telephoneNumber）、短信条数（count）和短信内容（content）。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, adminManager, common } from '@kit.MDMKit';
+
+try {
+  adminManager.subscribeSmsEvent();
+  console.info('Succeeded in subscribing sms event.');
+} catch (err) {
+  console.error(`Failed to subscribe sms event. Code: ${err.code}, message: ${err.message}`);
+}
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onSmsReceived(smsInfo: common.SmsReceiveInfo): void {
+    console.info('Succeeded in calling onSmsReceived callback');
+  }
+}
+```
 ### onPasswordFailed
 
 onPasswordFailed(cumulativeFailedCount: number, accountId: number): void

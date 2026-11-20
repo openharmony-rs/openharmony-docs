@@ -579,9 +579,8 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 **示例：**
 
 ```ts
-import { launcherBundleManager } from '@kit.AbilityKit';
+import { launcherBundleManager, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AbilityConstant } from '@kit.AbilityKit';
 
 try {
   let data: Array<launcherBundleManager.ShortcutInfo> =

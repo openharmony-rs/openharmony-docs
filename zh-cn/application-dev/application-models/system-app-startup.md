@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍拉起系统应用的方式与支持跳转的能力清单，涵盖系统Picker组件、设置权限弹窗、拨号、日历、联系人、相机、文件管理等系统应用的调用方法。"
+keywords: [拉起系统应用, 系统Picker, 文件选择器, 权限设置, 拨号, 联系人Picker, 相机Picker, 日历, 系统跳转]
+doctype: guide
+status: active
+---
 # 拉起系统应用
 
 <!--Kit: Ability Kit-->

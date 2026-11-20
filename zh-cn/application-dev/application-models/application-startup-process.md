@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "讲解应用启动的三个阶段——进程启动、AbilityStage启动、UIAbility启动，说明各阶段触发时机与回调使用建议，帮助开发者优化启动逻辑。"
+keywords: [应用启动流程, 进程启动, AbilityStage, UIAbility启动, onCreate, 生命周期回调, 启动入口, Want]
+doctype: guide
+status: active
+---
 # 应用启动流程
 
 <!--Kit: Ability Kit-->

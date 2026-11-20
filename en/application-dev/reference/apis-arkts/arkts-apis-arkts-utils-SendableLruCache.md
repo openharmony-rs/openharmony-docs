@@ -1,25 +1,29 @@
-# SendableLruCache<K, V>
+# Class (SendableLruCache)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=b2f3b26f12a87ac1d194c003c5395a708b430ee0 translatedAt=2026-11-06T09:06:36.433Z pushedAt=2026-11-13T03:36:52.467Z nl=1 -->
 
-Provides APIs to discard the least recently used data to make rooms for new elements when the cache is full. This class uses the Least Recently Used (LRU) algorithm, which believes that the recently used data may be accessed again in the near future and the least accessed data is the least valuable data and should be removed from the cache. **SendableLruCache** supports the Sendable feature, allowing it to store Sendable objects and ensuring safe cross-thread access.
+When the cache space is insufficient, SendableLruCache replaces the least recently used data with new data. This design is based on resource access considerations: data accessed recently may be accessed again in the near future, so the least accessed data has the least value and should be evicted from the cache first. SendableLruCache supports the Sendable feature (which allows safe cross-thread sharing) and can store Sendable objects, ensuring safe cross-thread access.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial SendableLruCache APIs are supported since API version 18.
+> The initial APIs of SendableLruCache are supported since API version 18.
 >
-> - This module can be imported only to ArkTS files (with the file name extension .ets).
+> This module can be imported and used only in ArkTS files (with the .ets file name extension).
+> 
+
+**Decorator**: \@Sendable
 
 ## Modules to Import
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## Properties
@@ -30,16 +34,16 @@ import { ArkTSUtils } from '@kit.ArkTS'
 
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| length<sup>18+</sup> | number | Yes  | No  | Total number of values in this cache.|
+| length<sup>18+</sup> | number | Yes   | No   | Total number of values in the current cache. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-pro.put(1, 8);
-let result = pro.length;
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+lruCache.put(1, 8);
+let result = lruCache.length;
+console.info(`result = ${result}`);
 // Expected output: result = 2
 ```
 
@@ -57,19 +61,19 @@ A constructor used to create a **SendableLruCache** instance. The default capaci
 
 | Name  | Type  | Mandatory| Description                        |
 | -------- | ------ | ---- | ---------------------------- |
-| capacity | number | No  | Capacity of the cache to create. The default value is **64**, and the maximum value is **2147483647**. If the value is less than or equal to 0, an exception is thrown.|
+| capacity | number | No | Indicates the custom capacity of the cache. If not passed, the default value is 64, and the maximum value cannot exceed 2147483647. An exception is thrown when the value is less than or equal to 0. It is recommended that you set an appropriate capacity value based on the actual amount of service data to balance the cache hit rate and memory usage. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
 ```
 
 ## updateCapacity<sup>18+</sup>
 
 updateCapacity(newCapacity: number): void
 
-Changes the cache capacity. If the total number of values in the cache exceeds the specified capacity, the least recently used key-value pairs are removed.
+Sets the cache capacity to the specified value. If the total number of values in the cache exceeds the specified capacity, the least recently used key-value pairs will be evicted.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -79,28 +83,20 @@ Changes the cache capacity. If the total number of values in the cache exceeds t
 
 | Name     | Type  | Mandatory| Description                        |
 | ----------- | ------ | ---- | ---------------------------- |
-| newCapacity | number | Yes  | New capacity of the cache. The maximum value is 2147483647. If the value is less than or equal to 0, an exception is thrown.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                                   |
-| -------- | ------------------------------------------|
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| newCapacity | number | Yes | Indicates the capacity to customize for the cache. The maximum value cannot exceed 2147483647. An exception is thrown when the value is less than or equal to 0. It is recommended to set an appropriate capacity value based on the actual business data volume to balance the cache hit rate and memory usage. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.updateCapacity(100);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.updateCapacity(100);
 ```
 
 ## toString<sup>18+</sup>
 
 toString(): string
 
-Obtains the string representation of this cache.
+Returns the string representation of the object, including information such as the maximum cache capacity, the number of successful query matches, the number of failed query matches, and the match rate.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -110,25 +106,25 @@ Obtains the string representation of this cache.
 
 | Type  | Description                      |
 | ------ | -------------------------- |
-| string | String representation of the cache, in the format of SendableLruCache[ maxSize = (maxSize), hits = (hitCount), misses = (missCount), hitRate = (hitRate) ], where **(maxSize)** indicates the maximum size of the cache, **(hitCount)** indicates the number of matched queries, **(missCount)** indicates the number of times that the number of mismatched queries, and **(hitRate)** indicates the matching rate.|
+| string | Returns the string representation of the object. The returned string format is: SendableLruCache[ maxSize = (maxSize), hits = (hitCount), misses = (missCount), hitRate = (hitRate) ]. (maxSize) indicates the maximum cache size, (hitCount) indicates the number of times a query value matched successfully, (missCount) indicates the number of times a query value failed to match, and (hitRate) indicates the query value match rate.|
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-pro.get(2);
-pro.get(3);
-console.info(pro.toString());
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+lruCache.get(2);
+lruCache.get(3);
+console.info(lruCache.toString());
 // Expected output: SendableLruCache[ maxSize = 64, hits = 1, misses = 1, hitRate = 50% ]
-// maxSize: maximum size of the cache. hits: number of matched queries. misses: number of mismatched queries. hitRate: matching rate.
+// maxSize: maximum cache size hits: number of successful query matches misses: number of failed query matches hitRate: query match rate
 ```
 
 ## getCapacity<sup>18+</sup>
 
 getCapacity(): number
 
-Obtains the capacity of this cache.
+Obtains the current cache capacity.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -138,14 +134,14 @@ Obtains the capacity of this cache.
 
 | Type  | Description                  |
 | ------ | ---------------------- |
-| number | Capacity of the cache.|
+| number | Returns the current cache capacity. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-let result = pro.getCapacity();
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+let result = lruCache.getCapacity();
+console.info(`result = ${result}`);
 // Expected output: result = 64
 ```
 
@@ -153,7 +149,7 @@ console.info('result = ' + result);
 
 clear(): void
 
-Clears all key-value pairs from this cache.
+Clears all key-value pairs from the current cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -162,13 +158,13 @@ Clears all key-value pairs from this cache.
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-let result = pro.length;
-pro.clear();
-let res = pro.length;
-console.info('result = ' + result);
-console.info('res = ' + res);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+let result = lruCache.length;
+lruCache.clear();
+let res = lruCache.length;
+console.info(`result = ${result}`);
+console.info(`res = ${res}`);
 // Expected output: result = 1
 // Expected output: res = 0
 ```
@@ -177,7 +173,7 @@ console.info('res = ' + res);
 
 getCreateCount(): number
 
-Obtains the number of times that the default internal API is called to create objects.
+Obtains the number of times objects are created by calling the createDefault method.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -187,7 +183,7 @@ Obtains the number of times that the default internal API is called to create ob
 
 | Type  | Description               |
 | ------ | -------------------|
-| number | Number of times that the default internal API is called.|
+| number | Return the number of times objects are created using the createDefault method. |
 
 **Example**
 
@@ -207,7 +203,7 @@ lru.put(2, 10);
 lru.get(3);
 lru.get(5);
 let res = lru.getCreateCount();
-console.info('res = ' + res);
+console.info(`res = ${res}`);
 // Expected output: res = 2
 // When the get operation is performed, if the key does not exist, call the createDefault API to check whether the return value is undefined.
 // If the return value is not undefined, add the key and return value to the cache as a new entry and increase the creation count by one.
@@ -232,11 +228,11 @@ Obtains the number of times that the queried values are mismatched.
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-pro.get(2);
-let result = pro.getMissCount();
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+lruCache.get(2);
+let result = lruCache.getMissCount();
+console.info(`result = ${result}`);
 // Expected output: result = 0
 ```
 
@@ -244,7 +240,7 @@ console.info('result = ' + result);
 
 getRemoveCount(): number
 
-Obtains the number of times that key-value pairs in the cache are recycled. When the size of the cache exceeds the capacity limit, the least used key-value pairs will be recycled.
+Obtains the number of evictions of cache key-value pairs. When the number of cached items exceeds the capacity limit, the least recently used key-value pairs will be evicted.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -254,17 +250,17 @@ Obtains the number of times that key-value pairs in the cache are recycled. When
 
 | Type  | Description                      |
 | ------ | -------------------------- |
-| number | Number of times that key-value pairs in the cache are recycled.|
+| number | Returns the number of times cache key-value pairs have been evicted. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-pro.updateCapacity(2);
-pro.put(50, 22);
-let result = pro.getRemoveCount();
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+lruCache.updateCapacity(2);
+lruCache.put(50, 22);
+let result = lruCache.getRemoveCount();
+console.info(`result = ${result}`);
 // Expected output: result = 0
 ```
 
@@ -287,11 +283,11 @@ Obtains the number of times that the queried values are matched.
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-pro.get(2);
-let result = pro.getMatchCount();
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+lruCache.get(2);
+let result = lruCache.getMatchCount();
+console.info(`result = ${result}`);
 // Expected output: result = 1
 ```
 
@@ -299,7 +295,7 @@ console.info('result = ' + result);
 
 getPutCount(): number
 
-Obtains the number of additions to this cache.
+Obtains the number of times values have been added to the cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -309,15 +305,15 @@ Obtains the number of additions to this cache.
 
 | Type  | Description                        |
 | ------ | ---------------------------- |
-| number | Number of additions to the cache.|
+| number | Return the number of times a value is added to the cache. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-let result = pro.getPutCount();
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+let result = lruCache.getPutCount();
+console.info(`result = ${result}`);
 // Expected output: result = 1
 ```
 
@@ -325,7 +321,7 @@ console.info('result = ' + result);
 
 isEmpty(): boolean
 
-Checks whether this cache is empty.
+Checks whether the current cache is empty.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -335,14 +331,14 @@ Checks whether this cache is empty.
 
 | Type   | Description                                    |
 | ------- | ---------------------------------------- |
-| boolean | Check result. The value **true** is returned if the cache is empty and does not contain any key-value pairs; otherwise, **false** is returned.|
+| boolean | Returns true if the current cache is empty and contains no key-value pairs; returns false if the current cache is not empty. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-let result = pro.isEmpty();
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+let result = lruCache.isEmpty();
 console.info('result = ' + result);
 // Expected output: result = false
 ```
@@ -351,7 +347,7 @@ console.info('result = ' + result);
 
 get(key: K): V | undefined
 
-Obtains the value of a key.
+Returns the value corresponding to the key. If the specified key does not exist in the cache, the createDefault method is called; if createDefault returns a non-undefined value, the key-value pair is added to the cache and the value is returned; if createDefault returns undefined, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -367,23 +363,23 @@ Obtains the value of a key.
 
 | Type                    | Description                                                        |
 | ------------------------ | ------------------------------------------------------------ |
-| V \| undefined | If the specified key exists in the cache, the return value is the value associated with that key. If not, the default internal API is called to generate an object with the same key and value and return the value. If the default internal API returns **undefined**, the return value is **undefined**; otherwise, the return value is whatever that API comes up with.|
+| V \| undefined | If the specified key exists in the cache, returns the value associated with the key; otherwise, calls the createDefault method to create a value. If createDefault returns a non-undefined value, adds the key-value pair to the cache and returns that value; if createDefault returns undefined, ultimately returns undefined. When the number of values in the cache exceeds the capacity due to adding a new entry, the least recently used key-value pair is evicted. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-let result  = pro.get(2);
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+let result  = lruCache.get(2);
+console.info(`result = ${result}`);
 // Expected output: result = 10
 ```
 
 ## put<sup>18+</sup>
 
-put(key: K,value: V): V
+put(key: K, value: V): V
 
-Adds a key-value pair to this cache and returns the value associated with the key. If the total number of values in the cache is greater than the specified capacity, the deletion operation is performed.
+Adds a key-value pair to the cache and returns the value associated with the added key. When the number of values in the cache exceeds the capacity, the least recently used key-value pair is evicted.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -405,9 +401,9 @@ Adds a key-value pair to this cache and returns the value associated with the ke
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-let result = pro.put(2, 10);
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+let result = lruCache.put(2, 10);
+console.info(`result = ${result}`);
 // Expected output: result = 10
 ```
 
@@ -415,7 +411,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-Obtains all values in this cache, listed from the most to the least recently accessed, where the most recently accessed indicates the key-value pair with the latest operation.
+Obtains a list of all values in the current cache, arranged in order from most recently accessed to least recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -425,17 +421,17 @@ Obtains all values in this cache, listed from the most to the least recently acc
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| V&nbsp;[] | All values in the cache, listed from the most to the least recently used.|
+| V&nbsp;[] | Returns a list of all values in the current cache, arranged in order from most recently accessed to least recently accessed. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number|string,number|string>();
-pro.put(2, 10);
-pro.put(2, "anhu");
-pro.put("afaf", "grfb");
-let result = pro.values();
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number|string,number|string>();
+lruCache.put(2, 10);
+lruCache.put(2, "anhu");
+lruCache.put("afaf", "grfb");
+let result = lruCache.values();
+console.info(`result = ${result}`);
 // Expected output: result = anhu,grfb
 ```
 
@@ -443,7 +439,7 @@ console.info('result = ' + result);
 
 keys(): K[]
 
-Obtains all keys in this cache, listed from the most to the least recently accessed.
+Obtains all keys in the current cache, arranged in order from most recently accessed to least recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -453,16 +449,16 @@ Obtains all keys in this cache, listed from the most to the least recently acces
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| K&nbsp;[] | All keys in the cache, listed from the most to the least recently used.|
+| K&nbsp;[] | Returns a list of all keys in the current cache, ordered from most recently accessed to least recently accessed. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 1);
-let result = pro.keys();
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+lruCache.put(3, 1);
+let result = lruCache.keys();
+console.info(`result = ${result}`);
 // Expected output: result = 2,3
 ```
 
@@ -470,7 +466,7 @@ console.info('result = ' + result);
 
 remove(key: K): V | undefined
 
-Removes a key and its associated value from this cache and returns the value associated with the key. If the key does not exist, undefined is returned.
+Removes the specified key and its associated value from the current cache, and returns the value associated with the key. If the key does not exist, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -480,21 +476,21 @@ Removes a key and its associated value from this cache and returns the value ass
 
 | Name| Type| Mandatory| Description          |
 | ------ | ---- | ---- | -------------- |
-| key    | K    | Yes  | Key to remove.|
+| key    | K    | Yes   | Key to delete. |
 
 **Return value**
 
 | Type                    | Description                                                        |
 | ------------------------ | ------------------------------------------------------------ |
-| V&nbsp;\|&nbsp;undefined | Returns an **Optional** object containing the removed key-value pair if the key exists in the cache; returns undefined if the key does not exist; throws an error if **null** is passed in for **key**.|
+| V&nbsp;\|&nbsp;undefined | Return the value associated with the key; if the key does not exist, return undefined. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-let result = pro.remove(20);
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+let result = lruCache.remove(20);
+console.info(`result = ${result}`);
 // Expected output: result = undefined
 ```
 
@@ -502,7 +498,7 @@ console.info('result = ' + result);
 
 contains(key: K): boolean
 
-Checks whether the cache contains the specified key.
+Checks whether the current cache contains the specified key. If it exists, true is returned; otherwise, false is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -518,15 +514,15 @@ Checks whether the cache contains the specified key.
 
 | Type   | Description                                      |
 | ------- | ------------------------------------------ |
-| boolean | Check result. The value **true** is returned if the cache contains the specified key; otherwise, **false** is returned.|
+| boolean | true: the cache contains the specified key; false: the cache does not contain the specified key. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-let result = pro.contains(2);
-console.info('result = ' + result);
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+let result = lruCache.contains(2);
+console.info(`result = ${result}`);
 // Expected output: result = true
 ```
 
@@ -534,7 +530,7 @@ console.info('result = ' + result);
 
 entries(): IterableIterator&lt;[K,V]&gt;
 
-Obtains a new iterator object that contains all key-value pairs in this object.
+Allows iteration over all key-value pairs contained in this object, arranged in order from most recently accessed to least recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -544,18 +540,18 @@ Obtains a new iterator object that contains all key-value pairs in this object.
 
 | Type       | Description                |
 | ----------- | -------------------- |
-| IterableIterator<[K,&nbsp;V]> | Iterable array.|
+| IterableIterator<[K,&nbsp;V]> | Return an iterator of key-value pairs. |
 
 **Example**
 
 ```ts
-let pro = new ArkTSUtils.SendableLruCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 15);
-let pair:Iterable<Object[]> = pro.entries();
+let lruCache = new ArkTSUtils.SendableLruCache<number, number>();
+lruCache.put(2, 10);
+lruCache.put(3, 15);
+let pair:Iterable<[number, number]> = lruCache.entries();
 let arrayValue = Array.from(pair);
 for (let value of arrayValue) {
-  console.info(value[0]+ ', '+ value[1]);
+  console.info(`${value[0]}, ${value[1]}`);
   // Expected output:
   // 2, 10
   // 3, 15

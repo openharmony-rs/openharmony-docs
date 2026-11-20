@@ -1,12 +1,11 @@
 # Webview Error Codes
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:41:11.711Z pushedAt=2026-08-07T08:12:52.875Z -->
+<!-- md-trans-meta sourceCommit=139f361c99d1eb7fa10bc5ed4f9201142264b775 translatedAt=2026-11-06T11:50:56.954Z pushedAt=2026-11-13T11:19:03.983Z nl=1 -->
 
 > **NOTE**
 >
@@ -29,6 +28,7 @@ The **WebViewController** object is not associated with any **Web** component.
 **Solution**
 
 Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10) to check whether the **WebViewController** object is attached with the **Web** component.<!--RP1--><!--RP1End-->
+
 
 ## 17100002 Incorrect URL Format
 
@@ -56,30 +56,27 @@ The URL is incorrect. Possible causes are as follows:
 
 2. If the error "No valid cookie found" is reported, check whether the cookie configuration for the specified URL is valid. If necessary, check the cookie permission or reset the cookie.
 
+
 ## 17100003 Incorrect Resource Path
 
 **Error Message**
 
 1. Invalid resource path or file type.
-
 2. Calling a JS method that returns an empty ArrayBuffer via runJavaScript.
 
 **Description**
 
 1. This error code is reported when the path to the resource file is incorrect.
-
 2. The method on the H5 side invoked via **runJavaScript** returns an empty **ArrayBuffer**.
 
 **Possible Causes**
 
 1. The resource file does not exist or cannot be accessed.
-
 2. The method on the H5 side invoked via **runJavaScript** returns an empty **ArrayBuffer**.
 
 **Solution**
 
 1. Make sure the path to the resource file is correct.
-
 2. Use the **runJavaScriptExt** API to replace the **runJavaScript** API.
 
 ## 17100004 Function Not Enabled
@@ -100,6 +97,7 @@ The related function is not set or enabled, or the function is incorrectly invok
 
 Check whether the related function switch is set to **true**, or whether the current API supports concurrency.
 
+
 ## 17100005 Invalid Cookie Value
 
 **Error Message**
@@ -108,7 +106,7 @@ The provided cookie value is invalid. It must follow the format specified in RFC
 
 **Description**
 
-This error code is reported when the cookie value type is invalid.
+The cookie value format is invalid.
 
 **Possible Causes**
 
@@ -117,6 +115,7 @@ The cookie value type is not supported.
 **Solution**
 
 Check whether the input cookie value complies with RFC 6265, and ensure that it does not contain illegal content such as control characters or separators.
+
 
 ## 17100006 Message Port Callback Cannot Be Registered
 
@@ -136,6 +135,7 @@ The port is closed.
 
 Make sure the port is open.
 
+
 ## 17100008 Deleting a JavaScriptProxy That Does Not Exist
 
 **Error Message**
@@ -153,6 +153,7 @@ The passed JavaScriptProxy has not been registered.
 **Solution**
 
 Check whether the passed JavaScriptProxy is successfully registered.
+
 
 ## 17100010 Failure to Send Messages Through a Port
 
@@ -174,6 +175,7 @@ The local or remote port is closed.
 
 2. Make sure an **onMessageEvent** callback is registered for the remote port.
 
+
 ## 17100011 Invalid Origin
 
 **Error Message**
@@ -193,6 +195,7 @@ This error code is reported when the input parameter **origin** is invalid. The 
 **Solution**
 
 Make sure the **origin** value is valid.
+
 
 ## 17100012 No Web Storage Origin
 
@@ -214,6 +217,7 @@ The related JS database API is not used.
 
 2. If the JS database API is used, find out the failure cause, for example, check whether **databaseAccess** is enabled.
 
+
 ## 17100013 Invalid Number of Sockets During Preconnection
 
 **Error Message**
@@ -231,6 +235,7 @@ The number of sockets is less than or equal to 0 or greater than 6.
 **Solution**
 
 Make sure the specified number of sockets is greater than 0 and less than or equal to 6.
+
 
 ## 17100014 Type and Value Mismatch
 
@@ -250,6 +255,7 @@ The value of the obtained message does not match the type of the message.
 
 Call the API based on the message type to obtain the message value. For example, if the type is **BOOLEAN**, call the **GetBoolean** API to obtain the Boolean value.
 
+
 ## 17100016 Download Task Not Paused
 
 **Error Message**
@@ -267,6 +273,7 @@ This error code is reported when an attempt is made to resume a download task th
 **Solution**
 
 N/A
+
 
 ## 17100018 No WebDownloadDelegate Available
 
@@ -335,10 +342,9 @@ This error code is reported when the **WebResourceHandler** object is invalid.
 **Possible Causes**
 
 1. The corresponding request is not intercepted in **WebSchemeHandler**.
-
 2. The request is intercepted before the response body is constructed, and the request is ended due to some reasons.
-
 3. The **WebResourceHandler** object has called **didFinish** and **didFail**.
+
 
 **Solution**
 
@@ -415,4 +421,3 @@ The error code is not within the range of [WebNetErrorList](arkts-apis-netErrorL
 **Solution**
 
 Check whether the error code is within the range of [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) or whether **NET_OK** is used when the **didFail** API is called.
-<!--no_check-->

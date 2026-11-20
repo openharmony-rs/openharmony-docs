@@ -11078,9 +11078,11 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 > **说明：**
 >
-> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+> - User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
 >
-> 不使用该方法时，默认不开启User-Agent Client Hints功能。
+> - 不使用该方法时，默认不开启User-Agent Client Hints功能。
+>
+> - 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](#initializewebengine)），必须先调用[initializeWebEngine](#initializewebengine)完成初始化，否则接口调用无效。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -11689,6 +11691,95 @@ isAutoReloadEnabled(): boolean
 
 完整示例代码参考[enableAutoReload](#enableautoreload)。
 
+## setNavigationThrottle
+
+setNavigationThrottle(throttle: NavigationThrottle): void
+
+设置NavigationThrottle，在四个导航阶段拦截Web组件的导航请求，由应用决策放行、取消或挂起。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| throttle | [NavigationThrottle](./arkts-apis-webview-NavigationThrottle.md) | 是 | 导航拦截器实例。传入undefined或null时清除当前设置的NavigationThrottle，清除后导航行为与未注册时一致。 |
+
+> **说明：**
+>
+> - 每个WebviewController至多一个生效的NavigationThrottle，重复调用本接口会替换旧实例，被替换的实例不再收到回调。
+>
+> - 本接口不影响[onOverrideUrlLoading](./arkts-basic-components-web-events.md#onoverrideurlloading12)。两者同时设置时，先回调onOverrideUrlLoading，其返回true（应用接管）时本次导航不再触发NavigationThrottle回调。
+>
+> - 需在WebviewController关联Web组件后调用，否则抛出错误码17100001。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyThrottle implements webview.NavigationThrottle {
+  willStartRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    // 拦截未授权外链，其余放行。
+    if (!info.url.startsWith('https://www.example.com')) {
+      return webview.NavigationThrottleAction.CANCEL;
+    }
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willRedirectRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willProcessResponse(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willFailRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setNavigationThrottle')
+        .onClick(() => {
+          try {
+            this.controller.setNavigationThrottle(new MyThrottle());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## setNavigationEntryUserData
 
 setNavigationEntryUserData(key: string, value: string): void
@@ -11811,3 +11902,104 @@ removeNavigationEntryUserData(key: string): void
 **示例：**
 
 完整示例代码参考[setNavigationEntryUserData](#setnavigationentryuserdata)。
+
+## setDataDirectorySuffix
+
+static setDataDirectorySuffix(suffix: string): void
+
+设置当前进程 ArkWeb 的数据目录后缀。
+
+> **说明：**
+>
+> 同一应用不同进程的Web组件共享一份数据目录(cookie/缓存/存储)，多账号、多业务线数据互相污染。
+> 
+> 通过本接口为进程设置数据目录后缀后，该进程内Web引擎初始化时的用户数据目录将由默认的 `<filesDir>/../files/__arkweb`、`<filesDir>/../cache/web` 变为 
+> `<filesDir>/../files/__arkweb_<suffix>`、`<filesDir>/../cache/web_<suffix>`，从而实现按后缀的数据隔离。
+>
+> 该接口为全局静态API，必须在initializeWebEngine()初始化内核之前调用，否则设置无效。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| suffix | string | 是 | 数据目录后缀。仅支持字母与数字，长度为 1~128。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. The suffix only supports letters and digits with length 1 to 128. |
+| 17100025 | Engine already initialized. The suffix must be set before the web engine is initialized. |
+| 17100026 | Data directory suffix has already been set. Only one suffix can be set per process. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate");
+    webview.WebviewController.setDataDirectorySuffix("myCustomSuffix");
+    if (webview.WebviewController.getDataDirectorySuffix() == "myCustomSuffix") {
+      console.info("DataDirectorySuffix is set to myCustomSuffix");
+    }
+    console.info("EntryAbility onCreate done");
+    webview.WebviewController.initializeWebEngine();
+  }
+}
+```
+
+## getDataDirectorySuffix
+
+static getDataDirectorySuffix(): string
+
+获取当前进程通过setDataDirectorySuffix设置的数据目录后缀。
+
+本接口仅返回已记录的后缀，不需要在Web内核初始化之前调用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------------------------------------------------ |
+| string | 当前进程的数据目录后缀；未设置时返回空字符串。 |
+
+**示例：**
+
+```ts
+// pages/Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getDataDirectorySuffix')
+        .onClick(() => {
+          const suffix: string = webview.WebviewController.getDataDirectorySuffix();
+          console.info(`DataDirectorySuffix is ${suffix}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```

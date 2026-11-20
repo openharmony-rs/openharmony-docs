@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍设备内UIAbility和ExtensionAbility组件的启动约束规则，涵盖后台状态弹窗限制、跨应用拉起exported校验等，帮助开发者规避业务功能异常。"
+keywords: [组件启动规则, exported, 后台启动限制]
+doctype: guide
+status: active
+---
 # 设备内组件启动规则
 
 <!--Kit: Ability Kit-->

@@ -29,13 +29,6 @@ API详细介绍请参见[ohos.file.securityLabel](../reference/apis-core-file-ki
 
 获取通用文件沙箱路径，并设置数据等级标签。示例中的context的获取方式请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-
-```ts
-import { fileIo, securityLabel } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-```
 <!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript

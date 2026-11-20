@@ -425,6 +425,6 @@ struct MarqueeStop4 {
 }
 ```
 
-![marqueeOnStop](figures/marqueeOnStop.gif)
+
 
 <!--no_check-->

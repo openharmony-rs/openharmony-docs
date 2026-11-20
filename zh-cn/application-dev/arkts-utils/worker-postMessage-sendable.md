@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍多级Worker间的高性能消息通信：结合postMessageWithSharedSendable与Sendable对象实现引用传递避免克隆开销，以父Worker向子Worker分发数据克隆任务为例，并说明多级Worker生命周期管理要点。"
 keywords: [多级Worker, postMessageWithSharedSendable, Sendable对象, 高性能通信, 数据克隆, 父子Worker, 生命周期管理]
 doctype: guide
@@ -150,7 +150,6 @@ status: active
    <!-- @[multi_worker_high_performance_communication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerPostMessageSendable.ets) -->   
    
    ``` TypeScript
-   // Index.ets
    import { worker, collections } from '@kit.ArkTS';
    import { CopyEntry } from '../Sendable/CopyEntry';
    
