@@ -6293,7 +6293,7 @@ let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance
 let callback = (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  uintArray.forEach((code:number) => {
+  uintArray.forEach((code: number) => {
     messageView += String.fromCharCode(code);
   });
   console.info('total: ' + JSON.stringify(value));
