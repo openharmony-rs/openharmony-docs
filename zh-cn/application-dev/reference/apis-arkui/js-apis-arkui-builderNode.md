@@ -1619,7 +1619,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 >
 > - 支持同一个事件转发多次<!--Del-->，不支持[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)调用本接口<!--DelEnd-->。
 >
-> - 组件的[hitTestBehavior](arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent时，请勿继续使用postInputEventWithStrategy，会导致事件序列异常。
+> - 当组件的[hitTestBehavior](arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)设置HitTestMode.Transparent时，请勿继续使用postInputEventWithStrategy，会导致事件序列异常。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
