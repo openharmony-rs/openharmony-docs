@@ -512,7 +512,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 generateTaskChallenge(taskIdentityInfo: TaskIdentityInfo): Promise&lt;Uint8Array&gt;
 
-基于任务身份信息为任务认证令牌生成挑战值。使用Promise异步回调。
+基于任务身份信息生成挑战值。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -571,7 +571,7 @@ abilityToolAccessCtrl.generateTaskChallenge(taskIdentityInfo).then((challenge: U
 
 generateTaskIdentity(taskIdentityInfo: TaskIdentityInfo): Promise&lt;TaskIdentity&gt;
 
-为智能体命令生成任务标识。该函数根据调用者身份和基本任务属性（例如任务ID和任务过期时间）生成该标识。使用Promise异步回调。
+智能体命令生成任务标识。该函数根据调用者身份和基本任务属性（例如任务ID和任务过期时间）生成该标识。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -965,11 +965,11 @@ abilityToolAccessCtrl.revokeTaskIdentity(taskId).then(() => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | taskId | string | 否 | 否 | 任务ID。 |
-| taskExpireTime | number | 否 | 否 | 任务过期时间。单位为：秒。取值范围：-1或正整数。-1表示无过期时间。 |
+| taskExpireTime | number | 否 | 否 | 任务过期时间。单位为：秒。取值为-1或正整数。-1表示无过期时间。 |
 | executeType | [ExecuteType](#executetype) | 否 | 否 | 任务执行类别。 |
-| allowScreenLockExecution | boolean | 否 | 否 | 任务是否允许在锁屏下执行。 |
+| allowScreenLockExecution | boolean | 否 | 否 | 任务是否允许在锁屏下执行。true表示允许在锁屏下执行；false表示不允许在锁屏下执行。 |
 | authToken | Uint8Array | 否 | 是 | 可信持有物的认证凭据。长度不超过4096字节。<br>默认值：空。 |
-| allowableDuration | number | 否 | 是 | 可信持有物认证凭据的有效时长。单位为：毫秒。取值范围：(0,86400000]。默认值：600000。 |
+| allowableDuration | number | 否 | 是 | 可信持有物认证凭据的有效时长。单位为：毫秒。取值范围：(0, 86400000]。默认值：600000。 |
 
 ## TaskIdentity
 
@@ -983,7 +983,7 @@ abilityToolAccessCtrl.revokeTaskIdentity(taskId).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| taskAttributes | string | 否 | 否 | 任务属性。为JSON格式的字符串，包含taskId、taskExpireTime、executeType、allowScreenLockExecution、allowableDuration等字段。 |
+| taskAttributes | string | 否 | 否 | 任务属性。为JSON格式的字符串，包含taskId、taskExpireTime、executeType、allowScreenLockExecution、authToken、allowableDuration字段。 |
 | identity | string | 否 | 否 | 任务属性的标识信息。 |
 | challenge | string | 否 | 否 | 挑战值。 |
 
