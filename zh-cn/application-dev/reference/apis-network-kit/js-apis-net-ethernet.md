@@ -31,6 +31,115 @@ type HttpProxy = connection.HttpProxy
 | connection.HttpProxy     | 网络代理配置信息。      |
 
 
+## ethernet.getIfaceConfig
+
+getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void
+
+获取指定网络接口的配置信息。使用callback异步回调。
+
+**起始版本**：26.1.0
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Ethernet
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| iface | string | 是 | 指定网络接口。 |
+| callback | AsyncCallback\<[InterfaceConfiguration](js-apis-net-ethernet-sys.md#interfaceconfiguration)> | 是 | 回调函数。返回指定网络接口的配置信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[以太网连接错误码](errorcode-net-ethernet.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Non-system applications use system APIs.<br>适用版本：9-26.0.1 |
+| 401 | Parameter error. |
+| 2200001 | Invalid parameter value. |
+| 2200002 | Failed to connect to the service. |
+| 2200003 | System internal error. |
+| 2201005 | Device information does not exist. |
+
+**示例：**
+
+```ts
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.InterfaceConfiguration) => {
+  if (error) {
+    console.error("getIfaceConfig  callback error = " + JSON.stringify(error));
+  } else {
+    console.info("getIfaceConfig callback mode = " + JSON.stringify(value.mode));
+    console.info("getIfaceConfig callback ipAddr = " + JSON.stringify(value.ipAddr));
+    console.info("getIfaceConfig callback route = " + JSON.stringify(value.route));
+    console.info("getIfaceConfig callback gateway = " + JSON.stringify(value.gateway));
+    console.info("getIfaceConfig callback netMask = " + JSON.stringify(value.netMask));
+    console.info("getIfaceConfig callback dnsServers = " + JSON.stringify(value.dnsServers));
+  }
+});
+```
+
+## ethernet.getIfaceConfig
+
+getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
+
+获取指定网络接口的配置信息。使用Promise异步回调。
+
+**起始版本**：26.1.0
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Ethernet
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| iface | string | 是 | 指定网络接口。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<[InterfaceConfiguration](js-apis-net-ethernet-sys.md#interfaceconfiguration)> | Promise对象，返回指定网络接口的配置信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[以太网连接错误码](errorcode-net-ethernet.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Non-system applications use system APIs.<br>适用版本：9-26.0.1 |
+| 401 | Parameter error. |
+| 2200001 | Invalid parameter value. |
+| 2200002 | Failed to connect to the service. |
+| 2200003 | System internal error. |
+| 2201005 | Device information does not exist. |
+
+**示例：**
+
+```ts
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => {
+  console.info("getIfaceConfig promise mode = " + JSON.stringify(data.mode));
+  console.info("getIfaceConfig promise ipAddr = " + JSON.stringify(data.ipAddr));
+  console.info("getIfaceConfig promise route = " + JSON.stringify(data.route));
+  console.info("getIfaceConfig promise gateway = " + JSON.stringify(data.gateway));
+  console.info("getIfaceConfig promise netMask = " + JSON.stringify(data.netMask));
+  console.info("getIfaceConfig promise dnsServers = " + JSON.stringify(data.dnsServers));
+}).catch((error: BusinessError) => {
+  console.error("getIfaceConfig promise error = " + JSON.stringify(error));
+});
+```
+
 ## ethernet.getMacAddress<sup>14+</sup>
 
 getMacAddress(): Promise\<Array\<MacAddressInfo>>
