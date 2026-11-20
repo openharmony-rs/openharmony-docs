@@ -28,6 +28,8 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 
 **系统接口：** 此接口为系统接口。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[advancedBlendMode](#advancedblendmode)。
+
 **参数：** 
 
 | 参数名 | 类型                            | 必填 | 说明                                                         |
@@ -40,6 +42,59 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
+
+## BlenderBase
+
+type BlenderBase = uiEffect.BlenderBase
+
+混合器基础类型，创建各类混合效果的统一入口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[BlenderBase](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#blenderbase)。
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 类型 | 说明 |
+| -------- | -------- |
+| uiEffect.[BlenderBase](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#blenderbase) | 混合器基础类型，创建各类混合效果的统一入口。 |
+
+## advancedBlendMode
+
+advancedBlendMode(effect: BlenderBase | undefined, type?: BlendApplyType): this
+
+使用[BlenderBase](#blenderbase)实例为当前组件添加颜色混合效果。不能与[blendMode](ts-universal-attributes-image-effect.md#blendmode11)接口同时使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[advancedBlendMode<sup>13+</sup>](#advancedblendmode13)。
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：** 
+
+| 参数名 | 类型                            | 必填 | 说明                                                         |
+| ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
+| effect  | [BlenderBase](#blenderbase)&nbsp;\|&nbsp;undefined  | 是   | Blender基础类型，创建各类Blender效果的入口。<br/>BlenderBase实例必须通过BlenderBase类成员方法创建，例如：[uiEffect.BlenderBase.createBrightnessBlender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#createbrightnessblender)。<br/>当effect的值为undefined时，恢复为内容不进行混合的效果。 |
+| type   | [BlendApplyType](ts-universal-attributes-image-effect-sys.md#blendapplytype枚举说明)  |    否    | 混合效果的实现方式是否离屏。<br/>默认值：BlendApplyType.FAST。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
 
 ## BlendApplyType枚举说明
 
