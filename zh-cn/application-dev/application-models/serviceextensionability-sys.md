@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "面向系统应用介绍ServiceExtensionAbility后台服务组件的开发，涵盖生命周期、IDL接口定义、启动连接、客户端鉴权等完整流程。"
+keywords: [ServiceExtensionAbility, 后台服务, 系统应用, 启动服务, 连接服务, IDL接口, RPC通信, 客户端鉴权]
+doctype: guide
+status: active
+---
+
 # ServiceExtensionAbility（仅对系统应用开放）
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

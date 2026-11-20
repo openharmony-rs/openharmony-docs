@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "针对Navigation、router及三方路由框架，详细讲解页面栈恢复的三项配置、参数为空降级、深层栈补齐与超大数据分流的完整适配方案。"
+keywords: [备份恢复, 页面栈恢复, Navigation, recoverable, NavDestination, router, 深层栈补齐, 参数降级, 超大数据分流]
+doctype: guide
+status: active
+---
+
 # UIAbility备份恢复适配指导
 
 <!--Kit: Ability Kit-->

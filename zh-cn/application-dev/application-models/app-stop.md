@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用退出机制，涵盖正常退出与异常退出场景，说明UIAbility、AbilityStage与进程的销毁顺序及生命周期回调。"
+keywords: [应用退出, UIAbility, onDestroy, terminateSelf, 生命周期, 进程销毁, onBackPressed]
+doctype: guide
+status: active
+---
+
 # 应用退出
 
 <!--Kit: Ability Kit-->
