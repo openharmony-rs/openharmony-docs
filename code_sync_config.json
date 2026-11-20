@@ -35589,21 +35589,31 @@
 						"end_line":89,
 						"name":"device_status_unsubscribe",
 						"start_line":60
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Stationary/DeviceStatusSta/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"import_the_device_status_module",
+						"start_line":29
 					},
 					{
-						"end_line":107,
+						"end_line":79,
 						"name":"drop_detect_subscribe",
-						"start_line":93
+						"start_line":64
 					},
 					{
-						"end_line":123,
+						"end_line":103,
 						"name":"drop_detect_unsubscribe_all",
-						"start_line":111
+						"start_line":88
 					},
 					{
-						"end_line":156,
+						"end_line":128,
 						"name":"drop_detect_unsubscribe",
-						"start_line":127
+						"start_line":112
 					}
 				]
 			}
