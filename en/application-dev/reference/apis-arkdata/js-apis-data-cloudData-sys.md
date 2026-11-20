@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @ltttjs; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=2804a32e158448d3711a6400375ce1e32da499a1 translatedAt=2026-09-04T03:23:59.941Z pushedAt=2026-09-09T09:11:03.705Z -->
+<!-- md-trans-meta sourceCommit=595676e386ec1266ed5aa31649d3c376bf6ad8cc translatedAt=2026-11-16T01:56:46.397Z pushedAt=2026-11-20T07:27:36.859Z nl=1 -->
 
 The **cloudData** module provides APIs for implementing device-cloud synergy and device-cloud sharing.
 
@@ -22,7 +22,7 @@ The **cloudData** module provides the following functionalities:
 - [Config](#config): provides APIs for setting device-cloud synergy, including enabling and disabling device-cloud sync, clearing data, and notifying data changes.
 - [sharing](#sharing11): provides APIs for device-cloud sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing a confirmed invitation, and querying shared resources.
 
-> **NOTE**
+> **NOTE** 
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
@@ -200,10 +200,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -257,10 +257,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -306,10 +306,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -361,10 +361,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -411,10 +411,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -469,10 +469,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -528,9 +528,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -588,10 +588,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -645,10 +645,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -694,10 +694,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -748,10 +748,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -808,10 +808,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -867,10 +867,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -920,10 +920,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -980,9 +980,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. the accountId is empty; 2. the bundlename is null; 3. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **Example**
@@ -1037,9 +1037,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **Example**
@@ -1091,9 +1091,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **Example**
@@ -1166,10 +1166,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1216,9 +1216,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. Empty conditions; 2. Missing GROUP BY clause. |
 
 **Example**
@@ -1267,10 +1267,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1328,10 +1328,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1375,8 +1375,8 @@ Clears the cloud data locally. This API uses a promise to return the result.
 | Name    | Type                                               | Mandatory| Description                            |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | Yes  | ID of the logged-in cloud account.            |
-| appActions | Record<string, [ClearAction](#clearaction)>         | Yes   | Application information of the data to be cleared and the clearing rule of each application. The key is the application package name, and the value is the clearing rule. |
-| config | Record<string, [ClearConfig](#clearconfig23)>         | No   | Database-level clearing rule for device-cloud synergy. The key is the application package name, and the value is the database clearing rule of the application. Clearing rule priority: table level > database level > application level. If this parameter is not configured, the application-level data clearing rule is used by default. |
+| appActions | Record<string, [ClearAction](#clearaction)>         | Yes   | Application information of the data to be cleared and the clearing rule of each application. The key is the application bundle name, and the value is the clearing rule. |
+| config | Record<string, [ClearConfig](#clearconfig23)>         | No   | Database-level clearing rule for device-cloud synergy. The key is the application bundle name, and the value is the database clearing rule of the application. Clearing rule priority: table level > database level > application level. If this parameter is not configured, the application-level data clearing rule is used by default. |
 
 **Return value**
 
@@ -1390,9 +1390,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1466,10 +1466,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202      | Permission verification failed, application is not a system application. |
-| 801      | Capability not supported because the device does not support the device-cloud capability. |
-| 14800001 | Invalid arguments. Possible causes: Empty conditions. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 14800001 | Invalid arguments. Possible causes: 1. Empty conditions. |
 
 **Example**
 
@@ -1535,9 +1535,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202      | Permission verification failed. The application is not a system application and uses a system API. |
-| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
 **Example**
@@ -1685,9 +1685,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1761,9 +1761,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1838,9 +1838,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1919,9 +1919,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1973,9 +1973,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2034,9 +2034,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2088,9 +2088,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2148,9 +2148,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2187,9 +2187,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2234,9 +2234,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2289,9 +2289,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2350,9 +2350,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2389,9 +2389,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2435,9 +2435,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2474,9 +2474,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2521,9 +2521,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2563,9 +2563,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2612,9 +2612,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2652,9 +2652,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -2669,4 +2669,4 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
   console.info(`change confirmation succeeded, result: ${result}`);
 });
 ```
- <!--no_check-->
+<!--no_check-->

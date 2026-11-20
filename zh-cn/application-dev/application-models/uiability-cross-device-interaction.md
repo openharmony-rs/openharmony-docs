@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过Call调用实现UIAbility跨设备协同开发的方法，包括Callee端创建、Caller通信接口获取、序列化数据收发与通信接口释放等完整步骤。"
+keywords: [Call调用, 多端协同, 跨设备, Caller, Callee, startAbilityByCall, 分布式迁移]
+doctype: guide
+status: active
+---
 # 通过Call调用实现多端协同
 
 <!--Kit: Ability Kit-->

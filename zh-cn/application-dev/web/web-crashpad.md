@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用Crashpad收集Web渲染进程崩溃信息的方法，讲解崩溃后dmp文件的生成与沙箱目录获取，以及解析dmp文件定位崩溃原因与调用栈的步骤。"
+keywords: [Crashpad, 渲染进程崩溃, dmp文件, onRenderExited, onRenderProcessNotResponding]
+doctype: guide
+status: active
+---
+
 # 使用Crashpad收集Web组件崩溃信息
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

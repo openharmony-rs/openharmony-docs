@@ -5,7 +5,7 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=0331a80a2631c55d2d3d88a8180d5918e41aad9c translatedAt=2026-09-29T10:56:52.387Z pushedAt=2026-09-30T06:22:44.414Z -->
+<!-- md-trans-meta sourceCommit=8f2b98826059af486cf63a9d4c41fbaa00f93886 translatedAt=2026-11-16T01:40:59.138Z pushedAt=2026-11-16T12:39:13.980Z nl=1 -->
 
 NearLink device discovery consists of two phases: advertising and scanning. A peripheral device announces itself by sending NearLink advertisements, and a central device discovers advertising peripheral devices by initiating a NearLink scan. Advertising and scanning can be used independently or together to enable discovery and connection between devices.
 
@@ -55,7 +55,7 @@ To send a NearLink advertisement, for the complete API description and sample co
     }
     ```
 
-3. Construct the advertising parameters and data required by the user. The service UUID carried in the advertisement must be a custom UUID. For details, see [NearLink FAQs > What Is the Difference Between Standard UUIDs and Custom UUIDs](nearlink-faq-guide.md#what-is-the-difference-between-standard-uuids-and-custom-uuids).
+3. Construct the advertising parameters and data required by the user. The service UUID carried in advertising must be a custom UUID. For details, see [NearLink FAQs > What Is the Difference Between Standard UUIDs and Custom UUIDs](nearlink-faq-guide.md#what-is-the-difference-between-standard-uuids-and-custom-uuids). The `frameType` in the advertising parameters specifies the frame type, and the default value is `FRAME_TYPE_1`. To use the extended coverage frame, set this field to `nearlinkConstant.FrameType.FRAME_TYPE_4`. For details, see [NearLink FAQ > What Is a Frame Type](nearlink-faq-guide.md#what-is-a-frame-type).
 
     <!-- @[advertising_build_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -97,7 +97,7 @@ To send a NearLink advertisement, for the complete API description and sample co
     };
     ```
 
-4. Start NearLink advertising. The returned advId indicates the ID of this broadcast. `advertisingParams` is the advertising parameters constructed in step 3.
+4. Start NearLink advertising. The returned `advId` indicates the ID of this advertisement. `advertisingParams` is the advertising parameters constructed in step 3.
 
     <!-- @[advertising_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -345,7 +345,7 @@ The following table lists the APIs for initiating NearLink scans. For the comple
     }
     ```
 
-5. Start the NearLink scan. Here, `filters` is the scan filter configured in step 4, and `scanOptions` is the scan parameter.
+5. Start the NearLink scan. Here, `filters` is the scan filter configured in step 4, and `scanOptions` is the scan parameters. The `frameType` in the scan parameters must be consistent with that on the advertising side; otherwise, devices cannot be discovered. For details, see [NearLink FAQs > What Is a Frame Type](nearlink-faq-guide.md#what-is-a-frame-type).
 
     <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     

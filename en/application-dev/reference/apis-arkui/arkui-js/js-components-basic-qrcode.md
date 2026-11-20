@@ -1,11 +1,11 @@
 # qrcode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xuqinfeng1-->
-<!--Designer: @liyujie43-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @xuqinfeng1-->
-<!-- md-trans-meta sourceCommit=bbe820b15aaf29733c2f40fbe62bda7f1f6a0b03 translatedAt=2026-06-22T07:51:21.720Z pushedAt=2026-06-23T01:06:07.981Z -->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-11-12T04:17:15.142Z pushedAt=2026-11-12T08:08:49.015Z nl=1 -->
 
 >  **NOTE**
 >
@@ -64,7 +64,7 @@ The [universal methods](js-components-common-methods.md) are supported.
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <qrcode value="{{qr_value}}" type="{{qr_type}}"
+  <qrcode value="Hello World" type="{{qr_type}}"
   style="color: {{qr_col}};background-color: {{qr_bcol}};width: {{qr_size}};height: {{qr_size}};margin-bottom: 70px;"></qrcode>
   <text class="txt">Type</text>
   <switch showtext="true" checked="true" texton="rect" textoff="circle" onchange="setType"></switch>
@@ -126,3 +126,4 @@ export default {
 ```
 
 ![qrcode](figures/qrcode.gif)
+

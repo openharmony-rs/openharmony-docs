@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T04:06:57.114Z pushedAt=2026-10-28T07:58:24.535Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7066021843cdb3023e66e8a77bd7e2319b2c001d translatedAt=2026-11-12T03:31:00.882Z pushedAt=2026-11-12T09:07:17.706Z nl=1 -->
 
 To enhance the state management framework's capability of persistently storing UIs, you can use **PersistenceV2** to persist data.
 
@@ -27,7 +27,7 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-creat
 
 **PersistenceV2** is a singleton to be created when the application UI is started. It provides central storage for application state data that is accessible at the application level. Data is accessed through a unique key string. Unlike AppStorageV2, PersistenceV2 also stores the latest data on the device disk (persistent). In this way, the selected result can still be saved even when the application is closed.
 
-For an [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with **PersistenceV2**, the change of the [\@Trace](./arkts-new-observedV2-and-trace.md) attribute of the object triggers automatic persistence of the entire associated object; changes to non‑@Trace properties do not. If necessary, you can call **PersistenceV2** APIs to manually perform persistence. Note that the class attributes that are persisted by PersistenceV2 must have initial values. Otherwise, persistence is not supported.
+For an [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with **PersistenceV2**, the change of the [\@Trace](./arkts-new-observedV2-and-trace.md) attribute of the object triggers automatic persistence of the entire associated object; changes to non‑[\@Trace](./arkts-new-observedV2-and-trace.md) properties do not. If necessary, you can call **PersistenceV2** APIs to manually perform persistence. Note that the class attributes that are persisted by PersistenceV2 must have initial values. Otherwise, persistence is not supported.
 
 **PersistenceV2** can synchronize application state attributes with UI components and can be accessed during implementation of application service logic as well.
 
@@ -53,7 +53,7 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
 
 1. Must be used only with the UI thread. Other threads are not supported. @Sendable is not supported in versions earlier than API version 23.
 
-   -  Since API version 23, the **globalConnect** API is provided to support the persistence of class objects decorated with **@Sendable** in the UI thread. The member attribute types must be basic built-in types (**string**, **number**, and **boolean**).
+   -  Since API version 23, the **globalConnect** API is provided to support the persistence of class objects decorated with `@Sendable` in the UI thread. The member attribute types must be basic built-in types (`string`, `number`, and `boolean`).
   
 
 2. Types such as `collections.Set` and `collections.Map` are not supported before API version 23.
@@ -502,6 +502,8 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
     ```
 
 16. Obfuscation of the class names and attribute names of persistent data classes is not supported. Otherwise, existing data cannot be read or deserialization fails. Applications must disable obfuscation or retain the relevant class names and attribute names through obfuscation configuration.
+
+17. In the [Developing Standard Intents Through the Intent Decorator](../../application-models/insight-intent-decorator-development.md#developing-standard-intents-with-intent-decorators) scenario, the program execution entry of the declared background intent (UI_ABILITY_BACKGROUND) does not involve UI components and will not initialize the PersistenceV2 module, which causes the inability to persist data when PersistenceV2 is used in the onExecute function. It is recommended that developers use the [Data Persistence Through User Preferences (ArkTS)](../../database/data-persistence-by-preferences.md) capability of the ArkData module in the background intent scenario to synchronize persistent data to the UI main program.
 
 ## Types Supported by globalConnect
 

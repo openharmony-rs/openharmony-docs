@@ -70,7 +70,7 @@ import { common } from '@kit.AbilityKit';
 struct Index {
   private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
-  functiontest(): void {
+  functionTest(): void {
     console.info("vpn createVpnConnection: " + JSON.stringify(this.VpnConnection));
   }
   build() {  }

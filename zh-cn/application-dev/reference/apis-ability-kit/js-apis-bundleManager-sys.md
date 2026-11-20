@@ -26,14 +26,16 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**系统接口：** 此接口为系统接口。
+
 | 名称                                          | 值         | 说明                                                         |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用，配合使用时将返回任意用户安装的bundle信息；若单独使用该标记，则标记不生效。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效，并从API版本26.0.1开始在[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br>**系统API：** 该标记仅支持在系统API中使用。 |
-| GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_WITH_COMMON_CLONE  | 0x00080000 | 用于获取普通分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br>**起始版本：** 26.0.0 <br>**模型约束：** 该标记仅可在Stage模型下使用。<br>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_WITH_SANDBOX_CLONE | 0x00100000 | 用于获取沙箱分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br>**起始版本：** 26.0.0 <br>**模型约束：** 该标记仅可在Stage模型下使用。<br>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE | 0x00200000 | 用于获取任一设备模式下已安装的应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)和[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br>**起始版本：** 26.0.1 <br>**模型约束：** 该标记仅可在Stage模型下使用。<br>**系统API：** 该标记仅支持在系统API中使用。|
+| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用，配合使用时将返回任意用户安装的bundle信息；若单独使用该标记，则标记不生效。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效，并从API版本26.0.1开始在[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br>**系统接口：** 此接口为系统接口。 |
+| GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br>**系统接口：** 此接口为系统接口。|
+| GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br>**系统接口：** 此接口为系统接口。|
+| GET_BUNDLE_INFO_WITH_COMMON_CLONE  | 0x00080000 | 用于获取普通分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br>**起始版本：** 26.0.0 <br>**模型约束：** 该标记仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
+| GET_BUNDLE_INFO_WITH_SANDBOX_CLONE | 0x00100000 | 用于获取沙箱分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br>**起始版本：** 26.0.0 <br>**模型约束：** 该标记仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
+| GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE | 0x00200000 | 用于获取任一设备模式下已安装的应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)和[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br>**起始版本：** 26.0.1 <br>**模型约束：** 该标记仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
 
 ## ApplicationFlag
 
@@ -1047,7 +1049,7 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 **示例：**
 
 ```ts
-import { bundleManager } from '@kit.AbilityKit';
+import { bundleManager, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { Want } from '@kit.AbilityKit';
@@ -1257,7 +1259,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 | want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
 | extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionAbilityInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
-| callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
+| callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<ExtensionAbilityInfo>；否则为错误对象。 |
 
 **错误码：**
 
@@ -4211,7 +4213,7 @@ getAllAppProvisionInfoInDevice(userId: number): Promise\<Array\<AppProvisionInfo
 | -------- | -------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Permission denied. A non-system application is not allowed to call a system API. |
-| 17700004 | The specified user ID is not found. |
+| 17700004 | The specified user id is not found. |
 
 **示例：**
 
@@ -4259,9 +4261,9 @@ getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
 
 | 名称                      | 类型    | 说明                 |
 | ------------------------- | ------ | -------------------- |
-| compatibleVersion              | number | 应用所需要最低的SDK主版本。从API version 26.0.0开始，SDK版本由compatibleVersion、compatibleMinorVersion、compatiblePatchVersion拼接而成，版本形式为“主版本.次版本.补丁版本”，例如：26.0.0。API version 26.0.0之前的版本，仅用compatibleVersion表示，例如：15。 |
-| compatibleMinorVersion         | number | 应用所需要最低的SDK次版本。具体用法请参考compatibleVersion字段描述。从API version 26.0.0开始，支持该字段。 |
-| compatiblePatchVersion         | number | 应用所需要最低的SDK补丁版本。具体用法请参考compatibleVersion字段描述。从API version 26.0.0开始，支持该字段。 |
+| compatibleVersion              | number | 应用所需要最低的SDK主版本。从API版本26.0.0开始，SDK版本由compatibleVersion、compatibleMinorVersion、compatiblePatchVersion拼接而成，版本形式为“主版本.次版本.补丁版本”，例如：26.0.0。API version 26.0.0之前的版本，仅用compatibleVersion表示，例如：15。 |
+| compatibleMinorVersion         | number | 应用所需要最低的SDK次版本。具体用法请参考compatibleVersion字段描述。从API版本26.0.0开始，支持该字段。 |
+| compatiblePatchVersion         | number | 应用所需要最低的SDK补丁版本。具体用法请参考compatibleVersion字段描述。从API版本26.0.0开始，支持该字段。 |
 | crowdtestDeadline              | number | 众测活动的截止日期（毫秒级时间戳），-1表示无截止日期约束。 |
 | bundleName                     | string | 应用的包名。 |
 | specifiedDistributionType      | string | 应用安装时指定的[HarmonyAppProvision配置文件说明](../../security/app-provision-structure.md)，默认值为空，最大长度128字节。|
@@ -5216,9 +5218,9 @@ let bundleName: string = 'com.ohos.demo';
 
 try {
   bundleManager.getExtResource(bundleName).then((modules: Array<string>) => {
-    for (let i = 0; i < modules.length; i++) {
-      hilog.info(0x0000, 'testTag', 'getExtResource item: %{public}s', modules[i]);
-    }
+    modules.forEach((item) => {
+      hilog.info(0x0000, 'testTag', 'getExtResource item: %{public}s', item);
+    });
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getExtResource failed. Cause: %{public}s', err.message);
   });
@@ -5261,6 +5263,7 @@ enableDynamicIcon(bundleName: string, moduleName: string): Promise\<void>;
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
 | 17700002 | The specified moduleName is not found. |
 | 17700304 | Failed to enable the dynamic icon. |
@@ -6644,7 +6647,7 @@ try {
 }
 ```
 
-## bundleManager.getAbilityIcon<sup>deprecated</sup>
+## bundleManager.getAbilityIcon<sup>(deprecated)</sup>
 
 getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise\<image.PixelMap>
 
@@ -6714,7 +6717,7 @@ try {
 }
 ```
 
-## bundle.getAbilityIcon<sup>deprecated</sup>
+## bundleManager.getAbilityIcon<sup>(deprecated)</sup>
 
 getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
 

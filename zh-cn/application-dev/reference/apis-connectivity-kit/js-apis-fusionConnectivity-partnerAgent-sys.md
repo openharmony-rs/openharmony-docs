@@ -16,6 +16,7 @@
 
 > **说明：**
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.FusionConnectivity.partnerAgent（设备状态通知模块）](js-apis-fusionConnectivity-partnerAgent.md)。
 
 ## 导入模块
 
@@ -29,7 +30,7 @@ enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
 开启外设互通功能，使用Promise异步回调。适用于应用需要为已绑定蓝牙设备提供外设互通能力的场景。
 
-- 该接口仅对应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后给应用提供设备互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
+- 该接口仅对应用调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后给应用提供设备互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
 - 可以通过[isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled)判断设备的外设互通是否已开启，若已开启，重复调用不生效。
 - 可以通过[disableDeviceControl](#partneragentdisabledevicecontrol)关闭外设互通功能。
 
@@ -95,9 +96,9 @@ disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
 关闭外设互通功能，使用Promise异步回调。适用于应用不再需要外设互通能力的场景。
 
-- 该接口仅对应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后关闭给应用提供的设备互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
+- 该接口仅对应用调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备生效，调用后关闭给应用提供的设备互通能力[partnerAgent](js-apis-fusionConnectivity-partnerAgent.md)。
 - 可以通过[isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled)判断设备的外设互通是否已开启，若已关闭，重复调用不生效。
-- 关闭后，当其他应用调用[BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备被发现时，不会拉起应用注册的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。可通过调用[enableDeviceControl](#partneragentenabledevicecontrol)重新开启外设互通功能。
+- 关闭后，当其他应用调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册过的设备被发现时，不会拉起应用注册的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。可通过调用[enableDeviceControl](#partneragentenabledevicecontrol)重新开启外设互通功能。
 
 **系统接口**：此接口为系统接口。
 

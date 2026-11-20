@@ -1,6 +1,9 @@
 # Logging Guide
 
+<!-- md-trans-meta sourceCommit=389bbd691b0b1c3e66e0bda0d51731e37e603ac3 translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## Introduction
+
 In OpenHarmony, HiLog is used to export logs to the log services. Logs record user operations and system running statuses. Logs are an important part of a system, and quality logs are a must for system development.
 
 Logging has a significant negative impact on system performance. Therefore, it is necessary to make logging reasonably simple. Do not log unnecessary information to overwhelm developers.
@@ -52,6 +55,14 @@ A log recording "Error happened" does not indicate where the error occurred or t
 **Note:** To speed up fault locating, you may print a line of logs for each step in the code or print various variables (which may include privacy information).
 You must delete these code lines before committing the final code to the code repository.
 
+- **[Rule] Do not print file names or line numbers in logs.**
+
+**Note:** File names and line numbers expose internal implementation details.
+
+- **[Rule] Do not print duplicate TAG information in logs.**
+
+**Note:** Use the tag parameter provided by the HiLog API.
+
 - **[Recommendation] Display the log content in one line.**
 
 **Note:** A line usually contains about 100 characters. Try your best not to include more than 160 characters in a log.
@@ -76,7 +87,6 @@ You must delete these code lines before committing the final code to the code re
 
 ## Log Format
 
-
 - **[Rule] Log events in the who-does-what format.**
 
 - **[Rule] Log status changes in the format of state\_name:s1-&gt;s2, reason:msg.**
@@ -93,10 +103,9 @@ You must delete these code lines before committing the final code to the code re
 
 ### Process Logs
 
-
 - **[Recommendation] Log key service process nodes, including the service start point, key condition branch, error processing point, and service end point.**
 
-###  Database Logs
+### Database Logs
 
 - **[Recommendation] Log database operations and related information.**
 
@@ -111,7 +120,8 @@ Create, Read, Update, Delete (CRUD). The initiator, type, and result (successful
 
 **Note:** Log the job name, execution content, start time, end time, and execution result.
 
-###  File Logs
+### File Logs
+
 - **[Recommendation] Log operations on files and related information.**
 
 **Note:** Common file operations include creating, opening, reading, writing, closing, and deleting files as well as obtaining file attributes. The initiator, type, and result of each operation should be logged. However, the file content should not be logged to prevent user privacy leakage or system vulnerability exposure. The system file name and file handle value can be logged, but the user file name should not.
@@ -120,7 +130,7 @@ Create, Read, Update, Delete (CRUD). The initiator, type, and result (successful
 
 **Note:** For example, if files are deleted in batches, do not record a log for each file deletion. Instead, log the number of deleted files. If the directory where a deleted file is located is created by the system, log the directory name as well.
 
-###  Key Object/Object Pool Logs
+### Key Object/Object Pool Logs
 
 **Note:** A key object/object pool may be a class or struct, a queue or stack data structure, or a simple variable of the primitive data type. It plays a key role in the system and is used for system scheduling control, status recording, and information transfer.
 
@@ -128,7 +138,7 @@ Create, Read, Update, Delete (CRUD). The initiator, type, and result (successful
 
 **Note:** Object operations include creating, loading, unloading, and releasing objects. For key object operations, log the operation subject, type, and result. For status operations, log the values before and after the status change.
 
-###  Thread Logs
+### Thread Logs
 
 - **[Recommendation] Log thread operations and related information.**
 
@@ -142,7 +152,7 @@ Create, Read, Update, Delete (CRUD). The initiator, type, and result (successful
 
 **Note:** Log the information such as the message name, processing result, and processing duration. For high-frequency messages, you can record logs only when an error occurs during message processing.
 
-###  Concurrency Control Logs
+### Concurrency Control Logs
 
 **Note:** Concurrency control objects may be locks, critical sections, and semaphores.
 
@@ -150,7 +160,7 @@ Create, Read, Update, Delete (CRUD). The initiator, type, and result (successful
 
 **Note:** Concurrency control operations include creating, occupying, releasing, and waiting. Log information such as the operation type, operation object name, operation result, and operation location.
 
-###  Shared Memory Logs
+### Shared Memory Logs
 
 **Note:** Shared memory is a common inter-process communication method in software systems. It is used to share or transfer data between modules. The data stored in the shared memory may be configuration data, database data, and the like.
 
@@ -158,8 +168,7 @@ Create, Read, Update, Delete (CRUD). The initiator, type, and result (successful
 
 **Note:** The operations on the shared memory include creating, deleting, setting, querying, and destroying data. Log the operator, operation type, and operation result.
 
-###  Interface Interaction Logs
-
+### Interface Interaction Logs
 
 There are internal and external system interfaces. Internal interfaces refer to the interfaces between subsystems and modules within the system. These interfaces include inter-module message sending interfaces, IPC interfaces, and RPC interfaces.
 
@@ -173,7 +182,8 @@ There are internal and external system interfaces. Internal interfaces refer to 
 
 **Note:** The operations on a state machine include creating, starting, ending, and destroying the state machine as well as changing its state. The state machine is usually driven by external conditions (such as messages and resources). State change information must be logged, such as the state names before and after the state change and the external conditions that cause the change.
 
-###  Other OS Resources
+### Other OS Resources
+
 The other OS resources refer to resources that are not mentioned in the preceding sections, such as sockets and timers. OS resources such as files and threads are mentioned before and are not covered in this part.
 
 - **[Recommendation] Log the process and result of socket connection establishment, connection maintenance, disconnection, and causes.**
@@ -184,17 +194,15 @@ The other OS resources refer to resources that are not mentioned in the precedin
 
 ## HiLog API Usage Specifications
 
-
 - **[Rule] Each service domain must have an independent domain ID.**
 
 **Note:** Before using the HiLog API to print logs, every service domain must apply for a domain ID from the DFX. The domain ID is used to measure and control the quality of a single service log. You can use the domain ID to filter out your own service logs for analysis. Do not use domain IDs of others. For test code, use the domain ID 0xD000F00.
 
-Range of the domain IDs: **0xD000001\-0xD0FFFFF**
+Range of the domain IDs: **0xD000000\~0xD0FFFFF**
 
 - **[Recommendation] Use the domain ID allocated to your domain based on a certain layer and module granularity.**
 
 **Note:** A domain ID is a 32-bit integer expressed in 16-bit format. The domain ID is the format of 0xD0xxxyy, where D0 is the domain ID, the most significant 12 bits of ***xxx*** are the value allocated by the DFX, and the least significant 8 bits of ***yy*** are for internal use in the service domain. Domain IDs allocated among your service domain must be able to locate your internal organizations or modules and reflect their log quality. The DFX conducts logging control based on the domain IDs to prevent the logging of a single module from affecting other modules in the same service domain. For example, the BT service domain is further divided as follows by module:
-	
 
     APP       | BT-App1 BT-App2
     ---------------------------------------
@@ -205,16 +213,16 @@ Range of the domain IDs: **0xD000001\-0xD0FFFFF**
     Kernel    | BT-Driver1  BT-Driver2
 
 Therefore, domain IDs allocated to BT can be further divided as follows:
-| Domain Name| Domain ID  |
-|----|----|
-| BT  | 0xD000100  |
-| BT-App1  | 0xD000101  |
-| BT-App2  | 0xD000102  |
-| BT-Service1  | 0xD000103  |
-| BT-Service2  | 0xD000104  |
-| BT-HAL  | 0xD000105  |
-| BT-Driver1  | 0xD000106  |
-| BT-Driver2  | 0xD000107  |
+| Domain Name | Domain ID |
+| ----------- | --------- |
+| BT          | 0xD000100 |
+| BT-App1     | 0xD000101 |
+| BT-App2     | 0xD000102 |
+| BT-Service1 | 0xD000103 |
+| BT-Service2 | 0xD000104 |
+| BT-HAL      | 0xD000105 |
+| BT-Driver1  | 0xD000106 |
+| BT-Driver2  | 0xD000107 |
 
 - **[Rule] The log service controls the log traffic of each service. Changing the default traffic threshold must be approved by the DFX.**
 
@@ -226,11 +234,12 @@ Therefore, domain IDs allocated to BT can be further divided as follows:
 
 Source code:
 
-
+```txt
     HiLog.info(LABEL, "Device Name:%{public}s, IP:%{private}s.", DeviceName, ip);
-
+```
 
 Log output:
 
-
-    11-11 09:19:00.932 1513 1513 E 00500/Settings: MyPad001, IP:<private>
+```txt
+    11-11 09:19:00.932   1513-1513     C00500/testTag  com.example.hilogDemo  I     Device Name:MyPad001, IP:<private>.
+```

@@ -1,11 +1,11 @@
 # Visibility Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2e834d45b0cae77e1c2e832089e158db38adc5b0 translatedAt=2026-09-02T12:15:47.542Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:49:27.316Z pushedAt=2026-11-13T01:06:00.138Z nl=1 -->
 
 Controls whether a component is visible. It is applicable to scenarios where the component display effect and page layout need to be dynamically adjusted based on the service state.
 

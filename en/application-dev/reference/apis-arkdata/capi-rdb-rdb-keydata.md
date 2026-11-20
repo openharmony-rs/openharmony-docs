@@ -5,10 +5,10 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T03:04:18.806Z pushedAt=2026-09-09T09:11:03.678Z -->
+<!-- md-trans-meta sourceCommit=a344fa18476f0d16c0d531be44b7138a04f15161 translatedAt=2026-11-16T01:34:23.719Z pushedAt=2026-11-20T07:27:04.060Z nl=1 -->
 
 ```c
-union Rdb_KeyData { ... }
+union Rdb_KeyData { ... } *data
 ```
 
 ## Overview

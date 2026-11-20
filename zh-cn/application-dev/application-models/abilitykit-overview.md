@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍Ability Kit（程序框架服务）提供的能力范围与核心特征，涵盖应用生命周期管理、组件间交互、多Module开发及跨端流转等场景。"
+keywords: [Ability Kit, 程序框架服务, 应用模型, UIAbility, Stage模型, 生命周期管理, 组件交互, 跨端迁移, 多Module]
+doctype: guide
+status: active
+---
 # Ability Kit简介
 
 <!--Kit: Ability Kit-->
@@ -58,10 +65,10 @@ Ability Kit（程序框架服务）提供了应用程序开发和运行的应用
    - 提供特定场景（如服务卡片、输入法）的应用组件，以便满足更多的使用场景。
    - 规范化后台进程管理：为保障用户体验，Stage模型对后台应用进程进行了有序治理，应用程序不能随意驻留在后台，同时应用后台行为受到严格管理，防止恶意应用行为。
 
+<!--RP3--><!--RP3End-->
+
 ## 与相关Kit的关系
 
 ArkUI：在Ability Kit的UIAbility组件中，可以使用ArkUI提供的组件、事件、动效、状态管理等能力。
 
 ArkTS：ArkTS提供了语言运行时相关能力。
-
-<!--RP3--><!--RP3End-->

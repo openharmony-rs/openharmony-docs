@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍Want作为应用组件间信息载体的用途，区分显式Want和隐式Want的适用场景，并说明匹配结果的三种情况。"
+keywords: [Want, 显式Want, 隐式Want, 组件启动, 应用链接, skills标签]
+doctype: guide
+status: active
+---
 # Want概述
 
 <!--Kit: Ability Kit-->

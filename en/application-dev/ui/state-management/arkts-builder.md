@@ -193,13 +193,13 @@ How to use:
 
 The \@Builder with an incoming configuration is subject to the following constraints:
 
-- The \@Builder with an incoming configuration supports only decorating global functions. Using the \@Builder decorator with arguments on a member method or member variable of a custom component causes a compilation error: `The '@Builder' decorator can only pass arguments when decorating a global function`, with error code [10905131](../../reference/apis-arkui/errorcode-arkui-compile.md#10905131-builder-decorator-usage-position-validation-exception).
+- The \@Builder with an incoming configuration supports only decorating global functions. Using the \@Builder decorator with arguments on a member method or member variable of a custom component causes a compilation error: `The '@Builder' decorator can only pass arguments when decorating a global function`, with error code [10905131](../../reference/apis-arkui/errorcode-arkui-compile.md#10905131-exception-in-verifying-the-builder-decorator-usage-location).
 
-- When the argument passed to the global \@Builder decorator is not a single object literal, a compilation error occurs: `The '@Builder' decorator only supports passing a single object literal`, with error code [10905132](../../reference/apis-arkui/errorcode-arkui-compile.md#10905132-builder-decorator-argument-validation-exception).
+- When the argument passed to the global \@Builder decorator is not a single object literal, a compilation error occurs: `The '@Builder' decorator only supports passing a single object literal`, with error code [10905132](../../reference/apis-arkui/errorcode-arkui-compile.md#10905132-exception-in-verifying-builder-decorator-arguments).
 
-- If the key of `isPlaceholder` is misspelled or its value is not an explicit boolean literal (such as a variable, enum value, undefined, or null), a compilation error is reported: `The 'isPlaceholder' option of the '@Builder' decorator only supports passing true/false`, and the error code is [10905133](../../reference/apis-arkui/errorcode-arkui-compile.md#10905133-builder-configuration-item-isplaceholder-validation-exception).
+- If the key of `isPlaceholder` is misspelled or its value is not an explicit boolean literal (such as a variable, enum value, undefined, or null), a compilation error is reported: `The 'isPlaceholder' option of the '@Builder' decorator only supports passing true/false`, and the error code is [10905133](../../reference/apis-arkui/errorcode-arkui-compile.md#10905133-exception-in-verifying-isplaceholder-of-builder).
 
-- If `isPlaceholder` is set to `true` and the function declares parameters, a compilation error is reported: `The '@Builder' function cannot have parameters when it serves as a placeholder`, and the error code is [10905134](../../reference/apis-arkui/errorcode-arkui-compile.md#10905134-placeholder-builder-function-parameter-validation-exception).
+- If `isPlaceholder` is set to `true` and the function declares parameters, a compilation error is reported: `The '@Builder' function cannot have parameters when it serves as a placeholder`, and the error code is [10905134](../../reference/apis-arkui/errorcode-arkui-compile.md#10905134-exception-in-verifying-placeholder-builder-function-parameters).
 
 
 ## Parameter Passing Rules

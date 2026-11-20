@@ -19,7 +19,7 @@
 
 3. 在DevEco的串口终端中，依次执行如下AT命令，启动STA模式，连接指定AP热点，并开启DHCP功能。
    
-   ```
+   ```text
    AT+STARTSTA                             # 启动STA模式
    AT+SCAN                                 # 扫描周边AP
    AT+SCANRESULT                           # 显示扫描结果
@@ -30,7 +30,7 @@
 
 4. 查看Hi3861 WLAN模组与网关联通是否正常，如下图所示。
    
-   ```
+   ```text
    AT+IFCFG                                # 查看模组接口IP
    AT+PING=X.X.X.X                         # 检查模组与网关的联通性，其中X.X.X.X需替换为实际的网关地址
    ```
@@ -56,7 +56,7 @@
 代码中增加printf维测，信息会直接打印到串口上。开发者可在业务关键路径或业务异常位置增加日志打印，如下所示：
 
 
-```
+```c
 void HelloWorld(void)
 {
     printf("[DEMO] Hello world.\n");
@@ -68,7 +68,7 @@ void HelloWorld(void)
 
   系统异常退出时，会在串口上打印异常退出原因调用栈信息，如下文所示。通过解析异常栈信息可以定位异常位置。
 
-```
+```text
 =======KERNEL PANIC=======
 **Call Stack*
 Call Stack 0 -- 4860d8 addr:f784c
@@ -87,7 +87,7 @@ Call Stack end***
 
 2. 打开asm文件，并搜索CallStack中的地址，列出对应的函数名信息。通常只需找出前几个栈信息对应的函数，就可明确异常代码方向。
    
-   ```
+   ```text
    Call Stack 0 -- 4860d8 addr:f784c -- WadRecvCB
    Call Stack 1 -- 47b2b2 addr:f788c -- wal_sdp_process_rx_data
    Call Stack 2 -- 3e562c addr:f789c
@@ -109,7 +109,7 @@ Call Stack end***
 示例代码编译、烧录、运行、调测后，重启开发板后将自动在界面输出如下结果：
 
 
-```
+```text
 ready to OS start
 FileSystem mount ok.
 wifi init success!
@@ -119,7 +119,7 @@ wifi init success!
 
 ## 下一步学习
 
-恭喜，您已完成Hi3861 WLAN模组快速上手！建议您下一步进入的学习 。可参考：
+恭喜，您已完成Hi3861 WLAN模组快速上手！建议您进行下一步学习 。可参考：
 
 - [LED外设控制](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/guide/device-wlan-led-control.md)
 

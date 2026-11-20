@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍设置与网页背景色一致的Web组件背景色，消除Navigation路由跳转至Web页面时的底部闪烁现象。"
+keywords: [页面闪烁, Web组件, Web组件背景色, Navigation, 路由跳转, backgroundColor, 系统导航栏]
+doctype: guide
+status: active
+---
+
 # 优化跳转至新Web组件过程中的页面闪烁现象
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

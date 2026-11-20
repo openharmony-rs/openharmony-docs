@@ -190,14 +190,13 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                            | 值 | 说明                               |
 | ------------------------------- | -- | ---------------------------------- |
-| FOLLOW_HOST_DPI                 | 0  | 表示DPI跟随宿主。                  |
-| FOLLOW_UI_EXTENSION_ABILITY_DPI | 1  | 表示DPI跟随EmbeddedUIExtensionAbility。 |
+| FOLLOW_HOST_DPI                 | 0  | 表示DPI跟随宿主。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| FOLLOW_UI_EXTENSION_ABILITY_DPI | 1  | 表示DPI跟随EmbeddedUIExtensionAbility。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| FOLLOW_HOST_DPI_ALL | 2 | 表示EmbeddedUIExtensionAbility的UI和子窗DPI均跟随宿主。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## EmbeddedWindowModeFollowStrategy
 

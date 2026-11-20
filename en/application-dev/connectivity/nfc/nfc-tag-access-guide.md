@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=fb683f019c942b7ee1feffd8c72d462c7f16cdd9 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
+<!-- md-trans-meta sourceCommit=867dff6707e1fc0d1e9df0b4be8959bfab722ca7 translatedAt=2026-11-16T01:42:55.569Z pushedAt=2026-11-16T12:49:01.390Z nl=1 -->
 
 ## Introduction
 Near Field Communication (NFC) is a high-frequency radio technology that enables communication between devices over a distance less than 10 cm. NFC operates at 13.56 MHz. With NFC technologies, electronic devices can read data from tags or write data to tags.<br>
@@ -187,7 +187,7 @@ async function readerModeCb(error: BusinessError, tagInfo: tag.TagInfo) {
       return;
     }
   } else {
-    hilog.info(0x0000, 'testTag', 'readerModeCb readerModeCb error %{public}s', JSON.stringify(error));
+    hilog.error(0x0000, 'testTag', 'readerModeCb readerModeCb error %{public}s', JSON.stringify(error));
   }
 }
 
@@ -244,7 +244,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### Accessing an NFC Tag Without Starting an Application
-1. In the **module.json5** configuration file, declare the NFC tag operation permission, the NFC tag action, and the technology type.
+1. Declare the permissions required for reading NFC tags in the **module.json5** file, specify the action for NFC tags, and declare the NFC tag technology types that the application can handle.
 2. Import related modules.
 3. Obtain an NFC tag object of the specific technology type.
 4. Read and write the tag data.
@@ -256,7 +256,7 @@ To enable NFC tags to be read without starting an application, declare NFC-relat
 >1. The **actions** field must contain **ohos.nfc.tag.action.TAG_FOUND** and cannot be changed.
 >2. The **type** field under **uris** must start with **tag-tech/**, followed by NfcA, NfcB, NfcF, NfcV, IsoDep, Ndef, MifareClassic, MifareUL, or NdefFormatable. If there are multiple types, enter each on a separate line. Incorrect settings will cause a parsing failure.
 >3. The **name** field of **requestPermissions** is mandatory. It must be **ohos.permission.NFC_TAG** and cannot be changed.
->4. Wearable devices do not support reading NFC tags without starting an application.
+>4. Wearables do not support background card reading.
 
 ```ts
     "abilities": [

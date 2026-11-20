@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T02:37:43.090Z pushedAt=2026-09-09T09:11:03.634Z -->
+<!-- md-trans-meta sourceCommit=72a7a601c9f4ddff4087b27e514dc97c8b1c92b4 translatedAt=2026-11-16T01:24:28.581Z pushedAt=2026-11-20T07:24:32.412Z nl=1 -->
 
 Provides APIs for managing data in an RDB store.
 
@@ -39,7 +39,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported.<br>Applicable versions: 12+|
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>Applicable versions: 12+ |
 | 14800000  | Inner error.<br>Applicable versions: 12+|
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 | 14800015  | The database does not respond.<br>Applicable versions: 12+|
@@ -2827,7 +2827,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -2916,7 +2916,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -3395,7 +3395,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+|
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+ |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
@@ -3458,7 +3458,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+|
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+ |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
@@ -3526,7 +3526,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+|
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+ |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
@@ -3600,7 +3600,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -3711,7 +3711,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -3783,7 +3783,7 @@ Statements starting with comments are not supported.
 
 | Type                   | Description               |
 | ----------------------- | ------------------- |
-| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | SQL execution result.|
+| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | SQL execution result. |
 
 **Error codes**
 
@@ -3873,7 +3873,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
@@ -3937,7 +3937,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr.3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
@@ -4057,7 +4057,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -4697,7 +4697,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -4744,7 +4744,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -4787,7 +4787,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 | 14800051  | The type of the distributed table does not match. |
@@ -4832,7 +4832,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 | 14800051  | The type of the distributed table does not match. |
@@ -4884,7 +4884,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 | 14800051  | The type of the distributed table does not match. |
@@ -4934,7 +4934,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -5006,7 +5006,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -5058,7 +5058,7 @@ Synchronizes data across devices. This API uses an asynchronous callback to retu
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | Yes   | Sync mode. The value can be **relationalStore.SyncMode.SYNC_MODE_PUSH** or **relationalStore.SyncMode.SYNC_MODE_PULL**.                               |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | Yes  | **RdbPredicates** object that specifies the data and devices to sync.                                        |
-| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | Yes  | Callback used to send the sync result to the caller. **string** indicates the device ID. **number** indicates the sync status of that device. The value **0** indicates a successful sync; **1** indicates a sync failure.|
+| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | Yes   | Callback invoked to return the synchronization result. If the synchronization is successful, **err** is **undefined** and **data** is an array of device synchronization results (string: device ID; number: synchronization status of each device, with 0 indicating success and 1 indicating failure); otherwise, it is an error object. |
 
 **Error codes**
 
@@ -5067,7 +5067,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -5138,7 +5138,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
@@ -5210,7 +5210,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 201       | the application does not have permission to call this function. |
+| 201       | Permission verification failed. The application does not have the permission required to call the API. |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014  | The target instance is already closed. |
 
@@ -5277,7 +5277,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**       |
 |-----------|-------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. 5. The callback must be a function. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+       |
 
 **Example:**
@@ -5324,7 +5324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**   |
 |-----------|------------------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. |
-| 801       | Capability not supported.   |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+          |
 
 **Example:**
@@ -5367,7 +5367,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                                                                                                                                                                                 |
 |-----------|-------|
 | 401       | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.|
-| 801       | Capability not supported.   |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+  |
 
 **Example:**
@@ -5417,7 +5417,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**    |
 |-----------|---------------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
-| 801       | Capability not supported.    |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
 
 **Example:**
@@ -5540,7 +5540,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md) 
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 801       | Capability not supported because the device does not support the cloud synchronization capability. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The device does not support the cloud synchronization capability. |
 | 14800014  | The target instance is already closed. |
 
 **Example:**
@@ -5580,7 +5580,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**       |
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 **Example:**
@@ -5629,9 +5629,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**       |
 |-----------|-------------|
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 Example 1: **type** is **SUBSCRIBE_TYPE_REMOTE**.
@@ -5725,7 +5725,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**       |
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.    |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 | 14800050  | Failed to obtain the subscription service.    |
@@ -5772,7 +5772,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**   |
 |-----------|--------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. 4. The event must be a not empty string. 5. The progress must be function. |
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+    |
 
 **Example:**
@@ -5817,7 +5817,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**   |
 |-----------|--------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.  |
 | 14800014  | The target instance is already closed.     |
 
@@ -5887,7 +5887,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**   |
 |-----------|--------|
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.     |
 
 **Example:**
@@ -5950,7 +5950,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**   |
 |-----------|--------|
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.     |
 
 **Example:**
@@ -6022,7 +6022,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**       |
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 **Example:**
@@ -6082,9 +6082,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**       |
 |-----------|-------------|
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 **Example:**
@@ -6144,7 +6144,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                          |
 | ------------ | -------------------------------------- |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000     | Inner error.                           |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 | 14800050     | Failed to obtain the subscription service. |
@@ -6201,7 +6201,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**        |
 | ------------ |--------------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
 
 **Example:**
@@ -6257,9 +6257,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**   |
 |-----------|--------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.  |
 | 14800014  | The target instance is already closed.     |
+
+**Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6296,7 +6298,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**   |
 |-----------|--------|
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.     |
 
 **Example:**
@@ -6337,8 +6339,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**   |
 |-----------|--------|
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.     |
+
+**Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6375,7 +6379,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                                                                     |
 | --------- |---------------------------------------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported.     |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.   |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+    |
 | 14800050  | Failed to obtain the subscription service.    |
@@ -6412,7 +6416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**      |
 |-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
-| 801       | Capability not supported.    |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.        |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+  |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
@@ -6467,7 +6471,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**      |
 |-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s). 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. |
-| 801       | Capability not supported.    |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.        |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+  |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
@@ -6529,7 +6533,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                                                                                                                                     |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.            |
 | 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+  |
 | 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
@@ -6598,7 +6602,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path.               |
 | 14800011  | The current operation failed because the database is corrupted. |
@@ -6671,7 +6675,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path.               |
 | 14800011  | The current operation failed because the database is corrupted. |
@@ -7103,7 +7107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                           |
 | ------------ | ---------------------------------------------------------------------- |
-| 801          | Capability not supported.                                              |
+| 801          | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted.                   |
 | 14800014     | The target instance is already closed.                           |
@@ -7284,7 +7288,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                           |
 | ------------ | ---------------------------------------------------------------------- |
-| 801          | Capability not supported.                                              |
+| 801          | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014     | The target instance is already closed.                           |
 | 14800024     | SQLite: The database file is locked.                                   |
@@ -7352,7 +7356,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                            |
 | ------------ | ----------------------------------------------------------------------- |
-| 801          | Capability not supported.                                               |
+| 801          | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
@@ -7621,7 +7625,49 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-**Example 6: The original database is a non-encrypted database. Change it to a database encrypted using custom parameters.**
+**Example 6: The original database is an encrypted database using default parameters. Change it to a non-encrypted database.**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbStore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.PLAIN_TEXT
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // After the rekeyEx operation is complete, if getRdbStore needs to be called again subsequently, you must use new parameters to open the database.
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**Example 7: The original database is a non-encrypted database. Change it to a database encrypted using custom parameters.**
 
 ```ts
 // EntryAbility.ets

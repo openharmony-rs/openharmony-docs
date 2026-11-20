@@ -1,5 +1,6 @@
 # FAQ<a name="ZH-CN_TOPIC_0000001053622377"></a>
 
+<!-- md-trans-meta sourceCommit=5721e422ec71b5c5e832422f0dde611f5b2e4b1b translatedAt=2026-11-17T02:46:33.905Z nl=1 -->
 
 ## Handling Simultaneous Builds for Multiple Repositories with Compilation Dependencies<a name="section169732563435"></a>
 
@@ -85,3 +86,23 @@ For guidance on rolling back commits, see [https://gitee.com/help/articles/4195]
 ## Resolving conflicts<a name="section94417232274"></a>
 
 For instructions on resolving conflicts, see [https://gitee.com/help/articles/4194](https://gitee.com/help/articles/4194).
+
+## Troubleshooting Gate Check Failures
+
+
+| Check | error_type in the error report | Applicable documents |
+| --- | --- | --- |
+| [Ownership Tag Check](./markdown-check/md-style-check.md#ownership-tag-check) | `owner_lost` | Documents under `zh-cn/application-dev/` (master branch) |
+| [Image Reference Check](./markdown-check/md-style-check.md#image-reference-check) | `figure_lost`, `figure_check` | All Markdown documents |
+| [Relative Link Check](./markdown-check/md-style-check.md#relative-link-check) | `link_error`, `链接不规范` (Invalid link format), `链接标题中存在br标签` (Link text contains a br tag), `不可链接到一级标题` (Links to level-1 headings are not allowed), `面向第三方应用的文档，链接到了系统应用的文档` (A document for third-party applications links to a system-application document), `相对链接不可链接到readme/website` (Relative links to Readme or website paths are not allowed) | All Markdown documents |
+| [API link accuracy check](./markdown-check/API-reference-link-check.md) | `链接名称不准确` (Inaccurate link text), `链接名称在标题及标题下表格均不存在` (Link text is found in neither the heading nor the table below it), `检测到链接名称与目标页面标题不一致` (Link text does not match the target page title) | Chinese documents under `application-dev/` |
+| [File Name Check](./markdown-check/md-style-check.md#file-name-check) | `file_name`, `en_file_check` | All files |
+| [Markdown Format Check](./markdown-check/md-style-check.md#markdown-format-check) | `md_style_error`, `code_style_error`, `table_scan`, `notice_explanation`, `text_link_error`, `scan_html_error`, `scan_title`, `tag_error`, `mdLinkStyleError`, `md_LinkStyle_Error`, `Urlpath_Error` | All Markdown documents except those under `en/` |
+| [HTTP Link Check](./markdown-check/md-style-check.md#http-link-check) | `http_link_error`, `http_error` | All Markdown documents |
+| [Chinese Character Check in English Documents](./markdown-check/md-style-check.md#chinese-character-check-in-english-documents) | `Chinese_in_English` | Documents under `en/` |
+| [Document Heading Check](./markdown-check/md-style-check.md#document-heading-check) | `文档为空` (The document is empty), `文档一级标题错误` (Invalid level-1 heading), `文档标题层级大于3` (Heading level exceeds 3), `title_error` | Empty-document check: all documents; heading rules: only documents under `application-dev/` |
+| [Angle Bracket and Merge Conflict Check](./markdown-check/md-style-check.md#angle-bracket-and-merge-conflict-check) | `尖括号未转义` (Unescaped angle brackets) | All Markdown documents |
+
+
+
+<!--no_check-->

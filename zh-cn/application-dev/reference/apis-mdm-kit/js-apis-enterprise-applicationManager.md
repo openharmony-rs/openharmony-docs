@@ -1118,7 +1118,7 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): v
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。<!--RP5--><!--RP5End-->                                    |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.1.0开始，最大支持10个。<!--RP5--><!--RP5End-->                                    |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **错误码**：
@@ -1161,7 +1161,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, disallowModify: boolean): void
 
-添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<br>通过本接口、[addKeepAliveApps](#applicationmanageraddkeepaliveapps14)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。从API版本26.0.1开始，同一用户下，保活应用名单修改为最多支持包含10个应用。例如：若当前名单中已有8个应用，则最多还能通过本接口为当前用户添加2个应用。<br>如果通过[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
+添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<br>通过本接口、[addKeepAliveApps](#applicationmanageraddkeepaliveapps14)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。从API版本26.1.0开始，同一用户下，保活应用名单修改为最多支持包含10个应用。例如：若当前名单中已有8个应用，则最多还能通过本接口为当前用户添加2个应用。<br>如果通过[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
 
 > **说明：**
 >
@@ -1185,7 +1185,7 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, di
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。<br>应用需要满足条件：安装在系统账号ID为1的用户（详情请参考[系统账号ID体系](../../basic-services/account/os-account-introduction.md#系统账号id体系)）下，且应用接入[后台服务](../../application-models/app-service-extension-ability.md#实现一个后台服务)<!--RP3--><!--RP3End-->。否则，会报错误码9201005。  |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.1.0开始，最大支持10个。<br>应用需要满足条件：安装在系统账号ID为1的用户（详情请参考[系统账号ID体系](../../basic-services/account/os-account-introduction.md#系统账号id体系)）下，且应用接入[后台服务](../../application-models/app-service-extension-ability.md#实现一个后台服务)<!--RP3--><!--RP3End-->。否则，会报错误码9201005。  |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 | disallowModify | boolean | 是   | 是否禁止用户手动取消应用保活，true表示禁止，false表示允许。在系统账号ID为1的用户（详情请参考[系统账号ID体系](../../basic-services/account/os-account-introduction.md#系统账号id体系)）下支持设置禁止或允许；在系统账号ID不为1的用户下只支持设置禁止，设置允许时会返回801错误码。<!--RP2--><!--RP2End--> |
 
@@ -1248,7 +1248,7 @@ removeKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number)
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要移除保活的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。                                 |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要移除保活的应用，最大支持5个。从API版本26.1.0开始，最大支持10个。                                 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -3928,7 +3928,7 @@ addOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId: n
 
 | 参数名         | 类型                | 必填 | 说明                                                         |
 | -------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| appIdentifiers | Array&lt;string&gt; | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。|
+| appIdentifiers | Array&lt;string&gt; | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。应用必须为已安装应用，否则会返回9201015错误码。|
 | accountId      | number              | 是   | 用户账号ID。<br>取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **错误码**：
@@ -3940,7 +3940,10 @@ addOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId: n
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+| 9200019  | The policy list has exceeded the limit. |
+| 9201015  | The application is not installed. |
 
 **示例：**
 
@@ -3994,7 +3997,9 @@ removeOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+| 9200019  | The policy list has exceeded the limit. |
 
 **示例：**
 
@@ -4049,7 +4054,8 @@ getOptimizationBatteryExclusionApps(accountId: number, queryPolicy?: common.Quer
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
 
 **示例：**
 
@@ -4065,3 +4071,148 @@ try {
   console.error(`Failed to get optimization battery exclusion apps. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+## applicationManager.getAllMainWindowStates
+
+getAllMainWindowStates(): Array\<MainWindowStates\>
+
+获取当前设备上所有[主窗口](../../windowmanager/window-type-overview.md#主窗口)的状态信息列表。
+
+> **说明：**
+>
+> 1. 本接口返回当前用户下所有主窗口的状态。多用户场景下，各用户的主窗口相互隔离，本接口不返回其他用户的主窗口。
+>
+> 2. 当前用户无主窗口时，返回空数组。
+>
+> 3. 同一应用（进程）可以拥有多个主窗口，此时返回结果中包含多条pid（应用进程ID）相同的记录，每条记录的state（主窗口状态）对应其中一个主窗口的当前状态。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[MainWindowStates](#mainwindowstates)&gt; | 返回主窗口状态信息的数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  let result: Array<applicationManager.MainWindowStates> = applicationManager.getAllMainWindowStates();
+  console.info(`Succeeded in getting all main window states, result: ${JSON.stringify(result)}`);
+  // state字段可用于过滤前台应用
+  let foregroundWindows: Array<applicationManager.MainWindowStates> = result.filter((window) => {
+    return window.state === applicationManager.WindowState.ACTIVE;
+  });
+  console.info(`Foreground windows: ${JSON.stringify(foregroundWindows)}`);
+} catch (err) {
+  console.error(`Failed to get all main window states. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getApplicationIconData
+ 
+getApplicationIconData(bundleName: string): string
+ 
+获取指定应用的图标数据。当企业需要自定义应用管理界面（如自建应用列表、应用管控报表）并展示应用图标时，可使用本接口获取。
+ 
+**起始版本：** 26.1.0
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**参数：**
+ 
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| bundleName | string                                                 | 是   | 应用的包名，用于指定需要获取图标数据的应用。 |
+ 
+**返回值：**
+ 
+| 类型                | 说明                             |
+| ------------------- | -------------------------------- |
+| string | 返回应用的图标数据，为Base64编码的字符串，解码后可用于图片展示。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201015  | The application is not installed. |
+ 
+**示例：**
+ 
+```ts
+import { applicationManager } from '@kit.MDMKit';
+ 
+@Entry
+@Component
+struct Index {
+  @State iconData: string = '';
+ 
+  build() {
+    Column() {
+      Image(this.iconData)
+        .width(100)
+        .height(100)
+ 
+      Button('获取指定应用的图标数据')
+        .onClick(() => {
+          try {
+            // 需根据实际情况进行替换
+            let bundleName: string = 'com.example.exampleapplication';
+            this.iconData = applicationManager.getApplicationIconData(bundleName);
+            console.info(`Succeeded in getting application icon data, iconData length: ${iconData.length}`);
+          } catch (err) {
+            console.error(`Failed to get application icon data. Code is ${err.code}, message is ${err.message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## MainWindowStates
+
+主窗口状态信息。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| pid | number | 否 | 否 | 应用进程ID。 |
+| bundleName | string | 否 | 否 | 应用包名。 |
+| state | [WindowState](#windowstate) | 否 | 否 | 应用窗口状态。在本结构体中只代表主窗口状态（主窗口属于应用窗口的一种）。|

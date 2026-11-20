@@ -51,7 +51,7 @@ PIN码认证。使用Promise异步回调。
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 202 | The caller is not a system application and is not allowed to use system applications. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | the UKey driver operation failed. |
 | 12000011 | queried entity does not exist. |

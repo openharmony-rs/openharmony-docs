@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb手势识别机制及其与ArkUI手势的区别，说明手势事件触发条件与拦截方案，以及禁用缩放、滑动返回上一页、抛滑白屏等常见问题的处理。"
+keywords: [ArkWeb手势, 手势识别, PinchGesture, zoomAccess, onBackPress, accessStep, setCustomUserAgent, max-fling-speed-y, 手势拦截]
+doctype: guide
+status: active
+---
+
 # 使用Web组件的手势与应用交互
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

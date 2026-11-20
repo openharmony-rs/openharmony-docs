@@ -57,6 +57,7 @@ async function createX509CRL(): Promise<cert.X509CRL> {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
   return x509CRL;
 }
@@ -85,6 +86,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -97,7 +99,9 @@ async function sample() {
     collection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
     console.info('createCertCRLCollection result: success.');
   } catch (err) {
-    console.error(`createCertCRLCollection failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertCRLCollection failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 
   const certParam: cert.X509CertMatchParameters = {
@@ -106,7 +110,9 @@ async function sample() {
   try {
     let certs: cert.X509Cert[] = await collection.selectCerts(certParam);
   } catch (err) {
-    console.error(`selectCerts failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`selectCerts failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 
   const crlParam: cert.X509CRLMatchParameters = {
@@ -116,7 +122,9 @@ async function sample() {
     let crls: cert.X509CRL[] = await collection.selectCRLs(crlParam);
     console.info('selectCRLs result: success.');
   } catch (err) {
-    console.error(`selectCRLs failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`selectCRLs failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

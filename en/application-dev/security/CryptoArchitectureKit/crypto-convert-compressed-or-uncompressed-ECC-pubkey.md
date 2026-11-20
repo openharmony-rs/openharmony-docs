@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:26:51.405Z pushedAt=2026-08-10T08:00:37.999Z -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:29:02.521Z pushedAt=2026-11-16T02:06:53.412Z nl=1 -->
 
 You can generate a public key object (**PubKey**) from ECC public key data or obtain the ECC public key data from a public key (**PubKey**) object.
 
@@ -23,28 +23,30 @@ You can specify the string parameter **format** to set the format of the ECC pub
    You can pass either the public key or the private key. In the following example, an uncompressed public key is passed.
 
 2. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'ECC_BrainPoolP256r1'** to create an asymmetric key generator (**AsyKeyGenerator**) object for a 256-bit ECC key pair.
-
 3. Call [AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3) to convert the **DataBlob** object into an asymmetric key (**KeyPair**) object.
-
 4. Call [PubKey.getEncodedDer](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedder12) with **format** set to **'X509|COMPRESSED'** to obtain the byte stream of the compressed public key.
 
 <!-- @[convert_ecc_uncompressed_pub_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccPubUncompressedToCompressed() {
-  let pkData =
-    new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4,
-      143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40,
-      217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98,
-      178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.convertKey(pubKeyBlob, null);
-  let returnBlob = keyPair.pubKey.getEncodedDer('X509|COMPRESSED');
-  console.info('returnBlob data: ' + returnBlob.data);
+  try {
+    let pkData =
+      new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4,
+        143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40,
+        217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200,
+        98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+    let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.convertKey(pubKeyBlob, null);
+    let returnBlob = keyPair.pubKey.getEncodedDer('X509|COMPRESSED');
+    console.info('returnBlob data: ' + returnBlob.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccPubUncompressedToCompressed failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
-
-<!--no_check-->

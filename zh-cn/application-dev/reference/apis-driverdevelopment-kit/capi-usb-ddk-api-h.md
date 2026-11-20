@@ -173,8 +173,6 @@ void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 
 释放配置描述符。使用完配置描述符后必须调用此接口释放，否则会造成内存泄漏。
 
-**需要权限：** ohos.permission.ACCESS_DDK_USB
-
 **起始版本：** 10
 
 
@@ -452,8 +450,6 @@ void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 **描述**
 
 销毁缓冲区。使用完缓冲区后必须调用此接口销毁，否则会造成资源泄漏。
-
-**需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
 

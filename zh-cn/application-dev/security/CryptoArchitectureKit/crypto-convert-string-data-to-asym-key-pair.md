@@ -71,6 +71,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`testPkcs1ToPkcs8ByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -82,6 +83,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   let priKeyPkcs1Str1024: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
@@ -114,6 +116,7 @@
         console.info('[Sync]: convert pem key pair result: success.');
       } else {
         console.error('[Sync]: convert pem key pair result: fail.');
+        // ...
       }
       let priPemKey = keyPairData.priKey;
       let pubPemKey = keyPairData.pubKey;
@@ -121,8 +124,10 @@
       let pubString = pubPemKey.getEncodedPem('X509');
       console.info('[Sync]TestPkcs1ToPkcs8BySync priString output: ' + priString);
       console.info('[Sync]TestPkcs1ToPkcs8BySync pubString output: ' + pubString);
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`Sync failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

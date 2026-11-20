@@ -5,11 +5,11 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=290991ba34a14252faa986897a6b8fc4198384bb translatedAt=2026-09-04T03:25:58.657Z pushedAt=2026-09-09T09:11:03.708Z -->
+<!-- md-trans-meta sourceCommit=8e675d02f7cde989c62a4b53c022680d74743c54 translatedAt=2026-11-16T01:55:58.165Z pushedAt=2026-11-20T07:27:42.867Z nl=1 -->
 
 The **DataShare** module allows an app to manage its own data and share data with other apps on the same device.
 
-> **NOTE**
+> **NOTE** 
 >
 > - The initial APIs of this module are supported since <!--RP1-->API version 9<!--RP1End-->. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
@@ -52,7 +52,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    dataShare.createDataProxyHandle().then(async (dataProxyHandle) => {
       console.info("createDataProxyHandle succeed");
     }).catch((err: BusinessError) => {
       console.error(`Failed to create DataProxyHandle. Code: ${err.code}, message: ${err.message}`);
@@ -545,6 +545,8 @@ For details about the following error codes, see [Data Share Error Codes](errorc
 **Example**
 
 ```ts
+import { ValueType } from '@kit.ArkData';
+
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
@@ -611,6 +613,8 @@ For details about the following error codes, see [Data Share Error Codes](errorc
 **Example**
 
 ```ts
+import { ValueType } from '@kit.ArkData';
+
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
@@ -676,6 +680,8 @@ For details about the following error codes, see [Data Share Error Codes](errorc
 **Example**
 
 ```ts
+import { ValueType } from '@kit.ArkData';
+
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };

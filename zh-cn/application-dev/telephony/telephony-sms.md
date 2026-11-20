@@ -62,27 +62,28 @@
 
 3. 发送SMS消息。
 
-```ts
+<!-- @[SmsService_SendSMS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_SendSMS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // 示例代码
 import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-
-let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
-}
-let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
-}
-let slotId: number = 0;
-let content: string = '短信内容';
-let destinationHost: string = '+861xxxxxxxxxx';
-let serviceCenter: string = '+861xxxxxxxxxx';
-let destinationPort: number = 1000;
-let options: sms.SendMessageOptions = {slotId, content, destinationHost, serviceCenter, destinationPort, sendCallback, deliveryCallback};
-sms.sendShortMessage(options, (err: BusinessError) => {
-    console.error(`callback: err->${JSON.stringify(err)}`);
-});
-
+// ...
+          let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
+              console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+          }
+          let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
+              console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+          }
+          let slotId: number = 0;
+          let content: string = '短信内容';
+          let destinationHost: string = '+861xxxxxxxxxx';
+          let serviceCenter: string = '+861xxxxxxxxxx';
+          let destinationPort: number = 1000;
+          let options: sms.SendMessageOptions = {slotId, content, destinationHost, serviceCenter, destinationPort, sendCallback, deliveryCallback};
+          sms.sendShortMessage(options, (err: BusinessError) => {
+              console.error(`callback: err->${JSON.stringify(err)}`);
+          });
 ```
 
 <!--DelEnd-->
@@ -91,13 +92,15 @@ sms.sendShortMessage(options, (err: BusinessError) => {
 
 发送短信的接口需要系统权限才可调用，三方应用如果有发送短信需求，需要在应用内实现跳转到短信编辑的功能，并且需要携带编辑内容和收件人号码，可以通过调用元能力startAbility接口指定号码并跳转到发送短信页面的方式实现。开启[混淆](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation)后，contactsName和telephone可能被混淆，建议在-keep-property-name保留属性名称。
 
-```ts
+<!-- @[SmsService_App](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_App/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // 示例代码
 import { common, Want } from '@kit.AbilityKit';
 
-const MMS_BUNDLE_NAME = "com.ohos.mms";
-const MMS_ABILITY_NAME = "com.ohos.mms.MainAbility";
-const MMS_ENTITIES = "entity.system.home";
+const MMS_BUNDLE_NAME = 'com.ohos.mms';
+const MMS_ABILITY_NAME = 'com.ohos.mms.MainAbility';
+const MMS_ENTITIES = 'entity.system.home';
 
 export class Contact {
     contactsName: string;
@@ -116,23 +119,23 @@ struct JumpMessage {
 
     startMMSAbilityExplicit() {
         // 这里完善联系人和号码；姓名主要是通过手机号来查询实际联系人名称，因此这种方式还是以手机号码为主。
-        let params: Array<Object> = [new Contact("张三", 133XXXXXXXX)];
+        let params: Array<Object> = [new Contact('张三', 13333333333)];
 
         let want: Want = {
-            bundleName: "com.ohos.mms",
-            abilityName: "com.ohos.mms.MainAbility",
+            bundleName: 'com.ohos.mms',
+            abilityName: 'com.ohos.mms.MainAbility',
             parameters: {
-                contactObjects: JSON.stringify(params), // 开启混淆后，contactsName和telephone可能被混淆，建议在-keep-property-name保留属性名称
-                pageFlag: "conversation",
+                contactObjects: JSON.stringify(params), //开启混淆后，contactsName和telephone可能被混淆，建议在-keep-property-name保留属性名称
+                pageFlag: 'conversation',
                 // 这里填写短信内容。
-                content: "我是短信具体内容"
+                content: '我是短信具体内容'
             }
         };
 
         this.context.startAbilityForResult(want).then((data) => {
-            console.info("Success" + JSON.stringify(data));
+            console.info('Success' + JSON.stringify(data));
         }).catch(() => {
-            console.error("error");
+            console.error('error');
         });
     }
 
@@ -149,7 +152,6 @@ struct JumpMessage {
         .height('100%')
     }
 }
-
 ```
 
 ## sms方式跳转到短信编辑界面
@@ -187,7 +189,9 @@ sms:106XXXXXXXXXX?body=发送短信内容
 
 保证sms字符串传入uri参数即可，在应用中page页面可通过 this.getUIContext().getHostContext() 获取context，在ability中可通过this.context获取context。
 
-```ts
+<!-- @[SmsService_Web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_Web/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // 示例代码
 import { common, Want } from '@kit.AbilityKit';
 
@@ -200,7 +204,7 @@ struct Index {
       Button('发送短信')
         .onClick(() => {
           let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          let exampleUrl = "sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9";
+          let exampleUrl = 'sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9';
         
           let want: Want = {
               bundleName: 'com.ohos.mms',
@@ -209,9 +213,9 @@ struct Index {
             }
         
           context.startAbility(want).then((data) => {
-              console.info("Success" + JSON.stringify(data));
+              console.info('Success' + JSON.stringify(data));
           }).catch(() => {
-              console.error("error");
+              console.error('error');
           });
 
         })

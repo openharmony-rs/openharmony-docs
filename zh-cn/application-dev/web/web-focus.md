@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件的焦点管理机制，涵盖组件级接口与网页内元素的W3C标准接口用法，并梳理主动与被动走焦场景及行为规范。"
+keywords: [焦点管理, requestFocus, onFocus, onBlur, 走焦, tabindex, autofocus]
+doctype: guide
+status: active
+---
+
 # Web组件焦点管理
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lyj_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=93660783cda81c6a66669c7bc215e6da819f14ee translatedAt=2026-11-16T01:10:09.143Z pushedAt=2026-11-20T07:28:35.693Z nl=1 -->
 
 This module provides maintenance and debugging capabilities for application grayscale faults. The following fault types are supported: RSS memory leak, ArkTS-OOM, FD memory leak, and GPU memory leak. The application grayscale feature is an O&M function used to accurately collect fault logs. After you integrate the grayscale function of an application on the device, the application can participate in grayscale activities. You can release an application grayscale task on the cloud platform and select some devices to enable precise fault log collection, helping you quickly locate faults.
 
@@ -45,14 +46,6 @@ Initializes the application grayscale module.
 
 **System capability:** SystemCapability.HiviewDFX.HiRetrieval
 
-**Error codes**
-
-For details about the error codes, see [Application Grayscale Error Codes](errorcode-hiviewdfx-hiretrieval.md).
-
-| ID| Error Message|
-| -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| 36000002 | Multi-instance applications not supported error. Possibly caused by invoking this function in a multi-instance application.         |
-
 **Example**
 
 ```ts
@@ -61,10 +54,10 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 try {
   hiRetrieval.init();
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
-// Other grayscale APIs can be called later.
+  } catch (err) {
+console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+  }
+  // Other grayscale APIs can be called later.
 ```
 
 ## hiRetrieval.participate
@@ -107,10 +100,10 @@ let config: hiRetrieval.HiRetrievalConfig = {
 try {
   hiRetrieval.init();
   hiRetrieval.participate(config);
-} catch (err) {
+  } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
 }
-```
+  ```
 
 ## hiRetrieval.quit
 
@@ -141,10 +134,10 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 try {
   hiRetrieval.init();
   hiRetrieval.quit();
-} catch (err) {
+  } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
 }
-```
+  ```
 
 ## hiRetrieval.isParticipant
 
@@ -202,7 +195,7 @@ let ts = hiRetrieval.getLastParticipationTimestamp();
 
 run(): void
 
-Runs the application grayscale module if the device is participating in an application grayscale activity. Otherwise, calling this API does not take effect.
+Runs the application grayscale module if the device is participating in an application grayscale activity (that is, the [participate](#hiretrievalparticipate) API is called and the [quit](#hiretrievalquit) API is called). Otherwise, calling this API does not take effect.
 
 **Since:** 26.0.0
 
@@ -227,10 +220,10 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 try {
   hiRetrieval.init();
   hiRetrieval.run();
-} catch (err) {
+  } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
 }
-```
+  ```
 
 ## hiRetrieval.getCurrentConfig
 

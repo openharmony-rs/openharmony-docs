@@ -6,9 +6,10 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d78b3fb65ab1cedf6a668b0bed3dbffdd0bd3b5a translatedAt=2026-08-21T02:33:19.591Z pushedAt=2026-08-22T07:28:08.530Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T02:23:17.802Z pushedAt=2026-11-13T01:05:59.979Z nl=1 -->
 
 The **WaterFlow** component is a waterfall flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules. It supports multi-column layout, group mixing layout, lazy loading, auto calculation of the number of columns, and edge fading, and is suitable for scenarios such as image galleries, product displays, and content feeds that need to display content of different sizes.
+
 
 > **NOTE**
 >
@@ -19,10 +20,10 @@ The **WaterFlow** component is a waterfall flow container that consists of cells
 > The component has built-in gestures for functions such as scroll-following. To add custom gesture operations, refer to [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
 >
 > For more development instructions on **WaterFlow**, see [Creating a Waterfall Flow (WaterFlow)](../../../ui/arkts-layout-development-create-waterflow.md). For NDK development, see [Implementing a Waterfall Flow Layout](../../../ui/ndk-waterflow.md). For C APIs, see [ArkUI_NodeAttributeType (Scrollable Container Component Attribute)](../capi-native-node-h-nodeattributetype-scrollablecontainer.md) and [ArkUI_WaterFlowSectionOption](../capi-arkui-nativemodule-arkui-waterflowsectionoption.md).
-
 ## Child Components
 
-Only the [FlowItem](ts-container-flowitem.md) child component and custom components are supported. When a custom component is used in **WaterFlow**, you are advised to use **FlowItem** as the top-level component of the custom component. You are not advised to set attributes and event methods for the custom component.
+
+Only [FlowItem](ts-container-flowitem.md) child components and [custom components](../../../ui/state-management/arkts-create-custom-components.md) are supported. When a custom component is used under **WaterFlow**, it is recommended that **FlowItem** be used as the top-level component of the custom component, and it is not recommended to set attributes and event methods for the custom component.
 
 Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
@@ -41,6 +42,7 @@ Child components can be dynamically generated using rendering control types [if/
 >
 > Since API version 21, the maximum width and height of a single **WaterFlow** child component is 16777216 px. In API version 20 and earlier, the maximum width and height of a single **WaterFlow** child component is 1000000 px. A child component exceeding this size may cause scrolling or display exceptions.
 
+
 ## APIs
 
 WaterFlow(options?: WaterFlowOptions)
@@ -57,6 +59,7 @@ Creates a **WaterFlow** component.
 | -------- | -------- | -------- | -------- |
 | options | [WaterFlowOptions](#waterflowoptions) | No | Parameters of the **WaterFlow** component, used to set the scroll controller, footer component, groups, and layout mode. |
 
+
 ## WaterFlowOptions
 
 Provides parameters of the **WaterFlow** component.
@@ -70,6 +73,7 @@ Provides parameters of the **WaterFlow** component.
 | scroller | [Scroller](ts-container-scroll.md#scroller) | No   | Yes | Controller of the scrollable component, bound to the scrollable component. When not set, no external controller is bound, and the component manages scrolling by itself.<br/>**NOTE**<br/>1. It is not allowed to bind the same scroll controller to other scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).<br/>2. When the [SLIDING_WINDOW](#waterflowlayoutmode12) layout mode is used, the total offset returned by [currentOffset](ts-container-scroll.md#currentoffset) or [offset](ts-container-scroll.md#offset23) of scroller is inaccurate after a jump or data update is triggered, and is recalibrated when scrolling back to the top.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | No   | Yes | **FlowItem** groups to implement mixed layout with different numbers of columns for different groups within the same **WaterFlow** component. Suitable for scenarios where different numbers of columns are required in different areas. When not set, a unified number of columns is used for layout.<br/>**NOTE**<br/>1. When group mixing layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored.<br/>2. When group mixing layout is used, **footer** cannot be set separately. You can use the last group as the footer component.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model.  |
 | layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12) | No | Yes | Layout mode of **WaterFlow**. Select a more suitable mode based on the usage scenario. **ALWAYS_TOP_DOWN** is suitable for scenarios with a fixed number of columns; **SLIDING_WINDOW** is suitable for scenarios such as dynamic number of columns, large data volume, and screen rotation.<br/>**NOTE**<br/>Default value: [ALWAYS_TOP_DOWN](#waterflowlayoutmode12).<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
+
 
 ## WaterFlowSections<sup>12+</sup>
 
@@ -111,11 +115,12 @@ Changes sections by removing or replacing an existing section and/or adding a se
 | deleteCount | number | No   | Number of sections to be deleted from the position specified by **start**.<br>**NOTE**<br>1. If **deleteCount** is omitted, or if its value is greater than or equal to the number of sections from the position specified by **start** to the end of the **WaterFlowSections**, then all sections from the position specified by **start** to the end of the **WaterFlowSections** will be deleted.<br>2. If **deleteCount** is **0** or a negative number, no sections are deleted.|
 | sections | Array<[SectionOptions](#sectionoptions12)> | No   | Sections to add to the section list, beginning from the position specified by **start**. If no section is specified, **splice()** will only delete sections from the **WaterFlow** component.|
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | boolean | Returns **true** if the sections are successfully modified and returns **false** if the modification fails (**itemsCount** of any section to be added is not a non-negative number).|
+
 
 ### push<sup>12+</sup>
 
@@ -135,7 +140,7 @@ Adds the specified sections to the end of the **WaterFlow** component.
 | ---- | ----------------------------- | ---- | -------------------- |
 | section | [SectionOptions](#sectionoptions12) | Yes    | Group appended to the end of the **WaterFlow**, containing configuration information such as the number of flow items in the group, number of columns/rows, spacing, margin, and main axis size callback. |
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -160,7 +165,7 @@ Updates the configuration of a specified water flow item section.
 | sectionIndex | number | Yes   | Zero-based index of the water flow item section to update. The value is converted to an integer.<br>**NOTE**<br>1. A negative index counts back from the end of the section list. **sectionIndex + WaterFlowSections.length()** is used.<br>2. If **sectionIndex** < -**WaterFlowSections.length()**, **0** is used.<br>3. If **sectionIndex** >= **WaterFlowSections.length()**, a new section is added at the end.|
 | section | [SectionOptions](#sectionoptions12) | Yes    | New group information used to replace the **FlowItem** group configuration at the specified index, including the number of flow items, number of columns/rows, spacing, margins, and main axis size callback. |
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -178,7 +183,7 @@ Obtains the configuration of all sections in the **WaterFlow** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -196,7 +201,7 @@ Obtains the number of sections in the **WaterFlow** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -221,6 +226,7 @@ Describes the configuration of the water flow item section.
 | margin | [Margin](ts-types.md#margin) \| [Dimension](ts-types.md#dimension10) | No| Yes| Margins of the section. A value of the **Length** type specifies the margins on all the four sides.<br>Default value: **0**<br>Unit: vp<br>When **margin** is set to a percentage, the width of the **WaterFlow** component is used as the base value for the top, bottom, left, and right margins.|
 | onGetItemMainSizeByIndex | [GetItemMainSizeByIndex](#getitemmainsizebyindex12) | No | Yes | Used to obtain the main axis size of the **FlowItem** at the specified index during the layout of the **WaterFlow** component. For a vertical **WaterFlow**, it is the height; for a horizontal **WaterFlow**, it is the width, in vp. When not set, the **WaterFlow** determines the main axis size based on the regular measurement result of the **FlowItem**.<br/>**NOTE**<br/>1. When both **onGetItemMainSizeByIndex** and the width and height attributes of the **FlowItem** are used, the main axis size is subject to the result returned by **onGetItemMainSizeByIndex**, which overrides the main axis length of the **FlowItem**.<br/>2. Using **onGetItemMainSizeByIndex** can improve the efficiency of jumping to a specified position or index in the **WaterFlow**. Avoid mixing groups with and without **onGetItemMainSizeByIndex** set, which may cause layout exceptions.<br/>3. When **onGetItemMainSizeByIndex** returns a negative number, the main axis size of the **FlowItem** is 0.<br/>4. If the main axis size of the **FlowItem** changes dynamically with the data, ensure that the value returned by **onGetItemMainSizeByIndex** is consistent with the data source. When using [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), call [onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8), [onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded), or [onDatasetChange](ts-rendering-control-lazyforeach.md#ondatasetchange12) to notify the framework that the data has changed after the data changes. When using [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), modify the state array according to the data update rules of Repeat. |
 
+
 ## GetItemMainSizeByIndex<sup>12+</sup>
 
 type GetItemMainSizeByIndex = (index: number) => number
@@ -239,7 +245,7 @@ Obtains the main axis size of a specified water flow item based on its index.
 | ---- | ----------------------------- | ---- | -------------------- |
 | index | number | Yes | Index of the **FlowItem** in the **WaterFlow**.<br/>Value range: [0, total number of child components - 1] |
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -274,7 +280,7 @@ Enumerates the layout modes of the **WaterFlow** component.
 ## Attributes
 
 In addition to the [universal attributes](ts-component-general-attributes.md) and [universal attributes of scrollable components](ts-container-scrollable-common.md#attributes), the following attributes are supported:
-> **NOTE**
+> **NOTE** 
 >
 > When the **WaterFlow** component uses the universal attribute [clip<sup>12+</sup>](ts-universal-attributes-sharp-clipping.md#clip12) and the universal attribute [clip<sup>18+</sup>](ts-universal-attributes-sharp-clipping.md#clip18), the default value is **true**.
 >
@@ -290,11 +296,15 @@ For example, **'1fr 1fr 2fr'** indicates three columns, with the first column ta
 
 You can use **columnsTemplate('repeat(auto-fill,track-size)')** to automatically calculate the number of columns based on the specified column width **track-size**. **repeat** and **auto-fill** are keywords. The units for **track-size** can be px, vp (default), %, or a valid number. For details, see [Example 2](#example-2-implementing-automatic-column-count-calculation).
 
+In a non-repeat template string, each item supports only the following three formats: 'number+fr', 'number+px', and 'number+%'. The vp unit is not supported (for example, columnsTemplate('100vp 100vp')). To automatically calculate the number of columns based on a fixed vp size, use **repeat(auto-fill, track-size)**.
+
+When set to '0fr', the column width is 0 and the **FlowItem** in this column is not displayed. When set to another invalid value, the layout is processed as a fixed single column.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                          |
 | ------ | ------ | ---- | ---------------------------------------------- |
@@ -318,11 +328,12 @@ For example, when the **fillType** attribute of **ItemFillPolicy** is set to **P
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                     |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
 | value  | string&nbsp;\|&nbsp;[ItemFillPolicy](ts-types.md#itemfillpolicy22) | Yes   | Number of columns in the current **WaterFlow** component layout. When **value** is of the **ItemFillPolicy** type, the number of columns is automatically determined based on the breakpoint type corresponding to the **WaterFlow** component width. |
+
 
 ### rowsTemplate
 
@@ -334,11 +345,15 @@ For example, **'1fr 1fr 2fr'** indicates three rows, with the first row taking u
 
 You can use **rowsTemplate('repeat(auto-fill,track-size)')** to automatically calculate the number of rows based on the specified row height **track-size**. **repeat** and **auto-fill** are keywords. The units for **track-size** can be px, vp (default), %, or a valid number.
 
+In a non-repeat template string, each item supports only the following three formats: 'number+fr', 'number+px', and 'number+%'. The vp unit is not supported (for example, **rowsTemplate('100vp 100vp')**). To automatically calculate the number of rows based on a fixed vp size, use **repeat(auto-fill, track-size)**.
+
+When set to '0fr', the row height is 0 and the **FlowItem** in this row is not displayed. When set to another invalid value, the layout is processed as a fixed single row.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                          |
 | ------ | ------ | ---- | ---------------------------------------------- |
@@ -354,10 +369,9 @@ Sets the constraint size, which is used to limit the size range of child compone
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; auto; 10%; auto-->
-
 | Name| Type                                                      | Mandatory| Description      |
 | ------ | ---------------------------------------------------------- | ---- | ---------- |
 | value  | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes   | Constraint size. If a value less than 0 is set, the parameter does not take effect. <br/>**NOTE**<br/>1. When both **itemConstraintSize** and the [constraintSize](ts-universal-attributes-size.md#constraintsize) attribute of **FlowItem** are set, the maximum value is used for **minWidth**/**minHeight**, and the minimum value is used for **maxWidth**/**maxHeight**. The adjusted values are then processed as the **constraintSize** of **FlowItem**.<br/>2. When only **itemConstraintSize** is set, it is equivalent to setting the same **constraintSize** for all child components of **WaterFlow**.<br/>3. After **itemConstraintSize** is converted to the **constraintSize** of **FlowItem** in either of the two ways above, the effective rules are the same as those of the universal attribute [constraintSize](ts-universal-attributes-size.md#constraintsize).|
@@ -372,7 +386,7 @@ Sets the gap between columns. When group layout is used, each group can set the 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
@@ -388,7 +402,7 @@ Sets the gap between rows. When group layout is used, each group can set the row
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
@@ -404,7 +418,7 @@ Sets the main axis direction of the layout.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                               | Mandatory| Description                                             |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------- |
@@ -436,13 +450,13 @@ Sets whether to support the scrolling gesture.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | boolean | Yes  | Whether to support scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](ts-container-scroll.md#scroller).<br>Default value: **true**|
 
-> **NOTE**
+> **NOTE** 
 >
 > The component cannot be scrolled through mouse press-and-drag operations.
 
@@ -458,7 +472,7 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -476,7 +490,7 @@ Sets the friction coefficient. It takes effect when the scroll area is manually 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                     |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -496,7 +510,7 @@ This attribute takes effect only in [LazyForEach](../../../ui/rendering-control/
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -518,7 +532,7 @@ This parameter takes effect only when used with [LazyForEach](../../../ui/render
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
@@ -537,7 +551,7 @@ Sets whether to synchronously load all child components in the **WaterFlow** com
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -566,6 +580,34 @@ Defines whether the **WaterFlow** component supports the generation of empty bra
 | Name| Type  | Mandatory| Description                                              |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | supported  | boolean \| undefined | Yes   | Whether the current **WaterFlow** component supports using the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) rendering control syntax in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to generate an empty branch node that contains no child components.<br>The value **true** indicates that the FlowItem after the empty branch is displayed, and **false** indicates that it is not displayed.<br>If the value is undefined, it is processed as **false**. |
+
+### scrollSnapStrategy
+
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+
+Sets the scroll snap strategy of **WaterFlow**. When scrolling ends, the target **FlowItem** is aligned in the specified manner, or stops at a custom snap position. For details, see [Example 12 (Setting Scroll Snap Alignment)](#example-12-setting-scroll-snap-alignment).
+
+Supports both the [ALWAYS_TOP_DOWN](#waterflowlayoutmode12) and [SLIDING_WINDOW](#waterflowlayoutmode12) layout modes, as well as the group mixing layout configured through [WaterFlowSections](#waterflowsections12).
+
+> **NOTE**
+>
+> - The snap position does not exceed the scrollable range of the component from the start to the end of the content. When [contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22) and [contentEndOffset](ts-container-scrollable-common.md#contentendoffset22) are not set, this range is [0, max(0, total content length - viewport length)], with the lengths measured along the scroll axis. For example, when the total content length is 1000 vp and the viewport length is 400 vp, the range is [0, 600] vp. After the start and end content offsets are set, the actual scroll boundary that includes the corresponding reserved area takes effect. The total content length is calculated based on the current layout result.
+>
+> - When the target position exceeds the scrollable range, it is limited to the boundary of the scrollable range. Therefore, the first and last **FlowItem** may not be fully aligned in the specified manner.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | ------------------------------------ |
+| strategy | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | No | Scroll snap strategy.<br/>When the [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) enum is passed in, the built-in alignment mode is used. **START**, **CENTER**, and **END** align the target **FlowItem** to the start, center, and end of the viewport along the scroll axis, respectively.<br/>When an object implementing the [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) API is passed in, you need to calculate the scroll distance and the final snap position: [calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset) determines the scroll distance in the inertia phase, and [calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset) determines the final snap position.<br/>When this parameter is not set, or when **ScrollSnapAlign.NONE** or **undefined** is passed in, scroll snap is not enabled, and **WaterFlow** does not perform snap alignment but slides naturally to a stop by inertia. |
 
 ## Events
 
@@ -612,17 +654,13 @@ When this API is called back, the event parameter carries the amount of scrollin
 This event is triggered when either of the following conditions is met:
 
 1. Scrolling is initiated by user interaction (for example, finger swipe, keyboard, or mouse operation).
-
 2. The **WaterFlow** component scrolls by inertia.
-
 3. Scrolling is triggered by calling the [fling](ts-container-scroll.md#fling12) API.
 
 This event is not triggered in the following scenarios:
 
 1. A scroll control API other than [fling](ts-container-scroll.md#fling12) is called.
-
 2. The out-of-bounds bounce effect is active.
-
 3. The scrollbar is dragged.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -631,7 +669,7 @@ This event is not triggered in the following scenarios:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                   | Mandatory| Description                      |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
@@ -655,7 +693,7 @@ This event is triggered when either of the preceding indexes changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                 |
 | ------ | ------ | ---- | ------------------------------------- |
@@ -672,8 +710,8 @@ When the **WaterFlow** component is empty, the return values of the **onScrollIn
 | ALWAYS_TOP_DOWN | Available| 0 | -1 |
 | SLIDING_WINDOW | Optional| 1000000 | -1 |
 
-## UIWaterFlowEvent<sup>19+</sup>
 
+## UIWaterFlowEvent<sup>19+</sup>
 Represents the return value of the [getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node.
 
 **UIWaterFlowEvent** inherits from [UIScrollableCommonEvent](ts-container-scrollable-common.md#uiscrollablecommonevent19).
@@ -743,7 +781,6 @@ If the input parameter is **undefined**, the event callback is reset.
 | callback  | [OnWaterFlowScrollIndexCallback](#onwaterflowscrollindexcallback19)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onScrollIndex** event.|
 
 ## OnWaterFlowScrollIndexCallback<sup>19+</sup>
-
 type OnWaterFlowScrollIndexCallback = (first: number, last: number) => void
 
 Represents a callback for item changes in the visible area of the **WaterFlow** component.
@@ -764,7 +801,6 @@ Represents a callback for item changes in the visible area of the **WaterFlow** 
 ## Examples
 
 ### Example 1: Using a Basic WaterFlow Component
-
 This example demonstrates the basic usage of the **WaterFlow** component, including data loading, attribute setting, and event callbacks.
 
 **WaterFlowDataSource** implements the [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) data source interface of [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and is used to provide child components to **WaterFlow** through **LazyForEach**.
@@ -772,7 +808,6 @@ This example demonstrates the basic usage of the **WaterFlow** component, includ
 When a field that affects the width and height of **FlowItem** in the [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) data changes, you need to notify [DataChangeListener](ts-rendering-control-lazyforeach.md#datachangelistener) after modifying the data, for example, by calling [onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8) or [onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded). If only the data content is modified without triggering a data change notification, **LazyForEach** may not refresh the corresponding **FlowItem**.
 
 <!--code_no_check-->
-
 ```ts
 // WaterFlowDataSource.ets
 
@@ -925,7 +960,6 @@ export class WaterFlowDataSource implements IDataSource {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -1063,13 +1097,11 @@ struct WaterFlowDemo {
 ![en_image_WaterFlow.gif](figures/waterflow-perf-demo.gif)
 
 ### Example 2: Implementing Automatic Column Count Calculation
-
 This example showcases how to implement automatic column count calculation using the **auto-fill** feature.
 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -1136,8 +1168,8 @@ struct WaterFlowDemo {
 
 ![waterflow_auto-fill.png](figures/waterflow_auto-fill.png)
 
-### Example 3: Using WaterFlowSections
 
+### Example 3: Using WaterFlowSections
 This example demonstrates the initialization of groups and the different effects of the **splice**, **update**, **values**, and **length** APIs.
 
 For usage with state management V2, see [WaterFlow and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#scrollable-component).
@@ -1145,7 +1177,6 @@ For usage with state management V2, see [WaterFlow and makeObserved](../../../ui
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -1245,7 +1276,7 @@ struct WaterFlowDemo {
   aboutToAppear() {
     this.setItemSizeArray();
 
-    // Initialize the section information: Use the single-column and dual-column layouts alternately.
+    // Initialize the section information: Use the single-column and two-column layouts alternately.
     let sectionOptions: SectionOptions[] = [];
     let count = 0;                     // Number of allocated FlowItem components.
     let oneOrTwo = 0;                  // Select the section type alternately.
@@ -1258,7 +1289,7 @@ struct WaterFlowDemo {
         break;
       }
 
-      // Use the single-column and dual-column layouts alternately.
+      // Use the single-column and two-column layouts alternately.
       if (oneOrTwo++ % 2 == 0) {
         sectionOptions.push(this.oneColumnSection);
         count += this.oneColumnSection.itemsCount;
@@ -1396,13 +1427,11 @@ struct WaterFlowDemo {
 ![waterflowSections.png](figures/waterflowSections.png)
 
 ### Example 4: Using the Pinch Gesture to Change the Column Count
-
 This example demonstrates how to use [priorityGesture](ts-gesture-settings.md#prioritygesture) and [PinchGesture](ts-basic-gestures-pinchgesture.md) to implement the feature of using a pinch gesture to change the number of columns in a layout.
 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -1600,13 +1629,11 @@ struct WaterFlowDemo {
 ![pinch](figures/waterflow-pinch.gif)
 
 ### Example 5: Setting the Edge Fading Effect
-
 This example demonstrates how to enable the edge fading effect for the **WaterFlow** component using the [fadingEdge](ts-container-scrollable-common.md#fadingedge14) API and set the length of the fading edge using the **fadingEdgeLength** parameter.
 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1681,7 +1708,6 @@ This example uses the [edgeEffect](ts-container-scrollable-common.md#edgeeffect1
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -1756,7 +1782,6 @@ In API version 18 and later versions, this example demonstrates how to set the f
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { ComponentContent, UIContext } from '@kit.ArkUI';
@@ -1869,7 +1894,6 @@ This example demonstrates how to implement the pull-to-refresh function for the 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -1960,7 +1984,6 @@ struct WaterFlowDemo {
 In API version 22 and later versions, this example shows how to configure the number of columns in the **WaterFlow** component based on breakpoints.
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -2024,7 +2047,6 @@ struct WaterFlowDemo {
   }
 }
 ```
-
 When the **WaterFlow** width is within the breakpoint range of sm or smaller, two columns are displayed.
 
 ![sm_waterflow](figures/waterFlow_itemFillPolicy_SM.png)
@@ -2037,6 +2059,7 @@ When the **WaterFlow** width is within the breakpoint range of lg or larger, fiv
 
 ![lg_waterflow](figures/waterFlow_itemFillPolicy_LG.png)
 
+
 ### Example 10: Obtaining the Content Height for the WaterFlow Component
 
 From API version 22, this example uses the **WaterFlow** component to obtain the content height.
@@ -2044,7 +2067,6 @@ From API version 22, this example uses the **WaterFlow** component to obtain the
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -2151,7 +2173,6 @@ This example obtains a [UIWaterFlowEvent](#uiwaterflowevent19) instance via [get
 The **UIWaterFlowEvent** API is added since API version 19.
 
 <!--code_no_check-->
-
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 
@@ -2256,3 +2277,54 @@ struct Index {
   }
 }
 ```
+
+### Example 12: Setting Scroll Snap Alignment
+
+This example uses [scrollSnapStrategy](#scrollsnapstrategy) to set trailing snap (**ScrollSnapAlign.END**). When scrolling ends, the bottom edge of the target **FlowItem** is aligned with the bottom edge of the viewport. The example uses the **SLIDING_WINDOW** layout mode and contains 100 FlowItems of different heights.
+
+Since API version 26.1.0, the **scrollSnapStrategy** API is added.
+
+For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
+
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowSnapExample {
+  private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+
+  build() {
+    Column({ space: 10 }) {
+      Text('WaterFlow End Snapping')
+        .fontSize(20)
+      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80 + (item % 4) * 20)
+          .backgroundColor(0xF9CF93)
+          .borderRadius(8)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .width('100%')
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.END)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-waterflow](figures/scrollSnapStrategy-waterflow.gif)

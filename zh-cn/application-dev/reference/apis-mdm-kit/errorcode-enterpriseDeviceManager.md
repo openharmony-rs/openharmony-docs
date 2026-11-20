@@ -654,13 +654,11 @@ Failed to enable or disable the activation lock.
 
 **可能原因**
 
-<!--RP1-->设备不支持激活锁服务。
-<!--RP1End-->
+非PC/2in1企业设备。
 
 **处理步骤**
 
-<!--RP2-->设备不支持激活锁服务。
-<!--RP2End-->
+请检查是否是PC/2in1企业设备。
 
 ## 9201013 快捷栏中的应用数量已到最大值
 

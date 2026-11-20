@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f746332fcab053c44b4c12884f67fd410a77128c translatedAt=2026-10-28T04:03:04.551Z pushedAt=2026-10-28T07:57:32.769Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:28:45.258Z pushedAt=2026-11-12T09:05:00.416Z nl=1 -->
 
 To enhance the state management framework's capability of monitoring State Variable changes, you can use the [\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor) decorator to listen for State Variable changes.
 
@@ -43,7 +43,7 @@ Since API version 26.0.0, you can configure [MonitorDecoratorOptions](../../refe
 
 ## Limitations of the \@Watch decorator in State Management V1
 
-This V1 version cannot listen for the changes of an object, a single property in an array, or array items. It also cannot obtain the value before change.
+V1 cannot listen for the changes of an object, a single property in an array, or array items. It also cannot obtain the value before change.
 <!-- @[monitor_watch_decorator_limitations_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/WatchDecoratorLimitationsV1.ets) -->  
 
 ``` TypeScript
@@ -2281,7 +2281,7 @@ struct Index {
 
 ![monitor-sync-25](./figures/monitor-sync-25.png)
 
-[Negative example 2]
+[Incorrect Usage 2]
 
 <!-- @[monitor_problem_param_counter_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample2.ets) --> 
 

@@ -4037,7 +4037,7 @@ Sets the blank screen detection configuration, such as whether to enable the det
 
 enableBlankScreenMonitor(enable: boolean)
 
-Sets whether to enable blank screen detection. After blank screen detection is enabled, the Web component triggers the callback [onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen) when a blank screen is detected. When the attribute has no explicit call, blank screen detection is disabled by default.
+Sets whether to enable blank screen detection. After blank screen detection is enabled, the Web component triggers the callback [onMonitoredBlankScreen](./arkts-basic-components-web-events.md) when a blank screen is detected. When the attribute has no explicit call, blank screen detection is disabled by default.
 
 **Since:** 26.0.1
 

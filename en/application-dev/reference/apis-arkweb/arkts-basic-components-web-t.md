@@ -1,18 +1,17 @@
 # Types
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @gzweioh-->
+<!--Owner: @runlei-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:38:06.134Z pushedAt=2026-08-07T08:12:34.499Z -->
+<!-- md-trans-meta sourceCommit=f5ea5eb60664cadd2913a575bd523bd64f5f3af4 translatedAt=2026-11-06T11:25:05.253Z pushedAt=2026-11-13T09:05:02.729Z nl=1 -->
 
 This document provides the type definitions used in the ArkWeb component, including the Web controller and various event callback function types. The WebviewController is used to control the behavior of the Web component, and the callback function types provide developers with the ability to listen for and handle various event scenarios during the running of the Web component.
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - The sample effect is subject to the actual device.
 
@@ -326,6 +325,28 @@ Defines a callback triggered when a blank screen is detected.
 
 For details about the sample code, see [onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22).
 
+## OnMonitorBlankScreenCallback
+
+type OnMonitorBlankScreenCallback = (event: MonitoredBlankScreenEventInfo) => void
+
+Callback triggered when the Web component detects a blank screen.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+|--------|------|------|------|
+| event | [MonitoredBlankScreenEventInfo](./arkts-basic-components-web-i.md) | Yes | Detailed information when a blank screen is detected. |
+
+**Example**
+
+For details about the sample code, see [onMonitoredBlankScreen](./arkts-basic-components-web-events.md).
+
 ## OnCameraCaptureStateChangeCallback<sup>23+</sup>
 
 type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void
@@ -488,4 +509,44 @@ This callback is triggered when the input method is detected to be successfully 
 **Example**
 
 For the complete example, see [onInputmethodAttached](./arkts-basic-components-web-events.md).
-<!--no_check-->
+
+## OnZoomChangeCallback
+
+type OnZoomChangeCallback = (zoomChangeInfo: OnZoomChangeEvent) => void
+
+Callback function type invoked when the page zoom ratio changes.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| zoomChangeInfo | [OnZoomChangeEvent](./arkts-basic-components-web-i.md) | Yes | Detailed information about the page zoom ratio change. |
+
+## OnContextMenuUpdateCallback
+
+type OnContextMenuUpdateCallback = (menuItemId: WebContextMenuItemId, options?: WebContextMenuOptions) => void
+
+Callback type for context menu item status updates.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| menuItemId | [WebContextMenuItemId](./arkts-basic-components-web-e.md#webcontextmenuitemid) | Yes | ID of the context menu item. |
+| options | [WebContextMenuOptions](./arkts-basic-components-web-i.md) | No | Options of the context menu item. |
+
+**Example**
+
+For complete sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).

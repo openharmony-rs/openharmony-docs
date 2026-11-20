@@ -9,4 +9,4 @@
 
 - [安全访问围栏服务概述](secure-access-fence-overview.md)
 - [获取CLI凭据(Ticket)](secure-access-fence-guidelines.md)
-- [查询与请求权限控制目标应用](app-control-permission-guidelines.md)
+- [查询并申请控制目标应用的权限](app-control-permission-guidelines.md)

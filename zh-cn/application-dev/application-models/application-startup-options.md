@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过StartOptions控制UIAbility启动行为的方法，涵盖窗口模式、窗口位置、启动动效、启动页样式等配置，适配多设备形态场景。"
+keywords: [StartOptions, 窗口模式, 启动设置, 窗口位置, 启动动效, 启动页, UIAbility启动, windowMode]
+doctype: guide
+status: active
+---
 # 应用启动设置
 
 <!--Kit: Ability Kit-->

@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:23:48.718Z pushedAt=2026-10-08T09:30:01.854Z -->
+<!-- md-trans-meta sourceCommit=c840b9a8f02f445d6c590b1f99e03469a633d5eb translatedAt=2026-11-13T02:22:08.265Z pushedAt=2026-11-13T09:44:30.423Z nl=1 -->
 
 The **NotificationSubscriber** module serves as the input parameter of [subscribeNotification](js-apis-notificationSubscribe-sys.md#notificationsubscribesubscribenotification) and provides callbacks for receiving or cancelling notifications.
 
@@ -109,7 +109,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 onUpdate?: (data: NotificationSortingMap) => void
 
-Triggered to update [notification sorting](../../notification/notification-glossary.md#notification-sorting). This is a reserved capability and is not supported yet.
+Called for updating notification sorting. This capability is reserved and not supported yet.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -532,10 +532,10 @@ Callback function for notifications of system property value changes.
 
 **System API**: This is a system API.
 
-| Name  | Type   | Read Only| Optional| Description            |
+| Name  | Type   | Read-Only| Optional| Description            |
 | ------ | ------- | ---- | --- | ---------------- |
 | onSystemUpdate<sup>23+</sup> | [SystemUpdateCallback](#systemupdatecallback23) | No | Yes | Returns notification information carrying system property values. |
-| onEnabledSilentReminderChanged<sup>24+</sup> | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | No | Yes | Returns the enabled state change of the application notification [silent reminder](../../notification/notification-glossary.md#silent-reminder). |
+| onEnabledSilentReminderChanged<sup>24+</sup> | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | No | Yes | Returns the enabled state change of the application notification silent reminder. |
 | onBadgeEnabledChanged<sup>12+</sup> | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | No | Yes | Returns the enabled state change of the application badge. |
 | onNotificationSwitchChanged | [NotificationSwitchChangedCallback](#notificationswitchchangedcallback) | No | Yes | Returns the changes of the notification switch status set by [notificationManager.setNotificationSwitch](js-apis-notificationManager-sys.md#notificationmanagersetnotificationswitch).<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model. |
 
@@ -547,10 +547,10 @@ Returns notification information carrying system property values.
 
 **System API**: This is a system API.
 
-| Name           | Type                                                                | Read Only| Optional| Description    |
+| Name           | Type                                                                | Read-Only| Optional| Description    |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
 | request         | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | Yes  | No  | [Notification content](../../notification/notification-glossary.md#notification-content). |
-| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | Yes  | Yes  | [Notification sorting](../../notification/notification-glossary.md#notification-sorting) information. |
+| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | Yes  | Yes  | Notification sorting information. |
 | reason          | number                                                             | Yes | Yes | Reason for deletion. The options are as follows:<br>**1**: The notification is deleted after being tapped.<br>**2**: The notification is deleted by the user.|
 | sound           | string                                                             | Yes | Yes | Notification sound.|
 | vibrationValues | Array\<number\> | Yes | Yes | Notification vibration. |
@@ -573,7 +573,7 @@ Returns the changes of the application badge enabled state.
 
 ## EnabledSilentReminderCallbackData<sup>24+</sup>
 
-Returns the changes of the [silent reminder](../../notification/notification-glossary.md#silent-reminder) switch state of application notifications.
+Defines the callback data for the enabled state change of the application notification silent reminder.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -606,19 +606,19 @@ Returns the changes of the application badge number.
 
 ## EnabledPriorityNotificationCallbackData<sup>23+</sup>
 
-Returns the changes of the enabled state of the notification priority.
+Returns the changes of the enabled state of the priority notification.
 
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
 
-| Name       | Type  | Read-only| Optional| Description        |
+| Name       | Type  | Read-Only| Optional| Description        |
 | ----------- | ------ | ---- | ---- | ------------ |
-| enable | boolean | Yes  | No  | Priority enabled state of all notifications.<br> - **true**: Allow setting as [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **false**: Prohibit setting as priority notification. |
+| enable | boolean | Mandatory  | No  | Whether the priority notification is enabled.<br> - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled. |
 
 ## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
 
-Returns the changes of the enabled state of the application notification priority.
+Returns the changes of the enabled state of the application priority notification.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -756,7 +756,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
 
-Triggered for registering the [silent reminder](../../notification/notification-glossary.md#silent-reminder) enabled state change of application notifications.
+Registers the callback for the enabled state change of the application notification silent reminder.
 
 **System capability**: SystemCapability.Notification.Notification
 

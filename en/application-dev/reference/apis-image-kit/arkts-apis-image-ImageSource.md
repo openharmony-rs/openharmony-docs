@@ -25,7 +25,7 @@ Because images occupy a large amount of memory, you should call [release](#relea
 import { image } from '@kit.ImageKit';
 ```
 
-## Attributes
+## Properties
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 

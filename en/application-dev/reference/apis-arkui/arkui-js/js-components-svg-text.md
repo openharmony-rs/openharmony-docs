@@ -1,12 +1,11 @@
 # text
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:43.485Z pushedAt=2026-06-24T01:44:35.345Z -->
+<!-- md-trans-meta sourceCommit=3594f4f7911eac49a1432a74a842b11a7e25b680 translatedAt=2026-11-12T04:47:15.364Z pushedAt=2026-11-18T06:58:10.953Z nl=1 -->
 
 >  **NOTE**
 >
@@ -18,15 +17,18 @@
 >
 >  - Only the default font **sans-serif** is supported.
 
+
 The **\<text>** component is used to display a piece of textual information.
 
 ## Required Permissions
 
 None
 
+
 ## Child Components
 
 The following are supported: [tspan](js-components-svg-tspan.md), [textPath](js-components-svg-textpath.md), [animate](js-components-svg-animate.md), and [animateTransform](js-components-svg-animatetransform.md).
+
 
 ## Attributes
 
@@ -39,14 +41,15 @@ The attributes in the following table are supported.
 | y              | &lt;length&gt; \| &lt;percentage&gt; | 0     | No   | Y-coordinate of the upper left corner of the component.                             |
 | dx             | &lt;length&gt; \| &lt;percentage&gt; | 0     | No   | Offset of the text on the x-axis.                                |
 | dy             | &lt;length&gt; \| &lt;percentage&gt; | 0     | No   | Offset of the text on the y-axis.                                |
-| rotate         | number                             | 0     | No   | Rotation of the text around its lower left corner. A positive number indicates clockwise rotation, and a negative number indicates counterclockwise rotation.               |
+| rotate         | number                             | 0     | No    | Rotation of the text around its lower left corner. A positive number indicates clockwise rotation, and a negative number indicates counterclockwise rotation.                |
 | font-size      | &lt;length&gt;                     | 30px  | No   | Font size.                                |
-| fill           | &lt;color&gt;                      | black | No   | Fill color of the text.                                  |
-| fill-opacity   | number                             | 1.0   | No   | Fill opacity of the text.                                 |
+| fill           | &lt;color&gt;                      | black | No    | Fill color of the text.                                   |
+| fill-opacity   | number                             | 1.0   | No    | Fill opacity of the text.                                  |
 | opacity        | number                             | 1     | No   | Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
-| stroke         | &lt;color&gt;                      | black | No   | Stroke color.                             |
-| stroke-width   | number                             | 1   | No   | Stroke width.                                  |
-| stroke-opacity | number                             | 1.0   | No   | Stroke opacity.                                 |
+| stroke         | &lt;color&gt;                      | black | No    | Text stroke with a color.                              |
+| stroke-width   | number                             | 1     | No    | Text stroke width.<br>Default unit: px                         |
+| stroke-opacity | number                             | 1.0   | No    | Text stroke opacity.                                  |
+
 
 ## Example
 

@@ -89,5 +89,5 @@ AVSession Kit（Audio &amp; Video Session Kit，音视频播控服务）是系�
 ## 相关主题推荐
 
 - [本地媒体会话概述](local-avsession-overview.md)
-- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
+- [AVSession Kit指南配套示例代码](avsession-kit-samples.md)
 - [AVSession Kit术语](avsession-glossary.md)

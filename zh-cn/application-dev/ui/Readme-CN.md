@@ -81,6 +81,7 @@
       - [canBeObserved接口：判断对象是否可被观察](state-management/arkts-new-canBeObserved.md)
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
+      - [RecoverableStorage: 可恢复的UI状态存储](state-management/arkts-new-recoverablestorage.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
       - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
       - [!!语法：双向绑定](state-management/arkts-new-binding.md)
@@ -179,7 +180,7 @@
        - [弹出框控制器](arkts-dialog-controller.md)
        - [弹出框焦点策略](arkts-dialog-focusable.md)
        - [弹出框蒙层控制](arkts-dialog-mask.md)
-       - [弹出框迁移指南](arkui-dialog-migration-guide.md)
+       - [弹出框迁移指导](arkui-dialog-migration-guide.md)
      - 菜单<!--arkts-use-menu-->
        - [菜单概述](arkts-menu-overview.md)
        - [菜单控制（Menu）](arkts-popup-and-menu-components-menu.md)
@@ -339,6 +340,7 @@
     - [UI信息数据格式说明](ndk-ui-info-data-structure.md)
     - [采集控件树信息](ndk-ui-info-collect-tree.md)
     - [注入控件命令](ndk-ui-command-injection.md)
+    - [监听全局手势](ndk-sense-gestures-and-events.md)
     - [UI结构化数据映射附录](ndk-ui-appendix.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)

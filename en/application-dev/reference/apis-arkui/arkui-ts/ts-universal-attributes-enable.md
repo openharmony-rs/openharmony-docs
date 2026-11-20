@@ -1,13 +1,13 @@
 # Enable/Disable Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-01T12:26:43.252Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:18:49.129Z pushedAt=2026-11-13T01:06:00.091Z nl=1 -->
 
-The disable control is used to set whether a component is interactive. When a component is interactive, it can respond to the [click event](ts-universal-events-click.md), [touch event](ts-universal-events-touch.md), [drag event](ts-universal-events-drag-drop.md), [key event](ts-universal-events-key.md), [focus event](ts-universal-focus-event.md), [mouse event](ts-universal-mouse-key.md), [axis event](ts-universal-events-axis.md), [hover event](ts-universal-events-hover.md), [accessibility hover event](ts-universal-accessibility-hover-event.md), [gesture event](ts-gesture-settings.md), [focus axis event](ts-universal-events-focus-axis.md), and [crown event](ts-universal-events-crown.md). When a component is not interactive, it does not respond to the preceding operations. This is suitable for scenarios where user interaction needs to be temporarily blocked, for example, disabling a button during form submission to prevent duplicate submission, disabling an interaction area during data loading to prevent misoperations, and disabling the next step when conditions are not met. This effectively prevents misoperations.
+The disable control is used to set whether a component is interactive. When a component is interactive, it can respond to [click events](ts-universal-events-click.md), [touch events](ts-universal-events-touch.md), [drag and drop events](ts-universal-events-drag-drop.md), [key events](ts-universal-events-key.md), [focus events](ts-universal-focus-event.md), [mouse events](ts-universal-mouse-key.md), [axis events](ts-universal-events-axis.md), [hover events](ts-universal-events-hover.md), [accessibility hover events](ts-universal-accessibility-hover-event.md), [gesture events](ts-gesture-settings.md), [focus axis events](ts-universal-events-focus-axis.md), and [crown events](ts-universal-events-crown.md). When a component is not interactive, it does not respond to the preceding operations. This is suitable for scenarios where user interaction needs to be temporarily blocked, for example, disabling a button during form submission to prevent duplicate submission, disabling an interaction area during data loading to prevent misoperation, and disabling the next step when conditions are not met. This effectively prevents misoperation.
 
 >  **NOTE**
 >

@@ -1,12 +1,11 @@
 # Popup
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b8421fa94775fa4bceb1b522857b705478302935 translatedAt=2026-08-04T06:37:10.863Z pushedAt=2026-08-04T08:15:51.229Z -->
+<!-- md-trans-meta sourceCommit=cafd3f636ed50b8d26b58d4f6b58df673cd59fdb translatedAt=2026-11-12T03:48:06.165Z pushedAt=2026-11-13T06:30:20.989Z nl=2 -->
 
 You can bind the **Popup** attribute to a component to create a popup, specifying its content and interaction logic, and display state. It is mainly used for screen recording and message notification.
 
@@ -145,7 +144,7 @@ export struct ButtonPopupExample {
 
 You can implement the entrance and exit animation effects of popups through **transition** of [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions) or [CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8).
 
-<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
+<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -205,7 +204,7 @@ export struct AnimationPopupExample {
               }
             },
             // Set the popup entrance and exit animations to be a scaling effect.
-            transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
+            transition: TransitionEffect.scale({ x: 1, y: 0, centerX: '50%', centerY: '50%' }).animation({ duration: 500, curve: Curve.Ease })
           })
           .position({ x: 80, y: 300 })
       }.width('100%').padding({ top: 5 })
@@ -273,7 +272,7 @@ To place the popup in a specific position, set the **placement** parameter. The 
 
 ## Defining the Popup Style
 
-In addition to customizing the bubble via a **builder**, you can also set its style and display effects through the API.
+In addition to customizing the popup via a **builder**, you can also set its style and display effects through the API.
 
 Background color: While popups initially come with a transparent background, they have a blur effect, which is **COMPONENT_ULTRA_THICK** on phones.
 
@@ -371,6 +370,7 @@ export struct AvoidSoftKeyboardPopupExample {
 ```
 
 ![image](figures/avoidKeyboard.gif)
+
 
 ## Setting Polymorphic Effects in the Popup
 
@@ -483,7 +483,7 @@ struct PopupItemChild {
 
 Since API version 18, popups support center axis avoidance. Since API version 20, it is enabled by default on 2-in-1 devices (avoidance only occurs when the window is in waterfall mode). You can control whether to enable axis avoidance through the **enableHoverMode** property in [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions).
 
-> **NOTE**
+> **NOTE** 
 > - Popups will not avoid the center axis if clicked in the axis area.
 > - On 2-in-1 devices, axis avoidance occurs only when the window is in waterfall mode.
 

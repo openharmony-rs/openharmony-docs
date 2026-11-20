@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:20.093Z pushedAt=2026-06-23T09:25:51.899Z -->
+<!-- md-trans-meta sourceCommit=608175d8fd85ddfce5e6f9d9b165b9d12862adb2 translatedAt=2026-11-12T04:30:36.711Z pushedAt=2026-11-18T02:24:39.133Z nl=1 -->
 
 >  **NOTE**
 >
@@ -18,9 +18,11 @@
 
 None
 
+
 ## Child Components
 
 This component supports only one child component.
+
 
 ## Attributes
 
@@ -34,7 +36,10 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | sticky | string | none | No| Whether the current item sticks in place at the top, and the effect when it disappears. This attribute supports vertical lists only and is invalid for items in a group.<br>- **none**: The current item does not stick at the top.<br>- **normal**: The current item sticks at the top and disappears with a sliding effect.<br>- **opacity**: The current item sticks at the top and disappears gradually. This option is only supported on wearables.|
 | clickeffect<sup>5+</sup> | boolean | true | No| Whether an effect is displayed when the current item is clicked.<br>- **false**: No effect is displayed when the item is clicked.<br>- **true**: An effect is displayed when the item is clicked.|
 
+
 ## Styles
+
+
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
@@ -42,7 +47,10 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | -------- | -------- | -------- | -------- | -------- |
 | column-span | &lt;number&gt; | 1 | No| Number of columns occupied by the current list-item in the list. By default, the list-item occupies one column. This attribute is valid only when the list contains multiple columns.|
 
+
 ## Events
+
+
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
@@ -53,6 +61,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 ## Methods
 
 The [universal methods](js-components-common-methods.md) are supported.
+
 
 ## Example
 

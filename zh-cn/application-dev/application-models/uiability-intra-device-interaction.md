@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍启动应用内UIAbility组件的方法，包括startAbility启动、获取返回结果、冷启动与热启动指定页面跳转，以及系统应用指定窗口模式启动等场景。"
+keywords: [启动UIAbility, startAbility, startAbilityForResult, 指定页面, 冷启动, 热启动, onNewWant]
+doctype: guide
+status: active
+---
 # 启动应用内的UIAbility组件
 
 <!--Kit: Ability Kit-->

@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍Node-API接口返回的napi_status状态码枚举值，详细说明各接口可能返回的非napi_ok状态码的原因和修复建议，帮助开发者快速定位接口调用问题。"
 keywords: [Node-API, 状态码, napi_status, napi_ok, napi_invalid_arg, 错误码, 接口返回值, 状态码修复]
 doctype: guide
@@ -305,11 +305,11 @@ status: active
 | napi_get_element | 获取给定Object指定索引处的元素。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_get_element | 获取给定Object指定索引处的元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
 | napi_get_element | 获取给定Object指定索引处的元素。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |

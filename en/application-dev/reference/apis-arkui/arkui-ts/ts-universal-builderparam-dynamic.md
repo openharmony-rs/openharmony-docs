@@ -1,4 +1,4 @@
-# \@BuilderParam Decorator: Referencing the \@Builder Function
+# @BuilderParam Decorator: Referencing the @Builder Function
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -6,6 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=2495040792c8da8de232a60f3eafa9d33ca50fa6 translatedAt=2026-11-03T03:50:19.944Z pushedAt=2026-11-13T01:06:00.145Z nl=1 -->
 
 **\@BuilderParam** is used to decorate variables that point to [\@Builder](./ts-universal-builder-dynamic.md) functions, enabling a custom component to receive externally passed **\@Builder** functions for custom rendering of UI content. It is suitable for scenarios where the parent component's UI building logic needs to be passed to a child component to achieve dynamic customization of component content.
 
@@ -62,5 +63,3 @@ struct Parent {
   }
 }
 ```
-
-  

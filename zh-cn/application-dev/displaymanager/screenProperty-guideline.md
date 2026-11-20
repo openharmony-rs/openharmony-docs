@@ -250,10 +250,10 @@ try {
     
       // 关闭单个callback监听
       display.off('foldStatusChange', callback);
-      hilog.info(DOMAIN, 'DisplayTest', `unregister all foldStatusChange success`);
+      hilog.info(DOMAIN, 'DisplayTest', `unregister foldStatusChange success`);
       // 关闭所有callback监听
       display.off('foldStatusChange');
-      hilog.info(DOMAIN, 'DisplayTest', `unregister foldStatusChange success`);
+      hilog.info(DOMAIN, 'DisplayTest', `unregister all foldStatusChange success`);
     } catch (exception) {
       hilog.error(DOMAIN, 'DisplayTest',
         `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);

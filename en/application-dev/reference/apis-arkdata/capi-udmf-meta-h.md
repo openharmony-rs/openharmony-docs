@@ -5,7 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6c1e7e2e5d533038514aef8a59f6b9dd1cac085e translatedAt=2026-09-04T03:07:18.271Z pushedAt=2026-09-09T09:11:03.685Z -->
+<!-- md-trans-meta sourceCommit=82685951231dfbdc9c0904715262b4dcaa8040a6 translatedAt=2026-11-16T01:36:50.967Z pushedAt=2026-11-20T07:27:20.282Z nl=1 -->
 
 ## Overview
 
@@ -159,7 +159,7 @@ Declares the unified data types.
 | UDMF_META_POSTSCRIPT_PFB_FONT "com.adobe.postscript-pfb-font" | PostScript Font Binary font format.<br>This type belongs to **FONT**.<br>**Since**: 12|
 | UDMF_META_POSTSCRIPT_PFA_FONT "com.adobe.postscript-pfa-font" | Adobe Type 1 font format.<br>This type belongs to **FONT**.<br>**Since**: 12|
 | UDMF_META_OPENHARMONY_HDOC "openharmony.hdoc"                | Memo format defined for the system.<br>This type belongs to **COMPOSITE_OBJECT**.<br>**Since**: 12|
-| UDMF_META_OPENHARMONY_HINOTE "openharmony.hinote"            | Note format defined for the system.<br>This type belongs to **COMPOSITE_OBJECT**.        |
+| UDMF_META_OPENHARMONY_HINOTE "openharmony.hinote"            | Note data type defined for the system.<br>This type belongs to **COMPOSITE_OBJECT**.<br>**Since:** 12         |
 | UDMF_META_OPENHARMONY_STYLED_STRING "openharmony.styled-string" | Style string type defined for the system.<br>This type belongs to **COMPOSITE_OBJECT**.<br>**Since**: 12|
 | UDMF_META_OPENHARMONY_WANT "openharmony.want"                | Want defined for the system.<br>This type belongs to **OBJECT**.<br>**Since**: 12 |
 | UDMF_META_GENERAL_FILE_URI "general.file-uri"                | File address type.<br>This type belongs to **TEXT**.<br>**Since**: 13         |

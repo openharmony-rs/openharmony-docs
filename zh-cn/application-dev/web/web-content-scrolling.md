@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "汇总Web页面内容滚动的控制方式，涵盖触屏、鼠标滚轮等设备操作，ArkTS侧与JS侧滚动接口，以及点击状态栏返回页面顶部。"
+keywords: [Web页面滚动, scrollTo, scrollBy, pageUp, pageDown, window.scrollTo, backToTop, 状态栏回顶, 鼠标滚轮滚动]
+doctype: guide
+status: active
+---
+
 # Web页面显示内容滚动
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

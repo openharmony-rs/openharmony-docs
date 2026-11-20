@@ -5,6 +5,7 @@
 <!--Designer: @JerryH1011-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b152143536062c9aaad487aa5b9c58a4165ab0c0 translatedAt=2026-11-06T12:18:38.958Z pushedAt=2026-11-13T11:29:56.186Z nl=1 -->
 
 ## Overview
 
@@ -86,7 +87,7 @@ Tid:13893, Name:e.myapplication
 | personality | all | All platform devices|- |
 | execve | all | All platform devices|- |
 | execveat | all | All platform devices| -|
-| clone | all | All platform devices| Only calls that do not contain the following namespace flags are allowed:<br>**CLONE_NEWNS**,<br>**CLONE_NEWPID**,<br>**CLONE_NEWNETCLONE_NEWCGROUP**,<br>**CLONE_NEWUTS**,<br>**CLONE_NEWIPC**,<br>and **CLONE_NEWUSER**.<br>If the conditions are met, **ALLOW** is returned. Otherwise, **TRAP** is returned.|
+| clone | all | all-platform devices | Only calls that do not contain the following namespace flags are allowed:<br>CLONE_NEWNS,<br>CLONE_NEWPID,<br>CLONE_NEWNET,<br>CLONE_NEWCGROUP,<br>CLONE_NEWUTS,<br>CLONE_NEWIPC,<br>CLONE_NEWUSER<br>If the conditions are met, ALLOW is returned; otherwise, TRAP is returned. |
 | io_setup | all | All platform devices|- |
 | io_destroy | all | All platform devices|- |
 | io_submit | all | All platform devices|- |

@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍ArrayList、List、LinkedList、Deque、Queue、Stack、Vector七种线性容器的特征对比与使用方法，涵盖插入删除效率与适用场景差异，帮助开发者按数据访问特点选择合适的线性容器。"
 keywords: [线性容器, ArrayList, List, LinkedList, Deque, Queue, Stack, Vector, 容器对比]
 doctype: guide
