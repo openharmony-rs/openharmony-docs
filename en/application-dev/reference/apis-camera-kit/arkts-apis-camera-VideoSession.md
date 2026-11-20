@@ -1,16 +1,17 @@
 # Interface (VideoSession)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T02:01:00.895Z pushedAt=2026-08-12T01:20:20.581Z -->
+<!-- md-trans-meta sourceCommit=fefd645189e794d80ae9ee3e4a15dff8502cd619 translatedAt=2026-11-18T03:36:19.520Z pushedAt=2026-11-20T07:31:00.632Z nl=1 -->
 
 **VideoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [Stabilization](arkts-apis-camera-Stabilization.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), [ControlCenter](arkts-apis-camera-ControlCenter.md), [ManualExposure](arkts-apis-camera-ManualExposure.md), [ManualFocus](arkts-apis-camera-ManualFocus.md), [ManualIso](arkts-apis-camera-ManualIso.md), [OIS](arkts-apis-camera-OIS.md), and [Aperture](arkts-apis-camera-Aperture.md).
 
 It implements a video session, which provides operations on the flash, exposure, white balance, focus, zoom, video stabilization, color space, macro mode, controller, manual exposure, manual focus, manual ISO setting, optical image stabilization (OIS), and aperture.
+
+Before creating a video session, you need to obtain the modes supported by the current camera through [getSupportedSceneModes](./arkts-apis-camera-CameraManager.md#getsupportedscenemodes11) to check whether the video session mode is supported.
 
 **VideoSession** is provided for the default video recording mode. It applies to common scenarios. It supports recording at various resolutions (such as 720p and 1080p) and frame rates (such as 30 fps and 60 fps).
 
@@ -309,6 +310,8 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 
 Subscribes to automatic camera switch status change events. This API uses an asynchronous callback to return the result.
 
+You can first use [isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13) to check whether the current device supports automatic lens switch.
+
 > **NOTE**
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
@@ -338,7 +341,9 @@ function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceS
 }
 
 function registerAutoDeviceSwitchStatus(videoSession: camera.VideoSession): void {
-  videoSession.on('autoDeviceSwitchStatusChange', callback);
+  if (videoSession.isAutoDeviceSwitchSupported()) {
+    videoSession.on('autoDeviceSwitchStatusChange', callback);
+  }
 }
 ```
 
@@ -347,6 +352,8 @@ function registerAutoDeviceSwitchStatus(videoSession: camera.VideoSession): void
 off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSwitchStatus\>): void
 
 Unsubscribes from automatic camera switch status change events.
+
+You can first use [isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13) to check whether the current device supports automatic lens switch.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -362,8 +369,10 @@ Unsubscribes from automatic camera switch status change events.
 **Example**
 
 ```ts
-function unregisterSmoothZoomInfo(videoSession: camera.VideoSession): void {
-  videoSession.off('autoDeviceSwitchStatusChange');
+function unregisterAutoDeviceSwitchStatus(videoSession: camera.VideoSession): void {
+  if (videoSession.isAutoDeviceSwitchSupported()) {
+    videoSession.off('autoDeviceSwitchStatusChange');
+  }
 }
 ```
 
@@ -482,6 +491,8 @@ on(type: 'controlCenterEffectStatusChange', callback: AsyncCallback\<ControlCent
 
 Subscribes to events indicating that the camera controller effect status changes. This API uses an asynchronous callback to return the result.
 
+You can use the [isControlCenterSupported](arkts-apis-camera-ControlCenterQuery.md#iscontrolcentersupported20) API to check whether the camera controller is supported.
+
 > **NOTE**
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
@@ -498,7 +509,6 @@ Subscribes to events indicating that the camera controller effect status changes
 | callback | AsyncCallback\<[ControlCenterStatusInfo](arkts-apis-camera-i.md#controlcenterstatusinfo20)\> | Yes| Callback used to return the effect status of the current controller.|
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -511,7 +521,9 @@ function callback(err: BusinessError, status: camera.ControlCenterStatusInfo): v
 }
 
 function registerControlCenterEffectStatusChangeCallback(videoSession: camera.VideoSession): void {
-  videoSession.on('controlCenterEffectStatusChange', callback);
+  if (videoSession.isControlCenterSupported()) {
+    videoSession.on('controlCenterEffectStatusChange', callback);
+  }
 }
 ```
 
@@ -520,6 +532,8 @@ function registerControlCenterEffectStatusChangeCallback(videoSession: camera.Vi
 off(type: 'controlCenterEffectStatusChange', callback?: AsyncCallback\<ControlCenterStatusInfo\>): void
 
 Unsubscribes from events indicating that the camera controller effect status changes.
+
+You can use the [isControlCenterSupported](arkts-apis-camera-ControlCenterQuery.md#iscontrolcentersupported20) API to check whether the camera controller is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -536,7 +550,9 @@ Unsubscribes from events indicating that the camera controller effect status cha
 
 ```ts
 function unregisterControlCenterEffectStatusChange(videoSession: camera.VideoSession): void {
-  videoSession.off('controlCenterEffectStatusChange');
+  if (videoSession.isControlCenterSupported()) {
+    videoSession.off('controlCenterEffectStatusChange');
+  }
 }
 ```
 
@@ -545,6 +561,8 @@ function unregisterControlCenterEffectStatusChange(videoSession: camera.VideoSes
 on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 Subscribes to macro state change events. This API uses an asynchronous callback to return the result.
+
+Before listening, you can use [isMacroSupported](arkts-apis-camera-MacroQuery.md#ismacrosupported19) to check whether the macro capability is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -556,6 +574,7 @@ Subscribes to macro state change events. This API uses an asynchronous callback 
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string      | Yes  | Event type. The value is fixed at **'macroStatusChanged'**. The event can be listened for when a session is created.|
 | callback | AsyncCallback\<boolean\>     | Yes  | Callback used to return the macro state. **true** if enabled, **false** otherwise. |
+
 
 **Example**
 
@@ -571,7 +590,9 @@ function callback(err: BusinessError, macroStatus: boolean): void {
 }
 
 function registerMacroStatusChanged(videoSession: camera.VideoSession): void {
-  videoSession.on('macroStatusChanged', callback);
+  if (videoSession.isMacroSupported()) {
+    videoSession.on('macroStatusChanged', callback);
+  }
 }
 ```
 
@@ -580,6 +601,8 @@ function registerMacroStatusChanged(videoSession: camera.VideoSession): void {
 off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 Unsubscribes from macro state change events.
+
+You can use [isMacroSupported](arkts-apis-camera-MacroQuery.md#ismacrosupported19) to check whether the macro capability is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -592,11 +615,14 @@ Unsubscribes from macro state change events.
 | type     | string                   | Yes  | Event type. The value is fixed at **'macroStatusChanged'**. The event can be listened for when a session is created.                     |
 | callback | AsyncCallback\<boolean\> | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. If **true** is returned, the unsubscription is successful. If **false** is returned, the unsubscription fails. |
 
+
 **Example**
 
 ```ts
 function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
-  videoSession.off('macroStatusChanged');
+  if (videoSession.isMacroSupported()) {
+    videoSession.off('macroStatusChanged');
+  }
 }
 ```
 
@@ -607,7 +633,7 @@ onIsoInfoChange(callback: Callback\<IsoInfo\>): void
 Subscribes to sensitivity (ISO) state change events and obtains the latest ISO value through a callback.
 
 **Model restriction**: This API can be used only in the stage model.
-
+ 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -617,6 +643,7 @@ Subscribes to sensitivity (ISO) state change events and obtains the latest ISO v
 | Name    | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback used to obtain the current ISO value of the camera.|
+
 
 **Example**
 
@@ -648,6 +675,7 @@ Unsubscribes from ISO state change events.
 | Name    | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | No  | Callback used for unsubscription.<br>If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.)<br>Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
 
 **Example**
 
@@ -721,5 +749,63 @@ Unsubscribes from exposure information change events. If you have subscribed to 
 ```ts
 function offExposureInfoChange(videoSession: camera.VideoSession): void {
   videoSession.offExposureInfoChange();
+}
+```
+
+## onCameraSwitchRequest
+
+onCameraSwitchRequest(callback: Callback\<CameraDevice\>): void
+
+Subscribes to the camera switch request event.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type            | Mandatory | Description       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | Yes   | Callback used to return the target camera device. |
+
+**Example**
+
+```ts
+function onCameraSwitchRequest(videoSession: camera.VideoSession): void {
+  videoSession.onCameraSwitchRequest((cameraDevice: camera.CameraDevice) => {
+    console.info(`Camera switch request to cameraId: ${cameraDevice.cameraId}`);
+  });
+}
+```
+
+## offCameraSwitchRequest
+
+offCameraSwitchRequest(callback?: Callback\<CameraDevice\>): void
+
+Unsubscribes from the camera switch request event.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type            | Mandatory | Description       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | No   | Callback used to return the result. If this parameter is specified, the callback specified by this parameter is unregistered. (The callback object cannot be an anonymous function.) Otherwise, all callbacks are unregistered. |
+
+**Example**
+
+```ts
+function offCameraSwitchRequest(videoSession: camera.VideoSession): void {
+  videoSession.offCameraSwitchRequest();
 }
 ```

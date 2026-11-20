@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=bbff19eea26e8c5a9fae30bb354e8040d0b91f67 translatedAt=2026-08-11T02:05:18.431Z pushedAt=2026-08-12T08:23:02.187Z -->
+<!-- md-trans-meta sourceCommit=cfbdf7078f905314893a0975124c4a78ff4672a0 translatedAt=2026-11-18T03:43:34.156Z pushedAt=2026-11-20T08:19:19.864Z nl=1 -->
 
 ## Overview
 
@@ -85,6 +85,8 @@ The file declares the photo output concepts.
 | [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror)](#oh_photocapturesettingext_setmirror) | - | Sets the mirror effect in the photo capture setting extension. |
 | [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality)](#oh_photocapturesettingext_setcompressionquality) | - | Sets the image compression quality in the photo capture setting extension. |
 | [Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_capture_withcapturesettingext) | - | Use the photo capture setting extension to take photos. |
+| [Camera_ErrorCode OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported(const Camera_PhotoOutput* photoOutput, OH_Camera_AuxiliaryPhotoType auxPhotoType, bool* isSupported)](#oh_photooutput_isautoauxiliaryphotodeliverysupported) | - | Checks whether the device supports automatic auxiliary image output for photo capture. |
+| [Camera_ErrorCode OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled(Camera_PhotoOutput* photoOutput, const OH_Camera_AuxiliaryPhotoType* auxPhotoTypes, uint32_t size, bool enable)](#oh_photooutput_setautoauxiliaryphotosdeliveryenabled) | - | Enables or disables automatic photo return of the specified type of auxiliary image. |
 
 ## Function Description
 
@@ -166,6 +168,7 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 **See also**
 
 [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
+
 
 ### OH_PhotoOutput_CaptureEnd()
 
@@ -1080,7 +1083,7 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 
 **Description** 
 
-Creates a **PhotoCaptureSettingExt** instance.
+Creates a **PhotoCaptureSettingExt** instance. 
 
 **Since**: 26.0.0 
 
@@ -1105,7 +1108,7 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 
 **Description** 
 
-Destroys an instance of the extended photo capture settings object.
+Destroys an instance of the extended photo capture settings object. 
 
 **Since**: 26.0.0 
 
@@ -1129,7 +1132,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 
 **Description** 
 
-Sets the image rotation angle in the photo capture setting extension.
+Sets the image rotation angle in the photo capture setting extension. 
 
 **Since**: 26.0.0 
 
@@ -1154,7 +1157,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 
 **Description** 
 
-Sets the image location information in the photo capture setting extension.
+Sets the image location information in the photo capture setting extension. 
 
 **Since**: 26.0.0 
 
@@ -1179,7 +1182,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 
 **Description** 
 
-Sets the mirror effect in the photo capture setting extension.
+Sets the mirror effect in the photo capture setting extension. 
 
 **Since**: 26.0.0 
 
@@ -1204,7 +1207,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 
 **Description** 
 
-Sets the image compression quality in the photo capture setting extension.
+Sets the image compression quality in the photo capture setting extension. 
 
 **Since**: 26.0.0 
 
@@ -1229,7 +1232,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 
 **Description** 
 
-Use the photo capture setting extension to take photos.
+Use the photo capture setting extension to take photos. 
 
 **Since**: 26.0.0 
 
@@ -1245,3 +1248,56 @@ Use the photo capture setting extension to take photos.
 | Type | Description |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_RUNNING**: The capture session is not running.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+
+### OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported()
+
+```c
+Camera_ErrorCode OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported(const Camera_PhotoOutput* photoOutput, OH_Camera_AuxiliaryPhotoType auxPhotoType, bool* isSupported)
+```
+
+**Description**
+
+Checks whether the device supports automatic auxiliary image output for photo capture.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target **PhotoOutput** instance. |
+| [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype) auxPhotoType | Target auxiliary image type. |
+| bool* isSupported | Pointer to the check result, indicating whether automatic auxiliary image output is supported. true indicates supported, and false indicates not supported. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_ERROR_PARAM_OUT_OF_RANGE**: A parameter is out of range.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+
+### OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled()
+
+```c
+Camera_ErrorCode OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled(Camera_PhotoOutput* photoOutput, const OH_Camera_AuxiliaryPhotoType* auxPhotoTypes, uint32_t size, bool enable)
+```
+
+**Description**
+
+Enables or disables automatic photo return of the specified types of auxiliary images.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance. |
+| const [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)* auxPhotoTypes | Pointer to the array of target auxiliary image types. |
+| uint32_t size | Size of the auxiliary image type array (number of elements). |
+| bool enable | Whether to enable automatic photo return of the specified auxiliary image types. The value **true** indicates enabled, and **false** indicates disabled. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_ERROR_PARAM_OUT_OF_RANGE**: The parameter is out of range.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
