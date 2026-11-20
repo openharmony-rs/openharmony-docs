@@ -1,4 +1,4 @@
-# DeviceInfo
+# BoardInfo
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
