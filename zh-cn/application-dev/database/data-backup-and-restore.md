@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997; @dboy190-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
@@ -435,6 +435,9 @@ try {
             }
             hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
           }
+        }).catch((err: Error) => {
+          let e = err as BusinessError;
+          hilog.error(DOMAIN, 'BackupAndRestore', `Failed to query. Code:${e.code}, message:${e.message}`);
         })
     }
     ```
