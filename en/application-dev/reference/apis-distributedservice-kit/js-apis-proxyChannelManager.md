@@ -194,7 +194,7 @@ struct Index {
 
 sendData(channelId:&nbsp;number, data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-Sends data to the peer end. This API uses a promise to return the result. This method is applicable to scenarios where a phone app sends instructions or data to a wearable app through the proxy channel, for example, sending configuration updates and notifications. This method can be called to send data only after the proxy channel is successfully opened by calling [openProxyChannel](#proxychannelmanageropenproxychannel). This method will fail to be called if the proxy channel is unavailable (for example, in the [ChannelState](#channelstate).CHANNEL_WAIT_RESUME, **CHANNEL_EXCEPTION_SOFTWARE_FAILED**, or **CHANNEL_BR_NO_PAIRED** state). You are advised to subscribe to the [on('channelStateChange')](#proxychannelmanageronchannelstatechange) event to monitor the channel status. When the channel is unavailable, suspend data transmission. When the channel recovers, resume data transmission. Data is transmitted to the peer device through the established proxy channel over the BR link. The maximum data length is 4096 bytes. If the data length exceeds 4096 bytes, error code 32390103 will be returned.
+Sends data to the peer end. This API uses a promise to return the result. This method is applicable to scenarios where a phone app sends instructions or data to a wearable app through the proxy channel, for example, sending configuration updates and notifications. This method can be called to send data only after the proxy channel is successfully opened by calling [openProxyChannel](#proxychannelmanageropenproxychannel). This method will fail to be called if the proxy channel is unavailable (for example, in the [ChannelState](#channelstate).CHANNEL_WAIT_RESUME, **CHANNEL_EXCEPTION_SOFTWARE_FAILED**, or **CHANNEL_BR_NO_PAIRED** state). You are advised to subscribe to the [on('channelStateChange')](#proxychannelmanageronchannelstatechange) event to monitor the channel status. When the channel is unavailable, suspend data transmission. When the channel recovers, resume data transmission. Data is transmitted to the peer device through the established proxy channel over the BR link. The maximum data length is 4194304 bytes. If the data length exceeds 4194304 bytes, error code 32390103 will be returned.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -209,7 +209,7 @@ Sends data to the peer end. This API uses a promise to return the result. This m
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
 | channelId | number | Yes   | Proxy channel ID obtained when the proxy channel is opened. The value ranges from 1 to 2147483647. If an invalid or closed channel ID is used, error code 32390004 will be returned. If the value is out of range, error code 32390006 will be returned. This parameter takes effect only when the proxy channel is available. After the channel is closed or disconnected, the channel ID becomes unavailable.|
-| data      | ArrayBuffer | Yes| Binary data sent to the peer device. The data format is defined by the app layer. The maximum length is 4096 bytes. If the length exceeds the upper limit, error code 32390103 is returned.|
+| data      | ArrayBuffer | Yes| Binary data sent to the peer device. The data format is defined by the app layer. The maximum length is 4194304 bytes. If the length exceeds the upper limit, error code 32390103 is returned.|
 
 **Return value**
 
@@ -522,7 +522,7 @@ Represents the received data, including the channel ID and data.
 | Name      | Type                                      | Read-Only  | Optional  | Description      |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
 | channelId | number | No| No   | Proxy channel ID. The value ranges from 1 to 2147483647.|
-| data | ArrayBuffer | No| No| Received data, in bytes. The maximum value is **4096**.|
+| data | ArrayBuffer | No| No| Received data, in bytes. The maximum value is **4194304**.|
 
 ## ChannelInfo
 
