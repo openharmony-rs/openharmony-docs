@@ -1130,8 +1130,10 @@ async function processRows(resultSet: relationalStore.ResultSet) {
     let maxCount: number = 50;
     // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
     // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
-    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
+    rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount);
+    while (rows.length != 0) {
       console.info(JSON.stringify(rows[0]));
+      rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount);
     }
   }
 
@@ -1140,9 +1142,11 @@ async function processRows(resultSet: relationalStore.ResultSet) {
     let rows: Array<relationalStore.ValuesBucket>;
     let maxCount: number = 50;
     let position: number = 50;
-    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
+    rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position);
+    while (rows.length != 0) {
       console.info(JSON.stringify(rows[0]));
       position += rows.length;
+      rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position);
     }
   }
 }
@@ -1250,12 +1254,14 @@ try {
     // getRowsData会自动移动结果集当前行到上次getRowsData获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
     let maxCount: number = 50;
     let rowCount: number = 0;
-    while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
+    rowsData = await resultSet.getRowsData(maxCount);
+    while (rowsData.length != 0) {
       rowsData.forEach((rowData, index) => {
         // 第rowCount + index + 1行的查询结果
         console.info(`${rowCount + index + 1}：${rowData}`);
       });
       rowCount += rowsData.length;
+      rowsData = await resultSet.getRowsData(maxCount);
     }
   }
 
@@ -1264,12 +1270,14 @@ try {
     let rowsData: relationalStore.RowsData;
     let maxCount: number = 50;
     let position: number = 50;
-    while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
+    rowsData = await resultSet.getRowsData(maxCount, position);
+    while (rowsData.length != 0) {
       rowsData.forEach((rowData, index) => {
         // 第position + index + 1行的查询结果
         console.info(`${position + index + 1}：${rowData}`);
       });
       position += rowsData.length;
+      rowsData = await resultSet.getRowsData(maxCount, position);
     }
   }
   resultSet.close();

@@ -5068,9 +5068,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -5086,9 +5086,9 @@ if (store != undefined) {
       return;
     }
     console.info('Sync done.');
-    for (let i = 0; i < result.length; i++) {
-      console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
-    }
+    result.forEach((item) => {
+      console.info(`device= ${item[0]}, status= ${item[1]}`);
+    });
   });
 }
 ```
@@ -5139,9 +5139,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -5153,9 +5153,9 @@ predicates.inDevices(deviceIds);
 if (store != undefined) {
   (store as relationalStore.RdbStore).sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result: Object[][]) => {
     console.info('Sync done.');
-    for (let i = 0; i < result.length; i++) {
-      console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
-    }
+    result.forEach((item) => {
+      console.info(`device= ${item[0]}, status= ${item[1]}`);
+    });
   }).catch((err: BusinessError) => {
     console.error(`Sync failed, code is ${err.code},message is ${err.message}`);
   });
@@ -5211,9 +5211,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -5223,15 +5223,15 @@ try {
 let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates.inDevices(deviceIds);
 store.syncEx(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result: relationalStore.SyncResult[]) => {
-  for (let i = 0; i < result.length; i++) {
-    let code = result[i].code;
-    let message = result[i].message;
+  result.forEach((item: relationalStore.SyncResult) => {
+    let code = item.code;
+    let message = item.message;
     if (code === 0) {
       console.info(`SyncEx success`);
     } else {
       console.error(`SyncEx failed, message: ${message} code : ${code}`);
     }
-  }
+  });
 }).catch((err: Error) => {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
@@ -5575,9 +5575,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -5625,9 +5625,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -5648,9 +5648,9 @@ try {
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
-  for (let i = 0; i < changeInfos.length; i++) {
-    console.info(`changeInfos = ${JSON.stringify(changeInfos[i])}`);
-  }
+  changeInfos.forEach((changeInfo: relationalStore.ChangeInfo) => {
+    console.info(`changeInfos = ${JSON.stringify(changeInfo)}`);
+  });
 };
 
 try {
@@ -6016,9 +6016,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -6077,9 +6077,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
