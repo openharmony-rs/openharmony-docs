@@ -9194,7 +9194,7 @@
 
 ## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
  
-允许应用安装自由分发的应用。
+允许应用安装本地安装的应用。
  
 **权限级别**：system_core
  
