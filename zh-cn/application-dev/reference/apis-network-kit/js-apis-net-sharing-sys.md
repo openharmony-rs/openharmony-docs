@@ -204,7 +204,7 @@ startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                                  | 必填 | 说明                                     |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
-| type     | [SharingIfaceType](#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
+| type     | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数，返回开启网络共享结果。         |
 
 **错误码：**
@@ -251,7 +251,7 @@ startSharing(type: SharingIfaceType): Promise\<void>
 
 | 参数名 | 类型                                  | 必填 | 说明                                     |
 | ------ | ------------------------------------- | ---- | ---------------------------------------- |
-| type   | [SharingIfaceType](#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
+| type   | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
 
 **返回值：**
 
@@ -308,7 +308,7 @@ stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                                  | 必填 | 说明                                     |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
-| type     | [SharingIfaceType](#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
+| type     | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数，返回停止网络共享结果。          |
 
 **错误码：**
@@ -354,7 +354,7 @@ stopSharing(type: SharingIfaceType): Promise\<void>
 
 | 参数名 | 类型                                  | 必填 | 说明                                     |
 | ------ | ------------------------------------- | ---- | ---------------------------------------- |
-| type   | [SharingIfaceType](#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
+| type   | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
 
 **返回值：**
 
@@ -757,7 +757,7 @@ getSharingState(type: SharingIfaceType, callback: AsyncCallback\<SharingIfaceSta
 
 | 参数名   | 类型                                                    | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------------- |
-| type     | [SharingIfaceType](#sharingifacetype)                   | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
+| type     | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype)                   | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
 | callback | AsyncCallback\<[SharingIfaceState](#sharingifacestate)> | 是   | 回调函数，返回指定类型网络共享状态。     |
 
 **错误码：**
@@ -800,7 +800,7 @@ getSharingState(type: SharingIfaceType): Promise\<SharingIfaceState\>
 
 | 参数名 | 类型                                  | 必填 | 说明                                     |
 | ------ | ------------------------------------- | ---- | ---------------------------------------- |
-| type   | [SharingIfaceType](#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
+| type   | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
 
 **错误码：**
 
@@ -852,7 +852,7 @@ getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<strin
 
 | 参数名   | 类型                                  | 必填 | 说明                                           |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------- |
-| type     | [SharingIfaceType](#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。       |
+| type     | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。       |
 | callback | AsyncCallback\<Array\<string>>        | 是   | 回调函数，返回指定类型网卡名称正则表达式列表。 |
 
 **错误码：**
@@ -895,7 +895,7 @@ getSharableRegexes(type: SharingIfaceType): Promise\<Array\<string>>
 
 | 参数名 | 类型                                  | 必填 | 说明                                     |
 | ------ | ------------------------------------- | ---- | ---------------------------------------- |
-| type   | [SharingIfaceType](#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
+| type   | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype) | 是   | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
 
 **返回值：**
 
@@ -1163,7 +1163,7 @@ sharing.off('sharingUpstreamChange', (data: object) => {
 
 | 名称     | 类型                                              | 只读 |可选| 说明                 |
 | -------- | ------------------------------------------------- | ---- | ----|--------------- |
-| type     | [SharingIfaceType](#sharingifacetype)             | 否  |否 |网络共享类型。       |
+| type     | [SharingIfaceType](js-apis-net-sharing.md#sharingifacetype)             | 否  |否 |网络共享类型。       |
 | iface    | string                                            | 否   |否 |指定的共享网络名称。 |
 | state    | [SharingIfaceState](#sharingifacestate)           | 否  |否 |网卡共享状态。       |
 
@@ -1180,17 +1180,3 @@ sharing.off('sharingUpstreamChange', (data: object) => {
 | SHARING_NIC_SERVING    | 1   | 正在网络共享。   |
 | SHARING_NIC_CAN_SERVER | 2   | 可提供网络共享。 |
 | SHARING_NIC_ERROR      | 3   | 网络共享错误。   |
-
-## SharingIfaceType
-
-网络共享类型。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.Communication.NetManager.NetSharing
-
-| 名称              | 值  | 说明                 |
-| ----------------- | --- | -------------------- |
-| SHARING_WIFI      | 0   | 网络共享类型 Wi-Fi。 |
-| SHARING_USB       | 1   | 网络共享类型 USB。   |
-| SHARING_BLUETOOTH | 2   | 网络共享类型蓝牙。   |
