@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍PixelMap的创建和像素编辑方法，以及如何通过Canvas将图片绘制到指定位置。"
+keywords: [PixelMap, 位图, 像素编辑, Canvas, drawImage, 采样选项, 图片解码]
+doctype: guide
+status: active
+---
+
 # 图片绘制（ArkTS）
 
 <!--Kit: ArkGraphics 2D-->
