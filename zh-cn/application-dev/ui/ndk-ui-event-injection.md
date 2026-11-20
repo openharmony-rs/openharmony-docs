@@ -114,6 +114,8 @@ mode取值及含义如下。
 #define LOG_TAG "NdkInject"
 ```
 
+示例中uiContext为目标UI实例的ArkUI_ContextHandle，x、y为注入点相对窗口的物理像素坐标。接口返回[ARKUI_ERROR_CODE_NO_ERROR](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)只表示命令已入队，命令执行完成后会触发回调，回调中的result表示实际执行结果。
+
 <!-- @[inject_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InjectGestureCommand/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ```C++
@@ -149,8 +151,6 @@ void InjectClickCommand(ArkUI_ContextHandle uiContext, double x, double y)
     }
 }
 ```
-
-示例中uiContext为目标UI实例的ArkUI_ContextHandle，x、y为注入点相对窗口的物理像素坐标。接口返回[ARKUI_ERROR_CODE_NO_ERROR](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)只表示命令已入队，命令执行完成后会触发回调，回调中的result表示实际执行结果。
 
 同步返回值表示命令是否被接受，回调结果码表示命令的实际执行结果，二者含义不同，各取值如下：
 
