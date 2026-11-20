@@ -372,6 +372,7 @@ if (ret != AV_ERR_OK) {
 OH_AVFormat_Destroy(dynamicFormat);
 ```
 CBRHQ码控模式示例如下：
+
 <!-- @[capability_bitrate_mode_cbrhq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityConfigQuery.cpp) -->
 
 ```c++
