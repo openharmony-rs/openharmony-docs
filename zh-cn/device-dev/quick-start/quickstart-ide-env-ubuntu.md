@@ -6,7 +6,7 @@
 
 本章节介绍开发所需Ubuntu环境的搭建方法。
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
 > 如果没有Ubuntu系统，可在Windows系统中通过虚拟机方式搭建Ubuntu系统，具体请参考[Ubuntu系统安装指导](https://developer.huawei.com/consumer/cn/training/course/video/C101639987816176315)。Ubuntu系统安装完成后，请根据指导完成[Ubuntu基础环境配置](https://developer.huawei.com/consumer/cn/training/course/video/C101639988048536240)，然后再根据本章节进行DevEco Device Tool工具的安装。
 
 
@@ -18,7 +18,7 @@
 
 - 建议Ubuntu和Windows系统上安装的DevEco Device Tool为最新版本，且版本号需相同。
 
-  > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+  > **说明：**
   > 下面以3.1 Release版本的IDE进行说明，不同版本的IDE在支持的特性和操作上略有差别，具体情况可参考[该工具的使用指南](https://device.harmonyos.com/cn/docs/documentation/guide/service_introduction-0000001050166905)。
 
 - 镜像下载命令，18.04：

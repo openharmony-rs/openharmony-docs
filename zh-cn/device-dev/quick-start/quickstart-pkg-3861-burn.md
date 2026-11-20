@@ -21,7 +21,7 @@
 
 1. 准备烧录相关文件。
    1. 在客户端新建用于保存烧录文件的文件夹，例如“D:\hi3861”。
-   2. 将编译完成的源码包下载至客户端并解压，将烧录相关文件拷贝至步骤1中新建的文件夹。
+   2. 将编译完成的源码包下载至客户端并解压，将烧录相关文件拷贝至步骤1中新建的文件夹。<br>
       烧写所需文件为：Hi3861_wifiiot_app_burn.bin、Hi3861_loader_signed.bin。
 
 2. 使用hiburn烧录。
@@ -38,7 +38,7 @@
      
        ![quickstart-pkg-3861-burn-selectfile](figures/quickstart-pkg-3861-burn-selectfile.png)
        
-   4. 确保COM口选择正确，然后单击Connect后，按一下开发板上串口旁的按钮（Reset键）开始烧写。
+   4. 确保COM口选择正确，然后单击Connect后，按一下开发板上串口旁的按钮（Reset键）开始烧写。<br>
        烧录开始后，可以在hiburn工具下方的控制台区域观察到烧录过程中的打印信息。
 
        烧录完成后，控制台区域会打印提示"Execution Successful"。
