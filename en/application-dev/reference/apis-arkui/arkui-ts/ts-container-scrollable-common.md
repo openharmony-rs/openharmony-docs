@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1d53fe51ce90f1fa1bb6fd934f127793e0536146 translatedAt=2026-11-03T02:15:14.341Z pushedAt=2026-11-13T01:05:59.970Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fad906b23379c7582ce1f67dc2e8fc029e0dab46 translatedAt=2026-11-20T08:36:09.909Z pushedAt=2026-11-20T09:22:05.551Z nl=1 -->
 
 The common scrollable component APIs currently support only the [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) components. They provide common attributes such as scrollbar style, edge effect, nested scrolling, friction coefficient control, and content clipping, as well as event callbacks such as scroll start, scroll stop, and reaching the boundary. You can use these APIs to uniformly manage the behavior of various scrollable components, which are applicable to scenarios such as list display, grid layout, waterfall flow arrangement, and page scrolling.
 
@@ -552,7 +552,7 @@ Sets whether to support dragging to scroll when the left mouse button is pressed
 
 enableScrollWithKeyboard(enabled: boolean | undefined): T
 
-Sets whether the scrollable component supports scrolling via keyboard arrow keys. When enabled, the scrollable component responds to keyboard arrow key scrolling when it has focus and the focus state is not activated. If this API is not called, scrolling via keyboard arrow keys is supported by default.
+Sets whether the scrollable component supports scrolling through keyboard arrow keys. When enabled, the scrollable component responds to keyboard arrow key scrolling when it has focus and the focus state is not activated. If this API is not used to set the value, keyboard arrow key scrolling is not supported by default.
 
 **Since:** 26.1.0
 
@@ -566,7 +566,7 @@ Sets whether the scrollable component supports scrolling via keyboard arrow keys
 
 | Name | Type   | Mandatory | Description                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | boolean \| undefined | Yes   | Whether scrolling via keyboard arrow keys is supported.<br/>**true**: scrolling via keyboard arrow keys is supported.<br/>**false**: scrolling via keyboard arrow keys is not supported.<br/>**undefined**: scrolling via keyboard arrow keys is supported. |
+| enabled  | boolean \| undefined | Yes   | Whether scrolling with the keyboard arrow keys is supported.<br/>**true**: scrolling with the keyboard arrow keys is supported.<br/>**false**: scrolling with the keyboard arrow keys is not supported.<br/>**undefined**: scrolling with the keyboard arrow keys is not supported. |
 
 **Return value**
 

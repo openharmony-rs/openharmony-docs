@@ -6,7 +6,7 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T02:23:17.802Z pushedAt=2026-11-13T01:05:59.979Z nl=1 -->
+<!-- md-trans-meta sourceCommit=211761b711d0e55f7c094c2618466ffe6d54e546 translatedAt=2026-11-20T08:36:25.438Z pushedAt=2026-11-20T09:22:29.109Z nl=1 -->
 
 The **WaterFlow** component is a waterfall flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules. It supports multi-column layout, group mixing layout, lazy loading, auto calculation of the number of columns, and edge fading, and is suitable for scenarios such as image galleries, product displays, and content feeds that need to display content of different sizes.
 
@@ -608,6 +608,48 @@ Supports both the [ALWAYS_TOP_DOWN](#waterflowlayoutmode12) and [SLIDING_WINDOW]
 | Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------------------------------------ |
 | strategy | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | No | Scroll snap strategy.<br/>When the [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) enum is passed in, the built-in alignment mode is used. **START**, **CENTER**, and **END** align the target **FlowItem** to the start, center, and end of the viewport along the scroll axis, respectively.<br/>When an object implementing the [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) API is passed in, you need to calculate the scroll distance and the final snap position: [calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset) determines the scroll distance in the inertia phase, and [calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset) determines the final snap position.<br/>When this parameter is not set, or when **ScrollSnapAlign.NONE** or **undefined** is passed in, scroll snap is not enabled, and **WaterFlow** does not perform snap alignment but slides naturally to a stop by inertia. |
+
+### scrollPlaceholder
+
+scrollPlaceholder(provider?: PlaceholderProvider)
+
+Sets the scrolling placeholder provider of the **WaterFlow** component. When the framework predicts that creating the next waterfall child component within the remaining frame budget will cause frame loss, a placeholder component is displayed for the item first, and the real waterfall child component is created frame by frame on the UI thread to decrease frame loss during fast scrolling.
+
+> **NOTE**
+>
+> After the real waterfall child component is created, it is laid out again under the normal layout constraints of [FlowItem](ts-container-flowitem.md) and replaces the placeholder, while the scrolling anchor is maintained.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| provider | [PlaceholderProvider](#placeholderprovider) | No | Placeholder provider of the waterfall child component. If **undefined** is returned, the waterfall child component does not need a placeholder. If the returned ID is empty or not registered, the system default placeholder is used and scrolling is not interrupted. When this attribute is not set, scrolling placeholder is disabled, **WaterFlow** maintains the existing behavior, and the behavior of [syncLoad](#syncload20) will not be affected. |
+
+## PlaceholderProvider
+
+type PlaceholderProvider = import('../api/@ohos.arkui.placeholderRegister').PlaceholderProvider
+
+Function that provides the placeholder information of a waterfall child component.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description |
+| ---- | ---- |
+| [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | Function that provides the placeholder information of a waterfall child component. |
 
 ## Events
 
@@ -2296,7 +2338,7 @@ struct WaterFlowSnapExample {
   private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Text('WaterFlow End Snapping')
         .fontSize(20)
       WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
@@ -2328,3 +2370,77 @@ struct WaterFlowSnapExample {
 ```
 
 ![scrollSnapStrategy-waterflow](figures/scrollSnapStrategy-waterflow.gif)
+
+### Example 13: Setting Scrolling Placeholder
+
+This example uses the [scrollPlaceholder](#scrollplaceholder) API to set a scrolling placeholder for **WaterFlow**: the placeholder template is wrapped by **wrapBuilder** and then registered through the [getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister) API of UIContext (for the complete description, see [PlaceholderRegister](../arkts-apis-placeholderregister.md#placeholderregister)); when scrolling quickly, waterfall child components with an insufficient frame budget first display the registered placeholder template, and the real waterfall child components replace the placeholder after being created frame by frame, thereby decreasing frame loss.
+
+Since API version 26.1.0, the **WaterFlow** component adds the **scrollPlaceholder** API.
+
+For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+import { PlaceholderOptions } from '@kit.ArkUI';
+
+// The placeholder template must be a restricted Builder that is global, parameterless, and read-only statically rendered.
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('Loading...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@Component
+struct WaterFlowPlaceholderExample {
+  private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+
+  aboutToAppear() {
+    // Obtain the placeholder registry through UIContext. The placeholder template is wrapped by wrapBuilder and then registered for the provider to reference by id.
+    this.getUIContext().getPlaceholderRegister().register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+  }
+
+  aboutToDisappear() {
+    this.getUIContext().getPlaceholderRegister().unregister('itemPlaceholder');
+  }
+
+  build() {
+    Column() {
+      WaterFlow() {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(100)
+          .backgroundColor(0xF9CF93)
+          .borderRadius(8)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .width('100%')
+      .height(400)
+      // id corresponds to the registered placeholder template, and size is the recommended size of the placeholder, consistent with the height of the actual FlowItem.
+      .scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
