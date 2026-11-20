@@ -2,17 +2,18 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f9301fbea4fd597b80ddd3f3a3f2fa3e52dda948 translatedAt=2026-11-17T04:21:58.510Z pushedAt=2026-11-19T08:20:04.898Z nl=1 -->
 
-The **Row** component lays out child components horizontally.
+Defines a container that lays out child components horizontally. It supports setting the spacing between child components and the alignment mode, and is suitable for scenarios where multiple child components need to be arranged horizontally, such as toolbars, tab bars, and button groups.
 
 >  **NOTE**
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  If no width or height is set for the **Row** component, the component automatically adapts to the size of its child components in the main axis and cross axis respectively.
+>  If no width or height is set for the **Row** component, it adapts to the size of child components in the main axis or cross axis direction.
 
 
 ## Child Components
@@ -29,7 +30,7 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 >  **NOTE**
 >
->  Excessive component nesting (either too deep a hierarchy or too many nested components) incurs significant performance overhead. For performance purposes, you are advised to remove redundant nodes to simplify the component tree, use layout boundaries to reduce redundant layout calculations, properly apply rendering control syntax and layout component methods to minimize unnecessary re-renders and computations. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
+>  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods. For best practices, see [Layout Optimization Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-layout-optimization-guidance).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -41,16 +42,22 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options<sup>18+</sup> | [RowOptions](#rowoptions18) | No| Spacing between elements in the horizontal layout. The value can be of the number or string type.|
+| options<sup>18+</sup> | [RowOptions](#rowoptions18) | No | Configuration object of the horizontal layout, used to set the spacing between child components (unit: vp). The **space** attribute supports values of the number or string type. Pass this parameter when you need to customize the spacing between child components. If this parameter is not passed, the default spacing is 0.<br>**Model restriction:** This API can be used only in the stage model.<br>**Note:** Since API version 9, the **space** attribute does not take effect when it is set to a negative value or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
 
 ### Row<sup>18+</sup>
 Row(options?: RowOptions | RowOptionsV2)
 
 Creates a horizontal linear layout container. You can set the spacing between child components.
 
+>  **NOTE**
+>
+>  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods. For best practices, see [Layout Optimization Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-layout-optimization-guidance).
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +65,7 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions](#rowoptions18)  \| [RowOptionsV2](#rowoptionsv218) | No| Spacing between elements in a horizontal layout. The value can be of the number, string, or Resource type.|
+| options | [RowOptions](#rowoptions18) \| [RowOptionsV2](#rowoptionsv218) | No | Configuration object of the horizontal layout, used to set child component spacing (unit: vp), where the **space** attribute supports setting a value of type number, string, or Resource. When not passed, the default spacing is 0.<br>**Note:** Since API version 9, **space** does not take effect when it is negative or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
 
 ## RowOptions<sup>18+</sup>
 
@@ -72,11 +79,13 @@ Sets the spacing between child components of the **Row** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No| Yes| Spacing between child components.<br>Since API version 9, this parameter does not take effect when it is set to a negative number or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround** or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp.<br>If an invalid value is set, the default value is used instead.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| space<sup>7+</sup> | string \| number | No | Yes | Horizontal layout element spacing.<br>Since API version 9, this attribute does not take effect when space is negative or **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp<br>Invalid value: processed according to the default value.<br>**Note:** <br>The value of **space** is a number greater than or equal to 0, or a string that can be converted to a number. It does not support setting percentages.<br>**Widget capability:** Since API version 9, this API is supported in ArkTS widgets.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
 
 ## RowOptionsV2<sup>18+</sup>
 
@@ -86,11 +95,13 @@ Sets the spacing between child components of the **Row** component. The spacing 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space | [SpaceType](ts-container-column.md#spacetype18) | No| Yes| Spacing between child components.<br>This parameter does not take effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp.<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
+| space | [SpaceType](ts-container-column.md#spacetype18) | No | Yes | Horizontal layout element spacing.<br>Value range: greater than or equal to 0.<br>Since API version 9, when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, the space parameter is not effective.<br>Default value: **0**<br>Unit: vp<br>Invalid value: the default value is used.<br>**Note:**<br>The value of **space** is a number greater than or equal to 0, or a string that can be converted to a non-negative number, or Resource type data that can be converted to a number. Setting a percentage is not supported. A negative number is treated as an invalid value and handled as the default value **0**.|
 
 ## Attributes
 
@@ -100,7 +111,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 alignItems(value: VerticalAlign)
 
-Sets the alignment mode of child components in the vertical direction.
+Sets the alignment format of child components in the vertical direction. After this attribute is set, child components are aligned in the specified manner in the vertical direction. By default, child components are vertically centered.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -112,13 +123,13 @@ Sets the alignment mode of child components in the vertical direction.
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [VerticalAlign](ts-appendix-enums.md#verticalalign) | Yes  | Alignment mode of child components in the vertical direction.<br>Default value: **VerticalAlign.Center**|
+| value  | [VerticalAlign](ts-appendix-enums.md#verticalalign) | Yes   | Alignment format of child components in the vertical direction.<br>Default value: **VerticalAlign.Center** |
 
 ### justifyContent<sup>8+</sup>
 
 justifyContent(value: FlexAlign)
 
-Sets the alignment mode of the child components in the horizontal direction.
+Sets the alignment format of child components in the horizontal direction. After this attribute is set, child components are aligned in the specified manner in the horizontal direction. By default, child components are aligned at the start.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -130,21 +141,23 @@ Sets the alignment mode of the child components in the horizontal direction.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | [FlexAlign](ts-appendix-enums.md#flexalign) | Yes  | Alignment mode of child components in the horizontal direction.<br>Default value: **FlexAlign.Start**|
+| value  | [FlexAlign](ts-appendix-enums.md#flexalign) | Yes   | Alignment format of child components in the horizontal direction.<br>Default value: **FlexAlign.Start**<br>**Note:** Since API version 9, the **space** parameter does not take effect when **space** is a negative number or **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
 
 >  **NOTE**
 >
->  During the row layout, if [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for a child component, the child component is not compressed by default. As a result, the total main-axis size of all child components may exceed the container's main-axis size, causing **FlexAlign.Center** and **FlexAlign.End** to become ineffective.
+>  In a **Row** layout, if child components do not have [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) set, they are not shrunk by default. That is, the sum of the main axis sizes of all child components may exceed the main axis of the container. In this case, the alignment behavior of **FlexAlign.Center** and **FlexAlign.End** changes, and the start position of child components is the same as that of **FlexAlign.Start**.
 
 ### reverse<sup>12+</sup>
 
-reverse(isReversed: Optional\<boolean\>)
+reverse(isReversed: Optional<boolean\>)
 
-Sets whether to reverse the horizontal arrangement of child components.
+Sets whether to reverse the arrangement order of child components in the horizontal direction. When set to **true**, child components are arranged from right to left; when set to **false**, child components are arranged from left to right. This is applicable to scenarios where the display order of child components needs to be dynamically adjusted, such as internationalization layout adaptation.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,11 +165,11 @@ Sets whether to reverse the horizontal arrangement of child components.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | Yes  | Whether to reverse the horizontal arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order horizontally. **false**: Child components are arranged in normal order horizontally.|
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | Yes   | Whether the arrangement order of child components in the horizontal direction is reversed.<br>The value **true** means that the child components are arranged in reverse order in the horizontal direction (from right to left), and the value **false** means that the child components are arranged in normal order in the horizontal direction (from left to right). If the parameter value is **undefined**, it is treated as **true**, and the main axis direction is reversed. |
 
 >  **NOTE**
 >
->  If the **reverse** attribute is not set, the arrangement on the main axis remains in normal order. If the attribute is set to **undefined**, it defaults to **true**, which reverses the arrangement on the main axis.<br>Keep in mind that the main axis arrangement direction is also affected by the **direction** attribute. If **reverse** is set to **true**, it effectively reverses the arrangement that results from the **direction** attribute settings.
+>  If the **reverse** attribute is not set, the main axis direction is not reversed. If the **reverse** attribute is set and the parameter value is **undefined**, it is treated as the default value **true**, and the main axis direction is reversed. If the parameter value is **false**, the main axis direction is not reversed.<br>Since the arrangement direction of the main axis is affected by the universal **direction** attribute, if the **direction** attribute is set, when the **reverse** attribute is set to **true**, an additional reversal is always performed on the result after the **direction** attribute takes effect. If the **reverse** attribute is set to **false** or not set, the main axis direction is determined by the **direction** attribute, and no additional reversal is performed.
 
 ## Events
 
@@ -196,32 +209,37 @@ struct RowExample {
 
       // Set the spacing between child components using the Resource type.
       Text('Resource space').width('90%')
+      // Use the resource reference method to set the space attribute (supported since API 18).
       Row({ space: $r('app.string.stringSpace') }) {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').height(107).border({ width: 1 })
 
-      // Set the alignment mode of the child components in the vertical direction.
+      // Set the vertical direction alignment of child components.
       Text('alignItems(Bottom)').width('90%')
+      // Set the bottom alignment of child components.
       Row() {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').alignItems(VerticalAlign.Bottom).height('15%').border({ width: 1 })
 
       Text('alignItems(Center)').width('90%')
+      // Set the vertical center alignment of child components.
       Row() {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').alignItems(VerticalAlign.Center).height('15%').border({ width: 1 })
 
-      // Set the alignment mode of the child components in the horizontal direction.
+      // Set the horizontal direction alignment of child components.
       Text('justifyContent(End)').width('90%')
+      // Set the right alignment of child components.
       Row() {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').border({ width: 1 }).justifyContent(FlexAlign.End)
 
       Text('justifyContent(Center)').width('90%')
+      // Set the horizontal center alignment of child components.
       Row() {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
@@ -235,7 +253,7 @@ struct RowExample {
 
 ### Example 2: Configuring the Reverse Attribute
 
-This example demonstrates the effect of setting the **reverse** attribute of the **Row** component.
+This example shows the effect after setting the **reverse** attribute of the **Row** component, demonstrating how to reverse the arrangement order of child components.
 
 ```ts
 @Entry
@@ -243,12 +261,12 @@ This example demonstrates the effect of setting the **reverse** attribute of the
 struct RowReverseSample {
   build() {
     Row() {
-      Text("1")
+      Text('1')
         .width(100)
         .height(50)
         .backgroundColor(0xAFEEEE)
 
-      Text("2")
+      Text('2')
         .width(100)
         .height(50)
         .backgroundColor(0x00FFFF)

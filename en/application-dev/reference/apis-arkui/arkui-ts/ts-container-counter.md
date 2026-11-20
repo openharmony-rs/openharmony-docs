@@ -5,8 +5,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=45d7a7f3a546f09d883db6316888aa64247d94c0 translatedAt=2026-11-17T03:50:02.372Z pushedAt=2026-11-19T08:20:04.850Z nl=1 -->
 
-The **Counter** component provides an operation to increase or decrease the number.
+The **Counter** component provides increment and decrement operations. It is suitable for scenarios that require frequent value changes, such as product quantity selection and parameter adjustment, helping users adjust values quickly and intuitively.
 
 >  **NOTE**
 >
@@ -32,7 +33,7 @@ Counter()
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported. 
 
 ### enableInc<sup>10+</sup>
 
@@ -42,13 +43,15 @@ Sets whether to enable the increment button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the increment button.<br>Default value: **true**. The value **true** means to enable the increment button, and the value **false** means the opposite.|
+| value  | boolean | Yes  | Whether to disable or enable the "increase" button.<br>Default value: **true**, where **true** indicates enabled for the "increase" button and **false** indicates disabled for the "increase" button. |
 
 ### enableDec<sup>10+</sup>
 
@@ -58,13 +61,15 @@ Sets whether to enable the decrement button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the decrement button.<br>Default value: **true**. The value **true** means to enable the decrement button, and the value **false** means the opposite.|
+| value  | boolean | Yes   | Whether to disable or enable the "decrease" button.<br>Default value: **true**, where **true** indicates enabled for the "decrease" button and **false** indicates disabled for the "decrease" button. |
 
 ## Events
 
@@ -82,11 +87,11 @@ Invoked when the value increases.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes  | Callback invoked when the value increases.       |
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes   | Callback for the value increase of Counter. |
 
 ### onDec
 
@@ -100,45 +105,46 @@ Invoked when the value decreases.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes  | Callback invoked when the value decreases.       |
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes   | Callback for the Counter value decrease. |
+
 
 
 ## Example
 
-This example shows the basic usage of the **Counter** component. Users can touch the **+** or **-** button to adjust the value.
+This example shows the basic usage of the **Counter** component. Tap the **+** and **-** buttons to change the counter value.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct CounterExample {
-  @State value1: number = 0;
-  @State value2: number = 0;
+  @State counterValue1: number = 0;
+  @State counterValue2: number = 0;
 
   build() {
     Column({ space: 50 }) {
       Counter() {
-        Text(this.value1.toString())
+        Text(this.counterValue1.toString())
       }
       .onInc(() => {
-        this.value1++;
+        this.counterValue1++;
       })
       .onDec(() => {
-        this.value1--;
+        this.counterValue1--;
       })
 
       Counter() {
-        Text(this.value2.toString())
+        Text(this.counterValue2.toString())
       }
       .onInc(() => {
-        this.value2++;
+        this.counterValue2++;
       })
       .onDec(() => {
-        this.value2--;
+        this.counterValue2--;
       })
       .enableInc(true)
       .enableDec(false)
@@ -150,4 +156,4 @@ struct CounterExample {
 }
 ```
 
-![en-us_image_0000001219982711](figures/en-us_image_0000001219982711.gif)
+![counter](figures/counter.gif)
