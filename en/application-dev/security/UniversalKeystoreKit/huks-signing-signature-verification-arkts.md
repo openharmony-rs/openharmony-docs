@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2bacfee4422d681c1c12b53710941106e9561ff9 translatedAt=2026-11-03T05:41:44.777Z pushedAt=2026-11-03T07:40:17.575Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1b0db3ca24f88b8a35055898204d6f512cd41949 translatedAt=2026-11-20T03:29:59.999Z pushedAt=2026-11-20T06:48:01.687Z nl=1 -->
 
 This topic provides signing and signature verification development cases with the following algorithms:
 
@@ -99,7 +99,7 @@ function getEccGenerateProperties() {
     value: huks.HuksKeyAlg.HUKS_ALG_ECC
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
   }, {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
@@ -117,7 +117,7 @@ function getEccSignProperties() {
     value: huks.HuksKeyAlg.HUKS_ALG_ECC
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
   }, {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
@@ -134,7 +134,7 @@ function getEccVerifyProperties() {
     value: huks.HuksKeyAlg.HUKS_ALG_ECC
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
   }, {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
@@ -268,7 +268,7 @@ function getSm2GenerateProperties() {
     value: huks.HuksKeyAlg.HUKS_ALG_SM2
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    value: huks.HuksKeySize.HUKS_SM2_KEY_SIZE_256
   }, {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
@@ -286,7 +286,7 @@ function getSm2SignProperties() {
     value: huks.HuksKeyAlg.HUKS_ALG_SM2
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    value: huks.HuksKeySize.HUKS_SM2_KEY_SIZE_256
   }, {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
@@ -303,7 +303,7 @@ function getSm2VerifyProperties() {
     value: huks.HuksKeyAlg.HUKS_ALG_SM2
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    value: huks.HuksKeySize.HUKS_SM2_KEY_SIZE_256
   }, {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY

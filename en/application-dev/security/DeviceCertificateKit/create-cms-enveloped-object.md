@@ -6,11 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-11-03T05:06:41.758Z pushedAt=2026-11-03T06:48:12.308Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:34:53.966Z pushedAt=2026-11-20T06:02:05.835Z nl=1 -->
 
 Certificate encapsulation with CMS is supported since API version 22.
 
-PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
+PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signature data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
 
 Currently, only CMS signature data and encapsulated data are supported.
 
@@ -36,6 +36,7 @@ Currently, only CMS signature data and encapsulated data are supported.
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -124,7 +125,9 @@ async function testGetEncryptedContentData() {
     let data = await cmsGenerator.getEncryptedContentData();
     console.info(`getEncryptedContentData result: success, data = %s`, data);
   } catch (err) {
-    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncryptedContentData failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

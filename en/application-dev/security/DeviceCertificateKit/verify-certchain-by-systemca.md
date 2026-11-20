@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=586ca0df7c9e6070a6064e9c1b3f797ce18bcafe translatedAt=2026-11-03T05:14:43.655Z pushedAt=2026-11-03T06:49:38.844Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:39:00.067Z pushedAt=2026-11-20T06:09:55.818Z nl=1 -->
 
 Starting from API version 20, the system prebuilt CA certificate is supported for verifying certificate chains.
 
@@ -46,6 +46,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 
   // Certificate chain verification data, which needs to be assigned by the service.
@@ -60,6 +61,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`X509CertChain validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e50cd391e32ff59430fc2cd953e8729c4d27fda7 translatedAt=2026-11-03T05:16:51.558Z pushedAt=2026-11-03T06:55:30.379Z nl=1 -->
+<!-- md-trans-meta sourceCommit=afc00ea13fc0a3fa63e7c76bf4005d4a63c32f80 translatedAt=2026-11-20T03:22:52.318Z pushedAt=2026-11-20T06:39:22.050Z nl=1 -->
 
 In the key management extension scenario, after completing key management extension PIN authentication, an application can operate the corresponding key through resourceId to perform signing and signature verification operations. This capability is implemented through the three-phase API provided by HUKS. The application only needs to specify the corresponding algorithm parameters (including algorithm type, purpose, padding, digest, etc.).
 
@@ -114,7 +114,9 @@ The following example uses a key with the RSA algorithm, SHA256 digest algorithm
 
 **ArkTS API**
 
-```ts
+<!-- @[ukey_sign_verify_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/SignVerify.ets) -->
+
+``` TypeScript
 /*
  * The key algorithm is RSA, the digest algorithm is SHA256, and the padding mode is PSS.
  */
@@ -190,10 +192,10 @@ async function verify(keyAlias: string) {
 
 async function signAndVerify() {
   const keyAlias = JSON.stringify({
-    providerName: "testProviderName",
-    bundleName: "com.example.cryptoapplication",
-    abilityName: "CryptoExtension",
-    index: { key: "testKey" } as ESObject
+    providerName: 'testProviderName',
+    bundleName: 'com.example.cryptoapplication',
+    abilityName: 'CryptoExtension',
+    index: { key: 'testKey' } as ESObject
   });
   try {
     // Signature process.
@@ -214,34 +216,10 @@ async function signAndVerify() {
 
 **C++ API**
 
+<!-- @[ukey_sign_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-#include "huks/native_huks_api.h"
-#include "huks/native_huks_param.h"
-#include "napi/native_api.h"
-#include <string.h>
-
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ParamSet **paramSet,
-    const struct OH_Huks_Param *params,
-    uint32_t paramCount)
-{
-    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        return ret;
-    }
-    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
-        return ret;
-    }
-    ret = OH_Huks_BuildParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
-        return ret;
-    }
-    return ret;
-}
-
+/* Call the huks three-stage API to obtain the signed data. */
 static struct OH_Huks_Param g_signParamsTest[] = {
     {
         .tag = OH_HUKS_TAG_ALGORITHM,
@@ -257,29 +235,7 @@ static struct OH_Huks_Param g_signParamsTest[] = {
         .uint32Param = OH_HUKS_PADDING_PSS
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }, {
-        .tag = OH_HUKS_TAG_KEY_CLASS,
-        .uint32Param = OH_HUKS_KEY_CLASS_EXTENSION
-    }
-};
-
-static struct OH_Huks_Param g_verifyParamsTest[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_RSA
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_RSA_KEY_SIZE_2048
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_PSS
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
+        .uint32Param = OH_HUKS_DIGEST_SHA384
     }, {
         .tag = OH_HUKS_TAG_KEY_CLASS,
         .uint32Param = OH_HUKS_KEY_CLASS_EXTENSION
@@ -287,15 +243,11 @@ static struct OH_Huks_Param g_verifyParamsTest[] = {
 };
 
 static const uint32_t RSA_COMMON_SIZE = 1024;
-static const char *DATA_TO_SIGN = "Hks_RSA_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
-                                  "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                  "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
-static const char *KEY_ALIAS = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
-                              "\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+static const char *DATA_TO_SIGN = "testData";
+static const char *KEY_ALIAS = "testKeyAlias";
 
-static napi_value SignVerifyKey(napi_env env, napi_callback_info info) 
+static napi_value Sign(napi_env env, napi_callback_info info)
 {
-    // Assume keyAlias is the obtained resourceId.
     struct OH_Huks_Blob keyAlias = {
         (uint32_t)strlen(KEY_ALIAS),
         (uint8_t *)KEY_ALIAS
@@ -305,58 +257,28 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
         (uint8_t *)DATA_TO_SIGN
     };
     struct OH_Huks_ParamSet *signParamSet = nullptr;
-    struct OH_Huks_ParamSet *verifyParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
-        ohResult = InitParamSet(&signParamSet, g_signParamsTest, sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
+        ohResult = InitHuksParamSet(&signParamSet, g_signParamsTest,
+            sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        ohResult = InitParamSet(&verifyParamSet, g_verifyParamsTest,
-            sizeof(g_verifyParamsTest) / sizeof(OH_Huks_Param));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        /* 1. Sign */
-        // Init
         uint8_t handleS[sizeof(uint64_t)] = {0};
         struct OH_Huks_Blob handleSign = { (uint32_t)sizeof(uint64_t), handleS };
         ohResult = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        // Finish
         uint8_t outDataS[RSA_COMMON_SIZE] = {0};
         struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
-        ohResult = OH_Huks_FinishSession(&handleSign, signParamSet,  &inData, &outDataSign);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        
-        /* 2. Verify */
-        // Init
-        uint8_t handleV[sizeof(uint64_t)] = {0};
-        struct OH_Huks_Blob handleVerify = { (uint32_t)sizeof(uint64_t), handleV };
-        ohResult = OH_Huks_InitSession(&keyAlias, verifyParamSet, &handleVerify, nullptr);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        // Update loop
-        uint8_t temp[] = "out";
-        struct OH_Huks_Blob verifyOut = { (uint32_t)sizeof(temp), temp };
-        ohResult = OH_Huks_UpdateSession(&handleVerify, verifyParamSet, &inData, &verifyOut);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        // Finish
-        ohResult = OH_Huks_FinishSession(&handleVerify, verifyParamSet, &outDataSign, &verifyOut);
+        ohResult = OH_Huks_FinishSession(&handleSign, signParamSet, &inData, &outDataSign);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
     } while (0);
     OH_Huks_FreeParamSet(&signParamSet);
-    OH_Huks_FreeParamSet(&verifyParamSet);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;

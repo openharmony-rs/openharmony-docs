@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=fc50c8d990bffee49b4e7ddbe84b245946468e4c translatedAt=2026-11-03T05:14:52.365Z pushedAt=2026-11-03T06:53:44.644Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1b0db3ca24f88b8a35055898204d6f512cd41949 translatedAt=2026-11-20T03:20:18.478Z pushedAt=2026-11-20T06:13:31.500Z nl=1 -->
 
 This topic walks you through on how to export the public key of a persistently stored asymmetric key. Currently, HUKS supports export of the ECC, RSA, Ed25519, X25519, and SM2 public keys.
 >**NOTE**<br>
@@ -35,6 +35,7 @@ let emptyOptions: huks.HuksOptions = {
 properties: []
 };
 
+/* 2. Initialize the key attribute set. */
 let properties1: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,

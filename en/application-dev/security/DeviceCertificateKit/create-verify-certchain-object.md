@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=586ca0df7c9e6070a6064e9c1b3f797ce18bcafe translatedAt=2026-11-03T05:12:45.008Z pushedAt=2026-11-03T06:48:48.135Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:38:57.915Z pushedAt=2026-11-20T06:09:53.340Z nl=1 -->
 
 This topic walks you through on how to create a certificate chain object, obtain information about the certificates of the certificate chain, and validate the certificate chain using a trust anchor.
 
@@ -101,6 +101,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 
   try {
@@ -108,6 +109,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`X509CertChain getCertList failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 
   // Certificate chain verification data, which needs to be assigned by the service.
@@ -131,6 +133,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`X509CertChain validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

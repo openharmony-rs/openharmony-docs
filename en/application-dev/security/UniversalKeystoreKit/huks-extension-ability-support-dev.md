@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f20935f61bcec3c96e073d6ac9c7aefe90f36d10 translatedAt=2026-11-03T05:20:57.542Z pushedAt=2026-11-03T06:56:13.000Z nl=1 -->
+<!-- md-trans-meta sourceCommit=afc00ea13fc0a3fa63e7c76bf4005d4a63c32f80 translatedAt=2026-11-20T03:23:36.328Z pushedAt=2026-11-20T06:42:08.098Z nl=1 -->
 
 ## Constraints
 
@@ -72,7 +72,7 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
 
 5. In the CryptoAbility.ets file, import the dependency packages, define a custom class that inherits the [CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md) component, and implement the interface functions as needed. The implementation reference provided here corresponds to the underlying driver calls as described below.
 
-   ```ts
+   ``` TypeScript
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult, HuksCryptoExtensionResultCode } from '@kit.UniversalKeystoreKit';
    import { util } from '@kit.ArkTS';
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -149,7 +149,7 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
 
 onOpenResource is used to open a specified resource (for example, establishing a session or connection), where handle is the resource handle. When the call succeeds, the resultCode member in the return value must be set to 0, and the handle member is not empty; on call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -206,7 +206,7 @@ onOpenResource is used to open a specified resource (for example, establishing a
 
 onCloseResource is used to close a specified resource (for example, releasing a session or connection), where handle is the resource handle of the resource to be closed. When the call succeeds, the resultCode member in the return value must be set to 0; on call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -244,7 +244,7 @@ onGetProperty is used to obtain the property information of a specified resource
 
 The function of exporting a public key must be implemented in **onGetProperty** so that the upstream services can use the PIN for encrypted transmission and complete PIN authentication. The encryption algorithms support RSA, SM2, and others. When the input parameter **propertyId** is set to **SKF_ExportPublicKey**, the returned public key information is in JSON format and contains the following four mandatory fields: **publicKey** (public key data), **algo** (algorithm type and key length), **transformation** (cryptographic operation parameter, such as the padding mode), and **size** (public key data length). For details about the implementation, see the **onGetProperty** API in the following sample code.
 
-   ```ts
+   ``` TypeScript
    onGetProperty(handle: string, propertyId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -315,7 +315,7 @@ The function of exporting a public key must be implemented in **onGetProperty** 
 
 - **UKey locked**: When the retry count reaches 0, **resultCode** is set to [HUKS_CRYPTO_EXTENSION_ERR_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensionresultcode), and **authState** is set to [HUKS_EXT_CRYPTO_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalpinauthstate).
 
-   ```ts
+   ``` TypeScript
    onAuthUkeyPin(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -364,7 +364,7 @@ The function of exporting a public key must be implemented in **onGetProperty** 
        if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
 
        if (driverRes.resultCode === 0) {
-         // Authentication succeeds. Maintain the authentication status.
+         // Authentication succeeds. Maintain the authentication state.
          const authKey = this.makeStorageKey(uid, 'Application-' + handle);
          this.authStateMap.set(authKey, huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED);
          result.authState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED;
@@ -385,7 +385,7 @@ The function of exporting a public key must be implemented in **onGetProperty** 
 
 **onGetUkeyPinAuthState** is used to query the PIN authentication state. When the call succeeds, the **resultCode** member in the return value must be set to **0**, and the **authState** member in the return value is set to the corresponding authentication state. On call failure, **resultCode** carries the error code information.
 
-   ```ts
+   ``` TypeScript
    onGetUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -397,7 +397,7 @@ The function of exporting a public key must be implemented in **onGetProperty** 
       return Promise.resolve(result);
     }
     
-    // Obtain the authentication status from the cache, or call the Driver interface to obtain the status in real time and update the cache.
+    // Obtain the authentication state from the cache, or call the Driver interface to obtain the status in real time and update the cache.
     const authKey = this.makeStorageKey(uid, 'Application-' + handle);
     result.authState = this.authStateMap.get(authKey) ?? huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
     result.resultCode = 0;
@@ -409,7 +409,7 @@ The function of exporting a public key must be implemented in **onGetProperty** 
 
 **onClearUkeyPinAuthState** resets the PIN authentication state. If the call succeeds, the **resultCode** member in the return value must be set to **0**. If the call fails, **resultCode** carries the error code.
 
-   ```ts
+   ``` TypeScript
    onClearUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -420,7 +420,7 @@ The function of exporting a public key must be implemented in **onGetProperty** 
       return Promise.resolve(result);
     }
 
-    // Clear the authentication status in the cache, or call the Driver interface to clear the status and update the cache
+    // Clear the authentication state in the cache, or call the Driver interface to clear the status and update the cache
     const authKey = this.makeStorageKey(uid, 'Application-' + handle);
     this.authStateMap.delete(authKey);
     result.resultCode = 0;
@@ -432,7 +432,7 @@ The function of exporting a public key must be implemented in **onGetProperty** 
 
 onInitSession is used to initialize a key session. When the call succeeds, the resultCode member in the return value must be set to 0, and the handle member is not empty. On call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onInitSession(handle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -490,7 +490,7 @@ onInitSession is used to initialize a key session. When the call succeeds, the r
 
 onUpdateSession is used to transfer large amounts of data in segments. When the call succeeds, the resultCode member in the return value must be set to 0. On call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onUpdateSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -525,7 +525,7 @@ onUpdateSession is used to transfer large amounts of data in segments. When the 
 
 onFinishSession is used to transfer the last segment of plaintext, and in signature verification operations, to transfer the signature. When the call succeeds, the resultCode member in the return value must be set to 0. On call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onFinishSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -563,7 +563,7 @@ onFinishSession is used to transfer the last segment of plaintext, and in signat
 
 onExportCertificate is used to query the certificate under a certain resourceId. You can obtain the certificate type expected by the service by parsing the parameter [HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag). If not specified, the key management extension application implementer must set a default type (a signing certificate is recommended).
 
-   ```ts
+   ``` TypeScript
    onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -592,7 +592,7 @@ onExportCertificate is used to query the certificate under a certain resourceId.
 
 onEnumCertificates is used to enumerate the certificate list. When the call succeeds, the resultCode member in the return value must be set to 0, and the certs member in the return value contains the certificate list (type Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensioncertinfo)>). On call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     let result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -621,7 +621,7 @@ onEnumCertificates is used to enumerate the certificate list. When the call succ
 
 Starting from API version 26.0.0, **onImportCertificate** imports a certificate to the key management extension service. **certInfo** contains the certificate information to import, including the certificate purpose, resource ID, and certificate data. If the call succeeds, the **resultCode** member in the return value is set to **0**. If the call fails, **resultCode** carries the error code information.
 
-   ```ts
+   ``` TypeScript
    onImportCertificate(handle: string, params: HuksCryptoExtensionParam[], certInfo: HuksCryptoExtensionCertInfo): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -653,7 +653,7 @@ Starting from API version 26.0.0, **onImportCertificate** imports a certificate 
 
 Starting from API version 26.0.0, onSetProperty performs the property setting operation. handle is the resource handle, and propertyId is the identifier of the property to set. The operation parameters are passed in params. When the call succeeds, the resultCode member in the return value must be set to 0, indicating that the property is set successfully. On call failure, resultCode carries the error code information.
 
-   ```ts
+   ``` TypeScript
    onSetProperty(handle: string, propertyId: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     let result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -685,7 +685,7 @@ Starting from API version 26.0.0, onSetProperty performs the property setting op
 
 Starting from API version 26.0.0, onGetResourceId is used to obtain the resource ID of the key extension capability. When the call succeeds, the resultCode member in the return value must be set to 0, and the resourceId member is not empty. On call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onGetResourceId(params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -722,7 +722,7 @@ Starting from API version 26.0.0, onGetResourceId is used to obtain the resource
 
 Starting from API version 26.0.0, **onGenerateKeyItem** generates a key pair in the key management extension service. The parameters in **params** are optional and their supported range is defined by the key management extension application implementer. If the corresponding parameters are not passed in, the key management extension application implementer must set the default behavior. When the call succeeds, the **resultCode** member in the return value must be set to **0**. On call failure, **resultCode** carries the error code information.
 
-   ```ts
+   ``` TypeScript
    onGenerateKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -762,7 +762,7 @@ Starting from API version 26.0.0, **onGenerateKeyItem** generates a key pair in 
 
 Starting from API version 26.0.0, onExportKeyItem is used to export the public key of a specified key. The parameters in params are optional, and the supported scope is defined by the key management extension application. If the corresponding parameter is not passed in, the key management extension application implementer must set default behavior. It is recommended to pass in the key purpose (HUKS_TAG_PURPOSE) parameter so that the public key for the specified purpose can be exported. When the call succeeds, the resultCode member in the return value must be set to 0, and outData carries the exported public key data; on call failure, resultCode carries error code information.
 
-   ```ts
+   ``` TypeScript
    onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -800,7 +800,7 @@ Starting from API version 26.0.0, onExportKeyItem is used to export the public k
 
 Starting from API version 26.0.0, **onImportWrappedKeyItem** imports an encrypted and wrapped key pair. The parameters in **params** are optional, and their supported range is defined by the key management extension application implementer. If the corresponding parameters are not passed, the key management extension application implementer must set the default behavior. **wrappedHandle** specifies the key resource handle used to unwrap the key, and **wrappedKey** is the wrapped key data. When the call succeeds, the **resultCode** member in the return value must be set to **0**. When the call fails, **resultCode** carries the error code information.
 
-   ```ts
+   ``` TypeScript
    onImportWrappedKeyItem(handle: string, wrappingHandle: string, params: HuksCryptoExtensionParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -837,5 +837,3 @@ Starting from API version 26.0.0, **onImportWrappedKeyItem** imports an encrypte
     return Promise.resolve(result);
    }
    ```
-
-<!--no_check-->

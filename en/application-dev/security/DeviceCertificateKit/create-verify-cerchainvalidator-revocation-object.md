@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=57560eac8fa4c72f600c3b7a2f8159b04218e20a translatedAt=2026-11-03T05:12:26.404Z pushedAt=2026-11-03T06:49:29.705Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:39:03.336Z pushedAt=2026-11-20T06:09:51.254Z nl=1 -->
 
 ## Checking the Revocation Status of Local Certificate Chain with Only Leaf Certificate Checked
 
@@ -36,6 +36,7 @@ Example:
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
@@ -58,7 +59,9 @@ async function createCertChain(certData: string): Promise<cert.X509CertChain> {
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
   } catch (err) {
-    console.error(`createCertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertChain failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509CertChain;
 }
@@ -75,7 +78,9 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createCert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -114,7 +119,9 @@ async function doTestLeafCertCrlCheck() {
     await x509CertChain.validate(param);
     console.info(`validate result: success.`);
   } catch (error) {
-    console.error(`x509CertChain validate failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -149,6 +156,7 @@ Example:
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
@@ -171,7 +179,8 @@ async function createCertChain(certData: string): Promise<cert.X509CertChain> {
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
   } catch (err) {
-    console.error(`createCertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertChain failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509CertChain;
 }
@@ -188,7 +197,8 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createCert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCert failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509Cert;
 }
@@ -212,7 +222,8 @@ async function doTestCaCheck() {
     await x509CertChain.validate(param);
     console.info(`validate result: success.`);
   } catch (error) {
-    console.error(`x509CertChain validate failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```
@@ -303,7 +314,8 @@ async function validateCRL() {
     await certChain.validate(param);
     console.info('validateCRL result: success.');
   } catch (err) {
-    console.error(`X509CertChain validate failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`X509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e84cbbf2e80bf551a43ab6e8f4f821cb891b50de translatedAt=2026-11-03T05:10:13.968Z pushedAt=2026-11-03T06:48:24.763Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:36:42.184Z pushedAt=2026-11-20T06:06:31.732Z nl=1 -->
 
 Certificates with PKCS #12 can be parsed since API version 18.
 
@@ -32,6 +32,7 @@ PKCS #12 is a standard format for storing and transmitting user private keys, ce
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
@@ -43,7 +44,7 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function createX509Cert(certData: string): Promise<cert.X509Cert> {
-  // Certificate binary data, which needs to match your case.
+  // Certificate binary data, which must be assigned by the service.
   let encodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
@@ -54,7 +55,9 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -184,7 +187,9 @@ async function doTestCreatePkcs12() {
       console.info(`otherCerts is empty or not an array.`);
     }
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTestCreatePkcs12 failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -196,6 +201,7 @@ async function doTestCreatePkcs12() {
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
@@ -207,7 +213,7 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function createX509Cert(certData: string): Promise<cert.X509Cert> {
-  // Certificate binary data, which needs to match your case.
+  // Certificate binary data, which must be assigned by the service.
   let encodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
@@ -218,7 +224,9 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -355,7 +363,9 @@ async function doTestCreatePkcs12Sync() {
       console.info(`otherCerts is empty or not an array.`);
     }
   } catch (err) {
-    console.error(`doTestCreatePkcs12Sync failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTestCreatePkcs12Sync failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
