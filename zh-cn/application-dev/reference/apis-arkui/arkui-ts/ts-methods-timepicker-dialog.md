@@ -402,6 +402,7 @@ struct TimePickerDialogExample {
             useMilitaryTime: false,
             selected: this.selectTime,
             format: TimePickerFormat.HOUR_MINUTE_SECOND,
+            // 设置了start或end且为非默认值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。
             start: new Date('2022-07-22T08:30:00'),
             onAccept: (value: TimePickerResult) => {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
@@ -416,7 +417,8 @@ struct TimePickerDialogExample {
   }
 }
 ```
-![TimePickerDialog](figures/TimePickerDialogDemo7.png)
+
+![TimePickerDialog](figures/TimePickerDialogDemo7.gif)
 
 ### 示例8（设置时间滑动选择器弹窗的结束时间）
 
@@ -438,6 +440,7 @@ struct TimePickerDialogExample {
             useMilitaryTime: false,
             selected: this.selectTime,
             format: TimePickerFormat.HOUR_MINUTE_SECOND,
+            // 设置了start或end且为非默认值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。
             end: new Date('2022-07-22T15:20:00'),
             onAccept: (value: TimePickerResult) => {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
@@ -452,7 +455,8 @@ struct TimePickerDialogExample {
   }
 }
 ```
-![TimePickerDialog](figures/TimePickerDialogDemo8.png)
+
+![TimePickerDialog](figures/TimePickerDialogDemo8.gif)
 
 ### 示例9（设置上午下午跟随时间联动）
 

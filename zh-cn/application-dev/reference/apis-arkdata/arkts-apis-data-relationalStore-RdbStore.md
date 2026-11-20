@@ -4678,8 +4678,6 @@ setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 
 设置分布式数据库表，使用callback异步回调。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -4719,8 +4717,6 @@ if (store != undefined) {
  setDistributedTables(tables: Array&lt;string&gt;): Promise&lt;void&gt;
 
 设置分布式数据库表，使用Promise异步回调。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4767,8 +4763,6 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callbac
 
 设置分布式数据库表，支持指定表的分布式类型，使用callback异步回调。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -4810,8 +4804,6 @@ if (store != undefined) {
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void
 
 设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用callback异步回调。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4857,8 +4849,6 @@ if (store != undefined) {
  setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
 
 设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用Promise异步回调。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4913,8 +4903,6 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 > **说明：**
 >
 > 其中device通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4980,8 +4968,6 @@ if (store != undefined && deviceId != undefined) {
 > **说明：**
 >
 > 其中device通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5628,7 +5614,6 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 
 | **错误码ID** | **错误信息**        |
 |-----------|-------------|
-| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+    |
@@ -6081,7 +6066,6 @@ off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;str
 
 | **错误码ID** | **错误信息**        |
 |-----------|-------------|
-| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+    |

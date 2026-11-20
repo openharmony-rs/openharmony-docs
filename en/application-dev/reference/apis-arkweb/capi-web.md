@@ -1,12 +1,11 @@
 # Web
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui; @zourongchun-->
-<!--Designer: @yaomingliu; @zhufenghao-->
+<!--Designer: @xuefuzhang; @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=3cf0e4d31df69a8bda793fe15a55a60676b46acc translatedAt=2026-08-03T09:56:52.220Z pushedAt=2026-08-06T13:09:13.779Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:50:35.983Z pushedAt=2026-11-13T11:17:38.120Z nl=1 -->
 
 ## Overview
 
@@ -23,7 +22,6 @@ Provides ArkWeb native-side capabilities such as page refresh, executing JavaScr
 For more details, see [Mutual Invoking Between the Application and the Frontend Page (C/C++)](../../web/arkweb-ndk-jsbridge.md), [Establishing a Data Channel Between the Application and the Frontend Page (C/C++)](../../web/arkweb-ndk-page-data-channel.md), and [Intercepting Network Requests Initiated by the Web Component](../../web/web-scheme-handler.md). These resources help developers implement efficient bidirectional communication and request interception, improving app performance and controllability.
 
 **Since**: 12
-
 ## Files
 
 | Name| Description|

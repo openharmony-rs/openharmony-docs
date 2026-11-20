@@ -1,11 +1,13 @@
 # Class (Uint8ClampedArray)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
-A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=ee30fc06a4d48737c123d3032041ea2f72a0d534 translatedAt=2026-11-06T08:52:47.674Z pushedAt=2026-11-13T03:35:37.974Z nl=2 -->
+
+A linear data structure implemented based on [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md). Unlike the truncation handling of Uint8Array, it clamps element values: values less than 0 are clamped to 0, and values greater than 255 are clamped to 255.
 
 > **NOTE**
 >
@@ -13,7 +15,7 @@ A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-ar
 >
 > This module can be imported only to ArkTS files (with the file name extension .ets).
 
-**Decorator**: \@Sendable
+**Decorator type:** [\@Sendable](../../arkts-utils/arkts-sendable.md#sendable-decorator)
 
 ## Modules to Import
 
@@ -33,7 +35,7 @@ import { collections } from '@kit.ArkTS';
 | byteLength | number | Yes  | No  | Number of bytes occupied by an ArkTS Uint8ClampedArray.|
 | byteOffset | number | Yes  | No  | Offset between the ArkTS Uint8ClampedArray and the start position of the ArrayBuffer.|
 | length | number | Yes  | No | Number of elements in an ArkTS Uint8ClampedArray.|
-| BYTES_PER_ELEMENT | number | Yes  | No  | Number of bytes occupied by each element in the ArkTS Uint8ClampedArray.|
+| BYTES_PER_ELEMENT | number | Yes | No | The number of bytes occupied by each element in ArkTS Uint8ClampedArray. |
 
 ## constructor
 constructor()
@@ -46,7 +48,7 @@ A constructor used to create an empty ArkTS Uint8ClampedArray.
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
@@ -61,7 +63,7 @@ let uint8ClampedArray: collections.Uint8ClampedArray = new collections.Uint8Clam
 ## constructor
 constructor(length: number)
 
-A constructor used to create an ArkTS Uint8ClampedArray of a given length.
+Constructor used to create an ArkTS Uint8ClampedArray object of a specified length, with all elements initialized to 0.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -71,15 +73,14 @@ A constructor used to create an ArkTS Uint8ClampedArray of a given length.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| length | number | Yes| Length of the ArkTS Uint8ClampedArray.|
+| length | number | Yes | Used to specify the length of the ArkTS Uint8ClampedArray. The value range is a non-negative integer. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                 |
 | -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8ClampedArray's constructor cannot be directly invoked. |
 
 
@@ -93,7 +94,7 @@ let uint8ClampedArray: collections.Uint8ClampedArray = new collections.Uint8Clam
 ## constructor
 constructor(elements: Iterable\<number>)
 
-A constructor that creates an ArkTS Uint8ClampedArray from an iterable object.
+Constructor used to create an ArkTS Uint8ClampedArray object from an Iterable, with each element in the ArkTS Uint8ClampedArray undergoing clamping.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -107,11 +108,10 @@ A constructor that creates an ArkTS Uint8ClampedArray from an iterable object.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8ClampedArray's constructor cannot be directly invoked. |
 
 **Example**
@@ -126,7 +126,7 @@ let array: collections.Uint8ClampedArray = new collections.Uint8ClampedArray(set
 ## constructor
 constructor(array: ArrayLike\<number> | ArrayBuffer)
 
-A constructor that creates an ArkTS Uint8ClampedArray from an array-like object or ArkTS ArrayBuffer.
+Constructor used to create an ArkTS Uint8ClampedArray object from an ArrayLike or an ArkTS ArrayBuffer, with each element in the ArkTS Uint8ClampedArray undergoing clamping.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -136,15 +136,14 @@ A constructor that creates an ArkTS Uint8ClampedArray from an array-like object 
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| array |  ArrayLike\<number> \| ArrayBuffer | Yes| Object used to construct the ArkTS Uint8ClampedArray. When the parameter type is ArrayBuffer, the number of bytes occupied by the buffer must be an integer multiple of 4.|
+| array |  ArrayLike\<number> \| ArrayBuffer | Yes | Object used to construct the ArkTS Uint8ClampedArray. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8ClampedArray's constructor cannot be directly invoked. |
 
 **Example**
@@ -157,7 +156,7 @@ let array: collections.Uint8ClampedArray = new collections.Uint8ClampedArray(arr
 
 ```ts
 // Example 2: Construct an object from an ArrayBuffer.
-let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(12);
+let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(10);
 let array: collections.Uint8ClampedArray = new collections.Uint8ClampedArray(arrayBuffer);
 ```
 
@@ -173,7 +172,7 @@ let uint8ClampedArray2: collections.Uint8ClampedArray = new collections.Uint8Cla
 ## constructor
 constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
-A constructor that creates an ArkTS Uint8ClampedArray from an ArrayBuffer.
+Constructor used to create an ArkTS Uint8ClampedArray object from an ArrayBuffer, with the ArkTS Uint8ClampedArray and the ArrayBuffer sharing memory.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -183,33 +182,32 @@ A constructor that creates an ArkTS Uint8ClampedArray from an ArrayBuffer.
 
 | Name | Type  | Mandatory| Description                                        |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | Yes| ArrayBuffer object used to construct the ArkTS Uint8ClampedArray. The number of bytes occupied by the buffer must be an integer multiple of 4.|
-| byteOffset | number | No| Byte offset of the buffer, beginning at 0. The default value is **0**.|
-| length | number | No| Length of the ArkTS Uint8ClampedArray. The default value is **0**.|
+| buffer | ArrayBuffer | Yes | The ArrayBuffer object used to construct the ArkTS Uint8ClampedArray. |
+| byteOffset | number | No | Specifies the byte offset of the buffer. The value is a non-negative integer and must be less than buffer.byteLength. It starts from 0 and defaults to 0. |
+| length | number | No | Specifies the length of the ArkTS Uint8ClampedArray. The default value is 0. The sum of byteOffset and length cannot exceed buffer.byteLength. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                  |
 | -------- | -------------------------------------------------------   |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8ClampedArray's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
 let uint8ClampedArray: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 3, 4, 5, 6]);
-console.info("byteLength: " + uint8ClampedArray.buffer.byteLength); // byteLength: 6
-// Start from the first byte of the buffer corresponding to Uint8ClampedArray. The length is 5.
+console.info(`byteLength: ${uint8ClampedArray.buffer.byteLength}`); // byteLength: 6
+// Start from the first byte of the buffer corresponding to uint8ClampedArray, with a length of 5. uint8ClampedArray1 and uint8ClampedArray share memory.
 let uint8ClampedArray1: collections.Uint8ClampedArray = new collections.Uint8ClampedArray(uint8ClampedArray.buffer, 1, 5);
-console.info("[" + uint8ClampedArray1 + "]"); // [2, 3, 4, 5, 6]
+console.info(`[${uint8ClampedArray1}]`); // [2, 3, 4, 5, 6]
 ```
 
 ## from
 static from(arrayLike: ArrayLike\<number>): Uint8ClampedArray
 
-Creates an ArkTS Uint8ClampedArray from an array-like or iterator object.
+Creates an ArkTS Uint8ClampedArray object from an ArrayLike.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -226,14 +224,6 @@ Creates an ArkTS Uint8ClampedArray from an array-like or iterator object.
 | Type        | Description     |
 | ------------ | --------- |
 | Uint8ClampedArray | New ArkTS Uint8ClampedArray generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **Example**
 ```ts
@@ -253,7 +243,7 @@ Creates an ArkTS Uint8ClampedArray from an array-like object.
 **Parameters**
 | Name | Type  | Mandatory| Description                                       |
 | ------- | ------ | ---- | ------------------------------------------|
-| arrayLike | ArrayLike\<T> | Yes| Array-like object used to construct the ArkTS Uint8ClampedArray.             |
+| arrayLike | ArrayLike\<T> | Yes | ArrayLike object used to construct an ArkTS Uint8ClampedArray.              |
 | mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | Yes| Mapping function.|
 
 **Return value**
@@ -261,14 +251,6 @@ Creates an ArkTS Uint8ClampedArray from an array-like object.
 | Type        | Description     |
 | ------------ | --------- |
 | Uint8ClampedArray | New ArkTS Uint8ClampedArray generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **Example**
 
@@ -305,22 +287,14 @@ Creates an ArkTS Uint8ClampedArray from an iterator object.
 **Parameters**
 | Name | Type  | Mandatory| Description                               |
 | ------- | ------ | ---- | -----------------------------------|
-| arrayLike | Iterable\<number> | Yes| Iterator object used to construct the ArkTS Uint8ClampedArray.  |
-| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No| Mapping function. If no value is passed in, no special processing is conducted on the elements.|
+| arrayLike | Iterable\<number> | Yes | An iterable object used to construct an ArkTS Uint8ClampedArray.   |
+| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No | Mapping function. If omitted, elements are not transformed and the original values are used directly.|
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
 | Uint8ClampedArray | New ArkTS Uint8ClampedArray generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **Example**
 
@@ -361,14 +335,6 @@ Creates an ArkTS Uint8ClampedArray with a variable number of parameters.
 | --------- | ----------------------- |
 | Uint8ClampedArray | New ArkTS Uint8ClampedArray instance.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-
 **Example**
 
 ```ts
@@ -380,7 +346,7 @@ console.info(arr.toString()); // Expected output: 1,2,3,4
 
 toString(): string
 
-Converts an ArkTS Uint8ClampedArray into a string.
+Converts the ArkTS Uint8ClampedArray to a string, with each element value joined by commas.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -413,7 +379,7 @@ console.info(stringArray); // Expected output: 1,2,3,4,5
 
 toLocaleString(): string
 
-Generates digits that match the cultural conventions of the current system locale. Each element converts its digits to a string via its **toLocaleString** API, and these strings are then joined in sequence with commas (,).
+Converts each element to a localized string based on the system locale of the current application, and joins them in order with commas into a result string.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -446,7 +412,7 @@ console.info(stringArray); // Expected output: 100,110,120
 ## copyWithin
 copyWithin(target: number, start: number, end?: number): Uint8ClampedArray
 
-Copies elements within a given range from this ArkTS Uint8ClampedArray to another position in sequence.
+Copies elements within the specified range of the ArkTS Uint8ClampedArray to the target position in its own buffer in sequence, overwriting the original data within the target range.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -456,7 +422,7 @@ Copies elements within a given range from this ArkTS Uint8ClampedArray to anothe
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| target | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `target + array.length`.|
+| target | number | Yes | Subscript of the target start position. If `target < 0`, it starts from the `target + Uint8ClampedArray.length` position. |
 | start | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint8ClampedArray.length`.|
 | end | number | No| End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint8ClampedArray.length`. The default value is the length of the ArkTS Uint8ClampedArray.|
 
@@ -468,11 +434,10 @@ Copies elements within a given range from this ArkTS Uint8ClampedArray to anothe
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -487,7 +452,7 @@ let copied: collections.Uint8ClampedArray = array.copyWithin(3, 1, 3);
 ## some
 some(predicate: TypedArrayPredicateFn\<number, Uint8ClampedArray>): boolean
 
-Checks whether any element in this ArkTS Uint8ClampedArray meets a given condition.
+Tests whether any element in the ArkTS Uint8ClampedArray satisfies the specified condition. Returns true if such an element exists; otherwise, returns false.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -507,11 +472,10 @@ Checks whether any element in this ArkTS Uint8ClampedArray meets a given conditi
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The some method cannot be bound.   |
 | 10200201 | Concurrent modification error. |
 
@@ -546,11 +510,10 @@ Checks whether all elements in this ArkTS Uint8ClampedArray meet a given conditi
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The every method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -575,7 +538,7 @@ Fills all elements in a given range in this ArkTS Uint8ClampedArray with a value
 
 | Name | Type  | Mandatory| Description                                                     |
 | ------- | ------ | ---- | --------------------------------------------------------|
-| value | number | Yes| Value to fill in.|
+| value | number | Yes | Value to fill. The value range is 0 to 255. Values outside the range are clamped to the range (values less than 0 are automatically corrected to 0, and values greater than 255 are automatically corrected to 255). |
 | start | number | No| Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint8ClampedArray.length`. The default value is **0**.|
 | end | number | No| End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint8ClampedArray.length`. The default value is the length of the ArkTS Uint8ClampedArray.|
 
@@ -587,11 +550,10 @@ Fills all elements in a given range in this ArkTS Uint8ClampedArray with a value
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -627,11 +589,10 @@ Returns a new ArkTS Uint8ClampedArray that contains all elements that meet the g
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -666,11 +627,10 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -705,11 +665,10 @@ Returns the index of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -738,11 +697,10 @@ Calls a callback function for each element in this ArkTS Uint8ClampedArray.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -769,7 +727,7 @@ Returns the index of the first occurrence of a value in this ArkTS Uint8ClampedA
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | Yes  | Value to search for.               |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8ClampedArray, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint8ClampedArray.|
+| fromIndex     | number | No   | Start index for searching from front to back. Default value is 0. If the provided index value is negative, it is treated as an offset from the end of the array. If the value of fromIndex causes the search range to have no overlap with the array range, -1 is returned. |
 
 **Return value**
 
@@ -779,11 +737,10 @@ Returns the index of the first occurrence of a value in this ArkTS Uint8ClampedA
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.                |
 
@@ -812,7 +769,7 @@ Obtains the index of the last occurrence of the specified value in this ArkTS Ui
 | Name          | Type    | Mandatory | Description                                                                               |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | number | Yes  | Value to search for.                                                                           |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8ClampedArray, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint8ClampedArray.|
+| fromIndex     | number | No   | The starting index for searching from back to front. The default value is the length of ArkTS Uint8ClampedArray minus 1. If the provided index value is negative, it is treated as an offset from the end of the array. If the value of fromIndex causes the search range and the array range to have no overlap, -1 is returned. |
 
 **Return value**
 
@@ -822,7 +779,7 @@ Obtains the index of the last occurrence of the specified value in this ArkTS Ui
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
@@ -833,10 +790,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([3, 5, 9]);
-console.info(array.lastIndexOf(3) + ''); // Expected output: 0
-console.info(array.lastIndexOf(7) + ''); // Expected output: -1
-console.info(array.lastIndexOf(9, 2) + ''); // Expected output: 2
-console.info(array.lastIndexOf(9, -2) + ''); // Expected output: -1
+console.info(`${array.lastIndexOf(3)}`); // Expected output: 0
+console.info(`${array.lastIndexOf(7)}`); // Expected output: -1
+console.info(`${array.lastIndexOf(9, 2)}`); // Expected output: 2
+console.info(`${array.lastIndexOf(9, -2)}`); // Expected output: -1
 ```
 
 ## join
@@ -862,11 +819,10 @@ Concatenates all elements in this ArkTS Uint8ClampedArray into a string, with a 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -900,11 +856,10 @@ Applies a callback function to each element in this ArkTS Uint8ClampedArray and 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -912,7 +867,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([25, 36, 49]);
-const mapped: collections.Uint8ClampedArray = array.map(Math.sqrt); // Uint8ClampedArray [5, 6 ,7]
+const mapped: collections.Uint8ClampedArray = array.map(Math.sqrt); // Uint8ClampedArray [5, 6, 7]
 ```
 
 ## reduce
@@ -937,11 +892,10 @@ Applies a reduce function on each element in this ArkTS Uint8ClampedArray and re
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|                      Error Message                    |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The reduce method cannot be bound.               |
 | 10200201 | Concurrent modification error.               |
 
@@ -976,11 +930,10 @@ Reversely traverses this ArkTS Uint8ClampedArray, applies a reduce function on e
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -989,7 +942,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 3, 4, 5]);
 let reducedValue: number = array.reduceRight((accumulator: number, value: number) => accumulator + value);
-console.info(reducedValue + ''); // Expected output: 15
+console.info(`${reducedValue}`); // Expected output: 15
 ```
 
 ## reduce
@@ -1016,11 +969,10 @@ Applies a reduce function for each element in this ArkTS Uint8ClampedArray, rece
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1056,11 +1008,10 @@ Reversely traverses this ArkTS Uint8ClampedArray, applies a reduce function for 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1069,13 +1020,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 3, 4, 5]);
 let reducedValue: number = array.reduceRight((accumulator: number, value: number) => accumulator + value, 1);
-console.info(reducedValue + ''); // Expected output: 16
+console.info(`${reducedValue}`); // Expected output: 16
 ```
 
 ## reverse
 reverse(): Uint8ClampedArray
 
-Reverses this ArkTS Uint8ClampedArray.
+Reverses the order of the elements in the ArkTS Uint8ClampedArray and returns the reversed ArkTS Uint8ClampedArray object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1089,7 +1040,7 @@ Reverses this ArkTS Uint8ClampedArray.
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1106,7 +1057,7 @@ let reversed: collections.Uint8ClampedArray = array.reverse(); // Uint8ClampedAr
 ## set
 set(array: ArrayLike\<number>, offset?: number): void
 
-Writes the elements in an array-like object to the given start position in sequence.
+Writes the passed-in ArrayLike elements into the ArkTS Uint8ClampedArray in sequence, replacing the original elements starting from the beginning position.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1116,15 +1067,14 @@ Writes the elements in an array-like object to the given start position in seque
 | Name   | Type  | Mandatory| Description                                                |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | array | ArrayLike\<number> | Yes | Array-like object whose elements will be written.|
-| offset | number | No | Start position for writing data. The default value is **0**.|
+| offset | number | No  | The starting position to write to, which is a non-negative integer, and the sum of offset and array.length cannot exceed the length of the ArkTS Uint8ClampedArray. The default value is 0.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The set method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1139,7 +1089,7 @@ array.set([1, 2, 3], 3); // Uint8ClampedArray [0, 0, 0, 1, 2, 3, 0, 0]
 ## slice
 slice(start?: number, end?: number): Uint8ClampedArray
 
-Selects a range of elements in this ArkTS Uint8ClampedArray to create an ArkTS Uint8ClampedArray.
+Returns a new ArkTS Uint8ClampedArray object that copies the content of the specified range of the original ArkTS Uint8ClampedArray. Unlike [subarray](#subarray), this method generates an independent copy and does not affect the original ArkTS Uint8ClampedArray object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1160,11 +1110,10 @@ Selects a range of elements in this ArkTS Uint8ClampedArray to create an ArkTS U
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1200,11 +1149,10 @@ Sorts elements in this ArkTS Uint8ClampedArray and returns the sorted ArkTS Uint
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------ |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.         |
 
@@ -1220,7 +1168,7 @@ array.sort((a: number, b: number) => b - a); // Uint8ClampedArray [5, 4, 3, 2, 1
 ## subarray
 subarray(begin?: number, end?: number): Uint8ClampedArray
 
-Truncates an array from a specified position and returns a new ArkTS Uint8ClampedArray based on the same ArkTS ArrayBuffer.
+Truncates the array from the specified position and returns a new ArkTS Uint8ClampedArray object based on the same ArkTS ArrayBuffer. Unlike [slice](#slice), this method does not generate an independent copy and affects the original ArkTS Uint8ClampedArray object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1241,11 +1189,10 @@ Truncates an array from a specified position and returns a new ArkTS Uint8Clampe
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|            Error Message                              |
 | -------- | -------------------------------------------------|
-| 401      | Parameter error.                                 |
 | 10200011 | The subarray method cannot be bound.             |
 | 10200201 | Concurrent modification error.               |
 
@@ -1269,7 +1216,7 @@ Returns the element at the given index. If no element is found, **undefined** is
 **Parameters**
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | number | Yes  | Index of the element. The index in an array always starts from 0 and is an integer. If a negative number is passed in, it refers to the index of `index + Uint8ClampedArray.length`.|
+| index  | number | Yes  | Index of the ArkTS Uint8ClampedArray element to return (zero-based), which is an integer. If `index < 0`, the element at position `index + Uint8ClampedArray.length` is accessed. |
 
 **Return value**
 
@@ -1279,11 +1226,10 @@ Returns the element at the given index. If no element is found, **undefined** is
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|                       Error Message                   |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The at method cannot be bound.                   |
 | 10200201 | Concurrent modification error.               |
 
@@ -1291,9 +1237,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 3, 4, 5]);
-console.info("element: " + array.at(2));  // element: 3
-console.info("element: " + array.at(-1)); // element: 5
-console.info("element: " + array.at(6));  // element: undefined
+console.info(`element: ${array.at(2)}`);  // element: 3
+console.info(`element: ${array.at(-1)}`); // element: 5
+console.info(`element: ${array.at(6)}`);  // element: undefined
 ```
 
 ## includes
@@ -1320,11 +1266,10 @@ Checks whether elements are contained in this ArkTS Uint8ClampedArray.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1332,15 +1277,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 3]);
-console.info("includes: " + array.includes(2));    // includes: true
-console.info("includes: " + array.includes(4));    // includes: false
-console.info("includes: " + array.includes(3, 3)); // includes: false
+console.info(`includes: ${array.includes(2)}`);    // includes: true
+console.info(`includes: ${array.includes(4)}`);    // includes: false
+console.info(`includes: ${array.includes(3, 3)}`); // includes: false
 ```
 
 ## entries
 entries(): IterableIterator\<[number, number]>
 
-Returns an iterator object that contains the key-value pair of each element in this ArkTS Uint8ClampedArray.
+Returns a new iterator object that contains the key-value pairs of each element in the ArkTS Uint8ClampedArray. During iteration, methods that change the content of the ArkTS Uint8ClampedArray cannot be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1354,7 +1299,7 @@ Returns an iterator object that contains the key-value pair of each element in t
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1366,15 +1311,15 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([11, 22, 33]);
 let iterator: IterableIterator<[number, number]> = array.entries();
-console.info("value: " + iterator.next().value); // value: 0,11
-console.info("value: " + iterator.next().value); // value: 1,22
-console.info("value: " + iterator.next().value); // value: 2,33
+console.info(`value: ${iterator.next().value}`); // value: 0,11
+console.info(`value: ${iterator.next().value}`); // value: 1,22
+console.info(`value: ${iterator.next().value}`); // value: 2,33
 ```
 
 ## keys
 keys(): IterableIterator\<number>
 
-Returns an iterator object that contains the key (index) of each element in this ArkTS Uint8ClampedArray.
+Returns a new iterator object that contains the keys (subscripts) of each element in the ArkTS Uint8ClampedArray. During iteration, methods that change the content of the ArkTS Uint8ClampedArray cannot be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1388,7 +1333,7 @@ Returns an iterator object that contains the key (index) of each element in this
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1401,14 +1346,14 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 3, 4, 5]);
 let iterator: IterableIterator<number> = array.keys();
 for (const key of iterator) {
-  console.info("" + key); // 0, 1, 2, 3, and 4 are returned in sequence.
+  console.info(`${key}`); // Output 0,1,2,3,4 in sequence.
 }
 ```
 
 ## values
 values(): IterableIterator\<number>
 
-Returns an iterator object that contains the value of each element in this ArkTS Uint8ClampedArray.
+Returns a new iterator object that contains the values of each element in the ArkTS Uint8ClampedArray. During iteration, methods that change the content of the ArkTS Uint8ClampedArray cannot be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1422,7 +1367,7 @@ Returns an iterator object that contains the value of each element in this ArkTS
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1435,7 +1380,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array: collections.Uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 3, 4, 5]);
 let iterator: IterableIterator<number> = array.values();
 for (const value of iterator) {
-  console.info("" + value); // 1, 2, 3, 4, and 5 are returned in sequence.
+  console.info(`${value}`); // Output 1,2,3,4,5 in sequence
 }
 ```
 
@@ -1443,7 +1388,7 @@ for (const value of iterator) {
 
 [Symbol.iterator]\(): IterableIterator&lt;number&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator object used to traverse the value of each element in the ArkTS Uint8ClampedArray. During iteration, methods that change the content of the ArkTS Uint8ClampedArray cannot be used.
 
 > **NOTE**
 >
@@ -1457,11 +1402,11 @@ Returns an iterator, each item of which is a JavaScript object.
 
 | Type                     | Description            |
 | ------------------------- | ---------------- |
-| IterableIterator&lt;number&gt; | Iterator obtained.|
+| IterableIterator&lt;number&gt; | Iterator object containing the value of each element. |
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
@@ -1491,17 +1436,17 @@ Returns the element at a given index in this Uint8ClampedArray.
 
 | Name   | Type  | Mandatory| Description                    |
 | ----- | ------ | ---- | -------------------------- |
-| index | number | Yes  | Index of the element. The index starts from zero.|
+| index | number | Yes | Zero-based index of the desired element. |
 
 **Return value**
 
 | Type  | Description                |
 | ----- | ---------------------|
-| number | Number data type.|
+| number | Element at the specified index. |
 
 **Example**
 
 ```ts
 let uint8ClampedArray = collections.Uint8ClampedArray.from([1, 2, 4]);
-console.info("Element at index 1: ", uint8ClampedArray[1]);
+console.info(`Element at index 1: ${uint8ClampedArray[1]}`);
 ```

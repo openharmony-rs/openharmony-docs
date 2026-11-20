@@ -1,20 +1,19 @@
 # Class (WebResourceResponse)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:51:44.775Z pushedAt=2026-08-07T08:12:50.587Z -->
+<!-- md-trans-meta sourceCommit=127d26d8678c7aa75890320410360b29b7015334 translatedAt=2026-11-06T11:33:56.125Z pushedAt=2026-11-13T09:09:25.079Z nl=1 -->
 
 WebResourceResponse is a class in the Web component that represents HTTP responses and allows custom web page resource responses. In events such as onHttpErrorReceive, it provides the app with information including the status code, status code description, response header, response data, encoding, and MIME type of the server response. In resource request interception scenarios, it allows the app to customize the status code, status code description, response header, response data, encoding, MIME type, and data readiness state of the response, so that the app takes over the return content of specific resources. For sample code, see [onHttpErrorReceive event](./arkts-basic-components-web-events.md#onhttperrorreceive).
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 8.
+> - This class is supported since API version 8.
 >
 > - The sample effect is subject to the actual device.
 
@@ -150,7 +149,55 @@ Sets the data in the resource response.
 
 | Name | Type                                    | Mandatory  | Description                                    |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| data | string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup> | Yes   | Resource response data to set. When set to a string, the value indicates a string in HTML format. When set to a number, the value indicates a file handle, which is closed by the system **Web** component. When set to a **Resource** object, the value indicates the file resources in the **rawfile** directory of the application. When set to an **ArrayBuffer** object, the value indicates the original binary data of a resource.|
+| data | string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup> | Yes    | Resource response data to be set. string indicates an HTML format string. number indicates a file handle, which is closed by the system Web component. Resource indicates a file resource in the application's rawfile directory (this API does not support obtaining HSP resources based on the Resource object). ArrayBuffer indicates the raw binary data of the resource. |
+
+## setResponseBody
+
+setResponseBody(data: string | number | Resource | ArrayBuffer): void
+
+Sets the data in the resource response.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type                                     | Mandatory | Description                                     |
+| ---- | ---------------------------------------- | ---- | ---------------------------------------- |
+| data | string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer | Yes    | Resource response data to be set. string indicates an HTML format string. number indicates a file handle, which is closed by the system Web component. Resource indicates a file resource in the application's rawfile directory (this API supports obtaining HSP resources based on the Resource object). ArrayBuffer indicates the raw binary data of the resource. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller})
+        .onInterceptRequest((event) => {
+          this.responseWeb.setResponseBody("<!DOCTYPE html><html><body><h1>Hello, World</h1></body></html>");
+          this.responseWeb.setResponseEncoding('utf-8');
+          this.responseWeb.setResponseMimeType('text/html');
+          this.responseWeb.setResponseCode(200);
+          this.responseWeb.setReasonMessage('OK');
+          return this.responseWeb;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## setResponseEncoding<sup>9+</sup>
 
@@ -230,9 +277,9 @@ Sets whether the resource response data is ready.
 
 > **NOTE**
 >
-> - In resource request interception scenarios, call setResponseData(), setResponseEncoding(), setResponseMimeType(), setResponseHeader(), setResponseCode(), setReasonMessage(), and other methods first to set the response attributes. Finally, call setResponseIsReady(true) to trigger resource return.
-> - Asynchronous data scenario: Call setResponseIsReady(false) first. After the data is ready, call setResponseData() and other setting methods, and finally call setResponseIsReady(true) to trigger resource return.
-> - If the calling sequence is incorrect, XMLHttpRequest synchronous requests may be blocked.
+> - In the resource request interception scenario, call [setResponseData](#setresponsedata9), [setResponseBody](#setresponsebody), [setResponseEncoding](#setresponseencoding9), [setResponseMimeType](#setresponsemimetype9), [setResponseHeader](#setresponseheader9), [setResponseCode](#setresponsecode9), and [setReasonMessage](#setreasonmessage9) to set the response attributes first. Finally, call setResponseIsReady(true) to trigger the resource return.
+> - Asynchronous data scenario: call setResponseIsReady(false) first, then call setResponseData() and other setting methods after the data is ready, and finally call setResponseIsReady(true) to trigger the resource return.
+> - If the call sequence is not set correctly, XMLHttpRequest synchronous requests may be blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

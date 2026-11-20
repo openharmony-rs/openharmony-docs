@@ -1,11 +1,20 @@
+---
+kits: ["ArkTS Kit"]
+description: "Summarizes common compilation exceptions of the es2abc compiler during the Ark Bytecode generation phase, including API version or SDK release type inconsistency, field value conflicts, and issues without specific error logs, and provides cause analysis and troubleshooting solutions."
+keywords: [es2abc, bytecode generation, bytecode compilation exception, compatibleSdkVersionStage, API version, sdkReleaseType, abc file]
+doctype: faq
+status: active
+---
+
 # Ark Bytecode Generation FAQs
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @jokerxd-liu-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=db0a8dc0dc1e7a4345054dba7f30c36c80c6e5e6 translatedAt=2026-11-06T10:33:43.886Z pushedAt=2026-11-12T06:26:44.705Z nl=1 -->
 
 ## Bytecode Generation Process
 
@@ -15,11 +24,11 @@ In the Hvigor build, the es2abc compiler is automatically invoked to convert Typ
 
 This FAQ summarizes the common exception scenarios encountered during actual bytecode compilation and provides the cause analysis and help you locate issues more efficiently.
 
-## Compilation Error: "owns a higher api version"
+## Compile-time Error: owns a higher api version or sdkReleaseType
 
 **Symptom**
 
-The "owns a higher api version" error is reported during compilation.
+During compilation, es2abc reports that the referenced bytecode file (*.abc) has a higher API version or SDK release type than the current compilation.
 
 ```txt
 > hvigor ERROR: ArkTS:ERROR Failed to execute es2abc.
@@ -31,13 +40,13 @@ The size of programs is expected to be 434, but is 432
 
 **Possible Causes**
 
-The compatible version of the bytecode HAR package is later than that of the project.
+The compatible version packaged in the bytecode HAR is higher than the compatible version of the project.
 
 **Solution**
 
-Check the value of the **compatibleSdkVersionStage** field in the **build-profile.json5** files of both the project and the HAR package. Adjust the **compatibleSdkVersionStage** value in the project to be greater than or equal to the value specified in the HAR package.
+Check the "compatibleSdkVersionStage" field in the build-profile.json5 files of both the project and the HAR package, and adjust the "compatibleSdkVersionStage" field in the project to be greater than or equal to the version in the HAR package. For details, see the description of the compatibleSdkVersionStage field in [Project-level build-profile.json5 Configuration File](https://developer.huawei.com/consumer/en/doc/doccenter-deveco-studio/ide-hvigor-build-profile-app#section45865492619).
 
-## Compilation Error: "Field {&harname/Index&1.0.0.moduleRecordIdx} has different value"
+## Compile-time Error: Field 'xxx' has different value
 
 **Symptom**
 
@@ -65,7 +74,7 @@ Common triggering scenarios include:
 
    If the **Record** field in the HAR package is inconsistent with the actual dependency of the project, a conflict occurs.
 
-2. The ohpm cache or compilation cache is not completely cleared. As a result, the same HAR package has two different versions.
+2. The ohpm cache or compilation cache is not fully cleared, resulting in two different versions of the same HAR package.
 
    Leftover HAR and ABC data from old versions causes the **Record** index validation in the es2abc compiler to fail.
 
@@ -74,7 +83,7 @@ Common triggering scenarios include:
 1. When using cross-module import methods, set **useNormalizedOHMUrl** to **false** in the **build-profile.json5** file.
 
 2. Clear the ohpm and compilation cache, download the ohpm package, and rebuild the project by following these steps:
-   - Click **Build** > **Clean Project** in the menu bar, or run the command [ohpm clear](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-ohpm-clean) on the console.
+   - Click **Build** > **Clean Project** in the menu bar, or run [ohpm clean](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-ohpm-clean) in the console.
    - Click **File** > **Invalidate Caches...** in the menu bar. In the displayed dialog box, select all options, execute the commands, and restart.
    - Run the [ohpm install](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-ohpm-install) command on the console.
    - Click **Build** > **Rebuild Project** in the menu bar.
@@ -142,9 +151,9 @@ Typical code structures that may trigger stack overflow include:
 
 When a stack overflow occurs, check the crash log for repeated invocations of the same function. If the same call chain is repeated dozens or even hundreds of times, the parser triggers an abnormally deep recursion while processing a piece of source code. Finally, the call depth exceeds the limit of the stack space, causing a stack overflow and crash.
 
-**Further Troubleshooting Suggestions**
+**Further Troubleshooting Suggestions** 
 
-If the crash log points to a stack overflow, check whether the code contains the following structures:
+If the crash log points to a stack overflow, check whether the code contains the following structures: 
 - Hundreds of layers or deeper if-else/branch nesting.
 - Deeply nested parentheses, arrays, or objects
 - A large number of consecutive type conversion chain calls

@@ -6,15 +6,16 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4031298e289442d49b3db3d580400ba4e4cb5a06 translatedAt=2026-11-06T12:28:45.704Z pushedAt=2026-11-13T12:03:54.988Z nl=1 -->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
-Before using an API for development, you are advised to familiarize yourself with [SysCap](syscap.md), and then consult the following tables to see whether the SysCap set required for the API is supported by the target device type.
+Before using an API for development, you are advised to read [SystemCapability Usage Guide](syscap.md) to learn the definition and usage guide of SysCap. Then, use the following table to determine whether a specific capability set is supported on a device, so as to improve development efficiency.
 
-> **NOTE**
+> **NOTE:**
 >
-> This list outlines the minimum system capabilities supported by the current version of TVs. You can refer to the **tv.json** file in the SDK for details.
-> When developing applications for the current version of TVs using the APIs corresponding to the system capabilities listed, you can call these APIs directly without needing to perform a **canIUse()** check beforehand.
+> This list enumerates the minimum system capability set supported by the TV device type in the current version. You can query it through the tv.json file in the SDK.
+> When developing a TV application for the current version using the APIs corresponding to the system capability sets in this list, you can call them directly without performing the canIUse() isolation check before use.
 
 - SystemCapability.Ability.AbilityBase
 - SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -22,7 +23,7 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.Mission
 - SystemCapability.Ability.AbilityRuntime.QuickFix
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
+- SystemCapability.Ability.AgentRuntime.Core
 - SystemCapability.Ability.AppExtension.PhotoEditorExtension
 - SystemCapability.Ability.AppStartup
 - SystemCapability.Security.AccessToken
@@ -147,8 +148,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.FileManagement.PhotoAccessHelper.Core
 - SystemCapability.FileManagement.UserFileManager.Core
 - SystemCapability.FileManagement.UserFileManager.DistributedCore
-- SystemCapability.Multimedia.MediaLibrary.Core
-- SystemCapability.Multimedia.MediaLibrary.DistributedCore
 - SystemCapability.Sensors.MiscDevice
 - SystemCapability.ArkCompiler.JSVM
 - SystemCapability.ArkUI.ArkUI.Napi

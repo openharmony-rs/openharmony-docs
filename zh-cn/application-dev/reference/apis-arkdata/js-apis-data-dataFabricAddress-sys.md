@@ -12,6 +12,8 @@
 >
 > - 本模块首批接口从API版本26.1.0开始支持。
 >
+> - 本模块接口仅支持在内存大于8GB的手机（Phone）设备上使用，其他设备调用时将返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
+>
 > - 本模块接口为系统接口。
 >
 > - 本模块接口仅可在Stage模型下使用。
@@ -179,7 +181,14 @@ import { dataFabricAddress } from '@kit.ArkData';
 
 **result字段说明**：
 
-通勤导航场景下的数据处理结果，其内容为JSON格式字符串，格式如下：
+通勤导航场景下的数据处理结果，其内容为JSON格式字符串。
+
+采集到导航数据后，导航数据须同时满足以下条件，否则视为无效数据，不会通过回调返回：
+
+- 导航起点与导航终点的距离大于500米。
+- 导航终点与订阅时传入的家参考点或公司参考点的距离小于或等于2000米。
+
+格式如下：
 
 ```json
 {
@@ -212,7 +221,7 @@ import { dataFabricAddress } from '@kit.ArkData';
 | startLongitude | number | 导航起点经度，取值范围为-180度到180度。 |
 | endLatitude | number | 导航终点纬度，取值范围为-90度到90度。 |
 | endLongitude | number | 导航终点经度，取值范围为-180度到180度。 |
-| bundleName | string | 进行导航的应用的包名，目前支持的取值如下：<br>com.amap.hmapp<br>com.baidu.hmap<br>com.tencent.mapohos<br>com.huawei.hmos.maps.app<br>后续可通过云推配置方式修改支持的包名。 |
+| bundleName | string | 进行导航的应用的包名，目前支持的取值如下：<br>com.amap.hmapp<br>com.baidu.hmap<br>com.tencent.mapohos<br>com.huawei.hmos.maps.app |
 
 **waypoints属性说明**：
 

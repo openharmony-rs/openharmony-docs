@@ -58,6 +58,23 @@
 | DEFAULT | 0 | 无内存优化策略。 |
 | ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | 自动内存优化策略。建议在需要降低可复用自定义组件内存使用量的场景下使用此策略。<br>满足以下任一条件时，释放复用池内的所有该类型自定义组件：<br>- 应用退后台时。<br>- 复用池所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为[Visible](./ts-appendix-enums.md#visibility)以外的值，或组件面积为0，不考虑遮挡）。<br>- 整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL）。<br>当复用池中相同ReuseId的该类型自定义组件数量超过复用池容量限额，且5秒钟内不再增加时，保留限额内的组件，释放其余组件。复用池容量限额设定如下：<br>- 设备内存大于8G时，限额为48。<br>- 设备内存大于6G且小于等于8G时，限额为4。<br>- 设备内存小于等于6G时，限额为2。<br>在释放节点时，会触发[自定义组件生命周期](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。 |
 
+## ReusePoolOwnership
+
+type ReusePoolOwnership = 'shared' | 'perInstance'
+
+全局复用池的持有类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型            | 说明                  |
+|-------------    | ------------------- |
+| 'shared'        | @Component/@ComponentV2类的所有实例共享同一个复用池实例。适用于多个同类型组件实例间需要复用相同资源的场景，可最大化复用池利用率，减少内存占用。 |
+| 'perInstance'   | @Component/@ComponentV2的每个实例拥有独立的复用池实例。适用于需要隔离各组件实例复用资源的场景，避免不同实例间的复用资源相互影响。 |
+
 ## 示例
 
 ### 示例1（使用自动内存优化策略）
@@ -97,20 +114,3 @@ struct MemoryOptimizeDemo {
   }
 }
 ```
-
-## ReusePoolOwnership
-
-type ReusePoolOwnership = 'shared' | 'perInstance'
-
-全局复用池的持有类型。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 类型            | 说明                  |
-|-------------    | ------------------- |
-| 'shared'        | @Component/@ComponentV2类的所有实例共享同一个复用池实例。适用于多个同类型组件实例间需要复用相同资源的场景，可最大化复用池利用率，减少内存占用。 |
-| 'perInstance'   | @Component/@ComponentV2的每个实例拥有独立的复用池实例。适用于需要隔离各组件实例复用资源的场景，避免不同实例间的复用资源相互影响。 |

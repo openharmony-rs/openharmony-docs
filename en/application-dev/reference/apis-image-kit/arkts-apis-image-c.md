@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4413e3bf61cc6bae746f846900cf94e274c845ed translatedAt=2026-11-06T01:47:16.125Z pushedAt=2026-11-11T06:14:08.076Z nl=1 -->
 
 > **NOTE**
 >
@@ -24,16 +25,16 @@ import { image } from '@kit.ImageKit';
 
 | Name                              | Type  | Value  | Description                                                        |
 | ---------------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| XMAGE_WATERMARK_MODE_AT_THE_BOTTOM | number | 9    | XMAGE watermark mode: The XMAGE watermark is fixed at the bottom center of the image.|
-| XMAGE_WATERMARK_MODE_BORDER        | number | 10   | XMAGE watermark mode: The XMAGE watermark is automatically adjusted to a border position, and the system selects the most suitable border area based on the image content.|
+| XMAGE_WATERMARK_MODE_AT_THE_BOTTOM | number | 9    | XMAGE watermark mode: the watermark is at the bottom of the image. |
+| XMAGE_WATERMARK_MODE_BORDER        | number | 10   | XMAGE watermark mode: the watermark is at the border of the image. |
 | CAPTURE_MODE_PROFESSIONAL | number | 2    | Capture mode: professional.|
 | CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW | number | 7    | Capture mode: front camera night mode.|
 | CAPTURE_MODE_PANORAMA | number | 8    | Capture mode: panorama.|
 | CAPTURE_MODE_TAIL_LIGHT | number | 9 | Capture mode: tail light.|
-| CAPTURE_MODE_LIGHT_GRAFFITI | number | 10   | Capture mode: light graffiti.|
+| CAPTURE_MODE_LIGHT_GRAFFITI | number | 10   | Capture mode: light graffiti mode. |
 | CAPTURE_MODE_SILKY_WATER | number | 11   | Capture mode: silky water flow.|
 | CAPTURE_MODE_STAR_TRACK | number | 12   | Capture mode: star track.|
-| CAPTURE_MODE_WIDEAPERTURE | number | 19   | Capture mode: wide-angle.|
+| CAPTURE_MODE_WIDEAPERTURE | number | 19   | Capture mode: large aperture mode. |
 | CAPTURE_MODE_MOVING_PHOTO | number | 20 | Capture mode: moving photo.|
 | CAPTURE_MODE_PORTRAIT | number | 23   | Capture mode: portrait.|
 | CAPTURE_MODE_REAR_LENS_NIGHT_VIEW | number | 42   | Capture mode: rear camera night mode.|

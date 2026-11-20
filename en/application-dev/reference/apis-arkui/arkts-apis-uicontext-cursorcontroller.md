@@ -85,7 +85,7 @@ Sets the cursor style.
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
-| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle12) | Yes | Mouse cursor style, specifying the system-defined cursor type to set (such as arrow, hand pointer, and crosshair). For the meaning of each style, see the **PointerStyle** enumeration description. |
+| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle) | Yes | Mouse cursor style, specifying the system-defined cursor type to set (such as arrow, hand pointer, and crosshair). For the meaning of each style, see the **PointerStyle** enumeration description. |
 
 **Example**
 

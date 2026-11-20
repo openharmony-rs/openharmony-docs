@@ -2,16 +2,14 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @no86-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=d682c265ebaab7ba09f14d1bce2dfd9303f27af1 translatedAt=2026-07-29T01:27:50.038Z pushedAt=2026-07-29T11:55:39.806Z -->
+<!-- md-trans-meta sourceCommit=0010014add01270f39617ed7d7e4e70f8fedab9e translatedAt=2026-11-12T04:53:13.572Z pushedAt=2026-11-12T12:24:05.417Z nl=1 -->
 
 This module provides APIs for word selection extension, which can implement extended interactions such as searching and translating text using a mouse or touchpad. Word selection extension services can be customized by inheriting SelectionExtensionAbility. You need to declare this ExtensionAbility in the project configuration. For details, see [Developing a Word Selection Extension Ability](../../basic-services/selectionInput/selection-services-application-guide.md). This module provides the following capabilities:
-
 - Lifecycle management: Use the [onConnect](#onconnect) and [onDisconnect](#ondisconnect) callbacks to process the connection and disconnection logic.
-
 - **context**: You can use **context** to call [startAbility](js-apis-selectionInput-selectionExtensionContext.md#startability) to start the target ability in the same app, or use **context** as an input parameter of [createPanel](js-apis-selectionInput-selectionManager.md#createpanel) to create a word selection panel.
 
 > **NOTE**
@@ -24,7 +22,6 @@ This module provides APIs for word selection extension, which can implement exte
 ```ts
 import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 ```
-
 ## SelectionExtensionAbility
 
 **System capability**: SystemCapability.SelectionInput.Selection
@@ -52,7 +49,6 @@ Defines a callback triggered when the client connects to the **SelectionExtensio
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | Yes | **Want** object passed by the system when the **SelectionExtensionAbility** is connected. The object contains the description information such as the ability name and bundle name. It is used to obtain the ability connection configuration in the **onConnect** callback so that the corresponding initialization logic can be executed. |
 
 **Return value**
-
 | Type  | Description                                                                |
 | ------- | ------------------------------------------------------------------ |
 | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | **RemoteObject** communication stub object. You need to implement the remote message processing method (for example, **onRemoteMessageRequest**) of this object. The system passes this object to the client for IPC. |
