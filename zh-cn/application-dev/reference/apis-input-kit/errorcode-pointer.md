@@ -41,7 +41,7 @@ The global high-priority cursor was not set by the caller and cannot be cleared.
 
 **可能原因**
 
-调用unsetGlobalPriorityCursor时，当前调用者未曾通过setGlobalPriorityCursor设置全局高优先级光标，或该全局高优先级光标由其他调用者设置。
+调用unsetGlobalPriorityCursor时，当前全局高优先级光标由其他调用者设置。
 
 **处理步骤**
 
