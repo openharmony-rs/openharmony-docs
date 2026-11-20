@@ -51,7 +51,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。
 >
 
-示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_*、AVCODEC_SAMPLE_LOG*、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
+示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_\*、AVCODEC_SAMPLE_LOG\*、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
 
 ### 开发步骤
 
@@ -73,11 +73,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 2. 创建资源管理实例。
 
-   示例支持三种输入方式，按优先级依次选择：uri（网络或本地路径）、自定义数据源（沙箱文件路径）、fd。
+   示例支持URI（网络或本地路径）、自定义数据源（沙箱文件路径）和fd三种输入方式，按优先级依次选择。
 
    fd方式下offset（文件起始偏移）、fileSize（文件大小）需与待解封装文件匹配：
    - fd指向单个资源文件时，offset为0、fileSize为资源文件大小。
-   - fd指向多个连续拼接的资源文件时（如多个mp3二进制拼接）：offset、fileSize按待解封装文件实际偏移和大小设置。
+   - fd指向多个连续拼接的资源文件时（如多个mp3二进制拼接），offset、fileSize按待解封装文件实际偏移和大小设置。
 
    <!-- @[Demuxer::CreateSourceWithURI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -117,7 +117,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    开发者HAP中使用open获取fd时，filepath需要转换为[沙箱路径](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)，才能获取沙盒资源。
 
-   为自定义数据源方式实现AVSourceReadAt接口函数，需要放在创建资源管理实例前实现：
+   为自定义数据源方式实现AVSourceReadAt接口函数，需要放在创建资源管理实例前实现。
 
    <!-- @[Demuxer::AVSourceReadAt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -220,7 +220,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    ```
 
-   在监听到DRM信息后，也可主动调用获取DRM信息(uuid及对应pssh)接口。
+   在监听到DRM信息后，也可主动调用获取DRM信息（uuid及对应pssh）接口。
 
    <!-- @[Demuxer::GetMediaKeySystemInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -243,9 +243,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    获取文件用户自定义属性（可选，若用户无需获取自定义属性，可跳过此步）。
 
-   > **注意事项：**
-   > - customKey需与封装时写入的key完全一致（含完整命名层级）。例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
-   > - value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API version 20起，支持buffer类型。
+   > **注意：**
+   > - customKey需与封装时写入的key完全一致（含完整命名层级）。例如，封装时写入key为“com.openharmony.custom.meta.abc.efg”，获取时必须使用完整key，截断使用“com.openharmony.custom.meta.abc”会失败。
+   > - value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型。API版本20开始，支持buffer类型。
 
    <!-- @[Demuxer::GetCustomMetadataFormat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -398,7 +398,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 7. 添加解封装轨道。
 
-   示例中视频轨与默认音轨在创建阶段（Demuxer::Create，参考步骤2、3）内选择；切换音轨时调用如下接口，内部会先调用OH_AVDemuxer_UnselectTrackByID取消旧音轨再选择新音轨（取消选择轨道亦可单独调用该接口），选择失败时回滚。
+   示例中视频轨与默认音轨在创建阶段（参考步骤2、3）内选择；切换音轨时调用如下SelectAudioTrack函数，内部会先调用OH_AVDemuxer_UnselectTrackByID取消旧音轨再调用OH_AVDemuxer_SelectTrackByID选择新音轨，选择失败时回滚（重新选择旧音轨）。
 
    <!-- @[Demuxer::SelectAudioTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/demuxer.cpp) -->
    
@@ -481,8 +481,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    ```
 
    > **注意：**
+   >
    > 1. mpegts、mpg格式文件使用OH_AVDemuxer_SeekToTime功能时，跳转到的位置可能为非关键帧。可在跳转后调用OH_AVDemuxer_ReadSampleBuffer，通过获取到的OH_AVCodecBufferAttr判断当前帧是否为关键帧。若非关键帧影响应用侧显示等功能，可在跳转后循环读取，获取到后续第一帧关键帧后，再进行解码等处理。
+   >
    > 2. ogg格式文件使用OH_AVDemuxer_SeekToTime功能时，会跳转到传入时间millisecond所在时间间隔(秒)的起始处，可能会导致一定数量的帧误差。
+   >
    > 3. demuxer的seek处理只针对解码行为一致的码流进行处理，如果seek后需要解码器重新配置参数，或者需要重新送入参数集的数据才可以正确解码的码流，seek后可能会出现花屏、解码卡死等问题。
 
 9. 开始解封装，循环获取sample（以含音频、视频两轨的文件为例）。
@@ -577,7 +580,15 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     }
     ```
 
-    需要用户调用OH_AVSource_Destroy、OH_AVDemuxer_Destroy接口成功后，手动将实例置为nullptr，对同一实例重复调用会导致程序错误。Demuxer必须先于Source销毁。fd由应用侧管理，不由解封装模块关闭。
+    > **说明：**
+    >
+    > - 调用OH_AVSource_Destroy、OH_AVDemuxer_Destroy接口成功后，需要手动将实例设置为nullptr。
+    >
+    > - 对同一实例重复调用会导致程序错误。
+    >
+    > - Demuxer必须先于Source销毁。
+    >
+    > - fd由应用侧管理，不由解封装模块关闭。
 
 ## 附表
 ### 文件级别属性支持范围
