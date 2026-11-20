@@ -477,7 +477,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 3. 设置起拖数据。
 
-   注册[NODE_ON_DRAG_START和NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，通过[OH_ArkUI_DragEvent_SetData](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_setdata)设置起拖数据。完整节点初始化见示例中的`napi_init.cpp`。
+   注册[NODE_ON_DRAG_START](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)和[NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，通过[OH_ArkUI_DragEvent_SetData](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_setdata)设置起拖数据。完整节点初始化见示例中的`napi_init.cpp`。
 
    <!-- @[virtual_drag_c_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
    
