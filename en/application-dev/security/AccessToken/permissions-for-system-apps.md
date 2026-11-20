@@ -8754,7 +8754,7 @@ Allows an application to read cellular network-related information.
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
-Allows an application to configure T-Box Wi-Fi–related information.
+Allows an application to configure T-Box Wi-Fi-related information.
 
 **Permission level**: system_basic
 
