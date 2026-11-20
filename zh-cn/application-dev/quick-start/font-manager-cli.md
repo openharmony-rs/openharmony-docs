@@ -23,7 +23,7 @@ ohos-fontManager是OpenHarmony提供的字体管理CLI（Command Line Interface�
 
 ## 输出格式
 
-除help命令外，命令执行结果以JSON格式输出。执行成功时返回`data`字段，执行失败时返回`errCode`、`errMsg`和`suggestion`字段。
+除help命令的输出为文本格式，其他命令执行结果以JSON格式输出。执行成功时返回`data`字段，执行失败时返回`errCode`、`errMsg`和`suggestion`字段。
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
@@ -33,8 +33,6 @@ ohos-fontManager是OpenHarmony提供的字体管理CLI（Command Line Interface�
 | `errCode` | string | 执行失败时的错误码。 |
 | `errMsg` | string | 执行失败时的错误原因。 |
 | `suggestion` | string | 执行失败时的处理建议。 |
-
-命令执行成功时返回0，执行失败时返回非0。
 
 ## help
 
