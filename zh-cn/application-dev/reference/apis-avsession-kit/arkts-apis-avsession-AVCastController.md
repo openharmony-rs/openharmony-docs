@@ -623,7 +623,9 @@ update(item: AVQueueItem): Promise\<void>
 > 调用本接口时，[AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)中各字段的更新生效情况如下：
 >
 > - **可更新字段**：title（标题）、mediaImage（媒体图片）、albumCoverUri（专辑封面URI）、albumTitle（专辑标题）、artist（艺术家）、lyricContent（歌词内容）、lyricUri（歌词URI）、launchClientData（自定义数据）字段。
+> 
 > - **不可更新字段**：mediaUri（媒体URI）、fdSrc（本地文件句柄）、dataSrc（数据源描述）、pcmSrc（PCM数据源）、startPosition（起始播放位置）、description（播放列表媒体描述的文本）、extras（播放列表媒体额外字段）、mediaType（播放列表媒体类型）、mediaSize（播放列表媒体的大小）、drmScheme（播放列表媒体支持的DRM方案，由uuid表示）、duration（播放列表媒体播放时长）、creditsPosition（播放列表媒体的片尾播放位置）、appName（播放列表提供的应用的名字）、displayTags（媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)）、subtitle（播放列表媒体子标题）字段。如需刷新上述字段，请使用[prepare](#prepare10)和[start](#start10)接口。
+> 
 > - assetId（播放列表媒体ID）是媒体信息的唯一标识，由应用自定义。调用本接口时传入的assetId应与调用[prepare](#prepare10)和[start](#start10)接口时传入的assetId保持一致。
 >
 > 完整字段说明请参见[AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)。
