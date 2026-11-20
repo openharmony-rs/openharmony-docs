@@ -482,6 +482,10 @@ Invalid SSL peer certificate or SSH remote key.
 
 5. 证书链不完整。
 
+6. 目标IP与服务端证书SAN中的iPAddress不匹配。
+
+7. 目标域名与服务端证书中的DNS名称不匹配。
+
 **处理步骤**
 
 1. 建议参考[tls客户端证书验证流程](../../network/http-request.md#tls客户端证书验证流程)自排查问题原因。
@@ -491,6 +495,10 @@ Invalid SSL peer certificate or SSH remote key.
 3. 检查服务器证书是否过期或域名是否匹配。
 
 4. 可查看日志关键词"HttpClient CURLcode result 60"定位该错误。
+
+5. 确保证书SAN中包含匹配的iPAddress。
+
+6. 检查用于校验的域名或IP地址是否正确。
 
 ## 2300061 无法识别或错误的HTTP编码格式
 
