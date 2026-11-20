@@ -23,13 +23,13 @@
 
 ## 接口说明
 
-[OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)([ArkUI_ContextHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-context8h.md) uiContext, const [OH_ArkUI_NativeModule_UIJsonWrapper](../reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) \*command, [OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback) callback, void \*userData) 向指定的UI实例注入交互命令，各参数的详细说明请参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)。
+[OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)([ArkUI_ContextHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-context8h.md) uiContext, const [OH_ArkUI_NativeModule_UIJsonWrapper](../reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) \*command, [OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback) callback, void \*userData) 向指定的UI实例注入交互命令。
 
-命令执行完成后，结果通过回调通知。callback可以为NULL，表示不关注执行结果。
+注入的交互命令执行完成后，会触发回调。回调可以为NULL，表示不关注执行结果。
 
 ## 交互命令说明
 
-命令通过JSON字符串描述，顶层结构如下。
+命令通过JSON字符串描述，如果输入的JSON不合法、缺少必填字段或数值超出有效范围，接口同步返回[ARKUI_ERROR_CODE_PARAM_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，命令不会执行，也不会触发回调。顶层结构如下。
 
 ```json
 {
@@ -66,40 +66,38 @@ mode取值及含义如下。
 
 各命令的JSON示例依次如下。
 
-点击坐标(100, 200)的示例。
+- 点击坐标(100, 200)的示例。
 
-```json
-{ "schemaVersion": 1, "cmd": { "type": "click", "mode": "auto",
-    "action_info": { "coordinates": { "x1": 100.0, "y1": 200.0 } } } }
-```
+  ```json
+  { "schemaVersion": 1, "cmd": { "type": "click", "mode": "auto",
+      "action_info": { "coordinates": { "x1": 100.0, "y1": 200.0 } } } }
+  ```
 
-从(100, 200)滚动到(100, 400)的示例。
+- 从(100, 200)滚动到(100, 400)的示例。
 
-```json
-{ "schemaVersion": 1, "cmd": { "type": "scroll", "mode": "auto",
-    "action_info": { "coordinates": { "x1": 100.0, "y1": 200.0, "x2": 100.0, "y2": 400.0 } } } }
-```
+  ```json
+  { "schemaVersion": 1, "cmd": { "type": "scroll", "mode": "auto",
+      "action_info": { "coordinates": { "x1": 100.0, "y1": 200.0, "x2": 100.0, "y2": 400.0 } } } }
+  ```
 
-在(100, 200)处向前切换内容的示例。
+- 在(100, 200)处向前切换内容的示例。
 
-```json
-{ "schemaVersion": 1, "cmd": { "type": "content_switch", "mode": "target",
+  ```json
+  { "schemaVersion": 1, "cmd": { "type": "content_switch", "mode": "target",
     "action_info": { "coordinates": { "pos": { "x": 100.0, "y": 200.0 } }, "direction": "forward" } } }
-```
+  ```
 
-返回操作的示例。
+- 返回操作的示例。
 
-```json
-{ "schemaVersion": 1, "cmd": { "type": "backpress" } }
-```
+  ```json
+  { "schemaVersion": 1, "cmd": { "type": "backpress" } }
+  ```
 
-注入Tab键（键码2049）的示例。
+- 注入Tab键（键码2049）的示例。
 
-```json
-{ "schemaVersion": 1, "cmd": { "type": "key", "action_info": { "code": 2049 } } }
-```
-
-如果JSON不合法、缺少必填字段或数值超出有效范围，接口同步返回[ARKUI_ERROR_CODE_PARAM_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，命令不会执行，也不会触发回调。
+  ```json
+  { "schemaVersion": 1, "cmd": { "type": "key", "action_info": { "code": 2049 } } }
+  ```
 
 ## 开发步骤
 
