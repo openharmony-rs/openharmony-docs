@@ -8,6 +8,7 @@
 
 ```c
 struct OH_PictureNative
+typedef struct OH_PictureNative OH_PictureNative;
 ```
 
 ## 概述
