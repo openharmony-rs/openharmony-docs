@@ -27,8 +27,6 @@
 
 AVCodec支持的视频编码格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVCodec/AVCodec)。
-
 ## 状态机调用关系
 
 1. 初始化状态（Initialized）。
@@ -318,7 +316,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    // 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-        // Surface模式下，该回调函数无作用，开发者通过获取的surface来输入数据。
+       // Surface模式下，该回调函数无作用，开发者通过获取的surface来输入数据。
        (void)userData;
        (void)index;
        (void)buffer;
@@ -329,7 +327,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
 
-        // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
+       // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
        codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
    ```
@@ -816,7 +814,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            codecUserData->isEncFirstFrame = false;
        }
 
-        // 将输入帧的数据buffer和对应的index送入inputBufferQueue队列。
+       // 将输入帧的数据buffer和对应的index送入inputBufferQueue队列。
        codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
 
@@ -825,7 +823,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
 
-        // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
+       // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
        codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
    ```
@@ -1194,5 +1192,5 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 |          支持的能力                       |                              使用简述                                            |
 | --------------------------------------- | ---------------------------------------------------------------------------------- |
 | 分层编码、设置LTR帧、参考帧                      | 具体可参考：[时域可分层视频编码](video-encoding-temporal-scalability.md)。       |
-| 支持历史帧重复编码                    | 具体可参考：native_avcodec_base.h[变量][OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)中的OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER和OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT。    |
+| 支持历史帧重复编码                    | 具体可参考：native_avcodec_base.h[变量](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)中的OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER和OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT。    |
 <!--RP4End-->

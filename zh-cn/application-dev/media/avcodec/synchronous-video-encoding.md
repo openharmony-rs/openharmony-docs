@@ -11,9 +11,7 @@
 
 同步模式视频编码也同样包含Surface模式和Buffer模式两种输入模式。其状态机调用关系、支持的能力与异步模式视频编码一致，详细信息请参考[异步模式视频编码](video-encoding.md)。
 
-从API version 20开始支持同步模式视频编码，视频编码支持的格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
-
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVCodec/AVCodec)。
+从API版本20开始支持同步模式视频编码，视频编码支持的格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
 
 ## 适用场景
 
@@ -194,7 +192,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 3. 设置surface。
 
-
    获取编码器Surface模式的OHNativeWindow输入，获取surface需要在调用OH_VideoEncoder_Prepare接口之前完成。
 
    <!-- @[encoder_get_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
@@ -299,7 +296,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     * 示例：将编码完成帧数据buffer写入到对应输出文件中。
                     * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                     * if (addr == nullptr) {
-                    *    // 异常处理 。
+                    *    // 异常处理。
                     * }
                     * if (outputFile != nullptr && outputFile->is_open()) {
                     *     outputFile->write(reinterpret_cast<char *>(addr), attr.size);
@@ -410,7 +407,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-    若需重新开始编码，可参考上述[Surface模式](#surface模式)-步骤2至5配置并启动编码器。
+   若需重新开始编码，可参考上述[Surface模式](#surface模式)-步骤2至5配置并启动编码器。
 
    > **注意：**
    >
@@ -477,8 +474,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
             // Destroy是编码器句柄的最终释放点。销毁后立即置空，避免后续调用继续使用失效句柄。
             const int32_t ret = OH_VideoEncoder_Destroy(encoder_);
             encoder_ = nullptr;
-            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
-                "Destroy failed, ret: %{public}d", ret);
+            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Destroy failed, ret: %{public}d", ret);
         }
         return AVCODEC_SAMPLE_ERR_OK;
     }
@@ -614,7 +610,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    示例中的变量说明如下：
    - width、height、widthStride、heightStride：视频宽、高及宽跨距、高跨距。
-   - frameData、size、offset、pts、flags：帧数据、输入尺寸、偏移量、时间戳、缓冲区标记等字段信息。
+   - frameData、size、offset、pts、flags：帧数据、输入尺寸、偏移量、时间戳、缓冲区标记字段信息。
 
    编码器送帧处理循环：
 
@@ -710,7 +706,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            return true;
        }
        std::unique_ptr<OH_AVFormat, decltype(&OH_AVFormat_Destroy)> format(videoEncoder_->GetInputDescription(),
-                                                                           OH_AVFormat_Destroy);
+                                                                              OH_AVFormat_Destroy);
        int32_t pixelFormat = -1;
        // 与同步解码首帧读取输出描述对应：取得首个输入Buffer后，读取编码器的实际输入布局。
        if (format == nullptr ||
@@ -775,7 +771,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        // ...
    }
    ```
-
 
    获取输出buffer：
 
@@ -852,6 +847,5 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
-
 
 后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式基本一致，请参考[Surface模式](#surface模式)的步骤8-11。
