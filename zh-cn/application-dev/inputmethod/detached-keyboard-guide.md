@@ -47,7 +47,23 @@ public refreshSplitHotZone(width: number, height: number): void {
   if (this.mPanel === undefined) {
     this.addLog('refreshSplitHotZone panel is undefined');
     return;
+<!-- @[input_case_detached_startMovingPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+
+``` TypeScript
+public startMovingPanel(): void {
+  if (this.mPanel === undefined) {
+    this.addLog('startMovingPanel panel is undefined');
+    return;
   }
+  try {
+    this.mPanel.startMoving();
+    this.addLog('startMovingPanel success');
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`startMovingPanel catch error: ${error.code} ${error.message}`);
+  }
+}
+```
   if (width <= 0 || height <= 0) {
     this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
     return;
