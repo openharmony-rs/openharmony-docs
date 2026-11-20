@@ -797,7 +797,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     * 示例：将编码完成帧数据buffer写入到对应输出文件中。
                     * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                     * if (addr == nullptr) {
-                    *    // 异常处理 。
+                    *    // 异常处理。
                     * }
                     * if (outputFile != nullptr && outputFile->is_open()) {
                     *     outputFile->write(reinterpret_cast<char *>(addr), attr.size);
