@@ -599,7 +599,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 UiTree），在其余设备类型中调用将返回801错误码。
+**设备行为差异**：该接口仅支持Phone、Tablet、2in1以及Car设备（2in1、Car设备下需满足capList为UiTree），在其余设备类型中调用将返回801错误码。
 
 **系统接口**：此接口为系统接口。
 
@@ -663,8 +663,16 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
     'UiTree',
   ]
 }
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  parameters: {
+    "UiTree" : {
+      "windowId": -1,    // （可选）窗口ID：-1表示前台的全屏窗口。
+      "displayId": -1,   // （可选）显示设备ID：-1表示使用默认显示设备。
+    }
+  }
+}
 try {
-  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap, onscreenAwarenessOptions);
   console.info(`capture resultCode: ${info[0].resultCode}`);
 } catch (err) {
   console.error(`capture failed, Code: ${err.code}, message: ${err.message}`);
