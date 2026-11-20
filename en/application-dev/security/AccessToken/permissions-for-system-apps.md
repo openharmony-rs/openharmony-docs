@@ -8422,7 +8422,7 @@ Allows an application to skip enterprise re-signing certificate verification.
 
 ## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
  
-Allows an application to install freely distributable applications.
+Allows an application to install Distributing OpenHarmony PC Software Outside the AppGallery
  
 **Permission level**: system_core
  
