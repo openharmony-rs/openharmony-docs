@@ -69433,9 +69433,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/core/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":252,
+						"end_line":254,
 						"name":"Recorder::AudioEncOutputThread",
-						"start_line":212
+						"start_line":213
 					}
 				]
 			}
@@ -71229,7 +71229,7 @@
 					{
 						"end_line":680,
 						"name":"decoder_destroy",
-						"start_line":670
+						"start_line":668
 					},
 					{
 						"end_line":519,
@@ -71247,9 +71247,9 @@
 						"start_line":41
 					},
 					{
-						"end_line":450,
+						"end_line":464,
 						"name":"decoder_sync_output_buffer",
-						"start_line":407
+						"start_line":426
 					}
 				]
 			},
@@ -71267,9 +71267,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp",
 				"functions":[
 					{
-						"end_line":99,
+						"end_line":107,
 						"name":"player_release",
-						"start_line":74
+						"start_line":81
 					}
 				]
 			}
@@ -71364,7 +71364,7 @@
 					{
 						"end_line":680,
 						"name":"decoder_destroy",
-						"start_line":670
+						"start_line":668
 					},
 					{
 						"end_line":519,
@@ -71402,9 +71402,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp",
 				"functions":[
 					{
-						"end_line":99,
+						"end_line":107,
 						"name":"player_release",
-						"start_line":74
+						"start_line":81
 					}
 				]
 			},
