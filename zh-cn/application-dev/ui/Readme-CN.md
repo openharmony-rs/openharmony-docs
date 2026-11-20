@@ -325,7 +325,6 @@
     - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [绑定拖拽事件](ndk-drag-event.md)
-    - [感知UI事件](ndk-sense-ui-events.md)
   - 使用自定义能力<!--arkts-build-custom-ndk-->
     - [构建自定义组件](ndk-build-custom-components.md)
     - [自定义绘制](arkts-user-defined-draw.md)
@@ -335,6 +334,7 @@
   - [NDK多实例场景开发](ndk-scope-task.md)
   - [NDK多线程创建组件](ndk-build-on-multi-thread.md)
   - [构建渲染节点](ndk-embed-render-components.md)
+  - [监听全局手势](ndk-sense-gestures-and-events.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->
