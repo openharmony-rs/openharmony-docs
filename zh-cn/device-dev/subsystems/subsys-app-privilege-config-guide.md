@@ -161,16 +161,16 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 4. 将运行结果中的SHA256证书指纹去掉冒号后填入install_list_capability.json中的app_signature字段。
 
     ```text
-   {
-       "install_list": [
-            {
-                ...
-                "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
-                ...
-            }
-        ]
-   }
-   ```
+    {
+    "install_list": [
+    {
+    ...
+    "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
+    ...
+    }
+    ]
+    }
+    ```
 
 #### install_list.json中配置
 

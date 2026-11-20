@@ -482,7 +482,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 - 用例示例。
 
     ```js
-    /*
+    /**
      * Copyright (C) 2023 XXXX Device Co., Ltd.
      * Licensed under the Apache License, Version 2.0 (the "License");
      * you may not use this file except in compliance with the License.
@@ -521,7 +521,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
             console.info('afterEach called')
         })
 
-        /*
+        /**
          * @tc.name:appInfoTest001
          * @tc.desc:verify app info is not null
          * @tc.type: FUNC
@@ -585,7 +585,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
         ```
     4. 测试用例实现。
         ```JS
-        /*
+        /**
          * @tc.name:appInfoTest001
          * @tc.desc:verify app info is not null
          * @tc.type: FUNC

@@ -417,7 +417,7 @@ $ hpm install -g @scope/the_tool
 > - 在项目安装的Part，在执行hpm编译命令时可以通过引用环境变量DEP_SCOPE_bundle_name，例如：
 >     通过hpm i \@opensource/gn安装后，可以编辑bundle.json中的编译脚本，如下：
 >     
->   ```json5
+>   ```text
 >    "scripts": {
 >    "build": "${DEP_OPENSOURCE_gn}/gn  --version"
 >    },
@@ -427,14 +427,14 @@ $ hpm install -g @scope/the_tool
 > 
 > - 在全局安装的Part，可以通过设置系统环境变量，直接调用，或者hpm config set key value的方式，通过${key}/tool_name的方式引用，例如：
 >     
->   ```json5
+>   ```text
 >    hpm i -g @ohos/opensource/gn
 >    hpm config BUILD_SYS_GN ~/.hpm/global/ohos_bundles/opensource/gn
 >   ```
 > 
 >     可以编辑bundle.json中的编译脚本，如下：
 >     
->   ```json5
+>   ```text
 >    "scripts": {
 >    "build": "${BUILD_SYS_GN}/gn  --version"
 >    },
