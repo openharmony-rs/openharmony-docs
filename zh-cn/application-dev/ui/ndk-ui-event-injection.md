@@ -158,9 +158,3 @@ void InjectClickCommand(ArkUI_ContextHandle uiContext, double x, double y)
 - 回调结果码：[SUCCESS](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[TARGET_NOT_FOUND](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[COMMAND_NOT_SUPPORTED](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[INTERRUPTED_BY_USER](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)
 
 接口返回前会完成JSON的校验和复制，返回后可以立即销毁命令对象；命令被接受后，回调需保持可调用。接口不支持取消，命令被接受后无法撤销，高频调用时请自行控制频率。
-
-## 相关资料
-
-- [ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md)
-- [ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)
-- [NDK UI开发概述](ndk-build-ui-overview.md)
