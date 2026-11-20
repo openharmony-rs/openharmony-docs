@@ -37,11 +37,11 @@ The global high-priority cursor was not set by the caller and cannot be cleared.
 
 **错误描述**
 
-无法清除全局高优先级光标，该光标不是当前调用者设置的。
+全局高优先级光标未被当前调用方设置，无法清除。
 
 **可能原因**
 
-调用unsetGlobalPriorityCursor时，当前全局高优先级光标由其他调用者设置。
+当前调用者并未调用setGlobalPriorityCursor接口。
 
 **处理步骤**
 
