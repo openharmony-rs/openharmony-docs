@@ -813,7 +813,7 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置List的限位滚动策略，使List在滚动结束时按指定方式对齐子组件，或停在自定义的吸附位置。内置对齐方式参考[示例20（设置滚动吸附对齐）](#示例20设置滚动吸附对齐)，自定义吸附位置参考[示例21（自定义滚动吸附位置）](#示例21自定义滚动吸附位置)。
+设置List的限位滚动策略，使List在滚动结束时按指定方式对齐子组件，或停在自定义的吸附位置。
 
 > **说明：**
 >
@@ -836,6 +836,80 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
 | strategy  | [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将子组件对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，List不做吸附对齐，按惯性自然滑行至停止。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+const ITEM_HEIGHT: number = 100;
+const ITEM_SPACE: number = 10;
+const SNAP_INTERVAL: number = 2 * (ITEM_HEIGHT + ITEM_SPACE);
+
+class ListSnapProvider implements ScrollSnapOffsetProvider {
+  private scroller: Scroller;
+
+  constructor(scroller: Scroller) {
+    this.scroller = scroller;
+  }
+
+  calculateApproachOffset(velocity: number, decayOffset: number): number {
+    // 返回距离大小，滚动方向由组件根据速度处理。
+    return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
+  }
+
+  calculateSnapOffset(velocity: number): number {
+    const offset = this.scroller.currentOffset().yOffset;
+    const group = offset / SNAP_INTERVAL;
+    let targetGroup = Math.round(group);
+    if (velocity > 0) {
+      targetGroup = Math.ceil(group);
+    } else if (velocity < 0) {
+      targetGroup = Math.floor(group);
+    }
+    return Math.max(0, targetGroup * SNAP_INTERVAL);
+  }
+}
+
+@Entry
+@Component
+struct ListSnapProviderExample {
+  private scroller: Scroller = new Scroller();
+  private provider: ScrollSnapOffsetProvider = new ListSnapProvider(this.scroller);
+  private numbers: number[] = [];
+
+  aboutToAppear(): void {
+    for (let index = 0; index < 40; index++) {
+      this.numbers.push(index);
+    }
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      List({ space: ITEM_SPACE, scroller: this.scroller }) {
+        ForEach(this.numbers, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .height(ITEM_HEIGHT)
+          .backgroundColor(0xF9CF93)
+        }, (item: number) => item.toString())
+      }
+      .width('90%')
+      .height(400)
+      .backgroundColor(0xFAEEE0)
+      .scrollSnapStrategy(this.provider)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-provider](figures/scrollSnapStrategy-provider.gif)
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -3059,131 +3133,3 @@ struct ListExample {
 }
 ```
 
-### 示例20（设置滚动吸附对齐）
-
-本示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口设置ScrollSnapAlign.CENTER，使ListItem在滚动结束时自动对齐到视口中央。
-
-从API版本26.1.0开始，新增scrollSnapStrategy接口。
-
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
-
-<!--code_no_check-->
-```ts
-// xxx.ets
-import { ListDataSource } from './ListDataSource';
-
-@Entry
-@Component
-struct ListSnapExample {
-  private arr: ListDataSource = new ListDataSource([]);
-  private scroller: Scroller = new Scroller();
-
-  aboutToAppear() {
-    let list: number[] = [];
-    for (let i = 0; i < 50; i++) {
-      list.push(i);
-    }
-    this.arr = new ListDataSource(list);
-  }
-
-  build() {
-    Column({ space: 5 }) {
-      List({ space: 20, scroller: this.scroller }) {
-        LazyForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text(item.toString())
-              .fontSize(20)
-              .backgroundColor(0xF9CF93)
-              .width('100%')
-              .height(150)
-              .textAlign(TextAlign.Center)
-          }
-        }, (item: number) => item.toString())
-      }
-      .width('90%')
-      .height(400)
-      .scrollSnapStrategy(ScrollSnapAlign.CENTER)
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-![scrollSnapStrategy_center](figures/scrollSnapStrategy_center.gif)
-
-### 示例21（自定义滚动吸附位置）
-
-本示例通过实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口，自定义List的吸附位置。每两个ListItem（220vp）一组，抛滑后沿原方向吸附。
-
-从API版本26.1.0开始，新增scrollSnapStrategy接口。
-
-```ts
-// xxx.ets
-const ITEM_HEIGHT: number = 100;
-const ITEM_SPACE: number = 10;
-const SNAP_INTERVAL: number = 2 * (ITEM_HEIGHT + ITEM_SPACE);
-
-class ListSnapProvider implements ScrollSnapOffsetProvider {
-  private scroller: Scroller;
-
-  constructor(scroller: Scroller) {
-    this.scroller = scroller;
-  }
-
-  calculateApproachOffset(velocity: number, decayOffset: number): number {
-    // 返回距离大小，滚动方向由组件根据速度处理。
-    return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
-  }
-
-  calculateSnapOffset(velocity: number): number {
-    const offset = this.scroller.currentOffset().yOffset;
-    const group = offset / SNAP_INTERVAL;
-    let targetGroup = Math.round(group);
-    if (velocity > 0) {
-      targetGroup = Math.ceil(group);
-    } else if (velocity < 0) {
-      targetGroup = Math.floor(group);
-    }
-    return Math.max(0, targetGroup * SNAP_INTERVAL);
-  }
-}
-
-@Entry
-@Component
-struct ListSnapProviderExample {
-  private scroller: Scroller = new Scroller();
-  private provider: ScrollSnapOffsetProvider = new ListSnapProvider(this.scroller);
-  private numbers: number[] = [];
-
-  aboutToAppear(): void {
-    for (let index = 0; index < 40; index++) {
-      this.numbers.push(index);
-    }
-  }
-
-  build() {
-    Column({ space: 8 }) {
-      List({ space: ITEM_SPACE, scroller: this.scroller }) {
-        ForEach(this.numbers, (item: number) => {
-          ListItem() {
-            Text(item.toString())
-              .fontSize(20)
-              .width('100%')
-              .height('100%')
-              .textAlign(TextAlign.Center)
-          }
-          .height(ITEM_HEIGHT)
-          .backgroundColor(0xF9CF93)
-        }, (item: number) => item.toString())
-      }
-      .width('90%')
-      .height(400)
-      .backgroundColor(0xFAEEE0)
-      .scrollSnapStrategy(this.provider)
-    }
-    .width('100%')
-    .padding(16)
-  }
-}
-```
-
-![scrollSnapStrategy_provider](figures/scrollSnapStrategy_provider.gif)
