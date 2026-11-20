@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍在使用openLink拉起目标应用前，如何通过hdc、bm、aa等工具获取目标应用的bundleName和URL配置信息并拼接完整链接，提供Deep Linking拉起的完整调试验证流程。"
+keywords: [目标应用URL, Deep Linking, openLink, skills配置, uri拼接]
+doctype: guide
+status: active
+---
 # 获取目标应用的URL信息
 
 <!--Kit: Ability Kit-->

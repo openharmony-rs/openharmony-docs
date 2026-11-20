@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍UIAbility备份恢复功能的运行机制与开发步骤，帮助应用在非正常退出后下次启动时恢复页面栈和业务数据，保证用户体验连贯性。"
+keywords: [UIAbility, 备份恢复, setRestoreEnabled, onSaveState, 页面栈恢复, 数据恢复, 状态恢复]
+doctype: guide
+status: active
+---
 # UIAbility备份恢复
 
 <!--Kit: Ability Kit-->

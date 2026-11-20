@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "详细说明AgentExtensionAbility的agent_config.json配置文件各标签字段含义与示例，涵盖AgentCard能力描述、技能列表、输入输出模式等配置项。"
+keywords: [AgentExtensionAbility, agent_config.json, AgentCard, AgentSkill, 智能体卡片, 配置文件]
+doctype: guide
+status: active
+---
 # AgentExtensionAbility配置文件说明
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

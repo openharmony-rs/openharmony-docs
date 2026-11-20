@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "梳理系统应用跨设备启动组件的完整规则，涵盖协同接口选型、设备可信关系、安全等级匹配及权限校验要求，适用于系统应用多端协同开发。"
+keywords: [跨设备组件启动, abilityConnectionManager, DISTRIBUTED_DATASYNC]
+doctype: guide
+status: active
+---
 # 跨设备组件启动规则（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

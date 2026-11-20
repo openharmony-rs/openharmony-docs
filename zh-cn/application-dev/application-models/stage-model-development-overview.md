@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍Stage应用模型的基本概念与构成要素，涵盖AbilityStage、UIAbility、ExtensionAbility、WindowStage等核心组件，以及进程模型、线程模型、任务管理和配置文件等开发框架。"
+keywords: [应用模型, Stage模型, AbilityStage, UIAbility, ExtensionAbility, WindowStage, Context, HAP, 应用配置文件]
+doctype: guide
+status: active
+---
 # 应用模型概述
 
 <!--Kit: Ability Kit-->

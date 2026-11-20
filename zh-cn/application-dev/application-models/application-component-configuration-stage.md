@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用开发中关键的配置标签，包括bundleName、图标、版本号、设备类型、权限及启动模式等，指导开发者完成应用与Module级别配置。"
+keywords: [应用配置, bundleName, app.json5, module.json5, 版本声明, deviceTypes, 权限配置, startMode]
+doctype: guide
+status: active
+---
 # 应用/组件级配置
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
