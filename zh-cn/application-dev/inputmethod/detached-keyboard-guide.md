@@ -39,7 +39,33 @@ public switchToDetachedPanel(): void {
   if (this.mPanel === undefined) {
     this.addLog('switchToDetachedPanel panel is undefined');
     return;
+<!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+
+``` TypeScript
+// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
+public refreshSplitHotZone(width: number, height: number): void {
+  if (this.mPanel === undefined) {
+    this.addLog('refreshSplitHotZone panel is undefined');
+    return;
   }
+  if (width <= 0 || height <= 0) {
+    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
+    return;
+  }
+  let halfWidth = Math.floor(width * KEYBOARD_SPLIT_WIDTH_RATE);
+  let inputRegion: window.Rect[] = [
+    { left: 0, top: 0, width: halfWidth, height: height },
+    { left: width - halfWidth, top: 0, width: halfWidth, height: height }
+  ];
+  try {
+    this.mPanel.updateRegion(inputRegion);
+    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
+  }
+}
+```
   let dis: display.Display | undefined = undefined;
   try {
     dis = display.getPrimaryDisplaySync();
