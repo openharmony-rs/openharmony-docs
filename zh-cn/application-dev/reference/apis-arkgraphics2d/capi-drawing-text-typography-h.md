@@ -2925,7 +2925,7 @@ char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser,
 
 | 类型 | 说明 |
 | -- | -- |
-| char** | 返回获取到的字体名称列表（UTF-8编码），名称与系统语言环境相匹配。 |
+| char** | 返回获取到的字体名称列表，名称与当前语言环境相匹配。 |
 
 ### OH_Drawing_DestroySystemFontList()
 
