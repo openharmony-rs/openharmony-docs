@@ -8725,86 +8725,87 @@ Allows an application to append a content trust signature.
 **Since**: 26.0.0
 
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
-
-Allows an application to set cellular network information.
-
+ 
+Allows an application to configure cellular network–related information.
+ 
 **Permission level**: system_basic
-
+ 
 **Authorization mode**: system_grant
-
+ 
 **Certificate-based authorization**: true
-
+ 
 **Supported devices**: cars
-
+ 
 **Since**: 26.0.1
-
+ 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
-
-Allows an application to read cellular network information.
-
+ 
+Allows an application to read cellular network–related information.
+ 
 **Permission level**: system_basic
-
+ 
 **Authorization mode**: system_grant
-
+ 
 **Certificate-based authorization**: true
-
+ 
 **Supported devices**: cars
-
+ 
 **Since**: 26.0.1
-
+ 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
-
-Allows an application to set TBox WiFi related information.
-
+ 
+Allows an application to configure T-Box Wi-Fi–related information.
+ 
 **Permission level**: system_basic
-
+ 
 **Authorization mode**: system_grant
-
+ 
 **Certificate-based authorization**: true
-
+ 
 **Supported devices**: cars
-
+ 
 **Since**: 26.0.1
-
+ 
 ## ohos.permission.vehicle.TBOX_WIFI_INFO
-
+ 
 Allows an application to obtain T-Box Wi-Fi–related information.
-
+ 
 **Permission level**: system_basic
-
+ 
 **Authorization mode**: system_grant
-
+ 
 **Certificate-based authorization**: true
-
+ 
 **Supported devices**: cars
-
+ 
 **Since**: 26.0.1
-
+ 
 ## ohos.permission.vehicle.PACKET_CAPTURE_INFO
-
+ 
 Allows an application to trigger network packet capture.
-
+ 
 **Permission level**: system_basic
-
+ 
 **Authorization mode**: system_grant
-
+ 
 **Certificate-based authorization**: true
-
+ 
 **Supported devices**: cars
-
+ 
 **Since**: 26.0.1
-
+ 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
-
-Allows the triggering of network self-check and self-healing.
-
+ 
+Allows an application to trigger network self-inspection and self-healing.
+ 
 **Permission level**: system_basic
+ 
 **Authorization mode**: system_grant
-
+ 
 **Certificate-based authorization**: true
-
+ 
 **Supported devices**: cars
-
+ 
 **Since**: 26.0.1
 
 ## ohos.permission.vehicle.AUTO_OTA_PROXY
