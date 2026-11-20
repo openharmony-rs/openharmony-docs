@@ -263,7 +263,7 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 > **说明：**
 >
-> - 禁止组件的[hitTestBehavior](arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent时，继续使用dispatchInputEvent，会有事件序列异常的问题。
+> - 组件的[hitTestBehavior](arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent时，请勿继续使用dispatchInputEvent，会导致事件序列异常。
 
 **起始版本：** 26.1.0
 
