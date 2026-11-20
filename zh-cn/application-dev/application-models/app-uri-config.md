@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "说明module.json5中uris标签的配置方式，涵盖scheme、host、path、linkFeature等字段，帮助开发者实现应用链接匹配与跨应用跳转。"
+keywords: [应用链接, uris标签, linkFeature, scheme]
+doctype: guide
+status: active
+---
 # 应用链接说明
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

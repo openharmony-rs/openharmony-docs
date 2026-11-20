@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "概述通过应用链接拉起指定应用的运作机制，对比Deep Linking与App Linking两种方式的实现方案、安全性与跳转效果，推荐使用App Linking。"
+keywords: [应用链接, Deep Linking, App Linking, openLink, 应用跳转, URI, scheme, 拉起应用]
+doctype: guide
+status: active
+---
 # 拉起指定应用概述
 
 <!--Kit: Ability Kit-->
