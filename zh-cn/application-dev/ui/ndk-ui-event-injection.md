@@ -23,7 +23,7 @@
 
 ## 接口说明
 
-[OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData) 向指定的UI实例注入交互命令，各参数的详细说明请参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)。
+[OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)([ArkUI_ContextHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-context8h.md) uiContext, const [OH_ArkUI_NativeModule_UIJsonWrapper](../reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) \*command, [OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback) callback, void \*userData) 向指定的UI实例注入交互命令，各参数的详细说明请参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)。
 
 命令执行完成后，结果通过回调通知。callback可以为NULL，表示不关注执行结果。
 
@@ -37,7 +37,7 @@
     "cmd": {
         "type": "<命令类型>",
         "mode": "<执行模式>",
-        "action_info": { ... }
+        "action_info": {}
     }
 }
 ```
@@ -149,12 +149,15 @@ void InjectClickCommand(ArkUI_ContextHandle uiContext, double x, double y)
 
 示例中uiContext为目标UI实例的ArkUI_ContextHandle，x、y为注入点相对窗口的物理像素坐标。接口返回ARKUI_ERROR_CODE_NO_ERROR只表示命令已入队，命令执行完成后会触发回调，回调中的result表示实际执行结果。
 
-同步返回值和回调结果码是两类不同的错误信息：同步返回值非ARKUI_ERROR_CODE_NO_ERROR表示命令未被接受，回调结果码非SUCCESS表示命令执行失败，各取值及含义请参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md)。
+同步返回值表示命令是否被接受，回调结果码表示命令的实际执行结果，二者含义不同，各取值如下：
+
+- 同步返回值：[ARKUI_ERROR_CODE_NO_ERROR](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)、[ARKUI_ERROR_CODE_PARAM_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)、[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)
+- 回调结果码：[SUCCESS](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[TARGET_NOT_FOUND](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[COMMAND_NOT_SUPPORTED](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[INTERRUPTED_BY_USER](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)
 
 接口返回前会完成JSON的校验和复制，返回后可以立即销毁命令对象；回调被接受后要保持可调用。接口不支持取消，命令被接受后无法撤销，高频调用时请自行控制频率。
 
 ## 相关资料
 
-- [ui_event_injection.h API参考](../reference/apis-arkui/capi-ui-event-injection-h.md)
-- [ui_json_wrapper.h API参考](../reference/apis-arkui/capi-ui-json-wrapper-h.md)
+- [ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md)
+- [ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)
 - [NDK UI开发概述](ndk-build-ui-overview.md)
