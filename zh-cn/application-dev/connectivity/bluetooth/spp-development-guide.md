@@ -263,7 +263,7 @@ try {
 
 ### 客户端
 ```ts
-import { socket } from '@kit.ConnectivityKit'
+import { socket } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class SppClientManager {
@@ -356,7 +356,7 @@ export default sppClientManager as SppClientManager;
 
 ### 服务端
 ```ts
-import { socket } from '@kit.ConnectivityKit'
+import { socket } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class SppServerManager {
