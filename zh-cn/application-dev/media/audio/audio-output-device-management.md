@@ -255,7 +255,9 @@ let audioSessionManager = audioManager.getSessionManager();
 > **说明：**
 > 
 > - 本接口仅支持`audio.DeviceType.EARPIECE`（听筒）、`audio.DeviceType.SPEAKER`（扬声器）和`audio.DeviceType.DEFAULT`（系统默认设备），用于设置默认本机内置发声设备，不能用于指定蓝牙耳机或有线耳机。
+> 
 > - AudioSessionManager是应用级设置，本接口会作用于当前应用所有适用范围内的音频流，并覆盖AudioRenderer的`setDefaultOutputDevice`接口设置的默认音频输出设备信息。
+> 
 > - 调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频设备选择权交还给系统。未取消的配置会保留，并在后续激活AudioSession且满足上述适用条件时生效。
 
 <!-- @[setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
