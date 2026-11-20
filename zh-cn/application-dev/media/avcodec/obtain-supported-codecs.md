@@ -360,7 +360,7 @@ if (ret != AV_ERR_OK) {
 OH_AVFormat *dynamicFormat = OH_AVFormat_Create();
 // SQR码控支持动态配置最大码率参数和质量稳定码率因子参数。
 constexpr int32_t UPDATED_SQR_FACTOR = 25; // 动态更新后的质量稳定码率因子。
-constexpr int32_t UPDATED_MAX_BITRATE = 10000000; // 动态更新后的最大码率，单位为bps。
+constexpr int32_t UPDATED_MAX_BITRATE = 10000000; // 动态更新后的最大码率（bit/s或bps）。
 sqrFactor = UPDATED_SQR_FACTOR;
 maxBitrate = UPDATED_MAX_BITRATE;
 OH_AVFormat_SetLongValue(dynamicFormat, OH_MD_KEY_MAX_BITRATE, maxBitrate);
@@ -639,7 +639,7 @@ int32_t ret = OH_AVCapability_GetVideoWidthAlignment(capability, &widthAlignment
 if (ret != AV_ERR_OK || widthAlignment <= 0) {
     // 异常处理。
 }
-// 2. (可选) 对齐视频宽。对齐值有效时才计算，避免除零。
+// 2. (可选) 对齐视频宽（对齐值有效时才计算，避免除零）。
 if (widthAlignment > 0 && width % widthAlignment != 0) {
     width = (width + widthAlignment - 1) / widthAlignment * widthAlignment;
 }
@@ -677,7 +677,7 @@ int32_t ret = OH_AVCapability_GetVideoHeightAlignment(capability, &heightAlignme
 if (ret != AV_ERR_OK || heightAlignment <= 0) {
     // 异常处理。
 }
-// 2. (可选) 对齐视频高。对齐值有效时才计算，避免除零。
+// 2. (可选) 对齐视频高（对齐值有效时才计算，避免除零）。
 if (heightAlignment > 0 && height % heightAlignment != 0) {
     height = (height + heightAlignment - 1) / heightAlignment * heightAlignment;
 }
@@ -862,7 +862,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 
 ### 筛选特定MIME类型的DRM解码器（DRM播放场景）
 
-从API version 24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的"DRM解码器"。
+从API version 24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的“DRM解码器”。
 
 开发者可以通过获取解码器列表，并结合MIME类型通过接口OH_AVCapability_IsSecure查询解码器类型，精准筛选出符合要求的DRM解码器。
 
