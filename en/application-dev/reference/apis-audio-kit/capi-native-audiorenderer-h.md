@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5e96177c24aa23aee8ea58c394f1a2c3298d3e1c translatedAt=2026-11-09T10:25:57.711Z pushedAt=2026-11-09T11:28:06.502Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e043fa6283e20117e939754fa590740df7e56af9 translatedAt=2026-11-18T03:07:38.641Z pushedAt=2026-11-19T08:56:05.660Z nl=1 -->
 
 ## Overview
 
@@ -834,7 +834,7 @@ Sets the silent mode in concurrent playback for an audio renderer.<br> If the si
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: The **renderer** parameter is nullptr.|
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_ILLEGAL_STATE**: It is not allowed to set the mute mode of the current audio stream. |
 
 ### OH_AudioRenderer_GetSilentModeAndMixWithOthers()
 
@@ -859,7 +859,7 @@ Checks whether the silent mode in concurrent playback is enabled for an audio re
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: The **renderer** parameter is nullptr.|
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_SYSTEM**: System error. |
 
 ### OH_AudioRenderer_SetDefaultOutputDevice()
 

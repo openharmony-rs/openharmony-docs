@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ce3658887ea37d337235e6ba158ecef52f692540 translatedAt=2026-11-09T10:32:07.381Z pushedAt=2026-11-09T11:36:27.800Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e043fa6283e20117e939754fa590740df7e56af9 translatedAt=2026-11-18T03:10:12.688Z pushedAt=2026-11-19T09:11:36.786Z nl=1 -->
 
 This module provides audio-haptic collaboration capabilities, including precise synchronized playback of audio and vibration resources, two playback modes (normal latency and low latency), audio/haptics mute control, and volume adjustment. When developers need to enhance user perception in scenarios such as incoming call notifications, message reminders, and game sound effects, they can use the APIs of this module to perform audio-haptic collaborative playback, effectively improving users' perception of notifications and reminders.
 
@@ -228,8 +228,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let id = 0; // Obtain the ID through the registerSource or registerSourceFromFd method.
 
 audioHapticManagerInstance.unregisterSource(id).then(() => {
@@ -266,8 +264,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let id = 0; // Obtain the ID through the registerSource or registerSourceFromFd method.
 
 let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;

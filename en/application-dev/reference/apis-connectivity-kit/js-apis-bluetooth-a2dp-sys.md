@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-10-09T12:37:30.284Z pushedAt=2026-10-10T06:58:15.068Z -->
+<!-- md-trans-meta sourceCommit=e8324ef5fd3d4446643eb11ce3638e554b4e701b translatedAt=2026-11-18T03:51:49.093Z pushedAt=2026-11-20T09:04:19.922Z nl=1 -->
 
 The **a2dp** module provides APIs for using the Bluetooth Advanced Audio Distribution Profile (A2DP), which defines how to stream high quality audio from one device to another over a Bluetooth connection.
 
@@ -26,9 +26,9 @@ import { a2dp } from '@kit.ConnectivityKit';
 ## A2dpSourceProfile
 
 Represents the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role in A2DP.
-- The **A2dpSourceProfile** class is inherited from [BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile). Therefore, you can use the APIs in its parent class.
-- Before using the APIs of this class, you need to construct an **A2dpSourceProfile** instance by calling [createA2dpSrcProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsrcprofile).
-- The counterpart of the A2DP Source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
+- This class is inherited from [BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile). Therefore, you can use the APIs in its parent class.
+- Before using the APIs of this class, you need to construct an instance of this class by calling [createA2dpSrcProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsrcprofile).
+- The counterpart of the A2DP source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -37,7 +37,7 @@ Represents the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-so
 
 connect(deviceId: string): void
 
-Connects to an A2DP device.
+Sets up an Advanced Audio Distribution Profile (A2DP) connection.
 
 **System API**: This is a system API.
 
@@ -47,15 +47,15 @@ Connects to an A2DP device.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -83,7 +83,7 @@ try {
 
 disconnect(deviceId: string): void
 
-Disconnects from an A2DP device.
+Disconnects an A2DP connection.
 
 **System API**: This is a system API.
 
@@ -93,15 +93,15 @@ Disconnects from an A2DP device.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -139,17 +139,17 @@ Checks whether a device supports the absolute volume capability. This API uses a
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the result indicating the support for absolute volume. If the operation fails, **err** is an error object.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the result indicating the support for absolute volume. If the operation fails, **err** is an error object. |
 
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -187,21 +187,21 @@ Checks whether a device supports the absolute volume capability. This API uses a
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the device supports absolute volume, and the value **false** indicates the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the device supports absolute volume, and the value **false** indicates the opposite. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -239,17 +239,17 @@ Checks whether the absolute volume capability is enabled for a device. Before us
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the result indicating whether the absolute volume capability is enabled. If the operation fails, **err** is an error object.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the result indicating whether the absolute volume capability is enabled. If the operation fails, **err** is an error object. |
 
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -287,21 +287,21 @@ Checks whether the absolute volume capability is enabled for a device. Before us
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the absolute volume capability is enabled, and the value **false** indicates the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the absolute volume capability is enabled, and the value **false** indicates the opposite. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -339,17 +339,17 @@ Enables the absolute volume capability for a device. Before using this API, use 
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -389,21 +389,21 @@ Enables the absolute volume capability for a device. Before using this API, use 
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -442,17 +442,17 @@ Disables the absolute volume capability for a device. Before using this API, use
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -492,21 +492,21 @@ Disables the absolute volume capability for a device. Before using this API, use
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -544,21 +544,21 @@ Obtains the current codec information.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [CodecInfo](js-apis-bluetooth-a2dp.md#codecinfo11)| Codec information obtained.|
+| [CodecInfo](js-apis-bluetooth-a2dp.md#codecinfo11)| Codec information obtained. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -594,21 +594,21 @@ Obtains the full list of codecs supported by the device.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [CodecInfoList](js-apis-bluetooth-a2dp.md#codecinfolist19)[]| Full list of codecs supported by the device.|
+| [CodecInfoList](js-apis-bluetooth-a2dp.md#codecinfolist19)[]| Full list of codecs supported by the device. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -644,16 +644,16 @@ Sets the current codec information.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| codecInfo | [CodecInfo](js-apis-bluetooth-a2dp.md#codecinfo11) | Yes   | Codec information to set.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| codecInfo | [CodecInfo](js-apis-bluetooth-a2dp.md#codecinfo11) | Yes    | Codec information to set. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -661,7 +661,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |   
+|2900099 | Operation failed.                        |
 
 **Example**
 
@@ -696,22 +696,22 @@ Disables auto play of music for the specified duration after a device is connect
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| duration | number | Yes   | Interception duration, in milliseconds. The value range is [3000, 20000].|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| duration | number | Yes    | Interception duration, in milliseconds. The value range is [3000, 20000]. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -751,21 +751,21 @@ Enables auto play of music after a device is connected. This API uses a promise 
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -804,21 +804,21 @@ Obtains the auto-play disabled duration or auto play switch. This API uses a pro
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| Promise&lt;number&gt; | Promise used to return the result. **number** indicates the interception duration, in milliseconds. If -1 is returned, the device is allowed to automatically play music after being connected.|
+| Promise&lt;number&gt; | Promise used to return the result. **number** indicates the interception duration, in milliseconds. If -1 is returned, the device is allowed to automatically play music after being connected. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -846,22 +846,22 @@ try {
 ## A2dpSinkProfile
 
 Represents the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role in A2DP.
-- The **A2dpSinkProfile** class is inherited from [BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile). Therefore, you can use the APIs in its parent class.
-- Before using the APIs of this class, you need to construct an **A2dpSinkProfile** instance by calling [createA2dpSnkProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsnkprofile).
-- The counterpart of the A2DP Sink role is the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role.
+- This class is inherited from [BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile). Therefore, you can use the APIs in its parent class.
+- Before using the APIs of this class, you need to construct an instance of this class by calling [createA2dpSnkProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsnkprofile).
+- The counterpart of the A2DP sink role is the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role.
 
 **Since:** 26.0.1
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 
 ### connect
 
 connect(deviceId: string): void
 
-Connects to the A2DP Sink service of a remote device.
+Initiates an A2DP Sink connection to a remote device.
 
 **Since:** 26.0.1
 
@@ -871,19 +871,19 @@ Connects to the A2DP Sink service of a remote device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
@@ -911,7 +911,7 @@ try {
 
 disconnect(deviceId: string): void
 
-Disconnects the A2DP Sink connection of a remote device.
+Disconnects the A2DP Sink from a remote device.
 
 **Since:** 26.0.1
 
@@ -921,19 +921,19 @@ Disconnects the A2DP Sink connection of a remote device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
@@ -960,7 +960,7 @@ try {
 
 getPlayingState(deviceId: string): PlayingState
 
-Obtains the playback state of a device.
+Obtains the playing state of a device.
 
 **Since:** 26.0.1
 
@@ -970,25 +970,25 @@ Obtains the playback state of a device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [PlayingState](js-apis-bluetooth-a2dp.md#playingstate) | Playback state. |
+| [PlayingState](js-apis-bluetooth-a2dp.md#playingstate) | Playback state returned. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |

@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:28:56.592Z pushedAt=2026-11-19T11:49:29.567Z nl=1 -->
 
 **ControlCenter** inherits from [ControlCenterQuery](arkts-apis-camera-ControlCenterQuery.md).
 
@@ -26,6 +27,8 @@ import { camera } from '@kit.CameraKit';
 enableControlCenter(enabled: boolean): void
 
 Enables the camera controller.
+
+Before enabling, call [isControlCenterSupported](arkts-apis-camera-ControlCenterQuery.md#iscontrolcentersupported20) to check whether the current session supports the camera controller.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

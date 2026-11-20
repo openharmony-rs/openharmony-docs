@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=f3aeb1be6a36192b116b0e589c7d2d87e56daa1a translatedAt=2026-11-18T03:22:30.049Z pushedAt=2026-11-19T11:40:43.641Z nl=1 -->
 
 > **NOTE**
 >
@@ -1216,3 +1217,21 @@ An error occurs when the DRM processes the key response.
 **Solution**
 
 Update the DRM component and initiate the session again.
+
+## 6700101 Session Service Not Running
+ 
+**Error Message**
+ 
+Session service is not running.
+ 
+**Description**
+ 
+The session service is not running, or a communication failure occurs in the session service.
+ 
+**Possible Causes**
+ 
+The service is terminated during a session restart, or the session service communication is abnormal.
+ 
+**Solution**
+ 
+Retry at intervals. If the failure persists for more than 3s, stop the session service operation.

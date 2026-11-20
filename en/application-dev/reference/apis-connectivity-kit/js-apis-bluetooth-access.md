@@ -6,6 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=8a0e36109bea79cc35522d2aee4c1b8ad683b256 translatedAt=2026-11-18T03:52:40.675Z pushedAt=2026-11-20T09:06:24.624Z nl=1 -->
 
 The **access** module provides APIs for enabling and disabling Bluetooth and obtaining the Bluetooth status.
 

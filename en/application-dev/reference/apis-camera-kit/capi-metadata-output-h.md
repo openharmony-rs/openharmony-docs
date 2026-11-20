@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e81bd57e6474ec1e0118bfd49561b247c2d5a27c translatedAt=2026-10-12T12:01:16.495Z pushedAt=2026-10-13T04:58:00.901Z -->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:40:14.736Z pushedAt=2026-11-20T08:11:03.219Z nl=1 -->
 
 ## Overview
 
@@ -41,8 +41,8 @@ Declares the metadata output concepts.
 | [Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_start) | - | Starts metadata output.|
 | [Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_stop) | - | Stops metadata output.|
 | [Camera_ErrorCode OH_MetadataOutput_Release(Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_release) | - | Releases a MetadataOutput instance.|
-| [Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes(Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)](#oh_metadataoutput_addmetadataobjecttypes) | - | Adds the metadata object types.|
-| [Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes(Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)](#oh_metadataoutput_removemetadataobjecttypes) | - | Removes the metadata object types.|
+| [Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes(Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)](#oh_metadataoutput_addmetadataobjecttypes) | - | Adds metadata object types. You are advised to use [OH_CameraManager_GetSupportedCameraOutputCapability](./capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability) to obtain the array of camera metadata object types. |
+| [Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes(Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)](#oh_metadataoutput_removemetadataobjecttypes) | - | Removes metadata object types. You are advised to use [OH_CameraManager_GetSupportedCameraOutputCapability](./capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability) to obtain the array of camera metadata object types. |
 | [typedef void (\*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t size)](#oh_metadataoutput_onmetadataobjectextavailable) | OH_MetadataOutput_OnMetadataObjectExtAvailable | Defines a callback to listen for metadata object reporting events. The callback can be registered by calling [OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback](capi-metadata-output-h.md#oh_metadataoutput_registermetadataobjectextavailablecallback).|
 | [typedef void (\*OH_MetadataOutput_OnErrorExt)(void* context, Camera_ErrorCode errorCode)](#oh_metadataoutput_onerrorext) | OH_MetadataOutput_OnErrorExt | Defines a callback to listen for error events during metadata output.|
 | [Camera_ErrorCode OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnMetadataObjectExtAvailable callback)](#oh_metadataoutput_registermetadataobjectextavailablecallback) | - | Registers a callback to listen for metadata object report events. This callback can be unregistered using [OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback](capi-metadata-output-h.md#oh_metadataoutput_unregistermetadataobjectextavailablecallback). |
@@ -229,7 +229,7 @@ Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes(Camera_MetadataOutput*
 
 **Description**
 
-Adds the metadata object types.
+Adds metadata object types. You are advised to use [OH_CameraManager_GetSupportedCameraOutputCapability](./capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability) to obtain the array of camera metadata object types.
 
 **Since**: 23
 
@@ -255,7 +255,7 @@ Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes(Camera_MetadataOutp
 
 **Description**
 
-Removes the metadata object types.
+Removes metadata object types. You are advised to use [OH_CameraManager_GetSupportedCameraOutputCapability](./capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability) to obtain the array of camera metadata object types.
 
 **Since**: 23
 

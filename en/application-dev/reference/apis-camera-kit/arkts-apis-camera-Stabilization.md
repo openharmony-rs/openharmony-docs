@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1131f25f94c09b310a6e67ef6adb8c71963ba154 translatedAt=2026-10-12T11:57:57.694Z pushedAt=2026-10-13T04:58:00.889Z -->
+<!-- md-trans-meta sourceCommit=fefd645189e794d80ae9ee3e4a15dff8502cd619 translatedAt=2026-11-18T03:34:07.390Z pushedAt=2026-11-20T07:28:08.459Z nl=1 -->
 
 **Stabilization** inherits from [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md).
 
@@ -44,7 +44,7 @@ Obtains the video stabilization mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -72,6 +72,10 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
 Sets a video stabilization mode. Before the setting, call [isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11) to check whether the target video stabilization mode is supported. It is recommended that you set the video stabilization mode between [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) and [Start](arkts-apis-camera-Session.md#start11-1).
 
+> **NOTE**
+>
+> Since API version 12, after the HIGH video stabilization mode is set through this API, to ensure video stabilization performance in multiple scenarios, when [getActiveVideoStabilizationMode](#getactivevideostabilizationmode11) is called to query the video stabilization mode currently in use, the result returned is the AUTO mode, that is, the stabilization algorithm is automatically selected.
+
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -86,7 +90,7 @@ Sets a video stabilization mode. Before the setting, call [isVideoStabilizationM
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -97,7 +101,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setVideoStabilizationMode(videoSession: camera.VideoSession): void {
   try {
-    videoSession.setVideoStabilizationMode(camera.VideoStabilizationMode.OFF);
+    if (videoSession.isVideoStabilizationModeSupported(camera.VideoStabilizationMode.OFF)) {
+      videoSession.setVideoStabilizationMode(camera.VideoStabilizationMode.OFF);
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;

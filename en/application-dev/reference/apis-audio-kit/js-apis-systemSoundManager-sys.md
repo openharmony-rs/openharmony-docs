@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6b5f52603d23af8219cc31e0de24ebcd4586968e translatedAt=2026-11-09T10:32:01.273Z pushedAt=2026-11-09T11:39:17.574Z nl=1 -->
+<!-- md-trans-meta sourceCommit=83ab2996e1322b6899e1616db4ad7968d46cdd85 translatedAt=2026-11-18T03:12:39.554Z pushedAt=2026-11-19T09:12:20.475Z nl=1 -->
 
 The systemSoundManager module provides basic capabilities for managing system sounds, including setting and obtaining ringtones and obtaining a player to play the ringtones.
 
@@ -110,8 +110,8 @@ Enumerates the tone customization types.
 
 | Name                         | Value   | Description         |
 | ----------------------------|-----|------------|
-| PRE_INSTALLED<sup>12+</sup> | 0   | Preinstalled tone. |
-| CUSTOMIZED<sup>12+</sup>    | 1   | Custom tone. |
+| PRE_INSTALLED<sup> | 0   | Pre-installed ringtone type. |
+| CUSTOMIZED<sup>    | 1   | Custom ringtone type. |
 
 ## ToneAttrs<sup>12+</sup>
 
