@@ -480,7 +480,7 @@ status: active
             // 异常处理。
             return;
         }
-        // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中
+        // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中。
         // 随帧下发的MARK_LTR/USE_LTR记录，核对参考结构是否符合预期。
         OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
         if (format != nullptr) {
