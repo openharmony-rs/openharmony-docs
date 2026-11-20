@@ -390,6 +390,7 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 > **说明：**
 >
 > - 本接口属于AudioRoutingManager，仅对系统应用开放，且仅可在Stage模型下使用。调用前应先[创建AudioRoutingManager实例](#创建audioroutingmanager实例)。
+> 
 > - 活跃输出设备是系统在当前音频设备场景下选择的输出设备。本接口返回活跃设备描述符列表；`getDevices(OUTPUT_DEVICES_FLAG)`返回输出设备列表，两者用途不同，不应将所有已连接设备都视为活跃设备。
 
 ```typescript
