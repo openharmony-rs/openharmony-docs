@@ -1,4 +1,4 @@
-# 注入手势命令
+# 注入交互命令
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhou-chaobo-->
@@ -8,7 +8,7 @@
 
 ## 概述
 
-从API版本26.1.0开始，可以通过OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction接口向指定的UI实例注入手势命令，模拟点击、滚动、内容切换、返回和按键等操作。手势命令通过JSON描述，由系统根据执行模式决定如何执行，执行结果通过回调通知。
+从API版本26.1.0开始，可以通过[OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)接口向指定的UI实例注入交互命令，模拟点击、滚动、内容切换、返回和按键等操作。交互命令通过JSON描述，由系统根据执行模式决定如何执行，执行结果通过回调通知。
 
 ## 约束与限制
 
@@ -27,7 +27,7 @@
 
 命令执行完成后，结果通过回调通知。callback可以为NULL，表示不关注执行结果。
 
-## 手势命令说明
+## 交互命令说明
 
 命令通过JSON字符串描述，顶层结构如下。
 
@@ -49,7 +49,7 @@ type取值及对应说明如下。
 | 命令 | mode取值 | action_info关键字段 | 说明 |
 | --- | --- | --- | --- |
 | click | auto（默认）、simulating、target | coordinates.x1、coordinates.y1（必填） | 点击指定坐标。 |
-| scroll | auto（默认）、simulating、target | coordinates.x1、coordinates.y1（必填），x2、y2（可选，滚动终点）；direction（可选，取值forward、backward、left、right、up、down，默认forward）；distance（可选，非负物理像素值，默认为窗口高度的1/3） | 从起点向终点滚动。 |
+| scroll | auto（默认）、simulating、target | coordinates.x1、coordinates.y1（必填），coordinates.x2、coordinates.y2（可选，滚动终点）；direction（可选，取值forward、backward、left、right、up、down，默认forward）；distance（可选，非负物理像素值，默认为窗口高度的1/3） | 从起点向终点滚动。 |
 | content_switch | target（必填） | coordinates.pos.x、coordinates.pos.y（必填）；direction（可选，forward或backward，默认forward）；count（可选，正整数，默认1） | 在指定位置切换内容，例如翻页。 |
 | backpress | 不涉及 | 不涉及 | 执行返回操作。 |
 | key | 不涉及 | code（必填，虚拟键码） | 注入按键事件。 |
@@ -99,7 +99,7 @@ mode取值及含义如下。
 { "schemaVersion": 1, "cmd": { "type": "key", "action_info": { "code": 2049 } } }
 ```
 
-如果JSON不合法、缺少必填字段或数值超出有效范围，接口同步返回ARKUI_ERROR_CODE_PARAM_INVALID，命令不会执行，也不会触发回调。
+如果JSON不合法、缺少必填字段或数值超出有效范围，接口同步返回[ARKUI_ERROR_CODE_PARAM_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，命令不会执行，也不会触发回调。
 
 ## 开发步骤
 
@@ -152,14 +152,14 @@ void InjectClickCommand(ArkUI_ContextHandle uiContext, double x, double y)
 }
 ```
 
-示例中uiContext为目标UI实例的ArkUI_ContextHandle，x、y为注入点相对窗口的物理像素坐标。接口返回ARKUI_ERROR_CODE_NO_ERROR只表示命令已入队，命令执行完成后会触发回调，回调中的result表示实际执行结果。
+示例中uiContext为目标UI实例的ArkUI_ContextHandle，x、y为注入点相对窗口的物理像素坐标。接口返回[ARKUI_ERROR_CODE_NO_ERROR](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)只表示命令已入队，命令执行完成后会触发回调，回调中的result表示实际执行结果。
 
 同步返回值表示命令是否被接受，回调结果码表示命令的实际执行结果，二者含义不同，各取值如下：
 
 - 同步返回值：[ARKUI_ERROR_CODE_NO_ERROR](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)、[ARKUI_ERROR_CODE_PARAM_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)、[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)
 - 回调结果码：[SUCCESS](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[TARGET_NOT_FOUND](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[COMMAND_NOT_SUPPORTED](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)、[INTERRUPTED_BY_USER](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)
 
-接口返回前会完成JSON的校验和复制，返回后可以立即销毁命令对象；回调被接受后要保持可调用。接口不支持取消，命令被接受后无法撤销，高频调用时请自行控制频率。
+接口返回前会完成JSON的校验和复制，返回后可以立即销毁命令对象；命令被接受后，回调需保持可调用。接口不支持取消，命令被接受后无法撤销，高频调用时请自行控制频率。
 
 ## 相关资料
 
