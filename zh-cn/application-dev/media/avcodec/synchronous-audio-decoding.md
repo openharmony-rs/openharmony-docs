@@ -65,8 +65,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 1. 添加所需的头文件。
 
    <!-- @[AudioDecoder::IncludeHeaders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/include/audio_decoder.h) -->
-
-   ```cpp
+   
+   ``` C
    #include "multimedia/player_framework/native_avcodec_audiocodec.h"
    #include "multimedia/player_framework/native_avcapability.h"
    #include "multimedia/player_framework/native_avbuffer_info.h"
