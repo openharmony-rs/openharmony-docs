@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
-<!--Designer: @junathuawei1; @zph000-->
+<!--Designer: @xuexuexuehc-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -26,21 +26,24 @@
 
 | 名称                                           | typedef关键字     | 描述                                   |
 | ---------------------------------------------- | ----------------- | -------------------------------------- |
-| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)     | OH_UdsPlainText   | 描述纯文本类型数据的统一数据结构。     |
-| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)     | OH_UdsHyperlink   | 描述超链接类型的统一数据结构。         |
-| [OH_UdsHtml](capi-udmf-oh-udshtml.md)               | OH_UdsHtml        | 描述超文本标记语言类型的统一数据结构。 |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)         | OH_UdsAppItem     | 描述桌面图标类型的统一数据结构。       |
-| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)         | OH_UdsFileUri     | 描述文件Uri类型的统一数据结构。        |
-| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)       | OH_UdsPixelMap    | 描述像素图片类型的统一数据结构。       |
-| [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) | OH_UdsArrayBuffer | 描述ArrayBuffer类型的统一数据结构。    |
-| [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) | OH_UdsContentForm | 描述内容卡片类型的统一数据结构。       |
-| [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | 描述字典类型的统一数据结构。 |
+| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)    | OH_UdsPlainText   | 描述纯文本类型数据的统一数据结构。     |
+| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)    | OH_UdsHyperlink   | 描述超链接类型的统一数据结构。         |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)              | OH_UdsHtml        | 描述超文本标记语言类型的统一数据结构。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)        | OH_UdsAppItem     | 描述桌面图标类型的统一数据结构。       |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)        | OH_UdsFileUri     | 描述文件Uri类型的统一数据结构。        |
+| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)      | OH_UdsPixelMap    | 描述像素图片类型的统一数据结构。       |
+| [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)| OH_UdsArrayBuffer | 描述ArrayBuffer类型的统一数据结构。    |
+| [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)| OH_UdsContentForm | 描述内容卡片类型的统一数据结构。       |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)| OH_UdsDetails | 描述字典类型的统一数据结构。 |
+| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md)| OH_UDMF_VirtualFileCallbacks | 描述用于提供虚拟文件元数据和内容的回调。 |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)| OH_UDMF_VirtualItem | 描述虚拟文件或虚拟目录节点。 |
+| [OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)| OH_UDMF_VirtualFileInfo | 描述虚拟文件入口及其数据回调。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Udmf_AuthPermission](#udmf_authpermission) | Udmf_AuthPermission | 拖拽场景下的URI授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。|
+| [Udmf_AuthPermission](#udmf_authpermission)| Udmf_AuthPermission | 拖拽场景下的URI授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。|
 
 ### 函数
 
@@ -135,6 +138,19 @@
 | [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys) | 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。 |
 | [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy) | 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
 | [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy) | 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)](#oh_udmf_createvirtualfileitem)| 根据文件名、文件标识和修改时间创建虚拟文件节点。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)](#oh_udmf_createvirtualdirectoryitem)| 创建虚拟目录节点。 |
+| [void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)](#oh_udmf_destroyvirtualitem)| 销毁虚拟节点。 |
+| [int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)](#oh_udmf_setvirtualfilesize) | 设置虚拟文件节点的文件大小，单位为字节。 |
+| [int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)](#oh_udmf_addvirtualitemchild)| 向虚拟目录添加子节点。 |
+| [typedef OH_UDMF_VirtualItem* (\*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)](#oh_udmf_virtualfileonstat) | 根据文件标识返回对应虚拟文件的信息，如文件名、大小和修改时间。 |
+| [typedef int (\*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)](#oh_udmf_virtualfileonread)  | 根据文件标识、读取起始位置和请求长度，将文件内容写入提供的缓冲区，并返回实际读取的字节数和处理结果。|
+| [typedef int (\*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)](#oh_udmf_virtualfileoncancel) | 根据文件标识列表取消对应文件的待处理任务。 |
+| [typedef void (\*OH_UDMF_VirtualFileFinalize)(void* context)](#oh_udmf_virtualfilefinalize) | 释放UDMF持有的用户上下文。 |
+| [OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)](#oh_udmf_createvirtualfileinfo)| 创建虚拟文件信息。 |
+| [void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)](#oh_udmf_destroyvirtualfileinfo)| 销毁虚拟文件信息。 |
+| [int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)](#oh_udmf_setfileurivirtualentry)| 向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)附加虚拟文件信息。 |
+| [int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)](#oh_udmf_clearfileurivirtualentry)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)移除虚拟文件信息。 |
 
 
 ## 枚举类型说明
@@ -1172,7 +1188,7 @@ int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 
 **描述**
 
-设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的Uri信息。
+设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的Uri信息。若使用[OH_UDMF_SetFileUriVirtualEntry](capi-uds-h.md#oh_udmf_setfileurivirtualentry)函数设置了虚拟文件信息，`fileUri`可填写一个非空的占位文件 URI，不要求对应的真实文件已经存在。
 
 **起始版本：** 13
 
@@ -1215,6 +1231,375 @@ int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | int  | 返回执行的状态代码。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+### OH_UDMF_VirtualFileOnStat()
+
+```c
+typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)
+```
+
+**描述：**
+
+根据文件标识返回对应虚拟文件的信息，如文件名、大小和修改时间。
+
+<!--Device-typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)--><!--Device-typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 通过[OH_UDMF_CreateVirtualFileInfo](capi-uds-h.md#oh_udmf_createvirtualfileinfo)传入的用户上下文。 |
+| const char* id | [入参] 请求的虚拟文件标识。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualItem*](capi-udmf-oh-udmf-virtualitem.md)| 成功时返回虚拟文件节点，失败时返回nullptr。 |
+
+### OH_UDMF_VirtualFileOnRead()
+
+```c
+typedef int (*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)
+```
+
+**描述：**
+
+根据文件标识、读取起始位置和请求长度，将文件内容写入提供的缓冲区，并返回实际读取的字节数和处理结果。
+
+<!--Device-typedef int (*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)--><!--Device-typedef int (*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 通过[OH_UDMF_CreateVirtualFileInfo](capi-uds-h.md#oh_udmf_createvirtualfileinfo)传入的用户上下文。 |
+| const char* id | [入参] 请求的虚拟文件标识。 |
+| int64_t offset | [入参] 读取偏移量，单位为字节。 |
+| uint32_t length | [入参] 本次最多需要提供的字节数，正常FUSE回调中取值为1～5242880（5MiB），且不超过文件剩余大小。 |
+| uint8_t* data | [出参] UDMF提供的目标缓冲区，仅在回调执行期间有效。 |
+| uint32_t* bytesRead | [出参] 用于返回实际写入`data`的字节数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示回调执行成功，包括到达文件末尾且无数据可返回的情况，实际字节数通过`*bytesRead`返回。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示传入了无效参数。</li> <li>[UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode)表示发生内部错误，无法提供数据。</li> </ul> |
+
+### OH_UDMF_VirtualFileOnCancel()
+
+```c
+typedef int (*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)
+```
+
+**描述：**
+
+根据文件标识列表取消对应文件的待处理任务。
+
+<!--Device-typedef int (*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)--><!--Device-typedef int (*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 通过[OH_UDMF_CreateVirtualFileInfo](capi-uds-h.md#oh_udmf_createvirtualfileinfo)传入的用户上下文。 |
+| const char* const *idList | [入参] 需要取消待处理任务的虚拟文件标识列表，可能包含重复id。该数组及其中的字符串仅在回调执行期间有效。 |
+| uint32_t count | [入参] `idList`中的文件标识数量。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示取消成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示传入了无效参数。</li> <li>[UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode)表示发生内部错误，取消失败。</li> </ul> |
+
+### OH_UDMF_VirtualFileFinalize()
+
+```c
+typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)
+```
+
+**描述：**
+
+释放UDMF持有的用户上下文。
+
+<!--Device-typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)--><!--Device-typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 待释放的用户上下文。 |
+
+### OH_UDMF_CreateVirtualFileItem()
+
+```c
+OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)
+```
+
+**描述：**
+
+根据文件名、文件标识和修改时间创建虚拟文件节点。
+
+<!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)--><!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_UDMF_DestroyVirtualItem](#oh_udmf_destroyvirtualitem)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | [入参] 文件名，最多255字节，不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
+| const char* id | [入参] 传给虚拟文件回调的文件标识，最多1024字节，不同文件应使用不同id。 |
+| int64_t modifyTime | [入参] 文件修改时间，以Unix时间戳表示，单位为ms。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualItem*](capi-udmf-oh-udmf-virtualitem.md)| 成功时返回创建的虚拟节点；参数无效或内存分配失败时返回nullptr。 |
+
+### OH_UDMF_CreateVirtualDirectoryItem()
+
+```c
+OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)
+```
+
+**描述：**
+
+创建虚拟目录节点。
+
+<!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)--><!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_UDMF_DestroyVirtualItem](#oh_udmf_destroyvirtualitem)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | [入参] 目录名，最多255字节。不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
+| int64_t modifyTime | [入参] 目录修改时间，以Unix时间戳表示，单位为ms。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualItem*](capi-udmf-oh-udmf-virtualitem.md)| 成功时返回创建的虚拟节点；参数无效或内存分配失败时返回nullptr。 |
+
+### OH_UDMF_DestroyVirtualItem()
+
+```c
+void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)
+```
+
+**描述：**
+
+销毁虚拟节点。
+
+<!--Device-void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)--><!--Device-void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* item | [入参] 待销毁的虚拟节点。 |
+
+### OH_UDMF_SetVirtualFileSize()
+
+```c
+int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)
+```
+
+**描述：**
+
+设置虚拟文件节点的文件大小，单位为字节。
+
+<!--Device-int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)--><!--Device-int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* item | [入参] 待设置文件大小的有效虚拟文件节点。 |
+| int64_t size | [入参] 文件大小，单位为字节。取值范围为[0, INT64_MAX]，0表示空文件。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示设置成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示`item`无效、不是文件节点或`size`为负数。</li> </ul> |
+
+### OH_UDMF_AddVirtualItemChild()
+
+```c
+int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)
+```
+
+**描述：**
+
+向虚拟目录添加子节点。
+
+<!--Device-int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)--><!--Device-int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* directory | [入参] 虚拟目录节点。 |
+| [const OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* child | [入参] 待添加的子节点。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示添加成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示节点无效、`directory`不是目录，或结果违反虚拟文件树约束。</li> </ul> |
+
+### OH_UDMF_CreateVirtualFileInfo()
+
+```c
+OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)
+```
+
+**描述：**
+
+创建虚拟文件信息。
+
+<!--Device-OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)--><!--Device-OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_UDMF_DestroyVirtualFileInfo](#oh_udmf_destroyvirtualfileinfo)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* itemInfo | [入参] 虚拟根节点。 |
+| [const OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md)* callbacks | [入参] 虚拟文件回调。 |
+| void* context | [入参] 传递给各回调的用户上下文，可为nullptr。非空时，其释放责任仅在接口成功返回非空对象后交给UDMF；返回nullptr时由调用方自行释放。 |
+| [OH_UDMF_VirtualFileFinalize](capi-uds-h.md#oh_udmf_virtualfilefinalize)finalize | [入参] 用于释放`context`及其关联资源的回调。`context`非nullptr时必须提供；`context`为nullptr时允许传入，但UDMF不会调用。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualFileInfo*](capi-udmf-oh-udmf-virtualfileinfo.md)| 成功时返回创建的虚拟文件信息；节点或回调无效、内存分配失败时返回nullptr。 |
+
+### OH_UDMF_DestroyVirtualFileInfo()
+
+```c
+void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)
+```
+
+**描述：**
+
+销毁虚拟文件信息。
+
+<!--Device-void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)--><!--Device-void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)* info | [入参] 待销毁的虚拟文件信息。 |
+
+### OH_UDMF_SetFileUriVirtualEntry()
+
+```c
+int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)
+```
+
+**描述：**
+
+为文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)附加虚拟文件信息。
+
+<!--Device-int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)--><!--Device-int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* fileUri | [入参] 待更新的文件Uri实例。 |
+| [const OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)* info | [入参] 待附加的虚拟文件信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示附加成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示`fileUri`或`info`无效。</li> </ul> |
+
+### OH_UDMF_ClearFileUriVirtualEntry()
+
+```c
+int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)
+```
+
+**描述：**
+
+从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)移除虚拟文件信息。
+
+<!--Device-int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)--><!--Device-int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* fileUri | [入参] 待更新的文件Uri实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示移除成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示`fileUri`无效。</li> </ul> |
 
 ### OH_UdsPixelMap_Create()
 
