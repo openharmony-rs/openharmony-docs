@@ -25,22 +25,18 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-**ArkTS-Dyn起始版本**：20
-
-**ArkTS-Sta起始版本**：23
-
 | 名称                | 值  | 说明                                                   |
 | ------------------- | --- | ------------------------------------------------------ |
-| NO_STOP             | 0   | 下载中未停止。                                         |
-| NETWORK_UNAVAILABLE | 1   | 下载过程中，移动数据网络和WIFI均不可用。               |
-| LOCAL_STORAGE_FULL  | 2   | 下载过程中，当前设备空间不足。                         |
-| TEMPERATURE_LIMIT   | 3   | 下载过程中，设备温度过高。                             |
-| USER_STOPPED        | 4   | 下载过程中，客户端主动停止下载。                       |
-| APP_UNLOAD          | 5   | 下载过程中，云文件所属应用被卸载。                     |
-| OTHER_REASON        | 6   | 下载过程中，因其他原因停止下载，如：云服务器未响应等。 |
-| CONTENT_NOT_FOUND   | 7   | 下载过程中，因内容缺失停止下载。<br>**起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
-| FREQUENT_USER_REQUESTS | 8   | 下载过程中，因用户请求过于频繁停止下载。<br>**起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
-| LOW_BATTERY         | 9   | 下载过程中，因低电量停止下载。<br>**起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
+| NO_STOP             | 0   | 下载中未停止。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| NETWORK_UNAVAILABLE | 1   | 下载过程中，移动数据网络和WIFI均不可用。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23  |
+| LOCAL_STORAGE_FULL  | 2   | 下载过程中，当前设备空间不足。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23  |
+| TEMPERATURE_LIMIT   | 3   | 下载过程中，设备温度过高。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23  |
+| USER_STOPPED        | 4   | 下载过程中，客户端主动停止下载。 <br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23   |
+| APP_UNLOAD          | 5   | 下载过程中，云文件所属应用被卸载。 <br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23  |
+| OTHER_REASON        | 6   | 下载过程中，因其他原因停止下载，如：云服务器未响应等。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23  |
+| CONTENT_NOT_FOUND   | 7   | 下载过程中，因内容缺失停止下载。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
+| FREQUENT_USER_REQUESTS | 8   | 下载过程中，因用户请求过于频繁停止下载。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
+| LOW_BATTERY         | 9   | 下载过程中，因低电量停止下载。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0 <br>**模型约束**：此接口仅可在Stage模型下使用。|
 
 ## DownloadState<sup>20+</sup>
 
