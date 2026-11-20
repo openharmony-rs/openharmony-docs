@@ -8726,7 +8726,7 @@ Allows an application to append a content trust signature.
 
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
 
-Allows an application to configure cellular network–related information.
+Allows an application to configure cellular network-related information.
 
 **Permission level**: system_basic
 
