@@ -97,8 +97,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    // 2. 填充编码参数键值对（以1080p@30fps SDR输入源为例）。
    constexpr int32_t VIDEO_WIDTH = 1920; // 视频像素宽。
    constexpr int32_t VIDEO_HEIGHT = 1080; // 视频像素高。
-   constexpr double VIDEO_FRAME_RATE = 30.0; // 视频帧率。
-   constexpr int64_t VIDEO_BITRATE = 1500000; // 视频码率，单位为bps。
+   constexpr double VIDEO_FRAME_RATE = 30.0; // 视频帧率（fps）。
+   constexpr int64_t VIDEO_BITRATE = 1500000; // 视频码率（bit/s或bps）。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, VIDEO_WIDTH); // 必须配置，视频像素宽。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, VIDEO_HEIGHT); // 必须配置，视频像素高。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); // 必须配置，视频源数据排布格式。
@@ -113,7 +113,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, -1); // 必须配置，接入帧间隔。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE,
                            OH_BitrateMode::BITRATE_MODE_CBR); // 必须配置，码控模式配置为CBR。
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, VIDEO_BITRATE); // 必须配置，设置码率，单位为bps。
+   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, VIDEO_BITRATE); // 必须配置，设置码率（bit/s或bps）。
    // 3. 配置视频编码器的编码参数。
    int32_t ret = OH_VideoEncoder_Configure(videoEnc, format);
    if (ret != AV_ERR_OK) {
