@@ -3088,7 +3088,6 @@ struct ListSnapExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('List').fontColor(0x000000).fontSize(16).width('90%')
       List({ space: 20, scroller: this.scroller }) {
         LazyForEach(this.arr, (item: number) => {
           ListItem() {
@@ -3108,6 +3107,8 @@ struct ListSnapExample {
   }
 }
 ```
+
+![scrollSnapStrategy_center](figures/scrollSnapStrategy_center.gif)
 
 ### 示例21（自定义滚动吸附位置）
 
@@ -3161,7 +3162,6 @@ struct ListSnapProviderExample {
 
   build() {
     Column({ space: 8 }) {
-      Text('List').fontColor(0x000000).fontSize(16)
       List({ space: ITEM_SPACE, scroller: this.scroller }) {
         ForEach(this.numbers, (item: number) => {
           ListItem() {
@@ -3185,3 +3185,5 @@ struct ListSnapProviderExample {
   }
 }
 ```
+
+![scrollSnapStrategy_provider](figures/scrollSnapStrategy_provider.gif)
