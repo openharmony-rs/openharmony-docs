@@ -337,6 +337,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 > - 回调参数中的`devices`为变更后的输出设备信息，`changeReason`为设备变更原因，`recommendedAction`为设备变更后推荐的操作，取值请参考[OutputDeviceChangeRecommendedAction](../../reference/apis-audio-kit/arkts-apis-audio-e.md#outputdevicechangerecommendedaction20)。
 >
 > - 此事件用于感知当前输出设备变化，与`deviceChange`提供的设备连接状态变化含义不同。除外设连接或断开外，用户强制选择设备、音频会话激活或更高优先级音频流出现等情况也可能引起回调。
+> 
 > - 不再需要监听时，应调用[off('currentOutputDeviceChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#offcurrentoutputdevicechanged20)取消订阅。
 
 <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
