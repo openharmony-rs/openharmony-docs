@@ -5,7 +5,7 @@
 <!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=baacd5e603827a8080bb1e15309bc06852b1fd80 translatedAt=2026-09-04T03:45:42.185Z pushedAt=2026-09-09T09:11:03.728Z -->
+<!-- md-trans-meta sourceCommit=8be28086cfc07f7b19b511bbbd7f0e98d423c77b translatedAt=2026-11-16T02:12:22.245Z pushedAt=2026-11-20T07:28:00.907Z nl=1 -->
 
 
 The **sendablePreferences** module provides APIs for processing data in the form of key-value (KV) pairs, including querying, modifying, and persisting KV pairs.
@@ -71,7 +71,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error.                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -131,7 +131,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error.                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
@@ -184,7 +184,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error.                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
@@ -242,7 +242,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error.                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -293,7 +293,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error.                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
@@ -323,7 +323,7 @@ Represents the configuration options of a **Preferences** instance.
 | Name       | Type  | Read-Only| Optional| Description                                                        |
 | ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
 | name        | string | No  | No  | Name of the **Preferences** instance. The name length must be greater than zero and less than or equal to 255 bytes. The name must not contain '/' and must not end with '/'.                                   |
-| dataGroupId | string \| null | No  | Yes  | Application group ID. <!--RP1-->Currently, specifying **dataGroupId** to create a Preferences instance in the corresponding shared sandbox path is not supported. <!--RP1End--><br/>This is an optional parameter. It specifies to create a **Preferences** instance in the sandbox path corresponding to this **dataGroupId**. If this parameter is not specified, the Preferences instance is created in the application sandbox directory by default.<br/> **Model constraint:** This attribute is available only in the stage model.|
+| dataGroupId | string \| null | No  | Yes  | Application group ID. <!--RP1-->Currently, specifying **dataGroupId** to create a Preferences instance in the corresponding shared sandbox path is not supported. <!--RP1End--><br/>This is an optional parameter. It specifies to create a **Preferences** instance in the sandbox path corresponding to this **dataGroupId**. If this parameter is not specified, the Preferences instance is created in the application sandbox directory by default.<br/> **Model restriction:** This attribute is available only in the stage model.|
 
 
 ## Preferences

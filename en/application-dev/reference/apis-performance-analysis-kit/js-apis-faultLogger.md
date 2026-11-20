@@ -5,7 +5,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a15788f06aa7c1d777e9451083cca310c937b532 translatedAt=2026-11-03T06:15:45.460Z pushedAt=2026-11-03T12:08:25.610Z nl=1 -->
+<!-- md-trans-meta sourceCommit=78a8bf19448436f5c84e93efc29486e00a2ee905 translatedAt=2026-11-16T01:10:58.207Z pushedAt=2026-11-20T07:28:32.807Z nl=1 -->
 
 The **faultLogger** APIs can be used to query fault logs of an application cached on the system. The APIs use the application bundle name and the UID allocated by the system as the unique key value.
 
@@ -36,9 +36,9 @@ Enumerates the fault types.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | NO_SPECIFIC | 0 | No specific fault type.|
-| CPP_CRASH | 2 | C++ program crash.|
+| CPP_CRASH | 2 | Native runtime exception. |
 | JS_CRASH | 3 | JS program crash.|
-| APP_FREEZE | 4 | Application freezing.|
+| APP_FREEZE | 4 | Application frozen screen fault type. |
 
 ## FaultLogInfo
 
@@ -70,7 +70,7 @@ Obtains the fault information about the current application. This API uses an as
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | Yes| Fault type.|
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes| Callback used to return the fault information array.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned.|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes | Callback used to return the fault information array.<br/>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned. |
 
 **Error codes**
 
@@ -131,7 +131,7 @@ Obtains the fault information about the current application. This API uses a pro
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval.|
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br/>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. |
 
 **Error codes**
 
@@ -189,7 +189,7 @@ Obtains the fault information about the current application. This API uses an as
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | Yes| Fault type.|
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes| Callback used to return the fault information array.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned.|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes | Callback used to return the fault information array.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned. |
 
 **Example**
 
@@ -241,7 +241,7 @@ Obtains the fault information about the current application. This API uses a pro
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval.|
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. The fault information instance can be obtained in its then() method or by using await. <br/>**value** is the fault information array obtained. If **value** is **undefined**, it indicates that an exception occurred during the retrieval process. |
 
 **Example**
 
