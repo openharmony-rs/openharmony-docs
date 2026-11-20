@@ -74,6 +74,7 @@ let audioRoutingManager = audioManager.getRoutingManager();
 > - 返回值为[AudioDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis-audio-t.md#audiodevicedescriptors)，可通过设备描述符中的`id`、`deviceType`和`name`等属性识别设备。
 >
 > - 查询结果是调用时的设备列表，列表中的设备不一定是应用当前实际播放的设备。如需持续维护设备列表，应结合`deviceChange`事件处理设备连接和断开。
+>
 > - 如需查询指定音频流用途对应的最高优先级输出设备，请使用[getPreferOutputDeviceForRendererInfo](#获取最高优先级输出设备信息)。
 
 <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
@@ -100,6 +101,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 > **说明：**
 >
 > - 示例通过`audio.DeviceFlag.OUTPUT_DEVICES_FLAG`订阅输出设备的连接状态变化。回调参数`DeviceChangeAction.type`表示连接状态变化，`deviceDescriptors`提供发生变化的设备信息。
+>
 > - 不建议将设备连接状态变化直接作为自动暂停等业务处理的依据。应用如需处理自动暂停相关业务，可参考[音频流输出设备变更原因](audio-output-device-change.md#音频流输出设备变更原因)。
 >
 > - 不再需要监听时，应调用[off('deviceChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#offdevicechange9)取消订阅。
@@ -132,7 +134,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 > **说明：**
 >
 > - 本接口仅对系统应用开放。应先查询输出设备列表，再将目标设备的描述符传入接口，避免直接使用示例中的设备ID和属性值。
+>
 > - 当前只能选择一个输出设备，传入的`AudioDeviceDescriptors`应包含一个目标设备描述符。
+>
 > - 用户可以选择连接一组音频设备（如一对蓝牙耳机），但系统侧只感知为一个设备，该组设备共用一个设备ID。
 
 ``` TypeScript
