@@ -413,4 +413,104 @@ export struct OpenDialogAndUpdate {
 
  ![UIContextPromptAction](figures/UIContextPromptAction.gif)
 
+## 悬停态弹窗示例
 
+<!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
+ 
+<!-- @[custom_dialog_hover_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/CustomDialogHoverModeExample.ets) -->
+
+```ts
+@CustomDialog
+@Component
+struct CustomDialogHoverModeDialog {
+  @Link textValue: string;
+  @Link inputValue: string;
+  controller?: CustomDialogController;
+
+  build() {
+    Column() {
+      Text($r('app.string.CustomDialogHoverMode_change_text'))
+        .fontSize(20).margin({ top: 10, bottom: 10 })
+      TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
+        .onChange((value: string) => {
+          this.textValue = value;
+        })
+      Text($r('app.string.CustomDialogHoverMode_change_text_question'))
+        .fontSize(16).margin({ bottom: 10 })
+      Flex({ justifyContent: FlexAlign.SpaceAround }) {
+        Button('cancel')
+          .onClick(() => {
+            if (this.controller !== undefined) {
+              this.controller.close();
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Black)
+        Button('confirm')
+          .onClick(() => {
+            if (this.controller !== undefined) {
+              this.inputValue = this.textValue;
+              this.controller.close();
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Red)
+      }.margin({ bottom: 10 })
+    }.borderRadius(10)
+    // 如果需要使用border属性或cornerRadius属性，请和borderRadius属性一起使用。
+  }
+}
+
+@Entry
+@Component
+export struct CustomDialogHoverModeExample {
+  @State textValue: string = '';
+  @State inputValue: string = 'click me';
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogHoverModeDialog({
+      textValue: this.textValue,
+      inputValue: this.inputValue
+    }),
+    cancel: this.exitApp,
+    autoCancel: true,
+    onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+      console.info(`reason= ${dismissDialogAction.reason}`);
+      console.info('dialog onWillDismiss');
+      if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+        dismissDialogAction.dismiss();
+      }
+      if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+        dismissDialogAction.dismiss();
+      }
+    },
+    alignment: DialogAlignment.Bottom,
+    offset: { dx: 0, dy: -20 },
+    gridCount: 4,
+    customStyle: false,
+    cornerRadius: 10,
+    enableHoverMode: true,
+    hoverModeArea: HoverModeAreaType.TOP_SCREEN
+  })
+
+  aboutToDisappear() {
+    this.dialogController = null;
+  }
+
+  exitApp() {
+    console.info('Click the callback in the blank area');
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button(this.inputValue)
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController.open();
+            }
+          }).backgroundColor(0x317aff)
+      }.width('100%').margin({ top: 5 })
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.CustomDialogHoverModeExample_title'))
+  }
+}
+```
+ 
+<!--RP2--><!--RP2End-->
