@@ -3,8 +3,8 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangfenging -->
-<!--Designer: @liveery; @zl_startup-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @zl_startup-->
+<!--Tester: @alien0208-->
 <!--Adviser: @jinqiuheng-->
 
 应用沙箱是一种以安全防护为目的的隔离机制，避免数据受到恶意路径穿越访问。在这种沙箱的保护机制下，应用可见的目录范围即为“应用沙箱目录”。
