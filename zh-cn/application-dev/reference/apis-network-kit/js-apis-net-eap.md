@@ -297,7 +297,7 @@ setEthEapConfig(config: EthEapConfig): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -367,7 +367,7 @@ getEthEapConfig(): Promise\<EthEapConfig\>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -413,7 +413,7 @@ deleteEthEapConfig(): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -459,7 +459,7 @@ getEthEapStateInfo(): EthEapStateInfo
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -502,7 +502,7 @@ onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -549,7 +549,7 @@ offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -610,7 +610,7 @@ connect(action: EthEapConnectAction): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
