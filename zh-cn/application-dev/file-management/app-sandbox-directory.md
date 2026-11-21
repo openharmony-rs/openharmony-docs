@@ -80,8 +80,6 @@
    >
    > 应用如无特殊需要，应将数据存放在el2加密目录下，以尽可能保证数据安全。但是对于某些场景，一些应用文件需要在用户首次认证前就可被访问，例如时钟、闹铃、壁纸等，此时应用需要将这些文件存放到设备级加密区（el1）。
    >
-   > 开发者可通过监听[COMMON_EVENT_USER_UNLOCKED](../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_user_unlocked)事件感知当前用户首次认证完成。
-   >
    > 切换应用文件加密类型目录的方法请参见[获取和修改加密分区](../application-models/application-context-stage.md#获取和修改加密分区)。
 
 4. 四级、五级目录：
@@ -96,26 +94,48 @@
 
    | 目录名 | Context属性名称 | 类型 | 说明 |
    | -------- | -------- | -------- | -------- |
-   | bundle | bundleCodeDir | 安装文件路径 | 应用安装后的App的HAP资源包所在目录；随应用卸载而清理。<br>不能通过拼接路径访问资源文件，应使用[@ohos.resourceManager (资源管理)](../reference/apis-localization-kit/js-apis-resource-manager.md)相关接口访问资源。<br>可以用于存储应用的代码资源数据，主要包括应用安装的HAP资源包、可重复使用的库文件以及插件资源等。此路径下存储的代码资源数据可以被用于动态加载。|
+   | bundle | [bundleCodeDir](../application-models/application-context-stage.md#获取应用文件路径) | 安装文件路径 | 应用安装后的App的HAP资源包所在目录；随应用卸载而清理。<br>不能通过拼接路径访问资源文件，应使用[@ohos.resourceManager (资源管理)](../reference/apis-localization-kit/js-apis-resource-manager.md)相关接口访问资源。<br>可以用于存储应用的代码资源数据，主要包括应用安装的HAP资源包、可重复使用的库文件以及插件资源等。此路径下存储的代码资源数据可以被用于动态加载。|
    | base | NA | 本设备文件路径 | 应用在本设备上存放持久化数据的目录（随应用卸载而清理），子目录包含files/、cache/、temp/和haps/。<br>不建议将cookie、密码和token等高风险信息明文存储在此目录下。 |
-   | database | databaseDir | 数据库路径 | 应用在el2加密条件下存放通过分布式数据库服务操作的文件目录；随应用卸载而清理。<br>仅用于保存应用的私有数据库数据，主要包括数据库文件等。此路径下仅适用于存储分布式数据库相关文件数据。 |
-   | distributedfiles | distributedFilesDir | 分布式文件路径 | 应用在el2加密条件下存放分布式文件的目录，应用将文件放入该目录可分布式跨设备直接访问；随应用卸载而清理。<br>可以用于保存应用分布式场景下的数据，主要包括应用多设备共享文件、应用多设备备份文件、应用多设备群组协作文件。此路径下存储这些数据，使得应用更加适合多设备使用场景。 <br> **注意**：<br>distributedfiles下的.remote_share目录由系统创建管理，应用请勿创建或操作。<br>distributedfiles目录支持直接操作其他设备文件，请勿随意删除该目录下的文件。详细注意事项请参考[跨设备文件共享和访问](file-access-across-devices.md) 。|
-   | files | filesDir | 应用通用文件路径 | 应用在本设备内部存储上通用的存放默认长期保存的文件路径；随应用卸载而清理。<br>可以用于保存应用的任何私有数据，主要包括用户持久性文件、图片、媒体文件以及日志文件等。此路径下存储这些数据，使得数据保持私有、安全且持久有效。 |
-   | cache | cacheDir | 应用缓存文件路径 | 应用在本设备内部存储上用于缓存下载的文件或可重新生成的缓存文件的路径，应用cache目录大小超过配额或者系统空间达到一定条件，自动触发清理该目录下文件；用户通过系统空间管理类应用也可能触发清理该目录。应用需判断文件是否仍存在，决策是否需重新缓存该文件；随应用卸载而清理。<br>可以用于保存应用的缓存数据，主要包括离线数据、图片缓存、数据库备份以及临时文件等。此路径下存储的数据可能会被系统自动清理，因此不要存储重要数据。 |
-   | preferences | preferencesDir | 应用首选项文件路径 | 应用在本设备内部存储上通过数据库API存储配置类或首选项的目录；随应用卸载而清理。详见[通过用户首选项实现数据持久化](../database/data-persistence-by-preferences.md)。 <br>可以用于保存应用的首选项数据，主要包括应用首选项文件以及配置文件等。此路径下仅适用于存储少量数据。|
-   | temp | tempDir | 应用临时文件路径 | 应用在本设备内部存储上仅在应用运行期间产生和需要的文件，应用退出后即清理。<br>可以用于保存应用的临时生成的数据，主要包括数据库缓存、图片缓存、临时日志文件、以及下载的应用安装包文件等。此路径下存储使用后即可删除的数据。 |
+   | database | [databaseDir](../application-models/application-context-stage.md#获取应用文件路径) | 数据库路径 | 应用在el2加密条件下存放通过分布式数据库服务操作的文件目录；随应用卸载而清理。<br>仅用于保存应用的私有数据库数据，主要包括数据库文件等。此路径下仅适用于存储分布式数据库相关文件数据。 |
+   | distributedfiles | [distributedFilesDir](../application-models/application-context-stage.md#获取应用文件路径) | 分布式文件路径 | 应用在el2加密条件下存放分布式文件的目录，应用将文件放入该目录可分布式跨设备直接访问；随应用卸载而清理。<br>可以用于保存应用分布式场景下的数据，主要包括应用多设备共享文件、应用多设备备份文件、应用多设备群组协作文件。此路径下存储这些数据，使得应用更加适合多设备使用场景。 <br> **注意**：<br>distributedfiles下的.remote_share目录由系统创建管理，应用请勿创建或操作。<br>distributedfiles目录支持直接操作其他设备文件，请勿随意删除该目录下的文件。详细注意事项请参考[跨设备文件共享和访问](file-access-across-devices.md) 。|
+   | files | [filesDir](../application-models/application-context-stage.md#获取应用文件路径) | 应用通用文件路径 | 应用在本设备内部存储上通用的存放默认长期保存的文件路径；随应用卸载而清理。<br>可以用于保存应用的任何私有数据，主要包括用户持久性文件、图片、媒体文件以及日志文件等。此路径下存储这些数据，使得数据保持私有、安全且持久有效。 |
+   | cache | [cacheDir](../application-models/application-context-stage.md#获取应用文件路径) | 应用缓存文件路径 | 应用在本设备内部存储上用于缓存下载的文件或可重新生成的缓存文件的路径，应用cache目录大小超过配额或者系统空间达到一定条件，自动触发清理该目录下文件；用户通过系统空间管理类应用也可能触发清理该目录。应用需判断文件是否仍存在，决策是否需重新缓存该文件；随应用卸载而清理。<br>可以用于保存应用的缓存数据，主要包括离线数据、图片缓存、数据库备份以及临时文件等。此路径下存储的数据可能会被系统自动清理，因此不要存储重要数据。 |
+   | preferences | [preferencesDir](../application-models/application-context-stage.md#获取应用文件路径) | 应用首选项文件路径 | 应用在本设备内部存储上通过数据库API存储配置类或首选项的目录；随应用卸载而清理。详见[通过用户首选项实现数据持久化](../database/data-persistence-by-preferences.md)。 <br>可以用于保存应用的首选项数据，主要包括应用首选项文件以及配置文件等。此路径下仅适用于存储少量数据。|
+   | temp | [tempDir](../application-models/application-context-stage.md#获取应用文件路径) | 应用临时文件路径 | 应用在本设备内部存储上仅在应用运行期间产生和需要的文件，应用退出后即清理。<br>可以用于保存应用的临时生成的数据，主要包括数据库缓存、图片缓存、临时日志文件、以及下载的应用安装包文件等。此路径下存储使用后即可删除的数据。 |
 
 ## 应用沙箱路径和真实物理路径的对应关系
 
 在应用沙箱路径下读写文件，经过映射转换，实际读写的是真实物理路径中的应用文件，应用沙箱路径与真实物理路径对应关系如下表所示。
 
-其中&lt;USERID&gt;为当前用户ID，从100开始递增，&lt;EXTENSIONPATH&gt;为moduleName-extensionName。应用是否以Extension独立沙箱运行可参考[ExtensionAbility组件](../application-models/extensionability-overview.md)。
-
 | 应用沙箱路径 | 物理路径 |
 | -------- | -------- |
-| /data/storage/el1/bundle | 应用安装包目录：<br> /data/app/el1/bundle/public/&lt;PACKAGENAME&gt; |
-| /data/storage/el1/base | 应用el1级别加密数据目录：<br> - 非独立沙箱运行的应用：/data/app/el1/&lt;USERID&gt;/base/&lt;PACKAGENAME&gt;<br> - 以独立沙箱运行的Extension应用： /data/app/el1/&lt;USERID&gt;/base/+extension-&lt;EXTENSIONPATH&gt;+&lt;PACKAGENAME&gt; |
-| /data/storage/el2/base | 应用el2级别加密数据目录：<br> - 非独立沙箱运行的应用：/data/app/el2/&lt;USERID&gt;/base/&lt;PACKAGENAME&gt;<br> - 以独立沙箱运行的Extension应用： /data/app/el2/&lt;USERID&gt;/base/+extension-&lt;EXTENSIONPATH&gt;+&lt;PACKAGENAME&gt; |
-| /data/storage/el1/database | 应用el1级别加密数据库目录：<br> - 非独立沙箱运行的应用：/data/app/el1/&lt;USERID&gt;/database/&lt;PACKAGENAME&gt;<br> - 以独立沙箱运行的Extension应用：/data/app/el1/&lt;USERID&gt;/database/+extension-&lt;EXTENSIONPATH&gt;+&lt;PACKAGENAME&gt; |
-| /data/storage/el2/database | 应用el2级别加密数据库目录：<br> - 非独立沙箱运行的应用：/data/app/el2/&lt;USERID&gt;/database/&lt;PACKAGENAME&gt;<br> - 以独立沙箱运行的Extension应用：/data/app/el2/&lt;USERID&gt;/database/+extension-&lt;EXTENSIONPATH&gt;+&lt;PACKAGENAME&gt; |
-| /data/storage/el2/distributedfiles | 应用el2加密级别有账号分布式数据融合目录：<br> - 物理目录：/mnt/hmdfs/&lt;USERID&gt;/account/merge_view/data/&lt;PACKAGENAME&gt;  |
+| /data/storage/el1/bundle | 应用安装包目录：<br> /data/app/el1/bundle/public/&lt;PACKAGENAME&gt;<br>说明：以独立沙箱运行的Extension应用不单独占用安装包目录，仍使用所属应用的安装包目录。 |
+| /data/storage/el1/base | 应用el1级别加密数据目录：<br> /data/app/el1/&lt;USERID&gt;/base/&lt;VARIABLEPACKAGENAME&gt; |
+| /data/storage/el2/base | 应用el2级别加密数据目录：<br> /data/app/el2/&lt;USERID&gt;/base/&lt;VARIABLEPACKAGENAME&gt; |
+| /data/storage/el1/database | 应用el1级别加密数据库目录：<br> /data/app/el1/&lt;USERID&gt;/database/&lt;VARIABLEPACKAGENAME&gt; |
+| /data/storage/el2/database | 应用el2级别加密数据库目录：<br> /data/app/el2/&lt;USERID&gt;/database/&lt;VARIABLEPACKAGENAME&gt; |
+| /data/storage/el2/distributedfiles | 应用el2加密级别有账号分布式数据融合目录：<br> /mnt/hmdfs/&lt;USERID&gt;/account/merge_view/data/&lt;PACKAGENAME&gt;<br>说明：该目录不区分应用形态，始终使用应用包名，无需替换为带前缀的目录名。 |
+
+物理路径中，各占位符含义如下：
+
+| 占位符 | 含义 | 示例 |
+| -------- | -------- | -------- |
+| &lt;USERID&gt; | 当前用户ID，从100开始递增，用于base、database、distributedfiles目录。 | 100 |
+| &lt;PACKAGENAME&gt; | 应用包名，用于distributedfiles目录及各替换值。 | com.example.demo |
+| &lt;VARIABLEPACKAGENAME&gt; | 路径占位符，表示应用在真实物理路径中实际使用的目录名（不是代码变量或配置项），用于base、database目录，取值见下方替换规则。 | +clone-1+com.example.demo |
+| &lt;EXTENSIONPATH&gt; | moduleName-extensionName，用于&lt;VARIABLEPACKAGENAME&gt;的Extension形态替换值。应用是否以Extension独立沙箱运行可参考[ExtensionAbility组件](../application-models/extensionability-overview.md)。 | entry-BackupExtension |
+| &lt;INDEX&gt; | 应用分身索引，从1开始递增，用于应用分身形态的替换值。 | 1 |
+| &lt;ACCOUNTID&gt; | 原子化服务的账号ID（AccountId），运行时由系统动态生成并传入，示例仅为示意，具体取值以设备实际沙箱路径为准，用于&lt;VARIABLEPACKAGENAME&gt;的原子化服务形态替换值。 | 0EDE86D2F2AE4DE02E4DB085BF8F204CEC3E4CB5A7E482E25B6D4CF5D4E97EB4+com.atomicservice.6917594172732814448 |
+
+各应用形态下，&lt;VARIABLEPACKAGENAME&gt;的替换规则如下：
+
+| 应用形态 | &lt;VARIABLEPACKAGENAME&gt;取值 |
+| -------- | -------- |
+| 普通应用 | &lt;PACKAGENAME&gt; |
+| 应用分身 | `+clone-<INDEX>+<PACKAGENAME>` |
+| 原子化服务 | `+auid-<ACCOUNTID>+<PACKAGENAME>` |
+| 以独立沙箱运行的Extension应用 | `+extension-<EXTENSIONPATH>+<PACKAGENAME>` |
+
+> **说明：**
+>
+> 替换值中的`+auid-`、`+clone-`、`+extension-`均为系统拼装目录名时使用的固定前缀（非变量），与`+`一样是目录名的组成部分。例如&lt;USERID&gt;为100、&lt;INDEX&gt;为1、&lt;PACKAGENAME&gt;为com.example.demo的应用分身，其base目录为/data/app/el2/100/base/+clone-1+com.example.demo。
