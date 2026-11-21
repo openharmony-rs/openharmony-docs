@@ -682,7 +682,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
   | 参数名   | 类型                      | 必填 | 说明                          |
   | -------- | ------------------------- | ---- | ----------------------------- |
-  | volumeId | string                    | 是   | 卷设备ID。                |
+  | volumeId | string                    | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                |
   | callback | AsyncCallback&lt;[Volume](#volume)&gt; | 是   | 获取卷设备信息之后的回调。  |
 
 **错误码：**
@@ -995,7 +995,7 @@ vfat和exfat。
 
   | 参数名   | 类型                      | 必填 | 说明                          |
   | -------- | ------------------------- | ---- | ----------------------------- |
-  | volumeId | string                    | 是   | 卷设备ID。                |
+  | volumeId | string                    | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备须处于卸载状态，否则返回错误码13600005。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                |
   | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
   | callback | AsyncCallback&lt;void&gt;  | 是   | 对指定卷设备格式化后的回调。  |
 
@@ -1982,7 +1982,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
 
-查询指定卷当前是否正在被占用。使用Promise异步回调。
+查询指定卷是否处于占用状态。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -2000,13 +2000,13 @@ isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumePath | string | 是   | 指定卷路径。 |
+| volumePath | string | 是   | 指定卷的物理路径。 |
 
 **返回值：**
 
 | 类型                   | 说明       |
 | ---------------------- | ---------- |
-| Promise&lt;boolean&gt; | Promise对象，返回指定卷当前是否正在被占用。true代表正在被占用，false代表未被占用。 |
+| Promise&lt;boolean&gt; |  Promise对象，返回指定卷是否处于被占用状态，true代表正在被占用，false代表未被占用。 |
 
 **错误码：**
 
@@ -2037,11 +2037,9 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 卷信息详情。
 
-### 属性
+**系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**系统接口**：该接口为系统接口。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
 
 | 名称         | 类型    | 只读   | 可选   | 说明                 |
 | ----------- | ------- | ------- | ----- | -------------------- |
@@ -2059,8 +2057,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 ## DiskType
 
 磁盘类型的枚举。
-
-### 属性
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -2086,8 +2082,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 磁盘信息详情。
 
-### 属性
-
 **ArkTS-Dyn起始版本**：26.0.0
 
 **ArkTS-Sta起始版本**：26.0.0
@@ -2111,8 +2105,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 分区信息详情。
 
-### 属性
-
 **ArkTS-Dyn起始版本**：26.0.0
 
 **ArkTS-Sta起始版本**：26.0.0
@@ -2135,8 +2127,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 ## PartitionTableInfo
 
 分区表信息详情。
-
-### 属性
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -2162,8 +2152,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 对指定磁盘执行创建分区时所需的参数。
 
-### 属性
-
 **ArkTS-Dyn起始版本**：26.0.0
 
 **ArkTS-Sta起始版本**：26.0.0
@@ -2184,8 +2172,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 ## FormatParams
 
 对指定分区执行格式化时所需的参数。
-
-### 属性
 
 **ArkTS-Dyn起始版本**：26.0.0
 
