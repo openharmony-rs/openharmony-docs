@@ -872,6 +872,10 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterCallbackTable(const CloudDisk_SyncFolde
 | -- | -- |
 | [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，则返回CLOUD_DISK_OK；否则返回云盘管理模块的错误码CloudDisk_ErrorCode。 |
 
+**参考：**
+
+[OH_CloudDisk_UnregisterCallbackTable](#oh_clouddisk_unregistercallbacktable)
+
 ### OH_CloudDisk_UnregisterCallbackTable()
 
 ```c
