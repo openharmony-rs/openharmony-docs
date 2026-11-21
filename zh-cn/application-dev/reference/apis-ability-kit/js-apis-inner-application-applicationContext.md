@@ -1988,13 +1988,11 @@ struct Index {
               'pageName': 'IndexNew'  // 标记启动主页面
             }
           };
-          // 获取应用上下文
-          let applicationContext = this.context.getApplicationContext();
           // 在延迟退出期间启动主界面
           this.context.terminateSelf().then(() => {
             // 设置延时2000 ms以确保主应用完全退出后再调用startSelfUIAbility接口。
             setTimeout(() => {
-              applicationContext.getApplicationContext().startSelfUIAbility(newWant).then(() => {
+              this.context.getApplicationContext().startSelfUIAbility(newWant).then(() => {
                 hilog.info(0x0000, 'testTag', '启动主界面成功');
               }).catch((error: BusinessError) => {
                 hilog.error(0x0000, 'testTag', `启动主界面失败, code: ${error.code}, error msg: ${error.message}`);
