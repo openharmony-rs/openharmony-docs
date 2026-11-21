@@ -1671,7 +1671,7 @@ ArkTS-Sta: calculateSnapOffset(velocity: double): double
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
+| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 惯性滚动结束时的剩余速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
 
 **返回值：**
 
