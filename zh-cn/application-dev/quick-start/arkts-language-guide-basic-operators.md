@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
-description: "讲解ArkTS的赋值、算术、比较、逻辑、三元条件等基本运算符的用法与运算符优先级规则。"
-keywords: [ArkTS, 基本运算符, 赋值运算符, 算术运算符, 比较运算符, 逻辑运算符, 三元条件运算符, 运算符优先级]
+description: "讲解ArkTS的赋值、算术、比较、逻辑、三元条件等基本运算符的概念与用法。"
+keywords: [ArkTS, 基本运算符, 赋值运算符, 算术运算符, 比较运算符, 逻辑运算符, 三元条件运算符]
 doctype: guide
 status: active
 ---
@@ -14,15 +14,15 @@ status: active
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-ArkTS提供丰富的运算符用于数据运算、逻辑判断和赋值操作。
+ArkTS提供丰富的运算符用于数据运算、逻辑判断和赋值操作。复合赋值与逻辑赋值运算符、运算符的优先级和结合性，统一在[高级运算符](arkts-language-guide-advanced-operators.md)中介绍。
 
 ## 赋值运算符
 
-赋值运算符（=）将右侧的值赋给左侧的变量，支持链式赋值和复合赋值（+=、-=等）。
+赋值运算符（`=`）将右侧的值赋给左侧的变量。
 
 ### 简单赋值 (=)
 
-使用`=`将右侧的值赋给左侧的变量。赋值是引用语义——对对象类型的变量赋值后，新旧变量指向同一对象，修改其中一个会影响另一个。
+使用`=`将右侧的值赋给左侧的变量。对于对象类型，赋值是引用语义——新旧变量指向同一对象，修改其中一个会影响另一个；基本类型（如`number`、`boolean`、`string`）的赋值是值语义。
 
 <!-- @[basic_variable_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -35,8 +35,6 @@ let active: boolean = true;
 value = 20;
 name = 'Bob';
 ```
-
-### 赋值表达式的返回值
 
 赋值表达式本身返回被赋的值，语法上支持链式赋值`a = b = 10`，但**不建议使用**，建议分开赋值以提高可读性。
 
@@ -129,7 +127,7 @@ let area: number = width * height;  // 50
 
 ### 除法运算符 (/)
 
-除法运算符（/）计算两数商值，结果始终为浮点数。
+除法运算符（`/`）计算两数商值，结果始终为浮点数。
 
 <!-- @[division_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -193,77 +191,6 @@ let power: number = base ** exponent;  // 8 (2^3)
 
 let square: number = 5 ** 2;   // 25
 let cube: number = 3 ** 3;     // 27
-```
-
-## 复合赋值运算符
-
-复合赋值运算符合并运算和赋值，简化代码编写。
-
-<!-- @[compound_assignment_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-// 加法赋值
-let total: number = 100;
-total += 50;  // 150
-
-// 字符串拼接赋值
-let compoundMessage: string = 'Hello';
-compoundMessage += ' World';  // 'Hello World'
-
-// 减法赋值
-let balance: number = 1000;
-balance -= 200;  // 800
-
-// 乘法赋值
-let price: number = 10;
-price *= 2;  // 20
-
-// 除法赋值
-let amount: number = 100;
-amount /= 4;  // 25
-
-// 取模赋值
-let compoundValue: number = 17;
-compoundValue %= 5;  // 2
-
-// 指数赋值
-let compoundBase: number = 2;
-compoundBase **= 4;  // 16
-```
-
-### 逻辑赋值运算符 (??=、||=、&&=)
-
-逻辑赋值运算符（??=、||=、&&=）将逻辑运算与赋值合并，语义与对应的`??`、`||`、`&&`一致，并保留其短路特性——右侧表达式仅在需要赋值时才会求值。其求值沿袭JavaScript的truthy/falsy概念：`false`、`0`、`-0`、`NaN`、`''`（空字符串）、`null`、`undefined`在布尔上下文中被视为falsy值，其余值均为truthy值，后文的逻辑运算符与空值合并运算符同样以此为基础。
-
-- `a ??= b`：仅当`a`为`null`或`undefined`时，才将`b`赋给`a`。
-- `a ||= b`：仅当`a`为falsy值时，才将`b`赋给`a`。
-- `a &&= b`：仅当`a`为truthy值时，才将`b`赋给`a`。
-
-<!-- @[logical_assignment_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-// ??= 仅在左侧为null或undefined时赋值
-let configValue: string | null = null;
-configValue ??= 'default';  // "default"（原值为null，执行赋值）
-
-let timeout: number | null = 0;
-timeout ??= 3000;  // 0（0是有效值，不执行赋值）
-
-// ||= 仅在左侧为falsy值时赋值
-let label: string = '';
-label ||= 'unnamed';  // "unnamed"（''是falsy值，执行赋值）
-
-// &&= 仅在左侧为truthy值时赋值
-let logicalCount: number = 10;
-logicalCount &&= logicalCount * 2;  // 20（10是truthy值，执行赋值）
-
-// 短路特性：左侧条件不满足时，右侧表达式不会执行
-let cache: string | null = 'cached';
-function loadFromDisk(): string {
-  console.info('执行磁盘读取');
-  return 'loaded';
-}
-cache ??= loadFromDisk();  // "cached"（不为null，loadFromDisk不执行）
 ```
 
 ## 比较运算符
@@ -358,7 +285,7 @@ console.info(`${neNum1 !== neNum2}`); // true
 
 ### 大于运算符 (>)
 
-大于运算符（>）在左侧值大于右侧时返回`true`。
+大于运算符（`>`）在左侧值大于右侧时返回`true`。
 
 <!-- @[greater_than_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -366,9 +293,9 @@ console.info(`${neNum1 !== neNum2}`); // true
 let gtA: number = 10;
 let gtB: number = 5;
 
-console.info(`${gtA > gtB}`);   // true
-console.info(`${gtB > gtA}`);   // false
-console.info(`${gtA > gtA}`);   // false
+console.info(`${gtA > gtB}`);     // true
+console.info(`${gtB > gtA}`);     // false
+console.info(`${gtA > gtA}`);     // false
 
 // 字符串比较Unicode码点
 console.info(`${'b' > 'a'}`);     // true
@@ -377,7 +304,7 @@ console.info(`${'abc' > 'abb'}`); // true
 
 ### 小于运算符 (<)
 
-小于运算符（<）在左侧值小于右侧时返回`true`。
+小于运算符（`<`）在左侧值小于右侧时返回`true`。
 
 <!-- @[less_than_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -392,7 +319,7 @@ console.info(`${ltA < ltA}`);   // false
 
 ### 大于等于运算符 (>=)
 
-大于等于（>=）在左侧值大于或等于右侧时返回`true`。
+大于等于运算符（`>=`）在左侧值大于或等于右侧时返回`true`。
 
 <!-- @[greater_than_or_equal_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -408,7 +335,7 @@ console.info(`${gteB >= gteA}`);  // false
 
 ### 小于等于运算符 (<=)
 
-小于等于（<=）在左侧值小于或等于右侧时返回`true`。
+小于等于运算符（`<=`）在左侧值小于或等于右侧时返回`true`。
 
 <!-- @[less_than_or_equal_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -424,7 +351,7 @@ console.info(`${lteB <= lteA}`);  // true
 
 ## 三元条件运算符
 
-三元条件运算符根据条件表达式的布尔值，从两个值中选择一个作为结果。它是`if-else`的简洁写法，适用于简单的条件赋值场景。
+三元条件运算符根据条件表达式的布尔值，从两个值中选择一个作为结果。三元条件运算符是`if-else`的简洁写法，适用于简单的条件赋值场景。
 
 ``` TypeScript
 条件表达式 ? 真值 : 假值
@@ -458,9 +385,9 @@ let role: string = isAdmin ? 'admin' : 'user';
 
 ## 空值合并运算符
 
-空值合并运算符（??）提供默认值，仅当左侧为`null`或`undefined`时才返回右侧的值。
+空值合并运算符（`??`）提供默认值，仅当左侧为`null`或`undefined`时才返回右侧的值。
 
-`??`与逻辑或`||`的区别在于对[falsy值](#逻辑赋值运算符-)的处理：`||`在左侧为任何falsy值时都会返回右侧，`0`、`''`、`false`等有效值会被误替换；`??`仅在左侧为`null`或`undefined`（falsy值的子集）时才返回右侧，能够保留其余有效值。
+`??`与逻辑或`||`的区别在于对[falsy值](arkts-language-guide-advanced-operators.md#逻辑赋值运算符)的处理：`||`在左侧为任何falsy值时都会返回右侧，`0`、`''`、`false`等有效值会被误替换；`??`仅在左侧为`null`或`undefined`（falsy值的子集）时才返回右侧，能够保留其余有效值。
 
 <!-- @[nullish_coalescing_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -602,46 +529,8 @@ function expensiveDefault(): string {
   return 'default';
 }
 
-let provided: string = 'text';
+let provided: string | null = 'text';
 let circuitResult2: string = provided ?? expensiveDefault();  // 不执行expensiveDefault
-```
-
-## 运算符的优先级和结合性
-
-运算符优先级决定不同运算符的求值顺序，结合性决定同级运算符的求值方向（从左到右或从右到左）。本章所介绍运算符的优先级与结合性如下表所示，自上而下优先级由高到低：
-
-| 优先级 | 运算符 | 说明 | 结合性 |
-| ------ | ------ | ---- | ------ |
-| 1 | `()` | 括号分组 | — |
-| 2 | `?.` | 可选链 | 从左到右 |
-| 3 | `++`、`--`（后置）、`!`（后置） | 后置递增、后置递减、非空断言 | — |
-| 4 | `!`、`+`、`-`（一元）、`++`、`--`（前置） | 一元运算符 | 从右到左 |
-| 5 | `**` | 指数 | 从右到左 |
-| 6 | `*`、`/`、`%` | 乘法、除法、取余 | 从左到右 |
-| 7 | `+`、`-` | 加法、减法 | 从左到右 |
-| 8 | `<`、`<=`、`>`、`>=` | 关系比较 | 从左到右 |
-| 9 | `===`、`!==`、`==`、`!=` | 相等比较 | 从左到右 |
-| 10 | `&&` | 逻辑与 | 从左到右 |
-| 11 | `\|\|`、`??` | 逻辑或、空值合并 | 从左到右 |
-| 12 | `?:` | 三元条件 | 从右到左 |
-| 13 | `=`、`+=`、`-=`、`*=`、`/=`、`%=`、`**=`、`??=`、`\|\|=`、`&&=` | 赋值、复合赋值 | 从右到左 |
-
-位运算符、位移运算符等高级运算符的优先级与结合性，见[高级运算符](arkts-language-guide-advanced-operators.md#高级运算符的优先级和结合性)。
-
-`??`不能与`&&`、`||`直接混用，必须使用括号分组。实际编码中建议用括号显式标注运算优先级，避免依赖默认规则导致歧义：
-
-<!-- @[parentheses_for_precedence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-let precA: number = 5;
-let precB: number = 3;
-let precC: number = 10;
-let precD: number = 2;
-let precInput: string | null = 'hello';
-// 使用括号明确优先级
-let precResult: number = (precA + precB) * (precC - precD);
-let valid: boolean = (precA > precB) && (precC < precD);
-let precValue: string = (precInput ?? 'default') + ' suffix';
 ```
 
 ## 递增递减运算符
@@ -668,7 +557,7 @@ let postDec: number = decrCount--; // decrCount=5, postDec=6
 
 ## 可选链运算符
 
-可选链运算符（?.）在变量或其属性可能为`null`/`undefined`时安全访问，避免运行时错误。
+可选链运算符（`?.`）在变量或其属性可能为`null`/`undefined`时安全访问，避免运行时错误。
 
 <!-- @[optional_chaining_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -695,9 +584,37 @@ printScores(null);  // 输出: 分数数量: undefined, 是否有及格: undefin
 printScores([80, 95]);  // 输出: 分数数量: 2, 是否有及格: false, 安全获取数量: 2
 ```
 
+除可选链外，也可以显式判空后再使用值：判空检查通过后，编译器将值收窄为非空类型，在分支内可直接访问；多层嵌套的可选属性则用可选链逐层安全访问，避免重复判空：
+
+<!-- @[null_safety](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
+
+``` TypeScript
+interface NullableSub {
+  sub?: string;
+}
+
+interface NullableObj {
+  prop?: NullableSub;
+}
+
+let optionalValue: string | null = 'hello';
+
+// 显式处理空值
+if (optionalValue !== null) {
+  console.info(`${optionalValue.length}`);
+}
+
+// 使用可选链
+let obj: NullableObj = {};
+let sub: string | undefined = obj?.prop?.sub;
+if (sub !== undefined) {
+  console.info(`${sub}`);
+}
+```
+
 ## 非空断言运算符
 
-非空断言运算符（!）用在可为空的值之后，向编译器断言该值不为`null`或`undefined`，随后可直接访问其属性或调用方法。它与可选链`?.`相对：`?.`在值为空时安全返回`undefined`，`!`则假定值非空，若值实际为空，会在运行时抛出异常。仅在能确保非空时使用，否则优先使用`?.`或`??`。
+非空断言运算符（`!`）用在可为空的值之后，向编译器断言该值不为`null`或`undefined`，随后可直接访问其属性或调用方法。它与可选链`?.`相对：`?.`在值为空时安全返回`undefined`；`!`则假定值非空，若值实际为空，会在运行时抛出异常。仅在能确保非空时使用，否则优先使用`?.`或`??`。
 
 <!-- @[non_null_assertion_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 

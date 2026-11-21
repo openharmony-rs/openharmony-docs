@@ -16,11 +16,9 @@ status: active
 
 泛型是ArkTS中强大的类型系统特性，允许在定义函数、类、接口时使用类型参数，实现代码的复用和类型安全。
 
-## 泛型基础概念
+## 泛型的定义与核心价值
 
-### 泛型的定义与核心价值
-
-泛型让类型参数化，一份代码适用于多种类型且保持编译期类型安全，编译器在调用处检查类型参数后将其擦除，兼顾复用性、类型推断与零运行时开销。
+泛型让类型参数化，一份代码适用于多种类型且保持编译期类型安全。编译器在调用处检查类型参数后将其擦除，兼顾类型推断与零运行时开销。类型擦除意味着类型参数在运行时不可用，无法通过`instanceof`检查类型参数；如需在运行时区分类型，应显式传入类型标识等参数。
 
 <!-- @[generics_introduction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
 
@@ -78,7 +76,7 @@ console.info(`${wrapAlias<boolean>(true)[0]}`);   // true
 
 ### 类型参数的命名规范
 
-类型参数通常使用大写字母命名，常见约定如`T`（Type）、`U`、`K`（Key）、`V`（Value）、`E`（Element）。
+类型参数通常使用大写字母命名，常见约定如`T`（Type）、`U`（通常与`T`配对使用的第二个类型参数）、`K`（Key）、`V`（Value）、`E`（Element）。
 
 <!-- @[multi_type_parameter_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
 
@@ -247,7 +245,7 @@ console.info(`${stringContainer.getValue()}`); // 'World'
 class GenericCollection<T> {
   // 泛型属性
   private items: T[] = [];
-  public count: number = 0;
+  private count: number = 0;
   
   // 泛型方法
   public add(item: T): void {
@@ -273,6 +271,10 @@ class GenericCollection<T> {
     return this.items;
   }
   
+  public getCount(): number {
+    return this.count;
+  }
+  
   // 泛型方法返回泛型类型
   public filter(predicate: (item: T) => boolean): GenericCollection<T> {
     let filtered = new GenericCollection<T>();
@@ -292,7 +294,7 @@ collection.add(3);
 collection.add(4);
 collection.add(5);
 
-console.info(`${collection.count}`); // 5
+console.info(`${collection.getCount()}`); // 5
 console.info(`${collection.get(0)}`); // 1
 
 let evenNumbers: GenericCollection<number> = collection.filter((n: number): boolean => n % 2 === 0);
@@ -374,7 +376,7 @@ class Triple<A, B, C> {
 
 let triple: Triple<string, number, boolean> = new Triple<string, number, boolean>('Hello', 42, true);
 let tripleValues: [string, number, boolean] = triple.toArray();
-console.info(`${tripleValues[0]}, ${tripleValues[1]}, ${tripleValues[2]}`); // 'Hello,42,true'
+console.info(`${tripleValues[0]}, ${tripleValues[1]}, ${tripleValues[2]}`); // 'Hello, 42, true'
 ```
 
 ArkTS支持元组类型（如`[A, B, C]`）作为返回类型和变量类型，元素通过索引访问（`tuple[0]`）；但不支持元组解构语法（如`let [a, b, c] = tuple`），需通过索引逐个提取。
@@ -566,11 +568,11 @@ interface DefaultPair<T = string, U = number> {
 
 let defaultPair1: DefaultPair = { first: 'Hello', second: 42 };
 let defaultPair2: DefaultPair<number> = { first: 100, second: 200 };
-let pair3: DefaultPair<number, string> = { first: 100, second: 'Hello' };
+let defaultPair3: DefaultPair<number, string> = { first: 100, second: 'Hello' };
 
-console.info(`${defaultPair1}`);
-console.info(`${defaultPair2}`);
-console.info(`${pair3}`);
+console.info(`${defaultPair1.first}, ${defaultPair1.second}`); // 'Hello, 42'
+console.info(`${defaultPair2.first}, ${defaultPair2.second}`); // '100, 200'
+console.info(`${defaultPair3.first}, ${defaultPair3.second}`); // '100, Hello'
 ```
 
 ## 泛型约束
@@ -647,39 +649,7 @@ ArkTS泛型默认不变，型变关系需通过`in`/`out`/`in out`显式标注�
 
 ### 子类型约束
 
-通过`extends`对类型参数施加约束，限定其必须满足的接口或结构，使泛型在灵活性与类型安全间取得平衡。
-
-用`<T extends SomeInterface>`约束类型参数必须具备特定结构（如`length`属性），不满足则编译报错。
-
-<!-- @[ts_generic_constraint_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
-
-``` TypeScript
-// 约束泛型参数必须具有length属性
-interface Lengthwise {
-  length: number;
-}
-
-function getLength<T extends Lengthwise>(arg: T): number {
-  return arg.length;
-}
-
-class LengthSample implements Lengthwise {
-  public length: number;
-
-  constructor(length: number) {
-    this.length = length;
-  }
-}
-
-console.info(`${getLength('Hello')}`);        // 5
-console.info(`${getLength([1, 2, 3])}`);      // 3
-console.info(`${getLength(new LengthSample(10))}`); // 10
-
-// 编译错误：number类型没有length属性
-console.info(`${getLength(42)}`);
-```
-
-将类型参数约束为某个接口或类，确保泛型函数内可调用该接口定义的方法。
+通过`extends`对类型参数施加约束：用`<T extends SomeInterface>`要求类型参数为指定接口或类的子类型，不满足则编译报错，使泛型在灵活性与类型安全间取得平衡。将类型参数约束为某个接口或类后，泛型函数内即可调用该接口定义的成员。
 
 <!-- @[ts_generic_constraint_serializable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
 
@@ -835,7 +805,7 @@ console.info(`${stringQueue.size()}`);    // 2
 
 ``` TypeScript
 // 通用数组工具函数
-function utilitiesFirst<T>(arr: T[]): T | undefined {
+function getFirst<T>(arr: T[]): T | undefined {
   return arr[0];
 }
 
@@ -861,7 +831,7 @@ function unique<T>(arr: T[]): T[] {
 let utilitiesNumbers: number[] = [1, 2, 3, 4, 5, 3, 2];
 let utilitiesStrings: string[] = ['a', 'b', 'c', 'b', 'a'];
 
-let firstResult: number | undefined = utilitiesFirst(utilitiesNumbers);
+let firstResult: number | undefined = getFirst(utilitiesNumbers);
 console.info(`${firstResult}`);  // 1
 
 let lastResult: string | undefined = last(utilitiesStrings);
@@ -888,7 +858,8 @@ let utilitiesUser: UtilitiesUser = {
   email: 'alice@example.com'
 };
 
-// ArkTS中优先使用明确的属性访问，避免依赖keyof和索引访问类型
+// TypeScript中可借助keyof和索引访问类型编写通用的属性更新函数（如update<T, K extends keyof T>(target: T, key: K, value: T[K])）。
+// ArkTS不支持keyof和索引访问类型，此类场景应改用明确的属性访问，直接修改具体属性。
 function renameUser(target: UtilitiesUser, newName: string): void {
   target.name = newName;
 }
@@ -1078,3 +1049,5 @@ async function gacCreateUser(name: string, email: string): Promise<void> {
 gacFetchUser(1);
 gacCreateUser('Alice', 'alice@example.com');
 ```
+
+需要注意的是，`JSON.parse(result) as T`仅为编译期断言，不做运行时结构校验；生产环境使用前应先校验服务端返回的数据结构，避免把不符的数据当作目标类型使用。

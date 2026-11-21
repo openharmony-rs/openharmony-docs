@@ -1,12 +1,12 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
-description: "介绍ArkTS的内置类型与自定义类型，涵盖类型别名、联合类型、类型操作符、子类型关系及类型守卫与断言的使用。"
-keywords: [ArkTS, 类型, 内置类型, 类型别名, 联合类型, 类型守卫, 类型断言]
+description: "介绍ArkTS的内置类型与自定义类型，涵盖类型别名、联合类型、可空类型与空安全、工具类型、子类型关系、类型守卫、类型断言及类型安全的使用。"
+keywords: [ArkTS, 类型系统, 内置类型, 类型别名, 联合类型, 可空类型, 类型守卫, 类型断言, 类型安全]
 doctype: guide
 status: active
 ---
 
-# 类型
+# 类型系统
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @jokerxd-liu-->
@@ -14,7 +14,7 @@ status: active
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-类型约束了变量、参数和返回值的取值范围与可执行的操作。ArkTS在TypeScript类型系统的基础上强化了静态检查与空安全。本章介绍ArkTS的内置类型与自定义类型、值类型与引用类型的差异、类型操作符、子类型关系，以及类型守卫与类型断言。
+类型约束了变量、参数和返回值的取值范围与可执行的操作。ArkTS在TypeScript类型系统的基础上强化了静态检查与空安全。本章介绍ArkTS的内置类型与自定义类型、值类型与引用类型的差异、工具类型、子类型关系、类型安全的价值，以及类型守卫与类型断言。
 
 ## 内置类型
 
@@ -25,14 +25,16 @@ status: active
 | `number` | 数值，整数与浮点数统一表示 |
 | `boolean` | 逻辑值，`true`或`false` |
 | `string` | 字符串 |
+| `bigint` | 任意精度整数 |
 | `void` | 函数无返回值 |
 | `null` / `undefined` | 空值 / 未定义值 |
 | 字面量类型 | 将特定字面量值本身作为类型 |
 | `object` / `Object` | 非原始类型 / 所有非空类型的根类型 |
+| `never` | 永不存在的值，如总是抛出异常的函数的返回类型 |
 
 ### number、boolean、string
 
-`number`表示IEEE 754双精度浮点数（64位），没有独立的整数类型，支持十进制、十六进制、二进制和八进制字面量。`boolean`表示逻辑值，由比较运算和逻辑运算产生。`string`表示字符串，详见[字符串](arkts-language-guide-strings.md)。
+`number`表示IEEE 754双精度浮点数（64位），没有独立的整数类型，支持十进制、十六进制、二进制和八进制字面量。`boolean`表示逻辑值，由比较运算和逻辑运算产生。为避免JavaScript的类型混淆问题，ArkTS禁止在赋值、参数传递等位置发生`boolean`与其他类型的隐式转换；模板字面量插值（如`${true}`）将布尔值转为字符串输出，不属于此处所说的隐式转换。条件判断时应直接使用布尔表达式，不要将布尔值与其他类型混用。`string`表示字符串，详见[字符串](arkts-language-guide-strings.md)。
 
 <!-- @[builtin_primitive_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -49,6 +51,30 @@ let enabled: boolean = true;
 let appName: string = 'ArkTS';
 ```
 
+### bigint
+
+`bigint`类型表示任意精度的整数，用`n`后缀标记字面量，适合超大整数运算：`bigValue`保存超大整数无精度损失，`nextValue`进行加法运算结果精确。`bigint`不能和`number`直接混合运算，需要通过`BigInt()`显式转换。该类型只支持整数运算，不支持小数。
+
+<!-- @[bigint_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
+
+``` TypeScript
+let bigValue: bigint = 999999999999999999999999999999999999n;
+console.info(`${bigValue.toString()}`);
+
+let nextValue: bigint = bigValue + 1n;
+console.info(`${nextValue.toString()}`);
+```
+
+<!-- @[bigint_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
+
+``` TypeScript
+let bigintCount: number = 10;
+let preciseCount: bigint = BigInt(bigintCount);
+let total: bigint = preciseCount + 20n;
+```
+
+需要注意的是，某些特定的API（如`Date`相关方法）或注解字段可能不支持`bigint`，使用前应确认对应API文档的类型约束；大整数场景应优先使用`bigint`以避免`number`的精度损失。
+
 ### void
 
 `void`表示函数无返回值，用于只执行操作、不返回结果的函数。`void`与`undefined`不同：前者描述函数返回值类型，后者表示值未定义。
@@ -63,7 +89,7 @@ function log(message: string): void {
 
 ### null与undefined
 
-`null`表示有意赋予的空值，`undefined`表示变量未赋值或属性不存在，两者语义不同，需显式区分。建议优先使用`undefined`表示值不存在，仅在明确需要表达空值语义时使用`null`。ArkTS默认开启空安全，`null`和`undefined`不能赋给非可空类型（`let name: string = null`是编译错误），访问可空值前需通过判空检查、可选链（`?.`）或空值合并（`??`）处理，详见[基础知识](arkts-language-guide-basics.md)。
+`null`表示有意赋予的空值，`undefined`表示变量未赋值或属性不存在，两者语义不同，需显式区分。建议优先使用`undefined`表示值不存在，仅在明确需要表达空值语义时使用`null`。ArkTS默认开启空安全，`null`和`undefined`不能赋给非可空类型（`let name: string = null`是编译错误）。访问可空值前需通过判空检查、可选链（`?.`）或空值合并（`??`）处理，详见[基本运算符](arkts-language-guide-basic-operators.md)。
 
 <!-- @[null_undefined_types_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -80,6 +106,24 @@ interface NullableUserProfile {
 let nullableUser: NullableUserProfile = { name: 'Alice' };
 ```
 
+<!-- @[null_undefined_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
+
+``` TypeScript
+// null：有意的空值
+let empty: null = null;
+let nullUndefData: string | null = null;
+
+// undefined：未定义值
+let missing: undefined = undefined;
+let optional: string | undefined = undefined;
+
+// null与undefined区别
+let nickname: string | null = null;     // 明确表示没有昵称
+let title: string | undefined;          // 可能未提供
+```
+
+可空类型（`T | null`/`T | undefined`）与可选属性是表达“值可能不存在”的两种方式：`?`是属性声明时的修饰符（`name?: string`），而可空类型是显式的联合类型标注（`name: string | null`）。
+
 ### 字面量类型
 
 字面量类型将值本身作为类型，限制变量只能取特定字面量值，常与联合类型配合，约束取值范围。`const`声明的常量会推断为字面量类型（如`const pi = 3.14`推断为`3.14`）。
@@ -91,6 +135,10 @@ type TaskState = 'pending' | 'running' | 'done';
 
 let state: TaskState = 'pending';
 // state = 'finished'; // 编译错误：'finished'不是TaskState的成员
+
+// const声明的常量推断为字面量类型
+const pi = 3.14; // 推断为字面量类型 3.14
+let piValue: number = pi; // 字面量类型可赋给 number
 ```
 
 ### object与Object
@@ -119,7 +167,50 @@ if (typeof boxed === 'string') {
 }
 ```
 
-除上述类型外，ArkTS还提供`never`（永不存在的值，如总是抛出异常的函数的返回类型）、`bigint`（任意精度整数）、数组（`T[]`）等类型。各类型的详细介绍参见[基础知识](arkts-language-guide-basics.md)和[集合类型](arkts-language-guide-collection-types.md)。
+### never
+
+`never`类型表示永不存在的值，常作为总是抛出异常或无限循环的函数的返回类型。
+
+<!-- @[never_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
+
+``` TypeScript
+function fail(message: string): never {
+  throw new Error(message);
+}
+
+function assertNever(value: never): never {
+  throw new Error(`Unexpected value: ${value}`);
+}
+
+interface NevCircle {
+  kind: 'circle';
+  radius: number;
+}
+
+interface NevSquare {
+  kind: 'square';
+  sideLength: number;
+}
+
+type NevShape = NevCircle | NevSquare;
+
+function nevShapeArea(shape: NevShape): number {
+  switch (shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius * shape.radius;
+    case 'square':
+      return shape.sideLength * shape.sideLength;
+    default:
+      // 若联合新增成员未在case覆盖，此处编译报错
+      const _check: never = shape;
+      return _check;
+  }
+}
+```
+
+`never`类型常用于两类场景：异常函数总是抛出异常永不返回，以及穷尽性检查——在`switch`的`default`分支中将判别值赋给`never`类型变量（如`const _check: never = value;`，也可将判别值传给`assertNever`这类参数类型为`never`的函数）。当`case`未覆盖联合类型的全部成员时，判别值无法赋给`never`，编译器会报错，从而确保`switch`覆盖所有成员。
+
+数组（`T[]`）作为内置引用类型，其声明、遍历与常用操作详见[集合](arkts-language-guide-collection-types.md)。
 
 ## 自定义类型
 
@@ -273,7 +364,7 @@ console.info(`${scoreA.value}`); // 95（scoreA随之改变）
 
 ### 修改状态对原对象的影响
 
-通过任一引用修改对象的状态，所有指向该对象的引用都能观察到变化，函数传参同样如此：传递引用类型时，函数内修改的是原对象的状态；传递值类型时，函数内只操作副本，不影响外部变量。如需复制对象而非共享引用，需进行浅拷贝或深拷贝，详见[类](arkts-language-guide-classes.md#类的基础概念)。
+通过任一引用修改对象的状态，所有指向该对象的引用都能观察到变化，函数传参同样如此。传递引用类型时，函数内修改的是原对象的状态；传递值类型时，函数内只操作副本，不影响外部变量。如需复制对象而非共享引用，需进行浅拷贝或深拷贝，详见[类](arkts-language-guide-classes.md#类的定义)。
 
 <!-- @[value_reference_mutation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -302,9 +393,9 @@ double(count);
 console.info(`${count}`); // 10（不变）
 ```
 
-## 类型操作符
+## 工具类型
 
-ArkTS支持少量类型层面的工具类型（Utility Types）对已有类型做变换，包括`Partial<T>`、`Required<T>`、`Readonly<T>`和`Record<K, V>`。TypeScript中其他的工具类型（如`Pick<T, K>`、`Omit<T, K>`）在ArkTS中不支持，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持一些utility类型)。
+ArkTS支持少量类型层面的工具类型（Utility Types）对已有类型做变换，仅包括`Partial<T>`、`Required<T>`、`Readonly<T>`和`Record<K, V>`，其他工具类型（如`Pick<T, K>`、`Omit<T, K>`）不支持。
 
 ### Partial与Required
 
@@ -349,7 +440,7 @@ let config: Readonly<AppConfig> = { appId: 'com.example.app', version: '1.0.0' }
 
 ### Record
 
-`Record<K, V>`将键类型K映射到值类型V，键类型`K`可为`string`或`number`，适合表达键值结构。通过索引访问`Record`对象的值时，结果类型是包含`undefined`的联合类型。`Record`的更多用法详见[集合类型](arkts-language-guide-collection-types.md)。
+`Record<K, V>`将键类型K映射到值类型V，键类型`K`只能为`string`或`number`，适合表达键值结构。通过索引访问`Record`对象的值时，结果类型是包含`undefined`的联合类型。`Record`的更多用法详见[集合](arkts-language-guide-collection-types.md)。
 
 <!-- @[record_type_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -366,15 +457,15 @@ let cityMap: Record<string, CityInfo> = {
 let info: CityInfo | undefined = cityMap['Beijing']; // 索引访问结果包含undefined
 ```
 
-此外，交叉类型、条件类型、映射类型、索引访问类型（`T[K]`）等TypeScript类型操作在ArkTS中均不支持。泛型场景下优先使用显式接口、类或泛型约束表达结构，详见[泛型](arkts-language-guide-generics.md)。
+此外，交叉类型、条件类型、映射类型、索引访问类型（`T[K]`）等类型操作在ArkTS中均不支持。泛型场景下优先使用显式接口、类或泛型约束表达结构，详见[泛型](arkts-language-guide-generics.md)。
 
 ## 子类型
 
-若类型S的任意值都可以安全地赋给类型T的变量，则称S是T的子类型。ArkTS不支持结构化类型（即鸭子类型），编译器不通过比较两个类型的结构判定兼容性，类型之间的子类型关系基于显式的继承和`implements`关系，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持-structural-typing)。
+若类型S的任意值都可以安全地赋给类型T的变量，则称S是T的子类型。ArkTS不支持结构化类型（鸭子类型），编译器不通过比较两个类型的结构判定兼容性，类型之间的子类型关系基于显式的继承和`implements`关系。
 
 ### 父子类
 
-子类是父类的子类型。子类实例可隐式赋给父类类型变量（向上转型），转型后只能访问父类声明的成员；父类变量赋给子类变量（向下转型）不是类型安全的，必须使用`as`断言，建议先用`instanceof`确认实际类型。
+子类是父类的子类型。子类实例可隐式赋给父类类型变量（向上转型），转型后只能访问父类声明的成员；父类变量赋给子类变量（向下转型）不是类型安全的：在`instanceof`守卫分支内，变量自动收窄为子类型，可直接赋值（见下方示例）；守卫外必须使用`as`断言，并建议先用`instanceof`确认实际类型。
 
 <!-- @[subtype_class_hierarchy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -413,7 +504,7 @@ creature.speak(); // 'Buddy makes a sound'
 // 向下转型：需先确认实际类型
 if (creature instanceof Hound) {
   let myHound: Hound = creature; // 守卫分支内自动收窄
-  myHound.bark();            // 'Buddy barks: Woof!'
+  myHound.bark(); // 'Buddy barks: Woof!'
 }
 ```
 
@@ -460,9 +551,44 @@ id = displayName;    // OK：string是string | number的子类型
 // displayName = id; // 编译错误：string | number不是string的子类型
 ```
 
+## 类型安全
+
+类型安全在编译期捕获类型错误，减少运行时产生难以排查的问题。编译器拒绝类型不匹配的赋值（如将`string`赋给`number`变量）与类型不匹配的调用，开发者无需等待运行时即可发现错误。
+
+<!-- @[ts_type_mismatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
+
+``` TypeScript
+let typeCheckAge: number = 25;
+typeCheckAge = 'text';  // 编译错误：类型不匹配
+
+function typeCheckAdd(a: number, b: number): number {
+  return a + b;
+}
+
+typeCheckAdd(1, 2);      // 正确
+typeCheckAdd(1, '2');    // 编译错误
+```
+
+类型安全能在编译期提前发现错误、避免运行时崩溃，同时提高代码可读性和重构安全性，并支持DevEco Studio的智能提示。
+
 ## 类型守卫
 
 类型守卫在运行时检查值的实际类型，并在编译时将联合类型收窄为具体类型。在守卫条件成立的分支内，可以直接访问该类型的特有成员，无需类型断言。相比类型断言，类型守卫执行真实的运行时检查，是更安全的类型收窄方式。
+
+### 控制流推断
+
+编译器沿`if`/`else`、`switch`、循环等控制流分支追踪类型变化，在不同分支内将变量收窄为更具体的类型，分支合并后取联合类型。后文的`typeof`、`instanceof`等类型守卫都建立在这一机制之上。
+
+<!-- @[type_inference_control_flow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
+
+``` TypeScript
+let tiValue: string | number = 'hello';
+if (typeof tiValue === 'string') {
+  console.info(tiValue.toUpperCase()); // 此处tiValue收窄为string
+} else {
+  console.info(`${tiValue}`);          // 此处tiValue收窄为number
+}
+```
 
 ### typeof类型守卫
 
@@ -486,8 +612,8 @@ function typeGuardProcessValue(value: string | number | boolean): void {
   }
 }
 
-typeGuardProcessValue('Hello');  // 字符串长度: 5, 大写: HELLO
-typeGuardProcessValue(42);       // 数值: 42.00, 平方: 1764
+typeGuardProcessValue('Hello');  // 输出两行：字符串长度: 5 / 大写: HELLO
+typeGuardProcessValue(42);       // 输出两行：数值: 42.00 / 平方: 1764
 typeGuardProcessValue(true);     // 布尔值: 真
 ```
 
@@ -537,13 +663,13 @@ function makeSound(pet: TypeGuardDog | Cat): void {
 let myDog = new TypeGuardDog('Buddy');
 let myCat = new Cat('Whiskers');
 
-makeSound(myDog); // Pet name: Buddy, Buddy barks: Woof!
-makeSound(myCat); // Pet name: Whiskers, Whiskers meows: Meow!
+makeSound(myDog); // 输出两行：Pet name: Buddy / Buddy barks: Woof!
+makeSound(myCat); // 输出两行：Pet name: Whiskers / Whiskers meows: Meow!
 ```
 
 ## 类型断言
 
-类型断言告知编译器“把这个值当作指定类型”使用。ArkTS中`as`是类型断言的唯一语法（`value as Type`），不支持TypeScript的尖括号语法`<Type>value`，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#类型转换仅支持as-t语法)。
+类型断言告知编译器“把这个值当作指定类型”使用。ArkTS中`as`是类型断言的唯一语法（`value as Type`），不支持尖括号语法`<Type>value`。对可能为空的值，可用非空断言运算符（`!`）断言其不为`null`或`undefined`，其用法与使用限制见[非空断言运算符](arkts-language-guide-basic-operators.md#非空断言运算符)。
 
 ### as关键字语法
 
@@ -591,18 +717,28 @@ console.info(`${num.toFixed(2)}`); // 123.00
 
 ### 类型断言的使用限制
 
-类型断言受两层限制：编译期，不相关的类型之间不能断言；运行期，断言类型与实际类型不匹配时抛出ClassCastException。因此优先使用类型守卫收窄类型，守卫分支内无需断言；确需断言时，应先确保值的实际类型与断言类型一致。
+类型断言受两层限制。编译期，不相关的类型之间不能断言；运行时，断言类型与实际类型不匹配时，访问目标类型特有的方法会触发运行时错误，属性访问则返回undefined。因此优先使用类型守卫收窄类型，守卫分支内无需断言；确需断言时，应先确保值的实际类型与断言类型一致。
 
-<!-- @[assertion_runtime_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
+<!-- @[assertion_runtime_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
-let checkValue: Object = 'hello';
+class ShapeBase {
+  public name: string = 'shape';
+}
 
-// 运行时抛出ClassCastException：实际类型string与断言类型number不匹配
-// let wrong: number = checkValue as number;
+class RoundShape extends ShapeBase {
+  public draw(): void {
+    console.info(`draw ${this.name}`);
+  }
+}
 
-// 正确做法：先确认实际类型
-if (typeof checkValue === 'string') {
-  console.info(`${checkValue.length}`); // 5
+let checkShape: ShapeBase = new ShapeBase();
+
+let wrongCircle: RoundShape = checkShape as RoundShape;
+// wrongCircle.draw(); // 运行时错误：调用RoundShape成员会触发运行时类型检查失败
+
+// 正确做法：先确认实际类型再访问
+if (checkShape instanceof RoundShape) {
+  checkShape.draw();
 }
 ```

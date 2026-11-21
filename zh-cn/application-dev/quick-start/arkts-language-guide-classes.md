@@ -16,13 +16,13 @@ status: active
 
 类是面向对象编程的核心概念，用于封装数据和行为。ArkTS提供完整的类支持，包括属性、方法、构造函数、继承、访问控制、抽象类、装饰器等特性。
 
-## 类的基础概念
+## 类的定义
 
 类是面向对象编程的基本构造，封装数据（属性）和行为（方法），通过构造函数初始化实例。
 
 **类的定义语法**
 
-使用`class`关键字定义类，在花括号内声明属性、构造函数和方法。类可以作为类型标注使用；空类没有成员，应避免定义。
+使用`class`关键字定义类，在花括号内声明属性、构造函数和方法。类可以作为类型标注使用；空类没有成员，通常应避免定义无明确用途的空类，空子类可用于类型标记和为未来扩展预留继承位置（详见[类的继承](#类的继承)章节）。
 
 <!-- @[class_basic_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -287,35 +287,11 @@ console.info(`${pe1 === pe2}`);      // false
 console.info(`${pe1.equals(pe2)}`);  // true
 ```
 
-**类之间的类型关系**
-
-TypeScript中类之间的类型兼容性基于结构类型（鸭子类型），结构相同的类可互相替代，即使没有显式继承关系。**ArkTS不支持结构类型**，类之间的赋值必须有显式继承或`implements`关系。
-
-**TypeScript对照**
-
-<!-- @[ts_structural_typing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
-
-``` TypeScript
-// TypeScript结构类型，ArkTS不支持
-class TsRelPoint1 {
-  public x: number = 0;
-  public y: number = 0;
-}
-
-class TsRelPoint2 {
-  public x: number = 0;
-  public y: number = 0;
-}
-
-// 结构相同，可互相赋值（ArkTS不支持）
-let tsRelP1: TsRelPoint1 = new TsRelPoint2();
-let tsRelP2: TsRelPoint2 = new TsRelPoint1();
-console.info(`${tsRelP1.x}`);
-```
+**ArkTS不支持结构类型（鸭子类型）**，类之间的赋值必须有显式继承或`implements`关系，结构相同的类不能互相替代。
 
 **嵌套类型**
 
-TypeScript和ArkTS都不支持在类内部声明类。需要把只服务于某个外部类型的辅助类型收束在一起时，应在模块级别与主类并列声明，通过命名体现归属关系；辅助类需要访问外部类的实例数据时，通过构造函数传入引用。
+ArkTS不支持在类内部声明类。需要把只服务于某个外部类型的辅助类型收束在一起时，应在模块级别与主类并列声明，通过命名体现归属关系；辅助类需要访问外部类的实例数据时，通过构造函数传入引用。
 
 <!-- @[nested_type_grouping](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -348,7 +324,7 @@ let ntResult: ProcessorResult = ntProcessor.process('hello');
 console.info(`${ntResult.isSuccess()}`); // true
 ```
 
-ArkTS不支持类表达式（将类赋值给变量），必须使用类声明，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持使用类表达式)。
+ArkTS不支持类表达式（将类赋值给变量），必须使用类声明。
 
 ## 类的属性
 
@@ -402,7 +378,7 @@ console.info(`${counter.getCount().toString()}`);  // 1
 
 ### 静态属性
 
-静态属性使用`static`关键字声明，属于类本身而非实例。静态属性在类加载时创建，由所有实例共享，通过`类名.属性名`访问，无需创建实例。实例属性随实例创建而存在，需要通过实例访问，两者在访问方式和生命周期上有明显区别。静态属性适合全局状态管理等类级别数据，无论创建多少实例，静态属性都只有一个副本。
+静态属性使用`static`关键字声明，属于类本身而非实例。静态属性在类加载时创建，由所有实例共享，通过`类名.属性名`访问，无需创建实例。实例属性随实例创建而存在，需要通过实例访问。两者在访问方式和生命周期上有明显区别：静态属性适合全局状态管理等类级别数据，无论创建多少实例都只有一个副本。
 
 <!-- @[instance_vs_static_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
 
@@ -457,41 +433,21 @@ console.info(`${Configuration.instanceCount}`); // 2
 <!-- @[static_block](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
 ``` TypeScript
-class TsStaticConfig {
+class StaticConfig {
   private static count: number = 0;
 
   static {
     try {
       let data: string[] = ['a', 'b', 'c'];
-      TsStaticConfig.count = data.length;
+      StaticConfig.count = data.length;
     } catch (e) {
-      TsStaticConfig.count = 0;
+      StaticConfig.count = 0;
     }
   }
 }
 ```
 
 **特殊静态成员名称**：类本身是函数，不能使用与`Function`原型冲突的静态成员名称，`name`、`length`、`call`等不能用作静态属性名。
-
-**TypeScript对照**
-
-<!-- @[ts_special_static_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
-
-``` TypeScript
-class TsSsnConfig {
-  static version: string = '1.0';
-
-  static name: string = 'Config';  // 编译错误：与Function.name冲突
-  static length: number = 0;       // 编译错误：与Function.length冲突
-
-  static getConfigName(): string {
-    return 'Config';
-  }
-}
-
-console.info(`${TsSsnConfig.version}`);
-console.info(`${TsSsnConfig.getConfigName()}`);
-```
 
 ### 计算属性
 
@@ -1132,27 +1088,6 @@ console.info(`${converter.fromNumber(200)}`);      // 200
 
 将类方法赋值给变量后调用，`this`会丢失绑定，直接调用会产生运行时错误。
 
-**TypeScript对照**
-
-<!-- @[ts_runtime_this_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，演示this丢失的运行时错误
-class TsThisExample {
-  public name: string = 'MyClass';
-
-  getName(): string {
-    return this.name;
-  }
-}
-
-let tsThisEx: TsThisExample = new TsThisExample();
-console.info(`${tsThisEx.getName()}`);  // 'MyClass'
-
-let tsThisG = tsThisEx.getName;
-tsThisG();  // 运行时错误：Cannot read property name of undefined
-```
-
 使用箭头函数属性可绑定`this`，在创建时固定`this`指向；注意箭头函数属性每个实例都有一份函数副本，无法通过`super`调用基类方法。
 
 <!-- @[arrow_function_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
@@ -1193,25 +1128,7 @@ ArkTS对`this`有以下使用限制：
 - 不支持`this`类型。
 - 不支持在函数和类的静态方法中使用`this`。
 
-**TypeScript对照**
-
-<!-- @[ts_this_usage_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
-
-``` TypeScript
-class TsThisLimitA {
-  public n: number = 0;
-  f1(arg1: this) {} // 编译错误：不支持this类型（arkts-no-typing-with-this）
-  static f2(arg1: number): void {
-    this.n = arg1;  // 编译错误：不支持在静态方法中使用this
-  }
-}
-
-function foo(arg1: number) {
-  this.n = arg1;    // 编译错误：不支持在函数中使用this
-}
-```
-
-TypeScript中`this`作为返回类型（如`append(text: string): this`）可用于链式调用。ArkTS不支持`this`作为类型标注，使用显式类名作为返回类型实现同样的链式调用效果。
+ArkTS不支持`this`作为返回类型标注（如`append(text: string): this`），需使用显式类名作为返回类型实现链式调用。
 
 <!-- @[string_builder_explicit_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -1446,25 +1363,7 @@ let derived: Derived = new Derived();
 console.info(`${derived.publicValue}`);  // 1（public可访问）
 ```
 
-**ES私有字段（#field）**：TypeScript支持`#`前缀的私有字段，提供运行时也私有的成员；与`private`关键字不同，`#field`在编译后仍保持私有。ArkTS中使用`private`修饰符替代，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持以开头的私有字段)。
-
-**TypeScript对照**
-
-<!-- @[ts_private_fields](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，ArkTS中使用private修饰符替代
-class TsDog {
-  #barkAmount: number = 0;
-  public personality: string = 'happy';
-
-  bark(): void {
-    this.#barkAmount++;
-  }
-}
-```
-
-ArkTS中使用`private`修饰符。
+**ES私有字段（#field）**：ArkTS不支持`#`前缀的私有字段，使用`private`修饰符声明私有成员。
 
 <!-- @[private_field_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -1633,23 +1532,7 @@ let color1: Color = new Color('#FF0000');
 let color2: Color = new Color(255, 128, 0);
 ```
 
-**参数属性**：TypeScript支持在构造函数参数前添加访问修饰符（`public`、`private`、`protected`、`readonly`），编译器自动声明并赋值对应属性。**ArkTS不支持参数属性语法**，需显式声明属性并在构造函数中赋值。
-
-**TypeScript对照**
-
-<!-- @[ts_parameter_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
-
-``` TypeScript
-// TypeScript写法，ArkTS不支持构造函数参数属性
-class TsPoint {
-  constructor(public x: number, public y: number) {}
-}
-
-let tsPt: TsPoint = new TsPoint(3, 4);
-console.info(`${tsPt.x}, ${tsPt.y}`); // 3, 4
-```
-
-ArkTS替代方式：显式声明属性并在构造函数中赋值。
+**参数属性**：ArkTS不支持在构造函数参数前添加访问修饰符来自动声明属性（参数属性语法），需显式声明属性并在构造函数中赋值。
 
 <!-- @[explicit_property_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
@@ -1857,55 +1740,7 @@ let product: Product = { id: 1, name: 'Item', price: 100 };
 
 ### 未初始化检查
 
-ArkTS编译器强制执行属性初始化检查（等效于TypeScript的`strictPropertyInitialization`选项，但ArkTS中不可关闭）：所有非可选属性必须在声明时或构造函数中被赋值，否则编译报错；可选属性（`?`）不要求初始化。
-
-**TypeScript对照**
-
-<!-- @[ts_required_properties_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Initialization.ts) -->
-
-``` TypeScript
-class StrictInitialization {
-  // 必需属性：必须初始化
-  public name: string;  // 编译错误：未初始化
-  public age: number;   // 编译错误：未初始化
-  
-  constructor() {
-    // 未初始化name和age
-    // TypeScript会报编译错误（TS2564）
-  }
-  
-  // 正确做法：初始化所有属性
-  correctConstructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-
-class ProperInitialization {
-  // 声明时初始化
-  public name: string = '';
-  public age: number = 0;
-  
-  constructor() {
-    // 属性已初始化
-  }
-}
-
-class OptionalInitialization {
-  // 可选属性：可不初始化
-  public name?: string;
-  public age?: number;
-  
-  constructor() {
-    // 可选属性允许未初始化
-  }
-  
-  initialize(name: string, age: number): void {
-    this.name = name;
-    this.age = age;
-  }
-}
-```
+ArkTS编译器强制执行属性初始化检查且不可关闭：所有非可选属性必须在声明时或构造函数中被赋值，否则编译报错；可选属性（`?`）不要求初始化。
 
 通过确保属性有值、使用空值合并（`??`）和可选链（`?.`）等安全访问方式，避免`undefined`异常。
 
@@ -1954,9 +1789,7 @@ class SafeInitialization {
 
 ## 类的继承
 
-通过`extends`关键字，子类继承父类的属性与方法，在构造函数中调用`super()`复用父类初始化逻辑，并可覆盖或新增方法以扩展父类行为。基类（父类）提供通用成员供复用，派生类（子类）在继承的基础上特化扩展。ArkTS只支持单继承，一个子类只能`extends`一个父类。
-
-继承让子类复用父类成员以减少重复代码、随父类修改自动同步提升可维护性，并通过方法覆盖实现多态、建立清晰的类型层次。
+继承让子类复用父类成员以减少重复代码。通过`extends`关键字，子类继承父类的属性与方法，在构造函数中调用`super()`复用父类初始化逻辑，并可覆盖或新增方法以扩展父类行为。基类（父类）提供通用成员供复用，派生类（子类）在继承的基础上特化扩展。ArkTS只支持单继承，一个子类只能`extends`一个父类。
 
 <!-- @[basic_inheritance_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
 
@@ -2002,110 +1835,6 @@ let dog: Dog = new Dog('Max', 'Labrador');
 dog.speak();   // 'Max barks'（覆盖方法）
 dog.move();    // 'Max moves'（继承方法）
 dog.fetch();   // 'Max fetches the ball'（新增方法）
-```
-
-通过继承复用父类的属性和方法，可以避免在多个子类中重复编写相同逻辑。
-
-<!-- @[inheritance_code_reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
-
-``` TypeScript
-// 不使用继承：重复代码
-class DogWithoutInheritance {
-  public name: string;
-  public age: number;
-  
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-  
-  eat(): void {
-    console.info(`${this.name} is eating`);
-  }
-  
-  sleep(): void {
-    console.info(`${this.name} is sleeping`);
-  }
-  
-  bark(): void {
-    console.info(`${this.name} is barking`);
-  }
-}
-
-class CatWithoutInheritance {
-  public name: string;
-  public age: number;
-  
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-  
-  eat(): void {
-    console.info(`${this.name} is eating`);  // 重复代码
-  }
-  
-  sleep(): void {
-    console.info(`${this.name} is sleeping`);  // 重复代码
-  }
-  
-  meow(): void {
-    console.info(`${this.name} is meowing`);
-  }
-}
-
-// 使用继承：代码复用
-class ReuseAnimal {
-  public name: string;
-  public age: number;
-  
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-  
-  // 公共方法：子类复用
-  eat(): void {
-    console.info(`${this.name} is eating`);
-  }
-  
-  sleep(): void {
-    console.info(`${this.name} is sleeping`);
-  }
-}
-
-class ReuseDog extends ReuseAnimal {
-  constructor(name: string, age: number) {
-    super(name, age);
-  }
-  
-  // 特有方法
-  bark(): void {
-    console.info(`${this.name} is barking`);
-  }
-}
-
-class Cat extends ReuseAnimal {
-  constructor(name: string, age: number) {
-    super(name, age);
-  }
-  
-  // 特有方法
-  meow(): void {
-    console.info(`${this.name} is meowing`);
-  }
-}
-
-let reuseDog: ReuseDog = new ReuseDog('Max', 3);
-let cat: Cat = new Cat('Whiskers', 2);
-
-reuseDog.eat();    // 复用父类方法
-reuseDog.sleep();  // 复用父类方法
-reuseDog.bark();   // 子类特有方法
-
-cat.eat();    // 复用父类方法
-cat.sleep();  // 复用父类方法
-cat.meow();   // 子类特有方法
 ```
 
 空子类是不添加新成员的子类，常用于类型标记（通过`instanceof`做运行时区分）和为未来扩展预留继承位置；空子类无需显式声明构造函数，创建实例时隐式调用父类构造函数。
@@ -2169,7 +1898,9 @@ class FutureFeature extends Base {
 }
 ```
 
-**成员继承规则**：子类自动继承父类的`public`和`protected`成员；`private`成员不可继承，子类无法直接访问，只能通过父类提供的`public`方法间接调用。
+### 成员继承规则
+
+子类自动继承父类的`public`和`protected`成员以复用其实现；`private`成员不可继承，子类无法直接访问，只能通过父类提供的`public`方法间接调用。
 
 <!-- @[ts_access_modifier_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
 
@@ -2426,106 +2157,11 @@ multiLevelChild.methodGrandParent();     // 'MultiLevelParent overrides GrandPar
 // 反例：继承层级过深，增加复杂度
 ```
 
-**原型链**：原型链是类继承的底层机制，`prototype`对象存放所有实例共享的方法。访问实例成员时，引擎沿原型链从实例自身逐级向上查找：先在自身定义中匹配，未命中则依次查找父类、祖父类，直至命中为止；子类同名成员会覆盖父类成员。ArkTS通过`class extends`自动维护原型链，不支持直接操作`prototype`属性，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持在原型上赋值)。
-
-<!-- @[prototype_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
-
-``` TypeScript
-class PcGrandParent {
-  methodA(): void {
-    console.info('GrandParent A');
-  }
-}
-
-class PcParent extends PcGrandParent {
-  methodB(): void {
-    console.info('Parent B');
-  }
-}
-
-class PcChild extends PcParent {
-  methodC(): void {
-    console.info('Child C');
-  }
-}
-
-let pcChild: PcChild = new PcChild();
-
-// 原型链查找
-pcChild.methodA();  // GrandParent（继承）
-pcChild.methodB();  // Parent（继承）
-pcChild.methodC();  // Child（自身）
-
-// 方法覆盖
-class PcParent2 {
-  method(): void {
-    console.info('Parent method');
-  }
-}
-
-class PcChild2 extends PcParent2 {
-  method(): void {
-    console.info('Child method');
-    super.method();
-  }
-}
-
-let pcChild2: PcChild2 = new PcChild2();
-pcChild2.method();
-```
+ArkTS通过`class extends`自动维护原型链，不支持直接操作`prototype`属性，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持在原型上赋值)。
 
 ### `super`关键字的使用
 
 子类构造函数必须先通过`super()`调用父类构造函数完成父类部分初始化，再初始化子类自身属性。`super()`须在构造函数体中、任何`this`访问之前调用（其前可以有不含`this`的语句），参数须匹配父类构造函数签名；若子类未定义构造函数，编译器会自动生成调用父类构造函数的代码。
-
-**TypeScript对照**
-
-<!-- @[ts_super_call_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Initialization.ts) -->
-
-``` TypeScript
-class Vehicle {
-  public brand: string;
-
-  constructor(brand: string) {
-    this.brand = brand;
-    console.info(`Vehicle constructor`);
-  }
-}
-
-class Car extends Vehicle {
-  public model: string;
-
-  constructor(brand: string, model: string) {
-    super(brand);  // 必须先调用super()
-    this.model = model;
-    console.info(`Car constructor`);
-  }
-
-  getInfo(): string {
-    return `${this.brand} ${this.model}`;
-  }
-}
-
-let car: Car = new Car('Toyota', 'Camry');
-// 输出：'Vehicle constructor', 'Car constructor'
-
-// super() 规则：
-// 1. 子类构造函数必须调用super()
-// 2. super() 必须在访问this之前调用（不一定是第一行）
-// 3. super() 参数匹配父类构造函数
-
-class InvalidChild extends Vehicle {
-  public model: string;
-
-  constructor(brand: string, model: string) {
-    this.model = model;  // 编译错误：super() 未调用
-
-    super(brand);  // 必须在访问this之前
-
-    this.model = model;  // 正确
-  }
-}
-```
 
 子类构造函数通过`super(...)`将参数转发给父类构造函数，也可在传递前对参数做默认值处理或类型转换。
 
@@ -2710,61 +2346,42 @@ StaticChild.callViaSuper();         // 'Base static method'
 // 可通过super调用父类静态方法
 ```
 
-`super`的使用限制：`super()`须在任何`this`访问之前调用；不能通过`super`直接访问父类实例属性（应使用`this`访问）；`super`只能用于上述调用场景。
+**`super`的使用限制**：`super()`须在任何`this`访问之前调用；不能通过`super`直接访问父类实例属性（应使用`this`访问）；`super`只能用于上述调用场景。
 
-**TypeScript对照**
-
-<!-- @[ts_super_usage_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @[super_usage_restrictions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
 
 ``` TypeScript
-class SuperBase {
-  public value: number = 10;
+class RestrictionParent {
+  public name: string;
 
-  method(): void {
-    console.info(`Base method`);
+  constructor(name: string) {
+    this.name = name;
   }
 
-  static staticMethod(): void {
-    console.info(`Base static method`);
+  greet(): void {
+    console.info(`Parent: ${this.name}`);
+  }
+}
+
+class RestrictionChild extends RestrictionParent {
+  public age: number;
+
+  constructor(name: string, age: number) {
+    // this.age = age;  // 错误：super()调用之前不能访问this
+    super(name);        // 限制一：super()须在任何this访问之前调用
+    this.age = age;     // super()之后才可访问this
+  }
+
+  override greet(): void {
+    super.greet();  // 限制三：super只用于super()与super.方法名()调用场景
+    // console.info(`${super.name}`);  // 限制二：不能通过super访问父类实例属性，应使用this
+    // let parentRef = super;          // 错误：super不能单独引用
+    console.info(`Child: ${this.name}, ${this.age}`);
   }
 }
 
-class SuperChild extends SuperBase {
-  public value: number = 20;
-
-  method(): void {
-    // super调用父类方法
-    super.method();  // 正确
-
-    // super不能直接访问父类实例属性
-    console.info(`${super.value}`);  // 编译错误：不能通过super访问父类实例属性，应使用this访问
-
-    // 应使用this或父类名访问属性
-    console.info(`${this.value}`);          // 20（子类属性）
-    console.info(`${SuperChild.prototype.value}`); // 反例：不应通过prototype访问属性
-  }
-
-  anotherMethod(): void {
-    // super只能调用方法
-    super.method();
-
-    // 不能用于其他场景
-    let base: SuperBase = super;  // 编译错误
-    return super;  // 编译错误
-  }
-
-  static childStaticMethod(): void {
-    // 静态方法中使用super调用父类静态方法
-    super.staticMethod();
-
-    // 也可使用类名调用
-    SuperBase.staticMethod();
-  }
-
-  constructor() {
-    super();  // 构造函数中使用super() 调用父类构造
-  }
-}
+let restrictionChild: RestrictionChild = new RestrictionChild('Alice', 25);
+restrictionChild.greet();  // 输出两行：Parent: Alice / Child: Alice, 25
 ```
 
 ### `override`关键字和方法覆盖
@@ -2783,8 +2400,8 @@ class Base {
 }
 
 class Derived extends Base {
-  // TypeScript使用override标记（可选）
-  method(): void {
+  // 推荐使用override关键字标记覆盖方法
+  override method(): void {
     console.info('Derived method');
   }
 }
@@ -2823,110 +2440,9 @@ class FileLogger extends Logger {
 }
 ```
 
-覆盖方法的参数和返回值必须与父类方法保持匹配，确保类型安全。
-
-**TypeScript对照**
-
-<!-- @[ts_method_signature_match](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
-
-``` TypeScript
-class NumberProcessor {
-  process(value: number): number {
-    return value * 2;
-  }
-
-  convert(input: string): number {
-    return Number.parseInt(input, 10);
-  }
-}
-
-class AdvancedProcessor extends NumberProcessor {
-  // 参数和返回值必须完全匹配
-  process(value: number): number {
-    return value * 3;  // 返回值类型相同
-  }
-
-  // 返回值兼容（子类返回类型可以是父类返回值的子类型）
-  convert(input: string): number {
-    let result: number = super.convert(input);
-    return result * 10;
-  }
-
-  // 不能改变参数类型
-  process(value: string): number {}  // 编译错误
-
-  // 不能改变参数数量
-  process(value: number, extra: number): number {}  // 编译错误
-
-  // 不能改变返回类型为不兼容类型
-  process(value: number): string {}  // 编译错误
-}
-
-let processor: AdvancedProcessor = new AdvancedProcessor();
-
-console.info(`${processor.process(5).toString()}`);      // 15
-console.info(`${processor.convert('10').toString()}`);   // 100
-
-// 父类引用指向子类实例
-let baseProcessor: NumberProcessor = new AdvancedProcessor();
-console.info(`${baseProcessor.process(5).toString()}`);  // 15（调用子类覆盖方法）
-```
-
-覆盖方法不能降低访问权限，只能保持或提升权限。
-
-**TypeScript对照**
-
-<!-- @[ts_override_access_modifiers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
-
-``` TypeScript
-class Base {
-  // public方法
-  public publicMethod(): void {
-    console.info(`Base public`);
-  }
-
-  // protected方法
-  protected protectedMethod(): void {
-    console.info(`Base protected`);
-  }
-
-  // private方法（不能覆盖）
-  private privateMethod(): void {
-    console.info(`Base private`);
-  }
-
-  protected loweredPublicMethod(): void {}
-}
-
-class Derived extends Base {
-  // 覆盖public方法：保持public
-  public publicMethod(): void {
-    console.info(`Derived public`);
-  }
-
-  // 覆盖protected方法：可保持protected或改为public
-  public protectedMethod(): void {
-    console.info(`Derived public (was protected)`);
-  }
-
-  // 不能覆盖private方法
-  // private privateMethod(): void {}  // 编译错误
-
-  // 不能降低访问权限
-  // private loweredPublicMethod(): void {}  // 编译错误：不能从protected改为private
-
-  callProtected(): void {
-    this.protectedMethod();  // 可访问父类protected
-  }
-}
-
-let derived: Derived = new Derived();
-derived.publicMethod();        // 'Derived public'
-derived.protectedMethod();     // 'Derived public (was protected)'
-derived.callProtected();       // 'Derived public (was protected)'
-```
-
-覆盖父类方法时，可以完全覆盖改变行为，也可以通过`super.方法名()`调用父类实现并添加新逻辑。
+- 覆盖方法的参数和返回值必须与父类方法保持匹配，以确保类型安全。
+- 覆盖不能降低访问权限，只能保持或提升。
+- 覆盖时既可以完全改变行为，也可以通过`super.方法名()`调用父类实现并添加新逻辑。
 
 <!-- @[override_and_extend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
 
@@ -2958,9 +2474,9 @@ class DetailedLogger extends ExtendLogger {
 
 let detailed: DetailedLogger = new DetailedLogger();
 
-detailed.log('test');           // [DETAIL] test, Timestamp: ...
-detailed.logWithParent('test'); // [LOG] test, Additional info...
-detailed.logError('failed');    // '[DETAIL] ERROR: failed'
+detailed.log('test');           // 输出两行：[DETAIL] test / Timestamp: ...
+detailed.logWithParent('test'); // 输出两行：[LOG] test / Additional info for test
+detailed.logError('failed');    // 输出两行：[DETAIL] ERROR: failed / Timestamp: ...
 
 // 父类引用
 let logger: ExtendLogger = new DetailedLogger();
@@ -3036,160 +2552,9 @@ for (let shape of shapes) {
 }
 ```
 
-### 抽象类和接口
+### 多继承的限制与替代方案
 
-抽象类使用`abstract`关键字声明，不能被实例化，用于定义子类的通用模板和契约：抽象方法（`abstract`修饰）强制子类实现，具体方法提供默认实现供子类继承或覆盖。
-
-**TypeScript对照**
-
-<!-- @[ts_abstract_class_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
-
-``` TypeScript
-// 抽象类定义：不能实例化，只能继承
-abstract class Animal {
-  public name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-
-  // 抽象方法：子类必须实现
-  abstract speak(): void;
-
-  // 具体方法：子类可继承
-  move(): void {
-    console.info(`${this.name} is moving`);
-  }
-
-  // 具体方法：提供默认实现
-  sleep(): void {
-    console.info(`${this.name} is sleeping`);
-  }
-}
-
-// 子类实现抽象类
-class Dog extends Animal {
-  public breed: string;
-
-  constructor(name: string, breed: string) {
-    super(name);
-    this.breed = breed;
-  }
-
-  // 实现抽象方法
-  speak(): void {
-    console.info(`${this.name} barks`);
-  }
-
-  // 覆盖具体方法
-  move(): void {
-    console.info(`${this.name} runs`);
-  }
-}
-
-class Cat extends Animal {
-  public color: string;
-
-  constructor(name: string, color: string) {
-    super(name);
-    this.color = color;
-  }
-
-  // 实现抽象方法
-  speak(): void {
-    console.info(`${this.name} meows`);
-  }
-}
-
-// 不能实例化抽象类
-let animal: Animal = new Animal('Test');  // 编译错误
-
-// 通过子类使用
-let dog: Dog = new Dog('Max', 'Labrador');
-let cat: Cat = new Cat('Whiskers', 'Orange');
-
-dog.speak();  // Max barks（实现的方法）
-dog.move();   // Max runs（覆盖的方法）
-dog.sleep();  // Max is sleeping（继承的方法）
-
-cat.speak();  // Whiskers meows（实现的方法）
-cat.move();   // Whiskers is moving（继承的方法）
-cat.sleep();  // Whiskers is sleeping（继承的方法）
-```
-
-`implements`子句用于检查类是否满足接口契约。与`extends`不同，`implements`仅做类型检查，不继承实现；一个类可以同时使用`extends`和`implements`，也可以实现多个接口。
-
-<!-- @[implements_clause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
-
-``` TypeScript
-interface InhComparable {
-  compareTo(other: Object): number;
-}
-
-class InhProduct implements InhComparable {
-  public price: number;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-
-  compareTo(other: Object): number {
-    if (other instanceof InhProduct) {
-      return this.price - other.price;
-    }
-    return 0;
-  }
-}
-
-class InhDiscountedProduct extends InhProduct implements InhComparable {
-  public discount: number;
-
-  constructor(price: number, discount: number) {
-    super(price);
-    this.discount = discount;
-  }
-
-  getFinalPrice(): number {
-    return this.price * (1 - this.discount);
-  }
-}
-```
-
-ArkTS只支持单继承，不支持多继承（如`class C extends A, B`会编译报错）。限制为单继承的原因是：多继承会引入菱形继承问题——当两个父类定义了同名方法时，子类无法确定继承哪一个，导致歧义。需要组合多个类型的行为时，使用`implements`实现多个接口替代多继承，接口只定义契约不包含实现，不会产生冲突。
-
-**TypeScript对照**
-
-<!-- @[ts_single_inheritance_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
-
-``` TypeScript
-// ArkTS只支持单继承：一个子类只能有一个父类
-class ParentA {
-  methodA(): void {
-    console.info(`Method A`);
-  }
-}
-
-class ParentB {
-  methodB(): void {
-    console.info(`Method B`);
-  }
-}
-
-// 不能同时继承ParentB
-class ErrorChild extends ParentA, ParentB {}  // 编译错误
-
-// 单继承：只能继承一个父类
-class Child extends ParentA {
-  // 可以继承ParentA
-  methodA(): void {
-    super.methodA();
-    console.info(`Child overrides Method A`);
-  }
-}
-
-let child: Child = new Child();
-child.methodA();  // 'Method A', 'Child overrides Method A'
-```
+ArkTS只支持单继承，不支持多继承（如`class C extends A, B`会编译报错）。限制为单继承的原因是：多继承会引入菱形继承问题——当两个父类定义了同名方法时，子类无法确定继承哪一个，导致歧义。需要组合多个类型的行为时，使用`implements`实现多个接口替代多继承。接口只定义契约不包含实现，不会产生冲突。ArkTS同样不支持Mixin模式，复用多个类的实现逻辑时应使用组合。类与接口结合的用法详见[接口与类的结合](arkts-language-guide-interfaces.md#接口与类的结合)。
 
 通过实现多个接口，组合多种行为契约。
 
@@ -3220,88 +2585,48 @@ multi.methodA();
 multi.methodB();
 ```
 
-TypeScript可通过Mixin模式在运行时向类混入多个行为。**ArkTS不支持Mixin模式**，需要复用多个类的实现逻辑时，使用组合模式（在一个类中持有其他类的实例并委托调用）或接口实现替代。
+## 抽象类
 
-**TypeScript对照**
+抽象类使用`abstract`关键字声明，不能被实例化，用于定义子类的通用模板和契约：抽象方法（`abstract`修饰）强制子类实现，具体方法提供默认实现供子类继承或覆盖。
 
-<!-- @[ts_mixins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
-
-``` TypeScript
-// TypeScript写法，ArkTS不支持Mixin模式
-class TsBaseWidget {
-  public id: number = 0;
-}
-
-function Scoped(Base: typeof TsBaseWidget) {
-  return class extends Base {
-    public scope: string = 'local';
-  };
-}
-
-let ScopedWidget = Scoped(TsBaseWidget);
-let tsWidget = new ScopedWidget();
-console.info(`${tsWidget.scope}`); // 'local'
-```
-
-ArkTS替代：组合模式。
-
-<!-- @[mixin_composition_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @[abstract_class_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
 
 ``` TypeScript
-interface MixinLoggable {
-  log(message: string): void;
-}
+// 抽象类：不能实例化，只能作为父类被继承
+abstract class AbsShape {
+  public name: string;
 
-class MixinConsoleLogger implements MixinLoggable {
-  log(message: string): void {
-    console.info(`[LOG] ${message}`);
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  // 抽象方法：不提供实现，强制子类实现
+  abstract area(): number;
+
+  // 具体方法：提供默认实现，子类可直接继承或覆盖
+  public describe(): string {
+    return `${this.name}的面积为${this.area()}`;
   }
 }
 
-class MixinService {
-  public logger: MixinLoggable;
+class AbsRectangle extends AbsShape {
+  public width: number;
+  public height: number;
 
-  constructor(logger: MixinLoggable) {
-    this.logger = logger;
+  constructor(name: string, width: number, height: number) {
+    super(name);
+    this.width = width;
+    this.height = height;
   }
 
-  processData(data: string): void {
-    this.logger.log(`Processing: ${data}`);
-  }
-}
-
-let mixinService: MixinService = new MixinService(new MixinConsoleLogger());
-mixinService.processData('test'); // '[LOG] Processing: test'
-```
-
-**继承内置类型**：继承`Error`、`Array`等内置类型在ES5 target下可能遇到原型链问题，需要手动修复。ArkTS不支持`Object.setPrototypeOf`和`prototype`操作，继承内置类型时优先使用组合而非继承。
-
-**TypeScript对照**
-
-<!-- @[ts_inherit_builtin_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，演示继承Error时修复原型链
-class InhAppError extends Error {
-  public code: number;
-
-  constructor(message: string, code: number) {
-    super(message);
-    this.code = code;
-
-    // 修复原型链（target为ES5时需要）
-    Object.setPrototypeOf(this, InhAppError.prototype);
-  }
-
-  getInfo(): string {
-    return `[${this.code}] ${this.message}`;
+  area(): number {
+    return this.width * this.height;
   }
 }
 
-let inhError: InhAppError = new InhAppError('Not found', 404);
-console.info(`${inhError.getInfo()}`);  // '[404] Not found'
-console.info(`${(inhError instanceof InhAppError).toString()}`);  // true
-console.info(`${(inhError instanceof Error).toString()}`);  // true
+// let shape: AbsShape = new AbsShape('图形');  // 编译错误：抽象类不能实例化
+let absRectangle: AbsRectangle = new AbsRectangle('矩形', 3, 4);
+console.info(absRectangle.describe());  // 矩形的面积为12
 ```
 
 ## 装饰器

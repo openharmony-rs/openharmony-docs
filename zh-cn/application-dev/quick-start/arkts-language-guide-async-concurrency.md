@@ -58,7 +58,7 @@ async function loadMessage(): Promise<void> {
   }
 }
 
-loadMessage();  // 顶层不能使用await，直接调用返回Promise，不等待完成
+loadMessage(); // 顶层不能使用await，直接调用返回Promise，不等待完成
 ```
 
 示例末尾的`loadMessage()`没有加`await`：`await`只能用于`async`函数内部，模块顶层不支持`await`，因此顶层直接调用异步函数，其返回的`Promise`不被等待，程序不等待其完成即继续执行；而`await fetchMessage()`位于`loadMessage`内部，会等待`Promise`完成并取得结果后再继续执行。
@@ -73,7 +73,7 @@ loadMessage();  // 顶层不能使用await，直接调用返回Promise，不等�
 
 ``` TypeScript
 // 通过构造函数创建Promise
-let basicPromise = new Promise<string>((resolve, reject) => {
+let basicPromise = new Promise<string>((resolve: (value: string) => void, reject: (reason: Error) => void) => {
   let success = true;
   if (success) {
     resolve('操作成功');
@@ -109,8 +109,8 @@ Promise.race([fastPromise, slowPromise])
   .then((value: string): void => console.info(`${value}`)); // 'fast'
 
 // Promise.allSettled()：等待全部完成，无论成败都收集结果
-Promise.allSettled([Promise.resolve('ok'), Promise.reject(new Error('bad'))])
-  .then((results): void => {
+Promise.allSettled([Promise.resolve<string>('ok'), Promise.reject(new Error('bad'))])
+  .then((results: PromiseSettledResult<string>[]): void => {
     results.forEach((result): void => {
       console.info(`${result.status}`);
     });
@@ -168,7 +168,7 @@ console.info('4. 同步代码结束');
 <!-- @[worker_basic_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/WorkerUsage.ts) -->
 
 ``` TypeScript
-// WorkerUsage.ets
+// WorkerUsage.ts
 import { worker, MessageEvents } from '@kit.ArkTS';
 
 // 使用Worker在后台线程执行耗时任务
@@ -208,18 +208,19 @@ workerPort.onmessage = (e: MessageEvents): void => {
     // 处理结果通过postMessage发回宿主线程，由宿主线程处理并更新UI
     workerPort.postMessage('success');
   }
-}
+};
 
 // Worker线程发生错误时的回调
 workerPort.onerror = (err: ErrorEvent): void => {
   console.error(`MyWorker error: ${err.message}`);
-}
+};
 ```
 
 Worker线程使用时需注意以下约束：
 
 - **不能操作UI**：UI操作必须在主线程中执行，在Worker线程中操作UI可能导致界面异常或崩溃；需要更新界面时，应通过`postMessage`将结果发回宿主线程处理。
-- **线程间内存隔离**：Worker线程与宿主线程拥有独立的运行环境和内存，不能直接访问宿主线程的对象；跨线程传递的数据需可序列化（基本类型、普通对象等）或为可共享的Sendable对象，不可传递函数、循环引用，以及`Promise`、`Error`等特殊对象（已完成状态的`Promise`除外）。
+- **线程间内存隔离**：Worker线程与宿主线程拥有独立的运行环境和内存，不能直接访问宿主线程的对象；跨线程传递的数据需可序列化（基本类型、普通对象等）或为可共享的Sendable对象，不可传递函数、循环引用，以及`Promise`、`Error`等特殊对象。
+- **Promise传递规则**：`Promise`对象本身不支持跨线程传递，仅已处于`fulfilled`状态的`Promise`会被解析为结果值返回（即`resolve`的值），且结果值仍需满足可序列化要求；`pending`或`rejected`状态的`Promise`会导致任务失败，`reject`的值不会作为结果传回，详情可参见[TaskPool简介](../arkts-utils/taskpool-introduction.md)。
 - **启动开销与数量限制**：每个`Worker`的启动存在一定内存开销，应避免频繁创建和销毁、优先复用；在内存允许的情况下，同一进程下最多支持同时开启64个Worker线程，且与`napi_create_ark_runtime`创建的runtime总数不超过80，实际可运行数量会根据内存使用情况动态调整。
 
 `Worker`的运作机制、创建方式等详情，可参见[Worker简介](../arkts-utils/worker-introduction.md)。
@@ -303,5 +304,7 @@ async function useSendable(): Promise<void> {
 
 useSendable();
 ```
+
+需要注意的是，Sendable对象的引用共享不会自动保证线程安全，多个线程并发读写同一Sendable对象时会产生数据竞争。本示例中宿主线程通过`await`等待子线程任务完成后才读取`counter.count`，确保不存在并发写入；实际开发中若多个线程需并发读写同一Sendable对象，应通过`await`时序同步，或使用[异步锁](../arkts-utils/arkts-async-lock-introduction.md)（`ArkTSUtils.locks.AsyncLock`）等同步机制保护数据。
 
 关于线程间通信方式可参见[ArkTS线程间通信概述](../arkts-utils/interthread-communication-overview.md)；Sendable对象的使用约束和更多示例，可参见[Sendable对象简介](../arkts-utils/arkts-sendable.md)。
