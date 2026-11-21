@@ -340,6 +340,7 @@
     - [UI信息数据格式说明](ndk-ui-info-data-structure.md)
     - [采集控件树信息](ndk-ui-info-collect-tree.md)
     - [注入控件命令](ndk-ui-command-injection.md)
+    - [监听页面变化事件](ndk-ui-content-change-event.md)
     - [监听全局手势](ndk-sense-gestures-and-events.md)
     - [UI结构化数据映射附录](ndk-ui-appendix.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
