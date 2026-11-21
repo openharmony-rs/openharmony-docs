@@ -55,6 +55,8 @@
     - [Input_CursorConfig](capi-input-input-cursorconfig.md)
     - [Input_CustomCursor](capi-input-input-customcursor.md)
     - [Input_CursorInfo](capi-input-input-cursorinfo.md)
+    - [OH_Input_Event](capi-input-oh-input-event.md)
+    - [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)
 - 错误码<!--input-arkts-errcode-->
   <!--Del-->
   - [键鼠穿越管理错误码（待停用）](errorcode-cooperator.md)
