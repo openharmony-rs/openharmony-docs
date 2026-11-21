@@ -40,7 +40,7 @@
 
    ```ts
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { deviceInfo, BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
