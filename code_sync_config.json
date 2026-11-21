@@ -4076,6 +4076,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesNested.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"Styles_Nested",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -21539,6 +21549,16 @@
 						"end_line":50,
 						"name":"Extend_Version_Condition",
 						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendNested.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"Extend_Nested",
+						"start_line":29
 					}
 				]
 			}
