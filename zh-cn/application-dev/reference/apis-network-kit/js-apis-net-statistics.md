@@ -260,7 +260,12 @@ ArkTS-Dyn: getCellularRxBytes(callback: AsyncCallback\<number>): void
 
 ArkTS-Sta: getCellularRxBytes(callback: AsyncCallback\<long>): void
 
-获取蜂窝实时下行流量。使用callback异步回调。
+获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。
+
+> **说明：**
+>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的下行蜂窝网络流量数据。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -284,7 +289,7 @@ ArkTS-Sta: getCellularRxBytes(callback: AsyncCallback\<long>): void
 | 2100003   | System internal error.                       |
 | 2103005   | Failed to read the system map.               |
 | 2103011   | Failed to create a system map.               |
-| 2103012   | Failed to obtain the NIC name.               |
+| 2103012   | Failed to obtain the NIC name. </br>适用版本：10-26.0.1              |
 
 **示例：**
 
@@ -316,7 +321,12 @@ ArkTS-Dyn: getCellularRxBytes(): Promise\<number>
 
 ArkTS-Sta: getCellularRxBytes(): Promise\<long>
 
-获取蜂窝实时下行流量。使用Promise异步回调。
+获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用Promise异步回调。
+
+> **说明：**
+>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的下行蜂窝网络流量数据。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -339,7 +349,7 @@ ArkTS-Sta: getCellularRxBytes(): Promise\<long>
 | 2100003   | System internal error.                       |
 | 2103005   | Failed to read the system map.               |
 | 2103011   | Failed to create a system map.               |
-| 2103012   | Failed to obtain the NIC name.               |
+| 2103012   | Failed to obtain the NIC name. </br>适用版本：10-26.0.1              |
 
 **示例：**
 
@@ -367,7 +377,12 @@ ArkTS-Dyn: getCellularTxBytes(callback: AsyncCallback\<number>): void
 
 ArkTS-Sta: getCellularTxBytes(callback: AsyncCallback\<long>): void
 
-获取蜂窝实时上行流量。使用callback异步回调。
+获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用callback异步回调。
+
+> **说明：**
+>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的下行蜂窝网络流量数据。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -391,7 +406,7 @@ ArkTS-Sta: getCellularTxBytes(callback: AsyncCallback\<long>): void
 | 2100003   | System internal error.                       |
 | 2103005   | Failed to read the system map.               |
 | 2103011   | Failed to create a system map.               |
-| 2103012   | Failed to obtain the NIC name.               |
+| 2103012   | Failed to obtain the NIC name. </br>适用版本：10-26.0.1             |
 
 **示例：**
 
@@ -423,7 +438,12 @@ ArkTS-Dyn: getCellularTxBytes(): Promise\<number>
 
 ArkTS-Sta: getCellularTxBytes(): Promise\<long>
 
-获取蜂窝实时上行流量。使用Promise异步回调。
+获取当前已处于连接状态的蜂窝网络对应的网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。
+
+> **说明：**
+>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的下行蜂窝网络流量数据。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -446,7 +466,7 @@ ArkTS-Sta: getCellularTxBytes(): Promise\<long>
 | 2100003   | System internal error.                       |
 | 2103005   | Failed to read the system map.               |
 | 2103011   | Failed to create a system map.               |
-| 2103012   | Failed to obtain the NIC name.               |
+| 2103012   | Failed to obtain the NIC name. </br>适用版本：10-26.0.1              |
 
 **示例：**
 
