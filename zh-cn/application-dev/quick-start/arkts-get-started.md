@@ -37,4 +37,4 @@ ArkTS兼容TS/JavaScript（简称JS）生态，开发者可以使用TS/JS进行�
 
 未来，ArkTS会结合应用开发/运行的需求持续演进，逐步增强并行和并发能力、扩展系统类型，以及引入分布式开发范式等更多特性。
 
-如需深入了解ArkTS语言，可参考[ArkTS具体指南](../arkts-utils/arkts-overview.md)。
+如需深入了解ArkTS语言，可参考[ArkTS具体指南](../arkts-utils/arkts-overview.md)；如需了解ArkUI相关语法，可参考[ArkUI（方舟UI框架）](../ui/arkui-overview.md)。
