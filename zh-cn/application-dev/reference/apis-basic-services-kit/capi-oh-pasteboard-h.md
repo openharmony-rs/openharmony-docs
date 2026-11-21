@@ -331,7 +331,6 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 **参考：**
 [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) [Pasteboard_Notify](#pasteboard_notify) [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)
 
-
 ### OH_Pasteboard_Create()
 
 ```c
