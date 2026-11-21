@@ -1061,8 +1061,6 @@ ArkTS-Sta: scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvid
 
 **示例：**
 
-本示例实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口，自定义List的吸附位置，每两个ListItem（220vp）一组，抛滑后沿原方向吸附。
-
 ```ts
 // xxx.ets
 const ITEM_HEIGHT: number = 100;
