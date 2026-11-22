@@ -1,8 +1,8 @@
 # loadNativeModule (同步动态加载系统库接口)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123; @liudachuan3-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
