@@ -53,9 +53,9 @@
     - [通过标准化数据通路实现数据共享 (C/C++)](unified-data-channels-c.md)
 - [应用数据向量化 (ArkTS)](aip-data-intelligence-embedding.md)
 <!--Del-->
-- 数据捐赠(仅对系统应用开放)<!--data-donation-->
+- 数据捐赠 (仅对系统应用开放)<!--data-donation-->
   - [数据捐赠概述](data-donation-overview.md)
-  - [地址数据捐赠](address-donation-sys.md)
+  - [地址数据捐赠 (ArkTS)](address-donation-sys.md)
 <!--DelEnd-->
 <!--RP2-->
 <!--RP2End-->
