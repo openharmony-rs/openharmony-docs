@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=aee2f7468d1b3b04e493c7068f7ee7eaa8e0ca32 translatedAt=2026-08-07T09:48:03.937Z pushedAt=2026-08-07T11:31:02.470Z -->
+<!-- md-trans-meta sourceCommit=becc2f4245ea6f42f57f34273dbe43f205e2ee36 translatedAt=2026-11-03T01:24:42.881Z pushedAt=2026-11-03T01:33:54.645Z nl=1 -->
 
 **AbilityDelegator** is a proxy controller used to schedule and manage the UIAbility lifecycle. It listens for and manages the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through **AbilityMonitor**. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
 
@@ -26,7 +26,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityDelegator
 
-### addAbilityMonitor<sup>9+</sup>
+### addAbilityMonitor
 
 addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
@@ -49,7 +49,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitor failed. |
 
 **Example**
@@ -81,7 +81,7 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-### addAbilityMonitor<sup>9+</sup>
+### addAbilityMonitor
 
 addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
@@ -109,7 +109,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitor failed. |
 
 **Example**
@@ -155,7 +155,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitorSync failed. |
 
 **Example**
@@ -179,7 +179,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitorSync(monitor);
 ```
 
-### removeAbilityMonitor<sup>9+</sup>
+### removeAbilityMonitor
 
 removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
@@ -202,7 +202,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitor failed. |
 
 **Example**
@@ -231,7 +231,7 @@ abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-### removeAbilityMonitor<sup>9+</sup>
+### removeAbilityMonitor
 
 removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
@@ -259,7 +259,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitor failed. |
 
 **Example**
@@ -307,7 +307,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitorSync failed. |
 
 **Example**
@@ -331,7 +331,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitorSync(monitor);
 ```
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<UIAbility>): void
 
@@ -354,7 +354,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **Example**
@@ -385,7 +385,7 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
 });
 ```
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback\<UIAbility>): void
 
@@ -409,7 +409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **Example**
@@ -445,7 +445,9 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
 });
 ```
 
-### waitAbilityMonitor<sup>9+</sup>
+
+
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbility>
 
@@ -474,7 +476,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **Example**
@@ -500,7 +502,7 @@ abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
 });
 ```
 
-### getAppContext<sup>9+</sup>
+### getAppContext
 
 getAppContext(): Context
 
@@ -528,11 +530,14 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let context = abilityDelegator.getAppContext();
 ```
 
-### getAbilityState<sup>9+</sup>
+### getAbilityState
 
 getAbilityState(ability: UIAbility): number
 
-Obtains the lifecycle state of an Ability.
+Obtains the lifecycle state of the specified ability.
+> **NOTE**
+> 
+> If the API call fails, **undefined** is returned. Error code 401 is not returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -556,7 +561,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -581,7 +586,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### getCurrentTopAbility<sup>9+</sup>
+### getCurrentTopAbility
 
 getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 
@@ -603,7 +608,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling GetCurrentTopAbility failed. |
 
 **Example**
@@ -627,7 +632,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### getCurrentTopAbility<sup>9+</sup>
+### getCurrentTopAbility
 
 getCurrentTopAbility(): Promise\<UIAbility>
 
@@ -667,7 +672,7 @@ abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
 });
 ```
 
-### startAbility<sup>9+</sup>
+### startAbility
 
 startAbility(want: Want, callback: AsyncCallback\<void>): void
 
@@ -690,7 +695,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -734,7 +739,7 @@ abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
 });
 ```
 
-### startAbility<sup>9+</sup>
+### startAbility
 
 startAbility(want: Want): Promise\<void>
 
@@ -762,7 +767,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -797,7 +802,7 @@ abilityDelegator.startAbility(want).then((data: void) => {
 });
 ```
 
-### doAbilityForeground<sup>9+</sup>
+### doAbilityForeground
 
 doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
@@ -820,7 +825,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityForeground failed. |
 
 **Example**
@@ -851,7 +856,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### doAbilityForeground<sup>9+</sup>
+### doAbilityForeground
 
 doAbilityForeground(ability: UIAbility): Promise\<void>
 
@@ -879,7 +884,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityForeground failed. |
 
 **Example**
@@ -906,7 +911,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### doAbilityBackground<sup>9+</sup>
+### doAbilityBackground
 
 doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
@@ -929,7 +934,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityBackground failed. |
 
 **Example**
@@ -960,7 +965,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### doAbilityBackground<sup>9+</sup>
+### doAbilityBackground
 
 doAbilityBackground(ability: UIAbility): Promise\<void>
 
@@ -988,7 +993,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityBackground failed. |
 
 **Example**
@@ -1015,7 +1020,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### printSync<sup>9+</sup>
+### printSync
 
 printSync(msg: string): void
 
@@ -1037,7 +1042,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -1244,7 +1249,7 @@ abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
 });
 ```
 
-### finishTest<sup>9+</sup>
+### finishTest
 
 finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 
@@ -1268,7 +1273,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling FinishTest failed. |
 
 **Example**
@@ -1290,7 +1295,7 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
 });
 ```
 
-### finishTest<sup>9+</sup>
+### finishTest
 
 finishTest(msg: string, code: number): Promise\<void>
 
@@ -1319,7 +1324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling FinishTest failed. |
 
 **Example**
@@ -1336,7 +1341,7 @@ abilityDelegator.finishTest(msg, 0).then(() => {
 });
 ```
 
-### addAbilityStageMonitor<sup>9+</sup>
+### addAbilityStageMonitor
 
 addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<void>): void
 
@@ -1359,7 +1364,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitor failed. |
 
 **Example**
@@ -1383,7 +1388,7 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
-### addAbilityStageMonitor<sup>9+</sup>
+### addAbilityStageMonitor
 
 addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
@@ -1411,7 +1416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitor failed. |
 
 **Example**
@@ -1452,7 +1457,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitorSync failed. |
 
 **Example**
@@ -1469,7 +1474,7 @@ abilityDelegator.addAbilityStageMonitorSync({
 });
 ```
 
-### removeAbilityStageMonitor<sup>9+</sup>
+### removeAbilityStageMonitor
 
 removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<void>): void
 
@@ -1492,7 +1497,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitor failed. |
 
 **Example**
@@ -1516,7 +1521,7 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
-### removeAbilityStageMonitor<sup>9+</sup>
+### removeAbilityStageMonitor
 
 removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
@@ -1544,7 +1549,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitor failed. |
 
 **Example**
@@ -1585,8 +1590,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitorSync failed. |
+
 
 **Example**
 
@@ -1602,7 +1608,7 @@ abilityDelegator.removeAbilityStageMonitorSync({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<AbilityStage>): void
 
@@ -1625,7 +1631,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **Example**
@@ -1650,7 +1656,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise\<AbilityStage>
 
@@ -1679,7 +1685,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **Example**
@@ -1699,7 +1705,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback\<AbilityStage>): void
 
@@ -1723,7 +1729,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **Example**
@@ -1771,7 +1777,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
 **Example**

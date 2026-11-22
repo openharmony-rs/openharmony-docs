@@ -1,12 +1,11 @@
 # embedded_component.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=86516607de4ae31b89a087b4feaa5c2b41c67026 translatedAt=2026-08-21T04:09:43.856Z pushedAt=2026-08-21T08:57:02.471Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-09T11:51:43.000Z pushedAt=2026-11-10T06:56:25.747Z nl=1 -->
 
 ## Overview
 
@@ -31,7 +30,7 @@ Defines the structs and APIs of the **EmbeddedComponent** component option (**Ar
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares **Want** of an ability.|
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the **EmbeddedComponentOption** parameter for **EmbeddedComponent**.|
+| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the **ArkUI_EmbeddedComponentOption** parameter for **EmbeddedComponent**, which is used to set the configuration option of the component when creating or configuring **EmbeddedComponent**. It is applicable to embedded UI development scenarios where the UI provided by an **EmbeddedUIExtensionAbility** within the current application (or one that meets the cross-application embedding permission conditions) needs to be embedded into a page and its lifecycle needs to be managed. |
 
 ### Functions
 
@@ -52,6 +51,7 @@ ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 
 **Description**
 
+
 Creates an **EmbeddedComponent** component option object. The returned object needs to be disposed of by **OH_ArkUI_EmbeddedComponentOption_Dispose** when it is no longer used.
 
 **Since:** 20
@@ -70,9 +70,11 @@ void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* opt
 
 **Description**
 
+
 Destroys the **EmbeddedComponent** component option object. The object must be created by **OH_ArkUI_EmbeddedComponentOption_Create**, and it should not be used after being disposed of.
 
 **Since:** 20
+
 
 **Parameters**
 
@@ -88,9 +90,11 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 **Description**
 
+
 Sets the [onError](../apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror) callback for the **EmbeddedComponent** component. This callback is triggered when an error occurs during the running of the **EmbeddedComponent** component.
 
 **Since:** 20
+
 
 **Parameters**
 
@@ -98,6 +102,7 @@ Sets the [onError](../apis-arkui/arkui-ts/ts-container-embedded-component.md#one
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** component option object.|
 | void (\*callback)(int32_t code, const char* name, const char* message) | Pointer to a custom callback. If this callback is not set, no callback is triggered when an exception occurs during the running of the **EmbeddedComponent** component.<br>- **code**: error code returned when an exception occurs during the running of the component. For details about the error codes, see [UIExtension Error Codes](errorcode-uiextension.md).<br>- **name**: name returned when an exception occurs during the running of the component.<br>- **message**: detailed information returned when an exception occurs during the running of the component. |
+
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
 
@@ -107,9 +112,11 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 
 **Description**
 
+
 Sets the [onTerminated](../apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated) callback for the **EmbeddedComponent** component. This callback is triggered when the **EmbeddedComponent** component exits properly.
 
 **Since:** 20
+
 
 **Parameters**
 

@@ -1,12 +1,11 @@
-# ArkUI_RenderContentModifierHandle
-
+# ArkUI_RenderContentModifier*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3757c8ae69d853a1c110349f4f39f47ef6eabdba translatedAt=2026-08-19T08:27:49.283Z pushedAt=2026-08-20T06:50:28.333Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:48:09.062Z pushedAt=2026-11-10T03:36:19.122Z nl=1 -->
 
 ```c
 typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle

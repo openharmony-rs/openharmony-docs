@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何启动和连接UIServiceExtensionAbility组件，实现带UI的系统悬浮窗服务，并说明设备与前台获焦等约束。"
+keywords: [UIServiceExtensionAbility, 系统悬浮窗, 扩展服务, startUIServiceExtensionAbility, connectUIServiceExtensionAbility, UIServiceProxy, 2in1设备]
+doctype: guide
+status: active
+---
 # 使用通过UIServiceExtensionAbility实现的系统悬浮窗
 
 <!--Kit: Ability Kit-->

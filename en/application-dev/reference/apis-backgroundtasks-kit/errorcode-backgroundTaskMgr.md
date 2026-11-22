@@ -6,7 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=6da3a7aa405098fd3e112d6253fc2fa6f4b15670 translatedAt=2026-09-15T12:48:35.344Z pushedAt=2026-09-17T03:16:07.745Z -->
+<!-- md-trans-meta sourceCommit=7022635a724f7ef8479873d99f91a0cb7d21f85a translatedAt=2026-11-03T03:25:33.954Z pushedAt=2026-11-04T01:01:03.750Z nl=1 -->
 
 > **NOTE**
 >
@@ -90,7 +90,7 @@ When an API related to a continuous task is called, the client process fails to 
 
 The system service is experiencing an internal error. Try again later or restart the device.
 
-## 9800005 Long-Running Task Verification Failure
+## 9800005 Continuous Task Verification Failure
 
 **Error Message**
 
@@ -102,21 +102,21 @@ This error code is reported when continuous task verification fails.
 
 **Possible Causes**
 
-1. The application repeatedly requests a Long-Running Task.
-2. The application repeatedly cancels a Long-Running Task.
-3. The value of **bgMode** is invalid because no Long-Running Task type is configured for **backgroundModes** in the application's configuration file.
+1. The application repeatedly requests a continuous task.
+2. The application repeatedly cancels a continuous task.
+3. The value of **bgMode** is invalid because no continuous task type is configured for **backgroundModes** in the application's configuration file.
 4. In API version 20 and earlier versions, only PCs and 2-in-1 devices can request a continuous task using [TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode).
-5. The main type or subtype of the Long-Running Task is not configured.
-6. The main type and subtype of the Long-Running Task have inconsistent lengths or mismatched types.
+5. The main type or subtype of the continuous task is not configured.
+6. The main type and subtype of the continuous task have inconsistent lengths or mismatched types.
 7. The main type or subtype of the continuous task is not defined.
 8. The input **continuousTaskId** is invalid.
 9. The data transmission type does not support notification combination.
-10. The Long-Running Task notification does not exist and cannot be combined.
-11. Neither the current Long-Running Task nor the target Long-Running Task supports notification combination.
-12. The Long-Running Task types of the combined notifications are inconsistent.
+10. The continuous task notification does not exist and cannot be combined.
+11. Neither the current continuous task nor the target continuous task supports notification combination.
+12. The continuous task types of the combined notifications are inconsistent.
 13. The app has not obtained ACL authorization when requesting a [TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode) continuous task.
-14. The data transmission type does not support updating the continuous task type via the update API.
-15. A new Long-Running Task Type (other than audio playback) is requested in the background.
+14. When a continuous task is updated while running in the background, the task to be updated or the specified update type contains the data transfer type. The recording, location, or VOIP type cannot supported.
+15. A new continuous task Type (other than audio playback) is requested in the background.
 16. The application has not obtained ACL authorization when requesting a continuous task of the [MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21) type.
 
 **Solution**
@@ -125,20 +125,20 @@ This error code is reported when continuous task verification fails.
 2. Check whether the application has the system permissions.
 3. Check the value of **backgroundModes**.
 4. Check the type of the device where the app is located.
-5. Check whether the main type and subtype of the Long-Running Task are configured.
+5. Check whether the main type and subtype of the continuous task are configured.
 6. Check whether the main type and subtype of the continuous task are of the same length or whether their types match.
 7. Check whether the main type and subtype of the continuous task are out of range.
 8. Check whether the input **continuousTaskId** parameter is valid.
 9. During notification combination, check whether the requested continuous task type includes the data transmission type.
-10. During notification combination, check whether the Long-Running Task notification exists.
-11. During notification combination, confirm whether the current Long-Running Task or the target Long-Running Task supports notification combination.
+10. During notification combination, check whether the continuous task notification exists.
+11. During notification combination, confirm whether the current continuous task or the target continuous task supports notification combination.
 12. During notification combination, check whether the continuous task types are consistent.
 13. Check whether the app has obtained the [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) ACL authorization when requesting a continuous task of the [TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode) type.
-14. When updating the continuous task, check whether either the original type or the new type includes the data transmission type.
-15. Check if any other Long-Running Task types are being requested in the background, other than audio playback and Long-Running Task types that have already been requested in the foreground.
+14. When updating a continuous task, check whether the type to be updated adds the recording, location, or VOIP type compared with the original type.
+15. Check if any other continuous task types are being requested in the background, other than audio playback and continuous task types that have already been requested in the foreground.
 16. Check whether the application has obtained the [ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario) or [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) ACL authorization when requesting a continuous task of the [MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21) type.
 
-## 9800006 Notification Verification Failure for a Long-Running Task
+## 9800006 Notification Verification Failure for a Continuous Task
 
 **Error Message**
 
@@ -146,23 +146,25 @@ Notification verification failed for a continuous task.
 
 **Description**
 
-This error code is reported when notification verification in a Long-Running Task fails.
+This error code is reported when notification verification in a continuous task fails.
 
 **Possible Causes**
 
-1. The Long-Running Task resources cached in the resource subsystem fail to be loaded.
+1. The continuous task resources cached in the resource subsystem fail to be loaded.
 2. The notification subsystem functions abnormally.
 3. When the continuous-task notification is updated, the continuous task ID and notification progress are incorrect.
 4. When the continuous-task notification is updated, the continuous task does not contain the data transfer type.
+5. Use the [ProgressInfo](./js-apis-resourceschedule-backgroundTaskManager.md#progressinfo) attribute in the [updateBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatebackgroundrunning21) API.
 
 **Solution**
 
-1. Check whether the Long-Running Task resource **ohos.backgroundtaskmgr.resources** exists.
+1. Check whether the continuous task resource **ohos.backgroundtaskmgr.resources** exists.
 2. The system service is experiencing an internal error. Try again later or restart the device.
 3. Check whether the continuous task ID and notification progress are correct when the continuous-task notification is updated. If not, pass the correct parameters.
 4. Check whether the continuous task contains the data transfer type when the continuous-task notification is updated. If not, request or update the continuous task again.
+5. Use the [startBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21) API to request a continuous task.
 
-## 9800007 Long-Running Task Storage Failure
+## 9800007 Continuous Task Storage Failure
 
 **Error Message**
 
@@ -170,7 +172,7 @@ Continuous task storage failed.
 
 **Description**
 
-This error code is reported when information storage in a continuous task fails. 
+This error code is reported when information storage in a continuous task fails.
 
 **Possible Causes**
 
@@ -182,6 +184,24 @@ This error code is reported when information storage in a continuous task fails.
 
 1. Check the **/data/service/el1/public/background_task_mgr/running_task** file.
 2. The system is experiencing an internal error. Try again later or restart the device.
+
+## 9800008 Requested Long-running Task Not Supported on This Device Type
+
+**Error Message**
+
+The requested continuous task is not supported on this device type.
+
+**Description**
+
+The requested continuous task is not supported on this device type.
+
+**Possible Causes**
+
+The requested continuous task type is not supported on the current device.
+
+**Solution**
+
+Change the requested continuous task type.
 
 ## 9900001 Caller Information Verification Failure for a Transient Task
 

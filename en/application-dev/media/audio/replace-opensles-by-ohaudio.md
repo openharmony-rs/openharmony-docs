@@ -1,12 +1,13 @@
 # Switching from OpenSL ES to OHAudio (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4a6423166cec7f4a80883cd681b0b752ac39bc94 translatedAt=2026-10-22T03:44:32.537Z pushedAt=2026-10-22T07:26:29.976Z nl=1 -->
 
-You are advised to use OHAudio APIs instead of OpenSL ES APIs to develop audio services, since the latter may fail to provide extended audio capabilities. This topic describes how to switch the audio service code from the OpenSL ES APIs to the OHAudio APIs.
+As OpenSL ES cannot accommodate the capability expansion of the audio system, you are advised to use OHAudio instead of OpenSL ES for audio service development. This document describes how to switch from developing audio services with OpenSL ES APIs to using OHAudio APIs.
 
 ## Differences in Features Supported
 
@@ -31,7 +32,9 @@ The table below lists the differences in the features supported by the APIs.
 
 ## Differences in Development Modes
 
-This section describes the differences between OHAudio and OpenSL ES APIs in development modes based on the development procedure of audio playback. The implementation of audio recording is similar.
+This section compares the development modes of OHAudio and OpenSL ES based on the development procedure.
+
+Audio playback and recording are implemented similarly. Audio playback is used as an example here.
 
 ### Constructing Instances
 
@@ -40,7 +43,7 @@ OpenSL ES:
 Obtain an Engine object through the global interface, and construct an audio playback object based on the Engine object and the input and output parameters.
 
 ```cpp
-// Generate an Engine object.
+// Generate the Engine Interface object.
 SLEngineItf engine;
 // ...
 
@@ -93,7 +96,7 @@ OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 
 OpenSL ES:
 
-Obtain the state switching interface based on the audio playback object and use the interface to switch the state. There are three states: **SL_PLAYSTATE_STOPPED**, **SL_PLAYSTATE_PAUSED**, and **SL_PLAYSTATE_PLAYING**.
+Obtain the state switching interface based on the object, and use this interface to switch states. Only three states are available: `SL_PLAYSTATE_STOPPED`, `SL_PLAYSTATE_PAUSED`, and `SL_PLAYSTATE_PLAYING`.
 
 ```cpp
 // Obtain the playback operation interface based on the audio playback object.
@@ -145,7 +148,7 @@ void *pContext;
 
 OHAudio:
 
-The callback mode is used. When the audio playback object is constructed, a data input callback is registered to implement custom data filling. During playback, a data request callback is automatically triggered at a proper time based on the system scheduling and delay configuration.
+It uniformly uses the callback mode. You can register a data write callback during construction and implement a custom data filling function. During playback, the system automatically triggers the data request callback at the appropriate time based on system scheduling and latency configuration.
 
 ```cpp
 static int32_t MyOnWriteData(

@@ -6,7 +6,7 @@
 <!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=111816d7ef19f2d98b21b4e02b20c33665536af8 translatedAt=2026-08-21T03:19:28.364Z pushedAt=2026-08-21T09:31:34.376Z -->
+<!-- md-trans-meta sourceCommit=8bce52e94b0c88bad5ea976173f2ff50f835efd1 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -46,9 +46,8 @@ After the application startup execution page is loaded, the check starts. After 
 To detect time-consuming function calls and record them in logs, perform the following steps:
 
 1. Create an ArkTS application project. In the **Project** window, click **entry > src > main > ets > entryability** to open the **EntryAbility.ets** file. After the page is loaded, call the HiChecker to add check rules. The sample code is as follows:
-
    <!-- @[HiChecker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/PerformanceAnalysisTool/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   
    ``` TypeScript
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { hichecker, hilog } from '@kit.PerformanceAnalysisKit';
@@ -57,14 +56,14 @@ To detect time-consuming function calls and record them in logs, perform the fol
    
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Add a check rule. For details about the rule, see HiChecker.
+       // Add a detection rule. For the meaning of the rule, see the detection mode API reference.
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
        let filePath: string = this.context.filesDir + '/test.JPG';
        const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
        const imagePackerObj: image.ImagePacker = image.createImagePacker();
        let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
        imagePackerObj.packToData(imageSourceObj, packOpts);
-       // The preceding codes trigger the check rule through the image subsystem.
+       // The preceding five lines trigger the check rule through the image subsystem.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
      }
    
@@ -86,17 +85,17 @@ To detect time-consuming function calls and record them in logs, perform the fol
      }
    
      onWindowStageDestroy(): void {
-       // Main window is destroyed, and UI related resources are released.
+       // Main window is destroyed, release UI related resources
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
      }
    
      onForeground(): void {
-       // Ability is brought to foreground.
+       // Ability has brought to foreground
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
      }
    
      onBackground(): void {
-       // Ability is back to background.
+       // Ability has back to background
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
      }
    };

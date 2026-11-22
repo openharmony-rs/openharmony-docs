@@ -5,19 +5,19 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=78d33fd06d475876659e551e83466b50b3f5df38 translatedAt=2026-08-26T04:32:34.501Z pushedAt=2026-08-28T03:49:50.184Z -->
+<!-- md-trans-meta sourceCommit=55e6fc4ce35d7ff01611899ceeaaca8baed7aa7a translatedAt=2026-10-29T10:30:53.798Z pushedAt=2026-10-29T10:30:53.798Z nl=1 -->
 
 The distributed file system provides apps with cross-device file copy capabilities. You can use [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md) to copy files across devices. For example, in a multi-device data transfer scenario, after devices are networked and interconnected, the app on device A can copy sandbox files to the distributed directory of device A. When pasting on device B, the files are copied from the distributed directory of device B to the corresponding sandbox files.
 
 ## How to Develop
 
-1. Complete the distributed networking.
+1. Connect the devices to a distributed network.
 
-   Log in to the same account on two devices and ensure that Bluetooth and Wi-Fi are enabled. Bluetooth does not need to be connected, and Wi-Fi does not need to be connected to the same LAN.
+   Log in to the same account on both devices and enable Bluetooth and Wi-Fi. The devices do not need to establish a Bluetooth connection or connect to the same Wi-Fi LAN.
 
 2. Grant the distributed data synchronization permission.
 
-   Use **requestPermissionsFromUser** to request user authorization for the ohos.permission.DISTRIBUTED_DATASYNC permission in the form of a dialog box. For details about how to obtain the application context, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+   The distributed data synchronization permission uses the **user_grant** authorization mode. Call **requestPermissionsFromUser** to request user authorization through a dialog box. For details about obtaining the context used in the example, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
    ```ts
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
@@ -43,15 +43,14 @@ The distributed file system provides apps with cross-device file copy capabiliti
 
 3. Copy files across devices.
 
-   Place the files in the **distributedfiles/** directory of the application sandbox directory to implement file copy from difference devices.
+   To copy files between devices running the same application, place the files in the application's distributed sandbox directory.
 
    Copy the file of device A from the sandbox directory to the **distributedfiles/** directory of device A.
 
    ```ts
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileIo, fileUri } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileUri } from '@kit.CoreFileKit';
    ```
    <!--@[copy_sand_to_distributed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
@@ -88,17 +87,16 @@ The distributed file system provides apps with cross-device file copy capabiliti
    ```
 
 
-   Device B copies the file from the distributed file directory of device B.
+   To obtain the sandbox file from device A, device B copies the corresponding file from its own distributed directory, completing the cross-device copy.
 
    ```ts
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileIo, fileUri } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileUri } from '@kit.CoreFileKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
    <!--@[copy_distributed_to_sand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    // ...
    try {
@@ -108,12 +106,12 @@ The distributed file system provides apps with cross-device file copy capabiliti
      let destPath: string = pathDir + '/dest.txt';
      // Obtain the URI of the target path.
      let destUri = fileUri.getUriFromPath(destPath);
- 
+     
      // Source file path to be copied (distributed directory).
      let srcPath = distributedPathDir + '/src.txt';
      // Obtain the URI of the source path.
      let srcUri: string = fileUri.getUriFromPath(srcPath);
-   
+     
      // Define the copy callback.
      let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
        console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
@@ -159,7 +157,7 @@ The distributed file system provides apps with cross-device file copy capabiliti
    ```
 
 
-4. Disconnect the link for device B.
+4. Disconnect the link after the cross-device file copy is complete.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -167,7 +165,7 @@ The distributed file system provides apps with cross-device file copy capabiliti
    import { fileIo } from '@kit.CoreFileKit';
    ```
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    // Obtain the network ID of device A.
    // ...

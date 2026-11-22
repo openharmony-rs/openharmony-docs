@@ -1,19 +1,20 @@
 # Migration for Repeated Content Rendering
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:22:24.223Z pushedAt=2026-07-24T03:23:08.831Z -->
+<!-- md-trans-meta sourceCommit=e93292804a983230322f2ef9fc704ea0c5300a10 translatedAt=2026-10-28T04:13:24.273Z pushedAt=2026-10-28T08:19:53.970Z nl=1 -->
 
 This guide describes how to migrate components from V1 to V2, involving the following rendering control components.
+
 
 | Source Component| Destination Component|
 | -------- | -------- |
 | [ForEach](../rendering-control/arkts-rendering-control-foreach.md) | [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) |
 | [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md) | [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) |
+
 
 ## From ForEach to Repeat
 
@@ -24,14 +25,14 @@ For details how to use **ForEach**, see [Property Changes in Data Source Array I
 **Repeat** needs to be used with state management V2. State management V2 provides the \@ObservedV2 and \@Trace decorators to deeply observe sub-properties.
 
 - @Observed in V1 is replaced with the combination of @ObservedV2 and @Trace for deep observation.
-
 - Other V1 decorators are replaced with corresponding V2 decorators according to the migration rules.
-
 - Replace the **ForEach** structure with the **Repeat** structure.
 
-```ts
+<!-- @[foreach_to_repeat_child_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/ForEachToRepeatChildProperties.ets) -->
+
+``` TypeScript
 @ObservedV2
-class ArticleChangeChild {
+export class ArticleChangeChild {
   public id: string;
   public title: string;
   public brief: string;
@@ -49,7 +50,7 @@ class ArticleChangeChild {
 
 @Entry
 @ComponentV2
-struct ArticleListChangeView {
+export struct ArticleListChangeView {
   @Local articleList: Array<ArticleChangeChild> = [
     new ArticleChangeChild('001', 'Article 0', 'Abstract', false, 100),
     new ArticleChangeChild('002', 'Article 1', 'Abstract', false, 100),
@@ -78,7 +79,7 @@ struct ArticleListChangeView {
 }
 
 @ComponentV2
-struct ArticleCardChangeChild {
+export struct ArticleCardChangeChild {
   @Require @Param article: ArticleChangeChild;
 
   handleLiked() {
@@ -104,8 +105,8 @@ struct ArticleCardChangeChild {
           .margin({ bottom: 8 })
 
         Row() {
-          // 'app.media.iconLiked' and 'app.media.iconUnLiked' are only examples. Replace them with the actual ones in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
-          Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnLiked'))
+          // Here, 'app.media.iconLiked' and 'app.media.iconUnliked' are examples only. Replace them with your own resources; otherwise, failure to create the imageSource will prevent subsequent operations from running properly.
+          Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnliked'))
             .width(24)
             .height(24)
             .margin({ right: 8 })
@@ -129,7 +130,9 @@ struct ArticleCardChangeChild {
 }
 ```
 
+
 ## From LazyForEach to Repeat
+
 
 ### Initial Data Rendering
 
@@ -141,10 +144,17 @@ In Example 1, **LazyForEach** is used within a [List](../arkts-layout-developmen
 
 **Example 1 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_initial_rendering_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInitialRenderingBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// For the BasicDataSource code, see the BasicDataSource example code at the end of this document: the BasicDataSource code for a string array.
+import { BasicDataSource } from './BasicDataSource';
+
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -163,7 +173,7 @@ class MyDataSource extends BasicDataSource {
 
 @Entry
 @Component
-struct MyComponent {
+export struct MyComponent {
   private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
@@ -179,7 +189,7 @@ struct MyComponent {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                console.info(`appear: ${item}`);
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -197,7 +207,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
    **Repeat** is designed to work with state management V2 decorators. (In [lazy loading](../rendering-control/arkts-new-rendering-control-repeat.md#lazy-loading-capability) mode, it only supports use with state management V2 decorators.) If you are currently using state management V1, migrate to V2.
 
-   ```ts
+   ``` TypeScript
    // Before migration – LazyForEach
    @Component // State management V1
    struct MyComponent {
@@ -225,7 +235,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
    **LazyForEach** uses the specialized [IDataSource](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#idatasource) API. With **Repeat**, you instead use arrays decorated with state management V2.
 
-   ```ts
+   ``` TypeScript
    // Before migration – LazyForEach
    class MyDataSource implements IDataSource {
      private dataArray: string[] = [];
@@ -251,7 +261,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
    However, **Repeat** uses a different syntax with method chaining. For **Repeat**, the component generation function must be configured in either [.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each) or [.template()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template), while the key generation function needs to be set in [.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#key).
 
-   ```ts
+   ``` TypeScript
    // Before migration – LazyForEach
    List() {
      LazyForEach(
@@ -287,7 +297,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
    When migrating from **LazyForEach** to **Repeat**, enable lazy loading using the [virtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll) property.
 
-   ```ts
+   ``` TypeScript
    // Before migration – LazyForEach
    LazyForEach(data, (item) => {...}, (item) => item)
    
@@ -302,10 +312,16 @@ After the previous migration steps, Example 1 has been successfully converted fr
 
 **Example 1 – After Migration**
 
-```ts
+<!-- @[lazyforeach_to_repeat_initial_rendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInitialRendering.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
 @Entry
 @ComponentV2 // Using state management V2
-struct MyComponent {
+export struct MyComponent {
   @Local data: Array<string> = []; // Data source is a state management V2 decorated array.
 
   aboutToAppear() {
@@ -322,7 +338,7 @@ struct MyComponent {
             Row() {
               Text(repeatItem.item).fontSize(50)
                 .onAppear(() => {
-                  console.info(`appear: ${repeatItem.item}`);
+                  hilog.info(DOMAIN, TAG, `appear: ${repeatItem.item}`);
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -336,7 +352,9 @@ struct MyComponent {
 
 Running this sample code will display the following UI.
 
+
 ![LazyForEach-Repeat-Migration-Demo-1](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-1.gif)
+
 
 ### Data Updates
 
@@ -348,10 +366,17 @@ Example 2 demonstrates the primary data operations.
 
 **Example 2 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_data_update_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDataUpdateBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// For the BasicDataSource code, see the BasicDataSource example code at the end of this document: BasicDataSource code for a string array.
+import { BasicDataSource } from './BasicDataSource';
+
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -391,7 +416,7 @@ class MyDataSource extends BasicDataSource {
   // Modify multiple data items.
   public modifyAllData(): void {
     this.dataArray = this.dataArray.map((item: string) => {
-        return 'Changed ' + item;
+      return 'Changed ' + item;
     });
     this.notifyDataReload();
   }
@@ -399,7 +424,7 @@ class MyDataSource extends BasicDataSource {
 
 @Entry
 @Component
-struct MyComponent {
+export struct MyComponent {
   private data: MyDataSource = new MyDataSource();
   private count: number = 0;
 
@@ -459,26 +484,22 @@ The above example demonstrates how **LazyForEach** re-renders child components f
    Replace **LazyForEach** with **Repeat** by following the steps in [Initial Data Rendering](#initial-data-rendering).
 
    1. Adopt state management V2 decorators.
-
    2. Prepare the data source.
-
    3. Prepare the component and key generation functions.
-
    4. Enable lazy loading.
 
 2. Update the data modification logic.
 
    - **LazyForEach** requires explicit API calls to notify the component of data changes.
-
    - For **Repeat**, state management V2 automatically detects data source modifications and triggers updates. Therefore, you only need to modify the data source.
 
-   ```ts
+   ``` TypeScript
    // Modify a single data item.
    // Before migration – LazyForEach
    class MyDataSource implements IDataSource {
      private dataArray: string[] = [];
      
-     public changeData(index: number, newData: string): void {
+     public changeData(index: number, data: string): void {
        this.dataArray.splice(index, 1, data);
        this.notifyDataChange(index);
      }
@@ -498,10 +519,12 @@ The complete sample code after migration is as follows.
 
 **Example 2 – After Migration**
 
-```ts
+<!-- @[lazyforeach_to_repeat_data_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDataUpdate.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct MyComponent {
+export struct MyComponent {
   @Local data: Array<string> = [];
   private count: number = 0;
 
@@ -521,9 +544,11 @@ struct MyComponent {
         .onClick(() => { this.data.splice(0, 1); })
       // Swap items on click.
       Button('Swap item 0 and item 1')
-        .onClick(() => { let temp: string = this.data[0];
-                         this.data[0] = this.data[1];
-                         this.data[1] = temp; })
+        .onClick(() => {
+          let temp: string = this.data[0];
+          this.data[0] = this.data[1];
+          this.data[1] = temp;
+          })
       // Modify a single item on click.
       Button('Change item 0')
         .onClick(() => { this.data.splice(0, 1, `Changed item ${this.count++}`); })
@@ -551,6 +576,7 @@ Running this sample code will display the following UI.
 
 ![LazyForEach-Repeat-Migration-Demo-2](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-2.gif)
 
+
 ### Modifying Data Sub-Properties
 
 **LazyForEach Example**
@@ -561,10 +587,25 @@ Example 3 demonstrates sub-property observation.
 
 **Example 3 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_child_properties_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatChildPropertiesBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// For the GenericBasicDataSource code, see the GenericBasicDataSource example code at the end of the document.
+import { GenericBasicDataSource } from './GenericBasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+@Observed
+export class StringData {
+  public message: string;
+
+  constructor(message: string) {
+    this.message = message;
+  }
+}
+
+export class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
@@ -581,18 +622,9 @@ class MyDataSource extends BasicDataSource {
   }
 }
 
-@Observed
-class StringData {
-  message: string;
-
-  constructor(message: string) {
-    this.message = message;
-  }
-}
-
 @Entry
 @Component
-struct MyComponent {
+export struct MyComponent {
   private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
@@ -616,14 +648,14 @@ struct MyComponent {
 }
 
 @Component
-struct ChildComponent {
+export struct ChildComponent {
   @ObjectLink data: StringData;
 
   build() {
     Row() {
       Text(this.data.message).fontSize(50)
         .onAppear(() => {
-          console.info(`appear: ${this.data.message}`);
+          hilog.info(DOMAIN, TAG, `appear: ${this.data.message}`);
         })
     }.margin({ left: 10, right: 10 })
   }
@@ -632,16 +664,22 @@ struct ChildComponent {
 
 **Repeat Migration**
 
-**Repeat** must be used together with state management V2, which provides the [@ObservedV2 and @Trace](./arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. When migrating, replace the \@Observe and \@ObjectLink decorators with \@ObservedV2 and \@Trace respectively.
+Repeat needs to be used together with state management V2, which provides the [@ObservedV2 and @Trace](./arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. During migration, you need to migrate the \@Observed and \@ObjectLink decorators to the \@ObservedV2 and \@Trace decorators.
 
 The following example demonstrates the implementation after migration:
 
 **Example 3 – After Migration**
 
-```ts
+<!-- @[lazyforeach_to_repeat_child_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatChildProperties.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
 @ObservedV2
-class StringData {
-  @Trace message: string; // Observe sub-properties.
+export class StringData {
+  @Trace public message: string; // Observe the sub-property.
 
   constructor(message: string) {
     this.message = message;
@@ -650,7 +688,7 @@ class StringData {
 
 @Entry
 @ComponentV2
-struct MyComponent {
+export struct MyComponent {
   @Local data: StringData[] = [];
 
   aboutToAppear() {
@@ -666,7 +704,7 @@ struct MyComponent {
           ListItem() {
             Text(repeatItem.item.message).fontSize(50)
               .onAppear(() => {
-                console.info(`appear: ${repeatItem.item.message}`);
+                hilog.info(DOMAIN, TAG, `appear: ${repeatItem.item.message}`);
               })
           }
           .onClick(() => {
@@ -694,10 +732,22 @@ Example 4 demonstrates how to use the @Local decorator with **LazyForEach** to o
 
 **Example 4 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_internal_state_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInternalStateBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+// For the GenericBasicDataSource code, see the GenericBasicDataSource example code at the end of this document.
+import { GenericBasicDataSource } from './GenericBasicDataSource';
+
+@ObservedV2
+export class StringData {
+  @Trace public message: string;
+
+  constructor(message: string) {
+    this.message = message;
+  }
+}
+
+export class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
@@ -714,19 +764,10 @@ class MyDataSource extends BasicDataSource {
   }
 }
 
-@ObservedV2
-class StringData {
-  @Trace message: string;
-
-  constructor(message: string) {
-    this.message = message;
-  }
-}
-
 @Entry
 @ComponentV2
-struct MyComponent {
-  data: MyDataSource = new MyDataSource();
+export struct MyComponent {
+  private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -753,7 +794,7 @@ struct MyComponent {
 }
 
 @ComponentV2
-struct ChildComponent {
+export struct ChildComponent {
   @Local message: string = '?';
 
   build() {
@@ -776,10 +817,12 @@ The following example demonstrates the implementation after migration:
 
 **Example 4 – After Migration**
 
-```ts
+<!-- @[lazyforeach_to_repeat_internal_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInternalState.ets) -->
+
+``` TypeScript
 @ObservedV2
-class StringData {
-  @Trace message: string;
+export class StringData {
+  @Trace public message: string;
 
   constructor(message: string) {
     this.message = message;
@@ -788,7 +831,7 @@ class StringData {
 
 @Entry
 @ComponentV2
-struct MyComponent {
+export struct MyComponent {
   @Local data: StringData[] = [];
 
   aboutToAppear() {
@@ -819,7 +862,7 @@ struct MyComponent {
 }
 
 @ComponentV2
-struct ChildComponent {
+export struct ChildComponent {
   @Local message: string = '?';
 
   build() {
@@ -838,6 +881,7 @@ Running this sample code will display the following UI.
 
 ![LazyForEach-Repeat-Migration-Demo-4](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-4.gif)
 
+
 ### Observing External Input of Components with State Management V2
 
 **LazyForEach Example**
@@ -848,10 +892,22 @@ Example 5 demonstrates how to use the \@Param decorator with **LazyForEach** to 
 
 **Example 5 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_external_input_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatExternalInputBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+// For the GenericBasicDataSource code, see the GenericBasicDataSource example code at the end of the document.
+import { GenericBasicDataSource } from './GenericBasicDataSource';
+
+@ObservedV2
+export class StringData {
+  @Trace public message: string;
+
+  constructor(message: string) {
+    this.message = message;
+  }
+}
+
+export class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
@@ -868,19 +924,10 @@ class MyDataSource extends BasicDataSource {
   }
 }
 
-@ObservedV2
-class StringData {
-  @Trace message: string;
-
-  constructor(message: string) {
-    this.message = message;
-  }
-}
-
 @Entry
 @ComponentV2
-struct MyComponent {
-  data: MyDataSource = new MyDataSource();
+export struct MyComponent {
+  private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -903,7 +950,7 @@ struct MyComponent {
 }
 
 @ComponentV2
-struct ChildComponent {
+export struct ChildComponent {
   @Param @Require data: string = ''; // Receive external variables.
 
   build() {
@@ -922,10 +969,12 @@ The following example demonstrates the implementation after migration:
 
 **Example 5 – After Migration**
 
-```ts
+<!-- @[lazyforeach_to_repeat_external_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatExternalInput.ets) -->
+
+``` TypeScript
 @ObservedV2
-class StringData {
-  @Trace message: string;
+export class StringData {
+  @Trace public message: string;
 
   constructor(message: string) {
     this.message = message;
@@ -934,7 +983,7 @@ class StringData {
 
 @Entry
 @ComponentV2
-struct MyComponent {
+export struct MyComponent {
   @Local data: StringData[] = [];
 
   aboutToAppear() {
@@ -961,7 +1010,7 @@ struct MyComponent {
 }
 
 @ComponentV2
-struct ChildComponent {
+export struct ChildComponent {
   @Param @Require data: string = ''; // Receive external variables.
 
   build() {
@@ -976,6 +1025,7 @@ Running this sample code will display the following UI.
 
 ![LazyForEach-Repeat-Migration-Demo-5](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-5.gif)
 
+
 ### Drag-and-Drop Sorting
 
 **LazyForEach Example**
@@ -986,10 +1036,17 @@ Example 6 demonstrates a typical implementation:
 
 **Example 6 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_drag_sort_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDragSortBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// For the BasicDataSource code, see the BasicDataSource example code at the end of this document: the BasicDataSource code for a string array.
+import { BasicDataSource } from './BasicDataSource';
+
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -1013,7 +1070,7 @@ class MyDataSource extends BasicDataSource {
 
 @Entry
 @Component
-struct Parent {
+export struct Parent {
   private data: MyDataSource = new MyDataSource();
 
   aboutToAppear(): void {
@@ -1027,7 +1084,7 @@ struct Parent {
       List() {
         LazyForEach(this.data, (item: string) => {
           ListItem() {
-            Text(item.toString())
+            Text(item)
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .size({ height: 100, width: '100%' })
@@ -1035,9 +1092,9 @@ struct Parent {
           .borderRadius(10)
           .backgroundColor('#FFFFFFFF')
         }, (item: string) => item)
-          .onMove((from: number, to: number) => { // Implement drag-and-drop sorting.
-            this.data.moveDataWithoutNotify(from, to);
-          })
+        .onMove((from: number, to: number) => { // Implement drag-and-drop sorting.
+          this.data.moveDataWithoutNotify(from, to);
+        })
       }
       .width('100%')
       .height('100%')
@@ -1055,10 +1112,12 @@ The following example demonstrates the implementation after migration:
 
 **Example 6 – After Migration**
 
-```ts
+<!-- @[lazyforeach_to_repeat_drag_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDragSort.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct Parent {
+export struct Parent {
   @Local data: string[] = [];
 
   aboutToAppear(): void {
@@ -1114,10 +1173,24 @@ Example 7 demonstrates a typical component reuse scenario:
 
 **Example 7 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_reuse_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// For the GenericBasicDataSource code, see the GenericBasicDataSource example code at the end of this document.
+import { GenericBasicDataSource } from './GenericBasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class StringData {
+  public message: string;
+
+  constructor(message: string) {
+    this.message = message;
+  }
+}
+
+export class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
@@ -1134,18 +1207,10 @@ class MyDataSource extends BasicDataSource {
   }
 }
 
-class StringData {
-  message: string;
-
-  constructor(message: string) {
-    this.message = message;
-  }
-}
-
 @Entry
 @Component
-struct MyComponent {
-  data: MyDataSource = new MyDataSource();
+export struct MyComponent {
+  private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 30; i++) {
@@ -1159,7 +1224,7 @@ struct MyComponent {
         ListItem() {
           ChildComponent({ data: item })
             .onAppear(() => {
-              console.info(`onAppear: ${item.message}`);
+              hilog.info(DOMAIN, TAG, `onAppear: ${item.message}`);
             })
         }
       }, (item: StringData, index: number) => index.toString())
@@ -1169,21 +1234,21 @@ struct MyComponent {
 
 @Reusable
 @Component
-struct ChildComponent {
+export struct ChildComponent {
   @State data: StringData = new StringData('');
 
   aboutToAppear(): void {
-    console.info(`aboutToAppear: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `aboutToAppear: ${this.data.message}`);
   }
 
   aboutToRecycle(): void {
-    console.info(`aboutToRecycle: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `aboutToRecycle: ${this.data.message}`);
   }
 
   // Update data when the component is reused.
   aboutToReuse(params: Record<string, ESObject>): void {
     this.data = params.data as StringData;
-    console.info(`aboutToReuse: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `aboutToReuse: ${this.data.message}`);
   }
 
   build() {
@@ -1199,7 +1264,6 @@ struct ChildComponent {
 **Repeat** has built-in component reuse capability and can work with the [@ReusableV2](./arkts-new-reusableV2.md) decorator from state management V2. After migration, you can implement component reuse in one of two ways:
 
 1. Use the built-in reuse capability of **Repeat**.
-
 2. Use the reuse capability provided by the @ReusableV2 decorator.
 
 Note: The built-in reuse capability of **Repeat** is enabled by default and takes precedence over the \@ReusableV2 decorator. To use the \@ReusableV2 decorator, you must manually disable the built-in reuse capability of **Repeat**, that is, set **reusable** of [VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions) in **Repeat** to **false**. (\@ReusableV2 is supported since API version 18, and **Repeat** supports disabling its built-in reuse capability since API version 18.)
@@ -1210,9 +1274,15 @@ Note: The built-in reuse capability of **Repeat** is enabled by default and take
 
 The implementation after migration is as follows:
 
-```ts
-class StringData {
-  message: string;
+<!-- @[lazyforeach_to_repeat_reuse_self](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseSelf.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class StringData {
+  public message: string;
 
   constructor(message: string) {
     this.message = message;
@@ -1221,7 +1291,7 @@ class StringData {
 
 @Entry
 @ComponentV2
-struct MyComponent {
+export struct MyComponent {
   @Local data: StringData[] = [];
 
   aboutToAppear() {
@@ -1253,9 +1323,15 @@ Compared with the built-in reuse capability of **Repeat**, components decorated 
 
 The following example demonstrates migration using the \@ReusableV2 decorator:
 
-```ts
-class StringData {
-  message: string;
+<!-- @[lazyforeach_to_repeat_reuse_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseV2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class StringData {
+  public message: string;
 
   constructor(message: string) {
     this.message = message;
@@ -1264,7 +1340,7 @@ class StringData {
 
 @Entry
 @ComponentV2
-struct MyComponent {
+export struct MyComponent {
   @Local data: StringData[] = [];
 
   aboutToAppear() {
@@ -1280,7 +1356,7 @@ struct MyComponent {
           ListItem() {
             ChildComponent({ data: repeatItem.item })
               .onAppear(() => {
-                console.info(`onAppear: ${repeatItem.item.message}`);
+                hilog.info(DOMAIN, TAG, `onAppear: ${repeatItem.item.message}`);
               })
           }
         })
@@ -1293,19 +1369,19 @@ struct MyComponent {
 // Implement component reuse using @ReusableV2 (API version 18).
 @ReusableV2
 @ComponentV2
-struct ChildComponent {
+export struct ChildComponent {
   @Param data: StringData = new StringData('');
 
   aboutToAppear(): void {
-    console.info(`aboutToAppear: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `aboutToAppear: ${this.data.message}`);
   }
 
   aboutToRecycle(): void {
-    console.info(`aboutToRecycle: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `aboutToRecycle: ${this.data.message}`);
   }
 
   aboutToReuse(): void {
-    console.info(`aboutToReuse: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `aboutToReuse: ${this.data.message}`);
   }
 
   build() {
@@ -1320,6 +1396,7 @@ Running this sample code will display the following UI.
 
 ![LazyForEach-Repeat-Migration-Demo-7](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-7.gif)
 
+
 ### Template Rendering
 
 **LazyForEach Example**
@@ -1330,10 +1407,34 @@ Example 8 demonstrates a typical template rendering scenario:
 
 **Example 8 – Before Migration**
 
-```ts
-/* For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
+<!-- @[lazyforeach_to_repeat_template_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateBefore.ets) -->
 
-class MyDataSource extends BasicDataSource {
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// For the GenericBasicDataSource code, see the GenericBasicDataSource example code at the end of this document.
+import { GenericBasicDataSource } from './GenericBasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class StringData {
+  public message: string;
+  public type: number;
+
+  constructor(message: string, type: number) {
+    this.message = message;
+    this.type = type;
+  }
+
+  getType(): number {
+    if (this.type >= 1) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+
+export class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
@@ -1350,28 +1451,10 @@ class MyDataSource extends BasicDataSource {
   }
 }
 
-class StringData {
-  message: string;
-  type: number;
-
-  constructor(message: string, type: number) {
-    this.message = message;
-    this.type = type;
-  }
-
-  getType(): number {
-    if (this.type >= 1) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-}
-
 @Entry
 @Component
-struct MyComponent {
-  data: MyDataSource = new MyDataSource();
+export struct MyComponent {
+  private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 200; i++) {
@@ -1388,13 +1471,13 @@ struct MyComponent {
             // Template A
             ChildComponentA({ data: item })
               .onAppear(() => {
-                console.info(`type A onAppear: ${item.message}`);
+                hilog.info(DOMAIN, TAG, `type A onAppear: ${item.message}`);
               })
           } else {
             // Template B
             ChildComponentB({ data: item })
               .onAppear(() => {
-                console.info(`type B onAppear: ${item.message}`);
+                hilog.info(DOMAIN, TAG, `type B onAppear: ${item.message}`);
               })
           }
         }
@@ -1406,20 +1489,20 @@ struct MyComponent {
 // Component reuse using @Reusable
 @Reusable
 @Component
-struct ChildComponentA {
+export struct ChildComponentA {
   @State data: StringData = new StringData('', 0);
 
   aboutToAppear(): void {
-    console.info(`type A aboutToAppear: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type A aboutToAppear: ${this.data.message}`);
   }
 
   aboutToRecycle(): void {
-    console.info(`type A aboutToRecycle: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type A aboutToRecycle: ${this.data.message}`);
   }
 
   aboutToReuse(params: Record<string, ESObject>): void {
     this.data = params.data as StringData;
-    console.info(`type A aboutToReuse: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type A aboutToReuse: ${this.data.message}`);
   }
 
   build() {
@@ -1432,20 +1515,20 @@ struct ChildComponentA {
 
 @Reusable
 @Component
-struct ChildComponentB {
+export struct ChildComponentB {
   @State data: StringData = new StringData('', 0);
 
   aboutToAppear(): void {
-    console.info(`type B aboutToAppear: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type B aboutToAppear: ${this.data.message}`);
   }
 
   aboutToRecycle(): void {
-    console.info(`type B aboutToRecycle: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type B aboutToRecycle: ${this.data.message}`);
   }
 
   aboutToReuse(params: Record<string, ESObject>): void {
     this.data = params.data as StringData;
-    console.info(`type B aboutToReuse: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type B aboutToReuse: ${this.data.message}`);
   }
 
   build() {
@@ -1465,10 +1548,12 @@ Note: When using template rendering, you must disable the reuse capability of **
 
 **Example 8 – Migration Solution 1: Using the Built-in Template Rendering Capability of Repeat**
 
-```ts
-class StringData {
-  message: string;
-  type: number;
+<!-- @[lazyforeach_to_repeat_template_self](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateSelf.ets) -->
+
+``` TypeScript
+export class StringData {
+  public message: string;
+  public type: number;
 
   constructor(message: string, type: number) {
     this.message = message;
@@ -1486,8 +1571,8 @@ class StringData {
 
 @Entry
 @ComponentV2
-struct MyComponent {
-  data: StringData[] = [];
+export struct MyComponent {
+  @Local data: StringData[] = [];
 
   aboutToAppear() {
     for (let i = 0; i <= 200; i++) {
@@ -1535,10 +1620,16 @@ struct MyComponent {
 
 **Example 8 – Migration Solution 2: Manual Template Rendering Implementation**
 
-```ts
-class StringData {
-  message: string;
-  type: number;
+<!-- @[lazyforeach_to_repeat_template_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateCustom.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+export class StringData {
+  public message: string;
+  public type: number;
 
   constructor(message: string, type: number) {
     this.message = message;
@@ -1556,8 +1647,8 @@ class StringData {
 
 @Entry
 @ComponentV2
-struct MyComponent {
-  data: StringData[] = [];
+export struct MyComponent {
+  @Local data: StringData[] = [];
 
   aboutToAppear() {
     for (let i = 0; i <= 200; i++) {
@@ -1574,12 +1665,12 @@ struct MyComponent {
             if (repeatItem.item.getType() == 0) {
               ChildComponentA({ data: repeatItem.item }) // Template A
                 .onAppear(() => {
-                  console.info(`type A onAppear: ${repeatItem.item.message}`);
+                  hilog.info(DOMAIN, TAG, `type A onAppear: ${repeatItem.item.message}`);
                 })
             } else {
               ChildComponentB({ data: repeatItem.item }) // Template B
                 .onAppear(() => {
-                  console.info(`type B onAppear: ${repeatItem.item.message}`);
+                  hilog.info(DOMAIN, TAG, `type B onAppear: ${repeatItem.item.message}`);
                 })
             }
           }
@@ -1593,19 +1684,19 @@ struct MyComponent {
 // Implement component reuse using \@ReusableV2 (supported since API version 18).
 @ReusableV2
 @ComponentV2
-struct ChildComponentA {
+export struct ChildComponentA {
   @Param data: StringData = new StringData('', 0);
 
   aboutToAppear(): void {
-    console.info(`type A aboutToAppear: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type A aboutToAppear: ${this.data.message}`);
   }
 
   aboutToRecycle(): void {
-    console.info(`type A aboutToRecycle: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type A aboutToRecycle: ${this.data.message}`);
   }
 
   aboutToReuse(): void {
-    console.info(`type A aboutToReuse: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type A aboutToReuse: ${this.data.message}`);
   }
 
   build() {
@@ -1618,19 +1709,19 @@ struct ChildComponentA {
 
 @ReusableV2
 @ComponentV2
-struct ChildComponentB {
+export struct ChildComponentB {
   @Param data: StringData = new StringData('', 0);
 
   aboutToAppear(): void {
-    console.info(`type B aboutToAppear: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type B aboutToAppear: ${this.data.message}`);
   }
 
   aboutToRecycle(): void {
-    console.info(`type B aboutToRecycle: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type B aboutToRecycle: ${this.data.message}`);
   }
 
   aboutToReuse(): void {
-    console.info(`type B aboutToReuse: ${this.data.message}`);
+    hilog.info(DOMAIN, TAG, `type B aboutToReuse: ${this.data.message}`);
   }
 
   build() {
@@ -1646,13 +1737,20 @@ Running this sample code will display the following UI.
 
 ![LazyForEach-Repeat-Migration-Demo-8](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-8.gif)
 
+
 ## BasicDataSource Sample Code
 
 ### BasicDataSource Implementation for the String Array
 
-```ts
+<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/BasicDataSource.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
 // BasicDataSource implements the IDataSource API to manage listeners and notify LazyForEach of data updates.
-class BasicDataSource implements IDataSource {
+export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: string[] = [];
 
@@ -1667,7 +1765,7 @@ class BasicDataSource implements IDataSource {
   // Called by the framework to register a listener with the LazyForEach data source.
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(DOMAIN, TAG, 'add listener');
       this.listeners.push(listener);
     }
   }
@@ -1676,7 +1774,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(DOMAIN, TAG, 'remove listener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -1729,60 +1827,68 @@ class BasicDataSource implements IDataSource {
 }
 ```
 
-### BasicDataSource Implementation for the StringData Array
+### GenericBasicDataSource Example Code
 
-```ts
-class BasicDataSource implements IDataSource {
+<!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/GenericBasicDataSource.ets) -->
+
+``` TypeScript
+// GenericBasicDataSource implements the IDataSource interface to manage listeners and notify LazyForEach of data updates.
+export class GenericBasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];
-  private originDataArray: StringData[] = [];
+  private originDataArray: T[] = [];
 
   public totalCount(): number {
     return this.originDataArray.length;
   }
 
-  public getData(index: number): StringData {
+  public getData(index: number): T {
     return this.originDataArray[index];
   }
 
+  // Called by the framework to add a listener to the data source for the LazyForEach component.
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
       this.listeners.push(listener);
     }
   }
 
+  // Called by the framework to remove a listener from the data source for the corresponding LazyForEach component.
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
       this.listeners.splice(pos, 1);
     }
   }
 
+  // Notify the LazyForEach component that all child components need to be reloaded.
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
     });
   }
 
+  // Notify the LazyForEach component that a child component needs to be added at the index.
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
     });
   }
 
+  // Notify the LazyForEach component that the data at the index has changed and the child component needs to be rebuilt.
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
     });
   }
 
+  // Notify the LazyForEach component that the child component at the index needs to be deleted.
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
     });
   }
 
+  // Notify the LazyForEach component to swap the child components at the from and to indexes.
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);

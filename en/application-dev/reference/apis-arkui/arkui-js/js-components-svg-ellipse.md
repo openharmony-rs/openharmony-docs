@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3594f4f7911eac49a1432a74a842b11a7e25b680 translatedAt=2026-11-12T04:46:12.365Z pushedAt=2026-11-18T06:50:01.364Z nl=1 -->
 
 >  **NOTE**
 >
@@ -29,8 +30,8 @@ The [universal attributes](js-components-svg-common-attributes.md) and the attri
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | - | No| Unique ID of the component.|
-| cx | &lt;length&gt;\|&lt;percentage&gt; | 0 | No| X-coordinate of the oval shape. Attribute animations are supported.|
-| cy | &lt;length&gt;\|&lt;percentage&gt; | 0 | No| Y-coordinate of the oval shape. Attribute animations are supported.|
+| cx | &lt;length&gt;\|&lt;percentage&gt; | 0 | No | X-coordinate of the oval shape center. Attribute animations are supported. |
+| cy | &lt;length&gt;\|&lt;percentage&gt; | 0 | No | Y-coordinate of the oval shape center. Attribute animations are supported. |
 | rx | &lt;length&gt;\|&lt;percentage&gt; | 0 | No| Radius of the oval shape on the x-axis. Attribute animations are supported.|
 | ry | &lt;length&gt;\|&lt;percentage&gt; | 0 | No| Radius of the oval shape on the y-axis. Attribute animations are supported.|
 

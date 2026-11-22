@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "概述端侧A2A智能体框架的基本概念与运行机制，介绍Agent、A2A协议、AgentCard等核心概念，以及能力注册、连接通信、安全认证等协作流程。"
+keywords: [A2A, 智能体框架, AgentCard, AgentSkill, AgentExtensionAbility, 端侧智能体, 智能体协作]
+doctype: guide
+status: active
+---
 # 端侧A2A框架概述
 
 <!--Kit: Ability Kit-->

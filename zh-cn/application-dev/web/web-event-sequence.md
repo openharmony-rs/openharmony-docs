@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "梳理Web组件加载网页全流程中生命周期回调的触发时机与推荐用法，涵盖正常与异常加载场景、性能指标监听与页面卡死恢复方案。"
+keywords: [onPageBegin, onPageEnd, onControllerAttached, onLoadIntercept, onFirstContentfulPaint, onLargestContentfulPaint]
+doctype: guide
+status: active
+---
+
 # Web组件的生命周期
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -49,11 +57,13 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
 
 - 应用侧代码。
 
-  ```ts
+  <!-- @[the_status_of_web_component_web_page_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -69,7 +79,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
       "<h1>intercept test</h1>\n" +
       "</body>\n" +
       "</html>";
-
+  
     aboutToAppear(): void {
       try {
         webview.WebviewController.setWebDebuggingAccess(true);
@@ -77,7 +87,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
         console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
     }
-
+  
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
@@ -187,7 +197,9 @@ ArkWeb（方舟Web）是一个Web组件平台，旨在为应用程序提供展�
 在ArkWeb渲染子进程异常退出导致页面卡死后，应用可通过监听[onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9)事件来获取具体的退出原因[RenderExitReason](../reference/apis-arkweb/arkts-basic-components-web-e.md#renderexitreason9)，并在异常回调中根据退出的具体原因，执行相应的异常处理。
 
 **开发实践案例**
-```ts
+<!-- @[avoid_page_stuck_caused_by_render_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/OnRenderExitedReload.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -206,7 +218,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   // 指定加载的页面。
-  url: string = "www.example.com";
+  url: string = 'www.example.com';
   build() {
     Column() {
       Web({ src: this.url, controller: this.controller })

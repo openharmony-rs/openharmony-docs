@@ -1,12 +1,11 @@
 # Row
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=502e92239007f618b3ae29831890f9b7e0bdd85e translatedAt=2026-08-19T07:10:16.443Z pushedAt=2026-08-20T10:45:03.045Z -->
+<!-- md-trans-meta sourceCommit=dd07145b5a0181d2f6e100ec071d82f9204d9c96 translatedAt=2026-11-03T02:12:33.578Z pushedAt=2026-11-13T01:05:59.961Z nl=1 -->
 
 Defines a container that lays out child components horizontally. It supports setting the spacing between child components and the alignment mode, and is suitable for scenarios where multiple child components need to be arranged horizontally, such as toolbars, tab bars, and button groups.
 
@@ -16,12 +15,13 @@ Defines a container that lays out child components horizontally. It supports set
 >
 >  If no width or height is set for the **Row** component, it adapts to the size of child components in the main axis or cross axis direction.
 
+
 ## Child Components
 
 Supported
 
-## APIs
 
+## APIs
 ### Row
 
 Row(options?: RowOptions)
@@ -45,7 +45,6 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 | options<sup>18+</sup> | [RowOptions](#rowoptions18) | No | Configuration object of the horizontal layout, used to set the spacing between child components (unit: vp). The **space** attribute supports values of the number or string type. Pass this parameter when you need to customize the spacing between child components. If this parameter is not passed, the default spacing is 0.<br>**Model restriction:** This API can be used only in the stage model.<br>**Note:** Since API version 9, the **space** attribute does not take effect when it is set to a negative value or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
 
 ### Row<sup>18+</sup>
-
 Row(options?: RowOptions | RowOptionsV2)
 
 Creates a horizontal linear layout container. You can set the spacing between child components.
@@ -86,7 +85,7 @@ Sets the spacing between child components of the **Row** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | string \| number | No | Yes | Spacing between child components in the horizontal layout.<br>Since API version 9, this attribute does not take effect when **space** is a negative number or **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp<br>Invalid value: the default value is used.<br>**NOTE**<br>The value of **space** is a number greater than or equal to 0, or a string that can be converted to a number.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| space<sup>7+</sup> | string \| number | No | Yes | Spacing between child components in the horizontal layout.<br>Since API version 9, **space** is not effective when it is negative or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp<br>Invalid value: the default value is used.<br>**Note:** <br>**space** is a number greater than or equal to 0, or a string that can be converted to a number. Percentages are not supported.<br>**Widget capability:** Since API version 9, this interface supports use in ArkTS widgets.<br>**Atomic service API:** Since API version 11, this interface supports use in atomic services. |
 
 ## RowOptionsV2<sup>18+</sup>
 
@@ -102,7 +101,7 @@ Sets the spacing between child components of the **Row** component. The spacing 
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space | [SpaceType](ts-container-column.md#spacetype18) | No | Yes | Spacing between child components in the horizontal layout.<br>Value range: greater than or equal to 0.<br>Since API version 9, this parameter does not take effect when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp<br>Invalid value: the default value is used.<br>**NOTE**<br>The value of **space** is a number greater than or equal to 0, a string that can be converted to a non-negative number, or a Resource type data that can be converted to a number. A negative number is treated as an invalid value and the default value 0 is used.|
+| space | [SpaceType](ts-container-column.md#spacetype18) | No | Yes | Horizontal layout element spacing.<br>Value range: greater than or equal to 0.<br>Since API version 9, when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, the space parameter is not effective.<br>Default value: **0**<br>Unit: vp<br>Invalid value: the default value is used.<br>**Note:**<br>The value of **space** is a number greater than or equal to 0, or a string that can be converted to a non-negative number, or Resource type data that can be converted to a number. Setting a percentage is not supported. A negative number is treated as an invalid value and handled as the default value **0**.|
 
 ## Attributes
 

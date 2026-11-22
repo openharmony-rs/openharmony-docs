@@ -298,7 +298,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过[getSupportedOutputCapability](./arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取。 |
 
 **错误码：**
 
@@ -315,9 +315,16 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalid metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.addMetadataObjectTypes(types);
+    metadataOutput.addMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -357,9 +364,16 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalid metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.removeMetadataObjectTypes(types);
+    metadataOutput.removeMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -481,5 +495,83 @@ function unlockMetadata(metadataOutput: camera.MetadataOutput): void {
     let err = error as BusinessError;
     console.error(`unlockMetadataObjectTracking error. error code: ${err.code}`);
   }
+}
+```
+
+## setInFrameMetadataForEncoderEnabled
+
+setInFrameMetadataForEncoderEnabled(enable: boolean): void
+
+启用或关闭编码器传递帧内元数据。开启后，相机模块会将帧内元数据下发给编码器，供编码器在编码过程中使用。
+
+> **说明：**
+>
+> 调用此方法前，需先调用[isInFrameMetadataForEncoderSupported](#isinframemetadataforencodersupported)确认相机设备是否支持编码器帧内元数据下发能力。若设备不支持该能力，调用本接口会抛出801错误码。帧内元数据内容说明及解析请参见[实现指定区域更清晰的ROI编码](../../media/avcodec/video-encoding-ROI.md)。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enable | boolean | 是 | 启用或关闭编码器传递帧内元数据。true表示启用；false表示关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 801 | Capability not supported. Check if the camera device supports the required in frame metadata delivery for encoder by using capability query APIs. |
+| 7400201 | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setInFrameMetadataForEncoderEnabled(metadataOutput: camera.MetadataOutput, enable: boolean): void {
+  // 调用前需先通过isInFrameMetadataForEncoderSupported确认设备支持该能力。
+  try {
+    metadataOutput.setInFrameMetadataForEncoderEnabled(enable);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`setInFrameMetadataForEncoderEnabled error. error code: ${err.code}`);
+  }
+}
+```
+
+## isInFrameMetadataForEncoderSupported
+
+isInFrameMetadataForEncoderSupported(): boolean
+
+查询相机设备是否支持编码器帧内元数据。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 查询相机设备是否支持编码器帧内元数据。true表示支持该功能；false表示不支持该功能。 |
+
+**示例：**
+
+```ts
+function checkInFrameMetadataForEncoderSupported(metadataOutput: camera.MetadataOutput): void {
+  let isSupported: boolean = metadataOutput.isInFrameMetadataForEncoderSupported();
+  console.info(`In frame metadata for encoder supported: ${isSupported}`);
 }
 ```

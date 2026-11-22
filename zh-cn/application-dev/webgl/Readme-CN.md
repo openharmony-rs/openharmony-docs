@@ -3,6 +3,6 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @samhu1989-->
 <!--Designer: @shi-yang-2012-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 - [使用WebGL绘制图形](webgl-2d-guidelines.md)

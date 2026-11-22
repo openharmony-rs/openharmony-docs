@@ -33,7 +33,7 @@ isActive(): boolean
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| boolean | 活动状态返回true，非活动状态返回false。 |
+| boolean | 活动状态返回true，非活动状态或获取设备活动状态失败时返回false。 |
 
 **示例：**
 
@@ -75,13 +75,15 @@ getPowerMode(): DevicePowerMode
 
 获取当前设备的电源模式。不同电源模式对应不同的设备行为策略，开发者可根据返回的模式值调整应用行为以适配当前模式。各模式定义及说明请参见[DevicePowerMode](#devicepowermode9)。
 
+如需获取当前设备的电源模式子模式，请使用[power.getPowerSubMode](#powergetpowersubmode)。
+
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 **返回值：**
 
 | 类型                                 | 说明       |
 | ------------------------------------ | ---------- |
-| [DevicePowerMode](#devicepowermode9) | 当前设备的电源模式，取值包括标准模式、省电模式、性能模式、超级省电模式等。 |
+| [DevicePowerMode](#devicepowermode9) | 当前设备的电源模式，取值包括标准模式、省电模式、性能模式、超级省电模式等。当获取当前设备的电源模式失败时返回0，该值不在[DevicePowerMode](#devicepowermode9)枚举定义范围内。开发者应检查返回值是否为有效枚举值（600及以上）。 |
 
 **示例：**
 
@@ -193,8 +195,59 @@ power.isScreenOn()
 | MODE_NORMAL             | 600  | 表示标准模式，默认值。 |
 | MODE_POWER_SAVE         | 601  | 表示省电模式。         |
 | MODE_PERFORMANCE        | 602  | 表示性能模式。         |
-| MODE_EXTREME_POWER_SAVE | 603  | 表示超级省电模式。     |
+| MODE_EXTREME_POWER_SAVE | 603  | 表示扩展省电模式。此模式支持子模式，子模式定义见[DevicePowerSubMode](#devicepowersubmode)。     |
 | MODE_CUSTOM_POWER_SAVE<sup>20+</sup>  | 650  | 表示自定义省电模式。     |
+
+## power.getPowerSubMode
+
+getPowerSubMode(): DevicePowerSubMode
+
+获取当前设备的电源模式子模式。各子模式定义及说明请参见[DevicePowerSubMode](#devicepowersubmode)。
+
+当前电源模式不支持子模式时返回 SUB_MODE_INVALID。
+
+如需获取当前设备的电源模式，请使用[power.getPowerMode](#powergetpowermode9)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [DevicePowerSubMode](#devicepowersubmode) | 电源模式子模式。当前电源模式不支持子模式时返回 SUB_MODE_INVALID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 4900101 | Failed to connect to the service. |
+
+**示例：**
+
+```js
+let subMode = power.getPowerSubMode();
+console.info('power sub mode: ' + subMode);
+```
+
+## DevicePowerSubMode
+
+表示电源模式子模式的枚举值，用于区分同一电源模式下的不同省电子场景。SUB_MODE_SUPER_POWER_SAVE 和 SUB_MODE_EMERGENCY 仅在电源模式为 MODE_EXTREME_POWER_SAVE（603）时有效；SUB_MODE_INVALID(-1) 表示当前电源模式不支持子模式。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| SUB_MODE_INVALID | -1 | 非法子模式值。当前电源模式不支持子模式时使用此值。 |
+| SUB_MODE_SUPER_POWER_SAVE | 603001 | 超级省电子模式。适用于 MODE_EXTREME_POWER_SAVE（603）。 |
+| SUB_MODE_EMERGENCY | 603002 | 应急子模式。适用于 MODE_EXTREME_POWER_SAVE（603），此值为 603 的默认子模式。 |
 
 ## PowerKeyFilteringStrategy<sup>21+</sup>
 

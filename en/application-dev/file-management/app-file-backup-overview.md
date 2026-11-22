@@ -5,9 +5,9 @@
 <!--Designer: @chenxi0605-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-08-26T04:26:50.179Z pushedAt=2026-08-28T02:44:23.728Z -->
+<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-10-29T10:30:53.705Z pushedAt=2026-10-29T10:30:53.705Z nl=1 -->
 
-Application data, such as the configuration and service data, is generated when an application is used. To prevent user data against loss due to operations such as application updates and hopping, the application data needs to be backed up and restored.
+Application data, such as configuration and service data, is generated as users use an application. To prevent data loss during operations such as application updates and migration, applications need to integrate with the data backup and restore framework.
 
 Before development, you need to understand the [ExtensionAbility](../application-models/extensionability-overview.md) component.
 

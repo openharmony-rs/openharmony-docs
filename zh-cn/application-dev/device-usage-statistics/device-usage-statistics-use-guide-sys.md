@@ -1,4 +1,4 @@
-# 设备使用信息统计开发指导(ArkTS) (仅对系统应用开放)
+# 设备使用信息统计开发指导 (ArkTS) (仅对系统应用开放)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @xufu7-->
@@ -93,7 +93,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     // 异步方法promise方式
     usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res: usageStatistics.BundleStatsMap) => {
         console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise success.');
-        console.info('BUNDLE_ACTIVE queryBundleStatsInfos callback result ' + JSON.stringify(res));
+        console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise result ' + JSON.stringify(res));
     }).catch( (err : BusinessError) => {
         console.error('BUNDLE_ACTIVE queryBundleStatsInfos promise failed. code is: ' + err.code + ',message is: ' + err.message);
     });
@@ -391,7 +391,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise形式
     function  onBundleGroupChanged (res: usageStatistics.AppGroupCallbackInfo) {
-        console.info('BUNDLE_ACTIVE registerAppGroupCallBack RegisterGroupCallBack callback success.');
+        console.info('BUNDLE_ACTIVE onBundleGroupChanged RegisterGroupCallBack callback success.');
         console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appOldGroup is : ' + res.appOldGroup);
         console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appNewGroup is : ' + res.appNewGroup);
         console.info('BUNDLE_ACTIVE registerAppGroupCallBack result changeReason is : ' + res.changeReason);

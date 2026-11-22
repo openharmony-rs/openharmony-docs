@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "介绍系统应用在申请所需权限后，如何创建虚拟屏、绑定渲染Surface、启动或停止屏幕镜像，并在使用完成后销毁虚拟屏。该能力可用于投屏、录屏等场景。"
+keywords: [虚拟屏, 虚拟屏创建, SurfaceID, 虚拟屏销毁, 镜像]
+doctype: guide
+status: active
+---
+
 # 虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->

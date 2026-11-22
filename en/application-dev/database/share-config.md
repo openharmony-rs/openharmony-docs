@@ -1,12 +1,11 @@
 # Sharing Configurations Between Applications (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:33.200Z pushedAt=2026-06-25T09:20:12.045Z -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:47:14.935Z pushedAt=2026-11-16T13:26:33.826Z nl=1 -->
 
 ## When to Use
 
@@ -19,11 +18,8 @@ This feature is supported since API version 20.
 The working principles of configuration sharing between applications are as follows:
 
 1. **Configuration publisher (data provider)**: provides default shared configuration items and dynamically modifies them. Currently, the following configuration modes are supported:
-
    - **Static configuration**: default shared configuration items are provided when the application package is installed. The configuration takes effect immediately without depending on the application startup.
-
    - **Dynamic configuration**: configuration items can be dynamically added, deleted, or modified via related APIs, without depending on application upgrade.
-
 2. **Configuration accessor (data consumer)**: calls APIs to obtain configuration information or subscribe to or unsubscribe from configuration change notifications.
 
 ## Constraints
@@ -31,7 +27,6 @@ The working principles of configuration sharing between applications are as foll
 Before API version 26.0.0, an application can publish up to 32 configuration items. Starting from API version 26.0.0, the limit is increased to 64 configuration items per application. This limit applies to the combined total of static and dynamic configuration items.
 
 ## Available APIs
-
 The following APIs are provided for inter-application configuration sharing. For detailed descriptions of these APIs, see [DataProxyHandle](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxyhandle20).
 
 ### Public APIs
@@ -56,11 +51,11 @@ The following APIs are provided for inter-application configuration sharing. For
 | on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: AsyncCallback<DataProxyChangeInfo[]>): DataProxyResult[] | Subscribes to configuration item changes.    |
 | off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: AsyncCallback<DataProxyChangeInfo[]>): DataProxyResult[] | Unsubscribes from configuration item changes.|
 
+
 ## Configuring the Publisher
-
 ### Configuration in module.json5
+Reference the **shared_config.json** file by configuring the **crossAppSharedConfig** field in the **module.json5** file. The **shared_config.json** file defines the configuration items that can be shared between applications. You should store the file in the **resources/base/profile** directory of the project and reference it using the **$** symbol.  
 
-Reference the **shared_config.json** file by configuring the **crossAppSharedConfig** field in the **module.json5** file. The **shared_config.json** file defines the configuration items that can be shared between applications. You should store the file in the **resources/base/profile** directory of the project and reference it using the **$** symbol. 
 
 ```json5
 {
@@ -69,6 +64,7 @@ Reference the **shared_config.json** file by configuring the **crossAppSharedCon
   }
 }
 ```
+
 
 The file name **shared_config** of the shared configuration file **shared_config.json** is customizable. The root node, **crossAppSharedConfig**, is an array of objects that defines the shared configuration items.<br/>Before API version 26.0.0, an application can publish up to 32 configuration items. This limit applies to the combined total of static and dynamic configuration items. If more than 32 static configuration items are defined, only the first 32 items that comply with the **crossAppSharedConfig** configuration requirements are parsed. The remaining items are ignored.<br/>Starting from API version 26.0.0, an application can publish up to 64 configuration items. This limit applies to the combined total of static and dynamic configuration items. If more than 64 static configuration items are defined, only the first 64 items that comply with the **crossAppSharedConfig** configuration requirements are parsed. The remaining items are ignored.
 
@@ -104,16 +100,16 @@ The following table describes the parameters in the **crossAppSharedConfig** fie
 
 ### Static Configuration
 
-Static configuration refers to the default shared configuration items provided during application installation. These predefined configuration items can take effect regardless of whether the application is started.
+Static configuration refers to the default shared configuration items provided during application installation. These predefined configuration items can take effect regardless of whether the application is started. 
 
 ### Dynamic Configuration
 
-You can call the **publish** or **delete** API to manage configuration items as follows: 
+You can call the **publish** or **delete** API to manage configuration items as follows:  
 
 - Call the **publish** API to publish or modify configuration items.
 
   <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   function publishSharedConfig() {
     dataShare.createDataProxyHandle().then((dataProxyHandle) => {
@@ -151,10 +147,12 @@ You can call the **publish** or **delete** API to manage configuration items as 
   }
   ```
 
+
+
 - Call the **delete** API to delete the configuration items.
 
   <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   function deleteSharedConfig() {
     dataShare.createDataProxyHandle().then((dataProxyHandle) => {
@@ -177,6 +175,8 @@ You can call the **publish** or **delete** API to manage configuration items as 
     });
   }
   ```
+
+
 
 ## Configuring the Accessor
 
@@ -211,6 +211,8 @@ function getSharedConfig() {
 }
 
 ```
+
+
 
 ### Subscribing to/Unsubscribing from Configuration Changes
 
@@ -254,4 +256,4 @@ function watchConfigChanges() {
 
 ```
 
-<!--no_check-->
+

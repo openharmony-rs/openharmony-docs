@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 3D"]
+description: "Describes how to build and manage a 3D scene, including loading glTF models, creating and configuring camera and light nodes, rendering with Component3D, and controlling the viewpoint in a custom scene."
+keywords: [ArkGraphics 3D, glTF loading, Component3D, Scene.load, 3D scene]
+doctype: guide
+status: active
+---
+
 # Building and Managing ArkGraphics 3D Scenes
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bfc96144fd212df11635a7acc693723c4ad0b55f translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 A 3D scene consists of three essential parts: light, camera, and model.
 - Light provides illumination for a 3D scene so that the models in the 3D scene become visible. Without light, the rendering result is all black.
@@ -19,6 +29,13 @@ After a model is loaded, it can be presented to users through the [Component3D](
 Models come in a multitude of formats, but currently, ArkGraphics 3D supports only the loading of glTF models. glTF represents 3D scenes. For details about glTF, see [glTF-2.0](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html).
 
 A glTF model can contain key elements of a 3D scene, including the light, camera, and model. If a glTF model contains a camera, you can use the APIs provided by ArkGraphics 3D to load the glTF model to render the 3D scene in the camera view. If the model does not contain a camera, you can use the ArkGraphics 3D APIs to create a camera for rendering. Due to the large size, a 3D model is usually loaded in asynchronous mode. After a model is loaded, a scene object is returned, based on which you can edit the 3D scene.
+
+Texture images referenced by glTF models support the following formats:
+
+| Format | Support |
+|------|----------|
+| JPEG (.jpg/.jpeg) | Supports JPEG files with JFIF, Exif, or ICC Profile markers in the header.<br>On devices running OpenHarmony 7.0.0 or later, also supports JPEG files with DQT, XMP, MPF, or Adobe markers in the header. |
+| PNG (.png) | Supports standard PNG files. |
 
 1. Import the required modules.
 
@@ -62,7 +79,7 @@ A glTF model can contain key elements of a 3D scene, including the light, camera
    
    ``` TypeScript
    // Create a Camera.
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // Set proper camera parameters.
    this.cam.enabled = true;
    this.cam.position.z = 5;
@@ -261,7 +278,7 @@ ArkGraphics 3D provides APIs for creating light and modifying light parameters. 
      this.scene = globalScene;
      this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
      this.rf = this.scene.getResourceFactory();
-     this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+     this.cam = await this.rf.createCamera({ name: 'Camera1' });
      this.cam.enabled = true;
      this.cam.position.z = 5;
      // Initialize color value

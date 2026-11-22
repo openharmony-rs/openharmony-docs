@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "系统讲解Stage模型中各类Context的继承关系、获取方式，以及在文件路径、加密分区、生命周期监听等场景的使用方法。"
+keywords: [Context, ApplicationContext, UIAbilityContext, AbilityStageContext, ExtensionContext, 应用文件路径, 加密分区, 生命周期监听]
+doctype: guide
+status: active
+---
 # 应用上下文Context
 
 <!--Kit: Ability Kit-->
@@ -19,7 +26,7 @@
 
 > **说明：**
 >
-> 不同类型的Context具有不同的能力，不可相互替代或强行转换。例如，[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)绑定了[setFontSizeScale](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)方法，但[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中没有此方法。因此，即使将UIAbilityContext强行转换为ApplicationContext，也无法调用setFontSizeScale()方法。
+> 不同类型的Context具有不同的能力，不可相互替代或强行转换。例如，[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)绑定了[setFontSizeScale()](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)方法，但[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中没有此方法。因此，即使将UIAbilityContext强行转换为ApplicationContext，也无法调用setFontSizeScale()方法。
 
    **表1** 不同类型Context的说明
 

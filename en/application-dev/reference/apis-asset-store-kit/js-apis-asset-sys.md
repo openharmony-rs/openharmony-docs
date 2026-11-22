@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=c780ec602b8a429e3e53fe261f8afc5ed18a2559 translatedAt=2026-11-06T11:56:11.971Z pushedAt=2026-11-09T11:58:45.660Z nl=1 -->
 
 The asset store service (ASSET) provides secure storage and management of sensitive data less than 1024 bytes in size, including passwords, app tokens, and other critical data (such as bank card numbers).
 
@@ -26,7 +27,7 @@ addAsUser(userId: number, attributes: AssetMap): Promise\<void>
 
 Adds one asset in the specified user space. This API uses a promise to return the result.
 
-To set [IS_PERSISTENT](js-apis-asset.md#tag), the application must have the ohos.permission.STORE_PERSISTENT_DATA permission.
+To set the [Tag.IS_PERSISTENT](js-apis-asset.md#tag) attribute, you need to request the ohos.permission.STORE_PERSISTENT_DATA permission. For details about how to request the permission, see [Declared Permission](../../security/AccessToken/declare-permissions.md).
 
 **System API**: This is a system API.
 
@@ -49,12 +50,12 @@ To set [IS_PERSISTENT](js-apis-asset.md#tag), the application must have the ohos
 
 **Error codes**
 
-For details about the error codes, see [Asset Store Service Error Codes](errorcode-asset.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Asset Store Service Error Codes](errorcode-asset.md)
 
 | ID| Error Message                                                  |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000003 | The asset already exists.                                  |
@@ -119,13 +120,13 @@ Removes one or more assets in the specified user space. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see [Asset Store Service Error Codes](errorcode-asset.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Asset Store Service Error Codes](errorcode-asset.md)
 
 | ID| Error Message                                                  |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000006 | Insufficient memory.                                       |
@@ -184,12 +185,12 @@ Updates one asset in the specified user space. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Asset Store Service Error Codes](errorcode-asset.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Asset Store Service Error Codes](errorcode-asset.md)
 
 | ID| Error Message                                                  |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
@@ -252,13 +253,13 @@ Performs preprocessing for the asset query in the specified user space. This API
 
 **Error codes**
 
-For details about the error codes, see [Asset Store Service Error Codes](errorcode-asset.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Asset Store Service Error Codes](errorcode-asset.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | The caller doesn't have the permission.                      |
-| 202      | Non-system applications use system APIs.                     |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                      |
+| 202      | Permission verification failed. A non-system application calls a system API.                     |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
 | 24000002 | The asset is not found.                          |
 | 24000005 | The screen lock status does not match.                           |
@@ -319,13 +320,13 @@ Queries one or more assets in the specified user space. If user authentication i
 
 **Error codes**
 
-For details about the error codes, see [Asset Store Service Error Codes](errorcode-asset.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Asset Store Service Error Codes](errorcode-asset.md)
 
 | ID| Error Message                                                  |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000004 | Access denied.                             |
@@ -391,12 +392,12 @@ Performs postprocessing for the asset query in the specified user space. This AP
 
 **Error codes**
 
-For details about the error codes, see [Asset Store Service Error Codes](errorcode-asset.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Asset Store Service Error Codes](errorcode-asset.md)
 
 | ID| Error Message                                                  |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000006 | Insufficient memory.                                       |

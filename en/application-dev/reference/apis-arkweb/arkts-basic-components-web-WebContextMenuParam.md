@@ -1,12 +1,11 @@
 # Class (WebContextMenuParam)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=579a3b230d60c35cd28258c4ed8312a8dd3cee8c translatedAt=2026-08-07T04:44:06.125Z pushedAt=2026-08-07T08:12:37.989Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-06T11:26:38.615Z pushedAt=2026-11-13T09:05:54.003Z nl=1 -->
 
 WebContextMenuParam is a parameter class in the ArkWeb component used to carry context menu information displayed when a user long presses a web element or right-clicks. As the data carrier for the **onContextMenuShow** event callback, it encapsulates key information such as the menu popup position, link address, media type, selected text, and edit state.
 
@@ -18,9 +17,9 @@ For sample code, see [onContextMenuShow](./arkts-basic-components-web-events.md#
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 9.
+> - This class is supported since API version 9.
 >
 > - The sample effect is subject to the actual device.
 
@@ -249,4 +248,75 @@ Obtains the type of the web element that the user long presses or right-clicks w
 | Type    | Description      |
 | ------ | ----------  |
 | [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | Media type of the web element, including image, video, audio, and other types, used to distinguish the type of web element tapped by the user. |
-<!--no_check-->
+
+## shouldOfferLinkToText
+
+shouldOfferLinkToText(): boolean
+
+Checks whether the currently selected text can be used to generate a Text Fragment link. A Text Fragment link is a URL containing the **#:~:text=** fragment, which scrolls to and highlights a specific text passage when the link is opened.
+
+It is recommended to use this API in the [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9) event callback to determine whether to display the "Copy link to highlight" menu item.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type    | Description                                      |
+| ------- | ---------------------------------------- |
+| boolean | true indicates that the currently selected text can be used to generate a Text Fragment link; false indicates that it cannot. |
+
+**Example**
+
+For sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).
+
+## getTextFragmentGeneratedLink
+
+getTextFragmentGeneratedLink(): string
+
+Obtains the Text Fragment link URL that points to the highlighted text on the current web page. The returned URL contains a **#:~:text=** fragment that complies with the W3C Text Fragments specification.
+
+It is recommended to use this API in the [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9) event callback. Before calling this API, it is recommended to call [shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext) to check whether the current selected text supports link generation. If the selected text does not support link generation, an empty string is returned.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type     | Description                                       |
+| ------ | ---------------------------------------- |
+| string | Returns the complete Text Fragment URL string; returns an empty string if unavailable. |
+
+**Example**
+
+For sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).
+
+## isOverTextFragment
+
+isOverTextFragment(): boolean
+
+Checks whether the current web page has a Text Fragment highlight. Use this API to determine whether to show the "Undo highlight" and "Reshare link" menu items.
+
+It is recommended to use this API in the [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9) event callback.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type    | Description                                       |
+| ------- | ---------------------------------------- |
+| boolean | Returns true if the current page has a Text Fragment highlight; otherwise, returns false. |
+
+**Example**
+
+For sample code of Text Fragment-related APIs, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).

@@ -51,8 +51,8 @@ getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | Account not found. |
 
@@ -110,8 +110,8 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInf
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | Account not found. |
 
@@ -159,9 +159,8 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
@@ -220,9 +219,8 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |

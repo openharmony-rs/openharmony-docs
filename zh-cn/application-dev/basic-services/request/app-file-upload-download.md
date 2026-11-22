@@ -10,13 +10,15 @@
 
 > **说明：**
 >
-> · 使用上传下载模块，优先推荐使用[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)创建上传下载任务。
+> - 使用上传下载模块，优先推荐使用[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)创建上传下载任务。
 >
-> · 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+> - 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
 >
-> · 上传下载模块不支持Charles、Fiddler等代理抓包工具。
+> - 上传下载模块不支持Charles、Fiddler等代理抓包工具。
 >
-> · 上传下载模块接口目前暂不支持子线程调用场景，如[TaskPool](../../arkts-utils/taskpool-introduction.md)等。
+> - 上传下载模块接口目前暂不支持子线程调用场景，如[TaskPool](../../arkts-utils/taskpool-introduction.md)等。
+>
+> - 上传下载模块不保证传输速率，实际速率受网络状况、设备运行环境、对端服务器收发能力等多种因素影响。模块内部会根据系统资源统一调度任务，不保证任务及时完成。
 
 ## 上传应用文件
 
@@ -157,7 +159,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 >
 > 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
-以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
+以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile()方法可点击代码块右下角链接查看）：
 
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 

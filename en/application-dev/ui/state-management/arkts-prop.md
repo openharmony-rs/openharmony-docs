@@ -5,11 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T11:32:49.207Z pushedAt=2026-09-23T09:17:29.238Z -->
+<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:35:11.780Z pushedAt=2026-11-03T07:54:48.814Z nl=1 -->
 
 A variable decorated by [@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md#prop) can establish a one-way synchronization relationship with its parent component.
 
-Before reading the @Prop documentation, you are advised to first understand the basic usage of [@State](./arkts-state.md). For best practices, see [State Management Best Practices](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management FAQs](./arkts-state-management-faq.md).
+Before reading this \@Prop document, developers are advised to first understand the basic usage of [\@State](./arkts-state.md). For common issues, refer to [State Management FAQ](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -72,7 +72,7 @@ Variables decorated with \@Prop have the following features:
 - When the decorated type is a complex type such as Object or class, both object assignments and top-level property changes can be observed. Top-level properties include all properties returned by **Object.keys(observedObject)**. For a complete example of complex types, see [Synchronizing from \@State Class Object Properties to \@Prop Complex Types](#synchronizing-from-state-class-object-properties-to-prop-complex-types).
 
   <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   // Define a nested class.
   class Info {
@@ -94,18 +94,18 @@ Variables decorated with \@Prop have the following features:
   }
   ```
   <!-- @[prop_twentyone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   @Prop title: Model;
   ```
   <!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   // Can observe first-layer changes.
   this.title.value = 'Hi';
   ```
   <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   // Cannot observe second-layer changes.
   this.title.info.value = 'ArkUI';
@@ -201,9 +201,9 @@ struct Father {
    Starting from API version 23, a related check has been added during app compilation. Decorating a Function type variable with @Prop will prompt an ERROR, and the @Prop decorator should be removed from the Function type variable in the code.
 
 - When the parent component passes in **undefined**, the @Prop decorated variable is still initialized with its local default value.
-
+  
   <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) --> 
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -1072,7 +1072,7 @@ struct Zoo {
           if (this.animal instanceof Animals) {
             this.animal.name = 'Dog';
           } else {
-            hilog.info(DOMAIN, TAG, 'num is undefined, cannot change property');
+            hilog.info(DOMAIN, TAG, 'animal is undefined, cannot change property');
           }
         })
 

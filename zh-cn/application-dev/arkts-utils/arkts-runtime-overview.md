@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS运行时的整体架构与核心能力：覆盖Core、Execution、Compiler、Runtime四大子系统，提供解释器、AOT与JIT执行方式、GC内存管理、标准库及Node-API跨语言调用，支撑ArkTS、TS、JS应用高效运行。"
+keywords: [ArkTS运行时, 运行时架构, 解释器, AOT, JIT, 方舟字节码, 垃圾回收, 内存管理, Node-API, 跨语言调用]
+doctype: guide
+status: active
+---
+
 # ArkTS运行时概述
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @guobingbing3-->
-<!--Designer: @xwcai98-->
+<!--Owner: @xiongluo96-->
+<!--Designer: @xiongluo96-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

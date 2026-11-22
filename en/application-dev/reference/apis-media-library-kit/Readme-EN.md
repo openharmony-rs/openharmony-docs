@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=2669993d666e40da8aa0afd948c69246da1b4dcb translatedAt=2026-11-03T07:29:38.423Z pushedAt=2026-11-04T03:11:19.997Z nl=1 -->
 
 - ArkTS APIs<!--media-library-arkts-->
   - @ohos.file.photoAccessHelper (Album Management)<!--js-apis-photoaccesshelper-->
@@ -12,6 +13,7 @@
     - [Functions](arkts-apis-photoAccessHelper-f.md)
     - [Class (MediaAlbumChangeRequest)](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)
     - [Class (MediaAssetChangeRequest)](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)
+    - [Class (MediaAssetsChangeRequest)](arkts-apis-photoAccessHelper-MediaAssetsChangeRequest.md)
     - [Class (MediaAssetManager)](arkts-apis-photoAccessHelper-MediaAssetManager.md)
     - [Class (PhotoViewPicker)](arkts-apis-photoAccessHelper-PhotoViewPicker.md)
     - [Classes (Others)](arkts-apis-photoAccessHelper-class.md)
@@ -59,3 +61,4 @@
     - [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)
 - Error Codes<!--media-library-errcode-->
   - [Media Library Error Codes](errorcode-medialibrary.md)
+

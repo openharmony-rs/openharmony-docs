@@ -491,6 +491,11 @@
        - [电源模式定制开发指导](subsystems/subsys-power-mode-customization.md)
        - [电源默认休眠行为定制开发指导](subsystems/subsys-power-default-sleep-behavior-customization.md)
        - [唤醒源定制开发指导](subsystems/subsys-power-wakeup-source-customization.md)
+  -  打印服务
+     - 打印首选项
+       - [打印首选项开发指导](subsystems/subsys-print-preferences-guide.md)
+     - 打印驱动
+       - [打印驱动开发指导](subsystems/subsys-print-driver-guide.md)
 - 专题
   - HPM Part
     - [HPM Part介绍](hpm-part/hpm-part-about.md)
@@ -523,7 +528,7 @@
     - [平台驱动开发示例](guide/device-driver-demo.md)
     - [外设驱动开发示例](guide/device-outerdriver-demo.md)
 - 调测
-  - [developer_test开发者自测试执行框架使用指导](device-test/developer_test.md)
+  - [developer_test开发者自测试执行框架使用指导](device-test/developer-test.md)
   - [xdevice测试调度框架使用指导](device-test/xdevice.md)
   - [Smartperf-Host调优工具使用指导](device-test/smartperf-host.md)
   - 调测工具

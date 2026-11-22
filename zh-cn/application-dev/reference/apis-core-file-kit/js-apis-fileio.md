@@ -2990,7 +2990,7 @@ isBlockDevice(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isBLockDevice = fileio.statSync(filePath).isBlockDevice();
+  let isBlockDevice = fileio.statSync(filePath).isBlockDevice();
   ```
 
 
@@ -3865,7 +3865,7 @@ isBlockDevice(): boolean
 
   ```ts
   let dir = fileio.opendirSync(pathDir);
-  let isBLockDevice = dir.readSync().isBlockDevice();
+  let isBlockDevice = dir.readSync().isBlockDevice();
   ```
 
 

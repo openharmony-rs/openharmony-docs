@@ -1,11 +1,11 @@
 # Click Sound Effect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b7d29dcb4c10e7f74b8709493d673af25bbc5983 translatedAt=2026-09-01T12:17:33.470Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:15:30.022Z pushedAt=2026-11-13T01:06:00.075Z nl=1 -->
 
 Sets whether to enable the default click sound effect for a component. This API is applicable to scenarios where you need to control the component click feedback sound effect or customize the playback of the click sound effect.
 
@@ -19,7 +19,7 @@ Sets whether to enable the default click sound effect for a component. This API 
 
 enableClickSoundEffect(enabled: boolean | undefined): T
 
-Sets whether to enable the default click sound effect for a component. This API is applicable to scenarios where you need to control the component click feedback sound effect or customize the sound playback. Whether the sound can be played also depends on the sound-related settings of the device. For example, no sound effect is played in silent mode. After the default click sound effect is disabled, you can call audio-related APIs in the onClick callback to customize the sound playback.
+Sets whether the component enables the default click sound effect. This API applies to scenarios where you need to control the component click feedback sound effect or customize the playback of the click sound effect. Whether the sound effect can be played also depends on the sound-related settings of the device. For example, the sound effect is not played in silent mode. After the default click sound effect is disabled, you can call audio-related APIs in the **onClick** callback to customize the playback of the sound effect.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -41,12 +41,12 @@ Sets whether to enable the default click sound effect for a component. This API 
 | ------ | ------------------------ |
 | T | Current component, used for chained calls. |
 
-## Example
+## Examples
 ### Example 1: Disabling Default Click Sound Effect
 
-This example disables the default click sound effect by setting the **enableClickSoundEffect** attribute. You can call audio-related APIs in the **onClick** callback to customize the sound effect. For details, see [Using SoundPool to Play Short Sounds](../../../media/media/using-soundpool-for-playback.md).
+This example configures the **enableClickSoundEffect** attribute to disable the default click sound effect of the component. You can call audio-related APIs in the **onClick** callback to customize the playback of the sound effect. For details about custom sound effect playback, see [SoundPool Guide for Playing Short Audio](../../../media/media/using-soundpool-for-playback.md).
 
-The [enableClickSoundEffect](#enableclicksoundeffect) attribute is added since API version 24.
+Starting from API version 24, the [enableClickSoundEffect](#enableclicksoundeffect) API is added.
 ```ts
 @Entry
 @Component
@@ -59,7 +59,7 @@ struct Index {
         .width('200')
         .enableClickSoundEffect(false)
         .onClick(() => {
-          // Customize the sound here. For details, see the guide on playing short audio with SoundPool.
+          // Play the click sound effect here. For details, see the guide on playing short audio with SoundPool.
         })
     }
     .width('100%')

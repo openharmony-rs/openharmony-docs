@@ -1,11 +1,11 @@
 # Adding a Custom Ringtone to a Notification
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:06:01.973Z pushedAt=2026-09-30T07:08:03.111Z -->
+<!-- md-trans-meta sourceCommit=75c0f0cf34944e262b28608d43f8d720a6e6e07e translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 Starting from API version 12, applications can use custom notification ringtones when publishing notifications. The audio resources for these ringtones must be pre-included in the application. Starting from API version 24, the system has enhanced this field, allowing applications to use non-preloaded audio resources as notification ringtones, such as audio downloaded from the internet or user-generated audio files.
 
@@ -28,7 +28,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
 
 1. Import modules.
 
-    <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
+    <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
     import { notificationManager } from '@kit.NotificationKit';
@@ -96,7 +96,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
 
    (3) Create the sound information for the notification.
 
-    <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
+    <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
     // Obtain the URI of the sandbox file.
@@ -105,7 +105,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
     ```
 3. Publish a notification that carries the [customized ringtone](notification-glossary.md#customized-ringtone).
 
-    <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
+    <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
     let notificationRequest: notificationManager.NotificationRequest = {

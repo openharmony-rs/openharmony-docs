@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "说明录音并存与并行的区别，以及音频焦点和优先级对多路采集及音效的影响，帮助应用适配并发限制并管理录音资源。"
+keywords: [录音并存, 录音并行, 内录与外录并发, 录音焦点策略, 录音流优先级, 录制流类型, 并发录音音效]
+doctype: guide
+status: active
+---
+
 # 录音并发策略说明
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

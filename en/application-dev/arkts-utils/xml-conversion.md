@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Introduces the XML conversion capability of the language basic class library: use ConvertXML to convert XML text into JSON objects for easier data processing, covering development steps and precautions, applicable to data processing scenarios involving mutual conversion between XML and JSON formats."
+keywords: [XML conversion, ConvertXML, XML to JSON, text conversion, data format conversion, development steps]
+doctype: guide
+status: active
+---
+
 # XML Conversion
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:54:13.854Z pushedAt=2026-11-12T13:46:10.257Z nl=1 -->
 
 
 Converting XML text into JavaScript objects can simplify data handling and manipulation, making it more suitable for use in JavaScript applications.
@@ -53,7 +62,7 @@ To convert an XML document into a JavaScript object and obtain the tag values, p
      // attributesKey: "_attributes", indicating that _attributes is used to identify attributes after conversion.
      // textKey: "_text", indicating that _text is used to identify tag values after conversion.
      // cdataKey: "_cdata", indicating that _cdata is used to identify unparsed data after conversion.
-     // docTypeKey: "_doctype", indicating that _doctype is used to identify documents after conversion.
+     // doctypeKey: "_doctype" The document type is identified by _doctype after conversion.
      // commentKey: "_comment", indicating that _comment is used to identify comments after conversion.
      // parentKey: "_parent", indicating that _parent is used to identify parent classes after conversion.
      // typeKey: "_type", indicating that _type is used to identify types after conversion.
@@ -74,8 +83,6 @@ To convert an XML document into a JavaScript object and obtain the tag values, p
    }
    ```
 
-   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
-
 3. Call the **fastConvertToJSObject** function and print the result.
 
    <!-- @[xmlChange_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
@@ -90,7 +97,6 @@ To convert an XML document into a JavaScript object and obtain the tag values, p
    The output is as follows:
 
    ```json
-   strRes:
    {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"element","_name":"note",
     "_attributes":{"importance":"high","logged":"true"},"_elements":[{"_type":"element","_name":"title","_parent":"note",
     "_elements":[{"_type":"text","_text":"Happy"}]},{"_type":"element","_name":"todo","_parent":"note","_elements":

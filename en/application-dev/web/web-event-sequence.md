@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:09:20.920Z pushedAt=2026-09-22T01:34:04.445Z -->
+<!-- md-trans-meta sourceCommit=189644703e282cd7870afaafd2b69610639795a1 translatedAt=2026-11-03T03:06:28.416Z pushedAt=2026-11-03T03:22:03.053Z nl=1 -->
 
 ## Overview
 
@@ -50,11 +50,13 @@ When a custom component is destroyed, the [aboutToDisappear](../reference/apis-a
 
 - Application-side code:
 
-  ```ts
+  <!-- @[the_status_of_web_component_web_page_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -70,7 +72,7 @@ When a custom component is destroyed, the [aboutToDisappear](../reference/apis-a
       "<h1>intercept test</h1>\n" +
       "</body>\n" +
       "</html>";
-
+  
     aboutToAppear(): void {
       try {
         webview.WebviewController.setWebDebuggingAccess(true);
@@ -78,7 +80,7 @@ When a custom component is destroyed, the [aboutToDisappear](../reference/apis-a
         console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
     }
-
+  
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
@@ -188,7 +190,9 @@ ArkWeb is a **Web** component platform designed to display web page content for 
 If the web page is suspended when the ArkWeb child process exits abnormally, the application can listen for the [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9) event to obtain the specific exit cause [RenderExitReason](../reference/apis-arkweb/arkts-basic-components-web-e.md#renderexitreason9) and handle the exception in the callback correspondingly.
 
 **Development in Practice**
-```ts
+<!-- @[avoid_page_stuck_caused_by_render_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/OnRenderExitedReload.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -207,7 +211,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   // Specify the page to be loaded.
-  url: string = "www.example.com";
+  url: string = 'www.example.com';
   build() {
     Column() {
       Web({ src: this.url, controller: this.controller })

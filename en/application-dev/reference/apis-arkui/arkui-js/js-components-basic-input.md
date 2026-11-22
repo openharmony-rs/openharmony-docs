@@ -1,12 +1,11 @@
 # input
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:09.547Z pushedAt=2026-06-22T06:26:55.652Z -->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-11-12T04:14:44.829Z pushedAt=2026-11-12T06:36:39.872Z nl=1 -->
 
 >  **NOTE**
 >
@@ -18,9 +17,11 @@ The **\<input>** component provides an interactive interface to receive user inp
 
 None
 
+
 ## Child Components
 
 Not supported
+
 
 ## Attributes
 
@@ -51,6 +52,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | icon    | string | Path of the icon for a menu option.|
 | content | string | Text content of a menu option.|
 
+
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -64,16 +66,17 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-weight              | number \| string | normal     | No   | Font weight of the single-line text box or button. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md) component. |
 | caret-color<sup>6+</sup> | &lt;color&gt;              | -          | No   | Color of the caret.                              |
 
+
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
 - When **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**, the following events are supported.
 
-| Name                       | Parameter                                      | Description                                      |
-| ------------------------- | ---------------------------------------- | ---------------------------------------- |
+  | Name                       | Parameter                                      | Description                                      |
+  | ------------------------- | ---------------------------------------- | ---------------------------------------- |
   | change                    | {<br> value: inputValue<br> }  | Triggered when the content entered in the input box changes. The most recent content entered by the user is returned.<br>If you change the **value** attribute directly, this event will not be triggered.|
-  | enterkeyclick             | {<br> value: enterKey<br> }    | Triggered when the **Enter** key on the soft keyboard is clicked. The type of the **Enter** key is returned, which is of the number type. Available values are as follows:<br>- **2**: returned if **enterkeytype** is **go**.<br>- **3**: returned if **enterkeytype** is **search**.<br>- **4**: returned if **enterkeytype** is **send**.<br>- **5**: returned if **enterkeytype** is **next**.<br>- **6**: returned if **enterkeytype** is **default**, **done**, or is not set.|
+  | enterkeyclick             | {<br>&nbsp;value: enterKey<br>&nbsp;}    | Triggered when the **Enter** key on the soft keyboard is clicked. The type of the **Enter** key is returned. The type of **enterKey** is number, and the optional values are as follows:<br/>-&nbsp;**2**: takes effect when **enterkeytype** is set to **go**.<br/>-&nbsp;**3**: takes effect when **enterkeytype** is set to **search**.<br/>-&nbsp;**4**: takes effect when **enterkeytype** is set to **send**.<br/>-&nbsp;**5**: takes effect when **enterkeytype** is set to **next**.<br/>-&nbsp;**6**: takes effect when **enterkeytype** is not set, or is set to **default** or **done**. |
   | translate<sup>5+</sup>    | {<br> value: selectedText<br> } | Triggered when users click the translate button in the menu displayed after they select a text segment. The selected text content is returned.|
   | share<sup>5+</sup>        | {<br> value: selectedText<br> } | Triggered when users click the share button in the menu displayed after they select a text segment. The selected text content is returned.|
   | search<sup>5+</sup>       | {<br> value: selectedText<br> } | Triggered when users click the search button in the menu displayed after they select a text segment. The selected text content is returned.|
@@ -92,14 +95,13 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 
 | Name                 | Parameter                                      | Description                                      |
 | ------------------- | ---------------------------------------- | ---------------------------------------- |
-| focus               | {<br> focus: true\|false<br> }:<br>If **focus** is not passed, the default value **true** is used. | Obtains or loses focus. When **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**, the input method can be displayed or collapsed. |
+| focus               | {<br> focus: true\|false<br> }:<br>If **focus** is not passed, the default value **true** is used. | Obtains or loses focus. When **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**, the soft keyboard can be displayed or collapsed. |
 | showError           | {<br> error: string <br>}                | Displays the error message. This method is available when **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**. |
 | delete<sup>6+</sup> | -                                        | Deletes text based on the current caret position when **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**; deletes the last character and displays the caret if the current input component does not have a caret. |
 
 ## Example
 
 1. Single-line text box
-
    ```html
    <!-- xxx.hml -->
    <div class="content">
@@ -126,9 +128,9 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
      width: 60%;
      background-color: gray;
      margin-top: 20px;
-    }
+   }
    ```
-
+   
    ```js
    // xxx.js
    import promptAction from '@ohos.promptAction';
@@ -150,13 +152,13 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
          error: 'error text'
        });
      },
-    }
+   }
    ```
+
 
    ![submit-button](figures/submit-button.png)
 
 2. Common button
-
    ```html
    <!-- xxx.hml -->
    <div class="div-button">
@@ -179,7 +181,6 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![input](figures/input.png)
 
 3. Check box
-
    ```html
    <!-- xxx.hml -->
    <div class="content">
@@ -213,7 +214,6 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![input01](figures/input01.png)
 
 4. Radio button
-
    ```html
    <!-- xxx.hml -->
    <div class="content">

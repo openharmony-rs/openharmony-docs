@@ -3214,7 +3214,7 @@ readRemoteObjectArray(): IRemoteObject[]
 
 | 类型            | 说明                        |
 | --------------- | --------------------------- |
-| [IRemoteObject](#iremoteobject)[] | 返回IRemoteObject对象数组；当写入的是空数组时，返回的是nullptr。 |
+| [IRemoteObject](#iremoteobject)[] | 返回IRemoteObject对象数组；当写入的是空数组时，返回的是null。 |
 
 **错误码：**
 
@@ -9735,9 +9735,7 @@ try {
   let ret = rpc.IPCSkeleton.flushCommands(remoteObject);
   hilog.info(0x0000, 'testTag', 'RpcServer: flushCommands result: ' + ret);
 } catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
+  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, error ' + error);
 }
 ```
 
@@ -11397,7 +11395,6 @@ try {
   let result = ashmem.setProtection(rpc.Ashmem.PROT_READ);
   hilog.info(0x0000, 'testTag', 'Ashmem setProtection result is ' + result);
 } catch (error) {
-  let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=056748dbad21552dea3f902fafaa37ee1fb237df translatedAt=2026-08-07T03:24:27.984Z pushedAt=2026-08-07T08:07:34.685Z -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:22:50.223Z pushedAt=2026-11-16T02:06:53.404Z nl=1 -->
 
 The cipher-based message authentication code (CMAC) uses a block cipher (such as AES) and a key to generate an authentication code, which verifies that a message has not been tampered with during transmission.
 
@@ -35,9 +35,10 @@ The following provides examples of CMAC operations with different data passing m
 - Example: Pass in the full data to generate a MAC using **await**.
 
   <!-- @[message_authentication_code_calculation_cmac_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Async.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function genSymKeyByData(symKeyData: Uint8Array) {
@@ -48,31 +49,38 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   async function doCmac() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = await genSymKeyByData(keyData);
-    let spec: cryptoFramework.CmacSpec = {
-      algName: 'CMAC',
-      cipherName: 'AES128',
-    };
-    let message = 'cmacTestMessage'; // Message used to generate a CMAC.
-    let mac = cryptoFramework.createMac(spec);
-    await mac.init(key);
-    // For a small amount of data, update it by passing the full data. The API does not have a limit on the length of input parameters.
-    await mac.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let macResult = await mac.doFinal();
-    console.info('CMAC result: ' + macResult.data);
-    let macLen = mac.getMacLength();
-    console.info('CMAC len: ' + macLen);
+    try {
+      // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = await genSymKeyByData(keyData);
+      let spec: cryptoFramework.CmacSpec = {
+        algName: 'CMAC',
+        cipherName: 'AES128',
+      };
+      let message = 'cmacTestMessage'; // Data to be processed by CMAC.
+      let mac = cryptoFramework.createMac(spec);
+      await mac.init(key);
+      // When the data size is small, perform a one-time update by passing all the data. The API has no limit on the input parameter length.
+      await mac.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let macResult = await mac.doFinal();
+      console.info('CMAC result: ' + macResult.data);
+      let macLen = mac.getMacLength();
+      console.info('CMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
+
 
 - Example: Pass in the full data to calculate a MAC using synchronous APIs.
 
   <!-- @[message_authentication_code_calculation_cmac_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function genSymKeyByData(symKeyData: Uint8Array) {
@@ -83,22 +91,27 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   function doCmacBySync() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = genSymKeyByData(keyData);
-    let spec: cryptoFramework.CmacSpec = {
-      algName: 'CMAC',
-      cipherName: 'AES128',
-    };
-    let message = 'cmacTestMessage'; // Message used to generate a CMAC.
-    let mac = cryptoFramework.createMac(spec);
-    mac.initSync(key);
-    // For a small amount of data, update it by passing the full data. The API does not have a limit on the length of input parameters.
-    mac.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let macResult = mac.doFinalSync();
-    console.info('[Sync]CMAC result: ' + macResult.data);
-    let macLen = mac.getMacLength();
-    console.info('CMAC len: ' + macLen);
+    try {
+      // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = genSymKeyByData(keyData);
+      let spec: cryptoFramework.CmacSpec = {
+        algName: 'CMAC',
+        cipherName: 'AES128',
+      };
+      let message = 'cmacTestMessage'; // Data for CMAC.
+      let mac = cryptoFramework.createMac(spec);
+      mac.initSync(key);
+      // When the data size is small, perform a one-time update by passing all data; the API has no limit on the input parameter length.
+      mac.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let macResult = mac.doFinalSync();
+      console.info('[Sync]CMAC result: ' + macResult.data);
+      let macLen = mac.getMacLength();
+      console.info('CMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -121,10 +134,11 @@ The following provides examples of CMAC operations with different data passing m
 - Example: Pass in data by segment to generate a MAC using **await**.
 
   <!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function genSymKeyByData(symKeyData: Uint8Array) {
@@ -135,37 +149,44 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   async function doLoopCmac() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = await genSymKeyByData(keyData);
-    let spec: cryptoFramework.CmacSpec = {
-      algName: 'CMAC',
-      cipherName: 'AES128',
-    };
-    let mac = cryptoFramework.createMac(spec);
-    // In this example, the message is of 43 bytes. After decoded in UTF-8 format, the message is also of 43 bytes.
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // Pass in 20 bytes each time. You can set this parameter as required.
-    await mac.init(key);
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      await mac.update(updateMessageBlob);
+    try {
+      // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = await genSymKeyByData(keyData);
+      let spec: cryptoFramework.CmacSpec = {
+        algName: 'CMAC',
+        cipherName: 'AES128',
+      };
+      let mac = cryptoFramework.createMac(spec);
+      // Assume the message is 43 bytes in total, and remains 43 bytes after UTF-8 decoding.
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // Assume the message is segmented in units of 20 bytes for update, with no specific requirement in practice.
+      await mac.init(key);
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        await mac.update(updateMessageBlob);
+      }
+      let macOutput = await mac.doFinal();
+      console.info('CMAC result: ' + macOutput.data);
+      let macLen = mac.getMacLength();
+      console.info('CMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let macOutput = await mac.doFinal();
-    console.info('CMAC result: ' + macOutput.data);
-    let macLen = mac.getMacLength();
-    console.info('CMAC len: ' + macLen);
   }
   ```
+
 
 - Example: Pass in data by segment to generate a MAC using synchronous APIs.
 
   <!-- @[message_authentication_code_calculation_cmac_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function genSymKeyByData(symKeyData: Uint8Array) {
@@ -176,27 +197,33 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   function doLoopCmacBySync() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = genSymKeyByData(keyData);
-    let spec: cryptoFramework.CmacSpec = {
-      algName: 'CMAC',
-      cipherName: 'AES128',
-    };
-    let mac = cryptoFramework.createMac(spec);
-    // In this example, the message is of 43 bytes. After decoded in UTF-8 format, the message is also of 43 bytes.
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // Pass in 20 bytes each time. You can set this parameter as required.
-    mac.initSync(key);
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      mac.updateSync(updateMessageBlob);
+    try {
+      // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = genSymKeyByData(keyData);
+      let spec: cryptoFramework.CmacSpec = {
+        algName: 'CMAC',
+        cipherName: 'AES128',
+      };
+      let mac = cryptoFramework.createMac(spec);
+      // Assume the message is 43 bytes in total, and remains 43 bytes after UTF-8 decoding.
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // Assume the data is segmented in 20-byte units for update; there is no specific requirement in practice.
+      mac.initSync(key);
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        mac.updateSync(updateMessageBlob);
+      }
+      let macOutput = mac.doFinalSync();
+      console.info('[Sync]CMAC result: ' + macOutput.data);
+      let macLen = mac.getMacLength();
+      console.info('CMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let macOutput = mac.doFinalSync();
-    console.info('[Sync]CMAC result: ' + macOutput.data);
-    let macLen = mac.getMacLength();
-    console.info('CMAC len: ' + macLen);
   }
   ```
+

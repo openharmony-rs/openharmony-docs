@@ -1,10 +1,11 @@
 # Publishing Common Events
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3e6a64491cc90c6990b3231ac614d6d55ecbf6a5 translatedAt=2026-11-06T12:00:19.398Z pushedAt=2026-11-09T12:20:03.781Z nl=1 -->
 
 ## When to Use
 
@@ -16,7 +17,7 @@ You can use [publish()](../../reference/apis-basic-services-kit/js-apis-commonEv
 
 ## Available APIs
 
-For details about the APIs, see [commonEventManager.publish](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish).
+For details about the API, see [commonEventManager.publish](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish).
 
 | API                                                      | Description                    |
 | ------------------------------------------------------------ | ---------------------------- |
@@ -30,7 +31,7 @@ Common events that do not carry information can be published only as unordered c
 
 1. Import the related modules.
    
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) --> 
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';

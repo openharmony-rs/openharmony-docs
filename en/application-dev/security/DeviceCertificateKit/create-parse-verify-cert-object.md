@@ -6,25 +6,26 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e4a47c564ac95ef0299462a1f33b58a9ac8a3a67 translatedAt=2026-11-03T05:10:26.490Z pushedAt=2026-11-03T06:48:28.332Z nl=1 -->
 
 This topic walks you through on how to create a certificate object, obtain information about the certificate, and check the validity period of the certificate.
 
 ## How to Develop
 
-1. Import the [certFramework](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. Use [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an **X509Cert** object based on the existing X.509 certificate data.
+2. Based on existing X.509 certificate data, call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create a certificate object.
 
 3. Obtain certificate information.<br>
 
-   Here is an example of obtaining the certificate version, certificate serial number, certificate issuer name, certificate subject name, and string-type data of the certificate object. For more field information, see [@ohos.security.cert (Certificate)](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509cert).
+   Here, obtaining the certificate version, serial number, issuer name, certificate subject name, and string-type data of the certificate object is used as an example. For more field information retrieval APIs, see the API reference document [X509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509cert).
 
 4. Use [X509Cert.getPublicKey](../../reference/apis-device-certificate-kit/js-apis-cert.md#getpublickey) to obtain the public key in the certificate and use [X509Cert.verify](../../reference/apis-device-certificate-kit/js-apis-cert.md#verify) to verify the signature. In this example, a self-signed certificate is used. Therefore, the public key in the certificate is obtained. In your app experience, obtain the public key for signature verification based on actual situation.
 
-5. Use [X509Cert.checkValidityWithDate](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate) to check the certificate validity period. The input parameter **date** is used to check whether the specified date is within the validity period of the X.509 certificate.
+5. Call [X509Cert.checkValidityWithDate](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate) to verify the certificate validity period. The input parameter date is used to confirm whether this date falls within the validity period of the X.509 certificate.
 
 <!-- @[certificate_object_creation_resolution_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertObject.ets) -->
 
@@ -77,8 +78,8 @@ function certSample(): void {
 
     // Obtain the certificate subject name.
     let subjectNameBin = x509Cert.getSubjectName(cert.EncodingType.ENCODING_UTF8);
-    let encoder = util.TextDecoder.create();
-    let subjectName = encoder.decodeToString(subjectNameBin.data);
+    let decoder = util.TextDecoder.create();
+    let subjectName = decoder.decodeToString(subjectNameBin.data);
     console.info(`X509 subjectName: ${subjectName}`);
 
     // Obtain the string-type data of the certificate object.
@@ -89,7 +90,7 @@ function certSample(): void {
     try {
       let pubKey = x509Cert.getPublicKey();
       // Verify the certificate signature.
-      x509Cert.verify(pubKey, (err, data) => {
+      x509Cert.verify(pubKey, (err, _result) => {
         if (err == null) {
           // Signature verification is successful.
           console.info('verify result: success.');

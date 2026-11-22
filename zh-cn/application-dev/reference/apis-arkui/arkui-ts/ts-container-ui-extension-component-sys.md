@@ -234,6 +234,8 @@ type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 ## DpiFollowStrategy<sup>12+</sup>
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -242,6 +244,7 @@ type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#
 | ---------------------------------------- | ----|--------------- |
 | FOLLOW_HOST_DPI                  | 0   | 表示DPI跟随宿主。 |
 | FOLLOW_UI_EXTENSION_ABILITY_DPI  | 1   | 表示DPI跟随UIExtensionAbility。 |
+| FOLLOW_HOST_DPI_ALL | 2 | 表示UIExtensionAbility的UI和子窗DPI均跟随宿主。<br/>**起始版本：** 26.1.0 |
 
 ## WindowModeFollowStrategy<sup>18+</sup>
 

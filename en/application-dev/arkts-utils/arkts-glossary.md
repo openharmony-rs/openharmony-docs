@@ -1,11 +1,19 @@
+---
+kits: ["ArkTS Kit / ArkTS Programming Language"]
+description: "The ArkTS glossary summarizes and explains the core terms in ArkTS development, including definitions of concepts such as Ark Bytecode (abc artifacts), the ArkGuard code obfuscator, the ASON serialization tool, the es2abc compiler, and the Sendable shareable object mechanism, helping developers accurately understand the meaning and purpose of key terms in the ArkTS technology system."
+keywords: [ArkTS terminology, Ark Bytecode, ArkGuard, ASON, es2abc, Sendable, code obfuscation, serialization and deserialization, concurrent shareable objects]
+doctype: glossary
+status: active
+---
+
 # ArkTS Terminology
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @vigavi-->
 <!--Designer: @vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease; @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7b9a2b20c0ccde8a6fcec022ec0fcbcafa6267c4 translatedAt=2026-07-06T02:49:15.916Z pushedAt=2026-07-10T10:27:45.823Z -->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=8ab04f8e381777d336655e9a107b766140969d50 translatedAt=2026-11-06T10:16:55.068Z pushedAt=2026-11-09T09:02:37.195Z nl=1 -->
 
 ## A
 

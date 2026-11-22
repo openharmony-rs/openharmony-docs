@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3f5214c3fd784a6dd5d96594d3d43212dd1f8081 translatedAt=2026-07-30T02:58:21.343Z pushedAt=2026-07-30T08:21:05.239Z -->
+<!-- md-trans-meta sourceCommit=0cdda4f098ed696c323581a77df8c7aa76f74baa translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 HiDebug ArkTS APIs are self-contained and can be called directly when debugging information is needed. For details about how to call these APIs, refer to the examples in [@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md).
 
@@ -19,33 +19,29 @@ This topic describes how to call the HiDebug ArkTS API to obtain the system CPU 
 2. In the **Project** window, click **entry** > **src** > **main** > **ets** > **pages** to open the **Index.ets** file.
 
    Import the required dependencies.
-
    <!-- @[TestHidebugArk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
    ```
-
    Define the test method.
-
    <!-- @[TestHidebugArk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   function testHiDebugArk () { // Implement the API as required.
+   function testHiDebugArk() {  // Implement the API as required.
      try {
        hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
      } catch (error) {
-       hilog.info(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
+       hilog.error(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
          error msg: ${(error as BusinessError).message}`);
      }
    }
    ```
 
    Add a button to trigger the API call.
-
    <!-- @[TestHidebugArk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    Button('testHiDebugArk')
      .type(ButtonType.Capsule)

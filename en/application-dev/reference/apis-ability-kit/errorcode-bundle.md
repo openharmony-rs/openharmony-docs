@@ -184,8 +184,8 @@ When the [install interface](../apis-ability-kit/js-apis-installer-sys.md#bundle
 4. The HAP is configured with an executable binary file (that is, the [executableBinaryPaths tag](../../quick-start/module-configuration-file.md#executablebinarypaths) is configured in module.json5), but the decompression mode is not configured, or the current device does not support installing a HAP configured with this tag.
 5. Multiple APPs exist in the passed installation path or directory.
 6. The APP does not contain a HAP suitable for installation on the current device type.
-7. The application is configured with a skill, but the configured skill name and skill directory name are inconsistent with the name in the frontmatter of SKILL.md.
-8. When installing an application on a dual-mode device, different package type categories (the value of ohos.bms.param.deviceModeDistributionPolicy in [installparam](js-apis-installer-sys.md#installparam) is 4, 6, or 8) are supported only for system applications. A non-system application configured with these values cannot be installed. In addition, the newly installed application must keep the same major package type category as the existing application with the same bundle name on the device. "Different package types" and "same package types" (values 0, 1, 2, 3, 5, and 7) cannot be mixed for overwrite installation.
+7. The application is configured with a skill, but the configured skill name and skill directory name are inconsistent with the name in the frontmatter of SKILL.md.<!--Del-->
+8. When installing an application on a dual-mode device, different package type categories (the value of ohos.bms.param.deviceModeDistributionPolicy in [installparam](js-apis-installer-sys.md#installparam) is 4, 6, or 8) are supported only for system applications. A non-system application configured with these values cannot be installed. In addition, the newly installed application must keep the same major package type category as the existing application with the same bundle name on the device. "Different package types" and "same package types" (values 0, 1, 2, 3, 5, and 7) cannot be mixed for overwrite installation.<!--DelEnd-->
 
 **Procedure**
 
@@ -195,8 +195,8 @@ When the [install interface](../apis-ability-kit/js-apis-installer-sys.md#bundle
 4. Configure the application to use the decompression mode, that is, set the compressNativeLibs tag to true in the [module.json5 configuration file](../../quick-start/module-configuration-file.md#tags-in-the-configuration-file) of the application; or switch to a PC/2-in-1 device.
 5. Check whether the path passed in contains multiple APPs.
 6. Check whether the APP contains a HAP that supports the current device type.
-7. Check the name of the skill under **skillProfiles** in **module.json**, the name of the subdirectory under the **skills** directory, and the name in the frontmatter of **SKILL.md** to ensure that the three are consistent.
-8. Confirm that the application is a system application before configuring different package types. Confirm whether the **ohos.bms.param.deviceModeDistributionPolicy** configuration in the [installparam](js-apis-installer-sys.md#installparam) of the newly installed application and the existing application belongs to the same package type (both different package types or both the same package type), to avoid mutual conversion updates between different package types and the same package type.
+7. Check the name of the skill under **skillProfiles** in **module.json**, the name of the subdirectory under the **skills** directory, and the name in the frontmatter of **SKILL.md** to ensure that the three are consistent.<!--Del-->
+8. Confirm that the application is a system application before configuring different package types. Confirm whether the **ohos.bms.param.deviceModeDistributionPolicy** configuration in the [installparam](js-apis-installer-sys.md#installparam) of the newly installed application and the existing application belongs to the same package type (both different package types or both the same package type), to avoid mutual conversion updates between different package types and the same package type.<!--DelEnd-->
 
 ## 17700011 Bundle Installation Failure Due to Signature Verification Failure
 

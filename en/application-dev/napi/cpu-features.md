@@ -1,16 +1,24 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to detect and use CPU hardware extensions when developing native libraries for OpenHarmony. Covers using the open-source cpu_features library, reading /proc/cpuinfo, calling getauxval to obtain device CPU features, and using conditional compilation for compatibility across architectures."
+keywords: ["CPU features", "cpu_features library", "NEON", "ARM architecture", "getauxval", "/proc/cpuinfo", "hardware extensions", "cpuinfo", "AARCH64"]
+doctype: guide
+status: active
+---
+
 # CPU Features
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @huang_huijin-->
-<!--Designer: @huang_huijin-->
+<!--Owner: @liyiming13-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=235c2cef2c01aded2d0dcd8f4c12337fcc18fc53 translatedAt=2026-11-09T08:52:17.286Z nl=1 -->
+
+CPU features are hardware extensions provided by CPUs. You can call instructions and set special registers to use the CPU features, such as VFPv3-D32, NEON, IDIV, and AES on the ARMv7-A architecture. Many CPU features are optional, and different CPU vendors provide different CPU features.
 
 
-CPU features are hardware extensions provided by CPUs. You can call instructions and set special registers to use the CPU features, such as VFP-v32d32, Neon, IDIV, and AES on the ARMv7-A architecture. Many CPU features are optional, and different CPU vendors provide different CPU features.
-
-
-During native library development in your OpenHarmony project,  you can follow this topic to use code related to the CPU features in your application.
+How can you use CPU features in OpenHarmony native library development? How can you handle CPU feature-related code? This section provides methods to help you develop apps that maintain compatibility while leveraging CPU feature capabilities.
 
 
 Currently, OpenHarmony does not provide APIs for obtaining CPU features. You can import library functions of the existing open source community as described below. Alternatively, you can directly read **/proc/cpuinfo** or call **libc getauxval(AT_HWCAP)** to obtain the CPU features of a device.
@@ -45,7 +53,7 @@ Currently, OpenHarmony does not provide APIs for obtaining CPU features. You can
    #if defined (CPU_FEATURES_ARCH_ARM)
    #include "cpuinfo_arm.h" // Include the cpuinfo header file of the ARM architecture.
    #elif defined (CPU_FEATURES_ARCH_AARCH64)
-   #include "cpuinfo_aarch64.h" // Include the cpuinfo header file of the AArch64 architecture.
+   #include "cpuinfo_aarch64.h" // Include the cpuinfo header file of the AArch64 architecture. 
    #endif
    // Add `using namespace cpu_features;` in the C++ code.
    // Obtain CPU feature information based on the architecture in use.

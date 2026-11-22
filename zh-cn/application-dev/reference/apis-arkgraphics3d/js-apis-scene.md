@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 @ohos.graphics.scene将3D开发相关模块的API组织在一起，方便开发者使用。

@@ -1,12 +1,11 @@
 # arkweb_type.h
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:49:24.052Z pushedAt=2026-08-06T06:29:15.865Z -->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-11-06T11:38:06.035Z pushedAt=2026-11-09T11:42:09.574Z nl=1 -->
 
 ## Overview
 
@@ -107,6 +106,7 @@ Enumerates the JavaScript data types.
 | ARKWEB_JAVASCRIPT_STRING | String data.|
 | ARKWEB_JAVASCRIPT_BOOL | Boolean data type. |
 
+
 ## Function Description
 
 ### ArkWeb_OnJavaScriptCallback()
@@ -120,6 +120,7 @@ typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_Jav
 Callback invoked when the injected JavaScript execution is complete. It is used to obtain the execution result of JavaScript code in the Web component, for example, in scenarios where the native UI needs to be updated or subsequent logic needs to be executed based on the data returned by JavaScript.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -140,6 +141,7 @@ typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWe
 Callback invoked when a Proxy method is executed. Proxy methods are used for object interaction and custom operations between the native side and the JavaScript side.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -162,6 +164,7 @@ Callback invoked when a Proxy method is executed (with a return value). It is us
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -183,6 +186,7 @@ Callback for receiving Web component event notifications. It is used to receive 
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -201,6 +205,7 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 Callback invoked when the Web component scrolls.
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -231,3 +236,5 @@ Called when a post message is sent from the HTML page.
 | const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) port | Post message port.|
 | const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) message                                 | Post message data.|
 | void* userData                                                         | User-defined data. |
+
+

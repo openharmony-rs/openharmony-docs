@@ -25,7 +25,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 1. 构造对应参数。
    - keyAlias：密钥别名，封装成[OH_Huks_Blob](../../reference/apis-universal-keystore-kit/capi-hukstypeapi-oh-huks-blob.md)结构，密钥别名最大长度为128字节。
    - paramSetIn：预留参数，暂不需要处理，传空即可。
-   - key：用于放置导出的公钥，为[OH_Huks_Blob](../../reference/apis-universal-keystore-kit/capi-hukstypeapi-oh-huks-blob.md)类型对象，需要业务提前申请好内存，需申请足够容纳获取到的密钥属性集的内存大小。
+   - key：用于存放导出的公钥，为[OH_Huks_Blob](../../reference/apis-universal-keystore-kit/capi-hukstypeapi-oh-huks-blob.md)类型的结构体，需要业务提前申请好内存，申请的内存大小应足够容纳导出的公钥。
 
 2. 调用接口[OH_Huks_ExportPublicKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_exportpublickeyitem)，传入上述参数。
 

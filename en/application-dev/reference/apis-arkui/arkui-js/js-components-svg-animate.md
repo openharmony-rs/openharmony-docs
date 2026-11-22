@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3594f4f7911eac49a1432a74a842b11a7e25b680 translatedAt=2026-11-12T04:43:59.418Z pushedAt=2026-11-18T06:52:45.557Z nl=1 -->
 
 >  **NOTE**
 >
@@ -31,14 +32,14 @@ Not supported
 | begin | &lt;time&gt; | 0 | No| Delay time of the animation.<br>The value can be ms (ms), s (second), or m (minute). The default value is s (second). Other formats are not supported.|
 | dur | &lt;time&gt; | 0 | No| Animation duration. If **dur** is not set, the value of **end**-**begin** is used as the duration. If the value is less than or equal to 0, the animation is not triggered.<br>The value can be ms (ms), s (second), or m (minute). The default value is s (second). Other formats are not supported.|
 | end | &lt;time&gt; | 0 | No| Duration after which the animation ends. The value can be ms (ms), s (second), or m (minute). The default value is s (second). Other formats are not supported.|
-| repeatCount | &lt;number \| indefinite&gt; | 1 | No| Number of times the animation is played. The default value is indefinite. You can set the value to **1** to play the animation only once.|
+| repeatCount | &lt;number&nbsp;\|&nbsp;indefinite&gt; | indefinite | No | Number of times the animation is played. The default value is **indefinite**. You can set the value to **1** to play the animation only once. |
 | fill | &lt;freeze \| remove&gt; | remove | No| State when the animation ends.|
-| calcMode | &lt;discrete \| linear \| paced \| spline&gt; | linear | No| Interpolation mode of the animation.<br>**discrete**: The animation directly jumps from the value specified by **from** to the value specified by **to**.<br>**linear**: Linear interpolation between values is used.<br>**paced**: Interpolation that produces an even paced change is used. If this value is set, the values of **keyTimes** and **keyPoints** will not take effect.<br>**spline**: Interpolation is implemented based on a custom Bezier spline. The spline points are defined in the **keyTimes** attribute, and the control points of each interval are defined in the **keySplines** attribute.|
+| calcMode | &lt;discrete&nbsp;\|&nbsp;linear&nbsp;\|&nbsp;paced&nbsp;\|&nbsp;spline&gt; | linear | No | Interpolation mode of the animation.<br/>**discrete**: The animation directly jumps from the value specified by **from** to the value specified by **to**.<br/>**linear**: Linear interpolation between values is used.<br/>**paced**: Interpolation that produces an even paced change is used. If this value is set, the values of **keyTimes** and **keyPoints** will not take effect.<br/>**spline**: Interpolation is implemented based on a custom Bezier spline. The spline points are defined in the **keyTimes** attribute, and the control points of each interval are defined in the **keySplines** attribute. |
 | keyTimes | string | - | No| Start time of the key frame animation. The value is a semicolon-separated list of values ranging from 0 to 1, for example, **0;0.3;0.8;1**. **keyTimes**, **keySplines**, and **values** are combined to set the key frame animation. The number of values defined for **keyTimes** is the same as that for **values**. The number of values defined for **keySplines** is the number of values defined for **keyTimes** minus 1.|
-| keySplines | string | - | No| A set of Bezier control points associated with **keyTimes**. You can define the Bezier curves for each key frame, separating them with semicolons (;). The format of the two control points in the curve is x1 y1 x2 y2, for example, **0.5 0 0.5 1; 0.5 0 0.5 1;0.5 0 0.5 1**.|
+| keySplines | string | - | No| A set of Bezier control points associated with **keyTimes**. You can define the Bezier curves for each key frame, separating them with semicolons \(;). The format of the two control points in the curve is x1 y1 x2 y2, for example, **0.5 0 0.5 1; 0.5 0 0.5 1;0.5 0 0.5 1**.|
 | by | number | - | No| Relative offset value to add to a specified attribute in the animation. The default value of **from** is the original attribute value.|
 | from | string | - | No| Start value of the attribute to which the animation is applied.<br>If the **values** attribute has been set, the **from** attribute is invalid.|
-| to | string | - | No| End value of the attribute to which the animation is applied.<br>If the **values** attribute has been set, the **to** attribute is invalid.|
+| to | string | - | No | End value of the attribute to which the animation is applied.<br/>If the **values** attribute has been set, the **to** attribute is invalid. |
 | values | string | - | No| Change value of a group of animations. The format is value1;value2;value3.|
 
 
@@ -122,4 +123,4 @@ Not supported
 ```
 
 
-![Loopplayback](figures/Loopplayback.gif)
+![Repeating-image](figures/Repeating-image.gif)

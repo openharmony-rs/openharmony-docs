@@ -1113,10 +1113,6 @@ struct AlphabetIndexerSample {
 }
 ```
 
-未设置系统材质时：
-
-![未设置系统材质时](figures/alphabetIndexerWithoutMaterial.gif)
-
-设置系统材质后：
-
-![设置系统材质后](figures/alphabetIndexerWithMaterial.gif)
+| 效果对比 | 未设置系统材质时 | 设置系统材质后 |
+| -------- | -------- | -------- |
+| 示例图 | ![未设置系统材质时](figures/alphabetIndexerWithoutMaterial.gif) | ![设置系统材质后](figures/alphabetIndexerWithMaterial.gif) |

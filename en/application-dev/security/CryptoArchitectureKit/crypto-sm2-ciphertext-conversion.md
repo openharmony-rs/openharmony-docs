@@ -1,4 +1,4 @@
-# Converting SM2 Ciphertext (ArkTS)
+# SM2 Ciphertext Format Conversion (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:33:34.612Z pushedAt=2026-08-10T10:00:00.540Z -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:36:25.743Z pushedAt=2026-11-16T02:06:53.453Z nl=1 -->
 
 The currently supported SM2 ciphertext format is the ASN.1 format defined by the Chinese cryptographic standard, where the parameters are combined in C1C3C2 order. For details about the parameters, see [SM2](crypto-encryption-decryption.md#sm2) in the asymmetric key encryption/decryption algorithm specification.
 
@@ -24,22 +24,30 @@ You can convert the SM2 ciphertext into ASN.1 format based on the SM2 parameters
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGenCipherTextBySpec() {
-  let spec: cryptoFramework.SM2CipherTextSpec = {
-    xCoordinate: BigInt('20625015362595980457695435345498579729138244358573902431560627260141789922999'),
-    yCoordinate: BigInt('48563164792857017065725892921053777369510340820930241057309844352421738767712'),
-    cipherTextData: new Uint8Array([100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]),
-    hashData: new Uint8Array([87, 167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201,
-      111, 143, 115, 169, 125, 128, 42, 157, 31, 114, 198, 109, 244]),
+  try {
+    let spec: cryptoFramework.SM2CipherTextSpec = {
+      xCoordinate: BigInt('20625015362595980457695435345498579729138244358573902431560627260141789922999'),
+      yCoordinate: BigInt('48563164792857017065725892921053777369510340820930241057309844352421738767712'),
+      cipherTextData: new Uint8Array([100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]),
+      hashData: new Uint8Array([87, 167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201,
+        111, 143, 115, 169, 125, 128, 42, 157, 31, 114, 198, 109, 244]),
+    }
+    // The data here can be used directly with cryptoFramework to perform SM2 decryption.
+    let data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(spec, 'C1C3C2');
+    console.info('genCipherTextBySpec result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
-  // The data can be decrypted using cryptoFramework APIs.
-  let data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(spec, 'C1C3C2');
-  console.info('genCipherTextBySpec result: success.');
 }
 ```
 
+
 **Obtaining Parameters from Ciphertext in ASN.1 Format**
+
 
 1. Check that the SM2 ciphertext is in ASN.1 format.
 
@@ -51,18 +59,27 @@ function testGenCipherTextBySpec() {
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetCipherTextSpec() {
-  let cipherTextArray =
-    new Uint8Array([48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105, 41, 92, 95, 102,
-      224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107, 93, 198, 247, 119, 18, 40, 110, 90, 156,
-      193, 158, 205, 113, 170, 128, 146, 109, 75, 17, 181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32, 87,
-      167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125, 128,
-      42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]);
-  let cipherText: cryptoFramework.DataBlob = { data: cipherTextArray };
-  let spec: cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(cipherText, 'C1C3C2');
-  console.info('getCipherTextSpec result: success.');
+  try {
+    let cipherTextArray =
+      new Uint8Array(
+        [48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105, 41, 92, 95, 102,
+          224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107, 93, 198, 247, 119, 18, 40, 110, 90,
+          156,
+          193, 158, 205, 113, 170, 128, 146, 109, 75, 17, 181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32,
+          87,
+          167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125,
+          128,
+          42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]);
+    let cipherText: cryptoFramework.DataBlob = { data: cipherTextArray };
+    let spec: cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(cipherText, 'C1C3C2');
+    console.info('getCipherTextSpec result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
-  <!--no_check-->

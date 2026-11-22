@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=214e29279f37b00be7bd8f1096b2e4dc3af96177 translatedAt=2026-11-12T04:23:18.456Z pushedAt=2026-11-17T11:32:11.084Z nl=1 -->
 
 >  **NOTE**
 >  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -38,15 +39,15 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 
 The color can be specified in any of the following formats: \#ff0000, \#ffff0000, rgb(255, 0, 0), and rgba(255, 0, 0, 1). At least two colors must be specified.
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type                                      | Default Value                         | Mandatory  | Description                                      |
 | --------- | ---------------------------------------- | ---------------------------- | ---- | ---------------------------------------- |
 | direction | to&nbsp;&lt;side-or-corner&gt;&nbsp;&nbsp;&lt;side-or-corner&gt;&nbsp;=&nbsp;[left&nbsp;\|&nbsp;right]&nbsp;\|&nbsp;[top&nbsp;\|&nbsp;bottom] | to bottom (gradient from top to bottom)| No   | Transition direction, for example, **to left** (gradient from right to left) or<br>**to bottom right** (gradient from the top left to the bottom right).|
-| angle     | &lt;deg&gt;                              | 180deg                       | No   | Transition direction, which is the angle between the gradient line and the y-axis (in the clockwise direction), with the geometric center of the element being the origin of coordinates and the horizontal axis being the x-axis.|
+| angle     | &lt;deg&gt;                              | 180deg                       | No    | Transition direction. With the geometric center of the element as the coordinate origin and the horizontal direction as the x-axis, **angle** specifies the angle between the gradient line and the y-axis (clockwise). |
 | color     | &lt;color&gt;&nbsp;[&lt;length&gt;\|&lt;percentage&gt;] | -                            | Yes   | Colors among which smooth transitions are rendered.                     |
 
-**Example**
+**Example** 
 1. Gradient from top to bottom (default)
 
    ```css

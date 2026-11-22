@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T02:42:24.821Z pushedAt=2026-09-09T09:11:03.638Z -->
+<!-- md-trans-meta sourceCommit=8087a084987721492cec6ad5680b2770c7c9e8c6 translatedAt=2026-11-16T01:22:54.578Z pushedAt=2026-11-20T07:26:52.979Z nl=1 -->
 
 ## Overview
 
@@ -496,7 +496,7 @@ Obtains the string from an **OH_Data_Value** instance.
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance.  |
-| const char **val                              | Double pointer to the string obtained.<br>You do not need to apply for or release memory for it.<br>The lifecycle of **val** complies with the value of **index** in **value**.|
+| const char **val                              | An output parameter, which indicates a pointer to the string type data.<br>No memory allocation or release is required.<br>The lifecycle of **val** complies with the lifecycle of **value**. |
 
 **Returns**
 

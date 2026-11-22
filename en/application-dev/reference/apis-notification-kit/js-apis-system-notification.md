@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:35:40.742Z pushedAt=2026-10-08T10:04:15.829Z -->
+<!-- md-trans-meta sourceCommit=734000d7541e45073c1418b7d3adb90d2d5defac translatedAt=2026-11-13T02:26:33.858Z pushedAt=2026-11-13T09:44:30.432Z nl=1 -->
 
 > **NOTE**
 > - The APIs of this module are no longer maintained since API version 7. You are advised to use [@ohos.notification (Notification)](js-apis-notification.md).

@@ -28,8 +28,9 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| flags<sup>12+</sup>    | number    | 是   | 是   | 标识当前应用和当前用户之间的状态集合，每一位表示一个特定的布尔状态，取值参考[ApplicationInfoFlag](js-apis-bundleManager-sys.md#applicationinfoflag12)。<br/>**系统API：** 从API version 12开始，该接口支持在系统API中使用。 |
+| flags<sup>12+</sup>    | number    | 是   | 是   | 标识当前应用和当前用户之间的状态集合，每一位表示一个特定的布尔状态，取值参考[ApplicationInfoFlag](js-apis-bundleManager-sys.md#applicationinfoflag12)。 |
 | applicationReservedFlag    | [bundleManager.ApplicationReservedFlag](js-apis-bundleManager-sys.md#applicationreservedflag)    | 是   | 是   | 应用的保留标志位。<br>**起始版本：** 26.0.1<br>**模型约束：** 此字段仅可在Stage模型下使用。 |
+| keepDataOnUninstall | boolean | 是 | 是 | 标识应用卸载时是否保留数据。true表示保留，false表示不保留，默认值为false。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## PreinstalledApplicationInfo

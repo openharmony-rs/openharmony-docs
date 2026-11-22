@@ -5,7 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=15496fed0cae2d3de7549779264807cf5940b7af translatedAt=2026-09-04T03:50:50.389Z pushedAt=2026-09-09T09:11:03.731Z -->
+<!-- md-trans-meta sourceCommit=82685951231dfbdc9c0904715262b4dcaa8040a6 translatedAt=2026-11-16T02:14:02.889Z pushedAt=2026-11-20T07:28:06.995Z nl=1 -->
 
 A content card designed in the [ContentForm](js-apis-data-uniformDataStruct.md#contentform14) struct. You can set the title (mandatory), description, application icon, application name, redirection link, and content image for the content card. When a user taps the card, a callback of the pass event is triggered to redirect the user to the specified page if the target link is set.
 
@@ -45,7 +45,7 @@ Defines the information of a content card component that is displayed in an appl
 | contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | Yes| - | Content card data, which is used to set the title, description, application icon, application name, redirection link, or content image to be displayed on the card.|
 | formType | [FormType](#formtype) | Yes| @Prop | Content card type, which affects the size of the content card.|
 | formWidth | number | No| @Prop | Card width. The value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type. The unit is vp. If this parameter is not specified, the default width of the content card type is used.|
-| formHeight | number | No| @Prop | Card height. If title in **contentFormData** is an empty string, the card height is the passed value. Otherwise, the value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type. The unit is vp. If this parameter is not specified, the default height of the content card type is used.|
+| formHeight | number | No | @Prop | Card height. If title in **contentFormData** is an empty string, the card height is the passed value. Otherwise, the value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type. The unit is vp. If this parameter is not specified, the default height of the content card type is used. |
 | handleOnClick | Function | No| - | Callback for the click event. When a user taps the card, the passed callback is executed to implement the custom tap behavior.|
 
 ## FormType
@@ -97,9 +97,9 @@ struct Index {
       this.contentForm = {
         uniformDataType: 'general.content-form',
         title: 'Content form title',
-        thumbData: appIcon,
+        thumbData: thumbImage,
         description: 'Content form description',
-        appIcon: thumbImage,
+        appIcon: appIcon,
         appName: 'com.test.demo'
       };
     } catch (err) {

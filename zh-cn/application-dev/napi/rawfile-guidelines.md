@@ -26,7 +26,7 @@
 | int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length) | 读取rawfile文件内容。                    |
 | void OH_ResourceManager_CloseRawFile(RawFile *rawFile)       | 释放rawfile文件相关资源。                |
 | void OH_ResourceManager_CloseRawDir(RawDir *rawDir)          | 释放rawfile目录相关资源。                |
-| bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor) | 获取rawfile的fd。                        |
+| bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor) | 获取rawfile的fd。                        |
 | void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resMgr) | 释放native resource manager相关资源。    |
 | bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *path) | 判断路径是否是rawfile下的目录。    |
 
@@ -315,7 +315,7 @@
         }
         // 获取rawfile的描述符RawFileDescriptor {fd, offset, length}
         RawFileDescriptor descriptor;
-        OH_ResourceManager_GetRawFileDescriptor(rawFile, descriptor);
+        OH_ResourceManager_GetRawFileDescriptorData(rawFile, &descriptor);
         // 关闭打开的指针对象
         OH_ResourceManager_CloseRawFile(rawFile);
         OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
@@ -377,7 +377,7 @@
 
    获取本应用包资源resourceManager对象的示例如下：
 
-	<!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { util } from '@kit.ArkTS';

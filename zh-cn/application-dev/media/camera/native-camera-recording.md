@@ -8,6 +8,16 @@
 
 录像是循环帧的捕获，同时也是相机应用的最重要功能之一。对于录像的流畅度，开发者可以参考拍照(C/C++)中的[开发步骤](native-camera-shooting.md#开发步骤)7，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
 
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+
+当前只提供录像流程及其接口介绍。对于单个流程（如[设备输入](native-camera-device-input.md)、[会话管理](native-camera-session-management.md)）的介绍请参考具体章节。
+
+## 开发流程
+
+在获取到相机支持的输出流能力后，开始创建录像流，开发流程如下。
+
+![Recording Development Process](figures/recording-ndk-development-process.png)
+
 ## 开发步骤
 
 详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
@@ -39,6 +49,7 @@
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include "ohcamera/camera_device.h"
    #include <window_manager/oh_display_info.h>
    #include <window_manager/oh_display_manager.h>
    
@@ -70,11 +81,13 @@
    )
    ```
 
-3. 获取SurfaceId。
+3. 创建并打开相机设备，参考设备输入(C/C++)的[开发步骤](./native-camera-device-input.md#开发步骤)3-5。
+
+4. 获取SurfaceId。
 
    系统提供的[OH_AVRecorder_Create()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_create)接口可以创建一个录像AVRecorder实例，通过该实例的[OH_AVRecorder_GetInputSurface()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_getinputsurface)方法获取SurfaceId。
 
-4. 创建录像输出流。
+5. 创建录像输出流。
 
    根据传入的SurfaceId，通过[OH_CameraManager_GetSupportedCameraOutputCapability](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability)接口获取[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)能力，可以通过[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)中的videoProfiles，获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过OH_CameraManager_CreateVideoOutput方法创建录像输出流。
   
@@ -105,7 +118,7 @@
    }
    ```
 
-5. 开始录像。
+6. 开始录像。
 
    通过[OH_VideoOutput_Start()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_start)方法启动录像输出流。
 
@@ -125,7 +138,7 @@
    }
    ```
 
-6. 停止录像。
+7. 停止录像。
 
    通过[OH_VideoOutput_Stop()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_stop)方法停止录像输出流。
 
@@ -203,3 +216,6 @@
       return ret_;
   }
   ```
+
+<!--RP1-->
+<!--RP1End-->

@@ -815,7 +815,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function UpdateDatay(imageSourceObj : image.ImageSource) {
+async function UpdateData(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
   try {
     // 该接口为异步接口，调用时需保证执行时序。
@@ -852,7 +852,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function UpdateDatay(imageSourceObj : image.ImageSource) {
+async function UpdateData(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
   imageSourceObj.updateData(array, false, 0, 10, (err: BusinessError) => {
     if (err) {
@@ -961,7 +961,7 @@ async function CreatePictures(imageSourceObj : image.ImageSource) {
     try {
       let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
       console.info('Succeeded in creating picture for frame: ' + index);
-    } catch (e) {
+    } catch (error) {
       console.error('Failed to create picture for frame: ' + index);
     }
   }
@@ -1482,7 +1482,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 **示例：**
 
 ```ts
-async function CreatePixelMapUsingAllocator(context : Context) {
+async function CreatePixelMapUsingAllocatorSync(context : Context) {
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);
@@ -1899,6 +1899,8 @@ release(callback: AsyncCallback\<void>): void
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **参数：**
@@ -1932,6 +1934,8 @@ release(): Promise\<void>
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用该方法，及时释放内存。
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

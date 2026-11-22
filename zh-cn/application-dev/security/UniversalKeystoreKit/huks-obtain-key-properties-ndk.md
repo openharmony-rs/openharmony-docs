@@ -36,7 +36,6 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
 #include <cstring>
-
 OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
                             uint32_t paramCount)
 {
@@ -74,7 +73,7 @@ static OH_Huks_Result GenerateKeyHelper(const char *alias)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        /* 1.生成密钥 */
+        /* 2.生成密钥 */
         ohResult = OH_Huks_GenerateKeyItem(&aliasBlob, testGenerateKeyParamSet, nullptr);
     } while (0);
     OH_Huks_FreeParamSet(&testGenerateKeyParamSet);

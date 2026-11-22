@@ -322,179 +322,6 @@
    })
    ```
 
-**完整示例：**
-
-<!-- @[default_drag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
-
-``` TypeScript
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN = 0x0000;
-const TAG = 'DefaultDragError: ';
-
-@Entry
-@Component
-export struct DefaultDrag {
-  @State targetImage: string = '';
-  @State imageWidth: number = 100;
-  @State imageHeight: number = 100;
-  @State imgState: Visibility = Visibility.Visible;
-  @State pixmap: image.PixelMap | undefined = undefined;
-
-  @Builder
-  pixelMapBuilder() {
-    Column() {
-      // 请将$r('app.media.startIcon')替换为实际资源文件
-      Image($r('app.media.startIcon'))
-        .width(120)
-        .height(120)
-        // ...
-    }
-  }
-
-  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
-    try {
-      let data: UnifiedData = event.getData();
-      if (!data) {
-        return false;
-      }
-      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
-      if (!records || records.length <= 0) {
-        return false;
-      }
-      callback(event);
-      return true;
-    } catch (e) {
-      hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
-      return false;
-    }
-  }
-
-  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
-    if (this.getDataFromUdmfRetry(event, callback)) {
-      return;
-    }
-    setTimeout(() => {
-      this.getDataFromUdmfRetry(event, callback);
-    }, 1500);
-  }
-
-  // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
-  private getComponentSnapshot(): void {
-    this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-      this.pixelMapBuilder();
-    },
-      (error: Error, pixmap: image.PixelMap) => {
-        if (error) {
-          hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
-          return;
-        }
-        this.pixmap = pixmap;
-      });
-  }
-
-  build() {
-    // ...
-        Row() {
-          Column() {
-            Text('start Drag')
-              .fontSize(18)
-              .width('100%')
-              .height(40)
-              .margin(10)
-              .backgroundColor('#008888')
-            Row() {
-              // 请将$r('app.media.app_icon')替换为实际资源文件
-              Image($r('app.media.app_icon'))
-                .width(100)
-                .height(100)
-                .draggable(true)
-                .margin({ left: 15 })
-                .visibility(this.imgState)
-                // 绑定平行手势，可同时触发应用自定义长按手势
-                .parallelGesture(LongPressGesture().onAction(() => {
-                  this.getUIContext()
-                    .getPromptAction()
-                    .showToast({ duration: 100, message: 'Long press gesture trigger' });
-                }))
-                .onDragStart((event) => {
-                  let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-                  // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
-                  data.imageUri = 'resources/base/media/app_icon.png';
-                  let unifiedData = new unifiedDataChannel.UnifiedData(data);
-                  event.setData(unifiedData);
-
-                  let dragItemInfo: DragItemInfo = {
-                    pixelMap: this.pixmap,
-                    extraInfo: 'this is extraInfo',
-                  };
-                  // onDragStart回调函数中返回自定义拖拽背板图
-                  return dragItemInfo;
-                })
-                // 提前准备拖拽自定义背板图
-                .onPreDrag((preDragStatus: PreDragStatus) => {
-                  if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
-                    this.getComponentSnapshot();
-                  }
-                })
-                .onDragEnd((event) => {
-                  // onDragEnd里取到的result值在接收方onDrop设置
-                  if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-                  } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-                  }
-                })
-            }
-
-            Text('Drag Target Area')
-              .fontSize(20)
-              .width('100%')
-              .height(40)
-              .margin(10)
-              .backgroundColor('#008888')
-            Row() {
-              Image(this.targetImage)
-                .width(this.imageWidth)
-                .height(this.imageHeight)
-                .draggable(true)
-                .margin({ left: 15 })
-                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为COPY，即显示加号角标
-                .onDragMove((event) => {
-                  event.setResult(DragResult.DROP_ENABLED);
-                  event.dragBehavior = DragBehavior.COPY;
-                })
-                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-                .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-                .onDrop((dragEvent?: DragEvent) => {
-                  // 获取拖拽数据
-                  this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-                    let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
-                    let rect: Rectangle = event.getPreviewRect();
-                    this.imageWidth = Number(rect.width);
-                    this.imageHeight = Number(rect.height);
-                    this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-                    this.imgState = Visibility.None;
-                    // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
-                    event.setResult(DragResult.DRAG_SUCCESSFUL);
-                  });
-                })
-            }
-          }
-          .width('100%')
-          .height('100%')
-        }
-        .height('100%')
-      }
-      
-      // ...
-}
-```
-
 ![commonDrag](figures/commonDrag.gif)
 
 ### 多选拖拽适配
@@ -1274,6 +1101,165 @@ struct GridEts {
 
 ![patchDataProcess](figures/patchDataProcess.gif)
 
+### 虚拟文件拖拽
+
+从API版本26.1.0开始，支持通过[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri15)提供虚拟文件拖拽能力。网络文件尚未完整下载、压缩包内文件尚未解压时，起拖方可以先提供文件信息，在落入方读取时提供文件内容。
+
+以下以拖拽文件或目录为例，介绍虚拟文件拖拽的实现步骤。
+
+1. 定义虚拟文件和回调。
+
+   通过[VirtualFileItem](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#virtualfileitem)描述文件，通过[VirtualDirItem](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#virtualdiritem)描述目录。size为准确的字节数，modifyTime为毫秒时间戳；文件名不包含路径分隔符，目录层级通过subItems表示。
+
+   创建[VirtualFileInfo](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#virtualfileinfo)对象，设置根节点itemInfo和读取回调onRead。根据需要设置元数据回调onStat和取消回调onCancel。示例中的VirtualFileProvider根据文件id查找数据源，按需提供内存内容或解压后的文件内容。
+
+   <!-- @[virtual_drag_js_provider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/model/VirtualFileProvider.ets) -->
+   
+   ``` TypeScript
+   // 创建文件树及内容回调，供FileUri.virtualEntry使用。
+   public createVirtualEntry(): uniformDataStruct.VirtualFileInfo {
+     const rootItem: uniformDataStruct.VirtualItemType | undefined = this.rootItem;
+     if (!rootItem) {
+       throw new Error('Prepare a file before dragging');
+     }
+     return {
+       // itemInfo是根文件或根目录；目录通过subItems描述子节点。
+       itemInfo: rootItem,
+       // 可选：按文件id返回文件信息。
+       onStat: async (id: string): Promise<uniformDataStruct.VirtualFileItem> => this.getSourceFile(id).metadata,
+       // 必选：从offset开始提供最多length字节；失败时抛出异常。
+       onRead: async (id: string, offset: number, length: number): Promise<Uint8Array> => {
+         const file: SourceFile = this.getSourceFile(id);
+         if (!Number.isSafeInteger(offset) || offset < 0 || !Number.isInteger(length) ||
+           length <= 0 || length > MAX_READ_LENGTH) {
+           throw new Error('Invalid read parameters');
+         }
+         const count: number = Math.min(length, Math.max(0, file.metadata.size - offset));
+         if (count === 0) {
+           return new Uint8Array(0); // offset已到文件末尾。
+         }
+         if (file.archivePath.length > 0) {
+           return this.readArchive(file, offset, count);
+         }
+         return file.content.slice(offset, offset + count);
+       },
+       // 可选：取消对应id当前待处理的任务。
+       onCancel: async (_ids: string[]): Promise<void> => {
+         // 本地读取没有额外的可取消任务。实际提供方可在此停止对应id的待处理任务。
+         // 取消通知不表示永久禁用这些id，也不应影响其后续读取。
+       }
+     };
+   }
+   ```
+
+2. 创建拖拽数据。
+
+   将虚拟文件信息设置到[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri15)，通过[UnifiedRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifiedrecord)和[UnifiedData](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)创建拖拽数据。示例中的oriUri用于描述起拖方文件；落入方应使用落入事件实际获取的数据中的URI访问文件。
+
+   <!-- @[virtual_drag_js_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private createDragData(): unifiedDataChannel.UnifiedData {
+     if (!this.provider) {
+       throw new Error('Prepare a file before dragging');
+     }
+     const entry: uniformDataStruct.VirtualFileInfo = this.provider.createVirtualEntry();
+     // oriUri是非空占位URI，不要求文件已存在；落入方使用实际获取的URI。
+     const fileUri: uniformDataStruct.FileUri = {
+       uniformDataType: 'general.file-uri',
+       oriUri: `file:///virtual/${encodeURIComponent(entry.itemInfo.name)}`,
+       fileType: entry.itemInfo.type === 'dir' ? 'general.directory' : 'general.file',
+       virtualEntry: entry
+     };
+     const record: unifiedDataChannel.UnifiedRecord = new unifiedDataChannel.UnifiedRecord(
+       uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
+     return new unifiedDataChannel.UnifiedData(record);
+   }
+   ```
+
+3. 设置起拖数据。
+
+   在onDragStart回调中通过event.setData()设置上述拖拽数据。
+
+   <!-- @[virtual_drag_js_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   .onDragStart((event: DragEvent) => {
+     try {
+       event.setData(this.createDragData());
+     } catch (error) {
+       logSampleError('Set drag data', error as Error);
+       this.getUIContext().getPromptAction().showToast({ message: $r('app.string.drag_failed') });
+     }
+   })
+   ```
+
+4. 配置落入节点。
+
+   设置onDrop回调函数，接收拖拽数据。
+
+   <!-- @[virtual_drag_js_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Text($r('app.string.drop_hint'))
+     .width('100%').height(120)
+     .backgroundColor($r('app.color.drag_drop_background'))
+     .allowDrop([uniformTypeDescriptor.UniformDataType.FILE_URI])
+     .onDrop((event: DragEvent) => { this.receive(event); })
+   ```
+
+5. 获取文件URI。
+
+   在落入事件中，通过event.getData()取得统一数据，筛选文件记录并返回URI列表。示例只提取URI，文件的读取、复制、保存或打开由业务决定。
+
+   <!-- @[virtual_drag_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/model/DropReceiver.ets) -->
+   
+   ``` TypeScript
+   // 获取落入数据中的文件URI，不读取文件内容。
+   export function getDroppedFileUris(event: DragEvent): string[] {
+     const uris: string[] = [];
+     const records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+     for (const record of records) {
+       if (!record.getTypes().includes(uniformTypeDescriptor.UniformDataType.FILE_URI)) {
+         continue;
+       }
+       const entry: uniformDataStruct.FileUri =
+         record.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+       if (entry.oriUri.length > 0) {
+         uris.push(entry.oriUri);
+       }
+     }
+     if (uris.length === 0) {
+       throw new Error('No file URI received');
+     }
+     return uris;
+   }
+   ```
+
+6. 处理文件URI。
+
+   将获取到的URI列表交给业务处理。获取URI不代表文件内容已经读取或下载完成；需要验证按需提供内容时，可将文件拖到文件管理器等实际读取文件的应用。
+
+   <!-- @[virtual_drag_js_drop_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private receive(event: DragEvent): void {
+     try {
+       this.handleUris(getDroppedFileUris(event));
+       event.setResult(DragResult.DRAG_SUCCESSFUL);
+     } catch (error) {
+       event.setResult(DragResult.DRAG_FAILED);
+       logSampleError('Get dropped URIs', error as Error);
+       this.getUIContext().getPromptAction().showToast({ message: $r('app.string.receive_failed') });
+     }
+   }
+   
+   private handleUris(uris: string[]): void {
+     // 业务可在此根据URI读取、复制或打开文件，示例仅提示已接收。
+     this.getUIContext().getPromptAction().showToast({ message: $r('app.string.uris_received', uris.length) });
+   }
+   ```
+
 
 ## 支持悬停检测
 Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的一项增强功能，允许用户在拖动过程中通过悬停在目标上自动触发视图跳转，提供了使用的便利性。建议在所有支持页面切换的区域均实现该功能。
@@ -1338,7 +1324,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
        // 检查当前的状态
        if (context.state == DragSpringLoadingState.BEGIN) {
          // 检查用户所拖拽的数据类型是否自己能够处理的
-         boolean isICanHandle = false;
+         let isICanHandle: boolean = false;
          let dataSummary = context?.dragInfos?.dataSummary;
          if (dataSummary != undefined) {
            for (const [type, size] of dataSummary) {

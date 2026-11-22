@@ -4,7 +4,7 @@
 本文档将介绍HPM的Part的构成，包类型、划分原则、元数据字段以及相关命令行工具的常用命令等。
 
 
-### Part划分原则
+## Part划分原则
 
 原则上应尽可能划分为细颗粒度的Part，以满足最大限度的复用。主要考虑以下几点：
 
@@ -15,7 +15,7 @@
 - 相关性：如果一组Part共同完成一项功能，且没有被其他Part依赖，未来也没有被依赖的可能，则可以考虑合并为一个Part。
 
 
-### Part类型
+## Part类型
 
 Part是为复用而生，一切可以复用的部件都可以定义为Part，可以分为：
 
@@ -31,7 +31,7 @@ Part是为复用而生，一切可以复用的部件都可以定义为Part，可
 | plugin | 以插件形态分发，作为hpm&nbsp;cli的插件，扩展hpm&nbsp;cli的功能。 | 
 
 
-### Part构成
+## Part构成
 
 一个Part包一般包含如下内容：
 
@@ -45,7 +45,7 @@ Part是为复用而生，一切可以复用的部件都可以定义为Part，可
 
 - 开源许可文件(LICENSE)
     
-  ```
+  ```text
   my-bundle
      |_ohos_bundles
      |_headers
@@ -56,12 +56,12 @@ Part是为复用而生，一切可以复用的部件都可以定义为Part，可
   ```
 
 
-### src源代码
+## src源代码
 
 Part的代码文件和普通的代码目录没有差异。但要注意的是，Part中对外暴露的接口（头文件），会被其他Part所引用，需要单独在bundle.json的dirs中声明。
 
 
-### README文件
+## README文件
 
 为了帮助他人在[DevEco Marketplace](https://repo.harmonyos.com)上找到该Part，并更方便的使用它，在Part的根目录中包含一个README文件。
 
@@ -77,7 +77,7 @@ README文件应包括如何安装，配置和使用Part包中的实例代码说�
 bundle.json文件是对当前Part的元数据描述，每个Part中必须包含一个bundle.json文件。主要内容如下：
 
   
-```
+```json
 {
   "name": "@myorg/demo-bundle",
   "version": "1.0.0",
@@ -144,7 +144,7 @@ bundle.json文件具有如下功能：
 
 - 对于发行版类型，可以定义继承关系，用base字段描述继承自的基础发行版及版本。
 
-- private:定义是否为私有包，私有包在公共的注册中心中无法被其他用户搜索到，默认为false（只有组织的类型为）。
+- private：定义是否为私有包，私有包在公共的注册中心中无法被其他用户搜索到，默认为false（仅在类型为“组织”的包中生效）。
 
 
 ## HPM CLI命令
@@ -156,23 +156,23 @@ Part的全生命周期管理，可以通过hpm命令工具进行操作，hpm的�
 | 命令类别 | 命令行 | 含义说明 | 
 | -------- | -------- | -------- |
 | 版本查询 | hpm&nbsp;-V或hpm&nbsp;--version | 查看hpm-cli版本号。 | 
-| 帮助查询 | hpm&nbsp;-h或hpm&nbsp;--version | 查看命令列表及帮助。 | 
-|| hpm&nbsp;-h | 查看命令帮助。 | 
+| 帮助查询 | hpm&nbsp;-h或hpm&nbsp;--help | 查看命令列表及帮助。 | 
+| - | hpm&nbsp;-h | 查看命令帮助。 | 
 | 创建 | hpm&nbsp;init&nbsp;bundle | 创建Part工程。 | 
-|| hpm&nbsp;init&nbsp;-t&nbsp;template | 根据模板创建脚手架工程。 | 
+| - | hpm&nbsp;init&nbsp;-t&nbsp;template | 根据模板创建脚手架工程。 | 
 | 安装 | hpm&nbsp;install或hpm&nbsp;i | 安装bundle.json中依赖的Part。 | 
-|| hpm&nbsp;install&nbsp;bundle\@version | 安装指定Part版本。 | 
-| 卸载 | hpm&nbsp;uninstall&nbsp;bundle | 删除depedencies依赖的Part。 | 
-|| hpm&nbsp;remove或hpm&nbsp;rm&nbsp;bundlename | 删除depedencies依赖的Part。 | 
+| - | hpm&nbsp;install&nbsp;bundle\@version | 安装指定Part版本。 | 
+| 卸载 | hpm&nbsp;uninstall&nbsp;bundle | 删除dependencies依赖的Part。 | 
+| - | hpm&nbsp;remove或hpm&nbsp;rm&nbsp;bundlename | 删除dependencies依赖的Part。 | 
 | 查看 | hpm&nbsp;list或者hpm&nbsp;ls | 显示当前HPM&nbsp;Part的依赖树。 | 
-|| hpm&nbsp;dependencies | 生成当前HPM&nbsp;Part依赖关系数据（在hpm&nbsp;ui也集成了该命令的调用，可以图形化的展示）。 | 
+| - | hpm&nbsp;dependencies | 生成当前HPM&nbsp;Part依赖关系数据（在hpm&nbsp;ui也集成了该命令的调用，可以图形化的展示）。 | 
 | 搜索 | hpm&nbsp;search&nbsp;name | 搜索Bundle，--json，可以以json格式输出&nbsp;-type&nbsp;可以设置搜索Bundle的类型，包括part、distribution、code-segment三种。 | 
 | 设置hpm配置项 | hpm&nbsp;config&nbsp;set&nbsp;key&nbsp;value | 设置配置值，如服务器地址，网络代理。 | 
-|| hpm&nbsp;config&nbsp;delete&nbsp;key | 删除配置。 | 
+| - | hpm&nbsp;config&nbsp;delete&nbsp;key | 删除配置。 | 
 | 更新 | hpm&nbsp;update | 更新当前Part依赖的Part的版本。 | 
-|| hpm&nbsp;check-update | 检查依赖的Part版本是否有更新。 | 
+| - | hpm&nbsp;check-update | 检查依赖的Part版本是否有更新。 | 
 | 编译 | hpm&nbsp;build | 编译HPM&nbsp;Part。 | 
-|| hpm&nbsp;dist | 针对发行版（distribution），发行版编译构建（依赖bundle.json的scripts中的dist脚本）。 | 
+| - | hpm&nbsp;dist | 针对发行版（distribution），发行版编译构建（依赖bundle.json的scripts中的dist脚本）。 | 
 | 打包 | hpm&nbsp;pack | 本地Part打包依赖。 | 
 | 烧录 | hpm&nbsp;run&nbsp;flash | 烧录固件（依赖bundle.json的scripts中的flash脚本）。 | 
 | 发布 | hpm&nbsp;publish | 发布Part，发布的Part在仓库中必须唯一，且版本唯一（需要账号登录）。 | 
@@ -195,7 +195,7 @@ Part的依赖分为必选依赖和可选依赖。
 - 可选依赖：是在Part A在完成某个功能时，可以引入Part C，也可以引入Part D。C和D可以相互替换，称C和D为A的可选依赖。
 
   
-```
+```text
 "dependencies": {
     "@myorg/core":"1.0.0",
     "?@myorg/plugin1":"1.0.0",
@@ -210,7 +210,7 @@ Part的依赖关系分为编译依赖和开发依赖。
 - 开发依赖：非运行时需要的依赖，如静态检查、编译、打包、测试、格式化工具等。
 
   
-```
+```text
 "dependencies": {
     "@myorg/core":"1.0.0"
  },
@@ -221,7 +221,7 @@ Part的依赖关系分为编译依赖和开发依赖。
 
   依赖中可以定义标签，对引入的依赖进行分组。在脚本中可以根据标签，获得这一组依赖的路径。定义的标签以\#开头，具体定义的方式为：
   
-```
+```json
 {
     "dependencies": {
         "#tool": {
@@ -239,7 +239,7 @@ Part的依赖关系分为编译依赖和开发依赖。
 Part的依赖关系（包括间接依赖）可以通过hpm list命令显示（也可以通过hpm ui命令在可视化的页面中显示）。
 
   
-```
+```shell
 $ hpm list
 +--demo@1.0.0
 | +--@example/media@1.0.2
@@ -274,7 +274,7 @@ Part在编译的过程中需要依赖系统提供的环境变量来自定义输�
 全局环境变量由bundle.json中的envs属性来定义。整个Part中的依赖都可以获取到全局变量定义的值。
 
   
-```
+```json
 {
     "envs": {
         "compileEnv": "arm"
@@ -285,7 +285,7 @@ Part在编译的过程中需要依赖系统提供的环境变量来自定义输�
 不同Part在引入依赖的过程中可以传入不同的参数，从而使依赖的编译可以满足当前Part的需求。依赖中定义的参数可以在对应依赖脚本执行的上下文中获取到。
 
   
-```
+```json
 {
     "dependencies": {
         "my-bundle": {

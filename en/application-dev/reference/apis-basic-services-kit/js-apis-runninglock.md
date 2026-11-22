@@ -6,8 +6,9 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=e0f0b19056c89aea6213599825e0a38e8109674f translatedAt=2026-11-06T01:43:20.126Z pushedAt=2026-11-09T03:24:49.609Z nl=1 -->
 
-The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks. A running lock enables the proximity sensor to turn on or off the screen, or prevents the device from entering sleep mode when the screen is off. For details about the running lock types, see [RunningLockType](#runninglocktype).
+This module provides APIs for performing operations related to the running locks, such as preventing the system from sleeping and turning the screen on or off by using the proximity sensor. It is applicable to scenarios where the background app needs to keep running after the screen is turned off, the proximity sensor is used to turn the screen on or off, and the system is prevented from automatically sleeping during idle hours. This ensures the continuous execution of key tasks. This includes operations such as creating, querying, holding, and releasing locks. For details about the lock types, see [RunningLockType](#runninglocktype).
 
 > **NOTE**
 >
@@ -31,7 +32,7 @@ Checks whether a specified type of **RunningLock** is supported.
 
 | Name| Type                               | Mandatory| Description                |
 | ------ | ----------------------------------- | ---- | -------------------- |
-| type   | [RunningLockType](#runninglocktype) | Yes  | Type of the running lock. The value must be an enum.|
+| type   | [RunningLockType](#runninglocktype) | Yes  | Type of the running lock.|
 
 **Returns**
 
@@ -52,9 +53,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 try {
     let isSupported = runningLock.isSupported(runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL);
-    console.info('BACKGROUND type supported: ' + isSupported);
-} catch(err) {
-    console.error('check supported failed, err: ' + err);
+    console.info('PROXIMITY_SCREEN_CONTROL type supported: ' + isSupported);
+} catch (err) {
+    console.error(`Failed to check supported. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -62,7 +63,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-Creates a **RunningLock** object. This API uses an asynchronous callback to return the result.
+Creates a **RunningLock** object. This API uses an asynchronous callback to return the result. After the lock object is created, call **hold()** to lock and hold the lock so that the lock takes effect. It is not recommended to call **create** concurrently in multiple Worker/TaskPool threads to create lock objects.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -72,9 +73,9 @@ Creates a **RunningLock** object. This API uses an asynchronous callback to retu
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name     | string                                     | Yes  | Name of the **RunningLock** object. The value must be a string.                                                  |
-| type     | [RunningLockType](#runninglocktype)        | Yes  | Type of the **RunningLock** object. The value must be an enum.                                          |
-| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and data is the created **RunningLock** object. Otherwise, **err** is an error object. **AsyncCallback** has encapsulated an API of the **RunningLock** class.|
+| name     | string                                     | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix.                                                  |
+| type | [RunningLockType](#runninglocktype) | Yes| Type of the **RunningLock** object to be created. The precautions for using different lock types vary. For details, see [RunningLockType](#runninglocktype).|
+| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -82,18 +83,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message   |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **Example**
 
 ```js
 
-runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-    if (typeof err === 'undefined') {
-        console.info('created running lock: ' + lock);
+runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+    if (err) {
+        console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('create running lock failed, err: ' + err);
+        console.info('created running lock: ' + lock); // After creating and saving a lock object, you need to use the hold and unhold methods.
     }
 });
 ```
@@ -102,7 +103,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-Creates a **RunningLock** object. This API uses a promise to return the result.
+Creates a **RunningLock** object. This API uses a promise to return the result. After the lock object is created, call **hold()** to lock and hold the lock so that the lock takes effect. It is not recommended to call **create** concurrently in multiple Worker/TaskPool threads to create lock objects.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -112,14 +113,15 @@ Creates a **RunningLock** object. This API uses a promise to return the result.
 
 | Name| Type                               | Mandatory| Description              |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| name   | string                              | Yes  | Name of the **RunningLock** object. The value must be a string.|
-| type   | [RunningLockType](#runninglocktype) | Yes  | Type of the **RunningLock** object. The value must be an enum.|
+| name   | string                              | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix.|
+| type | [RunningLockType](#runninglocktype) | Yes| Type of the **RunningLock** object to be created. The precautions for using different lock types vary. For details, see [RunningLockType](#runninglocktype).|
+
 
 **Returns**
 
 | Type                                      | Description                                |
 | ------------------------------------------ | ------------------------------------ |
-| Promise&lt;[RunningLock](#runninglock)&gt; | Promise used to return the result.|
+| Promise&lt;[RunningLock](#runninglock)&gt; | Promise used to return the result. If the object is created successfully, a **RunningLock** object is returned. Otherwise, an error object is returned.|
 
 **Error codes**
 
@@ -127,7 +129,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message   |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **Example**
@@ -136,10 +138,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
 .then((lock: runningLock.RunningLock) => {
-    console.info('created running lock: ' + lock);
+    console.info('created running lock: ' + lock); // After creating and saving a lock object, you need to use the hold and unhold methods.
 })
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -157,17 +159,17 @@ Checks whether a specified type of **RunningLock** is supported. This API uses a
 
 | Name  | Type                               | Mandatory| Description                                                        |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | [RunningLockType](#runninglocktype) | Yes  | Type of the running lock.                                        |
+| type     | [RunningLockType](#runninglocktype) | Yes  | Type of the running lock.|
 | callback | AsyncCallback&lt;boolean&gt;        | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the query result obtained, where the value **true** indicates that the specified type of the running lock is supported and **false** indicates the opposite. Otherwise, **err** is an error object.|
 
 **Example**
 
 ```js
-runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (err: Error, data: boolean) => {
-    if (typeof err === 'undefined') {
-        console.info('BACKGROUND lock support status: ' + data);
+runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (err: BusinessError, data: boolean) => {
+    if (err) {
+        console.error(`Failed to check BACKGROUND lock support status. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('check BACKGROUND lock support status failed, err: ' + err);
+        console.info('BACKGROUND lock support status: ' + data);
     }
 });
 ```
@@ -201,8 +203,8 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 .then((data: boolean) => {
     console.info('BACKGROUND lock support status: ' + data);
 })
-.catch((err: Error) => {
-    console.error('check BACKGROUND lock support status failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to check BACKGROUND lock support status. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -224,16 +226,16 @@ Creates a **RunningLock** object. This API uses an asynchronous callback to retu
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | name     | string                                     | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix.                  |
 | type     | [RunningLockType](#runninglocktype)        | Yes  | Type of the **RunningLock** object to be created.                                          |
-| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object. **AsyncCallback** has encapsulated an API of the **RunningLock** class.|
+| callback | AsyncCallback&lt;[RunningLock](#runninglock)&gt; | Yes| Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object.|
 
 **Example**
 
 ```js
-runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: Error, lock: runningLock.RunningLock) => {
-    if (typeof err === 'undefined') {
-        console.info('created running lock: ' + lock);
+runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: BusinessError, lock: runningLock.RunningLock) => {
+    if (err) {
+        console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('create running lock failed, err: ' + err);
+        console.info('created running lock: ' + lock);
     }
 });
 ```
@@ -270,20 +272,24 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 .then((lock: runningLock.RunningLock) => {
     console.info('created running lock: ' + lock);
 })
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ## RunningLock
 
-Defines a **RunningLock** object.
+Defines a lock that prevents the system from sleeping or turns on or off the screen by using the proximity sensor. Different lock types have different functions. For details, see [RunningLockType](#runninglocktype).
+
+This method must be used together with [create](#runninglockcreate9), [hold](#hold9), and [unhold](#unhold9). For details, see the example.
+
+A **RunningLock** object cannot be shared across multiple Worker/TaskPool threads. The **hold()**, **unhold()**, and **isHolding()** methods of the same **RunningLock** instance must be called in the same thread. Sharing the instance across threads may cause inconsistent lock states without reporting an error. After the power service restarts abnormally, the created **RunningLock** object remains valid, but the holding state of the lock may be lost. It is recommended to check the lock state using **isHolding()** in the service restart scenario and call **hold()** again if necessary. When the JS object of **RunningLock** is garbage collected, the lock held at the underlying layer is automatically released. To hold the lock for a long time, keep a reference to the **RunningLock** object.
 
 ### hold<sup>9+</sup>
 
 hold(timeout: number): void
 
-Locks and holds a **RunningLock** object.
+Locks and holds a **RunningLock** object. This API applies to scenarios where an app needs to run continuously in the background (such as background download and long-time location tracking) and needs to prevent the system from sleeping, or scenarios where proximity light control of screen on/off is required during a call. After this API is called, call **unhold()** to release the lock when it is no longer needed, or set a timeout release time so that the system releases the lock automatically upon timeout. This API is used in pair with **unhold()**. Failure to release the lock keeps the sleep prevention or screen on/off control in effect. Repeated calls to **hold()** do not report an error. Note: If **hold(-1)** (permanent lock) is called first and then **hold(timeout)** (timed lock) is called, the lock is released after timeout (in milliseconds), that is, the **timeout** parameter of the later call overrides the previous one. To update the timeout, you are advised to call **unhold()** to release the lock first and then call **hold(newTimeout)**.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -293,7 +299,7 @@ Locks and holds a **RunningLock** object.
 
 | Name | Type  | Mandatory| Description                                     |
 | ------- | ------ | ---- | ----------------------------------------- |
-| timeout | number | Yes  | Duration for locking and holding the **RunningLock** object, in ms.<br>The value must be a number:<br>**-1**: The lock is permanently held and needs to be released automatically.<br>**0**: The lock is released 3 seconds after the timer expires by default.<br>> 0: The lock is released based on the input value after the timer expires.|
+| timeout | number | Yes  | Duration for locking and holding the **RunningLock** object, in ms.<br>**-1**: The lock is permanently held and needs to be released automatically.<br>**0**: The lock is released 3 seconds after the timer expires by default.<br>> 0: The lock is released based on the input value after the timer expires.|
 
 **Error codes**
 
@@ -301,7 +307,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message    |
 |---------|----------|
-| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **Example**
@@ -313,21 +319,25 @@ class RunningLockTest {
 
     public static holdRunningLock(): void {
         if (RunningLockTest.recordLock) {
-            RunningLockTest.recordLock.hold(500);
-            console.info('hold running lock success');
+            try {
+                RunningLockTest.recordLock.hold(500);
+                console.info('hold running lock success');
+            } catch(err) {
+                console.error(`Failed to hold running lock. Code: ${err.code}, message: ${err.message}`);
+            }
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+                if (err) {
+                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+                } else {
                     console.info('create running lock: ' + lock);
                     RunningLockTest.recordLock = lock;
                     try {
                         lock.hold(500);
                         console.info('hold running lock success');
                     } catch(err) {
-                        console.error('hold running lock failed, err: ' + err);
+                        console.error(`Failed to hold running lock. Code: ${err.code}, message: ${err.message}`);
                     }
-                } else {
-                    console.error('create running lock failed, err: ' + err);
                 }
             });
         }
@@ -339,7 +349,7 @@ class RunningLockTest {
 
 unhold(): void
 
-Releases a **RunningLock** object.
+Releases a **RunningLock** object. This API is used in pair with **hold()**. After **hold()** is called to lock the object, call this API to release the object. Calling **unhold()** on a lock that is not held does not report an error and is treated as  no operation. You are advised to confirm the holding state of the lock using **isHolding()** before calling **unhold()**.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -363,21 +373,25 @@ class RunningLockTest {
 
     public static unholdRunningLock(): void {
         if (RunningLockTest.recordLock) {
-            RunningLockTest.recordLock.unhold();
-            console.info('unhold running lock success');
+            try {
+                RunningLockTest.recordLock.unhold();
+                console.info('unhold running lock success');
+            } catch(err) {
+                console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
+            }
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+                if (err) {
+                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+                } else {
                     console.info('create running lock: ' + lock);
                     RunningLockTest.recordLock = lock;
                     try {
                         lock.unhold();
                         console.info('unhold running lock success');
                     } catch(err) {
-                        console.error('unhold running lock failed, err: ' + err);
+                        console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
                     }
-                } else {
-                    console.error('create running lock failed, err: ' + err);
                 }
             });
         }
@@ -411,14 +425,14 @@ class RunningLockTest {
             let isHolding = RunningLockTest.recordLock.isHolding();
             console.info('check running lock holding status: ' + isHolding);
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+                if (err) {
+                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+                } else {
                     console.info('create running lock: ' + lock);
                     RunningLockTest.recordLock = lock;
                     let isHolding = lock.isHolding();
                     console.info('check running lock holding status: ' + isHolding);
-                } else {
-                    console.error('create running lock failed, err: ' + err);
                 }
             });
         }
@@ -430,7 +444,7 @@ class RunningLockTest {
 
 lock(timeout: number): void
 
-Locks and holds a **RunningLock** object.
+Holds a **RunningLock** object.
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9) instead.
 
@@ -452,8 +466,8 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     lock.lock(500);
     console.info('create running lock and lock success');
 })
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -477,8 +491,8 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     lock.unlock();
     console.info('create running lock and unlock success');
 })
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -505,8 +519,8 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     let isUsed = lock.isUsed();
     console.info('check running lock used status: ' + isUsed);
 })
-.catch((err: Error) => {
-    console.error('check running lock used status failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to check running lock used status. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -520,4 +534,4 @@ Enumerates the types of **RunningLock** objects.
 | --------------------------------- | ---- | ------------------------------------------------------------ |
 | BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from hibernating when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
 | PROXIMITY_SCREEN_CONTROL          | 2    | A lock that enables the proximity sensor and turns on or off the screen based on the distance between the sensor and the obstacle. |
-| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time.<br>Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../basic-services/powermgr/runningLock/runningLock-dev.md).|
+| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | Background idle task lock that prevents the system from entering sleep automatically. Holding the lock ensures that the system does not enter automatic sleep after a period of user inactivity.<br>**Note:** It cannot prevent the system from entering forced sleep in scenarios such as closing the lid of a PC. The user must listen for [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) and release the lock after the event is received. The behavior of this lock type varies by device. For details, see [Preventing the System from Entering Sleep When Idle Development Guide](../../basic-services/powermgr/runningLock/runningLock-dev.md). When the device does not support the **BACKGROUND_USER_IDLE** type, **create()** still returns success, but the subsequent **hold()** call does not take effect and no error is reported. You are advised to call **isSupported()** after **create()** to check whether the device supports this type.|

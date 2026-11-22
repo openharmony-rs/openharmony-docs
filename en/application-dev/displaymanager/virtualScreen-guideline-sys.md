@@ -1,11 +1,19 @@
+---
+kits: ["ArkUI"]
+description: "Describes how system applications can request the required permissions, create a virtual screen, bind a rendering surface, start or stop screen mirroring, and destroy the virtual screen after use. These capabilities support scenarios such as screen casting and recording."
+keywords: [virtual screen, virtual screen creation, SurfaceID, virtual screen destruction, mirroring]
+doctype: guide
+status: active
+---
+
 # Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b21bd82a68f5cb2fefefde92a7afef87223beafc translatedAt=2026-07-09T08:21:06.701Z pushedAt=2026-07-09T10:42:12.510Z -->
+<!-- md-trans-meta sourceCommit=27bf6967fc994505af5bc56dd1e6eb560ab219d9 translatedAt=2026-11-12T12:34:02.180Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 ## When to Use
 

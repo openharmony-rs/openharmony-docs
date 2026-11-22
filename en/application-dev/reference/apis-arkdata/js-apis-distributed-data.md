@@ -5,7 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=43292b300d4dfb3cdd7bb71336cef22c5f3ccf12 translatedAt=2026-09-04T03:59:01.271Z pushedAt=2026-09-09T09:11:03.742Z -->
+<!-- md-trans-meta sourceCommit=4089b58425e9daaa0c2d47c09427b523d2989631 translatedAt=2026-10-19T10:23:41.879Z pushedAt=2026-10-19T11:36:36.146Z nl=1 -->
 
 The distributed data management module implements collaboration between databases of different devices for applications. The APIs provided by distributed data management can be used to save data to distributed databases and perform operations such as adding, deleting, modifying, querying, and synchronizing data in distributed databases.
 
@@ -18,7 +18,7 @@ This module provides the following functions:
 - [SingleKVStore](#singlekvstore): provides APIs to query and synchronize data in a single KV store. This class inherits from [KVStore](#kvstore), and data is not distinguished by device.
 - [DeviceKVStore<sup>8+</sup>](#devicekvstore8): provides APIs to query and synchronize data in a device KV store. This class inherits from [KVStore](#kvstore), and data is distinguished by device.
 
->**NOTE**
+>**NOTE** 
 >
 >- Since API version 9, this API is no longer maintained. You are advised to use the new API [@ohos.data.distributedKVStore](js-apis-distributedKVStore.md).
 >
@@ -86,7 +86,7 @@ Creates a **KVManager** instance to manage KV stores. This API uses a promise to
 
 | Name| Type| Mandatory| Description|
 | ----- | ------ | ------ | ------ |
-| config |[KVManagerConfig](#kvmanager) | Yes | Configuration of the **KVManager** instance, including the bundle name and user information of the caller.|
+| config |[KVManagerConfig](#kvmanagerconfig) | Yes | Configuration information of the **KVManager** instance, including the bundle name and user information of the caller. |
 
 **Return value**
 
@@ -661,7 +661,7 @@ Represents a **Schema** instance, which provides the APIs for defining the value
 | Name | Type| Readable| Writable| Description                   |
 | ---   | ----  | ----  | ----  | ----------------------- |
 | nullable<sup>8+</sup>  | boolean | Yes| Yes| Whether the database field can be null.  |
-| default<sup>8+</sup>  | string | Yes| Yes| Default value of a **FieldNode**.|
+| default<sup>8+</sup>  | string | Yes | Yes | Default value of **FieldNode**. |
 | type<sup>8+</sup>  | number | Yes| Yes| Value of the data type corresponding to the specified node.|
 
 ### constructor<sup>8+</sup>
@@ -2401,7 +2401,7 @@ try {
         });
     });
 }catch(e) {
-    console.info('PutBatch e ' + JSON.stringify(e));
+    console.error('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -2456,7 +2456,7 @@ try {
         console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.info('PutBatch e ' + JSON.stringify(e));
+    console.error('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -3183,7 +3183,7 @@ Obtains the KV pairs that match the specified **Query** object. This API uses an
 
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
-| query  |[Query](#query8)   | Yes   |Key prefix to match. |
+| query  |[Query](#query8)   | Yes    |Query object.  |
 | callback  |AsyncCallback&lt;[Entry](#entry)[]&gt;   | Yes   |Callback used to return the KV pairs that match the specified **Query** object. |
 
 **Example**
@@ -3760,7 +3760,7 @@ try {
 
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
-Triggers database synchronization in manual synchronization mode.
+Synchronizes the KV store manually.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 

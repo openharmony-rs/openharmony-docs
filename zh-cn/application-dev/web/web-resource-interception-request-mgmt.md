@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用onInterceptRequest拦截页面请求并构造自定义响应的方法，包括本地资源响应，以及为JavaScript资源生成CodeCache加速执行。"
+keywords: [onInterceptRequest, WebResourceResponse, 自定义响应, 资源拦截, CodeCache, ResponseDataID, setResponseData, setResponseMimeType]
+doctype: guide
+status: active
+---
+
 # 自定义页面请求响应
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

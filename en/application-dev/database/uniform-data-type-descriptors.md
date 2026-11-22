@@ -1,12 +1,12 @@
 # UTDs (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=bed4448494720f3be3d1109ceb94048202c4d1d7 translatedAt=2026-08-20T06:24:00.985Z pushedAt=2026-08-20T12:38:34.957Z -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:49:09.802Z pushedAt=2026-11-16T13:27:03.007Z nl=1 -->
+
 
 ## When to Use
 
@@ -51,22 +51,17 @@ Not all formats have two dimensions. For example, **general.calendar** focuses m
 A UTD contains information such as the ID, relationships, and brief description of a uniform data type. For details, see [TypeDescriptor properties](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md#properties). Each UTD contains the following information:
 
 + **typeId**: unique ID of the UTD.
-
 + **belongingToTypes**: types to which the UTD belongs. A UTD may belong to multiple data types.
-
 + **description**: brief description of the uniform data type.
-
 + **referenceURL**: URL of the data type reference, which provides detailed information about the data type.
-
 + **iconFile**: path of the default icon file for the data type. If the data type has no default icon, it is an empty string. The application can determine whether to use the default icon.
-
 + **filenameExtensions**: File name extensions associated with the uniform data type.
-
 + **mimeTypes**: MIME types associated with the uniform data type.
 
 ## Prebuilt UTDs
 
 The system is prebuilt with common UTDs. For example, **general.audio** is used to represent an audio file, and **general.video** is used to represent a video file. For details about the prebuilt UTDs, see [Prebuilt UTDs](./uniform-data-type-list.md).
+
 
 ## Custom UTDs
 
@@ -100,6 +95,7 @@ The fields of a custom UTD must comply with the following requirements:
 
 + **ReferenceURL**: The value cannot exceed 255 characters. It can be left blank.
 
+
 ### How to Develop
 
 The following walks you through on how to define a custom UTD for media files.
@@ -107,7 +103,6 @@ The following walks you through on how to define a custom UTD for media files.
 1. Create the **utd.json5** file in the **entry\src\main\resources\rawfile\arkdata\utd** directory of the application.
 
 2. Add a custom UTD in the **utd.json5** file.
-
    ```json
    {
         "UniformDataTypeDeclarations": [
@@ -195,7 +190,7 @@ The following walks you through on how to obtain **belongingToTypes** of a media
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // 1. Import the module.
     import { uniformTypeDescriptor } from '@kit.ArkData';
@@ -203,15 +198,12 @@ The following walks you through on how to obtain **belongingToTypes** of a media
     ```
 
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID based on the file name extension .mp3, and then obtain properties of the specific UTD.
-
 3. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **audio/mp3**, and then obtain properties of the specific UTD.
-
 4. Compare the UTDs obtained in the preceding steps to check whether they are the same.
-
 5. Check whether **general.mp3** belongs to **general.audio**.
 
     <!-- @[uniform_type_descriptor_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     function uniformTypeDescriptorTest() {
       try {
@@ -269,7 +261,7 @@ The following walks you through on how to obtain MIME types based on the file na
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // 1. Import the module.
     import { uniformTypeDescriptor } from '@kit.ArkData';
@@ -277,11 +269,10 @@ The following walks you through on how to obtain MIME types based on the file na
     ```
 
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID (**typeId**) based on the file name extension .ts.
-
 3. Use **getTypeDescriptor()** to obtain the MIME types based on the UTD type ID.
 
     <!-- @[get_filename_extensions_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     try {
       // 2. Query the corresponding UTD data type based on the ".ts" file extension.
@@ -305,7 +296,7 @@ The following walks you through on how to obtain the file name extensions based 
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // 1. Import the module.
     import { uniformTypeDescriptor } from '@kit.ArkData';
@@ -313,11 +304,10 @@ The following walks you through on how to obtain the file name extensions based 
     ```
 
 2. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **text/plain**.
-
 3. Use **getTypeDescriptor()** to obtain the file extensions based on the UTD type.
 
     <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     try {
       // 2. Query the corresponding UTD data type based on the "text/plain" MIME type.

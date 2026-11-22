@@ -1,16 +1,24 @@
+---
+kits: ["ArkTS Kit"]
+description: "Introduces the OpenHarmony Native Development Kit (NDK), including its use cases, prerequisite knowledge, directory structure, and common modules such as the C/C++ standard libraries, Node-API, FFRT, and Rawfile. Provides an entry point to the basic concepts of NDK development."
+keywords: ["NDK", "Native Development Kit", "Node-API", "Native API", "CMake", "libuv", "libc", "FFRT", "Rawfile"]
+doctype: guide
+status: active
+---
+
 # About This Kit
-<!--Kit: NDK-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @liyiming13-->
-<!--Designer: @huang_huijin-->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=235c2cef2c01aded2d0dcd8f4c12337fcc18fc53 translatedAt=2026-11-09T08:52:17.314Z nl=1 -->
 
 The Native Development Kit (NDK) is a toolset that allows you to use C and C++ code with OpenHarmony. As a subset of OpenHarmony SDK, it provides native APIs, compile scripts, and compile toolchain to help you implement key application features using C or C++. The NDK covers only some basic underlying capabilities of OpenHarmony, such as the C runtime libc, graphics library, window system, multimedia, compression library, and Node-API that bridges ArkTS/JS and C code. It does not provide complete capabilities of ArkTS/JS APIs.
 
-
 You can use Node-API in the NDK to access, create, and operate JS objects, and use native dynamic libraries in JS objects.
-
 
 ## Use Scenarios
 
@@ -28,17 +36,15 @@ You are not advised to use the NDK to develop the following:
 
 - Applications that can run on a wide variety of OpenHarmony devices
 
-
 ## NDK Basics
 
 Before getting started, familiarity with the following basics is helpful.
-
 
 ### Preparatory Knowledge
 
 - Linux C programming knowledge
 
-  The kernel and libc are extended based on standards such as POSIX. Mastering basic Linux C programming knowledge can help you better understand OpenHarmony development with the NDK.
+  The kernel and libc base libraries are extended from standards such as POSIX. Mastering basic Linux C programming knowledge helps you better understand OpenHarmony NDK development.
 
 - CMake
 
@@ -46,7 +52,7 @@ Before getting started, familiarity with the following basics is helpful.
 
 - Node addons
 
-  ArkTS uses Node-API as the cross-language invoking interface. Familiarity with the basic [node addons](https://nodejs.org/api/addons.html) helps you better understand how to use Node-API in the NDK.
+  ArkTS uses Node-API as the cross-language invocation interface. Familiarity with basic [Node Addon development patterns](https://nodejs.org/api/addons.html) helps you better understand how Node-API is used in the NDK.
 
 - Clang/LLVM
 
@@ -58,15 +64,16 @@ Before getting started, familiarity with the following basics is helpful.
 
 ### NDK Directory Structure
 
-For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project with CMake](build-with-ndk-cmake.md#downloading-the-ndk)<!--RP1End-->.
+For details about how to obtain the NDK, see <!--RP1-->[Downloading the NDK Development Package](build-with-ndk-cmake.md#downloading-the-ndk-development-package)<!--RP1End-->.
 
 - **build** directory: stores the predefined toolchain script file <!--RP2-->[ohos.toolchain.cmake](build-with-ndk-overview.md#introduction-to-ohostoolchaincmake).<!--RP2End-->
 
-  ![ndk-bulid-structure](figures/ndk-build-structure.png)
+  ![ndk-build-structure](figures/ndk-build-structure.png)
 
   During compilation, CMake locates the file through **CMAKE_TOOLCHAIN_FILE** and reads the default values in this file, such as the compiler architecture and C++ library link mode.
 
 - **build-tools** folder: contains the build tools provided by the NDK.
+
   ```shell
   # Check the CMake version.
   cmake -version
@@ -79,11 +86,9 @@ For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project 
 
   ![ndk-tools-list](figures/ndk-tools-list.png)
 
-
 ## Common NDK Modules
 
 The following table describes the common modules of the NDK and their functionalities.
-
 
 | Module| Description|
 | -------- | -------- |

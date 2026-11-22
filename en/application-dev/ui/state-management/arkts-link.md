@@ -5,12 +5,12 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T10:58:12.262Z pushedAt=2026-09-23T07:52:11.594Z -->
+<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:31:30.197Z pushedAt=2026-11-03T07:54:09.885Z nl=1 -->
 
 
 A variable decorated by [\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md#link) in a child component establishes two-way data binding with its corresponding data source in the parent component.
 
-Before reading this topic, you are advised to understand the basic usage of [\@State](./arkts-state.md). For best practices, see [State Management Best Practices](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For common issues, see [State Management FAQs](./arkts-state-management-faq.md).
+Before reading this \@Link document, you are advised to familiarize yourself with the basic usage of [\@State](./arkts-state.md). For common issues, see [State Management FAQ](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -86,7 +86,7 @@ To understand the value initialization and update mechanism of the \@Link decora
     ```ts
     // Incorrect usage. An error is reported during compilation.
     @Link count: number = 10;
-  
+
     // Correct usage.
     @Link count: number;
     ```
@@ -100,7 +100,7 @@ To understand the value initialization and update mechanism of the \@Link decora
     > Starting from API version 26.0.0, if the data source of \@Link is not a state variable, error code [140123](../../reference/apis-arkui/errorcode-stateManagement.md#140123-data-source-of-the-link-decorated-variable-is-not-a-state-variable) is thrown.
 
     **Incorrect Usage**
-
+  
     ```ts
     class Info {
       value: string = 'Hello';
@@ -146,29 +146,29 @@ To understand the value initialization and update mechanism of the \@Link decora
     **Correct Usage**
 
     <!-- @[link_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage.ets) --> 
-
+    
     ``` TypeScript
     class LinkInfo {
       public value: string = 'Hello';
     }
-
+    
     @Component
     struct LinkChild {
       // In the child component, use @Link to decorate the test variable of the LinkInfo type.
       @Link test: LinkInfo;
-
+    
       build() {
         Text(this.test.value)
           .fontSize(20)
           .margin(10)
       }
     }
-
+    
     @Entry
     @Component
     struct LinkExample {
       @State info: LinkInfo = new LinkInfo();
-
+    
       build() {
         Column() {
           // In the parent component, use the @State-decorated info variable to initialize the test variable of the LinkChild component.
@@ -184,22 +184,22 @@ To understand the value initialization and update mechanism of the \@Link decora
 4. A variable decorated by \@Link can only be initialized by a state variable, not by a regular variable. Otherwise, a compilation error occurs.
 
     **Incorrect Usage**
-
+  
     ``` TypeScript
     @Component
     struct Child {
       @Link message: string;
-  
+    
       build() {
         Text(`${this.message}`).margin('20%')
       }
     }
-
+    
     @Entry
     @Component
     struct LinkExample {
       message: string = 'Hello';
-  
+    
       build() {
         Column() {
           // Incorrect usage. Regular variables cannot initialize @Link decorated variables.
@@ -212,22 +212,22 @@ To understand the value initialization and update mechanism of the \@Link decora
     **Correct Usage**
 
     <!-- @[link_usage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets) --> 
-
+    
     ``` TypeScript
     @Component
     struct LinkChild2 {
       @Link message: string;
-  
+    
       build() {
         Text(`${this.message}`).margin('20%')
       }
     }
-  
+    
     @Entry
     @Component
     struct LinkExample2 {
       @State message: string = 'Hello';
-  
+    
       build() {
         Column() {
           // Correct usage.

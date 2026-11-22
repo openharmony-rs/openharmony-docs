@@ -28,9 +28,6 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) | ArkUI_NodeEvent | 定义组件事件的通用结构类型。 |
-| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | ArkUI native UI 的上下文实例对象，用于表示组件所在页面的 UIContext。其指针类型为 [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)，开发者可通过 [OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode) 获取对应上下文，并将其作为拖拽操作、动画、UI 任务调度等接口的上下文入参。 |
-| [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | ArkUI 在 Native 侧的上下文实例对象指针，用于表示组件所在页面的 UIContext。开发者可通过[OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode)或[OH_ArkUI_GetContextFromNapiValue](capi-native-node-napi-h.md#oh_arkui_getcontextfromnapivalue)获取该指针，并将其作为 UI 任务调度、动画、焦点控制等接口的上下文入参。 |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) | ArkUI_DragEvent | 拖拽事件，用于表示ArkUI组件拖拽过程中的事件信息。开发者可通过以下头文件中的拖拽事件接口获取拖拽状态和事件数据；拖拽事件绑定流程请参见[绑定拖拽事件](../../ui/ndk-drag-event.md)。 |
 | [ArkUI_DragPreviewOption](capi-arkui-nativemodule-arkui-dragpreviewoption.md) | ArkUI_DragPreviewOption | 设置拖拽跟手图的自定义参数（如投影、圆角效果等），用于在拖拽场景中自定义预览图显示效果，帮助应用提供更符合业务需求的拖拽交互体验。 |
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md) | ArkUI_DragAction | 拖拽行为句柄，用于主动发起拖拽操作，即由开发者主动调用接口启动拖拽，区别于被动响应拖拽事件。该句柄支持创建、配置、执行和销毁拖拽行为，可设置拖拽数据并主动启动拖拽。ArkUI_DragAction的使用流程如下：1. 通过[OH_ArkUI_CreateDragActionWithNode](capi-drag-and-drop-h.md#oh_arkui_createdragactionwithnode)或[OH_ArkUI_CreateDragActionWithContext](capi-drag-and-drop-h.md#oh_arkui_createdragactionwithcontext)创建对象。2. 调用OH_ArkUI_DragAction_SetData等接口配置拖拽参数。3. 调用[OH_ArkUI_StartDrag](capi-drag-and-drop-h.md#oh_arkui_startdrag)发起拖拽。4. 不再使用时，调用[OH_ArkUI_DragAction_Dispose](capi-drag-and-drop-h.md#oh_arkui_dragaction_dispose)销毁对象并释放资源。关于创建、配置和执行机制的详细说明，请参见[绑定拖拽事件](../../ui/ndk-drag-event.md)。 |
@@ -60,7 +57,7 @@
 | [int32_t OH_ArkUI_DragEvent_GetUdmfData(ArkUI_DragEvent* event, OH_UdmfData *data)](#oh_arkui_dragevent_getudmfdata) | 从ArkUI_DragEvent中获取拖拽数据。 |
 | [int32_t OH_ArkUI_DragEvent_GetDataTypeCount(ArkUI_DragEvent* event, int32_t* count)](#oh_arkui_dragevent_getdatatypecount) | 从ArkUI_DragEvent中获取所拖拽的数据类型种类个数。 |
 | [int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeArray[], int32_t length, int32_t maxStrLen)](#oh_arkui_dragevent_getdatatypes) | 从ArkUI_DragEvent中获取拖拽数据的类型列表。 |
-| [int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent* event, OH_UDMF_Summary* summary)](#oh_arkui_dragevent_getsummary) | 从ArkUI_DragEvent中获取数据摘要。 |
+| [int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent *event, OH_UDMF_Summary *summary)](#oh_arkui_dragevent_getsummary) | 从ArkUI_DragEvent中获取统一数据摘要。 |
 | [int32_t OH_ArkUI_DragEvent_GetDragResult(ArkUI_DragEvent* event, ArkUI_DragResult* result)](#oh_arkui_dragevent_getdragresult) | 从ArkUI_DragEvent中获取拖拽结果。 |
 | [int32_t OH_ArkUI_DragEvent_GetDropOperation(ArkUI_DragEvent* event, ArkUI_DropOperation* operation)](#oh_arkui_dragevent_getdropoperation) | 从ArkUI_DragEvent中获取数据处理方式。 |
 | [float OH_ArkUI_DragEvent_GetPreviewTouchPointX(ArkUI_DragEvent* event)](#oh_arkui_dragevent_getpreviewtouchpointx) | 从ArkUI_DragEvent中获取预览图跟手点的x轴坐标。 |
@@ -497,21 +494,21 @@ int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeA
 ### OH_ArkUI_DragEvent_GetSummary()
 
 ```c
-int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent* event, OH_UDMF_Summary* summary)
+int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent *event, OH_UDMF_Summary *summary)
 ```
 
 **描述：**
 
-从ArkUI_DragEvent中获取数据摘要。
+从ArkUI_DragEvent中获取统一数据摘要。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | ArkUI_DragEvent事件指针。 |
-| [OH_UDMF_Summary](../apis-arkdata/capi-udmf-oh-udmf-summary.md) *summary | 出参，用于接收数据摘要的OH_UDMF_Summary对象指针。调用本接口前需由调用方创建该对象，使用完毕后由调用方销毁；操作失败时，对象内容不保证有效。 |
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | [入参] ArkUI_DragEvent事件指针，不能为空。 |
+| [OH_UDMF_Summary](../apis-arkdata/capi-udmf-oh-udmf-summary.md) *summary | [出参] 用于接收统一数据摘要的OH_UDMF_Summary对象指针，不能为空，调用本接口前需由调用方创建该对象，使用完毕后由调用方销毁；操作失败时，对象内容不保证有效。 |
 
 **返回：**
 

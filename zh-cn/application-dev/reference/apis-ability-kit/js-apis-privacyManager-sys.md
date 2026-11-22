@@ -439,7 +439,7 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>适用版本：26.0.1+ |
 | 12100007 | Service exception. |
-| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query all applications under the user. |
+| 12100009 | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 
 **示例：**
 
@@ -496,7 +496,7 @@ setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: number): Prom
 | 12100001 | Invalid parameter. The specified subProfileId does not exist for the current user. |
 | 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18). |
 | 12100007 | Service exception. |
-| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
+| 12100009 | Common inner error. Possible causes: 1. Database error. 2. Failed to query applications under the user. |
 
 **示例：**
 
@@ -1482,6 +1482,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then((data: A
 | accessRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | 否    | 否    | 访问记录集合，仅当flag为FLAG_PERMISSION_USAGE_DETAIL时生效。<br>默认值：查询最近10条成功访问记录。                                 |
 | rejectRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | 否    | 否    | 拒绝记录集合，仅当flag为FLAG_PERMISSION_USAGE_DETAIL时生效。<br>默认值：查询最近10条失败或拒绝记录。                                 |
 | enhancedIdentity| string | 否 | 是 | 扩展身份，长度不超过48个字符。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| targetTokenId | number | 否 | 是 | 被自动化控制的目标应用的身份标识。仅在查询自动化控制记录的情况时有效。查询非自动化控制记录时，该值为0。<br>取值限定为整数。<br>默认值：0<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| targetBundleName | string | 否 | 是 | 被自动化控制的目标应用的包名。仅在查询自动化控制记录的情况时有效。查询非自动化控制记录时，该值为空字符串。<br>默认值：空<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## UsedRecordDetail
 
@@ -1502,7 +1504,7 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then((data: A
 
 ## PermissionActiveStatus
 
-表示权限使用状态变化类型的枚举。用于描述权限使用状态的变更类型，在订阅权限使用状态变更事件（通过[on('activeStateChange')](#privacymanageron)）的回调中返回，帮助系统应用感知权限从未使用到前台使用、后台使用的状态切换。
+表示权限使用状态变化类型的枚举。用于描述权限使用状态的变更类型，在订阅权限使用状态变更事件（通过[on](#privacymanageron)('activeStateChange')）的回调中返回，帮助系统应用感知权限从未使用到前台使用、后台使用的状态切换。
 
 **系统接口：** 此接口为系统接口。
 

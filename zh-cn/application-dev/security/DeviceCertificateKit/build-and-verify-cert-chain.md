@@ -56,6 +56,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -128,6 +129,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -198,6 +200,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -214,6 +217,7 @@ async function createX509CRL(crlDataStr: string): Promise<cert.X509CRL> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509CRL failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509CRL;
 }
@@ -300,6 +304,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }

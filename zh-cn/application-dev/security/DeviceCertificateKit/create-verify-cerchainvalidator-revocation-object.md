@@ -9,7 +9,7 @@
 
 ## 本地证书链吊销状态校验时仅校验终端实体证书
 
-API 22开始支持本地证书链吊销状态校验时仅校验终端实体证书。
+从API版本22开始支持本地证书链吊销状态校验时仅校验终端实体证书。
 
 ### 开发步骤
 
@@ -35,6 +35,7 @@ API 22开始支持本地证书链吊销状态校验时仅校验终端实体证�
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // string转Uint8Array。
 function stringToUint8Array(str: string): Uint8Array {
@@ -57,7 +58,9 @@ async function createCertChain(certData: string): Promise<cert.X509CertChain> {
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
   } catch (err) {
-    console.error(`createCertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertChain failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509CertChain;
 }
@@ -74,7 +77,9 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createCert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -113,14 +118,16 @@ async function doTestLeafCertCrlCheck() {
     await x509CertChain.validate(param);
     console.info(`validate result: success.`);
   } catch (error) {
-    console.error(`x509CertChain validate failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
 
 ## 在线校验证书链中的中间CA证书的吊销状态
 
-从API version 22开始，支持在线校验证书链中的中间CA证书的吊销状态。
+从API版本22开始，支持在线校验证书链中的中间CA证书的吊销状态。
 
 ### 开发步骤
 
@@ -148,6 +155,7 @@ async function doTestLeafCertCrlCheck() {
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // string转Uint8Array。
 function stringToUint8Array(str: string): Uint8Array {
@@ -170,7 +178,8 @@ async function createCertChain(certData: string): Promise<cert.X509CertChain> {
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
   } catch (err) {
-    console.error(`createCertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertChain failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509CertChain;
 }
@@ -187,7 +196,8 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createCert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCert failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509Cert;
 }
@@ -211,7 +221,8 @@ async function doTestCaCheck() {
     await x509CertChain.validate(param);
     console.info(`validate result: success.`);
   } catch (error) {
-    console.error(`x509CertChain validate failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```
@@ -219,7 +230,7 @@ async function doTestCaCheck() {
 
 ## 证书链校验时忽略在线证书吊销检查的网络不可达异常
 
-从API version 23开始，支持证书链校验时忽略网络不可达的在线证书吊销检查异常。
+从API版本23开始，支持证书链校验时忽略网络不可达的在线证书吊销检查异常。
 
 ### 开发步骤
 
@@ -230,9 +241,11 @@ async function doTestCaCheck() {
    ```
 2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11-2)创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X.509证书对象。构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X.509证书对象。
 
-4. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+4. 构造`cert.CertChainValidationParameters`证书链校验参数，配置`revocationCheckParam`为`RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+
+5. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
 在线CRL检查忽略网络不可达异常示例：
 
@@ -300,7 +313,8 @@ async function validateCRL() {
     await certChain.validate(param);
     console.info('validateCRL result: success.');
   } catch (err) {
-    console.error(`X509CertChain validate failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`X509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```

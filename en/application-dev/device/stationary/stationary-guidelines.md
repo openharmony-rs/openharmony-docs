@@ -1,12 +1,12 @@
 # Stationary Development
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=98fcf984c96ae624f011718507a9cc97af6ee748 translatedAt=2026-07-28T06:47:15.706Z pushedAt=2026-07-28T07:05:21.274Z -->
+<!-- md-trans-meta sourceCommit=adca29fd92ce029ca3625dd29af12de569e1b472 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
+
 
 ## When to Use
 
@@ -33,10 +33,10 @@ For detailed API introduction, refer to [@ohos.stationary (Device Status Awarene
 
 | Name                            | Value   | Description                                      |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | Entering status.  |
-| EXIT | 2   | Exiting status. |
+| ENTER         | 1    | Returns the entering status.  |
+| EXIT | 2   | Returns the exiting status. |
 
-## Available APIs
+## API Description
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -81,7 +81,7 @@ If the relative stationary and absolute stationary capabilities are required, yo
 
    ``` TypeScript
    import { stationary } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, Callback } from '@kit.BasicServicesKit';
    ```
 
 2. Subscribe to the event indicating entering the absolute still state, and the event is reported once per second.
@@ -91,9 +91,7 @@ If the relative stationary and absolute stationary capabilities are required, yo
    ``` TypeScript
    let reportLatencyNs = 1000000000; // Unit: nanoseconds
    try {
-     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
-       console.info('data=' + JSON.stringify(data));
-     })
+     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, this.callback)
      // ...
    } catch (error) {
      let message = (error as BusinessError).message;
@@ -123,9 +121,7 @@ If the relative stationary and absolute stationary capabilities are required, yo
 
    ``` TypeScript
    try {
-     stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
-       console.info('data=' + JSON.stringify(data));
-     })
+     stationary.off('still', stationary.ActivityEvent.ENTER, this.callback)
      // ...
    } catch (error) {
      let message = (error as BusinessError).message;

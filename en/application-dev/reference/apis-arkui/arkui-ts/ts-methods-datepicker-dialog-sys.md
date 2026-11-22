@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e7fa3d18a6c13eddd500d4196d9d29085b6f525 translatedAt=2026-11-03T02:55:13.373Z pushedAt=2026-11-13T01:06:00.031Z nl=1 -->
 
 The **DatePickerDialog** component provides a system-level date picker dialog box, supporting the configuration of the distortion animation mode and the edge light animation mode. It is suitable for scenarios where a system material-style date picker needs to be integrated into an app, delivering a consistent visual experience and smooth interactive animations to enhance user experience consistency.
 
@@ -19,6 +20,8 @@ The **DatePickerDialog** component provides a system-level date picker dialog bo
 ## DatePickerDialogOptions
 
 Defines the options for the date picker dialog box. **DatePickerDialog** displays a date picker in a dialog box, providing system material animation effects.
+
+Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickeroptions).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

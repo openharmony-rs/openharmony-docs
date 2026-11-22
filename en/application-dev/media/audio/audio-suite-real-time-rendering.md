@@ -1,12 +1,11 @@
 # Real-Time Preview (C/C++)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xxngwang-->
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=efdc6a6056235cd3aa9a7162f9e2331d94abb117 translatedAt=2026-09-20T03:36:30.184Z pushedAt=2026-09-20T03:49:53.466Z -->
+<!-- md-trans-meta sourceCommit=e812e2f650df60f459bb698f92b59b9ff87c786a translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides the real-time preview capability for audio creation (API version 22 supports only the equalizer effect, while API version 23 and later support other effects). For example, you can use the preset sound effects in the equalizer to change the style of music.
 
@@ -16,16 +15,18 @@ To use the real-time preview capability provided by [OHAudioSuite](../../referen
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
+<!-- @[CMake_lib_suite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudio.so)
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 
 ### Adding Header Files
-
 To use APIs related to audio creation and playback, include the <[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>, <[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>, <[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)>, and <[native_audiorenderer.h](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md)> header files.
 
 <!-- @[audioSuite_RealTimeRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
-
+   
 ``` C++
 #include <ohaudiosuite/native_audio_suite_base.h>
 #include <ohaudiosuite/native_audio_suite_engine.h>
@@ -48,9 +49,9 @@ For details on the APIs, see [OHAudioSuite](../../reference/apis-audio-kit/capi-
 You can implement a simple real-time preview feature for an equalizer effect node by following the steps below. This section uses the equalizer effect as an example to demonstrate the real-time preview process. For details about other effect nodes, see [Audio Effects (C/C++)](audio-suite-effects.md).
 
 1. Initialize and create an [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) pipeline (including the input node, equalizer node, and output node).
-
+  
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
-
+   
    ``` C
    struct AudioDataInfo {
        uint8_t *buffer = nullptr;   // Audio data.
@@ -59,9 +60,8 @@ You can implement a simple real-time preview feature for an equalizer effect nod
        int32_t totalReadSize = 0;  // Total size of the audio data that has been read.
    };
    ```
-
    <!-- @[audioSuite_RealTimeRenderingInputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic when using it in practice.
    // Callback for the input node to request data.
@@ -90,9 +90,8 @@ You can implement a simple real-time preview feature for an equalizer effect nod
        return actualDataSize;
    }
    ```
-
    <!-- @[audioSuite_CreateRealTimeRendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic when using it in practice.
    // Create the engine.
@@ -150,11 +149,13 @@ You can implement a simple real-time preview feature for an equalizer effect nod
    OH_AudioSuiteEngine_ConnectNodes(eqNode, outputNode);
    ```
 
+
    > **NOTE**
    >
    > Offline editing and real-time preview differ in how the pipeline is created.
    > + Real-time preview: OH_AudioSuite_PipelineWorkMode::AUDIOSUITE_PIPELINE_REALTIME_MODE
    > + Offline editing: OH_AudioSuite_PipelineWorkMode::AUDIOSUITE_PIPELINE_EDIT_MODE
+
 
 2. Create an [OH_AudioRendererStruct](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorendererstruct.md) instance, and call [OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe) of the [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) pipeline in its **AudioRendererOnWriteData()** callback function to process the data.
 
@@ -164,10 +165,11 @@ You can implement a simple real-time preview feature for an equalizer effect nod
 
    Refer to [Using OHAudio for Audio Playback (C/C++)](./using-ohaudio-for-playback.md) to complete the audio playback development.
 
+
 3. In the player callback function, copy the processed data to the buffer of the `OH_AudioRenderer` instance to enable real-time preview during audio playback.
-
+ 
    <!-- @[audioSuite_AudioRendererOnWriteData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    static OH_AudioData_Callback_Result AudioRendererOnWriteData(OH_AudioRenderer *renderer, void *userData,
@@ -185,13 +187,12 @@ You can implement a simple real-time preview feature for an equalizer effect nod
        if (finishedFlag) {
            // Developer-defined behavior.
        }
-
+   
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
    ```
-
    <!-- @[audioSuite_StartRealTimeRenderingPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic when using it in practice.
    // Create the builder.
@@ -225,20 +226,20 @@ You can implement a simple real-time preview feature for an equalizer effect nod
 4. Destroy resources.
 
    <!-- @[audioSuite_DestroyRealTimeRendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
-
+   
    ``` C++
    // The sample interface does not include return value validation. Be sure to add validation logic in actual use.
    // Destroy the stream builder.
    OH_AudioStreamBuilder_Destroy(rendererBuilder);
-
+   
    // Destroy the nodes.
    OH_AudioSuiteEngine_DestroyNode(inputNode);
    OH_AudioSuiteEngine_DestroyNode(eqNode);
    OH_AudioSuiteEngine_DestroyNode(outputNode);
-
+   
    // Destroy the pipeline.
    OH_AudioSuiteEngine_DestroyPipeline(audioSuitePipeline);
-
+   
    // Destroy the engine.
    OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
    ```
@@ -250,12 +251,7 @@ You can implement a simple real-time preview feature for an equalizer effect nod
 - For details about error codes, see [OH_AudioSuite_Result](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_result).
 
 <!--RP1-->
-
 ## Samples
 
 - [AudioSuiteSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
-
 <!--RP1End-->
-
-
-

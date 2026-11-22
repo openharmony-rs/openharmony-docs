@@ -1,12 +1,11 @@
 # divider
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:00.252Z pushedAt=2026-06-22T06:13:55.387Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-11-12T04:14:14.159Z pushedAt=2026-11-12T06:00:40.137Z nl=1 -->
 
 >  **NOTE**
 >
@@ -18,9 +17,11 @@ The **\<divider>** component is used to separate content blocks and content elem
 
 None
 
+
 ## Child Components
 
 Not supported
+
 
 ## Attributes
 
@@ -33,6 +34,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 >  **NOTE**
 >
 >  The **focusable** and **disabled** attributes are not supported.
+
 
 ## Styles
 
@@ -52,13 +54,16 @@ Only the following styles are supported.
 | flex-shrink                       | number         | 1          | No   | How much a child component will shrink. The shrink occurs only when the sum of default element widths is greater than that of the parent component. Value **0** indicates that the child component does not shrink.<br>This attribute takes effect only when the parent component is **\<div>**, **\<list-item>**, or **\<tabs>**.|
 | flex-basis                        | &lt;length&gt; | -          | No   | Initial length of a child component on the main axis.<br>This attribute takes effect only when the parent component is **\<div>**, **\<list-item>**, or **\<tabs>**.|
 
+
 ## Events
 
 Not supported
 
+
 ## Methods
 
 Not supported
+
 
 ## Example
 

@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍3D场景的搭建与管理流程，包括glTF模型加载、相机与光源节点的创建配置、通过Component3D渲染呈现，以及自定义场景模式下视角交互控制的实现方法。"
+keywords: [ArkGraphics 3D, glTF加载, Component3D, Scene.load, 3D场景]
+doctype: guide
+status: active
+---
+
 # 场景搭建与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 一个3D场景通常由光源、相机、模型三个关键部分组成。
@@ -47,7 +55,7 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.scene == null) {
-     // 加载模型，并将 gltf 文件放在相关路径下。加载时使用实际路径。
+     // 加载模型，并将 glTF 文件放在相关路径下。加载时使用实际路径。
      // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
        .then(async (result: Scene) => {

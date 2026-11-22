@@ -1,14 +1,22 @@
-# Using AVTranscoder to Transcode Videos (C/C++)
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes the complete audio/video transcoding workflow using AVTranscoder C/C++ APIs since API version 20 for native transcoding development."
+keywords: [AVTranscoder, C/C++, Native API, audio/video transcoding, NDK, state callbacks, OH_AVTranscoder, StateCallback, ErrorCallback]
+doctype: guide
+status: active
+---
+# Using AVTranscoder for Audio/Video Transcoding (C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=10f0fc849b16cb459e1a80609c8a920c147fe0bf translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-Starting from API version 20, NDK (C/C++) APIs are provided for video transcoding.
+Audio/video transcoding using NDK APIs (C/C++) is supported since API version 20.
 
-You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can call [canIUse](../../reference/common/init.md#caniuse) to check whether the device supports AVTranscoder and continue the operations described in this topic only when the return value of **canIUse("SystemCapability.Multimedia.Media.AVTranscoder")** is **true**.
+Use [AVTranscoder](media-kit-intro.md#avtranscoder) for audio/video transcoding<!--RP1--><!--RP1End-->. Call [canIUse](../../reference/common/syscap-ndk-8h.md#caniuse) to check whether the device supports AVTranscoder. A return value of true from canIUse("SystemCapability.Multimedia.Media.AVTranscoder") indicates that transcoding is supported.
 
 This topic describes how to use the AVTranscoder to implement video transcoding, covering the process of starting, pausing, resuming, and exiting transcoding.
 
@@ -32,7 +40,7 @@ To use system logging, include the following header file:
 #include <hilog/log.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
+Link the following dynamic library in the CMake script:
 
 ```c
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
@@ -50,11 +58,11 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
 
 2. Set callback functions. Specifically, call **OH_AVTranscoder_SetStateCallback()**, **OH_AVTranscoder_SetErrorCallback()**, and **OH_AVTranscoder_SetProgressUpdateCallback()** to set callbacks for transcoding status changes, transcoding error events, and transcoding progress update events, respectively. The table below describes these callbacks.
 
-   | Event Type| Description|
-   | -------- | -------- |
-   | OH_AVTranscoder_OnStateChange | Optional event, which is invoked when the transcoding status changes.|
-   | OH_AVTranscoder_OnError | Optional event, which is invoked when a transcoding error occurs.|
-   | OH_AVTranscoder_OnProgressUpdate | Optional event, which is invoked when the transcoding progress changes.|
+    | Event Type | Description |
+    | -------- | -------- |
+    | OH_AVTranscoder_OnStateChange | Optional event that reports transcoding state changes. |
+    | OH_AVTranscoder_OnError | Optional event that reports transcoding errors. |
+    | OH_AVTranscoder_OnProgressUpdate | Optional event that reports transcoding progress updates. |
 
    You can also customize data using **userData** in these callbacks.
 
@@ -84,9 +92,9 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
        this->avTranscoderProgress = progress;
     }
  
-    void NdkAVTransCoderUser::OnErrorCb(OH_AVTranscoder *transcoder, int32_t  errorCode, const char *errorMsg)
+    void NdkAVTransCoderUser::OnErrorCb(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg)
     {
-       LOG("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public} s", errorCode,
+       LOG("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public}s", errorCode,
           errorMsg == nullptr ? "unknown" : errorMsg);
        this->errorCode = errorCode;
     }
@@ -144,7 +152,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
        LOG("AvTranscoderStateChangeCbImpl state: %{public}d", state);
        NdkAVTransCoderUser *ndkAVTransCoderUser =  reinterpret_cast<NdkAVTransCoderUser *>(userData);
        if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
-          LOGE("AvTranscoderStateChangeCbImpl ndkAVTransCoderUser or transcoder is  nullptr");
+          LOGE("AvTranscoderStateChangeCbImpl ndkAVTransCoderUser or transcoder is nullptr");
           return;
        }
        ndkAVTransCoderUser->OnStateChangeCb(transcoder, state);
@@ -157,7 +165,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
           errorMsg == nullptr ? "unknown" : errorMsg);
        NdkAVTransCoderUser *ndkAVTransCoderUser =  reinterpret_cast<NdkAVTransCoderUser *>(userData);
        if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
-          LOGE("AvTranscoderErrorCbImpl ndkAVTransCoderUser or transcoder is  nullptr");
+          LOGE("AvTranscoderErrorCbImpl ndkAVTransCoderUser or transcoder is nullptr");
           return;
        }
        ndkAVTransCoderUser->OnErrorCb(transcoder, errorCode, errorMsg);
@@ -175,9 +183,11 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
     }
     static napi_value OHAvTranscoderNdkPlay(napi_env env, napi_callback_info info)
     {
-       OH_AVTranscoder_SetStateCallback(transcoder, AvTranscoderStateChangeCbImpl, transcoderUser); // Set the status callback.
-       OH_AVTranscoder_SetErrorCallback(transcoder, AvTranscoderErrorCbImpl, transcoderUser); // Set the error callback.
-       OH_AVTranscoder_SetProgressUpdateCallback(transcoder, AvTranscoderProgressUpdateCbImpl, transcoderUser); // Set the progress callback.
+       OH_AVTranscoder *transcoder = OH_AVTranscoder_Create();
+       NdkAVTransCoderUser *transcoderUser = new NdkAVTransCoderUser();
+       OH_AVTranscoder_SetStateCallback(transcoder, AvTranscoderStateChangeCbImpl,  transcoderUser); // Set the status callback.
+       OH_AVTranscoder_SetErrorCallback(transcoder, AvTranscoderErrorCbImpl,  transcoderUser); // Set the error callback.
+       OH_AVTranscoder_SetProgressUpdateCallback(transcoder,  AvTranscoderProgressUpdateCbImpl, transcoderUser); // Set the progress callback.
     }
     ```
 
@@ -221,7 +231,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
 
     ```c++
     const std::int32_t AUDIO_BITRATE = 200000;
-    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // (Optional) Audio bit rate.
+    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // Refer to the avcodec audio encoder bitrate setting. Adjust based on actual requirements.
     ```
 
 10. (Optional) Call **OH_AVTranscoderConfig_SetDstVideoBitrate()** to set the bit rate of the output video.

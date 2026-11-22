@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍任务管理中三种UIAbility启动模式（singleton单实例、multiton多实例、specified指定实例）的原理与任务对应关系，适用于系统应用开发。"
+keywords: [任务管理, Mission, 启动模式, singleton, multiton, specified]
+doctype: guide
+status: active
+---
 # 任务（Mission）与启动模式（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

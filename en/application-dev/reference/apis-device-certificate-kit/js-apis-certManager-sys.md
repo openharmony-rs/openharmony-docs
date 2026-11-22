@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=53b838af8a2bc0c126d1e46bed4fda83371a4951 translatedAt=2026-10-30T06:40:14.711Z pushedAt=2026-11-03T02:58:46.998Z nl=1 -->
 
 The **certManager** module provides system-level certificate management capabilities to implement management and secure use of certificates throughout their lifecycle (installation, storage, use, and destruction).
 
@@ -29,7 +30,7 @@ Enumerates the error codes used in the certificate management APIs.
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
 | CM_ERROR_NOT_SYSTEM_APP   | 202      | The caller is not a system application.<br> **System API**: This is a system API.|
-| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | The password is incorrect.<br> **System API**: This is a system API.<br>**Since**: 26.0.0|
+| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | Indicates the password is incorrect. <br> **System API:** This API is a system API.<br>**Since:** 26.0.0<br>**Model restriction**: This API can be used only in the stage model. |
 
 ## certificateManager.getAllAppPrivateCertificates
 
@@ -57,8 +58,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
 ```ts
@@ -110,7 +111,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
 ```ts
@@ -162,7 +163,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
 ```ts
@@ -202,6 +203,8 @@ Obtains details about a CA certificate trusted by the system. This API is called
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -222,7 +225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401 | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -262,6 +265,8 @@ Obtains the list of CA certificates trusted by the system. This API is called on
 **System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -317,6 +322,8 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -339,7 +346,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong, the certType's value is invalid or not supported. |
+| 401 | [Sync] Parameter error. Possible causes: 1. The URI is null or the URI format is wrong; 2. The certType's value is invalid or not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -375,6 +382,8 @@ Uninstalls all CA certificates trusted by the user. This API is called only by t
 **System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -423,6 +432,8 @@ Installs the public credential of the user. This API is called only by the certi
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type      | Mandatory|Description                                           |
@@ -444,7 +455,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -488,6 +499,8 @@ Uninstalls the public credential of the user. This API is called only by the cer
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -508,7 +521,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -544,6 +557,8 @@ Obtains the public credentials of all users. This API is called only by the cert
 **System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -600,6 +615,8 @@ Grants the permission for an application to use the public credentials of a user
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type      | Mandatory|Description                                           |
@@ -621,7 +638,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -660,6 +677,8 @@ Obtains the list of authorized applications of a user's public credential. This 
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -680,7 +699,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -722,6 +741,8 @@ Removes the permission for an application to use the public credentials of a use
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type      | Mandatory|Description                                           |
@@ -743,7 +764,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -780,6 +801,8 @@ Obtains all private credentials of a specified application. This API is called o
 **System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -843,6 +866,8 @@ Installs the system application credential. This API is called only by the certi
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type      | Mandatory|Description                                           |
@@ -864,7 +889,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -882,7 +907,8 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-  certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+  certificateManager.installSystemAppCertificate(keystore, keystorePwd)
+    .then((cmResult: certificateManager.CMResult) => {
     let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
     console.info('Succeeded in installing system app certificate.');
   }).catch((error: Error) => {
@@ -908,6 +934,8 @@ Obtains the credential details of the system application. This API is called onl
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -928,7 +956,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -970,6 +998,8 @@ Uninstalls the credential of the system application. This API is called only by 
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -990,7 +1020,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -1026,6 +1056,8 @@ Uninstalls all system application credentials and public user credentials. This 
 **System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 

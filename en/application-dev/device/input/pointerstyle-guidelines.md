@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:41:07.597Z pushedAt=2026-06-25T06:58:22.916Z -->
+<!-- md-trans-meta sourceCommit=f50c3a1f18c0c8b36cdad0ca51157de162b9d5ab translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -24,10 +24,10 @@ The following table lists common APIs for mouse pointer management. For details,
 
 | API                                                      | Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------- |
-| isPointerVisible(callback: AsyncCallback\<boolean>): void | Obtains the visible status of the mouse pointer.                                |
-| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | Sets the visible status of the mouse pointer. This setting takes effect for the mouse pointer globally.|
-| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | Sets the mouse pointer style. This setting takes effect for the mouse pointer style of a specified window.        |
-| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | Obtains the mouse pointer style.                                          |
+| isPointerVisible(callback: AsyncCallback\<boolean>): void | Obtains the pointer visibility state of the current window. |
+| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | Sets the pointer visibility state for all windows in the current process. |
+| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | Sets the pointer style type for the specified window. Only windows in the current application process are supported. |
+| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | Obtains the pointer style type for the specified window. Only windows in the current application process are supported. |
 
 ## Hiding the Mouse Pointer
 

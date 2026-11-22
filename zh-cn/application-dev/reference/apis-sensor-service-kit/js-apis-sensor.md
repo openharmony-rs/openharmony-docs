@@ -296,6 +296,8 @@ on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, option
 
 订阅气压计传感器数据。使用callback异步回调。气压计传感器用于测量大气压强，适用于海拔估算、天气预报辅助等场景。调用后，系统会按设定频率通过callback持续上报气压数据。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -2751,6 +2753,8 @@ off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): voi
 
 取消订阅气压计传感器数据。当不再需要接收气压计传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -2801,6 +2805,8 @@ try {
 off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;BarometerResponse&gt;): void
 
 取消订阅气压计传感器数据。当不再需要接收气压计传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -6315,7 +6321,7 @@ try {
   }
 } catch(error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to get list of sensors. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -6342,7 +6348,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device. [since 12]                  |
+| 14500102 | The sensor is not supported by the device. <br>适用版本：12+                  |
 
 **示例**：
 
@@ -6401,7 +6407,7 @@ try {
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device. [since 12]                   |
+| 14500102 | The sensor is not supported by the device. <br>适用版本：12+                   |
 
 **示例**：
 
@@ -6481,7 +6487,7 @@ try {
 | GYROSCOPE                   | 2    | 陀螺仪传感器类型，用于测量设备的旋转角速度。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | AMBIENT_LIGHT               | 5    | 环境光传感器类型，用于测量环境光照强度。                                               |
 | MAGNETIC_FIELD              | 6    | 磁场传感器类型，用于测量设备周围的环境磁场强度。                                                 |
-| BAROMETER                   | 8    | 气压计传感器类型，用于测量大气压力。                                               |
+| BAROMETER                   | 8    | 气压计传感器类型，用于测量大气压力。<br/>**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 | HALL                        | 10   | 霍尔传感器类型，用于检测设备周围是否存在磁力吸引。                                                 |
 | PROXIMITY                   | 12   | 接近光传感器类型，用于检测物体与设备显示器的接近程度。                                               |
 | HUMIDITY                    | 13   | 湿度传感器类型，用于测量环境的相对湿度。                                               |
@@ -6852,12 +6858,14 @@ try {
 
 气压计传感器数据，继承于[Response](#response)。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 
 | 名称     | 类型   | 只读 | 可选 | 说明                   |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | number | 否   | 否   | 大气压力值。单位：hPa（百帕）。 |
+| pressure | number | 否   | 否   | 大气压力值。单位：hPa（百帕）。<br/>**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 
 ## HeartRateResponse

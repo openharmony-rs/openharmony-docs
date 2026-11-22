@@ -6,8 +6,7 @@
 
 手势识别模块作为端侧设备不可或缺的一部分，为用户提供手势识别控制能力。当前支持的手势识别类型有拿起、翻转、摇一摇、旋转屏等。
 
-基于HDF（Hardware Driver Foundation）驱动框架开发的Motion驱动，能够屏蔽硬件器件差异，为上层MSDP（Multimodal Sensor 
-Data Platform）服务层提供稳定的手势识别控制能力接口，包括手势识别使能/去使能、手势识别订阅/取消订阅等。
+基于HDF（Hardware Driver Foundation）驱动框架开发的Motion驱动，能够屏蔽硬件器件差异，为上层MSDP（Multimodal Sensor Data Platform）服务层提供稳定的手势识别控制能力接口，包括手势识别使能/去使能、手势识别订阅/取消订阅等。
 
 Motion驱动框架如图1所示，上层为Framework层，提供MSDP服务，通过UHDF（User Hardware Driver Foundation）层的Motion Proxy与Motion Stub进行交互；而Motion Stub可调用Motion HDI实现类接口，从而实现上层服务的手势识别使能/去使能、手势识别订阅/取消订阅等能力。
 
@@ -56,9 +55,9 @@ Motion驱动的主要工作是为上层MSDP服务提供稳定的使能/去使能
 
 手势识别目录结构及各部分功能简介。
 
-```
+```c++
 /drivers/peripheral/motion           // 此目录具体实现需要厂商根据自己的器件进行开发
-├── hdi_service              		 // motion模块对上层服务提供的驱动能力
+├── hdi_service                      // motion模块对上层服务提供的驱动能力
 ├── test                             // motion模块测试代码
    └── unittest\hdi                  // motion模块hdi单元测试代码
 ```
@@ -154,7 +153,7 @@ struct HdfDriverEntry g_motioninterfaceDriverEntry = {
 };
 
 /* 调用HDF_INIT将驱动入口注册到HDF框架中，在加载驱动时HDF框架会先调用Bind函数，再调用Init函数加载该驱动，当Init调用异常时，HDF框架会调用Release释放驱动资源并退出 */
-HDF_INIT(g_userAuthInterfaceDriverEntry);
+HDF_INIT(g_motioninterfaceDriverEntry);
 ```
 
 ### 调测验证

@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe;@lipengpeng97-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f78aa31bf5d144c7d0366738de54880904fef883 translatedAt=2026-08-21T03:18:54.476Z pushedAt=2026-08-21T08:25:10.953Z -->
+<!-- md-trans-meta sourceCommit=ead3a1cb0f16674c872c293de2f0961fba9c86ed translatedAt=2026-10-30T03:21:54.336Z pushedAt=2026-08-21T08:25:10.953Z nl=1 -->
 
 ## Overview
 
@@ -110,7 +110,7 @@ DevEco Studio collects process crash logs from **/data/log/faultlog/faultlogger/
 
 **Method 2: HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-freeze-events.md#event-fields) field of the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [HiAppEvent Overview](hiappevent-intro.md). Subscribe to app freeze events as described in [Subscribing to App Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to App Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md). Then read the fault log file through the `external_log` field in the event. For details about this field, see the table in [params](hiappevent-watcher-freeze-events.md#params).
 
 **Method 3: hdc**
 
@@ -177,17 +177,11 @@ Since API version 20, when a `THREAD_BLOCK_6S` fault occurs, [HiTraceId](../refe
 **NOTE info:**
 
 - **Since API version 20**, the system supports the following output prompt: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults. When a device resource alarm is generated (for example, the device memory is low or thermal throttling is enabled), the system outputs this information in the NOTE. In this case, you can ignore the app freeze fault.
-
 - **Since API version 26.0.0**, the system supports the following output prompt: Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis. It supports associating [resource Leak detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-leak-guidelines) event information in AppFreeze logs. If the current process already has a memory leak before the freeze fault occurs, the fault log prompts the leak event and indicates that it may be the cause of the freeze. In this case, you can prioritize resolving the resource leak issue.
-
 - **Since API version 26.0.0**, the system supports the following output prompt: Main thread is blocked by GC, which may be caused by high memory usage or system resource overload.
-
   - If the [Garbage Collection (GC)](../arkts-utils/gc-introduction.md) type is Shared GC, the system does not output this information.
-
   - If an Appfreeze event occurs during [GC](../arkts-utils/gc-introduction.md) and the GC type is not Shared GC, the system outputs this information in the NOTE. In this case, you can ignore the app freeze fault.
-
   - For details about the Shared GC type, see [SharedHeap Structure](../arkts-utils/gc-introduction.md#sharedheap-structure) and [SharedHeap Related Parameters](../arkts-utils/gc-introduction.md#sharedheap-related-parameters).
-
   - For details about the Local GC type, see [LocalHeap Structure](../arkts-utils/gc-introduction.md#localheap-structure) and [LocalHeap Related Parameters](../arkts-utils/gc-introduction.md#localheap-related-parameters).
 
 The following table lists information in AppFreeze events (`THREAD_BLOCK_6S` and `APP_INPUT_BLOCK`).
@@ -200,7 +194,7 @@ The following table lists information in AppFreeze events (`THREAD_BLOCK_6S` and
 | IsSystemApp | Whether the app is a system app.<br>**Note:** Supported since API version 23. |
 | Reason | Reason why the application freezes, corresponding to the application freeze detection capability.|
 | PID | PID of the faulty process.|
-| PACKAGE_NAME | Application process package name.|
+| PACKAGE_NAME | Application process bundle name.|
 | [Page switch history](./cppcrash-guidelines.md#faults-with-page-switching-history) | Starting from API version 20, the maintenance and debugging process records the app switch history. When an app fault occurs, the generated fault file includes the page switch history trace. This field is not included if the maintenance and debugging service process crashes or is terminated, or if the page switch history trace fails to be cached. |
 | App running unique id | Unique ID associated with the app at runtime.<br>**Note:** Supported since API version 26.0.0. |
 | Process life time | Survival time of the fault process. Unit: s.<br>**Note:** Supported since API version 22. |
@@ -265,7 +259,7 @@ Since API version 26.0.0, AppFreeze events additionally support `LIFECYCLE_TIMEO
 | PID | PID at the time of fault occurrence. |
 | UID | UID at the time of fault occurrence. |
 | TID | TID at the time of fault occurrence. |
-| PACKAGE_NAME | Package name of the app process. |
+| PACKAGE_NAME | bundle name of the app process. |
 | PROCESS_NAME | Name of the app process. |
 | MSG | Fault occurrence time and EventHandler information. |
 | IS_FROZEN | Process frozen state at the time of fault occurrence.<br/>- 0 indicates that the process is not frozen.<br/>- 1 indicates that the process is frozen.<br>**Note**: Supported since API version 26.0.0.|
@@ -349,7 +343,6 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 ```
 
 <!--RP4--><!--RP4End-->
-
 In most cases, the stack information of `THREAD_BLOCK_6S`, `LIFECYCLE_TIMEOUT`, and `APP_INPUT_BLOCK` faults can help you locate the abnormal code.
 
 In other cases (for example, in the instant stack), the stack information cannot be obtained immediately due to the busy main thread. As a result, the abnormal code segment cannot be captured in a timely manner, and the stack top information is not as expected.
@@ -544,7 +537,7 @@ The following table uses **two complete lifecycle switches** as an example to ex
 >
 > The "Requires App Handling" column indicates whether app handling is required and how to handle it.
 >
-> Records marked with "(Exception Scenario)" appear only when the corresponding exception occurs. Records marked with "([InsightIntent](../application-models/insight-intent-overview.md) Scenario)" appear only when the intent framework is involved.
+> Records marked with "(Exception Scenario)" appear only when the corresponding exception occurs. Records marked with "([InsightIntent](../application-models/insight-intent-overview.md) Scenario)" appear only when the InsightIntent framework is involved.
 
 1. Load phase events, using the case where the app process is not created as an example.
 
@@ -614,13 +607,13 @@ The following table uses **two complete lifecycle switches** as an example to ex
    | - | JsUIAbility::DoOnForegroundForSceneIsNull; error * (Exception Scenario) | Window scene initialization failed. The error code is recorded. | Window scene creation failed, or displayId acquisition failed. | No, window system issue. |
    | - | UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | Callback after the window goes to the foreground. | Window GoForeground did not call back in time. | No, window system issue. |
    | - | UIAbilityImpl::WindowLifeCycleImpl::ForegroundFailed; GoForeground failed (Exception Scenario) | Window GoForeground failed. Exception information is recorded. | - | No, window system issue. |
-   | - | JsUIAbility::IntentForeground execute start begin (InsightIntent Scenario) | Execution of the app foreground-related [intent](../application-models/insight-intent-overview.md) operation starts, processing the Intent task triggered by the foreground switch. | The InsightIntent executor did not return in time. | Yes, ensure that the Intent executor completes in time. |
-   | - | JsUIAbility::IntentForeground end (InsightIntent Scenario) | The app foreground-related intent operation execution ends. The Intent-related logic has been processed. The time can be calculated by comparing with start. | The InsightIntent executor takes too long. | Yes, ensure that the Intent executor completes in time. |
-   | - | JsUIAbility::IntentRepeat execute start (InsightIntent Scenario) | The Intent repeat execution mode starts. | The InsightIntent executor did not return in time. | Yes, ensure that the Intent executor completes in time. |
-   | - | JsUIAbility::IntentRepeat execute end (InsightIntent Scenario) | The Intent repeat execution mode ends. The time can be calculated by comparing with start. | The InsightIntent executor takes too long. | Yes, ensure that the Intent executor completes in time. |
-   | - | JsUIAbility::IntentPage execute start (InsightIntent Scenario) | The Intent page execution mode starts. | The InsightIntent executor did not return in time. | Yes, ensure that the Intent executor completes in time. |
-   | - | JsUIAbility::IntentPage execute end (InsightIntent Scenario) | The Intent page execution mode ends. The time can be calculated by comparing with start. | The InsightIntent executor takes too long. | Yes, ensure that the Intent executor completes in time. |
-   | - | UIAbilityImpl::HandleExecuteInsightIntentForeground (InsightIntent Scenario) | Processes foreground intent execution. | InsightIntent parameter generation failed. | Yes, check the InsightIntent parameter configuration. |
+   | - | JsUIAbility::IntentForeground execute start begin (InsightIntent Scenario) | Execution of the app foreground-related [InsightIntent](../application-models/insight-intent-overview.md) operation starts, processing the InsightIntent task triggered by the foreground switch. | The InsightIntent executor did not return in time. | Yes, ensure that the InsightIntent executor completes in time. |
+   | - | JsUIAbility::IntentForeground end (InsightIntent Scenario) | The app foreground-related InsightIntent operation execution ends. The InsightIntent-related logic has been processed. The time can be calculated by comparing with start. | The InsightIntent executor takes too long. | Yes, ensure that the InsightIntent executor completes in time. |
+   | - | JsUIAbility::IntentRepeat execute start (InsightIntent Scenario) | The InsightIntent repeat execution mode starts. | The InsightIntent executor did not return in time. | Yes, ensure that the InsightIntent executor completes in time. |
+   | - | JsUIAbility::IntentRepeat execute end (InsightIntent Scenario) | The InsightIntent repeat execution mode ends. The time can be calculated by comparing with start. | The InsightIntent executor takes too long. | Yes, ensure that the InsightIntent executor completes in time. |
+   | - | JsUIAbility::IntentPage execute start (InsightIntent Scenario) | The InsightIntent page execution mode starts. | The InsightIntent executor did not return in time. | Yes, ensure that the InsightIntent executor completes in time. |
+   | - | JsUIAbility::IntentPage execute end (InsightIntent Scenario) | The InsightIntent page execution mode ends. The time can be calculated by comparing with start. | The InsightIntent executor takes too long. | Yes, ensure that the InsightIntent executor completes in time. |
+   | - | UIAbilityImpl::HandleExecuteInsightIntentForeground (InsightIntent Scenario) | Processes foreground InsightIntent execution. | InsightIntent parameter generation failed. | Yes, check the InsightIntent parameter configuration. |
    | - | JsUIAbility::OnForeground begin | The [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground) lifecycle starts, notifying you that the Ability is displayed in the foreground. | Time-consuming operations are performed in onForeground. | Yes, avoid performing time-consuming operations in onForeground. |
    | - | JsUIAbility::OnForeground end | The onForeground lifecycle ends. The Ability's foreground lifecycle callback is complete. The time can be calculated by comparing with begin. | onForeground takes too long. | Yes, avoid performing time-consuming operations in onForeground. |
    | - | JsUIAbility::OnDidForeground begin | The [onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20) callback starts. | Time-consuming operations are performed in onDidForeground. | Yes, avoid performing time-consuming operations in onDidForeground. |
@@ -649,7 +642,7 @@ Since API version 22, when an **APP_INPUT_BLOCK** fault occurs, the log will out
 
 Event detection timeout threshold: 8000 ms for the log version and 5000 ms for the nolog version. Since **API version 24**, the `APP_INPUT_BLOCK` detection threshold is 8000 ms regardless of the version.
 
-Previous events: **lastDispatchEvent** indicates the event dispatched last time; **lastProcessEvent** indicates the event processed last time; **lastMarkedEvent** indicates the event marked last time.
+The preceding event IDs include `lastDispatchEvent` (the last dispatched event), `lastProcessEvent` (the last processed event), and `lastMarkedEvent` (the last marked event). If system-side IPC communication fails and the EventHandler information is empty, the preceding event IDs cannot be obtained and their values are 0.
 
 In the preceding example, the last dispatched event is **430**, the last processed event is **429**, and the last marked event is **428**, indicating that the event 430 has been dispatched and the processing times out for 8000 ms. This log can be used to determine the **APP_INPUT_BLOCK** event and help analyze the problem.
 
@@ -681,7 +674,7 @@ You can obtain the path of the enhanced AppFreeze logs using any of the followin
 
 **Method 1: HiAppEvent APIs**
 
-Starting from system versions <!--__TRANSPRESERVE_0__-->OpenHarmony 6.1.0.125 and later<!--__TRANSPRESERVE_1__-->, the system merges the AppFreeze enhanced log content to the end of the log pointed to by [external_log](hiappevent-watcher-freeze-events.md#params) of the APP_FREEZE event by default.
+On systems running <!--RP3-->OpenHarmony 6.1.0.125 or later<!--RP3End-->, the system appends the enhanced AppFreeze log to the end of the log referenced by the `external_log` field of the APP_FREEZE event by default. For details about the field, see the table in [params](hiappevent-watcher-freeze-events.md#params).
 
 If you need a separate AppFreeze enhanced log file, configure the following environment variables in the **AppScope/app.json5** file:
 
@@ -696,7 +689,7 @@ If you need a separate AppFreeze enhanced log file, configure the following envi
 
 Use the fault subscription APIs provided by HiAppEvent to listen for the application freeze event and obtain the file content. For details, see [Application Freeze Event Overview](hiappevent-watcher-freeze-events.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md).
 
-You can read the fault file and enhanced log file generated by the application freeze event using the [external_log](hiappevent-watcher-freeze-events.md#event-fields) field. The name format of the enhanced log file is the same as that of the fault file.
+Use the event's `external_log` field to read the fault file and enhanced log file generated for an app freeze event. The enhanced log file uses the same naming format as the fault file.
 
 **external_log** is a string array whose first element is the path to the fault file and whose second element is the path to the enhanced log file.
 
@@ -707,14 +700,12 @@ Enable **Developer options** and run the `hdc file recv /data/log/faultlog/freez
 ### Log Specifications
 
 The enhanced log header contains the following fields:
-
 |Field|Description|Initial API Version|
 |---|---|---|
 | TimeStamp | Log generation time.| 21 |
 | Module name | Name of the faulty module.| 21 |
 
 The following table lists the fields of the total CPU time consumption information in enhanced logs.
-
 |Field|Description|Initial API Version|
 |---|---|---|
 | ProcessCpuTime | Process running time in a statistical period.| 21 |
@@ -729,7 +720,6 @@ The following table lists the fields of the total CPU time consumption informati
 | SupplyAvailableTime | Time that can be optimized by scheduling. If the value is small, the main thread is busy. In this case, you need to optimize the main thread tasks.| 21 |
 
 The main thread stack information fields in enhanced logs are as follows:
-
 |Field|Description|Initial API Version|
 |---|---|---|
 | SnapshotTime | Time when the main thread stack is captured.| 21 |
@@ -819,6 +809,37 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 .......
 ```
 
+**Log Format for Nested Asynchronous Promise Calls**
+
+Starting from API version 26.0.1, on ARM 64-bit systems, if an AppFreeze occurs during nested asynchronous Promise calls, asynchronous stack tracing also outputs the stack of the thread that submitted the asynchronous task. This helps locate freezes caused by the task submitter. Promise asynchronous stack tracing is disabled by default. For details about how to enable it, see [Promise Stack](jscrash-guidelines.md#promise-stack).
+
+For multiple levels of nested asynchronous calls, the current implementation retains only the submitter's call stack for **the call level where the fault occurs**, rather than the entire nested call chain. The faulty thread's call stack and its submitting thread's call stack are separated by `SubmitterStacktrace`.
+
+The following figure shows nine levels of nested `async/await` calls. After the caller initiates the call, each asynchronous function suspends at `await`. When its Promise settles, the runtime (event loop) resumes execution and calls the next asynchronous function, continuing to the deepest level, `multiAsync9`. Each `await` creates a new Promise node, and the runtime saves the submitter's call stack for that level. After `multiAsync9` resumes, it calls `APPFREEZE()` to block the main thread. The log retains the submitter's call stack for that level.
+
+![Nested asynchronous Promise calls](figures/promise_async_nested_call.png)
+
+AppFreeze log files are stored in `/data/log/faultlog/freeze_ext`. The following excerpt shows the key content of the `SubmitterStacktrace` field in an AppFreeze log.
+
+```text
+...
+========SubmitterStacktrace========       <- The submitter's call stack is printed when the task encounters a fault.
+#00 pc 00000000008513b8 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#01 pc 000000000038e950 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#02 pc 000000000038dabc /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#03 pc 0000000000e74e78 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d49c18 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:111:5)  <- Call frame where the fault occurs.
+#06 at multiAsync8 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:106:5)
+#07 pc 0000000000363568 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#08 pc 0000000000363204 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#09 pc 0000000000362b54 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#10 pc 0000000000362554 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+...
+```
+
+The `.ts` paths in the JS frames are compiled output paths. Use SourceMap to map them back to locations in the `.ets` source files. For details about parsing compiled output paths, see [Exception Stack Parsing Principles: SourceMap Key Fields](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713).
+
 ## AppFreeze Clustering
 
 ### Clustering Introduction
@@ -864,7 +885,6 @@ Before using the disabling command, obtain the [hdc tool](hdc.md#environment-set
 ### Constraints
 
 - **App type restriction**: Only debug-type apps support disabling detection. Release-type apps do not support this feature.
-
 - **Execution timing restriction**: Run the disabling command after the app is started.
 
 ### How to Use
@@ -918,5 +938,6 @@ When the given `<bundleName>` parameter is invalid or does not exist, the follow
 ```text
 error: failed to detach app debug.
 ```
+
 
 <!--no_check-->

@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=322f3406587b0e3e9fd2ec3098ccc13904d7d66a translatedAt=2026-09-04T03:36:31.956Z pushedAt=2026-09-09T09:11:03.720Z -->
+<!-- md-trans-meta sourceCommit=595676e386ec1266ed5aa31649d3c376bf6ad8cc translatedAt=2026-11-16T02:05:34.579Z pushedAt=2026-11-20T07:27:47.612Z nl=1 -->
 
 The **distributedDataObject** module provides basic data object management, including creating, querying, deleting, modifying, and subscribing to data objects, and distributed data object collaboration for the same application among multiple devices. Although this module does not parse user data, you are advised not to transfer sensitive personal data or privacy data due to low-level security of storage path.
 
@@ -190,7 +190,7 @@ Defines the callback used to listen for status changes of a distributed data obj
 | -------- | -------- | -------- | -------- |
 | sessionId | string | Yes| Session ID of the distributed data object, with a maximum length of 128 bytes. The value can contain only letters, digits, and underscores (_).|
 | networkId | string | Yes| Network ID of the peer device, with a maximum of 255 bytes. The value must be a non-empty string.|
-| status    | string | Yes | Status of the distributed data object. Possible values are **'online'**, **'offline'**, and **'restore'**. |
+| status    | string | Yes | Status of the distributed data object. Possible values are **'online'**, **'offline'**, and **'restored'**. |
 
 ## ProgressObserver<sup>20+</sup>
 
@@ -236,7 +236,7 @@ Sets a session ID. This API uses an asynchronous callback to return the result. 
 
   | ID| Error Message                                                                                                                                                          |
   | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | 201      | Permission verification failed.                                                                                                                                    |
+  | 201      | Permission verification failed. The application does not have the permission required to call the API. |
   | 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
   | 15400001 | Failed to create the in-memory database.                                                                                                                                               |
 
@@ -262,7 +262,7 @@ Exits all sessions joined. This API uses an asynchronous callback to return the 
 **Required permissions**:
 - API version 20 or later: N/A
 - API versions 9 to 19: **ohos.permission.DISTRIBUTED_DATASYNC**
-
+ 
 **System capability**: SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **Parameters**
@@ -277,7 +277,7 @@ Exits all sessions joined. This API uses an asynchronous callback to return the 
 
   | ID| Error Message|
   | -------- | -------- |
-  | 201      | Permission verification failed. <br> Applicable version: 9-19|
+  | 201      | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable version: 9-19 |
   | 401      | Parameter error. Incorrect parameter types. |
   | 15400001 | Failed to create the in-memory database. |
 
@@ -322,7 +322,7 @@ Sets a session ID or exits the distributed network. This API uses a promise to r
 
   | ID| Error Message                                                                                                                                                          |
   | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | 201      | Permission verification failed.                                                                                                                                    |
+  | 201      | Permission verification failed. The application does not have the permission required to call the API. |
   | 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
   | 15400001 | Failed to create the in-memory database.                                                                                                                                               |
 
@@ -513,7 +513,7 @@ The saved data will be released in the following cases:
   | ID| Error Message|
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -566,7 +566,7 @@ The saved data will be released in the following cases:
   | ID| Error Message|
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -607,13 +607,13 @@ If the object is stored on another device, the data on the local device will be 
   | ID| Error Message|
   | -------- | -------- |
   | 401      | Parameter error. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
 ```ts
 g_object.setSessionId('123456');
-// Save data for persistence. 
+// Save data for persistence.
 g_object.save('local', (err: BusinessError, result: distributedDataObject.SaveSuccessResponse) => {
     if (err) {
         console.error(`Failed to save. Code: ${err.code}, message: ${err.message}`);
@@ -659,13 +659,13 @@ If the object is stored on another device, the data on the local device will be 
 
   | ID| Error Message|
   | -------- | -------- |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
 ```ts
 g_object.setSessionId('123456');
-// Save data for persistence. 
+// Save data for persistence.
 g_object.save('local').then((result: distributedDataObject.SaveSuccessResponse) => {
     console.info('save callback');
     console.info('save sessionId ' + result.sessionId);
@@ -708,7 +708,7 @@ When an asset in a distributed data object and an asset in a relational database
   | ID| Error Message|
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -796,7 +796,7 @@ When an asset in a distributed data object and an asset in a relational database
   | ID| Error Message|
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 

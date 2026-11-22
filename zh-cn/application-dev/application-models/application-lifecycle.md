@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "阐述应用生命周期状态及其与应用进程、UIAbility、ExtensionAbility组件的关系，介绍如何监听应用启动退出与前后台切换。"
+keywords: [应用生命周期, 应用进程, 前后台切换, ApplicationStateObserver, 生命周期监听]
+doctype: guide
+status: active
+---
 # 应用生命周期概述
 
 <!--Kit: Ability Kit-->

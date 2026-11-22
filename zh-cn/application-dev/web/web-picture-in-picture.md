@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件对W3C标准画中画能力的支持，涵盖进入与退出画中画、监听画中画事件，使用户浏览其他页面时仍可持续观看视频。"
+keywords: [画中画, Picture-in-Picture, requestPictureInPicture, exitPictureInPicture, pictureInPictureEnabled]
+doctype: guide
+status: active
+---
+
 # Web组件支持画中画
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

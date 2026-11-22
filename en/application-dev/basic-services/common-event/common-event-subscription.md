@@ -1,19 +1,19 @@
 # Subscribing to Common Events in Dynamic Mode
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-06T12:01:04.959Z pushedAt=2026-11-09T12:21:12.229Z nl=1 -->
 
 ## When to Use
 
-In dynamic subscription mode, an application, when it is running, subscribes to a common event and then receives the event once it is published, together with the parameters passed in the event.
+Dynamic subscription means that an application subscribes to a common event while it is running. During the running period, if a subscribed event is published, the application that subscribes to this event will receive the event and the parameters carried by it.
 
 For example, if an application expects to be notified of low battery so that it can reduce power consumption accordingly when running, then the application can subscribe to the low-battery event. Upon receiving the event, the application can close some unnecessary tasks to reduce power consumption.
 
-Certain system common events [require specific permissions](../../security/AccessToken/determine-application-mode.md) to subscribe to. For details, see [System Common Events](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md).
+To subscribe to some system common events, you need to [apply for permissions](../../security/AccessToken/determine-application-mode.md) first. For the permissions required for subscribing to these events, see [System-Defined Common Events](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md).
 
 > **NOTE**
 >
@@ -25,7 +25,7 @@ Certain system common events [require specific permissions](../../security/Acces
 
 ## Available APIs
 
-For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md).
+For details about the APIs, see [@ohos.commonEventManager](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md).
 
 | API| Description|
 | -------- | -------- |
@@ -62,7 +62,7 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
      };
      ```
 
-   - System common events: defined in CES. Currently, only system applications and system services can publish system common events, such as HAP installation, update, and uninstall. For details about the supported system common events, see [System Common Events](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md).
+   - System common events: common events defined inside CES. Currently, only system applications and system services can publish them, such as common events for HAP installation, update, and uninstallation. For the currently supported system common events, see [System-Defined Common Events](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md).
    
      <!-- @[CreateSystemSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
      

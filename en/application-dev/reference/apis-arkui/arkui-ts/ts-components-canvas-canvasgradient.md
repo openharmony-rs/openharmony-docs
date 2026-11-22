@@ -1,12 +1,11 @@
 # CanvasGradient
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=48422a8cba8102090ab3a5b055a79ff6f52ce339 translatedAt=2026-08-21T02:21:04.857Z pushedAt=2026-08-21T06:00:04.950Z -->
+<!-- md-trans-meta sourceCommit=69c407040f576942fb168782eab7b193850836b4 translatedAt=2026-11-03T01:50:38.910Z pushedAt=2026-11-13T01:05:59.905Z nl=1 -->
 
 A gradient object that allows multiple color breakpoints to be set through the **addColorStop** method, achieving smooth color transitions. It is suitable for canvas filling and stroking scenarios.
 
@@ -32,6 +31,7 @@ Sets the gradient breakpoint value, including the offset and color. You can call
 | ------ | ------ | ---- | ---------------------------------------- |
 | offset | number | Yes | Proportion of the distance from the gradient breakpoint to the start point to the total length. The value range is [0, 1].<br>Setting **offset** < 0 or **offset** > 1 produces no gradient effect.<br>Abnormal values **undefined** and **null** are treated as invalid, and the gradient breakpoint is not added. NaN causes the **CanvasGradient** object to be abnormal and unable to generate gradient effects properly. Infinity causes the entire **CanvasGradient** to not take effect. |
 | color | string | Yes | Gradient color. The string type supports the following formats: **'rgb(255, 255, 255)'**, **'rgba(255, 255, 255, 1.0)'**, **'#RGB'**, **'#ARGB'**, **'#RRGGBB'**, and **'#AARRGGBB'**. For details, see the **string** type description in [ResourceColor](ts-types.md#resourcecolor).<br>If the color is not set in the specified format, no gradient effect is produced. When **null** or **undefined** is set, it is treated as invalid and the breakpoint is not added.|
+
 
 **Example**
 
@@ -65,14 +65,13 @@ Set the gradient breakpoint value through **addColorStop**, including the offset
     }
   }
   ```
-
   ![createLinearGradient](figures/createLinearGradient.png)
 
 ## addColorStop<sup>20+</sup>
 
 addColorStop(offset: number, color: string | ColorMetrics): void
 
-Sets the gradient breakpoint value, including the offset and color. Colors in RGB or ARGB format are supported. P3 wide color gamut color values can be set by passing in the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type. Since API version 26.0.0, BT2020 wide color gamut and HDR brightening are also supported.
+Sets the gradient breakpoint value, including the offset and color. Colors in RGB or ARGB format are supported. P3 wide color gamut color values can be set by passing in the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type<!--Del-->. Since API version 26.0.0, BT2020 wide color gamut and HDR brightening are also supported<!--DelEnd-->.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -101,10 +100,10 @@ For details about the error codes, see [Canvas Component Error Codes](../errorco
 >
 >  Only the [fillStyle](ts-components-canvas-common-property.md#fillstyle) and [strokeStyle](ts-components-canvas-common-property.md#strokestyle) attributes of the [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) object support setting a wide color gamut **CanvasGradient** object. When using HDR colors, you must set the color gamut mode of the window where the **Canvas** component is located to the wide gamut mode **WIDE_GAMUT** through the [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9) method. If the preceding conditions are not met, the wide color gamut color settings will not take effect.<br>
 
+
 **Example**
 
 This example demonstrates how to set the gradient stop value of a specified color gamut using **addColorStop**, including the offset and color. For details about how to set the color gamut mode of the window to wide color gamut, see [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9).
-
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -158,77 +157,3 @@ struct AddColorStop {
 ```
 
 ![addColorStop](figures/addColorStop.png)
-
-The following example demonstrates the brightness difference between SDR and HDR gradients. Through [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12), you can construct HDR colors in the BT2020 color gamut, where color component values can exceed 1.0. The portion exceeding 1.0 is used to represent highlight effects beyond the normal screen brightness range. The left side uses an sRGB red-to-white-to-green gradient, while the right side uses HDR colors in the BT2020 color gamut with a highlight white brightness multiplier of 1.5. On an HDR-capable screen, the highlight area on the right is noticeably brighter than that on the left.
-
->  **NOTE**
->
->  When using HDR colors, you must set the color gamut mode of the window where the **Canvas** component is located to the wide gamut mode (**WIDE_GAMUT**) through the [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9) method. Otherwise, the HDR brightening effect will not take effect.
-
-Since API version 26.0.0, the [addColorStop](#addcolorstop20) API additionally supports HDR brightening through the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type input parameter.
-
-```ts
-// xxx.ets
-import { ColorMetrics } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct CanvasGradientDemo {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true);
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-
-  build() {
-    Column({ space: 30 }) {
-      Canvas(this.context)
-        .width(340)
-        .height(240)
-        .onReady(() => {
-          // HDR gradients support brightness values exceeding 1.0. On HDR-capable devices, the highlight area on the right will be brighter than that on the left.
-          this.drawCanvas();
-        })
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-
-  private drawCanvas() {
-    // Left: SDR gradient, red -> white -> green
-    let gradSDR = this.context.createLinearGradient(20, 20, 160, 160)
-    try {
-      gradSDR.addColorStop(0.0, ColorMetrics.colorWithSpace(ColorSpace.SRGB, 1.0, 0.0, 0.0, 1.0)) // Red
-      gradSDR.addColorStop(0.5, ColorMetrics.colorWithSpace(ColorSpace.SRGB, 1.0, 1.0, 1.0, 1.0)) // White
-      gradSDR.addColorStop(1.0, ColorMetrics.colorWithSpace(ColorSpace.SRGB, 0.0, 1.0, 0.0, 1.0)) // Green
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`SDR Failed to addColorStop. Code: ${e.code}, message: ${e.message}`);
-    }
-    this.context.fillStyle = gradSDR
-    this.context.fillRect(10, 10, 150, 150)
-
-    this.context.fillStyle = '#FFFFFF'
-    this.context.font = '16px sans-serif'
-    this.context.textAlign = 'center'
-    this.context.fillText("SDR", 85, 190)
-
-    // Right: HDR gradient, red -> bright white (brightness 1.5) -> green
-    let gradHDR = this.context.createLinearGradient(190, 20, 330, 160)
-    try {
-      gradHDR.addColorStop(0.0, ColorMetrics.createHDRColor(ColorSpace.BT2020, 1.0, 0.0, 0.0, 1.0)) // Red
-      gradHDR.addColorStop(0.5, ColorMetrics.createHDRColor(ColorSpace.BT2020, 1.5, 1.5, 1.5, 1.0)) // Bright white
-      gradHDR.addColorStop(1.0, ColorMetrics.createHDRColor(ColorSpace.BT2020, 0.0, 1.0, 0.0, 1.0)) // Green
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`HDR Failed to addColorStop. Code: ${e.code}, message: ${e.message}`);
-    }
-    this.context.fillStyle = gradHDR
-    this.context.fillRect(180, 10, 150, 150)
-
-    this.context.fillStyle = '#FFFFFF'
-    this.context.fillText("HDR", 255, 190)
-  }
-}
-```
-
-![canvasGradientHdr](figures/canvasGradientHdr.png)

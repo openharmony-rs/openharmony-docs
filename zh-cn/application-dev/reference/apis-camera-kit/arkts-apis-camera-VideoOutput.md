@@ -50,7 +50,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function startVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.start((err: BusinessError) => {
-    if (err.code) {
+    if (err) {
       console.error(`Failed to start the video output, error code: ${err.code}.`);
       return;
     }
@@ -466,7 +466,7 @@ getActiveProfile(): VideoProfile
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.Profile | undefined {
+function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.VideoProfile | undefined {
   let activeProfile: camera.VideoProfile | undefined = undefined;
   try {
     activeProfile = videoOutput.getActiveProfile();
@@ -615,7 +615,7 @@ function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): came
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The videoOutput.getVideoRotation call failed. error code: ${err.code}`);
   }
   return videoRotation;
 }

@@ -11,7 +11,7 @@ status: active
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 图片处理指对PixelMap进行相关的操作，如获取图片信息、裁剪、缩放、偏移、旋转、翻转、设置透明度、读写像素数据等。图片处理主要包括图像变换、[位图操作](image-pixelmap-operation.md)，本文介绍图像变换。
@@ -81,8 +81,7 @@ status: active
      <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
-     // 向下平移100。
-     // 向右平移100。
+     // 向右平移100像素并向下平移100像素。
      this.pixelMap.translate(100, 100).then(() => {
        // ...
      });

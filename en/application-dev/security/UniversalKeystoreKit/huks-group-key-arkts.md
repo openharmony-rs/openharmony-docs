@@ -6,8 +6,9 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=1f34bcef120b1bced6470e93778851cf76b77683 translatedAt=2026-11-03T05:29:20.604Z pushedAt=2026-11-03T06:59:22.150Z nl=1 -->
 
-From API version 23, HUKS supports the group key function. For details about the HUKS key operations supported by the group key function, see [Group Key Overview](huks-group-key-overview.md). This guide describes [Encryption and Decryption Using AES/CBC/PKCS7](#encryption-and-decryption-using-aescbcpkcs7), [Asymmetric Key Negotiation Using X25519](#asymmetric-key-agreement-using-x25519), and [Key Derivation Using PBKDF2](#key-derivation-using-pbkdf2) as examples to show how to use group keys.
+From API version 23, HUKS supports the group key function. For details about the HUKS key operations supported by the group key function, see [Group Key Overview](huks-group-key-overview.md). This guide describes [Encryption and Decryption Using AES/CBC/PKCS7](#encryption-and-decryption-using-aescbcpkcs7), [Asymmetric Key Agreement Using X25519](#asymmetric-key-agreement-using-x25519), and [Key Derivation Using PBKDF2](#key-derivation-using-pbkdf2) as examples to show how to use group keys.
 
 **Configuration file**
 
@@ -68,6 +69,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 import { huks } from '@kit.UniversalKeystoreKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from "@kit.BasicServicesKit";
+import { util } from '@kit.ArkTS';
 
 let aesKeyAlias = 'groupKeyTestAesKeyAlias';
 let handle: number;
@@ -79,23 +81,16 @@ let cipherData: Uint8Array;
  */
 let group = 'ohos.test.groupKey';
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+function uint8ArrayToString(fileData: Uint8Array) {
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
-function GetAesGenerateProperties() {
+function getAesGenerateProperties() {
   let properties: Array<huks.HuksParam> = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
@@ -107,12 +102,12 @@ function GetAesGenerateProperties() {
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }];
   return properties;
 }
 
-function GetAesEncryptProperties() {
+function getAesEncryptProperties() {
   let properties: Array<huks.HuksParam> = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
@@ -133,12 +128,12 @@ function GetAesEncryptProperties() {
     value: IV
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }];
   return properties;
 }
 
-function GetAesDecryptProperties() {
+function getAesDecryptProperties() {
   let properties: Array<huks.HuksParam> = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
@@ -159,12 +154,12 @@ function GetAesDecryptProperties() {
     value: IV
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }];
   return properties;
 }
 
-async function GenerateAesKey() {
+async function generateAesKey() {
   /*
    * Simulate the key generation scenario.
    * 1. Set a key alias.
@@ -172,7 +167,7 @@ async function GenerateAesKey() {
   /*
    * 2. Obtain the algorithm parameters for key generation.
    */
-  let genProperties = GetAesGenerateProperties();
+  let genProperties = getAesGenerateProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
@@ -187,7 +182,7 @@ async function GenerateAesKey() {
     })
 }
 
-async function EncryptData() {
+async function encryptData() {
   /*
    * Simulate the encryption scenario.
    * 1. Obtain the key alias.
@@ -198,10 +193,10 @@ async function EncryptData() {
   /*
    * 3. Obtain the algorithm parameters for encryption.
    */
-  let encryptProperties = GetAesEncryptProperties();
+  let encryptProperties = getAesEncryptProperties();
   let options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   /*
    * 4. Call initSession to obtain a session handle.
@@ -210,21 +205,21 @@ async function EncryptData() {
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error(`promise: init EncryptData failed, errCode: ${error.code}, errMsg: ${error.message}`);
+      console.error(`promise: init encryptData failed, errCode: ${error.code}, errMsg: ${error.message}`);
     })
   /*
    * 5. Call finishSession to obtain the ciphertext.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: encrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       cipherData = data.outData as Uint8Array;
     }).catch((error: BusinessError) => {
       console.error(`promise: encrypt data failed, errCode: ${error.code}, errMsg: ${error.message}`);
     })
 }
 
-async function DecryptData() {
+async function decryptData() {
   /*
    * Simulate the decryption scenario.
    * 1. Obtain the key alias.
@@ -235,7 +230,7 @@ async function DecryptData() {
   /*
    * 3. Obtain the algorithm parameters for decryption.
    */
-  let decryptOptions = GetAesDecryptProperties()
+  let decryptOptions = getAesDecryptProperties()
   let options: huks.HuksOptions = {
     properties: decryptOptions,
     inData: cipherData
@@ -247,20 +242,20 @@ async function DecryptData() {
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error(`promise: init DecryptData failed, errCode: ${error.code}, errMsg: ${error.message}`);
+      console.error(`promise: init decryptData failed, errCode: ${error.code}, errMsg: ${error.message}`);
     })
   /*
    * 5. Call finishSession to obtain the decrypted data.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: decrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
     }).catch((error: BusinessError) => {
       console.error(`promise: decrypt data failed, errCode: ${error.code}, errMsg: ${error.message}`);
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
    * 1. Obtain the key alias.
@@ -268,7 +263,7 @@ async function DeleteKey() {
   let deleteProperties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-      value: StringToUint8Array(group)
+      value: stringToUint8Array(group)
     }
   ]
   let deleteOptions: huks.HuksOptions = {
@@ -285,11 +280,11 @@ async function DeleteKey() {
     })
 }
 
-async function TestGroupKeyEncryptDecrypt() {
-  await GenerateAesKey();
-  await EncryptData();
-  await DecryptData();
-  await DeleteKey();
+async function testGroupKeyEncryptDecrypt() {
+  await generateAesKey();
+  await encryptData();
+  await decryptData();
+  await deleteKey();
 }
 ```
 
@@ -331,7 +326,7 @@ When deleting a key, specify [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-un
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = new Array();
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -339,12 +334,8 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+function uint8ArrayToString(fileData: Uint8Array) {
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 /*
@@ -386,7 +377,7 @@ let properties: Array<huks.HuksParam> = [{
     value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }
 ];
 let HuksOptions: huks.HuksOptions = {
@@ -421,7 +412,7 @@ const finishProperties: Array<huks.HuksParam> = [{
     value: huks.HuksCipherMode.HUKS_MODE_ECB,
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }
 ];
 /* Set the parameter set for the first key agreement. */
@@ -429,18 +420,18 @@ let finishOptionsFirst: huks.HuksOptions = {
   properties: [
     ...finishProperties, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
-    value: StringToUint8Array(srcKeyAliasFirst + 'final'),
+    value: stringToUint8Array(srcKeyAliasFirst + 'final'),
   }],
-  inData: StringToUint8Array(agreeX25519InData)
+  inData: stringToUint8Array(agreeX25519InData)
 }
 /* Set the parameter set for the second key agreement. */
 let finishOptionsSecond: huks.HuksOptions = {
   properties: [
     ...finishProperties, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
-    value: StringToUint8Array(srcKeyAliasSecond + 'final'),
+    value: stringToUint8Array(srcKeyAliasSecond + 'final'),
   }],
-  inData: StringToUint8Array(agreeX25519InData)
+  inData: stringToUint8Array(agreeX25519InData)
 }
 
 /* Generate a key. */
@@ -480,7 +471,7 @@ async function updateSession(handle: number, huksOptions: huks.HuksOptions) {
   try {
     await huks.updateSession(handle, huksOptions)
       .then((data) => {
-        console.info(`promise: updateSession success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+        console.info(`promise: updateSession success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       }).catch((error: BusinessError) => {
         console.error(`promise: updateSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
@@ -496,7 +487,7 @@ async function finishSession(handle: number, huksOptions: huks.HuksOptions) {
     await huks.finishSession(handle, huksOptions)
       .then((data) => {
         finishOutData = data.outData as Uint8Array;
-        console.info(`promise: finishSession success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+        console.info(`promise: finishSession success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       }).catch((error: BusinessError) => {
         console.error(`promise: finishSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
@@ -512,7 +503,7 @@ async function exportKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
     await huks.exportKeyItem(keyAlias, huksOptions)
       .then((data) => {
         exportKey = data.outData as Uint8Array;
-        console.info(`promise: exportKey success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+        console.info(`promise: exportKey success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       }).catch((error: BusinessError) => {
         console.error(`promise: exportKeyItem failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
@@ -537,7 +528,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1. Set the key alias to srcKeyAliasFirst for device A and srcKeyAliasSecond for device B, and configure the parameter set for generating a key. */
+  /* 1. Determine the key alias and integrate the key parameter set. Device A: srcKeyAliasFirst; Device B: srcKeyAliasSecond */
   /* 2. Generate a key for device A. */
   await generateKeyItem(srcKeyAliasFirst, HuksOptions);
   /* 3. Generate a key for device B. */
@@ -603,7 +594,7 @@ When deleting a key, specify [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-un
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = new Array();
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -611,12 +602,8 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+function uint8ArrayToString(fileData: Uint8Array) {
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 /*
@@ -651,7 +638,7 @@ let properties: Array<huks.HuksParam> = [{
     value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }
 ];
 
@@ -678,10 +665,10 @@ let initProperties: Array<huks.HuksParam> = [{
     value: iterationCount,
   }, {
     tag: huks.HuksTag.HUKS_TAG_SALT,
-    value: StringToUint8Array(salt),
+    value: stringToUint8Array(salt),
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }
 ];
 
@@ -711,7 +698,7 @@ let finishProperties: Array<huks.HuksParam> = [{
     value: huks.HuksKeyDigest.HUKS_DIGEST_NONE,
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
-    value: StringToUint8Array(srcKeyAlias),
+    value: stringToUint8Array(srcKeyAlias),
   }, {
     tag: huks.HuksTag.HUKS_TAG_PADDING,
     value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
@@ -720,7 +707,7 @@ let finishProperties: Array<huks.HuksParam> = [{
     value: huks.HuksCipherMode.HUKS_MODE_ECB,
   }, {
     tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
-    value: StringToUint8Array(group)
+    value: stringToUint8Array(group)
   }
 ];
 
@@ -764,7 +751,7 @@ async function updateSession(handle: number, huksOptions: huks.HuksOptions) {
     await huks.updateSession(handle, huksOptions)
       .then((data) => {
         let outData = data.outData as Uint8Array;
-        console.info(`promise: updateSession success, data = ${Uint8ArrayToString(outData)}`);
+        console.info(`promise: updateSession success, data = ${uint8ArrayToString(outData)}`);
       }).catch((error: BusinessError) => {
         console.error(`promise: updateSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
@@ -779,7 +766,7 @@ async function finishSession(handle: number, huksOptions: huks.HuksOptions) {
     await huks.finishSession(handle, huksOptions)
       .then((data) => {
         let outData = data.outData as Uint8Array;
-        console.info(`promise: finishSession success, data = ${Uint8ArrayToString(outData)}`);
+        console.info(`promise: finishSession success, data = ${uint8ArrayToString(outData)}`);
       }).catch((error: BusinessError) => {
         console.error(`promise: finishSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })

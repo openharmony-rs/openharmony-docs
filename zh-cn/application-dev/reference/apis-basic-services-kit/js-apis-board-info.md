@@ -20,7 +20,7 @@
 import { boardInfo } from '@kit.BasicServicesKit';
 ```
 
-## 属性
+## 常量
 
 **系统能力**：SystemCapability.Startup.BoardInfo
 
@@ -35,7 +35,7 @@ import { boardInfo } from '@kit.BasicServicesKit';
 | cpuId | string | 是 | CPU ID。<br>示例：AA AA AA AA 00 00 00 00（十六进制字符串）|
 | cpuArch | string | 是 | CPU架构。<br>示例：aarch64 |
 | cpuVendor | string | 是 | CPU厂商信息。<br>示例：HISILICON |
-| boardSn | string | 是 | 主板序列号。<br>**说明**：可作为设备唯一识别码。<br>**需要权限**：ohos.permission.ACCESS_BOARD_INFO<br>示例：0123456789ABCDEF |
+| boardSn | string | 是 | 主板序列号。<br>**需要权限**：ohos.permission.ACCESS_BOARD_INFO<br>示例：0123456789ABCDEF |
 | boardVendor | string | 是 | 主板厂商。<br>示例：HUAWEI |
 | boardName | string | 是 | 主板产品名称。<br>示例：HAD-PCB |
 | biosVendor | string | 是 | BIOS厂商。<br>示例：HUAWEI |

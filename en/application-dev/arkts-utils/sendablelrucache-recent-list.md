@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Provides development guidance on using SendableLruCache to obtain the recently accessed list: uses the recently read bookshelf as an example to demonstrate cache instance creation, capacity setting, and storage and retrieval of Sendable objects, and explains the precautions that locking is required during use and stored objects must be Sendable."
+keywords: [SendableLruCache, recently accessed list, LRU cache, bookshelf example, cache capacity, locking, Sendable object]
+doctype: guide
+status: active
+---
+
 # Obtaining the Recently Accessed List
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:44:32.933Z pushedAt=2026-11-12T09:13:58.846Z nl=1 -->
 
 To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS introduces [SendableLruCache](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md) since API version 18. With this class, you can add, delete, and obtain Sendable objects from a SendableLruCache instance to quickly access the recently used Sendable objects. This topic describes how to use SendableLruCache to obtain the recently accessed list. It uses a bookshelf as an example. Every time a user opens a book, the book information is updated to the recently accessed list. When the user accesses the bookshelf next time, the list of books that the user has looked at is displayed.
 
@@ -16,19 +25,19 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
 1. Create a SendableLruCache instance and set its maximum capacity based on service requirements.<br>
    In this example, the maximum capacity of the SendableLruCache instance is set to 4, the Sendable class is used for management, and the Sendable class instance is exported.
 
-   <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->     
+   <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->
    
    ``` TypeScript
    // LruCache.ets
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   // Use the 'use shared' marker to mark a module shareable.
+   // Use the shared marker to mark this as a shared module.
    'use shared'
    
-   // The SendableClass instance can be shared across different threads.
+   // SendableClass instance objects can be shared across different threads.
    @Sendable
    class SendableClass {
-     // Lock the SendableLruCache instances to prevent data inconsistency caused by concurrent operations from multiple threads.
+     // Lock the SendableLruCache instance object during use to prevent data inconsistency caused by concurrent multi-thread operations.
      private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      private books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
    
@@ -39,7 +48,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
        this.books_.put('first', 'Book1');
      }
    
-     // Wrap the put, get, and keys methods and perform the lock operation.
+     // Encapsulate the put, get, and keys methods with locking operations.
      public async put(key: string, value: string) {
        await this.lock_.lockAsync(() => {
          this.books_.put(key, value);
@@ -64,7 +73,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
 
 2. In the same directory as the **Index.ets** page, create four book pages. Each page shows its own book information. Register the path of each page in the **main_pages.json** file under **src/main/resources/base/profile/**.
 
-   <!-- @[define_book1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book1.ets) -->     
+   <!-- @[define_book1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book1.ets) -->      
    
    ``` TypeScript
    // Book1.ets
@@ -90,7 +99,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontWeight(FontWeight.Bold)
            .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
+             this.getUIContext().getRouter().back();
            })
        }
        .height('100%')
@@ -99,7 +108,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
    }
    ```
 
-   <!-- @[define_book2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book2.ets) -->   
+   <!-- @[define_book2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book2.ets) -->    
    
    ``` TypeScript
    // Book2.ets
@@ -125,7 +134,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontWeight(FontWeight.Bold)
            .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
+             this.getUIContext().getRouter().back();
            })
        }
        .height('100%')
@@ -134,7 +143,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
    }
    ```
 
-   <!-- @[define_book3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book3.ets) -->  
+   <!-- @[define_book3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book3.ets) -->   
    
    ``` TypeScript
    // Book3.ets
@@ -160,7 +169,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontWeight(FontWeight.Bold)
            .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
+             this.getUIContext().getRouter().back();
            })
        }
        .height('100%')
@@ -169,7 +178,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
    }
    ```
 
-   <!-- @[define_book4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book4.ets) -->   
+   <!-- @[define_book4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book4.ets) -->    
    
    ``` TypeScript
    // Book4.ets
@@ -195,7 +204,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
            .fontWeight(FontWeight.Bold)
            .position({ x: '50%' })
            .onClick(() => {
-             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
+             this.getUIContext().getRouter().back();
            })
        }
        .height('100%')
@@ -204,7 +213,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
    }
    ```
    
-   ``` json
+   ``` json5
    // main_pages.json
 
    {
@@ -213,14 +222,15 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
        "pages/Book1",
        "pages/Book2",
        "pages/Book3",
-       "pages/Book4"
+       "pages/Book4",
+       "pages/GetRecentList"
      ]
    }
    ```
 
 3. Each time a user accesses the bookshelf page, the application displays the list of recently accessed books.
 
-   <!-- @[get_recentList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/GetRecentList.ets) -->     
+   <!-- @[get_recentList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/GetRecentList.ets) --> 
    
    ``` TypeScript
    // GetRecentList.ets
@@ -230,7 +240,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
    
    @Concurrent
    async function updateBooks(key: string, value: string) {
-     // Update the latest access list in the child thread.
+     // Update the recently accessed list in the child thread.
      await lruCache.put(key, value);
    }
    
@@ -240,8 +250,8 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
      @State message: string = 'Bookshelf'
      @State books: string[] = [];
    
-     async aboutToAppear () {
-       // The application automatically obtains the list of recently accessed books.
+     async onPageShow(): Promise<void> {
+       // Automatically obtain the recently accessed book list.
        this.books = await lruCache.keys();
      }
    
@@ -263,7 +273,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
              // Obtain the bound book information.
              let value = await lruCache.get(this.books[3]);
              // Update the recently accessed list.
-             taskpool.execute(updateBooks, this.books[3], value);
+             await taskpool.execute(updateBooks, this.books[3], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
          Button(this.books[2])
@@ -274,7 +284,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
              // Obtain the bound book information.
              let value = await lruCache.get(this.books[2]);
              // Update the recently accessed list.
-             taskpool.execute(updateBooks, this.books[2], value);
+             await taskpool.execute(updateBooks, this.books[2], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
          Button(this.books[1])
@@ -285,7 +295,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
              // Obtain the bound book information.
              let value = await lruCache.get(this.books[1]);
              // Update the recently accessed list.
-             taskpool.execute(updateBooks, this.books[1], value);
+             await taskpool.execute(updateBooks, this.books[1], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
          Button(this.books[0])
@@ -296,7 +306,7 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
              // Obtain the bound book information.
              let value = await lruCache.get(this.books[0]);
              // Update the recently accessed list.
-             taskpool.execute(updateBooks, this.books[0], value);
+             await taskpool.execute(updateBooks, this.books[0], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
          // ...
@@ -306,4 +316,3 @@ To quickly access the recently used [Sendable](arkts-sendable.md) objects, ArkTS
      }
    }
    ```
-   

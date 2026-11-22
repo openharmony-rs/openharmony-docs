@@ -4,7 +4,7 @@
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
-<!--Tester: @leiyuqian-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../security/AccessToken/app-permission-mgmt-overview.md)。
@@ -399,6 +399,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -460,6 +462,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -530,6 +534,8 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -595,6 +601,8 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -691,6 +699,59 @@ try {
 }
 ```
 
+### isPermissionSupported
+
+isPermissionSupported(permissionName: Permissions): boolean
+
+查询当前设备是否支持该权限，同步返回结果。调用成功后，返回该权限在当前设备上的支持状态。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要查询支持状态的权限名称。权限名不能为空，且长度不能超过256个字符，传入无效值时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| boolean | 返回true表示当前设备支持该权限；返回false表示当前设备不支持该权限。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+try {
+  // 查询目标权限的支持状态
+  let result: boolean = atManager.isPermissionSupported('ohos.permission.CAMERA');
+  console.info(`isPermissionSupported success, result: ${result}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isPermissionSupported fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### openPermissionOnSetting<sup>22+</sup>
 
 openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
@@ -702,6 +763,8 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 

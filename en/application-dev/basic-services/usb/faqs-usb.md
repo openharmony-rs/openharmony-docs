@@ -5,7 +5,8 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=124940311872fe2d4490632d55584ec442983b8a translatedAt=2026-11-06T12:11:54.923Z pushedAt=2026-11-09T12:40:13.017Z nl=1 -->
 
 ## What should I do if the device list obtained by using usbManager.getDevices is empty when the device is connected to a PC using a USB cable?
 
@@ -70,3 +71,18 @@ Noise interference or insufficient stop bit.
 ### Solution
 
 Check whether interference exists. Modify the stop bit to improve the anti-interference capability (for example, change the stop bit from 1 to 2).
+
+## Peripherals Cannot Be Used After ClaimInterface Is Called
+
+### Problem Symptom
+
+Peripherals cannot be used, for example, a mouse or keyboard.
+
+### Possible Cause
+
+After an application calls the ClaimInterface API, the USB interface is released from the kernel driver and controlled by a user-space program. As a result, the kernel cannot control the corresponding device.
+
+### Solution Measure
+
+1. When calling the API, you can pass false to the optional parameter to avoid forcibly claiming the interface.
+2. After this problem occurs, replug the device to restore it.

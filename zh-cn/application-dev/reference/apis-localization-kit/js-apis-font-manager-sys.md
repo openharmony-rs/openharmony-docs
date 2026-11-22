@@ -24,7 +24,7 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
-## installFont
+## fontManager.installFont
 
 installFont(path: string): Promise&lt;number&gt;
 
@@ -33,7 +33,7 @@ installFont(path: string): Promise&lt;number&gt;
 >
 > - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
 >
-> - 支持安装的字体文件个数最大数量为200。从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
+> - 支持安装的字体文件个数最大数量为200。从26.0.1版本开始，PC/2in1和Tablet支持安装的字体文件最大数量为800。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
@@ -81,7 +81,7 @@ installFont(path: string): Promise&lt;number&gt;
   }
   ```
 
-## uninstallFont
+## fontManager.uninstallFont
 
 uninstallFont(fullName: string): Promise&lt;number&gt;
 
@@ -130,7 +130,7 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
   }
   ```
 
-## dataMigration<sup>23+</sup>
+## fontManager.dataMigration<sup>23+</sup>
 
 dataMigration(callback: DataMigrationCallback): number
 

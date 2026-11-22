@@ -1,11 +1,11 @@
 # Unsubscribing from Common Events in C
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3e6a64491cc90c6990b3231ac614d6d55ecbf6a5 translatedAt=2026-11-06T12:02:31.529Z pushedAt=2026-11-09T09:11:35.047Z nl=1 -->
 
 ## When to Use
 
@@ -52,7 +52,11 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    void Unsubscribe(CommonEvent_Subscriber *subscriber)
    {
        // Unsubscribe from a common event by passing a subscriber.
-       int32_t ret = OH_CommonEvent_UnSubscribe(subscriber);
+       CommonEvent_ErrCode ret = OH_CommonEvent_UnSubscribe(subscriber);
+       if (ret != COMMONEVENT_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_UnSubscribe failed, ret <%{public}d>.", ret);
+           return;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_UnSubscribe ret <%{public}d>.", ret);
    }
    ```

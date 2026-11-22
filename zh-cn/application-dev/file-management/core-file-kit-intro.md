@@ -75,7 +75,7 @@ Core File Kit常见的使用场景：
 - 应用分享：
 
   应用之间可以通过分享URI（Uniform Resource Identifier）或文件描述符FD（File Descriptor）的方式，进行文件共享。有以下优点：
-  - 便携性：应用之间进行文件分享，省去了用户在多个应用间切换的麻烦，简化了操作步骤，提高了效率。
+  - 便捷性：应用之间进行文件分享，省去了用户在多个应用间切换的麻烦，简化了操作步骤，提高了效率。
   - 高效性：应用间的文件分享能够更快地完成文件的传输，减少了因多次跳转和等待而浪费的时间。
   - 数据一致性：应用间的文件分享能够确保数据的完整性和一致性，避免数据在传输过程中出现损坏或丢失的情况。
   - 安全性：应用间的文件分享可以确保文件的安全性，避免文件被非法获取或篡改。同时，通过文件授权访问的方式，可以进一步增强文件的安全性。
@@ -108,6 +108,10 @@ Core File Kit常见的使用场景：
     - UserFileManager：内卡文件管理服务，基于File Access ExtensionAbility框架实现，用于管理内置存储设备上的文件。
     - ExternalFileManager：外卡文件管理服务，基于File Access ExtensionAbility框架实现，用于管理外置存储设备上的文件。
 
+<!--RP6--><!--RP6End-->
+
+<!--RP5--><!--RP5End-->
+
 ## 与相关Kit的关系
 
 Ability Kit：Core File Kit中用户文件访问框架依赖Ability Kit提供的Extension基础能力，并受Ability Kit服务调度管理。
@@ -117,5 +121,3 @@ Ability Kit：Core File Kit中用户文件访问框架依赖Ability Kit提供的
 针对Core File Kit开发，有以下相关实例可供参考：
 
 - [文件管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/FileManagement/FileManager)
-
-<!--RP5--><!--RP5End-->

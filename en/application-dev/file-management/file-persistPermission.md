@@ -5,7 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=e05a1b06fec52221356ba80177a700f127d64c46 translatedAt=2026-08-26T04:33:39.702Z pushedAt=2026-08-28T06:43:30.793Z -->
+<!-- md-trans-meta sourceCommit=bb4db9fc9ba2be2e2ebf8c572f9a7b030d5e3e8f translatedAt=2026-10-29T10:30:53.804Z pushedAt=2026-10-29T10:30:53.804Z nl=1 -->
 
 ## When to Use
 
@@ -17,131 +17,131 @@ When you select a file or folder through Picker for temporary authorization, the
 
 1. When an app only temporarily needs to access data in a public directory, for example, a communication app needs to send a user file or image, the app calls the Picker's [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) API to select the file or image to send. In this case, the app obtains temporary access permission to the file. After the app restarts or the device restarts, the app must use Picker again to select the file for access.
 
-2. Sometimes, an application needs to access a file or directory multiple times. For example, after editing a user file, a file editor application needs to select and open the file directly from the history records. In this case, you can use Picker to select the file, and use [ohos.fileshare.persistPermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharepersistpermission11) to persist the temporary permission granted by Picker.
+2. If an application needs long-term access to a file or directory, use Picker to select the file or folder and obtain temporary permission, then call [ohos.fileshare.persistPermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharepersistpermission11) to persist it, provided that the granting party allows persistence. For example, when Picker grants permission for a selected file to the current application, that permission can be persisted. A document editor can then open an edited user file directly from its history without opening Picker again for selection and authorization.
 
-Before persisting a temporary permission, ensure that:<br>The device must have the system capability SystemCapability.FileManagement.AppFileService.FolderAuthorization. You can use **canIUse()** to check whether the device has the required system capability.
+    Use **canIUse()** to check whether the device supports the **SystemCapability.FileManagement.AppFileService.FolderAuthorization** system capability.
 
-```ts
-if (!canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization')) {
-    console.error('this api is not supported on this device');
-    return;
-}
-```
+    ```ts
+    if (!canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization')) {
+        console.error('this api is not supported on this device');
+        return;
+    }
+    ```
 
-**Required Permissions**<br>
-ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permission, see [Workflow for Requesting Permissions](../security/AccessToken/determine-application-mode.md).
+    **Required permissions**
+    ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permission, see [Workflow for Requesting Permissions](../security/AccessToken/determine-application-mode.md).
 
-**Example**
+    **Example:**
 
-<!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
+    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
+    
+    ``` TypeScript
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { picker } from '@kit.CoreFileKit';
+    import { fileShare } from '@kit.CoreFileKit';
+    
+    export async function persistPermissionExample() {
+      try {
+        // ...
+        let documentSelectOptions = new picker.DocumentSelectOptions();
+        let documentPicker = new picker.DocumentViewPicker();
+        let uris = await documentPicker.select(documentSelectOptions);
+        // You can grant multiple permissions in combination. For example, for read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
+        // Note: You can perform persistent authorization only on the temporary permission that has been obtained. Otherwise, an error is reported.
+        let policyInfo: fileShare.PolicyInfo = {
+          uri: uris[0],
+          operationMode: fileShare.OperationMode.READ_MODE,
+        };
+        let policies: fileShare.PolicyInfo[] = [policyInfo];
+        fileShare.persistPermission(policies).then(() => {
+          console.info('persistPermission successfully');
+        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+          console.error('persistPermission failed with error message: ' + err.message + ', error code: ' + err.code);
+          if (err.code == 13900001 && err.data) {
+            for (let i = 0; i < err.data.length; i++) {
+              console.error('error code : ' + JSON.stringify(err.data[i].code));
+              console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+              console.error('error reason : ' + JSON.stringify(err.data[i].message));
+            }
+          }
+        });
+      } catch (error) {
+        let err: BusinessError = error as BusinessError;
+        console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+      }
+    }
+    ```
 
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { picker } from '@kit.CoreFileKit';
-import { fileShare } from '@kit.CoreFileKit';
+    > **NOTE**
+    >
+    > 1. It is recommended that the app store the persistent authorization file information locally for subsequent activation of persistent files as needed.
+    > 2. The persistent authorization data is stored in the system database. After the app or device restarts, you must activate the persisted authorization before using it. For details, see [Activating a Persistent Permission for Accessing a File or Folder](#activating-a-persistent-permission-for-accessing-a-file-or-folder).
+    > 3. For the persistent permission API, you can use the **canIUse** API to check whether the capability is available, and you need to request the corresponding permission.
+    > 4. When the app is uninstalled, all previous authorization data is cleared. After reinstallation, re-authorization is required.
+    > 5. You can only persist a temporary permission that has already been obtained. Otherwise, an error is reported.
 
-export async function persistPermissionExample() {
-  try {
+    For details about how to persist a temporary permission using C/C++ APIs, see [OH_FileShare_PersistPermission](native-fileshare-guidelines.md).
+
+3. Use [ohos.fileshare.revokePermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharerevokepermission11) to revoke a persistent permission for a file, and update the data stored in the application to delete the file URI from the recently accessed data.
+
+    **Required permissions**
+    ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permission, see [Workflow for Requesting Permissions](../security/AccessToken/determine-application-mode.md).
+
+    **Example:**
+
+    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
+    
+    ``` TypeScript
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { picker } from '@kit.CoreFileKit';
+    import { fileShare } from '@kit.CoreFileKit';
+    
     // ...
-    let documentSelectOptions = new picker.DocumentSelectOptions();
-    let documentPicker = new picker.DocumentViewPicker();
-    let uris = await documentPicker.select(documentSelectOptions);
-    // You can grant multiple permissions in combination. For example, for read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
-    // Note: You can perform persistent authorization only on the temporary permission that has been obtained. Otherwise, an error is reported.
-    let policyInfo: fileShare.PolicyInfo = {
-      uri: uris[0],
-      operationMode: fileShare.OperationMode.READ_MODE,
-    };
-    let policies: fileShare.PolicyInfo[] = [policyInfo];
-    fileShare.persistPermission(policies).then(() => {
-      console.info('persistPermission successfully');
-    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-      console.error('persistPermission failed with error message: ' + err.message + ', error code: ' + err.code);
-      if (err.code == 13900001 && err.data) {
-        for (let i = 0; i < err.data.length; i++) {
-          console.error('error code : ' + JSON.stringify(err.data[i].code));
-          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-          console.error('error reason : ' + JSON.stringify(err.data[i].message));
-        }
+    export async function revokePermissionExample() {
+      try {
+        let uri = 'file://docs/storage/Users/username/tmp.txt';
+        // You can revoke multiple permissions in combination. For example, to revoke both read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
+        // Note: You can revoke only the persistent authorization that has been obtained. Otherwise, an error is reported.
+        let policyInfo: fileShare.PolicyInfo = {
+          uri: uri,
+          operationMode: fileShare.OperationMode.READ_MODE,
+        };
+        let policies: fileShare.PolicyInfo[] = [policyInfo];
+        fileShare.revokePermission(policies).then(() => {
+          console.info('revokePermission successfully');
+        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+          console.error('revokePermission failed with error message: ' + err.message + ', error code: ' + err.code);
+          if (err.code == 13900001 && err.data) {
+            for (let i = 0; i < err.data.length; i++) {
+              console.error('error code : ' + JSON.stringify(err.data[i].code));
+              console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+              console.error('error reason : ' + JSON.stringify(err.data[i].message));
+            }
+          }
+        });
+      } catch (error) {
+        let err: BusinessError = error as BusinessError;
+        console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
       }
-    });
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
+    }
+    ```
 
-> **NOTE**
->
-> 1. It is recommended that the app store the persistent authorization file information locally for subsequent activation of persistent files as needed.
-> 2. The persistent authorization data is stored in the system database. After the app or device restarts, you must activate the persisted authorization before using it. For details, see [Activating Persisted Permissions to Access Files or Directories](#activating-a-persistent-permission-for-accessing-a-file-or-folder).
-> 3. For the persistent permission API, you can use the **canIUse** API to check whether the capability is available, and you need to request the corresponding permission.
-> 4. When the app is uninstalled, all previous authorization data is cleared. After reinstallation, re-authorization is required.
-> 5. You can only persist a temporary permission that has already been obtained. Otherwise, an error is reported.
+    > **NOTE**
+    >
+    > 1. The URI in the example comes from the persistent data stored by the app.
+    > 2. You can only revoke a persistent permission that has already been obtained. It is recommended that you revoke the corresponding persistent permission based on your usage requirements.
+    > 3. For the persistent permission API, you can use the **canIUse** API to check whether the capability is available, and you need to request the corresponding permission.
 
-For details about how to persist a temporary permission using C/C++ APIs, see [OH_FileShare_PersistPermission](native-fileshare-guidelines.md).
-
-You can use [ohos.fileshare.revokePermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharerevokepermission11) to revoke the persistent permission from a file, and update the data stored in the application to delete the file URI from the recently accessed data.
-
-**Required Permissions**<br>
-ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permission, see [Workflow for Requesting Permissions](../security/AccessToken/determine-application-mode.md).
-
-**Example**
-
-<!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { picker } from '@kit.CoreFileKit';
-import { fileShare } from '@kit.CoreFileKit';
-
-// ...
-export async function revokePermissionExample() {
-  try {
-    let uri = 'file://docs/storage/Users/username/tmp.txt';
-    // You can revoke multiple permissions in combination. For example, to revoke both read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
-    // Note: You can revoke only the persistent authorization that has been obtained. Otherwise, an error is reported.
-    let policyInfo: fileShare.PolicyInfo = {
-      uri: uri,
-      operationMode: fileShare.OperationMode.READ_MODE,
-    };
-    let policies: fileShare.PolicyInfo[] = [policyInfo];
-    fileShare.revokePermission(policies).then(() => {
-      console.info('revokePermission successfully');
-    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-      console.error('revokePermission failed with error message: ' + err.message + ', error code: ' + err.code);
-      if (err.code == 13900001 && err.data) {
-        for (let i = 0; i < err.data.length; i++) {
-          console.error('error code : ' + JSON.stringify(err.data[i].code));
-          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-          console.error('error reason : ' + JSON.stringify(err.data[i].message));
-        }
-      }
-    });
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
-  }
-}
-```
-
-> **NOTE**
->
-> 1. The URI in the example comes from the persistent data stored by the app.
-> 2. You can only revoke a persistent permission that has already been obtained. It is recommended that you revoke the corresponding persistent permission based on your usage requirements.
-> 3. For the persistent permission API, you can use the **canIUse** API to check whether the capability is available, and you need to request the corresponding permission.
-
-For details about how to revoke a persistent permission using C/C++ APIs, see [OH_FileShare_RevokePermission](native-fileshare-guidelines.md).
+    For details about how to revoke a persistent permission using C/C++ APIs, see [OH_FileShare_RevokePermission](native-fileshare-guidelines.md).
 
 ## Activating a Persistent Permission for Accessing a File or Folder
 
 Each time an application is started, its persistent permissions have not been loaded to the memory. To make a persistent permission still valid after the application is restarted, use [ohos.fileshare.activatePermission](../reference/apis-core-file-kit/js-apis-fileShare.md#fileshareactivatepermission11) to activate the permission.
 
-**Required Permissions**<br>
+**Required permissions**
 ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permission, see [Workflow for Requesting Permissions](../security/AccessToken/determine-application-mode.md).
 
-**Example**
+**Example:**
 
 <!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
 
@@ -217,6 +217,6 @@ You can configure the ohos.fileshare.supportPreservePersistentPermission tag in 
 ```
 **Description of the ohos.fileshare.supportPreservePersistentPermission Tag**
 
-| Name | Description | Data Type | Initial Value Allowed |
+| Name | Description | Data Type | Optional |
 | -------- | -------- | -------- | -------- |
-| name | Identifies the metadata name, with a fixed value of ohos.fileshare.supportPreservePersistentPermission. | String | This tag is mandatory. |
+| name | Identifies the metadata name, with a fixed value of ohos.fileshare.supportPreservePersistentPermission. | String | No. |

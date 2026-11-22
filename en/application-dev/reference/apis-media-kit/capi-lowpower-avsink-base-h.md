@@ -5,7 +5,7 @@
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6b885b838ace79912222a91118f2a6346fb31954 translatedAt=2026-09-15T17:05:58.776Z pushedAt=2026-09-21T03:22:40.473Z -->
+<!-- md-trans-meta sourceCommit=6d299aa4306cf133f8f2827770fe632e656e5e51 translatedAt=2026-11-09T06:28:56.968Z pushedAt=2026-11-09T08:42:40.669Z nl=1 -->
 
 ## Overview
 
@@ -28,6 +28,7 @@ The file declares the basic dependencies for OH_LowPowerAudioSink and OH_LowPowe
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) | OH_AVSamplesBuffer | Describes the input data of the LowPowerAVSink. After receiving the **DataNeeded** callback, the app must pack data into an **OH_AVSamplesBuffer** instance and pass it to the corresponding LowPowerAVSink. |
+| [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md) | OH_LowPowerAVSink_Capability | Describes the forward declaration of **OH_LowPowerAVSink_Capability**. |
 
 ### Functions
 
@@ -104,6 +105,6 @@ Obtains the capability of the low-power player. It mainly helps you find out wha
 
 | Type| Description|
 | -- | -- |
-| OH_LowPowerAVSink_Capability * | **OH_LowPowerAVSink_Capability**: The low-power player is supported.<br> **nullptr**: The low-power player is not supported or the capability fails to be obtained. |
+| [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md) * | **OH_LowPowerAVSink_Capability**: The low-power player is supported.<br> **nullptr**: The low-power player is not supported or the capability fails to be obtained. |
 
 

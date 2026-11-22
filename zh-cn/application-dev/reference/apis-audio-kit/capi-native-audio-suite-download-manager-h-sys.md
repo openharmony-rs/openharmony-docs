@@ -29,6 +29,7 @@
 | [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | OH_AudioSuite_DownloadStatusInfo | 定义下载状态信息结构。 |
 | [OH_AudioSuite_DownloadStatusInfoArray](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | OH_AudioSuite_DownloadStatusInfoArray | 定义下载状态信息数组结构。 |
 | [OH_AudioSuite_DownloadManagerStruct](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | 声明音频下载管理器。<br> 音频下载管理器的句柄用于执行下载相关功能。 |
+| [OH_AudioSuite_FeatureVersionInfo](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | OH_AudioSuite_FeatureVersionInfo | 定义特性版本信息结构体。 |
 
 ### 函数
 
@@ -44,6 +45,9 @@
 | [int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)](#oh_audiosuite_startbackgrounddownload) | - | 后台下载。 |
 | [int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName, OH_AudioSuite_DownloadStatusInfo *status)](#oh_audiosuite_getdownloadstatus) | - | 获取下载状态。 |
 | [int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)](#oh_audiosuite_uninstallcloudrom) | - | 卸载已下载的云端文件。 |
+| [int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)](capi-native-audio-suite-download-manager-h-sys.md#oh_audiosuite_isfeatureinstalled) | - | 批量获取特性的安装状态。 |
+| [int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)](capi-native-audio-suite-download-manager-h-sys.md#oh_audiosuite_getfeaturestatus) | - | 批量获取特性状态。 |
+| [int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)](capi-native-audio-suite-download-manager-h-sys.md#oh_audiosuite_getnewversioninfo) | - | 批量获取特性的新版本信息。 |
 
 ## 函数说明
 
@@ -310,4 +314,98 @@ int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadM
 | -- | -- |
 | int32_t | AUDIOCOMMON_RESULT_SUCCESS：执行成功。<br>         202：非系统应用调用此系统API。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：下载管理器或云端文件名称为空指针。<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM：IPC通信失败或操作失败。 |
 
+### OH_AudioSuite_IsFeatureInstalled()
 
+```c
+int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)
+```
+
+**描述**
+
+批量获取特性的安装状态。
+
+接口返回成功，installStatus有效数量为count。失败则installStatus有效数量为0。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
+| const char **featureNames | [入参] 特性名称的数组。 |
+| uint32_t count | [入参] featureNames数组中特性名称的个数，取值为[1, 5]。 |
+| bool *installStatus | [出参] 调用者分配的接收安装状态的布尔数组。元素值为true，表示featureNames对应索引的特性已安装。为false，表示未安装。 |
+| uint32_t installStatusSize | [入参] 调用者分配的installStatus输出数组的容量。必须大于等于count。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | AUDIOCOMMON_RESULT_SUCCESS：执行成功。<br>         202：权限验证失败。非系统应用调用系统API。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>         可能的原因如下：<br>         1. 参数downloadManager为空指针；<br>         2. 参数featureNames为空指针；<br>         3. 参数featureNames中的值为空指针；<br>         4. 参数installStatus为空指针；<br>         5. 参数count为0或者大于5；<br>         6. 参数installStatusSize小于count。<br>         AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED：IPC通信失败。 |
+
+### OH_AudioSuite_GetFeatureStatus()
+
+```c
+int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)
+```
+
+**描述**
+
+批量获取特性的当前状态。
+
+接口返回成功，statusInfos有效数量为count。失败则statusInfos有效数量为0。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
+| const char **featureNames | [入参] 特性名称的数组。 |
+| uint32_t count | [入参] featureNames数组中特性名称的个数，取值为[1, 5]。 |
+| [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *statusInfos | [出参] 调用者分配的接收特性状态的数组。 |
+| uint32_t statusInfosSize | [入参] 调用者分配的statusInfos输出数组的容量。必须大于等于count。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | AUDIOCOMMON_RESULT_SUCCESS：执行成功。<br>         202：权限验证失败。非系统应用调用系统API。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>         可能的原因如下：<br>         1. 参数downloadManager为空指针；<br>         2. 参数featureNames为空指针；<br>         3. 参数featureNames中的值为空指针；<br>         4. 参数statusInfos为空指针；<br>         5. 参数count为0或者大于5；<br>         6. 参数statusInfosSize小于count。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED：IPC通信失败。 |
+
+### OH_AudioSuite_GetNewVersionInfo()
+
+```c
+int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)
+```
+
+**描述**
+
+批量获取特性的新版本信息。
+
+接口返回成功，versionInfos有效数量为count。失败则versionInfos有效数量为0。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
+| const char **featureNames | [入参] 特性名称的数组。 |
+| uint32_t count | [入参] featureNames数组中特性名称的个数，取值为[1, 5]。 |
+| [OH_AudioSuite_FeatureVersionInfo](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) *versionInfos | [出参] 调用者分配的接收版本信息的数组。 |
+| uint32_t versionInfosSize | [入参] 调用者分配的输出数组的容量。必须大于等于count。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | AUDIOCOMMON_RESULT_SUCCESS：执行成功。<br>         202：权限验证失败。非系统应用调用系统API。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>         可能的原因如下：<br>         1. 参数downloadManager为空指针；<br>         2. 参数featureNames为空指针；<br>         3. 参数featureNames中的值为空指针；<br>         4. 参数versionInfos为空指针；<br>         5. 参数count为0或者大于5；<br>         6. 参数versionInfosSize小于count。<br>         AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED：IPC通信失败。<br>         AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET：当前网络状态不可用。 |

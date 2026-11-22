@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1cdd305776bcaacdd45f57f863b06eb9c8b2cb12 translatedAt=2026-08-19T07:05:46.736Z pushedAt=2026-08-19T07:44:51.523Z -->
+<!-- md-trans-meta sourceCommit=594cb2daa5d54479176c519a387035077314b6f8 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
@@ -65,3 +65,7 @@ The overall architecture is divided into the application layer, framework layer 
   * **Proxy notification**: Manages notifications displayed on the minus 1 screen. These notifications inform users that the partner device extension process is running in the background, which may increase power consumption and allow the partner device to control the media playback and calling capabilities of the OpenHarmony device.
 
   * **Bluetooth service/AbilityManager service/SAMgr management/notification service**: Basic OpenHarmony system services. The Bluetooth service is responsible for Bluetooth scanning, Bluetooth connection, and Bluetooth data transmission. The **AbilityManager** service provides the capability of starting and destroying partner device Extensions. SAMgr management is responsible for starting and destroying the **PartnerAgent** service. The notification service is responsible for displaying notifications on the minus 1 screen.
+
+  <!--RP1-->
+
+  <!--RP1End-->

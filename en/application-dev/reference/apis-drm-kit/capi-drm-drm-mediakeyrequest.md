@@ -1,10 +1,12 @@
 # DRM_MediaKeyRequest
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=21259e195bf1b8fc84db30d7d959f8dc56433790 translatedAt=2026-11-03T06:43:31.891Z pushedAt=2026-11-04T03:11:19.897Z nl=1 -->
 
 ```c
 typedef struct DRM_MediaKeyRequest {...} DRM_MediaKeyRequest
@@ -26,7 +28,9 @@ The struct describes a media key request.
 
 | Name| Description|
 | -- | -- |
-| [DRM_MediaKeyRequestType](capi-native-drm-common-h.md#drm_mediakeyrequesttype) type | Type of the media key request.|
-| int32_t dataLen | Length of data in the media key request.|
-| uint8_t data[MAX_MEDIA_KEY_REQUEST_DATA_LEN] | Data in the media key request.|
-| char defaultUrl[MAX_DEFAULT_URL_LEN] | URL of the media key server to which the media key request is sent.|
+| [DRM_MediaKeyRequestType](capi-native-drm-common-h.md#drm_mediakeyrequesttype) type | Media key request type, indicating the purpose of the request. Common types include **DRM_MEDIA_KEY_REQUEST_TYPE_INITIAL** (initial request), DRM_MEDIA_KEY_REQUEST_TYPE_RENEWAL (renewal request), and so on. The specific type is determined by the DRM Solution. |
+| int32_t dataLen | Length of the media key request data, indicating the number of valid data bytes in the data array. The unit is byte, and the value ranges from 0 to MAX_MEDIA_KEY_REQUEST_DATA_LEN. |
+| uint8_t data[MAX_MEDIA_KEY_REQUEST_DATA_LEN] | Media key request data to be sent to the license server. The data format is defined by the DRM Solution, typically binary data in a specific format or JSON format. The array length is defined by the MAX_MEDIA_KEY_REQUEST_DATA_LEN macro. |
+| char defaultUrl[MAX_DEFAULT_URL_LEN] | Default URL of the license server, used to obtain the media key. This URL is provided by the DRM Solution. The application can use this URL or a custom URL to send requests. The array length is defined by the MAX_DEFAULT_URL_LEN macro. |
+
+

@@ -67,7 +67,8 @@ Watchdog模块提供的主要接口如表1所示，具体API[详见](https://git
 | int32_t WatchdogGetStatus(DevHandle handle, int32_t \*status) | 获取看门狗状态 |
 | int32_t WatchdogFeed(DevHandle handle) | 清除看门狗定时器（喂狗） |
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
+>**说明：**
+>
 > 本文涉及的看门狗的所有接口，支持内核态及用户态使用。
 
 ### 开发步骤
@@ -92,7 +93,9 @@ DevHandle WatchdogOpen(int16_t wdtId, DevHandle *handle);
 | -------- | -------- |
 | wdtId | int16_t类型，看门狗设备号 |
 | handle | DevHandle类型，看门狗设备句柄 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 打开看门狗设备成功 |
 | 负数 | 打开看门狗设备失败 |
 
@@ -120,7 +123,9 @@ int32_t WatchdogGetStatus(DevHandle handle, int32_t *status);
 | -------- | -------- |
 | handle | DevHandle类型，看门狗设备句柄 |
 | status | int32_t类型指针，获取到的看门狗状态 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 获取看门狗状态成功 |
 | 负数 | 获取看门狗状态失败 |
 
@@ -147,7 +152,9 @@ int32_t WatchdogSetTimeout(DevHandle *handle, uint32_t seconds);
 | -------- | -------- |
 | handle | DevHandle类型，看门狗设备句柄 |
 | seconds | uint32_t类型，超时时间，单位为秒 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 设置成功 |
 | 负数 | 设置失败 |
 
@@ -173,7 +180,9 @@ int32_t WatchdogGetTimeout(DevHandle *handle, uint32_t *seconds);
 | -------- | -------- |
 | handle | DevHandle类型，看门狗设备句柄 |
 | seconds | uint32_t类型指针，获取的看门狗超时时间 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 获取看门狗超时时间成功 |
 | 负数 | 获取看门狗超时时间失败 |
 
@@ -199,7 +208,9 @@ int32_t WatchdogStart(DevHandle handle);
 | **参数** | **参数描述** |
 | -------- | -------- |
 | handle | DevHandle类型，看门狗设备句柄 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 启动看门狗成功 |
 | 负数 | 启动看门狗失败 |
 
@@ -224,7 +235,9 @@ int32_t WatchdogFeed(DevHandle handle);
 | **参数** | **参数描述** |
 | -------- | -------- |
 | handle | DevHandle类型，看门狗设备句柄 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 喂狗成功 |
 | 负数 | 喂狗失败 |
 
@@ -249,7 +262,9 @@ int32_t WatchdogStop(DevHandle handle);
 | **参数** | **参数描述** |
 | -------- | -------- |
 | handle | DevHandle类型，看门狗设备句柄 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 停止看门狗成功 |
 | 负数 | 停止看门狗失败 |
 

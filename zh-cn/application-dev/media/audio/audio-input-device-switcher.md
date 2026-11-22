@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者实现音频输入设备路由切换，包括使用蓝牙或星闪设备录音、选择任意设备录音及PC/2in1设备切换场景，说明如何查询设备切换能力并完成切换。"
+keywords: [输入设备切换, 蓝牙录音, 星闪录音, AudioSessionManager, setBluetoothAndNearlinkPreferredRecordCategory, selectMediaInputDevice, AudioDeviceEnhanceManager, PC/2in1, 应用级, 音频流级, 切换麦克风]
+doctype: guide
+status: active
+---
 # 实现音频输入设备路由切换
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -402,3 +409,9 @@ C/C++示例：
       // ...
   }
   ```
+
+## 相关主题推荐
+
+- [查询和监听音频输入设备](audio-input-device-management.md)
+- [实现音频输出设备路由切换](audio-output-device-switcher.md)
+- [录音无声定位指导](audio-recording-no-audio-troubleshooting.md)

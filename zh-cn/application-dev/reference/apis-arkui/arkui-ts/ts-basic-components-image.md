@@ -449,7 +449,7 @@ fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
 autoResize(value: boolean)
 
-设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。
+设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。当图片尺寸较大时，设置为false可能导致内存占用过高，引发进程闪退，具体原因参见[应用被查杀类问题分析方法](https://developer.huawei.com/consumer/cn/doc/doccenter-app-quality/bpta-stability-app-killed-way?docScope=all)中的ResourceLeak(GpuRsLeak)原因。
 
 原图尺寸和显示尺寸不匹配时，图片都会出现些许的失真、模糊。最佳清晰度配置建议：
 
@@ -572,6 +572,10 @@ colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor)
 draggable(value: boolean)
 
 设置组件默认拖拽效果。
+
+> **说明：**
+>
+> 当Image组件的数据源为[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型且像素格式为RGBA_1010102时，若在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中未写入有效的拖拽数据，系统将使用默认的PixelMap数据填充，此时拖拽数据传递至放置目标时目标端无法正确解析该像素格式的图片数据。建议在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中自行处理该格式的数据转换。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

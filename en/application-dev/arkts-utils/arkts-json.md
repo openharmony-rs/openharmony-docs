@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / ArkTS programming language"]
+description: "Introduces ArkTS extensions to JSON capabilities: the enhanced features and usage of the parse, stringify, has, and remove interfaces, along with examples of typical scenarios such as parsing nested quotes, parsing large integers, and serializing BigInt objects and floating-point numbers."
+keywords: [JSON extension library, JSON parsing, JSON serialization, large integer parsing, BigInt serialization, floating-point serialization, nested quote parsing, has and remove interfaces]
+doctype: guide
+status: active
+---
+
 # JSON Extension Library
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:18:56.045Z pushedAt=2026-11-09T09:03:14.379Z nl=1 -->
 
 ## When to Use
 
@@ -41,7 +50,8 @@ Parses a JSON string and supports BigInt mode.
 
 ### stringify
 
-stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string
+stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string</br>
+stringify(value: Object, replacer?: Transformer, space?: string | number): string
 
 Converts an object to a JSON string and supports BigInt mode.
 
@@ -103,7 +113,7 @@ The following provides two methods to solve this problem:
 
 Method 1: Avoid nested quotation marks.
 
-<!-- @[json_nesting_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
+<!-- @[json_nesting_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -120,21 +130,21 @@ interface TestObj {
 interface TestStr {
   info: string;
 }
-// ...
+  // ...
   /*
    * Convert `{"info": "{"name": "zhangsan", "age": 18}"}` in the original JSON string
    * to `{"info": {"name": "zhangsan", "age": 18}}`.
    * */
   let jsonStr = `{"info": {"name": "zhangsan", "age": 18}}`;
   let obj1  = JSON.parse(jsonStr) as TestObj;
-  console.info(JSON.stringify(obj1));    //{"info":{"name":"zhangsan","age":18}}
+  console.info(JSON.stringify(obj1));    // {"info":{"name":"zhangsan","age":18}}
   // Obtain the name property in the JSON string.
   console.info(obj1.info.name); // zhangsan
 ```
 
 Method 2: Escape the nested quotation marks in the JSON string to restore the proper JSON structure.
 
-<!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
+<!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -151,10 +161,10 @@ interface TestObj {
 interface TestStr {
   info: string;
 }
-// ...
+  // ...
   /*
-   * Double-escape `{"info": "{"name": "zhangsan", "age": 18}"}` in the original JSON string
-   * and convert it to `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`.
+   * Double-escape the original JSON string `{"info": "{"name": "zhangsan", "age": 18}"}`
+   * Modify it to `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`
    * */
   let jsonStr = `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`;
   let obj2 = JSON.parse(jsonStr) as TestStr;
@@ -168,17 +178,17 @@ interface TestStr {
 
 If the JSON string contains an integer less than -(2^53-1) or greater than (2^53-1), the data precision is lost or incorrect after parsing. In this scenario, **BigIntMode** must be specified to parse big integers as BigInt.
 
-<!-- @[containing_bigInt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets) -->
+<!-- @[containing_bigInt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
-// ...
+  // ...
   let numberText = '{"number": 10, "largeNumber": 112233445566778899}';
 
   let numberObj1 = JSON.parse(numberText) as Object;
   console.info((numberObj1 as object)?.['largeNumber']);    // 112233445566778900
 
-  // Use the BigInt mode of PARSE_AS_BIGINT for parsing to avoid parsing errors.
+  // Use the BigInt mode of PARSE_AS_BIGINT for parsing to avoid large integer parsing errors.
   let options: JSON.ParseOptions = {
     bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT,
   }
@@ -234,23 +244,23 @@ import { JSON } from '@kit.ArkTS';
 
 In JSON serialization, floating-point numbers undergo special handling: When the fractional part is 0, it will be automatically omitted for concision. This may result in loss of precision information and affect scenarios where accurate representation of floating-point numbers is required (such as financial calculation and scientific measurement). The following example provides a solution to this scenario:
 
-<!-- @[float_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets) -->
+<!-- @[float_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
-// ...
-  // Serializing a floating-point number with a non-zero fractional part works as expected.
+  // ...
+  // Serialize a floating-point number whose decimal part is not zero. It can be serialized normally.
   let floatNumber1 = 10.12345;
   console.info(JSON.stringify(floatNumber1)); // 10.12345
 
-  // Serializing a floating-point number with a zero fractional part results in the loss of fractional precision for a more concise representation.
+  // Serialize a floating-point number whose decimal part is zero. To keep the value concise, the precision of the decimal part is lost.
   let floatNumber2 = 10.00;
   console.info(JSON.stringify(floatNumber2)); // 10
 
   // The following is a method to prevent the loss of floating-point precision:
   let result = JSON.stringify(floatNumber2, (key: string, value: Object): Object => {
     if (typeof value === 'number') {
-      // Customize the fixed precision as needed for your specific use case.
+      // Customize the required fixed precision based on the business scenario.
       return value.toFixed(2);
     }
     return value;

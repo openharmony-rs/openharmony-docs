@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "为存量应用提供OpenSL ES录音与缓冲队列示例，新开发推荐使用OHAudio。"
+keywords: [OpenSL ES, OHAudio, 录音缓冲队列, CreateAudioRecorder, SetRecordState]
+doctype: guide
+status: not_recommended
+---
+
 # 使用OpenSL ES开发音频录制功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -114,7 +122,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    SLDataFormat_PCM format_pcm = {
        SL_DATAFORMAT_PCM,           // 输入的音频格式。
        1,                           // 单声道。
-       SL_SAMPLINGRATE_44_1,        // 采样率: 44100HZ。
+       SL_SAMPLINGRATE_44_1,        // 采样率: 44100Hz。
        SL_PCMSAMPLEFORMAT_FIXED_16, // 音频采样格式, 小端, 带符号的16位整数。
        16,
        SL_SPEAKER_FRONT_LEFT,

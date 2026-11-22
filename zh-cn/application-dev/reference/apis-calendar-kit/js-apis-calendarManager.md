@@ -260,6 +260,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. <br>适用版本：23+|
 
 **示例**：
@@ -331,6 +332,7 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -722,6 +724,7 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -790,6 +793,7 @@ addEvent(event: Event): Promise\<number>
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -851,6 +855,8 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -926,6 +932,8 @@ addEvents(events: Event[]): Promise\<void>
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -983,6 +991,14 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 | -------- | -------------------- | ---- |---------------------------------------|
 | id       | number               | 是   | 日程id，传入的日程id为整数，表示已创建日程的id，是日程的唯一标识符。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数，当删除日程成功时，err为undefined；否则为错误对象。  |
+
+**错误码：**
+
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
+
+| 错误码ID    | 错误信息                        |
+|----------| ------------------------------ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 
 **示例**：
 
@@ -1046,6 +1062,14 @@ deleteEvent(id: number): Promise\<void>
 | -------------- | ------------------------- |
 | Promise\<void> | Promise对象，无返回结果。 |
 
+**错误码：**
+
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
+
+| 错误码ID    | 错误信息                        |
+|----------| ------------------------------ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
+
 **示例**：
 
 ```typescript
@@ -1102,6 +1126,15 @@ deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 | -------- | -------------------- | ---- |--------------------------------------------------|
 | ids      | number[]             | 是   | 日程id数组。                                          |
 | callback | AsyncCallback\<void> | 是   | 回调函数，当删除多个日程成功时，err为undefined；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
+
+| 错误码ID    | 错误信息                        |
+|----------| ------------------------------ |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 
 **示例**：
 
@@ -1178,6 +1211,15 @@ deleteEvents(ids: number[]): Promise\<void>
 | -------------- | ------------------------- |
 | Promise\<void> | Promise对象，无返回结果。 |
 
+**错误码：**
+
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
+
+| 错误码ID    | 错误信息                        |
+|----------| ------------------------------ |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
+
 **示例**：
 
 ```typescript
@@ -1246,6 +1288,14 @@ updateEvent(event: Event, callback: AsyncCallback\<void>): void
 | event    | [Event](#event)      | 是   | Event对象。                                       |
 | callback | AsyncCallback\<void> | 是   | 回调函数，当更新日程成功时，err为undefined；否则为错误对象。 |
 
+**错误码：**
+
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
+
+| 错误码ID    | 错误信息                        |
+|----------| ------------------------------ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
+
 **示例**：
 
 ```typescript
@@ -1309,6 +1359,14 @@ updateEvent(event: Event): Promise\<void>
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
 | Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
+
+| 错误码ID    | 错误信息                        |
+|----------| ------------------------------ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 
 **示例**：
 
@@ -1380,6 +1438,7 @@ API version 20之前，默认查询字段包括id、type、title、startTime、e
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied. <br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -1437,6 +1496,8 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -1532,6 +1593,8 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -1633,6 +1696,7 @@ setConfig(config: CalendarConfig, callback: AsyncCallback\<void>): void
 | 错误码ID    | 错误信息                   |
 |----------|------------------------|
 | 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 
 **示例**：
 
@@ -1693,6 +1757,7 @@ setConfig(config: CalendarConfig): Promise\<void>
 | 错误码ID    | 错误信息                   |
 |----------|------------------------|
 | 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 
 **示例**：
 
@@ -1797,6 +1862,8 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.<br>适用版本：23+  |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
@@ -1874,6 +1941,7 @@ openEventEditPage(id: number): Promise\<void>
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 23900001 | Parameter value error. |
+| 23900003 | The specified account was not found.<br>适用版本：26.0.1+  |
 | 23900005 | This event cannot be edited. |
 
 **示例**：
@@ -1950,7 +2018,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 | 名称           | 类型     | 只读    | 可选 | 说明                                                         |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | 否     | 是  | 是否打开Calendar下所有Event提醒能力。当取值为true时，该Calendar下所有Event具备提醒能力；当取值为false时，不具备提醒能力，默认具备提醒能力。 |
-| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000001至0xFFFFFF或0x00000001至0xFFFFFFFF，超出取值范围会导致颜色值与颜色不匹配，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFF'。不设置时默认值为0xFF0A59F7，输入0或'#000000'时显示日历主题颜色朱彤色，输入undefined或错误值时抛异常。 |
+| color          | number \| string | 否   | 是  | Calendar颜色。值为number时取值范围为0x000001至0xFFFFFF或0x00000001至0xFFFFFFFF，超出取值范围会导致颜色值与颜色不匹配，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFF'。<br>输入0或'#000000'时显示日历主题颜色朱彤色，输入undefined或错误值时抛异常。<br>针对搭载OpenHarmony 5.1.0以下版本的设备，默认颜色为黑色。<br>针对搭载OpenHarmony 5.1.0至<!--RP3-->OpenHarmony 7.0<!--RP3End-->（不含）版本的设备，默认颜色为红色。<br>针对搭载<!--RP3-->OpenHarmony 7.0<!--RP3End-->及以上版本的设备，默认颜色值为0xFF0A59F7。 |
 
 ## Event
 

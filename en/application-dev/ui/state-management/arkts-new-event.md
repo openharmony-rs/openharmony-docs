@@ -1,14 +1,14 @@
 # \@Event Decorator: Standardizing Component Output
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:05:47.047Z pushedAt=2026-07-23T12:01:18.035Z -->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-10-28T04:01:15.398Z pushedAt=2026-10-28T07:56:37.210Z nl=1 -->
 
 To enable a child component to request the parent component to update \@Param decorated variables, developers can use the [\@Event](../../reference/apis-arkui/arkui-ts/ts-state-management-event.md#event) decorator. Using \@Event to decorate a callback method is a convention that indicates the child component needs a callback to update the data source.
+
 
 \@Event works with \@Param to implement two-way data synchronization. Before reading this topic, you are advised to read [\@Param](./arkts-new-param.md).
 
@@ -29,7 +29,6 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 - You need to determine the parameters and return value in the callback decorated with \@Event.
 
 - \@Event has no effect when decorating non-callback variables. If uninitialized, it automatically generates an empty function as the default callback.
-
 - If \@Event is not initialized externally but has a default value, the default function will be used for processing.
 
 \@Param marks the input of a component, indicating that the decorated variable is affected by the parent component. \@Event marks the output of a component, allowing the child component to influence the parent. Decorating a callback with \@Event indicates that the callback is the output of the custom component. The parent component needs to determine whether to provide the corresponding method for the child component to change the data source of the \@Param variable.
@@ -48,15 +47,16 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 
   ```ts
   @ComponentV2
-  struct Index {
+  struct ComponentV2Example {
     @Event changeFactory: () => void = () => {}; // Correct usage.
     @Event message: string = 'abcd'; // Incorrect usage: Decorating a non-function variable, @Event has no effect.
   }
   @Component
-  struct Index {
+  struct ComponentExample {
     @Event changeFactory: () => void = () => {}; // Incorrect usage. An error is reported during compilation.
   }
   ```
+
 
 ## Use Scenarios
 

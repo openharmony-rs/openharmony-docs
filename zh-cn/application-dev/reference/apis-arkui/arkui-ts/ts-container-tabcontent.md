@@ -131,11 +131,11 @@ tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
 > - 当visibility为TabVisibility.HIDDEN且不设置displayMode时，该页签在两种显示模式中均不显示。
 > - 隐藏的页签内容仍可通过TabsController.changeIndex()或修改index状态变量切换显示。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,6 +145,72 @@ tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
 | ------- | ---------- | ---- | ----- |
 | visibility | [TabVisibility](#tabvisibility) | 是   | Tab页签可见性。 |
 | displayMode | [TabBarDisplayMode](./ts-container-tabs.md#tabbardisplaymode) | 否   | 可见性对应的显示模式。<br/>不设置时，visibility同时作用于侧边栏和底部TabBar。<br/>设置为TabBarDisplayMode.SIDEBAR时，visibility仅作用于侧边栏。设置为TabBarDisplayMode.BOTTOM_TABBAR时，visibility仅作用于底部TabBar。 |
+
+### sidebarSection
+
+sidebarSection(value: Optional\<SidebarSection>)
+
+设置该TabContent所属的侧边页签栏分组，用于将页签按标题归类的形式展示。未通过该接口设置时，该页签不属于任何分组。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ----- |
+| value | Optional<[SidebarSection](#sidebarsection-1)> | 是 | 侧边页签栏分组信息。<br/>设置undefined时，该页签不属于任何分组。 |
+
+**示例：**
+
+该示例通过[sidebarSection](#sidebarsection)属性，设置该TabContent所属的侧边页签栏分组，用于将页签按标题归类的形式展示。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SectionExample {
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        // 请开发者将$r('app.media.startIcon')替换为实际的资源
+        }.tabBar({text:'text1', icon:$r('app.media.startIcon')}).sidebarSection({title: 'section1'})
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar({text:'text2', icon:$r('app.media.startIcon')})
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar({text:'text3', icon:$r('app.media.startIcon')}).sidebarSection({title: 'section2', order:1})
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar({text:'text4', icon:$r('app.media.startIcon')})
+        // 使用强调类型字体样式
+        .sidebarSection({title: 'section3', order:2, titleStyle:SidebarSectionTitleStyle.EMPHASIZED})
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar({text:'text5', icon:$r('app.media.startIcon')})
+      }
+      .barStyle(TabBarStyle.SIDEBAR)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![tabContentSidebarSection](figures/sidebarSection.png)
 
 ## TabBarOptions<sup>18+</sup>对象说明
 
@@ -164,7 +230,7 @@ tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
 | -------- | -------- | --- | ----- | -------- |
 | icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。未设置时不显示图片。如果icon采用svg格式图源，需删除其内置的宽高属性。否则，icon大小将使用svg图源内置的宽高属性值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。未设置时不显示文字。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| badge | [TabBarBadgeStyle](#tabbarbadgestyle) | 否 | 是 | 页签的信息标记样式。未设置时不显示信息标记。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| badge | [TabBarBadgeStyle](#tabbarbadgestyle) | 否 | 是 | 页签的信息标记样式。未设置时不显示信息标记。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -768,9 +834,9 @@ badge(badgeStyle: TabBarBadgeStyle): BottomTabBarStyle
 
 设置底部页签的信息标记样式。未设置时不显示信息标记。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -838,11 +904,11 @@ badge(badgeStyle: TabBarBadgeStyle): BottomTabBarStyle
 
 Tab页签可见性枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -855,9 +921,9 @@ Tab页签可见性枚举。
 
 页签信息标记样式对象。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -874,9 +940,9 @@ type TabBarBadgeType = number | ResourceStr
 
 信息标记显示内容的联合类型。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -886,6 +952,48 @@ type TabBarBadgeType = number | ResourceStr
 | -------- | -------- |
 | number | 数字类型，用于显示数字内容的信息标记。 |
 | [ResourceStr](ts-types.md#resourcestr) | 文本类型，用于显示文本内容的信息标记。 |
+
+## SidebarSection
+
+侧边页签栏分组对象，用于将页签按标题归类展示。
+
+> **说明：**
+>
+> - 仅当[barStyle](ts-container-tabs.md#barstyle)为侧边页签栏样式时本属性生效。
+> - 不属于任何分组的页签显示在页签区域的最前端。
+> - 设置有效order的分组显示在未设置order的分组前面。设置相同order的分组之间、或未设置order的分组之间，按分组内首个页签在Tabs中的索引排序，索引越小越靠前。
+> - 标题区域被点击可以展开或收起分组内的页签。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | -------- |
+| title | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 分组标题，文本显示在被分组页签的上方，设置相同标题的页签会归类到同一组。<br/>设置空字符串时，该页签不属于任何分组。 |
+| order | number | 否 | 是 | 分组的排序序号，序号越小排序越靠前。<br>取值范围：[0, 2^31-1]。<br>设置取值范围外的值时，order无效，非整数时会舍去小数部分取整数。 |
+| titleStyle | [SidebarSectionTitleStyle](#sidebarsectiontitlestyle) | 否 | 是 | 分组标题的字体样式。<br/>默认值：SidebarSectionTitleStyle.STANDARD |
+
+## SidebarSectionTitleStyle
+
+分组标题字体样式枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| -------- | ----- | ------- |
+| STANDARD | 0 | 标准字体的标题样式。 |
+| EMPHASIZED | 1 | 强调字体的标题样式。字体会较大较粗。 |
 
 ## 事件
 
@@ -2331,7 +2439,7 @@ struct TabsIndicatorExample {
 
 该示例通过[tabBarVisibility](#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
 
-从API版本26.2.0开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
+从API版本26.0.1开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
 
 ```ts
 // xxx.ets
@@ -2451,7 +2559,7 @@ struct TabBarVisibilityExample {
 
 该示例通过[TabBarOptions](#tabbaroptions18对象说明)的badge属性和[BottomTabBarStyle](#bottomtabbarstyle9)的[badge](#badge)属性，设置页签的信息标记内容。
 
-从API版本26.0.1开始，[TabBarOptions](#tabbaroptions18对象说明)和[BottomTabBarStyle](#bottomtabbarstyle9)都新增了badge属性。
+从API版本26.1.0开始，[TabBarOptions](#tabbaroptions18对象说明)和[BottomTabBarStyle](#bottomtabbarstyle9)都新增了badge属性。
 
 ```ts
 // xxx.ets

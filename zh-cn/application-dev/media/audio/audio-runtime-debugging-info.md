@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频快照能力，通过获取播放、录音、耳返、会话、编创等模块的运行状态快照，帮助开发者定位无声、音量异常、焦点丢失等问题。"
+keywords: [音频快照, 音频调试, 音频运行状态, 播放无声, 焦点丢失]
+doctype: faq
+status: active
+---
 # 使用音频快照获取问题定位信息
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -476,7 +483,7 @@ OH_AudioSessionManager *audioSessionManager;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 // ...
   // 设置音频并发模式。
   let strategy: audio.AudioSessionStrategy = {
@@ -493,10 +500,10 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
   // fd 文件描述符，实际使用时请根据具体情况获取
   let filePath = context.filesDir + '/audio_session_info.txt';
-  let fd = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY | fs.OpenMode.TRUNC).fd;
+  let fd = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.TRUNC).fd;
   // 输出到文件。
   audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
-  fs.closeSync(fd);
+  fileIo.closeSync(fd);
 ```
 
 **输出示例：**

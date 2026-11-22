@@ -49,10 +49,10 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 
@@ -115,10 +115,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 
@@ -182,10 +182,10 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 
@@ -373,7 +373,7 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | The application is not a system application. |
-| 801 | Capability not supported.function activateSceneAnimation can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported.function activateSceneAnimation cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -432,7 +432,7 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | The application is not a system application. |
-| 801 | Capability not supported.function deactivateSceneAnimation can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported.function deactivateSceneAnimation cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -567,6 +567,55 @@ try {
 }
 ```
 
+## formProvider.openFormManagerCrossBundle<sup>20+</sup>
+
+openFormManagerCrossBundle(want: Want): void
+
+打开卡片管理页面。
+
+**需要权限：** ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 打开卡片管理页面的请求中的want参数，需包含以下字段。<br>bundleName: 卡片所属应用的包名。<br>abilityName: 卡片所属的ability名称。<br>parameters:<br>- ohos.extra.param.key.form_dimension: [卡片尺寸](js-apis-app-form-formInfo.md#formdimension)。<br>- ohos.extra.param.key.form_name: 卡片名称。<br>- ohos.extra.param.key.module_name: 卡片所属的模块名称。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息                                      |
+| -------- | -------------------------------------------- |
+| 201      | Permissions denied.                          |
+| 202      | The application is not a system application. |
+| 801      | Capability not supported.                    |
+| 16500050 | IPC connection error.                        |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+const want: Want = {
+  bundleName: 'com.example.formbutton',
+  abilityName: 'EntryFormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  },
+};
+try {
+  formProvider.openFormManagerCrossBundle(want);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
 
 ## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
 

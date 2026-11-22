@@ -110,3 +110,67 @@ struct Index {
 }
 ```
 
+### setExtraFlag
+
+setExtraFlag(flag: number)
+
+设置XComponent的额外标志，支持的能力参见[XComponentExtraFlag](#xcomponentextraflag)枚举值说明。
+
+> **说明：**
+>
+> - 仅type为SURFACE时有效。
+>
+> - 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                   |
+| -------- | ------- | ---- | ---------------------- |
+| flag | number | 是   | XComponent的额外标志，具体取值见[XComponentExtraFlag](#xcomponentextraflag)枚举值。|
+
+**示例：**
+
+以下示例通过setExtraFlag方法设置ENABLE_SOLID_COLOR标志，为XComponent开启纯色图层。
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 20 }) {
+      XComponent({ type: XComponentType.SURFACE })
+        .backgroundColor(Color.Black)
+        .setExtraFlag(XComponentExtraFlag.ENABLE_SOLID_COLOR)
+        .width('90%')
+        .height('40%')
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+## XComponentExtraFlag
+
+XComponent额外标志的枚举定义。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 名称           | 值  | 说明                         |
+| -------------- | --- | ---------------------------- |
+| ENABLE_SOLID_COLOR | 0x01 | 纯色图层标志。开启该标志后，系统侧会为XComponent创建纯色图层。纯色图层的尺寸与XComponent尺寸一致，颜色由backgroundColor属性决定，默认为黑色。 |

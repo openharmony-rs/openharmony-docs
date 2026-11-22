@@ -34,8 +34,8 @@
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| bundle_version | string | 应用版本。 |
-| bundle_version_code | number | 应用版本字符串。 |
+| bundle_version | string | 应用版本字符串。 |
+| bundle_version_code | number | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | process_name | string | 应用的进程名称。 |
 | pid | number | 应用的进程ID。 |

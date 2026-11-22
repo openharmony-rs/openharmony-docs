@@ -1,9 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "面向Swift开发者对比讲解ArkTS的基础语法、语言结构与类型系统差异，梳理迁移中的误解与陷阱，帮助其快速上手ArkTS应用开发。"
+keywords: [Swift, ArkTS, 迁移指导, Swift开发者, 语言对比, 类型系统, 语法差异]
+doctype: guide
+status: active
+---
+
 # 从Swift到ArkTS的迁移指导
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -138,8 +146,8 @@ ArkTS的类系统在语法层面与Swift相似，但在高阶特性上展现出�
 
 | 特性       |Swift实现方式      | ArkTS实现方式            | 说明                          |
 |------------|------------|------------------|-------------------------------|
-| 命名空间组织    | 嵌套结构/内部类     | `namespace`关键字或模块文件结构。           | 支持显式命名空间与模块化组织的混合模式。   |
-| 类继承机制        | 基于类的继承体系        | 基于原型链的继承机制。           | 语法相似但底层机制不同。        |
+| 命名空间组织    | 嵌套结构/内部类。     | `namespace`关键字或模块文件结构。           | 支持显式命名空间与模块化组织的混合模式。   |
+| 类继承机制        | 基于类的继承体系。        | 基于原型链的继承机制。           | 语法相似但底层机制不同。        |
 | 类成员可见性    | public/private/internal       | public/private/protected          | Swift使用`internal`控制模块内可见性，ArkTS使用`protected`控制类及子类可见性，并通过模块导出控制可见范围。|
 
 **命名空间管理** 

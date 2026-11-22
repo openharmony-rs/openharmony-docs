@@ -1,23 +1,24 @@
-# VPN Management (For System Applications Only)
+# VPN Management (for System Applications Only)
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=70a848e42540e882a90a28e9dc897ae7488c46f1 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Overview
 
-A virtual private network (VPN) is a dedicated network established on a public network. On a VPN, the connection between any two nodes does not have an end-to-end physical link required by the traditional private network. Instead, user data is transmitted over a logical link because a VPN is a logical network deployed over the network platform (such as the Internet) provided by the public network service provider.
+A virtual private network (VPN) is a dedicated network established on a public network. On a VPN, the connection between any two nodes does not have an end-to-end physical link required by the traditional private network. Instead, it is a logical network built on the network platform (such as the Internet) provided by public network service providers, and user data is transmitted over logical links.
 
 > **NOTE**
-> To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-vpn-sys.md).
+> To maximize the app running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the other modes, see [@ohos.net.vpn (VPN Management) (System API)](../reference/apis-network-kit/js-apis-net-vpn-sys.md).
 
 The following describes the development procedure specific to each application scenario.
 
 ## Available APIs
 
-For the complete list of APIs and example code, see [API Reference](../reference/apis-network-kit/js-apis-net-vpn-sys.md).
+For the complete JS API reference and sample code, see [@ohos.net.vpn (VPN Management) (System API)](../reference/apis-network-kit/js-apis-net-vpn-sys.md).
 
 | Name                                                           | Description                                         |
 | ----------------------------------------------------------------- | --------------------------------------------------- |

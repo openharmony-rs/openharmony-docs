@@ -1,15 +1,15 @@
 # Obtaining the User Directory Environment (C/C++)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=60725424567562f162d93888576df6e82ec4222e translatedAt=2026-08-26T04:33:48.059Z pushedAt=2026-08-28T06:53:04.836Z -->
+<!-- md-trans-meta sourceCommit=5cff366f409fdf6e54a7830cc6fc1d6e0b852e63 translatedAt=2026-10-29T10:30:53.815Z pushedAt=2026-10-29T10:30:53.815Z nl=1 -->
 
 ## When to Use
 
-You can use [Environment](../reference/apis-core-file-kit/capi-oh-environment-h.md) to allow a third-party application to access files in a user directory.
+[Environment](../reference/apis-core-file-kit/capi-oh-environment-h.md) provides APIs for obtaining the paths of public user directories, allowing third-party applications to access files in those directories.
 
 ## Constraints
 
@@ -20,9 +20,9 @@ You can use [Environment](../reference/apis-core-file-kit/capi-oh-environment-h.
 
 For details about the APIs, see [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md).
 
-| API| Description|
+| Name | Description|
 | -------- | -------- |
-| FileManagement_ErrCode OH_Environment_GetUserDownloadDir (char **result)| Obtains the sandbox path of the user's **Download** directory. Supported on 2-in-1 devices.<br>Supported on tablet devices starting from API version 26.0.0. |
+| FileManagement_ErrCode OH_Environment_GetUserDownloadDir (char **result) | Obtains the sandbox path of the user's **Download** directory. Supported on 2-in-1 devices.<br>Supported on tablet devices starting from API version 26.0.0. |
 | FileManagement_ErrCode OH_Environment_GetUserDesktopDir (char **result) | Obtains the sandbox path of the user's **Desktop** directory. Supported on 2-in-1 devices.<br>Supported on tablet devices starting from API version 26.0.0. |
 | FileManagement_ErrCode OH_Environment_GetUserDocumentDir (char **result) | Obtains the sandbox path of the user's **Document** directory. Supported on 2-in-1 devices.<br>Supported on tablet devices starting from API version 26.0.0. |
 
@@ -47,8 +47,8 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 1. Call **OH_Environment_GetUserDownloadDir** to obtain the sandbox path of the user **Download** directory. The memory allocated must be released using **free()**. <br>Example:
 
-   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
-
+   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
+   
    ``` C++
    void GetUserDownloadDirPathExample()
    {
@@ -56,18 +56,18 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, path=%{public}s", downloadPath);
-           free(downloadPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
+       free(downloadPath);
    }
    ```
 
 
 2. Call **OH_Environment_GetUserDesktopDir** to obtain the sandbox path of the user **Desktop** directory. The memory allocated must be released using **free()**. <br>Example:
 
-   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
-
+   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
+   
    ``` C++
    void GetUserDesktopDirPathExample()
    {
@@ -75,18 +75,18 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user desktop directory, path=%{public}s", desktopPath);
-           free(desktopPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user desktop path, error code is %{public}d", ret);
        }
+       free(desktopPath);
    }
    ```
 
 
 3. Call **OH_Environment_GetUserDocumentDir** to obtain the sandbox path of the user **Document** directory. The memory allocated must be released using **free()**. <br>Example:
 
-   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
-
+   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
+   
    ``` C++
    void GetUserDocumentDirPathExample()
    {
@@ -94,10 +94,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user document directory, path=%{public}s", documentPath);
-           free(documentPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user document path, error code is %{public}d", ret);
        }
+       free(documentPath);
    }
    ```
 
@@ -108,8 +108,8 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    ``` C++
    #include <sys/stat.h>
    ```
-   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
-
+   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->        
+   
    ``` C++
    void GetUserDownloadDirSizeExample()
    {
@@ -124,9 +124,9 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
            } else {
                OH_LOG_ERROR(LOG_APP, "Failed to stat user document directory, error code is %{public}d", result);
            }
-           free(documentPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user document directory, error code is %{public}d", ret);
        }
+       free(documentPath);
    }
    ```

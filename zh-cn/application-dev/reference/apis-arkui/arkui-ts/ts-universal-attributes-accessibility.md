@@ -225,7 +225,7 @@ accessibilityLevel(value: string): T
 
 accessibilityVirtualNode(builder: CustomBuilder): T
 
-设置无障碍虚拟子节点。对自绘制组件传入一个CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。如使用画布组件[Canvas](ts-components-canvas-canvas.md)时，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
+设置无障碍虚拟子节点。对组件传入一个CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。推荐在自绘制组件上使用，如画布组件[Canvas](ts-components-canvas-canvas.md)绘制的内容无法直接被无障碍服务识别，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。使用示例请参考[设置无障碍虚拟子节点](../../../ui/arkts-universal-attributes-accessibility.md#设置无障碍虚拟子节点)。
 
 > **说明：**
 >
@@ -241,7 +241,7 @@ accessibilityVirtualNode(builder: CustomBuilder): T
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| builder  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 无障碍虚拟子节点，使开发者可以对自绘制组件传入一个CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。 |
+| builder  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 无障碍虚拟子节点，使开发者可以对组件传入一个CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。 |
 
 **返回值：**
 

@@ -1,11 +1,11 @@
 # Hover Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e8a3df3f036267095aa2be3a05bfa4ba7c1727ba translatedAt=2026-09-02T12:27:30.906Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:54:57.728Z pushedAt=2026-11-13T01:06:00.161Z nl=1 -->
 
 A hover event is triggered when the cursor slides over a component or when a stylus hovers and moves over the screen. It is used to listen for interaction states such as the mouse or stylus entering or exiting a component and hovering over a component, and is suitable for scenarios such as updating component styles and displaying position information based on the hover state.
 
@@ -147,7 +147,7 @@ struct OnHoverMoveEventExample {
       Button('onHoverMove', { type: ButtonType.Capsule })
         .width(180).height(80)
         .onHoverMove((event: HoverEvent) => {
-          this.hoverMoveText = 'onHoverMove:\nXY = (' + event.x + ', ' + event.y + ')' + 
+          this.hoverMoveText = 'onHoverMove:\nXY = (' + event.x + ', ' + event.y + ')' +
                                '\nwindowXY = (' + event.windowX + ', ' + event.windowY + ')' +
                                '\ndisplayXY = (' + event.displayX + ', ' + event.displayY + ')';
         })
@@ -163,4 +163,3 @@ Diagrams:
 When a stylus hovers over a button, the UI continuously updates to show the position of the stylus tip.
 
 ![onHoverMove](figures/onHoverMove.png)
-<!--no_check-->

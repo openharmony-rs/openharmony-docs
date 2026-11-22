@@ -1,12 +1,13 @@
 # Audio Focus and Audio Session Overview
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2acf78e637d04a14dbd641a9e95180247cab262f translatedAt=2026-09-18T02:13:07.102Z pushedAt=2026-09-18T10:38:53.346Z -->
+<!-- md-trans-meta sourceCommit=9f698f1a1008578108c1a931ca1eb6c0a8f939e2 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=2 -->
 
+ 
 When an app plays or records audio, it may encounter audio focus conflicts with other apps or with other audio streams within the same app. This section provides an overview of how these conflicts are handled and explains how to use the system's audio focus management capabilities to resolve audio interruption issues.
 
 The system provides two mechanisms for managing audio conflicts: audio focus and audio sessions.
@@ -90,7 +91,6 @@ App A is playing music. The user then launches App B, which also starts audio pl
 | Default scenario | Starts a call. | Starts recording. | Recording fails. | - |
 | Solution 1 | No configuration required. | Uses the [setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20) API. | Recording can start, but the recorded data is a silent stream. | - |
 | Solution 2 | No configuration required. | Uses the recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24) with `AudioSessionBehaviorFlags` set to `MUTE_WHEN_INTERRUPTED`. | Recording can start, but the recorded data is a silent stream. | Equivalent to Solution 1; Solution 2 is recommended. |
-| Solution 3 | No configuration required. | Uses the recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24) with `AudioSessionBehaviorFlags` set to `PAUSE_WHEN_INTERRUPTED`. | Recording is paused. After App A's call ends, App B receives a `RESUME` event and resumes recording. | - |
 
 ### Scenario 4: Recording Started During Music Playback, Interrupting the Music
 
@@ -98,8 +98,8 @@ App A is playing music, and app B starts recording (via voice recognition, voice
 
 | - | App A | App B | Interruption Effect | Remarks |
 |--|-------|-------|---------|------|
-| Default scenario | Starts music playback. | Start recording. | Recording preempts focus, and music pauses. After recording ends, music receives the `RESUME` hint and can resume. | The `RESUME` event requires the app to actively call `play()` to resume. |
-| Solution 1 | Uses the audio recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24), with `AudioSessionBehaviorFlags` set to `MUTE_WHEN_INTERRUPTED`. | No adaptation required. | Music continues playing muted during recording, and resumes audibly after recording ends. | Resuming playback skips the muted content; not recommended for scenarios sensitive to the progress bar. |
+| Default scenario | Starts music playback. | Starts recording. | Recording preempts focus, and music pauses. After recording ends, music receives the `RESUME` hint and can resume. | The `RESUME` event requires the app to actively call `play()` to resume. |
+| Solution 1 | Uses the audio rendering API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24) with `MUTE_WHEN_INTERRUPTED` for `AudioSessionBehaviorFlags`. | No adaptation required. | Music continues playing muted during recording, and resumes audibly after recording ends. | Resuming playback skips the muted content; not recommended for scenarios sensitive to the progress bar. |
 | Solution 2 | No adaptation required. | Audio session concurrency policy uses `CONCURRENCY_DUCK_OTHERS`. | Recording proceeds normally, and music volume is lowered. Volume automatically restores after recording ends. | Volume restores automatically, with no additional adaptation required. |
 | Solution 3 | No adaptation required. | Audio session concurrency policy uses `CONCURRENCY_MIX_WITH_OTHERS`. | Recording and music run simultaneously without affecting each other. | - |
 

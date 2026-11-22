@@ -208,7 +208,8 @@ getCellularRxBytes(callback: AsyncCallback\<number>): void
 
 > **说明：**
 >
-> 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。<br>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的下行蜂窝网络流量数据。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -253,7 +254,8 @@ getCellularRxBytes(): Promise\<number>
 
 > **说明：**
 >
-> 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。<br>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的下行蜂窝网络流量数据。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -294,7 +296,8 @@ getCellularTxBytes(callback: AsyncCallback\<number>): void
 
 > **说明：**
 >
-> 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。<br>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的上行蜂窝网络流量数据。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -339,7 +342,8 @@ getCellularTxBytes(): Promise\<number>
 
 > **说明：**
 >
-> 本接口建议在蜂窝网络处于连接状态时调用，否则会抛出2103012错误码。<br>
+> - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的上行蜂窝网络流量数据。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -757,7 +761,7 @@ getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | 是   | 指定查询的Socket的FD(file description)。                     |
+| sockfd   | number                 | 是   | 指定查询的Socket的FD(file descriptor)。                     |
 | callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的下行流量时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -803,7 +807,7 @@ getSockfdRxBytes(sockfd: number): Promise\<number\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | 是   | 指定查询的Socket的FD(file description)。 |
+| sockfd | number | 是   | 指定查询的Socket的FD(file descriptor)。 |
 
 **返回值：**
 
@@ -852,7 +856,7 @@ getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | 是   | 指定查询的Socket的FD(file description)。                     |
+| sockfd   | number                 | 是   | 指定查询的Socket的FD(file descriptor)。                     |
 | callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的上行流量时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -898,7 +902,7 @@ getSockfdTxBytes(sockfd: number): Promise\<number\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | 是   | 指定查询的Socket的FD(file description)。 |
+| sockfd | number | 是   | 指定查询的Socket的FD(file descriptor)。 |
 
 **返回值：**
 

@@ -518,6 +518,53 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+### onAccountSwitched
+
+onAccountSwitched(fromAccountId: number, toAccountId: number): void
+
+系统账号切换事件回调。当系统从当前账号切换到另一个账号时触发。与已有的[onAccountSwitched](#onaccountswitched18)相比，该回调同时提供切出账号ID和切入账号ID，便于更详细地跟踪账号切换过程。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_ACCOUNT_SWITCHED事件才能收到此回调。企业设备管理场景下，设备管理应用可订阅系统账号切换事件，并在该回调中上报事件，通知企业管理员。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ------- |
+| fromAccountId | number | 是 | 切换前的用户ID，即切出账号。 |
+| toAccountId | number | 是 | 切换后的用户ID，即切入账号。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_ACCOUNT_SWITCHED];
+try {
+  adminManager.subscribeManagedEventSync(wantTemp, events);
+  console.info('Succeeded in subscribing managed event.');
+} catch (err) {
+  console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
+}
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  // 由于文件中已有同名回调onAccountSwitched(accountId: number)（无toAccountId参数），实际调用时toAccountId必须写成可选参数，写法请参考示例代码。
+  onAccountSwitched(fromAccountId: number, toAccountId?: number) {
+    console.info(`Succeeded in calling onAccountSwitched callback, fromAccountId: ${fromAccountId}, toAccountId: ${toAccountId}`);
+  }
+}
+```
+
 ### onAccountRemoved<sup>18+</sup>
 
 onAccountRemoved(accountId: number): void
@@ -1064,6 +1111,123 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAdminPolicyChanged(event: common.PolicyChangedEvent) {
     // 例如当MDM应用调用setPasswordPolicy接口设置密码策略时，输出示例为： Policy changed, bundleName : com.example.test, functionName: setPasswordPolicy, parameters: {"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}, time: 1776773305379.
     console.info(`Policy changed, bundleName : ${event.bundleName}, functionName: ${event.functionName}, parameters: ${event.parameters}, time: ${event.time}.`);
+  }
+}
+```
+
+### onUnmountExternalStorageDevice
+
+onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void
+
+外置存储设备插入事件回调。通过[usbManager.setExternalStorageInterceptEnable](./js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口开启外置存储设备拦截后，当有外置存储设备插入时，系统会通过该回调将插入的外置存储设备信息上报给开启了该拦截的设备管理应用。仅当插入的外置存储设备类型为[DiskType](./js-apis-enterprise-common.md#disktype)枚举所列的三种类型（SD卡、U盘、光盘）时，才会触发该回调进行上报。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名     | 类型                                                                                                 | 必填 | 说明                                 |
+| ---------- | ---------------------------------------------------------------------------------------------------- | ---- | ------------------------------------ |
+| deviceInfo | [common.ExternalStorageDeviceInfo](./js-apis-enterprise-common.md#externalstoragedeviceinfo)         | 是   | 插入但尚未挂载的外置存储设备信息，包含磁盘类型（type）、挂载路径（devicePath）、卷ID（volumeId）、挂载状态（mountStatus）、厂商ID（vendorId）、产品ID（productId）和序列号（serial），设备管理应用可据此识别插入的设备并做相应处理。       |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void {
+    console.info(`Succeeded in calling onUnmountExternalStorageDevice callback, deviceInfo:${JSON.stringify(deviceInfo)}`);
+  }
+}
+```
+
+### onSmsReceived
+
+onSmsReceived(smsInfo: common.SmsReceiveInfo): void
+
+短信接收回调。当设备收到短信时触发此回调。需要先通过[adminManager.subscribeSmsEvent](./js-apis-enterprise-adminManager.md#adminmanagersubscribesmsevent)接口订阅短信事件，系统接收到短信后才会触发此回调，适用于企业需要对设备收到的短信进行审计等场景。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                                   | 必填 | 说明                                                                                                          |
+| ------- | ---------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------- |
+| smsInfo | [common.SmsReceiveInfo](./js-apis-enterprise-common.md#smsreceiveinfo) | 是   | 短信接收信息，包含SIM卡槽号（slotId）、电话号码（telephoneNumber）、短信条数（count）和短信内容（content）。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, adminManager, common } from '@kit.MDMKit';
+
+try {
+  adminManager.subscribeSmsEvent();
+  console.info('Succeeded in subscribing sms event.');
+} catch (err) {
+  console.error(`Failed to subscribe sms event. Code: ${err.code}, message: ${err.message}`);
+}
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onSmsReceived(smsInfo: common.SmsReceiveInfo): void {
+    console.info('Succeeded in calling onSmsReceived callback');
+  }
+}
+```
+### onPasswordFailed
+
+onPasswordFailed(cumulativeFailedCount: number, accountId: number): void
+
+锁屏密码认证失败事件回调。当锁屏密码认证失败时触发此回调，指纹、人脸等生物识别认证失败不会触发。需要通过接口[adminManager.subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_PASSWORD_FAILED事件。锁屏密码认证成功后累计失败次数重置为0，设备重启后累计失败次数不清零。累计失败次数达到200后，后续锁屏密码认证失败将不再触发此回调。
+
+多个MDM应用订阅此事件时，每个MDM应用都能独立收到回调。多用户场景下，每个用户的累计失败次数独立计数，互不影响。存在隐私空间时，输入与主空间和隐私空间都不匹配的密码时，主空间和隐私空间的累计失败计数均加1；输入隐私空间的正确密码时，隐私空间的累计失败次数重置为0，主空间不变；输入主空间的正确密码时，主空间和隐私空间的累计失败次数均重置为0。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名                | 类型   | 必填 | 说明                                 |
+| -------------------- | ------ | ---- | ----------------------------------- |
+| cumulativeFailedCount | number | 是   | 锁屏密码认证失败的累计次数。取值范围：[0, 200]。             |
+| accountId            | number | 是   | 发生锁屏密码认证失败的用户ID。           |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let events: Array<adminManager.ManagedEvent> = [
+  // 锁屏密码认证失败事件
+  adminManager.ManagedEvent.MANAGED_EVENT_PASSWORD_FAILED];
+try {
+  adminManager.subscribeManagedEventSync(wantTemp, events);
+  console.info('Succeeded in subscribing managed event.');
+} catch (err) {
+  console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
+}
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  // 回调实现
+  onPasswordFailed(cumulativeFailedCount: number, accountId: number) {
+    console.info(`Password authentication failed, accountId: ${accountId}, cumulativeFailedCount: ${cumulativeFailedCount}.`);
   }
 }
 ```

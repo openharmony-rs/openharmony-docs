@@ -88,19 +88,36 @@
 | LANDSCAPE                             | 2    | 表示横屏显示模式。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | PORTRAIT_INVERTED                     | 3    | 表示反向竖屏显示模式。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | LANDSCAPE_INVERTED                    | 4    | 表示反向横屏显示模式。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION                         | 5    | 跟随传感器自动旋转，可以旋转到竖屏、横屏、反向竖屏、反向横屏四个方向，且不受控制中心的旋转开关控制。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION_PORTRAIT                | 6    | 跟随传感器自动竖向旋转，可以旋转到竖屏、反向竖屏，无法旋转到横屏、反向横屏，且不受控制中心的旋转开关控制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_LANDSCAPE               | 7    | 跟随传感器自动横向旋转，可以旋转到横屏、反向横屏，无法旋转到竖屏、反向竖屏，且不受控制中心的旋转开关控制。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION_RESTRICTED              | 8    | 跟随传感器自动旋转，可以旋转到竖屏、横屏、反向竖屏、反向横屏四个方向，且受控制中心的旋转开关控制。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION_PORTRAIT_RESTRICTED     | 9    | 跟随传感器自动竖向旋转，可以旋转到竖屏、反向竖屏，无法旋转到横屏、反向横屏，且受控制中心的旋转开关控制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_LANDSCAPE_RESTRICTED    | 10   | 跟随传感器自动横向旋转，可以旋转到横屏、反向横屏，无法旋转到竖屏、反向竖屏，且受控制中心的旋转开关控制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION                         | 5    | 跟随传感器自动旋转，可以旋转到竖屏、横屏、反向竖屏、反向横屏四个方向，且不受系统旋转锁定开关控制。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO_ROTATION_PORTRAIT                | 6    | 跟随传感器自动竖向旋转，可以旋转到竖屏、反向竖屏，无法旋转到横屏、反向横屏，且不受系统旋转锁定开关控制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_LANDSCAPE               | 7    | 跟随传感器自动横向旋转，可以旋转到横屏、反向横屏，无法旋转到竖屏、反向竖屏，且不受系统旋转锁定开关控制。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| AUTO_ROTATION_RESTRICTED              | 8    | 跟随传感器自动旋转，可以旋转到竖屏、横屏、反向竖屏、反向横屏四个方向，且受系统旋转锁定开关控制。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| AUTO_ROTATION_PORTRAIT_RESTRICTED     | 9    | 跟随传感器自动竖向旋转，可以旋转到竖屏、反向竖屏，无法旋转到横屏、反向横屏，且受系统旋转锁定开关控制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_LANDSCAPE_RESTRICTED    | 10   | 跟随传感器自动横向旋转，可以旋转到横屏、反向横屏，无法旋转到竖屏、反向竖屏，且受系统旋转锁定开关控制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | LOCKED                                | 11   | 表示锁定模式，窗口显示方向与屏幕当前方向一致。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup>        | 12   | 跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定（如在某种设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | 调用时临时旋转到竖屏，之后跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定（如在某种设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | 调用时临时旋转到横屏，之后跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定（如在某种设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | 调用时临时旋转到反向竖屏，之后跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定（如在某种设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | 调用时临时旋转到反向横屏，之后跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定（如在某种设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
+| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup>        | 12   | 跟随传感器自动旋转，受系统旋转锁定开关控制，且可旋转方向受系统判定（例如在直板机设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | 调用时临时旋转到竖屏，之后跟随传感器自动旋转，受系统旋转锁定开关控制，且可旋转方向受系统判定（例如在直板机设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | 调用时临时旋转到横屏，之后跟随传感器自动旋转，受系统旋转锁定开关控制，且可旋转方向受系统判定（例如在直板机设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | 调用时临时旋转到反向竖屏，之后跟随传感器自动旋转，受系统旋转锁定开关控制，且可旋转方向受系统判定（例如在直板机设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | 调用时临时旋转到反向横屏，之后跟随传感器自动旋转，受系统旋转锁定开关控制，且可旋转方向受系统判定（例如在直板机设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
 | FOLLOW_DESKTOP<sup>12+</sup>                   | 17   | 表示跟随桌面的旋转模式，如果桌面可以旋转则可旋转，桌面不可旋转则不可旋转。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager|
+
+## WindowPosition
+
+主窗口可调整到的窗口层级（Z序，ZOrder）枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称        | 值 | 说明                                  |
+| ----------- | ---- | ------------------------------------------------------------ |
+| NOT_TOPMOST | -3   | 取消置顶。取消后，该主窗口不再显示在其他应用窗口之上。<br>若该主窗口当前处于置顶状态，取消时需要[ohos.permission.WINDOW_TOPMOST](../../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)权限。若是非置顶的窗口设置取消置顶时则不需要该权限，且设置后无任何效果。|
+| TOPMOST     | -2   | 置顶。将主窗口置于其他应用窗口之上以确保不被遮挡，并常驻置顶，直到取消置顶。当多个主窗口同时置顶时，后设置置顶的窗口显示在其他置顶窗口之上。<br>设置该值时需要[ohos.permission.WINDOW_TOPMOST](../../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)权限。|
+| BOTTOM      | -1   | 将主窗口置于所有应用主窗口的底部。|
+| TOP         | 0    | 将主窗口置于所有应用主窗口的顶部。该调整单次生效，不会常驻置顶。置顶（TOPMOST）的窗口始终位于最上层，因此若已有其他主窗口置顶，设置该参数的主窗口会被置于所有置顶窗口之下。|
 
 ## RectChangeReason<sup>12+</sup>
 
@@ -119,6 +136,21 @@
 | DRAG  | 4    | 窗口拖拽缩放。 |
 | DRAG_START  | 5    | 窗口开始拖拽缩放。 |
 | DRAG_END  | 6    | 窗口结束拖拽缩放。 |
+
+## FocusChangeReason
+
+窗口焦点状态变化原因的枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| DEFAULT | 0 | 焦点状态因用户点击之外的其他默认原因发生变化。 |
+| CLICK | 1 | 焦点状态因用户点击窗口而发生变化。 |
 
 ## ColorSpace<sup>8+</sup>
 

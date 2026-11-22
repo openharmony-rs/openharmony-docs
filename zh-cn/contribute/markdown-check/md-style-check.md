@@ -92,6 +92,7 @@
 | 检查项 | 报错中的 error_type | 适用文档范围 |
 | --- | --- | --- |
 | [责任田标签检查](#责任田标签检查) | `owner_lost` | `zh-cn/application-dev/` 下文档（master 分支） |
+| [元数据格式检查](#元数据格式检查) | `frontmatter_error` | 含 YAML frontmatter 的 Markdown 文档 |
 | [图片引用检查](#图片引用检查) | `figure_lost`、`figure_check` | 全部 Markdown 文档 |
 | [相对链接检查](#相对链接检查) | `link_error`、`链接不规范`、`链接标题中存在br标签`、`不可链接到一级标题`、`面向第三方应用的文档，链接到了系统应用的文档`、`相对链接不可链接到readme/website` | 全部 Markdown 文档 |
 | [API 链接准确性检查](./API-reference-link-check.md) | `链接名称不准确`、`链接名称在标题及标题下表格均不存在`、`检测到链接名称与目标页面标题不一致` | `application-dev/` 下中文文档 |
@@ -346,7 +347,338 @@ error_info: 该文档编码有问题，请使用utf-8进行编码
 
 修改方法：使用编辑器将文档另存为 UTF-8 编码后重新提交。该报错在多个检查项中均可能出现，含义一致。
 
+
+## 元数据格式检查
+
+### 适用范围
+
+文档首行以 `---` 开头时触发本项检查。无 frontmatter 的文档跳过，不报错。
+
+### 格式规范
+
+合法的元数据格式如下：
+
+```yaml
 ---
+kits: [ArkUI]
+description: "按钮组件说明"
+keywords: [Button, 组件]
+doctype: api
+status: active
+---
+```
+
+| 要素 | 要求 |
+| --- | --- |
+| 起止标记 | 首行 `---`，末行 `---` |
+| 字段行首 | 顶格，不能有空格 |
+| 字段名与冒号 | 紧挨，中间无空格 |
+| 冒号后 | 至少一个空格再接值 |
+| 不可使用 Tab | 字段行内不可含制表符 |
+
+### 字段约束
+
+| 字段 | 类型 | 值约束 |
+| --- | --- | --- |
+| `kits` | 数组 | 不能为空，支持两种写法：flow 风格 `[ArkUI]` 或 block 风格多行列表 |
+| `description` | 字符串 | 必须用单引号或双引号包裹，如 `"说明"`，不可为嵌套对象 |
+| `keywords` | 数组 | 不能为空，支持两种写法：flow 风格 `[Button]` 或 block 风格多行列表 |
+| `doctype` | 枚举 | `api`/`guide`/`best_practice`/`faq`/`cases`/`glossary`/`other` |
+| `status` | 枚举 | `active`/`deprecated`/`not_recommended`/`beta` |
+
+五个字段全部必填，缺一不可。所有字段不可为嵌套对象。
+
+### 数组的两种写法
+
+flow 风格（行内）：
+
+```yaml
+kits: [ArkUI, ArkWeb]
+```
+
+block 风格（多行列表）：
+
+```yaml
+kits:
+  - ArkUI
+  - ArkWeb
+```
+
+两种写法均合法。block 风格中列表项以 `- ` 开头，缩进 2 个空格，列表项内容必须为标量，不可为 `字段名: 值` 形式（否则判定为嵌套对象）。
+
+### 正例
+
+flow 风格：
+
+```yaml
+---
+kits: [ArkUI]
+description: "按钮组件说明"
+keywords: [Button, 组件]
+doctype: api
+status: active
+---
+```
+
+block 风格：
+
+```yaml
+---
+kits:
+  - ArkUI
+  - ArkWeb
+description: "按钮组件说明"
+keywords:
+  - Button
+  - 组件
+doctype: api
+status: active
+---
+```
+
+### 反例与报错样例
+
+**嵌套对象——flow 风格：**
+
+```yaml
+---
+description: {zh: "中文"}
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段description的值为嵌套对象，不支持嵌套结构，请使用简单值或数组
+```
+
+**嵌套对象——block 风格：**
+
+```yaml
+---
+description:
+  zh: "中文"
+  en: "English"
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段description的值为嵌套对象，不支持嵌套结构，请使用简单值或数组
+```
+
+**列表中的嵌套对象：**
+
+```yaml
+---
+kits:
+  - name: ArkUI
+    version: 1.0
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段kits的值为嵌套对象，不支持嵌套结构，请使用简单值或数组
+```
+
+**flow 数组中含嵌套对象：**
+
+```yaml
+---
+kits: [ArkUI, {name: ArkWeb}]
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段kits的值为嵌套对象，不支持嵌套结构，请使用简单值或数组
+```
+
+**存在不允许的字段：**
+
+```yaml
+---
+author: 张三
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据中存在不允许的字段：author，只允许以下字段：kits/description/keywords/doctype/status
+```
+
+**缺少必填字段：**
+
+```text
+error_type: frontmatter_error
+error_info: 元数据缺少必填字段：kits
+```
+
+**字段值为空：**
+
+```yaml
+---
+kits:
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段kits的值为空
+```
+
+**字段行首有空格：**
+
+```yaml
+---
+  kits: [ArkUI]
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据第2行字段起始位置存在空格，错误行：kits: [ArkUI]
+```
+
+**使用了制表符：**
+
+```text
+error_type: frontmatter_error
+error_info: 元数据第2行使用了制表符，请将制表符替换为空格
+```
+
+**冒号前有空格：**
+
+```yaml
+---
+kits : [ArkUI]
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段kits的冒号前存在空格，错误行：kits : [ArkUI]
+```
+
+**冒号后缺少空格：**
+
+```yaml
+---
+kits:[ArkUI]
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段kits的冒号后缺少空格，错误行：kits:[ArkUI]
+```
+
+**字段重复：**
+
+```yaml
+---
+kits: [ArkUI]
+kits: [ArkWeb]
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段kits重复，请只保留一个，错误行：kits: [ArkWeb]
+```
+
+**值含特殊字符未加引号：**
+
+```yaml
+---
+description: 说明:带冒号
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段description的值含有特殊字符，请用引号包裹，错误行：description: 说明:带冒号
+```
+
+**单引号嵌套：**
+
+```yaml
+---
+description: 'it's a test'
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段description的值存在单引号嵌套，请使用双引号或转义，错误行：description: 'it's a test'
+```
+
+**kits/keywords 不是数组：**
+
+```yaml
+---
+kits: ArkUI
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段kits的值必须为数组，如 [ArkUI]
+```
+
+**description 未用引号包裹：**
+
+```yaml
+---
+description: 按钮说明
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段description的值必须用引号包裹
+```
+
+**doctype 枚举值非法：**
+
+```yaml
+---
+doctype: API
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段doctype的值API不被允许，只能为api/guide/best_practice/faq/cases/glossary/other
+```
+
+**status 枚举值非法：**
+
+```yaml
+---
+status: ACTIVE
+---
+```
+
+```text
+error_type: frontmatter_error
+error_info: 元数据字段status的值ACTIVE不被允许，只能为active/deprecated/not_recommended/beta
+```
+
+**结束分隔符缺失：**
+
+```text
+error_type: frontmatter_error
+error_info: 元数据缺少结束分隔符 ---
+```
+
+**文件存在 BOM 头：**
+
+```text
+error_type: frontmatter_error
+error_info: 元数据文件存在BOM头，请使用无BOM的UTF-8编码
+```
+
 
 ## 图片引用检查
 
@@ -824,7 +1156,7 @@ error_info: 错误类型：日志打印方式错误；不可使用console.log进
 ```text
 error_type: code_style_error
 error_info: 错误类型：代码格式异常，不允许空注释，且注释符与注释内容之间需要留有一个空格；异常代码起始位置：第 42行。请处理！
-error_info: 错误类型：代码格式异常，多行注释中*(星号)未对齐；异常代码起始位置：第 45行。请处理！
+error_info: 错误类型：代码格式异常，多行注释中，多行注释中*(星号)未对齐；异常代码起始位置：第 45行。请处理！
 ```
 
 #### JSON 代码块注释
@@ -898,6 +1230,7 @@ error_info: 错误类型：代码块缩进异常；异常代码块所在位置�
 | 规则编号 | 规则内容 |
 | --- | --- |
 | MD010 | 不可使用制表符（Tab），代码块内部同样检查 |
+| MD028 | 引用块内不可存在空行 |
 | MD029 | 有序列表序号格式必须规范 |
 | MD034 | 不可直接使用裸 URL |
 | MD040 | 围栏代码块必须指定语言 |
@@ -911,6 +1244,41 @@ error_info: 错误类型：文档中使用制表符，请将制表符替换为�
 ```
 
 修改方法：在编辑器中开启「显示空白字符」，定位 Tab 并替换为空格。
+
+**引用块内空行报错样例：**
+
+```text
+error_type: md_style_error
+error_info: 错误类型：文档中存在引用块内的空行；异常所在行号：第 20 行。请处理！
+```
+
+修改方法：引用块中多个段落之间不可留空行，应使用 `>` 续行连接，或合并为同一段落。
+
+```markdown
+> **说明：**
+> 第一段内容。
+>
+> 第二段内容。
+```
+
+> **注意：**
+> 
+> 1、上例中两个段落之间的 `>` 行不是空行，不会触发本规则。若两段之间留有完全空白的行（无 `>` 前缀），则会触发。
+>
+> 2、不允许出现连续引用块(连续的两个说明或者说明+注意)，如果需要强调相关内容，建议整合到较高层级的引用块中，如有疑问，与资料接口人对齐。
+> 
+> eg:
+> 
+> \> \*\*说明：**<br>
+> \><br>
+> \> 说明内容。
+>
+> \> \*\*注意：**<br>
+> \><br>
+> \> 注意内容内容。
+
+
+
 
 **序号格式报错样例：**
 
@@ -1081,16 +1449,22 @@ error_info: 第7行，内容- 分组节点，该行urlpath格式错误，urlpath
 **规则：** 关键词包含 `说明`、`注意`、`警告`、`Note`、`Caution`、`Warning`（英文不区分大小写）。
 
 - 表格内：提示语前必须紧跟 `br` 换行标签，具体写法见下方表格内正例。
-- 表格外：提示语必须以 `>` 开头独立成行，其后可紧跟 `br` 换行标签接续正文，具体写法见下方表格外正例。
+- 引用块（以 `>` 开头的行）：只检查引用块的第一行，第一行只能有加粗的关键词及中英文冒号，关键词前后不可夹杂其他文字，冒号后不可直接接正文，其后只能跟 `br` 换行标签或到行尾。
+- 引用块的第二行及以后不参与检查。
+- 正文中的提示语（不以 `>` 开头、含加粗关键词）必须以 `>` 开头放入引用块，否则报错。
 - 表格标题行（下一行为分隔符行）不参与检查。
 - 正文中出现「注意事项」这一词组时不参与检查。
 - 提示语关键词需使用两个星号包裹加粗，冒号可为中文或英文，冒号可在加粗标记内或外。
 
-**正例（表格外）：**
+**正例（引用块）：**
 
 ```markdown
 > **说明：**
 > 该接口仅在当前版本生效。
+```
+
+```markdown
+> **说明：**<br>该接口仅在当前版本生效。
 ```
 
 **正例（表格内）：**
@@ -1103,14 +1477,53 @@ error_info: 第7行，内容- 分组节点，该行urlpath格式错误，urlpath
 
 **反例与报错样例：**
 
+引用块第一行在关键词前夹杂其他文字：
+
 ```markdown
-**说明：** 该接口仅在当前版本生效。
+> **错误码返回顺序说明：**
+>
+> 如果未注册对应执行器，系统不支持该认证能力，需返回12500005。
 ```
 
 ```text
 error_type: notice_explanation
-error_info: 第18行提示语错误；错误信息：提示语应为独立一行、结尾紧跟换行标签，以“>”开头，错误行**说明：** 该接口仅在当前版本生效。
+error_info: 第1908行提示语错误；错误信息：引用块第一行只能包含加粗的说明/注意/警告及中英文冒号，其他内容请另起一行书写，错误行> **错误码返回顺序说明：**
 ```
+
+引用块第一行含关键词但未加粗或夹杂其他文字：
+
+```markdown
+> 这是说明文字
+```
+
+```text
+error_type: notice_explanation
+error_info: 第18行提示语错误；错误信息：引用块第一行只能包含加粗的说明/注意/警告及中英文冒号，其他内容请另起一行书写，错误行> 这是说明文字
+```
+
+冒号后直接接正文：
+
+```markdown
+> **说明：** 该接口仅在当前版本生效。
+```
+
+```text
+error_type: notice_explanation
+error_info: 第20行提示语错误；错误信息：引用块第一行只能包含加粗的说明/注意/警告及中英文冒号，其他内容请另起一行书写，错误行> **说明：** 该接口仅在当前版本生效。
+```
+
+正文中的提示语未放入引用块：
+
+```markdown
+**注意**：如果DevEco Studio中不设置abiFilters字段，则默认配置的指定架构为：arm64-v8a。
+```
+
+```text
+error_type: notice_explanation
+error_info: 第87行提示语错误；错误信息：提示语应以">"开头放入引用块，错误行**注意**：如果DevEco Studio中不设置abiFilters字段，则默认配置的指定架构为：arm64-v8a。
+```
+
+表格内未紧跟换行标签：
 
 ```markdown
 | size | 尺寸取值。**说明：** 默认值为 30。 |
@@ -1119,6 +1532,13 @@ error_info: 第18行提示语错误；错误信息：提示语应为独立一行
 ```text
 error_type: notice_explanation
 error_info: 第25行表格总说明或注意格式不符合写作规范，建议使用<br>**说明：**；错误信息：提示语前后紧跟换行标签，错误行| size | 尺寸取值。**说明：** 默认值为 30。 |
+```
+
+修改方法：将关键词前或冒号后的文字移到后续行，第一行只保留加粗的提示语及冒号。
+
+```markdown
+> **说明：**
+> 错误码返回顺序：如果未注册对应执行器，系统不支持该认证能力，需返回12500005。
 ```
 
 ### 表格格式检查
@@ -1736,6 +2156,23 @@ error_info: 该文档编码有问题，请使用utf-8进行编码
 | 责任人数量超过3个 | 责任田标签检查 | [查看](#责任田标签检查) |
 | 责任田标签之间存在其他内容 | 责任田标签检查 | [查看](#责任田标签检查) |
 | 一级标题和责任田标签之间存在其他内容 | 责任田标签检查 | [查看](#责任田标签检查) |
+| 元数据中存在不允许的字段 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据缺少必填字段 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段 XXX 的值为空 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段起始位置存在空格 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据使用了制表符 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段冒号前存在空格 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段冒号后缺少空格 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段重复 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段值含有特殊字符 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段值存在单引号嵌套 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段值必须为数组 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段description的值必须用引号包裹 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段doctype的值不被允许 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段status的值不被允许 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据缺少结束分隔符 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据文件存在BOM头 | 元数据格式检查 | [查看](#元数据格式检查) |
+| 元数据字段值为嵌套对象 | 元数据格式检查 | [查看](#元数据格式检查) |
 | 对应图片大小，超过20MB | 图片引用检查 | [查看](#图片引用检查) |
 | error_info 为图片路径 | 图片引用检查 | [查看](#图片引用检查) |
 | 链接标题中存在br标签 | 相对链接检查 | [查看](#相对链接检查) |
@@ -1761,6 +2198,7 @@ error_info: 该文档编码有问题，请使用utf-8进行编码
 | 代码块中格式存在异常 | 示例代码检查 | [查看](#示例代码检查) |
 | 代码块缩进异常 | 示例代码检查 | [查看](#示例代码检查) |
 | 文档中使用制表符 | markdownlint 工具检查 | [查看](#markdownlint-工具检查) |
+| 文档中存在引用块内的空行 | markdownlint 工具检查 | [查看](#markdownlint-工具检查) |
 | 序列号格式异常 | markdownlint 工具检查 | [查看](#markdownlint-工具检查) |
 | 文档中不可直接使用URL | markdownlint 工具检查 | [查看](#markdownlint-工具检查) |
 | 代码块未指定语言 | markdownlint 工具检查 | [查看](#markdownlint-工具检查) |
@@ -1772,6 +2210,8 @@ error_info: 该文档编码有问题，请使用utf-8进行编码
 | urlpath格式错误 | 目录文件 urlpath 检查 | [查看](#目录文件-urlpath-检查) |
 | 表格总说明或注意格式不符合写作规范 | 提示语格式检查 | [查看](#提示语格式检查) |
 | 提示语错误 | 提示语格式检查 | [查看](#提示语格式检查) |
+| 引用块第一行只能包含加粗的说明/注意/警告及中英文冒号 | 提示语格式检查 | [查看](#提示语格式检查) |
+| 提示语应以">"开头放入引用块 | 提示语格式检查 | [查看](#提示语格式检查) |
 | 表格至少需要三行 | 表格格式检查 | [查看](#表格格式检查) |
 | 存在制表符 | 表格格式检查 | [查看](#表格格式检查) |
 | 标题行格式不正确 | 表格格式检查 | [查看](#表格格式检查) |

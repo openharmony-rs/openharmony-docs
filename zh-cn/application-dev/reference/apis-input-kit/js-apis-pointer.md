@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.pointer (鼠标光标)
+# @ohos.multimodalInput.pointer (鼠标光标和光标类的外设)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-鼠标光标管理模块，用于查询和设置鼠标光标相关属性。
+本模块提供鼠标光标和光标类型外设的管理功能，用于查询和设置鼠标光标和光标类型外设的相关属性。
 
 > **说明**：
 >
@@ -529,6 +529,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -597,6 +598,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -662,6 +664,7 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：

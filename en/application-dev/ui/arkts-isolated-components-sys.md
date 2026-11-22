@@ -1,20 +1,19 @@
 # Cross-Thread Embedded Component (IsolatedComponent, for System Applications Only)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5ed0cc4164abf79790ec16923fb6361d2a756da9 translatedAt=2026-08-01T00:30:04.199Z pushedAt=2026-08-03T02:38:57.516Z -->
+<!-- md-trans-meta sourceCommit=929cb053abb8e1835779a4783f90dad90a9d7bf4 translatedAt=2026-11-03T08:33:07.109Z pushedAt=2026-11-03T09:15:42.109Z nl=1 -->
 
-**IsolatedComponent** is a cross-thread embedded component that can embed and display isolated UI content provided by an independent .abc file within the current page. This content runs independently in a restricted worker thread without conflicting with other components.
+**IsolatedComponent** is a cross-thread embedded component that can embed and display isolated UI content provided by an independent .abc file within the current page. This content runs independently in a restricted worker thread without interfering with each other.
 
 Each **IsolatedComponent** exists independently with its own scope and lifecycle, not sharing state or data with other components. This facilitates reuse across applications, reducing repetitive development efforts.
 
 ## Basic Concepts
 
-[IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md) is designed to embed and display a UI provided by an independent .abc file within the current page, with its content executed in a restricted [worker](../reference/apis-arkts/js-apis-worker.md) thread.
+[IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md) is designed to embed and display a UI provided by an independent .abc file within the current page, with its content executed in a restricted [worker](../reference/apis-arkts/js-apis-worker-sys.md#restrictedworker11) thread.
 
 This component is typically used in modular development scenarios that require hot updates for .abc files (where the .abc file loaded by **IsolatedComponent** can be dynamically replaced, enabling content updates without reinstalling the app).
 
@@ -40,12 +39,16 @@ This example demonstrates the basic usage of the **IsolatedComponent** component
 
 **Importing the Core Module**
 
-When using the **IsolatedComponent**, first import the **@kit.AbilityKit** module, which provides the necessary functionality for building isolated components, including key APIs like **bundleManager**.
+When using the **IsolatedComponent**, you need to import the @kit.AbilityKit and @kit.ArkTS modules:
 
-**bundleManager** is a module in **@kit.AbilityKit** that provides app package management capabilities. Its **verifyAbc** API can be used to verify .abc files, which is a necessary step before using the **IsolatedComponent**. By importing this module, you can use the APIs it provides to create and manage isolated components, ensuring data and resource isolation between different components and thereby improving app security.
+- @kit.AbilityKit provides key application package management APIs such as bundleManager, which are used to validate .abc files.
+- @kit.ArkTS provides the restricted worker (RestrictedWorker) capability, which is used to run isolated UI content.
+
+bundleManager is a module in @kit.AbilityKit that provides application package management capabilities. By importing this module, you can use its verifyAbc API to validate .abc files. This is a necessary step before using the **IsolatedComponent** and provides a prerequisite guarantee for the secure loading of .abc content by the **IsolatedComponent**.
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
+import { worker } from '@kit.ArkTS';
 ```
 
 **Managing Permissions**
@@ -70,7 +73,7 @@ In restricted mode, the **IsolatedComponent** does not have the ability to execu
 
 **Restricted Worker**
 
-A restricted [Worker](../reference/apis-arkts/js-apis-worker.md) thread runs in an isolated environment. This isolation ensures memory isolation between the restricted Worker thread and other threads or components, preventing mutual interference or security issues.
+A restricted [worker](../reference/apis-arkts/js-apis-worker-sys.md#restrictedworker11) is a worker thread that runs in an isolated environment. This isolation ensures memory isolation between the restricted worker and other threads or components, preventing mutual interference or security issues.
 
 In the **IsolatedComponent** scenario, the component often needs to dynamically load external HAP resources. The restricted worker ensures security through the following mechanisms:
 
@@ -96,9 +99,7 @@ workerPort.onmessage = (e: MessageEvents) => {}
 workerPort.onmessageerror = (e: MessageEvents) => {}
 workerPort.onerror = (e: ErrorEvent) => {}
 ```
-
 <!--deprecated_code_no_check-->
-
 ```ts
 IsolatedComponent({
   want: {
@@ -116,9 +117,9 @@ IsolatedComponent({
 })
 ```
 
-The **IsolatedComponent** achieves dynamic component loading and isolated execution through the **want** and **worker** properties, which together form the security boundary. Properly setting these properties is key to ensuring the secure operation of the component.
+The **IsolatedComponent** achieves dynamic component loading and isolated execution through the **want** and **worker** constructor parameters, which together form the security boundary. Properly setting these constructor parameters is key to ensuring the secure operation of the component.
 
-The entry page file **ets/pages/extension.ets** running in the restricted Worker thread contains the following reference content:
+Among them, the entry page file ets/pages/extension.ets, which runs in the restricted worker thread, requires the page path to be configured in the resources/base/profile/main_pages.json file. The content of this page file is as follows:
 
 ```ts
 @Entry
@@ -220,7 +221,7 @@ struct Index {
             .width(300)
             .height(300)
             .onError((err) => {
-              console.info("onError : " + JSON.stringify(err));
+              console.error("onError : " + JSON.stringify(err));
             })
         }
       }
@@ -241,7 +242,7 @@ struct Index {
    hdc file send modules.abc /data/app/el2/100/base/com.example.isolateddemo/haps/entry/files/
    ```
 
-3. Open the application page and click the **verifyAbc** button to verify the .abc file. The log "VerifyAbc successfully" should be output.
+3. Open the application page and click the **verifyAbc** button to verify the .abc file. The log "VerifyAbc successfully." should be output;
 
    ![en-us_image_0000001746521386](figures/verifyAbc.jpg)
 

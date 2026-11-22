@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-11-02T12:49:59.357Z pushedAt=2026-11-06T10:44:55.356Z nl=1 -->
 
 In the stage model, a window stage or window can use the [loadContent](arkts-apis-window-Window.md#loadcontent9) API to load pages, create a UI instance, and render page content to the associated window. Naturally, UI instances and windows are associated on a one-by-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback, the current UI context may fail to be identified, resulting in API execution errors.
 
@@ -21,7 +22,7 @@ In the stage model, a window stage or window can use the [loadContent](arkts-api
 ```ts
 import {
   BackgroundLuminanceSamplingConfigs, LuminanceSampler
-} from "@kit.ArkUI";
+} from '@kit.ArkUI';
 ```
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

@@ -1,6 +1,22 @@
-# Overdraw Debugging
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to use overdraw debugging to identify overdrawn components and optimize layouts to reduce rendering load."
+keywords: [overdraw, Overdraw, debugging, flattened layout, rendering load]
+doctype: guide
+status: active
+---
 
-Deeply nested layouts of an application can lead to performance issues such as redundant use of CPU, GPU, and other computing resources. For example, in a deeply nested layout, drawing instructions of some components are partially or completely covered by drawing instructions of others during rendering. When an application draws a pixel on the screen multiple times within a single frame of rendering, this is called overdraw. To help you reduce overdraw, the system introduces the overdraw debugging feature. With this feature, you can view the location and level of the component that causes overdraw.
+# Overdraw Debugging
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b198751f959187d961be2d97d979e89ceaddf056 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
+
+
+When an app page layout is deeply nested, the drawing instructions of some components may be partially or completely covered by those of other components during rendering, resulting in redundant consumption of CPU, GPU, and other computing resources. This situation, where pixels on a screen are drawn multiple times, is called overdraw. You can use the overdraw debugging commands provided by the system to identify the locations and hierarchy of components that cause overdraw, thereby reducing the rendering load of the app.
 
 This topic describes how to use the overdraw debugging feature and how to reduce overdraw.
 
@@ -12,7 +28,7 @@ You can use the shell commands to enable or disable the overdraw debugging featu
 
 - Enable overdraw debugging.
 
-  ```
+  ``` bash
   param set debug.graphic.overdraw true
   ```
 
@@ -20,7 +36,7 @@ You can use the shell commands to enable or disable the overdraw debugging featu
 
 - Disable overdraw debugging.
 
-  ```
+  ``` bash
   param set debug.graphic.overdraw false
   ```
 
@@ -30,7 +46,7 @@ You can use the shell commands to enable or disable the overdraw debugging featu
 
   The value **true** means that the feature is enabled, and **false** means the opposite.
 
-  ```
+  ``` bash
   param get debug.graphic.overdraw
   ```
 
@@ -41,11 +57,11 @@ You can use the shell commands to enable or disable the overdraw debugging featu
 
 After you enable overdraw debugging and open an application UI, overdrawn pixels are highlighted by boxes with different colors. A deeper color represents a higher level of overdraw. The mapping is as follows:
 
-- Original color: no overdraw.
+- Original color: No overdraw.
 - Blue-purple: Overdraw occurs once.
 - Green: Overdraw occurs twice.
-- Light red: Overdraw occurs for three times.
-- Dark red: Overdraw occurs for four times or more.
+- Light red: Overdraw occurs three times.
+- Dark red: Overdraw occurs four times or more.
 
 
 The following is a sample application with redundant background color nesting.

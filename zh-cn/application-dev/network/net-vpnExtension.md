@@ -262,7 +262,10 @@ export class VpnTest extends VpnExtensionAbility {
     // ...
       this.vpnConnection = vpnExtension.createVpnConnection(this.context);
       hilog.info(0x0000, 'testTag', 'create success');
-      this.vpnConnection?.destroy(this.vpnId);
+      this.vpnConnection?.destroy(this.vpnId).catch(() => {
+        hilog.error(0x0000, 'testTag', 'destroy fail');
+        return false;
+      });
       // ...
   }
 };
