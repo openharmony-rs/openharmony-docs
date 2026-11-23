@@ -54985,5 +54985,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/canvas-get-result-draw-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets",
+				"functions":[
+					{
+						"end_line":26,
+						"name":"arkts_graphics_draw_import_graphics2d",
+						"start_line":24
+					}
+				]
+			}
+		]
 	}
 ]
