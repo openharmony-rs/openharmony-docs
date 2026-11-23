@@ -1,12 +1,11 @@
 # @ohos.arkui.dragController (DragController)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-07-29T09:15:03.383Z pushedAt=2026-07-31T10:59:09.475Z -->
+<!-- md-trans-meta sourceCommit=0bd31f970e01071c145da3999973e5a7342949bd translatedAt=2026-11-18T09:33:07.141Z pushedAt=2026-11-20T07:44:51.846Z nl=1 -->
 
 This module provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein. It is suitable for scenarios where the application needs to independently control the timing of drag initiation, drag preview effects, and drag data transfer, implementing more flexible custom drag interactions.
 
@@ -108,10 +107,12 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               }
-              let eve: DragInfo = new DragInfo();
               this.getUIContext().getDragController().executeDrag(() => {
                 this.DraggingBuilder()
               }, dragInfo, (err, eve) => { // You are advised to use this.getUIContext().getDragController().executeDrag().
+                if (err || !eve?.event) {
+                  return;
+                }
                 if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -141,9 +142,7 @@ struct DragControllerPage {
   }
 }
 ```
-
   ![en-us_executeDrag1](figures/executeDrag1.gif)
-
 ## dragController.executeDrag<sup>(deprecated)</sup>
 
 executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<DragEventParam>
@@ -175,7 +174,6 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
 | ID| Error Message     |
 | -------- | ------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
@@ -259,10 +257,9 @@ struct DragControllerPage {
                 },
                 extraInfo: "DragItemInfoTest"
               }
-              let eve: DragInfo = new DragInfo();
               this.getUIContext()
                 .getDragController()
-                .executeDrag(dragItemInfo, dragInfo) // You are advised to use this.getUIContext().getDragController().executeDrag().
+                .executeDrag(dragItemInfo, dragInfo) // You are advised to use this.getUIContext().getDragController().executeDrag() instead.
                 .then((eve) => {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -293,9 +290,7 @@ struct DragControllerPage {
   }
 }
 ```
-
   ![en-us_executeDrag2](figures/executeDrag2.gif)
-
 ## DragInfo
 
 Defines the attributes required for initiating a drag action and information carried in the dragging process.
@@ -309,7 +304,7 @@ Defines the attributes required for initiating a drag action and information car
 | extraParams | string                                                 | No  |  Yes  | Extra information for the drag event. The specific functionality is not implemented yet.<br>The default value is null.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | touchPoint<sup>11+</sup>    | [TouchPoint](arkui-ts/ts-types.md#touchpoint11)  | No  |  Yes  | Coordinates of the touch point. If this parameter is not set, the touch point is centered horizontally and shifted downward by 20% from the top. <br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)                                | No   |  Yes  | Processing mode of the drag preview backdrop and display of the badge count during the drag process. Pass this parameter when you need to customize the drag preview backdrop effect or the badge count display mode. If this parameter is not passed, the system default drag preview backdrop processing mode and badge count display policy are used. <br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | No   |  Yes  | Unique IDs of the components that are automatically hidden by the system during proactive dragging. A single unique ID or an array of unique IDs is supported.<br>After proactive dragging is successfully initiated, the system automatically hides the target components before displaying the drag preview window.<br>If the proactive dragging source itself also needs to be hidden, its unique ID must be passed as well.<br>The unique ID of a component can be obtained through [UIContext.getFrameNodeById()](arkts-apis-uicontext-uicontext.md#getframenodebyid12) together with [FrameNode.getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12).<br>You need to restore the component display state as needed in the drag end callback.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | No | Yes | Unique ID of the component to be automatically hidden by the system during a proactive drag. A single unique ID or an array of unique IDs is supported.<br>Default value: empty, meaning no component is automatically hidden.<br>After a proactive drag is successfully initiated, the system automatically hides the target component before displaying the drag preview window.<br>If the proactive drag source itself also needs to be hidden, its unique ID must be passed in as well.<br>The unique ID of a component can be obtained through [UIContext.getFrameNodeById()](arkts-apis-uicontext-uicontext.md#getframenodebyid12) together with [FrameNode.getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12).<br>You need to restore the display state of the component as needed in the drag end callback.<br>**Since:** 26.0.0<br>**Atomic service API:** This API is supported in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
 | dataLoadParams<sup>20+</sup>| [unifiedDataChannel.DataLoadParams](../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)                                | No   |  Yes  | Parameters for deferred data loading by the drag initiator. This API provides data loading parameters to the system instead of directly passing complete data objects. When the user drags data to the target application and releases it, the system uses these parameters to request the actual data from the drag initiator. When both **dataLoadParams** and **data** are set, dataLoadParams takes effect.<br>The default value is null.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 
 **Example**
@@ -445,7 +440,7 @@ struct DragInfoAutoHideSample {
 
 createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragInfo: DragInfo): DragAction
 
-Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the drag handle point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation.
+Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the touch point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation.
 
 > **NOTE**
 >
@@ -466,7 +461,7 @@ Creates a drag action object for initiating drag and drop operations. You need t
 | customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)&gt; | Yes  | Object to be dragged.|
 | dragInfo | [DragInfo](#draginfo)                                        | Yes  | Drag information.                      |
 
-**Return value**
+**Return value** 
 
 | Type                                                  | Description              |
 | ------------------------------------------------------ | ------------------ |
@@ -475,7 +470,6 @@ Creates a drag action object for initiating drag and drop operations. You need t
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
 | ID| Error Message     |
 | -------- | ------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
@@ -590,8 +584,8 @@ struct DragControllerPage {
   }
 }
 ```
-
   ![en-us_executeDrag3](figures/executeDrag3.gif)
+
 
 ## DragAction<sup>11+</sup>
 
@@ -819,12 +813,14 @@ struct ImageExample {
             let pathDir: string = context.distributedFilesDir;
             let destUri = fileUri.getUriFromPath(pathDir);
             let progressListener: unifiedDataChannel.DataProgressListener =
-              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
+              (progress: unifiedDataChannel.ProgressInfo, dragData: unifiedDataChannel.UnifiedData | null) => {
                 if (dragData != null) {
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
                     if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                      const insertIndex: number = extraParams ?
+                        JSON.parse(extraParams as string).insertIndex : this.blockArr.length;
+                      this.blockArr.splice(insertIndex, 0, this.uri);
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -866,7 +862,6 @@ struct ImageExample {
   }
 }
 ```
-
 ![en-us_executeDrag5](figures/dragControllerDataLoading.gif)
 
 ### on('statusChange')<sup>11+</sup>
@@ -880,7 +875,6 @@ Subscribes to drag state changes. This API is used to obtain the drag status whe
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name    | Type | Mandatory  | Description            |
 | ------ | ------ | ------- | ---------------- |
 |  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
@@ -971,7 +965,6 @@ Unsubscribes from drag state changes. This API is suitable for scenarios where t
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name    | Type | Mandatory   | Description            |
 | ------ | ------ | ------- | ---------------- |
 |  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
@@ -1179,7 +1172,6 @@ Applies a foreground color animation to the drag preview. It does not take effec
 > You are advised to use [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the **DragController** object associated with the current UI context.
 
 1. In the **EntryAbility.ets** file, obtain the UI context and save it to LocalStorage.
-
    ```ts
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1221,9 +1213,7 @@ Applies a foreground color animation to the drag preview. It does not take effec
      }
    }
    ```
-
 2. In the **Index.ets** file, call **this.getUIContext().getSharedLocalStorage()** to obtain the UI context and then use the **DragController** object obtained to perform subsequent operations.
-
    ```ts
 
    import { unifiedDataChannel } from '@kit.ArkData';
@@ -1314,7 +1304,6 @@ Applies a foreground color animation to the drag preview. It does not take effec
      }
    }
    ```
-
    ![en-us_executeDrag5](figures/executeDrag5.gif)
 
 ## DragStartRequestStatus<sup>18+</sup>
@@ -1338,6 +1327,7 @@ Enumerates hover detection states during drag operations.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+
 | Name| Value|Description                                                         |
 | ------ | --------------------- |--------------------------------------- |
 | BEGIN  | 0 |Initial state when a dragged item enters the component boundary and remains stationary for the duration specified by [stillTimeLimit](#dragspringloadingconfiguration20). This state enables preparation operations such as data preparation and state recording required for hover detection. |
@@ -1357,7 +1347,7 @@ Defines the configuration parameters for drag hover detection. The default setti
 | --------------------- | ------ | ---- | --- | ---------------------------------------------------- |
 | stillTimeLimit         | number | No  |    Yes  |Time required to remain stationary to enter the BEGIN state of hover detection, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **500**.|
 | updateInterval         | number | No  |    Yes  |Interval at which update notifications are sent after hover detection enters the UPDATE state, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
-| updateNotifyCount      | number | No  |    Yes  |Maximum number of update notifications after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **3**.|
+| updateNotifyCount      | number | No   |    Yes   |Maximum number of update notifications after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **3**. If the value is **0**, no **UPDATE** notification is sent, and the **END** state is triggered immediately after the **BEGIN** state.|
 | updateToFinishInterval | number | No  |    Yes  |Maximum waiting time from the UPDATE state to the END state, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
 
 ## SpringLoadingDragInfos<sup>20+</sup>

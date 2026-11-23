@@ -1,12 +1,11 @@
 # ComponentContent
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @ZhangYu-Home-->
 <!--Designer: @ZhangYu-Home-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3941aef1b3f2e81ba6f36ef0d30f9e1a4994e8fa translatedAt=2026-07-29T09:14:02.496Z pushedAt=2026-08-03T01:47:13.808Z -->
+<!-- md-trans-meta sourceCommit=9f1fe0bbde2944cf4a26bea4ef46c5e14988f7b7 translatedAt=2026-11-18T09:30:02.774Z pushedAt=2026-11-20T07:09:42.875Z nl=1 -->
 
 You can create an entity encapsulation component in either of the following ways: **ComponentContent** requires manual content updates through the update API, which is mainly suitable for decoupled encapsulation scenarios such as dialog boxes. **ReactiveComponentContent** supports automatic updates of responsive data, complete lifecycle management, and component reuse, making it suitable for high-performance rendering scenarios such as long lists.
 
@@ -23,6 +22,7 @@ You can create an entity encapsulation component in either of the following ways
 > - **ComponentContent** and **ReactiveComponentContent** are not available in DevEco Studio Previewer.
 >
 > - ComponentContent objects do not support JSON serialization.
+
 
 ## Modules to Import
 
@@ -93,7 +93,6 @@ A constructor used to create a **ComponentContent** object.
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)                                                    |   Yes   |   Build options, which are used to configure the build behavior of **@Builder**. All attributes in **BuildOptions** are optional.                                         |
 
 **Example**
-
 ``` ts
 import { ComponentContent, NodeContent, typeNode } from '@kit.ArkUI';
 
@@ -152,7 +151,6 @@ struct Index {
   }
 }
 ```
-
 ![](figures/ReactiveComponentContent_constructor.gif)
 
 ### update
@@ -222,7 +220,6 @@ struct Index {
   }
 }
 ```
-
 ![](figures/ComponentContent_update.gif)
 
 ### reuse
@@ -239,14 +236,13 @@ Triggers component reuse for custom components in **ComponentContent**. For deta
 
 | Name| Type  | Mandatory| Description                                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | No  | Parameters for **ComponentContent** reuse. This parameter is passed to all top-level custom components within the **ComponentContent** during reuse and must include all required constructor parameters for each component; otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ComponentContent directly uses the data source during construction.|
+| param  | Object | No   | Parameter for **ComponentContent** reuse. This parameter is passed to all top-level custom components within the **ComponentContent** during reuse and must include all required constructor parameters for each component; otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is **undefined**. In this case, the custom component in **ComponentContent** directly uses the data source during construction. |
 
 ### recycle
 
 recycle(): void
 
 - Triggers recycling of custom components under this **ComponentContent**. Component recycling is part of the component reuse mechanism. For details, see [@Reusable Decorator: Reusing V1 Components](../../ui/state-management/arkts-reusable.md).
-
 - **ComponentContent** completes the reuse event transfer between internal and external custom components through **reuse** and **recycle**. For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis). Since API version 26.0.0, custom components in **ComponentContent** support V2 component reuse. For details, see [@ReusableV2 Decorator: Reusing Components](../../ui/state-management/arkts-new-reusableV2.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -424,7 +420,6 @@ struct Index {
   }
 }
 ```
-
 ![](figures/ReactiveComponentContent_recycle.gif)
 
 Since API version 26.0.0, custom components in **ComponentContent** support V2 component reuse.
@@ -615,7 +610,7 @@ Immediately releases the reference relationship between this **ComponentContent*
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -676,7 +671,6 @@ struct Index {
   }
 }
 ```
-
 ![](figures/ComponentContent_dispose.gif)
 
 ### updateConfiguration
@@ -694,7 +688,6 @@ Transfers a system environment change event and triggers full update of a node. 
 > The updateConfiguration API is used to notify an object of updating the current system environment change.
 
 **Example**
-
 ```ts
 import { NodeController, FrameNode, ComponentContent, UIContext, FrameCallback } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
@@ -792,7 +785,6 @@ struct FrameNodeTypeTest {
   }
 }
 ```
-
 ![](figures/ReactiveComponentContent_updateConfiguration.gif)
 
 ### isDisposed<sup>20+</sup>
@@ -800,6 +792,7 @@ struct FrameNodeTypeTest {
 isDisposed(): boolean
 
 Checks whether this **ComponentContent** object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -809,7 +802,7 @@ Checks whether this **ComponentContent** object has released its reference to it
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
+| boolean | Whether the reference to the backend entity node is released. The value **true** means that the reference to backend entity node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -1204,7 +1197,7 @@ Triggers component reuse for custom components under this **ReactiveComponentCon
 
 | Name| Type  | Mandatory| Description                                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | No  | Parameter used to reuse [ReactiveComponentContent](#reactivecomponentcontent22). This parameter is directly used for reusing all top-level custom components in **ReactiveComponentContent**. It should contain the content required by the constructor parameters of each custom component. Otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ReactiveComponentContent directly uses the data source during construction.|
+| param  | Object | No   | Parameter used to reuse [ReactiveComponentContent](#reactivecomponentcontent22). This parameter is directly used for reusing all top-level custom components in **ReactiveComponentContent**. It should contain the content required by the constructor parameters of each custom component. Otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is **undefined**. In this case, the custom component in **ReactiveComponentContent** directly uses the data source during construction. |
 
 **Example**
 
@@ -1647,7 +1640,7 @@ class MyNodeController extends NodeController {
         console.info('NodeTest3 set after', params.message);
       }),
     );
-    // Add the reactive content to the root node.
+    // Add the responsive content to the root node.
     if (this.rootNode !== null) {
       this.rootNode.addComponentContent(this.contentNode);
     }
@@ -2144,6 +2137,7 @@ isDisposed(): boolean
 
 Queries whether the current **ReactiveComponentContent** object has released the reference relationship with the backend entity node. Frontend nodes are bound to corresponding backend entity nodes. After a node calls the **dispose** API to release the binding, calling other APIs again may cause crashes or return default values. Due to service requirements, there may be cases where a node is still called after the call to **dispose**. Therefore, this API is provided for you to check the validity of the node before operating it, to avoid potential risks.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -2156,7 +2150,7 @@ Queries whether the current **ReactiveComponentContent** object has released the
 
 **Example**
 
-This example demonstrates how to use the **isDisposed** API to check whether the **ReactiveComponentContent** object's reference to the backend node is released, providing a complete implementation solution for node status security detection.
+This example demonstrates how to use the **isDisposed** API to check whether the **ReactiveComponentContent** object's reference to the backend entity node is released, providing a complete implementation solution for node status security detection.
 
 ```ts
 import {

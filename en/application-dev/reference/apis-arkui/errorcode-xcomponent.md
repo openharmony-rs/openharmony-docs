@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=86516607de4ae31b89a087b4feaa5c2b41c67026 translatedAt=2026-08-29T09:28:44.193Z pushedAt=2026-08-31T07:53:41.564Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T09:28:51.696Z pushedAt=2026-11-20T06:57:22.405Z nl=1 -->
 
 > **NOTE**
 >
@@ -15,7 +15,7 @@
 
 **Error Message**
 
-Failed to call the method because the **XComponent** is invalid.
+XComponent is in invalid state.
 
 **Description**
 

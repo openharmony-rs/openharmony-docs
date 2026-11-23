@@ -6,7 +6,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=730cf983570c1d7d7d25392911a45e3269fd9c72 translatedAt=2026-08-25T02:25:20.166Z pushedAt=2026-08-26T07:30:01.387Z -->
+<!-- md-trans-meta sourceCommit=99d5d62217fd41ea373fb23731dda68d62ff2608 translatedAt=2026-11-18T08:48:18.686Z pushedAt=2026-11-19T02:30:34.357Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -22,6 +22,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side for i
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
+
 ## NODE_DATE_PICKER_LUNAR
 
 ```c
@@ -32,6 +33,7 @@ Whether to display the lunar calendar in the date picker. This attribute can be 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -56,6 +58,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -78,6 +81,7 @@ End date of the date picker. This attribute can be set, reset, and obtained as r
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -102,6 +106,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -124,6 +129,7 @@ Text color, font size, and font weight for the top and bottom items in the date 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -148,6 +154,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -170,6 +177,7 @@ Text color, font size, and font weight of the selected item in the date picker. 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -196,6 +204,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -218,6 +227,7 @@ Whether to enable haptic feedback. This attribute can be set, reset, and obtaine
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -244,6 +254,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -266,6 +277,7 @@ Time of the selected item in the timer picker. This attribute can be set, reset,
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -290,6 +302,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -312,6 +325,7 @@ Text style for edge items (the second item above or below the selected item). Th
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -336,6 +350,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -358,6 +373,7 @@ Text color, font size, and font weight of the selected item in the time picker. 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -382,6 +398,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -404,6 +421,7 @@ End time of the timer picker. This attribute can be set, reset, and obtained as 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -430,6 +448,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -450,10 +469,11 @@ NODE_TEXT_PICKER_OPTION_RANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_PICKER = 15
 
 Data selection range of the text picker. This attribute can be set, reset, and obtained as required through APIs.
 
-Use scenario: A single-column picker is suitable for selecting a single category (such as province or brand), a multi-column picker is suitable for combined selection of multiple independent categories (such as province-city), and a multi-column cascade picker is suitable for hierarchical selection scenarios (such as province-city-district, where the second column is automatically updated based on the first column). This attribute must be set before [NODE_TEXT_PICKER_OPTION_SELECTED](#node_text_picker_option_selected) and [NODE_TEXT_PICKER_SELECTED_INDEX](#node_text_picker_selected_index) can be used to set the selected items.<br>
+Use scenario: A single-column picker is suitable for selecting a single category (such as province or brand), a multi-column picker is suitable for combined selection of multiple independent categories (such as province-city), and a multi-column cascading picker is suitable for hierarchical selection scenarios (such as province-city-district, where the second column is automatically updated based on the first column). This attribute must be set before [NODE_TEXT_PICKER_OPTION_SELECTED](#node_text_picker_option_selected) and [NODE_TEXT_PICKER_SELECTED_INDEX](#node_text_picker_selected_index) can be used to set the selected items.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -481,6 +501,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -503,6 +524,7 @@ Value of the default selected item in the text picker. This attribute can be set
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -527,6 +549,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -549,6 +572,7 @@ Text color, font size, and font weight for all items except the top, bottom, and
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -573,6 +597,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -595,6 +620,7 @@ Index of the default selected item in the data selection range of the text picke
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -621,6 +647,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -644,6 +671,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -666,6 +694,7 @@ Width of each column in the picker. This attribute can be set, reset, and obtain
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -698,6 +727,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -720,6 +750,7 @@ Background color and border radius of the selected item. This attribute can be s
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -752,6 +783,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -774,6 +806,7 @@ Defines whether to enable haptic feedback. This attribute can be set, reset, and
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 23
+
 
 **Parameters**
 
@@ -800,6 +833,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -822,6 +856,7 @@ Picker indicator style. This attribute can be set, reset, and obtained as requir
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 23
+
 
 **Parameters**
 
@@ -846,6 +881,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -869,6 +905,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -881,6 +918,30 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Item height, in vp.|
 
+## NODE_PICKER_SELECTED_TEXT_STYLE
+
+```c
+NODE_PICKER_SELECTED_TEXT_STYLE = 1018007
+```
+
+Text style of the selected item in the picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .object | Text style of the selected item. The parameter type is [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md). Create an instance using [OH_ArkUI_PickerComponentTextStyle_Create](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_create), set the attributes through [OH_ArkUI_PickerComponentTextStyle_SetColor](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setcolor), [OH_ArkUI_PickerComponentTextStyle_SetFontSize](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setfontsize), [OH_ArkUI_PickerComponentTextStyle_SetFontWeight](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setfontweight), [OH_ArkUI_PickerComponentTextStyle_SetMinFontSize](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setminfontsize), [OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setmaxfontsize), and [OH_ArkUI_PickerComponentTextStyle_SetOverflow](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setoverflow), and then pass the pointer to **.object**. After the setting is complete, call [OH_ArkUI_PickerComponentTextStyle_Dispose](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_dispose) to dispose of the instance. When not set, the default style of the system is used. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| .object | Text style object of the currently selected item. The parameter type is [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md). |
+
 ## NODE_CALENDAR_PICKER_HINT_RADIUS
 
 ```c
@@ -891,6 +952,7 @@ Corner radius of the background of the selected state in the calendar picker. Th
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -914,6 +976,7 @@ Date of the selected item in the calendar picker. This attribute can be set, res
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -942,6 +1005,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -968,6 +1032,7 @@ Text color, font size, and font weight in the entry area of the calendar picker.
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -996,6 +1061,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -1018,6 +1084,7 @@ End date of the calendar picker. This attribute can be set, reset, and obtained 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -1042,6 +1109,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 19
 
+
 **Parameters**
 
 | Name| Description|
@@ -1065,6 +1133,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 19
 
+
 **Parameters**
 
 | Name| Description|
@@ -1076,3 +1145,27 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether the current system date is highlighted in the calendar picker.|
+
+## NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK
+
+```c
+NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK = 16008
+```
+
+First day of a week for the calendar picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | First day of a week for the calendar picker. Value range: [0, 7].<br>**0**: follows the system locale. **1**: Monday. **2**: Tuesday. **3**: Wednesday. **4**: Thursday. **5**: Friday. **6**: Saturday. **7**: Sunday. Default value: **0** (follows the system locale). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | First day of a week for the calendar picker. |

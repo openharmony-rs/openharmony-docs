@@ -1,16 +1,15 @@
 # scroll.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @shengu_lancer; @rongShao-Z-->
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-08-10T03:35:22.075Z pushedAt=2026-08-11T01:15:40.925Z -->
+<!-- md-trans-meta sourceCommit=1cc42747daac90c755c0f02f6c0c084e7424b7af translatedAt=2026-11-18T09:18:47.765Z pushedAt=2026-11-20T03:33:15.855Z nl=1 -->
 
 ## Overview
 
-Defines the enumerations related to the **Scroll** component, such as the scrolling direction, edge effect, scrollbar state, content clipping, nested scrolling, scrolling state, and scrolling source, which are used to configure and listen for the behavior of the **Scroll** component and related scrollable components.
+Defines the enumerations related to the **Scroll** component, such as the scrolling direction, edge effect, scrollbar state, content clipping, nested scrolling, scrolling state, and scroll source, which are used to configure and listen for the behavior of the **Scroll** component and related scrollable components.
 
 **File to include:** <arkui/node_attributes/scroll.h>
 
@@ -40,6 +39,7 @@ Defines the enumerations related to the **Scroll** component, such as the scroll
 | [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode) | ArkUI_ScrollNestedMode | Enumerates nested scrolling modes.|
 | [ArkUI_ScrollEdge](#arkui_scrolledge) | ArkUI_ScrollEdge | Enumerates the edges to which the component scrolls.|
 | [ArkUI_ScrollAlignment](#arkui_scrollalignment) | ArkUI_ScrollAlignment | Enumerates how the list item to scroll to is aligned with the container.|
+| [OH_ArkUI_FastScrollMode](#oh_arkui_fastscrollmode) | OH_ArkUI_FastScrollMode | Defines the fast scroll mode used when scrolling to a specified index, which is used to set the **.value[4]?.i32** parameter of [NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index) or [NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index). It takes effect only when **.value[1]?.i32** is set to **1** (enable animation). For **WaterFlow**, the [ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) layout mode is also required. |
 | [ArkUI_ScrollState](#arkui_scrollstate) | ArkUI_ScrollState | Enumerates the scrolling states.|
 | [ArkUI_ScrollSource](#arkui_scrollsource) | ArkUI_ScrollSource | Enumerates scroll sources.|
 | [ArkUI_ScrollSnapAnimationSpeed](#arkui_scrollsnapanimationspeed) | ArkUI_ScrollSnapAnimationSpeed | Enumerates scroll snap animation speeds for list components.|
@@ -53,6 +53,7 @@ enum ArkUI_EdgeEffect
 ```
 
 **Description**
+
 
 Enumerates the effects used at the edges of the component when the boundary of the scrollable content is reached. The default value is **ARKUI_EDGE_EFFECT_NONE** for the **Grid**, **Scroll**, and **WaterFlow** components, and **ARKUI_EDGE_EFFECT_SPRING** for the **List** component.
 
@@ -72,6 +73,7 @@ enum ArkUI_BarState
 
 **Description**
 
+
 Enumerates the scrollbar states of the **TextArea** and **TextEditor** components.
 
 **Since:** 22
@@ -90,6 +92,7 @@ enum ArkUI_EffectEdge
 
 **Description**
 
+
 Enumerates the edges for which the effect takes effect when the boundary of the scrollable content is reached.
 
 **Since:** 18
@@ -106,6 +109,7 @@ enum ArkUI_ScrollDirection
 ```
 
 **Description**
+
 
 Enumerates the scrolling directions of the [Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md) component.
 
@@ -126,6 +130,7 @@ enum ArkUI_ScrollSnapAlign
 
 **Description**
 
+
 Enumerates the alignment modes of list items when scrolling ends.
 
 **Since:** 12
@@ -145,6 +150,7 @@ enum ArkUI_ScrollBarDisplayMode
 
 **Description**
 
+
 Enumerates the scrollbar display modes.
 
 **Since:** 12
@@ -152,7 +158,7 @@ Enumerates the scrollbar display modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF = 0 | Not displayed.|
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | Displayed when the screen is touched and hidden after 2s.|
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | Displayed on demand (displayed when the screen is touched and hidden after 2s). |
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_ON = 2 | Always displayed.|
 
 ### ArkUI_ContentClipMode
@@ -162,6 +168,7 @@ enum ArkUI_ContentClipMode
 ```
 
 **Description**
+
 
 Enumerates the content clipping modes of scrollable components.
 
@@ -180,6 +187,7 @@ enum ArkUI_ScrollNestedMode
 ```
 
 **Description**
+
 
 Enumerates nested scrolling modes.
 
@@ -200,6 +208,7 @@ enum ArkUI_ScrollEdge
 
 **Description**
 
+
 Enumerates the edges to which the component scrolls.
 
 **Since:** 12
@@ -219,6 +228,7 @@ enum ArkUI_ScrollAlignment
 
 **Description**
 
+
 Enumerates how the list item to scroll to is aligned with the container.
 
 **Since:** 12
@@ -230,6 +240,31 @@ Enumerates how the list item to scroll to is aligned with the container.
 | ARKUI_SCROLL_ALIGNMENT_END = 2 | The end edge of the list item is flush with the end edge of the container.|
 | ARKUI_SCROLL_ALIGNMENT_AUTO = 3 | The list item is automatically aligned. If the item is fully contained within the display area, no adjustment is performed. Otherwise, the item is aligned so that its start or end edge is flush with the start or end edge of the container, whichever requires a shorter scrolling distance.|
 
+### OH_ArkUI_FastScrollMode
+
+```c
+enum OH_ArkUI_FastScrollMode
+```
+
+**Description**
+
+Defines the fast scroll mode used when scrolling to a specified index, which is used to set the **.value[4]?.i32** parameter of [NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index) or [NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index). It takes effect only when **.value[1]?.i32** is set to **1** (enable animation). For **WaterFlow**, the [ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) layout mode is also required.
+
+> **NOTE**
+>
+> - When the scroll distance is large and a jump is triggered, the component usually scrolls continuously for about two screens from the start position, then jumps to a position about two screens away from the final stop position, and continues scrolling to the final position. One screen refers to the length of the visible area of the scrollable component in the scroll direction.
+> - Skipping creation or measurement applies only to the scroll path that is skipped as described above. The child components that need to be displayed in the two continuous scroll segments before and after the jump are still created and measured on demand. The actual range of creation and measurement is also affected by factors such as the alignment mode, extra offset, and child component size, and is not fixed at four screens.
+> - Fast scroll does not guarantee that every child component on the scroll path is traversed and displayed.
+> - When a value not defined in this enumeration is passed to **NODE_LIST_SCROLL_TO_INDEX** or **NODE_WATER_FLOW_SCROLL_TO_INDEX**, it is processed as **OH_ARKUI_FAST_SCROLL_MODE_NONE**, and the fast scroll optimization is not enabled. Other scroll parameters still take effect according to the original rules.
+
+**Since**: 26.1.0
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 | The fast scroll optimization is not enabled, and the behavior is the same as when the fast scroll mode parameter is not set. When an animation is enabled, all child components on the scroll path are created and measured before the animation starts. |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 | The measurement of intermediate child components is skipped, but they are still created to confirm the type and the target row. This mode applies to the scenario where a multi-column **List** contains both **ListItem** and **ListItemGroup**: a **ListItem** occupies one column of a row, while a **ListItemGroup** occupies an entire row, so the target row must be determined based on the child component type. |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | The creation and measurement of intermediate child components are skipped to further reduce overhead.<br/>**NOTE**<br/>This mode does not apply to the scenario where a multi-column **List** contains both **ListItem** and **ListItemGroup**. Using this mode in that scenario causes abnormal **List** layout and scrolling. Use **OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE** instead.<br/>This mode is recommended for the **WaterFlow** component. In the [ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) layout mode, locating the target **FlowItem** in **WaterFlow** does not depend on intermediate child components. **OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE** still creates the intermediate child components along the path, incurring unnecessary creation overhead. |
+
 ### ArkUI_ScrollState
 
 ```c
@@ -237,6 +272,7 @@ enum ArkUI_ScrollState
 ```
 
 **Description**
+
 
 Enumerates the scrolling states.
 
@@ -246,7 +282,7 @@ Enumerates the scrolling states.
 | -- | -- |
 | ARKUI_SCROLL_STATE_IDLE = 0 | Idle. The container enters this state when an API in the controller is used to scroll the container or when the scrollbar is dragged.|
 | ARKUI_SCROLL_STATE_SCROLL = 1 | Scrolling. The container enters this state when the user drags the container to scroll.|
-| ARKUI_SCROLL_STATE_FLING = 2 | Inertial scrolling. The container enters this state when inertial scrolling occurs or when the container bounces back after being released from a fling.|
+| ARKUI_SCROLL_STATE_FLING = 2 | Inertia scrolling. The container enters this state when inertia scrolling occurs after a quick swipe is released and when sliding to the edge and bouncing back. |
 
 ### ArkUI_ScrollSource
 
@@ -255,6 +291,7 @@ enum ArkUI_ScrollSource
 ```
 
 **Description**
+
 
 Enumerates scroll sources.
 
@@ -267,7 +304,7 @@ Enumerates scroll sources.
 | ARKUI_SCROLL_SOURCE_EDGE_EFFECT = 2 | [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect) for boundary crossing.|
 | ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT = 3 | User input other than dragging, such as mouse wheel and keyboard events.|
 | ARKUI_SCROLL_SOURCE_SCROLL_BAR = 4 | Scrollbar dragging.|
-| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING = 5 | Inertial scrolling after scrollbar dragging.|
+| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING = 5 | Inertia scrolling after scrollbar dragging.|
 | ARKUI_SCROLL_SOURCE_SCROLLER = 6 | Scrolling by the scroll controller (without animation).|
 | ARKUI_SCROLL_SOURCE_ANIMATION = 7 | Scrolling by the scroll controller (with animation).|
 
@@ -278,6 +315,7 @@ enum ArkUI_ScrollSnapAnimationSpeed
 ```
 
 **Description**
+
 
 Enumerates scroll snap animation speeds for list components.
 

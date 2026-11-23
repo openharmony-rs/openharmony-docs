@@ -26,7 +26,7 @@
 
 5. 构造[cert.CertChainValidationParameters](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchainvalidationparameters11)证书链校验参数对象。
 
-6. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+6. 调用[x509CertChain.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
 本地仅校验终端实体证书的吊销状态示例：
 
@@ -142,11 +142,11 @@ async function doTestLeafCertCrlCheck() {
 
 4. 构造[cert.CertChainValidationParameters](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchainvalidationparameters11)证书链校验参数。
 
-5. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+5. 调用[x509CertChain.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
 > **说明：**
 >
-> 本开发指导中提供的示例代码需要在配置网络的前提下执行。
+> 本开发指导中提供的示例代码需要在配置网络的前提下执行。需要申请ohos.permission.INTERNET权限，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 在线校验中间证书的吊销状态示例：
 
@@ -225,6 +225,7 @@ async function doTestCaCheck() {
     console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
+
 ```
 
 
@@ -245,7 +246,7 @@ async function doTestCaCheck() {
 
 4. 构造`cert.CertChainValidationParameters`证书链校验参数，配置`revocationCheckParam`为`RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
 
-5. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+5. 调用[certChain.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
 在线CRL检查忽略网络不可达异常示例：
 
@@ -317,4 +318,5 @@ async function validateCRL() {
     console.error(`X509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
+
 ```

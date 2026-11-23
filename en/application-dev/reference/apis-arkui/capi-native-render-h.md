@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=01095da33483978f977f5e355d86dd060e5ba8c9 translatedAt=2026-11-18T08:59:41.189Z pushedAt=2026-11-20T01:41:24.839Z nl=1 -->
 
 ## Overview
 
@@ -48,6 +49,12 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)               | ArkUI_RenderNodeClipOption                                | Defines a render node clipping option, which is used to describe the clipping area of a render node using a rectangle, rounded rectangle, circle, ellipse, or custom drawing path, and apply the clipping to the render node as the input parameter of [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip).      |
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)               | ArkUI_RenderBlurStyleOption                                | Defines a blur style configuration.      |
 
+### Enums
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) | Enumerates the attachment policies of child render nodes, which specify whether a child node and its complete render node subtree inherit the instance of the parent render node. |
+
 ### Functions
 
 <!--Table: 40%; 20%; 40%-->
@@ -61,6 +68,8 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_disposenode) | - | Destroys the render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addchild) | - | Adds a child node to the target parent render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)](#oh_arkui_rendernodeutils_insertchildafter) | - | Adds a child node after the target child node of the parent node.|
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_addchildwithpolicy) | - | Adds a child node to the target parent render node, and migrates the child node and its complete render node subtree to the parent node instance based on the attachment policy. |
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_insertchildafterwithpolicy) | - | Inserts a child node after the target child node of the parent node, and migrates the child node and its complete render node subtree to the parent node instance based on the attachment policy. |
 | [int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removechild) | - | Removes a child node from the specified render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_clearchildren) | - | Clears all child nodes of the specified render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getchild) | - | Obtains the child node at the specified index.|
@@ -147,12 +156,12 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)](#oh_arkui_rendernodeutils_setcoloranimatablepropertyvalue) | - | Sets the value of the animatable color property.|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)](#oh_arkui_rendernodeutils_getcoloranimatablepropertyvalue) | - | Obtains the value of the animatable color property.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)](#oh_arkui_rendernodeutils_disposecoloranimatableproperty) | - | Disposes of the animatable color property.|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void\* userData, void (\*callback)(ArkUI_DrawContext\* context, void\* userData))](#oh_arkui_rendernodeutils_setcontentmodifierondraw) | - | Sets the **onDraw** callback of the content modifier.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (\*callback)(ArkUI_DrawContext* context, void* userData))](#oh_arkui_rendernodeutils_setcontentmodifierondraw) | - | Sets the **onDraw** callback of the content modifier. |
 | [ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()](#oh_arkui_rendernodeutils_createrectshapeoption) | - | Creates a rectangle shape option.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)](#oh_arkui_rendernodeutils_disposerectshapeoption) | - | Disposes of the rectangle shape option.|
 | [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setrectshapeoptionedgevalue) | - | Sets the edge value for the rectangle shape option.|
-| [ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()](#oh_arkui_rendernodeutils_createnodeborderstyleoption) | - | Creates a node border style option.|
-| [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)](#oh_arkui_rendernodeutils_disposenodeborderstyleoption) | - | Disposes of the node border style option.|
+| [ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()](#oh_arkui_rendernodeutils_createnodeborderstyleoption) | - | Creates a node border style.|
+| [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)](#oh_arkui_rendernodeutils_disposenodeborderstyleoption) | - | Disposes of a node border style.|
 | [void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodeborderstyleoptionedgestyle) | - | Sets the edge style of the node border.|
 | [ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()](#oh_arkui_rendernodeutils_createnodeborderwidthoption) | - | Creates a node border width option.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidthOption* option)](#oh_arkui_rendernodeutils_disposenodeborderwidthoption) | - | Disposes of the node border width option.|
@@ -193,7 +202,7 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setrectshapeoptionvalue) | - | Sets the border range for a rectangle shape option.|
 | [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setroundrectshapeoptionvalue) | - | Sets the border range for a rounded rectangle shape option.|
 | [ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()](#oh_arkui_rendernodeutils_createblurstyleoption) | - | Creates a blur style object.|
-| [void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_disposeblurstyleoption) | - | Dispose of a blur style object.|
+| [void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_disposeblurstyleoption) | - | Disposes of a blur style object.|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)](#oh_arkui_rendernodeutils_setblurstyleoptionradius) | - | Sets a blur radius for a target blur style.|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setbackgroundbluroption) | - | Sets a background blur style for a render node. This API is applicable to scenarios where the background content of the node needs to be blurred.|
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetbackgroundbluroption) | - | Resets a background blur style for a render node.|
@@ -204,6 +213,25 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | - | Inserts a child render node at a specified position under a parent custom node.|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | Obtains the number of all child nodes of a parent custom node in the mixed mount order.|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | - | Obtains the render node handle corresponding to the child node at a specified position of a parent custom node in the mixed mount order.|
+
+## Enum Description
+
+### OH_ArkUI_RenderNodeAttachPolicy
+
+```c
+enum OH_ArkUI_RenderNodeAttachPolicy
+```
+
+**Description**
+
+Enumerates the attachment policies of child render nodes, which specify whether a child node and its complete render node subtree inherit the instance of the parent render node.
+
+**Since**: 26.1.0
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0 | The child node and its render node subtree do not inherit the parent node instance. |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1 | The child node and its render node subtree inherit the parent node instance. |
 
 ## Function Description
 
@@ -397,6 +425,59 @@ Adds a child node after the target child node of the parent node.
 | Type| Description|
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the target node originates from a **FrameNode**. This specification is supported since API version 22.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the current render node originates from a **FrameNode** that has been either detached as a child node or destroyed. This specification is supported since API version 22.|
+
+### OH_ArkUI_RenderNodeUtils_AddChildWithPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)
+```
+
+**Description**
+
+Adds a child node to the target parent render node, and migrates the child node and its complete render node subtree to the parent node instance based on the attachment policy.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | [Input parameter] Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | [Input parameter] Child render node to be attached. Its existing parent-child relationship must be released before the call. |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [Input parameter] Attachment policy, which specifies whether the child node and its render node subtree inherit the parent node instance. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a C API initialization error occurs.<br>Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the target node comes from a FrameNode.<br>Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the current render node comes from a FrameNode that has been detached as a child node or destroyed. |
+
+### OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)
+```
+
+**Description**
+
+Inserts a child node after the target child node of the parent node, and migrates the child node and its complete render node subtree to the parent node instance based on the attachment policy.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | [Input parameter] Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | [Input parameter] Child render node to be attached. Its existing parent-child relationship must be released before the call. |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling | [Input parameter] Reference sibling render node used to determine the insertion position. If this valid node is not in the current child node list of **node**, **child** is appended to the end. |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [Input parameter] Attachment policy, which specifies whether the child node and its render node subtree inherit the parent node instance. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation succeeds.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a C API initialization error occurs.<br>Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the target node or the child node comes from a FrameNode.<br>Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the current render node comes from a FrameNode that has been detached as a child node or destroyed. |
 
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
@@ -2356,7 +2437,7 @@ Disposes of the animatable color property.
 ### OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw()
 
 ```c
-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void\* userData, void (\*callback)(ArkUI_DrawContext\* context, void\* userData))
+int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext* context, void* userData))
 ```
 
 **Description**
@@ -2371,7 +2452,7 @@ This callback is used to execute the custom drawing logic during the drawing pha
 | -- | -- |
 | [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier.|
 | void* userData | Pointer to the custom data to be passed to the callback.|
-| void (\*callback)([ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)\* context, void\* userData) | Pointer to the callback for receiving drawing events. **context** indicates the drawing context, and **userData** indicates the custom data passed when this API is called.|
+| void (\*callback)([ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context, void* userData) | Pointer to the callback to receive the drawing event. **context** indicates the drawing context. **userData** indicates the custom data passed in when this API is called. |
 
 **Return value**
 | Type| Description|
@@ -3254,7 +3335,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption
 
 **Description**
 
-Dispose of a blur style object.
+Disposes of a blur style object.
 
 **Since**: 26.0.0
 

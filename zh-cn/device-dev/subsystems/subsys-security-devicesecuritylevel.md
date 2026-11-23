@@ -294,7 +294,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 ##### 生成三级签名验证信息
 
 1. 首先生成二级签名用ECDSA密钥对：`<ecc-l2-pk>`和`<ecc-l2-sk>`
-2. 使用`<ecc-l2-sk>` 对3.2章节生成的`<ecc-l3-pk>`进行签名，得到`<ecc-l3-pk-signature>`
+2. 使用`<ecc-l2-sk>` 对[生成签名私钥](#生成签名私钥)章节生成的`<ecc-l3-pk>`进行签名，得到`<ecc-l3-pk-signature>`
 3. 将`<ecc-l3-pk>`和`<ecc-l3-pk-signature>`组合成json字符串示例如下：
 
 ``` json
@@ -307,7 +307,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 ##### 生成二级签名验证信息
 
 1. 生成一级签名用ECDSA密钥对：`<ecc-root-pk>`和`<ecc-root-sk>`
-2. 使用`<ecc-root-sk>` 对4.1章节生成的`<ecc-l2-pk>`进行签名，得到`<ecc-l2-pk-signature>`
+2. 使用`<ecc-root-sk>` 对[生成三级签名验证信息](#生成三级签名验证信息)章节生成的`<ecc-l2-pk>`进行签名，得到`<ecc-l2-pk-signature>`
 3. 将`<ecc-l2-pk>`和`<ecc-l2-pk-signature>`组合成json字符串示例如下：
 
 ``` json
@@ -319,7 +319,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 
 ##### 生成根签名验证信息
 
-1. 使用`<ecc-root-sk>` 对4.2章节生成的`<ecc-root-pk>`进行签名（即自签名），得到`<ecc-root-pk-self-signature>`
+1. 使用`<ecc-root-sk>` 对[生成二级签名验证信息](#生成二级签名验证信息)章节生成的`<ecc-root-pk>`进行签名（即自签名），得到`<ecc-root-pk-self-signature>`
 2. 将`<ecc-root-pk>`和`<ecc-root-pk-self-signature>`组合成json字符串示例如下：
 
 ``` json

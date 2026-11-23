@@ -2,10 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=2c124bd0b2ec980b0ce8b960a5620bdca08e9d12 translatedAt=2026-08-27T08:42:55.589Z pushedAt=2026-08-28T02:09:14.932Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:10:54.569Z pushedAt=2026-11-20T01:52:48.738Z nl=1 -->
 
 ## Overview
 
@@ -813,7 +813,7 @@ The available area is the area that applications can freely use after the system
 
 **Since**: 20
 
-**Device behavior differences**:
+**Device behavior differences**: 
 
 - This API can be properly called on devices running OpenHarmony 7.0.0 or later.
 

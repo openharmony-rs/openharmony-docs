@@ -347,7 +347,7 @@
        - [Codec](driver/driver-peripherals-codec-des.md)
        - [Display VDI](driver/driver-peripherals-display-vdi-des.md)
        - [Face_auth](driver/driver-peripherals-face_auth-des.md)
-       - [Fingerprint_auth](driver/driver-peripherals-fingerprint_auth-des.md)
+       - [Fingerprint_auth](driver/driver-peripherals-fingerprint-auth-des.md)
        - [LCD](driver/driver-peripherals-lcd-des.md)
        - [Light](driver/driver-peripherals-light-des.md)
        - [Motion](driver/driver-peripherals-motion-des.md)
