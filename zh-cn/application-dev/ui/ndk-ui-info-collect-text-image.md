@@ -350,34 +350,73 @@ private async capture(nodeIds: number[]): Promise<void> {
 
 ### 采集页面文本
 
-[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)必须在目标UI实例的UI线程上同步调用（在非目标UI线程调用会导致进程终止）。以下示例假定`CollectPageText`由ArkTS页面上的UI事件（如按钮点击）直接触发，从而保证当前处于目标UI线程。获取目标页面的`ArkUI_ContextHandle`后调用采集接口，读取JSON字符串后需调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放封装对象。
+[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)必须在目标UI实例的UI线程上同步调用（在非目标UI线程调用会导致进程终止）。以下示例由ArkTS页面上的UI事件（如按钮点击）直接触发，从而保证当前处于目标UI线程。获取目标页面的`ArkUI_ContextHandle`后调用采集接口，读取JSON字符串后需调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放封装对象。
+
+<!-- @[ui_agent_get_page_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIAgentGetPageText/Library/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-#include <arkui/ui_info_collection.h>
-#include <arkui/ui_json_wrapper.h>
-
-// 由ArkTS页面UI线程事件直接触发的N-API入口，确保在目标UI线程上执行。
-napi_value CollectPageText(napi_env env, napi_callback_info info)
+napi_value GetPageText(napi_env env, napi_callback_info info)
 {
-    auto context = GetImageContext(env);
-    if (!context) {
-        return nullptr;
+    size_t argc = 1;
+    napi_value argv[1] = {nullptr};
+    void *data = nullptr;
+    if (napi_get_cb_info(env, info, &argc, argv, nullptr, &data) != napi_ok || argc != 1 || data == nullptr) {
+        return ThrowError(env, ARKUI_ERROR_CODE_PARAM_INVALID, "Pass the current page's UIContext.");
     }
-    OH_ArkUI_NativeModule_UIJsonWrapper* pageText = nullptr;
-    const ArkUI_ErrorCode code = OH_ArkUI_NativeModule_UIAgentGetPageText(context, &pageText);
-    if (code != ARKUI_ERROR_CODE_NO_ERROR || pageText == nullptr) {
-        // 采集失败时pageText会被置为NULL，按错误码处理即可。
-        return nullptr;
+    ArkUI_ContextHandle context = nullptr;
+    int32_t code = GetContext(env, argv[0], *static_cast<ContextCache *>(data), context);
+    if (code != ARKUI_ERROR_CODE_NO_ERROR || context == nullptr) {
+        return ThrowError(env, code != ARKUI_ERROR_CODE_NO_ERROR ? code : ARKUI_ERROR_CODE_UI_CONTEXT_INVALID,
+            "Cannot obtain the native UI context.");
     }
-    const char* jsonStr = OH_ArkUI_NativeModule_UIJsonWrapperGetData(pageText);
-    const uint32_t jsonSize = OH_ArkUI_NativeModule_UIJsonWrapperGetSize(pageText);
+
+    // Call synchronously from an ArkUI event on the UI thread, never from a worker/async task.
+    OH_ArkUI_NativeModule_UIJsonWrapper *pageText = nullptr;
+    code = OH_ArkUI_NativeModule_UIAgentGetPageText(context, &pageText);
+    JsonOwner ownedText(pageText, OH_ArkUI_NativeModule_UIJsonWrapperDestroy);
+    if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+        return ThrowError(env, code, "OH_ArkUI_NativeModule_UIAgentGetPageText failed.");
+    }
+    const char *jsonData = OH_ArkUI_NativeModule_UIJsonWrapperGetData(ownedText.get());
+    if (jsonData == nullptr) {
+        return ThrowError(env, ARKUI_ERROR_CODE_INTERNAL_ERROR, "The collected JSON is unavailable.");
+    }
+    uint32_t size = OH_ArkUI_NativeModule_UIJsonWrapperGetSize(ownedText.get());
     napi_value result = nullptr;
-    if (jsonStr != nullptr) {
-        napi_create_string_utf8(env, jsonStr, jsonSize, &result);
+    // N-API copies the UTF-8 bytes before the owning wrapper is destroyed on function exit.
+    if (napi_create_string_utf8(env, jsonData, size, &result) != napi_ok) {
+        return ThrowError(env, ARKUI_ERROR_CODE_INTERNAL_ERROR, "Cannot copy the collected JSON to ArkTS.");
     }
-    // 使用完毕后必须销毁JSON封装对象，避免内存泄漏。
-    OH_ArkUI_NativeModule_UIJsonWrapperDestroy(pageText);
+    OH_LOG_Print(LOG_APP, LOG_INFO, SAMPLE_DOMAIN, SAMPLE_TAG, "Collection succeeded, bytes=%{public}u", size);
     return result;
+}
+```
+
+在ArkTS侧解析返回的JSON字符串：
+
+<!-- @[ui_page_text_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIAgentGetPageText/Library/src/main/ets/PageText.ets) -->
+
+``` TypeScript
+export interface PageTextItem {
+  // Native node id; this is different from the ArkTS component's .id('sampleText').
+  id: number;
+  // [x, y, width, height] in physical pixels, relative to the target window.
+  rect: number[];
+  content: string;
+}
+
+export interface PageTextResult {
+  schemaVersion: number;
+  texts: PageTextItem[];
+}
+
+/** Parse the versioned JSON returned by the native page text API. */
+export function parsePageText(json: string): PageTextResult {
+  const result: PageTextResult = JSON.parse(json) as PageTextResult;
+  if (result.schemaVersion !== 1 || !Array.isArray(result.texts)) {
+    throw new Error('Unsupported page text schema');
+  }
+  return result;
 }
 ```
 
