@@ -109,6 +109,10 @@ EXTERN_C_END
                img.release();
             })
 
+         })
+         .catch((error: BusinessError) => {
+         // 申请处理权限被拒绝
+         console.error('permission request failed:' + error);
          });
       }
 
