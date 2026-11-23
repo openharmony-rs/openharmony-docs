@@ -42,10 +42,6 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 控制马达在指定时间内持续振动。调用成功后，马达立即开始振动，持续指定时间后自动停止。适用于需要固定时长振动的场景，如闹钟、计时提醒、游戏反馈、消息提醒等。
 
-**相关方法：**
-- OH_Vibrator_Cancel()：停止当前正在进行的振动
-- OH_Vibrator_PlayVibrationCustom()：播放自定义振动序列
-
 **需要权限：** ohos.permission.VIBRATE
 
 **起始版本：** 11
@@ -63,6 +59,12 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 | -- | -- |
 | int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码：PERMISSION_DENIED（201，权限校验失败）、PARAMETER_ERROR（401，参数检查失败）、UNSUPPORTED（801，设备不支持）。 |
 
+**参考：**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) 停止当前正在进行的振动。
+
+[OH_Vibrator_PlayVibrationCustom](capi-vibrator-h.md#oh_vibrator_playvibrationcustom) 播放自定义振动序列。
+
 ### OH_Vibrator_PlayVibrationCustom()
 
 ```c
@@ -72,9 +74,6 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 **描述**
 
 播放自定义振动序列。调用成功后，系统按照自定义振动序列的配置播放振动效果。适用于通知提醒、游戏、触觉反馈等需要复杂振动模式的场景，帮助实现个性化振动体验，增强用户沉浸感。
-
-**相关方法：**
-- OH_Vibrator_Cancel()：停止当前正在进行的振动
 
 **需要权限：** ohos.permission.VIBRATE
 
@@ -92,6 +91,10 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码包括：参数错误时请检查fileDescription和vibrateAttribute参数是否合法；设备不支持振动功能时请检查设备能力。详细错误码说明请参考 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
+
+**参考：**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) 停止当前正在进行的振动。
 
 ### OH_Vibrator_Cancel()
 
