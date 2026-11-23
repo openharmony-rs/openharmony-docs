@@ -279,6 +279,10 @@ ArkTS-Sta: labelStyle(value: ButtonLabelStyle | undefined)
 
 设置Button组件label文本和字体的样式。
 
+> **说明：**
+> 
+> labelStyle会覆盖之前已设置的font相关属性（如[fontSize](#fontsize)、[fontColor](#fontcolor)、[fontWeight](#fontweight)、[fontStyle](#fontstyle8)、[fontFamily](#fontfamily8)）。由于[LabelStyle](#labelstyle10对象说明)的font字段带有默认值，即使用户未设置font字段，已设置的font相关属性也会被该默认值覆盖，因此建议在其他文本属性之前设置labelStyle。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
