@@ -16,3 +16,4 @@
   - 预置CLI命令<!--preset-cli-commands-->
     - [启动应用命令（start）](cli-command-start.md)
     - [查询应用信息命令（public-dump）](cli-public-dump.md)
+    - [剪贴板工具（ohos-pasteboard）](cli-command-pasteboard.md)
