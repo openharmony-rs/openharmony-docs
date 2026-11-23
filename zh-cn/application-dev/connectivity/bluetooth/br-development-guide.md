@@ -1,7 +1,7 @@
 ---
 kits: ["Connectivity Kit / 短距通信服务"]
 description: "调用其他蓝牙功能前，介绍如何开启与关闭蓝牙并订阅蓝牙开关状态变化事件。"
-keywords: [开启蓝牙, 关闭蓝牙, 蓝牙开关状态, access模块, isBluetoothSupported, STATE_ON, STATE_OFF]
+keywords: [开启蓝牙, 关闭蓝牙, 蓝牙开关状态, access模块, isBluetoothSupported]
 doctype: guide
 status: active
 ---
