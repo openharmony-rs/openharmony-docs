@@ -306,7 +306,7 @@ ohos-window screenshot --windowId 100 --format jpeg --outputPath /app/data/
 # 截取指定矩形区域（x=100,y=200,width=300,height=400）
 ohos-window screenshot --rect 100,200,300,400
 
-# 截主屏幕，排除窗口100和200
+# 截取主屏幕，排除窗口100和200
 ohos-window screenshot --displayId 0 --excludeWindowIds 100,200
 ```
 
