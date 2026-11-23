@@ -3643,7 +3643,7 @@ encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): st
 
 | 参数名 | 类型       | 必填 | 说明                |
 | ------ | ---------- | ---- | ------------------- |
-| src    | Uint8Array&nbsp;\|&nbsp;[collections.Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)<sup>26.1.0+</sup> | 是   | 待编码的Uint8Array对象。<br/>**说明**：从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。 |
+| src    | Uint8Array&nbsp;\|&nbsp;[collections.Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)<sup>26.1.0+</sup> | 是   | 待编码的Uint8Array对象。<br/>**说明**：从API版本26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。 |
 | options<sup>10+</sup>    | [Type](#type10) | 否   | 从API version 10开始支持该参数，表示对应的编码格式。<br/>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE 和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br/>- 当参数取值为util.Type.BASIC，表示Base64编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME，表示使用Base64编码。如果返回值超过76个字符，则会在每76个字符处进行换行，并以'\r\n'结束每行。如果返回值少于76个字符，则会抛出异常。<br/>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。 |
 
 **返回值：**
@@ -3736,7 +3736,7 @@ encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): st
 
   ```ts
   import { util, collections } from '@kit.ArkTS';
-  // 从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组）
+  // 从API版本26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组）
   let base64Helper = new util.Base64Helper();
   let sendableArray = new collections.Uint8Array([77, 97, 110]);
   let result = base64Helper.encodeToStringSync(sendableArray, util.Type.BASIC);
@@ -3831,7 +3831,7 @@ encodeToString(src: Uint8Array | collections.Uint8Array, options?: Type): Promis
 
 | 参数名 | 类型       | 必填 | 说明                    |
 | ------ | ---------- | ---- | ----------------------- |
-| src    | Uint8Array&nbsp;\|&nbsp;[collections.Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)<sup>26.1.0+</sup> | 是   | 异步编码输入的Uint8Array对象。<br/>**说明**：从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。 |
+| src    | Uint8Array&nbsp;\|&nbsp;[collections.Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)<sup>26.1.0+</sup> | 是   | 异步编码输入的Uint8Array对象。<br/>**说明**：从API版本26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。 |
 | options<sup>10+</sup>    | [Type](#type10) | 否   | 从API version 10开始支持该参数，表示对应的编码格式。<br/>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br/>- 当参数取值为util.Type.BASIC，表示Base64编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME，表示Base64编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。<br/>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。 |
 
 **返回值：**
@@ -3856,7 +3856,7 @@ encodeToString(src: Uint8Array | collections.Uint8Array, options?: Type): Promis
 
   })
 
-  // 从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组）
+  // 从API版本26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组）
   let base64Helper = new util.Base64Helper();
   let sendableArray = new collections.Uint8Array([77, 97, 110]);
   base64Helper.encodeToString(sendableArray, util.Type.BASIC).then((val) => {
