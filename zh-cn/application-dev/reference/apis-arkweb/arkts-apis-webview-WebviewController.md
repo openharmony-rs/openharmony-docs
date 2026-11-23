@@ -19965,7 +19965,7 @@ ArkTS-Sta: static removeVisitedLinksSince(date: Date, callback: Callback\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | date | Date | 是 | 数据删除的时间点，删除该日期之后发生变化的已访问链接记录。 |
-| callback | Callback\<void\> | 是 | 删除操作完成时调用的回调函数，无返回值。 |
+| callback | Callback\<void\> | 是 | 回调函数，用于返回结果。 |
 
 **示例：**
 
