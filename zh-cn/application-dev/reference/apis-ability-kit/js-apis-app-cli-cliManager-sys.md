@@ -269,7 +269,7 @@ execTool(toolName: string, subCommand: string, args: Record\<string, Object\>, c
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 35600030 | No tool with the specified name exists. |
 | 35600031 | Maximum number of processes has been reached. |
-| 35600050  | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+| 35600050  | System Error. 1. Connect to system service failed; 2. The system service failed to communicate with the dependent module. |
 
 **示例：**
 
