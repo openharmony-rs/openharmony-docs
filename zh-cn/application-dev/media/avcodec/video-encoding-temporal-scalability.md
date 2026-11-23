@@ -125,7 +125,7 @@ status: active
 
    <!-- @[temporal_scalability_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    // 1.1 获取对应视频编码器能力实例，此处以H.264为例。
    OH_AVCapability *cap = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
    // 1.2 通过特性能力查询接口校验是否支持全局时域可分层特性。
@@ -136,7 +136,7 @@ status: active
 
    <!-- @[temporal_scalability_create_encoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    // 创建硬件编码器实例。
    OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
    ```
@@ -145,7 +145,7 @@ status: active
 
    <!-- @[temporal_scalability_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    constexpr int32_t TGOP_SIZE = 3;
    // 2.1 创建配置用临时AVFormat。
    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -170,7 +170,7 @@ status: active
 
    <!-- @[temporal_scalability_dynamic_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    std::unique_lock<std::shared_mutex> lock(codecMutex);
    // 重置编码器videoEnc。
    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
@@ -204,7 +204,7 @@ status: active
 
    <!-- @[temporal_scalability_dynamic_disable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    std::unique_lock<std::shared_mutex> lock(codecMutex);
    // 重置编码器videoEnc。
    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
@@ -239,7 +239,7 @@ status: active
 
    <!-- @[temporal_scalability_output_layer_by_tgop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    constexpr int32_t TGOP_SIZE = 3;
    uint32_t g_outPoc = 0;
    // 通过输出回调中有效帧数，获取TGOP内相对位置，对照配置确认层级。
@@ -332,7 +332,7 @@ status: active
 
    <!-- @[ltr_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    constexpr int32_t NEEDED_LTR_COUNT = 5;
    bool isSupported = false;
    int32_t supportedLTRCount = 0;
@@ -361,7 +361,7 @@ status: active
 
    <!-- @[ltr_buffer_callback_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    // 2.1 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
    static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
@@ -440,7 +440,7 @@ status: active
 
    <!-- @[ltr_surface_callback_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    // 2.1 编码输入参数回调OH_VideoEncoder_OnNeedInputParameter实现。
    static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
    {
@@ -522,7 +522,7 @@ status: active
 
    <!-- @[ltr_configure_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
-   ```c++
+   ``` c++
    constexpr int32_t NEEDED_LTR_COUNT = 5;
    // 3.1 创建配置用临时AVFormat。
    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
