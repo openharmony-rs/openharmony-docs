@@ -18,7 +18,7 @@
 
 ## 约束与限制
 
-- 使用包含`ui_info_collection.h`中相关声明的配套SDK，并确保运行设备提供与SDK匹配的实现。头文件与库符号齐备时，仍需确认设备实现已提供该能力。
+- 采集前应确认SDK与设备实现的匹配关系、上下文来源、请求规模以及结果对象的所有权，以下条件会影响请求是否被受理或结果是否可用。
 - 上下文句柄必须指向目标UI实例，并在请求处理期间保持有效。句柄无法解析到目标实例时返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，例如句柄为空、页面或窗口已经销毁，或句柄来自其他UI实例。
 - 页面或窗口销毁后不继续使用原上下文发起请求；请求受理后实例失效的，回调返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)且不返回结果集合。
 - 单次请求的节点ID数量为1到20个，且不得重复。
