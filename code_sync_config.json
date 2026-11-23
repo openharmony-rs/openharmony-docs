@@ -1794,17 +1794,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":70,
 						"name":"get_local_cap_ability",
 						"start_line":16
 					},
 					{
-						"end_line":155,
+						"end_line":153,
 						"name":"session_backup",
 						"start_line":17
 					},
 					{
-						"end_line":254,
+						"end_line":251,
 						"name":"session_restore",
 						"start_line":18
 					}
