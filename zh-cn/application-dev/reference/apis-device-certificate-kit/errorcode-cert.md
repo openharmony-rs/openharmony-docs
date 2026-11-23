@@ -201,7 +201,7 @@ The key cannot be used for digital signature.
 
 检查证书的正确性。
 
-## 19030008 私钥密码错误
+## 19030008 私钥密码可能不正确
 
 **错误信息**
 
@@ -209,11 +209,11 @@ Maybe wrong password.
 
 **错误描述**
 
-私钥密码错误。
+私钥密码可能不正确。
 
 **可能原因**
 
-私钥密码错误。
+私钥密码可能不正确。
 
 **处理步骤**
 
@@ -465,13 +465,13 @@ OCSP响应数据格式错误、无法解析或已过期。
 
 **处理步骤**
 
-1. 检查OCSP响应数据的正确性。
+检查OCSP响应数据的正确性。
 
 ## 19030022 OCSP签名验证失败
 
 **错误信息**
 
-Failed to verify the OCSP signature. 
+Failed to verify the OCSP signature.
 
 **错误描述**
 

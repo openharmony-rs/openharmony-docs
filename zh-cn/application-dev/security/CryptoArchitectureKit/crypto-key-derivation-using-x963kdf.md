@@ -17,7 +17,7 @@
 
    X963KdfSpec是[KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11)的子类，需要指定：
 
-   - algName：指定算法'X963Kdf'。
+   - algName：指定算法'X963KDF'。
    - key：原始密钥材料。
 
       如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、Base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
