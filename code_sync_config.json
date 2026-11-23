@@ -60955,9 +60955,9 @@
 						"start_line":55
 					},
 					{
-						"end_line":81,
+						"end_line":77,
 						"name":"annotation_usages_example",
-						"start_line":62
+						"start_line":59
 					},
 					{
 						"end_line":54,
@@ -60965,9 +60965,9 @@
 						"start_line":48
 					},
 					{
-						"end_line":93,
+						"end_line":89,
 						"name":"annotation_field_order",
-						"start_line":86
+						"start_line":78
 					},
 					{
 						"end_line":111,
@@ -60985,14 +60985,14 @@
 						"start_line":118
 					},
 					{
-						"end_line":35,
+						"end_line":32,
 						"name":"annotation_export_example_import",
-						"start_line":18
+						"start_line":22
 					},
 					{
-						"end_line":28,
+						"end_line":20,
 						"name":"annotation_import_example",
-						"start_line":19
+						"start_line":16
 					}
 				]
 			},
@@ -61040,9 +61040,9 @@
 						"start_line":32
 					},
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"annotation_name",
-						"start_line":42
+						"start_line":43
 					},
 					{
 						"end_line":50,
@@ -61570,7 +61570,7 @@
 						"start_line":270
 					},
 					{
-						"end_line":289,
+						"end_line":314,
 						"name":"never_type",
 						"start_line":281
 					},
@@ -61600,9 +61600,9 @@
 						"start_line":704
 					},
 					{
-						"end_line":713,
+						"end_line":741,
 						"name":"type_inference_best_common",
-						"start_line":710
+						"start_line":738
 					},
 					{
 						"end_line":721,
@@ -61635,9 +61635,9 @@
 						"start_line":354
 					},
 					{
-						"end_line":386,
+						"end_line":414,
 						"name":"null_safety",
-						"start_line":367
+						"start_line":392
 					},
 					{
 						"end_line":841,
@@ -61935,9 +61935,9 @@
 						"start_line":1167
 					},
 					{
-						"end_line":1200,
+						"end_line":1244,
 						"name":"static_block",
-						"start_line":1187
+						"start_line":1231
 					},
 					{
 						"end_line":1228,
@@ -62295,9 +62295,9 @@
 						"start_line":651
 					},
 					{
-						"end_line":487,
+						"end_line":471,
 						"name":"record_type_basic",
-						"start_line":481
+						"start_line":461
 					},
 					{
 						"end_line":499,
@@ -62385,14 +62385,14 @@
 						"start_line":320
 					},
 					{
-						"end_line":449,
+						"end_line":382,
 						"name":"while_loop_basic",
-						"start_line":414
+						"start_line":347
 					},
 					{
-						"end_line":488,
+						"end_line":422,
 						"name":"do_while_loop",
-						"start_line":452
+						"start_line":385
 					},
 					{
 						"end_line":452,
@@ -62410,9 +62410,9 @@
 						"start_line":474
 					},
 					{
-						"end_line":519,
+						"end_line":520,
 						"name":"continue_statement",
-						"start_line":487
+						"start_line":488
 					},
 					{
 						"end_line":532,
@@ -62560,14 +62560,14 @@
 						"start_line":854
 					},
 					{
-						"end_line":1064,
+						"end_line":1009,
 						"name":"const_enum_usage",
-						"start_line":1056
+						"start_line":1001
 					},
 					{
-						"end_line":882,
+						"end_line":854,
 						"name":"const_enum_alternative",
-						"start_line":874
+						"start_line":846
 					},
 					{
 						"end_line":902,
@@ -62980,9 +62980,9 @@
 						"start_line":1455
 					},
 					{
-						"end_line":997,
+						"end_line":989,
 						"name":"higher_order_functions",
-						"start_line":960
+						"start_line":952
 					},
 					{
 						"end_line":1036,
@@ -63110,14 +63110,14 @@
 						"start_line":276
 					},
 					{
-						"end_line":358,
+						"end_line":362,
 						"name":"generic_collection_class",
 						"start_line":304
 					},
 					{
-						"end_line":431,
+						"end_line":435,
 						"name":"multi_type_parameter_generic_class",
-						"start_line":361
+						"start_line":365
 					},
 					{
 						"end_line":465,
@@ -63135,9 +63135,9 @@
 						"start_line":514
 					},
 					{
-						"end_line":605,
+						"end_line":609,
 						"name":"generic_interface_default_type",
-						"start_line":567
+						"start_line":571
 					},
 					{
 						"end_line":651,
@@ -63255,9 +63255,9 @@
 						"start_line":856
 					},
 					{
-						"end_line":956,
+						"end_line":961,
 						"name":"generic_array_utilities",
-						"start_line":893
+						"start_line":897
 					},
 					{
 						"end_line":1218,
@@ -63750,9 +63750,9 @@
 						"start_line":147
 					},
 					{
-						"end_line":240,
+						"end_line":231,
 						"name":"class_implements_interface",
-						"start_line":190
+						"start_line":181
 					},
 					{
 						"end_line":270,
@@ -63825,9 +63825,9 @@
 						"start_line":729
 					},
 					{
-						"end_line":857,
+						"end_line":761,
 						"name":"comparable_equatable_interface",
-						"start_line":805
+						"start_line":709
 					},
 					{
 						"end_line":878,
@@ -64275,9 +64275,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Service.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":32,
 						"name":"submodule_export_class",
-						"start_line":16
+						"start_line":18
 					}
 				]
 			},
@@ -64724,9 +64724,9 @@
 						"start_line":241
 					},
 					{
-						"end_line":282,
+						"end_line":278,
 						"name":"string_indexing",
-						"start_line":268
+						"start_line":264
 					},
 					{
 						"end_line":302,
@@ -64769,9 +64769,9 @@
 						"start_line":418
 					},
 					{
-						"end_line":455,
+						"end_line":444,
 						"name":"string_search_methods",
-						"start_line":440
+						"start_line":439
 					},
 					{
 						"end_line":468,
@@ -64779,19 +64779,19 @@
 						"start_line":454
 					},
 					{
-						"end_line":498,
+						"end_line":460,
 						"name":"string_common_methods",
-						"start_line":471
+						"start_line":447
 					},
 					{
-						"end_line":505,
+						"end_line":467,
 						"name":"string_utility_methods",
-						"start_line":501
+						"start_line":463
 					},
 					{
-						"end_line":531,
+						"end_line":490,
 						"name":"string_regex",
-						"start_line":511
+						"start_line":470
 					},
 					{
 						"end_line":587,
