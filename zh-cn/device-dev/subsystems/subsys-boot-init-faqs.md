@@ -117,7 +117,7 @@
 
   **解决方法：**
 
-  1. 查看服务是否在反复重启， 重启服务是否配置critcal。
+  1. 查看服务是否在反复重启， 重启服务是否配置critical。
   2. ps -ef | grep ohos, 确定系统应用是否存在；日志中有 permission denied，init进程报权限问题。 确认系统应用权限，关闭selinux， 重新验证，如果正常， 则是selinux 策略配置不正确导致，重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
   3. 通过bootevent事件分析， 通过排查没有上报的bootevent的服务， 可能会导致开机动画卡死，比如systemUI。
 
@@ -126,13 +126,13 @@
   **原因分析：**
 
   1. init服务中定义“importance”的属性。
-  2. critcal 使能， 关键进程符合critcal 会重启。
+  2. critical 使能， 关键进程符合critical 会重启。
   3. init进程挂掉会导致panic。
 
   **解决方法：**
 
   1. 小型系统中服务配置importance属性为0，importance: 0重启， 1 不重启。
-  2. 关键进程服务配置critcal 会导致进程重启。
+  2. 关键进程服务配置critical 会导致进程重启。
   3. CloseStdio();之前执行execv("/bin/sh", NULL)。
 
 ### reboot命令无法重启
