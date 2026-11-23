@@ -7937,7 +7937,7 @@ ArkTS-Dyn: visitedLinkPersistEnabled(enabled: boolean): WebAttribute
 
 ArkTS-Sta: visitedLinkPersistEnabled(enabled: boolean | undefined): this
 
-设置是否开启Web组件已访问链接的持久化保留。当属性没有显示调用时，默认不开启。
+设置是否开启Web组件已访问链接的持久化保留。当属性没有显式调用时，默认不开启。
 
 开启后，已访问链接记录存储在数据库文件中，应用重启后记录仍保留，已访问链接着色在应用重启后保持一致。关闭后，新产生的已访问链接记录仅存储在共享内存中，应用退出后不保留。
 
