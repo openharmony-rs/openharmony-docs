@@ -6274,7 +6274,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":59,
 						"name":"basic_sample",
 						"start_line":15
 					}
@@ -6284,9 +6284,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":66,
 						"name":"order1_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6294,9 +6294,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":91,
 						"name":"order2_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6304,9 +6304,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":53,
 						"name":"order3_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6314,9 +6314,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":87,
 						"name":"order4_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6324,7 +6324,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets",
 				"functions":[
 					{
-						"end_line":211,
+						"end_line":359,
 						"name":"assert_sample",
 						"start_line":45
 					}
@@ -6334,9 +6334,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":63,
 						"name":"afterReturn_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6344,9 +6344,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":61,
 						"name":"argumentMatchersForAny_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6354,9 +6354,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":61,
 						"name":"argumentMatchersForString_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6364,9 +6364,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":62,
 						"name":"argumentMatchersForRegex_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6374,9 +6374,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":75,
 						"name":"verify_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6384,9 +6384,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":70,
 						"name":"ignoreMock_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6394,9 +6394,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":71,
 						"name":"clearMock_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6404,9 +6404,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":74,
 						"name":"afterThrow_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6414,9 +6414,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":65,
 						"name":"returnPromise_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6424,9 +6424,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":69,
 						"name":"verifyTimes_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6434,9 +6434,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":60,
 						"name":"mockStatic_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6444,9 +6444,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":62,
 						"name":"mockPrivateFunc_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6454,9 +6454,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":74,
 						"name":"mockProperty_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6464,7 +6464,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/testability/TestAbility.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":73,
 						"name":"dataDriverAbility_sample",
 						"start_line":16
 					}
@@ -6474,9 +6474,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":22,
 						"name":"dataDriver_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			},
@@ -6484,9 +6484,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/IsMocked.test.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":97,
 						"name":"isMocked_sample",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			}
