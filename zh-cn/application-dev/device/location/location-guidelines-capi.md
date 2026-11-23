@@ -66,7 +66,7 @@
 
    <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` c
+   ``` c++
     std::string GetErrorMsgFromErrorCode(int errorCode)
     {
         switch(errorCode) {
@@ -105,7 +105,7 @@
 
    <!-- @[location_capi_locating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` c
+   ``` c++
    // 定义一个请求参数
    struct Location_RequestConfig *g_requestConfig = nullptr;
    void *g_mydata = nullptr;
@@ -201,7 +201,7 @@
 
    <!-- @[location_capi_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/types/libentry/index.d.ts) -->
 
-   ``` c
+   ``` TypeScript
    export const ohLocationIsEnabled: () => boolean;
    export const ohLocationStartLocating: () => number;
    export const ohLocationStopLocating: () => number;
