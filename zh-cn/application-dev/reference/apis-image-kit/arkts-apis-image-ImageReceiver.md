@@ -435,7 +435,7 @@ setMemoryName(name: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 7900201  | Invalid parameter. Possible causes:<br>1.Name is empty.<br>2.Name contains no visible characters after filtering.<br>3.The length of name exceeds 255 bytes.<br>4.Ensure the name parameter contains visible ASCII characters. |
+| 7900201  | Invalid parameter. Possible causes:<br>Name is empty.<br>Name contains no visible characters after filtering.<br>The length of name exceeds 255 bytes.<br>Ensure the name parameter contains visible ASCII characters. |
 
 **示例：**
 
