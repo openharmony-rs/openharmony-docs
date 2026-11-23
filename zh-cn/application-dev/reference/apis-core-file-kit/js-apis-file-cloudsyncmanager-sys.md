@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向云盘管理应用提供端云同步管理能力，包括使能/去使能端云协同能力、修改应用同步开关、云端数据变化通知、账号退出时清理或保留云相关文件，以及全量下载等。开发者可在云盘管理应用中使用该模块管理应用端云协同开关、同步云端数据变更、处理账号退出后的本地云数据，并执行云文件全量下载和搬迁。
+该模块向云盘管理应用提供端云同步管理能力，包括使能/去使能端云协同能力、修改应用同步开关、云端数据变化通知、账号退出时清理或保留云相关文件、全量下载，以及云空间核查等。开发者可在云盘管理应用中使用该模块管理应用端云协同开关、同步云端数据变更、处理账号退出后的本地云数据，执行云文件全量下载和搬迁，并主动触发或订阅云空间核查。
 
 > **说明：**
 >
@@ -1527,3 +1527,244 @@ cloudSyncManager.getDowngradeDownloadTaskState(bundles).then((results: Array<clo
 | 名称      | 值  | 说明                                                                             |
 | --------- | --- | ------------------------------------------------------------------------------- |
 | MISSING   | 3   | 下载任务不存在。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+
+## CheckTriggerReason
+
+云盘校验触发原因的枚举值。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称     | 值  | 说明                             |
+| -------- | --- | -------------------------------- |
+| PERIODIC | 0   | 由周期性校验任务触发云盘校验。 |
+| MANUAL   | 1   | 由云盘应用手动触发云盘校验。 |
+
+## CheckTriggerInfo
+
+表示已完成的云盘校验的触发者及触发原因。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称              | 类型                                      | 只读 | 可选 | 说明                         |
+| ----------------- | ----------------------------------------- | ---- | ---- | ---------------------------- |
+| bundleName        | string                                    | 否   | 否   | 被校验云文件的应用包名。<br>长度小于1024字符。 |
+| triggerBundleName | string                                    | 否   | 否   | 触发云盘校验的应用包名。<br>长度小于1024字符。   |
+| reason            | [CheckTriggerReason](#checktriggerreason) | 否   | 否   | 触发云盘校验的原因。       |
+
+## cloudSyncManager.onCheckTrigger
+
+onCheckTrigger(callback: Callback&lt;CheckTriggerInfo&gt;): void
+
+订阅校验完成事件，使用callback异步回调。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                 |
+| -------- | ----------------------------------------------------- | ---- | ---------------------------------------------------- |
+| callback | Callback&lt;[CheckTriggerInfo](#checktriggerinfo)&gt; | 是   | 回调函数，返回校验触发信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13600001 | IPC error. Possible cause: 1.IPC failed or timed out. 2.Failed to load the service. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (info: cloudSyncManager.CheckTriggerInfo) => {
+  console.info(`Cloud check finished. bundleName: ${info.bundleName}, triggerBundleName: ${info.triggerBundleName}, reason: ${info.reason}`);
+};
+try {
+  cloudSyncManager.onCheckTrigger(callback);
+} catch (err) {
+  let e = err as BusinessError;
+  console.error(`Failed to subscribe cloud check trigger, error message: ${e.message}, error code: ${e.code}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (info: cloudSyncManager.CheckTriggerInfo): void => {
+  console.info("Cloud check finished. bundleName: " + info.bundleName + ", triggerBundleName: " + info.triggerBundleName + ", reason: " + info.reason);
+};
+try {
+  cloudSyncManager.onCheckTrigger(callback);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error("Failed to subscribe cloud check trigger, error message: " + e.message + ", error code: " + e.code);
+}
+```
+
+## cloudSyncManager.offCheckTrigger
+
+offCheckTrigger(): void
+
+取消订阅云盘校验完成事件。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13600001 | IPC error. Possible cause: 1.IPC failed or timed out. 2.Failed to load the service. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  cloudSyncManager.offCheckTrigger();
+} catch (err) {
+  let e = err as BusinessError;
+  console.error(`Failed to unsubscribe cloud check trigger, error message: ${e.message}, error code: ${e.code}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  cloudSyncManager.offCheckTrigger();
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error("Failed to unsubscribe cloud check trigger, error message: " + e.message + ", error code: " + e.code);
+}
+```
+
+## cloudSyncManager.triggerCloudCheck
+
+ArkTS-Dyn: triggerCloudCheck(userId: number, bundleName: string): Promise&lt;number&gt;
+
+ArkTS-Sta: triggerCloudCheck(userId: int, bundleName: string): Promise&lt;int&gt;
+
+触发指定应用的云文件校验。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**参数：**
+
+| 参数名     | 类型                                 | 必填 | 说明               |
+| ---------- | ------------------------------------ | ---- | ------------------ |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 用户ID。<br>取值限定为整数，取值范围大于等于100，小于等于2147483647。 |
+| bundleName | string                               | 是   | 应用包名。长度小于1024字符。 |
+
+**返回值：**
+
+| 类型                                                    | 说明                                                                     |
+| ------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回API调用状态。值为**0**表示请求已接受；其他值为错误码，错误码对应信息见下方。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13600001 | IPC error. Possible cause: 1.The cloud sync service is not loaded. 2.The IPC connection is broken. |
+| 22400001 | Cloud is not ready. |
+| 22400002 | Network is not available. |
+| 22400003 | Battery is too low to perform sync. |
+| 22400005 | Inner service error. |
+| 22400006 | Another sync task is running. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.triggerCloudCheck(userId, bundleName).then((result: number) => {
+  console.info(`triggerCloudCheck successfully, result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`triggerCloudCheck failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: int = 100;
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.triggerCloudCheck(userId, bundleName).then<int>((result: int): void => {
+  console.info("triggerCloudCheck successfully, result: " + result);
+}).catch((err: BusinessError<int>): void => {
+  console.error("triggerCloudCheck failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
