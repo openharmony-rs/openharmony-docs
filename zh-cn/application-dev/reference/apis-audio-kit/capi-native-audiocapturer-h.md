@@ -70,7 +70,10 @@ OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)
 
 释放输入音频流。
 
-**需要权限：** ohos.permission.MICROPHONE [since 10 - 26.0.1]
+**需要权限：** 
+
+- API版本26.0.1+：N/A
+- API版本10-26.0.1：ohos.permission.MICROPHONE
 
 **起始版本：** 10
 
