@@ -817,8 +817,8 @@ int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowM
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | 帧率指标数据对象，不允许为空。 |
-| uint64_t *timestamp | 作为出参使用，表示当前帧的预期起始时间戳，单位为纳秒，不允许为空。 |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [入参] 帧率指标数据对象，不允许为空。 |
+| uint64_t *timestamp | [出参] 表示当前帧的预期起始时间戳，单位为纳秒，不允许为空。 |
 
 **返回：**
 
@@ -842,8 +842,8 @@ int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_Fr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | 帧率指标数据对象，不允许为空。 |
-| uint64_t *duration | 作为出参使用，表示渲染此帧并将其发送到显示子系统所需要的总时间，单位为纳秒，不允许为空。 |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [入参] 帧率指标数据对象，不允许为空。 |
+| uint64_t *duration | [出参] 表示渲染此帧并将其发送到显示子系统所需要的总时间，单位为纳秒，不允许为空。 |
 
 **返回：**
 
@@ -867,8 +867,8 @@ int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManage
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | 帧率指标数据对象，不允许为空。 |
-| uint64_t *duration | 作为出参使用，表示一帧中执行动画回调所消耗的时间，单位为纳秒，不允许为空。 |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [入参] 帧率指标数据对象，不允许为空。 |
+| uint64_t *duration | [出参] 表示一帧中执行动画回调所消耗的时间，单位为纳秒，不允许为空。 |
 
 **返回：**
 
