@@ -811,11 +811,14 @@ update(item: AVQueueItem): Promise\<void>
 
 更新当前播放项的媒体信息。用于更新投播接收端播放器或媒体中心的标题、媒体图片等媒体信息。使用Promise异步回调。
 
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 > **说明：**
 >
