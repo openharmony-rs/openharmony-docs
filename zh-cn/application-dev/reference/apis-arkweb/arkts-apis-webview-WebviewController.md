@@ -663,7 +663,7 @@ struct WebComponent {
    }
    ```
 
-   在“src\main\resources\rawfile”文件夹下创建index.html：
+   在“src/main/resources/rawfile”文件夹下创建index.html：
    ```html
    <!-- index.html -->
    <!DOCTYPE html>
