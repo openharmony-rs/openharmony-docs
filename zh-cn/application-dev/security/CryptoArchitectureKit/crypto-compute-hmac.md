@@ -38,7 +38,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let hmacGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
@@ -46,7 +46,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function doHmac() {
     try {
       // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节
@@ -79,15 +79,15 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let hmacGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
     let symKey = hmacGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
-  
+
   function doHmacBySync() {
     try {
       // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节
@@ -133,11 +133,10 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
   <!-- @[message_authentication_code_calculation_hmac_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Async.ets) -->
   
   ``` TypeScript
-  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let hmacGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
@@ -145,7 +144,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function doLoopHmac() {
     try {
       // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节
@@ -153,7 +152,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
       let key = await genSymKeyByData(keyData);
       let macAlgName = 'SHA256'; // 摘要算法名
       let mac = cryptoFramework.createMac(macAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
@@ -184,15 +183,15 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let hmacGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
     let symKey = hmacGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
-  
+
   function doLoopHmacBySync() {
     try {
       // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节
@@ -200,7 +199,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
       let key = genSymKeyByData(keyData);
       let macAlgName = 'SHA256'; // 摘要算法名
       let mac = cryptoFramework.createMac(macAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
@@ -246,7 +245,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let hmacGenerator = cryptoFramework.createSymKeyGenerator('HMAC');

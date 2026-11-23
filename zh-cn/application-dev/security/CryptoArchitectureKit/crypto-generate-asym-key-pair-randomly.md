@@ -30,7 +30,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   async function generateAsyKey() {
     try {
       // 创建一个AsyKeyGenerator实例
@@ -59,7 +59,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function generateAsyKeySync() {
     // 创建一个AsyKeyGenerator实例
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_2');
@@ -78,7 +79,8 @@
         console.error('[Sync]: get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
@@ -105,7 +107,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   async function generateSM2Key() {
     try {
       // 创建一个AsyKeyGenerator实例
@@ -133,7 +135,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function generateSM2KeySync() {
     // 创建一个AsyKeyGenerator实例
     let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
@@ -152,7 +155,8 @@
         console.error('[Sync]: get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }

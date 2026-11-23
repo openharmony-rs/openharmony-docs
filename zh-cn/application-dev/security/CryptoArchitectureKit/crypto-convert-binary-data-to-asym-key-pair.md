@@ -37,7 +37,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function convertAsyKey(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
@@ -52,7 +53,8 @@
       let pkBlob: cryptoFramework.DataBlob = { data: pkVal };
       rsaGenerator.convertKey(pkBlob, null, (err, keyPair) => {
         if (err) {
-          console.error(`convertKey failed: errCode: ${err.code}, message: ${err.message}`);
+          let e: BusinessError = err as BusinessError;
+          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           // ...
           return;
         }
@@ -70,7 +72,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function convertAsyKeySync() {
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let pkVal =
@@ -87,7 +90,8 @@
       if (keyPair != null) {
         console.info('convertKeySync result: success.');
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
@@ -113,7 +117,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function convertEccAsyKey(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       let pubKeyArray =
@@ -130,7 +135,8 @@
       let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
       generator.convertKey(pubKeyBlob, priKeyBlob, (error, keyPair) => {
         if (error) {
-          console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
+          let e: BusinessError = error as BusinessError;
+          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           // ...
           return;
         }
@@ -148,7 +154,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function convertEccAsyKeySync() {
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -166,7 +173,8 @@
       if (keyPair != null) {
         console.info('convertKeySync result: success.');
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
@@ -195,7 +203,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function main() {
- 
+
   try {
     // 创建一个AsyKeyGenerator实例
     let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -210,7 +218,8 @@ async function main() {
     await new Promise<void>((resolve, reject) => {
       generator.convertKey(pubBlob, skBlob, (error, _keyPair) => {
         if (error) {
-          console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
+          let e: BusinessError = error as BusinessError;
+          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           // ...
           return;
         }
@@ -245,7 +254,8 @@ async function main() {
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function convertSM2AsyKey(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       let pubKeyArray =
@@ -262,7 +272,8 @@ async function main() {
       let generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
       generator.convertKey(pubKeyBlob, priKeyBlob, (error, keyPair) => {
         if (error) {
-          console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
+          let e: BusinessError = error as BusinessError;
+          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           // ...
           return;
         }
@@ -280,7 +291,7 @@ async function main() {
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+
   function convertSM2AsyKeySync() {
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 129, 28, 207, 85, 1, 130, 45, 3, 66, 0,

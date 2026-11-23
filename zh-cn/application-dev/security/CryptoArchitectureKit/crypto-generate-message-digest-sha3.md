@@ -35,7 +35,7 @@
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   async function doMd() {
     try {
       let mdAlgName = 'SHA3-256'; // 摘要算法名。
@@ -64,7 +64,7 @@
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   function doMdBySync() {
     try {
       let mdAlgName = 'SHA3-256'; // 摘要算法名。
@@ -103,12 +103,12 @@
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   async function doLoopMd() {
     try {
       let mdAlgName = 'SHA3-256'; // 摘要算法名。
       let md = cryptoFramework.createMd(mdAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节。
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节。
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
@@ -135,16 +135,15 @@
   <!-- @[message_digest_sha3_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha3/segmentation/SegmentationSync.ets) -->
   
   ``` TypeScript
-  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   function doLoopMdBySync() {
     try {
       let mdAlgName = 'SHA3-256'; // 摘要算法名。
       let md = cryptoFramework.createMd(mdAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节。
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节。
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
