@@ -2219,9 +2219,7 @@ struct SearchExample {
   }
 }
 ```
-<!--RP2-->
-![searchEditMenuOptions](figures/searchEditMenuOptions-2.png)
-<!--RP2End-->
+![searchEditMenuOptions](figures/searchEditMenuOptions-3.gif)
 
 ### 示例11（设置symbol类型清除按钮）
 
