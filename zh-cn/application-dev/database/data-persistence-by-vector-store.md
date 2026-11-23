@@ -1,8 +1,8 @@
 # 通过向量数据库实现数据持久化 (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @htt1997-->
-<!--Designer: @widecode-->
+<!--Owner: @baijidong-->
+<!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
