@@ -1438,7 +1438,7 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 ## ScrollSnapOffsetProvider
 
-用于自定义限位滚动的距离和吸附位置。此接口适用于[Grid](ts-container-grid.md)和[WaterFlow](ts-container-waterflow.md)组件的scrollSnapStrategy属性。开发者实现接口后，将对象传入scrollSnapStrategy即可使用。完整示例参考[示例24（自定义滚动吸附位置）](ts-container-grid.md#示例24自定义滚动吸附位置)。
+用于自定义限位滚动的距离和吸附位置。此接口适用于[Grid](ts-container-grid.md)、[WaterFlow](ts-container-waterflow.md)和[List](ts-container-list.md)组件的scrollSnapStrategy属性。开发者实现接口后，将对象传入scrollSnapStrategy即可使用。完整示例参考[示例24（自定义滚动吸附位置）](ts-container-grid.md#示例24自定义滚动吸附位置)。
 
 自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别在两个阶段的起始时机调用：
 
@@ -1498,7 +1498,7 @@ calculateSnapOffset(velocity: number): number
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | number | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
+| velocity | number | 是    | 惯性滚动结束时的剩余速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
 
 **返回值：**
 
