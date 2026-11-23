@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "基于OH_Filter滤镜接口对离线图像添加模糊、提亮、灰度和反色等视觉效果，适用于Native层离线图像处理与视觉增强场景。"
+keywords: [OH_Filter, 滤镜, 模糊效果, 提亮效果, 灰度效果, 反色效果, OH_PixelmapNative]
+doctype: guide
+status: active
+---
+
 # 添加图像效果 (C/C++)
 
 <!--Kit: ArkGraphics 2D-->
