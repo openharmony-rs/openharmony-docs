@@ -42,7 +42,7 @@
   [33.173144][pid=1] [Init] [DEBUG] [init.c:206]Parse init configs from /etc/init.cfg.
   ```
 
-​   如果此时hdcd服务没有启动，或者分区没有挂载好，无法执行begetctl 命令。需要修改init 代码，设置log等级。确保init 的debug        log能正常输出。
+​   如果此时hdc服务没有启动，或者分区没有挂载好，无法执行begetctl 命令。需要修改init 代码，设置log等级。确保init 的debug log能正常输出。
 
  2. 原因分析：init.cfg 解析失败。
 
@@ -153,7 +153,7 @@
   08-10 18:48:07.653  1421  1421 D C02c0b/BEGET: [init_reboot_innerkits.c:51]Reboot cmd reboot
   ```
 
-​    查看 reboot 命令， reboot命令不超过96。
+​    查看 reboot 命令， reboot命令不超过96字节。
 
  3. hdc shell 执行param set ohos.startup.powerctrl reboot， 观察是否重启， 重启表示系统参数设置成功。
  4. 日志中有 permission denied，init 进程报权限问题。关闭selinux, 重新验证， 如果验证成功，则是selinux策略配置不正确导致， 重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
@@ -172,7 +172,7 @@
 
   修改init.cfg文件时，漏掉或多加了逗号或括号等，导致init.cfg文件的json格式被破坏。
 
-  **解决办法**
+  **解决办法：**
 
   仔细检查init.cfg文件，确保其格式符合json格式要求。
 

@@ -43,7 +43,7 @@ OHOS系统参数为各系统服务提供简单易用的键值对访问接口，�
 
   每个系统参数名称总体格式如下：
 
-  ```java
+  ```txt
   [ const | persist ].$sub_system.$desc
   ```
   $sub_system为子系统或模块的名称。
@@ -59,7 +59,7 @@ OHOS系统参数为各系统服务提供简单易用的键值对访问接口，�
 | 类别 | 示例 | 说明 |
 | -------- | -------- | -------- |
 | 字符串   | const.product.name=OHOS-PRODUCT | 多行字符串需要通过引号括起来。 |
-| 数字     | const.os.version.api=26         | 数字不需要。|
+| 数字     | const.os.version.api=26         | 数字不需要使用引号。|
 | 布尔     | const.telephony.enable=false    | 布尔型的可以为0,1,false,true。|
 
 ### 系统参数权限设置
@@ -87,7 +87,7 @@ Other进程对默认权限参数的访问行为列举如下：
 
   当前系统参数的访问权限控制通过自主访问控制（Discretionary Access Control）方式管理，访问权限定义文件后缀名为".para.dac" ，init下的文件路径为/base/startup/init/services/etc/param/ohos.para.dac，具体定义内容示例如下：
 
-  ```java
+  ```txt
   const.product.              = root:root:0775
   persist.init.               = root:root:0775
   startup.appspawn.           = root:root:0750
@@ -108,38 +108,38 @@ Other进程对默认权限参数的访问行为列举如下：
 
     为系统参数添加selinux标签，首先需要在文件/base/security/selinux_adapter/sepolicy/base/public/parameter.te中定义标签，例如：
 
-    ```java
+    ```txt
     type servicectrl_param, parameter_attr
     ```
 
     标签定义完成后，在文件/base/security/selinux_adapter/sepolicy/base/public/parameter_contexts中添加和标签关联的系统参数前缀，这里以前缀ohos.servicectrl.为例：
 
-    ```java
+    ```txt
     ohos.servicectrl.           u:object_r:servicectrl_param:s0
     ```
 
   - 给init授权，允许map等操作，在文件/base/security/selinux/sepolicy/ohos_policy/startup/init/public/init.te中补充下面内容：
 
-    ```java
+    ```txt
     allow servicectrl_param tmpfs:filesystem associate;
     allow init servicectrl_param:file { map open read relabelto relabelfrom };
     ```
 
   - 设置写权限，这里允许init samgr hdf_devmgr 进行系统参数写：
 
-    ```java
+    ```txt
     allow { init samgr hdf_devmgr } servicectrl_param:parameter_service { set };
     ```
 
   - 设置读权限，如果只允许部分进程访问可单独对该进程授权：
 
-    ```java
+    ```txt
     allow { xxx } servicectrl_param:file { map open read };
     ```
 
   - 如果全部允许，则设置为：
 
-    ```java
+    ```txt
     allow { domain -limit_domain } servicectrl_param:file { map open read };
     ```
 
@@ -230,8 +230,6 @@ hilog_param=40960
       ... ...
    ```
 ### 系统参数的加载顺序
-   ```txt
-    系统参数加载顺序
 
     | 类别 | 路径 | 说明 |
     | -------- | -------- | -------- |
@@ -240,7 +238,7 @@ hilog_param=40960
     | vendor参数 | /vendor/etc/param/*.para | 厂商定义的系统参数次优先级加载。                             |
     | system参数 | /system/etc/param/*.para | 加载各子系统定义的参数。如果系统参数已经存在，则忽略掉。 |
     | persist参数 | /data/parameters/ | 如果持久化参数存在，则最后加载持久化系统参数。持久化系统参数会覆盖加载的默认系统参数。 |
-   ```
+
 ### 参数和标签的展示
 
    目前按照子系统，部件把参数和标签统计的信息已经录入数据库，可以搭建[OpenHarmony实时架构信息收集与分析系统](https://gitee.com/handyohos/ohos_archinfo/tree/master)进行查看。
@@ -382,11 +380,11 @@ hilog_param=40960
 2. 系统参数使用实例
     ```cpp
     // set && get
-    char key1[] = "rw.sys.version";
-    char value1[] = "10.1.0";
-    int ret = SetParameter(key1, value1);
-    char valueGet1[128] = {0};
-    ret = GetParameter(key1, "version=10.1.0", valueGet1, 128);
+    char key0[] = "rw.sys.version";
+    char value0[] = "10.1.0";
+    int ret = SetParameter(key0, value0);
+    char valueGet0[128] = {0};
+    ret = GetParameter(key0, "version=10.1.0", valueGet0, 128);
 
     // get sysparam
     char* value1 = GetDeviceType();
@@ -568,8 +566,8 @@ hilog_param=40960
 
   若dac 权限不足，参照DAC访问控制权限设置进行设置
 
-  若selinux 权限不足，根据" avc:  denied" 告警信息设置对应规则
+  若selinux 权限不足，根据"avc: denied" 告警信息设置对应规则
 
 ### 三方应用为何无法访问系统参数
 
-默认DAC规则只允许三方应用对参数具有get, watch 的权限，因此三方应用若需要set权限，需要重新设置DAC规则。 此外, 三方应用的selinux权限默认是未设置的，因此需要参照mac访问控制权限设置进行设置
+默认DAC规则只允许三方应用对参数具有get, watch 的权限，因此三方应用若需要set权限，需要重新设置DAC规则。 此外, 三方应用的selinux权限默认是未设置的，因此需要参照MAC访问控制权限设置进行设置

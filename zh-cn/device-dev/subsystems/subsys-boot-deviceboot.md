@@ -45,7 +45,7 @@
 
 | 名称 | 适配平台 |
 | -------- | -------- |
-| base/startup/appspawn | 小型系统设备（参考内存≥1MB）、 标准系统，如Hi3516DV300、Hi3518EV300、 RK3568 |
+| base/startup/appspawn | 小型系统设备（参考内存≥1MB）、标准系统，如Hi3516DV300、Hi3518EV300、RK3568 |
 | base/startup/bootstrap_lite | 轻量系统设备（参考内存≥128KB），如Hi3861V100 |
 | base/startup/init | 小型系统设备（参考内存≥1MB）、标准系统，如Hi3516DV300、Hi3518EV300、RK3568 |
 
@@ -144,7 +144,7 @@
   | init        | /init                                                        |                                                              |
   | blkdevparts | mmcblk0:1M(boot),15M(kernel),200M(system),200M(vendor),<br/>2M(misc),20M(updater),-(userdata) | 分区表信息，kernel会根据此信息创建物理分区                 |
   | hardware    | Hi3516DV300、rk3568等                                                  | （必要信息）硬件平台 |
-  | root        | /dev/ram0（Hi3516DV300)、root=PARTUUID=614e0000-0000 rw（rk3568）                                                    | kernel加载的启动设备 |
+  | root        | /dev/ram0(Hi3516DV300)、root=PARTUUID=614e0000-0000 rw(rk3568)                                                   | kernel加载的启动设备 |
   | rootfstype  | ext4                                                         | 根文件系统类型 |
   | default_boot_device | soc/10100000.himci.eMMC | （建议配置信息）默认启动设备，在启动第一阶段会根据这个参数创建required设备的软链接 |
   | ohos.required_mount.xxx | /dev/block/platform/soc/10100000.himci.eMMC/by-name/xxx@/usr@ext4@ro,barrier=1@wait,required |  现支持从cmdline中读取fstab信息，获取失败的情况下，会继续尝试从fstab.required文件中读取 |
@@ -159,7 +159,7 @@
 
       - 准备工作
 
-        1. init从cmdline中读取required fstab，若获取失败，则尝试读`fstab.required`文件，从中获取必须挂载的块设备的PARTNAME，例如system和vendor.
+        1. init从cmdline中读取required fstab，若获取失败，则尝试读`fstab.required`文件，从中获取必须挂载的块设备的PARTNAME，例如system和vendo。
         2. 创建接收内核上报uevent事件广播消息的socket，从`/proc/cmdline`里读取default_boot_device。
         3. 带着fstab信息和socket句柄遍历`/sys/devices`目录，准备开始触发内核上报uevent事件。
 
@@ -334,7 +334,7 @@
 
 挂载完必要的分区后，init扫描各个脚本文件。vendor中与芯片或开发板相关的初始化脚本入口如`/vendor/etc/init.{ohos.boot.hardware}.cfg`。vendor中扩展的挂载分区文件是`/vendor/etc/fstab.{ohos.boot.hardware}`。hardware的来源是bootloader传递给内核的bootargs。
 
-### fstable 文件说明
+### fstab 文件说明
 
 - 文件内容
 
@@ -354,15 +354,15 @@
   | --------------------- | ------------------------------------------------------------ |
   | src                   | 挂载分区的地址或文件系统的设备的路径                         |
   | mnt_point             | 在根文件系统中的挂载点                                       |
-  | type                  | 文件系统的类型(常见有ext2、vfat、NTFS等)                     |
-  | mnt_flags and options | 挂载的参数,详细的如下说明                                    |
+  | type                  | 文件系统的类型（常见有ext2、vfat、NTFS等）                    |
+  | mnt_flags and options | 挂载的参数,详细说明如下                                    |
   | fs_mgr_flags          | 文件系统管理的标识<br />可用值有：{"check","wait","required","nofail","hvb"} |
 
 - mnt_flags and options 参数说明
 
   ```
   auto 在启动时或键入mount -a命令时自动挂载
-  noauto 开机不自动挂载，不再使用mount　－a命令（例如系统启动时）加载该文件系统
+  noauto 开机不自动挂载，不再使用mount -a命令（例如系统启动时）加载该文件系统
   exec 允许执行此分区的二进制文件
   noexec 不允许执行此文件系统上的二进制文件
   ro 以只读模式挂载文件系统
@@ -371,7 +371,7 @@
   users 允许所有users组中的用户挂载文件系统
   nouser 只能被root挂载
   owner 允许设备所有者挂载
-  sync 实时同步内存和磁盘中的数据，不对该设备的写操作进行缓冲处理，这可以防止在非正常关机时情况下破坏文件系统，但是却降低了计算机速度
+  sync 实时同步内存和磁盘中的数据，不对该设备的写操作进行缓冲处理，这可以防止在非正常关机情况下破坏文件系统，但是却降低了计算机速度
   async 磁盘和内存不同步，系统每隔一段时间就会把内存数据写入磁盘中
   dev 解析文件系统上的块特殊设备
   nodev 不解析文件系统上的块特殊设备
@@ -389,7 +389,7 @@
 
 此场景的主要启动过程与上述流程类似，只是有ramdisk时，init会把`system.img`挂载到`/usr`目录，然后chroot到`/usr`下；而没有ramdisk时，没有chroot过程，但是都会读取`init.cfg`文件从而执行脚本。
 
-对于无ramdisk的启动加载，即system as root. 在bootloader阶段将根文件系统所在的块设备通过bootargs传给内核，如`root=/dev/mmcblk0p5，rootfstype=ext4`。内核在初始化根文件系统时，解析bootargs中root，完成根文件系统的挂载。
+对于无ramdisk的启动加载，即system as root. 在bootloader阶段将根文件系统所在的块设备通过bootargs传给内核，如`root=/dev/mmcblk0p5,rootfstype=ext4`。内核在初始化根文件系统时，解析bootargs中root，完成根文件系统的挂载。
 
 
 ### A/B分区启动
