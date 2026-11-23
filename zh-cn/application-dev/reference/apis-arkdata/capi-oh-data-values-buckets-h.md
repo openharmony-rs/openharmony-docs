@@ -58,6 +58,10 @@ OH_Data_VBuckets *OH_VBuckets_Create(void)
 | -------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) * | 执行成功时返回指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy)接口释放内存。 |
 
+**参考：**
+
+[OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy)
+
 ### OH_VBuckets_Destroy()
 
 ```c

@@ -76,6 +76,10 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
 ### getColumnType()
 
 ```c
@@ -101,6 +105,10 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+OH_Cursor, OH_ColumnType
 
 ### getColumnIndex()
 
@@ -128,6 +136,10 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### getColumnName()
 
@@ -157,6 +169,10 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
 ### getRowCount()
 
 ```c
@@ -183,6 +199,10 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
 ### goToNextRow()
 
 ```c
@@ -207,6 +227,10 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### getSize()
 
@@ -234,6 +258,10 @@ int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### getText()
 
@@ -263,6 +291,10 @@ int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
 ### getInt64()
 
 ```c
@@ -290,6 +322,10 @@ int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
 ### getReal()
 
 ```c
@@ -316,6 +352,10 @@ int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### getBlob()
 
@@ -345,6 +385,10 @@ int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
 ### isNull()
 
 ```c
@@ -372,6 +416,10 @@ int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
 ### destroy()
 
 ```c
@@ -396,6 +444,10 @@ int (*destroy)(OH_Cursor *cursor)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### getAsset()
 
@@ -423,6 +475,10 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### getAssets()
 
@@ -452,3 +508,7 @@ int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uin
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
