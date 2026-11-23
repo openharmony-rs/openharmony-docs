@@ -53,7 +53,7 @@ struct FixingPageFlickering {
   webController: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: $rawfile('xxx.html'), controller: this.webController})
+      Web({ src: $rawfile('xxx.html'),  controller: this.webController})
         .backgroundColor(Color.Gray)
         .width('100%')
         .height('100%')
