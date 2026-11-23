@@ -11266,11 +11266,11 @@ onKeyEvent(callback: InputKeyEventCallback): void
 ArkTS-Dyn示例：
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
 if (proxyDelegate !== null) {
-  proxyDelegate.onKeyEvent((event: KeyEvent) => {
+  proxyDelegate.onKeyEvent((event: InputKeyEvent) => {
     console.info(`inputMethodEngine keyEvent.action:${event.action}`);
     return false;
   });
@@ -11280,11 +11280,11 @@ if (proxyDelegate !== null) {
 ArkTS-Sta示例：
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
 if (proxyDelegate !== null) {
-  proxyDelegate!.onKeyEvent((event: KeyEvent) => {
+  proxyDelegate!.onKeyEvent((event: InputKeyEvent) => {
     console.info(`inputMethodEngine keyEvent.action:${event.action}`);
     return false;
   });
@@ -11316,10 +11316,10 @@ offKeyEvent(callback?: InputKeyEventCallback): void
 ArkTS-Dyn示例：
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
-let callback: inputMethodEngine.InputKeyEventCallback = (event: KeyEvent) => {
+let callback: inputMethodEngine.InputKeyEventCallback = (event: InputKeyEvent) => {
   console.info(`inputMethodEngine keyEvent.action:${event.action}`);
   return false;
 };
@@ -11332,10 +11332,10 @@ if (proxyDelegate !== null) {
 ArkTS-Sta示例：
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
-let callback: inputMethodEngine.InputKeyEventCallback = (event: KeyEvent) => {
+let callback: inputMethodEngine.InputKeyEventCallback = (event: InputKeyEvent) => {
   console.info(`inputMethodEngine keyEvent.action:${event.action}`);
   return false;
 };
