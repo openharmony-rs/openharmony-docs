@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b2abee6fde0080e246d10ff0f94cb54cace432c9 translatedAt=2026-11-23T02:11:30.883Z pushedAt=2026-11-23T12:26:06.498Z nl=1 -->
 
 This module provides APIs for managing the access and communication of serial port devices. It provides functions such as opening and closing devices, reading and writing data, setting parameters, and managing permissions. It addresses issues such as permission request, device configuration, and data transfer during communication between apps and serial port devices. This module simplifies the process of accessing serial port devices and improves development efficiency.
 
@@ -52,9 +53,9 @@ Obtains the serial port device list, including the device name and port number. 
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
-// Obtain the serial port device list.
+// Obtain the serial port device list. 
 function getPortListExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -110,7 +111,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 function hasSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('portList is empty');
@@ -170,12 +171,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 function requestSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -243,12 +243,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function openExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -275,6 +274,7 @@ async function openExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // Close the serial port device.
@@ -334,12 +334,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function getAttributeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -366,6 +365,7 @@ async function getAttributeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // Obtain the serial port configuration.
@@ -433,12 +433,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function setAttributeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -465,6 +464,7 @@ async function setAttributeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // Set the serial port configuration.
@@ -526,7 +526,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -542,12 +542,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function readExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -574,6 +573,7 @@ async function readExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // Read data asynchronously.
@@ -639,7 +639,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -655,12 +655,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function readSyncExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -687,6 +686,7 @@ async function readSyncExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // Read data synchronously.
@@ -743,7 +743,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -758,14 +758,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 <!--code_no_check-->
 ```ts
-import { JSON } from '@kit.ArkTS';
-import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON, buffer } from '@kit.ArkTS';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function writeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -792,6 +790,7 @@ async function writeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // Write data asynchronously.
@@ -857,7 +856,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -872,14 +871,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 <!--code_no_check-->
 ```ts
-import { JSON } from '@kit.ArkTS';
-import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON, buffer } from '@kit.ArkTS';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function writeSyncExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -906,6 +903,7 @@ async function writeSyncExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // Write data synchronously.
@@ -973,12 +971,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function closeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -1005,6 +1002,7 @@ async function closeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
 
@@ -1062,12 +1060,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
 async function cancelSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');

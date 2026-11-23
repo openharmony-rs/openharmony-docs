@@ -63,7 +63,7 @@ Creates an application account with the given name. This API uses an asynchronou
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -110,7 +110,7 @@ Creates an application account with custom data. This API uses an asynchronous c
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -167,7 +167,7 @@ Creates an application account with custom data. This API uses a promise to retu
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -216,7 +216,7 @@ Creates an app account automatically by the authenticator based on the specified
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -291,7 +291,7 @@ Creates an application account implicitly based on the specified account owner a
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -369,7 +369,7 @@ Removes an application account. This API uses an asynchronous callback to return
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -419,7 +419,7 @@ Removes an application account. This API uses a promise to return the result.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -464,7 +464,7 @@ Sets the data access permission of a specified app to a specific account. This A
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
@@ -517,7 +517,7 @@ Sets the access to the data of an account for an application. This API uses a pr
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
@@ -562,7 +562,7 @@ Checks whether the caller can access the account data that belongs to the target
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -614,7 +614,7 @@ Checks whether the caller can access the account data that belongs to the target
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -660,7 +660,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -710,7 +710,7 @@ Sets data synchronization for an application account. This API uses a promise to
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -756,7 +756,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -809,7 +809,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -855,7 +855,7 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -907,7 +907,7 @@ Sets a credential for an application account. This API uses a promise to return 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -951,7 +951,7 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1003,7 +1003,7 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1049,7 +1049,7 @@ Sets custom data for an application account. This API uses an asynchronous callb
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1102,7 +1102,7 @@ Sets custom data for an application account. This API uses a promise to return t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1147,7 +1147,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1199,7 +1199,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1249,7 +1249,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1289,7 +1289,7 @@ Obtains information about all accessible application accounts. This API uses an 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1331,7 +1331,7 @@ Obtains information about all accessible application accounts. This API uses a p
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 
@@ -1371,7 +1371,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
@@ -1421,7 +1421,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
@@ -1465,7 +1465,7 @@ Subscribes to account information changes of apps.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 12300001 | System service exception. |
 | 12300002 | Invalid type or owners. |
@@ -1507,7 +1507,7 @@ Unsubscribes from account information changes.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1557,7 +1557,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1635,7 +1635,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1715,7 +1715,7 @@ Obtains the authorization token of the specified authorization type for an appli
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1769,7 +1769,7 @@ Obtains the authorization token of the specified authorization type for an appli
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1815,7 +1815,7 @@ Sets an authorization token of the specific authorization type for an applicatio
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1868,7 +1868,7 @@ Sets an authorization token of the specific authorization type for an applicatio
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1915,7 +1915,7 @@ Deletes the authorization token of the specified authorization type for an appli
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1970,7 +1970,7 @@ Deletes the authorization token of the specified authorization type for an appli
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2017,7 +2017,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
@@ -2073,7 +2073,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
@@ -2120,7 +2120,7 @@ Checks the visibility of an authorization token of the specified authorization t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2174,7 +2174,7 @@ Checks the visibility of an authorization token of the specified authorization t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2220,7 +2220,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2272,7 +2272,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2317,7 +2317,7 @@ Obtains the authorization list of the specified authorization type for an applic
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2369,7 +2369,7 @@ Obtains the authorization list of the specified authorization type for an applic
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2413,7 +2413,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2479,7 +2479,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2538,7 +2538,7 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2589,7 +2589,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2635,7 +2635,7 @@ Checks whether an application account has specific labels. This API uses an asyn
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2692,7 +2692,7 @@ Checks whether an application account has specific labels. This API uses a promi
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2741,7 +2741,7 @@ Deletes the credential for the specified type of an application account. This AP
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2793,7 +2793,7 @@ Deletes the credential for the specified type of an application account. This AP
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2837,7 +2837,7 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2893,7 +2893,7 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2941,7 +2941,7 @@ Verifies the validity of the credential of the specified account. This API uses 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2994,7 +2994,7 @@ Verifies the credential of the specified account. This API uses an asynchronous 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -3049,7 +3049,7 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -3100,7 +3100,7 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
