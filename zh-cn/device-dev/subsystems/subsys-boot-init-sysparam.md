@@ -231,13 +231,13 @@ hilog_param=40960
    ```
 ### 系统参数的加载顺序
 
-    | 类别 | 路径 | 说明 |
-    | -------- | -------- | -------- |
-    | 内核参数    | /proc/cmdline | 将内核参数中的部分值转化成系统参数，并保存。内核参数中.xxx=valXXX类型的参数都转换成ohos.boot.xxx=valXXX系统参数。 |
-    | OS系统参数 | /system/etc/param/ohos_const/*.para | OS固定系统参数值参数优先加载。                               |
-    | vendor参数 | /vendor/etc/param/*.para | 厂商定义的系统参数次优先级加载。                             |
-    | system参数 | /system/etc/param/*.para | 加载各子系统定义的参数。如果系统参数已经存在，则忽略掉。 |
-    | persist参数 | /data/parameters/ | 如果持久化参数存在，则最后加载持久化系统参数。持久化系统参数会覆盖加载的默认系统参数。 |
+| 类别 | 路径 | 说明 |
+| -------- | -------- | -------- |
+| 内核参数    | /proc/cmdline | 将内核参数中的部分值转化成系统参数，并保存。内核参数中.xxx=valXXX类型的参数都转换成ohos.boot.xxx=valXXX系统参数。 |
+| OS系统参数 | /system/etc/param/ohos_const/*.para | OS固定系统参数值参数优先加载。                               |
+| vendor参数 | /vendor/etc/param/*.para | 厂商定义的系统参数次优先级加载。                             |
+| system参数 | /system/etc/param/*.para | 加载各子系统定义的参数。如果系统参数已经存在，则忽略掉。 |
+| persist参数 | /data/parameters/ | 如果持久化参数存在，则最后加载持久化系统参数。持久化系统参数会覆盖加载的默认系统参数。 |
 
 ### 参数和标签的展示
 
@@ -456,21 +456,21 @@ hilog_param=40960
     char* value23 = GetBuildRootHash();
     printf("build root later..., %s\n", value23);
 
-    char* value25 = GetOsReleaseType();
-    printf("OS release type =%s\n", value25);
+    char* value24 = GetOsReleaseType();
+    printf("OS release type =%s\n", value24);
 
-    char value26[65] = {0};
-    GetDevUdid(value26, 65);
-    printf("device udid =%s\n", value26);
+    char value25[65] = {0};
+    GetDevUdid(value25, 65);
+    printf("device udid =%s\n", value25);
     
-    char* value27 = GetChipType();
-    printf("device chiptype =%s\n", value27);
+    char* value26 = GetChipType();
+    printf("device chiptype =%s\n", value26);
     
-    int value28 = GetBootCount();
-    printf("device boot count =%d\n", value28);
+    int value27 = GetBootCount();
+    printf("device boot count =%d\n", value27);
     
-    char* value29 = GetDeviceColor();
-    printf("device color =%s\n", value29);
+    char* value28 = GetDeviceColor();
+    printf("device color =%s\n", value28);
     ```
 ### 系统参数错误码说明
 
@@ -538,7 +538,7 @@ hilog_param=40960
 
   若dac 权限不足，参照DAC访问控制权限设置进行设置
 
-  若selinux 权限不足，根据" avc:  denied" 告警信息设置对应规则
+  若selinux 权限不足，根据"avc: denied"告警信息设置对应规则
 
   若内存不够，参照[系统参数标签配置](#系统参数标签配置)进行扩展
 
@@ -554,7 +554,7 @@ hilog_param=40960
 
   若dac 权限不足，参照DAC访问控制权限设置进行设置
 
-  若selinux 权限不足，根据" avc:  denied" 告警信息设置对应规则
+  若selinux 权限不足，根据"avc: denied"告警信息设置对应规则
 
 ### 如何订阅一个系统参数的变化
 
@@ -566,8 +566,8 @@ hilog_param=40960
 
   若dac 权限不足，参照DAC访问控制权限设置进行设置
 
-  若selinux 权限不足，根据"avc: denied" 告警信息设置对应规则
+  若selinux 权限不足，根据"avc: denied"告警信息设置对应规则
 
 ### 三方应用为何无法访问系统参数
 
-默认DAC规则只允许三方应用对参数具有get, watch 的权限，因此三方应用若需要set权限，需要重新设置DAC规则。 此外, 三方应用的selinux权限默认是未设置的，因此需要参照MAC访问控制权限设置进行设置
+默认DAC规则只允许三方应用对参数具有get, watch 的权限，因此三方应用若需要set权限，需要重新设置DAC规则。 此外, 三方应用的selinux权限默认是未设置的，因此需要参照MAC访问控制权限设置进行设置。

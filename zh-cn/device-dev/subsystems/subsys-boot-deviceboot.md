@@ -159,7 +159,7 @@
 
       - 准备工作
 
-        1. init从cmdline中读取required fstab，若获取失败，则尝试读`fstab.required`文件，从中获取必须挂载的块设备的PARTNAME，例如system和vendo。
+        1. init从cmdline中读取required fstab，若获取失败，则尝试读`fstab.required`文件，从中获取必须挂载的块设备的PARTNAME，例如system和vendor。
         2. 创建接收内核上报uevent事件广播消息的socket，从`/proc/cmdline`里读取default_boot_device。
         3. 带着fstab信息和socket句柄遍历`/sys/devices`目录，准备开始触发内核上报uevent事件。
 
@@ -355,7 +355,7 @@
   | src                   | 挂载分区的地址或文件系统的设备的路径                         |
   | mnt_point             | 在根文件系统中的挂载点                                       |
   | type                  | 文件系统的类型（常见有ext2、vfat、NTFS等）                    |
-  | mnt_flags and options | 挂载的参数,详细说明如下                                    |
+  | mnt_flags and options | 挂载的参数，详细说明如下                                    |
   | fs_mgr_flags          | 文件系统管理的标识<br />可用值有：{"check","wait","required","nofail","hvb"} |
 
 - mnt_flags and options 参数说明
@@ -376,7 +376,7 @@
   dev 解析文件系统上的块特殊设备
   nodev 不解析文件系统上的块特殊设备
   suid/nosuid 表示允许/不允许分区有suid属性
-  quota　　　强制在该文件系统上进行磁盘定额限制
+  quota 强制在该文件系统上进行磁盘定额限制
   usrquota 表示启动用户的磁盘配额模式。磁盘配额会针对用户限定他们使用的磁盘额度
   grpquota 表示启动组的磁盘配额模式
   nodiratime 不更新文件系统上的目录inode访问记录

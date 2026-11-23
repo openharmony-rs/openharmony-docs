@@ -79,7 +79,7 @@
               "on-stop" : "services:serviceName_stop",
               "on-restart" : "services:serviceName_restart"
         }
-    },]
+    }]
     ```
 
   通过并行启动和命令执行能力，可以实现进程的并行启动。
@@ -92,8 +92,8 @@
     ```
       "services" : [{
         "name" : "serviceName",
-        "path" : ["/system/bin/serviceName"]
-        "ondemand" : true
+        "path" : ["/system/bin/serviceName"],
+        "ondemand" : true,
     }]
     ```
   - SA进程按需启动
@@ -130,7 +130,7 @@
           "apl" : "normal",                  // 系统服务进程设置其分布式Capability能力
           "d-caps" : ["OHOS_DMS"],           // 系统服务进程设置其分布式Capability能力
           "secon" : "u:r:distributedsche:s0" // 服务的SELinux标签， "u:r:distributedsche:s0"为要设置的SELinux标签信息
-      }
+      }]
       ```
 
   - 定时启动
