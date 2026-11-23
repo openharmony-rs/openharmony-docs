@@ -220,7 +220,7 @@ struct TouchTargetExample {
 
 ```ts
 // xxx.ets
-import { LengthMetrics, ResponseRegionSupportedTool } from '@kit.ArkUI';
+import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
