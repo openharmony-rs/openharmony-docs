@@ -223,7 +223,7 @@ int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receive
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br> IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。<br>IMAGE_RESULT_REGISTER_LISTENER_FAILED：注册监听器失败。IMAGE_RESULT_REGISTER_BUFFER_FAILED：注册缓冲区失败。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br> IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。<br>IMAGE_RESULT_REGISTER_LISTENER_FAILED：注册监听器失败。<br>IMAGE_RESULT_REGISTER_BUFFER_FAILED：注册缓冲区失败。 |
 
 ### OH_Image_Receiver_GetSize()
 
