@@ -5,7 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6c1e7e2e5d533038514aef8a59f6b9dd1cac085e translatedAt=2026-09-04T03:57:11.116Z pushedAt=2026-09-09T09:11:03.740Z -->
+<!-- md-trans-meta sourceCommit=5b73e26059b602ff7e0ad390ad4673f2a609b91c translatedAt=2026-11-16T02:15:48.060Z pushedAt=2026-11-20T07:28:13.706Z nl=1 -->
 
 A uniform data type (UTD) is a specification used in the Unified Data Management Framework (UDMF) to identify and describe data types, supporting cross-application data exchange. This module provides capabilities to register and unregister UTDs.
 
@@ -71,7 +71,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission denied, non-system app called the system api. |
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 20400002       | The format of one or more typeDescriptors are invalid. |
 | 20400003       | The content of one or more typeDescriptors violate rules. |
 
@@ -133,7 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission denied, non-system app called the system api. |
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 20400004       |  One or more typeIds are invalid or do not exist. |
 
 **Example**:

@@ -122,5 +122,6 @@
     - [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md)
     - [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md)
     - [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md)
+    - [OH_Camera_C2PASignatureConfig](capi-oh-camera-camera-c2pasignatureconfig.md)
 - 错误码<!--camera-arkts-errcode-->
   - [Camera错误码](errorcode-camera.md)

@@ -328,19 +328,19 @@ struct GetFontDescriptorsFromPathTest {
       Button("get fontDescriptors")
         .onClick(() => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
-          promise.then((fontFullDescriptors) => {
-            for (let index = 0; index < fontFullDescriptors.length; index++) {
-              console.info("Path:" + fontFullDescriptors[index].path +
-                          "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
-                          "\nfullName:" + fontFullDescriptors[index].fullName +
-                          "\nfamilyName:" + fontFullDescriptors[index].fontFamily +
-                          "\nfontSubName:" + fontFullDescriptors[index].fontSubfamily +
-                          "\nweight:" + fontFullDescriptors[index].weight +
-                          "\nwidth:" + fontFullDescriptors[index].width +
-                          "\nitalic:" + fontFullDescriptors[index].italic +
-                          "\nmonoSpace:" + fontFullDescriptors[index].monoSpace +
-                          "\nsymbolic:" + fontFullDescriptors[index].symbolic)
-            }
+          promise.then((fontDescriptors) => {
+            fontDescriptors.forEach((fontDescriptor) => {
+              console.info("Path:" + fontDescriptor.path +
+                          "\npostScriptName:" + fontDescriptor.postScriptName +
+                          "\nfullName:" + fontDescriptor.fullName +
+                          "\nfamilyName:" + fontDescriptor.fontFamily +
+                          "\nfontSubfamily:" + fontDescriptor.fontSubfamily +
+                          "\nweight:" + fontDescriptor.weight +
+                          "\nwidth:" + fontDescriptor.width +
+                          "\nitalic:" + fontDescriptor.italic +
+                          "\nmonoSpace:" + fontDescriptor.monoSpace +
+                          "\nsymbolic:" + fontDescriptor.symbolic)
+            })
           })
         })
     }.width("100%")
@@ -387,10 +387,10 @@ struct GetFontUnicodeSetTest {
       Button("get fontUnicode")
         .onClick(() => {
           let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
-          promise.then((unicodeSet) => {
-            for (let index = 0; index < unicodeSet.length; index++) {
-              console.info(unicodeSet[index].toString())
-            }
+          promise.then((unicodeCodes) => {
+            unicodeCodes.forEach((unicode) => {
+              console.info(unicode.toString(16))
+            })
           })
         })
     }.width("100%")
@@ -483,9 +483,9 @@ struct GetFontPathsByTypeTest {
         .onClick(() => {
           let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
           console.info("file count: " + fontList.length)
-          for (let index = 0; index < fontList.length; index++) {
-            console.info("file path: " + fontList[index])
-          }
+          fontList.forEach((fontPath) => {
+            console.info("file path: " + fontPath)
+          })
         })
     }.width("100%")
     .height("100%")
@@ -1867,9 +1867,9 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 let size: text.TextRectSize = { width: 200, height: 100 };
 let result = paragraph.layoutWithConstraints(size); // 功能增强的 layoutSync
 console.info('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
-for (let i = 0; i < result.fitStrRange.length; ++i) {
-  console.info('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
-}
+result.fitStrRange.forEach((range) => {
+  console.info('fitRange: [' + range.start + ', ' + range.end + ']');
+});
 ```
 
 ### paint
@@ -4484,19 +4484,17 @@ function textFunc() {
   let paragraph = paragraphBuilder.build();
   paragraph.layoutSync(50);
   let lines = paragraph.getTextLines();
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+  lines.forEach((line, i) => {
     let runs = line.getGlyphRuns();
-    for (let j = 0; j < runs.length; j++) {
-      const run = runs[j];
+    runs.forEach((run, j) => {
       const runStyle = run.getTextStyle();
       console.info(`print line [${i}] run [${j}] textStyle: ${JSON.stringify(runStyle)}`);
       if (runStyle?.color != undefined && typeof runStyle?.color == 'number') {
         let textColor: common2D.Color = numberToRGBA(runStyle?.color);
         console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
       }
-    }
-  }
+    });
+  });
 }
 
 @Entry

@@ -12,7 +12,7 @@
 
 ## 概述
 
-RPC（Remote Procedure Call）错误码用于标识IPC通信过程中发生的各类异常情况。本模块提供了IPC/RPC通信相关的标准错误码定义，帮助开发者快速定位和解决通信问题。
+RPC（Remote Procedure Call）错误码用于标识IPC/RPC通信过程中发生的各类异常情况。本模块提供了IPC/RPC通信相关的标准错误码定义，帮助开发者快速定位和解决通信问题。
 
 ## 1900001 系统调用mmap失败
 
@@ -94,7 +94,7 @@ Failed to read data from the shared memory.
 1. 请检查当前从共享内存读取的内容是否已经超过了映射的总大小。
 2. 请检查是否设置了PROT_READ保护权限。
 
-## 1900005 IPC对象权限错误
+## 1900005 IPC对象权限错误（仅RemoteProxy对象允许）
 
 **错误信息**
 
@@ -112,7 +112,7 @@ Operation allowed only for the proxy object.
 
 请检查是否在RemoteObject对象上调用了只有RemoteProxy对象支持的方法。
 
-## 1900006 IPC对象权限错误
+## 1900006 IPC对象权限错误（仅RemoteObject对象允许）
 
 **错误信息**
 
@@ -204,7 +204,7 @@ Failed to read data from the message sequence.
 
 **处理步骤**
 
-请检查读取的顺序和写入的顺序保持严格一致。
+请确保读取的顺序和写入的顺序保持严格一致。
 
 ## 1900011 内存分配失败
 
@@ -218,7 +218,7 @@ Memory allocation failed.
 
 **可能原因**
 
-写入的数据过大，数据取决于当前堆上还有多少可以连续分配的内存。
+写入的数据过大，实际可写入的数据大小取决于当前堆上还有多少可以连续分配的内存。
 
 **处理步骤**
 

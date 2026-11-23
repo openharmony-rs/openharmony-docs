@@ -611,7 +611,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not within the enumeration type. 3.The parameter type error or parameter order error. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 11400102 | Capture trace already enabled.                                         |
 | 11400103 | No write permission on the file.                                |
 | 11400104 | Abnormal trace status.                                 |
@@ -830,7 +830,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not in the specified type. 3.The parameter type error or parameter order error.  |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 11400104 | Set limit failed due to remote exception. |
 
 **示例**：
@@ -1015,7 +1015,7 @@ getVMRuntimeStat(item: string): number
 
 | 错误码ID | 错误信息                                                                                                       |
 | ------- |------------------------------------------------------------------------------------------------------------|
-| 401 | Possible causes: 1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1763,6 +1763,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
 ```
+
 ## hidebug.getAppRunningUniqueId
 
 getAppRunningUniqueId(): string
@@ -1788,4 +1789,39 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appRunningId = hidebug.getAppRunningUniqueId();
 console.info(`appRunningId: ${appRunningId}`);
+```
+
+## hidebug.getAppSharedHeapObjectUsedSize
+
+getAppSharedHeapObjectUsedSize(): bigint
+
+获取虚拟机中共享堆对象所占用的内存大小。
+
+**起始版本**：26.1.0
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| bigint | 虚拟机中共享堆对象所占用的内存大小，单位为KB。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug SharedHeapObjectUsedSize错误码](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------------------------------------------------- |
+| 11400104 | VM instance exception.                                           |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let sharedHeap = hidebug.getAppSharedHeapObjectUsedSize();
+console.info(`sharedHeap: ${sharedHeap}`);
 ```

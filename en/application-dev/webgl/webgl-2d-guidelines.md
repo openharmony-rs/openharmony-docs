@@ -4,9 +4,9 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @samhu1989-->
 <!--Designer: @shi-yang-2012-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1ddcafcb59600960cb4fd576e6f8e6f5855e46b6 translatedAt=2026-11-03T02:59:10.234Z pushedAt=2026-11-03T03:25:47.318Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a07b6f3bce4c646c56d0a76d9c01bbe50b7fe287 translatedAt=2026-11-13T12:15:02.397Z pushedAt=2026-11-16T02:06:53.338Z nl=1 -->
 
 ## When to Use
 

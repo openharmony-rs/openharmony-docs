@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "提供CPU密集型任务的开发指导：以TaskPool执行图像直方图处理、Worker执行长时间数据分析为例，演示如何将高计算量任务放入子线程运行，避免阻塞UI主线程造成卡顿。"
 keywords: [CPU密集型任务, 图像直方图处理, 长时间数据分析, TaskPool, Worker, 子线程执行, 避免主线程阻塞]
 doctype: guide

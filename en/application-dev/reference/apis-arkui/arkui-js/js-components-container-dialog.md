@@ -1,12 +1,11 @@
 # dialog
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:33:53.249Z pushedAt=2026-06-23T08:29:09.822Z -->
+<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-11-12T04:28:19.144Z pushedAt=2026-11-18T02:54:37.994Z nl=1 -->
 
 >  **NOTE**
 >
@@ -18,9 +17,11 @@ The **\<dialog>** component is a custom dialog box.
 
 None
 
+
 ## Child Components
 
 This component supports only one child component.
+
 
 ## Attributes
 
@@ -34,9 +35,11 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 >
 >  The **\<dialog>** component does not support the **focusable** and **click-effect** attributes.
 
+
 ## Styles
 
 Only the **width**, **height**, **margin**, **margin-[left | top | right | bottom]**, and **margin-[start | end]** styles in [Universal Styles](js-components-common-styles.md) are supported.
+
 
 ## Events
 
@@ -44,9 +47,10 @@ The following events are supported. The [universal events](js-components-common-
 
 | Name                | Parameter  | Description                        |
 | ------------------ | ---- | -------------------------- |
-| cancel             | -    | Triggered when a user touches an area outside the dialog box to cancel the dialog box.|
+| cancel             | -    | Triggered when a user touches an area outside the dialog box to cancel the dialog box. |
 | show<sup>7+</sup>  | -    | Triggered when the dialog box is displayed.              |
 | close<sup>7+</sup> | -    | Triggered when the dialog box is closed.              |
+
 
 ## Methods
 
@@ -60,6 +64,7 @@ The following methods are supported. The [universal methods](js-components-commo
 >  **NOTE**
 >
 >  Attributes and styles of a **\<dialog>** component cannot be dynamically updated.
+
 
 ## Example
 

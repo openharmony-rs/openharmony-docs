@@ -43,11 +43,11 @@ connect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 表示远端设备MAC地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备MAC地址。例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -57,17 +57,17 @@ connect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile not supported.                |
+|2900004 | Remote Device profile not supported.               |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
-    panProfile.connect('XX:XX:XX:XX:XX:XX');
+    panProfile.connect('11:22:33:44:55:66');
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -88,11 +88,11 @@ disconnect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -109,14 +109,15 @@ disconnect(deviceId: string): void
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
-    panProfile.disconnect('XX:XX:XX:XX:XX:XX');
+    panProfile.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 
@@ -137,7 +138,7 @@ setTethering(enable: boolean): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
@@ -158,7 +159,7 @@ setTethering(enable: boolean): void
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {
@@ -166,4 +167,5 @@ try {
     panProfile.setTethering(false);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```

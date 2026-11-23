@@ -47,7 +47,7 @@
 
 ```ts
 import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-import { deviceInfo, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let policy: hiAppEvent.EventPolicy = {
     "addressSanitizerPolicy": {

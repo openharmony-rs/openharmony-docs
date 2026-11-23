@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a23154eb9299f3b730760d9eb22b88b8e7ab232c translatedAt=2026-11-03T08:20:44.631Z pushedAt=2026-11-03T09:08:29.400Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0723db106ec31b5c9a6ffea9cffe847239c5f41c translatedAt=2026-11-12T03:37:47.717Z pushedAt=2026-11-13T01:22:56.082Z nl=1 -->
 
 More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. In such cases, the **Image** component is used, which supports multiple image formats (including PNG, JPG, and JPEG), excluding APNG and SVGA. For details about the supported formats and usage, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
@@ -141,12 +141,12 @@ Archived data sources can be classified into local resources, network resources,
             }).catch((err:Error) => {
               let message = (err as BusinessError).message;
               let code = (err as BusinessError).code;
-              hilog.info(DOMAIN, TAG,`PhotoViewPicker.select failed with. Code: ${code}, message: ${message}`);
+              hilog.error(DOMAIN, TAG,`PhotoViewPicker.select failed with. Code: ${code}, message: ${message}`);
             });
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;
-            hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
+            hilog.error(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
           };
         };
     
@@ -227,6 +227,8 @@ struct HttpExample {
           imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
             this.image = pixelMap;
             imageSource.release();
+          }).catch((error: BusinessError) => {
+            hilog.error(DOMAIN, TAG, `Failed to create pixelMap: ${error.code}, ${error.message}`);
           });
         };
       });
@@ -799,9 +801,9 @@ Generally, the image loading process is performed asynchronously to avoid blocki
 By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after it is successfully loaded. If the image fails to load, you can also obtain the result by binding the **onError()** callback.
 
 
- <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
+  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
   
-``` TypeScript
+  ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0001;
   const TAG = 'Sample_imagecomponent';
@@ -834,7 +836,7 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
             })
             // If loading fails, use onError to trigger the callback and obtain the result.
             .onError(() => {
-              hilog.info(DOMAIN, TAG, 'load image fail');
+              hilog.error(DOMAIN, TAG, 'load image fail');
             })
             // The overlay API does not support the dark mode.
             .overlay('\nwidth: ' + String(this.widthValue) + ', height: ' + String(this.heightValue) + '\ncomponentWidth: ' + String(this.componentWidth) + '\ncomponentHeight: ' + String(this.componentHeight), {

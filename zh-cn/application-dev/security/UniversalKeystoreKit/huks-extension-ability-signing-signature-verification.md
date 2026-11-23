@@ -113,7 +113,9 @@
 
 **ArkTS接口**
 
-```ts
+<!-- @[ukey_sign_verify_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/SignVerify.ets) -->
+
+``` TypeScript
 /*
  * 密钥算法为RSA，摘要算法为SHA256，填充模式为PSS
  */
@@ -189,10 +191,10 @@ async function verify(keyAlias: string) {
 
 async function signAndVerify() {
   const keyAlias = JSON.stringify({
-    providerName: "testProviderName",
-    bundleName: "com.example.cryptoapplication",
-    abilityName: "CryptoExtension",
-    index: { key: "testKey" } as ESObject
+    providerName: 'testProviderName',
+    bundleName: 'com.example.cryptoapplication',
+    abilityName: 'CryptoExtension',
+    index: { key: 'testKey' } as ESObject
   });
   try {
     // 签名流程
@@ -213,34 +215,10 @@ async function signAndVerify() {
 
 **C++接口**
 
+<!-- @[ukey_sign_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-#include "huks/native_huks_api.h"
-#include "huks/native_huks_param.h"
-#include "napi/native_api.h"
-#include <string.h>
-
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ParamSet **paramSet,
-    const struct OH_Huks_Param *params,
-    uint32_t paramCount)
-{
-    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        return ret;
-    }
-    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
-        return ret;
-    }
-    ret = OH_Huks_BuildParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
-        return ret;
-    }
-    return ret;
-}
-
+/* 调用huks三段式接口获取签名后的数据 */
 static struct OH_Huks_Param g_signParamsTest[] = {
     {
         .tag = OH_HUKS_TAG_ALGORITHM,
@@ -256,29 +234,7 @@ static struct OH_Huks_Param g_signParamsTest[] = {
         .uint32Param = OH_HUKS_PADDING_PSS
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }, {
-        .tag = OH_HUKS_TAG_KEY_CLASS,
-        .uint32Param = OH_HUKS_KEY_CLASS_EXTENSION
-    }
-};
-
-static struct OH_Huks_Param g_verifyParamsTest[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_RSA
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_RSA_KEY_SIZE_2048
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_PSS
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
+        .uint32Param = OH_HUKS_DIGEST_SHA384
     }, {
         .tag = OH_HUKS_TAG_KEY_CLASS,
         .uint32Param = OH_HUKS_KEY_CLASS_EXTENSION
@@ -286,15 +242,11 @@ static struct OH_Huks_Param g_verifyParamsTest[] = {
 };
 
 static const uint32_t RSA_COMMON_SIZE = 1024;
-static const char *DATA_TO_SIGN = "Hks_RSA_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
-                                  "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                  "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
-static const char *KEY_ALIAS = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
-                              "\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+static const char *DATA_TO_SIGN = "testData";
+static const char *KEY_ALIAS = "testKeyAlias";
 
-static napi_value SignVerifyKey(napi_env env, napi_callback_info info) 
+static napi_value Sign(napi_env env, napi_callback_info info)
 {
-    // 假设keyAlias是获取的resourceId
     struct OH_Huks_Blob keyAlias = {
         (uint32_t)strlen(KEY_ALIAS),
         (uint8_t *)KEY_ALIAS
@@ -304,58 +256,28 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
         (uint8_t *)DATA_TO_SIGN
     };
     struct OH_Huks_ParamSet *signParamSet = nullptr;
-    struct OH_Huks_ParamSet *verifyParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
-        ohResult = InitParamSet(&signParamSet, g_signParamsTest, sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
+        ohResult = InitHuksParamSet(&signParamSet, g_signParamsTest,
+            sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        ohResult = InitParamSet(&verifyParamSet, g_verifyParamsTest,
-            sizeof(g_verifyParamsTest) / sizeof(OH_Huks_Param));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        /* 1. 签名 */
-        // 初始化会话
         uint8_t handleS[sizeof(uint64_t)] = {0};
         struct OH_Huks_Blob handleSign = { (uint32_t)sizeof(uint64_t), handleS };
         ohResult = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        // 结束会话
         uint8_t outDataS[RSA_COMMON_SIZE] = {0};
         struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
-        ohResult = OH_Huks_FinishSession(&handleSign, signParamSet,  &inData, &outDataSign);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        
-        /* 2. 验签 */
-        // 初始化会话
-        uint8_t handleV[sizeof(uint64_t)] = {0};
-        struct OH_Huks_Blob handleVerify = { (uint32_t)sizeof(uint64_t), handleV };
-        ohResult = OH_Huks_InitSession(&keyAlias, verifyParamSet, &handleVerify, nullptr);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        // 更新会话
-        uint8_t temp[] = "out";
-        struct OH_Huks_Blob verifyOut = { (uint32_t)sizeof(temp), temp };
-        ohResult = OH_Huks_UpdateSession(&handleVerify, verifyParamSet, &inData, &verifyOut);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        // 结束会话
-        ohResult = OH_Huks_FinishSession(&handleVerify, verifyParamSet, &outDataSign, &verifyOut);
+        ohResult = OH_Huks_FinishSession(&handleSign, signParamSet, &inData, &outDataSign);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
     } while (0);
     OH_Huks_FreeParamSet(&signParamSet);
-    OH_Huks_FreeParamSet(&verifyParamSet);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;

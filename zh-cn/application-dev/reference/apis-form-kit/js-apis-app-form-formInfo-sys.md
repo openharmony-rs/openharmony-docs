@@ -39,6 +39,7 @@ import { formInfo } from '@kit.FormKit';
 | isStandbyAdapted<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否已适配灵动显示规则。<br/>-&nbsp;true：已适配灵动显示。<br/>-&nbsp;false：未适配灵动显示。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | isPrivacySensitive<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否是隐私敏感卡片。<br/>-&nbsp;true：是隐私敏感卡片。<br/>-&nbsp;false：不是隐私敏感卡片。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | isFontScaleFollowSystem | boolean  | 否    | 是     | 卡片的字体缩放是否跟随系统，默认值为true。<br/>-&nbsp;true：字体缩放跟随系统。<br/>-&nbsp;false：字体缩放不会跟随系统。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0 |
+| enableTint | boolean  | 是    | 是     | 卡片是否使能赋色。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.1.0 |
 
 ##  FormParam
 
@@ -194,7 +195,7 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|----|----|-----|
 | formId       | string  | 否  | 否  | 卡片id。|
 | isOverflow   | boolean | 否  | 否  | 动效请求类型标记，true 表示互动卡片请求触发动效，false 表示互动卡片请求取消动效。|
-| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 否 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
+| overflowInfo | [OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 否 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
 
 ## ChangeSceneAnimationStateRequest<sup>20+</sup>
 
@@ -305,7 +306,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 | moduleName | string | 否 | 否  | 卡片所属模块的名称。 |
 | abilityName | string | 否 | 否  | 卡片所属的Ability名称。 |
 | formName | string | 否 | 否  | 卡片名称。 |
-| dimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | 否 | 否  | 卡片规格。 |
+| dimension | [FormDimension](js-apis-app-form-formInfo.md#formdimension) | 否 | 否  | 卡片规格。 |
 | detailId | string | 否 | 否  | 卡片信息id。 |
 | displayName | string | 否 | 否  | 卡片展示名称。 |
 | description | string | 否 | 否  | 卡片描述。 |
@@ -634,3 +635,20 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|------|----|------|
 | formId | string | 否 | 否 | 添加到远端卡片使用方服务的卡片标识。 |
+
+## FormColorInfo
+
+卡片赋色的颜色信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| color | string | 否 | 否 | 卡片赋色使用的颜色值，格式为'#RRGGBB'或'#AARRGGBB'，例如'#FF0000'。 |
+| position | number | 否 | 否 | 该颜色值在渐变色中的位置，取值范围为[0, 1]。 |

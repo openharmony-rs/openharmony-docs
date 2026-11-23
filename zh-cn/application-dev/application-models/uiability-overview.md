@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍UIAbility组件的设计理念与划分原则，包括单UIAbility与多UIAbility的选择建议、跨端迁移与多窗口支持能力，以及在module.json5中的声明配置方法。"
+keywords: [UIAbility, 应用组件, UI交互, 跨端迁移, 多窗口]
+doctype: guide
+status: active
+---
 # UIAbility组件概述
 
 <!--Kit: Ability Kit-->

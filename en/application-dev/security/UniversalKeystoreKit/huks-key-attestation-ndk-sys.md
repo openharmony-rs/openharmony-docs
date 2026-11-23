@@ -6,9 +6,11 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b722bb027a9946b31088096f6049a57a2ca3a9c3 translatedAt=2026-11-03T05:37:53.461Z pushedAt=2026-11-03T07:29:14.840Z nl=1 -->
+<!-- md-trans-meta sourceCommit=dcbc797b80cd4b16cdb3a4fb6ce8e16720df343f translatedAt=2026-11-20T03:27:12.832Z pushedAt=2026-11-20T06:46:43.313Z nl=1 -->
 
-The caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission. You need to request the permission based on the APL of your permission. For details, see [Workflow for Using Permissions](../AccessToken/determine-application-mode.md).
+Before using this feature, request the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) or [ohos.permission.ENTERPRISE_ATTEST_KEY](../AccessToken/permissions-for-mdm-apps.md#ohospermissionenterprise_attest_key) permission. Either one is sufficient. Based on the application type and APL, follow the specific procedure in [Permission Request](../AccessToken/determine-application-mode.md).
+
+Starting from API version 26.1.0, a device management application can request the ohos.permission.ENTERPRISE_ATTEST_KEY permission to use the non-anonymous key attestation capability.
 
 ## Linking the Dynamic Library in the CMake Script
 ```txt

@@ -41,6 +41,8 @@
 | [bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_ismultichannelplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持多声道播放。 |
 | [bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isdirectplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持直通播放。 |
 | [bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isoffloadplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持低功耗播放。 |
+| [OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)](#oh_audiostreammanager_isultrafastplaybacksupported) | 查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。 |
+| [OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastRecordingSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source, bool *supported)](#oh_audiostreammanager_isultrafastrecordingsupported) | 查询当前设备在指定音频流信息和使用场景下是否支持超低时延录制。 |
 
 ## 函数说明
 
@@ -119,7 +121,7 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_A
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数audioStreamManager为nullptr；<br>                                                    2.参数sourceType无效；<br>                                                    3.参数supported为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数sourceType无效；<br>                                                    3.参数supported为nullptr。 |
 
 ### OH_AudioStreamManager_IsFastPlaybackSupported()
 
@@ -275,5 +277,62 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 | 类型 | 说明 |
 | -- | -- |
 | bool | 返回true时表示支持低功耗播放，返回false时表示不支持。 |
+
+### OH_AudioStreamManager_IsUltraFastPlaybackSupported()
+
+```c
+OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)
+```
+
+**描述**
+
+查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 音频流信息指针，用于描述基础音频格式。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+| bool *supported | 指向接收是否支持超低时延播放结果的变量。true表示支持超低时延播放，false表示不支持超低时延播放。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED：音频服务进程异常退出。 |
+
+### OH_AudioStreamManager_IsUltraFastRecordingSupported()
+ 
+```c
+OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastRecordingSupported(
+    OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source,
+    bool *supported);
+```
+ 
+**描述**
+ 
+查询当前设备在特定音频流信息和使用场景下是否支持超低时延录制。
+ 
+**起始版本：** 26.1.0
+ 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 音频流信息指针。 |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | 音频流使用场景。 |
+| bool *supported | 指向接收是否支持超低时延录音结果的变量。true表示支持超低时延录制，false表示不支持超低时延录制。 |
+ 
+**返回值：**
+ 
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED：音频服务进程异常退出。 |
+ 
 
 

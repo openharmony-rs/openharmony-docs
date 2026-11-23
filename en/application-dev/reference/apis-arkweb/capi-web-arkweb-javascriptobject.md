@@ -1,12 +1,11 @@
 # ArkWeb_JavaScriptObject
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:51:45.019Z pushedAt=2026-08-06T09:28:03.854Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:47:40.837Z pushedAt=2026-11-09T11:42:46.193Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_JavaScriptObject
@@ -32,3 +31,4 @@ The **ArkWeb_JavaScriptObject** struct is used to inject JavaScript code into a 
 | size_t size | Length of the JavaScript code, in bytes. Must be consistent with the actual length of **buffer**; otherwise, out-of-bounds access or truncation may occur. |
 | [ArkWeb_OnJavaScriptCallback](capi-arkweb-type-h.md#arkweb_onjavascriptcallback) callback | Callback invoked when JavaScript execution is complete. This is a callback function pointer. Passing **NULL** indicates that no callback is needed. |
 | void* userData | Custom data to be carried in the callback. |
+

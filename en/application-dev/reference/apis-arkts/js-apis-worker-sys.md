@@ -1,18 +1,19 @@
 # @ohos.worker (Starting the Worker) (System API)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=6765e63d2877178f84dcdcc92016726d39eb79a0 translatedAt=2026-11-06T09:54:03.129Z pushedAt=2026-11-13T07:19:47.236Z nl=1 -->
 
-The Worker thread is an independent thread running in parallel with the main thread. The thread that creates the Worker thread is referred to as the host thread. The URL file passed in during worker creation is executed in the Worker thread. The Worker thread can process time-consuming operations, but cannot directly operate the UI.
+A Worker is an independent thread running in parallel with the host thread. The thread that creates a Worker is called the host thread, and the thread of the Worker itself is called the Worker thread. The URL file passed in when creating a Worker is executed in the Worker thread, which can handle time-consuming operations but cannot directly operate the UI.
 
-With the Worker module, you can provide a multithreaded environment for an application, so that the application can perform a time-consuming operation in a background thread. This greatly prevents a computing-intensive or high-latency task from blocking the running of the host thread. A Worker instance will not be proactively destroyed once it is created. It consumes resources to keep running. Therefore, you should call the API to terminate it in a timely manner.
+The main purpose of a Worker is to provide a multi-threaded runtime environment for applications, so that the application is separated from the host thread during execution and runs scripts in a background thread to handle time-consuming operations, avoiding compute-intensive or high-latency tasks from blocking the host thread. Since a Worker is not actively destroyed once created, it keeps running when not in a task state, causing resource waste. Therefore, idle Workers should be destroyed in a timely manner.
 
 The Context object of the Worker thread is different from that of the UI main thread. The Worker thread does not support UI operations.
 
-For details about the precautions for using Worker, see [Precautions for Worker](../../arkts-utils/worker-introduction.md).
+See [Worker Notes](../../arkts-utils/worker-introduction.md) to learn about the relevant notes during Worker usage.
 
 > **NOTE**
 >
@@ -30,13 +31,13 @@ import { worker } from '@kit.ArkTS';
 
 The RestrictedWorker class inherits [ThreadWorker<sup>9+</sup>](js-apis-worker.md#threadworker9) and supports all APIs in ThreadWorker.
 
-RestrictedWorker provides a restricted environment for running the Worker thread. In this environment, only the Worker module can be imported.
+RestrictedWorker is mainly used to provide a restricted Worker thread runtime environment, in which only the Worker module is allowed to be imported and no other APIs are allowed.
 
 ### constructor<sup>11+</sup>
 
 constructor(scriptURL: string, options?: WorkerOptions)
 
-A constructor used to create a RestrictedWorker instance. Before using the following APIs, you must create a RestrictedWorker instance.
+RestrictedWorker constructor. Before using other methods, you must first construct a RestrictedWorker instance.
 
 **System API**: This is a system API.
 
@@ -47,23 +48,22 @@ A constructor used to create a RestrictedWorker instance. Before using the follo
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | scriptURL | string                          | Yes  | URL of the Worker thread file. For details about the rules, see [Precautions for File URLs](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).|
-| options   | [WorkerOptions](js-apis-worker.md#workeroptions) | No  | Options that can be set for the RestrictedWorker instance.                                          |
+| options   | [WorkerOptions](js-apis-worker.md#workeroptions) | No   | Options for constructing a RestrictedWorker. The default value of type is 'classic', name defaults to 'undefined', shared defaults to 'undefined', and priority defaults to 'MEDIUM'. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200003 | Worker initialization failure. |
-| 10200007 | The worker file patch is invalid path. |
+| 10200007 | The worker file path is invalid. |
 
 **Example**
 
-The following code snippet shows how to load the Worker thread file of the ability in the stage model. For details about how to use the library to load the Worker thread file, see [Precautions for File URLs](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).
+This uses the [Stage model](../../application-models/stage-model-development-overview.md) as an example of an Ability loading a Worker file. For the scenario of using Library to load a Worker thread file, see [File Path Notes](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).
 
-Only the Worker module can be imported to the restricted Worker thread file. Other APIs cannot be imported. The following is sample code:
+The following is sample code for creating a RestrictedWorker in the host thread:
 
 ```ts
 import { worker } from '@kit.ArkTS';
@@ -71,11 +71,13 @@ import { worker } from '@kit.ArkTS';
 // Two scenarios are involved.
 
 // Scenario 1: URL of the Worker thread file: "entry/src/main/ets/workers/worker.ets"
-const workerStageModel01 = new worker.RestrictedWorker('entry/ets/workers/worker.ets', {name:"first worker in Stage model"});
+const workerStageModel01 = new worker.RestrictedWorker('entry/ets/workers/worker.ets', {name: 'first worker in Stage model'});
 
 // Scenario 2: URL of the Worker thread file: "testworkers/src/main/ets/ThreadFile/workers/worker.ets"
 const workerStageModel02 = new worker.RestrictedWorker('testworkers/ets/ThreadFile/workers/worker.ets');
 ```
+
+The restricted Worker thread file only allows importing the Worker module and does not allow importing any other APIs. The following is sample code for a restricted Worker thread file:
 
 ```ts
 // Restricted Worker thread file
@@ -85,8 +87,8 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 
 const workerPort = worker.workerPort;
 
-workerPort.onmessage = (e : MessageEvents) : void => {
-  console.info("worker:: This is worker thread.");
-  // console.info("worker:: worker tid: "+ process.tid) // Run process.tid. The host thread reports the corresponding error.
+workerPort.onmessage = (e: MessageEvents): void => {
+  console.info('worker:: This is worker thread.');
+  //console.info('worker:: worker tid: ' + process.tid) // Execute process.tid. The host thread will report a corresponding TypeError.
 }
 ```

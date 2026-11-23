@@ -565,13 +565,13 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 | :----------------------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | builder                  | [CustomBuilder](ts-types.md#custombuilder8)       | 否   | 是   | 工具栏子项的自定义内容构造器。设置后，文本和图标不生效。<br />默认值：undefined。<br />值为undefined时，不使用自定义构造器，文本和图标正常生效。<br />装饰器类型：@Trace                                                                                                          |
 | placement                | [ToolBarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 工具栏子项的放置位置。<br />默认值：ToolBarV2ItemPlacement.MAIN。<br />装饰器类型：@Trace                                                                                                                              |
-| displayPriority          | number                                            | 否   | 是   | 工具栏子项在布局容器中的显示优先级。值越大优先级越高。工具栏空间不足时，显示优先级低的子项先被折叠至溢出菜单；值为0时该子项始终收纳至溢出菜单，值为10时该子项始终显示、不参与折叠。<br />取值范围：[0, 10]。<br />默认值：1。<br />装饰器类型：@Trace                                                                                               |
+| displayPriority          | number                                            | 否   | 是   | 工具栏子项在布局容器中的显示优先级。值越大优先级越高。工具栏空间不足时，显示优先级低的子项先被折叠至溢出菜单；值为0时该子项始终收纳至溢出菜单；值为负数或非有限值时按默认值处理。<br />取值范围：[0, +∞)。<br />默认值：1。<br />装饰器类型：@Trace                                                                                               |
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 子项在激活态（[ACTIVATE](#toolbarv2itemstate)）下的背景色。当子项仅纯图标渲染时生效；当子项同时渲染图标与文本时该属性被忽略且不报错。未指定时默认透明，建议使用$r('sys.color.comp_background_emphasize')。<br />默认值：Color.Transparent。<br />装饰器类型：@Trace |
 | id                       | string                                            | 否   | 是   | 工具栏子项的唯一标识。<br />默认值：undefined。<br />值为undefined时，不设置唯一标识。<br />装饰器类型：@Trace                                                                                                                                                                        |
 | itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | 否   | 是   | 工具栏子项的尺寸（宽×高）。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。<br />装饰器类型：@Trace                                                              |
 | isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。<br />装饰器类型：@Trace                                                                                          |
 | isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。在纯图标显示的场景使用。<br />默认值：true。<br />装饰器类型：@Trace                                   |
-| titleConfigs             | [ToolBarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项作为工具栏标题渲染，不再显示为普通子项，该子项的文本、图标及自定义内容均不再显示。工具栏标题仅在水平布局时生效。<br />多个子项同时设置时，标题内容与样式以数组中第一个配置为准，建议仅在一个子项上设置。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。<br />装饰器类型：@Trace |
+| titleConfigs             | [ToolBarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项仅作为标题的配置载体，不再作为普通子项渲染，仅在水平布局时生效；作为标题载体时仍需传入必填字段content，但该内容不渲染为子项文本。建议仅在一个子项上设置titleConfigs（多个同时设置时仅一个标题生效）。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。<br />装饰器类型：@Trace |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否将该子项作为工具栏的溢出菜单按钮。true表示该子项作为溢出菜单按钮，当存在被折叠的子项时显示，点击后弹出溢出菜单；false表示不作为溢出菜单按钮。<br />该子项的icon为[ToolBarV2SymbolGlyph](#toolbarv2symbolglyph)时作为按钮图标，否则显示默认的更多图标。作为溢出菜单按钮时，该子项的action不生效。<br />建议仅在一个[ToolBarV2ItemPlacement](#toolbarv2itemplacement)为TRAILING的子项上设置。<br />默认值：false。<br />装饰器类型：@Trace |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。<br />装饰器类型：@Trace                                                              |
 | groupStyle               | [ToolBarV2ItemGroupStyle](#toolbarv2itemgroupstyle) | 否   | 是   | 该子项所属分组的样式配置。相同groupID的第一个设置groupStyle的子项上的值生效，后续具有相同groupID的子项上的值将被忽略。<br />默认值：undefined。<br />值为undefined时，不设置分组样式配置。<br />装饰器类型：@Trace                                                                                  |
@@ -698,22 +698,29 @@ struct Index {
 | :----------------------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | builder                  | [CustomBuilder](ts-types.md#custombuilder8)       | 否   | 是   | 工具栏子项的自定义内容构造器。设置后，文本和图标不生效。<br />默认值：undefined。<br />值为undefined时，不使用自定义构造器，文本和图标正常生效。                                                                                                                                  |
 | placement                | [ToolBarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 工具栏子项的放置位置。<br />默认值：ToolBarV2ItemPlacement.MAIN。                                                                                                                                                     |
-| displayPriority          | number                                            | 否   | 是   | 工具栏子项在布局容器中的显示优先级。值越大优先级越高。工具栏空间不足时，显示优先级低的子项先被折叠至溢出菜单；值为0时该子项始终收纳至溢出菜单，值为10时该子项始终显示、不参与折叠。<br />取值范围：[0, 10]。<br />默认值：1。                                                                                                                       |
+| displayPriority          | number                                            | 否   | 是   | 工具栏子项在布局容器中的显示优先级。值越大优先级越高。工具栏空间不足时，显示优先级低的子项先被折叠至溢出菜单；值为0时该子项始终收纳至溢出菜单；值为负数或非有限值时按默认值处理。<br />取值范围：[0, +∞)。<br />默认值：1。                                                                                                                       |
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 子项在激活态（[ACTIVATE](#toolbarv2itemstate)）下的背景色。当子项仅纯图标渲染时生效；当子项同时渲染图标与文本时该属性被忽略且不报错。未指定时默认透明，建议使用$r('sys.color.comp_background_emphasize')。<br />默认值：Color.Transparent。                                 |
 | id                       | string                                            | 否   | 是   | 工具栏子项的唯一标识。<br />默认值：undefined。<br />值为undefined时，不设置唯一标识。                                                                                                                                                                       |
 | itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | 否   | 是   | 工具栏子项的尺寸（宽×高）。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。                                                                                  |
 | isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。                                                                                                            |
 | isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。<br />默认值：true。                                                |
-| titleConfigs             | [ToolBarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项作为工具栏标题渲染，不再显示为普通子项，该子项的文本、图标及自定义内容均不再显示。工具栏标题仅在水平布局时生效。<br />多个子项同时设置时，标题内容与样式以数组中第一个配置为准，建议仅在一个子项上设置。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。 |
+| titleConfigs             | [ToolBarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项仅作为标题的配置载体，不再作为普通子项渲染，仅在水平布局时生效；作为标题载体时仍需传入必填字段content，但该内容不渲染为子项文本。建议仅在一个子项上设置titleConfigs（多个同时设置时仅一个标题生效）。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。 |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否将该子项作为工具栏的溢出菜单按钮。true表示该子项作为溢出菜单按钮，当存在被折叠的子项时显示，点击后弹出溢出菜单；false表示不作为溢出菜单按钮。<br />该子项的icon为[ToolBarV2SymbolGlyph](#toolbarv2symbolglyph)时作为按钮图标，否则显示默认的更多图标。作为溢出菜单按钮时，该子项的action不生效。<br />建议仅在一个[ToolBarV2ItemPlacement](#toolbarv2itemplacement)为TRAILING的子项上设置。<br />默认值：false。 |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。                                                                                                                                   |
 | groupStyle               | [ToolBarV2ItemGroupStyle](#toolbarv2itemgroupstyle) | 否   | 是   | 该子项所属分组的样式配置。相同groupID的第一个设置groupStyle的子项上的值生效，后续具有相同groupID的子项上的值将被忽略。<br />默认值：undefined。<br />值为undefined时，不设置分组样式配置。                                                                                  |
 
 ## ToolBarV2TitleConfigs
 
-定义高级工具栏的标题配置。设置后，承载该配置的子项作为工具栏标题渲染，不再显示为普通子项。
+定义高级工具栏的标题配置。设置后，承载该配置的子项仅作为标题的配置载体，不再作为普通子项渲染。
 
-工具栏空间不足时，优先压缩标题宽度，最小压缩至style.minLength指定的值；仍不足时，按displayPriority从低到高折叠子项至溢出菜单。标题仅在水平布局（direction为[Axis](ts-appendix-enums.md#axis).Horizontal）时生效，单行显示，超出可用宽度时以省略号显示。
+工具栏空间不足时，优先压缩标题宽度，仍不足时按displayPriority从低到高折叠子项至溢出菜单。标题仅在水平布局（direction为[Axis](ts-appendix-enums.md#axis).Horizontal）时生效。未配置副标题时标题单行显示；配置副标题（subTitleContent）时，主标题在上、副标题在下分两行显示，副标题跟随标题的placement和visible。主标题与副标题均为单行显示，超出可用宽度时以省略号显示。
+
+> **说明：**
+>
+> - 普通子项指在工具栏中按自身content、icon或builder渲染为按钮、可点击并参与折叠与溢出菜单收纳的子项。作为标题载体时，该子项不显示content文本和icon图标，不响应action点击事件，不参与折叠与溢出菜单收纳；state、builder、itemSize、isShowSeparator、isShowText、activatedBackgroundColor、displayPriority、isShowOverflowMenu及accessibilityText、accessibilityDescription、accessibilityLevel等子项级字段均不生效。
+> - 标题区域由titleConfigs.placement决定，默认值为ToolBarV2ItemPlacement.LEADING；承载子项自身的placement不生效。
+> - content为ToolBarV2ItemOptions的必填字段，作为标题载体时仍需传入，但传入内容不渲染为子项文本，标题文本由titleConfigs.content决定。
+> - 标题与溢出菜单按钮默认不作为可收纳项，不会被折叠隐藏；极端空间不足时二者可能发生重叠，可通过减小titleConfigs.style.minLength或设置titleConfigs.visible为false隐藏标题来保障显示效果。
 
 **起始版本：** 26.1.0
 
@@ -741,10 +748,12 @@ struct Index {
 
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />装饰器类型：@Trace                                                                                                        |
-| placement | [ToolBarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。未设置时使用承载该配置的子项的placement，子项也未设置时为ToolBarV2ItemPlacement.LEADING。<br />默认值：ToolBarV2ItemPlacement.LEADING。<br />装饰器类型：@Trace |
+| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不渲染标题。<br />装饰器类型：@Trace                                                                                                        |
+| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。<br />默认值：undefined。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不显示副标题，标题回落为单行布局。<br />装饰器类型：@Trace |
+| placement | [ToolBarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。<br />默认值：ToolBarV2ItemPlacement.LEADING。<br />装饰器类型：@Trace |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。<br />装饰器类型：@Trace                                                                    |
 | style     | [ToolBarV2TitleStyle](#toolbarv2titlestyle)       | 否   | 是   | 标题样式。<br />默认值：undefined。<br />值为undefined时，使用默认样式。<br />装饰器类型：@Trace                                                                              |
+| subTitleStyle | [ToolBarV2TitleStyle](#toolbarv2titlestyle) | 否   | 是   | 副标题的样式。<br />默认值：undefined。<br />值为undefined时，使用副标题默认样式：fontSize默认14fp、fontColor默认$r('sys.color.font_secondary')、fontWeight默认FontWeight.Regular；minLength对副标题不生效。<br />装饰器类型：@Trace |
 
 ### constructor
 
@@ -784,14 +793,16 @@ ToolBarV2TitleConfigs的构造函数。
 
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------- |
-| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 是   | 工具栏标题的文本内容。<br />默认值：空字符串。                               |
+| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 是   | 工具栏标题的文本内容。<br />默认值：空字符串。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不渲染标题。 |
+| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。<br />默认值：undefined。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不显示副标题，标题回落为单行布局。 |
 | placement | [ToolBarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。<br />默认值：ToolBarV2ItemPlacement.LEADING。                |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。                                           |
 | style     | [ToolBarV2TitleStyle](#toolbarv2titlestyle)       | 否   | 是   | 标题样式。<br />默认值：undefined。<br />值为undefined时，使用默认样式。                                          |
+| subTitleStyle | [ToolBarV2TitleStyle](#toolbarv2titlestyle) | 否   | 是   | 副标题的样式。<br />默认值：undefined。<br />值为undefined时，使用副标题默认样式：fontSize默认14fp、fontColor默认$r('sys.color.font_secondary')、fontWeight默认FontWeight.Regular；minLength对副标题不生效。 |
 
 ## ToolBarV2TitleStyle
 
-定义高级工具栏标题的样式。
+定义高级工具栏标题的样式。该样式类同时用于主标题（style）和副标题（subTitleStyle）。
 
 **起始版本：** 26.1.0
 
@@ -887,7 +898,7 @@ ToolBarV2TitleStyle的构造函数。
 | fontColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                            | 否   | 是   | 溢出菜单的字体颜色。<br />默认值：$r('sys.color.font_primary')。                                                                              |
 | radius               | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) | 否   | 是   | 溢出菜单的圆角半径。<br />默认值：16vp。                                                                                                      |
 | menuItemDivider      | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)                               | 否   | 是   | 溢出菜单中菜单项之间的分割线样式。<br />默认值：{ strokeWidth: 0.5vp, startMargin: 0, endMargin: 0, color: $r('sys.color.comp_divider') }。     |
-| menuItemGroupDivider | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)                               | 否   | 是   | 溢出菜单中菜单项分组之间的分割线样式。<br />默认值：不设置，使用系统默认样式。                                                                |
+| menuItemGroupDivider | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)                               | 否   | 是   | 溢出菜单中菜单项分组的分割线样式。设置该属性且存在带groupID的收纳项时，溢出菜单项按工具栏子项的groupID分组渲染（MenuItemGroup），该样式作用于每个分组的顶部和底部分割线；未设置或没有带groupID的收纳项时，菜单项平铺显示，不显示分组分割线。<br />默认值：不设置，不显示分组分割线。                                                                |
 
 ## AdvancedToolBarV2Modifier
 

@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e50cd391e32ff59430fc2cd953e8729c4d27fda7 translatedAt=2026-11-03T05:16:31.259Z pushedAt=2026-11-03T06:54:56.720Z nl=1 -->
+<!-- md-trans-meta sourceCommit=afc00ea13fc0a3fa63e7c76bf4005d4a63c32f80 translatedAt=2026-11-20T03:22:35.649Z pushedAt=2026-11-20T06:39:18.914Z nl=1 -->
 
 A PIN (Personal Identification Number) is a security access credential in the Key Management Extension Service. The service implementer can adopt a two-factor authentication mode of "credential + PIN": the user must possess both a valid credential (such as a physical device or a virtual service session) and the correct PIN to access the key material within the service.
 
@@ -67,12 +67,15 @@ An application can query whether PIN authentication has passed through the corre
 
 **ArkTS API**
 
-```ts
+<!-- @[query_auth_state_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/QueryAuthState.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPinAuthState> {
-  let ret: huksExternalCrypto.HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
+  let ret: huksExternalCrypto.HuksExternalPinAuthState =
+    huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
   try {
     /* 1. Construct parameters for querying the PIN status. */
     const testResourceId = JSON.stringify({
@@ -83,15 +86,14 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
         key: 'testKey'
       } as ESObject
     });
-
-    const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+    const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [];
 
     /* 2. Call getUkeyPinAuthState. */
     await huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
       .then((data) => {
-        console.info(`promise: getUkeyPinAuthState success , data: ${data}`);
+        console.info(`promise: getUkeyPinAuthState success , data : ${data}`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: getUkeyPinAuthState failed, errCode: ${error.code}, errMsg: ${error.message}`);
+        console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
     console.error('promise: getUkeyPinAuthState input arg invalid.');
@@ -112,43 +114,22 @@ async function testGetUkeyPinAuthState() {
 
 **C++ API**
 
+<!-- @[query_auth_state_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-#include "huks/native_huks_external_crypto_api.h"
-#include "huks/native_huks_param.h"
-#include "napi/native_api.h"
-#include <string.h>
-
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ExternalCryptoParamSet **paramSet,
-    const struct OH_Huks_ExternalCryptoParam *params,
-    uint32_t paramCount)
-{
-    OH_Huks_Result ret = OH_Huks_InitExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        return ret;
-    }
-    ret = OH_Huks_AddExternalCryptoParams(*paramSet, params, paramCount);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
-    }
-    ret = OH_Huks_BuildExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
-    }
-    return ret;
-}
-
-static const char *resourceId = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+static const char *QUERY_RESOURCE_ID =
+    "{\"providerName\":\"testProviderName\","
+    "\"abilityName\":\"CryptoExtension\","
+    "\"bundleName\":\"com.example.cryptoapplication\","
+    "\"index\":{\"key\":\"testKey\"}}";
 
 static struct OH_Huks_ExternalCryptoParam g_getPinStateParamsTest[] = {};
 
-static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info) 
+static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
 {
     struct OH_Huks_Blob g_resourceId = {
-        (uint32_t)strlen(resourceId),
-        (uint8_t *)resourceId
+        (uint32_t)strlen(QUERY_RESOURCE_ID),
+        (uint8_t *)QUERY_RESOURCE_ID
     };
     struct OH_Huks_ExternalCryptoParamSet *pinStateParamSet = nullptr;
     OH_Huks_ExternalPinAuthState authState = OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH;
@@ -165,7 +146,7 @@ static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
         }
     } while (0);
     OH_Huks_FreeExternalCryptoParamSet(&pinStateParamSet);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;
@@ -194,7 +175,9 @@ The PIN authentication status may need to be cleared in the following scenarios:
 
 ### Development Cases
 
-```ts
+<!-- @[clear_pin_auth_state_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/ClearPinAuthState.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -205,7 +188,7 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
       .then(() => {
         console.info('promise: clearUkeyPinAuthState success.');
       }).catch((error: BusinessError) => {
-        console.error(`promise: clearUkeyPinAuthState failed, errCode: ${error.code}, errMsg: ${error.message}`);
+        console.error(`promise: clearUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
     console.error('promise: clearUkeyPinAuthState input arg invalid.');
@@ -231,7 +214,7 @@ After the user enters the PIN, the application can call the corresponding API to
 
 ### Development Cases
 
-```ts
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
@@ -287,4 +270,3 @@ async function testAuthUkeyPin() {
 }
 ```
 <!--DelEnd-->
-<!--no_check-->

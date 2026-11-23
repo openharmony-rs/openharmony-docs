@@ -6,7 +6,7 @@
 <!--Designer: @gcw_AzEdve8G-->
 <!--Tester: @weixin_48873925-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=0a92e0f893abec58a65d906b552279929e2fd950 translatedAt=2026-11-03T05:43:40.694Z pushedAt=2026-11-03T06:53:40.993Z nl=1 -->
+<!-- md-trans-meta sourceCommit=927ae9cd2200a141a13be3eff47ce1fe7e81fb32 translatedAt=2026-11-20T03:30:42.926Z pushedAt=2026-11-20T06:13:17.850Z nl=1 -->
 
 The Security & Privacy framework allows access via a UIAbility or an ExtensionAbility.
 
@@ -133,26 +133,29 @@ To access the Security & Privacy framework via a UIAbility, use the default acce
 
 Example:
 
+<!-- @[spc_menu_development_guidance_ui_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUIAbilityDemo/entry/src/main/ets/entryability/EntryAbility.ets)  -->
+
 ```typescript
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import hilog from '@ohos.hilog';
-import UIAbility from '@ohos.app.ability.UIAbility';
-import Want from '@ohos.app.ability.Want';
-import window from '@ohos.window';
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+
+const DOMAIN = 0xF811;
+const TAG = '[menuuiabilitydemo_EntryAbility]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('pages/Index', (err, data) => {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
     });
   }
-}
 ```
 
 ## Accessing the Security & Privacy Framework via an ExtensionAbility
@@ -161,20 +164,23 @@ To access the Security & Privacy Framework via an ExtensionAbility, the Ability 
 
 Example:
 
-```typescript
-import hilog from '@ohos.hilog';
-import Want from '@ohos.app.ability.Want';
-import ExtensionAbility from '@ohos.app.ability.ExtensionAbility';
-import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+<!-- @[spc_menu_uec_development_guidance_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUECDemo/entry/src/main/ets/entryuiextensionability/EntryUIExtensionAbility.ets)  -->
 
-export default class EntryAbility extends ExtensionAbility {
+```typescript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+const DOMAIN = 0xF811;
+const TAG: string = '[menuuecdemo_EntryUIExtensionAbility]';
+
+export default class EntryUIExtensionAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onSessionCreate');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onSessionCreate');
     let param: Record<string, Object> = {
       'session': session
     }
     let storage: LocalStorage = new LocalStorage(param)
-    session.loadContent('pages/Index', storage)
+    session.loadContent('pages/UECPage', storage)
   }
 }
 ```
@@ -185,29 +191,30 @@ If the framework is accessed through a UIAbility and the access party needs to e
 
 Example:
 
+<!-- @[spc_menu_development_guidance_ui_ability_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUIAbilityDemo/entry/src/main/ets/pages/Index.ets)  -->
+
 ```typescript
-import { common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common } from '@kit.AbilityKit';
+
+const DOMAIN = 0xF811;
+const TAG = '[menuuiabilitydemo_Index]';
 
 @Entry
 @Component
 struct Index {
- 
+
   build() {
-    Row() {
-      Column() {
-        Button("click to back")
-          .onClick(() => {
-            try {
-              (this.getUIContext().getHostContext() as common.UIAbilityContext).terminateSelf();
-            } catch (err) {
-              hilog.info(0x0000, 'testTag', 'error: %{public}s', JSON.stringify(err));
-            }
-          })
-      }
-      .width('100%')
+    RelativeContainer() {
+      Button($r('app.string.back_button_title'))
+        .onClick(() => {
+          (this.getUIContext().getHostContext() as common.UIAbilityContext).terminateSelf().catch((err: Error) => {
+            hilog.error(DOMAIN, TAG, 'error: %{public}s', JSON.stringify(err));
+          });
+        })
     }
     .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -218,20 +225,31 @@ If the caller (which accessed the Security & Privacy Framework via a UIExtension
 
 Example:
 
+<!-- @[spc_menu_uec_development_guidance_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUECDemo/entry/src/main/ets/pages/UECPage.ets)  -->
+
 ```typescript
-import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession'
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811;
+const TAG: string = '[menuuecdemo_UECPage]'
 
 @Entry
 @Component
-struct Index {
-  private session = this.getUIContext().getSharedLocalStorage()?.get<UIExtensionContentSession>('session') as UIExtensionContentSession;
+struct UECPage {
+  private session =
+    this.getUIContext().getSharedLocalStorage()?.get<UIExtensionContentSession>('session') as UIExtensionContentSession;
 
   build() {
     Row() {
       Column() {
-        Button("click to back")
+        Button($r('app.string.back_button'))
           .onClick(() => {
-            this.session.sendData({ 'action': "exit" })
+            try {
+              this.session.sendData({ 'action': 'exit' })
+            } catch (error) {
+              hilog.error(DOMAIN, TAG, 'sendData error');
+            }
           })
       }
       .width('100%')

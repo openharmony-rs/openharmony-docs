@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "提供批量数据写数据库场景的开发指导：频繁数据库操作使用TaskPool处理，大容量数据操作借助Sendable对象引用传递避免序列化开销，并覆盖复杂类实例对象的Sendable改造与批量落库实现。"
 keywords: [批量数据库操作, TaskPool, Sendable, 大容量数据, 数据库写入, relationalStore, 引用传递, 序列化开销]
 doctype: guide
@@ -42,12 +42,12 @@ async function create(context: Context) {
   console.info(`Get Store.db successfully!`);
 
   // 创建表
-  const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-    'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-    'name TEXT NOT NULL, ' +
-    'age INTEGER, ' +
-    'salary REAL, ' +
-    'blobType BLOB)';
+  const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER,
+    salary REAL,
+    blobType BLOB)`;
   await store.executeSql(CREATE_TABLE_SQL);
   console.info(`Create table test successfully!`);
 }
@@ -209,12 +209,12 @@ struct Index {
      console.info(`Get Store.db successfully!`);
    
      // 创建表
-     const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-       'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-       'name TEXT NOT NULL, ' +
-       'age INTEGER, ' +
-       'salary REAL, ' +
-       'blobType BLOB)';
+     const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       name TEXT NOT NULL,
+       age INTEGER,
+       salary REAL,
+       blobType BLOB)`;
      await store.executeSql(CREATE_TABLE_SQL);
      console.info(`Create table test successfully!`);
    }
@@ -421,12 +421,12 @@ struct Index {
        console.info('Get Store.db successfully!');
    
        // 创建表
-       const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-         'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-         'name TEXT NOT NULL, ' +
-         'age INTEGER, ' +
-         'salary REAL, ' +
-         'blobType BLOB)';
+       const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+         id INTEGER PRIMARY KEY AUTOINCREMENT,
+         name TEXT NOT NULL,
+         age INTEGER,
+         salary REAL,
+         blobType BLOB)`;
        await store.executeSql(CREATE_TABLE_SQL);
        console.info('Create table test successfully!');
        return true;

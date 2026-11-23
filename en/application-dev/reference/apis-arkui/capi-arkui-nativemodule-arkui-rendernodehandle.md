@@ -1,12 +1,11 @@
-# ArkUI_RenderNodeHandle
-
+# ArkUI_RenderNode*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=717f4a4f474c0f3bfe2a956e78517564022a7a7e translatedAt=2026-08-19T08:27:59.368Z pushedAt=2026-08-20T06:53:11.851Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:48:06.948Z pushedAt=2026-11-10T03:36:25.599Z nl=1 -->
 
 ```c
 typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle

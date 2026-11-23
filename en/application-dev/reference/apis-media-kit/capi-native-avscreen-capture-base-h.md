@@ -5,6 +5,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=2cc9da9a091d6fe79e992c6c6842cc50d63f70ec translatedAt=2026-11-09T06:30:07.630Z pushedAt=2026-11-09T08:45:44.256Z nl=1 -->
 
 ## Overview
 
@@ -64,6 +65,7 @@ Declares the structs, character constants, enums, variables, and functions used 
 | [OH_AVScreenCapture_FillMode](#oh_avscreencapture_fillmode) | OH_AVScreenCapture_FillMode | Enumerates the image fill modes.|
 | [OH_ScreenCaptureHighlightMode](#oh_screencapturehighlightmode) | OH_ScreenCaptureHighlightMode | Enumerates the shapes of the highlight border shown during screen capture.|
 | [OH_CapturePickerMode](#oh_capturepickermode) | OH_CapturePickerMode | Enumerates the display modes of the picker.|
+| [OH_AVScreenCapture_AutoPauseCaptureSceneEnum](#oh_avscreencapture_autopausecapturesceneenum) | OH_AVScreenCapture_AutoPauseCaptureSceneEnum | Enumerates the scenarios for automatically pausing screen capture. |
 
 ### Functions
 
@@ -86,6 +88,12 @@ Declares the structs, character constants, enums, variables, and functions used 
 | -- | -- |
 | const char * OH_SCREEN_CAPTURE_CONTENT_RECT | Key of the valid content area in the screen capture image frame.<br>The return value obtained using this key is an int32_t array, in pixels (px). The array length is 4. The elements in the array are defined as **top**, **left**, **width**, and **height**. **top** indicates the vertical coordinate of the upper left corner of the rectangle, **left** indicates the horizontal coordinate of the upper left corner of the rectangle, **width** indicates the width of the rectangle, and **height** indicates the height of the rectangle. The elements in the array can be obtained from [OH_AVFormat_GetIntBuffer](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_getintbuffer).<br>**Since**: 26.0.0|
 
+### Type Definitions
+
+| Name | typedef Keyword | Description |
+| -- | -- | -- |
+| [OH_AVScreenCapture_AutoPauseSceneSet](#oh_avscreencapture_autopausesceneset) | OH_AVScreenCapture_AutoPauseSceneSet | Declares the set of conditions for automatically pausing screen capture. |
+
 ## Enum Description
 
 ### OH_CaptureMode
@@ -98,18 +106,16 @@ enum OH_CaptureMode
 
 Enumerates the screen capture modes.
 
-Select a proper mode based on the recording requirements. **OH_CAPTURE_HOME_SCREEN** is suitable for full-screen recording. **OH_CAPTURE_SPECIFIED_SCREEN** is suitable when a specific screen needs to be selected in a multi-screen scenario. **OH_CAPTURE_SPECIFIED_WINDOW** is suitable when only a single app window is recorded.
-
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
 
 | Enum Item| Description|
 | -- | -- |
-| OH_CAPTURE_HOME_SCREEN = 0 | Captures the home screen.|
-| OH_CAPTURE_SPECIFIED_SCREEN = 1 | Captures a specified screen. To use this mode, you need to specify **displayId** in **OH_AVScreenCaptureConfig**.|
-| OH_CAPTURE_SPECIFIED_WINDOW = 2 | Captures a specified window. To use this mode, you need to specify **windowId** in **OH_AVScreenCaptureConfig**.|
-| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | Creates a virtual extended screen and captures its content.<br>**Since:** 26.0.1|
+| OH_CAPTURE_HOME_SCREEN = 0 | Records the home screen. This option is applicable to full-screen recording scenarios. |
+| OH_CAPTURE_SPECIFIED_SCREEN = 1 | Records a specified screen. This option is applicable to scenarios where a specific screen is selected in a multi-screen environment. To use this mode, specify **displayId** in **OH_AVScreenCaptureConfig**. |
+| OH_CAPTURE_SPECIFIED_WINDOW = 2 | Records a specified window. This option is applicable to scenarios where only a single app window is recorded. To use this mode, specify **windowId** in **OH_AVScreenCaptureConfig**. |
+| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | Records a virtual extended screen. Creates a virtual extended screen and records its content.<br>**Since:** 26.0.1 |
 | OH_CAPTURE_INVAILD = -1 | Invalid mode.|
 
 ### OH_AudioCaptureSourceType
@@ -404,6 +410,36 @@ Select a proper picker mode based on your app's requirements. **OH_CAPTURE_PICKE
 | OH_CAPTURE_PICKER_MODE_SCREEN_AND_APP = 5 | Displays both screens and apps.<br>**Since**: 26.0.0|
 | OH_CAPTURE_PICKER_MODE_SCREEN_WINDOW_AND_APP = 6 | Displays screens, windows, and apps.<br>**Since**: 26.0.0|
 
+### OH_AVScreenCapture_AutoPauseCaptureSceneEnum
+
+```c
+enum OH_AVScreenCapture_AutoPauseCaptureSceneEnum
+```
+
+**Description**
+
+Enumerates the scenarios in which screen capture is automatically paused.
+
+**Since**: 26.1.0
+
+| Enum Item | Description |
+| -- | -- |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0 | Default value, indicating that screen capture is not automatically paused in any scenario. |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0 | Scenario in which the screen fold state changes. When the screen fold state changes, the system automatically pauses screen capture. |
+
+## Type Description
+
+### OH_AVScreenCapture_AutoPauseSceneSet
+
+```c
+typedef uint32_t OH_AVScreenCapture_AutoPauseSceneSet
+```
+
+**Description**
+
+Declares the set of conditions for automatically pausing screen capture. It is used to combine the enum values in [OH_AVScreenCapture_AutoPauseCaptureSceneEnum](#oh_avscreencapture_autopausecapturesceneenum) by bitwise OR to represent the set of scenarios in which screen capture is automatically paused.
+
+**Since:** 26.1.0
 
 ## Function Description
 

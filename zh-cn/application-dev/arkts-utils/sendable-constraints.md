@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "详细说明Sendable的使用规则与约束：包括Sendable类的继承规则、接口实现规则、成员变量须为Sendable支持类型、不支持断言与计算属性名与类型别名，以及泛型模板类型必须为Sendable等要求。"
 keywords: [Sendable约束, 继承规则, 接口实现规则, 成员变量规则, 泛型规则, 计算属性名, 类型别名, Sendable数据类型]
 doctype: guide
@@ -517,9 +517,32 @@ let a2: SendableA = new A() as SendableA; // 编译报错
 
 ### 箭头函数不可标记为Sendable
 
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/typecannot/src/main/ets/pages/Index.ets) --> 
+箭头函数不支持\@Sendable装饰器，因此它是非Sendable函数，不支持共享。
 
+**正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/arrowfunctions/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// 正例：
+@Sendable
+type SendableFuncType = () => void;
+
+@Sendable
+function sendableFunc() {
+  console.info('Sendable func');
+}
+
+@Sendable
+class SendableClass {
+  constructor(f: SendableFuncType) {
+    this.func = f;
+  }
+
+  func: SendableFuncType;
+}
+
+let sendableClass = new SendableClass(sendableFunc);
+```
 
 **反例：**
 

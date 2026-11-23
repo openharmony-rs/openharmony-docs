@@ -64,8 +64,7 @@
   当不再使用服务且准备将该实例销毁时，触发该回调，回调中通知销毁该实例原因，开发者可以在该回调中清理资源，如解绑设备、设备丢失信息打印等。
 
   ``` TypeScript
-  import { partnerAgent } from '@kit.ConnectivityKit';
-  import { PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
+  import { partnerAgent, PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
 
   export default class PartnerAgentAbility extends PartnerAgentExtensionAbility {
     onDeviceDiscovered(deviceAddress: partnerAgent.PartnerDeviceAddress): void {
@@ -177,8 +176,7 @@ if (isBound == true) {
    在PartnerAgentAbility.ets文件中，增加导入PartnerAgentExtensionAbility的依赖包，自定义类继承PartnerAgentExtensionAbility并加上需要的生命周期回调。
    
     ``` TypeScript
-    import { partnerAgent } from '@kit.ConnectivityKit';
-    import { PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
+    import { partnerAgent, PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
 
     export default class PartnerAgentAbility extends PartnerAgentExtensionAbility {
       onDeviceDiscovered(deviceAddress: partnerAgent.PartnerDeviceAddress): void {
@@ -257,8 +255,7 @@ if (isBound == true) {
 
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
-    import common from '@ohos.bluetooth.common';
-    import partnerAgent from '@ohos.FusionConnectivity.partnerAgent';
+    import { common, partnerAgent } from '@kit.ConnectivityKit';
 
     @Entry
     @Component

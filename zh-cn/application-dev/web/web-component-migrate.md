@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件在不同窗口组件树上的挂载与移除控制，实现Web组件跨窗口迁移，适用于浏览器Tab页拖出为独立窗口等场景。"
+keywords: [Web组件, 窗口迁移]
+doctype: guide
+status: active
+---
+
 # Web组件在不同的窗口间迁移
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "使用画刷和画笔配置填充、描边及抗锯齿样式，并在绘制后解绑和销毁对象，管理绘图资源。"
+keywords: [画刷, 画笔, 填充颜色, 描边颜色, 抗锯齿, 线宽, 线帽样式, 转角样式]
+doctype: guide
+status: active
+---
+
 # 基础绘制效果（C/C++）
 
 <!--Kit: ArkGraphics 2D-->

@@ -1,12 +1,11 @@
 # ArcSwiper
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4c495f520711bb7a7c0f878dd925391606600e97 translatedAt=2026-07-30T02:38:07.593Z pushedAt=2026-08-01T06:42:55.891Z -->
+<!-- md-trans-meta sourceCommit=0db97a5b7fb8643c5f5eff515ac260c481581357 translatedAt=2026-11-03T01:55:02.833Z pushedAt=2026-11-13T01:05:59.919Z nl=1 -->
 
 The **ArcSwiper** component provides the capability to display child components in a carousel, suitable for circular screen scenarios such as wearable devices. It supports features including the arc navigation indicator, custom page transition animation, and digital crown rotation.
 
@@ -49,7 +48,7 @@ import {
 
 This component can contain child components.
 
-> **NOTE**
+> **NOTE** 
 >
 > - Child component types: system components and custom components, supporting rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)).
 > - It is not recommended to add or remove child components during the page switching animation, as this may cause components that have not yet animated to enter the viewport prematurely, resulting in display anomalies.
@@ -64,15 +63,16 @@ Creates an **ArcSwiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type                                       | Mandatory| Description                                    |
 | ---------- | ------------------------------------------- | ---- | ---------------------------------------- |
-| controller | [ArcSwiperController](#arcswipercontroller) | No   | Controller bound to the component for controlling page swiping. If this parameter is not passed, pages can still be switched by swiping gestures, but the page swiping method cannot be called through the controller. |
+| controller | [ArcSwiperController](#arcswipercontroller) | No   | Controller bound to the component for controlling page switching. If this parameter is not passed, pages can still be switched by swiping gestures, but the page switching method cannot be called through the controller. |
+
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported. 
 
 ### index
 
@@ -84,7 +84,7 @@ Sets the index of the child component currently displayed in the container. If t
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
@@ -94,17 +94,17 @@ Sets the index of the child component currently displayed in the container. If t
 
 indicator(style: Optional\<ArcDotIndicator | boolean>)
 
-Sets the style of the arc dot navigation indicator.
+Sets the style of the arc navigation indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | Optional\<[ArcDotIndicator](#arcdotindicator)&nbsp;&nbsp;\|&nbsp;boolean> | Yes  | Style of the arc dot navigation indicator.<br> \- **ArcDotIndicator**: properties and behavior of the arc dot navigation indicator.<br> \- **boolean**: whether to enable the arc dot navigation indicator. **true** to enable, **false** otherwise.<br> Default value: **true**<br> Default type: **ArcDotIndicator**|
+| style  | Optional\<[ArcDotIndicator](#arcdotindicator)&nbsp;&nbsp;\|&nbsp;boolean> | Yes  | Style of the arc navigation indicator.<br> \- **ArcDotIndicator**: properties and behavior of the arc navigation indicator.<br> \- **boolean**: whether to enable the arc navigation indicator. **true** to enable, **false** otherwise.<br> Default value: **true**<br> Default type: **ArcDotIndicator**|
 
 ### duration
 
@@ -116,7 +116,7 @@ Sets the duration of the animation for child component switching.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                 |
 | ------ | ------ | ---- | ----------------------------------------------------- |
@@ -132,7 +132,7 @@ Sets whether vertical swiping is used.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
@@ -148,7 +148,7 @@ Sets whether to disable the swipe-to-switch feature of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------- | ---- | ---------------------------------------- |
@@ -164,7 +164,7 @@ Sets the sensitivity of the rotating crown. The page switching of the **ArcSwipe
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                       | Mandatory| Description                                               |
 | ------ | ----------------------------------------------------------- | ---- | --------------------------------------------------- |
@@ -174,17 +174,17 @@ Sets the sensitivity of the rotating crown. The page switching of the **ArcSwipe
 
 effectMode(edgeEffect: Optional\<EdgeEffect>)
 
-Sets effect used at the edges of the component when the boundary of the scrollable content is reached. For supported edge effects, see [EdgeEffect](ts-appendix-enums.md#edgeeffect). The bounce effect does not take effect when page turning is controlled through the **showNext**, **showPrevious**, and **finishAnimation** APIs of [ArcSwiperController](#arcswipercontroller).
+Sets effect used at the edges of the component when the boundary of the scrollable content is reached. For supported edge effects, see [EdgeEffect](ts-appendix-enums.md#edgeeffect). The bounce effect does not take effect when page switching is controlled through the **showNext**, **showPrevious**, and **finishAnimation** APIs of [ArcSwiperController](#arcswipercontroller).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                         | Mandatory| Description                                        |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| edgeEffect  | Optional\<[EdgeEffect](ts-appendix-enums.md#edgeeffect)> | Yes   | Effect used at the edges of the component when the boundary of the scrollable content is reached. The bounce effect does not take effect when page turning is controlled through the **ArcSwiperController** API.<br/>Default value: **EdgeEffect.Spring** |
+| edgeEffect  | Optional\<[EdgeEffect](ts-appendix-enums.md#edgeeffect)> | Yes   | Effect used at the edges of the component when the boundary of the scrollable content is reached. The bounce effect does not take effect when page switching is controlled through the **ArcSwiperController** API.<br/>Default value: **EdgeEffect.Spring** |
 
 ### disableTransitionAnimation
 
@@ -258,7 +258,7 @@ Stops the animation. When page switching is controlled through this method, the 
 
 ## ArcDotIndicator
 
-Describes the properties and behavior of the arc dot navigation indicator.
+Describes the properties and behavior of the arc navigation indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -284,13 +284,13 @@ Sets the direction of the arc navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                    | Mandatory| Description                                                        |
 | --------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | direction | Optional\<[ArcDirection](#arcdirection-1)> | Yes  | Direction of the arc navigation indicator.<br>Default value: **ArcDirection.SIX_CLOCK_DIRECTION** (6 o'clock direction)|
 
-**Return value**
+**Return value** 
 
 | Type                               | Description                          |
 | ----------------------------------- | ------------------------------ |
@@ -306,13 +306,13 @@ Sets the color of the unselected navigation points in the arc navigation indicat
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Color of the unselected navigation points in the arc navigation indicator.<br>Default value: **'#A9FFFFFF'**|
 
-**Return value**
+**Return value** 
 
 | Type                               | Description                          |
 | ----------------------------------- | ------------------------------ |
@@ -328,13 +328,13 @@ Sets the color of the selected navigation point in the arc navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Color of the selected navigation point in the arc navigation indicator.<br>Default value: **#FF5EA1FF**|
 
-**Return value**
+**Return value** 
 
 | Type                               | Description                          |
 | ----------------------------------- | ------------------------------ |
@@ -350,13 +350,13 @@ Sets the color of the arc navigation indicator when it is long-pressed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Color of the arc navigation indicator when it is long-pressed.<br>Default value: **'#FF404040'**|
 
-**Return value**
+**Return value** 
 
 | Type                               | Description                          |
 | ----------------------------------- | ------------------------------ |
@@ -372,13 +372,13 @@ Sets the mask gradient color of the arc navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | color  | Optional\<[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)> | Yes  | Mask gradient color of the arc navigation indicator.<br>Default start color: **'#00000000'**<br>Default end color: **'#FF000000'**|
 
-**Return value**
+**Return value** 
 
 | Type                               | Description                          |
 | ----------------------------------- | ------------------------------ |
@@ -418,7 +418,7 @@ Notifies the app when the index of the currently displayed element changes. The 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -434,7 +434,7 @@ Defines the callback triggered when the page transition animation starts.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -452,7 +452,7 @@ Defines the callback triggered when the page transition animation ends.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -469,7 +469,7 @@ Defines the callback triggered on a frame-by-frame basis during a swipe-based pa
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -492,7 +492,7 @@ When the **ArcSwiper** component is used together with [LazyForEach](../../../ui
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                  | Mandatory| Description                    |
 | ------- | ------------------------------------------------------ | ---- | ------------------------ |
@@ -508,7 +508,7 @@ Triggered when the page transition animation starts.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                      | Mandatory| Description                  |
 | ------- | ---------------------------------------------------------- | ---- | ---------------------- |
@@ -526,7 +526,7 @@ Triggered when the **ArcSwiper** transition animation ends, including when the a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                  | Mandatory| Description                      |
 | ------- | ------------------------------------------------------ | ---- | -------------------------- |
@@ -542,7 +542,7 @@ Triggered on a frame-by-frame basis when the page is turned by a swipe.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                  | Mandatory| Description                                  |
 | ------- | ------------------------------------------------------ | ---- | -------------------------------------- |
@@ -576,14 +576,14 @@ Provides the information about the custom page transition animation.
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | number | No | Yes | Timeout for the **ArcSwiper** custom swipe animation. The timer starts from the first frame when the page performs the default animation (page swipe) and moves out of the viewport. If the developer has not called the [finishTransition](#finishtransition) API of [SwiperContentTransitionProxy](#swipercontenttransitionproxy) to notify the **ArcSwiper** component that the custom animation of this page has ended after this time is reached, the component will forcibly end the custom animation of this page and immediately render the tree under this page node.<br/>Unit: ms<br/>Default value: **0**. |
+| timeout | number | No | Yes | Timeout for the **ArcSwiper** custom switch animation, with a value range of [0, +∞). The timer starts from the first frame when the page performs the default animation (page swipe) and moves out of the viewport. If the developer has not called the [finishTransition](#finishtransition) API of [SwiperContentTransitionProxy](#swipercontenttransitionproxy) to notify the **ArcSwiper** component that the custom animation of this page has ended after this time is reached, the component will forcibly end the custom animation of this page and immediately render the tree under this page node.<br/>Unit: ms<br/>Default value: **0**. |
 | transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | No| No| Content of the custom page transition animation.|
 
 ## SwiperContentTransitionProxy
 
 Implements the proxy object returned during the execution of the custom page transition animation of the **ArcSwiper** component. You can use this object to obtain the page information in the custom animation viewport. You can also call the **finishTransition** API of this object to notify the **ArcSwiper** component that the custom animation has finished playing.
 
->**NOTE**
+>**NOTE** 
 >
 > - For example, when the index of the currently selected child component is 0, during a transition animation from page 0 to page 1, the callback is triggered for all pages within the viewport on every frame. When pages 0 and 1 are both in the viewport, the callback is triggered twice per frame. The first callback has **selectedIndex** as **0**, **index** as **0**, **position** as the ratio of how much page 0 has moved relative to its position before the animation started on the current frame, and **mainAxisLength** as the length of page 0 on the main axis. The second callback has **selectedIndex** as **0**, **index** as **1**, **position** as the ratio of how much page 1 has moved relative to page 0 before the animation started on the current frame, and **mainAxisLength** as the length of page 1 on the main axis.
 >
@@ -797,5 +797,4 @@ struct TestNewInterface {
   }
 }
 ```
-
 ![arcSwiper](figures/arcSwiper1.gif)

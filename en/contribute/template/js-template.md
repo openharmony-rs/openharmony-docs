@@ -1,5 +1,7 @@
 # API Reference Template
 
+<!-- md-trans-meta sourceCommit=0739061c626273c02167238563cf046c2798ee13 translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## General Writing Instructions
 
 > **NOTE**
@@ -261,15 +263,15 @@ Describe the method. For details, see the fourth and fifth points in "Writing In
 
 | Name | Type                                         | Mandatory| Description                                                        |
 | ------------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| parameterOne | number \| string \| [CustomType](#classinterface) | Yes  | The parameter description must include the meaning and purpose of the parameter, the scenarios in which the parameter is used, suggestions for selection, and relationships between parameters.<br>The parameter value description must include the value range, unit, default value, principles for selection, or recommended value. If the boundary value involves restrictions/exceptions, describe the specific scenario. If there is a fixed format, provide a format example, especially for URIs.<br>Provide a link for each custom parameter type.|
-| callback     | Callback\<Array<[CustomType](#classinterface)>>   | No  | Describe the parameter. For an optional parameter, describe the consequences if it is not specified.<br>Example: If this parameter is not set, this method unsubscribes from all callbacks corresponding to **type**.<br>For details about how to write callback methods, see item 14 in "General Writing Instructions."|
+| parameterOne | number \| string \| [CustomType](#classesinterfaces) | Yes  | The parameter description must include the meaning and purpose of the parameter, the scenarios in which the parameter is used, suggestions for selection, and relationships between parameters.<br>The parameter value description must include the value range, unit, default value, principles for selection, or recommended value. If the boundary value involves restrictions/exceptions, describe the specific scenario. If there is a fixed format, provide a format example, especially for URIs.<br>Provide a link for each custom parameter type.|
+| callback     | Callback\<Array<[CustomType](#classesinterfaces)>>   | No  | Describe the parameter. For an optional parameter, describe the consequences if it is not specified.<br>Example: If this parameter is not set, this method unsubscribes from all callbacks corresponding to **type**.<br>For details about how to write callback methods, see item 14 in "General Writing Instructions."|
 
 **Return value** (This part is optional. Delete it if there is no return value.)
 
 | Type                                      | Description                                           |
 | ------------------------------------------ | ----------------------------------------------- |
 | string                                     | Describe the return value from the following aspects:<br>1. What can be done after the return value is obtained.<br>2. If the return values can be enumerated, describe the meaning of the return values.<br>3. If the return value is a specific value or format, keep the value or format consistent with the actual implementation. |
-| Promise\<Array<[CustomType](#classinterface)>> | Describe the return value. For details about how to write promise methods, see item 14 in "General Writing Instructions."|
+| Promise\<Array<[CustomType](#classesinterfaces)>> | Describe the return value. For details about how to write promise methods, see item 14 in "General Writing Instructions."|
 
 **Error codes** (This part is optional. Delete it if no error code is thrown.)
 
@@ -277,8 +279,8 @@ For details about the error codes, see [moduleName Error Codes]\(link to the err
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 1300001  | Repeated operation.               |
-| 1300002  | This window state is abnormal.        |
+| 1300001  | This is a repeat operation. <br>Applicable versions: x-y (Use this format when the error code is marked with [since x-y] in the SDK comments.)        |
+| 1300002  | This window state is abnormal. <br>Applicable versions: y+ (Use this format when the error code is marked with [since y] in the SDK comments.)   |
 
 **Example**
 
@@ -330,7 +332,7 @@ Describe the method. For details, see the fourth and fifth points in "Writing In
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                               | Yes  | Describe the event and when or how it will be triggered. If a method involves multiple events, describe them separately.<br>**Example 1 (single event):**<br>Type of the event. The **'play'** event is triggered when the **play()** API is called and audio playback starts.<br>Example 2 (multiple events):<br>Type of the event. The following events are supported:|  | <br>- **'play'**: triggered when the **play()** API is called and audio playback starts.<br>- **'dataLoad'**: triggered when the audio data is loaded, that is, when the **src** property is configured.<br>- **'finish'**: triggered when the audio playback is finished.|
-| callback | Callback\<[CustomType](#classinterface)> | No  | Describe the parameter. The instructions are the same as those provided under [Methods](#methods).                         |
+| callback | Callback\<[CustomType](#classesinterfaces)> | No  | Describe the parameter. The instructions are the same as those provided under [Methods](#methods).                         |
 
 **Return value** (This part is optional. Delete it if there is no return value.)
 
@@ -554,6 +556,7 @@ This API has known issues. For details, see "Known Issues" (linked to the known 
 
 | Change Description                                                                | Date        |
 | ----------------------------------------------------------------------- | ------------ |
+| Added the format for specifying the API versions to which an error code applies. | 2026/05/21 |
 | Added the writing method for three-segment version descriptions in API version 26.0.0 and later. | 2026/03/20 |
 | Revised the description of the @deprecated tag and added the writing method in the table.| 2025/12/03 |
 | Added the writing method of classes, interfaces, and properties modified with decorators.| 2025/09/19|

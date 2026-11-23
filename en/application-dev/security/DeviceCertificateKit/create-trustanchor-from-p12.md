@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-11-03T05:11:37.898Z pushedAt=2026-11-03T06:48:46.252Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:38:03.843Z pushedAt=2026-11-20T06:09:36.136Z nl=1 -->
 
 Construct a **TrustAnchor** object array from a PKCS #12 file during certificate chain validation.
 
@@ -22,16 +22,15 @@ Construct a **TrustAnchor** object array from a PKCS #12 file during certificate
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function test() {
+async function test() {
   // ...
   try {
-    cert.createTrustAnchorsWithKeyStore(p12Data, '123456').then((data) => {
-      console.info('createTrustAnchorsWithKeyStore result: success, the num of result is :' + data.length);
-    }).catch((err: BusinessError) => {
-      console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${err.code}, message: ${err.message}`);
-    })
+    let data = await cert.createTrustAnchorsWithKeyStore(p12Data, '123456');
+    console.info('createTrustAnchorsWithKeyStore result: success, the num of result is :' + data.length);
   } catch (error) {
-    console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

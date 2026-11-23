@@ -5,7 +5,7 @@
 <!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=baacd5e603827a8080bb1e15309bc06852b1fd80 translatedAt=2026-09-04T03:41:58.490Z pushedAt=2026-09-09T09:11:03.726Z -->
+<!-- md-trans-meta sourceCommit=9522a44256acbacbca654c3e683a60fd24dad2d2 translatedAt=2026-11-16T02:08:57.833Z pushedAt=2026-11-20T07:27:51.899Z nl=1 -->
 
 The **Preferences** module provides APIs for processing data in the form of key-value (KV) pairs, including querying, modifying, and persisting KV pairs.
 
@@ -216,7 +216,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                  |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -302,7 +302,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -385,7 +385,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
@@ -600,7 +600,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
@@ -684,7 +684,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
@@ -970,7 +970,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -1053,7 +1053,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -1128,7 +1128,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
@@ -1207,7 +1207,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes: Incorrect parameter types. |
+| 401      | [Sync] Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 
 **Example**
@@ -1232,6 +1232,7 @@ Represents the configuration of a **Preferences** instance.
 | name        | string | No  | No | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. <br>**Atomic service API:** Since API version 11, this parameter is supported in atomic services.                                    |
 | dataGroupId | string \| null \| undefined | No  | Yes | Application group ID. <!--RP1-->Currently, specifying **dataGroupId** to create a Preferences instance in the corresponding shared sandbox path is not supported.<!--RP1End--><br>This is an optional parameter. It specifies to create a **Preferences** instance in the sandbox path corresponding to this **dataGroupId**. If this parameter is not specified, a **Preferences** instance is created in the application sandbox directory by default.<br> **Model constraint:** This attribute is available only in the stage model.<br>**Atomic service API:** Since API version 11, this parameter is supported in atomic services. |
 | storageType<sup>18+</sup> | [StorageType](#storagetype18) \| null \| undefined | No | Yes | Storage mode. This is an optional parameter. It indicates the storage mode to be used by the current **Preferences** instance. If this parameter is not specified, the XML storage mode is used by default. After a **Preferences** instance is created with a storage mode, switching the storage mode midway is not supported. <br>**Atomic service API:** Since API version 18, this parameter is supported in atomic services. |
+| sharedMapSize | number | No | Yes | Initial cache file size, in KB. Indicates the initial cross-process shared cache file size of the current Preferences instance. It takes effect only when the storage mode is set to GSKV (that is, storageType is StorageType.GSKV). The value can be 0 or a value in the range [256, 1112784]. If this parameter is not specified, the system automatically initializes the cache file as needed. When set to 0, the initial cache file size is 0, the cache file of this Preferences instance does not grow, and cross-process access is not supported. When set to a valid value greater than 0, the initial cache file size is the configured value, and the cache file size of this Preferences instance still grows as needed. The configured value can be dynamically switched when the Preferences instance reconnects after being disconnected.<br> **Model restriction:** This attribute is available only in the stage model.<br>**Atomic service API:** Since API version 26.1.0, this parameter is supported in atomic services. |
 
 
 ## Preferences
@@ -1387,7 +1388,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Mandatory parameters are left unspecified.|
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
@@ -1922,7 +1922,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Mandatory parameters are left unspecified.                       |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
@@ -2033,7 +2032,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Mandatory parameters are left unspecified.                       |
 | 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
@@ -2116,8 +2114,8 @@ Subscribes to data changes. When the value of a subscribed key changes and the [
 > **Comparison of subscription methods:**
 > - **on('change')**: Subscribes to changes of all keys. It is suitable for scenarios where global data change awareness is required.
 > - **on('dataChange')**: Precisely subscribes to changes of specified keys. It is suitable for scenarios that focus on specific data and can return the specific value through the callback.
-> - **on('multiProcessChange')**: Subscribes to multi-process data changes. It is suitable for scenarios where multiple processes share the same preferences file.
-> 
+> - **on('multiProcessChange')**: Subscribes to multi-process data changes. It is suitable for scenarios where multiple processes share the same preferences file. 
+>
 > **Selection suggestions:** For single-process applications, **on('change')** or **on('dataChange')** is recommended. For multi-process data synchronization, use **on('multiProcessChange')**. When you need to precisely know the change of a specific key and obtain the new value, use **on('dataChange')**.
 
   > **NOTE**
@@ -2245,7 +2243,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
+| 401      | [Sync] Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 15500000 | Inner error.                   |
 
 **Example**

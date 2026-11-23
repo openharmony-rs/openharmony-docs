@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何使用AgentExtensionAbility组件实现智能体服务端，涵盖生命周期实现、双向数据收发及安全认证机制，适用于跨应用智能体协作场景。"
+keywords: [AgentExtensionAbility, 智能体服务, AgentHostProxy]
+doctype: guide
+status: active
+---
 # 使用AgentExtensionAbility组件实现智能体服务
 
 <!--Kit: Ability Kit-->

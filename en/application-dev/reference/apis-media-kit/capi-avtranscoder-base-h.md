@@ -5,7 +5,7 @@
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a9efdc44f270ac3152cc5303966934d333ae5c74 translatedAt=2026-09-15T16:59:57.917Z pushedAt=2026-09-20T09:04:52.155Z -->
+<!-- md-trans-meta sourceCommit=848a3eb7bbcae952da0bb09303c1f601efcd4e5f translatedAt=2026-11-09T06:28:12.437Z pushedAt=2026-11-09T08:41:11.720Z nl=1 -->
 
 ## Overview
 
@@ -27,7 +27,7 @@ The file declares the struct and enums used by the **AVTranscoder**.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) | OH_AVTranscoder | Defines the **AVTranscoder** struct type.|
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) | OH_AVTranscoder | Defines the **AVTranscoder** struct type. |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) | OH_AVTranscoder_Config | Defines the struct for configuring **AVTranscoder** parameters. |
 
 ### Enums

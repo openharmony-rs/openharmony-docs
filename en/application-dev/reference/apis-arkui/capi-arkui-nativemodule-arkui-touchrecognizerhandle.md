@@ -1,12 +1,11 @@
 # ArkUI_TouchRecognizerHandle
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-21T01:44:52.289Z pushedAt=2026-08-21T03:03:20.677Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:48:39.821Z pushedAt=2026-11-10T03:36:52.260Z nl=1 -->
 
 ```c
 typedef ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle
@@ -21,3 +20,4 @@ Defines a touch recognizer handle, which is used to represent a touch recognizer
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
+

@@ -5,7 +5,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
-<!-- md-trans-meta sourceCommit=e333368a624b8bc7050f7aac484dab3786ec6aed translatedAt=2026-09-15T14:49:23.168Z pushedAt=2026-09-18T03:45:03.077Z -->
+<!-- md-trans-meta sourceCommit=0482f6e42d49b9cbb2137b567933955da54ae41f translatedAt=2026-11-09T06:23:55.680Z pushedAt=2026-11-09T08:10:19.884Z nl=1 -->
 
 **AVScreenCaptureRecorder** is a class for screen capture management. It provides APIs for screen capture, such as screen capture initialization, starting, pausing, resuming, or stopping recording, adding watermarks, privacy window exemption, microphone switch control, picker mode selection, and content auto-rotation. It is applicable to scenarios where the screen capture process needs to be controlled within an app, helping you flexibly manage the screen capture lifecycle, protect user privacy, and customize the recording output. Before calling any API in AVScreenCaptureRecorder, you must use [createAVScreenCaptureRecorder()](arkts-apis-media-f.md#mediacreateavscreencapturerecorder12) to create an AVScreenCaptureRecorder instance.
 
@@ -357,9 +357,11 @@ async function testAddWaterMark() {
 
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
-During screen capture, the application can grant a security exemption for its own privacy window. This API uses a promise to return the result.
+Exempts the specified privacy window list during screen capture. This API uses a promise to return the result.
 
-For example, if a user enters a password in this application during screen capture, the application will not display a black screen.
+> **NOTE**
+>
+> During screen capture, an app can only implement security exemption to its own privacy windows. For example, when a user enters a password in the app, the privacy window is masked by a black screen by default. After exemption, the window is displayed normally in the captured content.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -559,7 +561,7 @@ import { media } from '@kit.MediaKit';
 
 async function testExcludePickerWindows() {
   let excludedWindows: number[] = [101, 102, 103];
-
+  
   // Create a screen capture instance.
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
@@ -689,6 +691,75 @@ async function testSetContentAutoRotation() {
 }
 ```
 
+## setCaptureArea
+
+setCaptureArea(displayId: number, area: RectangleRegion): Promise\<void>
+
+Specifies the area to be actually captured in screen capture mode. This API uses a promise to return the result.
+
+The capture area can be configured before screen capture starts, or updated during screen capture. After the area is updated successfully, the subsequently captured content switches to the new area.
+
+> **NOTE**
+>
+> - The capture area is calculated with the upper left corner of the screen corresponding to displayId as the origin, in pixels (px). If **displayId** is **0**, it indicates the primary screen.
+> - In the area to be set, **left** and **top** cannot be negative, **width** and **height** must be greater than 0, and the area must be within the screen range and cannot span multiple screens. If the area fails to be set, capture continues using the previously set area.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters**
+
+| Name | Type                                                     | Mandatory | Description                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| displayId | number | Yes   | Screen ID, indicating the screen to which the capture area belongs. The value must be greater than or equal to 0, where **0** indicates the primary screen. |
+| area   | [RectangleRegion](arkts-apis-media-i.md#rectangleregion) | Yes   | Rectangular area to be captured. For the value range and constraints of each field, see [RectangleRegion](arkts-apis-media-i.md#rectangleregion). |
+
+**Return value**
+
+| Type           | Description                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID | Error Message                                                  |
+| -------- | --------------------------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise.                 |
+| 5400105  | Service died. Return by promise.                          |
+| 5400108  | The parameter check failed, parameter value out of range. |
+
+**Example**
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSetCaptureArea() {
+  // Create a screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes.
+
+  // Specify the screen ID and capture area. The top-left corner of the area is (0, 0), with a width of 640 px and a height of 480 px.
+  let displayId: number = 0;
+  let area: media.RectangleRegion = { left: 0, top: 0, width: 640, height: 480 };
+
+  // Call the setCaptureArea method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setCaptureArea(displayId, area).then(() => {
+      console.info('Succeeded in setting capture area.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set capture area. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
 ## release<sup>12+</sup>
 
 release(): Promise\<void>
@@ -789,11 +860,10 @@ Subscribes to **AVScreenCaptureRecorder** errors. You can handle the errors base
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 201      | permission denied.     |
 | 5400103  | IO error. Return by ErrorCallback. |
 | 5400105  | Service died. Return by ErrorCallback. |
 

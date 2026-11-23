@@ -102,12 +102,12 @@ API版本10开始支持应用卡死时的状态保存。JsError故障时，onSav
 ### 使能开启自恢复特性
 
 引入头文件。
-<!-- @[import_appRecovery_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[import_appRecovery_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
 import {
   appRecovery,
-// ...
+  // ...
 } from '@kit.AbilityKit';
 ```
 
@@ -143,6 +143,8 @@ UIAbility的配置清单一般的名字为module.json5。
 
 **导包**
 
+<!-- @[import_save_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
 ``` TypeScript
 import {
   appRecovery,
@@ -154,7 +156,7 @@ import {
 } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-``` 
+```
 
 自定义hilog打印的domain值。
 <!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) --> 

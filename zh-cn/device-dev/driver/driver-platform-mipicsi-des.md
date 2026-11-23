@@ -29,6 +29,7 @@ MIPI CSI标准分为应用层、协议层与物理层，协议层又细分为像
         CSI-2规范支持多种不同像素格式的图像应用。在发送方中，本层在发送数据到Low Level Protocol层之前，将来自应用层的像素封包为字节数据。在接收方中，本层在发送数据到应用层之前，将来自Low Level Protocol层的字节数据解包为像素。8位的像素数据在本层中传输时保持不变。
 
     - 低级协议层（Low Level Protocol）
+
         LLP主要包含了在SoT和EoT事件之间的bit和byte级别的同步方法，以及和下一层传递数据的方法。LLP最小数据粒度是1个字节。LLP也包含了一个字节内的bit值解析，即Endian(大小端里的Endian的意思)的处理。
 
     - Lane管理层（Lane Management）
@@ -45,7 +46,9 @@ MIPI CSI标准分为应用层、协议层与物理层，协议层又细分为像
 
 MIPI CSI模块各分层的作用为：接口层提供打开设备、写入数据和关闭设备的接口。核心层主要提供绑定设备、初始化设备以及释放设备的能力。适配层实现其它具体的功能。
 
-![](../public_sys-resources/icon-note.gif) **说明：**<br>核心层可以调用接口层的函数，核心层通过钩子函数调用适配层函数，从而适配层可以间接的调用接口层函数，但是不可逆转接口层调用适配层函数。
+>**说明：**
+>
+>核心层可以调用接口层的函数，核心层通过钩子函数调用适配层函数，从而适配层可以间接的调用接口层函数，但是不可逆转接口层调用适配层函数。
 
 **图 2** CSI无服务模式结构图
 
@@ -105,7 +108,7 @@ MIPI CSI模块提供的主要接口如表1所示，具体API[详见](https://git
 | int32_t MipiCsiUnresetSensor(DevHandle handle, uint8_t snsResetSource) | 撤销复位Sensor |
 | int32_t MipiCsiResetRx(DevHandle handle, uint8_t comboDev) | 复位MIPI&nbsp;RX。不同的s32WorkingViNum有不同的enSnsType |
 | int32_t MipiCsiUnresetRx(DevHandle handle, uint8_t comboDev) | 撤销复位MIPI&nbsp;RX |
-| int32_t MipiCsiEnableClock(DevHandle handle, uint8_t comboDev) | 使能MIPI的时钟。根据上层函数电泳传递的enSnsType参数决定是用MIPI还是LVDS |
+| int32_t MipiCsiEnableClock(DevHandle handle, uint8_t comboDev) | 使能MIPI的时钟。根据上层函数调用传递的enSnsType参数决定是用MIPI还是LVDS |
 | int32_t MipiCsiDisableClock(DevHandle handle, uint8_t comboDev) | 关闭MIPI设备的时钟 |
 | int32_t MipiCsiEnableSensorClock(DevHandle handle, uint8_t snsClkSource) | 使能MIPI上的Sensor时钟 |
 | int32_t MipiCsiDisableSensorClock(DevHandle handle, uint8_t snsClkSource) | 关闭Sensor的时钟 |
@@ -133,7 +136,9 @@ DevHandle MipiCsiOpen(uint8_t id);
 | 参数 | 参数描述 |
 | ---------- | ----------------------------------------------- |
 | id | uint8_t类型，MIPI CSI通道ID |
+
 | **返回值** | **返回值描述** |
+| ---------- | ----------------------------------------------- |
 | NULL | 获取失败 |
 | 设备句柄 | 获取到指令通道的控制器操作句柄，类型为DevHandle |
 
@@ -167,7 +172,9 @@ if (MipiCsiHandle == NULL) {
     | ---------- | -------------------------- |
     | handle | DevHandle类型，控制器操作句柄 |
     | pAttr | 结构体指针，MIPI CSI相应配置 |
+
     | **返回值** | **返回值描述** |
+    | ---------- | -------------------------- |
     | HDF_SUCCESS | 设置成功 |
     | 负数 | 设置失败 |
 
@@ -206,7 +213,9 @@ if (MipiCsiHandle == NULL) {
     | ---------- | ------------------------------- |
     | handle | DevHandle类型，控制器操作句柄 |
     | dataType | 结构体指针，定义YUV和原始数据格式以及位深度 |
+
     | **返回值** | **返回值描述** |
+    | ---------- | ------------------------------- |
     | HDF_SUCCESS | 设置成功 |
     | 负数 | 设置失败 |
 
@@ -244,7 +253,9 @@ if (MipiCsiHandle == NULL) {
     | -------------- | -------------- |
     | handle | DevHandle类型，控制器操作句柄 |
     | laneDivideMode | 结构体类型，Lane模式参数 |
+
     | **返回值** | **返回值描述** |
+    | -------------- | -------------- |
     | HDF_SUCCESS | 设置成功 |
     | 负数 | 设置失败 |
     
@@ -275,7 +286,9 @@ if (MipiCsiHandle == NULL) {
     | handle |  DevHandle类型，控制器操作句柄 |
     | cmvMode | 结构体类型，共模电压模式参数 |
     | devno | uint8_t类型，设备编号 |
+
     | **返回值** | **返回值描述** |
+    | ---------- | ---------------- |
     | HDF_SUCCESS | 设置成功 |
     | 负数 | 设置失败 |
     
@@ -310,7 +323,9 @@ if (MipiCsiHandle == NULL) {
     | -------------- | ------------------------------------------------ |
     | handle | DevHandle类型，控制器操作句柄 |
     | snsResetSource | uint8_t类型，传感器的复位信号线号，在软件中称为传感器的复位源 |
+
     | **返回值** | **返回值描述** |
+    | -------------- | ------------------------------------------------ |
     | HDF_SUCCESS | 复位成功 |
     | 负数 | 复位失败 |
     
@@ -340,7 +355,9 @@ if (MipiCsiHandle == NULL) {
     | -------------- | ------------------------------------------------ |
     | handle | DevHandle类型，控制器操作句柄 |
     | snsResetSource | uint8_t类型，传感器的复位信号线号，在软件中称为传感器的复位源 |
+
     | **返回值** | **返回值描述** |
+    | -------------- | ------------------------------------------------ |
     | HDF_SUCCESS | 撤销复位成功 |
     | 负数 | 撤销复位失败 |
     
@@ -372,7 +389,9 @@ if (MipiCsiHandle == NULL) {
     | ---------- | --------------------- |
     | handle | DevHandle类型，控制器操作句柄 |
     | comboDev | uint8_t类型，MIPI RX或LVDS通路序号 |
+
     | **返回值** | **返回值描述** |
+    | ---------- | --------------------- |
     | HDF_SUCCESS | 复位成功 |
     | 负数 | 复位失败 |
     
@@ -402,7 +421,9 @@ if (MipiCsiHandle == NULL) {
     | ---------- | --------------------- |
     | handle | DevHandle类型，控制器操作句柄 |
     | comboDev | uint8_t类型，MIPI RX或LVDS通路序号 |
+
     | **返回值** | **返回值描述** |
+    | ---------- | --------------------- |
     | HDF_SUCCESS | 撤销复位成功 |
     | 负数 | 撤销复位失败 |
     
@@ -436,7 +457,9 @@ if (MipiCsiHandle == NULL) {
     | ---------- | -------------- |
     | handle | DevHandle类型，控制器操作句柄 |
     | comboDev | uint8_t类型，通路序号 |
+
     | **返回值** | **返回值描述** |
+    | ---------- | -------------- |
     | HDF_SUCCESS | 使能成功 |
     | 负数 | 使能失败 |
 
@@ -468,7 +491,9 @@ if (MipiCsiHandle == NULL) {
     | ---------- | -------------- |
     | handle | DevHandle类型，控制器操作句柄 |
     | comboDev | uint8_t类型，通路序号 |
+
     | **返回值** | **返回值描述** |
+    | ---------- | -------------- |
     | HDF_SUCCESS | 关闭成功 |
     | 负数 | 关闭失败 |
 
@@ -502,7 +527,9 @@ if (MipiCsiHandle == NULL) {
     | ------------ | ------------------------------------------------ |
     | handle | DevHandle类型，控制器操作句柄 |
     | snsClkSource | uint8_t类型，传感器的时钟信号线号，在软件中称为传感器的时钟源 |
+
     | **返回值** | **返回值描述** |
+    | ------------ | ------------------------------------------------ |
     | HDF_SUCCESS | 使能成功 |
     | 负数 | 使能失败 |
 
@@ -534,7 +561,9 @@ if (MipiCsiHandle == NULL) {
     | ------------ | ------------------------------------------------ |
     | handle | DevHandle类型，控制器操作句柄 |
     | snsClkSource | uint8_t类型，传感器的时钟信号线号，在软件中称为传感器的时钟源 |
+
     | **返回值** | **返回值描述** |
+    | ------------ | ------------------------------------------------ |
     | HDF_SUCCESS | 关闭成功 |
     | 负数 | 关闭失败 |
 
@@ -571,7 +600,7 @@ void MipiCsiClose(DevHandle handle);
 | handle | DevHandle类型，MIPI CSI控制器操作句柄 |
 
 ```c
-MipiCsiClose(MIPIHandle); // 释放掉MIPI CSI控制器操作句柄 
+MipiCsiClose(MipiCsiHandle); // 释放掉MIPI CSI控制器操作句柄 
 ```
 
 ## 使用实例<a name="section3_MIPI_CSIDes"></a>
@@ -682,9 +711,10 @@ static void InitLvdsDevAttr(LvdsDevAttr *lvdsAttr)
     attr.laneId[3] = 3; // 3 -- laneId 3 
 
     /* each vc has 4 params, syncCode[i]:
-        syncMode is SYNC_MODE_SOF: SOF, EOF, SOL, EOL
-        syncMode is SYNC_MODE_SAV: invalid sav, invalid eav, valid sav, valid eav 
-       This is not fully tested! */
+     *syncMode is SYNC_MODE_SOF: SOF, EOF, SOL, EOL
+     *syncMode is SYNC_MODE_SAV: invalid sav, invalid eav, valid sav, valid eav 
+     *This is not fully tested!
+     */
     for (i = 0; i < LVDS_LANE_NUM; i++) {
         for (j = 0; j < WDR_VC_NUM; j++) {
             for (k = 0; k < SYNC_CODE_NUM; k++) {
@@ -829,7 +859,7 @@ static int32_t PalMipiCsiTestSample(void)
         return ret;
     }
     HDF_LOGI("PalMipiCsiTestSample: function tests end.");
-    // 释放MIPI DSI设备句柄 
+    // 释放MIPI CSI设备句柄 
     MipiCsiClose(MipiCsiHandle);
     return ret;
 }

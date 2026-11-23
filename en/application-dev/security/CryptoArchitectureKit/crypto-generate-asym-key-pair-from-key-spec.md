@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T03:37:58.391Z pushedAt=2026-10-30T07:15:19.972Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:29:15.302Z pushedAt=2026-11-16T02:06:53.413Z nl=1 -->
 
 This topic walks you through on how to generate an RSA, an ECC, and an SM2 asymmetric key pair (**KeyPair**) based on the specified key parameters and obtain the key parameter properties.
 
@@ -429,10 +429,11 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
 
 - Example: Generate an SM2 key based on the elliptic curve name (using promise-based APIs)
   <!-- @[specify_parameter_generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
   function genSM2KeyPairSpec() {
     let sm2CommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_sm2');
     let sm2KeyPairSpec: cryptoFramework.ECCKeyPairSpec = {
@@ -447,13 +448,18 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
     };
     return sm2KeyPairSpec;
   }
-
+  
   async function sm2Test() {
-    let sm2KeyPairSpec = genSM2KeyPairSpec();
-    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(sm2KeyPairSpec);
-    let keyPair = await generatorBySpec.generateKeyPair();
-    let sm2CurveName = keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_CURVE_NAME_STR);
-    console.info('ECC_CURVE_NAME_STR: ' + sm2CurveName); // NID_sm2
+    try {
+      let sm2KeyPairSpec = genSM2KeyPairSpec();
+      let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(sm2KeyPairSpec);
+      let keyPair = await generatorBySpec.generateKeyPair();
+      let sm2CurveName = keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_CURVE_NAME_STR);
+      console.info('ECC_CURVE_NAME_STR: ' + sm2CurveName); // NID_sm2
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 

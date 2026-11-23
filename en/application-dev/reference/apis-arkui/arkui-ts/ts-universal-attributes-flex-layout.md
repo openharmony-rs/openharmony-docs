@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=386d3d79d27becb231d4edf5e42d9c56a63599cb translatedAt=2026-09-01T12:31:34.809Z -->
+<!-- md-trans-meta sourceCommit=1d7744169f647bc48a2c65086f0061aa3c69406b translatedAt=2026-11-03T03:19:43.456Z pushedAt=2026-11-13T01:06:00.094Z nl=1 -->
 
 The flex layout provides flexible component arrangement and alignment capabilities, dynamically allocating space among child components within a container so that elements automatically expand or shrink based on available space. It is suitable for responsive UI layouts, dynamic content layouts, and complex layout implementations, and it resolves issues of traditional layouts such as difficulty in adapting to multiple devices, layout misalignment caused by content changes, and complex alignment requirements that are hard to fulfill.
 
@@ -30,7 +30,7 @@ Sets the base size of a component. This attribute can be set only when the compo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
@@ -55,7 +55,7 @@ Sets the proportion of the component in the remaining space of the parent contai
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -83,7 +83,7 @@ Sets the proportion of the shrink size allocated to the component where this att
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: auto; 10%; 10%; auto-->
 | Name| Type  | Mandatory| Description                                                        |
@@ -102,13 +102,17 @@ alignSelf(value: ItemAlign): T
 
 The alignment mode of the child component along the cross axis (the direction perpendicular to the main axis) of the parent container. After it is set, it overrides the alignItems setting of the parent container. This attribute is supported only by Flex, Column, Row, DynamicLayout, and GridRow containers.
 
+> **NOTE**
+>
+> When the parent container is [Flex](ts-container-flex.md), **alignSelf** takes effect only when the parent container is set to **FlexWrap.NoWrap**. It does not take effect when **FlexWrap.Wrap** or **FlexWrap.WrapReverse** is set.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |

@@ -6,16 +6,12 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1cdd305776bcaacdd45f57f863b06eb9c8b2cb12 translatedAt=2026-08-19T07:05:56.928Z pushedAt=2026-08-19T08:51:58.530Z -->
+<!-- md-trans-meta sourceCommit=ea78c82024f7639bbbf160dc2e6fc09ba1843b7e translatedAt=2026-11-16T01:39:44.441Z pushedAt=2026-11-16T09:15:54.920Z nl=1 -->
 
 ## Overview
-
 Partner devices need to interconnect with OpenHarmony devices. Typical scenarios include:<br>
-
 - Media control: A wearable can display the music or video currently playing on an OpenHarmony device. Partner devices such as wearables and earbuds can also remotely control media playback on the OpenHarmony device, including playing, pausing, and switching tracks.
-
 - Call control: When an incoming call is received on an OpenHarmony device, a wearable displays the caller's number and contact name. Partner devices such as wearables and earbuds can remotely answer or reject calls on the OpenHarmony device.
-
 - Health monitoring: Wearables can collect health data in real time and report it to an OpenHarmony device. The OpenHarmony device can display the health data in real time.
 
 These scenarios require partner devices to maintain long-term interconnection with OpenHarmony devices. When data interaction occurs, such as media control, call control, or health data interaction, applications must remain active. This guide provides a solution for keeping application processes wakeable, ensuring that partner device vendor applications required by partner devices can be woken up and run properly during data interaction.
@@ -23,11 +19,8 @@ These scenarios require partner devices to maintain long-term interconnection wi
 ## Key Process
 
 1. A partner device application must first implement [PartnerAgentExtensionAbility](../../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md), where it implements the data transmission service operations required after the application is woken up by the system.
-
 2. The partner device application triggers [Bluetooth pairing](../../connectivity/bluetooth/br-pair-device-development-guide.md) with the partner device, and then calls the **bindDevice** API to register the partner device. After detecting that the partner device is registered, the **PartnerAgent** service calls Bluetooth service APIs to perform [BLE](../../connectivity/bluetooth/terminology.md#ble) scanning and listen for Bluetooth connection status to discover the partner device, and then starts the partner device [ExtensionAbility](../../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md). If the partner device is not registered, the **PartnerAgent** service does not start the partner device Extension.
-
 3. The registration information is persistently stored and remains valid after the OpenHarmony device restarts.
-
 4. When the partner device application no longer needs to use the device, it can call the **unbindDevice** API to unregister the device.
 
 ## Constraints
@@ -41,7 +34,6 @@ To reduce the risk of **PartnerAgentExtensionAbility** being abused by third-par
 ## How to Develop
 
 ### Creating Directory Structure
-
 When implementing a partner device lifecycle management application, create a **PartnerAgentExtensionAbility** in the DevEco Studio project by performing the following steps:
 
 1. In the **ets** directory of the project module, right-click and choose **New > Directory** to create a directory named **entryability**.
@@ -54,29 +46,26 @@ When implementing a partner device lifecycle management application, create a **
    │       └──EntryAbility.ets               # Display the button interaction UI
    │       └──PartnerAgentAbility.ets        # Custom class inheriting PartnerAgentExtensionAbility with required lifecycle callbacks
    │   ├───pages
-   │       └── Index.ets                     # Draw the button interaction page for device registration and deregistration
+   │       └── Index.ets                     # Draw the button interaction page for device registration and unregistration
    ├── resources/base/profile/main_pages.json  
    ```
 
 ### Requesting Bluetooth Permission
-
 The **ohos.permission.ACCESS_BLUETOOTH** permission must be requested. For details about how to declare and request permissions, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
 ### Implementing PartnerAgentExtensionAbility
 
 The application must implement [PartnerAgentExtensionAbility](../../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md). This module is started when an OpenHarmony device detects or connects to a **registered** partner device through BLE scanning. After the OpenHarmony device disconnects from the registered partner device, this module destroys the partner device Extension process after 3 minutes. This module keeps the application wakeable by providing the following functions.
-
 - **onDeviceDiscovered(deviceAddress: PartnerDeviceAddress)**
 
   This callback is triggered when an [ACL](../../connectivity/bluetooth/terminology.md#acl) connection is established with a registered device or when the registered device is discovered through BLE scanning. You can perform data transmission service operations in this callback, such as establishing a Bluetooth [SPP connection](../bluetooth/spp-development-guide.md) or printing device discovery information.
 
 - **onDestroyWithReason(reason: PartnerAgentExtensionAbilityDestroyReason)**
-
+ 
   This callback is triggered when the service is no longer used and the instance is about to be destroyed. The callback reports the reason why the instance is destroyed. You can clear resources in this callback, for example, unbinding devices or printing device lost information.
 
   ``` TypeScript
-  import { partnerAgent } from '@kit.ConnectivityKit';
-  import { PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
+  import { partnerAgent, PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
 
   export default class PartnerAgentAbility extends PartnerAgentExtensionAbility {
     onDeviceDiscovered(deviceAddress: partnerAgent.PartnerDeviceAddress): void {
@@ -180,15 +169,15 @@ if (isBound == true) {
 
 - For details about project setup, see [Complete Example](#complete-example).
 
+
 ## Complete Example
 
 1. **PartnerAgentAbility.ets** file.
 
    In the **PartnerAgentAbility.ets** file, import the dependency package of **PartnerAgentExtensionAbility**, define a custom class that inherits from **PartnerAgentExtensionAbility**, and add the required lifecycle callbacks.
-
+   
     ``` TypeScript
-    import { partnerAgent } from '@kit.ConnectivityKit';
-    import { PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
+    import { partnerAgent, PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
 
     export default class PartnerAgentAbility extends PartnerAgentExtensionAbility {
       onDeviceDiscovered(deviceAddress: partnerAgent.PartnerDeviceAddress): void {
@@ -264,10 +253,10 @@ if (isBound == true) {
 
     ![Device management UI](./figures/harmony-device-management-ui.jpg)
 
+
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
-    import common from '@ohos.bluetooth.common';
-    import partnerAgent from '@ohos.FusionConnectivity.partnerAgent';
+    import { common, partnerAgent } from '@kit.ConnectivityKit';
 
     @Entry
     @Component
@@ -394,7 +383,7 @@ if (isBound == true) {
     }
     ```
 
-4. **main_pages.json** file. This file corresponds to the page drawn under the **ets/pages/** path for partner device management buttons.
+ 4. **main_pages.json** file. This file corresponds to the page drawn under the **ets/pages/** path for partner device management buttons.
 
     ``` JSON
     {
@@ -404,7 +393,7 @@ if (isBound == true) {
     }
     ```
 
-5. Register **PartnerAgentExtensionAbility** in the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to the project module. The **type** tag must be set to **partnerAgent**, and the **srcEntry** tag indicates the code path corresponding to the current **PartnerAgentExtensionAbility** component.
+ 5. Register **PartnerAgentExtensionAbility** in the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to the project module. The **type** tag must be set to **partnerAgent**, and the **srcEntry** tag indicates the code path corresponding to the current **PartnerAgentExtensionAbility** component.
 
     ``` JSON5
     "extensionAbilities": [

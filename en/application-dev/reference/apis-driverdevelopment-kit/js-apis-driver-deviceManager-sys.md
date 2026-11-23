@@ -52,7 +52,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |----------|-----------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. A non-system application cannot call a system API. |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
 | 26300001 | ExternalDeviceManager service exception.                              |
 
 **Example**
@@ -104,7 +103,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |----------|-----------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. A non-system application cannot call a system API. |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
 | 26300001 | ExternalDeviceManager service exception.                              |
 
 **Example**

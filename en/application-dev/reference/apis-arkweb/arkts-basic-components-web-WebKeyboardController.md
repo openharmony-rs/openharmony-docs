@@ -1,20 +1,19 @@
 # Class (WebKeyboardController)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=97514042d8acb624815178d3627a209c868aad1f translatedAt=2026-08-07T04:39:27.070Z pushedAt=2026-08-07T08:12:44.202Z -->
+<!-- md-trans-meta sourceCommit=50fa8924684469a617d1457712cc6a349e4caea4 translatedAt=2026-11-06T11:31:35.489Z pushedAt=2026-11-13T09:07:54.599Z nl=1 -->
 
 WebKeyboardController is a controller class provided by ArkWeb for controlling the custom keyboard behavior of the Web component. When an input field on a web page needs to display a keyboard, developers can intercept the mounting of the system default keyboard through the [onInterceptKeyboardAttach](./arkts-basic-components-web-events.md#oninterceptkeyboardattach12) event, and use WebKeyboardController to perform operations such as inserting characters, forward/backward deletion, sending function keys like Enter, and closing the custom keyboard on the currently focused web input field. This class is suitable for apps that need to implement custom secure keyboards, emoji keyboards, handwriting keyboards, or business-specific input panels for web scenarios, enabling developers to fully take over the keyboard input logic of web input fields.
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 12.
+> - This class is supported since API version 12.
 >
 > - The sample effect is subject to the actual device.
 
@@ -38,7 +37,7 @@ Inserts characters into the **Web** component text box.
 
 | Name| Type| Mandatory| Description|
 | ------ | -------- | ---- | --------------------- |
-| text | string | Yes | Text inserted into the web input box at the current cursor position. If there is selected text, it is replaced with this text. An input event is triggered. The cursor moves to the end of the inserted text. |
+| text | string | Yes | Inserts text at the current cursor position in the web input box. If selected text exists, it is replaced with this text; triggers an input event; the cursor moves to the end of the inserted text. |
 
 ## deleteForward<sup>12+</sup>
 
@@ -89,4 +88,3 @@ close(): void
 Closes this custom keyboard.
 
 **System capability**: SystemCapability.Web.Webview.Core
-<!--no_check-->

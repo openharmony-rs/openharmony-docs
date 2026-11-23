@@ -1,5 +1,7 @@
 # C++ Coding Style Guide
 
+<!-- md-trans-meta sourceCommit=2d890c63b0f632fdc98da4666427fe876af0e6cc translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## Purpose
 Rules are not perfect. They might disable useful features in specific situations and therefore affect code implementation. However, the purpose of developing rules is to get more benefits for most programmers. If a rule cannot be followed in your team operation, we can improve the rule together.
 
@@ -533,6 +535,7 @@ In C++, there are many ways to avoid using macros:
 - Use namespaces to avoid name conflicts.
 - Use the `inline` function to avoid function call overhead.
 - Use the `template` function to handle multiple types.
+
 Macros can be used in scenarios such as header guards, conditional compilation, and logging.
 
 ### Rule 3.13.3 Do not use macros to represent constants.
@@ -560,6 +563,7 @@ Inline functions have the advantages of both functions and macros:
 - Parameters are evaluated only once for inline functions.
 - Inline functions are expanded in place and there is no overhead for function calls.
 - Inline functions are better optimized than standard functions.
+
 For performance-sensitive code, consider using inline functions instead of standard functions.
 
 Exceptions:

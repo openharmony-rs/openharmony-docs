@@ -5,12 +5,15 @@
 <!--Designer: @zhaoyunfei-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=4df9364c82586631233dbbcf5ce167c39b27b6cd translatedAt=2026-11-09T06:22:43.139Z pushedAt=2026-11-09T07:59:17.327Z nl=1 -->
 
 This module provides APIs for managing offline download tasks of media resources, including creating, pausing, resuming, and removing download tasks, as well as listening for download status and progress change events. This module is applicable to scenarios where streaming media resources need to be cached offline in an app and played without network access. It helps users save traffic and improves media playback experience in poor network connection or offline scenarios. You can call [createAVDownloaderManager()](arkts-apis-media-f.md#mediacreateavdownloadermanager) to create an instance.
 
 > **NOTE**
 >
-> - The initial APIs of this interface are supported since API version 26.0.0.
+> - The first batch of APIs of this interface are supported since API version 26.0.0.
+> - The cache path of an offline download task is allocated by the system and cannot be customized by developers.
+> - This cache path corresponds to the application's cache directory and may be cleared by the system due to quota overrun, insufficient system space, or user operations. For details about the clearing mechanism, see **Table 1 Application file paths** in [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). You are advised to promptly move the cached data to the app's persistent directory after a download task is complete for easier management.
 
 ## Modules to Import
 
@@ -77,6 +80,10 @@ async function test() {
 addAVDownloadTask(source: MediaSource): string
 
 Creates an offline download task based on the media source. By default, download tasks are performed only over Wi-Fi. To perform download tasks on the cellular network, set **allowsCellularAccess** to **true**.
+
+> **NOTE**
+>
+> The cache path of a download task is automatically allocated by the system and cannot be specified. To obtain the cache path, call [getTaskCacheDirectory](#gettaskcachedirectory) after the task is created.
 
 **Since:** 26.0.0
 
@@ -261,6 +268,12 @@ async function test() {
 getTaskCacheDirectory(taskId: string): string
 
 Obtains the cache directory of a specified offline download task.
+
+> **NOTE**
+>
+> - The returned cache path is the cache directory allocated by the system and may be cleared due to quota overrun, insufficient system space, or user operations. For details about the clearing mechanism, see **Table 1 Application file paths** in [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path).
+> - You are advised to promptly move the cached data to the app's persistent directory after a download task is complete for easier management.
+> - The data move operation should be performed after the download task is complete. Do not move or modify the cached data during the download process; otherwise, the download task may become abnormal.
 
 **Since:** 26.0.0
 

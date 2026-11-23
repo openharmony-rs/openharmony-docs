@@ -51,6 +51,12 @@ let candidatePanel = {
   type: PanelType.SOFT_KEYBOARD,
   flag: PanelFlag.FLAG_CANDIDATE
 };
+
+// 4. 配置分离态面板属性
+let detachedPanel = {
+  type: PanelType.SOFT_KEYBOARD,
+  flag: PanelFlag.FLAG_DETACHED
+};
 ```
 
 > **说明：**
@@ -76,7 +82,7 @@ import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | type | [PanelType](#paneltype) | 否 | 否 | 输入法面板类型。决定面板是软键盘还是状态栏。不填写时默认为`SOFT_KEYBOARD`(0)。 |
-| flag | [PanelFlag](#panelflag) | 否 | 是 | 输入法面板状态类型。<br/>- 默认值为`FLAG_FIXED`(0)，表示固定态面板类型。<br/>- 当前仅用于描述软键盘类型的面板的状态，对`STATUS_BAR`类型面板设置不产生实际效果。<br/>- 不同状态类型下面板的显隐行为不同：`FLAG_FIXED`和`FLAG_FLOATING`由系统控制显隐，`FLAG_CANDIDATE`由开发者自行控制显隐。 |
+| flag | [PanelFlag](#panelflag) | 否 | 是 | 输入法面板状态类型。<br/>- 默认值为`FLAG_FIXED`(0)，表示固定态面板类型。<br/>- 当前仅用于描述软键盘类型的面板的状态，对`STATUS_BAR`类型面板设置不产生实际效果。<br/>- 不同状态类型下面板的显隐行为不同：`FLAG_FIXED`、`FLAG_FLOATING`和`FLAG_DETACHED`由系统控制显隐，`FLAG_CANDIDATE`由开发者自行控制显隐。 |
 
 PanelInfo参数使用建议：
 
@@ -92,10 +98,12 @@ PanelInfo参数使用建议：
     - `FLAG_FIXED`(0)：适用于大多数默认输入场景，面板固定在屏幕底部，由系统控制显隐。
     - `FLAG_FLOATING`(1)：适用于需要自由调整面板位置的场景（如横屏输入、多窗口环境），面板可拖动，由系统控制显隐。
     - `FLAG_CANDIDATE`(2)：适用于需要独立展示候选词的场景，面板为候选词窗口，由开发者自行控制显隐时机。
+    - `FLAG_DETACHED`(3)：适用于需要将软键盘左右分离的场景，面板宽度等于屏幕宽度，可纵向移动。
   - 使用后效果：
     - 设置`FLAG_FIXED`时：面板固定在屏幕底部，系统控制面板的显示和隐藏。
     - 设置`FLAG_FLOATING`时：面板为悬浮窗口，可自由拖动位置，系统控制面板的显示和隐藏。
     - 设置`FLAG_CANDIDATE`时：面板为候选词窗口，系统不会主动控制其显隐，开发者需通过`Panel.show()`和`Panel.hide()`自行控制显示和隐藏时机。
+    - 设置`FLAG_DETACHED`时：面板宽度等于屏幕宽度，可纵向移动。
   - 规格限制：当前仅用于`SOFT_KEYBOARD`类型面板。对`STATUS_BAR`类型面板设置`flag`不产生实际效果。
   - 注意事项：选择`FLAG_CANDIDATE`时，开发者需自行管理候选词面板的显隐，包括在用户开始输入时调用`Panel.show()`显示面板、在输入结束或用户选择候选词后调用`Panel.hide()`隐藏面板。
 
@@ -131,6 +139,7 @@ PanelType使用建议：
 | FLAG_FIXED     | 0    | 固定态面板类型。                                             | 适用于大多数默认输入场景，面板固定在屏幕底部。 | 面板固定在屏幕底部显示，系统控制面板的显隐。 |
 | FLAG_FLOATING  | 1    | 悬浮态面板类型。                                             | 适用于需要自由调整面板位置的场景（如横屏输入、多窗口环境、平板设备）。 | 面板为悬浮窗口，可自由拖动位置，系统控制面板的显隐。 |
 | FLAG_CANDIDATE  | 2    | 候选词态面板类型。<br/>- 当输入面板为候选词态时，面板为显示用户输入候选词的窗口。<br/>- 系统不会主动控制候选词态面板的显示和隐藏，需要开发者根据应用场景自行控制候选词态面板的显示和隐藏。 | 适用于需要独立展示候选词的场景，如搜索联想词、输入建议列表等。 | 面板为独立的候选词窗口，开发者需通过`Panel.show()`和`Panel.hide()`自行控制显隐。系统不主动控制其显隐。 |
+| FLAG_DETACHED  | 3    | 分离态面板类型。<br/>- 面板宽度等于屏幕宽度，面板仅可纵向移动。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 | 适用于大屏设备（折叠屏展开态、平板）握持打字场景。 | 面板宽度铺满屏幕，系统控制面板的显隐。 |
 
 PanelFlag使用建议：
 

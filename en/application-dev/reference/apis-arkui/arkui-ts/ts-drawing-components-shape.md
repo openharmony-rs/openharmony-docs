@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-08-28T01:26:55.169Z pushedAt=2026-08-31T07:44:19.324Z -->
+<!-- md-trans-meta sourceCommit=f7759f2de2c7e80ce9af21b23ed944c517949c82 translatedAt=2026-11-03T02:40:44.218Z pushedAt=2026-11-13T01:06:00.000Z nl=1 -->
 
 The **Shape** component is the parent component of drawing components. It describes the universal attributes supported by all the drawing components.
 
@@ -117,7 +117,7 @@ The viewport defines the coordinate system and display area of the drawing conte
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
@@ -141,7 +141,7 @@ The coordinate array is stored in row-major order. After the original image is e
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type               | Mandatory| Description                                                        |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |

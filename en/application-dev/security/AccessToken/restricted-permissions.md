@@ -6,7 +6,6 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=28af11ed79c46934da1ab57318c919f412319342 translatedAt=2026-10-31T07:00:25.319Z pushedAt=2026-10-31T08:05:58.233Z nl=1 -->
 
 ## How to Request
 
@@ -1649,7 +1648,7 @@ Allows in-vehicle applications to obtain the real-time weather of the environmen
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
-Allows an application on the in-vehicle rear-seat screen to call the spatial gesture APIs to complete air-gesture interaction between the passenger and the screen.
+Allows an in-vehicle application to call spatial gesture APIs to enable contactless interaction for passengers.
 
 <!--RP106--><!--RP106End-->
 
@@ -1779,6 +1778,39 @@ With this permission, the application can assist users in detecting whether hidd
 
 **Valid since**: 26.0.1
 
+## ohos.permission.ALLOW_CROSS_APP_IPC
+
+Allows IPC communication between applications of the same developer.
+
+<!--RP121-->
+The application must modify the "app-services-capabilities" field in the HarmonyAppProvision configuration file to add ipcGroupId. Only applications configured with the same ipcGroupId can perform cross-application IPC communication.
+
+Configuration example:
+
+```json5
+{
+  // ...
+  "acls":{
+    "allowed-acls":[
+      "ohos.permission.ALLOW_CROSS_APP_IPC"
+    ]
+  },
+  "app-services-capabilities": {
+    "ohos.permission.ALLOW_CROSS_APP_IPC": {"ipcGroupIds": ["ipcGroupId0000", "ipcGroupId1000"]}
+  }
+}
+```
+
+<!--RP121End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
 ## ohos.permission.INPUT_RECORDING
 
 Allows an application to listen for input events.
@@ -1823,6 +1855,22 @@ Allows an application to obtain the device hardware information.
  
 **Since**: 26.0.1
 
+## ohos.permission.START_HISHELL_TERMINAL
+
+Allows an application to start the HiShell command-line terminal.
+
+After obtaining this permission, an application can start the HiShell command-line terminal to create new terminal tabs or new terminal window instances. 
+
+<!--RP123--><!--RP123End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
 ## ohos.permission.CONTROL_COMPONENT
 
 Allows an application to manage whether specified components can be controlled via simulated control.
@@ -1836,5 +1884,33 @@ With this permission, the application can mark specified components as restricte
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+Allows an application to intercept input events.
+
+<!--RP122--><!--RP122End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
+
+## ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION
+
+Allows an application to manipulate text in focused input boxes of other applications.
+
+<!--RP124--><!--RP124End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.1.0

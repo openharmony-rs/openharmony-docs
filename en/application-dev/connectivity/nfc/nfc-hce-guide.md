@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=fb683f019c942b7ee1feffd8c72d462c7f16cdd9 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
+<!-- md-trans-meta sourceCommit=d2dc3b077c61398411e7bdb1a8748ce31ad6b8c2 translatedAt=2026-11-16T01:42:41.570Z pushedAt=2026-11-16T12:48:21.611Z nl=1 -->
 
 ## Introduction
 Near Field Communication (NFC) is a short-range, high-frequency radio technology that operates at a frequency of 13.56 MHz, with a typical communication range of within 10 centimeters. Host Card Emulation (HCE) provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader to complete NFC card swiping. Off Host Card Emulation (OFFHOST) is supported since API version 22. It simulates a card using a separate chip (called the secure element or SE) on the device. Some SIM cards of wireless carriers contain SEs.
@@ -52,7 +52,7 @@ HCE application developers can choose to implement either foreground or backgrou
 - HCE background card swiping<br>
 1. In the **module.json5** configuration file, statically declare the AID selected by the NFC card reader. Based on service requirements, specify whether the declared AID belongs to the **Payment** type or the **Other** type.
 2. If the **Payment** type is selected, the HCE application will appear in the NFC default payment application list on the system settings page. After the user selects this HCE application as the default payment application, conflict-free background card swiping can be implemented. Since a default payment application is designated, there will be no conflicts between multiple HCE applications of the **Payment** type.
-3. If the **Other** type is selected, the HCE application will not appear in the NFC default payment app list on the system settings page. However, conflicts may arise if multiple HCE applications declare the same AID of the **Other** type.
+3. If the **Other** type is selected, the HCE application will not appear in the NFC default payment application list on the system settings page. However, conflicts may arise if multiple HCE applications declare the same AID of the **Other** type.
 4. When implementing HCE background card swiping, you do not need to call the **start** and **stop** APIs.
 5. You are advised to use a dedicated **HceAbility** for HCE application background card swiping to reduce the time spent in [onCreate](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate).
 6. In the **OnCreate** function of **HceAbility**, minimize operations other than [hceService.on](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#on8).
@@ -112,9 +112,8 @@ HCE application developers can choose to implement either foreground or backgrou
 
 ```ts
 import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { AsyncCallback } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
 let hceElementName: bundleManager.ElementName;
@@ -255,9 +254,8 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { AsyncCallback } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
 let hceElementName: bundleManager.ElementName;

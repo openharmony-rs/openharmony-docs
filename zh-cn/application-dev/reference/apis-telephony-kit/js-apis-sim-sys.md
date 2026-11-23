@@ -33,7 +33,7 @@ isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 
 | 参数名  | 类型                                     | 必填 | 说明                                |
 | ------ | --------------------------------------- | ---- | ---------------------------------  |
-| slotId | number                                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | number                                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2。<br>取值限定为整数。 |
 | operator | [OperatorSimCard](#operatorsimcard11) | 是   | 运营商卡名称。（当前仅支持中国电信卡）|
 
 **返回值：**
@@ -3223,7 +3223,7 @@ getDsdsMode\(callback: AsyncCallback\<DsdsMode\>\): void
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
-| 8300002  | Service connection failed.                   |
+| 8300002  |Operation failed. Cannot connect to service.  |
 | 8300003  | System internal error.                       |
 | 8300999  | Unknown error.                               |
 
@@ -3368,9 +3368,8 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001 | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300002  | Operation failed. Cannot connect to service.                     |
 | 8300003 | System internal error.                               |
 | 8300004  |Do not have sim card.|
 | 8300999  |Unknown error code.|
@@ -3412,7 +3411,7 @@ getAllSimAccountInfoList(): Promise\<Array\<IccAccountInfo\>\>
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.                     |
-| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300002  | Operation failed. Cannot connect to service.                     |
 | 8300003 | System internal error.                               |
 | 8300004  |Do not have sim card.|
 | 8300999  |Unknown error code.|
@@ -3467,7 +3466,6 @@ setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.                     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                      |
 | 8300002 | Service connection failed.                               |
 | 8300003  | System internal error.  |

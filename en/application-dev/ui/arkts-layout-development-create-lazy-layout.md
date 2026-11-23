@@ -1,4 +1,4 @@
-# Creating Lazy Layouts (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)
+# Creating Lazy Layouts (LazyDynamicLayout)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

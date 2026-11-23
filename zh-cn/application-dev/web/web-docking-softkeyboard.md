@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件与系统软键盘的对接，包括输入框W3C标准属性适配、软键盘自动弹出、避让模式设置及拦截系统软键盘实现自定义键盘输入。"
+keywords: [软键盘, inputmode, enterkeyhint, WebKeyboardAvoidMode, onInterceptKeyboardAttach, 软键盘避让, 自定义软键盘]
+doctype: guide
+status: active
+---
+
 # Web组件对接软键盘
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -100,6 +108,8 @@
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -113,6 +123,8 @@ struct WebComponent {
             setTimeout(() => {
               inputMethod.getController().showTextInput();
             }, 10);
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'Failed to run JavaScript. Cause: %{public}s', JSON.stringify(error));
           });
         });
     }
@@ -309,8 +321,8 @@ struct WebComponent {
     ])
 
     /**
-      * 自定义键盘组件Builder
-      */
+     * 自定义键盘组件Builder
+     */
     @Builder
     customKeyboardBuilder() {
     // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。

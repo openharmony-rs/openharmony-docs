@@ -3,10 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=cc8fe8b0f1b2859346994908b98ebf9b3df1ff9d translatedAt=2026-07-17T00:22:36.065Z pushedAt=2026-07-17T02:59:02.723Z -->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-09T06:19:23.754Z pushedAt=2026-11-09T07:27:59.071Z nl=1 -->
 
 > **NOTE**
 >
@@ -25,7 +25,7 @@ This error code is reported if an invalid parameter value is passed to the API.
 **Possible Causes**
 
 Parameter verification failed. The possible cause is that the value of an input parameter is invalid.
-
+ 
 **Solution**
 
 Verify input parameter values.
@@ -43,7 +43,7 @@ This error code is reported if an invalid parameter value is passed to the API.
 **Possible Causes**
 
 Parameter verification failed. The possible cause is that the value of an input parameter is invalid.
-
+ 
 **Solution**
 
 Verify input parameter values.

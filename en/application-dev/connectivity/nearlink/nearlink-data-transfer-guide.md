@@ -5,7 +5,7 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b0496895a7bfb2583dccb5b6cde02296fbec733b translatedAt=2026-09-29T10:56:49.398Z pushedAt=2026-09-30T06:12:44.713Z -->
+<!-- md-trans-meta sourceCommit=65aba76b23f23722db01c17547304738598df9ec translatedAt=2026-11-16T01:40:43.355Z pushedAt=2026-11-16T09:28:42.384Z nl=1 -->
 
 Provides NearLink data transfer capabilities such as port channel establishment and data sending/receiving. A device can act as both the data sender and the data receiver at the same time.
 
@@ -86,7 +86,7 @@ For the complete API description and sample code for transferring data over Near
     }
     ```
 
-5. Subscribe to port channel data receive events. When the event is no longer needed, call [offReadData()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffreaddata) to unsubscribe.
+5. Subscribe to port channel data receiving events. When the event is no longer needed, call [offReadData()](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md#datatransferoffreaddata) to unsubscribe.
 
     <!-- @[datatransfer_on_read_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     
@@ -102,7 +102,7 @@ For the complete API description and sample code for transferring data over Near
     }
     ```
 
-6. Connect to the remote device to establish a port channel. Here, `chosenDeviceAddr` is the device address selected from the results of the [NearLink scan](nearlink-device-discovery-guide.md#initiating-a-nearlink-scan), and the UUID must be consistent with the one registered in step 3.
+6. Connect the remote device and establish a port channel. Here, `chosenDeviceAddr` is the device address selected from the results of [initiating a NearLink scan](nearlink-device-discovery-guide.md#initiating-a-nearlink-scan), and the UUID must be consistent with the one registered in step 3. The `frameType` in the connection parameters specifies the frame type, and the default value is `FRAME_TYPE_1`. For details, see [NearLink FAQs > What Is a Frame Type](nearlink-faq-guide.md#what-is-a-frame-type).
 
     <!-- @[datatransfer_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     

@@ -1,6 +1,6 @@
 ---
 kits: ["ArkTS Kit"]
-description: "ArkTS collection types, including arrays, tuples, Set, Map, and read-only collections, with iteration techniques, collection selection guidance, and common antipatterns."
+description: "Introduces ArkTS collection types, including arrays, tuples, Set, Map, and read-only collections, and explains iteration and collection selection for different scenarios."
 keywords: ["collection types", "arrays", "Array", "Map", "tuples", "Set", "forEach", "ReadonlyArray", "iterators"]
 doctype: guide
 status: active
@@ -9,35 +9,13 @@ status: active
 # Collection Types
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.308Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
-Collection types are used to store multiple data items. ArkTS provides various collection types, including arrays, tuples, Set, Map, and others, each with its specific purposes and characteristics. ArkTS collections are primarily classified along two dimensions: structure and mutability. Structurally, they are divided into arrays (Array), sets (Set), and dictionaries (Map); in terms of mutability, they are divided into mutable collections and read-only collections (such as ReadonlyArray). Understanding the differences among these types in terms of ordering, uniqueness, and key-value mapping is the prerequisite for type selection.
-
-## Mutable and Read-Only Collections
-
-Collections are classified into mutable and read-only types based on modification permissions. Mutable collections support adding, deleting, and modifying elements, while read-only collections only allow reading.
-
-<!-- @[ts_mutable_and_readonly_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
-
-``` TypeScript
-// Mutable collection
-let mutableArray: number[] = [1, 2, 3];
-mutableArray.push(4);  // Can be added.
-
-let mutableSet: Set<number> = new Set([1, 2]);
-mutableSet.add(3);     // Can be added.
-
-let mutableMap: Map<string, number> = new Map();
-mutableMap.set('key', 10);  // Can be added.
-
-// Read-only collection (using ReadonlyArray).
-let readonlyArray: ReadonlyArray<number> = [1, 2, 3];
-readonlyArray.push(4);  // Compilation error: cannot be modified.
-```
+Collection types store multiple data items. ArkTS provides arrays, tuples, `Set`, `Map`, and other collection types, each with specific uses and characteristics. Understanding the differences among the three core collections is essential for choosing a type: an array (`Array`) is an ordered list that allows duplicate elements, supports index-based access, and suits ordered data; a set (`Set`) stores unique elements and suits deduplication and membership checks; a map (`Map`) stores key-value pairs with keys of any type and suits fast value lookup by key. Collections can also be classified by mutability as mutable or read-only (such as `ReadonlyArray`).
 
 ## Array
 
@@ -123,7 +101,7 @@ for (let value of iterArr) {
 }
 
 // Obtain the index and value.
-for (let i: number = 0; i < iterArr.length; i++) {
+for (let i = 0; i < iterArr.length; i++) {
   console.info(`Index ${i}: ${iterArr[i]}`);
 }
 ```
@@ -140,21 +118,36 @@ forEachArr.forEach((value: number, index: number): void => {
 });
 ```
 
-`forEach` does not support `break`. Use `for...of` or a `for` loop when you need to exit the iteration early. In ArkTS, arrow function parameters must have explicit type annotations; the parameter type annotation cannot be omitted.
+`forEach` does not support `break`. Use a `for...of` or `for` loop when you need to exit iteration early.
 
 <!-- @[array_indexed_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
 ``` TypeScript
 let iterArr2: number[] = [1, 2, 3];
 
-for (let i: number = 0; i < iterArr2.length; i++) {
+for (let i = 0; i < iterArr2.length; i++) {
   console.info(`${iterArr2[i]}`);
+}
+```
+
+To control iteration manually, obtain an iterator with `values()` and retrieve values one at a time with `next()`:
+
+<!-- @[array_iterator_manual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let manualArr: number[] = [1, 2, 3];
+let arrIter: IterableIterator<number> = manualArr.values();
+
+let iterResult: IteratorResult<number> = arrIter.next();
+while (!iterResult.done) {
+  console.info(`${iterResult.value}`);  // Outputs 1, 2, 3 in sequence.
+  iterResult = arrIter.next();
 }
 ```
 
 ### Common Array Operations
 
-Arrays provide common operations such as push, pop, shift, and splice for adding, deleting, modifying, and querying elements.
+Arrays provide common methods such as `push`, `pop`, `shift`, and `splice` to add, remove, modify, and query elements.
 
 <!-- @[array_add_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -173,7 +166,7 @@ elemArr.unshift(-1, -2);  // can add multiple elements
 console.info(`${elemArr.join(', ')}`);  // -1, -2, 0, 1, 2, 3, 4, 5, 6
 ```
 
-To delete elements, use methods such as pop, shift, and splice:
+Use methods such as `pop`, `shift`, and `splice` to remove elements:
 
 <!-- @[array_remove_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -205,8 +198,8 @@ let arr2: number[] = [3, 4];
 // concat: concatenate arrays
 let combined: number[] = arr1.concat(arr2);
 console.info(`${combined.join(', ')}`);  // 1, 2, 3, 4
-let sliceExtended: number[] = arr1.concat(3, 4, [5, 6]);
-console.info(`${sliceExtended.join(', ')}`);  // 1, 2, 3, 4, 5, 6
+let concatExtended: number[] = arr1.concat(3, 4, [5, 6]);
+console.info(`${concatExtended.join(', ')}`);  // 1, 2, 3, 4, 5, 6
 
 // slice: split/extract
 let sliceArr: number[] = [1, 2, 3, 4, 5];
@@ -257,6 +250,117 @@ let greaterThan3: number[] = allNumbers.filter((value: number): boolean => {
 console.info(`${greaterThan3.join(', ')}`);  // 4, 5, 6
 ```
 
+### Higher-Order Array Operations
+
+Arrays also provide functional methods such as `map` (mapping), `filter` (filtering), `reduce` (reduction), `sort`/`reverse` (sorting), and `flat`/`flatMap` (flattening). These methods can be chained into a filter-transform-aggregate data processing pipeline. They return new arrays without modifying the original array, except for `sort` and `reverse`.
+
+`map`: mapping each element
+
+`map` applies a transformation to each element of the array and returns a new array.
+
+<!-- @[array_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let amNumbers: number[] = [1, 2, 3, 4, 5];
+
+let amDoubled: number[] = amNumbers.map((n: number): number => n * 2);
+console.info(`${amDoubled.join(', ')}`);  // 2, 4, 6, 8, 10
+
+let amStrings: string[] = amNumbers.map((n: number): string => `Item ${n}`);
+console.info(`${amStrings.join(', ')}`);  // 'Item 1, Item 2, Item 3, Item 4, Item 5'
+```
+
+`filter`: filtering elements
+
+The `filter` method runs a predicate function on each element of the array and returns a new array consisting of all elements that satisfy the condition, while the original array remains unchanged. It is commonly used for data filtering, such as filtering active users from a user list or filtering on-sale products from a product list.
+
+<!-- @[array_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let afNumbers: number[] = [1, 2, 3, 4, 5, 6];
+
+let afEvens: number[] = afNumbers.filter((n: number): boolean => n % 2 === 0);
+console.info(`${afEvens.join(', ')}`);  // 2, 4, 6
+```
+
+`reduce`: reducing an array
+
+`reduce` reduces an array to a single value, and an initial value must be provided.
+
+<!-- @[array_reduce](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let arNumbers: number[] = [1, 2, 3, 4, 5];
+
+let arSum: number = arNumbers.reduce((acc: number, n: number): number => acc + n, 0);
+console.info(`${arSum.toString()}`);  // 15
+
+let arProduct: number = arNumbers.reduce((acc: number, n: number): number => acc * n, 1);
+console.info(`${arProduct.toString()}`);  // 120
+```
+
+`sort` and `reverse`: sorting
+
+The `sort` method sorts array elements in place and accepts a comparison function for custom sorting. The `reverse` method reverses the element order. Both modify the original array. To retain the original array, create a copy (for example, using `slice()` or the spread operator) before sorting.
+
+<!-- @[array_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let asNumbers: number[] = [3, 1, 4, 1, 5, 9, 2, 6];
+
+let asAscending: number[] = [...asNumbers].sort((a: number, b: number): number => a - b);
+console.info(`${asAscending.join(', ')}`);  // 1, 1, 2, 3, 4, 5, 6, 9
+
+let asDescending: number[] = [...asNumbers].sort((a: number, b: number): number => b - a);
+console.info(`${asDescending.join(', ')}`);  // 9, 6, 5, 4, 3, 2, 1, 1
+
+let asReversed: number[] = [...asNumbers].reverse();
+console.info(`${asReversed.join(', ')}`);  // 6, 2, 9, 5, 1, 4, 1, 3
+```
+
+Combining `map`, `filter`, and `reduce`
+
+`map`, `filter`, and `reduce` can be combined through chained calls to implement a "filter → transform → aggregate" data processing pipeline. For example, use `filter` to select valid data, then `map` to extract key fields, and finally `reduce` to compute the aggregate value. In chained calls, each step returns a new array without affecting the original data.
+
+<!-- @[array_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let acPrices: number[] = [999, 25, 15, 75];
+
+// Filter prices greater than 50, apply a 20% discount, and sum the results.
+let acTotal: number = acPrices
+  .filter((price: number): boolean => price > 50)
+  .map((price: number): number => Math.round(price * 0.8))
+  .reduce((acc: number, price: number): number => acc + price, 0);
+
+console.info(`${acTotal}`);  // 859
+```
+
+`flat` and `flatMap`
+
+`flat()` flattens nested arrays into a one-dimensional array and accepts a flattening depth. `flatMap()` applies a transformation to each element and then flattens the result by one level, equivalent to `map()` followed by `flat()`. It is commonly used to transform and flatten nested structures. The same effects can also be implemented manually using `reduce` and the spread operator.
+
+<!-- @[flat_flatmap_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let ffnNested: number[][] = [[1, 2], [3, 4], [5, 6]];
+
+// flat: Flatten a two-dimensional array into a one-dimensional array.
+let ffnFlat: number[] = ffnNested.flat();
+console.info(`${ffnFlat.join(', ')}`); // 1, 2, 3, 4, 5, 6
+
+// flatMap: Map each element and then flatten by one level.
+let ffnWords: string[] = ['hello world', 'foo bar'];
+let ffnFlatMapped: string[] = ffnWords.flatMap((s: string): string[] => s.split(' '));
+console.info(`${ffnFlatMapped.join(', ')}`); // 'hello, world, foo, bar'
+
+// Use reduce and the spread operator instead of flat.
+let ffnFlatReduce: number[] = ffnNested.reduce((acc: number[], arr: number[]): number[] => {
+  return [...acc, ...arr];
+}, []);
+console.info(`${ffnFlatReduce.join(', ')}`); // 1, 2, 3, 4, 5, 6
+```
+
 ## Tuple
 
 A tuple is an ordered collection with a fixed length and fixed types. A tuple differs from an array: a tuple has a fixed length and each position can have a different type, whereas an array has a variable length and all elements share the same type.
@@ -273,14 +377,9 @@ A tuple is declared by explicitly specifying the element type at each position, 
 <!-- @[tuple_basics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
 ``` TypeScript
-// Tuple in TypeScript
 let tuple: [number, string] = [1, 'hello'];
 let coordinate: [number, number] = [10, 20];
 let user: [number, string, boolean] = [1, 'Alice', true];
-
-// In ArkTS, tuples are usually represented by arrays
-let pair: number[] = [1, 2];  // A two-element array simulates a tuple
-let triple: [number, string, boolean] = [1, 'text', true];  // Type annotation
 ```
 
 In the type annotation above, the type at each position can be different, thereby expressing data with a fixed structure. In ArkTS, a simple fixed-length array can serve as a substitute for a tuple.
@@ -301,35 +400,9 @@ let str: string = accessTuple[1];    // 'hello'
 let accessPair: number[] = [10, 20];
 let accessFirst: number = accessPair[0];   // 10
 let accessSecond: number = accessPair[1];  // 20
-
-// Safe access (with type checking).
-function getPairElement(arr: number[], index: number): number | undefined {
-  if (arr.length === 2 && index >= 0 && index < 2) {
-    return arr[index];
-  }
-  return undefined;
-}
 ```
 
-When a tuple is accessed by index, the compiler retains the precise type information for each position (for example, `tuple[0]` is `number` and `tuple[1]` is `string`). In contrast, when an array form (such as `number[]`) is used to simulate a tuple, the type information is less precise than that of a real tuple, and you must perform boundary checks manually when accessing it.
-
-### Read-Only Characteristics of Tuples
-
-A read-only tuple ensures that its data is not modified. It is suitable for scenarios such as configuration data, constant coordinates, and function parameter protection, where the compiler enforces checks on modification operations.
-
-<!-- @[ts_readonly_tuple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
-
-``` TypeScript
-// Read-only tuple in TypeScript
-let readonlyTuple: readonly [number, string] = [1, 'hello'];
-readonlyTuple[0] = 2;  // Compilation error
-
-// Simulate with ReadonlyArray in ArkTS
-let readonlyPair: ReadonlyArray<number> = [1, 2];
-readonlyPair[0] = 3;  // Compilation error.
-```
-
-TypeScript uses the `readonly` keyword to modify tuples. ArkTS does not support this syntax; instead, use `ReadonlyArray` to achieve an equivalent read-only constraint. The read-only check is performed at compile time with no runtime overhead, making it suitable for immutable scenarios such as protecting configuration data and function parameters.
+When accessing a tuple by index, the compiler retains precise type information for each position (for example, `accessTuple[0]` is `number` and `accessTuple[1]` is `string`). When using an array (such as `number[]`) to simulate a tuple, type information is less precise and bounds must be checked manually.
 
 ### Differences Between Tuples and Arrays
 
@@ -346,7 +419,7 @@ let tupleNumbers: number[] = [1, 2, 3, 4, 5];  // More number elements can be ad
 
 // A tuple represents a fixed structure.
 let userTuple: [number, string, boolean] = [1, 'Alice', true];
-console.info(`${userTuple.join(', ')}`);  // 1, Alice, true
+console.info(`${userTuple.join(', ')}`);  // '1, Alice, true'
 
 // An array represents a dynamic collection.
 let userIds: number[] = [1, 2, 3, 4, 5];
@@ -355,11 +428,11 @@ userIds.push(6);  // Can be added.
 
 ## Set
 
-A Set stores a collection of unique elements and is suitable for scenarios such as deduplication and membership checks. Unlike an array, the elements in a Set are unique.
+`Set` stores unique elements and is suitable for deduplication and membership checks. Unlike an array, a `Set` contains no duplicate elements.
 
 ### Set Declaration and Initialization
 
-A Set stores a collection of unique values. It is created through the constructor, which specifies the element type.
+`Set` stores unique values. Create it using a constructor and specify the element type.
 
 <!-- @[set_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -378,7 +451,7 @@ stringSet.add('b');
 
 ### Core Features of Set
 
-Set guarantees element uniqueness, automatically removes duplicates, and provides efficient existence checks.
+`Set` ensures element uniqueness, automatically removes duplicates, and provides efficient membership checks.
 
 <!-- @[set_uniqueness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -398,45 +471,29 @@ console.info(`${unique.join(', ')}`);  // 1, 2, 3
 
 ### Common Operations on Set
 
-Set provides basic operations such as adding, deleting, searching, and traversing, and all elements are unique without duplicates.
+`Set` provides basic operations such as adding, deleting, searching, and iterating.
 
-<!-- @[set_add_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let addSet: Set<number> = new Set();
-
-addSet.add(1);
-addSet.add(2);
-addSet.add(3);
-
-let addedSet: Set<number> = addSet.add(4);  // Return the Set itself.
-```
-
-Use the `delete` method to delete an element, which returns whether the deletion succeeds:
-
-<!-- @[set_delete_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @[set_basic_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
 ``` TypeScript
-let delSet: Set<number> = new Set([1, 2, 3]);
+let opsSet: Set<number> = new Set([1, 2, 3]);
 
-let deleted: boolean = delSet.delete(2);  // true (successfully deleted)
-let isRemoved: boolean = delSet.delete(10);  // false (does not exist)
+// add: add an element (adding a duplicate has no effect).
+opsSet.add(4);
+let opsAddedSet: Set<number> = opsSet.add(5);  // Returns the Set itself.
 
-console.info(`${delSet.size}`);  // 2
+// delete: remove an element and return whether it was removed.
+let opsDeleteResult: boolean = opsSet.delete(2);  // true (removed successfully)
+let opsRemoveResult: boolean = opsSet.delete(10); // false (not found)
+
+// has: check whether an element exists.
+let opsHas1: boolean = opsSet.has(1);   // true
+let opsHas10: boolean = opsSet.has(10); // false
+
+console.info(`${opsSet.size}`);  // 4 (elements are 1, 3, 4, 5)
 ```
 
-Use the `has` method to check whether an element exists in the Set:
-
-<!-- @[set_has_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let hasSet: Set<number> = new Set([1, 2, 3]);
-
-let has1: boolean = hasSet.has(1);  // true
-let hasHas10: boolean = hasSet.has(10);  // false
-```
-
-To iterate over a Set, use `for...of` or `forEach`, or obtain an iterator through `values()` or `keys()`:
+Iterate over a `Set` using `for...of` or `forEach`, or obtain an iterator using `values()` or `keys()`:
 
 <!-- @[set_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -466,7 +523,22 @@ for (let key of keys) {
 }
 ```
 
-A Set and an array can be converted to each other. You can use the uniqueness of a Set to deduplicate an array:
+To control iteration manually, obtain an iterator with `values()` and retrieve values one at a time with `next()`:
+
+<!-- @[set_iterator_manual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let manualSet: Set<number> = new Set([1, 2, 3]);
+let setIter: IterableIterator<number> = manualSet.values();
+
+let setResult: IteratorResult<number> = setIter.next();
+while (!setResult.done) {
+  console.info(`${setResult.value}`);  // Outputs 1, 2, 3 in sequence.
+  setResult = setIter.next();
+}
+```
+
+A `Set` and an array can be converted to each other. Use the uniqueness of `Set` elements to remove duplicates from an array:
 
 <!-- @[set_array_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -487,7 +559,7 @@ let convUnique: number[] = Array.from(new Set(duplicates));
 console.info(`${convUnique.join(', ')}`);  // 1, 2, 3
 ```
 
-The `clear` method removes all elements from the Set:
+The `clear` method removes all elements from a `Set`:
 
 <!-- @[set_clear_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -497,13 +569,29 @@ clearSet.clear();
 console.info(`${clearSet.size}`);  // 0
 ```
 
+### Higher-Order Set Operations
+
+`Set` does not provide higher-order methods such as `map` and `filter`. Use `Array.from` to convert it to an array, apply the array's higher-order methods (see [Higher-Order Array Operations](#higher-order-array-operations)), and convert the result back to a `Set`:
+
+<!-- @[set_high_order_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let hoSet: Set<number> = new Set([1, 2, 3, 4, 5]);
+
+// Filter even numbers: convert the Set to an array, filter it, and convert back to a Set.
+let hoEvens: Set<number> = new Set(
+  Array.from(hoSet).filter((n: number): boolean => n % 2 === 0)
+);
+console.info(`${hoEvens.size}`);  // 2 (elements are 2, 4)
+```
+
 ## Map
 
-Map is a collection that stores key-value pairs, where both keys and values can be of any type.
+`Map` stores key-value pairs, where keys and values can be of any type.
 
 ### Map Declaration and Initialization
 
-A Map is used to store a collection of key-value pairs. It is created through a constructor, with the types of keys and values specified.
+`Map` stores key-value pairs. Create it using a constructor and specify the key and value types.
 
 <!-- @[map_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -526,7 +614,7 @@ map.set('two', 2);
 
 ### Accessing, Adding, and Deleting Key-Value Pairs
 
-Map accesses and modifies key-value pairs through the get, set, and delete methods, supporting dynamic data management.
+`Map` uses `get`, `set`, and `delete` to access and modify key-value pairs, supporting dynamic data management.
 
 <!-- @[map_basic_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -561,7 +649,7 @@ console.info(`${opsMap.size}`);  // 0
 
 ### Iterating Over a Map
 
-To iterate over a Map, use forEach or a for-of loop. You can iterate over keys, values, or key-value pairs.
+Use `forEach` or `for...of` to iterate over the keys, values, or key-value pairs of a `Map`.
 
 <!-- @[map_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -602,9 +690,26 @@ for (let entry of iterMap.entries()) {
 }
 ```
 
-### Record<K,V> Type
+To control iteration manually, obtain an iterator with `entries()` and retrieve values one at a time with `next()`:
 
-`Record<K, V>` is a built-in utility type in ArkTS that maps a key type `K` to a value type `V`, and is suitable for expressing "string-keyed objects". When the keys are fixed to strings or numbers and the structure is relatively simple, it is lighter than `Map` and is commonly initialized with an object literal.
+<!-- @[map_iterator_manual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let manualMap: Map<string, number> = new Map([['a', 1], ['b', 2]]);
+let mapIter: IterableIterator<[string, number]> = manualMap.entries();
+
+let mapResult: IteratorResult<[string, number]> = mapIter.next();
+while (!mapResult.done) {
+  let entry: [string, number] = mapResult.value;
+  console.info(`${entry[0]}: ${entry[1]}`);  // Outputs a: 1, b: 2 in sequence.
+  mapResult = mapIter.next();
+}
+```
+
+### Record<K,V> Type
+<a id="recordkv-type"></a>
+
+`Record<K, V>` is a built-in ArkTS utility type that maps key type `K` to value type `V`. It is suitable for representing objects with string keys. When keys are limited to strings or numbers and the structure is relatively simple, it is more lightweight than `Map` and is commonly initialized with an object literal.
 
 <!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -637,15 +742,15 @@ Compared with `Map`, `Record` is based on object literals, its keys can only be 
 
 ### Differences Between Map and Ordinary Objects
 
-Map keys can be of any type, while object keys can only be strings. Therefore, Map is more suitable for dynamic key-value storage.
+`Map` keys can be of any type, whereas object keys can only be strings. `Map` is more suitable for dynamic key-value storage.
 
 <!-- @[map_vs_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
 ``` TypeScript
 // Map: any key type
-let objMap2: Map<number, string> = new Map();
-objMap2.set(1, 'one');
-objMap2.set(2, 'two');
+let numKeyMap: Map<number, string> = new Map();
+numKeyMap.set(1, 'one');
+numKeyMap.set(2, 'two');
 
 class KeyObject {
   public id: number;
@@ -683,40 +788,54 @@ console.info(`${orderedMap.size}`);  // 3
 let objSize: number = Object.keys(obj).length;
 ```
 
+### Higher-Order Map Operations
+
+`Map` does not provide higher-order methods such as `map` and `filter`. Use `Array.from` to convert it to an array, apply the array's higher-order methods (see [Higher-Order Array Operations](#higher-order-array-operations)), and convert the result back to a `Map`:
+
+<!-- @[map_high_order_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let hoMap: Map<string, number> = new Map([['a', 1], ['b', 2], ['c', 3]]);
+
+// Filter entries with values greater than 1: convert the Map to an array, filter it, and convert back to a Map.
+let hoFiltered: Map<string, number> = new Map(
+  Array.from(hoMap).filter((entry: [string, number]): boolean => entry[1] > 1)
+);
+console.info(`${hoFiltered.size}`);  // 2 ('b', 'c')
+
+// Sum all values.
+let hoTotal: number = Array.from(hoMap.values()).reduce(
+  (acc: number, value: number): number => acc + value, 0
+);
+console.info(`${hoTotal}`);  // 6
+```
+
 ## Read-only Collection Types
 
 Read-only collection types prohibit modification operations and are suitable for passing immutable data.
 
-### Readonly Array (ReadonlyArray)
+### Read-Only Arrays
 
-ReadonlyArray provides a read-only interface and prohibits modification operations such as `push` and `pop`.
+Declare a read-only array using `readonly number[]`, which is equivalent to `ReadonlyArray<number>`. It permits reads but prohibits modifications such as `push` and `pop`.
 
-<!-- @[ts_readonly_array_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
+<!-- @[readonly_array_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
 ``` TypeScript
-let readonlyArr: ReadonlyArray<number> = [1, 2, 3];
+// readonly number[] and ReadonlyArray<number> are equivalent.
+let readonlyArr: readonly number[] = [1, 2, 3];
+let sameArr: ReadonlyArray<number> = readonlyArr;
 
 // Read-only
-readonlyArr.push(4);      // Compilation error
-readonlyArr[0] = 10;      // Compilation error
-readonlyArr.pop();        // Compilation error.
+// readonlyArr.push(4);   // Compilation error
+// readonlyArr[0] = 10;   // Compilation error
 
 // Can be read.
-let first: number = readonlyArr[0];  // 1
-let length: number = readonlyArr.length;  // 3
+let roFirst: number = readonlyArr[0];       // 1
+let roLength: number = readonlyArr.length;  // 3
 
-// Can be iterated.
-for (let value of readonlyArr) {
-  console.info(`${value}`);
-}
-
-// Create a read-only array.
-let mutable: number[] = [1, 2, 3];
-let readonly: ReadonlyArray<number> = mutable;  // Convert to read-only.
-
-// Type alias
-type ReadOnlyNumbers = ReadonlyArray<number>;
-let nums: ReadOnlyNumbers = [1, 2, 3];
+// A mutable array can be assigned to a read-only array (one-way assignment).
+let mutableNums: number[] = [1, 2, 3];
+let readonlyNums: readonly number[] = mutableNums;
 ```
 
 ### Read-only Map and Read-only Set
@@ -726,25 +845,29 @@ Read-only collections are declared through the `ReadonlyMap` or `ReadonlySet` ty
 <!-- @[readonly_map_set_interfaces](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
 ``` TypeScript
-interface ReadonlyMap<K, V> {
-  get(key: K): V | undefined;
-  has(key: K): boolean;
-  size: number;
-  forEach(callback: (value: V, key: K) => void): void;
-}
-
-interface ReadonlySet<T> {
-  has(value: T): boolean;
-  size: number;
-  forEach(callback: (value: T) => void): void;
-}
-
-// Return a read-only interface when used.
+// Use the built-in ReadonlyMap to return a read-only view.
 function getReadOnlyMap(): ReadonlyMap<string, number> {
   let map: Map<string, number> = new Map();
   map.set('a', 1);
   return map;  // Return a read-only view.
 }
+
+// Use the built-in ReadonlySet to return a read-only view.
+function getReadOnlySet(): ReadonlySet<number> {
+  let set: Set<number> = new Set([1, 2, 3]);
+  return set;  // Return a read-only view.
+}
+```
+
+### Read-Only Tuples
+
+A read-only tuple ensures that its data is not modified. It is suitable for scenarios such as configuration data, constant coordinates, and function parameter protection, where the compiler enforces checks on modification operations.
+
+<!-- @[readonly_tuple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let readonlyTuple: readonly [number, string] = [1, 'hello'];
+// readonlyTuple[0] = 2;  // Compilation error
 ```
 
 ### When to Use Read-only Collections
@@ -775,406 +898,57 @@ function getConstants(): ReadonlyArray<string> {
 }
 ```
 
-## Collection Traversal and Iterators
+## ArkTS Shared Containers (@arkts.collections)
 
-Collection traversal uses for-of, forEach, and the iterator interface to access elements one by one.
+In addition to the native collection types described here, ArkTS provides shared containers based on the `@arkts.collections` module (such as `collections.Array`, `collections.Map`, and `collections.Set`) for high-performance data transfer across Worker threads in concurrent scenarios. Import them using `import { collections } from '@kit.ArkTS';` (supported since API version 12 and available only in .ets files).
 
-### for...of Loop
+The main differences between shared containers and native collection types are as follows:
 
-The for-of loop iterates over iterable objects with concise syntax and directly obtains the element value.
+- **Transfer behavior**: Native collections are copied by value when transferred across threads (for example, to a `Worker`), so changes in one thread do not affect another. Shared containers are passed by reference between concurrent instances by default, allowing multiple concurrent instances to operate on the same container instance and avoiding repeated copies of large amounts of data.
+- **Thread safety**: Shared containers are not thread-safe. They use a fail-fast mechanism that throws an exception when structural modifications by multiple concurrent instances are detected. Use asynchronous locks to ensure safe multithreaded reads and writes. Native collections are used only within a single thread and do not have this issue.
+- **Property restrictions**: Properties cannot be added or updated on shared container instances using `.` or `[]`.
+- **Selection guidance**: Use native collections for single-threaded scenarios. Use shared containers when data must be shared efficiently between `Worker` instances in concurrent scenarios.
 
-<!-- @[for_of_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+For API details, see [@arkts.collections (ArkTS Containers)](../reference/apis-arkts/arkts-apis-arkts-collections.md).
 
-``` TypeScript
-// array
-let iterArr3: number[] = [1, 2, 3];
-for (let value of iterArr3) {
-  console.info(`${value}`);
-}
+## TypedArray
 
-// Set
-let iterSet2: Set<number> = new Set([1, 2, 3]);
-for (let value of iterSet2) {
-  console.info(`${value}`);
-}
+TypedArray is a family of array types optimized for numerical computation, including Int8Array, Uint8Array, Int16Array, Uint16Array, Int32Array, Uint32Array, and Float32Array. Each type stores numbers of a fixed bit width (for example, Int8Array stores 8-bit signed integers and Float32Array stores 32-bit floating-point numbers). Elements are contiguous in memory and require no boxing.
 
-// Map
-let iterMap2: Map<string, number> = new Map([['a', 1], ['b', 2]]);
-for (let entry of iterMap2) {
-  console.info(`${entry[0]}: ${entry[1]}`);  // a: 1, b: 2
-}
+A regular array (`Array`) has a dynamically variable length, stores references for object elements, and incurs boxing and type-checking overhead when accessing numeric elements. In contrast, TypedArray stores raw numeric values directly, reducing access and computation overhead. Use TypedArray for purely numerical computation, such as image pixel processing, audio sample data, and scientific computing. Regular arrays suit general-purpose data such as objects and strings.
 
-// string
-let text: string = 'Hello';
-for (let char of text) {
-  console.info(`${char}`);
-}
-```
+For TypedArray use cases and performance comparisons, see [High-Performance Programming Guide](arkts-high-performance-programming.md).
 
-### Using the Iterator Interface
+## Common Operations Quick Reference
 
-The iterator retrieves values on demand through the next() method, allowing you to manually control the traversal pace.
+The following tables summarize common operations by type and indicate whether each operation modifies the original collection in place or returns a new collection or value:
 
-<!-- @[iterator_manual_traversal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+**Common array operations**
 
-``` TypeScript
-// Obtain the iterator.
-let traverseArr: number[] = [1, 2, 3];
-let iterator: IterableIterator<number> = traverseArr.values();
+| Type | Operation | Behavior |
+| --- | --- | --- |
+| Array | `push`, `unshift`, `pop`, `shift`, `splice` | Modifies in place |
+| Array | `sort`, `reverse` | Modifies in place |
+| Array | `concat`, `slice`, `map`, `filter`, `flat`, `flatMap` | Returns a new array |
+| Array | `reduce` | Returns the reduced value without modifying the original array |
+| Array | `indexOf`, `includes`, `find`, `findIndex` | Returns the query result without modifying the original array |
 
-// Traverse manually.
-let result: IteratorResult<number> = iterator.next();
-while (!result.done) {
-  console.info(`${result.value}`);
-  result = iterator.next();
-}
+**Common Set/Map and conversion operations**
 
-// Set iterator
-let traverseSet: Set<string> = new Set(['a', 'b', 'c']);
-let setIterator: IterableIterator<string> = traverseSet.values();
-
-console.info(`${JSON.stringify(setIterator.next())}`);  // {"value":"a","done":false}
-console.info(`${JSON.stringify(setIterator.next())}`);  // {"value":"b","done":false}
-console.info(`${JSON.stringify(setIterator.next())}`);  // {"value":"c","done":false}
-console.info(`${JSON.stringify(setIterator.next())}`);  // {"value":undefined,"done":true}
-
-// Map iterator
-let traverseMap: Map<string, number> = new Map([['x', 10], ['y', 20]]);
-let mapIterator: IterableIterator<[string, number]> = traverseMap.entries();
-
-console.info(`${JSON.stringify(mapIterator.next())}`);  // {"value":["x",10],"done":false}
-```
-
-### Destructuring Assignment of Collections
-
-ArkTS does not support destructuring assignment of collections. Access elements one by one through indexes or iterators.
-
-**TypeScript comparison**
-
-<!-- @[ts_destructuring_alternatives](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
-
-``` TypeScript
-// Array destructuring
-let [a, b] = [1, 2];
-
-// Correct approach: assign separately
-let arr: number[] = [1, 2];
-let aVal: number = arr[0];
-let bVal: number = arr[1];
-
-// Map destructuring
-let map: Map<string, number> = new Map([['key', 10]]);
-let [mapKey, mapValue] = map.entries().next().value;
-
-// Correct approach: assign separately
-let entry: [string, number] | undefined = Array.from(map.entries())[0];
-if (entry !== undefined) {
-  let entryKey: string = entry[0];
-  let entryValue: number = entry[1];
-}
-
-// Set destructuring
-let [setFirst, setSecond] = new Set([1, 2]);
-
-// Correct approach: assign separately
-let set: Set<number> = new Set([1, 2]);
-let values: number[] = Array.from(set);
-let firstVal: number = values[0];
-let secondVal: number = values[1];
-```
+| Type | Operation | Behavior |
+| --- | --- | --- |
+| `Set` | `add`, `delete`, `clear` | Modifies in place |
+| `Set` | `has` | Returns the query result without modifying the original collection |
+| `Map` | `set`, `delete`, `clear` | Modifies in place |
+| `Map` | `get`, `has` | Returns the query result without modifying the original collection |
+| Conversion | `Array.from(set)`, `Array.from(map)` | Returns a new array |
+| Conversion | `new Set(arr)`, `new Map(entries)` | Returns a new collection |
 
 ## Procedure
 
 1. Determine the data relationship: use `Array` for ordered lists, `Set` for collections of unique values, `Map` for key-value indexing, and prefer explicit interfaces or tuples for fixed-length data structures where positions correspond to types.
-2. Specify element types: Declare the specific types of array elements, Set elements, and Map keys and values. Do not use `any` or `unknown` to receive collection content.
-3. Confirm mutability boundaries: Use `ReadonlyArray` when a function only reads a collection. When writing is required, modify the collection only in its creator or in functions dedicated to updating it.
+2. Specify element types: declare concrete types for array and `Set` elements and `Map` keys and values. Do not use `any` or `unknown` for collection contents.
+3. Define mutability boundaries: use `readonly T[]` (equivalent to `ReadonlyArray<T>`) when a function only reads a collection. Restrict modifications to the creator or dedicated update functions.
 4. Choose an access method: Access results that may return `undefined`, such as array indexing, `find`, and `Map.get`, must be checked before use.
 5. Choose an iteration method: Use `for...of` for read-only values, use `for` or `forEach` with type annotations when an index is needed, and explicitly read `entry[0]` and `entry[1]` when iterating over a `Map`.
 6. Check ArkTS restrictions: Do not use destructuring assignment to iterate over collections, do not use object keys as ordinary object indexes, and do not directly expose mutable collections to callers that should not modify them.
-
-## Anti-patterns
-
-The following patterns are common in TypeScript, but they are error-prone when migrating to ArkTS or writing code for long-term maintenance.
-
-Anti-pattern 1: Ignoring read results that may be `undefined`.
-
-<!-- @[ts_map_safe_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
-
-``` TypeScript
-let scores: Map<string, number> = new Map();
-scores.set('Alice', 95);
-
-// Counterexample: Map.get may return undefined
-let aliceScore: number = scores.get('Alice');
-
-// Recommended: check before use
-let aliceScoreSafe: number | undefined = scores.get('Alice');
-if (aliceScoreSafe !== undefined) {
-  console.info(`${aliceScoreSafe}`);
-}
-```
-
-Anti-pattern 2: Using an array to serve as a unique collection.
-
-<!-- @[unique_collection_with_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-// Counterexample: Manually calling includes on every insertion makes it easy to miss deduplication logic.
-let ids: number[] = [];
-if (!ids.includes(1001)) {
-  ids.push(1001);
-}
-
-// Recommended: Let Set express uniqueness.
-let uniqueIds: Set<number> = new Set();
-uniqueIds.add(1001);
-uniqueIds.add(1001);
-console.info(`${uniqueIds.size}`);  // 1
-```
-
-Anti-pattern 3: Using destructuring to iterate over `Map`.
-
-**TypeScript comparison**
-
-<!-- @[ts_map_entry_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
-
-``` TypeScript
-let userScores: Map<string, number> = new Map([['Alice', 95], ['Bob', 88]]);
-
-// TypeScript equivalent; ArkTS does not use destructuring:
-for (let [name, score] of userScores) {
-  console.info(`${name}: ${score}`);
-}
-
-// Recommended: explicitly read the entry
-for (let entry of userScores.entries()) {
-  let name: string = entry[0];
-  let score: number = entry[1];
-  console.info(`${name}: ${score}`);
-}
-```
-Anti-pattern 4: using an ordinary object to store object keys.
-
-The keys of an ordinary object (`Record<string, T>`) can only be strings. To use an object as a key, you must manually call `toString()` to convert it, which loses the object identity. Different objects may produce the same string key after conversion, causing overwrites.
-
-<!-- @[object_key_with_record](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-// Use an ordinary object to store object keys, which requires manually calling toString() to convert.
-class RecordCacheKey {
-  public id: number;
-
-  constructor(id: number) {
-    this.id = id;
-  }
-
-  toString(): string {
-    return `key-${this.id}`;
-  }
-}
-
-let recordKey: RecordCacheKey = new RecordCacheKey(1);
-let recordCache: Record<string, string> = {};
-recordCache[recordKey.toString()] = 'value';
-console.info(`${recordCache[recordKey.toString()]}`); // value
-```
-
-Recommended approach: Use `Map` to store object keys, which preserves object identity and requires no manual conversion.
-
-<!-- @[object_key_with_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-class CacheKey {
-  public id: number;
-
-  constructor(id: number) {
-    this.id = id;
-  }
-}
-
-let key: CacheKey = new CacheKey(1);
-
-let cache: Map<CacheKey, string> = new Map();
-cache.set(key, 'value');
-console.info(`${cache.get(key)!}`); // value
-```
-
-Anti-pattern 5: Modifying an input parameter that should only be read.
-
-<!-- @[readonly_array_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-// Anti-pattern: The array passed by the caller is modified.
-function appendDefault(items: string[]): void {
-  items.push('default');
-}
-
-// Recommended: Declare it as ReadonlyArray in read-only scenarios.
-function countItems(items: ReadonlyArray<string>): number {
-  return items.length;
-}
-```
-
-## Advanced Array Methods
-
-Arrays provide functional methods such as `map`, `filter`, `reduce`, `sort`/`reverse`, and `flat`/`flatMap`, which support chained composition to build a "filter → transform → aggregate" data processing pipeline. These methods return a new array (except `sort`/`reverse`) and do not modify the original array.
-
-### map: Map Each Element
-
-`map` applies a transformation to each element of the array and returns a new array.
-
-<!-- @[array_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let amNumbers: number[] = [1, 2, 3, 4, 5];
-
-let amDoubled: number[] = amNumbers.map((n: number): number => n * 2);
-console.info(`${amDoubled.join(', ')}`);  // 2, 4, 6, 8, 10
-
-let amStrings: string[] = amNumbers.map((n: number): string => `Item ${n}`);
-console.info(`${amStrings.join(', ')}`);  // Item 1, Item 2, Item 3, Item 4, Item 5
-```
-
-### filter: Filtering Elements
-
-The `filter` method runs a predicate function on each element of the array and returns a new array consisting of all elements that satisfy the condition, while the original array remains unchanged. It is commonly used for data filtering, such as filtering active users from a user list or filtering on-sale products from a product list.
-
-<!-- @[array_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let afNumbers: number[] = [1, 2, 3, 4, 5, 6];
-
-let afEvens: number[] = afNumbers.filter((n: number): boolean => n % 2 === 0);
-console.info(`${afEvens.join(', ')}`);  // 2, 4, 6
-```
-
-### reduce: Reduce an Array
-
-`reduce` reduces an array to a single value, and an initial value must be provided.
-
-<!-- @[array_reduce](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let arNumbers: number[] = [1, 2, 3, 4, 5];
-
-let arSum: number = arNumbers.reduce((acc: number, n: number): number => acc + n, 0);
-console.info(`${arSum.toString()}`);  // 15
-
-let arProduct: number = arNumbers.reduce((acc: number, n: number): number => acc * n, 1);
-console.info(`${arProduct.toString()}`);  // 120
-```
-
-### sort and reverse: Sorting
-
-The `sort` method sorts array elements in place and accepts an optional comparison function to customize the sorting rule. The `reverse` method reverses the order of array elements. Both modify the original array. To preserve the original array, call `slice()` to create a copy before sorting.
-
-<!-- @[array_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let asNumbers: number[] = [3, 1, 4, 1, 5, 9, 2, 6];
-
-let asAscending: number[] = [...asNumbers].sort((a: number, b: number): number => a - b);
-console.info(`${asAscending.join(', ')}`);  // 1, 1, 2, 3, 4, 5, 6, 9
-
-let asDescending: number[] = [...asNumbers].sort((a: number, b: number): number => b - a);
-console.info(`${asDescending.join(', ')}`);  // 9, 6, 5, 4, 3, 2, 1, 1
-
-let asReversed: number[] = [...asNumbers].reverse();
-console.info(`${asReversed.join(', ')}`);  // 6, 2, 9, 5, 1, 4, 1, 3
-```
-
-### Combining map, filter, and reduce
-
-`map`, `filter`, and `reduce` can be combined through chained calls to implement a "filter → transform → aggregate" data processing pipeline. For example, use `filter` to select valid data, then `map` to extract key fields, and finally `reduce` to compute the aggregate value. In chained calls, each step returns a new array without affecting the original data.
-
-<!-- @[array_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-interface AcProduct {
-  name: string;
-  price: number;
-  category: string;
-}
-
-let acProducts: AcProduct[] = [
-  { name: 'Laptop', price: 999, category: 'Electronics' },
-  { name: 'Mouse', price: 25, category: 'Electronics' },
-  { name: 'Book', price: 15, category: 'Books' },
-  { name: 'Keyboard', price: 75, category: 'Electronics' }
-];
-
-let acTotal: number = acProducts
-  .filter((p) => p.category === 'Electronics')
-  .map((p) => p.price)
-  .reduce((acc: number, price: number) => acc + price, 0);
-
-console.info(`Electronics total: ${acTotal}`);  // 1099
-```
-
-### flat and flatMap
-
-`flat()` flattens a nested array into a one-dimensional array, and you can specify the flattening depth. `flatMap()` first applies a mapping function to each element and then flattens the result by one level, which is equivalent to calling `map()` followed by `flat()`. It is commonly used to transform and flatten nested structures. Both can also be implemented manually with `reduce` and the spread operator to achieve the same effect.
-
-<!-- @[flat_flatmap_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let ffnNested: number[][] = [[1, 2], [3, 4], [5, 6]];
-
-// flat: Flatten a two-dimensional array into a one-dimensional array.
-let ffnFlat: number[] = ffnNested.flat();
-console.info(`${ffnFlat.join(', ')}`); // 1, 2, 3, 4, 5, 6
-
-// flatMap: Map each element and then flatten by one level.
-let ffnWords: string[] = ['hello world', 'foo bar'];
-let ffnFlatMapped: string[] = ffnWords.flatMap((s: string): string[] => s.split(' '));
-console.info(`${ffnFlatMapped.join(', ')}`); // hello, world, foo, bar
-
-// Use reduce and the spread operator instead of flat.
-let ffnFlatReduce: number[] = ffnNested.reduce((acc: number[], arr: number[]): number[] => {
-  return [...acc, ...arr];
-}, []);
-console.info(`${ffnFlatReduce.join(', ')}`); // 1, 2, 3, 4, 5, 6
-```
-
-## Manual Traversal with Iterators
-
-Obtain an iterator through `values()` and use the `next()` method to manually control the traversal pace.
-
-<!-- @[iterator_manual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
-
-``` TypeScript
-let imArr: number[] = [10, 20, 30];
-let imIter: IterableIterator<number> = imArr.values();
-
-let imResult: IteratorResult<number> = imIter.next();
-while (!imResult.done) {
-  console.info(`${imResult.value.toString()}`);
-  imResult = imIter.next();
-}
-// Output: 10, 20, 30
-
-// Set iterator
-let imSet: Set<string> = new Set<string>();
-imSet.add('a');
-imSet.add('b');
-let imSetIter: IterableIterator<string> = imSet.values();
-let imSetResult: IteratorResult<string> = imSetIter.next();
-while (!imSetResult.done) {
-  console.info(`${imSetResult.value}`);
-  imSetResult = imSetIter.next();
-}
-// Output: a, b
-
-// Map iterator
-let imMap: Map<string, number> = new Map<string, number>();
-imMap.set('x', 10);
-imMap.set('y', 20);
-let imMapIter: IterableIterator<[string, number]> = imMap.entries();
-let imMapResult: IteratorResult<[string, number]> = imMapIter.next();
-while (!imMapResult.done) {
-  let entry: [string, number] = imMapResult.value;
-  console.info(`${entry[0]}: ${entry[1]}`);
-  imMapResult = imMapIter.next();
-}
-// Output: x: 10, y: 20
-```

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T03:34:40.666Z pushedAt=2026-10-30T06:56:31.535Z nl=1 -->
+<!-- md-trans-meta sourceCommit=51c7d0d76eb53d3c36eed35b7e9afd4ac18e191c translatedAt=2026-11-13T12:27:51.424Z pushedAt=2026-11-16T02:06:53.405Z nl=1 -->
 
 This topic uses RSA, ECC, and SM2 as an example to describe how to convert binary data into an asymmetric key pair (**KeyPair**). That is, convert a piece of external or internal binary data into a **KeyPair** object for subsequent operations, such as encryption and decryption.
 
@@ -180,6 +180,7 @@ Obtain the binary data of the ECC public or private key, encapsulate the data in
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function main() {
   // Create an AsyKeyGenerator instance.

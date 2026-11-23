@@ -38,7 +38,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -61,7 +61,7 @@ disconnect(deviceId: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let mapMseProfile = map.createMapMseProfile();
-    mapMseProfile.disconnect('XX:XX:XX:XX:XX:XX');
+    mapMseProfile.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -83,14 +83,14 @@ setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorizati
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 | authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | 是    | 表示对信息访问的授权状态，例如允许访问（ACCESS_ALLOWED）、拒绝访问（ACCESS_DENIED）等。具体枚举值及含义详见[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -113,7 +113,7 @@ setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorizati
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let mapMseProfile = map.createMapMseProfile();
-    mapMseProfile.setMessageAccessAuthorization('XX:XX:XX:XX:XX:XX', 0).then(() => {
+    mapMseProfile.setMessageAccessAuthorization('11:22:33:44:55:66', 0).then(() => {
         console.info('setMessageAccessAuthorization');
     });
 } catch (err) {
@@ -137,13 +137,13 @@ getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise对象，返回信息的访问权限。 |
 
 **错误码**：
 
@@ -166,7 +166,7 @@ getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let mapMseProfile = map.createMapMseProfile();
-    mapMseProfile.getMessageAccessAuthorization('XX:XX:XX:XX:XX:XX').then((authorization) => {
+    mapMseProfile.getMessageAccessAuthorization('11:22:33:44:55:66').then((authorization) => {
         console.info('authorization ' + authorization);
     });
 } catch (err) {

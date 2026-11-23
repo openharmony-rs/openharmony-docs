@@ -1,12 +1,11 @@
 # Class (JsMessageExt)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c3549f5fc26f86afdb3e7a215c50ff6d6d5cab0c translatedAt=2026-08-07T04:44:27.860Z pushedAt=2026-08-07T08:11:04.359Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:02:13.703Z pushedAt=2026-11-10T02:06:03.585Z nl=1 -->
 
 JsMessageExt is a data class in the ArkWeb framework used to encapsulate the result returned after executing a JavaScript script through the [runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10) API. Unlike the conventional runJavaScript API, runJavaScriptExt supports richer return value types, and JsMessageExt provides a type-safe way to access these diverse return results. Developers first obtain the data type through the getType method of JsMessageExt, and then call the corresponding get method to retrieve the specific value.
 
@@ -143,7 +142,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
-
 ## getErrorDescription<sup>22+</sup>
 
 getErrorDescription(): string \| null

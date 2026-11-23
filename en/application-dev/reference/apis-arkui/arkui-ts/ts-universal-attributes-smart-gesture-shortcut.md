@@ -1,10 +1,11 @@
 # Smart Gesture Response
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:32:15.174Z pushedAt=2026-11-13T01:06:00.126Z nl=1 -->
 
 The smart gesture response is used to configure whether a component responds to smart gestures, whether to show and retain the selected state, and the response priority. It applies to scenarios where control over whether a component can be selected or prioritized in smart gesture operations is needed, improving the controllability of target component responses in smart gesture interactions.
 

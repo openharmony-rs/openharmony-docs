@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何通过setMissionIcon和setMissionLabel接口自定义任务快照的图标和名称，提升任务的可视化识别体验，适用于多实例等需要区分任务的场景。"
+keywords: [任务快照, setMissionIcon, setMissionLabel, 图标设置, 名称设置, 任务管理]
+doctype: guide
+status: active
+---
 # 设置任务快照的图标和名称（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

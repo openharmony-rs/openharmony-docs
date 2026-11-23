@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkTS与C++混合开发场景下使用ArkWeb Native接口实现JSBridge双向通信，避免ArkTS与C++环境的冗余切换。"
+keywords: [ArkWeb, NDK, JSBridge, registerJavaScriptProxyEx, 权限控制, runJavaScript]
+doctype: guide
+status: active
+---
+
 # 应用侧与前端页面的相互调用(C/C++)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -398,7 +406,7 @@
   ```
 
 * Node-API层代码
-  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->  
+  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->
   
   ``` C++
   // entry/src/main/cpp/hello.cpp
@@ -437,7 +445,7 @@
       }
   }
   
-  // 示例代码 ，注册了1个对象，2个方法
+  // 示例代码，注册了1个对象，2个方法
   static ArkWeb_JavaScriptValuePtr ProxyMethod1(
       const char *webTag, const ArkWeb_JavaScriptBridgeData *dataArray, size_t arraySize, void *userData)
   {

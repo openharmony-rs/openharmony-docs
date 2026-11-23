@@ -32,7 +32,7 @@ import { ArkTSUtils, collections } from '@kit.ArkTS';
 
 ## AtomicIntegerArray
 
-type AtomicIntegerArray = collections.Int8Array | collections.Uint8Array | collections.Int16Array | collections.Uint16Array | collections.Int32Array | collections.Uint32Array
+type AtomicIntegerArray = collections.Int8Array \| collections.Uint8Array \| collections.Int16Array \| collections.Uint16Array \| collections.Int32Array \| collections.Uint32Array
 
 支持原子元素操作的ArkTS整数`TypedArray`类型。
 
@@ -105,14 +105,20 @@ static add(typedArray: AtomicIntegerArray, index: number, value: number): number
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-let result = ArkTSUtils.Atomics.add(array, 0, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：13
+  const result = ArkTSUtils.Atomics.add(array, 0, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：13
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### and
@@ -155,22 +161,30 @@ static and(typedArray: AtomicIntegerArray, index: number, value: number): number
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-// 10的二进制为1010，3的二进制为0011。
-let result = ArkTSUtils.Atomics.and(array, 0, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：2
+  // 10的二进制为1010，3的二进制为0011。
+  const result = ArkTSUtils.Atomics.and(array, 0, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：2
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### compareExchange
 
 static compareExchange(typedArray: AtomicIntegerArray, index: number, expectedValue: number, replacementValue: number): number
 
-目标元素与预期值相等时，以原子方式替换并返回操作前的值。
+以原子方式比较指定元素与预期值，仅在相等时替换该元素，并返回本次操作读取到的原元素值。
+
+执行时，先将`expectedValue`和`replacementValue`转换为`typedArray`的元素类型。若当前元素值与转换后的`expectedValue`相等，则写入转换后的`replacementValue`；否则保持原值。读取、比较和条件替换作为一个原子操作执行。
 
 **起始版本：** 26.1.0
 
@@ -186,14 +200,18 @@ static compareExchange(typedArray: AtomicIntegerArray, index: number, expectedVa
 | ------ | ------ | ---- | ------ |
 | typedArray | [AtomicIntegerArray](#atomicintegerarray) | 是 | 包含目标元素的整数`TypedArray`。 |
 | index | number | 是 | 目标元素的索引。 索引从0开始，应小于`typedArray.length`。 |
-| expectedValue | number | 是 | 用于与目标元素比较的值。 |
-| replacementValue | number | 是 | 比较成功时存储的值。 |
+| expectedValue | number | 是 | 预期值，用于与目标元素的当前值比较。 |
+| replacementValue | number | 是 | 替换值，仅在比较相等时写入目标元素。 |
+
+> **说明：**
+>
+> 两个数值参数的转换规则与向该类型的数组元素赋值时相同：小数舍弃小数部分，超出范围的整数按目标类型转换。例如，对于Uint8Array，预期值257转换为1，替换值258转换为2，因此当前元素值为1时，比较成功并写入2。
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------ | ------ |
-| number | 操作前的元素值。 |
+| number | 本次原子操作读取到的原元素值。发生替换时，返回替换前的值；未发生替换时，返回比较时读取到的值。 |
 
 **错误码：**
 
@@ -207,19 +225,33 @@ static compareExchange(typedArray: AtomicIntegerArray, index: number, expectedVa
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-let result = ArkTSUtils.Atomics.compareExchange(array, 0, 10, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：3
+  // 当前值10与预期值10相等，将元素值替换为3，返回替换前的值10。
+  const result = ArkTSUtils.Atomics.compareExchange(array, 0, 10, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：3
 
-// 当前值已变为3，与预期值10不相等，因此不会替换为20。
-let unmatched = ArkTSUtils.Atomics.compareExchange(array, 0, 10, 20);
-console.info(`比较失败的返回值：${unmatched}`); // 预期输出：比较失败的返回值：3
-console.info(`比较失败后的值：${array[0]}`); // 预期输出：比较失败后的值：3
+  // 当前值已变为3，与预期值10不相等，因此不会替换为20。
+  const unmatched = ArkTSUtils.Atomics.compareExchange(array, 0, 10, 20);
+  console.info(`比较失败的返回值：${unmatched}`); // 预期输出：比较失败的返回值：3
+  console.info(`比较失败后的值：${array[0]}`); // 预期输出：比较失败后的值：3
+
+  // Uint8Array的元素范围为0~255，预期值257转换为1，替换值258转换为2。
+  const uint8Array = new collections.Uint8Array(1);
+  uint8Array[0] = 1;
+  const converted = ArkTSUtils.Atomics.compareExchange(uint8Array, 0, 257, 258);
+  console.info(`类型转换后的返回值：${converted}`); // 预期输出：类型转换后的返回值：1
+  console.info(`类型转换后的元素值：${uint8Array[0]}`); // 预期输出：类型转换后的元素值：2
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### exchange
@@ -262,14 +294,20 @@ static exchange(typedArray: AtomicIntegerArray, index: number, value: number): n
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-let result = ArkTSUtils.Atomics.exchange(array, 0, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：3
+  const result = ArkTSUtils.Atomics.exchange(array, 0, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：3
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### isLockFree
@@ -303,7 +341,7 @@ static isLockFree(size: number): boolean
 ```ts
 import { ArkTSUtils } from '@kit.ArkTS';
 
-let result = ArkTSUtils.Atomics.isLockFree(4);
+const result = ArkTSUtils.Atomics.isLockFree(4);
 console.info(`是否无锁：${result}`); // 预期输出：是否无锁：true
 ```
 
@@ -346,14 +384,20 @@ static load(typedArray: AtomicIntegerArray, index: number): number
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-let result = ArkTSUtils.Atomics.load(array, 0);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：10
+  const result = ArkTSUtils.Atomics.load(array, 0);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：10
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### or
@@ -396,15 +440,21 @@ static or(typedArray: AtomicIntegerArray, index: number, value: number): number
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-// 10的二进制为1010，3的二进制为0011。
-let result = ArkTSUtils.Atomics.or(array, 0, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：11
+  // 10的二进制为1010，3的二进制为0011。
+  const result = ArkTSUtils.Atomics.or(array, 0, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：11
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### store
@@ -447,23 +497,29 @@ static store(typedArray: AtomicIntegerArray, index: number, value: number): numb
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-let result = ArkTSUtils.Atomics.store(array, 0, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：3
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：3
+  const result = ArkTSUtils.Atomics.store(array, 0, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：3
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：3
 
-// Uint8Array的元素范围为0~255，展示返回值与实际存储值的区别。
-let uint8Array = new collections.Uint8Array(1);
-uint8Array[0] = 10;
-console.info(`操作前：${uint8Array[0]}`); // 预期输出：操作前：10
+  // Uint8Array的元素范围为0~255，展示返回值与实际存储值的区别。
+  const uint8Array = new collections.Uint8Array(1);
+  uint8Array[0] = 10;
+  console.info(`操作前：${uint8Array[0]}`); // 预期输出：操作前：10
 
-let converted = ArkTSUtils.Atomics.store(uint8Array, 0, 257);
-console.info(`返回值：${converted}`); // 预期输出：返回值：257
-console.info(`操作后：${uint8Array[0]}`); // 预期输出：操作后：1
+  const converted = ArkTSUtils.Atomics.store(uint8Array, 0, 257);
+  console.info(`返回值：${converted}`); // 预期输出：返回值：257
+  console.info(`操作后：${uint8Array[0]}`); // 预期输出：操作后：1
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### sub
@@ -506,23 +562,31 @@ static sub(typedArray: AtomicIntegerArray, index: number, value: number): number
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-let result = ArkTSUtils.Atomics.sub(array, 0, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：7
+  const result = ArkTSUtils.Atomics.sub(array, 0, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：7
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### wait
 
-static wait(typedArray: collections.Int32Array, index: number, value: number, timeout?: number): 'ok' | 'not-equal' | 'timed-out'
+static wait(typedArray: collections.Int32Array, index: number, value: number, timeout?: number): 'ok' \| 'not-equal' \| 'timed-out'
 
-当指定Int32元素等于预期值时，阻塞当前线程，直到收到[notify](#notify)通知或等待超时。值不相等时返回`'not-equal'`，不进入等待。仅修改目标元素的值不会自动唤醒等待线程。
+当指定Int32元素等于预期值时，阻塞当前线程，直到收到[`notify`](#notify)通知或等待超时。值不相等时返回'not-equal'，不进入等待。仅修改目标元素的值不会自动唤醒等待线程。
 
-调用线程必须允许阻塞等待。接口会先检查线程是否允许阻塞，再比较元素值；即使`timeout`为0或元素值与预期值不相等，也必须满足该环境要求。不允许阻塞时抛出参数错误。应在允许阻塞的Worker线程中调用，避免阻塞UI线程。
+> **说明：**
+>
+> 调用线程必须允许阻塞等待。接口会先检查线程是否允许阻塞，再比较元素值；即使`timeout`为0或元素值与预期值不相等，也必须满足该环境要求。不允许阻塞时抛出参数错误。应在允许阻塞的Worker线程中调用，避免阻塞UI线程。
 
 **起始版本：** 26.1.0
 
@@ -539,13 +603,13 @@ static wait(typedArray: collections.Int32Array, index: number, value: number, ti
 | typedArray | [collections.Int32Array](arkts-apis-arkts-collections-Int32Array.md) | 是 | 包含目标元素的`Int32Array`。 |
 | index | number | 是 | 目标元素的索引。 索引从0开始，应小于`typedArray.length`。 |
 | value | number | 是 | 预期值。 |
-| timeout | number | 否 | 最长等待时间，单位为毫秒。省略、传入`NaN`或正无穷时，若元素值等于预期值，则持续等待直到收到通知；负数按0处理。为0且元素值等于预期值时，立即返回`'timed-out'`。需要限制等待时间时，传入有限的非负数。 |
+| timeout | number | 否 | 最长等待时间，单位为ms。省略、传入`NaN`或正无穷时，若元素值等于预期值，则持续等待直到收到通知；负数按0处理。为0且元素值等于预期值时，立即返回'timed-out'。需要限制等待时间时，传入有限的非负数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------ | ------ |
-| 'ok' \| 'not-equal' \| 'timed-out' | 等待结果。`'ok'`表示被通知唤醒；`'not-equal'`表示目标元素不等于预期值，未进入等待；`'timed-out'`表示等待超时。 |
+| 'ok' \| 'not-equal' \| 'timed-out' | 等待结果。'ok'表示等待线程收到`notify`通知，结束等待；'not-equal'表示目标元素不等于预期值，未进入等待；'timed-out'表示等待超时。 |
 
 **错误码：**
 
@@ -557,27 +621,48 @@ static wait(typedArray: collections.Int32Array, index: number, value: number, ti
 
 **示例：**
 
+本示例与[`notify`](#notify)示例配套使用：宿主线程共享一个ArkTS `Int32Array`，Worker线程对索引0调用`wait`，宿主线程更新该元素后调用`notify`。请先按照[创建Worker的注意事项](../../arkts-utils/worker-introduction.md#创建worker的注意事项)创建并配置Worker文件，再运行`notify`示例中的宿主线程代码。
+
+Worker线程代码（`entry/src/main/ets/workers/AtomicsWorker.ets`）：
+
 ```ts
-import { ArkTSUtils, collections } from '@kit.ArkTS';
+// entry/src/main/ets/workers/AtomicsWorker.ets
+import { ArkTSUtils, collections, worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
-// 此示例须在允许阻塞等待的Worker线程中运行。
-// 当前值为10，与预期值9不相等，立即返回且不修改元素。
-let result = ArkTSUtils.Atomics.wait(array, 0, 9, 0);
-console.info(`返回值：${result}`); // 预期输出：返回值：not-equal
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：10
+workerPort.onmessage = (event: MessageEvents) => {
+  try {
+    const array: collections.Int32Array = event.data;
+    // 通知宿主线程已收到共享数组，随后在当前Worker线程中等待。
+    workerPort.postMessage('ready');
+    const result = ArkTSUtils.Atomics.wait(array, 0, 0, 5000);
+    console.info(`wait返回值：${result}`);
+    const value = ArkTSUtils.Atomics.load(array, 0);
+    console.info(`当前元素值：${value}`);
+    workerPort.postMessage(`done: wait=${result}, value=${value}`);
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Error code: ${error.code}, message: ${error.message}`);
+    workerPort.postMessage('error');
+  }
+};
 ```
+
+> **说明：**
+>
+> 若Worker先进入等待，再收到宿主线程的`notify`通知，`wait`返回'ok'，读取到的元素值为1。若宿主线程先将元素改为1，`wait`检查到该值与预期值0不相等，直接返回'not-equal'，无需等待通知。若在5000ms内未收到通知且元素仍为0，则返回'timed-out'。`ready`消息仅表示Worker已收到数组，不保证其已进入等待。
 
 ### notify
 
 static notify(typedArray: collections.Int32Array, index: number, count?: number): number
 
-通知通过[wait](#wait)等待指定Int32元素的线程，并返回已通知的线程数。等待与通知必须针对同一底层缓冲区的同一字节位置；不同数组中相同的数值索引不代表同一等待位置。使用同一缓冲区的不同视图时，还需考虑视图的`byteOffset`。
+通知通过[`wait`](#wait)等待指定Int32元素的线程，并返回已通知的线程数。等待与通知必须针对同一底层缓冲区的同一字节位置；不同数组中相同的数值索引不代表同一等待位置。使用同一缓冲区的不同视图时，还需考虑视图的`byteOffset`。
 
-此方法仅发送通知，不修改目标元素。通知只作用于当前已进入等待的线程，不会为后续`wait`调用保留。需要通知等待线程读取新值时，应先写入新值，再调用`notify`。
+> **说明：**
+>
+> 此方法仅发送通知，不修改目标元素。通知只作用于当前已进入等待的线程，不会为后续`wait`调用保留。需要通知等待线程读取新值时，应先写入新值，再调用`notify`。
 
 **起始版本：** 26.1.0
 
@@ -611,18 +696,56 @@ static notify(typedArray: collections.Int32Array, index: number, count?: number)
 
 **示例：**
 
+本示例是[`wait`](#wait)示例的宿主线程部分，两部分需要配套运行。通过[postMessageWithSharedSendable](js-apis-worker.md#postmessagewithsharedsendable12)按引用传递ArkTS `Int32Array`，使两个线程访问同一底层缓冲区；使用普通`postMessage`传递该数组会拷贝数据，无法用于本示例的等待与通知。
+
+宿主线程代码（例如在页面的按钮单击事件中调用`startAtomicsExample`）：
+
 ```ts
-import { ArkTSUtils, collections } from '@kit.ArkTS';
+// entry/src/main/ets/pages/Index.ets，在页面按钮单击事件中调用startAtomicsExample。
+import { ArkTSUtils, collections, worker, MessageEvents } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+function startAtomicsExample(): void {
+  try {
+    const array = new collections.Int32Array(1);
+    ArkTSUtils.Atomics.store(array, 0, 0);
+    const workerInstance = new worker.ThreadWorker('entry/ets/workers/AtomicsWorker.ets');
 
-// 当前没有等待线程，通知数量为0；notify不修改元素。
-let result = ArkTSUtils.Atomics.notify(array, 0, 1);
-console.info(`返回值：${result}`); // 预期输出：返回值：0
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：10
+    workerInstance.onmessage = (event: MessageEvents) => {
+      try {
+        const message: string = event.data;
+        if (message === 'ready') {
+          // 先写入新值，再通知等待同一元素的Worker线程。
+          ArkTSUtils.Atomics.store(array, 0, 1);
+          const count = ArkTSUtils.Atomics.notify(array, 0, 1);
+          console.info(`已通知的线程数：${count}`);
+        } else {
+          console.info(`Worker执行结果：${message}`);
+          workerInstance.terminate();
+        }
+      } catch (e) {
+        const error = e as BusinessError;
+        console.error(`Error code: ${error.code}, message: ${error.message}`);
+        workerInstance.terminate();
+      }
+    };
+
+    try {
+      workerInstance.postMessageWithSharedSendable(array);
+    } catch (e) {
+      workerInstance.terminate();
+      throw e;
+    }
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Error code: ${error.code}, message: ${error.message}`);
+  }
+}
 ```
+
+> **说明：**
+>
+> Worker已进入等待时，`notify`返回1，对应`wait`返回'ok'；若更新发生在Worker进入等待之前，`notify`返回0，Worker随后调用`wait`时返回'not-equal'。通知不会保留，因此示例先更新元素，保证后进入`wait`的Worker也能通过值比较跳过等待。线程调度或宿主线程响应超过等待时间时，也可能出现`wait`返回'timed-out'、`notify`返回0的情况，应结合`wait`返回值和读取到的元素值判断结果。
 
 ### xor
 
@@ -664,13 +787,19 @@ static xor(typedArray: AtomicIntegerArray, index: number, value: number): number
 
 ```ts
 import { ArkTSUtils, collections } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let array = new collections.Int32Array(1);
-array[0] = 10;
-console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
+try {
+  const array = new collections.Int32Array(1);
+  array[0] = 10;
+  console.info(`操作前：${array[0]}`); // 预期输出：操作前：10
 
-// 10的二进制为1010，3的二进制为0011。
-let result = ArkTSUtils.Atomics.xor(array, 0, 3);
-console.info(`返回值：${result}`); // 预期输出：返回值：10
-console.info(`操作后：${array[0]}`); // 预期输出：操作后：9
+  // 10的二进制为1010，3的二进制为0011。
+  const result = ArkTSUtils.Atomics.xor(array, 0, 3);
+  console.info(`返回值：${result}`); // 预期输出：返回值：10
+  console.info(`操作后：${array[0]}`); // 预期输出：操作后：9
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
 ```

@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:29.669Z pushedAt=2026-06-23T10:27:49.748Z -->
+<!-- md-trans-meta sourceCommit=608175d8fd85ddfce5e6f9d9b165b9d12862adb2 translatedAt=2026-11-12T04:36:54.175Z pushedAt=2026-11-18T03:30:33.518Z nl=1 -->
 
 >  **NOTE**
 >
@@ -18,9 +18,11 @@ The **<refresh\>** component is used to refresh a page through a pull-down gestu
 
 None
 
+
 ## Child Components
 
 Supported
+
 
 ## Attributes
 
@@ -35,6 +37,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | timeoffset<sup>6+</sup> | &lt;length&gt; | - | No| Distance between the update time and the top of the parent component.|
 | friction | number | 42 | No| Pull-down friction coefficient. The value ranges from 0 to 100. A larger value indicates a more responsive component. For example, if a user pulls the component down 100 px, it will actually move 100 * **friction**% px.|
 
+
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -42,7 +45,8 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | background-color | &lt;color&gt; | white<br>| No| Background color of the **\<refresh>** component.|
-| progress-color | &lt;color&gt; | black<br>| No| Color of the loading icon of the **\<refresh>** component.|
+| progress-color | &lt;color&gt; | black<br/> | No | Color of the progress icon of the **\<refresh>** component. |
+
 
 ## Events
 
@@ -53,9 +57,11 @@ The following events are supported.
 | refresh | { refreshing: refreshingValue } | Triggered when the **\<refresh>** component is pulled down and the refresh status changes. Available values are as follows:<br>- **true**: The **\<refresh>** component is being pulled down.<br>- **false**: The **\<refresh>** component is not being pulled down.|
 | pulldown | { state: string } | Triggered when a user starts or stops pulling down the **\<refresh>** component. Available values are as follows:<br>- **start**: The pull-down starts.<br>- **end**: The pull-down ends.|
 
+
 ## Methods
 
 The [universal methods](js-components-common-methods.md) are not supported.
+
 
 ## Example
 
@@ -118,7 +124,7 @@ export default {
   onInit() {
     this.list = [];
     for (var i = 0; i <= 3; i++) {
-            var item ='List element' + i;
+      var item ='List element' + i;
       this.list.push(item);
     }
   },

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f125faebecb74e0ac91596bf752ffa6043e4b775 translatedAt=2026-11-03T05:01:00.896Z pushedAt=2026-11-03T05:44:06.896Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:33:00.903Z pushedAt=2026-11-20T05:59:44.923Z nl=1 -->
 
 Since API version 23, the missing intermediate CA certificate can be downloaded during certificate chain validation.
 
@@ -135,7 +135,8 @@ async function buildX509CertChain() {
     let data = await cert.buildX509CertChain(param);
     console.info('buildX509CertChain result: success, certChainLength = ' + data.certChain.getCertList().length);
   } catch (err) {
-    console.error(`buildX509CertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`buildX509CertChain failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```

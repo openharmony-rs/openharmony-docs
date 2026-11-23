@@ -1,12 +1,11 @@
 # Interface (Picture)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a569cef255f0bfd2be482f42d11f341117248869 translatedAt=2026-08-03T03:56:57.248Z pushedAt=2026-08-04T03:21:17.349Z -->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-06T01:57:14.344Z pushedAt=2026-11-12T02:36:18.669Z nl=1 -->
 
 An image that contains special information can be decoded into a picture object, which generally contains the main picture, auxiliary picture, and metadata. The main picture contains most information about the image and is mainly used to render the image. The auxiliary picture is used to store data related to but different from the main picture, revealing more comprehensive details. The metadata is generally used to store information about the image file. The picture object class is used to read or write picture objects. Before calling any API in Picture, you must use [image.createPicture](arkts-apis-image-f.md#imagecreatepicture13) to create a Picture object.
 
@@ -57,6 +56,50 @@ async function GetMainPixelmap(pictureObj : image.Picture) {
     }
   } else {
     console.error('Picture object is null.');
+  }
+}
+```
+
+## setMainPixelmap
+
+setMainPixelmap(pixelmap: PixelMap): void
+
+Sets the main pixel map of a picture.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------------ | ------------------- | ---- | ---------------- |
+| pixelmap | [PixelMap](arkts-apis-image-PixelMap.md) | Yes | Pixel map object. |
+
+**Error codes**
+
+For details about the following error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID | Error Message               |
+| -------- | ---------------------- |
+| 7700204 | Parameter error. The pixelmap object is null or has been released.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function setMainPixelmap(picture : image.Picture, pixelmap : image.PixelMap) {
+  if (picture == null || pixelmap == null) {
+    console.error('picture or pixelmap is null');
+    return;
+  }
+  try {
+    picture.setMainPixelmap(pixelmap);
+  } catch(error) {
+    console.error(`Failed to do setMainPixelmap. error.code: ${error.code} ,error.message: ${error.message}`);
   }
 }
 ```
@@ -186,6 +229,7 @@ The Picture object on which this API is called must contain a main picture and a
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
+
 **Returns**
 
 | Type                          | Description                        |
@@ -232,7 +276,7 @@ Obtains the PixelMap object of the gain map.
 
 | Type                     | Description                                  |
 | ------------------------- | -------------------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) \| null | PixelMap object obtained. If there is no PixelMap object, null is returned.|
+| [PixelMap](arkts-apis-image-PixelMap.md) \| null | Pixel map object. Null is returned if no pixel map object exists. |
 
 **Example**
 

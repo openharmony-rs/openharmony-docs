@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件文本选中菜单与上下文菜单的实现方法，涵盖增减默认菜单项、自定义上下文菜单与文本选中菜单及保存图片等场景。"
+keywords: [Web菜单, editMenuOptions, onContextMenuShow, bindSelectionMenu, 文本选中菜单, 上下文菜单, 自定义菜单]
+doctype: guide
+status: active
+---
+
 # 使用Web组件菜单处理网页内容
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

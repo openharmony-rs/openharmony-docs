@@ -98,7 +98,7 @@ startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16000050 | Internal error. |
-| 16000061  | Operation not supported. |
+| 16000061  | Operation not supported. Possible causes: 1. Child processes cannot be started from within a child process; 2. The device does not support the capability. |
 | 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
@@ -168,7 +168,7 @@ startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallbac
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16000050 | Internal error. |
-| 16000061  | Operation not supported. |
+| 16000061  | Operation not supported. Possible causes: 1. Child processes cannot be started from within a child process; 2. The device does not support the capability. |
 | 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
@@ -247,7 +247,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
-| 16000061  | Operation not supported. |
+| 16000061  | Operation not supported. Child processes cannot be started from within a child process. |
 | 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
 
 **示例：**
@@ -365,7 +365,7 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
-| 16000061  | Operation not supported. |
+| 16000061  | Operation not supported. Child processes cannot be started from within a child process. |
 | 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**

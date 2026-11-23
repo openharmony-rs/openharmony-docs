@@ -551,7 +551,7 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 
 enableScrollWithKeyboard(enabled: boolean | undefined): T
 
-设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认支持键盘方向键滚动。
+设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认不支持键盘方向键滚动。
 
 **起始版本：** 26.1.0
 
@@ -565,7 +565,7 @@ enableScrollWithKeyboard(enabled: boolean | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | boolean \| undefined | 是   | 是否支持键盘方向键滚动。<br/>true：支持键盘方向键滚动。<br/>false：不支持键盘方向键滚动。<br/>undefined：支持键盘方向键滚动。 |
+| enabled  | boolean \| undefined | 是   | 是否支持键盘方向键滚动。<br/>true：支持键盘方向键滚动。<br/>false：不支持键盘方向键滚动。<br/>undefined：不支持键盘方向键滚动。 |
 
 **返回值：**
 

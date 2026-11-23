@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=cef93e38de85900c5c47dbd07476075f3b3ca270 translatedAt=2026-11-03T07:22:49.515Z pushedAt=2026-11-03T08:08:22.842Z nl=1 -->
+<!-- md-trans-meta sourceCommit=db9d21ed57bcee19f1e49649d8f38f589c952504 translatedAt=2026-11-12T03:37:29.983Z pushedAt=2026-11-13T09:31:11.570Z nl=1 -->
 
 [DepthComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md) is a DepthComponent that uses a background image and a depth map (or a 3D model with built-in depth information) to render originally flat content with a three-dimensional sense of spatial depth. It can be simply understood as adding a "glasses-free 3D" effect to a flat background. Each pixel in the background presents a different sense of layering based on its distance from the camera as described by the depth map; child components (such as text and icons) can blend into this three-dimensional scene through spatial effects, achieving realistic spatial interactions such as being occluded by background objects and visual tilting. This component is supported since API version 26.0.0.
 
@@ -49,13 +49,13 @@ The rendering process mainly includes the following stages:
 
 - **[Projection transformation](#projection-transformation)**: The background and child components uniformly pass through the same three-dimensional transformation pipeline, completing the projection from three-dimensional space to screen pixel coordinates.
 
-- **[Mapping Child Components Space](#mapping-child-components-space)**: Child components set their own position in three-dimensional space through the spatial effect [spatialEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffect), and participate in projection in two coordinate modes.
+- **[Mapping Child Components Space](#mapping-child-component-space)**: Child components set their own position in three-dimensional space through the spatial effect [spatialEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffect), and participate in projection in two coordinate modes.
 
 - **[Composite depth occlusion](#composite-depth-occlusion)**: The depth of child components is compared with the depth of the background at the corresponding position, and the degree to which they are occluded by the background is determined by the occlusion weight [SpatialEffectParams](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams).
 
 - **[Lighting calculation](#lighting-calculation)**: Through the lighting parameter [light](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#light), light and shade effects are supplemented for the scene to enhance the stereoscopic effect.
 
-### Scene reconstruction
+### Scene Reconstruction
 
 The depth map records the distance of each background pixel from the camera (the whiter the color, the closer it is; the blacker, the farther). The component assigns spatial depth to each background pixel based on the depth map, and then determines the projection position of each pixel on the screen in combination with camera parameters (position, rotation, and field of view), thereby reconstructing a scene with stereoscopic layering from a flat background.
 
@@ -75,11 +75,11 @@ For the differences between high-precision and low-precision depth maps at objec
 
 ![Depth map precision comparison](figures/DepthComponent-depth-map-quality.png)
 
-### Projection transformation
+### Projection Transformation
 
 The camera parameter [camera](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camera) is used to configure the virtual camera that observes the depth-of-field scene. It mainly includes the following parameters:
 
-- **[position](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**: The position of the camera itself. It determines "from which position the scene is observed". Moving the camera changes the distance and angle of what is seen. Note that "position" has different meanings in the camera parameters and in the spatial effect. For details, see the note at the end of [Mapping Child Components Space](#mapping-child-components-space).
+- **[position](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**: The position of the camera itself. It determines "from which position the scene is observed". Moving the camera changes the distance and angle of what is seen. Note that "position" has different meanings in the camera parameters and in the spatial effect. For details, see the note at the end of [Mapping Child Components Space](#mapping-child-component-space).
 
 - **[quaternion](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**: The rotation (orientation) of the camera, expressed as a quaternion in the form (x, y, z, w). It determines "which direction to look toward". The quaternion (x, y, z, w) describes **a single complete rotation**: (x, y, z) gives the direction of the rotation axis, and w is related to the rotation angle (w = cos(θ/2), (x, y, z) = axis · sin(θ/2)). Together, the four components determine how the camera rotates. Among them, (0, 0, 0, 1) is the identity quaternion, indicating no rotation, so the camera keeps its default orientation and looks toward the -Z direction. For common orientations, you can directly use (0, 0, 0, 1) from the example. When a specific viewing angle is required, rotating around the Y axis adjusts the orientation left or right, rotating around the X axis adjusts pitch, and rotating around the Z axis adjusts roll. Then convert using the axis-angle formula above.
 
@@ -97,7 +97,7 @@ The camera parameter [camera](../reference/apis-arkui/arkui-ts/ts-basic-componen
 
   - **[cropScale](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camerabuffercrop)**: Scaling ratio of the cropping window. The base size of the cropping window is the component layout size. A value less than 1 means a smaller cropping window, corresponding to enlarging a local area; a value greater than 1 means a larger cropping window, corresponding to shrinking the content.
 
-When not set, the component layout size is used as the base image by default, with an offset of (0, 0) and a scale of 1.0, that is, the default mapping that renders the entire image. When you need to crop a local area for rendering, refer to the [Using tilt-shift cropping to render a background local](#using-tilt-shift-cropping-to-render-a-background-local) example.
+When not set, the component layout size is used as the base image by default, with an offset of (0, 0) and a scale of 1.0, that is, the default mapping that renders the entire image. When you need to crop a local area for rendering, refer to the [Using tilt-shift cropping to render a background local](#rendering-partial-backgrounds-with-tilt-shift-cropping) example.
 
 Among them, yFov, zNear, and zFar are core parameters that appear repeatedly in the subsequent examples: yFov controls the breadth of the field of view, and zNear and zFar together define a "visible range". Only objects whose distance from the camera falls within [zNear, zFar] will be rendered.
 
@@ -125,11 +125,11 @@ Among them, **perspective division** (division by w) is the key step that produc
 
 **Camera movement**: When the camera moves in world space, the positions of all objects relative to it change - moving along the Z axis (forward/backward) changes the projection size of objects (near large, far small), while moving along the X axis (left/right) or Y axis (up/down) makes objects move in the opposite direction on the screen.
 
-### Mapping Child Components Space
+### Mapping Child Component Space
 
 A child component uses spatialEffect to set its position in three-dimensional space, participates in the DepthComponent's three-dimensional transformation, and produces spatial interactions such as occlusion and tilt with the background. The child component's spatial effect is defined by SpatialEffectParams, which mainly includes the following parameters:
 
-- **[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**: The child component's position in three-dimensional space. Two forms are supported — the numeric form represents the child component's depth information (determining its distance from the camera; for example, in [Set depth only to implement text occlusion effect](#set-depth-only-to-implement-text-occlusion-effect), a negative value indicates that the child component is in front of the camera, and a larger absolute value means farther from the camera); the struct form uses four corners (top-left, top-right, bottom-left, bottom-right) to position the component, which can express a tilted placement effect. Here, "position" refers to the child component's placement position, which differs from the position in the camera parameters; see the note at the end of this section for details.
+- **[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**: The child component's position in three-dimensional space. Two forms are supported — the numeric form represents the child component's depth information (determining its distance from the camera; for example, in [Set depth only to implement text occlusion effect](#setting-depth-only-to-implement-text-occlusion-effect), a negative value indicates that the child component is in front of the camera, and a larger absolute value means farther from the camera); the struct form uses four corners (top-left, top-right, bottom-left, bottom-right) to position the component, which can express a tilted placement effect. Here, "position" refers to the child component's placement position, which differs from the position in the camera parameters; see the note at the end of this section for details.
 
 - **[occlusionWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**: Occlusion weight. Controls the degree to which the child component is occluded by the background, with a value range of [0, 1] and a default value of 0; 0 means not occluded, and 1 means fully occluded.
 
@@ -164,7 +164,7 @@ For details, see [Spatial effect](../reference/apis-arkui/arkui-ts/ts-universal-
 >
 > The difference between the two "position" parameters: the position in the camera parameters refers to "the location of the camera itself, the observing device" (determining where to view from); the position in the spatial effect refers to "the location where the child component is placed" (determining where the viewed object is).
 
-### Composite depth occlusion
+### Composite Depth Occlusion
 
 When rendering a child component, its depth is compared with the depth of the background at the corresponding position, and the degree to which it is occluded by the background is determined by the occlusion weight SpatialEffectParams (occlusionWeight, value range [0, 1]), so that the child component naturally blends into the spatial hierarchy of the background. The determination logic is as follows:
 
@@ -174,7 +174,7 @@ A child component is located between the near and far sides of the background in
 
 ![Spatial hierarchy relationship diagram](figures/DepthComponent-spatial-layer.png)
 
-### Lighting calculation
+### Lighting Calculation
 
 The lighting parameter light defines the light that illuminates the depth-of-field scene. During rendering, the brightness of each pixel is calculated based on the light direction and scene geometry, and then composited with the background color to supplement the scene with light, shade, and color, enhancing the stereoscopic realism. A 2D image background itself has no geometric surface; during rendering, the surface normal is estimated for each pixel based on the depth map (the depth gradient direction is the surface orientation), and then the pixel brightness is calculated according to the light direction (that is, relief-style shading, which produces light and shade contrast based on the normal direction to simulate a stereoscopic relief effect). A 3D model uses the model's own normals in the calculation. It mainly includes the following parameters:
 
@@ -272,7 +272,7 @@ The background resource supports two forms: static image (2D) and 3D model. The 
 
 The overall development workflow is: prepare the background (and depth map) resource → create a DepthComponent and pass in the background resource → set the depth map or color space as needed → configure camera and lighting parameters → set spatial effects for child components → compile, build, and verify the effect.
 
-### Implementing text tilt and masking (2D image background)
+### Implementing Text Tilt and Masking (2D Image Background)
 
 In this scenario, a static image is used as the background, combined with a depth map. By configuring spatial effects for the child component Text, the effect of "text visually tilting and being partially masked by the image" is achieved.
 
@@ -303,7 +303,7 @@ After passing a static image resource through the constructor parameter `backgro
 <!--deprecated_code_no_check-->
 ``` TypeScript
 // Step ①: Pass in the background resource and set the depth map
-DepthComponent($r('app.media.background')) {
+DepthComponent($r('app.media.depthcomponent_background')) {
   // Declare child components inside the closure, and configure spatial effects for them later
 }
   .width('100%')
@@ -375,6 +375,7 @@ Text('Depth Component')
 Combine the above steps (and supplement the component with `onComplete`/`onError` event callbacks to perceive the background loading result, where onComplete is triggered when the background resource loads successfully and onError is triggered when loading fails) to obtain the complete example:
 
 <!-- @[depth_component_2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_2D.ets) -->
+
 ``` TypeScript
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -385,7 +386,7 @@ struct DepthComponent2DExample {
   build() {
     Column() {
       // Replace with the actual resource file.
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('Depth Component')
           .fontSize(100)
           .spatialEffect({
@@ -446,7 +447,7 @@ Open the application page. After the DepthComponent successfully loads the backg
 
    ![Text tilt and occlusion effect under a 2D background](../reference/apis-arkui/arkui-ts/figures/DepthComponent-2D.png)
 
-### Implementing text tilt and masking (3D model background)
+### Implementing Text Tilt and Masking (3D Model Background)
 
 The integration process for a 3D model (glTF/glb) background is basically the same as that for a 2D image background, with the same overall structure. The differences are: the background resource is a 3D model, the construction parameters can specify a color space, and the 3D model has built-in depth information, so there is no need to set a depth map. First, look at the pseudocode skeleton:
 
@@ -572,7 +573,7 @@ Open the application page. After DepthComponent successfully loads the 3D model,
 
    ![Text tilt and occlusion effect under 3D background](../reference/apis-arkui/arkui-ts/figures/DepthComponent-3D.png)
 
-### Set depth only to implement text occlusion effect
+### Setting Depth Only to Implement Text Occlusion Effect
 
 The preceding examples position child components through the four-corner structure (leftTop/rightTop/leftBottom/rightBottom), which can express a tilted form. When you only need the child component to blend into the background by depth without tilting, the spatial effect position also supports directly providing the child component's depth information through a numeric notation. In this case, the child component maintains its layout position and flat form within the component, and only produces a front-to-back occlusion relationship with the background according to that depth.
 
@@ -593,6 +594,7 @@ Text('Spatial Effect')
 **Complete Code**
 
 <!-- @[depth_component_depth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_Depth.ets) -->
+
 ``` TypeScript
 // xxx.ets
 @Entry
@@ -601,7 +603,7 @@ struct DepthComponentDepthExample {
   build() {
     Column() {
       // Developers should replace this with the actual resource file.
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('Spatial Effect')
           .fontSize(100)
           .spatialEffect({
@@ -637,9 +639,9 @@ Open the application page. The text "Spatial Effect" is not tilted and is placed
 
    ![Text occlusion effect with depth only](../reference/apis-arkui/arkui-ts/figures/DepthComponent-depthonly.png)
 
-### Using NDC coordinates to implement controllable text tilt
+### Using NDC Coordinates to Implement Controllable Text Tilt
 
-In the previous [Implementing text tilt and masking (2D image background)](#implementing-text-tilt-and-masking-2d-image-background) example, the X, Y, and Z of the four corners' position are all world coordinates (the default `WORLD_XYZ` mode), which undergo perspective projection together with the camera view. This example instead uses the `NDC_XY_WORLD_Z` mode: the X and Y components use Normalized Device Coordinates (NDC, with a value range of [-1, 1], mapped directly to the screen without perspective division), while the Z component is a world coordinate that controls depth (for a detailed description of coordinate modes, see [Mapping Child Components Space](#mapping-child-components-space)).
+In the previous [Implementing text tilt and masking (2D image background)](#implementing-text-tilt-and-masking-2d-image-background) example, the X, Y, and Z of the four corners' position are all world coordinates (the default `WORLD_XYZ` mode), which undergo perspective projection together with the camera view. This example instead uses the `NDC_XY_WORLD_Z` mode: the X and Y components use Normalized Device Coordinates (NDC, with a value range of [-1, 1], mapped directly to the screen without perspective division), while the Z component is a world coordinate that controls depth (for a detailed description of coordinate modes, see [Mapping Child Components Space](#mapping-child-component-space)).
 
 In this example, the four corners' XY are directly set to a trapezoid that is narrow at the top and wide at the bottom (the top edge x is set to ±0.2 and the bottom edge x to ±0.5), and Z is uniformly set to -2.0, so the text presents a "small at the top, large at the bottom" tilted form on the screen:
 
@@ -670,6 +672,7 @@ Text('NDC Mode')
 **Complete Code**
 
 <!-- @[depth_component_ndc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_NDC.ets) -->
+
 ``` TypeScript
 // xxx.ets
 @Entry
@@ -678,7 +681,7 @@ struct DepthComponentNdcExample {
   build() {
     Column() {
       // Developers should replace this with the actual resource file
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('NDC Mode')
           .textAlign(TextAlign.Center)
           .fontSize(120)
@@ -719,7 +722,7 @@ Open the application page. The text "NDC Mode" appears on the screen in a tilted
    ![Text tilt effect implemented with NDC coordinates](../reference/apis-arkui/arkui-ts/figures/DepthComponent-NDC.png)
 
 
-### Using tilt-shift cropping to render a background local
+### Rendering Partial Backgrounds with Tilt-Shift Cropping
 
 The previous examples all have the camera render the entire background image (by default using the component layout size as the base image, offset (0, 0), scale 1.0). This example uses the camera's optional parameter cameraBufferCrop (tilt-shift cropping, also known as off-axis rendering) to crop a local region from the background image and render it enlarged, without moving or rotating the camera. This is commonly used to take only a certain region from a high-resolution wallpaper as the depth-of-field background.
 
@@ -763,6 +766,7 @@ For the meaning of each sub-parameter (bufferWidth/bufferHeight, cropOffset, cro
 **Complete Code**
 
 <!-- @[depth_component_crop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_Crop.ets) -->
+
 ``` TypeScript
 // xxx.ets
 @Entry
@@ -771,7 +775,7 @@ struct DepthComponentCropExample {
   build() {
     Column() {
       // Developers should replace this with the actual resource file
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('Spatial Effect')
           .fontSize(100)
           .spatialEffect({
@@ -809,7 +813,7 @@ struct DepthComponentCropExample {
 
 > **Note:**
 >
-> In this example, the child component uses the numeric form of the spatial effect position (directly specifying the depth, which determines the child component's distance from the camera). This form is consistent with the [Set depth only to implement text occlusion effect](#set-depth-only-to-implement-text-occlusion-effect) example (which uses -2.0, while this example uses -10.0), and is the counterpart of the four-corner struct (leftTop/rightTop/leftBottom/rightBottom) positioning form that can express tilt. For details about the two forms, see [SpatialEffectParams](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams).
+> In this example, the child component uses the numeric form of the spatial effect position (directly specifying the depth, which determines the child component's distance from the camera). This form is consistent with the [Set depth only to implement text occlusion effect](#setting-depth-only-to-implement-text-occlusion-effect) example (which uses -2.0, while this example uses -10.0), and is the counterpart of the four-corner struct (leftTop/rightTop/leftBottom/rightBottom) positioning form that can express tilt. For details about the two forms, see [SpatialEffectParams](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams).
 
 **Expected Results**
 

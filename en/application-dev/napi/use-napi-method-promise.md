@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to call ArkTS methods that return Promises using Node-API, bind Promises to C++ callbacks to handle asynchronous results, and convert data types for C++ when calling asynchronous APIs in an ArkTS runtime environment."
+keywords: [Node-API, Promise, ArkTS methods, asynchronous calls, C++ callbacks, data type conversion, runtime environment, napi_get_named_property]
+doctype: guide
+status: active
+---
+
 # Calling an ArkTS Method with Return Value of a promise Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.392Z nl=1 -->
 
 ## When to Use
 You can call the ArkTS APIs, which return a promise, in the created ArkTS runtime environment as follows:
@@ -22,7 +31,7 @@ Convert the data type: In the callback, convert the JavaScript (JS) result to th
     #include "hilog/log.h"
     #include "napi/native_api.h"
     
-    // Callback for processing a resolved promise.
+    // Callback for resolving the Promise result.
     static napi_value ResolvedCallback(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -35,7 +44,7 @@ Convert the data type: In the callback, convert the JavaScript (JS) result to th
         return nullptr;
     }
     
-    // Callback for processing a rejected promise.
+    // Callback for rejecting the Promise.
     static napi_value RejectedCallback(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -44,9 +53,10 @@ Convert the data type: In the callback, convert the JavaScript (JS) result to th
     
         napi_value error = nullptr;
         napi_coerce_to_string(env, args[0], &error);
-        char errorMsg[1024];
-        size_t len;
-        napi_get_value_string_utf8(env, error, errorMsg, sizeof(errorMsg), &len);
+        char errorMsg[1024] = {0};
+        size_t len = 0;
+        napi_get_value_string_utf8(env, error, errorMsg, sizeof(errorMsg) - 1, &len);
+        errorMsg[len] = '\0';
         OH_LOG_ERROR(LOG_APP, "Promise rejected with error:%{public}s", errorMsg);
         return nullptr;
     }
@@ -111,7 +121,7 @@ Convert the data type: In the callback, convert the JavaScript (JS) result to th
 - API declaration
     ```ts
     // index.d.ts
-    export const callArkTSAsync: (func: Function) => object;
+    export const callArkTSAsync: (func: Function) => void;
     ```
 
 - Configure the **CMakeLists.txt** file as follows:

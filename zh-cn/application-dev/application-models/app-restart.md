@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用主动重启、原子化服务重启及故障恢复被动重启三种方案，对比保留窗口与不保留窗口的重启方式，帮助开发者按场景选择合适的重启策略。"
+keywords: [应用重启, restartApp, restartSelfAtomicService, 保留窗口重启, 应用故障重启]
+doctype: guide
+status: active
+---
 # 应用重启
 
 <!--Kit: Ability Kit-->

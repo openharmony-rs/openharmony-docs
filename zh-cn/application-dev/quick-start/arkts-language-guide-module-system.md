@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
-description: "介绍ArkTS基于ES模块的import/export语法体系，涵盖静态导入、类型导入、动态导入、模块路径与模块组织方式，并说明不支持CommonJS等限制。"
-keywords: [ArkTS, 模块系统, import, export, 静态导入, 动态导入, 类型导入, 模块路径, ES模块]
+description: "介绍ArkTS基于ES模块的import/export语法体系，涵盖静态导入、动态导入、模块懒加载、模块组织、顶层语句及.d.ets声明文件。"
+keywords: [ArkTS, 模块系统, import, export, 静态导入, 动态导入, 声明文件, ES模块]
 doctype: guide
 status: active
 ---
@@ -9,12 +9,12 @@ status: active
 # 模块系统
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-模块系统用于把代码拆分为边界清晰、可复用、可维护的文件。ArkTS使用ES模块的`import`和`export`语法，不支持CommonJS的`require`和命名空间。
+模块系统用于把代码拆分为边界清晰、可复用、可维护的文件。本章介绍模块的基础概念、导出与导入语法、动态导入与懒加载、模块路径与模块组织方式、顶层语句的执行时机，以及`.d.ets`声明文件。
 
 ## 模块基础
 
@@ -22,7 +22,7 @@ status: active
 
 ### 模块的定义
 
-包含顶层`import`或`export`的文件会被视为模块。模块中的变量、函数、类、接口默认只在当前文件可见，只有通过`export`导出的声明才能被其他模块导入。
+在ArkTS中，一个文件即一个模块。模块中的变量、函数、类、接口默认只在当前文件可见，只有通过`export`导出的声明才能被其他模块导入。
 
 <!-- @[module_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/User.ets) -->
 
@@ -52,35 +52,6 @@ export class UserService {
   }
 }
 ```
-
-### 模块的导入
-
-使用`import { name } from 'path'`语法引入其他模块导出的绑定，在当前文件中使用。
-
-<!-- @[module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleImport.ets) -->
-
-``` TypeScript
-import { User, UserService, createUser } from '../common/User';
-
-let user: User = createUser(1, 'Alice');
-let service: UserService = new UserService();
-
-service.add(user);
-let users: User[] = service.getAll();
-let firstUser: User | undefined = users[0];
-console.info(`${firstUser ? firstUser.name : ''}`);
-```
-
-### 空导出标记模块
-
-TypeScript中，一个没有顶层导入或导出的文件通常按脚本处理。需要显式把文件标记为模块时，可以使用空导出：
-
-<!-- @[empty_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-export {}
-```
-ArkTS文件通常按工程模块组织，仍建议通过清晰的导入导出表达模块边界。
 
 ## export导出
 
@@ -163,7 +134,7 @@ export { InternalUserService as RenamedUserService };
 
 ### 默认导出
 
-默认导出使用export default导出主要功能，导入时可使用任意名称。
+默认导出使用`export default`导出主要功能，导入时可使用任意名称。
 
 <!-- @[default_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Logger.ets) -->
 
@@ -206,6 +177,8 @@ export interface User {
 <!-- @[submodule_export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Service.ets) -->
 
 ``` TypeScript
+import { User, Product } from './Types';
+
 export class UserService {
   findById(id: number): User | null {
     if (id <= 0) {
@@ -219,7 +192,7 @@ export class UserService {
 }
 ```
 
-随后通过桶文件将这些分散的导出聚合为统一入口。
+随后通过桶文件将这些分散的导出聚合为统一入口，例如在`pages`目录下创建桶文件`ModuleSystem.ets`：
 
 <!-- @[barrel_file_reexport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
 
@@ -228,12 +201,12 @@ export { User } from '../common/Types';
 export { UserService } from '../common/Service';
 ```
 
-使用方只需从桶文件导入，无需关心各成员的来源文件。
+使用方只需从桶文件导入，无需关心各成员的来源文件。需要注意的是，从桶文件导入会解析并执行整条依赖链上的模块，性能敏感场景的优化建议见[import路径展开](../arkts-utils/arkts-module-side-effects.md#通过import路径展开优化性能)。
 
 <!-- @[barrel_file_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/BarrelFileImport.ets) -->
 
 ``` TypeScript
-import { User, UserService } from '../common/User';
+import { User, UserService } from './ModuleSystem';
 
 let service: UserService = new UserService();
 let user: User | null = service.findById(1);
@@ -316,7 +289,7 @@ console.info(`${title}`);
 
 ### 命名空间导入
 
-命名空间导入会把某个模块的全部命名导出放到一个对象上。它不是TypeScript `namespace`声明，只是ES模块导入语法。
+使用`import * as name from 'path'`把目标模块的全部命名导出收拢到一个对象上，通过`name.成员名`访问。
 
 <!-- @[export_multiple_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Math.ets) -->
 
@@ -331,7 +304,7 @@ export function multiply(left: number, right: number): number {
 }
 ```
 
-使用命名空间导入可以将模块的全部命名导出收拢到一个对象上。
+导入方通过统一的对象前缀访问全部成员。
 
 <!-- @[namespace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/NamespaceImport.ets) -->
 
@@ -343,9 +316,22 @@ let product: number = MathUtil.multiply(3, 4);
 console.info(`${sum}, ${product}`);
 ```
 
+命名空间导入适合导出成员较多、且希望调用处保留来源前缀的工具模块；日常场景推荐命名导入，按需引入、依赖更清晰。
+
 ### 副作用导入
 
-副作用导入会执行目标模块，但不导入任何绑定。使用时应谨慎，避免隐藏初始化逻辑。
+不带任何绑定的`import 'path'`只触发目标模块的加载执行，不引入它的任何导出，适用于模块在加载时自行完成初始化、注册等工作的场景。
+
+<!-- @[side_effect_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Config.ets) -->
+
+``` TypeScript
+// Config.ets：顶层代码在模块被加载时执行
+console.info('Config initialized');
+
+export const APP_LABEL: string = 'DemoApp';
+```
+
+下面的语句不使用`Config`模块的任何导出，仅确保其顶层代码先于当前文件执行：
 
 <!-- @[side_effect_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SideEffectImport.ets) -->
 
@@ -353,39 +339,13 @@ console.info(`${sum}, ${product}`);
 import '../common/Config';
 ```
 
-## 类型导入与类型导出
+模块加载可能引发的副作用及优化方式，见[模块加载副作用及优化](../arkts-utils/arkts-module-side-effects.md)。
 
-TypeScript支持`import type`和`export type`语法标记类型专用导入导出。ArkTS中使用普通`import`引入类型声明。
-
-### TypeScript类型专用导入
-
-TypeScript支持`import type`和`export type`，用于标记只在类型位置使用的导入导出。
-
-<!-- @[ts_type_import_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript支持import type和export type，ArkTS按工具链支持情况使用
-import type { User } from '../common/User';
-export type { User };
-```
-
-### ArkTS中的import语句导入
-
-ArkTS使用普通`import`引入类型声明，不使用`import type`专用语法，类型与值统一通过`import`导入。
-
-<!-- @[type_import_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeImportUsage.ets) -->
-
-``` TypeScript
-import { User } from '../common/User';
-
-function printUser(user: User): void {
-  console.info(`${user.name}`);
-}
-```
+<!--RP1--><!--RP1End-->
 
 ## 动态导入
 
-使用`import()`在运行时按需加载模块，返回Promise，常与async/await搭配实现懒加载。
+使用`import()`在运行时按需加载模块，适用于按条件加载、延迟初始化等场景。
 
 ### 基本写法
 
@@ -412,7 +372,7 @@ export function getFeatureLabel(): string {
 
 ### 使用限制
 
-动态导入的模块路径应保持可静态分析。涉及打包、分包、跨包加载或运行时权限时，需要遵循HarmonyOS工程和运行时约束。
+动态导入的模块路径应保持可静态分析。涉及打包、分包、跨包加载或运行时权限时，需要遵循HarmonyOS工程和运行时约束。动态`import`还支持按需加载HSP/HAR/ohpm包等场景，适用场景与完整用法见[动态加载](../arkts-utils/arkts-dynamic-import.md)。
 
 <!-- @[conditional_dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
 
@@ -432,9 +392,33 @@ async function loadByName(name: string): Promise<string> {
 }
 ```
 
+## 模块懒加载
+
+在`import`语句中添加`lazy`关键字，可以把目标模块的执行推迟到导入的变量首次被使用时，从而缩短应用的冷启动时间。冷启动阶段只解析依赖、不执行模块源码；变量被访问时才同步触发模块执行。该特性从API version 12开始支持。
+
+<!-- @[lazy_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+
+``` TypeScript
+// main.ts
+import lazy { a } from './mod1';  // 冷启动时不执行mod1.ts的顶层代码
+
+export function loadOnDemand(): string {
+  return a;  // a首次被使用时，才触发mod1.ts的加载与执行
+}
+```
+
+<!-- @[lazy_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/mod1.ts) -->
+
+``` TypeScript
+// mod1.ts
+export let a = 'mod1 executed';
+```
+
+与动态导入相比，懒加载保持静态导入写法、写在源码开头，触发加载时同步执行。完整语法规格、使用限制与错误示例，见[延迟加载（lazy import）](../arkts-utils/arkts-lazy-import.md)。
+
 ## 模块路径
 
-模块路径指定导入导出的源文件位置，ArkTS支持相对路径（`./`或`../`开头）与ohpm包名两种形式，相对路径可省略`.ts`后缀。
+模块路径指定导入导出的源文件位置，ArkTS支持相对路径（`./`或`../`开头）与ohpm包名两种形式。相对路径可省略文件扩展名；导入ohpm包中的模块时直接使用包名，如`import { describe } from '@ohos/hypium'`。
 
 ### 相对路径
 
@@ -446,19 +430,6 @@ async function loadByName(name: string): Promise<string> {
 import { User } from '../common/User';
 import { AppConfig } from '../config/appConfig';
 import { UserRepository } from '../common/Repository';
-```
-
-### 路径别名
-
-TypeScript支持通过`baseUrl`、`paths`等配置实现路径别名。ArkTS工程中的支持程度取决于工程配置和构建工具。公共教程中应优先展示标准相对路径或平台推荐路径。
-
-**TypeScript对照**
-
-<!-- @[ts_path_alias_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript/工程配置对照写法
-import { describe } from '@ohos/hypium';
 ```
 
 ## 模块组织
@@ -544,7 +515,7 @@ export function canRead(identity: UserIdentity): boolean {
 
 ## 顶层语句
 
-顶层语句是指在模块最外层编写的语句，不被任何函数、类或块级作用域包裹。这些语句包括变量声明、函数声明和表达式。
+模块最外层直接编写的代码称为顶层语句，不被函数、类或块级作用域包裹。顶层语句在模块首次被加载时按从上到下的顺序执行，常用于模块级别的初始化逻辑。被导入模块的顶层语句总是先于导入方执行。
 
 <!-- @[top_level_statements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
 
@@ -562,211 +533,25 @@ console.info('Module loaded');
 logConfig();
 ```
 
-顶层语句在模块加载时按从上到下的顺序执行，适合用于模块级别的初始化逻辑。
+上例中，`console.info('Module loaded')`与`logConfig()`在模块加载时立即执行，`logConfig()`能读取到先于它声明的`appConfig`和`MAX_RETRIES`。顶层语句应保持轻量，避免耗时初始化拖慢模块加载。模块执行的完整规则（加载顺序、单次执行语义、跨线程行为等）与加载流程，见[模块化运行简介](../arkts-utils/module-principle.md)。模块加载可能引发的副作用及优化方式，见[模块加载副作用及优化](../arkts-utils/arkts-module-side-effects.md)。
 
-## TypeScript模块语法边界
+## 声明文件
 
-TypeScript的CommonJS语法在ArkTS中不支持，使用ES模块替代。
+声明文件是对模块对外能力的整体描述，只包含类型和接口的声明（如`interface`、函数签名等），不包含具体实现，供编译器进行类型检查。ArkTS使用`.d.ets`文件作为声明文件，作用与TypeScript中的`.d.ts`文件类似，常用于共享包对外提供的类型声明、NAPI原生模块导出对象的类型声明等场景。模块进行类型解析时，若目录下存在同名文件（后缀不同），默认优先加载`.d.ets`文件，其次加载`.d.ts`文件。
 
-### TypeScript namespace对照
+声明文件中使用`declare`关键字声明“在别处已实现”的实体：它告诉编译器该实体由实现文件或原生库提供，当前文件只描述其类型。例如`declare const`声明由其他模块或原生库定义的常量，`declare function`声明在别处实现的函数，`export declare`在声明的同时对外导出：
 
-TypeScript的`namespace`是早期组织代码的方式，现代TypeScript和ArkTS都应优先使用ES模块。
-
-**TypeScript对照**
-
-<!-- @[ts_avoid_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @[declaration_file_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Declaration.d.ets) -->
 
 ``` TypeScript
-// TypeScript对照写法，ArkTS普通业务代码不使用
-namespace Validation {
-  export function isName(value: string): boolean {
-    return value.length > 0;
-  }
-}
-```
+// common/Declaration.d.ets：声明文件只包含声明，不包含实现
+declare const APP_VERSION: string;
 
-### 声明模块对照
+declare function logConfig(): void;
 
-`.d.ts`中常见的`declare module`用于描述外部模块类型，不是ArkTS普通业务代码。
-
-**TypeScript对照**
-
-<!-- @[ts_declaration_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleDeclaration.ts) -->
-
-``` TypeScript
-// TypeScript声明文件对照写法
-declare module 'external-library' {
-  export function run(): void;
-}
-```
-
-## ArkTS限制
-
-ArkTS不支持require和namespace，使用ES模块的import/export。
-
-### 不使用require
-
-ArkTS不支持CommonJS的require，使用ES模块的import代替。
-
-**TypeScript对照**
-
-<!-- @[ts_require_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript支持CommonJS require语法，ArkTS使用ES模块import
-const Service = require('../common/Service');
-Service.createProduct('Widget');
-```
-
-ArkTS中改用ES模块的import完成同样的导入。
-
-<!-- @[use_esm_not_commonjs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-// 使用ES模块import代替CommonJS require
-import { createProduct } from '../common/Service';
-```
-
-### 不使用namespace组织业务代码
-
-namespace用于类型声明，业务代码应使用模块组织。
-
-<!-- @[use_module_not_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/UseModuleNotNamespace.ets) -->
-
-``` TypeScript
-export class UserService {}
-```
-
-### 不依赖全局脚本作用域
-
-模块之间通过`import`和`export`建立依赖，不把变量隐式挂到全局作用域。
-
-<!-- @[export_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Config.ets) -->
-
-``` TypeScript
-// Config.ets
-export const APP_NAME: string = 'DemoApp';
-export const version: string = '1.0';
-```
-
-导入方获取常量后即可在自己的模块中使用。
-
-<!-- @[import_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ImportConstant.ets) -->
-
-``` TypeScript
-import { APP_NAME } from '../common/Config';
-
-console.info(`${APP_NAME}`);
-```
-
-## export =与import =
-
-TypeScript支持`export =`语法将整个模块导出为单个对象，配合`import = require()`导入，用于CommonJS互操作。**ArkTS不支持此语法**，使用ES模块的`export default`和`import`替代。
-
-**TypeScript对照**
-
-<!-- @[ts_export_equals_import_equals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript/CommonJS对照写法，ArkTS不支持
-class TsCalculator {
-  add(a: number, b: number): number {
-    return a + b;
-  }
+declare class ConfigReader {
+  read(key: string): string | undefined;
 }
 
-export = TsCalculator;
-// 导入方（另一文件）：
-// import Calculator = require('calculator');
-// let calc = new Calculator();
-// console.info(calc.add(1, 2)); // 3
+export declare function getConfig(name: string): string;
 ```
-
-ArkTS替代方式：
-
-<!-- @[export_import_default_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-export default class EidcCalculator {
-  add(a: number, b: number): number {
-    return a + b;
-  }
-}
-
-let eidcCalc: EidcCalculator = new EidcCalculator();
-console.info(`${eidcCalc.add(1, 2)}`); // 3
-```
-
-## 三斜线指令
-
-TypeScript支持三斜线指令（`/// <reference ... />`）在`.d.ts`文件中声明文件间依赖关系。**ArkTS不支持三斜线指令**，模块间依赖通过`import`/`export`建立。
-
-**TypeScript对照**
-
-<!-- @[ts_triple_slash_directives](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript声明文件写法，ArkTS不支持
-/// <reference path="myModule.d.ts" />
-/// <reference types="node" />
-/// <reference lib="es2015" />
-
-// 上述指令在.d.ts文件中声明文件间依赖关系
-// ArkTS中模块依赖通过import/export建立
-```
-
-ArkTS中所有模块依赖通过ES模块的`import`语句显式声明，编译器自动解析依赖关系，无需手动引用声明文件。
-
-## isolatedModules
-
-TypeScript的`isolatedModules`选项确保每个文件可独立编译，防止跨文件类型推断依赖。在此模式下，`import type`用于仅类型导入，`const enum`需特殊处理。ArkTS的编译器天然保证每个文件可独立编译，类型导入使用普通`import`，不涉及`isolatedModules`配置。
-
-> **说明：**
-> 
-> ArkTS中所有导入语句既能导入值也能导入类型，编译器自动处理类型擦除，开发者无需区分类型导入和值导入。
-
-## 命名空间详解
-
-TypeScript的命名空间（`namespace`）是早期的代码组织方式，支持嵌套、别名和多文件协作。ArkTS不使用命名空间组织业务代码，使用ES模块替代。以下为TypeScript命名空间特性对照。
-
-### 命名空间别名
-
-TypeScript支持`import name = Say.Hello`创建命名空间成员的别名，简化深层嵌套引用。ArkTS中使用ES模块的重命名导入替代。
-
-**TypeScript对照**
-
-<!-- @[ts_namespace_alias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，ArkTS不支持
-namespace App {
-  export namespace Config {
-    export const version: string = '1.0';
-  }
-}
-
-import ver = App.Config.version;
-console.info(`${ver}`); // 1.0
-```
-
-ArkTS替代：
-
-<!-- @[rename_import_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-import { version as riaVer } from '../common/Config';
-
-console.info(`${riaVer}`); // 1.0
-```
-
-### 多文件协作
-
-TypeScript命名空间可通过`/// <reference path="..." />`跨文件拆分合并。ArkTS中跨文件共享代码使用ES模块的`import`/`export`，每个文件是独立模块，通过导入导出建立依赖。
-
-### 命名空间陷阱
-
-TypeScript中命名空间存在以下陷阱，ArkTS通过使用ES模块天然避免：
-
-- 不应使用命名空间组织代码（用模块替代）——ArkTS强制使用模块。
-- 命名空间与模块不应混用——ArkTS只支持模块。
-- `isolatedModules`与命名空间的兼容问题——ArkTS不涉及此配置。

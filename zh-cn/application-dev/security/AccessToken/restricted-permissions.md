@@ -770,9 +770,9 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-允许应用使用闪控球的自动恢复到应用主窗口的能力。
+允许创建闪控球的应用在后台时，不通过用户点击闪控球的方式，直接调用[restoreMainWindow](../../reference/apis-arkui/js-apis-floatingBall.md#restoremainwindow)接口将应用自身恢复到前台。
 
-**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
+**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起使用，才能实现相关功能。
 
 <!--RP69--><!--RP69End-->
 
@@ -1384,7 +1384,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.FLOAT_VIEW
 
-允许应用使用闪控窗。
+允许应用使用闪控窗的能力。
 
 <!--RP78--><!--RP78End-->
 
@@ -1648,7 +1648,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
-允许车内后排屏上应用调用空间手势接口，完成乘客与屏幕隔空交互。
+允许车载应用调用空间手势接口，完成乘客与屏幕隔空交互。
 
 <!--RP106--><!--RP106End-->
 
@@ -1778,6 +1778,39 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：26.0.1
 
+## ohos.permission.ALLOW_CROSS_APP_IPC
+
+允许同一开发者的应用之间进行IPC通信。
+
+<!--RP121-->
+应用需要在HarmonyAppProvision配置文件中修改"app-services-capabilities"字段来添加ipcGroupId，配置了相同ipcGroupId的应用之间才可完成跨应用IPC通信。
+
+配置样例：
+
+```json5
+{
+  // ...
+  "acls":{
+    "allowed-acls":[
+      "ohos.permission.ALLOW_CROSS_APP_IPC"
+    ]
+  },
+  "app-services-capabilities": {
+    "ohos.permission.ALLOW_CROSS_APP_IPC": {"ipcGroupIds": ["ipcGroupId0000", "ipcGroupId1000"]}
+  }
+}
+```
+
+<!--RP121End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
 ## ohos.permission.INPUT_RECORDING
 
 允许应用监听输入事件。
@@ -1822,6 +1855,22 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
  
 **起始版本**：26.0.1
 
+## ohos.permission.START_HISHELL_TERMINAL
+
+允许应用启动HiShell命令行终端。
+
+获取该权限后，应用可启动HiShell命令行终端，新建终端页签或新建终端窗口实例。
+
+<!--RP123--><!--RP123End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
 ## ohos.permission.CONTROL_COMPONENT
 
 允许应用管理指定组件是否支持被模拟操控。
@@ -1835,5 +1884,33 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+允许应用拦截输入事件。
+
+<!--RP122--><!--RP122End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION
+
+允许应用操作其他应用中已获焦输入框的文本。
+
+<!--RP124--><!--RP124End-->
+
+**权限级别**：system_basic
+
+**授权方式**：manual_settings
+
+**支持设备**：PC/2in1
 
 **起始版本**：26.1.0

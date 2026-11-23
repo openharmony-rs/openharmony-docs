@@ -1,12 +1,11 @@
-# @ohos.web.webNativeMessagingExtensionManager
-
+# @ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @csliutt-private-->
 <!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=9c41f9fad7f6d910dff2a356347531b943719c3e translatedAt=2026-08-03T09:46:29.780Z pushedAt=2026-08-07T10:53:39.596Z -->
+<!-- md-trans-meta sourceCommit=e320fda153794b0a01059c498ff032329a9af05c translatedAt=2026-11-06T10:56:43.386Z pushedAt=2026-11-11T02:19:23.121Z nl=1 -->
 
 The webNativeMessagingExtensionManager module is a Web native message extension management module provided by ArkWeb. It is used to initiate and manage connections from the app side (caller) to [WebNativeMessagingExtensionAbility](./arkts-apis-web-webNativeMessagingExtensionAbility.md). Developers can call [connectNative](#webnativemessagingextensionmanagerconnectnative) to specify the target extension Ability and establish a connection, use the returned connection ID and [WebExtensionConnectionCallback](#webextensionconnectioncallback) to listen for connection establishment, disconnection, and failure events, and call [disconnectNative](#webnativemessagingextensionmanagerdisconnectnative) to actively release the connection. This module is suitable for scenarios where browser extensions communicate with apps. Before using it, you need to request the [ohos.permission.WEB_NATIVE_MESSAGING](../../security/AccessToken/restricted-permissions.md#ohospermissionweb_native_messaging) permission, and it is available only under the Stage model.
 
@@ -23,7 +22,6 @@ import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 ```
 
 ## ConnectionNativeInfo
-
 Represents the information about the web native message connection.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -51,8 +49,11 @@ Provides the native messaging error codes.
 
 ## WebExtensionConnectionCallback
 
-### onConnect
+As an input parameter when connecting to a web native messaging extension, it is used to receive status changes during the connection.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
+### onConnect
 onConnect(connection: ConnectionNativeInfo): void
 
 Called when a connection is set up.
@@ -68,7 +69,6 @@ Called when a connection is set up.
 | connection | [ConnectionNativeInfo](#connectionnativeinfo) | Yes | Connection information, including the connection ID, extension application bundle name, browser extension source URL, and extension process ID. |
 
 **Example**
-
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -97,7 +97,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -113,7 +113,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### onDisconnect
-
 onDisconnect(connection: ConnectionNativeInfo): void
 
 Called when a connection is interrupted.
@@ -129,7 +128,6 @@ Called when a connection is interrupted.
 | connection | [ConnectionNativeInfo](#connectionnativeinfo) | Yes | Connection information, including the connection ID, extension application package name, browser extension source URL, and extension process ID. |
 
 **Example**
-
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -158,7 +156,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -174,7 +172,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### onFailed
-
 onFailed(code: NmErrorCode, errMsg: string): void
 
 Called when the connection fails.
@@ -191,7 +188,6 @@ Called when the connection fails.
 | errMsg | string | Yes| Error message.|
 
 **Example**
-
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -220,7 +216,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -236,7 +232,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## webNativeMessagingExtensionManager.connectNative
-
 connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number
 
 Connects the current ability to the specified web native message extension ability.
@@ -270,7 +265,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported. |
 
 **Example**
-
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -299,7 +293,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
@@ -315,7 +309,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## webNativeMessagingExtensionManager.disconnectNative
-
 disconnectNative(connectionId: number): Promise&lt;void&gt;
 
 Disconnects the connection of a specified web native message extension.
@@ -350,7 +343,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **Example**
-
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "通过声明后台模式和申请录音类型长时任务，实现前台启动后持续后台录音，并处理打断与资源释放。"
+keywords: [后台录音, 录音长时任务, 后台录音模式, 麦克风权限, 前台启动录音, 静音打断模式, 退到后台继续录音]
+doctype: guide
+status: active
+---
+
 # 实现后台录音
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -58,12 +66,12 @@
 
    当录音需要退至后台持续运行时，应用需要申请`AUDIO_RECORDING`类型长时任务，使系统识别该后台任务与录音业务匹配。
 
-   <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
-
+   <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) --> 
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { backgroundTaskManager } from '@kit.BackgroundTasksKit'
-   import { wantAgent, WantAgent } from '@kit.AbilityKit'
+   import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+   import { wantAgent, WantAgent } from '@kit.AbilityKit';
    // ...
    
      // 开启长时任务。
@@ -113,7 +121,7 @@
 
    用户停止录音、录音异常中断或业务结束时，应用需要调用AudioCapturer的[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)接口停止录音、释放音频采集资源，并同步取消录音类型长时任务。
 
-   <!-- @[background_task_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) --> 
+   <!-- @[background_task_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->  
    
    ``` TypeScript
    // 取消长时任务。

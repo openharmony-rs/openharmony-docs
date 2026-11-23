@@ -8,7 +8,7 @@
 
 Different package types serve distinct purposes and have unique build processes, which means you need to consider different factors when applying obfuscation. This topic offers tailored recommendations for three package types: [HAP](../quick-start/hap-package.md), [HAR](../quick-start/har-package.md), and [HSP](../quick-start/in-app-hsp.md), aiming to help you implement obfuscation effectively.
 
-To better understand how obfuscation works with different package types, you are advised to first gain a thorough understanding of [obfuscation principles](./source-obfuscation.md) and the [obfuscation enabling process](./source-obfuscation-guide.md#how-to-use) before configuring settings for specific package types. You are also advised to read [Application Package Structure in Stage Model](../quick-start/application-package-structure-stage.md) to familiarize yourself with the differences between package types.
+To better understand how obfuscation works with different package types, you are advised to first gain a thorough understanding of [obfuscation principles](./source-obfuscation.md) and the [obfuscation enabling process](./source-obfuscation-guide.md#steps-for-enabling-source-code-obfuscation) before configuring settings for specific package types. You are also advised to read [Application Package Structure in Stage Model](../quick-start/application-package-structure-stage.md) to familiarize yourself with the differences between package types.
 
 ## Recommended Obfuscation Options
 
@@ -22,7 +22,7 @@ In addition to the default obfuscation feature (which provides obfuscation for l
 After the option configuration, you must configure the corresponding trustlists to ensure the application functions correctly.
 
 - For new applications, you are advised to configure these options from the start and gradually add trustlist configurations as needed during development.
-- For existing applications, configure these options one by one in the suggested order. Compare the obfuscation products to understand the impact of each option, and refer to [Obfuscation Configuration Guidelines](source-obfuscation-guide.md#obfuscation-configuration-guidelines) for troubleshooting.
+- For existing applications, configure these options one by one in the suggested order. Compare the obfuscation products to understand the impact of each option, and refer to [Obfuscation Configuration Guidelines](source-obfuscation-guide.md#configuring-obfuscation-options) for troubleshooting.
 
 Once the application is functioning correctly, you can enable additional features such as code compression (`-compact`) and log removal (`-remove-log` or `-remove-nosideeffects-calls`) to enhance the code obfuscation effect and prepare the release package.
 

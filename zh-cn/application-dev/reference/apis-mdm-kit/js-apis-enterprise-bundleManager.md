@@ -465,7 +465,6 @@ import { bundleManager } from '@kit.MDMKit';
 
 try {
   // 参数需根据实际情况进行替换
-  // 参数需根据实际情况进行替换
   let result: Array<string> = bundleManager.getDisallowedInstallBundlesSync(null, 100);
   console.info(`Succeeded in getting disallowed install bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
@@ -692,7 +691,6 @@ getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array
 import { bundleManager } from '@kit.MDMKit';
 
 try {
-  // 参数需根据实际情况进行替换
   // 参数需根据实际情况进行替换
   let result: Array<string> = bundleManager.getDisallowedUninstallBundlesSync(null, 100);
   console.info(`Succeeded in getting disallowed uninstall bundles, result : ${JSON.stringify(result)}`);
@@ -1485,7 +1483,7 @@ setDefaultApplication(type: DefaultApplicationType, bundleName: string, abilityN
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200006  | The specified user ID is invalid.                            |
+| 9200006  | The specified account ID is invalid.                         |
 | 9200012  | Parameter verification failed.                               |
 | 9200016  | Service timeout.                                             |
 
@@ -1548,7 +1546,7 @@ getDefaultApplicationBundleName(type: DefaultApplicationType, accountId: number)
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200006  | The specified user ID is invalid.                            |
+| 9200006  | The specified account ID is invalid.                         |
 | 9200012  | Parameter verification failed.                               |
 | 9200016  | Service timeout.                                             |
 

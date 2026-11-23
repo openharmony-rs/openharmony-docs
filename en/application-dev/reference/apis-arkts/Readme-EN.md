@@ -26,7 +26,7 @@
     - [Interface (ConcatArray)](arkts-apis-arkts-collections-ConcatArray.md)
     - [Types](arkts-apis-arkts-collections-Types.md)
   - [@arkts.lang (ArkTS Base Capability)](js-apis-arkts-lang.md)
-  - [@arkts.math.Decimal (Arbitrary-Precision Math Library Decimal)](js-apis-arkts-decimal.md)
+  - [@arkts.math.Decimal (Arbitrary Precision Math Library Decimal)](js-apis-arkts-decimal.md)
   - @arkts.utils (ArkTS Utils)<!--js-apis-arkts-utils-->
     - [Module Description](arkts-apis-arkts-utils.md)
     - [Functions](arkts-apis-arkts-utils-f.md)
@@ -35,7 +35,7 @@
     - [Class (SendableLruCache)](arkts-apis-arkts-utils-SendableLruCache.md)
     - [Class (Atomics)](arkts-apis-arkts-utils-Atomics.md)
   - [@ohos.buffer (Buffer)](js-apis-buffer.md)
-  - [@ohos.convertxml (XML to JavaScript Conversion)](js-apis-convertxml.md)
+  - [@ohos.convertxml (XML-to-JavaScript Conversion)](js-apis-convertxml.md)
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
   - [@ohos.process (Obtaining Process Information)](js-apis-process.md)
   - [@ohos.taskpool (Starting the Task Pool)](js-apis-taskpool.md)

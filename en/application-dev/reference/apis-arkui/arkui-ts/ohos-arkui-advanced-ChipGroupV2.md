@@ -1,12 +1,11 @@
 # ChipGroupV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b4797ff84520f34081469c8824bbfa37af31b0f1 translatedAt=2026-07-17T10:00:19.510Z pushedAt=2026-07-21T01:04:58.044Z -->
+<!-- md-trans-meta sourceCommit=667150c701d96df1dfdd0322f92fec9e3a7d842c translatedAt=2026-11-03T01:23:01.301Z pushedAt=2026-11-13T01:05:59.844Z nl=1 -->
 
 The **ChipGroupV2** component provides a chip group container that supports single or multiple selection, custom styles and spacing, and custom suffix content. It is suitable for scenarios such as file or resource content categorization, tag selection, and filtering, helping you quickly build visually appealing and interactive chip group UIs.
 
@@ -14,8 +13,9 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> The APIs of this module can be used only in the stage model.
+> - This module's APIs can only be used in the stage model.
 >
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **ChipGroupV2**, the compilation toolchain will generate an additional node **\_\_Common\_\_** and mount the universal attributes or universal events on **\_\_Common\_\_**, rather than directly applying them to **ChipGroupV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **ChipGroupV2**.
 
 **Since:** 26.0.0
 
@@ -31,23 +31,22 @@ None
 
 ## ChipGroupV2
 
-```ts
-ChipGroupV2({
-  items: ChipGroupV2Items,
-  $items?: Callback<ChipGroupV2Items>,
-  itemStyle?: ChipGroupV2ItemStyle,
-  selectedIndexes?: Array<number>,
-  $selectedIndexes?: Callback<Array<number>>,
-  multiple?: boolean,
-  chipGroupSpace?: ChipGroupV2Space,
-  chipGroupPadding?: ChipGroupV2Padding,
-  onChange?: Callback<Array<number>>,
-  suffix?: Callback<void>
+ChipGroupV2({ <br>
+  items: ChipGroupV2Items, <br>
+  $items?: Callback<ChipGroupV2Items\>, <br>
+  itemStyle?: ChipGroupV2ItemStyle, <br>
+  selectedIndexes?: Array<number\>, <br>
+  $selectedIndexes?: Callback<Array<number\>\>, <br>
+  multiple?: boolean, <br>
+  chipGroupSpace?: ChipGroupV2Space, <br>
+  chipGroupPadding?: ChipGroupV2Padding, <br>
+  onChange?: Callback<Array<number\>\>, <br>
+  onItemsChange?: Callback<ChipGroupV2Items\>, <br>
+  suffix?: Callback<void\> <br>
 })
-```
-
+ 
 **Since:** 26.0.0
-
+ 
 **Decorator:** @ComponentV2
 
 **Model restriction:** This API can be used only in the stage model.
@@ -66,9 +65,10 @@ ChipGroupV2({
 | selectedIndexes | Array&lt;number&gt;            | No   | @Param | Indexes of the selected **ChipV2** items.<br>Value range: the index value must be an integer greater than or equal to 0 and less than the length of the items array. Indexes outside this range do not take effect.<br>Default value: **[0]**<br>When the value is **undefined**, the default value is used.<br>When **multiple** is **false**, if **selectedIndexes** is not passed in, the first **ChipV2** is selected by default; if the passed in **selectedIndexes** has multiple elements, the **ChipV2** of the first index is selected by default.<br>When **multiple** is **true**, if **selectedIndexes** is not passed in, the first **ChipV2** is selected by default; if the passed in **selectedIndexes** has multiple elements, all **ChipV2** items of the corresponding indexes are selected.  |
 | $selectedIndexes | [Callback](ts-types.md#callback12)&lt;Array&lt;number&gt;&gt;                             |No   | @Event | Bidirectional binding callback for the selected **ChipV2** indexes. Pass in this callback when you need to listen for or modify the selected **ChipV2** indexes.<br>Default value: **undefined**, meaning no callback is triggered.  |
 | multiple        | boolean                                         | No   | @Param | Whether to select multiple **ChipV2** items.<br>**true**: multiple **ChipV2** items can be selected; **false**: only a single **ChipV2** can be selected.<br>Default value: **false**<br>When the value is **undefined**, the default value is used. |
-| chipGroupSpace  | [ChipGroupV2Space](#chipgroupv2space) | No   | @Param | Left and right padding and spacing between ChipV2 items. After setting, you can adjust the left and right padding of **ChipGroupV2** and the spacing between **ChipV2** items. Increasing the spacing makes the layout looser, while decreasing it makes the layout more compact. For details, see [ChipGroupV2Space](#chipgroupv2space).<br>Default value: **{ itemSpace: 8, startSpace: 16, endSpace: 16 }**<br>Unit: vp<br>When the value is **undefined**, the default value is used. |
+| chipGroupSpace  | [ChipGroupV2Space](#chipgroupv2space) | No   | @Param | Left and right padding and spacing between **ChipV2** items. After setting, you can adjust the left and right padding of **ChipGroupV2** and the spacing between **ChipV2** items. Increasing the spacing makes the layout looser, while decreasing it makes the layout more compact. For details, see [ChipGroupV2Space](#chipgroupv2space).<br>Default value: **{ itemSpace: 8, startSpace: 16, endSpace: 16 }**<br>Unit: vp<br>When the value is **undefined**, the default value is used. |
 | chipGroupPadding  | [ChipGroupV2Padding](#chipgroupv2padding) | No   | @Param | Top and bottom padding of **ChipGroupV2**, used to control the overall height. The type is [ChipGroupV2Padding](#chipgroupv2padding).<br>Default value: **{ top: 14, bottom: 14 }**<br>Unit: vp<br>When the value is **undefined**, the default value is used. |
-| onChange        | [Callback](ts-types.md#callback12)\<Array\<number>>  | No   | @Event  | Callback invoked when the **ChipV2** state changes, used to respond to changes in the **ChipV2** selection state. Pass in this callback when you need to listen for **ChipV2** selection state changes.<br>Trigger scenario: triggered when the user taps a **ChipV2** to change its selection state, returning the array of indexes of the currently selected **ChipV2** items.<br>Default value: **undefined**, meaning no event is triggered.                                                              |
+| onChange        | [Callback](ts-types.md#callback12)\<Array\<number>>  | No   | @Event  | Callback invoked when the **ChipV2** state changes, used to respond to changes in the **ChipV2** selected state. Pass in this callback when you need to listen for **ChipV2** selected state changes.<br>Trigger scenario: triggered when the user taps a **ChipV2** to change its selected state, returning the array of indexes of the currently selected **ChipV2** items.<br>Default value: **undefined**, meaning no event is triggered.                                                              |
+| onItemsChange  | [Callback](ts-types.md#callback12)\<[ChipGroupV2Items](#chipgroupv2items)\>  | No   | @Event  | Callback for **ChipGroupV2Items** changes, used to respond to changes in items. Pass in this callback when you need to sense **ChipGroupV2** content changes and synchronize business data.<br>Trigger scenario: triggered when the user closes [ChipV2](./ohos-arkui-advanced-ChipV2.md), causing the **ChipV2** to be deleted. It is not triggered when the developer actively modifies items. The callback parameter is the currently effective items array. The component does not modify the items passed in by the developer; it only notifies the effective array.<br>Default value: **undefined**, no event is triggered.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
 | suffix          | [Callback](ts-types.md#callback12)\<void\>                                        | No   | @BuilderParam | Custom builder. To display custom content on the far right of the component, configure the **suffix** attribute. When using the **suffix** attribute, reference the [ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix) API.<br>Default value: **undefined**, meaning no custom content is displayed on the far right. |
 
 ### build
@@ -252,8 +252,8 @@ Defines the common attribute class of **ChipV2**.
 | fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of **ChipV2**.<br>Default value: **$r('sys.color.ohos_id_color_text_primary')**<br>If the value is **undefined**, the default value is used.<br>Decorator: **@Trace** |
 | selectedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of **ChipV2** when selected. After this attribute is set, when the **ChipV2** is selected, the label text is displayed in this color, replacing the **fontColor** in the unselected state.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**<br>If the value is **undefined**, the default value is used.<br>Decorator: **@Trace** |
 | selectedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Background color of **ChipV2** when selected. After this attribute is set, when the **ChipV2** is selected, the background is filled with this color, replacing the **backgroundColor** in the unselected state.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>If the value is **undefined**, the default value is used.<br>Decorator: **@Trace** |
-| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, no material style is applied.<br>Decorator: **@Trace** |
-| selectedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the selected state. After this attribute is set, when the **ChipV2** is selected, this material style is applied, replacing the **backgroundSystemMaterial** in the unselected state. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, no material style is applied.<br>Decorator: **@Trace** |
+| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | Sets the system material style of the component. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of a horizontal **Tabs**. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied.<br>**Decorator:** @Trace |
+| selectedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the selected state. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of a horizontal **Tabs**. After this attribute is set, when **ChipV2** is selected, this material style is applied, replacing **backgroundSystemMaterial** in the unselected state. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied.<br>**Decorator:** @Trace |
 
 ### constructor
 
@@ -298,8 +298,8 @@ Defines the common attribute configuration of **ChipV2**.
 | fontColor               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                   | No   | Yes   | Font color of **ChipV2**.<br>Default value: **$r('sys.color.ohos_id_color_text_primary')**<br>If the value is **undefined**, the default value is used. |
 | selectedFontColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                   | No   | Yes   | Font color of **ChipV2** when selected. After this attribute is set, when the **ChipV2** is selected, the label text is displayed in this color, replacing the **fontColor** in the unselected state.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**<br>If the value is **undefined**, the default value is used. |
 | selectedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                   | No   | Yes   | Background color of **ChipV2** when selected. After this attribute is set, when the **ChipV2** is selected, the background is filled with this color, replacing the **backgroundColor** in the unselected state.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>If the value is **undefined**, the default value is used. |
-| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, no material style is applied. |
-| selectedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the selected state. After this attribute is set, when the **ChipV2** is selected, this material style is applied, replacing the **backgroundSystemMaterial** in the unselected state. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, no material style is applied. |
+| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
+| selectedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the selected state. The immersive light effect takes effect only when the component is placed in the title bar of Navigation or **NavDestination**, or in the bottom **TabBar** of horizontal Tabs. After this attribute is set, when **ChipV2** is selected, this material style is applied, replacing the **backgroundSystemMaterial** in the unselected state. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
 
 ## ChipGroupV2Space
 
@@ -373,7 +373,7 @@ Defines the left and right padding of **ChipGroupV2** and the spacing configurat
 
 | Name       | Type            | Read-only | Optional | Description                                             |
 | ---------- | -------------- | ---- | ------------------------------------------------ | ------------------------------------------------ |
-| itemSpace | string \| number  | No  | Yes  | Spacing between **ChipV2** components (percentage not supported).<br>Value range:<br>- number type: [0, +∞), for example, 0, 8, 16, 24.5.<br>- string type: a string in fp \| vp \| px \| lpx units with a numeric value greater than or equal to 0, for example, "8vp", "16fp", "12px", "10lpx".<br>- Not supported: negative numbers, percentage units, invalid string formats.<br>If a value outside the valid range or in an unsupported format is passed, the default value is used.<br>Default value: **8**<br>Unit: vp<br>If the value is undefined, the default value is used. |
+| itemSpace | string \| number  | No  | Yes  | Spacing between **ChipV2** components (percentage not supported).<br>Value range:<br>- number type: [0, +∞), for example, 0, 8, 16, 24.5.<br>- string type: a string in fp \| vp \| px \| lpx units with a numeric value greater than or equal to 0, for example, "8vp", "16fp", "12px", "10lpx".<br>- Not supported: negative numbers, percentage units, invalid string formats.<br>If a value outside the valid range or in an unsupported format is passed, the default value is used.<br>Default value: **8**<br>Unit: vp<br>If the value is **undefined**, the default value is used. |
 | startSpace | [Length](ts-types.md#length)         | No  | Yes  | Left padding (percentage not supported).<br>Default value: **16**<br>Unit: vp<br>If the value is **undefined**, the default value is used.           |
 | endSpace   | [Length](ts-types.md#length)         | No  | Yes  | Right padding (percentage not supported).<br>Default value: **16**<br>Unit: vp<br>If the value is **undefined**, the default value is used. |
 
@@ -453,14 +453,14 @@ Defines the top and bottom padding configuration of **ChipGroupV2**, which is us
 
 ## ChipGroupV2IconGroupSuffix
 
-Display custom content on the far right of the **ChipGroupV2** component. It supports configuring image icons, symbol icons, symbol icon configuration items, and icon background material styles. It is suitable for scenarios where an additional operation entry needs to be added at the end of a chip group.
-
 ```typescript
 ChipGroupV2IconGroupSuffix({
   items: Array<ChipGroupV2IconItemConfig | SymbolGlyphModifier | ChipGroupV2SymbolItemConfig>,
   iconBackgroundSystemMaterial?: uiMaterial.Material
 })
 ```
+
+Display custom content on the far right of the **ChipGroupV2** component. It supports configuring image icons, symbol icons, symbol icon configuration items, and icon background material styles. It is suitable for scenarios where an additional operation entry needs to be added at the end of a chip group.
 
 **Since:** 26.0.0
 
@@ -477,7 +477,7 @@ ChipGroupV2IconGroupSuffix({
 | Name                        | Type                    | Mandatory | Decorator Type | Description                                                              |
 | --------------------------- | ---------------------- | ---- | ---------------------------------------------- | ---------------------------------------------- |
 | items                       | Array&lt;[ChipGroupV2IconItemConfig](#chipgroupv2iconitemconfig) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ChipGroupV2SymbolItemConfig](#chipgroupv2symbolitemconfig)&gt; | Yes   | @Require<br>@Param | Array of custom items displayed in the suffix area, supporting **ChipGroupV2IconItemConfig** (image icon), **SymbolGlyphModifier** (symbol icon), or **ChipGroupV2SymbolItemConfig** (symbol icon configuration) types.<br>When **SymbolGlyphModifier** is passed, using **symbolEffect** to modify the animation type and [effectStrategy](./ts-basic-components-symbolGlyph.md#effectstrategy) to set the animation is not supported.|
-| iconBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | @Param | System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
+| iconBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | @Param | System material style of the component. The component must be placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**, for the immersive light effect to take effect. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
 
 ### build
 
@@ -535,15 +535,17 @@ Defines the configuration type of the suffix symbol icon.
 | ---- | ---- | ---- | ---- | ---- |
 | symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | No | **SymbolGlyphModifier** configuration object for the suffix icon. After being set, the specified symbol icon is displayed in the suffix area of the **ChipGroupV2**, with support for configuring display style, rendering mode, color, and other attributes.<br>**Note:** When **SymbolGlyphModifier** is passed in, using **symbolEffect** to modify the animation type and [effectStrategy](./ts-basic-components-symbolGlyph.md#effectstrategy) to set the animation is not supported.|
 | action | [VoidCallback](ts-types.md#voidcallback12) | No | No | Response event for the suffix icon.|
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text attribute of the suffix icon. It is used to provide further explanation of the trailing icon for users. You can set a relatively detailed description text for this attribute of the suffix icon to help users understand the operation to be performed. For example, it helps users understand the possible consequences of the operation to be performed, especially when these consequences cannot be learned from the suffix icon's attributes and accessibility text. When the suffix icon has both a text attribute and an accessibility description attribute and the icon is selected, the text attribute of the icon is announced first, followed by the content of the accessibility description attribute.<br>Default value: empty string.<br>If the value is **undefined**, the default value is used.|
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the suffix icon. This description is used to explain the suffix icon in detail to users. You should provide a relatively detailed text description for this attribute of the suffix icon to help users understand the operation to be performed and its possible consequences, especially when these consequences cannot be directly learned from the trailing icon's attributes and accessibility text. When the suffix icon has both a text attribute and an accessibility description attribute and the icon is selected, the system announces the text attribute of the icon first, followed by the content of the accessibility description attribute.<br>Default value: empty string.<br>If the value is **undefined**, the default value is used.|
-| accessibilityLevel | string | No | Yes | Accessibility level of the suffix icon. It is used to control whether the trailing icon can be recognized by accessibility services.<br>Supported values:<br>**"auto"**: The attribute value of the suffix icon is converted to **"yes"**.<br>**"yes"**: The suffix icon can be recognized by accessibility services.<br>**"no"**: The suffix icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: The suffix icon and all its child components cannot be recognized by accessibility services.<br>If a value outside the supported range is passed in, the default value is used.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used. |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text attribute of the suffix icon. It is used to provide further explanation of the suffix icon for users. You can set a relatively detailed description text for this attribute of the suffix icon to help users understand the operation to be performed. For example, it helps users understand the possible consequences of the operation to be performed, especially when these consequences cannot be learned from the suffix icon's attributes and accessibility text. When the suffix icon has both a text attribute and an accessibility description attribute and the icon is selected, the text attribute of the icon is announced first, followed by the content of the accessibility description attribute.<br>Default value: empty string.<br>If the value is **undefined**, the default value is used.|
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the suffix icon. This description is used to explain the suffix icon in detail to users. You should provide a relatively detailed text description for this attribute of the suffix icon to help users understand the operation to be performed and its possible consequences, especially when these consequences cannot be directly learned from the suffix icon's attributes and accessibility text. When the suffix icon has both a text attribute and an accessibility description attribute and the icon is selected, the system announces the text attribute of the icon first, followed by the content of the accessibility description attribute.<br>Default value: empty string.<br>If the value is **undefined**, the default value is used.|
+| accessibilityLevel | string | No | Yes | Accessibility level of the suffix icon. It is used to control whether the suffix icon can be recognized by accessibility services.<br>Supported values:<br>**"auto"**: The attribute value of the suffix icon is converted to **"yes"**.<br>**"yes"**: The suffix icon can be recognized by accessibility services.<br>**"no"**: The suffix icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: The suffix icon and all its child components cannot be recognized by accessibility services.<br>If a value outside the supported range is passed in, the default value is used.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used. |
 
 ## Examples
 
 ### Example 1: Implementing ChipGroupV2 Without the Rightmost Custom Component
 
 This example implements the effect of [ChipGroupV2](#chipgroupv2-1) without the rightmost custom component by not setting the **suffix** parameter.
+
+Since API version 26.2.0, the **onItemsChange** attribute is added to [ChipGroupV2](#chipgroupv2-1).
 
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics } from '@kit.ArkUI';
@@ -606,19 +608,24 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
+        },
       })
     }
   }
 }
 ```
 
-![](figures/chipgroupv2_1.png)
+![](figures/chipgroupv2-1.png)
 
 ### Example 2: Setting the Rightmost Custom Component of ChipGroupV2
 
 This example implements the rightmost custom component effect of [ChipGroupV2](#chipgroupv2-1) by setting the **suffix** parameter.
 
 Since API version 26.0.0, **ChipGroupV2** supports the **suffix** attribute.
+
+Since API version 26.2.0, the **onItemsChange** attribute is added to [ChipGroupV2](#chipgroupv2-1).
 
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2IconGroupSuffix, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -702,6 +709,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
+        },
         // Rightmost custom component of ChipGroupV2.
         suffix: this.ChipGroupSuffix
       })
@@ -710,13 +720,15 @@ struct Index {
 }
 ```
 
-![](figures/chipgroupv2_2.png)
+![](figures/chipgroupv2-2.png)
 
 ### Example 3: Setting Symbol Icons
 
 This example uses [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) to set symbol icons for [ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix) and [ChipGroupV2](#chipgroupv2-1).
 
 Since API version 26.0.0, **ChipGroupV2IconGroupSuffix** and **ChipGroupV2** are added.
+
+Since API version 26.2.0, the **onItemsChange** attribute is added to [ChipGroupV2](#chipgroupv2-1).
 
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2IconGroupSuffix, SymbolGlyphModifier, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics } from '@kit.ArkUI';
@@ -804,6 +816,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
+        },
         // Rightmost custom component of ChipGroupV2.
         suffix: this.ChipGroupSuffix
       })
@@ -812,7 +827,7 @@ struct Index {
 }
 ```
 
-![](figures/chipgroupv2_3.png)
+![](figures/chipgroupv2-3.png)
 
 ### Example 4: Listening for Internal Attribute Changes of Object-Type Attributes in ChipGroupV2
 
@@ -890,4 +905,94 @@ struct Index {
 ```
 
 ![chipgroupv2-sample4](figures/chipgroupv2-make-observed.gif)
-<!--no_check-->
+
+### Example 5: Setting System Material Style
+
+This example sets the **backgroundSystemMaterial** attribute of [ChipGroupV2ItemStyle](#chipgroupv2itemstyle) to implement the system material style effect of [ChipGroupV2](#chipgroupv2-1), including immersive material and automatic color inversion. The component must be placed in the title bar of **Navigation** for the immersive light effect to take effect.
+
+Since API version 26.0.0, [ChipGroupV2ItemStyle](#chipgroupv2itemstyle) has added the **backgroundSystemMaterial** attribute.
+
+```ts
+import {
+  ChipGroupV2,
+  ChipGroupV2Items,
+  ChipGroupV2ItemStyle,
+  ChipGroupV2Space,
+  ChipGroupV2Padding,
+  LengthMetrics,
+  UIUtils,
+  uiMaterial,
+  ColorMetrics
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local items: ChipGroupV2Items = new ChipGroupV2Items([
+    {
+      label: { text: 'Chip 1' }
+    },
+    {
+      label: { text: 'Chip 2' }
+    },
+    {
+      label: { text: 'Chip 3' }
+    },
+    {
+      label: { text: 'Chip 4' }
+    },
+    {
+      label: { text: 'Chip 5' }
+    }
+  ]);
+  @Local chipGroupSpace: ChipGroupV2Space = new ChipGroupV2Space({ itemSpace: 8 });
+  @Local chipGroupPadding: ChipGroupV2Padding = new ChipGroupV2Padding({ top: 10, bottom: 10 });
+  @Local itemStyle: ChipGroupV2ItemStyle = new ChipGroupV2ItemStyle({
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true
+    }),
+  });
+  @Local selectedIndexes: number[] = [];
+
+  @Builder
+  NavigationTitle() {
+    Column({ space: 10 }) {
+      ChipGroupV2({
+        items: this.items,
+        $items: (items: ChipGroupV2Items) => { this.items = items; },
+        itemStyle: this.itemStyle,
+        chipGroupSpace: this.chipGroupSpace,
+        chipGroupPadding: this.chipGroupPadding,
+        selectedIndexes: this.selectedIndexes,
+        $selectedIndexes: (indexes: number[]) => { this.selectedIndexes = indexes; },
+      })
+    }
+    .linearGradient({
+      angle: 90, // Gradient angle. 90 degrees means from left to right.
+      colors: [
+        ['#FF9A9E', 0.0], // Start color and position (0.0 indicates the start point).
+        ['#FECFEF', 0.5], // Middle color and position.
+        ['#3B324C', 1.0] // End color and position (1.0 indicates the end point).
+      ]
+    })
+    .padding(12)
+    .width('100%')
+  }
+
+
+  build() {
+    Column() {
+      Navigation() {
+        // Page content
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
+
+}
+```
+
+The illustration for this example shows the strong effect on a high-computing-power device.
+
+<!--Del--> <!--DelEnd-->

@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "提供使用TaskPool提升ArkUI瀑布流渲染性能的开发指导：将数据库查询等耗时操作放入子线程执行并返回数据，UI线程感知数据更新后渲染WaterFlow瀑布流组件，避免大数据量下主线程长时间等待。"
 keywords: [瀑布流渲染, WaterFlow, TaskPool, 渲染性能优化, 子线程查询, 数据库读取, UI数据更新]
 doctype: guide
@@ -14,7 +14,7 @@ status: active
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-此处提供使用任务池[TaskPool](../reference/apis-arkts/js-apis-taskpool.md)提升[WaterFlow瀑布流](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)渲染性能的开发指导。UI线程查询数据库数据，并将数据渲染到瀑布流组件，数据过大时会导致UI线程长时间等待，影响用户体验。因此，我们可以将数据查询操作放到子线程中，并通过TaskPool的接口返回数据给UI线程。
+此处提供使用任务池[TaskPool](../reference/apis-arkts/js-apis-taskpool.md)提升[WaterFlow瀑布流](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)渲染性能的开发指导。UI线程查询数据库数据，并将数据渲染到瀑布流组件，数据过大时会导致UI线程长时间等待，影响用户体验。因此，可以将数据查询操作放到子线程中，并通过TaskPool的接口返回数据给UI线程。
 
 本示例说明以下场景：
 - 模拟子线程[读取数据库数据](batch-database-operations-guide.md)并返回给UI线程。
