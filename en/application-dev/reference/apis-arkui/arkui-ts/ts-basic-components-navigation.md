@@ -5678,7 +5678,7 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 >
 > 2. Swipe up the application to return to the background and open the CLI.
 >
-> 3. Run **hdc shell**, and then run **pidof <package_name>** to query the value of **pid**.
+> 3. Run **hdc shell**, and then run **pidof Package name** to query the value of **pid**.
 >
 > 4. Run the **aa force-stop *Project name* -p *Value of pid* -r RESOURCE_CONTROL** command to simulate the scenario where the app exits due to improper resource usage.
 >

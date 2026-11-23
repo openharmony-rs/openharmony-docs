@@ -890,7 +890,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| value  | string | Yes  | Font feature, which is used to set the advanced typesetting capabilities of OpenType fonts, such as monospace and hyphenation. The format is normal or <feature-tag-value>, for example, "ss01" on.|
+| value  | string | Yes  | Font feature, which is used to set the advanced typesetting capabilities of OpenType fonts, such as monospace and hyphenation. The format is normal or \<feature-tag-value\>, for example, "ss01" on.|
 
 For details about the supported font features, see the [fontFeature](ts-basic-components-text.md#fontfeature12) list.
 

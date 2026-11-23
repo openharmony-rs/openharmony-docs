@@ -748,7 +748,7 @@ For example, the input format for monospaced digits is "ss01" on.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| value  | string | Yes  | Text feature effect, which is used to set the special display effect of text, such as monospace. Format: normal \| <feature-tag-value>|
+| value  | string | Yes  | Text feature effect, which is used to set the special display effect of text, such as monospace. Format: normal \| \<feature-tag-value\>|
 
 For details about the supported font features, see the [fontFeature](ts-basic-components-text.md#fontfeature12) list.
 
