@@ -266,7 +266,8 @@ void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_Udm
 
 **参考：**
 
-OH_UdmfGetDataParams OH_UdmfDataLoadInfo
+[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)
+[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)
 
 ### OH_UdmfDataLoadParams_Create()
 
