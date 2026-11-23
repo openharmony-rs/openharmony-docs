@@ -321,6 +321,12 @@ rawheap 文件的大小和生成耗时与当前 ArkTS 堆内存大小及存活�
 
 **原因与处理**：先确认所用工具版本支持双文件混合模式，再检查动态文件在前、静态文件在后的参数顺序，以及两份文件是否为配套快照。若出现引用未解析提示，或发现合并结果缺失，请核对输入文件的来源和完整性，必要时重新获取配套快照后再解析。
 
+### 快照中对象的 distance 显示为横杠
+
+**问题现象**：rawheap_translator已完成转换并生成`.heapsnapshot`文件，但将该文件导入内存分析工具后，部分对象到GC Root的距离（distance）显示为“-”。该现象与“工具版本不匹配”中因rawheap格式版本不兼容而转换失败的情况不同。
+
+**原因与处理**：该问题常见于设备系统升级后，仍使用旧版rawheap_translator工具转换该设备生成的`.rawheap`文件。设备系统版本与rawheap文件的格式版本是不同的版本信息。请将工具升级至最新版本，重新转换原始`.rawheap`文件，再导入新生成的`.heapsnapshot`文件，即可解决该问题。
+
 [dump-js-rawheap]: ../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugdumpjsrawheapdata18
 
 [hidumper]: ../dfx/hidumper.md#查询虚拟机堆内存
