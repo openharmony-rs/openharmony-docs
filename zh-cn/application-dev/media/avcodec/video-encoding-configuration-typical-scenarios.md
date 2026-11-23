@@ -41,7 +41,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 <!-- @[config_include_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/include/EncodingConfigQuery.h) -->
 
-```c++
+``` c++
 #include <multimedia/player_framework/native_avcodec_videoencoder.h>
 #include <multimedia/player_framework/native_avcapability.h>
 #include <multimedia/player_framework/native_avcodec_base.h>
@@ -88,7 +88,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    <!-- @[config_low_latency_cbr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
-   ```c++
+   ``` c++
    // 1. 创建AVFormat参数实例。
    OH_AVFormat *format = OH_AVFormat_Create();
    if (format == nullptr) {
@@ -129,7 +129,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    <!-- @[config_dynamic_request_idr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
-   ```c++
+   ``` c++
    // 1. 创建AVFormat参数实例。
    OH_AVFormat *format = OH_AVFormat_Create();
    // 2. 填充编码参数键值对（动态请求IDR帧）。
@@ -161,7 +161,7 @@ CBRHQ码控方式配置如下：
 
 <!-- @[config_cbrhq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
-```c++
+``` c++
 // 1. 创建AVFormat参数实例。
 OH_AVFormat *format = OH_AVFormat_Create();
 if (format == nullptr) {
@@ -234,7 +234,7 @@ OH_AVFormat_Destroy(format);
 
 <!-- @[config_live_vbr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
-```c++
+``` c++
 // 1. 创建AVFormat参数实例。
 OH_AVFormat *format = OH_AVFormat_Create();
 // 2. 填充编码参数键值对（以1080p@25fps SDR输入源为例）。
@@ -288,7 +288,7 @@ SQR码控方式配置如下：
 
 <!-- @[config_live_sqr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
-```c++
+``` c++
 // 1. 创建AVFormat参数实例。
 OH_AVFormat *format = OH_AVFormat_Create();
 // 2. 填充编码参数键值对（以1080p@25fps SDR输入源为例）。
@@ -368,7 +368,7 @@ OH_AVFormat_Destroy(format);
 
 <!-- @[config_offline_vbr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
-```c++
+``` c++
 // 1. 创建AVFormat参数实例。
 OH_AVFormat *format = OH_AVFormat_Create();
 // 2. 填充编码参数键值对（以1080p@30fps SDR输入源为例）。
@@ -427,7 +427,7 @@ SQR码控方式配置如下：
 
 <!-- @[config_offline_sqr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
-```c++
+``` c++
 // 1. 创建AVFormat参数实例。
 OH_AVFormat *format = OH_AVFormat_Create();
 // 2. 填充编码参数键值对（以1080p@30fps SDR输入源为例）。
