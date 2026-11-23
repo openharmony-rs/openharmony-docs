@@ -30,17 +30,18 @@
    <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
    
    ``` TypeScript
-   let atManager = abilityAccessCtrl.createAtManager();
+   const atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
    try {
      // 以动态弹窗的方式向用户申请授权
-     atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
-       console.info(`request permission result: ${JSON.stringify(result)}`);
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
-     })
+     atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'])
+       .then((result: PermissionRequestResult): void => {
+         console.info(`Permission request completed, result count: ${result.authResults.length}`);
+       }).catch((err: BusinessError): void => {
+         console.error(`Failed to request permissions from user. Code: ${err.code}`);
+       });
    } catch (error) {
      let err: BusinessError = error as BusinessError;
-     console.error(`Catch err. Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Catch err. Failed to request permissions from user. Code: ${err.code}`);
    }
    ```
 
@@ -64,16 +65,12 @@
    let filePath: string = pathDir + '/test.txt';
    
    try {
-     // 在分布式目录下创建文件
-     let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+     // 在分布式目录下创建文件并确保描述符在写入失败时也被关闭
+     writeTextFile(filePath, 'content', new SystemFileDescriptor());
      console.info('Succeeded in creating.');
-     // 向文件中写入内容
-     fileIo.writeSync(file.fd, 'content');
-     // 关闭文件
-     fileIo.closeSync(file.fd);
    } catch (error) {
      let err: BusinessError = error as BusinessError;
-     console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}`);
    }
    ```
 
@@ -96,11 +93,16 @@
    // 通过分布式设备管理的接口获取设备A的networkId信息
    // ...
    try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+     const dmInstance: distributedDeviceManager.DeviceManager =
+       distributedDeviceManager.createDeviceManager('com.example.hap');
      let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
      if (deviceInfoList && deviceInfoList.length > 0) {
        console.info(`Success to get available device list`);
-       let networkId = deviceInfoList[0].networkId;
+       const networkId: string = deviceInfoList[0].networkId ?? '';
+       if (networkId === '') {
+         console.error('Distributed operation requires a peer network ID');
+         return;
+       }
        // 定义访问公共文件目录的回调
        let listeners : fileIo.DfsListeners = {
          onStatus: (networkId: string, status: number): void => {
@@ -108,39 +110,34 @@
          }
        };
        // 开始跨设备文件访问
-       fileIo.connectDfs(networkId, listeners).then(() => {
+       fileIo.connectDfs(networkId, listeners).then((): void => {
          console.info('Success to connect dfs');
          let pathDir: string = context.distributedFilesDir;
          // 获取分布式目录的文件路径
          let filePath: string = pathDir + '/test.txt';
          try {
            // 打开分布式目录下的文件
-           let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
-           // 定义接收读取数据的缓存
-           let arrayBuffer = new ArrayBuffer(4096);
-           // 读取文件的内容，返回值是读取到的字节个数
-           class Option {
-             public offset: number = 0;
-             public length: number = 0;
-           };
-           let option = new Option();
-           option.length = arrayBuffer.byteLength;
-           let num = fileIo.readSync(file.fd, arrayBuffer, option);
-           // 打印读取到的文件数据
-           let buf = buffer.from(arrayBuffer, 0, num);
-           console.info('read result: ' + buf.toString());
-           fileIo.closeSync(file);
+           const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+           try {
+             const arrayBuffer: ArrayBuffer = new ArrayBuffer(BUFFER);
+             const option: ReadOptions = { offset: 0, length: arrayBuffer.byteLength };
+             const num: number = fileIo.readSync(file.fd, arrayBuffer, option);
+             console.info(`Read distributed file bytes: ${num}`);
+           } finally {
+             fileIo.closeSync(file.fd);
+           }
          } catch (error) {
            let err: BusinessError = error as BusinessError;
-           console.error(`Failed to openSync / readSync. Code: ${err.code}, message: ${err.message}`);
+           console.error(`Failed to openSync / readSync. Code: ${err.code}`);
          }
-       }).catch((error: BusinessError) => {
+       }).catch((error: BusinessError): void => {
          let err: BusinessError = error as BusinessError;
-         console.error(`Failed to connect dfs. Code: ${err.code}, message: ${err.message}`);
+         console.error(`Failed to connect dfs. Code: ${err.code}`);
        });
      }
    } catch (error) {
-     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+     const err: BusinessError = error as BusinessError;
+     console.error(`Operation failed. Code: ${err.code}`);
    }
    ```
 
@@ -153,20 +150,26 @@
    // 获取设备A的networkId
    // ...
    try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+     const dmInstance: distributedDeviceManager.DeviceManager =
+       distributedDeviceManager.createDeviceManager('com.example.hap');
      let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
      if (deviceInfoList && deviceInfoList.length > 0) {
        console.info(`Success to get available device list`);
-       let networkId = deviceInfoList[0].networkId;
+       const networkId: string = deviceInfoList[0].networkId ?? '';
+       if (networkId === '') {
+         console.error('Distributed operation requires a peer network ID');
+         return;
+       }
        // 关闭跨设备文件访问
-       fileIo.disconnectDfs(networkId).then(() => {
+       fileIo.disconnectDfs(networkId).then((): void => {
          console.info(`Success to disconnect dfs`);
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
+       }).catch((err: BusinessError): void => {
+         console.error(`Failed to disconnect dfs. Code: ${err.code}`);
        })
      }
    } catch (error) {
-     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+     const err: BusinessError = error as BusinessError;
+     console.error(`Operation failed. Code: ${err.code}`);
    }
    ```
 
