@@ -27,7 +27,7 @@
 
 - 当应用被卸载完成后，设备上的相关数据库文件及临时文件会被自动清除。
 
-- ArkTS侧支持的基本数据类型：number、string、二进制类型数据、boolean；特殊数据类型：ValueType。
+- ArkTS侧支持的基本数据类型：number、string、二进制类型数据、boolean；特殊数据类型：[ValueType](../reference/apis-arkdata/arkts-apis-data-relationalStore-t.md#valuetype)。
 
 - 为保证插入并读取数据成功，建议一条数据不要超过2M。单条数据超出该大小时，即使插入成功，也会出现读取失败的情况。
 
@@ -174,7 +174,7 @@ SQL语句中的函数，如下所示：
        }
        // 建表语句，floatvector(2)代表repr的维度是2
        const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
-       // 第二个入参表示不开启显示事务，第三个参数undefined表示未使用参数绑定
+       // 第二个入参表示不开启显式事务，第三个参数undefined表示未使用参数绑定
        await store!.execute(SQL_CREATE_TABLE, 0, undefined);
      } catch(err) {
        console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
