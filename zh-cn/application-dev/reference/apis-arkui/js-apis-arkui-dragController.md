@@ -78,7 +78,7 @@ struct DragControllerPage {
   @State text: string = ''
 
   @Builder
-  draggingBuilder() {
+  DraggingBuilder() {
     Column() {
       Text('DraggingBuilder')
         .fontColor(Color.White)

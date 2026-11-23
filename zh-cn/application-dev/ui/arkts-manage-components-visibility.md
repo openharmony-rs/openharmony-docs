@@ -536,7 +536,7 @@ export function PageTwoBuilder(name: string) {
 }
 ```
 
-在resources/base/profile中创建route_map.json文件，并添加以下配置信息。
+在resources/base/profile中创建router_map.json文件，并添加以下配置信息。
 
 ```json
 {
@@ -553,10 +553,10 @@ export function PageTwoBuilder(name: string) {
 }
 ```
 
-在module.json5配置文件的module标签中定义routerMap字段，指向路由表配置文件route_map.json。
+在module.json5配置文件的module标签中定义routerMap字段，指向路由表配置文件router_map.json。
 
 ```json
-"routerMap": "$profile:route_map"
+"routerMap": "$profile:router_map"
 ```
 
 ## 常见问题
