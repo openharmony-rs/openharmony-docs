@@ -110,7 +110,7 @@
     try {
       let mdAlgName = 'MD5'; // 摘要算法名。
       let md = cryptoFramework.createMd(mdAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节。
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节。
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
@@ -145,7 +145,7 @@
     try {
       let mdAlgName = 'MD5'; // 摘要算法名。
       let md = cryptoFramework.createMd(mdAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节。
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节。
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。

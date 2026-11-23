@@ -87,7 +87,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey =  aesGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
   function doCmacBySync() {
@@ -159,7 +159,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
         cipherName: 'AES128',
       };
       let mac = cryptoFramework.createMac(spec);
-      // 假设消息共43字节，根据UTF-8解码后，仍是43字节。
+      // 假设消息共43字节，根据UTF-8编码后，仍是43字节。
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无具体要求。
@@ -195,7 +195,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey = aesGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
   function doLoopCmacBySync() {

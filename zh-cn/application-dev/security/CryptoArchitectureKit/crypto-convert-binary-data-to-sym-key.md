@@ -161,7 +161,7 @@
       // 对称密钥长度为64字节，512比特
       let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
       let keyBlob: cryptoFramework.DataBlob = {
-        data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+        data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
       }
       let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
       let key = symKeyGenerator.convertKeySync(keyBlob);

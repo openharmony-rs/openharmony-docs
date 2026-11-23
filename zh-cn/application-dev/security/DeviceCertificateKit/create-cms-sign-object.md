@@ -195,20 +195,20 @@ async function testPkcs7SignBySync() {
     };
     // addCert设置为true时，第二次addSigner或者addCert增加相同的证书，会报错。
     let config: cert.CmsSignerConfig = {
-      mdName:'SHA256',
-      addCert:false,
-      addAttr:false,
-      addSmimeCapAttr:false
-    }
+      mdName: 'SHA256',
+      addCert: false,
+      addAttr: false,
+      addSmimeCapAttr: false
+    };
     cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
     console.info('testPkcs7SignBySync addSigner result: success.');
     cmsGenerator.addCert(x509Cert);
     console.info('testPkcs7SignBySync addCert result: success.');
     let content = new Uint8Array([1,2,3,4]);
     let optionsFinal: cert.CmsGeneratorOptions = {
-      contentDataFormat : cert.CmsContentDataFormat.BINARY,
-      outFormat : cert.CmsFormat.DER,
-      isDetached : false
+      contentDataFormat: cert.CmsContentDataFormat.BINARY,
+      outFormat: cert.CmsFormat.DER,
+      isDetached: false
     };
     let output = cmsGenerator.doFinalSync(content, optionsFinal);
     console.info('testPkcs7SignBySync doFinalSync result: success, output = %s.', output);

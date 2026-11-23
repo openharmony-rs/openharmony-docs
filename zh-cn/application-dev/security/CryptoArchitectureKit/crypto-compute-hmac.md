@@ -84,7 +84,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let hmacGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
     let symKey = hmacGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
   
@@ -153,7 +153,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
       let key = await genSymKeyByData(keyData);
       let macAlgName = 'SHA256'; // 摘要算法名
       let mac = cryptoFramework.createMac(macAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
@@ -189,7 +189,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let hmacGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
     let symKey = hmacGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
   
@@ -200,7 +200,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
       let key = genSymKeyByData(keyData);
       let macAlgName = 'SHA256'; // 摘要算法名
       let mac = cryptoFramework.createMac(macAlgName);
-      // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      // 假设信息总共43字节，根据utf-8编码后，也是43字节
       let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
       let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
       let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求

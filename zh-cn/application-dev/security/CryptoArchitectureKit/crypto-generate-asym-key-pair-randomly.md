@@ -59,6 +59,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateAsyKeySync() {
     // 创建一个AsyKeyGenerator实例
@@ -78,7 +79,8 @@
         console.error('[Sync]: get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
@@ -133,6 +135,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateSM2KeySync() {
     // 创建一个AsyKeyGenerator实例
@@ -152,7 +155,8 @@
         console.error('[Sync]: get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }

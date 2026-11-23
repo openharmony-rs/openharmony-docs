@@ -36,6 +36,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // RSA公钥密钥参数生成函数
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
@@ -92,7 +93,8 @@
       let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
       rsaGeneratorSpec.generatePubKey((error, key) => {
         if (error) {
-          console.error(`generate pubKey failed: errCode: ${error.code}, message: ${error.message}`);
+          let e: BusinessError = error as BusinessError;
+          console.error(`generate pubKey failed: errCode: ${e.code}, message: ${e.message}`);
           // ...
           return;
         }
@@ -116,6 +118,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // RSA公钥密钥参数生成函数
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
@@ -185,7 +188,8 @@
         console.error('get pub key result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get pub key result failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
@@ -317,6 +321,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function showBigIntInfo(bnName: string, bnValue: bigint | string | number) {
     if (typeof bnValue === 'string') {
@@ -389,7 +394,8 @@
         let pkY = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
         showBigIntInfo('--- pkY', pkY);
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`getAsyKeySpec failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
@@ -407,7 +413,8 @@
         console.error('get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       // 逻辑错误等异常在此捕获
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
@@ -476,6 +483,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function genSM2KeyPairSpec() {
     let sm2CommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_sm2');
@@ -504,7 +512,8 @@
         console.error('get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
