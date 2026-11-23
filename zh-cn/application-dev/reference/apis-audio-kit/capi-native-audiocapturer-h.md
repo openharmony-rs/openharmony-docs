@@ -127,7 +127,10 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 暂停输入音频流。在暂停音频后，后续需要恢复录音的场景，建议使用pause。
 
-**需要权限：** ohos.permission.MICROPHONE [since 10 - 26.0.1]
+**需要权限：** 
+
+- API版本26.0.1+：N/A
+- API版本10-26.0.1：ohos.permission.MICROPHONE
 
 **起始版本：** 10
 
@@ -154,7 +157,10 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 停止音频采集器，停止输入音频流后，如果需要彻底结束录音，建议使用stop。
 
-**需要权限：** ohos.permission.MICROPHONE [since 10 - 26.0.1]
+**需要权限：** 
+
+- API版本26.0.1+：N/A
+- API版本10-26.0.1：ohos.permission.MICROPHONE
 
 **起始版本：** 10
 
