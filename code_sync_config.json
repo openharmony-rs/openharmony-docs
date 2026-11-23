@@ -75004,9 +75004,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":252,
+						"end_line":303,
 						"name":"ui_tree_create_request",
-						"start_line":211
+						"start_line":230
 					},
 					{
 						"end_line":279,
@@ -75044,9 +75044,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/TreePage.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":77,
 						"name":"ui_tree_page_collect",
-						"start_line":42
+						"start_line":46
 					}
 				]
 			}
