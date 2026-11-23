@@ -57922,9 +57922,9 @@
 						"start_line":406
 					},
 					{
-						"end_line":455,
+						"end_line":445,
 						"name":"screenCapture_PCHomeScreenConfigBuffer",
-						"start_line":439
+						"start_line":429
 					},
 					{
 						"end_line":475,
@@ -57932,9 +57932,9 @@
 						"start_line":450
 					},
 					{
-						"end_line":513,
+						"end_line":504,
 						"name":"SetPCSpecifiedWindowScreenConfigBuffer2",
-						"start_line":489
+						"start_line":480
 					},
 					{
 						"end_line":322,
@@ -57947,9 +57947,9 @@
 						"start_line":359
 					},
 					{
-						"end_line":516,
+						"end_line":520,
 						"name":"screenCapture_virtualExtendedScreen",
-						"start_line":505
+						"start_line":509
 					}
 				]
 			}
