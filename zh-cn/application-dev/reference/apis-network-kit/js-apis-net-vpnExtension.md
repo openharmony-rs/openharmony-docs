@@ -566,14 +566,17 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 ### protectSync
 
-protectSync(socketFd: number): void
+ArkTS-Dyn: protectSync(socketFd: number): void
+
+ArkTS-Sta: protectSync(socketFd: int): void
 
 保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用同步方式返回。
 
 > **说明：**
 > 
-> - 该接口为同步调用，会在当前线程完成服务校验等过程，不建议在UI主线程循环中对大量socketFd串行调用；批量场景可使用异步protect接口或分批处理。
+> - 该接口为同步调用，会在当前线程完成服务校验等过程，不建议在UI主线程循环中对大量socketFd串行调用；批量场景可使用异步[protect](#protect)接口或分批处理。
 > - 本接口仅对传入的socketFD生效，需在socket连接建立后调用；由该socket派生的新连接需重新调用本接口。
+> - 接口抛2203004错误码时，表示fwmark（firewall mark，防火墙标记）设置失败，该socket的流量仍按VPN规则转发；请在确认socket有效后重试，或改用异步protect接口。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
@@ -587,7 +590,7 @@ protectSync(socketFd: number): void
 
 | 参数名   | 类型   | 必填 | 说明                                                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------------------------------------- |
-| socketFd | number | 是   | 指定保护的socketfd，该文件描述符通过[getSocketFd](js-apis-socket.md#getsocketfd10-1)获取，取值必须为整数。 |
+| socketFd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定保护的socketfd，该文件描述符通过[getSocketFd](js-apis-socket.md#getsocketfd10-1)获取，取值必须为整数。 |
 
 **错误码：**
 
@@ -600,15 +603,9 @@ protectSync(socketFd: number): void
 | 2200003   | System internal error.                       |
 | 2203004   | Invalid socket file descriptor.              |
 
-> **说明：**
->
-> 接口抛2203004错误码时，表示fwmark设置失败，该socket的流量仍按VPN规则转发；请在确认socket有效后重试，或改用异步protect接口。
-
 **示例：**
 
-> **说明：**
-> 
-> 本示例通过按钮调用protectSync接口，context由UIAbility的宿主上下文获取。
+ArkTS-Dyn示例：
 
 ```ts
 import { socket, vpnExtension } from '@kit.NetworkKit';
@@ -622,24 +619,24 @@ struct Index {
   private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
   private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
 
-  ProtectSync(): void {
+  async ProtectSync(): void {
     let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
     let ipAddress: socket.NetAddress = {
       address: "0.0.0.0"
-    }
+    };
     await tcp.bind(ipAddress).catch((error: BusinessError) => {
-      console.error(JSON.stringify(error))
+      console.error(JSON.stringify(error));
     });
     let netAddress: socket.NetAddress = {
       address: "192.168.1.11",
       port: 8888
-    }
+    };
     let addressConnect: socket.TCPConnectOptions = {
       address: netAddress,
       timeout: 6000
-    }
+    };
     await tcp.connect(addressConnect).catch((error: BusinessError) => {
-      console.error(JSON.stringify(error))
+      console.error(JSON.stringify(error));
     });
     tcp.getSocketFd().then((tunnelFd: number) => {
       try {
@@ -647,7 +644,72 @@ struct Index {
         console.info("protectSync success.");
       } catch (err) {
         let error: BusinessError = err as BusinessError;
-        console.error("protectSync failed, code: " + error.code + ", message: " + error.message);
+        console.error(`protectSync failed, code: ${error.code}, message: ${error.message}`);
+      }
+    });
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button('protectSync').onClick(() => {
+          this.ProtectSync();
+        }).width('70%').fontSize(30).margin(16)
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import {
+  Entry,
+  Component,
+  Row,
+  Column,
+  Button,
+} from '@kit.ArkUI';
+
+import { socket, vpnExtension } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+
+@SuppressWarnings({ rules: [SuppressWarningsType.PERMISSION] })
+@Entry
+@Component
+struct Index {
+  private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
+  private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
+
+  async ProtectSync(): void {
+    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+    let ipAddress: socket.NetAddress = {
+      address: "0.0.0.0"
+    };
+    await tcp.bind(ipAddress).catch((error: BusinessError) => {
+      console.error(JSON.stringify(error));
+    });
+    let netAddress: socket.NetAddress = {
+      address: "192.168.1.11",
+      port: 8888
+    };
+    let addressConnect: socket.TCPConnectOptions = {
+      address: netAddress,
+      timeout: 6000
+    };
+    await tcp.connect(addressConnect).catch((error: BusinessError) => {
+      console.error(JSON.stringify(error));
+    });
+    tcp.getSocketFd().then((tunnelFd: int) => {
+      try {
+        this.vpnConnection.protectSync(tunnelFd); // 同步保护套接字，失败时直接抛异常
+        console.info("protectSync success.");
+      } catch (err) {
+        let error: BusinessError = err as BusinessError;
+        console.error(`protectSync failed, code: ${error.code}, message: ${error.message}`);
       }
     });
   }
