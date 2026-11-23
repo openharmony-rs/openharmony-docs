@@ -263,7 +263,7 @@ export struct CustomDialogWithKeyboardAvoidDistance {
  
 <!-- @[custom_dialog_hover_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/CustomDialogHoverModeExample.ets) -->
 
-```ts
+``` TypeScript
 @CustomDialog
 @Component
 struct CustomDialogHoverModeDialog {
