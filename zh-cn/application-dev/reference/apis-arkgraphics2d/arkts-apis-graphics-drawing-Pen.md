@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -79,7 +79,7 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 const pen = new drawing.Pen();
 const penColor: common2D.Color = { alpha: 255, red: 0, green: 255, blue: 0 };
 pen.setColor(penColor);
-pen.setStrokeWidth(10.0);
+pen.setStrokeWidth(10);
 const newPen = new drawing.Pen(pen);
 ```
 
@@ -117,7 +117,7 @@ ArkTS-Sta: setMiterLimit(miter: double): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
-pen.setMiterLimit(5.0);
+pen.setMiterLimit(5);
 ```
 
 ## getMiterLimit<sup>12+</sup>
@@ -440,7 +440,7 @@ ArkTS-Sta: getColor4f(): common2D.Color4f | undefined
 
 | 类型           | 说明            |
 | -------------- | -------------- |
-|ArkTS-Dyn: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20)<br/>ArkTS-Sta:  [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) \| undefined | 返回画笔当前设置的颜色，为ARGB格式的浮点数表示，每个颜色通道的取值范围为[0.0, 1.0]。获取失败时返回undefined。 |
+|ArkTS-Dyn: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20)<br/>ArkTS-Sta: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) \| undefined | 返回画笔当前设置的颜色，为ARGB格式的浮点数表示，每个颜色通道的取值范围为[0.0, 1.0]。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -520,7 +520,7 @@ ArkTS-Sta: setStrokeWidth(width: double) : void
 import { drawing } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
-pen.setStrokeWidth(5.0);
+pen.setStrokeWidth(5);
 ```
 
 ## getWidth<sup>12+</sup>

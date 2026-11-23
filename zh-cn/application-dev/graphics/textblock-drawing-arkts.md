@@ -156,6 +156,7 @@ Canvas通过drawTextBlob()来绘制字块。函数接受三个参数：TextBlob�
    <!-- @[arkts_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
    ``` TypeScript
+
    // 创建画刷
    let brush = new drawing.Brush();
    // 创建画笔

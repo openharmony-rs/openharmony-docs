@@ -39,6 +39,11 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    
    ``` TypeScript
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI';
+   ```
+   
+   <!-- @[arkts_graphics_draw_import_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
    import { drawing } from '@kit.ArkGraphics2D';
    ```
    ArkTS-Sta示例：

@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -45,11 +45,17 @@ ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -103,11 +109,17 @@ ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -155,9 +167,9 @@ ArkTS-Sta: constructor(left: int, top: int, right: int, bottom: int)
 
 **参数：**
 
-| 参数名 | 类型                                    | 必填 | 说明                                                         |
-| ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的左侧位置（矩形左上角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。单位为物理像素px。 |
+| 参数名 | 类型   | 必填 | 说明                    |
+| ------ | ------ | ---- | ----------------------- |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的左侧位置（矩形左上角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。单位为物理像素px。|
 | top    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的顶部位置（矩形左上角纵坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。单位为物理像素px。 |
 | right  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的右侧位置（矩形右下角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。单位为物理像素px。 |
 | bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的底部位置（矩形右下角纵坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。单位为物理像素px。 |
@@ -168,11 +180,17 @@ ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region(100, 100, 200, 200);
@@ -229,19 +247,25 @@ isEqual(other: Region): boolean
 ArkTS-Dyn示例：
 
 ```ts
+import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { RenderNode, DrawContext } from '@kit.ArkUI';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     let other = new drawing.Region();
     region.setRect(100, 100, 400, 400);
-    other.setRect(150, 150, 250 ,250);
+    other.setRect(150, 150, 250, 250);
     let flag: boolean = false;
     flag = region.isEqual(other);
     console.info('flag: ', flag);
@@ -301,14 +325,19 @@ isComplex(): boolean
 **示例：**
 
 ```ts
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -348,10 +377,15 @@ import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -419,6 +453,7 @@ ArkTS-Sta: getBoundaryPath(): Path | undefined
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
+
 let region = new drawing.Region();
 let path = region.getBoundaryPath();
 ```
@@ -465,18 +500,23 @@ import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     region.setRect(100, 100, 400, 400);
     let flag: boolean = false;
-    flag = region.isPointContained(200,200);
+    flag = region.isPointContained(200, 200);
     console.info("region isPointContained : " + flag);
-    canvas.drawPoint(200,200);
+    canvas.drawPoint(200, 200);
     canvas.drawRegion(region);
     canvas.detachPen();
   }
@@ -509,17 +549,23 @@ ArkTS-Sta: offset(dx: int, dy: int): void
 ``` ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10.0);
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     region.setRect(100, 100, 400, 400);
     region.offset(10, 20);
-    canvas.drawPoint(200.0, 200.0);
+    canvas.drawPoint(200, 200);
     canvas.drawRegion(region);
     canvas.detachPen();
   }
@@ -565,16 +611,21 @@ import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     let other = new drawing.Region();
     region.setRect(100, 100, 400, 400);
-    other.setRect(150, 150, 250 ,250);
+    other.setRect(150, 150, 250, 250);
     let flag: boolean = false;
     flag = region.isRegionContained(other);
     console.info("region isRegionContained : " + flag);
@@ -626,10 +677,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -637,7 +693,7 @@ class DrawingRenderNode extends RenderNode {
     let othregion = new drawing.Region();
     othregion.setRect(110, 110, 240, 240);
     let flag: boolean = false;
-    flag = region.op(othregion,drawing.RegionOp.REPLACE);
+    flag = region.op(othregion, drawing.RegionOp.REPLACE);
     console.info("region op : " + flag);
     canvas.drawRegion(region);
     canvas.detachPen();
@@ -715,10 +771,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -786,10 +847,15 @@ import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -845,10 +911,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -856,7 +927,7 @@ class DrawingRenderNode extends RenderNode {
     region.setRect(100, 100, 400, 400);
     path.arcTo(50, 50, 300, 300, 0, 359);
     let flag: boolean = false;
-    flag = region.setPath(path,region);
+    flag = region.setPath(path, region);
     console.info("region setPath : " + flag);
     canvas.drawRegion(region);
     canvas.detachPen();
@@ -914,10 +985,15 @@ import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -949,7 +1025,7 @@ import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     let region = new drawing.Region();
     region.setRect(100, 100, 200, 200);
     let isEmpty = region.isEmpty();
@@ -1007,10 +1083,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -1069,15 +1150,20 @@ isRect(): boolean
 
 **示例：**
 
-``` ts
+```ts
 import { drawing } from '@kit.ArkGraphics2D';
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -1117,10 +1203,10 @@ ArkTS-Sta: quickContains(left: int, top: int, right: int, bottom: int): boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
 
 **返回值：**
 
@@ -1130,15 +1216,20 @@ ArkTS-Sta: quickContains(left: int, top: int, right: int, bottom: int): boolean
 
 **示例：**
 
-``` ts
+```ts
 import { drawing } from '@kit.ArkGraphics2D';
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
