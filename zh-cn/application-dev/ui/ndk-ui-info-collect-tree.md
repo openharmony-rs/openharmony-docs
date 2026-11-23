@@ -154,13 +154,42 @@
 <!-- @[ui_tree_create_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
+// 遮挡过滤及其判定阈值只支持可见树请求：对全量树调用会返回
+// ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED，因此两项配置都放在可见树分支内。
+bool ApplyOcclusion(napi_env env, OH_ArkUI_NativeModule_UIAgentTreeRequest* request,
+    bool visible, bool occluded, double threshold)
+{
+    if (!visible) {
+        if (occluded) {
+            napi_throw_error(env, nullptr, "Occlusion filtering requires a visible-tree request");
+            return false;
+        }
+        return true;
+    }
+    // 阈值在遮挡过滤关闭时不参与判定，但仍随请求一起下发。
+    auto code = OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes(request, occluded);
+    if (code == ARKUI_ERROR_CODE_NO_ERROR) {
+        code = OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThreshold(request,
+            static_cast<float>(threshold));
+    }
+    if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+        Throw(env, "tree occlusion option", code);
+        return false;
+    }
+    return true;
+}
+
 Request CreateRequest(napi_env env, napi_value options)
 {
     Request request(nullptr, OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy);
     bool visible = false;
+    bool occluded = false;
+    double threshold = 1.0;
     std::array<bool, TREE_OPTION_COUNT> flags {};
     const char* names[] = {"filterLayout", "interaction", "accessibility", "visual", "functional"};
-    if (!ReadBool(env, options, "visibleOnly", visible)) {
+    if (!ReadBool(env, options, "visibleOnly", visible) ||
+        !ReadBool(env, options, "filterOccluded", occluded) ||
+        !ReadThreshold(env, options, "occlusionThreshold", threshold)) {
         return request;
     }
     for (size_t index = 0; index < flags.size(); ++index) {
@@ -189,8 +218,11 @@ Request CreateRequest(napi_env env, napi_value options)
         if (code != ARKUI_ERROR_CODE_NO_ERROR) {
             Throw(env, "tree option", code);
             request.reset();
-            break;
+            return request;
         }
+    }
+    if (!ApplyOcclusion(env, request.get(), visible, occluded, threshold)) {
+        request.reset();
     }
     return request;
 }
@@ -361,6 +393,7 @@ private async collect(asynchronous: boolean): Promise<void> {
   this.busy = true;
   const options: TreeOptions = {
     visibleOnly: this.visibleOnly, filterLayout: this.filterLayout,
+    filterOccluded: this.filterOccluded, occlusionThreshold: this.occlusionThreshold,
     interaction: this.interaction, accessibility: this.accessibility,
     visual: this.visual, functional: this.functional
   };
@@ -372,8 +405,11 @@ private async collect(asynchronous: boolean): Promise<void> {
     const tree = parseTree(value);
     const target = findNode(tree, 'treeTarget');
     const hidden = findNode(tree, 'hiddenTarget');
+    const occluded = findNode(tree, 'occludedTarget');
+    const faint = findNode(tree, 'occludedFaintTarget');
     this.status = `schema=${tree.schemaVersion}; target=${target !== undefined}; ` +
-      `hidden=${hidden !== undefined}; nodes=${countNodes(tree)}`;
+      `hidden=${hidden !== undefined}; occluded=${occluded !== undefined}; ` +
+      `faint=${faint !== undefined}; nodes=${countNodes(tree)}`;
     this.result = target === undefined ? value.slice(0, OUTPUT_LIMIT) :
       JSON.stringify(target, null, 2).slice(0, OUTPUT_LIMIT);
   } catch (error) {
