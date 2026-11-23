@@ -3851,3 +3851,75 @@ systemManager.stopExactTimer(timerId).then(() => {
 | 名称     | 值 | 说明           |
 | -------- | -- | -------------- |
 | NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的应用场景。 |
+
+## applicationManager.getApplicationIconData
+ 
+getApplicationIconData(bundleName: string): string
+ 
+获取指定应用的图标数据。当企业需要自定义应用管理界面（如自建应用列表、应用管控报表）并展示应用图标时，可使用本接口获取。
+ 
+**起始版本：** 26.1.0
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**参数：**
+ 
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| bundleName | string                                                 | 是   | 应用的包名，用于指定需要获取图标数据的应用。 |
+ 
+**返回值：**
+ 
+| 类型                | 说明                             |
+| ------------------- | -------------------------------- |
+| string | 返回应用的图标数据，为Base64编码的字符串，解码后可用于图片展示。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201015  | The application is not installed. |
+ 
+**示例：**
+ 
+```ts
+import { applicationManager } from '@kit.MDMKit';
+ 
+@Entry
+@Component
+struct Index {
+  @State iconData: string = '';
+ 
+  build() {
+    Column() {
+      Image(this.iconData)
+        .width(100)
+        .height(100)
+ 
+      Button('获取指定应用的图标数据')
+        .onClick(() => {
+          try {
+            // 需根据实际情况进行替换
+            let bundleName: string = 'com.example.exampleapplication';
+            this.iconData = applicationManager.getApplicationIconData(bundleName);
+            console.info(`Succeeded in getting application icon data, iconData length: ${iconData.length}`);
+          } catch (err) {
+            console.error(`Failed to get application icon data. Code is ${err.code}, message is ${err.message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
