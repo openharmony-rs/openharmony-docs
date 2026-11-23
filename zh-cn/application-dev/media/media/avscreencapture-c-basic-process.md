@@ -280,13 +280,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer。
+        // 处理视频Buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer。
+        // 处理内录Buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer。
+        // 处理麦克风Buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
@@ -382,13 +382,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer。
+        // 处理视频Buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer。
+        // 处理内录Buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer。
+        // 处理麦克风Buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
@@ -445,12 +445,13 @@ ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
 if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
     return;
 }
-// 根据设备分辨率在config中配置录屏的宽度、高度。
+// 根据设备分辨率在config中配置录屏的宽度（px）、高度（px）。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 OH_NativeDisplayManager_DestroyDisplay(displayInfo);
 displayInfo = nullptr;
-// 设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入屏幕ID。
+// 当不使用Picker时，通过OH_AVScreenCapture_StrategyForPickerPopUp设置为false，
+// 开发者可通过设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入具体屏幕ID来录屏。
 config.captureMode = OH_CAPTURE_SPECIFIED_SCREEN;
 config.videoInfo.videoCapInfo.displayId = 0;
 ```
@@ -476,7 +477,7 @@ ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
 if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
     return;
 }
-// 根据设备分辨率在config中配置录屏的宽度、高度。
+// 根据设备分辨率在config中配置录屏的宽度（px）、高度（px）。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 OH_NativeDisplayManager_DestroyDisplay(displayInfo);
@@ -506,21 +507,22 @@ ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
 if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
     return;
 }
-// 根据设备分辨率在config中配置录屏的宽度、高度。
+// 根据设备分辨率在config中配置录屏的宽度（px）、高度（px）。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 OH_NativeDisplayManager_DestroyDisplay(displayInfo);
 displayInfo = nullptr;
-// 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕ID。
+// 当不使用Picker时，通过OH_AVScreenCapture_StrategyForPickerPopUp设置为false，
+// 开发者可通过设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入具体窗口ID来录屏。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
-// (可选)若有期望录制的窗口，可传入单个窗口ID。
+// （可选）若有期望录制的窗口，可传入单个窗口ID。
 g_missionIds = {61}; // 表示弹出的Picker默认选中61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = g_missionIds.data();
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.size());
 
-// 在配置参数结束后执行"g_missionIds.clear()"。
+// 在配置参数结束后执行“g_missionIds.clear()”。
 ```
 
 <!--RP2--><!--RP2End-->
@@ -538,7 +540,7 @@ ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
 if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
     return;
 }
-// 根据设备分辨率在config中配置录屏的宽度、高度。
+// 根据设备分辨率在config中配置录屏的宽度（px）、高度（px）。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 OH_NativeDisplayManager_DestroyDisplay(displayInfo);
@@ -552,7 +554,7 @@ g_missionIds2 = {60, 61}; // 表示期望同时录制60、61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = g_missionIds2.data();
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2.size());
 
-// 在配置参数结束后执行"g_missionIds2.clear()"。
+// 在配置参数结束后执行“g_missionIds2.clear()”。
 ```
 
 ### 录制虚拟扩展屏幕
@@ -564,7 +566,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 <!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
-// 在config中配置待录制的虚拟扩展屏幕的宽度、高度。
+// 在config中配置录虚拟扩展屏幕的宽度（px）、高度（px）。
 int32_t width = 1920;
 int32_t height = 1080;
 config.videoInfo.videoCapInfo.videoFrameWidth = width;
