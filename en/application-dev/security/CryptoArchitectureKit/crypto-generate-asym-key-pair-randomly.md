@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:29:25.773Z pushedAt=2026-11-16T02:06:53.417Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:26:35.391Z pushedAt=2026-11-23T08:03:14.430Z nl=1 -->
 
 This topic uses RSA and SM2 as an example to describe how to generate an asymmetric key pair (**KeyPair**) and obtain the binary data.
 
@@ -32,12 +32,12 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
-  function generateAsyKey() {
-    // Create an AsyKeyGenerator instance.
-    let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_2');
-    // Use AsyKeyGenerator to randomly generate an asymmetric key pair.
-    let keyGenPromise = rsaGenerator.generateKeyPair();
-    keyGenPromise.then(keyPair => {
+  async function generateAsyKey() {
+    try {
+      // Create an AsyKeyGenerator instance.
+      let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_2');
+      // Use the key generator to randomly generate an asymmetric key pair.
+      let keyPair = await rsaGenerator.generateKeyPair();
       let pubKey = keyPair.pubKey;
       let priKey = keyPair.priKey;
       // Obtain the binary data of the asymmetric key pair.
@@ -45,9 +45,11 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
       let skBlob = priKey.getEncoded();
       console.info('pk bin data: ' + pkBlob.data);
       console.info('sk bin data: ' + skBlob.data);
-    }).catch((error: BusinessError) => {
-      console.error(`generateAsyKey failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`generateAsyKey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -75,9 +77,11 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
         console.info('sk bin data: ' + skBlob.data);
       } else {
         console.error('[Sync]: get key pair result: fail!');
+        // ...
       }
     } catch (e) {
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -103,12 +107,12 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
-  function generateSM2Key() {
-    // Create an AsyKeyGenerator instance.
-    let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
-    // Use AsyKeyGenerator to randomly generate an asymmetric key pair.
-    let keyGenPromise = sm2Generator.generateKeyPair();
-    keyGenPromise.then(keyPair => {
+  async function generateSM2Key() {
+    try {
+      // Create an AsyKeyGenerator instance.
+      let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
+      // Use the key generator to randomly generate an asymmetric key pair.
+      let keyPair = await sm2Generator.generateKeyPair();
       let pubKey = keyPair.pubKey;
       let priKey = keyPair.priKey;
       // Obtain the binary data of the asymmetric key pair.
@@ -116,9 +120,11 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
       let skBlob = priKey.getEncoded();
       console.info('pk bin data: ' + pkBlob.data);
       console.info('sk bin data: ' + skBlob.data);
-    }).catch((error: BusinessError) => {
-      console.error(`generateSM2Key failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`generateSM2Key failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -145,9 +151,11 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
         console.info('sk bin data: ' + skBlob.data);
       } else {
         console.error('[Sync]: get key pair result: fail!');
+        // ...
       }
     } catch (e) {
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

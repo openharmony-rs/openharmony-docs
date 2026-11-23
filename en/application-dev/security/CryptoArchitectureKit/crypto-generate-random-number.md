@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:31:59.491Z pushedAt=2026-11-16T02:06:53.429Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:31:25.159Z pushedAt=2026-11-23T08:03:27.163Z nl=1 -->
 
 > **NOTE**
 >
@@ -69,6 +69,7 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -91,10 +92,12 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
         console.info('[Sync]: rand result: ' + randData.data);
       } else {
         console.error('[Sync]: get rand result: fail!');
+        // ...
       }
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`do rand failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

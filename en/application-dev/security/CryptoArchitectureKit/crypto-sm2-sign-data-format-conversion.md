@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=65945a7a0f4fc96eaefe48f50def3bda3f01bc0a translatedAt=2026-10-30T04:03:19.167Z pushedAt=2026-10-30T07:32:11.759Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:37:35.214Z pushedAt=2026-11-23T08:04:51.002Z nl=1 -->
 
 HarmonyOS supports the conversion between the DER and R|S formats.
 
@@ -36,6 +36,7 @@ function testSm2SignDataRsToDer() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`ecc failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -62,6 +63,7 @@ function testSm2SignDataDerToRs() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`ecc failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

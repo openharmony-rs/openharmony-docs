@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:37:02.949Z pushedAt=2026-10-30T07:04:06.848Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:24:51.634Z pushedAt=2026-11-23T07:57:11.079Z nl=1 -->
 
 ## OnlySign and OnlyVerify Modes
 
@@ -45,6 +45,7 @@ Signing and signature verification supports the **OnlySign** and **OnlyVerify** 
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
@@ -65,21 +66,28 @@ Signing and signature verification supports the **OnlySign** and **OnlyVerify** 
   }
   
   async function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    // Use Md to compute the SHA1 digest (20 bytes).
-    let md = cryptoFramework.createMd('SHA1');
-    await md.update(messageData);
-    let digestBlob = await md.digest();
-    let keyGenAlg = 'ECC224';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
+      // First use Md to calculate the SHA1 digest (20 bytes).
+      let md = cryptoFramework.createMd('SHA1');
+      await md.update(messageData);
+      let digestBlob = await md.digest();
+      let keyGenAlg = 'ECC224';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey, digestBlob);
+      let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -92,6 +100,7 @@ Signing and signature verification supports the **OnlySign** and **OnlyVerify** 
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
@@ -112,20 +121,27 @@ Signing and signature verification supports the **OnlySign** and **OnlyVerify** 
   }
   
   function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    let md = cryptoFramework.createMd('SHA1');
-    md.updateSync(messageData);
-    let digestBlob = md.digestSync();
-    let keyGenAlg = 'ECC224';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
+      let md = cryptoFramework.createMd('SHA1');
+      md.updateSync(messageData);
+      let digestBlob = md.digestSync();
+      let keyGenAlg = 'ECC224';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey, digestBlob);
+      let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

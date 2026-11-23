@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:22:50.223Z pushedAt=2026-11-16T02:06:53.404Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:21:18.427Z pushedAt=2026-11-23T07:56:16.189Z nl=1 -->
 
 The cipher-based message authentication code (CMAC) uses a block cipher (such as AES) and a key to generate an authentication code, which verifies that a message has not been tampered with during transmission.
 
@@ -69,6 +69,7 @@ The following provides examples of CMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -111,6 +112,7 @@ The following provides examples of CMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -175,6 +177,7 @@ The following provides examples of CMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -223,6 +226,7 @@ The following provides examples of CMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

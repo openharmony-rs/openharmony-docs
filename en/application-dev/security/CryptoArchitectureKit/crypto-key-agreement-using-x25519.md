@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:33:23.755Z pushedAt=2026-11-16T02:06:53.438Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:33:42.114Z pushedAt=2026-11-23T08:04:06.471Z nl=1 -->
 
 For details about the algorithm specifications, see [X25519](crypto-key-agreement-overview.md#x25519).
 
@@ -53,10 +53,12 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
         console.info('x25519 output: ' + secret1.data);
       } else {
         console.error('x25519 result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -95,10 +97,12 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
         console.info('x25519 output: ' + secret1.data);
       } else {
         console.error('x25519 result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

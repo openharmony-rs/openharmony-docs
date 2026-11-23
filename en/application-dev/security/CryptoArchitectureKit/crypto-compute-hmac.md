@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:30:08.406Z pushedAt=2026-11-16T02:06:53.419Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:22:17.284Z pushedAt=2026-11-23T07:56:18.781Z nl=1 -->
 
 The hash-based message authentication code (HMAC) algorithm employs a designated digest algorithm and takes a shared key and message as inputs to generate a fixed-length message authentication code (MAC) to check the integrity of packets. The HMAC adds key input on the basis of the message digest algorithm to ensure information correctness.
 
@@ -66,6 +66,7 @@ The following provides examples of HMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -106,6 +107,7 @@ The following provides examples of HMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -169,6 +171,7 @@ The following provides examples of HMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -215,6 +218,7 @@ The following provides examples of HMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -272,6 +276,7 @@ The following provides examples of HMAC operations with different data passing m
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

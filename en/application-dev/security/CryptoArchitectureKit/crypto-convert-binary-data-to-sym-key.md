@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:28:14.056Z pushedAt=2026-11-16T02:06:53.407Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:23:51.728Z pushedAt=2026-11-23T07:56:58.525Z nl=1 -->
 
 This topic uses 3DES and HMAC as an example to describe how to convert binary data into a symmetric key (**SymKey**). That is, convert a piece of external or internal binary data into a key object for subsequent operations, such as encryption and decryption.
 
@@ -39,27 +39,32 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
     return { data: keyMaterial };
   }
   
-  function testConvertSymKey() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
-    // Convert the data into a symmetric key.
-    let keyMaterialBlob = genKeyMaterialBlob();
-    try {
-      symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
-        if (error) {// If the service logic fails to be executed, the first parameter of the callback returns error information, that is, throw an exception asynchronously.
-          let e: BusinessError = error as BusinessError;
-          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
-          return;
-        }
-        console.info('key algName: ' + key.algName);
-        console.info('key format: ' + key.format);
-        let encodedKey = key.getEncoded(); // Obtain the binary data of the symmetric key and output the data as a byte array. The length is 24 bytes.
-        console.info('key getEncoded hex: ' + encodedKey.data);
-      })
-    } catch (error) {// Throw an exception immediately when an error is detected during parameter check.
-      let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
-    }
+  function testConvertSymKey(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+      // Generate a symmetric key based on the specified data.
+      let keyMaterialBlob = genKeyMaterialBlob();
+      try {
+        symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
+          if (error) { // If the service logic fails, the first parameter of the callback returns the error information, that is, an exception is thrown asynchronously.
+            let e: BusinessError = error as BusinessError;
+            console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
+            // ...
+            return;
+          }
+          console.info('key algName: ' + key.algName);
+          console.info('key format: ' + key.format);
+          let encodedKey = key.getEncoded(); // Obtain the binary data of the symmetric key and output it as a byte array. The length is 24 bytes.
+          console.info('key getEncoded hex: ' + encodedKey.data);
+          resolve();
+        })
+      } catch (error) { // Throw an exception immediately if an error is found during parameter check.
+        let e: BusinessError = error as BusinessError;
+        console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
+        // ...
+      }
+    });
   }
   ```
 
@@ -82,11 +87,12 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
   }
   
   function testConvertSymKey() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
-    // Convert the data into a symmetric key.
-    let keyMaterialBlob = genKeyMaterialBlob();
+  
     try {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+      // Generate a symmetric key from the specified data.
+      let keyMaterialBlob = genKeyMaterialBlob();
       let key = symKeyGenerator.convertKeySync(keyMaterialBlob);
       console.info('key algName: ' + key.algName);
       console.info('key format: ' + key.format);
@@ -95,6 +101,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
     } catch (error) {// Throw an exception immediately when an error is detected during parameter check.
       let e: BusinessError = error as BusinessError;
       console.error(`convertKeySync failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -135,6 +142,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -163,6 +171,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

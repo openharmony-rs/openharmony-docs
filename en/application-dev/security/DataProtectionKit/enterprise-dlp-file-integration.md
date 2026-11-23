@@ -5,13 +5,15 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=57bfdae40c212841223c0901c52730bcefb3354e translatedAt=2026-10-31T07:12:03.545Z pushedAt=2026-11-02T07:16:40.576Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f046def203fd801c76fc9df20267d0eaeb5813e4 translatedAt=2026-11-20T09:40:01.718Z pushedAt=2026-11-23T08:05:08.413Z nl=1 -->
 
 ## When to Use
 
 Data Protection Kit provides applications with the capability to query or close a specific type of DLP files based on file tags. An application can set custom file tags when generating or opening files. When the device state changes, if the application determines that the device is currently in a risky scenario, it can use the custom file tags to query whether any DLP files are currently open, and close these files to prevent sensitive data from being leaked in the risky scenario.
 
 In addition, Data Protection Kit provides applications with the capability to register a communication plugin with the SA (System Ability) side. After the application registers the communication plugin, the system SA can initiate communication with the application through the plugin. Capabilities related to the generation and restoration of DLP files all depend on the enterprise registering this communication plugin in advance, through which the system SA can obtain required information from the application in real time.
+
+<!--RP1--><!--RP1End-->
 
 ## Development Procedure
 
@@ -142,6 +144,6 @@ In addition, Data Protection Kit provides applications with the capability to re
  
     Currently supported event types include creating, opening, modifying (content), and copying (content) DLP files. The specific development steps are as follows:
  
-    6.1 For the specific development steps, see [Single-Client Subscription](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/devicesecurity-audit-subscribe-arkts-suevent).
+    6.1 For the specific development steps, see [Single-Client Subscription](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/devicesecurity-audit-subscribe-arkts-suevent). 
 
     6.2 The eventId of DLP file events is 0x00F000006.
