@@ -562,6 +562,97 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 }
 ```
 
+### protectSync
+
+protectSync(socketFd: number): void
+
+保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用同步方式返回。
+
+> **说明：**
+> 
+> - 该接口为同步调用，会在当前线程完成服务校验等过程，不建议在UI主线程循环中对大量socketFd串行调用；批量场景可使用异步[protect](#protect)接口或分批处理。
+> - 本接口仅对传入的socketFD生效，需在socket连接建立后调用；由该socket派生的新连接需重新调用本接口。
+> - 接口抛2203004错误码时，表示fwmark（firewall mark，防火墙标记）设置失败，该socket的流量仍按VPN规则转发；请在确认socket有效后重试，或改用异步protect接口。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                                                        |
+| -------- | ------ | ---- | ------------------------------------------------------------------------------------------- |
+| socketFd | number | 是   | 指定保护的socketfd，该文件描述符通过[getSocketFd](js-apis-socket.md#getsocketfd10-1)获取，取值必须为整数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)。
+
+| 错误码ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 2200001   | Invalid parameter value.                     |
+| 2200002   | Operation failed. Cannot connect to service. |
+| 2200003   | System internal error.                       |
+| 2203004   | Invalid socket file descriptor.              |
+
+**示例：**
+
+```ts
+import { socket, vpnExtension } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+
+@SuppressWarnings({ rules: [SuppressWarningsType.PERMISSION] })
+@Entry
+@Component
+struct Index {
+  private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
+  private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
+
+  async ProtectSync(): void {
+    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+    let ipAddress: socket.NetAddress = {
+      address: "0.0.0.0"
+    };
+    await tcp.bind(ipAddress).catch((error: BusinessError) => {
+      console.error(JSON.stringify(error));
+    });
+    let netAddress: socket.NetAddress = {
+      address: "192.168.1.11",
+      port: 8888
+    };
+    let addressConnect: socket.TCPConnectOptions = {
+      address: netAddress,
+      timeout: 6000
+    };
+    await tcp.connect(addressConnect).catch((error: BusinessError) => {
+      console.error(JSON.stringify(error));
+    });
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      try {
+        this.vpnConnection.protectSync(tunnelFd); // 同步保护套接字，失败时直接抛异常
+        console.info("protectSync success.");
+      } catch (err) {
+        let error: BusinessError = err as BusinessError;
+        console.error(`protectSync failed, code: ${error.code}, message: ${error.message}`);
+      }
+    });
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button('protectSync').onClick(() => {
+          this.ProtectSync();
+        }).width('70%').fontSize(30).margin(16)
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
 ### destroy
 
 destroy(): Promise\<void\>
