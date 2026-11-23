@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "介绍扩展屏场景下显示大小缩放系数（Density）的适配方法，通过自适应/响应式布局自动适配，或使用Window接口查询监听Density并设置跟随策略，解决窗口跨屏后元素缩放异常问题。"
+keywords: [扩展屏, Density, 显示大小缩放系数, 多屏适配, 窗口跨屏, 自适应布局, 响应式布局, vp px换算, Density跟随策略]
+doctype: guide
+status: active
+---
+
 # 显示大小缩放系数（Density）适配
 
 <!--Kit: ArkUI-->
