@@ -75011,5 +75011,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-ui-info-collect-text-image.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":650,
+						"name":"ndk_image_collect",
+						"start_line":606
+					},
+					{
+						"end_line":544,
+						"name":"ndk_image_take_item",
+						"start_line":488
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"ndk_image_result_type",
+						"start_line":39
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/ImagePage.ets",
+				"functions":[
+					{
+						"end_line":101,
+						"name":"ndk_image_page_collect",
+						"start_line":71
+					}
+				]
+			}
+		]
 	}
 ]
