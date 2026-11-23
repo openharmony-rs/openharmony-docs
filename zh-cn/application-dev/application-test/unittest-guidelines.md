@@ -62,37 +62,48 @@
 <!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) --> 
 
 ``` TypeScript
-import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import { UIAbility } from '@kit.AbilityKit';
+import { Component, ON } from '@kit.TestKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { delegator, driver, EXPECTED_BUNDLE, recoverMain, terminateMain } from '../JsUiSession';
 
-const delegator = abilityDelegatorRegistry.getAbilityDelegator();
-
-function sleep(time: number) {
-  return new Promise<void>((resolve: Function) => setTimeout(resolve, time));
-}
-
-export default function abilityTest() {
-  describe('ActsAbilityTest', () => {
-    // 测试套名称为ActsAbilityTest
-    // 可根据此处设置的用例类型、用例规模、用例级别进行用例筛选
-    it('testExample', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      // 测试用例名称为testExample
-      await sleep(500);
-      const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-      // 启动被测试Ability
-      const want: Want = {
-        bundleName: bundleName,
-        abilityName: 'EntryAbility'
+export default function abilityTest(): void {
+  describe('ActsAbilityTest', (): void => {
+    beforeEach(async (): Promise<void> => {
+      try {
+        await recoverMain();
+      } catch (error) {
+        await terminateMain();
+        throw error instanceof Error ? error as Error : new Error(String(error));
       }
-      await delegator.startAbility(want);
-      await sleep(500);
-      // 获取设备上前台显示的页面并断言检查
-      const ability: UIAbility = await delegator.getCurrentTopAbility();
-      expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
-      done();
-    })
-  })
+    });
+
+    /**
+     * @tc.number testJsunitBasicHome0001
+     * @tc.name testJsunitBasicHome0001
+     * @tc.desc Observe the launched main ability, actual bundle and exact Hello World text
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitBasicHome0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (): Promise<void> => {
+        try {
+          const ability: UIAbility = await delegator.getCurrentTopAbility();
+          hilog.info(0x0000, 'BasicExample', 'top name=%{public}s', ability.context.abilityInfo.name);
+          expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
+          hilog.info(0x0000, 'BasicExample', 'top bundle=%{public}s', ability.context.abilityInfo.bundleName);
+          expect(ability.context.abilityInfo.bundleName).assertEqual(EXPECTED_BUNDLE);
+          const text: Component = await driver.waitForComponent(ON.text('Hello World').type('Text'), 3000);
+          const actual: string = await text.getText();
+          hilog.info(0x0000, 'BasicExample', 'main greeting=%{public}s', actual);
+          expect(actual).assertEqual('Hello World');
+        } finally {
+          await terminateMain();
+        }
+      });
+  });
 }
 ```
 ### DevEco Studio执行测试脚本
@@ -301,48 +312,55 @@ export default function abilityTest() {
 <!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) --> 
 
 ``` TypeScript
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
-export default function exampleTest() {
-
-  describe('order1_sample', () => {
-    let testNumA: number = 1;
-    let testNumB: number = 1;
-
-    beforeAll(() => {
-      testNumA++;
-    })
-
-    beforeEach(() => {
+export default function exampleTest(): void {
+  describe('order1_sample', (): void => {
+    let testNumA: number = 0;
+    let testNumB: number = 0;
+    let seed: number = 0;
+    let trace: string = '';
+    beforeAll((): void => {
+      seed = 1;
+      seed++;
+      trace = 'setup';
+    });
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+      testNumA = seed;
+      testNumB = 1;
+      trace = 'before';
       testNumA++;
       testNumB++;
-    })
-
-    afterEach(() => {
+    });
+    afterEach((): void => {
       testNumA++;
-    })
+      trace += '>after';
+      hilog.info(0x0000, 'OrderExample', 'afterEach total A=%{public}d', testNumA);
+      expect(testNumA).assertEqual(4);
+      hilog.info(0x0000, 'OrderExample', 'final hook trace=%{public}s', trace);
+      expect(trace).assertEqual('before>after');
+    });
 
-    afterAll(() => {
-      let expectValue: number = 5;
-      expect(testNumA).assertEqual(expectValue);
-    })
-
-    it('testExampleA', Level.LEVEL1, async (done: Function) => {
-      let expectA: number = 3;
-      let expectB: number = 2;
-      expect(testNumA).assertEqual(expectA);
-      expect(testNumB).assertEqual(expectB);
-      done();
-    })
-
-    it('testExampleB', Level.LEVEL1, async (done: Function) => {
-      let expectA: number = 5;
-      let expectB: number = 3;
-      expect(testNumA).assertEqual(expectA);
-      expect(testNumB).assertEqual(expectB);
-      done();
-    })
-  })
+    /**
+     * @tc.number testJsunitGeneralHooks0001
+     * @tc.name testJsunitGeneralHooks0001
+     * @tc.desc Observe generic hook counters with per-case reset and assertions in the active afterEach
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitGeneralHooks0001', Level.LEVEL1, (): void => {
+      hilog.info(0x0000, 'OrderExample', 'beforeEach A=%{public}d', testNumA);
+      expect(testNumA).assertEqual(3);
+      hilog.info(0x0000, 'OrderExample', 'beforeEach B=%{public}d', testNumB);
+      expect(testNumB).assertEqual(2);
+      hilog.info(0x0000, 'OrderExample', 'before body trace=%{public}s', trace);
+      expect(trace).assertEqual('before');
+    });
+  });
 }
 ```
 **示例代码2**：beforeItSpecified/afterItSpecified使用示例，从1.0.15版本开始支持
@@ -350,33 +368,80 @@ export default function exampleTest() {
 <!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) --> 
 
 ``` TypeScript
-import { afterItSpecified, beforeItSpecified, describe, expect, it, Level } from '@ohos/hypium';
+import { afterItSpecified, beforeItSpecified, beforeEach, SysTestKit } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
-export default function exampleTest() {
-
-  describe('order2_sample', () => {
+export default function exampleTest(): void {
+  describe('order2_sample', (): void => {
     let testNumA: number = 1;
     let testNumB: number = 1;
-
-    beforeItSpecified(['testExampleB'], () => {
+    let specified: string = '';
+    const reset: () => void = (): void => {
+      testNumA = 1;
+      testNumB = 1;
+      specified = '';
+    };
+    const beforeA: () => void = (): void => {
+      reset();
+    };
+    const beforeB: () => void = (): void => {
+      reset();
       testNumB++;
-    })
-    afterItSpecified(['testExampleA'], () => {
+      specified = 'before B';
+    };
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+    // 1.0.29 examines only the first specified-hook map entry; dispatch both targets in that entry.
+    beforeItSpecified(['testJsunitSpecifiedHooks0001', 'testJsunitSpecifiedHooks0002'], (): void => {
+      if (SysTestKit.getItName() === 'testJsunitSpecifiedHooks0001') {
+        beforeA();
+      } else {
+        beforeB();
+      }
+    });
+    afterItSpecified(['testJsunitSpecifiedHooks0001'], (): void => {
       testNumA++;
-    })
-
-    it('testExampleA', Level.LEVEL1, async (done: Function) => {
-      expect(testNumA).assertEqual(1);
-      expect(testNumB).assertEqual(1);
-      done();
-    })
-
-    it('testExampleB', Level.LEVEL1, async (done: Function) => {
+      hilog.info(0x0000, 'OrderExample', 'after specified A=%{public}d', testNumA);
       expect(testNumA).assertEqual(2);
+    });
+
+    /**
+     * @tc.number testJsunitSpecifiedHooks0001
+     * @tc.name testJsunitSpecifiedHooks0001
+     * @tc.desc Run the case without the other case targeted before hook
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitSpecifiedHooks0001', Level.LEVEL1, (): void => {
+      hilog.info(0x0000, 'OrderExample', 'case A counter=%{public}d', testNumA);
+      expect(testNumA).assertEqual(1);
+      hilog.info(0x0000, 'OrderExample', 'case A B counter=%{public}d', testNumB);
+      expect(testNumB).assertEqual(1);
+      hilog.info(0x0000, 'OrderExample', 'case A specified hook=%{public}s', specified);
+      expect(specified).assertEqual('');
+    });
+
+    /**
+     * @tc.number testJsunitSpecifiedHooks0002
+     * @tc.name testJsunitSpecifiedHooks0002
+     * @tc.desc Run the explicitly targeted before hook independently of case A
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitSpecifiedHooks0002', Level.LEVEL1, (): void => {
+      hilog.info(0x0000, 'OrderExample', 'case B A reset=%{public}d', testNumA);
+      expect(testNumA).assertEqual(1);
+      hilog.info(0x0000, 'OrderExample', 'case B B counter=%{public}d', testNumB);
       expect(testNumB).assertEqual(2);
-      done();
-    })
-  })
+      hilog.info(0x0000, 'OrderExample', 'case B specified hook=%{public}s', specified);
+      expect(specified).assertEqual('before B');
+    });
+  });
 }
 ```
 **示例代码3**：xit使用示例，从1.0.17版本开始支持
@@ -384,19 +449,42 @@ export default function exampleTest() {
 <!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) --> 
 
 ``` TypeScript
-import { describe, it, Level, xit } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level, SysTestKit, xit } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
-export default function describeExampleTest() {
+export default function describeExampleTest(): void {
+  describe('order3_sample', (): void => {
+    let skippedBodyRuns: number = 0;
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
 
-  describe('order3_sample', () => {
-    xit('testExampleA', Level.LEVEL1, async (done: Function) => {
+    // Original xit demonstration: intentionally excluded from effective/pass counts.
+    xit('testJsunitSkippedExample0001', Level.LEVEL1, (done: () => void): void => {
+      skippedBodyRuns++;
       done();
-    })
+    });
 
-    it('testExampleB', Level.LEVEL1, async (done: Function) => {
-      done();
-    })
-  })
+    /**
+     * @tc.number testJsunitSkipSelection0002
+     * @tc.name testJsunitSkipSelection0002
+     * @tc.desc Verify that the active example runs with its own identity while xit is excluded
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitSkipSelection0002', Level.LEVEL1, (): void => {
+      hilog.info(0x0000, 'SkipExample', 'skipped body runs=%{public}d', skippedBodyRuns);
+      expect(skippedBodyRuns).assertEqual(0);
+      const name: string = SysTestKit.getItName();
+      hilog.info(0x0000, 'SkipExample', 'running case=%{public}s', name);
+      expect(name).assertEqual('testJsunitSkipSelection0002');
+      const suite: string = SysTestKit.getDescribeName();
+      hilog.info(0x0000, 'SkipExample', 'running suite=%{public}s', suite);
+      expect(suite).assertEqual('order3_sample');
+    });
+  });
 }
 ```
 
@@ -406,36 +494,75 @@ export default function describeExampleTest() {
 
 ``` TypeScript
 import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '@ohos/hypium';
-let str = "";
-export default function test() {
-  describe('test0', () => {
-    beforeEach(async () => {
-      str += "A"
-    })
-    beforeEachIt(async () => {
-      str += "B"
-    })
-    afterEach(async () => {
-      str += "C"
-    })
-    afterEachIt(async () => {
-      str += "D"
-    })
-    it('test0000', 0, () => {
-      expect(str).assertEqual("BA");
-    })
-    describe('test1', () => {
-      beforeEach(async () => {
-        str += "E"
-      })
-      beforeEachIt(async () => {
-        str += "F"
-      })
-      it('test1111', 0, async () => {
-        expect(str).assertEqual("BACDBFE");
-      })
-    })
-  })
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
+
+export default function test(): void {
+  describe('test0', (): void => {
+    let str: string = '';
+    let parentCount: number = 0;
+    let childCount: number = 0;
+    beforeEachIt((): void => {
+      str = 'B';
+      parentCount = 0;
+      childCount = 0;
+    });
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+      str += 'A';
+      parentCount++;
+    });
+    afterEach((): void => {
+      str += 'C';
+    });
+    afterEachIt((): void => {
+      str += 'D';
+    });
+
+    /**
+     * @tc.number testJsunitParentHooks0001
+     * @tc.name testJsunitParentHooks0001
+     * @tc.desc Observe parent hook order with independent counters reset for every case
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitParentHooks0001', 0, (): void => {
+      hilog.info(0x0000, 'OrderExample', 'parent trace=%{public}s', str);
+      expect(str).assertEqual('BA');
+      hilog.info(0x0000, 'OrderExample', 'parent hook count=%{public}d', parentCount);
+      expect(parentCount).assertEqual(1);
+      hilog.info(0x0000, 'OrderExample', 'child hook count in parent=%{public}d', childCount);
+      expect(childCount).assertEqual(0);
+    });
+    describe('test1', (): void => {
+      beforeEachIt((): void => {
+        str += 'F';
+      });
+      beforeEach(async (): Promise<void> => {
+        await paceTurn();
+        str += 'E';
+        childCount++;
+      });
+
+      /**
+       * @tc.number testJsunitChildHooks0002
+       * @tc.name testJsunitChildHooks0002
+       * @tc.desc Observe inherited per-it and child-local beforeEach hooks without prior parent case state
+       * @tc.size MediumTest
+       * @tc.type Function
+       * @tc.level Level1
+       */
+      it('testJsunitChildHooks0002', 0, (): void => {
+        hilog.info(0x0000, 'OrderExample', 'child trace=%{public}s', str);
+        expect(str).assertEqual('BFE');
+        hilog.info(0x0000, 'OrderExample', 'parent local hook count in child=%{public}d', parentCount);
+        expect(parentCount).assertEqual(0);
+        hilog.info(0x0000, 'OrderExample', 'child local hook count=%{public}d', childCount);
+        expect(childCount).assertEqual(1);
+      });
+    });
+  });
 }
 ```
 
@@ -475,161 +602,309 @@ export default function test() {
 <!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) --> 
 
 ``` TypeScript
-import { describe, expect, it, Level } from '@ohos/hypium';
+import { paceTurn } from '../TestPace';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AssertionObservation, LocalExpectService, observeAssertion } from '../AssertionObservation';
 
-export default function exampleTest() {
-  describe('ExampleTest', () => {
-    it('assertCloseTest', Level.LEVEL1, () => {
-      let a: number = 100;
-      let b: number = 0.1;
-      let c: number = 99;
-      expect(a).assertClose(c, b);
-    })
+export default function exampleTest(): void {
+  describe('ExampleTest', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
 
-    it('assertContain_1', Level.LEVEL1, () => {
-      let a = 'abc';
-      expect(a).assertContain('b');
-    })
-
-    it('assertContain_2', Level.LEVEL1, () => {
-      let a = [1, 2, 3];
-      expect(a).assertContain(1);
-    })
-
-    it('assertEqualTest', Level.LEVEL1, () => {
-      expect(3).assertEqual(3);
-    })
-
-    it('assertFailTest', Level.LEVEL1, () => {
-      expect().assertFail(); // 用例失败
-    })
-
-    it('assertFalseTest', Level.LEVEL1, () => {
-      expect(false).assertFalse();
-    })
-
-    it('assertTrueTest', Level.LEVEL1, () => {
-      expect(true).assertTrue();
-    })
-
-    it('assertInstanceOfTest', Level.LEVEL1, () => {
-      let a: string = 'strTest';
-      expect(a).assertInstanceOf('String');
-    })
-
-    it('assertLargerTest', Level.LEVEL1, () => {
-      expect(3).assertLarger(2);
-    })
-
-    it('assertLessTest', Level.LEVEL1, () => {
-      expect(2).assertLess(3);
-    })
-
-    it('assertNullTest', Level.LEVEL1, () => {
-      expect(null).assertNull();
-    })
-
-    it('assertThrowErrorTest', Level.LEVEL1, () => {
-      expect(() => {
-        throw new Error('test');
-      }).assertThrowError('test');
-    })
-
-    it('assertUndefinedTest', Level.LEVEL1, () => {
-      expect(undefined).assertUndefined();
-    })
-
-    it('assertLargerOrEqualTest', Level.LEVEL1, () => {
-      expect(3).assertLargerOrEqual(3);
-    })
-
-    it('assertLessOrEqualTest', Level.LEVEL1, () => {
-      expect(3).assertLessOrEqual(3);
-    })
-
-    it('assertNaNTest', Level.LEVEL1, () => {
-      expect(Number.NaN).assertNaN(); // true
-    })
-
-    it('assertNegUnlimitedTest', Level.LEVEL1, () => {
-      expect(Number.NEGATIVE_INFINITY).assertNegUnlimited(); // true
-    })
-
-    it('assertPosUnlimitedTest', Level.LEVEL1, () => {
-      expect(Number.POSITIVE_INFINITY).assertPosUnlimited(); // true
-    })
-
-    it('deepEquals_null_true', Level.LEVEL1, () => {
-      expect(null).assertDeepEquals(null);
-    })
-
-    it('deepEquals_array_not_have_true', Level.LEVEL1, () => {
-      const a: Array<number> = [];
-      const b: Array<number> = [];
-      expect(a).assertDeepEquals(b);
-    })
-
-    it('deepEquals_map_equal_length_success', Level.LEVEL1, () => {
-      const a: Map<number, number> = new Map();
-      const b: Map<number, number> = new Map();
-      a.set(1, 100);
-      a.set(2, 200);
-      b.set(1, 100);
-      b.set(2, 200);
-      expect(a).assertDeepEquals(b);
-    })
-
-    it('deepEquals_obj_success_1', Level.LEVEL1, () => {
-      const a: SampleTest = { x: 1 };
-      const b: SampleTest = { x: 1 };
-      expect(a).assertDeepEquals(b);
-    })
-
-    it('deepEquals_regExp_success_0', Level.LEVEL1, () => {
-      const a: RegExp = new RegExp('/test/');
-      const b: RegExp = new RegExp('/test/');
-      expect(a).assertDeepEquals(b);
-    })
-
-    it('assertPromiseIsPendingTest', Level.LEVEL1, async () => {
-      let p: Promise<void> = new Promise<void>(() => {
+    /**
+     * @tc.number testJsunitAssertClose0001
+     * @tc.name testJsunitAssertClose0001
+     * @tc.desc Retain the relative tolerance example and check a genuinely rejected tighter tolerance
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertClose0001', Level.LEVEL1, (): void => {
+      // Hypium uses relative error: |100-99|/100 = 0.01, therefore the original 0.1 passes.
+      hilog.info(0x0000, 'AssertObserve', 'actual=100 expected=99 precision=0.1');
+      expect(100).assertClose(99, 0.1);
+      const failure: AssertionObservation = observeAssertion((service: LocalExpectService): void => {
+        hilog.info(0x0000, 'AssertObserve', 'actual=100 expected=99 precision=0.001');
+        service.expect(100).assertClose(99, 0.001);
       });
-      await expect(p).assertPromiseIsPending();
-    })
+      hilog.info(0x0000, 'AssertObserve', 'rejected tolerance error name=%{public}s', failure.name);
+      expect(failure.name).assertEqual('AssertException');
+      hilog.info(0x0000, 'AssertObserve', 'rejected tolerance error message=%{public}s', failure.message);
+      expect(failure.message).assertEqual('|100 - 99|/100 is not less than 0.001');
+      hilog.info(0x0000, 'AssertObserve', 'failure reported=%{public}s', String(failure.reported));
+      expect(failure.reported).assertTrue();
+    });
 
-    it('assertPromiseIsRejectedTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = { res: 'no' };
-      let p: Promise<PromiseInfo> = Promise.reject(info);
-      await expect(p).assertPromiseIsRejected();
-    })
+    /**
+     * @tc.number testJsunitAssertContain0004
+     * @tc.name testJsunitAssertContain0004
+     * @tc.desc Combine string and array membership with present and absent elements
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertContain0004', Level.LEVEL1, (): void => {
+      const text: string = 'abc';
+      const values: number[] = [1, 2, 3];
+      hilog.info(0x0000, 'AssertExample', 'text=abc present=b absent=z; array=[1,2,3] present=1 absent=4');
+      expect(text).assertContain('b');
+      hilog.info(0x0000, 'AssertExample', 'array=%{public}s expected member=1', JSON.stringify(values));
+      expect(values).assertContain(1);
+      hilog.info(0x0000, 'AssertExample', 'text=%{public}s expected absent=z', text);
+      expect(text).not().assertContain('z');
+      hilog.info(0x0000, 'AssertExample', 'array=%{public}s expected absent=4', JSON.stringify(values));
+      expect(values).not().assertContain(4);
+    });
 
-    it('assertPromiseIsRejectedWithTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = { res: 'reject value' };
-      let p: Promise<PromiseInfo> = Promise.reject(info);
-      await expect(p).assertPromiseIsRejectedWith(info);
-    })
+    /**
+     * @tc.number testJsunitAssertScalar0005
+     * @tc.name testJsunitAssertScalar0005
+     * @tc.desc Combine equality and strict or inclusive ordering with distinct operands
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertScalar0005', Level.LEVEL1, (): void => {
+      const sum: number = 1 + 2;
+      hilog.info(0x0000, 'AssertExample', 'sum=%{public}d larger=5>2 less=2<3 inclusive=4>=4,6<=6', sum);
+      expect(sum).assertEqual(3);
+      hilog.info(0x0000, 'AssertExample', 'actual=5 expected greater than=2');
+      expect(5).assertLarger(2);
+      hilog.info(0x0000, 'AssertExample', 'actual=2 expected less than=3');
+      expect(2).assertLess(3);
+      hilog.info(0x0000, 'AssertExample', 'actual=4 expected greater than or equal=4');
+      expect(4).assertLargerOrEqual(4);
+      hilog.info(0x0000, 'AssertExample', 'actual=6 expected less than or equal=6');
+      expect(6).assertLessOrEqual(6);
+      hilog.info(0x0000, 'AssertExample', 'actual number=%{public}d expected unequal to string=3', sum);
+      expect(sum).not().assertEqual('3');
+    });
 
-    it('assertPromiseIsRejectedWithErrorTest', Level.LEVEL1, async () => {
-      let p1: Promise<TypeError> = Promise.reject(new TypeError('number'));
-      await expect(p1).assertPromiseIsRejectedWithError(TypeError);
-    })
+    /**
+     * @tc.number testJsunitAssertFailure0002
+     * @tc.name testJsunitAssertFailure0002
+     * @tc.desc Observe the explicit Hypium failure instead of failing or skipping the demonstration
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertFailure0002', Level.LEVEL1, (): void => {
+      const failure: AssertionObservation = observeAssertion((service: LocalExpectService): void => {
+        hilog.info(0x0000, 'AssertObserve', 'explicit failure without actual value');
+        service.expect().assertFail();
+      });
+      hilog.info(0x0000, 'AssertObserve', 'explicit failure name=%{public}s', failure.name);
+      expect(failure.name).assertEqual('AssertException');
+      hilog.info(0x0000, 'AssertObserve', 'explicit failure message=%{public}s', failure.message);
+      expect(failure.message).assertEqual('fail ');
+      hilog.info(0x0000, 'AssertObserve', 'explicit failure reported=%{public}s', String(failure.reported));
+      expect(failure.reported).assertTrue();
+    });
 
-    it('assertPromiseIsResolvedTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = { res: 'result value' };
-      let p: Promise<PromiseInfo> = Promise.resolve(info);
-      await expect(p).assertPromiseIsResolved();
-    })
+    /**
+     * @tc.number testJsunitAssertBooleanType0006
+     * @tc.name testJsunitAssertBooleanType0006
+     * @tc.desc Assert membership outcomes and the original String type with a negative type check
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertBooleanType0006', Level.LEVEL1, (): void => {
+      const present: boolean = 'abc'.includes('b');
+      const absent: boolean = [1, 2, 3].includes(4);
+      const text: string = 'strTest';
+      hilog.info(0x0000, 'AssertExample', 'present=%{public}s absent=%{public}s type input=%{public}s',
+        String(present), String(absent), text);
+      expect(present).assertTrue();
+      hilog.info(0x0000, 'AssertExample', 'array=[1,2,3] member=4 result=%{public}s expected=false', String(absent));
+      expect(absent).assertFalse();
+      hilog.info(0x0000, 'AssertExample', 'actual=%{public}s expected type=String', text);
+      expect(text).assertInstanceOf('String');
+      hilog.info(0x0000, 'AssertExample', 'actual=%{public}s expected not type=Number', text);
+      expect(text).not().assertInstanceOf('Number');
+    });
 
-    it('assertPromiseIsResolvedWithTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = { res: 'result value' };
-      let p: Promise<PromiseInfo> = Promise.resolve(info);
-      await expect(p).assertPromiseIsResolvedWith(info);
-    })
+    /**
+     * @tc.number testJsunitAssertSpecial0007
+     * @tc.name testJsunitAssertSpecial0007
+     * @tc.desc Combine null, missing, NaN and signed infinity results from distinct operations
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertSpecial0007', Level.LEVEL1, (): void => {
+      const parsed: Object | null = JSON.parse('null') as Object | null;
+      const values: Map<string, number> = new Map<string, number>();
+      const missing: number | undefined = values.get('missing');
+      const invalid: number = Number('not a number');
+      const negative: number = -Number.MAX_VALUE * 2;
+      const positive: number = Number.MAX_VALUE * 2;
+      hilog.info(0x0000, 'AssertExample', 'null=%{public}s missing=%{public}s NaN=%{public}s infinities=%{public}s',
+        String(parsed), String(missing), String(invalid), `${negative},${positive}`);
+      expect(parsed).assertNull();
+      hilog.info(0x0000, 'AssertExample', 'map key=missing result=%{public}s expected=undefined', String(missing));
+      expect(missing).assertUndefined();
+      hilog.info(0x0000, 'AssertExample', 'Number(not a number)=%{public}s expected=NaN', String(invalid));
+      expect(invalid).assertNaN();
+      hilog.info(0x0000, 'AssertExample', '-MAX_VALUE*2=%{public}s expected=-Infinity', String(negative));
+      expect(negative).assertNegUnlimited();
+      hilog.info(0x0000, 'AssertExample', 'MAX_VALUE*2=%{public}s expected=Infinity', String(positive));
+      expect(positive).assertPosUnlimited();
+    });
 
-    it('test_message', Level.LEVEL1, () => {
-      expect(1).message('1 is not equal 2!').assertEqual(2); // fail
-    })
-  })
+    /**
+     * @tc.number testJsunitAssertThrow0008
+     * @tc.name testJsunitAssertThrow0008
+     * @tc.desc Match the original Error and require a recorded failure for a wrong expected message
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertThrow0008', Level.LEVEL1, (): void => {
+      const action: () => void = (): void => {
+        throw new Error('test');
+      };
+      hilog.info(0x0000, 'AssertExample', 'throw Error(test); matching message=test');
+      expect(action).assertThrowError('test');
+      const failure: AssertionObservation = observeAssertion((service: LocalExpectService): void => {
+        hilog.info(0x0000, 'AssertExample', 'action throws Error(test); expected message=other');
+        service.expect(action).assertThrowError('other');
+      });
+      hilog.info(0x0000, 'AssertExample', 'wrong message name=%{public}s reported=%{public}s',
+        failure.name, String(failure.reported));
+      expect(failure.name).assertEqual('AssertException');
+      hilog.info(0x0000, 'AssertExample', 'wrong message diagnostic=%{public}s', failure.message);
+      expect(failure.message).assertEqual('expected throw failed , test is not other');
+      hilog.info(0x0000, 'AssertExample', 'wrong message reported=%{public}s expected=true', String(failure.reported));
+      expect(failure.reported).assertTrue();
+    });
+
+    /**
+     * @tc.number testJsunitAssertDeep0009
+     * @tc.name testJsunitAssertDeep0009
+     * @tc.desc Preserve null, array, map, object and regex comparison and detect changed content
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertDeep0009', Level.LEVEL1, (): void => {
+      const parsed: Object | null = JSON.parse('null') as Object | null;
+      const empty: number[] = [];
+      const otherEmpty: number[] = [];
+      const first: Map<number, number> = new Map<number, number>();
+      const second: Map<number, number> = new Map<number, number>();
+      first.set(1, 100);
+      first.set(2, 200);
+      second.set(1, 100);
+      second.set(2, 200);
+      const object: SampleTest = { x: 1 };
+      const otherObject: SampleTest = { x: 1 };
+      const regex: RegExp = new RegExp('/test/');
+      const otherRegex: RegExp = new RegExp('/test/');
+      hilog.info(0x0000, 'AssertExample', 'deep inputs: parsed null, empty arrays, map entries, x=1 and /test/');
+      expect(parsed).assertDeepEquals(null);
+      hilog.info(0x0000, 'AssertExample', 'array=%{public}s expected=%{public}s',
+        JSON.stringify(empty), JSON.stringify(otherEmpty));
+      expect(empty).assertDeepEquals(otherEmpty);
+      hilog.info(0x0000, 'AssertExample', 'map=%{public}s expected=%{public}s',
+        JSON.stringify(Array.from(first.entries())), JSON.stringify(Array.from(second.entries())));
+      expect(first).assertDeepEquals(second);
+      hilog.info(0x0000, 'AssertExample', 'object=%{public}s expected=%{public}s',
+        JSON.stringify(object), JSON.stringify(otherObject));
+      expect(object).assertDeepEquals(otherObject);
+      hilog.info(0x0000, 'AssertExample', 'regex=%{public}s expected=%{public}s',
+        regex.toString(), otherRegex.toString());
+      expect(regex).assertDeepEquals(otherRegex);
+      second.set(2, 201);
+      otherObject.x = 2;
+      hilog.info(0x0000, 'AssertExample', 'map=%{public}s expected different=%{public}s',
+        JSON.stringify(Array.from(first.entries())), JSON.stringify(Array.from(second.entries())));
+      expect(first).not().assertDeepEquals(second);
+      hilog.info(0x0000, 'AssertExample', 'object=%{public}s expected different=%{public}s',
+        JSON.stringify(object), JSON.stringify(otherObject));
+      expect(object).not().assertDeepEquals(otherObject);
+      hilog.info(0x0000, 'AssertExample', 'regex=%{public}s expected different pattern=/other/', regex.toString());
+      expect(regex).not().assertDeepEquals(new RegExp('/other/'));
+    });
+
+    /**
+     * @tc.number testJsunitAssertPromiseResolve0010
+     * @tc.name testJsunitAssertPromiseResolve0010
+     * @tc.desc Observe pending-to-resolved transition and the original resolved value example
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertPromiseResolve0010', Level.LEVEL1, async (): Promise<void> => {
+      let finish: (value: string) => void = (value: string): void => {};
+      const pending: Promise<string> = new Promise<string>((resolve: (value: string) => void): void => {
+        finish = resolve;
+      });
+      try {
+        hilog.info(0x0000, 'AssertExample', 'deferred promise before resolve');
+        await expect(pending).assertPromiseIsPending();
+        const info: PromiseInfo = { res: 'result value' };
+        const resolved: Promise<PromiseInfo> = Promise.resolve(info);
+        const expected: PromiseInfo = { res: 'result value' };
+        hilog.info(0x0000, 'AssertExample', 'separate promise resolves to result value');
+        await expect(resolved).assertPromiseIsResolved();
+        hilog.info(0x0000, 'AssertExample', 'resolved input=%{public}s expected=%{public}s',
+          JSON.stringify(info), JSON.stringify(expected));
+        await expect(resolved).assertPromiseIsResolvedWith(expected);
+        finish('completed');
+        hilog.info(0x0000, 'AssertExample', 'deferred promise after resolve=completed');
+        await expect(pending).assertPromiseIsResolvedWith('completed');
+      } finally {
+        finish('cleanup');
+      }
+    });
+
+    /**
+     * @tc.number testJsunitAssertPromiseReject0011
+     * @tc.name testJsunitAssertPromiseReject0011
+     * @tc.desc Combine original rejection state, rejection value and typed Error examples
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertPromiseReject0011', Level.LEVEL1, async (): Promise<void> => {
+      const no: PromiseInfo = { res: 'no' };
+      const value: PromiseInfo = { res: 'reject value' };
+      const expected: PromiseInfo = { res: 'reject value' };
+      hilog.info(0x0000, 'AssertExample', 'rejection inputs: no, reject value, TypeError(number)');
+      await expect(Promise.reject(no)).assertPromiseIsRejected();
+      hilog.info(0x0000, 'AssertExample', 'rejection input=%{public}s expected=%{public}s',
+        JSON.stringify(value), JSON.stringify(expected));
+      await expect(Promise.reject(value)).assertPromiseIsRejectedWith(expected);
+      hilog.info(0x0000, 'AssertExample', 'rejection input=TypeError(number) expected type=TypeError message=number');
+      await expect(Promise.reject(new TypeError('number'))).assertPromiseIsRejectedWithError(TypeError, 'number');
+    });
+
+    /**
+     * @tc.number testJsunitAssertMessage0003
+     * @tc.name testJsunitAssertMessage0003
+     * @tc.desc Preserve unequal operands and verify assertion error plus the custom diagnostic message
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAssertMessage0003', Level.LEVEL1, (): void => {
+      const failure: AssertionObservation = observeAssertion((service: LocalExpectService): void => {
+        hilog.info(0x0000, 'AssertObserve', 'actual=1 expected=2 message=1 is not equal 2!');
+        service.expect(1).message('1 is not equal 2!').assertEqual(2);
+      });
+      hilog.info(0x0000, 'AssertObserve', 'unequal operands error name=%{public}s', failure.name);
+      expect(failure.name).assertEqual('AssertException');
+      hilog.info(0x0000, 'AssertObserve', 'unequal operands error message=%{public}s', failure.message);
+      expect(failure.message).assertEqual('expect 1 equals 2');
+      hilog.info(0x0000, 'AssertObserve', 'custom diagnostic=%{public}s', failure.userMessage);
+      expect(failure.userMessage).assertEqual('1 is not equal 2!');
+      hilog.info(0x0000, 'AssertObserve', 'unequal operands reported=%{public}s', String(failure.reported));
+      expect(failure.reported).assertTrue();
+    });
+  });
 }
 
 interface SampleTest {
@@ -728,34 +1003,52 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 <!-- @[afterReturn_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets) --> 
 
 ``` TypeScript
-import { describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(arg: string) {
+  method_1(arg: string): string {
     return '888888';
   }
 }
 
-export default function afterReturnTest() {
-  describe('afterReturn_sample', () => {
-    it('afterReturnTest', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser，作为被Mock的对象实例
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作，对ClassName类的method_1函数进行Mock
-      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以'testA'为入参时调用函数返回结果'1',以'testB'为入参时调用函数返回结果undefined
-      when(mockfunc)('testA').afterReturn('1');
-      when(mockfunc)('testB').afterReturnNothing();
-      // 对Mock后的函数进行断言，看是否符合预期。分别传入参数'testA'和'testB'时，应该返回自定义的预期结果1和undefined
-      expect(claser.method_1('testA')).assertEqual('1'); // 断言执行通过
-      expect(claser.method_1('testB')).assertUndefined(); // 断言执行通过
-    })
-  })
+export default function afterReturnTest(): void {
+  describe('afterReturn_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitAfterReturn0001
+     * @tc.name testJsunitAfterReturn0001
+     * @tc.desc Distinguish an explicit return, no return and the unmatched original method
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAfterReturn0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)('testA').afterReturn('1');
+        when(mocked)('testB').afterReturnNothing();
+        const explicit: string = claser.method_1('testA');
+        const absent: string | undefined = claser.method_1('testB');
+        const unmatched: string = claser.method_1('other');
+        hilog.info(0x0000, 'AfterReturn', 'A=%{public}s B=%{public}s other=%{public}s',
+          explicit, String(absent), unmatched);
+        expect(explicit).assertEqual('1');
+        hilog.info(0x0000, 'AfterReturn', 'input=testB result=%{public}s expected=undefined', String(absent));
+        expect(absent).assertUndefined();
+        hilog.info(0x0000, 'AfterReturn', 'input=other result=%{public}s expected=888888', unmatched);
+        expect(unmatched).assertEqual('888888');
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 
@@ -764,34 +1057,50 @@ export default function afterReturnTest() {
 <!-- @[argumentMatchersForAny_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets) --> 
 
 ``` TypeScript
-import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(arg: string) {
+  method_1(arg: string | number | boolean): string {
     return '888888';
   }
 }
 
-export default function argumentMatchersAnyTest() {
-  describe('argumentMatchersForAny_sample', () => {
-    it('testMockfunc', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作，对ClassName类的method_1函数进行Mock
-      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 参数为任一类型在被调用时均返回结果'1'
-      when(mockfunc)(ArgumentMatchers.any).afterReturn('1');
-      // 传入不同参数验证是否符合预期
-      expect(claser.method_1('test')).assertEqual('1'); // 断言执行通过
-      expect(claser.method_1('123')).assertEqual('1'); // 断言执行通过
-      expect(claser.method_1('true')).assertEqual('1'); // 断言执行通过
-    })
-  })
+export default function argumentMatchersAnyTest(): void {
+  describe('argumentMatchersForAny_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitAnyMatcher0001
+     * @tc.name testJsunitAnyMatcher0001
+     * @tc.desc Match actual string, number and boolean arguments rather than three strings
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAnyMatcher0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)(ArgumentMatchers.any).afterReturn('1');
+        const stringResult: string = claser.method_1('test');
+        hilog.info(0x0000, 'AnyMatcher', 'input string=test result=%{public}s expected=1', stringResult);
+        expect(stringResult).assertEqual('1');
+        const numberResult: string = claser.method_1(123);
+        hilog.info(0x0000, 'AnyMatcher', 'input number=123 result=%{public}s expected=1', numberResult);
+        expect(numberResult).assertEqual('1');
+        const booleanResult: string = claser.method_1(true);
+        hilog.info(0x0000, 'AnyMatcher', 'input boolean=true result=%{public}s expected=1', booleanResult);
+        expect(booleanResult).assertEqual('1');
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 
@@ -800,33 +1109,50 @@ export default function argumentMatchersAnyTest() {
 <!-- @[argumentMatchersForString_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets) --> 
 
 ``` TypeScript
-import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(arg: string) {
+  method_1(arg: string | number): string {
     return '888888';
   }
 }
 
-export default function argumentMatchersTest() {
-  describe('argumentMatchersForString_sample', () => {
-    it('testMockfunc', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作,对ClassName类的method_1函数进行Mock
-      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以任何string类型为参数调用函数时返回结果'1'
-      when(mockfunc)(ArgumentMatchers.anyString).afterReturn('1');
-      // 传入不同string类型参数，验证是否符合预期
-      expect(claser.method_1('test')).assertEqual('1'); // 断言执行通过
-      expect(claser.method_1('abc')).assertEqual('1'); // 断言执行通过
-    })
-  })
+export default function argumentMatchersTest(): void {
+  describe('argumentMatchersForString_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitStringMatcher0001
+     * @tc.name testJsunitStringMatcher0001
+     * @tc.desc Match nonempty and empty strings but not a number
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitStringMatcher0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)(ArgumentMatchers.anyString).afterReturn('1');
+        const nonemptyResult: string = claser.method_1('test');
+        hilog.info(0x0000, 'StringMatcher', 'input string=test result=%{public}s expected=1', nonemptyResult);
+        expect(nonemptyResult).assertEqual('1');
+        const emptyResult: string = claser.method_1('');
+        hilog.info(0x0000, 'StringMatcher', 'input empty string result=%{public}s expected=1', emptyResult);
+        expect(emptyResult).assertEqual('1');
+        const numberResult: string = claser.method_1(123);
+        hilog.info(0x0000, 'StringMatcher', 'input number=123 result=%{public}s expected=888888', numberResult);
+        expect(numberResult).assertEqual('888888');
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 
@@ -835,32 +1161,51 @@ export default function argumentMatchersTest() {
 <!-- @[argumentMatchersForRegex_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets) --> 
 
 ``` TypeScript
-import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(arg: string) {
+  method_1(arg: string): string {
     return '888888';
   }
 }
 
-export default function matchRegexsTest() {
-  describe('argumentMatchersForRegex_sample', () => {
-    it('testMockfunc', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作，对ClassName类的method_1函数进行Mock
-      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以"test"为入参调用函数时返回结果'1'
-      when(mockfunc)(ArgumentMatchers.matchRegexs(new RegExp("test"))).afterReturn('1');
-      // 传入test参数后验证是否符合预期
-      expect(claser.method_1('test')).assertEqual('1'); // 断言执行通过
-    })
-  })
+export default function matchRegexsTest(): void {
+  describe('argumentMatchersForRegex_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitRegexMatcher0001
+     * @tc.name testJsunitRegexMatcher0001
+     * @tc.desc Match the regex in exact and containing strings and retain unmatched behavior
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitRegexMatcher0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)(ArgumentMatchers.matchRegexs(new RegExp('test'))).afterReturn('1');
+        const exactResult: string = claser.method_1('test');
+        hilog.info(0x0000, 'RegexMatcher', 'regex=test input=test result=%{public}s expected=1', exactResult);
+        expect(exactResult).assertEqual('1');
+        const containingResult: string = claser.method_1('prefix-test-suffix');
+        hilog.info(0x0000, 'RegexMatcher', 'regex=test input=prefix-test-suffix result=%{public}s expected=1',
+          containingResult);
+        expect(containingResult).assertEqual('1');
+        const unmatchedResult: string = claser.method_1('abc');
+        hilog.info(0x0000, 'RegexMatcher', 'regex=test input=abc result=%{public}s expected=888888', unmatchedResult);
+        expect(unmatchedResult).assertEqual('888888');
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 
@@ -869,44 +1214,64 @@ export default function matchRegexsTest() {
 <!-- @[verify_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets) --> 
 
 ``` TypeScript
-import { describe, it, MockKit } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, MockKit } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(...arg: string[]) {
+  method_1(...arg: string[]): string {
     return '888888';
   }
 
-  method_2(...arg: string[]) {
+  method_2(...arg: string[]): string {
     return '999999';
   }
 }
 
-export default function verifyTest() {
-  describe('verify_sample', () => {
-    it('testMockfunc', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作，对ClassName类的method_1和method_2两个函数进行Mock
-      mocker.mockFunc(claser, claser.method_1);
-      mocker.mockFunc(claser, claser.method_2);
-      // 函数调用
-      claser.method_1('abc', 'ppp');
-      claser.method_1('abc');
-      claser.method_1('xyz');
-      claser.method_1();
-      claser.method_1('abc', 'xxx', 'yyy');
-      claser.method_1();
-      claser.method_2('111');
-      claser.method_2('111', '222');
-      // 对Mock后的两个函数进行验证，验证method_2,参数仅为'111'时执行过一次
-      mocker.verify('method_2', ['111']).once(); // 断言执行通过
-    })
-  })
+export default function verifyTest(): void {
+  describe('verify_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitVerifyArguments0001
+     * @tc.name testJsunitVerifyArguments0001
+     * @tc.desc Record actual calls and distinguish a one-argument call from a two-argument call
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitVerifyArguments0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        mocker.mockFunc(claser, claser.method_1);
+        mocker.mockFunc(claser, claser.method_2);
+        const firstResults: string[] = [claser.method_1('abc', 'ppp'), claser.method_1('abc'),
+          claser.method_1('xyz'), claser.method_1(), claser.method_1('abc', 'xxx', 'yyy'), claser.method_1()];
+        const secondResults: string[] = [claser.method_2('111'), claser.method_2('111', '222')];
+        hilog.info(0x0000, 'VerifyArguments', 'method_1 results=%{public}s', JSON.stringify(firstResults));
+        expect(firstResults).assertDeepEquals(['888888', '888888', '888888', '888888', '888888', '888888']);
+        hilog.info(0x0000, 'VerifyArguments', 'method_2 results=%{public}s', JSON.stringify(secondResults));
+        expect(secondResults).assertDeepEquals(['999999', '999999']);
+        hilog.info(0x0000, 'VerifyArguments', 'method_2 input=[111] result=%{public}s expected calls=1',
+          secondResults[0]);
+        mocker.verify('method_2', ['111']).once();
+        hilog.info(0x0000, 'VerifyArguments', 'method_2 input=[111,222] result=%{public}s expected calls=1',
+          secondResults[1]);
+        mocker.verify('method_2', ['111', '222']).once();
+        hilog.info(0x0000, 'VerifyArguments', 'method_2 called=[111],[111,222]; input=[222] expected calls=0');
+        mocker.verify('method_2', ['222']).never();
+      } finally {
+        mocker.clear(claser);
+      }
+      const restoredResult: string = claser.method_2('111');
+      hilog.info(0x0000, 'VerifyArguments', 'restored method_2 input=111 result=%{public}s expected=999999',
+        restoredResult);
+      expect(restoredResult).assertEqual('999999');
+    });
+  });
 }
 ```
 
@@ -915,44 +1280,59 @@ export default function verifyTest() {
 <!-- @[ignoreMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets) --> 
 
 ``` TypeScript
-import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(...arg: number[]) {
+  method_1(...arg: number[]): string {
     return '888888';
   }
 
-  method_2(...arg: number[]) {
+  method_2(...arg: number[]): string {
     return '999999';
   }
 }
 
-export default function ignoreMockTest() {
-  describe('ignoreMock_sample', () => {
-    it('testMockfunc', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作，对ClassName类的method_1和method_2两个函数进行Mock
-      let func_1: Function = mocker.mockFunc(claser, claser.method_1);
-      let func_2: Function = mocker.mockFunc(claser, claser.method_2);
-      // 期望claser.method_1函数被Mock后, 以number类型为入参时调用函数返回结果'4'
-      when(func_1)(ArgumentMatchers.anyNumber).afterReturn('4');
-      // 期望claser.method_2函数被Mock后, 以number类型为入参时调用函数返回结果'5'
-      when(func_2)(ArgumentMatchers.anyNumber).afterReturn('5');
-      // 函数调用
-      expect(claser.method_1(123)).assertEqual("4");
-      expect(claser.method_2(456)).assertEqual("5");
-      // 现在对Mock后的两个函数的其中一个函数method_1进行还原处理
-      mocker.ignoreMock(claser, claser.method_1);
-      // 调用claser.method_1函数
-      expect(claser.method_1(123)).assertEqual('888888'); // 断言执行通过
-    })
-  })
+export default function ignoreMockTest(): void {
+  describe('ignoreMock_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitIgnoreMock0001
+     * @tc.name testJsunitIgnoreMock0001
+     * @tc.desc Restore one method while retaining the other method stub
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitIgnoreMock0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const first: Function = mocker.mockFunc(claser, claser.method_1);
+        const second: Function = mocker.mockFunc(claser, claser.method_2);
+        when(first)(ArgumentMatchers.anyNumber).afterReturn('4');
+        when(second)(ArgumentMatchers.anyNumber).afterReturn('5');
+        const mockedResults: string[] = [claser.method_1(123), claser.method_2(456)];
+        hilog.info(0x0000, 'IgnoreMock', 'method_1/2 inputs=123,456 results=%{public}s expected=[4,5]',
+          JSON.stringify(mockedResults));
+        expect(mockedResults).assertDeepEquals(['4', '5']);
+        mocker.ignoreMock(claser, claser.method_1);
+        const restoredResult: string = claser.method_1(123);
+        hilog.info(0x0000, 'IgnoreMock', 'restored method_1 input=123 result=%{public}s expected=888888',
+          restoredResult);
+        expect(restoredResult).assertEqual('888888');
+        const retainedResult: string = claser.method_2(456);
+        hilog.info(0x0000, 'IgnoreMock', 'retained method_2 input=456 result=%{public}s expected=5', retainedResult);
+        expect(retainedResult).assertEqual('5');
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 
@@ -961,45 +1341,60 @@ export default function ignoreMockTest() {
 <!-- @[clearMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets) --> 
 
 ``` TypeScript
-import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(...arg: number[]) {
+  method_1(...arg: number[]): string {
     return '888888';
   }
 
-  method_2(...arg: number[]) {
+  method_2(...arg: number[]): string {
     return '999999';
   }
 }
 
-export default function clearTest() {
-  describe('clearMock_sample', () => {
-    it('testMockfunc', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作，对ClassName类的method_1和method_2两个函数进行Mock
-      let func_1: Function = mocker.mockFunc(claser, claser.method_1);
-      let func_2: Function = mocker.mockFunc(claser, claser.method_2);
-      // 期望claser.method_1函数被Mock后, 以任何number类型为参数调用函数时返回结果'4'
-      when(func_1)(ArgumentMatchers.anyNumber).afterReturn('4');
-      // 期望claser.method_2函数被Mock后, 以任何number类型为参数调用函数时返回结果'5'
-      when(func_2)(ArgumentMatchers.anyNumber).afterReturn('5');
-      // 函数调用
-      expect(claser.method_1(123)).assertEqual('4');
-      expect(claser.method_2(123)).assertEqual('5');
-      // 还原obj上所有的Mock能力
-      mocker.clear(claser);
-      // 调用claser.method_1,claser.method_2函数，测试结果
-      expect(claser.method_1(123)).assertEqual('888888'); // 断言执行通过
-      expect(claser.method_2(123)).assertEqual('999999'); // 断言执行通过
-    })
-  })
+export default function clearTest(): void {
+  describe('clearMock_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitClearMock0001
+     * @tc.name testJsunitClearMock0001
+     * @tc.desc Restore both mocked methods with a single clear operation
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitClearMock0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const first: Function = mocker.mockFunc(claser, claser.method_1);
+        const second: Function = mocker.mockFunc(claser, claser.method_2);
+        when(first)(ArgumentMatchers.anyNumber).afterReturn('4');
+        when(second)(ArgumentMatchers.anyNumber).afterReturn('5');
+        const firstMocked: string = claser.method_1(123);
+        hilog.info(0x0000, 'ClearMock', 'mocked method_1 input=123 result=%{public}s expected=4', firstMocked);
+        expect(firstMocked).assertEqual('4');
+        const secondMocked: string = claser.method_2(123);
+        hilog.info(0x0000, 'ClearMock', 'mocked method_2 input=123 result=%{public}s expected=5', secondMocked);
+        expect(secondMocked).assertEqual('5');
+        mocker.clear(claser);
+        const firstRestored: string = claser.method_1(123);
+        hilog.info(0x0000, 'ClearMock', 'cleared method_1 input=123 result=%{public}s expected=888888', firstRestored);
+        expect(firstRestored).assertEqual('888888');
+        const secondRestored: string = claser.method_2(123);
+        hilog.info(0x0000, 'ClearMock', 'cleared method_2 input=123 result=%{public}s expected=999999', secondRestored);
+        expect(secondRestored).assertEqual('999999');
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 
@@ -1008,36 +1403,63 @@ export default function clearTest() {
 <!-- @[afterThrow_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets) --> 
 
 ``` TypeScript
-import { describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(arg: string) {
+  method_1(arg: string): string {
     return '888888';
   }
 }
 
-export default function afterThrowTest() {
-  describe('afterThrow_sample', () => {
-    it('testMockfunc', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作,对ClassName类的method_1函数进行Mock
-      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以'test'为参数调用函数时抛出error xxx异常
-      when(mockfunc)('test').afterThrow('error xxx');
-      // 执行Mock后的函数，捕捉异常并使用assertEqual对比msg是否符合预期
+export default function afterThrowTest(): void {
+  describe('afterThrow_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitAfterThrow0001
+     * @tc.name testJsunitAfterThrow0001
+     * @tc.desc Verify original output, an actual primitive mock throw and restoration after clear
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitAfterThrow0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      const original: string = claser.method_1('test');
+      hilog.info(0x0000, 'AfterThrow', 'original test result=%{public}s', original);
+      expect(original).assertEqual('888888');
+      let threw: boolean = false;
+      let message: string = '';
+      let wasError: boolean = false;
       try {
-        claser.method_1('test');
-      } catch (e) {
-        expect(e).assertEqual('error xxx'); // 断言执行通过
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)('test').afterThrow('error xxx');
+        try {
+          claser.method_1('test');
+        } catch (error) {
+          threw = true;
+          wasError = error instanceof Error;
+          message = error as string;
+        }
+        hilog.info(0x0000, 'AfterThrow', 'threw=%{public}s value=%{public}s', String(threw), message);
+        expect(threw).assertTrue();
+        hilog.info(0x0000, 'AfterThrow', 'input=test thrown value=%{public}s expected=error xxx', message);
+        expect(message).assertEqual('error xxx');
+        hilog.info(0x0000, 'AfterThrow', 'input=test wasError=%{public}s expected=false', String(wasError));
+        expect(wasError).assertFalse();
+      } finally {
+        mocker.clear(claser);
       }
-    })
-  })
+      const restored: string = claser.method_1('test');
+      hilog.info(0x0000, 'AfterThrow', 'restored test result=%{public}s', restored);
+      expect(restored).assertEqual('888888');
+    });
+  });
 }
 ```
 
@@ -1046,40 +1468,54 @@ export default function afterThrowTest() {
 <!-- @[returnPromise_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets) --> 
 
 ``` TypeScript
-import { describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  async method_1(arg: string) {
-    return new Promise<string>((resolve: Function, reject: Function) => {
-      setTimeout(() => {
+  method_1(arg: string): Promise<string> {
+    return new Promise<string>((resolve: (value: string) => void): void => {
+      setTimeout((): void => {
         resolve('Data conversion');
       }, 2000);
     });
   }
 }
 
-export default function mockPromiseTest() {
-  describe('returnPromise_sample', () => {
-    it('testMockfunc', 0, async (done: Function) => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作对ClassName类的method_1函数进行Mock
-      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望claser.method_1函数被Mock后, 以'test'为参数调用函数时返回一个Promise对象
-      when(mockfunc)('test').afterReturn(new Promise<string>((resolve: Function, reject: Function) => {
-        resolve('success something');
-      }));
-      // 执行Mock后的函数，即对定义的Promise进行后续执行
-      let result = await claser.method_1('test');
-      expect(result).assertEqual('success something'); // 断言执行通过
-      done();
-    })
-  })
+export default function mockPromiseTest(): void {
+  describe('returnPromise_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitReturnPromise0001
+     * @tc.name testJsunitReturnPromise0001
+     * @tc.desc Verify the returned mock promise and recover the original asynchronous output
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitReturnPromise0001', 0, async (): Promise<void> => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)('test').afterReturn(Promise.resolve('success something'));
+        const promise: Promise<string> = claser.method_1('test');
+        hilog.info(0x0000, 'ReturnPromise', 'mocked input=test; expect resolved promise');
+        await expect(promise).assertPromiseIsResolved();
+        const result: string = await promise;
+        hilog.info(0x0000, 'ReturnPromise', 'resolved mock result=%{public}s', result);
+        expect(result).assertEqual('success something');
+      } finally {
+        mocker.clear(claser);
+      }
+      const restored: string = await claser.method_1('test');
+      hilog.info(0x0000, 'ReturnPromise', 'restored async result=%{public}s', restored);
+      expect(restored).assertEqual('Data conversion');
+    });
+  });
 }
 ```
 
@@ -1088,42 +1524,58 @@ export default function mockPromiseTest() {
 <!-- @[verifyTimes_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets) --> 
 
 ``` TypeScript
-import { describe, it, MockKit, when } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  method_1(...arg: string[]) {
+  method_1(...arg: string[]): string {
     return '888888';
   }
 }
 
-export default function verifyTimesTest() {
-  describe('verifyTimes_sample', () => {
-    it('test_verify_times', 0, () => {
-      // 创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 初始化ClassName的对象claser
-      let claser: ClassName = new ClassName();
-      // 进行Mock操作对ClassName类的method_1函数进行Mock
-      let func_1: Function = mocker.mockFunc(claser, claser.method_1);
-      // 期望被Mock后的函数返回结果'4'
-      when(func_1)('123').afterReturn('4');
-      // 函数调用
-      claser.method_1('123', 'ppp');
-      claser.method_1('abc');
-      claser.method_1('xyz');
-      claser.method_1();
-      claser.method_1('abc', 'xxx', 'yyy');
-      claser.method_1('abc');
-      claser.method_1();
-      // 验证函数method_1且参数为'abc'时，执行过的次数是否为2
-      mocker.verify('method_1', ['abc']).times(2); // 断言执行通过
-      // 验证函数method_1且参数为空时，是否至少执行过2次
-      mocker.verify('method_1', []).atLeast(2); // 断言执行通过
-    })
-  })
+export default function verifyTimesTest(): void {
+  describe('verifyTimes_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitVerifyTimes0001
+     * @tc.name testJsunitVerifyTimes0001
+     * @tc.desc Verify repeated calls, unmatched prefixes and the installed zero-argument fallback
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitVerifyTimes0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)('123').afterReturn('4');
+        const exactResult: string = claser.method_1('123');
+        hilog.info(0x0000, 'VerifyTimes', 'exact stub input=123 result=%{public}s expected=4', exactResult);
+        expect(exactResult).assertEqual('4');
+        const results: string[] = [claser.method_1('123', 'ppp'), claser.method_1('abc'), claser.method_1('xyz'),
+          claser.method_1(), claser.method_1('abc', 'xxx', 'yyy'), claser.method_1('abc'), claser.method_1()];
+        // MockKit.getReturnInfo uses the current stub for zero arguments; other unmatched calls use the original.
+        hilog.info(0x0000, 'VerifyTimes', 'unmatched/empty call results=%{public}s', JSON.stringify(results));
+        expect(results).assertDeepEquals(['888888', '888888', '888888', '4', '888888', '888888', '4']);
+        hilog.info(0x0000, 'VerifyTimes', 'method_1 input=[abc] results=%{public}s,%{public}s expected calls=2',
+          results[1], results[5]);
+        mocker.verify('method_1', ['abc']).times(2);
+        hilog.info(0x0000, 'VerifyTimes', 'method_1 input=[] results=%{public}s,%{public}s expected calls>=2',
+          results[3], results[6]);
+        mocker.verify('method_1', []).atLeast(2);
+      } finally {
+        mocker.clear(claser);
+      }
+      const restoredResult: string = claser.method_1('123');
+      hilog.info(0x0000, 'VerifyTimes', 'cleared stub input=123 result=%{public}s expected=888888', restoredResult);
+      expect(restoredResult).assertEqual('888888');
+    });
+  });
 }
 ```
 
@@ -1132,36 +1584,49 @@ export default function verifyTimesTest() {
 <!-- @[mockStatic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets) --> 
 
 ``` TypeScript
-import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-
-  static method_1() {
+  static method_1(): string {
     return 'ClassName_method_1_call';
   }
 }
 
-export default function staticTest() {
-  describe('mockStatic_sample', () => {
-    it('staticTest_001', 0, () => {
-      let really_result = ClassName.method_1();
-      expect(really_result).assertEqual('ClassName_method_1_call');
-      // 创建MockKit对象
-      let mocker: MockKit = new MockKit();
-      // Mock类ClassName对象的某个函数method_1
-      let func_1: Function = mocker.mockFunc(ClassName, ClassName.method_1);
-      // 期望被mock后的函数返回结果'mock_data'
-      when(func_1)(ArgumentMatchers.any).afterReturn('mock_data');
-      let mock_result = ClassName.method_1();
-      expect(mock_result).assertEqual('mock_data'); // 断言执行通过
-      // 清除Mock能力
-      mocker.clear(ClassName);
-      let really_result1 = ClassName.method_1();
-      expect(really_result1).assertEqual('ClassName_method_1_call'); // 断言执行通过
-    })
-  })
+export default function staticTest(): void {
+  describe('mockStatic_sample', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitMockStatic0001
+     * @tc.name testJsunitMockStatic0001
+     * @tc.desc Observe original, mocked and restored static results without leaking class mutation
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitMockStatic0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const original: string = ClassName.method_1();
+      hilog.info(0x0000, 'MockStatic', 'original=%{public}s', original);
+      expect(original).assertEqual('ClassName_method_1_call');
+      try {
+        const mocked: Function = mocker.mockFunc(ClassName, ClassName.method_1);
+        when(mocked)(ArgumentMatchers.any).afterReturn('mock_data');
+        const result: string = ClassName.method_1();
+        hilog.info(0x0000, 'MockStatic', 'mocked=%{public}s', result);
+        expect(result).assertEqual('mock_data');
+      } finally {
+        mocker.clear(ClassName);
+      }
+      const restored: string = ClassName.method_1();
+      hilog.info(0x0000, 'MockStatic', 'restored=%{public}s', restored);
+      expect(restored).assertEqual('ClassName_method_1_call');
+    });
+  });
 }
 ```
 
@@ -1170,39 +1635,51 @@ export default function staticTest() {
 <!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) --> 
 
 ``` TypeScript
-import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+import { ArgumentMatchers, beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-  method(arg: number):number {
+  method(arg: number): number {
     return this.method_1(arg);
   }
-  private method_1(arg: number) {
+
+  private method_1(arg: number): number {
     return arg;
   }
 }
 
-export default function staticTest() {
-  describe('privateTest', () => {
-    it('private_001', 0, () => {
-      let claser: ClassName = new ClassName(); 
-      let really_result = claser.method(123);
-      expect(really_result).assertEqual(123);
-      // 1.创建MockKit对象
-      let mocker: MockKit = new MockKit();
-      // 2.Mock类ClassName对象的私有方法，比如method_1
-      let func_1: Function = mocker.mockPrivateFunc(claser, "method_1");
-      // 3.期望被Mock后的函数返回结果为456
-      when(func_1)(ArgumentMatchers.any).afterReturn(456);
-      let mock_result = claser.method(123);
-      expect(mock_result).assertEqual(456);
-      // 清除Mock能力
-      mocker.clear(claser);
-      let really_result1 = claser.method(123);
-      expect(really_result1).assertEqual(123);
-    })
-  })
+export default function staticTest(): void {
+  describe('privateTest', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitMockPrivate0001
+     * @tc.name testJsunitMockPrivate0001
+     * @tc.desc Observe the private stub through its public caller and restore the original implementation
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitMockPrivate0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      hilog.info(0x0000, 'MockPrivate', 'original public caller input=123');
+      expect(claser.method(123)).assertEqual(123);
+      try {
+        const mocked: Function = mocker.mockPrivateFunc(claser, 'method_1');
+        when(mocked)(ArgumentMatchers.any).afterReturn(456);
+        hilog.info(0x0000, 'MockPrivate', 'private stub through public caller input=123');
+        expect(claser.method(123)).assertEqual(456);
+      } finally {
+        mocker.clear(claser);
+      }
+      hilog.info(0x0000, 'MockPrivate', 'restored public caller input=123');
+      expect(claser.method(123)).assertEqual(123);
+    });
+  });
 }
 ```
 
@@ -1211,45 +1688,63 @@ export default function staticTest() {
 <!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) --> 
 
 ``` TypeScript
-import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, MockKit } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-  data = 1;
-  private priData = 2;
-  method() {
+  data: number = 1;
+  private priData: number = 2;
+
+  method(): number {
     return this.priData;
   }
 }
 
-export default function staticTest() {
-  describe('propertyTest', () => {
-    it('property_001', 0, () => {
-      let claser: ClassName = new ClassName(); 
-      let data = claser.data;
-      expect(data).assertEqual(1);
-      let priData = claser.method();
-      expect(priData).assertEqual(2);
-      // 1.创建MockKit对象
-      let mocker: MockKit = new MockKit();
-      // 2.Mock类ClassName对象的成员变量data
-      mocker.mockProperty(claser, "data", 3);
-      mocker.mockProperty(claser, "priData", 4);
-      // 3.期望被Mock后的成员和私有成员的值分别为3，4
-      let mock_result = claser.data;
-      let mock_private_result = claser.method();
-      expect(mock_result).assertEqual(3);
-      expect(mock_private_result).assertEqual(4);
-      // 清除Mock能力
-      mocker.ignoreMock(claser, "data");
-      mocker.ignoreMock(claser, "priData");
-      let really_result = claser.data;
-      expect(really_result).assertEqual(1);
-      let really_private_result = claser.method();
-      expect(really_private_result).assertEqual(2);
-    })
-  })
+export default function staticTest(): void {
+  describe('propertyTest', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
+
+    /**
+     * @tc.number testJsunitMockProperty0001
+     * @tc.name testJsunitMockProperty0001
+     * @tc.desc Mock public and private fields and restore each independently
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitMockProperty0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      const originalValues: number[] = [claser.data, claser.method()];
+      hilog.info(0x0000, 'MockProperty', 'original public/private results=%{public}s expected=[1,2]',
+        JSON.stringify(originalValues));
+      expect(originalValues).assertDeepEquals([1, 2]);
+      try {
+        mocker.mockProperty(claser, 'data', 3);
+        mocker.mockProperty(claser, 'priData', 4);
+        hilog.info(0x0000, 'MockProperty', 'mocked data=%{public}d expected=3', claser.data);
+        expect(claser.data).assertEqual(3);
+        const privateResult: number = claser.method();
+        hilog.info(0x0000, 'MockProperty', 'mocked private result=%{public}d expected=4', privateResult);
+        expect(privateResult).assertEqual(4);
+        mocker.ignoreMock(claser, 'data');
+        const publicRestoredValues: number[] = [claser.data, claser.method()];
+        hilog.info(0x0000, 'MockProperty', 'public restored/private mocked results=%{public}s expected=[1,4]',
+          JSON.stringify(publicRestoredValues));
+        expect(publicRestoredValues).assertDeepEquals([1, 4]);
+        mocker.ignoreMock(claser, 'priData');
+        const restoredValues: number[] = [claser.data, claser.method()];
+        hilog.info(0x0000, 'MockProperty', 'restored public/private results=%{public}s expected=[1,2]',
+          JSON.stringify(restoredValues));
+        expect(restoredValues).assertDeepEquals([1, 2]);
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 
@@ -1258,48 +1753,86 @@ export default function staticTest() {
 <!-- @[isMocked_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/IsMocked.test.ets) --> 
 
 ``` TypeScript
-import { describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, MockKit, when } from '@ohos/hypium';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { paceTurn } from '../TestPace';
 
 class ClassName {
-  constructor() {
-  }
-  count = 0;
-  method_1(arg: string) {
+  count: number = 0;
+
+  method_1(arg: string): string {
     return '888888';
   }
 }
 
-export default function isMockedTest() {
-  describe('isMockedTest', () => {
-    it('isMocked_method', 0, () => {
-      // 1.创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 2.创建一个对象claser
-      let claser: ClassName = new ClassName();
-      // 3.进行Mock操作，对ClassName类的method_1函数进行Mock并设置桩行为
-      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      when(mockfunc)('test').afterReturn('1');
-      // 4.查询method_1是否处于Mock状态，返回true
-      expect(mocker.isMocked(claser, 'method_1')).assertTrue();
-      // 5.clear还原后查询，返回false
-      mocker.clear(claser);
-      expect(mocker.isMocked(claser, 'method_1')).assertFalse();
-    })
+export default function isMockedTest(): void {
+  describe('isMockedTest', (): void => {
+    beforeEach(async (): Promise<void> => {
+      await paceTurn();
+    });
 
-    it('isMocked_property', 0, () => {
-      // 1.创建一个Mock能力的对象MockKit
-      let mocker: MockKit = new MockKit();
-      // 2.创建一个对象claser
-      let claser: ClassName = new ClassName();
-      // 3.Mock ClassName对象的成员变量count
-      mocker.mockProperty(claser, "count", 999);
-      // 4.查询count是否处于Mock状态，返回true
-      expect(mocker.isMocked(claser, 'count')).assertTrue();
-      // 5.ignoreMock还原后查询，返回false
-      mocker.ignoreMock(claser, "count");
-      expect(mocker.isMocked(claser, 'count')).assertFalse();
-    })
-  })
+    /**
+     * @tc.number testJsunitMethodMockState0001
+     * @tc.name testJsunitMethodMockState0001
+     * @tc.desc Check method mock state against actual stub output and clear restoration
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitMethodMockState0001', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        const mocked: Function = mocker.mockFunc(claser, claser.method_1);
+        when(mocked)('test').afterReturn('1');
+        const mockedState: boolean = mocker.isMocked(claser, 'method_1');
+        hilog.info(0x0000, 'MockState', 'method=method_1 isMocked=%{public}s expected=true', String(mockedState));
+        expect(mockedState).assertTrue();
+        const mockedResult: string = claser.method_1('test');
+        hilog.info(0x0000, 'MockState', 'mocked method_1 input=test result=%{public}s expected=1', mockedResult);
+        expect(mockedResult).assertEqual('1');
+        mocker.clear(claser);
+        const clearedState: boolean = mocker.isMocked(claser, 'method_1');
+        hilog.info(0x0000, 'MockState', 'method=method_1 isMocked=%{public}s expected=false', String(clearedState));
+        expect(clearedState).assertFalse();
+        const restoredResult: string = claser.method_1('test');
+        hilog.info(0x0000, 'MockState', 'cleared method_1 input=test result=%{public}s expected=888888',
+          restoredResult);
+        expect(restoredResult).assertEqual('888888');
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+
+    /**
+     * @tc.number testJsunitPropertyMockState0002
+     * @tc.name testJsunitPropertyMockState0002
+     * @tc.desc Check property mock state against its value and selective restoration
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('testJsunitPropertyMockState0002', 0, (): void => {
+      const mocker: MockKit = new MockKit();
+      const claser: ClassName = new ClassName();
+      try {
+        mocker.mockProperty(claser, 'count', 999);
+        const mockedState: boolean = mocker.isMocked(claser, 'count');
+        hilog.info(0x0000, 'MockState', 'property=count isMocked=%{public}s expected=true', String(mockedState));
+        expect(mockedState).assertTrue();
+        hilog.info(0x0000, 'MockState', 'mocked count=%{public}d expected=999', claser.count);
+        expect(claser.count).assertEqual(999);
+        mocker.ignoreMock(claser, 'count');
+        const restoredState: boolean = mocker.isMocked(claser, 'count');
+        hilog.info(0x0000, 'MockState', 'property=count isMocked=%{public}s expected=false', String(restoredState));
+        expect(restoredState).assertFalse();
+        hilog.info(0x0000, 'MockState', 'restored count=%{public}d expected=0', claser.count);
+        expect(claser.count).assertEqual(0);
+      } finally {
+        mocker.clear(claser);
+      }
+    });
+  });
 }
 ```
 ### 数据驱动
@@ -1362,74 +1895,68 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
+import { setTestContext } from '../test/JsUiSession';
 import data from '../test/data.json';
 import Logger from '../util/Logger';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG = 'testTag';
+const TAG: string = 'testTag';
 
 export default class TestAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    setTestContext(this.context);
     Logger.info(TAG, 'TestAbility onCreate');
     Logger.info(TAG, 'want param:' + JSON.stringify(want));
     Logger.info(TAG, 'launchParam:' + JSON.stringify(launchParam));
-    let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+    const abilityDelegator: abilityDelegatorRegistry.AbilityDelegator =
+      abilityDelegatorRegistry.getAbilityDelegator();
+    const abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs =
+      abilityDelegatorRegistry.getArguments();
     Logger.info(TAG, 'start run testcase!!!');
     // 设置数据
     Hypium.setData(data);
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
 
-  onDestroy() {
+  onDestroy(): void {
     Logger.info('testTag', '%{public}s', 'TestAbility onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     Logger.info(TAG, 'TestAbility onWindowStageCreate');
-    windowStage.loadContent('testability/pages/Index', (err, data) => {
+    windowStage.loadContent('testability/pages/Index', (err: BusinessError, result: void): void => {
       if (err.code) {
         Logger.error(TAG, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
       Logger.info(TAG, 'Succeeded in loading the content. Data: %{public}s',
-        JSON.stringify(data) ?? '');
+        JSON.stringify(result) ?? '');
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     Logger.info('testTag', '%{public}s', 'TestAbility onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     Logger.info('testTag', '%{public}s', 'TestAbility onForeground');
   }
 
-  onBackground() {
+  onBackground(): void {
     Logger.info('testTag', '%{public}s', 'TestAbility onBackground');
   }
 }
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) --> 
-
+ 
  ``` TypeScript
- import { describe, it } from '@ohos/hypium';
+ import { dataDriverExampleTest } from '../paramExampleTest/paramExample.test';
  
- export default function abilityTest() {
-   describe('AbilityTest', () => {
-     it('testDataDriverAsync', 0, async (done: Function, data: ParamObj) => {
-       done();
-     });
- 
-     it('testDataDriver', 0, () => {
-     });
-   })
- }
- 
- interface ParamObj {
-   name: string,
-   value: string
+ // Preserve the original List teaching entry without registering duplicate empty cases.
+ export default function abilityTest(): void {
+   dataDriverExampleTest();
  }
  ```
 
