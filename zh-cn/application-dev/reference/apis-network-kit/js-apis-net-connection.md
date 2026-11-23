@@ -367,6 +367,170 @@ connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
 });
 ```
 
+## connection.onAppHttpProxy
+
+onAppHttpProxy(callback: Callback\<HttpProxy>): void
+
+订阅当前应用的HTTP代理变化。
+
+> **说明：**
+>
+> - 注册后立即回调当前应用的代理配置；未配置应用代理时返回空代理。
+> - 调用[setAppHttpProxy](#connectionsetapphttpproxy11)后，应用代理的地址、端口、旁路列表中任意一个发生变化时，触发回调。
+> - 可同时注册多个不同的回调函数。
+> - 回调只提供`host`、`port`和`exclusionList`，不提供代理用户名和密码。
+> - 重复注册同一个回调函数时，仅首次注册生效，且不会重复触发注册时的立即回调。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 是 | 回调函数，返回当前应用代理信息。 |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const appProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 根据当前应用代理更新应用逻辑。
+};
+
+connection.onAppHttpProxy(appProxyCallback);
+```
+
+## connection.offAppHttpProxy
+
+offAppHttpProxy(callback?: Callback\<HttpProxy>): void
+
+取消订阅当前应用的HTTP代理变化。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 否 | 回调函数，可以指定传入[onAppHttpProxy](#connectiononapphttpproxy)中的callback对象，取消对应的订阅。不填该参数，或显式传入`undefined`时，取消当前应用注册的全部应用代理回调。 |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const appProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 处理应用代理变化。
+};
+
+connection.onAppHttpProxy(appProxyCallback);
+connection.offAppHttpProxy(appProxyCallback); // 只取消该回调。
+// connection.offAppHttpProxy(); // 取消全部应用代理回调。
+```
+
+## connection.onDefaultHttpProxy
+
+onDefaultHttpProxy(callback: Callback\<HttpProxy>): void
+
+订阅当前默认HTTP代理的变化（应用级代理优先于全局代理，选择规则与[getDefaultHttpProxy](#connectiongetdefaulthttpproxy10)一致）。
+
+> **说明：**
+>
+> - 注册后立即回调当前有效代理；当前没有有效代理时返回空代理。如果注册时暂时无法查询代理，则本次不立即回调。
+> - 默认代理的地址、端口、旁路列表中任意一个发生变化时，触发回调。
+> - 可同时注册多个不同的回调函数。
+> - 回调只提供`host`、`port`和`exclusionList`，不提供代理用户名和密码。
+> - 重复注册同一个回调函数时，仅首次注册生效，且不会重复触发注册时的立即回调。
+
+**起始版本**：26.1.0
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 是 | 回调函数，返回当前有效默认代理信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const defaultProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 根据当前有效代理更新应用逻辑。
+};
+
+connection.onDefaultHttpProxy(defaultProxyCallback);
+```
+
+## connection.offDefaultHttpProxy
+
+offDefaultHttpProxy(callback?: Callback\<HttpProxy>): void
+
+取消订阅当前应用的默认HTTP代理变化。
+
+> **说明：**
+>
+> 若因权限不足取消失败，原回调仍有效，可在获得权限后重试。
+
+**起始版本**：26.1.0
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 否 | 回调函数，可以指定传入[onDefaultHttpProxy](#connectionondefaulthttpproxy)中的callback对象，取消对应的订阅。不填该参数，或显式传入`undefined`时，取消当前应用注册的全部默认代理回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const defaultProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 处理默认代理变化。
+};
+
+connection.onDefaultHttpProxy(defaultProxyCallback);
+connection.offDefaultHttpProxy(defaultProxyCallback); // 只取消该回调。
+// connection.offDefaultHttpProxy(); // 取消全部默认代理回调。
+```
+
 ## connection.getAppNet<sup>9+</sup>
 
 getAppNet(callback: AsyncCallback\<NetHandle>): void
