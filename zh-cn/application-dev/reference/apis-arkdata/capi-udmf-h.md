@@ -136,6 +136,7 @@
 | [void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)](#oh_udmfdataloadparams_destroy) | - | 销毁数据加载参数[OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)指针指向的实例对象。 |
 | [void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)](#oh_udmfdataloadparams_setloadhandler) | - | 设置数据加载参数[OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)中的数据加载处理函数。 |
 | [void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadparams_setdataloadinfo) | - | 设置数据加载参数[OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)中的数据加载信息。 |
+| [void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_UdmfDataLoadInfo* acceptableInfo)](#oh_udmfdataloadparams_setacceptableinfo) | - | 设置异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)中可接收的数据描述信息。 |
 | [OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()](#oh_udmfdataloadinfo_create) | - | 创建指向数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)实例的指针。<br>当不再需要使用指针时，请使用[OH_UdmfDataLoadInfo_Destroy](#oh_udmfdataloadinfo_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_destroy) | - | 销毁数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)指针指向的实例对象。 |
 | [char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)](#oh_udmfdataloadinfo_gettypes) | - | 从数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中获取数据类型列表。 |
@@ -256,13 +257,16 @@ void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_Udm
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* params | 表示指向[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)实例的指针。 |
 | [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)* acceptableInfo | 表示指向[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)实例的指针。 |
+
+**参考：**
+
+OH_UdmfGetDataParams OH_UdmfDataLoadInfo
 
 ### OH_UdmfDataLoadParams_Create()
 
@@ -2369,11 +2373,18 @@ OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
 
 **起始版本：** 26.0.1
 
+**资源释放：** [OH_UDMF_DestroySummary](#oh_udmf_destroysummary)
+
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | 如果操作成功，返回一个指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针，否则返回nullptr。调用者拥有该实例的所有权。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)
 
 ### OH_UDMF_DestroySummary()
 
@@ -2392,6 +2403,11 @@ void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [入参]表示指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_CreateSummary](capi-udmf-h.md#oh_udmf_createsummary)
 
 ### OH_UDMF_GetSummaryOverviewTypes()
 
@@ -2419,6 +2435,12 @@ int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *
 | -- | -- |
 | int | 返回执行的状态代码。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
 
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_GetSummaryOverviewSize](capi-udmf-h.md#oh_udmf_getsummaryoverviewsize)
+[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)
+
 ### OH_UDMF_GetSummaryOverviewSize()
 
 ```c
@@ -2444,6 +2466,12 @@ int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *t
 | 类型 | 说明 |
 | -- | -- |
 | int | 返回执行的状态代码。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+**参考：**
+
+[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+[OH_UDMF_GetSummaryOverviewTypes](capi-udmf-h.md#oh_udmf_getsummaryoverviewtypes)
+[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)
 
 ### OH_UDMF_GetSummaryFilenameExtensions()
 
