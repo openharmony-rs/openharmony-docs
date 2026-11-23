@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=61f91cca6aea307c81b473df54b72148114a4082 translatedAt=2026-11-12T04:47:58.372Z pushedAt=2026-11-18T07:05:12.703Z nl=1 -->
 
 The **\<svg>** component is a basic container. It can be used as the root node of an SVG document or be used to nest an SVG fragment into an SVG document.
 
@@ -33,9 +34,9 @@ The [universal attributes](js-components-svg-common-attributes.md) and the attri
 | id      | string                             | -             | No        | Unique ID of the component.              |
 | width   | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | Component width.                         |
 | height  | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | Component height.                        |
-| x       | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | X-coordinate of the current **\<svg>** component. The settings do not work for the root **\<svg>** node. |
-| y       | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | Y-coordinate of the current **\<svg>** component. The settings do not work for the root **\<svg>** node. |
-| viewBox | string                             | -             | No        | View box of the current **\<svg>** component. The supported format is \<number number number number>. The four parameters indicate **min-x**, **min-y**, **width**, and **height**, respectively. The width and height of the view box are different from those of the **\<svg>** component. The view box is scaled in center-aligned mode. |
+| x       | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | X-coordinate of the current **\<svg>** component. The setting does not work for the root **\<svg>** node. |
+| y       | &lt;length&gt;\|&lt;percentage&gt; | -              | No        | Y-coordinate of the current **\<svg>** component. The setting does not work for the root **\<svg>** node. |
+| viewBox | string                             | -    | No    | View box of the current **\<svg**> component. The supported format is &lt;number&nbsp;number&nbsp;number&nbsp;number&gt;. The four parameters indicate **min-x**, **min-y**, **width**, and **height**, respectively. The width and height of the view box are different from those of the **\<svg>** component. The view box is scaled in center-aligned mode. |
 
 
 ## Example

@@ -1,12 +1,12 @@
 # video
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Lichtschein-->
+<!--Owner: @zhangwentao96-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:22.637Z pushedAt=2026-06-24T01:11:44.229Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-11-12T04:42:34.514Z pushedAt=2026-11-18T06:35:39.948Z nl=1 -->
+
 
 >  **NOTE**
 >
@@ -15,9 +15,11 @@
 
 The **\<video>** component provides a video player.
 
+
 ## Child Components
 
 Not supported
+
 
 ## Attributes
 
@@ -30,19 +32,21 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | autoplay | boolean | false | No   | Whether the video is played automatically.<br/>**true**: The video is played automatically.<br/>**false**: The video is not played automatically.                                |
 | controls | boolean | true  | No   | Whether the control bar is displayed during video playback. If the value is set to **false**, the control bar is not displayed. The default value is **true**, indicating that the platform can either show or hide the control bar. |
 
+
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
 | Name         | Type     | Default Value     | Mandatory   | Description                                       |
 | ---------- | ------ | ------- | ---- | ---------------------------------------- |
-| object-fit | string | contain | No    | Video scale type. If **poster** has been assigned a value, the setting of this style will affect the scaling type of the video poster. For details, see object-fit enums. |
+| object-fit | string | contain | No    | Video scale type. If **poster** has been assigned a value, the setting of this style will affect the scale type of the video poster. For details, see object-fit enums. |
 
 **Table 1** object-fit enums
 
 | Type   | Description                        |
 | ---- | ------------------------- |
 | fill | The image is resized to fill the display area, and its aspect ratio is not retained. |
+
 
 ## Events
 
@@ -58,6 +62,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | seeking    | {&nbsp;currenttime:&nbsp;value&nbsp;}    | Triggered to report the time (in seconds) when the progress bar is being dragged.                  |
 | seeked     | {&nbsp;currenttime:&nbsp;value&nbsp;}    | Triggered to report the playback time (in seconds) when the user finishes dragging the progress bar.               |
 | timeupdate | {&nbsp;currenttime:&nbsp;value&nbsp;}    | Triggered once per 250 ms when the playback progress changes. The unit of the current playback time is second.       |
+
 
 ## Methods
 
@@ -109,7 +114,7 @@ export default {
         duration: '',
     },
     preparedCallback: function (e) {
-        this.event = 'Video successfully connected.';
+        this.event = 'Video preparation is completed.';
         this.duration = e.duration;
     },
     startCallback: function () {

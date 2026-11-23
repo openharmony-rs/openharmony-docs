@@ -1,18 +1,19 @@
 # Lifecycle Definition
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:56.332Z pushedAt=2026-06-23T10:50:04.055Z -->
+<!-- md-trans-meta sourceCommit=d1e4d0c1349312557d4315ff2b1c5d57de74d862 translatedAt=2026-11-12T04:39:12.258Z pushedAt=2026-11-18T03:42:41.324Z nl=1 -->
 
 >  **NOTE**
 >
 >  This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
+
 A range of lifecycle callbacks are provided for custom components, including **onInit**, **onAttached**, **onDetached**, **onLayoutReady**, **onDestroy**, **onShow**, and **onHide**. You can use these callbacks to manage the internal logic of your custom components. The following describes the times when the lifecycle callbacks are invoked.
+
 
 | Attribute         | Type    | Description              | Invoked When                                                    |
 | ------------- | -------- | ------------------ | ------------------------------------------------------------ |
@@ -23,6 +24,7 @@ A range of lifecycle callbacks are provided for custom components, including **o
 | onDestroy     | Function | Custom component destruction    | The custom component is destroyed. It is usually used to release resources.              |
 | onShow        | Function | Page display of a custom component| The page where the custom component is located is displayed.                      |
 | onHide        | Function | Page hiding of a custom component| The page where the custom component is located is hidden.                      |
+
 
 ## Example
 
