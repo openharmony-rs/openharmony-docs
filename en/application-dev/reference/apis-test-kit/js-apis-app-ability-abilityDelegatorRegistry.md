@@ -6,15 +6,15 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-11-03T01:18:42.020Z pushedAt=2026-11-04T01:06:01.013Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3f4430a1cf9e979027a217e0f6c3b2523fb1862a translatedAt=2026-11-23T07:20:15.252Z pushedAt=2026-11-23T07:28:16.053Z nl=1 -->
 
 **AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) and [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)objects. With this module, you can use the [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) object to add a [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1) object to monitor the lifecycle status changes of a specified ability. In addition, you can use the [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md) object to read the current test parameters. This module is applicable to automated testing scenarios, which can help you accurately capture lifecycle changes of abilities, improving testing efficiency and accuracy.
 
-> **NOTE**
+> **Description:**
 > 
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in [JsUnit User Guide](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/unittest-guidelines).
 
 ## Modules to Import
 
