@@ -88,6 +88,10 @@ OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) * | 执行成功时返回指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。<br>否则返回nullptr。使用完成后必须通过[OH_RDB_DestroyReturningContext](#oh_rdb_destroyreturningcontext)接口释放内存。 |
 
+**参考：**
+
+[OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext)
+
 ### OH_RDB_DestroyReturningContext()
 
 ```c
