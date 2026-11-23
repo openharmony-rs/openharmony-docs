@@ -36,10 +36,12 @@
     <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
+    import { abilityAccessCtrl, UIAbility } from '@kit.AbilityKit';
+    import type { AbilityConstant, common, PermissionRequestResult, Permissions, Want } from '@kit.AbilityKit';
+    import type { BusinessError } from '@kit.BasicServicesKit';
     import { calendarManager } from '@kit.CalendarKit';
     import { window } from '@kit.ArkUI';
+    import { CalendarPermissionGate } from '../CalendarPermission';
     ```
 
 2. 申请权限。使用Calendar Kit时，需要在module.json5中声明申请读写日历日程所需的权限：`ohos.permission.READ_CALENDAR`和`ohos.permission.WRITE_CALENDAR`。具体指导可见[声明权限](../security/AccessToken/declare-permissions.md)。
@@ -55,11 +57,15 @@
     export let mContext: common.UIAbilityContext | null = null;
     
     export default class EntryAbility extends UIAbility {
+      private readonly permissionGate: CalendarPermissionGate = new CalendarPermissionGate();
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         console.info('%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
+        this.permissionGate.invalidate();
+        calendarMgr = null;
+        mContext = null;
         console.info('%{public}s', 'Ability onDestroy');
       }
     
@@ -75,17 +81,28 @@
         });
         mContext = this.context;
         const permissions: Permissions[] = ['ohos.permission.READ_CALENDAR', 'ohos.permission.WRITE_CALENDAR'];
-        let atManager = abilityAccessCtrl.createAtManager();
-        atManager.requestPermissionsFromUser(mContext, permissions).then((result: PermissionRequestResult) => {
-          console.info('get Permission success');
-          calendarMgr = calendarManager.getCalendarManager(mContext);
-        }).catch((error: BusinessError) => {
-          console.error('get Permission error, Cause: %{public}s', JSON.stringify(error));
-        })
+        calendarMgr = null;
+        const atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+        this.permissionGate.request(
+          (): Promise<PermissionRequestResult> => atManager.requestPermissionsFromUser(this.context, permissions),
+          {
+            onGranted: (): void => { calendarMgr = calendarManager.getCalendarManager(this.context); },
+            onDenied: (): void => {
+              calendarMgr = null;
+              console.error('Calendar permission denied');
+            },
+            onFailed: (): void => { calendarMgr = null; }
+          }
+        ).catch((error: BusinessError) => {
+          console.error(`Calendar permission request failed. Code: ${error.code}`);
+        });
       }
     
       onWindowStageDestroy(): void {
         // 主窗口已销毁，释放 UI 相关资源
+        this.permissionGate.invalidate();
+        calendarMgr = null;
+        mContext = null;
         console.info('%{public}s', 'Ability onWindowStageDestroy');
       }
     
