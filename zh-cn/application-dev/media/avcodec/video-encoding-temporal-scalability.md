@@ -124,8 +124,8 @@ status: active
 1. 在初始阶段创建编码实例时，校验视频编码器是否支持全局时域可分层特性。
 
    <!-- @[temporal_scalability_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    // 1.1 获取对应视频编码器能力实例，此处以H.264为例。
    OH_AVCapability *cap = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
    // 1.2 通过特性能力查询接口校验是否支持全局时域可分层特性。
@@ -135,8 +135,8 @@ status: active
    如果支持，则可以使能全局时域可分层特性。
 
    <!-- @[temporal_scalability_create_encoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    // 创建硬件编码器实例。
    OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
    ```
@@ -144,8 +144,8 @@ status: active
 2. 在配置阶段，设置全局时域可分层编码特性参数。
 
    <!-- @[temporal_scalability_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    constexpr int32_t TGOP_SIZE = 3;
    // 2.1 创建配置用临时AVFormat。
    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -169,8 +169,8 @@ status: active
    动态使能时域可分层能力的示例代码如下：
 
    <!-- @[temporal_scalability_dynamic_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    std::unique_lock<std::shared_mutex> lock(codecMutex);
    // 重置编码器videoEnc。
    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
@@ -203,8 +203,8 @@ status: active
    动态关闭时域可分层能力的示例代码如下：
 
    <!-- @[temporal_scalability_dynamic_disable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    std::unique_lock<std::shared_mutex> lock(codecMutex);
    // 重置编码器videoEnc。
    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
@@ -238,8 +238,8 @@ status: active
    示例代码如下：
 
    <!-- @[temporal_scalability_output_layer_by_tgop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    constexpr int32_t TGOP_SIZE = 3;
    uint32_t g_outPoc = 0;
    // 通过输出回调中有效帧数，获取TGOP内相对位置，对照配置确认层级。
@@ -271,25 +271,36 @@ status: active
 
    示例代码如下：
    <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
-
+   
    ``` C++
    static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
    {
        int32_t layerID = -1;
+       // 该能力依赖 API 26 Native SDK 中的 OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID。
+       // 若编译找不到该 Key，请确认 SDK 路径并清理 CMake 缓存；兼容旧 SDK 时可在cmake中将
+       // AVCODEC_SAMPLE_ENABLE_TEMPORAL_LAYER_ID 设为 OFF。
+   #ifdef AVCODEC_SAMPLE_ENABLE_TEMPORAL_LAYER_ID
+       // 参数对象由接口创建，读取完时域层信息后立即销毁，不能随 Buffer 一起跨线程保存。
        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-       OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+       if (format != nullptr) {
+           OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+           OH_AVFormat_Destroy(format);
+       }
+   #else
+       (void)buffer;
+   #endif
        return layerID;
    }
-
+   
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-       if (userData == nullptr) {
-           return;
-       }
        // ...
-
+   
        // 从AVBuffer中获取时域层级信息。
        int32_t layerID = GetTemporalLayerID(buffer);
+       if (layerID >= 0 && index % LIMIT_LOGD_FREQUENCY == 0) {
+           AVCODEC_SAMPLE_LOGD("Temporal layer ID: %{public}d", layerID);
+       }
    }
    ```
 
@@ -331,8 +342,8 @@ status: active
 1. 在初始阶段创建编码实例时，校验当前视频编码器是否支持LTR特性。
 
    <!-- @[ltr_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    constexpr int32_t NEEDED_LTR_COUNT = 5;
    bool isSupported = false;
    int32_t supportedLTRCount = 0;
@@ -360,8 +371,8 @@ status: active
    Buffer输入模式示例：
 
    <!-- @[ltr_buffer_callback_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    // 2.1 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
    static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
@@ -388,7 +399,7 @@ status: active
            // 异常处理。
        }
    }
-    
+   
    // 2.2 编码输出回调OH_AVCodecOnNewOutputBuffer实现。
    static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
@@ -404,7 +415,7 @@ status: active
            // 异常处理。
            return;
        }
-       // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中。
+       // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中
        // 随帧下发的MARK_LTR/USE_LTR记录，核对参考结构是否符合预期。
        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
        if (format != nullptr) {
@@ -420,7 +431,7 @@ status: active
            // 异常处理。
        }
    }
-    
+   
    // 2.3 注册数据回调。
    static OH_AVErrCode RegisterLtrBufferCallbacks(OH_AVCodec *videoEnc)
    {
@@ -439,8 +450,8 @@ status: active
    Surface输入模式示例：
 
    <!-- @[ltr_surface_callback_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    // 2.1 编码输入参数回调OH_VideoEncoder_OnNeedInputParameter实现。
    static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
    {
@@ -464,7 +475,7 @@ status: active
            // 异常处理。
        }
    }
-    
+   
    // 2.2 编码输出回调OH_AVCodecOnNewOutputBuffer实现。
    static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
@@ -480,7 +491,7 @@ status: active
            // 异常处理。
            return;
        }
-       // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中。
+       // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中
        // 随帧下发的MARK_LTR/USE_LTR记录，核对参考结构是否符合预期。
        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
        if (format != nullptr) {
@@ -496,7 +507,7 @@ status: active
            // 异常处理。
        }
    }
-    
+   
    // 2.3 注册数据回调。
    // 2.4 注册随帧参数回调。
    static OH_AVErrCode RegisterLtrSurfaceCallbacks(OH_AVCodec *videoEnc)
@@ -521,8 +532,8 @@ status: active
 3. 在配置阶段，设置最大LTR数目。
 
    <!-- @[ltr_configure_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
-
-   ``` c++
+   
+   ``` C++
    constexpr int32_t NEEDED_LTR_COUNT = 5;
    // 3.1 创建配置用临时AVFormat。
    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
