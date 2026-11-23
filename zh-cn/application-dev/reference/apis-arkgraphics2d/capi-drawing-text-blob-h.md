@@ -321,7 +321,7 @@ const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_Tex
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md)* | 函数返回一个指针，指针指向申请的内存，该内存用于存储文字和位置信息。 |
+| [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md)* | 返回一个指针，指针指向创建的文本位置信息。 |
 
 ### OH_Drawing_TextBlobBuilderMake()
 
