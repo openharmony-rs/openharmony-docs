@@ -4,7 +4,7 @@
 
 ### 简介 
 
-OpenHarmony默认提供了电源模式（如正常模式、性能模式、省电模式、超级省电模式）的特性。但由于不同产品的部件存在差异，导致在同样场景下电源模式的配置需要也存在差异，为此，OpenHarmony提供了电源管理的定制方式，产品定制开发者可根据产品的设计规格来定制这些特性。
+OpenHarmony默认提供了电源模式（如正常模式、性能模式、省电模式、超级省电模式、自定义省电模式）的特性。但由于不同产品的部件存在差异，导致在同样场景下电源模式的配置需要也存在差异，为此，OpenHarmony提供了电源管理的定制方式，产品定制开发者可根据产品的设计规格来定制这些特性。
 
 ### 基本概念 
 
@@ -89,6 +89,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
             <switch id="120" value="1"/>
             <switch id="121" value="0"/>
         </proxy>
+    </switch_proxy>
     ``` 
 
 4. 参考[默认电源模式配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将power_mode_config.xml打包到 `/vendor/etc/power_config`目录下，例如： 
@@ -207,12 +208,12 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
         ----------------------------------PowerManagerService---------------------------------
         POWER STATE DUMP:
         Current State: INACTIVE  Reason: 1  Time: 33227
-        ScreenOffTime: Timeout=20000ms
+        ScreenOffTime: Timeout=5000ms
         ······（省略其他，只显示系统自动睡眠时间的配置）
 
         ```
 
-    4. 点亮屏幕，观察设备屏幕，20秒后灭屏，设置成功。
+    4. 点亮屏幕，观察设备屏幕，5秒后灭屏，设置成功。
 
 4. 设置电源模式为性能模式，并验证。
 
@@ -273,12 +274,12 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
         ----------------------------------PowerManagerService---------------------------------
         POWER STATE DUMP:
         Current State: INACTIVE  Reason: 1  Time: 33227
-        ScreenOffTime: Timeout=40000ms
+        ScreenOffTime: Timeout=2000ms
         ······（省略其他，只显示系统自动睡眠时间的配置）
 
         ```
 
-    4. 点亮屏幕，观察设备屏幕，40秒后灭屏，设置成功。
+    4. 点亮屏幕，观察设备屏幕，2秒后灭屏，设置成功。
 
 ## 参考 
 

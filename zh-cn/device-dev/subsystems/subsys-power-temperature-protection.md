@@ -103,7 +103,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     hdc shell
     ```
 
-2. 进入电源温度的节点路径（以当前DAYU开发版路径为例）。
+2. 进入电源温度的节点路径（以当前DAYU开发板路径为例）。
     ```
     cd /data/service/el0/battery/battery
     ```

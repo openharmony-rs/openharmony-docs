@@ -155,7 +155,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     # Brightness limits is 0-255.
     const.display.brightness.min=50
     const.display.brightness.default=75
-    const.display.brightness.max=150# 
+    const.display.brightness.max=150
     # 
     # cd
     # hidumper -s 3308 -a -a
@@ -188,4 +188,4 @@ const.display.brightness.default=102
 const.display.brightness.max=255
 ``` 
 
-打包路径：/system/etc/param 
+默认打包路径：/system/etc/param 

@@ -39,7 +39,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 3. 参考[默认充电类型的配置文件夹中的battery_config.json](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json)编写定制的battery_config.json，包含定制后的充电类型配置如下：
 
-    ```shell
+    ```json
     {
         "charger": {
             "type": {
@@ -99,7 +99,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     hdc shell
     ```
 
-2. 进入电池电量的节点路径（以当前DAYU开发版路径为例）。
+2. 进入电池电量的节点路径（以当前DAYU开发板路径为例）。
     ```
     cd /data/service/el0/battery/
     ```
@@ -144,7 +144,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 默认配置
 
-    ```shell
+    ```json
     {
         "charger": {
             "type": {

@@ -106,7 +106,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ``` 
 
-    “//vendor/hihope/rk3568/power/battery_statistics/”为文件夹路径，“profile”为创建的文件夹名字，“power_average_config”为编译目标。
+    “//vendor/hihope/rk3568/battery_statistics/”为文件夹路径，“profile”为创建的文件夹名字，“power_average_config”为编译目标。
 
 6. 参考《[快速入门](../quick-start/quickstart-overview.md)》编译定制版本，编译命令如下：
 

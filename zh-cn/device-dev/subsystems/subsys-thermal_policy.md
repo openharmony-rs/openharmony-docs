@@ -93,7 +93,6 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
             <voltage_buck>3000</voltage_buck>
             <volume>1.0</volume>
         </config>
-    <policy>
         <config name="base_safe" level="2">
             <lcd>0.90</lcd>
             <lcd scene="cam">0.89</lcd>

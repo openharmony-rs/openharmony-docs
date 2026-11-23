@@ -77,6 +77,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
             <item level="4" threshold="48000,46000,36000,46000" threshold_clr="46000,44000,34000,44000"/>
         </sensor_cluster>
     </level>
+    </thermal>
     ```
 
 4. 参考[默认热等级配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将thermal_service_config.xml打包到`/vendor/etc/thermal_config`目录下：

@@ -61,7 +61,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     | value | path | 获取thermal zone温度的路径 |
 
     ```shell
-    <tracing outpath="/data/log/thermal-log">
+    <tracing outpath="/data/log/thermal">
         <node>
             <title path="sys/class/thermal/thermal_zone0/type"/>
             <value path="sys/class/thermal/thermal_zone0/temp"/>
