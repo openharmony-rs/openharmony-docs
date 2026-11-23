@@ -10,19 +10,13 @@
 
 从API版本26.1.0开始，应用可以通过ArkUI NDK接口采集指定节点的图片，得到该节点对应的PixelMap。采集以节点ID为单位进行：一次请求提交1到20个互不重复的节点ID，框架在目标UI实例的UI线程回调一次，每个节点ID在结果集合中对应一个结果项，应用按节点ID逐项取出PixelMap。
 
-图片来源按节点类型区分。目标为[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)节点且能取到源图时，接口返回该组件的完整源图，像素尺寸与页面上的显示尺寸无关；取不到源图时按节点边界截取该节点范围内的渲染内容。其他节点统一按节点边界截取该节点范围内的渲染内容。节点是否可见不影响能否采集。
+图片来源按节点类型区分。目标为[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)节点且能取到源图时，采集到的是该组件的完整源图，像素尺寸与页面上的显示尺寸无关；取不到源图时按节点边界截取该节点范围内的渲染内容。其他节点统一按节点边界截取该节点范围内的渲染内容。节点是否可见不影响能否采集。
 
 采集通常与其他UI信息能力配合使用。应用可以先读取控件树，从结果中获取目标节点的整数节点ID，再按节点ID采集图片，从而避免自行维护节点标识与节点ID的对应关系。
 
 本篇介绍节点图片采集和页面文本采集能力。应用可以通过ArkUI NDK接口采集指定节点的图片，也可以在UI线程同步采集当前ArkUI页面的文本信息，页面文本以JSON格式输出。
 
-> **说明：**
->
-> - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[UI信息采集和交互注入示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection)<!--RP1End-->。
-
 ## 约束与限制
-
-采集前应确认SDK与设备实现的匹配关系、上下文来源、请求规模以及结果对象的所有权，以下条件会影响请求是否被受理或结果是否可用。
 
 - 使用包含`ui_info_collection.h`中相关声明的配套SDK，并确保运行设备提供与SDK匹配的实现。头文件与库符号齐备时，仍需确认设备实现已提供该能力。
 - 上下文句柄必须指向目标UI实例，并在请求处理期间保持有效。句柄无法解析到目标实例时返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，例如句柄为空、页面或窗口已经销毁，或句柄来自其他UI实例。
