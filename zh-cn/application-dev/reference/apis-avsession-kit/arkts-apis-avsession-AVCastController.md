@@ -610,7 +610,7 @@ avCastController.start(playItem).then(() => {
 
 update(item: AVQueueItem): Promise\<void>
 
-更新当前播放项的媒体信息。用于更新投播接收端播放器或媒体中心的标题、媒体图片等媒体信息。使用Promise异步回调。如果需要刷新媒体URI，请使用[prepare](#prepare10)和[start](#start10)接口。
+更新当前播放项的媒体信息。用于更新投播接收端播放器或媒体中心的标题、媒体图片等媒体信息。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
