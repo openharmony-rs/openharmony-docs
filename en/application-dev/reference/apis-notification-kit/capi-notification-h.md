@@ -47,6 +47,6 @@ Checks whether the notification of the specified application is enabled.
 
 | Type| Description|
 | -- | -- |
-| bool | **true**  - The notification of the application is enabled.<br>         **false** - The notification of the application is not enabled, or the query operation failed (for example, the IPC request failed or the notification service is not running). |
+| bool | **true**  - The notification of the application is enabled.<br>         **false** - The notification of the application is not enabled. |
 
 
