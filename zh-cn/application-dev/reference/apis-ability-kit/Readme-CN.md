@@ -42,6 +42,7 @@
     - [@ohos.app.ability.PhotoEditorExtensionAbility (支持图片编辑能力的ExtensionAbility组件)](js-apis-app-ability-photoEditorExtensionAbility.md)
     - [@ohos.app.ability.OpenLinkOptions (openLink的可选参数)](js-apis-app-ability-openLinkOptions.md)
     - [@ohos.app.ability.ShareExtensionAbility (支持分享详情页接入的ExtensionAbility组件)](js-apis-app-ability-shareExtensionAbility.md)
+    - [@ohos.app.ability.ShowParams (ShowParams)](js-apis-app-ability-showParams.md)
     - [@ohos.app.ability.StartOptions (startAbility的可选参数)](js-apis-app-ability-startOptions.md)
     - [@ohos.app.ability.systemConfiguration (系统环境模块)](js-apis-app-ability-systemConfiguration.md)
     - [@ohos.app.ability.UIAbility (带界面的应用组件)](js-apis-app-ability-uiAbility.md)
