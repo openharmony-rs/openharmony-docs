@@ -18,7 +18,7 @@ When creating a task on the cloud platform, you can choose one of the implemente
 
 > **NOTE**
 >
-> Multi-instance apps are not currently supported. If [hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit) is called in a multi-instance app, error code 36000002 is thrown. For detailed handling steps, see the app gray-scale error code [36000002](../reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002).
+> Multi-instance apps are not currently supported. If [hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit) is called in a multi-instance app, an error code is thrown.
 
 ## Working Principles
 
