@@ -50,7 +50,7 @@ FormComponent(value: FormInfo)
 
 > **说明：**
 >
-> - 使用该组件可以创建一个卡片实例，通过formId标识。不再使用的卡片实例，需要调用[formHost.deleteForm](../../apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)接口主动删除，否则将常驻在内存。
+> - 使用该组件可以创建一个卡片实例，通过formId标识。不再使用的卡片实例，需要调用[formHost.deleteForm](../../apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)接口主动删除，否则将常驻内存。
 
 ## FormInfo<sup>12+</sup>
 
