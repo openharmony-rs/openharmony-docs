@@ -108,7 +108,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
 | ENTER_KEY_TYPE_UNSPECIFIED | number | 0 | 无功能键。 |
-| ENTER_KEY_TYPE_NONE | number | 1 | “无特定行为”功能键。<br>**起始版本：** 26.1.0 |
+| ENTER_KEY_TYPE_NONE | number | 1 | “无特定行为”功能键。<br>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | ENTER_KEY_TYPE_GO | number | 2 | “前往”功能键。 |
 | ENTER_KEY_TYPE_SEARCH| number | 3 | “搜索”功能键。 |
 | ENTER_KEY_TYPE_SEND | number | 4 | “发送”功能键。 |
@@ -118,7 +118,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | ENTER_KEY_TYPE_NEWLINE<sup>12+</sup> | number | 8 | “换行”功能键。 |
 | PATTERN_NULL | number | -1 | 无特殊性编辑框。 |
 | PATTERN_TEXT | number | 0 | 文本编辑框。 |
-| PATTERN_MULTILINE | number | 1 | 多行编辑框。<br>**起始版本：** 26.1.0 |
+| PATTERN_MULTILINE | number | 1 | 多行编辑框。<br>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_NUMBER | number | 2 | 数字编辑框。 |
 | PATTERN_PHONE | number | 3 | 电话号码编辑框。 |
 | PATTERN_DATETIME | number | 4 | 日期编辑框。 |
@@ -7808,7 +7808,7 @@ if (proxyAbility !== null) {
 
 ## InputKeyEventCallback
 
-type InputKeyEventCallback = (event: KeyEvent) => boolean
+type InputKeyEventCallback = (event: InputKeyEvent) => boolean
 
 物理键盘按键事件的回调类型。
 
@@ -7820,7 +7820,7 @@ type InputKeyEventCallback = (event: KeyEvent) => boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是 | 物理键盘按键事件信息。 |
+| event | [InputKeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是 | 物理键盘按键事件信息。 |
 
 **返回值：**
 
@@ -7913,11 +7913,11 @@ onKeyEvent(callback: InputKeyEventCallback): void
 **示例：**
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
 if (proxyDelegate !== null) {
-  proxyDelegate.onKeyEvent((event: KeyEvent) => {
+  proxyDelegate.onKeyEvent((event: InputKeyEvent) => {
     console.info(`inputMethodEngine keyEvent.action:${event.action}`);
     return false;
   });
@@ -7945,10 +7945,10 @@ offKeyEvent(callback?: InputKeyEventCallback): void
 **示例：**
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
-let callback: inputMethodEngine.InputKeyEventCallback = (event: KeyEvent) => {
+let callback: inputMethodEngine.InputKeyEventCallback = (event: InputKeyEvent) => {
   console.info(`inputMethodEngine keyEvent.action:${event.action}`);
   return false;
 };
