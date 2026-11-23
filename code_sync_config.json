@@ -40141,7 +40141,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Callback.ets",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":94,
 						"name":"specify_parameter_generate_rsa_keypair",
 						"start_line":16
 					}
@@ -40151,7 +40151,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Sync.ets",
 				"functions":[
 					{
-						"end_line":98,
+						"end_line":100,
 						"name":"specify_parameter_generate_rsa_keypair_sync",
 						"start_line":16
 					}
@@ -40171,7 +40171,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Sync.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":121,
 						"name":"specify_parameter_generate_ecc_keypair_sync",
 						"start_line":16
 					}
@@ -40191,7 +40191,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Sync.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":57,
 						"name":"specify_parameter_generate_sm2_keypair_sync",
 						"start_line":16
 					}
@@ -40241,7 +40241,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Sync.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":48,
 						"name":"generate_rsa_keypair_sync",
 						"start_line":16
 					}
@@ -40261,7 +40261,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Sync.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":48,
 						"name":"generate_sm2_keypair_sync",
 						"start_line":16
 					}
@@ -40701,7 +40701,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Callback.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":46,
 						"name":"bin_convert_rsa_keypair",
 						"start_line":16
 					}
@@ -40711,7 +40711,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Sync.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":44,
 						"name":"bin_convert_rsa_keypair_sync",
 						"start_line":16
 					}
@@ -40721,7 +40721,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/ecc/Callback.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":48,
 						"name":"bin_convert_ecc_keypair",
 						"start_line":16
 					}
@@ -40731,7 +40731,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/pkcs8ecc/PKCS8ECC.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":55,
 						"name":"pkcs8_convert_ecc_pri_keypair",
 						"start_line":16
 					}
@@ -40741,7 +40741,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Callback.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":48,
 						"name":"bin_convert_sm2_keypair",
 						"start_line":16
 					}
@@ -40751,7 +40751,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Sync.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":46,
 						"name":"bin_convert_sm2_keypair_sync",
 						"start_line":16
 					}
@@ -40761,7 +40761,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/ecc/Sync.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":45,
 						"name":"bin_convert_ecc_keypair_sync",
 						"start_line":16
 					}
@@ -41463,7 +41463,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":86,
 						"name":"prikey_get_pubkey_async",
 						"start_line":15
 					}
@@ -41473,7 +41473,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":86,
 						"name":"prikey_get_pubkey_sync",
 						"start_line":15
 					}
@@ -66376,7 +66376,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_signature_restoration.cpp",
 				"functions":[
 					{
-						"end_line":97,
+						"end_line":100,
 						"name":"pkcs1_recover_rsa_keypair_sign",
 						"start_line":16
 					}
