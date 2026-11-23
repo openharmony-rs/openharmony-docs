@@ -27,15 +27,18 @@
    <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
    
    ``` TypeScript
-   function getUserDirExample() {
+   function getUserDirExample(): boolean {
      try {
-       const downloadPath = Environment.getUserDownloadDir();
-       console.info(`Succeeded in getting user download dir: ${downloadPath}`);
-       const documentsPath = Environment.getUserDocumentDir();
-       console.info(`Succeeded in getting user document dir: ${documentsPath}`);
+       const downloadPath: string = Environment.getUserDownloadDir();
+       const documentsPath: string = Environment.getUserDocumentDir();
+       hilog.info(DOMAIN, TAG, 'User directories obtained, download=%{private}s documents=%{private}s',
+         downloadPath, documentsPath);
+       return true;
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`Failed to get user dir. Code: ${err.code}, message: ${err.message}`);
+       hilog.error(DOMAIN, TAG, 'Directory lookup failed, code=%{public}d message=%{private}s',
+         err.code ?? 0, err.message);
+       return false;
      }
    }
    ```
@@ -47,28 +50,17 @@
    <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
    
    ``` TypeScript
-   function readUserDownloadDirExample(context: common.UIAbilityContext) {
+   function readUserDownloadDirExample(context: common.UIAbilityContext): boolean {
      try {
-       // 获取 Download 目录
-       const downloadPath = Environment.getUserDownloadDir();
-       console.info(`Succeeded in getting user download dir: ${downloadPath}`);
-       const dirPath = context.filesDir;
-       // 查看 Download 目录下的文件并拷贝到沙箱目录中
-       let fileList: string[] = fileIo.listFileSync(downloadPath);
-       fileList.forEach((file, index) => {
-         console.info(`${downloadPath} ${index}: ${file}`);
-         if (fileIo.statSync(`${downloadPath}/${file}`).isFile()) {
-           fileIo.copyFileSync(`${downloadPath}/${file}`, `${dirPath}/${file}`);
-         }
-       });
-       // 查看沙箱目录下对应的文件
-       fileList = fileIo.listFileSync(dirPath);
-       fileList.forEach((file, index) => {
-         console.info(`Succeeded in listing file, ${dirPath} ${index}: ${file}`);
-       });
+       const downloadPath: string = Environment.getUserDownloadDir();
+       const fileList: string[] = importDownloadFiles(downloadPath, context.filesDir);
+       hilog.info(DOMAIN, TAG, 'Download import successful, sandbox entries=%{public}d', fileList.length);
+       return true;
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`Failed to read user download dir. Code: ${err.code}, message: ${err.message}`);
+       hilog.error(DOMAIN, TAG, 'Download import failed, code=%{public}d message=%{private}s',
+         err.code ?? 0, err.message);
+       return false;
      }
    }
    ```
@@ -79,19 +71,17 @@
    <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
    
    ``` TypeScript
-   function writeUserDownloadDirExample() {
-     // 检查是否具有 READ_WRITE_DOWNLOAD_DIRECTORY 权限，无权限则需要向用户申请授予权限。
+   function writeUserDownloadDirExample(): boolean {
      try {
-       // 获取 Download 目录
-       const downloadPath = Environment.getUserDownloadDir();
-       console.info(`Succeeded in getting user download dir: ${downloadPath}`);
-       // 保存 temp.txt 到 Download 目录下
-       const file = fileIo.openSync(`${downloadPath}/temp.txt`, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-       fileIo.writeSync(file.fd, 'write a message');
-       fileIo.closeSync(file);
+       const downloadPath: string = Environment.getUserDownloadDir();
+       writeDownloadMessage(downloadPath, 'write a message');
+       hilog.info(DOMAIN, TAG, 'Download write successful');
+       return true;
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`Failed to write user download dir. Code: ${err.code}, message: ${err.message}`);
+       hilog.error(DOMAIN, TAG, 'Download write failed, code=%{public}d message=%{private}s',
+         err.code ?? 0, err.message);
+       return false;
      }
    }
    ```
