@@ -20,7 +20,7 @@ status: active
 
 从API version 21开始，支持开发者在应用中使用[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)组件，为浏览器扩展提供后台服务能力。
 
-浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。
+浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility。连接建立后，扩展通过 runtime.Port 收发消息；应用则基于浏览器传递的文件描述符，调用文件 I/O接口完成消息收发。
 
 
 ![](figures/connect-native-overview.png)
