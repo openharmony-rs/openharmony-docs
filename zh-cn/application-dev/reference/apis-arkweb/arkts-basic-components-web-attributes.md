@@ -4905,16 +4905,20 @@ flingSpeedLimit(speedLimit: number)
 
 visitedLinkPersistEnabled(enabled: boolean): WebAttribute
 
-设置是否开启Web组件的已访问链接持久化。
+设置是否开启Web组件已访问链接的持久化保留。
 
 开启后，已访问链接记录存储在数据库文件中，应用重启后记录仍保留，已访问链接着色在应用重启后保持一致。关闭后，新产生的已访问链接记录仅存储在共享内存中，应用退出后不保留。
 
 > **说明：**
 >
 > - 默认值为`false`。未设置本属性时，已访问链接记录仅存储在共享内存中。
+>
 > - 开启持久化后，记录按应用隔离，存储上限为20000条访问记录，保存期限为30天。访问同一个链接产生的多条访问记录分别计数。
+>
 > - 超过保存期限或数量上限的记录由后台线程自动清理。清理异步执行，数量可能短暂超过上限。
+>
 > - Web组件处于隐私模式（设置`incognitoMode: true`）时，本属性不生效，已访问链接记录仅存储在共享内存中，不会写入磁盘。
+>
 > - 如需主动删除指定日期之后发生变化的已访问链接记录，可调用[removeVisitedLinksSince](./arkts-apis-webview-WebviewController.md#removevisitedlinkssince)。
 
 **起始版本：** 26.1.0
