@@ -16,7 +16,7 @@
 
 本专题按以下顺序说明：先介绍接口与调用方式，并说明结果分层、节点ID数量、图片来源、页面文本JSON结构与消费释放规则（[接口说明](#接口说明)），然后结合示例工程给出完整开发流程（[开发流程](#开发流程)），最后列出典型问题与处理方式（[常见问题](#常见问题)）。
 
-本篇介绍节点图片采集和页面文本采集能力。从API版本26.1.0开始，应用还可以通过[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)在UI线程同步采集当前ArkUI页面的文本信息，并以JSON格式输出。
+本篇介绍节点图片采集和页面文本采集能力。应用可以通过ArkUI NDK接口采集指定节点的图片，也可以在UI线程同步采集当前ArkUI页面的文本信息，页面文本以JSON格式输出。本文同时介绍页面文本采集相关接口、JSON数据结构及调用方法。
 
 > **说明：**
 >
