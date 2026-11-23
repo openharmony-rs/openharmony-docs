@@ -357,7 +357,7 @@ vpnConnection.create(vpnConfig).then((data) => {
   // ...
 }).catch((err: BusinessError) => {
   // 如果 VPN 创建失败，捕获异常并处理
-  hilog.error(0x0000, 'testTag', 'developTag', 'vpn start Fail %{public}s', JSON.stringify(err) ?? '');
+  hilog.error(0x0000, 'testTag', 'vpn create Fail %{public}s', JSON.stringify(err) ?? '');
   // ...
 });
 ```
