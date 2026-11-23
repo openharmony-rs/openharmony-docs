@@ -793,7 +793,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     .syncLoad(true)
   ```
 
-<!--RP2-->
+<!--RP4-->
 
 ### 开启图像AI分析
 
@@ -845,7 +845,7 @@ struct ImageExample4 {
 ```
 
 ![zh-cn_image_0000001607845173](figures/image-view4.gif)
-<!--RP2End-->
+<!--RP4End-->
 
 ## 事件调用
 

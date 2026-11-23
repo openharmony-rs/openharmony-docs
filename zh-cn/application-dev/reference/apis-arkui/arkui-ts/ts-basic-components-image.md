@@ -591,7 +591,7 @@ draggable(value: boolean)
 
 enableAnalyzer(enable:&nbsp;boolean)
 
-设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。
+设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。<!--RP3--><!--RP3End-->
 
 不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。该特性依赖设备能力。
 
