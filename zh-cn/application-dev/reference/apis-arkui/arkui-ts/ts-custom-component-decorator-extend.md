@@ -81,3 +81,31 @@ struct FancyUse {
   }
 }
 ```
+## ExtendVersionDecorator
+
+type ExtendVersionDecorator = (value: any, versionCondition: VersionCondition) => MethodDecorator
+
+\@Extend装饰器传入第二个参数即版本条件配置项时的实际类型。
+
+**起始版本：** 26.1.0
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| value                 | any | 是 | 指定要扩展样式的目标内置UI组件类型（如Text、Column），传入组件的类型而非组件实例，不支持自定义组件。@Extend装饰器内定义的样式属性将绑定到该组件类型，使其可在该组件上以链式方式调用。 |
+| version               | [VersionCondition](./ts-custom-component-decorator-styles.md#versioncondition) | 否 | 版本条件对象，声明扩展样式的生效系统版本区间。传入时，扩展样式仅在设备系统版本位于声明区间内时生效，且对该扩展样式的全部调用点统一生效。|
+
+**返回值：**
+
+| 类型            | 说明                                 |
+| --------------- | ------------------------------------ |
+| MethodDecorator | 方法装饰器，开发者无需关注该返回值。 |
