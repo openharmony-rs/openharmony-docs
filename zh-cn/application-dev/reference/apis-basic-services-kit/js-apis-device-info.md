@@ -77,15 +77,6 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | kernelVersion | string | 是 | 获取当前运行环境的内核版本字符串。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br> **起始版本**：26.0.1<br> 示例：HongMeng Kernel 1.0.0 |
 | installTime | string | 是 | 获取系统安装UTC时间戳。<!--RP18--><br> 默认值：1790784000000<br>**模型约束**： 此接口仅可在Stage模型下使用。<br> **起始版本**：26.1.0<!--RP18End--> |
 
-**错误码**：
-
-以下错误码的详细介绍请参见[deviceInfo错误码](errorcode-device-info.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID   | 错误信息    |
-|---------|---------|
-| 14700103 | Permission verification failed. System permission operation permission denied |
-| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **示例**
 
 ```ts
