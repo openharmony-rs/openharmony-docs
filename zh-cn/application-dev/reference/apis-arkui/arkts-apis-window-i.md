@@ -83,7 +83,7 @@
 | vsyncTimestamp | number   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
 | intendedVsyncTimestamp | number   | 否   | 是   | 当前帧的预期起始时间戳（单位：纳秒）。默认值为undefined。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | totalDuration | number   | 否   | 是   | 渲染此帧并将其发送到显示子系统所需要的总时间（单位：纳秒）。默认值为undefined。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| animationDuration | number   | 否   | 是   | 执行一帧中所有动画回调所消耗的总时间（单位：纳秒）。默认值为undefined。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| animationDuration | number   | 否   | 是   | 执行一帧中动画回调所消耗的时间（单位：纳秒）。默认值为undefined。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## Rect<sup>7+</sup>
 
