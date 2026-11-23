@@ -364,7 +364,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ```xml
 <svg width="200" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="20" r="20" fill="red"/>
+  <circle cx="50" cy="20" r="20" fill="blue"/>
   <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="2" /> <!-- y 轴 -->
   <line x1="0" y1="0" x2="500" y2="0" stroke="black" stroke-width="2" /> <!-- x 轴 -->
 </svg>
