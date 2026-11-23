@@ -112,7 +112,7 @@
 | [OH_ArkUI_NativeModule_UIJsonWrapperGetSize](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetsize) | 获取JSON字符串的字节长度（不含末尾空字符）。 | 可在任意线程调用，不分配或释放资源。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁JSON封装对象并释放其占用的内存。 | 由对象所有者调用一次；销毁后不得再使用对象及其字符串指针。 |
 
-调用成功时，返回的JSON对象顶层包含`schemaVersion`字段和`texts`数组（即使页面存在但没有符合条件的文本，也会返回`{"schemaVersion":1,"texts":[]}`）。`texts`数组中每个元素对应一个符合采集条件的文本组件，包含用于标识控件的整数`"id"`、相对于目标窗口的矩形区域`"rect"`（格式为`[x, y, width, height]`，单位为物理像素），以及表示文本内容的字符串`"content"`。
+调用成功时，返回的JSON对象顶层包含schemaVersion字段和texts数组（即使页面存在但没有符合条件的文本，也会返回`{"schemaVersion":1,"texts":[]}`）。texts数组中每个元素对应一个符合采集条件的文本组件，包含用于标识控件的整数"id"、相对于目标窗口的矩形区域"rect"（格式为`[x, y, width, height]`，单位为物理像素），以及表示文本内容的字符串"content"。
 
 ## 开发流程
 
