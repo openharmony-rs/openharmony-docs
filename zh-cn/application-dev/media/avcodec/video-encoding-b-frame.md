@@ -60,7 +60,7 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
 
    <!-- @[bframe_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/BFrameQuery.cpp) -->
    
-   ``` c++
+   ``` C++
    // 1.1 获取对应视频编码器能力实例，此处以H.265为例。
    OH_AVCapability *cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
    if (cap != nullptr) {
@@ -90,7 +90,7 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
 
    <!-- @[bframe_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/BFrameQuery.cpp) -->
    
-   ``` c++
+   ``` C++
    // 2.1 创建配置用临时AVFormat。
    OH_AVFormat *format = OH_AVFormat_Create();
    // 2.2 填充使能参数键值对。
