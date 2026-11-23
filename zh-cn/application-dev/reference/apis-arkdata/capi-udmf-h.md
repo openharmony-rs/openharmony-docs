@@ -267,6 +267,7 @@ void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_Udm
 **参考：**
 
 [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)
+
 [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)
 
 ### OH_UdmfDataLoadParams_Create()
@@ -2385,6 +2386,7 @@ OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
 **参考：**
 
 [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+
 [OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary)
 
 ### OH_UDMF_DestroySummary()
@@ -2408,6 +2410,7 @@ void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)
 **参考：**
 
 [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+
 [OH_UDMF_CreateSummary](capi-udmf-h.md#oh_udmf_createsummary)
 
 ### OH_UDMF_GetSummaryOverviewTypes()
@@ -2439,7 +2442,9 @@ int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *
 **参考：**
 
 [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+
 [OH_UDMF_GetSummaryOverviewSize](capi-udmf-h.md#oh_udmf_getsummaryoverviewsize)
+
 [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)
 
 ### OH_UDMF_GetSummaryOverviewSize()
@@ -2471,7 +2476,9 @@ int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *t
 **参考：**
 
 [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
+
 [OH_UDMF_GetSummaryOverviewTypes](capi-udmf-h.md#oh_udmf_getsummaryoverviewtypes)
+
 [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)
 
 ### OH_UDMF_GetSummaryFilenameExtensions()
