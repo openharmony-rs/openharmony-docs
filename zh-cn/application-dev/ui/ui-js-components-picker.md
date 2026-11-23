@@ -87,8 +87,8 @@ picker组件的hours属性用于设置时间显示格式，支持12小时制和2
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <picker id="picker_time" type="time" value="12-hour format" hours="12" onchange="timeonchange"  class="pickertime"></picker>
-  <picker id="picker_time" type="time" value="24-hour format" hours="24" onchange="timeonchange"  class="pickertime"></picker>
+  <picker id="picker_time_12" type="time" value="12-hour format" hours="12" onchange="timeonchange"  class="pickertime"></picker>
+  <picker id="picker_time_24" type="time" value="24-hour format" hours="24" onchange="timeonchange"  class="pickertime"></picker>
 </div>
 ```
 
