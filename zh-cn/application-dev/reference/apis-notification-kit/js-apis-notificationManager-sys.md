@@ -10145,7 +10145,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 | 名称                                | 值     | 说明                                                         |
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
-| EMERGENCY_INFORMATION<sup>12+</sup> | 10     | 紧急事件。**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                               |
+| EMERGENCY_INFORMATION<sup>(deprecated)</sup> | 10     | 紧急事件。<br>从API version 12开始支持，从API版本26.1.0开始废弃。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                               |
 
 
 ## NotificationControlFlagStatus<sup>12+</sup>
