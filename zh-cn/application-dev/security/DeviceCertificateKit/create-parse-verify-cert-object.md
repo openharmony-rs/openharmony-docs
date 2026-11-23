@@ -46,7 +46,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   '-----END CERTIFICATE-----\n';
 
 // 证书示例
-function certSample(): void {
+async function certSample() {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
     // 将证书数据从string类型转换成Uint8Array。
@@ -55,13 +55,9 @@ function certSample(): void {
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
-  // 创建X509Cert实例。
-  cert.createX509Cert(encodingBlob, (err, x509Cert) => {
-    if (err != null) {
-      // 创建X509Cert实例失败。
-      console.error(`createX509Cert failed, errCode:${err.code}, errMsg:${err.message}`);
-      return;
-    }
+  try {
+    // 创建X509Cert实例。
+    let x509Cert = await cert.createX509Cert(encodingBlob);
     // X509Cert实例创建成功。
     console.info('createX509Cert result: success.');
 
@@ -86,33 +82,24 @@ function certSample(): void {
     console.info(`X509 certString: ${certString}`);
 
     // 使用上级证书对象的getPublicKey()方法或本（自签名）证书对象获取公钥对象。
-    try {
-      let pubKey = x509Cert.getPublicKey();
-      // 验证证书签名。
-      x509Cert.verify(pubKey, (err, _result) => {
-        if (err == null) {
-          // 签名验证成功。
-          console.info('verify result: success.');
-        } else {
-          // 签名验证失败。
-          console.error(`verify failed, errCode: ${err.code} , errMsg:${err.message}`);
-        }
-      });
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`getPublicKey failed, errCode: ${e.code} , errMsg:${e.message}`);
-    }
-
+    let pubKey = x509Cert.getPublicKey();
+    // 验证证书签名。
+    x509Cert.verify(pubKey, (err, _result) => {
+      if (err == null) {
+        // 签名验证成功。
+        console.info('verify result: success.');
+      } else {
+        // 签名验证失败。
+        console.error(`verify failed, errCode: ${err.code} , errMsg:${err.message}`);
+      }
+    });
     // 用一个字符串代表时间。
     let date = '20230930000001Z';
-
-    // 验证证书的有效期。
-    try {
-      x509Cert.checkValidityWithDate(date);
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`checkValidityWithDate failed, errCode: ${e.code}, errMsg:${e.message}`);
-    }
-  });
+    x509Cert.checkValidityWithDate(date);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`getPublicKey failed, errCode: ${e.code} , errMsg:${e.message}`);
+    // ...
+  }
 }
 ```

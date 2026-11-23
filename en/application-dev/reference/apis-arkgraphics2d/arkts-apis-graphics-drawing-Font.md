@@ -1218,11 +1218,11 @@ font.setThemeFontFollowed(true);
 console.info("font is theme font followed: " + font.isThemeFontFollowed());
 ```
 
-## isThemeFontFollowed()<sup>15+</sup>
+## isThemeFontFollowed<sup>15+</sup>
 
 isThemeFontFollowed(): boolean
 
-Checks whether the font follows the theme font. By default, the font follows the theme font.
+Checks whether the font follows the theme font. By default, the theme font is not followed.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

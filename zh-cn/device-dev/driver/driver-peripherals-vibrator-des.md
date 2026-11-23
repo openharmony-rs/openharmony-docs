@@ -97,9 +97,9 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
          hostName = "vibrator_host";
          device_vibrator :: device {
              device0 :: deviceNode {
-              policy = 2;                              	 // 驱动服务发布的策略
+              policy = 2;                                 // 驱动服务发布的策略
                  priority = 100;                          // 驱动启动优先级（0-200），值越大优先级越低，建议配置100，优先级相同则不保证device的加载顺序
-              preload = 0;                             	 // 驱动按需加载字段，0表示加载，2表示不加载
+              preload = 0;                                // 驱动按需加载字段，0表示加载，2表示不加载
                  permission = 0664;                       // 驱动创建设备节点权限
                  moduleName = "HDF_VIBRATOR";             // 驱动名称，该字段的值必须和驱动入口结构的moduleName值一致
                  serviceName = "hdf_misc_vibrator";       // 驱动对外发布服务的名称，必须唯一
@@ -200,7 +200,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
                HDF_LOGE("%s: init mutex failed!", __func__);
                return HDF_FAILURE;
            }
-       	 /* 工作队列资源初始化 */
+           /* 工作队列资源初始化 */
            if (HdfWorkQueueInit(&drvData->workQueue, VIBRATOR_WORK_QUEUE_NAME) != HDF_SUCCESS) {
                HDF_LOGE("%s: init workQueue failed!", __func__);
                return HDF_FAILURE;
@@ -210,7 +210,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
                HDF_LOGE("%s: init workQueue failed!", __func__);
                return HDF_FAILURE;
            }
-       	/* 创建马达效果模型初始化 */
+           /* 创建马达效果模型初始化 */
            if (CreateVibratorHaptic(device) != HDF_SUCCESS) {
                HDF_LOGE("%s: create vibrator haptic failed!", __func__);
                return HDF_FAILURE;
@@ -284,7 +284,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
              config.cfgMode = VIBRATOR_MODE_ONCE;
              config.duration = duration;
              config.effect = NULL;
-         	/* 根据振动效果的模式开启马达效果模型 */
+             /* 根据振动效果的模式开启马达效果模型 */
              ret = StartHaptic(&config);
              if (ret != HDF_SUCCESS) {
                  HDF_LOGE("%s: start haptic failed!", __func__);
@@ -309,7 +309,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
          
              CHECK_VIBRATOR_NULL_PTR_RETURN_VALUE(data, HDF_FAILURE);
              CHECK_VIBRATOR_NULL_PTR_RETURN_VALUE(drvData, HDF_FAILURE);
-         	/* 从HdfSBuf中读取出预置的振动效果，进而操作马达振动 */
+             /* 从HdfSBuf中读取出预置的振动效果，进而操作马达振动 */
              effect = HdfSbufReadString(data);
              CHECK_VIBRATOR_NULL_PTR_RETURN_VALUE(effect, HDF_FAILURE);
          
@@ -326,7 +326,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
              config.cfgMode = VIBRATOR_MODE_PRESET;
              config.duration = 0;
              config.effect = effect;
-         	/* 预置效果启动马达 */
+             /* 预置效果启动马达 */
              ret = StartHaptic(&config);
              if (ret != HDF_SUCCESS) {
                  HDF_LOGE("%s: start haptic failed!", __func__);
@@ -350,7 +350,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
          
              CHECK_VIBRATOR_NULL_PTR_RETURN_VALUE(data, HDF_FAILURE);
              CHECK_VIBRATOR_NULL_PTR_RETURN_VALUE(drvData, HDF_FAILURE);
-         	/* 从HdfSBuf中读取指定的振动模式，进而操作马达停止振动 */
+             /* 从HdfSBuf中读取指定的振动模式，进而操作马达停止振动 */
              if (!HdfSbufReadInt32(data, &mode)) {
                  HDF_LOGE("%s: sbuf read mode failed!", __func__);
                  return HDF_FAILURE;
@@ -365,7 +365,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
                  HDF_LOGD("%s: vibrater haptic had stopped!", __func__);
                  return HDF_SUCCESS;
              }
-         	 /* 停止马达效果振动，销毁马达定时器 */
+             /* 停止马达效果振动，销毁马达定时器 */
              ret = StopHaptic();
              if (ret != HDF_SUCCESS) {
                  HDF_LOGE("%s: stop haptic failed!", __func__);
@@ -454,7 +454,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
              config.cfgMode = VIBRATOR_MODE_ONCE;
              config.duration = duration;
              config.effect = NULL;
-         	/* 预置效果启动马达 */
+             /* 预置效果启动马达 */
              ret = StartHaptic(&config);
              if (ret != HDF_SUCCESS) {
                  HDF_LOGE("%s: start haptic failed!", __func__);
@@ -513,14 +513,14 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
 
      ```c
      device_linear_vibrator :: device {
-     	device0 :: deviceNode {
-     		policy = 1;                             		// 驱动服务发布的策略
-     		priority = 105;                         		// 驱动启动优先级（0-200），值越大优先级越低，建议配置100，优先级相同则不保证device的加载顺序
-             preload = 0;                            		// 驱动按需加载字段，0表示加载，2表示不加载
-             permission = 0664;  							// 驱动创建设备节点权限
-             moduleName = "HDF_LINEAR_VIBRATOR";             // 驱动名称，该字段的值必须和驱动入口结构的moduleName值一致 
-            serviceName = "hdf_misc_linear_vibrator";        // 线性马达对外发布服务的名称，必须唯一
-             deviceMatchAttr = "hdf_linear_vibrator_driver"; // 马达差异化驱动私有数据匹配的关键字，必须和驱动私有数据配置表中的match_attr值相等
+        device0 :: deviceNode {
+            policy = 1;                                     // 驱动服务发布的策略
+            priority = 105;                                 // 驱动启动优先级（0-200），值越大优先级越低，建议配置100，优先级相同则不保证device的加载顺序
+            preload = 0;                                    // 驱动按需加载字段，0表示加载，2表示不加载
+            permission = 0664;                              // 驱动创建设备节点权限
+            moduleName = "HDF_LINEAR_VIBRATOR";             // 驱动名称，该字段的值必须和驱动入口结构的moduleName值一致 
+            serviceName = "hdf_misc_linear_vibrator";       // 线性马达对外发布服务的名称，必须唯一
+            deviceMatchAttr = "hdf_linear_vibrator_driver"; // 马达差异化驱动私有数据匹配的关键字，必须和驱动私有数据配置表中的match_attr值相等
          }
      }
      ```
@@ -607,7 +607,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
            ops.StartEffect = StartEffectLinearVibrator;
            ops.Stop = StopLinearVibrator;
            ops.SetParameter = NULL;
-       	
+
            if (RegisterVibratorOps(&ops) != HDF_SUCCESS) {
                HDF_LOGE("%s: register vibrator ops fail", __func__);
                return HDF_FAILURE;
@@ -615,12 +615,12 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
        
            drvData->linearCfgData = (struct VibratorCfgData *)OsalMemCalloc(sizeof(*drvData->linearCfgData));
            CHECK_VIBRATOR_NULL_PTR_RETURN_VALUE(drvData->linearCfgData, HDF_ERR_MALLOC_FAIL);
-       	/* 解析马达寄存器初始化 */
+        /* 解析马达寄存器初始化 */
            if (GetVibratorBaseConfigData(device->property, drvData->linearCfgData) != HDF_SUCCESS) {
                HDF_LOGE("%s: parser vibrator cfg fail", __func__);
                return HDF_FAILURE;
            }
-       	/* 注册马达Info信息初始化 */
+        /* 注册马达Info信息初始化 */
            if (RegisterVibratorInfo(&drvData->linearCfgData->vibratorInfo) != HDF_SUCCESS) {
                HDF_LOGE("%s: register vibrator info fail", __func__);
                return HDF_FAILURE;
@@ -823,7 +823,7 @@ Vibrator驱动模型为上层马达硬件服务层提供稳定的马达控制能
           EXPECT_GE(frequency, g_vibratorInfo->frequencyMinValue);
        EXPECT_LE(frequency, g_vibratorInfo->frequencyMaxValue);
   
-          startRet = g_vibratorDev->EnableVibratorModulation(duration, intensity, duration);
+          startRet = g_vibratorDev->EnableVibratorModulation(duration, intensity, frequency);
           EXPECT_EQ(startRet, HDF_SUCCESS);
           OsalMSleep(sleepTime);
           startRet = g_vibratorDev->Stop(VIBRATOR_MODE_ONCE);

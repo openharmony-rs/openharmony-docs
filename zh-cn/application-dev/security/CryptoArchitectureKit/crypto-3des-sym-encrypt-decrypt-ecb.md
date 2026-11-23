@@ -100,10 +100,12 @@
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -155,10 +157,12 @@
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

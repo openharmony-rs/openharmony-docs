@@ -43,22 +43,22 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | 证书的密钥用途不含证书签名。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23  |
 | ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  证书的密钥用途不含数字签名。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23  |
 | ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | 私钥密码可能不正确。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23       |
-| ERR_CERT_UNTRUSTED               | 19030009 | 证书不受信任。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CERT_HAS_REVOKED             | 19030010 | 证书已被吊销。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_UNKNOWN_CRITICAL_EXTENSION   | 19030011 | 未知的关键扩展。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CERT_HOSTNAME_MISMATCH       | 19030012 | 证书主机名不匹配。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CERT_EMAIL_ADDRESS_MISMATCH  | 19030013 | 证书邮箱地址不匹配。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CERT_KEYUSAGE_MISMATCH       | 19030014 | 证书密钥用途不匹配。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CRL_NOT_FOUND                | 19030015 | 无法获取证书吊销列表。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CRL_NOT_YET_VALID            | 19030016 | 证书吊销列表尚未生效。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CRL_HAS_EXPIRED              | 19030017 | 证书吊销列表已过期。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表验签失败。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | 无法获取证书吊销列表颁发者。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | 无法获取在线证书状态协议（OCSP）响应。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_OCSP_RESPONSE_INVALID        | 19030021 | OCSP响应无效。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP验签失败。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | OCSP证书状态未知。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_NETWORK_TIMEOUT              | 19030024 | 网络连接超时。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CERT_UNTRUSTED               | 19030009 | 证书不受信任。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CERT_HAS_REVOKED             | 19030010 | 证书已被吊销。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_UNKNOWN_CRITICAL_EXTENSION   | 19030011 | 未知的关键扩展。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CERT_HOSTNAME_MISMATCH       | 19030012 | 证书主机名不匹配。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CERT_EMAIL_ADDRESS_MISMATCH  | 19030013 | 证书邮箱地址不匹配。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CERT_KEYUSAGE_MISMATCH       | 19030014 | 证书密钥用途不匹配。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CRL_NOT_FOUND                | 19030015 | 无法获取证书吊销列表。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CRL_NOT_YET_VALID            | 19030016 | 证书吊销列表尚未生效。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CRL_HAS_EXPIRED              | 19030017 | 证书吊销列表已过期。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表验签失败。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | 无法获取证书吊销列表颁发者。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | 无法获取在线证书状态协议（OCSP）响应。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_OCSP_RESPONSE_INVALID        | 19030021 | OCSP响应无效。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP验签失败。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | OCSP证书状态未知。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_NETWORK_TIMEOUT              | 19030024 | 网络连接超时。 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## DataBlob
 
@@ -429,7 +429,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持通过证书中的CDP扩展中获取首个CRL分发点地址以检查证书吊销状态，或通过AIA扩展获取首个OCSP服务器地址以进行吊销状态验证，且仅支持http协议。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 | REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 | REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23  |
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 22 <br>**ArkTS-Sta起始版本：** 23  |
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验成功，则会继续校验中间证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 22 <br>**ArkTS-Sta起始版本：** 23  |
 | REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE不能同时开启。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br>**ArkTS-Dyn起始版本：** 22 <br>**ArkTS-Sta起始版本：** 23|
 | REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | 如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达可能导致证书链校验失败。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
 
@@ -478,7 +478,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示证书吊销检查标志的枚举。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -499,7 +499,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示OCSP摘要算法的枚举。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -521,7 +521,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示证书吊销检查参数。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -544,7 +544,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示证书验证参数。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -574,7 +574,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示证书验证结果。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1078,7 +1078,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -1158,7 +1158,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -1278,7 +1278,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingBlob的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -1434,7 +1434,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -1568,7 +1568,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -1700,7 +1700,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 // 证书二进制数据，需业务自行赋值。
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 cert.createX509Cert(encodingBlob).then(x509Cert => {
@@ -1822,7 +1822,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -1953,7 +1953,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -2079,7 +2079,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
@@ -2188,7 +2188,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -2261,7 +2261,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -2400,7 +2400,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -2552,7 +2552,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -2711,7 +2711,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -2859,7 +2859,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -2992,7 +2992,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -3125,7 +3125,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -3258,7 +3258,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -3391,7 +3391,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -3540,7 +3540,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -3697,7 +3697,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -3851,7 +3851,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -3986,7 +3986,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -4129,7 +4129,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 编码格式，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -5288,7 +5288,7 @@ async function certToString() {
 
 toString(encodingType: EncodingType): string
 
-根据编码类型获取对象的字符串类型数据。  
+根据编码类型获取对象的字符串类型数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -6851,7 +6851,7 @@ async function TestCreateX509CRL() {
 
 ## X509Crl<sup>(deprecated)</sup>
 
-提供用于X.509证书吊销列表操作的API
+提供用于X.509证书吊销列表操作的API。
 
 > **说明：**
 >
@@ -9223,9 +9223,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl result: success.');
+    console.info('createX509CRL result: success.');
     try {
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
@@ -9514,7 +9514,7 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
-  console.info('createX509Crl result: success.');
+  console.info('createX509CRL result: success.');
 
   try {
     // 生成公钥对象。
@@ -9541,7 +9541,7 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
     console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }).catch((error: BusinessError) => {
-  console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
+  console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -13003,10 +13003,10 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 1. 可信锚点源：始终使用可信任证书列表（trustedCerts）作为信任锚点源。仅当trustSystemCa设置为true时，预配置的证书才会被用作信任锚源。
 2. 颁发者搜索顺序：系统首先从信任锚源中搜索颁发者。如果无法找到颁发者，系统将在不受信任的证书列表（untrustedCerts）中搜索。在线下载的中间CA证书即为不受信任的证书。
 3. 信任锚锁定：一旦在信任锚源中找到颁发者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
-4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到颁发者时，构建即完成。
+4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到颁发者时，构建即完成。
 5. 后续验证：证书链构建完成后，执行其他验证操作，如证书验签和证书吊销检查。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -14020,7 +14020,7 @@ function TestGetSerialNumber() {
 
 ### getCertIssuer<sup>11+</sup>
 
-getCertIssuer() : DataBlob
+getCertIssuer(): DataBlob
 
 表示获取被吊销证书的颁发者名称。
 
@@ -14212,15 +14212,15 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
- let crlData = '-----BEGIN X509 CRL-----\n' +
-    'MIIBTDCBtgIBATANBgkqhkiG9w0BAQsFADBZMQswCQYDVQQGEwJDTjEPMA0GA1UE\n' +
-    'CAwG6ZmV6KW/MQ8wDQYDVQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEXMBUG\n' +
-    'A1UEAwwO5Lit5paH5rWL6K+VIyMXDTI1MDMyNDA5MTExNVoXDTI1MDQyMzA5MTEx\n' +
-    'NVowGTAXAgYBcqcmOsAXDTI1MDIyMDA2MTMwM1qgDjAMMAoGA1UdFAQDAgECMA0G\n' +
-    'CSqGSIb3DQEBCwUAA4GBACedFnn4unfYLiRCl1ZAFXx6LFdX6U+IZ/buW44xKAWi\n' +
-    'fyvcSxKIeGtMVjmQSs4HeNfNujIjaDN1+/J2nLSmHPiQ/c0LAc47zefVt2VnFuR4\n' +
-    'TMUJEDUlnekYfDMxQqtihAO/Bpw33twK6otDvaAPm9vJoCu8JmGXxt6g+8vbYuNT\n' +
-    '-----END X509 CRL-----\n';
+let crlData = '-----BEGIN X509 CRL-----\n' +
+  'MIIBTDCBtgIBATANBgkqhkiG9w0BAQsFADBZMQswCQYDVQQGEwJDTjEPMA0GA1UE\n' +
+  'CAwG6ZmV6KW/MQ8wDQYDVQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEXMBUG\n' +
+  'A1UEAwwO5Lit5paH5rWL6K+VIyMXDTI1MDMyNDA5MTExNVoXDTI1MDQyMzA5MTEx\n' +
+  'NVowGTAXAgYBcqcmOsAXDTI1MDIyMDA2MTMwM1qgDjAMMAoGA1UdFAQDAgECMA0G\n' +
+  'CSqGSIb3DQEBCwUAA4GBACedFnn4unfYLiRCl1ZAFXx6LFdX6U+IZ/buW44xKAWi\n' +
+  'fyvcSxKIeGtMVjmQSs4HeNfNujIjaDN1+/J2nLSmHPiQ/c0LAc47zefVt2VnFuR4\n' +
+  'TMUJEDUlnekYfDMxQqtihAO/Bpw33twK6otDvaAPm9vJoCu8JmGXxt6g+8vbYuNT\n' +
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -14303,7 +14303,7 @@ function TestGetCertIssuer() {
 
 ### getRevocationDate<sup>11+</sup>
 
-getRevocationDate() : string
+getRevocationDate(): string
 
 表示获取证书被吊销的日期。
 
@@ -14439,7 +14439,7 @@ function TestGetRevocationDate() {
 
 getExtensions(): DataBlob
 
-表示获取CRL的扩展。
+表示获取DER格式的CRL条目的扩展数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -14453,7 +14453,7 @@ getExtensions(): DataBlob
 
 | 类型                  | 说明                     |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | 表示X509CRLEntry扩展用途。 |
+| [DataBlob](#datablob) | 表示CRL条目的扩展数据。 |
 
 **错误码：**
 
@@ -16968,7 +16968,7 @@ async function buildX509CertChain() {
     console.info('ca subject name: ' + certChainBuildResult.validationResult.trustAnchor.CACert?.getSubjectName().data);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error(`buildX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 
@@ -18558,7 +18558,7 @@ async function doTestCreatePkcs12Sync() {
 
 createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array\<X509TrustAnchor>>
 
-表示从PKCS #12中读取ca证书来构造[TrustAnchor](#x509trustanchor11)对象数组。使用Promise异步回调。
+表示从PKCS #12中读取ca证书来构造[X509TrustAnchor](#x509trustanchor11)对象数组。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -20709,7 +20709,7 @@ getName(type: string, encodingType: EncodingType): Array\<string>
 
 根据指定类型和编码格式获取相对可分辨名称的字符串数组。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -20740,7 +20740,7 @@ getName(type: string, encodingType: EncodingType): Array\<string>
 | -------- | ------------- |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
-| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is invalid. |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range. |
 | 19030001 | Crypto operation error. |
 
 **示例：**
@@ -21079,10 +21079,10 @@ function testAddSigner() {
           };
           // addCert设置为true时，第二次addSigner增加相同的证书，会报错。
           let config: cert.CmsSignerConfig = {
-            mdName:'SHA256',
-            addCert:false,
-            addAttr:false,
-            addSmimeCapAttr:false
+            mdName: 'SHA256',
+            addCert: false,
+            addAttr: false,
+            addSmimeCapAttr: false
           };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testAddSigner addSigner result: success.');
@@ -21492,16 +21492,16 @@ async function testAddRecipientInfo() {
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
     console.info(`createCmsGenerator result: success.`);
 
-    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccX509Cert,
-      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
+    let eccCert: cert.CmsKeyAgreeRecipientInfo = {
+      cert: eccX509Cert,
+      digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
-    let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsaX509Cert
+    let rsaCert: cert.CmsKeyTransRecipientInfo = {
+      cert: rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
-      keyTransInfo : rsaCert,
-      keyAgreeInfo : eccCert
+      keyTransInfo: rsaCert,
+      keyAgreeInfo: eccCert
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
@@ -21622,10 +21622,10 @@ async function testDoFinalByPromise() {
         };
         // addCert设置为true时，第二次addSigner或者addCert增加相同的证书，会报错。
         let config: cert.CmsSignerConfig = {
-          mdName:'SHA256',
-          addCert:false,
-          addAttr:true,
-          addSmimeCapAttr:true
+          mdName: 'SHA256',
+          addCert: false,
+          addAttr: true,
+          addSmimeCapAttr: true
         };
         cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
         console.info('testDoFinalByPromise addSigner result: success.');
@@ -21633,9 +21633,9 @@ async function testDoFinalByPromise() {
         console.info('testDoFinalByPromise addCert result: success.');
         let content = new Uint8Array([1, 2, 3, 4]);
         let optionsFinal: cert.CmsGeneratorOptions = {
-          contentDataFormat : cert.CmsContentDataFormat.BINARY,
-          outFormat : cert.CmsFormat.PEM,
-          isDetached : true
+          contentDataFormat: cert.CmsContentDataFormat.BINARY,
+          outFormat: cert.CmsFormat.PEM,
+          isDetached: true
         };
         cmsGenerator.doFinal(content, optionsFinal).then(result => {
           console.info('testDoFinalByPromise doFinal result: success, result = %s', result);
@@ -21854,10 +21854,10 @@ function testDoFinalSync() {
           };
           // addCert设置为true时，第二次addSigner或者addCert增加相同的证书，会报错。
           let config: cert.CmsSignerConfig = {
-            mdName:'SHA256',
-            addCert:false,
-            addAttr:false,
-            addSmimeCapAttr:false
+            mdName: 'SHA256',
+            addCert: false,
+            addAttr: false,
+            addSmimeCapAttr: false
           };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testDoFinalSync addSigner result: success.');
@@ -21865,9 +21865,9 @@ function testDoFinalSync() {
           console.info('testDoFinalSync addCert result: success.');
           let content = new Uint8Array([1, 2, 3, 4]);
           let optionsFinal: cert.CmsGeneratorOptions = {
-            contentDataFormat : cert.CmsContentDataFormat.BINARY,
-            outFormat : cert.CmsFormat.DER,
-            isDetached : false
+            contentDataFormat: cert.CmsContentDataFormat.BINARY,
+            outFormat: cert.CmsFormat.DER,
+            isDetached: false
           };
           let output = cmsGenerator.doFinalSync(content, optionsFinal);
           console.info('testDoFinalSync doFinalSync result: success, output = %s.', output);
@@ -22079,24 +22079,24 @@ async function testGetEncryptedContentData() {
     let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_256_GCM;
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
-    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccX509Cert,
-      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
+    let eccCert: cert.CmsKeyAgreeRecipientInfo = {
+      cert: eccX509Cert,
+      digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
-    let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsaX509Cert
+    let rsaCert: cert.CmsKeyTransRecipientInfo = {
+      cert: rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
-      keyTransInfo : rsaCert,
-      keyAgreeInfo : eccCert
+      keyTransInfo: rsaCert,
+      keyAgreeInfo: eccCert
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
     let content = new Uint8Array([1, 2, 3, 4]);
     let optionsFinal: cert.CmsGeneratorOptions = {
-      contentDataFormat : cert.CmsContentDataFormat.BINARY,
-      outFormat : cert.CmsFormat.PEM,
-      isDetached : true
+      contentDataFormat: cert.CmsContentDataFormat.BINARY,
+      outFormat: cert.CmsFormat.PEM,
+      isDetached: true
     };
     let cms = await cmsGenerator.doFinal(content, optionsFinal);
     console.info(`doFinal result: success, cms = %s`, cms);
@@ -22274,7 +22274,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
   
 > **说明：**
 >
-> 支持PEM跟DER格式的CMS消息。string对应PEM格式；Uint8Array对应DER格式数据。
+> 支持PEM和DER格式的CMS消息。string对应PEM格式；Uint8Array对应DER格式数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -23144,7 +23144,7 @@ async function testCmsDecryptTest() {
     let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
-    console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
+    console.info('Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
   } catch (err) {
     let e: BusinessError = err as BusinessError;

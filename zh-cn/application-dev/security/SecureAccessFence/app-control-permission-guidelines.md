@@ -1,4 +1,4 @@
-# 查询与请求权限控制目标应用
+# 查询并申请控制目标应用的权限
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
@@ -28,8 +28,10 @@
 
 1. 导入模块。
 
-   ```typescript
-   import { abilityToolAccessCtrl, common } from '@kit.AbilityKit';
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_control_app_status.ets) -->
+   
+   ``` TypeScript
+   import { abilityToolAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
@@ -83,10 +85,36 @@
        console.error(`requestControlAppPermissionFromUser fail, code: ${err.code}, message: ${err.message}`);
      });
    ```
+5. 注册模拟点击结果回调（可选）。
 
-   > **说明：**
-   >
-   > - 24010000：入参错误。检查`appInfo`是否为空、`bundleName`是否合法、`context`是否有效。
-   > - 24010001：系统服务异常。可稍后重试。
-   > - 24010002：服务内部错误。可间隔重试。
-   > - 完整错误码请参考[安全访问围栏服务错误码](../../reference/apis-ability-kit/errorcode-abilityToolAccessCtrl.md)。
+   控制组件执行模拟点击后，如需获知每次点击的结果（成功/失败、是否被允许、原因等），可调用[registerControlComponentResultCallback()](../../reference/apis-ability-kit/js-apis-abilityToolAccessCtrl.md#abilitytoolaccessctrlregistercontrolcomponentresultcallback)注册回调。业务结束时需调用[unregisterControlComponentResultCallback()](../../reference/apis-ability-kit/js-apis-abilityToolAccessCtrl.md#abilitytoolaccessctrlunregistercontrolcomponentresultcallback)注销以释放资源。
+
+   ```typescript
+   let callback: abilityToolAccessCtrl.ResultCallback = (result: abilityToolAccessCtrl.ControlComponentClickResult) => {
+     console.info(`code: ${result.code}, bundleName: ${result.appInfo.bundleName}`);
+     console.info(`componentId: ${result.componentId}, isAllowed: ${result.isAllowed}, reason: ${result.reason}`);
+   };
+   try {
+     abilityToolAccessCtrl.registerControlComponentResultCallback(callback);
+   } catch (err) {
+     let error = err as BusinessError;
+     console.error(`register fail, code: ${error.code}, message: ${error.message}`);
+   }
+
+   // 业务结束时注销回调，释放资源。
+   try {
+     abilityToolAccessCtrl.unregisterControlComponentResultCallback();
+   } catch (err) {
+     let error = err as BusinessError;
+     console.error(`unregister fail, code: ${error.code}, message: ${error.message}`);
+   }
+   ```
+
+> **说明：**
+>
+> - 以上接口均需`ohos.permission.CONTROL_DEVICE`权限。
+> - 同一进程仅支持注册一个回调，重复注册会覆盖之前的回调。
+> - 24010000：入参错误。检查`appInfo`是否为空、`bundleName`是否合法、`context`是否有效、注册回调的`callback`是否有效。
+> - 24010001：系统服务异常。可稍后重试。
+> - 24010002：服务内部错误。可间隔重试。
+> - 完整错误码请参考[安全访问围栏服务错误码](../../reference/apis-ability-kit/errorcode-abilityToolAccessCtrl.md)。

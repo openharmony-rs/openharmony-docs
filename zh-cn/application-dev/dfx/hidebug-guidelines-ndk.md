@@ -376,7 +376,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
 > **注意：**
 >
-> 该功能仅支持ARM64架构，且仅可在debug版本应用中使用，需配合[hiprofiler](hiprofiler.md#async_type参数介绍)调优组件追踪完整的异步调用栈。
+> 该功能仅支持ARM64架构，且仅可在debug版本应用中使用，需配合[hiprofiler](hiprofiler.md#async_type参数介绍)调优组件并参考[步骤二运行工程](#步骤二运行工程)中使能配置参数才能追踪完整的异步调用栈。
 
 ### 步骤一：新增异步上下文管理接口示例代码
 
@@ -609,7 +609,13 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
 ### 步骤二：运行工程
 
-1. 启动hiprofiler采集任务，使能异步上下文追踪。
+1. 使能配置参数
+
+   ```shell
+   hdc shell param set hilog.debug.async_stack.enable_developer_stack true
+   ```
+
+2. 启动hiprofiler采集任务，使能异步上下文追踪。
 
    ```shell
    hdc shell
@@ -641,6 +647,6 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    CONFIG
    ```
 
-2. 点击DevEco Studio界面中的运行按钮，然后单击应用界面上的“testAsyncContext”按钮。
+3. 点击DevEco Studio界面中的运行按钮，然后单击应用界面上的“testAsyncContext”按钮。
 
-3. 在DevEco Studio底部切换到“Log”窗口，设置日志过滤条件为“testTag”，即可查看异步调用链日志。
+4. 在DevEco Studio底部切换到“Log”窗口，设置日志过滤条件为“testTag”，即可查看异步调用链日志。

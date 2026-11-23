@@ -1030,3 +1030,176 @@ try {
   console.error(`Failed to reboot. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## HibernateCallback
+
+休眠事件回调接口，用于接收设备进入休眠和退出休眠的事件通知。使用[power.registerHibernateCallback](#powerregisterhibernatecallback)订阅该回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+### onHibernate
+
+onHibernate(): Promise&lt;void&gt;
+
+当设备即将进入休眠时调用的回调。系统会等待该回调返回的Promise对象完成后，再继续设备的休眠流程。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+### onWakeup
+
+onWakeup(hibernateResult: boolean): Promise&lt;void&gt;
+
+当设备退出休眠时调用的回调。系统会等待该回调返回的Promise对象完成后，再继续设备的唤醒流程。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| hibernateResult | boolean | 是 | 表示休眠是否成功。true表示休眠成功；false表示休眠失败。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例：**
+
+```js
+let hibernateCallback: power.HibernateCallback = {
+  onHibernate: (): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device is entering hibernation.');
+      resolve();
+    });
+  },
+  onWakeup: (hibernateResult: boolean): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device wakeup, hibernateResult: ' + hibernateResult);
+      resolve();
+    });
+  }
+};
+```
+
+## power.registerHibernateCallback
+
+registerHibernateCallback(callback: HibernateCallback): void
+
+订阅设备进入或退出休眠的回调提醒。使用callback异步回调。调用此方法订阅回调后，可在不再需要时调用[power.unregisterHibernateCallback](#powerunregisterhibernatecallback)取消订阅，释放系统资源。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [HibernateCallback](#hibernatecallback) | 是 | 休眠事件回调对象，需同时实现onHibernate和onWakeup方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 4900400 | Parameter error. Possible causes: <br>The callback object is missing onHibernate or onWakeup function members. |
+
+**示例：**
+
+```js
+let hibernateCallback: power.HibernateCallback = {
+  onHibernate: (): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device is entering hibernation.');
+      resolve();
+    });
+  },
+  onWakeup: (hibernateResult: boolean): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device wakeup, hibernateResult: ' + hibernateResult);
+      resolve();
+    });
+  }
+};
+
+try {
+  power.registerHibernateCallback(hibernateCallback);
+  console.info('register hibernate callback success');
+} catch (err) {
+  console.error(`Failed to register hibernate callback. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.unregisterHibernateCallback
+
+unregisterHibernateCallback(): void
+
+取消订阅设备进入或退出休眠的回调提醒。此方法与[power.registerHibernateCallback](#powerregisterhibernatecallback)配对使用，必须在先调用registerHibernateCallback订阅回调后，再调用此方法取消订阅。取消订阅后，所有已注册的休眠回调都会被移除。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```js
+try {
+  power.unregisterHibernateCallback();
+  console.info('unregister hibernate callback success');
+} catch (err) {
+  console.error(`Failed to unregister hibernate callback. Code: ${err.code}, message: ${err.message}`);
+}
+```

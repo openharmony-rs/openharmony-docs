@@ -9,7 +9,7 @@ status: active
 # ArkGuard字节码混淆原理及功能
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
+<!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb Native侧的PostWebMessage能力，在C++环境与前端页面间直接收发消息，避免ArkTS环境冗余切换与UI线程阻塞。"
+keywords: [ArkWeb NDK, Native PostWebMessage, OH_ArkWeb_GetNativeAPI, ArkWeb_WebMessagePortAPI, createWebMessagePorts, postWebMessage, setMessageEventHandler, 应用与前端页面通信]
+doctype: guide
+status: active
+---
+
 # 建立应用侧与前端页面数据通道(C/C++)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

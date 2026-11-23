@@ -52,6 +52,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -80,6 +81,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -123,6 +125,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -158,6 +161,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

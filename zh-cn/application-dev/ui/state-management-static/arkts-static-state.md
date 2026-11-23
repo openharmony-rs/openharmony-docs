@@ -1,6 +1,13 @@
 # \@State装饰器：组件内状态
 
-被状态变量装饰器装饰的变量称为状态变量。状态变量的修改会引起关联UI组件的刷新。@State是最基础的状态变量装饰器，用于将自定义组件内的普通变量转变为状态变量，管理组件内UI刷新。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+被状态变量装饰器装饰的变量称为状态变量。状态变量的修改会引起关联UI组件的刷新。[\@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state-static.md#state-1)是最基础的状态变量装饰器，用于将自定义组件内的普通变量转变为状态变量，管理组件内UI刷新。
 
 ## 概述
 

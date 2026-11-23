@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -50,8 +50,8 @@ constructor(roundRect: RoundRect)
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let rect: common2D.Rect = {left: 100.0, top: 100.0, right: 500.0, bottom: 300.0};
-let roundRect = new drawing.RoundRect(rect, 50.0, 50.0);
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
+let roundRect = new drawing.RoundRect(rect, 50, 50);
 let roundRect2 = new drawing.RoundRect(roundRect);
 ```
 
@@ -90,8 +90,8 @@ ArkTS-Sta: constructor(rect: common2D.Rect, xRadii: double, yRadii: double)
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let rect: common2D.Rect = { left: 100.0, top: 100.0, right: 500.0, bottom: 300.0 };
-let roundRect = new drawing.RoundRect(rect, 50.0, 50.0);
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
+let roundRect = new drawing.RoundRect(rect, 50, 50);
 ```
 
 ## setCorner<sup>12+</sup>
@@ -129,8 +129,8 @@ ArkTS-Sta: setCorner(pos: CornerPos, x: double, y: double): void
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
-let roundRect: drawing.RoundRect = new drawing.RoundRect({ left: 0.0, top: 0.0, right: 300.0, bottom: 300.0 }, 50.0, 50.0);
-roundRect.setCorner(drawing.CornerPos.TOP_LEFT_POS, 150.0, 150.0);
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+roundRect.setCorner(drawing.CornerPos.TOP_LEFT_POS, 150, 150);
 ```
 
 ## getCorner<sup>12+</sup>
@@ -157,7 +157,7 @@ ArkTS-Sta: getCorner(pos: CornerPos): common2D.Point | undefined
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [common2D.Point](js-apis-graphics-common2D.md#point12)<br/>ArkTS-Sta: [common2D.Point](js-apis-graphics-common2D.md#point12) \| undefined | 返回一个点，其横坐标表示圆角x轴方向上的半径，纵坐标表示y轴方向上的半径。获取失败时返回undefined。 |
+| ArkTS-Dyn: [common2D.Point](js-apis-graphics-common2D.md#point12)<br/>ArkTS-Sta: [common2D.Point](js-apis-graphics-common2D.md#point12) \| undefined  | 返回一个点，其横坐标表示圆角x轴方向上的半径，纵坐标表示y轴方向上的半径。获取失败时返回undefined。 |
 
 **错误码：**
 
@@ -209,8 +209,8 @@ ArkTS-Sta: offset(dx: double, dy: double): void
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| dx | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示x轴方向上的偏移量。正数表示向x轴正方向平移，负数表示向x轴负方向平移，该参数为浮点数。                 |
-| dy | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示y轴方向上的偏移量。正数表示向y轴正方向平移，负数表示向y轴负方向平移，该参数为浮点数。                 |
+| dx | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示x轴方向上的偏移量。正数表示向x轴正方向平移，负数表示向x轴负方向平移，该参数为浮点数。单位为物理像素px。                 |
+| dy | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示y轴方向上的偏移量。正数表示向y轴正方向平移，负数表示向y轴负方向平移，该参数为浮点数。单位为物理像素px。                 |
 
 **错误码：**
 
@@ -225,6 +225,6 @@ ArkTS-Sta: offset(dx: double, dy: double): void
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
-let roundRect : drawing.RoundRect = new drawing.RoundRect({ left: 0, top: 0, right: 300, bottom: 300 }, 50, 50);
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
 roundRect.offset(100, 100);
 ```

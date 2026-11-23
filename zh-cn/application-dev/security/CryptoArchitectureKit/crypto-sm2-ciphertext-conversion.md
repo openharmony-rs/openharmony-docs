@@ -40,6 +40,7 @@ function testGenCipherTextBySpec() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -78,6 +79,7 @@ function testGetCipherTextSpec() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "详细说明显式Want与隐式Want的匹配原理，以及action、entities、uri、type和linkFeature等参数的匹配规则。"
+keywords: [显式Want, 隐式Want, 匹配规则, action, entities, uri, type, linkFeature]
+doctype: guide
+status: active
+---
 # 显式Want与隐式Want匹配规则
 
 <!--Kit: Ability Kit-->

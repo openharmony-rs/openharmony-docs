@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何通过指定bundleName和abilityName构造显式Want，在应用内启动目标UIAbility组件完成特定任务。"
+keywords: [显式Want, UIAbility, 应用内启动, abilityName, bundleName, 组件启动]
+doctype: guide
+status: active
+---
 # 使用显式Want启动应用组件
 
 <!--Kit: Ability Kit-->

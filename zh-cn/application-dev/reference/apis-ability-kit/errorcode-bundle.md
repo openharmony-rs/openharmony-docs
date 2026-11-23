@@ -1044,13 +1044,15 @@ Failed to install the HAP because this application is prohibited from being inst
 
 1. 当前使用的设备是洗白机。
 2. 指定的应用不支持在指定的用户下安装。
-3. 指定用户存在恢复处置规则，不允许直接恢复应用。
+3. 在[BOPD](../../quick-start/application-package-glossary.md#bopd-boot-on-pseudo-data)模式下安装三方应用。
+4. 指定用户存在恢复处置规则，不允许直接恢复应用。
 
 **处理步骤**
 
 1. 确认使用的设备是否是洗白机。
 2. 将指定的应用安装在其他用户下。
-3. 检查该用户下是否存在恢复处置规则；若存在，则由设置方对规则进行处理。
+3. 退出BOPD模式或重启设备重新安装三方应用。
+4. 检查该用户下是否存在恢复处置规则；若存在，则由设置方对规则进行处理。
 
 ## 17700059 指定的开发者ID不存在
 
@@ -2083,6 +2085,24 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 **处理步骤**
 
 请检查shortcutInfo列表中，是否有不同的bundleName和appIndex组合。
+
+## 18100002 更新的快捷方式不存在
+
+**错误信息**
+
+The specified shortcut to be updated is not found.
+
+**错误描述**
+
+调用[shortcutManager.updateDesktopShortcutInfo](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanagerupdatedesktopshortcutinfo)接口更新快捷方式时，指定的快捷方式不存在。
+
+**可能原因**
+
+传入的shortcutInfo在设备上不存在。
+
+**处理步骤**
+
+检查传入的shortcutInfo是否正确。
 
 ## 18400001 调用方未配置处置规则
 **错误信息**

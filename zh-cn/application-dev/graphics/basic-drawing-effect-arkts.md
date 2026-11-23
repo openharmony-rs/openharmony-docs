@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "在画布上配置画刷和画笔，设置填充与描边颜色、抗锯齿、线宽、线帽及转角样式，定制图形外观。"
+keywords: [画刷, 画笔, 填充颜色, 描边颜色, 抗锯齿, 线宽, 线帽样式, 转角样式]
+doctype: guide
+status: active
+---
+
 # 基础绘制效果（ArkTS）
 
 <!--Kit: ArkGraphics 2D-->

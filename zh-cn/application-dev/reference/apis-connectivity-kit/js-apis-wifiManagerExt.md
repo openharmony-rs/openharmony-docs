@@ -23,7 +23,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 enableHotspot(): void
 
-启动Wi-Fi热点。
+启用Wi-Fi热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -34,7 +34,7 @@ enableHotspot(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -58,7 +58,7 @@ enableHotspot(): void
 
 disableHotspot(): void
 
-去使能Wi-Fi热点。
+禁用Wi-Fi热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -69,7 +69,7 @@ disableHotspot(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -107,7 +107,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -145,7 +145,7 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -185,7 +185,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -229,7 +229,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -244,17 +244,12 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
   wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
       if (err) {
-          console.error("getPowerMode failed");
+          console.error("get power mode info failed");
           return;
       }
       console.info("get power mode info: " + JSON.stringify(data));
   });
 
-  wifiManagerExt.getPowerMode().then(data => {
-      console.info("get power mode info: " + JSON.stringify(data));
-  }).catch((error:number) => {
-      console.error("get power mode error");
-  });
 ```
 
 ## wifiManagerExt.setPowerMode<sup>(deprecated)</sup>
@@ -278,7 +273,7 @@ setPowerMode(mode: PowerMode) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |

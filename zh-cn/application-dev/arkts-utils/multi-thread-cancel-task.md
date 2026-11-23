@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍多线程取消TaskPool任务的方法：Task对象不支持跨线程传递，自API version 18起可将任务ID存入Sendable对象，实现子线程中通过任务ID取消任务，并提供完整示例。"
 keywords: [取消任务, TaskPool, 任务ID, Sendable对象, 子线程取消, 跨线程传递, 多线程]
 doctype: guide
@@ -21,7 +21,7 @@ status: active
    <!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/Sendable.ets) --> 
    
    ``` TypeScript
-   // sendable.ets
+   // Sendable.ets
    @Sendable
    export class SendableTest {
      // 存储任务ID
@@ -87,6 +87,8 @@ status: active
                taskpool.execute(cancel, send).then(() => {
                  this.returnMessage = 'Taskpool canceled!';
                  this.promptAction.showToast({ message: this.returnMessage });
+               }).catch((e: BusinessError) => {
+                 console.error(`taskpool execute cancel error, code: ${e.code}, message is: ${e.message}`);
                });
              })
            // ...

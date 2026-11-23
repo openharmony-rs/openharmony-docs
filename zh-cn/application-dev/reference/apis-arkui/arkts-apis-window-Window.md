@@ -2026,6 +2026,60 @@ try {
 }
 ```
 
+## getAvoidAreaInsets
+
+getAvoidAreaInsets(): AvoidAreaInsets
+
+获取当前窗口的避让区边衬。
+
+若需要获取指定类型的避让区（如挖孔区域），请使用[getWindowAvoidArea()](#getwindowavoidarea9)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---------------------------------- | ----------------- |
+| [AvoidAreaInsets](arkts-apis-window-i.md#avoidareainsets) | 避让区边衬。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+} catch (exception) {
+  console.error(`Failed to obtain the avoid area insets. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to obtain the avoid area insets. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## setSystemAvoidAreaEnabled<sup>18+</sup>
 
 setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
@@ -5169,6 +5223,148 @@ try {
 } catch (exception) {
   let error = exception as BusinessError;
   console.error(`Failed to enable or disable the listener for system avoid area changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## onAvoidAreaInsetsChange
+
+onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
+
+订阅窗口避让区边衬的变化。
+
+当窗口的避让区发生变化时，会触发回调。
+
+在同一次变化中，如果多个避让区发生变化，相关的避让区信息更新后，只会触发一次回调。
+
+若需要按避让区域类型逐类监听并区分来源（如状态栏、挖孔、手势区等），请使用[on('avoidAreaChange')](#onavoidareachange9)。
+
+> **说明：**
+>
+> - 可以在回调中使用[getAvoidAreaInsets()](#getavoidareainsets)来获取窗口最新的避让区边衬，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区。
+>
+> - [TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区变化不会触发回调。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                       |
+| -------- | ------------------- | ---- | -------------------------- |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const callback = () => {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+  console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
+  ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
+  ', bottom: ' + avoidAreaInsets.bottom);
+}
+try {
+  windowClass.onAvoidAreaInsetsChange(callback);
+} catch (exception) {
+  console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+const callback = () => {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+  console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
+  ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
+  ', bottom: ' + avoidAreaInsets.bottom);
+}
+try {
+  windowClass.onAvoidAreaInsetsChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## offAvoidAreaInsetsChange
+
+offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
+
+取消订阅窗口避让区边衬的变化。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口所有避让区边衬变化的监听。默认值：undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const callback = () => {
+  // ...
+}
+try {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
+  windowClass.onAvoidAreaInsetsChange(callback);
+
+  windowClass.offAvoidAreaInsetsChange(callback);
+  // 如果通过onAvoidAreaInsetsChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offAvoidAreaInsetsChange();
+} catch (exception) {
+  console.error(`Failed to enable or disable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+const callback = () => {
+  // ...
+}
+try {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
+  windowClass.onAvoidAreaInsetsChange(callback);
+
+  windowClass.offAvoidAreaInsetsChange(callback);
+  // 如果通过onAvoidAreaInsetsChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offAvoidAreaInsetsChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for avoid area insets changes. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 

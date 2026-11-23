@@ -101,6 +101,15 @@ status: active
   }
   ```
 
+* 从API版本26.1.0开始，支持自动将`@Monitor`、`@SyncMonitor`装饰器中以下监听路径涉及的属性名加入白名单，这些属性名不会被混淆，无需手动配置：
+
+  * 普通属性和多层属性：例如，`@Monitor('person.name')`会保留`person`和`name`。
+  * 数组下标：例如，`@Monitor('items.0.name')`会保留`items`和`name`，数字`0`作为数组下标处理，不加入属性白名单。
+  * 路径末尾的通配符：从API版本26.0.0开始，`@Monitor`支持通过配置项开启通配符监听。例如，`@Monitor({ enableWildcard: true }, 'person.address.*')`会保留`person`和`address`，不会因此保留`address`对象的全部属性。从API版本23开始，`@SyncMonitor`支持直接使用此类通配符路径，例如`@SyncMonitor('person.address.*')`。上述路径属性名的自动加白能力均从API版本26.1.0开始支持。
+  * 字面量表达式：支持纯字符串拼接，例如`'person' + '.name'`；支持仅包含字符串、数字、布尔值或`null`字面量替换项的模板字符串，例如`` `items.${0}.name` ``。
+
+  变量引用（包括`const`常量）、枚举、函数调用等表达式不支持自动收集，需要使用[-keep-property-name](./source-obfuscation-keep-options.md#-keep-property-name)保留实际监听路径中的属性名。仅保留用于存放监听路径的变量名，不能保护路径中的属性名。通配符仅支持路径末尾的独立`*`，不支持`person.*.name`或`person.na*`等写法。
+
 * 被保留选项[-keep-property-name](./source-obfuscation-keep-options.md#-keep-property-name)指定的属性名不会被混淆。
 * SDK API列表中的属性名不会被混淆。SDK API列表是构建时从SDK中自动提取出来的一个名称列表。其缓存文件为systemApiCache.json，路径为工程目录/build/default/cache/{...}/release/obfuscation。
 * 字符串字面量属性名不会被混淆，并且与其同名的属性名也不会被混淆。例如，下面例子中的`exampleName`和`exampleAge`不会被混淆。
@@ -322,7 +331,7 @@ status: active
 
 ## -remove-comments
 
-删除编译生成的声明文件中的JsDoc注释，效果如下：
+删除编译生成的声明文件中的JSDoc注释，效果如下：
 
 混淆前：
   <!-- @[optionExample_removeComments](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
@@ -339,7 +348,7 @@ status: active
   declare let count: number;
   ```
 
-使用[`-keep-comments`](./source-obfuscation-keep-options.md#-keep-comments)配置保留声明文件中的JsDoc注释。
+使用[`-keep-comments`](./source-obfuscation-keep-options.md#-keep-comments)配置保留声明文件中的JSDoc注释。
 
 >**说明**：
 >
@@ -608,7 +617,7 @@ status: active
 
 `// @KeepAsConsumer`：用来标记需要保留的名称，通常写在代码上一行，表示该名称在编译时不会被混淆。在HAR/HSP模块中，被@KeepAsConsumer标记的名称还会生成在obfuscation.txt中；在HAP模块中，@KeepAsConsumer和@KeepSymbol的效果相同。
 
-> **说明**
+> **说明**：
 >
 > 以上两种标记均为注释，不可去除"//"。
 
@@ -822,7 +831,7 @@ enum MyEnum {
 
 - 同时开启属性混淆（-enable-property-obfuscation）和字符串属性混淆（-enable-string-property-obfuscation）时，配置保留对象字面量（-keep-object-props）选项后，对象字面量中的属性名称和字符串属性名称会被收集到白名单中，不会被混淆。  
 
->**说明**
+>**说明**：
 >
 > 在开启属性混淆或者同时开启属性混淆和字符串属性混淆的情况下，-keep-object-props选项才会生效，否则该选项无效。
 

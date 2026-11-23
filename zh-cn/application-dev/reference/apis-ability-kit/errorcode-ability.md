@@ -3193,3 +3193,111 @@ Task not found.
 1. 确认传入的taskId对应的任务已启动且尚未结束。
 2. 确认调用方为创建该任务的应用。
 <!--DelEnd-->
+
+## 16000211 指定的LaunchService不存在
+
+**错误信息**
+
+The specified service is not found.
+
+**错误描述**
+
+指定的LaunchService不存在。
+
+**可能原因**
+
+调用LaunchService管理接口时，传入的服务描述符未对应到目标服务。
+
+**处理步骤**
+
+检查服务描述符中的bundleName、moduleName、serviceName、userId和appIndex，确保目标应用已安装且声明了对应的LaunchService。
+
+## 16000212 指定的LaunchService已注册
+
+**错误信息**
+
+The specified service is already registered.
+
+**错误描述**
+
+指定的LaunchService已注册。
+
+**可能原因**
+
+调用[register](js-apis-app-ability-launchServiceManager.md#launchservicemanagerregister)接口时，指定的LaunchService已经注册。
+
+**处理步骤**
+
+调用[getInformation](js-apis-app-ability-launchServiceManager.md#launchservicemanagergetinformation)接口查询服务状态，避免重复注册。
+
+## 16000213 指定的LaunchService已禁用
+
+**错误信息**
+
+The specified service is disabled.
+
+**错误描述**
+
+指定的LaunchService已禁用。
+
+**可能原因**
+
+调用[start](js-apis-app-ability-launchServiceManager.md#launchservicemanagerstart)接口时，指定的LaunchService处于禁用状态。
+
+**处理步骤**
+
+启用目标LaunchService后，重新调用启动接口。
+
+## 16000214 指定的LaunchService未运行
+
+**错误信息**
+
+The specified service is not running.
+
+**错误描述**
+
+指定的LaunchService未运行。
+
+**可能原因**
+
+调用[stop](js-apis-app-ability-launchServiceManager.md#launchservicemanagerstop)接口时，指定的LaunchService进程未运行。
+
+**处理步骤**
+
+调用[getInformation](js-apis-app-ability-launchServiceManager.md#launchservicemanagergetinformation)接口查询服务信息，确认进程正在运行后再停止，避免重复停止。
+
+## 16000215 授权请求被拒绝
+
+**错误信息**
+
+The approval request was rejected.
+
+**错误描述**
+
+授权请求被拒绝。
+
+**可能原因**
+
+调用setLaunchServicesEnabled接口时，授权请求未通过。
+
+**处理步骤**
+
+确认已获得用户授权，并在用户同意后重新发起操作；传入token时，确保使用有效的授权令牌。
+
+## 16000216 指定的观察者ID无效
+
+**错误信息**
+
+The specified id is invalid.
+
+**错误描述**
+
+指定的观察者ID无效。
+
+**可能原因**
+
+调用offLaunchServiceObserver接口时，传入的观察者ID无效。
+
+**处理步骤**
+
+使用onLaunchServiceObserver接口返回的有效观察者ID注销监听，避免使用未注册或已注销的ID。

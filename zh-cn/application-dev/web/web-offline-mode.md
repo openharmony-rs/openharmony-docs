@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍基于NodeController的离线Web组件创建与挂载方法，涵盖预启动渲染进程、预渲染Web页面等优化手段、组件复用与释放策略及白屏排查。"
+keywords: [离线Web组件, 预渲染Web页面]
+doctype: guide
+status: active
+---
+
 # 使用离线Web组件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

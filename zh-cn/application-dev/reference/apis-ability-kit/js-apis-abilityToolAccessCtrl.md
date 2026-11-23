@@ -7,7 +7,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-安全访问围栏服务模块提供工具（CLI命令）的执行认证凭据获取能力，以及应用控制权限的查询与请求能力。通过本模块，应用可以获取CLI工具及其子命令的执行认证ticket。如果用户尚未授权CLI工具所需的权限，接口将返回需要授权的权限列表及其状态；如果用户已授权所有所需权限，接口将直接返回已认证的ticket。此外，应用还可以查询指定应用是否允许被外部工具控制，或向用户请求对指定应用的控制权限。
+安全访问围栏服务模块提供工具（CLI命令）的执行认证凭据获取能力，以及应用控制权限的查询与请求能力。通过本模块，可获取CLI工具及其子命令的执行认证ticket。如果用户尚未授权CLI工具所需的权限，接口将返回需要授权的权限列表及其状态；如果用户已授权所有所需权限，接口将直接返回已认证的ticket。此外，本模块还可查询指定应用是否允许被外部工具控制，或向用户请求对指定应用的控制权限，并注册回调获取控制组件每次模拟点击的结果。
 
 当需要获取CLI工具执行认证ticket，或查询、请求应用控制权限时，使用本模块接口。
 
@@ -213,6 +213,93 @@ abilityToolAccessCtrl.requestControlAppPermissionFromUser(context, appInfo).then
 });
 ```
 
+## abilityToolAccessCtrl.registerControlComponentResultCallback
+
+registerControlComponentResultCallback(callback: ResultCallback): void
+
+获取控制组件模拟点击结果回调。注册后，可获取控制组件每次模拟点击的结果。使用Callback异步回调。
+
+同一进程内仅支持注册一个回调，重复注册将覆盖先前注册的回调。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [ResultCallback](#resultcallback) | 是 | 用于接收模拟点击操作结果的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[安全访问围栏服务错误码](errorcode-abilityToolAccessCtrl.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 24010000 | Invalid parameter. callback is invalid. |
+| 24010001 | Service is abnormal. Possible cause: IPC failed. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
+
+**示例：**
+
+```ts
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback: abilityToolAccessCtrl.ResultCallback = (result: abilityToolAccessCtrl.ControlComponentClickResult) => {
+  console.info(`code: ${result.code}, bundleName: ${result.appInfo.bundleName}`);
+  console.info(`componentId: ${result.componentId}, isAllowed: ${result.isAllowed}, reason: ${result.reason}`);
+};
+try {
+  abilityToolAccessCtrl.registerControlComponentResultCallback(callback);
+  console.info('registerControlComponentResultCallback success');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`registerControlComponentResultCallback fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## abilityToolAccessCtrl.unregisterControlComponentResultCallback
+
+unregisterControlComponentResultCallback(): void
+
+注销控制组件模拟点击结果回调。用于在业务结束时释放回调资源。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
+
+**系统能力：** SystemCapability.Security.Asset
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[安全访问围栏服务错误码](errorcode-abilityToolAccessCtrl.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 24010001 | Service is abnormal. Possible cause: IPC failed. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
+
+**示例：**
+
+```ts
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityToolAccessCtrl.unregisterControlComponentResultCallback();
+  console.info('unregisterControlComponentResultCallback success');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`unregisterControlComponentResultCallback fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## CliCmdInfo
 
 表示CLI（Command Line Interface，命令行界面）命令信息。
@@ -302,3 +389,35 @@ abilityToolAccessCtrl.requestControlAppPermissionFromUser(context, appInfo).then
 | -------- | -------- | -------- | -------- | -------- |
 | appInfo | [AppInfo](#appinfo) | 否 | 否 | 应用信息。 |
 | status | [ControlAppStatus](#controlappstatus) | 否 | 否 | 控制权限状态。 |
+
+## ResultCallback
+
+type ResultCallback = (result: ControlComponentClickResult) => void
+
+用于接收每次模拟点击操作结果的回调函数类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| result | [ControlComponentClickResult](#controlcomponentclickresult) | 是 | 用于回调业务方模拟点击结果。 |
+
+## ControlComponentClickResult
+
+模拟点击操作结果。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| code | number | 否 | 否 | 模拟点击操作结果码。0表示成功，其他表示失败。 |
+| appInfo | [AppInfo](#appinfo) | 否 | 否 | 模拟点击的目标应用信息。 |
+| componentId | string | 否 | 否 | 被模拟点击的组件ID。 |
+| isAllowed | boolean | 否 | 否 | 模拟点击是否被允许。true表示允许，false表示被拒绝。 |
+| reason | string | 否 | 否 | 模拟点击操作结果的原因描述。 |

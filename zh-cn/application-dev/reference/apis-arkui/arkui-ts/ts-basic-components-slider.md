@@ -320,7 +320,7 @@ tip的绘制区域为Slider自身节点的overlay。
 | 参数名                | 类型                                   | 必填 | 说明                                       |
 | --------------------- | -------------------------------------- | ---- | ------------------------------------------ |
 | value                 | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined                                | 是   | 滑动时是否显示气泡提示。取值为undefined时，按默认值处理。<br/>true：显示气泡；false：不显示气泡。<br/>默认值：false |
-| content<sup>10+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否   | 气泡提示的文本内容，默认显示当前百分比。取值为undefined时，按默认处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| content<sup>10+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否   | 气泡提示的文本内容，默认显示当前百分比。取值为undefined时，按默认处理。   |
 
 ### trackThickness<sup>8+</sup>
 

@@ -1,7 +1,7 @@
 # OH_Drawing_Filter
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->

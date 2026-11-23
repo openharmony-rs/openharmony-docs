@@ -39,6 +39,7 @@
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -90,9 +91,12 @@
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`AES Wrap failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`AES Wrap failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -106,6 +110,7 @@
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -157,9 +162,12 @@
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`AES Wrap failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`AES Wrap failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

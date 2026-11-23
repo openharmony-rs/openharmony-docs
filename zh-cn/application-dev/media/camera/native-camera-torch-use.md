@@ -41,8 +41,10 @@
 
 3. 通过[OH_CameraManager_IsTorchSupported()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_istorchsupported)方法，检测当前设备是否支持手电筒。
 
-   ```c++
-   bool IsTorchSupported(Camera_Manager* cameraManager)
+   <!-- @[is_torch_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   bool NDKCamera::IsTorchSupported(Camera_Manager* cameraManager)
    {
        // 判断设备是否支持手电筒模式。
        bool isTorchSupported = false;
@@ -61,33 +63,35 @@
        }
        return isTorchSupported;
    }
-
    ```
 
 4. 通过[OH_CameraManager_IsTorchSupportedByTorchMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_istorchsupportedbytorchmode)方法，检测当前设备是否支持指定的手电筒模式。
 
-   ```c++
-   bool IsTorchSupportedByTorchMode(Camera_Manager* cameraManager, Camera_TorchMode torchMode)
+   <!-- @[is_torch_mode_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   bool NDKCamera::IsTorchSupportedByTorchMode(Camera_Manager* cameraManager, Camera_TorchMode torchMode)
    {
        bool torchModeSupported = false;
        Camera_ErrorCode ret = OH_CameraManager_IsTorchSupportedByTorchMode(cameraManager, torchMode, &torchModeSupported);
        if (ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_IsTorchSupportedByTorchMode failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_IsTorchSupportedByTorchMode failed.");
        }
        if (torchModeSupported) {
-            OH_LOG_INFO(LOG_APP, "IsTorchSupportedByTorchMode success.");
+           OH_LOG_INFO(LOG_APP, "IsTorchSupportedByTorchMode success.");
        } else {
-            OH_LOG_ERROR(LOG_APP, "IsTorchSupportedByTorchMode failed. %{public}d ", ret);
+           OH_LOG_ERROR(LOG_APP, "IsTorchSupportedByTorchMode failed. %{public}d ", ret);
        }
        return torchModeSupported;
    }
-
    ```
 
 5. 通过[OH_CameraManager_SetTorchMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_settorchmode)方法，设置当前设备的手电筒模式。
 
-   ```c++
-   Camera_ErrorCode SetTorchMode(Camera_Manager* cameraManager, Camera_TorchMode torchMode)
+   <!-- @[set_torch_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::SetTorchMode(Camera_Manager* cameraManager, Camera_TorchMode torchMode)
    {
        // 在torchMode支持的情况下进行设置手电筒模式。
        Camera_ErrorCode ret = OH_CameraManager_SetTorchMode(cameraManager, torchMode);
@@ -107,17 +111,22 @@
 
    注册torchStatus事件，回调会返回监听结果，callback返回Camera_TorchStatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[Camera_TorchStatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-torchstatusinfo.md)。
 
-   ```c++
-   void TorchStatusCallback(Camera_Manager *cameraManager, Camera_TorchStatusInfo* torchStatus)
+   <!-- @[torch_status_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   void TorchStatusCallback(Camera_Manager *cameraManager, Camera_TorchStatusInfo *torchStatus)
    {
-      OH_LOG_INFO(LOG_APP, "TorchStatusCallback is called.");
+       OH_LOG_INFO(LOG_APP, "TorchStatusCallback is called! %{public}d", torchStatus->isTorchActive);
    }
-   Camera_ErrorCode RegisterTorchStatusCallback(Camera_Manager *cameraManager)
+   
+   Camera_ErrorCode NDKCamera::RegisterTorchStatusCallback(void)
    {
-       Camera_ErrorCode ret = OH_CameraManager_RegisterTorchStatusCallback(cameraManager, TorchStatusCallback);
+       OH_LOG_INFO(LOG_APP, "NDKCamera::RegisterTorchStatusCallback start!");
+       Camera_ErrorCode ret = OH_CameraManager_RegisterTorchStatusCallback(cameraManager_, TorchStatusCallback);
        if (ret != CAMERA_OK) {
-          OH_LOG_ERROR(LOG_APP, "OH_CameraManager_RegisterTorchStatusCallback failed.");
+           OH_LOG_INFO(LOG_APP, "NDKCamera::RegisterTorchStatusCallback failed.");
        }
+       OH_LOG_INFO(LOG_APP, "NDKCamera::RegisterTorchStatusCallback return with ret code: %{public}d!", ret_);
        return ret;
    }
    ```

@@ -7,6 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 - [ArkWeb简介](web-component-overview.md)
+- [ArkWeb Kit指南配套示例代码](arkweb-kit-samples.md)
 - [ArkWeb进程](web-component-process.md)
 - [Web组件的生命周期](web-event-sequence.md)
 - 设置基本属性和事件<!--web-set-attributes-events-->

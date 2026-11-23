@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -29,7 +29,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## createDashPathEffect<sup>12+</sup>
 
-ArkTS-Dyn: static createDashPathEffect(intervals:  Array\<number>, phase: number): PathEffect
+ArkTS-Dyn: static createDashPathEffect(intervals: Array\<number>, phase: number): PathEffect
 
 ArkTS-Sta: static createDashPathEffect(intervals: Array\<double>, phase: double): PathEffect | undefined
 
@@ -110,7 +110,7 @@ ArkTS-Sta: static createPathDashEffect(path: Path, advance: double, phase: doubl
 | 参数名     | 类型           | 必填    | 说明                                               |
 | ---------- | ------------- | ------- | -------------------------------------------------- |
 | path  | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 通过该路径生成一个图形，用来填充每个虚线段。|
-| advance | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 虚线段的步长，取值范围>0，该参数为浮点数，否则会抛错误码。单位为物理像素px。 |
+| advance | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 虚线段的步长，取值范围>0，否则会抛错误码。单位为物理像素px。 |
 | phase | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 表示虚线段内图形在虚线步长范围内的偏移量，该参数为浮点数，效果为先对偏移量取绝对值，然后对步长取模。单位为物理像素px。 |
 | style | [PathDashStyle](arkts-apis-graphics-drawing-e.md#pathdashstyle18) | 是 | 指定虚线效果的样式，决定虚线段图形在路径上的变换方式。 |
 
@@ -118,7 +118,7 @@ ArkTS-Sta: static createPathDashEffect(path: Path, advance: double, phase: doubl
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的虚线路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -230,7 +230,7 @@ ArkTS-Sta: static createSumPathEffect(firstPathEffect: PathEffect, secondPathEff
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的叠加路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -293,7 +293,7 @@ ArkTS-Sta: static createCornerPathEffect(radius: double): PathEffect | undefined
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的圆角路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -351,13 +351,13 @@ ArkTS-Sta: static createDiscretePathEffect(segLength: double, dev: double, seedA
 | ---------- | ------------- | ------- | -------------------------------------------------- |
 | segLength  | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 路径中每进行一次打散操作的长度，该参数为浮点数，传入负数或0时无效果。单位为物理像素px。 |
 | dev        | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 绘制时每个离散线段端点的最大移动偏离量，该偏离量为浮点数。单位为物理像素px。 |
-| seedAssist | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 否      | ArkTS-Dyn: 生成效果伪随机种子辅助变量。当seedAssist传入undefined时，该方法将抛错误码。不传该参数时，默认值为0，该参数为32位无符号整数。<br/>ArkTS-Sta: 生成效果伪随机种子辅助变量。当不传该参数，或者seedAssist传入undefined时，默认值为0，该参数为32位无符号整数。 |
+| seedAssist | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 否      | ArkTS-Dyn: 用于生成离散效果的伪随机种子，影响路径打散的随机分布模式。当需要可复现的离散效果时传入指定种子值；当不需要特定随机分布模式时可省略此参数，省略时默认值为0。该参数为32位无符号整数。超出范围时，该参数值按32位无符号整数溢出回绕规则处理。<br/>ArkTS-Sta: 生成效果伪随机种子辅助变量。当不传该参数，或者seedAssist传入undefined时，默认值为0，该参数为32位无符号整数。 |
 
 **返回值：**
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的离散路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -398,7 +398,7 @@ ArkTS-Sta: static createComposePathEffect(outer: PathEffect, inner: PathEffect):
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的组合路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **示例：**
 

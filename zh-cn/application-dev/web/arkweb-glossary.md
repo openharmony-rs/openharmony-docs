@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "ArkWeb术语表，按字母顺序汇总Web开发中的常用概念与中英文对照，涵盖渲染模式、同层渲染、安全区域、手势、预渲染等术语定义，便于开发者开发与排查问题时查阅。"
+keywords: [ArkWeb, 术语表, 同层渲染, 渲染模式, 安全区域, 智能分词, 预渲染, UserAgent, 白屏]
+doctype: glossary
+status: active
+---
+
 # ArkWeb术语
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

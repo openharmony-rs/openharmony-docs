@@ -44,6 +44,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
@@ -64,21 +65,28 @@
   }
   
   async function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    // 先使用 Md 计算 SHA1 摘要（20字节）
-    let md = cryptoFramework.createMd('SHA1');
-    await md.update(messageData);
-    let digestBlob = await md.digest();
-    let keyGenAlg = 'ECC224';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
+      // 先使用 Md 计算 SHA1 摘要（20字节）
+      let md = cryptoFramework.createMd('SHA1');
+      await md.update(messageData);
+      let digestBlob = await md.digest();
+      let keyGenAlg = 'ECC224';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey, digestBlob);
+      let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -91,6 +99,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
@@ -111,20 +120,27 @@
   }
   
   function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    let md = cryptoFramework.createMd('SHA1');
-    md.updateSync(messageData);
-    let digestBlob = md.digestSync();
-    let keyGenAlg = 'ECC224';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
+      let md = cryptoFramework.createMd('SHA1');
+      md.updateSync(messageData);
+      let digestBlob = md.digestSync();
+      let keyGenAlg = 'ECC224';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey, digestBlob);
+      let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

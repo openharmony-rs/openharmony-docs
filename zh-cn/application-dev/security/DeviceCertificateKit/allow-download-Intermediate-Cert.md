@@ -134,7 +134,8 @@ async function buildX509CertChain() {
     let data = await cert.buildX509CertChain(param);
     console.info('buildX509CertChain result: success, certChainLength = ' + data.certChain.getCertList().length);
   } catch (err) {
-    console.error(`buildX509CertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`buildX509CertChain failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```

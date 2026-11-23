@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍EmbeddedUIExtensionAbility跨进程嵌入界面的能力、生命周期，以及提供方与使用方的开发方法。"
+keywords: [EmbeddedUIExtensionAbility, EmbeddedComponent, 跨进程界面嵌入, 进程隔离, 生命周期, 多进程]
+doctype: guide
+status: active
+---
 # EmbeddedUIExtensionAbility
 
 <!--Kit: Ability Kit-->

@@ -91,7 +91,7 @@ HUKS Core作为向应用提供密钥库能力的基础，包括密钥管理及�
 | 接口名                                                       | 功能介绍                                  | 约束与限制                     | 对应的js接口                                        |
 | ------------------------------------------------------------ | ---------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
 | [ModuleInit()](#moduleinit)                   | HUKS Core的初始化。                            |  无                           | 无 |
-| [ModuleDestroy()](#moduledestroy)                   | HUKS Core的销毁。                            |  无                           | 无 |无                            | 无 |
+| [ModuleDestroy()](#moduledestroy)                   | HUKS Core的销毁。                            | 无                            | 无 |
 | [GenerateKey()](#generatekey)                  | 根据密码算法参数，生成密钥，并返回密文材料。                                |  出参要遵循KeyBlob格式          |generateKey(keyAlias: string, options: HuksOptions)|
 | [ImportKey()](#importkey)                     | 导入明文密钥，并返回密文材料。                            |  出参要遵循KeyBlob格式           | importKey(keyAlias: string, options: HuksOptions)|
 | [ImportWrappedKey()](#importwrappedkey)        |导入加密密钥，并返回密文材料。                              |  出参要遵循KeyBlob格式          | importWrappedKey(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions)|
@@ -118,7 +118,7 @@ HUKS Core作为向应用提供密钥库能力的基础，包括密钥管理及�
 #### ModuleInit
 
 **接口原型**
-```
+```c
 int32_t ModuleInit(struct IHuks *self);
 ```
 
@@ -140,7 +140,7 @@ HUKS Core的初始化，一般用于初始化全局变量，比如全局线程�
 #### ModuleDestroy
 
 **接口原型**
-```
+```c
 int32_t ModuleDestroy(struct IHuks *self);
 ```
 
@@ -165,7 +165,7 @@ HUKS Core的销毁，一般用于释放全局变量，包括锁，销毁内存�
 #### GenerateKey
 
 **接口原型**
-```
+```c
 int32_t GenerateKey(struct IHuks *self, const struct HuksBlob *keyAlias, const struct HuksParamSet *paramSet, const struct HuksBlob *keyIn, struct HuksBlob *encKeyOut);
 ```
 
@@ -197,7 +197,7 @@ int32_t GenerateKey(struct IHuks *self, const struct HuksBlob *keyAlias, const s
 #### ImportKey
 
 **接口原型**
-```
+```c
 int32_t ImportKey(struct IHuks *self, const struct HuksBlob *keyAlias, const struct HuksBlob *key, const struct HuksParamSet *paramSet, struct HuksBlob *encKeyOut);
 ```
 
@@ -229,7 +229,7 @@ int32_t ImportKey(struct IHuks *self, const struct HuksBlob *keyAlias, const str
 #### ImportWrappedKey
 
 **接口原型**
-```
+```c
 int32_t ImportWrappedKey(struct IHuks *self, const struct HuksBlob *wrappingKeyAlias, const struct HuksBlob *wrappingEncKey, const struct HuksBlob *wrappedKeyData, const struct HuksParamSet *paramSet, struct HuksBlob *encKeyOut);
 ```
 
@@ -262,7 +262,7 @@ int32_t ImportWrappedKey(struct IHuks *self, const struct HuksBlob *wrappingKeyA
 #### ExportPublicKey
 
 **接口原型**
-```
+```c
 int32_t ExportPublicKey(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, struct HuksBlob *keyOut);
 ```
 
@@ -288,7 +288,7 @@ int32_t ExportPublicKey(struct IHuks *self, const struct HuksBlob *encKey, const
 #### Init
 
 **接口原型**
-```
+```c
 int32_t Init(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, struct HuksBlob *handle, struct HuksBlob *token);
 ```
 
@@ -319,7 +319,7 @@ int32_t Init(struct IHuks *self, const struct HuksBlob *encKey, const struct Huk
 #### Update
 
 **接口原型**
-```
+```c
 int32_t Update(struct IHuks *self, const struct HuksBlob *handle, const struct HuksParamSet *paramSet, const struct HuksBlob *inData, struct HuksBlob *outData);
 ```
 
@@ -351,7 +351,7 @@ int32_t Update(struct IHuks *self, const struct HuksBlob *handle, const struct H
 #### Finish
 
 **接口原型**
-```
+```c
 int32_t Finish(struct IHuks *self, const struct HuksBlob *handle, const struct HuksParamSet *paramSet, const struct HuksBlob *inData, struct HuksBlob *outData);
 ```
 
@@ -383,13 +383,13 @@ int32_t Finish(struct IHuks *self, const struct HuksBlob *handle, const struct H
 #### Abort
 
 **接口原型**
-```
+```c
 int32_t Abort(struct IHuks *self, const struct HuksBlob *handle, const struct HuksParamSet *paramSet);
 ```
 
 **接口描述**
 
-取消密钥会话。当Init，Update和Finish操作中的任一阶段发生错误时，都要调用abort来终止密钥会话。
+取消密钥会话。当Init，Update和Finish操作中的任一阶段发生错误时，都要调用Abort来终止密钥会话。
 
 **参数说明**
 
@@ -412,13 +412,13 @@ int32_t Abort(struct IHuks *self, const struct HuksBlob *handle, const struct Hu
 #### CheckKeyValidity
 
 **接口原型**
-```
+```c
 int32_t CheckKeyValidity(struct IHuks *self, const struct HuksParamSet *paramSet, const struct HuksBlob *encKey);
 ```
 
 **接口描述**
 
-获取密钥属性。
+校验密钥有效性。
 
 **参数说明**
 
@@ -438,7 +438,7 @@ int32_t CheckKeyValidity(struct IHuks *self, const struct HuksParamSet *paramSet
 #### AttestKey
 
 **接口原型**
-```
+```c
 int32_t AttestKey(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, struct HuksBlob *certChain);
 ```
 
@@ -469,7 +469,7 @@ certChain的格式需遵循[约束与限制第二点](#约束与限制)。
 #### ExportChipsetPlatformPublicKey
 
 **接口原型**
-```
+```c
 int32_t ExportChipsetPlatformPublicKey(struct IHuks *self, const struct HuksBlob *salt, enum HuksChipsetPlatformDecryptScene scene, struct HuksBlob *publicKey);
 ```
 
@@ -502,7 +502,7 @@ int32_t ExportChipsetPlatformPublicKey(struct IHuks *self, const struct HuksBlob
 #### UpgradeKey
 
 **接口原型**
-```
+```c
 int32_t UpgradeKey(struct IHuks *self, const struct HuksBlob *encOldKey, const struct HuksParamSet *paramSet, struct HuksBlob *encNewKey);
 ```
 
@@ -529,7 +529,7 @@ int32_t UpgradeKey(struct IHuks *self, const struct HuksBlob *encOldKey, const s
 #### GenerateRandom
 
 **接口原型**
-```
+```c
 int32_t GenerateRandom(struct IHuks *self, const struct HuksParamSet *paramSet, struct HuksBlob *random);
 ```
 
@@ -554,7 +554,7 @@ int32_t GenerateRandom(struct IHuks *self, const struct HuksParamSet *paramSet, 
 #### Sign
 
 **接口原型**
-```
+```c
 int32_t Sign(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, const struct HuksBlob *srcData, struct HuksBlob *signature);
 ```
 
@@ -581,7 +581,7 @@ int32_t Sign(struct IHuks *self, const struct HuksBlob *encKey, const struct Huk
 #### Verify
 
 **接口原型**
-```
+```c
 int32_t Verify(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, const struct HuksBlob *srcData, const struct HuksBlob *signature);
 ```
 
@@ -608,7 +608,7 @@ int32_t Verify(struct IHuks *self, const struct HuksBlob *encKey, const struct H
 #### Encrypt
 
 **接口原型**
-```
+```c
 int32_t Encrypt(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, const struct HuksBlob *plainText, struct HuksBlob *cipherText);
 ```
 
@@ -635,7 +635,7 @@ int32_t Encrypt(struct IHuks *self, const struct HuksBlob *encKey, const struct 
 #### Decrypt
 
 **接口原型**
-```
+```c
 int32_t Decrypt(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, const struct HuksBlob *cipherText, struct HuksBlob *plainText);
 ```
 
@@ -662,7 +662,7 @@ int32_t Decrypt(struct IHuks *self, const struct HuksBlob *encKey, const struct 
 #### AgreeKey
 
 **接口原型**
-```
+```c
 int32_t AgreeKey(struct IHuks *self, const struct HuksParamSet *paramSet, const struct HuksBlob *encPrivateKey, const struct HuksBlob *peerPublicKey, struct HuksBlob *agreedKey);
 ```
 
@@ -688,7 +688,7 @@ int32_t AgreeKey(struct IHuks *self, const struct HuksParamSet *paramSet, const 
 #### DeriveKey
 
 **接口原型**
-```
+```c
 int32_t DeriveKey(struct IHuks *self, const struct HuksParamSet *paramSet, const struct HuksBlob *encKdfKey, struct HuksBlob *derivedKey);
 ```
 
@@ -715,7 +715,7 @@ int32_t DeriveKey(struct IHuks *self, const struct HuksParamSet *paramSet, const
 #### Mac
 
 **接口原型**
-```
+```c
 int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct HuksParamSet *paramSet, const struct HuksBlob *srcData, struct HuksBlob *mac);
 ```
 
@@ -746,7 +746,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 
 1. HDI接口的适配在以下目录中：
 
-    ```undefined
+    ```text
     //drivers_peripheral/huks
     ├── BUILD.gn # 编译脚本
     ├── hdi_service # 实现依赖，通过dlopen方式引用libhuks_engine_core_standard.z.so(软实现的HUKS Core，仅用于参考)
@@ -763,7 +763,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 
 2. HUKS Core软实现的代码在以下目录中：
 
-    ```undefined
+    ```text
     //base/security/huks/services/huks_standard/huks_engine
     ├── BUILD.gn # 编译脚本
     ├── core_dependency # HUKS Core依赖
@@ -776,8 +776,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
             └── ... #其他功能代码
     ```
 
-   > ![icon-caution.gif](public_sys-resources/icon-caution.gif) **注意：**
-   >
+   > **注意：**
    > HUKS Core软实现中存在硬编码相关敏感数据，包括根密钥、访问控制用的AuthToken密钥、加密AuthToken用的密钥、证书相关等，如设备开发者使用了相关代码，一定要替换成自有实现。
 
 
@@ -799,13 +798,13 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 
 #### 适配样例
 
-下文以HUKS Core中的密钥会话Init\Update\Finish接口适配作为一个样例，介绍基本流程，仅供参考不可实际运行，实际可运行代码参考[HUKS源码目录](https://gitcode.com/openharmony/security_huks)
+下文以HUKS Core中的密钥会话Init\Update\Finish接口适配作为一个样例，介绍基本流程，仅供参考，不可实际运行，实际可运行代码参考[HUKS源码目录](https://gitcode.com/openharmony/security_huks)
 
 1. 创建一个句柄，通过这个句柄在session中存储密钥操作相关的信息，使得外部可以通过这个句柄分多次进行同一密钥操作。
 
    ```c
 
-   //密钥会话Init接口
+   // 密钥会话Init接口
 
    int32_t HksCoreInit(const struct  HuksBlob *key, const struct HuksParamSet *paramSet, struct HuksBlob *handle,
     struct HuksBlob *token)
@@ -813,7 +812,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
        HKS_LOG_D("HksCoreInit in Core start");
        uint32_t pur = 0;
        uint32_t alg = 0;
-       //检查参数
+       // 检查参数
        if (key == NULL || paramSet == NULL || handle == NULL || token == NULL) {
            HKS_LOG_E("the pointer param entered is invalid");
            return HKS_FAILURE;
@@ -823,29 +822,29 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
             HKS_LOG_E("handle size is too small, size : %u", handle->size);
             return HKS_ERROR_INSUFFICIENT_MEMORY;
         }
-        //解密密钥文件
+        // 解密密钥文件
         struct HuksKeyNode *keyNode = HksCreateKeyNode(key, paramSet);
         if (keyNode == NULL || handle == NULL) {
             HKS_LOG_E("the pointer param entered is invalid");
             return HKS_ERROR_BAD_STATE;
         }
-        //通过handle向session中存储信息，供Update/Finish使用。使得外部可以通过同个handle分多次进行同一密钥操作。
+        // 通过handle向session中存储信息，供Update/Finish使用。使得外部可以通过同个handle分多次进行同一密钥操作。
         handle->size = sizeof(uint64_t);
         (void)memcpy_s(handle->data, handle->size, &(keyNode->handle), handle->size);
-        //从参数中提取出算法
+        // 从参数中提取出算法
         int32_t ret = GetPurposeAndAlgorithm(paramSet, &pur, &alg);
         if (ret != HKS_SUCCESS) {
             HksDeleteKeyNode(keyNode->handle);
             return ret;
         }
-        //检查密钥参数
+        // 检查密钥参数
         ret = HksCoreSecureAccessInitParams(keyNode, paramSet, token);
         if (ret != HKS_SUCCESS) {
             HKS_LOG_E("init secure access params failed");
             HksDeleteKeyNode(keyNode->handle);
             return ret;
         }
-        //通过密钥使用目的获取对应的算法库处理函数  
+        // 通过密钥使用目的获取对应的算法库处理函数
         uint32_t i;
         uint32_t size = HKS_ARRAY_SIZE(g_hksCoreInitHandler);
         for (i = 0; i < size; i++) {
@@ -855,7 +854,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
                break;
         }
         }
-        //异常结果检查
+        // 异常结果检查
         if (ret != HKS_SUCCESS) {
             HksDeleteKeyNode(keyNode->handle);
             HKS_LOG_E("CoreInit failed, ret : %d", ret);
@@ -876,14 +875,14 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 2. 在执行密钥操作前通过句柄获得上下文信息，执行密钥操作时放入分片数据并取回密钥操作结果或者追加数据。
    
     ```c
-    //密钥会话Update接口
+    // 密钥会话Update接口
     int32_t HksCoreUpdate(const struct HuksBlob *handle, const struct HuksParamSet *paramSet, const struct HuksBlob *inData,
         struct HuksBlob *outData)
     {
         HKS_LOG_D("HksCoreUpdate in Core start");
         uint32_t pur = 0;
         uint32_t alg = 0;
-        //检查参数
+        // 检查参数
         if (handle == NULL || paramSet == NULL || inData == NULL) {
             HKS_LOG_E("the pointer param entered is invalid");
             return HKS_FAILURE;
@@ -891,20 +890,20 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
         
         uint64_t sessionId;
         struct HuksKeyNode *keyNode = NULL;
-        //根据handle获取本次密钥会话操作需要的上下文
+        // 根据handle获取本次密钥会话操作需要的上下文
         int32_t ret = GetParamsForUpdateAndFinish(handle, &sessionId, &keyNode, &pur, &alg);
         if (ret != HKS_SUCCESS) {
             HKS_LOG_E("GetParamsForCoreUpdate failed");
             return ret;
         }
-        //校验密钥参数
+        // 校验密钥参数
         ret = HksCoreSecureAccessVerifyParams(keyNode, paramSet);
         if (ret != HKS_SUCCESS) {
             HksDeleteKeyNode(sessionId);
             HKS_LOG_E("HksCoreUpdate secure access verify failed");
             return ret;
         }
-        //调用对应的算法库密钥处理函数
+        // 调用对应的算法库密钥处理函数
         uint32_t i;
         uint32_t size = HKS_ARRAY_SIZE(g_hksCoreUpdateHandler);
         for (i = 0; i < size; i++) {
@@ -923,7 +922,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
                 break;
             }
         }
-        //异常结果检查
+        // 异常结果检查
         if (ret != HKS_SUCCESS) {
             HksDeleteKeyNode(keyNode->handle);
             HKS_LOG_E("CoreUpdate failed, ret : %d", ret);
@@ -942,14 +941,14 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 3. 结束密钥操作并取回结果，销毁句柄。
 
    ```c
-   //密钥会话Finish接口
+   // 密钥会话Finish接口
    int32_t HksCoreFinish(const struct HuksBlob *handle, const struct HuksParamSet *paramSet, const struct HuksBlob *inData,
     struct HuksBlob *outData)
    {
        HKS_LOG_D("HksCoreFinish in Core start");
        uint32_t pur = 0;
        uint32_t alg = 0;
-       //检查参数
+       // 检查参数
        if (handle == NULL || paramSet == NULL || inData == NULL) {
            HKS_LOG_E("the pointer param entered is invalid");
            return HKS_FAILURE;
@@ -957,20 +956,20 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
     
        uint64_t sessionId;
        struct HuksKeyNode *keyNode = NULL;
-       //根据handle获取本次密钥会话操作需要的上下文
+       // 根据handle获取本次密钥会话操作需要的上下文
        int32_t ret = GetParamsForUpdateAndFinish(handle, &sessionId, &keyNode, &pur, &alg);
        if (ret != HKS_SUCCESS) {
            HKS_LOG_E("GetParamsForCoreUpdate failed");
            return ret;
        }
-       //校验密钥参数
+       // 校验密钥参数
        ret = HksCoreSecureAccessVerifyParams(keyNode, paramSet);
        if (ret != HKS_SUCCESS) {
            HksDeleteKeyNode(sessionId);
            HKS_LOG_E("HksCoreFinish secure access verify failed");
            return ret;
        }
-       //调用对应的算法库密钥处理函数
+       // 调用对应的算法库密钥处理函数
        uint32_t i;
        uint32_t size = HKS_ARRAY_SIZE(g_hksCoreFinishHandler);
        for (i = 0; i < size; i++) {
@@ -990,7 +989,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
                if (ret != HKS_SUCCESS) {
                    break;
                }
-               //添加密钥操作结束标签
+               // 添加密钥操作结束标签
                ret = HksCoreAppendAuthInfoAfterFinish(keyNode, pur, paramSet, outDataBufferSize, outData);
                break;
            }
@@ -999,7 +998,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
            HKS_LOG_E("don't found purpose, pur : %d", pur);
            ret = HKS_FAILURE;
        }
-       //删除对应的session
+       // 删除对应的session
        HksDeleteKeyNode(sessionId);
        HKS_LOG_D("HksCoreFinish in Core end");
        return ret;
@@ -1008,7 +1007,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 
 ### 调测验证
 
-开发完成后，通过[HUKS JS接口](hhttps://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.security.huks.d.ts)开发JS应用来验证能力是否完备。
+开发完成后，通过[HUKS JS接口](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.security.huks.d.ts)开发JS应用来验证能力是否完备。
 
 对于每个HDI接口，[接口说明](#接口说明)都提供了对应的JS接口。可以通过调用JS接口组合来验证对应的HDI接口的能力，也可以通过完整的密钥操作来验证接口的能力。
 

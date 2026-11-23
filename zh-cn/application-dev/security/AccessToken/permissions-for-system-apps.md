@@ -9206,6 +9206,48 @@
  
 **起始版本**：26.0.1
 
+## ohos.permission.vehicle.MMA_OCCUPANT
+
+允许车载应用获取车内乘员状态，包括乘员占位情况、乘员类型等。
+
+**权限级别**：system_basic
+ 
+**授权方式**：system_grant
+
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.MMA_CARSTATUS
+
+允许车载应用获取车辆零部件的即时状态。
+
+**权限级别**：system_basic
+ 
+**授权方式**：system_grant
+
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.MANAGE_CURSOR_STYLE
+
+允许应用管理鼠标光标样式。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
+**起始版本**：26.1.0
+
 ## ohos.permission.ALLOW_DIRECT_BOOT
 
 允许应用在设备冷启动或重启后，用户首次解锁前启动。

@@ -536,7 +536,7 @@
 | -------------------- | ---- | -------------------------------- |
 | PRIVACY_TYPE_PUBLIC  | 0    | 表示音频流可以被其他应用录制或屏幕投射，不包含隐私类型的流。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
 | PRIVACY_TYPE_PRIVATE | 1    | 表示音频流不可以被其他应用录制或屏幕投射。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
-| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。 <br> 例如，在PRIVACY_TYPE_PUBLIC策略下，[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)类型音频流不会被其他应用录制或屏幕投射。 <br> 然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 24|
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | 表示音频流可以被屏幕投射，包含隐私类型的流。 <br> 例如，在PRIVACY_TYPE_PUBLIC策略下，[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)类型音频流不会被屏幕投射。 <br> 然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被屏幕投射。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 24|
 
 ## ChannelBlendMode<sup>11+</sup>
 
@@ -627,7 +627,7 @@
 | SOURCE_TYPE_MIC                              | 0      | Mic音频源。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | 语音识别源。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23  |
 | SOURCE_TYPE_PLAYBACK_CAPTURE<sup>(deprecated)</sup>   | 2 | 播放音频流（内录）录制音频源。**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture <br> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。<br>**ArkTS-Dyn起始版本：** 10 |
-| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | 语音通话场景的音频源（单独启动录制不会开启3A算法，需同时使用[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)或[STREAM_USAGE_VIDEO_COMMUNICATION](#streamusage)类型的AudioRender起播才会触发开启3A算法）。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | 语音通话场景的音频源（在API版本23之前，单独启动录制不会开启3A算法，需同时使用[StreamUsage](#streamusage).STREAM_USAGE_VOICE_COMMUNICATION或[StreamUsage](#streamusage).STREAM_USAGE_VIDEO_COMMUNICATION类型播放才会触发开启3A算法。在API版本23及更高的版本中，单独启动此类型的录制，也会开启3A算法）。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup>      | 10     | 短语音消息的音频源。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup>          | 13     | 录像的音频源。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 23 |
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup>     | 14 |  麦克风纯净录音的音频源（系统不做任何算法处理）。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |

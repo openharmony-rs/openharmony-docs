@@ -96,8 +96,9 @@ UART模块提供的主要接口如表1所示，具体API[详见](https://gitcode
 | int32_t UartSetAttribute(DevHandle handle, struct UartAttribute \*attribute) | UART设置设备属性 |
 | int32_t UartSetTransMode(DevHandle handle, enum UartTransMode mode) | UART设置传输模式 |
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
-> 本文涉及的UART所有接口，支持内核态及用户态使用。
+>**说明：**
+>
+>本文涉及的UART所有接口，支持内核态及用户态使用。
 
 ### 开发步骤
 
@@ -121,7 +122,9 @@ DevHandle UartOpen(uint32_t port);
 | 参数 | 参数描述 |
 | -------- | -------- |
 | port | uint32_t类型，UART设备号 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | NULL | 获取UART设备句柄失败 |
 | 设备句柄 | UART设备句柄 |
 
@@ -152,7 +155,9 @@ int32_t UartSetBaud(DevHandle handle, uint32_t baudRate);
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
 | baudRate | uint32_t类型，待设置的波特率值 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | UART设置波特率成功 |
 | 负数 | UART设置波特率失败 |
 
@@ -182,7 +187,9 @@ int32_t UartGetBaud(DevHandle handle, uint32_t *baudRate);
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
 | baudRate | uint32_t类型指针，用于接收波特率的值 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | UART获取波特率成功 |
 | 负数 | UART获取波特率失败 |
 
@@ -213,7 +220,9 @@ int32_t UartSetAttribute(DevHandle handle, struct UartAttribute *attribute);
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
 | attribute | 结构体指针，待设置的设备属性 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | UART设置设备属性成功 |
 | 负数 | UART设置设备属性失败 |
 
@@ -224,7 +233,7 @@ int32_t ret;
 struct UartAttribute attribute;
 
 attribute.dataBits = UART_ATTR_DATABIT_7;     // UART传输数据位宽，一次传输7个bit
-attribute.parity = UART_ATTR_PARITY_NONE;     // UART传输数据无校检
+attribute.parity = UART_ATTR_PARITY_NONE;     // UART传输数据无校验
 attribute.stopBits = UART_ATTR_STOPBIT_1;     // UART传输数据停止位为1位
 attribute.rts = UART_ATTR_RTS_DIS;            // UART禁用RTS
 attribute.cts = UART_ATTR_CTS_DIS;            // UART禁用CTS
@@ -234,9 +243,19 @@ attribute.fifoTxEn = UART_ATTR_TX_FIFO_EN;    // UART使能TX FIFO
 ret = UartSetAttribute(handle, &attribute);   // 设置UART设备属性
 if (ret != HDF_SUCCESS) {
     HDF_LOGE("UartSetAttribute: failed, ret %d\n", ret);
-turn ret;
+    return ret;
 }
 ```
+
+>**说明：**
+>
+>vmin与vtime仅在阻塞读模式（UART_MODE_RD_BLOCK）下生效，语义遵循POSIX termios规范（VMIN/VTIME）；非阻塞读模式下read立即返回当前可用数据，vmin/vtime不生效。vmin/vtime的实际生效情况依平台适配实现而定（见“约束与限制”）。阻塞读模式下read的返回时机由二者组合决定：
+> - vmin=0且vtime=0：立即返回当前可用数据，无数据时返回0。
+> - vmin=0且vtime大于0：定时读，在vtime×0.1秒内返回可用数据，超时返回0。
+> - vmin大于0且vtime=0：阻塞直到收到vmin个字节，使用时需注意避免长时间阻塞。
+> - vmin大于0且vtime大于0：收到第一个字节后启动字节间定时器，收满vmin个字节或字节间隔超过vtime×0.1秒时返回；若始终未收到任何数据，read将持续阻塞，使用时需注意确保对端会发送数据或合理设置vtime兜底。
+>
+> 需要接收定长数据的场景（如固定帧长协议），建议将vmin设置为帧长并使用阻塞读模式。
 
 #### UART获取设备属性
 
@@ -252,7 +271,9 @@ int32_t UartGetAttribute(DevHandle handle, struct UartAttribute *attribute);
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
 | attribute | 结构体指针，接收UART设备属性的指针 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | UART获取设备属性成功 |
 | 负数 | UART获取设备属性失败 |
 
@@ -283,9 +304,24 @@ int32_t UartSetTransMode(DevHandle handle, enum UartTransMode mode);
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
 | mode | 枚举类型，待设置的传输模式 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | UART设置传输模式成功 |
-| 负数 | UART设置传输模式失败 |
+| HDF_ERR_INVALID_OBJECT | UART设备句柄无效 |
+| HDF_ERR_NOT_SUPPORT | 平台不支持该传输模式或传输模式值非法 |
+
+>**说明：**
+>
+> 传输模式枚举值说明：
+> - UART_MODE_RD_BLOCK：阻塞读模式，read的返回时机由vmin/vtime决定（见“UART设置设备属性”中的说明）。
+> - UART_MODE_RD_NONBLOCK：非阻塞读模式，read立即返回当前可用数据。
+> - UART_MODE_DMA_RX_EN/UART_MODE_DMA_RX_DIS：使能/关闭DMA接收，是否支持由平台决定，不支持时返回HDF_ERR_NOT_SUPPORT。
+> - UART_MODE_DMA_TX_EN/UART_MODE_DMA_TX_DIS：使能/关闭DMA发送，是否支持由平台决定，不支持时返回HDF_ERR_NOT_SUPPORT。
+>
+> 传输模式切换不影响已设置的波特率、设备属性（含vmin/vtime）以及接收缓冲区中未读取的数据。
+>
+> 设备打开后的默认读模式与vmin/vtime默认值由平台决定。建议在读取数据前根据业务需要显式调用UartSetTransMode设置传输模式，不要依赖默认值。
 
 假设需要设置的UART传输模式为UART_MODE_RD_BLOCK，设置传输模式的实例如下：
 
@@ -314,7 +350,9 @@ int32_t UartWrite(DevHandle handle, uint8_t *data, uint32_t size);
 | handle | DevHandle类型，UART设备句柄 |
 | data | uint8_t类型指针，待写入数据的 |
 | size | uint32_t类型，待写入数据的长度 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | UART写数据成功 |
 | 负数 | UART写数据失败 |
 
@@ -345,8 +383,10 @@ int32_t UartRead(DevHandle handle, uint8_t *data, uint32_t size);
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
 | data | uint8_t类型指针，接收读取数据 |
-| size | uint32_t类型，待读取数据的长度 |
+| size | uint32_t类型，期望读取的最大数据长度 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | 非负数 | UART读取到的数据长度 |
 | 负数 | UART读取数据失败 |
 
@@ -359,12 +399,15 @@ uint8_t rbuff[5] = {0};
 ret = UartRead(handle, rbuff, 5);    // 从UART设备读取指定长度的数据
 if (ret < 0) {
     HDF_LOGE("UartRead: failed, ret %d\n", ret);
-	return ret;
+    return ret;
 }
 ```
 
-> ![icon-caution.gif](public_sys-resources/icon-caution.gif) **注意：**
-> UART返回值为非负值，表示UART读取成功。若返回值等于0，表示UART无有效数据可以读取。若返回值大于0，表示实际读取到的数据长度，该长度小于或等于传入的参数size的大小，并且不超过当前正在使用的UART控制器规定的最大单次读取数据长度的值。
+>**注意：**
+>
+> UART返回值大于0，表示读取成功，返回值为实际读取到的数据长度，该长度小于或等于传入的参数size的大小，并且不超过当前正在使用的UART控制器规定的最大单次读取数据长度的值。若返回值等于0，表示当前无有效数据可以读取（非阻塞模式下的正常状态，不视为错误）。若返回值为负数，表示读取失败，返回负数错误码。
+>
+> 非阻塞读模式下read为部分读语义，返回值可能小于size，表示仅读取到当前缓冲区中的可用数据；阻塞读模式下返回时机由vmin/vtime决定（见“UART设置设备属性”中的说明）。若业务需要读取固定长度的数据，建议将vmin设置为期望长度后使用阻塞读模式，或在应用层循环读取直到读满。
 
 
 #### 销毁UART设备句柄
@@ -426,7 +469,7 @@ static int32_t UartTestSample(void)
     struct UartAttribute attribute;
 
     attribute.dataBits = UART_ATTR_DATABIT_7;                  // UART传输数据位宽，一次传输7个bit
-    attribute.parity = UART_ATTR_PARITY_NONE;                  // UART传输数据无校检
+    attribute.parity = UART_ATTR_PARITY_NONE;                  // UART传输数据无校验
     attribute.stopBits = UART_ATTR_STOPBIT_1;                  // UART传输数据停止位为1位
     attribute.rts = UART_ATTR_RTS_DIS;                         // UART禁用RTS
     attribute.cts = UART_ATTR_CTS_DIS;                         // UART禁用CTS
