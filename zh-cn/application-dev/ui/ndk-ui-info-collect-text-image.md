@@ -14,9 +14,7 @@
 
 采集通常与其他UI信息能力配合使用。应用可以先读取控件树，从结果中获取目标节点的整数节点ID，再按节点ID采集图片，从而避免自行维护节点标识与节点ID的对应关系。
 
-本专题按以下顺序说明：先介绍接口与调用方式，并说明结果分层、节点ID数量、图片来源、页面文本JSON结构与消费释放规则（[接口说明](#接口说明)），然后结合示例工程给出完整开发流程（[开发流程](#开发流程)），最后列出典型问题与处理方式（[常见问题](#常见问题)）。
-
-本篇介绍节点图片采集和页面文本采集能力。应用可以通过ArkUI NDK接口采集指定节点的图片，也可以在UI线程同步采集当前ArkUI页面的文本信息，页面文本以JSON格式输出。本文同时介绍页面文本采集相关接口、JSON数据结构及调用方法。
+本篇介绍节点图片采集和页面文本采集能力。应用可以通过ArkUI NDK接口采集指定节点的图片，也可以在UI线程同步采集当前ArkUI页面的文本信息，页面文本以JSON格式输出。
 
 > **说明：**
 >
@@ -350,7 +348,7 @@ private async capture(nodeIds: number[]): Promise<void> {
 
 ### 采集页面文本
 
-[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)必须在目标UI实例的UI线程上同步调用（在非目标UI线程调用会导致进程终止）。以下示例由ArkTS页面上的UI事件（如按钮点击）直接触发，从而保证当前处于目标UI线程。获取目标页面的`ArkUI_ContextHandle`后调用采集接口，读取JSON字符串后需调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放封装对象。
+[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)必须在目标UI实例的UI线程上同步调用（在非目标UI线程调用会导致进程终止）。以下示例由ArkTS页面上的UI事件（如按钮点击）直接触发，从而保证当前处于目标UI线程。获取目标页面的ArkUI_ContextHandle后调用采集接口，读取JSON字符串后需调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放封装对象。
 
 <!-- @[ui_agent_get_page_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIAgentGetPageText/Library/src/main/cpp/napi_init.cpp) -->
 
@@ -462,4 +460,4 @@ Image节点能取到源图时，采集结果是组件的完整源图，像素尺
 
 ### 页面文本采集返回错误或内存泄漏怎么办
 
-调用[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)时，若上下文无效会返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；若页面存在但没有符合条件的文本，接口会正常返回空的`texts`数组（`{"schemaVersion":1,"texts":[]}`）；若发生采集或JSON序列化失败等内部错误，则会返回[ARKUI_ERROR_CODE_INTERNAL_ERROR](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。调用成功时，必须确保在读取完JSON字符串后调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放对象，且不要在销毁后继续使用`OH_ArkUI_NativeModule_UIJsonWrapperGetData`返回的指针。
+调用[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)时，若上下文无效会返回[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；若页面存在但没有符合条件的文本，接口会正常返回空的texts数组（`{"schemaVersion":1,"texts":[]}`）；若发生采集或JSON序列化失败等内部错误，则会返回[ARKUI_ERROR_CODE_INTERNAL_ERROR](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。调用成功时，必须确保在读取完JSON字符串后调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放对象，且不要在销毁后继续使用OH_ArkUI_NativeModule_UIJsonWrapperGetData返回的指针。
