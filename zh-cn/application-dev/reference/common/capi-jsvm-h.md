@@ -93,13 +93,21 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | 释放由 OH_JSVM_AllocateArrayBufferBackingStoreData 申请的 BackingStore 内存。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | 在申请得到的 BackingStore 内存上创建 array buffer。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env,void* externalData,size_t byteLength,JSVM_FinalizeArrayBuffer finalizeCb,void* finalizeHint,bool* copied,JSVM_Value* result)](#oh_jsvm_createarraybufferfromexternalmemory) | 从外部内存创建ArrayBuffer对象（必须先定义JSVM_EXPERIMENTAL宏才能使用此接口）。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBuffer(JSVM_Env env,size_t byteLength,void** data,JSVM_Value* result)](#oh_jsvm_createsharedarraybuffer) | 创建一个指定大小的SharedArrayBuffer对象。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSharedArrayBuffer(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_issharedarraybuffer) | 判断一个对象是否为SharedArrayBuffer类型对象。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferInfo(JSVM_Env env,JSVM_Value sharedArrayBuffer,void** data,size_t* byteLength,size_t* maxByteLength)](#oh_jsvm_getsharedarraybufferinfo) | 检索SharedArrayBuffer的底层数据缓冲区、当前字节长度与最大字节长度。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferBackingStore(JSVM_Env env,JSVM_Value sharedArrayBuffer,JSVM_BackingStore* result)](#oh_jsvm_getsharedarraybufferbackingstore) | 获取SharedArrayBuffer底层共享内存的JSVM_BackingStore句柄。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_RetainBackingStore(JSVM_BackingStore backingStore,JSVM_BackingStore* result)](#oh_jsvm_retainbackingstore) | 复制一个JSVM_BackingStore句柄，新句柄独立持有引用。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseBackingStore(JSVM_BackingStore backingStore)](#oh_jsvm_releasebackingstore) | 释放一个JSVM_BackingStore句柄持有的引用。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetBackingStoreInfo(JSVM_BackingStore backingStore,void** data,size_t* byteLength,size_t* maxByteLength,bool* isShared,bool* isResizable)](#oh_jsvm_getbackingstoreinfo) | 检索JSVM_BackingStore句柄的数据指针、长度及共享/可增长属性。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBufferFromBackingStore(JSVM_Env env,JSVM_BackingStore backingStore,JSVM_Value* result)](#oh_jsvm_createsharedarraybufferfrombackingstore) | 基于已有的JSVM_BackingStore句柄，在当前环境创建一个新的SharedArrayBuffer对象。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)](#oh_jsvm_createdate) | 分配一个JavaScript Date对象。此API不处理闰秒。这是因为ECMAScript遵循POSIX时间规范，对闰秒进行忽略。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)](#oh_jsvm_createexternal) | 分配一个带有外部数据的JavaScript值。这用于通过JavaScript代码传递外部数据。后续可以使用OH_JSVM_GetValueExternal由native代码检索。该API添加了一个JSVM_Finalize回调，当刚刚创建的JavaScript对象被垃圾回收时将调用该回调。创建的值不是一个对象，因此不支持附加属性。它被认为是一个独特的值类型：使用外部值调用OH_JSVM_Typeof()会生成JSVM_EXTERNAL。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createobject) | 分配一个默认的JavaScript对象。该函数功能等同于在JavaScript中执行new Object()。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env,JSVM_Value description,JSVM_Value* result)](#oh_jsvm_createsymbol) | 用UTF8编码的C字符串创建JavaScript symbol值。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env,const char* utf8description,size_t length,JSVM_Value* result)](#oh_jsvm_symbolfor) | 在全局注册表中搜索具有给定描述的现有符号。如果该符号已经存在，它将被返回，否则将在注册表中创建一个新符号。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayType type,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createtypedarray) | 基于已有的ArrayBuffer对象，创建一个JavaScript TypedArray对象。TypedArray对象在底层数据缓冲区上提供了一个类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。要求：length * 元素标量byte值 + byteOffset 不大于传入数组的ByteLength()，否则抛出范围错误（RangeError）。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createdataview) | 基于已有的ArrayBuffer对象，创建一个JavaScript DataView对象。DataView对象在底层数据缓冲区上提供了一个类似数组的视图，其中的元素可以具有不同的大小和类型。要求：二进制的length + byteOffset不大于传入数组的大小（byte数）。否则，抛出范围错误（RangeError）。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayType type,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createtypedarray) | 基于已有的ArrayBuffer或SharedArrayBuffer对象，创建一个JavaScript TypedArray对象。TypedArray对象在底层数据缓冲区上提供了一个类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。要求：length * 元素标量byte值 + byteOffset 不大于传入数组的ByteLength()，否则抛出范围错误（RangeError）。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createdataview) | 基于已有的ArrayBuffer或SharedArrayBuffer对象，创建一个JavaScript DataView对象。DataView对象在底层数据缓冲区上提供了一个类似数组的视图，其中的元素可以具有不同的大小和类型。要求：二进制的length + byteOffset不大于传入数组的大小（byte数）。否则，抛出范围错误（RangeError）。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env,int32_t value,JSVM_Value* result)](#oh_jsvm_createint32) | 将一个C int32_t类型值转换为JavaScript number类型值。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env,uint32_t value,JSVM_Value* result)](#oh_jsvm_createuint32) | 将一个C uint32_t类型值转换为JavaScript number类型值。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env,int64_t value,JSVM_Value* result)](#oh_jsvm_createint64) | 将一个C int64_t类型值转换为JavaScript number类型值。 |
@@ -1685,6 +1693,217 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env
 | -- | -- |
 | JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>         1. 传入的result参数为NULL。<br>         2. byteLength>0但externalData为NULL。<br>         3. externalData未8字节对齐。<br>         4. byteLength超过引擎最大限制。<br>         5. byteLength==0但finalizeCb不为NULL。|
 
+### OH_JSVM_CreateSharedArrayBuffer()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBuffer(JSVM_Env env, size_t byteLength, void** data, JSVM_Value* result);
+```
+
+**描述**
+
+创建一个指定大小的SharedArrayBuffer对象。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [入参]调用JSVM-API的环境。 |
+| size_t byteLength | [入参]SharedArrayBuffer的大小，单位是字节。 |
+| void **data | [出参]SharedArrayBuffer底层的数据缓冲区指针，native侧可直接读写。不需要时可传NULL。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | [出参]创建的SharedArrayBuffer对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的result参数为NULL。<br>[JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示底层内存分配失败。 |
+
+### OH_JSVM_IsSharedArrayBuffer()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_IsSharedArrayBuffer(JSVM_Env env, JSVM_Value value, bool* result);
+```
+
+**描述**
+
+判断一个对象是否为SharedArrayBuffer类型对象。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [入参]调用JSVM-API的环境。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | [入参]待检查的JavaScript值。 |
+| bool* result | [出参]表示传入值是否为SharedArrayBuffer，true为是，false为否。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>1. 传入的value参数为NULL。<br>2. 传入的result参数为NULL。 |
+
+### OH_JSVM_GetSharedArrayBufferInfo()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferInfo(JSVM_Env env, JSVM_Value sharedArrayBuffer, void** data, size_t* byteLength, size_t* maxByteLength);
+```
+
+**描述**
+
+检索SharedArrayBuffer的底层数据缓冲区、当前字节长度与最大字节长度。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [入参]调用JSVM-API的环境。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) sharedArrayBuffer | [入参]待查询的SharedArrayBuffer。 |
+| void **data | [出参]SharedArrayBuffer底层的数据缓冲区指针。 |
+| size_t *byteLength | [出参]SharedArrayBuffer当前的长度，单位是字节。 |
+| size_t *maxByteLength | [出参]SharedArrayBuffer的最大长度，单位是字节。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>1. 传入的sharedArrayBuffer参数为NULL。<br>2. sharedArrayBuffer不是SharedArrayBuffer类型。 |
+
+### OH_JSVM_GetSharedArrayBufferBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferBackingStore(JSVM_Env env, JSVM_Value sharedArrayBuffer, JSVM_BackingStore* result);
+```
+
+**描述**
+
+获取SharedArrayBuffer底层共享内存的JSVM_BackingStore句柄。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [入参]调用JSVM-API的环境。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) sharedArrayBuffer | [入参]待查询的SharedArrayBuffer。 |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) *result | [出参]获取到的JSVM_BackingStore句柄。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>1. 传入的sharedArrayBuffer参数为NULL或不是SharedArrayBuffer类型。<br>2. 传入的result参数为NULL。<br>[JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示句柄分配失败。 |
+
+### OH_JSVM_RetainBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_RetainBackingStore(JSVM_BackingStore backingStore, JSVM_BackingStore* result);
+```
+
+**描述**
+
+复制一个JSVM_BackingStore句柄，新句柄独立持有引用。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [入参]待复制的JSVM_BackingStore句柄。 |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) *result | [出参]新创建的JSVM_BackingStore句柄。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>1. 传入的backingStore参数为NULL或无效。<br>2. 传入的result参数为NULL。<br>[JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示句柄分配失败。 |
+
+### OH_JSVM_ReleaseBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseBackingStore(JSVM_BackingStore backingStore);
+```
+
+**描述**
+
+释放一个JSVM_BackingStore句柄持有的引用。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [入参]待释放的JSVM_BackingStore句柄。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的backingStore参数为NULL。 |
+
+### OH_JSVM_GetBackingStoreInfo()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_GetBackingStoreInfo(JSVM_BackingStore backingStore, void** data, size_t* byteLength, size_t* maxByteLength, bool* isShared, bool* isResizable);
+```
+
+**描述**
+
+检索JSVM_BackingStore句柄的数据指针、长度及共享/可增长属性。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [入参]待查询的JSVM_BackingStore句柄。 |
+| void **data | [出参]共享内存的数据指针。 |
+| size_t *byteLength | [出参]共享内存当前的长度，单位是字节。 |
+| size_t *maxByteLength | [出参]共享内存的最大长度，单位是字节。 |
+| bool *isShared | [出参]表示该内存是否为共享存储。 |
+| bool *isResizable | [出参]表示JavaScript是否可以调整该内存的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的backingStore参数为NULL或无效。 |
+
+### OH_JSVM_CreateSharedArrayBufferFromBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBufferFromBackingStore(JSVM_Env env, JSVM_BackingStore backingStore, JSVM_Value* result);
+```
+
+**描述**
+
+基于已有的JSVM_BackingStore句柄，在当前环境创建一个新的SharedArrayBuffer对象。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [入参]调用JSVM-API的环境。 |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [入参]底层共享内存为共享类型的JSVM_BackingStore句柄 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | [出参]创建的SharedArrayBuffer对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>1. 传入的backingStore参数为NULL或底层内存不是共享类型。<br>2. 传入的result参数为NULL。 |
+
 ### OH_JSVM_CreateDate()
 
 ```c
@@ -1830,7 +2049,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayTyp
 
 **描述**
 
-基于已有的ArrayBuffer对象，创建一个JavaScript TypedArray对象。TypedArray对象在底层数据缓冲区上提供了一个类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。要求：length * 元素标量byte值 + byteOffset 不大于传入数组的ByteLength()，否则抛出范围错误（RangeError）。
+基于已有的ArrayBuffer或SharedArrayBuffer对象，创建一个JavaScript TypedArray对象。TypedArray对象在底层数据缓冲区上提供了一个类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。要求：length * 元素标量byte值 + byteOffset 不大于传入数组的ByteLength()，否则抛出范围错误（RangeError）。
 
 **起始版本：** 11
 
@@ -1842,7 +2061,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayTyp
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
 | [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype) type | TypedArray中元素的标量数据类型。 |
 | size_t length | TypedArray中的元素个数。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer是类型化数组的基础。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer或SharedArrayBuffer是类型化数组的基础。 |
 | size_t byteOffset | ArrayBuffer中开始投影TypedArray的字节偏移量。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript TypedArray的JSVM_Value。 |
 
@@ -1860,7 +2079,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_V
 
 **描述**
 
-基于已有的ArrayBuffer对象，创建一个JavaScript DataView对象。DataView对象在底层数据缓冲区上提供了一个类似数组的视图，其中的元素可以具有不同的大小和类型。要求：二进制的length + byteOffset不大于传入数组的大小（byte数）。否则，抛出范围错误（RangeError）。
+基于已有的ArrayBuffer或SharedArrayBuffer对象，创建一个JavaScript DataView对象。DataView对象在底层数据缓冲区上提供了一个类似数组的视图，其中的元素可以具有不同的大小和类型。要求：二进制的length + byteOffset不大于传入数组的大小（byte数）。否则，抛出范围错误（RangeError）。
 
 **起始版本：** 11
 
@@ -1871,7 +2090,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_V
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
 | size_t length | DataView中的元素个数。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | 位于DataView底层的ArrayBuffer。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | 位于DataView底层的ArrayBuffer或SharedArrayBuffer。 |
 | size_t byteOffset | ArrayBuffer中的字节偏移量，指示投影DataView的开始位置。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript DataView对象的JSVM_Value。 |
 
@@ -2260,7 +2479,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env,JSVM_Value typeda
 | [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | TypedArray中元素的标量数据类型。 |
 | size_t* length | TypedArray中的元素数。 |
 | void** data | TypedArray底层的数据缓冲区由byte_offset值调整，使其指向TypedArray中的第一个元素。如果数组的长度是0，这可能是NULL或任何其他指针值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | 位于TypedArray下的ArrayBuffer。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | 位于TypedArray下的ArrayBuffer或SharedArrayBuffer。 |
 | size_t* byteOffset | 数组的第一个元素所在的基础原生数组中的字节偏移量。data 参数的值已经过调整，因此data指向数组中的第一个元素。因此，原生数组的第一个字节将位于data - byte_offset。 |
 
 **返回：**
@@ -2290,7 +2509,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env,JSVM_Value dataview
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) dataview |  表示要查询其属性的DataView。 |
 | size_t* bytelength | DataView中的字节个数。 |
 | void** data | DataView下的数据缓冲区。如果bytelength是0则可能是NULL或任何其他指针值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | ArrayBuffer是DataView的基础。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | 位于DataView底层的ArrayBuffer或SharedArrayBuffer。 |
 | size_t* byteOffset | 开始投影DataView的数据缓冲区中的字节偏移量。 |
 
 **返回：**
@@ -3127,7 +3346,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env,JSVM_Value arrayb
 
 **描述**
 
-提供类似于调用ArrayBuffer detach操作的行为。
+提供类似于调用ArrayBuffer detach操作的行为。SharedArrayBuffer不支持Detach操作，传入SharedArrayBuffer会返回[JSVM_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status)。
 
 **起始版本：** 11
 
@@ -3143,7 +3362,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env,JSVM_Value arrayb
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         如果[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是可分离的ArrayBuffer。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>如果[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>[JSVM_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是ArrayBuffer（例如SharedArrayBuffer）。<br>[JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是可分离的ArrayBuffer。 |
 
 ### OH_JSVM_IsDetachedArraybuffer()
 
