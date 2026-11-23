@@ -55,12 +55,13 @@ CLI工具会话事件的回调接口。
 **示例：**
 
 ```ts
-import { common } from '@kit.AbilityKit';
+import { cliManager } from '@kit.AbilityKit';
 
-// 定义CLI工具会话事件的回调对象
-let callback: common.ToolEventCallback = {
-  onEvent: (event: common.CliToolEvent) => {
+let sessionId = 'example_session_id';
+// 订阅指定会话的事件，通过onEvent回调接收CLI工具会话事件
+cliManager.subscribeSession(sessionId, {
+  onEvent: (event) => {
     console.info('tool event type: ' + event.toolEventType + ', data: ' + event.data);
   }
-};
+});
 ```
