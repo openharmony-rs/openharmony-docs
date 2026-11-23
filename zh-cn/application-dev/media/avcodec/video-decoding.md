@@ -852,14 +852,17 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 16. 调用OH_VideoDecoder_Destroy()销毁解码器实例，释放资源。
 
     <!-- @[player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp)-->
-
-    ```c++
-    void Player::ReleaseVideoDecoder()
+    
+    ``` C++
+    void Player::ReleaseVideoDecoder(bool trackCleanup)
     {
         OHNativeWindow *decoderWindow = decoderWindowLease_.GetWindow();
         if (videoDecoder_ != nullptr) {
             // ...
-            videoDecoder_->Release();
+            if (trackCleanup) {
+                cleanupProgress_.Enter("codec.video.destroy");
+            }
+            RecordCleanup("video.decoder.destroy", videoDecoder_->Release());
             videoDecoder_.reset();
         }
         if (sampleInfo_.video.window == decoderWindow) {
