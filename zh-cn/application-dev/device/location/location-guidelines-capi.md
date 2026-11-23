@@ -66,7 +66,7 @@
 
    <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` c++
+   ``` C++
     std::string GetErrorMsgFromErrorCode(int errorCode)
     {
         switch(errorCode) {
@@ -105,7 +105,7 @@
 
    <!-- @[location_capi_locating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` c++
+   ``` C++
    // 定义一个请求参数
    struct Location_RequestConfig *g_requestConfig = nullptr;
    void *g_mydata = nullptr;
