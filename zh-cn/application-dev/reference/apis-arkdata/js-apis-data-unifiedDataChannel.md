@@ -476,18 +476,18 @@ let types = unifiedData.getTypes();
 function parseSummary(summary: unifiedDataChannel.Summary) {
   let summaryRecord = summary.summary as Record<string, number>;
   if (summaryRecord) {
-    for (let item of Object.entries(summaryRecord)) {
+    Object.entries(summaryRecord).forEach((item) => {
       if (item && item.length <= 1) {
-        continue;
+        return;
       }
       let summaryStr: string = String(item[1]);
       let info: string[] = summaryStr.split(",");
       if (info.length <= 1) {
-        continue;
+        return;
       }
       let key: string = info[0];
       let value: string = info[1];
-    }
+    });
   }
   let overviewRecord = summary.overview as Record<string, number>;
   let totalSize = summary.totalSize;
@@ -767,19 +767,18 @@ record.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
 unifiedData.addRecord(record);
 
 let records = unifiedData.getRecords();
-for (let i = 0; i < records.length; i++) {
-  let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
   let fileUriRead: uniformDataStruct.FileUri =
-    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+    record.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
   if (fileUriRead != undefined) {
     console.info(`oriUri: ${fileUriRead.oriUri}`);
   }
   let formRead =
-    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
+    record.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
   if (formRead != undefined) {
     console.info(`formName: ${formRead.formName}`);
   }
-}
+});
 ```
 
 ### getEntries<sup>15+</sup>
@@ -833,9 +832,8 @@ record.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
 unifiedData.addRecord(record);
 
 let records = unifiedData.getRecords();
-for (let i = 0; i < records.length; i++) {
-  let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-  let entries : Record<string, unifiedDataChannel.ValueType> = unifiedDataRecord.getEntries();
+records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+  let entries : Record<string, unifiedDataChannel.ValueType> = record.getEntries();
   let formRead : uniformDataStruct.Form = entries[uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM] as uniformDataStruct.Form;
   if (formRead != undefined) {
     console.info(`formName: ${formRead.formName}`);
@@ -844,7 +842,7 @@ for (let i = 0; i < records.length; i++) {
   if (fileUriRead != undefined) {
     console.info(`oriUri: ${fileUriRead.oriUri}`);
   }
-}
+});
 ```
 
 ### getTypes<sup>15+</sup>
@@ -898,13 +896,12 @@ record.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
 unifiedData.addRecord(record);
 
 let records = unifiedData.getRecords();
-for (let i = 0; i < records.length; i++) {
-  let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-  let types: Array<string> = unifiedDataRecord.getTypes();
+records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+  let types: Array<string> = record.getTypes();
   if (types.includes(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM)) {
     console.info(`Types include: ${uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM}`);
   }
-};
+});
 ```
 
 ## Text
@@ -1293,9 +1290,9 @@ image.createPixelMap(color, opts, (error, pixelMap) => {
 
     // 从unifiedData中读取pixelMap类型的record
     let records = unifiedData.getRecords();
-    for (let i = 0; i < records.length; i++) {
-      if (records[i].getType() === uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP) {
-        let pixelMapRecord = records[i] as unifiedDataChannel.SystemDefinedPixelMap;
+    records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+      if (record.getType() === uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP) {
+        let pixelMapRecord = record as unifiedDataChannel.SystemDefinedPixelMap;
         let newArrayBuf = pixelMapRecord.rawData.buffer;
         pixelMap.writeBufferToPixels(newArrayBuf).then(() => {
           console.info('Succeeded in writing data from buffer to a pixelMap');
@@ -1303,7 +1300,7 @@ image.createPixelMap(color, opts, (error, pixelMap) => {
           console.error(`Failed to write data from a buffer to a PixelMap. code is ${error.code}, message is ${error.message}`);
         })
       }
-    }
+    });
   }
 })
 ```
@@ -1861,16 +1858,16 @@ try {
   unifiedDataChannel.queryData(options, (err, data) => {
     if (err === undefined) {
       console.info(`Succeeded in querying data. size = ${data.length}`);
-      for (let i = 0; i < data.length; i++) {
-        let records = data[i].getRecords();
-        for (let j = 0; j < records.length; j++) {
-          if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+      data.forEach((dataItem: unifiedDataChannel.UnifiedData, index: number) => {
+        let records = dataItem.getRecords();
+        records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+          if (record.getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
             let text =
-              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-            console.info(`${i + 1}.${text.textContent}`);
+              record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            console.info(`${index + 1}.${text.textContent}`);
           }
-        }
-      }
+        });
+      });
     } else {
       console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
     }
@@ -1924,16 +1921,16 @@ let options: unifiedDataChannel.Options = {
 try {
   unifiedDataChannel.queryData(options).then((data) => {
     console.info(`Succeeded in querying data. size = ${data.length}`);
-    for (let i = 0; i < data.length; i++) {
-      let records = data[i].getRecords();
-      for (let j = 0; j < records.length; j++) {
-        if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+    data.forEach((dataItem: unifiedDataChannel.UnifiedData, index: number) => {
+      let records = dataItem.getRecords();
+      records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+        if (record.getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
           let text =
-            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-          console.info(`${i + 1}.${text.textContent}`);
+            record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+          console.info(`${index + 1}.${text.textContent}`);
         }
-      }
-    }
+      });
+    });
   }).catch((err: BusinessError) => {
     console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
   });
@@ -1982,16 +1979,16 @@ try {
   unifiedDataChannel.deleteData(options, (err, data) => {
     if (err === undefined) {
       console.info(`Succeeded in deleting data. size = ${data.length}`);
-      for (let i = 0; i < data.length; i++) {
-        let records = data[i].getRecords();
-        for (let j = 0; j < records.length; j++) {
-          if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+      data.forEach((dataItem: unifiedDataChannel.UnifiedData, index: number) => {
+        let records = dataItem.getRecords();
+        records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+          if (record.getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
             let text =
-              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-            console.info(`${i + 1}.${text.textContent}`);
+              record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            console.info(`${index + 1}.${text.textContent}`);
           }
-        }
-      }
+        });
+      });
     } else {
       console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
     }
@@ -2045,16 +2042,16 @@ let options: unifiedDataChannel.Options = {
 try {
   unifiedDataChannel.deleteData(options).then((data) => {
     console.info(`Succeeded in deleting data. size = ${data.length}`);
-    for (let i = 0; i < data.length; i++) {
-      let records = data[i].getRecords();
-      for (let j = 0; j < records.length; j++) {
-        if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+    data.forEach((dataItem: unifiedDataChannel.UnifiedData, index: number) => {
+      let records = dataItem.getRecords();
+      records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+        if (record.getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
           let text =
-            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-          console.info(`${i + 1}.${text.textContent}`);
+            record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+          console.info(`${index + 1}.${text.textContent}`);
         }
-      }
-    }
+      });
+    });
   }).catch((err: BusinessError) => {
     console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
   });
