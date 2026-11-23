@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:33:55.599Z pushedAt=2026-11-16T02:06:53.441Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:34:38.917Z pushedAt=2026-11-23T08:04:11.367Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [PBKDF2](crypto-key-derivation-overview.md#pbkdf2).
 
@@ -59,6 +59,7 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -72,21 +73,23 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
-  function kdfPromise() {
-    let spec: cryptoFramework.PBKDF2Spec = {
-      algName: 'PBKDF2',
-      password: '123456',
-      salt: new Uint8Array(16),
-      iterations: 10000,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
-    let kdfPromise = kdf.generateSecret(spec);
-    kdfPromise.then((secret) => {
+  async function kdfPromise() {
+    try {
+      let spec: cryptoFramework.PBKDF2Spec = {
+        algName: 'PBKDF2',
+        password: '123456',
+        salt: new Uint8Array(16),
+        iterations: 10000,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+      let secret = await kdf.generateSecret(spec);
       console.info('key derivation output: ' + secret.data);
-    }).catch((error: BusinessError) => {
-      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`key derivation failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -113,6 +116,7 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

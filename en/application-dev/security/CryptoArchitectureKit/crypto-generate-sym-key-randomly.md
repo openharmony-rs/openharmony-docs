@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:32:54.170Z pushedAt=2026-11-16T02:06:53.432Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:32:17.030Z pushedAt=2026-11-23T08:03:41.114Z nl=1 -->
 
 This topic uses AES and SM4 as an example to describe how to generate a symmetric key and obtain the binary data.
 
@@ -30,18 +30,20 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
-  function testGenerateAesKey() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-    // Use SymKeyGenerator to randomly generate a symmetric key.
-    let promiseSymKey = symKeyGenerator.generateSymKey();
-    promiseSymKey.then(key => {
+  async function testGenerateAesKey() {
+    try {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+      // Use the key generator to randomly generate a symmetric key.
+      let key = await symKeyGenerator.generateSymKey();
       // Obtain the binary data of the symmetric key and output a 256-bit key, which is of 32 bytes.
       let encodedKey = key.getEncoded();
       console.info('key hex: ' + encodedKey.data);
-    }).catch((error: BusinessError) => {
-      console.error(`testGenerateAesKey failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testGenerateAesKey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -65,6 +67,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`testSyncGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -90,18 +93,20 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
-  function testGenerateSM4Key() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
-    // Use SymKeyGenerator to randomly generate a symmetric key.
-    let promiseSymKey = symKeyGenerator.generateSymKey();
-    promiseSymKey.then(key => {
+  async function testGenerateSM4Key() {
+    try {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
+      // Use the key generator to randomly generate a symmetric key.
+      let key = await symKeyGenerator.generateSymKey();
       // Obtain the binary data of the symmetric key and output a 128-bit byte stream, which is of 16 bytes.
       let encodedKey = key.getEncoded();
       console.info('key hex: ' + encodedKey.data);
-    }).catch((error: BusinessError) => {
-      console.error(`testGenerateSM4Key failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testGenerateSM4Key failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -125,6 +130,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`testSyncGenerateSm4Key failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

@@ -6,7 +6,7 @@
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=87b4440620e2236c37f64f0f3ee04cb675a7a297 translatedAt=2026-10-31T06:56:53.977Z pushedAt=2026-10-31T09:08:32.486Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b80d55e627b5b3d9392a44aba8c63f4d5cc9e13f translatedAt=2026-11-20T09:18:36.678Z pushedAt=2026-11-23T07:55:52.238Z nl=1 -->
 
 Asset Store Kit (ASSET for short) provides secure storage and management of short sensitive data. Such short sensitive data includes but is not limited to passwords (accounts/passwords), tokens (application credentials), and other critical plaintext such as bank card numbers.
 
@@ -51,10 +51,6 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
 ## Constraints
 
-### Device limitations
-
-  This kit is not supported on lite wearables.
-
 ### Constraints
 
   ASSET is designed with secure storage as its core goal and provides secure storage of short sensitive data. It is not a general-purpose storage service. The following constraints apply when using it:
@@ -85,7 +81,13 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
   - Assets with [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag) set to **true** cannot be shared in a group.
 
+### Supported Devices
+
+  Phone, PC/2in1, Tablet, TV, Car, Wearable
+
 <!--RP2--><!--RP2End-->
+
+<!--RP1--><!--RP1End-->
 
 ## Data Lifecycle
 
@@ -96,8 +98,6 @@ Assets are deleted only in the following scenarios:
     - For API version 20 and earlier: Both non-group and group data stored in ASSET are cleared.
 - When a system sub-user is deleted, all data of that user in ASSET is cleared.
 - When the device is restored to factory settings, all data in ASSET is cleared.
-
-<!--RP1--><!--RP1End-->
 
 ## Relationship with Other Kits
 

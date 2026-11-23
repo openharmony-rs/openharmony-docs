@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9dd55b053b89fa72857b413bdd99b8031d614bc7 translatedAt=2026-11-20T09:19:03.269Z pushedAt=2026-11-23T07:55:36.090Z nl=1 -->
 
 <!--RP1-->
 The following permissions are open to system applications and enterprise applications.
@@ -805,17 +806,17 @@ Allows an enterprise application to obtain audio sound card information.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Whether certificate authorization is supported**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Initial version**: 26.1.0
+**Since**: 26.1.0
 
 ## ohos.permission.ENTERPRISE_MANAGE_DISK
 
-Allows an enterprise normal application to query local disk hardware information.
+Allows enterprise common applications to query local disk hardware information.
 
-With this permission, an application can query sensitive information related to the local disk, such as disk power-on hours and start/stop cycle count, helping enterprise administrators monitor disk health status.
+After obtaining this permission, applications can query sensitive information related to local disks, such as disk power-on time and disk start/stop count, to help enterprise administrators monitor disk health status.
 
 <!--RP2--><!--RP2End-->
 

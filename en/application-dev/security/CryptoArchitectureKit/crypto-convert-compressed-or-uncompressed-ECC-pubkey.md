@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:29:02.521Z pushedAt=2026-11-16T02:06:53.412Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:23:46.219Z pushedAt=2026-11-23T07:57:03.502Z nl=1 -->
 
 You can generate a public key object (**PubKey**) from ECC public key data or obtain the ECC public key data from a public key (**PubKey**) object.
 
@@ -16,7 +16,7 @@ For details about the ECC algorithm specifications, see [Asymmetric Key Generati
 
 You can specify the string parameter **format** to set the format of the ECC public key data to obtain. To obtain compressed data that complies with the X.509 standard, set **format** to **"X509|COMPRESSED"**. To obtain uncompressed data, set **format** to **"X509|UNCOMPRESSED"**.
 
-##  Converting Uncompressed Public Key Data to Compressed Public Key Data
+## Converting Uncompressed Public Key Data to Compressed Public Key Data
 
 1. Encapsulate uncompressed ECC public key data of the Uint8Array type into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 
@@ -47,6 +47,7 @@ async function eccPubUncompressedToCompressed() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`eccPubUncompressedToCompressed failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

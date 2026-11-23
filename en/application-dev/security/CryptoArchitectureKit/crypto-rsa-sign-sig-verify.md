@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:53:17.164Z pushedAt=2026-10-30T07:31:10.143Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:37:38.102Z pushedAt=2026-11-23T08:04:39.143Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Signing and Signature Verification Algorithm Specifications: RSA](crypto-sign-sig-verify-overview.md#rsa).
 
@@ -41,7 +41,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
 
    There is no limit on the length of a single update. You can determine how to call update based on the amount of data.
 
-   - When the data to be signed is short, you can call verify directly after init is complete.
+   - When the data to be verified is short, you can call `verify` directly after `init` completes.
    - When the amount of data is large, you can call update multiple times, that is, [Segmented Signing and Signature Verification](crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments).
 
 4. Call [Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1) to verify the data.
@@ -53,6 +53,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // The complete plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -78,15 +79,22 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
   }
   
   async function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey);
-    let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey);
+      let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -98,6 +106,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // The complete plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -123,15 +132,22 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
   }
   
   function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey);
-    let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey);
+      let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -173,6 +189,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA1024|PKCS1|SHA256|OnlySign';
@@ -193,21 +210,28 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   async function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // First use Md to compute the SHA256 digest (32 bytes).
-    let md = cryptoFramework.createMd('SHA256');
-    await md.update(messageData);
-    let digestBlob = await md.digest();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // First use Md to calculate the SHA256 digest (32 bytes).
+      let md = cryptoFramework.createMd('SHA256');
+      await md.update(messageData);
+      let digestBlob = await md.digest();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey, digestBlob);
+      let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -219,6 +243,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA1024|PKCS1|SHA256|OnlySign';
@@ -239,21 +264,28 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // First use Md to compute the SHA256 digest (32 bytes).
-    let md = cryptoFramework.createMd('SHA256');
-    md.updateSync(messageData);
-    let digestBlob = md.digestSync();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // First use Md to calculate the SHA256 digest (32 bytes).
+      let md = cryptoFramework.createMd('SHA256');
+      md.updateSync(messageData);
+      let digestBlob = md.digestSync();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey, digestBlob);
+      let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -287,6 +319,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // The complete plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -308,15 +341,22 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   async function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey);
-    let rawSignData = await verifyMessagePromise(signData, keyPair.pubKey);
-    if (rawSignData != null) {
-      console.info('recover result: ' + rawSignData.data);
-    } else {
-      console.error('get verify recover result: fail!');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey);
+      let rawSignData = await verifyMessagePromise(signData, keyPair.pubKey);
+      if (rawSignData != null) {
+        console.info('recover result: ' + rawSignData.data);
+      } else {
+        console.error('get verify recover result: fail!');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`recover failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -328,6 +368,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // The complete plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -349,15 +390,22 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey);
-    let rawSignData = verifyMessageSync(signData, keyPair.pubKey);
-    if (rawSignData != null) {
-      console.info('recover result: ' + rawSignData.data);
-    } else {
-      console.error('get verify recover result: fail!');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey);
+      let rawSignData = verifyMessageSync(signData, keyPair.pubKey);
+      if (rawSignData != null) {
+        console.info('recover result: ' + rawSignData.data);
+      } else {
+        console.error('get verify recover result: fail!');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`recover failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -395,6 +443,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessageBySegment(priKey: cryptoFramework.PriKey, plainText: Uint8Array) {
     let signAlg = 'RSA1024|PKCS1|SHA256';
@@ -431,24 +480,31 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   async function rsaSignatureBySegment() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
-    let signData = await signMessageBySegment(keyPair.priKey, messageData);
-    let verifyResult = await verifyMessageBySegment(keyPair.pubKey, messageData, signData);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
+      let signData = await signMessageBySegment(keyPair.priKey, messageData);
+      let verifyResult = await verifyMessageBySegment(keyPair.pubKey, messageData, signData);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -460,6 +516,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageBySegment(priKey: cryptoFramework.PriKey, plainText: Uint8Array) {
     let signAlg = 'RSA1024|PKCS1|SHA256';
@@ -496,24 +553,31 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   function rsaSignatureBySegment() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
-    let signData = signMessageBySegment(keyPair.priKey, messageData);
-    let verifyResult = verifyMessageBySegment(keyPair.pubKey, messageData, signData);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
+      let signData = signMessageBySegment(keyPair.priKey, messageData);
+      let verifyResult = verifyMessageBySegment(keyPair.pubKey, messageData, signData);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -557,6 +621,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // Construct RSA asymmetric key pair parameters based on the key parameter attributes.
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
@@ -594,53 +659,60 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   async function verifyMessagePSS() {
-    // The complete plaintext is split into input1 and input2.
-    let messagePart1 = 'This is Sign test plan1';
-    let messagePart2 = 'This is Sign test plan2';
-    let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
-    let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
-    // Obtain the RSA key pair parameter object.
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // Construct the RSA key pair generator.
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    // Both sign and verify support RSA keys with or without a length.
-    let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
-    let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
-    let keyPair = await rsaGeneratorSpec.generateKeyPair();
-    await signer.init(keyPair.priKey);
-    // After signature initialization, perform set and get operations on the PSS parameters.
-    let setN = 32;
-    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    console.info('mgf1Md: ' + mgf1Md);
-    await signer.update(input1);
-    let signMessageBlob = await signer.sign(input2);
-    // Before verification initialization, perform set and get operations on the PSS parameters.
-    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    await verifier.init(keyPair.pubKey);
-    await verifier.update(input1);
-    let verifyResult = await verifier.verify(input2, signMessageBlob);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      // The complete plaintext is split into input1 and input2.
+      let messagePart1 = 'This is Sign test plan1';
+      let messagePart2 = 'This is Sign test plan2';
+      let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
+      let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
+      // Obtain the RSA key pair key parameter object.
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // Construct the RSA key pair generator.
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      // Both sign and verify support the RSA key format with length/without length.
+      let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
+      let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
+      let keyPair = await rsaGeneratorSpec.generateKeyPair();
+      await signer.init(keyPair.priKey);
+      // After signature initialization, perform set and get operations on the PSS parameters.
+      let setN = 32;
+      signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      console.info('mgf1Md: ' + mgf1Md);
+      await signer.update(input1);
+      let signMessageBlob = await signer.sign(input2);
+      // Before signature verification initialization, perform set and get operations on the PSS parameters.
+      verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      await verifier.init(keyPair.pubKey);
+      await verifier.update(input1);
+      let verifyResult = await verifier.verify(input2, signMessageBlob);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -652,6 +724,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // Construct RSA asymmetric key pair parameters based on the key parameter attributes.
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
@@ -689,53 +762,60 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   function verifyMessagePSSSync() {
-    // The complete plaintext is split into input1 and input2.
-    let messagePart1 = 'This is Sign test plan1';
-    let messagePart2 = 'This is Sign test plan2';
-    let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
-    let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
-    // Obtain the RSA key pair parameter object.
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // Construct the RSA key pair generator.
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    // Both sign and verify support RSA keys with or without a length.
-    let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
-    let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
-    let keyPair = rsaGeneratorSpec.generateKeyPairSync();
-    signer.initSync(keyPair.priKey);
-    // After signature initialization, perform set and get operations on the PSS parameters.
-    let setN = 32;
-    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    console.info('mgf1Md: ' + mgf1Md);
-    signer.updateSync(input1);
-    let signMessageBlob = signer.signSync(input2);
-    // Before verification initialization, perform set and get operations on the PSS parameters.
-    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    verifier.initSync(keyPair.pubKey);
-    verifier.updateSync(input1);
-    let verifyResult = verifier.verifySync(input2, signMessageBlob);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      // The complete plaintext is split into input1 and input2.
+      let messagePart1 = 'This is Sign test plan1';
+      let messagePart2 = 'This is Sign test plan2';
+      let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
+      let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
+      // Obtain the RSA key pair key parameter object.
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // Construct the RSA key pair generator.
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      // Both sign and verify support the RSA key format with or without length.
+      let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
+      let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
+      let keyPair = rsaGeneratorSpec.generateKeyPairSync();
+      signer.initSync(keyPair.priKey);
+      // After signature initialization, perform set and get operations on the PSS parameters.
+      let setN = 32;
+      signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      console.info('mgf1Md: ' + mgf1Md);
+      signer.updateSync(input1);
+      let signMessageBlob = signer.signSync(input2);
+      // Before signature verification initialization, perform set and get operations on the PSS parameters.
+      verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      verifier.initSync(keyPair.pubKey);
+      verifier.updateSync(input1);
+      let verifyResult = verifier.verifySync(input2, signMessageBlob);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -777,6 +857,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA|PSS|SHA256|MGF1_SHA256|OnlySign';
@@ -797,21 +878,28 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   async function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // First use Md to compute the SHA256 digest (32 bytes).
-    let md = cryptoFramework.createMd('SHA256');
-    await md.update(messageData);
-    let digestBlob = await md.digest();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // First use Md to calculate the SHA256 digest (32 bytes).
+      let md = cryptoFramework.createMd('SHA256');
+      await md.update(messageData);
+      let digestBlob = await md.digest();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey, digestBlob);
+      let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -823,6 +911,7 @@ Starting from API version 26.0.0, signing and signature verification support the
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA|PSS|SHA256|MGF1_SHA256|OnlySign';
@@ -843,21 +932,28 @@ Starting from API version 26.0.0, signing and signature verification support the
   }
   
   function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // First use Md to compute the SHA256 digest (32 bytes).
-    let md = cryptoFramework.createMd('SHA256');
-    md.updateSync(messageData);
-    let digestBlob = md.digestSync();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // First use Md to calculate the SHA256 digest (32 bytes).
+      let md = cryptoFramework.createMd('SHA256');
+      md.updateSync(messageData);
+      let digestBlob = md.digestSync();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey, digestBlob);
+      let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

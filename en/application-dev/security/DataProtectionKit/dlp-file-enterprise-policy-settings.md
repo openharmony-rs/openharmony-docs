@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=bbcc2e37e8129d97ee49fdfc327c495aa2406a09 translatedAt=2026-10-31T07:05:33.195Z pushedAt=2026-10-31T09:17:28.399Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5472510fb4ca1543101d041aa8e6dbd398579675 translatedAt=2026-11-20T09:39:05.956Z pushedAt=2026-11-23T08:05:04.462Z nl=1 -->
 
 ## When to Use
 
@@ -14,6 +14,8 @@ Data Protection Kit provides applications with the capability to set dynamic pro
 The currently supported policy types include device health status, network status, debug mode status, advanced security mode status, and file type.
 
 No communication plug-in needs to be registered in advance to use this capability.
+
+<!--RP1--><!--RP1End-->
 
 ## Development Procedure
 
@@ -33,7 +35,7 @@ No communication plug-in needs to be registered in advance to use this capabilit
     2.3 Call [dlpPermission.setEnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetenterprisepolicy21) to complete the protection policy configuration.
 
     <!-- @[dlp_setEnterprisePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     setEnterprisePolicy() {
       try {

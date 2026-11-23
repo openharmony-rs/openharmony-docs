@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:33:44.533Z pushedAt=2026-11-16T02:06:53.439Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:34:11.997Z pushedAt=2026-11-23T08:04:08.932Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [HKDF](crypto-key-derivation-overview.md#hkdf).
 
@@ -64,6 +64,7 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -78,24 +79,26 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
-  function kdfPromise() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.HKDFSpec = {
-      algName: 'HKDF',
-      key: keyData,
-      salt: saltData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-    let kdfPromise = kdf.generateSecret(spec);
-    kdfPromise.then((secret) => {
+  async function kdfPromise() {
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.HKDFSpec = {
+        algName: 'HKDF',
+        key: keyData,
+        salt: saltData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+      let secret = await kdf.generateSecret(spec);
       console.info('key derivation output: ' + secret.data);
-    }).catch((error: BusinessError) => {
-      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`key derivation failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -127,6 +130,7 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

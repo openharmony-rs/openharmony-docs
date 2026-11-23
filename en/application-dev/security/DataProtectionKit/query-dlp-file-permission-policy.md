@@ -5,11 +5,13 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f0ee249120a0ca18eeb3bd8099ce7092a0617c17 translatedAt=2026-10-31T07:17:31.969Z pushedAt=2026-10-31T09:17:33.967Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b9df51d7071146a150b14ebb45c78377aa8c5fa6 translatedAt=2026-11-20T09:39:59.412Z pushedAt=2026-11-23T08:05:10.918Z nl=1 -->
 
 ## When to Use
 
 Data Protection Kit provides applications with the capability to obtain DLP file permission policy information. An application can query the specific policy of a DLP file, including the authorized user list, granted permissions, whether offline opening is allowed, and enterprise-defined policies.
+
+<!--RP1--><!--RP1End-->
 
 ## Development Procedure
 

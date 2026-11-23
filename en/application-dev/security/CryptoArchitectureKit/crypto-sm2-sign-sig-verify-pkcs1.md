@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T04:03:36.516Z pushedAt=2026-10-30T07:32:58.673Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:38:06.952Z pushedAt=2026-11-23T08:04:56.398Z nl=1 -->
 
 For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify-overview.md#sm2).
 
@@ -41,6 +41,7 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // The complete plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -66,15 +67,22 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
   }
   
   async function main() {
-    let keyGenAlg = 'SM2_256';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey);
-    let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let keyGenAlg = 'SM2_256';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey);
+      let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -87,6 +95,7 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // The complete plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -112,15 +121,22 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
   }
   
   function main() {
-    let keyGenAlg = 'SM2_256';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey);
-    let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let keyGenAlg = 'SM2_256';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey);
+      let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

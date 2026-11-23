@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:36:37.384Z pushedAt=2026-10-30T07:01:30.896Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:24:04.010Z pushedAt=2026-11-23T07:57:06.585Z nl=1 -->
 
 This topic walks you through on how to convert a string in PEM format into an RSA asymmetric key pair (**KeyPair**).
 
@@ -72,6 +72,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Generation a
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`testPkcs1ToPkcs8ByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -83,6 +84,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Generation a
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   let priKeyPkcs1Str1024: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
@@ -115,6 +117,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Generation a
         console.info('[Sync]: convert pem key pair result: success.');
       } else {
         console.error('[Sync]: convert pem key pair result: fail.');
+        // ...
       }
       let priPemKey = keyPairData.priKey;
       let pubPemKey = keyPairData.pubKey;
@@ -122,8 +125,10 @@ For the corresponding algorithm specifications, see [Asymmetric Key Generation a
       let pubString = pubPemKey.getEncodedPem('X509');
       console.info('[Sync]TestPkcs1ToPkcs8BySync priString output: ' + priString);
       console.info('[Sync]TestPkcs1ToPkcs8BySync pubString output: ' + pubString);
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`Sync failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
