@@ -18,10 +18,27 @@ UIContext实例对象，用于提供与当前UI实例关联的上下文能力，
 
 **示例：**
 
-以下示例展示了三种获取UIContext实例的方法。
+以下示例展示了三种获取UIContext实例的方法，三种方法获取到的UIContext没有差异。三种方法分布在两个文件中，因此由两个互相独立的示例脚本承载：示例脚本一须完整拷贝到UIAbility文件EntryAbility.ets中，示例脚本二须完整拷贝到页面文件index.ets中，请勿将两个脚本拷贝到同一个文件。
+
+**示例脚本一（EntryAbility.ets）：**
 
 ```ts
-// 三种方法获取到的UIContext没有差异
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 第一种：通过ohos.window中的getUIContext()方法获取UIContext实例
+    windowStage.getMainWindowSync().getUIContext();
+    // 其他运行逻辑
+  }
+}
+```
+
+**示例脚本二（index.ets）：**
+
+```ts
 // index.ets
 import { UIContext } from '@kit.ArkUI';
 
@@ -32,25 +49,13 @@ struct Index {
     Column() {
       Button('Button')
           .onClick(() => {
-            // 通过自定义组件内置方法获取
+            // 第二种：通过自定义组件内置方法getUIContext()获取UIContext实例
             this.getUIContext();
-            // 通过UIContext类的静态方法获取
+            // 第三种：通过UIContext类的静态方法（如getCallingScopeUIContext）获取UIContext实例
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
           })
     }
-  }
-}
-
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext();
-    // 其他运行逻辑
   }
 }
 ```
@@ -607,7 +612,7 @@ struct Index {
 
 getPlaceholderRegister(): PlaceholderRegister
 
-获取[PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister)对象，可通过该对象注册、注销和查询滚动占位模板，供[List](./arkui-ts/ts-container-list.md)、[WaterFlow](./arkui-ts/ts-container-waterflow.md)的[scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。每个UI实例持有独立的注册表。
+获取[PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister)对象，可通过该对象注册、注销和查询滚动占位模板，供[List](./arkui-ts/ts-container-list.md)、[WaterFlow](./arkui-ts/ts-container-waterflow.md)、[Grid](./arkui-ts/ts-container-grid.md)的[scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。每个UI实例持有独立的注册表。
 
 **起始版本：** 26.1.0
 
@@ -4956,7 +4961,9 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
 
+```ts
 // Index.ets
 @Entry
 @Component

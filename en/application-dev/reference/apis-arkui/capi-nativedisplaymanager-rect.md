@@ -2,10 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=61ff202ad259a75c2a093f9146121145c100be77 translatedAt=2026-08-27T08:39:07.345Z pushedAt=2026-08-27T12:05:21.626Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:09:20.729Z pushedAt=2026-11-20T01:48:50.364Z nl=1 -->
 
 ```c
 typedef struct {...} NativeDisplayManager_Rect

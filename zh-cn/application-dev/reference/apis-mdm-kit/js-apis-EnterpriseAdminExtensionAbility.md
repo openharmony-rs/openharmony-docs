@@ -1119,7 +1119,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void
 
-外置存储设备插入事件回调。通过[usbManager.setExternalStorageInterceptEnable](./js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口开启外置存储设备拦截后，当有外置存储设备插入时，系统会通过该回调将插入的外置存储设备信息上报给开启了该拦截的设备管理应用。仅当插入的外置存储设备类型为[DiskType](./js-apis-enterprise-common.md#disktype)枚举所列的三种类型（SD卡、U盘、光盘）时，才会触发该回调进行上报。
+外置存储设备插入事件回调。无需注册，通过[usbManager.setExternalStorageInterceptEnable](./js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口开启外置存储设备拦截后，当有外置存储设备插入时，系统会通过该回调将插入的外置存储设备信息上报给开启了该拦截的设备管理应用。仅当插入的外置存储设备类型为[DiskType](./js-apis-enterprise-common.md#disktype)枚举所列的三种类型（SD卡、U盘、光盘）时，才会触发该回调进行上报。
 
 **起始版本：** 26.0.1
 

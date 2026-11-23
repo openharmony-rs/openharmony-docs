@@ -694,6 +694,62 @@ Type conversion failed.
 
 确保传入字段的数据类型与使用的接口匹配。
 
+<!--Del-->
+## 14800042 数据库不存在
+
+**错误信息**
+
+The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created.
+
+**错误描述**
+
+数据库不存在。可能原因：1. 数据库已被删除；2. 数据库未创建。
+
+**可能原因**
+
+1. 数据库已被删除，调用[retainDeviceData()](js-apis-data-relationalStore-sys.md#retaindevicedata24)接口时会失败。
+2. 数据库未创建，调用[retainDeviceData()](js-apis-data-relationalStore-sys.md#retaindevicedata24)接口时会失败。
+
+**处理步骤**
+
+1. 排查数据库是否已被删除。
+   - 是：重新创建数据库后再执行相关操作。
+   - 否：转下一步。
+2. 排查数据库是否已创建。
+   - 是：提供hilog系统日志，联系技术支撑人员定位。
+   - 否：先创建数据库，再执行相关操作。
+<!--DelEnd-->
+
+<!--Del-->
+## 14800043 数据库不支持该场景
+
+**错误信息**
+
+The database does not support this scenario. Possible causes: 1. The database type is not supported; 2. The table type is not supported; 3. This is a read-only database.
+
+**错误描述**
+
+数据库不支持该场景。可能原因：1. 数据库类型不支持；2. 表类型不支持；3. 该数据库为只读数据库。
+
+**可能原因**
+
+1. 数据库类型不支持，调用[retainDeviceData()](js-apis-data-relationalStore-sys.md#retaindevicedata24)、[updateDistributedInfo()](js-apis-data-relationalStore-sys.md#updatedistributedinfo24)或[cleanDeviceDirtyData()](js-apis-data-relationalStore-sys.md#cleandevicedirtydata)等接口时会失败。
+2. 表类型不支持（如未设置分布式表），调用上述接口时会失败。
+3. 数据库为只读数据库，调用上述接口时会失败。
+
+**处理步骤**
+
+1. 确认数据库类型是否支持当前操作。
+   - 是：转下一步。
+   - 否：更换为支持当前操作的数据库类型。
+2. 确认表类型是否支持当前操作，如是否已通过[setDistributedTables()](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables)设置为分布式表。
+   - 是：转下一步。
+   - 否：按接口要求设置表类型后再执行相关操作。
+3. 确认数据库是否以只读模式打开。
+   - 是：以读写模式打开数据库或更换数据库后再执行相关操作。
+   - 否：提供hilog系统日志，联系技术支撑人员定位。
+<!--DelEnd-->
+
 ## 14800047 WAL文件大小超过默认上限
 
 **错误信息**

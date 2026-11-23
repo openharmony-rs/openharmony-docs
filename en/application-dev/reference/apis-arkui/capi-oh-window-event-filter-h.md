@@ -1,12 +1,11 @@
 # oh_window_event_filter.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=43433a4dbf9ba0069b5e7d96c07741ab924162cf translatedAt=2026-08-25T02:17:01.682Z pushedAt=2026-08-25T02:32:48.016Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:16:38.078Z pushedAt=2026-11-20T02:16:05.483Z nl=1 -->
 
 ## Overview
 
@@ -55,6 +54,7 @@ Defines a function for filtering multimodal key events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -78,6 +78,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 Registers a function for filtering multimodal key events.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -104,6 +105,7 @@ Unregisters a function for filtering multimodal key events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -128,6 +130,7 @@ Defines a function for filtering multimodal mouse events.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -151,6 +154,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 Registers a function for filtering multimodal mouse events.
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -177,6 +181,7 @@ Unregisters a function for filtering multimodal mouse events.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -200,6 +205,7 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 Defines a function for filtering multimodal touch events.
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -225,6 +231,7 @@ Registers a function for filtering multimodal touch events.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -249,6 +256,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_
 Unregisters a function for filtering multimodal touch events.
 
 **Since**: 15
+
 
 **Parameters**
 

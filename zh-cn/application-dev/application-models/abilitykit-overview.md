@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍Ability Kit（程序框架服务）提供的能力范围与核心特征，涵盖应用生命周期管理、组件间交互、多Module开发及跨端流转等场景。"
+keywords: [Ability Kit, 程序框架服务, 应用模型, UIAbility, Stage模型, 生命周期管理, 组件交互, 跨端迁移, 多Module]
+doctype: guide
+status: active
+---
 # Ability Kit简介
 
 <!--Kit: Ability Kit-->

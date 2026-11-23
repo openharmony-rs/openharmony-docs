@@ -335,6 +335,15 @@
   - [NDK多实例场景开发](ndk-scope-task.md)
   - [NDK多线程创建组件](ndk-build-on-multi-thread.md)
   - [构建渲染节点](ndk-embed-render-components.md)
+  - UI信息采集和交互注入<!--arkts-ui-info-inject-ndk-->
+    - [UI信息采集和交互注入概述](ndk-ui-info-overview.md)
+    - [UI信息数据格式说明](ndk-ui-info-data-structure.md)
+    - [采集控件树信息](ndk-ui-info-collect-tree.md)
+    - [采集图文信息](ndk-ui-info-collect-text-image.md)
+    - [注入控件命令](ndk-ui-command-injection.md)
+    - [监听页面变化事件](ndk-ui-content-change-event.md)
+    - [监听全局手势](ndk-sense-gestures-and-events.md)
+    - [UI结构化数据映射附录](ndk-ui-appendix.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->

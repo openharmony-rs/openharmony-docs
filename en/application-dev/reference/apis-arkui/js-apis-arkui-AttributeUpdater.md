@@ -1,12 +1,11 @@
 # AttributeUpdater
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunbees-->
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d89c4be0c26be57dcac6e3a0bb8b7f968642aa19 translatedAt=2026-07-29T09:27:32.314Z pushedAt=2026-07-31T10:47:41.992Z -->
+<!-- md-trans-meta sourceCommit=a27c956231184294eea0c5b016465c01db7db248 translatedAt=2026-11-18T09:29:48.818Z pushedAt=2026-11-20T06:58:38.170Z nl=1 -->
 
 Sets attributes directly to a component to trigger UI re-renders, without marking them as state variables. This is applicable to scenarios where component attributes need to be dynamically updated without defining state variables, such as dynamically modifying component constructor parameters or avoiding defining state variables for one-time attribute updates.
 
@@ -16,6 +15,7 @@ Sets attributes directly to a component to trigger UI re-renders, without markin
 >
 > - The APIs of this module can be used only in the stage model.
 
+
 ## Modules to Import
 
 ```ts
@@ -23,25 +23,24 @@ import { AttributeUpdater } from '@kit.ArkUI';
 ```
 
 > **Instructions**
->
+>  
 > 1. When **AttributeUpdater** is used together with an attribute method, or when methods such as **applyNormalAttribute** are implemented in **AttributeUpdater**, **AttributeUpdater** and the state management update mechanism take effect simultaneously, which can easily cause confusion. Therefore, it is not recommended to use both the attribute method (state management mechanism) and **AttributeUpdater** to set the same attribute on the same component.
->
+>  
 > 2. When **AttributeUpdater** is used together with an attribute method, the one that is used later takes effect. Specifically:
 > If use of **AttributeUpdater** is followed by an attribute method call, the attribute method takes effect under the state management mechanism.
 > If use of **AttributeUpdater** follows an attribute method call, it takes effect.
->
+>  
 > 3. An **AttributeUpdater** object can only be associated with one component at a time; otherwise, the set attributes may only take effect on one component.
->
+>  
 > 4. You need to ensure the type matching of **T** and **C** in **AttributeUpdater** yourself. For example, if **T** is **ImageAttribute**, **C** should be **ImageInterface**; otherwise, it may cause functionality issues when **updateConstructorParams** is used.
 >
-> 5. Currently, **updateConstructorParams** supports only the following components: **Button**, **Image**, **Text**, **Span**, **SymbolSpan**, and **ImageSpan**.
+> 5. Currently, **updateConstructorParams** supports only the following components: **Button**, **Image**, **Text**, **Span**, **SymbolSpan**, and **ImageSpan**.  
 >
-> 6. **AttributeUpdater** does not support operations related to state management, such as switching between light and dark modes.
+> 6. **AttributeUpdater** does not support operations related to state management, such as switching between light and dark modes.  
 >
 > 7. When the API of the [AttributeUpdater](#attributeupdatert-c--initializert) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 
 ## Initializer\<T>
-
 type Initializer\<T> = () => T
 
 Defines the type of the initialization function for component attributes, which is used to create and return an attribute instance of the component.
@@ -57,7 +56,6 @@ Defines the type of the initialization function for component attributes, which 
 |  T       | Attribute instance of the current component.        |
 
 ## AttributeUpdater\<T, C = Initializer\<T>>
-
 Represents the implementation class of [AttributeModifier](arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifiert). You need to customize a class to inherit **AttributeUpdater**.
 
 **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. It is required only when **updateConstructorParams** is used.
@@ -67,7 +65,6 @@ Represents the implementation class of [AttributeModifier](arkui-ts/ts-universal
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### applyNormalAttribute
-
 applyNormalAttribute?(instance: T): void
 
 Defines the normal-state attribute update function, which is triggered when **AttributeUpdater** subsequently updates attributes. It is not recommended to use both **AttributeUpdater** and an attribute method to set the same attribute on the same component, as this can easily cause confusion. When **AttributeUpdater** is used together with an attribute method, the one that is used later takes effect.
@@ -83,7 +80,6 @@ Defines the normal-state attribute update function, which is triggered when **At
 | instance | T | Yes | Attribute class instance of the component. You can call the attribute method of this instance to set or update the normal-state attributes of the component, for example, **ButtonAttribute** of the **Button** component and **TextAttribute** of the **Text** component.|
 
 ### initializeModifier
-
 initializeModifier(instance: T): void
 
 Provides the style when **AttributeUpdater** initially sets attributes to a component. It is not recommended to use both **AttributeUpdater** and an attribute method to set the same attribute on the same component, as this can easily cause confusion. When **AttributeUpdater** is used together with an attribute method, the one that is used later takes effect.
@@ -98,7 +94,7 @@ Provides the style when **AttributeUpdater** initially sets attributes to a comp
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
 | instance | T | Yes | Attribute class instance of the component. You can call the attribute method of this instance to initially set the style attribute to the component, such as **ButtonAttribute** of the **Button** component and **TextAttribute** of the **Text** component. |
 
-**Example**
+**Example** 
 
 This example shows how to use **initializeModifier** to initialize attribute values.
 
@@ -150,11 +146,10 @@ struct Index {
   }
 }
 ```
-
 ![attributeUpdater1](figures/attribute-updater1.gif)
 
-### attribute
 
+### attribute
 get attribute(): T \| undefined
 
 Obtains the attribute class instance corresponding to the component in **AttributeUpdater**. The instance can then be used to directly update attributes. The binding relationship between the component and **AttributeUpdater** must first be established through the component's **attributeModifier** attribute method before the attribute class instance can be obtained. It is not recommended to use both **AttributeUpdater** and an attribute method to set the same attribute on the same component. When **AttributeUpdater** is used together with an attribute method, the one that is used later takes effect.
@@ -169,7 +164,7 @@ Obtains the attribute class instance corresponding to the component in **Attribu
 | -------------------- | ------------------------------------------------------------ |
 | T \| undefined |Returns the attribute class instance of the component in **AttributeUpdater** if it exists; returns **undefined** otherwise.|
 
-**Example**
+**Example** 
 
 This example shows how to directly update attributes through **AttributeUpdater**.
 
@@ -205,7 +200,6 @@ struct UpdaterDemo2 {
   }
 }
 ```
-
 ![attributeUpdater2](figures/attribute-updater2.gif)
 
 ### Properties
@@ -218,7 +212,7 @@ struct UpdaterDemo2 {
 | -------- | -------- | -------- | -------- | -------- |
 | updateConstructorParams | [C](#attributeupdatert-c--initializert) | No | No | **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. The type is used to change the constructor input parameters of the component. The component must first be bound to **AttributeUpdater** through the component's **attributeModifier** attribute method before use. Currently, only the **Button**, **Image**, **Text**, **Span**, **SymbolSpan**, and **ImageSpan** components are supported. Ensure the type matching of **T** and **C** before use; otherwise, it may cause functionality issues. |
 
-**Example**
+**Example** 
 
 This example demonstrates how to use **updateConstructorParams**.
 
@@ -228,6 +222,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
   initializeModifier(instance: TextAttribute): void {
+    // Empty function, used only to demonstrate usage.
   }
 }
 
@@ -254,7 +249,6 @@ struct AttributeDemo3 {
   }
 }
 ```
-
 ![attributeUpdater3](figures/attribute-updater3.gif)
 
 ### onComponentChanged
@@ -273,7 +267,7 @@ Invoked to notify the application when multiple components are bound to the same
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
 | component | T | Yes | Attribute class instance of the component. You can call the attribute method of this instance to set the attribute to the component after changing, for example, **ButtonAttribute** of the **Button** component and **TextAttribute** of the **Text** component. |
 
-**Example**
+**Example** 
 
 ```ts
 // xxx.ets
@@ -321,5 +315,4 @@ struct UpdaterDemo4 {
   }
 }
 ```
-
 ![](figures/attribute-updater4.gif)

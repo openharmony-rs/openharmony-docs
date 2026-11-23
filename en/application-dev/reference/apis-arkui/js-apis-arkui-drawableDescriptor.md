@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=67ca76945225c752aa0b49edfa54fbb6bd5c7cc1 translatedAt=2026-11-18T09:33:51.111Z pushedAt=2026-11-20T07:48:30.182Z nl=1 -->
 
 This module provides capabilities for layered icon composition (foreground, background, mask), animated image control, and basic image processing.
 
@@ -763,9 +764,9 @@ Provides the configuration options for animation playback, including the playbac
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name     | Type   | Read-Only| Optional | Description                                   |
 | :--------- | :----- | :----| :----| :-------------------------------------- |
-| duration   | number | No  | Yes | Total playback duration for the image sequence.<br>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the duration is determined by the playback delay embedded in the image resource.<br>Unit: ms.<br> Value range: [0, +∞).<br>Negative values are treated as the default value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| duration   | number | No   | Yes  | Total playback duration for the image sequence.<br/>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the default value is the playback delay time carried in the image resource.<br/>Unit: ms<br/> Value range: [0, +∞)<br>Negative values are treated as the default value.<br/> **Atomic service API:** This API can be used in atomic services since API version 12. |
 | iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| frameDurations<sup>21+</sup> | Array\<number> | No | Yes |Per-frame playback duration. If this parameter is not set, the animation is played based on the total duration.<br/>This parameter takes precedence over **duration**. If both **duration** and **frameDurations** are set, **duration** does not take effect.<br/>If the length of **frameDurations** does not match the number of images, the animation is played based on the total duration.<br/>Unit: ms<br/> **Atomic service API:** This API can be used in atomic services since API version 21. |
 | autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 | stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 

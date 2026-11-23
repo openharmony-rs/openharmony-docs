@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1a10f2e882133e3dde32de5f81cde43a3d4de71a translatedAt=2026-09-04T03:00:50.879Z pushedAt=2026-09-09T09:11:03.669Z -->
+<!-- md-trans-meta sourceCommit=a344fa18476f0d16c0d531be44b7138a04f15161 translatedAt=2026-11-16T01:34:34.255Z pushedAt=2026-11-20T07:27:00.559Z nl=1 -->
 
 ```c
 typedef struct {...} OH_Cursor
@@ -93,7 +93,7 @@ Pointer to the function used to obtain the column type based on the specified co
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| OH_Cursor *cursor                                            | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor                                            | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex                                          | Index of the column, which starts from **0**.                   |
 | [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) *columnType | Pointer to [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) of columns in the result set obtained.|
 
@@ -120,7 +120,7 @@ Pointer to the function used to obtain the column index based on the specified c
 
 | Name           | Description                                                |
 | ----------------- | ---------------------------------------------------- |
-| OH_Cursor *cursor | Pointer to the **OH_Cursor** instance.                         |
+| OH_Cursor *cursor | Pointer to an **OH_Cursor** instance.                          |
 | const char *name  | Column name.                          |
 | int *columnIndex  | Pointer to the column index obtained.|
 
@@ -147,7 +147,7 @@ Pointer to the function used to obtain the column name based on the specified co
 
 | Name             | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor   | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
 | char *name          | Pointer to the column name obtained.        |
 | int length          | Total length of the column name obtained, including the terminator.|
@@ -201,7 +201,7 @@ Pointer to the function used to go to the next row of the result set.
 
 | Name           | Description                       |
 | ----------------- | --------------------------- |
-| OH_Cursor *cursor | Pointer to the **OH_Cursor** instance.|
+| OH_Cursor *cursor | Pointer to an **OH_Cursor** instance. |
 
 **Returns**
 
@@ -281,7 +281,7 @@ Pointer to the function used to obtain the value of the int64_t type based on th
 
 | Name             | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor   | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
 | int64_t *value      | Pointer to the value obtained.|
 
@@ -308,7 +308,7 @@ Pointer to the function used to obtain the value of the double type based on the
 
 | Name             | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor   | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
 | double *value       | Pointer to the value obtained.|
 
@@ -335,7 +335,7 @@ Pointer to the function used to obtain the values in the form of a byte array ba
 
 | Name              | Description                                                        |
 | -------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor    | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor    | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex  | Index of the column, which starts from **0**.                   |
 | unsigned char *value | Pointer to the values in the form of a byte array obtained.|
 | int length           | Length of **value**, obtained by using **getSize**.|
@@ -363,7 +363,7 @@ Pointer to the function used to check whether the value in the specified column 
 
 | Name             | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor   | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
 | bool *isNull        | Pointer to the value returned. The value **true** means the value is null; the value **false** means the opposite.|
 
@@ -390,7 +390,7 @@ Pointer to the function used to destroy a result set.
 
 | Name           | Description                       |
 | ----------------- | --------------------------- |
-| OH_Cursor *cursor | Pointer to the **OH_Cursor** instance.|
+| OH_Cursor *cursor | Pointer to an **OH_Cursor** instance. |
 
 **Returns**
 
@@ -415,7 +415,7 @@ Pointer to the function used to obtain the value of the asset type based on the 
 
 | Name             | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor   | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
 | Data_Asset *value   | Pointer to the value obtained.|
 
@@ -442,7 +442,7 @@ Pointer to the function used to obtain the values in the form of an asset array 
 
 | Name             | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
+| OH_Cursor *cursor   | Pointer to an **OH_Cursor** instance.                                  |
 | int32_t columnIndex | Index of the column, which starts from **0**.                   |
 | Data_Asset **value  | Double pointer to the value obtained.|
 | uint32_t *length    | Pointer to the length of the buffer, which is a variable of the uint32_t type passed in. After the API is executed, the variable is updated to the length of the returned asset array.|

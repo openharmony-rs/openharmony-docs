@@ -142,6 +142,29 @@
 >
 >  ![avoidArea](figures/avoidArea.png)
 
+## AvoidAreaInsets
+
+窗口的避让区边衬。
+
+避让区边衬表示由于[避让区](#avoidarea7)的存在，窗口内容在上下左右四个方向上需要避让的距离。
+
+> **说明：**
+>
+> 避让区边衬的计算不包括[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明                         |
+| ------ | -------- | ---- | ---- | ---------------------------- |
+| top    | number   | 否   | 否   | 窗口顶部需要避让的距离。单位为像素，取值限定为整数。 |
+| left   | number   | 否   | 否   | 窗口左侧需要避让的距离。单位为像素，取值限定为整数。 |
+| right  | number   | 否   | 否   | 窗口右侧需要避让的距离。单位为像素，取值限定为整数。 |
+| bottom | number   | 否   | 否   | 窗口底部需要避让的距离。单位为像素，取值限定为整数。 |
+
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
 以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时需关注。
@@ -469,7 +492,7 @@
 | 名称     | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | curve    | [WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)           |  否  |  否   | 动画曲线类型。                                               |
-| duration | number                                                    |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
+| duration | number                                                    |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]，超出取值范围时会返回错误码1300016。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
 | param    | [WindowAnimationCurveParam](arkts-apis-window-t.md#windowanimationcurveparam20) |  否  |  是   | 动画曲线参数，根据动画曲线类型决定是否必填。不设置，则默认为空。                 |
 
 ## WindowSnapshotAnimationConfig
@@ -532,7 +555,7 @@
 | 名称    | 类型                                              | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | config  | [WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20) |  否  |  否   | 本次转场动画配置。                                           |
-| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围0~1.0，在动画结束时恢复为1.0。 |
+| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围[0, 1.0]，超出取值范围时会返回错误码1300016。在动画结束时恢复为1.0。<br/>该参数以float32精度存储，通过[getWindowTransitionAnimation()](arkts-apis-window-Window.md#getwindowtransitionanimation20)获取的值可能因系统内的double与float转换导致精度截断而与传入值存在细微差异。 |
 
 ## StartAnimationParams<sup>20+</sup>
 

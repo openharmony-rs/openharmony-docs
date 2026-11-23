@@ -7177,7 +7177,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 | 名称                                | 值     | 说明                                                         |
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
-| EMERGENCY_INFORMATION<sup>12+</sup> | 10     | 紧急事件。**系统接口**：此接口为系统接口。                               |
+| EMERGENCY_INFORMATION<sup>(deprecated)</sup> | 10     | 紧急事件。<br>从API version 12开始支持，从API版本26.1.0开始废弃。<br>**系统接口**：此接口为系统接口。                               |
 
 
 ## NotificationControlFlagStatus<sup>12+</sup>

@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-13T09:25:07.977Z pushedAt=2026-11-18T08:11:01.576Z nl=1 -->
 
 The **CalendarPicker** component provides a drop-down calendar window for users to quickly select a date. It is applicable to scenarios where users need to select a specific date, such as reservation, schedule arrangements, and date filtering, and provides an intuitive calendar view to improve user experience in date input.
 
@@ -32,7 +33,7 @@ Creates a calendar picker.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                       | Mandatory| Description                      |
 | ------- | ------------------------------------------- | ---- | -------------------------- |
@@ -56,7 +57,7 @@ Sets how the picker is aligned with the entry component.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                   | Mandatory| Description                                                        |
 | --------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -77,7 +78,7 @@ Sets how the picker is aligned with the entry component. Compared with [edgeAlig
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -98,7 +99,7 @@ Sets the font color, font size, and font weight in the entry area.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -118,7 +119,7 @@ Sets the font color, font size, and font weight in the entry area. Compared with
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -138,11 +139,33 @@ Whether to highlight the current system date.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enabled  | boolean | Yes  | Whether to highlight the current system date.<br>- **true**: Highlight the current system date.<br>- **false**: Do not highlight the current system date.<br>Default value: **false**.|
+
+### firstDayOfWeek
+
+firstDayOfWeek(value: CalendarFirstDayOfWeek)
+
+Sets the first day of a week for the calendar picker. If this API is not called, the default value is **CalendarFirstDayOfWeek.LOCAL** (following the system locale).
+
+**Since**: 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: The device types actually supported by this API (phones, PCs/2-in-1 devices, tablets, and TVs) are fewer than the device types supported by its system capability (phones, PCs/2-in-1 devices, tablets, TVs, and wearables). Due to hardware capability limitations, calling this API on wearables will cause a running exception, and the exception information indicates that the API is undefined.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| value | [CalendarFirstDayOfWeek](#calendarfirstdayofweek) | Yes | Start day of a week for the calendar picker. |
 
 ## Events
 
@@ -162,7 +185,7 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description          |
 | ------ | ---- | ---- | -------------- |
@@ -186,7 +209,7 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -238,6 +261,31 @@ Enumerates alignment types.
 | START  | 0 | Left-aligned with the entry component.  |
 | CENTER | 1 | Center-aligned with the entry component.|
 | END    | 2 | Right-aligned with the entry component.  |
+
+## CalendarFirstDayOfWeek
+
+Enumerates the first days of a week for the calendar picker.
+
+**Since**: 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: The actual device types supported by this API (phones, PCs/2-in-1 devices, tablets, and TVs) are fewer than those supported by its system capability (phones, PCs/2-in-1 devices, tablets, TVs, and wearables). Due to hardware capability limitations, calling this API on wearables will cause a running exception, and the exception information indicates that the API is undefined.
+
+| Name  | Value | Description                    |
+| ------ | - | ------------------------ |
+| LOCAL  | 0 | Follows the system locale.       |
+| MON    | 1 | Monday.                   |
+| TUE    | 2 | Tuesday.                   |
+| WED    | 3 | Wednesday.                   |
+| THU    | 4 | Thursday.                   |
+| FRI    | 5 | Friday.                   |
+| SAT    | 6 | Saturday.                   |
+| SUN    | 7 | Sunday.                   |
 
 ## Example
 ### Example 1: Implementing a Calendar Picker
@@ -337,3 +385,40 @@ struct CalendarPickerExample {
 ```
 
 ![CalendarPicker](figures/calendar_picker_mark_disabled.gif)
+
+### Example 4: Setting the First Day of a Week
+
+This example shows how to use **firstDayOfWeek** to set the first day of a week for the calendar picker to Monday.
+
+Since API version 26.1.0, the [firstDayOfWeek](#firstdayofweek) API is added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct CalendarPickerExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Column() {
+        Text('Calendar Date Picker').fontSize(30)
+        CalendarPicker({ hintRadius: 10, selected: this.selectedDate })
+          .edgeAlign(CalendarAlign.CENTER)
+          .firstDayOfWeek(CalendarFirstDayOfWeek.MON)
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
+          .margin(10)
+          .onChange((value) => {
+            console.info(`CalendarPicker onChange: ${value.toString()}`);
+          })
+      }.alignItems(HorizontalAlign.Center).width("100%")
+    }
+    .width('100%')
+    .margin({ top: 100 })
+  }
+}
+```
+
+![CalendarPicker](figures/calendar-picker-first-day-of-week.png)
+
+<!--no_check-->

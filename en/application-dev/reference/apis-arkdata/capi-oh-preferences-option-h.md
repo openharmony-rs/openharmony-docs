@@ -5,7 +5,7 @@
 <!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=56ed0768936d754cf596777e5bea964ac3d6187b translatedAt=2026-09-04T02:48:20.727Z pushedAt=2026-09-09T09:11:03.645Z -->
+<!-- md-trans-meta sourceCommit=7bb09177f6bf495f92c99f48762e5bc556535030 translatedAt=2026-11-16T01:25:34.501Z pushedAt=2026-11-20T07:26:55.631Z nl=1 -->
 
 ## Overview
 
@@ -44,6 +44,8 @@ Provides APIs and structs for accessing the **PreferencesOption** object.
 | [int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char *bundleName)](#oh_preferencesoption_setbundlename) | Sets the bundle name for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.|
 | [int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char *dataGroupId)](#oh_preferencesoption_setdatagroupid) | Sets the application group ID for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.<br>After the application group ID is set, the **Preferences** instance will be created in the sandbox directory of the application group ID. The application group ID must be obtained from AppGallery. This parameter is not supported currently.<br>If the application group ID is an empty string, the **Preferences** instance will be created in the sandbox directory of the current application.|
 | [int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preferences_StorageType type)](#oh_preferencesoption_setstoragetype) | Sets the storage type for a **Preferences** instance.                         |
+| [int OH_PreferencesOption_SetSharedMapSize(OH_PreferencesOption *option, int32_t sharedMapSize)](#oh_preferencesoption_setsharedmapsize) | Size of the shared cache file for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. This parameter is only effective in GSKV storage mode and not effective in XML storage mode.                          |
+| [int32_t OH_PreferencesOption_GetSharedMapSize(OH_PreferencesOption *option)](#oh_preferencesoption_getsharedmapsize) | Size of the shared cache file for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.                          |
 | [int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)](#oh_preferencesoption_destroy) | Destroys an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.|
 
 ## Enum Description
@@ -191,6 +193,57 @@ Sets the storage type for a **Preferences** instance.
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
 | int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.|
+
+### OH_PreferencesOption_SetSharedMapSize()
+
+```c
+int OH_PreferencesOption_SetSharedMapSize(OH_PreferencesOption *option, int32_t sharedMapSize)
+```
+
+**Description**
+
+Sets the size of the shared cache file of the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance object. This parameter is only effective in GSKV storage mode and not effective in XML storage mode.
+
+**Since:** 26.1.0
+
+
+**Parameters**
+
+| Name                                                       | Description                               |
+| ------------------------------------------------------------ | ---------------------------------- |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [Input parameter] Pointer to the target [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. |
+| int32_t sharedMapSize                                            | [in] Size of the shared cache file to be set, in KB. The value ranges from [256, 1112784] or is 0. The value 0 indicates that no cache file is generated, and inter-process sharing is not supported. |
+
+**Returns:**
+
+| Type | Description                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified. |
+
+### OH_PreferencesOption_GetSharedMapSize()
+
+```c
+int32_t OH_PreferencesOption_GetSharedMapSize(OH_PreferencesOption *option)
+```
+
+**Description**
+
+Obtains the size of the shared cache file of the Preferences configuration option [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance object.
+
+**Since:** 26.1.0
+
+
+**Parameters**
+
+| Name                                                | Description                               |
+| ------------------------------------------------------------ | ---------------------------------- |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [in]. Pointer to the target [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. |
+
+**Returns:**
+
+| Type   | Description                                                         |
+| ------ | ------------------------------------------------------------ |
+| int32_t | Size of the shared cache file, in KB. Returns 0 if [OH_PreferencesOption_SetSharedMapSize()](#oh_preferencesoption_setsharedmapsize) is not called to set the size or the input parameter **option** is invalid. |
 
 ### OH_PreferencesOption_Destroy()
 

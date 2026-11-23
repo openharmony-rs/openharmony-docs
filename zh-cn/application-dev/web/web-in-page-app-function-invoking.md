@@ -87,7 +87,7 @@ struct WebComponent {
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后，在下次加载或者重新加载后生效。
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册后，在下次加载或者重新加载后生效。
 
 - 示例1：
 

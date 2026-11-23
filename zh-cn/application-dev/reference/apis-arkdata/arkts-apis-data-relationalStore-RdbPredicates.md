@@ -91,9 +91,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;

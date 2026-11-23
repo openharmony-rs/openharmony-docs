@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Rich Text Component Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6; @carnivore233-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7b2fe8ea97c19740abb5e459d74af77596c35112 translatedAt=2026-08-25T02:24:06.655Z pushedAt=2026-08-26T10:44:05.546Z -->
+<!-- md-trans-meta sourceCommit=49817ad6d3bdeb32b10cdb1744df526125ae30ce translatedAt=2026-11-18T08:49:54.088Z pushedAt=2026-11-19T03:43:01.296Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -33,6 +32,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -55,6 +55,7 @@ Caret color of the **TextEditor** component. This attribute can be set, reset, a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -79,6 +80,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -101,6 +103,7 @@ Scroll bar state of the **TextEditor** component. This attribute can be set, res
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -125,6 +128,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -148,6 +152,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -164,6 +169,7 @@ Extended menu options for the **TextEditor** component. This attribute can be se
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -182,6 +188,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -199,6 +206,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -215,6 +223,7 @@ Whether to enable preview text for the **TextEditor** component. When enabled, t
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -239,6 +248,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 24
 
+
 **Returns**
 
 | Type| Description|
@@ -255,6 +265,7 @@ Whether to enable the AI menu for text selection and recognition of the TextEdit
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -279,6 +290,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -301,6 +313,7 @@ Whether to enable the input method when the focus is obtained in a way other tha
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -325,6 +338,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -347,6 +361,7 @@ Maximum number of lines in the **TextEditor** component. This attribute can be s
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -371,6 +386,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -393,6 +409,7 @@ Copy options of the **TextEditor** component, which can be set, reset, and obtai
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -417,6 +434,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -439,6 +457,7 @@ Whether the **TextEditor** component blocks the back key event from propagating 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -463,6 +482,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -485,6 +505,7 @@ Custom keyboard of the **TextEditor** component. Pass this attribute when the sy
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -511,6 +532,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -527,6 +549,7 @@ Whether to enable the anti-truncation spacing for the first and last lines of th
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -551,6 +574,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -573,6 +597,7 @@ Whether to enable leading punctuation compression in the **TextEditor** componen
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -597,6 +622,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -619,6 +645,7 @@ Whether to enable the single-line mode of the **TextEditor** component. This att
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -643,6 +670,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -665,6 +693,7 @@ Whether to enable horizontal scrolling for the **TextEditor** component when the
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -690,6 +719,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -701,3 +731,432 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether punctuation hanging at the end of a line is enabled. The value **1** means punctuation hanging is enabled, and **0** means the opposite. |
+
+## NODE_TEXT_EDITOR_TYPE
+
+```c
+NODE_TEXT_EDITOR_TYPE = 22031
+```
+
+Text editor type of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Text editor type. The parameter type is [OH_ArkUI_TextEditorType](capi-rich-editor-h.md#oh_arkui_texteditortype). The default value is **OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Text editor type. The parameter type is [OH_ArkUI_TextEditorType](capi-rich-editor-h.md#oh_arkui_texteditortype). |
+
+## NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON
+
+```c
+NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON = 22032
+```
+
+Whether to display the password icon at the end of the text in password input mode. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to display the password icon at the end of the text. The value **true** indicates to display the password icon, and **false** indicates the opposite. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the password icon is displayed at the end of the text. The value **1** indicates the password icon is displayed, and **0** indicates the opposite. |
+
+## NODE_TEXT_EDITOR_ENABLE_AUTO_FILL
+
+```c
+NODE_TEXT_EDITOR_ENABLE_AUTO_FILL = 22034
+```
+
+Whether to enable autofill for the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to enable autofill. The default value is **0**. **1** indicates to enable, and **0** indicates to disable. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether autofill is enabled. The value **1** means autofill is enabled, and **0** means the opposite. |
+
+## NODE_TEXT_EDITOR_CONTENT_TYPE
+
+```c
+NODE_TEXT_EDITOR_CONTENT_TYPE = 22035
+```
+
+Autofill type of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype), used to specify the content type in autofill scenarios. For specific enumerated values and application scenarios, see [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Autofill type. The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype), used to determine the autofilled content type. |
+
+## NODE_TEXT_EDITOR_PASSWORD_RULES
+
+```c
+NODE_TEXT_EDITOR_PASSWORD_RULES = 22036
+```
+
+Rules for generating passwords. When autofill is used, these rules are transparently transmitted to Password Vault for generating a new password. This attribute is set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .string | Rules for generating passwords, which are transparently passed to the password vault to control new password generation when autofill is triggered. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .string | Rules for generating passwords. |
+
+## NODE_TEXT_EDITOR_ENABLE_FILL_ANIMATION
+
+```c
+NODE_TEXT_EDITOR_ENABLE_FILL_ANIMATION  = 22037
+```
+
+Whether to enable the autofill animation of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to enable the autofill animation. The value **1** means to enable the autofill animation, and **0** means the opposite. The default value is **1**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the autofill animation is enabled. The value **1** means the autofill animation is enabled, and **0** means the opposite. |
+
+## NODE_TEXT_EDITOR_SHOW_UNDERLINE
+
+```c
+NODE_TEXT_EDITOR_SHOW_UNDERLINE = 22038
+```
+
+Whether to display the underline in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to display the underline. The value **1** indicates to display, and **0** indicates the opposite. The default value is **0**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the underline is displayed. The value **1** indicates the underline is displayed, and **0** indicates the opposite. |
+
+## NODE_TEXT_EDITOR_UNDERLINE_COLOR
+
+```c
+NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
+```
+
+Underline color, which can be set when the underline is enabled. This attribute can be set, reset, and obtained as required through APIs.<br>
+This attribute takes effect only after the **NODE_TEXT_EDITOR_SHOW_UNDERLINE** attribute is set to **1** to enable the underline.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].u32 | Color of the underline applied to the text being typed in, in 0xARGB format. |
+| .value[1].u32 | Color of the underline applied to the text in the normal state, in 0xARGB format. |
+| .value[2].u32 | Color of the underline applied to the text when an error is detected, in 0xARGB format. |
+| .value[3].u32 | Color of the underline applied to the text when the underline is disabled, in 0xARGB format. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].u32 | Color of the underline applied to the text being typed in, in 0xARGB format. |
+| .value[1].u32 | Color of the underline applied to the text in the normal state, in 0xARGB format. |
+| .value[2].u32 | Color of the underline applied to the text when an error is detected, in 0xARGB format. |
+| .value[3].u32 | Color of the underline applied to the text when the underline is disabled, in 0xARGB format. |
+
+## NODE_TEXT_EDITOR_CARET_STYLE
+
+```c
+NODE_TEXT_EDITOR_CARET_STYLE = 22040
+```
+
+Caret width of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Caret width, in vp. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].f32 | Caret width, in vp. |
+
+## NODE_TEXT_EDITOR_SELECT_ALL
+
+```c
+NODE_TEXT_EDITOR_SELECT_ALL = 22041
+```
+
+Whether to select all text in the initial state for the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Select-all is triggered only when the component gains focus for the first time and completes the layout phase. Select-all is not performed when the window regains focus.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to select all text. The default value is **0**. The value **1** means to select all text, and **0** means the opposite. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether all text is selected. **1** means all text is selected, and **0** means the opposite. |
+
+## NODE_TEXT_EDITOR_BLUR_ON_SUBMIT
+
+```c
+NODE_TEXT_EDITOR_BLUR_ON_SUBMIT = 22042
+```
+
+Whether the **TextEditor** component loses focus upon submission. This attribute can be set, reset, and obtained as required through APIs.<br>
+This attribute takes effect only when **EnterKeyType** is set to **NEW_LINE** and the **Enter** key is pressed: when set to **1**, the keyboard is closed and the component loses focus, and no new line is inserted; when set to **0**, a new line is inserted and the component does not lose focus.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to lose focus upon submission. The default value is **0**. The value **1** indicates to lose focus, and **0** indicates the opposite. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether focus is lost upon submission. The value **1** indicates focus is lost, and **0** indicates the opposite. |
+
+## NODE_TEXT_EDITOR_CONTENT_RECT
+
+```c
+NODE_TEXT_EDITOR_CONTENT_RECT = 22043
+```
+
+Position and size of the content editing area of the **TextEditor** component. This attribute only can be obtained through APIs as required.<br>
+The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].f32 | X-axis offset of the content editing area, in px. |
+| .value[1].f32 | Y-axis offset of the content editing area, in px. |
+| .value[2].f32 | Width of the content editing area, in px. |
+| .value[3].f32 | Height of the content editing area, in px. |
+
+## NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN
+
+```c
+NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN = 22044
+```
+
+Whether to hide the selection menu of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+When set to **1**, the selection menu is not displayed on long press, double-click, or right-click, but the selection handles are not affected.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to hide the selection menu. The default value is **0**. The value **1** indicates to hide, and **0** indicates the opposite. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the selection menu is hidden. The value **1** indicates the selection menu is hidden, and **0** indicates the opposite. |
+
+## NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS
+
+```c
+NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS = 22045
+```
+
+Whether the **TextEditor** component skips the state for long-pressing to preview and directly enters the editing state. This attribute can be set, reset, and obtained as required through APIs.<br>
+When set to **1**, the component directly enters the editing state (the keyboard pops up and the caret blinks) after a long press, skipping the preview state. The double-click behavior is not affected.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to skip the state for long-pressing to preview. The default value is **0**. The value **1** indicates to skip, and **0** indicates the opposite. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the state for long-pressing to preview is skipped. The value **1** indicates the state is skipped, and **0** indicates the opposite. |
+
+## NODE_TEXT_EDITOR_CANCEL_BUTTON
+
+```c
+NODE_TEXT_EDITOR_CANCEL_BUTTON = 22046
+```
+
+Cancel button style of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Button style. The parameter type is [ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle). The default value is **ARKUI_CANCELBUTTON_STYLE_INPUT**, which indicates the cancel button input style. |
+| .value[1]?.f32 | Icon size, in vp. Value range: [0, +∞). When a negative value is passed, the setting does not take effect. When not passed, the default icon size of the system is used. |
+| .value[2]?.u32 | Button icon color, in 0xARGB format, for example, **0xFFFF0000** indicates red. When not passed, the default icon color of the system is used. |
+| ?.string | Button icon address. The value is the local address of an image, for example, **/pages/icon.png**. When not passed, the default clear icon of the system is used. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Button style. The parameter type is [ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle). |
+| .value[1].f32 | Button icon size, in vp. |
+| .value[2].u32 | Button icon color, in 0xARGB format. |
+| .string | Button icon address. |
+
+## NODE_TEXT_EDITOR_SHOW_COUNTER
+
+```c
+NODE_TEXT_EDITOR_SHOW_COUNTER = 22047
+```
+
+Whether to show a counter and its style when the number of characters entered in the **TextEditor** component exceeds a threshold. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to show a counter. The value **1** to show; **0** otherwise. |
+| .value[1]?.f32 | Percentage of the number of characters that can be entered to the maximum number of characters allowed. When the percentage exceeds this value, the counter is shown. The value range is [1, 100]. If the value is a decimal, it is rounded down. If the value is out of the range, the attribute setting does not take effect. The default value is **-1**, indicating the counter is always shown. |
+| .value[2]?.i32 | Whether to highlight the border when the number of entered characters exceeds the maximum. The value **1** means to highlight; **0** otherwise. The default value is **1**. |
+| .object | Counter configuration. The configuration attributes are the color of the counter when the number of characters entered in the text box does not reach the maximum and the color of the counter when the number of characters entered in the text box exceeds the maximum. The parameter type is [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the counter is shown. The value **1** means the counter is shown, and **0** means the opposite. |
+| .value[1].f32 | Percentage of the number of characters that can be entered to the maximum number of characters allowed. When the percentage exceeds this value, the counter is shown. The value range is [1, 100]. |
+| .value[2].i32 | Whether the border is highlighted when the number of entered characters exceeds the maximum. The value **1** indicates that the border is highlighted; **0** otherwise. |
+| .object | Counter configuration. The configuration attributes are the color of the counter when the number of characters entered in the text box does not reach the maximum and the color of the counter when the number of characters entered in the text box exceeds the maximum. The parameter type is [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md). |
+
+## NODE_TEXT_EDITOR_INPUT_FILTER
+
+```c
+NODE_TEXT_EDITOR_INPUT_FILTER = 22048
+```
+
+Input filter regular expression of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+This attribute takes effect only in **StyledString** mode (including single-line and multi-line modes), that is, the mode after [NODE_TEXT_EDITOR_STYLED_STRING_CONTROLLER](#node_text_editor_styled_string_controller) is set.<br>
+When this attribute and [NODE_TEXT_EDITOR_MAX_LENGTH](#node_text_editor_max_length) are set at the same time, the filtering priority is as follows: **NODE_TEXT_EDITOR_INPUT_FILTER** is used to perform filtering first, and then **NODE_TEXT_EDITOR_MAX_LENGTH** is used to perform truncation.<br>
+When the regular expression changes, the existing content is silently re-filtered (consistent with the **TextInput** behavior).<br>
+Non-character content (**ImageSpan**/**SymbolSpan**/**BuilderSpan**) is treated as the \uFFFC character during regular expression matching.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .string | Regular expression, used to filter user input. Input matching the expression is allowed to be displayed, and input not matching is filtered out. Set this parameter when it is necessary to restrict users to inputting only characters in a specific format. For example, "[a-zA-Z]" allows only letters, and "[0-9]" allows only digits. An empty string is equivalent to not setting the filter. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .string | String of the currently set input filter regular expression. |

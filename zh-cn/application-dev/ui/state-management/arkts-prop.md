@@ -193,7 +193,33 @@ struct Father {
 
 ## 限制条件
 
-- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)和[HashSet](../../reference/apis-arkts/js-apis-hashset.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据，调用复杂类型的函数时会抛出运行时异常`The xxx method cannot be bound`；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+
+  ```ts
+  import { HashSet } from '@kit.ArkTS';
+
+  @Entry
+  @Component
+  struct Parent {
+    @State hashSet: HashSet<string> = new HashSet<string>();
+    build() {
+      Column() {
+        Child({
+          hashSet: this.hashSet
+        })
+      }
+    }
+  }
+
+  @Component
+  struct Child {
+    @Prop hashSet: HashSet<string> = new HashSet<string>(); // @Prop不支持系统类型，无法获取底层数据
+    build() {
+      // 调用has函数会抛出运行时异常'The has method cannot be bound'
+      Text(`Calling HashSet.has: ${this.hashSet.has('Hello world')}`)
+    }
+  }
+  ```
 
 - \@Prop不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 

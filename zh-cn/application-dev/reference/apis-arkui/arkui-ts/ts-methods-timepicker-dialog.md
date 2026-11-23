@@ -579,7 +579,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct DatePickerDialogExample {
+struct TimePickerDialogExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
       Column() {

@@ -319,7 +319,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要算法。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>根据FIPS 186-4标准，sLen应大于等于0且小于等于哈希长度。<br>默认值：对于签名操作，自动计算最大盐值长度；对于验证操作，自动计算盐值长度。<br>特殊值：对于签名操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；或设置为-2或-3，以自动计算最大盐值长度。推荐使用-1；对于验证操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；设置为-2，以自动计算盐值长度；或设置为-3，以使用最大盐值长度。推荐使用-2。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | ML_DSA_DETERMINISTIC_BOOL | 106 | 表示ML-DSA签名和验证过程中是否使用确定性签名。不设置时默认值为false。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
@@ -3768,7 +3768,7 @@ function testGeneratePriKeySync() {
 
 generatePubKey(callback: AsyncCallback\<PubKey>): void
 
-获取非对称密钥生成器生成的密钥。使用callback异步回调。
+获取非对称密钥生成器生成的公钥。使用callback异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
@@ -4042,7 +4042,7 @@ try {
 
 static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
-根据椭圆曲线的曲线名，即相应的NID（Name Identifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。
 
 > **说明：**
 >
@@ -5081,7 +5081,7 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 | Promise\<[DataBlob](#datablob)> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -5166,7 +5166,7 @@ doFinalSync(data: DataBlob | null): DataBlob
   authTag需要填入解密时的[GcmParamsSpec](#gcmparamsspec)或[CcmParamsSpec](#ccmparamsspec)；密文则作为解密时的入参data。
 - 对于其他模式的对称加解密以及GCM和CCM模式的对称解密：在一次加/解密流程中，每次updateSync和doFinalSync的结果拼接起来，得到完整的明文或密文。
 
-（2）在RSA和SM2非对称加解密中，doFinalSync用于加解密本次传入的数据，通过注册回调函数获取加密或解密后的数据。如果数据量超过单次处理能力，可以多次调用doFinalSync，并将结果拼接以获得完整的明文或密文。
+（2）在RSA和SM2非对称加解密中，doFinalSync用于加解密本次传入的数据，并以同步方式返回加密或解密后的数据。如果数据量超过单次处理能力，可以多次调用doFinalSync，并将结果拼接以获得完整的明文或密文。
 
 其他注意事项同接口[doFinal()](#dofinal)说明。
 
@@ -6396,7 +6396,7 @@ try {
 
 ## Verify
 
-验签接口，定义基于公钥对签名数据进行验签的方法。调用前，需通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
+验签接口，定义基于公钥对签名数据进行验签的方法。调用前，需通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成验签操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 Verify实例不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify实例并调用init初始化。
 
@@ -6958,22 +6958,22 @@ async function verifyByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-  // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = {
-    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
-      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
-      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
-      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
-      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
-      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
-  };
-  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    let inputUpdate: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+    let inputVerify: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+    // 该数据取自Sign中的signData.data。
+    let signMessageBlob: cryptoFramework.DataBlob = {
+      data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+        50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+        130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+        87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+        173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+        232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+    };
+    let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
     await verifier.init(keyPair.pubKey);
     await verifier.update(inputUpdate);
     let res = await verifier.verify(inputVerify, signMessageBlob);
@@ -6999,7 +6999,7 @@ function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-  console.info('convertKey result: success.');
+  console.info('convertKeySync result: success.');
   return keyPair;
 }
 
@@ -7157,19 +7157,19 @@ async function recoverByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = {
-    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
-      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
-      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
-      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
-      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
-      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
-  };
-  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
-  await verifier.init(keyPair.pubKey);
   try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    // 该数据取自Sign中的signData.data。
+    let signMessageBlob: cryptoFramework.DataBlob = {
+      data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+        50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+        130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+        87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+        173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+        232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+    };
+    let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+    await verifier.init(keyPair.pubKey);
     let rawSignData = await verifier.recover(signMessageBlob);
     if (rawSignData != null) {
       console.info('[Promise]: recover result: ' + rawSignData.data);
@@ -7388,7 +7388,7 @@ getVerifySpec(itemType: SignSpecItem): string | number
 | string \| number | 获取的验签参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -8999,7 +8999,7 @@ function hmacTestSync() {
       let macOutput = mac.doFinalSync();
       console.info('Mac doFinal successfully: ' + macOutput.data);
   } catch (error) {
-      console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
+      console.error(`hmacTestSync failed. Code: ${error.code}, message: ${error.message}`);
   }
 }
  
@@ -9549,7 +9549,7 @@ createKdf(algName: string): Kdf
 
 | 参数名  | 类型   | 必填 | 说明                              |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256"、 "HKDF\|SHA256"、 "SCRYPT"和"X963KDF\|SHA256"等。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
+| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF、SCRYPT、X963KDF算法，如"PBKDF2\|SHA256"、 "HKDF\|SHA256"、 "SCRYPT"和"X963KDF\|SHA256"等。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
 
 **返回值**：
 
@@ -9935,7 +9935,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 ## KemAlgNameId
 
-表示密钥封装（Kem）算法名称的枚举。
+表示密钥封装（KEM）算法名称的枚举。
 
 **起始版本：** 26.0.0
 
@@ -10052,7 +10052,7 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise\<KemEncapResult>
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
 | pubKey | [PubKey](#pubkey)   | 是   | 用于密钥封装的公钥。                                         |
-| ikme   | Uint8Array \| null  | 是   | 用于生成临时密钥的ikme。若传入null，则由算法库内部随机生成。 |
+| ikme   | Uint8Array \| null  | 是   | 随机数种子，用于替代算法内部的随机数。对于ML-KEM算法，随机数种子是32字节。建议传null。 |
 
 **返回值：**
 
@@ -10116,7 +10116,7 @@ encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
 | pubKey | [PubKey](#pubkey)   | 是   | 用于密钥封装的公钥。                                         |
-| ikme   | Uint8Array \| null  | 是   | 用于生成临时密钥的ikme。若传入null，则由算法库内部随机生成。 |
+| ikme   | Uint8Array \| null  | 是   | 随机数种子，用于替代算法内部的随机数。对于ML-KEM算法，随机数种子是32字节。建议传null。 |
 
 **返回值：**
 

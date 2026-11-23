@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Accessibility Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-21T12:11:53.074Z pushedAt=2026-08-24T08:35:51.813Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T08:46:20.942Z pushedAt=2026-11-19T01:44:33.754Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -14,7 +13,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the accessibility attribute types that can be set by ArkUI on the native side, including the accessibility text, description, mode, state, and value.
+Enumerates the accessibility attribute types that can be set and obtained by ArkUI on the native side, including the accessibility text, description, mode, state, and value.
 
 **Since**: 12
 
@@ -33,17 +32,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | The value **1** means that the component and all its child components are treated as a single selectable component, and the accessibility service no longer focuses on the content of its child components. The value **0** means that each child component can be selected independently, and the accessibility service focuses on the content of each child component separately. The value can be **1** or **0**. If an invalid value is passed in, this setting does not take effect. |
+| .value[0].i32 | The value **1** means that the component and all its child components are treated as a single selectable component, and the accessibility service no longer focuses on the content of its child components. The value **0** means that each child component can be focused on individually by the accessibility service. The value can be **1** or **0**. If an invalid value is passed in, this setting does not take effect. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | The value **1** means that the component and all its child components are treated as a single selectable component, and the accessibility service no longer focuses on the content of its child components. The value **0** means that the accessibility grouping is disabled, and each child component can be focused on individually by the accessibility service. The value can be **1** or **0**. |
+| .value[0].i32 | The value **1** means that the component and all its child components are treated as a single selectable component, and the accessibility service no longer focuses on the content of its child components. The value **0** means that each child component can be focused on individually by the accessibility service. The value can be **1** or **0**. |
 
 ## NODE_ACCESSIBILITY_TEXT
 
@@ -55,6 +55,7 @@ Accessibility text. This attribute can be set, reset, and obtained as required t
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -79,6 +80,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -89,7 +91,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Accessibility mode. The parameter type is [ArkUI_AccessibilityMode](capi-native-type-h.md#arkui_accessibilitymode).|
+| .value[0].i32 | Accessibility mode. The return value type is [ArkUI_AccessibilityMode](capi-native-type-h.md#arkui_accessibilitymode). |
 
 ## NODE_ACCESSIBILITY_DESCRIPTION
 
@@ -101,6 +103,7 @@ Accessibility description. This attribute can be set, reset, and obtained as req
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -125,6 +128,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 12
 
+
 **Returns**
 
 | Type| Description|
@@ -142,6 +146,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -152,7 +157,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Accessibility action type. The parameter type is [ArkUI_AccessibilityActionType](capi-native-type-h.md#arkui_accessibilityactiontype).|
+| .value[0].u32 | Accessibility action type. The return value type is [ArkUI_AccessibilityActionType](capi-native-type-h.md#arkui_accessibilityactiontype). |
 
 ## NODE_ACCESSIBILITY_ROLE
 
@@ -165,6 +170,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -175,7 +181,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Accessibility component role. The parameter type is [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype).|
+| .value[0].u32 | Accessibility role. The return value type is [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype). |
 
 ## NODE_ACCESSIBILITY_STATE
 
@@ -187,6 +193,7 @@ Accessibility state. This attribute can be set, reset, and obtained as required 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -210,6 +217,7 @@ Accessibility value. This attribute can be set, reset, and obtained as required 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 

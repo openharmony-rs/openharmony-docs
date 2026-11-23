@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-18T09:32:52.873Z pushedAt=2026-11-20T07:45:41.182Z nl=1 -->
 
 The **DrawableDescriptor** module provides APIs for obtaining **pixelMap** objects, including the foreground, background, mask, and layered icons.
 
@@ -35,3 +36,23 @@ Creates a **DrawableDescriptor** or **LayeredDrawableDescriptor** object. The [g
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### setSVGResourceLimitLevel
+
+setSVGResourceLimitLevel(limit: image.SVGResourceLimitLevel): void
+
+Sets the resource limit level for SVG decoding. If this API is not called, the default value is image.[SVGResourceLimitLevel](../apis-image-kit/js-apis-image-sys.md#svgresourcelimitlevel).NONE.
+
+**Since**: 26.0.1
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| limit | image.[SVGResourceLimitLevel](../apis-image-kit/js-apis-image-sys.md#svgresourcelimitlevel) | Yes | Resource limit level for SVG decoding. |

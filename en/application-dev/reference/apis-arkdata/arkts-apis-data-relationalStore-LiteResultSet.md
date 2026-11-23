@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8087a084987721492cec6ad5680b2770c7c9e8c6 translatedAt=2026-11-16T01:20:22.175Z pushedAt=2026-11-20T07:24:30.607Z nl=1 -->
 
 Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
@@ -265,7 +266,7 @@ Obtains the column type based on the specified column index or column name.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core 
 
 **Parameters**
 
@@ -907,7 +908,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
       let rows: Array<relationalStore.ValuesBucket>;
       let maxCount: number = 50;
       // Obtain data from the current row of the result set. By default, the first fetch starts from the first row of the current result set. Subsequent fetches start from the row following the last row retrieved.
-      // getRows automatically moves the current row of the result set to the next row after the end position of the last retrieval by getRows. You do not need to use the goToNextRow API to move the row.
+      // getRows automatically moves the current row of the result set to the next position after the end of the last getRows retrieval. There is no need to use APIs such as goToFirstRow and goToNextRow to move it.
       while ((rows = await resultSet.getRows(maxCount)).length != 0) {
         console.info(JSON.stringify(rows[0]));
       }

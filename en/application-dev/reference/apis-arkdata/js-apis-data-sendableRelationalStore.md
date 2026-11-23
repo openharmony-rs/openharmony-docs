@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=2c591998eed5470f922791050fc78c8f5b16882a translatedAt=2026-09-04T03:49:24.411Z pushedAt=2026-09-09T09:11:03.729Z -->
+<!-- md-trans-meta sourceCommit=8c7d93ae96e9cd8aa2eda0aa88bce1694d2b4f4c translatedAt=2026-11-16T02:12:58.983Z pushedAt=2026-11-20T07:28:03.933Z nl=1 -->
 
 The **sendableRelationalStore** module provides APIs for obtaining **ValuesBucket** of the sendable type from the query result set and transferring it between concurrent instances.
 
@@ -469,54 +469,54 @@ async function queryByName(context: Context, name: string) {
   if (resultSet.rowCount > 0 && resultSet.goToFirstRow()) {
     // Obtain the cross-thread transferable ValuesBucket to return the query result.
     result = resultSet.getSendableRow();
-    return result;
+  return result;
   }
   resultSet.close();
   await store.close();
-  return result;
+return result;
 }
 
 
 @Entry
 @Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    RelativeContainer() {
-      Text(this.message)
+  struct Index {
+@State message: string = 'Hello World';
+  
+    build() {
+      RelativeContainer() {
+        Text(this.message)
         .id('HelloWorld')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
-        .alignRules({
+          .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
-        .onClick(async () => {
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          const item: relationalStore.ValuesBucket = {
+          .onClick(async () => {
+let context: Context = this.getUIContext().getHostContext() as Context;
+          
+            const item: relationalStore.ValuesBucket = {
             name: "zhangsan",
             age: 20,
-            salary: 5000
+          salary: 5000
           }
           // Call toSendableValuesBucket to convert the data type for cross-thread passing.
           const sendableItem = sendableRelationalStore.toSendableValuesBucket(item);
           const insertRowId = await taskpool.execute(insert, context, sendableItem) as number;
-          console.info(`Insert data success, row id is: ${insertRowId}`);
-
+console.info(`Insert data success, row id is: ${insertRowId}`);
+          
           const rowData = await taskpool.execute(queryByName, context, "zhangsan");
-          if (rowData) {
-            const row =
-              sendableRelationalStore.fromSendableValuesBucket(rowData as sendableRelationalStore.ValuesBucket);
-            console.info(`Query success, name is ${row['name']}, age is ${row['age']}.`);
-          } else {
-            console.error(`Query failed.`)
-          }
-        })
+            if (rowData) {
+              const row =
+            sendableRelationalStore.fromSendableValuesBucket(rowData as sendableRelationalStore.ValuesBucket);
+          console.info(`Query success, name is ${row['name']}, age is ${row['age']}.`);
+            } else {
+          console.error(`Query failed.`)
+        }
+    })
     }
     .height('100%')
-    .width('100%')
-  }
+  .width('100%')
+}
 }
 ```

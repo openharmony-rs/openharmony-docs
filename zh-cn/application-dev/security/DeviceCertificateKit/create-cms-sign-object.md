@@ -28,7 +28,7 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
 
 4. 调用[cmsGenerator.addCert](../../reference/apis-device-certificate-kit/js-apis-cert.md#addcert18)添加证书。
 
-5. 调用[cmsGenerator.doFinal](../../reference/apis-device-certificate-kit/js-apis-cert.md#dofinal18)获取Cms最终签名数据。
+5. 调用[cmsGenerator.doFinal](../../reference/apis-device-certificate-kit/js-apis-cert.md#dofinal18)获取CMS最终签名数据。
 
 - 异步方法示例：
 

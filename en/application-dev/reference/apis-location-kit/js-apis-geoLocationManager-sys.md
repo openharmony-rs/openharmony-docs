@@ -5,7 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=018cf6704825ff3d82842e6150ca59994fa23d90 translatedAt=2026-11-03T04:39:24.908Z pushedAt=2026-11-03T12:08:25.502Z nl=1 -->
+<!-- md-trans-meta sourceCommit=531b08f0a1a761cbfb71ce8a156d30dd925f7bdb translatedAt=2026-11-16T01:11:42.803Z pushedAt=2026-11-20T07:28:22.733Z nl=1 -->
 
 The **geoLocationManager** module provides location services such as Global Navigation Satellite System (GNSS)-based positioning, network positioning, geofencing, as well as geocoding and reverse geocoding.
 
@@ -80,7 +80,7 @@ Geofence transition event.
 
 Defines the fused fence request information.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability**: SystemCapability.Location.Location.Geofence
 
@@ -106,7 +106,7 @@ Defines the fused fence request information.
 
 Fused fence scene.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -124,7 +124,7 @@ Fused fence scene.
 
 The fused fence type uses binary flags. When this type is used, the bit corresponding to each supported fence type is set to 1. For example, if GNSS and CELLULAR fences are supported, the value is 0011 (binary), which is 3 in decimal; if all four fence types are supported, the value is 1111 (binary), which is 15 in decimal.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability**: SystemCapability.Location.Location.Geofence
 
@@ -142,7 +142,7 @@ The fused fence type uses binary flags. When this type is used, the bit correspo
 
 POI location information.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -158,7 +158,7 @@ POI location information.
 
 GNSS fence information.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability**: SystemCapability.Location.Location.Geofence
 
@@ -175,7 +175,7 @@ GNSS fence information.
 
 Enumerates the GNSS fence types.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -191,7 +191,7 @@ Enumerates the GNSS fence types.
 
 CELL fence information.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability**: SystemCapability.Location.Location.Geofence
 
@@ -206,7 +206,7 @@ CELL fence information.
 
 Wi-Fi fence information.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -222,7 +222,7 @@ Wi-Fi fence information.
 
 Wi-Fi fingerprint algorithm type.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -238,7 +238,7 @@ Wi-Fi fingerprint algorithm type.
 
 Wi-Fi fingerprint information.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -255,7 +255,7 @@ Wi-Fi fingerprint information.
 
 Fused fence callback event information.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -384,7 +384,7 @@ Defines cellular cell information.
 | signalIntensity | number | No| No| Signal strength.<br>**System API**: This is a system API.|
 | arfcn | number | No| No| Absolute Radio Frequency Channel Number (ARFCN).<br> **System API**: This is a system API.|
 | pci | number | No| No| Physical cell ID.<br>**System API**: This is a system API.|
-| tac | number | No | Yes | Indicates the tracking area code. <br>**System API**: This API is a system API.<br />**Since:** 26.0.0 <br />**Model restriction:** This API is only available under the Stage model.|
+| tac | number | No | Yes | Tracking area code. <br>**System API**: This API is a system API.<br />**Since:** 26.1.0 <br />**Model restriction**: This API can only be used in the Stage model.|
 | additionsMap | Map&lt;string, string&gt; | No | Yes | Additional information. <br>**System API**: This API is a system API.|
 
 
@@ -1505,7 +1505,7 @@ Adds a fused fence and subscribes to fence events. This API uses a promise to re
 
 A fused fence supports setting multiple types of fences, including GNSS fences, Wi-Fi fences, and CELL fences.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System API:** This API is a system API.
 
@@ -1644,7 +1644,7 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
 
 Deletes a fused fence and unsubscribes from its events. This API uses a promise to return the result asynchronously. Before calling this API, you are advised to call [geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported) to check whether the corresponding capability is supported.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System API**: This API is a system API.
 
@@ -1695,7 +1695,7 @@ isFusionFenceSupported(): boolean
 
 Checks whether the system supports the fused fence capability.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **System API**: This API is a system API.
 

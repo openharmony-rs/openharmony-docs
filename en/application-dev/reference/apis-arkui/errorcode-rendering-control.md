@@ -1,11 +1,11 @@
 # Error Codes of Logic Components
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @maorh-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d89c4be0c26be57dcac6e3a0bb8b7f968642aa19 translatedAt=2026-08-29T09:23:40.455Z pushedAt=2026-08-31T06:05:24.180Z -->
+<!-- md-trans-meta sourceCommit=dbda7514fc4d743a6408faca2950d6a1c0cb2262 translatedAt=2026-11-18T09:27:25.086Z pushedAt=2026-11-20T06:15:26.141Z nl=1 -->
 
 > **NOTE**
 >

@@ -5,9 +5,9 @@
 <!--Designer: @cuile44; @fysun17; @AnruiWang-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=f357ad4bf8e21ca38a4fe32686c2e588bbe381f6 translatedAt=2026-09-04T03:17:35.933Z pushedAt=2026-09-09T09:11:03.698Z -->
+<!-- md-trans-meta sourceCommit=b3d483b49d1071ea35ea7373cd3db3058b2f8c7a translatedAt=2026-11-16T01:45:27.537Z pushedAt=2026-11-20T07:27:28.559Z nl=1 -->
 
-> NOTE
+> **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 

@@ -5,7 +5,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e81239e2f38865e1e733a04fa60a7878bf413bbf translatedAt=2026-08-29T09:29:53.765Z pushedAt=2026-08-31T08:52:06.108Z -->
+<!-- md-trans-meta sourceCommit=0ade3bea7748333e85428e30651ba8b6f27a27e4 translatedAt=2026-11-18T09:29:59.171Z pushedAt=2026-11-20T07:03:19.841Z nl=1 -->
 
 The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. It supports generating a component tree through **@Builder**, implementing component reuse and recycling, cross-node event posting, and state synchronization. It is suitable for scenarios where custom component nodes are dynamically created and managed within applications. For details, see [BuilderNode Development](../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#dynamically-adding-updating-and-deleting-components).
 
@@ -154,7 +154,7 @@ Custom components are allowed.
 >
 > - The build parameter uses the pass-by-value semantics. To implement state updates, you must use the [update](#update) API.
 >
-> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected. When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](js-apis-arkui-frameNode.md) and [RenderNode](js-apis-arkui-renderNode.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
+> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected. When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](js-apis-arkui-frameNode.md) and [RenderNode](js-apis-arkui-renderNode.md) objects are also dereferenced from the backend node. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 >
 > - The BuilderNode object maintains references to its entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose12) API to unbind the frontend and backend objects.
 
@@ -187,7 +187,7 @@ Custom components are allowed. Compared with the [build(builder: WrappedBuilder\
 > 
 > - The build parameter uses the pass-by-value semantics. To implement state updates, you must use the [update](#update) API.
 > 
-> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected. When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](js-apis-arkui-frameNode.md) and [RenderNode](js-apis-arkui-renderNode.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
+> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected. When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](js-apis-arkui-frameNode.md) and [RenderNode](js-apis-arkui-renderNode.md) objects are also dereferenced from the backend node. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 > 
 > - The BuilderNode object maintains references to its entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose12) API to unbind the frontend and backend objects.
 
@@ -629,7 +629,7 @@ Posts a raw touch event to the FrameNode created by this BuilderNode. This is su
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
-> **NOTE**
+> **NOTE** 
 >
 > - The coordinates you pass in need to be converted to pixel values (px). If the BuilderNode has any affine transformations applied to it, they must be taken into account and combined with the touch event coordinates.
 >
@@ -1426,7 +1426,7 @@ Checks whether this BuilderNode object has released its reference to its backend
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
+| boolean | Whether the reference to the backend entity node is released. The value **true** means that the reference to backend entity node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -1620,7 +1620,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -1715,7 +1715,7 @@ class TextNodeController extends NodeController {
   }
 
   aboutToDisappear() {
-    this.rootNode?.dispose();
+    this.textNode?.dispose();
   }
 }
 
@@ -1908,7 +1908,7 @@ Custom components are allowed.
 > 
 > - When nesting **@Builder**, ensure that the input parameter objects for the inner and outer **@Builder** methods are consistent.
 > 
-> - To operate objects in a ReactiveBuilderNode, ensure that the reference to the ReactiveBuilderNode is not garbage collected. When a ReactiveBuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](js-apis-arkui-frameNode.md) and [RenderNode](js-apis-arkui-renderNode.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a ReactiveBuilderNode will no longer correspond to any actual node if the ReactiveBuilderNode is garbage collected.
+> - To operate objects in a ReactiveBuilderNode, ensure that the reference to the ReactiveBuilderNode is not garbage collected. When a ReactiveBuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](js-apis-arkui-frameNode.md) and [RenderNode](js-apis-arkui-renderNode.md) objects are also dereferenced from the backend node. This means that any FrameNode objects obtained from a ReactiveBuilderNode will no longer correspond to any actual node if the ReactiveBuilderNode is garbage collected.
 > 
 > - The ReactiveBuilderNode object maintains references to its underlying entity nodes. When the ReactiveBuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose22) API to release node references and unbind frontend and backend nodes.
 
@@ -2111,7 +2111,7 @@ Posts a raw touch event to the FrameNode created by a ReactiveBuilderNode. This 
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
-> **NOTE**
+> **NOTE** 
 >
 > The coordinates you pass in need to be converted to pixel values (px). If the BuilderNode has any affine transformations applied to it, they must be taken into account and combined with the touch event coordinates.
 >
@@ -3116,7 +3116,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - The same event can be forwarded multiple times.<!--Del-->This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -3399,7 +3399,7 @@ Queries whether the current **ReactiveBuilderNode** object has released its refe
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
+| boolean | Whether the reference to the backend entity node is released. The value **true** means that the reference to backend entity node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -3414,7 +3414,7 @@ import { FrameNode, NodeController, ReactiveBuilderNode } from '@kit.ArkUI';
 struct TestComponent {
   build() {
     Column() {
-      Text('This is a BuilderNode.')
+      Text('This is a ReactiveBuilderNode.')
         .fontSize(25)
         .fontWeight(FontWeight.Bold)
     }

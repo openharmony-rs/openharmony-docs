@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=beada53a308464a4f981a52e4c6d5aeda1c1e48a translatedAt=2026-08-27T08:49:42.318Z pushedAt=2026-08-28T03:07:31.710Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T09:16:08.059Z pushedAt=2026-11-20T02:14:37.454Z nl=1 -->
 
 ## Overview
 
@@ -18,4 +18,4 @@
 | Name| Description|
 | -- | -- |
 | [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md) | Declares the APIs for accessing **NativeXComponent**.|
-| [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md) | Declares the enums used to access the keyboard events of **NativeXComponent**. |
+| [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md) | Declares the enumerations used to access native **XComponent** key events. |

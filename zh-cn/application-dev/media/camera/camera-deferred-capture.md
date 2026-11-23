@@ -23,6 +23,16 @@
 > - 分段式拍照能力由**设备**和**模式**决定，不同的设备支持的模式各异，对应分段式能力也有所差异，因此应用在切换设备或模式后分段式能力可能会发生变化。
 > - 应用无需主动使能分段式拍照能力，相机框架会在配流期间判断设备和模式是否支持分段式，如果支持会使能该功能。
 
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+
+在使用分段式拍照能力前，建议开发者先了解[设备输入](camera-device-input.md)、[会话管理](camera-session-management.md)、[拍照](camera-shooting.md)等单个流程。
+
+## 开发流程
+
+在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
+
+![deferred-capture-development-process](figures/deferred-capture-development-process.png)
+
 ## 开发步骤
 
 详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
@@ -215,3 +225,4 @@
     });
   }
   ```
+

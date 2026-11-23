@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=322f3406587b0e3e9fd2ec3098ccc13904d7d66a translatedAt=2026-09-04T03:23:51.795Z pushedAt=2026-09-09T09:11:03.704Z -->
+<!-- md-trans-meta sourceCommit=59f526cf6042b8e444993f60b308ec6d1e4ab72c translatedAt=2026-11-16T01:52:10.570Z pushedAt=2026-11-20T07:27:33.884Z nl=1 -->
 
 The **DataAbility** module provides APIs to create predicates for querying data from relational database (RDB) stores.
 
@@ -770,7 +770,7 @@ export default class EntryAbility extends UIAbility {
       };
       // Table structure: EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
       const SQL_CREATE_TABLE =
-        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'; // SQL statement for creating a data table.
+        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'; // SQL statement for creating the table.
       store = await relationalStore.getRdbStore(context, STORE_CONFIG);
       console.info('Succeeded in getting RdbStore.');
       await store.executeSql(SQL_CREATE_TABLE); // Create a data table.

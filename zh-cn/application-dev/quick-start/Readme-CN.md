@@ -71,3 +71,5 @@
     - [从Swift到ArkTS的迁移指导](getting-started-with-arkts-for-swift-programmers.md)
 <!--RP2-->
 <!--RP2End-->
+- CLI工具<!--cli-tools-->
+  - [ohos-fontManager CLI工具](font-manager-cli.md)<!--font-manager-cli-->
