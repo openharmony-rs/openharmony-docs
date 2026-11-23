@@ -1045,7 +1045,7 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1056,6 +1056,7 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 | 参数名 | 类型 | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
 | strategy  | [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将子组件对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，List不做吸附对齐，按惯性自然滑行至停止。 |
+
 **示例：**
 
 ```ts
@@ -1163,8 +1164,6 @@ scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvider | undefi
 <!--code_no_check-->
 ```ts
 // xxx.ets
-'use static';
-
 import { Entry, Component, Column, ColumnOptions, List, ListOptions, ForEach, ListItem, Text, TextAlign,
   Scroller, ScrollSnapOffsetProvider } from '@kit.ArkUI';
 
