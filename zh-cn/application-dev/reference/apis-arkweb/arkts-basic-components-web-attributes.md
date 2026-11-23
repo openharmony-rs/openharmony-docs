@@ -7937,13 +7937,13 @@ ArkTS-Dyn: visitedLinkPersistEnabled(enabled: boolean): WebAttribute
 
 ArkTS-Sta: visitedLinkPersistEnabled(enabled: boolean | undefined): this
 
-设置是否开启Web组件已访问链接的持久化保留。
+设置是否开启Web组件已访问链接的持久化保留。当属性没有显示调用时，默认不开启。
 
 开启后，已访问链接记录存储在数据库文件中，应用重启后记录仍保留，已访问链接着色在应用重启后保持一致。关闭后，新产生的已访问链接记录仅存储在共享内存中，应用退出后不保留。
 
 > **说明：**
 >
-> - 默认值为`false`。未设置本属性时，已访问链接记录仅存储在共享内存中。
+> - 未设置本属性时，默认为`false`。已访问链接记录仅存储在共享内存中。
 >
 > - 开启持久化后，记录按应用隔离，存储上限为20000条访问记录，保存期限为30天。访问同一个链接产生的多条访问记录分别计数。
 >
@@ -7965,7 +7965,7 @@ ArkTS-Sta: visitedLinkPersistEnabled(enabled: boolean | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| enabled | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是 | 是否开启已访问链接持久化。`true`表示开启，`false`表示关闭。默认值：`false`。ArkTS-Sta中传入`undefined`时恢复默认值。 |
+| enabled | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是 | 是否开启已访问链接持久化。`true`表示开启，`false`表示关闭。ArkTS-Sta中传入`undefined`时设置为`false`。 |
 
 **返回值：**
 
