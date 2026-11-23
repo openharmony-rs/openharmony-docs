@@ -225,6 +225,7 @@ async function doTestCaCheck() {
     console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
+
 ```
 
 
@@ -317,4 +318,5 @@ async function validateCRL() {
     console.error(`X509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
+
 ```
