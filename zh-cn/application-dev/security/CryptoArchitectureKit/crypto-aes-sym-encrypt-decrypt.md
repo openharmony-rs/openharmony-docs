@@ -56,13 +56,13 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12);
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -82,9 +82,9 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|GCM');
@@ -94,7 +94,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     gcmParams.authTag = await cipher.doFinal(null);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|GCM');
@@ -107,7 +107,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     }
     return decryptUpdate;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -115,7 +115,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -147,13 +147,13 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12);
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -173,9 +173,9 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|GCM');
@@ -185,7 +185,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     gcmParams.authTag = cipher.doFinalSync(null);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|GCM');
@@ -198,7 +198,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     }
     return decryptUpdate;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -206,7 +206,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -277,7 +277,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function genCcmParamsSpec() {
     let rand: cryptoFramework.Random = cryptoFramework.createRandom();
     let ivBlob: cryptoFramework.DataBlob = rand.generateRandomSync(7);
@@ -296,9 +296,9 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     };
     return ccmParamsSpec;
   }
-  
+
   let ccmParams = genCcmParamsSpec();
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|CCM');
@@ -308,7 +308,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     ccmParams.authTag = await cipher.doFinal(null);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|CCM');
@@ -316,7 +316,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     let decryptUpdate = await decoder.doFinal(cipherText);
     return decryptUpdate;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -324,7 +324,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -355,7 +355,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function genCcmParamsSpec() {
     let rand: cryptoFramework.Random = cryptoFramework.createRandom();
     let ivBlob: cryptoFramework.DataBlob = rand.generateRandomSync(7);
@@ -374,9 +374,9 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     };
     return ccmParamsSpec;
   }
-  
+
   let ccmParams = genCcmParamsSpec();
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|CCM');
@@ -386,7 +386,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     ccmParams.authTag = cipher.doFinalSync(null);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|CCM');
@@ -394,7 +394,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     let decryptUpdate = decoder.doFinalSync(cipherText);
     return decryptUpdate;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -402,7 +402,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -472,7 +472,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function genCcmAeadParamsSpec() {
     let nonce = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // 12 bytes
     let nonceValue = new Uint8Array(nonce);
@@ -485,9 +485,9 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     };
     return aeadParamsSpec;
   }
-  
+
     let aeadParams = genCcmAeadParamsSpec();
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|CCM');
@@ -495,7 +495,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     let encryptUpdate = await cipher.doFinal(plainText);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|CCM');
@@ -503,7 +503,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     let decryptUpdate = await decoder.doFinal(cipherText);
     return decryptUpdate;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -511,7 +511,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   export async function main() : Promise<string> {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -543,7 +543,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function genCcmAeadParamsSpec() {
     let nonce = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // 12 bytes
     let nonceValue = new Uint8Array(nonce);
@@ -556,9 +556,9 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     };
     return aeadParamsSpec;
   }
-  
+
     let aeadParams = genCcmAeadParamsSpec();
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|CCM');
@@ -566,7 +566,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     let encryptUpdate = cipher.doFinalSync(plainText);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|CCM');
@@ -574,7 +574,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     let decryptUpdate = decoder.doFinalSync(cipherText);
     return decryptUpdate;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -582,7 +582,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   export function main() : string {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -599,7 +599,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
         console.error('decrypt failed.');
         return 'fail';
       }
-      
+
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`AES CCM failed: errCode: ${e.code}, message: ${e.message}`);
@@ -640,13 +640,13 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -655,9 +655,9 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     };
     return ivParamsSpec;
   }
-  
+
   let iv = genIvParamsSpec();
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|CBC|PKCS7');
@@ -665,7 +665,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     let cipherData = await cipher.doFinal(plainText);
     return cipherData;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|CBC|PKCS7');
@@ -673,7 +673,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -681,7 +681,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function aesCBC() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -712,13 +712,13 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -727,9 +727,9 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     };
     return ivParamsSpec;
   }
-  
+
   let iv = genIvParamsSpec();
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|CBC|PKCS7');
@@ -737,7 +737,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     let cipherData = cipher.doFinalSync(plainText);
     return cipherData;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|CBC|PKCS7');
@@ -745,7 +745,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -753,7 +753,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -809,7 +809,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|ECB|PKCS7');
@@ -817,7 +817,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
     let cipherData = await cipher.doFinal(plainText);
     return cipherData;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|ECB|PKCS7');
@@ -825,7 +825,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -833,7 +833,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function aesECB() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -865,7 +865,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|ECB|PKCS7');
@@ -873,7 +873,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
     let cipherData = cipher.doFinalSync(plainText);
     return cipherData;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|ECB|PKCS7');
@@ -881,7 +881,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -889,7 +889,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function aesECBSync() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -965,13 +965,13 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12);
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -990,9 +990,9 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 分段加密消息
   async function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
@@ -1015,7 +1015,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  
+
   // 分段解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|GCM|PKCS7');
@@ -1040,7 +1040,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -1048,12 +1048,12 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function aes() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = await genSymKeyByData(keyData);
-      let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8编码后，也是43字节
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = await encryptMessageUpdateBySegment(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
@@ -1080,13 +1080,13 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12);
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -1105,9 +1105,9 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 分段加密消息
   function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
@@ -1130,7 +1130,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  
+
   // 分段解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|GCM|PKCS7');
@@ -1155,7 +1155,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -1163,12 +1163,12 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = genSymKeyByData(keyData);
-      let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8编码后，也是43字节
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = encryptMessageUpdateBySegment(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);
@@ -1226,13 +1226,13 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -1241,9 +1241,9 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     };
     return ivParamsSpec;
   }
-  
+
   let iv = genIvParamsSpec();
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|XTS');
@@ -1251,7 +1251,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let cipherData = await cipher.doFinal(plainText);
     return cipherData;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|XTS');
@@ -1259,7 +1259,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-  
+
   export async function aesXTS() : Promise<string> {
     try {
       let symGenerator = cryptoFramework.createSymKeyGenerator('AES256')
@@ -1291,13 +1291,13 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -1306,9 +1306,9 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     };
     return ivParamsSpec;
   }
-  
+
   let iv = genIvParamsSpec();
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('AES128|XTS');
@@ -1316,7 +1316,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let cipherData = cipher.doFinalSync(plainText);
     return cipherData;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('AES128|XTS');
@@ -1324,7 +1324,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-  
+
   export function aesXTS() : string {
     try {
       let symGenerator = cryptoFramework.createSymKeyGenerator('AES256')
