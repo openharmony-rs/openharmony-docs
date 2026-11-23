@@ -5,13 +5,13 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=9e877819f742f8f295a6826fd8a0c42490df09b8 translatedAt=2026-11-02T08:02:53.341Z pushedAt=2026-11-03T02:11:26.318Z nl=1 -->
+<!-- md-trans-meta sourceCommit=31661175150dbd26aebd7a7c4c7a32ee3048209a translatedAt=2026-11-20T03:23:23.250Z pushedAt=2026-11-20T09:09:45.057Z nl=1 -->
 
 The packing tool packs compiled files for installation and release. You can use DevEco Studio or the JAR package of the packing tool to pack files. The JAR package is usually stored in the **toolchains** directory of the SDK.
 
 The packing tool supports the generation of HAP (module package of the ability type), HSP (dynamically shared package), APP (application program package), HQF (quick fix module package), and APPQF (quick fix package) files.
 
-You can obtain the files in the packing command from [DevEco Studio build products](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build) by performing the following operations.<br>
+You can obtain the files in the packing command from [DevEco Studio build products](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build) by performing the following operations:<br>
 1. In the **/hvigor/hvigor-config.json5** file in the root directory of the DevEco Studio project, change the value of **level** under **logging** to **debug**.<br>
 2. On the DevEco Studio menu bar, choose **Build** > **Clear projects**.<br>
 3. On the DevEco Studio menu bar, choose **Build** > **Build App(s)**.<br>
@@ -39,7 +39,7 @@ The packing tool verifies the validity of the attributes in the **module.json** 
 
 - The packing tool must run in Java 8 or later.
 - Parameters and parameter values must be in pairs. For example, in the HAP packing command **--resources-path \<path>**, **--resources-path** is the command parameter and **path** is the parameter value. The two parameters must be used together.
-- You are not advised to use JDK 20 to run the packing tool. JDK 20 has a known defect in the verification rule for the ZIP64 extra data field. When the length of the ZIP64 extra data field in the directory of a ZIP package (such as a HAP, HSP, or any ZIP64 file) is abnormal, the error message `Invalid CEN header (invalid zip64 extra data field size)` is displayed during parsing. You are advised to use a long-term support (LTS) version, such as JDK 17 (LTS) or JDK 21 (LTS). If JDK 20 is required, add `-Djdk.util.zip.disableZip64ExtraFieldValidation=true` to the JVM startup parameters to avoid this issue.
+- You are not advised to use JDK 20 to run the packing tool. JDK 20 has a known issue in the validation rule for the ZIP64 extra data field. When the length of the ZIP64 extra data field in the directory of a ZIP package (such as a HAP, HSP, or any ZIP64 file) is abnormal, the error message `Invalid CEN header (invalid zip64 extra data field size)` is displayed during parsing. You are advised to use a long-term support (LTS) version, such as JDK 17 (LTS) or JDK 21 (LTS). If JDK 20 is required, add `-Djdk.util.zip.disableZip64ExtraFieldValidation=true` to the JVM startup parameters to avoid this issue.
 
 ## HAP Packing Command
 
@@ -85,17 +85,17 @@ Packing command example:
 | --js-path        | No        | NA            | Path of the JS file.                                        | This parameter is valid only in the stage model.|
 | --ets-path       | No        | NA            | Path of the ETS file.                                       | This parameter is valid only in the stage model.|
 | --out-path       | Yes        | NA            | Path of the target file. The file name extension must be .hap.                      | NA              |
-| --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.| NA              |
-| --an-path        | No         | NA            | Path to the [an file](https://developer.huawei.com/consumer/en/doc/doccenter-dev-faq/faqs-arkts-52).| This parameter is valid only in the stage model. |
-| --ap-path        | No         | NA            | Path to the [ap file](https://developer.huawei.com/consumer/en/doc/doccenter-dev-faq/faqs-arkts-52).| This parameter is valid only in the stage model. |
+| --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**.| NA              |
+| --an-path        | No         | NA            | Path for storing the [an file](https://developer.huawei.com/consumer/en/doc/doccenter-dev-faq/faqs-arkts-52).| Effective only for the Stage model. |
+| --ap-path        | No         | NA            | Path for storing the [ap file](https://developer.huawei.com/consumer/en/doc/doccenter-dev-faq/faqs-arkts-52).| Effective only for the Stage model. |
 | --dir-list       | No        | NA            | List of directories (folders) to be packed into the HAP file.                     | NA              |
 | --compress-level | No        | number        | Compression level of files in the **lib** library. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.| NA  |
-| --pkg-context-path      | No         | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. <!--Del-->This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**. <!--DelEnd--> | This parameter is valid only in the stage model.              |
+| --pkg-context-path      | No         | NA            | Specifies the path of the context information table file. The file name must be pkgContextInfo.json. <!--Del-->This parameter is mandatory when the bundleType value in the app.json5 configuration file is not appPlugin and the requestPermissions value in the module.json5 configuration file contains "ohos.permission.kernel.SUPPORT_PLUGIN". <!--DelEnd--> | Effective only for the Stage model.              |
 | --hnp-path | No| NA | Path of the native software package to be packed into the HAP file.| NA |
 | --exist-src-path | No| NA | Path of the source HAP file for incremental packing, which must point to an existing and valid .hap file. When **--lib-path-retain** is set to **true**, the packing tool directly copies the **libs** directory in the source HAP file, and does not pack the **libs** directory specified by **--lib-path**. This feature is called incremental packing. When **--lib-path-retain** is set to **false**, the **libs** directory specified by **--lib-path** is packed properly, and this parameter is invalid. You can use incremental packing to speed up the compression of .so files in the **libs** directory.<br>This parameter is supported since API version 22.| This parameter is valid only in the stage model.|
 | --lib-path-retain | No| boolean | Whether to perform incremental packing on the **libs** directory. The value **true** means to perform incremental packing on the **libs** directory, that is, directly copy the **libs** directory in the source HAP to which **--exist-src-path** points, and do not pack the **libs** directory specified by **--lib-path**. The value **false** means the opposite. The default value is **false**. This parameter must be used together with **--exist-src-path**. Otherwise, it does not take effect.<br>This parameter is supported since API version 22.| This parameter is valid only in the stage model.|
 | --pkg-sdk-info-path | No        | NA            | Path of the **pkgSdkInfo.json** file, which contains the basic information about the HARs on which the build product depends, including the module name and version. The file name must be **pkgSdkInfo.json**.<br>This parameter is supported since API version 23.    | This parameter is valid only in the stage model. |
-| --skills-path | No        | NA            | Path of the directory for storing skills. During packing, the skill content in the **--skills-path** directory is packed into the HAP based on the **skillProfiles** configuration item in the **module.json5** file.<br>This parameter is available when **bundleType** is set to **app** or **atomicService**. This parameter is unavailable when **bundleType** is set to **shared**, **appService**, or **appPlugin**. If this parameter is passed in these cases, the packing will fail.<br>This parameter is supported starting from API version 26.0.0.| This parameter is valid only in the stage model. |
+| --skills-path | No        | NA            | Path of the directory for storing skills. During packaging, the skill content in the **--skills-path** directory is packed into the HAP based on the **skillProfiles** configuration item in the **module.json5** file.<br>This parameter is available when **bundleType** is set to **app** or **atomicService**. This parameter is unavailable when **bundleType** is set to **shared**, **appService**, or **appPlugin**. If this parameter is passed in these cases, the packing will fail.<br>This parameter is supported starting from API version 26.0.0.| This parameter is valid only in the stage model. |
 
 ## HSP Packing Command
 
@@ -125,13 +125,13 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --js-path        | No        | NA            | Path of the JS file.                                        |
 | --ets-path       | No        | NA            | Path of the ETS file.                                       |
 | --out-path       | Yes        | NA            | Path of the target file. The file name extension must be .hsp.                      |
-| --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
-| --compress-level | No        | number        | Compress level of files in the **lib** library. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.|
-| --pkg-context-path      | No         | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. <!--Del-->This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**. <!--DelEnd--> |
+| --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**.|
+| --compress-level | No        | number        | Compression level of files in the **lib** library. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.|
+| --pkg-context-path      | No         | NA            | Specifies the context information table file path. The file name must be pkgContextInfo.json. <!--Del-->This parameter is mandatory when the bundleType value in the app.json5 configuration file is not appPlugin and the requestPermissions value in the module.json5 configuration file contains "ohos.permission.kernel.SUPPORT_PLUGIN". <!--DelEnd--> |
 | --exist-src-path | No| NA | Path of the source HSP file for incremental packing, which must point to an existing and valid .hsp file. When **--lib-path-retain** is set to **true**, the packing tool directly copies the **libs** directory in the source HSP file, and does not pack the **libs** directory specified by **--lib-path**. This feature is called incremental packing. When **--lib-path-retain** is set to **false**, the **libs** directory specified by **--lib-path** is packed properly, and this parameter is invalid. You can use incremental packing to speed up the compression of .so files in the **libs** directory.<br>This parameter is supported since API version 22.|
 | --lib-path-retain | No| boolean | Whether to perform incremental packing on the **libs** directory. The value **true** means to perform incremental packing on the **libs** directory, that is, directly copy the **libs** directory in the source HSP to which **--exist-src-path** points, and do not pack the **libs** directory specified by **--lib-path**. The value **false** means the opposite. The default value is **false**. This parameter must be used together with **--exist-src-path**. Otherwise, it does not take effect.<br>This parameter is supported since API version 22.|
 | --pkg-sdk-info-path | No        | NA            | Path of the **pkgSdkInfo.json** file, which contains the basic information about the HARs on which the build product depends, including the module name and version. The file name must be **pkgSdkInfo.json**.<br>This parameter is supported since API version 23.    |
-| --skills-path | No        | NA            | Path of the directory for storing skills. During packing, the skill content in the **--skills-path** directory is packed into the HSP based on the **skillProfiles** configuration item in the **module.json5** file.<br>This parameter is available when **bundleType** is set to **app**, **atomicService**, or **skill**. This parameter is unavailable when **bundleType** is set to **shared**, **appService**, or **appPlugin**. If this parameter is passed in these cases, the packing will fail.<br>This parameter is supported starting from API version 26.0.0.|
+| --skills-path | No        | NA            | Path of the directory for storing skills. During packaging, the skill content in the **--skills-path** directory is packed into the HSP based on the **skillProfiles** configuration item in the **module.json5** file.<br>This parameter is available when **bundleType** is set to **app**, **atomicService**, or **skill**. This parameter is unavailable when **bundleType** is set to **shared**, **appService**, or **appPlugin**. If this parameter is passed in these cases, the packing will fail.<br>This parameter is supported starting from API version 26.0.0.|
 
 ## APP Packing Command
 
@@ -150,7 +150,7 @@ You can use the JAR package of the packing tool to generate an APP file for an a
 | minCompatibleVersionCode         | Since API version 16, the **minCompatibleVersionCode** field values of all HAPs must be the same and be greater than or equal to the maximum value of the **minCompatibleVersionCode** field of all HSPs.<br>For API version 15 and earlier versions, the **minCompatibleVersionCode** field values of all HAPs or HSPs must be the same.   |
 | targetAPIVersion                 | Since API version 16, the **targetAPIVersion** field values of all HAPs must be the same and be greater than or equal to the maximum value of the **targetAPIVersion** field of all HSPs.<br>For API version 15 and earlier versions, the **targetAPIVersion** field values of all HAPs or HSPs must be the same.   |
 | versionName                | Since API version 12, the **versionName** field is no longer verified.     |
-| buildVersion                | Starting from API version 23, the `buildVersion` field values of all HAPs or HSPs must be consistent.      |
+| buildVersion                | Since API version 23, the **buildVersion** field values of all HAPs or HSPs must be the same.     |
 
 > **NOTE** 
 >
@@ -180,21 +180,106 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --signature-path   | No    | NA          | Path of the signature file.                                                       |
 | --certificate-path | No    | NA          | Path of the certificate file.                                                       |
 | --pack-res-path    | No    | NA          | Path of the **pack.res** file.                                |
-| --force            | No    | boolean     | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
+| --force            | No    | boolean     | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**.|
 | --encrypt-path     | No    | NA          | The file name must be **encrypt.json**.                          |
 | --pac-json-path     | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                      |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 | --replace-pack-info    | No    | boolean          | Whether to use the **pack.info** file specified by the **--pack-info-path** parameter to replace the **pack.info** file in the HAP and HSP files during APP packing. The value **true** means to replace, and **false** means the opposite. The default value is **true**.<br>This parameter is supported since API version 22.|
 | --stat-duplicate       | No    | boolean       | Whether to scan for duplicate .so files after the packing is complete. This parameter can be used to identify duplicate .so files to reduce the package size. If this parameter is set to **true**, the scanning is performed. After the scanning is complete, the **scan_report** directory is generated in the directory where the output file specified by **--out-path** is located. The **scan_report** directory contains the [duplicate .so file scanning report](#scanning-for-duplicate-so-files) whose file name is **scan_result**, and the **scan_report** directory path is printed in the warning message. If this parameter is set to **false**, the scanning is not performed. The default value is **false**.<br>This parameter is supported since API version 23.|
-| --deduplicate-so       | No     | boolean       | Used to deduplicate so files during packing, thereby effectively reducing the App package size.<br/>Default value: `false`<br/>Value description:<br/>`true`: Perform so file deduplication. After deduplication is complete, a deduplication report [so_dedup_report.json](#so-deduplication-report) is generated in the directory specified by `--out-path`, and the deduplication result is printed in the log.<br/>`false`: Do not perform so file deduplication.<br/>Deduplication policy:<br/>- When the same so files exist across different modules in the App package, and these so files are extracted to the application root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `deliveryWithInstall`, `distributionFilter`, and `requiredDeviceFeatures`, ensuring that the application's functionality on each installable device remains unchanged after deduplication.<br/>**Note**:<br/>- If the application code directly reads so files from the original installation package, the application behavior will change after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If you enable so deduplication during packing, carefully check the deduplication result and fully verify the functional integrity of the deduplicated App package before release.<br/>This parameter is supported from API version 26.0.0.|
-| --deduplist-sdk-path | No | NA | Specifies the path of the deduplist_sdk.json file, used to delete so files in HAP/HSP packages that duplicate system preinstalled so files during packing. HAP/HSP packages released to the app market and installed into ROM do not contain the deleted so files.<br/>After deduplication is complete, a deduplication report dedupfiles.json is generated in the root directory of the HAP/HSP where deduplication occurred, and the deduplication result is printed in the log. For details about deduplist_sdk.json and dedupfiles.json, see [SDK list so deduplication](#sdk-list-so-deduplication).<br/>Deduplication policy:<br/>- When so files in the App package duplicate system preinstalled so files, and these so files are extracted to the application root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes` and `requiredDeviceFeatures`, ensuring that the application's functionality on each installable device remains unchanged after deduplication.<br/>**Note**:<br/>- If the application code directly reads so files from the original installation package, the application behavior will change after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If you enable SDK list so deduplication during packing, carefully check the deduplication result and fully verify the functional integrity of the deduplicated App package before release.<br/>This parameter is supported from API version 26.2.0.|
+| --deduplicate-so       | No     | boolean       | Used to deduplicate so files during packing, thereby effectively reducing the app package size.<br/>Default value: `false`<br/>Value description:<br/>`true`: Execute so file deduplication. After deduplication is complete, a deduplication report [so_dedup_report.json](#so-deduplication-report) is generated under the directory specified by `--out-path`, and the deduplication result is printed in the log.<br/>`false`: Do not execute so file deduplication.<br/>Deduplication policy:<br/>- When the same so files exist between different modules in the app package, and these so files are extracted to the app root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `deliveryWithInstall`, `distributionFilter`, `requiredDeviceFeatures`, and `anyOfDeviceFeatures` to ensure that the app functions remain unchanged on all installable devices after deduplication.<br/>**Description**:<br/>- If the app code directly reads so files from the original installation package, the app behavior will change after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If the developer enables the so deduplication feature during packaging, it is recommended to carefully check the deduplication result and fully verify the functional integrity of the deduplicated app package before publishing to the app market.<br/>This parameter is supported from API version 26.0.0.|
+| --deduplist-sdk-path | No | NA | Specifies the path of the deduplist_sdk.json file, used to delete so files that duplicate the system preinstalled so files within the HAP/HSP package during packing. HAP/HSP packages published to the app market and installed into the ROM do not contain the deleted so files.<br/>After deduplication is complete, a deduplication report dedupfiles.json is generated under the root directory of the HAP/HSP where deduplication occurs, and the deduplication result is printed in the log. For details about deduplist_sdk.json and dedupfiles.json, see [SDK Manifest so Deduplication](#sdk-manifest-so-deduplication).<br/>Deduplication policy:<br/>- When so files that duplicate the system preinstalled so files exist in the app package, and these so files are extracted to the app root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `requiredDeviceFeatures`, and `anyOfDeviceFeatures` to ensure that the app functions remain unchanged on all installable devices after deduplication.<br/>**Description**:<br/>- If the app code directly reads so files from the original installation package, the app behavior will change after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If the developer enables the SDK list so deduplication feature during packaging, it is recommended to carefully check the deduplication result and fully verify the functional integrity of the deduplicated app package before publishing to the app market.<br/>This parameter is supported from API version 26.1.0.|
+
+## installer Mode Packing Command
+
+The installer mode is supported since API version 26.0.1.
+
+The installer mode is used to pack the HAP, HSP, and app description file of one or more apps into an .app package for the installer to read. The generated package uses the ZIP format. Its root directory contains manifest.json and the Contents directory, and the original HAP and HSP files are stored under Contents by app directory.
+
+This package has a different internal structure from the package generated by the [APP Packing Command](#app-packing-command). When it is used, the installer must support the installer package format. The packing tool is responsible for generating the container and does not execute app installation, signing, or signature verification.
+
+### Commands and Parameters
+
+```bash
+java -jar app_packing_tool.jar --mode installer --contents <path> [--manifest <path>] --out-path <path> [--force true]
+```
+
+**Table 6** Installer packing command parameters
+
+| Command | Mandatory | Option | Description |
+| --- | --- | --- | --- |
+| --mode | Yes | installer | Packing type. |
+| --contents | Yes | NA | Input directory path that contains the app directories. The directory must be non-empty, and each of its direct subdirectories corresponds to an app. For the directory structure requirements, see [Input Directory and Package Structure](#input-directory-and-package-structure). |
+| --manifest | No | NA | Path of the app description file, which must point to a non-empty, readable regular file. When provided, the tool validates the app description file and retains its original content; when not provided, the tool automatically generates the app description file. For the requirements, see [App Description File](#app-description-file). |
+| --out-path | Yes | NA | Output file path. The file name must end with the lowercase .app suffix. The output must be located outside the --contents directory and must not point to the same file as the input HAP, HSP, or app description file. |
+| --force | No | boolean | Whether to overwrite the existing output file. true indicates that overwriting an existing regular file is allowed, and false indicates that packing is terminated and an error is reported when the output already exists. The default value is false. The existing output is replaced only after validation and writing succeed; overwriting is not allowed when the output path is a directory. |
+
+### Input Directory and Package Structure
+
+The directory specified by --contents must meet the following requirements:
+
+- Direct child items can only be app directories, and at least one app directory must be contained.
+- Each app directory must be non-empty and can only directly contain readable ordinary HAP and HSP files, with file names ending in lowercase .hap or .hsp. The app directory must not contain subdirectories or other files.
+- All input modules must use the Stage model, the valid bundleType in module.json must be app, and the deviceTypes array must contain `2in1` and can also contain other device types.
+
+For example, when --contents specifies `./payload`, the input structure can be:
+
+```text
+payload/
+├── app1/
+│   ├── entry.hap
+│   └── library.hsp
+└── app2/
+    └── entry.hap
+```
+
+The output installer package structure is as follows. The name of the input directory itself does not affect the fixed Contents directory name within the package.
+
+```text
+example.app
+├── manifest.json
+└── Contents/
+    ├── app1/
+    │   ├── entry.hap
+    │   └── library.hsp
+    └── app2/
+        └── entry.hap
+```
+
+During packing, the original file content of HAP and HSP is retained, files inside the module are not modified, and pack.info is not generated in the root directory of the installer package. manifest.json, HAP, and HSP all use DEFLATE compression in the outer ZIP, with the compression level fixed at 5, independent of the module's debug configuration.
+
+### App Description File
+
+manifest.json records app information. When --manifest is not passed in, the tool automatically generates the app description file. When it is passed in, the tool writes the original content of the external app description file into the package after validation.
+
+**Table 7** Description of top-level fields in manifest.json
+
+| Field | Type | Whether Mandatory | Description |
+| --- | --- | --- | --- |
+| version | number | No | Version number of the app description file. |
+| distributionType | string | No | Distribution type. |
+| apps | Array&lt;Object&gt; | Yes | Non-empty array of app information, corresponding one-to-one to the app directories under --contents. |
+
+**Table 8** Description of fields of the apps array elements
+
+| Field | Type | Whether Mandatory | Description |
+| --- | --- | --- | --- |
+| bundleName | string | Yes | Non-empty app bundle name. |
+| versionCode | number | Yes | App version number. |
+| versionName | string | Yes | Non-empty app version name. |
+| minAPIVersion | number | Yes | Minimum API version, not lower than the maximum value of all modules in the corresponding app. |
+| path | string | Yes | App directory within the package, in the format `Contents/<app directory name>`, using forward slashes. |
+| coreApp | boolean | No | Whether it is a core app. The entire apps array must have exactly one true, and the remaining items can be omitted or set to false. |
+
+Both versionCode and minAPIVersion must be integers in the range [0, 2147483647], and numeric strings are not accepted.
+
+During automatic generation, apps are sorted by the Unicode code point order of the app directory names, minAPIVersion takes the maximum value of all modules in the corresponding app, and the first app is set as the core app. When another core app needs to be specified, an external app description file can be passed in through --manifest.
 
 ## Multi-project Packing Command
 
 If multiple teams develop the same application but it is inconvenient to share code, you can use multi-project packing, which packs the packed HAP, HSP, and APP files into a final APP file and releases it to the application market.
 
-**Table 6** Validity verification rules for multi-project packing
+**Table 9** Validity check rules for multi-project packing
 
 | Fields in module.json of HAP or HSP That Are Verified | Verification Rules                          |
 | --------------------------------- | --------------------------------- |
@@ -219,7 +304,7 @@ Packing command example:
 java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <path>] [--app-list <path>] --out-path <option> [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
-**Table 7** Parameters of the multi-project packing command
+**Table 10** Multi-project Packing Command Parameters
 
 | Name        | Mandatory| Option       | Description                                                       |
 |------------|-------|-----------|----------------------------------------------------------------|
@@ -228,14 +313,14 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --hsp-list | No    | Path of the HSP files   | Path of the HSP files. The file name extension must be .hsp. If there are multiple HSP files, separate them with commas (,).<br>The value can also be the directory (folder) where the HSP files are stored.                                         |
 | --app-list | No    | Path of the APP files   | Path of the APP files. The file name extension must be .app. If there are multiple APP files, separate them with commas (,).<br>The value can also be the directory (folder) where the APP files are stored.<br>You must specify **--hap-list**, **--hsp-list**, or **--app-list**, or any of their combinations.|
 | --out-path | Yes    | NA | Path of the target file. The file name extension must be .app.|
-| --force    | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**. |
+| --force    | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**. |
 | --encrypt-path | No    | Path of **encrypt.json**| The file name must be **encrypt.json**.                                                                 |
 | --pac-json-path | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>If this parameter is not set, the app product does not contain the **pac.json** file.<br>The **pac.json** file in the APP file specified by **--app-list** is not packed into the final app.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                      |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 | --stat-duplicate       | No    | boolean       | Whether to scan for duplicate .so files after the packing is complete. This parameter can be used to identify duplicate .so files to reduce the package size. If this parameter is set to **true**, the scanning is performed. After the scanning is complete, the **scan_report** directory is generated in the directory where the output file specified by **--out-path** is located. The **scan_report** directory contains the [duplicate .so file scanning report](#scanning-for-duplicate-so-files) whose file name is **scan_result**, and the **scan_report** directory path is printed in the warning message. If this parameter is set to **false**, the scanning is not performed. The default value is **false**.<br>This parameter is supported since API version 23.|
-| --deduplicate-so       | No     | boolean       | Used to deduplicate SO files during packing, thereby effectively reducing the App package size.<br/>Default value: `false`<br/>Value description:<br/>`true`: Perform SO file deduplication. After deduplication is complete, a deduplication report [so_dedup_report.json](#so-deduplication-report) is generated in the directory specified by `--out-path`, and the deduplication result is printed in the log.<br/>`false`: Do not perform SO file deduplication.<br/>Deduplication policy:<br/>- When identical SO files exist across different modules in the App package, and these SO files are extracted to the application root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `deliveryWithInstall`, `distributionFilter`, and `requiredDeviceFeatures`, ensuring that the application functions remain unchanged on all installable devices after deduplication.<br/>**Note**:<br/>- If the application code reads SO files directly from the original installation package, the application behavior changes after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted SO files before enabling it.<br/>- If you enable SO deduplication during packing, carefully check the deduplication result and fully verify the functional integrity of the deduplicated App package before release.<br/>This parameter is supported since API version 26.0.0.|
-| --deduplist-sdk-path | No | NA | Specifies the path of the deduplist_sdk.json file, which is used to delete, during packing, SO files in HAP/HSP packages that duplicate system preinstalled SO files. HAP/HSP packages released to the app market and installed into the ROM do not contain the deleted SO files.<br/>After deduplication is complete, a deduplication report dedupfiles.json is generated in the root directory of the HAP/HSP where deduplication occurs, and the deduplication result is printed in the log. For details about deduplist_sdk.json and dedupfiles.json, see [SDK List SO Deduplication](#sdk-list-so-deduplication).<br/>Deduplication policy:<br/>- When SO files in the App package duplicate system preinstalled SO files, and these SO files are extracted to the application root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes` and `requiredDeviceFeatures`, ensuring that the application functions remain unchanged on all installable devices after deduplication.<br/>**Note**:<br/>- If the application code reads SO files directly from the original installation package, the application behavior changes after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted SO files before enabling it.<br/>- If you enable SDK list SO deduplication during packing, carefully check the deduplication result and fully verify the functional integrity of the deduplicated App package before release.<br/>This parameter is supported since API version 26.2.0.|
+| --deduplicate-so       | No     | boolean       | Used to deduplicate so files during packaging, thereby effectively reducing the app package size.<br/>Default value: `false`<br/>Value description:<br/>`true`: Execute so file deduplication. After deduplication is complete, a deduplication report [so_dedup_report.json](#so-deduplication-report) is generated under the directory specified by `--out-path`, and the deduplication result is printed in the log.<br/>`false`: Do not execute so file deduplication.<br/>Deduplication policy:<br/>- When the same so files exist between different modules in the app package, and these so files are extracted to the app root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `deliveryWithInstall`, `distributionFilter`, `requiredDeviceFeatures`, and `anyOfDeviceFeatures` to ensure that the app functions remain unchanged on all installable devices after deduplication.<br/>**Description**:<br/>- If the app code directly reads so files from the original installation package, the app behavior will change after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If the developer enables the so deduplication feature during packaging, it is recommended to carefully check the deduplication result and fully verify the functional integrity of the app package after deduplication before publishing to the app market.<br/>This parameter is supported from API version 26.0.0.|
+| --deduplist-sdk-path | No | NA | Specifies the path of the deduplist_sdk.json file, which is used to delete so files in the HAP/HSP package that duplicate the system preinstalled so files during packaging. HAP/HSP packages published to the app market and installed into the ROM do not contain the deleted so files.<br/>After deduplication is complete, a deduplication report dedupfiles.json is generated under the root directory of the HAP/HSP where deduplication occurs, and the deduplication result is printed in the log. For details about deduplist_sdk.json and dedupfiles.json, see [SDK Manifest so Deduplication](#sdk-manifest-so-deduplication).<br/>Deduplication policy:<br/>- When so files that duplicate the system preinstalled so files exist in the app package, and these so files are extracted to the app root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `requiredDeviceFeatures`, and `anyOfDeviceFeatures` to ensure that the app functions remain unchanged on all installable devices after deduplication.<br/>**Description**:<br/>- If the app code directly reads so files from the original installation package, the app behavior will change after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If the developer enables the SDK list so deduplication feature during packaging, it is recommended to carefully check the deduplication result and fully verify the functional integrity of the app package after deduplication before publishing to the app market.<br/>This parameter is supported from API version 26.1.0.|
 
 ## HQF Packing Command
 
@@ -251,7 +336,7 @@ Packing command example:
 java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>] [--ets-path <path>] [--resources-path <path>] --out-path <path> [--force true]
 ```
 
-**Table 8** Parameters of the HQF packing command
+**Table 11** HQF packing command parameter description
 
 | Name         | Mandatory| Option         | Description                                |
 |-------------|-------|-------------|------------------------------------|
@@ -261,7 +346,7 @@ java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>]
 | --ets-path  | No    | NA          | Path of the ETS file.                      |
 | --resources-path  | No    | NA          | Path of the resources file.                      |
 | --out-path  | Yes    | NA          | Path of the target file. The file name extension must be .hqf.             |
-| --force     | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
+| --force     | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**.|
 
 ## APPQF Packing Command
 
@@ -279,14 +364,14 @@ Packing command example:
 java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> [--force true]
 ```
 
-**Table 9** Parameters of the APPQF packing command
+**Table 12** APPQF packing command parameter description
 
 | Name        | Mandatory| Option         | Description                                |
 |------------|-------|-------------|------------------------------------|
 | --mode     | Yes    | appqf       | Packing mode.                             |
 | --hqf-list | Yes    | NA          | Path of the [HQF file](packing-tool.md#hqf-packing-command). Use commas (,) to separate multiple HQF files.             |
 | --out-path | Yes    | NA          | Path of the target file. The file name extension must be .appqf.           |
-| --force    | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
+| --force    | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**.|
 
 ## versionNormalize Command
 
@@ -297,7 +382,7 @@ Packing command example:
 java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp --version-code 1000001 --version-name 1.0.1 --out-path out
 ```
 
-**Table 10** Parameters of the versionNormalize command
+**Table 13** versionNormalize command parameter description
 
 | Name            | Mandatory| Option              | Description                                                               |
 |----------------|-------|------------------|-------------------------------------------------------------------|
@@ -316,7 +401,7 @@ Packing command example:
 java -jar app_packing_tool.jar --mode packageNormalize --hsp-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --out-path out
 ```
 
-**Table 11** Parameters of the packageNormalize command
+**Table 14** Parameter meaning and specification
 
 | Name            | Mandatory| Option           | Description                                                 |
 |----------------|-------|---------------|-----------------------------------------------------|
@@ -341,7 +426,7 @@ Packing command example:
 java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --version-name 1.0.1 --min-compatible-version-code 14 --min-api-version 14 --target-api-version 14 --api-release-type Release1 --bundle-type app --installation-free false --delivery-with-install true --device-types default,tablet --out-path out
 ```
 
-**Table 12** Parameters of the generalNormalize command
+**Table 15** Parameter meaning and specification
 
 | Name                         | Mandatory| Option                                              | Description                                                        |
 | ----------------------------- | ---------- | -------------------------------------------------- | ------------------------------------------------------------ |
@@ -371,21 +456,21 @@ Packing command example:
 java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-path <path> --out-path <path> [--force true]
 ```
 
-**Table 13** Parameters of the RES packing command
+**Table 16** Parameter meaning and specification
 
 | Name              | Mandatory| Option           | Description                                |
 |------------------|-------|---------------|------------------------------------|
 | --mode           | Yes    | res           | Command type.                             |
-| --entrycard-path | Yes    | NA            | Path of the **pack.res** file.                          |
+| --entrycard-path | Yes    | NA            | Path of the snapshot directory.                          |
 | --pack-info-path | Yes    | NA            | Path of the **pack.info** file.             |
 | --out-path       | Yes    | NA            | Path of the target file. The file name extension must be .res.             |
-| --force          | No    | boolean   | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
+| --force          | No    | boolean   | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**.|
 
 ## FastApp Packing Command
 
 You can use the JAR package of the packing tool to generate an APP file for a fast application by passing in packing options and path of the HAP or HSP files. The APP file is used to release the application to the application market.
 
-**Table 14** Validity verification rules for fastApp file packing
+**Table 17** fastApp packing validity check rules
 
 | Fields in module.json of HAP or HSP That Are Verified | Verification Rules                          |
 | --------------------------------- | --------------------------------- |
@@ -415,7 +500,7 @@ Packing command example:
 java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <path>] --out-path <path> [--signature-path <path>] [--certificate-path <path>] --pack-info-path <path> [--pack-res-path <path>] [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
-**Table 15** Parameters of the fastApp packing command
+**Table 18** Parameter meaning and specification
 
 | Name                | Mandatory| Option        | Description                                                    |
 |--------------------|-------|------------|----------------------------------------------------|
@@ -427,18 +512,18 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | --signature-path   | No    | NA         | Path of the signature file.                                                           |
 | --certificate-path | No    | NA         | Path of the certificate file.                                               |
 | --pack-res-path    | No    | NA         | Path of the **pack.res** file.                  |
-| --force            | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
+| --force            | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly and this parameter is invalid. The default value is **false**.|
 | --encrypt-path     | No    | NA         | The file name must be **encrypt.json**.          |
 | --pac-json-path     | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                     |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 | --stat-duplicate       | No    | boolean       | Whether to scan for duplicate .so files after the packing is complete. This parameter can be used to identify duplicate .so files to reduce the package size. If this parameter is set to **true**, the scanning is performed. After the scanning is complete, the **scan_report** directory is generated in the directory where the output file specified by **--out-path** is located. The **scan_report** directory contains the [duplicate .so file scanning report](#scanning-for-duplicate-so-files) whose file name is **scan_result**, and the **scan_report** directory path is printed in the warning message. If this parameter is set to **false**, the scanning is not performed. The default value is **false**.<br>This parameter is supported since API version 23.|
-| --deduplicate-so       | No     | boolean       | Used to deduplicate so files during packing, thereby effectively reducing the App package size.<br/>Default value: `false`<br/>Value description:<br/>`true`: Perform so file deduplication. After deduplication is complete, a deduplication report [so_dedup_report.json](#so-deduplication-report) is generated in the directory specified by `--out-path`, and the deduplication result is printed in the log.<br/>`false`: Do not perform so file deduplication.<br/>Deduplication strategy:<br/>- When the same so file exists across different modules in the App package, and these so files are extracted to the application root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `deliveryWithInstall`, `distributionFilter`, and `requiredDeviceFeatures`, ensuring that the application's functionality on each installable device remains unchanged after deduplication.<br/>**Note**:<br/>- If the application code reads so files directly from the original installation package, the application behavior changes after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If you enable so deduplication during packing, carefully check the deduplication results and fully verify the functional integrity of the deduplicated App package before release.<br/>This parameter is supported since API version 26.0.0.|
-| --deduplist-sdk-path | No | NA | Specifies the path of the deduplist_sdk.json file, used to delete so files in the HAP/HSP package that duplicate the system preinstalled so files during packing. HAP/HSP packages published to the app market and installed in the ROM do not contain the deleted so files.<br/>After deduplication is complete, a deduplication report dedupfiles.json is generated in the root directory of the HAP/HSP where deduplication occurred, and the deduplication result is printed in the log. For details about deduplist_sdk.json and dedupfiles.json, see [SDK list so deduplication](#sdk-list-so-deduplication).<br/>Deduplication strategy:<br/>- When the App package contains so files that duplicate the system preinstalled so files, and these so files are extracted to the application root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes` and `requiredDeviceFeatures`, ensuring that the application's functionality on each installable device remains unchanged after deduplication.<br/>**Note**:<br/>- If the application code reads so files directly from the original installation package, the application behavior changes after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If you enable SDK list so deduplication during packing, carefully check the deduplication results and fully verify the functional integrity of the deduplicated App package before release.<br/>This parameter is supported since API version 26.2.0.|
+| --deduplicate-so       | No     | boolean       | Used to deduplicate so files during packing, thereby effectively reducing the app package size.<br/>Default value: `false`<br/>Value description:<br/>`true`: Execute so file deduplication. After deduplication is complete, a deduplication report [so_dedup_report.json](#so-deduplication-report) is generated under the directory specified by `--out-path`, and the deduplication result is printed in the log.<br/>`false`: Do not execute so file deduplication.<br/>Deduplication policy:<br/>- When the same so files exist between different modules in the app package, and these so files are extracted to the app root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `deliveryWithInstall`, `distributionFilter`, `requiredDeviceFeatures`, and `anyOfDeviceFeatures`, to ensure that the app functions remain unchanged on all installable devices after deduplication.<br/>**Description**:<br/>- If the app code directly reads so files from the original installation package, the app behavior changes after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If the developer enables so deduplication during packaging, it is recommended to carefully check the deduplication result and fully verify the functional integrity of the deduplicated app package before publishing to the app market.<br/>This parameter is supported from API version 26.0.0.|
+| --deduplist-sdk-path | No | NA | Specifies the path of the deduplist_sdk.json file, used to delete so files in the HAP/HSP package that duplicate the system preinstalled so files during packing. HAP/HSP packages published to the app market and installed into the ROM do not contain the deleted so files.<br/>After deduplication is complete, a deduplication report dedupfiles.json is generated under the root directory of the HAP/HSP where deduplication occurs, and the deduplication result is printed in the log. For details about deduplist_sdk.json and dedupfiles.json, see [SDK Manifest so Deduplication](#sdk-manifest-so-deduplication).<br/>Deduplication policy:<br/>- When so files that duplicate the system preinstalled so files exist in the app package, and these so files are extracted to the app root directory (that is, `compressNativeLibs` and `extractNativeLibs` in `module.json5` are not both `false`, and `libIsolation` is `false`), the packing tool performs deduplication based on configurations such as `deviceTypes`, `requiredDeviceFeatures`, and `anyOfDeviceFeatures`, to ensure that the app functions remain unchanged on all installable devices after deduplication.<br/>**Description**:<br/>- If the app code directly reads so files from the original installation package, the app behavior changes after deduplication is enabled. In this case, do not enable this feature, or modify the code logic to read the extracted so files before enabling it.<br/>- If the developer enables SDK list so deduplication during packaging, it is recommended to carefully check the deduplication result and fully verify the functional integrity of the deduplicated app package before publishing to the app market.<br/>This parameter is supported from API version 26.1.0.|
 
 ## Scanning for Duplicate .so Files
 
-When you use the [APP packing command](#app-packing-command), [FastApp packing command](#fastapp-packing-command), or [multi-project packing command](#multi-project-packing-command) to generate an APP file, set **--stat-duplicate** to **true** to enable the scanning for duplicate .so files. The system will generate a scanning report after the packing is successful. After duplicate .so files are identified, you can reduce the package size as required. The scanning report is stored in the **scan_report** directory in the directory where the generated APP file is stored. Table 16 describes the structure of the scanning report, and Table 17 describes the structure of the duplicate .so file feature information. The following is an example of the scanning report:
+When an App package is generated through the [APP Packing Command](#app-packing-command), [fastApp packing command](#fastapp-packing-command), or [Multi-project Packing Command](#multi-project-packing-command), set --stat-duplicate to true to enable scanning for duplicate .so files. The system generates a scan report after the packing succeeds. After duplicate .so files are identified, developers can reduce the package size based on actual requirements. The scan report is stored in the `scan_report` directory under the directory where the generated App package resides. The content structure of the scan report is shown in Table 19, and the feature information structure of duplicate .so files is shown in Table 20. An example of the scan report is as follows:
 
 JSON statistics result:
 ```json
@@ -456,16 +541,16 @@ JSON statistics result:
     "taskDesc": "find the duplicated so"
 }]
 ```
-**Table 16 Fields in the duplicate .so file scanning report**
+**Table 19 Duplicate .so file scan report field information**
 
 | Field     | Type  | Description                       |
 | --------- | ------ | --------------------------- |
-| result    | Struct | Feature information of duplicate .so files, including the MD5 value, file size, and file path. For details, see Table 17.      |
+| result    | Struct | Characteristic information of the duplicate so file, containing the MD5 value, file size, and file path. For specific content, see Table 20.       |
 | startTime | String | Start time of the task.             |
 | stopTime  | String | End time of the task.             |
 | taskDesc  | String | Task description, which is **"find the duplicated so"**.           |
 
-**Table 17 Feature fields of duplicate .so files**
+**Table 20 Field information of duplicate .so file characteristics**
 
 | Field | Type           | Description                      |
 | ----- | --------------- | -------------------------- |
@@ -499,24 +584,24 @@ The following is an example of the deduplication report:
 }
 ```
 
-**Table 18 Fields in the .so deduplication report**
+**Table 21 Field information of the .so deduplication report**
 
 | Field          | Type  | Description                                                        |
 | -------------- | ------ | ------------------------------------------------------------ |
-| timestamp      | String | Timestamp of the .so deduplication operation. The value is in ISO 8601 format, for example, **2026-07-04T09:24:50Z**.|
+| timestamp      | String | Timestamp of the SO deduplication operation. The value is in ISO 8601 format, for example, **2026-07-04T09:24:50Z**.|
 | totalSavedSize | int    | Total size of files saved by deduplication, that is, the sum of the size differences between all HAPs/HSPs before and after deduplication (before app compression). The unit is byte.                 |
 | modules        | Object | Deduplication details of each module. **key** is the module name, and **value** is the deduplication information object of the module.  |
 
-**Table 19 Fields in the module deduplication information**
+**Table 22 Field information of module deduplication information**
 
 | Field   | Type           | Description                                                        |
 | ------- | --------------- | ------------------------------------------------------------ |
 | kept    | Vector\<String> | List of paths of the .so files retained in the module (only for duplicate .so files).                             |
 | removed | Vector\<String> | List of paths of the .so files removed from the module.|
 
-## SDK List so Deduplication
+## SDK Manifest so Deduplication
 
-When you use the [app packing command](#app-packing-command), [fastApp packing command](#fastapp-packing-command), or [multi-project packing command](#multi-project-packing-command) to generate an App package, you can set the `--deduplist-sdk` parameter to specify the path of the `deduplist_sdk.json` manifest file to enable SDK manifest so deduplication: so files in the App package that duplicate the system preinstalled so files are removed from the module packages, reducing device ROM usage. After deduplication, a deduplication result file `dedupfiles.json` is generated in the root directory of each module package where deduplication occurs.
+When an App package is generated through the [APP Packing Command](#app-packing-command), [fastApp packing command](#fastapp-packing-command), or [Multi-project Packing Command](#multi-project-packing-command), the --deduplist-sdk-path parameter can be set to specify the path of the deduplist_sdk.json manifest file to enable SDK manifest so deduplication: so files within the App package that duplicate system preinstalled so files are removed from the module package, reducing device ROM usage. After deduplication, a deduplication result file dedupfiles.json is generated under the root directory of each module package where deduplication occurs.
 
 **deduplist_sdk.json manifest format:**
 
@@ -539,28 +624,28 @@ When you use the [app packing command](#app-packing-command), [fastApp packing c
 }
 ```
 
-**Table 20 deduplist_sdk.json field information**
+**Table 23 deduplist_sdk.json field information**
 
-| Field              | Type            | Description                                                        |
+| Field             | Type           | Description                                                        |
 | ------------------ | --------------- | ------------------------------------------------------------ |
 | dedupMinApiVersion | number          | Minimum API version supported for deduplication. |
 | deviceType         | Vector\<String> | List of device types supported for deduplication. |
-| libraries          | Vector\<Object> | List of so libraries. Each element contains `name` (so file name), `abi` (ABI name), and a mapping from API versions to the SHA-256 values of the system preinstalled so files; the mapping key is the API version, and the value is the corresponding SHA-256 value. |
+| libraries          | Vector\<Object> | List of so libraries. Each element contains name (so file name), abi (abi name), and a mapping from API version to the SHA-256 value of the system preinstalled so; the mapping key is the API version, and the value is the corresponding SHA-256 value. |
 
 **Deduplication rules:**
-- Matching rule: For an so file in the module `libs` directory, if its SHA-256 value is the same as the SHA-256 value corresponding to a certain API version in the manifest, and that API version is not higher than the module's `compatibleSdkVersion`, the so file is removed from the module package. The SHA-256 value corresponding to a lower API version also takes effect for a higher `compatibleSdkVersion`.
-- Relationship with `--deduplicate-so`: The two are independent of each other and can be used at the same time. When both are enabled, so deduplication is performed first, followed by SDK manifest so deduplication, and any so file is removed only once.
-- Application-level skip conditions:
-  1. The maximum `compatibleSdkVersion` among all modules of the application is lower than the manifest's `dedupMinApiVersion`.
-  2. Any module of the application has an extensionAbility of type driver under extensionAbilities.
+- Matching rule: for an so file under the libs directory of a module, when its SHA-256 value is the same as the SHA-256 value corresponding to a certain API version in the manifest, if that API version is not higher than the module's compatibleSdkVersion, the so is removed from the module package. The SHA-256 value corresponding to a lower API version also takes effect for a higher compatibleSdkVersion.
+- Relationship with --deduplicate-so: the two are independent of each other and can be used simultaneously. When both are enabled, so deduplication is executed first, followed by SDK manifest so deduplication, and any so is removed only once.
+- App-level skip conditions:
+  1. The maximum compatibleSdkVersion among all modules of the app is lower than the manifest's dedupMinApiVersion.
+  2. An extensionAbility of type driver exists under extensionAbilities of any module of the app.
 - Module-level skip conditions:
   1. The module is not a Stage model, or the module name is empty, or deviceTypes is not declared.
   2. Both compressNativeLibs and extractNativeLibs of the module are false.
   3. libIsolation of the module is true.
   4. compileSdkType of the module is OpenHarmony.
-  5. The device types declared by the module are not a subset of the manifest's deviceType.
-  6. dedupfiles.json already exists in the module package root directory.
-- For each module where deduplication occurs, a dedupfiles.json is generated in its package root directory, recording the original paths and SHA-256 values of the removed SO files.
+  5. The device types declared by the module are not a subset of deviceType in the manifest.
+  6. dedupfiles.json already exists in the root directory of the module package.
+- For each module where deduplication occurs, dedupfiles.json is generated in the root directory of its package, recording the original paths and SHA-256 values of the removed SO files.
 
 **dedupfiles.json format:**
 
@@ -568,7 +653,7 @@ When you use the [app packing command](#app-packing-command), [fastApp packing c
 {
     "version": "1.0",
     "generatedTime": "2026-10-17T09:24:50Z",
-    "description": "SO files removed during packing",
+    "description": "SO files removed during packaging",
     "removedSoFiles": [
         {
             "originalPathInHap": "libs/arm64-v8a/libexample.so",
@@ -578,14 +663,14 @@ When you use the [app packing command](#app-packing-command), [fastApp packing c
 }
 ```
 
-**Table 21 dedupfiles.json fields**
+**Table 24 dedupfiles.json field information**
 
 | Field            | Type            | Description                                                         |
 | --------------- | --------------- | ------------------------------------------------------------ |
 | version         | String          | Version number of the result file.                                    |
 | generatedTime   | String          | Generation time of the result file (UTC).                                      |
 | description     | String          | Description of the result file.      |
-| removedSoFiles  | Vector\<Object> | List of removed SO files. Each element contains originalPathInHap (the original path of the SO file in the package) and originalSha256 (the SHA-256 value of the SO file). |
+| removedSoFiles  | Vector\<Object> | List of removed SO files. Each element contains originalPathInHap (the original path of the SO file within the package) and originalSha256 (the SHA-256 value of the SO file). |
 
 ## Error Codes
 
@@ -598,7 +683,7 @@ Execute packing tool failed.
 
 Failed to run the packing tool.
 
-Failed to deduplicate SOs in the SDK manifest.
+**Possible Causes**
 
 1. The validity verification of the package file failed.
 2. The file to be packed is being used by another application, such as a compression application or the file manager.
@@ -633,7 +718,7 @@ Command verify failed.
 
 **Description**
 
---Failed to verify the **--force** parameter value.
+Failed to verify the **--force** parameter value.
 
 **Possible Causes**
 
@@ -805,7 +890,7 @@ Command verify mode is invalid.
 
 **Description**
 
---Failed to verify the **--mode** parameter value.
+Failed to verify the **--mode** parameter value.
 
 **Possible Causes**
 
@@ -906,7 +991,7 @@ Failed to verify the **--input-list** parameter during version normalization.
 
 **Possible Causes**
 
---The file specified by the **input-list** parameter is neither an HAP nor an HSP.
+The file specified by the **--input-list** parameter is neither a HAP nor an HSP.
 
 **Solution**
 
@@ -923,7 +1008,7 @@ Failed to verify the parameters during general normalization.
 
 **Possible Causes**
 
-1. The **pack.info** file fails after normalization.
+1. Packing the normalized **pack.info** file fails.
 2. The parameters are incorrectly configured in the general normalization mode.
 
 **Solution**
@@ -1004,7 +1089,7 @@ The configuration information verification fails while packing the HAP file in t
 **Solution**
 
 1. Modify the configuration items by referring to [10012004 Failed to Check the asanEnabled Parameter](#10012004-failed-to-check-the-asanenabled-parameter), [10012005 Failed to Check the hwasanEnabled Parameter](#10012005-failed-to-check-the-hwasanenabled-parameter), [10012006 Failed to Check atomicService](#10012006-failed-to-check-atomicservice), and [10012007 Invalid continueBundleName](#10012007-invalid-continuebundlename).
-2. If the skill module is deployed independently, ensure that bundleType in [app.json5](../quick-start/app-configuration-file.md) and type in [module.json5](../quick-start/module-configuration-file.md) are set to skill.
+2. If the skill module is deployed independently, ensure that `bundleType` in [app.json5](../quick-start/app-configuration-file.md) and `type` in [module.json5](../quick-start/module-configuration-file.md) are set to `skill`.
 
 ### 10012004 Failed to Check the asanEnabled Parameter
 **Error Message**
@@ -1040,7 +1125,7 @@ During HAP or HSP packing, **hwasanEnabled** in **app.json5** is incorrectly con
 
 **Solution**
 
-Check the [app.json5](../quick-start/app-configuration-file.md) file and ensure that **hwasanEnabled**, and one of **asanEnabled**, **tsanEnabled**, and **GWPAsanEnabled** are not all set to **true** at the same time.
+Check the [app.json5](../quick-start/app-configuration-file.md) file and ensure that **hwasanEnabled**, and any one of **asanEnabled**, **tsanEnabled**, and **GWPAsanEnabled** are not all set to **true** at the same time.
 
 ### 10012006 Failed to Check atomicService
 **Error Message**
@@ -1193,7 +1278,7 @@ Failed to parse the **module.json** file.
 **Possible Causes**
 
 1. An I/O exception occurs when the **module.json** file is parsed.
-2. JDK 20 has a known defect in verifying the ZIP64 extended data field. When the length of the ZIP64 extended field in the directory of a ZIP package (such as a HAP, HSP, or any ZIP64 file) is abnormal, the error message "Invalid CEN header (invalid zip64 extra data field size)" is displayed during parsing.
+2. JDK 20 has a known issue in validation for the ZIP64 extra data field. When the length of the ZIP64 extra data field in the directory of a ZIP package (such as a HAP, HSP, or any ZIP64 file) is abnormal, the error message Invalid CEN header (invalid zip64 extra data field size) is displayed during parsing.
 
 **Solution**
 
@@ -1283,7 +1368,7 @@ When the [bundleType](../quick-start/app-configuration-file.md#tags-in-the-confi
 
 **Solution**
 
-1. Check the package file and ensure that the APP file whose **bundleType** is **shared** contains only one HSP file.
+1. Check the package file and ensure that the APP file whose **bundleType** is **shared** contains no more than one HSP file.
 2. Check the package file and delete **dependencies** configured in [module.json5](../quick-start/module-configuration-file.md) of the HSP file.
 
 ### 10012018 Invalid Bundle Type of the Application
@@ -1297,7 +1382,7 @@ The bundle type of the application is invalid.
 
 **Possible Causes**
 
-The **bundleType**s of the HAP and HSP to be packed are different.
+The **bundleType** values of the HAP and HSP to be packed are different.
 
 **Solution**
 
@@ -1369,13 +1454,13 @@ Failed to verify the HSP file in the stage model during HSP packing.
 
 1. **atomicService** and **continueBundleName** in **module.json5** are incorrectly configured, or **asanEnabled** and **hwasanEnabled** in **app.json5** are incorrectly configured.
 2. The overlay configuration is incorrect.
-3. The value of **type** in **module.json5** is neither **shared** nor **skill**. The type of an independent skill module must be **skill**.
+3. The value of **type** in **module.json5** is neither **shared** nor **skill**. The `type` of an independent skill module must be `skill`.
 
 **Solution**
 
 1. Modify the configuration items by referring to [10012004 Failed to Check the asanEnabled Parameter](#10012004-failed-to-check-the-asanenabled-parameter), [10012005 Failed to Check the hwasanEnabled Parameter](#10012005-failed-to-check-the-hwasanenabled-parameter), [10012006 Failed to Check atomicService](#10012006-failed-to-check-atomicservice), and [10012007 Invalid continueBundleName](#10012007-invalid-continuebundlename).
 2. Modify the configuration item by referring to [10012008 Failed to Check the Overlay HSP](#10012008-failed-to-check-the-overlay-hsp).
-3. Check the [module.json5](../quick-start/module-configuration-file.md) file and ensure that the value of **type** is set to **shared** or **skill**.
+3. Check the [module.json5](../quick-start/module-configuration-file.md) file and ensure that the value of `type` is set to **shared** or **skill**.
 
 ### 10012023 Failed to Format the JSON File
 **Error Message**
@@ -1584,7 +1669,7 @@ SHA-256 hash calculation failed.
 
 **Description**
 
-Failed to calculate the SHA-256 value when packing an HAP or HSP.
+Failed to calculate the SHA-256 value when packing a HAP or HSP.
 
 **Possible Causes**
 
@@ -1672,7 +1757,7 @@ Failed to check the plugin host during HSP packing.
 
 **Possible Causes**
 
---The **module.json** file specified by **json-path** does not contain the **module** tag.
+The **module.json** file specified by **--json-path** does not contain the **module** tag.
 
 **Solution**
 
@@ -1685,7 +1770,7 @@ Check pkg context failed.
 
 **Description**
 
-Failed to check the **--pkg-context-path** parameter when packing an HAP or HSP.
+Failed to check the **--pkg-context-path** parameter when packing a HAP or HSP.
 
 **Possible Causes**
 
@@ -1711,16 +1796,16 @@ Failed to check the plugin properties during HSP packing.
 1. The **module.json** file specified by **--json-path** does not exist.
 2. The **module.json** file specified by **--json-path** does not contain the **module** tag.
 3. Failed to check the **--pkg-context-path** parameter.
-4. The **module.json** file specified by **--json-path** contains extensionAbilities of non-**embeddedUI** types.<!--Del-->
-5. When **bundleType** in the **module.json** file specified by **--json-path** is **appPlugin**, the **module.json** file contains the [ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) permission.<!--DelEnd-->
+4. The module.json file specified by --json-path contains extensionAbilities of a non-embeddedUI type. <!--Del-->
+5. When bundleType in the module.json file specified by --json-path is appPlugin, the module.json file contains the [ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) permission. <!--DelEnd-->
 
 **Solution**
 
 1. Ensure that the **module.json** file specified by **--json-path** exists.
 2. Ensure that the **module.json** file specified by **--json-path** contains the **module** tag.
 3. Check the first error code in the error log to determine the error information.
-4. Ensure that the **module.json** file specified by **--json-path** does not contain extensionAbilities of non-**embeddedUI** types.<!--Del-->
-5. Ensure that the **module.json** file specified by **--json-path** does not contain the **ohos.permission.kernel.SUPPORT_PLUGIN** permission when **bundleType** is **appPlugin**.<!--DelEnd-->
+4. Confirm that the module.json file specified by --json-path does not contain extensionAbilities of a non-embeddedUI type. <!--Del-->
+5. Confirm that when bundleType in the module.json file specified by --json-path is appPlugin, the module.json file does not contain the ohos.permission.kernel.SUPPORT_PLUGIN permission. <!--DelEnd-->
 
 ### 10012054 Failed to Verify the HAR Deduplication Attribute
 **Error Message**
@@ -1729,7 +1814,7 @@ Check deduplicateHar field failed.
 
 **Description**
 
-Failed to verify the [deduplicateHar](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215) property during HSP/HAP packing.
+Failed to verify the [deduplicateHar](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215) property during HSP/HAP packaging.
 
 **Possible Causes**
 
@@ -1746,15 +1831,15 @@ Binary file decompression configuration verification failed.
 
 **Description**
 
-The binary file decompression configuration fails to be verified during HSP/HAP packing.
+The binary file decompression configuration fails to be verified during HSP/HAP packaging.
 
 **Possible Causes**
 
-The HSP/HAP has the path information [executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths) of executable binary files in the [module.json5](../quick-start/module-configuration-file.md), and the binary files exist. However, the HSP/HAP is configured to be installed without decompressing the libs library.
+When an HSP/HAP has configured the path information of executable binary files via [executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths) in [module.json5](../quick-start/module-configuration-file.md), and the binary files exist, but the package is configured to be installed without extracting the libs libraries.
 
 **Solution**
 
-If **executableBinaryPaths** is configured in the **module.json5** file and binary files exist, ensure that the app is installed in a way that the .libs library is decompressed. That is, at least one of **extractNativeLibs** and **compressNativeLibs** in the **module.json5** file is set to **true**.
+If **executableBinaryPaths** is configured in the **module.json5** file and binary files exist, ensure that the application is installed in a way that the libs library is decompressed. That is, at least one of **extractNativeLibs** and **compressNativeLibs** in the **module.json5** file is set to **true**.
 
 ### 10013001 Exception in Parsing the module.json or config.json File
 **Error Message**
@@ -1854,7 +1939,7 @@ The configuration does not meet the requirements. For example:
 1. Ensure that the value of **installationFree** in **module.json5** is **false** when the value of **bundleType** in **app.json5** is **app**.
 2. Ensure that the value of **installationFree** in **module.json5** is **true** when the value of **bundleType** in **app.json5** is **atomicService**.
 3. Ensure that the value of **type** in **module.json5** is **shared** when the value of **bundleType** in **app.json5** is **shared**.
-4. Ensure that `bundleType` in the **app.json5** configuration file and **type** in the **module.json5** configuration file are set to **skill** when the **skill** module is deployed independently.
+4. Ensure that `bundleType` in the **app.json5** configuration file and `type` in the **module.json5** configuration file are set to **skill** when the skill module is deployed independently.
 5. If multiple error messages are displayed, check the first error message first.
 
 ### 10013006 Failed to Check Ability in the Entry Module
@@ -1868,7 +1953,7 @@ The entry module does not contain any ability.
 
 **Possible Causes**
 
-**abilities** in **module. json5** is not configured or is empty.
+**abilities** in **module.json5** is not configured or is empty.
 
 **Solution**
 
@@ -2410,7 +2495,7 @@ Check the error information and the name of the problematic HAP or HSP based on 
 2. Ensure that the **targetAPIVersion** values of the HAP files to be packed are the same.
 3. Ensure that the **minAPIVersion** values of the HAP files to be packed are the same.
 4. Ensure that the **debug** values of the HAP files to be packed are the same.
-5. Ensure that the **minCompatibleVersionCode**, **targetAPIVersion** and **minAPIVersion** values of HAP is greater than or equal to those of all HSPs.
+5. Ensure that the **minCompatibleVersionCode**, **targetAPIVersion** and **minAPIVersion** values of HAP are greater than or equal to those of all HSPs.
 6. Ensure that the **debug** value of all HSPs is **false** when that of HAP is **false**.
 
 ### 10016002 Different HAP or HSP Properties
@@ -2476,7 +2561,7 @@ Failed to verify the module name during app packing.
 **Solution**
 
 1. Check the **module.json** file of the HAP or HSP and ensure that the **module** tag contains the **name** tag.
-2. Check the **module.json** file of each HAP or HSP to be packed. Ensure that the values of the **module/name** tag are unique, and that the values of the **module/deviceType** and **module/metadata/resource/distributionFilter** properties do not intersect.
+2. Check the **module.json** file of each HAP or HSP to be packed. Ensure that the values of the **module/name** tag are different, or the value sets of the **module/deviceType** property do not intersect, or the value sets of the **module/metadata/resource/distributionFilter** property do not intersect.
 
 ### 10016005 Failed to Verify Application Package Name
 **Error Message**
@@ -2495,7 +2580,7 @@ Two or more **module.json** files in the packed HAPs or HSPs have identical **mo
 
 Locate the faulty HAP or HSP based on **Error Message:** in the log.
 
-Check the **module.json** file of each HAP or HSP to be packed. Ensure that the values of the **module/package** tag are unique, and that the values of the **module/deviceType** and **module/metadata/resource/distributionFilter** properties do not intersect.
+Check the **module.json** file of each HAP or HSP to be packed. Ensure that the values of the **module/package** tag are different, or that the value sets of the **module/deviceType** property do not intersect, or that the value sets of the **module/metadata/resource/distributionFilter** property do not intersect.
 
 ### 10016006 Invalid HAP File
 **Error Message**
@@ -2666,7 +2751,7 @@ The **continueType** configuration is incorrect during APP building.
 **Possible Causes**
 
 1. Duplicate **continueType**s are configured for different abilities in the **module.json5** file.
-2. Duplicate **deviceType** and **continueType** items are configured for different abilities in the **module.json5** file.
+2. Duplicate **deviceType** and **continueType** items are configured in different **module.json5** files.
 
 **Solution**
 
@@ -2963,7 +3048,7 @@ so deduplication failed.
 
 **Description**
 
-.so file deduplication fails.
+SO deduplication fails.
 
 **Possible Causes**
 
@@ -2973,26 +3058,242 @@ so deduplication failed.
 
 **Solution**
 
-2. Failed to generate the result file of SDK manifest SO deduplication.
-**Solution**
-1. Based on the "Error Message:" information in the log, determine the specific cause of the exception.
+1. Locate the exception cause based on the **Error Message:** information in the log.
+2. Check whether the **libs** directory and .so files in the module are complete.
+3. Ensure that the disk space is sufficient for .so file deduplication.
 
-### 10021002 Failed to Deduplicate SOs in the SDK Manifest
-
-<!--Del--> <!--DelEnd-->
-
+### 10021002 SDK List .so Deduplication Failure
 **Error Message**
 
 SO deduplication for sdk failed.
 
+**Description**
+
+Failed to deduplicate .so files in the SDK list.
+
 **Possible Causes**
 
-1. Failed to parse the deduplist_sdk.json list specified by --deduplist-sdk-path. For the detailed format, see SDK List SO Deduplication.
-2. Failed to generate the SDK list SO deduplication result file.
+1. Failed to parse the deduplist_sdk.json list specified by --deduplist-sdk-path. For details about the format, see [SDK Manifest so Deduplication](#sdk-manifest-so-deduplication).
+2. Failed to generate the result file of SDK list .so deduplication.
 
 **Solution**
 
-1. Locate the exception cause based on the **Error Message:** information in the log.
-2. Check whether the **libs** directory and .so files in the module are complete.
-3. Ensure that the disk space is sufficient for .so file deduplication.
-4. Check whether the libs directory and the .so files in the module are complete.
+1. Based on the "Error Message:" information in the log, confirm the specific exception cause.
+2. Check whether the libs directory and so files in the module are complete.
+3. Ensure that there is sufficient disk space for the so deduplication operation.
+4. Check the deduplist_sdk.json file specified by --deduplist-sdk-path, and ensure the file format complies with the JSON format rules and the fields are complete.
+
+### 10022001 Invalid installer Packing Parameter
+
+**Error Message**
+
+Installer arguments are invalid.
+
+**Description**
+
+In installer mode, the mandatory parameters, output suffix, or overwrite setting does not comply with the requirement.
+
+**Possible Causes**
+
+1. --contents or --out-path is not provided or is empty, or the passed-in --manifest path is empty.
+2. The file name specified by --out-path does not end with the lowercase .app suffix.
+3. The value of --force is neither true nor false.
+4. The output already exists but --force true is not set, or the output path is not a regular file.
+
+**Solution**
+
+1. Provide non-empty --contents and --out-path according to [installer Packing Command Parameters](#commands-and-parameters); when using an external app description file, provide a valid --manifest file path.
+2. Set the output file suffix to lowercase .app.
+3. Set --force to true or false, or omit this parameter to use the default value false.
+4. Check the output path. Set --force true when an existing regular file needs to be overwritten; if the output path is a directory, use another output file path.
+
+### 10022002 Invalid Installer Packing Path
+
+**Error Message**
+
+Installer path is invalid.
+
+**Description**
+
+In installer mode, the output path conflicts with the input, or a path name within the package does not comply with the requirement.
+
+**Possible Causes**
+
+1. The output is located inside the --contents directory.
+2. The output path points to the same file as the input HAP, HSP, or external app description file, including the case where they point to the same file through a link.
+3. The app directory name or module file name is `.`, `..`, or contains `/`, `\`, or `:`.
+
+**Solution**
+
+1. Set --out-path to a file path outside the --contents directory.
+2. Use an output path different from the input file, and check the actual file pointed to by the link.
+3. Based on the log, locate the directory or file with an invalid name, modify the name, and synchronously update the path in the external app description file.
+
+### 10022003 Invalid Installer Input Directory
+
+**Error Message**
+
+Installer contents are invalid.
+
+**Description**
+
+In installer mode, the structure of the input directory or the module file suffix does not comply with the requirement.
+
+**Possible Causes**
+
+1. --contents is not a valid directory, or the directory is empty.
+2. A non-directory item exists among the direct child items of the --contents directory.
+3. The app directory is empty, or it contains child items whose suffix is not lowercase .hap or .hsp.
+
+**Solution**
+
+1. Check the --contents path to ensure that the directory exists and contains at least one app directory.
+2. Organize the input according to [Input Directory and Package Structure](#input-directory-and-package-structure), and place each app's modules into the app directory.
+3. Ensure that each app directory is non-empty and directly contains only readable regular .hap and .hsp files, and does not contain subdirectories or other files.
+
+### 10022004 Invalid Installer Input Module
+
+**Error Message**
+
+Installer module is invalid.
+
+**Description**
+
+In installer mode, the input HAP or HSP cannot be parsed correctly, or the module type or device type does not comply with the requirement.
+
+**Possible Causes**
+
+1. The module is damaged, lacks a valid module.json, or the internal configuration or profile of the module cannot be parsed.
+2. The input module is an FA model, or the valid bundleType is not app.
+3. deviceTypes is not a valid array, or it does not contain 2in1.
+
+**Solution**
+
+1. Locate the issue based on the previous module parsing log, check the configuration, and rebuild the HAP and HSP to ensure the files are complete.
+2. Use a Stage model module and check bundleType in [app.json5](../quick-start/app-configuration-file.md). This mode requires the valid value to be app.
+3. In [module.json5](../quick-start/module-configuration-file.md), configure deviceTypes as an array containing 2in1, and rebuild the module.
+
+### 10022005 Installer Application Validation Failure
+
+**Error Message**
+
+Installer application validation failed.
+
+**Description**
+
+In installer mode, a module under the same app directory fails application validation.
+
+**Possible Causes**
+
+1. The bundleName, bundleType, versionCode, buildVersion, or versionName of the same app is inconsistent.
+2. The debug, API version, module name, dependency relationship, or other module configuration does not comply with the app packing requirements.
+
+**Solution**
+
+1. Check the app identifier and version configuration of each module under the same app directory, ensure they are consistent, modify them, and rebuild the module.
+2. First check the previous module validation errors, and correct the configuration and cross-module relationships based on the log.
+
+### 10022006 Invalid Installer App Description File
+
+**Error Message**
+
+Installer manifest is invalid.
+
+**Description**
+
+In installer mode, the external app description file cannot be parsed or fails the app description file validation.
+
+**Possible Causes**
+
+1. The app description file is not a parseable JSON object, or apps is not a non-empty object array; required fields are missing, empty, or have invalid types or value ranges.
+2. The path in apps is duplicated, an app directory is omitted, a non-existent directory is contained, or the format does not comply with `Contents/<app directory name>`.
+3. The bundleName, versionCode, or versionName in the app description file is inconsistent with the module, or minAPIVersion is lower than the maximum value of the modules in the corresponding app directory.
+4. The number of coreApp=true is not 1, or coreApp uses a non-boolean value.
+
+**Solution**
+
+1. Check the JSON structure, required fields, and types based on the [App Description File](#app-description-file). Use integer values in the range [0, 2147483647] for versionCode and minAPIVersion, and do not use numeric strings.
+2. Ensure that each input app directory corresponds to exactly one apps record, and that path uses `Contents/<app directory name>` with forward slashes.
+3. Correct the app identifier and version fields based on the actual module information so that minAPIVersion is not lower than the maximum value of all modules in the corresponding app directory.
+4. Set the Boolean value coreApp=true for only one app, and omit this field or set it to false for the remaining apps.
+
+### 10022007 Failed to Write the Installer Package
+
+**Error Message**
+
+Write installer archive failed.
+
+**Description**
+
+In installer mode, an error occurs when creating temporary output, reading a module, or writing a ZIP package.
+
+**Possible Causes**
+
+1. The module cannot be read completely, or a ZIP write error occurs during the packing process.
+2. The output directory cannot be created or written to, or the disk space is insufficient.
+
+**Solution**
+
+1. Locate the input module based on the log, check whether the file is complete and readable, and check the specific ZIP error cause.
+2. Check the creation, write permission, and available disk space of the output directory, correct them, and retry.
+
+### 10022008 Installer Package Submission Failure
+
+**Error Message**
+
+Commit installer archive failed.
+
+**Description**
+
+In installer mode, the temporary package has been written, but it cannot be committed to the location specified by --out-path.
+
+**Possible Causes**
+
+1. The permission or occupied state of the output directory or target file does not allow the commit, or the target path changes during packaging.
+2. When overwriting is not allowed, the target file already exists.
+3. The file system where the output resides does not support the atomic move or hard link operation required for the commit.
+
+**Solution**
+
+1. Check the permissions and occupied status of the output directory and target file to ensure that the output path is stable and writable.
+2. Set --force true when an existing regular file needs to be overwritten; otherwise, use an output path that is not occupied.
+3. Confirm the file system error based on the log, and switch to an output location that supports the corresponding file operation and retry.
+
+### 10022009 Failure to Clean Up Installer Temporary Output
+
+**Error Message**
+
+Clean installer temporary output failed.
+
+**Description**
+
+In installer mode, a failure occurs when cleaning up the temporary files or directories generated during this packing. This diagnostic is recorded separately and does not change the success or failure result already determined for this packing.
+
+**Possible Causes**
+
+The temporary file or directory is occupied, the delete permission is missing, or a file system error occurs during deletion.
+
+**Solution**
+
+1. Based on the temporary path in the log, check the occupation status and permission, and clean up the temporary output after confirming that it is no longer in use.
+2. If other packing errors exist at the same time, troubleshoot the primary error first. Do not determine whether the packing is successful based only on this cleanup diagnostic. Check the process exit code and output files.
+
+### 10022010 Installer File Operation Failure
+
+**Error Message**
+
+Installer file operation failed.
+
+**Description**
+
+In installer mode, a file system error occurs when accessing the input directory, module, or external app description file.
+
+**Possible Causes**
+
+1. The input path does not exist or cannot be accessed, or the module or external app description file path is not a regular file.
+2. The external app description file cannot be read, or operations such as traversing the input directory and obtaining file information fail.
+
+**Solution**
+
+1. Based on the log, check whether the path exists and is accessible, and ensure that the module and external app description file are readable regular files.
+2. Check the access permission of the input directory, the file read permission, and the file system status, correct them, and retry.

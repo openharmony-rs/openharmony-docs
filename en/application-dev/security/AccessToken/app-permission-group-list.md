@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=fab51ae1607c595d71580c37f7e5c8c6efddfc33 translatedAt=2026-10-30T08:55:35.869Z pushedAt=2026-10-30T08:57:21.230Z nl=1 -->
+
 
 ## Usage Guidelines
 

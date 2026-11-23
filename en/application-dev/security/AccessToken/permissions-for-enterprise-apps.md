@@ -6,7 +6,6 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=c027433999a0c9e31e5a16efd17ba1235c5a3215 translatedAt=2026-10-31T06:59:45.175Z pushedAt=2026-10-31T09:11:59.909Z nl=1 -->
 
 <!--RP1-->
 The following permissions are open to system applications and enterprise applications.

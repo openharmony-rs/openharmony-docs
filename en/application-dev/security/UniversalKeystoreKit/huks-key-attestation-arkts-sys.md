@@ -6,9 +6,11 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2bacfee4422d681c1c12b53710941106e9561ff9 translatedAt=2026-11-03T05:37:04.957Z pushedAt=2026-11-03T07:29:11.789Z nl=1 -->
+<!-- md-trans-meta sourceCommit=dcbc797b80cd4b16cdb3a4fb6ce8e16720df343f translatedAt=2026-11-20T03:26:50.151Z pushedAt=2026-11-20T06:46:40.125Z nl=1 -->
 
-The caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission. You need to request the permission based on the APL of your permission. For details, see [Workflow for Using Permissions](../AccessToken/determine-application-mode.md).
+Before using this feature, request the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) or [ohos.permission.ENTERPRISE_ATTEST_KEY](../AccessToken/permissions-for-mdm-apps.md#ohospermissionenterprise_attest_key) permission; either one is sufficient. Based on the application type and APL, follow the specific operation path in [permission request](../AccessToken/determine-application-mode.md).
+
+Starting from API version 26.1.0, a device management application can request the ohos.permission.ENTERPRISE_ATTEST_KEY permission to use the non-anonymous key attestation capability.
 
 ## How to Develop
 

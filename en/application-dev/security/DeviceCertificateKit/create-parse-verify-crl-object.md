@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-11-03T05:11:00.382Z pushedAt=2026-11-03T06:48:43.415Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:37:50.906Z pushedAt=2026-11-20T06:09:23.610Z nl=1 -->
 
 This topic walks you through on how to create a certificate revocation list (CRL) instance, obtain CRL information, check whether a certificate has been revoked, and print the revocation date if the certificate has been revoked.
 
@@ -50,7 +50,7 @@ import { util } from '@kit.ArkTS';
 
 // ...
 // CRL example.
-function crlSample(): void {
+async function crlSample() {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
     // Convert the CRL data from a string to a Uint8Array.
@@ -59,13 +59,9 @@ function crlSample(): void {
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
-  // Create an X509CRL instance.
-  cert.createX509CRL(encodingBlob, (err, x509Crl) => {
-    if (err != null) {
-      // The X509CRL instance fails to be created.
-      console.error(`createX509Crl failed, errCode: ${err.code}, errMsg:${err.message} `);
-      return;
-    }
+  try {
+    // Create an X509CRL instance.
+    let x509Crl = await cert.createX509CRL(encodingBlob);
     // The X509CRL instance is successfully created.
     console.info('createX509CRL result: success.');
 
@@ -83,34 +79,17 @@ function crlSample(): void {
     let crlString = x509Crl.toString(cert.EncodingType.ENCODING_UTF8);
     console.info(`X509 CRL crlString: ${crlString}`);
 
-
     // Pass in the public key binary data to convertKey() of @ohos.security.cryptoFramework to obtain a public key instance.
-    try {
-      let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.info('createAsyKeyGenerator result: success.');
-      let pubEncodingBlob: cryptoFramework.DataBlob = {
-        data: pubKeyData,
-      };
-      keyGenerator.convertKey(pubEncodingBlob, null, (e, keyPair) => {
-        if (e == null) {
-          console.info('convertKey result: success.');
-          x509Crl.verify(keyPair.pubKey, (err, data) => {
-            if (err == null) {
-              // Signature verification is successful.
-              console.info('verify result: success.');
-            } else {
-              // Signature verification fails.
-              console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
-            }
-          });
-        } else {
-          console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
-        }
-      })
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
-    }
+    let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
+    console.info('createAsyKeyGenerator result: success.');
+    let pubEncodingBlob: cryptoFramework.DataBlob = {
+      data: pubKeyData,
+    };
+    let keyPair = await keyGenerator.convertKey(pubEncodingBlob, null);
+    console.info('convertKey result: success.');
+    await x509Crl.verify(keyPair.pubKey);
+    // Signature verification succeeded.
+    console.info('verify result: success.');
 
     // Use createX509Cert() of certFramework to create an X509Cert instance.
     let certBlob: cert.EncodingBlob = {
@@ -119,40 +98,28 @@ function crlSample(): void {
     };
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
-    cert.createX509Cert(certBlob, (err, x509Cert) => {
-      if (err == null) {
-        try {
-          serial = x509Cert.getCertSerialNumber();
-          // Check whether the certificate has been revoked.
-          revokedFlag = x509Crl.isRevoked(x509Cert);
-          console.info(`revokedFlag is: ${revokedFlag}`);
-          if (!revokedFlag) {
-            console.info('the given x509Cert is not revoked.');
-            return;
-          }
-          // Obtain the revoked certificate based on the serial number.
-          try {
-            let crlEntry = x509Crl.getRevokedCert(serial);
-            console.info('getRevokedCert result: success.');
-            let serialNumber = crlEntry.getSerialNumber();
-            console.info(`crlEntry serialNumber is: ${serialNumber}`);
+    let x509Cert = await cert.createX509Cert(certBlob);
+    serial = x509Cert.getCertSerialNumber();
+    // Check whether the certificate is revoked.
+    revokedFlag = x509Crl.isRevoked(x509Cert);
+    console.info(`revokedFlag is: ${revokedFlag}`);
+    if (!revokedFlag) {
+      console.info('the given x509Cert is not revoked.');
+      return;
+    }
+    // Obtain revoked certificates by serial number.
+    let crlEntry = x509Crl.getRevokedCert(serial);
+    console.info('getRevokedCert result: success.');
+    let serialNumber = crlEntry.getSerialNumber();
+    console.info(`crlEntry serialNumber is: ${serialNumber}`);
 
-            // Obtain the revocation date of the certificate.
-            let date = crlEntry.getRevocationDate();
-            console.info(`revocation date is: ${date}`);
-          } catch (error) {
-            let e: BusinessError = error as BusinessError;
-            console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
-          }
-        } catch (error) {
-          let e: BusinessError = error as BusinessError;
-          console.error(`isRevoked failed, errCode: ${e.code}, errMsg:${e.message}`);
-        }
-      } else {
-        console.error(`create x509 cert failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      }
-    })
-
-  });
+    // Obtain the revocation date of the revoked certificate.
+    let date = crlEntry.getRevocationDate();
+    console.info(`revocation date is: ${date}`);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`crlSample failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
+  }
 }
 ```

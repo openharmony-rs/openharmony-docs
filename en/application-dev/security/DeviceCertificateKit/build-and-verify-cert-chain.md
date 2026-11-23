@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=108cfcdbfe0194d8e3c64ec5128e21493da21f53 translatedAt=2026-11-03T05:01:03.081Z pushedAt=2026-11-03T05:45:42.851Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:33:41.139Z pushedAt=2026-11-20T06:01:11.523Z nl=1 -->
 
 Since API version 26.0.0, the certificate chain validator provides the capabilities of building and verifying a certificate chain. It supports building and verifying a certificate chain through [CertValidationParams](../../reference/apis-device-certificate-kit/js-apis-cert.md#certvalidationparams), including trust anchor setting, certificate revocation check, and date verification.
 
@@ -57,13 +57,14 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
 
 async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
   try {
-    // Add a certificate object.
+    // Create a certificate object.
     let endEntityCert = await createX509Cert(endEntityCertData);
     let intermediateCaCert = await createX509Cert(intermediateCaCertData);
     let rootCaCert = await createX509Cert(rootCaCertData);
@@ -129,13 +130,14 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
 
 async function validateCertChainWithSystemCa(): Promise<void> {
   try {
-    // Add a certificate object.
+    // Create a certificate object.
     let endEntityCert = await createX509Cert(endEntityCertData);
     let intermediateCaCert = await createX509Cert(intermediateCaCertData);
 
@@ -199,6 +201,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -215,13 +218,14 @@ async function createX509CRL(crlDataStr: string): Promise<cert.X509CRL> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509CRL failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509CRL;
 }
 
 async function validateCertChainWithCrl(): Promise<void> {
   try {
-    // Add a certificate object.
+    // Create a certificate object.
     let endEntityCert = await createX509Cert(endEntityCertData);
     let intermediateCaCert = await createX509Cert(intermediateCaCertData);
     let rootCaCert = await createX509Cert(rootCaCertData);
@@ -301,6 +305,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }

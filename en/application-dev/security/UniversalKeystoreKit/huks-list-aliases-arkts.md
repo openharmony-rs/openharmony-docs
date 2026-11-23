@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=1b0db3ca24f88b8a35055898204d6f512cd41949 translatedAt=2026-11-20T03:27:56.998Z pushedAt=2026-11-20T06:47:07.831Z nl=1 -->
 
 This topic walks you through on how to query key aliases.
 
@@ -27,7 +28,7 @@ The [Group Key](huks-group-key-overview.md) feature is supported since API versi
 /*
  * The following example uses promise-based APIs to query key aliases.
  */
-import { huks } from '@kit.UniversalKeystoreKit'
+import { huks } from '@kit.UniversalKeystoreKit';
 
 async function testListAliases() {
   /* 1. Initialize the key property set. */
@@ -44,7 +45,7 @@ async function testListAliases() {
   try {
     /* 2. Query key aliases. */
     let result: huks.HuksListAliasesReturnResult = await huks.listAliases(queryOptions);
-    console.info(`promise: listAliases success`);
+    console.info(`promise: listAliases success, result = ${JSON.stringify(result)}`);
   } catch (error) {
     console.error(`promise: listAliases fail`);
     throw (error as Error);

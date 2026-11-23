@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b76bd7a9e6c072482cb45abb2f62e2af3730ea79 translatedAt=2026-11-03T05:11:53.585Z pushedAt=2026-11-03T06:48:52.591Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:38:25.432Z pushedAt=2026-11-20T06:09:48.213Z nl=1 -->
 
 A certificate chain is an ordered list of certificates, in which each certificate is signed by the entity identified by the next certificate in the chain.
 
@@ -35,6 +35,7 @@ You can refer to the following example to construct a certificate chain from mul
 
 ``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
 // CA data, which is only an example.
@@ -84,7 +85,7 @@ let secondCaCertData = '-----BEGIN CERTIFICATE-----\n' +
   '-----END CERTIFICATE-----\n';
 
 // Certificate chain validator. In this example, it validates a two-level certificate chain.
-function certChainValidatorSample(): void {
+async function certChainValidatorSample() {
   let textEncoder = new util.TextEncoder();
   // Certificate chain validator algorithm. Currently, only PKIX is supported.
   let algorithm = 'PKIX';
@@ -94,7 +95,9 @@ function certChainValidatorSample(): void {
   try {
     validator = cert.createCertChainValidator(algorithm);
   } catch (err) {
-    console.error(`createCertChainValidator failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertChainValidator failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
     return;
   }
 
@@ -138,14 +141,15 @@ function certChainValidatorSample(): void {
   };
 
   // Validate the certificate chain.
-  validator.validate(certChainData, (err, data) => {
-    if (err != null) {
-      // Validation failed.
-      console.error(`validate failed, errCode: ${err.code}, errMsg: ${err.message}`);
-    } else {
-      // Validation successful.
-      console.info('validate result: success.');
-    }
-  });
+  try {
+    await validator.validate(certChainData);
+    // Validation succeeded.
+    console.info('validate result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    // Validation failed.
+    console.error(`validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
+  }
 }
 ```

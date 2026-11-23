@@ -6,7 +6,6 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=28af11ed79c46934da1ab57318c919f412319342 translatedAt=2026-10-31T07:00:25.319Z pushedAt=2026-10-31T08:05:58.233Z nl=1 -->
 
 ## How to Request
 
