@@ -257,7 +257,7 @@ export struct CustomDialogWithKeyboardAvoidDistance {
 
 ## 设置弹出框悬停态属性
 
-在支持悬停态的设备上，当设备处于悬停折叠状态时，弹出框默认不响应悬停态。从API version 14开始，开发者可以通过[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的enableHoverMode和hoverModeArea属性，设置弹出框在悬停态下的布局区域。enableHoverMode设置为true时，弹出框将响应悬停态；hoverModeArea用于指定悬停态下弹出框的显示区域，可选值为[HoverModeAreaType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14).TOP_SCREEN（上半屏）和HoverModeAreaType.BOTTOM_SCREEN（下半屏），默认值为HoverModeAreaType.BOTTOM_SCREEN。
+在支持悬停态的设备上，当设备处于悬停折叠状态时，弹出框默认不响应悬停态。从API version 14开始，开发者可以通过[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的enableHoverMode和hoverModeArea属性，设置弹出框在悬停态下的布局区域。enableHoverMode设置为true时，弹出框将响应悬停态；hoverModeArea用于指定悬停态下弹出框的显示区域，可选值为[HoverModeAreaType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14).TOP_SCREEN（上半屏）和[HoverModeAreaType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14).BOTTOM_SCREEN（下半屏），默认值为[HoverModeAreaType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14).BOTTOM_SCREEN。
 
 <!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
  
