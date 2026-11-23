@@ -666,6 +666,15 @@ GC回调的函数指针类型。
 
 **起始版本：** 18
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | [入参]调用JSVM-API的VM实例。 |
+| [JSVM_GCType](#jsvm_gctype) gcType | [入参]GC类型。 |
+| [JSVM_GCCallbackFlags](#jsvm_gccallbackflags) flags | [入参]GC回调标志。 |
+| void* data | [入参]原生指针数据。 |
+
 ### JSVM_HandlerForHeapThreshold()
 
 ```c
@@ -677,6 +686,14 @@ typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t thre
 堆内存阈值回调的函数指针类型。
 
 **起始版本：** 26.0.0
+
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | [入参]堆使用量达到阈值的VM实例。 |
+| uint64_t threshold | [入参]堆使用量阈值（以字节为单位）。 |
+| void* data | [入参]原生指针数据。 |
 
 ### JSVM_HandlerForOOMError()
 
@@ -690,6 +707,14 @@ OOM-Error回调的函数指针类型。
 
 **起始版本：** 18
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| const char* location | [入参]OOM错误的位置信息。 |
+| const char* detail | [入参]OOM错误的详细信息。 |
+| bool isHeapOOM | [入参]判断OOM类型是否为堆内存OOM。 |
+
 ### JSVM_HandlerForFatalError()
 
 ```c
@@ -701,6 +726,13 @@ typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const 
 Fatal-Error回调的函数指针类型。
 
 **起始版本：** 18
+
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| const char* location | [入参]Fatal错误的位置信息。 |
+| const char* message | [入参]Fatal错误的信息。 |
 
 ### JSVM_HandlerForPromiseReject()
 
@@ -714,4 +746,10 @@ Promise-Reject回调的函数指针类型。
 
 **起始版本：** 18
 
-
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [入参]调用该函数的环境。 |
+| [JSVM_PromiseRejectEvent](#jsvm_promiserejectevent) rejectEvent | [入参]promise-reject事件。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rejectInfo | [入参]包含`promise`和`value`两个属性的JS对象。<br>`promise`表示被拒绝的Promise对象的引用。<br>`value`表示与该Promise关联的拒绝原因。 |
