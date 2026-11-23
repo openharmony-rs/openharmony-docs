@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=644f67aa94f68e9077504aa31447c68dfa9d35e7 translatedAt=2026-11-03T03:10:14.040Z pushedAt=2026-11-13T01:06:00.058Z nl=1 -->
+<!-- md-trans-meta sourceCommit=06839cccfa52dea4fd20bbd1fd00ca7c4e322066 translatedAt=2026-11-20T08:44:44.928Z pushedAt=2026-11-23T07:42:10.679Z nl=1 -->
 
 > **NOTE**
 >
@@ -420,6 +420,7 @@ Defines the unique identifier for a custom menu item. It is used to identify men
 | askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | <!--RP2--><!--RP2End-->Provides AI query capability for the selected text, a level-1 menu item. This menu item depends on the large model capability; otherwise, it does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Auto fill, a level-1 menu item. Tapping it expands the level-2 menu item "Password vault". It is supported only by [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), or [RichEditor](ts-basic-components-richeditor.md).<br>**Atomic service API:** This API can be used in atomic services since API version 23. |
 | passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Password vault, a level-2 menu item. Tapping this menu item opens the password vault application, which provides the capability of auto-filling account and password. It is supported only by [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), or [RichEditor](ts-basic-components-richeditor.md).<br>**Atomic service API:** This API can be used in atomic services since API version 23.<br>**Model restriction:** This API can be used only in the stage model. |
+| TRANSLATE_INPUT   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Quick translation, which is a first-level menu item.<br>**Since:** 26.1.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.1.0.<br>**Model restriction:** This API can only be used in the stage model. |
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
