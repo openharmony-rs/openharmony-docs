@@ -71505,9 +71505,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":119,
 						"name":"player_release",
-						"start_line":81
+						"start_line":87
 					}
 				]
 			}
@@ -71640,9 +71640,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":119,
 						"name":"player_release",
-						"start_line":81
+						"start_line":87
 					}
 				]
 			},
