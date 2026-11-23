@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=becc2f4245ea6f42f57f34273dbe43f205e2ee36 translatedAt=2026-11-03T01:24:42.881Z pushedAt=2026-11-03T01:33:54.645Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3f4430a1cf9e979027a217e0f6c3b2523fb1862a translatedAt=2026-11-23T07:20:25.774Z pushedAt=2026-11-23T07:28:16.055Z nl=1 -->
 
 **AbilityDelegator** is a proxy controller used to schedule and manage the UIAbility lifecycle. It listens for and manages the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through **AbilityMonitor**. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
 
@@ -16,7 +16,7 @@ This module can be used to verify the correctness of lifecycle behaviors and sim
 > 
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in [JsUnit User Guide](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/unittest-guidelines).
 
 ## Modules to Import
 
