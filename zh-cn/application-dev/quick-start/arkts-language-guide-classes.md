@@ -457,15 +457,15 @@ console.info(`${Configuration.instanceCount}`); // 2
 <!-- @[static_block](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
 
 ``` TypeScript
-class TsStaticConfig {
+class StaticConfig {
   private static count: number = 0;
 
   static {
     try {
       let data: string[] = ['a', 'b', 'c'];
-      TsStaticConfig.count = data.length;
+      StaticConfig.count = data.length;
     } catch (e) {
-      TsStaticConfig.count = 0;
+      StaticConfig.count = 0;
     }
   }
 }
@@ -2783,8 +2783,8 @@ class Base {
 }
 
 class Derived extends Base {
-  // TypeScript使用override标记（可选）
-  method(): void {
+  // 推荐使用override关键字标记覆盖方法
+  override method(): void {
     console.info('Derived method');
   }
 }

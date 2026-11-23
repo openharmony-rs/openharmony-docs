@@ -27,9 +27,9 @@ status: active
 <!-- @[bitwise_and](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
 
 ``` TypeScript
-let a: number = 5;   // 二进制0101
-let b: number = 3;   // 二进制0011
-let bitAndResult: number = a & b;  // 二进制0001，十进制1
+let a: number = 5;   // 二进制: 0101
+let b: number = 3;   // 二进制: 0011
+let bitAndResult: number = a & b;  // 二进制: 0001 (十进制: 1)
 
 // 使用场景：检查标志位
 const READ: number = 0b001;
@@ -145,8 +145,8 @@ let quadrupled: number = base << 2;  // 40
 <!-- @[right_shift](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
 
 ``` TypeScript
-let rshiftA: number = 20;  // 二进制010100
-let rshiftResult: number = rshiftA >> 2;  // 二进制0101，十进制5
+let rshiftA: number = 20;  // 二进制: 010100
+let rshiftResult: number = rshiftA >> 2;  // 二进制: 0101 (十进制: 5)
 
 // 右移n位相当于除以2^n（向下取整）
 console.info(`${20 >> 1}`);  // 10
@@ -384,9 +384,9 @@ function greet(greeting: string, ...names: string[]): string {
 
 console.info(`${greet('Hello', 'Alice', 'Bob', 'Charlie')}`);  // 'Hello, Alice, Bob, Charlie!'
 
-// 数组解构中的剩余元素
+// 数组解构剩余元素的限制与替代写法
 let arr: number[] = [1, 2, 3, 4, 5];
-// ArkTS不支持解构赋值，需要手动提取
+// ArkTS不支持解构赋值（包括数组/对象解构），需要手动提取
 let first: number = arr[0] ?? 0;
 let rest: number[] = arr.slice(1);
 console.info(`${first}`);  // 1

@@ -428,7 +428,7 @@ function useResource(): void {
     resource = new DemoResource('数据库连接');
     resource.use();
   } catch (error) {
-    console.error('捕获错误:', (error as Error).message);
+    console.error(`捕获错误: ${(error as Error).message}`);
   } finally {
     // 确保资源被清理
     if (resource) {
@@ -649,7 +649,7 @@ function parseJSONSafe(jsonStr: string): Result<Object> {
 let parseResult: Result<Object> = parseJSONSafe('{"name": "Alice"}');
 
 if (parseResult.error !== null) {
-  console.error('解析失败:', parseResult.error.message);
+  console.error(`解析失败: ${parseResult.error.message}`);
 } else {
   console.info(`解析成功: ${parseResult.data}`);
 }
@@ -670,7 +670,7 @@ function patternDivideNumbers(a: number, b: number): Result<number> {
 
 let divideResult: Result<number> = patternDivideNumbers(10, 2);
 if (divideResult.error !== null) {
-  console.error('计算失败:', divideResult.error.message);
+  console.error(`计算失败: ${divideResult.error.message}`);
 } else {
   console.info(`计算结果: ${divideResult.data}`);
 }
@@ -750,7 +750,7 @@ async function handleAsyncOperation(): Promise<void> {
     let result = await asyncOperation();
     console.info(`结果: ${result}`);
   } catch (error) {
-    console.error('捕获异步错误:', (error as Error).message);
+    console.error(`捕获异步错误: ${(error as Error).message}`);
   }
 }
 

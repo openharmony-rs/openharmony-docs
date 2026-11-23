@@ -387,6 +387,31 @@ function fail(message: string): never {
 function assertNever(value: never): never {
   throw new Error(`Unexpected value: ${value}`);
 }
+
+interface NevCircle {
+  kind: 'circle';
+  radius: number;
+}
+
+interface NevSquare {
+  kind: 'square';
+  sideLength: number;
+}
+
+type NevShape = NevCircle | NevSquare;
+
+function nevShapeArea(shape: NevShape): number {
+  switch (shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius * shape.radius;
+    case 'square':
+      return shape.sideLength * shape.sideLength;
+    default:
+      // 若联合新增成员未在case覆盖，此处编译报错
+      const _check: never = shape;
+      return _check;
+  }
+}
 ```
 
 `never`类型常用于两类场景：异常函数总是抛出异常永不返回，以及穷尽性检查——通过让`default`分支返回`never`确保`switch`覆盖所有枚举值。
@@ -470,7 +495,7 @@ let tiRatio = 3.14;  // 推断为number（宽泛类型）
 <!-- @[type_inference_best_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
 ``` TypeScript
-let tiMixed: (number | null)[] = [0, 1, null]; // 需显式标注为联合类型数组
+let tiMixed = [0, 1, null]; // 自动推断为(number | null)[]，无需显式标注
 let tiNames: string[] = ['Alice', 'Bob'];      // 推断为string[]
 ```
 
@@ -605,6 +630,9 @@ if (optionalValue !== null) {
 // 使用可选链
 let obj: NullableObj = {};
 let sub: string | undefined = obj?.prop?.sub;
+if (sub !== undefined) {
+  console.info(`${sub}`);
+}
 ```
 
 ## 类型安全

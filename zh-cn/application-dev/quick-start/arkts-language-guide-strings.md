@@ -112,7 +112,7 @@ let functionCall: string = `${Math.max(a, b)}`; // '20'
 let result: string = `${a > b ? 'greater' : 'less'}`;  // 'less'
 
 // 不支持复杂语句
-let invalid: string = `${if (a > b) { 'yes' }}`;  // 编译错误
+let invalid: string = `${if (a > b) { 'yes' }}`;  // 编译错误：${} 内只允许表达式，if 是语句不能作为表达式
 
 // 嵌套模板字符串
 let outer: string = `Outer: ${`Inner: ${a}`}`;  // 'Outer: Inner: 10'
@@ -295,7 +295,7 @@ let last: string = indexText[indexText.length - 1];  // 'd'
 let second: string = indexText.charAt(1);   // 'e'
 
 // 越界访问
-let outOfBounds: string | undefined = indexText[100];  // undefined
+let outOfBounds: string = indexText[100];  // 运行时为 undefined，但静态类型为 string
 let outOfBounds2: string = indexText.charAt(100);      // ''（空字符串）
 ```
 
@@ -546,18 +546,8 @@ console.info(`${isLowerCase('Hello')}`);  // false
 ``` TypeScript
 let searchText2: string = 'Hello World';
 
-// indexOf：查找位置
-let pos: number = searchText2.indexOf('World');      // 6
-let lastPos: number = searchText2.lastIndexOf('o');  // 7
-
 // includes：是否包含
 let hasWorld: boolean = searchText2.includes('World'); // true
-
-// startsWith：是否以指定字符串开头
-let startsHello: boolean = searchText2.startsWith('Hello'); // true
-
-// endsWith：是否以指定字符串结尾
-let endsWorld: boolean = searchText2.endsWith('World'); // true
 ```
 
 ### 提取方法
@@ -589,12 +579,7 @@ console.info(`[${splitAll.join(', ')}]`);  // '[H, e, l, l, o,  , W, o, r, l, d]
 <!-- @[string_common_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
-let commonMethodsText: string = 'Hello World';
-
-// replace：替换
-let commonMethodsReplaced: string = commonMethodsText.replace('World', 'ArkTS');  // 'Hello ArkTS'
-
-// replaceAll：替换所有（ES2021，ArkTS支持）
+// replaceAll：替换所有
 let multiple: string = 'aa bb aa';
 let allReplaced: string = multiple.replaceAll('aa', 'xx');  // 'xx bb xx'
 
@@ -606,15 +591,6 @@ let trimStart: string = '  Hello ArkTS  '.trimStart();  // 'Hello ArkTS  '
 
 // trimEnd：去除结尾空格
 let trimEnd: string = '  Hello ArkTS  '.trimEnd();  // '  Hello ArkTS'
-
-// padStart：左侧填充
-let padded: string = '5'.padStart(3, '0');  // '005'
-
-// padEnd：右侧填充
-let paddedEnd: string = '5'.padEnd(3, '0'); // '500'
-
-// repeat：重复
-let repeated: string = 'ab'.repeat(3);      // 'ababab'
 ```
 
 ### 其他方法
@@ -625,7 +601,7 @@ let repeated: string = 'ab'.repeat(3);      // 'ababab'
 
 ``` TypeScript
 // localeCompare：按本地化规则比较两个字符串，返回负数、0或正数
-let comparison: number = 'a'.localeCompare('b');     // -1（a < b）
+let comparison: number = 'a'.localeCompare('b');     // 负数（a < b，具体值由实现决定）
 let sameComparison: number = 'a'.localeCompare('a');  // 0（相等）
 ```
 
@@ -673,7 +649,7 @@ let regexReplaced: string = regexText.replace(/fox/, 'cat');  // 'The quick brow
 let regexParts: string[] = 'a1b2c3d'.split(/\d/);
 console.info(`${regexParts}`);  // 'a,b,c,d'
 
-// matchAll：全局匹配（ES2020，ArkTS支持；/\w+/g表示全局匹配由单词字符组成的连续片段）
+// matchAll：全局匹配（/\w+/g表示全局匹配由单词字符组成的连续片段）
 let allMatches: IterableIterator<RegExpMatchArray> = regexText.matchAll(/\w+/g);
 for (const match of allMatches) {
   console.info(`${match[0]}`);  // 依次输出：The、quick、brown、fox

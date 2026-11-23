@@ -77,10 +77,10 @@ ArkTS要求函数参数显式标注类型（省略将因隐式`any`编译报错�
 
 ``` TypeScript
 // 函数名：动词或动词短语，camelCase
-function calculateTotal() {}
-function validateInput() {}
-function processData() {}
-function fetchUserInfo() {}
+function calculateTotal(): number { return 0; }  // 计算并返回总和
+function validateInput(): boolean { return true; }  // 校验输入合法性
+function processData(): void { console.info('processing'); }  // 处理数据
+function fetchUserInfo(): string { return 'Alice'; }  // 获取用户信息
 
 // 参数名：名词，camelCase，描述性
 function greet(userName: string): string {
@@ -674,7 +674,7 @@ let greet: GreetingFunction = (name: string): string => {
 };
 
 // 不匹配的类型会编译错误
-let invalid: MathOperation = (a: string) => a; // 编译错误
+let invalid: MathOperation = (a: string) => a; // 编译错误：参数类型与返回类型均与MathOperation不匹配
 ```
 
 ### 函数类型作为参数
@@ -1098,10 +1098,10 @@ function compose<T, U, V>(
   return (x: T): V => f(g(x));
 }
 
-let functionsDouble2 = (n: number): number => n * 2;
-let addOne = (n: number): number => n + 1;
+let functionsDouble2: (n: number) => number = (n: number): number => n * 2;
+let addOne: (n: number) => number = (n: number): number => n + 1;
 
-let doubleThenAddOne = compose(addOne, functionsDouble2);
+let doubleThenAddOne: (x: number) => number = compose(addOne, functionsDouble2);
 doubleThenAddOne(5);  // 11
 ```
 
@@ -1323,7 +1323,7 @@ interface APIResponse {
 let response: APIResponse | null = null;
 
 response?.callback?.();  // 不执行
-response?.data?.items?.forEach?.(item => console.info(`${item}`));
+response?.data?.items?.forEach(item => console.info(`${item}`));
 ```
 
 ## void返回类型的赋值兼容性

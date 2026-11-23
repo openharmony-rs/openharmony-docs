@@ -245,8 +245,8 @@ const enum CeConstDirection {
   Down
 }
 
-let cedDir: CeConstDirection = CeConstDirection.Up;
-console.info(`${cedDir}`); // 0
+let constDir: CeConstDirection = CeConstDirection.Up;
+console.info(`${constDir}`); // 0
 ```
 
 使用普通枚举替代`const enum`，可避免跨项目陷阱：
@@ -259,6 +259,6 @@ enum CeDirection {
   Down = 1
 }
 
-let ceD: CeDirection = CeDirection.Up;
-console.info(`${ceD}`);  // 0
+let dir: CeDirection = CeDirection.Up;
+console.info(`${dir}`);  // 0
 ```

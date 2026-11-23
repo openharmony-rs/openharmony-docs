@@ -217,7 +217,7 @@ class ConsoleLogger implements Logger {
   }
   
   public warn(message: string): void {
-    console.info(`[WARN] ${message}`);
+    console.warn(`[WARN] ${message}`);
   }
 }
 
@@ -760,9 +760,9 @@ function findMax<T extends EquatableComparable<T>>(items: T[]): T | null {
     return null;
   }
   
-  let max: T = items[0] as T;
+  let max: T = items[0];
   for (let i = 1; i < items.length; i++) {
-    let current: T = items[i] as T;
+    let current: T = items[i];
     if (current.compareTo(max) > 0) {
       max = current;
     }

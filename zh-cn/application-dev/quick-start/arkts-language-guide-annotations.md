@@ -197,7 +197,6 @@ class C1 {
   // ...
 }
 
-
 @ClassPreamble({authorName: "Bob"}) // revision的默认值为1
 class C2 {
   // ...
@@ -229,10 +228,16 @@ class C3 {
 <!-- @[annotation_field_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
+@interface ClassPreamble1 {
+  authorName: string;
+  revision: number = 1;
+}
+
 @ClassPreamble1({authorName: "John", revision: 2})
-// ...
-// the same as:
+class C5 {}
+// 等价于：
 @ClassPreamble1({revision: 2, authorName: "John"})
+class C6 {}
 ```
 
 使用注解时，必须给所有没有默认值的字段赋值，否则会发生编译错误。
@@ -346,12 +351,8 @@ console.info('hello');
 
 ``` TypeScript
 // Annotation.ets
-import { MyAnno2 } from './MyAnno';
-import * as ns from './MyAnno';
+import { Anno } from './MyAnno';
 // 仅引用了Anno注解，不会导致MyAnno.ets的console.info执行
-class X {
-  // ...
-}
 ```
 
 ## .d.ets文件中的注解
@@ -380,14 +381,14 @@ export declare @interface ClassAuthor3 {}
 
 ``` TypeScript
 // NameAnno.d.ets
-export declare @interface NameAnno{name: string = ""}
+export declare @interface NameAnno {name: string = ""}
 ```
 
 <!-- @[annotation_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
 
 ``` TypeScript
 // MyAnno.ets
-export @interface NameAnno{name: string = ""} // ok
+export @interface NameAnno {name: string = ""} // ok
 ```
 
 环境声明的注解和`class`类似，也可以被`import`使用。
@@ -442,41 +443,41 @@ class C {
   - 2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
 
    <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
-
+   
    ``` TypeScript
    // MyAnno.ets
    import { ClassAuthor4 } from './Author';
-
+   
    export @interface MethodAnno4 {
      data: number = 0;
    }
-
+   
    @ClassAuthor4
-   class MyClass {
+   export class MyClass {
      @MethodAnno4({data: 123})
      foo() {}
-
+   
      @MethodAnno4({data: 456})
      private bar() {}
    }
    ```
 
    <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
-
+   
    ``` TypeScript
    // NameAnno.d.ets 编译器生成的声明文件
    import { ClassAuthor4 } from './Author';
-
+   
    export declare @interface MethodAnno4 {
      data: number = 0;
    }
-
+   
    @ClassAuthor4
    export declare class MyClass {
-     @MethodAnno4({data: 123})
+     @MethodAnno4({ data: 123 })
      foo(): void;
-
-     bar; // 私有方法不保留注解
+   
+     private bar; // 私有方法不保留注解，签名不导出，生成为 private bar;
    }
    ```
 
@@ -591,7 +592,7 @@ interface I {
 @interface Anno {}
 // 源码态注解可以在函数上使用
 @SourceAnnotation
-function func () {}
+function func() {}
 // 源码态注解可以在命名空间上使用
 @SourceAnnotation
 namespace ns {}

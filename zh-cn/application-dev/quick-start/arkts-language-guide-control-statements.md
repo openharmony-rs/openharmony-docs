@@ -246,7 +246,7 @@ for (let i = 0; i < 10; i += 2) {
 // 遍历数组索引
 let arr: number[] = [10, 20, 30, 40, 50];
 for (let i = 0; i < arr.length; i++) {
-  console.info(`索引 ${i}: ${arr[i] ?? 0}`);
+  console.info(`索引 ${i}: ${arr[i]}`);
 }
 
 // 多变量循环
@@ -308,15 +308,15 @@ while (loopValue < 5) {
 }
 
 // 处理数据直到条件满足
-let data: string | null = 'data';
-while (data !== null) {
-  console.info(`${data}`);
-  data = getNextData();
-}
-
 function getNextData(): string | null {
   // 返回数据或null
   return null;
+}
+
+let data: string | null = 'data';
+while (data !== null) {
+  console.info(`${data}`);  // 输出: data
+  data = getNextData();
 }
 
 // 累加直到满足条件
@@ -351,26 +351,27 @@ do {
 } while (loopValue2 < 5);
 
 // 用户输入验证
+function getInput(): string {
+  return 'valid input';
+}
+
 let input: string = '';
 do {
   input = getInput();
 } while (input.length === 0);
 
-function getInput(): string {
-  return 'valid input';
+// 重试逻辑：tryConnect()返回true时，循环仅执行一次
+function tryConnect(): boolean {
+  return true;
 }
 
-// 重试逻辑
 let success: boolean = false;
 let attempts: number = 0;
 do {
   success = tryConnect();
   attempts++;
 } while (!success && attempts < 3);
-
-function tryConnect(): boolean {
-  return true;
-}
+// attempts = 1, success = true
 ```
 
 ## 跳转语句
@@ -458,16 +459,16 @@ for (let num of continueNumbers) {
 // 输出：1, 2, 4, 5
 
 // 过滤无效数据
+function processItem(item: string): void {
+  console.info(`处理: ${item}`);
+}
+
 let continueData: (string | null)[] = ['valid', '', 'valid', null, 'valid'];
 for (let item of continueData) {
   if (item === '' || item === null) {
     continue;  // 跳过空值
   }
   processItem(item);
-}
-
-function processItem(item: string): void {
-  console.info(`处理: ${item}`);
 }
 ```
 

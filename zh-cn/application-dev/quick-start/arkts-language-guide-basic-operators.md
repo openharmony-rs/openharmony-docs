@@ -366,9 +366,9 @@ console.info(`${neNum1 !== neNum2}`); // true
 let gtA: number = 10;
 let gtB: number = 5;
 
-console.info(`${gtA > gtB}`);   // true
-console.info(`${gtB > gtA}`);   // false
-console.info(`${gtA > gtA}`);   // false
+console.info(`${gtA > gtB}`);     // true
+console.info(`${gtB > gtA}`);     // false
+console.info(`${gtA > gtA}`);     // false
 
 // 字符串比较Unicode码点
 console.info(`${'b' > 'a'}`);     // true
@@ -602,7 +602,7 @@ function expensiveDefault(): string {
   return 'default';
 }
 
-let provided: string = 'text';
+let provided: string | null = 'text';
 let circuitResult2: string = provided ?? expensiveDefault();  // 不执行expensiveDefault
 ```
 

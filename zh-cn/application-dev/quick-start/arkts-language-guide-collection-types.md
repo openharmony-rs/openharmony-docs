@@ -716,7 +716,11 @@ let ages: Record<string, number> = {
   'John': 25,
   'Mary': 21
 };
-ages['John']; // 25
+
+let johnAge: number | undefined = ages['John'];  // 25
+if (johnAge !== undefined) {
+  console.info(`${johnAge}`);
+}
 ```
 
 键类型`K`可为`string`或`number`（不含`bigint`），值类型`V`可为任意类型；按下标读取返回`V | undefined`，使用前需判空。

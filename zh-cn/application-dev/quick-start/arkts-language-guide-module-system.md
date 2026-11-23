@@ -177,7 +177,7 @@ export interface User {
 <!-- @[submodule_export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Service.ets) -->
 
 ``` TypeScript
-import { User, Product } from './Types';
+import { User } from './Types';
 
 export class UserService {
   findById(id: number): User | null {
