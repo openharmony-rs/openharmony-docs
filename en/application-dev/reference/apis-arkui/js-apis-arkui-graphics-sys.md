@@ -1,12 +1,11 @@
 # Graphics (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sun-xinyan-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-07-29T09:26:01.246Z pushedAt=2026-07-31T10:52:56.254Z -->
+<!-- md-trans-meta sourceCommit=69c407040f576942fb168782eab7b193850836b4 translatedAt=2026-11-18T09:34:59.015Z pushedAt=2026-11-23T02:21:28.980Z nl=1 -->
 
 The **Graphics** module provides APIs for defining attributes of a custom node, which supports HDR color creation, color space management and query, and color component retrieval. It is applicable to scenarios requiring HDR color processing and custom node attribute configuration in the stage model.
 
@@ -33,6 +32,8 @@ Instantiates the HDR-supported **ColorMetrics** class using the [color space](./
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -63,6 +64,8 @@ Instantiates the HDR-supported **ColorMetrics** class using the [color space](./
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Parameter| Type         | Mandatory| Description        |
@@ -92,6 +95,8 @@ Instantiates the HDR-supported **ColorMetrics** class using the [color space](./
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Parameter| Type         | Mandatory| Description        |
@@ -120,6 +125,8 @@ Obtains the color space of the **ColorMetrics** object.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **Return value**
 
 | Type         | Description            |
@@ -138,6 +145,8 @@ Checks whether the HDR color is displayed for the **ColorMetrics** object.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **Return value**
 
 | Type         | Description            |
@@ -148,7 +157,7 @@ Checks whether the HDR color is displayed for the **ColorMetrics** object.
 
 getRedValue(): number
 
-Obtains the red component of the **ColorMetrics** object.
+Obtains the red component of the color in **ColorMetrics** and returns the red channel value as a floating-point number.
 
 **Since**: 26.0.0
 
@@ -156,17 +165,19 @@ Obtains the red component of the **ColorMetrics** object.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| number | Red component of the color. The value is a floating point number greater than or equal to 0.|
+| number | Red component of the color.<br>Value range:<br>For SDR colors, the value range is [0.0, 1.0].<br>For HDR colors, the value can be greater than 1.0 to represent extended brightness.|
 
 ### getGreenValue
 
 getGreenValue(): number
 
-Obtains the green component of the **ColorMetrics** object.
+Obtains the green component of the color in **ColorMetrics** and returns the green channel value as a floating-point number.
 
 **Since**: 26.0.0
 
@@ -174,17 +185,19 @@ Obtains the green component of the **ColorMetrics** object.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| number | Green component of the color. The value is a floating point number greater than or equal to 0.|
+| number | Green component of the color.<br>Value range:<br>For SDR colors, the value range is [0.0, 1.0].<br>For HDR colors, the value can be greater than 1.0 to represent extended brightness.|
 
 ### getBlueValue
 
 getBlueValue(): number
 
-Obtains the blue component of the **ColorMetrics** object.
+Obtains the blue component of the color in **ColorMetrics** and returns the blue channel value as a floating-point number.
 
 **Since**: 26.0.0
 
@@ -192,8 +205,131 @@ Obtains the blue component of the **ColorMetrics** object.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| number | Blue component of the color. The value is a floating point number greater than or equal to 0.|
+| number | Blue component of the color.<br>Value range:<br>For SDR colors, the value range is [0.0, 1.0].<br>For HDR colors, the value can be greater than 1.0 to represent extended brightness. |
+
+## Example
+
+### Example 1: Setting the HDR Fill and Border Color of the Circle Component Using ColorMetrics
+
+This example shows how to use the [createHDRColor](#createhdrcolor) API of **ColorMetrics** to set an HDR color for the [Circle](arkui-ts/ts-drawing-components-circle.md) component, achieving a brightness effect beyond the normal display range. The [fill](arkui-ts/ts-drawing-components-circle.md#fill) API is used to set the color of the filled area, and the [stroke](arkui-ts/ts-drawing-components-circle.md#stroke) API is used to set the border color. In the following, the left side uses an HDR warm gold fill and an ice blue border (with a brightness multiplier greater than 1.0), while the right side uses a normal SDR color for comparison. On an HDR-supported screen, the left side is noticeably brighter and more vivid than the right side.
+
+Since API version 26.0.0, the **fill** and **stroke** APIs that accept parameters of the **ColorMetrics** type are added for the **Circle** component, and the **createHDRColor** API is added for **ColorMetrics**.
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CircleHDRDemo {
+  build() {
+    Column({ space: 30 }) {
+      Row({ space: 60 }) {
+        // HDR fill and border: color component values can exceed 1.0, and the portion exceeding 1.0 is used to represent a highlight effect beyond the normal screen brightness range.
+        Column({ space: 8 }) {
+          Circle()
+            .width(120).height(120).strokeWidth(6)
+            .fill(ColorMetrics.createHDRColor(ColorSpace.BT2020, 2.5, 1.2, 0.0, 1)) // Bright warm gold
+            .stroke(ColorMetrics.createHDRColor(ColorSpace.BT2020, 0.0, 0.8, 2.5, 1)) // Bright ice blue
+          Text('HDR').fontColor(Color.White).fontSize(14)
+        }
+
+        // SDR fill and border: color component values range from 0.0 to 1.0, which is the conventional standard dynamic range color display method.
+        Column({ space: 8 }) {
+          Circle()
+            .width(120).height(120).strokeWidth(6)
+            .fill('#ffc800') // Normal golden yellow
+            .stroke('#0066ff') // Normal dark blue
+          Text('SDR').fontColor(Color.White).fontSize(14)
+        }
+      }
+    }
+    .width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![circleHdr](arkui-ts/figures/circleHdr.png)
+
+### Example 2: Setting the HDR Fill and Border Color of the CanvasGradient Object Using ColorMetrics
+
+This example demonstrates the brightness difference between SDR and HDR gradients. The [addColorStop](arkui-ts/ts-components-canvas-canvasgradient.md#addcolorstop20) API of the [CanvasGradient](arkui-ts/ts-components-canvas-canvasgradient.md) object supports HDR brightening through the [createHDRColor](#createhdrcolor) API of **ColorMetrics**. This API can construct an HDR color in the BT2020 color space, and the color component values can exceed 1.0. The portion exceeding 1.0 is used to represent a highlight effect that goes beyond the normal screen brightness range. In the following, the left side uses a red-to-white-to-green gradient in the sRGB color space, while the right side uses an HDR color in the BT2020 color space with the highlight white brightness multiplier reaching 1.5. On an HDR-supported screen, the highlight area on the right side is noticeably brighter than that on the left side.
+
+> **NOTE**
+>
+> When using HDR colors, set the color space mode of the window where the **Canvas** component resides to the wide color gamut mode (**WIDE_GAMUT**) through [setWindowColorSpace](arkts-apis-window-Window.md#setwindowcolorspace9). Otherwise, the HDR brightening effect will not take effect.
+
+Since API version 26.0.0, the **createHDRColor** API is added for **ColorMetrics**.
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct CanvasGradientDemo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  build() {
+    Column({ space: 30 }) {
+      Canvas(this.context)
+        .width(340)
+        .height(240)
+        .onReady(() => {
+          // HDR gradients support brightness values exceeding 1.0. On HDR-supported devices, the highlight area on the right is brighter than that on the left.
+          this.drawCanvas();
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  private drawCanvas() {
+    // Left: SDR gradient, red -> white -> green
+    let gradSDR = this.context.createLinearGradient(20, 20, 160, 160)
+    try {
+      gradSDR.addColorStop(0.0, ColorMetrics.colorWithSpace(ColorSpace.SRGB, 1.0, 0.0, 0.0, 1.0)) // Red
+      gradSDR.addColorStop(0.5, ColorMetrics.colorWithSpace(ColorSpace.SRGB, 1.0, 1.0, 1.0, 1.0)) // White
+      gradSDR.addColorStop(1.0, ColorMetrics.colorWithSpace(ColorSpace.SRGB, 0.0, 1.0, 0.0, 1.0)) // Green
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`SDR Failed to addColorStop. Code: ${e.code}, message: ${e.message}`);
+    }
+    this.context.fillStyle = gradSDR
+    this.context.fillRect(10, 10, 150, 150)
+
+    this.context.fillStyle = '#FFFFFF'
+    this.context.font = '16px sans-serif'
+    this.context.textAlign = 'center'
+    this.context.fillText("SDR", 85, 190)
+
+    // Right: HDR gradient, red -> bright white (brightness 1.5) -> green
+    let gradHDR = this.context.createLinearGradient(190, 20, 330, 160)
+    try {
+      gradHDR.addColorStop(0.0, ColorMetrics.createHDRColor(ColorSpace.BT2020, 1.0, 0.0, 0.0, 1.0)) // Red
+      gradHDR.addColorStop(0.5, ColorMetrics.createHDRColor(ColorSpace.BT2020, 1.5, 1.5, 1.5, 1.0)) // Bright white
+      gradHDR.addColorStop(1.0, ColorMetrics.createHDRColor(ColorSpace.BT2020, 0.0, 1.0, 0.0, 1.0)) // Green
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`HDR Failed to addColorStop. Code: ${e.code}, message: ${e.message}`);
+    }
+    this.context.fillStyle = gradHDR
+    this.context.fillRect(180, 10, 150, 150)
+
+    this.context.fillStyle = '#FFFFFF'
+    this.context.fillText("HDR", 255, 190)
+  }
+}
+```
+
+![canvasGradientHdr](arkui-ts/figures/canvasGradientHdr.png)

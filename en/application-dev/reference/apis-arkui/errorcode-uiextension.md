@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-29T09:28:17.651Z pushedAt=2026-08-31T07:52:52.769Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T09:28:13.137Z pushedAt=2026-11-20T06:45:46.664Z nl=1 -->
 
 > **NOTE**
 >
@@ -29,7 +29,7 @@ This error code is reported when the UIExtension ability fails to be started.
 
 **Solution**
 
-Verify the configuration of the **Want** parameter and the types, and ensure the application is installed.
+Check whether the **Want** parameter configuration and the type are consistent and whether the application is installed.
 
 ## 1012 Failure to Switch the UIExtension Ability to the Background
 
@@ -47,7 +47,7 @@ The UIExtension ability fails to be switched to the background. Possible causes 
 
 1. The ability lifecycle state is abnormal.
 
-2. The system resources are insufficient. If the cause still cannot be identified, perform analysis based on Ability Manager Service (AMS) logs.
+2. System resources are insufficient.
 
 **Solution**
 
@@ -69,7 +69,7 @@ The UIExtension ability fails to be destroyed. Possible causes include but are n
 
 1. The ability lifecycle callback is executed abnormally.
 
-2. An error occurs during resource release. If the cause still cannot be identified, perform analysis based on Ability Manager Service (AMS) logs.
+2. An error occurs during resource release.
 
 **Solution**
 
@@ -92,7 +92,7 @@ The component using the ability calls the **sendSync** API to send data to the l
 **Solution**
 
 1. Register a synchronous callback listener in the UIExtension ability.
-2. The component user needs to call the **sendSync** API to send data to the started ability.
+2. The component user needs to call the **sendSync** API to send data to the launched ability.
 
 ## 100012 Data Transfer Failure
 
@@ -116,7 +116,7 @@ The data transfer fails. Possible causes include but are not limited to:
 
 **Solution**
 
-Perform analysis based on Ability Manager Service (AMS) logs.
+Check whether the amount of data to be sent exceeds the limit and whether the data to be sent is serializable. If the cause still cannot be identified, perform analysis based on Ability Manager Service (AMS) logs.
 
 ## 100013 Nesting Not Allowed
 
@@ -136,7 +136,7 @@ There might be nesting between UIExtension components.
 
 Check the UIExtension component specifications to avoid unexpected nesting in scenarios such as component reuse, conditional rendering, and dynamic loading.
 
-## 100014 Ability Exit Error
+## 100014 Abnormal Exit of the UIExtension Ability
 
 **Error Message**
 
@@ -170,7 +170,7 @@ This error code is reported when the lifecycle of the UIExtension ability times 
 
 **Possible Causes**
 
-The extended ability lifecycle times out. Possible causes include but are not limited to:
+The ability lifecycle times out. Possible causes include but are not limited to:
 
 1. A time-consuming operation is performed in the lifecycle callback.
 
@@ -206,7 +206,7 @@ Perform analysis based on Ability Manager Service (AMS) logs.
 
 **Error Message**
 
-Failed to start the UIExtension ability. Check the Want of the UIExtensionAbility.
+Start UIExtensionAbility failed, please check the want of UIExtensionAbility.
 
 **Description**
 
@@ -231,17 +231,21 @@ background ui extension ability failed, please check AMS log.
 
 **Description**
 
-This error code is reported when the UIExtension ability fails to be switched to the background in a scenario where the **onTerminated** callback is set.
+This error code is reported when the UIExtension ability fails to be switched to the background in the scenario where the **onTerminated** callback is set. Analyze Ability Manager Service (AMS) logs for troubleshooting.
 
 **Possible Causes**
 
-The UIExtension ability fails to be switched to the background. Analyze the issue based on the Ability Manager Service (AMS) logs.
+The UIExtension ability fails to be switched to the background. Possible causes include but are not limited to:
+
+1. The ability lifecycle state is abnormal.
+
+2. System resources are insufficient.
 
 **Solution**
 
 Analyze the issue based on the Ability Manager Service (AMS) logs.
 
-## 100020 Failed to Destroy the UIExtension Ability (with the onTerminated Callback)
+## 100020 Failed to Terminate the UIExtension Ability
 
 **Error Message**
 
@@ -249,11 +253,15 @@ terminate ui extension ability failed, please check AMS log.
 
 **Description**
 
-This error code is reported when the UIExtension ability fails to be destroyed in a scenario where the **onTerminated** callback is set.
+This error code is reported when the UIExtension ability fails to be terminated in the scenario where the **onTerminated** callback is set. Analyze Ability Manager Service (AMS) logs for troubleshooting.
 
 **Possible Causes**
 
-The UIExtension ability fails to be destroyed. Analyze the issue based on the Ability Manager Service (AMS) logs.
+The UIExtension ability fails to be terminated. Possible causes include but are not limited to:
+
+1. The ability lifecycle callback is executed abnormally.
+
+2. An error occurred during resource release.
 
 **Solution**
 
@@ -271,7 +279,7 @@ This error code is reported when a transparent node is detected in the UIExtensi
 
 **Possible Causes**
 
-A transparent node is detected in the UIExtension Ability, which may block event distribution.
+The transparency of the component or its parent component is set to 0, or a transparent style or transparent background is used, causing a transparent node to be generated in the UIExtension ability.
 
 **Solution**
 

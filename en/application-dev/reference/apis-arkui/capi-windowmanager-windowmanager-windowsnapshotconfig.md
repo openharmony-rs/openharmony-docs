@@ -4,8 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:26:01.766Z pushedAt=2026-11-20T06:05:35.621Z nl=1 -->
 
 ```c
 typedef struct {...} WindowManager_WindowSnapshotConfig
