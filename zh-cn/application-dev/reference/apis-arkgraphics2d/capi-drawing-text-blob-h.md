@@ -317,6 +317,12 @@ const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_Tex
 | int32_t count | 文字的数量。 |
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 文本的边界框，为NULL表示不设置边界框。 |
 
+**返回：**
+ 
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md)* | 函数返回一个指针，指针指向创建的文本对象OH_Drawing_RunBuffer。 |
+
 ### OH_Drawing_TextBlobBuilderMake()
 
 ```c

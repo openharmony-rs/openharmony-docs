@@ -81,11 +81,11 @@
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkgetswapchaingrallocusageohos)                               | -                       | 根据给定的Vulkan设备、图像格式和图像使用标志，返回适当的Gralloc(内存分配器)使用标志。 |
 | [VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkacquireimageohos)                                                  | -                       | 用于获取交换链图像的所有权，并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。 |
 | [VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkqueuesignalreleaseimageohos) | -                       | 当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号，以便其他组件可以访问该图像。 |
-| [VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vksetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkSetNativeFenceFdOpenHarmony | 该接口已废弃。|
-| [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkgetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkGetNativeFenceFdOpenHarmony | 该接口已废弃。|
-| [VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkapi_ptr-pfn_vkgetswapchaingrallocusageohos) | VKAPI_PTR \*PFN_vkGetSwapchainGrallocUsageOHOS | 根据给定的Vulkan设备、图像格式和图像使用标志，返回适当的Gralloc(内存分配器)使用标志。应用开发者无需使用该接口。 |
-| [VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vkacquireimageohos) | VKAPI_PTR \*PFN_vkAcquireImageOHOS | 用于获取交换链图像的所有权，并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。应用开发者无需使用该接口。|
-| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos) | VKAPI_PTR \*PFN_vkQueueSignalReleaseImageOHOS | 当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号，以便其他组件可以访问该图像。应用开发者无需使用该接口。 |
+| [VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#pfn_vksetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkSetNativeFenceFdOpenHarmony | 该接口已废弃。|
+| [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#pfn_vkgetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkGetNativeFenceFdOpenHarmony | 该接口已废弃。|
+| [VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#pfn_vkgetswapchaingrallocusageohos) | VKAPI_PTR \*PFN_vkGetSwapchainGrallocUsageOHOS | 根据给定的Vulkan设备、图像格式和图像使用标志，返回适当的Gralloc(内存分配器)使用标志。应用开发者无需使用该接口。 |
+| [VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#pfn_vkacquireimageohos) | VKAPI_PTR \*PFN_vkAcquireImageOHOS | 用于获取交换链图像的所有权，并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。应用开发者无需使用该接口。|
+| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#pfn_vkqueuesignalreleaseimageohos) | VKAPI_PTR \*PFN_vkQueueSignalReleaseImageOHOS | 当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号，以便其他组件可以访问该图像。应用开发者无需使用该接口。 |
 | [VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vksetnativefencefdopenharmony) | - | 该接口已废弃。|
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkgetnativefencefdopenharmony) | - | 该接口已废弃。 |
 
@@ -319,7 +319,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, V
 | -- | -- |
 | VkResult | 返回一个VkResult类型的错误码，具体返回类型如下：<br> 返回VK_SUCCESS，表示执行成功。<br> 返回VK_ERROR_INITIALIZATION_FAILED，表示入参异常。 |
 
-### VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS()
+### PFN_vkGetSwapchainGrallocUsageOHOS()
 
 ```c
 typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)
@@ -383,7 +383,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image
 | -- | -- |
 | VkResult | 返回一个VkResult类型的错误码，具体返回类型如下：<br> 返回VK_SUCCESS，表示执行成功。<br> 返回VK_ERROR_OUT_OF_HOST_MEMORY，表示主机内存不足。 |
 
-### VKAPI_PTR *PFN_vkAcquireImageOHOS()
+### PFN_vkAcquireImageOHOS()
 
 ```c
 typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)
@@ -448,7 +448,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 | -- | -- |
 | VkResult | 返回一个VkResult类型的错误码，具体返回类型如下：<br> 返回VK_SUCCESS，表示执行成功。<br> 返回VK_ERROR_DEVICE_LOST，表示Vulkan设备链接丢失。<br> 返回VK_ERROR_OUT_OF_HOST_MEMORY，表示主机内存不足。 |
 
-### VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS()
+### PFN_vkQueueSignalReleaseImageOHOS()
 
 ```c
 typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)
@@ -481,7 +481,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, u
 | VkResult | 返回一个VkResult类型的错误码，具体返回类型如下：<br>返回VK_SUCCESS，表示执行成功。<br>返回VK_ERROR_DEVICE_LOST，表示Vulkan设备链接丢失。<br>返回VK_ERROR_OUT_OF_HOST_MEMORY，表示主机内存不足。 |
 
 
-### VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony()
+### PFN_vkSetNativeFenceFdOpenHarmony()
 
 ```c
 typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)
@@ -495,9 +495,9 @@ typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device,
 
 **废弃版本：** 10
 
-**替代接口：** [PFN_vkAcquireImageOHOS](#vkapi_ptr-pfn_vkacquireimageohos)
+**替代接口：** [PFN_vkAcquireImageOHOS](#pfn_vkacquireimageohos)
 
-### VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony()
+### PFN_vkGetNativeFenceFdOpenHarmony()
 
 ```c
 typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)
@@ -511,7 +511,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, u
 
 **废弃版本：** 10
 
-**替代接口：** [PFN_vkQueueSignalReleaseImageOHOS](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos)
+**替代接口：** [PFN_vkQueueSignalReleaseImageOHOS](#pfn_vkqueuesignalreleaseimageohos)
 
 ### vkSetNativeFenceFdOpenHarmony()
 
