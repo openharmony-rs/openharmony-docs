@@ -362,7 +362,7 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
             "Cannot obtain the native UI context.");
     }
 
-    // 在UI线程的ArkUI事件中同步调用，不能从工作线程或异步任务中调用。
+    // 在 UI 线程的 ArkUI 事件中同步调用，不能从工作线程或异步任务中调用。
     OH_ArkUI_NativeModule_UIJsonWrapper *pageText = nullptr;
     code = OH_ArkUI_NativeModule_UIAgentGetPageText(context, &pageText);
     JsonOwner ownedText(pageText, OH_ArkUI_NativeModule_UIJsonWrapperDestroy);
@@ -375,7 +375,7 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
     }
     uint32_t size = OH_ArkUI_NativeModule_UIJsonWrapperGetSize(ownedText.get());
     napi_value result = nullptr;
-    // N-API会在函数退出、所属包装器销毁前复制UTF-8字节。
+    // N-API 会在函数退出、所属包装器销毁前复制 UTF-8 字节。
     if (napi_create_string_utf8(env, jsonData, size, &result) != napi_ok) {
         return ThrowError(env, ARKUI_ERROR_CODE_INTERNAL_ERROR, "Cannot copy the collected JSON to ArkTS.");
     }
@@ -390,9 +390,9 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
 
 ``` TypeScript
 export interface PageTextItem {
-  // 原生节点ID；它与ArkTS组件的.id('sampleText')不同。
+  // 原生节点 ID；它与 ArkTS 组件的 .id('sampleText') 不同。
   id: number;
-  // 相对于目标窗口的物理像素坐标[x, y, width, height]。
+  // 相对于目标窗口的物理像素坐标 [x, y, width, height]。
   rect: number[];
   content: string;
 }
@@ -402,7 +402,7 @@ export interface PageTextResult {
   texts: PageTextItem[];
 }
 
-/** 解析原生页面文本API返回的带版本JSON。 */
+/** 解析原生页面文本 API 返回的带版本 JSON。 */
 export function parsePageText(json: string): PageTextResult {
   const result: PageTextResult = JSON.parse(json) as PageTextResult;
   if (result.schemaVersion !== 1 || !Array.isArray(result.texts)) {
