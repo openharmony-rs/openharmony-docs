@@ -88,7 +88,7 @@ With this permission, the application can obtain the write permission on user fi
 
 Allows an application to interact across local accounts.
 
-<!--RP7--><!--RP7End-->
+<!--RP8--><!--RP8End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -109,7 +109,7 @@ Allows an application to query the identities (such as names and IDs) of specifi
 
 With this permission, the application can query the identities of specified or all local accounts in the system. Based on the obtained identities, the application can further access or manage the target local accounts.
 
-<!--RP12--><!--RP12End-->
+<!--RP13--><!--RP13End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -227,7 +227,7 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 
 Allows an application to obtain domain account information.
 
-<!--RP11--><!--RP11End-->
+<!--RP12--><!--RP12End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -353,7 +353,7 @@ Currently, this permission is available only to 2-in-1 device applications.
 
 Allows an application to obtain domain account server configurations.
 
-<!--RP8--><!--RP8End-->
+<!--RP9--><!--RP9End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -370,7 +370,7 @@ Allows an application to obtain domain account server configurations.
 
 Allows an application to manage domain account server configurations.
 
-<!--RP9--><!--RP9End-->
+<!--RP10--><!--RP10End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -387,7 +387,7 @@ Allows an application to manage domain account server configurations.
 
 Allows an application to manage domain accounts.
 
-<!--RP10--><!--RP10End-->
+<!--RP11--><!--RP11End-->
 
 <!--RP2--><!--RP2End-->
 
