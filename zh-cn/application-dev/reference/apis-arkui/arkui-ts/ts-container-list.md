@@ -1029,27 +1029,53 @@ scrollPlaceholder(provider: PlaceholderProvider | undefined)
 
 ### scrollSnapStrategy
 
-ArkTS-Dyn: scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
-
-ArkTS-Sta: scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvider | undefined)
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
 设置List的限位滚动策略，使List在滚动结束时按指定方式对齐子组件，或停在自定义的吸附位置。
 
 > **说明：**
 >
-> - 最终吸附位置始终在合法滚动范围内。例如对齐方式为ScrollSnapAlign.CENTER时，首尾子组件会停靠在可滚动边界处，而非视口中央。此行为与scrollSnapAlign不同：scrollSnapAlign以对齐效果优先，CENTER档位下首尾子组件仍会居中，列表可能露出空白区域。
-> - 启用限位滚动后，拖拽或鼠标框选操作结束时也会触发限位滚动。
+> - 最终吸附位置始终在合法滚动范围内。例如对齐方式为ScrollSnapAlign.CENTER时，首尾子组件会停靠在可滚动边界处，而非视口中央。此行为与scrollSnapAlign不同：scrollSnapAlign以对齐效果优先，CENTER挡位下首尾子组件仍会居中，列表可能露出空白区域。
+> - 启用限位滚动后，滚动结束触发限位吸附，触发场景与scrollSnapAlign一致：拖拽结束、抛滑惯性滚动（包括[Scroller](ts-container-scroll.md#scroller)的fling）、鼠标滚轮和滚动条拖动结束。走焦滚动（含无障碍滚动）与[Scroller](ts-container-scroll.md#scroller)指定目标位置的接口（如scrollToIndex、scrollEdge）不触发限位吸附；编辑模式拖拽排序过程中的自动滚动不经过限位链路。
 > - [ListItemGroup](ts-container-listitemgroup.md)作为整体参与对齐。
 > - 该属性与[scrollSnapAlign](#scrollsnapalign10)互斥，后设置者生效。
-> - scrollSnapStrategy的限位动画不受[scrollSnapAnimationSpeed](#scrollsnapanimationspeed22)影响，该属性仅影响scrollSnapAlign属性产生的限位动画速度。
+> - scrollSnapStrategy的限位动画不受[scrollSnapAnimationSpeed](#scrollsnapanimationspeed22)影响，scrollSnapAnimationSpeed仅影响scrollSnapAlign属性产生的限位动画速度。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                 |
+| ------ | ------ | ---- | ------------------------------------ |
+| strategy  | [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将子组件对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，List不做吸附对齐，按惯性自然滑行至停止。 |
+
+### scrollSnapStrategy
+
+scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvider | undefined)
+
+设置List的限位滚动策略，使List在滚动结束时按指定方式对齐子组件，或停在自定义的吸附位置。
+
+> **说明：**
+>
+> - 最终吸附位置始终在合法滚动范围内。例如对齐方式为ScrollSnapAlign.CENTER时，首尾子组件会停靠在可滚动边界处，而非视口中央。此行为与scrollSnapAlign不同：scrollSnapAlign以对齐效果优先，CENTER挡位下首尾子组件仍会居中，列表可能露出空白区域。
+> - 启用限位滚动后，滚动结束触发限位吸附，触发场景与scrollSnapAlign一致：拖拽结束、抛滑惯性滚动（包括[Scroller](ts-container-scroll.md#scroller)的fling）、鼠标滚轮和滚动条拖动结束。走焦滚动（含无障碍滚动）与[Scroller](ts-container-scroll.md#scroller)指定目标位置的接口（如scrollToIndex、scrollEdge）不触发限位吸附；编辑模式拖拽排序过程中的自动滚动不经过限位链路。
+> - [ListItemGroup](ts-container-listitemgroup.md)作为整体参与对齐。
+> - 该属性与[scrollSnapAlign](#scrollsnapalign10)互斥，后设置者生效。
+> - scrollSnapStrategy的限位动画不受[scrollSnapAnimationSpeed](#scrollsnapanimationspeed22)影响，scrollSnapAnimationSpeed仅影响scrollSnapAlign属性产生的限位动画速度。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 26.1.0
 
@@ -1057,9 +1083,11 @@ ArkTS-Sta: scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvid
 
 | 参数名 | 类型 | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| strategy  | ArkTS-Dyn: [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)<br>ArkTS-Sta: [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) \| undefined | ArkTS-Dyn: 否<br>ArkTS-Sta: 是 | 限位滚动策略。<br/>传入[ScrollSnapAlign](#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将子组件对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，List不做吸附对齐，按惯性自然滑行至停止。 |
+| strategy  | [ScrollSnapAlign](#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) \| undefined | 是   | 限位滚动策略。<br/>传入[ScrollSnapAlign](#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将子组件对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，List不做吸附对齐，按惯性自然滑行至停止。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1119,6 +1147,82 @@ struct ListSnapProviderExample {
           .height(ITEM_HEIGHT)
           .backgroundColor(0xF9CF93)
         }, (item: number) => item.toString())
+      }
+      .width('90%')
+      .height(400)
+      .backgroundColor(0xFAEEE0)
+      .scrollSnapStrategy(this.provider)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { Entry, Component, Column, ColumnOptions, Text, List, ListItem, ForEach,
+  Scroller, ScrollSnapOffsetProvider, TextAlign, ListOptions, Margin } from '@kit.ArkUI';
+
+const ITEM_HEIGHT: number = 100;
+const ITEM_SPACE: number = 10;
+const SNAP_INTERVAL: number = 2 * (ITEM_HEIGHT + ITEM_SPACE);
+
+class ListSnapProvider implements ScrollSnapOffsetProvider {
+  private scroller: Scroller;
+
+  constructor(scroller: Scroller) {
+    this.scroller = scroller;
+  }
+
+  calculateApproachOffset(velocity: number, decayOffset: number): number {
+    // 返回距离大小，滚动方向由组件根据速度处理。
+    return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
+  }
+
+  calculateSnapOffset(velocity: number): number {
+    const offset = this.scroller.currentOffset().yOffset;
+    const group = offset / SNAP_INTERVAL;
+    let targetGroup = Math.round(group);
+    if (velocity > 0) {
+      targetGroup = Math.ceil(group);
+    } else if (velocity < 0) {
+      targetGroup = Math.floor(group);
+    }
+    return Math.max(0, targetGroup * SNAP_INTERVAL);
+  }
+}
+
+@Entry
+@Component
+struct ListSnapProviderExample {
+  private scroller: Scroller = new Scroller();
+  private provider: ScrollSnapOffsetProvider = new ListSnapProvider(this.scroller);
+  private numbers: number[] = [];
+
+  aboutToAppear(): void {
+    for (let index = 0; index < 40; index++) {
+      this.numbers.push(index);
+    }
+  }
+
+  build() {
+    Column({ space: 8 } as ColumnOptions) {
+      List({ space: ITEM_SPACE, scroller: this.scroller } as ListOptions) {
+        ForEach(this.numbers, (item: number, index: int) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .height(ITEM_HEIGHT)
+          .backgroundColor(0xF9CF93)
+        }, (item: number, index: int): string => item.toString())
       }
       .width('90%')
       .height(400)
