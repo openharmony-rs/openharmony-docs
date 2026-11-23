@@ -108,7 +108,9 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 
 **参考：**
 
-OH_Cursor, OH_ColumnType
+[OH_Cursor](capi-rdb-oh-cursor.md)
+
+[OH_ColumnType](capi-oh-data-value-h.md#oh_columntype)
 
 ### getColumnIndex()
 

@@ -86,7 +86,9 @@ OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObje
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### notEqualTo()
 
@@ -116,7 +118,9 @@ OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VO
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### beginWrap()
 
@@ -316,7 +320,9 @@ OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject 
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 
 ### between()
@@ -347,7 +353,9 @@ OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObje
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### notBetween()
 
@@ -377,7 +385,9 @@ OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VO
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### greaterThan()
 
@@ -407,7 +417,9 @@ OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_V
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### lessThan()
 
@@ -437,7 +449,9 @@ OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObj
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### greaterThanOrEqualTo()
 
@@ -467,7 +481,9 @@ OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *fi
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### lessThanOrEqualTo()
 
@@ -497,7 +513,9 @@ OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### orderBy()
 
@@ -527,7 +545,9 @@ OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_Order
 
 **参考：**
 
-OH_Predicates, OH_OrderType
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_OrderType](capi-oh-predicates-h.md#oh_ordertype)
 
 ### distinct()
 
@@ -673,7 +693,9 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### notIn()
 
@@ -703,7 +725,9 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 
 **参考：**
 
-OH_Predicates, OH_VObject
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### clear()
 

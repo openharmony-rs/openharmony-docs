@@ -927,7 +927,9 @@ OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)
 
 **参考：**
 
-OH_Rdb_Config, OH_Rdb_Store
+[OH_Rdb_Config](capi-rdb-oh-rdb-config.md)
+
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
 
 ### OH_Rdb_CreateOrOpen()
 
@@ -957,7 +959,9 @@ OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)
 
 **参考：**
 
-OH_Rdb_ConfigV2, OH_Rdb_Store
+[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)
+
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
 
 ### OH_Rdb_CloseStore()
 
@@ -986,7 +990,9 @@ int OH_Rdb_CloseStore(OH_Rdb_Store *store)
 
 **参考：**
 
-OH_Rdb_Store, OH_Rdb_ErrCode
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Rdb_DeleteStore()
 
@@ -1075,7 +1081,11 @@ int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBuck
 
 **参考：**
 
-OH_Rdb_Store, OH_VBucket, OH_Rdb_ErrCode
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Rdb_InsertWithConflictResolution()
 
@@ -1170,7 +1180,13 @@ int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *
 
 **参考：**
 
-OH_Rdb_Store, OH_Bucket, OH_Predicates, OH_Rdb_ErrCode
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Rdb_UpdateWithConflictResolution()
 
@@ -1229,7 +1245,11 @@ int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 **参考：**
 
-OH_Rdb_Store, OH_Predicates, OH_Rdb_ErrCode
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Rdb_Query()
 
@@ -1261,7 +1281,11 @@ OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const ch
 
 **参考：**
 
-OH_Rdb_Store, OH_Predicates, OH_Cursor
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### OH_Rdb_Execute()
 
@@ -2107,7 +2131,11 @@ int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 **参考：**
 
-OH_Rdb_Store, OH_Predicates, OH_Rdb_ErrCode
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Rdb_UnlockRow()
 
@@ -2137,7 +2165,11 @@ int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 **参考：**
 
-OH_Rdb_Store, OH_Predicates, OH_Rdb_ErrCode
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Rdb_QueryLockedRow()
 
@@ -2169,7 +2201,11 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 
 **参考：**
 
-OH_Rdb_Store, OH_Predicates, OH_Cursor
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 ### OH_Rdb_CreateTransaction()
 
@@ -2261,7 +2297,9 @@ int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime,
 
 **参考：**
 
-OH_Rdb_Store, OH_Rdb_ErrCode
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Rdb_SetLocale()
 
@@ -2443,7 +2481,11 @@ OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predi
 
 **参考：**
 
-OH_Rdb_Store, OH_Predicates, OH_Cursor
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Cursor](capi-rdb-oh-cursor.md)
 
 
 ### OH_Rdb_QuerySqlWithoutRowCount()
@@ -2514,7 +2556,13 @@ int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, cons
 
 **参考：**
 
-OH_Rdb_Store, OH_Data_VBuckets, OH_Rdb_ErrCode, OH_RDB_ReturningContext
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
+
+[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
 
 
 ### OH_Rdb_UpdateWithReturning()
@@ -2547,7 +2595,15 @@ int OH_Rdb_UpdateWithReturning(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicat
 
 **参考：**
 
-OH_Rdb_Store, OH_Data_VBuckets, OH_Predicates, OH_Rdb_ErrCode, OH_RDB_ReturningContext
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
+
+[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
 
 ### OH_Rdb_DeleteWithReturning()
 
@@ -2577,4 +2633,10 @@ int OH_Rdb_DeleteWithReturning(OH_Rdb_Store *store, OH_Predicates *predicates, O
 
 **参考：**
 
-OH_Rdb_Store, OH_Predicates, OH_Rdb_ErrCode, OH_RDB_ReturningContext
+[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
+
+[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
