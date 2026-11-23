@@ -96,7 +96,7 @@
 
      1. 设备分区表没有配置userdata分区。
      2. device的fstab 中没有给出data分区的挂载配置。
-     3. device 给的fstab中配置的文件系统与userdata 镜像实际的文件系统不匹配。如fstab 中配置的是ext4,而userdata 镜像实际的文件系统是f2fs。
+     3. device 给的fstab中配置的文件系统与userdata 镜像实际的文件系统不匹配。如fstab 中配置的是ext4，而userdata 镜像实际的文件系统是f2fs。
 
      解决方法：
 
@@ -104,7 +104,7 @@
 
      1. "wait for file:/dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata failed after"。
      2. 日志中看不到userdata 任何挂载相关的输出。
-     3. "Mount /dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata to /data failed",如果fstab 配置了nofail,log 有"Mount no fail     device /dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata to /data failed"
+     3. "Mount /dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata to /data failed"，如果fstab 配置了nofail，log 有"Mount no fail     device /dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata to /data failed"
       nofail，表示该设备的挂载，不可以失败。
 
 ### 卡在开机动画界面
@@ -118,7 +118,7 @@
   **解决方法：**
 
   1. 查看服务是否在反复重启， 重启服务是否配置critical。
-  2. ps -ef | grep ohos,确定系统应用是否存在；日志中有 permission denied，init进程报权限问题。 确认系统应用权限，关闭selinux， 重新验证，如果正常， 则是selinux 策略配置不正确导致，重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
+  2. ps -ef | grep ohos，确定系统应用是否存在；日志中有 permission denied，init进程报权限问题。 确认系统应用权限，关闭selinux， 重新验证，如果正常， 则是selinux 策略配置不正确导致，重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
   3. 通过bootevent事件分析， 通过排查没有上报的bootevent的服务， 可能会导致开机动画卡死，比如systemUI。
 
 ### 自动重启
@@ -131,8 +131,8 @@
 
   **解决方法：**
 
-  1. 小型系统中服务配置importance属性为0，importance: 0重启， 1 不重启。
-  2. 关键进程服务配置critical 会导致进程重启。
+  1. 小型系统中服务配置importance属性为0，importance: 0重启，1不重启。
+  2. 关键进程服务配置critical会导致进程重启。
   3. CloseStdio();之前执行execv("/bin/sh",NULL)。
 
 ### reboot命令无法重启
@@ -165,7 +165,7 @@
   系统启动过程中，解析init.cfg文件错误，启动过程停止，打印日志如下：
 
   ```
-  Cfg error,failed to parse json etc/init.cfg
+  Cfg error, failed to parse json etc/init.cfg
   ```
 
   **可能原因：**
