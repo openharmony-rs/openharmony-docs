@@ -1,10 +1,11 @@
 # Custom Gesture Judgment
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-20T08:58:46.809Z pushedAt=2026-11-23T07:43:31.972Z nl=1 -->
 
 You can use the custom gesture judgment APIs. During hand gesture recognition, you can determine whether to respond to a gesture based on the gesture type and touch point position. This capability is applicable to scenarios where the gesture response logic of custom components is required, gestures are controlled by area, or specific gestures are filtered out.
 
@@ -32,7 +33,7 @@ Binds a custom gesture determination callback to the component. When the gesture
 **Parameters**
 | Name       | Type                   | Mandatory | Description                         |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | Yes    | Custom gesture judgment callback. This callback is triggered when a gesture is about to succeed, and is used to determine whether to continue to respond to the gesture based on the gesture information and basic gesture event. gestureInfo indicates the type and ID of the current gesture, and event indicates the current gesture event information. GestureJudgeResult is returned to specify the gesture judgment result.|
+| callback      | (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | Yes    | Custom gesture judgment callback. This callback is triggered when a gesture is about to succeed, and is used to determine whether to continue to respond to the gesture based on the gesture information and basic gesture event. **gestureInfo** indicates the type and ID of the current gesture, and **event** indicates the current gesture event information. **GestureJudgeResult** is returned to specify the gesture judgment result.|
 
 **Return value**
 
@@ -44,7 +45,7 @@ Binds a custom gesture determination callback to the component. When the gesture
 
 ### Example 1: Implementing Custom Gesture Judgment
 
-In this example, the [onGestureJudgeBegin](#ongesturejudgebegin) event is configured to implement customized judgment of the press and hold, fast swipe, swipe, pinch, and drag gestures. From API version 21, the [BaseEvent](ts-universal-events-click.md#baseevent8) axisPinch attribute can be used to obtain the two-finger zoom ratio.
+This example configures [onGestureJudgeBegin](#ongesturejudgebegin) to read the event information of long press, swipe, pan and pinch gestures, and rejects the drag gesture. Starting from API version 21, the two-finger scale ratio can be obtained through the axisPinch attribute of [BaseEvent](ts-universal-events-click.md#baseevent8).
 
 ```ts
 // xxx.ets
@@ -69,35 +70,35 @@ struct Index {
     })
     .gesture(
       TapGesture()
-        .tag('tap1') // Set the tap gesture flag.
+        .tag('tap1') // Set the tap gesture tag.
         .onAction(() => {
           this.message = 'tap1';
         })
     )
     .gesture(
       LongPressGesture()
-        .tag('longPress1') // Set the long press gesture flag.
+        .tag('longPress1') // Set the long press gesture tag.
         .onAction(() => {
           this.message = 'longPress';
         })
     )
     .gesture(
       SwipeGesture()
-        .tag('swipe1') // Set the fast swipe gesture flag.
+        .tag('swipe1') // Set the swipe gesture tag.
         .onAction(() => {
           this.message = 'swipe1';
         })
     )
     .gesture(
       PanGesture()
-        .tag('pan1') // Set the swipe gesture flag.
+        .tag('pan1') // Set the pan gesture tag.
         .onActionStart(() => {
           this.message = 'pan1';
         })
     )
     .gesture(
       PinchGesture()
-        .tag('pinch1') // Set the pinch gesture flag.
+        .tag('pinch1') // Set the pinch gesture tag.
         .onActionStart(() => {
           this.message = 'pinch1'
         })
@@ -140,7 +141,7 @@ struct Index {
 
 ### Example 2: Implementing Custom Area Gesture Judgment
 
-This example uses onGestureJudgeBegin to determine whether to respond to the press and hold gesture and drag gesture based on the area where the gesture is triggered.
+This example configures **onGestureJudgeBegin** to determine whether the long press gesture responds based on the area where the trigger position is located, and demonstrates the coordination between the long press gesture and the drag gesture in the upper and lower areas.
 
 ```ts
 // xxx.ets
@@ -167,7 +168,7 @@ struct Index {
             Stack().width('200').height('100').backgroundColor(Color.Blue)
           }.width('200vp').height('200vp')
 
-          // The lower part of the Stack component is the image area bound to the pan gesture.
+          // The Image area in Stack is bound with a drag gesture.
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
             .onDragStart(() => {
@@ -215,9 +216,9 @@ struct Index {
 ```
 ![gestures2](figures/gestures2.gif)
 
-### Example 3: Implementing Real-time Monitoring of Active Touch Points in Gestures
+### Example 3: Obtaining the Number of Valid Touchpoints Participating in Gesture Judgment and Their Brief Information
 
-This example configures the onGestureJudgeBegin callback to read fingerInfos to detect the number of valid touch points, ID of each touch point, and coordinates of each touch point in real time.
+This example configures the **onGestureJudgeBegin** callback to read **fingerInfos** and obtain the number of valid touchpoints participating in gesture judgment, the ID of each touchpoint, and its coordinates.
 
 ```ts
 // xxx.ets
@@ -302,4 +303,3 @@ struct GestureDetectorExample {
 
 ```
 <!--Del--> <!--DelEnd-->
-<!--no_check-->

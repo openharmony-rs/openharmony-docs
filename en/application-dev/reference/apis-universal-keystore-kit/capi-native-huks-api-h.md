@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=8b530f14c009705c7aea4b60dcbef92721a75cbd translatedAt=2026-11-03T06:28:53.586Z pushedAt=2026-11-03T12:08:25.635Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a1023e0df9a0b6e288b02fdc0444ceb52ccfe640 translatedAt=2026-11-23T08:23:26.175Z pushedAt=2026-11-23T09:22:10.635Z nl=1 -->
 
 ## Overview
 
@@ -34,10 +34,12 @@ Declares the APIs used to access HUKS.
 | [struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_Blob *wrappingKeyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *wrappedKeyData)](#oh_huks_importwrappedkeyitem) | Imports a key in ciphertext.|
 | [struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *key)](#oh_huks_exportpublickeyitem) | Exports the public key.|
 | [struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)](#oh_huks_deletekeyitem) | Deletes a key.|
-| [struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)](#oh_huks_getkeyitemparamset) | Obtains the properties of a key.|
+| [struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)](#oh_huks_getkeyitemparamset) | Obtains the parameter set of a key.|
 | [struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)](#oh_huks_iskeyitemexist) | Checks whether a key exists.|
 | [struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)](#oh_huks_attestkeyitem) | Obtains the certificate chain of a key. This API is open only to system applications.|
 | [struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)](#oh_huks_anonattestkeyitem) | Obtains the certificate chain of a key.<br> This function involves time-consuming network operation. The caller can obtain the certificate chain through an asynchronous thread.|
+| [typedef void (\*OH_Huks_AsyncAnonAttestCallback)(void *outOwnedCtxData, int32_t result, const struct OH_Huks_CertChain *outBorrowedCertChain)](#oh_huks_asyncanonattestcallback) | Defines the callback function pointer for receiving the asynchronous anonymous attestation result. |
+| [struct OH_Huks_Result OH_Huks_AsyncAnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const OH_Huks_AsyncAnonAttestCallback callback, void *ctxData)](#oh_huks_asyncanonattestkeyitem) | Obtains the certificate chain of a key. This API asynchronously performs anonymous attestation on a specified key.<br> This is a time-consuming API that involves network operations. |
 | [struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *handle, struct OH_Huks_Blob *token)](#oh_huks_initsession) | Initializes a key session. This function returns a session handle (mandatory) and a challenge value (optional).|
 | [struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)](#oh_huks_updatesession) | Adds data by segment for the key operation, performs the related key operation, and outputs the processed data.|
 | [struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)](#oh_huks_finishsession) | Finishes a key session.|
@@ -141,7 +143,7 @@ Imports a key in ciphertext.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | Pointer to the alias of the key to import. The alias must be unique in the process of the service.|
-| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | Pointer to the alias of the key used for key negotiation or digital envelope decryption. The negotiated or decrypted key is then used to decrypt the key to import.|
+| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | Pointer to the alias of the key used for key agreement or digital envelope decryption. The negotiated or decrypted key is then used to decrypt the key to import.|
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters for importing the key in ciphertext.|
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappedKeyData | Pointer to the data of the key to import, complying with the format requirements of HUKS. For details, see [OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite).|
 
@@ -312,6 +314,53 @@ Obtains the certificate chain of a key.<br> This function involves time-consumin
 | Type| Description|
 | -- | -- |
 | [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         **OH_HUKS_SUCCESS 0**: Operation successful.<br>         **OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401**: The **keyAlias**, **paramSet**, or **certChain** parameter is invalid.<br>         **OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001**: This feature is not supported currently.<br>         **OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002**: Failed to obtain the key parameter.<br>         **OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003**: The key parameter is invalid.<br>         **OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005**: IPC communication failed.<br>         **OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006**: The encryption engine fails.<br>         **OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011**: The key file does not exist.<br>         **OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012**: The device environment or input parameters are abnormal.<br>         **OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014**: Insufficient memory.<br>         **OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018**: The group name specified by accessing the group tag is invalid. (This error code is added in API version 23.)|
+
+### OH_Huks_AsyncAnonAttestCallback()
+
+```c
+typedef void (*OH_Huks_AsyncAnonAttestCallback)(void *outOwnedCtxData, int32_t result, const struct OH_Huks_CertChain *outBorrowedCertChain)
+```
+
+**Description**
+
+Defines the callback function pointer for receiving the asynchronous anonymous attestation result.<br>The certificate chain is allocated by HUKS and is valid only during callback execution. HUKS releases it after the callback returns. If the caller needs to retain the certificate chain data, the caller must copy it within the callback.<br>Error codes related to key operations are returned in synchronous APIs, and error codes related to online certificate retrieval are returned in asynchronous callbacks.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| void *outOwnedCtxData | [out] Pointer to the user-defined context data, which is returned when the callback is invoked. |
+| int32_t result | [out] Status code of the asynchronous operation result. |
+| [const struct OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) *outBorrowedCertChain | [out] Pointer to the certificate chain structure generated asynchronously. |
+
+### OH_Huks_AsyncAnonAttestKeyItem()
+
+```c
+struct OH_Huks_Result OH_Huks_AsyncAnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const OH_Huks_AsyncAnonAttestCallback callback, void *ctxData)
+```
+
+**Description**
+
+Obtains the certificate chain of a key. This API asynchronously performs anonymous attestation on a specified key.<br> This is a time-consuming API that involves network operations.<br> The API returns immediately after the request is accepted by the key management service, without blocking the calling thread. The attestation result (error code and certificate chain) is delivered later through the callback function. If the API returns a non-zero error code, it indicates that the request was not accepted and the callback will not be invoked. When the certificate chain has already been generated upon acceptance (for example, in a software environment without DCM network requests), the callback may be invoked before the API returns. Error codes related to key operations are returned in synchronous APIs, and error codes related to online certificate retrieval are returned in asynchronous callbacks.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | [in] Pointer to the alias of the target key. |
+| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | [in] Pointer to the parameters for obtaining the certificate chain. |
+| [OH_Huks_AsyncAnonAttestCallback](capi-native-huks-api-h.md#oh_huks_asyncanonattestcallback) callback | [in] Pointer to the callback function called when the asynchronous operation completes. |
+| void *ctxData | [in] Pointer to user-defined context data, which is directly passed to the callback function. |
+
+**Returns:**
+
+| Type | Description |
+| -- | -- |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         OH_HUKS_SUCCESS 0: Operation successful.<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001: The feature is not supported currently.<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002: Failed to obtain the key parameter.<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003: The key parameter is invalid.<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005: IPC communication fails.<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006: The encryption engine fails.<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011: The key file does not exist.<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012: The device environment or input parameters are abnormal.<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014: Insufficient memory.<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018: The group name specified by the group tag is invalid. (This error code is added in API version 23.) |
 
 ### OH_Huks_InitSession()
 

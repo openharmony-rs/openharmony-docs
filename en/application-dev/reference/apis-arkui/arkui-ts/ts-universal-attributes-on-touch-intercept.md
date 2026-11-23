@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:25:46.702Z pushedAt=2026-11-13T01:06:00.112Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0bd31f970e01071c145da3999973e5a7342949bd translatedAt=2026-11-20T08:37:47.551Z pushedAt=2026-11-23T07:42:18.808Z nl=1 -->
 
 Provides components with a custom event interception capability. It is applicable to scenarios where the **HitTestMode** attribute of a component needs to be dynamically determined based on event information such as the position where the event is pressed on the component and the input source, so as to control the hit testing and event response behavior of the component.
 
@@ -74,7 +74,7 @@ struct Index {
       })
       // Call onTouchIntercept to modify the HitTestMode attribute of the component.
       .onTouchIntercept((event: TouchEvent) => {
-        console.info('OnTouchIntercept + ' + JSON.stringify(event));
+        console.info('onTouchIntercept + ' + JSON.stringify(event));
         // Check whether touches is empty before using it.
         if (event && event.touches) {
           let touches = event.touches;
