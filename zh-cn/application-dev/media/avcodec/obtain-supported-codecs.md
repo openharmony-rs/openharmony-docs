@@ -798,7 +798,7 @@ if (capability == nullptr) {
 const int32_t *pixFormats = nullptr;
 uint32_t pixFormatNum = 0;
 int32_t ret = OH_AVCapability_GetVideoSupportedPixelFormats(capability, &pixFormats, &pixFormatNum);
-// 如需查询OH_NativeBuffer格式支持情况，可调用OH_AVCapability_GetVideoSupportedNativeBufferFormats接口，使用方式相同。
+// 如需查询OH_NativeBuffer格式支持情况，可调用OH_AVCapability_GetVideoSupportedNativeBufferFormats接口，使用方式和OH_AVCapability_GetVideoSupportedPixelFormats相同。
 if (ret != AV_ERR_OK || pixFormats == nullptr || pixFormatNum == 0) {
     // 异常处理。
 }
