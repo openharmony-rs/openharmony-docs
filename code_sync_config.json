@@ -237,19 +237,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":41,
 						"name":"get_user_dir_example",
-						"start_line":24
+						"start_line":26
 					},
 					{
-						"end_line":63,
+						"end_line":57,
 						"name":"read_user_download_dir_example",
-						"start_line":38
+						"start_line":43
 					},
 					{
-						"end_line":81,
+						"end_line":73,
 						"name":"write_user_download_dir_example",
-						"start_line":65
+						"start_line":59
 					}
 				]
 			},
