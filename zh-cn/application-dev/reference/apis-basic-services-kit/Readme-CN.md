@@ -120,6 +120,7 @@
   - 模块<!--basic-services-module-->
     - [OH_CommonEvent](capi-oh-commonevent.md)
     - [DeviceInfo](capi-deviceinfo.md)
+    - [BoardInfo](capi-boardinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
     - [OH_Scan](capi-oh-scan.md)
@@ -129,6 +130,7 @@
     - [UsbManager](capi-usbmanager.md)
   - 头文件<!--basic-services-headerfile-->
     - [deviceinfo.h](capi-deviceinfo-h.md)
+    - [boardinfo.h](capi-boardinfo-h.md)
     - [ohbattery_info.h](capi-ohbattery-info-h.md)
     - [oh_commonevent.h](capi-oh-commonevent-h.md)
     - [oh_commonevent_support.h](capi-oh-commonevent-support-h.md)
