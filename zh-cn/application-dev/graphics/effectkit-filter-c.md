@@ -1,6 +1,6 @@
 ---
 kits: ["ArkGraphics 2D / 方舟2D图形服务"]
-description: "基于EffectFilter滤镜接口对离线图像添加模糊、提亮、灰度、反色等视觉效果，适用于Native层离线图像处理与视觉增强场景。"
+description: "基于EffectFilter滤镜接口对离线图像添加模糊、提亮、灰度和反色等视觉效果，适用于Native层离线图像处理与视觉增强场景。"
 keywords: [EffectFilter, 图像滤镜, 图像模糊, 图像提亮, 灰度效果, 反色效果, 离线图像处理, OH_PixelmapNative]
 doctype: guide
 status: active
