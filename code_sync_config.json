@@ -20837,9 +20837,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":74,
+						"end_line":90,
 						"name":"calendarEvent_entryAbility",
-						"start_line":23
+						"start_line":24
 					}
 				]
 			},
