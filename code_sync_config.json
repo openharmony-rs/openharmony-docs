@@ -75051,5 +75051,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/inputmethod/detached-keyboard-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
+				"functions":[
+					{
+						"end_line":153,
+						"name":"input_case_detached_switchToDetachedPanel",
+						"start_line":99
+					},
+					{
+						"end_line":97,
+						"name":"input_case_detached_refreshSplitHotZone",
+						"start_line":73
+					},
+					{
+						"end_line":232,
+						"name":"input_case_detached_startMovingPanel",
+						"start_line":218
+					},
+					{
+						"end_line":216,
+						"name":"input_case_detached_switchToFixedPanel",
+						"start_line":155
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/components/KeyMenu.ets",
+				"functions":[
+					{
+						"end_line":261,
+						"name":"input_case_detached_detached_ui",
+						"start_line":53
+					}
+				]
+			}
+		]
 	}
 ]
