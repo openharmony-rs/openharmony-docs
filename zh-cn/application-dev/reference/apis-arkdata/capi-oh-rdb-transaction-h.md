@@ -589,7 +589,13 @@ int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *
 
 **参考：**
 
-OH_Rdb_Transaction, OH_Data_VBuckets, OH_Rdb_ErrCode, OH_RDB_ReturningContext
+[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)
+
+[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
+
+[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
 
 ### OH_RdbTrans_UpdateWithReturning()
 
@@ -621,7 +627,15 @@ int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, 
 
 **参考：**
 
-OH_Rdb_Transaction, OH_Data_VBuckets, OH_Predicates, OH_Rdb_ErrCode, OH_RDB_ReturningContext
+[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)
+
+[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
+
+[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
 
 
 ### OH_RdbTrans_DeleteWithReturning()
@@ -652,4 +666,10 @@ int OH_RdbTrans_DeleteWithReturning(OH_Rdb_Transaction *trans, OH_Predicates *pr
 
 **参考：**
 
-OH_Rdb_Transaction, OH_Predicates, OH_Rdb_ErrCode, OH_RDB_ReturningContext
+[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
+
+[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)

@@ -292,7 +292,9 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 **参考：**
 
-Data_Asset, Data_AssetStatus
+[Data_Asset](capi-rdb-data-asset.md)
+
+[Data_AssetStatus](capi-data-asset-h.md#data_assetstatus)
 
 ### OH_Data_Asset_GetName()
 
@@ -505,7 +507,9 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 
 **参考：**
 
-Data_Asset Data_AssetStatus
+[Data_Asset](capi-rdb-data-asset.md)
+
+[Data_AssetStatus](capi-data-asset-h.md#data_assetstatus)
 
 ### OH_Data_Asset_CreateOne()
 
@@ -555,7 +559,9 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 
 **参考：**
 
-Data_Asset, OH_Rdb_ErrCode
+[Data_Asset](capi-rdb-data-asset.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
 
 ### OH_Data_Asset_CreateMultiple()
 
@@ -614,4 +620,6 @@ int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 
 **参考：**
 
-Data_Asset, OH_Rdb_ErrCode
+[Data_Asset](capi-rdb-data-asset.md)
+
+[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)
