@@ -5,7 +5,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fad906b23379c7582ce1f67dc2e8fc029e0dab46 translatedAt=2026-11-18T08:51:14.082Z pushedAt=2026-11-19T04:00:45.225Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fad906b23379c7582ce1f67dc2e8fc029e0dab46 translatedAt=2026-11-18T08:51:14.082Z pushedAt=2026-11-23T02:56:29.630Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -221,7 +221,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Alignment mode for scroll snapping in the **Scroll** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-scroll-h.md#arkui_scrollsnapalign).|
 | .value[1].i32 | Whether the snap to start feature is enabled. When scroll snapping is defined for the **Scroll** component, setting this attribute to **0** (false) enables the component to scroll between the start edge and the first snap point. The default value is **1** (true). It is valid only when there are multiple snap points. |
 | .value[2].i32 | Whether the snap to end feature is enabled. When scroll snapping is defined for the **Scroll** component, setting this attribute to **0** (false) enables the component to scroll between the end edge and the last snap point. The default value is **1** (true). It is valid only when there are multiple snap points. |
-| .value[3...].f32 | Snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the Scrollable component can scroll. Unit: vp. |
+| .value[3...].f32 | Snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the **Scroll** component can scroll. Unit: vp. |
 
 ## NODE_SCROLL_NESTED_SCROLL
 

@@ -420,3 +420,5 @@ struct CalendarPickerExample {
 ```
 
 ![CalendarPicker](figures/calendar-picker-first-day-of-week.png)
+
+<!--no_check-->
