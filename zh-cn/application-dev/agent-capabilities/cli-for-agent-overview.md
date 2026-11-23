@@ -20,7 +20,7 @@ CLI（Command-Line Interface，命令行界面）是一套自API版本26.0.0起�
 
 ## 典型场景
 
-- **Agent拉起应用**：Agent在应用内通过Native（C/C++）代码fork+execvp方式调用CLI的start命令，启动指定的应用组件（比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)），支持[显式启动](explicit-implicit-want-mappings.md#显式want匹配原理)和[隐式启动](explicit-implicit-want-mappings.md#隐式want匹配原理)。
+- **Agent拉起应用**：Agent在应用内通过Native（C/C++）代码fork+execvp方式调用CLI的start命令，启动指定的应用组件（比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)），支持[显式启动](../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)和[隐式启动](../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。
 - **Agent停止应用**：Agent在应用内通过Native（C/C++）代码fork+execvp方式调用CLI的force-stop命令，强制停止指定应用及其进程，用于资源清理或异常恢复。
 
 > **说明：**
