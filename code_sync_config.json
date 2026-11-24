@@ -2592,9 +2592,9 @@
 						"start_line":80
 					},
 					{
-						"end_line":78,
+						"end_line":92,
 						"name":"input_case_input_switchInputMethod",
-						"start_line":63
+						"start_line":75
 					}
 				]
 			},
