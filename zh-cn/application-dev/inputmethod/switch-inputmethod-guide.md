@@ -81,3 +81,18 @@
 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodAndSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodandsubtype9)接口，传入目标输入法的[InputMethodProperty](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)，目标输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)信息，即可切换输入法到目标输入法的指定子类型。
 
    <!-- @[input_case_input_switchInputMethodAndSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
+   
+   ``` TypeScript
+   async switchInputMethodAndSubtype(targetProperty: inputMethod.InputMethodProperty, subtype: InputMethodSubtype) {
+     try {
+       let isSuccess = await inputMethod.switchCurrentInputMethodAndSubtype(targetProperty, subtype); // 切换到目标输入法的指定子类型
+       if (isSuccess) {
+         this.currentInputMethodName = inputMethod.getCurrentInputMethod().name; // 更新当前输入法
+         this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; // 更新当前子类型
+       }
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       console.error(`Failed to switchInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
+     }
+   }
+   ```
