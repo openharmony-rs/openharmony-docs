@@ -794,12 +794,10 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   ```
 
 <!--RP2--><!--RP2End-->
-<!--RP4-->
-
 ### 开启图像AI分析
 
 该示例使用[enableAnalyzer](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#enableanalyzer11)接口开启图像AI分析。
-
+<!--RP4-->
 ```ts
 import { image } from '@kit.ImageKit';
 
