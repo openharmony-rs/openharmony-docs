@@ -292,6 +292,7 @@ function loadFromDisk(): string {
 cache ??= loadFromDisk();  // "cached"（不为null，loadFromDisk不执行）
 ```
 
+
 ## 类型判断运算符
 
 类型判断运算符`typeof`和`instanceof`在运行时检查值的实际类型，常用于构成类型守卫，在条件分支中将联合类型收窄为具体类型：

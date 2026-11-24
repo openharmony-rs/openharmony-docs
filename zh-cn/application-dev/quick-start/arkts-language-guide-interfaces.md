@@ -514,59 +514,6 @@ console.info(`${strContainer.getValue()}`); // 'Hello'
 
 <!-- @[comparable_equatable_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
-``` TypeScript
-interface EquatableComparable<T> {
-  compareTo(other: T): number;
-}
-
-interface Equatable<T> {
-  equals(other: T): boolean;
-}
-
-class NumericValue implements EquatableComparable<NumericValue>, Equatable<NumericValue> {
-  public value: number;
-  
-  constructor(value: number) {
-    this.value = value;
-  }
-  
-  public compareTo(other: NumericValue): number {
-    return this.value - other.value;
-  }
-  
-  public equals(other: NumericValue): boolean {
-    return this.value === other.value;
-  }
-}
-
-let num1 = new NumericValue(10);
-let num2 = new NumericValue(20);
-let num3 = new NumericValue(10);
-
-console.info(`${num1.compareTo(num2)}`); // -10
-console.info(`${num1.equals(num2)}`);    // false
-console.info(`${num1.equals(num3)}`);    // true
-
-// 使用接口类型约束
-function findMax<T extends EquatableComparable<T>>(items: T[]): T | null {
-  if (items.length === 0) {
-    return null;
-  }
-  
-  let max: T = items[0];
-  for (let i = 1; i < items.length; i++) {
-    let current: T = items[i];
-    if (current.compareTo(max) > 0) {
-      max = current;
-    }
-  }
-  return max;
-}
-
-let values: NumericValue[] = [new NumericValue(5), new NumericValue(15), new NumericValue(10)];
-let maxValue = findMax(values);
-console.info(`${maxValue ? maxValue.value : 0}`); // 15
-```
 
 泛型的详细介绍（类型约束、泛型类、泛型函数等），请阅读[泛型](arkts-language-guide-generics.md)。
 

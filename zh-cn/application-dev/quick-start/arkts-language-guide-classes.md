@@ -2384,6 +2384,7 @@ let restrictionChild: RestrictionChild = new RestrictionChild('Alice', 25);
 restrictionChild.greet();  // 输出两行：Parent: Alice / Child: Alice, 25
 ```
 
+
 ### `override`关键字和方法覆盖
 
 方法覆盖指子类重新定义父类的同名方法以实现多态。覆盖时须保持签名匹配：方法名相同、参数类型与数量一致、返回类型相同或兼容，且访问权限不能比父类更严格——`public`方法覆盖后必须保持`public`，`protected`方法覆盖后可保持`protected`或改为`public`，`private`方法不能覆盖。
