@@ -240,40 +240,62 @@ ContentEmbed_Format* QueryFormatByOEid(const std::string &oeid, const std::strin
 
 ### 创建OE文档
 
-1. 基于OEID创建OE文档
+1. 基于OEID创建OE文档。
 
-   ```cpp
-   void CreateDocumentByOEid(const std::string &oeid)
-   {
-       ContentEmbed_Document* ceDocument = nullptr;
-       // 基于OEID创建OE文件
-       ContentEmbed_ErrorCode errCode = OH_ContentEmbed_CreateDocumentByOEid(oeid.c_str(), &ceDocument);
-   }
-   ```
+    <!-- @[content_embed_client_create_document_by_oeid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+    
+    ``` C++
+    ContentEmbed_Document* CreateDocumentByOEid(const std::string &oeid, ContentEmbed_ErrorCode& errCode)
+    {
+        ContentEmbed_Document* ceDocument = nullptr;
+        // 基于OEID创建OE文档
+        errCode = OH_ContentEmbed_CreateDocumentByOEid(oeid.c_str(), &ceDocument);
+        if (errCode != CE_ERR_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_CreateDocumentByOEid failed, errCode: %{public}d.", errCode);
+            return nullptr;
+        }
+        return ceDocument;
+    }
+    ```
 
-2. 基于文件创建OE文档
+2. 基于文件创建OE文档。
 
-   ```cpp
-   void CreateDocumentByFile(std::string filePath)
-   {
-       // 基于文件创建OE文档
-       ContentEmbed_Document *ceDocument = nullptr;
-       // 是否以链接形式创建OE文档，当isLinking为true时，表示以链接方式创建OE文档；当isLinking为false时，表示以嵌入方式创建OE文档。
-       bool isLinking = false;
-       ContentEmbed_ErrorCode ret = OH_ContentEmbed_CreateDocumentByFile(filePath.c_str(), filePath.size(), isLinking, &ceDocument);
-   }
-   ```
+    <!-- @[content_embed_client_create_document_by_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+    
+    ``` C++
+    // 是否以链接形式创建OE文档，当isLinking为true时，表示以链接方式创建OE文档；当isLinking为false时，表示以嵌入方式创建OE文档。
+    ContentEmbed_Document* CreateDocumentByFile(const std::string &filePath, bool isLinking,
+        ContentEmbed_ErrorCode& errCode)
+    {
+        ContentEmbed_Document* ceDocument = nullptr;
+        // 基于文件创建OE文档
+        errCode = OH_ContentEmbed_CreateDocumentByFile(filePath.c_str(), filePath.size(), isLinking, &ceDocument);
+        if (errCode != CE_ERR_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_CreateDocumentByFile failed, errCode: %{public}d.", errCode);
+            return nullptr;
+        }
+        return ceDocument;
+    }
+    ```
 
 3. 基于[OE格式文件](content-embed-kit-terminology.md#oe格式文件)加载OE文档，当OE格式文件为数据流存储时需先落盘至本地再使用此接口。
 
-   ```cpp
-   void LoadDocumentFromFile(std::string oeFormatFilePath)
-   {
-       ContentEmbed_Document *ceDocument = nullptr;
-       // 基于OE格式文件
-       ContentEmbed_ErrorCode ret = OH_ContentEmbed_LoadDocumentFromFile(oeFormatFilePath.c_str(), oeFormatFilePath.size(), &ceDocument);
-   }
-   ```
+    <!-- @[content_embed_client_load_document_from_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+    
+    ``` C++
+    static ContentEmbed_Document* LoadDocumentFromFile(const std::string &oeFormatFilePath, ContentEmbed_ErrorCode& errCode)
+    {
+        ContentEmbed_Document* ceDocument = nullptr;
+        // 基于OE格式文件加载OE文档
+        errCode = OH_ContentEmbed_LoadDocumentFromFile(oeFormatFilePath.c_str(),
+            oeFormatFilePath.size(), &ceDocument);
+        if (errCode != CE_ERR_OK) {
+            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_LoadDocumentFromFile failed, errCode: %{public}d.", errCode);
+            return nullptr;
+        }
+        return ceDocument;
+    }
+    ```
 
 ### 创建客户端OE对象
 
