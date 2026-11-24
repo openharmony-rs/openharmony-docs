@@ -60765,19 +60765,9 @@
 						"start_line":156
 					},
 					{
-						"end_line":186,
-						"name":"compound_assignment_basics",
-						"start_line":176
-					},
-					{
 						"end_line":210,
 						"name":"compound_assignment_bitwise",
 						"start_line":189
-					},
-					{
-						"end_line":243,
-						"name":"compound_assignment_arithmetic",
-						"start_line":213
 					},
 					{
 						"end_line":259,
@@ -60945,6 +60935,21 @@
 						"start_line":180
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets",
+				"functions":[
+					{
+						"end_line":177,
+						"name":"compound_assignment_operators",
+						"start_line":149
+					},
+					{
+						"end_line":626,
+						"name":"logical_assignment_operators",
+						"start_line":603
+					}
+				]
 			}
 		]
 	},
@@ -60988,11 +60993,6 @@
 						"end_line":117,
 						"name":"annotation_omit",
 						"start_line":112
-					},
-					{
-						"end_line":120,
-						"name":"annotation_export",
-						"start_line":118
 					},
 					{
 						"end_line":32,
@@ -61068,6 +61068,11 @@
 						"end_line":60,
 						"name":"annotation_developerGenerate_dts",
 						"start_line":52
+					},
+					{
+						"end_line":41,
+						"name":"annotation_autoGenerate_dts",
+						"start_line":37
 					}
 				]
 			},
@@ -61345,11 +61350,6 @@
 						"start_line":138
 					},
 					{
-						"end_line":177,
-						"name":"compound_assignment_operators",
-						"start_line":149
-					},
-					{
 						"end_line":210,
 						"name":"strict_equality_operator",
 						"start_line":180
@@ -61435,11 +61435,6 @@
 						"start_line":463
 					},
 					{
-						"end_line":604,
-						"name":"parentheses_for_precedence",
-						"start_line":594
-					},
-					{
 						"end_line":508,
 						"name":"increment_decrement_operators",
 						"start_line":494
@@ -61480,6 +61475,16 @@
 						"start_line":40
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets",
+				"functions":[
+					{
+						"end_line":414,
+						"name":"null_safety",
+						"start_line":392
+					}
+				]
 			}
 		]
 	},
@@ -61493,11 +61498,6 @@
 						"end_line":27,
 						"name":"variable_declaration",
 						"start_line":19
-					},
-					{
-						"end_line":55,
-						"name":"naming_conventions",
-						"start_line":46
 					},
 					{
 						"end_line":68,
@@ -61530,74 +61530,9 @@
 						"start_line":114
 					},
 					{
-						"end_line":137,
-						"name":"type_alias",
-						"start_line":131
-					},
-					{
-						"end_line":148,
-						"name":"interface_definition",
-						"start_line":140
-					},
-					{
-						"end_line":170,
-						"name":"number_literals",
-						"start_line":165
-					},
-					{
-						"end_line":181,
-						"name":"boolean_type",
-						"start_line":173
-					},
-					{
-						"end_line":193,
-						"name":"array_type",
-						"start_line":184
-					},
-					{
 						"end_line":213,
 						"name":"object_type",
 						"start_line":196
-					},
-					{
-						"end_line":234,
-						"name":"enum_type",
-						"start_line":216
-					},
-					{
-						"end_line":248,
-						"name":"union_type",
-						"start_line":237
-					},
-					{
-						"end_line":256,
-						"name":"literal_union_type",
-						"start_line":251
-					},
-					{
-						"end_line":278,
-						"name":"void_type",
-						"start_line":270
-					},
-					{
-						"end_line":314,
-						"name":"never_type",
-						"start_line":281
-					},
-					{
-						"end_line":298,
-						"name":"bigint_type",
-						"start_line":292
-					},
-					{
-						"end_line":305,
-						"name":"bigint_conversion",
-						"start_line":301
-					},
-					{
-						"end_line":43,
-						"name":"type_annotation",
-						"start_line":30
 					},
 					{
 						"end_line":701,
@@ -61618,51 +61553,6 @@
 						"end_line":721,
 						"name":"type_inference_contextual",
 						"start_line":716
-					},
-					{
-						"end_line":731,
-						"name":"type_inference_control_flow",
-						"start_line":724
-					},
-					{
-						"end_line":320,
-						"name":"null_undefined_types",
-						"start_line":308
-					},
-					{
-						"end_line":336,
-						"name":"optional_property",
-						"start_line":323
-					},
-					{
-						"end_line":351,
-						"name":"null_handling",
-						"start_line":339
-					},
-					{
-						"end_line":364,
-						"name":"non_null_assertion",
-						"start_line":354
-					},
-					{
-						"end_line":414,
-						"name":"null_safety",
-						"start_line":392
-					},
-					{
-						"end_line":841,
-						"name":"try_catch_basic",
-						"start_line":816
-					},
-					{
-						"end_line":398,
-						"name":"throwing_exceptions",
-						"start_line":389
-					},
-					{
-						"end_line":417,
-						"name":"error_tuple_return",
-						"start_line":401
 					},
 					{
 						"end_line":437,
@@ -61698,11 +61588,6 @@
 						"end_line":794,
 						"name":"param_destructuring_alternative",
 						"start_line":783
-					},
-					{
-						"end_line":813,
-						"name":"spread_syntax_alternative",
-						"start_line":797
 					}
 				]
 			},
@@ -61728,11 +61613,6 @@
 						"end_line":94,
 						"name":"ts_symbol_type",
 						"start_line":84
-					},
-					{
-						"end_line":63,
-						"name":"ts_type_mismatch",
-						"start_line":53
 					},
 					{
 						"end_line":81,
@@ -61860,11 +61740,6 @@
 						"start_line":568
 					},
 					{
-						"end_line":1302,
-						"name":"prototype_chain",
-						"start_line":1260
-					},
-					{
 						"end_line":1258,
 						"name":"prototype_inheritance",
 						"start_line":1230
@@ -61965,11 +61840,6 @@
 						"start_line":1604
 					},
 					{
-						"end_line":1687,
-						"name":"mixin_composition_alternative",
-						"start_line":1662
-					},
-					{
 						"end_line":1674,
 						"name":"mixin_interface_alternative",
 						"start_line":1646
@@ -62020,24 +61890,9 @@
 						"start_line":288
 					},
 					{
-						"end_line":256,
-						"name":"ts_private_fields",
-						"start_line":246
-					},
-					{
-						"end_line":273,
-						"name":"ts_runtime_this_error",
-						"start_line":258
-					},
-					{
 						"end_line":286,
 						"name":"ts_constructor_signature",
 						"start_line":275
-					},
-					{
-						"end_line":412,
-						"name":"ts_structural_typing",
-						"start_line":396
 					},
 					{
 						"end_line":431,
@@ -62050,19 +61905,24 @@
 						"start_line":332
 					},
 					{
-						"end_line":361,
-						"name":"ts_parameter_properties",
-						"start_line":353
-					},
-					{
 						"end_line":375,
 						"name":"ts_class_expression",
 						"start_line":364
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets",
+				"functions":[
+					{
+						"end_line":1365,
+						"name":"super_usage_restrictions",
+						"start_line":1333
 					},
 					{
-						"end_line":393,
-						"name":"ts_mixins",
-						"start_line":378
+						"end_line":1208,
+						"name":"abstract_class_basic",
+						"start_line":1172
 					}
 				]
 			}
@@ -62313,6 +62173,11 @@
 						"end_line":499,
 						"name":"record_type_complex",
 						"start_line":490
+					},
+					{
+						"end_line":879,
+						"name":"typed_array_basic",
+						"start_line":872
 					}
 				]
 			}
@@ -62490,11 +62355,6 @@
 						"start_line":115
 					},
 					{
-						"end_line":944,
-						"name":"enum_auto_increment_rules",
-						"start_line":920
-					},
-					{
 						"end_line":930,
 						"name":"enum_bidirectional_mapping",
 						"start_line":914
@@ -62603,6 +62463,16 @@
 						"end_line":1098,
 						"name":"ambient_enum",
 						"start_line":1089
+					},
+					{
+						"end_line":911,
+						"name":"enum_string_explicit_values",
+						"start_line":905
+					},
+					{
+						"end_line":1060,
+						"name":"enum_member_literal_types",
+						"start_line":1034
 					}
 				]
 			},
@@ -62613,11 +62483,6 @@
 						"end_line":46,
 						"name":"ts_string_and_numeric_enum",
 						"start_line":18
-					},
-					{
-						"end_line":66,
-						"name":"ts_enum_member_types",
-						"start_line":48
 					},
 					{
 						"end_line":135,
@@ -63290,11 +63155,6 @@
 						"start_line":100
 					},
 					{
-						"end_line":42,
-						"name":"ts_generic_constraint_length",
-						"start_line":18
-					},
-					{
 						"end_line":91,
 						"name":"ts_generic_constraint_serializable",
 						"start_line":44
@@ -63795,11 +63655,6 @@
 						"start_line":590
 					},
 					{
-						"end_line":661,
-						"name":"extending_interface_with_optionals",
-						"start_line":607
-					},
-					{
 						"end_line":340,
 						"name":"generic_interface",
 						"start_line":295
@@ -63818,11 +63673,6 @@
 						"end_line":470,
 						"name":"generic_interface_use_cases",
 						"start_line":438
-					},
-					{
-						"end_line":700,
-						"name":"single_interface_implementation",
-						"start_line":681
 					},
 					{
 						"end_line":743,
@@ -63908,17 +63758,22 @@
 						"end_line":1368,
 						"name":"map_replaces_index_signature",
 						"start_line":1360
+					},
+					{
+						"end_line":1248,
+						"name":"interface_property_types",
+						"start_line":1219
+					},
+					{
+						"end_line":1287,
+						"name":"interface_method_members",
+						"start_line":1250
 					}
 				]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts",
 				"functions":[
-					{
-						"end_line":47,
-						"name":"ts_interface_property_types",
-						"start_line":18
-					},
 					{
 						"end_line":128,
 						"name":"ts_index_signature",
@@ -64782,11 +64637,6 @@
 						"end_line":444,
 						"name":"string_search_methods",
 						"start_line":439
-					},
-					{
-						"end_line":468,
-						"name":"string_slice_split",
-						"start_line":454
 					},
 					{
 						"end_line":460,
@@ -75752,6 +75602,61 @@
 						"end_line":257,
 						"name":"event_handler_destroy",
 						"start_line":236
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/arkts-language-guide-types.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets",
+				"functions":[
+					{
+						"end_line":323,
+						"name":"bigint_type",
+						"start_line":317
+					},
+					{
+						"end_line":330,
+						"name":"bigint_conversion",
+						"start_line":326
+					},
+					{
+						"end_line":345,
+						"name":"null_undefined_types",
+						"start_line":333
+					},
+					{
+						"end_line":314,
+						"name":"never_type",
+						"start_line":281
+					},
+					{
+						"end_line":759,
+						"name":"type_inference_control_flow",
+						"start_line":752
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"ts_type_mismatch",
+						"start_line":53
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets",
+				"functions":[
+					{
+						"end_line":1367,
+						"name":"assertion_runtime_check",
+						"start_line":1347
 					}
 				]
 			}
