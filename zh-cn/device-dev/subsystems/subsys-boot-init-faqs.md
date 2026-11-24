@@ -57,7 +57,7 @@
   3. 原因分析：required mount 分区没有正常挂载。
 
      1. cmdline中没有配置或格式错误。
-     2. ramdisk中没有fstab.requried 文件。
+     2. ramdisk中没有fstab.required 文件。
 
      解决方法：
 
