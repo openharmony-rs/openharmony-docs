@@ -26,7 +26,8 @@ ImageEffect提供了一系列接口用于图像的编辑。开发者可以通过
 CMakeLists.txt中添加以下lib。
 
 <!-- @[image_effect_cmake_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/CMakeLists.txt) -->
-```txt
+
+``` Text
 target_link_libraries(entry PUBLIC
      libace_napi.z.so
      libpixelmap_ndk.z.so
@@ -155,7 +156,8 @@ target_link_libraries(entry PUBLIC
    (1) 在xxx.ets中添加一个XComponent组件。
 
    <!-- @[image_effect_add_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/ets/pages/ImageEditPage.ets) -->
-   ```ts
+   
+   ``` TypeScript
    XComponent({
      id: 'xcomponentId',
      type: XComponentType.SURFACE,
@@ -177,7 +179,8 @@ target_link_libraries(entry PUBLIC
    (2) imageEffect.getSurfaceId的native c++层具体实现。
 
    <!-- @[image_effect_get_surface_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
+   
+   ``` C++
    // 根据SurfaceId创建NativeWindow，注意创建出来的NativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    uint64_t outputSurfaceId;
    std::istrstream iss(surfaceId.c_str());
@@ -186,38 +189,38 @@ target_link_libraries(entry PUBLIC
    OHNativeWindow *outputNativeWindow = nullptr;
    int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(outputSurfaceId, &outputNativeWindow);
    CHECK_AND_RETURN_RET_LOG(res == 0, result, "OH_NativeWindow_CreateNativeWindowFromSurfaceId fail!");
-
+   
    OH_ImageEffect *imageEffect = OH_ImageEffect_Create("imageEdit");
    CHECK_AND_RETURN_RET_LOG(imageEffect != nullptr, result, "OH_ImageEffect_Create fail!");
-
+       
    ImageEffect_Any runningType;
    runningType.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_INT32;
    runningType.dataValue.int32Value = 1;
    ImageEffect_ErrorCode errorCode = OH_ImageEffect_Configure(imageEffect, "runningType", &runningType);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                             "OH_ImageEffect_Configure fail!");
-
+       
    // 设置输出显示的Surface。
    errorCode = OH_ImageEffect_SetOutputSurface(imageEffect, outputNativeWindow);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                             "OH_ImageEffect_SetOutputSurface fail!");
-
+       
    // 获取输入的Surface。注意获取的inputNativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    OHNativeWindow *inputNativeWindow = nullptr;
    errorCode = OH_ImageEffect_GetInputSurface(imageEffect, &inputNativeWindow);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                             "OH_ImageEffect_GetInputSurface fail!");
-
+       
    ImageEdit::imageEffect_ = imageEffect;
-
+       
    // 从获取到输入的NativeWindow中获取SurfaceId。
    uint64_t inputSurfaceId = 0;
    res = OH_NativeWindow_GetSurfaceId(inputNativeWindow, &inputSurfaceId);
    CHECK_AND_RETURN_RET_LOG(res == 0, result, "OH_NativeWindow_GetSurfaceId fail!");
-
+   
    OH_NativeWindow_DestroyNativeWindow(outputNativeWindow);
    OH_NativeWindow_DestroyNativeWindow(inputNativeWindow);
-
+   
    std::string inputSurfaceIdStr = std::to_string(inputSurfaceId);
    ```
 
