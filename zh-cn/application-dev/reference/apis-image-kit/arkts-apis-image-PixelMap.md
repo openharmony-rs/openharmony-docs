@@ -1903,6 +1903,10 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
 将缓冲区内的像素数据写入整个PixelMap。使用Promise异步回调。
 
+> **说明：**
+>
+> 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromArea](#writepixelsfromarea)。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
@@ -1919,7 +1923,7 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据需按PixelMap自身的像素格式紧密排列，不含行末填充字节；缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -1998,6 +2002,10 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 将缓冲区内的像素数据写入整个PixelMap。同步返回结果。
 
+> **说明：**
+>
+> 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromAreaSync](#writepixelsfromareasync)。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
@@ -2014,7 +2022,7 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据需按PixelMap自身的像素格式紧密排列，不含行末填充字节；缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -2090,13 +2098,13 @@ writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): P
 >
 > - 本接口仅支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
 > - 如需写入与当前PixelMap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[writeAllPixelsFromBuffer](#writeallpixelsfrombuffer)。
-> - 如需写入具有自定义行跨距或偏移量的源数据，请使用[writePixelsFromArea](#writepixelsfromarea-1)。
+> - 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromArea](#writepixelsfromarea-1)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
 `PixelMap宽度 × PixelMap高度 × 每像素字节数`
 
-公式中每像素字节数取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。
+公式中每像素字节数取决于`sourcePixelFormat`，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。
 
 **起始版本：** 26.1.0
 
@@ -2108,7 +2116,7 @@ writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): P
 
 | 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，该缓冲区内的像素数据会被拷贝至PixelMap。<br>缓冲区内的像素数据必须至少包含整个PixelMap的像素数据，且不包含内存对齐填充字节。<br>所需的最小缓冲区大小请参考上方计算公式。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据按`sourcePixelFormat`格式紧密排列，不含行末填充字节；缓冲区大小不得小于上方公式的计算结果。 |
 | sourcePixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 是 | 源数据的像素格式。支持的值为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
 
 **返回值：**
@@ -2193,13 +2201,13 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat
 >
 > - 本接口仅支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
 > - 如需写入与当前PixelMap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[writeAllPixelsFromBufferSync](#writeallpixelsfrombuffersync)。
-> - 如需写入具有自定义行跨距或偏移量的源数据，请使用[writePixelsFromAreaSync](#writepixelsfromareasync-1)。
+> - 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromAreaSync](#writepixelsfromareasync-1)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
 `PixelMap宽度 × PixelMap高度 × 每像素字节数`
 
-公式中每像素字节数取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。
+公式中每像素字节数取决于`sourcePixelFormat`，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。
 
 **起始版本：** 26.1.0
 
@@ -2211,7 +2219,7 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat
 
 | 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，该缓冲区内的像素数据会被拷贝至PixelMap。<br>缓冲区内的像素数据必须至少包含整个PixelMap的像素数据，且不包含内存对齐填充字节。<br>所需的最小缓冲区大小请参考上方计算公式。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据按`sourcePixelFormat`格式紧密排列，不含行末填充字节；缓冲区大小不得小于上方公式的计算结果。 |
 | sourcePixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 是 | 源数据的像素格式。支持的值为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
 
 **错误码：**
@@ -2303,7 +2311,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据需按PixelMap自身的像素格式紧密排列，不含行末填充字节；缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -2373,7 +2381,7 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| src      | ArrayBuffer          | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据需按PixelMap自身的像素格式紧密排列，不含行末填充字节；缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当缓冲区中的图像像素数据写入PixelMap成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -2419,7 +2427,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源数据缓冲区，该缓冲区内的图像像素数据会被写入PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且像素格式需与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据需按PixelMap自身的像素格式紧密排列，不含行末填充字节；缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 

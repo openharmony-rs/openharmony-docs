@@ -8,6 +8,7 @@
 
 ```c
 struct OH_Pixelmap_InitializationOptions
+typedef struct OH_Pixelmap_InitializationOptions OH_Pixelmap_InitializationOptions
 ```
 
 ## 概述
