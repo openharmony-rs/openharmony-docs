@@ -1258,9 +1258,9 @@ let font: drawing.Font = new drawing.Font();
 let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontWidths: Array<number> = font.getWidths(glyphs);
-for (let index = 0; index < fontWidths.length; index++) {
-  console.info("get fontWidths[", index, "]:", fontWidths[index]);
-}
+fontWidths.forEach((fontWidth, index) => {
+  console.info("get fontWidths[", index, "]:", fontWidth);
+});
 ```
 
 ArkTS-Sta示例：
@@ -1388,16 +1388,16 @@ class DrawingRenderNode extends RenderNode {
     let infos : Array<drawing.TypefaceFallbackInfo> = font.textToGlyphsWithFallback(text);
     console.info("drawing textToGlyphsWithFallback infos length = " + infos.length );
     let offset = 0;
-    for (let run of infos) {
+    infos.forEach((run) => {
       font.setTypeface(run.typeface);
       let positions: Array<common2D.Point> = [];
       let glyphWidths = font.getWidths(run.glyphIds);
-      for (let j = 0; j < run.glyphIds.length; j++) {
+      glyphWidths.forEach((glyphWidth) => {
         positions.push({x: offset, y: 80});
-        offset += glyphWidths[j];
-      }
+        offset += glyphWidth;
+      });
       canvas.drawGlyphs(run.glyphIds, 0, positions, 0, run.glyphIds.length, font);
-    }
+    });
   }
 }
 ```
@@ -1440,10 +1440,10 @@ let font: drawing.Font = new drawing.Font();
 let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontBounds: Array<common2D.Rect> = font.getBounds(glyphs);
-for (let index = 0; index < fontBounds.length; index++) {
-  console.info("get fontBounds[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
-    " right:", fontBounds[index].right, " bottom:", fontBounds[index].bottom);
-}
+fontBounds.forEach((fontBound, index) => {
+  console.info("get fontBounds[", index, "] left:", fontBound.left, " top:", fontBound.top,
+    " right:", fontBound.right, " bottom:", fontBound.bottom);
+});
 ```
 
 ArkTS-Sta示例：
@@ -1640,10 +1640,10 @@ class DrawingRenderNode extends RenderNode {
     font.setSize(50);
     let text: string = '你好';
     let glyphs: number[] = font.textToGlyphs(text);
-    for (let index = 0; index < glyphs.length; index++) {
-      let path: drawing.Path = font.createPathForGlyph(glyphs[index]);
+    glyphs.forEach((glyph) => {
+      let path: drawing.Path = font.createPathForGlyph(glyph);
       canvas.drawPath(path);
-    }
+    });
   }
 }
 ```
