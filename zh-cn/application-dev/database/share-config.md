@@ -86,7 +86,7 @@ crossAppSharedConfig字段配置说明：
         {
             "uri": "datashareproxy://com.example.example/key2",
             "value": "SHARED_CONFIG_DEMO2",
-            "allowList": ["6917573298752100864", "6917573298752100864"]
+            "allowList": ["6917573298752100864"]
         },
         {
             "uri": "datashareproxy://com.example.example/key3",
