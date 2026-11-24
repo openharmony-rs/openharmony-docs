@@ -26,7 +26,8 @@ ImageEffect提供了一系列接口用于图像的编辑。开发者可以通过
 CMakeLists.txt中添加以下lib。
 
 <!-- @[image_effect_cmake_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/CMakeLists.txt) -->
-```txt
+
+``` Text
 target_link_libraries(entry PUBLIC
      libace_napi.z.so
      libpixelmap_ndk.z.so
@@ -129,12 +130,13 @@ target_link_libraries(entry PUBLIC
    纹理输入类型从API版本20开始支持。应用需要自行创建输入、输出纹理（例如通过glGenTextures创建），并保证输入纹理与输出纹理不是同一块纹理。纹理输入场景下，滤镜直接处理GPU纹理，仅支持输入、输出均为纹理缓冲（EFFECT_BUFFER_TYPE_TEXTURE）的滤镜，例如Brightness、Contrast。Crop等需要PixelMap信息的滤镜以及以像素缓冲注册的自定义滤镜不适用于纹理输入，需要从滤镜链中排除。
 
    <!-- @[image_effect_texture_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
+   
+   ``` C++
    // 设置输入的纹理ID。
    errorCode = OH_ImageEffect_SetInputTextureId(imageEffect, inputTexture->GetName(), ColorSpaceName::SRGB);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                             "OH_ImageEffect_SetInputTextureId fail! errorCode = %{public}d", errorCode);
-
+   
    // 设置输出的纹理ID，注意不能与输入是同一块纹理，否则可能产生渲染异常。
    errorCode = OH_ImageEffect_SetOutputTextureId(imageEffect, outputTexture->GetName());
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
@@ -154,7 +156,8 @@ target_link_libraries(entry PUBLIC
    (1) 在xxx.ets中添加一个XComponent组件。
 
    <!-- @[image_effect_add_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/ets/pages/ImageEditPage.ets) -->
-   ```ts
+   
+   ``` TypeScript
    XComponent({
      id: 'xcomponentId',
      type: XComponentType.SURFACE,
@@ -176,7 +179,8 @@ target_link_libraries(entry PUBLIC
    (2) imageEffect.getSurfaceId的native c++层具体实现。
 
    <!-- @[image_effect_get_surface_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
+   
+   ``` C++
    // 根据SurfaceId创建NativeWindow，注意创建出来的NativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    uint64_t outputSurfaceId;
    std::istrstream iss(surfaceId.c_str());
@@ -185,38 +189,38 @@ target_link_libraries(entry PUBLIC
    OHNativeWindow *outputNativeWindow = nullptr;
    int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(outputSurfaceId, &outputNativeWindow);
    CHECK_AND_RETURN_RET_LOG(res == 0, result, "OH_NativeWindow_CreateNativeWindowFromSurfaceId fail!");
-
+   
    OH_ImageEffect *imageEffect = OH_ImageEffect_Create("imageEdit");
    CHECK_AND_RETURN_RET_LOG(imageEffect != nullptr, result, "OH_ImageEffect_Create fail!");
-
+       
    ImageEffect_Any runningType;
    runningType.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_INT32;
    runningType.dataValue.int32Value = 1;
    ImageEffect_ErrorCode errorCode = OH_ImageEffect_Configure(imageEffect, "runningType", &runningType);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                             "OH_ImageEffect_Configure fail!");
-
+       
    // 设置输出显示的Surface。
    errorCode = OH_ImageEffect_SetOutputSurface(imageEffect, outputNativeWindow);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                             "OH_ImageEffect_SetOutputSurface fail!");
-
+       
    // 获取输入的Surface。注意获取的inputNativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    OHNativeWindow *inputNativeWindow = nullptr;
    errorCode = OH_ImageEffect_GetInputSurface(imageEffect, &inputNativeWindow);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                             "OH_ImageEffect_GetInputSurface fail!");
-
+       
    ImageEdit::imageEffect_ = imageEffect;
-
+       
    // 从获取到输入的NativeWindow中获取SurfaceId。
    uint64_t inputSurfaceId = 0;
    res = OH_NativeWindow_GetSurfaceId(inputNativeWindow, &inputSurfaceId);
    CHECK_AND_RETURN_RET_LOG(res == 0, result, "OH_NativeWindow_GetSurfaceId fail!");
-
+   
    OH_NativeWindow_DestroyNativeWindow(outputNativeWindow);
    OH_NativeWindow_DestroyNativeWindow(inputNativeWindow);
-
+   
    std::string inputSurfaceIdStr = std::to_string(inputSurfaceId);
    ```
 
