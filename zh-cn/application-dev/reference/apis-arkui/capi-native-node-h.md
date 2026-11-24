@@ -3977,6 +3977,10 @@ int32_t OH_ArkUI_NativeModule_RegisterInspectorTreeGetter(ArkUI_NodeHandle node,
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，或节点类型不是[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)或[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)，或getInspectorTree为空。 |
 
+**参考：**
+
+[OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter](capi-native-node-h.md#oh_arkui_nativemodule_unregisterinspectortreegetter)
+
 ### OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter()
 
 ```c
