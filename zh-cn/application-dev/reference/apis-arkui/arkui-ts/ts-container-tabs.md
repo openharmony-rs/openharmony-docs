@@ -81,15 +81,14 @@ TabBar显示样式枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                                         |
 | ----- | ----- | ------------------------------------------------------------ |
-| BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。 |
-| SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。 |
-| SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。 |
+| BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -1277,14 +1276,13 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明  |
 | ------ | -- | ------  |
-| BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |
-| SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。 |
+| BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## TabsSidebarDisplayStyle
 
