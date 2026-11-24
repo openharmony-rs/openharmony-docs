@@ -36,7 +36,7 @@
 
 2. 构造接口的配置参数。
 
-   导入模块，并以通勤导航场景为例构造[DataFabricAddressParams](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#datafabricaddressparams)参数，具体包含[业务场景类型](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#businessscenario)、[操作类型](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#actiontype)、家和公司的[参考点信息](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#locationinfo)，通过[标签信息](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#labelname)区分该参考点是家还是公司。如果接口执行失败，请参考[通用错误码](../reference/errorcode-universal.md)和[地址数据捐赠错误码](../reference/apis-arkdata/errorcode-dataFabricAddress-sys.md)中的错误码说明排查原因。
+   导入模块，并以通勤导航场景为例构造[DataFabricAddressParams](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#datafabricaddressparams)参数，具体包含业务场景类型[BusinessScenario](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#businessscenario)、操作类型[ActionType](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#actiontype)、家和公司的参考点信息[LocationInfo](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#locationinfo)，通过标签信息[LabelName](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#labelname)区分该参考点是家还是公司。
 
    ```ts
    import { dataFabricAddress } from '@kit.ArkData';
@@ -92,7 +92,7 @@
    }
    ```
 
-4. 更新参考点坐标（可选）。
+4. （可选）更新参考点坐标。
 
    订阅成功后，如果用户的家或公司坐标发生变化，需要构造actionType为dataFabricAddress.ActionType.UPDATE的参数，并再次调用[onDataFabricAddress()](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md#datafabricaddressondatafabricaddress)接口。
 
@@ -124,7 +124,6 @@
    };
 
    try {
-     // 更新操作不产生新的数据处理结果，callback传入空函数即可
      dataFabricAddress.onDataFabricAddress(updateParams, () => {});
      console.info('update reference points success');
    } catch (err) {
