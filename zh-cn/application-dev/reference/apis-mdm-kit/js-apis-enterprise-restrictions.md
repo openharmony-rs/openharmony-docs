@@ -1261,6 +1261,113 @@ try {
 }
 ```
 
+## restrictions.setDisallowedPolicy
+
+setDisallowedPolicy(feature: FeatureForDevice, disallow: boolean): void
+
+设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| feature  | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要禁用或允许的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口设置[FeatureForDevice](#featurefordevice24)中“BYOD”列标记为“√”的特性。 |
+| disallow | boolean                                                 | 是   | true表示禁止使用，false表示允许使用。                        |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
+| 9200012  | Parameter verification failed. |
+| 9200013  | The enterprise management policy has been successfully set, but the function has not taken effect in real time. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { restrictions } from '@kit.MDMKit';
+
+try {
+  // 需根据实际情况进行替换
+  restrictions.setDisallowedPolicy(restrictions.FeatureForDevice.WIFI_P2P, true);
+  console.info('Succeeded in setting Wi-Fi P2P disabled');
+} catch (err) {
+  console.error(`Failed to set Wi-Fi P2P disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## restrictions.getDisallowedPolicy
+
+getDisallowedPolicy(feature: FeatureForDevice, queryPolicy?: common.QueryPolicy): boolean
+
+查询指定设备特性是否被禁用。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| feature | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要查询的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取[FeatureForDevice](#featurefordevice24)中“BYOD”列标记为“√”的特性状态。 |
+| queryPolicy | [common.QueryPolicy](./js-apis-enterprise-common.md#querypolicy) | 否   | 查询策略。如果不指定该参数，则默认使用[common.QueryPolicy.SELF](./js-apis-enterprise-common.md#querypolicy)，即查询当前设备管理应用设置的策略；传入[common.QueryPolicy.ALL](./js-apis-enterprise-common.md#querypolicy)时，可查询当前设备设置的策略。|
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 返回true表示feature对应的设备特性被禁用，false表示feature对应的设备特性未被禁用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { common, restrictions } from '@kit.MDMKit';
+
+try {
+  // 需根据实际情况进行替换
+  let result: boolean = restrictions.getDisallowedPolicy(restrictions.FeatureForDevice.WIFI_P2P, common.QueryPolicy.ALL);
+  console.info(`Succeeded in querying whether Wi-Fi P2P is disabled. Disabled status: ${result}`);
+} catch (err) {
+  console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## FeatureForDevice<sup>24+</sup>
 
 设备特性枚举。
@@ -1325,6 +1432,7 @@ try {
 | SYSTEM_ROLLBACK   | 51   | × | 系统回退能力，禁用后无法回退系统版本。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.1 |
 | SATA_ODD_BURN   | 52   | × | 内置光驱刻录能力。禁用后无法通过内置光驱进行刻录。当前仅支持PC/2in1设备使用；其他设备调用设置接口返回801错误码，调用查询接口返回默认值。<br>**起始版本：** 26.0.1 |
 | SUPER_PRIVACY   | 53   | × | 超级隐私模式。禁用后无法打开超级隐私模式。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.1 |
+| POWER_SAVING_MODE | 57   | × | 省电模式。禁用后，在手机设备上无法打开省电模式、超级省电模式、户外探索模式。若省电模式、超级省电模式或户外探索模式已开启，禁用后会关闭省电模式、超级省电模式或户外探索模式，控制中心中省电模式、户外探索模式入口置灰不可操作，设置中省电模式、超级省电模式、户外探索模式入口置灰不可操作；在平板设备上无法打开省电模式或超级省电模式。若省电模式或超级省电模式已开启，禁用后会关闭省电模式或超级省电模式，控制中心中省电模式入口置灰不可操作，设置中省电模式、超级省电模式入口置灰不可操作；在PC/2in1设备上无法打开省电模式。若省电模式已开启，禁用后会关闭省电模式，控制中心中省电模式入口不可操作，设置中省电模式入口置灰不可操作。<br>**起始版本：** 26.1.0 |
 | CONTROL_CENTER   | 59   | × | 控制中心。禁用后手机、平板设备无法通过屏幕右上方下滑手势打开控制中心，PC/2in1设备无法通过点击任务栏控制中心图标方式进入，也无法使用控制中心中的快捷开关（如Wi-Fi、蓝牙、音量、亮度调节等）功能。<br>**起始版本：** 26.1.0 |
 | NOTIFICATION_CENTER   | 60   | × | 通知中心。禁用后手机、平板设备无法通过屏幕左上方下滑手势打开通知中心，PC/2in1设备无法通过点击任务栏通知中心图标方式进入，也无法查看、清除通知中心的通知消息。<br>**起始版本：** 26.1.0 |
 
