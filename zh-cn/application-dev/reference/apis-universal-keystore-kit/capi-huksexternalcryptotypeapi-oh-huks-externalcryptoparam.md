@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ```c
-typedef struct {...} OH_Huks_ExternalCryptoParam
+typedef struct OH_Huks_ExternalCryptoParam {...} OH_Huks_ExternalCryptoParam
 ```
 
 ## 概述

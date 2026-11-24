@@ -1,11 +1,11 @@
 # Custom Event Interception
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-09-02T11:56:49.873Z -->
+<!-- md-trans-meta sourceCommit=0bd31f970e01071c145da3999973e5a7342949bd translatedAt=2026-11-20T08:37:47.551Z pushedAt=2026-11-23T07:42:18.808Z nl=1 -->
 
 Provides components with a custom event interception capability. It is applicable to scenarios where the **HitTestMode** attribute of a component needs to be dynamically determined based on event information such as the position where the event is pressed on the component and the input source, so as to control the hit testing and event response behavior of the component.
 
@@ -74,7 +74,7 @@ struct Index {
       })
       // Call onTouchIntercept to modify the HitTestMode attribute of the component.
       .onTouchIntercept((event: TouchEvent) => {
-        console.info('OnTouchIntercept + ' + JSON.stringify(event));
+        console.info('onTouchIntercept + ' + JSON.stringify(event));
         // Check whether touches is empty before using it.
         if (event && event.touches) {
           let touches = event.touches;

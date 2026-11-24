@@ -2655,12 +2655,13 @@ struct Index {
 
 | 名称       | 类型           | 只读 | 可选 | 说明                   |
 | ---------- | -------------- | ---- | ----|------------------ |
-| ipAddress | string | 否 | 是  | 播放设备的IP地址。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
-| providerId | number | 否    | 是 | 播放设备提供商。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
-| authenticationStatus<sup>11+</sup> | number | 否  | 是 | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
-| networkId<sup>13+</sup> | string | 否  |是 | 播放设备的网络ID。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
-|isLegacy<sup>13+</sup> | boolean | 否 | 是 | 表示当前设备是否为旧版设备。 true表示是，false表示不是。 <br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
-|mediumTypes<sup>13+</sup>| number | 否  | 是  |用于发现设备的介质类型。<br>1：蓝牙低功耗（BLE），用于蓝牙设备的发现和链接。 <br> 2：受限应用协议（COAP），用于局域网内的设备发现。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast        |
+| ipAddress | string | 否 | 是  | 播放设备的IP地址。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
+| providerId | number | 否    | 是 | 播放设备提供商。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
+| authenticationStatus<sup>11+</sup> | number | 否  | 是 | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
+| networkId<sup>13+</sup> | string | 否  |是 | 播放设备的网络ID。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
+|isLegacy<sup>13+</sup> | boolean | 否 | 是 | 表示当前设备是否为旧版设备。 true表示是，false表示不是。 <br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
+|mediumTypes<sup>13+</sup>| number | 否  | 是  |用于发现设备的介质类型。<br>1：蓝牙低功耗（BLE），用于蓝牙设备的发现和连接。 <br> 2：受限应用协议（COAP），用于局域网内的设备发现。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast        |
+| brMacAddress | string | 否 | 是  | 分布式设备的蓝牙静态MAC地址。仅在分布式设备上报蓝牙MAC时可用。<br/>默认值为空。<br/>**需要权限：** `ohos.permission.USE_BLUETOOTH`<br>**系统接口：** 此接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast<br>**起始版本：** 26.1.0    |
 
 ## AVSessionDescriptor
 

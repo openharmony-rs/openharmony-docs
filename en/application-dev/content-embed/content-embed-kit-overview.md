@@ -6,6 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=fd70654283a2a638c34c44fd97606b7577e491e7 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 Starting from API version 24, Content Embed Kit provides inter-application document embedding and collaborative editing capabilities. It helps users embed documents in other formats into the current application's document and enables cross-application document editing, enriching the application editing experience.
 
@@ -31,8 +32,8 @@ In Content Embed Kit, applications are classified by the responsibilities they a
 
 Cross-application collaboration: Breaks down barriers between applications and enables seamless embedding and editing of different types of documents.
 
+<!--RP1--><!--RP1End-->
+
 ## Relationship with Related Kits
 
 [Ability Kit](../application-models/abilitykit-overview.md): Content Embed Kit internally depends on the Extension base capabilities provided by Ability Kit and interacts with Ability Kit for lifecycle scheduling.
-
-<!--RP1--><!--RP1End-->

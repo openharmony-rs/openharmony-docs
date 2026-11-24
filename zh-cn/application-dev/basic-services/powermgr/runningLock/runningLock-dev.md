@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-当计算机在一段时间内没有检测到用户活动（如键盘或鼠标输入）时，系统会自动尝试进入睡眠，使用RunningLockType.BACKGROUND_USER_IDLE运行锁，保证在持锁过程中系统不会进入自动睡眠，保证业务正常运行。
+当计算机在一段时间内没有检测到用户活动（如键盘或鼠标输入）时，系统会自动尝试进入睡眠，使用RunningLockType.BACKGROUND_USER_IDLE运行锁，保证在持锁过程中系统不会进入自动睡眠，使业务正常运行。
 
 ## 环境准备
 
@@ -76,19 +76,14 @@
    
    ``` TypeScript
    // 导入runningLock、commonEventManager、BusinessError模块
-   import { runningLock } from '@kit.BasicServicesKit';
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { runningLock, commonEventManager, BusinessError} from '@kit.BasicServicesKit';
    ```
 
 3. 开发公共事件工具类（CommonEventHelper.ets）以及运行锁工具类（RunningLockUtil.ets）。
 
    <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/CommonEventHelper.ets) -->
    
-   ``` TypeScript
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
+   ``` TypeScript   
    type SubscriberInfo = commonEventManager.CommonEventSubscribeInfo;
    type Subscriber = commonEventManager.CommonEventSubscriber;
    type EventData = commonEventManager.CommonEventData;

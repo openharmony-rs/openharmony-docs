@@ -5,8 +5,9 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=fbe1743d278791557b9f2a0141605bb3472d86ed translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-Starting from API version 20, the camera framework introduces a camera controller to enhance live streaming with features like beautification and background blur.
+Starting from API version 20, the camera framework provides capabilities such as beautification and bokeh for apps in live streaming scenarios through the camera controller.
 
 The camera controller is designed for live streaming and video calls and currently works only with the front camera in video mode, supporting up to 1080p resolution at 30fps.
 

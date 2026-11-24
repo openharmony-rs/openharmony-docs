@@ -1,12 +1,11 @@
-# Combined Gestures
-
+# GestureGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-07-30T02:31:01.870Z pushedAt=2026-08-01T06:42:55.870Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T01:49:25.924Z pushedAt=2026-11-13T01:05:59.900Z nl=1 -->
 
 Combined gestures integrate two or more gestures into a compound gesture, supporting sequential recognition, parallel recognition, and exclusive recognition. They are suitable for scenarios where multiple basic gestures need to be combined on the same component and their recognition order, parallel relationship, or exclusive relationship needs to be controlled, helping developers implement more complex gesture interaction logic.
 
@@ -26,7 +25,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 | Name | Type                                                    | Mandatory| Description                                                    |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode | [GestureMode](#gesturemode) | Yes | Gesture group recognition mode. If the recognition mode is not explicitly set, **GestureMode.Sequence** is used by default. |
+| mode | [GestureMode](#gesturemode) | Yes | Sets the gesture group recognition mode. This parameter is mandatory and cannot be omitted. To use sequential recognition, explicitly pass **GestureMode.Sequence**. |
 | gesture | [GestureType](./ts-gesture-common.md#gesturetype)[] | No | When two or more basic gesture types are set, these gestures are recognized as a gesture group. If this parameter is not set, the gesture group recognition function does not take effect.<br>**NOTE**<br>When you need to add both a single-tap gesture and a double-tap gesture to a component, you can add two [TapGesture](ts-basic-gestures-tapgesture.md) gestures in the gesture group. The double-tap gesture must be placed before the single-tap gesture; otherwise, the gestures do not take effect. |
 
 ## GestureMode
@@ -42,6 +41,7 @@ Defines the recognition mode of a gesture group.
 | Sequence | - | Sequential recognition. Gestures are recognized in the registration sequence until all gestures are recognized successfully. If any gesture in the sequence fails recognition, subsequent gestures will not be recognized.<br>Only the last gesture in a sequentially recognized gesture group can trigger **onActionEnd**.|
 | Parallel | - | Parallel recognition: registered gestures are recognized simultaneously until all gesture recognition is complete, without affecting each other. This mode is suitable for interaction scenarios where multiple gestures need to respond simultaneously without blocking each other.     |
 | Exclusive| - | Exclusive recognition: registered gestures are recognized simultaneously. If one gesture is recognized successfully, gesture recognition ends and all other gestures fail. This mode is suitable for interaction scenarios where multiple gestures may trigger simultaneously but only one is allowed to take effect.       |
+
 
 ## Events
 
@@ -59,11 +59,11 @@ Invoked when a touch cancel event is received after gesture recognition.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  () => void | Yes   | Callback for the gesture event, invoked when a touch cancel event is received after combined gesture recognition succeeds. The callback has no parameters and no return value.|
+| event  |  () => void | Yes   | Callback for the gesture event, invoked when a touch cancel event is received after gesture group recognition succeeds. The callback has no parameters and no return value.|
 
 ## Example
 
-This example demonstrates the sequential recognition of combined gestures, specifically long press and pan gestures, using **GestureGroup**.
+This example demonstrates the sequential recognition of gesture group, specifically long press and pan gestures, using **GestureGroup**.
 
 ```ts
 // xxx.ets
@@ -89,7 +89,7 @@ struct GestureGroupExample {
     .margin(20)
     .border({ width: 3, style: this.borderStyles })
     .gesture(
-      // The following combined gestures use sequence recognition. If the long press gesture event is not triggered normally, the drag gesture event will not be triggered.
+      // The following gesture group use sequence recognition. If the long press gesture event is not triggered normally, the drag gesture event will not be triggered.
       GestureGroup(GestureMode.Sequence,
         LongPressGesture({ repeat: true })
           .onAction((event?: GestureEvent) => {
@@ -127,10 +127,10 @@ struct GestureGroupExample {
 
 Diagram:
 
-In sequence recognition mode, the long press gesture event is triggered first.
+In sequential recognition mode, the long press gesture event is triggered first.
 
 ![combinedGestures2](figures/combinedGestures2.png)
 
 After the long press gesture is recognized, the pan gesture event is triggered.
 
-![triggeringEvent](figures/triggeringEvent.png)
+ ![triggeringEvent](figures/triggeringEvent.png)

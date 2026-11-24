@@ -717,6 +717,56 @@ if (dataShareHelper != undefined) {
 }
 ```
 
+### cleanInvalidData
+
+cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
+
+清理订阅者ID不在有效订阅者ID列表中的服务端模板。仅支持静默访问。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**参数：**
+
+| 参数名     | 类型        | 必填 | 说明                       |
+| -------- | -------------| ---- | ------------------------- |
+| validSubscribers | Array&lt;string&gt; | 是   | 有效的订阅者ID列表，取值为调用[addTemplate](#addtemplate10)时传入的subscriberId。<br>最大长度为50且不能为空。 |
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。                         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 15700013 | The DataShareHelper instance is already closed. |
+| 15700016 | Parameter error. Possible causes:<br>1. The array parameter exceeds the allowed length.<br>2. The array parameter is empty. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 传入当前有效的订阅者ID列表，列表外的模板数据将被清理
+let validSubscribers: Array<string> = ['11', '12'];
+if (dataShareHelper != undefined) {
+  (dataShareHelper as dataShare.DataShareHelper).cleanInvalidData(validSubscribers).then(() => {
+    console.info("cleanInvalidData success");
+  }).catch((err: BusinessError) => {
+    console.error(`cleanInvalidData fail, code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ### on('rdbDataChange')<sup>10+</sup>
 
 on(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, callback: AsyncCallback&lt;RdbDataChangeNode&gt;): Array&lt;OperationResult&gt;
@@ -768,9 +818,9 @@ let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void 
   console.info("onCallback " + JSON.stringify(node.uri));
   console.info("onCallback " + JSON.stringify(node.templateId));
   console.info("onCallback " + node.data.length);
-  for (let i = 0; i < node.data.length; i++) {
-    console.info("onCallback " + typeof node.data[i] + " " + node.data[i]);
-  }
+  node.data.forEach((data) => {
+    console.info("onCallback " + typeof data + " " + data);
+  });
 }
 
 let uri = "datashareproxy://com.samples.datasharetest.DataShare";
@@ -869,15 +919,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onPublishCallback: (err: BusinessError, node: dataShare.PublishedDataChangeNode) => void = (err: BusinessError, node:dataShare.PublishedDataChangeNode): void => {
   console.info("onPublishCallback node bundleName " + JSON.stringify(node.bundleName));
   console.info("onPublishCallback node data size" + node.data.length);
-  for (let i = 0; i < node.data.length; i++) {
-    console.info("onPublishCallback node " + typeof node.data[i].data);
-    if (typeof node.data[i].data != 'string') {
-      let array: ArrayBuffer = node.data[i].data as ArrayBuffer;
-      let data: Uint8Array = new Uint8Array(array);
-      console.info("onPublishCallback " + i + " " + JSON.stringify(data));
+  node.data.forEach((data) => {
+    console.info("onPublishCallback node " + typeof data.data);
+    if (typeof data.data != 'string') {
+      let array: ArrayBuffer = data.data as ArrayBuffer;
+      let dataValue: Uint8Array = new Uint8Array(array);
+      console.info("onPublishCallback " + JSON.stringify(dataValue));
     }
-    console.info("onPublishCallback data " + i + " " + JSON.stringify(node.data[i]));
-  }
+    console.info("onPublishCallback data " + JSON.stringify(data));
+  });
 }
 let uris:Array<string> = ['city', 'datashareproxy://com.acts.ohos.data.datasharetest/appInfo', 'key2'];
 let subscriberId = '11';
@@ -1742,14 +1792,12 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).batchUpdate(record).then((data: Record<string, Array<number>>) => {
       // 遍历data获取每条数据的更新结果， value为更新成功的数据记录数，若小于0，说明该次更新失败
       let entries = Object.entries(data);
-      for (let i = 0; i < entries.length; i++) {
-        let key = entries[i][0];
-        let values = entries[i][1];
+      entries.forEach(([key, values]) => {
         console.info(`Update uri:${key}`);
-        for (const value of values) {
+        values.forEach((value) => {
           console.info(`Update result:${value}`);
-        }
-      }
+        });
+      });
     }).catch((err: BusinessError) => {
       console.error(`Failed to batch update. Code: ${err.code}, message: ${err.message}`);
     });

@@ -5,12 +5,13 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-11-12T04:36:32.916Z pushedAt=2026-11-18T03:16:00.235Z nl=1 -->
 
 >  **NOTE**
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
- The **\<popup>** component is used to display a pop-up to offer instructions after a user clicks a bound component or calls the specific API.
+The **\<popup>** component is used to display a pop-up to offer instructions after a user clicks a bound component or calls the specific API.
 
 ## Required Permissions
 
@@ -123,7 +124,7 @@ export default {
   visibilitychange(e) {
     promptAction.showToast({
       message: 'visibility change visibility: ' + e.visibility,
-        duration: 3000
+      duration: 3000
     }); 
   },
   showpopup() {

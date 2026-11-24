@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍UIAbility组件的三种启动模式：singleton单实例、multiton多实例、specified指定实例，说明各模式的配置方法、运行机制与适用业务场景。"
+keywords: [启动模式, singleton, multiton, specified, 单实例, 多实例, 指定实例, launchType]
+doctype: guide
+status: active
+---
 # UIAbility组件启动模式
 
 <!--Kit: Ability Kit-->

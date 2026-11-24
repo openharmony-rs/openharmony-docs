@@ -142,6 +142,29 @@
 >
 >  ![avoidArea](figures/avoidArea.png)
 
+## AvoidAreaInsets
+
+窗口的避让区边衬。
+
+避让区边衬表示由于[避让区](#avoidarea7)的存在，窗口内容在上下左右四个方向上需要避让的距离。
+
+> **说明：**
+>
+> 避让区边衬的计算不包括[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明                         |
+| ------ | -------- | ---- | ---- | ---------------------------- |
+| top    | number   | 否   | 否   | 窗口顶部需要避让的距离。单位为像素，取值限定为整数。 |
+| left   | number   | 否   | 否   | 窗口左侧需要避让的距离。单位为像素，取值限定为整数。 |
+| right  | number   | 否   | 否   | 窗口右侧需要避让的距离。单位为像素，取值限定为整数。 |
+| bottom | number   | 否   | 否   | 窗口底部需要避让的距离。单位为像素，取值限定为整数。 |
+
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
 以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时需关注。
@@ -293,8 +316,8 @@
 
 1. 应用通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制。
 2. 应用在[startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)拉起窗口时通过[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定窗口尺寸限制（API version 17开始支持）。
-3. 应用在[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。
-4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。
+3. 应用在[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置WindowLimits。
+4. 默认系统限制（基于不同产品和窗口类型，其WindowLimits系统默认限制存在差异）。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -307,14 +330,15 @@
 > - 默认值为0，表示属性不发生变化。
 > - 可生效范围下限值：系统限定的最小高度/宽度。
 > - 可生效范围上限值：系统限定的最大高度/宽度。
+> - 当窗口大于系统最大值或小于最小值时会自动变为系统规定的最大值和最小值。
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                          |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| minHeight | number | 否   | 是   | 窗口的最小高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。 |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| maxHeight | number | 否   | 是   | 窗口的最大高度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minHeight | number | 否   | 是   | 窗口的最小高度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可设置为px或vp。 |
 
 ## TitleButtonRect<sup>11+</sup>
 
@@ -442,6 +466,21 @@
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | focusOnShow | boolean  |  否  |  是  | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦。true表示自动获焦，false表示不自动获焦，默认为true。该参数对主窗口不生效，对子窗口(设置了模态属性[isModal](#subwindowoptions11))、模态窗[TYPE_DIALOG](arkts-apis-window-e.md#windowtype7)返回1300004错误码。|
 
+## WindowShowParams
+
+应用显示时的窗口参数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| windowFocused | boolean  |  否  |  是  | 窗口显示时是否自动获取焦点。true表示窗口显示时自动获取焦点，false表示窗口显示时不自动获取焦点。默认为true。|
+| raiseTop | boolean  |  否  |  是  | 窗口显示时是否自动抬升至顶层。true表示窗口显示时自动抬升至顶层，false表示窗口显示时不自动抬升至顶层。默认为true。<br>**说明：**<br>1. 该参数仅对应用主窗口生效；如需提升子窗口到应用内顶层，请使用[raiseToAppTop()](arkts-apis-window-Window.md#raisetoapptop14)。<br>2. 该参数仅调整应用主窗口之间的前后层级，不会使窗口位于层级更高的窗口（如画中画窗口、全局悬浮窗）之上；如需跨应用置顶，请使用[setWindowTopmost()](arkts-apis-window-Window.md#setwindowtopmost14)。|
+
 ## WindowAnimationConfig<sup>20+</sup>
 
 窗口动画参数配置。
@@ -453,7 +492,7 @@
 | 名称     | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | curve    | [WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)           |  否  |  否   | 动画曲线类型。                                               |
-| duration | number                                                    |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
+| duration | number                                                    |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]，超出取值范围时会返回错误码1300016。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
 | param    | [WindowAnimationCurveParam](arkts-apis-window-t.md#windowanimationcurveparam20) |  否  |  是   | 动画曲线参数，根据动画曲线类型决定是否必填。不设置，则默认为空。                 |
 
 ## WindowSnapshotAnimationConfig
@@ -516,7 +555,7 @@
 | 名称    | 类型                                              | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | config  | [WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20) |  否  |  否   | 本次转场动画配置。                                           |
-| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围0~1.0，在动画结束时恢复为1.0。 |
+| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围[0, 1.0]，超出取值范围时会返回错误码1300016。在动画结束时恢复为1.0。<br/>该参数以float32精度存储，通过[getWindowTransitionAnimation()](arkts-apis-window-Window.md#getwindowtransitionanimation20)获取的值可能因系统内的double与float转换导致精度截断而与传入值存在细微差异。 |
 
 ## StartAnimationParams<sup>20+</sup>
 
@@ -543,8 +582,8 @@
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。 |
 | needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#freeform-window自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | minimizeOnStart| boolean | 否 | 是 | 窗口是否以最小化状态启动。<br>true表示当前窗口以最小化状态启动，false表示窗口启动到前台。默认值为false。<br>仅在同应用间传递参数生效；如果拉起的主窗口已经在前台，传true和false都不生效不报错；如果拉起的主窗口已经在后台，传true不生效不报错，传false生效；如果主窗首次启动，传true和false都生效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，不改变Dock栏图标及预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)；被拉起的主窗在前台时设置无效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，不改变多任务视图预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)；被拉起的主窗在前台时设置无效。<br>**设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，不改变Dock栏图标及预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏；被拉起的主窗在前台时设置无效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，不改变多任务视图预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏；被拉起的主窗在前台时设置无效。<br>**设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Callback<sup>15+</sup>
 

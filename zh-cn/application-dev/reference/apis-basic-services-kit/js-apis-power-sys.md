@@ -130,7 +130,7 @@ API version 9-18，使用该接口无需权限；从 API version 19开始，需�
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>适用版本：19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 801     | Capability not supported. This API cannot work in car devices. <br>适用版本：26.0.1+|
 
@@ -178,7 +178,7 @@ API version 9-18，使用该接口无需权限；从 API version 19开始，需�
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>适用版本：19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam.<br>适用版本：26.0.1+ |
@@ -200,6 +200,8 @@ setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
 设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用callback异步回调。
 
+如需同时设置电源模式和子模式，请使用[power.setPowerMode](#powersetpowermode)。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.POWER_OPTIMIZATION
@@ -219,10 +221,11 @@ setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>适用版本：23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**适用版本：** 26.1.0+ |
 
 **示例：**
 
@@ -241,6 +244,8 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: BusinessError) 
 setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
 设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用Promise异步回调。
+
+如需同时设置电源模式和子模式，请使用[power.setPowerMode](#powersetpowermode)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -266,10 +271,11 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>适用版本：23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**适用版本：** 26.1.0+ |
 
 **示例：**
 
@@ -277,6 +283,73 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 .then(() => {
     console.info('set power mode to MODE_PERFORMANCE');
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## power.setPowerMode
+
+setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise&lt;void&gt;
+
+设置当前设备的电源模式及其子模式。使用 Promise 异步回调。
+
+如仅需设置电源模式，请使用[power.setPowerMode](#powersetpowermode9)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_OPTIMIZATION
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [DevicePowerMode](js-apis-power.md#devicepowermode9) | 是 | 电源模式。各模式含义请参见[DevicePowerMode](js-apis-power.md#devicepowermode9)枚举说明。 |
+| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。各模式含义请参见[DevicePowerSubMode](js-apis-power.md#devicepowersubmode)枚举说明。仅 603 搭配 SUB_MODE_SUPER_POWER_SAVE 或 SUB_MODE_EMERGENCY，非 603 模式不支持子模式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 4900301 | Failed to set the power mode. Possible causes:<br>1. The power mode switching constraint is not met;<br>2. The power mode does not support the sub-mode, or the sub-mode does not match the power mode. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 203 | This function is prohibited by enterprise management policies. |
+| 4900101 | Failed to connect to the service. |
+
+**示例：**
+
+```js
+// 设置 603 + 超级省电子模式
+power.setPowerMode(power.DevicePowerMode.MODE_EXTREME_POWER_SAVE,
+    power.DevicePowerSubMode.SUB_MODE_SUPER_POWER_SAVE)
+.then(() => {
+    console.info('setPowerMode succeeded');
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+});
+
+// 设置 603 + 应急子模式
+power.setPowerMode(power.DevicePowerMode.MODE_EXTREME_POWER_SAVE,
+    power.DevicePowerSubMode.SUB_MODE_EMERGENCY)
+.then(() => {
+    console.info('setPowerMode succeeded');
 })
 .catch((err: BusinessError) => {
     console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
@@ -313,7 +386,7 @@ API version 12-18，使用该接口无需权限；从 API version 19开始，需
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 801     | Capability not supported. This API cannot work in car devices.<br>适用版本：26.0.1+|
 
@@ -356,7 +429,7 @@ API version 12-18，使用该接口无需权限；从 API version 19开始，需
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 
@@ -630,5 +703,448 @@ try {
     console.info('set power config success');
 } catch (err) {
     console.error(`Failed to set power config. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## InvokeMode
+
+枚举函数调用方式。
+
+表示API调用是如何执行的，以及它的结果是如何交付的。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+| 名称                    | 值   | 说明                   |
+| ----------------------- | ---- | ---------------------- |
+| SYNC | 0  | 同步调用。调用方阻塞，直到API返回结果。 |
+| ASYNC | 1  | 异步调用。调用者立即返回，结果通过Promise传递。 |
+
+## power.wakeup
+
+wakeup(detail: string, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+唤醒设备，将设备从睡眠状态恢复到活动状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| detail | string | 是    | 唤醒原因。值必须为字符串。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. |
+
+**示例：**
+
+```js
+// wakeup - 异步
+(power.wakeup('scheduled_task', power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('wakeup success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to wakeup. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// wakeup - 同步
+try {
+  power.wakeup('scheduled_task', power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to wakeup. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.suspend
+
+suspend(isImmediate?: boolean, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+使设备进入睡眠状态。
+
+调用此方法后设备将进入睡眠，如需恢复到活动状态，需调用[power.wakeup](#powerwakeup)唤醒设备。
+
+与hibernate方法的区别：suspend为较浅的低功耗睡眠状态（灭屏后进入睡眠），hibernate为更深的休眠状态（休眠前可选择清理内存）。需快速恢复设备活动时选择suspend，需最大程度节省电量时选择hibernate。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| isImmediate | boolean | 否    | 是否直接使设备进入睡眠状态。true表示灭屏后立即进入睡眠，不填该参数则默认为false，表示灭屏后由系统自动检测何时进入睡眠。如果只想做灭屏操作，建议不填参数。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam. |
+| 801     | Capability not supported. This API cannot work in car devices. |
+
+**示例：**
+
+```js
+// suspend - 立即睡眠，异步
+(power.suspend(true, power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('suspend success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to suspend. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// suspend - 立即睡眠，同步
+try {
+  power.suspend(true, power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to suspend. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.shutdown
+
+shutdown(reason: string, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+系统关机。与reboot方法的区别：shutdown使设备完全关机不再运行，reboot使设备关机后自动重启。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REBOOT
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| reason | string | 是    | 关机原因。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**示例：**
+
+```js
+// shutdown - 异步
+(power.shutdown('maintenance', power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('shutdown success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to shutdown. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// shutdown - 同步
+try {
+  power.shutdown('maintenance', power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to shutdown. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.reboot
+
+reboot(reason: string, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+重启设备。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REBOOT
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| reason | string | 是    | 重启原因。例如，“updater”表示重启后进入更新模式。传入空字符串时，系统将在重启后进入正常模式。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**示例：**
+
+```js
+// reboot - 异步
+(power.reboot('updater', power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('reboot success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to reboot. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// reboot - 同步
+try {
+  power.reboot('updater', power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to reboot. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## HibernateCallback
+
+休眠事件回调接口，用于接收设备进入休眠和退出休眠的事件通知。使用[power.registerHibernateCallback](#powerregisterhibernatecallback)订阅该回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+### onHibernate
+
+onHibernate(): Promise&lt;void&gt;
+
+当设备即将进入休眠时调用的回调。系统会等待该回调返回的Promise对象完成后，再继续设备的休眠流程。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+### onWakeup
+
+onWakeup(hibernateResult: boolean): Promise&lt;void&gt;
+
+当设备退出休眠时调用的回调。系统会等待该回调返回的Promise对象完成后，再继续设备的唤醒流程。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| hibernateResult | boolean | 是 | 表示休眠是否成功。true表示休眠成功；false表示休眠失败。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例：**
+
+```js
+let hibernateCallback: power.HibernateCallback = {
+  onHibernate: (): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device is entering hibernation.');
+      resolve();
+    });
+  },
+  onWakeup: (hibernateResult: boolean): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device wakeup, hibernateResult: ' + hibernateResult);
+      resolve();
+    });
+  }
+};
+```
+
+## power.registerHibernateCallback
+
+registerHibernateCallback(callback: HibernateCallback): void
+
+订阅设备进入或退出休眠的回调提醒。使用callback异步回调。调用此方法订阅回调后，可在不再需要时调用[power.unregisterHibernateCallback](#powerunregisterhibernatecallback)取消订阅，释放系统资源。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [HibernateCallback](#hibernatecallback) | 是 | 休眠事件回调对象，需同时实现onHibernate和onWakeup方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 4900400 | Parameter error. Possible causes: <br>The callback object is missing onHibernate or onWakeup function members. |
+
+**示例：**
+
+```js
+let hibernateCallback: power.HibernateCallback = {
+  onHibernate: (): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device is entering hibernation.');
+      resolve();
+    });
+  },
+  onWakeup: (hibernateResult: boolean): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      console.info('device wakeup, hibernateResult: ' + hibernateResult);
+      resolve();
+    });
+  }
+};
+
+try {
+  power.registerHibernateCallback(hibernateCallback);
+  console.info('register hibernate callback success');
+} catch (err) {
+  console.error(`Failed to register hibernate callback. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.unregisterHibernateCallback
+
+unregisterHibernateCallback(): void
+
+取消订阅设备进入或退出休眠的回调提醒。此方法与[power.registerHibernateCallback](#powerregisterhibernatecallback)配对使用，必须在先调用registerHibernateCallback订阅回调后，再调用此方法取消订阅。取消订阅后，所有已注册的休眠回调都会被移除。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```js
+try {
+  power.unregisterHibernateCallback();
+  console.info('unregister hibernate callback success');
+} catch (err) {
+  console.error(`Failed to unregister hibernate callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```

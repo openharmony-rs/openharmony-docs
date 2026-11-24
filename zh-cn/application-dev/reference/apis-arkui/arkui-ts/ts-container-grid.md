@@ -371,7 +371,7 @@ cachedCount(count: number, show: boolean)
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | count  | number | 是   | 预加载的GridItem的数量。<br/>默认值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br/>通过状态变量单独更新count值时，Grid组件不会触发布局更新，缓存节点数量仅会在下次布局时更新。 |
-| show  | boolean | 是   | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。 <br/> 默认值：false |
+| show  | boolean | 是   | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。 <br/> 默认值：false<br/>当show设置为true时，首行完全越过可视区域底部（即首行完全移出可视区域）后，Grid会在预加载数量的基础上额外多显示1行。 |
 
 
 ### editMode<sup>8+</sup>
@@ -738,6 +738,61 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 | ------ | ------ | ---- | ------------------------------------ |
 | strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将item对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，Grid不做吸附对齐，按惯性自然滑行至停止。 |
 
+### scrollPlaceholder
+
+scrollPlaceholder(provider?: PlaceholderProvider)
+
+设置Grid组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个网格项会导致超帧时，先为该项显示占位组件，真实网格项在UI线程分帧创建，以减少快速滚动时的丢帧。
+
+> **说明：**
+>
+> 真实网格项创建完成后会重新布局。布局遵循[GridItem](ts-container-griditem.md)的正常约束。替换占位组件时保持当前可见内容的位置不变。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| provider | [PlaceholderProvider](#placeholderprovider) | 否   | 网格项的占位提供者，返回undefined表示该网格项不需要占位；返回的id为空、未注册时，使用系统默认占位，且滚动不中断。未设置此属性时，关闭滚动占位，Grid保持既有行为，并且不会影响[syncLoad](#syncload20)的行为。 |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+Grid() {
+  // 网格项内容。
+}
+.scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+  // id对应已注册的占位模板，size为占位的建议尺寸。
+  return { id: 'itemPlaceholder', size: { height: 100 } };
+})
+```
+
+## PlaceholderProvider
+
+type PlaceholderProvider = import('../api/@ohos.arkui.placeholderRegister').PlaceholderProvider
+
+网格项占位信息的提供函数，供Grid的[scrollPlaceholder](#scrollplaceholder)属性使用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| ---- | ---- |
+| import('../api/@ohos.arkui.placeholderRegister').[PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 网格项占位信息的提供函数，供Grid的[scrollPlaceholder](#scrollplaceholder)属性使用。 |
+
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
 GridItem的对齐方式枚举。
@@ -810,6 +865,8 @@ onItemDragStart(event: OnItemDragStartCallback)
 拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
 不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
+
+使用onMove实现拖拽排序时，不建议在onMove回调中新增数据。onMove上报的起始索引号与目标索引号基于拖拽开始时的数据源，框架按同一批数据仅发生顺序变化的前提完成落位与布局推演；若在回调中增加数据条数，应用侧索引会与框架内部的拖拽顺序不一致，可能导致排序结果错位或落位动画异常。如确需新增数据，建议在拖拽流程结束、onMove回调执行完成后再进行。数据源修改的通用约束参考[onMove](./ts-universal-attributes-drag-sorting.md#onmove)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

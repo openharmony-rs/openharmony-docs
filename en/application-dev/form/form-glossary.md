@@ -6,7 +6,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=e82880fc1b3fb82c03ab5c9c350aff1a7e98d202 translatedAt=2026-07-13T03:45:20.356Z pushedAt=2026-07-13T07:53:49.322Z -->
+<!-- md-trans-meta sourceCommit=db89184ba67196d1451aad31d3a0d98b3b01295e translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 ## A
 
@@ -72,7 +72,7 @@ A type of ArkTS widget that supports only UI components and layout capabilities.
 
 ### Temporary Widget
 
-A widget type that is displayed temporarily in response to specific events or user actions and disappears automatically afterward. It is the counterpart of a normal widget. Temporary widgets are currently not used by widget hosts.
+  A widget type that is not persistently stored by the widget host. Temporary widgets are not automatically destroyed while the widget host process is running; the system automatically clears them only when the process exits. Therefore, temporary widgets must be explicitly deleted when no longer needed, or converted to normal widgets if they need to be retained. A temporary widget is the counterpart of a normal widget and is a concept specific to widget hosts.
 
 ## W
 

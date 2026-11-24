@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-01T12:28:54.860Z -->
+<!-- md-trans-meta sourceCommit=69c407040f576942fb168782eab7b193850836b4 translatedAt=2026-11-03T03:19:14.671Z pushedAt=2026-11-13T01:06:00.092Z nl=1 -->
 
 A safe area refers to the display area of a page. By default, the UI developed by developers is laid out within the safe area and does not overlap with the system-defined non-safe areas (such as the status bar and navigation bar). Attribute methods are provided to allow developers to set the drawing content of a component to break through the safe area restrictions:
 - The [expandSafeArea](#expandsafearea) attribute allows a component to extend its drawing area beyond the safe area without changing its layout.
@@ -29,7 +29,7 @@ When a page contains text such as a title bar that should not overlap with the n
     &nbsp;&nbsp;&nbsp;&nbsp;"value": "true",<br>
     &nbsp;&nbsp;}<br>
   ],<br>
-
+  
 
 ## expandSafeArea
 
@@ -37,29 +37,29 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 Controls a component to expand its safe area to achieve an immersive effect.
 
-> **NOTE**
+>  **NOTE**
 >
-> - When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values or 'auto' are set, the safe area can be expanded only upward (SafeAreaEdge.TOP) and toward the start direction (SafeAreaEdge.START, which indicates the left side in LTR mode and the right side in RTL mode), and the size of the expanded component remains unchanged.
+> - When setting the **expandSafeArea** attribute to extend the component drawing, it is recommended that the component size not be set to a fixed width and height (except for percentages). If a fixed width and height or 'auto' is set, the safe area can be expanded only upward (**SafeAreaEdge.TOP**) and toward the start direction (**SafeAreaEdge.START**, which indicates the left side in LTR mode and the right side in RTL mode), and the component size remains unchanged after expansion.
 >
 > - The safe area does not restrict the layout and size of internal components, nor does it clip internal components.
 >
 > - When the parent container is a scrollable container, after the **expandSafeArea** attribute is set on a component, the component itself does not extend, but it can still trigger the update of the extension range of its child nodes on which **expandSafeArea** is set.
 >
-> - When **expandSafeArea()** is set without parameters, the default values are used. When **expandSafeArea([],[])** is set, the input parameters are empty arrays, and the **expandSafeArea** attribute does not take effect.
->
-> - The conditions for the **expandSafeArea** attribute to take effect on a component are as follows:
->  1. When type is SafeAreaType.KEYBOARD, it takes effect by default, meaning that the component does not avoid the keyboard.<br>
->  2. When other types are set, the component can extend under the safe area only when the component boundary coincides with the safe area. For example, if the height of the status bar at the top of the device is 100, the absolute position of the component on the screen must satisfy 0 <= y <= 100.
->
-> - When a component extends into a non-safe area, events in the non-safe area, such as click events, may be intercepted by the system and preferentially responded to by system components such as the status bar.
->
+> - When **expandSafeArea()** is set without parameters, the default value is used. When **expandSafeArea([],[])** is set, the input parameters are equivalent to empty arrays, in which case the **expandSafeArea** attribute setting does not take effect.
+>   
+> - The conditions for the **expandSafeArea** attribute to take effect on a component are as follows:  
+>   1. When **type** is **SafeAreaType.KEYBOARD**, it takes effect by default, meaning that the component does not avoid the keyboard.<br>
+>   2. When other types are set, the component can extend under the safe area only when the component boundary coincides with the safe area. For example, if the height of the status bar at the top of the device is 100, the absolute position of the component on the screen must satisfy 0 <= y <= 100.
+>   
+> - When a component extends into the avoidance area, events in the avoidance area, such as click events, may be intercepted by the system and preferentially responded to by system components such as the status bar.
+>  
 > - It is not recommended to set the **expandSafeArea** attribute on components in a scrollable container. If it is set, the **expandSafeArea** attribute must be set on all direct nodes from the current node to the scrollable ancestor container according to the component nesting relationship. Otherwise, the **expandSafeArea** attribute may become invalid after scrolling. For the usage, see [Example 7](#example-7-expanding-the-safe-area-in-scrollable-containers).
->
-> - The **expandSafeArea** attribute takes effect only on the current component and is not passed to parent or child components. Therefore, developers must configure this attribute separately for all related components.
->
-> - When both **expandSafeArea** and **position** are set, the **position** attribute takes effect first, and the **expandSafeArea** attribute takes effect later. For components on which drawing attributes such as position and offset are not set, if their boundaries do not overlap with the non-safe area, setting the **expandSafeArea** attribute does not take effect, such as dialog boxes and semi-modal components.
->
-> - For scenarios where the **expandSafeArea** attribute cannot take effect, to place a component in the non-safe area, you need to manually adjust the coordinates of the component.
+> 
+> - The **expandSafeArea** attribute takes effect only on the current component and is not passed to parent or child components. Therefore, developers need to configure this attribute separately for all related components.
+> 
+> - When both **expandSafeArea** and **position** are set, the **position** attribute takes effect first, and the **expandSafeArea** attribute takes effect later. For components on which drawing attributes such as **position** and **offset** are not set, if their boundaries do not overlap with the avoidance area, setting the **expandSafeArea** attribute does not take effect, for example, dialog boxes and semi-modal components.
+> 
+> - For scenarios where the **expandSafeArea** attribute cannot take effect, to place a component in the avoidance area, you need to manually adjust the coordinates of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -143,7 +143,7 @@ Avoidance mode of the page when the virtual keyboard is raised.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type                                                 | Description                               |
 | ---------------------------------------------------- | ---------------------------------- |
@@ -321,12 +321,9 @@ This example demonstrates how to use **setKeyboardAvoidMode** to set the keyboar
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { KeyboardAvoidMode } from '@kit.ArkUI';
+import { window, KeyboardAvoidMode } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
     windowStage.loadContent('pages/Index', (err, data) => {
       // When the virtual keyboard is displayed, the page is resized to its original height minus the keyboard height.
       windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
@@ -370,17 +367,14 @@ struct KeyboardAvoidExample1 {
 
 ### Example 5: Setting Keyboard Avoidance Mode to Offset
 
-This example demonstrates how to use **setKeyboardAvoidMode** to set the keyboard avoidance mode to **OFFSET**, which lifts the page when the keyboard is displayed. However, if the input cursor is positioned more than the keyboard's height from the bottom of the screen, the page will not be lifted, as demonstrated in this example.
+This example demonstrates how to use **setKeyboardAvoidMode** to set the keyboard avoidance mode to **OFFSET**, which lifts the page when the keyboard is displayed. However, if the caret is positioned more than the keyboard's height from the bottom of the screen, the page will not be lifted, as demonstrated in this example.
 
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { KeyboardAvoidMode } from '@kit.ArkUI';
+import { window, KeyboardAvoidMode } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
     windowStage.loadContent('pages/Index', (err, data) => {
       // When the virtual keyboard is displayed, the page is moved up until the caret is displayed.
       windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);

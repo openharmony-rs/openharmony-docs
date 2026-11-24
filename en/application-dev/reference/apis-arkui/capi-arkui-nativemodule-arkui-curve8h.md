@@ -1,12 +1,11 @@
-# ArkUI_Curve\*
-
+# ArkUI_Curve*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-08-19T04:17:01.639Z pushedAt=2026-08-19T07:03:24.789Z -->
+<!-- md-trans-meta sourceCommit=2495040792c8da8de232a60f3eafa9d33ca50fa6 translatedAt=2026-11-09T11:40:57.599Z pushedAt=2026-11-10T01:59:52.583Z nl=1 -->
 
 ```c
 typedef struct ArkUI_Curve* ArkUI_CurveHandle
@@ -21,3 +20,4 @@ Defines the pointer to interpolation object of the curve. Curve interpolation is
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
+

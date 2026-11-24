@@ -81,16 +81,14 @@ TabBar显示样式枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                                         |
 | ----- | ----- | ------------------------------------------------------------ |
-| BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。 |
-| SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。 |
-| SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。 |
-| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.1.0 |
+| BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -371,6 +369,30 @@ barOverlap(value: boolean)
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | 是   | TabBar是否背后变模糊并叠加在TabContent之上。当barOverlap设置为true时，TabBar背后变模糊并叠加在TabContent之上，并且TabBar默认模糊材质的[BlurStyle](ts-universal-attributes-background.md#blurstyle9)值修改为'BlurStyle.COMPONENT_THICK'。当barOverlap设置为false时，无模糊和叠加效果。<br />默认值：false |
+
+### barOverlap
+
+barOverlap(value: BarOverlapMode \| boolean)
+
+设置TabBar与TabContent的重叠模式。未通过该接口设置时，默认为false。
+
+> **说明：**
+>
+> 当设置为BarOverlapMode.SAFE_AREA_PADDING模式时，TabContent上已设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性会被组件设置的值覆盖。当切换为其他模式时，先前设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性值将会还原。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| value  | [BarOverlapMode](#baroverlapmode) \| boolean | 是   | TabBar与TabContent的重叠模式。取值为true对应BarOverlapMode.STACK，false对应BarOverlapMode.STANDARD。 |
 
 ### barBackgroundColor<sup>10+</sup>
 
@@ -1065,6 +1087,168 @@ showSidebarControlButton(value: Optional\<boolean>)
 | ------ | -------- | ---- | --------- |
 | value   | Optional\<boolean> | 是 | 侧边页签栏是否显示控制按钮。<br/>true表示显示按钮；false表示不显示按钮。<br/>设置undefined时，取默认值false。 |
 
+### sidebarTitleBar
+
+sidebarTitleBar(value: Optional\<TabsSidebarTitleBarOptions>)
+
+设置侧边页签栏的标题栏，标题栏显示在[sidebarHeader](#sidebarheader)设置的头部区域上方。设置标题栏后，[showSidebarControlButton](#showsidebarcontrolbutton)控制的展开或收起按钮会从其显示时的默认左侧位置移动到标题栏的右侧。未通过该接口设置时，侧边页签栏不显示标题栏。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<[TabsSidebarTitleBarOptions](#tabssidebartitlebaroptionst)> | 是 | 侧边页签栏的标题栏配置。<br/>设置undefined时，侧边页签栏不显示标题栏。 |
+
+**示例：**
+
+该示例通过[sidebarTitleBar](#sidebartitlebar)接口给Tabs侧边页签栏设置标题栏，并配合[showSidebarControlButton](#showsidebarcontrolbutton)接口显示侧边页签栏的展开或收起按钮。设置标题栏后，展开或收起按钮会从其显示时的默认左侧位置移动到标题栏的右侧。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SidebarTitleBarExample {
+  @State titleIcon: ResourceStr = $r('sys.media.ohos_app_icon');
+  @State titleText: ResourceStr = 'TitleBar';
+
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#EBF5FF')
+        }.tabBar('Tab1')
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#EBF5FF')
+        }.tabBar('Tab2')
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#EBF5FF')
+        }.tabBar('Tab3')
+      }
+      // 设置Tabs为侧边页签栏样式
+      .barStyle(TabBarStyle.SIDEBAR)
+      // 设置侧边页签栏的标题栏
+      .sidebarTitleBar({icon: this.titleIcon, text: this.titleText})
+      // 显示侧边页签栏的展开或收起按钮
+      .showSidebarControlButton(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![sidebarTitleBar](figures/tabsSidebarTitleBar.png)
+
+### tabViewCustomization
+
+tabViewCustomization(value: Optional\<TabViewCustomization>)
+
+设置Tabs侧边页签栏自定义配置，主要用于控制页签可见性、分组、排序。
+
+> **说明：**
+>
+> - 支持给部分侧边栏页签配置可见性、分组和排序优先级。
+> - 对于每个侧边栏页签，可见性配置的优先级是：visibilityMap中的TabVisibility > TabContent的[tabBarVisibility](./ts-container-tabcontent.md#tabbarvisibility)。
+> - 对于每个侧边栏页签，分组的优先级是：sectionMap中的SidebarSection > TabContent的[sidebarSection](./ts-container-tabcontent.md#sidebarsection)。
+> - 如果没有配置orderMap，则侧边栏页签排序规则可以参考[SidebarSection](./ts-container-tabcontent.md#sidebarsection-1)类型的说明。
+> - 如果配置了orderMap，则在进行上述页签排序前，需要先根据优先级配置做初步排序，然后基于该初步排序的结果，再进行分组排序处理。
+> - 上述初步排序的规则是：有优先级的排在前面，没有的排在后面，没有优先级的或者优先级相同的按照原始TabContent顺序排列。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<[TabViewCustomization](#tabviewcustomization-1)> | 是 | 侧边页签栏自定义配置项，设置为undefined时清空自定义配置。 |
+
+**示例：**
+
+该示例通过[tabViewCustomization](#tabviewcustomization)属性给Tabs侧边栏设置自定义配置，统一设置了页签的排序，分组和可见性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsTabViewCustomizationExample {
+  private visibilityMap: Map<number, TabVisibility> = new Map()
+  private sectionMap: Map<number, SidebarSection> = new Map()
+  private orderMap: Map<number, number> = new Map()
+
+  aboutToAppear(): void {
+    // 将索引为3的页签在侧边页签栏中隐藏
+    this.visibilityMap.set(3, TabVisibility.HIDDEN)
+    // 将索引为0的页签设置到Home分组
+    this.sectionMap.set(0, {title: 'Home', order: 0})
+    // 将索引为1的页签设置到Home分组
+    this.sectionMap.set(1, {title: 'Home', order: 0})
+    // 将索引为2的页签设置到Media分组
+    this.sectionMap.set(2, {title: 'Media', order: 1})
+    // 给索引为1和索引为0的页签设置优先级，让索引为1的页签排在前面
+    this.orderMap.set(1, 0)
+    this.orderMap.set(0, 1)
+  }
+
+  build() {
+    Stack({alignContent: Alignment.Center}) {
+      Tabs() {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content0`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content0`})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content1`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content1`})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content2`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content2`})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content3`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content3`})
+      }
+      .width(450)
+      .height(400)
+      .border({width: 1, color: Color.Black})
+      // 设置Tabs为侧边页签栏样式
+      .barStyle(TabBarStyle.SIDEBAR)
+      // 设置侧边页签栏自定义配置
+      .tabViewCustomization({
+        visibilityMap: this.visibilityMap,
+        sectionMap: this.sectionMap,
+        orderMap: this.orderMap
+      })
+    }.width('100%').height('100%')
+  }
+}
+```
+
+![tabViewCustomization](figures/tabViewCustomization.jpg)
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
@@ -1212,6 +1396,41 @@ TabBar顶部悬浮样式的配置选项。
 | maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，TabBar最大宽度由barSideMargin计算得到。 |
 | offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞) |
 
+## TabsSidebarTitleBarOptions\<T>
+
+侧边页签栏标题栏的配置选项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏的图标。未设置时不显示图标。 |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏的文本。未设置时不显示文本。 |
+
+## TabViewCustomization
+
+Tabs侧边页签栏的自定义配置。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| visibilityMap | Map\<number, [TabVisibility](./ts-container-tabcontent.md#tabvisibility)> | 否 | 是 | 页签可见性配置，仅作用于侧边页签栏。<br/>**说明：**<br/>Map的key代表页签对应TabContent的原始索引，key需要是整数，如果不是则会被截断成整数，有效范围是[0, TabContent数量 - 1]。Map的value代表对应页签的可见性。无效记录会被忽略，key重复的记录后者会覆盖前者。 |
+| sectionMap | Map\<number, [SidebarSection](./ts-container-tabcontent.md#sidebarsection-1)> | 否 | 是 | 页签的分组配置，仅作用于侧边页签栏。<br/>**说明：**<br/>Map的key代表页签对应TabContent的原始索引，key需要是整数，如果不是则会被截断成整数，有效范围是[0, TabContent数量 - 1]。Map的value代表对应页签的分组配置。无效记录会被忽略，key重复的记录后者会覆盖前者。 |
+| orderMap | Map\<number, number> | 否 | 是 | 页签的排序配置，仅作用于侧边页签栏。<br/>**说明：**<br/>Map的key代表页签对应TabContent的原始索引，key需要是整数，如果不是则会被截断成整数，有效范围是[0, TabContent数量 - 1]。Map的value代表对应页签的排序优先级，value也需要是整数，如果不是则会被截断成整数，有效范围是[0, 2^31 - 1]，优先级值越小，排序越靠前。无效记录会被忽略，key重复的记录后者会覆盖前者。 |
+
 ## TabsSidebarSearchFilterCallback
 
 type TabsSidebarSearchFilterCallback = (tabIndex: number, text: string) => boolean
@@ -1326,6 +1545,24 @@ TabBar布局模式枚举。
 | ALWAYS_AVERAGE_SPLIT | 1 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度时，TabBar不可滚动，且所有页签平均分配TabBar宽度。|
 | SPACE_BETWEEN_OR_CENTER      | 2 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度但超过TabBar宽度一半时，TabBar不可滚动，页签紧凑居中。<br/>当页签内容不超过TabBar宽度一半时，TabBar不可滚动，页签居中排列，页签之间的间距相等，所有页签的总宽度占用TabBar宽度的一半。|
 
+## BarOverlapMode
+
+TabBar与TabContent的重叠模式枚举。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| ------ | ---- | ---------- |
+| STANDARD | 0 | TabBar不与TabContent重叠，TabContent高度等于Tabs高度减去TabBar高度。等价于[barOverlap](#baroverlap)(false)。 |
+| STACK | 1 | TabBar叠加在TabContent之上，TabContent占满全部空间。等价于barOverlap(true)。 |
+| SAFE_AREA_PADDING | 2 | TabBar区域成为TabContent的安全区内边距（[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)），TabContent可延伸到TabBar区域，同时TabBar背后变模糊。 |
+
 ## CommonModifier<sup>15+</sup>
 
 type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier
@@ -1380,15 +1617,13 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明  |
 | ------ | -- | ------  |
-| BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |
-| SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。 |
-| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.1.0 |
+| BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## TabsSidebarDisplayStyle
 

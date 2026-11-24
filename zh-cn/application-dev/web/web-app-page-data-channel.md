@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过消息端口实现应用侧与前端页面双向收发消息的通信方法，涵盖端口创建与发送、回调注册、关闭时机及数据类型约束。"
+keywords: [ArkWeb, createWebMessagePorts, postMessage, WebMessagePort, 消息端口, 数据通道, onMessageEvent, 双向通信]
+doctype: guide
+status: active
+---
+
 # 建立应用侧与前端页面数据通道
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -10,7 +18,7 @@
 前端页面和应用侧之间可以用[createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports)接口创建消息端口来实现两端的通信。
 
 
-在下面的示例中，应用侧页面中通过createWebMessagePorts方法创建两个消息端口，再把其中一个端口通过[postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过[close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close)接口关闭端口。
+在下面的示例中，应用侧页面中通过createWebMessagePorts()方法创建两个消息端口，再把其中一个端口通过[postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过[close()](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close)接口关闭端口。
 
 
 - 应用侧代码。

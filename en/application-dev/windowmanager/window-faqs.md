@@ -1,12 +1,11 @@
 # Window Development FAQs
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @JUGaaab-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e5f4a12518daa36e56bebaf91a68665e9bbab092 translatedAt=2026-08-11T10:12:17.065Z pushedAt=2026-08-11T11:30:31.757Z -->
+<!-- md-trans-meta sourceCommit=47f14374df754a1283c527fb9510e93dc26781af translatedAt=2026-11-12T04:52:54.853Z pushedAt=2026-11-12T07:49:11.831Z nl=1 -->
 
 ## How to Launch Application B During the Startup of Application A
 
@@ -66,7 +65,7 @@ export default class EntryAbility extends UIAbility {
 
 In application development, dynamically obtaining the window width and height is mainly used to implement responsive layout to adapt to devices of different sizes or window status changes (such as split-screen, maximization, restoration, and drag resizing).
 
-You are advised to use [getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9), [getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1), or [getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1) to obtain the window instance (**windowClass**), and then call the [getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) API through the instance to obtain the **WindowProperties** attribute. You can obtain the window width and height based on the attribute. The sample code is as follows:
+You are advised to use [getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9), [getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1), or [getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1) to obtain the window instance (**windowClass**), and then call the [getWindowProperties()](../reference/apis-arkui//arkts-apis-window-Window.md#getwindowproperties9) API through the instance to obtain the **WindowProperties** attribute. You can obtain the window width and height based on the attribute. The sample code is as follows:
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -92,6 +91,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 
 ## How to Obtain the Soft Keyboard Height
 
@@ -128,6 +128,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+
 ## How to Obtain the Height of the PC's Default System Title Bar
 
 Call [getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11) to obtain the height of the title bar.
@@ -158,6 +159,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 
 ## How to Implement or Determine Immersive Window Layout
 
@@ -195,6 +197,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+
 ## How to Hide the Status Bar and Bottom Navigation Area
 
 Call [setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11) to hide the status bar and bottom navigation bar.
@@ -225,6 +228,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 
 ## How to Obtain the Status Bar Height
 
@@ -269,30 +273,30 @@ To make the window background transparent, call [setWindowBackgroundColor](../re
 The example code is as follows:
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ColorMetrics } from '@kit.ArkUI';
-import { window } from '@kit.ArkUI';
+import { ColorMetrics, window } from '@kit.ArkUI';
 
-let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
-  let errCode: number = err.code;
-  if (errCode) {
-  console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-  return;
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent("pages/Index", (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      const windowClass = windowStage.getMainWindowSync();
+      try {
+        // Adopt the ARGB method.
+        windowClass.setWindowBackgroundColor('#0000FF33');
+        // Adopt the ColorMetrics method.
+        windowClass.setWindowBackgroundColor(ColorMetrics.numeric(0x00112233));
+      } catch (exception) {
+        console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
+      };
+    });
   }
-  console.info('Succeeded in loading the content.');
-  // Use the ARGB mode.
-  let color1: string = '#0000FF33'; 
-  // Use the ColorMetrics mode.
-  let color2: ColorMetrics = ColorMetrics.numeric(0x00112233);  
-  try {
-    windowClass?.setWindowBackgroundColor(color1);
-    windowClass?.setWindowBackgroundColor(color2);
-  } catch (exception) {
-    console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
-  };
-});
+}
 ```
 
 ## How to Implement Landscape/Portrait Switching
@@ -497,7 +501,7 @@ In application development, there are two ways to determine whether an applicati
 
 - Call the [on('windowStatusChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowstatuschange11) API to listen for window mode changes.
 
-If an app needs to respond immediately when the window mode changes (for example, from fullscreen to floating window mode), this API can be used to listen for window mode changes and implement corresponding business adaptations.
+  If an app needs to respond immediately when the window mode changes (for example, from fullscreen to floating window mode), this API can be used to listen for window mode changes and implement corresponding business adaptations.
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
@@ -573,7 +577,6 @@ For the PiP and floating ball windows, their privacy mode follows the parent win
 To take a screenshot of a privacy window, you can use the [snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18) API.
 
 ## How to Implement a Blur Effect When the App Goes to the Background and Appears in the Multitasking Window
-
 Your app can listen to the main window lifecycle state and store the state using [AppStorage](../ui/state-management/arkts-appstorage.md). When the state is the foreground non-interactive state or the background state, set the [foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle) attribute for the component.
 
 The example code is as follows:
@@ -666,19 +669,15 @@ There is no restriction on the window position when [moveWindowTo()](../referenc
 ## How to Set or Remove Watermarks
 
 <!--Del-->
-
 Watermarks are classified into the following types by scope:
 
 - Window-level watermark: You can call [setWaterMarkFlag()](../reference/apis-arkui/js-apis-window-sys.md#setwatermarkflag10) to add or remove a security watermark for the current window.
-
 <!--DelEnd-->
 
 - Process-level watermark: You can call [setWatermarkImageForAppWindows()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwatermarkimageforappwindows21) to set or cancel a process-level watermark, which takes effect for the windows of the current process, including the windows newly created by the process.
 
 <!--Del-->
-
 - Screen-level watermark: [window.setWaterMarkImage](../reference/apis-arkui/js-apis-window-sys.md#windowsetwatermarkimage10) can be called to set or remove a screen-level watermark.
-
 <!--DelEnd-->
 
 ## How to Move a Created Window to an Extended Screen
@@ -838,3 +837,18 @@ windowClass.on('avoidAreaChange', (data) => {
   }
 });
 ```
+
+## Window size and application layout are briefly out of sync when the window size changes rapidly in free multi-window mode
+
+**Symptom**
+
+On devices that support [free multi-window mode](window-terminology.md#free-windows), when the window border is dragged rapidly, the window border follows the mouse in real time, but the layout refresh of the application content inside the window is delayed, resulting in a brief out-of-sync between the window size and the application layout. After the drag ends, the application layout becomes consistent with the window size.
+
+**Possible Causes**
+
+This behavior is a system specification. Window management adopts a client-server architecture. During the dragging of the window border, the window size update and the application layout refresh are handled by independent links in two processes:
+
+- The window border is rendered directly by the window management service process and follows the mouse position in real time, thereby ensuring rendering continuity and low-latency tracking during the drag.
+- The refresh management of the application content layout runs in the application process and can be completed only after cross-process size notification, application-side calculation, and re-layout.
+
+Based on the preceding design, the brief out-of-sync between the window frame and the application layout during rapid dragging of the window border is by design. After the drag ends, the system synchronizes the final window size to the application process, and the two become consistent after the application side completes the layout re-layout.

@@ -1,11 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to use DisplaySync to request an independent frame rate for UI drawing, set an expected frame rate range, and register per-frame callbacks for differentiated UI updates."
+keywords: [DisplaySync, UI drawing frame rate, expected frame rate, per-frame callback, subscription function]
+doctype: guide
+status: active
+---
+
 # Requesting Frame Rates for UI Components
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=c387086483c8d9d4cc63801510c549e16234c84d translatedAt=2026-10-19T01:24:19.142Z pushedAt=2026-10-19T07:35:24.322Z -->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 If you need to draw and update UI content at an independent frame rate, you can use **DisplaySync**. The frame rate for drawing content in an app can be controlled by a **DisplaySync** instance. For details, see [@ohos.graphics.displaySync (Variable Frame Rate)](../reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md).
 

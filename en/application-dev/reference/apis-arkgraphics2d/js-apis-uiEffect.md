@@ -144,8 +144,6 @@ The maximum supported brightness boost multiple is calculated as the device's cu
 
 **Required permissions:** ohos.permission.HDR_BRIGHTNESS
 
-<!--Del-->System apps do not need to apply for this permission.<!--DelEnd-->
-
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters**

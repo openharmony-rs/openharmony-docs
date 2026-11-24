@@ -6,94 +6,97 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:35:50.866Z pushedAt=2026-08-10T10:07:27.904Z -->
+<!-- md-trans-meta sourceCommit=3002bbe1bb44da70f76d64393db91db26aa3dc7e translatedAt=2026-11-20T09:37:52.077Z pushedAt=2026-11-23T08:04:54.007Z nl=1 -->
 
 For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify-overview.md#sm2).
 
 ## Adding the Dynamic Library in the CMake Script
-
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
 ## Signing Data
-
 1. Call [OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create) with the string parameter **'SM2_256|SM3'** to create a **Sign** instance. The key type is **SM2_256**, and MD algorithm is **SM3**.
 
 2. Call [OH_CryptoSign_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init) to initialize the **Sign** instance using [OH_CryptoPrivKey](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkey.md).
 
-3. Call [OH_CryptoSign_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update) to pass in the data to be signed. Currently, the amount of data to be passed in by a single **update** is not limited. You can determine how to pass in data based on the data volume. If the data size is small, you can simply call **OH_CryptoSign_Final** to pass in the full data.
+3. Call [OH_CryptoSign_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update) to pass in the data to be signed. Currently, the data volume to be passed in by a single **update** is not limited. You can determine how to pass in data based on the data volume. If the data size is small, you can simply call **OH_CryptoSign_Final** to pass in the full data.
 
 4. Call [OH_CryptoSign_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final) to obtain the signed data.
 
 5. Call [OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy) to free the memory.
 
-```c++
-#include "CryptoArchitectureKit/crypto_common.h"
-#include "CryptoArchitectureKit/crypto_asym_key.h"
-#include "CryptoArchitectureKit/crypto_signature.h"
+<!-- @[sign_with_sm2_key_pair_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_sign.cpp) -->
 
-static OH_Crypto_ErrCode doSm2Test() {
-   OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
-   OH_CryptoKeyPair *keyPair = nullptr;
-   OH_CryptoSign *sign = nullptr;
+``` C++
+#include "signing_signature_verification.h"
 
-   uint8_t plainText[] = {
-      0x96, 0x46, 0x2e, 0xde, 0x3f, 0x47, 0xbf, 0xd6, 0x87, 0x48, 0x36, 0x1d, 0x75, 0x35, 0xbd, 0xbc,
-      0x6b, 0x06, 0xe8, 0xb3, 0x68, 0x91, 0x53, 0xce, 0x76, 0x5d, 0x24, 0xda, 0xdc, 0xc4, 0x9f, 0x94,
-   };
-   Crypto_DataBlob msgBlob = {
-      .data = reinterpret_cast<uint8_t *>(plainText),
-      .len = sizeof(plainText)};
+static const uint8_t g_plainText[] = {
+    0x96, 0x46, 0x2e, 0xde, 0x3f, 0x47, 0xbf, 0xd6, 0x87, 0x48, 0x36, 0x1d, 0x75, 0x35, 0xbd, 0xbc,
+    0x6b, 0x06, 0xe8, 0xb3, 0x68, 0x91, 0x53, 0xce, 0x76, 0x5d, 0x24, 0xda, 0xdc, 0xc4, 0x9f, 0x94,
+};
 
-   OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create((const char *)"SM2_256", &keyCtx);
-   if (ret != CRYPTO_SUCCESS) {
-      return ret;
-   }
-   ret = OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
+static void CleanupSm2SignResources(OH_CryptoAsymKeyGenerator *keyCtx,
+    OH_CryptoKeyPair *keyPair, OH_CryptoSign *sign)
+{
+    if (sign != nullptr) {
+        OH_CryptoSign_Destroy(sign);
+    }
+    if (keyPair != nullptr) {
+        OH_CryptoKeyPair_Destroy(keyPair);
+    }
+    if (keyCtx != nullptr) {
+        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+    }
+}
 
-   OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPair);
-   ret = OH_CryptoSign_Create((const char *)"SM2_256|SM3", &sign);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-   ret = OH_CryptoSign_Init(sign, privKey);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
+OH_Crypto_ErrCode DoTestSm2Sign()
+{
+    OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
+    OH_CryptoKeyPair *keyPair = nullptr;
+    OH_CryptoSign *sign = nullptr;
+    Crypto_DataBlob msgBlob = {.data = const_cast<uint8_t *>(g_plainText), .len = sizeof(g_plainText)};
 
-   ret = OH_CryptoSign_Update(sign, &msgBlob);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
+    OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create((const char *)"SM2_256", &keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
 
-   Crypto_DataBlob signBlob = {.data = nullptr, .len = 0};
-   ret = OH_CryptoSign_Final(sign, nullptr, &signBlob);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-   OH_CryptoSign_Destroy(sign);
-   OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-   OH_CryptoKeyPair_Destroy(keyPair);
-   OH_Crypto_FreeDataBlob(&signBlob);
-   return CRYPTO_SUCCESS;
+    OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPair);
+    ret = OH_CryptoSign_Create((const char *)"SM2_256|SM3", &sign);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+    ret = OH_CryptoSign_Init(sign, privKey);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+
+    ret = OH_CryptoSign_Update(sign, &msgBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+
+    Crypto_DataBlob signBlob = {.data = nullptr, .len = 0};
+    ret = OH_CryptoSign_Final(sign, nullptr, &signBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+    CleanupSm2SignResources(keyCtx, keyPair, sign);
+    OH_Crypto_FreeDataBlob(&signBlob);
+    return CRYPTO_SUCCESS;
 }
 ```
+
 
 ## Verifying the Signature
 
@@ -109,6 +112,20 @@ static OH_Crypto_ErrCode doSm2Test() {
 
 ``` C++
 #include "signing_signature_verification.h"
+
+static void CleanupSm2SignResources(OH_CryptoAsymKeyGenerator *keyCtx,
+    OH_CryptoKeyPair *keyPair, OH_CryptoVerify *verify)
+{
+    if (verify != nullptr) {
+        OH_CryptoVerify_Destroy(verify);
+    }
+    if (keyPair != nullptr) {
+        OH_CryptoKeyPair_Destroy(keyPair);
+    }
+    if (keyCtx != nullptr) {
+        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+    }
+}
 
 bool DoTestSm2Signature()
 {
@@ -157,26 +174,17 @@ bool DoTestSm2Signature()
     // verify
     ret = OH_CryptoVerify_Create((const char *)"SM2_256|SM3", &verify);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     ret = OH_CryptoVerify_Init(verify, pubKey);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     bool res = OH_CryptoVerify_Final(verify, &msgBlob, &signBlob);
-    if (res != true) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-        return false;
-    }
-
-    OH_CryptoVerify_Destroy(verify);
-    OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-    OH_CryptoKeyPair_Destroy(keyPair);
+    CleanupSm2SignResources(keyCtx, keyPair, verify);
     return res;
 }
 ```
+

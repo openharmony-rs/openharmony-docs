@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b58dba3224bad72223acb52f1bfa49789af21175 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Symptom
 
@@ -20,7 +21,7 @@ To protect sensitive information in user images, [Media Library Kit](../photoAcc
 
 ## Solution
 
-After the application requests the [ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location) permission, desensitization is disabled for the application, allowing it to obtain all sensitive information from the image.
+After the app requests the [ohos.permission.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location) permission, the desensitization level of the app changes to no desensitization, allowing the app to obtain all sensitive information of the image normally.
 
 **Example**
 
@@ -87,11 +88,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 For details about geolocation fields and how to use them, see [PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7) in Image Kit.
 
-| Name |  Description|
-| ----- | ---- |
-| GPSLatitude | Image latitude.|
-| GPSLongitude | Image longitude.|
-| GPSTimeStamp | GPS timestamp.|
-| GPSDateStamp | GPS date stamp.|
-| GPSAltitude | Altitude based on **GPSAltitudeRef**.|
-| GPSVersionID | GPS information version.|
+| Name | Value | Description |
+| ----- | ---- | ---- |
+| GPS_LATITUDE | GPSLatitude | Image latitude. |
+| GPS_LONGITUDE | GPSLongitude | Image longitude. |
+| GPS_TIME_STAMP | GPSTimeStamp | GPS timestamp. |
+| GPS_DATE_STAMP | GPSDateStamp | GPS datestamp. |
+| GPS_ALTITUDE | GPSAltitude | Altitude relative to GPSAltitudeRef. |
+| GPS_VERSION_ID | GPSVersionID | GPS information version. |

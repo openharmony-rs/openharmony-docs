@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6e2c1b088ca07edf7cbf35ac673d064899b4ab51 translatedAt=2026-09-16T10:52:02.045Z pushedAt=2026-09-20T09:01:52.253Z -->
+<!-- md-trans-meta sourceCommit=5ba898f284ea81cae89e051fca6d8db546c99f03 translatedAt=2026-11-03T06:15:05.083Z pushedAt=2026-11-03T12:08:25.613Z nl=1 -->
 
 ## Overview
 
@@ -54,6 +54,7 @@ Defines the structs of the HiDebug module.
 | [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | Enumerates the data types of debugging information.|
 | [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | Enumerates the resource profiling types.|
 | [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | Enumeration of memory listener callback types. Developers handle related logic based on the callback type. |
+| [OH_HiDebug_ProfilerStackTraceMode](#oh_hidebug_profilerstacktracemode) | OH_HiDebug_ProfilerStackTraceMode | Enumerates the call stack tracing modes. |
 
 ### Macros
 
@@ -145,8 +146,9 @@ Enumerates the error codes. It is used as the return status identifier for each 
 | HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | The available memory of the whole device system is below 2 GB.<br>**since:** 24 |
 | HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | The available storage space of the whole device system is below the storage threshold, which is the larger of 3% of the total storage capacity and 15 GB.<br>**since:** 24 |
 | HIDEBUG_RES_PROF_FAILURE = 11400430 | Failed to start or stop resource profiling.<br>**Since**: 24|
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | The async nesting depth parameter for resource collection is invalid.<br>**since:** 26.0.1 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | The async task stack depth parameter for resource collection is invalid.<br>**since:** 26.0.1 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | The resource collection async nesting depth parameter is invalid.<br>**Since:** 26.0.1 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | The resource collection async task stack depth parameter is invalid.<br>**Since:** 26.0.1 |
+| HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | Invalid stack trace mode.<br>**Since:** 26.0.1 |
 
 ### HiDebug_TraceFlag
 
@@ -222,9 +224,9 @@ Enumerates the resource profiling types.
 | OH_RES_TYPE_NATIVE | Native memory.<br>**Since**: 24|
 | OH_RES_TYPE_GPU | GPU memory.<br>**Since**: 24|
 | OH_RES_TYPE_GLOBAL_HANDLE | Global handle.<br>**Since**: 24|
-| OH_RES_TYPE_DMA | DMA memory.<br>**since:** 26.0.1 |
-| OH_RES_TYPE_ASHMEM | Anonymous shared memory.<br>**since:** 26.0.1 |
-| OH_RES_TYPE_COMPOSITE_HEAP | Composite heap.<br>**since:** 26.0.1 |
+| OH_RES_TYPE_DMA | DMA memory<br>**Since:** 26.0.1 |
+| OH_RES_TYPE_ASHMEM | Anonymous shared memory<br>**Since:** 26.0.1 |
+| OH_RES_TYPE_COMPOSITE_HEAP | Composite heap<br>**Since:** 26.0.1 |
 
 ### OH_HiDebug_MemListenerType
 
@@ -243,6 +245,23 @@ Enumerates the memory listening callback types. Developers handle related logic 
 | OH_HIDEBUG_DO_NOTHING = 0 | No specific operation is performed. Only a notification callback is performed.<br>**Since:** 26.0.0|
 | OH_HIDEBUG_RUNNING_GC = 1 | Perform garbage collection (GC).<br>**Since:** 26.0.0|
 | OH_HIDEBUG_DUMP_SNAPSHOT = 2 | Export memory snapshot.<br>**Since:** 26.0.0|
+
+### OH_HiDebug_ProfilerStackTraceMode
+
+```c
+enum OH_HiDebug_ProfilerStackTraceMode
+```
+
+**Description**
+
+Enumerates the stack trace modes.
+
+**Since:** 26.0.1
+
+| Value | Description |
+| -- | -- |
+| OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0 | Keeps all stack traces, including the destroyed ones.<br>**Since:** 26.0.1 |
+| OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1 | Discards the destroyed stack traces.<br>**Since:** 26.0.1 |
 
 ## Macro Description
 

@@ -5,10 +5,11 @@
 <!--Designer: @Terence_Super-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=8849c1ba46e94276e60aba7fd9c38f7b7dbc0634 translatedAt=2026-11-03T03:43:21.310Z pushedAt=2026-11-03T08:15:13.717Z nl=1 -->
 
 ## Overview
 
-Defines C APIs for the radio module.
+This module defines C APIs for the network search module and provides the capability to obtain the mobile network status (including the network registration status, carrier information, and network mode). It applies to scenarios where an app needs to query the network connection status of the current card slot.
 
 **File to include**: <telephony/core_service/telephony_radio.h>
 
@@ -52,7 +53,7 @@ Obtains the network status.
 
 | Name| Description|
 | -- | -- |
-| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | Structure of the network status information received by the user.|
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | Pointer to the struct used to receive network state information. |
 
 **Returns**
 
@@ -82,10 +83,12 @@ Obtains the network status of the SIM card in the specified slot.
 | Name| Description|
 | -- | -- |
 | int32_t slotId | Card slot ID.|
-| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | Structure of the network status information received by the user.|
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | Pointer to the struct used to receive network state information. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | [Telephony_RadioResult](capi-telephony-radio-type-h.md#telephony_radioresult) | Result code. For details, see [Telephony_RadioResult](capi-telephony-radio-type-h.md#telephony_radioresult).<br>         [TEL_RADIO_SUCCESS](capi-telephony-radio-type-h.md#telephony_radioresult): Operation succeeded.<br>         [TEL_RADIO_PERMISSION_DENIED](capi-telephony-radio-type-h.md#telephony_radioresult): Permission denied.<br>         [TEL_RADIO_ERR_MARSHALLING_FAILED](capi-telephony-radio-type-h.md#telephony_radioresult): Marshalling failed.<br>         [TEL_RADIO_ERR_SERVICE_CONNECTION_FAILED](capi-telephony-radio-type-h.md#telephony_radioresult): Telephony service connection failed.<br>         [TEL_RADIO_ERR_OPERATION_FAILED](capi-telephony-radio-type-h.md#telephony_radioresult): Telephony service operation failed.<br>         [TEL_RADIO_ERR_INVALID_PARAM](capi-telephony-radio-type-h.md#telephony_radioresult): Invalid parameter.|
+
+

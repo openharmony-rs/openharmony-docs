@@ -1,12 +1,11 @@
 # Class (ProxyConfig)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:07.098Z pushedAt=2026-08-07T08:11:15.498Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:03:47.220Z pushedAt=2026-11-10T02:06:24.623Z nl=1 -->
 
 ProxyConfig is a class in the ArkWeb framework used to configure network proxy rules. It works with [ProxyController](./arkts-apis-webview-ProxyController.md) to implement proxy control over network requests of all Web components in an app. Through ProxyConfig, developers can flexibly define various proxy rules: specifying a particular proxy server for specific URLs, specifying direct server connections for certain URLs, defining rules to bypass the proxy, and more.
 
@@ -33,19 +32,12 @@ The host is a bracketed IPv6 literal, an IPv4 literal, or one or more labels sep
 The port number is optional. The default port is 80 for HTTP, 443 for HTTPS, and 1080 for SOCKS.
 
 For example:
-
 - example.com host: example.com
-
 - https://example.com  scheme: https  host: example.com
-
 - example.com:8888     host: example.com  port: 8888
-
 - https://example.com:8888  scheme: https  host: example.com  port: 8888
-
 - 192.168.1.1  host: 192.168.1.1
-
 - 192.168.1.1:8888  host: 192.168.1.1 port: 8888
-
 - [10:20:30:40:50:60:70:80]
 
 **System capability**: SystemCapability.Web.Webview.Core

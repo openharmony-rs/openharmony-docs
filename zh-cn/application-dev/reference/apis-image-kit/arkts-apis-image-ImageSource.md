@@ -815,7 +815,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function UpdateDatay(imageSourceObj : image.ImageSource) {
+async function UpdateData(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
   try {
     // 该接口为异步接口，调用时需保证执行时序。
@@ -852,7 +852,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function UpdateDatay(imageSourceObj : image.ImageSource) {
+async function UpdateData(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
   imageSourceObj.updateData(array, false, 0, 10, (err: BusinessError) => {
     if (err) {
@@ -1482,7 +1482,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 **示例：**
 
 ```ts
-async function CreatePixelMapUsingAllocator(context : Context) {
+async function CreatePixelMapUsingAllocatorSync(context : Context) {
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);

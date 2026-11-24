@@ -148,18 +148,22 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
        };
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
        formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-         hilog.info(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
+         hilog.error(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
        });
      }
    
      onFormEvent(formId: string, message: string): void {
        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
        hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent');
-       // 获取message事件中传递的detail参数
-       let msg: Record<string, string> = JSON.parse(message);
-       if (msg.detail === 'message detail') {
-         // 执行业务逻辑，由用户自行实现
-         hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+       try {
+         // 获取message事件中传递的detail参数
+         let msg: Record<string, string> = JSON.parse(message);
+         if (msg.detail === 'message detail') {
+           // 执行业务逻辑，由用户自行实现
+           hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+         }
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${err.code}, message: ${err.message}`);
        }
      }
    
@@ -365,7 +369,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 当卡片应用需要更新数据时（如触发了定时更新或定点更新），卡片应用获取最新数据，并调用updateForm()接口主动触发卡片的更新。
 
 代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
-<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -385,7 +389,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     };
     let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
     formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
+      hilog.error(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
     });
   }
 
@@ -668,7 +672,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 - 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
-    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -682,11 +686,15 @@ export default class JsCardFormAbility extends FormExtensionAbility {
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent');
-        // 获取message事件中传递的detail参数
-        let msg: Record<string, string> = JSON.parse(message);
-        if (msg.detail === 'message detail') {
-          // 执行业务逻辑，由用户自行实现
-          hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+        try {
+          // 获取message事件中传递的detail参数
+          let msg: Record<string, string> = JSON.parse(message);
+          if (msg.detail === 'message detail') {
+            // 执行业务逻辑，由用户自行实现
+            hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+          }
+        } catch (err) {
+          hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${err.code}, message: ${err.message}`);
         }
       }
     

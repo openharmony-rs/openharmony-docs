@@ -5,7 +5,8 @@
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:33.054Z pushedAt=2026-06-22T07:44:09.128Z -->
+<!-- md-trans-meta sourceCommit=8172efdc94c065e1de022814d66012668129fd88 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## When to Use
 
@@ -150,7 +151,10 @@ import { common } from '@kit.AbilityKit';
 let store: relationalStore.RdbStore | undefined = undefined;
 
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -197,7 +201,10 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 }
 
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   store = await relationalStore.getRdbStore(context, STORE_CONFIG);
   if (store == null) {

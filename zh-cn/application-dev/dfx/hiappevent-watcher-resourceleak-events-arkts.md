@@ -62,7 +62,7 @@
    }
    // 设置资源泄漏事件的自定义配置
    hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
-   if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
+   if (deviceInfo.sdkApiVersion >= 24) {  // 从API version 24开始，支持设置页面切换日志
      // 配置页面切换日志
      let switchLogPolicy : hiAppEvent.EventPolicy = {
        "resourceOverlimitPolicy": {
@@ -299,7 +299,8 @@
    {
        napi_property_descriptor desc[] = {
            // ...
-           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr}
+           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;

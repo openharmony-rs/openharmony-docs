@@ -1,11 +1,11 @@
 # Introduction to Audio Focus
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=99c0f65ab11e80829c9fe89a70bd5d019336366b translatedAt=2026-09-20T02:43:38.532Z pushedAt=2026-09-20T03:14:00.486Z -->
+<!-- md-trans-meta sourceCommit=fc674a3c105191583062dae50202bbeca65c2f07 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Audio Focus Overview
 
@@ -149,6 +149,8 @@ The following table lists typical focus adaptation scenarios.
 | Video          | STREAM_USAGE_MOVIE | Alarm        | STREAM_USAGE_ALARM    | When the alarm rings, the video playback pauses.<br>When the alarm ends, the video playback resumes.        | Application A listens for audio focus events. When it receives the INTERRUPT_HINT_PAUSE event, it pauses video playback and updates its UI.<br>When the alarm ends, application A receives the **INTERRUPT_HINT_RESUME** event and restarts the playback.|
 | Music        | STREAM_USAGE_MUSIC | Ringtone    | STREAM_USAGE_RINGTONE | When the phone rings, the music playback pauses.<br>When the call is not connected or the call is connected and then ended, the music playback resumes.| Application A listens for audio focus events. When it receives the INTERRUPT_HINT_PAUSE event, it pauses music playback and updates its UI.<br>When the call ends, application A receives the **INTERRUPT_HINT_RESUME** event and restarts the playback.|
 | Music        | STREAM_USAGE_MUSIC | VoIP call    | STREAM_USAGE_VOICE_COMMUNICATION | When a call is connected, the music playback pauses.<br>When the call ends, the music playback resumes.| Application A listens for audio focus events.<br>When it receives the INTERRUPT_HINT_PAUSE event, it pauses music playback and updates its UI.<br>When the call ends, application A receives the **INTERRUPT_HINT_RESUME** event and restarts the playback.|
+| Music | STREAM_USAGE_MUSIC | Microphone recording | SOURCE_TYPE_MIC | Music pauses when recording starts and resumes when recording ends. | The music app listens for audio focus events. On receiving the INTERRUPT_HINT_PAUSE event, it pauses music playback and updates its UI. When recording ends, it receives the INTERRUPT_HINT_RESUME event and restarts playback. |
+| Video | STREAM_USAGE_MOVIE | Video | STREAM_USAGE_MOVIE | The video started later plays normally. The video started first stops and receives no resume event. | The app playing the first video listens for audio focus events. On receiving the INTERRUPT_HINT_STOP event, it stops video playback and updates its UI. |
 
 **Example of handling audio focus:**
 
@@ -235,6 +237,15 @@ async function onAudioInterrupt(): Promise<void> {
 }
 ```
 
+### Audio Focus Policy Differences on PC/2in1 Devices
+
+On PC/2in1 devices, audio focus policies differ from the general policies in some typical scenarios because PC usage habits differ from those on other devices.
+
+| Audio Type Played First | Recommended Stream Type | Audio Type Played Later | Recommended Stream Type | Policy Differences |
+| -------- | ---------- | ------------ | ---------- | ------------ |
+| Music | STREAM_USAGE_MUSIC | Music | STREAM_USAGE_MUSIC | **General policy**: The music played first stops and receives no resume event.<br>**PC/2in1 policy**: The music played first continues, and both streams play concurrently. |
+| Music | STREAM_USAGE_MUSIC | Microphone recording | SOURCE_TYPE_MIC | **General policy**: Music pauses and receives a resume event when recording ends.<br>**PC/2in1 policy**: Music does not pause automatically. |
+| Video | STREAM_USAGE_MOVIE | Video | STREAM_USAGE_MOVIE | **General policy**: The video played first stops and cannot resume automatically.<br>**PC/2in1 policy**: The video played first continues, and both videos play concurrently. |
 
 ## In-App Focus Management
 

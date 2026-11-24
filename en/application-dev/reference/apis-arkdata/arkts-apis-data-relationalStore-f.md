@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=2ef7a1e44e8b87b446030917cb226504c52da997 translatedAt=2026-11-16T01:14:48.551Z pushedAt=2026-11-20T07:24:26.204Z nl=1 -->
 
 > **NOTE**
 > 
@@ -169,8 +170,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800017  | StoreConfig is changed. <br>Applicable versions: 12+|
 | 14800020  | The secret key is corrupted or lost. <br>Applicable versions: 14+  |
 | 14800021  | SQLite: Generic error. <br>Applicable versions: 12+|
-| 14800022  | SQLite: Callback routine requested an abort. <br>Applicable versions: 14+  |
-| 14800023  | SQLite: Access permission denied. <br>Applicable versions: 14+   |
+| 14800022  | SQLite: Callback routine requested an abort. <br>Applicable versions: 12+   |
+| 14800023  | SQLite: Access permission denied. <br>Applicable versions: 12+    |
 | 14800027  | SQLite: Attempt to write a readonly database. <br>Applicable versions: 12+|
 | 14800028  | SQLite: Some kind of disk I/O error occurred. <br>Applicable versions: 12+|
 | 14800029  | SQLite: The database is full. <br>Applicable versions: 12+|
@@ -572,7 +573,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | **ID**| **Error Message**            |
 |-----------|---------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. <br>Applicable versions: 12+     |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>Applicable versions: 12+      |
 | 14800000  | Inner error.      |
 | 14800010  | Failed to open or delete the database by an invalid database path.   |
 | 14801001  | The operation is supported in the stage model only.   |

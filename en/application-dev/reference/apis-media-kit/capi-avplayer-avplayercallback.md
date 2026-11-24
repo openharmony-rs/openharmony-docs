@@ -2,10 +2,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=09a82d06cdbfe294e7bdee52844240f730ae4276 translatedAt=2026-09-15T16:01:01.304Z pushedAt=2026-09-22T01:34:18.774Z -->
+<!-- md-trans-meta sourceCommit=cc48f97eabfc91efede35183124197c3434b661e translatedAt=2026-11-09T06:25:36.667Z pushedAt=2026-11-09T08:33:08.508Z nl=1 -->
 
 ```c
 typedef struct AVPlayerCallback {...} AVPlayerCallback
@@ -31,5 +31,5 @@ typedef struct AVPlayerCallback {...} AVPlayerCallback
 
 | Name| Description|
 | -- | -- |
-| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo<sup>(deprecated)</sup> | Monitors the AVPlayer process information. This callback needs to be registered with the AVPlayer instance. After this callback is set, it will be triggered when the player generates a message. In this way, you can obtain the playback information in real time. If this callback is not set, it will not be triggered. You are advised to register this callback in scenarios where the playback state needs to be monitored in real time and information such as the buffering progress or playback position needs to be obtained. If this callback is not registered, your app will not receive notifications about state changes during playback.<br>**Since:** 11<br>**Deprecated version:** 12<br>**Substitute:** [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) |
-| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError<sup>(deprecated)</sup> | Monitors AVPlayer operation errors. This callback needs to be registered with the AVPlayer instance. After this callback is set, it will be triggered when an error occurs during player operations. In this way, you can obtain the error information for processing. If this callback is not set, it will not be triggered. You are advised to register this callback in scenarios where playback errors need to be captured and handled. If this callback is not registered, your app will not receive notifications about error events during playback.<br>**Since:** 11<br>**Deprecated version:** 12<br>**Substitute:** [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback) |
+| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo | Monitors the AVPlayer process information. This callback needs to be registered with the AVPlayer instance. After this callback is set, it will be triggered when the player generates a message. In this way, you can obtain the playback information in real time. If this callback is not set, it will not be triggered. You are advised to register this callback when the playback state needs to be monitored in real time and information such as the buffering progress or playback position needs to be obtained. If this callback is not registered, your app will not receive notifications about state changes during playback.<br>**Since:** 11<br>**Deprecated since:** 12<br>**Substitute API:** [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) |
+| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError | Monitors AVPlayer operation errors. This callback needs to be registered with the AVPlayer instance. After this callback is set, it will be triggered when an error occurs during player operations. In this way, you can obtain the error information for processing. If this callback is not set, it will not be triggered. You are advised to register this callback when playback errors need to be captured and handled. If this callback is not registered, your app will not receive notifications about error events during playback.<br>**Since:** 11<br>**Deprecated since:** 12<br>**Substitute API:** [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback) |

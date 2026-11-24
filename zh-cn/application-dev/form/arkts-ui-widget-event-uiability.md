@@ -77,7 +77,7 @@
   
 - 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
+    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) -->
     
     ``` TypeScript
     // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
@@ -98,19 +98,23 @@
       handleFormRouterEvent(want: Want, source: string): void {
         hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${want.parameters?.params as string}`);
         if (want.parameters && want.parameters[formInfo.FormParam.IDENTITY_KEY] !== undefined) {
-          let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
-          // want.parameters.params 对应 postCardAction() 中 params 内容
-          let message: string = (JSON.parse(want.parameters?.params as string))?.routerDetail;
-          hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
-          let formData: Record<string, string> = {
-            'routerDetail': message + ' ' + source + ' UIAbility', // 和卡片布局中对应
-          };
-          let formMsg = formBindingData.createFormBindingData(formData);
-          formProvider.updateForm(curFormId, formMsg).then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.');
-          }).catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
-          });
+          try {
+            let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
+            // want.parameters.params 对应 postCardAction() 中 params 内容
+            let message: string = (JSON.parse(want.parameters?.params as string))?.routerDetail;
+            hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
+            let formData: Record<string, string> = {
+              'routerDetail': message + ' ' + source + ' UIAbility', // 和卡片布局中对应
+            };
+            let formMsg = formBindingData.createFormBindingData(formData);
+            formProvider.updateForm(curFormId, formMsg).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${err.code}, error message: ${err.message}`);
+            });
+          } catch (err) {
+            hilog.error(DOMAIN_NUMBER, TAG, `handleFormRouterEvent catch error, code: ${err.code}, message: ${err.message}`);
+          }
         }
       }
     
@@ -201,7 +205,7 @@
   
 - 在UIAbility的onCreate生命周期中监听call事件所需的方法，然后在对应方法中调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
+    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
@@ -241,21 +245,25 @@
     
     // 在收到call事件后会触发callee监听的方法
     let funACall = (data: rpc.MessageSequence): MyParcelable => {
-      // 获取call事件中传递的所有参数
-      let params: Record<string, string> = JSON.parse(data.readString());
-      if (params.formId !== undefined) {
-        let curFormId: string = params.formId;
-        let message: string = params.calleeDetail;
-        hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
-        let formData: Record<string, string> = {
-          'calleeDetail': message
-        };
-        let formMsg: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-        formProvider.updateForm(curFormId, formMsg).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, `updateForm success.`);
-        }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
-        });
+      try {
+        // 获取call事件中传递的所有参数
+        let params: Record<string, string> = JSON.parse(data.readString());
+        if (params.formId !== undefined) {
+          let curFormId: string = params.formId;
+          let message: string = params.calleeDetail;
+          hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
+          let formData: Record<string, string> = {
+            'calleeDetail': message
+          };
+          let formMsg: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+          formProvider.updateForm(curFormId, formMsg).then(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, `updateForm success.`);
+          }).catch((err: BusinessError) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${err.code}, error message: ${err.message}`);
+          });
+        }
+      } catch (err) {
+        hilog.error(DOMAIN_NUMBER, TAG, `funACall catch error, code: ${err.code}, message: ${err.message}`);
       }
       return new MyParcelable(CONST_NUMBER_1, 'aaa');
     };
@@ -265,8 +273,8 @@
         try {
           // 监听call事件所需的方法
           this.callee.on(MSG_SEND_METHOD, funACall);
-        } catch (error) {
-          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed, error code: ${error.code}, error message: ${error.message}`);
+        } catch (err) {
+          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed, error code: ${err.code}, error message: ${err.message}`);
         }
       }
     

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how NativeImage binds a Surface to an OpenGL external texture, receives and updates buffers as a graphics queue consumer, and works with NativeWindow, NativeBuffer, EGL, and GLES3."
+keywords: [NativeImage, graphics queue, consumer, texture update, NativeWindow, NativeBuffer, EGL, GLES3]
+doctype: guide
+status: active
+---
+
 # NativeImage Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -5,7 +13,8 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e5b7b841c52892ad8a5c0485c944bdcf557ee966 translatedAt=2026-10-19T01:28:45.345Z pushedAt=2026-10-19T10:06:29.436Z -->
+<!-- md-trans-meta sourceCommit=f6a29bb7b5e04ec485b4b13e6a2eda953b1edd57 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## Overview
 
@@ -243,7 +252,7 @@ libnative_buffer.so
     ``` C++
     int32_t result = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, SET_BUFFER_GEOMETRY,
         static_cast<int32_t>(width_), static_cast<int32_t>(height_));
-    if (result != SUCCESS) {
+    if (result != NATIVE_ERROR_OK) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to set buffer geometry.");
         return false;
     }
@@ -258,7 +267,7 @@ libnative_buffer.so
         OHNativeWindowBuffer *buffer = nullptr;
         int releaseFenceFd = INVALID_FD;
         int32_t result = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow_, &buffer, &releaseFenceFd);
-        if (result != SUCCESS || buffer == nullptr) {
+        if (result != NATIVE_ERROR_OK || buffer == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
                          "OHNativeRender", "Failed to request buffer, ret : %{public}d.", result);
             return;
@@ -349,7 +358,7 @@ libnative_buffer.so
         Region region{nullptr, 0};
         // Submit to the consumer.
         result = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer, NO_FENCE, region);
-        if (result != SUCCESS) {
+        if (result != NATIVE_ERROR_OK) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
                          "OHNativeRender", "Failed to flush buffer, result : %{public}d.", result);
         }

@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Scrollable Container Component Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @shengu_lancer; @yangcan18; @rongShao-Z-->
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b3ef211d02a2c13129a5cbd33233dd8741ae847e translatedAt=2026-08-25T02:22:06.533Z pushedAt=2026-08-26T10:58:04.581Z -->
+<!-- md-trans-meta sourceCommit=fad906b23379c7582ce1f67dc2e8fc029e0dab46 translatedAt=2026-11-18T08:51:14.082Z pushedAt=2026-11-23T02:56:29.630Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -33,6 +32,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -55,6 +55,7 @@ Width of the scrollbar. This attribute can be set, reset, and obtained as requir
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -79,17 +80,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .data[0].u32 | Color of the scrollbar, in 0xARGB format. The default value for kids' smartwatches is **0xffffffff**, indicating white (100% non-transparent). For other devices, the default value is **0x66182431**, indicating dark blue-gray (40% non-transparent).|
+| .data[0].u32 | Color of the scrollbar, in 0xARGB format. The default value for kids' smartwatches is **0xffffffff**, indicating white (100% non-transparent). For other devices, the default value is **0x66182431**, indicating dark blue-gray (40% non-transparent). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .data[0].u32 | Color of the scrollbar, in 0xARGB format.|
+| .data[0].u32 | Scrollbar color, in 0xARGB format. |
 
 ## NODE_SCROLL_SCROLL_DIRECTION
 
@@ -101,6 +103,7 @@ Scroll direction. This attribute can be set, reset, and obtained as required thr
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -124,6 +127,7 @@ Effect used at the edges of the component when the boundary of the scrollable co
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -152,6 +156,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -174,6 +179,7 @@ Friction coefficient. It applies only to gestures in the scrolling area, and it 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -198,6 +204,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -214,7 +221,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Alignment mode for scroll snapping in the **Scroll** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-scroll-h.md#arkui_scrollsnapalign).|
 | .value[1].i32 | Whether the snap to start feature is enabled. When scroll snapping is defined for the **Scroll** component, setting this attribute to **0** (false) enables the component to scroll between the start edge and the first snap point. The default value is **1** (true). It is valid only when there are multiple snap points. |
 | .value[2].i32 | Whether the snap to end feature is enabled. When scroll snapping is defined for the **Scroll** component, setting this attribute to **0** (false) enables the component to scroll between the end edge and the last snap point. The default value is **1** (true). It is valid only when there are multiple snap points. |
-| .value[3...].f32 | Snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the Scroll component can scroll. Unit: vp. |
+| .value[3...].f32 | Snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the **Scroll** component can scroll. Unit: vp. |
 
 ## NODE_SCROLL_NESTED_SCROLL
 
@@ -226,6 +233,7 @@ Nested scrolling attribute, which can be set, reset, and obtained as required th
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -251,6 +259,7 @@ Position to scroll to for the [Scroll](../apis-arkui/arkui-ts/ts-container-scrol
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -282,6 +291,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -304,6 +314,7 @@ Whether to enable the swipe-to-turn-pages feature. This attribute can be set, re
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -328,6 +339,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -345,6 +357,7 @@ Scrolling distance. The **List**, **Scroll**, and **WaterFlow** components suppo
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -364,6 +377,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
@@ -380,6 +394,7 @@ Edge fade effect for the scrollable component.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -406,6 +421,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 14
 
+
 **Returns**
 
 | Type| Description|
@@ -423,6 +439,7 @@ Offset from the start of the content of the scrollable component. [List](arkui-t
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -447,6 +464,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -469,6 +487,7 @@ Maximum initial velocity at the start of the fling animation that occurs after g
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 18
+
 
 **Parameters**
 
@@ -493,6 +512,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -516,6 +536,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -538,6 +559,7 @@ Margin of the scrollbar. This attribute can be set, reset, and obtained as requi
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -564,6 +586,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -586,6 +609,7 @@ Minimum zoom scale for scrollable content.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -610,6 +634,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -632,6 +657,7 @@ Whether to enable the zoom bounce effect when the scaling exceeds the limits.<br
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -656,11 +682,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name       | Description                                                        |
 | ------------- | ------------------------------------------------------------ |
-| .value[0].i32 | Whether to support scroll using the left button on the mouse. The value **1** indicates to support, and **0** indicates the opposite. The default value is **0**.|
+| .value[0].i32 | Whether to support scroll using the left button on the mouse. The value **1** indicates to support, and **0** indicates the opposite. Before API version 26.1.0, the default value is **0**. Since API version 26.1.0, when the scrollable component scrolls horizontally, the default value is **1**; otherwise, it is **0**. |
 
 **Returns**
 
@@ -692,6 +719,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Whether the scrollbar automatically adjusts its margin. The value **0** indicates that the scrollbar automatically adjusts its margin, and **1** indicates the opposite.|
 
+
 ## NODE_SCROLL_BAR_HEIGHT
 
 ```c
@@ -707,13 +735,54 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Scrollbar height, in vp. Default value: auto-adjusted height of the scroll component.<br>Value range: The value must be greater than or equal to 0. If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 37 vp. The value **0** means not to show the scrollbar.|
+| .value[0].f32 | Scrollbar height, in vp. Default value: auto-adjusted height of the scrollable component.<br>Value range: The value must be greater than or equal to 0. If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 37 vp. The value **0** means not to show the scrollbar.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Scrollbar height, in vp.|
+
+## NODE_SCROLL_STATE
+
+```c
+NODE_SCROLL_STATE = 1002030
+```
+
+Current scroll state.<br>
+This attribute can be obtained through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute) as required.<br>
+The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is as follows.<br>
+
+**Since**: 26.1.0
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Current scroll state. The parameter type is [ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate). |
+
+## NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD
+
+```c
+NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD = 1002031
+```
+
+Whether the scrollable component can be scrolled using the arrow keys on the keyboard. When enabled, the scrollable component responds to the arrow keys on the keyboard when it is focused and the focus state is not activated. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | Whether to support scrolling using the arrow keys on the keyboard. The value **1** indicates to support, and **0** indicates the opposite. Default value: **0**. |
+
+**Returns**
+
+| Type | Description |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | Whether scrolling using the arrow keys on the keyboard is supported. The value **1** indicates that scrolling using the arrow keys on the keyboard is supported, and **0** indicates the opposite. |
 
 ## NODE_LIST_DIRECTION
 
@@ -725,6 +794,7 @@ Direction in which the [list](arkui-ts/ts-container-list.md) items are arranged.
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -749,6 +819,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -771,6 +842,7 @@ Spacing between list items. This attribute can be set, reset, and obtained as re
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -795,6 +867,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -818,6 +891,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -840,10 +914,16 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_LIST_SCROLL_TO_INDEX = 1003005
 ```
 
-Scrolls to the item with the specified index. When **smooth** is set to **true**, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved.<br>
+Scrolls to the item with the specified index. When the smooth scrolling animation is enabled and fast scroll optimization is not enabled, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved. Since API version 26.1.0, you can set the fast scroll mode through **.value[4]?.i32** to reduce the overhead of creating or measuring intermediate child components.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
+> **NOTE**
+>
+> - When both **ListItem** and **ListItemGroup** exist in a multi-column **List**, use **OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE**. Using **OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE** will cause layout and scrolling exceptions in **List**.
+> - The fast scroll mode does not change the meaning of the target index, alignment, and extra offset. When the animation is not enabled, the component still jumps in the original way.
+
 **Since**: 12
+
 
 **Parameters**
 
@@ -853,6 +933,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
 | .value[3]?.f32 | Extra offset, in vp. The default value is **0**. A positive number indicates an extra offset toward the end, and a negative number indicates an extra offset toward the start. This parameter is supported since API version 15. |
+| .value[4]?.i32 | Fast scroll mode. The parameter type is [OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode). It takes effect only when **.value[1]?.i32** is set to **1** (indicating that the animation effect is enabled).<br/>When set to **OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE**, the measurement of intermediate child components is skipped; when set to **OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE**, the creation and measurement of intermediate child components are skipped.<br/>Default value: **OH_ARKUI_FAST_SCROLL_MODE_NONE**, which is the same as the behavior when this parameter is not set.<br/>Value range: 0, 1, 2. When the value is out of this range, it is treated as **OH_ARKUI_FAST_SCROLL_MODE_NONE**, fast scroll optimization is not enabled, and the remaining scroll parameters still take effect according to the original rules. This parameter is supported since API version 26.1.0. |
 
 ## NODE_LIST_ALIGN_LIST_ITEM
 
@@ -864,6 +945,7 @@ Alignment mode of list items along the cross axis when the cross-axis width of t
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -888,6 +970,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -910,6 +993,7 @@ Index of the item displayed at the beginning of the viewport when the current li
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -934,11 +1018,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the divider, in 0xARGB format. The default value is **0x08000000**.|
+| .value[0].u32 | Color of the divider, in 0xARGB format. The default value is **0x08000000**. |
 | .value[1].f32 | Stroke width of the divider, in vp. The default value is **0**.|
 | .value[2].f32 | Distance between the divider and the start of the list, in vp. The default value is **0**.|
 | .value[3].f32 | Distance between the divider and the end of the list, in vp. The default value is **0**.|
@@ -947,7 +1032,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the divider, in 0xARGB format.|
+| .value[0].u32 | Color of the divider, in 0xARGB format. |
 | .value[1].f32 | Stroke width of the divider, in vp. |
 | .value[2].f32 | Distance between the divider and the start of the list, in vp.|
 | .value[3].f32 | Distance between the divider and the end of the list, in vp.|
@@ -962,6 +1047,7 @@ Scrolls to the item with the specified index in the specified [list item group](
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -982,6 +1068,7 @@ Number of lanes in the list. (The number of columns is used when the list is scr
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1012,6 +1099,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -1034,6 +1122,7 @@ Whether to maintain the visible content's position when data is inserted or dele
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1058,6 +1147,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 19
 
+
 **Parameters**
 
 | Name| Description|
@@ -1080,6 +1170,7 @@ Focus wrap mode of the **List** component. This attribute can be set, reset, and
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -1104,6 +1195,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -1127,6 +1219,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -1149,6 +1242,7 @@ Responsive lane layout policy of the **List** component. This attribute can be s
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -1175,6 +1269,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -1197,6 +1292,7 @@ Behavior of the system back button for the **List** component. This attribute ca
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -1221,6 +1317,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1243,6 +1340,7 @@ Edit mode options of the **List** component. This attribute can be set, reset, a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -1269,6 +1367,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1291,6 +1390,7 @@ Header component of **ListItemGroup**. This attribute can be set, reset, and obt
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1315,6 +1415,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1338,11 +1439,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format. The default value is **0x08000000**.|
+| .value[0].u32 | Color, in 0xARGB format. The default value is **0x08000000**. |
 | .value[1].f32 | Stroke width of the divider, in vp. The default value is **0**.|
 | .value[2].f32 | Distance between the divider and the start of the list, in vp. The default value is **0**.|
 | .value[3].f32 | Distance between the divider and the end of the list, in vp. The default value is **0**.|
@@ -1351,7 +1453,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 | .value[1].f32 | Stroke width of the divider, in vp.|
 | .value[2].f32 | Distance between the divider and the start of the list, in vp.|
 | .value[3].f32 | Distance between the divider and the end of the list, in vp.|
@@ -1366,6 +1468,7 @@ Default main axis size of the **ListItemGroup** child components.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1390,6 +1493,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -1412,6 +1516,7 @@ Whether the component is being refreshed. This attribute can be set and obtained
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1436,6 +1541,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1452,6 +1558,7 @@ Pull-down follow ratio. This attribute can be set, reset, and obtained as requir
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1476,6 +1583,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1498,6 +1606,7 @@ Whether to initiate a refresh when the pull-down distance exceeds the value of [
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1528,6 +1637,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Maximum pull-down distance, in vp. Value range: [0, +∞). Values less than 0 are treated as **0**. |
 
+
 **Returns**
 
 | Type| Description|
@@ -1544,6 +1654,7 @@ Whether to enable the pull-up-to-cancel gesture for refreshing operations. This 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -1568,6 +1679,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1587,9 +1699,13 @@ NODE_WATER_FLOW_COLUMN_TEMPLATE = 1010001
 ```
 
 Number of columns in the water flow layout. If this attribute is not set, one column is used by default. This attribute can be set, reset, and obtained as required through APIs. For example, **'1fr 1fr 2fr'** indicates three columns, with the first column taking up 1/4 of the parent component's full width, the second column 1/4, and the third column 2/4. You can use [columnsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#columnstemplate)('repeat(auto-fill,track-size)') to automatically calculate the number of columns based on the specified column width (using **track-size**). **repeat** and **auto-fill** are keywords. The units for **track-size** can be px, vp (default), %, or a valid number.<br>
+The unit description of **track-size** applies only to the **repeat(auto-fill,track-size)** format.<br>
+In a non-**repeat** template string, each item supports only the three formats: **'Number+fr'**, **'Number+px'**, and **'Number+%'**, and vp is not supported (for example, **columnsTemplate('100vp 100vp')**).<br>
+When set to **'0fr'**, the width of that column is 0, and the components in that column are not displayed. When set to other invalid values, it is treated as one fixed column.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1610,9 +1726,13 @@ NODE_WATER_FLOW_ROW_TEMPLATE = 1010002
 ```
 
 Number of rows in the water flow layout. If this attribute is not set, one row is used by default. This attribute can be set, reset, and obtained as required through APIs. For example, **'1fr 1fr 2fr'** indicates three rows, with the first row taking up 1/4 of the parent component's full height, the second row 1/4, and the third row 2/4. You can use [rowsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#rowstemplate)('repeat(auto-fill,track-size)') to automatically calculate the number of rows based on the specified row height (using **track-size**). **repeat** and **auto-fill** are keywords. The units for **track-size** can be px, vp (default), %, or a valid number.<br>
+The unit description of **track-size** applies only to the **repeat(auto-fill,track-size)** format.<br>
+In a non-**repeat** template string, each item supports only the three formats: **'Number+fr'**, **'Number+px'**, and **'Number+%'**, and vp is not supported (for example, **rowsTemplate('100vp 100vp')**).<br>
+When set to **'0fr'**, the height of that row is 0, and the components in that row are not displayed. When set to other invalid values, it is treated as one fixed row.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1637,6 +1757,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1660,6 +1781,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1682,6 +1804,7 @@ Water flow section configuration. This attribute can be set, reset, and obtained
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1707,6 +1830,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1729,6 +1853,7 @@ Number of cached items in the adapter of the [WaterFlow](arkui-ts/ts-container-w
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1755,6 +1880,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1767,10 +1893,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_WATER_FLOW_SCROLL_TO_INDEX = 1010009
 ```
 
-Scrolls to the item with the specified index. When **smooth** is set to **true**, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved.<br><br>
+Scrolls to the item with the specified index. When the smooth scrolling animation is enabled and fast scroll optimization is not enabled, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved. Since API version 26.1.0, you can set the fast scroll mode through **.value[4]?.i32** to reduce the overhead of creating or measuring intermediate child components.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
+> **NOTE**
+>
+> - The fast scroll mode takes effect only in the [ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) layout mode. In other layout modes, the component still scrolls in the original way.
+> - The fast scroll mode does not change the meaning of the target index and alignment. When the animation is not enabled, the component still jumps in the original way.
+> - When the fast scroll mode takes effect, **.value[3]?.f32** is converted based on the default length unit of the node (vp by default). When it does not take effect, the processing is the same as that before API version 26.1.0. The actual offset of the same value may differ in the two cases. Pay attention to this when switching the fast scroll mode.
+
 **Since**: 12
+
 
 **Parameters**
 
@@ -1780,6 +1913,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
 | .value[3]?.f32 | Extra offset after the target item is scrolled to, in vp. The default value is **0**. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start). This parameter is supported since API version 23.|
+| .value[4]?.i32 | Fast scroll mode. The parameter type is [OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode). It takes effect only when **.value[1]?.i32** is set to **1** (indicating the animation is enabled) and the layout mode is [ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode).<br/>When set to **OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE**, the measurement of intermediate child components is skipped; when set to **OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE**, the creation and measurement of intermediate child components are skipped.<br/>Default value: **OH_ARKUI_FAST_SCROLL_MODE_NONE**, which behaves the same as when this parameter is not set.<br/>Value range: 0, 1, 2. When the value is out of this range, it is processed as **OH_ARKUI_FAST_SCROLL_MODE_NONE**, and the fast scroll optimization is not enabled, while other scroll parameters still take effect according to the original rules.<br/>**Since:** 26.1.0 |
 
 ## NODE_WATER_FLOW_ITEM_CONSTRAINT_SIZE
 
@@ -1791,6 +1925,7 @@ Size constraints to apply to water flow items, constraining the size range of th
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1821,6 +1956,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -1844,6 +1980,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -1866,6 +2003,7 @@ Responsive column layout policy of the **WaterFlow** component. This attribute c
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -1894,6 +2032,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1913,9 +2052,13 @@ NODE_GRID_COLUMN_TEMPLATE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID = 1013000
 ```
 
 Number of columns in the **Grid** component. If this attribute is not set, one column is used by default. This attribute can be set, reset, and obtained as required through APIs. For example, **'1fr 1fr 2fr'** indicates three columns, with the first column taking up 1/4 of the parent component's full width, the second column 1/4, and the third column 2/4. You can use [columnsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate)('repeat(auto-fill,track-size)') to automatically calculate the number of columns based on the specified column width (using **track-size**). **repeat** and **auto-fill** are keywords. The units for **track-size** can be px, vp (default), %, or a valid number.<br>
+The unit description of **track-size** applies only to the **repeat(auto-fill,track-size)** format.<br>
+In a non-**repeat** template string, each item supports only the three formats: **'Number+fr'**, **'Number+px'**, and **'Number+%'**, and vp is not supported (for example, **columnsTemplate('100vp 100vp')**).<br>
+When set to **'0fr'**, the width of that column is 0, and the components in that column are not displayed. When set to other invalid values, it is treated as one fixed column.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1936,9 +2079,13 @@ NODE_GRID_ROW_TEMPLATE = 1013001
 ```
 
 Number of rows or the minimum row height in the **Grid** component. If this parameter is not set, one row is used by default. This attribute can be set, reset, and obtained as required through APIs. For example, **'1fr 1fr 2fr'** indicates three rows, with the first row taking up 1/4 of the parent component's full height, the second row 1/4, and the third row 2/4. You can use [rowsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#rowstemplate)('repeat(auto-fill,track-size)') to automatically calculate the number of rows based on the specified row height (using **track-size**). **repeat** and **auto-fill** are keywords. The units for **track-size** can be px, vp (default), %, or a valid number.<br>
+The unit description of **track-size** applies only to the **repeat(auto-fill,track-size)** format.<br>
+In a non-**repeat** template string, each item supports only the three formats: **'Number+fr'**, **'Number+px'**, and **'Number+%'**, and vp is not supported (for example, **rowsTemplate('100vp 100vp')**).<br>
+When set to **'0fr'**, the height of that row is 0, and the components in that row are not displayed. When set to other invalid values, it is treated as one fixed row.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1963,6 +2110,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1985,6 +2133,7 @@ Gap between rows. This attribute can be set, reset, and obtained as required thr
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2009,6 +2158,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -2031,6 +2181,7 @@ Number of cached items in the adapter of the [Grid](arkui-ts/ts-container-grid.m
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2057,6 +2208,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -2079,6 +2231,7 @@ Whether the [Grid](arkui-ts/ts-container-grid.md) component synchronously loads 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -2103,6 +2256,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -2125,6 +2279,7 @@ Layout options of **Grid**. This attribute can be set, reset, and obtained as re
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -2149,6 +2304,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -2171,6 +2327,7 @@ Whether the **Grid** component enters the editing mode. After the component ente
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -2197,6 +2354,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -2220,6 +2378,7 @@ After enabled, mouse-based multi-selection within the grid will trigger the [NOD
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -2245,6 +2404,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -2264,6 +2424,7 @@ Whether the **Grid** component supports the generation of empty branch nodes tha
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -2288,6 +2449,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -2310,6 +2472,7 @@ Edit mode options of the **Grid** component. This attribute can be set, reset, a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -2336,6 +2499,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -2359,6 +2523,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -2381,6 +2546,7 @@ Selection status of **GridItem**. This attribute can be set, reset, and obtained
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -2546,6 +2712,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .object | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the header component of **ArcList**.|
 
+
 ## NODE_ARC_LIST_SCROLL_BAR
 
 ```c
@@ -2575,7 +2742,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_ARC_LIST_SCROLL_BAR_COLOR = 1019008
 ```
 
-Scroll bar color of the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Scrollbar color of the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
@@ -2584,13 +2751,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .data[0].u32 | Color of the scrollbar, in 0xARGB format. The default value is **0x66182431**.|
+| .data[0].u32 | Color of the scrollbar, in 0xARGB format. The default value is **0x66182431**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .data[0].u32 | Color of the scrollbar, in 0xARGB format.|
+| .data[0].u32 | Scrollbar color, in 0xARGB format. |
+
 
 ## NODE_ARC_LIST_SCROLL_BAR_WIDTH
 
@@ -2637,6 +2805,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether scroll gestures are supported. The value **1** means scroll gestures are supported, and **0** means the opposite. |
+
 
 ## NODE_ARC_LIST_FADING_EDGE
 
@@ -2685,6 +2854,7 @@ Friction coefficient of the **ArcList** component, which can be set, reset, and 
 | -- | -- |
 | .value[0].f32 | Friction coefficient.|
 
+
 ## NODE_ARC_LIST_FLING_SPEED_LIMIT
 
 ```c
@@ -2708,6 +2878,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Maximum initial velocity at the start of the fling animation, in vp/s. |
 
+
 ## NODE_ARC_LIST_ITEM_AUTO_SCALE
 
 ```c
@@ -2730,6 +2901,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether auto-scaling is enabled. The value **1** means auto-scaling is enabled, and **0** means the opposite. |
+
 
 ## NODE_ARC_LIST_ITEM_SWIPE_ACTION
 
@@ -2770,6 +2942,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .object | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the scrollable component bound to **ArcScrollBar**.|
+
 
 ## NODE_ARC_SCROLL_BAR_DISPLAY_MODE
 

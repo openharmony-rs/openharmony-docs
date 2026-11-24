@@ -62,3 +62,21 @@
      hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in canceling notification.');
    });
    ```
+
+4. 取消所有通知。
+
+   当应用需要一次性取消本应用发布的所有通知时（例如用户进入应用内消息列表，查看完所有消息后），调用cancelAll接口。
+
+   <!-- @[cancel_all_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
+   
+   ``` TypeScript
+   // 取消所有该应用发布的通知。
+   notificationManager.cancelAll((err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in canceling notification.');
+   });
+   ```

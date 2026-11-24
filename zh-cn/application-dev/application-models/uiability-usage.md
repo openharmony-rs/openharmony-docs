@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍UIAbility组件的基本用法，包括通过loadContent指定启动页面、获取UIAbilityContext上下文信息、终止UIAbility实例以及获取拉起方信息的方法。"
+keywords: [UIAbility, 启动页面, loadContent, UIAbilityContext, 上下文信息, terminateSelf, 拉起方信息]
+doctype: guide
+status: active
+---
 # UIAbility组件基本用法
 
 <!--Kit: Ability Kit-->

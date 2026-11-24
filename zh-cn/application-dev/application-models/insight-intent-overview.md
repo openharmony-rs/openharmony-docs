@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "概述意图框架的场景、基本概念和运行机制，并对比配置文件与装饰器两种意图开发方式的适用版本和特点。"
+keywords: [意图框架, 意图参数, 意图实体, 运行机制, 配置文件开发, 装饰器开发, 系统入口]
+doctype: guide
+status: active
+---
 # 意图框架概述
 
 <!--Kit: Ability Kit-->

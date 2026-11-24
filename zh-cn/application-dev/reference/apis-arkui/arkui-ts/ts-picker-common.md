@@ -28,7 +28,6 @@
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 文本颜色，用于自定义选择器中文字的颜色。当需要使用特定颜色时传入，不传入时使用系统默认文本颜色。             |
 | font  | [Font](ts-types.md#font)                   | 否   | 是   | 文本样式，包括字体大小、字体粗细、字体族等属性。当需要自定义选择器中文字的字体样式时传入，不传入时使用系统默认文本样式。 |
 
-
 ## PickerDialogButtonStyle<sup>12+</sup>对象说明
 
 选择器弹窗的按钮样式，用于配置日期选择器、时间选择器等弹窗中确认和取消按钮的显示样式、角色和行为。
@@ -71,4 +70,23 @@
 | start | Date | 否   | 是   | 设置日期区间的开始日期，应不晚于结束日期。不传入、日期格式错误、日期超出系统支持范围或start晚于end时，该日期区间无效。 |
 | end   | Date | 否   | 是   | 设置日期区间的结束日期。不传入、日期格式错误、日期超出系统支持范围或end早于start时，该日期区间无效。          |
 
+## PickerComponentTextStyle
 
+DatePickerComponent与UIPickerComponent共用的文本样式，用于配置选择器选项的文本样式。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 字体颜色。默认值：$r('sys.color.font_primary')。 |
+| font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。仅支持size与weight。默认值：weight为FontWeight.Normal。size因使用组件而异，详见[DatePickerComponent](ohos-arkui-advanced-DatePickerComponent.md)与[UIPickerComponent](ts-container-ui-picker-component.md)。 |
+| minFontSize | number \| [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本最小字号，与maxFontSize配合使用以启用字号缩放。当minFontSize与maxFontSize同时设置时，font中的size不生效。number类型取值范围：大于0。默认值：不设置，不启用字号缩放。详见Text组件的[minFontSize](ts-basic-components-text.md#minfontsize)。 |
+| maxFontSize | number \| [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本最大字号。number类型取值范围：大于0且大于等于minFontSize。默认值：不设置，不启用字号缩放。详见Text组件的[maxFontSize](ts-basic-components-text.md#maxfontsize)。 |
+| overflow | [TextOverflow](ts-appendix-enums.md#textoverflow) | 否 | 是 | 文本溢出处理。设置为MARQUEE时不生效。默认值：TextOverflow.Clip。详见Text组件的[textOverflow](ts-basic-components-text.md#textoverflow)。 |

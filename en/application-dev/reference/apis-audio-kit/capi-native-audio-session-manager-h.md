@@ -1,12 +1,11 @@
 # native_audio_session_manager.h
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29c534c06e8886c79e4893a68977c0d74e48120b translatedAt=2026-08-10T01:23:52.167Z pushedAt=2026-08-10T03:30:15.512Z -->
+<!-- md-trans-meta sourceCommit=625af9d3f0edd94bf32a555a009e14a9b39281f8 translatedAt=2026-11-03T03:54:20.967Z pushedAt=2026-11-04T03:11:46.950Z nl=1 -->
 
 ## Overview
 
@@ -99,6 +98,7 @@ Enumerates the audio session scenes.
 | AUDIO_SESSION_SCENE_MEDIA = 0 | Media audio session.|
 | AUDIO_SESSION_SCENE_GAME = 1 | Game audio session.|
 | AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2 | VoIP voice call audio session.|
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3 | Voice message audio session scene.<br>**Since:** 26.0.1 |
 
 ### OH_AudioSession_StateChangeHint
 
@@ -179,6 +179,7 @@ Enumerates the preferred device categories available for recording with Bluetoot
 | PREFERRED_DEFAULT = 1 | Prefers using Bluetooth or Nearlink devices for recording; whether to use low-latency or high-quality recording depends on the system.|
 | PREFERRED_LOW_LATENCY = 2 | Prefers using Bluetooth or NearLink devices in low-latency mode for recording.|
 | PREFERRED_HIGH_QUALITY = 3 | Prefers using Bluetooth or NearLink devices in high-quality mode for recording.|
+
 
 ## Function Description
 
@@ -506,12 +507,14 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 
 **Description**
 
-Sets the default audio output device.
-
- >**NOTE** 
- > - This API is applicable to the following scenarios: If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to VoIP, this API takes effect immediately after the audio session is activated. If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to non-VoIP, this API does not take effect when the audio session is activated. It takes effect only when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) of the started playback is a voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
- > - This API can be called at any time after an [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
-
+Sets the default audio output device. 
+ 
+ 
+ > **NOTE**  
+ > - This API applies to the following scenarios: when the [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to the VoIP or voice message scene, it takes effect immediately after the AudioSession is activated; if the [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to another scene, it does not take effect when the AudioSession is activated, and takes effect only when the [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) of the started playback is voice message, VoIP voice call, or VoIP video call. Earpiece, speaker, and system default device are supported.
+ > - This API can be called at any time after the [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) is created. The system records the default built-in sound-producing device set by the application, but it takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth headset or a wired headset is connected, the system gives priority to outputting audio from the external device; otherwise, the system follows the default built-in sound-producing device set by the application. 
+ 
+ 
  **Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Since**: 20
@@ -653,7 +656,7 @@ Obtains the available audio devices.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **deviceUsage** parameter is invalid.<br>                                                        3. The **audioDeviceDescriptorArray** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: Function executed successfully.<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM:<br>                                                        1. parameter audioSessionManager is nullptr;<br>                                                        2. parameter deviceUsage is invalid;<br>                                                        3. parameter audioDeviceDescriptorArray is nullptr.<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM: system error, for example, the system service exits abnormally. |
 
 ### OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback()
 
@@ -979,3 +982,5 @@ Configures audio session behavior parameters. (Multiple flags can be combined.) 
 | Type| Description|
 | -- | -- |
 | [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The parameter value is a null pointer or out of range.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: Invalid state.|
+
+

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍任务管理的基本概念与系统能力，涵盖AbilityRecord、MissionRecord、MissionList等核心概念，以及系统应用通过missionManager接口进行任务监听、获取、快照、加锁等操作。"
+keywords: [任务管理, Mission, missionManager, MissionList, 任务快照, 任务加锁, 系统应用, MANAGE_MISSIONS]
+doctype: guide
+status: active
+---
 # 任务（Mission）管理场景介绍（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

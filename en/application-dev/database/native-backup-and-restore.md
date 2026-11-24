@@ -1,18 +1,17 @@
 # Database Backup and Restore (C/C++)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5132c4c17b0f557197a655ef79c7a05df0e0bea5 translatedAt=2026-08-20T06:22:17.480Z pushedAt=2026-08-20T12:07:00.921Z -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:46:04.046Z pushedAt=2026-11-16T13:25:45.714Z nl=1 -->
 
 ## When to Use
 
 If an error occurs during the operation or storage, you can restore the database to the previous state and continue the operation.
 
-If a database is tampered with, deleted, or powered off, the database may be unavailable due to data loss, data corruption, or dirty data. In this case, you can use the backup and restore capability to restore the database to the available state.
+If a database is tampered with or deleted, or a device power failure occurs, the database may be unavailable due to data loss, data corruption, or dirty data. In this case, you can use the backup and restore capability to restore the database to the available state.
 
 Currently, only RDB stores (C/C++) support database backup and restore.
 
@@ -29,17 +28,18 @@ A database backup can be used to quickly restore an RDB store in abnormal state.
 2. Include header files.
 
     <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
-
+    
     ``` C++
     #include <cstring>
     #include "database/rdb/relational_store.h"
     #include "hilog/log.h"
     ```
 
+
 3. Call **OH_Rdb_Backup** to back up the database.
 
     <!-- @[BackupRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
@@ -57,10 +57,12 @@ A database backup can be used to quickly restore an RDB store in abnormal state.
     config = nullptr;
     ```
 
+
+
 4. Call **OH_Rdb_Restore** to restore the database.
 
     <!-- @[rdb_OH_Rdb_Restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
@@ -78,6 +80,8 @@ A database backup can be used to quickly restore an RDB store in abnormal state.
     OH_Rdb_DestroyConfig(config);
     config = nullptr;
     ```
+
+
 
 5. Call **OH_Rdb_RegisterCorruptedHandler** to register a handler for processing database exceptions.
 

@@ -15,7 +15,7 @@ autoStartupManager模块提供应用开机自启动状态的监听能力，允�
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.autoStartupManager (开机自启管理能力)](js-apis-app-ability-autoStartupManager.md)。
 
 ## 导入模块
 
@@ -168,7 +168,7 @@ setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<void\>
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
 | 16000050 | Failed to connect to the system service. |
-| 16000206 | The specified application is not authorized to start before the user is unlocked. |
+| 16000207 | The specified application is not authorized to start before the user is unlocked.<br>适用版本：26.1.0+ |
 
 **示例**：
 
@@ -233,7 +233,7 @@ setApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
 | 16000050 | Failed to connect to the system service. |
-| 16000206 | The specified application is not authorized to start before the user is unlocked. |
+| 16000207 | The specified application is not authorized to start before the user is unlocked.<br>适用版本：26.1.0+ |
 
 **示例**：
 

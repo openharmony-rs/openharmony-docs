@@ -72,7 +72,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 ```ts
 try {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-  console.info(`devicesList = ${devicesList}`);
+  console.info(`devicesList = ${JSON.stringify(devicesList)}`);
 } catch (err) {
   console.error(`getDevices failed. Code: ${err.code}, message: ${err.message}`);
 }
@@ -1055,7 +1055,7 @@ async function usbSubmitTransfer() {
   let device: usbManager.USBDevice = devicesList?.[0];
   await usbManager.requestRight(device.name);
   if (!usbManager.hasRight(device.name)) {
-    console.info(`request right fail`);
+    console.error(`request right fail`);
     return;
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);

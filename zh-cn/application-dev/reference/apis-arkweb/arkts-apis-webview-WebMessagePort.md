@@ -88,7 +88,7 @@ struct WebComponent {
             this.controller.postMessage('__init_port__', [this.ports[0]], '*');
             this.ports[1].postMessageEvent("post message from ETS to HTML5");
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -153,7 +153,7 @@ struct WebComponent {
               }
             })
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -403,7 +403,7 @@ struct WebComponent {
               }
             }
             catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
         })
@@ -528,7 +528,7 @@ struct WebComponent {
             this.msgPort = this.controller.createWebMessagePorts();
             console.info("createWebMessagePorts size:" + this.msgPort.length)
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('close')
@@ -541,7 +541,7 @@ struct WebComponent {
               console.error("msgPort is null, Please initialize first");
             }
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })

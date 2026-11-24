@@ -5,9 +5,10 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d81fb4a70724f21d3064915167c413624985d15a translatedAt=2026-11-09T06:25:22.122Z pushedAt=2026-11-09T08:30:01.201Z nl=1 -->
 
 ```c
-typedef struct {...} OH_AVMetadataExtractor_FrameInfo
+typedef struct OH_AVMetadataExtractor_FrameInfo {...} OH_AVMetadataExtractor_FrameInfo
 ```
 
 ## Overview

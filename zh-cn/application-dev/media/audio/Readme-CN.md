@@ -7,6 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 - [Audio Kit简介](audio-kit-intro.md)
+- [Audio Kit指南配套示例代码](audio-kit-samples.md)
 - 音频焦点和音频会话管理<!--audio-session-->
   - [音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)
   - [音频焦点介绍](audio-playback-concurrency.md)
@@ -16,6 +17,7 @@
   - [音频播放开发概述](audio-playback-overview.md)
   - [选择合适的播放流类型](using-right-streamusage-for-playback.md)
   - [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)
+  - [处理音频时间戳(C/C++)](using-ohaudio-for-audio-timestamp.md)
   - [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)
   <!--Del-->
   - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](using-toneplayer-for-playback-sys.md)

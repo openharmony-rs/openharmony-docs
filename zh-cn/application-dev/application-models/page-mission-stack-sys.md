@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍UIAbility组件内部的页面栈跳转关系与任务链（MissionList）的启动关系，说明页面栈返回机制及任务链断开的几种情况，帮助系统应用开发者理解任务间导航逻辑。"
+keywords: [页面栈, 任务链, MissionList, Navigator, 任务管理, 系统应用, 返回导航]
+doctype: guide
+status: active
+---
 # 页面栈及任务链（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

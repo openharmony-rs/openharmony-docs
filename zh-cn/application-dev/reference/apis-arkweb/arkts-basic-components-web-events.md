@@ -525,9 +525,9 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
         Web({ src: 'www.example.com', controller: this.controller })
           .onErrorReceive((event) => {
             if (event) {
-              console.info('getErrorInfo:' + event.error.getErrorInfo());
-              console.info('getErrorCode:' + event.error.getErrorCode());
-              console.info('getCustomErrorCode:' + event.error.getCustomErrorCode());
+              console.error('getErrorInfo:' + event.error.getErrorInfo());
+              console.error('getErrorCode:' + event.error.getErrorCode());
+              console.error('getCustomErrorCode:' + event.error.getCustomErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());
@@ -1235,9 +1235,14 @@ onZoomChange(callback: OnZoomChangeCallback)
 
 > **说明：**
 >
-> - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl组合键或鼠标滚轮/触摸板缩放，均会触发该回调。
+> - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板缩放，均会触发该回调。
+>
 > - 在同一浏览数据上下文中，其他同Host Web组件改变页面缩放倍率后，如果当前Web组件的实际倍率随之变化，也会触发该回调。
+>
+> - 回调中的`oldZoomFactor`和`newZoomFactor`由内部浮点换算得到，可能与对应的预期倍率存在小于`0.001`的数值差异，不影响页面缩放效果。
+>
 > - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
+>
 > - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
 
 **起始版本：** 26.1.0
@@ -1612,10 +1617,10 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
         Web({ src: 'www.example.com', controller: this.controller })
           .onSslErrorEvent((event: SslErrorEvent) => {
             console.info("onSslErrorEvent url: " + event.url);
-            console.info("onSslErrorEvent error: " + event.error);
+            console.error("onSslErrorEvent error: " + event.error);
             console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
             console.info("onSslErrorEvent referrer: " + event.referrer);
-            console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+            console.error("onSslErrorEvent isFatalError: " + event.isFatalError);
             console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
             LogCertInfo(event.certChainData);
             this.uiContext.showAlertDialog({
@@ -1729,8 +1734,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -1922,7 +1927,7 @@ struct Index {
               })
             })
             .onSslErrorEventReceive(e => {
-              console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+              console.error(`onSslErrorEventReceive->${e.error.toString()}`);
             })
             .onErrorReceive((event) => {
               if (event) {
@@ -1930,8 +1935,8 @@ struct Index {
                   message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
                   alignment: Alignment.Center
                 })
-                console.info('getErrorInfo:' + event.error.getErrorInfo());
-                console.info('getErrorCode:' + event.error.getErrorCode());
+                console.error('getErrorInfo:' + event.error.getErrorInfo());
+                console.error('getErrorCode:' + event.error.getErrorCode());
                 console.info('url:' + event.request.getRequestUrl());
               }
             })
@@ -2027,7 +2032,7 @@ struct Index {
           })
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -2035,8 +2040,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -5083,7 +5088,9 @@ struct WebComponent {
 }
 ```
 
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+> **示例说明：**
+>
+> 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
 
 
 ## onSslErrorReceive<sup>(deprecated)</sup>

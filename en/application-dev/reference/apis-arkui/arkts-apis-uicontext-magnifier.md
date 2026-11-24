@@ -1,12 +1,11 @@
 # Class (Magnifier)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer:  @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-08-05T03:05:38.456Z pushedAt=2026-08-05T07:14:18.513Z -->
+<!-- md-trans-meta sourceCommit=976793f1477a1ea1d1147f29cf593c7a491f596e translatedAt=2026-11-02T12:44:45.143Z pushedAt=2026-11-05T08:17:45.743Z nl=1 -->
 
 Provides the ability to control the display and hiding of the magnifier. The magnifier enlarges component content to facilitate viewing of details. This is suitable for scenarios where non‑text components (such as images) require detail inspection.
 
@@ -120,7 +119,11 @@ For details, see the [bind](#bind) example.
 
 unbind(): void
 
-Unbinds the magnifier from the current component. Before using this API, obtain a **Magnifier** instance through the **getMagnifier()** method in UIContext.
+Unbinds the magnifier from the current component.
+
+> **NOTE**
+>
+> Before using this API, obtain a **Magnifier** instance through the **getMagnifier()** method in **UIContext**.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

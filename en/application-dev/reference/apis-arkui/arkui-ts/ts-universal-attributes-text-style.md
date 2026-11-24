@@ -5,11 +5,11 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=976793f1477a1ea1d1147f29cf593c7a491f596e translatedAt=2026-09-02T12:10:24.160Z -->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-11-03T03:36:56.468Z pushedAt=2026-11-13T01:06:00.132Z nl=1 -->
 
-Provides capabilities for the [TextInput](ts-basic-components-textinput.md) and [TextArea](ts-basic-components-textarea.md) components to obtain text and cursor information, insert and delete text, set the counter, and configure text decoration lines. This is applicable to scenarios where the text content and cursor position of an input box need to be controlled programmatically.
+Provides capabilities for the [TextInput](ts-basic-components-textinput.md) and [TextArea](ts-basic-components-textarea.md) components to obtain text and caret information, insert and delete text, set the counter, and configure text decoration lines. This is applicable to scenarios where the text content and caret position of an input box need to be controlled programmatically.
 
-Provides capabilities for the [Search](ts-basic-components-search.md) component to obtain text and cursor information, insert and delete text, and configure text decoration lines.
+Provides capabilities for the [Search](ts-basic-components-search.md) component to obtain text and caret information, insert and delete text, and configure text decoration lines.
 
 > **NOTE**
 >
@@ -111,13 +111,13 @@ This API does not work when the text is being dragged.
 | Name | Type  | Mandatory  | Description |
 | ------- | ------ | ---- | ----- |
 | text | string | Yes   | Text to insert.|
-| textOperationOptions   | [TextContentControllerOptions](#textcontentcontrolleroptions15) | No    | Configuration options for inserting text, used to set parameters such as the insertion position. Pass this parameter when text needs to be inserted at a specified position. If not set, text is inserted at the end by default. |
+| textOperationOptions   | [TextContentControllerOptions](#textcontentcontrolleroptions15) | No    | Configuration options for inserting text, used to customize parameters such as the insertion position.<br>Default value: none (insert text at the end) |
 
 **Return value**
 
 | Type | Description      |
 | ----- | -------- |
-| number| New cursor position after insertion.|
+| number| New caret position after insertion.|
 
 ### setStyledPlaceholder<sup>22+</sup>
 
@@ -182,7 +182,7 @@ Obtains the current text selection range.
 
 | Type                     | Description              |
 | ----------------------- | ---------------- |
-| [TextRange](ts-text-common.md#textrange12) | Current text selection range, or cursor position if no text is selected.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
+| [TextRange](ts-text-common.md#textrange12) | Current text selection range, or caret position if no text is selected.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### clearPreviewText<sup>17+</sup>
 
@@ -260,8 +260,8 @@ Describes the position of the caret relative to the text box.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | index | number | No | No | Index of the position where the caret is located. The value starts from 0 and ranges from 0 to the text length. |
-| x     | number | No| No| X coordinate of the cursor relative to the text box, in px.|
-| y     | number | No| No| Y coordinate of the cursor relative to the text box, in px.|
+| x     | number | No| No| X coordinate of the caret relative to the text box, in px.|
+| y     | number | No| No| Y coordinate of the caret relative to the text box, in px.|
 
 ## TextDecorationOptions<sup>12+</sup>
 

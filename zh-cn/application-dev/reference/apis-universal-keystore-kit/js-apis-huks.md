@@ -113,9 +113,9 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the generateKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -295,9 +295,9 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the generateKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -378,9 +378,9 @@ deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<v
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the deleteKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000011 | queried entity does not exist. |
@@ -518,9 +518,9 @@ deleteKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the deleteKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000011 | queried entity does not exist. |
@@ -574,7 +574,7 @@ importKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<v
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -672,7 +672,7 @@ importKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -748,7 +748,11 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 > 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认）。如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
 <!--RP6End-->
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：**
+
+- API版本26.1.0+：ohos.permission.ATTEST_KEY或ohos.permission.ENTERPRISE_ATTEST_KEY
+
+- API版本11-26.0.1：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -766,9 +770,9 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | check permission failed. |
+| 201 | Permission verification failed: call the attestKeyItem API, missing Permission: ohos.permission.ATTEST_KEY. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
@@ -881,7 +885,11 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 获取密钥证书。使用Promise异步回调。
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：**
+
+- API版本26.1.0+：ohos.permission.ATTEST_KEY或ohos.permission.ENTERPRISE_ATTEST_KEY
+
+- API版本11-26.0.1：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -910,9 +918,9 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | check permission failed. |
+| 201 | Permission verification failed: call the attestKeyItem API, missing Permission: ohos.permission.ATTEST_KEY. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
@@ -1047,9 +1055,9 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallbac
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the anonAttestKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
@@ -1192,9 +1200,9 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the anonAttestKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing.<br>适用版本：11 |
 | 12000003 | algorithm param is invalid.<br>适用版本：11 |
@@ -1336,7 +1344,7 @@ anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksR
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | The API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | The algorithm mode is not supported. |
 | 12000004 | The file operation failed. |
 | 12000005 | The IPC communication failed. |
@@ -1448,9 +1456,9 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the importWrappedKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -1674,9 +1682,9 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the importWrappedKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -1741,9 +1749,9 @@ exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the exportKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing.<br>适用版本：9-11 |
 | 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
@@ -1810,9 +1818,9 @@ exportKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the exportKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing.<br>适用版本：9-11 |
 | 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
@@ -1878,8 +1886,8 @@ wrapKeyItem(keyAlias: string, params: HuksOptions): Promise\<HuksReturnResult>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
-| 801 | api is not supported. |
+| 201 | Permission verification failed: call the wrapKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000011 | queried entity does not exist. |
@@ -1924,8 +1932,8 @@ unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Pr
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
-| 801 | api is not supported. |
+| 201 | Permission verification failed: call the unwrapKeyItem API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000012 | Device environment or input parameter abnormal. |
@@ -1969,7 +1977,7 @@ encapsulate(keyAlias: string, params: HuksParam[], sharedKeyAlias?: string, shar
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Algorithm mode is not supported |
 | 12000002 | Algorithm parameters are missing, please check the algorithm parameters. |
 | 12000003 | The algorithm parameters are invalid, please check the algorithm parameters. |
@@ -2047,7 +2055,7 @@ decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array, shared
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Algorithm mode is not supported |
 | 12000002 | The algorithm parameter is missing. Check the algorithm parameter. |
 | 12000003 | The algorithm parameter is invalid. Check the algorithm parameter. |
@@ -2124,9 +2132,9 @@ getKeyItemProperties(keyAlias: string, options: HuksOptions, callback: AsyncCall
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the getKeyItemProperties API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing.<br>适用版本：9-11 |
 | 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
@@ -2191,9 +2199,9 @@ getKeyItemProperties(keyAlias: string, options: HuksOptions) : Promise\<HuksRetu
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the getKeyItemProperties API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing.<br>适用版本：9-11 |
 | 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
@@ -2249,7 +2257,7 @@ isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
@@ -2397,7 +2405,7 @@ isKeyItemExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
@@ -2450,7 +2458,7 @@ hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<bool
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
@@ -2515,7 +2523,7 @@ hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
@@ -2572,9 +2580,9 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the initSession API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2625,9 +2633,9 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>适用版本：26.0.0+ |
+| 201 | Permission verification failed: call the initSession API, missing Permission: ohos.permission.ACCESS_SE_KEY.<br>适用版本：26.0.0+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2672,7 +2680,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2720,7 +2728,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2769,7 +2777,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2816,7 +2824,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2865,7 +2873,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2915,7 +2923,7 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | algorithm mode is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -2961,7 +2969,7 @@ abortSession终止密钥操作。使用callback异步回调。
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or UKey driver. |
@@ -3382,7 +3390,7 @@ abortSession终止密钥操作。使用Promise异步回调。
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or UKey driver. |
@@ -3769,17 +3777,11 @@ async function testListAliases() {
 
 表示安全导入密钥的算法套件。
 
-**系统能力：**
-
-- API版本12+：SystemCapability.Security.Huks.Core
-
-- API版本9-11：SystemCapability.Security.Huks.Extension
-
 | 名称                                           | 值   | 说明                                                  |
 | ---------------------------------------------- | ---- | ----------------------------------------------------- |
-| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | 安全导入密钥时，X25519密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | 安全导入密钥时，ECDH密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING<sup>23+</sup> | 5    | 安全导入密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | 安全导入密钥时，X25519密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** <br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension |
+| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | 安全导入密钥时，ECDH密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** <br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension |
+| HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING<sup>23+</sup> | 5    | 安全导入密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Security.Huks.Core |
 
 ## HuksImportKeyType<sup>9+</sup>
 

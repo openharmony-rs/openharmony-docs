@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-01T11:42:12.347Z pushedAt=2026-09-02T11:24:44.802Z -->
+<!-- md-trans-meta sourceCommit=6439631165ea42c1ea3f7b12497a0d72861cba2a translatedAt=2026-11-03T03:02:09.904Z pushedAt=2026-11-13T01:06:00.038Z nl=1 -->
 
 Particle animation is an animation composed of a multitude of particles randomly generated within a certain range. The particles can be points or images. By animating different aspects of the particles, such as color, opacity, scale, velocity, acceleration, and spin angle, you can create engaging and dynamic aesthetics. For example, you can create an impressive snowfall animation by animating the particles – snowflakes.
 
@@ -159,10 +159,10 @@ Sets particle parameters.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
 | emitter | [EmitterOptions](#emitteroptions)<[PARTICLE](#particletype)> | No| No| Particle emitter configuration.|
-| color | [ParticleColorPropertyOptions](#particlecolorpropertyoptions)<COLOR_UPDATER> | No | Yes | Particle color configuration.<br>**Note:**<br>Default value: **{ range:[Color.White,Color.White] }**. Image particles do not support setting the color.|
+| color | [ParticleColorPropertyOptions](#particlecolorpropertyoptions)\<COLOR_UPDATER\> | No | Yes | Particle color configuration.<br>**Note:**<br>Default value: **{ range:[Color.White,Color.White] }**. Image particles do not support setting the color.|
 | opacity | [ParticlePropertyOptions](#particlepropertyoptions)\<number, OPACITY_UPDATER> | No | Yes | Particle opacity configuration.<br>Default value: **{ range:[1.0,1.0] }** |
 | scale | [ParticlePropertyOptions](#particlepropertyoptions)\<number, SCALE_UPDATER> | No | Yes | Particle size configuration.<br>Default value: **{ range:[1.0,1.0] }** |
-| velocity | [VelocityOptions](#velocityoptions18) |No | Yes | Particle velocity configuration.<br>**Note:**<br>**speed** indicates the velocity magnitude. **angle** indicates the direction of the velocity (unit: degree), with the geometric center of the element as the coordinate origin and the horizontal direction as the X-axis. A positive value indicates clockwise rotation angle.<br>Default value: **{ speed:[0.0,0.0],angle:[0.0,0.0] }** |
+| velocity | [VelocityOptions](#velocityoptions18) |No | Yes | Particle velocity configuration.<br>**Note:**<br>**speed** indicates the velocity magnitude. **angle** indicates the direction of the velocity (unit: degree), with the geometric center of the element as the coordinate origin and the horizontal direction as the X-axis. A positive value indicates a clockwise rotation angle.<br>Default value: **{ speed:[0.0,0.0],angle:[0.0,0.0] }** |
 | acceleration | [AccelerationOptions](#accelerationoptions18)\<ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER> | No | Yes | Particle acceleration configuration. <br>**Note:**<br>**speed** indicates the acceleration magnitude, and angle indicates the acceleration direction (unit: degree).<br>Default value: **{ speed:{range:[0.0,0.0]},angle:{range:[0.0,0.0]}** } |
 | spin | [ParticlePropertyOptions](#particlepropertyoptions)\<number, SPIN_UPDATER> | No | Yes | Particle spin angle configuration, unit is degree (°). <br>Default value: **{range:[0.0,0.0]}**<br>Direction: a positive value indicates clockwise rotation, and a negative value indicates counterclockwise rotation. |
 
@@ -632,7 +632,7 @@ Randomly generates a difference value within the interval when the color change 
 | r<sup>10+</sup>    | [ParticleTuple](#particletuple18)<number, number>  | No| No  | Difference value for the red color channel.   **Atomic service API**: This API can be used in atomic services since API version 11.        |
 | g<sup>10+</sup>    | [ParticleTuple](#particletuple18)<number, number>  | No| No  | Difference value for the green color channel.   **Atomic service API**: This API can be used in atomic services since API version 11.       |
 | b<sup>10+</sup>    | [ParticleTuple](#particletuple18)<number, number>  | No| No  | Difference value for the blue color channel.   **Atomic service API**: This API can be used in atomic services since API version 11.       |
-| a<sup>10+</sup>    | [ParticleTuple](#particletuple18)<number, number>  | No| No  | Difference value for the alpha (transparency) channel.   **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| a<sup>10+</sup>    | [ParticleTuple](#particletuple18)<number, number>  | No| No  | Difference value for the alpha (opacity) channel.   **Atomic service API**: This API can be used in atomic services since API version 11.       |
 
 ## ParticleAnnulusRegion<sup>20+</sup>
 

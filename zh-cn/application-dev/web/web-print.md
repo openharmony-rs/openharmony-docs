@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用Web组件打印前端页面的两种方式：前端调用W3C标准window.print()拉起打印，以及应用侧创建打印适配器配合打印接口完成打印。"
+keywords: [页面打印, window.print, createWebPrintDocumentAdapter, print.print, 打印适配器, "@media print", iframe打印, ohos.permission.PRINT]
+doctype: guide
+status: active
+---
+
 # 使用Web组件打印前端页面
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -26,8 +34,6 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
 - print.html页面代码。
 
   示例一：
-
-  <!-- @[w3c_print_html_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/print.html) -->
   
   ``` HTML
   <!DOCTYPE html>
@@ -81,8 +87,6 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
   ```
   
   示例二（iframe嵌套页面的方式）：
-
-  <!-- @[w3c_print_html_iframe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html) --> 
   
   ``` HTML
   <!DOCTYPE html>

@@ -1,15 +1,15 @@
 # @ohos.data.dataShareResultSet (DataShare Result Set) (System API)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=12b765c141d566f832c33228e36b35617de964ef translatedAt=2026-09-04T03:33:23.482Z pushedAt=2026-09-09T09:11:03.718Z -->
+<!-- md-trans-meta sourceCommit=4a34587a3365c5c1aebadf6aff63b7861a30e1d6 translatedAt=2026-11-16T02:03:46.691Z pushedAt=2026-11-20T07:27:45.290Z nl=1 -->
 
 The **DataShareResultSet** module provides APIs for accessing the result set obtained from the database. You can access the values in the specified rows or the values of the specified data type.
 
-> **NOTE**
+> **NOTE** 
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >

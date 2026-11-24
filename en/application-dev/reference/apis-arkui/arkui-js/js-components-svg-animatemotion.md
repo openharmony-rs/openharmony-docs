@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3594f4f7911eac49a1432a74a842b11a7e25b680 translatedAt=2026-11-12T04:45:23.371Z pushedAt=2026-11-18T06:46:55.573Z nl=1 -->
 
 >  **NOTE**
 >
@@ -30,4 +31,4 @@ The **animate** attributes (**values** does not take effect) and the attributes 
 | -------- | -------- | -------- | -------- | -------- |
 | keyPoints | string | - | Yes| Point position of a group of key frames. The value of each frame is the distance proportion of the object along the path. The function is the same as that of **values** in the **animate** attribute.|
 | path | string | - | Yes| Motion path. The syntax is the same as that of the **d** attribute of the **\<path>** component.|
-| rotate | [auto \| auto-reverse \| &lt;number&gt;] | auto | No| Rotation direction of an animation object.|
+| rotate | [auto&nbsp;\|&nbsp;auto-reverse&nbsp;\|&nbsp;&lt;number&gt;] | auto | No | Rotation angle or rotation mode of an animation object. |

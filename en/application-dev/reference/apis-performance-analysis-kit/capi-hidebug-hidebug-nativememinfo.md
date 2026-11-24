@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=73ea412b00c3d092de27474d8b220a5295879dcd translatedAt=2026-11-03T06:09:39.619Z pushedAt=2026-11-03T12:08:25.598Z nl=1 -->
 
 ```c
 typedef struct HiDebug_NativeMemInfo {...} HiDebug_NativeMemInfo
@@ -27,10 +28,12 @@ Defines the struct for the local memory information of the application process.
 
 | Name| Description|
 | -- | -- |
-| uint32_t pss | Proportional set size, in KB.|
+| uint32_t pss | Proportional set size of the process, in KB. |
 | uint32_t vss | Virtual memory size, in KB.|
 | uint32_t rss | Resident set size, in KB.|
 | uint32_t sharedDirty | Size of the shared dirty memory, in KB.|
 | uint32_t privateDirty | Size of the private dirty memory, in KB.|
 | uint32_t sharedClean | Size of the shared clean memory, in KB.|
 | uint32_t privateClean | Size of the private clean memory, in KB.|
+
+

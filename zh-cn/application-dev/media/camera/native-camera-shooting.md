@@ -15,6 +15,16 @@
 - 分段式拍照是指相机拍照既可以输出低质量图用作缩略图，提升用户感知拍照速度，也可以使用高质量图保证最后的成图质量达到系统相机的水平。满足了图像处理算法的需求的同时，又不会阻塞前台的拍照速度，构筑相机性能竞争力，提升用户体验。 
 - 单段式拍照是指在拍照过程中通过多帧融合以及多个底层算法处理之后返回一张高质量图片，所以Shot2See（用户点击拍照控件到在缩略图显示区域显示缩略图的过程）完成时延较长。此外，单段式拍照支持通过[高性能拍照](#高性能拍照)功能调整[画质优先策略](#画质优先策略)，以加快出图速度或提升图片质量。 
 
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+
+当前提供拍照流程及其接口调用顺序的介绍。对于单个流程（如设备输入、会话管理）的介绍请参考[相机管理(C/C++)](native-camera-device-management.md)的具体章节。
+
+## 开发流程
+
+在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
+
+![Photographing Development Process](figures/photographing-ndk-development-process.png)
+
 ## 开发步骤
 
 详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
@@ -46,6 +56,7 @@
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include "ohcamera/camera_device.h"
    #include <window_manager/oh_display_info.h>
    #include <window_manager/oh_display_manager.h>
    
@@ -87,7 +98,7 @@
    通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
 
    <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->     
-   
+
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
@@ -126,7 +137,7 @@
    - 将处理完的buffer通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
    - 使用完后解注册单段式拍照回调函数。
 
-     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
      
      ``` C++
      // 保存NAPI侧注册的buffer处理回调函数。
@@ -134,7 +145,7 @@
      {
          OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
          if (cb == nullptr) {
-             OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
+             OH_LOG_ERROR(LOG_APP, " RegisterBufferCb invalid error");
              return CAMERA_INVALID_ARGUMENT;
          }
          g_bufferCb = cb;
@@ -225,6 +236,7 @@
          }
      }
      
+     
      void OnPhotoAvailable(Camera_PhotoOutput *photoOutput, OH_PhotoNative *photo)
      {
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
@@ -271,7 +283,7 @@
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback start!");
          Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
-             OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
+             OH_LOG_ERROR(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
          }
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!",
              ret_);
@@ -304,7 +316,7 @@
          napi_value asyncResource = nullptr;
          napi_value asyncResourceName = nullptr;
          napi_async_work work;
-     
+
          if (size == 0 || size > SIZE_MAX) {
              OH_LOG_ERROR(LOG_APP, "BufferCb size is invalid");
              return;
@@ -314,7 +326,7 @@
              return;
          }
          OH_LOG_INFO(LOG_APP, "BufferCb copyBuffer:%{public}p", copyBuffer);
-         // 使用std::memcpy复制buffer的内容到copyBuffer。
+         // 使用 std::memcpy 复制 buffer 的内容到 copyBuffer。
          std::memcpy(copyBuffer, buffer, size);
          napi_create_string_utf8(env_, "BufferCb", NAPI_AUTO_LENGTH, &asyncResourceName);
          napi_status status = napi_create_async_work(
@@ -371,7 +383,7 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "hasFlash fail-----");
        }
-   
+
        // 查询闪光灯模式是否支持。
        bool isSupported = false;
        ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &isSupported);
@@ -383,25 +395,25 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "isFlashModeSupported fail-----");
        }
-   
+
        // 设置闪光灯模式。
        ret = OH_CaptureSession_SetFlashMode(captureSession_, flashMode);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetFlashMode success.");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d.", ret);
        }
    
        // 获取当前设备的闪光灯模式。
        ret = OH_CaptureSession_GetFlashMode(captureSession_, &flashMode);
        if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode：%{public}d ", flashMode);
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode: %{public}d.", flashMode);
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %{public}d.", ret);
        }
        return ret;
    }
-   
+
    // 对焦模式。
    Camera_ErrorCode NDKCamera::IsFocusModeSupported(uint32_t mode)
    {
@@ -413,7 +425,7 @@
        }
        return ret_;
    }
-   
+
    Camera_ErrorCode NDKCamera::IsFocusMode(uint32_t mode)
    {
        OH_LOG_INFO(LOG_APP, "IsFocusMode start.");
@@ -436,7 +448,7 @@
        OH_LOG_INFO(LOG_APP, "IsFocusMode end.");
        return ret_;
    }
-   
+
    Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
    {
        float zoom = float(zoomRatio);
@@ -447,24 +459,24 @@
        if (captureSession_ == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatioRange failed.");
        } else {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom:%{public}f",
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom: %{public}f.",
                minZoom, maxZoom);
        }
-   
+
        // 设置缩放比例。
        ret = OH_CaptureSession_SetZoomRatio(captureSession_, zoom);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetZoomRatio success.");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d.", ret);
        }
-   
+
        // 获取当前设备的缩放比例。
        ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom);
        if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom：%{public}f ", zoom);
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom: %{public}f.", zoom);
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}d.", ret);
        }
        return ret;
    }
@@ -716,3 +728,4 @@
       return ret_;
   }
   ```
+

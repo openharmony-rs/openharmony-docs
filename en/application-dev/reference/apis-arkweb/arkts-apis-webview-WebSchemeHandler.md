@@ -1,12 +1,11 @@
 # Class (WebSchemeHandler)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:50:46.415Z pushedAt=2026-08-07T08:11:44.831Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:06:32.800Z pushedAt=2026-11-09T11:29:16.313Z nl=1 -->
 
 WebSchemeHandler is an interceptor class used to intercept network requests for a specified scheme (protocol), supporting scenarios such as custom protocol handling, local resource substitution, and specific request interception. Developers implement the onRequestStart callback to decide whether to intercept a request, and intercepted requests can have custom response content returned through WebResourceHandler. The WebSchemeHandler instance is registered to a specified scheme through the [setWebSchemeHandler](./arkts-apis-webview-WebviewController.md#setwebschemehandler12) method of WebviewController, thereby intercepting and processing all requests for that scheme.
 
@@ -148,7 +147,6 @@ struct WebComponent {
   }
 }
 ```
-
 ## onRequestStop<sup>12+</sup>
 
 onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
@@ -156,7 +154,6 @@ onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 Called when the request is complete. This callback is triggered only when the [onRequestStart](#onrequeststart12) callback intercepts the request. Specifically, this callback is invoked in the following cases:
 
 1. WebResourceHandler calls didFail or didFinish.
-
 2. The request is interrupted due to other reasons (such as network errors or system exceptions).
 
 **System capability**: SystemCapability.Web.Webview.Core

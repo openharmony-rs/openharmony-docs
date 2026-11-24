@@ -1,8 +1,16 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用Crashpad收集Web渲染进程崩溃信息的方法，讲解崩溃后dmp文件的生成与沙箱目录获取，以及解析dmp文件定位崩溃原因与调用栈的步骤。"
+keywords: [Crashpad, 渲染进程崩溃, dmp文件, onRenderExited, onRenderProcessNotResponding]
+doctype: guide
+status: active
+---
+
 # 使用Crashpad收集Web组件崩溃信息
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @qq_44167590-->
-<!--Designer: @hjoksky-->
+<!--Owner: @zwpless1-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -27,10 +35,10 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
 
 2. 参考<!--RP1-->Native访问应用沙箱<!--RP1End-->实现访问应用沙箱dmp文件；也可将存放dmp文件的沙箱路径的文件复制到可以查看的路径。示例如下
 
-   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   import { fileIo as fs } from '@kit.CoreFileKit'
+   import { fileIo } from '@kit.CoreFileKit'
    import { BusinessError } from '@kit.BasicServicesKit'
    import { webview } from '@kit.ArkWeb'
    
@@ -46,7 +54,7 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
            .onClick(() => {
              let pathDir = this.uiContext.getHostContext()?.filesDir;
              console.info("pathdir=" + pathDir);
-             fs.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
+             fileIo.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
                .then(()=>{
                  console.info("copy files success");
                })

@@ -1,11 +1,11 @@
 # Component Keyboard Shortcut Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:29:53.475Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:56:05.705Z pushedAt=2026-11-13T01:06:00.164Z nl=1 -->
 
 Developers can set custom key combinations for a component. Each component can be configured with multiple key combinations. This is applicable to scenarios where component operations need to be triggered quickly through the keyboard, improving keyboard operation efficiency.
 

@@ -5,6 +5,7 @@
 <!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=bb512ff5c6cd4a563759d91a6222e4da688e0f88 translatedAt=2026-11-19T08:32:59.787Z pushedAt=2026-11-20T03:12:08.429Z nl=1 -->
 
 Toybox is a lightweight collection of Linux command line utilities. It combines many common Linux command line utilities into a single executable file.
 
@@ -84,9 +85,9 @@ Format: help [-ahu] [COMMAND]
 | :- | :- |
 | false | Returns a non-zero value.<br>usage: false |
 | <!--DelRow-->sh    | Starts the shell command interpreter.|
-| test  | Performs a test and returns **true** or **false**. If no parameter is carried, **false** is returned.<br>usage: test [-bcdefghkLprSsuwx PATH] [-nz STRING] [-t FD] [X ?? Y] |
+| test  | Performs a test and returns **true** or **false**. If no parameter is specified, **false** is returned.<br>usage: test [-bcdefghkLprSsuwx PATH] [-nz STRING] [-t FD] [X ?? Y] |
 | true  | Returns zero.<br>usage: true |
-| yes   | Outputs lines repeatedly until it is killed. If no parameter is carried, **y** is returned.<br>usage: yes [args...] |
+| yes   | Outputs lines repeatedly until it is killed. If no parameter is specified, **y** is returned.<br>usage: yes [args...] |
 
 ### System Operations
 
@@ -178,7 +179,7 @@ Format: help [-ahu] [COMMAND]
 | <!--DelRow-->blkid       | Prints information of the file system, such as type, tag, and UUID.<br>usage: blkid [-o TYPE] [-s TAG] [-UL] DEV... |
 | <!--DelRow-->blockdev    | Invokes ioctl for the block device in each command.<br>usage: blockdev --OPTION... BLOCKDEV... |
 | <!--DelRow-->devmem      | Reads and writes the physical address using **/dev/mem**.<br>usage: devmem [-f FILE] ADDR [WIDTH [DATA...]] |
-| df          | Displays the total, used, and free disk space of each file system passed in. If no parameter is carried, all loaded file systems are displayed.<br>usage: df [-aHhikP] [-t TYPE] [FILE...] |
+| df          | Displays the total, used, and free disk space of each file system passed in. If no parameter is specified, all loaded file systems are displayed.<br>usage: df [-aHhikP] [-t TYPE] [FILE...] |
 | du          | Displays the disk usage with files and directories.<br>usage: du [-d N] [-abcHKkLlmsx] [FILE...] |
 | <!--DelRow-->eject       | Ejects a device, which is **/dev/cdrom** by default.<br>usage: eject [-stT] [DEVICE] |
 | free        | Displays the total, available, and used amount of physical memory and swap space.<br>usage: free [-bkmgt] |
@@ -194,7 +195,7 @@ Format: help [-ahu] [COMMAND]
 | lspci       | Displays PCI device information.<br>usage: lspci [-ekmn] [-i FILE ] |
 | lsusb       | Displays USB device information.<br>usage: lsusb |
 | <!--DelRow-->makedevs    | Creates a series of special files, including block device files and character device files.<br>usage: makedevs [-d device_table] rootdir |
-| mount       | Mounts a new file system to the directory. If no parameter is carried, the existing mounts are displayed.<br>usage: mount [-afFrsvw] [-t TYPE] [-o OPTION,] [[DEVICE] DIR] |
+| mount       | Mounts a new file system to the directory. If no parameter is specified, the existing mounts are displayed.<br>usage: mount [-afFrsvw] [-t TYPE] [-o OPTION,] [[DEVICE] DIR] |
 | mountpoint  | Checks whether a directory or device is a mount point.<br>usage: mountpoint [-qd] DIR <br>&emsp;&emsp;&emsp;mountpoint [-qx] DEVICE |
 | sync        | Writes cached data to disks.<br>usage: sync |
 | sysctl      | Reads and writes the system control data in **/proc/sys.**<br>usage: sysctl [-aAeNnqw] [-p [FILE] \| KEY[=VALUE]...] |
@@ -248,10 +249,10 @@ Format: help [-ahu] [COMMAND]
 | expand    | Expands a tab to a space based on the input parameter.<br>usage: expand [-t TABLIST] [FILE...] |
 | fallocate | Reserves space for a file in a file system.<br>usage: fallocate [-o OFFSET] -l SIZE FILE |
 | file      | Checks a file and describes its content type.<br>usage: file [-bhLs] [FILE...] |
-| find      | Finds a file in the directory.<br>usage: find [-HL] [DIR...] [<options>] |
+| find      | Finds a file in the directory.<br/>usage: find [-HL] [DIR...] [&lt;options&gt;] |
 | flock     | Manages the advisory lock.<br>usage: flock [-sxun] fd |
 | fmt       | Reformats the input to a wordwrap of a given line length, preserves the existing indentation level, and writes it to the standard output device.<br>usage: fmt [-w WIDTH] [FILE...] |
-| gunzip    | Decompresses a file. If no file is specified, the command decompresses the standard input device as a standard output device. After the command is successfully executed, the input file is deleted and replaced with a new file without the file name extension .gz.<br>usage: gunzip [-cfkt] [FILE...] |
+| gunzip    | Decompresses a file. If no file is specified, the command decompresses from the standard input to the standard output. After the command is successfully executed, the input file is deleted and replaced with a new file without the file name extension .gz.<br>usage: gunzip [-cfkt] [FILE...] |
 | head      | Copies the first line in a file to the standard output device. If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: head [-cn NUM] [-qv] [FILE...] |
 | hexedit   | Edits a hexadecimal file. All modifications are written to disk immediately.<br>usage: hexedit [-r] FILE |
 | iconv     | Converts the encoding format of a file.<br>usage: iconv [-f FROM] [-t TO] [FILE...] |
@@ -284,29 +285,29 @@ Format: help [-ahu] [COMMAND]
 | rm        | Removes a file.<br>usage: rm [-fiRrv] FILE... |
 | rmdir     | Removes one or more directories.<br>usage: rmdir [-p] [DIR...] |
 | sed       | Stream editor that applies the edit script to the input line.<br>usage: sed [-inrszE] [-e SCRIPT]... \| SCRIPT [-f SCRIPT\_FILE]... [FILE...] |
-| seq       | Counts in ascending order from the beginning (specified by **first**) to the end (specified by **last**). If no parameter is carried, the default value is 1.  The parameter can be a negative number or a floating point number.<br>usage: seq [-w \| -f fmt\_str] [-s sep\_str] [first] [increment] last |
+| seq       | Counts in ascending order from the beginning (specified by **first**) to the end (specified by **last**). If no parameter is specified, the default value is 1.  Use two parameters as the first and last. The parameter can be a negative number or a floating point number.<br>usage: seq [-w \| -f fmt\_str] [-s sep\_str] [first] [increment] last |
 | setfattr  | Writes POSIX extended attributes.<br>usage: setfattr [-h] [-x \| -n NAME] [-v VALUE] FILE... |
 | sha1sum/sha256sum | Calculates the SHA hash value.<br>usage: ???sum [-bcs] [FILE]... |
-| shred     | Deletes a file securely (overwrites the file content with random data).<br>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
+| shred     | Securely deletes files (overwrite file contents with random data).<br/>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
 | sort      | Sorts all lines of text from the input file (or standard input device) to the standard output device.<br>usage: sort [-Mbcdfginrsuz] [FILE...] [-k#[,#[x]] [-t X]] [-o FILE] |
 | split     | Copies input (or standard input device) data to a series of output (or "x") files with alphabetically increasing suffix (aa, ab, ac, ... az, ba, bb...).<br>usage: split [-a SUFFIX\_LEN] [-b BYTES] [-l LINES] [-n PARTS] [INPUT [OUTPUT]] |
 | stat      | Displays the status of a file or file system.<br>usage: stat [-tfL] [-c FORMAT] FILE... |
 | strings   | Displays printable strings in a binary file.<br>usage: strings [-fo] [-t oxd] [-n LEN] [FILE...] |
 | tac       | Outputs lines in reverse order.<br>usage: tac [FILE...] |
-| tail      | Copies the last lines in a file to the standard output device. "-" indicates a standard input device.<br>usage: tail [-n \| c NUMBER] [-f \| F] [-s SECONDS] [FILE...] |
+| tail      | Copies the last lines of a file to the standard output device. "-" indicates a standard input device.<br>usage: tail [-n \| c NUMBER] [-f \| F] [-s SECONDS] [FILE...] |
 | tar       | Creates, extracts, or lists files in a .tar file.<br>usage: tar [-cxt] [-fvohmjkOS] [-XTCf NAME] [--selinux] [FILE...] |
 | tee       | Copies the standard input device to each listed file, and also to the standard output device. "-" indicates a standard output device.<br>usage: tee [-ai] [FILE...] |
 | touch     | Updates the access and modification time of each file to the current time.<br>usage: touch [-amch] [-d DATE] [-t TIME] [-r FILE] FILE... |
 | truncate  | Sets the length of the file, sparsely expanding if necessary.<br>usage: truncate [-c] -s SIZE file... |
-| uniq      | Reports or filters output duplicate lines in a file.<br>usage: uniq [-cduiz] [-w MAXCHARS] [-f FIELDS] [-s CHAR] [INFILE [OUTFILE]] |
+| uniq      | Reports or filters out duplicate lines in a file.<br>usage: uniq [-cduiz] [-w MAXCHARS] [-f FIELDS] [-s CHAR] [INFILE [OUTFILE]] |
 | unix2dos  | Converts the newline format from Unix "\\n" to DOS "\\r\\n". If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: unix2dos [FILE...] |
 | unlink    | Removes a file.<br>usage: unlink FILE |
 | uudecode  | Decodes a file from the standard input device (or INFILE).<br>usage: uudecode [-o OUTFILE] [INFILE] |
-| uuencode  | Encodes data on a standard input device (or file) and outputs the encoded data to a standard output device. The output contains **encode-filename**.<br>usage: uuencode [-m] [INFILE] ENCODE_FILENAME |
+| uuencode  | Encodes data from the standard input (or file) and outputs the encoded data to a standard output. The output contains **encode-filename**.<br>usage: uuencode [-m] [INFILE] ENCODE_FILENAME |
 | wc        | Counts the number of lines, words, and characters in the input.<br>usage: wc [-Llwcm] [FILE...] |
 | which     | Searches **\$PATH** for executable files that match the specified file name.<br>usage: which [-a] filename ... |
 | xxd       | Displays the file content in hexadecimal format. If no file is specified, the command reads from the standard input device.<br>usage: xxd [-eipr] [-cglos N] [file] |
-| zcat      | Decompress the file to the standard output device. It is similar to **gzip -dc**.<br> usage: zcat [-f] [FILE...] |
+| zcat      | Decompresses the file to the standard output device. It is similar to **gzip -dc**.<br> usage: zcat [-f] [FILE...] |
 
 ## FAQs
 

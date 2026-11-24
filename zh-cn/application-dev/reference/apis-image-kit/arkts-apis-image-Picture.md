@@ -591,17 +591,8 @@ release(): void
 **示例：**
 
 ```ts
-async function Release(pictureObj : image.Picture) {
-  let funcName = "Release";
-  if (pictureObj != null) {
-    pictureObj.release();
-    if (pictureObj.getMainPixelmap() == null) {
-      console.info(funcName, 'Succeeded in releasing a picture.');
-    } else {
-      console.error(funcName, 'Failed to release a picture.');
-    }
-  } else {
-    console.error('Picture object is null.');
-  }
+function Release(pictureObj: image.Picture): void {
+  pictureObj.release();
+  console.info('Succeeded in releasing a picture.');
 }
 ```

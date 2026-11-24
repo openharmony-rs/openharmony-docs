@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "ArkWeb术语表，按字母顺序汇总Web开发中的常用概念与中英文对照，涵盖渲染模式、同层渲染、安全区域、手势、预渲染等术语定义，便于开发者开发与排查问题时查阅。"
+keywords: [ArkWeb, 术语表, 同层渲染, 渲染模式, 安全区域, 智能分词, 预渲染, UserAgent, 白屏]
+doctype: glossary
+status: active
+---
+
 # ArkWeb术语
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -98,7 +106,7 @@ DOM内容加载完成事件，HTML文档完全加载和解析完成后触发的�
 
 ### File Descriptor；文件描述符
 
-用于传递PDF文件信息的文件标识符。
+用于传递PDF文件信息的文件描述符。
 
 ### Fit Content；适应内容
 
@@ -384,6 +392,10 @@ Web页面为避开软键盘显示区域而进行的布局调整。
 
 ## W
 
+### Waterfall Page；瀑布流页面
+
+采用瀑布流布局的网页类型。
+
 ### Web Dark Mode；Web深色模式类型
 
 定义Web组件深色模式状态的类型枚举。
@@ -403,10 +415,6 @@ Web渲染进程，用于渲染Web内容的进程。
 ### WebResourceResponse
 
 Web资源响应类，用于构造自定义资源响应的数据结构。
-
-### Waterfall Page；瀑布流页面
-
-采用瀑布流布局的网页类型。
 
 ### WebNativeMessagingExtensionAbility
 

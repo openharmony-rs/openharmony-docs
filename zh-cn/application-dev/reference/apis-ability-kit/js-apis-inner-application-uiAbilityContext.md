@@ -2110,6 +2110,87 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+### showAbility
+
+showAbility(params: ShowParams): Promise\<void>
+
+显示当前UIAbility。使用Promise异步回调。
+
+> **说明：**
+>
+> - 仅支持在主线程中调用。
+>
+> - 调用此接口前，请确保当前应用已添加至系统状态栏。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| params | [ShowParams](js-apis-app-ability-showParams.md) | 是 | 窗口显示配置项，控制窗口是否获焦及置顶显示。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 16000050 | Internal error. |
+| 16000067 | The StartOptions check failed. |
+
+**示例：**
+
+EntryAbility.ts示例请参考[showAbility<sup>12+</sup>](#showability12)
+
+```ts
+// Index.ets
+import { common, ShowParams } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State showAbility: string = 'showAbility'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.showAbility)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let params: ShowParams = {
+              windowShowParams: {
+                windowFocused: false,
+                raiseTop: true
+              }
+            };
+
+            // 显示当前UIAbility
+            context.showAbility(params).then(() => {
+              console.info(`showAbility success`);
+            }).catch((err: BusinessError) => {
+              console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ### hideAbility<sup>12+</sup>
 
@@ -2216,7 +2297,7 @@ export default class EntryAbility extends UIAbility {
 
 moveAbilityToBackground(): Promise\<void>
 
-将处于前台的UIAbility移动到后台。使用Promise异步回调。仅支持在主线程调用。<br/><!--RP1--><!--RP1End-->
+将处于前台的UIAbility移动到后台。使用Promise异步回调。仅支持在主线程调用。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2369,7 +2450,7 @@ export default class EntryAbility extends UIAbility {
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
-通过<!--RP2-->[App Linking](../../application-models/app-linking-startup.md)<!--RP2End-->或[Deep Linking](../../application-models/deep-linking-startup.md)方式启动UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。
+通过<!--RP1-->[App Linking](../../application-models/app-linking-startup.md)<!--RP1End-->或[Deep Linking](../../application-models/deep-linking-startup.md)方式启动UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。
 
 通过在link字段中传入标准格式的URL，基于隐式want匹配规则拉起目标UIAbility。目标方必须同时具备以下过滤器特征，才能处理App Linking链接：
 - "actions"列表中包含"ohos.want.action.viewData"。

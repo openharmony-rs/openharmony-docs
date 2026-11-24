@@ -319,7 +319,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要算法。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>根据FIPS 186-4标准，sLen应大于等于0且小于等于哈希长度。<br>默认值：对于签名操作，自动计算最大盐值长度；对于验证操作，自动计算盐值长度。<br>特殊值：对于签名操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；或设置为-2或-3，以自动计算最大盐值长度。推荐使用-1；对于验证操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；设置为-2，以自动计算盐值长度；或设置为-3，以使用最大盐值长度。推荐使用-2。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | ML_DSA_DETERMINISTIC_BOOL | 106 | 表示ML-DSA签名和验证过程中是否使用确定性签名。不设置时默认值为false。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
@@ -985,12 +985,18 @@ getEncoded(): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let encodedKey = symKey.getEncoded();
-  console.info('key hex: ' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let encodedKey = symKey.getEncoded();
+    console.info('key hex: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1020,6 +1026,7 @@ getKeySize(): number
 
 | 错误码ID | 错误信息              |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17630001 | Crypto operation error. |
@@ -1028,12 +1035,18 @@ getKeySize(): number
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let symKeyLen = symKey.getKeySize();
-  console.info('keysize is: ' + symKeyLen);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let symKeyLen = symKey.getKeySize();
+    console.info('keysize is: ' + symKeyLen);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1059,21 +1072,27 @@ clearMem(): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKeyFun() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let key = await symKeyGenerator.generateSymKey();
-  let encodedKey = key.getEncoded();
-  console.info('key blob: '+ encodedKey.data);
-  key.clearMem();
-  encodedKey = key.getEncoded();
-  console.info('key blob: ' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let key = await symKeyGenerator.generateSymKey();
+    let encodedKey = key.getEncoded();
+    console.info('key blob: '+ encodedKey.data);
+    key.clearMem();
+    encodedKey = key.getEncoded();
+    console.info('key blob: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKeyFun failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 ## PubKey
 
-公钥，是[Key](#key)的子类，在非对称加密、签名验证、密钥协商时需要将其对象作为输入使用。
+公钥，是[Key](#key)的子类，在非对称加密、验签、密钥协商时需要将其对象作为输入使用。
 
 公钥可以通过非对称密钥生成器[AsyKeyGenerator](#asykeygenerator)、[AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10)来生成。
 
@@ -1116,6 +1135,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
@@ -1141,12 +1161,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let pubKey = keyPair.pubKey;
-  let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let pubKey = keyPair.pubKey;
+    let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1185,6 +1210,7 @@ getEncodedDer(format: string): DataBlob
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1193,15 +1219,21 @@ getEncodedDer(format: string): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
-  let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.convertKey(pubKeyBlob, null);
-  let key = keyPair.pubKey;
-  let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
-  console.info('returnBlob data: ' + returnBlob.data);
+  try {
+    let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+    let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.convertKey(pubKeyBlob, null);
+    let key = keyPair.pubKey;
+    let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
+    console.info('returnBlob data: ' + returnBlob.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncodedDer failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1209,7 +1241,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。公钥需符合X.509、PKCS #1规范，并采用PEM编码。
+获取PEM编码的密钥数据。此API以同步方式返回结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1233,6 +1265,7 @@ getEncodedPem(format: string): string
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1241,6 +1274,7 @@ getEncodedPem(format: string): string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let publicPkcs1Str1024: string =
   '-----BEGIN RSA PUBLIC KEY-----\n'
@@ -1251,10 +1285,15 @@ let publicPkcs1Str1024: string =
 
 function testPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
-  let pubPemKey = keyPair.pubKey;
-  let pubString = pubPemKey.getEncodedPem('X509');
-  console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
+    let pubPemKey = keyPair.pubKey;
+    let pubString = pubPemKey.getEncodedPem('X509');
+    console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPubKeyPkcs1ToX509BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1290,6 +1329,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17620003 | Parameter check failed. |
@@ -1299,12 +1339,18 @@ getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1349,12 +1395,18 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1380,6 +1432,7 @@ clearMem(): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testClearMem() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1390,6 +1443,8 @@ async function testClearMem() {
     let returnBlob = priKey.getEncodedDer('PKCS8');
     console.info('returnBlob data: ' + returnBlob.data);
     priKey.clearMem(); // 对于非对称私钥，clearMem()释放内部密钥结构。执行clearMem后，不支持getEncoded()。
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
@@ -1433,6 +1488,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   let fieldFp: cryptoFramework.ECFieldFp = {
@@ -1457,12 +1513,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let priKey = keyPair.priKey;
-  let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let priKey = keyPair.priKey;
+    let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 ### getEncodedDer<sup>12+</sup>
@@ -1499,6 +1560,7 @@ getEncodedDer(format: string): DataBlob
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1507,6 +1569,7 @@ getEncodedDer(format: string): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1516,6 +1579,8 @@ async function testGetEncodedDer() {
     let priKey = keyPair.priKey;
     let returnBlob = priKey.getEncodedDer('PKCS8');
     console.info('returnBlob data: ' + returnBlob.data);
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
@@ -1524,7 +1589,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。私钥格式需符合PKCS #8、PKCS #1规范，并采用PEM编码。
+获取PEM编码的私钥数据。此API以同步方式返回结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1549,6 +1614,7 @@ getEncodedPem(format: string): string
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1557,6 +1623,7 @@ getEncodedPem(format: string): string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1577,10 +1644,15 @@ let priKeyPkcs1Str1024: string =
 
 function testPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS8');
+    console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1ToPkcs8BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1588,7 +1660,7 @@ function testPriKeyPkcs1ToPkcs8BySync1024() {
 
 getEncodedPem(format: string, config: KeyEncodingConfig): string
 
-同步方法，获取密钥数据的字符串。支持RSA公钥和私钥。私钥格式满足PKCS #8规范、PKCS #1规范和PEM编码方式。
+获取PEM编码的加密的私钥数据。此API以同步方式返回结果。目前仅支持RSA密钥。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1622,6 +1694,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1642,14 +1715,19 @@ let priKeyPkcs1Str1024: string =
 
 function testPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let options: cryptoFramework.KeyEncodingConfig = {
-    password: '123456',
-    cipherName: 'AES-128-CBC'
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let options: cryptoFramework.KeyEncodingConfig = {
+      password: '123456',
+      cipherName: 'AES-128-CBC'
+    }
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS1', options);
+    console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1Encoded failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -1675,6 +1753,7 @@ getPubKey(): Promise\<PubKey>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17630001 | Crypto operation error. |
@@ -1684,6 +1763,7 @@ getPubKey(): Promise\<PubKey>
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -1743,7 +1823,8 @@ async function generateAsyKey() {
     console.info('pk1 bin data ' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -1771,6 +1852,7 @@ getPubKeySync(): PubKey
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17630001 | Crypto operation error. |
@@ -1780,6 +1862,7 @@ getPubKeySync(): PubKey
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -1839,7 +1922,8 @@ function generateAsyKey() {
     console.info('pk1 bin data' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -1877,6 +1961,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17620003 | Parameter check failed. |
@@ -1886,12 +1971,18 @@ getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1927,6 +2018,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17620003 | Parameter check failed. |
@@ -1936,12 +2028,18 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2009,8 +2107,14 @@ createSymKeyGenerator(algName: string): SymKeyGenerator
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+try {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSymKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## SymKeyGenerator
@@ -2059,6 +2163,7 @@ generateSymKey(callback: AsyncCallback\<SymKey>): void
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+ |
 
@@ -2069,7 +2174,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    console.info('Generate symKey result: success, algName: ' + symKey.algName);
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    console.info('generateSymKey result: success, algName: ' + symKey.algName);
   });
 ```
 
@@ -2099,6 +2208,7 @@ generateSymKey(): Promise\<SymKey>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+ |
 
@@ -2145,6 +2255,7 @@ generateSymKeySync(): SymKey
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+ |
 
@@ -2152,14 +2263,20 @@ generateSymKeySync(): SymKey
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGenerateSymKeySync() {
   // 创建SymKeyGenerator实例。
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  // 使用密钥生成器随机生成对称密钥。
-  let key = symKeyGenerator.generateSymKeySync();
-  let encodedKey = key.getEncoded();
-  console.info('key hex:' + encodedKey.data);
+  try {
+    // 使用密钥生成器随机生成对称密钥。
+    let key = symKeyGenerator.generateSymKeySync();
+    let encodedKey = key.getEncoded();
+    console.info('key hex:' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSymKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2213,6 +2330,10 @@ function testConvertKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     console.info('Convert symKey result: success, algName: ' + symKey.algName);
   });
 }
@@ -2249,6 +2370,7 @@ convertKey(key: DataBlob): Promise\<SymKey>
 | 错误码ID | 错误信息                                          |
 | -------- | --------------------------------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                                |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+                                |
 
@@ -2320,6 +2442,7 @@ convertKeySync(key: DataBlob): SymKey
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testConvertKeySync() {
   // 对称密钥长度为64字节，512比特。
@@ -2328,9 +2451,14 @@ function testConvertKeySync() {
     data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
   }
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-  let key = symKeyGenerator.convertKeySync(keyBlob);
-  let encodedKey = key.getEncoded();
-  console.info('key encoded data: ' + encodedKey.data);
+  try {
+    let key = symKeyGenerator.convertKeySync(keyBlob);
+    let encodedKey = key.getEncoded();
+    console.info('key encoded data: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testConvertKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2374,8 +2502,14 @@ createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+try {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGenerator
@@ -2462,6 +2596,7 @@ generateKeyPair(): Promise\<KeyPair>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -2510,6 +2645,7 @@ generateKeyPairSync(): KeyPair
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
@@ -2519,7 +2655,8 @@ try {
   } else {
     console.error('[Sync]: get key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
@@ -2643,6 +2780,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob): Promise\<KeyPair\>
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                                     |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error.          |
@@ -2679,6 +2817,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -2746,6 +2885,7 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let pubKeyArray =
   new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -2765,7 +2905,8 @@ try {
   } else {
     console.error('[Sync]: convert key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
@@ -2805,6 +2946,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -2886,6 +3028,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -2958,6 +3101,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -2966,6 +3110,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -2999,7 +3144,8 @@ function testConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3039,6 +3185,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -3046,6 +3193,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1EncodingStr: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -3075,7 +3223,8 @@ function testConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3119,6 +3268,7 @@ createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3146,7 +3296,12 @@ function genDsa1024KeyPairSpecBigE() {
 }
 
 let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+try {
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGeneratorBySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGeneratorBySpec<sup>10+</sup>
@@ -3382,7 +3537,7 @@ function testGenerateKeyPairSync() {
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3452,7 +3607,7 @@ function testGeneratePriKey() {
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
-      console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      console.error(`generatePriKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
     }
     console.info('generatePriKey result: success.');
@@ -3565,6 +3720,7 @@ generatePriKeySync(): PriKey
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3601,7 +3757,8 @@ function testGeneratePriKeySync() {
     } else {
       console.error('[Sync]: get pri key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3611,7 +3768,7 @@ function testGeneratePriKeySync() {
 
 generatePubKey(callback: AsyncCallback\<PubKey>): void
 
-获取非对称密钥生成器生成的密钥。使用callback异步回调。
+获取非对称密钥生成器生成的公钥。使用callback异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
@@ -3785,6 +3942,7 @@ generatePubKeySync(): PubKey
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3821,7 +3979,8 @@ function testGeneratePubKeySync() {
     } else {
       console.error('[Sync]: get pub key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3883,7 +4042,7 @@ try {
 
 static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
-根据椭圆曲线的曲线名，即相应的NID（Name Identifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。
 
 > **说明：**
 >
@@ -3915,6 +4074,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -3922,14 +4082,20 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 随机生成的非压缩点数据。
 let pkData =
   new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
     157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242,
     206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-console.info('returnPoint: ' + returnPoint.x.toString(16));
+try {
+  let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
+  console.info('returnPoint: ' + returnPoint.x.toString(16));
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`convertPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ### getEncodedPoint<sup>12+</sup>
@@ -3963,6 +4129,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -3970,21 +4137,27 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTest() {
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.generateKeyPair();
-  let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
-  let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
-  console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
-  console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
-  // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
-  let returnPoint: cryptoFramework.Point = {
-    x: BigInt('0x' + eccPkX.toString(16)),
-    y: BigInt('0x' + eccPkY.toString(16))
-  };
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
-  console.info('returnData: ' + returnData);
+  try {
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.generateKeyPair();
+    let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+    let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
+    console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
+    console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
+    // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
+    let returnPoint: cryptoFramework.Point = {
+      x: BigInt('0x' + eccPkX.toString(16)),
+      y: BigInt('0x' + eccPkY.toString(16))
+    };
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+    console.info('returnData: ' + returnData);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4076,6 +4249,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                    |
 | 17630001 | Crypto operation error.          |
 
@@ -4131,6 +4305,7 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                    |
 | 17630001 | Crypto operation error.          |
 
@@ -4339,6 +4514,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise\<void>
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
@@ -4512,6 +4688,7 @@ update(data: DataBlob): Promise\<DataBlob>
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -4628,7 +4805,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -4640,11 +4817,18 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4671,11 +4855,27 @@ function cipherByCallback() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   symKeyGenerator.generateSymKey((err, symKey) => {
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
+      if (err) {
+        console.error(`init failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       cipher.update(plainText, (err, encryptUpdate) => {
+        if (err) {
+          console.error(`update failed, errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         cipher.doFinal(null, (err, tag) => {
+          if (err) {
+            console.error(`doFinal failed, errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           gcmParams.authTag = tag;
           console.info('encryptUpdate plainText: ' + encryptUpdate.data);
         });
@@ -4832,6 +5032,7 @@ doFinal(data: DataBlob): Promise\<DataBlob>
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -4880,11 +5081,12 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 | Promise\<[DataBlob](#datablob)> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -4897,11 +5099,18 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4924,16 +5133,21 @@ function genGcmParamsSpec() {
 }
 
 async function cipherByPromise() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = await cipher.update(plainText);
-  gcmParams.authTag = await cipher.doFinal(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = await cipher.update(plainText);
+    gcmParams.authTag = await cipher.doFinal(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4952,7 +5166,7 @@ doFinalSync(data: DataBlob | null): DataBlob
   authTag需要填入解密时的[GcmParamsSpec](#gcmparamsspec)或[CcmParamsSpec](#ccmparamsspec)；密文则作为解密时的入参data。
 - 对于其他模式的对称加解密以及GCM和CCM模式的对称解密：在一次加/解密流程中，每次updateSync和doFinalSync的结果拼接起来，得到完整的明文或密文。
 
-（2）在RSA和SM2非对称加解密中，doFinalSync用于加解密本次传入的数据，通过注册回调函数获取加密或解密后的数据。如果数据量超过单次处理能力，可以多次调用doFinalSync，并将结果拼接以获得完整的明文或密文。
+（2）在RSA和SM2非对称加解密中，doFinalSync用于加解密本次传入的数据，并以同步方式返回加密或解密后的数据。如果数据量超过单次处理能力，可以多次调用doFinalSync，并将结果拼接以获得完整的明文或密文。
 
 其他注意事项同接口[doFinal()](#dofinal)说明。
 
@@ -4980,7 +5194,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -4992,11 +5206,18 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -5019,16 +5240,21 @@ function genGcmParamsSpec() {
 }
 
 async function cipherBySync() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = cipher.updateSync(plainText);
-  gcmParams.authTag = cipher.doFinalSync(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = cipher.updateSync(plainText);
+    gcmParams.authTag = cipher.doFinalSync(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5154,18 +5380,24 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let pSource = new Uint8Array([1, 2, 3, 4]);
-  cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  try {
+    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5202,18 +5434,24 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-  let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-  console.info('getCipherSpec: mdName =' + mdName);
+  try {
+    let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+    console.info('getCipherSpec: mdName =' + mdName);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5254,16 +5492,18 @@ createSign(algName: string): Sign
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-
-let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let signer3 = cryptoFramework.createSign('ECC224|SHA256');
-
-let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
-
-let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+try {
+  let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+  let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let signer3 = cryptoFramework.createSign('ECC224|SHA256');
+  let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
+  let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSign failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Sign
@@ -5741,9 +5981,25 @@ function signByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     signer.init(keyPair.priKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       signer.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         signer.sign(inputVerify, (err, signData) => {
+          if (err) {
+            console.error(`sign failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('sign output = ' + signData.data);
         });
       });
@@ -5759,6 +6015,7 @@ function signByCallback() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -5805,16 +6062,21 @@ async function signByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-  let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  await signer.init(keyPair.priKey);
-  await signer.update(inputUpdate);
-  let signData = await signer.sign(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    let inputUpdate: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+    let inputSign: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+    let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+    await signer.init(keyPair.priKey);
+    await signer.update(inputUpdate);
+    let signData = await signer.sign(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5825,6 +6087,7 @@ async function signByPromise() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -5877,10 +6140,15 @@ function signBySync() {
   let inputSign: cryptoFramework.DataBlob =
     { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  signer.initSync(keyPair.priKey);
-  signer.updateSync(inputUpdate);
-  let signData = signer.signSync(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    signer.initSync(keyPair.priKey);
+    signer.updateSync(inputUpdate);
+    let signData = signer.signSync(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5957,11 +6225,17 @@ setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6002,10 +6276,16 @@ setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean):
 **示例：**
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign('ML-DSA');
-  signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6049,12 +6329,18 @@ getSignSpec(itemType: SignSpecItem): string | number
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetSignSpec() {
   let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 32;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6074,7 +6360,7 @@ createVerify(algName: string): Verify
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名验证算法：RSA、ECC、DSA、SM2<sup>10+</sup>、Ed25519<sup>11+</sup>和ML-DSA<sup>26.0.0+</sup>。使用RSA PKCS #1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
+| algName | string | 是   | 指定验签算法：RSA、ECC、DSA、SM2<sup>10+</sup>、Ed25519<sup>11+</sup>和ML-DSA<sup>26.0.0+</sup>。使用RSA PKCS #1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
@@ -6096,17 +6382,21 @@ createVerify(algName: string): Verify
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-
-let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+try {
+  let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+  let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createVerify failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Verify
 
-验签接口，定义基于公钥对签名数据进行验签的方法。调用前，需通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
+验签接口，定义基于公钥对签名数据进行验签的方法。调用前，需通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成验签操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 Verify实例不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify实例并调用init初始化。
 
@@ -6586,9 +6876,25 @@ function verifyByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     verifier.init(keyPair.pubKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       verifier.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         verifier.verify(inputVerify, signMessageBlob, (err, res) => {
+          if (err) {
+            console.error(`verify failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('verify result = ' + res);
         });
       });
@@ -6604,6 +6910,7 @@ function verifyByCallback() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -6651,25 +6958,30 @@ async function verifyByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-  // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = {
-    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
-      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
-      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
-      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
-      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
-      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
-  };
-  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  await verifier.init(keyPair.pubKey);
-  await verifier.update(inputUpdate);
-  let res = await verifier.verify(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    let inputUpdate: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+    let inputVerify: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+    // 该数据取自Sign中的signData.data。
+    let signMessageBlob: cryptoFramework.DataBlob = {
+      data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+        50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+        130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+        87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+        173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+        232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+    };
+    let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+    await verifier.init(keyPair.pubKey);
+    await verifier.update(inputUpdate);
+    let res = await verifier.verify(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6680,13 +6992,14 @@ async function verifyByPromise() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-  console.info('convertKey result: success.');
+  console.info('convertKeySync result: success.');
   return keyPair;
 }
 
@@ -6742,10 +7055,15 @@ function verifyBySync() {
       232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
   };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  verifier.initSync(keyPair.pubKey);
-  verifier.updateSync(inputUpdate);
-  let res = verifier.verifySync(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    verifier.initSync(keyPair.pubKey);
+    verifier.updateSync(inputUpdate);
+    let res = verifier.verifySync(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6839,19 +7157,19 @@ async function recoverByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = {
-    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
-      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
-      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
-      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
-      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
-      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
-  };
-  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
-  await verifier.init(keyPair.pubKey);
   try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    // 该数据取自Sign中的signData.data。
+    let signMessageBlob: cryptoFramework.DataBlob = {
+      data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+        50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+        130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+        87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+        173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+        232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+    };
+    let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+    await verifier.init(keyPair.pubKey);
     let rawSignData = await verifier.recover(signMessageBlob);
     if (rawSignData != null) {
       console.info('[Promise]: recover result: ' + rawSignData.data);
@@ -6909,7 +7227,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 设置验签参数。常用的验签参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
 
-支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置签名验证参数。
+支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
 验签的参数应当与签名的参数保持一致。
 
@@ -6944,7 +7262,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 设置验签参数。常用的验签参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
 
-支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置签名验证参数。
+支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
 验签的参数应当与签名的参数保持一致。
 
@@ -6979,11 +7297,17 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7026,10 +7350,16 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify('ML-DSA');
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_MU_BOOL, false);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_MU_BOOL, false);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7058,7 +7388,7 @@ getVerifySpec(itemType: SignSpecItem): string | number
 | string \| number | 获取的验签参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7072,12 +7402,18 @@ getVerifySpec(itemType: SignSpecItem): string | number
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetVerifySpec() {
   let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7119,8 +7455,14 @@ createKeyAgreement(algName: string): KeyAgreement
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+try {
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKeyAgreement failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## KeyAgreement
@@ -7202,6 +7544,7 @@ generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
 | 17630001 | Crypto operation error. |
@@ -7243,18 +7586,24 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
-    if (err) {
-      console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      return;
-    }
-    console.info('keyAgreement output = ' + secret.data);
-  });
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
+      if (err) {
+        console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
+      console.info('keyAgreement output = ' + secret.data);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7266,14 +7615,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
-  keyAgreementPromise.then(secret => {
-    console.info('keyAgreement output = ' + secret.data);
-  }).catch((error: BusinessError) => {
-    console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
-  });
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
+    keyAgreementPromise.then(secret => {
+      console.info('keyAgreement output = ' + secret.data);
+    }).catch((error: BusinessError) => {
+      console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7281,13 +7635,19 @@ async function testGenerateSecret() {
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecretSync() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
-  console.info('[Sync]keyAgreement output = ' + secret.data);
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
+    console.info('[Sync]keyAgreement output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7503,6 +7863,7 @@ digest(callback: AsyncCallback\<DataBlob>): void
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 17620001 | Memory operation failed.           |
+| 17620004 | Invalid function call. XOF(Extendable-Output Function) digest algorithms, such as SHAKE128 and SHAKE256, do not support this API. <br>适用版本：26.1.0+         |
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -7514,7 +7875,15 @@ import { buffer } from '@kit.ArkTS';
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
   md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) }, (err) => {
+    if (err) {
+      console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     md.digest((err, digestOutput) => {
+      if (err) {
+        console.error(`digest failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       console.info('[Callback]: MD result: ' + digestOutput.data);
       console.info('[Callback]: MD len: ' + md.getMdLength());
     });
@@ -7551,6 +7920,7 @@ digest(): Promise\<DataBlob>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 17620001 | Memory operation failed.           |
+| 17620004 | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API. <br>适用版本：26.1.0+ |
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -7560,13 +7930,19 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function mdByPromise() {
-  let md = cryptoFramework.createMd('SHA256');
-  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = await md.digest();
-  console.info('[Promise]: MD result: ' + mdOutput.data);
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    let md = cryptoFramework.createMd('SHA256');
+    await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = await md.digest();
+    console.info('[Promise]: MD result: ' + mdOutput.data);
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`mdByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7681,6 +8057,7 @@ digestSync(): DataBlob
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620004 | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API. <br>适用版本：26.1.0+ |
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -7690,13 +8067,19 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function mdBySync() {
   let md = cryptoFramework.createMd('SHA256');
-  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = md.digestSync();
-  console.info('[Sync]: MD result: ' + mdOutput.data);
-  console.info('[Sync]: MD len: ' + md.getMdLength());
+  try {
+    md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = md.digestSync();
+    console.info('[Sync]: MD result: ' + mdOutput.data);
+    console.info('[Sync]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`digestSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7753,12 +8136,16 @@ function StringToUint8Array(str) {
 function mdTestSync() {
     let mdAlgName = 'SHA256';
     let message = 'mdTestMessage';
-    let md = cryptoFramework.createMd(mdAlgName);
-    md.updateSync({ data: StringToUint8Array(message) });
-    let mdResult = md.digestSync();
-    console.info('Digest successfully. result:' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info('Digest successfully. md len: ' + mdLen);
+    try {
+        let md = cryptoFramework.createMd(mdAlgName);
+        md.updateSync({ data: StringToUint8Array(message) });
+        let mdResult = md.digestSync();
+        console.info('Digest successfully. result:' + mdResult.data);
+        let mdLen = md.getMdLength();
+        console.info('Digest successfully. md len: ' + mdLen);
+    } catch (error) {
+        console.error(`mdTestSync failed. Code: ${error.code}, message: ${error.message}`);
+    }
 }
 
 export default {
@@ -7799,16 +8186,23 @@ getMdLength(): number
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 17620004 | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API. <br>适用版本：26.1.0+ |
 | 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function getLength() {
   let md = cryptoFramework.createMd('SHA256');
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getMdLength failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7834,7 +8228,7 @@ squeeze(len: number): Promise\<DataBlob>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| len | number | 是   | 指定摘要输出长度（字节）。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
+| len | number | 是   | 指定摘要输出长度（字节）。取值限定为整数。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
 
 **返回值：**
 
@@ -7850,20 +8244,26 @@ squeeze(len: number): Promise\<DataBlob>
 | -------- | ---------------------- |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
-| 17620003 | Parameter check failed. Possible causes: Invalid len value. |
-| 17620004 | Invalid function call. Fixed-length digest algorithm, such as SHA256, does not support this API. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid len value.|
+| 17620004 | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function squeezeByPromise() {
-  let md = cryptoFramework.createMd('SHAKE128');
-  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = await md.squeeze(64);
-  console.info('[Promise]: squeeze result length: ' + mdOutput.data.length);
+  try {
+    let md = cryptoFramework.createMd('SHAKE128');
+    await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = await md.squeeze(64);
+    console.info('[Promise]: squeeze result length: ' + mdOutput.data.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`squeeze failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7889,7 +8289,7 @@ squeezeSync(len: number): DataBlob
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| len | number | 是   | 指定摘要输出长度（字节）。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
+| len | number | 是   | 指定摘要输出长度（字节）。取值限定为整数。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
 
 **返回值：**
 
@@ -7905,20 +8305,26 @@ squeezeSync(len: number): DataBlob
 | -------- | ---------------------- |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
-| 17620003 | Parameter check failed. Possible causes: Invalid len value. |
-| 17620004 | Invalid function call. Fixed-length digest algorithm, such as SHA256, does not support this API. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid len value.|
+| 17620004 | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function squeezeSync() {
   let md = cryptoFramework.createMd('SHAKE128');
-  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = md.squeezeSync(64);
-  console.info('[Sync]: squeeze result length: ' + mdOutput.data.length);
+  try {
+    md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = md.squeezeSync(64);
+    console.info('[Sync]: squeeze result length: ' + mdOutput.data.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`squeezeSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7955,6 +8361,7 @@ createMac(algName: string): Mac
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.       |
 
 **示例：**
@@ -8022,7 +8429,7 @@ try {
   let mac = cryptoFramework.createMac(spec);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -8106,6 +8513,7 @@ init(key: SymKey): Promise\<void>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -8203,6 +8611,7 @@ update(input: DataBlob): Promise\<void>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -8279,9 +8688,25 @@ function hmacByCallback() {
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     mac.init(symKey, (err) => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) }, (err) => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         mac.doFinal((err, output) => {
+          if (err) {
+            console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('[Callback]: HMAC result: ' + output.data);
           console.info('[Callback]: MAC len: ' + mac.getMacLength());
         });
@@ -8420,6 +8845,7 @@ doFinal(): Promise\<DataBlob>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.           |
 | 17630001 | Crypto operation error. |
 
@@ -8430,17 +8856,23 @@ doFinal(): Promise\<DataBlob>
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function hmacByPromise() {
-  let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = await symKeyGenerator.convertKey(keyBlob);
-  await mac.init(symKey);
-  await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = await mac.doFinal();
-  console.info('[Promise]: HMAC result: ' + macOutput.data);
-  console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  try {
+    let mac = cryptoFramework.createMac('SHA256');
+    let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = await symKeyGenerator.convertKey(keyBlob);
+    await mac.init(symKey);
+    await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = await mac.doFinal();
+    console.info('[Promise]: HMAC result: ' + macOutput.data);
+    console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8480,17 +8912,23 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function hmacBySync() {
   let mac = cryptoFramework.createMac('SHA256');
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = symKeyGenerator.convertKeySync(keyBlob);
-  mac.initSync(symKey);
-  mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = mac.doFinalSync();
-  console.info('[Sync]: HMAC result: ' + macOutput.data);
-  console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  try {
+    let symKey = symKeyGenerator.convertKeySync(keyBlob);
+    mac.initSync(symKey);
+    mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = mac.doFinalSync();
+    console.info('[Sync]: HMAC result: ' + macOutput.data);
+    console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8561,7 +8999,7 @@ function hmacTestSync() {
       let macOutput = mac.doFinalSync();
       console.info('Mac doFinal successfully: ' + macOutput.data);
   } catch (error) {
-      console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
+      console.error(`hmacTestSync failed. Code: ${error.code}, message: ${error.message}`);
   }
 }
  
@@ -8599,6 +9037,7 @@ getMacLength(): number
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -9110,7 +9549,7 @@ createKdf(algName: string): Kdf
 
 | 参数名  | 类型   | 必填 | 说明                              |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256"、 "HKDF\|SHA256"、 "SCRYPT"和"X963KDF\|SHA256"等。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
+| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF、SCRYPT、X963KDF算法，如"PBKDF2\|SHA256"、 "HKDF\|SHA256"、 "SCRYPT"和"X963KDF\|SHA256"等。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
 
 **返回值**：
 
@@ -9132,8 +9571,14 @@ createKdf(algName: string): Kdf
 - PBKDF2算法
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+try {
+  let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKdf failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Kdf<sup>11+</sup>
@@ -9375,7 +9820,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 ## SignatureUtils<sup>20+</sup>
 
-用于SM2数据转换的工具类。
+用于ECC/SM2签名数据转换的工具类。
 
 ### genEccSignatureSpec<sup>20+</sup>
 
@@ -9490,7 +9935,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 ## KemAlgNameId
 
-表示密钥封装（Kem）算法名称的枚举。
+表示密钥封装（KEM）算法名称的枚举。
 
 **起始版本：** 26.0.0
 
@@ -9555,6 +10000,7 @@ createKem(algNameId: KemAlgNameId): Kem
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001 | Memory operation failed.                                  |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed.                                   |
@@ -9606,7 +10052,7 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise\<KemEncapResult>
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
 | pubKey | [PubKey](#pubkey)   | 是   | 用于密钥封装的公钥。                                         |
-| ikme   | Uint8Array \| null  | 是   | 用于生成临时密钥的ikme。若传入null，则由算法库内部随机生成。 |
+| ikme   | Uint8Array \| null  | 是   | 随机数种子，用于替代算法内部的随机数。对于ML-KEM算法，随机数种子是32字节。建议传null。 |
 
 **返回值：**
 
@@ -9670,7 +10116,7 @@ encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
 | pubKey | [PubKey](#pubkey)   | 是   | 用于密钥封装的公钥。                                         |
-| ikme   | Uint8Array \| null  | 是   | 用于生成临时密钥的ikme。若传入null，则由算法库内部随机生成。 |
+| ikme   | Uint8Array \| null  | 是   | 随机数种子，用于替代算法内部的随机数。对于ML-KEM算法，随机数种子是32字节。建议传null。 |
 
 **返回值：**
 

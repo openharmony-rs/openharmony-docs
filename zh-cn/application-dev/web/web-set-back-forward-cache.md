@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍在初始化内核前开启Web组件前进后退缓存BFCache，并设置缓存页面数量与留存时间以加速前进后退浏览的方法。"
+keywords: [前进后退缓存, BFCache, enableBackForwardCache, setBackForwardCacheOptions, BackForwardCacheSupportedFeatures, BackForwardCacheOptions, initializeWebEngine, 页面快照]
+doctype: guide
+status: active
+---
+
 # 设置Web组件前进后退缓存
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -12,7 +20,7 @@ BFCache功能启用后，Web组件会在用户离开当前页面时在内存中�
 
 ## Web组件开启BFCache
 
-开发者需要在调用[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化ArkWeb内核之前调用[enableBackForwardCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enablebackforwardcache12)来开启BFCache。enableBackForwardCache可以接收一个[BackForwardCacheSupportedFeatures](../reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md)参数，用于控制是否允许具备同层渲染特性和视频托管特性的页面进入BFCache。
+开发者需要在调用[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化ArkWeb内核之前调用[enableBackForwardCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enablebackforwardcache12)来开启BFCache。enableBackForwardCache()可以接收一个[BackForwardCacheSupportedFeatures](../reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md)参数，用于控制是否允许具备同层渲染特性和视频托管特性的页面进入BFCache。
 
 <!-- @[web_module_open_bf_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/entryability/EntryAbility.ets) -->
 

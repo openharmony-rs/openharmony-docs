@@ -302,10 +302,10 @@ struct ImageExample {
           .allowDrop([uniformTypeDescriptor.UniformDataType.TEXT])
           .onDrop((event?: DragEvent, extraParams?: string) => {
             if (extraParams === undefined) { return; }
-            const dropInfo = JSON.parse(extraParams);
-            this.uri = dropInfo?.extraInfo;
-            if (typeof dropInfo.insertIndex !== 'number') { return; }
-            this.disallowedBlockArr.splice(dropInfo.insertIndex, 0, this.uri);
+            const dropInfo: Record<string, Object> = JSON.parse(extraParams) as Record<string, Object>;
+            this.uri = dropInfo['extraInfo'] as string;
+            if (typeof dropInfo['insertIndex'] !== 'number') { return; }
+            this.disallowedBlockArr.splice(dropInfo['insertIndex'] as number, 0, this.uri);
             console.info('ondrop not udmf data');
           })
           .border({ width: 1 })
@@ -342,9 +342,9 @@ struct ImageExample {
               if (arr.length > 0) {
                 let image = arr[0] as unifiedDataChannel.Image;
                 this.uri = image.imageUri;
-                const dropInfo = JSON.parse(extraParams ?? '{}');
-                if (typeof dropInfo.insertIndex !== 'number') { return; }
-                this.allowedBlockArr.splice(dropInfo.insertIndex, 0, this.uri);
+                const dropInfo: Record<string, Object> = JSON.parse(extraParams ?? '{}') as Record<string, Object>;
+                if (typeof dropInfo['insertIndex'] !== 'number') { return; }
+                this.allowedBlockArr.splice(dropInfo['insertIndex'] as number, 0, this.uri);
               } else {
                 console.info(`dragData arr is null`);
               }
@@ -1307,8 +1307,7 @@ struct CustomCard {
 
 ```ts
 // xxx.ets
-import { ImageModifier } from '@kit.ArkUI';
-import { uiMaterial } from '@kit.ArkUI';
+import { ImageModifier,uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component

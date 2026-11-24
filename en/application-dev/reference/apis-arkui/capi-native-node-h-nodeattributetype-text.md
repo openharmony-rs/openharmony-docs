@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Text Display Component Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=330b06588843f46c9bd90648f10e5c574cf1a509 translatedAt=2026-08-25T02:24:17.918Z pushedAt=2026-08-27T00:49:15.649Z -->
+<!-- md-trans-meta sourceCommit=dd5f5184946a370be059b349ca0e3437cf4bc207 translatedAt=2026-11-18T08:52:50.775Z pushedAt=2026-11-19T06:35:31.369Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -14,13 +13,14 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the attribute types that can be set by ArkUI on the native side for text display components including **Text**, **Span**, and **ImageSpan**. It is used to configure the style attributes of text components, such as the font size, color, line height, and decoration line, through the setting and obtaining APIs in native development scenarios, enabling fine-grained control and customization of text display effects.
+Enumerates the attribute types that can be set by ArkUI on the native side for text display components including **Text**, **Span**, and **ImageSpan**. In native development scenarios, you can use the attribute setting and obtaining APIs to configure the style attributes of text components, such as the font size, color, line height, and decoration line, to implement refined control and customization of the text display effect.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
+
 
 ## NODE_TEXT_CONTENT
 
@@ -32,6 +32,7 @@ Text content attribute, which can be set, reset, and obtained as required throug
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -56,17 +57,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Font color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Font color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Font color, in 0xARGB format.|
+| .value[0].u32 | Font color, in 0xARGB format. |
 
 ## NODE_FONT_SIZE
 
@@ -78,6 +80,7 @@ Font size attribute, which can be set, reset, and obtained as required through A
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -102,6 +105,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -124,6 +128,7 @@ Font weight attribute, which can be set, reset, and obtained as required through
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -148,6 +153,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -171,12 +177,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Text decorative line type. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype). Default value: **ARKUI_TEXT_DECORATION_TYPE_NONE**, indicating no decorative line. |
-| .value[1]?.u32 | Text decorative line color, in 0xARGB format. For example, **0xFFFF0000** indicates red. This parameter is optional. Default value: **0xFF000000**, indicating black.|
+| .value[1]?.u32 | Text decorative line color, in 0xARGB format. This is an optional parameter. For example, **0xFFFF0000** indicates red. Default value: **0xFF000000**, indicating black. |
 | .value[2]?.i32 | Text decorative line style. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle). Default value: **ARKUI_TEXT_DECORATION_STYLE_SOLID**, indicating a solid decorative line. |
 | .value[3]?.f32 | Thickness of the text decorative line. This parameter is optional. The default value is **1.0**. The value range is [0, +∞). If a negative value is passed, the setting does not take effect. |
 
@@ -185,7 +192,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Text decorative line type. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype).|
-| .value[1].u32 | Text decorative line color, in 0xARGB format.|
+| .value[1].u32 | Text decorative line color, in 0xARGB format. |
 | .value[2].i32 | Text decorative line style. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle).|
 | .value[3].f32 | Thickness of the text decorative line.|
 
@@ -199,6 +206,7 @@ Text case attribute, which can be set, reset, and obtained as required through A
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -223,6 +231,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -245,6 +254,7 @@ Maximum number of lines in the text. This attribute can be set, reset, and obtai
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -269,6 +279,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -291,6 +302,7 @@ Text overflow attribute, which can be set, reset, and obtained as required throu
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -315,12 +327,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | .string | Font string. Multiple fonts are separated by commas (,). The system default font is used when no value is passed. |
-
 **Returns**
 
 | Type| Description|
@@ -337,6 +349,7 @@ Copy option attribute, which can be set, reset, and obtained as required through
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -361,6 +374,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -384,13 +398,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp. Value range: [0, +∞). The default value is **0**, indicating no blur effect. |
 | .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**, indicating a color shadow. |
-| .value[2].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[2].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
 
@@ -400,7 +415,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
 | .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype).|
-| .value[2].u32 | Shadow color, in 0xARGB format.|
+| .value[2].u32 | Shadow color, in 0xARGB format. |
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
 
@@ -414,6 +429,7 @@ Minimum font size attribute, which can be set, reset, and obtained as required t
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -438,6 +454,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -460,6 +477,7 @@ Text style attribute, which can be set, reset, and obtained as required through 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -490,6 +508,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -512,6 +531,7 @@ Indentation of the first line. This attribute can be set, reset, and obtained as
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -536,6 +556,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -558,6 +579,7 @@ Ellipsis position. This attribute can be set, reset, and obtained as required th
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -582,12 +604,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Line spacing, in fp. Value range: [0, +∞). If a negative value is passed, the setting does not take effect. |
-| ?.object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to set line spacing options. This parameter is optional. It is supported since API version 26.0.1. Use [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create) to create the object and [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it. |
+| ?.object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to set line spacing options. This is an optional parameter, and is supported since API version 26.0.1. Use [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create) to create the object and [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it. |
 
 **Returns**
 
@@ -606,6 +629,7 @@ Font feature. **NODE_FONT_FEATURE** provides advanced typographic features in Op
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -630,6 +654,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -652,6 +677,7 @@ Text recognition configuration. This attribute is suitable for customizing the e
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -676,17 +702,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_TEXT_CONTENT_WITH_STYLED_STRING
 
@@ -698,6 +725,7 @@ String to use in the styled string. This attribute can be set, reset, and obtain
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -722,6 +750,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -744,6 +773,7 @@ Font weight attribute, which can be set, reset, and obtained as required through
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -768,6 +798,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 20
 
+
 **Returns**
 
 | Type| Description|
@@ -784,6 +815,7 @@ Whether to optimize the trailing spaces at the end of each line during text layo
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -808,15 +840,16 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Start angle of the linear gradient. The setting takes effect only when **direction** is set to **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**; otherwise, the **direction** attribute serves as the primary layout method. A positive value indicates a clockwise rotation from the origin, (0, 0). The default value is **180**. |
+| .value[0].f32 | Start angle of the linear gradient, in deg. The setting takes effect only when **direction** is set to **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**; otherwise, the **direction** attribute serves as the primary layout method. A positive value indicates a clockwise rotation from the origin, (0, 0). The default value is **180**. |
 | .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
 | .value[2].i32 | Whether to repeat the colors. The value **1** means to repeat the gradient colors, and **0** means the opposite. The default value is **0**. |
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.|
 | size | Number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
 
@@ -828,7 +861,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the colors are repeated. The value **0** means that the colors are not repeated, and **1** means the opposite. The default value is **0**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. |
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.|
 | size | Number of effective gradient colors.|
 
@@ -843,6 +876,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -852,7 +886,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Radius of the radial gradient. The default value is **0**. Value range: [0, +∞). If a negative value is passed, the setting does not take effect. |
 | .value[3]?.i32 | Whether to repeat the colors. The value **1** indicates to repeat the colors, and **0** indicates the opposite. Default value: **0**. |
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. |
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.|
 | size | Number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
 
@@ -865,7 +899,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Radius of the radial gradient, in vp. The default value is **0**. |
 | .value[3]?.i32 | Whether the colors are repeated. The value **1** means that the colors are repeated, and **0** means the opposite. The default value is **0**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. |
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.|
 | size | Number of effective gradient colors.|
 
@@ -879,6 +913,7 @@ Vertical alignment mode of the text content. This attribute can be set, reset, a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -903,6 +938,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 21
 
+
 **Parameters**
 
 | Name| Description|
@@ -925,6 +961,7 @@ Minimum number of lines in the text. This attribute can be set, reset, and obtai
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -949,6 +986,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -971,6 +1009,7 @@ Minimum line height. This attribute can be set, reset, and obtained as required 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -995,6 +1034,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -1017,6 +1057,7 @@ Multiple value of the multiple line height mode. This attribute can be set, rese
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -1041,6 +1082,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 **Since**: 22
 
+
 **Returns**
 
 | Type| Description|
@@ -1057,6 +1099,7 @@ Extended options of the text menu. This attribute can be set as required through
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -1075,6 +1118,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -1091,6 +1135,7 @@ Text selection area. After set, the selected area will be highlighted. This attr
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -1119,6 +1164,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1141,6 +1187,7 @@ Whether to enable leading punctuation compression. This attribute can be set, re
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -1165,6 +1212,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -1187,6 +1235,7 @@ Whether the line height can be automatically adjusted based on the actual text h
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -1211,6 +1260,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -1233,6 +1283,7 @@ Text layout direction. This attribute is suitable for supporting the layout requ
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
+
 
 **Parameters**
 
@@ -1257,6 +1308,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -1280,6 +1332,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1296,6 +1349,7 @@ Whether to enable punctuation hanging at the end of a line for the Text componen
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -1320,6 +1374,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Name| Description|
@@ -1334,6 +1389,78 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[i].f32 | Tail indentation value of the *i*th line of text, in vp. |
 | .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
 
+## NODE_TEXT_STROKE_WIDTH
+
+```c
+NODE_TEXT_STROKE_WIDTH = 1057
+```
+
+Text stroke width, which can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Text stroke width, in vp. Default value: **0**, indicating no stroke effect. If the value is less than 0, solid text is displayed; if greater than 0, hollow text is displayed. Percentage is not supported. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].f32 | Text stroke width, in vp. |
+
+## NODE_TEXT_STROKE_COLOR
+
+```c
+NODE_TEXT_STROKE_COLOR = 1058
+```
+
+Text stroke color. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].u32 | Text stroke color, in 0xARGB format. The default value is the font color. If an invalid value is set, the default value is used. For example, **0xFFFF0000** indicates red. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].u32 | Text stroke color, in 0xARGB format. |
+
+## NODE_TEXT_STROKE_JOIN_STYLE
+
+```c
+NODE_TEXT_STROKE_JOIN_STYLE = 1059
+```
+
+Text stroke join style. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.1.0
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Text stroke join style. The parameter type is [OH_ArkUI_StrokeJoinStyle](capi-text-common-h.md#oh_arkui_strokejoinstyle). The default value is **OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN**, which indicates the miter join style. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Text stroke join style. The parameter type is [OH_ArkUI_StrokeJoinStyle](capi-text-common-h.md#oh_arkui_strokejoinstyle). |
+
 ## NODE_SPAN_CONTENT
 
 ```c
@@ -1344,6 +1471,7 @@ Text content attribute, which can be set, reset, and obtained as required throug
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1368,6 +1496,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1377,16 +1506,19 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2].f32 | Radius of the upper right corner, in vp. Value range: [0, +∞). When a negative value is passed, the setting does not take effect. |
 | .value[3].f32 | Radius of the lower left corner, in vp. Value range: [0, +∞). When a negative value is passed, the setting does not take effect. |
 | .value[4].f32 | Radius of the lower right corner, in vp. Value range: [0, +∞). When a negative value is passed, the setting does not take effect. |
-
+| .value[5]?.f32 | Border width of the text background, in vp. This is an optional parameter. The default value is **0**. This parameter is supported since API version 26.1.0. |
+| .value[6]?.u32 | Border color of the text background, in 0xARGB format. This is an optional parameter. The default value follows the font color. This parameter is supported since API version 26.1.0. |
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Text background color, in 0xARGB format.|
+| .value[0].u32 | Text background color, in 0xARGB format. |
 | .value[1].f32 | Radius of the upper left corner, in vp.|
 | .value[2].f32 | Radius of the upper right corner, in vp.|
 | .value[3].f32 | Radius of the lower left corner, in vp.|
 | .value[4].f32 | Radius of the lower right corner, in vp.|
+| .value[5].f32 | Border width of the text background, in vp. This parameter is supported since API version 26.1.0. |
+| .value[6].u32 | Border color of the text background, in 0xARGB format. This parameter is supported since API version 26.1.0. |
 
 ## NODE_SPAN_BASELINE_OFFSET
 
@@ -1398,6 +1530,7 @@ Text baseline offset attribute, which can be set, reset, and obtained as require
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1421,6 +1554,7 @@ Text style attribute, which can be set, reset, and obtained as required through 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -1453,6 +1587,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 24
 
+
 **Parameters**
 
 | Name| Description|
@@ -1477,6 +1612,7 @@ Image source for an image span. This attribute can be set, reset, and obtained a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1503,6 +1639,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1525,6 +1662,7 @@ Placeholder image address for the image span. This attribute can be set, reset, 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1551,6 +1689,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
@@ -1573,6 +1712,7 @@ Color filter of the image. This attribute can be set, reset, and obtained as req
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -1601,6 +1741,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 22
 
+
 **Parameters**
 
 | Name| Description|
@@ -1613,4 +1754,33 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Whether the new SVG parsing capability is enabled. The value **1** indicates the new SVG parsing capability is enabled, and **0** indicates the original SVG parsing capability is retained. |
 
-<!--no_check-->
+## NODE_IMAGE_SPAN_RESIZABLE
+
+```c
+NODE_IMAGE_SPAN_RESIZABLE = 3006
+```
+
+Resizes the image of the **ImageSpan** component by setting the edge widths or using a lattice object when it is stretched. This attribute can be set, reset, and obtained as required through APIs. When calling the APIs, ensure that the parameter types for setting and obtaining are the same.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Left edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .value[1].f32 | Top edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .value[2].f32 | Right edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .value[3].f32 | Bottom edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .object | Lattice object. The parameter type is [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].f32 | Left edge width, in vp. |
+| .value[1].f32 | Top edge width, in vp. |
+| .value[2].f32 | Right edge width, in vp. |
+| .value[3].f32 | Bottom edge width, in vp. |
+| .object | Lattice object. The parameter type is [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md). |

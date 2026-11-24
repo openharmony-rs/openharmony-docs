@@ -28,13 +28,11 @@
 
 | 名称 | typedef关键字 | 描述                                                                           |
 | -- | -- |------------------------------------------------------------------------------|
-| [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) | ArkUI_AttributeItem | 定义[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)函数的通用入参结构。 |
 | [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) | ArkUI_NodeComponentEvent | 定义组件回调事件的参数类型。                                                               |
 | [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | 定义组件回调事件使用字符串参数的类型，用于在组件异步事件回调中传递字符串数据，适用于组件回调事件需要携带文本信息的场景。 |
 | [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | 定义文本变化事件的数据结构，用于在文本输入场景中监听和处理文本变更事件。该结构体包含文本内容、扩展信息和数值参数，支持开发者实时获取文本变更数据，适用于输入框内容监听、实时搜索、字数统计等场景。 |
 | [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) | ArkUI_NativeNodeAPI_1 | ArkUI提供的Native侧Node类型接口集合。Node模块相关接口需要在主线程上调用。                               |
 | [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | OH_ArkUI_TextEditorChangeEvent | 定义TextEditor组件文本内容变化事件的结构体。 |
-| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) | ArkUI_NodeEvent | 定义组件事件的通用结构类型。                                                               |
 | [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | 定义自定义组件事件的通用结构类型，用于在自定义组件的测量、布局和绘制事件回调中传递事件信息。                                                            |
 | [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | 定义组件适配器对象，用于滚动类组件的元素懒加载，适用于需要按需加载大量滚动内容的场景，可避免一次性创建全部元素，降低内存占用并提升滑动性能。                                                     |
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | 定义组件适配器事件对象，用于在节点适配器的事件回调中传递事件类型、宿主节点和数据项索引等信息。                                                                   |
@@ -186,6 +184,8 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | 设置目标节点的子节点挂载策略。<br>**起始版本：** 26.0.0 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy\* policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | 获取目标节点当前的子节点挂载策略。目标节点的默认子节点挂载策略为[OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](./capi-native-type-h.md#oh_arkui_nodemountpolicy)。 <br>**起始版本：** 26.0.0 |
 | [ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context, bool enable)](#oh_arkui_nodeutils_setuidvsyncswitch) | - | 设置UI Dvsync开关。开启后系统会更及时地响应Vsync请求，更频繁执行渲染任务。通常在自渲染框架中动效开始时使能，结束后关闭，以确保动画效果更加流畅，同时避免频繁的Vsync影响其他业务。在非UI线程上调用此函数将导致应用退出。 <br>**起始版本：** 26.0.1  |
+| [int32_t OH_ArkUI_NativeModule_RegisterInspectorTreeGetter(ArkUI_NodeHandle node, void\* userData, void (\*getInspectorTree)(void\* userData, char\*\* inspectorTree))](#oh_arkui_nativemodule_registerinspectortreegetter) | - | 在指定节点上注册InspectorTreeGetter回调。该接口用于第三方框架（如Flutter、CMP）向ArkUI Inspector上报组件树信息。当Inspector遍历组件树并遇到已注册回调的节点时，会调用getInspectorTree回调获取外部组件子树，并将其合并到完整的Inspector树输出中。同一节点可以注册多个InspectorTreeGetter回调。<br>**起始版本：** 26.1.0 |
+| [int32_t OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter(ArkUI_NodeHandle node, void (\*getInspectorTree)(void\* userData, char\*\* inspectorTree))](#oh_arkui_nativemodule_unregisterinspectortreegetter) | - | 注销指定节点上已注册的InspectorTreeGetter回调。注销后，Inspector遍历该节点时将不再调用该回调。本函数不会释放此前注册时传入的userData，其内存由调用方负责释放。<br>**起始版本：** 26.1.0 |
 
 ### 宏定义
 
@@ -314,7 +314,7 @@ enum ArkUI_NodeEventType
 | NODE_TOUCH_EVENT = 0 | 手势事件类型。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)。 |
 | NODE_EVENT_ON_APPEAR = 1 | 挂载事件。触发该事件的条件：组件挂载显示时触发此回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。 |
 | NODE_EVENT_ON_DISAPPEAR = 2 | 卸载事件。触发该事件的条件 ：组件卸载时触发此回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。 |
-| NODE_EVENT_ON_AREA_CHANGE = 3 | 组件区域变化事件触发该事件的条件：组件区域变化时触发该回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含12个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].f32</b>：表示过去目标元素的宽度，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：表示过去目标元素的高度，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[2].f32</b>：表示过去目标元素左上角相对父元素左上角的位置的x轴坐标，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[3].f32</b>：表示过去目标元素左上角相对父元素左上角的位置的y轴坐标，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[4].f32</b>：表示过去目标元素目标元素左上角相对页面左上角的位置的x轴坐标，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[5].f32</b>：表示过去目标元素目标元素左上角相对页面左上角的位置的y轴坐标，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[6].f32</b>：表示最新目标元素的宽度，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[7].f32</b>：表示最新目标元素的高度，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[8].f32</b>：表示最新目标元素左上角相对父元素左上角的位置的x轴坐标，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[9].f32</b>：表示最新目标元素左上角相对父元素左上角的位置的y轴坐标，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[10].f32</b>：表示最新目标元素目标元素左上角相对页面左上角的位置的x轴坐标，类型为number，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[11].f32</b>：表示最新目标元素目标元素左上角相对页面左上角的位置的y轴坐标，类型为number，单位vp。 |
+| NODE_EVENT_ON_AREA_CHANGE = 3 | 组件区域变化事件触发该事件的条件：组件区域变化时触发该回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含12个参数：<br> ArkUI_NodeComponentEvent.data[0].f32：表示过去目标元素的宽度，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[1].f32：表示过去目标元素的高度，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[2].f32：表示过去目标元素左上角相对父元素左上角的位置的x轴坐标，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[3].f32：表示过去目标元素左上角相对父元素左上角的位置的y轴坐标，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[4].f32：表示过去目标元素左上角相对页面左上角的位置的x轴坐标，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[5].f32：表示过去目标元素左上角相对页面左上角的位置的y轴坐标，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[6].f32：表示最新目标元素的宽度，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[7].f32：表示最新目标元素的高度，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[8].f32：表示最新目标元素左上角相对父元素左上角的位置的x轴坐标，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[9].f32：表示最新目标元素左上角相对父元素左上角的位置的y轴坐标，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[10].f32：表示最新目标元素左上角相对页面左上角的位置的x轴坐标，类型为number，单位vp。<br> ArkUI_NodeComponentEvent.data[11].f32：表示最新目标元素左上角相对页面左上角的位置的y轴坐标，类型为number，单位vp。 |
 | NODE_ON_FOCUS = 4 | 获焦事件。触发该事件的条件：组件获焦时触发此回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。  |
 | NODE_ON_BLUR = 5 | 失去焦点事件。触发该事件的条件：组件失去焦点时触发此回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。 |
 | NODE_ON_CLICK = 6 | 组件点击事件。触发该事件的条件：组件被点击时触发此回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含8个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].f32</b>：点击位置相对于被点击元素原始区域左上角的X坐标，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：点击位置相对于被点击元素原始区域左上角的Y坐标，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[2].f32</b>：事件时间戳。触发事件时距离系统启动的时间间隔，单位微秒。<br> <b>ArkUI_NodeComponentEvent.data[3].i32</b>：事件输入设备，1表示鼠标，2表示触屏，4表示按键。<br> <b>ArkUI_NodeComponentEvent.data[4].f32</b>：点击位置相对于应用窗口左上角的X坐标，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[5].f32</b>：点击位置相对于应用窗口左上角的Y坐标，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[6].f32</b>：点击位置相对于应用屏幕左上角的X坐标，单位vp。<br> <b>ArkUI_NodeComponentEvent.data[7].f32</b>：点击位置相对于应用屏幕左上角的Y坐标，单位vp。  |
@@ -655,7 +655,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle 触发该组件的组件对象。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle 触发该事件的组件对象。 |
 
 ### OH_ArkUI_NodeEvent_GetInputEvent()
 
@@ -3942,5 +3942,63 @@ ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果。  <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)成功。  <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)CAPI初始化错误。  <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)函数参数异常。 |
+
+### OH_ArkUI_NativeModule_RegisterInspectorTreeGetter()
+
+```c
+int32_t OH_ArkUI_NativeModule_RegisterInspectorTreeGetter(ArkUI_NodeHandle node, void* userData, void (*getInspectorTree)(void* userData, char** inspectorTree))
+```
+**描述：**
+
+在指定节点上注册InspectorTreeGetter回调。该接口用于第三方框架（如Flutter、CMP）向ArkUI Inspector上报组件树信息。当Inspector遍历组件树并遇到已注册回调的节点时，会调用getInspectorTree回调获取外部组件子树，并将其合并到完整的Inspector树输出中。同一节点可以注册多个InspectorTreeGetter回调。
+
+> **说明：**
+>
+> 本接口会影响以下已有接口的返回值：注册回调后，回调上报的外部组件子树将合并到这些接口返回的组件树中，且不受"isWebEnable"过滤字段影响。
+> - [getInspectorTree](arkui-ts/ts-universal-attributes-component-id.md#getinspectortree9)：返回的组件树包含外部组件子树，不包含Web组件子树。
+> - [getFilteredInspectorTree](arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)、[getFilteredInspectorTreeById](arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)：返回的组件树包含外部组件子树；仅当filters参数中包含"isWebEnable"过滤字段时，返回的组件树才包含Web组件子树。
+> - DevEco Studio的Inspector树：包含外部组件子树，且默认包含Web组件子树。
+>
+> 其中，Web组件子树由ArkUI内置机制上报，不支持通过本接口注册。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [入参] 第三方框架的宿主节点。仅支持[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)和[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)类型的节点。 |
+| void* userData |  [入参] 自定义数据指针。该值会在getInspectorTree回调被调用时作为userData参数回传。 |
+| void (\*getInspectorTree) (void* userData, char** inspectorTree) |  [入参] Inspector获取第三方框架组件子树的回调函数。inspectorTree输出应为与ArkUI Inspector输出格式一致的JSON字符串。该字符串的内存由回调实现分配，调用方需使用free()释放。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，或节点类型不是[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)或[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)，或getInspectorTree为空。 |
+
+### OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter()
+
+```c
+int32_t OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter(ArkUI_NodeHandle node, void (*getInspectorTree)(void* userData, char** inspectorTree))
+```
+**描述：**
+
+注销指定节点上已注册的InspectorTreeGetter回调。注销后，Inspector遍历该节点时将不再调用该回调。本函数不会释放此前注册时传入的userData，其内存由调用方负责释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node |  [入参] 目标节点。仅支持[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)和[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)类型的节点。 |
+| void (\*getInspectorTree) (void* userData, char** inspectorTree) |  [入参] 待注销的回调函数指针。必须与注册时通过[OH_ArkUI_NativeModule_RegisterInspectorTreeGetter](#oh_arkui_nativemodule_registerinspectortreegetter)传入的函数指针一致。若该指针与节点上已注册的回调不匹配，本操作不生效。若该指针为空，则注销该节点上已注册的全部回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，或节点类型不是[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)或[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)，或getInspectorTree未注册。 |
 
 ## 更多

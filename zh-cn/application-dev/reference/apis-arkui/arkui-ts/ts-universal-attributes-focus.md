@@ -930,7 +930,6 @@ struct TabStop {
 如果不配置[nextFocus](#nextfocus18)，默认的按下Tab键的走焦顺序为：M->A->B->C->D->E->F；配置了[nextFocus](#nextfocus18)以后，Tab键前几次的走焦顺序变更为：M->D->F->B->C；焦点到达C后，C按照默认走焦规则继续移动。
 
 ```ts
-import { AttributeModifier, ButtonAttribute } from '@kit.ArkUI';
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.id('M');

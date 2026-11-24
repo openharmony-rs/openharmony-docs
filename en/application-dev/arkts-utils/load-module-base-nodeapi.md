@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Describes the APIs for loading modules in a project on the C++ side based on Node-API. It is recommended to use the napi_load_module_with_info API, which supports loading hap/hsp/har/native modules on the main thread or a subthread."
+keywords: [Node-API, module loading, napi_load_module_with_info, napi_load_module, C++ module loading, hap, hsp, har, native module]
+doctype: guide
+status: active
+---
+
 # Loading Modules Using Node-API
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=da641289f51d20c4f9fd6f0614d722cdc941f200 translatedAt=2026-11-06T10:36:15.446Z pushedAt=2026-11-12T07:44:23.494Z nl=1 -->
 
 Node-API provides multiple methods for you to load in-project modules and files on the C++ side. The **napi_load_module_with_info** API is recommended.
 

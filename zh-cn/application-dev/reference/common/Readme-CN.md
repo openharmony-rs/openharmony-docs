@@ -55,3 +55,4 @@
     - [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md)
     - [PurgMem](capi-memory-purgmem.md)
     - [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)
+    - [JSVM_BackingStore__*](capi-jsvm-jsvm-backingstore--8h.md)

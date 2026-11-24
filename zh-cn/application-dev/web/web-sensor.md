@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件通过W3C标准接口访问加速度计、陀螺仪等运动和方向传感器数据，实现健身指导、体感游戏等场景，涵盖权限声明、授权处理及前端调用示例。"
+keywords: [ArkWeb, 传感器权限, 加速度计, 陀螺仪, Accelerometer, Gyroscope, DeviceMotionEvent, DeviceOrientationEvent, onPermissionRequest]
+doctype: guide
+status: active
+---
+
 # 使用运动和方向传感器监测设备状态
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -115,8 +123,6 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
    ```
 
 2. 在前端页面代码中，利用JavaScript调用传感器相关的W3C标准协议接口。
-
-   <!-- @[the_type_of_resource_for_which_permission_is_requested_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html) --> 
    
    ``` HTML
    <!DOCTYPE HTML>
@@ -138,7 +144,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getAccelerometer() {
                let acc = new Accelerometer({frequency: 60});
                acc.addEventListener('activate', () => console.info('Ready to measure.'));
-               acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               acc.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                acc.addEventListener('reading', () => {
                    console.info(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
                });
@@ -149,7 +155,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getGyroscope() {
                let gyr = new Gyroscope({frequency: 60});
                gyr.addEventListener('activate', () => console.info('Ready to measure.'));
-               gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               gyr.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                gyr.addEventListener('reading', () => {
                    console.info(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
                });
@@ -160,7 +166,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getAbsoluteOrientationSensor() {
                let aos = new AbsoluteOrientationSensor({frequency: 60});
                aos.addEventListener('activate', () => console.info('Ready to measure.'));
-               aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               aos.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                aos.addEventListener('reading', () => {
                    console.info(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
                });

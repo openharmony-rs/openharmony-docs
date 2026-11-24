@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T04:03:48.545Z pushedAt=2026-10-28T07:59:49.995Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:31:48.639Z pushedAt=2026-11-12T09:15:05.729Z nl=1 -->
 
 To reduce the performance overhead caused by repeatedly creating and destroying custom components, you can use [\@ReusableV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusablev2.md#reusablev2) to decorate custom components decorated by [\@ComponentV2](./arkts-create-custom-components.md#componentv2), thereby achieving component reuse.
 
@@ -24,7 +24,7 @@ Using \@ReusableV2 to decorate the custom components of V2 indicates that these 
 - \@ReusableV2 can decorate only custom components of V2, that is, custom components decorated by \@ComponentV2. In addition, only \@ReusableV2 decorated custom components can be used as child components of custom components of V2.
 - \@ReusableV2 also provides the lifecycle methods [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10) and [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18). **aboutToRecycle** is called when the component is recycled, and **aboutToReuse** is called when the component is reused. However, unlike \@Reusable, **aboutToReuse** has no input parameters.
 - In the recycling phase, **aboutToRecycle** of all child components is recursively called (even if the child components are not reusable). In the reuse phase, so does **aboutToReuse** of all child components.
-- The custom component decorated with \@ReusableV2 remains frozen during recycling. That is, the UI re-render and the [\@Monitor](./arkts-new-monitor.md) callback cannot be triggered. Different from the [freezeWhenInactive](./arkts-custom-components-freezeV2.md) flag, the delayed re-render is not triggered after the \@ReusableV2 decorated custom component is unfrozen.
+- The \@ReusableV2 decorated custom component remains frozen during recycling. That is, the UI re-render cannot be triggered, and the [\@Monitor](./arkts-new-monitor.md) callback cannot be triggered. Different from the [custom component freezing](./arkts-custom-components-freezeV2.md) freezeWhenInactive flag, the delayed re-render is not triggered after the component is unfrozen.
 - When an \@ReusableV2 decorated custom component is reused, its state variables are automatically reset, and the [@Computed](./arkts-new-computed.md) properties and related @Monitor callbacks within the component are recalculated. You are not advised to change the state variable of a component in **aboutToRecycle**. For details, see [Resetting State Variables in Components Before Reuse](#resetting-state-variables-in-components-before-reuse).
 - The reusable components of V1 and V2 can be used together under certain rules. For details, see the second point in [Constraints](#constraints).
 - Do not overuse the \@ReusableV2 decorator. Otherwise, the reuse efficiency may be undermined and the memory overhead may increase.
@@ -654,7 +654,7 @@ As such, you are advised to reduce the use of constant objects that contain the 
 
 ## Proactively Clearing the Reuse Pool
 
-Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the current component's [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool), and call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache) method of IDefaultReusePool to implement it.
+Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the current component's [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md), and call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md) method of IDefaultReusePool to implement it.
 
 > **NOTE**
 >
@@ -720,12 +720,12 @@ struct Index {
       Button('Clear All')
         .onClick(() => {
           // Clear all components in the default reuse pool.
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
         })
       Button('Clear A')
         .onClick(() => {
           // Clear only the components whose reuseId is 'A'.
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
         })
     }
   }

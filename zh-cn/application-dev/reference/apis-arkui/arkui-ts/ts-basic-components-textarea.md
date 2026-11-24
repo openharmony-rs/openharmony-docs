@@ -333,11 +333,11 @@ maxLength(value: number)
 
 showCounter(value: boolean, options?: InputCounterOptions)
 
-设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。未调用showCounter接口时，默认不显示计数器。
+设置当输入的字符数超过阈值时显示计数器，阈值通过[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)配置。未调用showCounter接口时，默认不显示计数器。
 
-参数value为true时，才能设置options，文本框开启计数器功能，需要配合maxLength（设置最大字符限制）一起使用，未设置maxLength时计数器功能不生效。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
+参数value为true时，才能设置options，文本框开启计数器功能，需要配合[maxLength](#maxlength10)（设置最大字符限制）一起使用，未设置maxLength时计数器功能不生效。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
 
-当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。若用户同时设置参数value为true和InputCounterOptions，当thresholdPercentage数值在有效区间内且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。计数器默认显示红色边框；highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
+当输入字符数大于最大字符数乘以[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)中的thresholdPercentage百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数超过最大字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)，当InputCounterOptions中的thresholdPercentage数值在有效区间[1, 100]内，且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动；InputCounterOptions中的highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
 
 [示例2（设置计数器）](#示例2设置计数器)展示了设置showCounter的效果。
 
@@ -1118,7 +1118,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。<br>若设置值小于0，显示实心字；若大于0，显示空心字。|
 
 ### strokeColor<sup>20+</sup>
 
@@ -2607,8 +2607,13 @@ struct TextAreaExample {
       id: TextMenuItemId.of('create2'),
       icon: $r('app.media.startIcon'),
     };
+    // 查找并移除系统AI写作菜单项
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.AI_WRITER));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
     // 从API version 23开始支持TextMenuItemId.autoFill
-    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
+    targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
     if (targetIndex !== -1) {
       menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
     }
@@ -2667,9 +2672,7 @@ struct TextAreaExample {
   }
 }
 ```
-<!--RP4-->
-![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.png)
-<!--RP4End-->
+![textAreaEditMenuOptions](figures/textAreaEditMenuOptions-2.gif)
 
 ### 示例15（文本设置省略模式）
 
@@ -2839,7 +2842,7 @@ struct TextAreaExample {
 
 ### 示例17（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围<!--Del-->（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）<!--DelEnd-->。
+从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。
 <!--code_no_check-->
 ```json5
 // 开启应用缩放跟随系统
@@ -2868,36 +2871,14 @@ struct TextAreaExample {
   }
 }
 ```
-<!--RP1-->
 <!--code_no_check-->
 ```ts
 // xxx.ets
-import { abilityManager, Configuration } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct TextAreaExample {
-  @State currentFontSizeScale: number = 1;
   @State minFontScale: number = 0.85;
   @State maxFontScale: number = 2;
-
-  // 设置字体大小
-  async setFontScale(scale: number): Promise<void> {
-    let configInit: Configuration = {
-      fontSizeScale: scale
-    };
-    // 更新配置-字体大小，调用系统接口更新字体配置
-    // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION
-    abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to updateConfiguration. Code: ${err.code}, message: ${err.message}`);
-      } else {
-        this.currentFontSizeScale = scale;
-        console.info('updateConfiguration success.');
-      }
-    });
-  }
 
   build() {
     Column() {
@@ -2910,26 +2891,6 @@ struct TextAreaExample {
           .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
-      // 以下按钮只用做字体大小倍数调整，不在示例图中呈现
-      Column() {
-        Row() {
-          Button('1倍').onClick(() => {
-            this.setFontScale(1)
-          }).margin(10)
-          Button('1.75倍').onClick(() => {
-            this.setFontScale(1.75)
-          }).margin(10)
-        }
-
-        Row() {
-          Button('2倍').onClick(() => {
-            this.setFontScale(2)
-          }).margin(10)
-          Button('3.2倍').onClick(() => {
-            this.setFontScale(3.2)
-          }).margin(10)
-        }
-      }.margin({ top: 50 })
     }
   }
 }
@@ -2937,7 +2898,6 @@ struct TextAreaExample {
 | 系统字体缩放倍数为2倍 | 系统字体缩放倍数为3.2倍 |
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextArea_font_scale1.png)  | ![](figures/TextArea_font_scale2.png)  |
-<!--RP1End-->
 
 ### 示例18（设置选中指定区域的文本内容）
 

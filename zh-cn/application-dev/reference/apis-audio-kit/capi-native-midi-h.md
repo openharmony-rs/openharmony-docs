@@ -254,7 +254,7 @@ OH_MIDIStatusCode OH_MIDIClient_CloseDevice(OH_MIDIClient *client, OH_MIDIDevice
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>         OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>         OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>         OH_MIDI_STATUS_GENERIC_IPC_FAILURE：IPC通信失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>         OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>         OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。|
 
 ### OH_MIDIClient_GetPortCount()
 
@@ -495,7 +495,7 @@ OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIn
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：所有数据均已成功处理并写入。<br>         OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>         OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。<br>         OH_MIDI_STATUS_TIMEOUT：操作超时，无法在系统规定的超时时间内完成写入，可使用[OH_MIDIDevice_FlushOutputPort](capi-native-midi-h.md#oh_mididevice_flushoutputport)重置输出端口后重试。<br>         OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数data为nullptr，或byteSize为0。<br>         OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：所有数据均已成功处理并写入。<br>         OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>         OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。<br>         OH_MIDI_STATUS_TIMEOUT：操作超时，无法在系统规定的超时时间内完成写入，可使用[OH_MIDIDevice_FlushOutputPort](capi-native-midi-h.md#oh_mididevice_flushoutputport)重置输出端口后重试。<br>         OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数data为nullptr，或byteSize为0。|
 
 ### OH_MIDIDevice_FlushOutputPort()
 

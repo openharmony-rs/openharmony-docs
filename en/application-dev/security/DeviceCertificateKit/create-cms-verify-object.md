@@ -6,21 +6,22 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:35:54.882Z pushedAt=2026-11-20T06:02:18.774Z nl=1 -->
 
 Certificate signature verification with CMS is supported since API version 22.
 
-PKCS #7 is a standard syntax for storing signed or encrypted data. The extension of PKCS #7, which is CMS, supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signature data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
 
 Currently, only CMS signature data and encapsulated data are supported.
 
 ## How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. For details about the signature development procedure, see [Certificate Signing with CMS](../../security/DeviceCertificateKit/create-cms-sign-object.md).
+2. For signature development steps, see [CMS Signature](../../security/DeviceCertificateKit/create-cms-sign-object.md).
 
 3. Call [cert.createCmsParser](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsparser22) to create a **CmsParser** object.
 
@@ -35,6 +36,7 @@ Signature verification example:
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -109,7 +111,14 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
 
   };
-  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
+  }
 
   return x509Cert;
 }
@@ -140,7 +149,9 @@ async function testCmsVerifyTest() {
     await verify.verifySignedData(config);
     console.info(`verifySignedData result: success.`);
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

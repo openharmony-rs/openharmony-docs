@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb Native侧的PostWebMessage能力，在C++环境与前端页面间直接收发消息，避免ArkTS环境冗余切换与UI线程阻塞。"
+keywords: [ArkWeb NDK, Native PostWebMessage, OH_ArkWeb_GetNativeAPI, ArkWeb_WebMessagePortAPI, createWebMessagePorts, postWebMessage, setMessageEventHandler, 应用与前端页面通信]
+doctype: guide
+status: active
+---
+
 # 建立应用侧与前端页面数据通道(C/C++)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -60,7 +68,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 ### 完整示例
 
-在调用API前建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。[createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports)、[postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage)、[close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close)需运行在UI线程。
+在调用API前建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。[createWebMessagePorts()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports)、[postWebMessage()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage)、[close()](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close)需运行在UI线程。
 
 * 前端页面代码
   

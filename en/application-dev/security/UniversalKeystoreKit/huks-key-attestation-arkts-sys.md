@@ -1,4 +1,4 @@
-# Non-anonymous Key Attestation (Open Only to System Applications) (ArkTS)
+# Non-anonymous Key Attestation (for System Applications Only) (ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -6,8 +6,11 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=dcbc797b80cd4b16cdb3a4fb6ce8e16720df343f translatedAt=2026-11-20T03:26:50.151Z pushedAt=2026-11-20T06:46:40.125Z nl=1 -->
 
-The caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission. You need to request the permission based on the APL of your permission. For details, see [Workflow for Using Permissions](../AccessToken/determine-application-mode.md).
+Before using this feature, request the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) or [ohos.permission.ENTERPRISE_ATTEST_KEY](../AccessToken/permissions-for-mdm-apps.md#ohospermissionenterprise_attest_key) permission; either one is sufficient. Based on the application type and APL, follow the specific operation path in [permission request](../AccessToken/determine-application-mode.md).
+
+Starting from API version 26.1.0, a device management application can request the ohos.permission.ENTERPRISE_ATTEST_KEY permission to use the non-anonymous key attestation capability.
 
 ## How to Develop
 
@@ -19,7 +22,7 @@ The caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions
 
 4. Use [attestKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksattestkeyitem9) with the key alias and parameter set to perform key attestation.
 
-## How to Develop
+## Development Cases
 <!-- @[non_anonymized_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/ets/pages/NonAnonymousKeyProof.ets) -->
 
 ``` TypeScript
@@ -77,7 +80,7 @@ let genOptions: huks.HuksOptions = {
 };
 
 /* 2. Encapsulate the parameter set for key attestation. */
-let attestKeyproperties: huks.HuksParam[] = [
+let attestKeyProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
     value: securityLevel
@@ -96,7 +99,7 @@ let attestKeyproperties: huks.HuksParam[] = [
   }
 ]
 let huksOptions: huks.HuksOptions = {
-  properties: attestKeyproperties
+  properties: attestKeyProperties
 };
 
 function stringToUint8Array(str: string) {
@@ -110,11 +113,11 @@ function stringToUint8Array(str: string) {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -130,8 +133,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {
@@ -167,24 +170,15 @@ async function publicAttestKey(keyAlias: string, huksOptions: huks.HuksOptions):
   console.info(`enter promise attestKeyItem`);
   let throwObject: ThrowObject = { isThrow: false };
   try {
-    await attestKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
-        if (data !== null && data.certChains !== null) {
-          attestCertChain = data.certChains as string[];
-        }
-      })
-      .catch((error: Error) => {
-        if (throwObject.isThrow) {
-          throw (error as Error);
-        } else {
-          console.error(`promise: attestKeyItem failed, ${JSON.stringify(error)}`);
-        }
-      });
+    const data = await attestKeyItem(keyAlias, huksOptions, throwObject);
+    console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
+    if (data !== null && data.certChains !== null) {
+      attestCertChain = data.certChains as string[];
+    }
     return 'Success';
   } catch (error) {
-    console.error(`promise: attestKeyItem input arg invalid, ${JSON.stringify(error)}`);
-    return 'Failed';
+      console.error(`promise: attestKeyItem input arg invalid, ${JSON.stringify(error)}`);
+      return 'Failed';
   }
 }
 

@@ -1,10 +1,11 @@
 # Custom Drawing Modifier (DrawModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyang2022-->
-<!--Designer: @wangyang2022-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=c1d045ee34ba178ea0d50ccb33a0b38e16ab0af6 translatedAt=2026-11-12T04:08:16.004Z pushedAt=2026-11-13T09:00:09.047Z nl=1 -->
 
 ## Overview
 

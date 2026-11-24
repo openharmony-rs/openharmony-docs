@@ -2,11 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lyj_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=402a35d481553f216f6b7cc182be502fdc19547e translatedAt=2026-09-16T11:02:44.793Z pushedAt=2026-09-20T09:01:52.264Z -->
+<!-- md-trans-meta sourceCommit=93660783cda81c6a66669c7bc215e6da819f14ee translatedAt=2026-11-16T01:09:27.084Z pushedAt=2026-11-20T07:28:27.695Z nl=1 -->
 
 > **NOTE**
 >

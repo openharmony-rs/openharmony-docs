@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍getPageHeight获取网页内容高度的时机：静态页面可在生命周期回调中获取，动态网页建议用JSBridge通知获取，无法使用时延迟获取。"
+keywords: [ArkWeb, getPageHeight, 网页高度, onPageEnd, JSBridge, javaScriptProxy, 动态网页, setTimeout, 图片加载回调]
+doctype: guide
+status: active
+---
+
 # 获取网页内容高度
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -122,7 +130,7 @@ struct Scene2JsBridge {
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is undefined");
+            console.error("jsbObj is undefined");
         }
     })
 </script>
@@ -152,7 +160,7 @@ struct Scene2JsBridge {
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is error");
+            console.error("jsbObj is undefined");
         }
     });
 </script>
@@ -190,7 +198,7 @@ struct Scene2JsBridge {
             if (typeof jsbObj !== 'undefined') {
                 jsbObj.notifyToGet();
             } else {
-                console.info("jsbObj is error");
+                console.error("jsbObj is undefined");
             }
         })
     }

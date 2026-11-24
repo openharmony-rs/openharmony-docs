@@ -5,7 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1b798c55b9b21ec7c3d1bebc2b3bb18182ba4577 translatedAt=2026-10-19T10:25:42.856Z pushedAt=2026-10-19T11:36:36.149Z nl=1 -->
+<!-- md-trans-meta sourceCommit=041c284f325ea6e155baec79d87319e42992ebd5 translatedAt=2026-11-16T02:19:20.379Z pushedAt=2026-11-20T07:28:18.946Z nl=1 -->
 
 The **distributedKVStore** module implements collaboration between databases for different devices that form a Super Device. You can use the APIs provided by this module to save application data to a distributed key-value (KV) store and perform operations, such as adding, deleting, modifying, and querying data, and synchronizing data across devices.
 
@@ -5371,9 +5371,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {
@@ -5457,9 +5457,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {

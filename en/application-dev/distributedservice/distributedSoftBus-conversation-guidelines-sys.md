@@ -5,7 +5,7 @@
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=f4d85c5ccaaf75c42bd1b40efa00b5d3993e7161 translatedAt=2026-10-22T14:24:55.298Z pushedAt=2026-10-22T14:26:36.807Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1129e276d1d5fc56808c2aef87c9e1a740d428c4 translatedAt=2026-11-03T07:23:49.028Z pushedAt=2026-11-03T07:23:49.028Z nl=1 -->
 
 ## Overview
 
@@ -36,7 +36,7 @@ Ensure that the devices participating in communication are logged in with the sa
 ### Environment Setup
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download) 4.1 or later on the development PC.
-2. Update the public-SDK to API version 26.0.1 or later. For details, see [Update Guide](../tools/openharmony-sdk-upgrade-assistant.md).
+2. Update the public SDK to API version 26.0.1 or later. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony_sdk_upgrade_assistant.md).
 3. Connect the two debugging devices (device A and device B) to the development PC using USB cables.
 4. Ensure that the two devices have network connections enabled and are logged in with the same account.
 

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Provides recommended video encoding parameters for low-latency, real-time streaming, and offline encoding scenarios, including short-range screen projection, video calls, live streaming, editing, and sharing, covering resolution, frame rate, bitrate, bitrate control, and dynamic IDR requests."
+keywords: [encoding parameter configuration, low latency, short-range screen projection, video calls, real-time streaming, live streaming, offline encoding, video editing, video sharing]
+doctype: guide
+status: active
+---
+
 # Basic Configuration for Video Encoding in Various Scenarios
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fc0fee885c411a8c7f6ee806ee6db7aa6add7d20 translatedAt=2026-10-22T04:11:13.321Z pushedAt=2026-10-22T13:38:56.353Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5b76967fe53fe29180b0ce7ca58e1b98c491f26f translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 This topic provides recommended configuration parameters for AVCodec video encoding in various scenarios. It aims to help you configure video encoders according to your specific needs.
 

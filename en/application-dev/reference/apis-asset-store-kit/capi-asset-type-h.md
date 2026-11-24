@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=c780ec602b8a429e3e53fe261f8afc5ed18a2559 translatedAt=2026-11-06T11:51:30.785Z pushedAt=2026-11-09T11:55:58.792Z nl=1 -->
 
 ## Overview
 
@@ -28,19 +29,19 @@ Defines the enums, structs, and error codes used in the asset store service.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [Asset_Blob](capi-assettype-asset-blob.md) | Asset_Blob | Defines a binary array, that is, an array of bytes with variable length.|
-| [Asset_Value](capi-assettype-asset-value.md) | Asset_Value | Defines the value of the asset attribute.|
-| [Asset_Attr](capi-assettype-asset-attr.md) | Asset_Attr | Represents an asset attribute in the form of a key-value (KV) pair.|
-| [Asset_Result](capi-assettype-asset-result.md) | Asset_Result | Represents the query result of an asset.|
-| [Asset_ResultSet](capi-assettype-asset-resultset.md) | Asset_ResultSet | Represents the query result of multiple assets.|
+| [Asset_Value](capi-assettype-asset-value.md) | Asset_Value | The value (content) of a key asset attribute. |
+| [Asset_Attr](capi-assettype-asset-attr.md) | Asset_Attr | Critical asset attribute, which consists of tags and values in the form of key-value pairs. |
+| [Asset_Result](capi-assettype-asset-result.md) | Asset_Result | Query result of a single critical asset. |
+| [Asset_ResultSet](capi-assettype-asset-resultset.md) | Asset_ResultSet | Query result of multiple critical assets. |
 | [Asset_SyncResult](capi-assettype-asset-syncresult.md) | Asset_SyncResult | Represents the sync result of an asset.|
 
 ### Enums
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Asset_TagType](#asset_tagtype) | Asset_TagType | Enumerates the types of the keys of asset attributes.|
-| [Asset_Tag](#asset_tag) | Asset_Tag | Enumerates the keys of asset attributes.|
-| [Asset_ResultCode](#asset_resultcode) | Asset_ResultCode | Enumerates the result codes used in the ASSET APIs.|
+| [Asset_TagType](#asset_tagtype) | Asset_TagType | Type of the critical asset attribute tag. |
+| [Asset_Tag](#asset_tag) | Asset_Tag | Tag of the critical asset attribute. |
+| [Asset_ResultCode](#asset_resultcode) | Asset_ResultCode | Result code used by the ASSET API. |
 | [Asset_Accessibility](#asset_accessibility) | Asset_Accessibility | Enumerates the types of the access control based on the lock screen status.|
 | [Asset_AuthType](#asset_authtype) | Asset_AuthType | Enumerates the user authentication types supported by assets.|
 | [Asset_SyncType](#asset_synctype) | Asset_SyncType | Enumerates the asset sync types.|
@@ -65,15 +66,15 @@ enum Asset_TagType
 
 **Description**
 
-Enumerates the types of the keys of asset attributes.
+Type of the critical asset attribute tag.
 
 **Since**: 11
 
 | Enum| Description|
 | -- | -- |
-| ASSET_TYPE_BOOL = 0x1 << 28 | Boolean.|
-| ASSET_TYPE_NUMBER = 0x2 << 28 | Number (uint32_t).|
-| ASSET_TYPE_BYTES = 0x3 << 28 | Bytes.|
+| ASSET_TYPE_BOOL = 0x1 << 28 | Indicates that the type of the critical asset attribute is bool. |
+| ASSET_TYPE_NUMBER = 0x2 << 28 | Indicates that the type of the critical asset attribute is uint32_t. |
+| ASSET_TYPE_BYTES = 0x3 << 28 | Indicates that the type of the critical asset attribute is a byte array. |
 
 ### Asset_Tag
 
@@ -83,7 +84,7 @@ enum Asset_Tag
 
 **Description**
 
-Enumerates the keys of asset attributes.
+Tag of the critical asset attribute.
 
 **Since**: 11
 
@@ -92,13 +93,13 @@ Enumerates the keys of asset attributes.
 | ASSET_TAG_SECRET = ASSET_TYPE_BYTES \| 0x01 | Sensitive user data in the form of bytes, such as passwords and tokens.|
 | ASSET_TAG_ALIAS = ASSET_TYPE_BYTES \| 0x02 | Asset alias (identifier) in the form of bytes.|
 | ASSET_TAG_ACCESSIBILITY = ASSET_TYPE_NUMBER \| 0x03 | Access control based on the lock screen status. The value is of the uint32_t type.|
-| ASSET_TAG_REQUIRE_PASSWORD_SET = ASSET_TYPE_BOOL \| 0x04 | A Boolean value indicating whether the asset is available only with a lock screen password.|
+| ASSET_TAG_REQUIRE_PASSWORD_SET = ASSET_TYPE_BOOL \| 0x04 | Indicates whether the critical asset is available when the device has a lock screen password set. The value is of the bool type. true indicates that the asset is accessible only when a lock screen password is set, and false indicates that it is not restricted by the lock screen password. |
 | ASSET_TAG_AUTH_TYPE = ASSET_TYPE_NUMBER \| 0x05 | User authentication type for the asset. The value is of the uint32_t type.|
 | ASSET_TAG_AUTH_VALIDITY_PERIOD = ASSET_TYPE_NUMBER \| 0x06 | Validity period of the user authentication, in seconds. The value is of the uint32_t type, in seconds.|
 | ASSET_TAG_AUTH_CHALLENGE = ASSET_TYPE_BYTES \| 0x07 | Challenge value, in the form of bytes, used for anti-replay during the authentication.|
 | ASSET_TAG_AUTH_TOKEN = ASSET_TYPE_BYTES \| 0x08 | Authentication token, in the form of bytes, obtained after a successful user authentication.|
 | ASSET_TAG_SYNC_TYPE = ASSET_TYPE_NUMBER \| 0x10 | Asset sync type. The value is of the uint32_t type.|
-| ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11 | Whether the asset needs to be stored persistently.<br>Verification of **ohos.permission.STORE_PERSISTENT_DATA** is required if **OH_Asset_Add** is called with this tag passed in.|
+| ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11 | Indicates whether the critical asset needs to be stored persistently. The value is of the bool type. true indicates that the critical asset is retained when the application is uninstalled, and false indicates that the critical asset is not retained. When this attribute is passed in calling the OH_Asset_Add function, the permission ohos.permission.STORE_PERSISTENT_DATA needs to be verified. For details about how to request the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md). |
 | ASSET_TAG_DATA_LABEL_CRITICAL_1 = ASSET_TYPE_BYTES \| 0x20 | Custom data, which is of the bytes type and cannot be changed.|
 | ASSET_TAG_DATA_LABEL_CRITICAL_2 = ASSET_TYPE_BYTES \| 0x21 | Custom data, which is of the bytes type and cannot be changed.|
 | ASSET_TAG_DATA_LABEL_CRITICAL_3 = ASSET_TYPE_BYTES \| 0x22 | Custom data, which is of the bytes type and cannot be changed.|
@@ -118,7 +119,7 @@ Enumerates the keys of asset attributes.
 | ASSET_TAG_CONFLICT_RESOLUTION = ASSET_TYPE_NUMBER \| 0x44 | Policy for resolving the conflict when an asset is added. The value is of the uint32_t type.|
 | ASSET_TAG_UPDATE_TIME = ASSET_TYPE_BYTES \| 0x45 | Asset update time, in timestamp format. The value is of the bytes type.<br>**Since**: 12|
 | ASSET_TAG_OPERATION_TYPE = ASSET_TYPE_NUMBER \| 0x46 | Additional operation type. The value is of the uint32_t type.<br>**Since**: 12|
-| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47 | Whether to encrypt the additional information customized by the service. The value is of the Boolean type.<br>**Since**: 14|
+| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47 | Indicates whether to encrypt the service-defined auxiliary information. The value is of the bool type. true indicates that the service-defined auxiliary information is encrypted, and false indicates that it is not encrypted.<br>**Since:** 14 |
 | ASSET_TAG_GROUP_ID = ASSET_TYPE_BYTES \| 0x48 | Group to which the asset belongs. The value is of the bytes type.<br>**Since**: 18|
 | ASSET_TAG_WRAP_TYPE = ASSET_TYPE_NUMBER \| 0x49 | Encrypted import/export type supported by the asset. The value is of the uint32_t type.<br>**Since**: 18|
 
@@ -130,15 +131,15 @@ enum Asset_ResultCode
 
 **Description**
 
-Enumerates the result codes used in the ASSET APIs.
+Result code used by the ASSET API.
 
 **Since**: 11
 
 | Enum| Description|
 | -- | -- |
 | ASSET_SUCCESS = 0 | The operation is successful.|
-| ASSET_PERMISSION_DENIED = 201 | The caller does not have the required permission.|
-| ASSET_INVALID_ARGUMENT = 401 | The parameter is invalid.|
+| ASSET_PERMISSION_DENIED = 201 | Indicates that permission verification fails. The application does not have the permission to use this API and needs to apply for the permission. |
+| ASSET_INVALID_ARGUMENT = 401 | Indicates invalid parameters. Possible causes: 1. A mandatory parameter is not specified. 2. The parameter type is incorrect. 3. Parameter verification fails. |
 | ASSET_SERVICE_UNAVAILABLE = 24000001 | The asset store service is unavailable.|
 | ASSET_NOT_FOUND = 24000002 | The asset is not found.|
 | ASSET_DUPLICATED = 24000003 | The asset already exists.|

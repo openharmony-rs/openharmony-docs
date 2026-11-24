@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Layout Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
 <!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6cf262681c9e0cd9c697d71c12de487ae14f710a translatedAt=2026-08-25T02:19:51.256Z pushedAt=2026-08-26T07:59:06.463Z -->
+<!-- md-trans-meta sourceCommit=5b2ad84f3ccf59a915bae11e1fe0efab45edc218 translatedAt=2026-11-18T08:49:00.243Z pushedAt=2026-11-19T02:33:12.885Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -188,7 +187,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 One or four parameters can be passed:
 
 1: Specify the same width for the four borders.<br>
-
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Width for the four borders, in vp. Value range: [0, +∞). The default value is **0vp**. |
@@ -227,13 +225,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 One or four parameters can be passed:
 
-1. Specify the same corner radius for the four borders.<br>
+1: Specify the same corner radius for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Corner radius for the four borders, in vp. Value range: [0, +∞). The default value is **0vp**. |
 
-2. Four parameters are passed, indicating respectively setting the border radius for each of the four corners.<br>
+2: Four parameters are passed, indicating respectively setting the border radius for each of the four corners.<br>
 
 | Name| Description|
 | -- | -- |
@@ -936,13 +934,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 One or four parameters can be passed:
 
-1. Specify the same corner radius for the four borders.<br>
+1: Specify the same corner radius for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Corner radius for the four borders, in percentage. Value range: [0, +∞). Default value: **0**. |
 
-2. Specify different corner radii for the four borders.<br>
+2: Specify different corner radii for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -1156,7 +1154,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment rule of the child components in the **Stack** container, determining the position of child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment). The default value is **ARKUI_ALIGNMENT_CENTER**. When an invalid value is set, the default value is used for display. |
+| .value[0].i32 | Alignment rule of the child components in the **Stack** container, determining the position of child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment). The default value is **ARKUI_LOCALIZED_ALIGNMENT_CENTER**. When an invalid value is set, the default value is used for display. |
 
 **Returns**
 

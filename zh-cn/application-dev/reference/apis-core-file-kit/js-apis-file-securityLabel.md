@@ -231,7 +231,7 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
   | 参数名   | 类型                        | 必填 | 说明                       |
   | -------- | --------------------------- | ---- | -------------------------- |
   | path     | string                      | 是   | 文件或目录的应用沙箱路径。                  |
-  | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回数据安全等级。 |
+  | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当获取文件或目录的数据安全等级，err为undefined，type为获取到的数据安全等级；否则为错误对象。 |
 
 **错误码：**
 

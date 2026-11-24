@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-10-28T04:07:07.775Z pushedAt=2026-10-28T08:17:57.796Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e3d32a880304cbe5ac09746569f1a26dcacca8bf translatedAt=2026-11-03T06:37:43.523Z pushedAt=2026-11-03T07:56:34.690Z nl=1 -->
 
 
 \@Styles is only used for style reuse on static pages, whereas **stateStyles** can quickly set different styles based on a component's internal state. This is what this chapter introduces: **stateStyles** (also known as polymorphic styles).

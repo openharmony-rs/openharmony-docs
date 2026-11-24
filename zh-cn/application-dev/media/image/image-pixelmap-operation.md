@@ -75,7 +75,7 @@ status: active
    
    ``` TypeScript
    // 场景二：读取并修改指定区域内的图像数据。
-   // 读取PixelMap指定区域内的像素数据，并按照RGBA_8888像素格式写入PositionArea.pixels缓冲区，该区域由PositionArea.region指定。
+   // 读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入PositionArea.pixels缓冲区，该区域由PositionArea.region指定。
    const regionWidth: number = 200;
    const regionHeight: number = 100;
    const area: image.PositionArea = {

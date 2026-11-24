@@ -5,7 +5,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T04:06:57.589Z pushedAt=2026-10-28T08:17:51.131Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1c4d60ddf8b2662424b5d2d9f219efe7cea68103 translatedAt=2026-11-03T06:36:27.362Z pushedAt=2026-11-03T07:56:02.488Z nl=1 -->
 
 Custom components decorated by [\@Reusable](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusable.md#reusable) support component reuse. When a custom component is removed from the component tree, it is stored in a cache pool. When a component node of the same type is subsequently created, the component object in the cache pool is preferentially reused, thereby avoiding repeated creation and destruction and improving performance.
 
@@ -528,7 +528,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // ComponentContent is based on BuilderNode, which does not support @Reusable decorated custom components.
+          // ComponentContent is based on BuilderNode, which does not support passing custom components decorated with the @Reusable decorator.
           let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
           });
           this.uiContext.getPromptAction().openCustomDialog(contentNode);
@@ -546,7 +546,7 @@ Nesting \@Reusable decorators is not recommended, as it increases memory usage, 
 
 ## Proactively Clearing the Reuse Pool
 
-Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) of the current component through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool), and then call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache) method of IDefaultReusePool.
+Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) of the current component through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md), and then call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md) method of IDefaultReusePool.
 
 > **NOTE**
 >
@@ -612,12 +612,12 @@ struct Index {
       Button('Clear All')
         .onClick(() => {
           // Clear all components in the default reuse pool.
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
         })
       Button('Clear A')
         .onClick(() => {
           // Clear only the components whose reuseId is 'A'.
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
         })
     }
   }

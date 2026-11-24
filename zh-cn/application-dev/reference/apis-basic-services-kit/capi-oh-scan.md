@@ -1,4 +1,4 @@
-# OH_Scan
+# Scan
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @Zouhaifeng1-->

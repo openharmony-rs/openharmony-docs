@@ -1463,6 +1463,46 @@ try {
 }
 ```
 
+## getAvoidAreaInsets
+
+getAvoidAreaInsets(): AvoidAreaInsets
+
+获取当前窗口的避让区边衬。
+
+若需要获取指定类型的避让区（如挖孔区域），请使用[getWindowAvoidArea()](#getwindowavoidarea9)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---------------------------------- | ----------------- |
+| [AvoidAreaInsets](arkts-apis-window-i.md#avoidareainsets) | 避让区边衬。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+```ts
+try {
+  // windowClass为已创建/获取的Window实例
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+} catch (exception) {
+  console.error(`Failed to obtain the avoid area insets. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setSystemAvoidAreaEnabled<sup>18+</sup>
 
 setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
@@ -1510,7 +1550,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -1588,7 +1628,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -3581,6 +3621,107 @@ try {
 }
 ```
 
+## onAvoidAreaInsetsChange
+
+onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
+
+订阅窗口避让区边衬的变化。
+
+当窗口的避让区发生变化时，会触发回调。
+
+在同一次变化中，如果多个避让区发生变化，相关的避让区信息更新后，只会触发一次回调。
+
+若需要按避让区域类型逐类监听并区分来源（如状态栏、挖孔、手势区等），请使用[on('avoidAreaChange')](#onavoidareachange9)。
+
+> **说明：**
+>
+> - 可以在回调中使用[getAvoidAreaInsets()](#getavoidareainsets)来获取窗口最新的避让区边衬，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区。
+>
+> - [TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区变化不会触发回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                       |
+| -------- | ------------------- | ---- | -------------------------- |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+```ts
+const callback = () => {
+  // windowClass为已创建/获取的Window实例
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+  console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
+  ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
+  ', bottom: ' + avoidAreaInsets.bottom);
+}
+try {
+  windowClass.onAvoidAreaInsetsChange(callback);
+} catch (exception) {
+  console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offAvoidAreaInsetsChange
+
+offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
+
+取消订阅窗口避让区边衬的变化。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口所有避让区边衬变化的监听。默认值：undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+```ts
+const callback = () => {
+  // ...
+}
+try {
+  // windowClass为已创建/获取的Window实例
+  windowClass.onAvoidAreaInsetsChange(callback);
+
+  windowClass.offAvoidAreaInsetsChange(callback);
+  // 如果通过onAvoidAreaInsetsChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offAvoidAreaInsetsChange();
+} catch (exception) {
+  console.error(`Failed to enable or disable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('keyboardHeightChange')<sup>7+</sup>
 
 on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
@@ -4285,7 +4426,7 @@ try {
 
 on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
-开启模态窗口所遮罩区域的点击或触摸事件的监听，除模态窗口以外其他窗口调用此接口不生效。
+开启TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听，除此以外其他窗口调用此接口不生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4295,8 +4436,8 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                          |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即模态窗口所遮罩区域的点击或触摸事件。 |
-| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在模态窗口所遮罩区域的回调。 |
+| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。 |
 
 **错误码：**
 
@@ -4323,7 +4464,7 @@ try {
 
 off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
-关闭模态窗口所遮罩区域的点击或触摸事件的监听。
+关闭TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4333,8 +4474,8 @@ off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                          |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即模态窗口所遮罩区域的点击或触摸事件。 |
-| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击事件发生在模态窗口所遮罩区域的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有模态窗口所遮罩区域的点击事件的监听。 |
+| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。若传入参数，则关闭该监听。若未传入参数，则关闭该窗口所有遮罩区域的点击或触摸事件的监听。 |
 
 **错误码：**
 
@@ -6329,7 +6470,7 @@ try {
 
 setWindowBackgroundColor(color: string | ColorMetrics): void
 
-设置窗口的背景色。
+设置窗口内容区域的背景色。
 
 未调用该接口时，窗口在浅色模式默认背景色为`'#FFF0F0F0'`，在深色模式默认背景色为`'#FF1A1A1A'`。
 
@@ -6486,7 +6627,7 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 | 参数名 | 类型 | 必填 | 说明                                        |
 | ---------- | ------------------------- | -- |-------------------------------------------|
-| brightness | number                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | number                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。0.0表示最暗，1.0表示最亮，特殊值-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 | callback   | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
 
 **错误码：**
@@ -6572,7 +6713,7 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | ---------- | ------ | -- |----------------------------------------|
-| brightness | number | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | number | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。0.0表示最暗，1.0表示最亮，特殊值-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 
 **返回值：**
 
@@ -8447,7 +8588,7 @@ try {
 
 setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;WindowLimits&gt;
 
-设置当前窗口的尺寸限制，使用Promise异步回调。
+设置当前窗口的尺寸限制，可通过参数isForcible设置是否强制生效，使用Promise异步回调。
 
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 

@@ -2179,7 +2179,7 @@ The API is not called in the main thread.
 请将接口调用逻辑迁移到主线程中执行。
 
 <!--Del-->
-## 16000206 指定应用未获授解锁前启动权限
+## 16000207 指定应用未获授解锁前启动权限
 
 **错误信息**
 
@@ -2196,6 +2196,26 @@ The specified application is not authorized to start before the user is unlocked
 **处理步骤**
 
 确认目标应用已申请并获授[ohos.permission.ALLOW_DIRECT_BOOT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionallow_direct_boot)权限，再重新设置用户解锁前自启动。
+<!--DelEnd-->
+
+<!--Del-->
+## 16000210 目标进程受MDM应用保护无法终止
+
+**错误信息**
+
+The target process is protected by an MDM application and cannot be terminated.
+
+**错误描述**
+
+调用[appManager.killProcessWithAccountSafely](js-apis-app-ability-appManager-sys.md#appmanagerkillprocesswithaccountsafely)终止应用进程时，如果查询到目标应用已被MDM设置为禁止停止，方法将返回该错误码。
+
+**可能原因**
+
+目标应用已被MDM设置为禁止停止。
+
+**处理步骤**
+
+确认目标应用的MDM防禁用配置。如需终止该应用进程，请先由MDM解除防禁用配置，再重试。
 <!--DelEnd-->
 
 ## 10110000 装饰器参数声明错误
@@ -3029,15 +3049,15 @@ The number of registered observers for the current application has reached the u
 
 **错误描述**
 
-注册新的observer失败。
+当前应用已注册的observer数量达到上限，注册失败。
 
 **可能原因**
 
-当前应用已注册observer数量达到上限。
+当前应用已注册的observer数量达到上限。
 
 **处理步骤**
 
-注销掉其他进程中的observer。
+注销掉当前应用其他进程中的observer。
 
 ## 35600004 指定的AgentCard版本低于当前版本
 
@@ -3169,3 +3189,111 @@ Task not found.
 1. 确认传入的taskId对应的任务已启动且尚未结束。
 2. 确认调用方为创建该任务的应用。
 <!--DelEnd-->
+
+## 16000211 指定的LaunchService不存在
+
+**错误信息**
+
+The specified service is not found.
+
+**错误描述**
+
+指定的LaunchService不存在。
+
+**可能原因**
+
+调用LaunchService管理接口时，传入的服务描述符未对应到目标服务。
+
+**处理步骤**
+
+检查服务描述符中的bundleName、moduleName、serviceName、userId和appIndex，确保目标应用已安装且声明了对应的LaunchService。
+
+## 16000212 指定的LaunchService已注册
+
+**错误信息**
+
+The specified service is already registered.
+
+**错误描述**
+
+指定的LaunchService已注册。
+
+**可能原因**
+
+调用[register](js-apis-app-ability-launchServiceManager.md#launchservicemanagerregister)接口时，指定的LaunchService已经注册。
+
+**处理步骤**
+
+调用[getInformation](js-apis-app-ability-launchServiceManager.md#launchservicemanagergetinformation)接口查询服务状态，避免重复注册。
+
+## 16000213 指定的LaunchService已禁用
+
+**错误信息**
+
+The specified service is disabled.
+
+**错误描述**
+
+指定的LaunchService已禁用。
+
+**可能原因**
+
+调用[start](js-apis-app-ability-launchServiceManager.md#launchservicemanagerstart)接口时，指定的LaunchService处于禁用状态。
+
+**处理步骤**
+
+启用目标LaunchService后，重新调用启动接口。
+
+## 16000214 指定的LaunchService未运行
+
+**错误信息**
+
+The specified service is not running.
+
+**错误描述**
+
+指定的LaunchService未运行。
+
+**可能原因**
+
+调用[stop](js-apis-app-ability-launchServiceManager.md#launchservicemanagerstop)接口时，指定的LaunchService进程未运行。
+
+**处理步骤**
+
+调用[getInformation](js-apis-app-ability-launchServiceManager.md#launchservicemanagergetinformation)接口查询服务信息，确认进程正在运行后再停止，避免重复停止。
+
+## 16000215 授权请求被拒绝
+
+**错误信息**
+
+The approval request was rejected.
+
+**错误描述**
+
+授权请求被拒绝。
+
+**可能原因**
+
+调用setLaunchServicesEnabled接口时，授权请求未通过。
+
+**处理步骤**
+
+确认已获得用户授权，并在用户同意后重新发起操作；传入token时，确保使用有效的授权令牌。
+
+## 16000216 指定的观察者ID无效
+
+**错误信息**
+
+The specified id is invalid.
+
+**错误描述**
+
+指定的观察者ID无效。
+
+**可能原因**
+
+调用offLaunchServiceObserver接口时，传入的观察者ID无效。
+
+**处理步骤**
+
+使用onLaunchServiceObserver接口返回的有效观察者ID注销监听，避免使用未注册或已注销的ID。

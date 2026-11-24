@@ -1,12 +1,11 @@
 # Application Freeze Event Overview
-
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T09:20:53.474Z pushedAt=2026-07-30T12:32:10.712Z -->
+<!-- md-trans-meta sourceCommit=10d653f7dbab0bb99e80334f55a14c60227169b9 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -52,13 +51,13 @@ import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
     "appFreezePolicy" : {
-      "pageSwitchLogEnable": true // Enable page transition log.
+      "pageSwitchLogEnable": true // Enable page switch logging.
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+    hilog.info(0x0000, 'testTag', `Set appfreeze config policy successfully.`);
 }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+    hilog.error(0x0000, 'testTag', `Failed to set appfreeze config policy. code: ${err.code}, message: ${err.message}`);
 });
 ```
 

@@ -1,12 +1,11 @@
 # ArkWeb_ProxyMethodWithResult
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=3cf0e4d31df69a8bda793fe15a55a60676b46acc translatedAt=2026-08-03T09:53:28.916Z pushedAt=2026-08-06T11:37:13.434Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:48:41.803Z pushedAt=2026-11-13T11:17:12.634Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_ProxyMethodWithResult

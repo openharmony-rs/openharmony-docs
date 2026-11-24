@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "说明接入标准意图与创建自定义意图两种定义方式的选择依据，以及意图名称、版本、参数和结果类型等要素。"
+keywords: [意图开发, 标准意图, 自定义意图, 意图参数, 结果类型, Json Schema]
+doctype: guide
+status: active
+---
 # 意图开发概述
 
 <!--Kit: Ability Kit-->

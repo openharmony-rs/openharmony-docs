@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkTS运行时的常见问题与规避方案：涵盖正则运算结果与预期不一致、Async函数内部异常的捕获与定位、Array.flatMap()处理Proxy数组，以及Proxy的handler和JSON.stringify()的replacer中key类型与ECMAScript规范的差异等场景。"
+keywords: [ArkTS运行时常见问题, 正则运算, 规避方案, Async函数异常, unhandledRejection, Array.flatMap, Proxy, TypedArray, 内联缓存, JSON.stringify, parseFloat]
+doctype: faq
+status: active
+---
+
 # ArkTS运行时常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

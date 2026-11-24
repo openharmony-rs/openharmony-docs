@@ -2,14 +2,15 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=fa9d8beb34c9c36d5c088263fe228c1ceec6f643 translatedAt=2026-11-03T03:50:11.846Z pushedAt=2026-11-04T03:11:33.475Z nl=1 -->
 
 ## Overview
 
-Defines the native APIs used to obtain the location of a file.
+Defines the interfaces of the fileio module, providing native interfaces for obtaining file storage locations to help applications select appropriate access policies based on the file storage location.
 
 **File to include**: <filemanagement/fileio/oh_fileio.h>
 
@@ -33,7 +34,7 @@ Defines the native APIs used to obtain the location of a file.
 
 | Name| Description|
 | -- | -- |
-| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | Obtains the location of a file.|
+| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | Obtains the file storage location. After a successful call, the file storage location is written to the output parameter location. |
 
 ## Enum Description
 
@@ -66,7 +67,7 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 
 **Description**
 
-Obtains the location of a file.
+Obtains the file storage location. If the operation is successful, the file storage location is written to the output parameter location.
 
 **Since**: 12
 
@@ -74,12 +75,14 @@ Obtains the location of a file.
 
 | Name| Description|
 | -- | -- |
-| char *uri | Pointer to the URI of the file.|
-| int uriLength | Length of the URI.|
-| [FileIO_FileLocation](capi-oh-fileio-h.md#fileio_filelocation) *location | Pointer to the location of the file obtained.|
+| char *uri | Pointer to the URI string, used to specify the file whose storage location is to be queried. |
+| int uriLength | Length of the URI string, excluding the string terminator '\0', in bytes. The value range is (0, 4096]. |
+| [FileIO_FileLocation](capi-oh-fileio-h.md#fileio_filelocation) *location | Pointer to the file storage location. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns the FileManagement module error code [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).  <br>401 - Invalid input parameter, pointer is null. <br>ERR_ENOENT 13900002 - No such file or directory. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
+
+

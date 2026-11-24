@@ -1,12 +1,11 @@
 # ArkUI_GestureInterruptInfo
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:23:27.822Z pushedAt=2026-08-19T09:04:59.021Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:42:38.037Z pushedAt=2026-11-10T02:27:18.106Z nl=1 -->
 
 ```c
 typedef struct ArkUI_GestureInterruptInfo ArkUI_GestureInterruptInfo
@@ -21,3 +20,4 @@ Defines gesture interruption event information. This struct is used to pass info
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
+

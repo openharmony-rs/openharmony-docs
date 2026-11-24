@@ -1,12 +1,11 @@
 # Class (WebDownloadDelegate)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:46:33.402Z pushedAt=2026-08-07T08:11:33.312Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:05:04.407Z pushedAt=2026-11-09T11:27:21.639Z nl=1 -->
 
 WebDownloadDelegate is a delegate class in the ArkWeb framework used to listen for and handle download task events of the Web component. When a web page in the Web component triggers a file download (for example, when the user taps a download link or the **startDownload** method is called), the download task state changes are notified to the app through the callback APIs of this class. Developers register a **WebDownloadDelegate** instance with the Web component through **setDownloadDelegate** to take over the complete lifecycle management of the download process.
 

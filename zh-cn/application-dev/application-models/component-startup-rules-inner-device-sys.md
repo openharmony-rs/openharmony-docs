@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍系统应用在设备内启动UIAbility和ExtensionAbility组件的约束规则，涵盖前后台状态、exported可见性及权限要求，帮助系统应用开发者规避启动异常。"
+keywords: [exported, START_ABILITIES_FROM_BACKGROUND, START_INVISIBLE_ABILITY, 启动规则, 权限校验]
+doctype: guide
+status: active
+---
 # 设备内组件启动规则（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

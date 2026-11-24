@@ -5,13 +5,13 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=6731353e95ca92d0b8b50de9083fe2085729362a translatedAt=2026-10-28T04:06:31.665Z pushedAt=2026-10-28T08:13:45.437Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:32:51.786Z pushedAt=2026-11-12T09:19:35.004Z nl=1 -->
 
-[\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md#provide) and [\@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume.md#consume) are used for two-way data synchronization with descendent components and for passing state data across multiple levels. Unlike the named parameter mechanism used between parent and child components mentioned earlier, \@Provide and \@Consume break free from the parameter passing mechanism and enable cross-level transfer.
+[\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md#provide) and [\@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume.md#consume) are used for two-way data synchronization with descendant components and for passing state data across multiple levels. Unlike the named parameter mechanism used between parent and child components mentioned earlier, \@Provide and \@Consume break free from the parameter passing mechanism and enable cross-level transfer.
 
-An \@Provide decorated state variable exists in the ancestor component and is said to be "provided" to descendent components. An \@Consume decorated state variable is used in a descendent component. It is linked to ("consumes") the provided state variable in its ancestor component.
+An \@Provide decorated state variable exists in the ancestor component and is said to be "provided" to descendant components. An \@Consume decorated state variable is used in a descendant component. It is linked to ("consumes") the provided state variable in its ancestor component.
 
-\@Provide/\@Consume is bidirectional synchronization across component levels. Before reading the @Provide and @Consume documents, it would be helpful if you have a basic understanding of the basic syntax of the UI paradigm and custom components. You are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md) in advance. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
+\@Provide/\@Consume is a two-way synchronization across component levels. Before reading the \@Provide and \@Consume documents, you are advised to have a basic understanding of the basic UI paradigm syntax and custom components. It is recommended that you read the following in advance: [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md). For FAQ, see [State Management FAQs](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -19,11 +19,11 @@ An \@Provide decorated state variable exists in the ancestor component and is sa
 >
 > These two decorators can be used in atomic services since API version 11.
 >
-> In API version 19 and earlier versions, \@Provide and \@Consume bidirectional synchronization supports only declarative nodes.
+> In API version 19 and earlier versions, \@Provide and \@Consume two-way synchronization supports only declarative nodes.
 >
 > Since API version 20, @Consume decorated variables support default value assignment. If no matching @Provide is found, the @Consume decorated variable initializes with its default value. When a matching @Provide is found, the @Consume decorated variable uses the @Provide value, and the default value is ignored.
 >
-> Since API version 20, you can set the [BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) parameter **enableProvideConsumeCrossing** to **true** in [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to enable cross-[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) two-way synchronization for \@Provide and \@Consume. Note that BuilderNode constructs nodes before adding them to the component tree. Therefore, \@Consume decorated variables defined within BuilderNode must have default values. After BuilderNode is mounted to the tree, it retrieves the latest @Provide data to establish two-way synchronization. For details, see [Using @Consume to Establish Two-Way Synchronization with @Provide Across BuilderNode Scenarios](#using-consume-to-establish-two-way-synchronization-with-provide-across-buildernode-scenarios).
+> Since API version 20, you can set the [BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) parameter `enableProvideConsumeCrossing` to **true** in [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to enable cross-[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) two-way synchronization for \@Provide and \@Consume. Note that BuilderNode constructs nodes before adding them to the component tree. Therefore, \@Consume decorated variables defined within BuilderNode must have default values. After BuilderNode is mounted to the tree, it retrieves the latest @Provide data to establish two-way synchronization. For details, see [Using @Consume to Establish Two-Way Synchronization with @Provide Across BuilderNode Scenarios](#using-consume-to-establish-two-way-synchronization-with-provide-across-buildernode-scenarios).
 
 ## **Overview**
 
@@ -205,7 +205,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
     @Provide('b') num: number = 10;
     ```
 
-4. Before API version 20: A runtime error is thrown if no matching \@Provide decorated variable is found during \@Consume initialization. Starting from API version 20, when initializing an @Consume variable, if the developer has not defined an @Provide variable with the corresponding key and has not set a default value, the framework will throw a runtime error. Starting from API version 23, it will return error code [140112](../../reference/apis-arkui/errorcode-stateManagement.md#140112-consume-does-not-have-the-corresponding-provide), indicating that the initialization of the @Consume variable failed because the corresponding @Provide variable with that key could not be found and no default value was set.
+4. Before API version 20: A runtime error is thrown if no matching \@Provide decorated variable is found during \@Consume initialization. Starting from API version 20, when initializing an @Consume variable, if you have not defined an @Provide variable with the corresponding key and have not set a default value, the framework will throw a runtime error. Starting from API version 23, it will return error code [140112](../../reference/apis-arkui/errorcode-stateManagement.md#140112-consume-does-not-have-the-corresponding-provide), indicating that the initialization of the @Consume variable failed because the corresponding @Provide variable with that key could not be found and no default value was set.
 
    **Incorrect Usage**
 
@@ -1053,17 +1053,17 @@ In the preceding example:
 \@Provide and \@Consume are supported within BuilderNode. Key considerations:
 1. \@Consume variables defined in BuilderNode subtrees must have default values, or \@Provide must exist within the subtree. Otherwise, runtime errors occur.
 2. After the BuilderNode is mounted to the tree, \@Consume with default values searches upward for \@Provide. Upon finding the nearest matching \@Provide by key, \@Consume establishes two-way synchronization. If no match is found, \@Consume retains its default value.
-3. After the bidirectional synchronization relationship is established, if the value of the @Provide-decorated variable is different from the default value of @Consume, the [\@Watch](./arkts-watch.md) method of @Consume is called back, and the @Watch methods of variables that have synchronization relationships with @Consume are also called back. For example, @Consume triggers the @Watch method of the @Link that is bidirectionally synchronized with it.
+3. After the two-way synchronization relationship is established, if the value of the @Provide-decorated variable is different from the default value of @Consume, the [\@Watch](./arkts-watch.md) method of @Consume is called back, and the @Watch methods of variables that have synchronization relationships with @Consume are also called back. For example, @Consume triggers the @Watch method of the @Link that is bidirectionally synchronized with it.
 4. When **BuilderNode** is unmounted from the tree, \@Consume searches for the corresponding \@Provide again. If the previously paired \@Provide is unavailable, the synchronization relationship breaks and \@Consume reverts to its default value.
 5. When \@Consume disconnects from \@Provide and reverts to the default value, if the value changes from \@Provide's value to \@Consume's default, \@Watch methods on \@Consume and synchronized variables are triggered.
 
 In the following example:
-1. Click **add Child**.
-   - Construct the child node Child under BuilderNode. If \@Consume in Child does not find \@Provide, use the local default value for initialization.
-   - When the BuilderNode is added to the tree, \@Consume in Child finds \@Provide in the nearest Index, updates \@Consume from the default value to the value of \@Provide, and calls back the \@Watch method of \@Consume.
-2. After \@Provide and \@Consume are paired, a bidirectional synchronization relationship is established. Click either **Text(`@Provide: ${this.message}`)** or **Text(`@Consume ${this.message}`)**. Both **Text** components bound to \@Provide and \@Consume will refresh. In addition, the \@Watch methods on both \@Provide and \@Consume are triggered.
-3. Click remove Child. In the tree under BuilderNode, \@Consume in Child is disconnected from \@Provide in Index. \@Consume in Child is restored to the default value, and the \@Watch method of \@Consume is called back.
-4. Click dispose Child to release the child nodes of BuilderNode, destroy the child nodes of BuilderNode, and execute [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear).
+1. Click `add Child`:
+   - Construct the child node `Child` under BuilderNode. If \@Consume in `Child` does not find \@Provide, use the local default value for initialization.
+   - When the BuilderNode is added to the tree, \@Consume in `Child` finds \@Provide in the nearest Index, updates \@Consume from the default value to the value of \@Provide, and calls back the \@Watch method of \@Consume.
+2. After \@Provide and \@Consume are paired, a two-way synchronization relationship is established. Click either ```Text(`@Provide: ${this.message}`)``` or ```Text(`@Consume ${this.message}`)```. Both **Text** components bound to \@Provide and \@Consume will refresh. In addition, the \@Watch methods on both \@Provide and \@Consume are triggered.
+3. Click `remove Child`. In the tree under BuilderNode, \@Consume in `Child` is disconnected from \@Provide in `Index`. \@Consume in `Child` is restored to the default value, and the \@Watch method of \@Consume is called back.
+4. Click `dispose Child` to release the child nodes of BuilderNode, destroy the child nodes of BuilderNode, and execute [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear).
 <!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->  
 
 ``` TypeScript

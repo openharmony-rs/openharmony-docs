@@ -28,6 +28,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | 名称  | 值   | 说明    |
 | ----- | ---- | -------- |
 | HUKS_EXT_CRYPTO_TAG_TYPE_INT | 1 << 28   | 表示TAG的值为整数类型。 |
+| HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 2 << 28   | 表示TAG的值为无符号整数类型。<br>**起始版本：** 26.0.1 |
 | HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 5 << 28  | 表示TAG的值为字节数组。 |
 
 ## HuksExternalCryptoTag
@@ -134,8 +135,8 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | check permission failed. |
-| 801 | api is not supported. |
+| 201 | Permission verification failed: call the registerProvider API, missing Permission: ohos.permission.CRYPTO_EXTENSION_REGISTER. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000002 | the ability name param is missing. |
 | 12000005 | IPC communication failed. |
 | 12000014 | memory is insufficient. |
@@ -199,8 +200,8 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | check permission failed. |
-| 801 | api is not supported. |
+| 201 | Permission verification failed: call the unregisterProvider API, missing Permission: ohos.permission.CRYPTO_EXTENSION_REGISTER. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000011 | the provider is not found. |
 | 12000012 | Device environment or input parameter is abnormal. This may happen for several reasons, such as the model already being unloaded. |
@@ -260,7 +261,7 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | the UKey driver operation failed. |
 | 12000011 | queried entity does not exist. This may happen because the resource ID has not been opened. |
@@ -329,7 +330,7 @@ propertyId表示查询属性的ID信息，推荐使用GMT 0016-2023中定义的S
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | If the UKey driver operation failed. Possible causes: 1. Error reported when the provider accesses the SKF interface of UKey. |
 | 12000011 | If the cached resource ID is not found. |
@@ -402,7 +403,7 @@ clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID not found. |
@@ -463,7 +464,7 @@ getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000002 | The ability name, bundle name parameter or resource information is missing. |
 | 12000005 | IPC communication failed. |
 | 12000011 | The provider is not found. |
@@ -548,7 +549,7 @@ openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID is not found. This may happen because the resource ID has not been opened. |
@@ -613,7 +614,7 @@ closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&l
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000012 | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
@@ -674,7 +675,7 @@ setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoP
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID not found. |

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:25:59.461Z pushedAt=2026-08-10T10:15:48.399Z -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:21:01.207Z pushedAt=2026-11-23T07:56:13.912Z nl=1 -->
 
 The Crypto framework supports this algorithm since API version 22.
 
@@ -16,8 +16,8 @@ For details about the algorithm specifications, see [ChaCha20](crypto-encryption
 
 **Creating an Object**
 
-Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (**SymKey**) using ChaCha20.
-
+Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (SymKey) with the ChaCha20 algorithm.
+   
    For details about how to generate a ChaCha20 symmetric key, refer to the example below, together with [ChaCha20](crypto-key-generation-conversion.md#chacha20) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents and the example may differ in input parameters. Pay attention to the differences.
 
 **Encryption**
@@ -30,11 +30,11 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
 
-   > **NOTE**
-   >
-   > Since data has been passed in through **update()**, pass **null** for **data** here.
-   >
-   > The output of **doFinal()** may be null. Before accessing the specific data, check whether the result is null to avoid exceptions.
+    > **NOTE**
+    >
+    > Since data has been passed in through **update()**, pass **null** for **data** here.
+    >
+    > The output of **doFinal()** may be null. Before accessing the specific data, check whether the result is null to avoid exceptions.
 
 **Decryption**
 
@@ -49,11 +49,12 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 - Example (using asynchronous APIs):
 
   <!-- @[encrypt_decrypt_chacha20_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionAsync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -109,21 +110,26 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`decrypt failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
   <!-- @[encrypt_decrypt_chacha20_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionSync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -180,9 +186,12 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`decrypt failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -191,8 +200,8 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 **Creating an Object**
 
-Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (**SymKey**) with the ChaCha20 algorithm.
-
+Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (SymKey) with the ChaCha20 algorithm.
+   
    For details about how to generate a ChaCha20 symmetric key, refer to the example below, together with [ChaCha20](crypto-key-generation-conversion.md#chacha20) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents and the example may differ in input parameters. Pay attention to the differences.
 
 **Encryption**
@@ -205,11 +214,11 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
 
-   > **NOTE**
-   >
-   > Since data has been passed in through **update()**, pass **null** for **data** here.
-   >
-   > The output of **doFinal()** may be null. Before accessing the specific data, check whether the result is null to avoid exceptions.
+    > **NOTE**
+    >
+    > Since data has been passed in through **update()**, pass **null** for **data** here.
+    >
+    > The output of **doFinal()** may be null. Before accessing the specific data, check whether the result is null to avoid exceptions.
 
 5. Read [Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22).authTag as the authentication information for decryption.
 
@@ -230,11 +239,12 @@ If ChaCha20 (Poly1305 mode) decryption fails with error code 17630001, see [doFi
 - Asynchronous method example:
 
   <!-- @[encrypt_decrypt_chacha20_poly1305_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionAsync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -306,9 +316,12 @@ If ChaCha20 (Poly1305 mode) decryption fails with error code 17630001, see [doFi
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`decrypt failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -316,11 +329,12 @@ If ChaCha20 (Poly1305 mode) decryption fails with error code 17630001, see [doFi
 - Synchronous method example:
 
   <!-- @[encrypt_decrypt_chacha20_poly1305_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionSync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -392,11 +406,12 @@ If ChaCha20 (Poly1305 mode) decryption fails with error code 17630001, see [doFi
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`decrypt failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
-
-  <!--no_check-->

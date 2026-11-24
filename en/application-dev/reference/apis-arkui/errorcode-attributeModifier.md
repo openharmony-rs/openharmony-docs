@@ -1,11 +1,11 @@
 # Error Codes for Dynamic Attribute Configuration
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e905bb0bc26b0b10f58e2efc6bc5284ead61d838 translatedAt=2026-08-29T09:18:04.345Z pushedAt=2026-08-31T01:51:03.510Z -->
+<!-- md-trans-meta sourceCommit=dbda7514fc4d743a6408faca2950d6a1c0cb2262 translatedAt=2026-11-18T09:26:12.740Z pushedAt=2026-11-20T06:08:36.084Z nl=1 -->
 
 > **NOTE**
 >
@@ -23,9 +23,9 @@ This error code is reported when some APIs do not support the configuration of [
 
 **Possible Causes**
 
-The dynamic attribute setting mechanism of **attributeModifier** does not support some APIs, so these APIs cannot set attributes through this mechanism.
+The dynamic attribute configuration mechanism of **attributeModifier** does not support some APIs, so these APIs cannot set attributes through this mechanism.
 
 **Solution**
 
-Stop using the unsupported APIs. For details, see [JS Crash Occurs When AttributeModifier Is Used to Set Dynamic Attributes for a Component](../../ui/arkts-attribute-modifier-faq.md#js-crash-occurs-when-attributemodifier-is-used-to-set-dynamic-attributes-for-a-component).
+Stop using the unsupported APIs. For details, see [Using AttributeModifier to Set Component Dynamic Attributes Causes JS Crash](../../ui/arkts-attribute-modifier-faq.md#using-attributemodifier-to-set-component-dynamic-attributes-causes-js-crash).
 

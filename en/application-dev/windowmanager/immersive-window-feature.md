@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-10T07:16:07.775Z pushedAt=2026-07-14T03:47:19.072Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:47:57.694Z pushedAt=2026-11-03T02:56:53.781Z nl=1 -->
 
 ## When to Use
 
@@ -38,26 +38,26 @@ Immersive layout is a state that allows the app's layout area to extend to the e
 
 - In non-immersive layout, the app interface content avoids the display area of the system UI by default, including the status bar and navigation area.
 
-- In immersive layout, the available layout area within the app extends to the entire window size. In this case, the layout content of the app interface can overlap with the system UI, but the system interface elements are always displayed above the app interface content.
+- In immersive layout, the available layout area within the app extends to the entire window size. In this case, the layout content of the app interface can overlap with the system UI, but the system interface elements are always displayed above the app interface content.  
 
   You can use the [isImmersiveLayout()](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20) interface to determine whether the current window is in immersive layout.
 
 For immersive development and implementation of different window forms in multi-device scenarios, refer to the [Window Immersion](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-immersive) best practice.
 
 > **NOTE**
->
+> 
 > Immersive layout is the layout mode of elements within a window. Entering or exiting immersive layout does not change the window size or position; it only affects the layout of elements within the app interface.
 
 The methods for implementing immersive layout differ between [freeform window](freeform-window-overview.md#freeform-window) and non-[freeform window](freeform-window-overview.md#freeform-window) states.
 
-- In the non-freeform window state, you can use the [setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9) or [setImmersiveModeEnabledState()](../reference/apis-arkui/arkts-apis-window-Window.md#setimmersivemodeenabledstate12) API to set the current window to enter or exit the immersive window layout.
+- In the non-freeform window state, you can use the [setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9) or [setImmersiveModeEnabledState()](../reference/apis-arkui/arkts-apis-window-Window.md#setimmersivemodeenabledstate12) API to set the current window to enter or exit the immersive window layout. 
 
   > **NOTE**
   > 
   > In the non-freeform window state, all window types except app subwindows are created in non-immersive layout by default, while subwindows are created in immersive layout by default.
 
   <!--@[HideDecorationBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/HideDecorationBar/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+  
   ``` TypeScript
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -84,6 +84,7 @@ The methods for implementing immersive layout differ between [freeform window](f
       });
     }
   // ...
+  }
   ```
 
   | Non-immersive Layout of a Non-freeform Window | Immersive Layout of a Non-freeform Window |
@@ -139,6 +140,7 @@ As shown in the figure below, the punch-hole area is represented as **[topRect, 
 
 ![Avoidance area calculation example](figures/avoid-area-calculation-example.png)
 
+
 ## Hiding System UI Elements to Implement an Immersive Effect
 
 You can implement an immersive effect by hiding system UI elements, which is suitable for scenarios such as games and movies. For example, hide the status bar on a camera's full-screen image page to achieve an immersive image viewing effect.
@@ -151,10 +153,11 @@ You can implement an immersive effect by hiding system UI elements, which is sui
 
 1. Call the [setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9) API to set the window to enter immersive layout.  
 
+
 2. Call [setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11) to hide the status bar.  
 
   <!--@[SystemBarEnabled_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SystemBarEnabled/entry/src/main/ets/entryability/EntryAbility.ets) --> 
-
+  
   ``` TypeScript
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -181,12 +184,14 @@ You can implement an immersive effect by hiding system UI elements, which is sui
       });
     }
     // ...
+  }
   ```
 
 ## Adapting Immersive Layout to Achieve Immersive Effects
 
+
 > **NOTE**
->
+> 
 > Global floating windows, dialog windows, and system windows do not have the ability to obtain avoid areas. If you need to adapt layout avoidance in these windows, use the [setSystemAvoidAreaEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setsystemavoidareaenabled18) API to enable the avoid area capability before performing layout avoidance.
 
 1. Call the [setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9) API to set the window to enter immersive layout.
@@ -200,7 +205,7 @@ You can implement an immersive effect by hiding system UI elements, which is sui
      Common scenarios that trigger the avoid area callback include: switching an app window between full-screen mode, floating mode, and split-screen mode; rotating an app window; switching a multi-foldable device between the folded and unfolded screen states; and transferring an app window across multiple devices.
 
      <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+     
      ``` TypeScript
      import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
      import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -286,12 +291,12 @@ You can implement an immersive effect by hiding system UI elements, which is sui
 
    - You can also use the responsive environment variable decorator [@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) to obtain and listen for the avoid area.
 
-You can use the responsive environment variable decorator @Env (@Env(SystemProperties.WINDOW_AVOID_AREA) or @Env(SystemProperties.WINDOW_AVOID_AREA_PX)) to obtain and listen for the avoid area information of the current window.
+     You can use the responsive environment variable decorator @Env (@Env(SystemProperties.WINDOW_AVOID_AREA) or @Env(SystemProperties.WINDOW_AVOID_AREA_PX)) to obtain and listen for the avoid area information of the current window.
 
-When the avoid area changes due to landscape/portrait switching, system bar visibility, window form changes, and other reasons, the @Env variable is automatically updated and triggers the refresh of related components, thereby implementing dynamic adaptation of the immersive layout. The sample code is as follows:
+     When the avoid area changes due to landscape/portrait switching, system bar visibility, window form changes, and other reasons, the @Env variable is automatically updated and triggers the refresh of related components, thereby implementing dynamic adaptation of the immersive layout. The sample code is as follows:
 
      <!--@[ImmersiveLayoutEnv_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      import { window } from '@kit.ArkUI';
      import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -318,16 +323,16 @@ When the avoid area changes due to landscape/portrait switching, system bar visi
 
 3. System UI elements in the layout need to avoid the status bar and navigation area; otherwise, issues such as overlapping UI elements may occur.
 
-> **NOTE**
->
-> The avoid area can have a size of 0. When the obtained avoid area is 0, you need to pay attention to targeted adaptation of the page area and layout at this time to avoid issues such as edge-sticking and content clipping, ensuring that that the application UI displays normally and remains visually appealing.
+   > **NOTE**
+   >
+   > The avoid area can have a size of 0. When the obtained avoid area is 0, you need to pay attention to targeted adaptation of the page area and layout at this time to avoid issues such as edge-sticking and content clipping, ensuring that the application UI displays normally and remains visually appealing.
 
-You can avoid system UI elements by adding **padding** or placeholder components. Here, adding **padding** is used as an example (the specific value is the avoidance height + 10 vp to prevent layout content from sticking to the edge when system UI elements are hidden. You can change this based on actual requirements). Set **padding** on the top of the control to avoid the status bar; set **padding** on the bottom to avoid the bottom navigation area; set **padding** on the left and right sides to avoid the cutout area.
+   You can avoid system UI elements by adding **padding** or placeholder components. Here, adding **padding** is used as an example (the specific value is the avoidance height + 10 vp to prevent layout content from sticking to the edge when system UI elements are hidden. You can change this based on actual requirements). Set **padding** on the top of the control to avoid the status bar; set **padding** on the bottom to avoid the bottom navigation area; set **padding** on the left and right sides to avoid the cutout area.
 
    - An example of avoiding the avoid area obtained using the **getWindowAvoidArea** API is as follows:
 
       <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/pages/Index.ets) -->
-
+      
       ``` TypeScript
       import { window } from '@kit.ArkUI';
       import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -442,7 +447,7 @@ You can avoid system UI elements by adding **padding** or placeholder components
     - The sample code for avoiding the avoid area obtained using @Env(SystemProperties.WINDOW_AVOID_AREA) is as follows:
 
       <!--@[ImmersiveLayoutEnv3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
-
+      
       ``` TypeScript
        // ...
         build() {
@@ -543,11 +548,10 @@ You can avoid system UI elements by adding **padding** or placeholder components
       }
       ```
 
-4. Based on the actual UI display or the background color of related UI elements, you can also set the text color and background color of the status bar, or set the display or hiding of the navigation area as needed, so that the UI effect appears harmonious. The status bar and navigation area are transparent by default, showing the background color of the app UI.
+4. Based on the actual UI display or the background color of related UI elements, you can also set the text color and background color of the status bar, or set the display or hiding of the navigation area as needed, so that the UI effect appears harmonious. The status bar and navigation area are transparent by default, showing the background color of the app UI.  
 
    In this example, the UI colors are relatively simple, so the status bar text color and background color are not set, and the navigation area is not hidden.
 
 | Not Adapted to Immersive Layout and Avoid Area | Adapted to Immersive Layout and Avoid Area |
 | -------- | -------- |
 | ![Not adapted to immersive layout and avoid area](figures/avoid-area-before-adaptation.png) | ![Adapted to immersive layout and avoid area](figures/avoid-area-after-adaptation.png)|
-

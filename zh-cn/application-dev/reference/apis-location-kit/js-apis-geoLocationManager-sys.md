@@ -79,7 +79,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 融合围栏请求信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -105,7 +105,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 融合围栏场景。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -123,7 +123,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 融合围栏类型采用二进制标记，该类型在使用时是将支持的围栏类型所在bit位置为1。例如支持GNSS和CELLULAR围栏，则值为0011（二进制），转换为十进制为3；全部四种围栏都支持，则值为1111（二进制），转换为十进制为15。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -141,7 +141,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 POI位置信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -157,7 +157,7 @@ POI位置信息。
 
 GNSS围栏信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -174,7 +174,7 @@ GNSS围栏信息。
 
 GNSS围栏类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -190,7 +190,7 @@ GNSS围栏类型。
 
 CELL围栏信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -205,7 +205,7 @@ CELL围栏信息。
 
 Wi-Fi围栏信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -221,7 +221,7 @@ Wi-Fi围栏信息。
 
 Wi-Fi指纹算法类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -237,7 +237,7 @@ Wi-Fi指纹算法类型。
 
 Wi-Fi指纹信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -254,7 +254,7 @@ Wi-Fi指纹信息。
 
 融合围栏回调事件信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -383,7 +383,7 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 | signalIntensity | number | 否 | 否 | 表示信号强度。 <br>**系统接口**：此接口为系统接口。|
 | arfcn | number | 否 | 否 | 表示绝对无线载频信道号（absolute radio frequency channel number）。<br> **系统接口**：此接口为系统接口。|
 | pci | number | 否 | 否 | 表示物理小区标识。 <br>**系统接口**：此接口为系统接口。|
-| tac | number | 否 | 是 | 表示跟踪区域码。 <br>**系统接口**：此接口为系统接口。<br />**起始版本：** 26.0.0 <br />**模型约束**：此接口仅可在Stage模型下使用。|
+| tac | number | 否 | 是 | 表示跟踪区域码。 <br>**系统接口**：此接口为系统接口。<br />**起始版本：** 26.1.0 <br />**模型约束**：此接口仅可在Stage模型下使用。|
 | additionsMap | Map&lt;string, string&gt; | 否 | 是 | 附加信息。 <br>**系统接口**：此接口为系统接口。|
 
 
@@ -1504,7 +1504,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
 
 融合围栏支持设置多种类型围栏，包括GNSS围栏、Wi-Fi围栏、CELL围栏。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 
@@ -1643,7 +1643,7 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
 
 删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 
@@ -1694,7 +1694,7 @@ isFusionFenceSupported(): boolean
 
 判断系统是否支持融合围栏能力。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 

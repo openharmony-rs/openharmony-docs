@@ -1,4 +1,4 @@
-# 弹出框迁移指南
+# 弹出框迁移指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -8,72 +8,65 @@
 
 ## 概述
 
-本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹出框类别提供从老接口到新接口的迁移映射。
+本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与旧接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹出框类别提供从旧接口到新接口的迁移映射。
 
 从API版本26.0.1开始，新增[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)，提供统一的Dialog类型声明能力。
 
 ## 接口说明
 
-[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)在完全兼容老接口能力的基础上，新增支持返回错误码的能力，关键接口如下表所示。
+[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)在完全兼容旧接口的基础上，将原本多个独立的弹出框接口（如[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)等）统一为一套接口，关键接口如下所示。
 
 | 接口名 | 说明 |
 |--------|------|
-| [DialogTextStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) | 在Dialog中定义文本样式属性，可作为消息内容的文字样式。 |
-| [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) | 固定样式弹出框的按钮配置。 |
-| [DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet) | 弹出框列表配置项，用于ActionSheet样式的弹出框。 |
-| [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) | 所有弹出框共享的基本选项，定义弹出框的背景、边框、对齐、蒙层、避让等通用属性。`DialogStyleOptions`与`DialogCustomOptions`均继承自本接口。 |
-| [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) | 弹出框的消息内容与文字样式，继承自`DialogTextStyleOptions`。 |
-| [DialogStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) | 固定样式弹出框的选项，继承自`DialogBaseOptions`。 |
-| [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) | 自定义样式弹出框的选项，继承自`DialogBaseOptions`。 |
-| [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) | 用于控制弹出框的类，可通过`DialogBaseOptions`中的controller属性与弹出框绑定。 |
-| [DialogResult](../reference/apis-arkui/js-apis-dialog.md#dialogresult) | 弹出框的响应结果。 |
-| [DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) | 提供关闭弹出框操作的信息与关闭接口。 |
-| [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) | 弹出框的对齐方式。 |
-| [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) | 弹出框中按钮的排列方式。 |
-| [DialogState](../reference/apis-arkui/js-apis-dialog.md#dialogstate) | 弹出框状态枚举。 |
+| [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) | 弹出固定样式的弹出框（标题、消息、按钮、菜单项等均由系统统一样式呈现），替换[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)旧接口。 |
+| [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1) | 弹出自定义样式的弹出框（内容由[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)或[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)提供），替换[CustomDialogController.open()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)、[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)旧接口。 |
+| [DialogPresenter.update](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#update) | 更新已弹出的自定义弹出框的样式与位置，替换[updateCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatecustomdialog12)旧接口。适用于弹出框已弹出后需要动态更新其对齐方式、偏移量、蒙层颜色等属性的交互场景。 |
+| [DialogPresenter.dismiss](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#dismiss) | 关闭已弹出的弹出框，替换[CustomDialogController.close()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#close)、[closeCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closecustomdialog12)旧接口。支持通过弹出框ID或[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)引用指定关闭目标。 |
 
-## 弹出框新老接口差异
+## 弹出框新旧接口差异
 
-新老接口在属性和使用方式两个维度存在差异，其中：
+新旧接口在属性和使用方式两个维度存在差异，其中：
 
-- **属性差异**：按弹出框类型逐一定义老接口与新接口的属性映射，以及高级动画参数差异。每类弹出框提供属性对照表（含编程模型、内容构建、对齐、偏移、蒙层、边框、阴影、动画回调、键盘避让、悬浮模式、层级模式、系统材质等属性）和迁移前后的代码示例。
-- **使用方式差异**：聚焦老接口不支持、仅新接口支持的能力，包括弹出后动态修改弹出框位置（对齐、偏移、蒙层颜色等）而无需关闭重开、自定义弹出框场景支持系统材质，并配有代码示例。
+- **属性差异**：按弹出框类型逐一定义旧接口与新接口的属性映射，以及高级动画参数差异。每类弹出框提供属性对照表（含编程模型、内容构建、对齐、偏移、蒙层、边框、阴影、动画回调、键盘避让、悬浮模式、层级模式、系统材质等属性）和迁移前后的代码示例。
+- **使用方式差异**：聚焦旧接口不支持、仅新接口支持的能力，包括弹出后动态修改弹出框位置（对齐、偏移、蒙层颜色等）而无需关闭重开、自定义弹出框场景支持系统材质，并配有代码示例。
 
 ### 属性差异
 
+下面提供[自定义弹窗 (CustomDialog)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[警告弹窗 (AlertDialog)](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[列表选择弹窗 (ActionSheet)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[showDialog（对话框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu（操作菜单）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)新旧接口的差异，并提供示例。
+
 - CustomDialog（自定义弹出框）
 
-  | 属性 | 老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  | 属性 | 旧接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
   |------|------|------|
-  | 编程模型 | `@CustomDialog` 装饰器声明自定义组件 + `CustomDialogController` 实例化控制 | `UIContext.getDialogPresenter()` 获取 Presenter，`present(content, options)` 弹出 |
-  | 内容构建 | `@CustomDialog` 装饰器包裹 `@Component` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` 作为 `present` 第一个参数 |
-  | 样式控制 | `customStyle: boolean`（CustomDialogControllerOptions） | `DialogCustomOptions.customStyle: boolean` |
-  | 打开 | `controller.open()` | `presenter.present(content, options): Promise<DialogResult>` |
-  | 关闭 | `controller.close()` | `DialogBaseController.close()` 或 `presenter.dismiss(target)` |
-  | 状态查询 | `controller.getState(): PromptActionCommonState` | `DialogBaseController.getState(): DialogState` |
-  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-  | 偏移 | `offset: { dx, dy }` | `offset: Offset` |
-  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-  | 蒙层颜色 | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
-  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-  | 模态 | `isModal: boolean` | `isModal: boolean` |
-  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-  | 焦点 | `focusable: boolean`（可配置，默认 true） | `focusable: boolean`（可配置，默认 true） |
-  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-  | 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 对应为 `borderRadius`） |
-  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-  | 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`） | `dialogTransition: TransitionEffect` |
-  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-  | 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance` | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |<!--Del-->
-  | 系统接口属性 | `distortionMode`、`edgeLightMode` | `distortionMode`、`edgeLightMode` |
+  | 编程模型 | @CustomDialog装饰器声明自定义组件 + [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)实例化控制 | [UIContext.getDialogPresenter()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getdialogpresenter)获取Presenter，[present(content, options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1)弹出 |
+  | 内容构建 | @CustomDialog装饰器包裹@Component | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) / [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\>作为[present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1)第一个参数 |
+  | 样式控制 | [customStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [customStyle](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) |
+  | 打开 | [controller.open()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open) | [presenter.present(content, options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1) |
+  | 关闭 | [controller.close()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#close) | [close](../reference/apis-arkui/js-apis-dialog.md#close)或[dismiss(target)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#dismiss) |
+  | 状态查询 | [controller.getState()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#getstate20) | [DialogBaseController.getState()](../reference/apis-arkui/js-apis-dialog.md#getstate) |
+  | 对齐 | [alignment](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 偏移 | [offset](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 自动取消 | [autoCancel](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 蒙层颜色 | [maskColor](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 蒙层区域 | [maskRect](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 模态 | [isModal](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 子窗口 | [showInSubWindow](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 焦点 | [focusable](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)（可配置，默认true） | [focusable](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)（可配置，默认true） |
+  | 打开动画回调 | [onWillAppear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) / [onDidAppear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) / [onWillDisappear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) / [onDidDisappear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 取消回调 | [cancel](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [onWillDismiss](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 背景模糊 | [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [backgroundBlurStyleOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [backgroundEffect](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 边框 | [cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) / [borderWidth](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) / [borderColor](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) / [borderStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)（老版本[cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)对应新版本[borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)） |
+  | 阴影 | [shadow](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) |
+  | 内容区动画 | [openAnimation](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [closeAnimation](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 蒙层动画 | 无 | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 键盘避让 | [keyboardAvoidMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [keyboardAvoidDistance](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [keyboardAvoidMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 悬浮模式 | [enableHoverMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [hoverModeArea](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 层级模式 | [levelMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [levelUniqueId](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [immersiveMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) + [levelOrder](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 系统材质 | [systemMaterial](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |<!--Del-->
+  | 系统接口属性 | [distortionMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box-sys.md#customdialogcontrolleroptions)、[edgeLightMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box-sys.md#customdialogcontrolleroptions) | [distortionMode](../reference/apis-arkui/js-apis-dialog-sys.md#dialogbaseoptions)、[edgeLightMode](../reference/apis-arkui/js-apis-dialog-sys.md#dialogbaseoptions) |
   <!--DelEnd-->
   
-  **迁移前示例（老接口）：** 使用[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的`open()`和`close()`打开和关闭自定义弹出框。
+  **迁移前示例（旧接口）：** 使用[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的open()和close()打开和关闭自定义弹出框。
   
   <!-- @[custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogBeforeMigrate.ets) -->
   
@@ -115,7 +108,7 @@
   
    ![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
   
-  **迁移后示例（新接口）：** 使用[DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md)的`present()`和`dismiss()`打开和关闭自定义弹出框，并通过Promise获取返回结果。
+  **迁移后示例（新接口）：** 使用[DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md)的present()和dismiss()打开和关闭自定义弹出框，并通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)获取返回结果。
   
   <!-- @[custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogAfterMigrate.ets) -->
   
@@ -179,13 +172,6 @@
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：@CustomDialog + CustomDialogController')
-              .width('90%')
-              .margin({ bottom: 10 })
-              .onClick(() => {
-                this.showOldCustomDialog();
-              })
-  
             Button('新接口：DialogPresenter.present（自定义弹窗）')
               .width('90%')
               .margin({ bottom: 10 })
@@ -203,10 +189,6 @@
         }
         .height('100%')
       }
-    }
-  
-    private showOldCustomDialog(): void {
-      this.result = '老接口示例请参考 DialogProject 工程';
     }
   
     private showNewCustomDialog(): void {
@@ -227,38 +209,38 @@
 
 - AlertDialog（告警弹出框）
 
-  | 属性 | 老接口（[UIContext.showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  | 属性 | 旧接口（[UIContext.showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
   |------|------|------|
-  | 编程模型 | `AlertDialog.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
-  | 标题 | `title: ResourceStr` | `title: ResourceStr` |
-  | 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
-  | 消息内容 | `message: ResourceStr` | `message: DialogMessage`（content + wordBreak） |
-  | 文本样式 | `textStyle: TextStyle` | `message.wordBreak: WordBreak`（通过 DialogMessage 设置） |
-  | 按钮 | `confirm`（单个）/ `primaryButton` + `secondaryButton`（两个）/ `buttons: Array<AlertDialogButtonOptions>`（多个） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/  enabled/primary/style/action） |
-  | 按钮排列 | `buttonDirection: DialogButtonDirection` | `buttonDirection: DialogButtonOrientation` |
-  | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（action-sheet 风格） |
-  | 网格数 | `gridCount: number` | `gridCount: number` |
-  | 确认回调 | `confirm` / `primaryButton.action` / `secondaryButton.action` / `buttons[].action` | `DialogButton.action`（通过 Promise 结果） |
-  | 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-  | 偏移 | `offset: Offset` | `offset: Offset` |
-  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-  | 模态 | `isModal: boolean` | `isModal: boolean` |
-  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-  | 背景色 | `backgroundColor` | `backgroundColor` |
-  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
-  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-  | 尺寸 | `width` / `height` | `width` / `height` |
-  | 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
-  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
+  | 编程模型 | [UIContext.showAlertDialog(options)](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)命令式调用 | [presenter.present(options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
+  | 标题 | [title](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) | [title](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 副标题 | [subtitle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) | [subtitle](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 消息内容 | [message](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) | [message](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage)（[content](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) + [wordBreak](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions)） |
+  | 文本样式 | [textStyle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [TextStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) | [message](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions).[wordBreak](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions): [WordBreak](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#wordbreak11)（通过[DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage)设置） |
+  | 按钮 | [confirm](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm对象说明)（单个）/ [primaryButton](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons对象说明) + [secondaryButton](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons对象说明)（两个）/ [buttons](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10对象说明): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[AlertDialogButtonOptions](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogbuttonoptions10对象说明)\>（多个） | [buttons](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)\>（含[value](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[fontColor](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[enabled](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[primary](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[style](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[action](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)） |
+  | 按钮排列 | [buttonDirection](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10对象说明): [DialogButtonDirection](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogbuttondirection10枚举说明) | [buttonDirection](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) |
+  | 操作菜单 | 无 | [sheets](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet)\>（action-sheet风格） |
+  | 网格数 | [gridCount](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): number | [gridCount](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): number |
+  | 确认回调 | [confirm](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm对象说明) / [primaryButton](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons对象说明).action / [secondaryButton](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons对象说明).action / [buttons](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10对象说明)[].action | [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton).[action](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)（通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)结果） |
+  | 取消回调 | [cancel](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [VoidCallback](../reference/apis-arkui/arkui-ts/ts-types.md#voidcallback12) + [onWillDismiss](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)\> | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
+  | 对齐 | [alignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [DialogAlignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
+  | 偏移 | [offset](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) |
+  | 自动取消 | [autoCancel](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): boolean | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 蒙层区域 | [maskRect](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) |
+  | 模态 | [isModal](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 子窗口 | [showInSubWindow](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 背景色 | [backgroundColor](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 背景模糊 | [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) + [backgroundBlurStyleOptions](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) + [backgroundEffect](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 边框 | [cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) / [borderWidth](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) / [borderColor](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) / [borderStyle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)（老版本[cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)对应新版本[borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)） |
+  | 阴影 | [shadow](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) |
+  | 尺寸 | [width](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) / [height](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 过渡动画 | [transition](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 蒙层动画 | 无 | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 打开动画回调 | [onWillAppear](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) / [onDidAppear](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) / [onWillDisappear](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) / [onDidDisappear](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 悬浮模式 | [enableHoverMode](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) + [hoverModeArea](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 层级模式 | [levelMode](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) + [levelUniqueId](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) + [immersiveMode](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) + [levelOrder](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 系统材质 | [systemMaterial](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
 
-  **迁移前示例（老接口）：** 使用[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)弹出告警框，包含标题、消息和按钮。
+  **迁移前示例（旧接口）：** 使用[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)弹出告警框，包含标题、消息和按钮。
 
   <!-- @[alert_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogBeforeMigrate.ets) -->
   
@@ -311,37 +293,39 @@
   
   ![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
   
-  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出告警框，通过Promise获取按钮点击结果。
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出告警框，通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)获取按钮点击结果。
   
   <!-- @[alert_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // 导入的resource用来把Resource转成字符串
+  import resource from '../../common/resource';
   
   @Entry
   @Component
   export struct AlertDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
         Row() {
           Column() {
-            Text('AlertDialog 迁移示例')
+            Text('AlertDialog' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：showAlertDialog')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：showAlertDialog')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
+                this.result = $r('app.string.OldInterfaceAlertDialogOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（固定样式弹窗）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
@@ -394,37 +378,37 @@
 
 - ActionSheet（列表选择弹出框）
 
-  | 属性 | 老接口（[UIContext.showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  | 属性 | 旧接口（[UIContext.showActionSheet(options)](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
   |------|------|------|
-  | 编程模型 | `ActionSheet.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
-  | 标题 | `title: string \| Resource` | `title: ResourceStr` |
-  | 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
-  | 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
-  | 按钮 | `confirm: ActionSheetButtonOptions`（单个确认按钮） | `buttons: Array<DialogButton>` |
-  | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-  | 操作菜单 | `sheets: Array<SheetInfo>`（title/icon/action） | `sheets: Array<DialogSheet>`（title/icon/action） |
-  | 网格数 | 无 | `gridCount: number` |
-  | 确认回调 | `confirm.action: VoidCallback` | `DialogButton.action` |
-  | 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-  | 偏移 | `offset: ActionSheetOffset`（含 dx/dy） | `offset: Offset`（含 dx/dy） |
-  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-  | 模态 | `isModal: boolean` | `isModal: boolean` |
-  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-  | 背景色 | `backgroundColor` | `backgroundColor` |
-  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
-  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-  | 尺寸 | `width` / `height` | `width` / `height` |
-  | 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
-  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
+  | 编程模型 |[UIContext.showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)命令式调用 | [presenter.present(options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
+  | 标题 | [title](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): string \| [Resource](../reference/apis-arkui/arkui-ts/ts-types.md#resource) | [title](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 副标题 | [subtitle](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) | [subtitle](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 消息内容 | [message](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): string \| [Resource](../reference/apis-arkui/arkui-ts/ts-types.md#resource) | [message](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage)（[content](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) + [wordBreak](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions)） |
+  | 按钮 | [confirm](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [ActionSheetButtonOptions](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetbuttonoptions18对象说明)（单个确认按钮） | [buttons](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)\> |
+  | 按钮排列 | 无 | [buttonDirection](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) |
+  | 操作菜单 | [sheets](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[SheetInfo](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#sheetinfo对象说明)\>（[title](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)/[icon](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#sheetinfo对象说明)/action） | [sheets](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet)\>（[title](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions)/[icon](../reference/apis-arkui/js-apis-dialog.md#dialogsheet)/[action](../reference/apis-arkui/js-apis-dialog.md#dialogsheet)） |
+  | 网格数 | 无 | [gridCount](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): number |
+  | 确认回调 | [confirm](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明).action: [VoidCallback](../reference/apis-arkui/arkui-ts/ts-types.md#voidcallback12) | [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton).[action](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) |
+  | 取消回调 | [cancel](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [VoidCallback](../reference/apis-arkui/arkui-ts/ts-types.md#voidcallback12) + [onWillDismiss](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)\> | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
+  | 对齐 | [alignment](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [DialogAlignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
+  | 偏移 | [offset](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [ActionSheetOffset](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoffset18对象说明)（含dx/dy） | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset)（含dx/dy） |
+  | 自动取消 | [autoCancel](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): boolean | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 蒙层区域 | [maskRect](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) |
+  | 模态 | [isModal](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 子窗口 | [showInSubWindow](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 背景色 | [backgroundColor](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 背景模糊 | [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) + [backgroundBlurStyleOptions](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) + [backgroundEffect](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 边框 | [cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) / [borderWidth](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) / [borderColor](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) / [borderStyle](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)（老版本[cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)对应新版本[borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)） |
+  | 阴影 | [shadow](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) |
+  | 尺寸 | [width](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) / [height](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 过渡动画 | [transition](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 蒙层动画 | 无 | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 打开动画回调 | [onWillAppear](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) / [onDidAppear](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) / [onWillDisappear](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) / [onDidDisappear](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 悬浮模式 | [enableHoverMode](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) + [hoverModeArea](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 层级模式 | [levelMode](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) + [levelUniqueId](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) + [immersiveMode](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) + [levelOrder](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 系统材质 | [systemMaterial](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
 
-  **迁移前示例（老接口）：** 使用[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)弹出列表选择弹出框，包含标题和菜单项。
+  **迁移前示例（旧接口）：** 使用[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)弹出列表选择弹出框，包含标题和菜单项。
   
   <!-- @[action_sheet_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetBeforeMigrate.ets) -->
   
@@ -477,37 +461,39 @@
   
   ![迁移前示例图](figures/ActionSheetBeforeMigrate.png)
   
-  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出列表选择弹出框，通过Promise获取选择结果。
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出列表选择弹出框，通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)获取选择结果。
   
-  <!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets) -->
+  <!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets) --> 
   
   ``` TypeScript
   import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // 导入的resource用来把Resource转成字符串
+  import resource from '../../common/resource';
   
   @Entry
   @Component
   export struct ActionSheetAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
         Row() {
           Column() {
-            Text('ActionSheet 迁移示例')
+            Text('ActionSheet' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：showActionSheet')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：showActionSheet')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 ts-methods-action-sheet.md';
+                this.result = $r('app.string.OldInterfaceActionSheetOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（列表选择弹窗）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
@@ -552,38 +538,38 @@
 
 - promptAction.showDialog（对话框）
 
-  | 属性 | 老接口（[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  | 属性 | 旧接口（[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
   |------|------|------|
-  | 编程模型 | `promptAction.showDialog(options): Promise<ShowDialogSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
-  | 标题 | `title: string \| Resource` | `title: ResourceStr` |
-  | 副标题 | 无 | `subtitle: ResourceStr` |
-  | 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
-  | 按钮 | `buttons: Array<Button>`（仅 text + color + primary） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） |
-  | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-  | 操作菜单 | 无 | `sheets: Array<DialogSheet>` |
-  | 网格数 | 无 | `gridCount: number` |
-  | 确认回调 | 通过 `ShowDialogSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
-  | 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
-  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-  | 偏移 | `offset: Offset` | `offset: Offset` |
-  | 自动取消 | 无 | `autoCancel: boolean` |
-  | 蒙层颜色 | 无 | `maskColor: ResourceColor` |
-  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-  | 模态 | `isModal: boolean` | `isModal: boolean` |
-  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-  | 背景色 | `backgroundColor` | `backgroundColor` |
-  | 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-  | 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
-  | 尺寸 | 无 | `width` / `height` |
-  | 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
-  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-  | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
-  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
+  | 编程模型 | [promptAction.showDialog(options)](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog) | [presenter.present(options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
+  | 标题 | [title](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): string \| [Resource](../reference/apis-arkui/arkui-ts/ts-types.md#resource) | [title](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 副标题 | 无 | [subtitle](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 消息内容 | [message](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): string \| [Resource](../reference/apis-arkui/arkui-ts/ts-types.md#resource) | [message](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage)（[content](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) + [wordBreak](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions)） |
+  | 按钮 | [buttons](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[Button](../reference/apis-arkui/js-apis-promptAction.md#button)\>（仅[text](../reference/apis-arkui/js-apis-promptAction.md#button) + [color](../reference/apis-arkui/js-apis-promptAction.md#button) + [primary](../reference/apis-arkui/js-apis-promptAction.md#button)） | [buttons](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)\>（含[value](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[fontColor](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[enabled](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[primary](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[style](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[action](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)） |
+  | 按钮排列 | 无 | [buttonDirection](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) |
+  | 操作菜单 | 无 | [sheets](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet)\> |
+  | 网格数 | 无 | [gridCount](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): number |
+  | 确认回调 | 通过[ShowDialogSuccessResponse.index](../reference/apis-arkui/js-apis-promptAction.md#showdialogsuccessresponse)获取按钮索引 | [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton).[action](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) + [Promise](../arkts-utils/async-concurrency-overview.md#promise)结果 |
+  | 取消回调 | 无 | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
+  | 对齐 | [alignment](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): [DialogAlignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
+  | 偏移 | [offset](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) |
+  | 自动取消 | 无 | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 蒙层颜色 | 无 | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) |
+  | 蒙层区域 | [maskRect](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) |
+  | 模态 | [isModal](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 子窗口 | [showInSubWindow](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 背景色 | [backgroundColor](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 背景模糊 | [backgroundBlurStyle](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 边框 | 无 | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 阴影 | [shadow](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) |
+  | 尺寸 | 无 | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 过渡动画 | 无 | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 蒙层动画 | 无 | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 打开动画回调 | [onWillAppear](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) / [onDidAppear](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 悬浮模式 | [enableHoverMode](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 层级模式 | [levelMode](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) + [immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) + [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 系统材质 | [systemMaterial](../reference/apis-arkui/js-apis-promptAction.md#showdialogoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
 
-  **迁移前示例（老接口）：** 使用[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)弹出对话框，包含标题、消息和按钮。
+  **迁移前示例（旧接口）：** 使用[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)弹出对话框，包含标题、消息和按钮。
   
   <!-- @[show_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogBeforeMigrate.ets) -->
   
@@ -634,37 +620,39 @@
   
   ![迁移前示例图](figures/ShowDialogBeforeMigrate.png)
   
-  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出对话框，通过Promise获取按钮点击结果。
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出对话框，通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)获取按钮点击结果。
   
   <!-- @[show_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // 导入的resource用来把Resource转成字符串
+  import resource from '../../common/resource';
   
   @Entry
   @Component
   export struct ShowDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
         Row() {
           Column() {
-            Text('showDialog 迁移示例')
+            Text('showDialog' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：promptAction.showDialog')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：promptAction.showDialog')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 js-apis-promptAction.md';
+                this.result = $r('app.string.OldInterfaceShowDialogOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（对话框）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
@@ -704,38 +692,38 @@
 
 - promptAction.showActionMenu（操作菜单）
 
-  | 属性 | 老接口（[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  | 属性 | 旧接口（[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
   |------|------|------|
-  | 编程模型 | `promptAction.showActionMenu(options): Promise<ActionMenuSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
-  | 标题 | `title: string \| Resource` | `title: ResourceStr` |
-  | 副标题 | 无 | `subtitle: ResourceStr` |
-  | 消息内容 | 无 | `message: DialogMessage` |
-  | 按钮 | `buttons: [Button, ...]`（支持1-6个按钮，结构为仅text + color + primary） | `buttons: Array<DialogButton>`（无数量限制，结构含value/fontColor/backgroundColor/enabled/primary/style/action） |
-  | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
-  | 操作菜单 | 无 | `sheets: Array<DialogSheet>` |
-  | 网格数 | 无 | `gridCount: number` |
-  | 确认回调 | 通过 `ActionMenuSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
-  | 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
-  | 对齐 | 无 | `alignment: DialogBaseAlignment` |
-  | 偏移 | 无 | `offset: Offset` |
-  | 自动取消 | 无 | `autoCancel: boolean` |
-  | 蒙层颜色 | 无 | `maskColor: ResourceColor` |
-  | 蒙层区域 | 无 | `maskRect: Rectangle` |
-  | 模态 | `isModal: boolean` | `isModal: boolean` |
-  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-  | 背景色 | 无 | `backgroundColor` |
-  | 背景模糊 | 无 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-  | 阴影 | 无 | `shadow: ShadowOptions \| ShadowStyle` |
-  | 尺寸 | 无 | `width` / `height` |
-  | 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
-  | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-  | 悬浮模式 | 无 | `enableHoverMode` + `hoverModeArea` |
-  | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-  | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
+  | 编程模型 | [promptAction.showActionMenu(options)](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu) | [presenter.present(options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
+  | 标题 | [title](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions): string \| [Resource](../reference/apis-arkui/arkui-ts/ts-types.md#resource) | [title](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 副标题 | 无 | [subtitle](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [ResourceStr](../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) |
+  | 消息内容 | 无 | [message](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) |
+  | 按钮 | [buttons](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions): [[Button](../reference/apis-arkui/js-apis-promptAction.md#button), ...]（支持1-6个按钮，结构为仅[text](../reference/apis-arkui/js-apis-promptAction.md#button) + [color](../reference/apis-arkui/js-apis-promptAction.md#button) + [primary](../reference/apis-arkui/js-apis-promptAction.md#button)） | [buttons](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)\>（无数量限制，结构含[value](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[fontColor](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[enabled](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[primary](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[style](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)/[action](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)） |
+  | 按钮排列 | 无 | [buttonDirection](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) |
+  | 操作菜单 | 无 | [sheets](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): [Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)\<[DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet)\> |
+  | 网格数 | 无 | [gridCount](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions): number |
+  | 确认回调 | 通过[ActionMenuSuccessResponse.index](../reference/apis-arkui/js-apis-promptAction.md#actionmenusuccessresponse)获取按钮索引 | [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton).[action](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) + [Promise](../arkts-utils/async-concurrency-overview.md#promise)结果 |
+  | 取消回调 | 无 | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
+  | 对齐 | 无 | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
+  | 偏移 | 无 | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) |
+  | 自动取消 | 无 | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 蒙层颜色 | 无 | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) |
+  | 蒙层区域 | 无 | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) |
+  | 模态 | [isModal](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 子窗口 | [showInSubWindow](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 背景色 | 无 | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 背景模糊 | 无 | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 边框 | 无 | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 阴影 | 无 | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) |
+  | 尺寸 | 无 | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 过渡动画 | 无 | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 蒙层动画 | 无 | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 打开动画回调 | [onWillAppear](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions) / [onDidAppear](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 悬浮模式 | 无 | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 层级模式 | [levelMode](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions) + [immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 系统材质 | [systemMaterial](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
 
-  **迁移前示例（老接口）：** 使用[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)弹出操作菜单，包含标题和菜单项。
+  **迁移前示例（旧接口）：** 使用[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)弹出操作菜单，包含标题和菜单项。
   
   <!-- @[action_menu_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuBeforeMigrate.ets) -->
   
@@ -786,37 +774,39 @@
   
   ![迁移前示例图](figures/ActionMenuBeforeMigrate.png)
   
-  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出操作菜单，通过Promise获取选择结果。
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出操作菜单，通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)获取选择结果。
   
-  <!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets) -->
+  <!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets) --> 
   
   ``` TypeScript
   import { DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // 导入的resource用来把Resource转成字符串
+  import resource from '../../common/resource';
   
   @Entry
   @Component
   export struct ActionMenuAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
         Row() {
           Column() {
-            Text('showActionMenu 迁移示例')
+            Text('showActionMenu' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：promptAction.showActionMenu')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：promptAction.showActionMenu')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 js-apis-promptAction.md';
+                this.result = $r('app.string.OldInterfacePromptActionShowActionMenuOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（操作菜单）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
@@ -856,36 +846,36 @@
 
 - promptAction.presentCustomDialog（自定义弹出框）
 
-  | 属性 | 老接口（[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  | 属性 | 旧接口（[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
   |------|------|------|
-  | 编程模型 | `promptAction.presentCustomDialog(builder, controller?, options?): Promise<number>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
-  | 内容构建 | `CustomBuilder` / `CustomBuilderWithId` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
-  | 控制器 | `promptAction.DialogController` | `DialogBaseController` |
-  | 选项类型 | `DialogOptions`（继承 `BaseDialogOptions`） | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
-  | 样式控制 | 无 `customStyle` 属性（内容样式完全由 builder 决定） | `customStyle: boolean` |
-  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-  | 偏移 | `offset: Offset` | `offset: Offset` |
-  | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-  | 蒙层颜色 | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
-  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-  | 模态 | `isModal: boolean` | `isModal: boolean` |
-  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-  | 背景色 | `backgroundColor`（`DialogOptions`） | `backgroundColor` |
-  | 背景模糊 | `backgroundBlurStyle`（`DialogOptions`） + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle`（`DialogOptions`） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为   `borderRadius`） |
-  | 阴影 | `shadow`（`DialogOptions`） | `shadow: ShadowOptions \| ShadowStyle` |
-  | 尺寸 | `width` / `height`（`DialogOptions`） | `width` / `height` |
-  | 过渡动画 | `transition: TransitionEffect` / `dialogTransition` | `dialogTransition: TransitionEffect` |
-  | 蒙层动画 | `maskTransition: TransitionEffect` | `maskTransition: TransitionEffect` |
-  | 焦点 | `focusable: boolean` | `focusable: boolean` |
-  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-  | 取消回调 | `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
-  | 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-  | 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
-  | 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-  | 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
+  | 编程模型 | [promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) | [presenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
+  | 内容构建 | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) / [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\> |
+  | 控制器 | promptAction.[DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18) | [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) |
+  | 选项类型 | [DialogOptions](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18)（继承[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)） | [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions)（继承[DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)） |
+  | 样式控制 | 无customStyle属性（内容样式完全由builder决定） | [customStyle](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions): boolean |
+  | 对齐 | [alignment](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [DialogAlignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
+  | 偏移 | [offset](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) |
+  | 自动取消 | [autoCancel](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 蒙层颜色 | [maskColor](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) |
+  | 蒙层区域 | [maskRect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) |
+  | 模态 | [isModal](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 子窗口 | [showInSubWindow](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 背景色 | [backgroundColor](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 背景模糊 | [backgroundBlurStyle](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [backgroundEffect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 边框 | [cornerRadius](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [borderWidth](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [borderColor](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [borderStyle](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)（老版本[cornerRadius](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18)对应新版本[borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)） |
+  | 阴影 | [shadow](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) |
+  | 尺寸 | [width](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [height](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 过渡动画 | [transition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) / [dialogTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 蒙层动画 | [maskTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 焦点 | [focusable](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [focusable](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 打开动画回调 | [onWillAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onWillDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 取消回调 | [onWillDismiss](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)\> | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
+  | 键盘避让 | [keyboardAvoidMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [keyboardAvoidMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 悬浮模式 | [enableHoverMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [hoverModeArea](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 层级模式 | [levelMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 系统材质 | [systemMaterial](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
 
-  **迁移前示例（老接口）：** 使用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)弹出自定义弹出框。
+  **迁移前示例（旧接口）：** 使用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)弹出自定义弹出框。
   
   <!-- @[present_custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogBeforeMigrate.ets) -->
   
@@ -946,38 +936,40 @@
   
   ![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png)
   
-  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出自定义弹出框，通过Promise获取返回结果。
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出自定义弹出框，通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)获取返回结果。
   
   <!-- @[present_custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // 导入的resource用来把Resource转成字符串
+  import resource from '../../common/resource';
   
   @Entry
   @Component
   export struct PresentCustomDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
     private controller: DialogBaseController = new DialogBaseController();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
         Row() {
           Column() {
-            Text('presentCustomDialog 迁移示例')
+            Text('presentCustomDialog' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：promptAction.presentCustomDialog')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：promptAction.presentCustomDialog')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+                this.result = $r('app.string.OldInterfacePresentCustomDialogOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（自定义弹窗）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
@@ -1029,36 +1021,36 @@
 
 - promptAction.openCustomDialogWithController（带控制器的自定义弹出框）
 
-  | 属性 | 老接口（[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
+  | 属性 | 旧接口（[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)） | 新接口（[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)） |
   |------|------|------|
-  | 编程模型 | `promptAction.openCustomDialogWithController(content, controller, options?): Promise<void>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
-  | 内容构建 | `ComponentContent<Object>` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
-  | 控制器 | `promptAction.DialogController`  | `DialogBaseController` |
-  | 选项类型 | `BaseDialogOptions` | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
-  | 样式控制 | 无 `customStyle` 属性（内容样式完全由 ComponentContent 决定） | `customStyle: boolean` |
-  | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-  | 偏移 | `offset: Offset` | `offset: Offset` |
-  | 自动取消 | `autoCancel: boolean`  | `autoCancel: boolean` |
-  | 蒙层颜色 | `maskColor: ResourceColor`  | `maskColor: ResourceColor` |
-  | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
-  | 模态 | `isModal: boolean` | `isModal: boolean` |
-  | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-  | 背景色 | 无（`BaseDialogOptions` 不含 `backgroundColor`） | `backgroundColor` |
-  | 背景模糊 | `backgroundBlurStyleOptions`  + `backgroundEffect`  | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-  | 边框 | 无（`BaseDialogOptions` 不含边框属性） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-  | 阴影 | 无（`BaseDialogOptions` 不含 `shadow`） | `shadow: ShadowOptions \| ShadowStyle` |
-  | 尺寸 | 无（`BaseDialogOptions` 不含 `width` / `height`） | `width` / `height` |
-  | 过渡动画 | `transition: TransitionEffect`  / `dialogTransition`  | `dialogTransition: TransitionEffect` |
-  | 蒙层动画 | `maskTransition: TransitionEffect`  | `maskTransition: TransitionEffect` |
-  | 焦点 | `focusable: boolean`  | `focusable: boolean` |
-  | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`  | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-  | 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`  | `onWillDismiss: Callback<DialogDismissal>` |
-  | 键盘避让 | `keyboardAvoidMode`  + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-  | 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
-  | 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-  | 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
+  | 编程模型 | [promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) | [presenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
+  | 内容构建 | [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\> | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) / [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\> |
+  | 控制器 | [promptAction.DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18) | [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) |
+  | 选项类型 | [BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions)（继承[DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)） |
+  | 样式控制 | 无customStyle属性（内容样式完全由ComponentContent决定） | [customStyle](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions): boolean |
+  | 对齐 | [alignment](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [DialogAlignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
+  | 偏移 | [offset](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) |
+  | 自动取消 | [autoCancel](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 蒙层颜色 | [maskColor](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) |
+  | 蒙层区域 | [maskRect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) |
+  | 模态 | [isModal](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 子窗口 | [showInSubWindow](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 背景色 | 无（[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)不含backgroundColor） | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 背景模糊 | [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [backgroundEffect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 边框 | 无（[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)不含边框属性） | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 阴影 | 无（[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)不含shadow） | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) |
+  | 尺寸 | 无（[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)不含width / height） | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 过渡动画 | [transition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) / [dialogTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 蒙层动画 | [maskTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) |
+  | 焦点 | [focusable](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [focusable](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
+  | 打开动画回调 | [onWillAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onWillDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 取消回调 | [onWillDismiss](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)\> | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
+  | 键盘避让 | [keyboardAvoidMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [keyboardAvoidMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 悬浮模式 | [enableHoverMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [hoverModeArea](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 层级模式 | [levelMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+  | 系统材质 | [systemMaterial](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
 
-  **迁移前示例（老接口）：** 使用[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)弹出带控制器的自定义弹出框。
+  **迁移前示例（旧接口）：** 使用[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)弹出带控制器的自定义弹出框。
   
   <!-- @[open_custom_dialog_with_controller_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerBeforeMigrate.ets) -->
   
@@ -1082,6 +1074,8 @@
         .margin({ bottom: 10 })
     }
     .padding(20)
+    .borderRadius(10)
+    .backgroundColor(Color.Gray)
   }
   
   @Entry
@@ -1128,38 +1122,40 @@
   
   ![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
   
-  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出带控制器的自定义弹出框，通过Promise获取返回结果。
+  **迁移后示例（新接口）：** 使用[DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)弹出带控制器的自定义弹出框，通过[Promise](../arkts-utils/async-concurrency-overview.md#promise)获取返回结果。
   
   <!-- @[open_custom_dialog_with_controller_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  // 导入的resource用来把Resource转成字符串
+  import resource from '../../common/resource';
   
   @Entry
   @Component
   export struct OpenCustomDialogWithControllerAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
     private controller: DialogBaseController = new DialogBaseController();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
         Row() {
           Column() {
-            Text('openCustomDialogWithController 迁移示例')
+            Text('openCustomDialogWithController' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：promptAction.openCustomDialogWithController')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：promptAction.openCustomDialogWithController')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+                this.result = $r('app.string.OldInterfaceOpenCustomDialogWithControllerOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（自定义弹窗）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
@@ -1212,18 +1208,18 @@
 
 - 高级动画参数差异
 
-  老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`openAnimation` / `closeAnimation`（`AnimateParam`）控制打开和关闭动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
+  旧接口使用customStyle: boolean控制是否使用自定义样式，openAnimation / closeAnimation（[AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)）控制打开和关闭动画。新接口使用dialogTransition: TransitionEffect控制内容区动画，maskTransition: TransitionEffect控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口TransitionEffect重写动画参数。
 
 ### 使用方式差异
 
-新老接口在以下两种使用方式上存在差异：
+新旧接口在以下两种使用方式上存在差异：
 
-- **弹出后动态修改弹出框位置**：老接口不支持弹出后动态修改弹出框位置（对齐、偏移、蒙层颜色等），需要先关闭再重新打开；新接口支持弹出后直接更新，无需关闭重开。
-- **自定义弹出框场景的系统材质**：老接口在自定义弹出框场景不支持系统材质；新接口支持。
+- **弹出后动态修改弹出框位置**：旧接口不支持弹出后动态修改弹出框位置（对齐、偏移、蒙层颜色等），需要先关闭再重新打开；新接口支持弹出后直接更新，无需关闭重开。
+- **自定义弹出框场景的系统材质**：旧接口在自定义弹出框场景不支持系统材质；新接口支持。
 
-下面以自定义弹出框为例，对比老接口与新接口的实现方式。
+下面以自定义弹出框为例，对比旧接口与新接口的实现方式。
 
-老接口示例：使用 `promptAction.openCustomDialog` 弹出自定义弹出框，当需要更新弹出框样式（如颜色模式变化）时，必须先调用 `closeCustomDialog` 关闭再重新打开，且不支持系统材质。
+旧接口示例：使用promptAction.openCustomDialog弹出自定义弹出框，当需要更新弹出框样式（如颜色模式变化）时，必须先调用closeCustomDialog关闭再重新打开，且不支持系统材质。
 
 <!-- @[custom_dialog_old_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogOldInterface.ets) -->
 
@@ -1328,9 +1324,9 @@ export struct CustomDialogOldInterface {
 }
 ```
 
-![老接口示例图](figures/CustomDialogOldInterface.gif)
+![旧接口示例图](figures/CustomDialogOldInterface.gif)
 
-新接口示例：使用 `DialogPresenter.present` 弹出自定义弹出框并设置系统材质，通过 `DialogPresenter.update` 在弹出后动态修改弹出框偏移量，无需关闭重开。
+新接口示例：使用DialogPresenter.present弹出自定义弹出框并设置系统材质，通过DialogPresenter.update在弹出后动态修改弹出框偏移量，无需关闭重开。
 
 <!-- @[custom_dialog_new_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogNewInterface.ets) -->
 
@@ -1438,9 +1434,9 @@ export struct CustomDialogNewInterface {
 
 ### 全局自定义弹出框迁移
 
-本示例将全局自定义弹出框从老接口迁移到新接口，封装 `DialogPresenterClassNew` 工具类统一管理弹出框的打开、关闭和更新操作，并在页面中调用该工具类实现弹出框的弹出与动态更新（修改对齐方式和偏移量）。
+本示例将全局自定义弹出框从旧接口迁移到新接口，封装DialogPresenterClassNew工具类统一管理弹出框的打开、关闭和更新操作，并在页面中调用该工具类实现弹出框的弹出与动态更新（修改对齐方式和偏移量）。
 
-**迁移前示例（老接口）：**
+**迁移前示例（旧接口）：**
 
 [完整示例](arkts-uicontext-custom-dialog.md#完整示例)
 
@@ -1519,7 +1515,7 @@ export class DialogPresenterClassNew {
 }
 ```
 
-上述代码封装了 `DialogPresenterClassNew` 工具类，提供弹出框的打开（`openDialog`）、关闭（`closeDialog`）和更新（`updateDialog`）方法。下方页面示例调用该工具类，演示弹出框弹出后动态更新对齐方式、偏移量以及内容的效果。
+上述代码封装了DialogPresenterClassNew工具类，提供弹出框的打开（openDialog）、关闭（closeDialog）和更新（updateDialog）方法。下方页面示例调用该工具类，演示弹出框弹出后动态更新对齐方式、偏移量以及内容的效果。
 
 <!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
 
@@ -1603,9 +1599,9 @@ export struct OpenDialogAndUpdate {
 
 ### 页面级弹出框迁移
 
-本示例将页面级弹出框从老接口迁移到新接口，分别给出基于 Router 路由模式和 Navigation 导航模式两种场景下的实现。页面级弹出框跟随所在页面的生命周期，弹窗内可进行路由跳转。
+本示例将页面级弹出框从旧接口迁移到新接口，分别给出基于Router路由模式和Navigation导航模式两种场景下的实现。页面级弹出框跟随所在页面的生命周期，弹窗内可进行路由跳转。
 
-**迁移前示例（老接口）：**
+**迁移前示例（旧接口）：**
 
 [完整示例](arkts-embedded-dialog.md#完整示例)
 
@@ -1674,7 +1670,7 @@ export struct OpenDialogAndUpdate {
   }
   ```
   
-  下方 `Next.ets` 为弹窗内点击"Next"按钮路由跳转的目标页面，点击"Back"按钮返回上一页。
+  下方Next.ets为弹窗内点击"Next"按钮路由跳转的目标页面，点击"Back"按钮返回上一页。
   
   <!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
   

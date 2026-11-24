@@ -29,15 +29,13 @@ import { cliManager } from '@kit.AbilityKit';
 
 | 名称       | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ---- | ---- | ---- | ------------------ |
-| workDir    | string | 否 | 是 | 命令执行的工作目录，如果不传或传空，则为根目录。 |
+| workDir    | string | 否 | 是 | 命令执行的工作目录，如果不传或传空，则使用系统服务的默认工作目录。 |
 | env        | Record\<string, string\> | 否 | 是 | 命令执行的环境变量。 |
 | background | boolean | 否 | 是 | 表示命令是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
 | yieldMs    | number | 否 | 是 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。超出取值范围时抛出错误码401。 |
 | timeout    | number | 否 | 是 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。超出取值范围时抛出错误码401。 |
 | policy     | string | 否 | 是 | 安全策略，参数格式为JSON字符串。 |
 | callback   | [ToolEventCallback](js-apis-inner-application-toolEventCallback.md) | 否 | 是 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
-| toolCallId | string | 否 | 是 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
-| dmSessionId | string | 否 | 是 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 
 ## ExecResult
 

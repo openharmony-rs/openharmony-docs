@@ -1,7 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "介绍如何使用AVScreenCapture的C API接口完成屏幕录制并写入文件，涵盖实例创建、音视频采集参数配置、录屏启停及资源释放等全流程，适用于文件形式分享屏幕内容的场景。"
-keywords: [AVScreenCapture, OH_AVScreenCaptureConfig, 录屏写文件]
+keywords: [AVScreenCapture, OH_AVScreenCaptureConfig, 录屏写文件, OH_RecorderInfo]
 doctype: guide
 status: active
 ---
@@ -39,7 +39,7 @@ status: active
 
 在确定的状态下执行不合适的方法会导致AVScreenCapture发生错误，开发者需要在调用状态转换的方法前进行状态检查，避免程序运行异常。
 
-**在 CMake 脚本中链接动态库**
+**在CMake脚本中链接动态库**
 
 ``` C
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runtime.so libnative_display_manager.so)

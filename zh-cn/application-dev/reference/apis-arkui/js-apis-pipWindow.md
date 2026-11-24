@@ -417,7 +417,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 type PiPActionEventType = PiPVideoActionEvent | PiPCallActionEvent | PiPMeetingActionEvent | PiPLiveActionEvent
 
-画中画控制面板控件动作事件类型，支持以下四种。
+画中画控制面板控件动作事件类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -596,9 +596,9 @@ startPiP(): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息                                                |
 |------------|--------------------------------------------------------|
-| 1300012    | The PiP window state is abnormal.                      |
-| 1300013    | Failed to create the PiP window.                       |
-| 1300014    | PiP internal error.                                    |
+| 1300012    | The PiP window state is abnormal. Possible causes: 1. The PiP controller has been destroyed. 2. The PiP window is not created or has been destroyed.     |
+| 1300013    | Failed to create the PiP window. Possible causes: 1. PiP configuration parameters are invalid, such as pipOption or context is null. 2. The XComponentController or main window is null. 3. The main window is not shown (non-auto-start scenario). 4. Navigation component operation failed.          |
+| 1300014    | PiP internal error. Possible cause: Internal error, failed to show the PiP window. Such as insufficient resources or abnormal window service.                             |
 | 1300015    | Repeated PiP operation.                                |
 | 1300034    | This operation conflicts with other floating windows. Possible cause: App has already started float view.</br>适用版本：26.0.0+ |
 
@@ -636,8 +636,8 @@ stopPiP(): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息                          |
 |---------|-----------------------------------|
-| 1300011 | Failed to destroy the PiP window. |
-| 1300012 | The PiP window state is abnormal. |
+| 1300011 | Failed to destroy the PiP window. Possible cause: Internal error, the window type is not a PiP window.|
+| 1300012 | The PiP window state is abnormal. Possible cause: The PiP window is not created or has been destroyed.|
 | 1300015 | Repeated PiP operation.           |
 
 **示例：**
@@ -778,7 +778,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed |
 | 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
-| 1300014    | PiP internal error.                                    |
+| 1300014    | PiP internal error. PiP internal error. Possible cause: The PiP controller has been destroyed.                                   |
 
 **示例：**
 
@@ -1201,7 +1201,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: Callback is already registered. |
 | 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
-| 1300014    | PiP internal error.                                    |
+| 1300014    | PiP internal error. Possible cause: The PiP controller has been destroyed. |
 
 **示例：**
 

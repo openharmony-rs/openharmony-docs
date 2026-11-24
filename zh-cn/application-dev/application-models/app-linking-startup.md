@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何通过App Linking实现安全的跨应用跳转，涵盖域名声明、网站关联配置、链接处理代码及拉起方调用openLink接口的开发步骤。"
+keywords: [App Linking, 应用间跳转, openLink, 域名校验, domainVerify, 应用链接]
+doctype: guide
+status: active
+---
 # 使用App Linking实现应用间跳转
 
 <!--Kit: Ability Kit-->
@@ -152,11 +159,15 @@ export default class AppLinkEntryAbility extends UIAbility {
     let uri = want?.uri;
     if (uri) {
       // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action');
-      // 例如，当action为showall时，展示所有的节目。
-      if (action === 'showall') {
-        // ...
+      try {
+        let urlObject = url.URL.parseURL(want?.uri);
+        let action = urlObject.params.get('action');
+        // 例如，当action为showall时，展示所有的节目。
+        if (action === 'showall') {
+          // ...
+        }
+      } catch (error) {
+        hilog.error(DOMAIN_NUMBER, TAG, 'Failed to parse URL: %{public}s', JSON.stringify(error));
       }
     }
   }

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用Web组件预览PDF文档：支持网络、应用沙箱及本地三种方式加载，通过URL参数控制页码、缩放与工具栏等状态，并提供加载结果与滚动到底部回调。"
+keywords: [PDF预览, loadUrl, domStorageAccess, fileAccess, onPdfLoadEvent, onPdfScrollAtBottom, pdfbackgroundcolor]
+doctype: guide
+status: active
+---
+
 # 使用Web组件的PDF文档预览能力
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

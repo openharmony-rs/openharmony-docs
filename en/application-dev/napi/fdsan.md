@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes the principles and usage of fdsan (file descriptor sanitizer), which uses tags to detect double-close and use-after-close errors. Covers error level settings, owner tag management, standard library API integration, log analysis, and considerations for multithreaded scenarios to help troubleshoot file handle leaks in native code."
+keywords: ["fdsan", "file descriptors", "double-close", "use-after-close", "owner tag", "fdsan_close_with_tag", "fdsan_exchange_owner_tag", "error_level", "file handle leaks"]
+doctype: guide
+status: active
+---
+
 # Using fdsan
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @liyiming13-->
-<!--Designer: @huang_huijin-->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=235c2cef2c01aded2d0dcd8f4c12337fcc18fc53 translatedAt=2026-11-09T08:52:17.287Z nl=1 -->
 
 ## 1. Introduction
 
@@ -26,7 +35,7 @@ A tag is of 64 bits, consisting of the following:
 
 
 
-## 3. Available APIs
+## Available APIs
 
 ### fdsan_set_error_level
 
@@ -231,7 +240,7 @@ The **fopen**, **fdopen**, **opendir**, and **fdopendir** APIs in libc have inte
 
 void good_write()
 {
-    // fopen is protected by fdsan. Use fopen to replace open. 
+    // fopen is protected by fdsan. Use fopen to replace open.
     // int fd = open(TEMP_FILE, O_RDWR);
     FILE *f = fopen(TEMP_FILE, "w+");
     if (f == NULL) {
@@ -257,7 +266,11 @@ Each file descriptor returned by **fopen** has a tag. When the file descriptor i
 
 As indicated by the log, the file of **FILE** is closed by mistake. You can further locate the fault based on the address of **FILE**.
 
-In addition, you can use **fdsan_set_error_level** to set an error level. If **error_level** is set to **FDSAN_ERROR_LEVEL_FATAL**, fdsan also provides stack information for fault locating in addition to the log information. The following is an example of the stack information generated upon a crash after **error_level** is set to **FDSAN_ERROR_LEVEL_FATAL**:
+You have two options:
+
+**Option 1: Set error_level to Fatal**
+
+Use `fdsan_set_error_level` in the code to set the error level `error_level`. After setting it to Fatal, if fdsan detects an error, the app crashes and a crash log is written to disk, generating stack information for fault locating. The following is the crash stack information generated after `error_level` is set to Fatal:
 
 ```txt
 Reason:Signal:SIGABRT(SI_TKILL)@0x0000076e from:1902:20010043
@@ -275,7 +288,39 @@ Tid:15312, Name:e.myapplication
 #09 pc 00105a6c /system/lib/ld-musl-arm.so.1(start+248)(3de40c79448a2bbced06997e583ef614)
 #10 pc 000700b0 /system/lib/ld-musl-arm.so.1(3de40c79448a2bbced06997e583ef614)
 ```
-The stack information provides information about **bad_close** and all opened files, helping quickly locate faults.
+
+At this point, you can see from the crash information that `bad_close` has an issue. Meanwhile, the crash information includes all opened files, helping you locate the problem and improve efficiency.
+
+**Option 2: Use the default error_level**
+
+Run with the default error level. In this scenario, the app does not crash after an error is detected. The generated log file name follows the template `[fdsan]-[bundleName]-[uid]-[happenedTime].log`. The log also records stack information, with additional `LastFatalMessage` entries to assist in fault locating. For details about how to obtain logs, see [How to Obtain Logs](../dfx/address-sanitizer-guidelines.md#how-to-obtain-logs). The following is an example log:
+
+```txt
+Reason:Signal:DEBUG SIGNAL(FDSAN)
+LastFatalMessage:attempted to close file descriptor 57, expected to be unowned, actually owned by FILE* 0x0000005b0fe4b3e0
+Fault thread info:
+Tid:39450, Name:xample.dfx_test
+#00 pc 000000000016a004 /system/lib/ld-musl-aarch64.so.1(fdsan_error+732)(d3497e8ceee5e58a8879aa14e39d8297)
+#01 pc 000000000016a444 /system/lib/ld-musl-aarch64.so.1(fdsan_close_with_tag+936)(d3497e8ceee5e58a8879aa14e39d8297)
+#02 pc 000000000016a4d0 /system/lib/ld-musl-aarch64.so.1(close+20)(d3497e8ceee5e58a8879aa14e39d8297)
+#03 pc 0000000000129acc /data/storage/el1/bundle/libs/arm64/libentry.so(8c7260d3f574c5523ac6eb595e3971c393d00051)
+#04 pc 0000000000066f10 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+288)(cf709147fa67ebbe6123eceb4ed2c2fd)
+#05 pc 0000000000e1f394 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+40)
+#06 pc 000000000046d8fc /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+392)
+#07 at anonymous entry (entry/src/main/ets/pages/page_second/page_third_xsan/xsan_fileHandleCloseillegally.ets:39:30)
+```
+
+The `LastFatalMessage` may be one of the following:
+
+| LastFatalMessage | Meaning | Common Cause |
+|---|---|---|
+| `attempted to close file descriptor <fd>, expected to be unowned, actually owned by <owner>` | The fd is closed illegally. | The raw `close()` is called on an fd that already has an owner, instead of using the owner's corresponding close interface (such as `fclose` or `fdsan_close_with_tag`). |
+| `attempted to close file descriptor <fd>, expected to be owned by <owner>, actually unowned` | An owner close is attempted after the fd has already been closed. | The fd has already been closed or its owner tag has been cleared, and `fdsan_close_with_tag` is used to close it again. This is a use-after-close or double-close scenario. |
+| `attempted to close file descriptor <fd>, expected to be owned by <owner1>, actually owned by <owner2>` | The fd owner does not match. | Ownership of the fd has been taken over by another object, and the current owner attempts to close it. |
+| `EBADF: close failed for fd <fd> with expected tag: <tag>` | `fclose` closes an invalid fd. | The fd corresponding to `FILE*` has already been closed by the raw `close()`, and `fclose` attempts to close it again when the fd is already invalid. |
+| `failed to exchange ownership of file descriptor: fd <fd>, was owned by <owner>, was expected to be unowned` | The fd already has an owner during exchange. | `fdsan_exchange_owner_tag` is called on an fd that already has a tag set, expecting the fd to be unowned but it actually has an owner. |
+| `failed to exchange ownership of file descriptor: fd <fd> is unowned, was expected to be owned by <owner>` | The fd no longer has an owner during exchange. | `fdsan_exchange_owner_tag` is called with the original owner tag after the fd has already been closed. This is a use-after-close scenario. |
+| `failed to exchange ownership of file descriptor: fd <fd>, was owned by <owner1>, was expected to be owned by <owner2>` | The owner does not match during exchange. | Ownership of the fd has been taken over by another object, and `fdsan_exchange_owner_tag` is called again with the original owner tag. |
 
 **OpenFiles** lists all opened files.
 
@@ -447,7 +492,7 @@ void good_write()
     // int fd = open(DEV_NULL_FILE, O_RDWR);
     fdsan_fd fd(open(TEMP_FILE, O_CREAT | O_RDWR));
     if (fd.get() == -1) {
-        printf("fopen failed errno=%d\n", errno);
+        printf("open failed errno=%d\n", errno);
         return;
     }
     ssize_t ret = write(fd.get(), "fdsan test\n", 11);
@@ -460,7 +505,18 @@ void good_write()
 
 When the application is executed, the double-close problem of another thread can be detected. For details, see <a href="#log-information">Log Information</a>. You can also set **error_level** to **fatal** so that fdsan can proactively crash after detecting a crash.
 
+## Notes on Multithreading Scenarios
+
+When using fdsan in a multithreaded environment, because the allocation and recycling of file descriptors (fds) are global, the tag mismatch error information detected by fdsan may not correspond to the actual root cause. You need to be aware of the following scenarios:
+
+**Fast fd recycling causes the error to point to the wrong owner:** After thread A closes an fd, the fd may be immediately recycled by thread B and bound with a new tag. At this point, if thread A (or another module in the system) performs an illegal close or double close on this fd, the owner displayed in the fdsan error message will be thread B's tag, not the original owner's information. This does not mean that thread B's tag is set incorrectly; rather, it indicates that other business logic in the current process has an illegal close or double close issue.
+
+**Race window between detection and execution:** Inside `fdsan_close_with_tag`, there is a very small time window between "tag verification" and "close execution." In a multithreaded concurrent scenario, the fd may be recycled and reassigned to another thread within this window, causing the verification result to point to an owner that is not the actual user of the current fd.
+
+**Troubleshooting suggestions:** When you see an fdsan error, do not immediately assume that the owner shown in the log is directly responsible for the problem. It is recommended that you conduct a comprehensive investigation by considering the fd lifecycle, call stack information, and how other modules in the system use the fd, to determine whether there are illegal close or double close behaviors in other modules.
+
 ## 5. Signal Safety of the close Function
 In the POSIX standard, the **close** function is defined as an async-signal-safe function, which can be safely called in the signal handler. However, in the system implementation integrated with the File Descriptor Sanitizer (fdsan) mechanism, the **close** function is no longer signal-safe.
 
 This is because the implementation of fdsan depends on the mmap system call, which is not a signal-safe function. Therefore, instead of using **close()** in the signal handler, you can use the system call to implement the same functionality.
+

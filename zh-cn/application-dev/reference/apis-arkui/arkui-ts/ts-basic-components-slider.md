@@ -245,7 +245,7 @@ showTips(value: boolean, content?: ResourceStr)
 | 参数名                | 类型                                   | 必填 | 说明                                       |
 | --------------------- | -------------------------------------- | ---- | ------------------------------------------ |
 | value                 | boolean                                | 是   | 滑动时是否显示气泡提示。<br/>true：显示气泡；false：不显示气泡。<br/>默认值：false |
-| content<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 气泡提示的文本内容。传入时显示自定义文本（当需要展示特定格式或额外信息时使用），不传入时默认显示当前百分比数值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| content<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 气泡提示的文本内容。传入时显示自定义文本（当需要展示特定格式或额外信息时使用），不传入时默认显示当前百分比数值。   |
 
 ### trackThickness<sup>8+</sup>
 

@@ -5,6 +5,7 @@
 <!--Designer: @AnakinJiang-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=16246cab29e59083fc5ccee4dc3d45103969aa78 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 [Media Library Kit](../photoAccessHelper-overview.md) provides media asset management capabilities, allowing you to access and manage media information in albums. Different media asset types can be identified in different ways. This section provides examples of how to identify them.
 
@@ -47,10 +48,10 @@ function getBurstTypeByUri(uri: string): string {
   const hasCover = uri.includes('cover');
         
   if (hasBurst && hasCover) {
-    return 'Burst photo cover'
+    return 'Burst photo cover';
   } else if (hasBurst) {
-    return 'Burst shot photo'
+    return 'Burst shot photo';
   }
-  return 'Non-burst photo'
+  return 'Non-burst photo';
 }
 ```

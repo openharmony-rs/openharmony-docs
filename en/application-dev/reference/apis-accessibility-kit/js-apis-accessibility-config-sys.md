@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:38:49.906Z pushedAt=2026-08-04T07:47:02.104Z -->
+<!-- md-trans-meta sourceCommit=2bb8df0615b0ae984d1a8c4833b38850ad52e69a translatedAt=2026-11-06T08:11:21.029Z pushedAt=2026-11-09T12:45:56.860Z nl=1 -->
 
 The **accessibility.config** module provides APIs for configuring system accessibility features, including accessibility extension, high-contrast text, mouse buttons, and captions.
 
@@ -46,6 +46,7 @@ import { config } from '@kit.AccessibilityKit';
 | clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | No| No| Length of time required for a click.                                            |
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | No| No| Whether to ignore repeated clicks. This parameter must be used together with **repeatClickInterval**. The value **true** indicates that the feature of ignoring repeated clicks is enabled, and **false** indicates the opposite.<br>Default value: **false**                  |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | No | No | Indicates the configuration for the interval of ignoring repeated clicks. Used together with ignoreRepeatClick. This configuration takes effect only when ignoreRepeatClick is set to **true**. The default value is Shortest, indicating the shortest interval.                                             |
+| screenMagnification<sup>12+</sup>  | [Config](#config)\<boolean>                                                                | No | No | Indicates the enabled state of the screen magnification feature. true indicates that the screen magnification feature is enabled, and false indicates that the screen magnification feature is disabled. The default value is false.                                            |
 
 ## config.enableAbility
 
@@ -62,14 +63,12 @@ Compared with [config.enableAbilityWithCallback](#configenableabilitywithcallbac
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
-
 | Name| Type                                                                          | Mandatory| Description|
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | name | string | Yes | Name of the accessibility extension app, in the format of 'bundleName/abilityName'. |
 | capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | Yes | Capability attributes of the accessibility extension app. |
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
@@ -476,7 +475,6 @@ let callback = () => {
 config.on('installedAccessibilityListChange', callback);
 config.off('installedAccessibilityListChange', callback);
 ```
-
 ## config.setMagnificationState<sup>20+</sup>
 
 setMagnificationState(state: boolean): void
@@ -648,7 +646,7 @@ Listens for senior mode state change events of all apps. This API uses an asynch
 
 **System API**: This is a system API.
 
-**Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**Required permissions:** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1125,6 +1123,7 @@ Callback provided when enabling an accessibility extension app through the [conf
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
 | onDisconnect | [OnDisconnectCallback](#ondisconnectcallback23) | No   | No   | Callback invoked when the connection to the accessibility extension app is disconnected. |
 
+
 ## OnDisconnectCallback<sup>23+</sup>
 
 type OnDisconnectCallback = () => void
@@ -1136,6 +1135,7 @@ Describes the callback to be invoked when the connection to **AccessibilityExten
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Model restriction:** This API can be used only in the stage model.
+
 
 ## DaltonizationColorFilter
 

@@ -6,13 +6,12 @@
 <!--Tester: @songjinke-->
 <!--Adviser: @zengyawen-->
 
-本模块提供设备风险管理能力，包括安全事件采集、上报、查询与订阅，以及安全模型检测结果获取、策略文件更新。基于事件数据可分析设备运行风险。
+本模块提供设备风险管理能力，包括安全事件采集、上报、查询与订阅，安全模型检测结果获取、策略文件更新，以及阻断服务提供者接入框架进行事件阻断决策。基于事件数据可分析设备运行风险。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
-
 
 ## 导入模块
 
@@ -608,5 +607,371 @@ async function updatePolicy(): Promise<void> {
   } finally {
     fileIo.closeSync(file);
   }
+}
+```
+
+
+## AuthStrategy
+
+表示阻断策略的枚举。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| ALLOW | 0 | 允许，放行事件。 |
+| DENY | 1 | 拒绝，阻断事件。 |
+| TIMEOUT | 2 | 超时，客户端响应超时且默认策略为放行时记录此结果。 |
+
+## AuthEventInfo
+
+阻断事件信息。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| eventId | number | 否 | 否 | 事件类型ID。 |
+| version | string | 否 | 否 | 事件版本号。 |
+| content | string | 否 | 否 | 事件内容，JSON字符串格式。 |
+| clientStatus | [AuthClientStatus](#authclientstatus)[] | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。降级的客户端仅上报通知，不参与从严聚合。 |
+
+## AuthClientStatus
+
+客户端会话状态，标记单个客户端是否降级。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| clientId | string | 否 | 否 | 客户端会话唯一标识。 |
+| isDegraded | boolean | 否 | 否 | 事件是否降级。true表示降级，降级的事件仅上报通知，不需要接收阻断结果，不参与从严聚合；false表示未降级，正常参与阻断决策与从严聚合。 |
+
+## AuthClientInfo
+
+客户端会话信息，由框架通过[onClientStatusChanged](#onclientstatuschanged)()回调下发给阻断服务提供者。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| clientId | string | 否 | 否 | 客户端会话唯一标识。 |
+| bundleName | string | 否 | 否 | 应用Bundle名称。 |
+| subscribedEvents | number[] | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
+| defaultTimeoutStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 客户端响应超时时的默认阻断策略。 |
+| defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位为毫秒。默认值为400。 |
+
+## ClientAuthResult
+
+单个客户端的阻断结果。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| clientId | string | 否 | 否 | 客户端会话唯一标识。 |
+| authStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 该客户端的阻断策略。 |
+
+## AuthResult
+
+所有客户端阻断结果。
+
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| mergedAuthStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 所有客户端聚合后的阻断策略。 |
+| clientAuthResult | [ClientAuthResult](#clientauthresult)[] | 否 | 否 | 各客户端的阻断结果列表。 |
+
+## AuthProviderCallback
+
+阻断服务提供者回调接口，在调用[createAuthProvider](#securityguardcreateauthprovider)()时传入。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**系统接口：** 此接口为系统接口。
+
+### onClientStatusChanged
+
+onClientStatusChanged: (clientInfos: AuthClientInfo[]) => void
+
+客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider)()成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| clientInfos | [AuthClientInfo](#authclientinfo)[] | 是 | 全量客户端会话信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Non-system application attempted to use a system API. |
+
+**示例：**
+
+```ts
+import { securityGuard } from '@kit.SecurityGuardKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// onClientStatusChanged 作为 createAuthProvider 的回调传入，此处仅演示回调内部处理逻辑
+let callback: securityGuard.AuthProviderCallback = {
+  onClientStatusChanged: (clientInfos: Array<securityGuard.AuthClientInfo>) => {
+    hilog.info(0x0000, 'testTag', 'clientCount %{public}d', clientInfos.length);
+    for (let info of clientInfos) {
+      hilog.info(0x0000, 'testTag', 'clientId %{public}s, events %{public}d',
+        info.clientId, info.subscribedEvents.length);
+    }
+  }
+};
+```
+
+## AuthProvider
+
+阻断服务提供者类，由[createAuthProvider](#securityguardcreateauthprovider)()工厂函数创建。通过该类实例可请求事件的阻断结果。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**系统接口：** 此接口为系统接口。
+
+### requestAuthResult
+
+requestAuthResult(event: AuthEventInfo): Promise\<AuthResult\>
+
+请求事件的阻断结果。使用Promise异步回调。
+
+- 单个Provider并发请求上限为128个。
+- 框架侧超时时间为400毫秒，超时后按各客户端默认策略聚合。
+- 从严聚合：任一客户端阻断即阻断，全部客户端放行才放行。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | [AuthEventInfo](#autheventinfo) | 是 | 阻断事件信息。eventId、version、content必填。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<[AuthResult](#authresult)\> | Promise对象，成功时返回阻断结果，失败时抛出BusinessError。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备风险管理错误码](errorcode-securityguard-sys.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | Non-system application attempted to use a system API. |
+| 27000001 | Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty. |
+| 27000004 | Concurrent request count has reached the upper limit. |
+
+**示例：**
+
+```ts
+import { securityGuard } from '@kit.SecurityGuardKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// provider 由 createAuthProvider 创建，此处假设已获取
+let provider: securityGuard.AuthProvider;
+
+async function requestAuthResult(): Promise<void> {
+  let eventInfo: securityGuard.AuthEventInfo = {
+    eventId: 1011015004,
+    version: '1.0',
+    content: '{"status":0}'
+  };
+  try {
+    let result: securityGuard.AuthResult = await provider.requestAuthResult(eventInfo);
+    hilog.info(0x0000, 'testTag', 'mergedStrategy %{public}d, clientCount %{public}d',
+      result.mergedAuthStrategy, result.clientAuthResult.length);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'errorCode %{public}d, errorMessage %{public}s', e.code, e.message);
+  }
+}
+```
+
+## securityGuard.createAuthProvider
+
+createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvider
+
+创建阻断服务提供者会话。使用callback异步回调。同一进程只能创建1个Provider实例，全局最多16个。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | [AuthProviderCallback](#authprovidercallback) | 是 | 阻断服务提供者回调函数。当阻断服务客户端状态变更时，返回全量客户端会话信息列表。 |
+| serviceId | string | 是 | 服务标识。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [AuthProvider](#authprovider) | 阻断服务提供者实例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备风险管理错误码](errorcode-securityguard-sys.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | Non-system application attempted to use a system API. |
+| 27000001 | Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty. |
+| 27000002 | Provider count of the current process has reached the upper limit. |
+| 27000003 | Global provider count has reached the upper limit. |
+
+**示例：**
+
+```ts
+import { securityGuard } from '@kit.SecurityGuardKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let provider: securityGuard.AuthProvider;
+
+try {
+  provider = securityGuard.createAuthProvider(
+    {
+      onClientStatusChanged: (clientInfos: Array<securityGuard.AuthClientInfo>) => {
+        hilog.info(0x0000, 'testTag', 'clientCount %{public}d', clientInfos.length);
+        for (let info of clientInfos) {
+          hilog.info(0x0000, 'testTag', 'clientId %{public}s, events %{public}d',
+            info.clientId, info.subscribedEvents.length);
+        }
+      }
+    },
+    'myAuthService'
+  );
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode %{public}d, errorMessage %{public}s', e.code, e.message);
+}
+```
+
+## securityGuard.destroyAuthProvider
+
+destroyAuthProvider(provider: AuthProvider): void
+
+销毁阻断服务提供者会话。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
+
+**系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| provider | [AuthProvider](#authprovider) | 是 | 要销毁的阻断服务提供者实例。销毁后不可再用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备风险管理错误码](errorcode-securityguard-sys.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | Non-system application attempted to use a system API. |
+| 27000001 | Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty. |
+
+**示例：**
+
+```ts
+import { securityGuard } from '@kit.SecurityGuardKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// provider 由 createAuthProvider 创建，此处假设已获取
+let provider: securityGuard.AuthProvider;
+
+try {
+  securityGuard.destroyAuthProvider(provider);
+  hilog.info(0x0000, 'testTag', 'destroy provider success');
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode %{public}d, errorMessage %{public}s', e.code, e.message);
 }
 ```

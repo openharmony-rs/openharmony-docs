@@ -1079,11 +1079,17 @@ try {
 
 setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permissions: Array\<string>, managedState: PermissionManagedState): void
 
-设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
+设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
 
 > **说明：**
 >
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
 > 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持管理[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限。
+>
+> 未设置管理策略（managedState为DEFAULT）时，权限由用户按默认方式管理：user_grant权限由用户在权限弹窗中授权，manual_settings权限由用户在系统设置应用中授权。策略设置后，对应权限的授权状态将被固定为策略指定的状态：设置为GRANTED表示权限被静默授予，设置为DENIED表示权限被静默拒绝。权限被管控期间，用户无法通过权限弹窗或系统设置界面修改该权限的授权状态，应用可通过权限校验接口（如[checkAccessTokenSync](../apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstokensync10)）感知权限的授权结果。将managedState设置为DEFAULT可取消管控，取消管控后权限恢复为用户可管理的状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1097,7 +1103,7 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance    | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，仅支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
+| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
 | managedState | [PermissionManagedState](#permissionmanagedstate20) | 是 | 应用权限的管理策略。 |
 
 **错误码**：
@@ -1143,7 +1149,15 @@ try {
 
 getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permission: string): PermissionManagedState
 
-获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。
+获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。
+
+> **说明：**
+>
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
+> 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持获取[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限的管理策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1157,7 +1171,7 @@ getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance  | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permission | string | 是 | 需要获取管理策略的权限名称，仅支持user_grant权限。 |
+| permission | string | 是 | 需要获取管理策略的权限名称，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。 |
 
 **返回值：**
 
@@ -1388,7 +1402,7 @@ try {
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 
-安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。
+安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。<!--RP5--><!--RP5End-->
 
 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24)进行卸载。
 
@@ -2209,6 +2223,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
 | 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2265,6 +2280,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 | -------- | -------- |
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -2839,6 +2855,107 @@ try {
 }
 ```
 
+## securityManager.setEnterpriseResetPolicy
+
+setEnterpriseResetPolicy(policy: EnterpriseResetPolicy): void
+
+设置企业设备复位策略，用于管控设备复位（恢复出厂设置）时的企业账号认证要求。策略设置后立即生效（热生效），可通过[getEnterpriseResetPolicy](#securitymanagergetenterpriseresetpolicy)查询当前策略，验证设置是否生效。
+
+> **说明：**
+>
+> 设置为ENTERPRISE_ACCOUNT_AUTH_ON后，用户通过“设置-系统-重置-恢复出厂设置-重置本机”菜单操作设备恢复出厂时需通过企业账号认证。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| policy | [EnterpriseResetPolicy](#enterpriseresetpolicy) | 是   | 企业设备复位策略。取值及含义请参见[EnterpriseResetPolicy](#enterpriseresetpolicy)：建议先通过[getEnterpriseResetPolicy](#securitymanagergetenterpriseresetpolicy)查询设备当前策略，再按企业安全要求设置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+  // 开启企业账号认证，设备复位前需通过企业账号认证
+  securityManager.setEnterpriseResetPolicy(securityManager.EnterpriseResetPolicy.ENTERPRISE_ACCOUNT_AUTH_ON);
+  console.info('Succeeded in setting enterprise reset policy');
+
+  // 查询设置后的策略，验证是否生效
+  let policy: securityManager.EnterpriseResetPolicy = securityManager.getEnterpriseResetPolicy();
+  console.info(`Current enterprise reset policy: ${policy}`);
+} catch (err) {
+  console.error(`Failed to set enterprise reset policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getEnterpriseResetPolicy
+
+getEnterpriseResetPolicy(): EnterpriseResetPolicy
+
+查询当前的企业设备复位策略，即设备恢复出厂设置时是否要求企业账号认证。策略取值见[EnterpriseResetPolicy](#enterpriseresetpolicy)。企业可通过本接口进行策略审计和合规性检查，并校验已下发的策略是否生效。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型     | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| [EnterpriseResetPolicy](#enterpriseresetpolicy) | 当前企业设备复位策略。各取值的含义请参见[EnterpriseResetPolicy](#enterpriseresetpolicy)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+  let policy: securityManager.EnterpriseResetPolicy = securityManager.getEnterpriseResetPolicy();
+  console.info(`Succeeded in getting enterprise reset policy, policy: ${policy}`);
+} catch (err) {
+  console.error(`Failed to get enterprise reset policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## CertBlob
 
 证书信息。
@@ -3000,6 +3117,22 @@ try {
 | ------------ | ---------- | ---- | ---- | ------------------ |
 | credentialId | Uint8Array | 否   | 否   | 指示凭据ID。       |
 | pluginInfo   | string     | 否   | 否   | 指示认证插件信息。 |
+
+## EnterpriseResetPolicy
+
+企业设备复位策略枚举。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                      | 值 | 说明                                                         |
+| ------------------------- | -- | ------------------------------------------------------------ |
+| DEFAULT                   | 0  | 默认策略，使用系统默认的企业复位认证要求。                   |
+| ENTERPRISE_ACCOUNT_AUTH_ON | 1 | 企业账号认证开启，设备复位前需通过企业账号认证，未通过认证无法完成复位。 |
+| ENTERPRISE_ACCOUNT_AUTH_OFF | 2 | 企业账号认证关闭，设备复位时不要求通过企业账号认证。        |
 
 ## UnlockPolicy
 

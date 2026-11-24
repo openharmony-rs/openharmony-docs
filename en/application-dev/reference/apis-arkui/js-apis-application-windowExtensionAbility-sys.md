@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @chbchb12-->
 <!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:28:56.773Z pushedAt=2026-11-20T06:57:33.344Z nl=1 -->
 
 **WindowExtensionAbility** inherits from **ExtensionAbility**. The content in a WindowExtensionAbility object can be displayed as an ability component in other application windows.
 

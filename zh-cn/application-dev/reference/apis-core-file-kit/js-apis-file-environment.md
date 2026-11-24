@@ -47,7 +47,7 @@ getUserDownloadDir(): string
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>适用版本：11+|
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>适用版本：11|
 | 801      | Capability not supported. |
 | 13900042 | Unknown error. |
 
@@ -95,7 +95,7 @@ getUserDesktopDir(): string
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>适用版本：11+|
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>适用版本：11|
 | 801      | Capability not supported. |
 | 13900042 | Unknown error. |
 
@@ -143,7 +143,7 @@ getUserDocumentDir(): string
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>适用版本：11+|
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>适用版本：11|
 | 801      | Capability not supported. |
 | 13900042 | Unknown error. |
 

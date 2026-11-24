@@ -1523,7 +1523,7 @@ hdc bugreport [FILE]
 
 | 返回信息 | 说明 |
 | -------- | -------- |
-| -------------------------------[base]-------------------------------<br/><br/>BuildId: xxx<br/>RleaseType: xxx<br/>OsVersion: default/default/default/default/xxx<br/>DeviceType: default<br/>Manufacture: default<br/>-----. | 设备基本信息。 |
+| -------------------------------[base]-------------------------------<br/><br/>BuildId: xxx<br/>ReleaseType: xxx<br/>OsVersion: default/default/default/default/xxx<br/>DeviceType: default<br/>Manufacture: default<br/>-----. | 设备基本信息。 |
 
 **使用方法**：
 
@@ -1532,7 +1532,7 @@ $ hdc bugreport
 -------------------------------[base]-------------------------------
 
 BuildId: xxx
-RleaseType: xxx
+ReleaseType: xxx
 OsVersion: default/default/default/default/xxx
 DeviceType: default
 Manufacture: default
@@ -1583,6 +1583,10 @@ hdc format <data>
 ```shell
 $ hdc format data
 ```
+
+> **说明：**
+>
+> 从API版本19开始不支持该命令格式化镜像，请使用fastboot命令替代格式化镜像场景。
 
 ### 升级整包
 

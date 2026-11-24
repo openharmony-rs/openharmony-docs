@@ -5,8 +5,9 @@
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=54fc14960b9c8e483372fd532da8f4e92d9f52cd translatedAt=2026-11-03T02:28:05.277Z pushedAt=2026-11-13T01:05:59.984Z nl=1 -->
 
-The **TabContent** component is used to define the content view of each tab in the [Tabs](ts-container-tabs.md) component. It supports features such as rendering a single child component, content cropping control, and customizing the page in approved sample mode. This component is applicable to application scenarios where multiple tabs need to be switched, such as category navigation and function module switching. It helps developers quickly implement content display and interaction by page.
+The **TabContent** component is used to define the content view of each tab in [Tabs](ts-container-tabs.md). It supports features such as rendering a single child component, content clipping control, and custom tab styles. It is applicable to application scenarios that require switching between multiple tabs, such as category navigation and function module switching, helping developers quickly implement content pagination display and interaction.
 
 >  **NOTE**
 >
@@ -32,7 +33,7 @@ Creates the **TabContent** component, which represents the content associated wi
 
 >  **NOTE**
 >
->  The **TabContent** component can only be used as a child component of the **Tabs** component. Otherwise, the component cannot be displayed properly.
+>  The **TabContent** component can be used only as a child component of the **Tabs** component. Otherwise, the component cannot be displayed properly.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -54,7 +55,7 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
@@ -64,27 +65,27 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
-Sets the content displayed on the tab bar. The bottom tab style does not include an indicator. If the icon resource fails to be loaded or does not exist, a gray block is displayed.
+Sets the content displayed on the tab bar. The bottom style has no indicator effect. When the icon resource fails to load or does not exist, a gray block is displayed.
 
-If the icon uses an SVG image, you need to delete the built-in width and height attributes of the image. Otherwise, the width and height attribute values built in the SVG image source are used.
+If the icon uses an SVG-format image source, its built-in width and height attributes need to be deleted. Otherwise, the icon size will use the built-in width and height attribute values of the SVG image source.
 
-If the content exceeds the space provided by the tab bar, it will be clipped.
+The set content is clipped when it exceeds the tab bar.
 
 >  **NOTE**
 >
->  - Subtab style ([SubTabBarStyle](#subtabbarstyle9)): Generally, the tab bar is in the style of text + underline or text + background. The text style can be set. It is recommended that the tab bar be placed at the top or bottom. By default, the animation transition effect is displayed when a tab is switched. This style is applicable to the top categories (such as Following, Video, Digital) of information apps and level-2 navigation scenarios of functional modules.
+>  - Sub-tab ([SubTabBarStyle](#subtabbarstyle9)) style: a tab style that usually consists of text + indicator or text + board. The text style can be set. It is recommended that the subtab be placed at the top or bottom. By default, an animated transition effect is supported when switching tabs. It is applicable to top-level categories of information applications (such as "Following, Videos, Digital") and secondary navigation scenarios of function modules.
 >  
->  - [BottomTabBarStyle](#bottomtabbarstyle9): icon + text, without underline or board. By default, no animation transition effect is displayed when a tab is switched. Bottom tabs are usually used for the main navigation of an app (such as Home, Discover, and Recommended). Side tabs are applicable to wide-screen scenarios. You can set **vertical(true)** to enable the vertical layout so that the tabs are displayed on the side. By default, the tabs are displayed on the left.
+>  - Bottom tab/side tab ([BottomTabBarStyle](#bottomtabbarstyle9)) style: no indicator or board effect. The tab style is usually a combination of icon + text. By default, no animated transition effect is available when switching tabs. The bottom tab is usually used for the main navigation of an application (such as Home, Discover, and Recommendations). The side tab is applicable to wide-screen scenarios. You can set **vertical(true)** to enable the vertical layout so that the tab is displayed on the side, on the left by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes  | Content displayed on the tab bar. The approved sample style of the sub tab bar or bottom tab bar is supported.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.|
+| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes   | Content displayed on the **TabBar**, which supports the sub-tab style or the bottom tab style.<br/>**SubTabBarStyle**:&nbsp;sub-tab style.<br/>**BottomTabBarStyle**:&nbsp;bottom tab and side tab style. The bottom style has no indicator effect. |
 
 ### tabBar<sup>18+</sup>
 
@@ -92,7 +93,7 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 Sets the content displayed on the tab bar.
 
-If the **BottomTabBarStyle** or **TabBarOptions** type is used as the input parameter and the **icon** is set, a gray block is displayed when the icon resource fails to be loaded or does not exist. If the **icon** uses the SVG image source, you need to delete the built-in width and height attributes of the image source. Otherwise, the width and height attribute values built in the SVG image source are used.
+When **BottomTabBarStyle** or **TabBarOptions** is used as the input parameter and **icon** is set, a gray block is displayed when the icon resource fails to load or does not exist. If the icon uses an SVG-format image source, its built-in width and height attributes need to be deleted. Otherwise, the icon size will use the built-in width and height attribute values of the SVG image source.
 
 If the content exceeds the space provided by the tab bar, it will be clipped.
 
@@ -102,21 +103,49 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br>[TabBarOptions](#tabbaroptions18) | Yes  | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content, which can be customized.<br>**NOTE**<br>1. Custom content does not support the **labelStyle** attribute.<br>2. If the custom content exceeds the content box of the tab page, the excess part is not displayed.<br>3. If the custom content is within the content box of the tab page, it is aligned in the center.<br>4. If the custom content is abnormal or no display component is available, a blank area is displayed.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**: resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs.|
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18) | Yes | Content displayed on the tab bar.<br/>**ComponentContent**: entity encapsulation of component content, which can set custom content.<br/>**Note:**<br/>1. Custom content does not support the **labelStyle** attribute.<br/>2. If the custom content exceeds the tab range, the exceeding part is not displayed.<br/>3. If the custom content is smaller than the tab range, it is center-aligned.<br/>4. If the custom content is abnormal or no display component is available, a blank is displayed.<br/>**SubTabBarStyle**:&nbsp;sub-tab style.<br/>**BottomTabBarStyle**:&nbsp;style of the bottom tab and side tab. The bottom style has no indicator effect.<br/>**string**: string type.<br/>**Resource**: resource reference type, which references a string in system resources or application resources.<br/>**CustomBuilder**: builder, in which components can be passed.<br/>**TabBarOptions**: sets the image and text content within the tab. |
 
 >  **NOTE**
 >
->  - The **TabContent** component does not support the setting of the general width attribute. By default, the width of the **TabContent** component is the width of the parent **Tabs** component.
->  - The **TabContent** component does not support setting of the universal height attribute. Its height is determined by the height of the parent **Tabs** component and the **TabBar** component.
->  - When **vertical** is **false**, the width and height restrictions described above are exchanged.
->  - **TabContent** does not support page scrolling. If page scrolling is required, consider nesting a list.
->  - Whenever possible, use a unified parameter type for the **tabBar** property of all child **TabContent** components within the **Tabs** component.
->  - If the **TabContent** component contains a focusable component, the focus navigation between the **TabContent** and **TabBar** components within the **Tabs** component can be controlled only by the arrow keys on the keyboard.
->  - After the attributes of the **TabBar** component are dynamically modified, the **TabBar** component is rendered again, the related attributes are updated, and the positions of all tabs are reset.
+>  - The **TabContent** component does not support setting the universal width attribute. By default, its width is the width of the parent **Tabs** component.
+>  - The **TabContent** component does not support setting the universal height attribute. Its height is determined by the height of the parent **Tabs** component and the height of the **TabBar** component.
+>  - When **vertical** is set to **false**, the preceding two restrictions are swapped.
+>  - The **TabContent** component does not support page scrolling when the content is too long. To scroll the page, nest a **List** component.
+>  - It is recommended that a unified parameter type be used for the **tabBar** attribute of all **TabContent** child components of the **Tabs** component.
+>  - If there are focusable components inside **TabContent**, focus movement between the **TabContent** component and the **TabBar** component in the **Tabs** component is supported only through the arrow keys on the keyboard.
+>  - After the attributes of **TabBar** are dynamically modified, the component is re-rendered, the related attributes are updated, and the positions of all tabs are reset.
+
+### tabBarVisibility
+
+tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
+
+Sets the visibility of the tab. If this API is not called, the tab visibility defaults to **TabVisibility.VISIBLE**.
+
+> **NOTE**
+>
+> - When **visibility** is **TabVisibility.HIDDEN** and **displayMode** is **TabBarDisplayMode.SIDEBAR**, this tab is not displayed in the side bar, but remains visible in the bottom **TabBar**.
+> - When **visibility** is **TabVisibility.HIDDEN** and **displayMode** is **TabBarDisplayMode.BOTTOM_TABBAR**, this tab is not displayed in the bottom **TabBar**, but remains visible in the side bar.
+> - When visibility is **TabVisibility.HIDDEN** and **displayMode** is not set, this tab is not displayed in either display mode.
+> - The content of a hidden tab can still be displayed by calling **TabsController.changeIndex()** or by modifying the index state variable.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters** 
+
+| Name | Type | Mandatory | Description |
+| ------- | ---------- | ---- | ----- |
+| visibility | [TabVisibility](#tabvisibility) | Yes | Tab visibility. |
+| displayMode | [TabBarDisplayMode](./ts-container-tabs.md#tabbardisplaymode) | No | Display mode corresponding to the **visibility**.<br/>If not set, **visibility** applies to both the side bar and the bottom **TabBar**.<br/>If set to **TabBarDisplayMode.SIDEBAR**, **visibility** applies only to the side bar. If set to **TabBarDisplayMode.BOTTOM_TABBAR**, **visibility** applies only to the bottom **TabBar**. |
 
 ## TabBarOptions<sup>18+</sup>
 
@@ -134,8 +163,9 @@ Defines the options for configuring images and text content on the tabs.
 
 | Name| Type        | Read-Only| Optional| Description|
 | -------- | -------- | --- | ----- | -------- |
-| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Image for the tab. If this parameter is not set, no image is displayed. If the icon uses an SVG image, you need to delete the built-in width and height attributes of the image. Otherwise, the width and height attribute values built in the SVG image source are used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No | Yes | Image content within the tab. If not set, no image is displayed. If icon uses an SVG format image source, its built-in width and height attributes need to be deleted. Otherwise, the icon size will use the built-in width and height attribute values of the SVG image source.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Text for the tab. If this parameter is not set, no text is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| badge | [TabBarBadgeStyle](#tabbarbadgestyle) | No | Yes | Badge style of the tab. If not set, no badge is displayed.<br/>**Since:** 26.1.0<br/>**Model Constraint:** This API can be used only in the stage model.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.1.0. |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -197,7 +227,7 @@ Static constructor used to create a **SubTabBarStyle** instance.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | Returns the created **SubTabBarStyle** object, which is used to set the child tab style.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, which is used to set the sub-tab style. |
 
 ### of<sup>12+</sup>
 
@@ -221,7 +251,7 @@ Static constructor used to create a **SubTabBarStyle** instance. You can set cus
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | Returns the created **SubTabBarStyle** object, which is used to set the style of the selected subtab.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, used to set the sub-tab style. |
 
 ### indicator<sup>10+</sup>
 
@@ -239,13 +269,13 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [IndicatorStyle](#indicatorstyle10)| Yes  | Underline style object of the selected subtab, which is used to set the color, height, width, and corner radius of the underline.|
+| value | [IndicatorStyle](#indicatorstyle10) | Yes | Underline style object of the selected sub-tab, used to set the color, height, width, and corner radius of the indicator. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | Returns the **SubTabBarStyle** object itself for chain calls.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object itself for chained calls. |
 
 ### indicator<sup>22+</sup>
 
@@ -273,7 +303,7 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object itself for chained calls. |
 
 ### selectedMode<sup>10+</sup>
 
@@ -291,13 +321,13 @@ Sets the display mode of the selected subtab. It takes effect only in the horizo
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [SelectedMode](#selectedmode10) | Yes  | Display mode of the selected subtab, which is used to control the style of the selected subtab. The value can be **SelectedMode.INDICATOR** (underline mode, which is applicable to scenarios where the selected state needs to be clearly indicated) or **SelectedMode.BOARD** (backing board mode, which is applicable to scenarios where the selected tab needs to be highlighted).<br>Default value: **SelectedMode.INDICATOR**|
+| value | [SelectedMode](#selectedmode10-1) | Yes | Display mode of the selected sub-tab, used to control the selected effect style of the sub-tab. Optional values: **SelectedMode.INDICATOR** (indicator mode, applicable to scenarios that require a clear indication of the selected state), **SelectedMode.BOARD** (board mode, applicable to scenarios that require highlighting the selected tab).<br />Default value: **SelectedMode.INDICATOR** |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, which is used for chained calls. |
 
 ### board<sup>10+</sup>
 
@@ -315,19 +345,19 @@ Sets the background style (board style) of the selected subtab. It takes effect 
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [BoardStyle](#boardstyle10) | Yes  | Backing board style object of the selected subtab, which is used to set the corner radius and other styles of the backing board.|
+| value | [BoardStyle](#boardstyle10) | Yes | Board style object of the selected sub-tab, used to set styles such as the corner radius of the board. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, which is used for chained calls. |
 
 ### labelStyle<sup>10+</sup>
 
 labelStyle(value: LabelStyle): SubTabBarStyle
 
-Sets the style of the label text and font for the subtab. The label text and font style of the subtab are valid only in horizontal mode.
+Sets the style of the label text and font for the subtab. The style of the label text and font for the subtab takes effect only in horizontal mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -339,13 +369,13 @@ Sets the style of the label text and font for the subtab. The label text and fon
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [LabelStyle](#labelstyle10) | Yes  | Label text and font style object of a subtab, which is used to set the text color, size, font, and number of lines.|
+| value | [LabelStyle](#labelstyle10-1) | Yes | Style object of the label text and font of the sub-tab, used to set the color, size, font, and number of lines of the text. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain call.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, which is used for chained calls. |
 
 ### padding<sup>10+</sup>
 
@@ -363,13 +393,13 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding attributes of a subtab (percentage setting is not supported), which are used to adjust the distance between the tab content and the boundary.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**<br>**NOTE**<br>Since API version 12, the [padding<sup>12+</sup>](#padding12) method is added to support the [LocalizedPadding](ts-types.md#localizedpadding12) type and the mirroring capability.|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes | Padding of the sub-tab (percentage settings are not supported), used to adjust the distance between the tab content and the boundary.<br/>Value range: [0, +∞]<br/>The default value is used when the value is abnormal.<br />Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**<br/>**Note:**<br/>Since API version 12, the new [padding<sup>12+</sup>](#padding12) method supports the [LocalizedPadding](ts-types.md#localizedpadding12) type and mirroring capability. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain call.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, which is used for chained calls. |
 
 ### padding<sup>12+</sup>
 
@@ -387,19 +417,19 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Inner margin of the subtab, which is used to adjust the distance between the tab content and the boundary. The value cannot be set to a percentage. This property supports the mirroring capability.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes | Padding of the sub-tab (percentage setting not supported), used to adjust the distance between the tab content and the boundary, with mirroring capability supported.<br/>Value range: [0, +∞]<br/>The default value is used when the value is abnormal.<br />Default value: {start:LengthMetrics.vp(8),end:LengthMetrics.vp(8),<br/>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, which is used for chained calls. |
 
 ### id<sup>11+</sup>
 
 id(value: string): SubTabBarStyle
 
-Sets the subtab ID. It can be used to find or control a specified tab through **TabsController**, and identify different tabs in status management and event processing.
+Sets the ID of the subtab. It can be used to find or control a specified tab through **TabsController**, and to identify different tabs in state management and event handling.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -411,13 +441,13 @@ Sets the subtab ID. It can be used to find or control a specified tab through **
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | ID of a subtab, which is used to identify and distinguish different tabs. This parameter can be set when you need to display, hide, or perform other operations on a specified tab using code. The ID must be unique in the same **Tabs** component.|
+| value | string | Yes | ID of the sub-tab, used to identify and distinguish different tabs. Set this parameter when you need to control the display, hiding, or other operations of a specific tab through code. The ID value must be unique within the same **Tabs** component. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object, which is used for chained calls. |
 
 ## IndicatorStyle<sup>10+</sup>
 
@@ -431,11 +461,11 @@ Represents an indicator style object.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | --------- | ----------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the indicator and board.<br>Default value: **#FF007DFF** (light blue)|
-| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
-| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.<br>**NOTE**<br>If this parameter is set to **0**, the tab text width will be used instead.|
-| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
-| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
+| color | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the indicator and the board.<br/>Default value: **#FF007DFF**, light blue. |
+| height | [Length](ts-types.md#length) | No | Yes | Height of the indicator (percentage settings are not supported).<br/>Default value: **2.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when an invalid value is set. |
+| width | [Length](ts-types.md#length) | No | Yes | Width of the indicator (percentage settings are not supported).<br/>Default value: **0.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when an invalid value is set.<br/>**Note:** <br/>When the width is set to **0**, the indicator is displayed based on the tab text width.|
+| borderRadius | [Length](ts-types.md#length) | No | Yes | Corner radius of the indicator (percentage settings are not supported).<br/>Default value: **0.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when an invalid value is set. |
+| marginTop | [Length](ts-types.md#length) | No | Yes | Spacing between the indicator and the text (percentage settings are not supported).<br/>Default value: **8.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when an invalid value is set. |
 
 ## DrawableTabBarIndicator<sup>22+</sup>
 
@@ -450,10 +480,10 @@ Uses an image resource as the indicator.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | --------- | ----------------------- |
 | drawable | [DrawableDescriptor](#drawabledescriptor22) | No| Yes| Image resource of the indicator.<br>Supported types: [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor), [PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12), [LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor), and [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12). If an invalid image resource is passed, the default solid indicator is displayed.|
-| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
-| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.<br>If this parameter is set to **0**, the tab text width will be used instead.|
-| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
-| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
+| height | [Length](ts-types.md#length) | No | Yes | Height of the indicator (percentage setting is not supported).<br/>Default value: **2.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when the value is abnormal. |
+| width | [Length](ts-types.md#length) | No | Yes | Width of the indicator (percentage setting is not supported).<br/>Default value: **0.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when the value is abnormal.<br />When the width is set to **0**, the indicator is displayed based on the tab text width. |
+| borderRadius | [Length](ts-types.md#length) | No | Yes | Corner radius of the indicator (percentage setting is not supported).<br/>Default value: **0.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when the value is abnormal. |
+| marginTop | [Length](ts-types.md#length) | No | Yes | Spacing between the indicator and the text (percentage setting is not supported).<br/>Default value: **8.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when the value is abnormal. |
 
 ## DrawableDescriptor<sup>22+</sup>
 
@@ -483,8 +513,8 @@ Enumerates the display modes of selected subtabs.
 
 | Name      | Value| Description              |
 | ---------- | ----- | ------------------------ |
-| INDICATOR | 0 | Indicator mode. This mode is applicable to scenarios where the selected state needs to be clearly indicated, such as news apps.|
-| BOARD   | 1 | Board mode. This mode is applicable to scenarios where the selected tab needs to be clearly distinguished, such as function navigation apps.    |
+| INDICATOR | 0 | Uses the indicator mode. Applicable to scenarios that require clearly indicating the selected state, such as news and information applications. |
+| BOARD   | 1 | Uses the board mode. Applicable to scenarios that require clearly distinguishing the selected tab, such as function navigation applications.     |
 
 ## BoardStyle<sup>10+</sup>
 
@@ -498,7 +528,7 @@ Represents a board style object.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | ------------ | ------------------------ |
-| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the board. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
+| borderRadius | [Length](ts-types.md#length) | No | Yes | Corner radius of the board (percentage setting is not supported).<br/>Default value: **8.0**<br/>Unit: vp<br/>Value range: [0, +∞). The default value is used when the value is abnormal. |
 
 ## LabelStyle<sup>10+</sup>
 
@@ -510,14 +540,14 @@ Represents a style object for the label text and font.
 
 | Name                | Type                                                    | Read-Only| Optional| Description                                                        |
 | -------------------- | ----------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No| Yes  | Display mode when the label text is too long. By default, an ellipsis (...) is used to represent text overflow.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxLines             | number                                                       | No| Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. You can use **textOverflow** to specify how to represent text overflow. Default value: **1**<br>Value range: [1, +∞) If the value is abnormal, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Minimum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: (0, +∞) This parameter does not take effect when the value is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Maximum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: [minFontSize, +∞) This parameter does not take effect when the value is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No| Yes  | How the adaptive height is determined for the label text. By default, the **maxLines** settings are prioritized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| font                 | [Font](ts-types.md#font)                                     | No| Yes | Font of the label text.<br>When the tab is a subtab, the default font is in 16.0 fp size, 'HarmonyOS Sans' family, normal font style, medium weight when selected, and normal weight when not selected.<br>When the tab is a bottom tab, the default font is in 10.0 fp size, 'HarmonyOS Sans' family, normal font style, and medium weight.<br>The default font size of the bottom tab page is 12.0 fp since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the label text when it is not selected.<br>Default value: **#99182431**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the label text when it is selected.<br>Default value: **#FF007DFF**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Yes  | Display mode when the label text is too long. The default value is ellipsis truncation.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| maxLines             | number                                                       | No  | Yes  | Maximum number of lines for the label text. If this parameter is specified, the text will not exceed the specified number of lines. If there is extra text, the truncation mode can be specified through **textOverflow**. The default value is **1**.<br/>Value range: [1, +∞). The default value is used when the value is abnormal.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Minimum display font size of the label text (percentage settings are not supported). It must be used together with **maxFontSize** and **maxLines** or layout size constraints. After adaptive text size takes effect, **font.size** does not take effect. The default value is **0.0fp**, which means adaptive text size does not take effect by default.<br/>Value range: (0, +∞). It does not take effect when the value is abnormal.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Maximum display font size of the label text (percentage settings are not supported). It must be used together with **minFontSize** and **maxLines** or layout size constraints. After adaptive text size takes effect, **font.size** does not take effect. The default value is **0.0fp**, which means adaptive text size does not take effect by default.<br/>Value range: [minFontSize, +∞). It does not take effect when the value is abnormal.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No| Yes  | Adaptive height policy for the label text. By default, the **maxLines** settings are prioritized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| font                 | [Font](ts-types.md#font)                                     | No  | Yes | Font style of the label text.<br/>When the tab is a sub-tab, the default value is a font size of 16.0 fp, font type 'HarmonyOS Sans', normal font style, medium font weight when selected, and normal font weight when unselected.<br/>When the tab is a bottom tab, the default value is a font size of 10.0 fp, font type 'HarmonyOS Sans', normal font style, and medium font weight.<br/>Since API version 12, the default font size is 12.0 fp when the bottom tab content is arranged horizontally.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the label text font when unselected.<br/>Default value: **#99182431** <br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.|
+| selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the label text font when selected.<br/>Default value: **#FF007DFF** <br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.|
 
 ## BottomTabBarStyle<sup>9+</sup>
 
@@ -537,7 +567,7 @@ A constructor used to create a **BottomTabBarStyle** instance.
 
 | Name| Type        | Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12)| Yes| Image for the tab. If the icon resource fails to be loaded or does not exist, a gray block is displayed. If the icon uses an SVG image source, the built-in width and height attributes of the image source must be deleted. Otherwise, the width and height attribute values built in the SVG image source are used.|
+| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12) | Yes | Image content within the tab. When the icon resource fails to load or does not exist, a gray block is displayed. If the icon uses an SVG image source, its built-in width and height attributes need to be deleted. Otherwise, the icon size will use the built-in width and height attribute values of the SVG image source. |
 | text | [ResourceStr](ts-types.md#resourcestr) | Yes| Text for the tab.|
 
 ### of<sup>10+</sup>
@@ -556,14 +586,14 @@ Static constructor used to create a **BottomTabBarStyle** instance.
 
 | Name| Type        | Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12)| Yes| Image for the tab. When the icon resource fails to be loaded or does not exist, a gray block is displayed. If the icon uses an SVG image source, the built-in width and height attributes of the image source must be deleted. Otherwise, the width and height attribute values built in the SVG image source are used.|
+| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12) | Yes | Image content within the tab. When the icon resource fails to load or does not exist, a gray block is displayed. If the icon uses an SVG format image source, its built-in width and height attributes need to be deleted. Otherwise, the icon size will use the built-in width and height attribute values of the SVG image source. |
 | text | [ResourceStr](ts-types.md#resourcestr) | Yes| Text for the tab.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the created **BottomTabBarStyle** object, which is used to set the bottom tab and side tab in approved sample mode.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used to set the bottom tab and side tab styles. |
 
 ### padding<sup>10+</sup>
 
@@ -581,13 +611,13 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab, which is used to set the distance between the tab content and the boundary. (The percentage setting is not supported.) When you need to adjust the interior space distribution of the tab and optimize the visual effect, pass a custom value.<br>Value range: [0, +∞]<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes | Padding of the bottom tab, used to set the distance between the tab content and the boundary (percentage setting is not supported). Pass a custom value when you need to adjust the internal space distribution of the tab and optimize the visual effect.<br/>Value range: [0, +∞]<br/>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br/>When **LocalizedPadding** is used, mirroring is supported.<br />Default value: {start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),<br/>top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)} |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | The **BottomTabBarStyle** object itself is returned for chain call.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
 
 ### verticalAlign<sup>10+</sup>
 
@@ -611,7 +641,7 @@ Sets the vertical alignment mode of the images and text on the bottom tab.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chained calls.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
 
 ### layoutMode<sup>10+</sup>
 
@@ -635,7 +665,7 @@ Sets the layout mode of the images and texts on the bottom tab.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chained calls.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
 
 ### symmetricExtensible<sup>10+</sup>
 
@@ -653,13 +683,13 @@ Sets whether the images and text on the bottom tab can be symmetrically extended
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | boolean | Yes  | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs. If **true** is passed, the symmetric borrowing function is enabled (when you need to optimize the tab layout and fully utilize the space). If **false** is passed, the symmetric borrowing function is disabled (when you need to keep the fixed tab layout and avoid positional changes of tab content).<br>The default value is **false**.|
+| value | boolean | Yes | Whether the image and text of a bottom tab can symmetrically borrow the minimum of the free space of the left and right bottom tabs. The value **true** enables the symmetric borrowing feature (select this when you need to optimize the tab layout and make full use of space), and the value **false** disables the symmetric borrowing feature (select this when you need to keep the tab layout fixed and avoid changes in the tab content position).<br/>Default value: **false**. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chaining calls.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
 
 ### labelStyle<sup>10+</sup>
 
@@ -677,19 +707,19 @@ Sets the style of the label text and font for the bottom tab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [LabelStyle](#labelstyle10) | Yes  | Label text and font style of the bottom tab, which is used to set the text color, size, font, and number of lines.|
+| value | [LabelStyle](#labelstyle10) | Yes | Style of the label text and font of the bottom tab, used to set the color, size, font, and number of lines of the text. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chaining calls.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
 
 ### id<sup>11+</sup>
 
 id(value: string): BottomTabBarStyle
 
-Sets the ID of the bottom tab.
+Defines the ID of the bottom tab.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -701,13 +731,13 @@ Sets the ID of the bottom tab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | ID of the bottom tab.|
+| value | string | Yes | ID of the bottom tab. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chaining calls.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
 
 ### iconStyle<sup>12+</sup>
 
@@ -725,13 +755,39 @@ Sets the style of the bottom tab icon.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| style | [TabBarIconStyle](#tabbariconstyle12) | Yes  | Style of the bottom tab icon, which is used to set the colors of the selected and unselected states of the settings icon.|
+| style | [TabBarIconStyle](#tabbariconstyle12) | Yes | Style of the bottom tab icon, used to set the colors of the icon in the selected and unselected states. |
+
+**Return value**
+
+| Type    | Description                                                         |
+| ------- | ------------------------------------------------------------ |
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
+
+### badge
+
+badge(badgeStyle: TabBarBadgeStyle): BottomTabBarStyle
+
+Sets the badge style of the bottom tab. If not set, no badge is displayed.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| badgeStyle | [TabBarBadgeStyle](#tabbarbadgestyle) | Yes | Badge style of the bottom tab. |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | The **BottomTabBarStyle** object itself, which is used for chain call.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object, which is used for chained calls. |
 
 ## TabBarSymbol<sup>12+</sup>
 
@@ -760,13 +816,13 @@ Enumerates the layout modes of the images and texts on the bottom tabs.
 
 | Name        | Value| Description                                    |
 | ----------  | - | ---------------------------------------- |
-| AUTO        | 0 | If the tab width is greater than 104 vp, the tab content is arranged from left to right (icon on the left and text on the right). Otherwise, the tab content is arranged from top to bottom (icon on the top and text at the bottom). This parameter is valid only when the tab bar is in vertical mode or fixed horizontal mode.|
-| VERTICAL    | 1 | The tab content is arranged from top to bottom, with the icon on the top and the text at the bottom. This value is applicable to scenarios where the tab width is limited and space needs to be saved.|
-| HORIZONTAL  | 2 | The tab content is arranged from left to right, with the icon on the left and the text on the right. This value is applicable to scenarios where the tab width is sufficient and more content needs to be displayed.|
+| AUTO        | 0 | If the tab width is greater than 104 vp, the tab content is laid out horizontally (icon on the left and text on the right); otherwise, the tab content is laid out vertically (icon on the top and text on the bottom). This takes effect only when the **TabBar** is in vertical mode or Fixed horizontal mode. |
+| VERTICAL    | 1 | The tab content is laid out vertically, with the icon on the top and the text on the bottom. This is suitable for scenarios where the tab width is limited and space needs to be saved. |
+| HORIZONTAL  | 2 | The tab content is laid out horizontally, with the icon on the left and the text on the right. This is suitable for scenarios where the tab width is sufficient and more content needs to be displayed. |
 
 ## TabBarIconStyle<sup>12+</sup>
 
-Represents a tab bar icon style object.
+Defines the tab icon style object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -776,8 +832,61 @@ Represents a tab bar icon style object.
 
 | Name                | Type                                                    | Read-Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the icon when it is not selected.<br>Default value: **#33182431**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the icon when it is selected.<br>Default value: **#FF007DFF**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the icon when it is not selected.<br/>Default value: **#33182431** <br/>**Note:** <br/>Takes effect only on SVG image sources. After being set, it replaces the fill color of the SVG image. |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the icon when it is selected.<br/>Default value: **#FF007DFF** <br/>**Note:** <br/>Takes effect only on SVG image sources. After being set, it replaces the fill color of the SVG image. |
+
+## TabVisibility
+
+Enumerates the visibility of tabs.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Value | Description |
+| ----- | ----- | ------- |
+| VISIBLE | 0 | Visible. |
+| HIDDEN | 1 | Hidden. |
+
+## TabBarBadgeStyle
+
+Defines the style object for the tab badge.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | --- | ----- | -------- |
+| value | [TabBarBadgeType](#tabbarbadgetype) | No | Yes | Badge content. If this parameter is not set or is set to **undefined**, the badge is displayed as a content-free dot with a diameter of 6 vp, which is smaller than a dot that displays content normally. When the type is number, the badge is not displayed if the value is less than or equal to 0 and less than **maxCount**. |
+| maxCount | number | No | Yes | Maximum number of badge content to display. This attribute takes effect only when **value** is of the number type. If it is not set, the maximum number is not limited, and the badge is displayed based on the actual **value**. When the badge content exceeds this number, only **maxCount**+ is displayed. For example, when **maxCount** is 99, `99+` is displayed.<br>Default value: **99**<br>If the value is not an integer, the decimal part is discarded and only the integer part is used. For example, 5.5 becomes 5. |
+
+## TabBarBadgeType
+
+type TabBarBadgeType = number | ResourceStr
+
+Defines the union type of the content displayed by the badge.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description |
+| -------- | -------- |
+| number | Numeric type, used for a badge that displays numeric content. |
+| [ResourceStr](ts-types.md#resourcestr) | Text type, used for a badge that displays text content. |
 
 ## Events
 
@@ -799,7 +908,7 @@ Called when the tab content is about to be displayed. The scenarios include the 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
@@ -821,7 +930,7 @@ Called when the tab content is about to be hidden. The scenarios include the tab
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
@@ -831,7 +940,7 @@ Called when the tab content is about to be hidden. The scenarios include the tab
 
 ### Example 1: Implementing Custom Tab Switching Synchronization
 
-This example demonstrates how to use [onAnimationStart](ts-container-tabs.md#onanimationstart11) and [onChange](ts-container-tabs.md#onchange) to implement synchronized switching between the tab bar and tab content.
+This example uses [onAnimationStart](ts-container-tabs.md#onanimationstart11) and [onChange](ts-container-tabs.md#onchange) to implement the linkage between the custom **tabBar** and **TabContent** during switching.
 
 > **NOTE**
 >
@@ -846,13 +955,13 @@ struct TabContentExample {
   @State selectedFontColor: string = '#007DFF';
   @State currentIndex: number = 0;
   @State selectedIndex: number = 0;
-  // Create a Tabs controller to control the switching of TabContent.
+  // Create the Tabs controller to control TabContent switching.
   private controller: TabsController = new TabsController();
 
-  // Customize the TabBar builder to switch the icon and text color based on the selection status.
+  // Customize the TabBar builder to switch icon and text colors based on the selected state.
   @Builder tabBuilder(index: number) {
     Column() {
-      // The common directory is at the same level as the pages directory.
+      // The common directory is at the same level as pages.
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -868,7 +977,7 @@ struct TabContentExample {
 
   build() {
     Column() {
-      // Create the Tabs component, set the position of the tab bar to the bottom, and bind the controller.
+      // Create the Tabs component, set the TabBar position to the bottom, and bind the controller.
       Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
         TabContent() {
           Column() {
@@ -883,7 +992,7 @@ struct TabContentExample {
               .color('#182431')
               .opacity(0.05)
           }.width('100%')
-        }.tabBar(this.tabBuilder(0)) // Set the tab bar to a custom style.
+        }.tabBar(this.tabBuilder(0)) // Set the TabBar to a custom style.
 
         TabContent() {
           Column() {
@@ -933,12 +1042,12 @@ struct TabContentExample {
       .vertical(false)
       .barHeight(56)
       .onChange((index: number) => {
-        // currentIndex controls the tab page displayed in TabContent, and selectedIndex controls the color switching of the custom TabBar.
+        // currentIndex controls the TabContent display tab, and selectedIndex controls the custom TabBar color switching.
         this.currentIndex = index;
         this.selectedIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
-        // If the index of the current tab is the same as that of the target tab, the status does not need to be updated.
+        // When the current tab index is the same as the target index, there is no need to update the state.
         if (index === targetIndex) {
           return;
         }
@@ -958,7 +1067,7 @@ struct TabContentExample {
 
 ### Example 2: Implementing a Custom Side Tabs
 
-This example demonstrates how to create side tabs using [vertical](./ts-container-tabs.md#vertical) and [barPosition](./ts-container-tabs.md#barposition9).
+This example uses [vertical](./ts-container-tabs.md#vertical) and [barPosition](./ts-container-tabs.md#barposition9) to implement the side tab.
 
 > **NOTE**
 >
@@ -977,7 +1086,7 @@ struct TabContentExample {
 
   @Builder tabBuilder(index: number) {
     Column() {
-      // The common directory is at the same level as the pages directory.
+      // The common directory is at the same level as pages.
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -993,7 +1102,7 @@ struct TabContentExample {
 
   build() {
     Column() {
-      // Create the Tabs component, set the position of the TabBar to the start end, and bind the controller.
+      // Create the Tabs component, set the TabBar position to the start, and bind the controller.
       Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
         TabContent()
           .tabBar(this.tabBuilder(0)) // Set the TabBar to a custom style.
@@ -1008,12 +1117,12 @@ struct TabContentExample {
       .barWidth(96)
       .barHeight(414)
       .onChange((index: number) => {
-        // currentIndex controls the tab page displayed in TabContent, and selectedIndex controls the color switching of the custom TabBar.
+        // currentIndex controls the tab displayed by TabContent, and selectedIndex controls the color switch of the custom TabBar.
         this.currentIndex = index;
         this.selectedIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
-        // If the index of the current tab page is the same as that of the target tab page, the status does not need to be updated.
+        // When the current tab index is the same as the target index, there is no need to update the state.
         if (index === targetIndex) {
           return;
         }
@@ -1033,7 +1142,7 @@ struct TabContentExample {
 
 ### Example 3: Implementing Different Styles of Tabs
 
-This example demonstrates how to create subtabs, bottom tabs, and side tabs using [SubTabBarStyle](#subtabbarstyle9) and [BottomTabBarStyle](#bottomtabbarstyle9).
+This example uses [SubTabBarStyle](#subtabbarstyle9) and [BottomTabBarStyle](#bottomtabbarstyle9) to implement the sub-tab, bottom tab, and side tab.
 
 ```ts
 // xxx.ets
@@ -1044,17 +1153,17 @@ struct TabBarStyleExample {
     Column({ space: 5 }) {
       Text('Subtab style')
       Column() {
-        // Create the Tabs component and set the position of the tab bar to the start.
+        // Create the Tabs component and set the TabBar position at the start.
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
-          }.tabBar(new SubTabBarStyle('Pink')) // Set the tab bar to the sub tab approved sample style.
+          }.tabBar(new SubTabBarStyle('Pink')) // Set the TabBar to the sub-tab style.
           .onWillShow(() => {
-            // Triggered when the TabContent is about to be displayed.
+            // Trigger the callback when TabContent is about to be displayed.
             console.info('Pink will show');
           })
           .onWillHide(() => {
-            // Triggered when the TabContent is about to be hidden.
+            // Trigger the callback when TabContent is about to be hidden.
             console.info('Pink will hide');
           })
 
@@ -1099,11 +1208,11 @@ struct TabBarStyleExample {
       }.width('100%').height(200)
       Text('Bottom tab style')
       Column() {
-        // Create a Tabs component and set the position of the tab bar to the bottom.
+        // Create the Tabs component and set the TabBar position at the bottom.
         Tabs({ barPosition: BarPosition.End }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Pink')) // Set the tab bar to the bottom page in approved sample style.
+          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Pink')) // Set the TabBar to the bottom tab style.
           .onWillShow(() => {
             console.info('Pink will show');
           })
@@ -1193,7 +1302,7 @@ struct TabBarStyleExample {
             console.info('Green will hide');
           })
         }
-        .vertical(true) // Set the tab mode to vertical.
+        .vertical(true) // Set to side tab mode.
         .scrollable(true).barMode(BarMode.Fixed)
         .onChange((index: number) => {
           console.info(index.toString());
@@ -1210,7 +1319,7 @@ struct TabBarStyleExample {
 
 ### Example 4: Setting the Indicator for Subtabs
 
-This example demonstrates how to set the indicator for subtabs using the [indicator](#indicator10) property in **SubTabBarStyle**.
+This example uses the [indicator](#indicator10) attribute in **SubTabBarStyle** to display the basic attributes of the sub-tab indicator.
 
 ```ts
 // xxx.ets
@@ -1235,7 +1344,7 @@ struct TabsAttr {
     Column() {
       Button('Change Indicator Color').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Configure the animation for the underline color attribute.
+          // Configure animation for the indicator color property.
           if (this.colorFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1267,7 +1376,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Height').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Configure the animation for the underline height attribute.
+          // Configure animation for the indicator height property.
           if (this.heightFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1299,7 +1408,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Width').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Configure the animation for the underline width attribute.
+          // Configure animation for the indicator width property.
           if (this.widthFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1331,7 +1440,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Corner Radius').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Configure the animation for the underline corner radius attribute.
+          // Configure animation for the indicator corner radius property.
           if (this.borderFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1363,7 +1472,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Spacing').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Configure the animation for the underline spacing attribute.
+          // Configure animation for the indicator spacing property.
           if (this.spaceFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1448,7 +1557,7 @@ struct TabsAttr {
 
 ### Example 5: Setting Adaptive Height for Subtab Text
 
-This example demonstrates how to achieve adaptive height for subtab text using [heightAdaptivePolicy](#labelstyle10).
+This example implements adaptive height of sub-tab text through [heightAdaptivePolicy](#labelstyle10).
 
 ```ts
 // xxx.ets
@@ -1465,7 +1574,7 @@ struct TabsTextOverflow {
             Text('Use an ellipsis').fontSize(30).fontColor(0xFF000000)
           }.width('100%').height('100%').backgroundColor(Color.Pink)
         }
-        .tabBar(SubTabBarStyle.of('Start [Use an ellipsis; Use an ellipsis] End')
+        .tabBar(SubTabBarStyle.of('Start [Use an ellipsis; Use an ellipsis; Use an ellipsis; Use an ellipsis; Use an ellipsis; Use an ellipsis; Use an ellipsis; Use an ellipsis; Use an ellipsis; Use an ellipsis] End')
           .labelStyle({
             overflow: TextOverflow.Ellipsis,
             maxLines: 1,
@@ -1479,7 +1588,7 @@ struct TabsTextOverflow {
             Text('Scale down and then clip').fontSize(30).fontColor(0xFF000000)
           }.width('100%').height('100%').backgroundColor(Color.Pink)
         }
-        .tabBar(SubTabBarStyle.of('Start [Scale down and then clip; Scale down and then clip] End')
+        .tabBar(SubTabBarStyle.of('Start [Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip; Scale down and then clip] End')
           .labelStyle({
             overflow: TextOverflow.Clip,
             maxLines: 1,
@@ -1509,7 +1618,7 @@ struct TabsTextOverflow {
             Text('Start a new line').fontSize(30).fontColor(0xFF000000)
           }
           .width('100%').height('100%').backgroundColor(Color.Pink)
-        }.tabBar(SubTabBarStyle.of('Start [Start a new line; Start a new line; Start a new line; Start a new line; Start a new line] End')
+        }.tabBar(SubTabBarStyle.of('Start [Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line; Start a new line] End')
           .labelStyle({
             overflow: TextOverflow.Clip,
             maxLines: 10,
@@ -1536,7 +1645,7 @@ struct TabsTextOverflow {
 
 ### Example 6: Setting Basic Attributes for Bottom Tabs
 
-This example demonstrates how to set basic attributes for bottom tabs using [padding](#padding10), [verticalAlign](#verticalalign10), [layoutMode](#layoutmode10), and [symmetricExtensible](#symmetricextensible10).
+This example displays the basic attributes of the bottom tab through [padding](#padding10), [verticalAlign](#verticalalign10), [layoutMode](#layoutmode10), and [symmetricExtensible](#symmetricextensible10).
 
 ```ts
 // xxx.ets
@@ -1688,9 +1797,9 @@ struct TabContentExample6 {
 
 ### Example 7: Setting Text and Icon Colors for Subtabs and Bottom Tabs
 
-This example demonstrates how to change the text color of subtabs and bottom tabs using **unselectedColor** and **selectedColor** in [LabelStyle](#labelstyle10) and
+This example changes the text color of the bottom tab and sub-tab through **unselectedColor** and **selectedColor** in [LabelStyle](#labelstyle10-1).
 
-how to change the icon color of bottom tabs using **unselectedColor** and **selectedColor** in [iconStyle](#iconstyle12).
+Change the icon color of the bottom tab through **unselectedColor** and **selectedColor** in [iconStyle](#iconstyle12).
 
 > **NOTE**
 >
@@ -1743,7 +1852,7 @@ struct TabBarStyleExample {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
           }
-          // The common directory is at the same level as the pages directory.
+          // The common directory is at the same level as pages.
           .tabBar(new BottomTabBarStyle('/common/public_icon_off.svg', 'pink')
             .labelStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
             .iconStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
@@ -1786,9 +1895,9 @@ struct TabBarStyleExample {
 
 ![tabContent](figures/tabContent6.gif)
 
-### Example 8: Using Symbol Icons for Bottom Tabs
+### Example 8 (Set Bottom Tab to Use Symbol Icon)
 
-This example shows how to use symbols as icons in [BottomTabBarStyle](#bottomtabbarstyle9).
+This example implements passing a Symbol as the image of [BottomTabBarStyle](#bottomtabbarstyle9).
 
 ```ts
 // xxx.ets
@@ -1870,9 +1979,9 @@ struct Index {
 
 ![tabContent8](figures/tabBarSymbol.gif)
 
-### Example 9: Setting TabBar Using ComponentContent
+### Example 9: Setting TabBar Through ComponentContent
 
-This example demonstrates how to use [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) to encapsulate component content and set the [TabBar](#tabbar18). The [update](../js-apis-arkui-ComponentContent.md#update) API of **ComponentContent** is used to update the **TabBar**.
+This example encapsulates component content through [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) to set the [TabBar](#tabbar18). The **TabBar** is updated through the [update](../js-apis-arkui-ComponentContent.md#update) function of **ComponentContent**.
 
 ```ts
 // xxx.ets
@@ -1976,9 +2085,9 @@ struct Index {
 
 ![tabContent9](figures/tabContent9.gif)
 
-### Example 10: Preloading Child Nodes Using ComponentContent
+### Example 10: Preloading Child Nodes Through ComponentContent
 
-This example demonstrates how to use **ComponentContent** to set the **TabBar** and preload child nodes using the [preloadItems](ts-container-tabs.md#preloaditems12) API of **TabsController**.
+This example sets the **TabBar** through **ComponentContent** and uses [preloadItems](ts-container-tabs.md#preloaditems12) of **TabsController** to preload child nodes.
 
 ```ts
 // xxx.ets
@@ -2152,11 +2261,11 @@ struct MyComponent {
 
 ![tabContent9](figures/tabContent10.gif)
 
-### Example 11: Setting the Indicator of a Subtab to an Image
+### Example 11: Setting the Sub-tab Indicator to an Image
 
-Since API version 22, this example uses the [indicator](#indicator22) attribute in **SubTabBarStyle** to implement the subtab indicator in image format.
+This example uses the [indicator](#indicator22) attribute in **SubTabBarStyle** to implement an image-format indicator style for the sub-tab.
 
- 
+Since API version 22, the **indicator** attribute with an input parameter type that includes an image is added.
 
 ```ts
 import { DrawableDescriptor } from '@kit.ArkUI';
@@ -2218,3 +2327,179 @@ struct TabsIndicatorExample {
 ```
 
 ![tabContent12](figures/tabContent12.png)
+
+### Example 12: Setting Tab Visibility in Different Tab Bars
+
+This example uses the [tabBarVisibility](#tabbarvisibility) attribute to set the visibility of tabs in tab bars of different styles.
+
+Since API version 26.0.1, **TabContent** supports the [tabBarVisibility](#tabbarvisibility) attribute.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabBarVisibilityExample {
+  @State myIndex: number = 0;
+  @State isBottomType: boolean = true;
+  private controller: TabsController = new TabsController();
+
+  build() {
+    Column() {
+      Row() {
+        Text('barStyle: ')
+        Radio({group: `barStyle`, value: `BOTTOM`}).checked(this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = true;
+          }
+        })
+        Text('BOTTOM  ')
+        Radio({group: `barStyle`, value: `SIDEBAR`}).checked(!this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = false;
+          }
+        })
+        Text('SIDEBAR')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // Even if some tabs are hidden through the tabBarVisibility attribute, you can still switch to the corresponding page by modifying the index state variable.
+        Text('Set myIndex: ')
+        Radio({group: `myIndex`, value: `0`}).checked(this.myIndex === 0).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 0;
+          }
+        })
+        Text('0  ')
+        Radio({group: `myIndex`, value: `1`}).checked(this.myIndex === 1).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 1;
+          }
+        })
+        Text('1  ')
+        Radio({group: `myIndex`, value: `2`}).checked(this.myIndex === 2).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 2;
+          }
+        })
+        Text('2')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // Even if some tabs are hidden through the tabBarVisibility attribute, you can still switch to the corresponding page through the TabsController.changeIndex API.
+        Text('TabsController.changeIndex').margin({right: 10})
+        Button('0').onClick(() => {
+          this.controller.changeIndex(0)
+        }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+        Button('1').onClick(() => {
+          this.controller.changeIndex(1)
+        }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+        Button('2').onClick(() => {
+          this.controller.changeIndex(2)
+        }).fontSize(15).backgroundColor('#ff2787d9')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Tabs({index: this.myIndex, controller: this.controller}) {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent0').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // Replace $r('app.media.arrow') with the actual resource.
+        // By default, the tab is visible in both the TabBarDisplayMode.BOTTOM_TABBAR and TabBarDisplayMode.SIDEBAR display modes.
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab0'})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent1').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // Replace $r('app.media.arrow') with the actual resource.
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab1'})
+        // Set this tab to be invisible in the TabBarDisplayMode.BOTTOM_TABBAR display mode.
+        .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.BOTTOM_TABBAR)
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent2').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // Replace $r('app.media.arrow') with the actual resource.
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab2'})
+        // Set this tab to be invisible in the TabBarDisplayMode.SIDEBAR display mode.
+        .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.SIDEBAR)
+      }
+      .width(450)
+      .height('80%')
+      .border({width: 1, color: '#ffd9d9d9'})
+      .barBackgroundColor('#fff7f7f7')
+      .barStyle(this.isBottomType ? TabBarStyle.BOTTOM : TabBarStyle.SIDEBAR)
+      .barPosition(BarPosition.End)
+      .vertical(false)
+    }.width('100%')
+    .height(350)
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![tabContentTabBarVisibility](figures/tabContentTabBarVisibility.gif)
+
+### Example 13: Setting the Badge Content of a Tab
+
+This example uses the **badge** attribute of [TabBarOptions](#tabbaroptions18) and the [badge](#badge) attribute of [BottomTabBarStyle](#bottomtabbarstyle9) to set the badge content of a tab.
+
+Since API version 26.1.0, both [TabBarOptions](#tabbaroptions18) and [BottomTabBarStyle](#bottomtabbarstyle9) have added the **badge** attribute.
+
+```ts
+// xxx.ets
+import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State symbolModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+  @State symbolModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ellipsis_bubble'));
+
+  build() {
+    Column({ space: 5 }) {
+      Column() {
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier1,
+          }, 'Pink').badge({ value: 1 })) // Set the badge content to a common numeric type.
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier2,
+          }, 'Orange').badge({ value: 100, maxCount: 99 })) // Set the badge content and the maximum display count.
+        }
+        .vertical(false)
+        .width('100%').height(200)
+
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          // Set the badge text content to text.
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: { value: 'Info' } })
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          // No badge content is set, so a dot with no content is displayed.
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: {} })
+        }
+        .vertical(false)
+        .width('100%').height(200)
+      }.width('100%')
+    }
+  }
+}
+```
+
+![tabContentBadge](figures/tabBarBadge.png)

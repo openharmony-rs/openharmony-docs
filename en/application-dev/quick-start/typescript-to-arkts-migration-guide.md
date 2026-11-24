@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit"]
+description: "TypeScript features restricted in ArkTS and corresponding code refactoring recommendations for migrating from TypeScript to ArkTS while keeping the adapted code valid TypeScript."
+keywords: ["TypeScript", "ArkTS", "adaptation rules", "TypeScript feature restrictions", "code refactoring", "syntax constraints"]
+doctype: guide
+status: active
+---
+
 # TypeScript to ArkTS Cookbook
 
 <!--Kit: ArkTS-->
@@ -5,7 +13,8 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 ArkTS restricts the features of TypeScript (TS) that undermine development correctness or increase runtime overhead. This topic lists the TypeScript features restricted by ArkTS and provides recipes on code refactoring. ArkTS retains most syntax features of TypeScript. TypeScript features that are not mentioned in this topic are fully supported by ArkTS. For example, the custom decorators supported by ArkTS have the same syntax as those supported by TypeScript. After code refactoring based on the recipes in this topic, the code is still valid TypeScript code.
 
@@ -13,7 +22,7 @@ ArkTS restricts the features of TypeScript (TS) that undermine development corre
 
 Original TypeScript code containing the keyword **var**:
 
-<!-- @[sample_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
+<!-- @[sample_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
 
 ``` TypeScript
 function addTen(x: number): number {
@@ -24,7 +33,7 @@ function addTen(x: number): number {
 
 Refactored code:
 
-<!-- @[sample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/pages/Index.ets) -->     
+<!-- @[sample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 function addTen(x: number): number {
@@ -166,7 +175,7 @@ According to our observations and experiments, this feature is not popular in Ty
 
 Assume that two unrelated classes **T** and **U** have the same **public** API:
 
-<!-- @[struct_typing_caseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
+<!-- @[struct_typing_caseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
 
 ``` TypeScript
 class T {
@@ -188,7 +197,7 @@ class U {
 
 Can we assign a value of **T** to a variable of **U**?
 
-<!-- @[struct_typing_caseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
+<!-- @[struct_typing_caseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
 
 ``` TypeScript
 let u: U = new T(); // Is this allowed?
@@ -196,7 +205,7 @@ let u: U = new T(); // Is this allowed?
 
 Can we pass a value of **T** to a function that accepts a parameter of **U**?
 
-<!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
+<!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
 
 ``` TypeScript
 function greeter(u: U) {
@@ -277,48 +286,6 @@ let obj: Record<string, number> = {
 };
 ```
 
-### Symbol() Is Not Supported
-
-**Rule:** arkts-no-symbol
-
-**Severity: error**
-
-**Error code: 10605002**
-
-ArkTS does not support the **Symbol()** API because its most popular use cases make no sense in the statically typed environment. In particular, the object layout is defined at compile time and cannot be changed at runtime.
-
-Only **Symbol.iterator** is supported.
-
-### Private # Identifiers Are Not Supported
-
-**Rule:** arkts-no-private-identifiers
-
-**Severity: error**
-
-**Error code: 10605003**
-
-ArkTS does not use private identifiers starting with the symbol **#**. Use the keyword **private** instead.
-
-**TypeScript**
-
-<!-- @[no_symbol_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSymbol.ts) -->    
-
-``` TypeScript
-class C {
-  #foo: number = 42
-}
-```
-
-**ArkTS**
-
-<!-- @[no_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSymbol.ets) -->    
-
-``` TypeScript
-class C {
-  private foo: number = 42;
-}
-```
-
 ### Use Unique Names for Types and Namespaces
 
 **Rule:** arkts-unique-names
@@ -344,7 +311,7 @@ type X = number[] // Type alias with the same name as the variable
 
 ``` TypeScript
 let X: string;
-type T = number[] // X is not allowed here to avoid name collisions.
+type T = number[]; // X is not allowed here to avoid name collisions.
 ```
 
 ### Use let Instead of var
@@ -416,7 +383,7 @@ ArkTS does not support the types **any** and **unknown**. Specify types explicit
 
 **TypeScript**
 
-<!-- @[no_any_unknown_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAnyUnknown.ts) -->   
+<!-- @[no_any_unknown_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAnyUnknown.ts) -->
 
 ``` TypeScript
 let value1: any
@@ -438,6 +405,1090 @@ let valueN: number = 42; // Or let valueN = 42.
 let valueO1: Object = true;
 let valueO2: Object = 42;
 ```
+
+### Object Literal Must Correspond to Some Explicitly Declared Class or Interface
+
+**Rule:** arkts-no-untyped-obj-literals
+
+**Severity: error**
+
+**Error code: 10605038**
+
+ArkTS supports usage of object literals if the compiler can infer to the classes or interfaces that such literals correspond to. Otherwise, a compile-time error occurs. In some scenarios, the compiler can infer the type of the literal based on the context.
+
+Using literals to initialize classes and interfaces is specifically not supported in the following contexts:
+
+* Initialization of anything that has **any**, **Object**, or **object** type
+* Initialization of classes or interfaces with methods
+* Initialize a class that contains a custom **constructor** with parameters.
+* Initialization of classes with **readonly** fields
+
+**Example 1**
+
+**TypeScript**
+
+<!-- @[no_untypedCaseOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+
+``` TypeScript
+let o1 = { n: 42, s: 'foo' };
+let o2: Object = { n: 42, s: 'foo' };
+let o3: object = { n: 42, s: 'foo' };
+
+let oo: Object[] = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
+```
+
+**ArkTS**
+
+<!-- @[no_untypedCaseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+
+``` TypeScript
+class C1 {
+  public n: number = 0;
+  public s: string = '';
+}
+
+let o1: C1 = {n: 42, s: 'foo'};
+let o2: C1 = {n: 42, s: 'foo'};
+let o3: C1 = {n: 42, s: 'foo'};
+
+let oo: C1[] = [{n: 1, s: '1'}, {n: 2, s: '2'}];
+```
+
+**Example 2**
+
+**TypeScript**
+
+<!-- @[no_untypedCaseTwo_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+
+``` TypeScript
+class C2 {
+  s: string;
+  constructor(s: string) {
+    this.s = 's =' + s;
+  }
+}
+let o4: C2 = { s: 'foo' };
+```
+
+**ArkTS**
+
+<!-- @[no_untypedCaseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+
+``` TypeScript
+class C2 {
+  public s: string;
+  constructor(s: string) {
+    this.s = 's =' + s;
+  }
+}
+let o4 = new C2('foo');
+```
+
+**Example 3**
+
+**TypeScript**
+
+<!-- @[no_untypedCaseThree_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+
+``` TypeScript
+class C3 {
+  readonly n: number = 0;
+  readonly s: string = '';
+}
+let o5: C3 = { n: 42, s: 'foo' };
+```
+
+**ArkTS**
+
+<!-- @[no_untypedCaseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+
+``` TypeScript
+class C3 {
+  public n: number = 0;
+  public s: string = '';
+}
+let o5: C3 = {n: 42, s: 'foo'};
+```
+
+**Example 4**
+
+**TypeScript**
+
+<!-- @[no_untypedCaseFour_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+
+``` TypeScript
+abstract class A { }
+let o6: A = {};
+```
+
+**ArkTS**
+
+<!-- @[no_untypedCaseFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+
+``` TypeScript
+abstract class A {}
+class C extends A {}
+let o6: C = {}; // Or let o6: C = new C()
+```
+
+**Example 5**
+
+**TypeScript**
+
+<!-- @[no_untypedCaseFive_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+
+``` TypeScript
+class C4 {
+  n: number = 0;
+  s: string = '';
+  f() {
+    console.info('Hello');
+  }
+}
+let o7: C4 = { n: 42, s: 'foo', f: () => { } };
+```
+
+**ArkTS**
+
+<!-- @[no_untypedCaseFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+
+``` TypeScript
+class C4 {
+  public n: number = 0;
+  public s: string = '';
+  f() {
+    console.info('Hello');
+  }
+}
+let o7 = new C4();
+o7.n = 42;
+o7.s = 'foo';
+```
+
+**Example 6**
+
+**TypeScript**
+
+<!-- @[no_untypedCaseSix_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+
+``` TypeScript
+class Point {
+  x: number = 0;
+  y: number = 0;
+}
+
+function getPoint(o: Point): Point {
+  return o;
+}
+
+// Because TS supports structural typing, p is inferred to be of type Point.
+let p = { x: 5, y: 10 };
+getPoint(p);
+
+// The object literal is inferred to be of type Point from the context.
+getPoint({ x: 5, y: 10 });
+```
+
+**ArkTS**
+
+<!-- @[no_untypedCaseSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+
+``` TypeScript
+class Point {
+  public x: number = 0;
+  public y: number = 0;
+
+  // Use constructor() to create a valid object before literal initialization.
+  // Because no constructor is defined for Point, the compiler automatically adds a default constructor.
+}
+
+function getPoint(o: Point): Point {
+  return o;
+}
+
+// Explicitly define the type for literal initialization.
+let p: Point = {x: 5, y: 10};
+getPoint(p);
+
+// getPoint accepts the Point type, and literal initialization creates a new Point instance.
+getPoint({x: 5, y: 10});
+```
+
+### Array Literals Must Contain Elements of Only Inferrable Types
+
+**Rule:** arkts-no-noninferrable-arr-literals
+
+**Severity: error**
+
+**Error code: 10605043**
+
+Basically, ArkTS infers the type of an array literal as a union type of its contents. However, a compile-time error occurs if there is at least one element with a non-inferrable type (for example, untyped object literal).
+
+**TypeScript**
+
+<!-- @[no_unInferred_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNoninferrableArrLiterals.ts) -->
+
+``` TypeScript
+let a = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
+```
+
+**ArkTS**
+
+<!-- @[no_unInferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNoninferrableArrLiterals.ets) -->
+
+``` TypeScript
+class C {
+  public n: number = 0
+  public s: string = ''
+}
+
+let a1 = [{n: 1, s: '1'} as C, {n: 2, s: '2'} as C]; // a1 is of type "C[]".
+let a2: C[] = [{n: 1, s: '1'}, {n: 2, s: '2'}];    // a2 is of type "C[]".
+```
+
+### Destructuring Assignment Is Not Supported
+
+**Rule:** arkts-no-destruct-assignment
+
+**Severity: error**
+
+**Error code: 10605069**
+
+ArkTS does not support destructuring assignment. Use other idioms (for example, a temporary variable, where applicable) instead.
+
+**TypeScript**
+
+<!-- @[no_destructAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructAssignment.ts) -->
+
+``` TypeScript
+let [one, two] = [1, 2]; // Semicolon is required here.
+[one, two] = [two, one];
+
+let head, tail;
+[head, ...tail] = [1, 2, 3, 4];
+```
+
+**ArkTS**
+
+<!-- @[no_destructAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructAssignment.ets) -->
+
+``` TypeScript
+let arr: number[] = [1, 2];
+let one = arr[0];
+let two = arr[1];
+
+let tmp = one;
+one = two;
+two = tmp;
+
+let data: number[] = [1, 2, 3, 4];
+let head = data[0];
+let tail: number[] = [];
+for (let i = 1; i < data.length; ++i) {
+  tail.push(data[i]);
+}
+```
+
+### Destructuring Variable Declarations Are Not Supported
+
+**Rule:** arkts-no-destruct-decls
+
+**Severity: error**
+
+**Error code: 10605074**
+
+ArkTS does not support destructuring variable declarations. This is a dynamic feature relying on structural compatibility. In addition, names in destructuring declarations must be equal to properties within destructed classes.
+
+**TypeScript**
+
+<!-- @[no_destructDecls_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructDecls.ts) -->
+
+``` TypeScript
+class Point {
+  x: number = 0.0;
+  y: number = 0.0;
+}
+
+function returnZeroPoint(): Point {
+  return new Point();
+}
+
+let { x, y } = returnZeroPoint();
+```
+
+**ArkTS**
+
+<!-- @[no_destructDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructDecls.ets) -->
+
+``` TypeScript
+class Point {
+  public x: number = 0.0;
+  public y: number = 0.0;
+}
+
+function returnZeroPoint(): Point {
+  return new Point();
+}
+
+// Create local variables to process each field.
+let zp = returnZeroPoint();
+let x = zp.x;
+let y = zp.y;
+```
+
+### Definite Assignment Assertions Are Not Supported
+
+**Rule:** arkts-no-definite-assignment
+
+**Severity: warning**
+
+**Error code: 10605134**
+
+ArkTS does not support definite assignment assertions **let v!: T** because they are considered an excessive compiler hint. Use declarations with initialization instead.
+
+**TypeScript**
+
+```typescript
+let x!: number // Hint: x will be initialized before usage.
+
+initialize();
+
+function initialize() {
+  x = 10;
+}
+
+console.info('x = ' + x);
+```
+
+
+**ArkTS**
+
+<!-- @[no_definiteAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDefiniteAssignment.ets) -->
+
+``` TypeScript
+function initialize(): number {
+  return 10;
+}
+
+let x: number = initialize();
+
+console.info('x = ' + x);
+```
+
+### Strict Type Checking Is Enforced
+
+**Severity: error**
+
+**Error code: 10605999**
+
+During compilation, the TypeScript strict mode is used to check the following types:
+
+**noImplicitReturns**,
+
+**strictFunctionTypes**,
+
+**strictNullChecks**,
+
+**strictPropertyInitialization**.
+
+**TypeScript**
+
+<!-- @[type_check_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/TypeCheck.ts) -->
+
+``` TypeScript
+// Compile-time error only when noImplicitReturns is enabled.
+function foo(s: string): string {
+  if (s != '') {
+    console.info(s);
+    return s;
+  } else {
+    console.info(s);
+  }
+}
+
+let n: number = null; // Compile-time error only when strictNullChecks is enabled.
+```
+
+**ArkTS**
+
+<!-- @[type_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/TypeCheck.ets) -->
+
+``` TypeScript
+function foo(s: string): string {
+  console.info(s);
+  return s;
+}
+
+let n1: number | null = null;
+let n2: number = 0;
+```
+
+If you cannot initialize an instance property by declaration or in a constructor when defining a class, you can use the definite assignment assertion operator (!) to clear the **strictPropertyInitialization** error.
+
+However, the use of the definite assignment assertion operator (!) increases the risk of code errors. Therefore, you must ensure that the instance property has been assigned a value before being used. Otherwise, the runtime exceptions may occur.
+
+In addition, the use of the definite assignment assertion operator (!) requires a runtime type check, resulting in additional runtime overhead. Therefore, use it only when necessary.
+
+It also generates the error **warning: arkts-no-definite-assignment** at the compile time.
+
+**TypeScript**
+
+<!-- @[no_definiteAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->
+
+``` TypeScript
+class C {
+  name: string  // Compile-time error only when strictPropertyInitialization is enabled.
+  age: number   // Compile-time error only when strictPropertyInitialization is enabled.
+}
+
+let c = new C();
+```
+
+**ArkTS**
+
+<!-- @[no_definiteAssignment_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDefiniteAssignment.ets) -->
+
+``` TypeScript
+class C {
+  name: string = ''
+  age!: number      // warning: arkts-no-definite-assignment
+
+  initAge(age: number) {
+    this.age = age;
+  }
+}
+
+let c = new C();
+c.initAge(10);
+```
+
+### Disabling Type Checking with In-Place Comments Is Not Allowed
+
+**Rule:** arkts-strict-typing-required
+
+**Severity: error**
+
+**Error code: 10605146**
+
+Type checking in ArkTS is not optional. Disabling type checking in-place with special comments is not allowed. In particular, **@ts-ignore** and **@ts-nocheck** annotations are not supported.
+
+**TypeScript**
+
+<!-- @[strict_typingRequired_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->
+
+``` TypeScript
+// @ts-nocheck
+// ...
+// Some code with type checking disabled.
+// ...
+
+let s1: string = null; // No error is reported.
+
+// @ts-ignore
+let s2: string = null; // No error is reported.
+```
+
+**ArkTS**
+
+```typescript
+let s1: string | null = null; // No error is reported. The types are proper.
+let s2: string = null; // Compile-time error
+```
+
+### Use Arrow Functions Instead of Function Expressions
+
+**Rule:** arkts-no-func-expressions
+
+**Severity: error**
+
+**Error code: 10605046**
+
+ArkTS does not support function expressions. Use arrow functions instead to specify explicitly.
+
+**TypeScript**
+
+<!-- @[no_funcExpressions_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoFuncExpressions.ts) -->
+
+``` TypeScript
+let f = function (s: string) {
+  console.info(s);
+}
+```
+
+**ArkTS**
+
+<!-- @[no_funcExpressions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoFuncExpressions.ets) -->
+
+``` TypeScript
+let f = (s: string) => {
+  console.info(s);
+}
+```
+
+### Function Return Type Inference Is Limited
+
+**Rule:** arkts-no-implicit-return-types
+
+**Severity: error**
+
+**Error code: 10605090**
+
+ArkTS supports function return type inference in certain scenarios. However, if the expression in a `return` statement calls a function or method whose return type is not explicitly specified, a compile-time error occurs. In this case, explicitly specify the return type.
+
+**TypeScript**
+
+<!-- @[no_implicitReturnTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoImplicitReturnTypes.ts) -->
+
+``` TypeScript
+// Compile-time error only when noImplicitAny is enabled.
+function f(x: number) {
+  if (x <= 0) {
+    return x;
+  }
+  return g(x);
+}
+
+// Compile-time error only when noImplicitAny is enabled.
+function g(x: number) {
+  return f(x - 1);
+}
+
+function doOperation(x: number, y: number) {
+  return x + y;
+}
+
+f(10);
+doOperation(2, 3);
+```
+
+**ArkTS**
+
+<!-- @[no_implicitReturnTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImplicitReturnTypes.ets) -->
+
+``` TypeScript
+// An explicit return type is required.
+function f(x: number): number {
+  if (x <= 0) {
+    return x;
+  }
+  return g(x);
+}
+
+// The return type can be omitted because it can be inferred from the type annotation of f.
+function g(x: number): number {
+  return f(x - 1);
+}
+
+// Return type may be omitted.
+function doOperation(x: number, y: number) {
+  return x + y;
+}
+
+f(10);
+doOperation(2, 3);
+```
+
+### Destructuring Parameter Declarations Are Not Supported
+
+**Rule:** arkts-no-destruct-params
+
+**Severity: error**
+
+**Error code: 10605091**
+
+ArkTS requires that arguments be explicitly passed to function parameters without destructing.
+
+**TypeScript**
+
+<!-- @[no_destructParams_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructParams.ts) -->
+
+``` TypeScript
+function drawText({ text = '', location: [x, y] = [0, 0], bold = false }) {
+  text;
+  x;
+  y;
+  bold;
+}
+
+drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
+```
+
+**ArkTS**
+
+<!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->
+
+``` TypeScript
+function drawText(text: string, location: number[], bold: boolean) {
+  let x = location[0];
+  let y = location[1];
+  text;
+  x;
+  y;
+  bold;
+}
+
+function main() {
+  drawText('Hello, world!', [100, 50], true);
+}
+```
+
+### Nested Functions Are Not Supported
+
+**Rule:** arkts-no-nested-funcs
+
+**Severity: error**
+
+**Error code: 10605092**
+
+ArkTS does not support nested functions. Use lambdas instead.
+
+**TypeScript**
+
+<!-- @[no_nestedFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNestedFuncs.ts) -->
+
+``` TypeScript
+function addNum(a: number, b: number): void {
+
+  // Nested function.
+  function logToConsole(message: string): void {
+    console.info(message);
+  }
+
+  let result = a + b;
+
+  // Invoke the nested function.
+  logToConsole('result is ' + result);
+}
+```
+
+**ArkTS**
+
+<!-- @[no_nestedFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNestedFuncs.ets) -->
+
+``` TypeScript
+function addNum(a: number, b: number): void {
+  // Use lambda instead of a nested function.
+  let logToConsole: (message: string) => void = (message: string): void => {
+    console.info(message);
+  }
+
+  let result = a + b;
+
+  logToConsole('result is ' + result);
+}
+```
+
+### Using this Inside Stand-Alone Functions Is Not Supported
+
+**Rule:** arkts-no-standalone-this
+
+**Severity: error**
+
+**Error code: 10605093**
+
+ArkTS does not support the usage of **this** inside stand-alone functions and inside static methods. **this** can be used in instance methods only.
+
+**TypeScript**
+
+<!-- @[no_standaloneThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStandaloneThis.ts) -->
+
+``` TypeScript
+function foo(i: string) {
+  this.count = i; // Compile-time error only when noImplicitThis is enabled.
+}
+
+class A {
+  count: string = 'a';
+  m = foo;
+}
+
+let a = new A();
+console.info(a.count); // Print "a".
+a.m('b');
+console.info(a.count); // Print "b".
+```
+
+**ArkTS**
+
+<!-- @[no_standaloneThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoStandaloneThis.ets) -->
+
+``` TypeScript
+class A {
+  public count: string = 'a'
+  m(i: string): void {
+    this.count = i;
+  }
+}
+
+function main(): void {
+  let a = new A();
+  console.info(a.count);  // Print "a".
+  a.m('b');
+  console.info(a.count);  // Print "b".
+}
+```
+
+### Generator Functions Are Not Supported
+
+**Rule:** arkts-no-generators
+
+**Severity: error**
+
+**Error code: 10605094**
+
+Currently, ArkTS does not support generator functions. Use the **async** or **await** mechanism for multitasking.
+
+**TypeScript**
+
+<!-- @[no_generators_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoGenerators.ts) -->
+
+``` TypeScript
+function* counter(start: number, end: number) {
+  for (let i = start; i <= end; i++) {
+    yield i;
+  }
+}
+
+for (let num of counter(1, 5)) {
+  console.info(num.toString());
+}
+```
+
+**ArkTS**
+
+<!-- @[no_generators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGenerators.ets) -->
+
+``` TypeScript
+async function complexNumberProcessing(num: number): Promise<number> {
+  // ...
+  return num;
+}
+
+async function foo() {
+  for (let i = 1; i <= 5; i++) {
+    await complexNumberProcessing(i);
+  }
+}
+
+foo();
+```
+
+### Declaring Properties on Functions Is Not Supported
+
+**Rule:** arkts-no-func-props
+
+**Severity: error**
+
+**Error code: 10605139**
+
+ArkTS does not support dynamic change of function object layout. Therefore, declaring properties on functions is not supported.
+
+### Function.apply and Function.call Are Not Supported
+
+**Rule:** arkts-no-func-apply-call
+
+**Severity: error**
+
+**Error code: 10605152**
+
+ArkTS does not support **Function.apply** or **Function.call** because these APIs are needed in the standard library to explicitly set the parameter **this** for the called function. In ArkTS, the semantics of **this** is restricted to the conventional OOP style, and the usage of **this** in function body is prohibited.
+
+### Function.bind Is Not Supported
+
+**Rule:** arkts-no-func-bind
+
+**Severity: warning**
+
+**Error code: 10605140**
+
+ArkTS does not support **Function.bind**. These APIs are needed in the standard library to explicitly set the parameter **this** for the called function. In ArkTS, the semantics of **this** is restricted to the conventional OOP style, and the usage of **this** in function body is prohibited.
+
+
+### Private # Identifiers Are Not Supported
+
+**Rule:** arkts-no-private-identifiers
+
+**Severity: error**
+
+**Error code: 10605003**
+
+ArkTS does not use private identifiers starting with the symbol **#**. Use the keyword **private** instead.
+
+**TypeScript**
+
+<!-- @[no_symbol_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSymbol.ts) -->
+
+``` TypeScript
+class C {
+  #foo: number = 42
+}
+```
+
+**ArkTS**
+
+<!-- @[no_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSymbol.ets) -->
+
+``` TypeScript
+class C {
+  private foo: number = 42;
+}
+```
+
+### Only One Static Block Is Supported
+
+**Rule:** arkts-no-multiple-static-blocks
+
+**Severity: error**
+
+**Error code: 10605016**
+
+ArkTS does not allow several static blocks for class initialization. Combine static block statements into one static block.
+
+**TypeScript**
+
+<!-- @[no_multipleStaticBlocks_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMultipleStaticBlocks.ts) -->
+
+``` TypeScript
+class C {
+  static s: string
+
+  static {
+    C.s = 'aa'
+  }
+  static {
+    C.s = C.s + 'bb'
+  }
+}
+```
+
+**ArkTS**
+
+<!-- @[no_multipleStaticBlocks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMultipleStaticBlocks.ets) -->
+
+``` TypeScript
+class C {
+  public static s: string;
+
+  static {
+    C.s = 'aa';
+    C.s = C.s + 'bb';
+  }
+}
+```
+
+### Declaring Fields in constructor Is Not Supported
+
+**Rule:** arkts-no-ctor-prop-decls
+
+**Severity: error**
+
+**Error code: 10605025**
+
+ArkTS does not support declaring class fields in **constructor**. Explicitly declare class fields inside the **class** scope instead.
+
+**TypeScript**
+
+<!-- @[no_ctorPropDecls_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorPropDecls.ts) -->
+
+``` TypeScript
+class Person {
+  constructor(
+    protected ssn: string,
+    private firstName: string,
+    private lastName: string
+  ) {
+    this.ssn = ssn;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  getFullName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
+```
+
+**ArkTS**
+
+<!-- @[no_ctorPropDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorPropDecls.ets) -->
+
+``` TypeScript
+class Person {
+  protected ssn: string;
+  private firstName: string;
+  private lastName: string;
+
+  constructor(ssn: string, firstName: string, lastName: string) {
+    this.ssn = ssn;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  getFullName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
+```
+
+### Class Literals Are Not Supported
+
+**Rule:** arkts-no-class-literals
+
+**Severity: error**
+
+**Error code: 10605050**
+
+ArkTS does not support class literals. Introduce new named class types explicitly.
+
+**TypeScript**
+
+<!-- @[no_classLiterals_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoClassLiterals.ts) -->
+
+``` TypeScript
+const Rectangle = class {
+  constructor(height: number, width: number) {
+    this.height = height;
+    this.width = width;
+  }
+
+  height;
+  width;
+}
+
+const rectangle = new Rectangle(0.0, 0.0);
+```
+
+**ArkTS**
+
+<!-- @[no_classLiterals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoClassLiterals.ets) -->
+
+``` TypeScript
+class TestRectangle {
+  constructor(testHeight: number, testWidth: number) {
+    this.testHeight = testHeight;
+    this.testWidth = testWidth;
+  }
+
+  public testHeight: number;
+  public testWidth: number;
+}
+
+const rectangle = new TestRectangle(0.0, 0.0);
+```
+
+### Classes Cannot Be Specified in the implements Clause
+
+**Rule:** arkts-implements-only-iface
+
+**Severity: error**
+
+**Error code: 10605051**
+
+ArkTS does not allow to specify a class in the **implements** clause. Only interfaces may be specified.
+
+**TypeScript**
+
+<!-- @[impl_onlyIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ImplOnlyIface.ts) -->
+
+``` TypeScript
+class C {
+  foo() { }
+}
+
+class C1 implements C {
+  foo() { }
+}
+```
+
+**ArkTS**
+
+<!-- @[impl_onlyIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ImplOnlyIface.ets) -->
+
+``` TypeScript
+interface C {
+  foo(): void
+}
+
+class C1 implements C {
+  foo() {}
+}
+```
+
+### Reassigning Object Methods Is Not Supported
+
+**Rule:** arkts-no-method-reassignment
+
+**Severity: error**
+
+**Error code: 10605052**
+
+ArkTS does not support reassigning a method for objects. In the statically typed languages, the layout of objects is fixed and all instances of the same object must share the same code of each method.
+
+If you need to add specific behavior for certain objects, you can create separate wrapper functions or use inheritance.
+
+**TypeScript**
+
+<!-- @[no_reassignMethod_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMethodreassignment.ts) -->
+
+``` TypeScript
+class C {
+  foo() {
+    console.info('foo');
+  }
+}
+
+function bar() {
+  console.info('bar');
+}
+
+let c1 = new C();
+let c2 = new C();
+c2.foo = bar;
+
+c1.foo(); // foo
+c2.foo(); // bar
+```
+
+**ArkTS**
+
+<!-- @[no_reassignMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMethodreassignment.ets) -->
+
+``` TypeScript
+class C {
+  foo() {
+    console.info('foo');
+  }
+}
+
+class Derived extends C {
+  foo() {
+    console.info('Extra');
+    super.foo();
+  }
+}
+
+function bar() {
+  console.info('bar');
+}
+
+let c1 = new C();
+let c2 = new C();
+c1.foo(); // foo
+c2.foo(); // foo
+
+let c3 = new Derived();
+c3.foo(); // Extra foo
+```
+
+### Classes Cannot Be Used as Objects
+
+**Rule:** arkts-no-classes-as-obj
+
+**Severity: warning**
+
+**Error Code: 10605149**
+
+ArkTS does not support using classes as objects (assigning them to objects, etc.). This is because in ArkTS, a **class** declaration introduces a new type, not a value.
 
 ### Use class Instead of a Type with a Call Signature
 
@@ -466,7 +1517,7 @@ function doSomething(fn: DescribableFunction): void {
 
 **ArkTS**
 
-<!-- @[no_callSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCallSignatures.ets) -->     
+<!-- @[no_callSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCallSignatures.ets) -->
 
 ``` TypeScript
 class DescribableFunction {
@@ -498,7 +1549,7 @@ ArkTS does not support constructor signatures in object types. Use **class** ins
 
 **TypeScript**
 
-<!-- @[no_ctorSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesType.ts) -->   
+<!-- @[no_ctorSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesType.ts) -->
 
 ``` TypeScript
 class SomeObject { }
@@ -514,7 +1565,7 @@ function fn(ctor: SomeConstructor) {
 
 **ArkTS**
 
-<!-- @[no_ctorSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesType.ets) -->   
+<!-- @[no_ctorSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesType.ets) -->
 
 ``` TypeScript
 class SomeObject {
@@ -526,48 +1577,6 @@ class SomeObject {
 
 function fn(s: string): SomeObject {
   return new SomeObject(s);
-}
-```
-
-### Only One Static Block Is Supported
-
-**Rule:** arkts-no-multiple-static-blocks
-
-**Severity: error**
-
-**Error code: 10605016**
-
-ArkTS does not allow several static blocks for class initialization. Combine static block statements into one static block.
-
-**TypeScript**
-
-<!-- @[no_multipleStaticBlocks_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMultipleStaticBlocks.ts) -->   
-
-``` TypeScript
-class C {
-  static s: string
-
-  static {
-    C.s = 'aa'
-  }
-  static {
-    C.s = C.s + 'bb'
-  }
-}
-```
-
-**ArkTS**
-
-<!-- @[no_multipleStaticBlocks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMultipleStaticBlocks.ets) -->   
-
-``` TypeScript
-class C {
-  public static s: string;
-
-  static {
-    C.s = 'aa';
-    C.s = C.s + 'bb';
-  }
 }
 ```
 
@@ -583,7 +1592,7 @@ ArkTS does not allow indexed signatures. Use arrays instead.
 
 **TypeScript**
 
-<!-- @[no_indexedSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIndexedSignatures.ts) -->   
+<!-- @[no_indexedSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIndexedSignatures.ts) -->
 
 ``` TypeScript
 // Interface with an indexed signature:
@@ -601,7 +1610,7 @@ const secondItem = myArray[1];
 
 **ArkTS**
 
-<!-- @[no_indexedSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIndexedSignatures.ets) -->   
+<!-- @[no_indexedSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIndexedSignatures.ets) -->
 
 ``` TypeScript
 class X {
@@ -611,236 +1620,6 @@ class X {
 let myArray: X = new X();
 const secondItem = myArray.f[1];
 ```
-
-### Use Inheritance Instead of Intersection Types
-
-**Rule:** arkts-no-intersection-types
-
-**Severity: error**
-
-**Error code: 10605019**
-
-Currently, ArkTS does not support intersection types. Use inheritance as a workaround.
-
-**TypeScript**
-
-<!-- @[no_intersectionTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIntersectionTypes.ts) -->   
-
-``` TypeScript
-interface Identity {
-  id: number
-  name: string
-}
-
-interface Contact {
-  email: string
-  phoneNumber: string
-}
-
-type Employee = Identity & Contact
-```
-
-**ArkTS**
-
-<!-- @[no_intersectionTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIntersectionTypes.ets) -->  
-
-``` TypeScript
-interface Identity {
-  id: number;
-  name: string;
-}
-
-interface Contact {
-  email: string;
-  phoneNumber: string;
-}
-
-interface Employee extends Identity,  Contact {}
-```
-
-### Type Notation Using this Is Not Supported
-
-**Rule:** arkts-no-typing-with-this
-
-**Severity: error**
-
-**Error code: 10605021**
-
-ArkTS does not support type notation using the **this** keyword. Use the explicit type instead.
-
-**TypeScript**
-
-<!-- @[no_typingWithThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypingWithThis.ts) -->   
-
-``` TypeScript
-interface ListItem {
-  getHead(): this
-}
-
-class C {
-  n: number = 0
-
-  m(c: this) {
-    // ...
-  }
-}
-```
-
-**ArkTS**
-
-<!-- @[no_typingWithThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypingWithThis.ets) -->  
-
-``` TypeScript
-interface testListItem {
-  getHead(): testListItem;
-}
-
-class C {
-  public n: number = 0;
-
-  m(c: C) {
-    // ...
-  }
-}
-```
-
-### Conditional Types Are Not Supported
-
-**Rule:** arkts-no-conditional-types
-
-**Severity: error**
-
-**Error code: 10605022**
-
-ArkTS does not support conditional type aliases. Introduce a new type with constraints explicitly, or rewrite logic using **Object**.
-
-The keyword **infer** is not supported.
-
-**TypeScript**
-
-<!-- @[no_conditionalTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoConditionalTypes.ts) -->   
-
-``` TypeScript
-type X<T> = T extends number ? T : never;
-type Y<T> = T extends Array<infer Item> ? Item : never;
-```
-
-**ArkTS**
-
-<!-- @[no_conditionalTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoConditionalTypes.ets) -->
-
-``` TypeScript
-// Provide explicit constraints within type alias.
-type X1<T extends number> = T;
-
-// Rewrite with Object. Less type control requires more type checking for safety.
-type X2<T> = Object;
-
-// Item must be used as a generic parameter and can be instantiated correctly.
-type YI<Item, T extends Array<Item>> = Item;
-```
-
-### Declaring Fields in constructor Is Not Supported
-
-**Rule:** arkts-no-ctor-prop-decls
-
-**Severity: error**
-
-**Error code: 10605025**
-
-ArkTS does not support declaring class fields in **constructor**. Explicitly declare class fields inside the **class** scope instead.
-
-**TypeScript**
-
-<!-- @[no_ctorPropDecls_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorPropDecls.ts) -->   
-
-``` TypeScript
-class Person {
-  constructor(
-    protected ssn: string,
-    private firstName: string,
-    private lastName: string
-  ) {
-    this.ssn = ssn;
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  getFullName(): string {
-    return this.firstName + ' ' + this.lastName;
-  }
-}
-```
-
-**ArkTS**
-
-<!-- @[no_ctorPropDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorPropDecls.ets) -->  
-
-``` TypeScript
-class Person {
-  protected ssn: string;
-  private firstName: string;
-  private lastName: string;
-
-  constructor(ssn: string, firstName: string, lastName: string) {
-    this.ssn = ssn;
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  getFullName(): string {
-    return this.firstName + ' ' + this.lastName;
-  }
-}
-```
-
-### Constructor Signatures Are Not Supported in Interfaces
-
-**Rule:** arkts-no-ctor-signatures-iface
-
-**Severity: error**
-
-**Error code: 10605027**
-
-ArkTS does not allow constructor signatures to be defined in interfaces. Use common functions or methods instead.
-
-**TypeScript**
-
-<!-- @[no_ctorSignaturesIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesIface.ts) -->   
-
-``` TypeScript
-interface I {
-  new(s: string): I;
-}
-
-function fn(i: I) {
-  return new i('hello');
-}
-```
-
-**ArkTS**
-
-<!-- @[no_ctorSignaturesIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesIface.ets) -->  
-
-``` TypeScript
-interface I {
-  create(s: string): I;
-}
-
-function fn(i: I) {
-  return i.create('hello');
-}
-```
-
-### Indexed Access Types Are Not Supported
-
-**Rule:** arkts-no-aliases-by-index
-
-**Severity: error**
-
-**Error code: 10605028**
-
-ArkTS does not support indexed access types. Use the type name instead.
 
 ### Indexed Access Is Not Supported for Fields
 
@@ -915,6 +1694,272 @@ let arr = new Int32Array(1);
 arr[0];
 ```
 
+### Object Literals Cannot Be Used as Type Declarations
+
+**Rule:** arkts-no-obj-literals-as-types
+
+**Severity: error**
+
+**Error code: 10605040**
+
+ArkTS does not support the usage of object literals to declare types in place. Use classes or interfaces to declare types instead.
+
+**TypeScript**
+
+<!-- @[no_objLiteralsAsTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoObjLiteralsAsTypes.ts) -->
+
+``` TypeScript
+let o: { x: number, y: number } = {
+  x: 2,
+  y: 3
+}
+
+type S = Set<{ x: number, y: number }>
+```
+
+**ArkTS**
+
+<!-- @[no_objLiteralsAsTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoObjLiteralsAsTypes.ets) -->
+
+``` TypeScript
+class O {
+  public x: number = 0;
+  public y: number = 0;
+}
+
+let o: O = {x: 2, y: 3};
+
+type S = Set<O>;
+```
+
+### Prototype Assignment Is Not Supported
+
+**Rule:** arkts-no-prototype-assignment
+
+**Severity: error**
+
+**Error code: 10605136**
+
+ArkTS does not support prototype assignment because there is no concept of runtime prototype inheritance in the language. This feature is considered not applicable to static typing.
+
+**TypeScript**
+
+<!-- @[no_prototypeAssign_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPrototypeAssignment.ts) -->
+
+``` TypeScript
+let C = function (p) {
+  this.p = p; // Compile-time error only when noImplicitThis is enabled.
+}
+
+C.prototype = {
+  m() {
+    console.info(this.p);
+  }
+}
+
+C.prototype.q = function (r: string) {
+  return this.p == r;
+}
+```
+
+**ArkTS**
+
+<!-- @[no_prototypeAssign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoPrototypeAssignment.ets) -->
+
+``` TypeScript
+class C {
+  public p: string = '';
+  m() {
+    console.info(this.p);
+  }
+  q(r: string) {
+    return this.p === r;
+  }
+}
+```
+
+### Type Inference in Case of Generic Function Calls Is Limited
+
+**Rule: **arkts-no-inferred-generic-params
+
+**Severity: error**
+
+**Error code: 10605034**
+
+ArkTS allows to omit generic type parameters if it is possible to infer the concrete types from the parameters passed to the function. A compile-time error occurs otherwise. 
+
+In particular, inference of generic type parameters based only on function return types is prohibited.
+
+**TypeScript**
+
+```typescript
+function choose<T>(x: T, y: T): T {
+  return Math.random() < 0.5 ? x: y;
+}
+
+let x = choose(10, 20);   // OK. choose<number>(...) is inferred.
+let y = choose('10', 20); // Compile-time error
+
+function greet<T>(): T {
+  return 'Hello' as T;
+}
+let z = greet() // Type of T is inferred as "unknown".
+```
+
+**ArkTS**
+
+```typescript
+function choose<T>(x: T, y: T): T {
+  return Math.random() < 0.5 ? x: y;
+}
+
+let x = choose(10, 20);   // OK. choose<number>(...) is inferred.
+let y = choose('10', 20); // Compile-time error
+
+function greet<T>(): T {
+  return 'Hello' as T;
+}
+let z = greet<string>();
+```
+
+### Use Inheritance Instead of Intersection Types
+
+**Rule:** arkts-no-intersection-types
+
+**Severity: error**
+
+**Error code: 10605019**
+
+Currently, ArkTS does not support intersection types. Use inheritance as a workaround.
+
+**TypeScript**
+
+<!-- @[no_intersectionTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIntersectionTypes.ts) -->
+
+``` TypeScript
+interface Identity {
+  id: number
+  name: string
+}
+
+interface Contact {
+  email: string
+  phoneNumber: string
+}
+
+type Employee = Identity & Contact
+```
+
+**ArkTS**
+
+<!-- @[no_intersectionTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIntersectionTypes.ets) -->
+
+``` TypeScript
+interface Identity {
+  id: number;
+  name: string;
+}
+
+interface Contact {
+  email: string;
+  phoneNumber: string;
+}
+
+interface Employee extends Identity,  Contact {}
+```
+
+### Type Notation Using this Is Not Supported
+
+**Rule:** arkts-no-typing-with-this
+
+**Severity: error**
+
+**Error code: 10605021**
+
+ArkTS does not support type notation using the **this** keyword. Use the explicit type instead.
+
+**TypeScript**
+
+<!-- @[no_typingWithThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypingWithThis.ts) -->
+
+``` TypeScript
+interface ListItem {
+  getHead(): this
+}
+
+class C {
+  n: number = 0
+
+  m(c: this) {
+    // ...
+  }
+}
+```
+
+**ArkTS**
+
+<!-- @[no_typingWithThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypingWithThis.ets) -->
+
+``` TypeScript
+interface testListItem {
+  getHead(): testListItem;
+}
+
+class C {
+  public n: number = 0;
+
+  m(c: C) {
+    // ...
+  }
+}
+```
+
+### Conditional Types Are Not Supported
+
+**Rule:** arkts-no-conditional-types
+
+**Severity: error**
+
+**Error code: 10605022**
+
+ArkTS does not support conditional type aliases. Introduce a new type with constraints explicitly, or rewrite logic using **Object**.
+
+The keyword **infer** is not supported.
+
+**TypeScript**
+
+<!-- @[no_conditionalTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoConditionalTypes.ts) -->
+
+``` TypeScript
+type X<T> = T extends number ? T : never;
+type Y<T> = T extends Array<infer Item> ? Item : never;
+```
+
+**ArkTS**
+
+<!-- @[no_conditionalTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoConditionalTypes.ets) -->
+
+``` TypeScript
+// Provide explicit constraints within type alias.
+type X1<T extends number> = T;
+
+// Rewrite with Object. Less type control requires more type checking for safety.
+type X2<T> = Object;
+
+// Item must be used as a generic parameter and can be instantiated correctly.
+type YI<Item, T extends Array<Item>> = Item;
+```
+
+### Indexed Access Types Are Not Supported
+
+**Rule:** arkts-no-aliases-by-index
+
+**Severity: error**
+
+**Error code: 10605028**
+
+ArkTS does not support indexed access types. Use the type name instead.
+
 ### Structural Typing Is Not Supported
 
 **Rule:** arkts-no-structural-typing
@@ -927,7 +1972,7 @@ Currently, ArkTS does not support structural typing. This means that the compile
 
 **TypeScript**
 
-<!-- @[no_structuralTyping_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStructuralTyping.ts) -->    
+<!-- @[no_structuralTyping_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStructuralTyping.ts) -->
 
 ``` TypeScript
 interface I1 {
@@ -1031,971 +2076,6 @@ foo(new X());
 foo(new Y());
 ```
 
-### Type Inference in Case of Generic Function Calls Is Limited
-
-**Rule: **arkts-no-inferred-generic-params
-
-**Severity: error**
-
-**Error code: 10605034**
-
-ArkTS allows to omit generic type parameters if it is possible to infer the concrete types from the parameters passed to the function. A compile-time error occurs otherwise. 
-
-In particular, inference of generic type parameters based only on function return types is prohibited.
-
-**TypeScript**
-
-```typescript
-function choose<T>(x: T, y: T): T {
-  return Math.random() < 0.5 ? x: y;
-}
-
-let x = choose(10, 20);   // OK. choose<number>(...) is inferred.
-let y = choose('10', 20); // Compile-time error
-
-function greet<T>(): T {
-  return 'Hello' as T;
-}
-let z = greet() // Type of T is inferred as "unknown".
-```
-
-**ArkTS**
-
-```typescript
-function choose<T>(x: T, y: T): T {
-  return Math.random() < 0.5 ? x: y;
-}
-
-let x = choose(10, 20);   // OK. choose<number>(...) is inferred.
-let y = choose('10', 20); // Compile-time error
-
-function greet<T>(): T {
-  return 'Hello' as T;
-}
-let z = greet<string>();
-```
-
-### Object Literal Must Correspond to Some Explicitly Declared Class or Interface
-
-**Rule:** arkts-no-untyped-obj-literals
-
-**Severity: error**
-
-**Error code: 10605038**
-
-ArkTS supports usage of object literals if the compiler can infer to the classes or interfaces that such literals correspond to. Otherwise, a compile-time error occurs. In some scenarios, the compiler can infer the type of the literal based on the context.
-
-Using literals to initialize classes and interfaces is specifically not supported in the following contexts:
-
-* Initialization of anything that has **any**, **Object**, or **object** type
-* Initialization of classes or interfaces with methods
-* Initialize a class that contains a custom **constructor** with parameters.
-* Initialization of classes with **readonly** fields
-
-**Example 1**
-
-**TypeScript**
-
-<!-- @[no_untypedCaseOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->    
-
-``` TypeScript
-let o1 = { n: 42, s: 'foo' };
-let o2: Object = { n: 42, s: 'foo' };
-let o3: object = { n: 42, s: 'foo' };
-
-let oo: Object[] = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
-```
-
-**ArkTS**
-
-<!-- @[no_untypedCaseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->  
-
-``` TypeScript
-class C1 {
-  public n: number = 0;
-  public s: string = '';
-}
-
-let o1: C1 = {n: 42, s: 'foo'};
-let o2: C1 = {n: 42, s: 'foo'};
-let o3: C1 = {n: 42, s: 'foo'};
-
-let oo: C1[] = [{n: 1, s: '1'}, {n: 2, s: '2'}];
-```
-
-**Example 2**
-
-**TypeScript**
-
-<!-- @[no_untypedCaseTwo_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->    
-
-``` TypeScript
-class C2 {
-  s: string;
-  constructor(s: string) {
-    this.s = 's =' + s;
-  }
-}
-let o4: C2 = { s: 'foo' };
-```
-
-**ArkTS**
-
-<!-- @[no_untypedCaseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->   
-
-``` TypeScript
-class C2 {
-  public s: string;
-  constructor(s: string) {
-    this.s = 's =' + s;
-  }
-}
-let o4 = new C2('foo');
-```
-
-**Example 3**
-
-**TypeScript**
-
-<!-- @[no_untypedCaseThree_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->  
-
-``` TypeScript
-class C3 {
-  readonly n: number = 0;
-  readonly s: string = '';
-}
-let o5: C3 = { n: 42, s: 'foo' };
-```
-
-**ArkTS**
-
-<!-- @[no_untypedCaseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->   
-
-``` TypeScript
-class C3 {
-  public n: number = 0;
-  public s: string = '';
-}
-let o5: C3 = {n: 42, s: 'foo'};
-```
-
-**Example 4**
-
-**TypeScript**
-
-<!-- @[no_untypedCaseFour_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->   
-
-``` TypeScript
-abstract class A { }
-let o6: A = {};
-```
-
-**ArkTS**
-
-<!-- @[no_untypedCaseFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
-
-``` TypeScript
-abstract class A {}
-class C extends A {}
-let o6: C = {}; // Or let o6: C = new C()
-```
-
-**Example 5**
-
-**TypeScript**
-
-<!-- @[no_untypedCaseFive_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->   
-
-``` TypeScript
-class C4 {
-  n: number = 0;
-  s: string = '';
-  f() {
-    console.info('Hello');
-  }
-}
-let o7: C4 = { n: 42, s: 'foo', f: () => { } };
-```
-
-**ArkTS**
-
-<!-- @[no_untypedCaseFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) --> 
-
-``` TypeScript
-class C4 {
-  public n: number = 0;
-  public s: string = '';
-  f() {
-    console.info('Hello');
-  }
-}
-let o7 = new C4();
-o7.n = 42;
-o7.s = 'foo';
-```
-
-**Example 6**
-
-**TypeScript**
-
-<!-- @[no_untypedCaseSix_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
-
-``` TypeScript
-class Point {
-  x: number = 0;
-  y: number = 0;
-}
-
-function getPoint(o: Point): Point {
-  return o;
-}
-
-// Because TS supports structural typing, p is inferred to be of type Point.
-let p = { x: 5, y: 10 };
-getPoint(p);
-
-// The object literal is inferred to be of type Point from the context.
-getPoint({ x: 5, y: 10 });
-```
-
-**ArkTS**
-
-<!-- @[no_untypedCaseSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
-
-``` TypeScript
-class Point {
-  public x: number = 0;
-  public y: number = 0;
-
-  // Use constructor() to create a valid object before literal initialization.
-  // Because no constructor is defined for Point, the compiler automatically adds a default constructor.
-}
-
-function getPoint(o: Point): Point {
-  return o;
-}
-
-// Explicitly define the type for literal initialization.
-let p: Point = {x: 5, y: 10};
-getPoint(p);
-
-// getPoint accepts the Point type, and literal initialization creates a new Point instance.
-getPoint({x: 5, y: 10});
-```
-
-### Object Literals Cannot Be Used as Type Declarations
-
-**Rule:** arkts-no-obj-literals-as-types
-
-**Severity: error**
-
-**Error code: 10605040**
-
-ArkTS does not support the usage of object literals to declare types in place. Use classes or interfaces to declare types instead.
-
-**TypeScript**
-
-<!-- @[no_objLiteralsAsTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoObjLiteralsAsTypes.ts) -->   
-
-``` TypeScript
-let o: { x: number, y: number } = {
-  x: 2,
-  y: 3
-}
-
-type S = Set<{ x: number, y: number }>
-```
-
-**ArkTS**
-
-<!-- @[no_objLiteralsAsTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoObjLiteralsAsTypes.ets) -->   
-
-``` TypeScript
-class O {
-  public x: number = 0;
-  public y: number = 0;
-}
-
-let o: O = {x: 2, y: 3};
-
-type S = Set<O>;
-```
-
-### Array Literals Must Contain Elements of Only Inferrable Types
-
-**Rule:** arkts-no-noninferrable-arr-literals
-
-**Severity: error**
-
-**Error code: 10605043**
-
-Basically, ArkTS infers the type of an array literal as a union type of its contents. However, a compile-time error occurs if there is at least one element with a non-inferrable type (for example, untyped object literal).
-
-**TypeScript**
-
-<!-- @[no_unInferred_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNoninferrableArrLiterals.ts) -->   
-
-``` TypeScript
-let a = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
-```
-
-**ArkTS**
-
-<!-- @[no_unInferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNoninferrableArrLiterals.ets) -->
-
-``` TypeScript
-class C {
-  public n: number = 0
-  public s: string = ''
-}
-
-let a1 = [{n: 1, s: '1'} as C, {n: 2, s: '2'} as C]; // a1 is of type "C[]".
-let a2: C[] = [{n: 1, s: '1'}, {n: 2, s: '2'}];    // a2 is of type "C[]".
-```
-
-### Use Arrow Functions Instead of Function Expressions
-
-**Rule:** arkts-no-func-expressions
-
-**Severity: error**
-
-**Error code: 10605046**
-
-ArkTS does not support function expressions. Use arrow functions instead to specify explicitly.
-
-**TypeScript**
-
-<!-- @[no_funcExpressions_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoFuncExpressions.ts) -->   
-
-``` TypeScript
-let f = function (s: string) {
-  console.info(s);
-}
-```
-
-**ArkTS**
-
-<!-- @[no_funcExpressions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoFuncExpressions.ets) -->   
-
-``` TypeScript
-let f = (s: string) => {
-  console.info(s);
-}
-```
-
-### Class Literals Are Not Supported
-
-**Rule:** arkts-no-class-literals
-
-**Severity: error**
-
-**Error code: 10605050**
-
-ArkTS does not support class literals. Introduce new named class types explicitly.
-
-**TypeScript**
-
-<!-- @[no_classLiterals_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoClassLiterals.ts) -->   
-
-``` TypeScript
-const Rectangle = class {
-  constructor(height: number, width: number) {
-    this.height = height;
-    this.width = width;
-  }
-
-  height;
-  width;
-}
-
-const rectangle = new Rectangle(0.0, 0.0);
-```
-
-**ArkTS**
-
-<!-- @[no_classLiterals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoClassLiterals.ets) -->   
-
-``` TypeScript
-class TestRectangle {
-  constructor(testHeight: number, testWidth: number) {
-    this.testHeight = testHeight;
-    this.testWidth = testWidth;
-  }
-
-  public testHeight: number;
-  public testWidth: number;
-}
-
-const rectangle = new TestRectangle(0.0, 0.0);
-```
-
-### Classes Cannot Be Specified in the implements Clause
-
-**Rule:** arkts-implements-only-iface
-
-**Severity: error**
-
-**Error code: 10605051**
-
-ArkTS does not allow to specify a class in the **implements** clause. Only interfaces may be specified.
-
-**TypeScript**
-
-<!-- @[impl_onlyIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ImplOnlyIface.ts) -->   
-
-``` TypeScript
-class C {
-  foo() { }
-}
-
-class C1 implements C {
-  foo() { }
-}
-```
-
-**ArkTS**
-
-<!-- @[impl_onlyIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ImplOnlyIface.ets) -->   
-
-``` TypeScript
-interface C {
-  foo(): void
-}
-
-class C1 implements C {
-  foo() {}
-}
-```
-
-### Reassigning Object Methods Is Not Supported
-
-**Rule:** arkts-no-method-reassignment
-
-**Severity: error**
-
-**Error code: 10605052**
-
-ArkTS does not support reassigning a method for objects. In the statically typed languages, the layout of objects is fixed and all instances of the same object must share the same code of each method.
-
-If you need to add specific behavior for certain objects, you can create separate wrapper functions or use inheritance.
-
-**TypeScript**
-
-<!-- @[no_reassignMethod_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMethodreassignment.ts) -->  
-
-``` TypeScript
-class C {
-  foo() {
-    console.info('foo');
-  }
-}
-
-function bar() {
-  console.info('bar');
-}
-
-let c1 = new C();
-let c2 = new C();
-c2.foo = bar;
-
-c1.foo(); // foo
-c2.foo(); // bar
-```
-
-**ArkTS**
-
-<!-- @[no_reassignMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMethodreassignment.ets) -->  
-
-``` TypeScript
-class C {
-  foo() {
-    console.info('foo');
-  }
-}
-
-class Derived extends C {
-  foo() {
-    console.info('Extra');
-    super.foo();
-  }
-}
-
-function bar() {
-  console.info('bar');
-}
-
-let c1 = new C();
-let c2 = new C();
-c1.foo(); // foo
-c2.foo(); // foo
-
-let c3 = new Derived();
-c3.foo(); // Extra foo
-```
-
-### Only the as T Syntax Is Supported for Type Casting
-
-**Rule:** arkts-as-casts
-
-**Severity: error**
-
-**Error code: 10605053**
-
-ArkTS supports the keyword **as** as the only syntax for type casting. Incorrect casting causes a compile-time error or runtime **ClassCastException**. The **\<type>** syntax for type casting is not supported.
-
-Use the expression **new** instead of **as** if a **primitive** type (such as a **number** or a **boolean**) must be cast to the reference type.
-
-**TypeScript**
-
-<!-- @[as_casts_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/AsCasts.ts) -->  
-
-``` TypeScript
-class testShape { }
-class testCircle extends testShape { x: number = 5 }
-class testSquare extends testShape { y: string = 'a' }
-
-function createShape(): testShape {
-    return new testCircle();
-}
-
-let c1 = <testCircle>createShape();
-
-let c2 = createShape() as testCircle;
-
-// If the conversion is incorrect, no compile-time or runtime error is reported.
-let c3 = createShape() as testSquare;
-console.info(c3.y); // undefined
-
-// In TS, since the `as` keyword does not take effect at runtime, the left operand of `instanceof` is not boxed into a reference type at runtime.
-let e1 = (5.0 as Number) instanceof Number; // false
-
-// A Number object is created and instanceof works as expected.
-let e2 = (new Number(5.0)) instanceof Number; // true
-```
-
-**ArkTS**
-
-<!-- @[as_casts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/AsCasts.ets) -->   
-
-``` TypeScript
-class TestShape {}     
-class TestCircle extends TestShape { public x: number = 5 }     
-
-
-function createShape(): TestShape {     
-  return new TestCircle();     
-}     
-
-
-let c1 = createShape() as TestCircle;
-
-// A Number object is created and instanceof works as expected.
-let e1 = (new Number(5.0)) instanceof Number; // true
-```
-
-### JSX Expressions Are Not Supported
-
-**Rule:** arkts-no-jsx
-
-**Severity: error**
-
-**Error code: 10605054**
-
-Do not use JSX since no alternative is provided to rewrite it.
-
-### Unary Operators +, -, and ~ Work Only on Numbers
-
-**Rule:** arkts-no-polymorphic-unops
-
-**Severity: error**
-
-**Error code: 10605055**
-
-ArkTS allows unary operators to work on numeric types only. A compile-time error occurs if these operators are applied to a non-numeric type. Unlike in TypeScript, implicit casting of strings in this context is not supported and casting must be done explicitly.
-
-**TypeScript**
-
-<!-- @[no_polymorphicUnops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPolymorphicUnops.ts) -->   
-
-``` TypeScript
-let a = +5;    // 5 as number
-let b = +'5';    // 5 as number
-let c = -5;    // -5 as number
-let d = -'5';    // -5 as number
-let e = ~5;    // -6 as number
-let f = ~'5';    // -6 as number
-let g = +'string'; // NaN as number
-
-function returnTen(): string {
-    return '-10';
-}
-
-function returnString(): string {
-    return 'string';
-}
-
-let x = +returnTen();  // -10 as number
-let y = +returnString(); // NaN
-```
-
-**ArkTS**
-
-```typescript
-let a = +5;    // 5 as number
-let b = +'5';    // Compile-time error
-let c = -5;    // -5 as number
-let d = -'5';    // Compile-time error
-let e = ~5;    // -6 as number
-let f = ~'5';    // Compile-time error
-let g = +'string'; // Compile-time error
-
-function returnTen(): string {
-  return '-10';
-}
-
-function returnString(): string {
-  return 'string';
-}
-
-let x = +returnTen();  // Compile-time error
-let y = +returnString(); // Compile-time error
-```
-
-### delete Operator Is Not Supported
-
-**Rule:** arkts-no-delete
-
-**Severity: error**
-
-**Error code: 10605059**
-
-ArkTS assumes that object layout is known at compile time and cannot be changed at runtime. Therefore, the operation of deleting a property makes no sense.
-
-**TypeScript**
-
-<!-- @[no_delete_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDelete.ts) -->   
-
-``` TypeScript
-class Point {
-  x?: number = 0.0;
-  y?: number = 0.0;
-}
-
-let p = new Point();
-delete p.y;
-```
-
-**ArkTS**
-
-<!-- @[no_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDelete.ets) -->  
-
-``` TypeScript
-// A nullable type can be declared, with null used as the default value.
-class Point {
-  public x: number | null = 0;
-  public y: number | null = 0;
-}
-
-let p = new Point();
-p.y = null;
-```
-
-### typeof Operator Is Allowed Only in Expression Contexts
-
-**Rule:** arkts-no-type-query
-
-**Severity: error**
-
-**Error code: 10605060**
-
-ArkTS supports the **typeof** operator only in the expression context. Using **typeof** to specify type notations is not supported.
-
-**TypeScript**
-
-<!-- @[no_typeQuery_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypeQuery.ts) -->  
-
-``` TypeScript
-let n1 = 42;
-let s1 = 'foo';
-console.info(typeof n1); // 'number'
-console.info(typeof s1); // 'string'
-let n2: typeof n1;
-let s2: typeof s1;
-```
-
-**ArkTS**
-
-<!-- @[no_typeQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypeQuery.ets) -->  
-
-``` TypeScript
-let n1 = 42;
-let s1 = 'foo';
-console.info(typeof n1); // 'number'
-console.info(typeof s1); // 'string'
-let n2: number;
-let s2: string;
-```
-
-### instanceof Operator Is Partially Supported
-
-**Rule:** arkts-instanceof-ref-types
-
-**Severity: error**
-
-**Error code: 10605065**
-
-In TypeScript, the left-hand side of an **instanceof** expression must be of the type **any**, an object type, or a type parameter. Otherwise, the result is **false**. In ArkTS, the left-hand side of an expression may be of any reference type, for example, an object, an array, or a function. Otherwise, a compile-time error occurs. In addition, the left operand in ArkTS cannot be a type. It must be an object instance.
-
-**TypeScript**
-
-<!-- @[instanceof_ref_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/InstanceofRefTypes.ts) -->  
-
-``` TypeScript
-let num: number = 42;
-let result = num instanceof Number;
-console.info('result = ', result); // result = false
-```
-
-**ArkTS**
-
-```typescript
-let num: number = 42;
-let result = num instanceof Number; // Compile-time error
-```
-
-### in Operator Is Not Supported
-
-**Rule:** arkts-no-in
-
-**Severity: error**
-
-**Error code: 10605066**
-
-ArkTS does not support the operator **in**. This operator makes little sense since the object layout is known at compile time and cannot be changed at runtime. Use **instanceof** as a workaround if you want to check whether certain class members exist.
-
-**TypeScript**
-
-<!-- @[no_in_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIn.ts) -->  
-
-``` TypeScript
-class Person {
-  name: string = '';
-}
-let p = new Person();
-
-let b = 'name' in p; // true
-```
-
-**ArkTS**
-
-<!-- @[no_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIn.ets) -->  
-
-``` TypeScript
-class Person {
-  public name: string = '';
-}
-let p = new Person();
-
-let b = p instanceof Person; // True. "name" is guaranteed to be present.
-```
-
-### Destructuring Assignment Is Not Supported
-
-**Rule:** arkts-no-destruct-assignment
-
-**Severity: error**
-
-**Error code: 10605069**
-
-ArkTS does not support destructuring assignment. Use other idioms (for example, a temporary variable, where applicable) instead.
-
-**TypeScript**
-
-<!-- @[no_destructAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructAssignment.ts) -->  
-
-``` TypeScript
-let [one, two] = [1, 2]; // Semicolon is required here.
-[one, two] = [two, one];
-
-let head, tail;
-[head, ...tail] = [1, 2, 3, 4];
-```
-
-**ArkTS**
-
-<!-- @[no_destructAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructAssignment.ets) -->   
-
-``` TypeScript
-let arr: number[] = [1, 2];
-let one = arr[0];
-let two = arr[1];
-
-let tmp = one;
-one = two;
-two = tmp;
-
-let data: Number[] = [1, 2, 3, 4];
-let head = data[0];
-let tail: Number[] = [];
-for (let i = 1; i < data.length; ++i) {
-  tail.push(data[i]);
-}
-```
-
-### Comma Operator Is Supported Only in for Loops
-
-**Rule:** arkts-no-comma-outside-loops
-
-**Severity: error**
-
-**Error code: 10605071**
-
-ArkTS supports the comma operator (,) only in **for** loops. In other cases, the comma operator is useless as it makes the execution order harder to understand.
-> **NOTE**
->
-> - This is different from the comma separator used to declare variables and pass function parameters.
-
-**TypeScript**
-
-<!-- @[no_commaLoops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCommaOutsideloops.ts) -->  
-
-``` TypeScript
-for (let i = 0, j = 0; i < 10; ++i, j += 2) {
-  // ...
-}
-
-let x = 0;
-x = (++x, x++); // 1
-```
-
-**ArkTS**
-
-<!-- @[no_commaLoops](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCommaOutsideloops.ets) -->  
-
-``` TypeScript
-for (let i = 0, j = 0; i < 10; ++i, j += 2) {
-  // ...
-}
-
-// Use the explicit execution order instead of the comma operator.
-let x = 0;
-++x;
-x = x++;
-```
-
-### Destructuring Variable Declarations Are Not Supported
-
-**Rule:** arkts-no-destruct-decls
-
-**Severity: error**
-
-**Error code: 10605074**
-
-ArkTS does not support destructuring variable declarations. This is a dynamic feature relying on structural compatibility. In addition, names in destructuring declarations must be equal to properties within destructed classes.
-
-**TypeScript**
-
-<!-- @[no_destructDecls_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructDecls.ts) -->   
-
-``` TypeScript
-class Point {
-  x: number = 0.0;
-  y: number = 0.0;
-}
-
-function returnZeroPoint(): Point {
-  return new Point();
-}
-
-let { x, y } = returnZeroPoint();
-```
-
-**ArkTS**
-
-<!-- @[no_destructDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructDecls.ets) -->  
-
-``` TypeScript
-class Point {
-  public x: number = 0.0;
-  public y: number = 0.0;
-}
-
-function returnZeroPoint(): Point {
-  return new Point();
-}
-
-// Create local variables to process each field.
-let zp = returnZeroPoint();
-let x = zp.x;
-let y = zp.y;
-```
-
-### Type Annotation in the Catch Clause Is Not Supported
-
-**Rule:** arkts-no-types-in-catch
-
-**Severity: error**
-
-**Error code: 10605079**
-
-In TypeScript, the catch clause variable type annotation must be **any** or **unknown** if specified. As ArkTS does not support these types, omit type annotations.
-
-**TypeScript**
-
-<!-- @[noTypes_inCatch_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypesInCatch.ts) -->  
-
-``` TypeScript
-try {
-  // ...
-} catch (a: unknown) {
-  // Handle exceptions.
-}
-```
-
-**ArkTS**
-
-<!-- @[noTypes_inCatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypesInCatch.ets) -->  
-
-``` TypeScript
-try {
-  // ...
-} catch (a) {
-  // Handle exceptions.
-}
-```
-
-### for .. in Is Not Supported
-
-**Rule:** arkts-no-for-in
-
-**Severity: error**
-
-**Error code: 10605080**
-
-ArkTS does not support iteration over object contents by the **for ... in** loop. For objects, iteration over properties at runtime is considered redundant because object layout is known at compile time and cannot change at runtime.
-
-**TypeScript**
-
-<!-- @[no_forIn_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoForIn.ts) -->   
-
-``` TypeScript
-let a: string[] = ['1.0', '2.0', '3.0'];
-for (let i in a) {
-  console.info(a[i]);
-}
-```
-
-**ArkTS**
-
-<!-- @[no_forIn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoForIn.ets) -->   
-
-``` TypeScript
-let a: string[] = ['1.0', '2.0', '3.0'];
-for (let i = 0; i < a.length; ++i) {
-  console.info(a[i]);
-}
-```
-
 ### Mapped Type Expression Is Not Supported
 
 **Rule:** arkts-no-mapped-types
@@ -2008,7 +2088,7 @@ ArkTS does not support mapped types. Use other language idioms and regular class
 
 **TypeScript**
 
-<!-- @[no_mappedTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMappedTypes.ts) -->   
+<!-- @[no_mappedTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMappedTypes.ts) -->
 
 ``` TypeScript
 type OptionsFlags<Type> = {
@@ -2018,7 +2098,7 @@ type OptionsFlags<Type> = {
 
 **ArkTS**
 
-<!-- @[no_mappedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMappedTypes.ets) -->   
+<!-- @[no_mappedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMappedTypes.ets) -->
 
 ``` TypeScript
 class C {
@@ -2030,310 +2110,6 @@ class CFlags {
   public n: boolean = false;
   public s: boolean = false;
 }
-```
-
-### with Statement Is Not Supported
-
-**Rule:** arkts-no-with
-
-**Severity: error**
-
-**Error code: 10605084**
-
-ArkTS does not support the **with** statement. Use other language idioms to achieve the same behavior.
-
-**TypeScript**
-
-```typescript
-with (Math) { // Compile-time error, but JavaScript code can still be emitted.
-  let r: number = 42;
-  let area: number = PI * r * r;
-}
-```
-
-**ArkTS**
-
-<!-- @[no_with](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoWith.ets) -->   
-
-``` TypeScript
-let r: number = 42;
-let area: number = Math.PI * r * r;
-```
-
-### throw Statements Do Not Accept Values of Arbitrary Types
-
-**Rule:** arkts-limited-throw
-
-**Severity: error**
-
-**Error code: 10605087**
-
-ArkTS supports throwing only objects of the class **Error** or any derived class. Throwing an arbitrary type (for example, **number** or **string**) is prohibited.
-
-**TypeScript**
-
-<!-- @[limited_throw_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/LimitedThrow.ts) -->   
-
-``` TypeScript
-throw 4;
-throw '';
-throw new Error();
-```
-
-**ArkTS**
-
-<!-- @[limited_throw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/LimitedThrow.ets) -->   
-
-``` TypeScript
-throw new Error();
-```
-
-### Function Return Type Inference Is Limited
-
-**Rule:** arkts-no-implicit-return-types
-
-**Severity: error**
-
-**Error code: 10605090**
-
-ArkTS supports type inference for function return types, but this functionality is currently restricted. In particular, when the expression in the **return** statement is a call to a function or method whose return value type is omitted, a compile-time error occurs. If this is the case, specify the return type explicitly.
-
-**TypeScript**
-
-<!-- @[no_implicitReturnTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoImplicitReturnTypes.ts) -->  
-
-``` TypeScript
-// Compile-time error only when noImplicitAny is enabled.
-function f(x: number) {
-  if (x <= 0) {
-    return x;
-  }
-  return g(x);
-}
-
-// Compile-time error only when noImplicitAny is enabled.
-function g(x: number) {
-  return f(x - 1);
-}
-
-function doOperation(x: number, y: number) {
-  return x + y;
-}
-
-f(10);
-doOperation(2, 3);
-```
-
-**ArkTS**
-
-<!-- @[no_implicitReturnTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImplicitReturnTypes.ets) -->  
-
-``` TypeScript
-// An explicit return type is required.
-function f(x: number): number {
-  if (x <= 0) {
-    return x;
-  }
-  return g(x);
-}
-
-// The return type can be omitted because it can be inferred from the type annotation of f.
-function g(x: number): number {
-  return f(x - 1);
-}
-
-// Return type may be omitted.
-function doOperation(x: number, y: number) {
-  return x + y;
-}
-
-f(10);
-doOperation(2, 3);
-```
-
-### Destructuring Parameter Declarations Are Not Supported
-
-**Rule:** arkts-no-destruct-params
-
-**Severity: error**
-
-**Error code: 10605091**
-
-ArkTS requires that arguments be explicitly passed to function parameters without destructing.
-
-**TypeScript**
-
-<!-- @[no_destructParams_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructParams.ts) -->   
-
-``` TypeScript
-function drawText({ text = '', location: [x, y] = [0, 0], bold = false }) {
-  text;
-  x;
-  y;
-  bold;
-}
-
-drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
-```
-
-**ArkTS**
-
-<!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->   
-
-``` TypeScript
-function drawText(text: String, location: number[], bold: boolean) {
-  let x = location[0];
-  let y = location[1];
-  text;
-  x;
-  y;
-  bold;
-}
-
-function main() {
-  drawText('Hello, world!', [100, 50], true);
-}
-```
-
-### Nested Functions Are Not Supported
-
-**Rule:** arkts-no-nested-funcs
-
-**Severity: error**
-
-**Error code: 10605092**
-
-ArkTS does not support nested functions. Use lambdas instead.
-
-**TypeScript**
-
-<!-- @[no_nestedFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNestedFuncs.ts) -->  
-
-``` TypeScript
-function addNum(a: number, b: number): void {
-
-  // Nested function.
-  function logToConsole(message: string): void {
-    console.info(message);
-  }
-
-  let result = a + b;
-
-  // Invoke the nested function.
-  logToConsole('result is ' + result);
-}
-```
-
-**ArkTS**
-
-<!-- @[no_nestedFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNestedFuncs.ets) -->  
-
-``` TypeScript
-function addNum(a: number, b: number): void {
-  // Use lambda instead of a nested function.
-  let logToConsole: (message: string) => void = (message: string): void => {
-    console.info(message);
-  }
-
-  let result = a + b;
-
-  logToConsole('result is ' + result);
-}
-```
-
-### Using this Inside Stand-Alone Functions Is Not Supported
-
-**Rule:** arkts-no-standalone-this
-
-**Severity: error**
-
-**Error code: 10605093**
-
-ArkTS does not support the usage of **this** inside stand-alone functions and inside static methods. **this** can be used in instance methods only.
-
-**TypeScript**
-
-<!-- @[no_standaloneThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStandaloneThis.ts) -->  
-
-``` TypeScript
-function foo(i: string) {
-  this.count = i; // Compile-time error only when noImplicitThis is enabled.
-}
-
-class A {
-  count: string = 'a';
-  m = foo;
-}
-
-let a = new A();
-console.info(a.count); // Print "a".
-a.m('b');
-console.info(a.count); // Print "b".
-```
-
-**ArkTS**
-
-<!-- @[no_standaloneThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoStandaloneThis.ets) -->  
-
-``` TypeScript
-class A {
-  public count: string = 'a'
-  m(i: string): void {
-    this.count = i;
-  }
-}
-
-function main(): void {
-  let a = new A();
-  console.info(a.count);  // Print "a".
-  a.m('b');
-  console.info(a.count);  // Print "b".
-}
-```
-
-### Generator Functions Are Not Supported
-
-**Rule:** arkts-no-generators
-
-**Severity: error**
-
-**Error code: 10605094**
-
-Currently, ArkTS does not support generator functions. Use the **async** or **await** mechanism for multitasking.
-
-**TypeScript**
-
-<!-- @[no_generators_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoGenerators.ts) -->   
-
-``` TypeScript
-function* counter(start: number, end: number) {
-  for (let i = start; i <= end; i++) {
-    yield i;
-  }
-}
-
-for (let num of counter(1, 5)) {
-  console.info(num.toString());
-}
-```
-
-**ArkTS**
-
-<!-- @[no_generators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGenerators.ets) -->    
-
-``` TypeScript
-async function complexNumberProcessing(num: number): Promise<number> {
-  // ...
-  return num;
-}
-
-async function foo() {
-  for (let i = 1; i <= 5; i++) {
-    await complexNumberProcessing(i);
-  }
-}
-
-foo();
 ```
 
 ### Type Guarding Is Supported with instanceof and as
@@ -2412,82 +2188,682 @@ function main(): void {
 }
 ```
 
-### Spread Operator Is Supported in Partial Scenarios
+### Some Utility Types Are Not Supported
 
-**Rule:** arkts-no-spread
+**Rule:** arkts-no-utility-types
 
 **Severity: error**
 
-**Error code: 10605099**
+**Error code: 10605138**
 
-The only supported scenario for the spread operator is to spread an array, a child class of an array, or a typed array (for example, **Int32Array**). A spread operator can be used only in the following scenarios:
-1. Being passed to the rest parameter;
-2. Copying an array to an array literal.
+ArkTS supports only **Partial**, **Required**, **Readonly**, and **Record**, and does not support other utility types in TypeScript.
+
+For the **Partial\<T>** type, the generic parameter **T** must be a class or interface type.
+
+For objects of the **Record** type, the type of the value accessed using an index is a union type that contains **undefined**.
+
+### as const Assertions Are Not Supported
+
+**Rule:** arkts-no-as-const
+
+**Severity: error**
+
+**Error code: 10605142**
+
+ArkTS does not support **as const** assertions and literal types. In standard TypeScript, **as const** is used to mark literal types.
 
 **TypeScript**
 
-<!-- @[no_spreadOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->   
+<!-- @[no_asConst_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAsConst.ts) -->
 
 ``` TypeScript
-function foo(x: number, y: number, z: number) {
-  // ...
-}
+// Type 'hello'
+let x = 'hello' as const;
 
-let args: [number, number, number] = [0, 1, 2];
-foo(...args);
+// Type 'readonly [10, 20]'
+let y = [10, 20] as const;
+
+// Type '{ readonly text: 'hello' }'
+let z = { text: 'hello' } as const;
 ```
 
 **ArkTS**
 
-<!-- @[no_spreadOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->    
+<!-- @[no_asConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAsConst.ets) -->
 
 ``` TypeScript
-function logNumbers(x: number, y: number, z: number) {
-  // ...
+// Type 'string'.
+let x: string = 'hello';
+
+// Type 'number[]'.
+let y: number[] = [10, 20];
+
+class Label {
+  public text: string = '';
 }
 
-let numbers: number[] = [1, 2, 3];
-logNumbers(numbers[0], numbers[1], numbers[2]);
+// Type 'Label'.
+let z: Label = {
+  text: 'hello'
+}
 ```
+
+### Only the as T Syntax Is Supported for Type Casting
+
+**Rule:** arkts-as-casts
+
+**Severity: error**
+
+**Error code: 10605053**
+
+ArkTS supports the keyword **as** as the only syntax for type casting. Incorrect casting causes a compile-time error or runtime **ClassCastException**. The **\<type>** syntax for type casting is not supported.
+
+Use the expression **new** instead of **as** if a **primitive** type (such as a **number** or a **boolean**) must be cast to the reference type.
 
 **TypeScript**
 
-<!-- @[no_spreadTwo_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->   
+<!-- @[as_casts_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/AsCasts.ts) -->
 
 ``` TypeScript
-let point2d = { x: 1, y: 2 };
-let point3d = { ...point2d, z: 3 };
+class testShape { }
+class testCircle extends testShape { x: number = 5 }
+class testSquare extends testShape { y: string = 'a' }
+
+function createShape(): testShape {
+    return new testCircle();
+}
+
+let c1 = <testCircle>createShape();
+
+let c2 = createShape() as testCircle;
+
+// If the conversion is incorrect, no compile-time or runtime error is reported.
+let c3 = createShape() as testSquare;
+console.info(c3.y); // undefined
+
+// In TS, since the `as` keyword does not take effect at runtime, the left operand of `instanceof` is not boxed into a reference type at runtime.
+let e1 = (5.0 as Number) instanceof Number; // false
+
+// A Number object is created and instanceof works as expected.
+let e2 = (new Number(5.0)) instanceof Number; // true
 ```
 
 **ArkTS**
 
-<!-- @[no_spreadTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->    
+<!-- @[as_casts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/AsCasts.ets) -->
 
 ``` TypeScript
-class Point2D {
-  public x: number = 0;
-  public y: number = 0;
+class TestShape {}     
+class TestCircle extends TestShape { public x: number = 5 }     
+
+
+function createShape(): TestShape {     
+  return new TestCircle();     
+}     
+
+
+let c1 = createShape() as TestCircle;
+
+// A Number object is created and instanceof works as expected.
+let e1 = (new Number(5.0)) instanceof Number; // true
+```
+
+### Type Annotation in the Catch Clause Is Not Supported
+
+**Rule:** arkts-no-types-in-catch
+
+**Severity: error**
+
+**Error code: 10605079**
+
+In TypeScript, the catch clause variable type annotation must be **any** or **unknown** if specified. As ArkTS does not support these types, omit type annotations.
+
+**TypeScript**
+
+<!-- @[noTypes_inCatch_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypesInCatch.ts) -->
+
+``` TypeScript
+try {
+  // ...
+} catch (a: unknown) {
+  // Handle exceptions.
+}
+```
+
+**ArkTS**
+
+<!-- @[noTypes_inCatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypesInCatch.ets) -->
+
+``` TypeScript
+try {
+  // ...
+} catch (a) {
+  // Handle exceptions.
+}
+```
+
+### for .. in Is Not Supported
+
+**Rule:** arkts-no-for-in
+
+**Severity: error**
+
+**Error code: 10605080**
+
+ArkTS does not support iteration over object contents by the **for ... in** loop. For objects, iteration over properties at runtime is considered redundant because object layout is known at compile time and cannot change at runtime.
+
+**TypeScript**
+
+<!-- @[no_forIn_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoForIn.ts) -->
+
+``` TypeScript
+let a: string[] = ['1.0', '2.0', '3.0'];
+for (let i in a) {
+  console.info(a[i]);
+}
+```
+
+**ArkTS**
+
+<!-- @[no_forIn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoForIn.ets) -->
+
+``` TypeScript
+let a: string[] = ['1.0', '2.0', '3.0'];
+for (let i = 0; i < a.length; ++i) {
+  console.info(a[i]);
+}
+```
+
+### with Statement Is Not Supported
+
+**Rule:** arkts-no-with
+
+**Severity: error**
+
+**Error code: 10605084**
+
+ArkTS does not support the **with** statement. Use other language idioms to achieve the same behavior.
+
+**TypeScript**
+
+```typescript
+with (Math) { // Compile-time error, but JavaScript code can still be emitted.
+  let r: number = 42;
+  let area: number = PI * r * r;
+}
+```
+
+**ArkTS**
+
+<!-- @[no_with](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoWith.ets) -->
+
+``` TypeScript
+let r: number = 42;
+let area: number = Math.PI * r * r;
+```
+
+### throw Statements Do Not Accept Values of Arbitrary Types
+
+**Rule:** arkts-limited-throw
+
+**Severity: error**
+
+**Error code: 10605087**
+
+ArkTS supports throwing only objects of the class **Error** or any derived class. Throwing an arbitrary type (for example, **number** or **string**) is prohibited.
+
+**TypeScript**
+
+<!-- @[limited_throw_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/LimitedThrow.ts) -->
+
+``` TypeScript
+throw 4;
+throw '';
+throw new Error();
+```
+
+**ArkTS**
+
+<!-- @[limited_throw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/LimitedThrow.ets) -->
+
+``` TypeScript
+throw new Error();
+```
+
+### Comma Operator Is Supported Only in for Loops
+
+**Rule:** arkts-no-comma-outside-loops
+
+**Severity: error**
+
+**Error code: 10605071**
+
+ArkTS supports the comma operator (,) only in **for** loops. In other cases, the comma operator is useless as it makes the execution order harder to understand.
+> **NOTE**
+>
+> - This is different from the comma separator used to declare variables and pass function parameters.
+
+**TypeScript**
+
+<!-- @[no_commaLoops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCommaOutsideloops.ts) -->
+
+``` TypeScript
+for (let i = 0, j = 0; i < 10; ++i, j += 2) {
+  // ...
 }
 
-class Point3D {
-  public x: number = 0;
-  public y: number = 0;
-  public z: number = 0
-  constructor(p2d: Point2D, z: number) {
-    this.x = p2d.x;
-    this.y = p2d.y;
-    this.z = z;
+let x = 0;
+x = (++x, x++); // 1
+```
+
+**ArkTS**
+
+<!-- @[no_commaLoops](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCommaOutsideloops.ets) -->
+
+``` TypeScript
+for (let i = 0, j = 0; i < 10; ++i, j += 2) {
+  // ...
+}
+
+// Use the explicit execution order instead of the comma operator.
+let x = 0;
+++x;
+x = x++;
+```
+
+### require and import Assignment Are Not Supported
+
+**Rule:** arkts-no-require
+
+**Severity: error**
+
+**Error code: 10605121**
+
+ArkTS does not support importing via **require**. It does not support **import** assignments either. Use the regular **import** syntax instead.
+
+**TypeScript**
+
+```typescript
+import m = require('mod')
+```
+
+**ArkTS**
+
+<!-- @[no_require](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoRequire.ets) -->
+
+``` TypeScript
+import * as m from './ExportMod'
+```
+
+### export = ... Is Not Supported
+
+**Rule:** arkts-no-export-assignment
+
+**Severity: error**
+
+**Error code: 10605126**
+
+ArkTS does not support the **export = ...** syntax. Use the ordinary **export** and **import** syntaxes instead.
+
+**TypeScript**
+
+```typescript
+// module1
+export = Point
+
+class Point {
+  constructor(x: number, y: number) {}
+  static origin = new Point(0, 0)
+}
+
+// module2
+import Pt = require('module1')
+
+let p = Pt.Point.origin;
+```
+
+**ArkTS**
+
+<!-- @[no_exportAssignOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
+
+``` TypeScript
+// ExportMod.ets
+export class Point {
+  constructor(x: number, y: number) {}
+  public static origin = new Point(0, 0)
+}
+```
+
+<!-- @[no_exportAssignTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExportAssignment.ets) -->
+
+``` TypeScript
+// module2
+import * as Pt from './ExportMod'
+
+let p = Pt.Point.origin;
+```
+
+### Ambient Module Declaration Is Not Supported
+
+**Rule:** arkts-no-ambient-decls
+
+**Severity: error**
+
+**Error code: 10605128**
+
+ArkTS does not support ambient module declaration because it has its own mechanisms for interoperating with JavaScript.
+
+**TypeScript**
+
+```typescript
+declare module 'someModule' {
+  export function normalize(s: string): string;
+}
+```
+
+**ArkTS**
+
+<!-- @[no_ambientDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAmbientDecls.ets) -->
+
+``` TypeScript
+// Import what you need from the original module.
+import { normalize } from './ExportMod'
+```
+
+### Wildcards in Module Names Are Not Supported
+
+**Rule:** arkts-no-module-wildcards
+
+**Severity: error**
+
+**Error code: 10605129**
+
+ArkTS does not support wildcards in module names because import is a compile-time feature in ArkTS, not a runtime feature.
+
+**TypeScript**
+
+```typescript
+// Declaration
+declare module '*!text' {
+  const content: string
+  export default content
+}
+
+// Consuming code
+import fileContent from 'some.txt!text'
+```
+
+**ArkTS**
+
+<!-- @[declare_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
+
+``` TypeScript
+// Declaration
+export declare namespace N {
+  function foo(x: number): number
+}
+```
+
+<!-- @[no_moduleWildCards](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoModuleWildcards.ets) -->
+
+``` TypeScript
+// Consuming code
+import * as m from './ExportMod'
+console.info('N.foo called: ' + m.N.foo(42));
+```
+
+### UMD Is Not Supported
+
+**Rule:** arkts-no-umd
+
+**Severity: error**
+
+**Error code: 10605130**
+
+ArkTS does not support universal module definitions (UMD), because it does not have the concept of "script" (as opposed to "module"). In addition, import is a compile-time feature in ArkTS, not a runtime feature. Use the ordinary **export** and **import** syntaxes instead.
+
+**TypeScript**
+
+```typescript
+// math-lib.d.ts
+export function isPrime(x: number): boolean
+export as namespace mathLib
+
+// In script
+mathLib.isPrime(2)
+```
+
+**ArkTS**
+
+```typescript
+// math-lib.d.ts
+namespace mathLib {
+  export function isPrime(x: number): boolean
+}
+
+// In program
+import { mathLib } from 'math-lib'
+mathLib.isPrime(2)
+```
+
+### Import Assertions Are Not Supported
+
+**Rule:** arkts-no-import-assertions
+
+**Severity: error**
+
+**Error code: 10605143**
+
+ArkTS does not support import assertions because import is a compile-time feature in ArkTS, not a runtime feature. Therefore, asserting the correctness of imported APIs in runtime does not make sense for the statically typed language. Use the ordinary **import** syntax instead.
+
+**TypeScript**
+
+<!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoImportAssertions.ts) -->
+
+``` TypeScript
+import { obj } from './Something.json' assert { type: 'json' }
+```
+
+**ArkTS**
+
+<!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImportAssertions.ets) -->
+
+``` TypeScript
+// The correctness of importing T will be checked at compile time.
+import { Something } from './ExportMod'
+```
+
+### TS/JS File Cannot Import Source Code of ETS File
+
+**Rule:** arkts-no-ts-deps
+
+**Severity: error**
+
+**Error code: 10605147**
+
+An .ets file can import source code of an .ets/.ts/.js file, but a .ts/.js file cannot import source code of an .ets file.
+
+**TypeScript**
+
+<!-- @[export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExportMod.ts) -->
+
+``` TypeScript
+// ExportMod.ts
+export class C {
+  // ...
+}
+```
+
+<!-- @[no_tsDeps_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTsDeps.ts) -->
+
+``` TypeScript
+// NoTsDeps.ts
+import { C } from './ExportMod'
+```
+
+**ArkTS**
+
+<!-- @[export_classC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
+
+``` TypeScript
+// ExportMod.ets
+export class C {
+  // ...
+}
+```
+
+<!-- @[no_tsDeps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTsDeps.ets) -->
+
+``` TypeScript
+// lib2.ets
+import { C } from './ExportMod'
+```
+
+### import Statements After Other Statements Are Not Allowed
+
+**Rule:** arkts-no-misplaced-imports
+
+**Severity: error**
+
+**Error Code: 10605150**
+
+In ArkTS, all **import** statements except dynamic **import** statements should go before all other statements in the program.
+
+**TypeScript**
+
+<!-- @[no_misplaced_imports_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMisplacedImports.ts) -->
+
+``` TypeScript
+class C {
+  s: string = ''
+  n: number = 0
+}
+
+import foo from './ExportMod'
+```
+
+**ArkTS**
+
+```typescript
+import foo from 'module1'
+
+class C {
+  s: string = ''
+  n: number = 0
+}
+
+import('module2').then(() => {}).catch(() => {})  // Dynamic import
+```
+
+### Namespaces Cannot Be Used as Objects
+
+**Rule:** arkts-no-ns-as-obj
+
+**Severity: error**
+
+**Error code: 10605114**
+
+ArkTS does not support the usage of namespaces as objects. Classes or modules can be interpreted as analogs of namespaces.
+
+**TypeScript**
+
+<!-- @[no_nsAsObj_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNsAsObj.ts) -->
+
+``` TypeScript
+namespace MyNamespace {
+  export let x: number;
+}
+
+let m = MyNamespace;
+m.x = 2;
+```
+
+**ArkTS**
+ 
+<!-- @[no_nsAsObj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsAsObj.ets) -->
+
+``` TypeScript
+namespace MyNamespace {
+  export let x: number;
+}
+
+MyNamespace.x = 2;
+```
+
+### Non-declaration Statements in Namespaces Are Not Supported
+
+**Rule:** arkts-no-ns-statements
+
+**Severity: error**
+
+**Error code: 10605116**
+
+In ArkTS, namespaces are used to define the visibility scope of identifiers. Namespaces are valid only during compilation. Therefore, non-declaration statements are not supported in namespaces. Use a function to execute non-declaration statements.
+
+**TypeScript**
+
+<!-- @[no_nsStatements_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNsStatements.ts) -->
+
+``` TypeScript
+namespace A {
+  export let x: number;
+  x = 1;
+}
+```
+
+**ArkTS**
+ 
+<!-- @[no_nsStatements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsStatements.ets) -->
+
+``` TypeScript
+namespace A {
+  export let x: number
+
+  export function init() {
+    x = 1;
   }
 }
 
-let p3d = new Point3D({ x: 1, y: 2 } as Point2D, 3);
+// Call the initialization function.
+A.init();
+```
 
-class DerivedFromArray extends Uint16Array {};
+### Constructor Signatures Are Not Supported in Interfaces
 
-let arr1 = [1, 2, 3];
-let arr2 = new Uint16Array([4, 5, 6]);
-let arr3 = new DerivedFromArray([7, 8, 9]);
-let arr4 = [...arr1, 10, ...arr2, 11, ...arr3];
+**Rule:** arkts-no-ctor-signatures-iface
+
+**Severity: error**
+
+**Error code: 10605027**
+
+ArkTS does not allow constructor signatures to be defined in interfaces. Use common functions or methods instead.
+
+**TypeScript**
+
+<!-- @[no_ctorSignaturesIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesIface.ts) -->
+
+``` TypeScript
+interface I {
+  new(s: string): I;
+}
+
+function fn(i: I) {
+  return new i('hello');
+}
+```
+
+**ArkTS**
+
+<!-- @[no_ctorSignaturesIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesIface.ets) -->
+
+``` TypeScript
+interface I {
+  create(s: string): I;
+}
+
+function fn(i: I) {
+  return i.create('hello');
+}
 ```
 
 ### Interface Cannot Extend Interfaces with the Same Method
@@ -2496,13 +2872,13 @@ let arr4 = [...arr1, 10, ...arr2, 11, ...arr3];
 
 **Severity: error**
 
-**Error code: 106050102**
+**Error code: 10605102**
 
 In TypeScript, an interface that extends two other interfaces with the same method must declare that method with a combined return type. It is not allowed in ArkTS because ArkTS does not allow an interface to contain two methods with signatures that are not distinguishable, for example, two methods that have the same parameter lists but different return types.
 
 **TypeScript**
 
-<!-- @[no_extendSameProp_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoExtendSameProp.ts) -->   
+<!-- @[no_extendSameProp_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoExtendSameProp.ts) -->
 
 ``` TypeScript
 interface Mover {
@@ -2531,7 +2907,7 @@ class C implements MoverShaker {
 
 **ArkTS**
 
-<!-- @[no_extendSameProp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExtendSameProp.ets) -->    
+<!-- @[no_extendSameProp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExtendSameProp.ets) -->
 
 ``` TypeScript
 class MoveStatus {
@@ -2589,50 +2965,6 @@ class C implements Mover, Shaker {
 }
 ```
 
-### Declaration Merging Is Not Supported
-
-**Rule:** arkts-no-decl-merging
-
-**Severity: error**
-
-**Error code: 10605103**
-
-ArkTS does not support merging declarations. Keep all definitions of classes and interfaces compact in the codebase.
-
-**TypeScript**
-
-<!-- @[no_declMerging_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDeclMerging.ts) -->   
-
-``` TypeScript
-interface Document {
-  createElement(tagName: any): number;
-}
-
-interface Document {
-  createElement(tagName: string): boolean;
-}
-
-interface Document {
-  createElement(tagName: number): number;
-  createElement(tagName: boolean): boolean;
-  createElement(tagName: string, value: number): string;
-}
-```
-
-**ArkTS**
- 
-<!-- @[no_declMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDeclMerging.ets) -->    
-
-``` TypeScript
-interface Document {
-  createElement(tagName: number): number;
-  createElement(tagName: boolean): boolean;
-  createElement(tagName: string, value: number): number;
-  createElement(tagName: string): string;
-  createElement(tagName: Object): object;
-}
-```
-
 ### Interfaces Cannot Extend Classes
 
 **Rule:** arkts-extends-only-class
@@ -2645,7 +2977,7 @@ ArkTS does not support interfaces that extend classes. Interfaces can extend onl
 
 **TypeScript**
 
-<!-- @[extends_onlyClass_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExtendsOnlyClass.ts) -->   
+<!-- @[extends_onlyClass_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExtendsOnlyClass.ts) -->
 
 ``` TypeScript
 class Control {
@@ -2659,7 +2991,7 @@ interface SelectableControl extends Control {
 
 **ArkTS**
  
-<!-- @[extends_onlyClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExtendsOnlyClass.ets) -->    
+<!-- @[extends_onlyClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExtendsOnlyClass.ets) -->
 
 ``` TypeScript
 interface Control {
@@ -2671,58 +3003,278 @@ interface SelectableControl extends Control {
 }
 ```
 
-### Constructor Function Type Is Not Supported
+### Unary Operators +, -, and ~ Work Only on Numbers
 
-**Rule:** arkts-no-ctor-signatures-funcs
+**Rule:** arkts-no-polymorphic-unops
 
 **Severity: error**
 
-**Error code: 10605106**
+**Error code: 10605055**
 
-ArkTS does not support the usage of the constructor function type. Use lambdas instead.
+ArkTS allows unary operators to work on numeric types only. A compile-time error occurs if these operators are applied to a non-numeric type. Unlike in TypeScript, implicit casting of strings in this context is not supported and casting must be done explicitly.
 
 **TypeScript**
 
-<!-- @[no_ctorSignaturesFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesFuncs.ts) -->   
+<!-- @[no_polymorphicUnops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPolymorphicUnops.ts) -->
 
 ``` TypeScript
-class Person {
-  constructor(
-    name: string,
-    age: number
-  ) { }
-}
-type PersonCtor = new (name: string, age: number) => Person;
+let a = +5;    // 5 as number
+let b = +'5';    // 5 as number
+let c = -5;    // -5 as number
+let d = -'5';    // -5 as number
+let e = ~5;    // -6 as number
+let f = ~'5';    // -6 as number
+let g = +'string'; // NaN as number
 
-function createPerson(Ctor: PersonCtor, name: string, age: number): Person {
-  return new Ctor(name, age);
+function returnTen(): string {
+    return '-10';
 }
 
-const person = createPerson(Person, 'John', 30);
+function returnString(): string {
+    return 'string';
+}
+
+let x = +returnTen();  // -10 as number
+let y = +returnString(); // NaN
 ```
 
 **ArkTS**
- 
-<!-- @[no_ctorSignaturesFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesFuncs.ets) -->    
+
+```typescript
+let a = +5;    // 5 as number
+let b = +'5';    // Compile-time error
+let c = -5;    // -5 as number
+let d = -'5';    // Compile-time error
+let e = ~5;    // -6 as number
+let f = ~'5';    // Compile-time error
+let g = +'string'; // Compile-time error
+
+function returnTen(): string {
+  return '-10';
+}
+
+function returnString(): string {
+  return 'string';
+}
+
+let x = +returnTen();  // Compile-time error
+let y = +returnString(); // Compile-time error
+```
+
+### delete Operator Is Not Supported
+
+**Rule:** arkts-no-delete
+
+**Severity: error**
+
+**Error code: 10605059**
+
+ArkTS assumes that object layout is known at compile time and cannot be changed at runtime. Therefore, the operation of deleting a property makes no sense.
+
+**TypeScript**
+
+<!-- @[no_delete_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDelete.ts) -->
+
+``` TypeScript
+class Point {
+  x?: number = 0.0;
+  y?: number = 0.0;
+}
+
+let p = new Point();
+delete p.y;
+```
+
+**ArkTS**
+
+<!-- @[no_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDelete.ets) -->
+
+``` TypeScript
+// A nullable type can be declared, with null used as the default value.
+class Point {
+  public x: number | null = 0;
+  public y: number | null = 0;
+}
+
+let p = new Point();
+p.y = null;
+```
+
+### typeof Operator Is Allowed Only in Expression Contexts
+
+**Rule:** arkts-no-type-query
+
+**Severity: error**
+
+**Error code: 10605060**
+
+ArkTS supports the **typeof** operator only in the expression context. Using **typeof** to specify type notations is not supported.
+
+**TypeScript**
+
+<!-- @[no_typeQuery_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypeQuery.ts) -->
+
+``` TypeScript
+let n1 = 42;
+let s1 = 'foo';
+console.info(typeof n1); // 'number'
+console.info(typeof s1); // 'string'
+let n2: typeof n1;
+let s2: typeof s1;
+```
+
+**ArkTS**
+
+<!-- @[no_typeQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypeQuery.ets) -->
+
+``` TypeScript
+let n1 = 42;
+let s1 = 'foo';
+console.info(typeof n1); // 'number'
+console.info(typeof s1); // 'string'
+let n2: number;
+let s2: string;
+```
+
+### instanceof Operator Is Partially Supported
+
+**Rule:** arkts-instanceof-ref-types
+
+**Severity: error**
+
+**Error code: 10605065**
+
+In TypeScript, the left-hand side of an **instanceof** expression must be of the type **any**, an object type, or a type parameter. Otherwise, the result is **false**. In ArkTS, the left-hand side of an expression may be of any reference type, for example, an object, an array, or a function. Otherwise, a compile-time error occurs. In addition, the left operand in ArkTS cannot be a type. It must be an object instance.
+
+**TypeScript**
+
+<!-- @[instanceof_ref_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/InstanceofRefTypes.ts) -->
+
+``` TypeScript
+let num: number = 42;
+let result = num instanceof Number;
+console.info('result = ', result); // result = false
+```
+
+**ArkTS**
+
+```typescript
+let num: number = 42;
+let result = num instanceof Number; // Compile-time error
+```
+
+### in Operator Is Not Supported
+
+**Rule:** arkts-no-in
+
+**Severity: error**
+
+**Error code: 10605066**
+
+ArkTS does not support the operator **in**. This operator makes little sense since the object layout is known at compile time and cannot be changed at runtime. Use **instanceof** as a workaround if you want to check whether certain class members exist.
+
+**TypeScript**
+
+<!-- @[no_in_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIn.ts) -->
 
 ``` TypeScript
 class Person {
-  constructor(
-    name: string,
-    age: number
-  ) {}
+  name: string = '';
 }
-type PersonCtor = (n: string, a: number) => Person
+let p = new Person();
 
-function createPerson(ctor: PersonCtor, n: string, a: number): Person {
-  return ctor(n, a);
+let b = 'name' in p; // true
+```
+
+**ArkTS**
+
+<!-- @[no_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIn.ets) -->
+
+``` TypeScript
+class Person {
+  public name: string = '';
+}
+let p = new Person();
+
+let b = p instanceof Person; // True. "name" is guaranteed to be present.
+```
+
+### Spread Operator Is Supported in Partial Scenarios
+
+**Rule:** arkts-no-spread
+
+**Severity: error**
+
+**Error code: 10605099**
+
+The only supported scenario for the spread operator is to spread an array, a child class of an array, or a typed array (for example, **Int32Array**). A spread operator can be used only in the following scenarios:
+1. Being passed to the rest parameter;
+2. Copying an array to an array literal.
+
+**TypeScript**
+
+<!-- @[no_spreadOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->
+
+``` TypeScript
+function foo(x: number, y: number, z: number) {
+  // ...
 }
 
-let impersonate: PersonCtor = (n: string, a: number): Person => {
-  return new Person(n, a);
+let args: [number, number, number] = [0, 1, 2];
+foo(...args);
+```
+
+**ArkTS**
+
+<!-- @[no_spreadOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->
+
+``` TypeScript
+function logNumbers(x: number, y: number, z: number) {
+  // ...
 }
 
-const person = createPerson(impersonate, 'John', 30);
+let numbers: number[] = [1, 2, 3];
+logNumbers(numbers[0], numbers[1], numbers[2]);
+```
+
+**TypeScript**
+
+<!-- @[no_spreadTwo_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->
+
+``` TypeScript
+let point2d = { x: 1, y: 2 };
+let point3d = { ...point2d, z: 3 };
+```
+
+**ArkTS**
+
+<!-- @[no_spreadTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->
+
+``` TypeScript
+class Point2D {
+  public x: number = 0;
+  public y: number = 0;
+}
+
+class Point3D {
+  public x: number = 0;
+  public y: number = 0;
+  public z: number = 0
+  constructor(p2d: Point2D, z: number) {
+    this.x = p2d.x;
+    this.y = p2d.y;
+    this.z = z;
+  }
+}
+
+let p3d = new Point3D({ x: 1, y: 2 } as Point2D, 3);
+
+class DerivedFromArray extends Uint16Array {};
+
+let arr1 = [1, 2, 3];
+let arr2 = new Uint16Array([4, 5, 6]);
+let arr3 = new DerivedFromArray([7, 8, 9]);
+let arr4 = [...arr1, 10, ...arr2, 11, ...arr3];
 ```
 
 ### Enumeration Members Can Be Initialized Only with Compile Time Expressions of the Same Type
@@ -2737,7 +3289,7 @@ ArkTS does not support initializing members of enumerations with expressions tha
 
 **TypeScript**
 
-<!-- @[no_enumMixedTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoEnumMixedTypes.ts) -->  
+<!-- @[no_enumMixedTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoEnumMixedTypes.ts) -->
 
 ``` TypeScript
 enum E1 {
@@ -2758,7 +3310,7 @@ enum E2 {
 
 **ArkTS**
  
-<!-- @[no_enumMixedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMixedTypes.ets) -->  
+<!-- @[no_enumMixedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMixedTypes.ets) -->
 
 ``` TypeScript
 enum E1 {
@@ -2789,7 +3341,7 @@ ArkTS does not support merging declarations for **enum**. Keep the declaration o
 
 **TypeScript**
 
-<!-- @[no_enumMerging_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoEnumMerging.ts) -->  
+<!-- @[no_enumMerging_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoEnumMerging.ts) -->
 
 ``` TypeScript
 enum ColorSet {
@@ -2807,7 +3359,7 @@ enum ColorSet {
 
 **ArkTS**
  
-<!-- @[no_enumMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMerging.ets) -->    
+<!-- @[no_enumMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMerging.ets) -->
 
 ``` TypeScript
 enum ColorSet {
@@ -2819,348 +3371,61 @@ enum ColorSet {
 }
 ```
 
-### Namespaces Cannot Be Used as Objects
+### Declaration Merging Is Not Supported
 
-**Rule:** arkts-no-ns-as-obj
-
-**Severity: error**
-
-**Error code: 10605114**
-
-ArkTS does not support the usage of namespaces as objects. Classes or modules can be interpreted as analogs of namespaces.
-
-**TypeScript**
-
-<!-- @[no_nsAsObj_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNsAsObj.ts) -->  
-
-``` TypeScript
-namespace MyNamespace {
-  export let x: number;
-}
-
-let m = MyNamespace;
-m.x = 2;
-```
-
-**ArkTS**
- 
-<!-- @[no_nsAsObj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsAsObj.ets) -->    
-
-``` TypeScript
-namespace MyNamespace {
-  export let x: number;
-}
-
-MyNamespace.x = 2;
-```
-
-### Non-declaration Statements in Namespaces Are Not Supported
-
-**Rule:** arkts-no-ns-statements
+**Rule:** arkts-no-decl-merging
 
 **Severity: error**
 
-**Error code: 10605116**
+**Error code: 10605103**
 
-In ArkTS, namespaces are used to define the visibility scope of identifiers. Namespaces are valid only during compilation. Therefore, non-declaration statements are not supported in namespaces. Use a function to execute non-declaration statements.
+ArkTS does not support merging declarations. Keep all definitions of classes and interfaces compact in the codebase.
 
 **TypeScript**
 
-<!-- @[no_nsStatements_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNsStatements.ts) -->  
+<!-- @[no_declMerging_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDeclMerging.ts) -->
 
 ``` TypeScript
-namespace A {
-  export let x: number;
-  x = 1;
+interface Document {
+  createElement(tagName: any): number;
+}
+
+interface Document {
+  createElement(tagName: string): boolean;
+}
+
+interface Document {
+  createElement(tagName: number): number;
+  createElement(tagName: boolean): boolean;
+  createElement(tagName: string, value: number): string;
 }
 ```
 
 **ArkTS**
  
-<!-- @[no_nsStatements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsStatements.ets) -->  
+<!-- @[no_declMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDeclMerging.ets) -->
 
 ``` TypeScript
-namespace A {
-  export let x: number
-
-  export function init() {
-    x = 1;
-  }
+interface Document {
+  createElement(tagName: number): number;
+  createElement(tagName: boolean): boolean;
+  createElement(tagName: string, value: number): number;
+  createElement(tagName: string): string;
+  createElement(tagName: Object): object;
 }
-
-// Call the initialization function.
-A.init();
 ```
 
-### require and import Assignment Are Not Supported
+### Symbol() Is Not Supported
 
-**Rule:** arkts-no-require
+**Rule:** arkts-no-symbol
 
 **Severity: error**
 
-**Error code: 10605121**
+**Error code: 10605002**
 
-ArkTS does not support importing via **require**. It does not support **import** assignments either. Use the regular **import** syntax instead.
+ArkTS does not support the **Symbol()** API because its most popular use cases make no sense in the statically typed environment. In particular, the object layout is defined at compile time and cannot be changed at runtime.
 
-**TypeScript**
-
-```typescript
-import m = require('mod')
-```
-
-**ArkTS**
-
-<!-- @[no_require](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoRequire.ets) -->    
-
-``` TypeScript
-import * as m from './ExportMod'
-```
-
-### export = ... Is Not Supported
-
-**Rule:** arkts-no-export-assignment
-
-**Severity: error**
-
-**Error code: 10605126**
-
-ArkTS does not support the **export = ...** syntax. Use the ordinary **export** and **import** syntaxes instead.
-
-**TypeScript**
-
-```typescript
-// module1
-export = Point
-
-class Point {
-  constructor(x: number, y: number) {}
-  static origin = new Point(0, 0)
-}
-
-// module2
-import Pt = require('module1')
-
-let p = Pt.Point.origin;
-```
-
-**ArkTS**
-
-<!-- @[no_exportAssignOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->    
-
-``` TypeScript
-// ExportMod.ets
-export class Point {
-  constructor(x: number, y: number) {}
-  public static origin = new Point(0, 0)
-}
-```
-
-<!-- @[no_exportAssignTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExportAssignment.ets) -->
-
-``` TypeScript
-// module2
-import * as Pt from './ExportMod'
-
-let p = Pt.Point.origin;
-```
-
-### Ambient Module Declaration Is Not Supported
-
-**Rule:** arkts-no-ambient-decls
-
-**Severity: error**
-
-**Error code: 10605128**
-
-ArkTS does not support ambient module declaration because it has its own mechanisms for interoperating with JavaScript.
-
-**TypeScript**
-
-```typescript
-declare module 'someModule' {
-  export function normalize(s: string): string;
-}
-```
-
-**ArkTS**
-
-<!-- @[no_ambientDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAmbientDecls.ets) -->   
-
-``` TypeScript
-// Import what you need from the original module.
-import { normalize } from './ExportMod'
-```
-
-### Wildcards in Module Names Are Not Supported
-
-**Rule:** arkts-no-module-wildcards
-
-**Severity: error**
-
-**Error code: 10605129**
-
-ArkTS does not support wildcards in module names because import is a compile-time feature in ArkTS, not a runtime feature.
-
-**TypeScript**
-
-```typescript
-// Declaration
-declare module '*!text' {
-  const content: string
-  export default content
-}
-
-// Consuming code
-import fileContent from 'some.txt!text'
-```
-
-**ArkTS**
-
-<!-- @[declare_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
-
-``` TypeScript
-// Declaration
-export declare namespace N {
-  function foo(x: number): number
-}
-```
-
-<!-- @[no_moduleWildCards](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoModuleWildcards.ets) -->
-
-``` TypeScript
-// Consuming code
-import * as m from './ExportMod'
-console.info('N.foo called: ' + m.N.foo(42));
-```
-
-### UMD Is Not Supported
-
-**Rule:** arkts-no-umd
-
-**Severity: error**
-
-**Error code: 10605130**
-
-ArkTS does not support universal module definitions (UMD), because it does not have the concept of "script" (as opposed to "module"). In addition, import is a compile-time feature in ArkTS, not a runtime feature. Use the ordinary **export** and **import** syntaxes instead.
-
-**TypeScript**
-
-```typescript
-// math-lib.d.ts
-export const isPrime(x: number): boolean
-export as namespace mathLib
-
-// In script
-mathLib.isPrime(2)
-```
-
-**ArkTS**
-
-```typescript
-// math-lib.d.ts
-namespace mathLib {
-  export isPrime(x: number): boolean
-}
-
-// In program
-import { mathLib } from 'math-lib'
-mathLib.isPrime(2)
-```
-
-### new.target Is Not Supported
-
-**Rule:** arkts-no-new-target
-
-**Severity: error**
-
-**Error code: 10605132**
-
-ArkTS does not support **new.target** because there is no concept of runtime prototype inheritance in the language. This feature is considered not applicable to static typing.
-
-### Definite Assignment Assertions Are Not Supported
-
-**Rule:** arkts-no-definite-assignment
-
-**Severity: warning**
-
-**Error code: 10605134**
-
-ArkTS does not support definite assignment assertions **let v!: T** because they are considered an excessive compiler hint. Use declarations with initialization instead.
-
-**TypeScript**
-
-```typescript
-let x!: number // Hint: x will be initialized before usage.
-
-initialize();
-
-function initialize() {
-  x = 10;
-}
-
-console.info('x = ' + x);
-```
-
-
-**ArkTS**
-
-<!-- @[no_definiteAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDefiniteAssignment.ets) -->   
-
-``` TypeScript
-function initialize(): number {
-  return 10;
-}
-
-let x: number = initialize();
-
-console.info('x = ' + x);
-```
-
-### Prototype Assignment Is Not Supported
-
-**Rule:** arkts-no-prototype-assignment
-
-**Severity: error**
-
-**Error code: 10605136**
-
-ArkTS does not support prototype assignment because there is no concept of runtime prototype inheritance in the language. This feature is considered not applicable to static typing.
-
-**TypeScript**
-
-<!-- @[no_prototypeAssign_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPrototypeAssignment.ts) -->    
-
-``` TypeScript
-let C = function (p) {
-  this.p = p; // Compile-time error only when noImplicitThis is enabled.
-}
-
-C.prototype = {
-  m() {
-    console.info(this.p);
-  }
-}
-
-C.prototype.q = function (r: string) {
-  return this.p == r;
-}
-```
-
-**ArkTS**
-
-<!-- @[no_prototypeAssign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoPrototypeAssignment.ets) -->   
-
-``` TypeScript
-class C {
-  public p: string = '';
-  m() {
-    console.info(this.p);
-  }
-  q(r: string) {
-    return this.p === r;
-  }
-}
-```
+Only **Symbol.iterator** is supported.
 
 ### globalThis Is Not Supported
 
@@ -3174,7 +3439,7 @@ ArkTS does not support dynamic changes to the layout of objects. Therefore, **gl
 
 **TypeScript**
 
-<!-- @[no_globalThisImport_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoGlobalThis.ts) -->    
+<!-- @[no_globalThisImport_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoGlobalThis.ts) -->
 
 ``` TypeScript
 // Global file.
@@ -3186,7 +3451,7 @@ let x = globalThis.abc;
 
 **ArkTS**
 
-<!-- @[no_globalThisExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->     
+<!-- @[no_globalThisExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
 
 ``` TypeScript
 // ExportMod.ets
@@ -3202,123 +3467,15 @@ import * as M from './ExportMod'
 let x = M.abc;
 ```
 
-### Some Utility Types Are Not Supported
+### new.target Is Not Supported
 
-**Rule:** arkts-no-utility-types
-
-**Severity: error**
-
-**Error code: 10605138**
-
-ArkTS supports only **Partial**, **Required**, **Readonly**, and **Record**, and does not support other utility types in TypeScript.
-
-For the **Partial\<T>** type, the generic parameter **T** must be a class or interface type.
-
-For objects of the **Record** type, the type of the value accessed using an index is a union type that contains **undefined**.
-
-### Declaring Properties on Functions Is Not Supported
-
-**Rule:** arkts-no-func-props
+**Rule:** arkts-no-new-target
 
 **Severity: error**
 
-**Error code: 10605139**
+**Error code: 10605132**
 
-ArkTS does not support dynamic change of function object layout. Therefore, declaring properties on functions is not supported.
-
-### Function.apply and Function.call Are Not Supported
-
-**Rule:** arkts-no-func-apply-call
-
-**Severity: error**
-
-**Error code: 10605152**
-
-ArkTS does not support **Function.apply** or **Function.call** because these APIs are needed in the standard library to explicitly set the parameter **this** for the called function. In ArkTS, the semantics of **this** is restricted to the conventional OOP style, and the usage of **this** in function body is prohibited.
-
-### Function.bind Is Not Supported
-
-**Rule:** arkts-no-func-bind
-
-**Severity: warning**
-
-**Error code: 10605140**
-
-ArkTS does not support **Function.bind**. These APIs are needed in the standard library to explicitly set the parameter **this** for the called function. In ArkTS, the semantics of **this** is restricted to the conventional OOP style, and the usage of **this** in function body is prohibited.
-
-
-### as const Assertions Are Not Supported
-
-**Rule:** arkts-no-as-const
-
-**Severity: error**
-
-**Error code: 10605142**
-
-ArkTS does not support **as const** assertions and literal types. In standard TypeScript, **as const** is used to mark literal types.
-
-**TypeScript**
-
-<!-- @[no_asConst_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAsConst.ts) -->   
-
-``` TypeScript
-// Type 'hello'
-let x = 'hello' as const;
-
-// Type 'readonly [10, 20]'
-let y = [10, 20] as const;
-
-// Type '{ readonly text: 'hello' }'
-let z = { text: 'hello' } as const;
-```
-
-**ArkTS**
-
-<!-- @[no_asConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAsConst.ets) -->  
-
-``` TypeScript
-// Type 'string'.
-let x: string = 'hello';
-
-// Type 'number[]'.
-let y: number[] = [10, 20];
-
-class Label {
-  public text: string = '';
-}
-
-// Type 'Label'.
-let z: Label = {
-  public text: 'hello',
-}
-```
-
-### Import Assertions Are Not Supported
-
-**Rule:** arkts-no-import-assertions
-
-**Severity: error**
-
-**Error code: 10605143**
-
-ArkTS does not support import assertions because import is a compile-time feature in ArkTS, not a runtime feature. Therefore, asserting the correctness of imported APIs in runtime does not make sense for the statically typed language. Use the ordinary **import** syntax instead.
-
-**TypeScript**
-
-<!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoImportAssertions.ts) -->   
-
-``` TypeScript
-import { obj } from './Something.json' assert { type: 'json' }
-```
-
-**ArkTS**
-
-<!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImportAssertions.ets) -->   
-
-``` TypeScript
-// The correctness of importing T will be checked at compile time.
-import { Something } from './ExportMod'
-```
+ArkTS does not support **new.target** because there is no concept of runtime prototype inheritance in the language. This feature is considered not applicable to static typing.
 
 ### Usage of Standard Libraries Is Restricted
 
@@ -3366,218 +3523,6 @@ Properties and functions of the global object: **eval**
 
 **handler.preventExtensions()**, **handler.set()**, **handler.setPrototypeOf()**
 
-### Strict Type Checking Is Enforced
-
-**Severity: error**
-
-**Error code: 10605999**
-
-During compilation, the TypeScript strict mode is used to check the following types:
-
-**noImplicitReturns**,
-
-**strictFunctionTypes**,
-
-**strictNullChecks**,
-
-**strictPropertyInitialization**.
-
-**TypeScript**
-
-<!-- @[type_check_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/TypeCheck.ts) -->    
-
-``` TypeScript
-// Compile-time error only when noImplicitReturns is enabled.
-function foo(s: string): string {
-  if (s != '') {
-    console.info(s);
-    return s;
-  } else {
-    console.info(s);
-  }
-}
-
-let n: number = null; // Compile-time error only when strictNullChecks is enabled.
-```
-
-**ArkTS**
-
-<!-- @[type_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/TypeCheck.ets) -->   
-
-``` TypeScript
-function foo(s: string): string {
-  console.info(s);
-  return s;
-}
-
-let n1: number | null = null;
-let n2: number = 0;
-```
-
-If you cannot initialize an instance property by declaration or in a constructor when defining a class, you can use the definite assignment assertion operator (!) to clear the **strictPropertyInitialization** error.
-
-However, the use of the definite assignment assertion operator (!) increases the risk of code errors. Therefore, you must ensure that the instance property has been assigned a value before being used. Otherwise, the runtime exceptions may occur.
-
-In addition, the use of the definite assignment assertion operator (!) requires a runtime type check, resulting in additional runtime overhead. Therefore, use it only when necessary.
-
-It also generates the error **warning: arkts-no-definite-assignment** at the compile time.
-
-**TypeScript**
-
-<!-- @[no_definiteAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->    
-
-``` TypeScript
-class C {
-  name: string  // Compile-time error only when strictPropertyInitialization is enabled.
-  age: number   // Compile-time error only when strictPropertyInitialization is enabled.
-}
-
-let c = new C();
-```
-
-**ArkTS**
-
-<!-- @[no_definiteAssignment_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDefiniteAssignment.ets) -->
-
-``` TypeScript
-class C {
-  name: string = ''
-  age!: number      // warning: arkts-no-definite-assignment
-
-  initAge(age: number) {
-    this.age = age;
-  }
-}
-
-let c = new C();
-c.initAge(10);
-```
-
-### Disabling Type Checking with In-Place Comments Is Not Allowed
-
-**Rule:** arkts-strict-typing-required
-
-**Severity: error**
-
-**Error code: 10605146**
-
-Type checking in ArkTS is not optional. Disabling type checking in-place with special comments is not allowed. In particular, **@ts-ignore** and **@ts-nocheck** annotations are not supported.
-
-**TypeScript**
-
-<!-- @[strict_typingRequired_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->    
-
-``` TypeScript
-// @ts-nocheck
-// ...
-// Some code with type checking disabled.
-// ...
-
-let s1: string = null; // No error is reported.
-
-// @ts-ignore
-let s2: string = null; // No error is reported.
-```
-
-**ArkTS**
-
-```typescript
-let s1: string | null = null; // No error is reported. The types are proper.
-let s2: string = null; // Compile-time error
-```
-
-### TS/JS File Cannot Import Source Code of ETS File
-
-**Rule:** arkts-no-ts-deps
-
-**Severity: error**
-
-**Error code: 10605147**
-
-An .ets file can import source code of an .ets/.ts/.js file, but a .ts/.js file cannot import source code of an .ets file.
-
-**TypeScript**
-
-<!-- @[export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExportMod.ts) -->   
-
-``` TypeScript
-// ExportMod.ts
-export class C {
-  // ...
-}
-```
-
-<!-- @[no_tsDeps_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTsDeps.ts) --> 
-
-``` TypeScript
-// NoTsDeps.ts
-import { C } from './ExportMod'
-```
-
-**ArkTS**
-
-<!-- @[export_classC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
-
-``` TypeScript
-// ExportMod.ets
-export class C {
-  // ...
-}
-```
-
-<!-- @[no_tsDeps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTsDeps.ets) -->
-
-``` TypeScript
-// lib2.ets
-import { C } from './ExportMod'
-```
-
-### Classes Cannot Be Used as Objects
-
-**Rule:** arkts-no-classes-as-obj
-
-**Severity: warning**
-
-**Error Code: 10605149**
-
-ArkTS does not support using classes as objects (assigning them to objects, etc.). This is because in ArkTS, a **class** declaration introduces a new type, not a value.
-
-### import Statements After Other Statements Are Not Allowed
-
-**Rule:** arkts-no-misplaced-imports
-
-**Severity: error**
-
-**Error Code: 10605150**
-
-In ArkTS, all **import** statements except dynamic **import** statements should go before all other statements in the program.
-
-**TypeScript**
-
-<!-- @[no_misplaced_imports_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMisplacedImports.ts) -->   
-
-``` TypeScript
-class C {
-  s: string = ''
-  n: number = 0
-}
-
-import foo from './ExportMod'
-```
-
-**ArkTS**
-
-```typescript
-import foo from 'module1'
-
-class C {
-  s: string = ''
-  n: number = 0
-}
-
-import('module2').then(() => {}).catch(() => {})  // Dynamic import
-```
-
 ### Usage of ESObject Type Is Restricted
 
 **Rule:** arkts-limited-esobj
@@ -3616,4 +3561,68 @@ function f() {
   let e7: ESObject = e6;    // OK - Initialize 'ESObject' with 'ESObject'.
   bar(e7);                  // OK - 'ESObject' is passed to a cross-language function.
 }
+```
+
+### JSX Expressions Are Not Supported
+
+**Rule:** arkts-no-jsx
+
+**Severity: error**
+
+**Error code: 10605054**
+
+Do not use JSX since no alternative is provided to rewrite it.
+
+### Constructor Function Type Is Not Supported
+
+**Rule:** arkts-no-ctor-signatures-funcs
+
+**Severity: error**
+
+**Error code: 10605106**
+
+ArkTS does not support the usage of the constructor function type. Use lambdas instead.
+
+**TypeScript**
+
+<!-- @[no_ctorSignaturesFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesFuncs.ts) -->
+
+``` TypeScript
+class Person {
+  constructor(
+    name: string,
+    age: number
+  ) { }
+}
+type PersonCtor = new (name: string, age: number) => Person;
+
+function createPerson(Ctor: PersonCtor, name: string, age: number): Person {
+  return new Ctor(name, age);
+}
+
+const person = createPerson(Person, 'John', 30);
+```
+
+**ArkTS**
+ 
+<!-- @[no_ctorSignaturesFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesFuncs.ets) -->
+
+``` TypeScript
+class Person {
+  constructor(
+    name: string,
+    age: number
+  ) {}
+}
+type PersonCtor = (n: string, a: number) => Person
+
+function createPerson(ctor: PersonCtor, n: string, a: number): Person {
+  return ctor(n, a);
+}
+
+let impersonate: PersonCtor = (n: string, a: number): Person => {
+  return new Person(n, a);
+}
+
+const person = createPerson(impersonate, 'John', 30);
 ```

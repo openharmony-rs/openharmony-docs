@@ -1,14 +1,14 @@
 # button Development
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-08-05T10:12:37.145Z pushedAt=2026-08-06T06:18:15.288Z -->
+<!-- md-trans-meta sourceCommit=1c7e66108ace216c76ecdf477018f306a6c135f9 translatedAt=2026-10-29T08:55:11.560Z pushedAt=2026-10-30T03:00:19.596Z nl=1 -->
 
 The **button** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
+
 
 ## Creating a \<button> Component
 
@@ -35,9 +35,11 @@ Create a **\<button>** component in the .hml file under **pages/index**.
 
 ![button-Component](figures/button-Component.png)
 
+
 ## Setting the Button Type
 
 Set the **type** attribute of the **\<button>** component to **circle**, **text**, or any other supported value.
+
 
 ```html
 <!-- xxx.hml -->
@@ -46,6 +48,7 @@ Set the **type** attribute of the **\<button>** component to **circle**, **text*
   <button class="text" type="text"> button</button>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -73,13 +76,17 @@ Set the **type** attribute of the **\<button>** component to **circle**, **text*
 }
 ```
 
+
 ![button-type](figures/button-type.png)
+
 
 > **NOTE**
 > 
 >If the icon used by the **\<button>** component is from the cloud, you must declare the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder.
 
+
 Sample code for declaring the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder:
+
 
 ```json
 {
@@ -90,6 +97,7 @@ Sample code for declaring the **ohos.permission.INTERNET** permission in the **c
   }
 }
 ```
+
 
 ## Showing the Download Progress
 
@@ -168,13 +176,15 @@ export default {
 
 ![Download-Progress](figures/Download-Progress.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > The **setProgress** method supports only buttons of the download type.
+
 
 ## Example Scenario
 
 In this scenario, you can switch the input type based on the entered text content.
+
 
 ```html
 <!-- xxx.hml -->
@@ -192,6 +202,7 @@ In this scenario, you can switch the input type based on the entered text conten
   </div>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -238,6 +249,7 @@ In this scenario, you can switch the input type based on the entered text conten
 }
 ```
 
+
 ```js
 // xxx.js
 export default {
@@ -272,5 +284,6 @@ export default {
   },
 }
 ```
+
 
 ![Example-Scenario-1](figures/Example-Scenario-1.gif)

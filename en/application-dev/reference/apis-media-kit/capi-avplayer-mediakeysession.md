@@ -2,10 +2,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b6dc5e5e7cc5cdd98e4b0593ece2e6c9d236388c translatedAt=2026-09-15T16:07:28.321Z pushedAt=2026-09-22T07:32:40.275Z -->
+<!-- md-trans-meta sourceCommit=cc48f97eabfc91efede35183124197c3434b661e translatedAt=2026-11-09T06:26:21.838Z pushedAt=2026-11-09T08:36:10.546Z nl=1 -->
 
 ```c
 typedef struct MediaKeySession MediaKeySession
@@ -13,7 +13,7 @@ typedef struct MediaKeySession MediaKeySession
 
 ## Overview
 
-Defines a struct for the media key session, which is used to manage digital rights management (DRM) key sessions and provide capabilities such as obtaining, updating, and releasing keys.
+Defines the **MediaKeySession** struct which manages the key session of Digital Rights Management (DRM), providing capabilities such as obtaining, updating, and releasing keys. Use scenarios: video playback apps that need to play copyright-protected video content, online music platforms that need to play encrypted audio files, and similar scenarios.
 
 **Since**: 12
 

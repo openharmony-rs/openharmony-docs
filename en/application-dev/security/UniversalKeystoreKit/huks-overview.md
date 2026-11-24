@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d3532cdb382de60022a0814eb4efa4eadebea1d6 translatedAt=2026-08-13T08:25:09.683Z pushedAt=2026-08-13T10:20:24.720Z -->
+<!-- md-trans-meta sourceCommit=e163d54e644867de2052b25d941ded778e61181b translatedAt=2026-11-20T03:29:43.391Z pushedAt=2026-11-20T06:47:58.791Z nl=1 -->
 
 Universal Keystore Kit (referred to as HUKS) provides applications and services with unified secure key operations, including key management (key generation/destruction, key import, key attestation, key agreement, and key derivation) and key use (encryption/decryption, signing/signature verification, and access control).
 

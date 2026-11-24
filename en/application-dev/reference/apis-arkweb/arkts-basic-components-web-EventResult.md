@@ -1,12 +1,11 @@
 # Class (EventResult)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhanghaozhi1-->
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4f3e4630cb3a92ec0ab1a250c999a60e5b0e99de translatedAt=2026-08-07T04:36:49.332Z pushedAt=2026-08-07T08:12:04.345Z -->
+<!-- md-trans-meta sourceCommit=8d7403adf09bf343974d6e2d17a0f01ca2f785fe translatedAt=2026-11-06T11:19:38.380Z pushedAt=2026-11-13T08:48:54.238Z nl=1 -->
 
 EventResult is a class in ArkWeb Kit used to notify the **Web** component of the same-layer event consumption result. In same-layer embedding scenarios, the app and the **Web** component are both exposed in the event response chain. EventResult allows the app to declare to the **Web** component whether it has consumed a touch or mouse event, thereby determining whether the **Web** component continues to process the event. When the app sets the consumption result to **true**, it indicates that the app has consumed the event and the **Web** component will no longer consume it. When set to **false**, it indicates that the app does not consume the event, and the event will be consumed by the **Web** component. EventResult is used to set the consumption result of touch events ([TouchType](../apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype)) and mouse events ([MouseAction](../apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8), limited to left, middle, and right buttons), with the mouse button type defined by [MouseButton](../apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8). It is applicable to event coordination scenarios where the app and the **Web** component interact at the same layer.
 
@@ -16,9 +15,9 @@ For details about the sample code of the mouse event, see [onNativeEmbedMouseEve
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 12.
+> - This class is supported since API version 12.
 >
 > - The sample effect is subject to the actual device.
 
@@ -85,4 +84,3 @@ Sets the mouse event consumption result and bubbling control.
 **Example**
 
 For details about the sample code of the mouse event, see [onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20).
-<!--no_check-->

@@ -6,17 +6,17 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=f49b12145b93fb1a0a3564baf1cfde447ea3a867 translatedAt=2026-08-07T09:45:28.511Z pushedAt=2026-08-10T02:13:40.217Z -->
+<!-- md-trans-meta sourceCommit=3f4430a1cf9e979027a217e0f6c3b2523fb1862a translatedAt=2026-11-23T07:20:07.046Z pushedAt=2026-11-23T07:28:16.051Z nl=1 -->
 
 **ShellCmdResult** is a data object used to encapsulate the execution result of a shell command in the test framework. It contains two key attributes: **stdResult** (standard output content) and **exitCode** (exit code). This object provides a structured way for test scripts to access the command execution result.
 
 This module is applicable to test scenarios where the execution result of a shell command needs to be verified or the data returned by the command needs to be processed. It is obtained by calling [executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand) of **abilityDelegator**. Note that the APIs of this module can be used only in the test framework and should not be called in formal service code.
 
-> **NOTE**
+> **Description**
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in [JsUnit User Guide](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/unittest-guidelines).
 
 ## Modules to Import
 
@@ -29,7 +29,6 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 Call [executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand) in **abilityDelegator** to obtain a **ShellCmdResult** instance. After the call is successful, a **ShellCmdResult** object is returned, containing the standard result (**stdResult**) and exit code (**exitCode**) of the shell command.
 
 **Example**
-
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';

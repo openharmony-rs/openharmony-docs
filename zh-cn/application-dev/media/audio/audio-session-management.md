@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导ArkTS开发者通过AudioSessionManager管理音频会话，在短视频、直播、游戏、VoIP等场景下自定义焦点策略并监听会话状态。"
+keywords: [音频会话, 自定义焦点策略, 会话策略, 会话激活, 焦点开发, AudioSession, ConcurrencyMode]
+doctype: guide
+status: active
+---
 # 音频会话管理(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -102,6 +109,10 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 1. 应用焦点被抢占（DEACTIVATED_LOWER_PRIORITY）：该应用所有的音频流持有的焦点全部被其他应用抢占时，AudioSession被同时停用。
 
 2. 超时（DEACTIVATED_TIMEOUT）：若AudioSession处于激活状态，但该应用没有音频流在运行状态，则AudioSession会在规定时间后被超时停用。
+
+> **注意：**
+> 
+> 音频会话停用事件（AudioSessionDeactivatedEvent）仅用于通知音频会话的停用，不能反映单个音频流的中断状态。监听音频流的中断事件，请使用播放流的[on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)或录音流的[on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)。
 
 ### 开发步骤
 

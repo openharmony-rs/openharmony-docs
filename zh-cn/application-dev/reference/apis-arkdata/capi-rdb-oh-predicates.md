@@ -84,6 +84,12 @@ OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObje
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### notEqualTo()
 
 ```c
@@ -110,6 +116,12 @@ OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VO
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### beginWrap()
 
 ```c
@@ -133,6 +145,10 @@ OH_Predicates *(*beginWrap)(OH_Predicates *predicates)
 | 类型            | 说明                   |
 | --------------- | ---------------------- |
 | OH_Predicates * | 返回带有左括号的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
 
 ### endWrap()
 
@@ -158,6 +174,10 @@ OH_Predicates *(*endWrap)(OH_Predicates *predicates)
 | --------------- | ---------------------- |
 | OH_Predicates * | 返回带有右括号的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
 ### orOperate()
 
 ```c
@@ -182,6 +202,10 @@ OH_Predicates *(*orOperate)(OH_Predicates *predicates)
 | --------------- | ---------------------- |
 | OH_Predicates * | 返回带有或条件的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
 ### andOperate()
 
 ```c
@@ -205,6 +229,10 @@ OH_Predicates *(*andOperate)(OH_Predicates *predicates)
 | 类型            | 说明                   |
 | --------------- | ---------------------- |
 | OH_Predicates * | 返回带有和条件的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
 
 ### isNull()
 
@@ -231,6 +259,10 @@ OH_Predicates *(*isNull)(OH_Predicates *predicates, const char *field)
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
 ### isNotNull()
 
 ```c
@@ -255,6 +287,10 @@ OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)
 | 类型            | 说明                       |
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
 
 ### like()
 
@@ -281,6 +317,12 @@ OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject 
 | 类型            | 说明                       |
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 
 ### between()
@@ -309,6 +351,12 @@ OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObje
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### notBetween()
 
 ```c
@@ -334,6 +382,12 @@ OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VO
 | 类型            | 说明                       |
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### greaterThan()
 
@@ -361,6 +415,12 @@ OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_V
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### lessThan()
 
 ```c
@@ -386,6 +446,12 @@ OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObj
 | 类型            | 说明                       |
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### greaterThanOrEqualTo()
 
@@ -413,6 +479,12 @@ OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *fi
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### lessThanOrEqualTo()
 
 ```c
@@ -438,6 +510,12 @@ OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field
 | 类型            | 说明                       |
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### orderBy()
 
@@ -465,6 +543,12 @@ OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_Order
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_OrderType](capi-oh-predicates-h.md#oh_ordertype)
+
 ### distinct()
 
 ```c
@@ -488,6 +572,10 @@ OH_Predicates *(*distinct)(OH_Predicates *predicates)
 | 类型            | 说明                           |
 | --------------- | ------------------------------ |
 | OH_Predicates * | 返回可用于过滤重复记录的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
 
 ### limit()
 
@@ -514,6 +602,10 @@ OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)
 | --------------- | ------------------------------------ |
 | OH_Predicates * | 返回可用于设置最大数据记录数的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
 ### offset()
 
 ```c
@@ -538,6 +630,10 @@ OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)
 | 类型            | 说明                                 |
 | --------------- | ------------------------------------ |
 | OH_Predicates * | 返回具有指定返回结果起始位置的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
 
 ### groupBy()
 
@@ -565,6 +661,10 @@ OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, 
 | --------------- | ---------------------- |
 | OH_Predicates * | 返回分组查询列的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
 ### in()
 
 ```c
@@ -590,6 +690,12 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 | 类型            | 说明                       |
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### notIn()
 
@@ -617,6 +723,12 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 | --------------- | -------------------------- |
 | OH_Predicates * | 返回与指定字段匹配的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### clear()
 
 ```c
@@ -641,6 +753,10 @@ OH_Predicates *(*clear)(OH_Predicates *predicates)
 | --------------- | ------------------ |
 | OH_Predicates * | 返回清空后的谓词。 |
 
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
+
 ### destroy()
 
 ```c
@@ -664,6 +780,10 @@ int (*destroy)(OH_Predicates *predicates)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+
+**参考：**
+
+[OH_Predicates](capi-rdb-oh-predicates.md)
 
 
 

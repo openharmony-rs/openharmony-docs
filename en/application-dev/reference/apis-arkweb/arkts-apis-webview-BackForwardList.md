@@ -1,12 +1,11 @@
 # Interface (BackForwardList)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c3549f5fc26f86afdb3e7a215c50ff6d6d5cab0c translatedAt=2026-08-07T04:43:27.492Z pushedAt=2026-08-07T07:49:01.579Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:01:09.783Z pushedAt=2026-11-09T11:15:14.075Z nl=1 -->
 
 BackForwardList is an interface in the ArkWeb framework for accessing the browsing history list of a Web component. It is obtained through the [getBackForwardEntries](./arkts-apis-webview-WebviewController.md#getbackforwardentries) method. This interface provides read-only access to the page navigation history. Developers can obtain basic information about the current history list (the current index and the total number of history entries), as well as detailed information about a specific history item by index.
 

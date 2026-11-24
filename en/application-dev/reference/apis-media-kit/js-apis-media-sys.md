@@ -5,6 +5,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=176f57b2e4745f3c38424c78acdc2c53b97aedbb translatedAt=2026-11-09T06:32:13.641Z pushedAt=2026-11-09T08:47:02.714Z nl=1 -->
 
 The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
@@ -524,16 +525,6 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
   console.error(`Failed to setWatermark and catch error is ${error.message}`);
 });
 ```
-
-## AVRecorderProfile<sup>9+</sup>
-
-Describes the audio and video recording profile.
-
-**System capability**: SystemCapability.Multimedia.Media.AVRecorder
-
-| Name            | Type                                        | Read-Only| Optional| Description                                                        |
-| ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| enableStableQualityMode<sup>18+</sup>            | boolean                        | No  | Yes  | Whether to enable stable quality mode for video recording. This parameter is optional for video recording. The default value is **false**. If this parameter is set to **true**, the system will use a video encoding strategy designed to maintain stable quality.<br>**System API**: This is a system API.|
 
 ## VideoRecorder<sup>9+</sup>
 
@@ -1497,6 +1488,7 @@ Enumerates the states available for the system screen recorder.
 | ------------------------ | --------------- | ------------------------------------------------------------ |
 | SCREENCAPTURE_STARTED       | 0   | The system screen recorder starts screen capture.                      |
 | SCREENCAPTURE_STOPPED        | 1    | The system screen recorder stops screen capture.|
+| SCREENCAPTURE_DIED<sup>23+</sup>           | 2    | The screen capture framework service process is terminated. |
 
 ## enableDeviceLevelCapture<sup>20+</sup>
 

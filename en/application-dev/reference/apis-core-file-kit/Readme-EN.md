@@ -2,12 +2,13 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=36f5c809bf10cb082643c8b6a0ce69b4a4b79846 translatedAt=2026-11-16T07:28:06.267Z pushedAt=2026-11-16T07:39:42.364Z nl=1 -->
 
-- ArkTS APIs<!--core-file-arkts-->
+- ArkTS API<!--core-file-arkts-->
   - [@ohos.application.BackupExtensionAbility (BackupExtensionAbility)](js-apis-application-backupExtensionAbility.md)
   - [@ohos.file.cloudSync (Device-Cloud Sync)](js-apis-file-cloudsync.md)
   - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management)](js-apis-file-cloudsyncmanager.md)
@@ -19,6 +20,7 @@
   - [@ohos.file.securityLabel (Data Label)](js-apis-file-securityLabel.md)
   - [@ohos.file.statvfs (File System Space Statistics)](js-apis-file-statvfs.md)
   - [@ohos.file.storageStatistics (Application Storage Statistics)](js-apis-file-storage-statistics.md)
+  - [@ohos.file.volumeManager (Volume Management)](js-apis-file-volumemanager.md)
   - [@ohos.fileshare (File Sharing)](js-apis-fileShare.md)
   - [@ohos.file.BackupExtensionContext (Backup and Restore Extension Capability)](js-apis-file-backupextensioncontext.md)
   <!--Del-->
@@ -35,7 +37,7 @@
   - [@ohos.filemanagement.userFileManager (User Data Management) (System API)](js-apis-userFileManager-sys.md)
   - [@ohos.fileshare (File Sharing) (System API)](js-apis-fileShare-sys.md)
   <!--DelEnd-->
-  - APIs No Longer Maintained<!--core-file-arkts-dep-->
+  - Deprecated APIs<!--core-file-arkts-dep-->
     - [@ohos.document (File Operation)](js-apis-document.md)
     - [@ohos.fileio (File Management)](js-apis-fileio.md)
     - [@ohos.statfs (statfs)](js-apis-statfs.md)
@@ -46,7 +48,7 @@
     - [@ohos.file.recent (Latest Access List) (System API)](js-apis-file-recent-sys.md)
     - [@ohos.file.trash (Trash) (System API)](js-apis-file-trash-sys.md)
     <!--DelEnd-->
-- C APIs<!--core-file-c-->
+- C API<!--core-file-c-->
   - Modules<!--core-file-module-->
     - [Environment](capi-environment.md)
     - [FileIO](capi-fileio.md)
@@ -54,6 +56,9 @@
     - [fileUri](capi-fileuri.md)
     - [CloudDisk](capi-clouddisk.md)
     - [Archive](capi-archive.md)
+    <!--Del-->
+    - [Swapfs (system API)](capi-swapfs-sys.md)
+    <!--DelEnd--> 
   - Header Files<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
@@ -64,6 +69,10 @@
     - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
     - [oh_archive.h](capi-oh-archive-h.md)
     - [oh_archive_errcode.h](capi-oh-archive-errcode-h.md)
+    <!--Del-->
+    - [oh_swapfs.h (System Interface)](capi-oh-swapfs-h-sys.md)
+    - [swapfs_errcode.h (System Interface)](capi-swapfs-errcode-h-sys.md)
+    <!--DelEnd-->
   - Structs<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
@@ -75,15 +84,32 @@
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md)
+    - [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md)
+    - [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md)
+    - [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md)
+    - [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md)
+    - [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md)
+    - [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md)
+    - [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md)
+    - [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md)
+    - [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md)
     - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
     - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
-    - [ArchiveWriteCtx](capi-archive-archivewritectx.md)
-    - [ArchiveReadCtx](capi-archive-archivereadctx.md)
-    - [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md)
-    - [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md)
+    - [ArchiveWriteCtx*](capi-archive-archivewritectx.md)
+    - [ArchiveReadCtx*](capi-archive-archivereadctx.md)
+    - [ArchiveStreamWriteCtx*](capi-archive-archivestreamwritectx.md)
+    - [ArchiveStreamReadCtx*](capi-archive-archivestreamreadctx.md)
+    <!--Del-->
+    - [OH_SwapfsConfig (system API)](capi-swapfs-oh-swapfsconfig-sys.md)
+    - [OH_SwapfsDataInfo (system API)](capi-swapfs-oh-swapfsdatainfo-sys.md)
+    - [OH_SwapfsManager (system API)](capi-swapfs-oh-swapfsmanager-sys.md)
+    - [OH_SwapfsStats (system API)](capi-swapfs-oh-swapfsstats-sys.md)
+    - [OH_SwapfsSwapInRequest (system API)](capi-swapfs-oh-swapfsswapinrequest-sys.md)
+    - [OH_SwapfsSwapOutRequest (system API)](capi-swapfs-oh-swapfsswapoutrequest-sys.md)
+    <!--DelEnd-->
 - Error Codes<!--core-file-arkts-errcode-->
   - [File Management Error Codes](errorcode-filemanagement.md)
   <!--Del-->
-  - [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md)
+  - [Cloud Disk Management Error Codes (system API error codes)](errorcode-clouddiskmanager-sys.md)
   <!--DelEnd-->
-  

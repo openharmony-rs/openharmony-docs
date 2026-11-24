@@ -5,11 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=6731353e95ca92d0b8b50de9083fe2085729362a translatedAt=2026-10-28T04:05:12.559Z pushedAt=2026-10-28T08:00:37.919Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:31:44.314Z pushedAt=2026-11-12T09:15:37.723Z nl=1 -->
 
 The decorators described above (including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), and [\@Provide and \@Consume](./arkts-provide-and-consume.md)) can only observe changes at the first layer. However, in actual app development, developers often encapsulate their own data models based on requirements. For multi-level nesting scenarios, such as two-dimensional arrays, object arrays, and nested classes, changes to second-layer properties cannot be observed. Therefore, the [\@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed.md#observed) and [\@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md#objectlink) decorators are introduced to enable observation of deep property changes in nested data structures.
 
-\@Observed/\@ObjectLink is suitable for observing property changes in nested objects (where an object's property is itself an object). Before reading this document, you are advised to have a basic understanding of the observation capabilities of decorators. It is recommended to read [\@State](./arkts-state.md) for basic usage first. For best practices, see [State Management Best Practices](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management FAQs](./arkts-state-management-faq.md).
+\@Observed/\@ObjectLink is suitable for observing changes to properties of nested objects (objects whose properties are objects). Developers need a certain understanding of the basic observation capabilities of decorators before reading this document in comparison. It is recommended to read the following in advance:[\@State](./arkts-state.md) basic usage. For FAQ, see [State Management FAQ](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -67,7 +67,7 @@ this.objLink= ...
 | --------------------- | ------------------------------------------------------------ |
 | Initialized from the parent component | Mandatory.<br/>The variable decorated by @ObjectLink must be initialized with a complex type. To observe changes, the following conditions must be met:<br/>-&nbsp;Before API version 19, the type must be an instance of a class decorated by @Observed.<br/>- From API version 19 onward, @ObjectLink can be initialized with a complex type, that is, a class, object, or built-in type. However, when observing nested types, it must still receive an instance of a class decorated by @Observed or the return value of makeV1Observed.<br/>-&nbsp;The class or array of the synchronization source must be data decorated by [@State](./arkts-state.md), [@Link](./arkts-link.md), [@Provide](./arkts-provide-and-consume.md), [@Consume](./arkts-provide-and-consume.md), or @ObjectLink.<br/>For an example where the synchronization source is an array item, see [Object Arrays](#object-arrays). For an example of initializing a class, see [Nested Objects](#nested-objects). |
 | Synchronized with the source object | Bidirectional.                                                       |
-| Can initialize child components | Allowed. Can be used to initialize regular variables, @State, @Link, @Prop, and @Provide. |
+| Can initialize child components      | Supported; can be used to initialize a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component. |
 
 
   **Figure 1** Initialization rule illustration

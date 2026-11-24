@@ -1,16 +1,15 @@
 # Enums
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:30:42.281Z pushedAt=2026-08-07T08:12:02.396Z -->
+<!-- md-trans-meta sourceCommit=f5ea5eb60664cadd2913a575bd523bd64f5f3af4 translatedAt=2026-11-06T11:20:14.387Z pushedAt=2026-11-13T07:52:27.588Z nl=1 -->
 
 > **NOTE**
 >
-> The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## MessageLevel
 
@@ -97,6 +96,7 @@ Enumerates the cache modes.
 | None    | 1 | Preferentially loads resources from the cache (including expired ones), and fetches them from the network when no cache is available.     |
 | Online  | 2 | The cache is not used to load the resources. All resources are forcibly obtained from the Internet.              |
 | Only    | 3 | The local cache alone is used to load the resources.                       |
+
 
 ## OverScrollMode<sup>11+</sup>
 
@@ -258,7 +258,6 @@ Enumerates the media types that trigger the context menu.
 | Image | 1 | Image.          |
 
 ## ContextMenuDataMediaType<sup>22+</sup>
-
 Enumerates the media types that trigger the context menu (enhanced type obtaining capability).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -376,7 +375,7 @@ Enumerates the soft keyboard avoidance modes.
 | RESIZE_VISUAL      | 0 | For soft keyboard avoidance, the visual viewport is resized, but not the layout viewport.  |
 | RESIZE_CONTENT     | 1 | For soft keyboard avoidance, both the visual viewport and layout viewport are resized. Default value.|
 | OVERLAYS_CONTENT   | 2 | No viewport is resized, and soft keyboard avoidance is not triggered.  |
-| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | The soft keyboard avoidance behavior of the **Web** component follows the [KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) set by UIcontext. The **Web** component does not process the avoidance behavior of the component.|
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | The soft keyboard avoidance behavior of the Web component follows the [KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) mode set by UIContext, and the Web component no longer handles the component avoidance. |
 
 ## WebElementType<sup>13+</sup>
 
@@ -484,6 +483,45 @@ Defines the detection strategy methods used for blank screen detection, which sp
 | Name         | Value| Description                |
 | ----------- | -- | ------------------ |
 | DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | The page is detected using the 17-point detection method. When a rendered and contentful node is detected by a detection point, it is considered that the detection point is hit. A contentful node refers to an image, video, or text node.<br>If no contentful node is detected or the number of contentful nodes is less than the threshold, a blank or near-blank screen is displayed.<br>The 17 detection points are as follows:<br>Center point (1): The center point is at the geometric center of the page.<br>Internal grid intersection points (16): A 5 × 5 uniform grid is defined in the page area. The 16 points are the intersection points of four vertical equal division lines and four horizontal equal division lines in the page.        |
+
+## BlankScreenReason
+
+The specific reason for a blank screen. Attribution is performed from five dimensions: network layer, resource layer, rendering and JS layer, kernel and process layer, and container layer.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name          | Value | Description                 |
+| ----------- | -- | ------------------ |
+| DNS_RESOLVE_FAILED | 101 | DNS resolution failed. |
+| REQUEST_TIMED_OUT | 102 | The main document loading timed out. |
+| CONNECTION_REFUSED | 103 | The connection was refused. |
+| CONNECTION_RESET | 104 | The connection was reset. |
+| SSL_ERROR | 105 | An SSL error occurred. |
+| CERT_ERROR | 106 | A certificate error occurred. |
+| INTERNET_DISCONNECTED | 107 | The network is disconnected. |
+| REDIRECT_LOOP | 108 | A redirect loop occurred. |
+| PROXY_ERROR | 109 | A proxy error occurred. |
+| OTHER_NETWORK_ERROR | 199 | Other network errors. |
+| MAIN_DOC_EMPTY | 201 | The main document is empty. |
+| HTTP_4XX_ERROR | 202 | An HTTP 4xx error occurred. |
+| HTTP_5XX_ERROR | 203 | An HTTP 5xx error occurred. |
+| JS_GLOBAL_BUNDLE_LOAD_FAILED | 210 | Failed to load the JavaScript global bundle. |
+| CSS_LOAD_FAILED | 211 | Failed to load CSS. |
+| MULTI_RESOURCE_LOAD_FAILED | 212 | Failed to load multiple resources. |
+| CORS_BLOCKED | 213 | The request was blocked by CORS. |
+| CSP_BLOCKED | 214 | The request was blocked by CSP. |
+| MIXED_CONTENT_BLOCKED | 215 | Mixed content was blocked. |
+| JS_RUNTIME_ERROR | 301 | A JavaScript runtime error occurred. |
+| NO_FIRST_CONTENTFUL_PAINT | 312 | No first contentful paint occurred. |
+| RENDERER_CRASHED | 401 | The render process crashed. |
+| RENDERER_KILLED | 402 | The render process was terminated. |
+| GPU_PROCESS_CRASHED | 403 | The GPU process crashed. |
+| GPU_PROCESS_WATCHDOG_TIMEOUT | 404 | The GPU process watchdog timed out. |
+| WEB_VIEW_ZERO_SIZE | 501 | The size of the Web component is 0. |
 
 ## CredentialType<sup>22+</sup>
 
@@ -627,3 +665,17 @@ Defines the input method immersive mode in the WebView, which controls the displ
 | IMMERSIVE       | 1 | Immersive mode, following the system.|
 | LIGHT_IMMERSIVE | 2 | Light immersive style.                |
 | DARK_IMMERSIVE  | 3 | Dark immersive style.                |
+
+## WebContextMenuItemId
+
+Copy link menu item pointing to highlighted text.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name | Value | Description |
+| ------- | -- | ---------- |
+| MENU_COPY_LINK | 11 | Copy link menu item pointing to highlighted text. |

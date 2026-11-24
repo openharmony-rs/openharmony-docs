@@ -1,5 +1,7 @@
 # *ModuleName* Error Codes
 
+<!-- md-trans-meta sourceCommit=2c26b5dd4532c9a073b02eefd10bd7898a3c1e5b translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 > **NOTE**
 >
 > 1. Delete all writing instructions from your document after you finish the writing.
@@ -15,7 +17,7 @@
 | 3    |  <br> |  <br> <br> |
 | 4    |  <br>Description       | **Meaning of this field**: provides detailed description for the error code, including the use case when and the location where the error code is thrown.<br>**Instructions**<br>1. Describe the use case when the error code is thrown, for example, when developing a specific service or feature.<br>2. Describe the symptom and location of the error (for example, the exact module name, class name, and interface name).|
 | 5    | Possible cause<br>Possible Causes   | **Meaning of this field**: lists all possible causes of the error.<br>**Instructions**<br>1. List all the possible causes.<br>2. Use concise sentences.<br>3. Sort the causes by possibility in descending order.|
-| 6    | Procedure<br>Procedure         | **Meaning of this field**: describes how to handle the error based on the symptom and possible causes.<br>**Instructions**<br>1. Provide the procedure step by step. Each step should correspond to a possible cause. You can use substeps for complex operations of a step.<br>2. The steps should be clear, specific, and executable. If judgment is involved, provide clear judgment criteria.<br>3. If an operation has impact on the system or services, provide warning information in the form of Caution or Warning before the operation.  |
+| 6    | Procedure<br>Procedure         | **Meaning of this field**: describes how to handle the error based on the symptom and possible causes.<br>**Instructions**<br>1. Provide the procedure step by step. Each step should correspond to a possible cause. You can use substeps for complex operations of a step.<br>2. The steps should be clear, specific, and executable. If judgment is involved, provide clear judgment criteria.<br>3. If an operation has impact on the system or services, provide warning information in the form of Caution or Warning before the operation. For details, see [Notices and Notes](../style-guide/style-guide-content-elements.md#notices-and-notes) in the Style Guide.  |
 
 ## 1300001 Repeated Operation (Error Code + Space + Error Description)
 
@@ -59,7 +61,7 @@ This error code is generated when a repeated operation is performed on the same 
 >
 > 2. The steps should be clear, specific, and executable. If judgment is involved, provide clear judgment criteria.
 >
-> 3. If an operation has impact on the system or services, provide warning information in the form of Caution or Warning before the operation.
+> 3. If an operation has impact on the system or services, provide warning information in the form of Caution or Warning before the operation. For details, see [Notices and Notes](../style-guide/style-guide-content-elements.md#notices-and-notes) in the Style Guide.
 
 
 1. Check whether the **Window** object has been created.

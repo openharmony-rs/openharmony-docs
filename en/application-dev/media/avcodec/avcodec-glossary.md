@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Defines common AVCodec Kit terms, including I/P/B frames, GOP, bitrate control modes, reference frames, Surface mode, and Annex B, to help you understand the guides and APIs."
+keywords: [terms, frame types, GOP, bitrate control modes, reference frames, Surface mode, Annex B, bitrate, resolution]
+doctype: glossary
+status: active
+---
+
 # Glossary
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=76c7e58f88d458a2eed1c860a204064aa189ef85 translatedAt=2026-10-22T03:56:51.709Z pushedAt=2026-10-22T12:38:49.316Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2ad293edae36fdd9e0da20f8f6b6d2798fbf3d07 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## A
 

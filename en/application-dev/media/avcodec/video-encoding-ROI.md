@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes ROI video encoding, which allocates more bitstream resources to important regions such as faces and license plates to preserve their quality within limited bandwidth. Supports configuration through NativeBuffer metadata and encoder input callbacks."
+keywords: [ROI encoding, region of interest, DeltaQp, NativeBuffer metadata, per-frame delivery, live streaming, video calls, security surveillance, face region]
+doctype: guide
+status: active
+---
+
 # ROI Encoding for a Clearer Specified Region
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4673eb0cec82580105c228e72fa2f6fb56920a61 translatedAt=2026-10-22T04:12:45.548Z pushedAt=2026-10-22T13:47:21.985Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Basic Concepts
 
@@ -47,7 +55,7 @@ Based on the encoding mode and ROI configuration method, the ROI encoding develo
 
 **Supported bit rate control modes**: variable bit rate (VBR), constant bit rate (CBR) and stable quality rate control (SQR)
 
-**Dependent on ROI detection and recognition capability:** The encoder does not have the ROI detection and recognition capability, so the ROI encoding technology takes effect depending on the ROI information you input. You can design and implement the ROI recognition capability based on your service scenario, or obtain the ROI region through the face region information (metadata) natively provided by the system camera module to reduce development costs. For metadata configuration and retrieval, see [Metadata (ArkTS)](../camera/camera-metadata.md) and [Metadata (C/C++)](../camera/native-camera-metadata.md). For the development steps of extracting ROI information from the video frame NativeBuffer metadata, see [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
+**ROI detection dependency:** The encoder cannot detect ROIs. ROI encoding therefore depends on the ROI information you provide. You can implement ROI detection for your scenario or obtain ROI regions from face region information (metadata) provided by the system camera module to reduce development effort. For instructions on extracting ROI information from video frame NativeBuffer metadata, see [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
 ## Parameter Requirements
 
@@ -89,7 +97,8 @@ The following two methods are supported for configuring ROI:
 - [Method 2: Configuring ROI via the Encoding Input Parameter Callback](#method-2-configuring-roi-via-the-encoding-input-parameter-callback): Use the video encoding parameter `OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS` to configure ROI parameters in the encoding input callback, including the encoding input parameter callback (Surface mode) and the encoding input buffer callback (Buffer mode).
 
 **General effectiveness mechanism:**
-1. ROI parameters support frame-by-frame delivery and take effect in real time. You do not need to query capabilities or configure global switches.
+
+1. ROI parameters can be submitted with each frame and take effect immediately. No encoder capability query or global switch is required. To use per-frame camera metadata as the ROI source, first query and enable per-frame ROI information output on the camera.
 2. If the system encoder does not support ROI encoding, the encoder ignores ROI parameters and performs normal encoding.
 3. The valid range of **DeltaQp** is [-51, 51]. The encoder overlays **DeltaQp** on the QP of the ROI region, and then limit the result to the range [minQp, maxQp] to obtain the final QP.
 4. When no ROI parameters are configured for a frame, if ROI encoding takes effect for the previous frame, the ROI information of the previous frame is reused for ROI encoding of the current frame. If normal encoding is used for the previous frame, normal encoding is performed for the current frame.
@@ -112,7 +121,7 @@ The following two methods are supported for configuring ROI:
 
 Surface mode and Buffer mode share the same ROI information acquisition and assembly process. The difference lies in how ROI is configured to the encoder.
 
-When the camera outputs a video frame, if an ROI region (such as a face) is detected, the ROI information is written into the NativeBuffer metadata of the frame. You can directly extract it from each frame without additional callback APIs or timestamp matching. For details, see [OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey).
+After per-frame ROI information output is enabled, the camera writes ROI information into video frame NativeBuffer metadata when it detects a region such as a face. You can extract the information directly from each frame without additional callbacks or timestamp matching. For details, see [OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey).
 
 In surface mode, the camera outputs video frames to the surface of `OH_NativeImage`. In the frame processing thread, you extract ROI information from the NativeBuffer metadata of each frame, assemble it into a configuration string, and then write the ROI string into the NativeBuffer metadata of the encoder input frame, thereby delivering the ROI to the encoder frame by frame (as shown in figure 2).
 
@@ -136,6 +145,7 @@ The development procedure is as follows:
    
    add_library(recorder SHARED recorder/RecorderNative.cpp
                                recorder/Recorder.cpp
+                               capbilities/camera/NativeCamera.cpp
                                capbilities/codec/Muxer.cpp
                                capbilities/codec/VideoEncoder.cpp
                                capbilities/codec/AudioCapturer.cpp
@@ -147,16 +157,56 @@ The development procedure is as follows:
                                common/RoiQueue.cpp
    )
    
-   target_link_libraries(recorder PUBLIC ${BASE_LIBRARY} player)
+   target_link_libraries(recorder PUBLIC ${BASE_LIBRARY} player libohcamera.so)
    ```
 
    > **NOTE**
    >
    > The names **recorder** and **player** are examples only. Replace them with the actual target name of your CMake project.
 
-2. Extract ROI information from the NativeBuffer metadata of the video frame.
+2. Enable per-frame camera ROI information output.
 
-   When the camera outputs a video frame, if an ROI region (such as a face) is detected, the ROI information is written into the NativeBuffer metadata of the frame. You can extract the raw ROI string through `OH_NativeBuffer_GetMetadataValue`.
+   Starting from API version 26.0.1, the camera does not output ROI information with video frames by default. Before using this information, check whether the device supports the capability and explicitly enable it. Depending on the camera API used, follow the ArkTS or C/C++ example below to enable it after committing the session configuration and before starting the session. For metadata stream creation and session configuration, see [Metadata (ArkTS)](../camera/camera-metadata.md) and [Metadata (C/C++)](../camera/native-camera-metadata.md).
+
+   **ArkTS example:**
+
+   <!-- @[roi_enable_in_frame_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets) -->
+
+   ``` TypeScript
+   if (metadataOutput.isInFrameMetadataForEncoderSupported()) {
+     metadataOutput.setInFrameMetadataForEncoderEnabled(true);
+   } else {
+     Logger.warn(TAG, 'In-frame metadata for encoder is not supported; camera ROI is unavailable.');
+   }
+   ```
+
+   **C/C++ example:**
+
+   In the following example, `metadataOutput_` is a metadata output object that has been created and added to the camera session.
+
+   <!-- @[roi_enable_in_frame_metadata_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/camera/NativeCamera.cpp) -->
+
+   ``` C++
+   Camera_ErrorCode NativeCamera::EnableInFrameMetadata()
+   {
+       if (OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(metadataOutput_)) {
+           Camera_ErrorCode ret = OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(metadataOutput_, true);
+           if (ret != CAMERA_OK) {
+               SAMPLE_LOGE("Enable in-frame metadata for encoder failed, code: %{public}d", ret);
+               return ret;
+           }
+       } else {
+           SAMPLE_LOGW("In-frame metadata for encoder is not supported; camera ROI is unavailable.");
+       }
+       return CAMERA_OK;
+   }
+   ```
+
+   This step applies to all methods in this topic that obtain ROI information from camera frame NativeBuffer metadata. If the device does not support the capability or enabling it fails, camera ROI information cannot be obtained this way. This camera switch is not required when the app constructs its own ROI parameters.
+
+3. Extract ROI information from video frame NativeBuffer metadata.
+
+   After the preceding camera configuration, the camera writes ROI information into frame NativeBuffer metadata when it detects a region such as a face. Call `OH_NativeBuffer_GetMetadataValue` to extract the raw ROI string.
 
    <!-- @[roi_buffer_roi_extraction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
    
@@ -178,7 +228,7 @@ The development procedure is as follows:
    >
    > `InBuffer` is the camera frame obtained from `OH_NativeImage` through `OH_NativeImage_AcquireNativeWindowBuffer`. The ROI information output by the camera has already been written into the metadata of this buffer. For details about NativeImage creation and the frame receiving mechanism, see [Surface Mode](video-encoding.md#surface-mode) in the video encoding development guide.
 
-3. Use the `OH_VideoMetadata` API to assemble the ROI configuration string.
+4. Assemble the ROI configuration string using OH_VideoMetadata APIs.
 
    The extracted raw ROI string contains region coordinate information. You need to use the `OH_VideoMetadata_GetRoiCount`, `OH_VideoMetadata_ParseRoiString`, and `OH_VideoMetadata_AppendRoiString` APIs to parse the raw ROI and append the DeltaQP parameter, generating a complete ROI configuration string (for example, `"100,50-300,200=dqp:-6"`).
 
@@ -221,7 +271,7 @@ The development procedure is as follows:
    >
    > `OH_VideoMetadata_AppendRoiString` internally performs memory expansion. The returned C-style string must be released by calling `free()`.
 
-4. Write the ROI configuration string into the NativeBuffer metadata of the encoder input frame.
+5. Write the ROI configuration string into the NativeBuffer metadata of the encoder input frame.
 
    In surface mode, the encoder receives video frames through the surface. You need to first request a buffer from the encoder surface through `OH_NativeWindow_NativeWindowRequestBuffer`, and then write the assembled ROI string into the NativeBuffer metadata of that buffer.
 
@@ -249,7 +299,7 @@ The development procedure is as follows:
    >
    > When no ROI region is detected in the camera frame, `assembledRoiStr` is an empty string. The NativeBuffer metadata configuration method does not support empty strings. You need to write a string without position information (such as "Clear" or ";"). For details, see [Effectiveness Mechanism](#effectiveness-mechanism).
 
-5. Submit the buffer to the encoder and release resources.
+6. Submit the buffer to the encoder and release resources.
 
    After the ROI configuration is complete, submit the preview buffer and the encoder buffer through `OH_NativeWindow_NativeWindowFlushBuffer`, and release the camera frame resources.
 
@@ -295,11 +345,11 @@ The development procedure is as follows:
 
 2. Extract ROI information from the NativeBuffer metadata of the video frame.
 
-   Same as step 2 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
+   First complete the camera configuration in step 2 of [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended), then extract ROI information as described in step 3.
 
 3. Use the `OH_VideoMetadata` API to assemble the ROI configuration string.
 
-   Same as step 3 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
+   Follow step 4 of [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
 4. Implement the PTS synchronization queue and callback user data structure.
 
@@ -419,11 +469,11 @@ The development procedure is as follows:
 
 2. Extract ROI information from the NativeBuffer metadata of the video frame.
 
-   Same as step 2 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
+   First complete the camera configuration in step 2 of [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended), then extract ROI information as described in step 3.
 
 3. Use the `OH_VideoMetadata` API to assemble the ROI configuration string.
 
-   Same as step 3 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
+   Follow step 4 of [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
 4. Pass the ROI string together with the frame PTS to RoiQueue.
 

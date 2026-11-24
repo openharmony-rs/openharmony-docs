@@ -32,6 +32,8 @@ CLI工具会话事件的回调函数类型。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event | [CliToolEvent](js-apis-inner-application-cliToolEvent.md#clitoolevent) | 是 | CLI工具进程运行期间产生的会话事件。 |
@@ -53,12 +55,13 @@ CLI工具会话事件的回调接口。
 **示例：**
 
 ```ts
-import { common } from '@kit.AbilityKit';
+import { cliManager } from '@kit.AbilityKit';
 
-// 定义CLI工具会话事件的回调对象
-let callback: common.ToolEventCallback = {
-  onEvent: (event: common.CliToolEvent) => {
+let sessionId = 'example_session_id';
+// 订阅指定会话的事件，通过onEvent回调接收CLI工具会话事件
+cliManager.subscribeSession(sessionId, {
+  onEvent: (event) => {
     console.info('tool event type: ' + event.toolEventType + ', data: ' + event.data);
   }
-};
+});
 ```

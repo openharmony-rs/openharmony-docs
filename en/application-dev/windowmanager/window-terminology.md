@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=54dc7554dea4c1b6805cb68cfbad38cdf73c9182 translatedAt=2026-08-11T10:13:20.285Z pushedAt=2026-08-12T03:23:29.765Z -->
+<!-- md-trans-meta sourceCommit=d06f2ab001b0c671340f900e2c8925bfc491700c translatedAt=2026-11-12T04:56:33.241Z pushedAt=2026-11-12T08:02:08.735Z nl=1 -->
 
 ## F
 
@@ -18,14 +17,14 @@ Floating windows are divided into multi-window floating windows, global floating
 
   They are typically used to temporarily handle another task while a full-screen task is running or for short-term parallel use of multiple tasks, such as replying to messages while browsing the web.
 
-  For details, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) and [Multi-Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-window-practice).
+  Related reference: [Multi-Window Introduction](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
 - A global floating window is a special type of app auxiliary window that can remain displayed on the foreground even after the app's main window and corresponding UIAbility are moved to the background.
 
   Global floating windows can be used to continue displaying the UI in a small window after the app is moved to the background.
 
   Before creating a global floating window, the application needs to request the corresponding permission.
-
+  
   For details, see [Global Floating Window Development Guide](global-floating-window-guide.md).
 
 - A float view is a special type of app auxiliary window whose UI is managed and rendered by the system. It can remain displayed on the foreground even after the app's main window and corresponding UIAbility are moved to the background.
@@ -65,9 +64,7 @@ You can resize a freeform window by dragging its edges and move its position by 
 **Device Support**
 
 -  **2-in-1 devices**: Windows on 2-in-1 devices are [freeform window](#freeform-window) by default.
-
 -  **Tablets**: Some tablets support enabling [Free Windows](#free-windows) mode by pulling down Control Panel and tapping the **Free windows** button. Once this mode is enabled, app windows default to [freeform windows](#freeform-window).
-
 -  **Phones**: Some phones support enabling [Free Windows](#free-windows) mode by pulling down Control Panel and tapping the **Free windows** button. Once this mode is enabled, app windows default to [freeform windows](#freeform-window).
 
 ## G
@@ -83,7 +80,6 @@ In this coordinate system, all physical screens are mapped to the same continuou
 Usage scenarios:
 
 - Cross-screen window movement: Call the API based on the global coordinate system to move a window. There is no need to pass specific screen ID parameters to move the window between multiple screens.
-
 - Window position change monitoring: Monitor window rectangle change events based on the global coordinate system to uniformly obtain information about changes in the position and size of the window in a multi-screen environment.
 
 ## I
@@ -92,17 +88,33 @@ Usage scenarios:
 
 A state in which the app's layout area extends to the entire window display area. In immersive layout, the available layout area within the app extends to the full window size. The app UI layout content can overlap with the system UI, but system UI elements always remain above the app content in the layer hierarchy.
 
+## M
+
+### Multi-Window
+
+A practical paradigm that combines multiple window modes, allowing multiple app windows to run simultaneously on the same screen at the same time in the form of floating windows, split-screen mode, or panoramic multi-window, thereby enabling multi-tasking. Multi-Window includes various display modes such as multi-window floating windows, split-screen mode, and panoramic multi-window.
+
 ## P
 
 ### Desktop Mode
 
 An interaction method that supports multi-tasking on mobile devices. In Desktop Mode, multiple app windows can be displayed simultaneously on a single screen. In this mode, app windows are [freeform window](#freeform-window). On some tablets, you can enable Desktop Mode by pulling down Control Panel and tapping the **Desktop mode** button.
 
+## R
+
+### Relative Coordinate System
+
+A relative coordinate system is a coordinate system that uses the upper-left corner of a specified screen as the origin (0, 0), the right side of the screen as the positive x-axis direction, and the lower side of the screen as the positive y-axis direction, and describes the position of an object only within the specified screen.
+
+Unlike the [global coordinate system](#global-coordinate-system), which takes unified values across multiple screens, a relative coordinate system applies only to a single screen: the coordinates of in-app UI components and the coordinates reported by touch or mouse events are usually relative coordinates on the screen where the application is located, so the application has no need to perceive the continuous multi-screen display space. In a multi-screen scenario, the same position has different coordinate values in the two types of coordinate systems. These values can be mutually converted through the coordinate conversion API (only the main screen and extended screen are supported). For details, see [Implementing Coordinate Conversion on the Extended Screen](../displaymanager/extended-coordinate-transformation-guideline.md).
+
+![relative-coordinate-system](figures/relative-coordinate-system.png)
+
+Usage scenarios:
+
+- UI layout and event processing: The layout positions of in-app UI components and the positions reported by touch or mouse events are all represented based on the relative coordinate system of the screen where the application is located.
+
 ## S
-
-### Multi-Window
-
-A practical paradigm that combines multiple window modes, allowing multiple app windows to run simultaneously on the same screen at the same time in the form of floating windows, split-screen mode, or panoramic multi-window, thereby enabling multi-tasking. Multi-Window includes various display modes such as multi-window floating windows, split-screen mode, and panoramic multi-window.
 
 ### Starting Window
 
@@ -131,3 +143,4 @@ Currently supported window posture modes:
 ### Window Privacy Mode
 
 A special display mode for windows. A window set to privacy mode is called a privacy window. The content of a privacy window cannot be captured by screenshot, screen recording, or screen mirroring. This is mainly used in scenarios where screenshot, screen recording, or screen mirroring is prohibited, typically for pages containing sensitive information such as passwords.
+

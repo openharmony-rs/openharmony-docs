@@ -281,7 +281,7 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
 
 subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
-根据[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)过滤条件订阅通知。使用Promise异步回调。
+根据优先通知过滤条件订阅通知。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
