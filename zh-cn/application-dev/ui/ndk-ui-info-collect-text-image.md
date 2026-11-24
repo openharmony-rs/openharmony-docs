@@ -30,23 +30,19 @@
 - 取出的PixelMap所有权转移给应用，由应用调用[OH_PixelmapNative_Destroy](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放。结果集合由应用调用[OH_ArkUI_NativeModule_ImageCollectionDestroy](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectiondestroy)销毁，即使其中的结果项已全部取出。
 - 避免逐帧采集或在失败后循环重试。按业务需要发起请求，处理完结果后再决定下一次操作。
 - 页面文本采集接口[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)为同步接口，必须在目标UI实例的UI线程上调用。
-- 调用页面文本采集接口前，应将接收结果的`OH_ArkUI_NativeModule_UIJsonWrapper*`指针初始化为`NULL`。调用成功时，对象所有权转移给应用，使用完毕后必须调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放内存。
+- 调用页面文本采集接口前，应将接收结果的OH_ArkUI_NativeModule_UIJsonWrapper\*指针初始化为NULL。调用成功时，对象所有权转移给应用，使用完毕后必须调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放内存。
 
 ## 接口说明
 
-采集使用`<arkui/ui_info_collection.h>`中图像采集相关的三个函数和一个回调类型，编译时链接`libace_ndk.z.so`；通过N-API桥接调用时还需链接`libace_napi.z.so`。取出的PixelMap由Image Kit的接口处理。需包含`<multimedia/image_framework/image/pixelmap_native.h>`并链接`libpixelmap.so`；交给Image组件渲染时，用[OH_PixelmapNative_ConvertPixelmapNativeToNapi](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)转换成ArkTS对象。完整声明、参数、起始版本以及各接口的返回值与错误码见[ui_info_collection.h](../reference/apis-arkui/capi-ui-info-collection-h.md)，常见失败情形见[常见问题](#常见问题)。
+本开发指导涉及的关键接口如下表所示，完整参数、返回值和错误码说明见[ui_info_collection.h](../reference/apis-arkui/capi-ui-info-collection-h.md)和[ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)，常见失败情形见[常见问题](#常见问题)。图像采集取出的PixelMap需配合Image Kit的`<multimedia/image_framework/image/pixelmap_native.h>`处理，例如通过[OH_PixelmapNative_ConvertPixelmapNativeToNapi](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)转换为ArkTS对象渲染。
 
-三个函数的用途、调用线程与对象所有权见下表。
+三个函数的用途见下表。
 
-| 接口 | 用途 | 调用线程与对象所有权 |
-|---|---|---|
-| [OH_ArkUI_NativeModule_GetImagesByNodeIdAsync](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_getimagesbynodeidasync) | 提交一次异步采集请求，指定上下文、节点ID数组、数量和回调。 | 可以从任意线程调用；nodeIds数组在函数返回前被复制，应用可在提交后释放自己的数组。 |
-| [OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectiontakeitembynodeid) | 从结果集合中取出指定节点ID对应的结果项。 | 在集合有效期内调用；成功时PixelMap所有权转移给应用，由应用释放。 |
-| [OH_ArkUI_NativeModule_ImageCollectionDestroy](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectiondestroy) | 销毁结果集合，释放尚未取出的PixelMap。 | 由集合的所有者调用一次；参数可以为空，此时不执行任何操作。 |
-
-回调类型[OH_ArkUI_NativeModule_ImageCollectionCallback](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectioncallback)用于接收本次请求的整体结果码与结果集合，每个被受理的请求回调一次。结果集合[OH_ArkUI_NativeModule_ImageCollection](../reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-nativemodule-imagecollection.md)承载本次请求的全部结果项，只能通过取出接口访问其中的结果。
-
-三个函数的调用顺序为：提交请求、在回调中按节点ID逐项取出结果并转换成ArkTS对象、最后销毁集合。提交返回成功只表示请求被受理，图片是否采集成功要在回调与结果项中判断。
+| 接口名 | 描述 |
+|---|---|
+| [OH_ArkUI_NativeModule_GetImagesByNodeIdAsync](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_getimagesbynodeidasync) | 提交一次异步采集请求，指定上下文、节点ID数组、数量和回调。可在任意线程调用，nodeIds数组在返回前被复制。 |
+| [OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectiontakeitembynodeid) | 从结果集合中取出指定节点ID对应的结果项。成功时PixelMap所有权转移给应用，需调用[OH_PixelmapNative_Destroy](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放，详见[结果项的取出规则](#结果项的取出规则)。 |
+| [OH_ArkUI_NativeModule_ImageCollectionDestroy](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectiondestroy) | 销毁结果集合，释放尚未取出的PixelMap。由集合所有者调用一次，详见[集合的释放规则](#集合的释放规则)。 |
 
 ### 结果的分层模型
 
@@ -98,12 +94,12 @@
 
 页面文本采集使用`<arkui/ui_info_collection.h>`中的[OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext)，并配合`<arkui/ui_json_wrapper.h>`中的JSON封装接口读取与释放结果，编译时链接`libace_ndk.z.so`。
 
-| 接口 | 用途 | 调用线程与对象所有权 |
-|---|---|---|
-| [OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext) | 同步采集当前ArkUI页面的文本，并以JSON格式输出。 | 必须在目标UI实例的UI线程调用；成功时返回对象的所有权转移给应用。 |
-| [OH_ArkUI_NativeModule_UIJsonWrapperGetData](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata) | 获取JSON封装对象中保存的只读UTF-8字符串指针。 | 借用对象，字符串内存在对象销毁前有效，调用方不得修改或释放。 |
-| [OH_ArkUI_NativeModule_UIJsonWrapperGetSize](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetsize) | 获取JSON字符串的字节长度（不含末尾空字符）。 | 可在任意线程调用，不分配或释放资源。 |
-| [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁JSON封装对象并释放其占用的内存。 | 由对象所有者调用一次；销毁后不得再使用对象及其字符串指针。 |
+| 接口名 | 描述 |
+|---|---|
+| [OH_ArkUI_NativeModule_UIAgentGetPageText](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentgetpagetext) | 在目标UI实例的UI线程同步采集当前ArkUI页面的文本，并以JSON格式输出。成功时返回对象的所有权转移给应用，详见[采集页面文本](#采集页面文本)。 |
+| [OH_ArkUI_NativeModule_UIJsonWrapperGetData](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata) | 获取JSON封装对象中保存的只读UTF-8字符串指针。字符串为借用数据，在对象销毁前有效，调用方不得修改或释放。 |
+| [OH_ArkUI_NativeModule_UIJsonWrapperGetSize](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetsize) | 获取JSON字符串的字节长度（不含末尾空字符），可在任意线程调用。 |
+| [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁JSON封装对象并释放其占用的内存。仅限对象所有者调用一次，销毁后不得再使用对象及其字符串指针。 |
 
 调用成功时，返回的JSON对象顶层包含schemaVersion字段和texts数组（即使页面存在但没有符合条件的文本，也会返回`{"schemaVersion":1,"texts":[]}`）。texts数组中每个元素对应一个符合采集条件的文本组件，包含用于标识控件的整数"id"、相对于目标窗口的矩形区域"rect"（格式为`[x, y, width, height]`，单位为物理像素），以及表示文本内容的字符串"content"。
 
@@ -189,9 +185,16 @@ napi_value CollectImages(napi_env env, napi_callback_info info)
 }
 ```
 
-### 在回调中取出结果项
+### 获取采集结果
 
 回调在目标UI实例的UI线程执行，结果集合在回调中转移给应用，由应用负责取出与销毁。示例在回调内按请求顺序取出全部结果项，并在回调返回前完成清理。
+
+以下示例中：
+
+- collection为NULL表示本次请求没有可用的结果集合（上下文失效或集合分配失败），此时直接按整体错误码处理，不要调用取出接口。
+- 取出的PixelMap在转换成ArkTS对象后立即释放，避免在回调中持有native对象跨出本次回调。
+- 无论取出是否全部成功，回调结束前都销毁集合，释放未被取出的PixelMap。
+- 页面可能已经退出，回调仍然会执行。示例的回调只做结果转换与清理，不访问页面状态；页面侧用active标记判断页面是否仍然存在，已退出时丢弃结果，见[页面展示采集结果](#页面展示采集结果)。
 
 <!-- @[ndk_image_take_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -253,14 +256,7 @@ void OnImages(ArkUI_ErrorCode overallError, OH_ArkUI_NativeModule_ImageCollectio
 }
 ```
 
-取出过程中的关键处理如下。
-
-- collection为NULL表示本次请求没有可用的结果集合（上下文失效或集合分配失败），此时直接按整体错误码处理，不要调用取出接口。
-- 取出的PixelMap在转换成ArkTS对象后立即释放，避免在回调中持有native对象跨出本次回调。
-- 无论取出是否全部成功，回调结束前都销毁集合，释放未被取出的PixelMap。
-- 页面可能已经退出，回调仍然会执行。示例的回调只做结果转换与清理，不访问页面状态；页面侧用active标记判断页面是否仍然存在，已退出时丢弃结果，见[在页面上展示结果](#在页面上展示结果)。
-
-### 在页面上展示结果
+### 页面展示采集结果
 
 结果项被转换成ArkTS对象后交给页面渲染。示例的桥接结果包含受理结果、整体结果和结果项数组，每个结果项包含节点ID、取出结果、单项错误码、像素尺寸和可选的PixelMap。
 
@@ -363,7 +359,7 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
             "Cannot obtain the native UI context.");
     }
 
-    // 在 UI 线程的 ArkUI 事件中同步调用，不能从工作线程或异步任务中调用。
+    // 在UI线程的ArkUI事件中同步调用，不能从工作线程或异步任务中调用。
     OH_ArkUI_NativeModule_UIJsonWrapper *pageText = nullptr;
     code = OH_ArkUI_NativeModule_UIAgentGetPageText(context, &pageText);
     JsonOwner ownedText(pageText, OH_ArkUI_NativeModule_UIJsonWrapperDestroy);
@@ -376,7 +372,7 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
     }
     uint32_t size = OH_ArkUI_NativeModule_UIJsonWrapperGetSize(ownedText.get());
     napi_value result = nullptr;
-    // N-API 会在函数退出、所属包装器销毁前复制 UTF-8 字节。
+    // N-API会在函数退出、所属包装器销毁前复制UTF-8字节。
     if (napi_create_string_utf8(env, jsonData, size, &result) != napi_ok) {
         return ThrowError(env, ARKUI_ERROR_CODE_INTERNAL_ERROR, "Cannot copy the collected JSON to ArkTS.");
     }
@@ -391,9 +387,9 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
 
 ``` TypeScript
 export interface PageTextItem {
-  // 原生节点 ID；它与 ArkTS 组件的 .id('sampleText') 不同。
+  // 原生节点ID，与ArkTS组件的.id('sampleText')不同，也无关联性。
   id: number;
-  // 相对于目标窗口的物理像素坐标 [x, y, width, height]。
+  // 相对于目标窗口的物理像素坐标[x, y, width, height]。
   rect: number[];
   content: string;
 }
