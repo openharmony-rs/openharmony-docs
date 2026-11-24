@@ -6,7 +6,7 @@
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供应用包管理能力，包括应用信息查询（支持[BundleInfo](js-apis-bundleManager-bundleInfo.md)、[ApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md)、[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询）、应用与组件的启用和禁用状态管理、缓存清理、动态图标管理、ABC文件校验与删除、数据迁移、备份数据恢复与删除等能力，适用于需要对应用包进行综合管理和运维的场景。
+本模块提供应用包管理能力，包括应用信息查询（支持[BundleInfo](js-apis-bundleManager-bundleInfo.md)、[ApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md)、[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询）、应用与组件的启用和禁用状态管理、应用间共享HSP的备用模块使能状态设置与查询、缓存清理、动态图标管理、ABC文件校验与删除、数据迁移、备份数据恢复与删除等能力，适用于需要对应用包进行综合管理和运维的场景。
 
 > **说明：**
 >
@@ -4762,6 +4762,193 @@ try {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
 }
+```
+
+## bundleManager.setAlternateModuleEnabled
+
+setAlternateModuleEnabled(bundleName: string, moduleName: string, versionCode: long, isEnabled: boolean): Promise\<void>
+
+启用或禁用备用模块。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.INSTALL_BUNDLE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**并发能力：** 支持并发调用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ------ |
+| bundleName | string | 是 | 共享HSP提供方的包名，不能为空。 |
+| moduleName | string | 是 | 共享HSP模块名，不能为空。 |
+| versionCode | long | 是 | 已安装共享HSP的版本号，取值为0~2147483647的整数，可通过[getAllSharedBundleInfo](#bundlemanagergetallsharedbundleinfo10)获取。 |
+| isEnabled | boolean | 是 | 是否使能备用模块。true表示使能备用模块，false表示禁用备用模块。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息 |
+| ------ | ------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 17700001 | The specified bundle is not found. |
+| 17700002 | The specified module is not existed. |
+| 17700096 | The specified version of the module is not found. |
+| 17700101 | Bundle manager service exception. |
+
+**示例：**
+
+示例中的包名、模块名和版本号需要替换为已安装且完成配对的共享HSP业务模块信息。
+
+ArkTS-Dyn示例:
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+    bundleManager.setAlternateModuleEnabled('com.example.sharedlibrary', 'library', 1, true).then(() => {
+    hilog.info(0x0000, 'testTag', 'setAlternateModuleEnabled successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'setAlternateModuleEnabled failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAlternateModuleEnabled failed. Cause: %{public}s', message);
+}
+
+```
+
+ArkTS-Sta示例:
+
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+    bundleManager.setAlternateModuleEnabled('com.example.sharedlibrary', 'library', 1, true).then(() => {
+    hilog.info(0x0000, 'testTag', 'setAlternateModuleEnabled successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'setAlternateModuleEnabled failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAlternateModuleEnabled failed. Cause: %{public}s', message);
+}
+
+```
+
+## bundleManager.isAlternateModuleEnabled
+
+isAlternateModuleEnabled(bundleName: string, moduleName: string, versionCode: long): Promise\<boolean>
+
+查询备用模块使能状态。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**并发能力：** 支持并发调用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ------ |
+| bundleName | string | 是 | 共享HSP提供方的包名，不能为空。 |
+| moduleName | string | 是 | 共享HSP模块名，不能为空。 |
+| versionCode | long | 是 | 已安装共享HSP的版本号，取值为0~2147483647的整数，可通过[getAllSharedBundleInfo](#bundlemanagergetallsharedbundleinfo10)获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------ |
+| Promise\<boolean> | Promise对象。返回true表示备用模块已使能，返回false表示备用模块已禁用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息 |
+| ------ | ------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 17700001 | The specified bundle is not found. |
+| 17700002 | The specified module is not existed. |
+| 17700096 | The specified version of the module is not found. |
+| 17700101 | Bundle manager service exception. |
+
+**示例：**
+
+示例中的包名、模块名和版本号需要替换为实际查询的共享HSP业务模块信息。
+
+ArkTS-Dyn示例:
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.isAlternateModuleEnabled('com.example.sharedlibrary', 'library', 1).then((data) => {
+    hilog.info(0x0000, 'testTag', 'isAlternateModuleEnabled %{public}d', data);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'isAlternateModuleEnabled failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'isAlternateModuleEnabled failed. Cause: %{public}s', message);
+}
+
+```
+
+ArkTS-Sta示例:
+
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.isAlternateModuleEnabled('com.example.sharedlibrary', 'library', 1).then((data: boolean) => {
+    hilog.info(0x0000, 'testTag', 'isAlternateModuleEnabled %{public}d', data);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'isAlternateModuleEnabled failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'isAlternateModuleEnabled failed. Cause: %{public}s', message);
+}
+
 ```
 
 ## bundleManager.getAllSharedBundleInfo<sup>10+</sup>

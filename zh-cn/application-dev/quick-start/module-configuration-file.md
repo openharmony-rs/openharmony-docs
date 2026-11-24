@@ -169,6 +169,7 @@ module.json5配置文件包含以下标签。
 | [skillProfiles](#skillprofiles标签) | 标识当前模块的技能配置信息，用于定义AI代理的技能能力。仅允许type字段取值为entry、feature、shared、skill的模块配置，对于skill类型的模块必须配置该标签。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。 | 对象数组 | 对于skill类型的模块，该标签不可缺省。对于其他类型的模块，该标签可缺省，缺省值为空。 |
 | [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径及权限控制模式信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。| 对象数组 | 该标签可缺省，缺省值为空。 |
 | [launchServices](#launchservices标签) | 标识当前模块的启动服务配置信息。每个启动服务必须包含name和binaryPath字段，可选配置runAtLoad、keepAlive、provideIpcService和type字段，最多允许配置64个启动服务。仅允许type字段取值为entry、feature、shared的模块配置该标签。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。 | 对象数组 | 该标签可缺省，缺省值为空。 |
+| alternateModule | 标识当前Module是否为应用间共享HSP的备用模块。<br/>-&nbsp;true：备用模块。<br/>-&nbsp;false：业务模块。<br/>仅支持应用间共享HSP，即module.json5中的type和app.json5中的[bundleType](./app-configuration-file.md#配置文件标签)均为shared。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
 | srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
