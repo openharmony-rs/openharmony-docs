@@ -6520,6 +6520,7 @@ constructTLSSocketInstance(tcpSocket: TCPSocket): TLSSocket
 | 2300002 | System internal error.  |
 | 2303601 | Invalid socket FD.     |
 | 2303602 | Socket is not connected.  |
+| 2303603 | SSL server hostname verification failed.<br/>适用版本：26.1.0+   |
 
 **示例：**
 
@@ -8288,6 +8289,7 @@ TLS连接的操作。
 | skipRemoteValidation<sup>12+</sup>  | boolean                         | 否   | 是 | 是否跳过对服务端进行证书认证，默认为false。true：跳过对服务端进行证书认证；false：不跳过对服务端进行证书认证。      |
 | proxy<sup>18+</sup>   | [ProxyOptions](#proxyoptions18) | 否   | 是  | 使用的代理信息，默认不使用代理。 |
 | timeout<sup>22+</sup>   | number | 否   | 是  | 连接超时时间，单位：ms，默认为0。传入值需为0-4294967295范围内的整数。TLSSocket连接在超时后会失败。 |
+| sslServerHostnameVerification | boolean | 否 | 是 | 是否校验SSL服务端主机名。设置为true需要校验SSL服务端主机名，设置为false时将完全忽略主机名校验。默认值为true。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## TLSSecureOptions<sup>9+</sup>
 
