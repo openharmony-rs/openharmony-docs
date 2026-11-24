@@ -100,13 +100,12 @@ import { common, Want } from '@kit.AbilityKit';
 
 const MMS_BUNDLE_NAME = 'com.ohos.mms';
 const MMS_ABILITY_NAME = 'com.ohos.mms.MainAbility';
-const MMS_ENTITIES = 'entity.system.home';
 
 export class Contact {
     contactsName: string;
-    telephone: number;
+    telephone: string;
 
-    constructor(contactsName: string, telephone: number) {
+    constructor(contactsName: string, telephone: string) {
         this.contactsName = contactsName;
         this.telephone = telephone;
     }
@@ -119,11 +118,11 @@ struct JumpMessage {
 
     startMMSAbilityExplicit() {
         // 这里完善联系人和号码；姓名主要是通过手机号来查询实际联系人名称，因此这种方式还是以手机号码为主。
-        let params: Array<Object> = [new Contact('张三', 13333333333)];
+        let params: Array<Object> = [new Contact('张三', '13333333333')];
 
         let want: Want = {
-            bundleName: 'com.ohos.mms',
-            abilityName: 'com.ohos.mms.MainAbility',
+            bundleName: MMS_BUNDLE_NAME,
+            abilityName: MMS_ABILITY_NAME,
             parameters: {
                 contactObjects: JSON.stringify(params), //开启混淆后，contactsName和telephone可能被混淆，建议在-keep-property-name保留属性名称
                 pageFlag: 'conversation',
