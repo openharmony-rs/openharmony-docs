@@ -792,7 +792,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据需按PixelMap自身的像素格式紧密排列，不含行末填充字节；缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber)接口获取。 |
+| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列（不含行末填充字节）；缓冲区大小必须不小于整个PixelMap的像素字节数（即[getPixelBytesNumber](#getpixelbytesnumber)接口的返回值），超出部分不会被写入。 |
 
 **返回值：**
 
@@ -837,7 +837,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap，必须包含整个PixelMap全部像素的源数据，而非仅部分区域的数据。<br>数据需按PixelMap自身的像素格式紧密排列，不含行末填充字节；缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber)接口获取。 |
+| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列（不含行末填充字节）；缓冲区大小必须不小于整个PixelMap的像素字节数（即[getPixelBytesNumber](#getpixelbytesnumber)接口的返回值），超出部分不会被写入。 |
 
 **错误码：**
 

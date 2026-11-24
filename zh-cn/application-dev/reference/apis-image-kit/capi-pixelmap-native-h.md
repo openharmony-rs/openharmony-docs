@@ -1014,7 +1014,7 @@ Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| uint8_t *source | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个Pixelmap，必须包含整个Pixelmap全部像素的源数据，而非仅部分区域的数据。<br>数据需按Pixelmap自身的像素格式紧密排列，不含行末填充字节。 |
+| uint8_t *source | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个Pixelmap。<br>数据按Pixelmap自身的像素格式紧密排列（不含行末填充字节）；缓冲区大小必须不小于整个Pixelmap的像素数据大小，超出部分不会被写入。 |
 | size_t bufferSize | 缓冲区大小。单位：字节（Byte）。可通过[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)接口获取。RGBA格式的缓冲区大小等于width \* height \* 4，NV21与NV12格式的缓冲区大小等于width \* height + ((width+1)/2) \* ((height+1)/2) \* 2。 |
 
 **返回：**
@@ -1052,7 +1052,7 @@ Pixelmap宽度 × Pixelmap高度 × 每像素字节数
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | [入参][出参] 待修改像素数据的Pixelmap指针，不能为空指针。 |
-| const uint8_t *source | [入参] 源像素数据的缓冲区指针，不能为空指针，其数据会被拷贝并覆盖写入整个Pixelmap，必须包含整个Pixelmap全部像素的源数据，而非仅部分区域的数据。<br>数据按sourcePixelFormat格式紧密排列，不含行末填充字节；缓冲区大小不得小于上方公式的计算结果。 |
+| const uint8_t *source | [入参] 源像素数据的缓冲区指针，不能为空指针，其数据会被拷贝并覆盖写入整个Pixelmap。<br>数据按sourcePixelFormat格式紧密排列（不含行末填充字节）；缓冲区大小必须不小于上方公式的计算结果，超出部分不会被写入。 |
 | uint32_t bufferSize | [入参] 缓冲区大小。单位：字节（Byte）。所需的最小缓冲区大小请参考上方计算公式。 |
 | [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | [入参] 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
 
