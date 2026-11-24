@@ -36,7 +36,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   // RSA公钥密钥参数生成函数
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -52,7 +53,7 @@
     };
     return rsaPubKeySpec;
   }
-  
+
   // 根据密钥参数构造RSA公钥规范对象
   function genRsa2048PubKeySpec() {
     let nIn =
@@ -64,7 +65,7 @@
     let eIn = BigInt('0x010001');
     return genRsaPubKeySpec(nIn, eIn);
   }
-  
+
   // 将RSA公钥规格与预期值进行比较
   function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number,
     e: bigint | string | number) {
@@ -84,7 +85,7 @@
     }
     return true;
   }
-  
+
   // 根据RSA公钥规格生成RSA公钥，获取密钥规格，并与预期值进行比较
   function rsaUsePubKeySpecGetCallback(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
@@ -92,7 +93,8 @@
       let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
       rsaGeneratorSpec.generatePubKey((error, key) => {
         if (error) {
-          console.error(`generate pubKey failed: errCode: ${error.code}, message: ${error.message}`);
+          let e: BusinessError = error as BusinessError;
+          console.error(`generate pubKey failed: errCode: ${e.code}, message: ${e.message}`);
           // ...
           return;
         }
@@ -116,7 +118,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   // RSA公钥密钥参数生成函数
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -132,7 +135,7 @@
     };
     return rsaPubKeySpec;
   }
-  
+
   // 根据密钥参数构造RSA公钥规范对象
   function genRsa2048PubKeySpec() {
     let nIn =
@@ -144,7 +147,7 @@
     let eIn = BigInt('0x010001');
     return genRsaPubKeySpec(nIn, eIn);
   }
-  
+
   // 将RSA公钥规格与预期值进行比较
   function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number,
     e: bigint | string | number) {
@@ -164,10 +167,10 @@
     }
     return true;
   }
-  
+
   // 根据RSA公钥规格生成RSA公钥，获取密钥规格，并与预期值进行比较
   function rsaUsePubKeySpecGetSync() {
-    
+
     try {
       let rsaPubKeySpec = genRsa2048PubKeySpec();
       let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
@@ -185,7 +188,8 @@
         console.error('get pub key result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get pub key result failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
@@ -215,7 +219,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   // 打印bigint信息
   function showBigIntInfo(bnName: string, bnValue: bigint | string | number) {
     if (typeof bnValue === 'string') {
@@ -231,7 +235,7 @@
     console.info('. Hexadecimal: ' + bnValue.toString(16));
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
-  
+
   // 根据密钥规格构造ECCCommonParamsSpec结构体。ECCCommonParamsSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
@@ -254,7 +258,7 @@
     }
     return eccCommonSpec;
   }
-  
+
   // 打印ECC密钥规格
   function showEccSpecDetailInfo(key: cryptoFramework.PubKey | cryptoFramework.PriKey, keyType: string) {
     console.info('show detail of ' + keyType + ':');
@@ -293,7 +297,7 @@
       console.error(`getAsyKeySpec failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
-  
+
   // 根据EccCommonSpec实例生成ECC密钥对，获取密钥规格
   async function testEccUseCommKeySpecGet() {
     try {
@@ -317,7 +321,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function showBigIntInfo(bnName: string, bnValue: bigint | string | number) {
     if (typeof bnValue === 'string') {
       console.error('type: string');
@@ -332,7 +337,7 @@
     console.info('. Hexadecimal: ' + bnValue.toString(16));
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
-  
+
   // 根据密钥规格构造ECCCommonParamsSpec结构体。ECCCommonParamsSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
@@ -355,7 +360,7 @@
     }
     return eccCommonSpec;
   }
-  
+
   // 打印ECC密钥规格
   function showEccSpecDetailInfo(key: cryptoFramework.PubKey | cryptoFramework.PriKey, keyType: string) {
     console.info('show detail of ' + keyType + ':');
@@ -389,11 +394,12 @@
         let pkY = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
         showBigIntInfo('--- pkY', pkY);
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`getAsyKeySpec failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
-  
+
   // 根据EccCommonSpec实例生成ECC密钥对，获取密钥规格
   function testEccUseCommKeySpecGetSync() {
     try {
@@ -407,7 +413,8 @@
         console.error('get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       // 逻辑错误等异常在此捕获
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
@@ -439,7 +446,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function genSM2KeyPairSpec() {
     let sm2CommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_sm2');
     let sm2KeyPairSpec: cryptoFramework.ECCKeyPairSpec = {
@@ -454,7 +461,7 @@
     };
     return sm2KeyPairSpec;
   }
-  
+
   async function sm2Test() {
     try {
       let sm2KeyPairSpec = genSM2KeyPairSpec();
@@ -476,7 +483,8 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function genSM2KeyPairSpec() {
     let sm2CommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_sm2');
     let sm2KeyPairSpec: cryptoFramework.ECCKeyPairSpec = {
@@ -491,7 +499,7 @@
     };
     return sm2KeyPairSpec;
   }
-  
+
   function sm2TestSync() {
     let sm2KeyPairSpec = genSM2KeyPairSpec();
     let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(sm2KeyPairSpec);
@@ -504,7 +512,8 @@
         console.error('get key pair result: fail!');
         // ...
       }
-    } catch (e) {
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
       // ...
     }
