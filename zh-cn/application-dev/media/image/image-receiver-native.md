@@ -112,7 +112,7 @@ EXTERN_C_END
          })
          .catch((error: BusinessError) => {
          // 申请处理权限被拒绝
-         console.error('permission request failed:' + error);
+         console.error('permission request failed: code=${error.code}, msg=${error.msg}');
          });
       }
 
