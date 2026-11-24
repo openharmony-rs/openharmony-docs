@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
-description: "讲解位运算符、复合赋值运算符、类型判断操作符、展开与剩余运算符等ArkTS高级运算符的概念与用法，并给出运算符优先级表及ArkTS相关限制说明。"
-keywords: [ArkTS, 高级运算符, 位运算符, 复合赋值运算符, 类型判断操作符, 展开运算符, 运算符优先级]
+description: "讲解位运算符、复合赋值运算符、逻辑赋值运算符、类型判断运算符、展开与剩余运算符等ArkTS高级运算符的概念与用法，并给出运算符优先级表及ArkTS相关限制说明。"
+keywords: [ArkTS, 高级运算符, 位运算符, 复合赋值运算符, 逻辑赋值运算符, 类型判断运算符, 展开运算符, 运算符优先级]
 doctype: guide
 status: active
 ---
@@ -14,22 +14,22 @@ status: active
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-在[基本运算符](arkts-language-guide-basic-operators.md)一章中介绍了赋值、算术、比较、逻辑等常用运算符。本章进一步介绍位运算符、复合赋值运算符、类型判断运算符、展开与剩余运算符，以及高级运算符的优先级和结合性。
+在[基本运算符](arkts-language-guide-basic-operators.md)一章中介绍了赋值、算术、比较、逻辑等常用运算符。本章进一步介绍位运算符、复合赋值运算符（算术类与位运算类）、逻辑赋值运算符、类型判断运算符、展开与剩余运算符，以及运算符的优先级和结合性。
 
 ## 位运算符
 
 位运算符直接操作整数的二进制位，常用于权限标志位管理、数据压缩、加密解密和性能敏感的数学计算。例如，用按位OR组合权限（`READ | WRITE`）、用按位AND检查权限（`flags & READ`）、用按位XOR切换标志（`flags ^ TOGGLE`）。位运算在底层开发和系统编程中广泛使用，日常业务逻辑中较少直接使用。
 
-### 按位与 (&)
+### 按位与运算符 (&)
 
 按位与运算符对两个整数的每一位执行逻辑与操作，仅当对应位都为1时结果为1。
 
 <!-- @[bitwise_and](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
 
 ``` TypeScript
-let a: number = 5;   // 二进制0101
-let b: number = 3;   // 二进制0011
-let bitAndResult: number = a & b;  // 二进制0001，十进制1
+let a: number = 5;   // 二进制: 0101
+let b: number = 3;   // 二进制: 0011
+let bitAndResult: number = a & b;  // 二进制: 0001 (十进制: 1)
 
 // 使用场景：检查标志位
 const READ: number = 0b001;
@@ -50,7 +50,7 @@ console.info(`执行: ${canExecute}`);   // true
 permission = permission & ~WRITE;  // 清除写入权限
 ```
 
-### 按位或 (|)
+### 按位或运算符 (|)
 
 按位或运算符对两个整数的每一位执行逻辑或操作，只要对应位有1则结果为1。
 
@@ -73,7 +73,7 @@ style = style | BOLD | ITALIC;  // 设置加粗和斜体
 let fullStyle: number = BOLD | ITALIC | UNDERLINE;  // 0b111
 ```
 
-### 按位异或 (^)
+### 按位异或运算符 (^)
 
 按位异或运算符对两个整数的每一位执行异或操作，对应位不同时结果为1。
 
@@ -97,7 +97,7 @@ let decrypted: number = encrypted ^ key;
 console.info(`${decrypted === data}`);  // true
 ```
 
-### 按位非 (~)
+### 按位非运算符 (~)
 
 按位非运算符对整数的每一位执行取反操作，将0变为1、将1变为0。
 
@@ -119,7 +119,7 @@ bitNotValue = bitNotValue & ~FLAG;  // 清除第1位: 0b101
 
 ### 左移运算符 (<<)
 
-左移运算符将整数的二进制位向左移动指定位数，相当于乘以2的幂次。
+左移运算符将整数的二进制位向左移动指定位数，相当于乘以2的幂次。位运算先将操作数按ToInt32规则转为32位有符号整数，且移位数按32取模（如`x << 32`等同于`x << 0`），上述等价关系仅在该前提下成立。
 
 <!-- @[left_shift](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
 
@@ -140,13 +140,13 @@ let quadrupled: number = base << 2;  // 40
 
 ### 右移运算符 (>>)
 
-右移运算符将整数的二进制位向右移动指定位数，相当于除以2的幂次。
+右移运算符将整数的二进制位向右移动指定位数，相当于除以2的幂次。与左移相同，操作数先按ToInt32规则转为32位有符号整数，移位数按32取模；在该前提下，右移n位相当于除以2^n并向负无穷取整。
 
 <!-- @[right_shift](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
 
 ``` TypeScript
-let rshiftA: number = 20;  // 二进制010100
-let rshiftResult: number = rshiftA >> 2;  // 二进制0101，十进制5
+let rshiftA: number = 20;  // 二进制: 010100
+let rshiftResult: number = rshiftA >> 2;  // 二进制: 0101 (十进制: 5)
 
 // 右移n位相当于除以2^n（向下取整）
 console.info(`${20 >> 1}`);  // 10
@@ -165,7 +165,7 @@ let quarter: number = total >> 2;  // 25
 
 ### 无符号右移运算符 (>>>)
 
-无符号右移运算符将整数二进制位向右移动，左侧补零。与`>>`的区别：`>>`保留符号位（负数左侧补1），`>>>`无论正负左侧都补零。常见用途是通过`>>> 0`将浮点数转换为32位无符号整数。
+无符号右移运算符将整数二进制位向右移动，左侧补零。与`>>`的区别：`>>`保留符号位（负数左侧补1），`>>>`无论正负左侧都补零。常见用途是通过`>>> 0`将浮点数按ToUint32取模转为32位无符号整数值，结果仍为`number`类型。
 
 <!-- @[unsigned_right_shift](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
 
@@ -190,29 +190,42 @@ function toUnsigned(value: number): number {
 
 ## 复合赋值运算符
 
-复合赋值运算符将运算和赋值合并为一个操作。
+复合赋值运算符将二元运算与赋值合并为单步操作，等价于`variable = variable op expression`的简写，涵盖算术类（`+=`、`-=`、`*=`、`/=`、`%=`、`**=`）与位运算类（`&=`、`|=`、`^=`、`<<=`、`>>=`、`>>>=`）。
 
-### 复合赋值的语法格式
+### 算术复合赋值
 
-复合赋值运算符将二元运算与赋值合并为单步操作，等价于`x = x op y`的简写。算术类支持`+=`、`-=`、`*=`、`/=`、`%=`、`**=`，位运算类支持`&=`、`|=`、`^=`、`<<=`、`>>=`、`>>>=`，逻辑类支持`??=`、`||=`、`&&=`。
+算术复合赋值将算术运算与赋值合并，常用于累计、拼接等场景。
 
-``` TypeScript
-variable operator= expression
-等价于: variable = variable operator expression
-```
-
-<!-- @[compound_assignment_basics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @[compound_assignment_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
 ``` TypeScript
-let compoundA: number = 10;
-compoundA += 5;
-console.info(`${compoundA}`);  // 15
-compoundA -= 3;
-console.info(`${compoundA}`);  // 12
-compoundA *= 2;
-console.info(`${compoundA}`);  // 24
-compoundA /= 4;
-console.info(`${compoundA}`);  // 6
+// 加法赋值
+let total: number = 100;
+total += 50;  // 150
+
+// 字符串拼接赋值
+let compoundMessage: string = 'Hello';
+compoundMessage += ' World';  // 'Hello World'
+
+// 减法赋值
+let balance: number = 1000;
+balance -= 200;  // 800
+
+// 乘法赋值
+let price: number = 10;
+price *= 2;  // 20
+
+// 除法赋值
+let amount: number = 100;
+amount /= 4;  // 25
+
+// 取模赋值
+let compoundValue: number = 17;
+compoundValue %= 5;  // 2
+
+// 指数赋值
+let compoundBase: number = 2;
+compoundBase **= 4;  // 16
 ```
 
 ### 位运算复合赋值
@@ -244,76 +257,49 @@ compoundValue >>= 1;  // compoundValue = compoundValue >> 1 = 10
 compoundValue >>>= 1;  // compoundValue = compoundValue >>> 1 = 5
 ```
 
-### 算术运算复合赋值
+## 逻辑赋值运算符
 
-算术运算复合赋值包括`+=`、`-=`、`*=`、`/=`、`%=`、`**=`，将算术运算结果直接赋值给左操作数。
+逻辑赋值运算符（`??=`、`||=`、`&&=`）将逻辑运算与赋值合并，语义与对应的`??`、`||`、`&&`一致，并保留其短路特性——右侧表达式仅在需要赋值时才会求值。其求值沿袭JavaScript的truthy/falsy概念：`false`、`0`、`-0`、`NaN`、`''`（空字符串）、`null`、`undefined`在布尔上下文中被视为falsy值，其余值均为truthy值，[基本运算符](arkts-language-guide-basic-operators.md)中的逻辑运算符与空值合并运算符同样以此为基础。
 
-<!-- @[compound_assignment_arithmetic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+- `a ??= b`：仅当`a`为`null`或`undefined`时，才将`b`赋给`a`。
+- `a ||= b`：仅当`a`为falsy值时，才将`b`赋给`a`。
+- `a &&= b`：仅当`a`为truthy值时，才将`b`赋给`a`。
 
-``` TypeScript
-// 加法赋值
-let compoundTotal: number = 100;
-compoundTotal += 50;
-console.info(`${compoundTotal}`);  // 150
-
-// 减法赋值
-let balance: number = 1000;
-balance -= 200;
-console.info(`${balance}`);  // 800
-
-// 乘法赋值
-let price: number = 10;
-price *= 2;
-console.info(`${price}`);  // 20
-
-// 除法赋值
-let amount: number = 100;
-amount /= 4;
-console.info(`${amount}`);  // 25
-
-// 取模赋值
-let compoundValue2: number = 17;
-compoundValue2 %= 5;
-console.info(`${compoundValue2}`);  // 2
-
-// 指数赋值
-let compoundBase: number = 2;
-compoundBase **= 4;
-console.info(`${compoundBase}`);  // 16
-```
-
-### 逻辑运算复合赋值
-
-逻辑运算复合赋值包括`??=`（逻辑空赋值）、`||=`（逻辑或赋值）、`&&=`（逻辑与赋值），将逻辑运算与赋值合并，并保留对应逻辑运算符的短路特性——右侧表达式仅在需要赋值时才求值：
-
-- `x ??= y`：仅当`x`为`null`或`undefined`时，才将`y`赋给`x`。
-- `x ||= y`：仅当`x`为[falsy值](arkts-language-guide-basic-operators.md#逻辑赋值运算符-)时，才将`y`赋给`x`。
-- `x &&= y`：仅当`x`为truthy值时，才将`y`赋给`x`。
-
-<!-- @[logical_operation_compound_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @[logical_assignment_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
 ``` TypeScript
 // ??= 仅在左侧为null或undefined时赋值
-let logicAssignConfig: string | null = null;
-logicAssignConfig ??= 'default';  // "default"
+let configValue: string | null = null;
+configValue ??= 'default';  // "default"（原值为null，执行赋值）
+
+let timeout: number | null = 0;
+timeout ??= 3000;  // 0（0是有效值，不执行赋值）
 
 // ||= 仅在左侧为falsy值时赋值
-let logicAssignLabel: string = '';
-logicAssignLabel ||= 'unnamed';  // "unnamed"
+let label: string = '';
+label ||= 'unnamed';  // "unnamed"（''是falsy值，执行赋值）
 
 // &&= 仅在左侧为truthy值时赋值
-let logicAssignCount: number = 10;
-logicAssignCount &&= logicAssignCount * 2;  // 20
+let logicalCount: number = 10;
+logicalCount &&= logicalCount * 2;  // 20（10是truthy值，执行赋值）
+
+// 短路特性：左侧条件不满足时，右侧表达式不会执行
+let cache: string | null = 'cached';
+function loadFromDisk(): string {
+  console.info('执行磁盘读取');
+  return 'loaded';
+}
+cache ??= loadFromDisk();  // "cached"（不为null，loadFromDisk不执行）
 ```
 
-## 类型判断操作符
+## 类型判断运算符
 
-类型判断操作符`typeof`和`instanceof`在运行时检查值的实际类型，常用于构成类型守卫，在条件分支中将联合类型收窄为具体类型：
+类型判断运算符`typeof`和`instanceof`在运行时检查值的实际类型，常用于构成类型守卫，在条件分支中将联合类型收窄为具体类型：
 
 - `typeof value === 'string'`：判断`value`是否为`string`类型（同理可判断`number`、`boolean`等基础类型）。
 - `pet instanceof Dog`：判断`pet`是否为`Dog`类的实例。
 
-类型判断与类型守卫的详细用法见[类型](arkts-language-guide-types.md#类型守卫)。
+类型判断与类型守卫的详细用法见[类型系统](arkts-language-guide-types.md#类型守卫)。
 
 ## 展开与剩余运算符
 
@@ -361,7 +347,7 @@ let min: number = Math.min(...spreadArr2);  // 4
 
 ### 剩余参数运算符
 
-剩余参数运算符（...）将多个参数收集为数组，用于处理不定数量的参数。
+剩余参数运算符（...）将多个参数收集为数组，用于处理不定数量的参数。ArkTS不支持解构赋值（包括数组/对象解构），无法通过解构配合剩余元素的方式提取数组元素，需要用下标访问与`slice`方法手动提取，写法见下方示例。
 
 <!-- @[rest_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
 
@@ -384,9 +370,9 @@ function greet(greeting: string, ...names: string[]): string {
 
 console.info(`${greet('Hello', 'Alice', 'Bob', 'Charlie')}`);  // 'Hello, Alice, Bob, Charlie!'
 
-// 数组解构中的剩余元素
+// 数组解构剩余元素的限制与替代写法
 let arr: number[] = [1, 2, 3, 4, 5];
-// ArkTS不支持解构赋值，需要手动提取
+// ArkTS不支持解构赋值（包括数组/对象解构），需要手动提取
 let first: number = arr[0] ?? 0;
 let rest: number[] = arr.slice(1);
 console.info(`${first}`);  // 1
@@ -405,9 +391,9 @@ restProcess('a', 'b', 'c', 'd', 'e');
 // Remaining: c, d, e
 ```
 
-## 高级运算符的优先级和结合性
+## 运算符的优先级和结合性
 
-运算符优先级决定不同运算符的求值顺序，结合性决定同级运算符的求值方向（从左到右或从右到左）。下表汇总了ArkTS常见运算符的优先级与结合性，自上而下优先级由高到低。表中涵盖本章介绍的位运算符、类型判断操作符、复合赋值运算符，以及[基本运算符](arkts-language-guide-basic-operators.md)中介绍的常用运算符：
+运算符优先级决定不同运算符的求值顺序，结合性决定同级运算符的求值方向（从左到右或从右到左）。下表汇总了ArkTS常见运算符的优先级与结合性，自上而下优先级由高到低。表中涵盖本章介绍的位运算符、类型判断运算符、复合赋值运算符、逻辑赋值运算符，以及[基本运算符](arkts-language-guide-basic-operators.md)中介绍的常用运算符：
 
 | 优先级 | 运算符 | 说明 | 结合性 |
 | ------ | ------ | ---- | ------ |

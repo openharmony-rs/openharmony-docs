@@ -22,7 +22,7 @@ status: active
 
 ### 字符串声明
 
-字符串可以使用单引号、双引号或反引号声明，推荐使用单引号保持风格一致。
+字符串可以使用单引号、双引号或反引号声明，推荐使用单引号与本文示例风格保持一致。
 
 <!-- @[string_literal_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -32,7 +32,7 @@ let double: string = "World";
 let template: string = `ArkTS`;
 ```
 
-单引号是最常用形式，双引号与单引号功能完全相同（推荐单引号），双引号主要用于JSON数据或包含单引号的字符串；模板字符串（反引号）支持插值和多行等更多功能。
+单引号是最常用形式，双引号与单引号功能完全相同，仅风格差异，双引号主要用于JSON数据或包含单引号的字符串；模板字符串（反引号）支持插值和多行等更多功能。
 
 ### 字符串字面量的特殊字符
 
@@ -112,7 +112,7 @@ let functionCall: string = `${Math.max(a, b)}`; // '20'
 let result: string = `${a > b ? 'greater' : 'less'}`;  // 'less'
 
 // 不支持复杂语句
-let invalid: string = `${if (a > b) { 'yes' }}`;  // 编译错误
+let invalid: string = `${if (a > b) { 'yes' }}`;  // 编译错误：${} 内只允许表达式，if 是语句不能作为表达式
 
 // 嵌套模板字符串
 let outer: string = `Outer: ${`Inner: ${a}`}`;  // 'Outer: Inner: 10'
@@ -153,7 +153,7 @@ console.info(`${modified}`);  // 'HELLO'
 original[0] = 'J';  // 编译错误
 ```
 
-### 声明可变字符串
+### let声明可重新赋值的绑定
 
 使用`let`声明可以重新赋值的字符串变量，适用于动态构建内容、运行时更新状态、处理消息以及接收用户输入等场景。
 
@@ -170,9 +170,9 @@ text += ' Part 2';
 
 重新赋值和`+=`拼接都会创建新的字符串对象，字符串对象本身不可变。
 
-### 声明不可变字符串
+### const声明不可重新赋值的绑定
 
-使用`const`声明字符串常量，确保字符串值不被重新赋值。适用于配置常量（如应用名称、版本号）、固定消息、API端点等不变信息。推荐使用大写命名（如`const APP_NAME`），集中定义并添加类型标注，便于管理。
+使用`const`声明不可重新赋值的字符串绑定，确保变量始终指向同一字符串。适用于配置常量（如应用名称、版本号）、固定消息、API端点等不变信息。推荐使用大写命名（如`const APP_NAME`），集中定义并添加类型标注，便于管理。
 
 <!-- @[ts_string_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
 
@@ -185,7 +185,7 @@ APP_NAME = 'NewApp';  // 编译错误：不能重新赋值
 
 ## 字符串常用操作
 
-字符串常用操作包括拼接、长度、索引、子串、比较、大小写转换、查找、替换、填充和正则匹配等。
+字符串常用操作包括拼接、长度、索引、子串、比较、大小写转换、查找、替换、填充和正则匹配等。本文涉及的部分方法来自ES2015及之后的各ES版本，ArkTS均支持。
 
 ### 字符串拼接
 
@@ -279,7 +279,7 @@ console.info(`${countCharacters('😀').toString()}`);  // 1（length为2，字�
 
 ### 字符串索引
 
-字符串可通过索引或`charAt`访问指定位置字符，`indexOf`/`lastIndexOf`定位子串位置。`charAt`和索引访问获取单个字符，`charCodeAt`获取字符编码：
+字符串可通过索引或`charAt`访问指定位置字符，`indexOf`/`lastIndexOf`定位子串位置。`charAt`和索引访问获取单个字符，`charCodeAt`获取字符编码。索引访问的静态类型为`string`，不随索引取值变化；越界索引访问在运行时返回`undefined`，使用前需判空；`charAt`越界时返回空字符串：
 
 <!-- @[string_indexing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -295,7 +295,7 @@ let last: string = indexText[indexText.length - 1];  // 'd'
 let second: string = indexText.charAt(1);   // 'e'
 
 // 越界访问
-let outOfBounds: string | undefined = indexText[100];  // undefined
+let outOfBounds: string = indexText[100];  // 运行时为 undefined，但静态类型为 string
 let outOfBounds2: string = indexText.charAt(100);      // ''（空字符串）
 ```
 
@@ -539,62 +539,29 @@ console.info(`${isLowerCase('Hello')}`);  // false
 
 ### 查找方法
 
-查找方法用于定位子字符串或字符在字符串中的位置。
+查找方法用于定位子字符串或字符在字符串中的位置。本节为常用查找方法汇总，`indexOf`/`lastIndexOf`的详细示例参见[字符串索引](#字符串索引)小节，`startsWith`/`endsWith`的详细示例参见[字符串比较](#字符串比较)小节。
 
 <!-- @[string_search_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
 let searchText2: string = 'Hello World';
 
-// indexOf：查找位置
-let pos: number = searchText2.indexOf('World');      // 6
-let lastPos: number = searchText2.lastIndexOf('o');  // 7
-
 // includes：是否包含
 let hasWorld: boolean = searchText2.includes('World'); // true
-
-// startsWith：是否以指定字符串开头
-let startsHello: boolean = searchText2.startsWith('Hello'); // true
-
-// endsWith：是否以指定字符串结尾
-let endsWorld: boolean = searchText2.endsWith('World'); // true
 ```
 
 ### 提取方法
 
-提取方法用于从字符串中获取指定范围的子字符串。
-
-<!-- @[string_slice_split](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let sliceText: string = 'Hello World';
-
-// slice：截取
-let slice: string = sliceText.slice(0, 5);        // 'Hello'
-
-// substring：截取
-let substring: string = sliceText.substring(7);    // 'World'
-
-// split：分割为数组
-let split: string[] = sliceText.split(' ');
-console.info(`[${split.join(', ')}]`);  // '[Hello, World]'
-let splitAll: string[] = sliceText.split('');
-console.info(`[${splitAll.join(', ')}]`);  // '[H, e, l, l, o,  , W, o, r, l, d]'
-```
+提取方法用于从字符串中获取指定范围的子字符串，`slice`/`substring`/`split`的用法与示例统一参见[子字符串](#子字符串)小节，此处不再重复。
 
 ### 修改方法
 
-修改方法用于改变字符串内容，如替换、切割、拼接等。
+修改方法用于改变字符串内容，如替换、切割、拼接等。本节为常用修改方法汇总，`replace`的详细示例参见[子字符串](#子字符串)小节，`padStart`/`padEnd`/`repeat`的详细示例参见[字符串填充与重复](#字符串填充与重复)小节。
 
 <!-- @[string_common_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
-let commonMethodsText: string = 'Hello World';
-
-// replace：替换
-let commonMethodsReplaced: string = commonMethodsText.replace('World', 'ArkTS');  // 'Hello ArkTS'
-
-// replaceAll：替换所有（ES2021，ArkTS支持）
+// replaceAll：替换所有
 let multiple: string = 'aa bb aa';
 let allReplaced: string = multiple.replaceAll('aa', 'xx');  // 'xx bb xx'
 
@@ -606,26 +573,17 @@ let trimStart: string = '  Hello ArkTS  '.trimStart();  // 'Hello ArkTS  '
 
 // trimEnd：去除结尾空格
 let trimEnd: string = '  Hello ArkTS  '.trimEnd();  // '  Hello ArkTS'
-
-// padStart：左侧填充
-let padded: string = '5'.padStart(3, '0');  // '005'
-
-// padEnd：右侧填充
-let paddedEnd: string = '5'.padEnd(3, '0'); // '500'
-
-// repeat：重复
-let repeated: string = 'ab'.repeat(3);      // 'ababab'
 ```
 
 ### 其他方法
 
-字符串还提供`localeCompare`方法比较两个字符串；另外，几乎所有类型都可以用`toString`方法转为字符串（如数值`(42).toString()`），在[bigint类型](arkts-language-guide-basics.md#bigint类型)等章节已有使用。
+字符串还提供`localeCompare`方法比较两个字符串，返回值仅保证为负数、0或正数（具体数值由实现决定）。判断时应使用`< 0`/`=== 0`/`> 0`，不要依赖具体数值。另外，除`null`与`undefined`外，各类型均可用`toString`方法转为字符串（如数值`(42).toString()`）。对`null`/`undefined`应先判空或使用`${value}`插值。`toString`在[bigint](arkts-language-guide-types.md#bigint)等章节已有使用。
 
 <!-- @[string_utility_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
 // localeCompare：按本地化规则比较两个字符串，返回负数、0或正数
-let comparison: number = 'a'.localeCompare('b');     // -1（a < b）
+let comparison: number = 'a'.localeCompare('b');     // 负数（a < b，具体值由实现决定）
 let sameComparison: number = 'a'.localeCompare('a');  // 0（相等）
 ```
 
@@ -673,7 +631,7 @@ let regexReplaced: string = regexText.replace(/fox/, 'cat');  // 'The quick brow
 let regexParts: string[] = 'a1b2c3d'.split(/\d/);
 console.info(`${regexParts}`);  // 'a,b,c,d'
 
-// matchAll：全局匹配（ES2020，ArkTS支持；/\w+/g表示全局匹配由单词字符组成的连续片段）
+// matchAll：全局匹配（/\w+/g表示全局匹配由单词字符组成的连续片段）
 let allMatches: IterableIterator<RegExpMatchArray> = regexText.matchAll(/\w+/g);
 for (const match of allMatches) {
   console.info(`${match[0]}`);  // 依次输出：The、quick、brown、fox

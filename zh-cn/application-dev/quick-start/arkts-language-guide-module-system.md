@@ -177,7 +177,7 @@ export interface User {
 <!-- @[submodule_export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Service.ets) -->
 
 ``` TypeScript
-import { User, Product } from './Types';
+import { User } from './Types';
 
 export class UserService {
   findById(id: number): User | null {
@@ -394,7 +394,7 @@ async function loadByName(name: string): Promise<string> {
 
 ## 模块懒加载
 
-在`import`语句中添加`lazy`关键字，可以把目标模块的执行推迟到导入的变量首次被使用时，从而缩短应用的冷启动时间。冷启动阶段只解析依赖、不执行模块源码；变量被访问时才同步触发模块执行。该特性从API version 12开始支持。
+在`import`语句中添加`lazy`关键字，可以把目标模块的执行推迟到导入的变量首次被使用时，从而缩短应用的冷启动时间。冷启动阶段只解析依赖、不执行模块源码；变量被访问时才同步触发模块执行。该特性从API version 12开始支持。本节示例以`.ts`文件演示，`import lazy`同样适用于`.ets`文件，两种文件类型下的写法与懒加载行为一致。
 
 <!-- @[lazy_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
 
@@ -430,6 +430,23 @@ export let a = 'mod1 executed';
 import { User } from '../common/User';
 import { AppConfig } from '../config/appConfig';
 import { UserRepository } from '../common/Repository';
+```
+
+### ohpm包名
+
+导入ohpm包时，模块路径直接写包名，包名需与工程`oh-package.json5`文件`dependencies`中声明的依赖一致，安装后的包存放在工程的`oh_modules`目录中。与相对路径不同，包名的解析不依赖导入语句所在文件的位置。
+
+包名导入解析到的是包的入口文件：入口由包内`oh-package.json5`的`main`字段指定，通常为`Index.ets`，包的对外能力统一由入口文件导出。`@ohos/hypium`这类形如`@scope/name`的写法整体是一个完整的包名（含scope前缀），而不是`@ohos`包下的子路径。
+
+``` TypeScript
+// 导入ohpm包：以单元测试框架@ohos/hypium为例
+import { describe, it, expect } from '@ohos/hypium';
+
+describe('sampleTest', () => {
+  it('assertEqual', 0, () => {
+    expect(1).assertEqual(1);
+  });
+});
 ```
 
 ## 模块组织
@@ -496,8 +513,6 @@ export interface UserIdentity {
 <!-- @[shared_types_usage_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SharedTypesUsage.ets) -->
 
 ``` TypeScript
-import { UserIdentity } from '../common/Types';
-
 export function getProfileName(identity: UserIdentity): string {
   return 'user-' + identity.id.toString();
 }
@@ -537,7 +552,7 @@ logConfig();
 
 ## 声明文件
 
-声明文件是对模块对外能力的整体描述，只包含类型和接口的声明（如`interface`、函数签名等），不包含具体实现，供编译器进行类型检查。ArkTS使用`.d.ets`文件作为声明文件，作用与TypeScript中的`.d.ts`文件类似，常用于共享包对外提供的类型声明、NAPI原生模块导出对象的类型声明等场景。模块进行类型解析时，若目录下存在同名文件（后缀不同），默认优先加载`.d.ets`文件，其次加载`.d.ts`文件。
+声明文件是对模块对外能力的整体描述，只包含类型和接口的声明（如`interface`、函数签名等），不包含具体实现，供编译器进行类型检查。ArkTS使用`.d.ets`文件作为声明文件，作用与TypeScript中的`.d.ts`文件类似，常用于共享包对外的类型声明、NAPI原生模块导出对象的类型声明等场景。模块进行类型解析时，若目录下存在同名文件（后缀不同），默认优先加载`.d.ets`文件，其次加载`.d.ts`文件。
 
 声明文件中使用`declare`关键字声明“在别处已实现”的实体：它告诉编译器该实体由实现文件或原生库提供，当前文件只描述其类型。例如`declare const`声明由其他模块或原生库定义的常量，`declare function`声明在别处实现的函数，`export declare`在声明的同时对外导出：
 
