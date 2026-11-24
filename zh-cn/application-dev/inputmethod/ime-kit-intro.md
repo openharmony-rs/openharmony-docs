@@ -6,7 +6,7 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-IME Kit 负责建立编辑框所在应用与输入法应用之间的通信通道，确保两者可以共同协作提供文本输入功能，也为系统应用提供管理输入法应用的能力。
+IME Kit负责建立编辑框所在应用与输入法应用之间的通信通道，确保两者可以共同协作提供文本输入功能，也为系统应用提供管理输入法应用的能力。
 
 
 ## 使用场景
@@ -49,7 +49,7 @@ ArkUI: IME Kit在输入法软键盘和自绘编辑框时使用ArkUI提供的部�
 
 <!--RP1--><!--RP1End-->
 
-## IME Kit API参考
+## API参考
 
 - [inputMethodEngine](../reference/apis-ime-kit/js-apis-inputmethodengine.md)
 
