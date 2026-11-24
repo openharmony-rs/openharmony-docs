@@ -3104,30 +3104,3 @@ struct ShaderColorStyle {
 ```
 ![SearchShaderStyle](figures/searchShaderStyle.png)
 
-### 示例32（设置文本选择的AI菜单）
-
-该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
-
-从API version 22开始，新增enableSelectedDataDetector。
-
-```ts
-@Entry
-@Component
-struct SearchExample {
-  exampleText: string = '示例网址：www.example.com';
-
-  build() {
-    Column() {
-      Row() {
-        Search({ value: this.exampleText })
-          .copyOption(CopyOptions.LocalDevice)
-          .enableSelectedDataDetector(true)
-          .border({ width: 1, color: Color.Black })
-          .height(300)
-          .margin(10)
-      }
-    }
-  }
-}
-```
-<!--RP3--><!--RP3End-->

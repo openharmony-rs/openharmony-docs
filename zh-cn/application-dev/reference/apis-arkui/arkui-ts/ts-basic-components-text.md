@@ -3943,33 +3943,47 @@ struct TailIndentsExample {
 
 ![tailIndents](figures/tailIndents.png)
 
-### 示例33（设置文本选择的AI菜单）
+### 示例33（设置文本描边）
 
-该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+该示例通过[strokeWidth](#strokewidth)、[strokeColor](#strokecolor)和[strokeJoinStyle](#strokejoinstyle)属性为Text设置文本描边样式，分别展示描边宽度、描边颜色和描边拐角样式的效果，并演示了将描边宽度设为负值时显示实心字的效果。
 
-从API version 22开始，新增enableSelectedDataDetector。
+从API版本26.1.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
 
 ```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
 @Entry
 @Component
-struct DataDetectorDemo {
-  exampleText: string = '示例网址：www.example.com';
-
+struct TextStrokeExample {
   build() {
     Column() {
-      Row(){
-        Text(this.exampleText)
-          .copyOption(CopyOptions.LocalDevice)
-          .enableSelectedDataDetector(true)
-          .border({ width: 1, color: Color.Black })
-          .padding(10)
-          .margin(10)
-      }
-    }.width('100%')
+      Text('Text without stroke')
+        .height(60)
+        .fontSize(30)
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(-3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with ROUND_JOIN stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeJoinStyle(StrokeJoinStyle.ROUND_JOIN)
+        .strokeColor('rgb(39,135,217)')
+    }
+    .width('100%')
   }
 }
 ```
-<!--RP5--><!--RP5End-->
+
+![textStroke](figures/textStroke.png)
 
 ### 示例34（长按含表情符号文本绘制渐变高亮背景）
 
@@ -4094,45 +4108,3 @@ struct Utf16GlyphHighlightPage {
 该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
-
-### 示例35（设置文本描边）
-
-该示例通过[strokeWidth](#strokewidth)、[strokeColor](#strokecolor)和[strokeJoinStyle](#strokejoinstyle)属性为Text设置文本描边样式，分别展示描边宽度、描边颜色和描边拐角样式的效果，并演示了将描边宽度设为负值时显示实心字的效果。
-
-从API版本26.1.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
-
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct TextStrokeExample {
-  build() {
-    Column() {
-      Text('Text without stroke')
-        .height(60)
-        .fontSize(30)
-      Text('Text with stroke')
-        .height(60)
-        .fontSize(30)
-        .strokeWidth(LengthMetrics.px(-3.0))
-        .strokeColor('rgb(39,135,217)')
-      Text('Text with stroke')
-        .height(60)
-        .fontSize(30)
-        .strokeWidth(LengthMetrics.px(3.0))
-        .strokeColor('rgb(39,135,217)')
-      Text('Text with ROUND_JOIN stroke')
-        .height(60)
-        .fontSize(30)
-        .strokeWidth(LengthMetrics.px(3.0))
-        .strokeJoinStyle(StrokeJoinStyle.ROUND_JOIN)
-        .strokeColor('rgb(39,135,217)')
-    }
-    .width('100%')
-  }
-}
-```
-
-![textStroke](figures/textStroke.png)

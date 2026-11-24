@@ -4117,31 +4117,3 @@ struct ShaderColorStyle {
 
 ![TextInputShaderStyle](figures/textInputShaderStyle.png)
 
-### 示例34（设置文本选择的AI菜单）
-
-该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
-
-从API version 22开始，新增enableSelectedDataDetector。
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Demo34 {
-  exampleText: string = '示例网址：www.example.com';
-
-  build() {
-    Column() {
-      Row() {
-        TextInput({ text: this.exampleText })
-          .copyOption(CopyOptions.LocalDevice)
-          .enableSelectedDataDetector(true)
-          .border({ width: 1, color: Color.Black })
-          .height(300)
-          .margin(10)
-      }
-    }
-  }
-}
-```
-<!--RP5--><!--RP5End-->
