@@ -328,7 +328,7 @@ setDisplayMode(mode: DisplayMode, callback: MovingPhotoViewEventCallback): void
 
 | 参数名  | 类型    | 必填 | 说明                         |
 | ------- | ------- | ---- | ---------------------------- |
-| mode| [DisplayMode](#displaymode) | 是   | 动态照片组件的显示模式。|
+| mode| [DisplayMode](#displaymode) | 是   | 动态照片组件的显示模式。<br>**说明：** 设置为DisplayMode.VIDEO_ONLY时，隐藏封面帧，并跳转至视频起播位置。设置为DisplayMode.IMAGE_AND_VIDEO时，恢复封面帧，重置视频起播位置。|
 | callback| [MovingPhotoViewEventCallback](../apis-media-library-kit/ohos-multimedia-movingphotoview.md#movingphotovieweventcallback)| 是   |  设置显示模式完成时的回调。|
 
 **错误码：**
@@ -355,7 +355,7 @@ startPlayback(mode: DisplayMode): void
 
 | 参数名  | 类型    | 必填 | 说明                         |
 | ------- | ------- | ---- | ---------------------------- |
-| mode| [DisplayMode](#displaymode) | 是   | 动态照片组件的显示模式。|
+| mode| [DisplayMode](#displaymode) | 是   | 动态照片组件的显示模式。<br>**说明：** 设置为DisplayMode.VIDEO_ONLY时，从视频起播位置开始播放，播放完成回到封面帧。设置为DisplayMode.IMAGE_AND_VIDEO时，从封面帧开始播放，播放完成回到封面帧。|
 
 **错误码：**
 
