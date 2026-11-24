@@ -170,7 +170,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    #include "hilog/log.h"
    #include "inputmethod/inputmethod_controller_capi.h"
    
-    constexpr int32_t TEXTSIZE = 1024;
+   constexpr int32_t TEXTSIZE = 1024;
    
    static std::string g_strText;
    char g_strTextChar[TEXTSIZE];
