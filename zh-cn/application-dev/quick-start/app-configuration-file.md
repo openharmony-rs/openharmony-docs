@@ -64,6 +64,7 @@
     "ubsanEnabled": false,
     "cloudFileSyncEnabled": false,
     "cloudStructuredDataSyncEnabled": false,
+    "keepDataOnUninstall": false,
     "configuration": "$profile:configuration",
     "assetAccessGroups": [
       "com.ohos.photos",
@@ -127,6 +128,7 @@ app.json5配置文件包含以下标签。
 | ubsanEnabled | 标识应用程序是否[使用UBSan检测未定义行为](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ubsan)。<br/>UBsan(Undefined Behavior Sanitizer)是一个用于运行时检测程序中未定义行为的工具，旨在帮助开发人员发现代码中潜在的错误和漏洞。<br/>-&nbsp;true：当前工程开启UBSan检测。<br/>-&nbsp;false：当前工程不开启UBsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | cloudFileSyncEnabled | 标识当前应用是否启用端云文件同步能力。 <br/>-&nbsp;true：当前应用启用端云文件同步能力。<br/>-&nbsp;false：当前应用不启用端云文件同步能力。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | cloudStructuredDataSyncEnabled | 标识当前应用是否启用端云结构化数据同步能力。 <br/>-&nbsp;true：当前应用启用端云结构化数据同步能力。<br/>-&nbsp;false：当前应用不启用端云结构化数据同步能力。<br/>**说明：** <br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。  |
+| keepDataOnUninstall | 标识应用卸载时是否保留数据。<br/>-&nbsp;true：应用卸载时保留数据。<br/>-&nbsp;false：应用卸载时不保留数据。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | [configuration](#configuration标签) | 标识当前应用字体大小跟随系统配置的能力。<br/>该标签是一个profile文件资源，用于指定描述应用字体大小跟随系统变更的配置文件。| 字符串 | 该标签可缺省，缺省时configuration使用不跟随系统默认设定。 |
 | assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>该标签仅在应用主模块（即module.json5中的type字段配置为entry）下生效。<br/>从API version 18开始，支持该标签。| 字符串数组 | 该标签可缺省，缺省值为空。 |
 | nativeChildProcessPreloadSoList | 配置应用启动子进程时需要预加载的SO库列表。该字段为字符串数组，每个元素为SO库文件名或文件路径（例如libfoo.so或xxx/libfoo.so），系统会在进程启动时预加载。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。<br/>该标签仅在应用的entry模块配置有效。<br/>数组元素数量范围为1~128，单个元素字符串长度不能超过128。<br/>数组元素不可重复。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
