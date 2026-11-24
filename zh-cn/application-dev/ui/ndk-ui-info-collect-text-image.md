@@ -34,11 +34,9 @@
 
 ## 接口说明
 
-本开发指导涉及的关键接口如下表所示，完整参数、返回值和错误码说明见[ui_info_collection.h](../reference/apis-arkui/capi-ui-info-collection-h.md)和[ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)，常见失败情形见[常见问题](#常见问题)。图像采集取出的PixelMap需配合Image Kit的`<multimedia/image_framework/image/pixelmap_native.h>`处理，例如通过[OH_PixelmapNative_ConvertPixelmapNativeToNapi](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)转换为ArkTS对象渲染。
+本开发指导涉及的关键接口如下表所示，完整参数、返回值和错误码说明见[ui_info_collection.h](../reference/apis-arkui/capi-ui-info-collection-h.md)和[ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)，常见失败情形见[常见问题](#常见问题)。图像采集取出的PixelMap需配合Image Kit的<multimedia/image_framework/image/pixelmap_native.h>处理，例如通过[OH_PixelmapNative_ConvertPixelmapNativeToNapi](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)转换为ArkTS对象渲染。
 
 ### 节点图片采集接口
-
-三个函数的用途见下表。
 
 | 接口名 | 描述 |
 |---|---|
@@ -121,13 +119,13 @@
 
 ### 采集页面图片
 
-**1. 获取目标节点ID**
+1. 获取目标节点ID
 
 目标节点ID从页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)获取：先通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)按组件`id()`设置的字符串标识得到FrameNode，再调用[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取整数节点ID。
 
 节点ID只在节点存在期间有效，示例在每次采集前重新读取，不缓存。[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)返回空表示该标识当前没有对应节点，此时应放弃本次采集，不要用无效值提交请求；示例的单节点与批量入口未做该判断，实际应用需要自行补充。
 
-**2. 提交采集请求**
+2. 提交采集请求
 
 提交时把节点ID数组和回调交给采集接口，由框架在目标UI实例的UI线程回调一次。示例把回调结果包装为Promise，页面侧按异步流程处理。
 
@@ -187,7 +185,7 @@ napi_value CollectImages(napi_env env, napi_callback_info info)
 }
 ```
 
-**3. 获取采集结果**
+3. 获取采集结果
 
 回调在目标UI实例的UI线程执行，结果集合在回调中转移给应用，由应用负责取出与销毁。示例在回调内按请求顺序取出全部结果项，并在回调返回前完成清理。
 
@@ -258,7 +256,7 @@ void OnImages(ArkUI_ErrorCode overallError, OH_ArkUI_NativeModule_ImageCollectio
 }
 ```
 
-**4. 页面展示采集结果**
+4. 页面展示采集结果
 
 结果项被转换成ArkTS对象后交给页面渲染。示例的桥接结果包含受理结果、整体结果和结果项数组，每个结果项包含节点ID、取出结果、单项错误码、像素尺寸和可选的PixelMap。
 
@@ -325,7 +323,7 @@ private async capture(nodeIds: number[]): Promise<void> {
 }
 ```
 
-**5. 接口返回示例**
+5. 接口返回示例
 
 示例工程把受理结果、整体结果与结果项数量放在同一行状态中显示。下表列出页面中三个场景的实际返回。
 
@@ -401,7 +399,7 @@ export interface PageTextResult {
   texts: PageTextItem[];
 }
 
-/** 解析原生页面文本 API 返回的带版本 JSON。 */
+/** 解析原生页面文本API返回的带版本 JSON。 */
 export function parsePageText(json: string): PageTextResult {
   const result: PageTextResult = JSON.parse(json) as PageTextResult;
   if (result.schemaVersion !== 1 || !Array.isArray(result.texts)) {
