@@ -30786,6 +30786,11 @@
 						"end_line":128,
 						"name":"update_badge_count_idempotent",
 						"start_line":113
+					},
+					{
+						"end_line":98,
+						"name":"get_badge_count",
+						"start_line":91
 					}
 				]
 			}
@@ -30814,6 +30819,11 @@
 						"end_line":69,
 						"name":"cancel_notification_content",
 						"start_line":59
+					},
+					{
+						"end_line":83,
+						"name":"cancel_all_notification_content",
+						"start_line":73
 					}
 				]
 			}
