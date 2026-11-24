@@ -293,9 +293,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
-   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
-   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等；
-   - OH_AVCodecOnNeedInputBuffer输入回调无作用，开发者通过获取的surface来输入数据；
+   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
+   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等。
+   - OH_AVCodecOnNeedInputBuffer输入回调无作用，开发者通过获取的surface来输入数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即编码完成。
 
    示例如下所示：
@@ -541,8 +541,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     以下示例中，bufferInfo的成员变量：
 
-    - bufferIndex：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
-    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
+    - bufferIndex：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识。
+    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针。
     - attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
 
     编码器出帧处理循环：
@@ -778,9 +778,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 3. 调用OH_VideoEncoder_RegisterCallback()设置回调函数。
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
-   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
-   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等；
-   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即编码器已准备好，可以输入YUV/RGB数据；
+   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
+   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等。
+   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即编码器已准备好，可以输入YUV/RGB数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即编码完成。
 
    开发者可以通过处理该回调报告的信息，确保编码器正常运转。
@@ -963,7 +963,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    /**
     * // 示例：读取输入文件数据，将数据写入buffer，设置属性后送入编码器。
     * // 输入文件配置。
-    * std::string_view inputFilePath = "/*yourpath*.yuv";
+    * std::string_view inputFilePath = "/data/storage/el2/base/files/input.yuv";
     * std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
     * if (inputFile != nullptr) {
     *     inputFile->open(inputFilePath.data(), std::ios::in | std::ios::binary);
@@ -1137,21 +1137,27 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[recorder_video_buffer_eos_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
    ```c++
-   int32_t Recorder::SendBufferVideoEndOfStreamAsync()
-   {
-       const auto input = encContext_->inputBufferQueue.Dequeue(DRAIN_WAIT_MS);
-       if (input == nullptr || input->buffer == nullptr) {
-           return AVCODEC_SAMPLE_ERR_ERROR;
-       }
-       // 配置buffer info信息，设置AVCODEC_BUFFER_FLAGS_EOS标识。
-       CodecBufferInfo info = *input;
-       info.attr.size = 0;
-       info.attr.offset = 0;
-       // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
-       info.attr.pts = lastVideoInputPtsUs_;
-       info.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
-       return videoEncoder_->PushInputBuffer(info);
+   const auto input = encContext_->inputBufferQueue.Dequeue(DRAIN_WAIT_MS);
+   if (!isStarted_.load()) {
+       break;
    }
+   if (input == nullptr || input->buffer == nullptr) {
+       AbortRecording("Get video EOS input buffer failed");
+       break;
+   }
+   CodecBufferInfo info = *input;
+   info.attr.size = 0;
+   info.attr.offset = 0;
+   info.attr.pts = lastVideoInputPtsUs_;
+   info.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
+   const int32_t ret = videoEncoder_->PushInputBuffer(info);
+   if (ret != AVCODEC_SAMPLE_ERR_OK) {
+       failure_.Record("recorder.video.input.eos", ret, "Submit video EOS input buffer failed");
+       AbortRecording("Submit video EOS input buffer failed");
+       break;
+   }
+   AVCODEC_SAMPLE_LOGI("Async video input submitted EOS, thread exiting");
+   break;
    ```
 
 10. 调用OH_VideoEncoder_FreeOutputBuffer()释放编码帧。
