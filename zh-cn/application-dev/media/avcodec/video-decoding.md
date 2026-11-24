@@ -859,7 +859,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         OHNativeWindow *decoderWindow = decoderWindowLease_.GetWindow();
         if (videoDecoder_ != nullptr) {
             // ...
-            videoDecoder_->Release();
+            RecordCleanup("video.decoder.destroy", videoDecoder_->Release());
             videoDecoder_.reset();
         }
         if (sampleInfo_.video.window == decoderWindow) {
@@ -883,8 +883,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     int32_t VideoDecoder::Release()
     {
         if (decoder_ != nullptr) {
-            OH_VideoDecoder_Destroy(decoder_);
+            const int32_t ret = OH_VideoDecoder_Destroy(decoder_);
             decoder_ = nullptr;
+            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                "Destroy video decoder failed, ret: %{public}d", ret);
         }
         return AVCODEC_SAMPLE_ERR_OK;
     }
