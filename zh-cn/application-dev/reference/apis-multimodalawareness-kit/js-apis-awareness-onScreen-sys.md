@@ -144,6 +144,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |CollectStrategy|获取屏幕采集策略。<br> **起始版本：** 26.0.0|
     |SmartAutoFill|页面输入框内容智能填充。<br> **起始版本：** 26.0.0|
     |SmartAutoFillSwitch|订阅或取消订阅页面内容智能填充开关状态。<br> **使用规格**：仅允许智能填充应用（com.huawei.hms.textautofill）调用，非白名单应用调用将返回错误码34000002。<br> **起始版本：** 26.0.0|
+    |PrivacyWindow|监听是否有隐私窗口。<br> **起始版本：** 26.1.0|
+    |ModalDialog|监听是否有模态弹窗。<br> **起始版本：** 26.1.0|
+    |SystemNotification|监听是否有系统通知。<br> **起始版本：** 26.1.0|
 
   * groupId支持能力列表<br>
     按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
@@ -156,6 +159,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |SmartEdge|Activity|获取基础服务的感知信息。|
     |CeliaMemory|Article|获取阅读场景的感知信息。|
     |SmartBar|SmartAutoFill|页面输入框内容智能填充。|
+    |StateAwareness|PrivacyWindow|监听是否有隐私窗口。|
+    |StateAwareness|ModalDialog|监听是否有模态弹窗。|
+    |StateAwareness|SystemNotification|监听是否有系统通知。|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
