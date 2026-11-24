@@ -158,7 +158,7 @@ Sets particle parameters.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
 | emitter | [EmitterOptions](#emitteroptions)<[PARTICLE](#particletype)> | No| No| Particle emitter.|
-| color | [ParticleColorPropertyOptions](#particlecolorpropertyoptions)<COLOR_UPDATER> | No| Yes| Particle color.<br>**NOTE**<br>Default value: **{ range:[Color.White,Color.White] }.** Colors cannot be set for image particles.|
+| color | [ParticleColorPropertyOptions](#particlecolorpropertyoptions)\<COLOR_UPDATER\> | No | Yes | Particle color.<br>**Note:**<br>Default value: **{ range:[Color.White,Color.White] }**. Colors cannot be set for image particles.|
 | opacity | [ParticlePropertyOptions](#particlepropertyoptions)\<number, OPACITY_UPDATER> | No| Yes| Particle opacity.<br>Default value: **{ range:[1.0,1.0] }**|
 | scale | [ParticlePropertyOptions](#particlepropertyoptions)\<number, SCALE_UPDATER> | No| Yes| Particle scale.<br>Default value: **{ range:[1.0,1.0] }**|
 | velocity | [VelocityOptions](#velocityoptions18) |No| Yes| Particle velocity.<br>**NOTE**<br>**speed** indicates the time rate at which the particle moves. angle indicates the speed direction (unit: degree). The geometric center of the element is used as the coordinate origin, and the horizontal direction is the X axis. A positive number indicates the rotation angle in the clockwise direction.<br>Default value: **{speed: [0.0,0.0],angle: [0.0,0.0] }**|
