@@ -132,7 +132,9 @@
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { serial, BusinessError } from '@kit.BasicServicesKit';
+   import hilog from '@ohos.hilog';
+   import SerialController from '../model/SerialController';
+   import SystemSerialProvider from '../model/SystemSerialProvider';
    ```
 
 2. 获取串口设备列表。
