@@ -593,7 +593,7 @@
     - [SwipeRefresherV2](arkui-ts/ohos-arkui-advanced-SwipeRefresherV2.md)
     - [TabTitleBar](arkui-ts/ohos-arkui-advanced-TabTitleBar.md)
     - [ToolBar](arkui-ts/ohos-arkui-advanced-ToolBar.md)
-    - [ToolBarContainer](arkui-ts/ohos-arkui-advanced-ToolBarContainer.md)
+  
     - [ToolBarV2](arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [TreeViewV2](arkui-ts/ohos-arkui-advanced-TreeViewV2.md)
