@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t major |  |
-| uint32_t minor |  |
-| uint32_t patch |  |
-| const char* release |  |
+| uint32_t major | <!--Device-uint32_t major--><!--Device-uint32_t major-End--> |
+| uint32_t minor | <!--Device-uint32_t minor--><!--Device-uint32_t minor-End--> |
+| uint32_t patch | <!--Device-uint32_t patch--><!--Device-uint32_t patch-End--> |
+| const char* release | <!--Device-const char* release--><!--Device-const char* release-End--> |
 
 

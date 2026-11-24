@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 partitionedAccelerationStructure |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 partitionedAccelerationStructure | <!--Device-VkBool32 partitionedAccelerationStructure--><!--Device-VkBool32 partitionedAccelerationStructure-End--> |
 
 

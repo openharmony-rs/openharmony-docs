@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| size_t gl_pathc |  |
-| char **gl_pathv |  |
-| size_t gl_offs |  |
-| int \_\_dummy1 |  |
-| void *\_\_dummy2[5] |  |
+| size_t gl_pathc | <!--Device-size_t gl_pathc--><!--Device-size_t gl_pathc-End--> |
+| char **gl_pathv | <!--Device-char **gl_pathv--><!--Device-char **gl_pathv-End--> |
+| size_t gl_offs | <!--Device-size_t gl_offs--><!--Device-size_t gl_offs-End--> |
+| int \_\_dummy1 | <!--Device-int \_\_dummy1--><!--Device-int \_\_dummy1-End--> |
+| void *\_\_dummy2[5] | <!--Device-void *\_\_dummy2[5]--><!--Device-void *\_\_dummy2[5]-End--> |
 
 

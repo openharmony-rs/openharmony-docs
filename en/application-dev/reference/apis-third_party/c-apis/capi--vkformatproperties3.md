@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkFormatFeatureFlags2 linearTilingFeatures |  |
-| VkFormatFeatureFlags2 optimalTilingFeatures |  |
-| VkFormatFeatureFlags2 bufferFeatures |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkFormatFeatureFlags2 linearTilingFeatures | <!--Device-VkFormatFeatureFlags2 linearTilingFeatures--><!--Device-VkFormatFeatureFlags2 linearTilingFeatures-End--> |
+| VkFormatFeatureFlags2 optimalTilingFeatures | <!--Device-VkFormatFeatureFlags2 optimalTilingFeatures--><!--Device-VkFormatFeatureFlags2 optimalTilingFeatures-End--> |
+| VkFormatFeatureFlags2 bufferFeatures | <!--Device-VkFormatFeatureFlags2 bufferFeatures--><!--Device-VkFormatFeatureFlags2 bufferFeatures-End--> |
 
 

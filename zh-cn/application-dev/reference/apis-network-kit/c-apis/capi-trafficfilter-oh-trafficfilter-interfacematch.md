@@ -24,9 +24,9 @@ typedef struct OH_TrafficFilter_InterfaceMatch {...} OH_TrafficFilter_InterfaceM
 
 | 名称 | 描述 |
 | -- | -- |
-| bool enabled | 是否启用接口匹配。<br>**起始版本：** 26.0.0 |
-| bool invert | 是否反转匹配结果。<br>**起始版本：** 26.0.0 |
-| bool isPrefix | 是否按前缀匹配接口名称。<br>**起始版本：** 26.0.0 |
-| char ifName[OH_TRAFFICFILTER_IFNAMSIZ] | 接口名称。<br> 该字符串必须以UTF-8编码，且必须以NUL结尾。 该缓冲区的容量为[OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义)字节， 包含结尾的NUL字符。因此，接口名称的最大长度为 [OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义) - 1字节， 不包含结尾的NUL字符。<br> 如果[enabled](capi-trafficfilter-oh-trafficfilter-interfacematch.md)为true，该字符串不能为空。 如果该字符串在[OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义) 字节内没有以NUL结尾，或者其长度超过[OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义) - 1字节， 使用该结构体的接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。<br> 如果[enabled](capi-trafficfilter-oh-trafficfilter-interfacematch.md)为false，该字段将被忽略。建议在禁用接口匹配时 将该缓冲区全部置零。<br>**起始版本：** 26.0.0 |
+| bool enabled | 是否启用接口匹配，true表示启用接口匹配，false表示不启用接口匹配。<br>**起始版本：** 26.0.0<br><!--Device-bool enabled--><!--Device-bool enabled-End--> |
+| bool invert | 是否反转匹配结果，true表示反转匹配结果，false表示不反转匹配结果。<br>**起始版本：** 26.0.0<br><!--Device-bool invert--><!--Device-bool invert-End--> |
+| bool isPrefix | 接口名称是否按前缀匹配，true表示按前缀匹配，false表示不按前缀匹配。<br>**起始版本：** 26.0.0<br><!--Device-bool isPrefix--><!--Device-bool isPrefix-End--> |
+| char ifName[OH_TRAFFICFILTER_IFNAMSIZ] | 接口名称。<br> 该字符串必须以UTF-8编码，且必须以NUL结尾。该缓冲区的容量为[OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义)字节，包含结尾的NUL字符。 因此，接口名称的最大长度为[OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义) - 1字节，不包含结尾的NUL字符。<br> 如果[enabled](capi-trafficfilter-oh-trafficfilter-interfacematch.md)为true，该字符串不能为空。 如果该字符串在[OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义) 字节内没有以NUL结尾，或者其长度超过[OH_TRAFFICFILTER_IFNAMSIZ](capi-net-trafficfilter-type-h.md#宏定义) - 1字节， 使用该结构体的接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。<br> 如果[enabled](capi-trafficfilter-oh-trafficfilter-interfacematch.md)为false，该字段将被忽略。建议在禁用接口匹配时将该缓冲区全部置零。<br>**起始版本：** 26.0.0<br><!--Device-char ifName[OH_TRAFFICFILTER_IFNAMSIZ]--><!--Device-char ifName[OH_TRAFFICFILTER_IFNAMSIZ]-End--> |
 
 

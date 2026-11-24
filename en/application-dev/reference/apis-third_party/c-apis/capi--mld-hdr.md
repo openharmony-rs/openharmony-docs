@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| struct icmp6_hdr    mld_icmp6_hdr |  |
-| struct in6_addr     mld_addr |  |
+| struct icmp6_hdr    mld_icmp6_hdr | <!--Device-struct icmp6_hdr mld_icmp6_hdr--><!--Device-struct icmp6_hdr mld_icmp6_hdr-End--> |
+| struct in6_addr     mld_addr | <!--Device-struct in6_addr mld_addr--><!--Device-struct in6_addr mld_addr-End--> |
 
 

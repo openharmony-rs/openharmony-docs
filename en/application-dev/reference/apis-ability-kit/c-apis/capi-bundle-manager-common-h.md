@@ -32,7 +32,7 @@ enum BundleManager_ErrorCode
 
 Enumerates the error codes. For details, see Universal Error Codes.
 
-<!--Device-BundleManager_ErrorCode--><!--Device-BundleManager_ErrorCode-End-->
+<!--Device-enum BundleManager_ErrorCode--><!--Device-enum BundleManager_ErrorCode-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,8 +40,8 @@ Enumerates the error codes. For details, see Universal Error Codes.
 
 | Enum item | Description |
 | -- | -- |
-| BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0 | Operation success.<br>**Since**: 21 |
-| BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201 | No access permission.<br>**Since**: 21 |
-| BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401 | Invalid parameter.<br>**Since**: 21 |
+| BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0 | Operation success.<br>**Since**: 21<br><!--Device-BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0--><!--Device-BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0-End--> |
+| BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201 | No access permission.<br>**Since**: 21<br><!--Device-BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201--><!--Device-BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201-End--> |
+| BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401 | Invalid parameter.<br>**Since**: 21<br><!--Device-BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401--><!--Device-BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401-End--> |
 
 

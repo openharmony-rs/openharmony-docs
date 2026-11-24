@@ -24,9 +24,9 @@ struct OhosImageSourceSupportedFormatList {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| struct OhosImageSourceSupportedFormat** supportedFormatList = nullptr | Image source supported format string list head.<br>**起始版本：** 10 |
-| size_t size = 0 | Image source supported format string list size.<br>**起始版本：** 10 |
-| [struct OhosImageSourceSupportedFormat*](capi-image-ohosimagesourcesupportedformat.md)* supportedFormatList | Image source supported format string list head.<br>**起始版本：** 10 |
-| size_t size | Image source supported format string list size.<br>**起始版本：** 10 |
+| struct OhosImageSourceSupportedFormat** supportedFormatList = nullptr | Image source supported format string list head.<br>**起始版本：** 10<br><!--Device-struct OhosImageSourceSupportedFormat** supportedFormatList = nullptr--><!--Device-struct OhosImageSourceSupportedFormat** supportedFormatList = nullptr-End--> |
+| size_t size = 0 | Image source supported format string list size.<br>**起始版本：** 10<br><!--Device-size_t size = 0--><!--Device-size_t size = 0-End--> |
+| [struct OhosImageSourceSupportedFormat*](capi-image-ohosimagesourcesupportedformat.md)* supportedFormatList | Image source supported format string list head.<br>**起始版本：** 10<br><!--Device-struct OhosImageSourceSupportedFormat** supportedFormatList--><!--Device-struct OhosImageSourceSupportedFormat** supportedFormatList-End--> |
+| size_t size | Image source supported format string list size.<br>**起始版本：** 10<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

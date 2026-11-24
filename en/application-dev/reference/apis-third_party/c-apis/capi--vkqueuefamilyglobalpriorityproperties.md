@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t priorityCount |  |
-| VkQueueGlobalPriority priorities[VK_MAX_GLOBAL_PRIORITY_SIZE] |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t priorityCount | <!--Device-uint32_t priorityCount--><!--Device-uint32_t priorityCount-End--> |
+| VkQueueGlobalPriority priorities[VK_MAX_GLOBAL_PRIORITY_SIZE] | <!--Device-VkQueueGlobalPriority priorities[VK_MAX_GLOBAL_PRIORITY_SIZE]--><!--Device-VkQueueGlobalPriority priorities[VK_MAX_GLOBAL_PRIORITY_SIZE]-End--> |
 
 

@@ -41,7 +41,7 @@ enum OH_Drawing_FilterMode
 
 Defines an enum for the filter modes.
 
-<!--Device-OH_Drawing_FilterMode--><!--Device-OH_Drawing_FilterMode-End-->
+<!--Device-enum OH_Drawing_FilterMode--><!--Device-enum OH_Drawing_FilterMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -49,8 +49,8 @@ Defines an enum for the filter modes.
 
 | Enum item | Description |
 | -- | -- |
-| FILTER_MODE_NEAREST | Nearest filter mode. |
-| FILTER_MODE_LINEAR | Linear filter mode. |
+| FILTER_MODE_NEAREST | Nearest filter mode.<br><!--Device-FILTER_MODE_NEAREST--><!--Device-FILTER_MODE_NEAREST-End--> |
+| FILTER_MODE_LINEAR | Linear filter mode.<br><!--Device-FILTER_MODE_LINEAR--><!--Device-FILTER_MODE_LINEAR-End--> |
 
 ### OH_Drawing_MipmapMode
 
@@ -62,7 +62,7 @@ enum OH_Drawing_MipmapMode
 
 Defines an enum for the mipmap modes.
 
-<!--Device-OH_Drawing_MipmapMode--><!--Device-OH_Drawing_MipmapMode-End-->
+<!--Device-enum OH_Drawing_MipmapMode--><!--Device-enum OH_Drawing_MipmapMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -70,9 +70,9 @@ Defines an enum for the mipmap modes.
 
 | Enum item | Description |
 | -- | -- |
-| MIPMAP_MODE_NONE | Mipmap level ignored. |
-| MIPMAP_MODE_NEAREST | Nearest sampling from two adjacent mipmap levels. |
-| MIPMAP_MODE_LINEAR | Linear interpolation sampling between two adjacent mipmap levels. |
+| MIPMAP_MODE_NONE | Mipmap level ignored.<br><!--Device-MIPMAP_MODE_NONE--><!--Device-MIPMAP_MODE_NONE-End--> |
+| MIPMAP_MODE_NEAREST | Nearest sampling from two adjacent mipmap levels.<br><!--Device-MIPMAP_MODE_NEAREST--><!--Device-MIPMAP_MODE_NEAREST-End--> |
+| MIPMAP_MODE_LINEAR | Linear interpolation sampling between two adjacent mipmap levels.<br><!--Device-MIPMAP_MODE_LINEAR--><!--Device-MIPMAP_MODE_LINEAR-End--> |
 
 
 ## Function description

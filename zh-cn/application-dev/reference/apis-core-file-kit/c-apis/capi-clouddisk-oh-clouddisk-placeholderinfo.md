@@ -24,8 +24,8 @@ typedef struct OH_CloudDisk_PlaceholderInfo {...} OH_CloudDisk_PlaceholderInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t logicalSize | 占位符文件的逻辑大小，以字节为单位，反映云文件的实际大小。<br>**起始版本：** 26.0.1 |
-| uint64_t atimeMs | 占位文件的创建时间，对应文件在云端创建的实际时间。<br>**起始版本：** 26.0.1 |
-| uint64_t mtimeMs | 占位文件的修改时间，反映云侧文件的实际修改时间。<br>**起始版本：** 26.0.1 |
+| uint64_t logicalSize | 占位符文件的逻辑大小，以字节为单位，反映云文件的实际大小。<br>**起始版本：** 26.0.1<br><!--Device-uint64_t logicalSize--><!--Device-uint64_t logicalSize-End--> |
+| uint64_t atimeMs | 占位文件的创建时间，对应文件在云端创建的实际时间。<br>**起始版本：** 26.0.1<br><!--Device-uint64_t atimeMs--><!--Device-uint64_t atimeMs-End--> |
+| uint64_t mtimeMs | 占位文件的修改时间，反映云侧文件的实际修改时间。<br>**起始版本：** 26.0.1<br><!--Device-uint64_t mtimeMs--><!--Device-uint64_t mtimeMs-End--> |
 
 

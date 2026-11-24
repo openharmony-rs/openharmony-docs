@@ -69,7 +69,7 @@ enum OH_Drawing_ScaleToFit
 
 矩阵缩放方式枚举。
 
-<!--Device-OH_Drawing_ScaleToFit--><!--Device-OH_Drawing_ScaleToFit-End-->
+<!--Device-enum OH_Drawing_ScaleToFit--><!--Device-enum OH_Drawing_ScaleToFit-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -77,10 +77,10 @@ enum OH_Drawing_ScaleToFit
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SCALE_TO_FIT_FILL | 按水平轴和垂直轴缩放以填充目标矩形，不保留源矩形宽高比例。 |
-| SCALE_TO_FIT_START | 缩放并对齐到左侧和顶部。 |
-| SCALE_TO_FIT_CENTER | 缩放并居中对齐。 |
-| SCALE_TO_FIT_END | 缩放并向右和向下对齐。 |
+| SCALE_TO_FIT_FILL | 按水平轴和垂直轴缩放以填充目标矩形，不保留源矩形宽高比例。<br><!--Device-SCALE_TO_FIT_FILL--><!--Device-SCALE_TO_FIT_FILL-End--> |
+| SCALE_TO_FIT_START | 缩放并对齐到左侧和顶部。<br><!--Device-SCALE_TO_FIT_START--><!--Device-SCALE_TO_FIT_START-End--> |
+| SCALE_TO_FIT_CENTER | 缩放并居中对齐。<br><!--Device-SCALE_TO_FIT_CENTER--><!--Device-SCALE_TO_FIT_CENTER-End--> |
+| SCALE_TO_FIT_END | 缩放并向右和向下对齐。<br><!--Device-SCALE_TO_FIT_END--><!--Device-SCALE_TO_FIT_END-End--> |
 
 
 ## 函数说明

@@ -55,7 +55,7 @@ enum NativeDisplayManager_Rotation
 
 Enumerates the clockwise rotation angles of a display.
 
-<!--Device-NativeDisplayManager_Rotation--><!--Device-NativeDisplayManager_Rotation-End-->
+<!--Device-enum NativeDisplayManager_Rotation--><!--Device-enum NativeDisplayManager_Rotation-End-->
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -63,10 +63,10 @@ Enumerates the clockwise rotation angles of a display.
 
 | Enum item | Description |
 | -- | -- |
-| DISPLAY_MANAGER_ROTATION_0 = 0 | The display is rotated clockwise by 0 degrees. |
-| DISPLAY_MANAGER_ROTATION_90 = 1 | The display is rotated clockwise by 90 degrees. |
-| DISPLAY_MANAGER_ROTATION_180 = 2 | The display is rotated clockwise by 180 degrees. |
-| DISPLAY_MANAGER_ROTATION_270 = 3 | The display is rotated clockwise by 270 degrees. |
+| DISPLAY_MANAGER_ROTATION_0 = 0 | The display is rotated clockwise by 0 degrees.<br><!--Device-DISPLAY_MANAGER_ROTATION_0 = 0--><!--Device-DISPLAY_MANAGER_ROTATION_0 = 0-End--> |
+| DISPLAY_MANAGER_ROTATION_90 = 1 | The display is rotated clockwise by 90 degrees.<br><!--Device-DISPLAY_MANAGER_ROTATION_90 = 1--><!--Device-DISPLAY_MANAGER_ROTATION_90 = 1-End--> |
+| DISPLAY_MANAGER_ROTATION_180 = 2 | The display is rotated clockwise by 180 degrees.<br><!--Device-DISPLAY_MANAGER_ROTATION_180 = 2--><!--Device-DISPLAY_MANAGER_ROTATION_180 = 2-End--> |
+| DISPLAY_MANAGER_ROTATION_270 = 3 | The display is rotated clockwise by 270 degrees.<br><!--Device-DISPLAY_MANAGER_ROTATION_270 = 3--><!--Device-DISPLAY_MANAGER_ROTATION_270 = 3-End--> |
 
 ### NativeDisplayManager_Orientation
 
@@ -78,7 +78,7 @@ enum NativeDisplayManager_Orientation
 
 Enumerates the orientations of a display.
 
-<!--Device-NativeDisplayManager_Orientation--><!--Device-NativeDisplayManager_Orientation-End-->
+<!--Device-enum NativeDisplayManager_Orientation--><!--Device-enum NativeDisplayManager_Orientation-End-->
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -86,11 +86,11 @@ Enumerates the orientations of a display.
 
 | Enum item | Description |
 | -- | -- |
-| DISPLAY_MANAGER_PORTRAIT = 0 | The display is in portrait mode. |
-| DISPLAY_MANAGER_LANDSCAPE = 1 | The display is in landscape mode. |
-| DISPLAY_MANAGER_PORTRAIT_INVERTED = 2 | The display is in reverse portrait mode. |
-| DISPLAY_MANAGER_LANDSCAPE_INVERTED = 3 | The display is in reverse landscape mode. |
-| DISPLAY_MANAGER_UNKNOWN | The screen orientation is unknown. |
+| DISPLAY_MANAGER_PORTRAIT = 0 | The display is in portrait mode.<br><!--Device-DISPLAY_MANAGER_PORTRAIT = 0--><!--Device-DISPLAY_MANAGER_PORTRAIT = 0-End--> |
+| DISPLAY_MANAGER_LANDSCAPE = 1 | The display is in landscape mode.<br><!--Device-DISPLAY_MANAGER_LANDSCAPE = 1--><!--Device-DISPLAY_MANAGER_LANDSCAPE = 1-End--> |
+| DISPLAY_MANAGER_PORTRAIT_INVERTED = 2 | The display is in reverse portrait mode.<br><!--Device-DISPLAY_MANAGER_PORTRAIT_INVERTED = 2--><!--Device-DISPLAY_MANAGER_PORTRAIT_INVERTED = 2-End--> |
+| DISPLAY_MANAGER_LANDSCAPE_INVERTED = 3 | The display is in reverse landscape mode.<br><!--Device-DISPLAY_MANAGER_LANDSCAPE_INVERTED = 3--><!--Device-DISPLAY_MANAGER_LANDSCAPE_INVERTED = 3-End--> |
+| DISPLAY_MANAGER_UNKNOWN | The screen orientation is unknown.<br><!--Device-DISPLAY_MANAGER_UNKNOWN--><!--Device-DISPLAY_MANAGER_UNKNOWN-End--> |
 
 ### NativeDisplayManager_ErrorCode
 
@@ -102,7 +102,7 @@ enum NativeDisplayManager_ErrorCode
 
 Enumerates the status codes returned by the display manager interface.
 
-<!--Device-NativeDisplayManager_ErrorCode--><!--Device-NativeDisplayManager_ErrorCode-End-->
+<!--Device-enum NativeDisplayManager_ErrorCode--><!--Device-enum NativeDisplayManager_ErrorCode-End-->
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -110,15 +110,15 @@ Enumerates the status codes returned by the display manager interface.
 
 | Enum item | Description |
 | -- | -- |
-| DISPLAY_MANAGER_OK = 0 | Success. |
-| DISPLAY_MANAGER_ERROR_NO_PERMISSION = 201 | Permission verification fails. The application does not have the permission to use the API. |
-| DISPLAY_MANAGER_ERROR_NOT_SYSTEM_APP = 202 | Permission verification fails. A non-system application attempts to call a system API. |
-| DISPLAY_MANAGER_ERROR_INVALID_PARAM = 401 | Parameter check fails. |
-| DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED = 801 | The device does not support the API. |
-| DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | The display is invalid. |
-| DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | The current operation object does not have the operation permission. |
-| DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | The system service is abnormal. |
-| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | Invalid parameter.<br>**Since**: 20 |
+| DISPLAY_MANAGER_OK = 0 | Success.<br><!--Device-DISPLAY_MANAGER_OK = 0--><!--Device-DISPLAY_MANAGER_OK = 0-End--> |
+| DISPLAY_MANAGER_ERROR_NO_PERMISSION = 201 | Permission verification fails. The application does not have the permission to use the API.<br><!--Device-DISPLAY_MANAGER_ERROR_NO_PERMISSION = 201--><!--Device-DISPLAY_MANAGER_ERROR_NO_PERMISSION = 201-End--> |
+| DISPLAY_MANAGER_ERROR_NOT_SYSTEM_APP = 202 | Permission verification fails. A non-system application attempts to call a system API.<br><!--Device-DISPLAY_MANAGER_ERROR_NOT_SYSTEM_APP = 202--><!--Device-DISPLAY_MANAGER_ERROR_NOT_SYSTEM_APP = 202-End--> |
+| DISPLAY_MANAGER_ERROR_INVALID_PARAM = 401 | Parameter check fails.<br><!--Device-DISPLAY_MANAGER_ERROR_INVALID_PARAM = 401--><!--Device-DISPLAY_MANAGER_ERROR_INVALID_PARAM = 401-End--> |
+| DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED = 801 | The device does not support the API.<br><!--Device-DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED = 801--><!--Device-DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED = 801-End--> |
+| DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | The display is invalid.<br><!--Device-DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001--><!--Device-DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001-End--> |
+| DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | The current operation object does not have the operation permission.<br><!--Device-DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002--><!--Device-DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002-End--> |
+| DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | The system service is abnormal.<br><!--Device-DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003--><!--Device-DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003-End--> |
+| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | Invalid parameter.<br>**Since**: 20<br><!--Device-DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004--><!--Device-DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004-End--> |
 
 ### NativeDisplayManager_FoldDisplayMode
 
@@ -130,7 +130,7 @@ enum NativeDisplayManager_FoldDisplayMode
 
 Enumerates the display modes of a foldable device.
 
-<!--Device-NativeDisplayManager_FoldDisplayMode--><!--Device-NativeDisplayManager_FoldDisplayMode-End-->
+<!--Device-enum NativeDisplayManager_FoldDisplayMode--><!--Device-enum NativeDisplayManager_FoldDisplayMode-End-->
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -138,11 +138,11 @@ Enumerates the display modes of a foldable device.
 
 | Enum item | Description |
 | -- | -- |
-| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_UNKNOWN = 0 | The display mode of the device is unknown. |
-| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_FULL = 1 | The device is displayed in full screen. |
-| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_MAIN = 2 | The main screen of the device is displayed. |
-| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_SUB = 3 | The subscreen of the device is displayed. |
-| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_COORDINATION = 4 | Both screens of the device are displayed in collaborative mode. |
+| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_UNKNOWN = 0 | The display mode of the device is unknown.<br><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_UNKNOWN = 0--><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_UNKNOWN = 0-End--> |
+| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_FULL = 1 | The device is displayed in full screen.<br><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_FULL = 1--><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_FULL = 1-End--> |
+| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_MAIN = 2 | The main screen of the device is displayed.<br><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_MAIN = 2--><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_MAIN = 2-End--> |
+| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_SUB = 3 | The subscreen of the device is displayed.<br><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_SUB = 3--><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_SUB = 3-End--> |
+| DISPLAY_MANAGER_FOLD_DISPLAY_MODE_COORDINATION = 4 | Both screens of the device are displayed in collaborative mode.<br><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_COORDINATION = 4--><!--Device-DISPLAY_MANAGER_FOLD_DISPLAY_MODE_COORDINATION = 4-End--> |
 
 ### NativeDisplayManager_DisplayState
 
@@ -154,7 +154,7 @@ enum NativeDisplayManager_DisplayState
 
 Enumerates the states of a display.
 
-<!--Device-NativeDisplayManager_DisplayState--><!--Device-NativeDisplayManager_DisplayState-End-->
+<!--Device-enum NativeDisplayManager_DisplayState--><!--Device-enum NativeDisplayManager_DisplayState-End-->
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -162,13 +162,13 @@ Enumerates the states of a display.
 
 | Enum item | Description |
 | -- | -- |
-| DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN = 0 | Unknown. |
-| DISPLAY_MANAGER_DISPLAY_STATE_OFF = 1 | The display is shut down. |
-| DISPLAY_MANAGER_DISPLAY_STATE_ON = 2 | The display is powered on. |
-| DISPLAY_MANAGER_DISPLAY_STATE_DOZE = 3 | The display is in sleep mode. |
-| DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND = 4 | The display is in sleep mode, and the CPU is suspended. |
-| DISPLAY_MANAGER_DISPLAY_STATE_VR = 5 | The display is in VR mode. |
-| DISPLAY_MANAGER_DISPLAY_STATE_ON_SUSPEND = 6 | The display is powered on, and the CPU is suspended. |
+| DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN = 0 | Unknown.<br><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN = 0--><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN = 0-End--> |
+| DISPLAY_MANAGER_DISPLAY_STATE_OFF = 1 | The display is shut down.<br><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_OFF = 1--><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_OFF = 1-End--> |
+| DISPLAY_MANAGER_DISPLAY_STATE_ON = 2 | The display is powered on.<br><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_ON = 2--><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_ON = 2-End--> |
+| DISPLAY_MANAGER_DISPLAY_STATE_DOZE = 3 | The display is in sleep mode.<br><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_DOZE = 3--><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_DOZE = 3-End--> |
+| DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND = 4 | The display is in sleep mode, and the CPU is suspended.<br><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND = 4--><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND = 4-End--> |
+| DISPLAY_MANAGER_DISPLAY_STATE_VR = 5 | The display is in VR mode.<br><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_VR = 5--><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_VR = 5-End--> |
+| DISPLAY_MANAGER_DISPLAY_STATE_ON_SUSPEND = 6 | The display is powered on, and the CPU is suspended.<br><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_ON_SUSPEND = 6--><!--Device-DISPLAY_MANAGER_DISPLAY_STATE_ON_SUSPEND = 6-End--> |
 
 ### NativeDisplayManager_SourceMode
 
@@ -180,7 +180,7 @@ enum NativeDisplayManager_SourceMode
 
 Enumerates the source modes of a device.
 
-<!--Device-NativeDisplayManager_SourceMode--><!--Device-NativeDisplayManager_SourceMode-End-->
+<!--Device-enum NativeDisplayManager_SourceMode--><!--Device-enum NativeDisplayManager_SourceMode-End-->
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -188,10 +188,10 @@ Enumerates the source modes of a device.
 
 | Enum item | Description |
 | -- | -- |
-| DISPLAY_SOURCE_MODE_NONE = 0 | The device is currently not in use. |
-| DISPLAY_SOURCE_MODE_MAIN = 1 | The primary screen of the device is currently in use. |
-| DISPLAY_SOURCE_MODE_MIRROR = 2 | The device is currently in mirror display mode. |
-| DISPLAY_SOURCE_MODE_EXTEND = 3 | The device is currently in extended display mode. |
-| DISPLAY_SOURCE_MODE_ALONE = 4 | The device is currently in independent display mode. |
+| DISPLAY_SOURCE_MODE_NONE = 0 | The device is currently not in use.<br><!--Device-DISPLAY_SOURCE_MODE_NONE = 0--><!--Device-DISPLAY_SOURCE_MODE_NONE = 0-End--> |
+| DISPLAY_SOURCE_MODE_MAIN = 1 | The primary screen of the device is currently in use.<br><!--Device-DISPLAY_SOURCE_MODE_MAIN = 1--><!--Device-DISPLAY_SOURCE_MODE_MAIN = 1-End--> |
+| DISPLAY_SOURCE_MODE_MIRROR = 2 | The device is currently in mirror display mode.<br><!--Device-DISPLAY_SOURCE_MODE_MIRROR = 2--><!--Device-DISPLAY_SOURCE_MODE_MIRROR = 2-End--> |
+| DISPLAY_SOURCE_MODE_EXTEND = 3 | The device is currently in extended display mode.<br><!--Device-DISPLAY_SOURCE_MODE_EXTEND = 3--><!--Device-DISPLAY_SOURCE_MODE_EXTEND = 3-End--> |
+| DISPLAY_SOURCE_MODE_ALONE = 4 | The device is currently in independent display mode.<br><!--Device-DISPLAY_SOURCE_MODE_ALONE = 4--><!--Device-DISPLAY_SOURCE_MODE_ALONE = 4-End--> |
 
 

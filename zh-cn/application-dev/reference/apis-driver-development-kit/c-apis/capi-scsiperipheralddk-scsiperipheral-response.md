@@ -24,14 +24,14 @@ SCSI响应参数结构体，包含状态、错误诊断数据、传输结果等�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t senseData[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN] | Sense Data，SCSI设备返回给主机的状态、错误及诊断信息。 |
-| [ScsiPeripheral_Status](capi-scsi-peripheral-types-h.md#scsiperipheral_status) status | 调用完成时的状态。可能的值包括：SCSIPERIPHERAL_STATUS_GOOD（正常状态）、SCSIPERIPHERAL_STATUS_BUSY（占用中）等。 |
-| uint8_t maskedStatus | 在SCSI通用驱动中，该字段用于存储经掩码处理后的SCSI状态。 |
-| uint8_t msgStatus | 消息状态，表示SCSI命令执行完成后的消息结果。 |
-| uint8_t sbLenWr | 实际写入到Sense Buffer（感知缓冲区）的有效字节数，用于确定senseData数组中有效数据的长度，若为0表示无Sense Data。 |
-| uint16_t hostStatus | 主机适配器状态。例如：成功（0x00）、无法连接（0x01）、总线忙（0x02）、超时（0x03）。 |
-| uint16_t driverStatus | 驱动状态。例如：成功（0x00）、设备或资源忙（0x01）。 |
-| int32_t resId | 实际传输的数据长度差值，即未传输的字节数。 |
-| uint32_t duration | 执行SCSI命令消耗的时间（单位：ms）。 |
+| uint8_t senseData[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN] | Sense Data，SCSI设备返回给主机的状态、错误及诊断信息。<br><!--Device-uint8_t senseData[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN]--><!--Device-uint8_t senseData[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN]-End--> |
+| [ScsiPeripheral_Status](capi-scsi-peripheral-types-h.md#scsiperipheral_status) status | 调用完成时的状态。可能的值包括：SCSIPERIPHERAL_STATUS_GOOD（正常状态）、SCSIPERIPHERAL_STATUS_BUSY（占用中）等。<br><!--Device-ScsiPeripheral_Status status--><!--Device-ScsiPeripheral_Status status-End--> |
+| uint8_t maskedStatus | 在SCSI通用驱动中，该字段用于存储经掩码处理后的SCSI状态。<br><!--Device-uint8_t maskedStatus--><!--Device-uint8_t maskedStatus-End--> |
+| uint8_t msgStatus | 消息状态，表示SCSI命令执行完成后的消息结果。<br><!--Device-uint8_t msgStatus--><!--Device-uint8_t msgStatus-End--> |
+| uint8_t sbLenWr | 实际写入到Sense Buffer（感知缓冲区）的有效字节数，用于确定senseData数组中有效数据的长度，若为0表示无Sense Data。<br><!--Device-uint8_t sbLenWr--><!--Device-uint8_t sbLenWr-End--> |
+| uint16_t hostStatus | 主机适配器状态。例如：成功（0x00）、无法连接（0x01）、总线忙（0x02）、超时（0x03）。<br><!--Device-uint16_t hostStatus--><!--Device-uint16_t hostStatus-End--> |
+| uint16_t driverStatus | 驱动状态。例如：成功（0x00）、设备或资源忙（0x01）。<br><!--Device-uint16_t driverStatus--><!--Device-uint16_t driverStatus-End--> |
+| int32_t resId | 实际传输的数据长度差值，即未传输的字节数。<br><!--Device-int32_t resId--><!--Device-int32_t resId-End--> |
+| uint32_t duration | 执行SCSI命令消耗的时间（单位：ms）。<br><!--Device-uint32_t duration--><!--Device-uint32_t duration-End--> |
 
 

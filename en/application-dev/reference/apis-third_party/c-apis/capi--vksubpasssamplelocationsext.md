@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t subpassIndex |  |
-| [VkSampleLocationsInfoEXT](capi--vksamplelocationsinfoext.md) sampleLocationsInfo |  |
+| uint32_t subpassIndex | <!--Device-uint32_t subpassIndex--><!--Device-uint32_t subpassIndex-End--> |
+| [VkSampleLocationsInfoEXT](capi--vksamplelocationsinfoext.md) sampleLocationsInfo | <!--Device-VkSampleLocationsInfoEXT sampleLocationsInfo--><!--Device-VkSampleLocationsInfoEXT sampleLocationsInfo-End--> |
 
 

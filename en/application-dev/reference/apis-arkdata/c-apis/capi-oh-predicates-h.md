@@ -47,7 +47,7 @@ enum OH_OrderType
 
 Result set sort type.
 
-<!--Device-OH_OrderType--><!--Device-OH_OrderType-End-->
+<!--Device-enum OH_OrderType--><!--Device-enum OH_OrderType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -55,8 +55,8 @@ Result set sort type.
 
 | Enum item | Description |
 | -- | -- |
-| ASC = 0 | Ascend order. |
-| DESC = 1 | Descend order. |
+| ASC = 0 | Ascend order.<br><!--Device-ASC = 0--><!--Device-ASC = 0-End--> |
+| DESC = 1 | Descend order.<br><!--Device-DESC = 1--><!--Device-DESC = 1-End--> |
 
 
 ## Function description

@@ -113,7 +113,7 @@ enum ArkUI_SwiperArrow
 
 Enumerates arrow styles of the navigation indicator of the **Swiper** component.
 
-<!--Device-ArkUI_SwiperArrow--><!--Device-ArkUI_SwiperArrow-End-->
+<!--Device-enum ArkUI_SwiperArrow--><!--Device-enum ArkUI_SwiperArrow-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,9 +121,9 @@ Enumerates arrow styles of the navigation indicator of the **Swiper** component.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SWIPER_ARROW_HIDE = 0 | The arrow is not displayed for the navigation point indicator.<br>**Since**: 12 |
-| ARKUI_SWIPER_ARROW_SHOW | The arrow is displayed for the navigation point indicator.<br>**Since**: 12 |
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | The arrow is displayed only when the mouse pointer hovers over the navigation point indicator.<br>**Since**: 12 |
+| ARKUI_SWIPER_ARROW_HIDE = 0 | The arrow is not displayed for the navigation point indicator.<br>**Since**: 12<br><!--Device-ARKUI_SWIPER_ARROW_HIDE = 0--><!--Device-ARKUI_SWIPER_ARROW_HIDE = 0-End--> |
+| ARKUI_SWIPER_ARROW_SHOW | The arrow is displayed for the navigation point indicator.<br>**Since**: 12<br><!--Device-ARKUI_SWIPER_ARROW_SHOW--><!--Device-ARKUI_SWIPER_ARROW_SHOW-End--> |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | The arrow is displayed only when the mouse pointer hovers over the navigation point indicator.<br>**Since**: 12<br><!--Device-ARKUI_SWIPER_ARROW_SHOW_ON_HOVER--><!--Device-ARKUI_SWIPER_ARROW_SHOW_ON_HOVER-End--> |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -135,7 +135,7 @@ enum ArkUI_SwiperNestedScrollMode
 
 Enumerates the nested scrolling modes of the **Swiper** component and its parent container.
 
-<!--Device-ArkUI_SwiperNestedScrollMode--><!--Device-ArkUI_SwiperNestedScrollMode-End-->
+<!--Device-enum ArkUI_SwiperNestedScrollMode--><!--Device-enum ArkUI_SwiperNestedScrollMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,8 +143,8 @@ Enumerates the nested scrolling modes of the **Swiper** component and its parent
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper only scrolls on its own and is not linked to its parent component.<br>**Since**: 12 |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | The Swiper itself scrolls first, and the parent component scrolls after it reaches the edge. After the parent component scrolls to the edge, if the parent component has an edge effect, the parent component triggers the edge effect; otherwise, the Swiper triggers the edge effect.<br>**Since**: 12 |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper only scrolls on its own and is not linked to its parent component.<br>**Since**: 12<br><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0--><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0-End--> |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | The Swiper itself scrolls first, and the parent component scrolls after it reaches the edge. After the parent component scrolls to the edge, if the parent component has an edge effect, the parent component triggers the edge effect; otherwise, the Swiper triggers the edge effect.<br>**Since**: 12<br><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST--><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST-End--> |
 
 ### ArkUI_PageFlipMode
 
@@ -156,7 +156,7 @@ enum ArkUI_PageFlipMode
 
 Enumerates the page flipping modes using the mouse wheel for the **Swiper** component.
 
-<!--Device-ArkUI_PageFlipMode--><!--Device-ArkUI_PageFlipMode-End-->
+<!--Device-enum ArkUI_PageFlipMode--><!--Device-enum ArkUI_PageFlipMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,8 +164,8 @@ Enumerates the page flipping modes using the mouse wheel for the **Swiper** comp
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | When the mouse wheel is scrolled continuously, multiple pages are flipped, which is determined by the number of times that mouse events are reported.<br>**Since**: 15 |
-| ARKUI_PAGE_FLIP_MODE_SINGLE | The system does not respond to other mouse wheel events until the page flipping animation ends.<br>**Since**: 15 |
+| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | When the mouse wheel is scrolled continuously, multiple pages are flipped, which is determined by the number of times that mouse events are reported.<br>**Since**: 15<br><!--Device-ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0--><!--Device-ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0-End--> |
+| ARKUI_PAGE_FLIP_MODE_SINGLE | The system does not respond to other mouse wheel events until the page flipping animation ends.<br>**Since**: 15<br><!--Device-ARKUI_PAGE_FLIP_MODE_SINGLE--><!--Device-ARKUI_PAGE_FLIP_MODE_SINGLE-End--> |
 
 ### ArkUI_SwiperAnimationMode
 
@@ -177,7 +177,7 @@ enum ArkUI_SwiperAnimationMode
 
 Enumerates the animation modes for the **Swiper** component when jumping to the page with the specified index.
 
-<!--Device-ArkUI_SwiperAnimationMode--><!--Device-ArkUI_SwiperAnimationMode-End-->
+<!--Device-enum ArkUI_SwiperAnimationMode--><!--Device-enum ArkUI_SwiperAnimationMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,9 +185,9 @@ Enumerates the animation modes for the **Swiper** component when jumping to the 
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SWIPER_NO_ANIMATION = 0 | Jump to target index without animation.<br>**Since**: 15 |
-| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | Scroll to target index with animation.<br>**Since**: 15 |
-| ARKUI_SWIPER_FAST_ANIMATION = 2 | Jump to some index near the target index without animation, then scroll to target index with animation.<br>**Since**: 15 |
+| ARKUI_SWIPER_NO_ANIMATION = 0 | Jump to target index without animation.<br>**Since**: 15<br><!--Device-ARKUI_SWIPER_NO_ANIMATION = 0--><!--Device-ARKUI_SWIPER_NO_ANIMATION = 0-End--> |
+| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | Scroll to target index with animation.<br>**Since**: 15<br><!--Device-ARKUI_SWIPER_DEFAULT_ANIMATION = 1--><!--Device-ARKUI_SWIPER_DEFAULT_ANIMATION = 1-End--> |
+| ARKUI_SWIPER_FAST_ANIMATION = 2 | Jump to some index near the target index without animation, then scroll to target index with animation.<br>**Since**: 15<br><!--Device-ARKUI_SWIPER_FAST_ANIMATION = 2--><!--Device-ARKUI_SWIPER_FAST_ANIMATION = 2-End--> |
 
 ### ArkUI_SwiperIndicatorType
 
@@ -199,7 +199,7 @@ enum ArkUI_SwiperIndicatorType
 
 Enumerates the navigation indicator types of the **Swiper** component.
 
-<!--Device-ArkUI_SwiperIndicatorType--><!--Device-ArkUI_SwiperIndicatorType-End-->
+<!--Device-enum ArkUI_SwiperIndicatorType--><!--Device-enum ArkUI_SwiperIndicatorType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,8 +207,8 @@ Enumerates the navigation indicator types of the **Swiper** component.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT | dot type.<br>**Since**: 12 |
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | digit type.<br>**Since**: 12 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT | dot type.<br>**Since**: 12<br><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DOT--><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DOT-End--> |
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | digit type.<br>**Since**: 12<br><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DIGIT--><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DIGIT-End--> |
 
 
 ## Function description

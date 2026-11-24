@@ -6,16 +6,7 @@ typedef struct OH_TrafficFilter_Config {...} OH_TrafficFilter_Config
 
 ## Overview
 
-NFQueue configuration structure
-- If `config` is **NULL**, the implementation applies the following default values:
-- `packetCopyLen` = 0xFFFF (copy entire packet)
-- `nfqueueMaxlen` = 0 (use system default, which is 1024)
-- `nfqueueFlags` = OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN
-- If `config` is **non-NULL**, the caller **must**:
-1. Zero-initialize the entire structure (e.g., `memset(&cfg, 0, sizeof(cfg))`).
-2. Set `size` = `sizeof(OH_TrafficFilter_Config)`.
-3. Set all other fields to valid values within the defined ranges (see below).
-- **Failure** to follow this contract (e.g., incorrect `size`, out-of-range field values) will cause the API to return `OH_TRAFFICFILTER_ERROR_INVALID_PARAM`.
+Defines the configuration struct of an NFQueue (a packet queuing channel in the Netfilter framework). Initialization rule: Before calling [OH_TrafficFilter_CreatePacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_createpacketcontroller), the caller must clear this struct to zero (for example, using **memset**), and then set [size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) to the actual size of the struct allocated by the caller, which is usually **sizeof(OH_TrafficFilter_Config)**. Binary compatibility rule (ABI, that is, application binary interface, which ensures that code compiled by old and new versions can recognize each other's struct layout): The system determines which fields can be safely read based on [size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md). If [size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) is smaller than the minimum size required by the current API, the API returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). If [size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) is larger than the size known to the system, the extra fields are ignored.
 
 <!--Device-struct OH_TrafficFilter_Config {...}--><!--Device-struct OH_TrafficFilter_Config {...}-End-->
 
@@ -33,10 +24,10 @@ NFQueue configuration structure
 
 | Name | Description |
 | -- | -- |
-| uint32_t size | Must be set to `sizeof(OH_TrafficFilter_Config)` by the caller. The caller is required to zero-initialize the structure first, then set this field. The implementation uses this value to determine the valid data range for binary compatibility.<br>**Since**: 26.0.1 |
-| uint32_t packetCopyMode | NFQueue packet copy mode, see OH_TrafficFilter_PacketCopyMode<br>**Since**: 26.0.1 |
-| uint32_t packetCopyLen | NFQueue packet copy length in bytes, 0xFFFF means entire packet, smaller values copy only header<br>**Since**: 26.0.1 |
-| uint32_t nfqueueMaxlen | NFQueue maximum queue length (number of packets), 0 means system default (1024)<br>**Since**: 26.0.1 |
-| uint32_t nfqueueFlags | NFQueue queue flags, see OH_TRAFFICFILTER_NFQUEUE_FLAG_* definitions<br>**Since**: 26.0.1 |
+| uint32_t size | Actual size of the struct allocated by the caller.<br>**Since**: 26.0.1<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| uint32_t packetCopyMode | Packet copy mode. For details, see [OH_TrafficFilter_PacketCopyMode](capi-net-trafficfilter-type-h.md#oh_trafficfilter_packetcopymode). The default value is **2**.<br>**Since**: 26.0.1<br><!--Device-uint32_t packetCopyMode--><!--Device-uint32_t packetCopyMode-End--> |
+| uint32_t packetCopyLen | Length (in bytes) of the packet copied by the NFQueue. The value ranges from 0 to 0xFFFF. 0xFFFF means copying the entire packet, and other values mean copying the packet header of the specified length. The default value is 0xFFFF.<br>**Since**: 26.0.1<br><!--Device-uint32_t packetCopyLen--><!--Device-uint32_t packetCopyLen-End--> |
+| uint32_t nfqueueMaxlen | Maximum queue length (number of packets) of the NFQueue. **0** means using the system default value (1024).<br>**Since**: 26.0.1<br><!--Device-uint32_t nfqueueMaxlen--><!--Device-uint32_t nfqueueMaxlen-End--> |
+| uint32_t nfqueueFlags | NFQueue queue flag. For details, see [OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN](capi-net-trafficfilter-type-h.md#macros). The default value is **0x1**.<br>**Since**: 26.0.1<br><!--Device-uint32_t nfqueueFlags--><!--Device-uint32_t nfqueueFlags-End--> |
 
 

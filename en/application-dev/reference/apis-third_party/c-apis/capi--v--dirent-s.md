@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int d_type |  |
-| char d_name[1] |  |
+| int d_type | <!--Device-int d_type--><!--Device-int d_type-End--> |
+| char d_name[1] | <!--Device-char d_name[1]--><!--Device-char d_name[1]-End--> |
 
 

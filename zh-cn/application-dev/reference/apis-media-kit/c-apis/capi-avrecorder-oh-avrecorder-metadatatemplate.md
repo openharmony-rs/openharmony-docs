@@ -24,7 +24,7 @@ typedef struct OH_AVRecorder_MetadataTemplate {...} OH_AVRecorder_MetadataTempla
 
 | 名称 | 描述 |
 | -- | -- |
-| char *key | 元数据的键。<br>**起始版本：** 18 |
-| char *value | 元数据的值。<br>**起始版本：** 18 |
+| char *key | 元数据的键。<br>**起始版本：** 18<br><!--Device-char *key--><!--Device-char *key-End--> |
+| char *value | 元数据的值。<br>**起始版本：** 18<br><!--Device-char *value--><!--Device-char *value-End--> |
 
 

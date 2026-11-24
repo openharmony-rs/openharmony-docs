@@ -24,8 +24,8 @@ typedef struct ArkUI_AccessibleGridInfo {...} ArkUI_AccessibleGridInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t rowCount | 行数。 |
-| int32_t columnCount | 列数。 |
-| int32_t selectionMode | 值为0时表示仅选中网格的一行，非0值时表示选中网格的多行。 |
+| int32_t rowCount | 行数。<br><!--Device-int32_t rowCount--><!--Device-int32_t rowCount-End--> |
+| int32_t columnCount | 列数。<br><!--Device-int32_t columnCount--><!--Device-int32_t columnCount-End--> |
+| int32_t selectionMode | 值为0时表示仅选中网格的一行，非0值时表示选中网格的多行。<br><!--Device-int32_t selectionMode--><!--Device-int32_t selectionMode-End--> |
 
 

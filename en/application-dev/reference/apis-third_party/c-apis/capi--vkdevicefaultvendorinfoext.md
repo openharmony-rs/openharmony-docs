@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| char description[VK_MAX_DESCRIPTION_SIZE] |  |
-| uint64_t vendorFaultCode |  |
-| uint64_t vendorFaultData |  |
+| char description[VK_MAX_DESCRIPTION_SIZE] | <!--Device-char description[VK_MAX_DESCRIPTION_SIZE]--><!--Device-char description[VK_MAX_DESCRIPTION_SIZE]-End--> |
+| uint64_t vendorFaultCode | <!--Device-uint64_t vendorFaultCode--><!--Device-uint64_t vendorFaultCode-End--> |
+| uint64_t vendorFaultData | <!--Device-uint64_t vendorFaultData--><!--Device-uint64_t vendorFaultData-End--> |
 
 

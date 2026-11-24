@@ -24,8 +24,8 @@ Defines a request pipe, which is actually a USB data transfer request. It descri
 
 | Name | Description |
 | -- | -- |
-| uint64_t interfaceHandle | Interface handle, which identifies an interface on the USB device. The handle is obtained by calling [OH_Usb_ClaimInterface](capi-usb-ddk-api-h.md#oh_usb_claiminterface). |
-| uint32_t timeout | Timeout interval, in milliseconds. The value **0** indicates that the operation is performed until it is complete. A non-zero value indicates that the operation times out if it is not complete within the specified milliseconds. |
-| uint8_t endpoint | Endpoint address. |
+| uint64_t interfaceHandle | Interface handle, which identifies an interface on the USB device. The handle is obtained by calling [OH_Usb_ClaimInterface](capi-usb-ddk-api-h.md#oh_usb_claiminterface).<br><!--Device-uint64_t interfaceHandle--><!--Device-uint64_t interfaceHandle-End--> |
+| uint32_t timeout | Timeout interval, in milliseconds. The value **0** indicates that the operation is performed until it is complete. A non-zero value indicates that the operation times out if it is not complete within the specified milliseconds.<br><!--Device-uint32_t timeout--><!--Device-uint32_t timeout-End--> |
+| uint8_t endpoint | Endpoint address.<br><!--Device-uint8_t endpoint--><!--Device-uint8_t endpoint-End--> |
 
 

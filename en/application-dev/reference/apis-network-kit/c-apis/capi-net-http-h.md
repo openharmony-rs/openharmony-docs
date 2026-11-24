@@ -18,15 +18,15 @@ Defines the APIs of the HTTP request module.
 
 | Name | Description |
 | -- | -- |
-| [Http_Headers *OH_Http_CreateHeaders(void)](#oh_http_createheaders) | Creates headers for a request or response. |
-| [void OH_Http_DestroyHeaders(Http_Headers **headers)](#oh_http_destroyheaders) | Destroys the headers of a request or response. |
-| [uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)](#oh_http_setheadervalue) | Sets the key-value pair of the request or response header. |
-| [Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)](#oh_http_getheadervalue) | Obtains the value of a request or response header by key. |
-| [Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)](#oh_http_getheaderentries) | Obtains all the key-value pairs of a request or response header. |
-| [void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)](#oh_http_destroyheaderentries) | Destroys all key-value pairs obtained in [OH_Http_GetHeaderEntries](capi-net-http-h.md#oh_http_getheaderentries). |
-| [Http_Request *OH_Http_CreateRequest(const char *url)](#oh_http_createrequest) | Create a http request. |
-| [int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)](#oh_http_request) | Initiates an HTTP request. |
-| [void OH_Http_Destroy(struct Http_Request **request)](#oh_http_destroy) | Destroy the HTTP request. |
+| [Http_Headers *OH_Http_CreateHeaders(void)](#oh_http_createheaders) | Creates an HTTP request or response header.<br> > **NOTE**<br>> > You are advised to call [OH_Http_DestroyHeaders](capi-net-http-h.md#oh_http_destroyheaders) to destroy the HTTP request or response header and clear > resources after the HTTP request is complete. |
+| [void OH_Http_DestroyHeaders(Http_Headers **headers)](#oh_http_destroyheaders) | Destroys an HTTP request or response header. |
+| [uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)](#oh_http_setheadervalue) | Sets the key-value pairs of an HTTP request or response header. |
+| [Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)](#oh_http_getheadervalue) | Obtains the value of an HTTP request or response header based on the specified key. |
+| [Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)](#oh_http_getheaderentries) | Obtains all key-value pairs from an HTTP request or response header. |
+| [void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)](#oh_http_destroyheaderentries) | Destroys all key-value pairs obtained from **OH_Http_GetHeaderEntries**. |
+| [Http_Request *OH_Http_CreateRequest(const char *url)](#oh_http_createrequest) | Creates an HTTP request. |
+| [int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)](#oh_http_request) | Initiates an HTTP request.<br> > **NOTE**<br>> > You are advised to call [OH_Http_Destroy](capi-net-http-h.md#oh_http_destroy) to interrupt the HTTP request after the HTTP request receives a > response and the response is processed. |
+| [void OH_Http_Destroy(struct Http_Request **request)](#oh_http_destroy) | Stops the HTTP request. |
 
 ## Function description
 
@@ -38,7 +38,11 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 **Description**
 
-Creates headers for a request or response.
+Creates an HTTP request or response header.<br>
+> **NOTE**
+>
+> You are advised to call [OH_Http_DestroyHeaders](capi-net-http-h.md#oh_http_destroyheaders) to destroy the HTTP request or response header and clear
+> resources after the HTTP request is complete.
 
 <!--Device-Http_Headers *OH_Http_CreateHeaders(void)--><!--Device-Http_Headers *OH_Http_CreateHeaders(void)-End-->
 
@@ -50,7 +54,7 @@ Creates headers for a request or response.
 
 | Type | Description |
 | -- | -- |
-| [Http_Headers *](capi-netstack-http-headers.md) | Http_Headers* Pointer to [Http_Headers](capi-netstack-http-headers.md). |
+| [Http_Headers *](capi-netstack-http-headers.md) | Pointer to the HTTP request or response header. |
 
 ### OH_Http_DestroyHeaders()
 
@@ -60,7 +64,7 @@ void OH_Http_DestroyHeaders(Http_Headers **headers)
 
 **Description**
 
-Destroys the headers of a request or response.
+Destroys an HTTP request or response header.
 
 <!--Device-void OH_Http_DestroyHeaders(Http_Headers **headers)--><!--Device-void OH_Http_DestroyHeaders(Http_Headers **headers)-End-->
 
@@ -72,7 +76,7 @@ Destroys the headers of a request or response.
 
 | Parameter | Description |
 | -- | -- |
-| [Http_Headers](capi-netstack-http-headers.md) **headers | Pointer to the [Http_Headers](capi-netstack-http-headers.md) to be destroyed, headers ends with null. |
+| [Http_Headers](capi-netstack-http-headers.md) **headers | HTTP request or response header to be destroyed. The header is generated using **OH_Http_CreateHeaders**. |
 
 ### OH_Http_SetHeaderValue()
 
@@ -82,7 +86,7 @@ uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, 
 
 **Description**
 
-Sets the key-value pair of the request or response header.
+Sets the key-value pairs of an HTTP request or response header.
 
 <!--Device-uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)--><!--Device-uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)-End-->
 
@@ -94,15 +98,15 @@ Sets the key-value pair of the request or response header.
 
 | Parameter | Description |
 | -- | -- |
-| [struct Http_Headers](capi-netstack-http-headers.md) *headers | Pointer to the [Http_Headers](capi-netstack-http-headers.md) to be set. |
-| const char *name | Key. |
-| const char *value | Value. |
+| [struct Http_Headers](capi-netstack-http-headers.md) *headers | Pointer to **Http_Headers**. |
+| const char *name | Key name. |
+| const char *value | Key value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint32_t | uint32_t 0 - success. 401 - Parameter error. 2300027 - Out of memory. |
+| uint32_t | A status code of the uint32_t type. <ul><li>**0**: Success.</li> <li>**401**: Invalid parameter.</li> <li>**2300027**: Insufficient memory.</li></ul> |
 
 ### OH_Http_GetHeaderValue()
 
@@ -112,7 +116,7 @@ Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name
 
 **Description**
 
-Obtains the value of a request or response header by key.
+Obtains the value of an HTTP request or response header based on the specified key.
 
 <!--Device-Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)--><!--Device-Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)-End-->
 
@@ -125,13 +129,13 @@ Obtains the value of a request or response header by key.
 | Parameter | Description |
 | -- | -- |
 | [Http_Headers](capi-netstack-http-headers.md) *headers | Pointer to [Http_Headers](capi-netstack-http-headers.md). |
-| const char *name | Key. |
+| const char *name | Key name. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [Http_HeaderValue *](capi-netstack-http-headervalue.md) | Http_HeaderValue* Pointer to the obtained [Http_HeaderValue](capi-netstack-http-headervalue.md). |
+| [Http_HeaderValue *](capi-netstack-http-headervalue.md) | Pointer to **Http_HeaderValue**. |
 
 ### OH_Http_GetHeaderEntries()
 
@@ -141,7 +145,7 @@ Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 
 **Description**
 
-Obtains all the key-value pairs of a request or response header.
+Obtains all key-value pairs from an HTTP request or response header.
 
 <!--Device-Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)--><!--Device-Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)-End-->
 
@@ -153,13 +157,13 @@ Obtains all the key-value pairs of a request or response header.
 
 | Parameter | Description |
 | -- | -- |
-| [Http_Headers](capi-netstack-http-headers.md) *headers | Pointer to Http_Headersaders. |
+| [Http_Headers](capi-netstack-http-headers.md) *headers | Pointer to [Http_Headers](capi-netstack-http-headers.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [Http_HeaderEntry *](capi-netstack-http-headerentry.md) | Http_HeaderEntry* Pointers to all obtained key-value pairs [Http_HeaderEntry](capi-netstack-http-headerentry.md). |
+| [Http_HeaderEntry *](capi-netstack-http-headerentry.md) | Pointer to **Http_HeaderEntry**. |
 
 ### OH_Http_DestroyHeaderEntries()
 
@@ -169,7 +173,7 @@ void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 
 **Description**
 
-Destroys all key-value pairs obtained in [OH_Http_GetHeaderEntries](capi-net-http-h.md#oh_http_getheaderentries).
+Destroys all key-value pairs obtained from **OH_Http_GetHeaderEntries**.
 
 <!--Device-void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)--><!--Device-void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)-End-->
 
@@ -181,7 +185,7 @@ Destroys all key-value pairs obtained in [OH_Http_GetHeaderEntries](capi-net-htt
 
 | Parameter | Description |
 | -- | -- |
-| [Http_HeaderEntry](capi-netstack-http-headerentry.md) **headerEntry | Pointer to the [Http_HeaderEntry](capi-netstack-http-headerentry.md) to be destroyed, headerEntry ends with null. |
+| [Http_HeaderEntry](capi-netstack-http-headerentry.md) **headerEntry | Pointer to **Http_HeaderEntry**, which is obtained through **OH_Http_GetHeaderEntries**. |
 
 ### OH_Http_CreateRequest()
 
@@ -191,7 +195,7 @@ Http_Request *OH_Http_CreateRequest(const char *url)
 
 **Description**
 
-Create a http request.
+Creates an HTTP request.
 
 <!--Device-Http_Request *OH_Http_CreateRequest(const char *url)--><!--Device-Http_Request *OH_Http_CreateRequest(const char *url)-End-->
 
@@ -203,13 +207,13 @@ Create a http request.
 
 | Parameter | Description |
 | -- | -- |
-| const char *url | Http request url. |
+| const char *url | Request URL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [Http_Request *](capi-netstack-http-request.md) | Pointer of HttpRequest if success; Null otherwise. |
+| [Http_Request *](capi-netstack-http-request.md) | Pointer to **Http_Request**. |
 
 ### OH_Http_Request()
 
@@ -219,7 +223,11 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 **Description**
 
-Initiates an HTTP request.
+Initiates an HTTP request.<br>
+> **NOTE**
+>
+> You are advised to call [OH_Http_Destroy](capi-net-http-h.md#oh_http_destroy) to interrupt the HTTP request after the HTTP request receives a
+> response and the response is processed.
 
 <!--Device-int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)--><!--Device-int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)-End-->
 
@@ -234,14 +242,14 @@ Initiates an HTTP request.
 | Parameter | Description |
 | -- | -- |
 | [Http_Request](capi-netstack-http-request.md) *request | Pointer to [Http_Request](capi-netstack-http-request.md). |
-| [Http_ResponseCallback](capi-net-http-type-h.md#http_responsecallback) callback | Http response info, pointer to [Http_ResponseCallback](capi-net-http-type-h.md#http_responsecallback) |
-| [Http_EventsHandler](capi-netstack-http-eventshandler.md) handler | Callbacks to watch different events, pointer to [Http_EventsHandler](capi-netstack-http-eventshandler.md). |
+| [Http_ResponseCallback](capi-net-http-type-h.md#http_responsecallback) callback | HTTP response callback. |
+| [Http_EventsHandler](capi-netstack-http-eventshandler.md) handler | HTTP event handler. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | 0 if success; non-0 otherwise. For details about error codes, see [Http_ErrCode](capi-net-http-type-h.md#http_errcode). |
+| int | **0** if the operation is successful; an error code otherwise. For details about the error code description, see **Http_ErrCode**.<br>**Http_ResponseCallback** also carries **errCode**, indicating that the operation is successful but server communication is abnormal due to some reasons. For details, see **Http_ErrCode**. |
 
 ### OH_Http_Destroy()
 
@@ -251,7 +259,7 @@ void OH_Http_Destroy(struct Http_Request **request)
 
 **Description**
 
-Destroy the HTTP request.
+Stops the HTTP request.
 
 <!--Device-void OH_Http_Destroy(struct Http_Request **request)--><!--Device-void OH_Http_Destroy(struct Http_Request **request)-End-->
 
@@ -263,6 +271,6 @@ Destroy the HTTP request.
 
 | Parameter | Description |
 | -- | -- |
-| [struct Http_Request](capi-netstack-http-request.md) **request | Pointer to the http request [Http_Request](capi-netstack-http-request.md). |
+| [struct Http_Request](capi-netstack-http-request.md) **request | Pointer to the request to be interrupted, which is a pointer to **Http_Request**. For details, see [Http_Request](capi-netstack-http-request.md). |
 
 

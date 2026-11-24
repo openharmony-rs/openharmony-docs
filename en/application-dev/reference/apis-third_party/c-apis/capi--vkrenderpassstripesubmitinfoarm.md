@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t stripeSemaphoreInfoCount |  |
-| [const VkSemaphoreSubmitInfo*](capi--vksemaphoresubmitinfo.md) pStripeSemaphoreInfos |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t stripeSemaphoreInfoCount | <!--Device-uint32_t stripeSemaphoreInfoCount--><!--Device-uint32_t stripeSemaphoreInfoCount-End--> |
+| [const VkSemaphoreSubmitInfo*](capi--vksemaphoresubmitinfo.md) pStripeSemaphoreInfos | <!--Device-const VkSemaphoreSubmitInfo* pStripeSemaphoreInfos--><!--Device-const VkSemaphoreSubmitInfo* pStripeSemaphoreInfos-End--> |
 
 

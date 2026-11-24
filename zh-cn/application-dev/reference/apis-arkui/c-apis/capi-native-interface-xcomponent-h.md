@@ -94,8 +94,8 @@
 | [int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range)](#oh_nativexcomponent_setexpectedframeraterange) | 设置期望帧率范围。 本接口适用于通过OH_NativeXComponent指针操作的场景。若使用NativeNode（ArkUI_NodeHandle）创建的XComponent， 请使用OH_ArkUI_XComponent_SetExpectedFrameRateRange接口。 |
 | [int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp))](#oh_nativexcomponent_registeronframecallback) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册显示更新回调，并使能每帧回调此函数。 |
 | [int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component)](#oh_nativexcomponent_unregisteronframecallback) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例取消注册回调函数，并关闭每帧回调此函数。 |
-| [int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_attachnativerootnode) | 将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。 > <b>说明：</b> > > 挂载的组件在不再需要时，必须调用OH_NativeXComponent_DetachNativeRootNode进行卸载，避免内存泄漏。(API20废弃) |
-| [int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_detachnativerootnode) | 将ArkUI的Native组件从当前XComponent上卸载。(API20废弃) |
+| [int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_attachnativerootnode) | 将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。 > <b>说明：</b> > > 挂载的组件在不再需要时，必须调用OH_NativeXComponent_DetachNativeRootNode进行卸载，避免内存泄漏。(已废弃) |
+| [int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_detachnativerootnode) | 将ArkUI的Native组件从当前XComponent上卸载。(已废弃) |
 | [int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent *component, void (\*callback)(OH_NativeXComponent *component, ArkUI_UIInputEvent *event, ArkUI_UIInputEvent_Type type), ArkUI_UIInputEvent_Type type)](#oh_nativexcomponent_registeruiinputeventcallback) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册UI输入事件回调，并使能收到UI输入事件时回调此函数。 当前仅支持轴事件。 |
 | [int32_t OH_NativeXComponent_RegisterOnTouchInterceptCallback(OH_NativeXComponent* component, HitTestMode (\*callback)(OH_NativeXComponent* component, ArkUI_UIInputEvent* event))](#oh_nativexcomponent_registerontouchinterceptcallback) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册自定义事件拦截回调，并使能在做触摸测试时回调此函数。 通过该回调获取到的事件对象不支持UIInput相关信息操作接口，建议切换为通过注册native node上的NODE_ON_TOUCH_INTERCEPT通用事件来支持。 |
 | [int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, bool needSoftKeyboard)](#oh_nativexcomponent_setneedsoftkeyboard) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例设置是否需要软键盘。 |
@@ -135,13 +135,14 @@
 | [void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)](#oh_arkui_xcomponentsurfaceconfig_dispose) | 销毁[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。 |
 | [void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)](#oh_arkui_xcomponentsurfaceconfig_setisopaque) | 设置XComponent组件持有的Surface在渲染时是否被视为不透明，无论该Surface是否存在半透明像素。 |
 | [int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder *surfaceHolder, ArkUI_XComponentSurfaceConfig *config)](#oh_arkui_surfaceholder_setsurfaceconfig) | 为[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例设置Surface选项。 |
+| [int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)](#oh_arkui_xcomponent_enablesurfacevisibilitylifecycle) | 为XComponent启用表面可见性生命周期。 仅支持UI线程调用。 |
 
 ### 变量
 
 | 名称 | 描述 |
 | -- | -- |
-| const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | ArkUI XComponent的id最大长度。<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | 触摸事件中的可识别的触摸点个数最大值。<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | ArkUI XComponent的id最大长度。<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128--><!--Device-const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128-End--> |
+| const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | 触摸事件中的可识别的触摸点个数最大值。<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10--><!--Device-const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10-End--> |
 
 ## 枚举类型说明
 
@@ -155,7 +156,7 @@ enum anonymous0
 
 枚举API执行结果状态。
 
-<!--Device-anonymous0--><!--Device-anonymous0-End-->
+<!--Device-enum anonymous0--><!--Device-enum anonymous0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,9 +164,9 @@ enum anonymous0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0 | 成功结果。 |
-| OH_NATIVEXCOMPONENT_RESULT_FAILED = -1 | 失败结果。表示接口执行失败，可能由以下原因导致：1. XComponent组件尚未完成初始化；2. Surface已被销毁或释放；3. 系统内部错误。请检查XComponent初始化状态和Surface生命周期后重试。 |
-| OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2 | 无效参数。表示传入的参数为空指针或不符合接口要求，请检查传入参数是否合法。 |
+| OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0 | 成功结果。<br><!--Device-OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0--><!--Device-OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0-End--> |
+| OH_NATIVEXCOMPONENT_RESULT_FAILED = -1 | 失败结果。表示接口执行失败，可能由以下原因导致：1. XComponent组件尚未完成初始化；2. Surface已被销毁或释放；3. 系统内部错误。请检查XComponent初始化状态和Surface生命周期后重试。<br><!--Device-OH_NATIVEXCOMPONENT_RESULT_FAILED = -1--><!--Device-OH_NATIVEXCOMPONENT_RESULT_FAILED = -1-End--> |
+| OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2 | 无效参数。表示传入的参数为空指针或不符合接口要求，请检查传入参数是否合法。<br><!--Device-OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2--><!--Device-OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2-End--> |
 
 ### ArkUI_XComponent_ImageAnalyzerState
 
@@ -177,7 +178,7 @@ enum ArkUI_XComponent_ImageAnalyzerState
 
 XComponent图像AI分析状态码。
 
-<!--Device-ArkUI_XComponent_ImageAnalyzerState--><!--Device-ArkUI_XComponent_ImageAnalyzerState-End-->
+<!--Device-enum ArkUI_XComponent_ImageAnalyzerState--><!--Device-enum ArkUI_XComponent_ImageAnalyzerState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,11 +186,11 @@ XComponent图像AI分析状态码。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0 | 图像AI分析完成。 |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000 | 图像AI分析已禁用。 |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001 | 设备不支持图像AI分析。 |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002 | 图像AI分析进行中。 |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003 | 图像AI分析停止。 |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0 | 图像AI分析完成。<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000 | 图像AI分析已禁用。<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001 | 设备不支持图像AI分析。<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002 | 图像AI分析进行中。<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003 | 图像AI分析停止。<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003-End--> |
 
 ### OH_NativeXComponent_TouchEventType
 
@@ -201,7 +202,7 @@ enum OH_NativeXComponent_TouchEventType
 
 触摸事件类型。
 
-<!--Device-OH_NativeXComponent_TouchEventType--><!--Device-OH_NativeXComponent_TouchEventType-End-->
+<!--Device-enum OH_NativeXComponent_TouchEventType--><!--Device-enum OH_NativeXComponent_TouchEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,11 +210,11 @@ enum OH_NativeXComponent_TouchEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_DOWN = 0 | 手指按下时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_UP | 手指抬起时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_MOVE | 手指按下状态下在屏幕上移动时触发触摸事件。 |
-| OH_NATIVEXCOMPONENT_CANCEL | 触摸事件取消时触发事件。 |
-| OH_NATIVEXCOMPONENT_UNKNOWN | 无效的触摸类型。 |
+| OH_NATIVEXCOMPONENT_DOWN = 0 | 手指按下时触发触摸事件。<br><!--Device-OH_NATIVEXCOMPONENT_DOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_DOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_UP | 手指抬起时触发触摸事件。<br><!--Device-OH_NATIVEXCOMPONENT_UP--><!--Device-OH_NATIVEXCOMPONENT_UP-End--> |
+| OH_NATIVEXCOMPONENT_MOVE | 手指按下状态下在屏幕上移动时触发触摸事件。<br><!--Device-OH_NATIVEXCOMPONENT_MOVE--><!--Device-OH_NATIVEXCOMPONENT_MOVE-End--> |
+| OH_NATIVEXCOMPONENT_CANCEL | 触摸事件取消时触发事件。<br><!--Device-OH_NATIVEXCOMPONENT_CANCEL--><!--Device-OH_NATIVEXCOMPONENT_CANCEL-End--> |
+| OH_NATIVEXCOMPONENT_UNKNOWN | 无效的触摸类型。<br><!--Device-OH_NATIVEXCOMPONENT_UNKNOWN--><!--Device-OH_NATIVEXCOMPONENT_UNKNOWN-End--> |
 
 ### OH_NativeXComponent_TouchPointToolType
 
@@ -225,7 +226,7 @@ enum OH_NativeXComponent_TouchPointToolType
 
 触摸点工具类型。
 
-<!--Device-OH_NativeXComponent_TouchPointToolType--><!--Device-OH_NativeXComponent_TouchPointToolType-End-->
+<!--Device-enum OH_NativeXComponent_TouchPointToolType--><!--Device-enum OH_NativeXComponent_TouchPointToolType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,15 +234,15 @@ enum OH_NativeXComponent_TouchPointToolType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0 | 未识别工具类型。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER | 表示用手指。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN | 表示用触笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER | 表示用橡皮。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH | 表示用笔刷。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL | 表示用铅笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH | 表示用喷枪。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE | 表示用鼠标。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS | 表示用透镜。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0 | 未识别工具类型。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER | 表示用手指。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN | 表示用触笔。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER | 表示用橡皮。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH | 表示用笔刷。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL | 表示用铅笔。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH | 表示用喷枪。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE | 表示用鼠标。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS | 表示用透镜。<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS-End--> |
 
 ### OH_NativeXComponent_EventSourceType
 
@@ -253,7 +254,7 @@ enum OH_NativeXComponent_EventSourceType
 
 事件源类型。
 
-<!--Device-OH_NativeXComponent_EventSourceType--><!--Device-OH_NativeXComponent_EventSourceType-End-->
+<!--Device-enum OH_NativeXComponent_EventSourceType--><!--Device-enum OH_NativeXComponent_EventSourceType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -261,12 +262,12 @@ enum OH_NativeXComponent_EventSourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | 未知的输入源类型。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE | 表示输入源生成鼠标事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN | 表示输入源生成一个触摸屏多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD | 表示输入源生成一个触摸板多点触摸事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK | 表示输入源生成一个操纵杆事件。 |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD | 表示输入源生成一个键盘事件。<br>**起始版本：** 10 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | 未知的输入源类型。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE | 表示输入源生成鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN | 表示输入源生成一个触摸屏多点触摸事件。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD | 表示输入源生成一个触摸板多点触摸事件。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK | 表示输入源生成一个操纵杆事件。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD | 表示输入源生成一个键盘事件。<br>**起始版本：** 10<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD-End--> |
 
 ### OH_NativeXComponent_MouseEventAction
 
@@ -278,7 +279,7 @@ enum OH_NativeXComponent_MouseEventAction
 
 鼠标事件动作。
 
-<!--Device-OH_NativeXComponent_MouseEventAction--><!--Device-OH_NativeXComponent_MouseEventAction-End-->
+<!--Device-enum OH_NativeXComponent_MouseEventAction--><!--Device-enum OH_NativeXComponent_MouseEventAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,11 +287,11 @@ enum OH_NativeXComponent_MouseEventAction
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 | 无效鼠标事件。 |
-| OH_NATIVEXCOMPONENT_MOUSE_PRESS | 鼠标按键按下时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_MOUSE_RELEASE | 鼠标按键松开时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_MOUSE_MOVE | 鼠标在屏幕上移动时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | 鼠标操作被取消时触发鼠标事件。 <b>起始版本：</b> 18 <b>说明：</b> OH_NATIVEXCOMPONENT_MOUSE_CANCEL表示鼠标事件被取消，通常在以下场景被触发： 1.组件失去焦点：当前持有焦点的XComponent因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。 2.事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。 3.异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br>**起始版本：** 18 |
+| OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 | 无效鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_MOUSE_NONE = 0--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_NONE = 0-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_PRESS | 鼠标按键按下时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_MOUSE_PRESS--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_PRESS-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_RELEASE | 鼠标按键松开时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_MOUSE_RELEASE--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_RELEASE-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_MOVE | 鼠标在屏幕上移动时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_MOUSE_MOVE--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_MOVE-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | 鼠标操作被取消时触发鼠标事件。 <b>起始版本：</b> 18 <b>说明：</b> OH_NATIVEXCOMPONENT_MOUSE_CANCEL表示鼠标事件被取消，通常在以下场景被触发： 1.组件失去焦点：当前持有焦点的XComponent因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。 2.事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。 3.异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br>**起始版本：** 18<br><!--Device-OH_NATIVEXCOMPONENT_MOUSE_CANCEL--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_CANCEL-End--> |
 
 ### OH_NativeXComponent_MouseEventButton
 
@@ -302,7 +303,7 @@ enum OH_NativeXComponent_MouseEventButton
 
 鼠标事件按键。
 
-<!--Device-OH_NativeXComponent_MouseEventButton--><!--Device-OH_NativeXComponent_MouseEventButton-End-->
+<!--Device-enum OH_NativeXComponent_MouseEventButton--><!--Device-enum OH_NativeXComponent_MouseEventButton-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,12 +311,12 @@ enum OH_NativeXComponent_MouseEventButton
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_NONE_BUTTON = 0 | 鼠标无按键操作时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01 | 按下鼠标左键时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02 | 按下鼠标右键时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04 | 按下鼠标中键时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08 | 按下鼠标左侧后退键时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10 | 按下鼠标左侧前进键时触发鼠标事件。 |
+| OH_NATIVEXCOMPONENT_NONE_BUTTON = 0 | 鼠标无按键操作时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_NONE_BUTTON = 0--><!--Device-OH_NATIVEXCOMPONENT_NONE_BUTTON = 0-End--> |
+| OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01 | 按下鼠标左键时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01--><!--Device-OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01-End--> |
+| OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02 | 按下鼠标右键时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02--><!--Device-OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02-End--> |
+| OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04 | 按下鼠标中键时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04--><!--Device-OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04-End--> |
+| OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08 | 按下鼠标左侧后退键时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08--><!--Device-OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08-End--> |
+| OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10 | 按下鼠标左侧前进键时触发鼠标事件。<br><!--Device-OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10--><!--Device-OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10-End--> |
 
 ### OH_NativeXComponent_TouchEvent_SourceTool
 
@@ -327,7 +328,7 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 
 表示触摸事件的源工具类型。
 
-<!--Device-OH_NativeXComponent_TouchEvent_SourceTool--><!--Device-OH_NativeXComponent_TouchEvent_SourceTool-End-->
+<!--Device-enum OH_NativeXComponent_TouchEvent_SourceTool--><!--Device-enum OH_NativeXComponent_TouchEvent_SourceTool-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -335,16 +336,16 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0 | 未知的触摸事件的源工具。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1 | 表示触摸事件的源工具是手指。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 | 表示触摸事件的源工具是触笔。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 | 表示触摸事件的源工具是橡皮擦。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4 | 表示触摸事件的源工具是笔刷。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5 | 表示触摸事件的源工具是铅笔。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6 | 表示触摸事件的源工具是喷枪。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7 | 表示触摸事件的源工具是鼠标。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8 | 表示触摸事件的源工具是透镜。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9 | 表示触摸事件的源工具是触摸板。 |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0 | 未知的触摸事件的源工具。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1 | 表示触摸事件的源工具是手指。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 | 表示触摸事件的源工具是触笔。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 | 表示触摸事件的源工具是橡皮擦。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4 | 表示触摸事件的源工具是笔刷。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5 | 表示触摸事件的源工具是铅笔。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6 | 表示触摸事件的源工具是喷枪。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7 | 表示触摸事件的源工具是鼠标。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8 | 表示触摸事件的源工具是透镜。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9 | 表示触摸事件的源工具是触摸板。<br><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9-End--> |
 
 
 ## 函数说明
@@ -2440,6 +2441,35 @@ int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder *surfaceH
 | -- | -- |
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) *surfaceHolder | 表示指向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例的指针。 |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) *config | 表示指向[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)实例的指针。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回执行结果。返回 ARKUI_ERROR_CODE_NO_ERROR - 执行成功。返回 ARKUI_ERROR_CODE_PARAM_INVALID - 传入参数异常。 |
+
+### OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle()
+
+```c
+int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)
+```
+
+**描述：**
+
+为XComponent启用表面可见性生命周期。 仅支持UI线程调用。
+
+<!--Device-int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)--><!--Device-int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) *component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
+| bool isVisibilityLifecycle | 表示是否启用surface可见性生命周期。 |
 
 **返回值：**
 

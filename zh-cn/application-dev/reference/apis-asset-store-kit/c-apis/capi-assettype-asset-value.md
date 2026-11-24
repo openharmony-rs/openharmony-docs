@@ -24,8 +24,8 @@ typedef union Asset_Value {...} Asset_Value
 
 | 名称 | 描述 |
 | -- | -- |
-| bool boolean | 该字段用于传入bool类型的属性值。 |
-| uint32_t u32 | 该字段用于传入uint32类型的属性值。 |
-| [Asset_Blob](capi-assettype-asset-blob.md) blob | 该字段用于传入bytes类型的属性值。 |
+| bool boolean | 该字段用于传入bool类型的属性值。<br><!--Device-bool boolean--><!--Device-bool boolean-End--> |
+| uint32_t u32 | 该字段用于传入uint32类型的属性值。<br><!--Device-uint32_t u32--><!--Device-uint32_t u32-End--> |
+| [Asset_Blob](capi-assettype-asset-blob.md) blob | 该字段用于传入bytes类型的属性值。<br><!--Device-Asset_Blob blob--><!--Device-Asset_Blob blob-End--> |
 
 

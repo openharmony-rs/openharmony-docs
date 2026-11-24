@@ -24,7 +24,7 @@ Defines the dependency structure, used to hold a list of dependencies for a task
 
 | Name | Description |
 | -- | -- |
-| uint32_t len | Number of dependencies. |
-| [const ffrt_dependence_t*](capi-ffrt-ffrt-dependence-t.md) items | Dependency data array. |
+| uint32_t len | Number of dependencies.<br><!--Device-uint32_t len--><!--Device-uint32_t len-End--> |
+| [const ffrt_dependence_t*](capi-ffrt-ffrt-dependence-t.md) items | Dependency data array.<br><!--Device-const ffrt_dependence_t* items--><!--Device-const ffrt_dependence_t* items-End--> |
 
 

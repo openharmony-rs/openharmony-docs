@@ -51,7 +51,7 @@ enum ColorSpaceName
 
 Defines an enum for the color space names.
 
-<!--Device-ColorSpaceName--><!--Device-ColorSpaceName-End-->
+<!--Device-enum ColorSpaceName--><!--Device-enum ColorSpaceName-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -59,39 +59,39 @@ Defines an enum for the color space names.
 
 | Enum item | Description |
 | -- | -- |
-| NONE = 0 | Unknown color space. |
-| ADOBE_RGB = 1 | Color space based on Adobe RGB. |
-| DCI_P3 = 2 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999. |
-| DISPLAY_P3 = 3 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999. |
-| SRGB = 4 | Standard Red Green Blue (SRGB) color space based on IEC 61966-2.1:1999. |
-| BT709 = 6 | Color space based on ITU-R BT.709. |
-| BT601_EBU = 7 | Color space based on ITU-R BT.601. |
-| BT601_SMPTE_C = 8 | Color space based on ITU-R BT.601. |
-| BT2020_HLG = 9 | Color space based on ITU-R BT.2020. |
-| BT2020_PQ = 10 | Color space based on ITU-R BT.2020. |
-| P3_HLG = 11 | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full. |
-| P3_PQ = 12 | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full. |
-| ADOBE_RGB_LIMIT = 13 | Color space with the color primaries of ADOBE_RGB, the transfer characteristics of ADOBE_RGB, and the color range of LIMIT. |
-| DISPLAY_P3_LIMIT = 14 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of LIMIT. |
-| SRGB_LIMIT = 15 | Color space with the color primaries of SRGB, the transfer characteristics of SRGB, and the color range of LIMIT. |
-| BT709_LIMIT = 16 | Color space with the color primaries of BT.709, the transfer characteristics of BT.709, and the color range of LIMIT. |
-| BT601_EBU_LIMIT = 17 | Color space with the color primaries of BT.601_P, the transfer characteristics of BT.709, and the color range of LIMIT. |
-| BT601_SMPTE_C_LIMIT = 18 | Color space with the color primaries of BT.601_N, the transfer characteristics of BT.709, and the color range of LIMIT. |
-| BT2020_HLG_LIMIT = 19 | Color space with the color primaries of BT.2020, the transfer characteristics of HLG, and the color range of LIMIT. |
-| BT2020_PQ_LIMIT = 20 | Color space with the color primaries of BT.2020, the transfer characteristics of PQ, and the color range of LIMIT. |
-| P3_HLG_LIMIT = 21 | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of LIMIT. |
-| P3_PQ_LIMIT = 22 | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of LIMIT. |
-| LINEAR_P3 = 23 | Color space with the color primaries of P3_D65 and the transfer characteristic of LINEAR. |
-| LINEAR_SRGB = 24 | Color space with the color primaries of SRGB and the transfer characteristic of LINEAR. |
-| LINEAR_BT709 = LINEAR_SRGB | Color space with the color primaries of BT.709 and the transfer characteristic of LINEAR. |
-| LINEAR_BT2020 = 25 | Color space with the color primaries of BT.2020 and the transfer characteristic of LINEAR. |
-| DISPLAY_SRGB = SRGB | Color space with the color primaries of SRGB, the transfer characteristics of SRGB, and the color range of Full. |
-| DISPLAY_P3_SRGB = DISPLAY_P3 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of Full. |
-| DISPLAY_P3_HLG = P3_HLG | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full. |
-| DISPLAY_P3_PQ = P3_PQ | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full. |
-| BT2020_LOG_FULL = 27 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of Full.<br>**Since**: 26.0.0 |
-| BT2020_LOG_LIMIT = 28 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of LIMIT.<br>**Since**: 26.0.0 |
-| CUSTOM = 5 | Custom color space. |
+| NONE = 0 | Unknown color space.<br><!--Device-NONE = 0--><!--Device-NONE = 0-End--> |
+| ADOBE_RGB = 1 | Color space based on Adobe RGB.<br><!--Device-ADOBE_RGB = 1--><!--Device-ADOBE_RGB = 1-End--> |
+| DCI_P3 = 2 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999.<br><!--Device-DCI_P3 = 2--><!--Device-DCI_P3 = 2-End--> |
+| DISPLAY_P3 = 3 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999.<br><!--Device-DISPLAY_P3 = 3--><!--Device-DISPLAY_P3 = 3-End--> |
+| SRGB = 4 | Standard Red Green Blue (SRGB) color space based on IEC 61966-2.1:1999.<br><!--Device-SRGB = 4--><!--Device-SRGB = 4-End--> |
+| BT709 = 6 | Color space based on ITU-R BT.709.<br><!--Device-BT709 = 6--><!--Device-BT709 = 6-End--> |
+| BT601_EBU = 7 | Color space based on ITU-R BT.601.<br><!--Device-BT601_EBU = 7--><!--Device-BT601_EBU = 7-End--> |
+| BT601_SMPTE_C = 8 | Color space based on ITU-R BT.601.<br><!--Device-BT601_SMPTE_C = 8--><!--Device-BT601_SMPTE_C = 8-End--> |
+| BT2020_HLG = 9 | Color space based on ITU-R BT.2020.<br><!--Device-BT2020_HLG = 9--><!--Device-BT2020_HLG = 9-End--> |
+| BT2020_PQ = 10 | Color space based on ITU-R BT.2020.<br><!--Device-BT2020_PQ = 10--><!--Device-BT2020_PQ = 10-End--> |
+| P3_HLG = 11 | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full.<br><!--Device-P3_HLG = 11--><!--Device-P3_HLG = 11-End--> |
+| P3_PQ = 12 | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full.<br><!--Device-P3_PQ = 12--><!--Device-P3_PQ = 12-End--> |
+| ADOBE_RGB_LIMIT = 13 | Color space with the color primaries of ADOBE_RGB, the transfer characteristics of ADOBE_RGB, and the color range of LIMIT.<br><!--Device-ADOBE_RGB_LIMIT = 13--><!--Device-ADOBE_RGB_LIMIT = 13-End--> |
+| DISPLAY_P3_LIMIT = 14 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of LIMIT.<br><!--Device-DISPLAY_P3_LIMIT = 14--><!--Device-DISPLAY_P3_LIMIT = 14-End--> |
+| SRGB_LIMIT = 15 | Color space with the color primaries of SRGB, the transfer characteristics of SRGB, and the color range of LIMIT.<br><!--Device-SRGB_LIMIT = 15--><!--Device-SRGB_LIMIT = 15-End--> |
+| BT709_LIMIT = 16 | Color space with the color primaries of BT.709, the transfer characteristics of BT.709, and the color range of LIMIT.<br><!--Device-BT709_LIMIT = 16--><!--Device-BT709_LIMIT = 16-End--> |
+| BT601_EBU_LIMIT = 17 | Color space with the color primaries of BT.601_P, the transfer characteristics of BT.709, and the color range of LIMIT.<br><!--Device-BT601_EBU_LIMIT = 17--><!--Device-BT601_EBU_LIMIT = 17-End--> |
+| BT601_SMPTE_C_LIMIT = 18 | Color space with the color primaries of BT.601_N, the transfer characteristics of BT.709, and the color range of LIMIT.<br><!--Device-BT601_SMPTE_C_LIMIT = 18--><!--Device-BT601_SMPTE_C_LIMIT = 18-End--> |
+| BT2020_HLG_LIMIT = 19 | Color space with the color primaries of BT.2020, the transfer characteristics of HLG, and the color range of LIMIT.<br><!--Device-BT2020_HLG_LIMIT = 19--><!--Device-BT2020_HLG_LIMIT = 19-End--> |
+| BT2020_PQ_LIMIT = 20 | Color space with the color primaries of BT.2020, the transfer characteristics of PQ, and the color range of LIMIT.<br><!--Device-BT2020_PQ_LIMIT = 20--><!--Device-BT2020_PQ_LIMIT = 20-End--> |
+| P3_HLG_LIMIT = 21 | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of LIMIT.<br><!--Device-P3_HLG_LIMIT = 21--><!--Device-P3_HLG_LIMIT = 21-End--> |
+| P3_PQ_LIMIT = 22 | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of LIMIT.<br><!--Device-P3_PQ_LIMIT = 22--><!--Device-P3_PQ_LIMIT = 22-End--> |
+| LINEAR_P3 = 23 | Color space with the color primaries of P3_D65 and the transfer characteristic of LINEAR.<br><!--Device-LINEAR_P3 = 23--><!--Device-LINEAR_P3 = 23-End--> |
+| LINEAR_SRGB = 24 | Color space with the color primaries of SRGB and the transfer characteristic of LINEAR.<br><!--Device-LINEAR_SRGB = 24--><!--Device-LINEAR_SRGB = 24-End--> |
+| LINEAR_BT709 = LINEAR_SRGB | Color space with the color primaries of BT.709 and the transfer characteristic of LINEAR.<br><!--Device-LINEAR_BT709 = LINEAR_SRGB--><!--Device-LINEAR_BT709 = LINEAR_SRGB-End--> |
+| LINEAR_BT2020 = 25 | Color space with the color primaries of BT.2020 and the transfer characteristic of LINEAR.<br><!--Device-LINEAR_BT2020 = 25--><!--Device-LINEAR_BT2020 = 25-End--> |
+| DISPLAY_SRGB = SRGB | Color space with the color primaries of SRGB, the transfer characteristics of SRGB, and the color range of Full.<br><!--Device-DISPLAY_SRGB = SRGB--><!--Device-DISPLAY_SRGB = SRGB-End--> |
+| DISPLAY_P3_SRGB = DISPLAY_P3 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of Full.<br><!--Device-DISPLAY_P3_SRGB = DISPLAY_P3--><!--Device-DISPLAY_P3_SRGB = DISPLAY_P3-End--> |
+| DISPLAY_P3_HLG = P3_HLG | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full.<br><!--Device-DISPLAY_P3_HLG = P3_HLG--><!--Device-DISPLAY_P3_HLG = P3_HLG-End--> |
+| DISPLAY_P3_PQ = P3_PQ | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full.<br><!--Device-DISPLAY_P3_PQ = P3_PQ--><!--Device-DISPLAY_P3_PQ = P3_PQ-End--> |
+| BT2020_LOG_FULL = 27 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of Full.<br>**Since**: 26.0.0<br><!--Device-BT2020_LOG_FULL = 27--><!--Device-BT2020_LOG_FULL = 27-End--> |
+| BT2020_LOG_LIMIT = 28 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of LIMIT.<br>**Since**: 26.0.0<br><!--Device-BT2020_LOG_LIMIT = 28--><!--Device-BT2020_LOG_LIMIT = 28-End--> |
+| CUSTOM = 5 | Custom color space.<br><!--Device-CUSTOM = 5--><!--Device-CUSTOM = 5-End--> |
 
 
 ## Function description

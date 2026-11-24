@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned char ran |  |
-| HANDLE event |  |
+| unsigned char ran | <!--Device-unsigned char ran--><!--Device-unsigned char ran-End--> |
+| HANDLE event | <!--Device-HANDLE event--><!--Device-HANDLE event-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t presentModeCount |  |
-| VkPresentModeKHR* pPresentModes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t presentModeCount | <!--Device-uint32_t presentModeCount--><!--Device-uint32_t presentModeCount-End--> |
+| VkPresentModeKHR* pPresentModes | <!--Device-VkPresentModeKHR* pPresentModes--><!--Device-VkPresentModeKHR* pPresentModes-End--> |
 
 

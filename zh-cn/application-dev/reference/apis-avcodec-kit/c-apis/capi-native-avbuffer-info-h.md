@@ -14,8 +14,6 @@
 
 **相关模块：** [Core](capi-avcodec-kit-core.md)
 
-**相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
-
 ## 汇总
 
 ### 结构体
@@ -42,7 +40,7 @@ enum OH_AVCodecBufferFlags
 
 枚举OH_AVCodec缓冲区标记的类别。
 
-<!--Device-OH_AVCodecBufferFlags--><!--Device-OH_AVCodecBufferFlags-End-->
+<!--Device-enum OH_AVCodecBufferFlags--><!--Device-enum OH_AVCodecBufferFlags-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -50,12 +48,12 @@ enum OH_AVCodecBufferFlags
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVCODEC_BUFFER_FLAGS_NONE = 0 | 表示为普通帧。<br>**起始版本：** 9 |
-| AVCODEC_BUFFER_FLAGS_EOS = 1 << 0 | 表示缓冲区是流结束帧。<br>**起始版本：** 9 |
-| AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1 | 表示缓冲区包含关键帧。<br>**起始版本：** 9 |
-| AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2 | 表示缓冲区中的数据只是帧的一部分。<br>**起始版本：** 9 |
-| AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3 | 表示缓冲区包含编解码特定数据。<br>**起始版本：** 9 |
-| AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4 | 表示缓冲区被解码器依赖，解码之后的数据可丢弃。<br>**起始版本：** 12 |
-| AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5 | 表示缓冲区不被参考可直接丢弃。<br>**起始版本：** 12 |
+| AVCODEC_BUFFER_FLAGS_NONE = 0 | 表示为普通帧。<br>**起始版本：** 9<br><!--Device-AVCODEC_BUFFER_FLAGS_NONE = 0--><!--Device-AVCODEC_BUFFER_FLAGS_NONE = 0-End--> |
+| AVCODEC_BUFFER_FLAGS_EOS = 1 << 0 | 表示缓冲区是流结束帧。<br>**起始版本：** 9<br><!--Device-AVCODEC_BUFFER_FLAGS_EOS = 1 << 0--><!--Device-AVCODEC_BUFFER_FLAGS_EOS = 1 << 0-End--> |
+| AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1 | 表示缓冲区包含关键帧。<br>**起始版本：** 9<br><!--Device-AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1--><!--Device-AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1-End--> |
+| AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2 | 表示缓冲区中的数据只是帧的一部分。<br>**起始版本：** 9<br><!--Device-AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2--><!--Device-AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2-End--> |
+| AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3 | 表示缓冲区包含编解码特定数据。<br>**起始版本：** 9<br><!--Device-AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3--><!--Device-AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3-End--> |
+| AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4 | 表示缓冲区被解码器依赖，解码之后的数据可丢弃。<br>**起始版本：** 12<br><!--Device-AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4--><!--Device-AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4-End--> |
+| AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5 | 表示缓冲区不被参考可直接丢弃。<br>**起始版本：** 12<br><!--Device-AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5--><!--Device-AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5-End--> |
 
 

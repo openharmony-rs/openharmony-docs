@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkDeviceSize extendedSparseAddressSpaceSize |  |
-| VkImageUsageFlags extendedSparseImageUsageFlags |  |
-| VkBufferUsageFlags extendedSparseBufferUsageFlags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkDeviceSize extendedSparseAddressSpaceSize | <!--Device-VkDeviceSize extendedSparseAddressSpaceSize--><!--Device-VkDeviceSize extendedSparseAddressSpaceSize-End--> |
+| VkImageUsageFlags extendedSparseImageUsageFlags | <!--Device-VkImageUsageFlags extendedSparseImageUsageFlags--><!--Device-VkImageUsageFlags extendedSparseImageUsageFlags-End--> |
+| VkBufferUsageFlags extendedSparseBufferUsageFlags | <!--Device-VkBufferUsageFlags extendedSparseBufferUsageFlags--><!--Device-VkBufferUsageFlags extendedSparseBufferUsageFlags-End--> |
 
 

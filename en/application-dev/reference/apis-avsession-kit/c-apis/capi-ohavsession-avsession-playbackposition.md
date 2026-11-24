@@ -24,7 +24,7 @@ Defines the playback position.
 
 | Name | Description |
 | -- | -- |
-| int64_t elapsedTime | Elapsed time(position) of this media set by the app. |
-| int64_t updateTime | Record the system time when elapsedTime is set. |
+| int64_t elapsedTime | Elapsed time(position) of this media set by the app.<br><!--Device-int64_t elapsedTime--><!--Device-int64_t elapsedTime-End--> |
+| int64_t updateTime | Record the system time when elapsedTime is set.<br><!--Device-int64_t updateTime--><!--Device-int64_t updateTime-End--> |
 
 

@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 shadingRateImageEnable |  |
-| uint32_t viewportCount |  |
-| [const VkShadingRatePaletteNV*](capi--vkshadingratepalettenv.md) pShadingRatePalettes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 shadingRateImageEnable | <!--Device-VkBool32 shadingRateImageEnable--><!--Device-VkBool32 shadingRateImageEnable-End--> |
+| uint32_t viewportCount | <!--Device-uint32_t viewportCount--><!--Device-uint32_t viewportCount-End--> |
+| [const VkShadingRatePaletteNV*](capi--vkshadingratepalettenv.md) pShadingRatePalettes | <!--Device-const VkShadingRatePaletteNV* pShadingRatePalettes--><!--Device-const VkShadingRatePaletteNV* pShadingRatePalettes-End--> |
 
 

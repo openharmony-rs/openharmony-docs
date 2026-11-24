@@ -44,7 +44,7 @@
 | [Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_release) | - | 释放Native OH_ImageReceiverNative对象。 |
 | [Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative* receiver, OH_ImageReceiver_ImageArriveCallback callback, void *userData)](#oh_imagereceivernative_onimagearrive) | - | 注册[OH_ImageReceiver_ImageArriveCallback](capi-image-receiver-native-h.md#oh_imagereceiver_imagearrivecallback)回调。 |
 | [Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative* receiver, OH_ImageReceiver_ImageArriveCallback callback)](#oh_imagereceivernative_offimagearrive) | - | 注销[OH_ImageReceiver_ImageArriveCallback](capi-image-receiver-native-h.md#oh_imagereceiver_imagearrivecallback)回调。 |
-| [Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)](#oh_imagereceivernative_setmemoryname) | - | 设置OH_ImageReceiverNative对象的内存名称。<br> 仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。 如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。 过滤后的名称长度（包括结束符'\0'）不得超过256字节。 |
+| [Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)](#oh_imagereceivernative_setmemoryname) | - | 设置OH_ImageReceiverNative对象的内存名称。<br> 仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。 如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。 过滤后的名称长度（包括结束符'\0'）不得超过255字节。 |
 
 ## 函数说明
 
@@ -623,7 +623,7 @@ Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNativ
 
 **描述：**
 
-设置OH_ImageReceiverNative对象的内存名称。<br> 仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。 如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。 过滤后的名称长度（包括结束符'\0'）不得超过256字节。
+设置OH_ImageReceiverNative对象的内存名称。<br> 仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。 如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。 过滤后的名称长度（包括结束符'\0'）不得超过255字节。
 
 <!--Device-Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)--><!--Device-Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)-End-->
 
@@ -643,6 +643,6 @@ Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNativ
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li> <li>[IMAGE_RECEIVER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) receiver或name为NULL，或size为0，或name过滤后无可视字符，或过滤后大小超过256字节。</li> </ul> |
+| Image_ErrorCode | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 操作成功。</li> <li>[IMAGE_RECEIVER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) receiver或name为NULL，或size为0，或name过滤后无可视字符，或过滤后大小超过255字节。</li> </ul> |
 
 

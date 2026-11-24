@@ -61,7 +61,7 @@ enum DrmCencAlgorithm
 
 Enumerates the DRM CENC algorithm types.
 
-<!--Device-DrmCencAlgorithm--><!--Device-DrmCencAlgorithm-End-->
+<!--Device-enum DrmCencAlgorithm--><!--Device-enum DrmCencAlgorithm-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -69,12 +69,12 @@ Enumerates the DRM CENC algorithm types.
 
 | Enum item | Description |
 | -- | -- |
-| DRM_ALG_CENC_UNENCRYPTED = 0x0 | Unencrypted. |
-| DRM_ALG_CENC_AES_CTR = 0x1 | Aes ctr. |
-| DRM_ALG_CENC_AES_WV = 0x2 | Aes wv. |
-| DRM_ALG_CENC_AES_CBC = 0x3 | Aes cbc. |
-| DRM_ALG_CENC_SM4_CBC = 0x4 | Sm4 cbc. |
-| DRM_ALG_CENC_SM4_CTR = 0x5 | Sm4 ctr. |
+| DRM_ALG_CENC_UNENCRYPTED = 0x0 | Unencrypted.<br>**Since**: 12<br><!--Device-DRM_ALG_CENC_UNENCRYPTED = 0x0--><!--Device-DRM_ALG_CENC_UNENCRYPTED = 0x0-End--> |
+| DRM_ALG_CENC_AES_CTR = 0x1 | AES CTR algorithm.<br>**Since**: 12<br><!--Device-DRM_ALG_CENC_AES_CTR = 0x1--><!--Device-DRM_ALG_CENC_AES_CTR = 0x1-End--> |
+| DRM_ALG_CENC_AES_WV = 0x2 | AES WV algorithm.<br>**Since**: 12<br><!--Device-DRM_ALG_CENC_AES_WV = 0x2--><!--Device-DRM_ALG_CENC_AES_WV = 0x2-End--> |
+| DRM_ALG_CENC_AES_CBC = 0x3 | AES CBC algorithm.<br>**Since**: 12<br><!--Device-DRM_ALG_CENC_AES_CBC = 0x3--><!--Device-DRM_ALG_CENC_AES_CBC = 0x3-End--> |
+| DRM_ALG_CENC_SM4_CBC = 0x4 | SM4 CBC algorithm.<br>**Since**: 12<br><!--Device-DRM_ALG_CENC_SM4_CBC = 0x4--><!--Device-DRM_ALG_CENC_SM4_CBC = 0x4-End--> |
+| DRM_ALG_CENC_SM4_CTR = 0x5 | SM4 CTR algorithm.<br>**Since**: 12<br><!--Device-DRM_ALG_CENC_SM4_CTR = 0x5--><!--Device-DRM_ALG_CENC_SM4_CTR = 0x5-End--> |
 
 ### DrmCencInfoMode
 
@@ -86,7 +86,7 @@ enum DrmCencInfoMode
 
 Enumerates the modes for setting the key ID, IV, and subsample in the CENC information.
 
-<!--Device-DrmCencInfoMode--><!--Device-DrmCencInfoMode-End-->
+<!--Device-enum DrmCencInfoMode--><!--Device-enum DrmCencInfoMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -94,8 +94,8 @@ Enumerates the modes for setting the key ID, IV, and subsample in the CENC infor
 
 | Enum item | Description |
 | -- | -- |
-| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0 | key/iv/subsample set. |
-| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1 | key/iv/subsample not set. |
+| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0 | The key ID, IV, and subsample are set.<br>**Since**: 12<br><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0--><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0-End--> |
+| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1 | The key ID, IV, and subsample are not set.<br>**Since**: 12<br><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1--><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1-End--> |
 
 
 ## Function description

@@ -124,7 +124,7 @@ enum ArkUI_Alignment
 
 Enumerates the alignment modes.
 
-<!--Device-ArkUI_Alignment--><!--Device-ArkUI_Alignment-End-->
+<!--Device-enum ArkUI_Alignment--><!--Device-enum ArkUI_Alignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,15 +132,15 @@ Enumerates the alignment modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ALIGNMENT_TOP_START = 0 | Top start. |
-| ARKUI_ALIGNMENT_TOP | Top center. |
-| ARKUI_ALIGNMENT_TOP_END | Top end. |
-| ARKUI_ALIGNMENT_START | Vertically centered start. |
-| ARKUI_ALIGNMENT_CENTER | Horizontally and vertically centered. |
-| ARKUI_ALIGNMENT_END | Vertically centered end. |
-| ARKUI_ALIGNMENT_BOTTOM_START | Bottom start. |
-| ARKUI_ALIGNMENT_BOTTOM | Horizontally centered on the bottom. |
-| ARKUI_ALIGNMENT_BOTTOM_END | Bottom end. |
+| ARKUI_ALIGNMENT_TOP_START = 0 | Top start.<br><!--Device-ARKUI_ALIGNMENT_TOP_START = 0--><!--Device-ARKUI_ALIGNMENT_TOP_START = 0-End--> |
+| ARKUI_ALIGNMENT_TOP | Top center.<br><!--Device-ARKUI_ALIGNMENT_TOP--><!--Device-ARKUI_ALIGNMENT_TOP-End--> |
+| ARKUI_ALIGNMENT_TOP_END | Top end.<br><!--Device-ARKUI_ALIGNMENT_TOP_END--><!--Device-ARKUI_ALIGNMENT_TOP_END-End--> |
+| ARKUI_ALIGNMENT_START | Vertically centered start.<br><!--Device-ARKUI_ALIGNMENT_START--><!--Device-ARKUI_ALIGNMENT_START-End--> |
+| ARKUI_ALIGNMENT_CENTER | Horizontally and vertically centered.<br><!--Device-ARKUI_ALIGNMENT_CENTER--><!--Device-ARKUI_ALIGNMENT_CENTER-End--> |
+| ARKUI_ALIGNMENT_END | Vertically centered end.<br><!--Device-ARKUI_ALIGNMENT_END--><!--Device-ARKUI_ALIGNMENT_END-End--> |
+| ARKUI_ALIGNMENT_BOTTOM_START | Bottom start.<br><!--Device-ARKUI_ALIGNMENT_BOTTOM_START--><!--Device-ARKUI_ALIGNMENT_BOTTOM_START-End--> |
+| ARKUI_ALIGNMENT_BOTTOM | Horizontally centered on the bottom.<br><!--Device-ARKUI_ALIGNMENT_BOTTOM--><!--Device-ARKUI_ALIGNMENT_BOTTOM-End--> |
+| ARKUI_ALIGNMENT_BOTTOM_END | Bottom end.<br><!--Device-ARKUI_ALIGNMENT_BOTTOM_END--><!--Device-ARKUI_ALIGNMENT_BOTTOM_END-End--> |
 
 ### ArkUI_ItemAlignment
 
@@ -152,7 +152,7 @@ enum ArkUI_ItemAlignment
 
 Enumerates the modes in which components are laid out along the cross axis of the container.
 
-<!--Device-ArkUI_ItemAlignment--><!--Device-ArkUI_ItemAlignment-End-->
+<!--Device-enum ArkUI_ItemAlignment--><!--Device-enum ArkUI_ItemAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,12 +160,12 @@ Enumerates the modes in which components are laid out along the cross axis of th
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | The default configuration in the container is used. |
-| ARKUI_ITEM_ALIGNMENT_START | The items in the container are aligned with the cross-start edge. |
-| ARKUI_ITEM_ALIGNMENT_CENTER | The items in the container are centered along the cross axis. |
-| ARKUI_ITEM_ALIGNMENT_END | The items in the container are aligned with the cross-end edge. |
-| ARKUI_ITEM_ALIGNMENT_STRETCH | The items in the container are stretched and padded along the cross axis. |
-| ARKUI_ITEM_ALIGNMENT_BASELINE | The items in the container are aligned in such a manner that their text baselines are aligned along the cross axis. |
+| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | The default configuration in the container is used.<br><!--Device-ARKUI_ITEM_ALIGNMENT_AUTO = 0--><!--Device-ARKUI_ITEM_ALIGNMENT_AUTO = 0-End--> |
+| ARKUI_ITEM_ALIGNMENT_START | The items in the container are aligned with the cross-start edge.<br><!--Device-ARKUI_ITEM_ALIGNMENT_START--><!--Device-ARKUI_ITEM_ALIGNMENT_START-End--> |
+| ARKUI_ITEM_ALIGNMENT_CENTER | The items in the container are centered along the cross axis.<br><!--Device-ARKUI_ITEM_ALIGNMENT_CENTER--><!--Device-ARKUI_ITEM_ALIGNMENT_CENTER-End--> |
+| ARKUI_ITEM_ALIGNMENT_END | The items in the container are aligned with the cross-end edge.<br><!--Device-ARKUI_ITEM_ALIGNMENT_END--><!--Device-ARKUI_ITEM_ALIGNMENT_END-End--> |
+| ARKUI_ITEM_ALIGNMENT_STRETCH | The items in the container are stretched and padded along the cross axis.<br><!--Device-ARKUI_ITEM_ALIGNMENT_STRETCH--><!--Device-ARKUI_ITEM_ALIGNMENT_STRETCH-End--> |
+| ARKUI_ITEM_ALIGNMENT_BASELINE | The items in the container are aligned in such a manner that their text baselines are aligned along the cross axis.<br><!--Device-ARKUI_ITEM_ALIGNMENT_BASELINE--><!--Device-ARKUI_ITEM_ALIGNMENT_BASELINE-End--> |
 
 ### ArkUI_FlexAlignment
 
@@ -177,7 +177,7 @@ enum ArkUI_FlexAlignment
 
 Enumerates the vertical alignment modes.
 
-<!--Device-ArkUI_FlexAlignment--><!--Device-ArkUI_FlexAlignment-End-->
+<!--Device-enum ArkUI_FlexAlignment--><!--Device-enum ArkUI_FlexAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,12 +185,12 @@ Enumerates the vertical alignment modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FLEX_ALIGNMENT_START = 1 | The child components are aligned with the start edge of the main axis. |
-| ARKUI_FLEX_ALIGNMENT_CENTER = 2 | The child components are aligned in the center of the main axis. |
-| ARKUI_FLEX_ALIGNMENT_END = 3 | The child components are aligned with the end edge of the main axis. |
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end. |
-| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components. |
-| ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same. |
+| ARKUI_FLEX_ALIGNMENT_START = 1 | The child components are aligned with the start edge of the main axis.<br><!--Device-ARKUI_FLEX_ALIGNMENT_START = 1--><!--Device-ARKUI_FLEX_ALIGNMENT_START = 1-End--> |
+| ARKUI_FLEX_ALIGNMENT_CENTER = 2 | The child components are aligned in the center of the main axis.<br><!--Device-ARKUI_FLEX_ALIGNMENT_CENTER = 2--><!--Device-ARKUI_FLEX_ALIGNMENT_CENTER = 2-End--> |
+| ARKUI_FLEX_ALIGNMENT_END = 3 | The child components are aligned with the end edge of the main axis.<br><!--Device-ARKUI_FLEX_ALIGNMENT_END = 3--><!--Device-ARKUI_FLEX_ALIGNMENT_END = 3-End--> |
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end.<br><!--Device-ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6--><!--Device-ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6-End--> |
+| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components.<br><!--Device-ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7--><!--Device-ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7-End--> |
+| ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same.<br><!--Device-ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8--><!--Device-ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8-End--> |
 
 ### ArkUI_FlexDirection
 
@@ -202,7 +202,7 @@ enum ArkUI_FlexDirection
 
 Enumerates the directions of the main axis in the flex container.
 
-<!--Device-ArkUI_FlexDirection--><!--Device-ArkUI_FlexDirection-End-->
+<!--Device-enum ArkUI_FlexDirection--><!--Device-enum ArkUI_FlexDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,10 +210,10 @@ Enumerates the directions of the main axis in the flex container.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FLEX_DIRECTION_ROW = 0 | The child components are arranged in the same direction as the main axis runs along the rows. |
-| ARKUI_FLEX_DIRECTION_COLUMN | The child components are arranged in the same direction as the main axis runs down the columns. |
-| ARKUI_FLEX_DIRECTION_ROW_REVERSE | The child components are arranged opposite to the <b>ROW</b> direction. |
-| ARKUI_FLEX_DIRECTION_COLUMN_REVERSE | The child components are arranged opposite to the <b>COLUMN</b> direction. |
+| ARKUI_FLEX_DIRECTION_ROW = 0 | The child components are arranged in the same direction as the main axis runs along the rows.<br><!--Device-ARKUI_FLEX_DIRECTION_ROW = 0--><!--Device-ARKUI_FLEX_DIRECTION_ROW = 0-End--> |
+| ARKUI_FLEX_DIRECTION_COLUMN | The child components are arranged in the same direction as the main axis runs down the columns.<br><!--Device-ARKUI_FLEX_DIRECTION_COLUMN--><!--Device-ARKUI_FLEX_DIRECTION_COLUMN-End--> |
+| ARKUI_FLEX_DIRECTION_ROW_REVERSE | The child components are arranged opposite to the <b>ROW</b> direction.<br><!--Device-ARKUI_FLEX_DIRECTION_ROW_REVERSE--><!--Device-ARKUI_FLEX_DIRECTION_ROW_REVERSE-End--> |
+| ARKUI_FLEX_DIRECTION_COLUMN_REVERSE | The child components are arranged opposite to the <b>COLUMN</b> direction.<br><!--Device-ARKUI_FLEX_DIRECTION_COLUMN_REVERSE--><!--Device-ARKUI_FLEX_DIRECTION_COLUMN_REVERSE-End--> |
 
 ### ArkUI_FlexWrap
 
@@ -225,7 +225,7 @@ enum ArkUI_FlexWrap
 
 Defines whether the flex container has a single line or multiple lines.
 
-<!--Device-ArkUI_FlexWrap--><!--Device-ArkUI_FlexWrap-End-->
+<!--Device-enum ArkUI_FlexWrap--><!--Device-enum ArkUI_FlexWrap-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,9 +233,9 @@ Defines whether the flex container has a single line or multiple lines.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FLEX_WRAP_NO_WRAP = 0 | The child components in the flex container are arranged in a single line, and they cannot overflow. |
-| ARKUI_FLEX_WRAP_WRAP | The child components in the flex container are arranged in multiple lines, and they may overflow. |
-| ARKUI_FLEX_WRAP_WRAP_REVERSE | The child components in the flex container are reversely arranged in multiple lines, and they may overflow. |
+| ARKUI_FLEX_WRAP_NO_WRAP = 0 | The child components in the flex container are arranged in a single line, and they cannot overflow.<br><!--Device-ARKUI_FLEX_WRAP_NO_WRAP = 0--><!--Device-ARKUI_FLEX_WRAP_NO_WRAP = 0-End--> |
+| ARKUI_FLEX_WRAP_WRAP | The child components in the flex container are arranged in multiple lines, and they may overflow.<br><!--Device-ARKUI_FLEX_WRAP_WRAP--><!--Device-ARKUI_FLEX_WRAP_WRAP-End--> |
+| ARKUI_FLEX_WRAP_WRAP_REVERSE | The child components in the flex container are reversely arranged in multiple lines, and they may overflow.<br><!--Device-ARKUI_FLEX_WRAP_WRAP_REVERSE--><!--Device-ARKUI_FLEX_WRAP_WRAP_REVERSE-End--> |
 
 ### ArkUI_Direction
 
@@ -247,7 +247,7 @@ enum ArkUI_Direction
 
 Enumerates the modes in which components are laid out along the main axis of the container.
 
-<!--Device-ArkUI_Direction--><!--Device-ArkUI_Direction-End-->
+<!--Device-enum ArkUI_Direction--><!--Device-enum ArkUI_Direction-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -255,9 +255,9 @@ Enumerates the modes in which components are laid out along the main axis of the
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_DIRECTION_LTR = 0 | Components are arranged from left to right. |
-| ARKUI_DIRECTION_RTL | Components are arranged from right to left. |
-| ARKUI_DIRECTION_AUTO = 3 | The default layout direction is used. |
+| ARKUI_DIRECTION_LTR = 0 | Components are arranged from left to right.<br><!--Device-ARKUI_DIRECTION_LTR = 0--><!--Device-ARKUI_DIRECTION_LTR = 0-End--> |
+| ARKUI_DIRECTION_RTL | Components are arranged from right to left.<br><!--Device-ARKUI_DIRECTION_RTL--><!--Device-ARKUI_DIRECTION_RTL-End--> |
+| ARKUI_DIRECTION_AUTO = 3 | The default layout direction is used.<br><!--Device-ARKUI_DIRECTION_AUTO = 3--><!--Device-ARKUI_DIRECTION_AUTO = 3-End--> |
 
 ### ArkUI_Axis
 
@@ -269,7 +269,7 @@ enum ArkUI_Axis
 
 Enumerates the scroll directions for the <b><List></b> component.
 
-<!--Device-ArkUI_Axis--><!--Device-ArkUI_Axis-End-->
+<!--Device-enum ArkUI_Axis--><!--Device-enum ArkUI_Axis-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,8 +277,8 @@ Enumerates the scroll directions for the <b><List></b> component.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_AXIS_VERTICAL = 0 | Only vertical scrolling is supported. |
-| ARKUI_AXIS_HORIZONTAL | Only horizontal scrolling is supported. |
+| ARKUI_AXIS_VERTICAL = 0 | Only vertical scrolling is supported.<br><!--Device-ARKUI_AXIS_VERTICAL = 0--><!--Device-ARKUI_AXIS_VERTICAL = 0-End--> |
+| ARKUI_AXIS_HORIZONTAL | Only horizontal scrolling is supported.<br><!--Device-ARKUI_AXIS_HORIZONTAL--><!--Device-ARKUI_AXIS_HORIZONTAL-End--> |
 
 ### ArkUI_VerticalAlignment
 
@@ -290,7 +290,7 @@ enum ArkUI_VerticalAlignment
 
 Enumerates the vertical alignment modes.
 
-<!--Device-ArkUI_VerticalAlignment--><!--Device-ArkUI_VerticalAlignment-End-->
+<!--Device-enum ArkUI_VerticalAlignment--><!--Device-enum ArkUI_VerticalAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -298,9 +298,9 @@ Enumerates the vertical alignment modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_VERTICAL_ALIGNMENT_TOP = 0 | Top aligned. |
-| ARKUI_VERTICAL_ALIGNMENT_CENTER | Center aligned. This is the default alignment mode. |
-| ARKUI_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned. |
+| ARKUI_VERTICAL_ALIGNMENT_TOP = 0 | Top aligned.<br><!--Device-ARKUI_VERTICAL_ALIGNMENT_TOP = 0--><!--Device-ARKUI_VERTICAL_ALIGNMENT_TOP = 0-End--> |
+| ARKUI_VERTICAL_ALIGNMENT_CENTER | Center aligned. This is the default alignment mode.<br><!--Device-ARKUI_VERTICAL_ALIGNMENT_CENTER--><!--Device-ARKUI_VERTICAL_ALIGNMENT_CENTER-End--> |
+| ARKUI_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned.<br><!--Device-ARKUI_VERTICAL_ALIGNMENT_BOTTOM--><!--Device-ARKUI_VERTICAL_ALIGNMENT_BOTTOM-End--> |
 
 ### ArkUI_HorizontalAlignment
 
@@ -312,7 +312,7 @@ enum ArkUI_HorizontalAlignment
 
 Enumerates the alignment mode in the horizontal direction.
 
-<!--Device-ArkUI_HorizontalAlignment--><!--Device-ArkUI_HorizontalAlignment-End-->
+<!--Device-enum ArkUI_HorizontalAlignment--><!--Device-enum ArkUI_HorizontalAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,9 +320,9 @@ Enumerates the alignment mode in the horizontal direction.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_HORIZONTAL_ALIGNMENT_START = 0 | Aligned with the start edge in the same direction as the language in use. |
-| ARKUI_HORIZONTAL_ALIGNMENT_CENTER | Center aligned. This is the default alignment mode. |
-| ARKUI_HORIZONTAL_ALIGNMENT_END | Aligned with the end edge in the same direction as the language in use. |
+| ARKUI_HORIZONTAL_ALIGNMENT_START = 0 | Aligned with the start edge in the same direction as the language in use.<br><!--Device-ARKUI_HORIZONTAL_ALIGNMENT_START = 0--><!--Device-ARKUI_HORIZONTAL_ALIGNMENT_START = 0-End--> |
+| ARKUI_HORIZONTAL_ALIGNMENT_CENTER | Center aligned. This is the default alignment mode.<br><!--Device-ARKUI_HORIZONTAL_ALIGNMENT_CENTER--><!--Device-ARKUI_HORIZONTAL_ALIGNMENT_CENTER-End--> |
+| ARKUI_HORIZONTAL_ALIGNMENT_END | Aligned with the end edge in the same direction as the language in use.<br><!--Device-ARKUI_HORIZONTAL_ALIGNMENT_END--><!--Device-ARKUI_HORIZONTAL_ALIGNMENT_END-End--> |
 
 ### ArkUI_BarrierDirection
 
@@ -334,7 +334,7 @@ enum ArkUI_BarrierDirection
 
 defines the direction of the barrier line.
 
-<!--Device-ArkUI_BarrierDirection--><!--Device-ArkUI_BarrierDirection-End-->
+<!--Device-enum ArkUI_BarrierDirection--><!--Device-enum ArkUI_BarrierDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -342,10 +342,10 @@ defines the direction of the barrier line.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is the leftmost of all its referencedIds. |
-| ARKUI_BARRIER_DIRECTION_END | The barrier is on the rightmost side of all its referencedIds. |
-| ARKUI_BARRIER_DIRECTION_TOP | The barrier is at the top of all its referencedIds. |
-| ARKUI_BARRIER_DIRECTION_BOTTOM | The barrier is at the bottom of all its referencedIds. |
+| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is the leftmost of all its referencedIds.<br><!--Device-ARKUI_BARRIER_DIRECTION_START = 0--><!--Device-ARKUI_BARRIER_DIRECTION_START = 0-End--> |
+| ARKUI_BARRIER_DIRECTION_END | The barrier is on the rightmost side of all its referencedIds.<br><!--Device-ARKUI_BARRIER_DIRECTION_END--><!--Device-ARKUI_BARRIER_DIRECTION_END-End--> |
+| ARKUI_BARRIER_DIRECTION_TOP | The barrier is at the top of all its referencedIds.<br><!--Device-ARKUI_BARRIER_DIRECTION_TOP--><!--Device-ARKUI_BARRIER_DIRECTION_TOP-End--> |
+| ARKUI_BARRIER_DIRECTION_BOTTOM | The barrier is at the bottom of all its referencedIds.<br><!--Device-ARKUI_BARRIER_DIRECTION_BOTTOM--><!--Device-ARKUI_BARRIER_DIRECTION_BOTTOM-End--> |
 
 ### ArkUI_RelativeLayoutChainStyle
 
@@ -357,7 +357,7 @@ enum ArkUI_RelativeLayoutChainStyle
 
 defines the style of the chain.
 
-<!--Device-ArkUI_RelativeLayoutChainStyle--><!--Device-ArkUI_RelativeLayoutChainStyle-End-->
+<!--Device-enum ArkUI_RelativeLayoutChainStyle--><!--Device-enum ArkUI_RelativeLayoutChainStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -365,9 +365,9 @@ defines the style of the chain.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | Components are evenly distributed among constraint anchor points. |
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE | Except for the first and last two sub-components, other components are evenly distributed between the constraint anchor points. |
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED | No gaps in subcomponents within the chain. |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | Components are evenly distributed among constraint anchor points.<br><!--Device-ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0--><!--Device-ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0-End--> |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE | Except for the first and last two sub-components, other components are evenly distributed between the constraint anchor points.<br><!--Device-ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE--><!--Device-ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE-End--> |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED | No gaps in subcomponents within the chain.<br><!--Device-ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED--><!--Device-ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED-End--> |
 
 ### ArkUI_SafeAreaEdge
 
@@ -379,7 +379,7 @@ enum ArkUI_SafeAreaEdge
 
 defines the enumerated value of the direction of the extended security zone.
 
-<!--Device-ArkUI_SafeAreaEdge--><!--Device-ArkUI_SafeAreaEdge-End-->
+<!--Device-enum ArkUI_SafeAreaEdge--><!--Device-enum ArkUI_SafeAreaEdge-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -387,10 +387,10 @@ defines the enumerated value of the direction of the extended security zone.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SAFE_AREA_EDGE_TOP = 1 | Upper area. |
-| ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | Lower area. |
-| ARKUI_SAFE_AREA_EDGE_START = 1 << 2 | Front area. |
-| ARKUI_SAFE_AREA_EDGE_END = 1 << 3 | Tail area. |
+| ARKUI_SAFE_AREA_EDGE_TOP = 1 | Upper area.<br><!--Device-ARKUI_SAFE_AREA_EDGE_TOP = 1--><!--Device-ARKUI_SAFE_AREA_EDGE_TOP = 1-End--> |
+| ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | Lower area.<br><!--Device-ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 << 1--><!--Device-ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 << 1-End--> |
+| ARKUI_SAFE_AREA_EDGE_START = 1 << 2 | Front area.<br><!--Device-ARKUI_SAFE_AREA_EDGE_START = 1 << 2--><!--Device-ARKUI_SAFE_AREA_EDGE_START = 1 << 2-End--> |
+| ARKUI_SAFE_AREA_EDGE_END = 1 << 3 | Tail area.<br><!--Device-ARKUI_SAFE_AREA_EDGE_END = 1 << 3--><!--Device-ARKUI_SAFE_AREA_EDGE_END = 1 << 3-End--> |
 
 ### ArkUI_LayoutSafeAreaType
 
@@ -402,7 +402,7 @@ enum ArkUI_LayoutSafeAreaType
 
 Define the types for expanding the safe area in layout.
 
-<!--Device-ArkUI_LayoutSafeAreaType--><!--Device-ArkUI_LayoutSafeAreaType-End-->
+<!--Device-enum ArkUI_LayoutSafeAreaType--><!--Device-enum ArkUI_LayoutSafeAreaType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -410,7 +410,7 @@ Define the types for expanding the safe area in layout.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM = 1 | Default non-safe area of the system, including the status bar and navigation bar. |
+| ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM = 1 | Default non-safe area of the system, including the status bar and navigation bar.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM = 1--><!--Device-ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM = 1-End--> |
 
 ### ArkUI_LayoutSafeAreaEdge
 
@@ -422,7 +422,7 @@ enum ArkUI_LayoutSafeAreaEdge
 
 Define the edges for expanding the safe area in layout.
 
-<!--Device-ArkUI_LayoutSafeAreaEdge--><!--Device-ArkUI_LayoutSafeAreaEdge-End-->
+<!--Device-enum ArkUI_LayoutSafeAreaEdge--><!--Device-enum ArkUI_LayoutSafeAreaEdge-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -430,13 +430,13 @@ Define the edges for expanding the safe area in layout.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP = 1 | Top edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | Bottom edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 << 2 | Start edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 << 3 | End edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM | Vertical edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_START \| ARKUI_LAYOUT_SAFE_AREA_EDGE_END | Horizontal edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL = ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL \| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL | All edges of the safe area. |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP = 1 | Top edge of the safe area.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP = 1--><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP = 1-End--> |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | Bottom edge of the safe area.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 << 1--><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 << 1-End--> |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 << 2 | Start edge of the safe area.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 << 2--><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 << 2-End--> |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 << 3 | End edge of the safe area.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 << 3--><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 << 3-End--> |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM | Vertical edge of the safe area.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM--><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM-End--> |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_START \| ARKUI_LAYOUT_SAFE_AREA_EDGE_END | Horizontal edge of the safe area.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_START \| ARKUI_LAYOUT_SAFE_AREA_EDGE_END--><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_START \| ARKUI_LAYOUT_SAFE_AREA_EDGE_END-End--> |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL = ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL \| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL | All edges of the safe area.<br><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL = ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL \| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL--><!--Device-ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL = ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL \| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL-End--> |
 
 ### ArkUI_LocalizedAlignment
 
@@ -448,7 +448,7 @@ enum ArkUI_LocalizedAlignment
 
 Enumerates the localizedAlignment modes.
 
-<!--Device-ArkUI_LocalizedAlignment--><!--Device-ArkUI_LocalizedAlignment-End-->
+<!--Device-enum ArkUI_LocalizedAlignment--><!--Device-enum ArkUI_LocalizedAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -456,15 +456,15 @@ Enumerates the localizedAlignment modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LOCALIZED_ALIGNMENT_TOP_START = 0 | Top start. |
-| ARKUI_LOCALIZED_ALIGNMENT_TOP | Top center. |
-| ARKUI_LOCALIZED_ALIGNMENT_TOP_END | Top end. |
-| ARKUI_LOCALIZED_ALIGNMENT_START | Vertically centered start. |
-| ARKUI_LOCALIZED_ALIGNMENT_CENTER | Horizontally and vertically centered. |
-| ARKUI_LOCALIZED_ALIGNMENT_END | Vertically centered end. |
-| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_START | Bottom start. |
-| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM | Horizontally centered on the bottom. |
-| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_END | Bottom end. |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP_START = 0 | Top start.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_TOP_START = 0--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_TOP_START = 0-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP | Top center.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_TOP--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_TOP-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_TOP_END | Top end.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_TOP_END--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_TOP_END-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_START | Vertically centered start.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_START--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_START-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_CENTER | Horizontally and vertically centered.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_CENTER--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_CENTER-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_END | Vertically centered end.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_END--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_END-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_START | Bottom start.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_START--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_START-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM | Horizontally centered on the bottom.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_BOTTOM--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_BOTTOM-End--> |
+| ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_END | Bottom end.<br><!--Device-ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_END--><!--Device-ARKUI_LOCALIZED_ALIGNMENT_BOTTOM_END-End--> |
 
 ### ArkUI_LayoutPolicy
 
@@ -476,7 +476,7 @@ enum ArkUI_LayoutPolicy
 
 Enumerates the LayoutPolicy.
 
-<!--Device-ArkUI_LayoutPolicy--><!--Device-ArkUI_LayoutPolicy-End-->
+<!--Device-enum ArkUI_LayoutPolicy--><!--Device-enum ArkUI_LayoutPolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -484,9 +484,9 @@ Enumerates the LayoutPolicy.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LAYOUTPOLICY_MATCHPARENT = 0 | The component fills its parent, which means its size is as large as its parent |
-| ARKUI_LAYOUTPOLICY_WRAPCONTENT | The component fills its content, which means its size is as large as its children but it is constrained by its parent. |
-| ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE | The component fills its content which means its size is as large as its children. |
+| ARKUI_LAYOUTPOLICY_MATCHPARENT = 0 | The component fills its parent, which means its size is as large as its parent<br><!--Device-ARKUI_LAYOUTPOLICY_MATCHPARENT = 0--><!--Device-ARKUI_LAYOUTPOLICY_MATCHPARENT = 0-End--> |
+| ARKUI_LAYOUTPOLICY_WRAPCONTENT | The component fills its content, which means its size is as large as its children but it is constrained by its parent.<br><!--Device-ARKUI_LAYOUTPOLICY_WRAPCONTENT--><!--Device-ARKUI_LAYOUTPOLICY_WRAPCONTENT-End--> |
+| ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE | The component fills its content which means its size is as large as its children.<br><!--Device-ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE--><!--Device-ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE-End--> |
 
 ### ArkUI_PixelRoundCalcPolicy
 
@@ -498,7 +498,7 @@ enum ArkUI_PixelRoundCalcPolicy
 
 Enumerates the PixelRoundPolicy.
 
-<!--Device-ArkUI_PixelRoundCalcPolicy--><!--Device-ArkUI_PixelRoundCalcPolicy-End-->
+<!--Device-enum ArkUI_PixelRoundCalcPolicy--><!--Device-enum ArkUI_PixelRoundCalcPolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -506,9 +506,9 @@ Enumerates the PixelRoundPolicy.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_PIXELROUNDCALCPOLICY_NOFORCEROUND = 0 | No Force round the component boundary coordinates to integer pixel. |
-| ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | Force ceil the component boundary coordinates to integer pixel. |
-| ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | Force floor the component boundary coordinates to integer pixel. |
+| ARKUI_PIXELROUNDCALCPOLICY_NOFORCEROUND = 0 | No Force round the component boundary coordinates to integer pixel.<br><!--Device-ARKUI_PIXELROUNDCALCPOLICY_NOFORCEROUND = 0--><!--Device-ARKUI_PIXELROUNDCALCPOLICY_NOFORCEROUND = 0-End--> |
+| ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | Force ceil the component boundary coordinates to integer pixel.<br><!--Device-ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL--><!--Device-ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL-End--> |
+| ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | Force floor the component boundary coordinates to integer pixel.<br><!--Device-ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR--><!--Device-ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR-End--> |
 
 
 ## Function description

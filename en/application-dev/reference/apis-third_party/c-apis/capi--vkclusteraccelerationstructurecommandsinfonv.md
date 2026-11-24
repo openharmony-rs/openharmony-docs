@@ -10,15 +10,15 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkClusterAccelerationStructureInputInfoNV](capi--vkclusteraccelerationstructureinputinfonv.md) input |  |
-| VkDeviceAddress dstImplicitData |  |
-| VkDeviceAddress scratchData |  |
-| [VkStridedDeviceAddressRegionKHR](capi--vkstrideddeviceaddressregionkhr.md) dstAddressesArray |  |
-| [VkStridedDeviceAddressRegionKHR](capi--vkstrideddeviceaddressregionkhr.md) dstSizesArray |  |
-| [VkStridedDeviceAddressRegionKHR](capi--vkstrideddeviceaddressregionkhr.md) srcInfosArray |  |
-| VkDeviceAddress srcInfosCount |  |
-| VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkClusterAccelerationStructureInputInfoNV](capi--vkclusteraccelerationstructureinputinfonv.md) input | <!--Device-VkClusterAccelerationStructureInputInfoNV input--><!--Device-VkClusterAccelerationStructureInputInfoNV input-End--> |
+| VkDeviceAddress dstImplicitData | <!--Device-VkDeviceAddress dstImplicitData--><!--Device-VkDeviceAddress dstImplicitData-End--> |
+| VkDeviceAddress scratchData | <!--Device-VkDeviceAddress scratchData--><!--Device-VkDeviceAddress scratchData-End--> |
+| [VkStridedDeviceAddressRegionKHR](capi--vkstrideddeviceaddressregionkhr.md) dstAddressesArray | <!--Device-VkStridedDeviceAddressRegionKHR dstAddressesArray--><!--Device-VkStridedDeviceAddressRegionKHR dstAddressesArray-End--> |
+| [VkStridedDeviceAddressRegionKHR](capi--vkstrideddeviceaddressregionkhr.md) dstSizesArray | <!--Device-VkStridedDeviceAddressRegionKHR dstSizesArray--><!--Device-VkStridedDeviceAddressRegionKHR dstSizesArray-End--> |
+| [VkStridedDeviceAddressRegionKHR](capi--vkstrideddeviceaddressregionkhr.md) srcInfosArray | <!--Device-VkStridedDeviceAddressRegionKHR srcInfosArray--><!--Device-VkStridedDeviceAddressRegionKHR srcInfosArray-End--> |
+| VkDeviceAddress srcInfosCount | <!--Device-VkDeviceAddress srcInfosCount--><!--Device-VkDeviceAddress srcInfosCount-End--> |
+| VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags | <!--Device-VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags--><!--Device-VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags-End--> |
 
 

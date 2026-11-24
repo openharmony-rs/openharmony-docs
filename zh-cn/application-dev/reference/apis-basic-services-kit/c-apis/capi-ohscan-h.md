@@ -58,7 +58,7 @@ enum Scan_ErrorCode
 
 定义错误码。
 
-<!--Device-Scan_ErrorCode--><!--Device-Scan_ErrorCode-End-->
+<!--Device-enum Scan_ErrorCode--><!--Device-enum Scan_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -66,21 +66,21 @@ enum Scan_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SCAN_ERROR_NONE = 0 | 操作成功 |
-| SCAN_ERROR_NO_PERMISSION = 201 | 权限验证失败，需申请接口所需权限 |
-| SCAN_ERROR_INVALID_PARAMETER = 401 | 参数无效。例如指针为空或字符串为空，请检查传入的参数是否合法 |
-| SCAN_ERROR_GENERIC_FAILURE = 24300101 | 通用内部错误，请稍后重试 |
-| SCAN_ERROR_RPC_FAILURE = 24300102 | RPC通信错误，请检查扫描服务状态后重试 |
-| SCAN_ERROR_SERVER_FAILURE = 24300103 | 表示扫描过程中发生错误，请稍后重试 |
-| SCAN_ERROR_UNSUPPORTED = 24300104 | 不支持的操作，请检查当前扫描仪是否支持该操作 |
-| SCAN_ERROR_CANCELED = 24300105 | 操作已取消，请重新发起扫描 |
-| SCAN_ERROR_DEVICE_BUSY = 24300106 | 扫描仪繁忙，请稍后重试 |
-| SCAN_ERROR_INVALID = 24300107 | 数据无效（包括打开时无设备），请检查扫描仪连接状态 |
-| SCAN_ERROR_JAMMED = 24300108 | 文档进纸器卡纸，请清除卡纸后重试 |
-| SCAN_ERROR_NO_DOCS = 24300109 | 文档进纸器缺纸，请在进纸器中放入文档后重试 |
-| SCAN_ERROR_COVER_OPEN = 24300110 | 扫描仪盖板打开，请关闭盖板后重试 |
-| SCAN_ERROR_IO_ERROR = 24300111 | 扫描仪I/O错误，请检查扫描仪连接并重试 |
-| SCAN_ERROR_NO_MEMORY = 24300112 | 内存不足，请释放资源后重试 |
+| SCAN_ERROR_NONE = 0 | 操作成功<br><!--Device-SCAN_ERROR_NONE = 0--><!--Device-SCAN_ERROR_NONE = 0-End--> |
+| SCAN_ERROR_NO_PERMISSION = 201 | 权限验证失败，需申请接口所需权限<br><!--Device-SCAN_ERROR_NO_PERMISSION = 201--><!--Device-SCAN_ERROR_NO_PERMISSION = 201-End--> |
+| SCAN_ERROR_INVALID_PARAMETER = 401 | 参数无效。例如指针为空或字符串为空，请检查传入的参数是否合法<br><!--Device-SCAN_ERROR_INVALID_PARAMETER = 401--><!--Device-SCAN_ERROR_INVALID_PARAMETER = 401-End--> |
+| SCAN_ERROR_GENERIC_FAILURE = 24300101 | 通用内部错误，请稍后重试<br><!--Device-SCAN_ERROR_GENERIC_FAILURE = 24300101--><!--Device-SCAN_ERROR_GENERIC_FAILURE = 24300101-End--> |
+| SCAN_ERROR_RPC_FAILURE = 24300102 | RPC通信错误，请检查扫描服务状态后重试<br><!--Device-SCAN_ERROR_RPC_FAILURE = 24300102--><!--Device-SCAN_ERROR_RPC_FAILURE = 24300102-End--> |
+| SCAN_ERROR_SERVER_FAILURE = 24300103 | 表示扫描过程中发生错误，请稍后重试<br><!--Device-SCAN_ERROR_SERVER_FAILURE = 24300103--><!--Device-SCAN_ERROR_SERVER_FAILURE = 24300103-End--> |
+| SCAN_ERROR_UNSUPPORTED = 24300104 | 不支持的操作，请检查当前扫描仪是否支持该操作<br><!--Device-SCAN_ERROR_UNSUPPORTED = 24300104--><!--Device-SCAN_ERROR_UNSUPPORTED = 24300104-End--> |
+| SCAN_ERROR_CANCELED = 24300105 | 操作已取消，请重新发起扫描<br><!--Device-SCAN_ERROR_CANCELED = 24300105--><!--Device-SCAN_ERROR_CANCELED = 24300105-End--> |
+| SCAN_ERROR_DEVICE_BUSY = 24300106 | 扫描仪繁忙，请稍后重试<br><!--Device-SCAN_ERROR_DEVICE_BUSY = 24300106--><!--Device-SCAN_ERROR_DEVICE_BUSY = 24300106-End--> |
+| SCAN_ERROR_INVALID = 24300107 | 数据无效（包括打开时无设备），请检查扫描仪连接状态<br><!--Device-SCAN_ERROR_INVALID = 24300107--><!--Device-SCAN_ERROR_INVALID = 24300107-End--> |
+| SCAN_ERROR_JAMMED = 24300108 | 文档进纸器卡纸，请清除卡纸后重试<br><!--Device-SCAN_ERROR_JAMMED = 24300108--><!--Device-SCAN_ERROR_JAMMED = 24300108-End--> |
+| SCAN_ERROR_NO_DOCS = 24300109 | 文档进纸器缺纸，请在进纸器中放入文档后重试<br><!--Device-SCAN_ERROR_NO_DOCS = 24300109--><!--Device-SCAN_ERROR_NO_DOCS = 24300109-End--> |
+| SCAN_ERROR_COVER_OPEN = 24300110 | 扫描仪盖板打开，请关闭盖板后重试<br><!--Device-SCAN_ERROR_COVER_OPEN = 24300110--><!--Device-SCAN_ERROR_COVER_OPEN = 24300110-End--> |
+| SCAN_ERROR_IO_ERROR = 24300111 | 扫描仪I/O错误，请检查扫描仪连接并重试<br><!--Device-SCAN_ERROR_IO_ERROR = 24300111--><!--Device-SCAN_ERROR_IO_ERROR = 24300111-End--> |
+| SCAN_ERROR_NO_MEMORY = 24300112 | 内存不足，请释放资源后重试<br><!--Device-SCAN_ERROR_NO_MEMORY = 24300112--><!--Device-SCAN_ERROR_NO_MEMORY = 24300112-End--> |
 
 
 ## 函数说明

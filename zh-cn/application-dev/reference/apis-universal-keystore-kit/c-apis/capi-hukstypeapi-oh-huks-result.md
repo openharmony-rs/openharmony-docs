@@ -24,8 +24,8 @@ typedef struct OH_Huks_Result {...} OH_Huks_Result
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t errorCode | 状态返回码，参考[OH_Huks_ErrCode](capi-native-huks-type-h.md#oh_huks_errcode)。 |
-| const char *errorMsg | 对状态返回码的说明信息。 |
-| uint8_t *data | 其他返回数据。 |
+| int32_t errorCode | 状态返回码，参考[OH_Huks_ErrCode](capi-native-huks-type-h.md#oh_huks_errcode)。<br><!--Device-int32_t errorCode--><!--Device-int32_t errorCode-End--> |
+| const char *errorMsg | 对状态返回码的说明信息。<br><!--Device-const char *errorMsg--><!--Device-const char *errorMsg-End--> |
+| uint8_t *data | 其他返回数据。<br><!--Device-uint8_t *data--><!--Device-uint8_t *data-End--> |
 
 

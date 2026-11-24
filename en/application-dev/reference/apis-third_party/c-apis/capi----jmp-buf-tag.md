@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| \_\_jmp_buf \_\_jb |  |
-| unsigned long \_\_fl |  |
-| unsigned long \_\_ss[128/sizeof(long)] |  |
+| \_\_jmp_buf \_\_jb | <!--Device-\_\_jmp_buf \_\_jb--><!--Device-\_\_jmp_buf \_\_jb-End--> |
+| unsigned long \_\_fl | <!--Device-unsigned long \_\_fl--><!--Device-unsigned long \_\_fl-End--> |
+| unsigned long \_\_ss[128/sizeof(long)] | <!--Device-unsigned long \_\_ss[128/sizeof(long)]--><!--Device-unsigned long \_\_ss[128/sizeof(long)]-End--> |
 
 

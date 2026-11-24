@@ -24,8 +24,8 @@ Defines all the asynchronous callback function pointers of an **OH_AVScreenCaptu
 
 | Name | Description |
 | -- | -- |
-| [OH_AVScreenCaptureOnError](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror) onError |  |
-| [OH_AVScreenCaptureOnAudioBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonaudiobufferavailable) onAudioBufferAvailable |  |
-| [OH_AVScreenCaptureOnVideoBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonvideobufferavailable) onVideoBufferAvailable |  |
+| [OH_AVScreenCaptureOnError](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror) onError | <!--Device-OH_AVScreenCaptureOnError onError--><!--Device-OH_AVScreenCaptureOnError onError-End--> |
+| [OH_AVScreenCaptureOnAudioBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonaudiobufferavailable) onAudioBufferAvailable | <!--Device-OH_AVScreenCaptureOnAudioBufferAvailable onAudioBufferAvailable--><!--Device-OH_AVScreenCaptureOnAudioBufferAvailable onAudioBufferAvailable-End--> |
+| [OH_AVScreenCaptureOnVideoBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonvideobufferavailable) onVideoBufferAvailable | <!--Device-OH_AVScreenCaptureOnVideoBufferAvailable onVideoBufferAvailable--><!--Device-OH_AVScreenCaptureOnVideoBufferAvailable onVideoBufferAvailable-End--> |
 
 

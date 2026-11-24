@@ -34,7 +34,7 @@ enum ArkUI_TextAreaType
 
 Enumerates the input types of multi-line text. Different enumerated values specify the input types of the **<br>TextArea** component and affect the validation rules for the input content.
 
-<!--Device-ArkUI_TextAreaType--><!--Device-ArkUI_TextAreaType-End-->
+<!--Device-enum ArkUI_TextAreaType--><!--Device-enum ArkUI_TextAreaType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,10 +42,10 @@ Enumerates the input types of multi-line text. Different enumerated values speci
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXTAREA_TYPE_NORMAL = 0 | Normal input type with no special restrictions. |
-| ARKUI_TEXTAREA_TYPE_NUMBER = 2 | Number input mode. |
-| ARKUI_TEXTAREA_TYPE_PHONE_NUMBER = 3 | Phone number input type.<br>It supports digits, spaces, +, -, *, #, (, ), with no length limit. |
-| ARKUI_TEXTAREA_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, dots, !, #, $, %, &amp;, ', *, +, -, /, =, ?, ^, `, \{, \\|, \}, ~, and @ (only one @ allowed). The email address must follow the basic format: the part before @ is the username, and the part after @ is the domain. |
-| ARKUI_TEXTAREA_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions. In this type, the system input method is shown by default when the component gains focus.<br>**Since**: 20 |
+| ARKUI_TEXTAREA_TYPE_NORMAL = 0 | Normal input type with no special restrictions.<br><!--Device-ARKUI_TEXTAREA_TYPE_NORMAL = 0--><!--Device-ARKUI_TEXTAREA_TYPE_NORMAL = 0-End--> |
+| ARKUI_TEXTAREA_TYPE_NUMBER = 2 | Number input mode.<br><!--Device-ARKUI_TEXTAREA_TYPE_NUMBER = 2--><!--Device-ARKUI_TEXTAREA_TYPE_NUMBER = 2-End--> |
+| ARKUI_TEXTAREA_TYPE_PHONE_NUMBER = 3 | Phone number input type.<br>It supports digits, spaces, +, -, *, #, (, ), with no length limit.<br><!--Device-ARKUI_TEXTAREA_TYPE_PHONE_NUMBER = 3--><!--Device-ARKUI_TEXTAREA_TYPE_PHONE_NUMBER = 3-End--> |
+| ARKUI_TEXTAREA_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, dots, !, #, $, %, &amp;, ', *, +, -, /, =, ?, ^, `, \{, \\|, \}, ~, and @ (only one @ allowed). The email address must follow the basic format: the part before @ is the username, and the part after @ is the domain.<br><!--Device-ARKUI_TEXTAREA_TYPE_EMAIL = 5--><!--Device-ARKUI_TEXTAREA_TYPE_EMAIL = 5-End--> |
+| ARKUI_TEXTAREA_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions. In this type, the system input method is shown by default when the component gains focus.<br>**Since**: 20<br><!--Device-ARKUI_TEXTAREA_TYPE_ONE_TIME_CODE = 14--><!--Device-ARKUI_TEXTAREA_TYPE_ONE_TIME_CODE = 14-End--> |
 
 

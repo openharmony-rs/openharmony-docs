@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t descriptorSetCount |  |
-| const uint32_t* pDescriptorCounts |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t descriptorSetCount | <!--Device-uint32_t descriptorSetCount--><!--Device-uint32_t descriptorSetCount-End--> |
+| const uint32_t* pDescriptorCounts | <!--Device-const uint32_t* pDescriptorCounts--><!--Device-const uint32_t* pDescriptorCounts-End--> |
 
 

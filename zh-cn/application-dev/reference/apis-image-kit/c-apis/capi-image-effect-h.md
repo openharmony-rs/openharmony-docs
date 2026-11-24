@@ -544,7 +544,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputNativeBuffer(OH_ImageEffect *imageE
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | 效果器指针。 |
-| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) *nativeBuffer | 指向OH_NativeBuffer实例的指针。 |
+| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-oh-nativebuffer-oh-nativebuffer.md) *nativeBuffer | 指向OH_NativeBuffer实例的指针。 |
 
 **返回值：**
 
@@ -573,7 +573,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputNativeBuffer(OH_ImageEffect *image
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | 效果器指针。 |
-| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) *nativeBuffer | 指向OH_NativeBuffer实例的指针，允许为空，当输入为空时渲染结果返回到输入的OH_NativeBuffer对象上。 |
+| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-oh-nativebuffer-oh-nativebuffer.md) *nativeBuffer | 指向OH_NativeBuffer实例的指针，允许为空，当输入为空时渲染结果返回到输入的OH_NativeBuffer对象上。 |
 
 **返回值：**
 

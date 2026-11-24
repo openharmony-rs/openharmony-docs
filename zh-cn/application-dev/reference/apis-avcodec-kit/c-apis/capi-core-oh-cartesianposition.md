@@ -24,8 +24,8 @@ typedef struct OH_CartesianPosition {...} OH_CartesianPosition
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | 对象声源在笛卡尔坐标系中的归一化（Normalization，将数值按比例转换到指定范围内）X坐标，表示左/右维度。<br> 取值范围为[-1.0, 1.0]。<br>**起始版本：** 26.0.0 |
-| float y | 对象声源在笛卡尔坐标系中的归一化Y坐标，表示前/后维度。<br> 取值范围为[-1.0, 1.0]。<br>**起始版本：** 26.0.0 |
-| float z | 对象声源在笛卡尔坐标系中的归一化Z坐标，表示上/下维度。<br> 取值范围为[-1.0, 1.0]。<br>**起始版本：** 26.0.0 |
+| float x | 对象声源在笛卡尔坐标系中的归一化（Normalization，将数值按比例转换到指定范围内）X坐标，表示左/右维度。<br> 取值范围为[-1.0, 1.0]。<br>**起始版本：** 26.0.0<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | 对象声源在笛卡尔坐标系中的归一化Y坐标，表示前/后维度。<br> 取值范围为[-1.0, 1.0]。<br>**起始版本：** 26.0.0<br><!--Device-float y--><!--Device-float y-End--> |
+| float z | 对象声源在笛卡尔坐标系中的归一化Z坐标，表示上/下维度。<br> 取值范围为[-1.0, 1.0]。<br>**起始版本：** 26.0.0<br><!--Device-float z--><!--Device-float z-End--> |
 
 

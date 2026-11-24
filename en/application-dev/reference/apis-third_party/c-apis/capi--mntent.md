@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| char *mnt_fsname |  |
-| char *mnt_dir |  |
-| char *mnt_type |  |
-| char *mnt_opts |  |
-| int mnt_freq |  |
-| int mnt_passno |  |
+| char *mnt_fsname | <!--Device-char *mnt_fsname--><!--Device-char *mnt_fsname-End--> |
+| char *mnt_dir | <!--Device-char *mnt_dir--><!--Device-char *mnt_dir-End--> |
+| char *mnt_type | <!--Device-char *mnt_type--><!--Device-char *mnt_type-End--> |
+| char *mnt_opts | <!--Device-char *mnt_opts--><!--Device-char *mnt_opts-End--> |
+| int mnt_freq | <!--Device-int mnt_freq--><!--Device-int mnt_freq-End--> |
+| int mnt_passno | <!--Device-int mnt_passno--><!--Device-int mnt_passno-End--> |
 
 

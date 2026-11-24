@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDisplayPowerStateEXT powerState |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDisplayPowerStateEXT powerState | <!--Device-VkDisplayPowerStateEXT powerState--><!--Device-VkDisplayPowerStateEXT powerState-End--> |
 
 

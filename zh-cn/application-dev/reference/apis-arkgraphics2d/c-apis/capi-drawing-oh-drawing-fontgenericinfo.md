@@ -24,10 +24,10 @@ typedef struct OH_Drawing_FontGenericInfo {...} OH_Drawing_FontGenericInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char* familyName | 字体家族名。 |
-| size_t aliasInfoSize | 别名字体列表的数量。 |
-| size_t adjustInfoSize | 字重映射列表的数量。 |
-| [OH_Drawing_FontAliasInfo*](capi-drawing-oh-drawing-fontaliasinfo.md) aliasInfoSet | 别名字体列表。 |
-| [OH_Drawing_FontAdjustInfo*](capi-drawing-oh-drawing-fontadjustinfo.md) adjustInfoSet | 字重映射列表。 |
+| char* familyName | 字体家族名。<br><!--Device-char* familyName--><!--Device-char* familyName-End--> |
+| size_t aliasInfoSize | 别名字体列表的数量。<br><!--Device-size_t aliasInfoSize--><!--Device-size_t aliasInfoSize-End--> |
+| size_t adjustInfoSize | 字重映射列表的数量。<br><!--Device-size_t adjustInfoSize--><!--Device-size_t adjustInfoSize-End--> |
+| [OH_Drawing_FontAliasInfo*](capi-drawing-oh-drawing-fontaliasinfo.md) aliasInfoSet | 别名字体列表。<br><!--Device-OH_Drawing_FontAliasInfo* aliasInfoSet--><!--Device-OH_Drawing_FontAliasInfo* aliasInfoSet-End--> |
+| [OH_Drawing_FontAdjustInfo*](capi-drawing-oh-drawing-fontadjustinfo.md) adjustInfoSet | 字重映射列表。<br><!--Device-OH_Drawing_FontAdjustInfo* adjustInfoSet--><!--Device-OH_Drawing_FontAdjustInfo* adjustInfoSet-End--> |
 
 

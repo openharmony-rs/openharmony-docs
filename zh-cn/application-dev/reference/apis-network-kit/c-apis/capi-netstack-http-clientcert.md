@@ -24,9 +24,9 @@ typedef struct Http_ClientCert {...} Http_ClientCert
 
 | 名称 | 描述 |
 | -- | -- |
-| char *certPath | 证书路径。 |
-| [Http_CertType](capi-net-http-type-h.md#http_certtype) type | Certificate type. The default value is **PEM**. For details, see [Http_CertType](capi-net-http-type-h.md#http_certtype). |
-| char *keyPath | 证书密钥的路径。 |
-| char *keyPassword | 证书密钥的密码。 |
+| char *certPath | 证书路径。<br><!--Device-char *certPath--><!--Device-char *certPath-End--> |
+| [Http_CertType](capi-net-http-type-h.md#http_certtype) type | 证书类型，默认是PEM，参考[Http_CertType](capi-net-http-type-h.md#http_certtype)。<br><!--Device-Http_CertType type--><!--Device-Http_CertType type-End--> |
+| char *keyPath | 证书密钥的路径。<br><!--Device-char *keyPath--><!--Device-char *keyPath-End--> |
+| char *keyPassword | 证书密钥的密码。<br><!--Device-char *keyPassword--><!--Device-char *keyPassword-End--> |
 
 

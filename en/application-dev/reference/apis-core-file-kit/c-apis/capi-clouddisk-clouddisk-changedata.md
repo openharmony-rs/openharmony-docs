@@ -24,13 +24,13 @@ A struct that encapsulates the event data generated when a single file under the
 
 | Name | Description |
 | -- | -- |
-| uint64_t updateSequenceNumber{0} | Update sequence number of the change event. It is incremented by 1 monotonically each time a file is changed, and is used for incremental change query. Value range: [0, 2^64 – 1]<br>**Since**: 21 |
-| CloudDisk_FileIdInfo fileId | Globally unique file ID. It remains unchanged within the lifecycle of the file.<br>**Since**: 21 |
-| CloudDisk_FileIdInfo parentFileId | Unique ID of the parent directory to which the file or directory belongs.<br>**Since**: 21 |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | Relative path of the file under the sync root path.<br>**Since**: 21 |
-| [CloudDisk_OperationType](capi-oh-cloud-disk-manager-h.md#clouddisk_operationtype) operationType | Change operation type of the file (for example, create, delete, and move).<br>**Since**: 21 |
-| uint64_t size{0} | File size, in bytes.<br>**Since**: 21 |
-| uint64_t mtime{0} | File modification time, in milliseconds.<br>**Since**: 21 |
-| uint64_t timeStamp{0} | Time when a change event occurs, in milliseconds.<br>**Since**: 21 |
+| uint64_t updateSequenceNumber{0} | Update sequence number of the change event. It is incremented by 1 monotonically each time a file is changed, and is used for incremental change query. Value range: [0, 2^64 – 1]<br>**Since**: 21<br><!--Device-uint64_t updateSequenceNumber{0}--><!--Device-uint64_t updateSequenceNumber{0}-End--> |
+| CloudDisk_FileIdInfo fileId | Globally unique file ID. It remains unchanged within the lifecycle of the file.<br>**Since**: 21<br><!--Device-CloudDisk_FileIdInfo fileId--><!--Device-CloudDisk_FileIdInfo fileId-End--> |
+| CloudDisk_FileIdInfo parentFileId | Unique ID of the parent directory to which the file or directory belongs.<br>**Since**: 21<br><!--Device-CloudDisk_FileIdInfo parentFileId--><!--Device-CloudDisk_FileIdInfo parentFileId-End--> |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | Relative path of the file under the sync root path.<br>**Since**: 21<br><!--Device-CloudDisk_PathInfo relativePathInfo--><!--Device-CloudDisk_PathInfo relativePathInfo-End--> |
+| [CloudDisk_OperationType](capi-oh-cloud-disk-manager-h.md#clouddisk_operationtype) operationType | Change operation type of the file (for example, create, delete, and move).<br>**Since**: 21<br><!--Device-CloudDisk_OperationType operationType--><!--Device-CloudDisk_OperationType operationType-End--> |
+| uint64_t size{0} | File size, in bytes.<br>**Since**: 21<br><!--Device-uint64_t size{0}--><!--Device-uint64_t size{0}-End--> |
+| uint64_t mtime{0} | File modification time, in milliseconds.<br>**Since**: 21<br><!--Device-uint64_t mtime{0}--><!--Device-uint64_t mtime{0}-End--> |
+| uint64_t timeStamp{0} | Time when a change event occurs, in milliseconds.<br>**Since**: 21<br><!--Device-uint64_t timeStamp{0}--><!--Device-uint64_t timeStamp{0}-End--> |
 
 

@@ -24,15 +24,15 @@ Represents the print attributes to be configured in a print task, including the 
 
 | Name | Description |
 | -- | -- |
-| [Print_Range](capi-print-print-range.md) pageRange | Print range. |
-| [Print_PageSize](capi-print-print-pagesize.md) pageSize | Page size. |
-| [Print_Margin](capi-print-print-margin.md) pageMargin | Print margin, in millimeters. You are advised to set the margin based on the document type and the minimum margin supported by the printer. If the margin is too small, the printed content may be cropped. |
-| uint32_t copyNumber | Number of copies to print. The value must be greater than or equal to 1. |
-| uint32_t duplexMode | Duplex mode. The single-sided mode is suitable for single-sided printing. The long-edge flip mode is suitable for documents that are turned vertically (such as books). The short-edge flip mode is suitable for documents that are turned horizontally (such as calendars). |
-| uint32_t colorMode | Color mode. The color mode is suitable for documents (such as images) that require color display. The monochrome mode is suitable for printing plain text or drafts to save consumables. The automatic mode allows the system to automatically select the color mode. |
-| bool isSequential | Whether pages are printed in sequential order.<br>The value **true** indicates that pages are printed in sequential order, and **false** indicates that pages are printed in reverse order. |
-| bool isLandscape | Whether pages are printed in landscape mode.<br>The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. |
-| bool hasOption | Whether the printing has an option flag.<br>The value **true** indicates that the printing has an option flag ( the **options** field is valid), and **false** indicates the opposite (the **options** field is invalid). |
-| char options[256] | Printing options, which are used to pass additional printing configuration parameters. This parameter is valid only when **hasOption** is set to **true**. The value can contain a maximum of 255 characters. |
+| [Print_Range](capi-print-print-range.md) pageRange | Print range.<br><!--Device-Print_Range pageRange--><!--Device-Print_Range pageRange-End--> |
+| [Print_PageSize](capi-print-print-pagesize.md) pageSize | Page size.<br><!--Device-Print_PageSize pageSize--><!--Device-Print_PageSize pageSize-End--> |
+| [Print_Margin](capi-print-print-margin.md) pageMargin | Print margin, in millimeters. You are advised to set the margin based on the document type and the minimum margin supported by the printer. If the margin is too small, the printed content may be cropped.<br><!--Device-Print_Margin pageMargin--><!--Device-Print_Margin pageMargin-End--> |
+| uint32_t copyNumber | Number of copies to print. The value must be greater than or equal to 1.<br><!--Device-uint32_t copyNumber--><!--Device-uint32_t copyNumber-End--> |
+| uint32_t duplexMode | Duplex mode. The single-sided mode is suitable for single-sided printing. The long-edge flip mode is suitable for documents that are turned vertically (such as books). The short-edge flip mode is suitable for documents that are turned horizontally (such as calendars).<br><!--Device-uint32_t duplexMode--><!--Device-uint32_t duplexMode-End--> |
+| uint32_t colorMode | Color mode. The color mode is suitable for documents (such as images) that require color display. The monochrome mode is suitable for printing plain text or drafts to save consumables. The automatic mode allows the system to automatically select the color mode.<br><!--Device-uint32_t colorMode--><!--Device-uint32_t colorMode-End--> |
+| bool isSequential | Whether pages are printed in sequential order.<br>The value **true** indicates that pages are printed in sequential order, and **false** indicates that pages are printed in reverse order.<br><!--Device-bool isSequential--><!--Device-bool isSequential-End--> |
+| bool isLandscape | Whether pages are printed in landscape mode.<br>The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode.<br><!--Device-bool isLandscape--><!--Device-bool isLandscape-End--> |
+| bool hasOption | Whether the printing has an option flag.<br>The value **true** indicates that the printing has an option flag ( the **options** field is valid), and **false** indicates the opposite (the **options** field is invalid).<br><!--Device-bool hasOption--><!--Device-bool hasOption-End--> |
+| char options[256] | Printing options, which are used to pass additional printing configuration parameters. This parameter is valid only when **hasOption** is set to **true**. The value can contain a maximum of 255 characters.<br><!--Device-char options[256]--><!--Device-char options[256]-End--> |
 
 

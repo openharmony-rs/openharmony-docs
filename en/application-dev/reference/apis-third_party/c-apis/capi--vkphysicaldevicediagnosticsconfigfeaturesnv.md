@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 diagnosticsConfig |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 diagnosticsConfig | <!--Device-VkBool32 diagnosticsConfig--><!--Device-VkBool32 diagnosticsConfig-End--> |
 
 

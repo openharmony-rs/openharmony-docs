@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBuffer buffer |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBuffer buffer | <!--Device-VkBuffer buffer--><!--Device-VkBuffer buffer-End--> |
 
 

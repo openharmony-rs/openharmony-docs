@@ -10,13 +10,13 @@
 
 | Name | Description |
 | -- | -- |
-| char req_state |  |
-| char orphan |  |
-| char sg_io_owned |  |
-| char problem |  |
-| int pack_id |  |
-| void *usr_ptr |  |
-| unsigned duration |  |
-| int unused |  |
+| char req_state | <!--Device-char req_state--><!--Device-char req_state-End--> |
+| char orphan | <!--Device-char orphan--><!--Device-char orphan-End--> |
+| char sg_io_owned | <!--Device-char sg_io_owned--><!--Device-char sg_io_owned-End--> |
+| char problem | <!--Device-char problem--><!--Device-char problem-End--> |
+| int pack_id | <!--Device-int pack_id--><!--Device-int pack_id-End--> |
+| void *usr_ptr | <!--Device-void *usr_ptr--><!--Device-void *usr_ptr-End--> |
+| unsigned duration | <!--Device-unsigned duration--><!--Device-unsigned duration-End--> |
+| int unused | <!--Device-int unused--><!--Device-int unused-End--> |
 
 

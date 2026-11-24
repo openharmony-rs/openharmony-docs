@@ -48,7 +48,7 @@ enum ArkUI_NativeAPIVariantKind
 
 Enumerates the types of native API collections.
 
-<!--Device-ArkUI_NativeAPIVariantKind--><!--Device-ArkUI_NativeAPIVariantKind-End-->
+<!--Device-enum ArkUI_NativeAPIVariantKind--><!--Device-enum ArkUI_NativeAPIVariantKind-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,11 +56,11 @@ Enumerates the types of native API collections.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_NATIVE_NODE | API related to UI components. For details, see the struct definition in <arkui/native_node.h>. |
-| ARKUI_NATIVE_DIALOG | API related to dialog boxes. For details, see the struct definition in <arkui/native_dialog.h>. |
-| ARKUI_NATIVE_GESTURE | API related to gestures. For details, see the struct definition in <arkui/native_gesture.h>. |
-| ARKUI_NATIVE_ANIMATE | API related to animations. For details, see the struct definition in <arkui/native_animate.h>. |
-| ARKUI_MULTI_THREAD_NATIVE_NODE | API related to multi-threaded UI components. For details, see the struct definition in [native_node.h](capi-native-node-h.md).<br>**Since**: 22 |
+| ARKUI_NATIVE_NODE | API related to UI components. For details, see the struct definition in <arkui/native_node.h>.<br><!--Device-ARKUI_NATIVE_NODE--><!--Device-ARKUI_NATIVE_NODE-End--> |
+| ARKUI_NATIVE_DIALOG | API related to dialog boxes. For details, see the struct definition in <arkui/native_dialog.h>.<br><!--Device-ARKUI_NATIVE_DIALOG--><!--Device-ARKUI_NATIVE_DIALOG-End--> |
+| ARKUI_NATIVE_GESTURE | API related to gestures. For details, see the struct definition in <arkui/native_gesture.h>.<br><!--Device-ARKUI_NATIVE_GESTURE--><!--Device-ARKUI_NATIVE_GESTURE-End--> |
+| ARKUI_NATIVE_ANIMATE | API related to animations. For details, see the struct definition in <arkui/native_animate.h>.<br><!--Device-ARKUI_NATIVE_ANIMATE--><!--Device-ARKUI_NATIVE_ANIMATE-End--> |
+| ARKUI_MULTI_THREAD_NATIVE_NODE | API related to multi-threaded UI components. For details, see the struct definition in [native_node.h](capi-native-node-h.md).<br>**Since**: 22<br><!--Device-ARKUI_MULTI_THREAD_NATIVE_NODE--><!--Device-ARKUI_MULTI_THREAD_NATIVE_NODE-End--> |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckType
 
@@ -72,7 +72,7 @@ enum OH_ArkUI_NativeModule_RuntimeCheckType
 
 Defines the runtime check types for ArkUI C APIs.<br> Each check type corresponds to a specific improper usage scenario of ArkUI C APIs, used to detect misuse at runtime (such as cross-thread calls, accessing destroyed objects, etc.). You can use [OH_ArkUI_NativeModule_SetRuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_setruntimecheckmode) to independently configure a runtime check mode for each check type. The behavior upon check failure is determined by the configured runtime check mode. For available modes, see [OH_ArkUI_NativeModule_RuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode).
 
-<!--Device-OH_ArkUI_NativeModule_RuntimeCheckType--><!--Device-OH_ArkUI_NativeModule_RuntimeCheckType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckType--><!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,10 +80,10 @@ Defines the runtime check types for ArkUI C APIs.<br> Each check type correspond
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0 | UI thread check type: Some ArkUI C APIs must be called on the UI thread. This type detects whether these APIs are called from a non-UI thread.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | Node disposed check type: Detects whether the ArkUI_NodeHandle passed to a C API has already been disposed.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2 | Attribute match check type: Detects whether an ArkUI_NodeAttributeType passed to SetAttribute/GetAttribute/ResetAttribute matches the node's actual component type.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3 | multi thread race condition check type: Detects whether another thread is already operating on the same component tree when a multi thread API is called.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0 | UI thread check type: Some ArkUI C APIs must be called on the UI thread. This type detects whether these APIs are called from a non-UI thread.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | Node disposed check type: Detects whether the ArkUI_NodeHandle passed to a C API has already been disposed.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2 | Attribute match check type: Detects whether an ArkUI_NodeAttributeType passed to SetAttribute/GetAttribute/ResetAttribute matches the node's actual component type.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3 | multi thread race condition check type: Detects whether another thread is already operating on the same component tree when a multi thread API is called.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3-End--> |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckMode
 
@@ -95,7 +95,7 @@ enum OH_ArkUI_NativeModule_RuntimeCheckMode
 
 Defines the runtime check modes for ArkUI C APIs.<br> All runtime check types use the same set of modes (DISABLED, LOG, CRASH) defined in this enum to determine the behavior upon check failure. That is, each check type can be independently set to one of the following three modes. The default mode depends on the application's build type: For applications compiled in debug mode (Debug build in DevEco Studio, used for development and debugging), the default is [OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode). For applications compiled in release mode (Release build in DevEco Studio, used for production release), the default is [OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode).
 
-<!--Device-OH_ArkUI_NativeModule_RuntimeCheckMode--><!--Device-OH_ArkUI_NativeModule_RuntimeCheckMode-End-->
+<!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckMode--><!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,9 +103,9 @@ Defines the runtime check modes for ArkUI C APIs.<br> All runtime check types us
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0 | Disables the specified runtime check. The C API behavior is the same as before the check was introduced.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1 | Prints diagnostic logs (check type, API name, cause, native stack trace) and continues the C API call.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2 | Prints diagnostic logs and immediately terminates the application.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0 | Disables the specified runtime check. The C API behavior is the same as before the check was introduced.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1 | Prints diagnostic logs (check type, API name, cause, native stack trace) and continues the C API call.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2 | Prints diagnostic logs and immediately terminates the application.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2-End--> |
 
 
 ## Function description

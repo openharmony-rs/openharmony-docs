@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBufferUsageFlags2 usage |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBufferUsageFlags2 usage | <!--Device-VkBufferUsageFlags2 usage--><!--Device-VkBufferUsageFlags2 usage-End--> |
 
 

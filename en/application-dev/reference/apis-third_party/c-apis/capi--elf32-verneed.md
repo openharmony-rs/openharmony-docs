@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Half vn_version |  |
-| Elf32_Half vn_cnt |  |
-| Elf32_Word vn_file |  |
-| Elf32_Word vn_aux |  |
-| Elf32_Word vn_next |  |
+| Elf32_Half vn_version | <!--Device-Elf32_Half vn_version--><!--Device-Elf32_Half vn_version-End--> |
+| Elf32_Half vn_cnt | <!--Device-Elf32_Half vn_cnt--><!--Device-Elf32_Half vn_cnt-End--> |
+| Elf32_Word vn_file | <!--Device-Elf32_Word vn_file--><!--Device-Elf32_Word vn_file-End--> |
+| Elf32_Word vn_aux | <!--Device-Elf32_Word vn_aux--><!--Device-Elf32_Word vn_aux-End--> |
+| Elf32_Word vn_next | <!--Device-Elf32_Word vn_next--><!--Device-Elf32_Word vn_next-End--> |
 
 

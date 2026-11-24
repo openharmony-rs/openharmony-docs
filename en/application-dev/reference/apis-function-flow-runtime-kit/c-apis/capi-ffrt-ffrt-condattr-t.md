@@ -24,6 +24,6 @@ Defines the condition variable attribute structure used to store condition varia
 
 | Name | Description |
 | -- | -- |
-| long storage | Internal storage backing the condition variable attribute. Do not access directly. |
+| long storage | Internal storage backing the condition variable attribute. Do not access directly.<br><!--Device-long storage--><!--Device-long storage-End--> |
 
 

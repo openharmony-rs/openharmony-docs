@@ -24,7 +24,7 @@ A struct that encapsulates the file sync state.
 
 | Name | Description |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePathInfo | File path information.<br>**Since**: 21 |
-| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | File sync state.<br>**Since**: 21 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePathInfo | File path information.<br>**Since**: 21<br><!--Device-CloudDisk_PathInfo filePathInfo--><!--Device-CloudDisk_PathInfo filePathInfo-End--> |
+| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | File sync state.<br>**Since**: 21<br><!--Device-CloudDisk_SyncState syncState--><!--Device-CloudDisk_SyncState syncState-End--> |
 
 

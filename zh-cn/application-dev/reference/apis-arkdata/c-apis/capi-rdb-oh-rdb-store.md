@@ -24,6 +24,6 @@ typedef struct OH_Rdb_Store {...} OH_Rdb_Store
 
 | 名称 | 描述 |
 | -- | -- |
-| int64_t id | OH_Rdb_Store结构体的唯一标识符。 |
+| int64_t id | OH_Rdb_Store结构体的唯一标识符。<br><!--Device-int64_t id--><!--Device-int64_t id-End--> |
 
 

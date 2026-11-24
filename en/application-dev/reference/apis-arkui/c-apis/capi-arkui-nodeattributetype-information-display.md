@@ -18,7 +18,9 @@ NODE_LOADING_PROGRESS_COLOR = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LOADING_PROGRESS
 
 **Description**
 
-Defines the foreground color of the loading progress bar. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: foreground color, in 0xARGB format. For example, 0xFFFF0000 indicates red.Default value: The color follows the theme color.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: foreground color, in 0xARGB format.</li> </ul>
+Defines the foreground color of the loading progress bar. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: foreground color, in 0xARGB format. For example, 0xFFFF0000 indicates red.Default value: The color follows the theme color.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: foreground color, in 0xARGB format.</li> </ul>
+
+<!--Device-NODE_LOADING_PROGRESS_COLOR = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LOADING_PROGRESS--><!--Device-NODE_LOADING_PROGRESS_COLOR = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LOADING_PROGRESS-End-->
 
 **Since**: 12
 
@@ -30,7 +32,9 @@ NODE_LOADING_PROGRESS_ENABLE_LOADING
 
 **Description**
 
-Whether to show the loading animation for the **LoadingProgress** component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to show the loading animation. The value <b>true</b> means to show the loading animation, and <b>false</b> means the opposite.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: The value <b>1</b> means to show the loading animation, and <b>0</b> means the opposite.</li> </ul>
+Whether to show the loading animation for the **LoadingProgress** component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether to show the loading animation. The value <b>true</b> means to show the loading animation, and <b>false</b> means the opposite.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: The value <b>1</b> means to show the loading animation, and <b>0</b> means the opposite.</li> </ul>
+
+<!--Device-NODE_LOADING_PROGRESS_ENABLE_LOADING--><!--Device-NODE_LOADING_PROGRESS_ENABLE_LOADING-End-->
 
 **Since**: 12
 
@@ -42,7 +46,9 @@ NODE_PROGRESS_VALUE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PROGRESS
 
 **Description**
 
-Defines the current value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: current value of the progress indicator.The value range is [0, **total**]. The default value is **0**. If the value is out of range, it is automatically corrected to the boundary value in the valid range. </li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: Current value of the progress indicator. The value range is [0, **total**].</li> </ul>
+Defines the current value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].f32: current value of the progress indicator.The value range is [0, **total**]. The default value is **0**. If the value is out of range, it is automatically corrected to the boundary value in the valid range. </li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].f32: Current value of the progress indicator. The value range is [0, **total**].</li> </ul>
+
+<!--Device-NODE_PROGRESS_VALUE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PROGRESS--><!--Device-NODE_PROGRESS_VALUE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PROGRESS-End-->
 
 **Since**: 12
 
@@ -54,7 +60,9 @@ NODE_PROGRESS_TOTAL
 
 **Description**
 
-Total value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞). The default value is **100**. The value must be greater than 0. The setting does not take effect if a value less than or equal to 0 is passed.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞).</li> </ul>
+Total value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞). The default value is **100**. The value must be greater than 0. The setting does not take effect if a value less than or equal to 0 is passed.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞).</li> </ul>
+
+<!--Device-NODE_PROGRESS_TOTAL--><!--Device-NODE_PROGRESS_TOTAL-End-->
 
 **Since**: 12
 
@@ -66,7 +74,9 @@ NODE_PROGRESS_COLOR
 
 **Description**
 
-Color for the progress value on the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: color value, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: color value, in 0xARGB format.</li> </ul>
+Color for the progress value on the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: color value, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: color value, in 0xARGB format.</li> </ul>
+
+<!--Device-NODE_PROGRESS_COLOR--><!--Device-NODE_PROGRESS_COLOR-End-->
 
 **Since**: 12
 
@@ -78,7 +88,9 @@ NODE_PROGRESS_TYPE
 
 **Description**
 
-Type of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Type of the progress indicator. The value is an enumerated value of [ArkUI_ProgressType](capi-progress-h.md#arkui_progresstype). The default value is <b>ARKUI_PROGRESS_TYPE_LINEAR</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Type of the progress indicator.</li> </ul>
+Type of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: Type of the progress indicator. The value is an enumerated value of [ArkUI_ProgressType](capi-progress-h.md#arkui_progresstype). The default value is <b>ARKUI_PROGRESS_TYPE_LINEAR</b>.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: Type of the progress indicator.</li> </ul>
+
+<!--Device-NODE_PROGRESS_TYPE--><!--Device-NODE_PROGRESS_TYPE-End-->
 
 **Since**: 12
 
@@ -90,7 +102,9 @@ NODE_PROGRESS_LINEAR_STYLE
 
 **Description**
 
-Linear progress indicator style. This attribute can be set, reset, and obtained as required through APIs. It does not take effect if the progress indicator type is not linear. In this case, set the progress indicator type to **ARKUI_PROGRESS_TYPE_LINEAR** through **NODE_PROGRESS_TYPE** first.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Use the [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) object to set the style.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Use the [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) object to get the style.</li> </ul>
+Linear progress indicator style. This attribute can be set, reset, and obtained as required through APIs. It does not take effect if the progress indicator type is not linear. In this case, set the progress indicator type to **ARKUI_PROGRESS_TYPE_LINEAR** through **NODE_PROGRESS_TYPE** first.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.object: Use the [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) object to set the style.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.object: Use the [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) object to get the style.</li> </ul>
+
+<!--Device-NODE_PROGRESS_LINEAR_STYLE--><!--Device-NODE_PROGRESS_LINEAR_STYLE-End-->
 
 **Since**: 15
 

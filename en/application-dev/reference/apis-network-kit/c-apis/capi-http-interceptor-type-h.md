@@ -49,7 +49,7 @@ enum OH_Interceptor_Stage
 
 Defines an enum for the interceptor stages.
 
-<!--Device-OH_Interceptor_Stage--><!--Device-OH_Interceptor_Stage-End-->
+<!--Device-enum OH_Interceptor_Stage--><!--Device-enum OH_Interceptor_Stage-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -57,8 +57,8 @@ Defines an enum for the interceptor stages.
 
 | Enum item | Description |
 | -- | -- |
-| OH_STAGE_REQUEST | The interceptor processes the request.<br>**Since**: 24 |
-| OH_STAGE_RESPONSE | The interceptor processes the response.<br>**Since**: 24 |
+| OH_STAGE_REQUEST | The interceptor processes the request.<br>**Since**: 24<br><!--Device-OH_STAGE_REQUEST--><!--Device-OH_STAGE_REQUEST-End--> |
+| OH_STAGE_RESPONSE | The interceptor processes the response.<br>**Since**: 24<br><!--Device-OH_STAGE_RESPONSE--><!--Device-OH_STAGE_RESPONSE-End--> |
 
 ### OH_Interceptor_Type
 
@@ -70,7 +70,7 @@ enum OH_Interceptor_Type
 
 Defines an enum for the interceptor types.
 
-<!--Device-OH_Interceptor_Type--><!--Device-OH_Interceptor_Type-End-->
+<!--Device-enum OH_Interceptor_Type--><!--Device-enum OH_Interceptor_Type-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -78,8 +78,8 @@ Defines an enum for the interceptor types.
 
 | Enum item | Description |
 | -- | -- |
-| OH_TYPE_READ_ONLY | Read-only interceptor.<br>**Since**: 24 |
-| OH_TYPE_MODIFY_NETWORK_KIT | interceptor will modify the packet from Network Kit<br>**Since**: 26.0.0 |
+| OH_TYPE_READ_ONLY | Read-only interceptor.<br>**Since**: 24<br><!--Device-OH_TYPE_READ_ONLY--><!--Device-OH_TYPE_READ_ONLY-End--> |
+| OH_TYPE_MODIFY_NETWORK_KIT | interceptor will modify the packet from Network Kit<br>**Since**: 26.0.0<br><!--Device-OH_TYPE_MODIFY_NETWORK_KIT--><!--Device-OH_TYPE_MODIFY_NETWORK_KIT-End--> |
 
 ### OH_Interceptor_Result
 
@@ -91,7 +91,7 @@ enum OH_Interceptor_Result
 
 Defines an enum for the interceptor results.
 
-<!--Device-OH_Interceptor_Result--><!--Device-OH_Interceptor_Result-End-->
+<!--Device-enum OH_Interceptor_Result--><!--Device-enum OH_Interceptor_Result-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -99,8 +99,8 @@ Defines an enum for the interceptor results.
 
 | Enum item | Description |
 | -- | -- |
-| OH_CONTINUE | The processing continues.<br>**Since**: 24 |
-| OH_ABORT | The processing is aborted.<br>**Since**: 24 |
+| OH_CONTINUE | The processing continues.<br>**Since**: 24<br><!--Device-OH_CONTINUE--><!--Device-OH_CONTINUE-End--> |
+| OH_ABORT | The processing is aborted.<br>**Since**: 24<br><!--Device-OH_ABORT--><!--Device-OH_ABORT-End--> |
 
 
 ## Function description

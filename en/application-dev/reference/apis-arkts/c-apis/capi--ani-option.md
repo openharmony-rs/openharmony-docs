@@ -12,7 +12,7 @@
 
 | Name | Description |
 | -- | -- |
-| const char *option |  |
-| void *extra |  |
+| const char *option | <!--Device-const char *option--><!--Device-const char *option-End--> |
+| void *extra | <!--Device-void *extra--><!--Device-void *extra-End--> |
 
 

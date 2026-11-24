@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 sampleLocationsEnable |  |
-| [VkSampleLocationsInfoEXT](capi--vksamplelocationsinfoext.md) sampleLocationsInfo |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 sampleLocationsEnable | <!--Device-VkBool32 sampleLocationsEnable--><!--Device-VkBool32 sampleLocationsEnable-End--> |
+| [VkSampleLocationsInfoEXT](capi--vksamplelocationsinfoext.md) sampleLocationsInfo | <!--Device-VkSampleLocationsInfoEXT sampleLocationsInfo--><!--Device-VkSampleLocationsInfoEXT sampleLocationsInfo-End--> |
 
 

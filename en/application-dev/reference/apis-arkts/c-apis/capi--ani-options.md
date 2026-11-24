@@ -12,7 +12,7 @@
 
 | Name | Description |
 | -- | -- |
-| size_t nr_options |  |
-| [const ani_option](capi--ani-option.md) *options |  |
+| size_t nr_options | <!--Device-size_t nr_options--><!--Device-size_t nr_options-End--> |
+| [const ani_option](capi--ani-option.md) *options | <!--Device-const ani_option *options--><!--Device-const ani_option *options-End--> |
 
 

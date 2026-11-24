@@ -24,9 +24,9 @@ Defines the configurable parameters of a scanner. You can configure the title, d
 
 | Name | Description |
 | -- | -- |
-| char **titles | Option titles. |
-| char **descriptions | Option descriptions. |
-| char **ranges | Ranges of options. |
-| int32_t optionCount | Number of options. |
+| char **titles | Option titles.<br><!--Device-char **titles--><!--Device-char **titles-End--> |
+| char **descriptions | Option descriptions.<br><!--Device-char **descriptions--><!--Device-char **descriptions-End--> |
+| char **ranges | Ranges of options.<br><!--Device-char **ranges--><!--Device-char **ranges-End--> |
+| int32_t optionCount | Number of options.<br><!--Device-int32_t optionCount--><!--Device-int32_t optionCount-End--> |
 
 

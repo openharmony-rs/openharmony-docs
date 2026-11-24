@@ -24,9 +24,9 @@ The struct describes the main window information.
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t displayId | ID of the display to which the main window belongs. |
-| int32_t windowId | Window ID. The default value is **0**, and the value is an integer. |
-| bool showing | Foreground/Background status of the main window. **true** if the main window is in the foreground, **false**<br>otherwise. |
-| const char* label | Pointer to the task name of the main window. |
+| uint64_t displayId | ID of the display to which the main window belongs.<br><!--Device-uint64_t displayId--><!--Device-uint64_t displayId-End--> |
+| int32_t windowId | Window ID. The default value is **0**, and the value is an integer.<br><!--Device-int32_t windowId--><!--Device-int32_t windowId-End--> |
+| bool showing | Foreground/Background status of the main window. **true** if the main window is in the foreground, **false** otherwise.<br><!--Device-bool showing--><!--Device-bool showing-End--> |
+| const char* label | Pointer to the task name of the main window.<br><!--Device-const char* label--><!--Device-const char* label-End--> |
 
 

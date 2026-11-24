@@ -24,6 +24,6 @@ The struct describes the frame shutter end information during capture.
 
 | Name | Description |
 | -- | -- |
-| int32_t captureId | Capture ID. |
+| int32_t captureId | Capture ID.<br><!--Device-int32_t captureId--><!--Device-int32_t captureId-End--> |
 
 

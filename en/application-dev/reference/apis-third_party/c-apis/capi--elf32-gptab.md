@@ -10,11 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| gt_header |  |
-| gt_header.gt_current_g_value |  |
-| gt_header.gt_unused |  |
-| gt_entry |  |
-| gt_entry.gt_g_value |  |
-| gt_entry.gt_bytes |  |
+| gt_header.gt_current_g_value | <!--Device-gt_header.gt_current_g_value--><!--Device-gt_header.gt_current_g_value-End--> |
+| gt_header.gt_unused | <!--Device-gt_header.gt_unused--><!--Device-gt_header.gt_unused-End--> |
+| gt_entry.gt_g_value | <!--Device-gt_entry.gt_g_value--><!--Device-gt_entry.gt_g_value-End--> |
+| gt_entry.gt_bytes | <!--Device-gt_entry.gt_bytes--><!--Device-gt_entry.gt_bytes-End--> |
 
 

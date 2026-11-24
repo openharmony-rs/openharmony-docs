@@ -60,15 +60,15 @@ Declare underlying data structure.
 
 | Name | Description |
 | -- | -- |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | Default equalization effect band gains. Gains is {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | Ballad equalization effect band gains. Gains is {3, 5, 2, -4, 1, 2, -3, 1, 4, 5}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | Chinese style equalization effect band gains. Gains is {0, 0, 2, 0, 0, 4, 4, 2, 2, 5}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | Classic equalization effect band gains. Gains is {2, 3, 2, 1, 0, 0, -5, -5, -5, -6}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | Dance music equalization effect band gains. Gains is {4, 3, 2, -3, 0, 0, 5, 4, 2, 0}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | Jazz equalization effect band gains. Gains is {2, 0, 2, 3, 6, 5, -1, 3, 4, 4}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | Pop equalization effect band gains. Gains is {5, 2, 1, -1, -5, -5, -2, 1, 2, 4}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | R&B equalization effect band gains. Gains is {1, 4, 5, 3, -2, -2, 2, 3, 5, 5}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | Rock equalization effect band gains. Gains is {6, 4, 4, 2, 0, 1, 3, 3, 5, 4}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | Default equalization effect band gains. Gains is {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DEFAULT--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DEFAULT-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | Ballad equalization effect band gains. Gains is {3, 5, 2, -4, 1, 2, -3, 1, 4, 5}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_BALLADS--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_BALLADS-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | Chinese style equalization effect band gains. Gains is {0, 0, 2, 0, 0, 4, 4, 2, 2, 5}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CHINESE_STYLE--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CHINESE_STYLE-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | Classic equalization effect band gains. Gains is {2, 3, 2, 1, 0, 0, -5, -5, -5, -6}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CLASSICAL--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CLASSICAL-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | Dance music equalization effect band gains. Gains is {4, 3, 2, -3, 0, 0, 5, 4, 2, 0}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DANCE_MUSIC--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DANCE_MUSIC-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | Jazz equalization effect band gains. Gains is {2, 0, 2, 3, 6, 5, -1, 3, 4, 4}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_JAZZ--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_JAZZ-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | Pop equalization effect band gains. Gains is {5, 2, 1, -1, -5, -5, -2, 1, 2, 4}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_POP--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_POP-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | R&B equalization effect band gains. Gains is {1, 4, 5, 3, -2, -2, 2, 3, 5, 5}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_RB--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_RB-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | Rock equalization effect band gains. Gains is {6, 4, 4, 2, 0, 1, 3, 3, 5, 4}.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_ROCK--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_ROCK-End--> |
 
 ## Enum type description
 
@@ -82,7 +82,7 @@ enum OH_AudioNode_Type
 
 Define audio node type.
 
-<!--Device-OH_AudioNode_Type--><!--Device-OH_AudioNode_Type-End-->
+<!--Device-enum OH_AudioNode_Type--><!--Device-enum OH_AudioNode_Type-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -90,20 +90,20 @@ Define audio node type.
 
 | Enum item | Description |
 | -- | -- |
-| INPUT_NODE_TYPE_DEFAULT = 1 | Default input node type, this input node type supports getting audio data from application.<br>**Since**: 22 |
-| OUTPUT_NODE_TYPE_DEFAULT = 101 | Default output node type, this output node type supports providing audio data to the application.<br>**Since**: 22 |
-| EFFECT_NODE_TYPE_EQUALIZER = 201 | Equalization node type. The audio format output by the equalizer node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22 |
-| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | Noise reduction node type. The audio format output by the noise reduction node is as follows: Sample rate: 16000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 1.<br>**Since**: 22 |
-| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | Sound field node type. Support sound field type [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype). The audio format output by the sound field node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22 |
-| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | Audio separation node type, it can only connect to output node. The audio format output by the audio separation node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_F32LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 4 (First 2 channels for vocals; last 2 channels for accompaniment).<br>**Since**: 22 |
-| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | Voice beautifier node type. Supports beautifier type [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype). The audio format output by the voice beautifier node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22 |
-| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | Scene effect node type. The audio format output by the environment node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22 |
-| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | Audio mixer node type. The audio format output by the mixer node is as follows: Sample rate: [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate). Sample format: [AUDIO_SAMPLE_F32LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22 |
-| EFFECT_NODE_TYPE_SPACE_RENDER = 208 | Space render node type. The audio format output by the space render node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 23 |
-| EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209 | Pure voice change node type. The audio format output by the pure voice change node is as follows: Sample rate: 16000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 1.<br>**Since**: 23 |
-| EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210 | General voice change node type. The audio format output by the general voice change node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 23 |
-| EFFECT_NODE_TYPE_TEMPO_PITCH = 211 | Tempo and pitch node type. The audio format output by the tempo and pitch node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 1.<br>**Since**: 23 |
-| EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212 | HOA input space render node type. The audio format input by the HOA space render node is as follows: Sample rate: [SAMPLE_RATE_16000](capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_48000](capi-native-audio-suite-base-h.md#oh_audio_samplerate). Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). layout: 1st to 3rd order HOA, as one of the follows: [CH_LAYOUT_AMB_ORDER1_ACN_N3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER1_ACN_SN3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER1_FUMA](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_N3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_SN3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_FUMA](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER3_ACN_N3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER3_ACN_SN3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER3_FUMA](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). The audio format output by the HOA space render node is as follows: Sample rate: [SAMPLE_RATE_48000](capi-native-audio-suite-base-h.md#oh_audio_samplerate). Sample format: [AUDIO_SAMPLE_S32LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2. This node must be connected to an input node with the audio format set to HOA. If it is not connected, an error will be reported in the [OH_AudioSuiteEngine_StartPipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline) interface.<br>**Since**: 26.0.0 |
+| INPUT_NODE_TYPE_DEFAULT = 1 | Default input node type, this input node type supports getting audio data from application.<br>**Since**: 22<br><!--Device-INPUT_NODE_TYPE_DEFAULT = 1--><!--Device-INPUT_NODE_TYPE_DEFAULT = 1-End--> |
+| OUTPUT_NODE_TYPE_DEFAULT = 101 | Default output node type, this output node type supports providing audio data to the application.<br>**Since**: 22<br><!--Device-OUTPUT_NODE_TYPE_DEFAULT = 101--><!--Device-OUTPUT_NODE_TYPE_DEFAULT = 101-End--> |
+| EFFECT_NODE_TYPE_EQUALIZER = 201 | Equalization node type. The audio format output by the equalizer node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22<br><!--Device-EFFECT_NODE_TYPE_EQUALIZER = 201--><!--Device-EFFECT_NODE_TYPE_EQUALIZER = 201-End--> |
+| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | Noise reduction node type. The audio format output by the noise reduction node is as follows: Sample rate: 16000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 1.<br>**Since**: 22<br><!--Device-EFFECT_NODE_TYPE_NOISE_REDUCTION = 202--><!--Device-EFFECT_NODE_TYPE_NOISE_REDUCTION = 202-End--> |
+| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | Sound field node type. Support sound field type [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype). The audio format output by the sound field node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22<br><!--Device-EFFECT_NODE_TYPE_SOUND_FIELD = 203--><!--Device-EFFECT_NODE_TYPE_SOUND_FIELD = 203-End--> |
+| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | Audio separation node type, it can only connect to output node. The audio format output by the audio separation node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_F32LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 4 (First 2 channels for vocals; last 2 channels for accompaniment).<br>**Since**: 22<br><!--Device-EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204--><!--Device-EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204-End--> |
+| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | Voice beautifier node type. Supports beautifier type [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype). The audio format output by the voice beautifier node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22<br><!--Device-EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205--><!--Device-EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205-End--> |
+| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | Scene effect node type. The audio format output by the environment node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22<br><!--Device-EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206--><!--Device-EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206-End--> |
+| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | Audio mixer node type. The audio format output by the mixer node is as follows: Sample rate: [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate). Sample format: [AUDIO_SAMPLE_F32LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 22<br><!--Device-EFFECT_NODE_TYPE_AUDIO_MIXER = 207--><!--Device-EFFECT_NODE_TYPE_AUDIO_MIXER = 207-End--> |
+| EFFECT_NODE_TYPE_SPACE_RENDER = 208 | Space render node type. The audio format output by the space render node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 23<br><!--Device-EFFECT_NODE_TYPE_SPACE_RENDER = 208--><!--Device-EFFECT_NODE_TYPE_SPACE_RENDER = 208-End--> |
+| EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209 | Pure voice change node type. The audio format output by the pure voice change node is as follows: Sample rate: 16000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 1.<br>**Since**: 23<br><!--Device-EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209--><!--Device-EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209-End--> |
+| EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210 | General voice change node type. The audio format output by the general voice change node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2.<br>**Since**: 23<br><!--Device-EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210--><!--Device-EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210-End--> |
+| EFFECT_NODE_TYPE_TEMPO_PITCH = 211 | Tempo and pitch node type. The audio format output by the tempo and pitch node is as follows: Sample rate: 48000 Hz. Sample format: [AUDIO_SAMPLE_S16LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 1.<br>**Since**: 23<br><!--Device-EFFECT_NODE_TYPE_TEMPO_PITCH = 211--><!--Device-EFFECT_NODE_TYPE_TEMPO_PITCH = 211-End--> |
+| EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212 | HOA input space render node type. The audio format input by the HOA space render node is as follows: Sample rate: [SAMPLE_RATE_16000](capi-native-audio-suite-base-h.md#oh_audio_samplerate), [SAMPLE_RATE_48000](capi-native-audio-suite-base-h.md#oh_audio_samplerate). Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). layout: 1st to 3rd order HOA, as one of the follows: [CH_LAYOUT_AMB_ORDER1_ACN_N3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER1_ACN_SN3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER1_FUMA](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_N3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_SN3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_FUMA](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER3_ACN_N3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER3_ACN_SN3D](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER3_FUMA](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). The audio format output by the HOA space render node is as follows: Sample rate: [SAMPLE_RATE_48000](capi-native-audio-suite-base-h.md#oh_audio_samplerate). Sample format: [AUDIO_SAMPLE_S32LE](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). Channels: 2. This node must be connected to an input node with the audio format set to HOA. If it is not connected, an error will be reported in the [OH_AudioSuiteEngine_StartPipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline) interface.<br>**Since**: 26.0.0<br><!--Device-EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212--><!--Device-EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212-End--> |
 
 ### OH_AudioSuite_PipelineWorkMode
 
@@ -115,7 +115,7 @@ enum OH_AudioSuite_PipelineWorkMode
 
 Define pipeline work mode
 
-<!--Device-OH_AudioSuite_PipelineWorkMode--><!--Device-OH_AudioSuite_PipelineWorkMode-End-->
+<!--Device-enum OH_AudioSuite_PipelineWorkMode--><!--Device-enum OH_AudioSuite_PipelineWorkMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -123,8 +123,8 @@ Define pipeline work mode
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | The pipeline supports creating various effect nodes in suite mode.<br>**Since**: 22 |
-| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | If you need to play audio after effect processing, you should select this mode. Before API version 23, in real-time rendering mode, the pipeline only supports EQ effect processing. In API version 23 and later, in real-time rendering mode, the pipeline supports all effect processing.<br>**Since**: 22 |
+| AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | The pipeline supports creating various effect nodes in suite mode.<br>**Since**: 22<br><!--Device-AUDIOSUITE_PIPELINE_EDIT_MODE = 1--><!--Device-AUDIOSUITE_PIPELINE_EDIT_MODE = 1-End--> |
+| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | If you need to play audio after effect processing, you should select this mode. Before API version 23, in real-time rendering mode, the pipeline only supports EQ effect processing. In API version 23 and later, in real-time rendering mode, the pipeline supports all effect processing.<br>**Since**: 22<br><!--Device-AUDIOSUITE_PIPELINE_REALTIME_MODE = 2--><!--Device-AUDIOSUITE_PIPELINE_REALTIME_MODE = 2-End--> |
 
 ### OH_AudioSuite_PipelineState
 
@@ -136,7 +136,7 @@ enum OH_AudioSuite_PipelineState
 
 Define pipeline state
 
-<!--Device-OH_AudioSuite_PipelineState--><!--Device-OH_AudioSuite_PipelineState-End-->
+<!--Device-enum OH_AudioSuite_PipelineState--><!--Device-enum OH_AudioSuite_PipelineState-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -144,8 +144,8 @@ Define pipeline state
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSUITE_PIPELINE_STOPPED = 1 | The pipeline is in a stopped state.<br>**Since**: 22 |
-| AUDIOSUITE_PIPELINE_RUNNING = 2 | The pipeline is in a running state.<br>**Since**: 22 |
+| AUDIOSUITE_PIPELINE_STOPPED = 1 | The pipeline is in a stopped state.<br>**Since**: 22<br><!--Device-AUDIOSUITE_PIPELINE_STOPPED = 1--><!--Device-AUDIOSUITE_PIPELINE_STOPPED = 1-End--> |
+| AUDIOSUITE_PIPELINE_RUNNING = 2 | The pipeline is in a running state.<br>**Since**: 22<br><!--Device-AUDIOSUITE_PIPELINE_RUNNING = 2--><!--Device-AUDIOSUITE_PIPELINE_RUNNING = 2-End--> |
 
 ### OH_AudioSuite_Result
 
@@ -157,7 +157,7 @@ enum OH_AudioSuite_Result
 
 Define the result of the function execution.
 
-<!--Device-OH_AudioSuite_Result--><!--Device-OH_AudioSuite_Result-End-->
+<!--Device-enum OH_AudioSuite_Result--><!--Device-enum OH_AudioSuite_Result-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -165,20 +165,20 @@ Define the result of the function execution.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSUITE_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_INVALID_STATE = 2 | &nbsp;Execution status exception.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_SYSTEM = 3 | &nbsp;A system error has occurred.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 | &nbsp;audio engine does not exist.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 | &nbsp;audio pipeline does not exist.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | &nbsp;audio node does not exist.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | &nbsp;the connect or disconnect between the nodes is unsupported.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | &nbsp;Unsupported operation.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | &nbsp;The application attempted to create an object that exceeds the system's maximum limit.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | &nbsp;Required parameters are missing.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_TIMEOUT = 12 | &nbsp;Operation timed out.<br>**Since**: 22 |
-| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | &nbsp;Memory allocation failed.<br>**Since**: 22 |
+| AUDIOSUITE_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 22<br><!--Device-AUDIOSUITE_SUCCESS = 0--><!--Device-AUDIOSUITE_SUCCESS = 0-End--> |
+| AUDIOSUITE_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_INVALID_PARAM = 1--><!--Device-AUDIOSUITE_ERROR_INVALID_PARAM = 1-End--> |
+| AUDIOSUITE_ERROR_INVALID_STATE = 2 | &nbsp;Execution status exception.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_INVALID_STATE = 2--><!--Device-AUDIOSUITE_ERROR_INVALID_STATE = 2-End--> |
+| AUDIOSUITE_ERROR_SYSTEM = 3 | &nbsp;A system error has occurred.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_SYSTEM = 3--><!--Device-AUDIOSUITE_ERROR_SYSTEM = 3-End--> |
+| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4--><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4-End--> |
+| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 | &nbsp;audio engine does not exist.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5--><!--Device-AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5-End--> |
+| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 | &nbsp;audio pipeline does not exist.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6--><!--Device-AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6-End--> |
+| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | &nbsp;audio node does not exist.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7--><!--Device-AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7-End--> |
+| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | &nbsp;the connect or disconnect between the nodes is unsupported.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8--><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8-End--> |
+| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | &nbsp;Unsupported operation.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9--><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9-End--> |
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | &nbsp;The application attempted to create an object that exceeds the system's maximum limit.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10--><!--Device-AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10-End--> |
+| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | &nbsp;Required parameters are missing.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11--><!--Device-AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11-End--> |
+| AUDIOSUITE_ERROR_TIMEOUT = 12 | &nbsp;Operation timed out.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_TIMEOUT = 12--><!--Device-AUDIOSUITE_ERROR_TIMEOUT = 12-End--> |
+| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | &nbsp;Memory allocation failed.<br>**Since**: 22<br><!--Device-AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13--><!--Device-AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13-End--> |
 
 ### OH_Audio_SampleFormat
 
@@ -190,7 +190,7 @@ enum OH_Audio_SampleFormat
 
 Define the audio sample format.
 
-<!--Device-OH_Audio_SampleFormat--><!--Device-OH_Audio_SampleFormat-End-->
+<!--Device-enum OH_Audio_SampleFormat--><!--Device-enum OH_Audio_SampleFormat-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -198,11 +198,11 @@ Define the audio sample format.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_SAMPLE_U8 = 0 | Unsigned 8 format.<br>**Since**: 22 |
-| AUDIO_SAMPLE_S16LE = 1 | Signed 16 bit integer, little endian.<br>**Since**: 22 |
-| AUDIO_SAMPLE_S24LE = 2 | Signed 24 bit integer, little endian.<br>**Since**: 22 |
-| AUDIO_SAMPLE_S32LE = 3 | Signed 32 bit integer, little endian.<br>**Since**: 22 |
-| AUDIO_SAMPLE_F32LE = 4 | 32 bit IEEE floating point, little endian.<br>**Since**: 22 |
+| AUDIO_SAMPLE_U8 = 0 | Unsigned 8 format.<br>**Since**: 22<br><!--Device-AUDIO_SAMPLE_U8 = 0--><!--Device-AUDIO_SAMPLE_U8 = 0-End--> |
+| AUDIO_SAMPLE_S16LE = 1 | Signed 16 bit integer, little endian.<br>**Since**: 22<br><!--Device-AUDIO_SAMPLE_S16LE = 1--><!--Device-AUDIO_SAMPLE_S16LE = 1-End--> |
+| AUDIO_SAMPLE_S24LE = 2 | Signed 24 bit integer, little endian.<br>**Since**: 22<br><!--Device-AUDIO_SAMPLE_S24LE = 2--><!--Device-AUDIO_SAMPLE_S24LE = 2-End--> |
+| AUDIO_SAMPLE_S32LE = 3 | Signed 32 bit integer, little endian.<br>**Since**: 22<br><!--Device-AUDIO_SAMPLE_S32LE = 3--><!--Device-AUDIO_SAMPLE_S32LE = 3-End--> |
+| AUDIO_SAMPLE_F32LE = 4 | 32 bit IEEE floating point, little endian.<br>**Since**: 22<br><!--Device-AUDIO_SAMPLE_F32LE = 4--><!--Device-AUDIO_SAMPLE_F32LE = 4-End--> |
 
 ### OH_Audio_EncodingType
 
@@ -214,7 +214,7 @@ enum OH_Audio_EncodingType
 
 Define the audio encoding type.
 
-<!--Device-OH_Audio_EncodingType--><!--Device-OH_Audio_EncodingType-End-->
+<!--Device-enum OH_Audio_EncodingType--><!--Device-enum OH_Audio_EncodingType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -222,7 +222,7 @@ Define the audio encoding type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_ENCODING_TYPE_RAW = 0 | PCM encoding type.<br>**Since**: 22 |
+| AUDIO_ENCODING_TYPE_RAW = 0 | PCM encoding type.<br>**Since**: 22<br><!--Device-AUDIO_ENCODING_TYPE_RAW = 0--><!--Device-AUDIO_ENCODING_TYPE_RAW = 0-End--> |
 
 ### OH_Audio_SampleRate
 
@@ -234,7 +234,7 @@ enum OH_Audio_SampleRate
 
 Define the audio sample rate.
 
-<!--Device-OH_Audio_SampleRate--><!--Device-OH_Audio_SampleRate-End-->
+<!--Device-enum OH_Audio_SampleRate--><!--Device-enum OH_Audio_SampleRate-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -242,20 +242,20 @@ Define the audio sample rate.
 
 | Enum item | Description |
 | -- | -- |
-| SAMPLE_RATE_8000 = 8000 | 8kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_11025 = 11025 | 11.025kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_12000 = 12000 | 12kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_16000 = 16000 | 16kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_22050 = 22050 | 22.05kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_24000 = 24000 | 24kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_32000 = 32000 | 32kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_44100 = 44100 | 44.1kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_48000 = 48000 | 48kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_64000 = 64000 | 64kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_88200 = 88200 | 88.2kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_96000 = 96000 | 96kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_176400 = 176400 | 176.4kHz sample rate.<br>**Since**: 22 |
-| SAMPLE_RATE_192000 = 192000 | 192kHz sample rate.<br>**Since**: 22 |
+| SAMPLE_RATE_8000 = 8000 | 8kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_8000 = 8000--><!--Device-SAMPLE_RATE_8000 = 8000-End--> |
+| SAMPLE_RATE_11025 = 11025 | 11.025kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_11025 = 11025--><!--Device-SAMPLE_RATE_11025 = 11025-End--> |
+| SAMPLE_RATE_12000 = 12000 | 12kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_12000 = 12000--><!--Device-SAMPLE_RATE_12000 = 12000-End--> |
+| SAMPLE_RATE_16000 = 16000 | 16kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_16000 = 16000--><!--Device-SAMPLE_RATE_16000 = 16000-End--> |
+| SAMPLE_RATE_22050 = 22050 | 22.05kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_22050 = 22050--><!--Device-SAMPLE_RATE_22050 = 22050-End--> |
+| SAMPLE_RATE_24000 = 24000 | 24kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_24000 = 24000--><!--Device-SAMPLE_RATE_24000 = 24000-End--> |
+| SAMPLE_RATE_32000 = 32000 | 32kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_32000 = 32000--><!--Device-SAMPLE_RATE_32000 = 32000-End--> |
+| SAMPLE_RATE_44100 = 44100 | 44.1kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_44100 = 44100--><!--Device-SAMPLE_RATE_44100 = 44100-End--> |
+| SAMPLE_RATE_48000 = 48000 | 48kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_48000 = 48000--><!--Device-SAMPLE_RATE_48000 = 48000-End--> |
+| SAMPLE_RATE_64000 = 64000 | 64kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_64000 = 64000--><!--Device-SAMPLE_RATE_64000 = 64000-End--> |
+| SAMPLE_RATE_88200 = 88200 | 88.2kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_88200 = 88200--><!--Device-SAMPLE_RATE_88200 = 88200-End--> |
+| SAMPLE_RATE_96000 = 96000 | 96kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_96000 = 96000--><!--Device-SAMPLE_RATE_96000 = 96000-End--> |
+| SAMPLE_RATE_176400 = 176400 | 176.4kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_176400 = 176400--><!--Device-SAMPLE_RATE_176400 = 176400-End--> |
+| SAMPLE_RATE_192000 = 192000 | 192kHz sample rate.<br>**Since**: 22<br><!--Device-SAMPLE_RATE_192000 = 192000--><!--Device-SAMPLE_RATE_192000 = 192000-End--> |
 
 ### OH_SoundFieldType
 
@@ -267,7 +267,7 @@ enum OH_SoundFieldType
 
 Define the sound field type.
 
-<!--Device-OH_SoundFieldType--><!--Device-OH_SoundFieldType-End-->
+<!--Device-enum OH_SoundFieldType--><!--Device-enum OH_SoundFieldType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -275,10 +275,10 @@ Define the sound field type.
 
 | Enum item | Description |
 | -- | -- |
-| SOUND_FIELD_FRONT_FACING = 1 | Front facing sound field type.<br>**Since**: 22 |
-| SOUND_FIELD_GRAND = 2 | Grand sound field type.<br>**Since**: 22 |
-| SOUND_FIELD_NEAR = 3 | Near sound field type.<br>**Since**: 22 |
-| SOUND_FIELD_WIDE = 4 | Wide sound field type.<br>**Since**: 22 |
+| SOUND_FIELD_FRONT_FACING = 1 | Front facing sound field type.<br>**Since**: 22<br><!--Device-SOUND_FIELD_FRONT_FACING = 1--><!--Device-SOUND_FIELD_FRONT_FACING = 1-End--> |
+| SOUND_FIELD_GRAND = 2 | Grand sound field type.<br>**Since**: 22<br><!--Device-SOUND_FIELD_GRAND = 2--><!--Device-SOUND_FIELD_GRAND = 2-End--> |
+| SOUND_FIELD_NEAR = 3 | Near sound field type.<br>**Since**: 22<br><!--Device-SOUND_FIELD_NEAR = 3--><!--Device-SOUND_FIELD_NEAR = 3-End--> |
+| SOUND_FIELD_WIDE = 4 | Wide sound field type.<br>**Since**: 22<br><!--Device-SOUND_FIELD_WIDE = 4--><!--Device-SOUND_FIELD_WIDE = 4-End--> |
 
 ### OH_EnvironmentType
 
@@ -290,7 +290,7 @@ enum OH_EnvironmentType
 
 Define the environment type.
 
-<!--Device-OH_EnvironmentType--><!--Device-OH_EnvironmentType-End-->
+<!--Device-enum OH_EnvironmentType--><!--Device-enum OH_EnvironmentType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -298,10 +298,10 @@ Define the environment type.
 
 | Enum item | Description |
 | -- | -- |
-| ENVIRONMENT_TYPE_BROADCAST = 1 | Broadcast environment effect type.<br>**Since**: 22 |
-| ENVIRONMENT_TYPE_EARPIECE = 2 | Earpiece environment effect type.<br>**Since**: 22 |
-| ENVIRONMENT_TYPE_UNDERWATER = 3 | UnderWater environment effect type.<br>**Since**: 22 |
-| ENVIRONMENT_TYPE_GRAMOPHONE = 4 | Gramophone environment effect type.<br>**Since**: 22 |
+| ENVIRONMENT_TYPE_BROADCAST = 1 | Broadcast environment effect type.<br>**Since**: 22<br><!--Device-ENVIRONMENT_TYPE_BROADCAST = 1--><!--Device-ENVIRONMENT_TYPE_BROADCAST = 1-End--> |
+| ENVIRONMENT_TYPE_EARPIECE = 2 | Earpiece environment effect type.<br>**Since**: 22<br><!--Device-ENVIRONMENT_TYPE_EARPIECE = 2--><!--Device-ENVIRONMENT_TYPE_EARPIECE = 2-End--> |
+| ENVIRONMENT_TYPE_UNDERWATER = 3 | UnderWater environment effect type.<br>**Since**: 22<br><!--Device-ENVIRONMENT_TYPE_UNDERWATER = 3--><!--Device-ENVIRONMENT_TYPE_UNDERWATER = 3-End--> |
+| ENVIRONMENT_TYPE_GRAMOPHONE = 4 | Gramophone environment effect type.<br>**Since**: 22<br><!--Device-ENVIRONMENT_TYPE_GRAMOPHONE = 4--><!--Device-ENVIRONMENT_TYPE_GRAMOPHONE = 4-End--> |
 
 ### OH_VoiceBeautifierType
 
@@ -313,7 +313,7 @@ enum OH_VoiceBeautifierType
 
 Define voice beautifier type.
 
-<!--Device-OH_VoiceBeautifierType--><!--Device-OH_VoiceBeautifierType-End-->
+<!--Device-enum OH_VoiceBeautifierType--><!--Device-enum OH_VoiceBeautifierType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -321,10 +321,10 @@ Define voice beautifier type.
 
 | Enum item | Description |
 | -- | -- |
-| VOICE_BEAUTIFIER_TYPE_CLEAR = 1 | Clear voice beautifier type.<br>**Since**: 22 |
-| VOICE_BEAUTIFIER_TYPE_THEATRE = 2 | Theatre voice beautifier type.<br>**Since**: 22 |
-| VOICE_BEAUTIFIER_TYPE_CD = 3 | CD voice beautifier type.<br>**Since**: 22 |
-| VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4 | Recording studio voice beautifier type.<br>**Since**: 22 |
+| VOICE_BEAUTIFIER_TYPE_CLEAR = 1 | Clear voice beautifier type.<br>**Since**: 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_CLEAR = 1--><!--Device-VOICE_BEAUTIFIER_TYPE_CLEAR = 1-End--> |
+| VOICE_BEAUTIFIER_TYPE_THEATRE = 2 | Theatre voice beautifier type.<br>**Since**: 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_THEATRE = 2--><!--Device-VOICE_BEAUTIFIER_TYPE_THEATRE = 2-End--> |
+| VOICE_BEAUTIFIER_TYPE_CD = 3 | CD voice beautifier type.<br>**Since**: 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_CD = 3--><!--Device-VOICE_BEAUTIFIER_TYPE_CD = 3-End--> |
+| VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4 | Recording studio voice beautifier type.<br>**Since**: 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4--><!--Device-VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4-End--> |
 
 ### OH_AudioSuite_SurroundDirection
 
@@ -336,7 +336,7 @@ enum OH_AudioSuite_SurroundDirection
 
 Space rendering surround Direction
 
-<!--Device-OH_AudioSuite_SurroundDirection--><!--Device-OH_AudioSuite_SurroundDirection-End-->
+<!--Device-enum OH_AudioSuite_SurroundDirection--><!--Device-enum OH_AudioSuite_SurroundDirection-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -344,8 +344,8 @@ Space rendering surround Direction
 
 | Enum item | Description |
 | -- | -- |
-| SPACE_RENDER_CCW = 0 | Rotate counterclockwise<br>**Since**: 23 |
-| SPACE_RENDER_CW = 1 | Rotate clockwise<br>**Since**: 23 |
+| SPACE_RENDER_CCW = 0 | Rotate counterclockwise<br>**Since**: 23<br><!--Device-SPACE_RENDER_CCW = 0--><!--Device-SPACE_RENDER_CCW = 0-End--> |
+| SPACE_RENDER_CW = 1 | Rotate clockwise<br>**Since**: 23<br><!--Device-SPACE_RENDER_CW = 1--><!--Device-SPACE_RENDER_CW = 1-End--> |
 
 ### OH_AudioSuite_PureVoiceChangeGenderOption
 
@@ -357,7 +357,7 @@ enum OH_AudioSuite_PureVoiceChangeGenderOption
 
 Define speaker gender in change voice option
 
-<!--Device-OH_AudioSuite_PureVoiceChangeGenderOption--><!--Device-OH_AudioSuite_PureVoiceChangeGenderOption-End-->
+<!--Device-enum OH_AudioSuite_PureVoiceChangeGenderOption--><!--Device-enum OH_AudioSuite_PureVoiceChangeGenderOption-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -365,8 +365,8 @@ Define speaker gender in change voice option
 
 | Enum item | Description |
 | -- | -- |
-| PURE_VOICE_CHANGE_FEMALE = 1 | Set female voice.<br>**Since**: 23 |
-| PURE_VOICE_CHANGE_MALE = 2 | Set male voice.<br>**Since**: 23 |
+| PURE_VOICE_CHANGE_FEMALE = 1 | Set female voice.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_FEMALE = 1--><!--Device-PURE_VOICE_CHANGE_FEMALE = 1-End--> |
+| PURE_VOICE_CHANGE_MALE = 2 | Set male voice.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_MALE = 2--><!--Device-PURE_VOICE_CHANGE_MALE = 2-End--> |
 
 ### OH_AudioSuite_PureVoiceChangeType
 
@@ -378,7 +378,7 @@ enum OH_AudioSuite_PureVoiceChangeType
 
 Define voice type in change voice option
 
-<!--Device-OH_AudioSuite_PureVoiceChangeType--><!--Device-OH_AudioSuite_PureVoiceChangeType-End-->
+<!--Device-enum OH_AudioSuite_PureVoiceChangeType--><!--Device-enum OH_AudioSuite_PureVoiceChangeType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -386,13 +386,13 @@ Define voice type in change voice option
 
 | Enum item | Description |
 | -- | -- |
-| PURE_VOICE_CHANGE_TYPE_CARTOON = 1 | Cartoon voice type.<br>**Since**: 23 |
-| PURE_VOICE_CHANGE_TYPE_CUTE = 2 | Cute voice type.<br>**Since**: 23 |
-| PURE_VOICE_CHANGE_TYPE_FEMALE = 3 | Female voice type.<br>**Since**: 23 |
-| PURE_VOICE_CHANGE_TYPE_MALE = 4 | Male voice type.<br>**Since**: 23 |
-| PURE_VOICE_CHANGE_TYPE_MONSTER = 5 | Monster voice type.<br>**Since**: 23 |
-| PURE_VOICE_CHANGE_TYPE_ROBOTS = 6 | Robots voice type.<br>**Since**: 23 |
-| PURE_VOICE_CHANGE_TYPE_SEASONED = 7 | Seasoned voice type.<br>**Since**: 23 |
+| PURE_VOICE_CHANGE_TYPE_CARTOON = 1 | Cartoon voice type.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_CARTOON = 1--><!--Device-PURE_VOICE_CHANGE_TYPE_CARTOON = 1-End--> |
+| PURE_VOICE_CHANGE_TYPE_CUTE = 2 | Cute voice type.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_CUTE = 2--><!--Device-PURE_VOICE_CHANGE_TYPE_CUTE = 2-End--> |
+| PURE_VOICE_CHANGE_TYPE_FEMALE = 3 | Female voice type.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_FEMALE = 3--><!--Device-PURE_VOICE_CHANGE_TYPE_FEMALE = 3-End--> |
+| PURE_VOICE_CHANGE_TYPE_MALE = 4 | Male voice type.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_MALE = 4--><!--Device-PURE_VOICE_CHANGE_TYPE_MALE = 4-End--> |
+| PURE_VOICE_CHANGE_TYPE_MONSTER = 5 | Monster voice type.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_MONSTER = 5--><!--Device-PURE_VOICE_CHANGE_TYPE_MONSTER = 5-End--> |
+| PURE_VOICE_CHANGE_TYPE_ROBOTS = 6 | Robots voice type.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_ROBOTS = 6--><!--Device-PURE_VOICE_CHANGE_TYPE_ROBOTS = 6-End--> |
+| PURE_VOICE_CHANGE_TYPE_SEASONED = 7 | Seasoned voice type.<br>**Since**: 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_SEASONED = 7--><!--Device-PURE_VOICE_CHANGE_TYPE_SEASONED = 7-End--> |
 
 ### OH_AudioSuite_GeneralVoiceChangeType
 
@@ -404,7 +404,7 @@ enum OH_AudioSuite_GeneralVoiceChangeType
 
 Define voice type in general voice change.
 
-<!--Device-OH_AudioSuite_GeneralVoiceChangeType--><!--Device-OH_AudioSuite_GeneralVoiceChangeType-End-->
+<!--Device-enum OH_AudioSuite_GeneralVoiceChangeType--><!--Device-enum OH_AudioSuite_GeneralVoiceChangeType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -412,15 +412,15 @@ Define voice type in general voice change.
 
 | Enum item | Description |
 | -- | -- |
-| GENERAL_VOICE_CHANGE_TYPE_CUTE = 1 | Cute voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2 | Cyberpunk voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3 | Female voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_MALE = 4 | Male voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_MIX = 5 | Mix voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6 | Monster voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7 | Seasoned voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8 | Synth voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_TRILL = 9 | Trill voice type.<br>**Since**: 23 |
-| GENERAL_VOICE_CHANGE_TYPE_WAR = 10 | War voice type.<br>**Since**: 23 |
+| GENERAL_VOICE_CHANGE_TYPE_CUTE = 1 | Cute voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_CUTE = 1--><!--Device-GENERAL_VOICE_CHANGE_TYPE_CUTE = 1-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2 | Cyberpunk voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2--><!--Device-GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3 | Female voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3--><!--Device-GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_MALE = 4 | Male voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_MALE = 4--><!--Device-GENERAL_VOICE_CHANGE_TYPE_MALE = 4-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_MIX = 5 | Mix voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_MIX = 5--><!--Device-GENERAL_VOICE_CHANGE_TYPE_MIX = 5-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6 | Monster voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6--><!--Device-GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7 | Seasoned voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7--><!--Device-GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8 | Synth voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8--><!--Device-GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_TRILL = 9 | Trill voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_TRILL = 9--><!--Device-GENERAL_VOICE_CHANGE_TYPE_TRILL = 9-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_WAR = 10 | War voice type.<br>**Since**: 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_WAR = 10--><!--Device-GENERAL_VOICE_CHANGE_TYPE_WAR = 10-End--> |
 
 

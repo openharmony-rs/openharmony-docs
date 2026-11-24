@@ -10,19 +10,19 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t maxIndirectPipelineCount |  |
-| uint32_t maxIndirectShaderObjectCount |  |
-| uint32_t maxIndirectSequenceCount |  |
-| uint32_t maxIndirectCommandsTokenCount |  |
-| uint32_t maxIndirectCommandsTokenOffset |  |
-| uint32_t maxIndirectCommandsIndirectStride |  |
-| VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes |  |
-| VkShaderStageFlags supportedIndirectCommandsShaderStages |  |
-| VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding |  |
-| VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding |  |
-| VkBool32 deviceGeneratedCommandsTransformFeedback |  |
-| VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t maxIndirectPipelineCount | <!--Device-uint32_t maxIndirectPipelineCount--><!--Device-uint32_t maxIndirectPipelineCount-End--> |
+| uint32_t maxIndirectShaderObjectCount | <!--Device-uint32_t maxIndirectShaderObjectCount--><!--Device-uint32_t maxIndirectShaderObjectCount-End--> |
+| uint32_t maxIndirectSequenceCount | <!--Device-uint32_t maxIndirectSequenceCount--><!--Device-uint32_t maxIndirectSequenceCount-End--> |
+| uint32_t maxIndirectCommandsTokenCount | <!--Device-uint32_t maxIndirectCommandsTokenCount--><!--Device-uint32_t maxIndirectCommandsTokenCount-End--> |
+| uint32_t maxIndirectCommandsTokenOffset | <!--Device-uint32_t maxIndirectCommandsTokenOffset--><!--Device-uint32_t maxIndirectCommandsTokenOffset-End--> |
+| uint32_t maxIndirectCommandsIndirectStride | <!--Device-uint32_t maxIndirectCommandsIndirectStride--><!--Device-uint32_t maxIndirectCommandsIndirectStride-End--> |
+| VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes | <!--Device-VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes--><!--Device-VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes-End--> |
+| VkShaderStageFlags supportedIndirectCommandsShaderStages | <!--Device-VkShaderStageFlags supportedIndirectCommandsShaderStages--><!--Device-VkShaderStageFlags supportedIndirectCommandsShaderStages-End--> |
+| VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding | <!--Device-VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding--><!--Device-VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding-End--> |
+| VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding | <!--Device-VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding--><!--Device-VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding-End--> |
+| VkBool32 deviceGeneratedCommandsTransformFeedback | <!--Device-VkBool32 deviceGeneratedCommandsTransformFeedback--><!--Device-VkBool32 deviceGeneratedCommandsTransformFeedback-End--> |
+| VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount | <!--Device-VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount--><!--Device-VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount-End--> |
 
 

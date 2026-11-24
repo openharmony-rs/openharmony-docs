@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkVideoEndCodingFlagsKHR flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkVideoEndCodingFlagsKHR flags | <!--Device-VkVideoEndCodingFlagsKHR flags--><!--Device-VkVideoEndCodingFlagsKHR flags-End--> |
 
 

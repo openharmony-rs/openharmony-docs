@@ -21,7 +21,7 @@
 | [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | PhotoOutput_Callbacks | 拍照输出的回调。 |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | 拍照输出对象。<br> 可以使用[OH_CameraManager_CreatePhotoOutput](capi-camera-manager-h.md#oh_cameramanager_createphotooutput)方法创建指针。 |
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-oh-camera-photocapturesettingext.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
-| [OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md) | OH_Camera_C2PASignatureConfig | C2PA签名配置。 |
+| [OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md) | OH_Camera_C2PASignatureConfig | C2PA（Coalition for Content Provenance and Authenticity）签名配置。 |
 
 ### 函数
 
@@ -83,7 +83,7 @@
 | [void OH_Camera_C2PASignatureConfig_Destroy(OH_Camera_C2PASignatureConfig* config)](#oh_camera_c2pasignatureconfig_destroy) | - | 销毁[OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)实例。 |
 | [Camera_ErrorCode OH_Camera_C2PASignatureConfig_SetAuthorName(OH_Camera_C2PASignatureConfig* config, const char* authorName)](#oh_camera_c2pasignatureconfig_setauthorname) | - | 设置C2PA签名配置中的作者名称。 |
 | [Camera_ErrorCode OH_Camera_C2PASignatureConfig_SetAuthorID(OH_Camera_C2PASignatureConfig* config, const char* authorID)](#oh_camera_c2pasignatureconfig_setauthorid) | - | 设置C2PA签名配置中的作者ID。 |
-| [Camera_ErrorCode OH_PhotoOutput_ConfigureC2PASignature(Camera_PhotoOutput* photoOutput, bool enableC2PA, OH_Camera_C2PASignatureConfig* config)](#oh_photooutput_configurec2pasignature) | - | 配置C2PA签名设置。该函数用于启用或禁用C2PA签名，并可选地设置C2PA签名的作者信息。<br> 调用该函数前，请先通过[OH_PhotoOutput_IsC2PASignatureSupported](capi-photo-output-h.md#oh_photooutput_isc2pasignaturesupported)检查是否支持C2PA签名。 |
+| [Camera_ErrorCode OH_PhotoOutput_ConfigureC2PASignature(Camera_PhotoOutput* photoOutput, bool enableC2PA, OH_Camera_C2PASignatureConfig* config)](#oh_photooutput_configurec2pasignature) | - | 配置C2PA签名设置。该函数用于启用或禁用C2PA签名，并可选地设置C2PA签名的作者信息。<br> 调用该函数前，需先通过[OH_PhotoOutput_IsC2PASignatureSupported](capi-photo-output-h.md#oh_photooutput_isc2pasignaturesupported)检查是否支持C2PA签名。 |
 
 ## 函数说明
 
@@ -1554,7 +1554,7 @@ OH_Camera_C2PASignatureConfig* OH_Camera_C2PASignatureConfig_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Camera_C2PASignatureConfig*](capi-oh-camera-oh-camera-c2pasignatureconfig.md) | 返回创建的[OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)实例的指针，如果创建失败则返回**NULL**。 |
+| [OH_Camera_C2PASignatureConfig*](capi-oh-camera-oh-camera-c2pasignatureconfig.md) | 返回指向已创建的[OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)实例的指针，如果创建失败则返回**NULL**。 |
 
 ### OH_Camera_C2PASignatureConfig_Destroy()
 
@@ -1576,7 +1576,7 @@ void OH_Camera_C2PASignatureConfig_Destroy(OH_Camera_C2PASignatureConfig* config
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)* config | 待销毁的[OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)实例的指针。 |
+| [OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)* config | 指向待销毁的[OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)实例的指针。 |
 
 ### OH_Camera_C2PASignatureConfig_SetAuthorName()
 
@@ -1599,7 +1599,7 @@ Camera_ErrorCode OH_Camera_C2PASignatureConfig_SetAuthorName(OH_Camera_C2PASigna
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)* config | 目标[OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)实例的指针。 |
-| const char* authorName | 待设置的作者名称字符串的指针。 |
+| const char* authorName | 指向待设置的作者名称字符串的指针。 |
 
 **返回值：**
 
@@ -1628,7 +1628,7 @@ Camera_ErrorCode OH_Camera_C2PASignatureConfig_SetAuthorID(OH_Camera_C2PASignatu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)* config | 目标[OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md)实例的指针。 |
-| const char* authorID | 待设置的作者ID字符串的指针。 |
+| const char* authorID | 指向待设置的作者ID字符串的指针。 |
 
 **返回值：**
 
@@ -1644,7 +1644,7 @@ Camera_ErrorCode OH_PhotoOutput_ConfigureC2PASignature(Camera_PhotoOutput* photo
 
 **描述：**
 
-配置C2PA签名设置。该函数用于启用或禁用C2PA签名，并可选地设置C2PA签名的作者信息。<br> 调用该函数前，请先通过[OH_PhotoOutput_IsC2PASignatureSupported](capi-photo-output-h.md#oh_photooutput_isc2pasignaturesupported)检查是否支持C2PA签名。
+配置C2PA签名设置。该函数用于启用或禁用C2PA签名，并可选地设置C2PA签名的作者信息。<br> 调用该函数前，需先通过[OH_PhotoOutput_IsC2PASignatureSupported](capi-photo-output-h.md#oh_photooutput_isc2pasignaturesupported)检查是否支持C2PA签名。
 
 <!--Device-Camera_ErrorCode OH_PhotoOutput_ConfigureC2PASignature(Camera_PhotoOutput* photoOutput, bool enableC2PA, OH_Camera_C2PASignatureConfig* config)--><!--Device-Camera_ErrorCode OH_PhotoOutput_ConfigureC2PASignature(Camera_PhotoOutput* photoOutput, bool enableC2PA, OH_Camera_C2PASignatureConfig* config)-End-->
 

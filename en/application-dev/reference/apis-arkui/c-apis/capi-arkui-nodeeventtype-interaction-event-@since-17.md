@@ -20,6 +20,8 @@ NODE_ON_HOVER_EVENT = 27
 
 Event triggered when the mouse pointer moves over or away from the component. This event is triggered when the mouse pointer enters or leaves the component's bounding box. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
+<!--Device-NODE_ON_HOVER_EVENT = 27--><!--Device-NODE_ON_HOVER_EVENT = 27-End-->
+
 **Since**: 12
 
 

@@ -51,7 +51,7 @@ enum ColorSpaceName
 
 色彩空间枚举。
 
-<!--Device-ColorSpaceName--><!--Device-ColorSpaceName-End-->
+<!--Device-enum ColorSpaceName--><!--Device-enum ColorSpaceName-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -59,39 +59,39 @@ enum ColorSpaceName
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NONE = 0 | 表示未知的色彩空间。 |
-| ADOBE_RGB = 1 | 表示基于Adobe RGB的色彩空间。 |
-| DCI_P3 = 2 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。 |
-| DISPLAY_P3 = 3 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。 |
-| SRGB = 4 | 表示基于IEC 61966-2.1:1999的标准红绿蓝（SRGB）色彩空间。 |
-| BT709 = 6 | 表示基于ITU-R BT.709的色彩空间。 |
-| BT601_EBU = 7 | 表示基于ITU-R BT.601的色彩空间。 |
-| BT601_SMPTE_C = 8 | 表示基于ITU-R BT.601的色彩空间。 |
-| BT2020_HLG = 9 | 表示基于ITU-R BT.2020的色彩空间。 |
-| BT2020_PQ = 10 | 表示基于ITU-R BT.2020的色彩空间。 |
-| P3_HLG = 11 | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
-| P3_PQ = 12 | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
-| ADOBE_RGB_LIMIT = 13 | 表示色彩原色为ADOBE_RGB，传输特性为ADOBE_RGB，色彩范围为LIMIT的色彩空间。 |
-| DISPLAY_P3_LIMIT = 14 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为LIMIT的色彩空间。 |
-| SRGB_LIMIT = 15 | 表示色彩原色为SRGB，传输特性为SRGB，色彩范围为LIMIT的色彩空间。 |
-| BT709_LIMIT = 16 | 表示色彩原色为BT709，传输特性为BT709，色彩范围为LIMIT的色彩空间。 |
-| BT601_EBU_LIMIT = 17 | 表示色彩原色为BT601_P，传输特性为BT709，色彩范围为LIMIT的色彩空间。 |
-| BT601_SMPTE_C_LIMIT = 18 | 表示色彩原色为BT601_N，传输特性为BT709，色彩范围为LIMIT的色彩空间。 |
-| BT2020_HLG_LIMIT = 19 | 表示色彩原色为BT2020，传输特性为HLG，色彩范围为LIMIT的色彩空间。 |
-| BT2020_PQ_LIMIT = 20 | 表示色彩原色为BT2020，传输特性为PQ，色彩范围为LIMIT的色彩空间。 |
-| P3_HLG_LIMIT = 21 | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为LIMIT的色彩空间。 |
-| P3_PQ_LIMIT = 22 | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为LIMIT的色彩空间。 |
-| LINEAR_P3 = 23 | 表示色彩原色为P3_D65，传输特性为LINEAR的色彩空间。 |
-| LINEAR_SRGB = 24 | 表示色彩原色为SRGB，传输特性为LINEAR的色彩空间。 |
-| LINEAR_BT709 = LINEAR_SRGB | 表示色彩原色为BT709，传输特性为LINEAR的色彩空间。 |
-| LINEAR_BT2020 = 25 | 表示色彩原色为BT2020，传输特性为LINEAR的色彩空间。 |
-| DISPLAY_SRGB = SRGB | 表示色彩原色为SRGB，传输特性为SRGB，色彩范围为Full的色彩空间。 |
-| DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为Full的色彩空间。 |
-| DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
-| DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
-| BT2020_LOG_FULL = 27 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为Full的色彩空间。<br>**起始版本：** 26.0.0 |
-| BT2020_LOG_LIMIT = 28 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为LIMIT的色彩空间。<br>**起始版本：** 26.0.0 |
-| CUSTOM = 5 | 表示自定义色彩空间。 |
+| NONE = 0 | 表示未知的色彩空间。<br><!--Device-NONE = 0--><!--Device-NONE = 0-End--> |
+| ADOBE_RGB = 1 | 表示基于Adobe RGB的色彩空间。<br><!--Device-ADOBE_RGB = 1--><!--Device-ADOBE_RGB = 1-End--> |
+| DCI_P3 = 2 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。<br><!--Device-DCI_P3 = 2--><!--Device-DCI_P3 = 2-End--> |
+| DISPLAY_P3 = 3 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。<br><!--Device-DISPLAY_P3 = 3--><!--Device-DISPLAY_P3 = 3-End--> |
+| SRGB = 4 | 表示基于IEC 61966-2.1:1999的标准红绿蓝（SRGB）色彩空间。<br><!--Device-SRGB = 4--><!--Device-SRGB = 4-End--> |
+| BT709 = 6 | 表示基于ITU-R BT.709的色彩空间。<br><!--Device-BT709 = 6--><!--Device-BT709 = 6-End--> |
+| BT601_EBU = 7 | 表示基于ITU-R BT.601的色彩空间。<br><!--Device-BT601_EBU = 7--><!--Device-BT601_EBU = 7-End--> |
+| BT601_SMPTE_C = 8 | 表示基于ITU-R BT.601的色彩空间。<br><!--Device-BT601_SMPTE_C = 8--><!--Device-BT601_SMPTE_C = 8-End--> |
+| BT2020_HLG = 9 | 表示基于ITU-R BT.2020的色彩空间。<br><!--Device-BT2020_HLG = 9--><!--Device-BT2020_HLG = 9-End--> |
+| BT2020_PQ = 10 | 表示基于ITU-R BT.2020的色彩空间。<br><!--Device-BT2020_PQ = 10--><!--Device-BT2020_PQ = 10-End--> |
+| P3_HLG = 11 | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。<br><!--Device-P3_HLG = 11--><!--Device-P3_HLG = 11-End--> |
+| P3_PQ = 12 | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。<br><!--Device-P3_PQ = 12--><!--Device-P3_PQ = 12-End--> |
+| ADOBE_RGB_LIMIT = 13 | 表示色彩原色为ADOBE_RGB，传输特性为ADOBE_RGB，色彩范围为LIMIT的色彩空间。<br><!--Device-ADOBE_RGB_LIMIT = 13--><!--Device-ADOBE_RGB_LIMIT = 13-End--> |
+| DISPLAY_P3_LIMIT = 14 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为LIMIT的色彩空间。<br><!--Device-DISPLAY_P3_LIMIT = 14--><!--Device-DISPLAY_P3_LIMIT = 14-End--> |
+| SRGB_LIMIT = 15 | 表示色彩原色为SRGB，传输特性为SRGB，色彩范围为LIMIT的色彩空间。<br><!--Device-SRGB_LIMIT = 15--><!--Device-SRGB_LIMIT = 15-End--> |
+| BT709_LIMIT = 16 | 表示色彩原色为BT709，传输特性为BT709，色彩范围为LIMIT的色彩空间。<br><!--Device-BT709_LIMIT = 16--><!--Device-BT709_LIMIT = 16-End--> |
+| BT601_EBU_LIMIT = 17 | 表示色彩原色为BT601_P，传输特性为BT709，色彩范围为LIMIT的色彩空间。<br><!--Device-BT601_EBU_LIMIT = 17--><!--Device-BT601_EBU_LIMIT = 17-End--> |
+| BT601_SMPTE_C_LIMIT = 18 | 表示色彩原色为BT601_N，传输特性为BT709，色彩范围为LIMIT的色彩空间。<br><!--Device-BT601_SMPTE_C_LIMIT = 18--><!--Device-BT601_SMPTE_C_LIMIT = 18-End--> |
+| BT2020_HLG_LIMIT = 19 | 表示色彩原色为BT2020，传输特性为HLG，色彩范围为LIMIT的色彩空间。<br><!--Device-BT2020_HLG_LIMIT = 19--><!--Device-BT2020_HLG_LIMIT = 19-End--> |
+| BT2020_PQ_LIMIT = 20 | 表示色彩原色为BT2020，传输特性为PQ，色彩范围为LIMIT的色彩空间。<br><!--Device-BT2020_PQ_LIMIT = 20--><!--Device-BT2020_PQ_LIMIT = 20-End--> |
+| P3_HLG_LIMIT = 21 | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为LIMIT的色彩空间。<br><!--Device-P3_HLG_LIMIT = 21--><!--Device-P3_HLG_LIMIT = 21-End--> |
+| P3_PQ_LIMIT = 22 | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为LIMIT的色彩空间。<br><!--Device-P3_PQ_LIMIT = 22--><!--Device-P3_PQ_LIMIT = 22-End--> |
+| LINEAR_P3 = 23 | 表示色彩原色为P3_D65，传输特性为LINEAR的色彩空间。<br><!--Device-LINEAR_P3 = 23--><!--Device-LINEAR_P3 = 23-End--> |
+| LINEAR_SRGB = 24 | 表示色彩原色为SRGB，传输特性为LINEAR的色彩空间。<br><!--Device-LINEAR_SRGB = 24--><!--Device-LINEAR_SRGB = 24-End--> |
+| LINEAR_BT709 = LINEAR_SRGB | 表示色彩原色为BT709，传输特性为LINEAR的色彩空间。<br><!--Device-LINEAR_BT709 = LINEAR_SRGB--><!--Device-LINEAR_BT709 = LINEAR_SRGB-End--> |
+| LINEAR_BT2020 = 25 | 表示色彩原色为BT2020，传输特性为LINEAR的色彩空间。<br><!--Device-LINEAR_BT2020 = 25--><!--Device-LINEAR_BT2020 = 25-End--> |
+| DISPLAY_SRGB = SRGB | 表示色彩原色为SRGB，传输特性为SRGB，色彩范围为Full的色彩空间。<br><!--Device-DISPLAY_SRGB = SRGB--><!--Device-DISPLAY_SRGB = SRGB-End--> |
+| DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为Full的色彩空间。<br><!--Device-DISPLAY_P3_SRGB = DISPLAY_P3--><!--Device-DISPLAY_P3_SRGB = DISPLAY_P3-End--> |
+| DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。<br><!--Device-DISPLAY_P3_HLG = P3_HLG--><!--Device-DISPLAY_P3_HLG = P3_HLG-End--> |
+| DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。<br><!--Device-DISPLAY_P3_PQ = P3_PQ--><!--Device-DISPLAY_P3_PQ = P3_PQ-End--> |
+| BT2020_LOG_FULL = 27 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为Full的色彩空间。<br>**起始版本：** 26.0.0<br><!--Device-BT2020_LOG_FULL = 27--><!--Device-BT2020_LOG_FULL = 27-End--> |
+| BT2020_LOG_LIMIT = 28 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为LIMIT的色彩空间。<br>**起始版本：** 26.0.0<br><!--Device-BT2020_LOG_LIMIT = 28--><!--Device-BT2020_LOG_LIMIT = 28-End--> |
+| CUSTOM = 5 | 表示自定义色彩空间。<br><!--Device-CUSTOM = 5--><!--Device-CUSTOM = 5-End--> |
 
 
 ## 函数说明

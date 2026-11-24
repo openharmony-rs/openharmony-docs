@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkFormatFeatureFlags linearTilingFeatures |  |
-| VkFormatFeatureFlags optimalTilingFeatures |  |
-| VkFormatFeatureFlags bufferFeatures |  |
+| VkFormatFeatureFlags linearTilingFeatures | <!--Device-VkFormatFeatureFlags linearTilingFeatures--><!--Device-VkFormatFeatureFlags linearTilingFeatures-End--> |
+| VkFormatFeatureFlags optimalTilingFeatures | <!--Device-VkFormatFeatureFlags optimalTilingFeatures--><!--Device-VkFormatFeatureFlags optimalTilingFeatures-End--> |
+| VkFormatFeatureFlags bufferFeatures | <!--Device-VkFormatFeatureFlags bufferFeatures--><!--Device-VkFormatFeatureFlags bufferFeatures-End--> |
 
 

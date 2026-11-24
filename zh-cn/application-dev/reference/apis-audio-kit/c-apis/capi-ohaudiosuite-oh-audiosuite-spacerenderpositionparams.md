@@ -24,8 +24,8 @@ typedef struct OH_AudioSuite_SpaceRenderPositionParams {...} OH_AudioSuite_Space
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | 空间中的X坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23 |
-| float y | 空间中的Y坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23 |
-| float z | 空间中的Z坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23 |
+| float x | 空间中的X坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | 空间中的Y坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23<br><!--Device-float y--><!--Device-float y-End--> |
+| float z | 空间中的Z坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23<br><!--Device-float z--><!--Device-float z-End--> |
 
 

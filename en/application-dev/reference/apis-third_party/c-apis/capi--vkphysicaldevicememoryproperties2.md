@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkPhysicalDeviceMemoryProperties](capi--vkphysicaldevicememoryproperties.md) memoryProperties |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkPhysicalDeviceMemoryProperties](capi--vkphysicaldevicememoryproperties.md) memoryProperties | <!--Device-VkPhysicalDeviceMemoryProperties memoryProperties--><!--Device-VkPhysicalDeviceMemoryProperties memoryProperties-End--> |
 
 

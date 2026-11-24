@@ -34,7 +34,7 @@ enum DeviceManager_ErrorCode
 
 分布式设备管理错误码信息。
 
-<!--Device-DeviceManager_ErrorCode--><!--Device-DeviceManager_ErrorCode-End-->
+<!--Device-enum DeviceManager_ErrorCode--><!--Device-enum DeviceManager_ErrorCode-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -42,11 +42,11 @@ enum DeviceManager_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ERR_OK = 0 | 执行成功。<br>**起始版本：** 20 |
-| ERR_PERMISSION_ERROR = 201 | 权限校验失败。<br>**起始版本：** 20 |
-| ERR_INVALID_PARAMETER = 401 | 非法参数。<br>**起始版本：** 20 |
-| DM_ERR_FAILED = 11600101 | 函数执行失败。<br>**起始版本：** 20 |
-| DM_ERR_OBTAIN_SERVICE = 11600102 | 获取设备管理服务失败。<br>**起始版本：** 20 |
-| DM_ERR_OBTAIN_BUNDLE_NAME = 11600109 | 获取bundleName失败。<br>**起始版本：** 20 |
+| ERR_OK = 0 | 执行成功。<br>**起始版本：** 20<br><!--Device-ERR_OK = 0--><!--Device-ERR_OK = 0-End--> |
+| ERR_PERMISSION_ERROR = 201 | 权限校验失败。<br>**起始版本：** 20<br><!--Device-ERR_PERMISSION_ERROR = 201--><!--Device-ERR_PERMISSION_ERROR = 201-End--> |
+| ERR_INVALID_PARAMETER = 401 | 非法参数。<br>**起始版本：** 20<br><!--Device-ERR_INVALID_PARAMETER = 401--><!--Device-ERR_INVALID_PARAMETER = 401-End--> |
+| DM_ERR_FAILED = 11600101 | 函数执行失败。<br>**起始版本：** 20<br><!--Device-DM_ERR_FAILED = 11600101--><!--Device-DM_ERR_FAILED = 11600101-End--> |
+| DM_ERR_OBTAIN_SERVICE = 11600102 | 获取设备管理服务失败。<br>**起始版本：** 20<br><!--Device-DM_ERR_OBTAIN_SERVICE = 11600102--><!--Device-DM_ERR_OBTAIN_SERVICE = 11600102-End--> |
+| DM_ERR_OBTAIN_BUNDLE_NAME = 11600109 | 获取bundleName失败。<br>**起始版本：** 20<br><!--Device-DM_ERR_OBTAIN_BUNDLE_NAME = 11600109--><!--Device-DM_ERR_OBTAIN_BUNDLE_NAME = 11600109-End--> |
 
 

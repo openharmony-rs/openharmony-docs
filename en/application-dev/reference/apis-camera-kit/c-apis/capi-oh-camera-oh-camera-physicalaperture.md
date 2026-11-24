@@ -24,8 +24,8 @@ Describes the physical aperture configuration.
 
 | Name | Description |
 | -- | -- |
-| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) zoomRange | Zoom range specification.<br>**Since**: 24 |
-| float* apertures | Array of supported aperture values.<br>**Since**: 24 |
-| size_t apertureCount | Number of aperture values.<br>**Since**: 24 |
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) zoomRange | Zoom range specification.<br>**Since**: 24<br><!--Device-OH_Camera_ZoomRange zoomRange--><!--Device-OH_Camera_ZoomRange zoomRange-End--> |
+| float* apertures | Array of supported aperture values.<br>**Since**: 24<br><!--Device-float* apertures--><!--Device-float* apertures-End--> |
+| size_t apertureCount | Number of aperture values.<br>**Since**: 24<br><!--Device-size_t apertureCount--><!--Device-size_t apertureCount-End--> |
 
 

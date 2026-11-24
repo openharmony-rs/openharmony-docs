@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkSparseImageFormatProperties](capi--vksparseimageformatproperties.md) properties |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkSparseImageFormatProperties](capi--vksparseimageformatproperties.md) properties | <!--Device-VkSparseImageFormatProperties properties--><!--Device-VkSparseImageFormatProperties properties-End--> |
 
 

@@ -97,7 +97,7 @@ enum OH_Drawing_PathDirection
 
 Enumerates the directions of a closed contour.
 
-<!--Device-OH_Drawing_PathDirection--><!--Device-OH_Drawing_PathDirection-End-->
+<!--Device-enum OH_Drawing_PathDirection--><!--Device-enum OH_Drawing_PathDirection-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -105,8 +105,8 @@ Enumerates the directions of a closed contour.
 
 | Enum item | Description |
 | -- | -- |
-| PATH_DIRECTION_CW | Adds a closed contour clockwise. |
-| PATH_DIRECTION_CCW | Adds a closed contour counterclockwise. |
+| PATH_DIRECTION_CW | Adds a closed contour clockwise.<br><!--Device-PATH_DIRECTION_CW--><!--Device-PATH_DIRECTION_CW-End--> |
+| PATH_DIRECTION_CCW | Adds a closed contour counterclockwise.<br><!--Device-PATH_DIRECTION_CCW--><!--Device-PATH_DIRECTION_CCW-End--> |
 
 ### OH_Drawing_PathFillType
 
@@ -118,7 +118,7 @@ enum OH_Drawing_PathFillType
 
 Enumerates the fill types of a path.
 
-<!--Device-OH_Drawing_PathFillType--><!--Device-OH_Drawing_PathFillType-End-->
+<!--Device-enum OH_Drawing_PathFillType--><!--Device-enum OH_Drawing_PathFillType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -126,10 +126,10 @@ Enumerates the fill types of a path.
 
 | Enum item | Description |
 | -- | -- |
-| PATH_FILL_TYPE_WINDING | For any point within the drawing area, a ray is cast in an arbitrary direction. The count starts at 0 for all intersections between this ray and the path.<br>Each clockwise intersection—where the path crosses the ray from left to right—results in the count being incremented by 1, while each counterclockwise intersection—where the path crosses the ray from right to left—causes the count to be decremented by 1. A point is deemed inside the path and needs to be colored if the final count is non-zero; if the count is 0, the point remains uncolored. |
-| PATH_FILL_TYPE_EVEN_ODD | For any point in the drawing area, a ray is cast in an arbitrary direction. If the number of intersections between this ray and the path is odd, the point is deemed inside the path and needs to be colored; if the number is even, it remains uncolored. |
-| PATH_FILL_TYPE_INVERSE_WINDING | Same as **PATH_FILL_TYPE_WINDING**, but draws outside of the path, rather than inside. |
-| PATH_FILL_TYPE_INVERSE_EVEN_ODD | Same as **PATH_FILL_TYPE_EVEN_ODD**, but draws outside of the path, rather than inside. |
+| PATH_FILL_TYPE_WINDING | For any point within the drawing area, a ray is cast in an arbitrary direction. The count starts at 0 for all intersections between this ray and the path.<br>Each clockwise intersection—where the path crosses the ray from left to right—results in the count being incremented by 1, while each counterclockwise intersection—where the path crosses the ray from right to left—causes the count to be decremented by 1. A point is deemed inside the path and needs to be colored if the final count is non-zero; if the count is 0, the point remains uncolored.<br><!--Device-PATH_FILL_TYPE_WINDING--><!--Device-PATH_FILL_TYPE_WINDING-End--> |
+| PATH_FILL_TYPE_EVEN_ODD | For any point in the drawing area, a ray is cast in an arbitrary direction. If the number of intersections between this ray and the path is odd, the point is deemed inside the path and needs to be colored; if the number is even, it remains uncolored.<br><!--Device-PATH_FILL_TYPE_EVEN_ODD--><!--Device-PATH_FILL_TYPE_EVEN_ODD-End--> |
+| PATH_FILL_TYPE_INVERSE_WINDING | Same as **PATH_FILL_TYPE_WINDING**, but draws outside of the path, rather than inside.<br><!--Device-PATH_FILL_TYPE_INVERSE_WINDING--><!--Device-PATH_FILL_TYPE_INVERSE_WINDING-End--> |
+| PATH_FILL_TYPE_INVERSE_EVEN_ODD | Same as **PATH_FILL_TYPE_EVEN_ODD**, but draws outside of the path, rather than inside.<br><!--Device-PATH_FILL_TYPE_INVERSE_EVEN_ODD--><!--Device-PATH_FILL_TYPE_INVERSE_EVEN_ODD-End--> |
 
 ### OH_Drawing_PathAddMode
 
@@ -141,7 +141,7 @@ enum OH_Drawing_PathAddMode
 
 Enumerates the path adding modes.
 
-<!--Device-OH_Drawing_PathAddMode--><!--Device-OH_Drawing_PathAddMode-End-->
+<!--Device-enum OH_Drawing_PathAddMode--><!--Device-enum OH_Drawing_PathAddMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -149,8 +149,8 @@ Enumerates the path adding modes.
 
 | Enum item | Description |
 | -- | -- |
-| PATH_ADD_MODE_APPEND | Adds a path in append mode. |
-| PATH_ADD_MODE_EXTEND | Adds a line segment to close the path if the previous path is not closed. |
+| PATH_ADD_MODE_APPEND | Adds a path in append mode.<br><!--Device-PATH_ADD_MODE_APPEND--><!--Device-PATH_ADD_MODE_APPEND-End--> |
+| PATH_ADD_MODE_EXTEND | Adds a line segment to close the path if the previous path is not closed.<br><!--Device-PATH_ADD_MODE_EXTEND--><!--Device-PATH_ADD_MODE_EXTEND-End--> |
 
 ### OH_Drawing_PathOpMode
 
@@ -162,7 +162,7 @@ enum OH_Drawing_PathOpMode
 
 Enumerates the operation modes available for a path.
 
-<!--Device-OH_Drawing_PathOpMode--><!--Device-OH_Drawing_PathOpMode-End-->
+<!--Device-enum OH_Drawing_PathOpMode--><!--Device-enum OH_Drawing_PathOpMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -170,11 +170,11 @@ Enumerates the operation modes available for a path.
 
 | Enum item | Description |
 | -- | -- |
-| PATH_OP_MODE_DIFFERENCE | Difference operation. |
-| PATH_OP_MODE_INTERSECT | Intersection operation. |
-| PATH_OP_MODE_UNION | Union operation. |
-| PATH_OP_MODE_XOR | XOR operation. |
-| PATH_OP_MODE_REVERSE_DIFFERENCE | Reverse difference operation. |
+| PATH_OP_MODE_DIFFERENCE | Difference operation.<br><!--Device-PATH_OP_MODE_DIFFERENCE--><!--Device-PATH_OP_MODE_DIFFERENCE-End--> |
+| PATH_OP_MODE_INTERSECT | Intersection operation.<br><!--Device-PATH_OP_MODE_INTERSECT--><!--Device-PATH_OP_MODE_INTERSECT-End--> |
+| PATH_OP_MODE_UNION | Union operation.<br><!--Device-PATH_OP_MODE_UNION--><!--Device-PATH_OP_MODE_UNION-End--> |
+| PATH_OP_MODE_XOR | XOR operation.<br><!--Device-PATH_OP_MODE_XOR--><!--Device-PATH_OP_MODE_XOR-End--> |
+| PATH_OP_MODE_REVERSE_DIFFERENCE | Reverse difference operation.<br><!--Device-PATH_OP_MODE_REVERSE_DIFFERENCE--><!--Device-PATH_OP_MODE_REVERSE_DIFFERENCE-End--> |
 
 ### OH_Drawing_PathMeasureMatrixFlags
 
@@ -186,7 +186,7 @@ enum OH_Drawing_PathMeasureMatrixFlags
 
 Enumerates the types of matrix information obtained during path measurement.
 
-<!--Device-OH_Drawing_PathMeasureMatrixFlags--><!--Device-OH_Drawing_PathMeasureMatrixFlags-End-->
+<!--Device-enum OH_Drawing_PathMeasureMatrixFlags--><!--Device-enum OH_Drawing_PathMeasureMatrixFlags-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -194,9 +194,9 @@ Enumerates the types of matrix information obtained during path measurement.
 
 | Enum item | Description |
 | -- | -- |
-| GET_POSITION_MATRIX | Matrix corresponding to the position information. |
-| GET_TANGENT_MATRIX | Matrix corresponding to the tangent information. |
-| GET_POSITION_AND_TANGENT_MATRIX | Matrix corresponding to the position and tangent information. |
+| GET_POSITION_MATRIX | Matrix corresponding to the position information.<br><!--Device-GET_POSITION_MATRIX--><!--Device-GET_POSITION_MATRIX-End--> |
+| GET_TANGENT_MATRIX | Matrix corresponding to the tangent information.<br><!--Device-GET_TANGENT_MATRIX--><!--Device-GET_TANGENT_MATRIX-End--> |
+| GET_POSITION_AND_TANGENT_MATRIX | Matrix corresponding to the position and tangent information.<br><!--Device-GET_POSITION_AND_TANGENT_MATRIX--><!--Device-GET_POSITION_AND_TANGENT_MATRIX-End--> |
 
 
 ## Function description

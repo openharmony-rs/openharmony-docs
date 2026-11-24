@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkFormat format |  |
-| VkColorSpaceKHR colorSpace |  |
+| VkFormat format | <!--Device-VkFormat format--><!--Device-VkFormat format-End--> |
+| VkColorSpaceKHR colorSpace | <!--Device-VkColorSpaceKHR colorSpace--><!--Device-VkColorSpaceKHR colorSpace-End--> |
 
 

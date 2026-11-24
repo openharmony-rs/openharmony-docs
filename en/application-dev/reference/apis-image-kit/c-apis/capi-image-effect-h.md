@@ -544,7 +544,7 @@ Set input NativeBuffer that contains the image information. It should be noted t
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Encapsulate OH_ImageEffect structure instance pointer |
-| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) *nativeBuffer | Indicates the NativeBuffer that contains the image information |
+| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-oh-nativebuffer-oh-nativebuffer.md) *nativeBuffer | Indicates the NativeBuffer that contains the image information |
 
 **Returns**:
 
@@ -573,7 +573,7 @@ Set output NativeBuffer that contains the image information
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Encapsulate OH_ImageEffect structure instance pointer |
-| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) *nativeBuffer | Indicates the NativeBuffer that contains the image information |
+| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-oh-nativebuffer-oh-nativebuffer.md) *nativeBuffer | Indicates the NativeBuffer that contains the image information |
 
 **Returns**:
 

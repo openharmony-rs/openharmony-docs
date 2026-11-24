@@ -55,7 +55,7 @@ enum CryptoSymCipher_ParamsType
 
 定义加解密参数类型。
 
-<!--Device-CryptoSymCipher_ParamsType--><!--Device-CryptoSymCipher_ParamsType-End-->
+<!--Device-enum CryptoSymCipher_ParamsType--><!--Device-enum CryptoSymCipher_ParamsType-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -63,9 +63,9 @@ enum CryptoSymCipher_ParamsType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_IV_DATABLOB = 100 | 初始化向量(IV)参数。<br>**起始版本：** 12 |
-| CRYPTO_AAD_DATABLOB = 101 | AEAD模式（如GCM、CCM）下的附加认证数据(AAD)。<br>**起始版本：** 12 |
-| CRYPTO_TAG_DATABLOB = 102 | AEAD模式（如GCM、CCM）中的认证标签(Tag)，用于数据完整性校验。<br>**起始版本：** 12 |
+| CRYPTO_IV_DATABLOB = 100 | 初始化向量(IV)参数。<br>**起始版本：** 12<br><!--Device-CRYPTO_IV_DATABLOB = 100--><!--Device-CRYPTO_IV_DATABLOB = 100-End--> |
+| CRYPTO_AAD_DATABLOB = 101 | AEAD模式（如GCM、CCM）下的附加认证数据(AAD)。<br>**起始版本：** 12<br><!--Device-CRYPTO_AAD_DATABLOB = 101--><!--Device-CRYPTO_AAD_DATABLOB = 101-End--> |
+| CRYPTO_TAG_DATABLOB = 102 | AEAD模式（如GCM、CCM）中的认证标签(Tag)，用于数据完整性校验。<br>**起始版本：** 12<br><!--Device-CRYPTO_TAG_DATABLOB = 102--><!--Device-CRYPTO_TAG_DATABLOB = 102-End--> |
 
 
 ## 函数说明

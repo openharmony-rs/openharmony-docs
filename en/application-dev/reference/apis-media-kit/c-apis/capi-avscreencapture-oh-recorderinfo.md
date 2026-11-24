@@ -24,8 +24,8 @@ The struct describes the recording file information.
 
 | Name | Description |
 | -- | -- |
-| char *url | Recorder file url |
-| uint32_t urlLen | Recorder file url length |
-| [OH_ContainerFormatType](capi-native-avscreen-capture-base-h.md#oh_containerformattype) fileFormat | Recorder file format |
+| char *url | Recorder file url<br><!--Device-char *url--><!--Device-char *url-End--> |
+| uint32_t urlLen | Recorder file url length<br><!--Device-uint32_t urlLen--><!--Device-uint32_t urlLen-End--> |
+| [OH_ContainerFormatType](capi-native-avscreen-capture-base-h.md#oh_containerformattype) fileFormat | Recorder file format<br><!--Device-OH_ContainerFormatType fileFormat--><!--Device-OH_ContainerFormatType fileFormat-End--> |
 
 

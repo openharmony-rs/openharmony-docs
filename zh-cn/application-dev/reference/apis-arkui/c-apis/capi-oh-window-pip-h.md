@@ -4,6 +4,8 @@
 
 定义画中画功能的相关接口，包含创建、删除画中画控制器，以及启动、停止画中画等。主要用于视频播放、直播、视频通话或视频会议场景下，以小窗（画中画）模式呈现内容。
 
+**引用文件：** <window_manager/oh_window_pip.h>
+
 **库：** libnative_window_manager.so
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -18,7 +20,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) | PictureInPicture_PipConfig | Picture in picture config. |
+| [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) | PictureInPicture_PipConfig | 画中画参数配置器。 |
 
 ### 枚举
 
@@ -40,7 +42,7 @@
 | [typedef void (\*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale)](#webpipresizecallback) | WebPipResizeCallback | 定义画中画窗口的尺寸变化回调函数。 |
 | [int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfig)](#oh_pictureinpicture_createpipconfig) | - | 创建画中画参数配置器。 |
 | [int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConfig)](#oh_pictureinpicture_destroypipconfig) | - | 销毁画中画参数配置器。 |
-| [int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)](#oh_pictureinpicture_setpipmainwindowid) | - | Sets the 拉起画中画的主窗口Id。 |
+| [int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)](#oh_pictureinpicture_setpipmainwindowid) | - | 设置拉起画中画的主窗口Id。 |
 | [int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipTemplateType pipTemplateType)](#oh_pictureinpicture_setpiptemplatetype) | - | 设置画中画模板类型，默认为视频播放。 |
 | [int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uint32_t width, uint32_t height)](#oh_pictureinpicture_setpiprect) | - | 设置画中画窗口大小，用于计算尺寸比例。 |
 | [int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipControlGroup* controlGroup, uint8_t controlGroupLength)](#oh_pictureinpicture_setpipcontrolgroup) | - | 设置画中画控件组，需保证控件组与模板类型匹配。 |
@@ -55,9 +57,9 @@
 | [int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)](#oh_pictureinpicture_setparentwindowid) | - | 设置画中画主窗口ID。 |
 | [int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY, uint32_t width, uint32_t height)](#oh_pictureinpicture_setpipinitialsurfacerect) | - | 设置画中画拉起动效开始时的位置和大小，可用于实现一镜到底效果。 |
 | [int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)](#oh_pictureinpicture_unsetpipinitialsurfacerect) | - | 取消已设置的画中画拉起动效的起始位置和大小。 |
-| [int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)](#oh_pictureinpicture_registerstartpipcallback) | - | 开启画中画窗口创建完成的监听。 |
-| [int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)](#oh_pictureinpicture_unregisterstartpipcallback) | - | 关闭画中画窗口创建完成的监听。 |
-| [int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)](#oh_pictureinpicture_unregisterallstartpipcallbacks) | - | 关闭所有画中画窗口创建完成的监听。 |
+| [int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)](#oh_pictureinpicture_registerstartpipcallback) | - | 开启画中画surface创建完成的监听。 |
+| [int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)](#oh_pictureinpicture_unregisterstartpipcallback) | - | 关闭画中画surface创建完成的监听。 |
+| [int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)](#oh_pictureinpicture_unregisterallstartpipcallbacks) | - | 关闭所有画中画surface创建完成的监听。 |
 | [int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)](#oh_pictureinpicture_registerlifecyclelistener) | - | 开启画中画生命周期状态的监听。 |
 | [int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)](#oh_pictureinpicture_unregisterlifecyclelistener) | - | 关闭画中画生命周期状态的监听。 |
 | [int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerId)](#oh_pictureinpicture_unregisteralllifecyclelisteners) | - | 关闭所有画中画生命周期状态的监听。 |
@@ -67,13 +69,13 @@
 | [int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)](#oh_pictureinpicture_registerresizelistener) | - | 开启画中画窗口尺寸变化事件的监听。 |
 | [int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)](#oh_pictureinpicture_unregisterresizelistener) | - | 关闭画中画窗口尺寸变化事件的监听。 |
 | [int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)](#oh_pictureinpicture_unregisterallresizelisteners) | - | 关闭所有画中画窗口尺寸变化事件的监听。 |
-| [int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)](#oh_pictureinpicture_setautostartenabled) | - | 设置是否在返回桌面时自动启动画中画，默认不自动拉起。 |
+| [int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)](#oh_pictureinpicture_setautostartenabled) | - | 设置在拉起画中画的应用主窗退后台时是否自动启动画中画，默认不自动拉起。 在开启自动拉起的情况下，当应用主窗为智慧多窗悬浮窗状态且被收入侧边栏时，应用主窗虽退后台，但不会自动拉起画中画。 |
 
 ### 变量
 
 | 名称 | 描述 |
 | -- | -- |
-| void* PictureInPicture_PipConfig | Picture in picture config.<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
+| void* PictureInPicture_PipConfig | 画中画参数配置器。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager<br><!--Device-void* PictureInPicture_PipConfig--><!--Device-void* PictureInPicture_PipConfig-End--> |
 
 ## 枚举类型说明
 
@@ -87,7 +89,7 @@ enum PictureInPicture_PipTemplateType
 
 画中画模板类型。
 
-<!--Device-PictureInPicture_PipTemplateType--><!--Device-PictureInPicture_PipTemplateType-End-->
+<!--Device-enum PictureInPicture_PipTemplateType--><!--Device-enum PictureInPicture_PipTemplateType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -95,10 +97,10 @@ enum PictureInPicture_PipTemplateType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PLAY = 0 | 表示将要切换为画中画播放的媒体类型是视频，系统依此加载视频播放模板。<br>**起始版本：** 20 |
-| VIDEO_CALL = 1 | 表示将要切换为画中画播放的媒体类型是视频通话，系统依此加载视频通话模板。<br>**起始版本：** 20 |
-| VIDEO_MEETING = 2 | 表示将要切换为画中画播放的媒体类型是视频会议，系统依此加载视频会议模板。<br>**起始版本：** 20 |
-| VIDEO_LIVE = 3 | 表示将要切换为画中画播放的媒体类型是直播，系统依此加载直播模板。<br>**起始版本：** 20 |
+| VIDEO_PLAY = 0 | 表示将要切换为画中画播放的媒体类型是视频，系统依此加载视频播放模板。<br>**起始版本：** 20<br><!--Device-VIDEO_PLAY = 0--><!--Device-VIDEO_PLAY = 0-End--> |
+| VIDEO_CALL = 1 | 表示将要切换为画中画播放的媒体类型是视频通话，系统依此加载视频通话模板。<br>**起始版本：** 20<br><!--Device-VIDEO_CALL = 1--><!--Device-VIDEO_CALL = 1-End--> |
+| VIDEO_MEETING = 2 | 表示将要切换为画中画播放的媒体类型是视频会议，系统依此加载视频会议模板。<br>**起始版本：** 20<br><!--Device-VIDEO_MEETING = 2--><!--Device-VIDEO_MEETING = 2-End--> |
+| VIDEO_LIVE = 3 | 表示将要切换为画中画播放的媒体类型是直播，系统依此加载直播模板。<br>**起始版本：** 20<br><!--Device-VIDEO_LIVE = 3--><!--Device-VIDEO_LIVE = 3-End--> |
 
 ### PictureInPicture_PipControlGroup
 
@@ -110,7 +112,7 @@ enum PictureInPicture_PipControlGroup
 
 画中画控制面板的控件组类型。
 
-<!--Device-PictureInPicture_PipControlGroup--><!--Device-PictureInPicture_PipControlGroup-End-->
+<!--Device-enum PictureInPicture_PipControlGroup--><!--Device-enum PictureInPicture_PipControlGroup-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -118,18 +120,18 @@ enum PictureInPicture_PipControlGroup
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101 | 视频播放模板的视频上一个/下一个控件组。与视频快进/后退控件组为互斥控件组。如添加视频快进/后退控件组，则不可添加该控件组。<br>**起始版本：** 20 |
-| VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102 | 视频播放模板的视频快进/后退控件组。与视频上一个/下一个控件组为互斥控件组。如添加视频上一个/下一个控件组，则不可添加该控件组。<br>**起始版本：** 20 |
-| VIDEO_CALL_MICROPHONE_SWITCH = 201 | 视频通话模板的打开/关闭麦克风控件组。<br>**起始版本：** 20 |
-| VIDEO_CALL_HANG_UP_BUTTON = 202 | 视频通话模板的挂断控件组。<br>**起始版本：** 20 |
-| VIDEO_CALL_CAMERA_SWITCH = 203 | 视频通话模板的打开/关闭摄像头控件组。<br>**起始版本：** 20 |
-| VIDEO_CALL_MUTE_SWITCH = 204 | 视频通话模板的静音控件组。<br>**起始版本：** 20 |
-| VIDEO_MEETING_HANG_UP_BUTTON = 301 | 视频会议模板的挂断控件组。<br>**起始版本：** 20 |
-| VIDEO_MEETING_CAMERA_SWITCH = 302 | 视频会议模板的打开/关闭摄像头控件组。<br>**起始版本：** 20 |
-| VIDEO_MEETING_MUTE_SWITCH = 303 | 视频会议模板的静音控件组。<br>**起始版本：** 20 |
-| VIDEO_MEETING_MICROPHONE_SWITCH = 304 | 视频会议模板的打开/关闭麦克风控件组。<br>**起始版本：** 20 |
-| VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401 | 直播模板的播放/暂停直播控件组。<br>**起始版本：** 20 |
-| VIDEO_LIVE_MUTE_SWITCH = 402 | 直播模板的静音控件组。<br>**起始版本：** 20 |
+| VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101 | 视频播放模板的视频上一个/下一个控件组。与视频快进/后退控件组为互斥控件组。如添加视频快进/后退控件组，则不可添加该控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101--><!--Device-VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101-End--> |
+| VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102 | 视频播放模板的视频快进/后退控件组。与视频上一个/下一个控件组为互斥控件组。如添加视频上一个/下一个控件组，则不可添加该控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102--><!--Device-VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102-End--> |
+| VIDEO_CALL_MICROPHONE_SWITCH = 201 | 视频通话模板的打开/关闭麦克风控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_CALL_MICROPHONE_SWITCH = 201--><!--Device-VIDEO_CALL_MICROPHONE_SWITCH = 201-End--> |
+| VIDEO_CALL_HANG_UP_BUTTON = 202 | 视频通话模板的挂断控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_CALL_HANG_UP_BUTTON = 202--><!--Device-VIDEO_CALL_HANG_UP_BUTTON = 202-End--> |
+| VIDEO_CALL_CAMERA_SWITCH = 203 | 视频通话模板的打开/关闭摄像头控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_CALL_CAMERA_SWITCH = 203--><!--Device-VIDEO_CALL_CAMERA_SWITCH = 203-End--> |
+| VIDEO_CALL_MUTE_SWITCH = 204 | 视频通话模板的静音控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_CALL_MUTE_SWITCH = 204--><!--Device-VIDEO_CALL_MUTE_SWITCH = 204-End--> |
+| VIDEO_MEETING_HANG_UP_BUTTON = 301 | 视频会议模板的挂断控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_MEETING_HANG_UP_BUTTON = 301--><!--Device-VIDEO_MEETING_HANG_UP_BUTTON = 301-End--> |
+| VIDEO_MEETING_CAMERA_SWITCH = 302 | 视频会议模板的打开/关闭摄像头控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_MEETING_CAMERA_SWITCH = 302--><!--Device-VIDEO_MEETING_CAMERA_SWITCH = 302-End--> |
+| VIDEO_MEETING_MUTE_SWITCH = 303 | 视频会议模板的静音控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_MEETING_MUTE_SWITCH = 303--><!--Device-VIDEO_MEETING_MUTE_SWITCH = 303-End--> |
+| VIDEO_MEETING_MICROPHONE_SWITCH = 304 | 视频会议模板的打开/关闭麦克风控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_MEETING_MICROPHONE_SWITCH = 304--><!--Device-VIDEO_MEETING_MICROPHONE_SWITCH = 304-End--> |
+| VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401 | 直播模板的播放/暂停直播控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401--><!--Device-VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401-End--> |
+| VIDEO_LIVE_MUTE_SWITCH = 402 | 直播模板的静音控件组。<br>**起始版本：** 20<br><!--Device-VIDEO_LIVE_MUTE_SWITCH = 402--><!--Device-VIDEO_LIVE_MUTE_SWITCH = 402-End--> |
 
 ### PictureInPicture_PipControlType
 
@@ -141,7 +143,7 @@ enum PictureInPicture_PipControlType
 
 控制面板控件类型枚举。
 
-<!--Device-PictureInPicture_PipControlType--><!--Device-PictureInPicture_PipControlType-End-->
+<!--Device-enum PictureInPicture_PipControlType--><!--Device-enum PictureInPicture_PipControlType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -149,15 +151,15 @@ enum PictureInPicture_PipControlType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PLAY_PAUSE = 0 | 播放/暂停控件。<br>**起始版本：** 20 |
-| VIDEO_PREVIOUS = 1 | 视频上一个控件。<br>**起始版本：** 20 |
-| VIDEO_NEXT = 2 | 视频下一个控件。<br>**起始版本：** 20 |
-| FAST_FORWARD = 3 | 视频快进控件。<br>**起始版本：** 20 |
-| FAST_BACKWARD = 4 | 视频快退控件。<br>**起始版本：** 20 |
-| HANG_UP_BUTTON = 5 | 挂断控件。<br>**起始版本：** 20 |
-| MICROPHONE_SWITCH = 6 | 打开/关闭麦克风控件。<br>**起始版本：** 20 |
-| CAMERA_SWITCH = 7 | 打开/关闭摄像头控件。<br>**起始版本：** 20 |
-| MUTE_SWITCH = 8 | 打开/关闭静音控件。<br>**起始版本：** 20 |
+| VIDEO_PLAY_PAUSE = 0 | 播放/暂停控件。<br>**起始版本：** 20<br><!--Device-VIDEO_PLAY_PAUSE = 0--><!--Device-VIDEO_PLAY_PAUSE = 0-End--> |
+| VIDEO_PREVIOUS = 1 | 视频上一个控件。<br>**起始版本：** 20<br><!--Device-VIDEO_PREVIOUS = 1--><!--Device-VIDEO_PREVIOUS = 1-End--> |
+| VIDEO_NEXT = 2 | 视频下一个控件。<br>**起始版本：** 20<br><!--Device-VIDEO_NEXT = 2--><!--Device-VIDEO_NEXT = 2-End--> |
+| FAST_FORWARD = 3 | 视频快进控件。<br>**起始版本：** 20<br><!--Device-FAST_FORWARD = 3--><!--Device-FAST_FORWARD = 3-End--> |
+| FAST_BACKWARD = 4 | 视频快退控件。<br>**起始版本：** 20<br><!--Device-FAST_BACKWARD = 4--><!--Device-FAST_BACKWARD = 4-End--> |
+| HANG_UP_BUTTON = 5 | 挂断控件。<br>**起始版本：** 20<br><!--Device-HANG_UP_BUTTON = 5--><!--Device-HANG_UP_BUTTON = 5-End--> |
+| MICROPHONE_SWITCH = 6 | 打开/关闭麦克风控件。<br>**起始版本：** 20<br><!--Device-MICROPHONE_SWITCH = 6--><!--Device-MICROPHONE_SWITCH = 6-End--> |
+| CAMERA_SWITCH = 7 | 打开/关闭摄像头控件。<br>**起始版本：** 20<br><!--Device-CAMERA_SWITCH = 7--><!--Device-CAMERA_SWITCH = 7-End--> |
+| MUTE_SWITCH = 8 | 打开/关闭静音控件。<br>**起始版本：** 20<br><!--Device-MUTE_SWITCH = 8--><!--Device-MUTE_SWITCH = 8-End--> |
 
 ### PictureInPicture_PipControlStatus
 
@@ -169,7 +171,7 @@ enum PictureInPicture_PipControlStatus
 
 控制面板控件状态枚举。
 
-<!--Device-PictureInPicture_PipControlStatus--><!--Device-PictureInPicture_PipControlStatus-End-->
+<!--Device-enum PictureInPicture_PipControlStatus--><!--Device-enum PictureInPicture_PipControlStatus-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -177,10 +179,10 @@ enum PictureInPicture_PipControlStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PLAY = 1 | 视频播放状态。<br>**起始版本：** 20 |
-| PAUSE = 0 | 视频暂停状态。<br>**起始版本：** 20 |
-| OPEN = 1 | 摄像头/麦克风/静音控件的打开状态。<br>**起始版本：** 20 |
-| CLOSE = 0 | 摄像头/麦克风/静音控件的关闭状态。<br>**起始版本：** 20 |
+| PLAY = 1 | 视频播放状态。<br>**起始版本：** 20<br><!--Device-PLAY = 1--><!--Device-PLAY = 1-End--> |
+| PAUSE = 0 | 视频暂停状态。<br>**起始版本：** 20<br><!--Device-PAUSE = 0--><!--Device-PAUSE = 0-End--> |
+| OPEN = 1 | 摄像头/麦克风/静音控件的打开状态。<br>**起始版本：** 20<br><!--Device-OPEN = 1--><!--Device-OPEN = 1-End--> |
+| CLOSE = 0 | 摄像头/麦克风/静音控件的关闭状态。<br>**起始版本：** 20<br><!--Device-CLOSE = 0--><!--Device-CLOSE = 0-End--> |
 
 ### PictureInPicture_PipState
 
@@ -192,7 +194,7 @@ enum PictureInPicture_PipState
 
 画中画生命周期状态枚举。
 
-<!--Device-PictureInPicture_PipState--><!--Device-PictureInPicture_PipState-End-->
+<!--Device-enum PictureInPicture_PipState--><!--Device-enum PictureInPicture_PipState-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -200,12 +202,12 @@ enum PictureInPicture_PipState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ABOUT_TO_START = 1 | 表示画中画将要启动。<br>**起始版本：** 20 |
-| STARTED = 2 | 表示画中画已经启动。<br>**起始版本：** 20 |
-| ABOUT_TO_STOP = 3 | 表示画中画将要停止。<br>**起始版本：** 20 |
-| STOPPED = 4 | 表示画中画已经停止。<br>**起始版本：** 20 |
-| ABOUT_TO_RESTORE = 5 | 表示画中画将从小窗播放恢复到原始播放界面。<br>**起始版本：** 20 |
-| ERROR = 6 | 表示画中画生命周期执行过程出现了异常。<br>**起始版本：** 20 |
+| ABOUT_TO_START = 1 | 表示画中画将要启动。<br>**起始版本：** 20<br><!--Device-ABOUT_TO_START = 1--><!--Device-ABOUT_TO_START = 1-End--> |
+| STARTED = 2 | 表示画中画已经启动。<br>**起始版本：** 20<br><!--Device-STARTED = 2--><!--Device-STARTED = 2-End--> |
+| ABOUT_TO_STOP = 3 | 表示画中画将要停止。<br>**起始版本：** 20<br><!--Device-ABOUT_TO_STOP = 3--><!--Device-ABOUT_TO_STOP = 3-End--> |
+| STOPPED = 4 | 表示画中画已经停止。<br>**起始版本：** 20<br><!--Device-STOPPED = 4--><!--Device-STOPPED = 4-End--> |
+| ABOUT_TO_RESTORE = 5 | 表示画中画将从小窗播放恢复到原始播放界面。<br>**起始版本：** 20<br><!--Device-ABOUT_TO_RESTORE = 5--><!--Device-ABOUT_TO_RESTORE = 5-End--> |
+| ERROR = 6 | 表示画中画生命周期执行过程出现了异常。<br>**起始版本：** 20<br><!--Device-ERROR = 6--><!--Device-ERROR = 6-End--> |
 
 
 ## 函数说明
@@ -371,7 +373,7 @@ int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipCon
 
 **描述：**
 
-Sets the 拉起画中画的主窗口Id。
+设置拉起画中画的主窗口Id。
 
 <!--Device-int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)--><!--Device-int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)-End-->
 
@@ -810,7 +812,7 @@ int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebP
 
 **描述：**
 
-开启画中画窗口创建完成的监听。
+开启画中画surface创建完成的监听。
 
 <!--Device-int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)--><!--Device-int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)-End-->
 
@@ -839,7 +841,7 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 
 **描述：**
 
-关闭画中画窗口创建完成的监听。
+关闭画中画surface创建完成的监听。
 
 <!--Device-int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)--><!--Device-int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)-End-->
 
@@ -852,7 +854,7 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t controllerId | 画中画控制器Id，为非负整数。 |
-| [WebPipStartPipCallback](capi-oh-window-pip-h.md#webpipstartpipcallback) callback | 画中画窗口创建完成的回调函数。 |
+| [WebPipStartPipCallback](capi-oh-window-pip-h.md#webpipstartpipcallback) callback | 画中画surface创建完成的回调函数。 |
 
 **返回值：**
 
@@ -868,7 +870,7 @@ int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId
 
 **描述：**
 
-关闭所有画中画窗口创建完成的监听。
+关闭所有画中画surface创建完成的监听。
 
 <!--Device-int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)-End-->
 
@@ -1154,7 +1156,7 @@ int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enab
 
 **描述：**
 
-设置是否在返回桌面时自动启动画中画，默认不自动拉起。
+设置在拉起画中画的应用主窗退后台时是否自动启动画中画，默认不自动拉起。 在开启自动拉起的情况下，当应用主窗为智慧多窗悬浮窗状态且被收入侧边栏时，应用主窗虽退后台，但不会自动拉起画中画。
 
 <!--Device-int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)--><!--Device-int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)-End-->
 

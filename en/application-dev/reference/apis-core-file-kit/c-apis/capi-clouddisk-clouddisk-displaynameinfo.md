@@ -24,8 +24,8 @@ A struct that encapsulates the display name of the sync root path.
 
 | Name | Description |
 | -- | -- |
-| uint32_t displayNameResId | Static resource ID corresponding to the display name of the application's sync root path.<br>**Since**: 21 |
-| char *customAlias |  |
-| size_t customAliasLength | Length of the custom alias. Value range: [0, 255].<br>**Since**: 21 |
+| uint32_t displayNameResId | Static resource ID corresponding to the display name of the application's sync root path.<br>**Since**: 21<br><!--Device-uint32_t displayNameResId--><!--Device-uint32_t displayNameResId-End--> |
+| char *customAlias | <!--Device-char *customAlias--><!--Device-char *customAlias-End--> |
+| size_t customAliasLength | Length of the custom alias. Value range: [0, 255].<br>**Since**: 21<br><!--Device-size_t customAliasLength--><!--Device-size_t customAliasLength-End--> |
 
 

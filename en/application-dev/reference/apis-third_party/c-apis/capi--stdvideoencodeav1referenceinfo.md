@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| [StdVideoEncodeAV1ReferenceInfoFlags](capi--stdvideoencodeav1referenceinfoflags.md) flags |  |
-| uint32_t RefFrameId |  |
-| StdVideoAV1FrameType frame_type |  |
-| uint8_t OrderHint |  |
-| uint8_t reserved1[3] |  |
-| [const StdVideoEncodeAV1ExtensionHeader*](capi--stdvideoencodeav1extensionheader.md) pExtensionHeader |  |
+| [StdVideoEncodeAV1ReferenceInfoFlags](capi--stdvideoencodeav1referenceinfoflags.md) flags | <!--Device-StdVideoEncodeAV1ReferenceInfoFlags flags--><!--Device-StdVideoEncodeAV1ReferenceInfoFlags flags-End--> |
+| uint32_t RefFrameId | <!--Device-uint32_t RefFrameId--><!--Device-uint32_t RefFrameId-End--> |
+| StdVideoAV1FrameType frame_type | <!--Device-StdVideoAV1FrameType frame_type--><!--Device-StdVideoAV1FrameType frame_type-End--> |
+| uint8_t OrderHint | <!--Device-uint8_t OrderHint--><!--Device-uint8_t OrderHint-End--> |
+| uint8_t reserved1[3] | <!--Device-uint8_t reserved1[3]--><!--Device-uint8_t reserved1[3]-End--> |
+| [const StdVideoEncodeAV1ExtensionHeader*](capi--stdvideoencodeav1extensionheader.md) pExtensionHeader | <!--Device-const StdVideoEncodeAV1ExtensionHeader* pExtensionHeader--><!--Device-const StdVideoEncodeAV1ExtensionHeader* pExtensionHeader-End--> |
 
 

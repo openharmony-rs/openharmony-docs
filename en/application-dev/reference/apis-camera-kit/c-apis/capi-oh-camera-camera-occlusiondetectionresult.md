@@ -24,7 +24,7 @@ Provides the check result for whether a camera lens is blocked or dirty.
 
 | Name | Description |
 | -- | -- |
-| bool isCameraOccluded | Checks whether the camera lens is blocked. The value **true** indicates that the camera lens is blocked, and **<br>false** indicates the opposite. |
-| bool isCameraLensDirty | Checks whether the camera lens is dirty. The value **true** indicates that the camera lens is dirty, and **false*<br> indicates the opposite. |
+| bool isCameraOccluded | Checks whether the camera lens is blocked. The value **true** indicates that the camera lens is blocked, and ** false** indicates the opposite.<br><!--Device-bool isCameraOccluded--><!--Device-bool isCameraOccluded-End--> |
+| bool isCameraLensDirty | Checks whether the camera lens is dirty. The value **true** indicates that the camera lens is dirty, and **false* * indicates the opposite.<br><!--Device-bool isCameraLensDirty--><!--Device-bool isCameraLensDirty-End--> |
 
 

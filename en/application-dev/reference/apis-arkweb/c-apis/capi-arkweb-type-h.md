@@ -71,7 +71,7 @@ enum ArkWeb_WebMessageType
 
 Enumerates the data types of post message.
 
-<!--Device-ArkWeb_WebMessageType--><!--Device-ArkWeb_WebMessageType-End-->
+<!--Device-enum ArkWeb_WebMessageType--><!--Device-enum ArkWeb_WebMessageType-End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -79,9 +79,9 @@ Enumerates the data types of post message.
 
 | Enum item | Description |
 | -- | -- |
-| ARKWEB_NONE = 0 | Error data. |
-| ARKWEB_STRING | String data. |
-| ARKWEB_BUFFER | Byte stream data. |
+| ARKWEB_NONE = 0 | Error data.<br><!--Device-ARKWEB_NONE = 0--><!--Device-ARKWEB_NONE = 0-End--> |
+| ARKWEB_STRING | String data.<br><!--Device-ARKWEB_STRING--><!--Device-ARKWEB_STRING-End--> |
+| ARKWEB_BUFFER | Byte stream data.<br><!--Device-ARKWEB_BUFFER--><!--Device-ARKWEB_BUFFER-End--> |
 
 ### ArkWeb_JavaScriptValueType
 
@@ -93,7 +93,7 @@ enum ArkWeb_JavaScriptValueType
 
 Enumerates the JavaScript data types.
 
-<!--Device-ArkWeb_JavaScriptValueType--><!--Device-ArkWeb_JavaScriptValueType-End-->
+<!--Device-enum ArkWeb_JavaScriptValueType--><!--Device-enum ArkWeb_JavaScriptValueType-End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -101,9 +101,9 @@ Enumerates the JavaScript data types.
 
 | Enum item | Description |
 | -- | -- |
-| ARKWEB_JAVASCRIPT_NONE = 0 | Error data. |
-| ARKWEB_JAVASCRIPT_STRING | String data. |
-| ARKWEB_JAVASCRIPT_BOOL | Boolean data type. |
+| ARKWEB_JAVASCRIPT_NONE = 0 | Error data.<br><!--Device-ARKWEB_JAVASCRIPT_NONE = 0--><!--Device-ARKWEB_JAVASCRIPT_NONE = 0-End--> |
+| ARKWEB_JAVASCRIPT_STRING | String data.<br><!--Device-ARKWEB_JAVASCRIPT_STRING--><!--Device-ARKWEB_JAVASCRIPT_STRING-End--> |
+| ARKWEB_JAVASCRIPT_BOOL | Boolean data type.<br><!--Device-ARKWEB_JAVASCRIPT_BOOL--><!--Device-ARKWEB_JAVASCRIPT_BOOL-End--> |
 
 
 ## Function description

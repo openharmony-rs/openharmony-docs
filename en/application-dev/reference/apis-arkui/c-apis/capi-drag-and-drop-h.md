@@ -120,7 +120,7 @@ enum ArkUI_DragResult
 
 Enumerates drag results, which are set by the data receiver and transferred by the system to the drag source so that the drag source is aware of the data processing result of the receiver.
 
-<!--Device-ArkUI_DragResult--><!--Device-ArkUI_DragResult-End-->
+<!--Device-enum ArkUI_DragResult--><!--Device-enum ArkUI_DragResult-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,9 +128,9 @@ Enumerates drag results, which are set by the data receiver and transferred by t
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_DRAG_RESULT_SUCCESSFUL = 0 | The drag and drop operation succeeded. |
-| ARKUI_DRAG_RESULT_FAILED | The drag and drop operation failed. |
-| ARKUI_DRAG_RESULT_CANCELED | The drag and drop operation was canceled. |
+| ARKUI_DRAG_RESULT_SUCCESSFUL = 0 | The drag and drop operation succeeded.<br><!--Device-ARKUI_DRAG_RESULT_SUCCESSFUL = 0--><!--Device-ARKUI_DRAG_RESULT_SUCCESSFUL = 0-End--> |
+| ARKUI_DRAG_RESULT_FAILED | The drag and drop operation failed.<br><!--Device-ARKUI_DRAG_RESULT_FAILED--><!--Device-ARKUI_DRAG_RESULT_FAILED-End--> |
+| ARKUI_DRAG_RESULT_CANCELED | The drag and drop operation was canceled.<br><!--Device-ARKUI_DRAG_RESULT_CANCELED--><!--Device-ARKUI_DRAG_RESULT_CANCELED-End--> |
 
 ### ArkUI_DropOperation
 
@@ -142,7 +142,7 @@ enum ArkUI_DropOperation
 
 Enumerates data processing modes used when data is dropped, which affects the display of the badge. When the copy operation is set, the badge displays a plus sign (+). When the cut operation is set, the badge does not display a plus sign (+).
 
-<!--Device-ArkUI_DropOperation--><!--Device-ArkUI_DropOperation-End-->
+<!--Device-enum ArkUI_DropOperation--><!--Device-enum ArkUI_DropOperation-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,8 +150,8 @@ Enumerates data processing modes used when data is dropped, which affects the di
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_DROP_OPERATION_COPY = 0 | Copy. |
-| ARKUI_DROP_OPERATION_MOVE | Cut. |
+| ARKUI_DROP_OPERATION_COPY = 0 | Copy.<br><!--Device-ARKUI_DROP_OPERATION_COPY = 0--><!--Device-ARKUI_DROP_OPERATION_COPY = 0-End--> |
+| ARKUI_DROP_OPERATION_MOVE | Cut.<br><!--Device-ARKUI_DROP_OPERATION_MOVE--><!--Device-ARKUI_DROP_OPERATION_MOVE-End--> |
 
 ### ArkUI_PreDragStatus
 
@@ -163,7 +163,7 @@ enum ArkUI_PreDragStatus
 
 Enumerates interaction states prior to a drop and drop operation.
 
-<!--Device-ArkUI_PreDragStatus--><!--Device-ArkUI_PreDragStatus-End-->
+<!--Device-enum ArkUI_PreDragStatus--><!--Device-enum ArkUI_PreDragStatus-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,14 +171,14 @@ Enumerates interaction states prior to a drop and drop operation.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1 | Failed to obtain the status before drag is initiated. |
-| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING | A drag gesture is being detected. |
-| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG | The component is ready to be dragged. |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED | A lift animation is started. |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED | A lift animation is finished. |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED | A drop animation is started. |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED | A drop animation is finished. |
-| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG | A drop animation is canceled. |
+| ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1 | Failed to obtain the status before drag is initiated.<br><!--Device-ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1--><!--Device-ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1-End--> |
+| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING | A drag gesture is being detected.<br><!--Device-ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING--><!--Device-ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING-End--> |
+| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG | The component is ready to be dragged.<br><!--Device-ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG--><!--Device-ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED | A lift animation is started.<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED | A lift animation is finished.<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED | A drop animation is started.<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED | A drop animation is finished.<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED-End--> |
+| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG | A drop animation is canceled.<br><!--Device-ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG--><!--Device-ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG-End--> |
 
 ### ArkUI_DragPreviewScaleMode
 
@@ -190,7 +190,7 @@ enum ArkUI_DragPreviewScaleMode
 
 Enumerates drag preview scale modes.
 
-<!--Device-ArkUI_DragPreviewScaleMode--><!--Device-ArkUI_DragPreviewScaleMode-End-->
+<!--Device-enum ArkUI_DragPreviewScaleMode--><!--Device-enum ArkUI_DragPreviewScaleMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -198,8 +198,8 @@ Enumerates drag preview scale modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0 | Enables the system to automatically change the position of the dragged point based on the scenario and apply scaling transformations to the drag preview based on set rules. |
-| ARKUI_DRAG_PREVIEW_SCALE_DISABLED | Disables the system's scaling behavior for the drag preview. |
+| ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0 | Enables the system to automatically change the position of the dragged point based on the scenario and apply scaling transformations to the drag preview based on set rules.<br><!--Device-ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0--><!--Device-ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0-End--> |
+| ARKUI_DRAG_PREVIEW_SCALE_DISABLED | Disables the system's scaling behavior for the drag preview.<br><!--Device-ARKUI_DRAG_PREVIEW_SCALE_DISABLED--><!--Device-ARKUI_DRAG_PREVIEW_SCALE_DISABLED-End--> |
 
 ### ArkUI_DragStatus
 
@@ -211,7 +211,7 @@ enum ArkUI_DragStatus
 
 Enumerates drag operation states.
 
-<!--Device-ArkUI_DragStatus--><!--Device-ArkUI_DragStatus-End-->
+<!--Device-enum ArkUI_DragStatus--><!--Device-enum ArkUI_DragStatus-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,9 +219,9 @@ Enumerates drag operation states.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown drag state. |
-| ARKUI_DRAG_STATUS_STARTED | The drag operation has started. |
-| ARKUI_DRAG_STATUS_ENDED | The drag operation has ended. |
+| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown drag state.<br><!--Device-ARKUI_DRAG_STATUS_UNKNOWN = -1--><!--Device-ARKUI_DRAG_STATUS_UNKNOWN = -1-End--> |
+| ARKUI_DRAG_STATUS_STARTED | The drag operation has started.<br><!--Device-ARKUI_DRAG_STATUS_STARTED--><!--Device-ARKUI_DRAG_STATUS_STARTED-End--> |
+| ARKUI_DRAG_STATUS_ENDED | The drag operation has ended.<br><!--Device-ARKUI_DRAG_STATUS_ENDED--><!--Device-ARKUI_DRAG_STATUS_ENDED-End--> |
 
 
 ## Function description

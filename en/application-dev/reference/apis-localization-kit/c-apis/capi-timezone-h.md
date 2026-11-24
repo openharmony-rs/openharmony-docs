@@ -66,7 +66,7 @@ enum DateRuleType
 
 Enumerates the types of rules for defining dates.
 
-<!--Device-DateRuleType--><!--Device-DateRuleType-End-->
+<!--Device-enum DateRuleType--><!--Device-enum DateRuleType-End-->
 
 **System capability**: SystemCapability.Global.I18n
 
@@ -74,10 +74,10 @@ Enumerates the types of rules for defining dates.
 
 | Enum item | Description |
 | -- | -- |
-| DOM = 0 | Indicates that day of the month. For example, October 16 in 2025 is the 16th day of October. |
-| DOW = 1 | Indicates that weekday of the month. For example, October 16 in 2025 is the third Thursday of October. |
-| DOW_GEQ_DOM = 2 | Indicates that first weekday after the specified day of the month. For example, October 16 in 2025 is the first Thursday after the 13th, 14th, or 15th day of October. |
-| DOW_LEQ_DOM = 3 | Indicates that last weekday before the specified day of the month. For example, October 16 in 2025 is the last Thursday before the 20th day of October. |
+| DOM = 0 | Indicates that day of the month. For example, October 16 in 2025 is the 16th day of October.<br><!--Device-DOM = 0--><!--Device-DOM = 0-End--> |
+| DOW = 1 | Indicates that weekday of the month. For example, October 16 in 2025 is the third Thursday of October.<br><!--Device-DOW = 1--><!--Device-DOW = 1-End--> |
+| DOW_GEQ_DOM = 2 | Indicates that first weekday after the specified day of the month. For example, October 16 in 2025 is the first Thursday after the 13th, 14th, or 15th day of October.<br><!--Device-DOW_GEQ_DOM = 2--><!--Device-DOW_GEQ_DOM = 2-End--> |
+| DOW_LEQ_DOM = 3 | Indicates that last weekday before the specified day of the month. For example, October 16 in 2025 is the last Thursday before the 20th day of October.<br><!--Device-DOW_LEQ_DOM = 3--><!--Device-DOW_LEQ_DOM = 3-End--> |
 
 ### TimeRuleType
 
@@ -89,7 +89,7 @@ enum TimeRuleType
 
 Enumerates the types of rules for defining time.
 
-<!--Device-TimeRuleType--><!--Device-TimeRuleType-End-->
+<!--Device-enum TimeRuleType--><!--Device-enum TimeRuleType-End-->
 
 **System capability**: SystemCapability.Global.I18n
 
@@ -97,9 +97,9 @@ Enumerates the types of rules for defining time.
 
 | Enum item | Description |
 | -- | -- |
-| WALL_TIME = 0 | Indicates that local clock time (not subject to time zone offset). |
-| STANDARD_TIME = 1 | Indicates that local standard time (not subject to DST offset). |
-| UTC_TIME = 2 | Indicates that world standard time (UTC time). |
+| WALL_TIME = 0 | Indicates that local clock time (not subject to time zone offset).<br><!--Device-WALL_TIME = 0--><!--Device-WALL_TIME = 0-End--> |
+| STANDARD_TIME = 1 | Indicates that local standard time (not subject to DST offset).<br><!--Device-STANDARD_TIME = 1--><!--Device-STANDARD_TIME = 1-End--> |
+| UTC_TIME = 2 | Indicates that world standard time (UTC time).<br><!--Device-UTC_TIME = 2--><!--Device-UTC_TIME = 2-End--> |
 
 
 ## Function description

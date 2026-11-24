@@ -24,7 +24,7 @@ This struct describes the pixel format of a bitmap, including the color type and
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorFormat | Storage format of bitmap pixels. |
-| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaFormat | Alpha format of bitmap pixels. |
+| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorFormat | Storage format of bitmap pixels.<br><!--Device-OH_Drawing_ColorFormat colorFormat--><!--Device-OH_Drawing_ColorFormat colorFormat-End--> |
+| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaFormat | Alpha format of bitmap pixels.<br><!--Device-OH_Drawing_AlphaFormat alphaFormat--><!--Device-OH_Drawing_AlphaFormat alphaFormat-End--> |
 
 

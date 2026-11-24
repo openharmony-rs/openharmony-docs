@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineLayout layout |  |
-| VkShaderStageFlags stageFlags |  |
-| uint32_t offset |  |
-| uint32_t size |  |
-| const void* pValues |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineLayout layout | <!--Device-VkPipelineLayout layout--><!--Device-VkPipelineLayout layout-End--> |
+| VkShaderStageFlags stageFlags | <!--Device-VkShaderStageFlags stageFlags--><!--Device-VkShaderStageFlags stageFlags-End--> |
+| uint32_t offset | <!--Device-uint32_t offset--><!--Device-uint32_t offset-End--> |
+| uint32_t size | <!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| const void* pValues | <!--Device-const void* pValues--><!--Device-const void* pValues-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDepthClampModeEXT depthClampMode |  |
-| [const VkDepthClampRangeEXT*](capi--vkdepthclamprangeext.md) pDepthClampRange |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDepthClampModeEXT depthClampMode | <!--Device-VkDepthClampModeEXT depthClampMode--><!--Device-VkDepthClampModeEXT depthClampMode-End--> |
+| [const VkDepthClampRangeEXT*](capi--vkdepthclamprangeext.md) pDepthClampRange | <!--Device-const VkDepthClampRangeEXT* pDepthClampRange--><!--Device-const VkDepthClampRangeEXT* pDepthClampRange-End--> |
 
 

@@ -4,6 +4,8 @@
 
 Provides APIs related to typography lines, such as obtaining the number of characters that can be typeset starting from a specified position.
 
+**File to Include**: <native_drawing/drawing_text_lineTypography.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing

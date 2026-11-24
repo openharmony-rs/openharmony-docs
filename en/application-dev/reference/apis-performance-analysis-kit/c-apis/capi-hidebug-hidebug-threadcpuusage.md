@@ -24,8 +24,8 @@ Defines the struct for the CPU usage of all threads of an application.
 
 | Name | Description |
 | -- | -- |
-| uint32_t threadId | Thread ID. |
-| double cpuUsage | Thread CPU usage, in percentage. |
-| [struct HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | Pointer to the CPU usage of the next thread. |
+| uint32_t threadId | Thread ID.<br><!--Device-uint32_t threadId--><!--Device-uint32_t threadId-End--> |
+| double cpuUsage | Thread CPU usage, in percentage.<br><!--Device-double cpuUsage--><!--Device-double cpuUsage-End--> |
+| [struct HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | Pointer to the CPU usage of the next thread.<br><!--Device-struct HiDebug_ThreadCpuUsage *next--><!--Device-struct HiDebug_ThreadCpuUsage *next-End--> |
 
 

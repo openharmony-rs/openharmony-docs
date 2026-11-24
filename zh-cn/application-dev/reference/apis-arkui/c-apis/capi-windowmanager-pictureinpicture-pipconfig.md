@@ -6,7 +6,7 @@ typedef void* PictureInPicture_PipConfig
 
 ## 概述
 
-Picture in picture config.
+画中画参数配置器。
 
 <!--Device-typedef void* PictureInPicture_PipConfig--><!--Device-typedef void* PictureInPicture_PipConfig-End-->
 

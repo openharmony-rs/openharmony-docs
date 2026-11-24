@@ -24,8 +24,8 @@ elementName信息。
 
 | 名称 | 描述 |
 | -- | -- |
-| char* bundleName | 应用包名。<br>**起始版本：** 13 |
-| char* moduleName | 模块名称。<br>**起始版本：** 13 |
-| char* abilityName | Ability名称。<br>**起始版本：** 13 |
+| char* bundleName | 应用包名。<br>**起始版本：** 13<br><!--Device-char* bundleName--><!--Device-char* bundleName-End--> |
+| char* moduleName | 模块名称。<br>**起始版本：** 13<br><!--Device-char* moduleName--><!--Device-char* moduleName-End--> |
+| char* abilityName | Ability名称。<br>**起始版本：** 13<br><!--Device-char* abilityName--><!--Device-char* abilityName-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct OH_Drawing_FontAliasInfo {...} OH_Drawing_FontAliasInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char* familyName | 字体家族名。 |
-| int weight | 字体字重值，当字重值大于0时，表示此字体集只包含所指定字重的字体，当字重值等于0时，表示此字体集包含所有字体。 |
+| char* familyName | 字体家族名。<br><!--Device-char* familyName--><!--Device-char* familyName-End--> |
+| int weight | 字体字重值，当字重值大于0时，表示此字体集只包含所指定字重的字体，当字重值等于0时，表示此字体集包含所有字体。<br><!--Device-int weight--><!--Device-int weight-End--> |
 
 

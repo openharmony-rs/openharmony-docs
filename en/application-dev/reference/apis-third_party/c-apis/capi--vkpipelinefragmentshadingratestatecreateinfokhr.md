@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkExtent2D](capi--vkextent2d.md) fragmentSize |  |
-| VkFragmentShadingRateCombinerOpKHR combinerOps[2] |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkExtent2D](capi--vkextent2d.md) fragmentSize | <!--Device-VkExtent2D fragmentSize--><!--Device-VkExtent2D fragmentSize-End--> |
+| VkFragmentShadingRateCombinerOpKHR combinerOps[2] | <!--Device-VkFragmentShadingRateCombinerOpKHR combinerOps[2]--><!--Device-VkFragmentShadingRateCombinerOpKHR combinerOps[2]-End--> |
 
 

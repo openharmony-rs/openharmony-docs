@@ -24,13 +24,13 @@ typedef struct OH_UsbManager_UsbEndpoint {...} OH_UsbManager_UsbEndpoint
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t address | 端点地址。<br>**起始版本：** 26.0.1 |
-| uint8_t attributes | 端点属性。<br>**起始版本：** 26.0.1 |
-| uint8_t interval | 端点数据传输间隔。对于中断端点，单位为毫秒。对于等时端点， <br>单位取决于设备速度。<br>**起始版本：** 26.0.1 |
-| uint16_t maxPacketSize | 端点上数据包的最大大小，单位：字节。<br>**起始版本：** 26.0.1 |
-| [OH_UsbManager_RequestDirection](capi-ohusb-manager-h.md#oh_usbmanager_requestdirection) direction | 端点方向。<br>**起始版本：** 26.0.1 |
-| uint8_t number | 端点号。<br>**起始版本：** 26.0.1 |
-| uint8_t type | 端点类型。<br>**起始版本：** 26.0.1 |
-| uint8_t interfaceId | 端点所属接口的唯一标识。<br>**起始版本：** 26.0.1 |
+| uint8_t address | 端点地址。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t address--><!--Device-uint8_t address-End--> |
+| uint8_t attributes | 端点属性。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t attributes--><!--Device-uint8_t attributes-End--> |
+| uint8_t interval | 端点数据传输间隔。对于中断端点，单位为毫秒。对于等时端点， <br>单位取决于设备速度。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t interval--><!--Device-uint8_t interval-End--> |
+| uint16_t maxPacketSize | 端点上数据包的最大大小，单位：字节。<br>**起始版本：** 26.0.1<br><!--Device-uint16_t maxPacketSize--><!--Device-uint16_t maxPacketSize-End--> |
+| [OH_UsbManager_RequestDirection](capi-ohusb-manager-h.md#oh_usbmanager_requestdirection) direction | 端点方向。<br>**起始版本：** 26.0.1<br><!--Device-OH_UsbManager_RequestDirection direction--><!--Device-OH_UsbManager_RequestDirection direction-End--> |
+| uint8_t number | 端点号。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t number--><!--Device-uint8_t number-End--> |
+| uint8_t type | 端点类型。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t type--><!--Device-uint8_t type-End--> |
+| uint8_t interfaceId | 端点所属接口的唯一标识。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t interfaceId--><!--Device-uint8_t interfaceId-End--> |
 
 

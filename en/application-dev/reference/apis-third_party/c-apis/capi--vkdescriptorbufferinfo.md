@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkBuffer buffer |  |
-| VkDeviceSize offset |  |
-| VkDeviceSize range |  |
+| VkBuffer buffer | <!--Device-VkBuffer buffer--><!--Device-VkBuffer buffer-End--> |
+| VkDeviceSize offset | <!--Device-VkDeviceSize offset--><!--Device-VkDeviceSize offset-End--> |
+| VkDeviceSize range | <!--Device-VkDeviceSize range--><!--Device-VkDeviceSize range-End--> |
 
 

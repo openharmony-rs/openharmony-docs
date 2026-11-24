@@ -26,11 +26,11 @@ typedef struct OH_AudioSuite_DownloadStatusInfo {...} OH_AudioSuite_DownloadStat
 
 | 名称 | 描述 |
 | -- | -- |
-| char featureName[256] | 特性名称。<br>**起始版本：** 26.0.0 |
-| int32_t downloadStatus | 下载状态。<br>**起始版本：** 26.0.0 |
-| int64_t size | 特性包大小。<br>**起始版本：** 26.0.0 |
-| char installPath[256] | 安装路径。<br>**起始版本：** 26.0.0 |
-| int32_t progress | 下载进度[0-100]。<br>**起始版本：** 26.0.0 |
-| int32_t errorCode | 错误码。<br>**起始版本：** 26.0.0 |
+| char featureName[256] | 特性名称。<br>**起始版本：** 26.0.0<br><!--Device-char featureName[256]--><!--Device-char featureName[256]-End--> |
+| int32_t downloadStatus | 下载状态。<br>**起始版本：** 26.0.0<br><!--Device-int32_t downloadStatus--><!--Device-int32_t downloadStatus-End--> |
+| int64_t size | 特性包大小。<br>**起始版本：** 26.0.0<br><!--Device-int64_t size--><!--Device-int64_t size-End--> |
+| char installPath[256] | 安装路径。<br>**起始版本：** 26.0.0<br><!--Device-char installPath[256]--><!--Device-char installPath[256]-End--> |
+| int32_t progress | 下载进度[0-100]。<br>**起始版本：** 26.0.0<br><!--Device-int32_t progress--><!--Device-int32_t progress-End--> |
+| int32_t errorCode | 错误码。<br>**起始版本：** 26.0.0<br><!--Device-int32_t errorCode--><!--Device-int32_t errorCode-End--> |
 
 

@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t subgroupSize |  |
-| VkShaderStageFlags supportedStages |  |
-| VkSubgroupFeatureFlags supportedOperations |  |
-| VkBool32 quadOperationsInAllStages |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t subgroupSize | <!--Device-uint32_t subgroupSize--><!--Device-uint32_t subgroupSize-End--> |
+| VkShaderStageFlags supportedStages | <!--Device-VkShaderStageFlags supportedStages--><!--Device-VkShaderStageFlags supportedStages-End--> |
+| VkSubgroupFeatureFlags supportedOperations | <!--Device-VkSubgroupFeatureFlags supportedOperations--><!--Device-VkSubgroupFeatureFlags supportedOperations-End--> |
+| VkBool32 quadOperationsInAllStages | <!--Device-VkBool32 quadOperationsInAllStages--><!--Device-VkBool32 quadOperationsInAllStages-End--> |
 
 

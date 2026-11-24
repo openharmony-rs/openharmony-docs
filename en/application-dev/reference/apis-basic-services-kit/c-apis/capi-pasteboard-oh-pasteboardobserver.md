@@ -6,7 +6,7 @@ typedef struct OH_PasteboardObserver OH_PasteboardObserver
 
 ## Overview
 
-Defines the pasteboard observer.
+Defines a pasteboard observer to listen for pasteboard data change events. When the pasteboard content is updated, a callback will be invoked to notify the application. This API is used in applications that need to respond to pasteboard content changes.
 
 <!--Device-typedef struct OH_PasteboardObserver OH_PasteboardObserver--><!--Device-typedef struct OH_PasteboardObserver OH_PasteboardObserver-End-->
 

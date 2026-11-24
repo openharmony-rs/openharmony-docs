@@ -61,7 +61,7 @@ enum OH_ArkUI_HapticFeedbackMode
 
 Enumerates haptic feedback modes, which are used to control the haptic feedback behavior of the text editor during user interactions (such as long press, drag, and other operations).
 
-<!--Device-OH_ArkUI_HapticFeedbackMode--><!--Device-OH_ArkUI_HapticFeedbackMode-End-->
+<!--Device-enum OH_ArkUI_HapticFeedbackMode--><!--Device-enum OH_ArkUI_HapticFeedbackMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,9 +69,9 @@ Enumerates haptic feedback modes, which are used to control the haptic feedback 
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | No vibration.<br>**Since**: 24 |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | Vibration.<br>**Since**: 24 |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | System vibration.<br>**Since**: 24 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | No vibration.<br>**Since**: 24<br><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0--><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0-End--> |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | Vibration.<br>**Since**: 24<br><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1--><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1-End--> |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | System vibration.<br>**Since**: 24<br><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2--><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2-End--> |
 
 ### OH_ArkUI_TextEditorSpanType
 
@@ -83,7 +83,7 @@ enum OH_ArkUI_TextEditorSpanType
 
 Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT</b> type is used when the user selects only text content, the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED</b> type is used when the selection contains mixed content such as text and images, and the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER</b> type is used when a custom menu item layout is required.
 
-<!--Device-OH_ArkUI_TextEditorSpanType--><!--Device-OH_ArkUI_TextEditorSpanType-End-->
+<!--Device-enum OH_ArkUI_TextEditorSpanType--><!--Device-enum OH_ArkUI_TextEditorSpanType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,11 +91,11 @@ Enumerates the span types of a custom text selection menu, which are used to ide
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 | Text span.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 | Image span.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 | Mixed span.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 | Custom layout span.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 | Default span.<br>**Since**: 24 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 | Text span.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 | Image span.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 | Mixed span.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 | Custom layout span.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 | Default span.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4-End--> |
 
 ### OH_ArkUI_TextEditorResponseType
 
@@ -107,7 +107,7 @@ enum OH_ArkUI_TextEditorResponseType
 
 Enumerates the response types of a custom text selection menu, which are used to identify the interaction method that triggers the menu pop-up. Different response types correspond to different user operations (such as right-click, long press, and mouse-based selection), allowing different menu content to be customized based on the response type.
 
-<!--Device-OH_ArkUI_TextEditorResponseType--><!--Device-OH_ArkUI_TextEditorResponseType-End-->
+<!--Device-enum OH_ArkUI_TextEditorResponseType--><!--Device-enum OH_ArkUI_TextEditorResponseType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,10 +115,10 @@ Enumerates the response types of a custom text selection menu, which are used to
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 | The menu is displayed when the component is right-clicked.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 | The menu is displayed when the component is long-pressed.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 | Default response type.<br>**Since**: 24 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 | The menu is displayed when the component is right-clicked.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 | The menu is displayed when the component is long-pressed.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1-End--> |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2-End--> |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 | Default response type.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3-End--> |
 
 ### OH_ArkUI_TextMenuType
 
@@ -130,7 +130,7 @@ enum OH_ArkUI_TextMenuType
 
 Enumerates text menu types, which are used to distinguish different types of pop-up menus in the text editor, including the text selection menu and the preview menu. Different menu types correspond to different interaction scenarios and menu display modes. For example, the text selection menu pops up when the user selects text and is used for text operations such as copy and delete; the preview menu pops up when the user long-presses an image and is used to trigger image content drag preview as well as copy and deletion operations.
 
-<!--Device-OH_ArkUI_TextMenuType--><!--Device-OH_ArkUI_TextMenuType-End-->
+<!--Device-enum OH_ArkUI_TextMenuType--><!--Device-enum OH_ArkUI_TextMenuType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,8 +138,8 @@ Enumerates text menu types, which are used to distinguish different types of pop
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | Text selection menu.<br>**Since**: 24 |
-| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | Preview menu.<br>**Since**: 24 |
+| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | Text selection menu.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | Preview menu.<br>**Since**: 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1--><!--Device-OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1-End--> |
 
 ### OH_ArkUI_TextEditorType
 
@@ -151,7 +151,7 @@ enum OH_ArkUI_TextEditorType
 
 Enumerates the text editor input types.
 
-<!--Device-OH_ArkUI_TextEditorType--><!--Device-OH_ArkUI_TextEditorType-End-->
+<!--Device-enum OH_ArkUI_TextEditorType--><!--Device-enum OH_ArkUI_TextEditorType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,17 +159,17 @@ Enumerates the text editor input types.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | Normal input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | Number input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | Phone number input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | Email address input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | Password input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | Numeric password input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | Username input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | New password input mode.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | Number input mode with a decimal point.<br>**Since**: 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | One time code input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | Normal input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | Number input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | Phone number input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | Email address input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | Password input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | Numeric password input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | Username input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | New password input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | Number input mode with a decimal point.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | One time code input mode.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14-End--> |
 
 
 ## Function description

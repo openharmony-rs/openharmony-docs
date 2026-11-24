@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| size_t combinedImageSamplerDensityMapDescriptorSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| size_t combinedImageSamplerDensityMapDescriptorSize | <!--Device-size_t combinedImageSamplerDensityMapDescriptorSize--><!--Device-size_t combinedImageSamplerDensityMapDescriptorSize-End--> |
 
 

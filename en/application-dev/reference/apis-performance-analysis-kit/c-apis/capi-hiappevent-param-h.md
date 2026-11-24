@@ -28,10 +28,11 @@ Defines the param names of all predefined events.<br> In addition to custom even
 | MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT "sample_count" | Used in MAIN_THREAD_JANK_V2, Number of main thread timeout samples.<br>**Since**: 22 |
 | MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP "report_times_per_app" | Used in MAIN_THREAD_JANK_V2, Number of main thread timeout sampling reports per application PID within a single lifecycle.<br>**Since**: 22 |
 | MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING "auto_stop_sampling" | Used in MAIN_THREAD_JANK_V2, Stop sampling main thread stack when main thread blockage is resolved.<br>**Since**: 22 |
+| MAIN_THREAD_JANK_PARAM_ENABLE_EVENT_HANDLER_DUMP "enable_event_handler_dump" | Indicates whether to collect the EventHandler task queue information when the main thread times out in the MAIN_THREAD_JANK_V2 event.<br>**Since**: 26.1.0 |
 | OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING "extend_pc_lr_printing" | Print additional memory information near the PC and LR registers<br>**Since**: 24 |
 | OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES "log_file_cutoff_sz_bytes" | Used to set the log specifications of the CPP_CRASH type in the APP_CRASH event, that is, truncate CPP_CRASH logs based on the configured parameter value.<br>**Since**: 24 |
 | OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING "simplify_vma_printing" | Only print VMA within the stacktrace of the cppcrash log<br>**Since**: 24 |
 | OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG "merge_cppcrash_app_log" | Merge the app log into the system cppcrash log and return it via external_log in the APP_CRASH event<br>**Since**: 24 |
-| OH_APP_CRASH_PARAM_COLLECT_MINIDUMP "collect_minidump" | Enable minidump in the APP_CRASH event<br>**Since**: 26.0.0 |
+| OH_APP_CRASH_PARAM_COLLECT_MINIDUMP "collect_minidump" | <!--RP1-->Indicates whether to enable minidump for the APP_CRASH event. <!--RP1End--><br>**Since**: 26.0.0 |
 | OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH "publish_on_next_launch" | Publish the APP_CRASH event when the application starts next time.<br>**Since**: 26.1.0 |
 

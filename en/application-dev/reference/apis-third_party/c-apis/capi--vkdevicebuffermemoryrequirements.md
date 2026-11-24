@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [const VkBufferCreateInfo*](capi--vkbuffercreateinfo.md) pCreateInfo |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [const VkBufferCreateInfo*](capi--vkbuffercreateinfo.md) pCreateInfo | <!--Device-const VkBufferCreateInfo* pCreateInfo--><!--Device-const VkBufferCreateInfo* pCreateInfo-End--> |
 
 

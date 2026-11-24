@@ -32,7 +32,7 @@ enum ArkWeb_NetError
 
 Enumerates the error codes of the ArkWeb network protocol stack.
 
-<!--Device-ArkWeb_NetError--><!--Device-ArkWeb_NetError-End-->
+<!--Device-enum ArkWeb_NetError--><!--Device-enum ArkWeb_NetError-End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -40,245 +40,245 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 
 | Enum item | Description |
 | -- | -- |
-| ARKWEB_NET_OK = 0 | &nbsp;Normal. |
-| ARKWEB_ERR_IO_PENDING = -1 | &nbsp;An asynchronous IO operation is not yet complete. This usually does not indicate a fatal error. Typically this error will be generated as a notification to wait for some external notification that the IO operation finally completed. |
-| ARKWEB_ERR_FAILED = -2 | &nbsp;A generic failure occurred. |
-| ARKWEB_ERR_ABORTED = -3 | &nbsp;An operation was aborted. |
-| ARKWEB_ERR_INVALID_ARGUMENT = -4 | &nbsp;An argument to the function is incorrect. |
-| ARKWEB_ERR_INVALID_HANDLE = -5 | &nbsp;The handle or file descriptor is invalid. |
-| ARKWEB_ERR_FILE_NOT_FOUND = -6 | &nbsp;The file or directory cannot be found. |
-| ARKWEB_ERR_TIMED_OUT = -7 | &nbsp;An operation timed out. |
-| ARKWEB_ERR_FILE_TOO_LARGE = -8 | &nbsp;The file is too large. |
-| ARKWEB_ERR_UNEXPECTED = -9 | &nbsp;An unexpected error. This may be caused by a programming mistake or an invalid assumption. |
-| ARKWEB_ERR_ACCESS_DENIED = -10 | &nbsp;Permission to access a resource, other than the network, was denied. |
-| ARKWEB_ERR_NOT_IMPLEMENTED = -11 | &nbsp;The operation failed because of unimplemented functionality. |
-| ARKWEB_ERR_INSUFFICIENT_RESOURCES = -12 | &nbsp;There were not enough resources to complete the operation. |
-| ARKWEB_ERR_OUT_OF_MEMORY = -13 | &nbsp;Memory allocation failed. |
-| ARKWEB_ERR_UPLOAD_FILE_CHANGED = -14 | &nbsp;The file upload failed because the file's modification time was different from the expectation. |
-| ARKWEB_ERR_SOCKET_NOT_CONNECTED = -15 | &nbsp;The socket is not connected. |
-| ARKWEB_ERR_FILE_EXISTS = -16 | &nbsp;The file already exists. |
-| ARKWEB_ERR_FILE_PATH_TOO_LONG = -17 | &nbsp;The path or file name is too long. |
-| ARKWEB_ERR_FILE_NO_SPACE = -18 | &nbsp;Not enough room left on the disk. |
-| ARKWEB_ERR_FILE_VIRUS_INFECTED = -19 | &nbsp;The file has a virus. |
-| ARKWEB_ERR_BLOCKED_BY_CLIENT = -20 | &nbsp;The client chose to block the request. |
-| ARKWEB_ERR_NETWORK_CHANGED = -21 | &nbsp;The network changed. |
-| ARKWEB_ERR_BLOCKED_BY_ADMINISTRATOR = -22 | &nbsp;The request was blocked by the URL block list configured by the domain administrator. |
-| ARKWEB_ERR_SOCKET_CONNECTED = -23 | &nbsp;The socket is already connected. |
-| ARKWEB_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25 | &nbsp;The upload failed because the upload stream needed to be re-read, due to a retry or a redirect, but the upload stream doesn't support that operation. |
-| ARKWEB_ERR_CONTEXT_SHUT_DOWN = -26 | &nbsp;The request failed because the URLRequestContext is shutting down, or has been shut down. |
-| ARKWEB_ERR_BLOCKED_BY_RESPONSE = -27 | &nbsp;The request failed because the response was delivered along with requirements which are not met ('X-Frame-Options' and 'Content-Security-Policy' ancestor checks and 'Cross-Origin-Resource-Policy' for instance). |
-| ARKWEB_ERR_CLEARTEXT_NOT_PERMITTED = -29 | &nbsp;The request was blocked by system policy disallowing some or all cleartext requests. |
-| ARKWEB_ERR_BLOCKED_BY_CSP = -30 | &nbsp;The request was blocked by a Content Security Policy. |
-| ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31 | &nbsp;The request was blocked because of no H/2 or QUIC session. |
-| ARKWEB_ERR_BLOCKED_BY_ORB = -32 | &nbsp;The request was blocked by CORB or ORB. |
-| ARKWEB_ERR_CONNECTION_CLOSED = -100 | &nbsp;A connection was closed (corresponding to a TCP FIN). |
-| ARKWEB_ERR_CONNECTION_RESET = -101 | &nbsp;A connection was reset (corresponding to a TCP RST). |
-| ARKWEB_ERR_CONNECTION_REFUSED = -102 | &nbsp;A connection attempt was refused. |
-| ARKWEB_ERR_CONNECTION_ABORTED = -103 | &nbsp;A connection timed out as a result of not receiving an ACK for data sent. This can include a FIN packet that did not get ACK'd. |
-| ARKWEB_ERR_CONNECTION_FAILED = -104 | &nbsp;A connection attempt failed. |
-| ARKWEB_ERR_NAME_NOT_RESOLVED = -105 | &nbsp;The host name could not be resolved. |
-| ARKWEB_ERR_INTERNET_DISCONNECTED = -106 | &nbsp;The Internet connection has been lost. |
-| ARKWEB_ERR_SSL_PROTOCOL_ERROR = -107 | &nbsp;An SSL protocol error occurred. |
-| ARKWEB_ERR_ADDRESS_INVALID = -108 | &nbsp;The IP address or port number is invalid (e.g., cannot connect to the IP address 0 or the port 0). |
-| ARKWEB_ERR_ADDRESS_UNREACHABLE = -109 | &nbsp;The IP address is unreachable. This usually means that there is no route to the specified host or network. |
-| ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110 | &nbsp;The server requested a client certificate for SSL client authentication. |
-| ARKWEB_ERR_TUNNEL_CONNECTION_FAILED = -111 | &nbsp;A tunnel connection through the proxy could not be established. |
-| ARKWEB_ERR_NO_SSL_VERSIONS_ENABLED = -112 | &nbsp;No SSL protocol versions are enabled. |
-| ARKWEB_ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113 | &nbsp;The client and server don't support a common SSL protocol version or cipher suite. |
-| ARKWEB_ERR_SSL_RENEGOTIATION_REQUESTED = -114 | &nbsp;The server requested a renegotiation (rehandshake). |
-| ARKWEB_ERR_PROXY_AUTH_UNSUPPORTED = -115 | &nbsp;The proxy requested authentication (for tunnel establishment, with an unsupported method. |
-| ARKWEB_ERR_BAD_SSL_CLIENT_AUTH_CERT = -117 | &nbsp;The SSL handshake failed because of a bad or missing client certificate. |
-| ARKWEB_ERR_CONNECTION_TIMED_OUT = -118 | &nbsp;A connection attempt timed out. |
-| ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119 | &nbsp;There are too many pending DNS resolves, so a request in the queue was aborted. |
-| ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120 | &nbsp;Failed establishing a connection to the SOCKS proxy server for a target host. |
-| ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121 | &nbsp;The SOCKS proxy server failed establishing connection to the target host because that host is unreachable. |
-| ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122 | &nbsp;The request to negotiate an alternate protocol failed. |
-| ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123 | &nbsp;The peer sent an SSL no_renegotiation alert message. |
-| ARKWEB_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124 | &nbsp;Winsock sometimes reports more data written than passed. This is probably due to a broken LSP. |
-| ARKWEB_ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125 | &nbsp;An SSL peer sent us a fatal decompression_failure alert. This typically occurs when a peer selects DEFLATE compression in the mistaken belief that it supports it. |
-| ARKWEB_ERR_SSL_BAD_RECORD_MAC_ALERT = -126 | &nbsp;An SSL peer sent us a fatal bad_record_mac alert. This has been observed from servers with buggy DEFLATE support. |
-| ARKWEB_ERR_PROXY_AUTH_REQUESTED = -127 | &nbsp;The proxy requested authentication (for tunnel establishment). |
-| ARKWEB_ERR_PROXY_CONNECTION_FAILED = -130 | &nbsp;Could not create a connection to the proxy server. An error occurred either in resolving its name, or in connecting a socket to it. Note that this does NOT include failures during the actual "CONNECT" method of an HTTP proxy. |
-| ARKWEB_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131 | &nbsp;A mandatory proxy configuration could not be used. Currently this means that a mandatory PAC script could not be fetched, parsed or executed. |
-| ARKWEB_ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133 | &nbsp;We've hit the max socket limit for the socket pool while preconnecting. We don't bother trying to preconnect more sockets. |
-| ARKWEB_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134 | &nbsp;The permission to use the SSL client certificate's private key was denied. |
-| ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135 | &nbsp;The SSL client certificate has no private key. |
-| ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | &nbsp;The certificate presented by the HTTPS Proxy was invalid. |
-| ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | &nbsp;An error occurred when trying to do a name resolution (DNS). |
-| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | &nbsp;Permission to access the network was denied. This is used to distinguish errors that were most likely caused by a firewall from other access denied errors. See also ERR_ACCESS_DENIED. |
-| ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | &nbsp;The request throttler module cancelled this request to avoid DDOS. |
-| ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | &nbsp;A request to create an SSL tunnel connection through the HTTPS proxy received a 302 (temporary redirect, response. The response body might include a description of why the request failed. |
-| ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | &nbsp;We were unable to sign the CertificateVerify data of an SSL client auth handshake with the client certificate's private key. Possible causes for this include the user implicitly or explicitly denying access to the private key, the private key may not be valid for signing, the key may be relying on a cached handle which is no longer valid, or the CSP won't allow arbitrary data to be signed. |
-| ARKWEB_ERR_MSG_TOO_BIG = -142 | &nbsp;The message was too large for the transport. (for example a UDP message which exceeds size threshold). |
-| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | &nbsp;Websocket protocol error. Indicates that we are terminating the connection due to a malformed frame or other protocol violation. |
-| ARKWEB_ERR_ADDRESS_IN_USE = -147 | &nbsp;Returned when attempting to bind an address that is already in use. |
-| ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148 | &nbsp;An operation failed because the SSL handshake has not completed. |
-| ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149 | &nbsp;SSL peer's public key is invalid. |
-| ARKWEB_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150 | &nbsp;The certificate didn't match the built-in public key pins for the host name. The pins are set in net/http/transport_security_state.cc and require that one of a set of public keys exist on the path from the leaf to the root. |
-| ARKWEB_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151 | &nbsp;Server request for client certificate did not contain any types we support. |
-| ARKWEB_ERR_SSL_DECRYPT_ERROR_ALERT = -153 | &nbsp;An SSL peer sent us a fatal decrypt_error alert. This typically occurs when a peer could not correctly verify a signature (in CertificateVerify or ServerKeyExchange, or validate a Finished message. |
-| ARKWEB_ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154 | &nbsp;There are too many pending WebSocketJob instances, so the new job was not pushed to the queue. |
-| ARKWEB_ERR_SSL_SERVER_CERT_CHANGED = -156 | &nbsp;The SSL server certificate changed in a renegotiation. |
-| ARKWEB_ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159 | &nbsp;The SSL server sent us a fatal unrecognized_name alert. |
-| ARKWEB_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160 | &nbsp;Failed to set the socket's receive buffer size as requested. |
-| ARKWEB_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161 | &nbsp;Failed to set the socket's send buffer size as requested. |
-| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 | &nbsp;Failed to set the socket's receive buffer size as requested, despite success return code from setsockopt. |
-| ARKWEB_ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163 | &nbsp;Failed to set the socket's send buffer size as requested, despite success return code from setsockopt. |
-| ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164 | &nbsp;Failed to import a client certificate from the platform store into the SSL library. |
-| ARKWEB_ERR_ICANN_NAME_COLLISION = -166 | &nbsp;Resolving a hostname to an IP address list included the IPv4 address "127.0.53.53". This is a special IP address which ICANN has recommended to indicate there was a name collision, and alert admins to a potential problem. |
-| ARKWEB_ERR_SSL_SERVER_CERT_BAD_FORMAT = -167 | &nbsp;The SSL server presented a certificate which could not be decoded. This is not a certificate error code as no X509Certificate object is available. This error is fatal. |
-| ARKWEB_ERR_CT_STH_PARSING_FAILED = -168 | &nbsp;Certificate Transparency: Received a signed tree head that failed to parse. |
-| ARKWEB_ERR_CT_STH_INCOMPLETE = -169 | &nbsp;Certificate Transparency: Received a signed tree head whose JSON parsing was OK but was missing some of the fields. |
-| ARKWEB_ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170 | &nbsp;The attempt to reuse a connection to send proxy auth credentials failed before the AuthController was used to generate credentials. The caller should reuse the controller with a new connection. This error is only used internally by the network stack. |
-| ARKWEB_ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171 | &nbsp;Certificate Transparency: Failed to parse the received consistency proof. |
-| ARKWEB_ERR_SSL_OBSOLETE_CIPHER = -172 | &nbsp;The SSL server required an unsupported cipher suite that has since been removed. This error will temporarily be signaled on a fallback for one or two releases immediately following a cipher suite's removal, after which the fallback will be removed. |
-| ARKWEB_ERR_WS_UPGRADE = -173 | &nbsp;When a WebSocket handshake is done successfully and the connection has been upgraded, the URLRequest is cancelled with this error code. |
-| ARKWEB_ERR_READ_IF_READY_NOT_IMPLEMENTED = -174 | &nbsp;Socket ReadIfReady support is not implemented. This error should not be user visible, because the normal Read(, method is used as a fallback. |
-| ARKWEB_ERR_NO_BUFFER_SPACE = -176 | &nbsp;No socket buffer space is available. |
-| ARKWEB_ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177 | &nbsp;There were no common signature algorithms between our client certificate private key and the server's preferences. |
-| ARKWEB_ERR_EARLY_DATA_REJECTED = -178 | &nbsp;TLS 1.3 early data was rejected by the server. This will be received before any data is returned from the socket. The request should be retried with early data disabled. |
-| ARKWEB_ERR_WRONG_VERSION_ON_EARLY_DATA = -179 | &nbsp;TLS 1.3 early data was offered, but the server responded with TLS 1.2 or earlier. This is an internal error code to account for a backwards-compatibility issue with early data and TLS 1.2. It will be received before any data is returned from the socket. The request should be retried with early data disabled. See https://tools.ietf.org/html/rfc8446#appendix-D.3 for details. |
-| ARKWEB_ERR_TLS13_DOWNGRADE_DETECTED = -180 | &nbsp;TLS 1.3 was enabled, but a lower version was negotiated and the server returned a value indicating it supported TLS 1.3. This is part of a security check in TLS 1.3, but it may also indicate the user is behind a buggy TLS-terminating proxy which implemented TLS 1.2 incorrectly. (See rhttps://crbug.com/boringssl/226., |
-| ARKWEB_ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181 | &nbsp;The server's certificate has a keyUsage extension incompatible with the negotiated TLS key exchange method. |
-| ARKWEB_ERR_INVALID_ECH_CONFIG_LIST = -182 | &nbsp;The ECHConfigList fetched over DNS cannot be parsed. |
-| ARKWEB_ERR_ECH_NOT_NEGOTIATED = -183 | &nbsp;ECH was enabled, but the server was unable to decrypt the encrypted ClientHello. |
-| ARKWEB_ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184 | &nbsp;ECH was enabled, the server was unable to decrypt the encrypted ClientHello, and additionally did not present a certificate valid for the public name. |
-| ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200 | &nbsp;The server responded with a certificate whose common name did not match the host name. This could mean: 1. An attacker has redirected our traffic to their server and is presenting a certificate for which they know the private key. 2. The server is misconfigured and responding with the wrong cert. 3. The user is on a wireless network and is being redirected to the network's login page. 4. The OS has used a DNS search suffix and the server doesn't have a certificate for the abbreviated name in the address bar. |
-| ARKWEB_ERR_CERT_DATE_INVALID = -201 | &nbsp;The server responded with a certificate that, by our clock, appears to either not yet be valid or to have expired. This could mean: 1. An attacker is presenting an old certificate for which they have managed to obtain the private key. 2. The server is misconfigured and is not presenting a valid cert. 3. Our clock is wrong. |
-| ARKWEB_ERR_CERT_AUTHORITY_INVALID = -202 | &nbsp;The server responded with a certificate that is signed by an authority we don't trust. The could mean: 1. An attacker has substituted the real certificate for a cert that contains their public key and is signed by their cousin. 2. The server operator has a legitimate certificate from a CA we don't know about, but should trust. 3. The server is presenting a self-signed certificate, providing no defense against active attackers (but foiling passive attackers). |
-| ARKWEB_ERR_CERT_CONTAINS_ERRORS = -203 | &nbsp;The server responded with a certificate that contains errors. This error is not recoverable. MSDN describes this error as follows: "The SSL certificate contains errors." NOTE: It's unclear how this differs from ERR_CERT_INVALID. For consistency, use that code instead of this one from now on. |
-| ARKWEB_ERR_CERT_NO_REVOCATION_MECHANISM = -204 | &nbsp;The certificate has no mechanism for determining if it is revoked. In effect, this certificate cannot be revoked. |
-| ARKWEB_ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205 | &nbsp;Revocation information for the security certificate for this site is not available. This could mean: 1. An attacker has compromised the private key in the certificate and is blocking our attempt to find out that the cert was revoked. 2. The certificate is unrevoked, but the revocation server is busy or unavailable. |
-| ARKWEB_ERR_CERT_REVOKED = -206 | &nbsp;The server responded with a certificate has been revoked. We have the capability to ignore this error, but it is probably not the thing to do. |
-| ARKWEB_ERR_CERT_INVALID = -207 | &nbsp;The server responded with a certificate that is invalid. This error is not recoverable. MSDN describes this error as follows: "The SSL certificate is invalid." |
-| ARKWEB_ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208 | &nbsp;The server responded with a certificate that is signed using a weak signature algorithm. |
-| ARKWEB_ERR_CERT_NON_UNIQUE_NAME = -210 | &nbsp;The host name specified in the certificate is not unique. |
-| ARKWEB_ERR_CERT_WEAK_KEY = -211 | &nbsp;The server responded with a certificate that contains a weak key (e.g. a too-small RSA key). |
-| ARKWEB_ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212 | &nbsp;The certificate claimed DNS names that are in violation of name constraints. |
-| ARKWEB_ERR_CERT_VALIDITY_TOO_LONG = -213 | &nbsp;The certificate's validity period is too long. |
-| ARKWEB_ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214 | &nbsp;Certificate Transparency was required for this connection, but the server did not provide CT information that complied with the policy. |
-| ARKWEB_ERR_CERT_SYMANTEC_LEGACY = -215 | &nbsp;The certificate chained to a legacy Symantec root that is no longer trusted. |
-| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 | &nbsp;The certificate is known to be used for interception by an entity other the device owner. |
-| ARKWEB_ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218 | &nbsp;The connection uses an obsolete version of SSL/TLS or cipher. |
-| ARKWEB_ERR_CERT_END = -219 | &nbsp;The value immediately past the last certificate error code. |
-| ARKWEB_ERR_INVALID_URL = -300 | &nbsp;The URL is invalid. |
-| ARKWEB_ERR_DISALLOWED_URL_SCHEME = -301 | &nbsp;The scheme of the URL is disallowed. |
-| ARKWEB_ERR_UNKNOWN_URL_SCHEME = -302 | &nbsp;The scheme of the URL is unknown. |
-| ARKWEB_ERR_INVALID_REDIRECT = -303 | &nbsp;Attempting to load an URL resulted in a redirect to an invalid URL. |
-| ARKWEB_ERR_TOO_MANY_REDIRECTS = -310 | &nbsp;Attempting to load an URL resulted in too many redirects. |
-| ARKWEB_ERR_UNSAFE_REDIRECT = -311 | &nbsp;Attempting to load an URL resulted in an unsafe redirect (e.g., a redirect to file:// is considered unsafe). |
-| ARKWEB_ERR_UNSAFE_PORT = -312 | &nbsp;Attempting to load an URL with an unsafe port number. |
-| ARKWEB_ERR_INVALID_RESPONSE = -320 | &nbsp;The server's response was invalid. |
-| ARKWEB_ERR_INVALID_CHUNKED_ENCODING = -321 | &nbsp;Error in chunked transfer encoding. |
-| ARKWEB_ERR_METHOD_UNSUPPORTED = -322 | &nbsp;The server did not support the request method. |
-| ARKWEB_ERR_UNEXPECTED_PROXY_AUTH = -323 | &nbsp;The response was 407 (Proxy Authentication Required,, yet we did not send the request to a proxy. |
-| ARKWEB_ERR_EMPTY_RESPONSE = -324 | &nbsp;The server closed the connection without sending any data. |
-| ARKWEB_ERR_RESPONSE_HEADERS_TOO_BIG = -325 | &nbsp;The headers section of the response is too large. |
-| ARKWEB_ERR_PAC_SCRIPT_FAILED = -327 | &nbsp;The evaluation of the PAC script failed. |
-| ARKWEB_ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328 | &nbsp;The response was 416 (Requested range not satisfiable, and the server cannot satisfy the range requested. |
-| ARKWEB_ERR_MALFORMED_IDENTITY = -329 | &nbsp;The identity used for authentication is invalid. |
-| ARKWEB_ERR_CONTENT_DECODING_FAILED = -330 | &nbsp;Content decoding of the response body failed. |
-| ARKWEB_ERR_NETWORK_IO_SUSPENDED = -331 | &nbsp;An operation could not be completed because all network IO is suspended. |
-| ARKWEB_ERR_SYN_REPLY_NOT_RECEIVED = -332 | &nbsp;FLIP data received without receiving a SYN_REPLY on the stream. |
-| ARKWEB_ERR_ENCODING_CONVERSION_FAILED = -333 | &nbsp;Converting the response to target encoding failed. |
-| ARKWEB_ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334 | &nbsp;The server sent an FTP directory listing in a format we do not understand. |
-| ARKWEB_ERR_NO_SUPPORTED_PROXIES = -336 | &nbsp;There are no supported proxies in the provided list. |
-| ARKWEB_ERR_HTTP2_PROTOCOL_ERROR = -337 | &nbsp;There is an HTTP/2 protocol error. |
-| ARKWEB_ERR_INVALID_AUTH_CREDENTIALS = -338 | &nbsp;Credentials could not be established during HTTP Authentication. |
-| ARKWEB_ERR_UNSUPPORTED_AUTH_SCHEME = -339 | &nbsp;An HTTP Authentication scheme was tried which is not supported on this machine. |
-| ARKWEB_ERR_ENCODING_DETECTION_FAILED = -340 | &nbsp;Detecting the encoding of the response failed. |
-| ARKWEB_ERR_MISSING_AUTH_CREDENTIALS = -341 | &nbsp;(GSSAPI, No Kerberos credentials were available during HTTP Authentication. |
-| ARKWEB_ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342 | &nbsp;An unexpected, but documented, SSPI or GSSAPI status code was returned. |
-| ARKWEB_ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343 | &nbsp;The environment was not set up correctly for authentication (for example, no KDC could be found or the principal is unknown. |
-| ARKWEB_ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344 | &nbsp;An undocumented SSPI or GSSAPI status code was returned. |
-| ARKWEB_ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345 | &nbsp;The HTTP response was too big to drain. |
-| ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346 | &nbsp;The HTTP response contained multiple distinct Content-Length headers. |
-| ARKWEB_ERR_INCOMPLETE_HTTP2_HEADERS = -347 | &nbsp;HTTP/2 headers have been received, but not all of them - status or version headers are missing, so we're expecting additional frames to complete them. |
-| ARKWEB_ERR_PAC_NOT_IN_DHCP = -348 | &nbsp;No PAC URL configuration could be retrieved from DHCP. This can indicate either a failure to retrieve the DHCP configuration, or that there was no PAC URL configured in DHCP. |
-| ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349 | &nbsp;The HTTP response contained multiple Content-Disposition headers. |
-| ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350 | &nbsp;The HTTP response contained multiple Location headers. |
-| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | &nbsp;HTTP/2 server refused the request without processing, and sent either a GOAWAY frame with error code NO_ERROR and Last-Stream-ID lower than the stream id corresponding to the request indicating that this request has not been processed yet, or a RST_STREAM frame with error code REFUSED_STREAM. Client MAY retry (on a different connection). See RFC7540 Section 8.1.4. |
-| ARKWEB_ERR_HTTP2_PING_FAILED = -352 | &nbsp;HTTP/2 server didn't respond to the PING message. |
-| ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354 | &nbsp;The HTTP response body transferred fewer bytes than were advertised by the Content-Length header when the connection is closed. |
-| ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355 | &nbsp;The HTTP response body is transferred with Chunked-Encoding, but the terminating zero-length chunk was never sent when the connection is closed. |
-| ARKWEB_ERR_QUIC_PROTOCOL_ERROR = -356 | &nbsp;There is a QUIC protocol error. |
-| ARKWEB_ERR_RESPONSE_HEADERS_TRUNCATED = -357 | &nbsp;The HTTP headers were truncated by an EOF. |
-| ARKWEB_ERR_QUIC_HANDSHAKE_FAILED = -358 | &nbsp;The QUIC crypto handshake failed. This means that the server was unable to read any requests sent, so they may be resent. |
-| ARKWEB_ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360 | &nbsp;Transport security is inadequate for the HTTP/2 version. |
-| ARKWEB_ERR_HTTP2_FLOW_CONTROL_ERROR = -361 | &nbsp;The peer violated HTTP/2 flow control. |
-| ARKWEB_ERR_HTTP2_FRAME_SIZE_ERROR = -362 | &nbsp;The peer sent an improperly sized HTTP/2 frame. |
-| ARKWEB_ERR_HTTP2_COMPRESSION_ERROR = -363 | &nbsp;Decoding or encoding of compressed HTTP/2 headers failed. |
-| ARKWEB_ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364 | &nbsp;Proxy Auth Requested without a valid Client Socket Handle. |
-| ARKWEB_ERR_HTTP_1_1_REQUIRED = -365 | &nbsp;HTTP_1_1_REQUIRED error code received on HTTP/2 session. |
-| ARKWEB_ERR_PROXY_HTTP_1_1_REQUIRED = -366 | &nbsp;HTTP_1_1_REQUIRED error code received on HTTP/2 session to proxy. |
-| ARKWEB_ERR_PAC_SCRIPT_TERMINATED = -367 | &nbsp;The PAC script terminated fatally and must be reloaded. |
-| ARKWEB_ERR_INVALID_HTTP_RESPONSE = -370 | &nbsp;The server was expected to return an HTTP/1.x response, but did not. Rather than treat it as HTTP/0.9, this error is returned. |
-| ARKWEB_ERR_CONTENT_DECODING_INIT_FAILED = -371 | &nbsp;Initializing content decoding failed. |
-| ARKWEB_ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372 | &nbsp;Received HTTP/2 RST_STREAM frame with NO_ERROR error code. This error should be handled internally by HTTP/2 code, and should not make it above the SpdyStream layer. |
-| ARKWEB_ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373 | &nbsp;The pushed stream claimed by the request is no longer available. |
-| ARKWEB_ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374 | &nbsp;A pushed stream was claimed and later reset by the server. When this happens, the request should be retried. |
-| ARKWEB_ERR_TOO_MANY_RETRIES = -375 | &nbsp;An HTTP transaction was retried too many times due for authentication or invalid certificates. |
-| ARKWEB_ERR_HTTP2_STREAM_CLOSED = -376 | &nbsp;Received an HTTP/2 frame on a closed stream. |
-| ARKWEB_ERR_HTTP2_CLIENT_REFUSED_STREAM = -377 | &nbsp;Client is refusing an HTTP/2 stream. |
-| ARKWEB_ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378 | &nbsp;A pushed HTTP/2 stream was claimed by a request based on matching URL and request headers, but the pushed response headers do not match the request. |
-| ARKWEB_ERR_HTTP_RESPONSE_CODE_FAILURE = -379 | &nbsp;The server returned a non-2xx HTTP response code. |
-| ARKWEB_ERR_QUIC_UNKNOWN_CERT_ROOT = -380 | &nbsp;The certificate presented on a QUIC connection does not chain to a known root and the origin connected to is not on a list of domains where unknown roots are allowed. |
-| ARKWEB_ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381 | &nbsp;A GOAWAY frame has been received indicating that the request has not been processed and is therefore safe to retry on a different connection. |
-| ARKWEB_ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382 | &nbsp;The ACCEPT_CH restart has been triggered too many times. |
-| ARKWEB_ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383 | &nbsp;The IP address space of the remote endpoint differed from the previous observed value during the same request. Any cache entry for the affected request should be invalidated. |
-| ARKWEB_ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384 | &nbsp;The IP address space of the cached remote endpoint is blocked by local network access check. |
-| ARKWEB_ERR_CACHE_MISS = -400 | &nbsp;The cache does not have the requested entry. |
-| ARKWEB_ERR_CACHE_READ_FAILURE = -401 | &nbsp;Unable to read from the disk cache. |
-| ARKWEB_ERR_CACHE_WRITE_FAILURE = -402 | &nbsp;Unable to write to the disk cache. |
-| ARKWEB_ERR_CACHE_OPERATION_UNSUPPORTED = -403 | &nbsp;The operation is not supported for this entry. |
-| ARKWEB_ERR_CACHE_OPEN_FAILURE = -404 | &nbsp;The disk cache is unable to open this entry. |
-| ARKWEB_ERR_CACHE_CREATE_FAILURE = -405 | &nbsp;The disk cache is unable to create this entry. |
-| ARKWEB_ERR_CACHE_RACE = -406 | &nbsp;Multiple transactions are racing to create disk cache entries. |
-| ARKWEB_ERR_CACHE_CHECKSUM_READ_FAILURE = -407 | &nbsp;The cache was unable to read a checksum record on an entry. |
-| ARKWEB_ERR_CACHE_CHECKSUM_MISMATCH = -408 | &nbsp;The cache found an entry with an invalid checksum. |
-| ARKWEB_ERR_CACHE_LOCK_TIMEOUT = -409 | &nbsp;Internal error code for the HTTP cache. |
-| ARKWEB_ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410 | &nbsp;Received a challenge after the transaction has read some data, and the credentials aren't available. |
-| ARKWEB_ERR_CACHE_ENTRY_NOT_SUITABLE = -411 | &nbsp;Internal not-quite error code for the HTTP cache. |
-| ARKWEB_ERR_CACHE_DOOM_FAILURE = -412 | &nbsp;The disk cache is unable to doom this entry. |
-| ARKWEB_ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413 | &nbsp;The disk cache is unable to open or create this entry. |
-| ARKWEB_ERR_INSECURE_RESPONSE = -501 | &nbsp;The server's response was insecure (e.g. there was a cert error). |
-| ARKWEB_ERR_NO_PRIVATE_KEY_FOR_CERT = -502 | &nbsp;An attempt to import a client certificate failed, as the user's key database lacked a corresponding private key. |
-| ARKWEB_ERR_ADD_USER_CERT_FAILED = -503 | &nbsp;An error adding a certificate to the OS certificate database. |
-| ARKWEB_ERR_INVALID_SIGNED_EXCHANGE = -504 | &nbsp;An error occurred while handling a signed exchange. |
-| ARKWEB_ERR_INVALID_WEB_BUNDLE = -505 | &nbsp;An error occurred while handling a Web Bundle source. |
-| ARKWEB_ERR_TRUST_TOKEN_OPERATION_FAILED = -506 | &nbsp;A Trust Tokens protocol operation-executing request failed for one of a number of reasons (precondition failure, internal error, bad response). |
-| ARKWEB_ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507 | &nbsp;When handling a Trust Tokens protocol operation-executing request, the system was able to execute the request's Trust Tokens operation without sending the request to its destination. |
-| ARKWEB_ERR_FTP_FAILED = -601 | &nbsp;A generic error for failed FTP control connection command. If possible, please use or add a more specific error code. |
-| ARKWEB_ERR_FTP_SERVICE_UNAVAILABLE = -602 | &nbsp;The server cannot fulfill the request at this point. This is a temporary error. FTP response code 421. |
-| ARKWEB_ERR_FTP_TRANSFER_ABORTED = -603 | &nbsp;The server has aborted the transfer. FTP response code 426. |
-| ARKWEB_ERR_FTP_FILE_BUSY = -604 | &nbsp;The file is busy, or some other temporary error condition on opening the file. FTP response code 450. |
-| ARKWEB_ERR_FTP_SYNTAX_ERROR = -605 | &nbsp;Server rejected our command because of syntax errors. FTP response codes 500, 501. |
-| ARKWEB_ERR_FTP_COMMAND_UNSUPPORTED = -606 | &nbsp;Server does not support the command we issued. FTP response codes 502, 504. |
-| ARKWEB_ERR_FTP_BAD_COMMAND_SEQUENCE = -607 | &nbsp;Server rejected our command because we didn't issue the commands in right order. FTP response code 503. |
-| ARKWEB_ERR_PKCS12_IMPORT_BAD_PASSWORD = -701 | &nbsp;PKCS #12 import failed due to incorrect password. |
-| ARKWEB_ERR_PKCS12_IMPORT_FAILED = -702 | &nbsp;PKCS #12 import failed due to other error. |
-| ARKWEB_ERR_IMPORT_CA_CERT_NOT_CA = -703 | &nbsp;CA import failed - not a CA cert. |
-| ARKWEB_ERR_IMPORT_CERT_ALREADY_EXISTS = -704 | &nbsp;Import failed - certificate already exists in database. |
-| ARKWEB_ERR_IMPORT_CA_CERT_FAILED = -705 | &nbsp;CA import failed due to some other error. |
-| ARKWEB_ERR_IMPORT_SERVER_CERT_FAILED = -706 | &nbsp;Server certificate import failed due to some internal error. |
-| ARKWEB_ERR_PKCS12_IMPORT_INVALID_MAC = -707 | &nbsp;PKCS #12 import failed due to invalid MAC. |
-| ARKWEB_ERR_PKCS12_IMPORT_INVALID_FILE = -708 | &nbsp;PKCS #12 import failed due to invalid/corrupt file. |
-| ARKWEB_ERR_PKCS12_IMPORT_UNSUPPORTED = -709 | &nbsp;PKCS #12 import failed due to unsupported features. |
-| ARKWEB_ERR_KEY_GENERATION_FAILED = -710 | &nbsp;Key generation failed. |
-| ARKWEB_ERR_PRIVATE_KEY_EXPORT_FAILED = -712 | &nbsp;Failure to export private key. |
-| ARKWEB_ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713 | &nbsp;Self-signed certificate generation failed. |
-| ARKWEB_ERR_CERT_DATABASE_CHANGED = -714 | &nbsp;The certificate database changed in some way. |
-| ARKWEB_ERR_CERT_VERIFIER_CHANGED = -716 | &nbsp;The certificate verifier configuration changed in some way. |
-| ARKWEB_ERR_DNS_MALFORMED_RESPONSE = -800 | &nbsp;DNS resolver received a malformed response. |
-| ARKWEB_ERR_DNS_SERVER_REQUIRES_TCP = -801 | &nbsp;DNS server requires TCP. |
-| ARKWEB_ERR_DNS_SERVER_FAILED = -802 | &nbsp;DNS server failed. This error is returned for all of the following error conditions: 1 - Format error - The name server was unable to interpret the query. 2 - Server failure - The name server was unable to process this query due to a problem with the name server. 4 - Not Implemented - The name server does not support the requested kind of query. 5 - Refused - The name server refuses to perform the specified operation for policy reasons. |
-| ARKWEB_ERR_DNS_TIMED_OUT = -803 | &nbsp;DNS transaction timed out. |
-| ARKWEB_ERR_DNS_CACHE_MISS = -804 | &nbsp;The entry was not found in cache or other local sources, for lookups where only local sources were queried. |
-| ARKWEB_ERR_DNS_SEARCH_EMPTY = -805 | &nbsp;Suffix search list rules prevent resolution of the given host name. |
-| ARKWEB_ERR_DNS_SORT_ERROR = -806 | &nbsp;Failed to sort addresses according to RFC3484. |
-| ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808 | &nbsp;Failed to resolve the hostname of a DNS-over-HTTPS server. |
-| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | &nbsp;DNS identified the request as disallowed for insecure connection (http/ws). Error should be handled as if an HTTP redirect was received to redirect to https or wss. |
-| ARKWEB_ERR_DNS_REQUEST_CANCELED = -810 | &nbsp;All DNS requests associated with this job have been cancelled. |
-| ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811 | &nbsp;The hostname resolution of HTTPS record was expected to be resolved with alpn values of supported protocols, but did not. |
+| ARKWEB_NET_OK = 0 | &nbsp;Normal.<br><!--Device-ARKWEB_NET_OK = 0--><!--Device-ARKWEB_NET_OK = 0-End--> |
+| ARKWEB_ERR_IO_PENDING = -1 | &nbsp;An asynchronous IO operation is not yet complete. This usually does not indicate a fatal error. Typically this error will be generated as a notification to wait for some external notification that the IO operation finally completed.<br><!--Device-ARKWEB_ERR_IO_PENDING = -1--><!--Device-ARKWEB_ERR_IO_PENDING = -1-End--> |
+| ARKWEB_ERR_FAILED = -2 | &nbsp;A generic failure occurred.<br><!--Device-ARKWEB_ERR_FAILED = -2--><!--Device-ARKWEB_ERR_FAILED = -2-End--> |
+| ARKWEB_ERR_ABORTED = -3 | &nbsp;An operation was aborted.<br><!--Device-ARKWEB_ERR_ABORTED = -3--><!--Device-ARKWEB_ERR_ABORTED = -3-End--> |
+| ARKWEB_ERR_INVALID_ARGUMENT = -4 | &nbsp;An argument to the function is incorrect.<br><!--Device-ARKWEB_ERR_INVALID_ARGUMENT = -4--><!--Device-ARKWEB_ERR_INVALID_ARGUMENT = -4-End--> |
+| ARKWEB_ERR_INVALID_HANDLE = -5 | &nbsp;The handle or file descriptor is invalid.<br><!--Device-ARKWEB_ERR_INVALID_HANDLE = -5--><!--Device-ARKWEB_ERR_INVALID_HANDLE = -5-End--> |
+| ARKWEB_ERR_FILE_NOT_FOUND = -6 | &nbsp;The file or directory cannot be found.<br><!--Device-ARKWEB_ERR_FILE_NOT_FOUND = -6--><!--Device-ARKWEB_ERR_FILE_NOT_FOUND = -6-End--> |
+| ARKWEB_ERR_TIMED_OUT = -7 | &nbsp;An operation timed out.<br><!--Device-ARKWEB_ERR_TIMED_OUT = -7--><!--Device-ARKWEB_ERR_TIMED_OUT = -7-End--> |
+| ARKWEB_ERR_FILE_TOO_LARGE = -8 | &nbsp;The file is too large.<br><!--Device-ARKWEB_ERR_FILE_TOO_LARGE = -8--><!--Device-ARKWEB_ERR_FILE_TOO_LARGE = -8-End--> |
+| ARKWEB_ERR_UNEXPECTED = -9 | &nbsp;An unexpected error. This may be caused by a programming mistake or an invalid assumption.<br><!--Device-ARKWEB_ERR_UNEXPECTED = -9--><!--Device-ARKWEB_ERR_UNEXPECTED = -9-End--> |
+| ARKWEB_ERR_ACCESS_DENIED = -10 | &nbsp;Permission to access a resource, other than the network, was denied.<br><!--Device-ARKWEB_ERR_ACCESS_DENIED = -10--><!--Device-ARKWEB_ERR_ACCESS_DENIED = -10-End--> |
+| ARKWEB_ERR_NOT_IMPLEMENTED = -11 | &nbsp;The operation failed because of unimplemented functionality.<br><!--Device-ARKWEB_ERR_NOT_IMPLEMENTED = -11--><!--Device-ARKWEB_ERR_NOT_IMPLEMENTED = -11-End--> |
+| ARKWEB_ERR_INSUFFICIENT_RESOURCES = -12 | &nbsp;There were not enough resources to complete the operation.<br><!--Device-ARKWEB_ERR_INSUFFICIENT_RESOURCES = -12--><!--Device-ARKWEB_ERR_INSUFFICIENT_RESOURCES = -12-End--> |
+| ARKWEB_ERR_OUT_OF_MEMORY = -13 | &nbsp;Memory allocation failed.<br><!--Device-ARKWEB_ERR_OUT_OF_MEMORY = -13--><!--Device-ARKWEB_ERR_OUT_OF_MEMORY = -13-End--> |
+| ARKWEB_ERR_UPLOAD_FILE_CHANGED = -14 | &nbsp;The file upload failed because the file's modification time was different from the expectation.<br><!--Device-ARKWEB_ERR_UPLOAD_FILE_CHANGED = -14--><!--Device-ARKWEB_ERR_UPLOAD_FILE_CHANGED = -14-End--> |
+| ARKWEB_ERR_SOCKET_NOT_CONNECTED = -15 | &nbsp;The socket is not connected.<br><!--Device-ARKWEB_ERR_SOCKET_NOT_CONNECTED = -15--><!--Device-ARKWEB_ERR_SOCKET_NOT_CONNECTED = -15-End--> |
+| ARKWEB_ERR_FILE_EXISTS = -16 | &nbsp;The file already exists.<br><!--Device-ARKWEB_ERR_FILE_EXISTS = -16--><!--Device-ARKWEB_ERR_FILE_EXISTS = -16-End--> |
+| ARKWEB_ERR_FILE_PATH_TOO_LONG = -17 | &nbsp;The path or file name is too long.<br><!--Device-ARKWEB_ERR_FILE_PATH_TOO_LONG = -17--><!--Device-ARKWEB_ERR_FILE_PATH_TOO_LONG = -17-End--> |
+| ARKWEB_ERR_FILE_NO_SPACE = -18 | &nbsp;Not enough room left on the disk.<br><!--Device-ARKWEB_ERR_FILE_NO_SPACE = -18--><!--Device-ARKWEB_ERR_FILE_NO_SPACE = -18-End--> |
+| ARKWEB_ERR_FILE_VIRUS_INFECTED = -19 | &nbsp;The file has a virus.<br><!--Device-ARKWEB_ERR_FILE_VIRUS_INFECTED = -19--><!--Device-ARKWEB_ERR_FILE_VIRUS_INFECTED = -19-End--> |
+| ARKWEB_ERR_BLOCKED_BY_CLIENT = -20 | &nbsp;The client chose to block the request.<br><!--Device-ARKWEB_ERR_BLOCKED_BY_CLIENT = -20--><!--Device-ARKWEB_ERR_BLOCKED_BY_CLIENT = -20-End--> |
+| ARKWEB_ERR_NETWORK_CHANGED = -21 | &nbsp;The network changed.<br><!--Device-ARKWEB_ERR_NETWORK_CHANGED = -21--><!--Device-ARKWEB_ERR_NETWORK_CHANGED = -21-End--> |
+| ARKWEB_ERR_BLOCKED_BY_ADMINISTRATOR = -22 | &nbsp;The request was blocked by the URL block list configured by the domain administrator.<br><!--Device-ARKWEB_ERR_BLOCKED_BY_ADMINISTRATOR = -22--><!--Device-ARKWEB_ERR_BLOCKED_BY_ADMINISTRATOR = -22-End--> |
+| ARKWEB_ERR_SOCKET_CONNECTED = -23 | &nbsp;The socket is already connected.<br><!--Device-ARKWEB_ERR_SOCKET_CONNECTED = -23--><!--Device-ARKWEB_ERR_SOCKET_CONNECTED = -23-End--> |
+| ARKWEB_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25 | &nbsp;The upload failed because the upload stream needed to be re-read, due to a retry or a redirect, but the upload stream doesn't support that operation.<br><!--Device-ARKWEB_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25--><!--Device-ARKWEB_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25-End--> |
+| ARKWEB_ERR_CONTEXT_SHUT_DOWN = -26 | &nbsp;The request failed because the URLRequestContext is shutting down, or has been shut down.<br><!--Device-ARKWEB_ERR_CONTEXT_SHUT_DOWN = -26--><!--Device-ARKWEB_ERR_CONTEXT_SHUT_DOWN = -26-End--> |
+| ARKWEB_ERR_BLOCKED_BY_RESPONSE = -27 | &nbsp;The request failed because the response was delivered along with requirements which are not met ('X-Frame-Options' and 'Content-Security-Policy' ancestor checks and 'Cross-Origin-Resource-Policy' for instance).<br><!--Device-ARKWEB_ERR_BLOCKED_BY_RESPONSE = -27--><!--Device-ARKWEB_ERR_BLOCKED_BY_RESPONSE = -27-End--> |
+| ARKWEB_ERR_CLEARTEXT_NOT_PERMITTED = -29 | &nbsp;The request was blocked by system policy disallowing some or all cleartext requests.<br><!--Device-ARKWEB_ERR_CLEARTEXT_NOT_PERMITTED = -29--><!--Device-ARKWEB_ERR_CLEARTEXT_NOT_PERMITTED = -29-End--> |
+| ARKWEB_ERR_BLOCKED_BY_CSP = -30 | &nbsp;The request was blocked by a Content Security Policy.<br><!--Device-ARKWEB_ERR_BLOCKED_BY_CSP = -30--><!--Device-ARKWEB_ERR_BLOCKED_BY_CSP = -30-End--> |
+| ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31 | &nbsp;The request was blocked because of no H/2 or QUIC session.<br><!--Device-ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31--><!--Device-ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31-End--> |
+| ARKWEB_ERR_BLOCKED_BY_ORB = -32 | &nbsp;The request was blocked by CORB or ORB.<br><!--Device-ARKWEB_ERR_BLOCKED_BY_ORB = -32--><!--Device-ARKWEB_ERR_BLOCKED_BY_ORB = -32-End--> |
+| ARKWEB_ERR_CONNECTION_CLOSED = -100 | &nbsp;A connection was closed (corresponding to a TCP FIN).<br><!--Device-ARKWEB_ERR_CONNECTION_CLOSED = -100--><!--Device-ARKWEB_ERR_CONNECTION_CLOSED = -100-End--> |
+| ARKWEB_ERR_CONNECTION_RESET = -101 | &nbsp;A connection was reset (corresponding to a TCP RST).<br><!--Device-ARKWEB_ERR_CONNECTION_RESET = -101--><!--Device-ARKWEB_ERR_CONNECTION_RESET = -101-End--> |
+| ARKWEB_ERR_CONNECTION_REFUSED = -102 | &nbsp;A connection attempt was refused.<br><!--Device-ARKWEB_ERR_CONNECTION_REFUSED = -102--><!--Device-ARKWEB_ERR_CONNECTION_REFUSED = -102-End--> |
+| ARKWEB_ERR_CONNECTION_ABORTED = -103 | &nbsp;A connection timed out as a result of not receiving an ACK for data sent. This can include a FIN packet that did not get ACK'd.<br><!--Device-ARKWEB_ERR_CONNECTION_ABORTED = -103--><!--Device-ARKWEB_ERR_CONNECTION_ABORTED = -103-End--> |
+| ARKWEB_ERR_CONNECTION_FAILED = -104 | &nbsp;A connection attempt failed.<br><!--Device-ARKWEB_ERR_CONNECTION_FAILED = -104--><!--Device-ARKWEB_ERR_CONNECTION_FAILED = -104-End--> |
+| ARKWEB_ERR_NAME_NOT_RESOLVED = -105 | &nbsp;The host name could not be resolved.<br><!--Device-ARKWEB_ERR_NAME_NOT_RESOLVED = -105--><!--Device-ARKWEB_ERR_NAME_NOT_RESOLVED = -105-End--> |
+| ARKWEB_ERR_INTERNET_DISCONNECTED = -106 | &nbsp;The Internet connection has been lost.<br><!--Device-ARKWEB_ERR_INTERNET_DISCONNECTED = -106--><!--Device-ARKWEB_ERR_INTERNET_DISCONNECTED = -106-End--> |
+| ARKWEB_ERR_SSL_PROTOCOL_ERROR = -107 | &nbsp;An SSL protocol error occurred.<br><!--Device-ARKWEB_ERR_SSL_PROTOCOL_ERROR = -107--><!--Device-ARKWEB_ERR_SSL_PROTOCOL_ERROR = -107-End--> |
+| ARKWEB_ERR_ADDRESS_INVALID = -108 | &nbsp;The IP address or port number is invalid (e.g., cannot connect to the IP address 0 or the port 0).<br><!--Device-ARKWEB_ERR_ADDRESS_INVALID = -108--><!--Device-ARKWEB_ERR_ADDRESS_INVALID = -108-End--> |
+| ARKWEB_ERR_ADDRESS_UNREACHABLE = -109 | &nbsp;The IP address is unreachable. This usually means that there is no route to the specified host or network.<br><!--Device-ARKWEB_ERR_ADDRESS_UNREACHABLE = -109--><!--Device-ARKWEB_ERR_ADDRESS_UNREACHABLE = -109-End--> |
+| ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110 | &nbsp;The server requested a client certificate for SSL client authentication.<br><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110--><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110-End--> |
+| ARKWEB_ERR_TUNNEL_CONNECTION_FAILED = -111 | &nbsp;A tunnel connection through the proxy could not be established.<br><!--Device-ARKWEB_ERR_TUNNEL_CONNECTION_FAILED = -111--><!--Device-ARKWEB_ERR_TUNNEL_CONNECTION_FAILED = -111-End--> |
+| ARKWEB_ERR_NO_SSL_VERSIONS_ENABLED = -112 | &nbsp;No SSL protocol versions are enabled.<br><!--Device-ARKWEB_ERR_NO_SSL_VERSIONS_ENABLED = -112--><!--Device-ARKWEB_ERR_NO_SSL_VERSIONS_ENABLED = -112-End--> |
+| ARKWEB_ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113 | &nbsp;The client and server don't support a common SSL protocol version or cipher suite.<br><!--Device-ARKWEB_ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113--><!--Device-ARKWEB_ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113-End--> |
+| ARKWEB_ERR_SSL_RENEGOTIATION_REQUESTED = -114 | &nbsp;The server requested a renegotiation (rehandshake).<br><!--Device-ARKWEB_ERR_SSL_RENEGOTIATION_REQUESTED = -114--><!--Device-ARKWEB_ERR_SSL_RENEGOTIATION_REQUESTED = -114-End--> |
+| ARKWEB_ERR_PROXY_AUTH_UNSUPPORTED = -115 | &nbsp;The proxy requested authentication (for tunnel establishment, with an unsupported method.<br><!--Device-ARKWEB_ERR_PROXY_AUTH_UNSUPPORTED = -115--><!--Device-ARKWEB_ERR_PROXY_AUTH_UNSUPPORTED = -115-End--> |
+| ARKWEB_ERR_BAD_SSL_CLIENT_AUTH_CERT = -117 | &nbsp;The SSL handshake failed because of a bad or missing client certificate.<br><!--Device-ARKWEB_ERR_BAD_SSL_CLIENT_AUTH_CERT = -117--><!--Device-ARKWEB_ERR_BAD_SSL_CLIENT_AUTH_CERT = -117-End--> |
+| ARKWEB_ERR_CONNECTION_TIMED_OUT = -118 | &nbsp;A connection attempt timed out.<br><!--Device-ARKWEB_ERR_CONNECTION_TIMED_OUT = -118--><!--Device-ARKWEB_ERR_CONNECTION_TIMED_OUT = -118-End--> |
+| ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119 | &nbsp;There are too many pending DNS resolves, so a request in the queue was aborted.<br><!--Device-ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119--><!--Device-ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119-End--> |
+| ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120 | &nbsp;Failed establishing a connection to the SOCKS proxy server for a target host.<br><!--Device-ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120--><!--Device-ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120-End--> |
+| ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121 | &nbsp;The SOCKS proxy server failed establishing connection to the target host because that host is unreachable.<br><!--Device-ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121--><!--Device-ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121-End--> |
+| ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122 | &nbsp;The request to negotiate an alternate protocol failed.<br><!--Device-ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122--><!--Device-ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122-End--> |
+| ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123 | &nbsp;The peer sent an SSL no_renegotiation alert message.<br><!--Device-ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123--><!--Device-ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123-End--> |
+| ARKWEB_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124 | &nbsp;Winsock sometimes reports more data written than passed. This is probably due to a broken LSP.<br><!--Device-ARKWEB_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124--><!--Device-ARKWEB_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124-End--> |
+| ARKWEB_ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125 | &nbsp;An SSL peer sent us a fatal decompression_failure alert. This typically occurs when a peer selects DEFLATE compression in the mistaken belief that it supports it.<br><!--Device-ARKWEB_ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125--><!--Device-ARKWEB_ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125-End--> |
+| ARKWEB_ERR_SSL_BAD_RECORD_MAC_ALERT = -126 | &nbsp;An SSL peer sent us a fatal bad_record_mac alert. This has been observed from servers with buggy DEFLATE support.<br><!--Device-ARKWEB_ERR_SSL_BAD_RECORD_MAC_ALERT = -126--><!--Device-ARKWEB_ERR_SSL_BAD_RECORD_MAC_ALERT = -126-End--> |
+| ARKWEB_ERR_PROXY_AUTH_REQUESTED = -127 | &nbsp;The proxy requested authentication (for tunnel establishment).<br><!--Device-ARKWEB_ERR_PROXY_AUTH_REQUESTED = -127--><!--Device-ARKWEB_ERR_PROXY_AUTH_REQUESTED = -127-End--> |
+| ARKWEB_ERR_PROXY_CONNECTION_FAILED = -130 | &nbsp;Could not create a connection to the proxy server. An error occurred either in resolving its name, or in connecting a socket to it. Note that this does NOT include failures during the actual "CONNECT" method of an HTTP proxy.<br><!--Device-ARKWEB_ERR_PROXY_CONNECTION_FAILED = -130--><!--Device-ARKWEB_ERR_PROXY_CONNECTION_FAILED = -130-End--> |
+| ARKWEB_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131 | &nbsp;A mandatory proxy configuration could not be used. Currently this means that a mandatory PAC script could not be fetched, parsed or executed.<br><!--Device-ARKWEB_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131--><!--Device-ARKWEB_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131-End--> |
+| ARKWEB_ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133 | &nbsp;We've hit the max socket limit for the socket pool while preconnecting. We don't bother trying to preconnect more sockets.<br><!--Device-ARKWEB_ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133--><!--Device-ARKWEB_ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133-End--> |
+| ARKWEB_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134 | &nbsp;The permission to use the SSL client certificate's private key was denied.<br><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134--><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134-End--> |
+| ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135 | &nbsp;The SSL client certificate has no private key.<br><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135--><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135-End--> |
+| ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | &nbsp;The certificate presented by the HTTPS Proxy was invalid.<br><!--Device-ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136--><!--Device-ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136-End--> |
+| ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | &nbsp;An error occurred when trying to do a name resolution (DNS).<br><!--Device-ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137--><!--Device-ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137-End--> |
+| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | &nbsp;Permission to access the network was denied. This is used to distinguish errors that were most likely caused by a firewall from other access denied errors. See also ERR_ACCESS_DENIED.<br><!--Device-ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138--><!--Device-ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138-End--> |
+| ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | &nbsp;The request throttler module cancelled this request to avoid DDOS.<br><!--Device-ARKWEB_ERR_TEMPORARILY_THROTTLED = -139--><!--Device-ARKWEB_ERR_TEMPORARILY_THROTTLED = -139-End--> |
+| ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | &nbsp;A request to create an SSL tunnel connection through the HTTPS proxy received a 302 (temporary redirect, response. The response body might include a description of why the request failed.<br><!--Device-ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140--><!--Device-ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140-End--> |
+| ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | &nbsp;We were unable to sign the CertificateVerify data of an SSL client auth handshake with the client certificate's private key. Possible causes for this include the user implicitly or explicitly denying access to the private key, the private key may not be valid for signing, the key may be relying on a cached handle which is no longer valid, or the CSP won't allow arbitrary data to be signed.<br><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141--><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141-End--> |
+| ARKWEB_ERR_MSG_TOO_BIG = -142 | &nbsp;The message was too large for the transport. (for example a UDP message which exceeds size threshold).<br><!--Device-ARKWEB_ERR_MSG_TOO_BIG = -142--><!--Device-ARKWEB_ERR_MSG_TOO_BIG = -142-End--> |
+| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | &nbsp;Websocket protocol error. Indicates that we are terminating the connection due to a malformed frame or other protocol violation.<br><!--Device-ARKWEB_ERR_WS_PROTOCOL_ERROR = -145--><!--Device-ARKWEB_ERR_WS_PROTOCOL_ERROR = -145-End--> |
+| ARKWEB_ERR_ADDRESS_IN_USE = -147 | &nbsp;Returned when attempting to bind an address that is already in use.<br><!--Device-ARKWEB_ERR_ADDRESS_IN_USE = -147--><!--Device-ARKWEB_ERR_ADDRESS_IN_USE = -147-End--> |
+| ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148 | &nbsp;An operation failed because the SSL handshake has not completed.<br><!--Device-ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148--><!--Device-ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148-End--> |
+| ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149 | &nbsp;SSL peer's public key is invalid.<br><!--Device-ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149--><!--Device-ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149-End--> |
+| ARKWEB_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150 | &nbsp;The certificate didn't match the built-in public key pins for the host name. The pins are set in net/http/transport_security_state.cc and require that one of a set of public keys exist on the path from the leaf to the root.<br><!--Device-ARKWEB_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150--><!--Device-ARKWEB_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150-End--> |
+| ARKWEB_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151 | &nbsp;Server request for client certificate did not contain any types we support.<br><!--Device-ARKWEB_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151--><!--Device-ARKWEB_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151-End--> |
+| ARKWEB_ERR_SSL_DECRYPT_ERROR_ALERT = -153 | &nbsp;An SSL peer sent us a fatal decrypt_error alert. This typically occurs when a peer could not correctly verify a signature (in CertificateVerify or ServerKeyExchange, or validate a Finished message.<br><!--Device-ARKWEB_ERR_SSL_DECRYPT_ERROR_ALERT = -153--><!--Device-ARKWEB_ERR_SSL_DECRYPT_ERROR_ALERT = -153-End--> |
+| ARKWEB_ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154 | &nbsp;There are too many pending WebSocketJob instances, so the new job was not pushed to the queue.<br><!--Device-ARKWEB_ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154--><!--Device-ARKWEB_ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154-End--> |
+| ARKWEB_ERR_SSL_SERVER_CERT_CHANGED = -156 | &nbsp;The SSL server certificate changed in a renegotiation.<br><!--Device-ARKWEB_ERR_SSL_SERVER_CERT_CHANGED = -156--><!--Device-ARKWEB_ERR_SSL_SERVER_CERT_CHANGED = -156-End--> |
+| ARKWEB_ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159 | &nbsp;The SSL server sent us a fatal unrecognized_name alert.<br><!--Device-ARKWEB_ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159--><!--Device-ARKWEB_ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159-End--> |
+| ARKWEB_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160 | &nbsp;Failed to set the socket's receive buffer size as requested.<br><!--Device-ARKWEB_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160--><!--Device-ARKWEB_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160-End--> |
+| ARKWEB_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161 | &nbsp;Failed to set the socket's send buffer size as requested.<br><!--Device-ARKWEB_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161--><!--Device-ARKWEB_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161-End--> |
+| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 | &nbsp;Failed to set the socket's receive buffer size as requested, despite success return code from setsockopt.<br><!--Device-ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162--><!--Device-ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162-End--> |
+| ARKWEB_ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163 | &nbsp;Failed to set the socket's send buffer size as requested, despite success return code from setsockopt.<br><!--Device-ARKWEB_ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163--><!--Device-ARKWEB_ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163-End--> |
+| ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164 | &nbsp;Failed to import a client certificate from the platform store into the SSL library.<br><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164--><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164-End--> |
+| ARKWEB_ERR_ICANN_NAME_COLLISION = -166 | &nbsp;Resolving a hostname to an IP address list included the IPv4 address "127.0.53.53". This is a special IP address which ICANN has recommended to indicate there was a name collision, and alert admins to a potential problem.<br><!--Device-ARKWEB_ERR_ICANN_NAME_COLLISION = -166--><!--Device-ARKWEB_ERR_ICANN_NAME_COLLISION = -166-End--> |
+| ARKWEB_ERR_SSL_SERVER_CERT_BAD_FORMAT = -167 | &nbsp;The SSL server presented a certificate which could not be decoded. This is not a certificate error code as no X509Certificate object is available. This error is fatal.<br><!--Device-ARKWEB_ERR_SSL_SERVER_CERT_BAD_FORMAT = -167--><!--Device-ARKWEB_ERR_SSL_SERVER_CERT_BAD_FORMAT = -167-End--> |
+| ARKWEB_ERR_CT_STH_PARSING_FAILED = -168 | &nbsp;Certificate Transparency: Received a signed tree head that failed to parse.<br><!--Device-ARKWEB_ERR_CT_STH_PARSING_FAILED = -168--><!--Device-ARKWEB_ERR_CT_STH_PARSING_FAILED = -168-End--> |
+| ARKWEB_ERR_CT_STH_INCOMPLETE = -169 | &nbsp;Certificate Transparency: Received a signed tree head whose JSON parsing was OK but was missing some of the fields.<br><!--Device-ARKWEB_ERR_CT_STH_INCOMPLETE = -169--><!--Device-ARKWEB_ERR_CT_STH_INCOMPLETE = -169-End--> |
+| ARKWEB_ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170 | &nbsp;The attempt to reuse a connection to send proxy auth credentials failed before the AuthController was used to generate credentials. The caller should reuse the controller with a new connection. This error is only used internally by the network stack.<br><!--Device-ARKWEB_ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170--><!--Device-ARKWEB_ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170-End--> |
+| ARKWEB_ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171 | &nbsp;Certificate Transparency: Failed to parse the received consistency proof.<br><!--Device-ARKWEB_ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171--><!--Device-ARKWEB_ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171-End--> |
+| ARKWEB_ERR_SSL_OBSOLETE_CIPHER = -172 | &nbsp;The SSL server required an unsupported cipher suite that has since been removed. This error will temporarily be signaled on a fallback for one or two releases immediately following a cipher suite's removal, after which the fallback will be removed.<br><!--Device-ARKWEB_ERR_SSL_OBSOLETE_CIPHER = -172--><!--Device-ARKWEB_ERR_SSL_OBSOLETE_CIPHER = -172-End--> |
+| ARKWEB_ERR_WS_UPGRADE = -173 | &nbsp;When a WebSocket handshake is done successfully and the connection has been upgraded, the URLRequest is cancelled with this error code.<br><!--Device-ARKWEB_ERR_WS_UPGRADE = -173--><!--Device-ARKWEB_ERR_WS_UPGRADE = -173-End--> |
+| ARKWEB_ERR_READ_IF_READY_NOT_IMPLEMENTED = -174 | &nbsp;Socket ReadIfReady support is not implemented. This error should not be user visible, because the normal Read(, method is used as a fallback.<br><!--Device-ARKWEB_ERR_READ_IF_READY_NOT_IMPLEMENTED = -174--><!--Device-ARKWEB_ERR_READ_IF_READY_NOT_IMPLEMENTED = -174-End--> |
+| ARKWEB_ERR_NO_BUFFER_SPACE = -176 | &nbsp;No socket buffer space is available.<br><!--Device-ARKWEB_ERR_NO_BUFFER_SPACE = -176--><!--Device-ARKWEB_ERR_NO_BUFFER_SPACE = -176-End--> |
+| ARKWEB_ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177 | &nbsp;There were no common signature algorithms between our client certificate private key and the server's preferences.<br><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177--><!--Device-ARKWEB_ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177-End--> |
+| ARKWEB_ERR_EARLY_DATA_REJECTED = -178 | &nbsp;TLS 1.3 early data was rejected by the server. This will be received before any data is returned from the socket. The request should be retried with early data disabled.<br><!--Device-ARKWEB_ERR_EARLY_DATA_REJECTED = -178--><!--Device-ARKWEB_ERR_EARLY_DATA_REJECTED = -178-End--> |
+| ARKWEB_ERR_WRONG_VERSION_ON_EARLY_DATA = -179 | &nbsp;TLS 1.3 early data was offered, but the server responded with TLS 1.2 or earlier. This is an internal error code to account for a backwards-compatibility issue with early data and TLS 1.2. It will be received before any data is returned from the socket. The request should be retried with early data disabled. See https://tools.ietf.org/html/rfc8446#appendix-D.3 for details.<br><!--Device-ARKWEB_ERR_WRONG_VERSION_ON_EARLY_DATA = -179--><!--Device-ARKWEB_ERR_WRONG_VERSION_ON_EARLY_DATA = -179-End--> |
+| ARKWEB_ERR_TLS13_DOWNGRADE_DETECTED = -180 | &nbsp;TLS 1.3 was enabled, but a lower version was negotiated and the server returned a value indicating it supported TLS 1.3. This is part of a security check in TLS 1.3, but it may also indicate the user is behind a buggy TLS-terminating proxy which implemented TLS 1.2 incorrectly. (See rhttps://crbug.com/boringssl/226.,<br><!--Device-ARKWEB_ERR_TLS13_DOWNGRADE_DETECTED = -180--><!--Device-ARKWEB_ERR_TLS13_DOWNGRADE_DETECTED = -180-End--> |
+| ARKWEB_ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181 | &nbsp;The server's certificate has a keyUsage extension incompatible with the negotiated TLS key exchange method.<br><!--Device-ARKWEB_ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181--><!--Device-ARKWEB_ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181-End--> |
+| ARKWEB_ERR_INVALID_ECH_CONFIG_LIST = -182 | &nbsp;The ECHConfigList fetched over DNS cannot be parsed.<br><!--Device-ARKWEB_ERR_INVALID_ECH_CONFIG_LIST = -182--><!--Device-ARKWEB_ERR_INVALID_ECH_CONFIG_LIST = -182-End--> |
+| ARKWEB_ERR_ECH_NOT_NEGOTIATED = -183 | &nbsp;ECH was enabled, but the server was unable to decrypt the encrypted ClientHello.<br><!--Device-ARKWEB_ERR_ECH_NOT_NEGOTIATED = -183--><!--Device-ARKWEB_ERR_ECH_NOT_NEGOTIATED = -183-End--> |
+| ARKWEB_ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184 | &nbsp;ECH was enabled, the server was unable to decrypt the encrypted ClientHello, and additionally did not present a certificate valid for the public name.<br><!--Device-ARKWEB_ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184--><!--Device-ARKWEB_ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184-End--> |
+| ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200 | &nbsp;The server responded with a certificate whose common name did not match the host name. This could mean: 1. An attacker has redirected our traffic to their server and is presenting a certificate for which they know the private key. 2. The server is misconfigured and responding with the wrong cert. 3. The user is on a wireless network and is being redirected to the network's login page. 4. The OS has used a DNS search suffix and the server doesn't have a certificate for the abbreviated name in the address bar.<br><!--Device-ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200--><!--Device-ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200-End--> |
+| ARKWEB_ERR_CERT_DATE_INVALID = -201 | &nbsp;The server responded with a certificate that, by our clock, appears to either not yet be valid or to have expired. This could mean: 1. An attacker is presenting an old certificate for which they have managed to obtain the private key. 2. The server is misconfigured and is not presenting a valid cert. 3. Our clock is wrong.<br><!--Device-ARKWEB_ERR_CERT_DATE_INVALID = -201--><!--Device-ARKWEB_ERR_CERT_DATE_INVALID = -201-End--> |
+| ARKWEB_ERR_CERT_AUTHORITY_INVALID = -202 | &nbsp;The server responded with a certificate that is signed by an authority we don't trust. The could mean: 1. An attacker has substituted the real certificate for a cert that contains their public key and is signed by their cousin. 2. The server operator has a legitimate certificate from a CA we don't know about, but should trust. 3. The server is presenting a self-signed certificate, providing no defense against active attackers (but foiling passive attackers).<br><!--Device-ARKWEB_ERR_CERT_AUTHORITY_INVALID = -202--><!--Device-ARKWEB_ERR_CERT_AUTHORITY_INVALID = -202-End--> |
+| ARKWEB_ERR_CERT_CONTAINS_ERRORS = -203 | &nbsp;The server responded with a certificate that contains errors. This error is not recoverable. MSDN describes this error as follows: "The SSL certificate contains errors." NOTE: It's unclear how this differs from ERR_CERT_INVALID. For consistency, use that code instead of this one from now on.<br><!--Device-ARKWEB_ERR_CERT_CONTAINS_ERRORS = -203--><!--Device-ARKWEB_ERR_CERT_CONTAINS_ERRORS = -203-End--> |
+| ARKWEB_ERR_CERT_NO_REVOCATION_MECHANISM = -204 | &nbsp;The certificate has no mechanism for determining if it is revoked. In effect, this certificate cannot be revoked.<br><!--Device-ARKWEB_ERR_CERT_NO_REVOCATION_MECHANISM = -204--><!--Device-ARKWEB_ERR_CERT_NO_REVOCATION_MECHANISM = -204-End--> |
+| ARKWEB_ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205 | &nbsp;Revocation information for the security certificate for this site is not available. This could mean: 1. An attacker has compromised the private key in the certificate and is blocking our attempt to find out that the cert was revoked. 2. The certificate is unrevoked, but the revocation server is busy or unavailable.<br><!--Device-ARKWEB_ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205--><!--Device-ARKWEB_ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205-End--> |
+| ARKWEB_ERR_CERT_REVOKED = -206 | &nbsp;The server responded with a certificate has been revoked. We have the capability to ignore this error, but it is probably not the thing to do.<br><!--Device-ARKWEB_ERR_CERT_REVOKED = -206--><!--Device-ARKWEB_ERR_CERT_REVOKED = -206-End--> |
+| ARKWEB_ERR_CERT_INVALID = -207 | &nbsp;The server responded with a certificate that is invalid. This error is not recoverable. MSDN describes this error as follows: "The SSL certificate is invalid."<br><!--Device-ARKWEB_ERR_CERT_INVALID = -207--><!--Device-ARKWEB_ERR_CERT_INVALID = -207-End--> |
+| ARKWEB_ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208 | &nbsp;The server responded with a certificate that is signed using a weak signature algorithm.<br><!--Device-ARKWEB_ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208--><!--Device-ARKWEB_ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208-End--> |
+| ARKWEB_ERR_CERT_NON_UNIQUE_NAME = -210 | &nbsp;The host name specified in the certificate is not unique.<br><!--Device-ARKWEB_ERR_CERT_NON_UNIQUE_NAME = -210--><!--Device-ARKWEB_ERR_CERT_NON_UNIQUE_NAME = -210-End--> |
+| ARKWEB_ERR_CERT_WEAK_KEY = -211 | &nbsp;The server responded with a certificate that contains a weak key (e.g. a too-small RSA key).<br><!--Device-ARKWEB_ERR_CERT_WEAK_KEY = -211--><!--Device-ARKWEB_ERR_CERT_WEAK_KEY = -211-End--> |
+| ARKWEB_ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212 | &nbsp;The certificate claimed DNS names that are in violation of name constraints.<br><!--Device-ARKWEB_ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212--><!--Device-ARKWEB_ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212-End--> |
+| ARKWEB_ERR_CERT_VALIDITY_TOO_LONG = -213 | &nbsp;The certificate's validity period is too long.<br><!--Device-ARKWEB_ERR_CERT_VALIDITY_TOO_LONG = -213--><!--Device-ARKWEB_ERR_CERT_VALIDITY_TOO_LONG = -213-End--> |
+| ARKWEB_ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214 | &nbsp;Certificate Transparency was required for this connection, but the server did not provide CT information that complied with the policy.<br><!--Device-ARKWEB_ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214--><!--Device-ARKWEB_ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214-End--> |
+| ARKWEB_ERR_CERT_SYMANTEC_LEGACY = -215 | &nbsp;The certificate chained to a legacy Symantec root that is no longer trusted.<br><!--Device-ARKWEB_ERR_CERT_SYMANTEC_LEGACY = -215--><!--Device-ARKWEB_ERR_CERT_SYMANTEC_LEGACY = -215-End--> |
+| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 | &nbsp;The certificate is known to be used for interception by an entity other the device owner.<br><!--Device-ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217--><!--Device-ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217-End--> |
+| ARKWEB_ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218 | &nbsp;The connection uses an obsolete version of SSL/TLS or cipher.<br><!--Device-ARKWEB_ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218--><!--Device-ARKWEB_ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218-End--> |
+| ARKWEB_ERR_CERT_END = -219 | &nbsp;The value immediately past the last certificate error code.<br><!--Device-ARKWEB_ERR_CERT_END = -219--><!--Device-ARKWEB_ERR_CERT_END = -219-End--> |
+| ARKWEB_ERR_INVALID_URL = -300 | &nbsp;The URL is invalid.<br><!--Device-ARKWEB_ERR_INVALID_URL = -300--><!--Device-ARKWEB_ERR_INVALID_URL = -300-End--> |
+| ARKWEB_ERR_DISALLOWED_URL_SCHEME = -301 | &nbsp;The scheme of the URL is disallowed.<br><!--Device-ARKWEB_ERR_DISALLOWED_URL_SCHEME = -301--><!--Device-ARKWEB_ERR_DISALLOWED_URL_SCHEME = -301-End--> |
+| ARKWEB_ERR_UNKNOWN_URL_SCHEME = -302 | &nbsp;The scheme of the URL is unknown.<br><!--Device-ARKWEB_ERR_UNKNOWN_URL_SCHEME = -302--><!--Device-ARKWEB_ERR_UNKNOWN_URL_SCHEME = -302-End--> |
+| ARKWEB_ERR_INVALID_REDIRECT = -303 | &nbsp;Attempting to load an URL resulted in a redirect to an invalid URL.<br><!--Device-ARKWEB_ERR_INVALID_REDIRECT = -303--><!--Device-ARKWEB_ERR_INVALID_REDIRECT = -303-End--> |
+| ARKWEB_ERR_TOO_MANY_REDIRECTS = -310 | &nbsp;Attempting to load an URL resulted in too many redirects.<br><!--Device-ARKWEB_ERR_TOO_MANY_REDIRECTS = -310--><!--Device-ARKWEB_ERR_TOO_MANY_REDIRECTS = -310-End--> |
+| ARKWEB_ERR_UNSAFE_REDIRECT = -311 | &nbsp;Attempting to load an URL resulted in an unsafe redirect (e.g., a redirect to file:// is considered unsafe).<br><!--Device-ARKWEB_ERR_UNSAFE_REDIRECT = -311--><!--Device-ARKWEB_ERR_UNSAFE_REDIRECT = -311-End--> |
+| ARKWEB_ERR_UNSAFE_PORT = -312 | &nbsp;Attempting to load an URL with an unsafe port number.<br><!--Device-ARKWEB_ERR_UNSAFE_PORT = -312--><!--Device-ARKWEB_ERR_UNSAFE_PORT = -312-End--> |
+| ARKWEB_ERR_INVALID_RESPONSE = -320 | &nbsp;The server's response was invalid.<br><!--Device-ARKWEB_ERR_INVALID_RESPONSE = -320--><!--Device-ARKWEB_ERR_INVALID_RESPONSE = -320-End--> |
+| ARKWEB_ERR_INVALID_CHUNKED_ENCODING = -321 | &nbsp;Error in chunked transfer encoding.<br><!--Device-ARKWEB_ERR_INVALID_CHUNKED_ENCODING = -321--><!--Device-ARKWEB_ERR_INVALID_CHUNKED_ENCODING = -321-End--> |
+| ARKWEB_ERR_METHOD_UNSUPPORTED = -322 | &nbsp;The server did not support the request method.<br><!--Device-ARKWEB_ERR_METHOD_UNSUPPORTED = -322--><!--Device-ARKWEB_ERR_METHOD_UNSUPPORTED = -322-End--> |
+| ARKWEB_ERR_UNEXPECTED_PROXY_AUTH = -323 | &nbsp;The response was 407 (Proxy Authentication Required,, yet we did not send the request to a proxy.<br><!--Device-ARKWEB_ERR_UNEXPECTED_PROXY_AUTH = -323--><!--Device-ARKWEB_ERR_UNEXPECTED_PROXY_AUTH = -323-End--> |
+| ARKWEB_ERR_EMPTY_RESPONSE = -324 | &nbsp;The server closed the connection without sending any data.<br><!--Device-ARKWEB_ERR_EMPTY_RESPONSE = -324--><!--Device-ARKWEB_ERR_EMPTY_RESPONSE = -324-End--> |
+| ARKWEB_ERR_RESPONSE_HEADERS_TOO_BIG = -325 | &nbsp;The headers section of the response is too large.<br><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_TOO_BIG = -325--><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_TOO_BIG = -325-End--> |
+| ARKWEB_ERR_PAC_SCRIPT_FAILED = -327 | &nbsp;The evaluation of the PAC script failed.<br><!--Device-ARKWEB_ERR_PAC_SCRIPT_FAILED = -327--><!--Device-ARKWEB_ERR_PAC_SCRIPT_FAILED = -327-End--> |
+| ARKWEB_ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328 | &nbsp;The response was 416 (Requested range not satisfiable, and the server cannot satisfy the range requested.<br><!--Device-ARKWEB_ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328--><!--Device-ARKWEB_ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328-End--> |
+| ARKWEB_ERR_MALFORMED_IDENTITY = -329 | &nbsp;The identity used for authentication is invalid.<br><!--Device-ARKWEB_ERR_MALFORMED_IDENTITY = -329--><!--Device-ARKWEB_ERR_MALFORMED_IDENTITY = -329-End--> |
+| ARKWEB_ERR_CONTENT_DECODING_FAILED = -330 | &nbsp;Content decoding of the response body failed.<br><!--Device-ARKWEB_ERR_CONTENT_DECODING_FAILED = -330--><!--Device-ARKWEB_ERR_CONTENT_DECODING_FAILED = -330-End--> |
+| ARKWEB_ERR_NETWORK_IO_SUSPENDED = -331 | &nbsp;An operation could not be completed because all network IO is suspended.<br><!--Device-ARKWEB_ERR_NETWORK_IO_SUSPENDED = -331--><!--Device-ARKWEB_ERR_NETWORK_IO_SUSPENDED = -331-End--> |
+| ARKWEB_ERR_SYN_REPLY_NOT_RECEIVED = -332 | &nbsp;FLIP data received without receiving a SYN_REPLY on the stream.<br><!--Device-ARKWEB_ERR_SYN_REPLY_NOT_RECEIVED = -332--><!--Device-ARKWEB_ERR_SYN_REPLY_NOT_RECEIVED = -332-End--> |
+| ARKWEB_ERR_ENCODING_CONVERSION_FAILED = -333 | &nbsp;Converting the response to target encoding failed.<br><!--Device-ARKWEB_ERR_ENCODING_CONVERSION_FAILED = -333--><!--Device-ARKWEB_ERR_ENCODING_CONVERSION_FAILED = -333-End--> |
+| ARKWEB_ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334 | &nbsp;The server sent an FTP directory listing in a format we do not understand.<br><!--Device-ARKWEB_ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334--><!--Device-ARKWEB_ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334-End--> |
+| ARKWEB_ERR_NO_SUPPORTED_PROXIES = -336 | &nbsp;There are no supported proxies in the provided list.<br><!--Device-ARKWEB_ERR_NO_SUPPORTED_PROXIES = -336--><!--Device-ARKWEB_ERR_NO_SUPPORTED_PROXIES = -336-End--> |
+| ARKWEB_ERR_HTTP2_PROTOCOL_ERROR = -337 | &nbsp;There is an HTTP/2 protocol error.<br><!--Device-ARKWEB_ERR_HTTP2_PROTOCOL_ERROR = -337--><!--Device-ARKWEB_ERR_HTTP2_PROTOCOL_ERROR = -337-End--> |
+| ARKWEB_ERR_INVALID_AUTH_CREDENTIALS = -338 | &nbsp;Credentials could not be established during HTTP Authentication.<br><!--Device-ARKWEB_ERR_INVALID_AUTH_CREDENTIALS = -338--><!--Device-ARKWEB_ERR_INVALID_AUTH_CREDENTIALS = -338-End--> |
+| ARKWEB_ERR_UNSUPPORTED_AUTH_SCHEME = -339 | &nbsp;An HTTP Authentication scheme was tried which is not supported on this machine.<br><!--Device-ARKWEB_ERR_UNSUPPORTED_AUTH_SCHEME = -339--><!--Device-ARKWEB_ERR_UNSUPPORTED_AUTH_SCHEME = -339-End--> |
+| ARKWEB_ERR_ENCODING_DETECTION_FAILED = -340 | &nbsp;Detecting the encoding of the response failed.<br><!--Device-ARKWEB_ERR_ENCODING_DETECTION_FAILED = -340--><!--Device-ARKWEB_ERR_ENCODING_DETECTION_FAILED = -340-End--> |
+| ARKWEB_ERR_MISSING_AUTH_CREDENTIALS = -341 | &nbsp;(GSSAPI, No Kerberos credentials were available during HTTP Authentication.<br><!--Device-ARKWEB_ERR_MISSING_AUTH_CREDENTIALS = -341--><!--Device-ARKWEB_ERR_MISSING_AUTH_CREDENTIALS = -341-End--> |
+| ARKWEB_ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342 | &nbsp;An unexpected, but documented, SSPI or GSSAPI status code was returned.<br><!--Device-ARKWEB_ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342--><!--Device-ARKWEB_ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342-End--> |
+| ARKWEB_ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343 | &nbsp;The environment was not set up correctly for authentication (for example, no KDC could be found or the principal is unknown.<br><!--Device-ARKWEB_ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343--><!--Device-ARKWEB_ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343-End--> |
+| ARKWEB_ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344 | &nbsp;An undocumented SSPI or GSSAPI status code was returned.<br><!--Device-ARKWEB_ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344--><!--Device-ARKWEB_ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344-End--> |
+| ARKWEB_ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345 | &nbsp;The HTTP response was too big to drain.<br><!--Device-ARKWEB_ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345--><!--Device-ARKWEB_ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345-End--> |
+| ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346 | &nbsp;The HTTP response contained multiple distinct Content-Length headers.<br><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346--><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346-End--> |
+| ARKWEB_ERR_INCOMPLETE_HTTP2_HEADERS = -347 | &nbsp;HTTP/2 headers have been received, but not all of them - status or version headers are missing, so we're expecting additional frames to complete them.<br><!--Device-ARKWEB_ERR_INCOMPLETE_HTTP2_HEADERS = -347--><!--Device-ARKWEB_ERR_INCOMPLETE_HTTP2_HEADERS = -347-End--> |
+| ARKWEB_ERR_PAC_NOT_IN_DHCP = -348 | &nbsp;No PAC URL configuration could be retrieved from DHCP. This can indicate either a failure to retrieve the DHCP configuration, or that there was no PAC URL configured in DHCP.<br><!--Device-ARKWEB_ERR_PAC_NOT_IN_DHCP = -348--><!--Device-ARKWEB_ERR_PAC_NOT_IN_DHCP = -348-End--> |
+| ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349 | &nbsp;The HTTP response contained multiple Content-Disposition headers.<br><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349--><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349-End--> |
+| ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350 | &nbsp;The HTTP response contained multiple Location headers.<br><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350--><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350-End--> |
+| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | &nbsp;HTTP/2 server refused the request without processing, and sent either a GOAWAY frame with error code NO_ERROR and Last-Stream-ID lower than the stream id corresponding to the request indicating that this request has not been processed yet, or a RST_STREAM frame with error code REFUSED_STREAM. Client MAY retry (on a different connection). See RFC7540 Section 8.1.4.<br><!--Device-ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351--><!--Device-ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351-End--> |
+| ARKWEB_ERR_HTTP2_PING_FAILED = -352 | &nbsp;HTTP/2 server didn't respond to the PING message.<br><!--Device-ARKWEB_ERR_HTTP2_PING_FAILED = -352--><!--Device-ARKWEB_ERR_HTTP2_PING_FAILED = -352-End--> |
+| ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354 | &nbsp;The HTTP response body transferred fewer bytes than were advertised by the Content-Length header when the connection is closed.<br><!--Device-ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354--><!--Device-ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354-End--> |
+| ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355 | &nbsp;The HTTP response body is transferred with Chunked-Encoding, but the terminating zero-length chunk was never sent when the connection is closed.<br><!--Device-ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355--><!--Device-ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355-End--> |
+| ARKWEB_ERR_QUIC_PROTOCOL_ERROR = -356 | &nbsp;There is a QUIC protocol error.<br><!--Device-ARKWEB_ERR_QUIC_PROTOCOL_ERROR = -356--><!--Device-ARKWEB_ERR_QUIC_PROTOCOL_ERROR = -356-End--> |
+| ARKWEB_ERR_RESPONSE_HEADERS_TRUNCATED = -357 | &nbsp;The HTTP headers were truncated by an EOF.<br><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_TRUNCATED = -357--><!--Device-ARKWEB_ERR_RESPONSE_HEADERS_TRUNCATED = -357-End--> |
+| ARKWEB_ERR_QUIC_HANDSHAKE_FAILED = -358 | &nbsp;The QUIC crypto handshake failed. This means that the server was unable to read any requests sent, so they may be resent.<br><!--Device-ARKWEB_ERR_QUIC_HANDSHAKE_FAILED = -358--><!--Device-ARKWEB_ERR_QUIC_HANDSHAKE_FAILED = -358-End--> |
+| ARKWEB_ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360 | &nbsp;Transport security is inadequate for the HTTP/2 version.<br><!--Device-ARKWEB_ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360--><!--Device-ARKWEB_ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360-End--> |
+| ARKWEB_ERR_HTTP2_FLOW_CONTROL_ERROR = -361 | &nbsp;The peer violated HTTP/2 flow control.<br><!--Device-ARKWEB_ERR_HTTP2_FLOW_CONTROL_ERROR = -361--><!--Device-ARKWEB_ERR_HTTP2_FLOW_CONTROL_ERROR = -361-End--> |
+| ARKWEB_ERR_HTTP2_FRAME_SIZE_ERROR = -362 | &nbsp;The peer sent an improperly sized HTTP/2 frame.<br><!--Device-ARKWEB_ERR_HTTP2_FRAME_SIZE_ERROR = -362--><!--Device-ARKWEB_ERR_HTTP2_FRAME_SIZE_ERROR = -362-End--> |
+| ARKWEB_ERR_HTTP2_COMPRESSION_ERROR = -363 | &nbsp;Decoding or encoding of compressed HTTP/2 headers failed.<br><!--Device-ARKWEB_ERR_HTTP2_COMPRESSION_ERROR = -363--><!--Device-ARKWEB_ERR_HTTP2_COMPRESSION_ERROR = -363-End--> |
+| ARKWEB_ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364 | &nbsp;Proxy Auth Requested without a valid Client Socket Handle.<br><!--Device-ARKWEB_ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364--><!--Device-ARKWEB_ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364-End--> |
+| ARKWEB_ERR_HTTP_1_1_REQUIRED = -365 | &nbsp;HTTP_1_1_REQUIRED error code received on HTTP/2 session.<br><!--Device-ARKWEB_ERR_HTTP_1_1_REQUIRED = -365--><!--Device-ARKWEB_ERR_HTTP_1_1_REQUIRED = -365-End--> |
+| ARKWEB_ERR_PROXY_HTTP_1_1_REQUIRED = -366 | &nbsp;HTTP_1_1_REQUIRED error code received on HTTP/2 session to proxy.<br><!--Device-ARKWEB_ERR_PROXY_HTTP_1_1_REQUIRED = -366--><!--Device-ARKWEB_ERR_PROXY_HTTP_1_1_REQUIRED = -366-End--> |
+| ARKWEB_ERR_PAC_SCRIPT_TERMINATED = -367 | &nbsp;The PAC script terminated fatally and must be reloaded.<br><!--Device-ARKWEB_ERR_PAC_SCRIPT_TERMINATED = -367--><!--Device-ARKWEB_ERR_PAC_SCRIPT_TERMINATED = -367-End--> |
+| ARKWEB_ERR_INVALID_HTTP_RESPONSE = -370 | &nbsp;The server was expected to return an HTTP/1.x response, but did not. Rather than treat it as HTTP/0.9, this error is returned.<br><!--Device-ARKWEB_ERR_INVALID_HTTP_RESPONSE = -370--><!--Device-ARKWEB_ERR_INVALID_HTTP_RESPONSE = -370-End--> |
+| ARKWEB_ERR_CONTENT_DECODING_INIT_FAILED = -371 | &nbsp;Initializing content decoding failed.<br><!--Device-ARKWEB_ERR_CONTENT_DECODING_INIT_FAILED = -371--><!--Device-ARKWEB_ERR_CONTENT_DECODING_INIT_FAILED = -371-End--> |
+| ARKWEB_ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372 | &nbsp;Received HTTP/2 RST_STREAM frame with NO_ERROR error code. This error should be handled internally by HTTP/2 code, and should not make it above the SpdyStream layer.<br><!--Device-ARKWEB_ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372--><!--Device-ARKWEB_ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372-End--> |
+| ARKWEB_ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373 | &nbsp;The pushed stream claimed by the request is no longer available.<br><!--Device-ARKWEB_ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373--><!--Device-ARKWEB_ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373-End--> |
+| ARKWEB_ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374 | &nbsp;A pushed stream was claimed and later reset by the server. When this happens, the request should be retried.<br><!--Device-ARKWEB_ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374--><!--Device-ARKWEB_ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374-End--> |
+| ARKWEB_ERR_TOO_MANY_RETRIES = -375 | &nbsp;An HTTP transaction was retried too many times due for authentication or invalid certificates.<br><!--Device-ARKWEB_ERR_TOO_MANY_RETRIES = -375--><!--Device-ARKWEB_ERR_TOO_MANY_RETRIES = -375-End--> |
+| ARKWEB_ERR_HTTP2_STREAM_CLOSED = -376 | &nbsp;Received an HTTP/2 frame on a closed stream.<br><!--Device-ARKWEB_ERR_HTTP2_STREAM_CLOSED = -376--><!--Device-ARKWEB_ERR_HTTP2_STREAM_CLOSED = -376-End--> |
+| ARKWEB_ERR_HTTP2_CLIENT_REFUSED_STREAM = -377 | &nbsp;Client is refusing an HTTP/2 stream.<br><!--Device-ARKWEB_ERR_HTTP2_CLIENT_REFUSED_STREAM = -377--><!--Device-ARKWEB_ERR_HTTP2_CLIENT_REFUSED_STREAM = -377-End--> |
+| ARKWEB_ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378 | &nbsp;A pushed HTTP/2 stream was claimed by a request based on matching URL and request headers, but the pushed response headers do not match the request.<br><!--Device-ARKWEB_ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378--><!--Device-ARKWEB_ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378-End--> |
+| ARKWEB_ERR_HTTP_RESPONSE_CODE_FAILURE = -379 | &nbsp;The server returned a non-2xx HTTP response code.<br><!--Device-ARKWEB_ERR_HTTP_RESPONSE_CODE_FAILURE = -379--><!--Device-ARKWEB_ERR_HTTP_RESPONSE_CODE_FAILURE = -379-End--> |
+| ARKWEB_ERR_QUIC_UNKNOWN_CERT_ROOT = -380 | &nbsp;The certificate presented on a QUIC connection does not chain to a known root and the origin connected to is not on a list of domains where unknown roots are allowed.<br><!--Device-ARKWEB_ERR_QUIC_UNKNOWN_CERT_ROOT = -380--><!--Device-ARKWEB_ERR_QUIC_UNKNOWN_CERT_ROOT = -380-End--> |
+| ARKWEB_ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381 | &nbsp;A GOAWAY frame has been received indicating that the request has not been processed and is therefore safe to retry on a different connection.<br><!--Device-ARKWEB_ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381--><!--Device-ARKWEB_ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381-End--> |
+| ARKWEB_ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382 | &nbsp;The ACCEPT_CH restart has been triggered too many times.<br><!--Device-ARKWEB_ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382--><!--Device-ARKWEB_ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382-End--> |
+| ARKWEB_ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383 | &nbsp;The IP address space of the remote endpoint differed from the previous observed value during the same request. Any cache entry for the affected request should be invalidated.<br><!--Device-ARKWEB_ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383--><!--Device-ARKWEB_ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383-End--> |
+| ARKWEB_ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384 | &nbsp;The IP address space of the cached remote endpoint is blocked by local network access check.<br><!--Device-ARKWEB_ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384--><!--Device-ARKWEB_ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384-End--> |
+| ARKWEB_ERR_CACHE_MISS = -400 | &nbsp;The cache does not have the requested entry.<br><!--Device-ARKWEB_ERR_CACHE_MISS = -400--><!--Device-ARKWEB_ERR_CACHE_MISS = -400-End--> |
+| ARKWEB_ERR_CACHE_READ_FAILURE = -401 | &nbsp;Unable to read from the disk cache.<br><!--Device-ARKWEB_ERR_CACHE_READ_FAILURE = -401--><!--Device-ARKWEB_ERR_CACHE_READ_FAILURE = -401-End--> |
+| ARKWEB_ERR_CACHE_WRITE_FAILURE = -402 | &nbsp;Unable to write to the disk cache.<br><!--Device-ARKWEB_ERR_CACHE_WRITE_FAILURE = -402--><!--Device-ARKWEB_ERR_CACHE_WRITE_FAILURE = -402-End--> |
+| ARKWEB_ERR_CACHE_OPERATION_UNSUPPORTED = -403 | &nbsp;The operation is not supported for this entry.<br><!--Device-ARKWEB_ERR_CACHE_OPERATION_UNSUPPORTED = -403--><!--Device-ARKWEB_ERR_CACHE_OPERATION_UNSUPPORTED = -403-End--> |
+| ARKWEB_ERR_CACHE_OPEN_FAILURE = -404 | &nbsp;The disk cache is unable to open this entry.<br><!--Device-ARKWEB_ERR_CACHE_OPEN_FAILURE = -404--><!--Device-ARKWEB_ERR_CACHE_OPEN_FAILURE = -404-End--> |
+| ARKWEB_ERR_CACHE_CREATE_FAILURE = -405 | &nbsp;The disk cache is unable to create this entry.<br><!--Device-ARKWEB_ERR_CACHE_CREATE_FAILURE = -405--><!--Device-ARKWEB_ERR_CACHE_CREATE_FAILURE = -405-End--> |
+| ARKWEB_ERR_CACHE_RACE = -406 | &nbsp;Multiple transactions are racing to create disk cache entries.<br><!--Device-ARKWEB_ERR_CACHE_RACE = -406--><!--Device-ARKWEB_ERR_CACHE_RACE = -406-End--> |
+| ARKWEB_ERR_CACHE_CHECKSUM_READ_FAILURE = -407 | &nbsp;The cache was unable to read a checksum record on an entry.<br><!--Device-ARKWEB_ERR_CACHE_CHECKSUM_READ_FAILURE = -407--><!--Device-ARKWEB_ERR_CACHE_CHECKSUM_READ_FAILURE = -407-End--> |
+| ARKWEB_ERR_CACHE_CHECKSUM_MISMATCH = -408 | &nbsp;The cache found an entry with an invalid checksum.<br><!--Device-ARKWEB_ERR_CACHE_CHECKSUM_MISMATCH = -408--><!--Device-ARKWEB_ERR_CACHE_CHECKSUM_MISMATCH = -408-End--> |
+| ARKWEB_ERR_CACHE_LOCK_TIMEOUT = -409 | &nbsp;Internal error code for the HTTP cache.<br><!--Device-ARKWEB_ERR_CACHE_LOCK_TIMEOUT = -409--><!--Device-ARKWEB_ERR_CACHE_LOCK_TIMEOUT = -409-End--> |
+| ARKWEB_ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410 | &nbsp;Received a challenge after the transaction has read some data, and the credentials aren't available.<br><!--Device-ARKWEB_ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410--><!--Device-ARKWEB_ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410-End--> |
+| ARKWEB_ERR_CACHE_ENTRY_NOT_SUITABLE = -411 | &nbsp;Internal not-quite error code for the HTTP cache.<br><!--Device-ARKWEB_ERR_CACHE_ENTRY_NOT_SUITABLE = -411--><!--Device-ARKWEB_ERR_CACHE_ENTRY_NOT_SUITABLE = -411-End--> |
+| ARKWEB_ERR_CACHE_DOOM_FAILURE = -412 | &nbsp;The disk cache is unable to doom this entry.<br><!--Device-ARKWEB_ERR_CACHE_DOOM_FAILURE = -412--><!--Device-ARKWEB_ERR_CACHE_DOOM_FAILURE = -412-End--> |
+| ARKWEB_ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413 | &nbsp;The disk cache is unable to open or create this entry.<br><!--Device-ARKWEB_ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413--><!--Device-ARKWEB_ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413-End--> |
+| ARKWEB_ERR_INSECURE_RESPONSE = -501 | &nbsp;The server's response was insecure (e.g. there was a cert error).<br><!--Device-ARKWEB_ERR_INSECURE_RESPONSE = -501--><!--Device-ARKWEB_ERR_INSECURE_RESPONSE = -501-End--> |
+| ARKWEB_ERR_NO_PRIVATE_KEY_FOR_CERT = -502 | &nbsp;An attempt to import a client certificate failed, as the user's key database lacked a corresponding private key.<br><!--Device-ARKWEB_ERR_NO_PRIVATE_KEY_FOR_CERT = -502--><!--Device-ARKWEB_ERR_NO_PRIVATE_KEY_FOR_CERT = -502-End--> |
+| ARKWEB_ERR_ADD_USER_CERT_FAILED = -503 | &nbsp;An error adding a certificate to the OS certificate database.<br><!--Device-ARKWEB_ERR_ADD_USER_CERT_FAILED = -503--><!--Device-ARKWEB_ERR_ADD_USER_CERT_FAILED = -503-End--> |
+| ARKWEB_ERR_INVALID_SIGNED_EXCHANGE = -504 | &nbsp;An error occurred while handling a signed exchange.<br><!--Device-ARKWEB_ERR_INVALID_SIGNED_EXCHANGE = -504--><!--Device-ARKWEB_ERR_INVALID_SIGNED_EXCHANGE = -504-End--> |
+| ARKWEB_ERR_INVALID_WEB_BUNDLE = -505 | &nbsp;An error occurred while handling a Web Bundle source.<br><!--Device-ARKWEB_ERR_INVALID_WEB_BUNDLE = -505--><!--Device-ARKWEB_ERR_INVALID_WEB_BUNDLE = -505-End--> |
+| ARKWEB_ERR_TRUST_TOKEN_OPERATION_FAILED = -506 | &nbsp;A Trust Tokens protocol operation-executing request failed for one of a number of reasons (precondition failure, internal error, bad response).<br><!--Device-ARKWEB_ERR_TRUST_TOKEN_OPERATION_FAILED = -506--><!--Device-ARKWEB_ERR_TRUST_TOKEN_OPERATION_FAILED = -506-End--> |
+| ARKWEB_ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507 | &nbsp;When handling a Trust Tokens protocol operation-executing request, the system was able to execute the request's Trust Tokens operation without sending the request to its destination.<br><!--Device-ARKWEB_ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507--><!--Device-ARKWEB_ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507-End--> |
+| ARKWEB_ERR_FTP_FAILED = -601 | &nbsp;A generic error for failed FTP control connection command. If possible, please use or add a more specific error code.<br><!--Device-ARKWEB_ERR_FTP_FAILED = -601--><!--Device-ARKWEB_ERR_FTP_FAILED = -601-End--> |
+| ARKWEB_ERR_FTP_SERVICE_UNAVAILABLE = -602 | &nbsp;The server cannot fulfill the request at this point. This is a temporary error. FTP response code 421.<br><!--Device-ARKWEB_ERR_FTP_SERVICE_UNAVAILABLE = -602--><!--Device-ARKWEB_ERR_FTP_SERVICE_UNAVAILABLE = -602-End--> |
+| ARKWEB_ERR_FTP_TRANSFER_ABORTED = -603 | &nbsp;The server has aborted the transfer. FTP response code 426.<br><!--Device-ARKWEB_ERR_FTP_TRANSFER_ABORTED = -603--><!--Device-ARKWEB_ERR_FTP_TRANSFER_ABORTED = -603-End--> |
+| ARKWEB_ERR_FTP_FILE_BUSY = -604 | &nbsp;The file is busy, or some other temporary error condition on opening the file. FTP response code 450.<br><!--Device-ARKWEB_ERR_FTP_FILE_BUSY = -604--><!--Device-ARKWEB_ERR_FTP_FILE_BUSY = -604-End--> |
+| ARKWEB_ERR_FTP_SYNTAX_ERROR = -605 | &nbsp;Server rejected our command because of syntax errors. FTP response codes 500, 501.<br><!--Device-ARKWEB_ERR_FTP_SYNTAX_ERROR = -605--><!--Device-ARKWEB_ERR_FTP_SYNTAX_ERROR = -605-End--> |
+| ARKWEB_ERR_FTP_COMMAND_UNSUPPORTED = -606 | &nbsp;Server does not support the command we issued. FTP response codes 502, 504.<br><!--Device-ARKWEB_ERR_FTP_COMMAND_UNSUPPORTED = -606--><!--Device-ARKWEB_ERR_FTP_COMMAND_UNSUPPORTED = -606-End--> |
+| ARKWEB_ERR_FTP_BAD_COMMAND_SEQUENCE = -607 | &nbsp;Server rejected our command because we didn't issue the commands in right order. FTP response code 503.<br><!--Device-ARKWEB_ERR_FTP_BAD_COMMAND_SEQUENCE = -607--><!--Device-ARKWEB_ERR_FTP_BAD_COMMAND_SEQUENCE = -607-End--> |
+| ARKWEB_ERR_PKCS12_IMPORT_BAD_PASSWORD = -701 | &nbsp;PKCS #12 import failed due to incorrect password.<br><!--Device-ARKWEB_ERR_PKCS12_IMPORT_BAD_PASSWORD = -701--><!--Device-ARKWEB_ERR_PKCS12_IMPORT_BAD_PASSWORD = -701-End--> |
+| ARKWEB_ERR_PKCS12_IMPORT_FAILED = -702 | &nbsp;PKCS #12 import failed due to other error.<br><!--Device-ARKWEB_ERR_PKCS12_IMPORT_FAILED = -702--><!--Device-ARKWEB_ERR_PKCS12_IMPORT_FAILED = -702-End--> |
+| ARKWEB_ERR_IMPORT_CA_CERT_NOT_CA = -703 | &nbsp;CA import failed - not a CA cert.<br><!--Device-ARKWEB_ERR_IMPORT_CA_CERT_NOT_CA = -703--><!--Device-ARKWEB_ERR_IMPORT_CA_CERT_NOT_CA = -703-End--> |
+| ARKWEB_ERR_IMPORT_CERT_ALREADY_EXISTS = -704 | &nbsp;Import failed - certificate already exists in database.<br><!--Device-ARKWEB_ERR_IMPORT_CERT_ALREADY_EXISTS = -704--><!--Device-ARKWEB_ERR_IMPORT_CERT_ALREADY_EXISTS = -704-End--> |
+| ARKWEB_ERR_IMPORT_CA_CERT_FAILED = -705 | &nbsp;CA import failed due to some other error.<br><!--Device-ARKWEB_ERR_IMPORT_CA_CERT_FAILED = -705--><!--Device-ARKWEB_ERR_IMPORT_CA_CERT_FAILED = -705-End--> |
+| ARKWEB_ERR_IMPORT_SERVER_CERT_FAILED = -706 | &nbsp;Server certificate import failed due to some internal error.<br><!--Device-ARKWEB_ERR_IMPORT_SERVER_CERT_FAILED = -706--><!--Device-ARKWEB_ERR_IMPORT_SERVER_CERT_FAILED = -706-End--> |
+| ARKWEB_ERR_PKCS12_IMPORT_INVALID_MAC = -707 | &nbsp;PKCS #12 import failed due to invalid MAC.<br><!--Device-ARKWEB_ERR_PKCS12_IMPORT_INVALID_MAC = -707--><!--Device-ARKWEB_ERR_PKCS12_IMPORT_INVALID_MAC = -707-End--> |
+| ARKWEB_ERR_PKCS12_IMPORT_INVALID_FILE = -708 | &nbsp;PKCS #12 import failed due to invalid/corrupt file.<br><!--Device-ARKWEB_ERR_PKCS12_IMPORT_INVALID_FILE = -708--><!--Device-ARKWEB_ERR_PKCS12_IMPORT_INVALID_FILE = -708-End--> |
+| ARKWEB_ERR_PKCS12_IMPORT_UNSUPPORTED = -709 | &nbsp;PKCS #12 import failed due to unsupported features.<br><!--Device-ARKWEB_ERR_PKCS12_IMPORT_UNSUPPORTED = -709--><!--Device-ARKWEB_ERR_PKCS12_IMPORT_UNSUPPORTED = -709-End--> |
+| ARKWEB_ERR_KEY_GENERATION_FAILED = -710 | &nbsp;Key generation failed.<br><!--Device-ARKWEB_ERR_KEY_GENERATION_FAILED = -710--><!--Device-ARKWEB_ERR_KEY_GENERATION_FAILED = -710-End--> |
+| ARKWEB_ERR_PRIVATE_KEY_EXPORT_FAILED = -712 | &nbsp;Failure to export private key.<br><!--Device-ARKWEB_ERR_PRIVATE_KEY_EXPORT_FAILED = -712--><!--Device-ARKWEB_ERR_PRIVATE_KEY_EXPORT_FAILED = -712-End--> |
+| ARKWEB_ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713 | &nbsp;Self-signed certificate generation failed.<br><!--Device-ARKWEB_ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713--><!--Device-ARKWEB_ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713-End--> |
+| ARKWEB_ERR_CERT_DATABASE_CHANGED = -714 | &nbsp;The certificate database changed in some way.<br><!--Device-ARKWEB_ERR_CERT_DATABASE_CHANGED = -714--><!--Device-ARKWEB_ERR_CERT_DATABASE_CHANGED = -714-End--> |
+| ARKWEB_ERR_CERT_VERIFIER_CHANGED = -716 | &nbsp;The certificate verifier configuration changed in some way.<br><!--Device-ARKWEB_ERR_CERT_VERIFIER_CHANGED = -716--><!--Device-ARKWEB_ERR_CERT_VERIFIER_CHANGED = -716-End--> |
+| ARKWEB_ERR_DNS_MALFORMED_RESPONSE = -800 | &nbsp;DNS resolver received a malformed response.<br><!--Device-ARKWEB_ERR_DNS_MALFORMED_RESPONSE = -800--><!--Device-ARKWEB_ERR_DNS_MALFORMED_RESPONSE = -800-End--> |
+| ARKWEB_ERR_DNS_SERVER_REQUIRES_TCP = -801 | &nbsp;DNS server requires TCP.<br><!--Device-ARKWEB_ERR_DNS_SERVER_REQUIRES_TCP = -801--><!--Device-ARKWEB_ERR_DNS_SERVER_REQUIRES_TCP = -801-End--> |
+| ARKWEB_ERR_DNS_SERVER_FAILED = -802 | &nbsp;DNS server failed. This error is returned for all of the following error conditions: 1 - Format error - The name server was unable to interpret the query. 2 - Server failure - The name server was unable to process this query due to a problem with the name server. 4 - Not Implemented - The name server does not support the requested kind of query. 5 - Refused - The name server refuses to perform the specified operation for policy reasons.<br><!--Device-ARKWEB_ERR_DNS_SERVER_FAILED = -802--><!--Device-ARKWEB_ERR_DNS_SERVER_FAILED = -802-End--> |
+| ARKWEB_ERR_DNS_TIMED_OUT = -803 | &nbsp;DNS transaction timed out.<br><!--Device-ARKWEB_ERR_DNS_TIMED_OUT = -803--><!--Device-ARKWEB_ERR_DNS_TIMED_OUT = -803-End--> |
+| ARKWEB_ERR_DNS_CACHE_MISS = -804 | &nbsp;The entry was not found in cache or other local sources, for lookups where only local sources were queried.<br><!--Device-ARKWEB_ERR_DNS_CACHE_MISS = -804--><!--Device-ARKWEB_ERR_DNS_CACHE_MISS = -804-End--> |
+| ARKWEB_ERR_DNS_SEARCH_EMPTY = -805 | &nbsp;Suffix search list rules prevent resolution of the given host name.<br><!--Device-ARKWEB_ERR_DNS_SEARCH_EMPTY = -805--><!--Device-ARKWEB_ERR_DNS_SEARCH_EMPTY = -805-End--> |
+| ARKWEB_ERR_DNS_SORT_ERROR = -806 | &nbsp;Failed to sort addresses according to RFC3484.<br><!--Device-ARKWEB_ERR_DNS_SORT_ERROR = -806--><!--Device-ARKWEB_ERR_DNS_SORT_ERROR = -806-End--> |
+| ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808 | &nbsp;Failed to resolve the hostname of a DNS-over-HTTPS server.<br><!--Device-ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808--><!--Device-ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808-End--> |
+| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | &nbsp;DNS identified the request as disallowed for insecure connection (http/ws). Error should be handled as if an HTTP redirect was received to redirect to https or wss.<br><!--Device-ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809--><!--Device-ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809-End--> |
+| ARKWEB_ERR_DNS_REQUEST_CANCELED = -810 | &nbsp;All DNS requests associated with this job have been cancelled.<br><!--Device-ARKWEB_ERR_DNS_REQUEST_CANCELED = -810--><!--Device-ARKWEB_ERR_DNS_REQUEST_CANCELED = -810-End--> |
+| ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811 | &nbsp;The hostname resolution of HTTPS record was expected to be resolved with alpn values of supported protocols, but did not.<br><!--Device-ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811--><!--Device-ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811-End--> |
 
 

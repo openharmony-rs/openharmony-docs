@@ -70,7 +70,7 @@ enum ArkWebEngineVersion
 
 ArkWeb内核版本，请参考M114内核在OpenHarmony 6.0系统上的适配指导，M132内核在OpenHarmony 7.0系统上的适配指导。
 
-<!--Device-ArkWebEngineVersion--><!--Device-ArkWebEngineVersion-End-->
+<!--Device-enum ArkWebEngineVersion--><!--Device-enum ArkWebEngineVersion-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,11 +78,11 @@ ArkWeb内核版本，请参考M114内核在OpenHarmony 6.0系统上的适配指�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SYSTEM_DEFAULT = 0 | 系统默认内核（可参考约束与限制），OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M144。<br>**起始版本：** 20 |
-| ARKWEB_M114 = 1 | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效，使用系统默认内核。<br>**起始版本：** 20 |
-| ARKWEB_M132 = 2 | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br>**起始版本：** 20 |
-| ARKWEB_M144 = 3 | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br>**起始版本：** 26.0.0 |
-| ARKWEB_EVERGREEN = 99999 | 系统的最新内核（常青内核）。开发者可选择在每个系统版本上都使用最新的内核。<br>**起始版本：** 23 |
+| SYSTEM_DEFAULT = 0 | 系统默认内核（可参考约束与限制），OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M144。<br>**起始版本：** 20<br><!--Device-SYSTEM_DEFAULT = 0--><!--Device-SYSTEM_DEFAULT = 0-End--> |
+| ARKWEB_M114 = 1 | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效，使用系统默认内核。<br>**起始版本：** 20<br><!--Device-ARKWEB_M114 = 1--><!--Device-ARKWEB_M114 = 1-End--> |
+| ARKWEB_M132 = 2 | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br>**起始版本：** 20<br><!--Device-ARKWEB_M132 = 2--><!--Device-ARKWEB_M132 = 2-End--> |
+| ARKWEB_M144 = 3 | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br>**起始版本：** 26.0.0<br><!--Device-ARKWEB_M144 = 3--><!--Device-ARKWEB_M144 = 3-End--> |
+| ARKWEB_EVERGREEN = 99999 | 系统的最新内核（常青内核）。开发者可选择在每个系统版本上都使用最新的内核。<br>**起始版本：** 23<br><!--Device-ARKWEB_EVERGREEN = 99999--><!--Device-ARKWEB_EVERGREEN = 99999-End--> |
 
 
 ## 函数说明

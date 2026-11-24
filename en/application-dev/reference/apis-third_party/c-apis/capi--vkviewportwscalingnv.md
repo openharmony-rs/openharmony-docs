@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| float xcoeff |  |
-| float ycoeff |  |
+| float xcoeff | <!--Device-float xcoeff--><!--Device-float xcoeff-End--> |
+| float ycoeff | <!--Device-float ycoeff--><!--Device-float ycoeff-End--> |
 
 

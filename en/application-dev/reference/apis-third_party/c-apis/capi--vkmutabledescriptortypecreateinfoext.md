@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t mutableDescriptorTypeListCount |  |
-| [const VkMutableDescriptorTypeListEXT*](capi--vkmutabledescriptortypelistext.md) pMutableDescriptorTypeLists |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t mutableDescriptorTypeListCount | <!--Device-uint32_t mutableDescriptorTypeListCount--><!--Device-uint32_t mutableDescriptorTypeListCount-End--> |
+| [const VkMutableDescriptorTypeListEXT*](capi--vkmutabledescriptortypelistext.md) pMutableDescriptorTypeLists | <!--Device-const VkMutableDescriptorTypeListEXT* pMutableDescriptorTypeLists--><!--Device-const VkMutableDescriptorTypeListEXT* pMutableDescriptorTypeLists-End--> |
 
 

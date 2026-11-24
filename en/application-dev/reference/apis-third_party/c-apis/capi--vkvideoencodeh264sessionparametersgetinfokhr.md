@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 writeStdSPS |  |
-| VkBool32 writeStdPPS |  |
-| uint32_t stdSPSId |  |
-| uint32_t stdPPSId |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 writeStdSPS | <!--Device-VkBool32 writeStdSPS--><!--Device-VkBool32 writeStdSPS-End--> |
+| VkBool32 writeStdPPS | <!--Device-VkBool32 writeStdPPS--><!--Device-VkBool32 writeStdPPS-End--> |
+| uint32_t stdSPSId | <!--Device-uint32_t stdSPSId--><!--Device-uint32_t stdSPSId-End--> |
+| uint32_t stdPPSId | <!--Device-uint32_t stdPPSId--><!--Device-uint32_t stdPPSId-End--> |
 
 

@@ -24,14 +24,14 @@ typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_NativeGestureAPI_1*](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) gestureApi1 | 指向ArkUI_NativeGestureAPI_1结构体的指针。 |
+| [ArkUI_NativeGestureAPI_1*](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) gestureApi1 | 指向ArkUI_NativeGestureAPI_1结构体的指针。<br><!--Device-ArkUI_NativeGestureAPI_1* gestureApi1--><!--Device-ArkUI_NativeGestureAPI_1* gestureApi1-End--> |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | - | Sets the callback for gesture interruption events. |
+| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | Sets the callback for gesture interruption events. |
 
 ## 成员函数说明
 

@@ -24,7 +24,7 @@ The property-handler used to define class.
 
 | Name | Description |
 | -- | -- |
-| JSVM_PropertyHandlerCfg propertyHandlerCfg | The instance object triggers the corresponding callback function. |
-| JSVM_Callback callAsFunctionCallback | Calling an instance object as a function will trigger this callback. |
+| JSVM_PropertyHandlerCfg propertyHandlerCfg | The instance object triggers the corresponding callback function.<br><!--Device-JSVM_PropertyHandlerCfg propertyHandlerCfg--><!--Device-JSVM_PropertyHandlerCfg propertyHandlerCfg-End--> |
+| JSVM_Callback callAsFunctionCallback | Calling an instance object as a function will trigger this callback.<br><!--Device-JSVM_Callback callAsFunctionCallback--><!--Device-JSVM_Callback callAsFunctionCallback-End--> |
 
 

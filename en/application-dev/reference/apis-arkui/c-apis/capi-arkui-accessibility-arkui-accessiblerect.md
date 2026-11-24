@@ -24,9 +24,9 @@ Defines a struct for the accessible rectangle.
 
 | Name | Description |
 | -- | -- |
-| int32_t leftTopX | X coordinate of the upper left corner. |
-| int32_t leftTopY | Y coordinate of the upper left corner. |
-| int32_t rightBottomX | X coordinate of the lower right corner. |
-| int32_t rightBottomY | Y coordinate of the lower right corner. |
+| int32_t leftTopX | X coordinate of the upper left corner.<br><!--Device-int32_t leftTopX--><!--Device-int32_t leftTopX-End--> |
+| int32_t leftTopY | Y coordinate of the upper left corner.<br><!--Device-int32_t leftTopY--><!--Device-int32_t leftTopY-End--> |
+| int32_t rightBottomX | X coordinate of the lower right corner.<br><!--Device-int32_t rightBottomX--><!--Device-int32_t rightBottomX-End--> |
+| int32_t rightBottomY | Y coordinate of the lower right corner.<br><!--Device-int32_t rightBottomY--><!--Device-int32_t rightBottomY-End--> |
 
 

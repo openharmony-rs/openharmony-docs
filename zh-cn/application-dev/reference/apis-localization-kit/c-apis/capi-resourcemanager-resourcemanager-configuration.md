@@ -24,13 +24,13 @@ typedef struct ResourceManager_Configuration {...} ResourceManager_Configuration
 
 | 名称 | 描述 |
 | -- | -- |
-| [ResourceManager_Direction](capi-resmgr-common-h.md#resourcemanager_direction) direction | 表示屏幕方向。 |
-| char* locale | 表示语言、文字、国家或地区，如zh_Hans_CN。 |
-| [ResourceManager_DeviceType](capi-resmgr-common-h.md#resourcemanager_devicetype) deviceType | 表示设备类型。 |
-| [ScreenDensity](capi-resmgr-common-h.md#screendensity) screenDensity | 表示屏幕密度。 |
-| [ResourceManager_ColorMode](capi-resmgr-common-h.md#resourcemanager_colormode) colorMode | 表示颜色模式。 |
-| uint32_t mcc | 表示移动国家码。 |
-| uint32_t mnc | 表示移动网络码。 |
-| uint32_t reserved[20] | 保留属性。 |
+| [ResourceManager_Direction](capi-resmgr-common-h.md#resourcemanager_direction) direction | 表示屏幕方向。<br><!--Device-ResourceManager_Direction direction--><!--Device-ResourceManager_Direction direction-End--> |
+| char* locale | 表示语言、文字、国家或地区，如zh_Hans_CN。<br><!--Device-char* locale--><!--Device-char* locale-End--> |
+| [ResourceManager_DeviceType](capi-resmgr-common-h.md#resourcemanager_devicetype) deviceType | 表示设备类型。<br><!--Device-ResourceManager_DeviceType deviceType--><!--Device-ResourceManager_DeviceType deviceType-End--> |
+| [ScreenDensity](capi-resmgr-common-h.md#screendensity) screenDensity | 表示屏幕密度。<br><!--Device-ScreenDensity screenDensity--><!--Device-ScreenDensity screenDensity-End--> |
+| [ResourceManager_ColorMode](capi-resmgr-common-h.md#resourcemanager_colormode) colorMode | 表示颜色模式。<br><!--Device-ResourceManager_ColorMode colorMode--><!--Device-ResourceManager_ColorMode colorMode-End--> |
+| uint32_t mcc | 表示移动国家码。<br><!--Device-uint32_t mcc--><!--Device-uint32_t mcc-End--> |
+| uint32_t mnc | 表示移动网络码。<br><!--Device-uint32_t mnc--><!--Device-uint32_t mnc-End--> |
+| uint32_t reserved[20] | 保留属性。<br><!--Device-uint32_t reserved[20]--><!--Device-uint32_t reserved[20]-End--> |
 
 

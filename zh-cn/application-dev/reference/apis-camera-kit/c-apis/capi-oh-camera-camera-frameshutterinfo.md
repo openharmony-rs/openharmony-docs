@@ -24,7 +24,7 @@ typedef struct Camera_FrameShutterInfo {...} Camera_FrameShutterInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t captureId | 捕获id。 |
-| uint64_t timestamp | 帧的时间戳，单位毫秒。 |
+| int32_t captureId | 捕获id。<br><!--Device-int32_t captureId--><!--Device-int32_t captureId-End--> |
+| uint64_t timestamp | 帧的时间戳，单位毫秒。<br><!--Device-uint64_t timestamp--><!--Device-uint64_t timestamp-End--> |
 
 

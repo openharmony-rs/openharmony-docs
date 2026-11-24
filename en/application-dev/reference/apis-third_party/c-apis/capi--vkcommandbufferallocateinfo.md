@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkCommandPool commandPool |  |
-| VkCommandBufferLevel level |  |
-| uint32_t commandBufferCount |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkCommandPool commandPool | <!--Device-VkCommandPool commandPool--><!--Device-VkCommandPool commandPool-End--> |
+| VkCommandBufferLevel level | <!--Device-VkCommandBufferLevel level--><!--Device-VkCommandBufferLevel level-End--> |
+| uint32_t commandBufferCount | <!--Device-uint32_t commandBufferCount--><!--Device-uint32_t commandBufferCount-End--> |
 
 

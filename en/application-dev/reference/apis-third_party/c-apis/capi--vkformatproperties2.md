@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkFormatProperties](capi--vkformatproperties.md) formatProperties |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkFormatProperties](capi--vkformatproperties.md) formatProperties | <!--Device-VkFormatProperties formatProperties--><!--Device-VkFormatProperties formatProperties-End--> |
 
 

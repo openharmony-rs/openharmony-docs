@@ -24,7 +24,7 @@ typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontV
 
 | 名称 | 描述 |
 | -- | -- |
-| char* axisKey | 可变字体属性键值对中的关键字标识的字符串。 |
-| double value | 可变字体属性键值对的值。 |
+| char* axisKey | 可变字体属性键值对中的关键字标识的字符串。<br><!--Device-char* axisKey--><!--Device-char* axisKey-End--> |
+| double value | 可变字体属性键值对的值。<br><!--Device-double value--><!--Device-double value-End--> |
 
 

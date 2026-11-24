@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 useGopRemainingFrames |  |
-| uint32_t gopRemainingIntra |  |
-| uint32_t gopRemainingPredictive |  |
-| uint32_t gopRemainingBipredictive |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 useGopRemainingFrames | <!--Device-VkBool32 useGopRemainingFrames--><!--Device-VkBool32 useGopRemainingFrames-End--> |
+| uint32_t gopRemainingIntra | <!--Device-uint32_t gopRemainingIntra--><!--Device-uint32_t gopRemainingIntra-End--> |
+| uint32_t gopRemainingPredictive | <!--Device-uint32_t gopRemainingPredictive--><!--Device-uint32_t gopRemainingPredictive-End--> |
+| uint32_t gopRemainingBipredictive | <!--Device-uint32_t gopRemainingBipredictive--><!--Device-uint32_t gopRemainingBipredictive-End--> |
 
 

@@ -32,7 +32,7 @@ enum OH_Rdb_ErrCode
 
 Indicates the error code information.
 
-<!--Device-OH_Rdb_ErrCode--><!--Device-OH_Rdb_ErrCode-End-->
+<!--Device-enum OH_Rdb_ErrCode--><!--Device-enum OH_Rdb_ErrCode-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -40,75 +40,75 @@ Indicates the error code information.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_ERR = -1 | Indicates that the function execution exception. |
-| RDB_OK = 0 | The error code in the correct case. |
-| E_BASE = 14800000 | The base code of the exception error code. |
-| RDB_E_NOT_SUPPORTED = 801 | The error when the capability not supported. |
-| RDB_E_ERROR = E_BASE | The error code for common exceptions. |
-| RDB_E_INVALID_ARGS = (E_BASE + 1) | The error code for common invalid args. |
-| RDB_E_CANNOT_UPDATE_READONLY = (E_BASE + 2) | The error code for upgrade the read-only store. |
-| RDB_E_REMOVE_FILE = (E_BASE + 3) | The error code when deleting a file fails. |
-| RDB_E_EMPTY_TABLE_NAME = (E_BASE + 5) | The error code for a table name is empty. |
-| RDB_E_EMPTY_VALUES_BUCKET = (E_BASE + 6) | The error code for a values bucket is empty. |
-| RDB_E_EXECUTE_IN_STEP_QUERY = (E_BASE + 7) | The error code when the sql is not select. |
-| RDB_E_INVALID_COLUMN_INDEX = (E_BASE + 8) | The error code for the column index is invalid. |
-| RDB_E_INVALID_COLUMN_TYPE = (E_BASE + 9) | The error code for the column type is invalid. |
-| RDB_E_EMPTY_FILE_NAME = (E_BASE + 10) | The error code for a file name is empty. |
-| RDB_E_INVALID_FILE_PATH = (E_BASE + 11) | The error for the current file path is invalid. |
-| RDB_E_TRANSACTION_IN_EXECUTE = (E_BASE + 12) | The error code when using transactions. |
-| RDB_E_INVALID_STATEMENT = (E_BASE + 13) | The error code for the current status is invalid. |
-| RDB_E_EXECUTE_WRITE_IN_READ_CONNECTION = (E_BASE + 14) | The error code when execute write operation in read connection. |
-| RDB_E_BEGIN_TRANSACTION_IN_READ_CONNECTION = (E_BASE + 15) | The error code for execute begin transaction operation in read connection. |
-| RDB_E_NO_TRANSACTION_IN_SESSION = (E_BASE + 16) | The error code for there are no transactions in this connection. |
-| RDB_E_MORE_STEP_QUERY_IN_ONE_SESSION = (E_BASE + 17) | The error code when begin more step query in one session. |
-| RDB_E_NO_ROW_IN_QUERY = (E_BASE + 18) | The error code when the current statement doesn't contains one row result data. |
-| RDB_E_INVALID_BIND_ARGS_COUNT = (E_BASE + 19) | The error code for the bind arguments count is invalid. |
-| RDB_E_INVALID_OBJECT_TYPE = (E_BASE + 20) | The error code for the object type is invalid. |
-| RDB_E_INVALID_CONFLICT_FLAG = (E_BASE + 21) | The error code for the conflict flag is invalid. |
-| RDB_E_HAVING_CLAUSE_NOT_IN_GROUP_BY = (E_BASE + 22) | The error code for having clause not in group. |
-| RDB_E_NOT_SUPPORTED_BY_STEP_RESULT_SET = (E_BASE + 23) | The error code for not supported by step result set. |
-| RDB_E_STEP_RESULT_SET_CROSS_THREADS = (E_BASE + 24) | The error code for step result current tid not equal to object's tid. |
-| RDB_E_STEP_RESULT_QUERY_NOT_EXECUTED = (E_BASE + 25) | The error code when the result query was not executed. |
-| RDB_E_STEP_RESULT_IS_AFTER_LAST = (E_BASE + 26) | The error code for the result set cursor is after the last row. |
-| RDB_E_STEP_RESULT_QUERY_EXCEEDED = (E_BASE + 27) | The error code for the result set query exceeded. |
-| RDB_E_STATEMENT_NOT_PREPARED = (E_BASE + 28) | The error code for the statement not prepared. |
-| RDB_E_EXECUTE_RESULT_INCORRECT = (E_BASE + 29) | The error code for the result set is incorrect. |
-| RDB_E_STEP_RESULT_CLOSED = (E_BASE + 30) | The error code when the result set is closed. |
-| RDB_E_RELATIVE_PATH = (E_BASE + 31) | The error code when input relative path. |
-| RDB_E_EMPTY_NEW_ENCRYPT_KEY = (E_BASE + 32) | The error code for the new encrypt key is empty. |
-| RDB_E_CHANGE_UNENCRYPTED_TO_ENCRYPTED = (E_BASE + 33) | The error code for change unencrypted to encrypted. |
-| RDB_E_CHANGE_ENCRYPT_KEY_IN_BUSY = (E_BASE + 34) | The error code for change encrypt in busy. |
-| RDB_E_STEP_STATEMENT_NOT_INIT = (E_BASE + 35) | The error code when the statement not initialized. |
-| RDB_E_NOT_SUPPORTED_ATTACH_IN_WAL_MODE = (E_BASE + 36) | The error code for the attach is not supported in WAL journal mode. |
-| RDB_E_CREATE_FOLDER_FAIL = (E_BASE + 37) | The error code when create folder failed. |
-| RDB_E_SQLITE_SQL_BUILDER_NORMALIZE_FAIL = (E_BASE + 38) | The error for SQL builder normalize failed. |
-| RDB_E_STORE_SESSION_NOT_GIVE_CONNECTION_TEMPORARILY = (E_BASE + 39) | The error for store session not give connection temporarily. |
-| RDB_E_STORE_SESSION_NO_CURRENT_TRANSACTION = (E_BASE + 40) | The error for store session not current transaction. |
-| RDB_E_NOT_SUPPORT = (E_BASE + 41) | The error for not supported the current operation. |
-| RDB_E_INVALID_PARCEL = (E_BASE + 42) | The error for the current parcel is invalid. |
-| RDB_E_QUERY_IN_EXECUTE = (E_BASE + 43) | The error code when using sqlite3_step function failed. |
-| RDB_E_SET_PERSIST_WAL = (E_BASE + 44) | The error for set persist WAL. |
-| RDB_E_DB_NOT_EXIST = (E_BASE + 45) | The error when the database does not exist. |
-| RDB_E_ARGS_READ_CON_OVERLOAD = (E_BASE + 46) | The error when the read connection count is overload. |
-| RDB_E_WAL_SIZE_OVER_LIMIT = (E_BASE + 47) | The error when the wal file size over default limit. |
-| RDB_E_CON_OVER_LIMIT = (E_BASE + 48) | The error when the connection count is used up. |
-| RDB_E_ALREADY_CLOSED = (E_BASE + 50) | Database already closed.<br>**Since**: 18 |
-| RDB_E_DATABASE_BUSY = (E_BASE + 51) | The database does not respond.<br>**Since**: 18 |
-| RDB_E_SQLITE_CORRUPT = (E_BASE + 52) | Database corrupted.<br>**Since**: 18 |
-| RDB_E_SQLITE_PERM = (E_BASE + 53) | SQLite: Access permission denied.<br>**Since**: 18 |
-| RDB_E_SQLITE_BUSY = (E_BASE + 54) | SQLite: The database file is locked.<br>**Since**: 18 |
-| RDB_E_SQLITE_LOCKED = (E_BASE + 55) | SQLite: A table in the database is locked.<br>**Since**: 18 |
-| RDB_E_SQLITE_NOMEM = (E_BASE + 56) | SQLite: The database is out of memory.<br>**Since**: 18 |
-| RDB_E_SQLITE_READONLY = (E_BASE + 57) | SQLite: Attempt to write a readonly database.<br>**Since**: 18 |
-| RDB_E_SQLITE_IOERR = (E_BASE + 58) | SQLite: Some kind of disk I/O error occurred.<br>**Since**: 18 |
-| RDB_E_SQLITE_FULL = (E_BASE + 59) | SQLite: The database is full.<br>**Since**: 18 |
-| RDB_E_SQLITE_CANT_OPEN = (E_BASE + 60) | SQLite: Unable to open the database file.<br>**Since**: 18 |
-| RDB_E_SQLITE_TOO_BIG = (E_BASE + 61) | SQLite: TEXT or BLOB exceeds size limit.<br>**Since**: 18 |
-| RDB_E_SQLITE_MISMATCH = (E_BASE + 62) | SQLite: Data type mismatch.<br>**Since**: 18 |
-| RDB_E_DATA_TYPE_NULL = (E_BASE + 63) | Data value type is null.<br>**Since**: 18 |
-| RDB_E_TYPE_MISMATCH = (E_BASE + 64) | Data value type mismatch.<br>**Since**: 18 |
-| RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65) | SQLite: Abort due to constraint violation.<br>**Since**: 18 |
-| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | The number of subscriptions exceeds the limit.<br>**Since**: 22 |
-| RDB_E_SQLITE_ERROR = (E_BASE + 67) | SQLite error. Possible causes: syntax error, such as a table or column not existing.<br>**Since**: 23 |
+| RDB_ERR = -1 | Indicates that the function execution exception.<br><!--Device-RDB_ERR = -1--><!--Device-RDB_ERR = -1-End--> |
+| RDB_OK = 0 | The error code in the correct case.<br><!--Device-RDB_OK = 0--><!--Device-RDB_OK = 0-End--> |
+| E_BASE = 14800000 | The base code of the exception error code.<br><!--Device-E_BASE = 14800000--><!--Device-E_BASE = 14800000-End--> |
+| RDB_E_NOT_SUPPORTED = 801 | The error when the capability not supported.<br><!--Device-RDB_E_NOT_SUPPORTED = 801--><!--Device-RDB_E_NOT_SUPPORTED = 801-End--> |
+| RDB_E_ERROR = E_BASE | The error code for common exceptions.<br><!--Device-RDB_E_ERROR = E_BASE--><!--Device-RDB_E_ERROR = E_BASE-End--> |
+| RDB_E_INVALID_ARGS = (E_BASE + 1) | The error code for common invalid args.<br><!--Device-RDB_E_INVALID_ARGS = (E_BASE + 1)--><!--Device-RDB_E_INVALID_ARGS = (E_BASE + 1)-End--> |
+| RDB_E_CANNOT_UPDATE_READONLY = (E_BASE + 2) | The error code for upgrade the read-only store.<br><!--Device-RDB_E_CANNOT_UPDATE_READONLY = (E_BASE + 2)--><!--Device-RDB_E_CANNOT_UPDATE_READONLY = (E_BASE + 2)-End--> |
+| RDB_E_REMOVE_FILE = (E_BASE + 3) | The error code when deleting a file fails.<br><!--Device-RDB_E_REMOVE_FILE = (E_BASE + 3)--><!--Device-RDB_E_REMOVE_FILE = (E_BASE + 3)-End--> |
+| RDB_E_EMPTY_TABLE_NAME = (E_BASE + 5) | The error code for a table name is empty.<br><!--Device-RDB_E_EMPTY_TABLE_NAME = (E_BASE + 5)--><!--Device-RDB_E_EMPTY_TABLE_NAME = (E_BASE + 5)-End--> |
+| RDB_E_EMPTY_VALUES_BUCKET = (E_BASE + 6) | The error code for a values bucket is empty.<br><!--Device-RDB_E_EMPTY_VALUES_BUCKET = (E_BASE + 6)--><!--Device-RDB_E_EMPTY_VALUES_BUCKET = (E_BASE + 6)-End--> |
+| RDB_E_EXECUTE_IN_STEP_QUERY = (E_BASE + 7) | The error code when the sql is not select.<br><!--Device-RDB_E_EXECUTE_IN_STEP_QUERY = (E_BASE + 7)--><!--Device-RDB_E_EXECUTE_IN_STEP_QUERY = (E_BASE + 7)-End--> |
+| RDB_E_INVALID_COLUMN_INDEX = (E_BASE + 8) | The error code for the column index is invalid.<br><!--Device-RDB_E_INVALID_COLUMN_INDEX = (E_BASE + 8)--><!--Device-RDB_E_INVALID_COLUMN_INDEX = (E_BASE + 8)-End--> |
+| RDB_E_INVALID_COLUMN_TYPE = (E_BASE + 9) | The error code for the column type is invalid.<br><!--Device-RDB_E_INVALID_COLUMN_TYPE = (E_BASE + 9)--><!--Device-RDB_E_INVALID_COLUMN_TYPE = (E_BASE + 9)-End--> |
+| RDB_E_EMPTY_FILE_NAME = (E_BASE + 10) | The error code for a file name is empty.<br><!--Device-RDB_E_EMPTY_FILE_NAME = (E_BASE + 10)--><!--Device-RDB_E_EMPTY_FILE_NAME = (E_BASE + 10)-End--> |
+| RDB_E_INVALID_FILE_PATH = (E_BASE + 11) | The error for the current file path is invalid.<br><!--Device-RDB_E_INVALID_FILE_PATH = (E_BASE + 11)--><!--Device-RDB_E_INVALID_FILE_PATH = (E_BASE + 11)-End--> |
+| RDB_E_TRANSACTION_IN_EXECUTE = (E_BASE + 12) | The error code when using transactions.<br><!--Device-RDB_E_TRANSACTION_IN_EXECUTE = (E_BASE + 12)--><!--Device-RDB_E_TRANSACTION_IN_EXECUTE = (E_BASE + 12)-End--> |
+| RDB_E_INVALID_STATEMENT = (E_BASE + 13) | The error code for the current status is invalid.<br><!--Device-RDB_E_INVALID_STATEMENT = (E_BASE + 13)--><!--Device-RDB_E_INVALID_STATEMENT = (E_BASE + 13)-End--> |
+| RDB_E_EXECUTE_WRITE_IN_READ_CONNECTION = (E_BASE + 14) | The error code when execute write operation in read connection.<br><!--Device-RDB_E_EXECUTE_WRITE_IN_READ_CONNECTION = (E_BASE + 14)--><!--Device-RDB_E_EXECUTE_WRITE_IN_READ_CONNECTION = (E_BASE + 14)-End--> |
+| RDB_E_BEGIN_TRANSACTION_IN_READ_CONNECTION = (E_BASE + 15) | The error code for execute begin transaction operation in read connection.<br><!--Device-RDB_E_BEGIN_TRANSACTION_IN_READ_CONNECTION = (E_BASE + 15)--><!--Device-RDB_E_BEGIN_TRANSACTION_IN_READ_CONNECTION = (E_BASE + 15)-End--> |
+| RDB_E_NO_TRANSACTION_IN_SESSION = (E_BASE + 16) | The error code for there are no transactions in this connection.<br><!--Device-RDB_E_NO_TRANSACTION_IN_SESSION = (E_BASE + 16)--><!--Device-RDB_E_NO_TRANSACTION_IN_SESSION = (E_BASE + 16)-End--> |
+| RDB_E_MORE_STEP_QUERY_IN_ONE_SESSION = (E_BASE + 17) | The error code when begin more step query in one session.<br><!--Device-RDB_E_MORE_STEP_QUERY_IN_ONE_SESSION = (E_BASE + 17)--><!--Device-RDB_E_MORE_STEP_QUERY_IN_ONE_SESSION = (E_BASE + 17)-End--> |
+| RDB_E_NO_ROW_IN_QUERY = (E_BASE + 18) | The error code when the current statement doesn't contains one row result data.<br><!--Device-RDB_E_NO_ROW_IN_QUERY = (E_BASE + 18)--><!--Device-RDB_E_NO_ROW_IN_QUERY = (E_BASE + 18)-End--> |
+| RDB_E_INVALID_BIND_ARGS_COUNT = (E_BASE + 19) | The error code for the bind arguments count is invalid.<br><!--Device-RDB_E_INVALID_BIND_ARGS_COUNT = (E_BASE + 19)--><!--Device-RDB_E_INVALID_BIND_ARGS_COUNT = (E_BASE + 19)-End--> |
+| RDB_E_INVALID_OBJECT_TYPE = (E_BASE + 20) | The error code for the object type is invalid.<br><!--Device-RDB_E_INVALID_OBJECT_TYPE = (E_BASE + 20)--><!--Device-RDB_E_INVALID_OBJECT_TYPE = (E_BASE + 20)-End--> |
+| RDB_E_INVALID_CONFLICT_FLAG = (E_BASE + 21) | The error code for the conflict flag is invalid.<br><!--Device-RDB_E_INVALID_CONFLICT_FLAG = (E_BASE + 21)--><!--Device-RDB_E_INVALID_CONFLICT_FLAG = (E_BASE + 21)-End--> |
+| RDB_E_HAVING_CLAUSE_NOT_IN_GROUP_BY = (E_BASE + 22) | The error code for having clause not in group.<br><!--Device-RDB_E_HAVING_CLAUSE_NOT_IN_GROUP_BY = (E_BASE + 22)--><!--Device-RDB_E_HAVING_CLAUSE_NOT_IN_GROUP_BY = (E_BASE + 22)-End--> |
+| RDB_E_NOT_SUPPORTED_BY_STEP_RESULT_SET = (E_BASE + 23) | The error code for not supported by step result set.<br><!--Device-RDB_E_NOT_SUPPORTED_BY_STEP_RESULT_SET = (E_BASE + 23)--><!--Device-RDB_E_NOT_SUPPORTED_BY_STEP_RESULT_SET = (E_BASE + 23)-End--> |
+| RDB_E_STEP_RESULT_SET_CROSS_THREADS = (E_BASE + 24) | The error code for step result current tid not equal to object's tid.<br><!--Device-RDB_E_STEP_RESULT_SET_CROSS_THREADS = (E_BASE + 24)--><!--Device-RDB_E_STEP_RESULT_SET_CROSS_THREADS = (E_BASE + 24)-End--> |
+| RDB_E_STEP_RESULT_QUERY_NOT_EXECUTED = (E_BASE + 25) | The error code when the result query was not executed.<br><!--Device-RDB_E_STEP_RESULT_QUERY_NOT_EXECUTED = (E_BASE + 25)--><!--Device-RDB_E_STEP_RESULT_QUERY_NOT_EXECUTED = (E_BASE + 25)-End--> |
+| RDB_E_STEP_RESULT_IS_AFTER_LAST = (E_BASE + 26) | The error code for the result set cursor is after the last row.<br><!--Device-RDB_E_STEP_RESULT_IS_AFTER_LAST = (E_BASE + 26)--><!--Device-RDB_E_STEP_RESULT_IS_AFTER_LAST = (E_BASE + 26)-End--> |
+| RDB_E_STEP_RESULT_QUERY_EXCEEDED = (E_BASE + 27) | The error code for the result set query exceeded.<br><!--Device-RDB_E_STEP_RESULT_QUERY_EXCEEDED = (E_BASE + 27)--><!--Device-RDB_E_STEP_RESULT_QUERY_EXCEEDED = (E_BASE + 27)-End--> |
+| RDB_E_STATEMENT_NOT_PREPARED = (E_BASE + 28) | The error code for the statement not prepared.<br><!--Device-RDB_E_STATEMENT_NOT_PREPARED = (E_BASE + 28)--><!--Device-RDB_E_STATEMENT_NOT_PREPARED = (E_BASE + 28)-End--> |
+| RDB_E_EXECUTE_RESULT_INCORRECT = (E_BASE + 29) | The error code for the result set is incorrect.<br><!--Device-RDB_E_EXECUTE_RESULT_INCORRECT = (E_BASE + 29)--><!--Device-RDB_E_EXECUTE_RESULT_INCORRECT = (E_BASE + 29)-End--> |
+| RDB_E_STEP_RESULT_CLOSED = (E_BASE + 30) | The error code when the result set is closed.<br><!--Device-RDB_E_STEP_RESULT_CLOSED = (E_BASE + 30)--><!--Device-RDB_E_STEP_RESULT_CLOSED = (E_BASE + 30)-End--> |
+| RDB_E_RELATIVE_PATH = (E_BASE + 31) | The error code when input relative path.<br><!--Device-RDB_E_RELATIVE_PATH = (E_BASE + 31)--><!--Device-RDB_E_RELATIVE_PATH = (E_BASE + 31)-End--> |
+| RDB_E_EMPTY_NEW_ENCRYPT_KEY = (E_BASE + 32) | The error code for the new encrypt key is empty.<br><!--Device-RDB_E_EMPTY_NEW_ENCRYPT_KEY = (E_BASE + 32)--><!--Device-RDB_E_EMPTY_NEW_ENCRYPT_KEY = (E_BASE + 32)-End--> |
+| RDB_E_CHANGE_UNENCRYPTED_TO_ENCRYPTED = (E_BASE + 33) | The error code for change unencrypted to encrypted.<br><!--Device-RDB_E_CHANGE_UNENCRYPTED_TO_ENCRYPTED = (E_BASE + 33)--><!--Device-RDB_E_CHANGE_UNENCRYPTED_TO_ENCRYPTED = (E_BASE + 33)-End--> |
+| RDB_E_CHANGE_ENCRYPT_KEY_IN_BUSY = (E_BASE + 34) | The error code for change encrypt in busy.<br><!--Device-RDB_E_CHANGE_ENCRYPT_KEY_IN_BUSY = (E_BASE + 34)--><!--Device-RDB_E_CHANGE_ENCRYPT_KEY_IN_BUSY = (E_BASE + 34)-End--> |
+| RDB_E_STEP_STATEMENT_NOT_INIT = (E_BASE + 35) | The error code when the statement not initialized.<br><!--Device-RDB_E_STEP_STATEMENT_NOT_INIT = (E_BASE + 35)--><!--Device-RDB_E_STEP_STATEMENT_NOT_INIT = (E_BASE + 35)-End--> |
+| RDB_E_NOT_SUPPORTED_ATTACH_IN_WAL_MODE = (E_BASE + 36) | The error code for the attach is not supported in WAL journal mode.<br><!--Device-RDB_E_NOT_SUPPORTED_ATTACH_IN_WAL_MODE = (E_BASE + 36)--><!--Device-RDB_E_NOT_SUPPORTED_ATTACH_IN_WAL_MODE = (E_BASE + 36)-End--> |
+| RDB_E_CREATE_FOLDER_FAIL = (E_BASE + 37) | The error code when create folder failed.<br><!--Device-RDB_E_CREATE_FOLDER_FAIL = (E_BASE + 37)--><!--Device-RDB_E_CREATE_FOLDER_FAIL = (E_BASE + 37)-End--> |
+| RDB_E_SQLITE_SQL_BUILDER_NORMALIZE_FAIL = (E_BASE + 38) | The error for SQL builder normalize failed.<br><!--Device-RDB_E_SQLITE_SQL_BUILDER_NORMALIZE_FAIL = (E_BASE + 38)--><!--Device-RDB_E_SQLITE_SQL_BUILDER_NORMALIZE_FAIL = (E_BASE + 38)-End--> |
+| RDB_E_STORE_SESSION_NOT_GIVE_CONNECTION_TEMPORARILY = (E_BASE + 39) | The error for store session not give connection temporarily.<br><!--Device-RDB_E_STORE_SESSION_NOT_GIVE_CONNECTION_TEMPORARILY = (E_BASE + 39)--><!--Device-RDB_E_STORE_SESSION_NOT_GIVE_CONNECTION_TEMPORARILY = (E_BASE + 39)-End--> |
+| RDB_E_STORE_SESSION_NO_CURRENT_TRANSACTION = (E_BASE + 40) | The error for store session not current transaction.<br><!--Device-RDB_E_STORE_SESSION_NO_CURRENT_TRANSACTION = (E_BASE + 40)--><!--Device-RDB_E_STORE_SESSION_NO_CURRENT_TRANSACTION = (E_BASE + 40)-End--> |
+| RDB_E_NOT_SUPPORT = (E_BASE + 41) | The error for not supported the current operation.<br><!--Device-RDB_E_NOT_SUPPORT = (E_BASE + 41)--><!--Device-RDB_E_NOT_SUPPORT = (E_BASE + 41)-End--> |
+| RDB_E_INVALID_PARCEL = (E_BASE + 42) | The error for the current parcel is invalid.<br><!--Device-RDB_E_INVALID_PARCEL = (E_BASE + 42)--><!--Device-RDB_E_INVALID_PARCEL = (E_BASE + 42)-End--> |
+| RDB_E_QUERY_IN_EXECUTE = (E_BASE + 43) | The error code when using sqlite3_step function failed.<br><!--Device-RDB_E_QUERY_IN_EXECUTE = (E_BASE + 43)--><!--Device-RDB_E_QUERY_IN_EXECUTE = (E_BASE + 43)-End--> |
+| RDB_E_SET_PERSIST_WAL = (E_BASE + 44) | The error for set persist WAL.<br><!--Device-RDB_E_SET_PERSIST_WAL = (E_BASE + 44)--><!--Device-RDB_E_SET_PERSIST_WAL = (E_BASE + 44)-End--> |
+| RDB_E_DB_NOT_EXIST = (E_BASE + 45) | The error when the database does not exist.<br><!--Device-RDB_E_DB_NOT_EXIST = (E_BASE + 45)--><!--Device-RDB_E_DB_NOT_EXIST = (E_BASE + 45)-End--> |
+| RDB_E_ARGS_READ_CON_OVERLOAD = (E_BASE + 46) | The error when the read connection count is overload.<br><!--Device-RDB_E_ARGS_READ_CON_OVERLOAD = (E_BASE + 46)--><!--Device-RDB_E_ARGS_READ_CON_OVERLOAD = (E_BASE + 46)-End--> |
+| RDB_E_WAL_SIZE_OVER_LIMIT = (E_BASE + 47) | The error when the wal file size over default limit.<br><!--Device-RDB_E_WAL_SIZE_OVER_LIMIT = (E_BASE + 47)--><!--Device-RDB_E_WAL_SIZE_OVER_LIMIT = (E_BASE + 47)-End--> |
+| RDB_E_CON_OVER_LIMIT = (E_BASE + 48) | The error when the connection count is used up.<br><!--Device-RDB_E_CON_OVER_LIMIT = (E_BASE + 48)--><!--Device-RDB_E_CON_OVER_LIMIT = (E_BASE + 48)-End--> |
+| RDB_E_ALREADY_CLOSED = (E_BASE + 50) | Database already closed.<br>**Since**: 18<br><!--Device-RDB_E_ALREADY_CLOSED = (E_BASE + 50)--><!--Device-RDB_E_ALREADY_CLOSED = (E_BASE + 50)-End--> |
+| RDB_E_DATABASE_BUSY = (E_BASE + 51) | The database does not respond.<br>**Since**: 18<br><!--Device-RDB_E_DATABASE_BUSY = (E_BASE + 51)--><!--Device-RDB_E_DATABASE_BUSY = (E_BASE + 51)-End--> |
+| RDB_E_SQLITE_CORRUPT = (E_BASE + 52) | Database corrupted.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_CORRUPT = (E_BASE + 52)--><!--Device-RDB_E_SQLITE_CORRUPT = (E_BASE + 52)-End--> |
+| RDB_E_SQLITE_PERM = (E_BASE + 53) | SQLite: Access permission denied.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_PERM = (E_BASE + 53)--><!--Device-RDB_E_SQLITE_PERM = (E_BASE + 53)-End--> |
+| RDB_E_SQLITE_BUSY = (E_BASE + 54) | SQLite: The database file is locked.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_BUSY = (E_BASE + 54)--><!--Device-RDB_E_SQLITE_BUSY = (E_BASE + 54)-End--> |
+| RDB_E_SQLITE_LOCKED = (E_BASE + 55) | SQLite: A table in the database is locked.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_LOCKED = (E_BASE + 55)--><!--Device-RDB_E_SQLITE_LOCKED = (E_BASE + 55)-End--> |
+| RDB_E_SQLITE_NOMEM = (E_BASE + 56) | SQLite: The database is out of memory.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_NOMEM = (E_BASE + 56)--><!--Device-RDB_E_SQLITE_NOMEM = (E_BASE + 56)-End--> |
+| RDB_E_SQLITE_READONLY = (E_BASE + 57) | SQLite: Attempt to write a readonly database.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_READONLY = (E_BASE + 57)--><!--Device-RDB_E_SQLITE_READONLY = (E_BASE + 57)-End--> |
+| RDB_E_SQLITE_IOERR = (E_BASE + 58) | SQLite: Some kind of disk I/O error occurred.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_IOERR = (E_BASE + 58)--><!--Device-RDB_E_SQLITE_IOERR = (E_BASE + 58)-End--> |
+| RDB_E_SQLITE_FULL = (E_BASE + 59) | SQLite: The database is full.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_FULL = (E_BASE + 59)--><!--Device-RDB_E_SQLITE_FULL = (E_BASE + 59)-End--> |
+| RDB_E_SQLITE_CANT_OPEN = (E_BASE + 60) | SQLite: Unable to open the database file.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_CANT_OPEN = (E_BASE + 60)--><!--Device-RDB_E_SQLITE_CANT_OPEN = (E_BASE + 60)-End--> |
+| RDB_E_SQLITE_TOO_BIG = (E_BASE + 61) | SQLite: TEXT or BLOB exceeds size limit.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_TOO_BIG = (E_BASE + 61)--><!--Device-RDB_E_SQLITE_TOO_BIG = (E_BASE + 61)-End--> |
+| RDB_E_SQLITE_MISMATCH = (E_BASE + 62) | SQLite: Data type mismatch.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_MISMATCH = (E_BASE + 62)--><!--Device-RDB_E_SQLITE_MISMATCH = (E_BASE + 62)-End--> |
+| RDB_E_DATA_TYPE_NULL = (E_BASE + 63) | Data value type is null.<br>**Since**: 18<br><!--Device-RDB_E_DATA_TYPE_NULL = (E_BASE + 63)--><!--Device-RDB_E_DATA_TYPE_NULL = (E_BASE + 63)-End--> |
+| RDB_E_TYPE_MISMATCH = (E_BASE + 64) | Data value type mismatch.<br>**Since**: 18<br><!--Device-RDB_E_TYPE_MISMATCH = (E_BASE + 64)--><!--Device-RDB_E_TYPE_MISMATCH = (E_BASE + 64)-End--> |
+| RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65) | SQLite: Abort due to constraint violation.<br>**Since**: 18<br><!--Device-RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)--><!--Device-RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)-End--> |
+| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | The number of subscriptions exceeds the limit.<br>**Since**: 22<br><!--Device-RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66)--><!--Device-RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66)-End--> |
+| RDB_E_SQLITE_ERROR = (E_BASE + 67) | SQLite error. Possible causes: syntax error, such as a table or column not existing.<br>**Since**: 23<br><!--Device-RDB_E_SQLITE_ERROR = (E_BASE + 67)--><!--Device-RDB_E_SQLITE_ERROR = (E_BASE + 67)-End--> |
 
 

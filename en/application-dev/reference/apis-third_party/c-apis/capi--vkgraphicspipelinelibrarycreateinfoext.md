@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkGraphicsPipelineLibraryFlagsEXT flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkGraphicsPipelineLibraryFlagsEXT flags | <!--Device-VkGraphicsPipelineLibraryFlagsEXT flags--><!--Device-VkGraphicsPipelineLibraryFlagsEXT flags-End--> |
 
 

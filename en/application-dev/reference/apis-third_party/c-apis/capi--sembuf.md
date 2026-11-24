@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned short sem_num |  |
-| short sem_op |  |
-| short sem_flg |  |
+| unsigned short sem_num | <!--Device-unsigned short sem_num--><!--Device-unsigned short sem_num-End--> |
+| short sem_op | <!--Device-short sem_op--><!--Device-short sem_op-End--> |
+| short sem_flg | <!--Device-short sem_flg--><!--Device-short sem_flg-End--> |
 
 

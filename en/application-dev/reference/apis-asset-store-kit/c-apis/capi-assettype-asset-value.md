@@ -24,8 +24,8 @@ Defines the value (content) of an asset attribute.
 
 | Name | Description |
 | -- | -- |
-| bool boolean | Asset of the Boolean type. |
-| uint32_t u32 | Asset of the uint32 type. |
-| [Asset_Blob](capi-assettype-asset-blob.md) blob | Asset of the bytes type. |
+| bool boolean | Asset of the Boolean type.<br><!--Device-bool boolean--><!--Device-bool boolean-End--> |
+| uint32_t u32 | Asset of the uint32 type.<br><!--Device-uint32_t u32--><!--Device-uint32_t u32-End--> |
+| [Asset_Blob](capi-assettype-asset-blob.md) blob | Asset of the bytes type.<br><!--Device-Asset_Blob blob--><!--Device-Asset_Blob blob-End--> |
 
 

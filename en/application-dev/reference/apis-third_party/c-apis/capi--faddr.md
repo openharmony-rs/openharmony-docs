@@ -10,11 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| struct sockaddr ifa_addr |  |
-| ifa_ifu |  |
-| ifa_ifu.sockaddr	ifu_broadaddr |  |
-| ifa_ifu.sockaddr	ifu_dstaddr |  |
-| struct iface *ifa_ifp |  |
-| struct ifaddr *ifa_next |  |
+| struct sockaddr ifa_addr | <!--Device-struct sockaddr ifa_addr--><!--Device-struct sockaddr ifa_addr-End--> |
+| ifa_ifu.sockaddr	ifu_broadaddr | <!--Device-ifa_ifu.sockaddr ifu_broadaddr--><!--Device-ifa_ifu.sockaddr ifu_broadaddr-End--> |
+| ifa_ifu.sockaddr	ifu_dstaddr | <!--Device-ifa_ifu.sockaddr ifu_dstaddr--><!--Device-ifa_ifu.sockaddr ifu_dstaddr-End--> |
+| struct iface *ifa_ifp | <!--Device-struct iface *ifa_ifp--><!--Device-struct iface *ifa_ifp-End--> |
+| struct ifaddr *ifa_next | <!--Device-struct ifaddr *ifa_next--><!--Device-struct ifaddr *ifa_next-End--> |
 
 

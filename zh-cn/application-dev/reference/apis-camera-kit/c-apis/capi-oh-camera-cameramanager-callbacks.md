@@ -24,6 +24,6 @@ typedef struct CameraManager_Callbacks {...} CameraManager_Callbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_CameraManager_StatusCallback](capi-camera-manager-h.md#oh_cameramanager_statuscallback) onCameraStatus | 相机状态更改事件。 |
+| [OH_CameraManager_StatusCallback](capi-camera-manager-h.md#oh_cameramanager_statuscallback) onCameraStatus | 相机状态更改事件。<br><!--Device-OH_CameraManager_StatusCallback onCameraStatus--><!--Device-OH_CameraManager_StatusCallback onCameraStatus-End--> |
 
 

@@ -24,6 +24,6 @@ Defines the rwlock structure used to store internal data of the rwlock.
 
 | Name | Description |
 | -- | -- |
-| uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage backing the rwlock. Do not access directly; use the `ffrt_rwlock_*` APIs. |
+| uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage backing the rwlock. Do not access directly; use the `ffrt_rwlock_*` APIs.<br><!--Device-uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]--><!--Device-uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]-End--> |
 
 

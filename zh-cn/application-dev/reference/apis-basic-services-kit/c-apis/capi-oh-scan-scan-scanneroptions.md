@@ -24,9 +24,9 @@ typedef struct Scan_ScannerOptions {...} Scan_ScannerOptions
 
 | 名称 | 描述 |
 | -- | -- |
-| char **titles | 选项标题 |
-| char **descriptions | 选项描述 |
-| char **ranges | 选项可设置的范围 |
-| int32_t optionCount | 选项数量 |
+| char **titles | 选项标题<br><!--Device-char **titles--><!--Device-char **titles-End--> |
+| char **descriptions | 选项描述<br><!--Device-char **descriptions--><!--Device-char **descriptions-End--> |
+| char **ranges | 选项可设置的范围<br><!--Device-char **ranges--><!--Device-char **ranges-End--> |
+| int32_t optionCount | 选项数量<br><!--Device-int32_t optionCount--><!--Device-int32_t optionCount-End--> |
 
 

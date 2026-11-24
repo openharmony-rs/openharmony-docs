@@ -24,7 +24,7 @@ typedef struct Camera_FrameRateRange {...} Camera_FrameRateRange
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t min | 最小帧速率，单位帧每秒。 |
-| uint32_t max | 最大帧速率，单位帧每秒。 |
+| uint32_t min | 最小帧速率，单位帧每秒。<br><!--Device-uint32_t min--><!--Device-uint32_t min-End--> |
+| uint32_t max | 最大帧速率，单位帧每秒。<br><!--Device-uint32_t max--><!--Device-uint32_t max-End--> |
 
 

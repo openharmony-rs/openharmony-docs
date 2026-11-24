@@ -24,15 +24,15 @@ Represents the touch point information of touch event.
 
 | Name | Description |
 | -- | -- |
-| int32_t id | Unique identifier of a finger. |
-| float screenX | X coordinate of the touch point relative to the left edge of the screen. |
-| float screenY | Y coordinate of the touch point relative to the upper edge of the screen. |
-| float x | X coordinate of the touch point relative to the left edge of the element to touch. |
-| float y | Y coordinate of the touch point relative to the upper edge of the element to touch. |
-| [OH_NativeXComponent_TouchEventType](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_toucheventtype) type | Touch type of the touch event. |
-| double size | Contact area between the finger pad and the screen. |
-| float force | Pressure of the current touch event. |
-| int64_t timeStamp | Timestamp of the current touch event. |
-| bool isPressed | Whether the current point is pressed. |
+| int32_t id | Unique identifier of a finger.<br><!--Device-int32_t id--><!--Device-int32_t id-End--> |
+| float screenX | X coordinate of the touch point relative to the left edge of the screen.<br><!--Device-float screenX--><!--Device-float screenX-End--> |
+| float screenY | Y coordinate of the touch point relative to the upper edge of the screen.<br><!--Device-float screenY--><!--Device-float screenY-End--> |
+| float x | X coordinate of the touch point relative to the left edge of the element to touch.<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | Y coordinate of the touch point relative to the upper edge of the element to touch.<br><!--Device-float y--><!--Device-float y-End--> |
+| [OH_NativeXComponent_TouchEventType](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_toucheventtype) type | Touch type of the touch event.<br><!--Device-OH_NativeXComponent_TouchEventType type--><!--Device-OH_NativeXComponent_TouchEventType type-End--> |
+| double size | Contact area between the finger pad and the screen.<br><!--Device-double size--><!--Device-double size-End--> |
+| float force | Pressure of the current touch event.<br><!--Device-float force--><!--Device-float force-End--> |
+| int64_t timeStamp | Timestamp of the current touch event.<br><!--Device-int64_t timeStamp--><!--Device-int64_t timeStamp-End--> |
+| bool isPressed | Whether the current point is pressed.<br><!--Device-bool isPressed--><!--Device-bool isPressed-End--> |
 
 

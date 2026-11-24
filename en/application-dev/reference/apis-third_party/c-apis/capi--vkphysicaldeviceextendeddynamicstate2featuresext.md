@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 extendedDynamicState2 |  |
-| VkBool32 extendedDynamicState2LogicOp |  |
-| VkBool32 extendedDynamicState2PatchControlPoints |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 extendedDynamicState2 | <!--Device-VkBool32 extendedDynamicState2--><!--Device-VkBool32 extendedDynamicState2-End--> |
+| VkBool32 extendedDynamicState2LogicOp | <!--Device-VkBool32 extendedDynamicState2LogicOp--><!--Device-VkBool32 extendedDynamicState2LogicOp-End--> |
+| VkBool32 extendedDynamicState2PatchControlPoints | <!--Device-VkBool32 extendedDynamicState2PatchControlPoints--><!--Device-VkBool32 extendedDynamicState2PatchControlPoints-End--> |
 
 

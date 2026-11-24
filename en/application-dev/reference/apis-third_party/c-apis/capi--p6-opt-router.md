@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ip6or_type |  |
-| uint8_t ip6or_len |  |
-| uint8_t ip6or_value[2] |  |
+| uint8_t ip6or_type | <!--Device-uint8_t ip6or_type--><!--Device-uint8_t ip6or_type-End--> |
+| uint8_t ip6or_len | <!--Device-uint8_t ip6or_len--><!--Device-uint8_t ip6or_len-End--> |
+| uint8_t ip6or_value[2] | <!--Device-uint8_t ip6or_value[2]--><!--Device-uint8_t ip6or_value[2]-End--> |
 
 

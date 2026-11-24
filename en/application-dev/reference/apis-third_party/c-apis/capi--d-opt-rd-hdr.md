@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t nd_opt_rh_type |  |
-| uint8_t nd_opt_rh_len |  |
-| uint16_t nd_opt_rh_reserved1 |  |
-| uint32_t nd_opt_rh_reserved2 |  |
+| uint8_t nd_opt_rh_type | <!--Device-uint8_t nd_opt_rh_type--><!--Device-uint8_t nd_opt_rh_type-End--> |
+| uint8_t nd_opt_rh_len | <!--Device-uint8_t nd_opt_rh_len--><!--Device-uint8_t nd_opt_rh_len-End--> |
+| uint16_t nd_opt_rh_reserved1 | <!--Device-uint16_t nd_opt_rh_reserved1--><!--Device-uint16_t nd_opt_rh_reserved1-End--> |
+| uint32_t nd_opt_rh_reserved2 | <!--Device-uint32_t nd_opt_rh_reserved2--><!--Device-uint32_t nd_opt_rh_reserved2-End--> |
 
 

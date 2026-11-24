@@ -82,7 +82,7 @@ enum OH_AudioSession_Scene
 
 Declare the audio session scene.
 
-<!--Device-OH_AudioSession_Scene--><!--Device-OH_AudioSession_Scene-End-->
+<!--Device-enum OH_AudioSession_Scene--><!--Device-enum OH_AudioSession_Scene-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -90,10 +90,10 @@ Declare the audio session scene.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_SESSION_SCENE_MEDIA = 0 | scene for media |
-| AUDIO_SESSION_SCENE_GAME = 1 | scene for game |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2 | scene for voice communication |
-| AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3 | scene for voice message<br>**Since**: 26.0.1 |
+| AUDIO_SESSION_SCENE_MEDIA = 0 | scene for media<br><!--Device-AUDIO_SESSION_SCENE_MEDIA = 0--><!--Device-AUDIO_SESSION_SCENE_MEDIA = 0-End--> |
+| AUDIO_SESSION_SCENE_GAME = 1 | scene for game<br><!--Device-AUDIO_SESSION_SCENE_GAME = 1--><!--Device-AUDIO_SESSION_SCENE_GAME = 1-End--> |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2 | scene for voice communication<br><!--Device-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2--><!--Device-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2-End--> |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3 | scene for voice message<br>**Since**: 26.0.1<br><!--Device-AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3--><!--Device-AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3-End--> |
 
 ### OH_AudioSession_StateChangeHint
 
@@ -105,7 +105,7 @@ enum OH_AudioSession_StateChangeHint
 
 Declare the audio session state change hints.
 
-<!--Device-OH_AudioSession_StateChangeHint--><!--Device-OH_AudioSession_StateChangeHint-End-->
+<!--Device-enum OH_AudioSession_StateChangeHint--><!--Device-enum OH_AudioSession_StateChangeHint-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -113,16 +113,16 @@ Declare the audio session state change hints.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0 | Resume the playback |
-| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1 | paused/pause the playback |
-| AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2 | stopped/stop the playback. |
-| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3 | stopped/stop the playback due to no audio stream for a long time. |
-| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4 | Ducked the playback. (In ducking, the audio volume is reduced, but not silenced.) |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5 | Unducked the playback. |
-| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6 | Suggests to mute the playback because there is another application begin to play nonmixable audio, application can decide whether to mute. If interrupt strategy is duck, [AUDIO_SESSION_STATE_CHANGE_HINT_DUCK](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) will replace mute suggestion event, but application can still decide to mute when receive hint duck.<br>**Since**: 23 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7 | Suggest to unmute the playback because another application's nonmixable audio ends, application can decide whether to mute. If interrupt strategy is unduck, [AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) will replace unmute suggestion event, but application can still decide to unmute when receive hint unduck.<br>**Since**: 23 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8 | The hint can be received only after the parameter OH_AudioSession_BehaviorFlags.MUTE_WHEN_INTERRUPTED has been set by the interface [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) and [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) has been called, and the audio session has been activated. After the hint is received, the audio stream is muted.<br>**Since**: 24 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9 | The hint can be received only after the parameter OH_AudioSession_BehaviorFlags.MUTE_WHEN_INTERRUPTED has been set by the interface [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) and [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) has been called, and the audio session has been activated. When the hint is received, the audio stream is unmuted.<br>**Since**: 24 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0 | Resume the playback<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1 | paused/pause the playback<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2 | stopped/stop the playback.<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3 | stopped/stop the playback due to no audio stream for a long time.<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4 | Ducked the playback. (In ducking, the audio volume is reduced, but not silenced.)<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5 | Unducked the playback.<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6 | Suggests to mute the playback because there is another application begin to play nonmixable audio, application can decide whether to mute. If interrupt strategy is duck, [AUDIO_SESSION_STATE_CHANGE_HINT_DUCK](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) will replace mute suggestion event, but application can still decide to mute when receive hint duck.<br>**Since**: 23<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7 | Suggest to unmute the playback because another application's nonmixable audio ends, application can decide whether to mute. If interrupt strategy is unduck, [AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) will replace unmute suggestion event, but application can still decide to unmute when receive hint unduck.<br>**Since**: 23<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8 | The hint can be received only after the parameter OH_AudioSession_BehaviorFlags.MUTE_WHEN_INTERRUPTED has been set by the interface [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) and [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) has been called, and the audio session has been activated. After the hint is received, the audio stream is muted.<br>**Since**: 24<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9 | The hint can be received only after the parameter OH_AudioSession_BehaviorFlags.MUTE_WHEN_INTERRUPTED has been set by the interface [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) and [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) has been called, and the audio session has been activated. When the hint is received, the audio stream is unmuted.<br>**Since**: 24<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9-End--> |
 
 ### OH_AudioSession_OutputDeviceChangeRecommendedAction
 
@@ -134,7 +134,7 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 Declare the recommend action when device change.
 
-<!--Device-OH_AudioSession_OutputDeviceChangeRecommendedAction--><!--Device-OH_AudioSession_OutputDeviceChangeRecommendedAction-End-->
+<!--Device-enum OH_AudioSession_OutputDeviceChangeRecommendedAction--><!--Device-enum OH_AudioSession_OutputDeviceChangeRecommendedAction-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -142,8 +142,8 @@ Declare the recommend action when device change.
 
 | Enum item | Description |
 | -- | -- |
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | Recommend to continue the playback. This event indicates that the application does not need to stop audio playback when switching devices. However, it should not be used to restart audio playback that has already been paused or stopped. |
-| DEVICE_CHANGE_RECOMMEND_TO_STOP = 1 | recommend to stop the playback. |
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | Recommend to continue the playback. This event indicates that the application does not need to stop audio playback when switching devices. However, it should not be used to restart audio playback that has already been paused or stopped.<br><!--Device-DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0--><!--Device-DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0-End--> |
+| DEVICE_CHANGE_RECOMMEND_TO_STOP = 1 | recommend to stop the playback.<br><!--Device-DEVICE_CHANGE_RECOMMEND_TO_STOP = 1--><!--Device-DEVICE_CHANGE_RECOMMEND_TO_STOP = 1-End--> |
 
 ### OH_AudioSession_DeactivatedReason
 
@@ -155,7 +155,7 @@ enum OH_AudioSession_DeactivatedReason
 
 Declare the audio deactivated reasons.
 
-<!--Device-OH_AudioSession_DeactivatedReason--><!--Device-OH_AudioSession_DeactivatedReason-End-->
+<!--Device-enum OH_AudioSession_DeactivatedReason--><!--Device-enum OH_AudioSession_DeactivatedReason-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -163,8 +163,8 @@ Declare the audio deactivated reasons.
 
 | Enum item | Description |
 | -- | -- |
-| DEACTIVATED_LOWER_PRIORITY = 0 | deactivated because of lower priority |
-| DEACTIVATED_TIMEOUT = 1 | deactivated because of timing out |
+| DEACTIVATED_LOWER_PRIORITY = 0 | deactivated because of lower priority<br><!--Device-DEACTIVATED_LOWER_PRIORITY = 0--><!--Device-DEACTIVATED_LOWER_PRIORITY = 0-End--> |
+| DEACTIVATED_TIMEOUT = 1 | deactivated because of timing out<br><!--Device-DEACTIVATED_TIMEOUT = 1--><!--Device-DEACTIVATED_TIMEOUT = 1-End--> |
 
 ### OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
@@ -176,7 +176,7 @@ enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
 Enumerates the categories application prefer to use when recording with bluetooth and nearlink.
 
-<!--Device-OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory--><!--Device-OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory-End-->
+<!--Device-enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory--><!--Device-enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -184,10 +184,10 @@ Enumerates the categories application prefer to use when recording with bluetoot
 
 | Enum item | Description |
 | -- | -- |
-| PREFERRED_NONE = 0 | Not prefer to use bluetooth and nearlink record. |
-| PREFERRED_DEFAULT = 1 | Prefer to use bluetooth and nearlink record. However, whether to use low latency or high quality recording depends on system. |
-| PREFERRED_LOW_LATENCY = 2 | Prefer to use bluetooth and nearlink low latency mode to record. |
-| PREFERRED_HIGH_QUALITY = 3 | Prefer to use bluetooth and nearlink high quality mode to record. |
+| PREFERRED_NONE = 0 | Not prefer to use bluetooth and nearlink record.<br><!--Device-PREFERRED_NONE = 0--><!--Device-PREFERRED_NONE = 0-End--> |
+| PREFERRED_DEFAULT = 1 | Prefer to use bluetooth and nearlink record. However, whether to use low latency or high quality recording depends on system.<br><!--Device-PREFERRED_DEFAULT = 1--><!--Device-PREFERRED_DEFAULT = 1-End--> |
+| PREFERRED_LOW_LATENCY = 2 | Prefer to use bluetooth and nearlink low latency mode to record.<br><!--Device-PREFERRED_LOW_LATENCY = 2--><!--Device-PREFERRED_LOW_LATENCY = 2-End--> |
+| PREFERRED_HIGH_QUALITY = 3 | Prefer to use bluetooth and nearlink high quality mode to record.<br><!--Device-PREFERRED_HIGH_QUALITY = 3--><!--Device-PREFERRED_HIGH_QUALITY = 3-End--> |
 
 
 ## Function description

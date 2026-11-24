@@ -24,7 +24,7 @@ typedef struct OH_Drawing_FontAdjustInfo {...} OH_Drawing_FontAdjustInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int weight | 字体原本的字重值。 |
-| int to | 字体在应用中显示的字重值。 |
+| int weight | 字体原本的字重值。<br><!--Device-int weight--><!--Device-int weight-End--> |
+| int to | 字体在应用中显示的字重值。<br><!--Device-int to--><!--Device-int to-End--> |
 
 

@@ -10,13 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| int r_version |  |
-| [struct link_map](capi--link-map.md) *r_map |  |
-| ElfW(Addr) r_brk |  |
-| r_state |  |
-| r_state.RT_CONSISTENT, |  |
-| r_state.RT_ADD, |  |
-| r_state.RT_DELETE |  |
-| ElfW(Addr) r_ldbase |  |
+| int r_version | <!--Device-int r_version--><!--Device-int r_version-End--> |
+| [struct link_map](capi--link-map.md) *r_map | <!--Device-struct link_map *r_map--><!--Device-struct link_map *r_map-End--> |
+| ElfW(Addr) r_brk | <!--Device-ElfW(Addr) r_brk--><!--Device-ElfW(Addr) r_brk-End--> |
+| r_state.RT_CONSISTENT, | <!--Device-r_state.RT_CONSISTENT,--><!--Device-r_state.RT_CONSISTENT,-End--> |
+| r_state.RT_ADD, | <!--Device-r_state.RT_ADD,--><!--Device-r_state.RT_ADD,-End--> |
+| r_state.RT_DELETE | <!--Device-r_state.RT_DELETE--><!--Device-r_state.RT_DELETE-End--> |
+| ElfW(Addr) r_ldbase | <!--Device-ElfW(Addr) r_ldbase--><!--Device-ElfW(Addr) r_ldbase-End--> |
 
 

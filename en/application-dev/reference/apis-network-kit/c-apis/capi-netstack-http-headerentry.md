@@ -24,8 +24,8 @@ Defines all key-value pairs in the request or response header.
 
 | Name | Description |
 | -- | -- |
-| char *key | Key in the request or response header. |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md). |
-| [struct Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | Pointer to Pointer to the next **Http_HeaderEntry**. |
+| char *key | Key in the request or response header.<br><!--Device-char *key--><!--Device-char *key-End--> |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md).<br><!--Device-Http_HeaderValue *value--><!--Device-Http_HeaderValue *value-End--> |
+| [struct Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | Pointer to Pointer to the next **Http_HeaderEntry**.<br><!--Device-struct Http_HeaderEntry *next--><!--Device-struct Http_HeaderEntry *next-End--> |
 
 

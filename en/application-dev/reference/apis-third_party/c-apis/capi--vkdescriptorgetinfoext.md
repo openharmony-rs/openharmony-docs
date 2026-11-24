@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDescriptorType type |  |
-| [VkDescriptorDataEXT](capi--vkdescriptordataext.md) data |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDescriptorType type | <!--Device-VkDescriptorType type--><!--Device-VkDescriptorType type-End--> |
+| [VkDescriptorDataEXT](capi--vkdescriptordataext.md) data | <!--Device-VkDescriptorDataEXT data--><!--Device-VkDescriptorDataEXT data-End--> |
 
 

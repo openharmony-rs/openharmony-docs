@@ -10,15 +10,15 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t maxVerticesPerCluster |  |
-| uint32_t maxTrianglesPerCluster |  |
-| uint32_t clusterScratchByteAlignment |  |
-| uint32_t clusterByteAlignment |  |
-| uint32_t clusterTemplateByteAlignment |  |
-| uint32_t clusterBottomLevelByteAlignment |  |
-| uint32_t clusterTemplateBoundsByteAlignment |  |
-| uint32_t maxClusterGeometryIndex |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t maxVerticesPerCluster | <!--Device-uint32_t maxVerticesPerCluster--><!--Device-uint32_t maxVerticesPerCluster-End--> |
+| uint32_t maxTrianglesPerCluster | <!--Device-uint32_t maxTrianglesPerCluster--><!--Device-uint32_t maxTrianglesPerCluster-End--> |
+| uint32_t clusterScratchByteAlignment | <!--Device-uint32_t clusterScratchByteAlignment--><!--Device-uint32_t clusterScratchByteAlignment-End--> |
+| uint32_t clusterByteAlignment | <!--Device-uint32_t clusterByteAlignment--><!--Device-uint32_t clusterByteAlignment-End--> |
+| uint32_t clusterTemplateByteAlignment | <!--Device-uint32_t clusterTemplateByteAlignment--><!--Device-uint32_t clusterTemplateByteAlignment-End--> |
+| uint32_t clusterBottomLevelByteAlignment | <!--Device-uint32_t clusterBottomLevelByteAlignment--><!--Device-uint32_t clusterBottomLevelByteAlignment-End--> |
+| uint32_t clusterTemplateBoundsByteAlignment | <!--Device-uint32_t clusterTemplateBoundsByteAlignment--><!--Device-uint32_t clusterTemplateBoundsByteAlignment-End--> |
+| uint32_t maxClusterGeometryIndex | <!--Device-uint32_t maxClusterGeometryIndex--><!--Device-uint32_t maxClusterGeometryIndex-End--> |
 
 

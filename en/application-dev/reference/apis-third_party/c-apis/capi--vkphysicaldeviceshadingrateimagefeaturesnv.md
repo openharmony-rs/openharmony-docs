@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shadingRateImage |  |
-| VkBool32 shadingRateCoarseSampleOrder |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shadingRateImage | <!--Device-VkBool32 shadingRateImage--><!--Device-VkBool32 shadingRateImage-End--> |
+| VkBool32 shadingRateCoarseSampleOrder | <!--Device-VkBool32 shadingRateCoarseSampleOrder--><!--Device-VkBool32 shadingRateCoarseSampleOrder-End--> |
 
 

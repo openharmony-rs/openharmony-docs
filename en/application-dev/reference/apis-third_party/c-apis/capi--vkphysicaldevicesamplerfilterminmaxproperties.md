@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 filterMinmaxSingleComponentFormats |  |
-| VkBool32 filterMinmaxImageComponentMapping |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 filterMinmaxSingleComponentFormats | <!--Device-VkBool32 filterMinmaxSingleComponentFormats--><!--Device-VkBool32 filterMinmaxSingleComponentFormats-End--> |
+| VkBool32 filterMinmaxImageComponentMapping | <!--Device-VkBool32 filterMinmaxImageComponentMapping--><!--Device-VkBool32 filterMinmaxImageComponentMapping-End--> |
 
 

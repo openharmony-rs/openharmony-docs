@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkPartitionedAccelerationStructureOpTypeNV opType |  |
-| uint32_t argCount |  |
-| [VkStridedDeviceAddressNV](capi--vkstrideddeviceaddressnv.md) argData |  |
+| VkPartitionedAccelerationStructureOpTypeNV opType | <!--Device-VkPartitionedAccelerationStructureOpTypeNV opType--><!--Device-VkPartitionedAccelerationStructureOpTypeNV opType-End--> |
+| uint32_t argCount | <!--Device-uint32_t argCount--><!--Device-uint32_t argCount-End--> |
+| [VkStridedDeviceAddressNV](capi--vkstrideddeviceaddressnv.md) argData | <!--Device-VkStridedDeviceAddressNV argData--><!--Device-VkStridedDeviceAddressNV argData-End--> |
 
 

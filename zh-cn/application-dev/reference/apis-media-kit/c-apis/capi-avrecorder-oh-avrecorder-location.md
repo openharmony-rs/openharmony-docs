@@ -24,7 +24,7 @@ typedef struct OH_AVRecorder_Location {...} OH_AVRecorder_Location
 
 | 名称 | 描述 |
 | -- | -- |
-| float latitude | 纬度，取值范围[-90, 90]，单位：度（°）。需与longitude配合使用以提供完整的地理位置信息，超出范围时将导致错误。<br>**起始版本：** 18 |
-| float longitude | 经度，取值范围[-180, 180]，单位：度（°）。需与latitude配合使用以提供完整的地理位置信息，超出范围时将导致错误。<br>**起始版本：** 18 |
+| float latitude | 纬度，取值范围[-90, 90]，单位：度（°）。需与longitude配合使用以提供完整的地理位置信息，超出范围时将导致错误。<br>**起始版本：** 18<br><!--Device-float latitude--><!--Device-float latitude-End--> |
+| float longitude | 经度，取值范围[-180, 180]，单位：度（°）。需与latitude配合使用以提供完整的地理位置信息，超出范围时将导致错误。<br>**起始版本：** 18<br><!--Device-float longitude--><!--Device-float longitude-End--> |
 
 

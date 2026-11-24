@@ -24,6 +24,6 @@ typedef struct ffrt_rwlockattr_t {...} ffrt_rwlockattr_t
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | 读写锁属性的内部存储。请勿直接访问，直接访问可能导致读写锁属性失效。 |
+| long storage | 读写锁属性的内部存储。请勿直接访问，直接访问可能导致读写锁属性失效。<br><!--Device-long storage--><!--Device-long storage-End--> |
 
 

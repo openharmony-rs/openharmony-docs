@@ -24,7 +24,7 @@ typedef struct InitialTimeZoneRule {...} InitialTimeZoneRule
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t rawOffset | 时区的原始偏移量，单位为毫秒（ms）。 |
-| int32_t dstSavings | 夏令时的偏移量，单位为毫秒（ms）。 |
+| int32_t rawOffset | 时区的原始偏移量，单位为毫秒（ms）。<br><!--Device-int32_t rawOffset--><!--Device-int32_t rawOffset-End--> |
+| int32_t dstSavings | 夏令时的偏移量，单位为毫秒（ms）。<br><!--Device-int32_t dstSavings--><!--Device-int32_t dstSavings-End--> |
 
 

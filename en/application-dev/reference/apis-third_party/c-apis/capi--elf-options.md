@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned char kind |  |
-| unsigned char size |  |
-| Elf32_Section section |  |
-| Elf32_Word info |  |
+| unsigned char kind | <!--Device-unsigned char kind--><!--Device-unsigned char kind-End--> |
+| unsigned char size | <!--Device-unsigned char size--><!--Device-unsigned char size-End--> |
+| Elf32_Section section | <!--Device-Elf32_Section section--><!--Device-Elf32_Section section-End--> |
+| Elf32_Word info | <!--Device-Elf32_Word info--><!--Device-Elf32_Word info-End--> |
 
 

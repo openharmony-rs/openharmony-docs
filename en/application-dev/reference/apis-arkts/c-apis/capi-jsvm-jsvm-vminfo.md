@@ -24,9 +24,9 @@ JavaScript VM info.
 
 | Name | Description |
 | -- | -- |
-| uint32_t apiVersion | The highest API version this VM supports. |
-| const char* engine | The engine name implementing the VM. |
-| const char* version | The version of the VM. |
-| uint32_t cachedDataVersionTag | The cached data version tag. |
+| uint32_t apiVersion | The highest API version this VM supports.<br><!--Device-uint32_t apiVersion--><!--Device-uint32_t apiVersion-End--> |
+| const char* engine | The engine name implementing the VM.<br><!--Device-const char* engine--><!--Device-const char* engine-End--> |
+| const char* version | The version of the VM.<br><!--Device-const char* version--><!--Device-const char* version-End--> |
+| uint32_t cachedDataVersionTag | The cached data version tag.<br><!--Device-uint32_t cachedDataVersionTag--><!--Device-uint32_t cachedDataVersionTag-End--> |
 
 

@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| DWORD tls_index |  |
+| DWORD tls_index | <!--Device-DWORD tls_index--><!--Device-DWORD tls_index-End--> |
 
 

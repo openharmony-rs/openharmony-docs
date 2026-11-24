@@ -63,7 +63,7 @@ enum Data_AssetStatus
 
 资产状态值类型。
 
-<!--Device-Data_AssetStatus--><!--Device-Data_AssetStatus-End-->
+<!--Device-enum Data_AssetStatus--><!--Device-enum Data_AssetStatus-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -71,13 +71,13 @@ enum Data_AssetStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_NULL = 0 | 表示资产为空。 |
-| ASSET_NORMAL | 表示资产状态正常。 |
-| ASSET_INSERT | 表示资产需要插入到云端。 |
-| ASSET_UPDATE | 表示资产需要更新到云端。 |
-| ASSET_DELETE | 表示资产需要在云端删除。 |
-| ASSET_ABNORMAL | 表示资产状态异常。 |
-| ASSET_DOWNLOADING | 表示资产正在下载到本地设备。 |
+| ASSET_NULL = 0 | 表示资产为空。<br><!--Device-ASSET_NULL = 0--><!--Device-ASSET_NULL = 0-End--> |
+| ASSET_NORMAL | 表示资产状态正常。<br><!--Device-ASSET_NORMAL--><!--Device-ASSET_NORMAL-End--> |
+| ASSET_INSERT | 表示资产需要插入到云端。<br><!--Device-ASSET_INSERT--><!--Device-ASSET_INSERT-End--> |
+| ASSET_UPDATE | 表示资产需要更新到云端。<br><!--Device-ASSET_UPDATE--><!--Device-ASSET_UPDATE-End--> |
+| ASSET_DELETE | 表示资产需要在云端删除。<br><!--Device-ASSET_DELETE--><!--Device-ASSET_DELETE-End--> |
+| ASSET_ABNORMAL | 表示资产状态异常。<br><!--Device-ASSET_ABNORMAL--><!--Device-ASSET_ABNORMAL-End--> |
+| ASSET_DOWNLOADING | 表示资产正在下载到本地设备。<br><!--Device-ASSET_DOWNLOADING--><!--Device-ASSET_DOWNLOADING-End--> |
 
 
 ## 函数说明

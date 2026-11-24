@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t lineSubPixelPrecisionBits |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t lineSubPixelPrecisionBits | <!--Device-uint32_t lineSubPixelPrecisionBits--><!--Device-uint32_t lineSubPixelPrecisionBits-End--> |
 
 

@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t attachment |  |
-| VkImageLayout layout |  |
+| uint32_t attachment | <!--Device-uint32_t attachment--><!--Device-uint32_t attachment-End--> |
+| VkImageLayout layout | <!--Device-VkImageLayout layout--><!--Device-VkImageLayout layout-End--> |
 
 

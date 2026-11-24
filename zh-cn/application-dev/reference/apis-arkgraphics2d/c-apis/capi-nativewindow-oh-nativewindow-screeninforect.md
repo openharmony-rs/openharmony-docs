@@ -24,9 +24,9 @@ typedef struct OH_NativeWindow_ScreenInfoRect {...} OH_NativeWindow_ScreenInfoRe
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t x | x 偏移（单位：像素）<br>**起始版本：** 26.1.0 |
-| int32_t y | y 偏移（单位：像素）<br>**起始版本：** 26.1.0 |
-| int32_t w | 宽度（单位：像素）<br>**起始版本：** 26.1.0 |
-| int32_t h | 高度（单位：像素）<br>**起始版本：** 26.1.0 |
+| int32_t x | x 偏移（单位：像素）<br>**起始版本：** 26.1.0<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | y 偏移（单位：像素）<br>**起始版本：** 26.1.0<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
+| int32_t w | 宽度（单位：像素）<br>**起始版本：** 26.1.0<br><!--Device-int32_t w--><!--Device-int32_t w-End--> |
+| int32_t h | 高度（单位：像素）<br>**起始版本：** 26.1.0<br><!--Device-int32_t h--><!--Device-int32_t h-End--> |
 
 

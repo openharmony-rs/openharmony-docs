@@ -24,12 +24,12 @@ Defines an object information.
 
 | Name | Description |
 | -- | -- |
-| uint32_t objectType | Type of the object. |
-| uint32_t objectSize | Size of the object. |
-| uint32_t maxObjectSize | Maximum allowed size for the object. |
-| uint32_t objectUsage | Usage flags of the object. |
-| uint32_t dataSize | Size of the data associated with the object. |
-| uint32_t dataPosition | Position of the data within the object. |
-| uint32_t handleFlags | Flags associated with the handle. |
+| uint32_t objectType | Type of the object.<br><!--Device-uint32_t objectType--><!--Device-uint32_t objectType-End--> |
+| uint32_t objectSize | Size of the object.<br><!--Device-uint32_t objectSize--><!--Device-uint32_t objectSize-End--> |
+| uint32_t maxObjectSize | Maximum allowed size for the object.<br><!--Device-uint32_t maxObjectSize--><!--Device-uint32_t maxObjectSize-End--> |
+| uint32_t objectUsage | Usage flags of the object.<br><!--Device-uint32_t objectUsage--><!--Device-uint32_t objectUsage-End--> |
+| uint32_t dataSize | Size of the data associated with the object.<br><!--Device-uint32_t dataSize--><!--Device-uint32_t dataSize-End--> |
+| uint32_t dataPosition | Position of the data within the object.<br><!--Device-uint32_t dataPosition--><!--Device-uint32_t dataPosition-End--> |
+| uint32_t handleFlags | Flags associated with the handle.<br><!--Device-uint32_t handleFlags--><!--Device-uint32_t handleFlags-End--> |
 
 

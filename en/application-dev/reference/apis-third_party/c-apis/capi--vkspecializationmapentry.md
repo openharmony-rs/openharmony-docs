@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t constantID |  |
-| uint32_t offset |  |
-| size_t size |  |
+| uint32_t constantID | <!--Device-uint32_t constantID--><!--Device-uint32_t constantID-End--> |
+| uint32_t offset | <!--Device-uint32_t offset--><!--Device-uint32_t offset-End--> |
+| size_t size | <!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

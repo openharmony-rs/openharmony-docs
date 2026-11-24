@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t firstIndex |  |
-| uint32_t indexCount |  |
-| int32_t vertexOffset |  |
+| uint32_t firstIndex | <!--Device-uint32_t firstIndex--><!--Device-uint32_t firstIndex-End--> |
+| uint32_t indexCount | <!--Device-uint32_t indexCount--><!--Device-uint32_t indexCount-End--> |
+| int32_t vertexOffset | <!--Device-int32_t vertexOffset--><!--Device-int32_t vertexOffset-End--> |
 
 

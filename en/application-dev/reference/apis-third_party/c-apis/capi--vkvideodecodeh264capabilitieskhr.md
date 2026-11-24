@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| StdVideoH264LevelIdc maxLevelIdc |  |
-| [VkOffset2D](capi--vkoffset2d.md) fieldOffsetGranularity |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| StdVideoH264LevelIdc maxLevelIdc | <!--Device-StdVideoH264LevelIdc maxLevelIdc--><!--Device-StdVideoH264LevelIdc maxLevelIdc-End--> |
+| [VkOffset2D](capi--vkoffset2d.md) fieldOffsetGranularity | <!--Device-VkOffset2D fieldOffsetGranularity--><!--Device-VkOffset2D fieldOffsetGranularity-End--> |
 
 

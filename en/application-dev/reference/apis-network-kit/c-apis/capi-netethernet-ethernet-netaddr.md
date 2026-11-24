@@ -24,9 +24,9 @@ Defines a network address.
 
 | Name | Description |
 | -- | -- |
-| uint8_t family | Network address family. IPv4 = 1, IPv6 = 2.<br>**Since**: 26.0.0 |
-| uint8_t prefixlen | Prefix length.<br>**Since**: 26.0.0 |
-| uint16_t port | Port number.<br>**Since**: 26.0.0 |
-| char address[ETHERNET_MAX_STR_LEN] | IP address.<br>**Since**: 26.0.0 |
+| uint8_t family | Network address family. IPv4 = 1, IPv6 = 2.<br>**Since**: 26.0.0<br><!--Device-uint8_t family--><!--Device-uint8_t family-End--> |
+| uint8_t prefixlen | Prefix length.<br>**Since**: 26.0.0<br><!--Device-uint8_t prefixlen--><!--Device-uint8_t prefixlen-End--> |
+| uint16_t port | Port number.<br>**Since**: 26.0.0<br><!--Device-uint16_t port--><!--Device-uint16_t port-End--> |
+| char address[ETHERNET_MAX_STR_LEN] | IP address.<br>**Since**: 26.0.0<br><!--Device-char address[ETHERNET_MAX_STR_LEN]--><!--Device-char address[ETHERNET_MAX_STR_LEN]-End--> |
 
 

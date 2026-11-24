@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned int if_index |  |
-| char *if_name |  |
+| unsigned int if_index | <!--Device-unsigned int if_index--><!--Device-unsigned int if_index-End--> |
+| char *if_name | <!--Device-char *if_name--><!--Device-char *if_name-End--> |
 
 

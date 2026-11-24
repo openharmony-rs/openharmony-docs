@@ -24,8 +24,8 @@ The struct describes the fold status information of the camera.
 
 | Name | Description |
 | -- | -- |
-| [Camera_Device*](capi-oh-camera-camera-device.md)* supportedCameras | Double pointer to the camera list. |
-| uint32_t cameraSize | Number of cameras in the list. |
-| [Camera_FoldStatus](capi-camera-h.md#camera_foldstatus) foldStatus | Current fold status. |
+| [Camera_Device*](capi-oh-camera-camera-device.md)* supportedCameras | Double pointer to the camera list.<br><!--Device-Camera_Device** supportedCameras--><!--Device-Camera_Device** supportedCameras-End--> |
+| uint32_t cameraSize | Number of cameras in the list.<br><!--Device-uint32_t cameraSize--><!--Device-uint32_t cameraSize-End--> |
+| [Camera_FoldStatus](capi-camera-h.md#camera_foldstatus) foldStatus | Current fold status.<br><!--Device-Camera_FoldStatus foldStatus--><!--Device-Camera_FoldStatus foldStatus-End--> |
 
 

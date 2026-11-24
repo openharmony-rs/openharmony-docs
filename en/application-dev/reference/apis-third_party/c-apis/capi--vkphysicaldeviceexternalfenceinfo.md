@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkExternalFenceHandleTypeFlagBits handleType |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkExternalFenceHandleTypeFlagBits handleType | <!--Device-VkExternalFenceHandleTypeFlagBits handleType--><!--Device-VkExternalFenceHandleTypeFlagBits handleType-End--> |
 
 

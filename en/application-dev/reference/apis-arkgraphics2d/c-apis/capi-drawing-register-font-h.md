@@ -4,6 +4,8 @@
 
 Defines functions related to the font manager in the drawing module, providing capabilities for registering and unregistering custom fonts as well as detecting font formats, and supporting multiple font file formats such as ttf, otf, ttc, and otc.
 
+**File to Include**: <native_drawing/drawing_register_font.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing

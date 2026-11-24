@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkDisplayModeKHR displayMode |  |
-| [VkDisplayModeParametersKHR](capi--vkdisplaymodeparameterskhr.md) parameters |  |
+| VkDisplayModeKHR displayMode | <!--Device-VkDisplayModeKHR displayMode--><!--Device-VkDisplayModeKHR displayMode-End--> |
+| [VkDisplayModeParametersKHR](capi--vkdisplaymodeparameterskhr.md) parameters | <!--Device-VkDisplayModeParametersKHR parameters--><!--Device-VkDisplayModeParametersKHR parameters-End--> |
 
 

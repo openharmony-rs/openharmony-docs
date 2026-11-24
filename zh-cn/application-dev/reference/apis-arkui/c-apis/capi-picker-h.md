@@ -73,7 +73,7 @@ enum ArkUI_DatePickerMode
 
 定义日期选择器列显示模式的枚举值。
 
-<!--Device-ArkUI_DatePickerMode--><!--Device-ArkUI_DatePickerMode-End-->
+<!--Device-enum ArkUI_DatePickerMode--><!--Device-enum ArkUI_DatePickerMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,9 +81,9 @@ enum ArkUI_DatePickerMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DATEPICKER_MODE_DATE = 0 | 默认值。日期列显示年、月、日三列，适用于需要完整日期信息的场景，如出生日期选择、预约日期选择等。<br>**起始版本：** 18 |
-| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 | 日期列显示年、月二列，适用于只需年月信息的场景，如信用卡有效期选择、合同期限选择等。<br>**起始版本：** 18 |
-| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 | 日期列显示月、日二列，适用于只需月日信息的场景，如生日选择（不关注年份）、纪念日选择等。<br>**起始版本：** 18 |
+| ARKUI_DATEPICKER_MODE_DATE = 0 | 默认值。日期列显示年、月、日三列，适用于需要完整日期信息的场景，如出生日期选择、预约日期选择等。<br>**起始版本：** 18<br><!--Device-ARKUI_DATEPICKER_MODE_DATE = 0--><!--Device-ARKUI_DATEPICKER_MODE_DATE = 0-End--> |
+| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 | 日期列显示年、月二列，适用于只需年月信息的场景，如信用卡有效期选择、合同期限选择等。<br>**起始版本：** 18<br><!--Device-ARKUI_DATEPICKER_YEAR_AND_MONTH = 1--><!--Device-ARKUI_DATEPICKER_YEAR_AND_MONTH = 1-End--> |
+| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 | 日期列显示月、日二列，适用于只需月日信息的场景，如生日选择（不关注年份）、纪念日选择等。<br>**起始版本：** 18<br><!--Device-ARKUI_DATEPICKER_MONTH_AND_DAY = 2--><!--Device-ARKUI_DATEPICKER_MONTH_AND_DAY = 2-End--> |
 
 ### ArkUI_TextPickerRangeType
 
@@ -95,7 +95,7 @@ enum ArkUI_TextPickerRangeType
 
 定义滑动选择文本选择器输入类型。
 
-<!--Device-ArkUI_TextPickerRangeType--><!--Device-ArkUI_TextPickerRangeType-End-->
+<!--Device-enum ArkUI_TextPickerRangeType--><!--Device-enum ArkUI_TextPickerRangeType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,10 +103,10 @@ enum ArkUI_TextPickerRangeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | 单列数据选择器，适用于单列数据选择场景，如性别选择、学历选择等。<br>**起始版本：** 12 |
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | 多列数据选择器，适用于多列独立数据选择场景，如时间选择（时、分、秒）、日期选择（年、月、日）等。<br>**起始版本：** 12 |
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | 支持图片资源的单列数据选择器，适用于带图标的单列数据选择场景，如城市选择（带国旗图标）、产品分类选择等。<br>**起始版本：** 12 |
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | 支持联动的多列数据选择器，适用于多列联动数据选择场景，如省市区三级联动选择、年月日联动选择等。<br>**起始版本：** 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | 单列数据选择器，适用于单列数据选择场景，如性别选择、学历选择等。<br>**起始版本：** 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0-End--> |
+| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | 多列数据选择器，适用于多列独立数据选择场景，如时间选择（时、分、秒）、日期选择（年、月、日）等。<br>**起始版本：** 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1-End--> |
+| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | 支持图片资源的单列数据选择器，适用于带图标的单列数据选择场景，如城市选择（带国旗图标）、产品分类选择等。<br>**起始版本：** 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2-End--> |
+| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | 支持联动的多列数据选择器，适用于多列联动数据选择场景，如省市区三级联动选择、年月日联动选择等。<br>**起始版本：** 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3-End--> |
 
 ### ArkUI_CalendarAlignment
 
@@ -118,7 +118,7 @@ enum ArkUI_CalendarAlignment
 
 日历选择器与入口组件对齐方式。
 
-<!--Device-ArkUI_CalendarAlignment--><!--Device-ArkUI_CalendarAlignment-End-->
+<!--Device-enum ArkUI_CalendarAlignment--><!--Device-enum ArkUI_CalendarAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,9 +126,9 @@ enum ArkUI_CalendarAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CALENDAR_ALIGNMENT_START = 0 | 设置选择器与入口组件的对齐方式为左对齐。<br>**起始版本：** 12 |
-| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | 设置选择器与入口组件的对齐方式为居中对齐。<br>**起始版本：** 12 |
-| ARKUI_CALENDAR_ALIGNMENT_END = 2 | 设置选择器与入口组件的对齐方式为右对齐。<br>**起始版本：** 12 |
+| ARKUI_CALENDAR_ALIGNMENT_START = 0 | 设置选择器与入口组件的对齐方式为左对齐。<br>**起始版本：** 12<br><!--Device-ARKUI_CALENDAR_ALIGNMENT_START = 0--><!--Device-ARKUI_CALENDAR_ALIGNMENT_START = 0-End--> |
+| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | 设置选择器与入口组件的对齐方式为居中对齐。<br>**起始版本：** 12<br><!--Device-ARKUI_CALENDAR_ALIGNMENT_CENTER = 1--><!--Device-ARKUI_CALENDAR_ALIGNMENT_CENTER = 1-End--> |
+| ARKUI_CALENDAR_ALIGNMENT_END = 2 | 设置选择器与入口组件的对齐方式为右对齐。<br>**起始版本：** 12<br><!--Device-ARKUI_CALENDAR_ALIGNMENT_END = 2--><!--Device-ARKUI_CALENDAR_ALIGNMENT_END = 2-End--> |
 
 ### ArkUI_PickerIndicatorType
 
@@ -140,7 +140,7 @@ enum ArkUI_PickerIndicatorType
 
 选择器的选中指示器类型。
 
-<!--Device-ArkUI_PickerIndicatorType--><!--Device-ArkUI_PickerIndicatorType-End-->
+<!--Device-enum ArkUI_PickerIndicatorType--><!--Device-enum ArkUI_PickerIndicatorType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,8 +148,8 @@ enum ArkUI_PickerIndicatorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 | 背景样式，适用于需要突出选中项的场景，如深色主题选择器、需要强调选中项的表单选择等。<br>**起始版本：** 23 |
-| ARKUI_PICKER_INDICATOR_DIVIDER = 1 | 分割线样式，适用于需要简洁风格的场景，如轻量级选择器、分割线风格UI设计等。<br>**起始版本：** 23 |
+| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 | 背景样式，适用于需要突出选中项的场景，如深色主题选择器、需要强调选中项的表单选择等。<br>**起始版本：** 23<br><!--Device-ARKUI_PICKER_INDICATOR_BACKGROUND = 0--><!--Device-ARKUI_PICKER_INDICATOR_BACKGROUND = 0-End--> |
+| ARKUI_PICKER_INDICATOR_DIVIDER = 1 | 分割线样式，适用于需要简洁风格的场景，如轻量级选择器、分割线风格UI设计等。<br>**起始版本：** 23<br><!--Device-ARKUI_PICKER_INDICATOR_DIVIDER = 1--><!--Device-ARKUI_PICKER_INDICATOR_DIVIDER = 1-End--> |
 
 
 ## 函数说明

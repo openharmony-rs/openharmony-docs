@@ -39,7 +39,7 @@ enum OH_AudioSession_BehaviorFlags
 
 音频会话行为标志。
 
-<!--Device-OH_AudioSession_BehaviorFlags--><!--Device-OH_AudioSession_BehaviorFlags-End-->
+<!--Device-enum OH_AudioSession_BehaviorFlags--><!--Device-enum OH_AudioSession_BehaviorFlags-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -47,9 +47,9 @@ enum OH_AudioSession_BehaviorFlags
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DEFAULT_BEHAVIOR = 0x00000000 | 默认行为，用于重置会话行为标记。<br>**起始版本：** 24 |
-| MUTE_WHEN_INTERRUPTED = 0x00000002 | 当系统因音频中断需要暂停或停止音频流时，执行强制静音替代。 <br>调用[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口配置该行为时， 必须同步调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)接口， 否则配置将无法生效。 <br>在音频会话场景下，当音频流静音或恢复时，应用将分别收到 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。 <br>在OH_AudioRenderer和OH_AudioCapturer场景下，当音频流静音或恢复时，应用将分别收到 [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint). AUDIOSTREAM_INTERRUPT_HINT_MUTE与[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_UNMUTE的通知。 <br>**注意：** 该标志不能与PAUSE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。<br>**起始版本：** 24 |
-| PAUSE_WHEN_INTERRUPTED = 0x00000004 | 当系统因音频中断需要停止音频流时，执行暂停替代。 <br>调用[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口配置该行为时， 必须同步调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)接口， 否则配置将无法生效。 <br>在音频会话场景下，当音频流暂停或恢复时，应用将分别收到 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE与 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME的通知。 <br>在OH_AudioRenderer和OH_AudioCapturer场景下，当音频流暂停或恢复时，应用将分别收到 [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint). AUDIOSTREAM_INTERRUPT_HINT_PAUSE与[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_RESUME的通知。 <br>**注意：** 该标志不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅该标志生效。<br>**起始版本：** 26.0.0 |
+| DEFAULT_BEHAVIOR = 0x00000000 | 默认行为，用于重置会话行为标记。<br>**起始版本：** 24<br><!--Device-DEFAULT_BEHAVIOR = 0x00000000--><!--Device-DEFAULT_BEHAVIOR = 0x00000000-End--> |
+| MUTE_WHEN_INTERRUPTED = 0x00000002 | 当系统因音频中断需要暂停或停止音频流时，执行强制静音替代。 <br>调用[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口配置该行为时， 必须同步调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)接口， 否则配置将无法生效。 <br>在音频会话场景下，当音频流静音或恢复时，应用将分别收到 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。 <br>在OH_AudioRenderer和OH_AudioCapturer场景下，当音频流静音或恢复时，应用将分别收到 [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint). AUDIOSTREAM_INTERRUPT_HINT_MUTE与[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_UNMUTE的通知。 <br>**注意：** 该标志不能与PAUSE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。<br>**起始版本：** 24<br><!--Device-MUTE_WHEN_INTERRUPTED = 0x00000002--><!--Device-MUTE_WHEN_INTERRUPTED = 0x00000002-End--> |
+| PAUSE_WHEN_INTERRUPTED = 0x00000004 | 当系统因音频中断需要停止音频流时，执行暂停替代。 <br>调用[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口配置该行为时， 必须同步调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)接口， 否则配置将无法生效。 <br>在音频会话场景下，当音频流暂停或恢复时，应用将分别收到 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE与 [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME的通知。 <br>在OH_AudioRenderer和OH_AudioCapturer场景下，当音频流暂停或恢复时，应用将分别收到 [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint). AUDIOSTREAM_INTERRUPT_HINT_PAUSE与[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_RESUME的通知。 <br>**注意：** 该标志不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅该标志生效。<br>**起始版本：** 26.0.0<br><!--Device-PAUSE_WHEN_INTERRUPTED = 0x00000004--><!--Device-PAUSE_WHEN_INTERRUPTED = 0x00000004-End--> |
 
 ### OH_AudioSession_ConcurrencyMode
 
@@ -61,7 +61,7 @@ enum OH_AudioSession_ConcurrencyMode
 
 音频并发模式。 <br>从API version 24开始，此枚举由native_audio_session_manager.h移动至此头文件。 <br>在API version 24之前，使用该枚举请引用native_audio_session_manager.h头文件； 从API version 24开始，引用native_audio_session_manager. h或native_audio_session_base.h均可正常使用该枚举。
 
-<!--Device-OH_AudioSession_ConcurrencyMode--><!--Device-OH_AudioSession_ConcurrencyMode-End-->
+<!--Device-enum OH_AudioSession_ConcurrencyMode--><!--Device-enum OH_AudioSession_ConcurrencyMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -69,9 +69,9 @@ enum OH_AudioSession_ConcurrencyMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CONCURRENCY_DEFAULT = 0 | 使用系统默认并发策略。 |
-| CONCURRENCY_MIX_WITH_OTHERS = 1 | 当前应用与其他应用混音播放。 |
-| CONCURRENCY_DUCK_OTHERS = 2 | 当前应用播放时会压低其他正在播放的应用音量。 |
-| CONCURRENCY_PAUSE_OTHERS = 3 | 当前应用播放时会暂停其他正在播放的应用。 |
+| CONCURRENCY_DEFAULT = 0 | 使用系统默认并发策略。<br><!--Device-CONCURRENCY_DEFAULT = 0--><!--Device-CONCURRENCY_DEFAULT = 0-End--> |
+| CONCURRENCY_MIX_WITH_OTHERS = 1 | 当前应用与其他应用混音播放。<br><!--Device-CONCURRENCY_MIX_WITH_OTHERS = 1--><!--Device-CONCURRENCY_MIX_WITH_OTHERS = 1-End--> |
+| CONCURRENCY_DUCK_OTHERS = 2 | 当前应用播放时会压低其他正在播放的应用音量。<br><!--Device-CONCURRENCY_DUCK_OTHERS = 2--><!--Device-CONCURRENCY_DUCK_OTHERS = 2-End--> |
+| CONCURRENCY_PAUSE_OTHERS = 3 | 当前应用播放时会暂停其他正在播放的应用。<br><!--Device-CONCURRENCY_PAUSE_OTHERS = 3--><!--Device-CONCURRENCY_PAUSE_OTHERS = 3-End--> |
 
 

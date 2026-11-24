@@ -24,10 +24,10 @@ Defines the input parameters of the **OH_HiCollie_SetTimer** function.
 
 | Name | Description |
 | -- | -- |
-| const char *name | The timer name<br>**Since**: 18 |
-| unsigned int timeout | Task timeout threshold, in seconds.<br>**Since**: 18 |
-| [OH_HiCollie_Callback](capi-hicollie-h.md#oh_hicollie_callback) func | Callback executed when a timeout occurs.<br>**Since**: 18 |
-| void *arg | The callback function's parameter.<br>**Since**: 18 |
-| [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | Action performed when a timeout occurs. For details, see [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag).<br>**Since**: 18 |
+| const char *name | The timer name<br>**Since**: 18<br><!--Device-const char *name--><!--Device-const char *name-End--> |
+| unsigned int timeout | Task timeout threshold, in seconds.<br>**Since**: 18<br><!--Device-unsigned int timeout--><!--Device-unsigned int timeout-End--> |
+| [OH_HiCollie_Callback](capi-hicollie-h.md#oh_hicollie_callback) func | Callback executed when a timeout occurs.<br>**Since**: 18<br><!--Device-OH_HiCollie_Callback func--><!--Device-OH_HiCollie_Callback func-End--> |
+| void *arg | The callback function's parameter.<br>**Since**: 18<br><!--Device-void *arg--><!--Device-void *arg-End--> |
+| [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | Action performed when a timeout occurs. For details, see [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag).<br>**Since**: 18<br><!--Device-HiCollie_Flag flag--><!--Device-HiCollie_Flag flag-End--> |
 
 

@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_IPMatch {...} OH_TrafficFilter_IPMatch
 
 ## Overview
 
-IP match condition
+Defines the IP match condition.
 
 <!--Device-struct OH_TrafficFilter_IPMatch {...}--><!--Device-struct OH_TrafficFilter_IPMatch {...}-End-->
 
@@ -24,12 +24,11 @@ IP match condition
 
 | Name | Description |
 | -- | -- |
-| [OH_TrafficFilter_IPMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_ipmatchtype) type | Match type<br>**Since**: 26.0.0 |
-| bool invert | Whether to invert the match result<br>**Since**: 26.0.0 |
-| value | Match rule<br>**Since**: 26.0.0 |
-| value.single | Single IP address, used when type is OH_TRAFFICFILTER_IP_MATCH_SINGLE<br>**Since**: 26.0.0 |
-| value.cidr | CIDR match value, used when type is OH_TRAFFICFILTER_IP_MATCH_CIDR<br>**Since**: 26.0.0 |
-| value.range | IP range match value, used when type is OH_TRAFFICFILTER_IP_MATCH_RANGE<br>**Since**: 26.0.0 |
-| value.multi | Multi-IP match value, used when type is OH_TRAFFICFILTER_IP_MATCH_MULTI<br>**Since**: 26.0.0 |
+| [OH_TrafficFilter_IPMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_ipmatchtype) type | Match type.<br>**Since**: 26.0.0<br><!--Device-OH_TrafficFilter_IPMatchType type--><!--Device-OH_TrafficFilter_IPMatchType type-End--> |
+| bool invert | Whether to invert the match result.<br>**Since**: 26.0.0<br><!--Device-bool invert--><!--Device-bool invert-End--> |
+| value.single | Single IP address, used when type is OH_TRAFFICFILTER_IP_MATCH_SINGLE<br>**Since**: 26.0.0<br><!--Device-value.single--><!--Device-value.single-End--> |
+| value.cidr | CIDR match value, used when type is OH_TRAFFICFILTER_IP_MATCH_CIDR<br>**Since**: 26.0.0<br><!--Device-value.cidr--><!--Device-value.cidr-End--> |
+| value.range | IP range match value, used when type is OH_TRAFFICFILTER_IP_MATCH_RANGE<br>**Since**: 26.0.0<br><!--Device-value.range--><!--Device-value.range-End--> |
+| value.multi | Multi-IP match value, used when type is OH_TRAFFICFILTER_IP_MATCH_MULTI<br>**Since**: 26.0.0<br><!--Device-value.multi--><!--Device-value.multi-End--> |
 
 

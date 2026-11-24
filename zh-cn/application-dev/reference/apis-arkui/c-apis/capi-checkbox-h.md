@@ -32,7 +32,7 @@ enum ArkUI_CheckboxShape
 
 定义CheckBox组件形状。
 
-<!--Device-ArkUI_CheckboxShape--><!--Device-ArkUI_CheckboxShape-End-->
+<!--Device-enum ArkUI_CheckboxShape--><!--Device-enum ArkUI_CheckboxShape-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ enum ArkUI_CheckboxShape
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | 圆形。<br>**起始版本：** 12 |
-| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | 圆角方形。<br>**起始版本：** 12 |
+| ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | 圆形。<br>**起始版本：** 12<br><!--Device-ArkUI_CHECKBOX_SHAPE_CIRCLE = 0--><!--Device-ArkUI_CHECKBOX_SHAPE_CIRCLE = 0-End--> |
+| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | 圆角方形。<br>**起始版本：** 12<br><!--Device-ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE--><!--Device-ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE-End--> |
 
 

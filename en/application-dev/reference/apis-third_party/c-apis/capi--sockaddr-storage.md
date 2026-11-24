@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| sa_family_t ss_family |  |
-| char \_\_ss_padding[128-sizeof(long)-sizeof(sa_family_t)] |  |
-| unsigned long \_\_ss_align |  |
+| sa_family_t ss_family | <!--Device-sa_family_t ss_family--><!--Device-sa_family_t ss_family-End--> |
+| char \_\_ss_padding[128-sizeof(long)-sizeof(sa_family_t)] | <!--Device-char \_\_ss_padding[128-sizeof(long)-sizeof(sa_family_t)]--><!--Device-char \_\_ss_padding[128-sizeof(long)-sizeof(sa_family_t)]-End--> |
+| unsigned long \_\_ss_align | <!--Device-unsigned long \_\_ss_align--><!--Device-unsigned long \_\_ss_align-End--> |
 
 

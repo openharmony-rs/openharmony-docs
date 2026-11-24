@@ -24,7 +24,7 @@ Client callbacks structure.
 
 | Name | Description |
 | -- | -- |
-| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | Handler for device hotplug events.<br>**Since**: 24 |
-| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | Handler for critical service errors.<br>**Since**: 24 |
+| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | Handler for device hotplug events.<br>**Since**: 24<br><!--Device-OH_MIDICallback_OnDeviceChange onDeviceChange--><!--Device-OH_MIDICallback_OnDeviceChange onDeviceChange-End--> |
+| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | Handler for critical service errors.<br>**Since**: 24<br><!--Device-OH_MIDICallback_OnError onError--><!--Device-OH_MIDICallback_OnError onError-End--> |
 
 

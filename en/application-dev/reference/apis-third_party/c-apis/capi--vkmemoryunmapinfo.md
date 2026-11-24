@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkMemoryUnmapFlags flags |  |
-| VkDeviceMemory memory |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkMemoryUnmapFlags flags | <!--Device-VkMemoryUnmapFlags flags--><!--Device-VkMemoryUnmapFlags flags-End--> |
+| VkDeviceMemory memory | <!--Device-VkDeviceMemory memory--><!--Device-VkDeviceMemory memory-End--> |
 
 

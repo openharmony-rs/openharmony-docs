@@ -24,10 +24,10 @@ The struct describes the screen capture configuration.
 
 | Name | Description |
 | -- | -- |
-| [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md) recorderInfo | should be set, while dataType = OH_CAPTURE_FILE |
-| [OH_CaptureMode](capi-native-avscreen-capture-base-h.md#oh_capturemode) captureMode |  |
-| [OH_DataType](capi-native-avscreen-capture-base-h.md#oh_datatype) dataType |  |
-| [OH_AudioInfo](capi-avscreencapture-oh-audioinfo.md) audioInfo |  |
-| [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md) videoInfo |  |
+| [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md) recorderInfo | should be set, while dataType = OH_CAPTURE_FILE<br><!--Device-OH_RecorderInfo recorderInfo--><!--Device-OH_RecorderInfo recorderInfo-End--> |
+| [OH_CaptureMode](capi-native-avscreen-capture-base-h.md#oh_capturemode) captureMode | <!--Device-OH_CaptureMode captureMode--><!--Device-OH_CaptureMode captureMode-End--> |
+| [OH_DataType](capi-native-avscreen-capture-base-h.md#oh_datatype) dataType | <!--Device-OH_DataType dataType--><!--Device-OH_DataType dataType-End--> |
+| [OH_AudioInfo](capi-avscreencapture-oh-audioinfo.md) audioInfo | <!--Device-OH_AudioInfo audioInfo--><!--Device-OH_AudioInfo audioInfo-End--> |
+| [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md) videoInfo | <!--Device-OH_VideoInfo videoInfo--><!--Device-OH_VideoInfo videoInfo-End--> |
 
 

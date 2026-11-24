@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 bufferDeviceAddress |  |
-| VkBool32 bufferDeviceAddressCaptureReplay |  |
-| VkBool32 bufferDeviceAddressMultiDevice |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 bufferDeviceAddress | <!--Device-VkBool32 bufferDeviceAddress--><!--Device-VkBool32 bufferDeviceAddress-End--> |
+| VkBool32 bufferDeviceAddressCaptureReplay | <!--Device-VkBool32 bufferDeviceAddressCaptureReplay--><!--Device-VkBool32 bufferDeviceAddressCaptureReplay-End--> |
+| VkBool32 bufferDeviceAddressMultiDevice | <!--Device-VkBool32 bufferDeviceAddressMultiDevice--><!--Device-VkBool32 bufferDeviceAddressMultiDevice-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct NetConn_NetHandleList {...} NetConn_NetHandleList
 
 | 名称 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) netHandles[NETCONN_MAX_NET_SIZE] | 网络句柄列表。 |
-| int32_t netHandleListSize | netHandleList的实际大小。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) netHandles[NETCONN_MAX_NET_SIZE] | 网络句柄列表。<br><!--Device-NetConn_NetHandle netHandles[NETCONN_MAX_NET_SIZE]--><!--Device-NetConn_NetHandle netHandles[NETCONN_MAX_NET_SIZE]-End--> |
+| int32_t netHandleListSize | netHandleList的实际大小。<br><!--Device-int32_t netHandleListSize--><!--Device-int32_t netHandleListSize-End--> |
 
 

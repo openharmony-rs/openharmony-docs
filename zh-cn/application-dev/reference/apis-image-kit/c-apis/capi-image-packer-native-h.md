@@ -80,7 +80,7 @@ enum IMAGE_PACKER_DYNAMIC_RANGE
 
 编码指定动态范围。
 
-<!--Device-IMAGE_PACKER_DYNAMIC_RANGE--><!--Device-IMAGE_PACKER_DYNAMIC_RANGE-End-->
+<!--Device-enum IMAGE_PACKER_DYNAMIC_RANGE--><!--Device-enum IMAGE_PACKER_DYNAMIC_RANGE-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -88,8 +88,8 @@ enum IMAGE_PACKER_DYNAMIC_RANGE
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0 | 编码动态范围根据图像信息自适应。 |
-| IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1 | 编码图片为标准动态范围。 |
+| IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0 | 编码动态范围根据图像信息自适应。<br><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0--><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0-End--> |
+| IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1 | 编码图片为标准动态范围。<br><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1--><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1-End--> |
 
 
 ## 函数说明
@@ -267,7 +267,7 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：options或quality为空。 |
 
 ### OH_PackingOptions_GetNeedsPackProperties()
 

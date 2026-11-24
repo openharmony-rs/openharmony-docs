@@ -16,6 +16,14 @@
 
 ## 汇总
 
+### 结构体
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_AudioSuite_ConverterFormatEx（系统接口）](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md) | OH_AudioSuite_ConverterFormatEx | 定义扩展音频转换器格式信息结构体，用于描述支持任意采样率的音频格式。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_AudioSuite_ConverterInputInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-converterinputinfo-sys.md) | OH_AudioSuite_ConverterInputInfo | 定义音频转换器输入数据结构体。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_AudioSuite_ConverterOutputInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo-sys.md) | OH_AudioSuite_ConverterOutputInfo | 定义音频转换器输出数据结构体，用于直接处理模式接收转换后的音频数据。<br>**系统接口：** 此接口为系统接口。 |
+
 ### 函数
 
 | 名称 | 描述 |
@@ -52,8 +60,8 @@ OH_AudioConverter_Result OH_AudioSuite_ConverterCreateEx(const OH_AudioSuite_Con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) *inputFormat | [入参] 输入音频格式配置指针。不能为NULL，调用期间必须保持有效。 |
-| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) *outputFormat | [入参] 输出音频格式配置指针。不能为NULL，调用期间必须保持有效。 |
+| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md) *inputFormat | [入参] 输入音频格式配置指针。不能为NULL，调用期间必须保持有效。 |
+| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md) *outputFormat | [入参] 输出音频格式配置指针。不能为NULL，调用期间必须保持有效。 |
 | [OH_AudioConverter](capi-ohaudiosuite-oh-audioconverterstruct.md) **outOwnedConverter | [出参] 用于接收创建的音频转换器实例的指针。调用方拥有该结果并必须使用 [OH_AudioConverter_Destroy](capi-native-audio-converter-h.md#oh_audioconverter_destroy)释放。不能为NULL，无需初始化。调用失败时不会写入内容。 |
 
 **返回值：**
@@ -117,8 +125,8 @@ OH_AudioConverter_Result OH_AudioSuite_ConverterDirectProcess(OH_AudioConverter 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioConverter](capi-ohaudiosuite-oh-audioconverterstruct.md) *converter | [入参] 由[OH_AudioSuite_ConverterCreateEx](capi-native-audio-converter-h.md#oh_audiosuite_convertercreateex)或[OH_AudioConverter_Create](capi-native-audio-converter-h.md#oh_audioconverter_create)创建的转换器实例。 不能为NULL，调用期间必须保持有效。 |
-| [const OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo.md) *inData | [入参] 输入音频数据描述符指针。不能为NULL，调用期间必须保持有效。 **inData->size**为输入字节数，必须是[OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes)返回的最小输入字节数的整数倍。 |
-| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo.md) *outData | [入参，出参] 输出音频数据描述符指针。不能为NULL，调用期间必须保持有效。 <br>调用者需分配输出缓冲区并设置**outData->data**和**outData->size**。 若**inData->size**是最小输入字节数的k倍，则**outData->size**必须大于最小输出字节数的k倍， 其中最小输入字节数和最小输出字节数由[OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes)获取。 <br>转换结果写入**outData->data**，实际写入字节数通过**outData->writeSize**返回。 <br>调用失败时不会写入内容。 |
+| [const OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo-sys.md) *inData | [入参] 输入音频数据描述符指针。不能为NULL，调用期间必须保持有效。 **inData->size**为输入字节数，必须是[OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes)返回的最小输入字节数的整数倍。 |
+| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo-sys.md) *outData | [入参，出参] 输出音频数据描述符指针。不能为NULL，调用期间必须保持有效。 <br>调用者需分配输出缓冲区并设置**outData->data**和**outData->size**。 若**inData->size**是最小输入字节数的k倍，则**outData->size**必须大于最小输出字节数的k倍， 其中最小输入字节数和最小输出字节数由[OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes)获取。 <br>转换结果写入**outData->data**，实际写入字节数通过**outData->writeSize**返回。 <br>调用失败时不会写入内容。 |
 
 **返回值：**
 

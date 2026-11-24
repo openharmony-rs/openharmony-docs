@@ -24,7 +24,7 @@ typedef struct ArkUI_PointF {...} ArkUI_PointF
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | x轴坐标，单位为px。取值范围：(-∞, +∞)。 |
-| float y | y轴坐标，单位为px。取值范围：(-∞, +∞)。 |
+| float x | x轴坐标，单位为px。取值范围：(-∞, +∞)。<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | y轴坐标，单位为px。取值范围：(-∞, +∞)。<br><!--Device-float y--><!--Device-float y-End--> |
 
 

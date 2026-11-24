@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shaderModuleIdentifier |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shaderModuleIdentifier | <!--Device-VkBool32 shaderModuleIdentifier--><!--Device-VkBool32 shaderModuleIdentifier-End--> |
 
 

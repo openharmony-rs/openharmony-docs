@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t exclusiveScissorCount |  |
-| [const VkRect2D*](capi--vkrect2d.md) pExclusiveScissors |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t exclusiveScissorCount | <!--Device-uint32_t exclusiveScissorCount--><!--Device-uint32_t exclusiveScissorCount-End--> |
+| [const VkRect2D*](capi--vkrect2d.md) pExclusiveScissors | <!--Device-const VkRect2D* pExclusiveScissors--><!--Device-const VkRect2D* pExclusiveScissors-End--> |
 
 

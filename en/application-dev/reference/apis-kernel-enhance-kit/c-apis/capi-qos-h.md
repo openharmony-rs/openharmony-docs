@@ -52,8 +52,8 @@ This file declares the C APIs provided by Quality of Service (QoS) for setting, 
 
 | Name | Description |
 | -- | -- |
-| unsigned int OH_QoS_GewuSession | Session handle.<br>**Since**: 20<br>**System capability**: SystemCapability.Resourceschedule.QoS.Core |
-| unsigned int OH_QoS_GewuRequest | Request handle.<br>**Since**: 20<br>**System capability**: SystemCapability.Resourceschedule.QoS.Core |
+| unsigned int OH_QoS_GewuSession | Session handle.<br>**Since**: 20<br>**System capability**: SystemCapability.Resourceschedule.QoS.Core<br><!--Device-unsigned int OH_QoS_GewuSession--><!--Device-unsigned int OH_QoS_GewuSession-End--> |
+| unsigned int OH_QoS_GewuRequest | Request handle.<br>**Since**: 20<br>**System capability**: SystemCapability.Resourceschedule.QoS.Core<br><!--Device-unsigned int OH_QoS_GewuRequest--><!--Device-unsigned int OH_QoS_GewuRequest-End--> |
 
 ## Enum type description
 
@@ -67,7 +67,7 @@ enum QoS_Level
 
 Enumerates the QoS levels.
 
-<!--Device-QoS_Level--><!--Device-QoS_Level-End-->
+<!--Device-enum QoS_Level--><!--Device-enum QoS_Level-End-->
 
 **System capability**: SystemCapability.Resourceschedule.QoS.Core
 
@@ -75,12 +75,12 @@ Enumerates the QoS levels.
 
 | Enum item | Description |
 | -- | -- |
-| QOS_BACKGROUND = 0 | QoS level for user invisible tasks. |
-| QOS_UTILITY | QoS level for background critical tasks. |
-| QOS_DEFAULT | Default QoS level. |
-| QOS_USER_INITIATED | QoS level for user triggered tasks. |
-| QOS_DEADLINE_REQUEST | QoS level for time limited tasks. |
-| QOS_USER_INTERACTIVE | QoS level for user interactive tasks. |
+| QOS_BACKGROUND = 0 | QoS level for user invisible tasks.<br><!--Device-QOS_BACKGROUND = 0--><!--Device-QOS_BACKGROUND = 0-End--> |
+| QOS_UTILITY | QoS level for background critical tasks.<br><!--Device-QOS_UTILITY--><!--Device-QOS_UTILITY-End--> |
+| QOS_DEFAULT | Default QoS level.<br><!--Device-QOS_DEFAULT--><!--Device-QOS_DEFAULT-End--> |
+| QOS_USER_INITIATED | QoS level for user triggered tasks.<br><!--Device-QOS_USER_INITIATED--><!--Device-QOS_USER_INITIATED-End--> |
+| QOS_DEADLINE_REQUEST | QoS level for time limited tasks.<br><!--Device-QOS_DEADLINE_REQUEST--><!--Device-QOS_DEADLINE_REQUEST-End--> |
+| QOS_USER_INTERACTIVE | QoS level for user interactive tasks.<br><!--Device-QOS_USER_INTERACTIVE--><!--Device-QOS_USER_INTERACTIVE-End--> |
 
 ### OH_QoS_GewuErrorCode
 
@@ -92,7 +92,7 @@ enum OH_QoS_GewuErrorCode
 
 Enumerates the Gewu error codes.
 
-<!--Device-OH_QoS_GewuErrorCode--><!--Device-OH_QoS_GewuErrorCode-End-->
+<!--Device-enum OH_QoS_GewuErrorCode--><!--Device-enum OH_QoS_GewuErrorCode-End-->
 
 **System capability**: SystemCapability.Resourceschedule.QoS.Core
 
@@ -100,14 +100,14 @@ Enumerates the Gewu error codes.
 
 | Enum item | Description |
 | -- | -- |
-| OH_QOS_GEWU_OK = 0 | Success.<br>**Since**: 20 |
-| OH_QOS_GEWU_NOPERM = 201 | Permission error. Possible cause: The caller does not have the required permission. Solution: Ensure that the caller has the required permission.<br>**Since**: 20 |
-| OH_QOS_GEWU_NOMEM = 203 | Memory error. Possible cause: The system memory is insufficient. Solution: Release the resources and try again.<br>**Since**: 20 |
-| OH_QOS_GEWU_INVAL = 401 | Parameter error. Possible cause: The parameter type is incorrect or the parameter value is invalid. Solution: Verify the parameter type and value range.<br>**Since**: 20 |
-| OH_QOS_GEWU_EXIST = 501 | The handle already exists. Possible cause: An attempt was made to create an existing session or request. Solution: Do not create the session or request repeatedly, or destroy the existing handle first.<br>**Since**: 20 |
-| OH_QOS_GEWU_NOENT = 502 | Handle not found. Possible cause: The input session or request handle is invalid or has been destroyed. Solution: Ensure that the handle is valid.<br>**Since**: 20 |
-| OH_QOS_GEWU_NOSYS = 801 | Subsystem not found. Possible cause: The target device does not support this feature. Solution: Use a device that supports this feature.<br>**Since**: 20 |
-| OH_QOS_GEWU_FAULT = 901 | Other errors. Possible cause: An uncovered internal system error occurs. Solution: Check the system logs for detailed error information or contact technical support.<br>**Since**: 20 |
+| OH_QOS_GEWU_OK = 0 | Success.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_OK = 0--><!--Device-OH_QOS_GEWU_OK = 0-End--> |
+| OH_QOS_GEWU_NOPERM = 201 | Permission error. Possible cause: The caller does not have the required permission. Solution: Ensure that the caller has the required permission.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_NOPERM = 201--><!--Device-OH_QOS_GEWU_NOPERM = 201-End--> |
+| OH_QOS_GEWU_NOMEM = 203 | Memory error. Possible cause: The system memory is insufficient. Solution: Release the resources and try again.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_NOMEM = 203--><!--Device-OH_QOS_GEWU_NOMEM = 203-End--> |
+| OH_QOS_GEWU_INVAL = 401 | Parameter error. Possible cause: The parameter type is incorrect or the parameter value is invalid. Solution: Verify the parameter type and value range.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_INVAL = 401--><!--Device-OH_QOS_GEWU_INVAL = 401-End--> |
+| OH_QOS_GEWU_EXIST = 501 | The handle already exists. Possible cause: An attempt was made to create an existing session or request. Solution: Do not create the session or request repeatedly, or destroy the existing handle first.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_EXIST = 501--><!--Device-OH_QOS_GEWU_EXIST = 501-End--> |
+| OH_QOS_GEWU_NOENT = 502 | Handle not found. Possible cause: The input session or request handle is invalid or has been destroyed. Solution: Ensure that the handle is valid.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_NOENT = 502--><!--Device-OH_QOS_GEWU_NOENT = 502-End--> |
+| OH_QOS_GEWU_NOSYS = 801 | Subsystem not found. Possible cause: The target device does not support this feature. Solution: Use a device that supports this feature.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_NOSYS = 801--><!--Device-OH_QOS_GEWU_NOSYS = 801-End--> |
+| OH_QOS_GEWU_FAULT = 901 | Other errors. Possible cause: An uncovered internal system error occurs. Solution: Check the system logs for detailed error information or contact technical support.<br>**Since**: 20<br><!--Device-OH_QOS_GEWU_FAULT = 901--><!--Device-OH_QOS_GEWU_FAULT = 901-End--> |
 
 
 ## Function description

@@ -65,7 +65,7 @@ enum OH_SwapfsKeyStatus
 
 Defines the status of a swap key.
 
-<!--Device-OH_SwapfsKeyStatus--><!--Device-OH_SwapfsKeyStatus-End-->
+<!--Device-enum OH_SwapfsKeyStatus--><!--Device-enum OH_SwapfsKeyStatus-End-->
 
 **System capability**: SystemCapability.FileManagement.File.Swapfs
 
@@ -75,8 +75,8 @@ Defines the status of a swap key.
 
 | Enum item | Description |
 | -- | -- |
-| OH_SWAPFS_KEY_STATUS_ACTIVE = 0 | The key is active and available for swap-in, query, or removal.<br>**Since**: 26.0.0 |
-| OH_SWAPFS_KEY_STATUS_REMOVING = 1 | The key is logically deleted. New swap-in or query operations will be rejected.<br>**Since**: 26.0.0 |
+| OH_SWAPFS_KEY_STATUS_ACTIVE = 0 | The key is active and available for swap-in, query, or removal.<br>**Since**: 26.0.0<br><!--Device-OH_SWAPFS_KEY_STATUS_ACTIVE = 0--><!--Device-OH_SWAPFS_KEY_STATUS_ACTIVE = 0-End--> |
+| OH_SWAPFS_KEY_STATUS_REMOVING = 1 | The key is logically deleted. New swap-in or query operations will be rejected.<br>**Since**: 26.0.0<br><!--Device-OH_SWAPFS_KEY_STATUS_REMOVING = 1--><!--Device-OH_SWAPFS_KEY_STATUS_REMOVING = 1-End--> |
 
 ### OH_SwapfsDisableReason
 
@@ -88,7 +88,7 @@ enum OH_SwapfsDisableReason
 
 Defines the reason why the swap-out feature is disabled.
 
-<!--Device-OH_SwapfsDisableReason--><!--Device-OH_SwapfsDisableReason-End-->
+<!--Device-enum OH_SwapfsDisableReason--><!--Device-enum OH_SwapfsDisableReason-End-->
 
 **System capability**: SystemCapability.FileManagement.File.Swapfs
 
@@ -98,8 +98,8 @@ Defines the reason why the swap-out feature is disabled.
 
 | Enum item | Description |
 | -- | -- |
-| OH_SWAPFS_DISABLE_REASON_NONE = 0 | The feature is enabled (no disable reason).<br>**Since**: 26.0.0 |
-| OH_SWAPFS_DISABLE_REASON_NOSPC = 1 | Device storage space is insufficient.<br>**Since**: 26.0.0 |
+| OH_SWAPFS_DISABLE_REASON_NONE = 0 | The feature is enabled (no disable reason).<br>**Since**: 26.0.0<br><!--Device-OH_SWAPFS_DISABLE_REASON_NONE = 0--><!--Device-OH_SWAPFS_DISABLE_REASON_NONE = 0-End--> |
+| OH_SWAPFS_DISABLE_REASON_NOSPC = 1 | Device storage space is insufficient.<br>**Since**: 26.0.0<br><!--Device-OH_SWAPFS_DISABLE_REASON_NOSPC = 1--><!--Device-OH_SWAPFS_DISABLE_REASON_NOSPC = 1-End--> |
 
 
 ## Function description

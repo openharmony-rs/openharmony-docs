@@ -58,7 +58,7 @@ enum OH_AudioDevice_ChangeType
 
 定义音频设备更改类型。
 
-<!--Device-OH_AudioDevice_ChangeType--><!--Device-OH_AudioDevice_ChangeType-End-->
+<!--Device-enum OH_AudioDevice_ChangeType--><!--Device-enum OH_AudioDevice_ChangeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -66,8 +66,8 @@ enum OH_AudioDevice_ChangeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0 | 设备连接。 |
-| AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1 | 设备断开。 |
+| AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0 | 设备连接。<br><!--Device-AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0--><!--Device-AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0-End--> |
+| AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1 | 设备断开。<br><!--Device-AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1--><!--Device-AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1-End--> |
 
 ### OH_AudioDevice_Role
 
@@ -79,7 +79,7 @@ enum OH_AudioDevice_Role
 
 定义音频设备角色。
 
-<!--Device-OH_AudioDevice_Role--><!--Device-OH_AudioDevice_Role-End-->
+<!--Device-enum OH_AudioDevice_Role--><!--Device-enum OH_AudioDevice_Role-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -87,8 +87,8 @@ enum OH_AudioDevice_Role
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_DEVICE_ROLE_INPUT = 1 | 输入设备。 |
-| AUDIO_DEVICE_ROLE_OUTPUT = 2 | 输出设备。 |
+| AUDIO_DEVICE_ROLE_INPUT = 1 | 输入设备。<br><!--Device-AUDIO_DEVICE_ROLE_INPUT = 1--><!--Device-AUDIO_DEVICE_ROLE_INPUT = 1-End--> |
+| AUDIO_DEVICE_ROLE_OUTPUT = 2 | 输出设备。<br><!--Device-AUDIO_DEVICE_ROLE_OUTPUT = 2--><!--Device-AUDIO_DEVICE_ROLE_OUTPUT = 2-End--> |
 
 ### OH_AudioDevice_Type
 
@@ -100,7 +100,7 @@ enum OH_AudioDevice_Type
 
 定义音频设备类型。
 
-<!--Device-OH_AudioDevice_Type--><!--Device-OH_AudioDevice_Type-End-->
+<!--Device-enum OH_AudioDevice_Type--><!--Device-enum OH_AudioDevice_Type-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -108,24 +108,24 @@ enum OH_AudioDevice_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_DEVICE_TYPE_INVALID = 0 | 无效设备。 |
-| AUDIO_DEVICE_TYPE_EARPIECE = 1 | 内置听筒。 |
-| AUDIO_DEVICE_TYPE_SPEAKER = 2 | 内置扬声器。 |
-| AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3 | 带话筒的有线耳机。 |
-| AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4 | 无话筒的有线耳机。 |
-| AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7 | 使用面向同步连接链路（SCO）的蓝牙设备。 |
-| AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8 | 使用高级音频分布模式（A2DP）的蓝牙设备。 |
-| AUDIO_DEVICE_TYPE_MIC = 15 | 内置麦克风。 |
-| AUDIO_DEVICE_TYPE_USB_HEADSET = 22 | USB音频耳机。 |
-| AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23 | 显示端口（DisplayPort）设备。 |
-| AUDIO_DEVICE_TYPE_REMOTE_CAST = 24 | 音频被系统应用投送到其他远程的设备。 |
-| AUDIO_DEVICE_TYPE_USB_DEVICE = 25 | USB设备（不包含USB耳机）。<br>**起始版本：** 18 |
-| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | 附件设备，如遥控器上的麦克风。<br>**起始版本：** 19 |
-| AUDIO_DEVICE_TYPE_HDMI = 27 | HDMI设备（例如HDMI、ARC、eARC等）。<br>**起始版本：** 19 |
-| AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28 | 有线数字设备（例如S/PDIF等）。<br>**起始版本：** 19 |
-| AUDIO_DEVICE_TYPE_HEARING_AID = 30 | 助听器设备。<br>**起始版本：** 20 |
-| AUDIO_DEVICE_TYPE_NEARLINK = 31 | 星闪设备。<br>**起始版本：** 20 |
-| AUDIO_DEVICE_TYPE_DEFAULT = 1000 | 默认设备类型。 |
+| AUDIO_DEVICE_TYPE_INVALID = 0 | 无效设备。<br><!--Device-AUDIO_DEVICE_TYPE_INVALID = 0--><!--Device-AUDIO_DEVICE_TYPE_INVALID = 0-End--> |
+| AUDIO_DEVICE_TYPE_EARPIECE = 1 | 内置听筒。<br><!--Device-AUDIO_DEVICE_TYPE_EARPIECE = 1--><!--Device-AUDIO_DEVICE_TYPE_EARPIECE = 1-End--> |
+| AUDIO_DEVICE_TYPE_SPEAKER = 2 | 内置扬声器。<br><!--Device-AUDIO_DEVICE_TYPE_SPEAKER = 2--><!--Device-AUDIO_DEVICE_TYPE_SPEAKER = 2-End--> |
+| AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3 | 带话筒的有线耳机。<br><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3--><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3-End--> |
+| AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4 | 无话筒的有线耳机。<br><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4--><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4-End--> |
+| AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7 | 使用面向同步连接链路（SCO）的蓝牙设备。<br><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7--><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7-End--> |
+| AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8 | 使用高级音频分布模式（A2DP）的蓝牙设备。<br><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8--><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8-End--> |
+| AUDIO_DEVICE_TYPE_MIC = 15 | 内置麦克风。<br><!--Device-AUDIO_DEVICE_TYPE_MIC = 15--><!--Device-AUDIO_DEVICE_TYPE_MIC = 15-End--> |
+| AUDIO_DEVICE_TYPE_USB_HEADSET = 22 | USB音频耳机。<br><!--Device-AUDIO_DEVICE_TYPE_USB_HEADSET = 22--><!--Device-AUDIO_DEVICE_TYPE_USB_HEADSET = 22-End--> |
+| AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23 | 显示端口（DisplayPort）设备。<br><!--Device-AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23--><!--Device-AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23-End--> |
+| AUDIO_DEVICE_TYPE_REMOTE_CAST = 24 | 音频被系统应用投送到其他远程的设备。<br><!--Device-AUDIO_DEVICE_TYPE_REMOTE_CAST = 24--><!--Device-AUDIO_DEVICE_TYPE_REMOTE_CAST = 24-End--> |
+| AUDIO_DEVICE_TYPE_USB_DEVICE = 25 | USB设备（不包含USB耳机）。<br>**起始版本：** 18<br><!--Device-AUDIO_DEVICE_TYPE_USB_DEVICE = 25--><!--Device-AUDIO_DEVICE_TYPE_USB_DEVICE = 25-End--> |
+| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | 附件设备，如遥控器上的麦克风。<br>**起始版本：** 19<br><!--Device-AUDIO_DEVICE_TYPE_ACCESSORY = 26--><!--Device-AUDIO_DEVICE_TYPE_ACCESSORY = 26-End--> |
+| AUDIO_DEVICE_TYPE_HDMI = 27 | HDMI设备（例如HDMI、ARC、eARC等）。<br>**起始版本：** 19<br><!--Device-AUDIO_DEVICE_TYPE_HDMI = 27--><!--Device-AUDIO_DEVICE_TYPE_HDMI = 27-End--> |
+| AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28 | 有线数字设备（例如S/PDIF等）。<br>**起始版本：** 19<br><!--Device-AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28--><!--Device-AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28-End--> |
+| AUDIO_DEVICE_TYPE_HEARING_AID = 30 | 助听器设备。<br>**起始版本：** 20<br><!--Device-AUDIO_DEVICE_TYPE_HEARING_AID = 30--><!--Device-AUDIO_DEVICE_TYPE_HEARING_AID = 30-End--> |
+| AUDIO_DEVICE_TYPE_NEARLINK = 31 | 星闪设备。<br>**起始版本：** 20<br><!--Device-AUDIO_DEVICE_TYPE_NEARLINK = 31--><!--Device-AUDIO_DEVICE_TYPE_NEARLINK = 31-End--> |
+| AUDIO_DEVICE_TYPE_DEFAULT = 1000 | 默认设备类型。<br><!--Device-AUDIO_DEVICE_TYPE_DEFAULT = 1000--><!--Device-AUDIO_DEVICE_TYPE_DEFAULT = 1000-End--> |
 
 ### OH_AudioDevice_Flag
 
@@ -137,7 +137,7 @@ enum OH_AudioDevice_Flag
 
 定义音频设备标志。
 
-<!--Device-OH_AudioDevice_Flag--><!--Device-OH_AudioDevice_Flag-End-->
+<!--Device-enum OH_AudioDevice_Flag--><!--Device-enum OH_AudioDevice_Flag-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -145,10 +145,10 @@ enum OH_AudioDevice_Flag
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_DEVICE_FLAG_NONE = 0 | 无设备。 |
-| AUDIO_DEVICE_FLAG_OUTPUT = 1 | 输出设备。 |
-| AUDIO_DEVICE_FLAG_INPUT = 2 | 输入设备。 |
-| AUDIO_DEVICE_FLAG_ALL = 3 | 所有设备。 |
+| AUDIO_DEVICE_FLAG_NONE = 0 | 无设备。<br><!--Device-AUDIO_DEVICE_FLAG_NONE = 0--><!--Device-AUDIO_DEVICE_FLAG_NONE = 0-End--> |
+| AUDIO_DEVICE_FLAG_OUTPUT = 1 | 输出设备。<br><!--Device-AUDIO_DEVICE_FLAG_OUTPUT = 1--><!--Device-AUDIO_DEVICE_FLAG_OUTPUT = 1-End--> |
+| AUDIO_DEVICE_FLAG_INPUT = 2 | 输入设备。<br><!--Device-AUDIO_DEVICE_FLAG_INPUT = 2--><!--Device-AUDIO_DEVICE_FLAG_INPUT = 2-End--> |
+| AUDIO_DEVICE_FLAG_ALL = 3 | 所有设备。<br><!--Device-AUDIO_DEVICE_FLAG_ALL = 3--><!--Device-AUDIO_DEVICE_FLAG_ALL = 3-End--> |
 
 ### OH_AudioDevice_Usage
 
@@ -160,7 +160,7 @@ enum OH_AudioDevice_Usage
 
 定义可获取的设备种类。
 
-<!--Device-OH_AudioDevice_Usage--><!--Device-OH_AudioDevice_Usage-End-->
+<!--Device-enum OH_AudioDevice_Usage--><!--Device-enum OH_AudioDevice_Usage-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -168,12 +168,12 @@ enum OH_AudioDevice_Usage
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1 | 媒体输出设备。<br>**起始版本：** 12 |
-| AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2 | 媒体输入设备。<br>**起始版本：** 12 |
-| AUDIO_DEVICE_USAGE_MEDIA_ALL = 3 | 所有媒体设备。<br>**起始版本：** 12 |
-| AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4 | 通话输出设备。<br>**起始版本：** 12 |
-| AUDIO_DEVICE_USAGE_CALL_INPUT = 8 | 通话输入设备。<br>**起始版本：** 12 |
-| AUDIO_DEVICE_USAGE_CALL_ALL = 12 | 所有通话设备。<br>**起始版本：** 12 |
+| AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1 | 媒体输出设备。<br>**起始版本：** 12<br><!--Device-AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1--><!--Device-AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1-End--> |
+| AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2 | 媒体输入设备。<br>**起始版本：** 12<br><!--Device-AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2--><!--Device-AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2-End--> |
+| AUDIO_DEVICE_USAGE_MEDIA_ALL = 3 | 所有媒体设备。<br>**起始版本：** 12<br><!--Device-AUDIO_DEVICE_USAGE_MEDIA_ALL = 3--><!--Device-AUDIO_DEVICE_USAGE_MEDIA_ALL = 3-End--> |
+| AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4 | 通话输出设备。<br>**起始版本：** 12<br><!--Device-AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4--><!--Device-AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4-End--> |
+| AUDIO_DEVICE_USAGE_CALL_INPUT = 8 | 通话输入设备。<br>**起始版本：** 12<br><!--Device-AUDIO_DEVICE_USAGE_CALL_INPUT = 8--><!--Device-AUDIO_DEVICE_USAGE_CALL_INPUT = 8-End--> |
+| AUDIO_DEVICE_USAGE_CALL_ALL = 12 | 所有通话设备。<br>**起始版本：** 12<br><!--Device-AUDIO_DEVICE_USAGE_CALL_ALL = 12--><!--Device-AUDIO_DEVICE_USAGE_CALL_ALL = 12-End--> |
 
 ### OH_AudioDevice_BlockStatus
 
@@ -185,7 +185,7 @@ enum OH_AudioDevice_BlockStatus
 
 定义音频设备的堵塞状态，主要用于表示内置麦克风的堵塞。默认情况下，音频设备是未堵塞状态。
 
-<!--Device-OH_AudioDevice_BlockStatus--><!--Device-OH_AudioDevice_BlockStatus-End-->
+<!--Device-enum OH_AudioDevice_BlockStatus--><!--Device-enum OH_AudioDevice_BlockStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -193,8 +193,8 @@ enum OH_AudioDevice_BlockStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_DEVICE_UNBLOCKED = 0 | 音频设备未被堵塞。<br>**起始版本：** 13 |
-| AUDIO_DEVICE_BLOCKED = 1 | 音频设备被堵塞。<br>**起始版本：** 13 |
+| AUDIO_DEVICE_UNBLOCKED = 0 | 音频设备未被堵塞。<br>**起始版本：** 13<br><!--Device-AUDIO_DEVICE_UNBLOCKED = 0--><!--Device-AUDIO_DEVICE_UNBLOCKED = 0-End--> |
+| AUDIO_DEVICE_BLOCKED = 1 | 音频设备被堵塞。<br>**起始版本：** 13<br><!--Device-AUDIO_DEVICE_BLOCKED = 1--><!--Device-AUDIO_DEVICE_BLOCKED = 1-End--> |
 
 
 ## 函数说明

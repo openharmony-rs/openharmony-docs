@@ -24,8 +24,8 @@ Defines the struct of a parameter set.
 
 | Name | Description |
 | -- | -- |
-| uint32_t paramSetSize | Memory size of the parameter set. |
-| uint32_t paramsCnt | Number of parameters in the parameter set. |
-| [struct OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) params | Parameter array. |
+| uint32_t paramSetSize | Memory size of the parameter set.<br><!--Device-uint32_t paramSetSize--><!--Device-uint32_t paramSetSize-End--> |
+| uint32_t paramsCnt | Number of parameters in the parameter set.<br><!--Device-uint32_t paramsCnt--><!--Device-uint32_t paramsCnt-End--> |
+| [struct OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) params[] | Parameter array.<br><!--Device-struct OH_Huks_Param params[]--><!--Device-struct OH_Huks_Param params[]-End--> |
 
 

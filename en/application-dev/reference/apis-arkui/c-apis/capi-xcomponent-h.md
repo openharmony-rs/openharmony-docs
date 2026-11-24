@@ -38,7 +38,7 @@ enum ArkUI_XComponentType
 
 Enumerates the types of the **XComponent** component.
 
-<!--Device-ArkUI_XComponentType--><!--Device-ArkUI_XComponentType-End-->
+<!--Device-enum ArkUI_XComponentType--><!--Device-enum ArkUI_XComponentType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +46,7 @@ Enumerates the types of the **XComponent** component.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | The custom content of EGL/OpenGL ES and media data is displayed individually on the screen.<br>**Since**: 12 |
-| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | The custom content of EGL/OpenGL ES and media data is grouped and displayed together with content of the component.<br>**Since**: 12 |
+| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | The custom content of EGL/OpenGL ES and media data is displayed individually on the screen.<br>**Since**: 12<br><!--Device-ARKUI_XCOMPONENT_TYPE_SURFACE = 0--><!--Device-ARKUI_XCOMPONENT_TYPE_SURFACE = 0-End--> |
+| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | The custom content of EGL/OpenGL ES and media data is grouped and displayed together with content of the component.<br>**Since**: 12<br><!--Device-ARKUI_XCOMPONENT_TYPE_TEXTURE = 2--><!--Device-ARKUI_XCOMPONENT_TYPE_TEXTURE = 2-End--> |
 
 

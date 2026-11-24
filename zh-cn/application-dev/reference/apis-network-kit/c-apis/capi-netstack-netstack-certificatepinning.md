@@ -24,8 +24,8 @@ Defines certificate pinning information.
 
 | 名称 | 描述 |
 | -- | -- |
-| [NetStack_CertificatePinningKind](capi-net-ssl-c-type-h.md#netstack_certificatepinningkind) kind | Certificate lock type |
-| [NetStack_HashAlgorithm](capi-net-ssl-c-type-h.md#netstack_hashalgorithm) hashAlgorithm | Hash algorithm |
-| *publicKeyHash |  |
+| [NetStack_CertificatePinningKind](capi-net-ssl-c-type-h.md#netstack_certificatepinningkind) kind | Certificate lock type<br><!--Device-NetStack_CertificatePinningKind kind--><!--Device-NetStack_CertificatePinningKind kind-End--> |
+| [NetStack_HashAlgorithm](capi-net-ssl-c-type-h.md#netstack_hashalgorithm) hashAlgorithm | Hash algorithm<br><!--Device-NetStack_HashAlgorithm hashAlgorithm--><!--Device-NetStack_HashAlgorithm hashAlgorithm-End--> |
+| *publicKeyHash | <!--Device-*publicKeyHash--><!--Device-*publicKeyHash-End--> |
 
 

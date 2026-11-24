@@ -24,9 +24,9 @@ OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例�
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AVCodecOnError](capi-native-avcodec-base-h.md#oh_avcodeconerror) onError |  |
-| [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) onStreamChanged |  |
-| [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) onNeedInputBuffer |  |
-| [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer) onNewOutputBuffer |  |
+| [OH_AVCodecOnError](capi-native-avcodec-base-h.md#oh_avcodeconerror) onError | <!--Device-OH_AVCodecOnError onError--><!--Device-OH_AVCodecOnError onError-End--> |
+| [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) onStreamChanged | <!--Device-OH_AVCodecOnStreamChanged onStreamChanged--><!--Device-OH_AVCodecOnStreamChanged onStreamChanged-End--> |
+| [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) onNeedInputBuffer | <!--Device-OH_AVCodecOnNeedInputBuffer onNeedInputBuffer--><!--Device-OH_AVCodecOnNeedInputBuffer onNeedInputBuffer-End--> |
+| [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer) onNewOutputBuffer | <!--Device-OH_AVCodecOnNewOutputBuffer onNewOutputBuffer--><!--Device-OH_AVCodecOnNewOutputBuffer onNewOutputBuffer-End--> |
 
 

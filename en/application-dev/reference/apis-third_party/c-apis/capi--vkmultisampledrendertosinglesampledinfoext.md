@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 multisampledRenderToSingleSampledEnable |  |
-| VkSampleCountFlagBits rasterizationSamples |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 multisampledRenderToSingleSampledEnable | <!--Device-VkBool32 multisampledRenderToSingleSampledEnable--><!--Device-VkBool32 multisampledRenderToSingleSampledEnable-End--> |
+| VkSampleCountFlagBits rasterizationSamples | <!--Device-VkSampleCountFlagBits rasterizationSamples--><!--Device-VkSampleCountFlagBits rasterizationSamples-End--> |
 
 

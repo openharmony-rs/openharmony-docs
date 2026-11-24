@@ -24,6 +24,6 @@ typedef struct OH_AudioSession_DeactivatedEvent {...} OH_AudioSession_Deactivate
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioSession_DeactivatedReason](capi-native-audio-session-manager-h.md#oh_audiosession_deactivatedreason) reason | 音频会话停用原因。 |
+| [OH_AudioSession_DeactivatedReason](capi-native-audio-session-manager-h.md#oh_audiosession_deactivatedreason) reason | 音频会话停用原因。<br><!--Device-OH_AudioSession_DeactivatedReason reason--><!--Device-OH_AudioSession_DeactivatedReason reason-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDeviceEventTypeEXT deviceEvent |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDeviceEventTypeEXT deviceEvent | <!--Device-VkDeviceEventTypeEXT deviceEvent--><!--Device-VkDeviceEventTypeEXT deviceEvent-End--> |
 
 

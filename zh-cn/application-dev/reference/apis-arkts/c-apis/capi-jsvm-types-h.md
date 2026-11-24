@@ -88,23 +88,23 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* finalizeHint)](#jsvm_cdecl-jsvm_finalize) | JSVM_CDECL* JSVM_Finalize | 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会 在关联的JS对象被GC回收时被调用，用以执行native的清理动作。 |
-| [typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeData, void* finalizeHint, bool copied)](#jsvm_cdecl-jsvm_finalizearraybuffer) | JSVM_CDECL* JSVM_FinalizeArrayBuffer | 用于从外部内存创建的 ArrayBuffer 的 Finalize 回调函数指针类型。<br> 与 JSVM_Finalize 类似，但包含一个 copied 参数，用于指示引擎是否将外部数据拷贝到内部缓冲区 （true）或使用了零拷贝方式（false）。当 copied 为 true 时，引擎不持有对原始外部数据的引用， 调用方可在 API 调用返回后立即释放。当 copied 为 false 时，finalizeData 指向引擎正在释放 的原始外部内存，回调函数应对其进行释放。 |
-| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* streamData)](#jsvm_cdecl-jsvm_outputstream) | JSVM_CDECL* JSVM_OutputStream | 输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。 空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。 |
-| [typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_cdecl-jsvm_handlerforgc) | JSVM_CDECL* JSVM_HandlerForGC | GC回调的函数指针类型。 |
-| [typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const char* detail, bool isHeapOOM)](#jsvm_cdecl-jsvm_handlerforoomerror) | JSVM_CDECL* JSVM_HandlerForOOMError | OOM-Error回调的函数指针类型。 |
-| [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const char* message)](#jsvm_cdecl-jsvm_handlerforfatalerror) | JSVM_CDECL* JSVM_HandlerForFatalError | Fatal-Error回调的函数指针类型。 |
-| [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_cdecl-jsvm_handlerforpromisereject) | JSVM_CDECL* JSVM_HandlerForPromiseReject | Promise-Reject回调的函数指针类型。 |
-| [typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)](#jsvm_cdecl-jsvm_handlerforheapthreshold) | JSVM_CDECL* JSVM_HandlerForHeapThreshold | 堆阈值回调的函数指针类型。 |
+| [typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* finalizeHint)](#jsvm_finalize) | JSVM_Finalize | 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会 在关联的JS对象被GC回收时被调用，用以执行native的清理动作。 |
+| [typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeData, void* finalizeHint, bool copied)](#jsvm_finalizearraybuffer) | JSVM_FinalizeArrayBuffer | 用于从外部内存创建的 ArrayBuffer 的 Finalize 回调函数指针类型。<br> 与 JSVM_Finalize 类似，但包含一个 copied 参数，用于指示引擎是否将外部数据拷贝到内部缓冲区 （true）或使用了零拷贝方式（false）。当 copied 为 true 时，引擎不持有对原始外部数据的引用， 调用方可在 API 调用返回后立即释放。当 copied 为 false 时，finalizeData 指向引擎正在释放 的原始外部内存，回调函数应对其进行释放。 |
+| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* streamData)](#jsvm_outputstream) | JSVM_OutputStream | 输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。 空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。 |
+| [typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_handlerforgc) | JSVM_HandlerForGC | GC回调的函数指针类型。 |
+| [typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const char* detail, bool isHeapOOM)](#jsvm_handlerforoomerror) | JSVM_HandlerForOOMError | OOM-Error回调的函数指针类型。 |
+| [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const char* message)](#jsvm_handlerforfatalerror) | JSVM_HandlerForFatalError | Fatal-Error回调的函数指针类型。 |
+| [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_handlerforpromisereject) | JSVM_HandlerForPromiseReject | Promise-Reject回调的函数指针类型。 |
+| [typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)](#jsvm_handlerforheapthreshold) | JSVM_HandlerForHeapThreshold | 堆阈值回调的函数指针类型。 |
 
 ### 变量
 
 | 名称 | 描述 |
 | -- | -- |
-| uint16_t char16_t | 为uint16_t创建一个别名——char16_t<br> 这段代码的核心目的是确保 char16_t 这个类型在所有目标编译环境中都可用，即使在一些不支持它的旧环境里。 char16_t 是 C++11 标准中引入的一个新的基本数据类型，专门用于存储16位字符，通常用来表示UTF-16编码的字符。<br> 如果编译器本身不认识char16_t，手动创建一个底层实现是16位无符号的整数类型。 前置生效条件为：当前编译器——非C++编译器编译 \|\| 是微软Visual C++编译器且版本早于Visual Studio 2015（不含）。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.ArkCompiler.JSVM |
-| JSVM_CallbackStruct* JSVM_Callback | 用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.ArkCompiler.JSVM |
-| JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg | 包含属性监听回调的结构的指针类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkCompiler.JSVM |
-| typedef uint16_t char16_t | 为uint16_t创建一个别名——char16_t<br> 这段代码的核心目的是确保 char16_t 这个类型在所有目标编译环境中都可用，即使在一些不支持它的旧环境里。 char16_t 是 C++11 标准中引入的一个新的基本数据类型，专门用于存储16位字符，通常用来表示UTF-16编码的字符。<br> 如果编译器本身不认识char16_t，手动创建一个底层实现是16位无符号的整数类型。 前置生效条件为：当前编译器——非C++编译器编译 \|\| 是微软Visual C++编译器且版本早于Visual Studio 2015（不含）。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.ArkCompiler.JSVM |
+| uint16_t char16_t | 为uint16_t创建一个别名——char16_t<br> 这段代码的核心目的是确保 char16_t 这个类型在所有目标编译环境中都可用，即使在一些不支持它的旧环境里。 char16_t 是 C++11 标准中引入的一个新的基本数据类型，专门用于存储16位字符，通常用来表示UTF-16编码的字符。<br> 如果编译器本身不认识char16_t，手动创建一个底层实现是16位无符号的整数类型。 前置生效条件为：当前编译器——非C++编译器编译 \|\| 是微软Visual C++编译器且版本早于Visual Studio 2015（不含）。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.ArkCompiler.JSVM<br><!--Device-uint16_t char16_t--><!--Device-uint16_t char16_t-End--> |
+| JSVM_CallbackStruct* JSVM_Callback | 用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.ArkCompiler.JSVM<br><!--Device-JSVM_CallbackStruct* JSVM_Callback--><!--Device-JSVM_CallbackStruct* JSVM_Callback-End--> |
+| JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg | 包含属性监听回调的结构的指针类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkCompiler.JSVM<br><!--Device-JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg--><!--Device-JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg-End--> |
+| typedef uint16_t char16_t | 为uint16_t创建一个别名——char16_t<br> 这段代码的核心目的是确保 char16_t 这个类型在所有目标编译环境中都可用，即使在一些不支持它的旧环境里。 char16_t 是 C++11 标准中引入的一个新的基本数据类型，专门用于存储16位字符，通常用来表示UTF-16编码的字符。<br> 如果编译器本身不认识char16_t，手动创建一个底层实现是16位无符号的整数类型。 前置生效条件为：当前编译器——非C++编译器编译 \|\| 是微软Visual C++编译器且版本早于Visual Studio 2015（不含）。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.ArkCompiler.JSVM<br><!--Device-typedef uint16_t char16_t--><!--Device-typedef uint16_t char16_t-End--> |
 
 ## 枚举类型说明
 
@@ -118,7 +118,7 @@ enum JSVM_PropertyAttributes
 
 用于控制JavaScript对象属性的行为。
 
-<!--Device-JSVM_PropertyAttributes--><!--Device-JSVM_PropertyAttributes-End-->
+<!--Device-enum JSVM_PropertyAttributes--><!--Device-enum JSVM_PropertyAttributes-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -126,16 +126,16 @@ enum JSVM_PropertyAttributes
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_DEFAULT = 0 | 没有在属性上设置显式属性。 |
-| JSVM_WRITABLE = 1 << 0 | 该属性是可写的。 |
-| JSVM_ENUMERABLE = 1 << 1 | 该属性是可枚举的。 |
-| JSVM_CONFIGURABLE = 1 << 2 | 该属性是可配置的。 |
-| JSVM_NO_RECEIVER_CHECK = 1 << 3 | 用于标记本地方法的接收器无需进行检查。 如果未设置 JSVM_NO_RECEIVER_CHECK，则该方法仅接受定义类的实例作为接收器， 否则会向 JSVM 抛出异常“类型错误：非法调用”。 |
-| JSVM_STATIC = 1 << 10 | 该属性将被定义为类的静态属性，而不是默认的实例属性。这仅由OH_JSVM_DefineClass使用。 |
-| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE | 就像JS类中的方法一样，该属性是可配置和可写的，但不可枚举。 |
-| JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK | 无需检查接收者的类方法。 |
-| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE | 就像JavaScript中通过赋值设置的属性一样，属性是可写、可枚举和可配置的。 |
-| JSVM_JSPROPERTY_NO_RECEIVER_CHECK = JSVM_DEFAULT_JSPROPERTY \| JSVM_NO_RECEIVER_CHECK | 无需检查接收者的对象属性。 |
+| JSVM_DEFAULT = 0 | 没有在属性上设置显式属性。<br><!--Device-JSVM_DEFAULT = 0--><!--Device-JSVM_DEFAULT = 0-End--> |
+| JSVM_WRITABLE = 1 << 0 | 该属性是可写的。<br><!--Device-JSVM_WRITABLE = 1 << 0--><!--Device-JSVM_WRITABLE = 1 << 0-End--> |
+| JSVM_ENUMERABLE = 1 << 1 | 该属性是可枚举的。<br><!--Device-JSVM_ENUMERABLE = 1 << 1--><!--Device-JSVM_ENUMERABLE = 1 << 1-End--> |
+| JSVM_CONFIGURABLE = 1 << 2 | 该属性是可配置的。<br><!--Device-JSVM_CONFIGURABLE = 1 << 2--><!--Device-JSVM_CONFIGURABLE = 1 << 2-End--> |
+| JSVM_NO_RECEIVER_CHECK = 1 << 3 | 用于标记本地方法的接收器无需进行检查。 如果未设置 JSVM_NO_RECEIVER_CHECK，则该方法仅接受定义类的实例作为接收器， 否则会向 JSVM 抛出异常“类型错误：非法调用”。<br><!--Device-JSVM_NO_RECEIVER_CHECK = 1 << 3--><!--Device-JSVM_NO_RECEIVER_CHECK = 1 << 3-End--> |
+| JSVM_STATIC = 1 << 10 | 该属性将被定义为类的静态属性，而不是默认的实例属性。这仅由OH_JSVM_DefineClass使用。<br><!--Device-JSVM_STATIC = 1 << 10--><!--Device-JSVM_STATIC = 1 << 10-End--> |
+| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE | 就像JS类中的方法一样，该属性是可配置和可写的，但不可枚举。<br><!--Device-JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE--><!--Device-JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE-End--> |
+| JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK | 无需检查接收者的类方法。<br><!--Device-JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK--><!--Device-JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK-End--> |
+| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE | 就像JavaScript中通过赋值设置的属性一样，属性是可写、可枚举和可配置的。<br><!--Device-JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE--><!--Device-JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE-End--> |
+| JSVM_JSPROPERTY_NO_RECEIVER_CHECK = JSVM_DEFAULT_JSPROPERTY \| JSVM_NO_RECEIVER_CHECK | 无需检查接收者的对象属性。<br><!--Device-JSVM_JSPROPERTY_NO_RECEIVER_CHECK = JSVM_DEFAULT_JSPROPERTY \| JSVM_NO_RECEIVER_CHECK--><!--Device-JSVM_JSPROPERTY_NO_RECEIVER_CHECK = JSVM_DEFAULT_JSPROPERTY \| JSVM_NO_RECEIVER_CHECK-End--> |
 
 ### JSVM_ValueType
 
@@ -147,7 +147,7 @@ enum JSVM_ValueType
 
 描述JSVM_Value的类型。
 
-<!--Device-JSVM_ValueType--><!--Device-JSVM_ValueType-End-->
+<!--Device-enum JSVM_ValueType--><!--Device-enum JSVM_ValueType-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -155,16 +155,16 @@ enum JSVM_ValueType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_UNDEFINED | 未定义类型。 |
-| JSVM_NULL | Null类型。 |
-| JSVM_BOOLEAN | 布尔类型。 |
-| JSVM_NUMBER | 数字类型。 |
-| JSVM_STRING | 字符串类型。 |
-| JSVM_SYMBOL | 符号类型。 |
-| JSVM_OBJECT | 对象类型。 |
-| JSVM_FUNCTION | 函数类型。 |
-| JSVM_EXTERNAL | 外部类型。 |
-| JSVM_BIGINT | bigint类型。 |
+| JSVM_UNDEFINED | 未定义类型。<br><!--Device-JSVM_UNDEFINED--><!--Device-JSVM_UNDEFINED-End--> |
+| JSVM_NULL | Null类型。<br><!--Device-JSVM_NULL--><!--Device-JSVM_NULL-End--> |
+| JSVM_BOOLEAN | 布尔类型。<br><!--Device-JSVM_BOOLEAN--><!--Device-JSVM_BOOLEAN-End--> |
+| JSVM_NUMBER | 数字类型。<br><!--Device-JSVM_NUMBER--><!--Device-JSVM_NUMBER-End--> |
+| JSVM_STRING | 字符串类型。<br><!--Device-JSVM_STRING--><!--Device-JSVM_STRING-End--> |
+| JSVM_SYMBOL | 符号类型。<br><!--Device-JSVM_SYMBOL--><!--Device-JSVM_SYMBOL-End--> |
+| JSVM_OBJECT | 对象类型。<br><!--Device-JSVM_OBJECT--><!--Device-JSVM_OBJECT-End--> |
+| JSVM_FUNCTION | 函数类型。<br><!--Device-JSVM_FUNCTION--><!--Device-JSVM_FUNCTION-End--> |
+| JSVM_EXTERNAL | 外部类型。<br><!--Device-JSVM_EXTERNAL--><!--Device-JSVM_EXTERNAL-End--> |
+| JSVM_BIGINT | bigint类型。<br><!--Device-JSVM_BIGINT--><!--Device-JSVM_BIGINT-End--> |
 
 ### JSVM_TypedarrayType
 
@@ -176,7 +176,7 @@ enum JSVM_TypedarrayType
 
 描述Typedarray的类型。
 
-<!--Device-JSVM_TypedarrayType--><!--Device-JSVM_TypedarrayType-End-->
+<!--Device-enum JSVM_TypedarrayType--><!--Device-enum JSVM_TypedarrayType-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -184,17 +184,17 @@ enum JSVM_TypedarrayType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_INT8_ARRAY | int8类型。 |
-| JSVM_UINT8_ARRAY | uint8类型。 |
-| JSVM_UINT8_CLAMPED_ARRAY | uint8固定类型。 |
-| JSVM_INT16_ARRAY | int16类型。 |
-| JSVM_UINT16_ARRAY | uint16类型。 |
-| JSVM_INT32_ARRAY | int32类型。 |
-| JSVM_UINT32_ARRAY | uint32类型。 |
-| JSVM_FLOAT32_ARRAY | float32类型。 |
-| JSVM_FLOAT64_ARRAY | float64类型。 |
-| JSVM_BIGINT64_ARRAY | bigint64类型。 |
-| JSVM_BIGUINT64_ARRAY | biguint64类型。 |
+| JSVM_INT8_ARRAY | int8类型。<br><!--Device-JSVM_INT8_ARRAY--><!--Device-JSVM_INT8_ARRAY-End--> |
+| JSVM_UINT8_ARRAY | uint8类型。<br><!--Device-JSVM_UINT8_ARRAY--><!--Device-JSVM_UINT8_ARRAY-End--> |
+| JSVM_UINT8_CLAMPED_ARRAY | uint8固定类型。<br><!--Device-JSVM_UINT8_CLAMPED_ARRAY--><!--Device-JSVM_UINT8_CLAMPED_ARRAY-End--> |
+| JSVM_INT16_ARRAY | int16类型。<br><!--Device-JSVM_INT16_ARRAY--><!--Device-JSVM_INT16_ARRAY-End--> |
+| JSVM_UINT16_ARRAY | uint16类型。<br><!--Device-JSVM_UINT16_ARRAY--><!--Device-JSVM_UINT16_ARRAY-End--> |
+| JSVM_INT32_ARRAY | int32类型。<br><!--Device-JSVM_INT32_ARRAY--><!--Device-JSVM_INT32_ARRAY-End--> |
+| JSVM_UINT32_ARRAY | uint32类型。<br><!--Device-JSVM_UINT32_ARRAY--><!--Device-JSVM_UINT32_ARRAY-End--> |
+| JSVM_FLOAT32_ARRAY | float32类型。<br><!--Device-JSVM_FLOAT32_ARRAY--><!--Device-JSVM_FLOAT32_ARRAY-End--> |
+| JSVM_FLOAT64_ARRAY | float64类型。<br><!--Device-JSVM_FLOAT64_ARRAY--><!--Device-JSVM_FLOAT64_ARRAY-End--> |
+| JSVM_BIGINT64_ARRAY | bigint64类型。<br><!--Device-JSVM_BIGINT64_ARRAY--><!--Device-JSVM_BIGINT64_ARRAY-End--> |
+| JSVM_BIGUINT64_ARRAY | biguint64类型。<br><!--Device-JSVM_BIGUINT64_ARRAY--><!--Device-JSVM_BIGUINT64_ARRAY-End--> |
 
 ### JSVM_Status
 
@@ -206,7 +206,7 @@ enum JSVM_Status
 
 表示JSVM-API调用成功或失败的完整状态码。
 
-<!--Device-JSVM_Status--><!--Device-JSVM_Status-End-->
+<!--Device-enum JSVM_Status--><!--Device-enum JSVM_Status-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -214,32 +214,32 @@ enum JSVM_Status
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_OK | 成功状态。 |
-| JSVM_INVALID_ARG | 无效参数状态。 |
-| JSVM_OBJECT_EXPECTED | 期待传入对象类型。 |
-| JSVM_STRING_EXPECTED | 期望传入字符串类型。 |
-| JSVM_NAME_EXPECTED | 期望传入名字类型。 |
-| JSVM_FUNCTION_EXPECTED | 期待传入函数类型。 |
-| JSVM_NUMBER_EXPECTED | 期待传入数字类型。 |
-| JSVM_BOOLEAN_EXPECTED | 期待传入布尔类型。 |
-| JSVM_ARRAY_EXPECTED | 期待传入数组类型。 |
-| JSVM_GENERIC_FAILURE | 通用失败状态。 |
-| JSVM_PENDING_EXCEPTION | 挂起异常状态。 |
-| JSVM_CANCELLED | 取消状态。 |
-| JSVM_ESCAPE_CALLED_TWICE | 转义调用了两次。 |
-| JSVM_HANDLE_SCOPE_MISMATCH | 句柄作用域不匹配。 |
-| JSVM_CALLBACK_SCOPE_MISMATCH | 回调作用域不匹配。 |
-| JSVM_QUEUE_FULL | 队列满。 |
-| JSVM_CLOSING | 关闭中。 |
-| JSVM_BIGINT_EXPECTED | 期望传入Bigint类型。 |
-| JSVM_DATE_EXPECTED | 期望传入日期类型。 |
-| JSVM_ARRAYBUFFER_EXPECTED | 期望传入ArrayBuffer类型。 |
-| JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED | 可分离的数组缓冲区预期状态。 |
-| JSVM_WOULD_DEADLOCK | 将死锁状态。 |
-| JSVM_NO_EXTERNAL_BUFFERS_ALLOWED | 不允许外部缓冲区。 |
-| JSVM_CANNOT_RUN_JS | 不能执行JS。 |
-| JSVM_INVALID_TYPE | 传入的参数为非法类型。<br>**起始版本：** 18 |
-| JSVM_JIT_MODE_EXPECTED | 无 JIT 权限。<br>**起始版本：** 18 |
+| JSVM_OK | 成功状态。<br><!--Device-JSVM_OK--><!--Device-JSVM_OK-End--> |
+| JSVM_INVALID_ARG | 无效参数状态。<br><!--Device-JSVM_INVALID_ARG--><!--Device-JSVM_INVALID_ARG-End--> |
+| JSVM_OBJECT_EXPECTED | 期待传入对象类型。<br><!--Device-JSVM_OBJECT_EXPECTED--><!--Device-JSVM_OBJECT_EXPECTED-End--> |
+| JSVM_STRING_EXPECTED | 期望传入字符串类型。<br><!--Device-JSVM_STRING_EXPECTED--><!--Device-JSVM_STRING_EXPECTED-End--> |
+| JSVM_NAME_EXPECTED | 期望传入名字类型。<br><!--Device-JSVM_NAME_EXPECTED--><!--Device-JSVM_NAME_EXPECTED-End--> |
+| JSVM_FUNCTION_EXPECTED | 期待传入函数类型。<br><!--Device-JSVM_FUNCTION_EXPECTED--><!--Device-JSVM_FUNCTION_EXPECTED-End--> |
+| JSVM_NUMBER_EXPECTED | 期待传入数字类型。<br><!--Device-JSVM_NUMBER_EXPECTED--><!--Device-JSVM_NUMBER_EXPECTED-End--> |
+| JSVM_BOOLEAN_EXPECTED | 期待传入布尔类型。<br><!--Device-JSVM_BOOLEAN_EXPECTED--><!--Device-JSVM_BOOLEAN_EXPECTED-End--> |
+| JSVM_ARRAY_EXPECTED | 期待传入数组类型。<br><!--Device-JSVM_ARRAY_EXPECTED--><!--Device-JSVM_ARRAY_EXPECTED-End--> |
+| JSVM_GENERIC_FAILURE | 通用失败状态。<br><!--Device-JSVM_GENERIC_FAILURE--><!--Device-JSVM_GENERIC_FAILURE-End--> |
+| JSVM_PENDING_EXCEPTION | 挂起异常状态。<br><!--Device-JSVM_PENDING_EXCEPTION--><!--Device-JSVM_PENDING_EXCEPTION-End--> |
+| JSVM_CANCELLED | 取消状态。<br><!--Device-JSVM_CANCELLED--><!--Device-JSVM_CANCELLED-End--> |
+| JSVM_ESCAPE_CALLED_TWICE | 转义调用了两次。<br><!--Device-JSVM_ESCAPE_CALLED_TWICE--><!--Device-JSVM_ESCAPE_CALLED_TWICE-End--> |
+| JSVM_HANDLE_SCOPE_MISMATCH | 句柄作用域不匹配。<br><!--Device-JSVM_HANDLE_SCOPE_MISMATCH--><!--Device-JSVM_HANDLE_SCOPE_MISMATCH-End--> |
+| JSVM_CALLBACK_SCOPE_MISMATCH | 回调作用域不匹配。<br><!--Device-JSVM_CALLBACK_SCOPE_MISMATCH--><!--Device-JSVM_CALLBACK_SCOPE_MISMATCH-End--> |
+| JSVM_QUEUE_FULL | 队列满。<br><!--Device-JSVM_QUEUE_FULL--><!--Device-JSVM_QUEUE_FULL-End--> |
+| JSVM_CLOSING | 关闭中。<br><!--Device-JSVM_CLOSING--><!--Device-JSVM_CLOSING-End--> |
+| JSVM_BIGINT_EXPECTED | 期望传入Bigint类型。<br><!--Device-JSVM_BIGINT_EXPECTED--><!--Device-JSVM_BIGINT_EXPECTED-End--> |
+| JSVM_DATE_EXPECTED | 期望传入日期类型。<br><!--Device-JSVM_DATE_EXPECTED--><!--Device-JSVM_DATE_EXPECTED-End--> |
+| JSVM_ARRAYBUFFER_EXPECTED | 期望传入ArrayBuffer类型。<br><!--Device-JSVM_ARRAYBUFFER_EXPECTED--><!--Device-JSVM_ARRAYBUFFER_EXPECTED-End--> |
+| JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED | 可分离的数组缓冲区预期状态。<br><!--Device-JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED--><!--Device-JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED-End--> |
+| JSVM_WOULD_DEADLOCK | 将死锁状态。<br><!--Device-JSVM_WOULD_DEADLOCK--><!--Device-JSVM_WOULD_DEADLOCK-End--> |
+| JSVM_NO_EXTERNAL_BUFFERS_ALLOWED | 不允许外部缓冲区。<br><!--Device-JSVM_NO_EXTERNAL_BUFFERS_ALLOWED--><!--Device-JSVM_NO_EXTERNAL_BUFFERS_ALLOWED-End--> |
+| JSVM_CANNOT_RUN_JS | 不能执行JS。<br><!--Device-JSVM_CANNOT_RUN_JS--><!--Device-JSVM_CANNOT_RUN_JS-End--> |
+| JSVM_INVALID_TYPE | 传入的参数为非法类型。<br>**起始版本：** 18<br><!--Device-JSVM_INVALID_TYPE--><!--Device-JSVM_INVALID_TYPE-End--> |
+| JSVM_JIT_MODE_EXPECTED | 无 JIT 权限。<br>**起始版本：** 18<br><!--Device-JSVM_JIT_MODE_EXPECTED--><!--Device-JSVM_JIT_MODE_EXPECTED-End--> |
 
 ### JSVM_KeyCollectionMode
 
@@ -251,7 +251,7 @@ enum JSVM_KeyCollectionMode
 
 限制查找属性的范围。
 
-<!--Device-JSVM_KeyCollectionMode--><!--Device-JSVM_KeyCollectionMode-End-->
+<!--Device-enum JSVM_KeyCollectionMode--><!--Device-enum JSVM_KeyCollectionMode-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -259,8 +259,8 @@ enum JSVM_KeyCollectionMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_KEY_INCLUDE_PROTOTYPES | 也包含对象原型链上的属性。 |
-| JSVM_KEY_OWN_ONLY | 仅包含对象自身属性。 |
+| JSVM_KEY_INCLUDE_PROTOTYPES | 也包含对象原型链上的属性。<br><!--Device-JSVM_KEY_INCLUDE_PROTOTYPES--><!--Device-JSVM_KEY_INCLUDE_PROTOTYPES-End--> |
+| JSVM_KEY_OWN_ONLY | 仅包含对象自身属性。<br><!--Device-JSVM_KEY_OWN_ONLY--><!--Device-JSVM_KEY_OWN_ONLY-End--> |
 
 ### JSVM_KeyFilter
 
@@ -272,7 +272,7 @@ enum JSVM_KeyFilter
 
 属性过滤器，可以通过使用or来构造一个复合过滤器。
 
-<!--Device-JSVM_KeyFilter--><!--Device-JSVM_KeyFilter-End-->
+<!--Device-enum JSVM_KeyFilter--><!--Device-enum JSVM_KeyFilter-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -280,12 +280,12 @@ enum JSVM_KeyFilter
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_KEY_ALL_PROPERTIES = 0 | 所有属性的键。 |
-| JSVM_KEY_WRITABLE = 1 | 可写的键。 |
-| JSVM_KEY_ENUMERABLE = 1 << 1 | 可枚举的键。 |
-| JSVM_KEY_CONFIGURABLE = 1 << 2 | 可配置的键。 |
-| JSVM_KEY_SKIP_STRINGS = 1 << 3 | 排除字符串类型的键。 |
-| JSVM_KEY_SKIP_SYMBOLS = 1 << 4 | 排除符号类型的键。 |
+| JSVM_KEY_ALL_PROPERTIES = 0 | 所有属性的键。<br><!--Device-JSVM_KEY_ALL_PROPERTIES = 0--><!--Device-JSVM_KEY_ALL_PROPERTIES = 0-End--> |
+| JSVM_KEY_WRITABLE = 1 | 可写的键。<br><!--Device-JSVM_KEY_WRITABLE = 1--><!--Device-JSVM_KEY_WRITABLE = 1-End--> |
+| JSVM_KEY_ENUMERABLE = 1 << 1 | 可枚举的键。<br><!--Device-JSVM_KEY_ENUMERABLE = 1 << 1--><!--Device-JSVM_KEY_ENUMERABLE = 1 << 1-End--> |
+| JSVM_KEY_CONFIGURABLE = 1 << 2 | 可配置的键。<br><!--Device-JSVM_KEY_CONFIGURABLE = 1 << 2--><!--Device-JSVM_KEY_CONFIGURABLE = 1 << 2-End--> |
+| JSVM_KEY_SKIP_STRINGS = 1 << 3 | 排除字符串类型的键。<br><!--Device-JSVM_KEY_SKIP_STRINGS = 1 << 3--><!--Device-JSVM_KEY_SKIP_STRINGS = 1 << 3-End--> |
+| JSVM_KEY_SKIP_SYMBOLS = 1 << 4 | 排除符号类型的键。<br><!--Device-JSVM_KEY_SKIP_SYMBOLS = 1 << 4--><!--Device-JSVM_KEY_SKIP_SYMBOLS = 1 << 4-End--> |
 
 ### JSVM_KeyConversion
 
@@ -297,7 +297,7 @@ enum JSVM_KeyConversion
 
 键转换选项。
 
-<!--Device-JSVM_KeyConversion--><!--Device-JSVM_KeyConversion-End-->
+<!--Device-enum JSVM_KeyConversion--><!--Device-enum JSVM_KeyConversion-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -305,8 +305,8 @@ enum JSVM_KeyConversion
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_KEY_KEEP_NUMBERS | 将返回整数索引的数字。 |
-| JSVM_KEY_NUMBERS_TO_STRINGS | 将整数索引转换为字符串。 |
+| JSVM_KEY_KEEP_NUMBERS | 将返回整数索引的数字。<br><!--Device-JSVM_KEY_KEEP_NUMBERS--><!--Device-JSVM_KEY_KEEP_NUMBERS-End--> |
+| JSVM_KEY_NUMBERS_TO_STRINGS | 将整数索引转换为字符串。<br><!--Device-JSVM_KEY_NUMBERS_TO_STRINGS--><!--Device-JSVM_KEY_NUMBERS_TO_STRINGS-End--> |
 
 ### JSVM_MemoryPressureLevel
 
@@ -318,7 +318,7 @@ enum JSVM_MemoryPressureLevel
 
 内存压力水平。
 
-<!--Device-JSVM_MemoryPressureLevel--><!--Device-JSVM_MemoryPressureLevel-End-->
+<!--Device-enum JSVM_MemoryPressureLevel--><!--Device-enum JSVM_MemoryPressureLevel-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -326,10 +326,10 @@ enum JSVM_MemoryPressureLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_MEMORY_PRESSURE_LEVEL_NONE | 无压力。 |
-| JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | 中等压力。 |
-| JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | 临界压力。 |
-| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | 通知系统内存不足，立即触发垃圾回收。<br>**起始版本：** 22 |
+| JSVM_MEMORY_PRESSURE_LEVEL_NONE | 无压力。<br><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_NONE--><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_NONE-End--> |
+| JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | 中等压力。<br><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_MODERATE--><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_MODERATE-End--> |
+| JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | 临界压力。<br><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL--><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL-End--> |
+| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | 通知系统内存不足，立即触发垃圾回收。<br>**起始版本：** 22<br><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY--><!--Device-JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY-End--> |
 
 ### JSVM_CompileMode
 
@@ -341,7 +341,7 @@ enum JSVM_CompileMode
 
 编译模式。
 
-<!--Device-JSVM_CompileMode--><!--Device-JSVM_CompileMode-End-->
+<!--Device-enum JSVM_CompileMode--><!--Device-enum JSVM_CompileMode-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -349,11 +349,11 @@ enum JSVM_CompileMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_COMPILE_MODE_DEFAULT | 默认编译模式。 |
-| JSVM_COMPILE_MODE_CONSUME_CODE_CACHE | 使用代码缓存的模式。 |
-| JSVM_COMPILE_MODE_EAGER_COMPILE | 激进编译模式。 |
-| JSVM_COMPILE_MODE_PRODUCE_COMPILE_PROFILE | 生成编译依赖的模式。 |
-| JSVM_COMPILE_MODE_CONSUME_COMPILE_PROFILE | 使用编译依赖的模式。 |
+| JSVM_COMPILE_MODE_DEFAULT | 默认编译模式。<br><!--Device-JSVM_COMPILE_MODE_DEFAULT--><!--Device-JSVM_COMPILE_MODE_DEFAULT-End--> |
+| JSVM_COMPILE_MODE_CONSUME_CODE_CACHE | 使用代码缓存的模式。<br><!--Device-JSVM_COMPILE_MODE_CONSUME_CODE_CACHE--><!--Device-JSVM_COMPILE_MODE_CONSUME_CODE_CACHE-End--> |
+| JSVM_COMPILE_MODE_EAGER_COMPILE | 激进编译模式。<br><!--Device-JSVM_COMPILE_MODE_EAGER_COMPILE--><!--Device-JSVM_COMPILE_MODE_EAGER_COMPILE-End--> |
+| JSVM_COMPILE_MODE_PRODUCE_COMPILE_PROFILE | 生成编译依赖的模式。<br><!--Device-JSVM_COMPILE_MODE_PRODUCE_COMPILE_PROFILE--><!--Device-JSVM_COMPILE_MODE_PRODUCE_COMPILE_PROFILE-End--> |
+| JSVM_COMPILE_MODE_CONSUME_COMPILE_PROFILE | 使用编译依赖的模式。<br><!--Device-JSVM_COMPILE_MODE_CONSUME_COMPILE_PROFILE--><!--Device-JSVM_COMPILE_MODE_CONSUME_COMPILE_PROFILE-End--> |
 
 ### JSVM_CompileOptionId
 
@@ -365,7 +365,7 @@ enum JSVM_CompileOptionId
 
 JSVM编译选项ID。
 
-<!--Device-JSVM_CompileOptionId--><!--Device-JSVM_CompileOptionId-End-->
+<!--Device-enum JSVM_CompileOptionId--><!--Device-enum JSVM_CompileOptionId-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -373,13 +373,13 @@ JSVM编译选项ID。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_COMPILE_MODE | JSVM编译模式。 |
-| JSVM_COMPILE_CODE_CACHE | JSVM代码缓存。 |
-| JSVM_COMPILE_SCRIPT_ORIGIN | JSVM脚本来源。 |
-| JSVM_COMPILE_COMPILE_PROFILE | JSVM编译依赖。 |
-| JSVM_COMPILE_ENABLE_SOURCE_MAP | JSVM的 Source Map 的使能情况。 |
-| JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT | JSVM脚本的后台反序列化结果。<br>**起始版本：** 24 |
-| JSVM_COMPILE_CODE_CACHE_REJECTED | JSVM字节码缓存是否被拒绝。<br>**起始版本：** 24 |
+| JSVM_COMPILE_MODE | JSVM编译模式。<br><!--Device-JSVM_COMPILE_MODE--><!--Device-JSVM_COMPILE_MODE-End--> |
+| JSVM_COMPILE_CODE_CACHE | JSVM代码缓存。<br><!--Device-JSVM_COMPILE_CODE_CACHE--><!--Device-JSVM_COMPILE_CODE_CACHE-End--> |
+| JSVM_COMPILE_SCRIPT_ORIGIN | JSVM脚本来源。<br><!--Device-JSVM_COMPILE_SCRIPT_ORIGIN--><!--Device-JSVM_COMPILE_SCRIPT_ORIGIN-End--> |
+| JSVM_COMPILE_COMPILE_PROFILE | JSVM编译依赖。<br><!--Device-JSVM_COMPILE_COMPILE_PROFILE--><!--Device-JSVM_COMPILE_COMPILE_PROFILE-End--> |
+| JSVM_COMPILE_ENABLE_SOURCE_MAP | JSVM的 Source Map 的使能情况。<br><!--Device-JSVM_COMPILE_ENABLE_SOURCE_MAP--><!--Device-JSVM_COMPILE_ENABLE_SOURCE_MAP-End--> |
+| JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT | JSVM脚本的后台反序列化结果。<br>**起始版本：** 24<br><!--Device-JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT--><!--Device-JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT-End--> |
+| JSVM_COMPILE_CODE_CACHE_REJECTED | JSVM字节码缓存是否被拒绝。<br>**起始版本：** 24<br><!--Device-JSVM_COMPILE_CODE_CACHE_REJECTED--><!--Device-JSVM_COMPILE_CODE_CACHE_REJECTED-End--> |
 
 ### JSVM_RegExpFlags
 
@@ -391,7 +391,7 @@ enum JSVM_RegExpFlags
 
 正则表达式标志位。它们可以用来启用一组标志。
 
-<!--Device-JSVM_RegExpFlags--><!--Device-JSVM_RegExpFlags-End-->
+<!--Device-enum JSVM_RegExpFlags--><!--Device-enum JSVM_RegExpFlags-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -399,16 +399,16 @@ enum JSVM_RegExpFlags
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_REGEXP_NONE = 0 | None模式。 |
-| JSVM_REGEXP_GLOBAL = 1 << 0 | Global模式。 |
-| JSVM_REGEXP_IGNORE_CASE = 1 << 1 | Ignore Case模式。 |
-| JSVM_REGEXP_MULTILINE = 1 << 2 | Multiline模式。 |
-| JSVM_REGEXP_STICKY = 1 << 3 | Sticky模式。 |
-| JSVM_REGEXP_UNICODE = 1 << 4 | Unicode模式。 |
-| JSVM_REGEXP_DOT_ALL = 1 << 5 | dotAll模式。 |
-| JSVM_REGEXP_LINEAR = 1 << 6 | Linear模式。 |
-| JSVM_REGEXP_HAS_INDICES = 1 << 7 | Has Indices模式。 |
-| JSVM_REGEXP_UNICODE_SETS = 1 << 8 | Unicode Sets模式。 |
+| JSVM_REGEXP_NONE = 0 | None模式。<br><!--Device-JSVM_REGEXP_NONE = 0--><!--Device-JSVM_REGEXP_NONE = 0-End--> |
+| JSVM_REGEXP_GLOBAL = 1 << 0 | Global模式。<br><!--Device-JSVM_REGEXP_GLOBAL = 1 << 0--><!--Device-JSVM_REGEXP_GLOBAL = 1 << 0-End--> |
+| JSVM_REGEXP_IGNORE_CASE = 1 << 1 | Ignore Case模式。<br><!--Device-JSVM_REGEXP_IGNORE_CASE = 1 << 1--><!--Device-JSVM_REGEXP_IGNORE_CASE = 1 << 1-End--> |
+| JSVM_REGEXP_MULTILINE = 1 << 2 | Multiline模式。<br><!--Device-JSVM_REGEXP_MULTILINE = 1 << 2--><!--Device-JSVM_REGEXP_MULTILINE = 1 << 2-End--> |
+| JSVM_REGEXP_STICKY = 1 << 3 | Sticky模式。<br><!--Device-JSVM_REGEXP_STICKY = 1 << 3--><!--Device-JSVM_REGEXP_STICKY = 1 << 3-End--> |
+| JSVM_REGEXP_UNICODE = 1 << 4 | Unicode模式。<br><!--Device-JSVM_REGEXP_UNICODE = 1 << 4--><!--Device-JSVM_REGEXP_UNICODE = 1 << 4-End--> |
+| JSVM_REGEXP_DOT_ALL = 1 << 5 | dotAll模式。<br><!--Device-JSVM_REGEXP_DOT_ALL = 1 << 5--><!--Device-JSVM_REGEXP_DOT_ALL = 1 << 5-End--> |
+| JSVM_REGEXP_LINEAR = 1 << 6 | Linear模式。<br><!--Device-JSVM_REGEXP_LINEAR = 1 << 6--><!--Device-JSVM_REGEXP_LINEAR = 1 << 6-End--> |
+| JSVM_REGEXP_HAS_INDICES = 1 << 7 | Has Indices模式。<br><!--Device-JSVM_REGEXP_HAS_INDICES = 1 << 7--><!--Device-JSVM_REGEXP_HAS_INDICES = 1 << 7-End--> |
+| JSVM_REGEXP_UNICODE_SETS = 1 << 8 | Unicode Sets模式。<br><!--Device-JSVM_REGEXP_UNICODE_SETS = 1 << 8--><!--Device-JSVM_REGEXP_UNICODE_SETS = 1 << 8-End--> |
 
 ### JSVM_InitializedFlag
 
@@ -420,7 +420,7 @@ enum JSVM_InitializedFlag
 
 初始化方式的标志位。
 
-<!--Device-JSVM_InitializedFlag--><!--Device-JSVM_InitializedFlag-End-->
+<!--Device-enum JSVM_InitializedFlag--><!--Device-enum JSVM_InitializedFlag-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -428,8 +428,8 @@ enum JSVM_InitializedFlag
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_ZERO_INITIALIZED | 初始化为0。 |
-| JSVM_UNINITIALIZED | 不做初始化。 |
+| JSVM_ZERO_INITIALIZED | 初始化为0。<br><!--Device-JSVM_ZERO_INITIALIZED--><!--Device-JSVM_ZERO_INITIALIZED-End--> |
+| JSVM_UNINITIALIZED | 不做初始化。<br><!--Device-JSVM_UNINITIALIZED--><!--Device-JSVM_UNINITIALIZED-End--> |
 
 ### JSVM_WasmOptLevel
 
@@ -441,7 +441,7 @@ enum JSVM_WasmOptLevel
 
 WebAssembly 函数优化等级。
 
-<!--Device-JSVM_WasmOptLevel--><!--Device-JSVM_WasmOptLevel-End-->
+<!--Device-enum JSVM_WasmOptLevel--><!--Device-enum JSVM_WasmOptLevel-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -449,8 +449,8 @@ WebAssembly 函数优化等级。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_WASM_OPT_BASELINE = 10 | baseline 优化等级。 |
-| JSVM_WASM_OPT_HIGH = 20 | 高优化等级。 |
+| JSVM_WASM_OPT_BASELINE = 10 | baseline 优化等级。<br><!--Device-JSVM_WASM_OPT_BASELINE = 10--><!--Device-JSVM_WASM_OPT_BASELINE = 10-End--> |
+| JSVM_WASM_OPT_HIGH = 20 | 高优化等级。<br><!--Device-JSVM_WASM_OPT_HIGH = 20--><!--Device-JSVM_WASM_OPT_HIGH = 20-End--> |
 
 ### JSVM_CacheType
 
@@ -462,7 +462,7 @@ enum JSVM_CacheType
 
 缓存类型。
 
-<!--Device-JSVM_CacheType--><!--Device-JSVM_CacheType-End-->
+<!--Device-enum JSVM_CacheType--><!--Device-enum JSVM_CacheType-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -470,8 +470,8 @@ enum JSVM_CacheType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_CACHE_TYPE_JS | JS 缓存, 由接口 OH_JSVM_CreateCodeCache 生成。 |
-| JSVM_CACHE_TYPE_WASM | WebAssembly 缓存, 由接口 OH_JSVM_CreateWasmCache 生成。 |
+| JSVM_CACHE_TYPE_JS | JS 缓存, 由接口 OH_JSVM_CreateCodeCache 生成。<br><!--Device-JSVM_CACHE_TYPE_JS--><!--Device-JSVM_CACHE_TYPE_JS-End--> |
+| JSVM_CACHE_TYPE_WASM | WebAssembly 缓存, 由接口 OH_JSVM_CreateWasmCache 生成。<br><!--Device-JSVM_CACHE_TYPE_WASM--><!--Device-JSVM_CACHE_TYPE_WASM-End--> |
 
 ### JSVM_MicrotaskPolicy
 
@@ -483,7 +483,7 @@ enum JSVM_MicrotaskPolicy
 
 JSVM 微任务执行策略。
 
-<!--Device-JSVM_MicrotaskPolicy--><!--Device-JSVM_MicrotaskPolicy-End-->
+<!--Device-enum JSVM_MicrotaskPolicy--><!--Device-enum JSVM_MicrotaskPolicy-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -491,8 +491,8 @@ JSVM 微任务执行策略。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_MICROTASK_EXPLICIT = 0 | 调用 OH_JSVM_PerformMicrotaskCheckpoint 方法后微任务执行。 |
-| JSVM_MICROTASK_AUTO | JS 调用栈为 0 时自动执行微任务。 默认模式。 |
+| JSVM_MICROTASK_EXPLICIT = 0 | 调用 OH_JSVM_PerformMicrotaskCheckpoint 方法后微任务执行。<br><!--Device-JSVM_MICROTASK_EXPLICIT = 0--><!--Device-JSVM_MICROTASK_EXPLICIT = 0-End--> |
+| JSVM_MICROTASK_AUTO | JS 调用栈为 0 时自动执行微任务。 默认模式。<br><!--Device-JSVM_MICROTASK_AUTO--><!--Device-JSVM_MICROTASK_AUTO-End--> |
 
 ### JSVM_TraceCategory
 
@@ -504,7 +504,7 @@ enum JSVM_TraceCategory
 
 JSVM 内部 Trace 事件的类别。
 
-<!--Device-JSVM_TraceCategory--><!--Device-JSVM_TraceCategory-End-->
+<!--Device-enum JSVM_TraceCategory--><!--Device-enum JSVM_TraceCategory-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -512,13 +512,13 @@ JSVM 内部 Trace 事件的类别。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_TRACE_VM | 采集 JSVM 主要接口调用, 例如执行 js 脚本。 |
-| JSVM_TRACE_COMPILE | 采集编译相关的接口调用, 例如后台编译。 |
-| JSVM_TRACE_EXECUTE | 采集与运行状态相关的接口调用, 例如中断与微任务。 |
-| JSVM_TRACE_RUNTIME | 采集外部函数调用相关信息。 |
-| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中堆栈相关信息。 |
-| JSVM_TRACE_WASM | 采集主要的 WASM 相关接口调用, 例如编译与实例化 WASM 模块。 |
-| JSVM_TRACE_WASM_DETAILED | 采集更多更细节的 WASM 相关接口调用，例如后台编译、跳板编译。 |
+| JSVM_TRACE_VM | 采集 JSVM 主要接口调用, 例如执行 js 脚本。<br><!--Device-JSVM_TRACE_VM--><!--Device-JSVM_TRACE_VM-End--> |
+| JSVM_TRACE_COMPILE | 采集编译相关的接口调用, 例如后台编译。<br><!--Device-JSVM_TRACE_COMPILE--><!--Device-JSVM_TRACE_COMPILE-End--> |
+| JSVM_TRACE_EXECUTE | 采集与运行状态相关的接口调用, 例如中断与微任务。<br><!--Device-JSVM_TRACE_EXECUTE--><!--Device-JSVM_TRACE_EXECUTE-End--> |
+| JSVM_TRACE_RUNTIME | 采集外部函数调用相关信息。<br><!--Device-JSVM_TRACE_RUNTIME--><!--Device-JSVM_TRACE_RUNTIME-End--> |
+| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中堆栈相关信息。<br><!--Device-JSVM_TRACE_STACK_TRACE--><!--Device-JSVM_TRACE_STACK_TRACE-End--> |
+| JSVM_TRACE_WASM | 采集主要的 WASM 相关接口调用, 例如编译与实例化 WASM 模块。<br><!--Device-JSVM_TRACE_WASM--><!--Device-JSVM_TRACE_WASM-End--> |
+| JSVM_TRACE_WASM_DETAILED | 采集更多更细节的 WASM 相关接口调用，例如后台编译、跳板编译。<br><!--Device-JSVM_TRACE_WASM_DETAILED--><!--Device-JSVM_TRACE_WASM_DETAILED-End--> |
 
 ### JSVM_CBTriggerTimeForGC
 
@@ -530,7 +530,7 @@ enum JSVM_CBTriggerTimeForGC
 
 触发回调函数的时机。
 
-<!--Device-JSVM_CBTriggerTimeForGC--><!--Device-JSVM_CBTriggerTimeForGC-End-->
+<!--Device-enum JSVM_CBTriggerTimeForGC--><!--Device-enum JSVM_CBTriggerTimeForGC-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -538,8 +538,8 @@ enum JSVM_CBTriggerTimeForGC
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_CB_TRIGGER_BEFORE_GC | 在GC之前触发回调函数。 |
-| JSVM_CB_TRIGGER_AFTER_GC | 在GC之后触发回调函数。 |
+| JSVM_CB_TRIGGER_BEFORE_GC | 在GC之前触发回调函数。<br><!--Device-JSVM_CB_TRIGGER_BEFORE_GC--><!--Device-JSVM_CB_TRIGGER_BEFORE_GC-End--> |
+| JSVM_CB_TRIGGER_AFTER_GC | 在GC之后触发回调函数。<br><!--Device-JSVM_CB_TRIGGER_AFTER_GC--><!--Device-JSVM_CB_TRIGGER_AFTER_GC-End--> |
 
 ### JSVM_GCType
 
@@ -551,7 +551,7 @@ enum JSVM_GCType
 
 GC类型。
 
-<!--Device-JSVM_GCType--><!--Device-JSVM_GCType-End-->
+<!--Device-enum JSVM_GCType--><!--Device-enum JSVM_GCType-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -559,12 +559,12 @@ GC类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_GC_TYPE_SCAVENGE = 1 << 0 | GC算法为Scavenge。 |
-| JSVM_GC_TYPE_MINOR_MARK_COMPACT = 1 << 1 | GC算法为Minor-Mark-Compact。 |
-| JSVM_GC_TYPE_MARK_SWEEP_COMPACT = 1 << 2 | GC算法为Mark-Sweep-Compact。 |
-| JSVM_GC_TYPE_INCREMENTAL_MARKING = 1 << 3 | GC算法为Incremental-Marking。 |
-| JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS = 1 << 4 | GC算法为Weak-Callbacks。 |
-| JSVM_GC_TYPE_ALL = JSVM_GC_TYPE_SCAVENGE \| JSVM_GC_TYPE_MINOR_MARK_COMPACT \| JSVM_GC_TYPE_MARK_SWEEP_COMPACT \| JSVM_GC_TYPE_INCREMENTAL_MARKING \| JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS | 包含所有类型的GC算法。 |
+| JSVM_GC_TYPE_SCAVENGE = 1 << 0 | GC算法为Scavenge。<br><!--Device-JSVM_GC_TYPE_SCAVENGE = 1 << 0--><!--Device-JSVM_GC_TYPE_SCAVENGE = 1 << 0-End--> |
+| JSVM_GC_TYPE_MINOR_MARK_COMPACT = 1 << 1 | GC算法为Minor-Mark-Compact。<br><!--Device-JSVM_GC_TYPE_MINOR_MARK_COMPACT = 1 << 1--><!--Device-JSVM_GC_TYPE_MINOR_MARK_COMPACT = 1 << 1-End--> |
+| JSVM_GC_TYPE_MARK_SWEEP_COMPACT = 1 << 2 | GC算法为Mark-Sweep-Compact。<br><!--Device-JSVM_GC_TYPE_MARK_SWEEP_COMPACT = 1 << 2--><!--Device-JSVM_GC_TYPE_MARK_SWEEP_COMPACT = 1 << 2-End--> |
+| JSVM_GC_TYPE_INCREMENTAL_MARKING = 1 << 3 | GC算法为Incremental-Marking。<br><!--Device-JSVM_GC_TYPE_INCREMENTAL_MARKING = 1 << 3--><!--Device-JSVM_GC_TYPE_INCREMENTAL_MARKING = 1 << 3-End--> |
+| JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS = 1 << 4 | GC算法为Weak-Callbacks。<br><!--Device-JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS = 1 << 4--><!--Device-JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS = 1 << 4-End--> |
+| JSVM_GC_TYPE_ALL = JSVM_GC_TYPE_SCAVENGE \| JSVM_GC_TYPE_MINOR_MARK_COMPACT \| JSVM_GC_TYPE_MARK_SWEEP_COMPACT \| JSVM_GC_TYPE_INCREMENTAL_MARKING \| JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS | 包含所有类型的GC算法。<br><!--Device-JSVM_GC_TYPE_ALL = JSVM_GC_TYPE_SCAVENGE \| JSVM_GC_TYPE_MINOR_MARK_COMPACT \| JSVM_GC_TYPE_MARK_SWEEP_COMPACT \| JSVM_GC_TYPE_INCREMENTAL_MARKING \| JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS--><!--Device-JSVM_GC_TYPE_ALL = JSVM_GC_TYPE_SCAVENGE \| JSVM_GC_TYPE_MINOR_MARK_COMPACT \| JSVM_GC_TYPE_MARK_SWEEP_COMPACT \| JSVM_GC_TYPE_INCREMENTAL_MARKING \| JSVM_GC_TYPE_PROCESS_WEAK_CALLBACKS-End--> |
 
 ### JSVM_GCCallbackFlags
 
@@ -576,7 +576,7 @@ enum JSVM_GCCallbackFlags
 
 GC回调函数标记。
 
-<!--Device-JSVM_GCCallbackFlags--><!--Device-JSVM_GCCallbackFlags-End-->
+<!--Device-enum JSVM_GCCallbackFlags--><!--Device-enum JSVM_GCCallbackFlags-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -584,13 +584,13 @@ GC回调函数标记。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_NO_GC_CALLBACK_FLAGS | 无回调函数标记。 |
-| JSVM_GC_CALLBACK_CONSTRUCT_RETAINED_OBJECT_INFOS | 垃圾回收回调中将构建保留对象信息。 |
-| JSVM_GC_CALLBACK_FORCED | 强制执行垃圾回收回调。 |
-| JSVM_GC_CALLBACK_SYNCHRONOUS_PHANTOM_CALLBACK_PROCESSING | 同步处理幽灵对象回调。 |
-| JSVM_GC_CALLBACK_COLLECT_ALL_AVAILABLE_GARBAGE | 垃圾回收过程中会收集所有可用的垃圾对象。 |
-| JSVM_GC_CALLBACK_COLLECT_ALL_EXTERNAL_MEMORY | 垃圾回收时会收集所有的外部内存。 |
-| JSVM_GC_CALLBACK_SCHEDULE_IDLE_GARBAGE_COLLECTION | 在空闲时调度垃圾回收。 |
+| JSVM_NO_GC_CALLBACK_FLAGS | 无回调函数标记。<br><!--Device-JSVM_NO_GC_CALLBACK_FLAGS--><!--Device-JSVM_NO_GC_CALLBACK_FLAGS-End--> |
+| JSVM_GC_CALLBACK_CONSTRUCT_RETAINED_OBJECT_INFOS | 垃圾回收回调中将构建保留对象信息。<br><!--Device-JSVM_GC_CALLBACK_CONSTRUCT_RETAINED_OBJECT_INFOS--><!--Device-JSVM_GC_CALLBACK_CONSTRUCT_RETAINED_OBJECT_INFOS-End--> |
+| JSVM_GC_CALLBACK_FORCED | 强制执行垃圾回收回调。<br><!--Device-JSVM_GC_CALLBACK_FORCED--><!--Device-JSVM_GC_CALLBACK_FORCED-End--> |
+| JSVM_GC_CALLBACK_SYNCHRONOUS_PHANTOM_CALLBACK_PROCESSING | 同步处理幽灵对象回调。<br><!--Device-JSVM_GC_CALLBACK_SYNCHRONOUS_PHANTOM_CALLBACK_PROCESSING--><!--Device-JSVM_GC_CALLBACK_SYNCHRONOUS_PHANTOM_CALLBACK_PROCESSING-End--> |
+| JSVM_GC_CALLBACK_COLLECT_ALL_AVAILABLE_GARBAGE | 垃圾回收过程中会收集所有可用的垃圾对象。<br><!--Device-JSVM_GC_CALLBACK_COLLECT_ALL_AVAILABLE_GARBAGE--><!--Device-JSVM_GC_CALLBACK_COLLECT_ALL_AVAILABLE_GARBAGE-End--> |
+| JSVM_GC_CALLBACK_COLLECT_ALL_EXTERNAL_MEMORY | 垃圾回收时会收集所有的外部内存。<br><!--Device-JSVM_GC_CALLBACK_COLLECT_ALL_EXTERNAL_MEMORY--><!--Device-JSVM_GC_CALLBACK_COLLECT_ALL_EXTERNAL_MEMORY-End--> |
+| JSVM_GC_CALLBACK_SCHEDULE_IDLE_GARBAGE_COLLECTION | 在空闲时调度垃圾回收。<br><!--Device-JSVM_GC_CALLBACK_SCHEDULE_IDLE_GARBAGE_COLLECTION--><!--Device-JSVM_GC_CALLBACK_SCHEDULE_IDLE_GARBAGE_COLLECTION-End--> |
 
 ### JSVM_PromiseRejectEvent
 
@@ -602,7 +602,7 @@ enum JSVM_PromiseRejectEvent
 
 promise-reject事件。
 
-<!--Device-JSVM_PromiseRejectEvent--><!--Device-JSVM_PromiseRejectEvent-End-->
+<!--Device-enum JSVM_PromiseRejectEvent--><!--Device-enum JSVM_PromiseRejectEvent-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -610,11 +610,11 @@ promise-reject事件。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_PROMISE_REJECT_OTHER_REASONS = 0 | Promise被拒绝，但拒绝的原因未知或不明确。 |
-| JSVM_PROMISE_REJECT_WITH_NO_HANDLER = 1 | Promise被拒绝但没有处理程序。 |
-| JSVM_PROMISE_ADD_HANDLER_AFTER_REJECTED = 2 | Promise已被拒绝后，再添加处理程序。 |
-| JSVM_PROMISE_REJECT_AFTER_RESOLVED = 3 | Promise已被解决后，再尝试拒绝该Promise。 |
-| JSVM_PROMISE_RESOLVE_AFTER_RESOLVED = 4 | Promise已被解决后，再尝试解决该Promise。 |
+| JSVM_PROMISE_REJECT_OTHER_REASONS = 0 | Promise被拒绝，但拒绝的原因未知或不明确。<br><!--Device-JSVM_PROMISE_REJECT_OTHER_REASONS = 0--><!--Device-JSVM_PROMISE_REJECT_OTHER_REASONS = 0-End--> |
+| JSVM_PROMISE_REJECT_WITH_NO_HANDLER = 1 | Promise被拒绝但没有处理程序。<br><!--Device-JSVM_PROMISE_REJECT_WITH_NO_HANDLER = 1--><!--Device-JSVM_PROMISE_REJECT_WITH_NO_HANDLER = 1-End--> |
+| JSVM_PROMISE_ADD_HANDLER_AFTER_REJECTED = 2 | Promise已被拒绝后，再添加处理程序。<br><!--Device-JSVM_PROMISE_ADD_HANDLER_AFTER_REJECTED = 2--><!--Device-JSVM_PROMISE_ADD_HANDLER_AFTER_REJECTED = 2-End--> |
+| JSVM_PROMISE_REJECT_AFTER_RESOLVED = 3 | Promise已被解决后，再尝试拒绝该Promise。<br><!--Device-JSVM_PROMISE_REJECT_AFTER_RESOLVED = 3--><!--Device-JSVM_PROMISE_REJECT_AFTER_RESOLVED = 3-End--> |
+| JSVM_PROMISE_RESOLVE_AFTER_RESOLVED = 4 | Promise已被解决后，再尝试解决该Promise。<br><!--Device-JSVM_PROMISE_RESOLVE_AFTER_RESOLVED = 4--><!--Device-JSVM_PROMISE_RESOLVE_AFTER_RESOLVED = 4-End--> |
 
 ### JSVM_MessageErrorLevel
 
@@ -626,7 +626,7 @@ enum JSVM_MessageErrorLevel
 
 message的报错级别。
 
-<!--Device-JSVM_MessageErrorLevel--><!--Device-JSVM_MessageErrorLevel-End-->
+<!--Device-enum JSVM_MessageErrorLevel--><!--Device-enum JSVM_MessageErrorLevel-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -634,12 +634,12 @@ message的报错级别。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_MESSAGE_LOG = (1 << 0) | Log级别的信息。 |
-| JSVM_MESSAGE_DEBUG = (1 << 1) | Debug级别的信息。 |
-| JSVM_MESSAGE_INFO = (1 << 2) | Info级别的信息。 |
-| JSVM_MESSAGE_ERROR = (1 << 3) | Error级别的信息。 |
-| JSVM_MESSAGE_WARNING = (1 << 4) | Warning级别的信息。 |
-| JSVM_MESSAGE_ALL = JSVM_MESSAGE_LOG \| JSVM_MESSAGE_DEBUG \| JSVM_MESSAGE_INFO \| JSVM_MESSAGE_ERROR \| JSVM_MESSAGE_WARNING | 所有级别的信息。 |
+| JSVM_MESSAGE_LOG = (1 << 0) | Log级别的信息。<br><!--Device-JSVM_MESSAGE_LOG = (1 << 0)--><!--Device-JSVM_MESSAGE_LOG = (1 << 0)-End--> |
+| JSVM_MESSAGE_DEBUG = (1 << 1) | Debug级别的信息。<br><!--Device-JSVM_MESSAGE_DEBUG = (1 << 1)--><!--Device-JSVM_MESSAGE_DEBUG = (1 << 1)-End--> |
+| JSVM_MESSAGE_INFO = (1 << 2) | Info级别的信息。<br><!--Device-JSVM_MESSAGE_INFO = (1 << 2)--><!--Device-JSVM_MESSAGE_INFO = (1 << 2)-End--> |
+| JSVM_MESSAGE_ERROR = (1 << 3) | Error级别的信息。<br><!--Device-JSVM_MESSAGE_ERROR = (1 << 3)--><!--Device-JSVM_MESSAGE_ERROR = (1 << 3)-End--> |
+| JSVM_MESSAGE_WARNING = (1 << 4) | Warning级别的信息。<br><!--Device-JSVM_MESSAGE_WARNING = (1 << 4)--><!--Device-JSVM_MESSAGE_WARNING = (1 << 4)-End--> |
+| JSVM_MESSAGE_ALL = JSVM_MESSAGE_LOG \| JSVM_MESSAGE_DEBUG \| JSVM_MESSAGE_INFO \| JSVM_MESSAGE_ERROR \| JSVM_MESSAGE_WARNING | 所有级别的信息。<br><!--Device-JSVM_MESSAGE_ALL = JSVM_MESSAGE_LOG \| JSVM_MESSAGE_DEBUG \| JSVM_MESSAGE_INFO \| JSVM_MESSAGE_ERROR \| JSVM_MESSAGE_WARNING--><!--Device-JSVM_MESSAGE_ALL = JSVM_MESSAGE_LOG \| JSVM_MESSAGE_DEBUG \| JSVM_MESSAGE_INFO \| JSVM_MESSAGE_ERROR \| JSVM_MESSAGE_WARNING-End--> |
 
 ### JSVM_DefineClassOptionsId
 
@@ -651,7 +651,7 @@ enum JSVM_DefineClassOptionsId
 
 定义Class的选项ID。
 
-<!--Device-JSVM_DefineClassOptionsId--><!--Device-JSVM_DefineClassOptionsId-End-->
+<!--Device-enum JSVM_DefineClassOptionsId--><!--Device-enum JSVM_DefineClassOptionsId-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -659,9 +659,9 @@ enum JSVM_DefineClassOptionsId
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_DEFINE_CLASS_NORMAL | 在常规模式下定义Class。 |
-| JSVM_DEFINE_CLASS_WITH_COUNT | 为所创建的Class预留指定数量的interfield槽位，在这些槽位中可以存放native-data。 |
-| JSVM_DEFINE_CLASS_WITH_PROPERTY_HANDLER | 为所创建的Class设置监听拦截属性以及设置作为函数调用时回调函数。 |
+| JSVM_DEFINE_CLASS_NORMAL | 在常规模式下定义Class。<br><!--Device-JSVM_DEFINE_CLASS_NORMAL--><!--Device-JSVM_DEFINE_CLASS_NORMAL-End--> |
+| JSVM_DEFINE_CLASS_WITH_COUNT | 为所创建的Class预留指定数量的interfield槽位，在这些槽位中可以存放native-data。<br><!--Device-JSVM_DEFINE_CLASS_WITH_COUNT--><!--Device-JSVM_DEFINE_CLASS_WITH_COUNT-End--> |
+| JSVM_DEFINE_CLASS_WITH_PROPERTY_HANDLER | 为所创建的Class设置监听拦截属性以及设置作为函数调用时回调函数。<br><!--Device-JSVM_DEFINE_CLASS_WITH_PROPERTY_HANDLER--><!--Device-JSVM_DEFINE_CLASS_WITH_PROPERTY_HANDLER-End--> |
 
 ### JSVM_DebugOption
 
@@ -673,7 +673,7 @@ enum JSVM_DebugOption
 
 调试选项。
 
-<!--Device-JSVM_DebugOption--><!--Device-JSVM_DebugOption-End-->
+<!--Device-enum JSVM_DebugOption--><!--Device-enum JSVM_DebugOption-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -681,12 +681,12 @@ enum JSVM_DebugOption
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_SCOPE_CHECK | scope校验功能。 |
+| JSVM_SCOPE_CHECK | scope校验功能。<br><!--Device-JSVM_SCOPE_CHECK--><!--Device-JSVM_SCOPE_CHECK-End--> |
 
 
 ## 函数说明
 
-### JSVM_CDECL* JSVM_Finalize()
+### JSVM_Finalize()
 
 ```c
 typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* finalizeHint)
@@ -702,7 +702,7 @@ typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void*
 
 **起始版本：** 11
 
-### JSVM_CDECL* JSVM_FinalizeArrayBuffer()
+### JSVM_FinalizeArrayBuffer()
 
 ```c
 #ifdef JSVM_EXPERIMENTAL
@@ -720,7 +720,7 @@ typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeD
 
 **起始版本：** 26.0.0
 
-### JSVM_CDECL* JSVM_OutputStream()
+### JSVM_OutputStream()
 
 ```c
 typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* streamData)
@@ -742,7 +742,7 @@ typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* s
 | -- | -- |
 | bool | 返回true表示流可以继续接受数据，返回false将中止流。 |
 
-### JSVM_CDECL* JSVM_HandlerForGC()
+### JSVM_HandlerForGC()
 
 ```c
 typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)
@@ -758,7 +758,7 @@ GC回调的函数指针类型。
 
 **起始版本：** 18
 
-### JSVM_CDECL* JSVM_HandlerForOOMError()
+### JSVM_HandlerForOOMError()
 
 ```c
 typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const char* detail, bool isHeapOOM)
@@ -774,7 +774,7 @@ OOM-Error回调的函数指针类型。
 
 **起始版本：** 18
 
-### JSVM_CDECL* JSVM_HandlerForFatalError()
+### JSVM_HandlerForFatalError()
 
 ```c
 typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const char* message)
@@ -790,7 +790,7 @@ Fatal-Error回调的函数指针类型。
 
 **起始版本：** 18
 
-### JSVM_CDECL* JSVM_HandlerForPromiseReject()
+### JSVM_HandlerForPromiseReject()
 
 ```c
 typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)
@@ -806,7 +806,7 @@ Promise-Reject回调的函数指针类型。
 
 **起始版本：** 18
 
-### JSVM_CDECL* JSVM_HandlerForHeapThreshold()
+### JSVM_HandlerForHeapThreshold()
 
 ```c
 typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)

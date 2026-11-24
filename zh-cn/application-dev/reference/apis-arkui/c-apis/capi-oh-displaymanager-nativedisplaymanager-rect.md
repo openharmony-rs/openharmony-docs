@@ -24,9 +24,9 @@ typedef struct NativeDisplayManager_Rect {...} NativeDisplayManager_Rect
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t left | rect left |
-| int32_t top | rect top |
-| uint32_t width | rect width |
-| uint32_t height | rect height |
+| int32_t left | rect left<br><!--Device-int32_t left--><!--Device-int32_t left-End--> |
+| int32_t top | rect top<br><!--Device-int32_t top--><!--Device-int32_t top-End--> |
+| uint32_t width | rect width<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | rect height<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

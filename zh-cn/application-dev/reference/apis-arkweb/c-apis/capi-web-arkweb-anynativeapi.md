@@ -24,6 +24,6 @@ ArkWeb_AnyNativeAPI是ArkWeb Native API的基础结构体类型，用于统一�
 
 | 名称 | 描述 |
 | -- | -- |
-| size_t size | 结构体对应的大小。 |
+| size_t size | 结构体对应的大小。<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

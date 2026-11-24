@@ -24,7 +24,7 @@ typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
 
 | 名称 | 描述 |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | 失败文件的绝对路径信息。<br>**起始版本：** 21 |
-| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步失败的原因。<br>**起始版本：** 21 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | 失败文件的绝对路径信息。<br>**起始版本：** 21<br><!--Device-CloudDisk_PathInfo pathInfo--><!--Device-CloudDisk_PathInfo pathInfo-End--> |
+| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步失败的原因。<br>**起始版本：** 21<br><!--Device-CloudDisk_ErrorReason errorReason--><!--Device-CloudDisk_ErrorReason errorReason-End--> |
 
 

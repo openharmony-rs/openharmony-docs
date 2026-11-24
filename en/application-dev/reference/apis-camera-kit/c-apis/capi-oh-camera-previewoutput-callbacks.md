@@ -24,8 +24,8 @@ The struct describes the callbacks related to preview output.
 
 | Name | Description |
 | -- | -- |
-| [OH_PreviewOutput_OnFrameStart](capi-preview-output-h.md#oh_previewoutput_onframestart) onFrameStart | Callback to report preview output frame start events. |
-| [OH_PreviewOutput_OnFrameEnd](capi-preview-output-h.md#oh_previewoutput_onframeend) onFrameEnd | Callback to report preview output frame end events. |
-| [OH_PreviewOutput_OnError](capi-preview-output-h.md#oh_previewoutput_onerror) onError | Callback to report preview output errors. |
+| [OH_PreviewOutput_OnFrameStart](capi-preview-output-h.md#oh_previewoutput_onframestart) onFrameStart | Callback to report preview output frame start events.<br><!--Device-OH_PreviewOutput_OnFrameStart onFrameStart--><!--Device-OH_PreviewOutput_OnFrameStart onFrameStart-End--> |
+| [OH_PreviewOutput_OnFrameEnd](capi-preview-output-h.md#oh_previewoutput_onframeend) onFrameEnd | Callback to report preview output frame end events.<br><!--Device-OH_PreviewOutput_OnFrameEnd onFrameEnd--><!--Device-OH_PreviewOutput_OnFrameEnd onFrameEnd-End--> |
+| [OH_PreviewOutput_OnError](capi-preview-output-h.md#oh_previewoutput_onerror) onError | Callback to report preview output errors.<br><!--Device-OH_PreviewOutput_OnError onError--><!--Device-OH_PreviewOutput_OnError onError-End--> |
 
 

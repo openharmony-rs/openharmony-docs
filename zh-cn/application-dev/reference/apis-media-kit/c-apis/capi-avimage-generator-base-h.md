@@ -34,7 +34,7 @@ enum OH_AVImageGenerator_QueryOptions
 
 指定查询视频帧时，时间点与帧对应关系选项的枚举类型。
 
-<!--Device-OH_AVImageGenerator_QueryOptions--><!--Device-OH_AVImageGenerator_QueryOptions-End-->
+<!--Device-enum OH_AVImageGenerator_QueryOptions--><!--Device-enum OH_AVImageGenerator_QueryOptions-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -42,9 +42,9 @@ enum OH_AVImageGenerator_QueryOptions
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0 | 此选项用于选取传入时间点或之后的关键帧。 |
-| OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1 | 此选项用于选取传入时间点或之前的关键帧。 |
-| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2 | 此选项用于选取离传入时间点最近的关键帧。 |
-| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3 | 此选项用于选取离传入时间点最近的帧，该帧不一定是关键帧。 |
+| OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0 | 此选项用于选取传入时间点或之后的关键帧。<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0-End--> |
+| OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1 | 此选项用于选取传入时间点或之前的关键帧。<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1-End--> |
+| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2 | 此选项用于选取离传入时间点最近的关键帧。<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2-End--> |
+| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3 | 此选项用于选取离传入时间点最近的帧，该帧不一定是关键帧。<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3-End--> |
 
 

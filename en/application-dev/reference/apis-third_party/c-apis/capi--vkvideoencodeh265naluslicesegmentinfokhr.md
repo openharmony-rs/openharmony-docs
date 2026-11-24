@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| int32_t constantQp |  |
-| [const StdVideoEncodeH265SliceSegmentHeader*](capi--stdvideoencodeh265slicesegmentheader.md) pStdSliceSegmentHeader |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| int32_t constantQp | <!--Device-int32_t constantQp--><!--Device-int32_t constantQp-End--> |
+| [const StdVideoEncodeH265SliceSegmentHeader*](capi--stdvideoencodeh265slicesegmentheader.md) pStdSliceSegmentHeader | <!--Device-const StdVideoEncodeH265SliceSegmentHeader* pStdSliceSegmentHeader--><!--Device-const StdVideoEncodeH265SliceSegmentHeader* pStdSliceSegmentHeader-End--> |
 
 

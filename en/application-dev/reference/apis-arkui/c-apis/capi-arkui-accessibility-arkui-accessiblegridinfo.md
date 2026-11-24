@@ -24,8 +24,8 @@ Defines a struct for the accessible grid information.
 
 | Name | Description |
 | -- | -- |
-| int32_t rowCount | Number of rows. |
-| int32_t columnCount | Number of columns. |
-| int32_t selectionMode | Selection mode. The value <b>0</b> indicates that only one row can be selected. |
+| int32_t rowCount | Number of rows.<br><!--Device-int32_t rowCount--><!--Device-int32_t rowCount-End--> |
+| int32_t columnCount | Number of columns.<br><!--Device-int32_t columnCount--><!--Device-int32_t columnCount-End--> |
+| int32_t selectionMode | Selection mode. The value <b>0</b> indicates that only one row can be selected.<br><!--Device-int32_t selectionMode--><!--Device-int32_t selectionMode-End--> |
 
 

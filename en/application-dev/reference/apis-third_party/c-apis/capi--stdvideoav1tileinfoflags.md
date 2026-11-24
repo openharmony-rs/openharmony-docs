@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t uniform_tile_spacing_flag : 1 |  |
-| uint32_t reserved : 31 |  |
+| uint32_t uniform_tile_spacing_flag : 1 | <!--Device-uint32_t uniform_tile_spacing_flag : 1--><!--Device-uint32_t uniform_tile_spacing_flag : 1-End--> |
+| uint32_t reserved : 31 | <!--Device-uint32_t reserved : 31--><!--Device-uint32_t reserved : 31-End--> |
 
 

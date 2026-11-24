@@ -42,7 +42,7 @@ enum ArkUI_XComponentType
 
 定义XComponent类型枚举值。
 
-<!--Device-ArkUI_XComponentType--><!--Device-ArkUI_XComponentType-End-->
+<!--Device-enum ArkUI_XComponentType--><!--Device-enum ArkUI_XComponentType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +50,7 @@ enum ArkUI_XComponentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | 用于EGL/OpenGLES和媒体数据写入，开发者定制绘制内容单独显示在屏幕上。 |
-| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | 用于EGL/OpenGLES和媒体数据写入，开发者定制绘制内容和XComponent组件内容合成后显示在屏幕上。 |
+| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | 用于EGL/OpenGLES和媒体数据写入，开发者定制绘制内容单独显示在屏幕上。<br><!--Device-ARKUI_XCOMPONENT_TYPE_SURFACE = 0--><!--Device-ARKUI_XCOMPONENT_TYPE_SURFACE = 0-End--> |
+| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | 用于EGL/OpenGLES和媒体数据写入，开发者定制绘制内容和XComponent组件内容合成后显示在屏幕上。<br><!--Device-ARKUI_XCOMPONENT_TYPE_TEXTURE = 2--><!--Device-ARKUI_XCOMPONENT_TYPE_TEXTURE = 2-End--> |
 
 

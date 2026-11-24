@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t intraQIndex |  |
-| uint32_t predictiveQIndex |  |
-| uint32_t bipredictiveQIndex |  |
+| uint32_t intraQIndex | <!--Device-uint32_t intraQIndex--><!--Device-uint32_t intraQIndex-End--> |
+| uint32_t predictiveQIndex | <!--Device-uint32_t predictiveQIndex--><!--Device-uint32_t predictiveQIndex-End--> |
+| uint32_t bipredictiveQIndex | <!--Device-uint32_t bipredictiveQIndex--><!--Device-uint32_t bipredictiveQIndex-End--> |
 
 

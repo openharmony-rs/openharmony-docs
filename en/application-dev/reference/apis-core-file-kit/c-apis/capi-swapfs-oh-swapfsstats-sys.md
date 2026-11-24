@@ -26,14 +26,14 @@ Statistics of the current swapfs manager.
 
 | Name | Description |
 | -- | -- |
-| uint64_t totalKeys | Total number of active keys in the manager.<br>**Since**: 26.0.0 |
-| uint64_t totalDataSize | Total original data size of all keys in bytes.<br>**Since**: 26.0.0 |
-| uint64_t totalOccupiedSize | Total aligned file size of all keys in bytes.<br>**Since**: 26.0.0 |
-| uint64_t spaceLimitBytes | Configured swap space limit in bytes.<br>**Since**: 26.0.0 |
-| bool featureEnabled | Whether swap-out is currently enabled. False when device space is below 5GB or control policy disables the feature.<br>**Since**: 26.0.0 |
-| OH_SwapfsDisableReason disableReason | Reason for feature disablement.<br>**Since**: 26.0.0 |
-| uint64_t accumulatedWriteBytes | Accumulated bytes written by successful swap-out operations.<br>**Since**: 26.0.0 |
-| int64_t lastSpaceCheckTime | Timestamp of the last device space check (Unix epoch in milliseconds).<br>**Since**: 26.0.0 |
-| uint64_t availableDeviceSpace | Cached available device storage space in bytes at the last check time.<br>**Since**: 26.0.0 |
+| uint64_t totalKeys | Total number of active keys in the manager.<br>**Since**: 26.0.0<br><!--Device-uint64_t totalKeys--><!--Device-uint64_t totalKeys-End--> |
+| uint64_t totalDataSize | Total original data size of all keys in bytes.<br>**Since**: 26.0.0<br><!--Device-uint64_t totalDataSize--><!--Device-uint64_t totalDataSize-End--> |
+| uint64_t totalOccupiedSize | Total aligned file size of all keys in bytes.<br>**Since**: 26.0.0<br><!--Device-uint64_t totalOccupiedSize--><!--Device-uint64_t totalOccupiedSize-End--> |
+| uint64_t spaceLimitBytes | Configured swap space limit in bytes.<br>**Since**: 26.0.0<br><!--Device-uint64_t spaceLimitBytes--><!--Device-uint64_t spaceLimitBytes-End--> |
+| bool featureEnabled | Whether swap-out is currently enabled. False when device space is below 5GB or control policy disables the feature.<br>**Since**: 26.0.0<br><!--Device-bool featureEnabled--><!--Device-bool featureEnabled-End--> |
+| OH_SwapfsDisableReason disableReason | Reason for feature disablement.<br>**Since**: 26.0.0<br><!--Device-OH_SwapfsDisableReason disableReason--><!--Device-OH_SwapfsDisableReason disableReason-End--> |
+| uint64_t accumulatedWriteBytes | Accumulated bytes written by successful swap-out operations.<br>**Since**: 26.0.0<br><!--Device-uint64_t accumulatedWriteBytes--><!--Device-uint64_t accumulatedWriteBytes-End--> |
+| int64_t lastSpaceCheckTime | Timestamp of the last device space check (Unix epoch in milliseconds).<br>**Since**: 26.0.0<br><!--Device-int64_t lastSpaceCheckTime--><!--Device-int64_t lastSpaceCheckTime-End--> |
+| uint64_t availableDeviceSpace | Cached available device storage space in bytes at the last check time.<br>**Since**: 26.0.0<br><!--Device-uint64_t availableDeviceSpace--><!--Device-uint64_t availableDeviceSpace-End--> |
 
 

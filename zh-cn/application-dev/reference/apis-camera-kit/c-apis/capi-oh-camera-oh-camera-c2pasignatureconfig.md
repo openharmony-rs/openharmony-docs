@@ -6,7 +6,7 @@ typedef struct OH_Camera_C2PASignatureConfig OH_Camera_C2PASignatureConfig
 
 ## 概述
 
-C2PA签名配置。
+C2PA（Coalition for Content Provenance and Authenticity）签名配置。
 
 <!--Device-typedef struct OH_Camera_C2PASignatureConfig OH_Camera_C2PASignatureConfig--><!--Device-typedef struct OH_Camera_C2PASignatureConfig OH_Camera_C2PASignatureConfig-End-->
 

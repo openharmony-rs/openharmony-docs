@@ -51,7 +51,7 @@ The file declares the structs and enums for the media asset manager.
 
 | Name | Description |
 | -- | -- |
-| static const int32_t UUID_STR_MAX_LENGTH = 37 | Maximum length of a request ID.<br>**Since**: 12<br>**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core |
+| static const int32_t UUID_STR_MAX_LENGTH = 37 | Maximum length of a request ID.<br>**Since**: 12<br>**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core<br><!--Device-static const int32_t UUID_STR_MAX_LENGTH = 37--><!--Device-static const int32_t UUID_STR_MAX_LENGTH = 37-End--> |
 
 ## Enum type description
 
@@ -65,7 +65,7 @@ enum MediaLibrary_ErrorCode
 
 Enumerates the error codes of the media library.
 
-<!--Device-MediaLibrary_ErrorCode--><!--Device-MediaLibrary_ErrorCode-End-->
+<!--Device-enum MediaLibrary_ErrorCode--><!--Device-enum MediaLibrary_ErrorCode-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -73,15 +73,15 @@ Enumerates the error codes of the media library.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_OK = 0 | Operation success. |
-| MEDIA_LIBRARY_PERMISSION_DENIED = 201 | No access permission. |
-| MEDIA_LIBRARY_PARAMETER_ERROR = 401 | A mandatory parameter is not specified, the parameter type is incorrect, or parameter verification failed. |
-| MEDIA_LIBRARY_NO_SUCH_FILE = 23800101 | The file does not exist. |
-| MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102 | Invalid display name. |
-| MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103 | Invalid asset URI. |
-| MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104 | Invalid PhotoKey. |
-| MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201 | Unsupported operation. |
-| MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301 | Internal system error. Retry the operation and check logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
+| MEDIA_LIBRARY_OK = 0 | Operation success.<br><!--Device-MEDIA_LIBRARY_OK = 0--><!--Device-MEDIA_LIBRARY_OK = 0-End--> |
+| MEDIA_LIBRARY_PERMISSION_DENIED = 201 | No access permission.<br><!--Device-MEDIA_LIBRARY_PERMISSION_DENIED = 201--><!--Device-MEDIA_LIBRARY_PERMISSION_DENIED = 201-End--> |
+| MEDIA_LIBRARY_PARAMETER_ERROR = 401 | A mandatory parameter is not specified, the parameter type is incorrect, or parameter verification failed.<br><!--Device-MEDIA_LIBRARY_PARAMETER_ERROR = 401--><!--Device-MEDIA_LIBRARY_PARAMETER_ERROR = 401-End--> |
+| MEDIA_LIBRARY_NO_SUCH_FILE = 23800101 | The file does not exist.<br><!--Device-MEDIA_LIBRARY_NO_SUCH_FILE = 23800101--><!--Device-MEDIA_LIBRARY_NO_SUCH_FILE = 23800101-End--> |
+| MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102 | Invalid display name.<br><!--Device-MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102--><!--Device-MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102-End--> |
+| MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103 | Invalid asset URI.<br><!--Device-MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103--><!--Device-MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103-End--> |
+| MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104 | Invalid PhotoKey.<br><!--Device-MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104--><!--Device-MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104-End--> |
+| MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201 | Unsupported operation.<br><!--Device-MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201--><!--Device-MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201-End--> |
+| MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301 | Internal system error. Retry the operation and check logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out.<br><!--Device-MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301--><!--Device-MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301-End--> |
 
 ### MediaLibrary_DeliveryMode
 
@@ -93,7 +93,7 @@ enum MediaLibrary_DeliveryMode
 
 Enumerates the delivery modes of the requested media asset.
 
-<!--Device-MediaLibrary_DeliveryMode--><!--Device-MediaLibrary_DeliveryMode-End-->
+<!--Device-enum MediaLibrary_DeliveryMode--><!--Device-enum MediaLibrary_DeliveryMode-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -101,9 +101,9 @@ Enumerates the delivery modes of the requested media asset.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_FAST_MODE = 0 | delivery fast mode |
-| MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1 | delivery high quality mode |
-| MEDIA_LIBRARY_BALANCED_MODE = 2 | delivery balanced mode |
+| MEDIA_LIBRARY_FAST_MODE = 0 | delivery fast mode<br><!--Device-MEDIA_LIBRARY_FAST_MODE = 0--><!--Device-MEDIA_LIBRARY_FAST_MODE = 0-End--> |
+| MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1 | delivery high quality mode<br><!--Device-MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1--><!--Device-MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1-End--> |
+| MEDIA_LIBRARY_BALANCED_MODE = 2 | delivery balanced mode<br><!--Device-MEDIA_LIBRARY_BALANCED_MODE = 2--><!--Device-MEDIA_LIBRARY_BALANCED_MODE = 2-End--> |
 
 ### MediaLibrary_MediaType
 
@@ -115,7 +115,7 @@ enum MediaLibrary_MediaType
 
 Enumerates the media asset types.
 
-<!--Device-MediaLibrary_MediaType--><!--Device-MediaLibrary_MediaType-End-->
+<!--Device-enum MediaLibrary_MediaType--><!--Device-enum MediaLibrary_MediaType-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -123,8 +123,8 @@ Enumerates the media asset types.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_IMAGE = 1 | image asset |
-| MEDIA_LIBRARY_VIDEO = 2 | video asset |
+| MEDIA_LIBRARY_IMAGE = 1 | image asset<br><!--Device-MEDIA_LIBRARY_IMAGE = 1--><!--Device-MEDIA_LIBRARY_IMAGE = 1-End--> |
+| MEDIA_LIBRARY_VIDEO = 2 | video asset<br><!--Device-MEDIA_LIBRARY_VIDEO = 2--><!--Device-MEDIA_LIBRARY_VIDEO = 2-End--> |
 
 ### MediaLibrary_MediaSubType
 
@@ -136,7 +136,7 @@ enum MediaLibrary_MediaSubType
 
 Enumerates the media asset subtypes.
 
-<!--Device-MediaLibrary_MediaSubType--><!--Device-MediaLibrary_MediaSubType-End-->
+<!--Device-enum MediaLibrary_MediaSubType--><!--Device-enum MediaLibrary_MediaSubType-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -144,9 +144,9 @@ Enumerates the media asset subtypes.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_DEFAULT = 0 | default Photo Type |
-| MEDIA_LIBRARY_MOVING_PHOTO = 3 | moving Photo Type |
-| MEDIA_LIBRARY_BURST = 4 | burst Photo Type |
+| MEDIA_LIBRARY_DEFAULT = 0 | default Photo Type<br><!--Device-MEDIA_LIBRARY_DEFAULT = 0--><!--Device-MEDIA_LIBRARY_DEFAULT = 0-End--> |
+| MEDIA_LIBRARY_MOVING_PHOTO = 3 | moving Photo Type<br><!--Device-MEDIA_LIBRARY_MOVING_PHOTO = 3--><!--Device-MEDIA_LIBRARY_MOVING_PHOTO = 3-End--> |
+| MEDIA_LIBRARY_BURST = 4 | burst Photo Type<br><!--Device-MEDIA_LIBRARY_BURST = 4--><!--Device-MEDIA_LIBRARY_BURST = 4-End--> |
 
 ### MediaLibrary_ResourceType
 
@@ -158,7 +158,7 @@ enum MediaLibrary_ResourceType
 
 Enumerates the media library resource types.
 
-<!--Device-MediaLibrary_ResourceType--><!--Device-MediaLibrary_ResourceType-End-->
+<!--Device-enum MediaLibrary_ResourceType--><!--Device-enum MediaLibrary_ResourceType-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -166,8 +166,8 @@ Enumerates the media library resource types.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_IMAGE_RESOURCE = 1 | image resource |
-| MEDIA_LIBRARY_VIDEO_RESOURCE = 2 | video resource |
+| MEDIA_LIBRARY_IMAGE_RESOURCE = 1 | image resource<br><!--Device-MEDIA_LIBRARY_IMAGE_RESOURCE = 1--><!--Device-MEDIA_LIBRARY_IMAGE_RESOURCE = 1-End--> |
+| MEDIA_LIBRARY_VIDEO_RESOURCE = 2 | video resource<br><!--Device-MEDIA_LIBRARY_VIDEO_RESOURCE = 2--><!--Device-MEDIA_LIBRARY_VIDEO_RESOURCE = 2-End--> |
 
 ### MediaLibrary_ImageFileType
 
@@ -179,7 +179,7 @@ enum MediaLibrary_ImageFileType
 
 Enumerates the image file types.
 
-<!--Device-MediaLibrary_ImageFileType--><!--Device-MediaLibrary_ImageFileType-End-->
+<!--Device-enum MediaLibrary_ImageFileType--><!--Device-enum MediaLibrary_ImageFileType-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -187,9 +187,9 @@ Enumerates the image file types.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_IMAGE_JPEG = 1 | JPEG type |
-| MEDIA_LIBRARY_IMAGE_HEIF = 2 | HEIF.<br>**Since**: 23 |
-| MEDIA_LIBRARY_FILE_VIDEO = 3 | MPEG.<br>**Since**: 19 |
+| MEDIA_LIBRARY_IMAGE_JPEG = 1 | JPEG type<br><!--Device-MEDIA_LIBRARY_IMAGE_JPEG = 1--><!--Device-MEDIA_LIBRARY_IMAGE_JPEG = 1-End--> |
+| MEDIA_LIBRARY_IMAGE_HEIF = 2 | HEIF.<br>**Since**: 23<br><!--Device-MEDIA_LIBRARY_IMAGE_HEIF = 2--><!--Device-MEDIA_LIBRARY_IMAGE_HEIF = 2-End--> |
+| MEDIA_LIBRARY_FILE_VIDEO = 3 | MPEG.<br>**Since**: 19<br><!--Device-MEDIA_LIBRARY_FILE_VIDEO = 3--><!--Device-MEDIA_LIBRARY_FILE_VIDEO = 3-End--> |
 
 ### MediaLibrary_MediaQuality
 
@@ -201,7 +201,7 @@ enum MediaLibrary_MediaQuality
 
 Enumerates the media resource quality,
 
-<!--Device-MediaLibrary_MediaQuality--><!--Device-MediaLibrary_MediaQuality-End-->
+<!--Device-enum MediaLibrary_MediaQuality--><!--Device-enum MediaLibrary_MediaQuality-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -209,8 +209,8 @@ Enumerates the media resource quality,
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_QUALITY_FAST = 1 | fast quality |
-| MEDIA_LIBRARY_QUALITY_FULL = 2 | full quality |
+| MEDIA_LIBRARY_QUALITY_FAST = 1 | fast quality<br><!--Device-MEDIA_LIBRARY_QUALITY_FAST = 1--><!--Device-MEDIA_LIBRARY_QUALITY_FAST = 1-End--> |
+| MEDIA_LIBRARY_QUALITY_FULL = 2 | full quality<br><!--Device-MEDIA_LIBRARY_QUALITY_FULL = 2--><!--Device-MEDIA_LIBRARY_QUALITY_FULL = 2-End--> |
 
 ### MediaLibrary_MediaContentType
 
@@ -222,7 +222,7 @@ enum MediaLibrary_MediaContentType
 
 Enumerates the media content types.
 
-<!--Device-MediaLibrary_MediaContentType--><!--Device-MediaLibrary_MediaContentType-End-->
+<!--Device-enum MediaLibrary_MediaContentType--><!--Device-enum MediaLibrary_MediaContentType-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -230,8 +230,8 @@ Enumerates the media content types.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_LIBRARY_COMPRESSED = 1 | compressed media content type |
-| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | picture object media content type |
+| MEDIA_LIBRARY_COMPRESSED = 1 | compressed media content type<br><!--Device-MEDIA_LIBRARY_COMPRESSED = 1--><!--Device-MEDIA_LIBRARY_COMPRESSED = 1-End--> |
+| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | picture object media content type<br><!--Device-MEDIA_LIBRARY_PICTURE_OBJECT = 2--><!--Device-MEDIA_LIBRARY_PICTURE_OBJECT = 2-End--> |
 
 
 ## Function description

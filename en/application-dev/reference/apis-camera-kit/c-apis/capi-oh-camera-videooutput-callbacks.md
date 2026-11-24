@@ -24,8 +24,8 @@ The struct describes the callbacks related to video output.
 
 | Name | Description |
 | -- | -- |
-| [OH_VideoOutput_OnFrameStart](capi-video-output-h.md#oh_videooutput_onframestart) onFrameStart | Callback to report video output frame start events. |
-| [OH_VideoOutput_OnFrameEnd](capi-video-output-h.md#oh_videooutput_onframeend) onFrameEnd | Callback to report video output frame end events. |
-| [OH_VideoOutput_OnError](capi-video-output-h.md#oh_videooutput_onerror) onError | Callback to report video output errors. |
+| [OH_VideoOutput_OnFrameStart](capi-video-output-h.md#oh_videooutput_onframestart) onFrameStart | Callback to report video output frame start events.<br><!--Device-OH_VideoOutput_OnFrameStart onFrameStart--><!--Device-OH_VideoOutput_OnFrameStart onFrameStart-End--> |
+| [OH_VideoOutput_OnFrameEnd](capi-video-output-h.md#oh_videooutput_onframeend) onFrameEnd | Callback to report video output frame end events.<br><!--Device-OH_VideoOutput_OnFrameEnd onFrameEnd--><!--Device-OH_VideoOutput_OnFrameEnd onFrameEnd-End--> |
+| [OH_VideoOutput_OnError](capi-video-output-h.md#oh_videooutput_onerror) onError | Callback to report video output errors.<br><!--Device-OH_VideoOutput_OnError onError--><!--Device-OH_VideoOutput_OnError onError-End--> |
 
 

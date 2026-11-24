@@ -66,7 +66,7 @@ enum OH_RDB_TransType
 
 表示关系型数据库事务类型。
 
-<!--Device-OH_RDB_TransType--><!--Device-OH_RDB_TransType-End-->
+<!--Device-enum OH_RDB_TransType--><!--Device-enum OH_RDB_TransType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -74,10 +74,10 @@ enum OH_RDB_TransType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_TRANS_DEFERRED = 0 | 在首次访问数据库之前，事务默认设置不会启动。 |
-| RDB_TRANS_IMMEDIATE | 数据库连接立即开始新的写入，而无需等待写入语句。 |
-| RDB_TRANS_EXCLUSIVE | 与RDB_TRANS_IMMEDIATE类型相似，写事务会立即启动。 <br>RDB_TRANS_EXCLUSIVE和RDB_TRANS_IMMEDIATE类型在WAL模式下相同，但在其他日志模式下，RDB_TRANS_EXCLUSIVE会阻止其他数据库连接在事务进行时读取数据库。 |
-| RDB_TRANS_BUTT | RDB事务类型的最大值。 |
+| RDB_TRANS_DEFERRED = 0 | 在首次访问数据库之前，事务默认设置不会启动。<br><!--Device-RDB_TRANS_DEFERRED = 0--><!--Device-RDB_TRANS_DEFERRED = 0-End--> |
+| RDB_TRANS_IMMEDIATE | 数据库连接立即开始新的写入，而无需等待写入语句。<br><!--Device-RDB_TRANS_IMMEDIATE--><!--Device-RDB_TRANS_IMMEDIATE-End--> |
+| RDB_TRANS_EXCLUSIVE | 与RDB_TRANS_IMMEDIATE类型相似，写事务会立即启动。 <br>RDB_TRANS_EXCLUSIVE和RDB_TRANS_IMMEDIATE类型在WAL模式下相同，但在其他日志模式下，RDB_TRANS_EXCLUSIVE会阻止其他数据库连接在事务进行时读取数据库。<br><!--Device-RDB_TRANS_EXCLUSIVE--><!--Device-RDB_TRANS_EXCLUSIVE-End--> |
+| RDB_TRANS_BUTT | RDB事务类型的最大值。<br><!--Device-RDB_TRANS_BUTT--><!--Device-RDB_TRANS_BUTT-End--> |
 
 
 ## 函数说明

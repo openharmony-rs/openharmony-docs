@@ -69,7 +69,7 @@ enum CryptoSignature_ParamType
 
 定义签名参数类型。
 
-<!--Device-CryptoSignature_ParamType--><!--Device-CryptoSignature_ParamType-End-->
+<!--Device-enum CryptoSignature_ParamType--><!--Device-enum CryptoSignature_ParamType-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -77,12 +77,12 @@ enum CryptoSignature_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_PSS_MD_NAME_STR = 100 | 表示消息摘要函数的算法名称。<br>**起始版本：** 12 |
-| CRYPTO_PSS_MGF_NAME_STR = 101 | 表示掩码生成函数的算法名称。<br>**起始版本：** 12 |
-| CRYPTO_PSS_MGF1_NAME_STR = 102 | 表示MGF1掩码生成函数的消息摘要参数。<br>**起始版本：** 12 |
-| CRYPTO_PSS_SALT_LEN_INT = 103 | 表示盐值的字节长度。<br>**起始版本：** 12 |
-| CRYPTO_PSS_TRAILER_FIELD_INT = 104 | 表示尾部字段的值。<br>**起始版本：** 12 |
-| CRYPTO_SM2_USER_ID_DATABLOB = 105 | 表示SM2算法的用户ID值。<br>**起始版本：** 12 |
+| CRYPTO_PSS_MD_NAME_STR = 100 | 表示消息摘要函数的算法名称。<br>**起始版本：** 12<br><!--Device-CRYPTO_PSS_MD_NAME_STR = 100--><!--Device-CRYPTO_PSS_MD_NAME_STR = 100-End--> |
+| CRYPTO_PSS_MGF_NAME_STR = 101 | 表示掩码生成函数的算法名称。<br>**起始版本：** 12<br><!--Device-CRYPTO_PSS_MGF_NAME_STR = 101--><!--Device-CRYPTO_PSS_MGF_NAME_STR = 101-End--> |
+| CRYPTO_PSS_MGF1_NAME_STR = 102 | 表示MGF1掩码生成函数的消息摘要参数。<br>**起始版本：** 12<br><!--Device-CRYPTO_PSS_MGF1_NAME_STR = 102--><!--Device-CRYPTO_PSS_MGF1_NAME_STR = 102-End--> |
+| CRYPTO_PSS_SALT_LEN_INT = 103 | 表示盐值的字节长度。<br>**起始版本：** 12<br><!--Device-CRYPTO_PSS_SALT_LEN_INT = 103--><!--Device-CRYPTO_PSS_SALT_LEN_INT = 103-End--> |
+| CRYPTO_PSS_TRAILER_FIELD_INT = 104 | 表示尾部字段的值。<br>**起始版本：** 12<br><!--Device-CRYPTO_PSS_TRAILER_FIELD_INT = 104--><!--Device-CRYPTO_PSS_TRAILER_FIELD_INT = 104-End--> |
+| CRYPTO_SM2_USER_ID_DATABLOB = 105 | 表示SM2算法的用户ID值。<br>**起始版本：** 12<br><!--Device-CRYPTO_SM2_USER_ID_DATABLOB = 105--><!--Device-CRYPTO_SM2_USER_ID_DATABLOB = 105-End--> |
 
 
 ## 函数说明

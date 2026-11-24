@@ -24,7 +24,7 @@ This structure is used to store a 32-bit unsigned integer array.
 
 | Name | Description |
 | -- | -- |
-| uint32_t *data | Pointer to the unsigned integer array |
-| uint32_t size | Array length |
+| uint32_t *data | Pointer to the unsigned integer array<br><!--Device-uint32_t *data--><!--Device-uint32_t *data-End--> |
+| uint32_t size | Array length<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
 
 

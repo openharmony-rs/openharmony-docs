@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkImage srcImage |  |
-| VkImageLayout srcImageLayout |  |
-| VkBuffer dstBuffer |  |
-| uint32_t regionCount |  |
-| [const VkBufferImageCopy2*](capi--vkbufferimagecopy2.md) pRegions |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkImage srcImage | <!--Device-VkImage srcImage--><!--Device-VkImage srcImage-End--> |
+| VkImageLayout srcImageLayout | <!--Device-VkImageLayout srcImageLayout--><!--Device-VkImageLayout srcImageLayout-End--> |
+| VkBuffer dstBuffer | <!--Device-VkBuffer dstBuffer--><!--Device-VkBuffer dstBuffer-End--> |
+| uint32_t regionCount | <!--Device-uint32_t regionCount--><!--Device-uint32_t regionCount-End--> |
+| [const VkBufferImageCopy2*](capi--vkbufferimagecopy2.md) pRegions | <!--Device-const VkBufferImageCopy2* pRegions--><!--Device-const VkBufferImageCopy2* pRegions-End--> |
 
 

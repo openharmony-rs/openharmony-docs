@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| int32_t qpI |  |
-| int32_t qpP |  |
-| int32_t qpB |  |
+| int32_t qpI | <!--Device-int32_t qpI--><!--Device-int32_t qpI-End--> |
+| int32_t qpP | <!--Device-int32_t qpP--><!--Device-int32_t qpP-End--> |
+| int32_t qpB | <!--Device-int32_t qpB--><!--Device-int32_t qpB-End--> |
 
 

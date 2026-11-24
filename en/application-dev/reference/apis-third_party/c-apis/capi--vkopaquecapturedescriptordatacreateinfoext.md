@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| const void* opaqueCaptureDescriptorData |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| const void* opaqueCaptureDescriptorData | <!--Device-const void* opaqueCaptureDescriptorData--><!--Device-const void* opaqueCaptureDescriptorData-End--> |
 
 

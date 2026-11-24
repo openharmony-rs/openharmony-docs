@@ -24,9 +24,9 @@ typedef struct JSVM_ScriptOrigin {...} JSVM_ScriptOrigin
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* sourceMapUrl | Sourcemap 路径。 |
-| const char* resourceName | 源文件名。 |
-| size_t resourceLineOffset | 这段代码在源文件中的起始行号。 |
-| size_t resourceColumnOffset | 这段代码在源文件中的起始列号。 |
+| const char* sourceMapUrl | Sourcemap 路径。<br><!--Device-const char* sourceMapUrl--><!--Device-const char* sourceMapUrl-End--> |
+| const char* resourceName | 源文件名。<br><!--Device-const char* resourceName--><!--Device-const char* resourceName-End--> |
+| size_t resourceLineOffset | 这段代码在源文件中的起始行号。<br><!--Device-size_t resourceLineOffset--><!--Device-size_t resourceLineOffset-End--> |
+| size_t resourceColumnOffset | 这段代码在源文件中的起始列号。<br><!--Device-size_t resourceColumnOffset--><!--Device-size_t resourceColumnOffset-End--> |
 
 

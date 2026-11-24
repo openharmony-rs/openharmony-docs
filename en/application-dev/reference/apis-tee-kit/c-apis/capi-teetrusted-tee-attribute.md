@@ -24,13 +24,10 @@ Defines an object attribute.
 
 | Name | Description |
 | -- | -- |
-| uint32_t attributeID | Attribute ID. |
-| content | Attribute content.<br>**Since**: 20 |
-| TEE_Attribute.ref | Reference type content.<br>**Since**: 20 |
-| content.ref.buffer | Buffer pointer. |
-| content.ref.length | Length of the buffer. |
-| TEE_Attribute.value | Value type content.<br>**Since**: 20 |
-| content.value.a | First value. |
-| content.value.b | Second value. |
+| uint32_t attributeID | Attribute ID.<br><!--Device-uint32_t attributeID--><!--Device-uint32_t attributeID-End--> |
+| content.ref.buffer | Buffer pointer.<br><!--Device-content.ref.buffer--><!--Device-content.ref.buffer-End--> |
+| content.ref.length | Length of the buffer.<br><!--Device-content.ref.length--><!--Device-content.ref.length-End--> |
+| content.value.a | First value.<br><!--Device-content.value.a--><!--Device-content.value.a-End--> |
+| content.value.b | Second value.<br><!--Device-content.value.b--><!--Device-content.value.b-End--> |
 
 

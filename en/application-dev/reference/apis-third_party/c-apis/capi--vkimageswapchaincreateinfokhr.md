@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSwapchainKHR swapchain |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSwapchainKHR swapchain | <!--Device-VkSwapchainKHR swapchain--><!--Device-VkSwapchainKHR swapchain-End--> |
 
 

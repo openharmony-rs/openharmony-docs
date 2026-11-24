@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int initialized |  |
-| char \_\_buf[256] |  |
+| int initialized | <!--Device-int initialized--><!--Device-int initialized-End--> |
+| char \_\_buf[256] | <!--Device-char \_\_buf[256]--><!--Device-char \_\_buf[256]-End--> |
 
 

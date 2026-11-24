@@ -24,13 +24,13 @@ Defines the rotation options for component transition.
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | X-component of the rotation vector. |
-| float y | Y-component of the rotation vector. |
-| float z | Z-component of the rotation vector. |
-| float angle | Rotation angle. |
-| float centerX | X coordinate of the center point. |
-| float centerY | Y coordinate of the center point. |
-| float centerZ | Z-axis anchor, that is, the z-component of the 3D rotation center point. |
-| float perspective | Distance from the user to the z=0 plane. |
+| float x | X-component of the rotation vector.<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | Y-component of the rotation vector.<br><!--Device-float y--><!--Device-float y-End--> |
+| float z | Z-component of the rotation vector.<br><!--Device-float z--><!--Device-float z-End--> |
+| float angle | Rotation angle.<br><!--Device-float angle--><!--Device-float angle-End--> |
+| float centerX | X coordinate of the center point.<br><!--Device-float centerX--><!--Device-float centerX-End--> |
+| float centerY | Y coordinate of the center point.<br><!--Device-float centerY--><!--Device-float centerY-End--> |
+| float centerZ | Z-axis anchor, that is, the z-component of the 3D rotation center point.<br><!--Device-float centerZ--><!--Device-float centerZ-End--> |
+| float perspective | Distance from the user to the z=0 plane.<br><!--Device-float perspective--><!--Device-float perspective-End--> |
 
 

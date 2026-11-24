@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| int32_t slotIndex |  |
-| [const VkVideoPictureResourceInfoKHR*](capi--vkvideopictureresourceinfokhr.md) pPictureResource |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| int32_t slotIndex | <!--Device-int32_t slotIndex--><!--Device-int32_t slotIndex-End--> |
+| [const VkVideoPictureResourceInfoKHR*](capi--vkvideopictureresourceinfokhr.md) pPictureResource | <!--Device-const VkVideoPictureResourceInfoKHR* pPictureResource--><!--Device-const VkVideoPictureResourceInfoKHR* pPictureResource-End--> |
 
 

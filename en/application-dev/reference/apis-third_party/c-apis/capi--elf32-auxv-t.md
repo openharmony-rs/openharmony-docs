@@ -10,8 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t a_type |  |
-| a_un |  |
-| a_un.a_val |  |
+| uint32_t a_type | <!--Device-uint32_t a_type--><!--Device-uint32_t a_type-End--> |
+| a_un.a_val | <!--Device-a_un.a_val--><!--Device-a_un.a_val-End--> |
 
 

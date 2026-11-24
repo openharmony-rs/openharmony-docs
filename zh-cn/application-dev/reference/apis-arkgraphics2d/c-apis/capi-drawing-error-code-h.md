@@ -39,7 +39,7 @@ enum OH_Drawing_ErrorCode
 
 枚举本模块可能产生的错误码。
 
-<!--Device-OH_Drawing_ErrorCode--><!--Device-OH_Drawing_ErrorCode-End-->
+<!--Device-enum OH_Drawing_ErrorCode--><!--Device-enum OH_Drawing_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -47,20 +47,20 @@ enum OH_Drawing_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_DRAWING_SUCCESS = 0 | 操作成功完成。<br>**起始版本：** 12 |
-| OH_DRAWING_ERROR_NO_PERMISSION = 201 | 权限校验失败，应用无权限使用该API，需要申请权限。<br>**起始版本：** 12 |
-| OH_DRAWING_ERROR_INVALID_PARAMETER = 401 | 无效的输入参数，如参数中传入了NULL。请检查参数类型、取值范围或参数是否为空。<br>**起始版本：** 12 |
-| OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE = 26200001 | 输入参数不在有效的范围内。请检查参数值是否在接口文档规定的有效范围内。<br>**起始版本：** 12 |
-| OH_DRAWING_ERROR_ALLOCATION_FAILED = 26200002 | 内存分配失败。<br>**起始版本：** 13 |
-| OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH = 26200003 | 输入属性id无匹配的函数。请检查属性id是否正确，确保使用有效的属性id。<br>**起始版本：** 21 |
-| OH_DRAWING_ERROR_INCORRECT_PARAMETER = 26200004 | 输入参数不正确，例如入参的指针为空。请检查传入的参数是否正确，确保指针参数有效且不为空。<br>**起始版本：** 22 |
-| OH_DRAWING_ERROR_FILE_NOT_FOUND = 26200005 | 文件未找到，指定的文件不存在或路径不正确。请检查文件路径是否正确，确保文件存在且路径格式有效。<br>**起始版本：** 23 |
-| OH_DRAWING_ERROR_OPEN_FILE_FAILED = 26200006 | 打开文件失败，权限不足或I/O问题造成。请检查文件权限设置是否正确，或稍后重试。<br>**起始版本：** 23 |
-| OH_DRAWING_ERROR_FILE_SEEK_FAILED = 26200007 | 文件定位失败。系统无法重新定位文件读取指针。请检查文件是否被其他进程占用，或重新打开文件后重试。<br>**起始版本：** 23 |
-| OH_DRAWING_ERROR_GET_FILE_SIZE_FAILED = 26200008 | 获取文件大小失败，系统无法获取文件大小信息。请检查文件是否存在且可访问，确保文件未被损坏。<br>**起始版本：** 23 |
-| OH_DRAWING_ERROR_READ_FILE_FAILED = 26200009 | 读取文件失败，文件无法完整读取或包含不可读数据。请检查文件是否完整且未被损坏，确保文件格式正确。<br>**起始版本：** 23 |
-| OH_DRAWING_ERROR_EMPTY_FILE = 26200010 | 文件为空，指定的字体文件为空，不包含有效数据。请检查文件内容，确保使用包含有效数据的字体文件。<br>**起始版本：** 23 |
-| OH_DRAWING_ERROR_FILE_CORRUPTED = 26200011 | 文件损坏，文件内容无效或损坏，无法解析。请检查文件是否完整，尝试重新获取或替换有效的文件。<br>**起始版本：** 23 |
+| OH_DRAWING_SUCCESS = 0 | 操作成功完成。<br>**起始版本：** 12<br><!--Device-OH_DRAWING_SUCCESS = 0--><!--Device-OH_DRAWING_SUCCESS = 0-End--> |
+| OH_DRAWING_ERROR_NO_PERMISSION = 201 | 权限校验失败，应用无权限使用该API，需要申请权限。<br>**起始版本：** 12<br><!--Device-OH_DRAWING_ERROR_NO_PERMISSION = 201--><!--Device-OH_DRAWING_ERROR_NO_PERMISSION = 201-End--> |
+| OH_DRAWING_ERROR_INVALID_PARAMETER = 401 | 无效的输入参数，如参数中传入了NULL。请检查参数类型、取值范围或参数是否为空。<br>**起始版本：** 12<br><!--Device-OH_DRAWING_ERROR_INVALID_PARAMETER = 401--><!--Device-OH_DRAWING_ERROR_INVALID_PARAMETER = 401-End--> |
+| OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE = 26200001 | 输入参数不在有效的范围内。请检查参数值是否在接口文档规定的有效范围内。<br>**起始版本：** 12<br><!--Device-OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE = 26200001--><!--Device-OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE = 26200001-End--> |
+| OH_DRAWING_ERROR_ALLOCATION_FAILED = 26200002 | 内存分配失败。<br>**起始版本：** 13<br><!--Device-OH_DRAWING_ERROR_ALLOCATION_FAILED = 26200002--><!--Device-OH_DRAWING_ERROR_ALLOCATION_FAILED = 26200002-End--> |
+| OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH = 26200003 | 输入属性id无匹配的函数。请检查属性id是否正确，确保使用有效的属性id。<br>**起始版本：** 21<br><!--Device-OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH = 26200003--><!--Device-OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH = 26200003-End--> |
+| OH_DRAWING_ERROR_INCORRECT_PARAMETER = 26200004 | 输入参数不正确，例如入参的指针为空。请检查传入的参数是否正确，确保指针参数有效且不为空。<br>**起始版本：** 22<br><!--Device-OH_DRAWING_ERROR_INCORRECT_PARAMETER = 26200004--><!--Device-OH_DRAWING_ERROR_INCORRECT_PARAMETER = 26200004-End--> |
+| OH_DRAWING_ERROR_FILE_NOT_FOUND = 26200005 | 文件未找到，指定的文件不存在或路径不正确。请检查文件路径是否正确，确保文件存在且路径格式有效。<br>**起始版本：** 23<br><!--Device-OH_DRAWING_ERROR_FILE_NOT_FOUND = 26200005--><!--Device-OH_DRAWING_ERROR_FILE_NOT_FOUND = 26200005-End--> |
+| OH_DRAWING_ERROR_OPEN_FILE_FAILED = 26200006 | 打开文件失败，权限不足或I/O问题造成。请检查文件权限设置是否正确，或稍后重试。<br>**起始版本：** 23<br><!--Device-OH_DRAWING_ERROR_OPEN_FILE_FAILED = 26200006--><!--Device-OH_DRAWING_ERROR_OPEN_FILE_FAILED = 26200006-End--> |
+| OH_DRAWING_ERROR_FILE_SEEK_FAILED = 26200007 | 文件定位失败。系统无法重新定位文件读取指针。请检查文件是否被其他进程占用，或重新打开文件后重试。<br>**起始版本：** 23<br><!--Device-OH_DRAWING_ERROR_FILE_SEEK_FAILED = 26200007--><!--Device-OH_DRAWING_ERROR_FILE_SEEK_FAILED = 26200007-End--> |
+| OH_DRAWING_ERROR_GET_FILE_SIZE_FAILED = 26200008 | 获取文件大小失败，系统无法获取文件大小信息。请检查文件是否存在且可访问，确保文件未被损坏。<br>**起始版本：** 23<br><!--Device-OH_DRAWING_ERROR_GET_FILE_SIZE_FAILED = 26200008--><!--Device-OH_DRAWING_ERROR_GET_FILE_SIZE_FAILED = 26200008-End--> |
+| OH_DRAWING_ERROR_READ_FILE_FAILED = 26200009 | 读取文件失败，文件无法完整读取或包含不可读数据。请检查文件是否完整且未被损坏，确保文件格式正确。<br>**起始版本：** 23<br><!--Device-OH_DRAWING_ERROR_READ_FILE_FAILED = 26200009--><!--Device-OH_DRAWING_ERROR_READ_FILE_FAILED = 26200009-End--> |
+| OH_DRAWING_ERROR_EMPTY_FILE = 26200010 | 文件为空，指定的字体文件为空，不包含有效数据。请检查文件内容，确保使用包含有效数据的字体文件。<br>**起始版本：** 23<br><!--Device-OH_DRAWING_ERROR_EMPTY_FILE = 26200010--><!--Device-OH_DRAWING_ERROR_EMPTY_FILE = 26200010-End--> |
+| OH_DRAWING_ERROR_FILE_CORRUPTED = 26200011 | 文件损坏，文件内容无效或损坏，无法解析。请检查文件是否完整，尝试重新获取或替换有效的文件。<br>**起始版本：** 23<br><!--Device-OH_DRAWING_ERROR_FILE_CORRUPTED = 26200011--><!--Device-OH_DRAWING_ERROR_FILE_CORRUPTED = 26200011-End--> |
 
 
 ## 函数说明

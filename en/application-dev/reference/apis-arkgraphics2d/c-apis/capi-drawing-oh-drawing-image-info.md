@@ -24,9 +24,9 @@ This struct describes the image information.
 
 | Name | Description |
 | -- | -- |
-| int32_t width | Width, in pixels.<br>**Since**: 12 |
-| int32_t height | Height, in pixels.<br>**Since**: 12 |
-| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType | Color type.<br>**Since**: 12 |
-| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType | Alpha type.<br>**Since**: 12 |
+| int32_t width | Width, in pixels.<br>**Since**: 12<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | Height, in pixels.<br>**Since**: 12<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
+| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType | Color type.<br>**Since**: 12<br><!--Device-OH_Drawing_ColorFormat colorType--><!--Device-OH_Drawing_ColorFormat colorType-End--> |
+| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType | Alpha type.<br>**Since**: 12<br><!--Device-OH_Drawing_AlphaFormat alphaType--><!--Device-OH_Drawing_AlphaFormat alphaType-End--> |
 
 

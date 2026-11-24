@@ -53,7 +53,7 @@ enum Rdb_EncryptionAlgo
 
 Enumerates the database encryption algorithms.
 
-<!--Device-Rdb_EncryptionAlgo--><!--Device-Rdb_EncryptionAlgo-End-->
+<!--Device-enum Rdb_EncryptionAlgo--><!--Device-enum Rdb_EncryptionAlgo-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -61,9 +61,9 @@ Enumerates the database encryption algorithms.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_AES_256_GCM = 0 | Indicates the database is encrypted using RDB_AES_256_GCM. |
-| RDB_AES_256_CBC | Indicates the database is encrypted using RDB_AES_256_CBC. |
-| RDB_PLAIN_TEXT | Indicates the database is not encrypted.<br>**Since**: 22 |
+| RDB_AES_256_GCM = 0 | Indicates the database is encrypted using RDB_AES_256_GCM.<br><!--Device-RDB_AES_256_GCM = 0--><!--Device-RDB_AES_256_GCM = 0-End--> |
+| RDB_AES_256_CBC | Indicates the database is encrypted using RDB_AES_256_CBC.<br><!--Device-RDB_AES_256_CBC--><!--Device-RDB_AES_256_CBC-End--> |
+| RDB_PLAIN_TEXT | Indicates the database is not encrypted.<br>**Since**: 22<br><!--Device-RDB_PLAIN_TEXT--><!--Device-RDB_PLAIN_TEXT-End--> |
 
 ### Rdb_HmacAlgo
 
@@ -75,7 +75,7 @@ enum Rdb_HmacAlgo
 
 Enumerates the supported HMAC algorithm when opening a database.
 
-<!--Device-Rdb_HmacAlgo--><!--Device-Rdb_HmacAlgo-End-->
+<!--Device-enum Rdb_HmacAlgo--><!--Device-enum Rdb_HmacAlgo-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -83,9 +83,9 @@ Enumerates the supported HMAC algorithm when opening a database.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_HMAC_SHA1 = 0 | RDB_HMAC_SHA1 algorithm. |
-| RDB_HMAC_SHA256 | RDB_HMAC_SHA256 algorithm. |
-| RDB_HMAC_SHA512 | RDB_HMAC_SHA512 algorithm. |
+| RDB_HMAC_SHA1 = 0 | RDB_HMAC_SHA1 algorithm.<br><!--Device-RDB_HMAC_SHA1 = 0--><!--Device-RDB_HMAC_SHA1 = 0-End--> |
+| RDB_HMAC_SHA256 | RDB_HMAC_SHA256 algorithm.<br><!--Device-RDB_HMAC_SHA256--><!--Device-RDB_HMAC_SHA256-End--> |
+| RDB_HMAC_SHA512 | RDB_HMAC_SHA512 algorithm.<br><!--Device-RDB_HMAC_SHA512--><!--Device-RDB_HMAC_SHA512-End--> |
 
 ### Rdb_KdfAlgo
 
@@ -97,7 +97,7 @@ enum Rdb_KdfAlgo
 
 Enumerates the supported KDF algorithm when opening a database.
 
-<!--Device-Rdb_KdfAlgo--><!--Device-Rdb_KdfAlgo-End-->
+<!--Device-enum Rdb_KdfAlgo--><!--Device-enum Rdb_KdfAlgo-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -105,9 +105,9 @@ Enumerates the supported KDF algorithm when opening a database.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_KDF_SHA1 = 0 | RDB_KDF_SHA1 algorithm. |
-| RDB_KDF_SHA256 | RDB_KDF_SHA256 algorithm. |
-| RDB_KDF_SHA512 | RDB_KDF_SHA512 algorithm. |
+| RDB_KDF_SHA1 = 0 | RDB_KDF_SHA1 algorithm.<br><!--Device-RDB_KDF_SHA1 = 0--><!--Device-RDB_KDF_SHA1 = 0-End--> |
+| RDB_KDF_SHA256 | RDB_KDF_SHA256 algorithm.<br><!--Device-RDB_KDF_SHA256--><!--Device-RDB_KDF_SHA256-End--> |
+| RDB_KDF_SHA512 | RDB_KDF_SHA512 algorithm.<br><!--Device-RDB_KDF_SHA512--><!--Device-RDB_KDF_SHA512-End--> |
 
 
 ## Function description

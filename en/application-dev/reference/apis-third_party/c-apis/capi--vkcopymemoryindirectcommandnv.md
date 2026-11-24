@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceAddress srcAddress |  |
-| VkDeviceAddress dstAddress |  |
-| VkDeviceSize size |  |
+| VkDeviceAddress srcAddress | <!--Device-VkDeviceAddress srcAddress--><!--Device-VkDeviceAddress srcAddress-End--> |
+| VkDeviceAddress dstAddress | <!--Device-VkDeviceAddress dstAddress--><!--Device-VkDeviceAddress dstAddress-End--> |
+| VkDeviceSize size | <!--Device-VkDeviceSize size--><!--Device-VkDeviceSize size-End--> |
 
 

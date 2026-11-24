@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkFenceCreateFlags flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkFenceCreateFlags flags | <!--Device-VkFenceCreateFlags flags--><!--Device-VkFenceCreateFlags flags-End--> |
 
 

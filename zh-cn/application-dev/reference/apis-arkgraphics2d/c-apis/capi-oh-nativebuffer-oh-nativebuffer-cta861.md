@@ -24,7 +24,7 @@ typedef struct OH_NativeBuffer_Cta861 {...} OH_NativeBuffer_Cta861
 
 | 名称 | 描述 |
 | -- | -- |
-| float maxContentLightLevel | 最大内容亮度水平 |
-| float maxFrameAverageLightLevel | 最大的帧平均亮度水平 |
+| float maxContentLightLevel | 最大内容亮度水平<br><!--Device-float maxContentLightLevel--><!--Device-float maxContentLightLevel-End--> |
+| float maxFrameAverageLightLevel | 最大的帧平均亮度水平<br><!--Device-float maxFrameAverageLightLevel--><!--Device-float maxFrameAverageLightLevel-End--> |
 
 

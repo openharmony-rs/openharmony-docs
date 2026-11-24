@@ -155,7 +155,7 @@ enum Udmf_Intention
 
 描述UDMF数据通路枚举类型。
 
-<!--Device-Udmf_Intention--><!--Device-Udmf_Intention-End-->
+<!--Device-enum Udmf_Intention--><!--Device-enum Udmf_Intention-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -163,12 +163,12 @@ enum Udmf_Intention
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UDMF_INTENTION_DRAG | 拖拽数据通路。 |
-| UDMF_INTENTION_PASTEBOARD | 剪贴板数据通路。 |
-| UDMF_INTENTION_DATA_HUB | 公共数据通路。<br>**起始版本：** 20 |
-| UDMF_INTENTION_SYSTEM_SHARE | 系统分享数据通路。<br>**起始版本：** 20 |
-| UDMF_INTENTION_PICKER | Picker数据通路。<br>**起始版本：** 20 |
-| UDMF_INTENTION_MENU | 菜单数据通路。<br>**起始版本：** 20 |
+| UDMF_INTENTION_DRAG | 拖拽数据通路。<br><!--Device-UDMF_INTENTION_DRAG--><!--Device-UDMF_INTENTION_DRAG-End--> |
+| UDMF_INTENTION_PASTEBOARD | 剪贴板数据通路。<br><!--Device-UDMF_INTENTION_PASTEBOARD--><!--Device-UDMF_INTENTION_PASTEBOARD-End--> |
+| UDMF_INTENTION_DATA_HUB | 公共数据通路。<br>**起始版本：** 20<br><!--Device-UDMF_INTENTION_DATA_HUB--><!--Device-UDMF_INTENTION_DATA_HUB-End--> |
+| UDMF_INTENTION_SYSTEM_SHARE | 系统分享数据通路。<br>**起始版本：** 20<br><!--Device-UDMF_INTENTION_SYSTEM_SHARE--><!--Device-UDMF_INTENTION_SYSTEM_SHARE-End--> |
+| UDMF_INTENTION_PICKER | Picker数据通路。<br>**起始版本：** 20<br><!--Device-UDMF_INTENTION_PICKER--><!--Device-UDMF_INTENTION_PICKER-End--> |
+| UDMF_INTENTION_MENU | 菜单数据通路。<br>**起始版本：** 20<br><!--Device-UDMF_INTENTION_MENU--><!--Device-UDMF_INTENTION_MENU-End--> |
 
 ### Udmf_ShareOption
 
@@ -180,7 +180,7 @@ enum Udmf_ShareOption
 
 UDMF支持的设备内使用范围类型枚举。
 
-<!--Device-Udmf_ShareOption--><!--Device-Udmf_ShareOption-End-->
+<!--Device-enum Udmf_ShareOption--><!--Device-enum Udmf_ShareOption-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -188,9 +188,9 @@ UDMF支持的设备内使用范围类型枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SHARE_OPTIONS_INVALID | 表示不合法的使用范围类型。 |
-| SHARE_OPTIONS_IN_APP | 表示允许在本设备同应用内使用。 |
-| SHARE_OPTIONS_CROSS_APP | 表示允许在本设备内跨应用使用。 |
+| SHARE_OPTIONS_INVALID | 表示不合法的使用范围类型。<br><!--Device-SHARE_OPTIONS_INVALID--><!--Device-SHARE_OPTIONS_INVALID-End--> |
+| SHARE_OPTIONS_IN_APP | 表示允许在本设备同应用内使用。<br><!--Device-SHARE_OPTIONS_IN_APP--><!--Device-SHARE_OPTIONS_IN_APP-End--> |
+| SHARE_OPTIONS_CROSS_APP | 表示允许在本设备内跨应用使用。<br><!--Device-SHARE_OPTIONS_CROSS_APP--><!--Device-SHARE_OPTIONS_CROSS_APP-End--> |
 
 ### Udmf_FileConflictOptions
 
@@ -202,7 +202,7 @@ enum Udmf_FileConflictOptions
 
 定义文件拷贝冲突时的选项。
 
-<!--Device-Udmf_FileConflictOptions--><!--Device-Udmf_FileConflictOptions-End-->
+<!--Device-enum Udmf_FileConflictOptions--><!--Device-enum Udmf_FileConflictOptions-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -210,8 +210,8 @@ enum Udmf_FileConflictOptions
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UDMF_OVERWRITE = 0 | 目标路径存在同文件名时覆盖。若不配置策略，默认使用该策略。 |
-| UDMF_SKIP = 1 | 目标路径存在同文件名时跳过。 |
+| UDMF_OVERWRITE = 0 | 目标路径存在同文件名时覆盖。若不配置策略，默认使用该策略。<br><!--Device-UDMF_OVERWRITE = 0--><!--Device-UDMF_OVERWRITE = 0-End--> |
+| UDMF_SKIP = 1 | 目标路径存在同文件名时跳过。<br><!--Device-UDMF_SKIP = 1--><!--Device-UDMF_SKIP = 1-End--> |
 
 ### Udmf_ProgressIndicator
 
@@ -223,7 +223,7 @@ enum Udmf_ProgressIndicator
 
 定义进度条指示选项，可选择是否采用系统默认进度显示。
 
-<!--Device-Udmf_ProgressIndicator--><!--Device-Udmf_ProgressIndicator-End-->
+<!--Device-enum Udmf_ProgressIndicator--><!--Device-enum Udmf_ProgressIndicator-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -231,8 +231,8 @@ enum Udmf_ProgressIndicator
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UDMF_NONE = 0 | 不采用系统默认进度显示。 |
-| UDMF_DEFAULT = 1 | 采用系统默认进度显示，500ms内获取数据完成将不会拉起默认进度条。 |
+| UDMF_NONE = 0 | 不采用系统默认进度显示。<br><!--Device-UDMF_NONE = 0--><!--Device-UDMF_NONE = 0-End--> |
+| UDMF_DEFAULT = 1 | 采用系统默认进度显示，500ms内获取数据完成将不会拉起默认进度条。<br><!--Device-UDMF_DEFAULT = 1--><!--Device-UDMF_DEFAULT = 1-End--> |
 
 ### Udmf_Visibility
 
@@ -244,7 +244,7 @@ enum Udmf_Visibility
 
 定义数据的可见性等级。
 
-<!--Device-Udmf_Visibility--><!--Device-Udmf_Visibility-End-->
+<!--Device-enum Udmf_Visibility--><!--Device-enum Udmf_Visibility-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -252,8 +252,8 @@ enum Udmf_Visibility
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UDMF_ALL | 可见性等级，所有应用可见。 |
-| UDMF_OWN_PROCESS | 可见性等级，仅数据提供者可见。 |
+| UDMF_ALL | 可见性等级，所有应用可见。<br><!--Device-UDMF_ALL--><!--Device-UDMF_ALL-End--> |
+| UDMF_OWN_PROCESS | 可见性等级，仅数据提供者可见。<br><!--Device-UDMF_OWN_PROCESS--><!--Device-UDMF_OWN_PROCESS-End--> |
 
 
 ## 函数说明

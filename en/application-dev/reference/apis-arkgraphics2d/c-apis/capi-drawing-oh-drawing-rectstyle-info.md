@@ -24,10 +24,10 @@ This struct describes the style of a rectangle.
 
 | Name | Description |
 | -- | -- |
-| uint32_t color | Color of the rectangle.<br>**Since**: 12 |
-| double leftTopRadius | Left top radius of the rectangle.<br>**Since**: 12 |
-| double rightTopRadius | Right top radius of the rectangle.<br>**Since**: 12 |
-| double rightBottomRadius | Right bottom radius of the rectangle.<br>**Since**: 12 |
-| double leftBottomRadius | Left bottom radius of the rectangle.<br>**Since**: 12 |
+| uint32_t color | Color of the rectangle.<br>**Since**: 12<br><!--Device-uint32_t color--><!--Device-uint32_t color-End--> |
+| double leftTopRadius | Left top radius of the rectangle.<br>**Since**: 12<br><!--Device-double leftTopRadius--><!--Device-double leftTopRadius-End--> |
+| double rightTopRadius | Right top radius of the rectangle.<br>**Since**: 12<br><!--Device-double rightTopRadius--><!--Device-double rightTopRadius-End--> |
+| double rightBottomRadius | Right bottom radius of the rectangle.<br>**Since**: 12<br><!--Device-double rightBottomRadius--><!--Device-double rightBottomRadius-End--> |
+| double leftBottomRadius | Left bottom radius of the rectangle.<br>**Since**: 12<br><!--Device-double leftBottomRadius--><!--Device-double leftBottomRadius-End--> |
 
 

@@ -24,11 +24,11 @@ typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_NetConn_NetworkAvailable](capi-net-connection-type-h.md#oh_netconn_networkavailable) onNetworkAvailable | 网络可用回调。 |
-| [OH_NetConn_NetCapabilitiesChange](capi-net-connection-type-h.md#oh_netconn_netcapabilitieschange) onNetCapabilitiesChange | 网络能力集变更回调。 |
-| [OH_NetConn_NetConnectionPropertiesChange](capi-net-connection-type-h.md#oh_netconn_netconnectionpropertieschange) onConnetionProperties | 网络连接属性变更回调。 |
-| [OH_NetConn_NetLost](capi-net-connection-type-h.md#oh_netconn_netlost) onNetLost | 网络断开回调。 |
-| [OH_NetConn_NetUnavailable](capi-net-connection-type-h.md#oh_netconn_netunavailable) onNetUnavailable | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。 |
-| [OH_NetConn_NetBlockStatusChange](capi-net-connection-type-h.md#oh_netconn_netblockstatuschange) onNetBlockStatusChange | 网络阻塞状态变更回调。 |
+| [OH_NetConn_NetworkAvailable](capi-net-connection-type-h.md#oh_netconn_networkavailable) onNetworkAvailable | 网络可用回调。<br><!--Device-OH_NetConn_NetworkAvailable onNetworkAvailable--><!--Device-OH_NetConn_NetworkAvailable onNetworkAvailable-End--> |
+| [OH_NetConn_NetCapabilitiesChange](capi-net-connection-type-h.md#oh_netconn_netcapabilitieschange) onNetCapabilitiesChange | 网络能力集变更回调。<br><!--Device-OH_NetConn_NetCapabilitiesChange onNetCapabilitiesChange--><!--Device-OH_NetConn_NetCapabilitiesChange onNetCapabilitiesChange-End--> |
+| [OH_NetConn_NetConnectionPropertiesChange](capi-net-connection-type-h.md#oh_netconn_netconnectionpropertieschange) onConnetionProperties | 网络连接属性变更回调。<br><!--Device-OH_NetConn_NetConnectionPropertiesChange onConnetionProperties--><!--Device-OH_NetConn_NetConnectionPropertiesChange onConnetionProperties-End--> |
+| [OH_NetConn_NetLost](capi-net-connection-type-h.md#oh_netconn_netlost) onNetLost | 网络断开回调。<br><!--Device-OH_NetConn_NetLost onNetLost--><!--Device-OH_NetConn_NetLost onNetLost-End--> |
+| [OH_NetConn_NetUnavailable](capi-net-connection-type-h.md#oh_netconn_netunavailable) onNetUnavailable | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。<br><!--Device-OH_NetConn_NetUnavailable onNetUnavailable--><!--Device-OH_NetConn_NetUnavailable onNetUnavailable-End--> |
+| [OH_NetConn_NetBlockStatusChange](capi-net-connection-type-h.md#oh_netconn_netblockstatuschange) onNetBlockStatusChange | 网络阻塞状态变更回调。<br><!--Device-OH_NetConn_NetBlockStatusChange onNetBlockStatusChange--><!--Device-OH_NetConn_NetBlockStatusChange onNetBlockStatusChange-End--> |
 
 

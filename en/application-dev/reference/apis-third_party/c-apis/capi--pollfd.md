@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| SOCKET fd |  |
-| short events |  |
-| short revents |  |
+| SOCKET fd | <!--Device-SOCKET fd--><!--Device-SOCKET fd-End--> |
+| short events | <!--Device-short events--><!--Device-short events-End--> |
+| short revents | <!--Device-short revents--><!--Device-short revents-End--> |
 
 

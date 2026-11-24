@@ -38,7 +38,7 @@ enum TimeService_ErrCode
 
 Enumerates the error codes.
 
-<!--Device-TimeService_ErrCode--><!--Device-TimeService_ErrCode-End-->
+<!--Device-enum TimeService_ErrCode--><!--Device-enum TimeService_ErrCode-End-->
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -46,9 +46,9 @@ Enumerates the error codes.
 
 | Enum item | Description |
 | -- | -- |
-| TIMESERVICE_ERR_OK = 0 | Operation successful. |
-| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | Failed to obtain system parameters. |
-| TIMESERVICE_ERR_INVALID_PARAMETER = 13000002 | Invalid parameter. |
+| TIMESERVICE_ERR_OK = 0 | Operation successful.<br><!--Device-TIMESERVICE_ERR_OK = 0--><!--Device-TIMESERVICE_ERR_OK = 0-End--> |
+| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | Failed to obtain system parameters.<br><!--Device-TIMESERVICE_ERR_INTERNAL_ERROR = 13000001--><!--Device-TIMESERVICE_ERR_INTERNAL_ERROR = 13000001-End--> |
+| TIMESERVICE_ERR_INVALID_PARAMETER = 13000002 | Invalid parameter.<br><!--Device-TIMESERVICE_ERR_INVALID_PARAMETER = 13000002--><!--Device-TIMESERVICE_ERR_INVALID_PARAMETER = 13000002-End--> |
 
 
 ## Function description

@@ -51,7 +51,7 @@ enum Preferences_StorageType
 
 首选项配置选项的存储模式枚举。
 
-<!--Device-Preferences_StorageType--><!--Device-Preferences_StorageType-End-->
+<!--Device-enum Preferences_StorageType--><!--Device-enum Preferences_StorageType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -59,8 +59,8 @@ enum Preferences_StorageType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PREFERENCES_STORAGE_XML = 0 | XML存储模式，对数据的操作发生在内存中，调用[OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close)时落盘，不支持多进程。 |
-| PREFERENCES_STORAGE_GSKV | GSKV存储模式，对数据的操作实时落盘，可支持多进程。 |
+| PREFERENCES_STORAGE_XML = 0 | XML存储模式，对数据的操作发生在内存中，调用[OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close)时落盘，不支持多进程。<br><!--Device-PREFERENCES_STORAGE_XML = 0--><!--Device-PREFERENCES_STORAGE_XML = 0-End--> |
+| PREFERENCES_STORAGE_GSKV | GSKV存储模式，对数据的操作实时落盘，可支持多进程。<br><!--Device-PREFERENCES_STORAGE_GSKV--><!--Device-PREFERENCES_STORAGE_GSKV-End--> |
 
 
 ## 函数说明

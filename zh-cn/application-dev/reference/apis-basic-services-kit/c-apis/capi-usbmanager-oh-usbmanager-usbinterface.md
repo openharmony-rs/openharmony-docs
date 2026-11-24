@@ -24,13 +24,13 @@ typedef struct OH_UsbManager_UsbInterface {...} OH_UsbManager_UsbInterface
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t id | USB接口的唯一标识。<br>**起始版本：** 26.0.1 |
-| uint8_t protocol | 接口协议。<br>**起始版本：** 26.0.1 |
-| uint8_t clazz | 接口类。<br>**起始版本：** 26.0.1 |
-| uint8_t subClass | 接口子类。<br>**起始版本：** 26.0.1 |
-| uint8_t alternateSetting | 此USB接口的交替设置编号，由USB接口描述符定义。值0表示 <br>默认的交替设置。<br>**起始版本：** 26.0.1 |
-| const char *name | 接口名称。<br>**起始版本：** 26.0.1 |
-| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) *endpoints | 属于该USB接口的端点。<br>**起始版本：** 26.0.1 |
-| uint32_t endpointCount | 接口中的端点数量。<br>**起始版本：** 26.0.1 |
+| uint8_t id | USB接口的唯一标识。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t id--><!--Device-uint8_t id-End--> |
+| uint8_t protocol | 接口协议。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t protocol--><!--Device-uint8_t protocol-End--> |
+| uint8_t clazz | 接口类。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t clazz--><!--Device-uint8_t clazz-End--> |
+| uint8_t subClass | 接口子类。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t subClass--><!--Device-uint8_t subClass-End--> |
+| uint8_t alternateSetting | 此USB接口的交替设置编号，由USB接口描述符定义。值0表示 <br>默认的交替设置。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t alternateSetting--><!--Device-uint8_t alternateSetting-End--> |
+| const char *name | 接口名称。<br>**起始版本：** 26.0.1<br><!--Device-const char *name--><!--Device-const char *name-End--> |
+| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) *endpoints | 属于该USB接口的端点。<br>**起始版本：** 26.0.1<br><!--Device-OH_UsbManager_UsbEndpoint *endpoints--><!--Device-OH_UsbManager_UsbEndpoint *endpoints-End--> |
+| uint32_t endpointCount | 接口中的端点数量。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t endpointCount--><!--Device-uint32_t endpointCount-End--> |
 
 

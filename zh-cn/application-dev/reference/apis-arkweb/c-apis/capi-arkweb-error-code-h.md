@@ -33,7 +33,7 @@ enum ArkWeb_ErrorCode
 
 定义ArkWeb NDK接口异常错误码。
 
-<!--Device-ArkWeb_ErrorCode--><!--Device-ArkWeb_ErrorCode-End-->
+<!--Device-enum ArkWeb_ErrorCode--><!--Device-enum ArkWeb_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -41,18 +41,18 @@ enum ArkWeb_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_SUCCESS = 0 | &nbsp;成功。 |
-| ARKWEB_INIT_ERROR = 17100001 | &nbsp;初始化失败。请检查系统环境，确保依赖库已安装，重试初始化。 |
-| ARKWEB_ERROR_UNKNOWN = 17100100 | &nbsp;未知错误，请收集日志反馈。 |
-| ARKWEB_INVALID_PARAM = 17100101 | &nbsp;参数无效。请检查传入参数的格式、范围和类型是否符合接口要求。 |
-| ARKWEB_SCHEME_REGISTER_FAILED = 17100102 | &nbsp;注册scheme的配置失败，应该在创建ArkWeb之前注册。 |
-| ARKWEB_INVALID_URL = 17100103 | &nbsp;无效的URL，请检查URL格式或协议支持。 |
-| ARKWEB_INVALID_COOKIE_VALUE = 17100104 | &nbsp;无效的cookie值，请检查cookie格式与有效性。 |
-| ARKWEB_LIBRARY_OPEN_FAILURE = 17100105 | &nbsp;打开动态链接库失败。请检查动态链接库文件是否存在、路径是否正确、以及是否有读取权限。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| ARKWEB_LIBRARY_SYMBOL_NOT_FOUND = 17100106 | &nbsp;动态链接库中找不到所需的符号。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED = 17100107 | &nbsp;CookieManager未初始化。请先调用初始化接口完成CookieManager的初始化。<br>**起始版本：** 20 |
-| ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED = 17100108 | &nbsp;CookieManager初始化失败，请检查系统能力与权限配置。<br>**起始版本：** 20 |
-| ARKWEB_COOKIE_SAVE_FAILED = 17100109 | &nbsp;保存cookie失败。请检查存储空间是否充足、是否有写入权限，以及cookie值是否符合规范。<br>**起始版本：** 20 |
+| ARKWEB_SUCCESS = 0 | &nbsp;成功。<br><!--Device-ARKWEB_SUCCESS = 0--><!--Device-ARKWEB_SUCCESS = 0-End--> |
+| ARKWEB_INIT_ERROR = 17100001 | &nbsp;初始化失败。请检查系统环境，确保依赖库已安装，重试初始化。<br><!--Device-ARKWEB_INIT_ERROR = 17100001--><!--Device-ARKWEB_INIT_ERROR = 17100001-End--> |
+| ARKWEB_ERROR_UNKNOWN = 17100100 | &nbsp;未知错误，请收集日志反馈。<br><!--Device-ARKWEB_ERROR_UNKNOWN = 17100100--><!--Device-ARKWEB_ERROR_UNKNOWN = 17100100-End--> |
+| ARKWEB_INVALID_PARAM = 17100101 | &nbsp;参数无效。请检查传入参数的格式、范围和类型是否符合接口要求。<br><!--Device-ARKWEB_INVALID_PARAM = 17100101--><!--Device-ARKWEB_INVALID_PARAM = 17100101-End--> |
+| ARKWEB_SCHEME_REGISTER_FAILED = 17100102 | &nbsp;注册scheme的配置失败，应该在创建ArkWeb之前注册。<br><!--Device-ARKWEB_SCHEME_REGISTER_FAILED = 17100102--><!--Device-ARKWEB_SCHEME_REGISTER_FAILED = 17100102-End--> |
+| ARKWEB_INVALID_URL = 17100103 | &nbsp;无效的URL，请检查URL格式或协议支持。<br><!--Device-ARKWEB_INVALID_URL = 17100103--><!--Device-ARKWEB_INVALID_URL = 17100103-End--> |
+| ARKWEB_INVALID_COOKIE_VALUE = 17100104 | &nbsp;无效的cookie值，请检查cookie格式与有效性。<br><!--Device-ARKWEB_INVALID_COOKIE_VALUE = 17100104--><!--Device-ARKWEB_INVALID_COOKIE_VALUE = 17100104-End--> |
+| ARKWEB_LIBRARY_OPEN_FAILURE = 17100105 | &nbsp;打开动态链接库失败。请检查动态链接库文件是否存在、路径是否正确、以及是否有读取权限。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core<br><!--Device-ARKWEB_LIBRARY_OPEN_FAILURE = 17100105--><!--Device-ARKWEB_LIBRARY_OPEN_FAILURE = 17100105-End--> |
+| ARKWEB_LIBRARY_SYMBOL_NOT_FOUND = 17100106 | &nbsp;动态链接库中找不到所需的符号。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core<br><!--Device-ARKWEB_LIBRARY_SYMBOL_NOT_FOUND = 17100106--><!--Device-ARKWEB_LIBRARY_SYMBOL_NOT_FOUND = 17100106-End--> |
+| ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED = 17100107 | &nbsp;CookieManager未初始化。请先调用初始化接口完成CookieManager的初始化。<br>**起始版本：** 20<br><!--Device-ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED = 17100107--><!--Device-ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED = 17100107-End--> |
+| ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED = 17100108 | &nbsp;CookieManager初始化失败，请检查系统能力与权限配置。<br>**起始版本：** 20<br><!--Device-ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED = 17100108--><!--Device-ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED = 17100108-End--> |
+| ARKWEB_COOKIE_SAVE_FAILED = 17100109 | &nbsp;保存cookie失败。请检查存储空间是否充足、是否有写入权限，以及cookie值是否符合规范。<br>**起始版本：** 20<br><!--Device-ARKWEB_COOKIE_SAVE_FAILED = 17100109--><!--Device-ARKWEB_COOKIE_SAVE_FAILED = 17100109-End--> |
 
 ### ArkWeb_BlanklessErrorCode
 
@@ -64,7 +64,7 @@ enum ArkWeb_BlanklessErrorCode
 
 定义无白屏加载的异常错误码。
 
-<!--Device-ArkWeb_BlanklessErrorCode--><!--Device-ArkWeb_BlanklessErrorCode-End-->
+<!--Device-enum ArkWeb_BlanklessErrorCode--><!--Device-enum ArkWeb_BlanklessErrorCode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -72,12 +72,12 @@ enum ArkWeb_BlanklessErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_BLANKLESS_SUCCESS = 0 | &nbsp;成功。 |
-| ARKWEB_BLANKLESS_ERR_UNKNOWN = -1 | &nbsp;未知错误，内部状态错误等。 |
-| ARKWEB_BLANKLESS_ERR_INVALID_ARGS = -2 | &nbsp;参数不合法。 |
-| ARKWEB_BLANKLESS_ERR_CONTROLLER_NOT_INITED = -3 | &nbsp;WebViewController未绑定组件。 |
-| ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4 | &nbsp;未匹配到key值，对于OH_NativeArkWeb_SetBlanklessLoadingWithKey需与OH_NativeArkWeb_GetBlanklessInfoWithKey配套使用 并且key值一致，否则返回该错误码。 |
-| ARKWEB_BLANKLESS_ERR_SIGNIFICANT_CHANGE = -5 | &nbsp;当相似度较低时，系统会判定为跳变太大，OH_NativeArkWeb_SetBlanklessLoadingWithKey接口启用插帧不成功。 |
-| ARKWEB_BLANKLESS_ERR_DEVICE_NOT_SUPPORT = 801 | &nbsp;该设备不适用于此功能。 |
+| ARKWEB_BLANKLESS_SUCCESS = 0 | &nbsp;成功。<br><!--Device-ARKWEB_BLANKLESS_SUCCESS = 0--><!--Device-ARKWEB_BLANKLESS_SUCCESS = 0-End--> |
+| ARKWEB_BLANKLESS_ERR_UNKNOWN = -1 | &nbsp;未知错误，内部状态错误等。<br><!--Device-ARKWEB_BLANKLESS_ERR_UNKNOWN = -1--><!--Device-ARKWEB_BLANKLESS_ERR_UNKNOWN = -1-End--> |
+| ARKWEB_BLANKLESS_ERR_INVALID_ARGS = -2 | &nbsp;参数不合法。<br><!--Device-ARKWEB_BLANKLESS_ERR_INVALID_ARGS = -2--><!--Device-ARKWEB_BLANKLESS_ERR_INVALID_ARGS = -2-End--> |
+| ARKWEB_BLANKLESS_ERR_CONTROLLER_NOT_INITED = -3 | &nbsp;WebViewController未绑定组件。<br><!--Device-ARKWEB_BLANKLESS_ERR_CONTROLLER_NOT_INITED = -3--><!--Device-ARKWEB_BLANKLESS_ERR_CONTROLLER_NOT_INITED = -3-End--> |
+| ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4 | &nbsp;未匹配到key值，对于OH_NativeArkWeb_SetBlanklessLoadingWithKey需与OH_NativeArkWeb_GetBlanklessInfoWithKey配套使用 并且key值一致，否则返回该错误码。<br><!--Device-ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4--><!--Device-ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4-End--> |
+| ARKWEB_BLANKLESS_ERR_SIGNIFICANT_CHANGE = -5 | &nbsp;当相似度较低时，系统会判定为跳变太大，OH_NativeArkWeb_SetBlanklessLoadingWithKey接口启用插帧不成功。<br><!--Device-ARKWEB_BLANKLESS_ERR_SIGNIFICANT_CHANGE = -5--><!--Device-ARKWEB_BLANKLESS_ERR_SIGNIFICANT_CHANGE = -5-End--> |
+| ARKWEB_BLANKLESS_ERR_DEVICE_NOT_SUPPORT = 801 | &nbsp;该设备不适用于此功能。<br><!--Device-ARKWEB_BLANKLESS_ERR_DEVICE_NOT_SUPPORT = 801--><!--Device-ARKWEB_BLANKLESS_ERR_DEVICE_NOT_SUPPORT = 801-End--> |
 
 

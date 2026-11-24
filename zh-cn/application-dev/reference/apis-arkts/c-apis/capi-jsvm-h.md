@@ -883,7 +883,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env, void* data, JSVM_F
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
 | void* data | 可用于此实例的绑定的数据项。 |
-| JSVM_Finalize finalizeCb | 销毁环境时调用的函数，该函数接收data以便释放它。 |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 销毁环境时调用的函数，该函数接收data以便释放它。 |
 | void* finalizeHint | 在收集期间传递给最终回调的可选提示。 |
 
 **返回值：**
@@ -1841,7 +1841,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env, void* data, JSVM_Fi
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
 | void* data | 指向外部数据的原始指针。 |
-| JSVM_Finalize finalizeCb | 收集外部值时调用的可选回调。JSVM_Finalize提供了更多详细信息。 |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 收集外部值时调用的可选回调。JSVM_Finalize提供了更多详细信息。 |
 | void* finalizeHint | 在收集期间传递给最终回调的可选提示。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示外部值的JSVM_Value。 |
 
@@ -4179,7 +4179,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env, JSVM_Value jsObject, void* na
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | 将成为原生对象封装器的JavaScript对象。 |
 | void* nativeObject | 将封装在JavaScript对象中的native实例。 |
-| JSVM_Finalize finalizeCb | 可选的原生回调，可用于在 JavaScript 对象被垃圾回收时释放native实例。 |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 可选的原生回调，可用于在 JavaScript 对象被垃圾回收时释放native实例。 |
 | void* finalizeHint | 传递给完成回调的可选上下文提示。 |
 | [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | 对封装对象的可选引用。 |
 
@@ -4333,7 +4333,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env, JSVM_Value jsObject, 
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | 关联native数据的JavaScript对象。 |
 | void* finalizeData | 要传递给finalizeCb的可选数据。 |
-| JSVM_Finalize finalizeCb | 当JavaScript对象被垃圾回收时，将用于释放native 数据的原生回调。JSVM_Finalize提供了更多详细信息。 |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 当JavaScript对象被垃圾回收时，将用于释放native 数据的原生回调。JSVM_Finalize提供了更多详细信息。 |
 | void* finalizeHint | 传递给finalize回调的可选上下文提示。 |
 | [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | 可选的对JavaScript对象的引用。 |
 
@@ -4783,7 +4783,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler pro
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 启动CPU profiler的虚拟机。 |
 | [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md) profiler | 要停止的CPU profiler。 |
-| JSVM_OutputStream stream | 接收数据的输出流回调。 |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 接收数据的输出流回调。 |
 | void* streamData | 传递给输出流回调的可选数据。例如，可以是一个文件流，用来将输出流回调中传递的采样数据写入文件。 |
 
 **返回值：**
@@ -4813,7 +4813,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm, JSVM_OutputStream s
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 将被获取堆快照的虚拟机。 |
-| JSVM_OutputStream stream | 接收数据的输出流回调。 |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 接收数据的输出流回调。 |
 | void* streamData | 传递给输出流回调的可选数据。例如，可以是一个文件流，用来将输出流回调中传递的采样数据写入文件。 |
 
 **返回值：**
@@ -4843,7 +4843,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TakeRawHeapSnapshot(JSVM_VM vm, JSVM_OutputStrea
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 将被获取堆快照的虚拟机。 |
-| JSVM_OutputStream stream | 接收二进制数据的输出流回调。 |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 接收二进制数据的输出流回调。 |
 | void *streamData | 传递给输出流回调的可选数据。 |
 
 **返回值：**
@@ -4874,7 +4874,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHeapThresholdCallback(JSVM_VM vm, uint64_t th
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 将被监控堆使用量的虚拟机。 |
 | uint64_t threshold | 堆使用量阈值（以字节为单位）。该值必须大于0且不得超过heapSizeLimit，其中heapSizeLimit是JSVM_HeapStatistics中的字段。 |
-| JSVM_HandlerForHeapThreshold callback | 当阈值检查观察到堆使用量大于或等于阈值时要调用的回调函数。 |
+| [JSVM_HandlerForHeapThreshold](capi-jsvm-types-h.md#jsvm_handlerforheapthreshold) callback | 当阈值检查观察到堆使用量大于或等于阈值时要调用的回调函数。 |
 | void *data | 传递给回调的可选用户提供的数据。调用者负责管理此数据的生命周期。 |
 
 **返回值：**
@@ -4905,7 +4905,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ClearHeapThresholdCallback(JSVM_VM vm, uint64_t 
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 将被清除堆阈值回调的虚拟机。 |
 | uint64_t threshold | 先前注册的堆使用量阈值（以字节为单位）。 |
-| JSVM_HandlerForHeapThreshold callback | 先前通过OH_JSVM_SetHeapThresholdCallback注册的回调函数。 |
+| [JSVM_HandlerForHeapThreshold](capi-jsvm-types-h.md#jsvm_handlerforheapthreshold) callback | 先前通过OH_JSVM_SetHeapThresholdCallback注册的回调函数。 |
 | void *data | 注册时使用的用户提供的数据。 |
 
 **返回值：**
@@ -6606,7 +6606,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* stream
 
 | 参数项 | 描述 |
 | -- | -- |
-| JSVM_OutputStream stream | 输出流回调函数，实现接收 Trace 数据功能。 |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 输出流回调函数，实现接收 Trace 数据功能。 |
 | void* streamData | 输出流指针，用于辅助输出流回调函数进行数据输出。 |
 
 **返回值：**
@@ -6637,7 +6637,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeFo
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
 | [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | 触发GC回调函数的时机。 |
-| JSVM_HandlerForGC handler | 当触发GC时，传入的回调函数会被调用。 |
+| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler | 当触发GC时，传入的回调函数会被调用。 |
 | [JSVM_GCType](capi-jsvm-types-h.md#jsvm_gctype) gcType | GC类型。 |
 | void* userData | 原生指针数据。 |
 
@@ -6669,7 +6669,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTim
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
 | [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | 触发GC回调函数的时机。 |
-| JSVM_HandlerForGC handler | 当触发GC时，传入的回调函数会被调用。 |
+| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler | 当触发GC时，传入的回调函数会被调用。 |
 | void* userData | 原生指针数据。 |
 
 **返回值：**
@@ -6699,7 +6699,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm, JSVM_HandlerFo
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
-| JSVM_HandlerForOOMError handler | OOM错误的处理器。 |
+| [JSVM_HandlerForOOMError](capi-jsvm-types-h.md#jsvm_handlerforoomerror) handler | OOM错误的处理器。 |
 
 **返回值：**
 
@@ -6758,7 +6758,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm, JSVM_Handler
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
-| JSVM_HandlerForFatalError handler | Fatal错误的处理器。 |
+| [JSVM_HandlerForFatalError](capi-jsvm-types-h.md#jsvm_handlerforfatalerror) handler | Fatal错误的处理器。 |
 
 **返回值：**
 
@@ -6787,7 +6787,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm, JSVM_Hand
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
-| JSVM_HandlerForPromiseReject handler | PromiseReject错误的处理器。 |
+| [JSVM_HandlerForPromiseReject](capi-jsvm-types-h.md#jsvm_handlerforpromisereject) handler | PromiseReject错误的处理器。 |
 
 **返回值：**
 
@@ -6855,7 +6855,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* s
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
 | char* str | 指向 ISO-8859-1 编码字符串的指针。 |
 | size_t length | 字符串的字节长度，如果是空终止字符串可以直接传入 JSVM_AUTO_LENGTH。 |
-| JSVM_Finalize finalizeCallback | 可选项，是当创建的字符串被 GC 回收时会触发的回调函数。 更多细节详见 JSVM_Finalize 类型说明。 |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | 可选项，是当创建的字符串被 GC 回收时会触发的回调函数。 更多细节详见 JSVM_Finalize 类型说明。 |
 | void* finalizeHint | 可选项，当字符串被回收时会传递给触发的 finalize callback。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 接收创建完成的 JavaScript 外部字符串，表示为 JSVM_Value 类型。 |
 | bool* copied | 指示外部字符串是否成功创建的标志，为真表示创建外部字符串失败并返回一个原生 JS 字符串，否表示成功。 |
@@ -6889,7 +6889,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
 | char16_t* str | 指向 UTF16-LE 编码字符串的指针。 |
 | size_t length | 字符串的字节长度，如果是空终止字符串可以直接传入 JSVM_AUTO_LENGTH。 |
-| JSVM_Finalize finalizeCallback | 可选项，是当创建的字符串被 GC 回收时会触发的回调函数。 更多细节详见 JSVM_Finalize 类型说明。 |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | 可选项，是当创建的字符串被 GC 回收时会触发的回调函数。 更多细节详见 JSVM_Finalize 类型说明。 |
 | void* finalizeHint | 可选项，当字符串被回收时会传递给触发的 finalize callback。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 接收创建完成的 JavaScript 外部字符串，表示为 JSVM_Value 类型。 |
 | bool* copied | 指示外部字符串是否成功创建的标志，为真表示创建外部字符串失败并返回一个原生 JS 字符串，否表示成功。 |
@@ -7166,7 +7166,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该 JSVM-API 的环境。 |
 | void* externalData | 指向源内存块的指针，须 8 字节对齐。byteLength 为 0 时可为 nullptr。 |
 | size_t byteLength | 源内存块的字节长度，不得超过引擎支持的 ArrayBuffer 最大大小。 |
-| JSVM_FinalizeArrayBuffer finalizeCb | 可选的回调函数，当该 API 创建的 ArrayBuffer 对象被垃圾回收时调用。 回调接收原始 externalData 指针、finalizeHint 以及一个表示数据是否已被拷贝的布尔值 copied。 当 copied 为 true 时，引擎不再引用 externalData，调用方可在该 API 返回后立即释放。 当 copied 为 false（零拷贝）时，externalData 仍在被使用，应在该回调中释放。若无需清理，可传 NULL。 |
+| [JSVM_FinalizeArrayBuffer](capi-jsvm-types-h.md#jsvm_finalizearraybuffer) finalizeCb | 可选的回调函数，当该 API 创建的 ArrayBuffer 对象被垃圾回收时调用。 回调接收原始 externalData 指针、finalizeHint 以及一个表示数据是否已被拷贝的布尔值 copied。 当 copied 为 true 时，引擎不再引用 externalData，调用方可在该 API 返回后立即释放。 当 copied 为 false（零拷贝）时，externalData 仍在被使用，应在该回调中释放。若无需清理，可传 NULL。 |
 | void* finalizeHint | 传递给 finalizeCb 的可选提示，可为 NULL。 |
 | bool* copied | 可选输出参数。若非 NULL，当数据被拷贝到内部缓冲区时设置为 true，使用零拷贝时 设置为 false。若调用方不需要此信息，可传 NULL。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示创建的 JavaScript ArrayBuffer。 |

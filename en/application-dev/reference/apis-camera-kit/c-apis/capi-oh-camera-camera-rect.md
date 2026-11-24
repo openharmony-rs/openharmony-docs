@@ -24,9 +24,9 @@ The struct describes a rectangle. The coordinate system for the returned detecti
 
 | Name | Description |
 | -- | -- |
-| int32_t topLeftX | X coordinate of the top-left corner of the rectangle. Value range: [0, preview stream width], e.g. 0 to 1920 for a 1920*1440 preview stream.<br>**Since**: 11 |
-| int32_t topLeftY | Y coordinate of the top-left corner of the rectangle. Value range: [0, preview stream height], e.g. 0 to 1440 for a 1920*1440 preview stream.<br>**Since**: 11 |
-| int32_t width | Width of the rectangle. Value does not exceed the X-axis upper limit of the coordinate system.<br>**Since**: 11 |
-| int32_t height | Height of the rectangle. Value does not exceed the Y-axis upper limit of the coordinate system.<br>**Since**: 11 |
+| int32_t topLeftX | X coordinate of the top-left corner of the rectangle. Value range: [0, preview stream width], e.g. 0 to 1920 for a 1920*1440 preview stream.<br>**Since**: 11<br><!--Device-int32_t topLeftX--><!--Device-int32_t topLeftX-End--> |
+| int32_t topLeftY | Y coordinate of the top-left corner of the rectangle. Value range: [0, preview stream height], e.g. 0 to 1440 for a 1920*1440 preview stream.<br>**Since**: 11<br><!--Device-int32_t topLeftY--><!--Device-int32_t topLeftY-End--> |
+| int32_t width | Width of the rectangle. Value does not exceed the X-axis upper limit of the coordinate system.<br>**Since**: 11<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | Height of the rectangle. Value does not exceed the Y-axis upper limit of the coordinate system.<br>**Since**: 11<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

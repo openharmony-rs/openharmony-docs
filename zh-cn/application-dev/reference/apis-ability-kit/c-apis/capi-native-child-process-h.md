@@ -65,7 +65,7 @@ enum Ability_NativeChildProcess_ErrCode
 
 定义Native子进程模块错误码。
 
-<!--Device-Ability_NativeChildProcess_ErrCode--><!--Device-Ability_NativeChildProcess_ErrCode-End-->
+<!--Device-enum Ability_NativeChildProcess_ErrCode--><!--Device-enum Ability_NativeChildProcess_ErrCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -73,20 +73,20 @@ enum Ability_NativeChildProcess_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NCP_NO_ERROR = 0 | 操作成功。 |
-| NCP_ERR_INVALID_PARAM = 401 | 无效参数。 请检查传入参数的类型、取值范围和是否是nullptr。 |
-| NCP_ERR_NOT_SUPPORTED = 801 | 当前设备类型不支持创建Native子进程，请使用其他类型的设备尝试。 |
-| NCP_ERR_INTERNAL = 16000050 | 内部错误。请重启应用或设备再尝试。 |
-| NCP_ERR_BUSY = 16010001 | 在Native子进程的启动过程中不能再次创建新的子进程，可以等待当前子进程启动完成后再次尝试。从API version 15开始被废弃。 |
-| NCP_ERR_TIMEOUT = 16010002 | 启动Native子进程超时。可能是系统资源不足或动态库加载耗时过长，请检查系统资源状态，优化动态库加载逻辑。 |
-| NCP_ERR_SERVICE_ERROR = 16010003 | 服务端出错。请尝试重新执行操作，如问题持续存在请重启应用或设备再尝试。 |
-| NCP_ERR_MULTI_PROCESS_DISABLED = 16010004 | 多进程模式已关闭，不允许启动子进程。请更换其他类型的设备再尝试。 |
-| NCP_ERR_ALREADY_IN_CHILD = 16010005 | 不允许在子进程中再次创建进程。请在主进程中创建子进程，避免在子进程中嵌套创建。 |
-| NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | 到达最大子进程数量限制，不能再创建子进程。请先终止不需要的子进程后再创建新的子进程。 |
-| NCP_ERR_LIB_LOADING_FAILED = 16010007 | 子进程加载动态库失败，文件不存在或者未实现对应的方法并导出。请检查动态库文件路径和名称是否正确，确保动态库实现并导出了对应的方法。 |
-| NCP_ERR_CONNECTION_FAILED = 16010008 | 子进程调用动态库的OnConnect方法失败，可能返回了无效的IPC对象指针。请检查NativeChildProcess_OnConnect函数的实现，确保返回有效的IPC对象指针。 |
-| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。<br>**起始版本：** 20 |
-| NCP_ERR_INVALID_PID = 16010010 | 传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于childProcessManager.startChildProcess接口在SELF_FORK模式下启动的子进程。<br>**起始版本：** 22 |
+| NCP_NO_ERROR = 0 | 操作成功。<br><!--Device-NCP_NO_ERROR = 0--><!--Device-NCP_NO_ERROR = 0-End--> |
+| NCP_ERR_INVALID_PARAM = 401 | 无效参数。 请检查传入参数的类型、取值范围和是否是nullptr。<br><!--Device-NCP_ERR_INVALID_PARAM = 401--><!--Device-NCP_ERR_INVALID_PARAM = 401-End--> |
+| NCP_ERR_NOT_SUPPORTED = 801 | 当前设备类型不支持创建Native子进程，请使用其他类型的设备尝试。<br><!--Device-NCP_ERR_NOT_SUPPORTED = 801--><!--Device-NCP_ERR_NOT_SUPPORTED = 801-End--> |
+| NCP_ERR_INTERNAL = 16000050 | 内部错误。请重启应用或设备再尝试。<br><!--Device-NCP_ERR_INTERNAL = 16000050--><!--Device-NCP_ERR_INTERNAL = 16000050-End--> |
+| NCP_ERR_BUSY = 16010001 | 在Native子进程的启动过程中不能再次创建新的子进程，可以等待当前子进程启动完成后再次尝试。从API version 15开始被废弃。<br><!--Device-NCP_ERR_BUSY = 16010001--><!--Device-NCP_ERR_BUSY = 16010001-End--> |
+| NCP_ERR_TIMEOUT = 16010002 | 启动Native子进程超时。可能是系统资源不足或动态库加载耗时过长，请检查系统资源状态，优化动态库加载逻辑。<br><!--Device-NCP_ERR_TIMEOUT = 16010002--><!--Device-NCP_ERR_TIMEOUT = 16010002-End--> |
+| NCP_ERR_SERVICE_ERROR = 16010003 | 服务端出错。请尝试重新执行操作，如问题持续存在请重启应用或设备再尝试。<br><!--Device-NCP_ERR_SERVICE_ERROR = 16010003--><!--Device-NCP_ERR_SERVICE_ERROR = 16010003-End--> |
+| NCP_ERR_MULTI_PROCESS_DISABLED = 16010004 | 多进程模式已关闭，不允许启动子进程。请更换其他类型的设备再尝试。<br><!--Device-NCP_ERR_MULTI_PROCESS_DISABLED = 16010004--><!--Device-NCP_ERR_MULTI_PROCESS_DISABLED = 16010004-End--> |
+| NCP_ERR_ALREADY_IN_CHILD = 16010005 | 不允许在子进程中再次创建进程。请在主进程中创建子进程，避免在子进程中嵌套创建。<br><!--Device-NCP_ERR_ALREADY_IN_CHILD = 16010005--><!--Device-NCP_ERR_ALREADY_IN_CHILD = 16010005-End--> |
+| NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | 到达最大子进程数量限制，不能再创建子进程。请先终止不需要的子进程后再创建新的子进程。<br><!--Device-NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006--><!--Device-NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006-End--> |
+| NCP_ERR_LIB_LOADING_FAILED = 16010007 | 子进程加载动态库失败，文件不存在或者未实现对应的方法并导出。请检查动态库文件路径和名称是否正确，确保动态库实现并导出了对应的方法。<br><!--Device-NCP_ERR_LIB_LOADING_FAILED = 16010007--><!--Device-NCP_ERR_LIB_LOADING_FAILED = 16010007-End--> |
+| NCP_ERR_CONNECTION_FAILED = 16010008 | 子进程调用动态库的OnConnect方法失败，可能返回了无效的IPC对象指针。请检查NativeChildProcess_OnConnect函数的实现，确保返回有效的IPC对象指针。<br><!--Device-NCP_ERR_CONNECTION_FAILED = 16010008--><!--Device-NCP_ERR_CONNECTION_FAILED = 16010008-End--> |
+| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。<br>**起始版本：** 20<br><!--Device-NCP_ERR_CALLBACK_NOT_EXIST = 16010009--><!--Device-NCP_ERR_CALLBACK_NOT_EXIST = 16010009-End--> |
+| NCP_ERR_INVALID_PID = 16010010 | 传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于childProcessManager.startChildProcess接口在SELF_FORK模式下启动的子进程。<br>**起始版本：** 22<br><!--Device-NCP_ERR_INVALID_PID = 16010010--><!--Device-NCP_ERR_INVALID_PID = 16010010-End--> |
 
 ### NativeChildProcess_IsolationMode
 
@@ -98,7 +98,7 @@ enum NativeChildProcess_IsolationMode
 
 定义Native子进程数据沙箱与网络环境的共享模式。数据沙箱是进程的文件系统隔离环境，控制进程对文件和数据的访问权限；网络环境是进程的网络访问配置，控制进程的网络连接和通信能力。
 
-<!--Device-NativeChildProcess_IsolationMode--><!--Device-NativeChildProcess_IsolationMode-End-->
+<!--Device-enum NativeChildProcess_IsolationMode--><!--Device-enum NativeChildProcess_IsolationMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,8 +106,8 @@ enum NativeChildProcess_IsolationMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NCP_ISOLATION_MODE_NORMAL = 0 | 普通隔离模式下，父进程与子进程共享同一沙箱环境或网络环境。 |
-| NCP_ISOLATION_MODE_ISOLATED = 1 | 在隔离模式下，父进程与子进程不共享同一沙箱环境或网络环境。 |
+| NCP_ISOLATION_MODE_NORMAL = 0 | 普通隔离模式下，父进程与子进程共享同一沙箱环境或网络环境。<br><!--Device-NCP_ISOLATION_MODE_NORMAL = 0--><!--Device-NCP_ISOLATION_MODE_NORMAL = 0-End--> |
+| NCP_ISOLATION_MODE_ISOLATED = 1 | 在隔离模式下，父进程与子进程不共享同一沙箱环境或网络环境。<br><!--Device-NCP_ISOLATION_MODE_ISOLATED = 1--><!--Device-NCP_ISOLATION_MODE_ISOLATED = 1-End--> |
 
 
 ## 函数说明

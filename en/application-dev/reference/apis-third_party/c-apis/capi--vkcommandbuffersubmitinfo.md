@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkCommandBuffer commandBuffer |  |
-| uint32_t deviceMask |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkCommandBuffer commandBuffer | <!--Device-VkCommandBuffer commandBuffer--><!--Device-VkCommandBuffer commandBuffer-End--> |
+| uint32_t deviceMask | <!--Device-uint32_t deviceMask--><!--Device-uint32_t deviceMask-End--> |
 
 

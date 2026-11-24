@@ -26,8 +26,8 @@ typedef struct OHExtDataHandle {...} OHExtDataHandle
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t fd | < 句柄 Fd，-1代表不支持 |
-| uint32_t reserveInts | < Reserve数组的个数 |
-| int32_t reserve[0] | < Reserve数组 |
+| int32_t fd | < 句柄 Fd，-1代表不支持<br><!--Device-int32_t fd--><!--Device-int32_t fd-End--> |
+| uint32_t reserveInts | < Reserve数组的个数<br><!--Device-uint32_t reserveInts--><!--Device-uint32_t reserveInts-End--> |
+| int32_t reserve[0] | < Reserve数组<br><!--Device-int32_t reserve[0]--><!--Device-int32_t reserve[0]-End--> |
 
 

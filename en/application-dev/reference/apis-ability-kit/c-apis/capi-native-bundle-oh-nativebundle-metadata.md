@@ -24,8 +24,8 @@ The struct describes the metadata information.
 
 | Name | Description |
 | -- | -- |
-| char* name | Pointer to the name of the metadata.<br>**Since**: 20 |
-| char* value | Pointer to the value of the metadata.<br>**Since**: 20 |
-| char* resource | Pointer to the resource linked to the metadata.<br>**Since**: 20 |
+| char* name | Pointer to the name of the metadata.<br>**Since**: 20<br><!--Device-char* name--><!--Device-char* name-End--> |
+| char* value | Pointer to the value of the metadata.<br>**Since**: 20<br><!--Device-char* value--><!--Device-char* value-End--> |
+| char* resource | Pointer to the resource linked to the metadata.<br>**Since**: 20<br><!--Device-char* resource--><!--Device-char* resource-End--> |
 
 

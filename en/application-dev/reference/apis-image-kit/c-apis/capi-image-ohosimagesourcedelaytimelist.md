@@ -24,9 +24,9 @@ Defines the delay time list of the image source. It is obtained by calling [OH_I
 
 | Name | Description |
 | -- | -- |
-| int32_t* delayTimeList | Pointer to the head of the image source delay time list.<br>**Since**: 10 |
-| size_t size = 0 | Size of the image source delay time list.<br>**Since**: 10 |
-| int32_t* delayTimeList | Pointer to the head of the image source delay time list.<br>**Since**: 10 |
-| size_t size | Size of the image source delay time list.<br>**Since**: 10 |
+| int32_t* delayTimeList | Pointer to the head of the image source delay time list.<br>**Since**: 10<br><!--Device-int32_t* delayTimeList--><!--Device-int32_t* delayTimeList-End--> |
+| size_t size = 0 | Size of the image source delay time list.<br>**Since**: 10<br><!--Device-size_t size = 0--><!--Device-size_t size = 0-End--> |
+| int32_t* delayTimeList | Pointer to the head of the image source delay time list.<br>**Since**: 10<br><!--Device-int32_t* delayTimeList--><!--Device-int32_t* delayTimeList-End--> |
+| size_t size | Size of the image source delay time list.<br>**Since**: 10<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

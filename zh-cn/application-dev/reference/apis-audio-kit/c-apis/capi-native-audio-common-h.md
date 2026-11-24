@@ -35,7 +35,7 @@ enum OH_AudioCommon_Result
 
 音频公共错误码枚举定义，用作音频管理接口的返回值。 <br>开发者可通过错误码确定报错类型，采取相应的处理步骤，解决报错场景的功能问题。
 
-<!--Device-OH_AudioCommon_Result--><!--Device-OH_AudioCommon_Result-End-->
+<!--Device-enum OH_AudioCommon_Result--><!--Device-enum OH_AudioCommon_Result-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -43,19 +43,19 @@ enum OH_AudioCommon_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOCOMMON_RESULT_SUCCESS = 0 | 操作成功。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED = 201 | 权限缺失。<br>**起始版本：** 26.0.0 |
-| AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 | 入参错误。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102 | 内存不足。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE = 6800103 | 非法状态。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED = 6800104 | 操作不支持。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_TIMEOUT = 6800105 | 操作超时。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH = 6800106 | 输入音频数据与所需帧长度不匹配。<br>**起始版本：** 26.0.0 |
-| AUDIOCOMMON_RESULT_ERROR_STREAM_LIMIT = 6800201 | 达到系统可支持的最大数量。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301 | 系统通用错误。<br>**起始版本：** 12 |
-| AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 | 系统服务进程死亡。<br>**起始版本：** 26.0.1 |
-| AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET = 6800501 | 网络条件不满足接口要求。<br>**起始版本：** 26.0.1 |
-| AUDIOCOMMON_RESULT_ERROR_STORAGE_NOT_ENOUGH = 6800502 | 设备存储空间不足。<br>**起始版本：** 26.0.1 |
+| AUDIOCOMMON_RESULT_SUCCESS = 0 | 操作成功。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_SUCCESS = 0--><!--Device-AUDIOCOMMON_RESULT_SUCCESS = 0-End--> |
+| AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED = 201 | 权限缺失。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED = 201--><!--Device-AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED = 201-End--> |
+| AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 | 入参错误。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101--><!--Device-AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101-End--> |
+| AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102 | 内存不足。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102--><!--Device-AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102-End--> |
+| AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE = 6800103 | 非法状态。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE = 6800103--><!--Device-AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE = 6800103-End--> |
+| AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED = 6800104 | 操作不支持。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED = 6800104--><!--Device-AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED = 6800104-End--> |
+| AUDIOCOMMON_RESULT_ERROR_TIMEOUT = 6800105 | 操作超时。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_ERROR_TIMEOUT = 6800105--><!--Device-AUDIOCOMMON_RESULT_ERROR_TIMEOUT = 6800105-End--> |
+| AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH = 6800106 | 输入音频数据与所需帧长度不匹配。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH = 6800106--><!--Device-AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH = 6800106-End--> |
+| AUDIOCOMMON_RESULT_ERROR_STREAM_LIMIT = 6800201 | 达到系统可支持的最大数量。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_ERROR_STREAM_LIMIT = 6800201--><!--Device-AUDIOCOMMON_RESULT_ERROR_STREAM_LIMIT = 6800201-End--> |
+| AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301 | 系统通用错误。<br>**起始版本：** 12<br><!--Device-AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301--><!--Device-AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301-End--> |
+| AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 | 系统服务进程终止。<br>**起始版本：** 26.0.1<br><!--Device-AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302--><!--Device-AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302-End--> |
+| AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET = 6800501 | 网络条件不满足。<br>**起始版本：** 26.0.1<br><!--Device-AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET = 6800501--><!--Device-AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET = 6800501-End--> |
+| AUDIOCOMMON_RESULT_ERROR_STORAGE_NOT_ENOUGH = 6800502 | 存储空间不足。<br>**起始版本：** 26.0.1<br><!--Device-AUDIOCOMMON_RESULT_ERROR_STORAGE_NOT_ENOUGH = 6800502--><!--Device-AUDIOCOMMON_RESULT_ERROR_STORAGE_NOT_ENOUGH = 6800502-End--> |
 
 ### OH_AudioScene
 
@@ -67,7 +67,7 @@ enum OH_AudioScene
 
 音频场景枚举定义。
 
-<!--Device-OH_AudioScene--><!--Device-OH_AudioScene-End-->
+<!--Device-enum OH_AudioScene--><!--Device-enum OH_AudioScene-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -75,10 +75,10 @@ enum OH_AudioScene
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_SCENE_DEFAULT = 0 | 默认音频场景。<br>**起始版本：** 12 |
-| AUDIO_SCENE_RINGING = 1 | 响铃场景。<br>**起始版本：** 12 |
-| AUDIO_SCENE_PHONE_CALL = 2 | 电话场景。<br>**起始版本：** 12 |
-| AUDIO_SCENE_VOICE_CHAT = 3 | 语音聊天场景。<br>**起始版本：** 12 |
+| AUDIO_SCENE_DEFAULT = 0 | 默认音频场景。<br>**起始版本：** 12<br><!--Device-AUDIO_SCENE_DEFAULT = 0--><!--Device-AUDIO_SCENE_DEFAULT = 0-End--> |
+| AUDIO_SCENE_RINGING = 1 | 响铃场景。<br>**起始版本：** 12<br><!--Device-AUDIO_SCENE_RINGING = 1--><!--Device-AUDIO_SCENE_RINGING = 1-End--> |
+| AUDIO_SCENE_PHONE_CALL = 2 | 电话场景。<br>**起始版本：** 12<br><!--Device-AUDIO_SCENE_PHONE_CALL = 2--><!--Device-AUDIO_SCENE_PHONE_CALL = 2-End--> |
+| AUDIO_SCENE_VOICE_CHAT = 3 | 语音聊天场景。<br>**起始版本：** 12<br><!--Device-AUDIO_SCENE_VOICE_CHAT = 3--><!--Device-AUDIO_SCENE_VOICE_CHAT = 3-End--> |
 
 ### OH_AudioRingerMode
 
@@ -90,7 +90,7 @@ enum OH_AudioRingerMode
 
 铃声模式枚举定义。
 
-<!--Device-OH_AudioRingerMode--><!--Device-OH_AudioRingerMode-End-->
+<!--Device-enum OH_AudioRingerMode--><!--Device-enum OH_AudioRingerMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -98,9 +98,9 @@ enum OH_AudioRingerMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_RINGER_MODE_SILENT = 0 | 静音模式。<br>**起始版本：** 20 |
-| AUDIO_RINGER_MODE_VIBRATE = 1 | 振动模式。<br>**起始版本：** 20 |
-| AUDIO_RINGER_MODE_NORMAL = 2 | 响铃模式。<br>**起始版本：** 20 |
+| AUDIO_RINGER_MODE_SILENT = 0 | 静音模式。<br>**起始版本：** 20<br><!--Device-AUDIO_RINGER_MODE_SILENT = 0--><!--Device-AUDIO_RINGER_MODE_SILENT = 0-End--> |
+| AUDIO_RINGER_MODE_VIBRATE = 1 | 振动模式。<br>**起始版本：** 20<br><!--Device-AUDIO_RINGER_MODE_VIBRATE = 1--><!--Device-AUDIO_RINGER_MODE_VIBRATE = 1-End--> |
+| AUDIO_RINGER_MODE_NORMAL = 2 | 响铃模式。<br>**起始版本：** 20<br><!--Device-AUDIO_RINGER_MODE_NORMAL = 2--><!--Device-AUDIO_RINGER_MODE_NORMAL = 2-End--> |
 
 ### OH_AudioNoiseReductionMode
 
@@ -112,7 +112,7 @@ enum OH_AudioNoiseReductionMode
 
 录音降噪模式枚举定义。
 
-<!--Device-OH_AudioNoiseReductionMode--><!--Device-OH_AudioNoiseReductionMode-End-->
+<!--Device-enum OH_AudioNoiseReductionMode--><!--Device-enum OH_AudioNoiseReductionMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -120,8 +120,8 @@ enum OH_AudioNoiseReductionMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_NOISE_REDUCTION_MODE_FIDELITY = 0 | 保真模式，不进行降噪。<br>**起始版本：** 26.0.0 |
-| AUDIO_NOISE_REDUCTION_MODE_PURE_VOCALS = 1 | 纯人声模式，强降噪，显著抑制周边环境声音。<br>**起始版本：** 26.0.0 |
-| AUDIO_NOISE_REDUCTION_MODE_STANDARD = 2 | 标准模式，弱降噪，适当抑制周边环境声音。<br>**起始版本：** 26.0.0 |
+| AUDIO_NOISE_REDUCTION_MODE_FIDELITY = 0 | 保真模式，不进行降噪。<br>**起始版本：** 26.0.0<br><!--Device-AUDIO_NOISE_REDUCTION_MODE_FIDELITY = 0--><!--Device-AUDIO_NOISE_REDUCTION_MODE_FIDELITY = 0-End--> |
+| AUDIO_NOISE_REDUCTION_MODE_PURE_VOCALS = 1 | 纯人声模式，强降噪，显著抑制周边环境声音。<br>**起始版本：** 26.0.0<br><!--Device-AUDIO_NOISE_REDUCTION_MODE_PURE_VOCALS = 1--><!--Device-AUDIO_NOISE_REDUCTION_MODE_PURE_VOCALS = 1-End--> |
+| AUDIO_NOISE_REDUCTION_MODE_STANDARD = 2 | 标准模式，弱降噪，适当抑制周边环境声音。<br>**起始版本：** 26.0.0<br><!--Device-AUDIO_NOISE_REDUCTION_MODE_STANDARD = 2--><!--Device-AUDIO_NOISE_REDUCTION_MODE_STANDARD = 2-End--> |
 
 

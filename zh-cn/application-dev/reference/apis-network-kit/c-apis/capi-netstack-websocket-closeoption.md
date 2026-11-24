@@ -6,7 +6,7 @@ struct WebSocket_CloseOption {...}
 
 ## 概述
 
-websocket客户端主动关闭的参数。
+WebSocket客户端主动关闭的参数。
 
 <!--Device-struct WebSocket_CloseOption {...}--><!--Device-struct WebSocket_CloseOption {...}-End-->
 
@@ -24,7 +24,7 @@ websocket客户端主动关闭的参数。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t code | 错误值。 |
-| const char *reason | 错误原因。 |
+| uint32_t code | 错误值。<br><!--Device-uint32_t code--><!--Device-uint32_t code-End--> |
+| const char *reason | 错误原因。<br><!--Device-const char *reason--><!--Device-const char *reason-End--> |
 
 

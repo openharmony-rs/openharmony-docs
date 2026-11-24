@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [const VkAttachmentReference2*](capi--vkattachmentreference2.md) pFragmentShadingRateAttachment |  |
-| [VkExtent2D](capi--vkextent2d.md) shadingRateAttachmentTexelSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [const VkAttachmentReference2*](capi--vkattachmentreference2.md) pFragmentShadingRateAttachment | <!--Device-const VkAttachmentReference2* pFragmentShadingRateAttachment--><!--Device-const VkAttachmentReference2* pFragmentShadingRateAttachment-End--> |
+| [VkExtent2D](capi--vkextent2d.md) shadingRateAttachmentTexelSize | <!--Device-VkExtent2D shadingRateAttachmentTexelSize--><!--Device-VkExtent2D shadingRateAttachmentTexelSize-End--> |
 
 

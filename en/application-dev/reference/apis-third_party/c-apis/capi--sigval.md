@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int sival_int |  |
-| void *sival_ptr |  |
+| int sival_int | <!--Device-int sival_int--><!--Device-int sival_int-End--> |
+| void *sival_ptr | <!--Device-void *sival_ptr--><!--Device-void *sival_ptr-End--> |
 
 

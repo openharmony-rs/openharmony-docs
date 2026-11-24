@@ -24,6 +24,6 @@ typedef struct Camera_SmoothZoomInfo {...} Camera_SmoothZoomInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t duration | 平滑变焦总时长（以毫秒为单位）。 |
+| int32_t duration | 平滑变焦总时长（以毫秒为单位）。<br><!--Device-int32_t duration--><!--Device-int32_t duration-End--> |
 
 

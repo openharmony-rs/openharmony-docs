@@ -33,7 +33,7 @@ enum ArkUI_NavDestinationState
 
 定义NavDestination组件的状态。
 
-<!--Device-ArkUI_NavDestinationState--><!--Device-ArkUI_NavDestinationState-End-->
+<!--Device-enum ArkUI_NavDestinationState--><!--Device-enum ArkUI_NavDestinationState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,17 +41,17 @@ enum ArkUI_NavDestinationState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 | NavDestination组件显示。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 | NavDestination组件隐藏。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 | NavDestination从组件树上挂载。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 | NavDestination从组件树上卸载。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 | NavDestination组件显示之前。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | NavDestination组件隐藏之前。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | NavDestination挂载到组件树之前。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | NavDestination从组件树上卸载之前。<br>**起始版本：** 12 |
-| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 | NavDestination组件处于激活态。<br>**起始版本：** 26.1.0 |
-| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 | NavDestination组件处于非激活态。<br>**起始版本：** 26.1.0 |
-| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | NavDestination从组件返回。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 | NavDestination组件显示。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 | NavDestination组件隐藏。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 | NavDestination从组件树上挂载。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 | NavDestination从组件树上卸载。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 | NavDestination组件显示之前。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | NavDestination组件隐藏之前。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | NavDestination挂载到组件树之前。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | NavDestination从组件树上卸载之前。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 | NavDestination组件处于激活态。<br>**起始版本：** 26.1.0<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 | NavDestination组件处于非激活态。<br>**起始版本：** 26.1.0<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | NavDestination从组件返回。<br>**起始版本：** 12<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100-End--> |
 
 ### ArkUI_RouterPageState
 
@@ -63,7 +63,7 @@ enum ArkUI_RouterPageState
 
 定义[Router]Router（路由页面）的状态。
 
-<!--Device-ArkUI_RouterPageState--><!--Device-ArkUI_RouterPageState-End-->
+<!--Device-enum ArkUI_RouterPageState--><!--Device-enum ArkUI_RouterPageState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,10 +71,10 @@ enum ArkUI_RouterPageState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0 | Router Page即将创建。<br>**起始版本：** 12 |
-| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1 | Router Page即将销毁。<br>**起始版本：** 12 |
-| ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2 | Router Page显示。<br>**起始版本：** 12 |
-| ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3 | Router Page隐藏。<br>**起始版本：** 12 |
-| ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4 | Router Page返回时。<br>**起始版本：** 12 |
+| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0 | Router Page即将创建。<br>**起始版本：** 12<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0--><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1 | Router Page即将销毁。<br>**起始版本：** 12<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1--><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2 | Router Page显示。<br>**起始版本：** 12<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2--><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3 | Router Page隐藏。<br>**起始版本：** 12<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3--><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4 | Router Page返回时。<br>**起始版本：** 12<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4--><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4-End--> |
 
 

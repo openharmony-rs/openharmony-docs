@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [const StdVideoDecodeH264PictureInfo*](capi--stdvideodecodeh264pictureinfo.md) pStdPictureInfo |  |
-| uint32_t sliceCount |  |
-| const uint32_t* pSliceOffsets |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [const StdVideoDecodeH264PictureInfo*](capi--stdvideodecodeh264pictureinfo.md) pStdPictureInfo | <!--Device-const StdVideoDecodeH264PictureInfo* pStdPictureInfo--><!--Device-const StdVideoDecodeH264PictureInfo* pStdPictureInfo-End--> |
+| uint32_t sliceCount | <!--Device-uint32_t sliceCount--><!--Device-uint32_t sliceCount-End--> |
+| const uint32_t* pSliceOffsets | <!--Device-const uint32_t* pSliceOffsets--><!--Device-const uint32_t* pSliceOffsets-End--> |
 
 

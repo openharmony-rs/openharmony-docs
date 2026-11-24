@@ -24,7 +24,7 @@ typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
 
 | 名称 | 描述 |
 | -- | -- |
-| int sampleStackTriggerTime | 保留字段，用于后续功能扩展。 |
-| int reserved | 保留字段，用于后续功能扩展。 |
+| int sampleStackTriggerTime | 保留字段，用于后续功能扩展。<br><!--Device-int sampleStackTriggerTime--><!--Device-int sampleStackTriggerTime-End--> |
+| int reserved | 保留字段，用于后续功能扩展。<br><!--Device-int reserved--><!--Device-int reserved-End--> |
 
 

@@ -24,7 +24,7 @@ Defines the device ID array, which is used to store the device IDs and device qu
 
 | Name | Description |
 | -- | -- |
-| uint64_t* deviceIds | Pointer to the start address of the device ID array that you have applied for. To avoid excessive memory consumption, it is recommended that the maximum size of the allocated array be 128. |
-| uint32_t num | Device quantity. Device IDs are obtained by traversing **deviceIds** based on the value of this parameter. If the value is **0**, there is no USB device. |
+| uint64_t* deviceIds | Pointer to the start address of the device ID array that you have applied for. To avoid excessive memory consumption, it is recommended that the maximum size of the allocated array be 128.<br><!--Device-uint64_t* deviceIds--><!--Device-uint64_t* deviceIds-End--> |
+| uint32_t num | Device quantity. Device IDs are obtained by traversing **deviceIds** based on the value of this parameter. If the value is **0**, there is no USB device.<br><!--Device-uint32_t num--><!--Device-uint32_t num-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| StdVideoAV1Profile stdProfile |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| StdVideoAV1Profile stdProfile | <!--Device-StdVideoAV1Profile stdProfile--><!--Device-StdVideoAV1Profile stdProfile-End--> |
 
 

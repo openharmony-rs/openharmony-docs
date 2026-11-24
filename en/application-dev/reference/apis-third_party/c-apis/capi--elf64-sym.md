@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| Elf64_Word st_name |  |
-| unsigned char st_info |  |
-| unsigned char st_other |  |
-| Elf64_Section st_shndx |  |
-| Elf64_Addr st_value |  |
-| Elf64_Xword st_size |  |
+| Elf64_Word st_name | <!--Device-Elf64_Word st_name--><!--Device-Elf64_Word st_name-End--> |
+| unsigned char st_info | <!--Device-unsigned char st_info--><!--Device-unsigned char st_info-End--> |
+| unsigned char st_other | <!--Device-unsigned char st_other--><!--Device-unsigned char st_other-End--> |
+| Elf64_Section st_shndx | <!--Device-Elf64_Section st_shndx--><!--Device-Elf64_Section st_shndx-End--> |
+| Elf64_Addr st_value | <!--Device-Elf64_Addr st_value--><!--Device-Elf64_Addr st_value-End--> |
+| Elf64_Xword st_size | <!--Device-Elf64_Xword st_size--><!--Device-Elf64_Xword st_size-End--> |
 
 

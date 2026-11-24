@@ -12,9 +12,9 @@ Position structure for utrans_transIncremental() incrementaltransliteration. Thi
 
 | Name | Description |
 | -- | -- |
-| int32_t contextStart | Beginning index, inclusive, of the context to be considered for a transliteration operation. The transliterator will ignore anything before this index. INPUT/OUTPUT parameter: This parameter is updated by a transliteration operation to reflect the maximum amount of antecontext needed by a transliterator. |
-| int32_t contextLimit | Ending index, exclusive, of the context to be considered for a transliteration operation. The transliterator will ignore anything at or after this index. INPUT/OUTPUT parameter: This parameter is updated to reflect changes in the length of the text, but points to the same logical position in the text. |
-| int32_t start | Beginning index, inclusive, of the text to be transliterated. INPUT/OUTPUT parameter: This parameter is advanced past characters that have already been transliterated by a transliteration operation. |
-| int32_t limit | Ending index, exclusive, of the text to be transliterated. INPUT/OUTPUT parameter: This parameter is updated to reflect changes in the length of the text, but points to the same logical position in the text. |
+| int32_t contextStart | Beginning index, inclusive, of the context to be considered for a transliteration operation. The transliterator will ignore anything before this index. INPUT/OUTPUT parameter: This parameter is updated by a transliteration operation to reflect the maximum amount of antecontext needed by a transliterator.<br><!--Device-int32_t contextStart--><!--Device-int32_t contextStart-End--> |
+| int32_t contextLimit | Ending index, exclusive, of the context to be considered for a transliteration operation. The transliterator will ignore anything at or after this index. INPUT/OUTPUT parameter: This parameter is updated to reflect changes in the length of the text, but points to the same logical position in the text.<br><!--Device-int32_t contextLimit--><!--Device-int32_t contextLimit-End--> |
+| int32_t start | Beginning index, inclusive, of the text to be transliterated. INPUT/OUTPUT parameter: This parameter is advanced past characters that have already been transliterated by a transliteration operation.<br><!--Device-int32_t start--><!--Device-int32_t start-End--> |
+| int32_t limit | Ending index, exclusive, of the text to be transliterated. INPUT/OUTPUT parameter: This parameter is updated to reflect changes in the length of the text, but points to the same logical position in the text.<br><!--Device-int32_t limit--><!--Device-int32_t limit-End--> |
 
 

@@ -10,19 +10,19 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 storageBuffer16BitAccess |  |
-| VkBool32 uniformAndStorageBuffer16BitAccess |  |
-| VkBool32 storagePushConstant16 |  |
-| VkBool32 storageInputOutput16 |  |
-| VkBool32 multiview |  |
-| VkBool32 multiviewGeometryShader |  |
-| VkBool32 multiviewTessellationShader |  |
-| VkBool32 variablePointersStorageBuffer |  |
-| VkBool32 variablePointers |  |
-| VkBool32 protectedMemory |  |
-| VkBool32 samplerYcbcrConversion |  |
-| VkBool32 shaderDrawParameters |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 storageBuffer16BitAccess | <!--Device-VkBool32 storageBuffer16BitAccess--><!--Device-VkBool32 storageBuffer16BitAccess-End--> |
+| VkBool32 uniformAndStorageBuffer16BitAccess | <!--Device-VkBool32 uniformAndStorageBuffer16BitAccess--><!--Device-VkBool32 uniformAndStorageBuffer16BitAccess-End--> |
+| VkBool32 storagePushConstant16 | <!--Device-VkBool32 storagePushConstant16--><!--Device-VkBool32 storagePushConstant16-End--> |
+| VkBool32 storageInputOutput16 | <!--Device-VkBool32 storageInputOutput16--><!--Device-VkBool32 storageInputOutput16-End--> |
+| VkBool32 multiview | <!--Device-VkBool32 multiview--><!--Device-VkBool32 multiview-End--> |
+| VkBool32 multiviewGeometryShader | <!--Device-VkBool32 multiviewGeometryShader--><!--Device-VkBool32 multiviewGeometryShader-End--> |
+| VkBool32 multiviewTessellationShader | <!--Device-VkBool32 multiviewTessellationShader--><!--Device-VkBool32 multiviewTessellationShader-End--> |
+| VkBool32 variablePointersStorageBuffer | <!--Device-VkBool32 variablePointersStorageBuffer--><!--Device-VkBool32 variablePointersStorageBuffer-End--> |
+| VkBool32 variablePointers | <!--Device-VkBool32 variablePointers--><!--Device-VkBool32 variablePointers-End--> |
+| VkBool32 protectedMemory | <!--Device-VkBool32 protectedMemory--><!--Device-VkBool32 protectedMemory-End--> |
+| VkBool32 samplerYcbcrConversion | <!--Device-VkBool32 samplerYcbcrConversion--><!--Device-VkBool32 samplerYcbcrConversion-End--> |
+| VkBool32 shaderDrawParameters | <!--Device-VkBool32 shaderDrawParameters--><!--Device-VkBool32 shaderDrawParameters-End--> |
 
 

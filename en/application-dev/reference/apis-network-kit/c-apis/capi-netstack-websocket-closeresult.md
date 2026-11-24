@@ -24,7 +24,7 @@ Defines the parameters for the connection closure received by the WebSocket clie
 
 | Name | Description |
 | -- | -- |
-| uint32_t code | Error code. |
-| const char *reason | Error cause. |
+| uint32_t code | Error code.<br><!--Device-uint32_t code--><!--Device-uint32_t code-End--> |
+| const char *reason | Error cause.<br><!--Device-const char *reason--><!--Device-const char *reason-End--> |
 
 

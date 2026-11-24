@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| [StdVideoH265ProfileTierLevelFlags](capi--stdvideoh265profiletierlevelflags.md) flags |  |
-| StdVideoH265ProfileIdc general_profile_idc |  |
-| StdVideoH265LevelIdc general_level_idc |  |
+| [StdVideoH265ProfileTierLevelFlags](capi--stdvideoh265profiletierlevelflags.md) flags | <!--Device-StdVideoH265ProfileTierLevelFlags flags--><!--Device-StdVideoH265ProfileTierLevelFlags flags-End--> |
+| StdVideoH265ProfileIdc general_profile_idc | <!--Device-StdVideoH265ProfileIdc general_profile_idc--><!--Device-StdVideoH265ProfileIdc general_profile_idc-End--> |
+| StdVideoH265LevelIdc general_level_idc | <!--Device-StdVideoH265LevelIdc general_level_idc--><!--Device-StdVideoH265LevelIdc general_level_idc-End--> |
 
 

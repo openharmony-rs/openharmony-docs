@@ -12,7 +12,7 @@ It should be possible to cast uv_buf_t[] to WSABUF[] see http://msdn.microsoft.c
 
 | Name | Description |
 | -- | -- |
-| ULONG len |  |
-| char* base |  |
+| ULONG len | <!--Device-ULONG len--><!--Device-ULONG len-End--> |
+| char* base | <!--Device-char* base--><!--Device-char* base-End--> |
 
 

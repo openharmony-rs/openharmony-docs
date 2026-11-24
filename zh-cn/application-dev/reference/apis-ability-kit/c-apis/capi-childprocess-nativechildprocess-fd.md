@@ -24,8 +24,8 @@ typedef struct NativeChildProcess_Fd {...} NativeChildProcess_Fd
 
 | 名称 | 描述 |
 | -- | -- |
-| char* fdName | 文件描述符的键，最大长度为20字符。 |
-| int32_t fd | 文件描述符的值。 |
-| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next | 下一个文件描述记录指针。 |
+| char* fdName | 文件描述符的键，最大长度为20字符。<br><!--Device-char* fdName--><!--Device-char* fdName-End--> |
+| int32_t fd | 文件描述符的值。<br><!--Device-int32_t fd--><!--Device-int32_t fd-End--> |
+| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next | 下一个文件描述记录指针。<br><!--Device-struct NativeChildProcess_Fd* next--><!--Device-struct NativeChildProcess_Fd* next-End--> |
 
 

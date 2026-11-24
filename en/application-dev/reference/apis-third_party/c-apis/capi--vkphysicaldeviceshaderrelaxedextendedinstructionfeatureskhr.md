@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shaderRelaxedExtendedInstruction |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shaderRelaxedExtendedInstruction | <!--Device-VkBool32 shaderRelaxedExtendedInstruction--><!--Device-VkBool32 shaderRelaxedExtendedInstruction-End--> |
 
 

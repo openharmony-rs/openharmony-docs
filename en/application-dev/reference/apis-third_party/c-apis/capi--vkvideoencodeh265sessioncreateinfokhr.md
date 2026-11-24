@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 useMaxLevelIdc |  |
-| StdVideoH265LevelIdc maxLevelIdc |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 useMaxLevelIdc | <!--Device-VkBool32 useMaxLevelIdc--><!--Device-VkBool32 useMaxLevelIdc-End--> |
+| StdVideoH265LevelIdc maxLevelIdc | <!--Device-StdVideoH265LevelIdc maxLevelIdc--><!--Device-StdVideoH265LevelIdc maxLevelIdc-End--> |
 
 

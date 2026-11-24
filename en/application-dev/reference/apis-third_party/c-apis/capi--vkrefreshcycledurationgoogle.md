@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| uint64_t refreshDuration |  |
+| uint64_t refreshDuration | <!--Device-uint64_t refreshDuration--><!--Device-uint64_t refreshDuration-End--> |
 
 

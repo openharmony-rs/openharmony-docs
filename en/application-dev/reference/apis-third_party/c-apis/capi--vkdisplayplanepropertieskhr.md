@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkDisplayKHR currentDisplay |  |
-| uint32_t currentStackIndex |  |
+| VkDisplayKHR currentDisplay | <!--Device-VkDisplayKHR currentDisplay--><!--Device-VkDisplayKHR currentDisplay-End--> |
+| uint32_t currentStackIndex | <!--Device-uint32_t currentStackIndex--><!--Device-uint32_t currentStackIndex-End--> |
 
 

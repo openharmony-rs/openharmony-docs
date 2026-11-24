@@ -33,8 +33,8 @@ Provides APIs for managing trusted application (TA) sessions.
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
-| typedef uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-uint32_t TEE_TASessionHandle--><!--Device-uint32_t TEE_TASessionHandle-End--> |
+| typedef uint32_t TEE_TASessionHandle | Defines the handle of TA session.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-typedef uint32_t TEE_TASessionHandle--><!--Device-typedef uint32_t TEE_TASessionHandle-End--> |
 
 ## Function description
 

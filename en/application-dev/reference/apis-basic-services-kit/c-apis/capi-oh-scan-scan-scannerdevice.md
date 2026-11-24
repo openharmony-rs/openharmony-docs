@@ -24,10 +24,10 @@ Represents the scanner device information, including the scanner ID, manufacture
 
 | Name | Description |
 | -- | -- |
-| const char *scannerId | Scanner ID. |
-| const char *manufacturer | Scanner manufacturer. |
-| const char *model | Scanner model. |
-| const char *discoverMode | Scanner discovery mode, indicating how the scanner is discovered by the system. The value **TCP** indicates that the scanner is discovered over the network, and the value **USB** indicates that the scanner is discovered through the USB connection. |
-| const char *serialNumber | Scanner serial number. |
+| const char *scannerId | Scanner ID.<br><!--Device-const char *scannerId--><!--Device-const char *scannerId-End--> |
+| const char *manufacturer | Scanner manufacturer.<br><!--Device-const char *manufacturer--><!--Device-const char *manufacturer-End--> |
+| const char *model | Scanner model.<br><!--Device-const char *model--><!--Device-const char *model-End--> |
+| const char *discoverMode | Scanner discovery mode, indicating how the scanner is discovered by the system. The value **TCP** indicates that the scanner is discovered over the network, and the value **USB** indicates that the scanner is discovered through the USB connection.<br><!--Device-const char *discoverMode--><!--Device-const char *discoverMode-End--> |
+| const char *serialNumber | Scanner serial number.<br><!--Device-const char *serialNumber--><!--Device-const char *serialNumber-End--> |
 
 

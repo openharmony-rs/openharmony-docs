@@ -43,6 +43,7 @@ Declares APIs for converting <b>FrameNode</b> objects on the ArkTS side to <b>Ar
 | [void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)](#oh_arkui_notifyarktsenvdestroy) | Notifies that the specified context environment has been destroyed. This is applicable to scenarios where the native side synchronously cleans up related states when the ArkTS context environment is destroyed. After the context environment is initialized using [OH_ArkUI_InitModuleForArkTSEnv](capi-native-node-napi-h.md#oh_arkui_initmoduleforarktsenv), this API should be called when the environment is destroyed. This API must not be called on a non-UI thread; otherwise, the program will actively abort. |
 | [int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData, void (\*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))](#oh_arkui_postidlecallback) | Registers a callback. This is applicable to scenarios where the native side needs to use the idle time between frames to process non-urgent tasks. After the next frame is rendered, if the remaining time before the next VSync signal following that frame is greater than 1 ms, the callback will be executed; if the remaining time is less than 1 ms, the callback will be postponed until the remaining time after a subsequent frame is rendered is greater than 1 ms. If there is no next frame currently, the next frame will be requested automatically. This API must not be called on a non-UI thread; otherwise, the program will actively abort. |
 | [ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, bool enabled, ArkUI_RawInputEventType type)](#oh_arkui_enableeventpassthrough) | Enables or disables event passthrough. Event passthrough indicates that an event is directly delivered to a component without resampling during event distribution. |
+| [ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)](#oh_arkui_enabletouchpadevent) | Sets whether touchpad events are reported for the application. |
 
 ## Function description
 
@@ -728,5 +729,33 @@ Enables or disables event passthrough. Event passthrough indicates that an event
 | Type | Description |
 | -- | -- |
 | ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if the UIContext object is invalid. |
+
+### OH_ArkUI_EnableTouchPadEvent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)
+```
+
+**Description**
+
+Sets whether touchpad events are reported for the application.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| bool enabled | [in] Whether to enable application-level touchpad event reporting. The value **true** enables reporting, and **false** disables reporting. The default value is **false**. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if the C API is not initialized.</li> </ul> |
 
 

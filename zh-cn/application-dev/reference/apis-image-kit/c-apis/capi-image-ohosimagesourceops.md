@@ -24,8 +24,8 @@ struct OhosImageSourceOps {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t density | 图像源像素密度。 |
-| int32_t pixelFormat | 图像源像素格式，通常用于描述YUV缓冲区。 |
-| [struct OhosImageSize](capi-image-ohosimagesize.md) size | 图像源像素宽高的大小。 |
+| int32_t density | 图像源像素密度。<br><!--Device-int32_t density--><!--Device-int32_t density-End--> |
+| int32_t pixelFormat | 图像源像素格式，通常用于描述YUV缓冲区。<br><!--Device-int32_t pixelFormat--><!--Device-int32_t pixelFormat-End--> |
+| [struct OhosImageSize](capi-image-ohosimagesize.md) size | 图像源像素宽高的大小。<br><!--Device-struct OhosImageSize size--><!--Device-struct OhosImageSize size-End--> |
 
 

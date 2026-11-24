@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkHeadlessSurfaceCreateFlagsEXT flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkHeadlessSurfaceCreateFlagsEXT flags | <!--Device-VkHeadlessSurfaceCreateFlagsEXT flags--><!--Device-VkHeadlessSurfaceCreateFlagsEXT flags-End--> |
 
 

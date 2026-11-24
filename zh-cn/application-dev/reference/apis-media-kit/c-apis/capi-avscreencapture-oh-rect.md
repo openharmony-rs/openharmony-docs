@@ -24,9 +24,9 @@ typedef struct OH_Rect {...} OH_Rect
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t x | 录屏界面的X坐标，相对于屏幕左上角。取值需大于等于0，单位为像素（px）。 |
-| int32_t y | 录屏界面的Y坐标，相对于屏幕左上角。取值需大于等于0，单位为像素（px）。 |
-| int32_t width | 录屏区域的宽度，取值需大于0，单位为像素（px）。传入0或负数时录屏不生效。 |
-| int32_t height | 录屏区域的高度，取值需大于0，单位为像素（px）。传入0或负数时录屏不生效。 |
+| int32_t x | 录屏界面的X坐标，相对于屏幕左上角。取值需大于等于0，单位为像素（px）。<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | 录屏界面的Y坐标，相对于屏幕左上角。取值需大于等于0，单位为像素（px）。<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
+| int32_t width | 录屏区域的宽度，取值需大于0，单位为像素（px）。传入0或负数时录屏不生效。<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | 录屏区域的高度，取值需大于0，单位为像素（px）。传入0或负数时录屏不生效。<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

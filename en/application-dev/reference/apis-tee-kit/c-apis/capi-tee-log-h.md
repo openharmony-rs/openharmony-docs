@@ -66,7 +66,7 @@ Provides TEE log APIs.<br> Reference of TEE log APIs and internal definitions.
 
 | Name | Description |
 | -- | -- |
-| const char *g_debug_prefix | Defines the debug prefix string.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| const char *g_debug_prefix | Defines the debug prefix string.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-const char *g_debug_prefix--><!--Device-const char *g_debug_prefix-End--> |
 
 ## Enum type description
 
@@ -80,7 +80,7 @@ enum LOG_LEVEL
 
 Enumerates the levels of the log.
 
-<!--Device-LOG_LEVEL--><!--Device-LOG_LEVEL-End-->
+<!--Device-enum LOG_LEVEL--><!--Device-enum LOG_LEVEL-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -88,12 +88,12 @@ Enumerates the levels of the log.
 
 | Enum item | Description |
 | -- | -- |
-| LOG_LEVEL_ERROR = 0 | Error level log. |
-| LOG_LEVEL_WARN = 1 | Warning level log. |
-| LOG_LEVEL_INFO = 2 | Information level log. |
-| LOG_LEVEL_DEBUG = 3 | Debug level log. |
-| LOG_LEVEL_VERBO = 4 | Verbose level log. |
-| LOG_LEVEL_ON = 5 | On level log. |
+| LOG_LEVEL_ERROR = 0 | Error level log.<br><!--Device-LOG_LEVEL_ERROR = 0--><!--Device-LOG_LEVEL_ERROR = 0-End--> |
+| LOG_LEVEL_WARN = 1 | Warning level log.<br><!--Device-LOG_LEVEL_WARN = 1--><!--Device-LOG_LEVEL_WARN = 1-End--> |
+| LOG_LEVEL_INFO = 2 | Information level log.<br><!--Device-LOG_LEVEL_INFO = 2--><!--Device-LOG_LEVEL_INFO = 2-End--> |
+| LOG_LEVEL_DEBUG = 3 | Debug level log.<br><!--Device-LOG_LEVEL_DEBUG = 3--><!--Device-LOG_LEVEL_DEBUG = 3-End--> |
+| LOG_LEVEL_VERBO = 4 | Verbose level log.<br><!--Device-LOG_LEVEL_VERBO = 4--><!--Device-LOG_LEVEL_VERBO = 4-End--> |
+| LOG_LEVEL_ON = 5 | On level log.<br><!--Device-LOG_LEVEL_ON = 5--><!--Device-LOG_LEVEL_ON = 5-End--> |
 
 
 ## Function description

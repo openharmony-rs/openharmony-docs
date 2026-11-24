@@ -79,7 +79,7 @@ enum NetConn_NetCap
 
 Enumerates the network capabilities.
 
-<!--Device-NetConn_NetCap--><!--Device-NetConn_NetCap-End-->
+<!--Device-enum NetConn_NetCap--><!--Device-enum NetConn_NetCap-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -87,13 +87,13 @@ Enumerates the network capabilities.
 
 | Enum item | Description |
 | -- | -- |
-| NETCONN_NET_CAPABILITY_MMS = 0 | MMS. |
-| NETCONN_NET_CAPABILITY_NOT_METERED = 11 | Non-metered network. |
-| NETCONN_NET_CAPABILITY_INTERNET = 12 | Internet. |
-| NETCONN_NET_CAPABILITY_NOT_VPN = 15 | Non-VPN. |
-| NETCONN_NET_CAPABILITY_VALIDATED = 16 | Verified. |
-| NETCONN_NET_CAPABILITY_PORTAL = 17 | Portal.<br>**Since**: 12 |
-| NETCONN_NET_CAPABILITY_CHECKING_CONNECTIVITY = 31 | Connectivity check.<br>**Since**: 12 |
+| NETCONN_NET_CAPABILITY_MMS = 0 | MMS.<br><!--Device-NETCONN_NET_CAPABILITY_MMS = 0--><!--Device-NETCONN_NET_CAPABILITY_MMS = 0-End--> |
+| NETCONN_NET_CAPABILITY_NOT_METERED = 11 | Non-metered network.<br><!--Device-NETCONN_NET_CAPABILITY_NOT_METERED = 11--><!--Device-NETCONN_NET_CAPABILITY_NOT_METERED = 11-End--> |
+| NETCONN_NET_CAPABILITY_INTERNET = 12 | Internet.<br><!--Device-NETCONN_NET_CAPABILITY_INTERNET = 12--><!--Device-NETCONN_NET_CAPABILITY_INTERNET = 12-End--> |
+| NETCONN_NET_CAPABILITY_NOT_VPN = 15 | Non-VPN.<br><!--Device-NETCONN_NET_CAPABILITY_NOT_VPN = 15--><!--Device-NETCONN_NET_CAPABILITY_NOT_VPN = 15-End--> |
+| NETCONN_NET_CAPABILITY_VALIDATED = 16 | Verified.<br><!--Device-NETCONN_NET_CAPABILITY_VALIDATED = 16--><!--Device-NETCONN_NET_CAPABILITY_VALIDATED = 16-End--> |
+| NETCONN_NET_CAPABILITY_PORTAL = 17 | Portal.<br>**Since**: 12<br><!--Device-NETCONN_NET_CAPABILITY_PORTAL = 17--><!--Device-NETCONN_NET_CAPABILITY_PORTAL = 17-End--> |
+| NETCONN_NET_CAPABILITY_CHECKING_CONNECTIVITY = 31 | Connectivity check.<br>**Since**: 12<br><!--Device-NETCONN_NET_CAPABILITY_CHECKING_CONNECTIVITY = 31--><!--Device-NETCONN_NET_CAPABILITY_CHECKING_CONNECTIVITY = 31-End--> |
 
 ### NetConn_NetBearerType
 
@@ -105,7 +105,7 @@ enum NetConn_NetBearerType
 
 Enumerates the network carrier types.
 
-<!--Device-NetConn_NetBearerType--><!--Device-NetConn_NetBearerType-End-->
+<!--Device-enum NetConn_NetBearerType--><!--Device-enum NetConn_NetBearerType-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -113,11 +113,11 @@ Enumerates the network carrier types.
 
 | Enum item | Description |
 | -- | -- |
-| NETCONN_BEARER_CELLULAR = 0 | Cellular network. |
-| NETCONN_BEARER_WIFI = 1 | Wi-Fi. |
-| NETCONN_BEARER_BLUETOOTH = 2 | Bluetooth.<br>**Since**: 12 |
-| NETCONN_BEARER_ETHERNET = 3 | Ethernet. |
-| NETCONN_BEARER_VPN = 4 | VPN.<br>**Since**: 12 |
+| NETCONN_BEARER_CELLULAR = 0 | Cellular network.<br><!--Device-NETCONN_BEARER_CELLULAR = 0--><!--Device-NETCONN_BEARER_CELLULAR = 0-End--> |
+| NETCONN_BEARER_WIFI = 1 | Wi-Fi.<br><!--Device-NETCONN_BEARER_WIFI = 1--><!--Device-NETCONN_BEARER_WIFI = 1-End--> |
+| NETCONN_BEARER_BLUETOOTH = 2 | Bluetooth.<br>**Since**: 12<br><!--Device-NETCONN_BEARER_BLUETOOTH = 2--><!--Device-NETCONN_BEARER_BLUETOOTH = 2-End--> |
+| NETCONN_BEARER_ETHERNET = 3 | Ethernet.<br><!--Device-NETCONN_BEARER_ETHERNET = 3--><!--Device-NETCONN_BEARER_ETHERNET = 3-End--> |
+| NETCONN_BEARER_VPN = 4 | VPN.<br>**Since**: 12<br><!--Device-NETCONN_BEARER_VPN = 4--><!--Device-NETCONN_BEARER_VPN = 4-End--> |
 
 ### NetConn_ErrorCode
 
@@ -129,7 +129,7 @@ enum NetConn_ErrorCode
 
 Enumerates network connection error codes.
 
-<!--Device-NetConn_ErrorCode--><!--Device-NetConn_ErrorCode-End-->
+<!--Device-enum NetConn_ErrorCode--><!--Device-enum NetConn_ErrorCode-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -137,11 +137,11 @@ Enumerates network connection error codes.
 
 | Enum item | Description |
 | -- | -- |
-| NETCONN_SUCCESS = 0 | Success. |
-| NETCONN_PERMISSION_DENIED = 201 | Missing permissions. |
-| NETCONN_PARAMETER_ERROR = 401 | Invalid parameter. |
-| NETCONN_OPERATION_FAILED = 2100002 | Service connection failure. |
-| NETCONN_INTERNAL_ERROR = 2100003 | Internal error.1. Memory-related error, for example, insufficient memory, memory data copy failure, or memory request failure.2. Null pointer, for example, access to a released memory pointer. |
+| NETCONN_SUCCESS = 0 | Success.<br><!--Device-NETCONN_SUCCESS = 0--><!--Device-NETCONN_SUCCESS = 0-End--> |
+| NETCONN_PERMISSION_DENIED = 201 | Missing permissions.<br><!--Device-NETCONN_PERMISSION_DENIED = 201--><!--Device-NETCONN_PERMISSION_DENIED = 201-End--> |
+| NETCONN_PARAMETER_ERROR = 401 | Invalid parameter.<br><!--Device-NETCONN_PARAMETER_ERROR = 401--><!--Device-NETCONN_PARAMETER_ERROR = 401-End--> |
+| NETCONN_OPERATION_FAILED = 2100002 | Service connection failure.<br><!--Device-NETCONN_OPERATION_FAILED = 2100002--><!--Device-NETCONN_OPERATION_FAILED = 2100002-End--> |
+| NETCONN_INTERNAL_ERROR = 2100003 | Internal error.1. Memory-related error, for example, insufficient memory, memory data copy failure, or memory request failure.2. Null pointer, for example, access to a released memory pointer.<br><!--Device-NETCONN_INTERNAL_ERROR = 2100003--><!--Device-NETCONN_INTERNAL_ERROR = 2100003-End--> |
 
 ### NetConn_PacketsType
 
@@ -153,7 +153,7 @@ enum NetConn_PacketsType
 
 Enumerates trace route packet types.
 
-<!--Device-NetConn_PacketsType--><!--Device-NetConn_PacketsType-End-->
+<!--Device-enum NetConn_PacketsType--><!--Device-enum NetConn_PacketsType-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -161,8 +161,8 @@ Enumerates trace route packet types.
 
 | Enum item | Description |
 | -- | -- |
-| NETCONN_PACKETS_ICMP = 0 | Internet Control Message Protocol. |
-| NETCONN_PACKETS_UDP = 1 | User Datagram Protocol. |
+| NETCONN_PACKETS_ICMP = 0 | Internet Control Message Protocol.<br><!--Device-NETCONN_PACKETS_ICMP = 0--><!--Device-NETCONN_PACKETS_ICMP = 0-End--> |
+| NETCONN_PACKETS_UDP = 1 | User Datagram Protocol.<br><!--Device-NETCONN_PACKETS_UDP = 1--><!--Device-NETCONN_PACKETS_UDP = 1-End--> |
 
 
 ## Function description

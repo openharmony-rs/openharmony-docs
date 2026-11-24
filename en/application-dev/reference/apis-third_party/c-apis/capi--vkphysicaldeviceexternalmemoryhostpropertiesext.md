@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkDeviceSize minImportedHostPointerAlignment |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkDeviceSize minImportedHostPointerAlignment | <!--Device-VkDeviceSize minImportedHostPointerAlignment--><!--Device-VkDeviceSize minImportedHostPointerAlignment-End--> |
 
 

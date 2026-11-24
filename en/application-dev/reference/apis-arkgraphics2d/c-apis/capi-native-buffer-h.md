@@ -67,7 +67,7 @@ enum OH_NativeBuffer_Usage
 
 Indicates the usage of a native buffer.
 
-<!--Device-OH_NativeBuffer_Usage--><!--Device-OH_NativeBuffer_Usage-End-->
+<!--Device-enum OH_NativeBuffer_Usage--><!--Device-enum OH_NativeBuffer_Usage-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -75,14 +75,14 @@ Indicates the usage of a native buffer.
 
 | Enum item | Description |
 | -- | -- |
-| NATIVEBUFFER_USAGE_CPU_READ = (1ULL << 0) | CPU read buffer |
-| NATIVEBUFFER_USAGE_CPU_WRITE = (1ULL << 1) | CPU write memory |
-| NATIVEBUFFER_USAGE_MEM_DMA = (1ULL << 3) | Direct memory access (DMA) buffer |
-| NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5) | MMZ with cache<br>**Since**: 20 |
-| NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8) | For GPU write case<br>**Since**: 12 |
-| NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9) | For GPU read case<br>**Since**: 12 |
-| NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) | Often be mapped for direct CPU reads<br>**Since**: 12 |
-| NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) | 512 bytes alignment<br>**Since**: 12 |
+| NATIVEBUFFER_USAGE_CPU_READ = (1ULL << 0) | CPU read buffer<br><!--Device-NATIVEBUFFER_USAGE_CPU_READ = (1ULL << 0)--><!--Device-NATIVEBUFFER_USAGE_CPU_READ = (1ULL << 0)-End--> |
+| NATIVEBUFFER_USAGE_CPU_WRITE = (1ULL << 1) | CPU write memory<br><!--Device-NATIVEBUFFER_USAGE_CPU_WRITE = (1ULL << 1)--><!--Device-NATIVEBUFFER_USAGE_CPU_WRITE = (1ULL << 1)-End--> |
+| NATIVEBUFFER_USAGE_MEM_DMA = (1ULL << 3) | Direct memory access (DMA) buffer<br><!--Device-NATIVEBUFFER_USAGE_MEM_DMA = (1ULL << 3)--><!--Device-NATIVEBUFFER_USAGE_MEM_DMA = (1ULL << 3)-End--> |
+| NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5) | MMZ with cache<br>**Since**: 20<br><!--Device-NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5)--><!--Device-NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5)-End--> |
+| NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8) | For GPU write case<br>**Since**: 12<br><!--Device-NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8)--><!--Device-NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8)-End--> |
+| NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9) | For GPU read case<br>**Since**: 12<br><!--Device-NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9)--><!--Device-NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9)-End--> |
+| NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) | Often be mapped for direct CPU reads<br>**Since**: 12<br><!--Device-NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16)--><!--Device-NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16)-End--> |
+| NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) | 512 bytes alignment<br>**Since**: 12<br><!--Device-NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18)--><!--Device-NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18)-End--> |
 
 ### OH_NativeBuffer_ColorGamut
 
@@ -94,7 +94,7 @@ enum OH_NativeBuffer_ColorGamut
 
 Indicates the color gamut of a native buffer.
 
-<!--Device-OH_NativeBuffer_ColorGamut--><!--Device-OH_NativeBuffer_ColorGamut-End-->
+<!--Device-enum OH_NativeBuffer_ColorGamut--><!--Device-enum OH_NativeBuffer_ColorGamut-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -102,17 +102,17 @@ Indicates the color gamut of a native buffer.
 
 | Enum item | Description |
 | -- | -- |
-| NATIVEBUFFER_COLOR_GAMUT_NATIVE = 0 | Native or default |
-| NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601 = 1 | Standard BT601 |
-| NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709 = 2 | Standard BT709 |
-| NATIVEBUFFER_COLOR_GAMUT_DCI_P3 = 3 | DCI P3 |
-| NATIVEBUFFER_COLOR_GAMUT_SRGB = 4 | SRGB |
-| NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB = 5 | Adobe RGB |
-| NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3 = 6 | Display P3 |
-| NATIVEBUFFER_COLOR_GAMUT_BT2020 = 7 | BT2020 |
-| NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ = 8 | BT2100 PQ |
-| NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG = 9 | BT2100 HLG |
-| NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020 = 10 | Display BT2020 |
+| NATIVEBUFFER_COLOR_GAMUT_NATIVE = 0 | Native or default<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_NATIVE = 0--><!--Device-NATIVEBUFFER_COLOR_GAMUT_NATIVE = 0-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601 = 1 | Standard BT601<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601 = 1--><!--Device-NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601 = 1-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709 = 2 | Standard BT709<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709 = 2--><!--Device-NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709 = 2-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_DCI_P3 = 3 | DCI P3<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_DCI_P3 = 3--><!--Device-NATIVEBUFFER_COLOR_GAMUT_DCI_P3 = 3-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_SRGB = 4 | SRGB<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_SRGB = 4--><!--Device-NATIVEBUFFER_COLOR_GAMUT_SRGB = 4-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB = 5 | Adobe RGB<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB = 5--><!--Device-NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB = 5-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3 = 6 | Display P3<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3 = 6--><!--Device-NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3 = 6-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_BT2020 = 7 | BT2020<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_BT2020 = 7--><!--Device-NATIVEBUFFER_COLOR_GAMUT_BT2020 = 7-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ = 8 | BT2100 PQ<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ = 8--><!--Device-NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ = 8-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG = 9 | BT2100 HLG<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG = 9--><!--Device-NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG = 9-End--> |
+| NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020 = 10 | Display BT2020<br><!--Device-NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020 = 10--><!--Device-NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020 = 10-End--> |
 
 
 ## Function description

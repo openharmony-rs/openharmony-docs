@@ -24,9 +24,9 @@ Defines a parameter of {@code TEEC_Operation}.
 
 | Name | Description |
 | -- | -- |
-| [TEEC_TempMemoryReference](capi-teeclient-teec-tempmemoryreference.md) tmpref | Temporary memory reference. |
-| [TEEC_RegisteredMemoryReference](capi-teeclient-teec-registeredmemoryreference.md) memref | Registered memory reference. |
-| [TEEC_Value](capi-teeclient-teec-value.md) value | A value containing two 32-bit values. |
-| [TEEC_IonReference](capi-teeclient-teec-ionreference.md) ionref | Ion memory reference. |
+| [TEEC_TempMemoryReference](capi-teeclient-teec-tempmemoryreference.md) tmpref | Temporary memory reference.<br><!--Device-TEEC_TempMemoryReference tmpref--><!--Device-TEEC_TempMemoryReference tmpref-End--> |
+| [TEEC_RegisteredMemoryReference](capi-teeclient-teec-registeredmemoryreference.md) memref | Registered memory reference.<br><!--Device-TEEC_RegisteredMemoryReference memref--><!--Device-TEEC_RegisteredMemoryReference memref-End--> |
+| [TEEC_Value](capi-teeclient-teec-value.md) value | A value containing two 32-bit values.<br><!--Device-TEEC_Value value--><!--Device-TEEC_Value value-End--> |
+| [TEEC_IonReference](capi-teeclient-teec-ionreference.md) ionref | Ion memory reference.<br><!--Device-TEEC_IonReference ionref--><!--Device-TEEC_IonReference ionref-End--> |
 
 

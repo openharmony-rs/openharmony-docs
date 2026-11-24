@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t attachmentIndex |  |
-| [VkSampleLocationsInfoEXT](capi--vksamplelocationsinfoext.md) sampleLocationsInfo |  |
+| uint32_t attachmentIndex | <!--Device-uint32_t attachmentIndex--><!--Device-uint32_t attachmentIndex-End--> |
+| [VkSampleLocationsInfoEXT](capi--vksamplelocationsinfoext.md) sampleLocationsInfo | <!--Device-VkSampleLocationsInfoEXT sampleLocationsInfo--><!--Device-VkSampleLocationsInfoEXT sampleLocationsInfo-End--> |
 
 

@@ -26,7 +26,7 @@ Defines the HDR metadata.
 
 | Name | Description |
 | -- | -- |
-| [OHHDRMetadataKey](capi-external-window-h.md#ohhdrmetadatakey) key |  |
-| float value |  |
+| [OHHDRMetadataKey](capi-external-window-h.md#ohhdrmetadatakey) key | <!--Device-OHHDRMetadataKey key--><!--Device-OHHDRMetadataKey key-End--> |
+| float value | <!--Device-float value--><!--Device-float value-End--> |
 
 

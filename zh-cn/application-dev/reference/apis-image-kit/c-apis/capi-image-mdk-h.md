@@ -52,7 +52,7 @@ enum anonymous0
 
 图像格式枚举值。
 
-<!--Device-anonymous0--><!--Device-anonymous0-End-->
+<!--Device-enum anonymous0--><!--Device-enum anonymous0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -60,8 +60,8 @@ enum anonymous0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000 | YCBCR422 semi-planar格式。 |
-| OHOS_IMAGE_FORMAT_JPEG = 2000 | JPEG编码格式。 |
+| OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000 | YCBCR422 semi-planar格式。<br><!--Device-OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000--><!--Device-OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000-End--> |
+| OHOS_IMAGE_FORMAT_JPEG = 2000 | JPEG编码格式。<br><!--Device-OHOS_IMAGE_FORMAT_JPEG = 2000--><!--Device-OHOS_IMAGE_FORMAT_JPEG = 2000-End--> |
 
 ### anonymous1
 
@@ -73,7 +73,7 @@ enum anonymous1
 
 图像颜色通道类型枚举值。
 
-<!--Device-anonymous1--><!--Device-anonymous1-End-->
+<!--Device-enum anonymous1--><!--Device-enum anonymous1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -81,10 +81,10 @@ enum anonymous1
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1 | 亮度信息。 |
-| OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2 | 色度信息。 |
-| OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | 色差值信息。 |
-| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG格式。 |
+| OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1 | 亮度信息。<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1-End--> |
+| OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2 | 色度信息。<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2-End--> |
+| OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | 色差值信息。<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3-End--> |
+| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG格式。<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4-End--> |
 
 
 ## 函数说明

@@ -24,8 +24,8 @@ Define a struct for the accessible range information.
 
 | Name | Description |
 | -- | -- |
-| double min | Minimum value. |
-| double max | Maximum value. |
-| double current | Current value. |
+| double min | Minimum value.<br><!--Device-double min--><!--Device-double min-End--> |
+| double max | Maximum value.<br><!--Device-double max--><!--Device-double max-End--> |
+| double current | Current value.<br><!--Device-double current--><!--Device-double current-End--> |
 
 

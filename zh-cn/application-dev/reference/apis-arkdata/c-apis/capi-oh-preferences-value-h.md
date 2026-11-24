@@ -72,7 +72,7 @@ enum Preference_ValueType
 
 定义PreferencesValue的数据类型。
 
-<!--Device-Preference_ValueType--><!--Device-Preference_ValueType-End-->
+<!--Device-enum Preference_ValueType--><!--Device-enum Preference_ValueType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -80,19 +80,19 @@ enum Preference_ValueType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PREFERENCE_TYPE_NULL = 0 | 空类型。 |
-| PREFERENCE_TYPE_INT | 整型类型。 |
-| PREFERENCE_TYPE_BOOL | 布尔类型。 |
-| PREFERENCE_TYPE_STRING | 字符串类型。 |
-| PREFERENCE_TYPE_INT64 | 64位整型类型。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_DOUBLE | 浮点型类型。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_INT_ARRAY | 整型数组。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_BOOL_ARRAY | 布尔数组。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_STRING_ARRAY | 字符串数组。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_INT64_ARRAY | 64位整型数组。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_DOUBLE_ARRAY | 浮点型数组。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_BLOB | 二进制数据。<br>**起始版本：** 23 |
-| PREFERENCE_TYPE_BUTT | 结束类型。 |
+| PREFERENCE_TYPE_NULL = 0 | 空类型。<br><!--Device-PREFERENCE_TYPE_NULL = 0--><!--Device-PREFERENCE_TYPE_NULL = 0-End--> |
+| PREFERENCE_TYPE_INT | 整型类型。<br><!--Device-PREFERENCE_TYPE_INT--><!--Device-PREFERENCE_TYPE_INT-End--> |
+| PREFERENCE_TYPE_BOOL | 布尔类型。<br><!--Device-PREFERENCE_TYPE_BOOL--><!--Device-PREFERENCE_TYPE_BOOL-End--> |
+| PREFERENCE_TYPE_STRING | 字符串类型。<br><!--Device-PREFERENCE_TYPE_STRING--><!--Device-PREFERENCE_TYPE_STRING-End--> |
+| PREFERENCE_TYPE_INT64 | 64位整型类型。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_INT64--><!--Device-PREFERENCE_TYPE_INT64-End--> |
+| PREFERENCE_TYPE_DOUBLE | 浮点型类型。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_DOUBLE--><!--Device-PREFERENCE_TYPE_DOUBLE-End--> |
+| PREFERENCE_TYPE_INT_ARRAY | 整型数组。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_INT_ARRAY--><!--Device-PREFERENCE_TYPE_INT_ARRAY-End--> |
+| PREFERENCE_TYPE_BOOL_ARRAY | 布尔数组。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_BOOL_ARRAY--><!--Device-PREFERENCE_TYPE_BOOL_ARRAY-End--> |
+| PREFERENCE_TYPE_STRING_ARRAY | 字符串数组。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_STRING_ARRAY--><!--Device-PREFERENCE_TYPE_STRING_ARRAY-End--> |
+| PREFERENCE_TYPE_INT64_ARRAY | 64位整型数组。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_INT64_ARRAY--><!--Device-PREFERENCE_TYPE_INT64_ARRAY-End--> |
+| PREFERENCE_TYPE_DOUBLE_ARRAY | 浮点型数组。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_DOUBLE_ARRAY--><!--Device-PREFERENCE_TYPE_DOUBLE_ARRAY-End--> |
+| PREFERENCE_TYPE_BLOB | 二进制数据。<br>**起始版本：** 23<br><!--Device-PREFERENCE_TYPE_BLOB--><!--Device-PREFERENCE_TYPE_BLOB-End--> |
+| PREFERENCE_TYPE_BUTT | 结束类型。<br><!--Device-PREFERENCE_TYPE_BUTT--><!--Device-PREFERENCE_TYPE_BUTT-End--> |
 
 
 ## 函数说明

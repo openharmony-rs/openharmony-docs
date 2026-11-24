@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| int32_t minQIndexDelta |  |
-| int32_t maxQIndexDelta |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| int32_t minQIndexDelta | <!--Device-int32_t minQIndexDelta--><!--Device-int32_t minQIndexDelta-End--> |
+| int32_t maxQIndexDelta | <!--Device-int32_t maxQIndexDelta--><!--Device-int32_t maxQIndexDelta-End--> |
 
 

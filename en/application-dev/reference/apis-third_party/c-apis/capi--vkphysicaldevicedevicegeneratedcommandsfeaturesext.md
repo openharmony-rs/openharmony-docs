@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 deviceGeneratedCommands |  |
-| VkBool32 dynamicGeneratedPipelineLayout |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 deviceGeneratedCommands | <!--Device-VkBool32 deviceGeneratedCommands--><!--Device-VkBool32 deviceGeneratedCommands-End--> |
+| VkBool32 dynamicGeneratedPipelineLayout | <!--Device-VkBool32 dynamicGeneratedPipelineLayout--><!--Device-VkBool32 dynamicGeneratedPipelineLayout-End--> |
 
 

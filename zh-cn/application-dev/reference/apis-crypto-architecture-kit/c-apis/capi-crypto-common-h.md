@@ -47,7 +47,7 @@ enum OH_Crypto_ErrCode
 
 枚举错误码。
 
-<!--Device-OH_Crypto_ErrCode--><!--Device-OH_Crypto_ErrCode-End-->
+<!--Device-enum OH_Crypto_ErrCode--><!--Device-enum OH_Crypto_ErrCode-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -55,13 +55,13 @@ enum OH_Crypto_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_SUCCESS = 0 | 表示操作成功。<br>**起始版本：** 12 |
-| CRYPTO_INVALID_PARAMS = 401 | 表示输入参数无效。<br>**起始版本：** 12 |
-| CRYPTO_NOT_SUPPORTED = 801 | 表示不支持的功能或算法。<br>**起始版本：** 12 |
-| CRYPTO_MEMORY_ERROR = 17620001 | 表示内存操作失败。<br>**起始版本：** 12 |
-| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | 表示参数校验失败。<br>**起始版本：** 20 |
-| CRYPTO_INVALID_CALL = 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0 |
-| CRYPTO_OPERTION_ERROR = 17630001 | 表示加解密操作错误。<br>**起始版本：** 12 |
+| CRYPTO_SUCCESS = 0 | 表示操作成功。<br>**起始版本：** 12<br><!--Device-CRYPTO_SUCCESS = 0--><!--Device-CRYPTO_SUCCESS = 0-End--> |
+| CRYPTO_INVALID_PARAMS = 401 | 表示输入参数无效。<br>**起始版本：** 12<br><!--Device-CRYPTO_INVALID_PARAMS = 401--><!--Device-CRYPTO_INVALID_PARAMS = 401-End--> |
+| CRYPTO_NOT_SUPPORTED = 801 | 表示不支持的功能或算法。<br>**起始版本：** 12<br><!--Device-CRYPTO_NOT_SUPPORTED = 801--><!--Device-CRYPTO_NOT_SUPPORTED = 801-End--> |
+| CRYPTO_MEMORY_ERROR = 17620001 | 表示内存操作失败。<br>**起始版本：** 12<br><!--Device-CRYPTO_MEMORY_ERROR = 17620001--><!--Device-CRYPTO_MEMORY_ERROR = 17620001-End--> |
+| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | 表示参数校验失败。<br>**起始版本：** 20<br><!--Device-CRYPTO_PARAMETER_CHECK_FAILED = 17620003--><!--Device-CRYPTO_PARAMETER_CHECK_FAILED = 17620003-End--> |
+| CRYPTO_INVALID_CALL = 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0<br><!--Device-CRYPTO_INVALID_CALL = 17620004--><!--Device-CRYPTO_INVALID_CALL = 17620004-End--> |
+| CRYPTO_OPERTION_ERROR = 17630001 | 表示加解密操作错误。<br>**起始版本：** 12<br><!--Device-CRYPTO_OPERTION_ERROR = 17630001--><!--Device-CRYPTO_OPERTION_ERROR = 17630001-End--> |
 
 ### Crypto_CipherMode
 
@@ -73,7 +73,7 @@ enum Crypto_CipherMode
 
 定义加解密模式。
 
-<!--Device-Crypto_CipherMode--><!--Device-Crypto_CipherMode-End-->
+<!--Device-enum Crypto_CipherMode--><!--Device-enum Crypto_CipherMode-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -81,8 +81,8 @@ enum Crypto_CipherMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_ENCRYPT_MODE = 0 | 表示加密操作。<br>**起始版本：** 12 |
-| CRYPTO_DECRYPT_MODE = 1 | 表示解密操作。<br>**起始版本：** 12 |
+| CRYPTO_ENCRYPT_MODE = 0 | 表示加密操作。<br>**起始版本：** 12<br><!--Device-CRYPTO_ENCRYPT_MODE = 0--><!--Device-CRYPTO_ENCRYPT_MODE = 0-End--> |
+| CRYPTO_DECRYPT_MODE = 1 | 表示解密操作。<br>**起始版本：** 12<br><!--Device-CRYPTO_DECRYPT_MODE = 1--><!--Device-CRYPTO_DECRYPT_MODE = 1-End--> |
 
 
 ## 函数说明

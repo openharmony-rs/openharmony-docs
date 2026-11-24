@@ -44,7 +44,7 @@ enum DLP_ErrCode
 
 Enumerates the DLP error codes.
 
-<!--Device-DLP_ErrCode--><!--Device-DLP_ErrCode-End-->
+<!--Device-enum DLP_ErrCode--><!--Device-enum DLP_ErrCode-End-->
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -52,14 +52,14 @@ Enumerates the DLP error codes.
 
 | Enum item | Description |
 | -- | -- |
-| ERR_OH_SUCCESS = 0 | The operation is successful. |
-| OH_DLP_NOT_SUPPORTED = 801 | This error code is reported when the function is not supported. Possible cause: The vehicle is not supported.<br>**Since**: 26.0.1 |
-| ERR_OH_INVALID_PARAMETER = 19100001 | Invalid parameters are specified. |
-| ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | The caller is not a DLP sandbox application. |
-| ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | The API is not available to a DLP sandbox application. |
-| ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011 | The system service is abnormal. |
-| ERR_OH_OUT_OF_MEMORY = 19100012 | The memory allocation fails. |
-| ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018 | The application is not authorized to perform the operation. |
+| ERR_OH_SUCCESS = 0 | The operation is successful.<br><!--Device-ERR_OH_SUCCESS = 0--><!--Device-ERR_OH_SUCCESS = 0-End--> |
+| OH_DLP_NOT_SUPPORTED = 801 | This error code is reported when the function is not supported. Possible cause: The vehicle is not supported.<br>**Since**: 26.0.1<br><!--Device-OH_DLP_NOT_SUPPORTED = 801--><!--Device-OH_DLP_NOT_SUPPORTED = 801-End--> |
+| ERR_OH_INVALID_PARAMETER = 19100001 | Invalid parameters are specified.<br><!--Device-ERR_OH_INVALID_PARAMETER = 19100001--><!--Device-ERR_OH_INVALID_PARAMETER = 19100001-End--> |
+| ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | The caller is not a DLP sandbox application.<br><!--Device-ERR_OH_API_ONLY_FOR_SANDBOX = 19100006--><!--Device-ERR_OH_API_ONLY_FOR_SANDBOX = 19100006-End--> |
+| ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | The API is not available to a DLP sandbox application.<br><!--Device-ERR_OH_API_NOT_FOR_SANDBOX = 19100007--><!--Device-ERR_OH_API_NOT_FOR_SANDBOX = 19100007-End--> |
+| ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011 | The system service is abnormal.<br><!--Device-ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011--><!--Device-ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011-End--> |
+| ERR_OH_OUT_OF_MEMORY = 19100012 | The memory allocation fails.<br><!--Device-ERR_OH_OUT_OF_MEMORY = 19100012--><!--Device-ERR_OH_OUT_OF_MEMORY = 19100012-End--> |
+| ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018 | The application is not authorized to perform the operation.<br><!--Device-ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018--><!--Device-ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018-End--> |
 
 ### DLP_FileAccess
 
@@ -71,7 +71,7 @@ enum DLP_FileAccess
 
 Enumerates the permissions on a DLP file.
 
-<!--Device-DLP_FileAccess--><!--Device-DLP_FileAccess-End-->
+<!--Device-enum DLP_FileAccess--><!--Device-enum DLP_FileAccess-End-->
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -79,10 +79,10 @@ Enumerates the permissions on a DLP file.
 
 | Enum item | Description |
 | -- | -- |
-| NO_PERMISSION = 0 | No permission on the file. |
-| READ_ONLY = 1 | Read-only permission. |
-| CONTENT_EDIT = 2 | Editing permission. |
-| FULL_CONTROL = 3 | Full control. |
+| NO_PERMISSION = 0 | No permission on the file.<br><!--Device-NO_PERMISSION = 0--><!--Device-NO_PERMISSION = 0-End--> |
+| READ_ONLY = 1 | Read-only permission.<br><!--Device-READ_ONLY = 1--><!--Device-READ_ONLY = 1-End--> |
+| CONTENT_EDIT = 2 | Editing permission.<br><!--Device-CONTENT_EDIT = 2--><!--Device-CONTENT_EDIT = 2-End--> |
+| FULL_CONTROL = 3 | Full control.<br><!--Device-FULL_CONTROL = 3--><!--Device-FULL_CONTROL = 3-End--> |
 
 
 ## Function description

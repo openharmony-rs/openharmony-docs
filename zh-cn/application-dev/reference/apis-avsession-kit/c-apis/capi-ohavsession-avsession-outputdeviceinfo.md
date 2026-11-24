@@ -24,7 +24,7 @@ typedef struct AVSession_OutputDeviceInfo {...} AVSession_OutputDeviceInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t size | 设备信息数组的大小。 |
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | 设备信息数组。 |
+| uint32_t size | 设备信息数组的大小。<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | 设备信息数组。<br><!--Device-AVSession_DeviceInfo **deviceInfos--><!--Device-AVSession_DeviceInfo **deviceInfos-End--> |
 
 

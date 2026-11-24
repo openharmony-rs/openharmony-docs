@@ -55,7 +55,7 @@ enum ArkUI_ListItemAlignment
 
 交叉轴方向的布局方式，默认值为ARKUI_LIST_ITEM_ALIGNMENT_START。
 
-<!--Device-ArkUI_ListItemAlignment--><!--Device-ArkUI_ListItemAlignment-End-->
+<!--Device-enum ArkUI_ListItemAlignment--><!--Device-enum ArkUI_ListItemAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,9 +63,9 @@ enum ArkUI_ListItemAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | ListItem在List中，交叉轴方向首部对齐。 |
-| ARKUI_LIST_ITEM_ALIGNMENT_CENTER | ListItem在List中，交叉轴方向居中对齐。 |
-| ARKUI_LIST_ITEM_ALIGNMENT_END | ListItem在List中，交叉轴方向尾部对齐。 |
+| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | ListItem在List中，交叉轴方向首部对齐。<br><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_START = 0--><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_START = 0-End--> |
+| ARKUI_LIST_ITEM_ALIGNMENT_CENTER | ListItem在List中，交叉轴方向居中对齐。<br><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_CENTER--><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_CENTER-End--> |
+| ARKUI_LIST_ITEM_ALIGNMENT_END | ListItem在List中，交叉轴方向尾部对齐。<br><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_END--><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_END-End--> |
 
 ### ArkUI_StickyStyle
 
@@ -77,7 +77,7 @@ enum ArkUI_StickyStyle
 
 定义列表是否吸顶和吸底枚举值。
 
-<!--Device-ArkUI_StickyStyle--><!--Device-ArkUI_StickyStyle-End-->
+<!--Device-enum ArkUI_StickyStyle--><!--Device-enum ArkUI_StickyStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,10 +85,10 @@ enum ArkUI_StickyStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | ListItemGroup的header不吸顶，footer不吸底。 |
-| ARKUI_STICKY_STYLE_HEADER = 1 | ListItemGroup的header吸顶，footer不吸底。 |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的header不吸顶，footer吸底。 |
-| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的header吸顶，footer吸底。 |
+| ARKUI_STICKY_STYLE_NONE = 0 | ListItemGroup的header不吸顶，footer不吸底。<br><!--Device-ARKUI_STICKY_STYLE_NONE = 0--><!--Device-ARKUI_STICKY_STYLE_NONE = 0-End--> |
+| ARKUI_STICKY_STYLE_HEADER = 1 | ListItemGroup的header吸顶，footer不吸底。<br><!--Device-ARKUI_STICKY_STYLE_HEADER = 1--><!--Device-ARKUI_STICKY_STYLE_HEADER = 1-End--> |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的header不吸顶，footer吸底。<br><!--Device-ARKUI_STICKY_STYLE_FOOTER = 2--><!--Device-ARKUI_STICKY_STYLE_FOOTER = 2-End--> |
+| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的header吸顶，footer吸底。<br><!--Device-ARKUI_STICKY_STYLE_BOTH = 3--><!--Device-ARKUI_STICKY_STYLE_BOTH = 3-End--> |
 
 ### ArkUI_ListItemGroupArea
 
@@ -100,7 +100,7 @@ enum ArkUI_ListItemGroupArea
 
 定义ListItemGroup组件区域，默认值为ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE。
 
-<!--Device-ArkUI_ListItemGroupArea--><!--Device-ArkUI_ListItemGroupArea-End-->
+<!--Device-enum ArkUI_ListItemGroupArea--><!--Device-enum ArkUI_ListItemGroupArea-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,11 +108,11 @@ enum ArkUI_ListItemGroupArea
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | ListItemGroup没有header、footer和ListItem时的区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | ListItemGroup的ListItem区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | ListItemGroup的header区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | ListItemGroup的footer区域。 |
+| ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。<br><!--Device-ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0--><!--Device-ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | ListItemGroup没有header、footer和ListItem时的区域。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_NONE--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_NONE-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | ListItemGroup的ListItem区域。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_ITEM--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_ITEM-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | ListItemGroup的header区域。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_HEADER--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_HEADER-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | ListItemGroup的footer区域。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER-End--> |
 
 
 ## 函数说明

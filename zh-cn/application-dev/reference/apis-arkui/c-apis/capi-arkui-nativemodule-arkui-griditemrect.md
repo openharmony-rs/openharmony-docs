@@ -24,9 +24,9 @@ typedef struct ArkUI_GridItemRect {...} ArkUI_GridItemRect
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t rowStart | GridItem行起始位置，从0开始计数，用于确定GridItem在Grid中的起始行。 |
-| uint32_t columnStart | GridItem列起始位置，从0开始计数，用于确定GridItem在Grid中的起始列。 |
-| uint32_t rowSpan | GridItem占用的行数，用于设置GridItem在行方向上的跨度。 |
-| uint32_t columnSpan | GridItem占用的列数，用于设置GridItem在列方向上的跨度。 |
+| uint32_t rowStart | GridItem行起始位置，从0开始计数，用于确定GridItem在Grid中的起始行。<br><!--Device-uint32_t rowStart--><!--Device-uint32_t rowStart-End--> |
+| uint32_t columnStart | GridItem列起始位置，从0开始计数，用于确定GridItem在Grid中的起始列。<br><!--Device-uint32_t columnStart--><!--Device-uint32_t columnStart-End--> |
+| uint32_t rowSpan | GridItem占用的行数，用于设置GridItem在行方向上的跨度。<br><!--Device-uint32_t rowSpan--><!--Device-uint32_t rowSpan-End--> |
+| uint32_t columnSpan | GridItem占用的列数，用于设置GridItem在列方向上的跨度。<br><!--Device-uint32_t columnSpan--><!--Device-uint32_t columnSpan-End--> |
 
 

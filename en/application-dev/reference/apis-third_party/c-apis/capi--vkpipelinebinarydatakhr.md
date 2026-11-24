@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| size_t dataSize |  |
-| void* pData |  |
+| size_t dataSize | <!--Device-size_t dataSize--><!--Device-size_t dataSize-End--> |
+| void* pData | <!--Device-void* pData--><!--Device-void* pData-End--> |
 
 

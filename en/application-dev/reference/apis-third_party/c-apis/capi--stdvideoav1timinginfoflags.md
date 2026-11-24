@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t equal_picture_interval : 1 |  |
-| uint32_t reserved : 31 |  |
+| uint32_t equal_picture_interval : 1 | <!--Device-uint32_t equal_picture_interval : 1--><!--Device-uint32_t equal_picture_interval : 1-End--> |
+| uint32_t reserved : 31 | <!--Device-uint32_t reserved : 31--><!--Device-uint32_t reserved : 31-End--> |
 
 

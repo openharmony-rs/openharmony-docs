@@ -24,7 +24,7 @@ A struct that encapsulates the cloud disk data buffer.
 
 | Name | Description |
 | -- | -- |
-| uint8_t *data | Pointer to the data buffer.<br>**Since**: 26.0.1 |
-| uint64_t dataSize | Data buffer size, in bytes.<br>**Since**: 26.0.1 |
+| uint8_t *data | Pointer to the data buffer.<br>**Since**: 26.0.1<br><!--Device-uint8_t *data--><!--Device-uint8_t *data-End--> |
+| uint64_t dataSize | Data buffer size, in bytes.<br>**Since**: 26.0.1<br><!--Device-uint64_t dataSize--><!--Device-uint64_t dataSize-End--> |
 
 

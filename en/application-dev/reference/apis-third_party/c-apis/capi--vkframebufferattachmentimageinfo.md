@@ -10,14 +10,14 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkImageCreateFlags flags |  |
-| VkImageUsageFlags usage |  |
-| uint32_t width |  |
-| uint32_t height |  |
-| uint32_t layerCount |  |
-| uint32_t viewFormatCount |  |
-| const VkFormat* pViewFormats |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkImageCreateFlags flags | <!--Device-VkImageCreateFlags flags--><!--Device-VkImageCreateFlags flags-End--> |
+| VkImageUsageFlags usage | <!--Device-VkImageUsageFlags usage--><!--Device-VkImageUsageFlags usage-End--> |
+| uint32_t width | <!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | <!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
+| uint32_t layerCount | <!--Device-uint32_t layerCount--><!--Device-uint32_t layerCount-End--> |
+| uint32_t viewFormatCount | <!--Device-uint32_t viewFormatCount--><!--Device-uint32_t viewFormatCount-End--> |
+| const VkFormat* pViewFormats | <!--Device-const VkFormat* pViewFormats--><!--Device-const VkFormat* pViewFormats-End--> |
 
 

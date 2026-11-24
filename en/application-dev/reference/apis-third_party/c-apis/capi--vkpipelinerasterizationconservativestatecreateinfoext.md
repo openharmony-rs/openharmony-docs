@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineRasterizationConservativeStateCreateFlagsEXT flags |  |
-| VkConservativeRasterizationModeEXT conservativeRasterizationMode |  |
-| float extraPrimitiveOverestimationSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineRasterizationConservativeStateCreateFlagsEXT flags | <!--Device-VkPipelineRasterizationConservativeStateCreateFlagsEXT flags--><!--Device-VkPipelineRasterizationConservativeStateCreateFlagsEXT flags-End--> |
+| VkConservativeRasterizationModeEXT conservativeRasterizationMode | <!--Device-VkConservativeRasterizationModeEXT conservativeRasterizationMode--><!--Device-VkConservativeRasterizationModeEXT conservativeRasterizationMode-End--> |
+| float extraPrimitiveOverestimationSize | <!--Device-float extraPrimitiveOverestimationSize--><!--Device-float extraPrimitiveOverestimationSize-End--> |
 
 

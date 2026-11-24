@@ -32,7 +32,7 @@ enum AbilityBase_ErrorCode
 
 Enumerates the error codes of AbilityBase.
 
-<!--Device-AbilityBase_ErrorCode--><!--Device-AbilityBase_ErrorCode-End-->
+<!--Device-enum AbilityBase_ErrorCode--><!--Device-enum AbilityBase_ErrorCode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityBase
 
@@ -40,7 +40,7 @@ Enumerates the error codes of AbilityBase.
 
 | Enum item | Description |
 | -- | -- |
-| ABILITY_BASE_ERROR_CODE_NO_ERROR = 0 | Operation successful.<br>**Since**: 15 |
-| ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401 | Invalid parameter.<br>**Since**: 15 |
+| ABILITY_BASE_ERROR_CODE_NO_ERROR = 0 | Operation successful.<br>**Since**: 15<br><!--Device-ABILITY_BASE_ERROR_CODE_NO_ERROR = 0--><!--Device-ABILITY_BASE_ERROR_CODE_NO_ERROR = 0-End--> |
+| ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401 | Invalid parameter.<br>**Since**: 15<br><!--Device-ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401--><!--Device-ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401-End--> |
 
 

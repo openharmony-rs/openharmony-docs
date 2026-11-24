@@ -90,7 +90,7 @@ enum Sensor_Type
 
 枚举传感器类型。
 
-<!--Device-Sensor_Type--><!--Device-Sensor_Type-End-->
+<!--Device-enum Sensor_Type--><!--Device-enum Sensor_Type-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -98,21 +98,21 @@ enum Sensor_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_TYPE_ACCELEROMETER = 1 | 加速度传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_GYROSCOPE = 2 | 陀螺仪传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_AMBIENT_LIGHT = 5 | 环境光传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_MAGNETIC_FIELD = 6 | 地磁传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_HALL = 10 | 霍尔传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_PROXIMITY = 12 | 接近光传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_GRAVITY = 257 | 重力传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | 线性加速度传感器。<br>**起始版本：** 13 |
-| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | 游戏旋转矢量传感器。<br>**起始版本：** 13 |
-| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | 计步器检测传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_PEDOMETER = 266 | 计步器传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_HEART_RATE = 278 | 心率传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_ACCELEROMETER = 1 | 加速度传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_ACCELEROMETER = 1--><!--Device-SENSOR_TYPE_ACCELEROMETER = 1-End--> |
+| SENSOR_TYPE_GYROSCOPE = 2 | 陀螺仪传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_GYROSCOPE = 2--><!--Device-SENSOR_TYPE_GYROSCOPE = 2-End--> |
+| SENSOR_TYPE_AMBIENT_LIGHT = 5 | 环境光传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_AMBIENT_LIGHT = 5--><!--Device-SENSOR_TYPE_AMBIENT_LIGHT = 5-End--> |
+| SENSOR_TYPE_MAGNETIC_FIELD = 6 | 地磁传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_MAGNETIC_FIELD = 6--><!--Device-SENSOR_TYPE_MAGNETIC_FIELD = 6-End--> |
+| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_BAROMETER = 8--><!--Device-SENSOR_TYPE_BAROMETER = 8-End--> |
+| SENSOR_TYPE_HALL = 10 | 霍尔传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_HALL = 10--><!--Device-SENSOR_TYPE_HALL = 10-End--> |
+| SENSOR_TYPE_PROXIMITY = 12 | 接近光传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_PROXIMITY = 12--><!--Device-SENSOR_TYPE_PROXIMITY = 12-End--> |
+| SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_ORIENTATION = 256--><!--Device-SENSOR_TYPE_ORIENTATION = 256-End--> |
+| SENSOR_TYPE_GRAVITY = 257 | 重力传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_GRAVITY = 257--><!--Device-SENSOR_TYPE_GRAVITY = 257-End--> |
+| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | 线性加速度传感器。<br>**起始版本：** 13<br><!--Device-SENSOR_TYPE_LINEAR_ACCELERATION = 258--><!--Device-SENSOR_TYPE_LINEAR_ACCELERATION = 258-End--> |
+| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_ROTATION_VECTOR = 259--><!--Device-SENSOR_TYPE_ROTATION_VECTOR = 259-End--> |
+| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | 游戏旋转矢量传感器。<br>**起始版本：** 13<br><!--Device-SENSOR_TYPE_GAME_ROTATION_VECTOR = 262--><!--Device-SENSOR_TYPE_GAME_ROTATION_VECTOR = 262-End--> |
+| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | 计步器检测传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_PEDOMETER_DETECTION = 265--><!--Device-SENSOR_TYPE_PEDOMETER_DETECTION = 265-End--> |
+| SENSOR_TYPE_PEDOMETER = 266 | 计步器传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_PEDOMETER = 266--><!--Device-SENSOR_TYPE_PEDOMETER = 266-End--> |
+| SENSOR_TYPE_HEART_RATE = 278 | 心率传感器。<br>**起始版本：** 11<br><!--Device-SENSOR_TYPE_HEART_RATE = 278--><!--Device-SENSOR_TYPE_HEART_RATE = 278-End--> |
 
 ### Sensor_Result
 
@@ -124,7 +124,7 @@ enum Sensor_Result
 
 定义传感器错误码。
 
-<!--Device-Sensor_Result--><!--Device-Sensor_Result-End-->
+<!--Device-enum Sensor_Result--><!--Device-enum Sensor_Result-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -132,10 +132,10 @@ enum Sensor_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_SUCCESS = 0 | 操作成功。<br>**起始版本：** 11 |
-| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。可能原因：应用缺少必要的传感器权限、权限申请被拒绝、权限级别不足等。解决措施：请检查应用配置文件中是否已申请所需的传感器权限，确保在运行时正确请求和获取权限。<br>**起始版本：** 11 |
-| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。可能原因：参数为空、参数超出有效范围、参数类型不匹配、缺少必填参数等。解决措施：请根据具体函数的参数说明，检查传入的参数是否完整、符合类型要求、在有效范围内，并修正参数值。<br>**起始版本：** 11 |
-| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。可能原因：传感器服务未启动、传感器服务崩溃、设备不支持指定传感器、系统资源不足等。解决措施：请检查设备是否支持所需传感器，确保系统资源充足，必要时重启设备或重新初始化传感器服务。<br>**起始版本：** 11 |
+| SENSOR_SUCCESS = 0 | 操作成功。<br>**起始版本：** 11<br><!--Device-SENSOR_SUCCESS = 0--><!--Device-SENSOR_SUCCESS = 0-End--> |
+| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。可能原因：应用缺少必要的传感器权限、权限申请被拒绝、权限级别不足等。解决措施：请检查应用配置文件中是否已申请所需的传感器权限，确保在运行时正确请求和获取权限。<br>**起始版本：** 11<br><!--Device-SENSOR_PERMISSION_DENIED = 201--><!--Device-SENSOR_PERMISSION_DENIED = 201-End--> |
+| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。可能原因：参数为空、参数超出有效范围、参数类型不匹配、缺少必填参数等。解决措施：请根据具体函数的参数说明，检查传入的参数是否完整、符合类型要求、在有效范围内，并修正参数值。<br>**起始版本：** 11<br><!--Device-SENSOR_PARAMETER_ERROR = 401--><!--Device-SENSOR_PARAMETER_ERROR = 401-End--> |
+| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。可能原因：传感器服务未启动、传感器服务崩溃、设备不支持指定传感器、系统资源不足等。解决措施：请检查设备是否支持所需传感器，确保系统资源充足，必要时重启设备或重新初始化传感器服务。<br>**起始版本：** 11<br><!--Device-SENSOR_SERVICE_EXCEPTION = 14500101--><!--Device-SENSOR_SERVICE_EXCEPTION = 14500101-End--> |
 
 ### Sensor_Accuracy
 
@@ -147,7 +147,7 @@ enum Sensor_Accuracy
 
 枚举传感器报告的数据的精度级别。
 
-<!--Device-Sensor_Accuracy--><!--Device-Sensor_Accuracy-End-->
+<!--Device-enum Sensor_Accuracy--><!--Device-enum Sensor_Accuracy-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -155,10 +155,10 @@ enum Sensor_Accuracy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_ACCURACY_UNRELIABLE = 0 | 传感器数据不可靠。有可能传感器不与设备接触而进行测量。<br>**起始版本：** 11 |
-| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。<br>**起始版本：** 11 |
-| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。<br>**起始版本：** 11 |
-| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_UNRELIABLE = 0 | 传感器数据不可靠。有可能传感器不与设备接触而进行测量。<br>**起始版本：** 11<br><!--Device-SENSOR_ACCURACY_UNRELIABLE = 0--><!--Device-SENSOR_ACCURACY_UNRELIABLE = 0-End--> |
+| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。<br>**起始版本：** 11<br><!--Device-SENSOR_ACCURACY_LOW = 1--><!--Device-SENSOR_ACCURACY_LOW = 1-End--> |
+| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。<br>**起始版本：** 11<br><!--Device-SENSOR_ACCURACY_MEDIUM = 2--><!--Device-SENSOR_ACCURACY_MEDIUM = 2-End--> |
+| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。<br>**起始版本：** 11<br><!--Device-SENSOR_ACCURACY_HIGH = 3--><!--Device-SENSOR_ACCURACY_HIGH = 3-End--> |
 
 
 ## 函数说明

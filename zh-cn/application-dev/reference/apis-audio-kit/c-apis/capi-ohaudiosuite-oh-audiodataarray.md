@@ -24,8 +24,8 @@ typedef struct OH_AudioDataArray {...} OH_AudioDataArray
 
 | 名称 | 描述 |
 | -- | -- |
-| void **audioDataArray | 输出的音频数据地址。<br>**起始版本：** 22 |
-| int32_t arraySize | 音频数据audioDataArray数组的元素个数。<br>**起始版本：** 22 |
-| int32_t requestFrameSize | audioDataArray数组中每个地址指向的内存大小，单位为字节（Byte）。 应确保每个地址指向的内存大小均符合requestFrameSize字段定义。<br>**起始版本：** 22 |
+| void **audioDataArray | 输出的音频数据地址。<br>**起始版本：** 22<br><!--Device-void **audioDataArray--><!--Device-void **audioDataArray-End--> |
+| int32_t arraySize | 音频数据audioDataArray数组的元素个数。<br>**起始版本：** 22<br><!--Device-int32_t arraySize--><!--Device-int32_t arraySize-End--> |
+| int32_t requestFrameSize | audioDataArray数组中每个地址指向的内存大小，单位为字节（Byte）。 应确保每个地址指向的内存大小均符合requestFrameSize字段定义。<br>**起始版本：** 22<br><!--Device-int32_t requestFrameSize--><!--Device-int32_t requestFrameSize-End--> |
 
 

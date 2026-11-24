@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 viewportScissor2D |  |
-| uint32_t viewportDepthCount |  |
-| [const VkViewport*](capi--vkviewport.md) pViewportDepths |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 viewportScissor2D | <!--Device-VkBool32 viewportScissor2D--><!--Device-VkBool32 viewportScissor2D-End--> |
+| uint32_t viewportDepthCount | <!--Device-uint32_t viewportDepthCount--><!--Device-uint32_t viewportDepthCount-End--> |
+| [const VkViewport*](capi--vkviewport.md) pViewportDepths | <!--Device-const VkViewport* pViewportDepths--><!--Device-const VkViewport* pViewportDepths-End--> |
 
 

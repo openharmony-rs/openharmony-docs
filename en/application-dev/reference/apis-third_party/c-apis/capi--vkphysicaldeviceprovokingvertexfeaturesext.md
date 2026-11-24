@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 provokingVertexLast |  |
-| VkBool32 transformFeedbackPreservesProvokingVertex |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 provokingVertexLast | <!--Device-VkBool32 provokingVertexLast--><!--Device-VkBool32 provokingVertexLast-End--> |
+| VkBool32 transformFeedbackPreservesProvokingVertex | <!--Device-VkBool32 transformFeedbackPreservesProvokingVertex--><!--Device-VkBool32 transformFeedbackPreservesProvokingVertex-End--> |
 
 

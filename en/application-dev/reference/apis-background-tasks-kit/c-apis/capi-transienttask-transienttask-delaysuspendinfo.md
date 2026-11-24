@@ -24,7 +24,7 @@ A struct that describes the returned information about a transient task. The str
 
 | Name | Description |
 | -- | -- |
-| int32_t requestId | Request ID of a transient task.<br>**Since**: 13 |
-| int32_t actualDelayTime | Remaining time, in ms.<br>**Since**: 13 |
+| int32_t requestId | Request ID of a transient task.<br>**Since**: 13<br><!--Device-int32_t requestId--><!--Device-int32_t requestId-End--> |
+| int32_t actualDelayTime | Remaining time, in ms.<br>**Since**: 13<br><!--Device-int32_t actualDelayTime--><!--Device-int32_t actualDelayTime-End--> |
 
 

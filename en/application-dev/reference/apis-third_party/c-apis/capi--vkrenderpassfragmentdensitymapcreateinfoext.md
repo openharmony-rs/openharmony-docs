@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkAttachmentReference](capi--vkattachmentreference.md) fragmentDensityMapAttachment |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkAttachmentReference](capi--vkattachmentreference.md) fragmentDensityMapAttachment | <!--Device-VkAttachmentReference fragmentDensityMapAttachment--><!--Device-VkAttachmentReference fragmentDensityMapAttachment-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 
 | 名称 | 描述 |
 | -- | -- |
-| [Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype) *hidEventType | 事件类型编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。 |
-| uint16_t length | 数组的有效长度，不超过hidEventType数组的实际长度。 |
+| [Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype) *hidEventType | 事件类型编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。<br><!--Device-Hid_EventType *hidEventType--><!--Device-Hid_EventType *hidEventType-End--> |
+| uint16_t length | 数组的有效长度，不超过hidEventType数组的实际长度。<br><!--Device-uint16_t length--><!--Device-uint16_t length-End--> |
 
 

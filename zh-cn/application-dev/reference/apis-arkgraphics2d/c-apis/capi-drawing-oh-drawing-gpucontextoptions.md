@@ -26,6 +26,6 @@ typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions
 
 | 名称 | 描述 |
 | -- | -- |
-| bool allowPathMaskCaching | 用于控制是否启用路径蒙版缓存，如果为true，则允许缓存路径蒙版纹理，如果为false，则不允许。 |
+| bool allowPathMaskCaching | 用于控制是否启用路径蒙版缓存，如果为true，则允许缓存路径蒙版纹理，如果为false，则不允许。<br><!--Device-bool allowPathMaskCaching--><!--Device-bool allowPathMaskCaching-End--> |
 
 

@@ -6,7 +6,7 @@ struct WebSocket_ErrorResult {...}
 
 ## 概述
 
-websocket客户端来自服务端连接错误的参数。
+WebSocket客户端来自服务端连接错误的参数。
 
 <!--Device-struct WebSocket_ErrorResult {...}--><!--Device-struct WebSocket_ErrorResult {...}-End-->
 
@@ -24,7 +24,7 @@ websocket客户端来自服务端连接错误的参数。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t errorCode | 错误值。 |
-| const char *errorMessage | 错误的消息。 |
+| uint32_t errorCode | 错误值。<br><!--Device-uint32_t errorCode--><!--Device-uint32_t errorCode-End--> |
+| const char *errorMessage | 错误的消息。<br><!--Device-const char *errorMessage--><!--Device-const char *errorMessage-End--> |
 
 

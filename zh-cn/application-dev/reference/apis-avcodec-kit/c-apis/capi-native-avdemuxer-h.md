@@ -14,8 +14,6 @@
 
 **相关模块：** [AVDemuxer](capi-avcodec-kit-avdemuxer.md)
 
-**相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
-
 ## 汇总
 
 ### 结构体
@@ -29,16 +27,16 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo* mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | DRM_MediaKeySystemInfo回调函数指针类型，不返回解封装器实例，适用于单个解封装器实例场景。<br> 需要使用[OH_AVDemuxer_SetMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setmediakeysysteminfocallback)接口将其设置为回调。(API14废弃) |
+| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo* mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | DRM_MediaKeySystemInfo回调函数指针类型，不返回解封装器实例，适用于单个解封装器实例场景。<br> 需要使用[OH_AVDemuxer_SetMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setmediakeysysteminfocallback)接口将其设置为回调。(已废弃) |
 | [typedef void (\*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#demuxer_mediakeysysteminfocallback) | Demuxer_MediaKeySystemInfoCallback | DRM_MediaKeySystemInfo回调函数指针类型，返回解封装器实例，适用于多个解封装器实例场景。<br> 需要使用[OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setdemuxermediakeysysteminfocallback)接口将其设置为回调，推荐使用。 |
 | [OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)](#oh_avdemuxer_createwithsource) | - | 通过source实例创建OH_AVDemuxer实例。<br> source的创建、销毁及使用，详情请参考[OH_AVSource](capi-avsource-oh-avsource.md)。 |
 | [OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)](#oh_avdemuxer_destroy) | - | 销毁OH_AVDemuxer实例并清理内部资源。同一实例只能被销毁一次。<br> 注意，销毁的实例在被重新创建之前不能再被使用。建议实例销毁成功后将指针置为NULL。 |
 | [OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)](#oh_avdemuxer_selecttrackbyid) | - | 指定读取sample的轨道，解封装器将会从该轨道中读取数据，未指定的轨道不会读取。<br> 注意，通过多次调用接口并传入不同轨道的索引来选中多个轨道。<br> 调用[OH_AVDemuxer_ReadSample](capi-native-avdemuxer-h.md#oh_avdemuxer_readsample)时只会读取被选中的轨道中数据，同一轨道被选择多次时，接口会返回AV_ERR_OK，并且只会生效一次。 |
 | [OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)](#oh_avdemuxer_unselecttrackbyid) | - | 移除读取sample的轨道，未选中的轨道的数据不会被解封装器读取。<br> 注意，通过多次调用接口并传入不同轨道的索引来取消对多个轨道的选择。<br> 同一轨道被多次取消选择时，接口会返回AV_ERR_OK，并且只会生效一次。 |
-| [OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr *info)](#oh_avdemuxer_readsample) | - | 获取指定轨道的sample及相关信息。<br> 注意，读取轨道sample前，轨道必须被选中。调用接口后解封装器将自动前进到下一帧。(API11废弃) |
+| [OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr *info)](#oh_avdemuxer_readsample) | - | 获取指定轨道的sample及相关信息。<br> 注意，读取轨道sample前，轨道必须被选中。调用接口后解封装器将自动前进到下一帧。(已废弃) |
 | [OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVBuffer *sample)](#oh_avdemuxer_readsamplebuffer) | - | 获取指定轨道的sample及相关信息。<br> 注意，读取轨道sample前，轨道必须被选中，可使用OH_AVDemuxer_SelectTrackByID。调用接口后解封装器将自动前进到下一帧。 |
 | [OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond, OH_AVSeekMode mode)](#oh_avdemuxer_seektotime) | - | 根据设定的跳转模式，将所有选中的轨道跳转到指定时间附近。调用前需先通过OH_AVDemuxer_SelectTrackByID选中轨道。 |
-| [OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)](#oh_avdemuxer_setmediakeysysteminfocallback) | - | 设置DRM信息回调函数。(API14废弃) |
+| [OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)](#oh_avdemuxer_setmediakeysysteminfocallback) | - | 设置DRM信息回调函数。(已废弃) |
 | [OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, Demuxer_MediaKeySystemInfoCallback callback)](#oh_avdemuxer_setdemuxermediakeysysteminfocallback) | - | 设置DRM信息回调函数。 |
 | [OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#oh_avdemuxer_getmediakeysysteminfo) | - | 获取DRM信息。在[Demuxer_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)或[DRM_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#drm_mediakeysysteminfocallback)接口成功回调以后， 调用此接口才能获取到DRM信息。 |
 
@@ -62,7 +60,7 @@ DRM_MediaKeySystemInfo回调函数指针类型，不返回解封装器实例，�
 
 **废弃版本：** 14
 
-**替代接口：** [Demuxer_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)
+**替代接口：** Demuxer_MediaKeySystemInfoCallback
 
 ### Demuxer_MediaKeySystemInfoCallback()
 
@@ -219,7 +217,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex,
 
 **废弃版本：** 11
 
-**替代接口：** [OH_AVDemuxer_ReadSampleBuffer](capi-native-avdemuxer-h.md#oh_avdemuxer_readsamplebuffer)
+**替代接口：** OH_AVDemuxer_ReadSampleBuffer
 
 **参数：**
 
@@ -314,7 +312,7 @@ OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, D
 
 **废弃版本：** 14
 
-**替代接口：** [OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setdemuxermediakeysysteminfocallback)
+**替代接口：** OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback
 
 **参数：**
 

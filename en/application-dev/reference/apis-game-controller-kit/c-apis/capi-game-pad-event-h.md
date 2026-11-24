@@ -69,7 +69,7 @@ enum GamePad_AxisSourceType
 
 Defines source types of gamepad axis events.
 
-<!--Device-GamePad_AxisSourceType--><!--Device-GamePad_AxisSourceType-End-->
+<!--Device-enum GamePad_AxisSourceType--><!--Device-enum GamePad_AxisSourceType-End-->
 
 **System capability**: SystemCapability.Game.GameController
 
@@ -77,11 +77,11 @@ Defines source types of gamepad axis events.
 
 | Enum item | Description |
 | -- | -- |
-| DPAD = 0 | The axis event comes from the directional pad (D-pad).<br>**Since**: 21 |
-| LEFT_THUMBSTICK = 1 | The axis event comes from the left thumbstick.<br>**Since**: 21 |
-| RIGHT_THUMBSTICK = 2 | The axis event comes from the right thumbstick.<br>**Since**: 21 |
-| LEFT_TRIGGER = 3 | The axis event comes from the left trigger.<br>**Since**: 21 |
-| RIGHT_TRIGGER = 4 | The axis event comes from the right trigger.<br>**Since**: 21 |
+| DPAD = 0 | The axis event comes from the directional pad (D-pad).<br>**Since**: 21<br><!--Device-DPAD = 0--><!--Device-DPAD = 0-End--> |
+| LEFT_THUMBSTICK = 1 | The axis event comes from the left thumbstick.<br>**Since**: 21<br><!--Device-LEFT_THUMBSTICK = 1--><!--Device-LEFT_THUMBSTICK = 1-End--> |
+| RIGHT_THUMBSTICK = 2 | The axis event comes from the right thumbstick.<br>**Since**: 21<br><!--Device-RIGHT_THUMBSTICK = 2--><!--Device-RIGHT_THUMBSTICK = 2-End--> |
+| LEFT_TRIGGER = 3 | The axis event comes from the left trigger.<br>**Since**: 21<br><!--Device-LEFT_TRIGGER = 3--><!--Device-LEFT_TRIGGER = 3-End--> |
+| RIGHT_TRIGGER = 4 | The axis event comes from the right trigger.<br>**Since**: 21<br><!--Device-RIGHT_TRIGGER = 4--><!--Device-RIGHT_TRIGGER = 4-End--> |
 
 ### GamePad_Button_ActionType
 
@@ -93,7 +93,7 @@ enum GamePad_Button_ActionType
 
 Defines action types of gamepad button events.
 
-<!--Device-GamePad_Button_ActionType--><!--Device-GamePad_Button_ActionType-End-->
+<!--Device-enum GamePad_Button_ActionType--><!--Device-enum GamePad_Button_ActionType-End-->
 
 **System capability**: SystemCapability.Game.GameController
 
@@ -101,8 +101,8 @@ Defines action types of gamepad button events.
 
 | Enum item | Description |
 | -- | -- |
-| DOWN = 0 | The button is pressed.<br>**Since**: 21 |
-| UP = 1 | The button is released.<br>**Since**: 21 |
+| DOWN = 0 | The button is pressed.<br>**Since**: 21<br><!--Device-DOWN = 0--><!--Device-DOWN = 0-End--> |
+| UP = 1 | The button is released.<br>**Since**: 21<br><!--Device-UP = 1--><!--Device-UP = 1-End--> |
 
 
 ## Function description

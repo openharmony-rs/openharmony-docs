@@ -51,8 +51,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| static const int32_t UUID_STR_MAX_LENGTH = 37 | 定义UUID最大长度。这个常量定义了UUID字符串的最大长度。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
-| static const int32_t UUID_STR_MAX_LENGTH = 37 | Maximum length of a request ID.<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
+| static const int32_t UUID_STR_MAX_LENGTH = 37 | 定义UUID最大长度。这个常量定义了UUID字符串的最大长度。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core<br><!--Device-static const int32_t UUID_STR_MAX_LENGTH = 37--><!--Device-static const int32_t UUID_STR_MAX_LENGTH = 37-End--> |
+| static const int32_t UUID_STR_MAX_LENGTH = 37 | Maximum length of a request ID.<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core<br><!--Device-static const int32_t UUID_STR_MAX_LENGTH = 37--><!--Device-static const int32_t UUID_STR_MAX_LENGTH = 37-End--> |
 
 ## 枚举类型说明
 
@@ -66,7 +66,7 @@ enum MediaLibrary_ErrorCode
 
 媒体库错误代码的枚举。
 
-<!--Device-MediaLibrary_ErrorCode--><!--Device-MediaLibrary_ErrorCode-End-->
+<!--Device-enum MediaLibrary_ErrorCode--><!--Device-enum MediaLibrary_ErrorCode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -74,15 +74,15 @@ enum MediaLibrary_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_OK = 0 | 媒体库结果正常。 |
-| MEDIA_LIBRARY_PERMISSION_DENIED = 201 | 权限被拒绝。 |
-| MEDIA_LIBRARY_PARAMETER_ERROR = 401 | 强制参数未指定，参数类型不正确或参数验证失败。 |
-| MEDIA_LIBRARY_NO_SUCH_FILE = 23800101 | 文件不存在。 |
-| MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102 | 显示名称无效。 |
-| MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103 | 资产uri无效。 |
-| MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104 | PhotoKey无效。 |
-| MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201 | 不支持该操作。 |
-| MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301 | 内部系统错误。建议重试并检查日志。可能的原因：<br>1. 数据库已损坏。<br>2. 文件系统异常。<br>3. IPC请求超时。 |
+| MEDIA_LIBRARY_OK = 0 | 媒体库结果正常。<br><!--Device-MEDIA_LIBRARY_OK = 0--><!--Device-MEDIA_LIBRARY_OK = 0-End--> |
+| MEDIA_LIBRARY_PERMISSION_DENIED = 201 | 权限被拒绝。<br><!--Device-MEDIA_LIBRARY_PERMISSION_DENIED = 201--><!--Device-MEDIA_LIBRARY_PERMISSION_DENIED = 201-End--> |
+| MEDIA_LIBRARY_PARAMETER_ERROR = 401 | 强制参数未指定，参数类型不正确或参数验证失败。<br><!--Device-MEDIA_LIBRARY_PARAMETER_ERROR = 401--><!--Device-MEDIA_LIBRARY_PARAMETER_ERROR = 401-End--> |
+| MEDIA_LIBRARY_NO_SUCH_FILE = 23800101 | 文件不存在。<br><!--Device-MEDIA_LIBRARY_NO_SUCH_FILE = 23800101--><!--Device-MEDIA_LIBRARY_NO_SUCH_FILE = 23800101-End--> |
+| MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102 | 显示名称无效。<br><!--Device-MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102--><!--Device-MEDIA_LIBRARY_INVALID_DISPLAY_NAME = 23800102-End--> |
+| MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103 | 资产uri无效。<br><!--Device-MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103--><!--Device-MEDIA_LIBRARY_INVALID_ASSET_URI = 23800103-End--> |
+| MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104 | PhotoKey无效。<br><!--Device-MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104--><!--Device-MEDIA_LIBRARY_INVALID_PHOTO_KEY = 23800104-End--> |
+| MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201 | 不支持该操作。<br><!--Device-MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201--><!--Device-MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED = 23800201-End--> |
+| MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301 | 内部系统错误。建议重试并检查日志。可能的原因：<br>1. 数据库已损坏。<br>2. 文件系统异常。<br>3. IPC请求超时。<br><!--Device-MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301--><!--Device-MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR = 23800301-End--> |
 
 ### MediaLibrary_DeliveryMode
 
@@ -94,7 +94,7 @@ enum MediaLibrary_DeliveryMode
 
 请求资源分发模式。 <br>快速分发：不考虑资源质量，直接基于现有资源返回。 <br>高质量分发：返回高质量资源，若没有，则触发生成高质量资源，成功后才返回。 <br>均衡分发：若存在高质量资源，则直接返回高质量资源。否则，先返回低质量资源，并触发生成高质量资源，成功后再返回一次高质量资源。
 
-<!--Device-MediaLibrary_DeliveryMode--><!--Device-MediaLibrary_DeliveryMode-End-->
+<!--Device-enum MediaLibrary_DeliveryMode--><!--Device-enum MediaLibrary_DeliveryMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -102,9 +102,9 @@ enum MediaLibrary_DeliveryMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_FAST_MODE = 0 | delivery fast mode |
-| MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1 | delivery high quality mode |
-| MEDIA_LIBRARY_BALANCED_MODE = 2 | delivery balanced mode |
+| MEDIA_LIBRARY_FAST_MODE = 0 | delivery fast mode<br><!--Device-MEDIA_LIBRARY_FAST_MODE = 0--><!--Device-MEDIA_LIBRARY_FAST_MODE = 0-End--> |
+| MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1 | delivery high quality mode<br><!--Device-MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1--><!--Device-MEDIA_LIBRARY_HIGH_QUALITY_MODE = 1-End--> |
+| MEDIA_LIBRARY_BALANCED_MODE = 2 | delivery balanced mode<br><!--Device-MEDIA_LIBRARY_BALANCED_MODE = 2--><!--Device-MEDIA_LIBRARY_BALANCED_MODE = 2-End--> |
 
 ### MediaLibrary_MediaType
 
@@ -116,7 +116,7 @@ enum MediaLibrary_MediaType
 
 媒体类型的枚举。
 
-<!--Device-MediaLibrary_MediaType--><!--Device-MediaLibrary_MediaType-End-->
+<!--Device-enum MediaLibrary_MediaType--><!--Device-enum MediaLibrary_MediaType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -124,8 +124,8 @@ enum MediaLibrary_MediaType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_IMAGE = 1 | image asset |
-| MEDIA_LIBRARY_VIDEO = 2 | video asset |
+| MEDIA_LIBRARY_IMAGE = 1 | image asset<br><!--Device-MEDIA_LIBRARY_IMAGE = 1--><!--Device-MEDIA_LIBRARY_IMAGE = 1-End--> |
+| MEDIA_LIBRARY_VIDEO = 2 | video asset<br><!--Device-MEDIA_LIBRARY_VIDEO = 2--><!--Device-MEDIA_LIBRARY_VIDEO = 2-End--> |
 
 ### MediaLibrary_MediaSubType
 
@@ -137,7 +137,7 @@ enum MediaLibrary_MediaSubType
 
 媒体资源子类型的枚举。
 
-<!--Device-MediaLibrary_MediaSubType--><!--Device-MediaLibrary_MediaSubType-End-->
+<!--Device-enum MediaLibrary_MediaSubType--><!--Device-enum MediaLibrary_MediaSubType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -145,9 +145,9 @@ enum MediaLibrary_MediaSubType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_DEFAULT = 0 | default Photo Type |
-| MEDIA_LIBRARY_MOVING_PHOTO = 3 | moving Photo Type |
-| MEDIA_LIBRARY_BURST = 4 | burst Photo Type |
+| MEDIA_LIBRARY_DEFAULT = 0 | default Photo Type<br><!--Device-MEDIA_LIBRARY_DEFAULT = 0--><!--Device-MEDIA_LIBRARY_DEFAULT = 0-End--> |
+| MEDIA_LIBRARY_MOVING_PHOTO = 3 | moving Photo Type<br><!--Device-MEDIA_LIBRARY_MOVING_PHOTO = 3--><!--Device-MEDIA_LIBRARY_MOVING_PHOTO = 3-End--> |
+| MEDIA_LIBRARY_BURST = 4 | burst Photo Type<br><!--Device-MEDIA_LIBRARY_BURST = 4--><!--Device-MEDIA_LIBRARY_BURST = 4-End--> |
 
 ### MediaLibrary_ResourceType
 
@@ -159,7 +159,7 @@ enum MediaLibrary_ResourceType
 
 资源类型的枚举。
 
-<!--Device-MediaLibrary_ResourceType--><!--Device-MediaLibrary_ResourceType-End-->
+<!--Device-enum MediaLibrary_ResourceType--><!--Device-enum MediaLibrary_ResourceType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -167,8 +167,8 @@ enum MediaLibrary_ResourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_IMAGE_RESOURCE = 1 | image resource |
-| MEDIA_LIBRARY_VIDEO_RESOURCE = 2 | video resource |
+| MEDIA_LIBRARY_IMAGE_RESOURCE = 1 | image resource<br><!--Device-MEDIA_LIBRARY_IMAGE_RESOURCE = 1--><!--Device-MEDIA_LIBRARY_IMAGE_RESOURCE = 1-End--> |
+| MEDIA_LIBRARY_VIDEO_RESOURCE = 2 | video resource<br><!--Device-MEDIA_LIBRARY_VIDEO_RESOURCE = 2--><!--Device-MEDIA_LIBRARY_VIDEO_RESOURCE = 2-End--> |
 
 ### MediaLibrary_ImageFileType
 
@@ -180,7 +180,7 @@ enum MediaLibrary_ImageFileType
 
 图像文件类型的枚举。
 
-<!--Device-MediaLibrary_ImageFileType--><!--Device-MediaLibrary_ImageFileType-End-->
+<!--Device-enum MediaLibrary_ImageFileType--><!--Device-enum MediaLibrary_ImageFileType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -188,9 +188,9 @@ enum MediaLibrary_ImageFileType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_IMAGE_JPEG = 1 | JPEG type |
-| MEDIA_LIBRARY_FILE_VIDEO = 3 | MPEG.<br>**起始版本：** 19 |
-| MEDIA_LIBRARY_IMAGE_HEIF = 2 | HEIF.<br>**起始版本：** 23 |
+| MEDIA_LIBRARY_IMAGE_JPEG = 1 | JPEG type<br><!--Device-MEDIA_LIBRARY_IMAGE_JPEG = 1--><!--Device-MEDIA_LIBRARY_IMAGE_JPEG = 1-End--> |
+| MEDIA_LIBRARY_FILE_VIDEO = 3 | MPEG.<br>**起始版本：** 19<br><!--Device-MEDIA_LIBRARY_FILE_VIDEO = 3--><!--Device-MEDIA_LIBRARY_FILE_VIDEO = 3-End--> |
+| MEDIA_LIBRARY_IMAGE_HEIF = 2 | HEIF.<br>**起始版本：** 23<br><!--Device-MEDIA_LIBRARY_IMAGE_HEIF = 2--><!--Device-MEDIA_LIBRARY_IMAGE_HEIF = 2-End--> |
 
 ### MediaLibrary_MediaQuality
 
@@ -202,7 +202,7 @@ enum MediaLibrary_MediaQuality
 
 媒体资源质量枚举。 <br>此枚举与请求媒体资源时定义的分发模式有关。 <br>快速分发：不考虑资源质量，直接基于现有资源返回。 <br>高质量分发：返回高质量资源，若没有，则触发生成高质量资源，成功后才返回。 <br>均衡分发：若存在高质量资源，则直接返回高质量资源。否则，先返回低质量资源，并触发生成高质量资源，成功后再返回一次高质量资源。
 
-<!--Device-MediaLibrary_MediaQuality--><!--Device-MediaLibrary_MediaQuality-End-->
+<!--Device-enum MediaLibrary_MediaQuality--><!--Device-enum MediaLibrary_MediaQuality-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -210,8 +210,8 @@ enum MediaLibrary_MediaQuality
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_QUALITY_FAST = 1 | fast quality |
-| MEDIA_LIBRARY_QUALITY_FULL = 2 | full quality |
+| MEDIA_LIBRARY_QUALITY_FAST = 1 | fast quality<br><!--Device-MEDIA_LIBRARY_QUALITY_FAST = 1--><!--Device-MEDIA_LIBRARY_QUALITY_FAST = 1-End--> |
+| MEDIA_LIBRARY_QUALITY_FULL = 2 | full quality<br><!--Device-MEDIA_LIBRARY_QUALITY_FULL = 2--><!--Device-MEDIA_LIBRARY_QUALITY_FULL = 2-End--> |
 
 ### MediaLibrary_MediaContentType
 
@@ -223,7 +223,7 @@ enum MediaLibrary_MediaContentType
 
 媒体内容类型的枚举。
 
-<!--Device-MediaLibrary_MediaContentType--><!--Device-MediaLibrary_MediaContentType-End-->
+<!--Device-enum MediaLibrary_MediaContentType--><!--Device-enum MediaLibrary_MediaContentType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -231,8 +231,8 @@ enum MediaLibrary_MediaContentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_COMPRESSED = 1 | compressed media content type |
-| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | picture object media content type |
+| MEDIA_LIBRARY_COMPRESSED = 1 | compressed media content type<br><!--Device-MEDIA_LIBRARY_COMPRESSED = 1--><!--Device-MEDIA_LIBRARY_COMPRESSED = 1-End--> |
+| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | picture object media content type<br><!--Device-MEDIA_LIBRARY_PICTURE_OBJECT = 2--><!--Device-MEDIA_LIBRARY_PICTURE_OBJECT = 2-End--> |
 
 
 ## 函数说明

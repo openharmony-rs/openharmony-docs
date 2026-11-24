@@ -41,7 +41,7 @@ enum OH_AudioSuite_SystemNodeType
 
 定义音频系统节点类型。
 
-<!--Device-OH_AudioSuite_SystemNodeType--><!--Device-OH_AudioSuite_SystemNodeType-End-->
+<!--Device-enum OH_AudioSuite_SystemNodeType--><!--Device-enum OH_AudioSuite_SystemNodeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -51,7 +51,7 @@ enum OH_AudioSuite_SystemNodeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301 | 用于对话增强的系统效果节点。<br>**起始版本：** 26.0.0 |
-| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302 | 用于语音美化的系统效果节点。<br>**起始版本：** 26.0.0 |
+| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301 | 用于对话增强的系统效果节点。<br>**起始版本：** 26.0.0<br><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301--><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301-End--> |
+| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302 | 用于语音美化的系统效果节点。<br>**起始版本：** 26.0.0<br><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302--><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302-End--> |
 
 

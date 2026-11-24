@@ -49,7 +49,7 @@ enum OH_Drawing_TileMode
 
 着色器效果平铺模式的枚举。
 
-<!--Device-OH_Drawing_TileMode--><!--Device-OH_Drawing_TileMode-End-->
+<!--Device-enum OH_Drawing_TileMode--><!--Device-enum OH_Drawing_TileMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -57,10 +57,10 @@ enum OH_Drawing_TileMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CLAMP | 如果着色器效果超出其原始边界，则复制边缘颜色。 |
-| REPEAT | 在水平和垂直方向上重复着色器效果图像。 |
-| MIRROR | 水平和垂直重复着色器效果图像，交替镜像。 |
-| DECAL | 只在原始区域内绘制，其他地方返回透明黑色。 |
+| CLAMP | 如果着色器效果超出其原始边界，则复制边缘颜色。<br><!--Device-CLAMP--><!--Device-CLAMP-End--> |
+| REPEAT | 在水平和垂直方向上重复着色器效果图像。<br><!--Device-REPEAT--><!--Device-REPEAT-End--> |
+| MIRROR | 水平和垂直重复着色器效果图像，交替镜像。<br><!--Device-MIRROR--><!--Device-MIRROR-End--> |
+| DECAL | 只在原始区域内绘制，其他地方返回透明黑色。<br><!--Device-DECAL--><!--Device-DECAL-End--> |
 
 
 ## 函数说明

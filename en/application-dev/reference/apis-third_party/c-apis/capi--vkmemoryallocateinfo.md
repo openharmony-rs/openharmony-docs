@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDeviceSize allocationSize |  |
-| uint32_t memoryTypeIndex |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDeviceSize allocationSize | <!--Device-VkDeviceSize allocationSize--><!--Device-VkDeviceSize allocationSize-End--> |
+| uint32_t memoryTypeIndex | <!--Device-uint32_t memoryTypeIndex--><!--Device-uint32_t memoryTypeIndex-End--> |
 
 

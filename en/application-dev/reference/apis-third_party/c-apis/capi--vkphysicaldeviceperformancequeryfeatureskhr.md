@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 performanceCounterQueryPools |  |
-| VkBool32 performanceCounterMultipleQueryPools |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 performanceCounterQueryPools | <!--Device-VkBool32 performanceCounterQueryPools--><!--Device-VkBool32 performanceCounterQueryPools-End--> |
+| VkBool32 performanceCounterMultipleQueryPools | <!--Device-VkBool32 performanceCounterMultipleQueryPools--><!--Device-VkBool32 performanceCounterMultipleQueryPools-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct OH_Drawing_FontFeature {...} OH_Drawing_FontFeature
 
 | 名称 | 描述 |
 | -- | -- |
-| char* tag | 字体特征的标签。 |
-| int value | 字体特征的值。 |
+| char* tag | 字体特征的标签。<br><!--Device-char* tag--><!--Device-char* tag-End--> |
+| int value | 字体特征的值。<br><!--Device-int value--><!--Device-int value-End--> |
 
 

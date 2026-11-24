@@ -74,7 +74,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_Drawing_Point2D OH_Drawing_Corner_Radii | 定义一个圆角半径，该圆角半径由x轴方向和y轴方向上的半径组成。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing |
+| OH_Drawing_Point2D OH_Drawing_Corner_Radii | 定义一个圆角半径，该圆角半径由x轴方向和y轴方向上的半径组成。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing<br><!--Device-OH_Drawing_Point2D OH_Drawing_Corner_Radii--><!--Device-OH_Drawing_Point2D OH_Drawing_Corner_Radii-End--> |
 
 ## 枚举类型说明
 
@@ -88,7 +88,7 @@ enum OH_Drawing_ColorFormat
 
 用于描述位图像素的存储格式。
 
-<!--Device-OH_Drawing_ColorFormat--><!--Device-OH_Drawing_ColorFormat-End-->
+<!--Device-enum OH_Drawing_ColorFormat--><!--Device-enum OH_Drawing_ColorFormat-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -96,12 +96,12 @@ enum OH_Drawing_ColorFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| COLOR_FORMAT_UNKNOWN | 未知格式。<br>**起始版本：** 8 |
-| COLOR_FORMAT_ALPHA_8 | 每个像素用一个8位的量表示，8个比特位表示透明度。<br>**起始版本：** 8 |
-| COLOR_FORMAT_RGB_565 | 每个像素用一个16位的量表示，高位到低位依次是5个比特位表示红，6个比特位表示绿，5个比特位表示蓝。<br>**起始版本：** 8 |
-| COLOR_FORMAT_ARGB_4444 | 每个像素用一个16位的量表示，高位到低位依次是4个比特位表示透明度，4个比特位表示红，4个比特位表示绿，4个比特位表示蓝。<br>**起始版本：** 8 |
-| COLOR_FORMAT_RGBA_8888 | 每个像素用一个32位的量表示，高位到低位依次是8个比特位表示透明度，8个比特位表示红，8个比特位表示绿，8个比特位表示蓝。<br>**起始版本：** 8 |
-| COLOR_FORMAT_BGRA_8888 | 每个像素用一个32位的量表示，高位到低位依次是8个比特位表示蓝，8个比特位表示绿，8个比特位表示红，8个比特位表示透明度。<br>**起始版本：** 8 |
+| COLOR_FORMAT_UNKNOWN | 未知格式。<br>**起始版本：** 8<br><!--Device-COLOR_FORMAT_UNKNOWN--><!--Device-COLOR_FORMAT_UNKNOWN-End--> |
+| COLOR_FORMAT_ALPHA_8 | 每个像素用一个8位的量表示，8个比特位表示透明度。<br>**起始版本：** 8<br><!--Device-COLOR_FORMAT_ALPHA_8--><!--Device-COLOR_FORMAT_ALPHA_8-End--> |
+| COLOR_FORMAT_RGB_565 | 每个像素用一个16位的量表示，高位到低位依次是5个比特位表示红，6个比特位表示绿，5个比特位表示蓝。<br>**起始版本：** 8<br><!--Device-COLOR_FORMAT_RGB_565--><!--Device-COLOR_FORMAT_RGB_565-End--> |
+| COLOR_FORMAT_ARGB_4444 | 每个像素用一个16位的量表示，高位到低位依次是4个比特位表示透明度，4个比特位表示红，4个比特位表示绿，4个比特位表示蓝。<br>**起始版本：** 8<br><!--Device-COLOR_FORMAT_ARGB_4444--><!--Device-COLOR_FORMAT_ARGB_4444-End--> |
+| COLOR_FORMAT_RGBA_8888 | 每个像素用一个32位的量表示，高位到低位依次是8个比特位表示透明度，8个比特位表示红，8个比特位表示绿，8个比特位表示蓝。<br>**起始版本：** 8<br><!--Device-COLOR_FORMAT_RGBA_8888--><!--Device-COLOR_FORMAT_RGBA_8888-End--> |
+| COLOR_FORMAT_BGRA_8888 | 每个像素用一个32位的量表示，高位到低位依次是8个比特位表示蓝，8个比特位表示绿，8个比特位表示红，8个比特位表示透明度。<br>**起始版本：** 8<br><!--Device-COLOR_FORMAT_BGRA_8888--><!--Device-COLOR_FORMAT_BGRA_8888-End--> |
 
 ### OH_Drawing_AlphaFormat
 
@@ -113,7 +113,7 @@ enum OH_Drawing_AlphaFormat
 
 用于描述位图像素的透明度分量。
 
-<!--Device-OH_Drawing_AlphaFormat--><!--Device-OH_Drawing_AlphaFormat-End-->
+<!--Device-enum OH_Drawing_AlphaFormat--><!--Device-enum OH_Drawing_AlphaFormat-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -121,10 +121,10 @@ enum OH_Drawing_AlphaFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ALPHA_FORMAT_UNKNOWN | 未知格式。<br>**起始版本：** 8 |
-| ALPHA_FORMAT_OPAQUE | 位图无透明度。<br>**起始版本：** 8 |
-| ALPHA_FORMAT_PREMUL | 每个像素的颜色组件已预先乘以透明度分量。<br>**起始版本：** 8 |
-| ALPHA_FORMAT_UNPREMUL | 每个像素的颜色组件未预先乘以透明度分量。<br>**起始版本：** 8 |
+| ALPHA_FORMAT_UNKNOWN | 未知格式。<br>**起始版本：** 8<br><!--Device-ALPHA_FORMAT_UNKNOWN--><!--Device-ALPHA_FORMAT_UNKNOWN-End--> |
+| ALPHA_FORMAT_OPAQUE | 位图无透明度。<br>**起始版本：** 8<br><!--Device-ALPHA_FORMAT_OPAQUE--><!--Device-ALPHA_FORMAT_OPAQUE-End--> |
+| ALPHA_FORMAT_PREMUL | 每个像素的颜色组件已预先乘以透明度分量。<br>**起始版本：** 8<br><!--Device-ALPHA_FORMAT_PREMUL--><!--Device-ALPHA_FORMAT_PREMUL-End--> |
+| ALPHA_FORMAT_UNPREMUL | 每个像素的颜色组件未预先乘以透明度分量。<br>**起始版本：** 8<br><!--Device-ALPHA_FORMAT_UNPREMUL--><!--Device-ALPHA_FORMAT_UNPREMUL-End--> |
 
 ### OH_Drawing_BlendMode
 
@@ -136,7 +136,7 @@ enum OH_Drawing_BlendMode
 
 混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。 <br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。 <br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写： <br>s : source，源的缩写。 <br>d : destination，目标的缩写。 <br>sa : source alpha，源透明度的缩写。 <br>da : destination alpha，目标透明度的缩写。 <br>计算结果用如下缩写表示： <br>r : 如果4个通道的计算方式相同，用r表示。 <br>ra : 如果只操作透明度通道，用ra表示。 <br>rc : 如果操作3个颜色通道，用rc表示。
 
-<!--Device-OH_Drawing_BlendMode--><!--Device-OH_Drawing_BlendMode-End-->
+<!--Device-enum OH_Drawing_BlendMode--><!--Device-enum OH_Drawing_BlendMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -144,35 +144,35 @@ enum OH_Drawing_BlendMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| BLEND_MODE_CLEAR | 清除模式，r = 0。<br>**起始版本：** 11 |
-| BLEND_MODE_SRC | r = s（result的4个通道，都等于source的4个通道，即结果等于源。）<br>**起始版本：** 11 |
-| BLEND_MODE_DST | r = d（result的4个通道，都等于destination的4个通道，即结果等于目标。）<br>**起始版本：** 11 |
-| BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d。<br>**起始版本：** 11 |
-| BLEND_MODE_DST_OVER | r = d + (1 - da) * s。<br>**起始版本：** 11 |
-| BLEND_MODE_SRC_IN | r = s * da。<br>**起始版本：** 11 |
-| BLEND_MODE_DST_IN | r = d * sa。<br>**起始版本：** 11 |
-| BLEND_MODE_SRC_OUT | r = s * (1 - da)。<br>**起始版本：** 11 |
-| BLEND_MODE_DST_OUT | r = d * (1 - sa)。<br>**起始版本：** 11 |
-| BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa)。<br>**起始版本：** 11 |
-| BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da)。<br>**起始版本：** 11 |
-| BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa)。<br>**起始版本：** 11 |
-| BLEND_MODE_PLUS | r = min(s + d, 1)。<br>**起始版本：** 11 |
-| BLEND_MODE_MODULATE | r = s * d。<br>**起始版本：** 11 |
-| BLEND_MODE_SCREEN | 滤色模式，r = s + d - s * d。<br>**起始版本：** 11 |
-| BLEND_MODE_OVERLAY | 叠加模式，根据目标像素的亮度，选择性地应用MULTIPLY或SCREEN模式，增强对比度。<br>**起始版本：** 11 |
-| BLEND_MODE_DARKEN | 变暗模式，rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
-| BLEND_MODE_LIGHTEN | 变亮模式，rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
-| BLEND_MODE_COLOR_DODGE | 颜色减淡模式，通过减小对比度使目标像素变亮以反映源像素。<br>**起始版本：** 11 |
-| BLEND_MODE_COLOR_BURN | 颜色加深模式，通过增加对比度使目标像素变暗以反映源像素。<br>**起始版本：** 11 |
-| BLEND_MODE_HARD_LIGHT | 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。<br>**起始版本：** 11 |
-| BLEND_MODE_SOFT_LIGHT | 柔光模式，根据源像素的亮度，柔和地变亮或变暗目标像素。<br>**起始版本：** 11 |
-| BLEND_MODE_DIFFERENCE | 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
-| BLEND_MODE_EXCLUSION | 排除模式，rc = s + d - two(s * d), ra = s + (1 - sa) * d。<br>**起始版本：** 11 |
-| BLEND_MODE_MULTIPLY | 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d。<br>**起始版本：** 11 |
-| BLEND_MODE_HUE | 色相模式，使用源像素的色相，目标像素的饱和度和亮度。<br>**起始版本：** 11 |
-| BLEND_MODE_SATURATION | 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。<br>**起始版本：** 11 |
-| BLEND_MODE_COLOR | 颜色模式，使用源像素的色相和饱和度，目标像素的亮度。<br>**起始版本：** 11 |
-| BLEND_MODE_LUMINOSITY | 亮度模式，使用源像素的亮度，目标像素的色相和饱和度。<br>**起始版本：** 11 |
+| BLEND_MODE_CLEAR | 清除模式，r = 0。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_CLEAR--><!--Device-BLEND_MODE_CLEAR-End--> |
+| BLEND_MODE_SRC | r = s（result的4个通道，都等于source的4个通道，即结果等于源。）<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SRC--><!--Device-BLEND_MODE_SRC-End--> |
+| BLEND_MODE_DST | r = d（result的4个通道，都等于destination的4个通道，即结果等于目标。）<br>**起始版本：** 11<br><!--Device-BLEND_MODE_DST--><!--Device-BLEND_MODE_DST-End--> |
+| BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SRC_OVER--><!--Device-BLEND_MODE_SRC_OVER-End--> |
+| BLEND_MODE_DST_OVER | r = d + (1 - da) * s。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_DST_OVER--><!--Device-BLEND_MODE_DST_OVER-End--> |
+| BLEND_MODE_SRC_IN | r = s * da。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SRC_IN--><!--Device-BLEND_MODE_SRC_IN-End--> |
+| BLEND_MODE_DST_IN | r = d * sa。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_DST_IN--><!--Device-BLEND_MODE_DST_IN-End--> |
+| BLEND_MODE_SRC_OUT | r = s * (1 - da)。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SRC_OUT--><!--Device-BLEND_MODE_SRC_OUT-End--> |
+| BLEND_MODE_DST_OUT | r = d * (1 - sa)。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_DST_OUT--><!--Device-BLEND_MODE_DST_OUT-End--> |
+| BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa)。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SRC_ATOP--><!--Device-BLEND_MODE_SRC_ATOP-End--> |
+| BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da)。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_DST_ATOP--><!--Device-BLEND_MODE_DST_ATOP-End--> |
+| BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa)。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_XOR--><!--Device-BLEND_MODE_XOR-End--> |
+| BLEND_MODE_PLUS | r = min(s + d, 1)。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_PLUS--><!--Device-BLEND_MODE_PLUS-End--> |
+| BLEND_MODE_MODULATE | r = s * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_MODULATE--><!--Device-BLEND_MODE_MODULATE-End--> |
+| BLEND_MODE_SCREEN | 滤色模式，r = s + d - s * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SCREEN--><!--Device-BLEND_MODE_SCREEN-End--> |
+| BLEND_MODE_OVERLAY | 叠加模式，根据目标像素的亮度，选择性地应用MULTIPLY或SCREEN模式，增强对比度。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_OVERLAY--><!--Device-BLEND_MODE_OVERLAY-End--> |
+| BLEND_MODE_DARKEN | 变暗模式，rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_DARKEN--><!--Device-BLEND_MODE_DARKEN-End--> |
+| BLEND_MODE_LIGHTEN | 变亮模式，rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_LIGHTEN--><!--Device-BLEND_MODE_LIGHTEN-End--> |
+| BLEND_MODE_COLOR_DODGE | 颜色减淡模式，通过减小对比度使目标像素变亮以反映源像素。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_COLOR_DODGE--><!--Device-BLEND_MODE_COLOR_DODGE-End--> |
+| BLEND_MODE_COLOR_BURN | 颜色加深模式，通过增加对比度使目标像素变暗以反映源像素。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_COLOR_BURN--><!--Device-BLEND_MODE_COLOR_BURN-End--> |
+| BLEND_MODE_HARD_LIGHT | 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_HARD_LIGHT--><!--Device-BLEND_MODE_HARD_LIGHT-End--> |
+| BLEND_MODE_SOFT_LIGHT | 柔光模式，根据源像素的亮度，柔和地变亮或变暗目标像素。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SOFT_LIGHT--><!--Device-BLEND_MODE_SOFT_LIGHT-End--> |
+| BLEND_MODE_DIFFERENCE | 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_DIFFERENCE--><!--Device-BLEND_MODE_DIFFERENCE-End--> |
+| BLEND_MODE_EXCLUSION | 排除模式，rc = s + d - 2 * (s * d), ra = s + (1 - sa) * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_EXCLUSION--><!--Device-BLEND_MODE_EXCLUSION-End--> |
+| BLEND_MODE_MULTIPLY | 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_MULTIPLY--><!--Device-BLEND_MODE_MULTIPLY-End--> |
+| BLEND_MODE_HUE | 色相模式，使用源像素的色相，目标像素的饱和度和亮度。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_HUE--><!--Device-BLEND_MODE_HUE-End--> |
+| BLEND_MODE_SATURATION | 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_SATURATION--><!--Device-BLEND_MODE_SATURATION-End--> |
+| BLEND_MODE_COLOR | 颜色模式，使用源像素的色相和饱和度，目标像素的亮度。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_COLOR--><!--Device-BLEND_MODE_COLOR-End--> |
+| BLEND_MODE_LUMINOSITY | 亮度模式，使用源像素的亮度，目标像素的色相和饱和度。<br>**起始版本：** 11<br><!--Device-BLEND_MODE_LUMINOSITY--><!--Device-BLEND_MODE_LUMINOSITY-End--> |
 
 ### OH_Drawing_TextEncoding
 
@@ -184,7 +184,7 @@ enum OH_Drawing_TextEncoding
 
 文本编码类型枚举。
 
-<!--Device-OH_Drawing_TextEncoding--><!--Device-OH_Drawing_TextEncoding-End-->
+<!--Device-enum OH_Drawing_TextEncoding--><!--Device-enum OH_Drawing_TextEncoding-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -192,9 +192,9 @@ enum OH_Drawing_TextEncoding
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TEXT_ENCODING_UTF8 | 单字节，表示UTF-8或ASCII。<br>**起始版本：** 12 |
-| TEXT_ENCODING_UTF16 | 双字节，表示大部分Unicode。<br>**起始版本：** 12 |
-| TEXT_ENCODING_UTF32 | 四字节，表示所有Unicode。<br>**起始版本：** 12 |
-| TEXT_ENCODING_GLYPH_ID | 双字节，表示字形索引。<br>**起始版本：** 12 |
+| TEXT_ENCODING_UTF8 | 单字节，表示UTF-8或ASCII。<br>**起始版本：** 12<br><!--Device-TEXT_ENCODING_UTF8--><!--Device-TEXT_ENCODING_UTF8-End--> |
+| TEXT_ENCODING_UTF16 | 双字节，表示大部分Unicode。<br>**起始版本：** 12<br><!--Device-TEXT_ENCODING_UTF16--><!--Device-TEXT_ENCODING_UTF16-End--> |
+| TEXT_ENCODING_UTF32 | 四字节，表示所有Unicode。<br>**起始版本：** 12<br><!--Device-TEXT_ENCODING_UTF32--><!--Device-TEXT_ENCODING_UTF32-End--> |
+| TEXT_ENCODING_GLYPH_ID | 双字节，表示字形索引。<br>**起始版本：** 12<br><!--Device-TEXT_ENCODING_GLYPH_ID--><!--Device-TEXT_ENCODING_GLYPH_ID-End--> |
 
 

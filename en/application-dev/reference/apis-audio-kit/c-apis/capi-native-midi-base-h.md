@@ -57,7 +57,7 @@ enum OH_MIDIStatusCode
 
 MIDI status code enumeration.
 
-<!--Device-OH_MIDIStatusCode--><!--Device-OH_MIDIStatusCode-End-->
+<!--Device-enum OH_MIDIStatusCode--><!--Device-enum OH_MIDIStatusCode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
@@ -65,22 +65,22 @@ MIDI status code enumeration.
 
 | Enum item | Description |
 | -- | -- |
-| OH_MIDI_STATUS_OK = 0 | &nbsp;Operation successful.<br>**Since**: 24 |
-| OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT = 35500001 | &nbsp;Invalid parameter (e.g., null pointer).<br>**Since**: 24 |
-| OH_MIDI_STATUS_GENERIC_IPC_FAILURE = 35500002 | &nbsp;IPC communication failure.<br>**Since**: 24 |
-| OH_MIDI_STATUS_INVALID_CLIENT = 35500003 | &nbsp;Invalid client handle.<br>**Since**: 24 |
-| OH_MIDI_STATUS_INVALID_DEVICE_HANDLE = 35500004 | &nbsp;Invalid device handle.<br>**Since**: 24 |
-| OH_MIDI_STATUS_INVALID_PORT = 35500005 | &nbsp;Invalid port index.<br>**Since**: 24 |
-| OH_MIDI_STATUS_WOULD_BLOCK = 35500006 | &nbsp;The send buffer is transiently full. Indicates that the shared memory buffer currently lacks space. Returned by non-blocking send when a message cannot fit in the buffer. Retry the operation with a short delay (recommended: 10ms).<br>**Since**: 24 |
-| OH_MIDI_STATUS_TIMEOUT = 35500007 | &nbsp;Operation can not be handled in a reasonable time.<br>**Since**: 24 |
-| OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES = 35500008 | &nbsp;The client has reached the maximum number of open devices allowed. To open a new device, the client must close an existing one first.<br>**Since**: 24 |
-| OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS = 35500009 | &nbsp;The client has reached the maximum number of open ports allowed. To open a new port, the client must close an existing one first.<br>**Since**: 24 |
-| OH_MIDI_STATUS_DEVICE_ALREADY_OPEN = 35500010 | &nbsp;The client has already opened this device.<br>**Since**: 24 |
-| OH_MIDI_STATUS_PORT_ALREADY_OPEN = 35500011 | &nbsp;The client has already opened this port.<br>**Since**: 24 |
-| OH_MIDI_STATUS_TOO_MANY_CLIENTS = 35500012 | &nbsp;The system-wide or per-application limit for MIDI clients has been reached. The application should wait or release other resources before retrying.<br>**Since**: 24 |
-| OH_MIDI_STATUS_PERMISSION_DENIED = 35500013 | &nbsp;Permission denied. Returned when the application attempts to perform an operation without the required permission (e.g., Bluetooth for BLE devices).<br>**Since**: 24 |
-| OH_MIDI_STATUS_SERVICE_DIED = 35500014 | &nbsp;The MIDI system service has died or disconnected. The client must be destroyed and recreated.<br>**Since**: 24 |
-| OH_MIDI_STATUS_SYSTEM_ERROR = 35500100 | &nbsp;System-level errors such as insufficient memory or system service failure.<br>**Since**: 24 |
+| OH_MIDI_STATUS_OK = 0 | &nbsp;Operation successful.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_OK = 0--><!--Device-OH_MIDI_STATUS_OK = 0-End--> |
+| OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT = 35500001 | &nbsp;Invalid parameter (e.g., null pointer).<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT = 35500001--><!--Device-OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT = 35500001-End--> |
+| OH_MIDI_STATUS_GENERIC_IPC_FAILURE = 35500002 | &nbsp;IPC communication failure.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_GENERIC_IPC_FAILURE = 35500002--><!--Device-OH_MIDI_STATUS_GENERIC_IPC_FAILURE = 35500002-End--> |
+| OH_MIDI_STATUS_INVALID_CLIENT = 35500003 | &nbsp;Invalid client handle.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_INVALID_CLIENT = 35500003--><!--Device-OH_MIDI_STATUS_INVALID_CLIENT = 35500003-End--> |
+| OH_MIDI_STATUS_INVALID_DEVICE_HANDLE = 35500004 | &nbsp;Invalid device handle.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_INVALID_DEVICE_HANDLE = 35500004--><!--Device-OH_MIDI_STATUS_INVALID_DEVICE_HANDLE = 35500004-End--> |
+| OH_MIDI_STATUS_INVALID_PORT = 35500005 | &nbsp;Invalid port index.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_INVALID_PORT = 35500005--><!--Device-OH_MIDI_STATUS_INVALID_PORT = 35500005-End--> |
+| OH_MIDI_STATUS_WOULD_BLOCK = 35500006 | &nbsp;The send buffer is transiently full. Indicates that the shared memory buffer currently lacks space. Returned by non-blocking send when a message cannot fit in the buffer. Retry the operation with a short delay (recommended: 10ms).<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_WOULD_BLOCK = 35500006--><!--Device-OH_MIDI_STATUS_WOULD_BLOCK = 35500006-End--> |
+| OH_MIDI_STATUS_TIMEOUT = 35500007 | &nbsp;Operation can not be handled in a reasonable time.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_TIMEOUT = 35500007--><!--Device-OH_MIDI_STATUS_TIMEOUT = 35500007-End--> |
+| OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES = 35500008 | &nbsp;The client has reached the maximum number of open devices allowed. To open a new device, the client must close an existing one first.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES = 35500008--><!--Device-OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES = 35500008-End--> |
+| OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS = 35500009 | &nbsp;The client has reached the maximum number of open ports allowed. To open a new port, the client must close an existing one first.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS = 35500009--><!--Device-OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS = 35500009-End--> |
+| OH_MIDI_STATUS_DEVICE_ALREADY_OPEN = 35500010 | &nbsp;The client has already opened this device.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_DEVICE_ALREADY_OPEN = 35500010--><!--Device-OH_MIDI_STATUS_DEVICE_ALREADY_OPEN = 35500010-End--> |
+| OH_MIDI_STATUS_PORT_ALREADY_OPEN = 35500011 | &nbsp;The client has already opened this port.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_PORT_ALREADY_OPEN = 35500011--><!--Device-OH_MIDI_STATUS_PORT_ALREADY_OPEN = 35500011-End--> |
+| OH_MIDI_STATUS_TOO_MANY_CLIENTS = 35500012 | &nbsp;The system-wide or per-application limit for MIDI clients has been reached. The application should wait or release other resources before retrying.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_TOO_MANY_CLIENTS = 35500012--><!--Device-OH_MIDI_STATUS_TOO_MANY_CLIENTS = 35500012-End--> |
+| OH_MIDI_STATUS_PERMISSION_DENIED = 35500013 | &nbsp;Permission denied. Returned when the application attempts to perform an operation without the required permission (e.g., Bluetooth for BLE devices).<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_PERMISSION_DENIED = 35500013--><!--Device-OH_MIDI_STATUS_PERMISSION_DENIED = 35500013-End--> |
+| OH_MIDI_STATUS_SERVICE_DIED = 35500014 | &nbsp;The MIDI system service has died or disconnected. The client must be destroyed and recreated.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_SERVICE_DIED = 35500014--><!--Device-OH_MIDI_STATUS_SERVICE_DIED = 35500014-End--> |
+| OH_MIDI_STATUS_SYSTEM_ERROR = 35500100 | &nbsp;System-level errors such as insufficient memory or system service failure.<br>**Since**: 24<br><!--Device-OH_MIDI_STATUS_SYSTEM_ERROR = 35500100--><!--Device-OH_MIDI_STATUS_SYSTEM_ERROR = 35500100-End--> |
 
 ### OH_MIDIPortDirection
 
@@ -92,7 +92,7 @@ enum OH_MIDIPortDirection
 
 Port direction enumeration.
 
-<!--Device-OH_MIDIPortDirection--><!--Device-OH_MIDIPortDirection-End-->
+<!--Device-enum OH_MIDIPortDirection--><!--Device-enum OH_MIDIPortDirection-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
@@ -100,8 +100,8 @@ Port direction enumeration.
 
 | Enum item | Description |
 | -- | -- |
-| OH_MIDI_PORT_DIRECTION_INPUT = 0 | Input port (Device -> Host).<br>**Since**: 24 |
-| OH_MIDI_PORT_DIRECTION_OUTPUT = 1 | Output port (Host -> Device).<br>**Since**: 24 |
+| OH_MIDI_PORT_DIRECTION_INPUT = 0 | Input port (Device -> Host).<br>**Since**: 24<br><!--Device-OH_MIDI_PORT_DIRECTION_INPUT = 0--><!--Device-OH_MIDI_PORT_DIRECTION_INPUT = 0-End--> |
+| OH_MIDI_PORT_DIRECTION_OUTPUT = 1 | Output port (Host -> Device).<br>**Since**: 24<br><!--Device-OH_MIDI_PORT_DIRECTION_OUTPUT = 1--><!--Device-OH_MIDI_PORT_DIRECTION_OUTPUT = 1-End--> |
 
 ### OH_MIDIProtocol
 
@@ -117,7 +117,7 @@ MIDI transport protocol semantics.
 >
 > CRITICAL**: The SDK always uses UMP (Universal MIDI Packet) format for data transfer, regardless of the selected protocol. This enum defines the "Behavior" and "Semantics" of the connection, not the data structure.
 
-<!--Device-OH_MIDIProtocol--><!--Device-OH_MIDIProtocol-End-->
+<!--Device-enum OH_MIDIProtocol--><!--Device-enum OH_MIDIProtocol-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
@@ -125,8 +125,8 @@ MIDI transport protocol semantics.
 
 | Enum item | Description |
 | -- | -- |
-| OH_MIDI_PROTOCOL_1_0 = 1 | Legacy MIDI 1.0 Semantics. Behavior: - The service expects UMP packets strictly compatible with MIDI 1.0. - **MT 0x0**: Utility Messages (e.g., Timestamps). - **MT 0x1**: System Real Time and System Common Messages. - **MT 0x2**: MIDI 1.0 Channel Voice Messages (32-bit). - **MT 0x3**: Data Messages (64-bit) used for SysEx (7-bit payload). - If the target hardware is MIDI 1.0: The service converts UMP back to byte stream (F0...F7). - If the target hardware is MIDI 2.0: The service sends these packets as-is (encapsulated MIDI 1.0).<br>**Since**: 24 |
-| OH_MIDI_PROTOCOL_2_0 = 2 | MIDI 2.0 Semantics. Behavior: - The service expects UMP packets leveraging MIDI 2.0 features. - **MT 0x4**: MIDI 2.0 Channel Voice Messages (64-bit, high resolution). - **MT 0x0**: Utility Messages (Timestamps). - **MT 0xD**: Flex Data Messages (128-bit, e.g., Text, Lyrics). - **MT 0xF**: UMP Stream Messages (128-bit, Endpoint Discovery, Function Blocks). - **MT 0x3 / MT 0x5**: Data Messages (64-bit or 128-bit).<br>**Since**: 24 |
+| OH_MIDI_PROTOCOL_1_0 = 1 | Legacy MIDI 1.0 Semantics. Behavior: - The service expects UMP packets strictly compatible with MIDI 1.0. - **MT 0x0**: Utility Messages (e.g., Timestamps). - **MT 0x1**: System Real Time and System Common Messages. - **MT 0x2**: MIDI 1.0 Channel Voice Messages (32-bit). - **MT 0x3**: Data Messages (64-bit) used for SysEx (7-bit payload). - If the target hardware is MIDI 1.0: The service converts UMP back to byte stream (F0...F7). - If the target hardware is MIDI 2.0: The service sends these packets as-is (encapsulated MIDI 1.0).<br>**Since**: 24<br><!--Device-OH_MIDI_PROTOCOL_1_0 = 1--><!--Device-OH_MIDI_PROTOCOL_1_0 = 1-End--> |
+| OH_MIDI_PROTOCOL_2_0 = 2 | MIDI 2.0 Semantics. Behavior: - The service expects UMP packets leveraging MIDI 2.0 features. - **MT 0x4**: MIDI 2.0 Channel Voice Messages (64-bit, high resolution). - **MT 0x0**: Utility Messages (Timestamps). - **MT 0xD**: Flex Data Messages (128-bit, e.g., Text, Lyrics). - **MT 0xF**: UMP Stream Messages (128-bit, Endpoint Discovery, Function Blocks). - **MT 0x3 / MT 0x5**: Data Messages (64-bit or 128-bit).<br>**Since**: 24<br><!--Device-OH_MIDI_PROTOCOL_2_0 = 2--><!--Device-OH_MIDI_PROTOCOL_2_0 = 2-End--> |
 
 ### OH_MIDIDeviceType
 
@@ -138,7 +138,7 @@ enum OH_MIDIDeviceType
 
 MIDI Device type.
 
-<!--Device-OH_MIDIDeviceType--><!--Device-OH_MIDIDeviceType-End-->
+<!--Device-enum OH_MIDIDeviceType--><!--Device-enum OH_MIDIDeviceType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
@@ -146,8 +146,8 @@ MIDI Device type.
 
 | Enum item | Description |
 | -- | -- |
-| OH_MIDI_DEVICE_TYPE_USB = 0 | USB MIDI device.<br>**Since**: 24 |
-| OH_MIDI_DEVICE_TYPE_BLE = 1 | Bluetooth Low Energy MIDI device.<br>**Since**: 24 |
+| OH_MIDI_DEVICE_TYPE_USB = 0 | USB MIDI device.<br>**Since**: 24<br><!--Device-OH_MIDI_DEVICE_TYPE_USB = 0--><!--Device-OH_MIDI_DEVICE_TYPE_USB = 0-End--> |
+| OH_MIDI_DEVICE_TYPE_BLE = 1 | Bluetooth Low Energy MIDI device.<br>**Since**: 24<br><!--Device-OH_MIDI_DEVICE_TYPE_BLE = 1--><!--Device-OH_MIDI_DEVICE_TYPE_BLE = 1-End--> |
 
 ### OH_MIDIDeviceChangeAction
 
@@ -159,7 +159,7 @@ enum OH_MIDIDeviceChangeAction
 
 Device connection state change action.
 
-<!--Device-OH_MIDIDeviceChangeAction--><!--Device-OH_MIDIDeviceChangeAction-End-->
+<!--Device-enum OH_MIDIDeviceChangeAction--><!--Device-enum OH_MIDIDeviceChangeAction-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
@@ -167,8 +167,8 @@ Device connection state change action.
 
 | Enum item | Description |
 | -- | -- |
-| OH_MIDI_DEVICE_CHANGE_ACTION_CONNECTED = 0 | Device connected.<br>**Since**: 24 |
-| OH_MIDI_DEVICE_CHANGE_ACTION_DISCONNECTED = 1 | Device disconnected.<br>**Since**: 24 |
+| OH_MIDI_DEVICE_CHANGE_ACTION_CONNECTED = 0 | Device connected.<br>**Since**: 24<br><!--Device-OH_MIDI_DEVICE_CHANGE_ACTION_CONNECTED = 0--><!--Device-OH_MIDI_DEVICE_CHANGE_ACTION_CONNECTED = 0-End--> |
+| OH_MIDI_DEVICE_CHANGE_ACTION_DISCONNECTED = 1 | Device disconnected.<br>**Since**: 24<br><!--Device-OH_MIDI_DEVICE_CHANGE_ACTION_DISCONNECTED = 1--><!--Device-OH_MIDI_DEVICE_CHANGE_ACTION_DISCONNECTED = 1-End--> |
 
 
 ## Function description

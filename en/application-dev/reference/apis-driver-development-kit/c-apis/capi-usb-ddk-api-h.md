@@ -189,8 +189,6 @@ Releases the configuration descriptor. To prevent memory leak, use this API to r
 
 **System capability**: SystemCapability.Driver.USB.Extension
 
-**Required permission**: ohos.permission.ACCESS_DDK_USB
-
 **Since**: 10
 
 **Parameters**:
@@ -498,8 +496,6 @@ Destroys a buffer. To prevent resource leaks, use this API to destroy a buffer a
 <!--Device-void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)--><!--Device-void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)-End-->
 
 **System capability**: SystemCapability.Driver.USB.Extension
-
-**Required permission**: ohos.permission.ACCESS_DDK_USB
 
 **Since**: 10
 

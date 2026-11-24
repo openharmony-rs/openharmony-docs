@@ -83,7 +83,7 @@ enum HiTraceId_Valid
 
 HiTraceId是否有效标志。
 
-<!--Device-HiTraceId_Valid--><!--Device-HiTraceId_Valid-End-->
+<!--Device-enum HiTraceId_Valid--><!--Device-enum HiTraceId_Valid-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -91,8 +91,8 @@ HiTraceId是否有效标志。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_ID_INVALID = 0 | 无效HiTraceId。<br>**起始版本：** 12 |
-| HITRACE_ID_VALID = 1 | 有效HiTraceId。<br>**起始版本：** 12 |
+| HITRACE_ID_INVALID = 0 | 无效HiTraceId。<br>**起始版本：** 12<br><!--Device-HITRACE_ID_INVALID = 0--><!--Device-HITRACE_ID_INVALID = 0-End--> |
+| HITRACE_ID_VALID = 1 | 有效HiTraceId。<br>**起始版本：** 12<br><!--Device-HITRACE_ID_VALID = 1--><!--Device-HITRACE_ID_VALID = 1-End--> |
 
 ### HiTrace_Version
 
@@ -104,7 +104,7 @@ enum HiTrace_Version
 
 HiTrace版本号。
 
-<!--Device-HiTrace_Version--><!--Device-HiTrace_Version-End-->
+<!--Device-enum HiTrace_Version--><!--Device-enum HiTrace_Version-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -112,7 +112,7 @@ HiTrace版本号。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_VER_1 = 0 | 版本1。<br>**起始版本：** 12 |
+| HITRACE_VER_1 = 0 | 版本1。<br>**起始版本：** 12<br><!--Device-HITRACE_VER_1 = 0--><!--Device-HITRACE_VER_1 = 0-End--> |
 
 ### HiTrace_Flag
 
@@ -124,7 +124,7 @@ enum HiTrace_Flag
 
 HiTrace跟踪标志。
 
-<!--Device-HiTrace_Flag--><!--Device-HiTrace_Flag-End-->
+<!--Device-enum HiTrace_Flag--><!--Device-enum HiTrace_Flag-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -132,14 +132,14 @@ HiTrace跟踪标志。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_FLAG_DEFAULT = 0 | 默认标志。<br>**起始版本：** 12 |
-| HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0 | 异步调用标志。 设置该标志，同时跟踪同步和异步调用；默认只跟踪同步调用。<br>**起始版本：** 12 |
-| HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1 | 无分支标志。 设置该标志，不创建分支信息；默认创建分支信息。<br>**起始版本：** 12 |
-| HITRACE_FLAG_TP_INFO = 1 << 2 | 埋点标志。 调试场景下设置该标志，调用信息埋点接口[OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)时，会打印埋点信息hilog日志；默认不打印埋点信息hilog日志。<br>**起始版本：** 12 |
-| HITRACE_FLAG_NO_BE_INFO = 1 << 3 | 无开始结束信息标志。 调试场景下设置该标志，调用开始跟踪接口[OH_HiTrace_BeginChain](capi-trace-h.md#oh_hitrace_beginchain)和结束跟踪接口[OH_HiTrace_EndChain](capi-trace-h.md#oh_hitrace_endchain)时，分别会打印开始、 结束跟踪信息hilog日志； 默认不打印开始、结束跟踪信息hilog日志。<br>**起始版本：** 12 |
-| HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4 | 日志关联标志。 设置该标志，不会在hilog日志中附加HiTraceId信息；默认会在hilog日志中附加HiTraceId信息。<br>**起始版本：** 12 |
-| HITRACE_FLAG_FAULT_TRIGGER = 1 << 5 | 故障触发标志。预置标志，暂未启用。<br>**起始版本：** 12 |
-| HITRACE_FLAG_D2D_TP_INFO = 1 << 6 | 设备间埋点标志。[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)的一个子集，调试场景下使用。 当已设置[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志不生效；当未设置 [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，设置[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志，此时调用信息埋点接口 [OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)，仅当mode参数为设备间通信 [HITRACE_CM_DEVICE](capi-trace-h.md#hitrace_communication_mode)的情况下，会打印埋点信息hilog日志。<br>**起始版本：** 12 |
+| HITRACE_FLAG_DEFAULT = 0 | 默认标志。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_DEFAULT = 0--><!--Device-HITRACE_FLAG_DEFAULT = 0-End--> |
+| HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0 | 异步调用标志。 设置该标志，同时跟踪同步和异步调用；默认只跟踪同步调用。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0--><!--Device-HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0-End--> |
+| HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1 | 无分支标志。 设置该标志，不创建分支信息；默认创建分支信息。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1--><!--Device-HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1-End--> |
+| HITRACE_FLAG_TP_INFO = 1 << 2 | 埋点标志。 调试场景下设置该标志，调用信息埋点接口[OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)时，会打印埋点信息hilog日志；默认不打印埋点信息hilog日志。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_TP_INFO = 1 << 2--><!--Device-HITRACE_FLAG_TP_INFO = 1 << 2-End--> |
+| HITRACE_FLAG_NO_BE_INFO = 1 << 3 | 无开始结束信息标志。 调试场景下设置该标志，调用开始跟踪接口[OH_HiTrace_BeginChain](capi-trace-h.md#oh_hitrace_beginchain)和结束跟踪接口[OH_HiTrace_EndChain](capi-trace-h.md#oh_hitrace_endchain)时，分别会打印开始、 结束跟踪信息hilog日志； 默认不打印开始、结束跟踪信息hilog日志。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_NO_BE_INFO = 1 << 3--><!--Device-HITRACE_FLAG_NO_BE_INFO = 1 << 3-End--> |
+| HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4 | 日志关联标志。 设置该标志，不会在hilog日志中附加HiTraceId信息；默认会在hilog日志中附加HiTraceId信息。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4--><!--Device-HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4-End--> |
+| HITRACE_FLAG_FAULT_TRIGGER = 1 << 5 | 故障触发标志。预置标志，暂未启用。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_FAULT_TRIGGER = 1 << 5--><!--Device-HITRACE_FLAG_FAULT_TRIGGER = 1 << 5-End--> |
+| HITRACE_FLAG_D2D_TP_INFO = 1 << 6 | 设备间埋点标志。[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)的一个子集，调试场景下使用。 当已设置[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志不生效；当未设置 [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，设置[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志，此时调用信息埋点接口 [OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)，仅当mode参数为设备间通信 [HITRACE_CM_DEVICE](capi-trace-h.md#hitrace_communication_mode)的情况下，会打印埋点信息hilog日志。<br>**起始版本：** 12<br><!--Device-HITRACE_FLAG_D2D_TP_INFO = 1 << 6--><!--Device-HITRACE_FLAG_D2D_TP_INFO = 1 << 6-End--> |
 
 ### HiTrace_Tracepoint_Type
 
@@ -151,7 +151,7 @@ enum HiTrace_Tracepoint_Type
 
 跟踪埋点类型枚举。
 
-<!--Device-HiTrace_Tracepoint_Type--><!--Device-HiTrace_Tracepoint_Type-End-->
+<!--Device-enum HiTrace_Tracepoint_Type--><!--Device-enum HiTrace_Tracepoint_Type-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -159,11 +159,11 @@ enum HiTrace_Tracepoint_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_TP_CS = 0 | 客户端发送。<br>**起始版本：** 12 |
-| HITRACE_TP_CR = 1 | 客户端接收。<br>**起始版本：** 12 |
-| HITRACE_TP_SS = 2 | 服务端发送。<br>**起始版本：** 12 |
-| HITRACE_TP_SR = 3 | 服务端接收。<br>**起始版本：** 12 |
-| HITRACE_TP_GENERAL = 4 | 通用类型，标识HITRACE_TP_CS、HITRACE_TP_CR、HITRACE_TP_SS、HITRACE_TP_SR四种场景之外的埋点。<br>**起始版本：** 12 |
+| HITRACE_TP_CS = 0 | 客户端发送。<br>**起始版本：** 12<br><!--Device-HITRACE_TP_CS = 0--><!--Device-HITRACE_TP_CS = 0-End--> |
+| HITRACE_TP_CR = 1 | 客户端接收。<br>**起始版本：** 12<br><!--Device-HITRACE_TP_CR = 1--><!--Device-HITRACE_TP_CR = 1-End--> |
+| HITRACE_TP_SS = 2 | 服务端发送。<br>**起始版本：** 12<br><!--Device-HITRACE_TP_SS = 2--><!--Device-HITRACE_TP_SS = 2-End--> |
+| HITRACE_TP_SR = 3 | 服务端接收。<br>**起始版本：** 12<br><!--Device-HITRACE_TP_SR = 3--><!--Device-HITRACE_TP_SR = 3-End--> |
+| HITRACE_TP_GENERAL = 4 | 通用类型，标识HITRACE_TP_CS、HITRACE_TP_CR、HITRACE_TP_SS、HITRACE_TP_SR四种场景之外的埋点。<br>**起始版本：** 12<br><!--Device-HITRACE_TP_GENERAL = 4--><!--Device-HITRACE_TP_GENERAL = 4-End--> |
 
 ### HiTrace_Communication_Mode
 
@@ -175,7 +175,7 @@ enum HiTrace_Communication_Mode
 
 跟踪通信类型枚举。
 
-<!--Device-HiTrace_Communication_Mode--><!--Device-HiTrace_Communication_Mode-End-->
+<!--Device-enum HiTrace_Communication_Mode--><!--Device-enum HiTrace_Communication_Mode-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -183,10 +183,10 @@ enum HiTrace_Communication_Mode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_CM_DEFAULT = 0 | 默认通信类型。<br>**起始版本：** 12 |
-| HITRACE_CM_THREAD = 1 | 线程间通信。<br>**起始版本：** 12 |
-| HITRACE_CM_PROCESS = 2 | 进程间通信。<br>**起始版本：** 12 |
-| HITRACE_CM_DEVICE = 3 | 设备间通信。<br>**起始版本：** 12 |
+| HITRACE_CM_DEFAULT = 0 | 默认通信类型。<br>**起始版本：** 12<br><!--Device-HITRACE_CM_DEFAULT = 0--><!--Device-HITRACE_CM_DEFAULT = 0-End--> |
+| HITRACE_CM_THREAD = 1 | 线程间通信。<br>**起始版本：** 12<br><!--Device-HITRACE_CM_THREAD = 1--><!--Device-HITRACE_CM_THREAD = 1-End--> |
+| HITRACE_CM_PROCESS = 2 | 进程间通信。<br>**起始版本：** 12<br><!--Device-HITRACE_CM_PROCESS = 2--><!--Device-HITRACE_CM_PROCESS = 2-End--> |
+| HITRACE_CM_DEVICE = 3 | 设备间通信。<br>**起始版本：** 12<br><!--Device-HITRACE_CM_DEVICE = 3--><!--Device-HITRACE_CM_DEVICE = 3-End--> |
 
 ### HiTrace_Output_Level
 
@@ -198,7 +198,7 @@ enum HiTrace_Output_Level
 
 HiTrace输出级别。低于系统跟踪输出级别阈值的打点将不会生效。log版本阈值为[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)；nolog版本阈值为 [HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level)。
 
-<!--Device-HiTrace_Output_Level--><!--Device-HiTrace_Output_Level-End-->
+<!--Device-enum HiTrace_Output_Level--><!--Device-enum HiTrace_Output_Level-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
@@ -206,11 +206,11 @@ HiTrace输出级别。低于系统跟踪输出级别阈值的打点将不会生�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_LEVEL_DEBUG = 0 | 仅用于调试的输出级别，优先级最低。<br>**起始版本：** 19 |
-| HITRACE_LEVEL_INFO = 1 | 用于log版本的输出级别。<br>**起始版本：** 19 |
-| HITRACE_LEVEL_CRITICAL = 2 | 用于log版本的输出级别，优先级高于[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)。<br>**起始版本：** 19 |
-| HITRACE_LEVEL_COMMERCIAL = 3 | 用于nolog版本的输出级别，优先级最高。<br>**起始版本：** 19 |
-| HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL | 输出级别范围限制。<br>**起始版本：** 19 |
+| HITRACE_LEVEL_DEBUG = 0 | 仅用于调试的输出级别，优先级最低。<br>**起始版本：** 19<br><!--Device-HITRACE_LEVEL_DEBUG = 0--><!--Device-HITRACE_LEVEL_DEBUG = 0-End--> |
+| HITRACE_LEVEL_INFO = 1 | 用于log版本的输出级别。<br>**起始版本：** 19<br><!--Device-HITRACE_LEVEL_INFO = 1--><!--Device-HITRACE_LEVEL_INFO = 1-End--> |
+| HITRACE_LEVEL_CRITICAL = 2 | 用于log版本的输出级别，优先级高于[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)。<br>**起始版本：** 19<br><!--Device-HITRACE_LEVEL_CRITICAL = 2--><!--Device-HITRACE_LEVEL_CRITICAL = 2-End--> |
+| HITRACE_LEVEL_COMMERCIAL = 3 | 用于nolog版本的输出级别，优先级最高。<br>**起始版本：** 19<br><!--Device-HITRACE_LEVEL_COMMERCIAL = 3--><!--Device-HITRACE_LEVEL_COMMERCIAL = 3-End--> |
+| HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL | 输出级别范围限制。<br>**起始版本：** 19<br><!--Device-HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL--><!--Device-HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL-End--> |
 
 
 ## 函数说明

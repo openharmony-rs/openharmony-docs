@@ -10,16 +10,16 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Half version |  |
-| unsigned char isa_level |  |
-| unsigned char isa_rev |  |
-| unsigned char gpr_size |  |
-| unsigned char cpr1_size |  |
-| unsigned char cpr2_size |  |
-| unsigned char fp_abi |  |
-| Elf32_Word isa_ext |  |
-| Elf32_Word ases |  |
-| Elf32_Word flags1 |  |
-| Elf32_Word flags2 |  |
+| Elf32_Half version | <!--Device-Elf32_Half version--><!--Device-Elf32_Half version-End--> |
+| unsigned char isa_level | <!--Device-unsigned char isa_level--><!--Device-unsigned char isa_level-End--> |
+| unsigned char isa_rev | <!--Device-unsigned char isa_rev--><!--Device-unsigned char isa_rev-End--> |
+| unsigned char gpr_size | <!--Device-unsigned char gpr_size--><!--Device-unsigned char gpr_size-End--> |
+| unsigned char cpr1_size | <!--Device-unsigned char cpr1_size--><!--Device-unsigned char cpr1_size-End--> |
+| unsigned char cpr2_size | <!--Device-unsigned char cpr2_size--><!--Device-unsigned char cpr2_size-End--> |
+| unsigned char fp_abi | <!--Device-unsigned char fp_abi--><!--Device-unsigned char fp_abi-End--> |
+| Elf32_Word isa_ext | <!--Device-Elf32_Word isa_ext--><!--Device-Elf32_Word isa_ext-End--> |
+| Elf32_Word ases | <!--Device-Elf32_Word ases--><!--Device-Elf32_Word ases-End--> |
+| Elf32_Word flags1 | <!--Device-Elf32_Word flags1--><!--Device-Elf32_Word flags1-End--> |
+| Elf32_Word flags2 | <!--Device-Elf32_Word flags2--><!--Device-Elf32_Word flags2-End--> |
 
 

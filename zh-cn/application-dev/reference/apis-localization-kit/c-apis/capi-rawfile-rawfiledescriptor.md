@@ -24,8 +24,8 @@ typedef struct RawFileDescriptor {...} RawFileDescriptor
 
 | 名称 | 描述 |
 | -- | -- |
-| int fd | rawfile文件描述符。 |
-| long start | rawfile文件在HAP包中的起始位置，单位为Byte。 |
-| long length | rawfile文件的长度，单位为Byte。 |
+| int fd | rawfile文件描述符。<br><!--Device-int fd--><!--Device-int fd-End--> |
+| long start | rawfile文件在HAP包中的起始位置，单位为Byte。<br><!--Device-long start--><!--Device-long start-End--> |
+| long length | rawfile文件的长度，单位为Byte。<br><!--Device-long length--><!--Device-long length-End--> |
 
 

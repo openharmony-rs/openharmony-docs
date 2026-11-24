@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes | <!--Device-VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes--><!--Device-VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes-End--> |
 
 

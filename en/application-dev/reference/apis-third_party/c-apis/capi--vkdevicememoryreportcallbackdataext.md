@@ -10,14 +10,14 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkDeviceMemoryReportFlagsEXT flags |  |
-| VkDeviceMemoryReportEventTypeEXT type |  |
-| uint64_t memoryObjectId |  |
-| VkDeviceSize size |  |
-| VkObjectType objectType |  |
-| uint64_t objectHandle |  |
-| uint32_t heapIndex |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkDeviceMemoryReportFlagsEXT flags | <!--Device-VkDeviceMemoryReportFlagsEXT flags--><!--Device-VkDeviceMemoryReportFlagsEXT flags-End--> |
+| VkDeviceMemoryReportEventTypeEXT type | <!--Device-VkDeviceMemoryReportEventTypeEXT type--><!--Device-VkDeviceMemoryReportEventTypeEXT type-End--> |
+| uint64_t memoryObjectId | <!--Device-uint64_t memoryObjectId--><!--Device-uint64_t memoryObjectId-End--> |
+| VkDeviceSize size | <!--Device-VkDeviceSize size--><!--Device-VkDeviceSize size-End--> |
+| VkObjectType objectType | <!--Device-VkObjectType objectType--><!--Device-VkObjectType objectType-End--> |
+| uint64_t objectHandle | <!--Device-uint64_t objectHandle--><!--Device-uint64_t objectHandle-End--> |
+| uint32_t heapIndex | <!--Device-uint32_t heapIndex--><!--Device-uint32_t heapIndex-End--> |
 
 

@@ -60,7 +60,7 @@ enum LogType
 
 日志类型。该枚举类型用于定义应用开发者可以使用的日志类型。当前有应用日志LOG_APP。
 
-<!--Device-LogType--><!--Device-LogType-End-->
+<!--Device-enum LogType--><!--Device-enum LogType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
@@ -68,7 +68,7 @@ enum LogType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOG_APP = 0 | 应用日志 |
+| LOG_APP = 0 | 应用日志<br><!--Device-LOG_APP = 0--><!--Device-LOG_APP = 0-End--> |
 
 ### LogLevel
 
@@ -80,7 +80,7 @@ enum LogLevel
 
 日志级别。该枚举类型用于定义日志级别。各级别建议使用方式： <br>DEBUG：比INFO级别更详细的流程记录，通过该级别的日志可以更详细地分析业务流程和定位分析问题。DEBUG级别的日志在正式发布版本中默认不会被打印，只有在调试版本或打开调试开关的情况下才会打印。 <br>INFO：用来记录业务关键流程节点，可以还原业务的主要运行过程；用来记录非正常情况信息，但这些情况都是可以预期的（如无网络信号、登录失败等）。这些日志都应该由该业务内处于支配地位的模块来记录， 避免在多个被调用的模块或低级函数中重复记录。 <br>WARN：发生了较为严重的非预期情况，但是对用户影响不大，程序可以自动恢复或通过简单的操作就可以恢复的问题。 <br>ERROR：程序或功能发生了错误，该错误会影响功能的正常运行或用户的正常使用，可以恢复但恢复代价较高，如重置数据等。 <br>FATAL：重大致命异常，表明程序或功能即将崩溃，故障无法恢复。
 
-<!--Device-LogLevel--><!--Device-LogLevel-End-->
+<!--Device-enum LogLevel--><!--Device-enum LogLevel-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
@@ -88,11 +88,11 @@ enum LogLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOG_DEBUG = 3 | DEBUG日志级别，使用OH_LOG_DEBUG接口打印。 |
-| LOG_INFO = 4 | INFO日志级别，使用OH_LOG_INFO接口打印。 |
-| LOG_WARN = 5 | WARN日志级别，使用OH_LOG_WARN接口打印。 |
-| LOG_ERROR = 6 | ERROR日志级别，使用OH_LOG_ERROR接口打印。 |
-| LOG_FATAL = 7 | FATAL日志级别，使用OH_LOG_FATAL接口打印。 |
+| LOG_DEBUG = 3 | DEBUG日志级别，使用OH_LOG_DEBUG接口打印。<br><!--Device-LOG_DEBUG = 3--><!--Device-LOG_DEBUG = 3-End--> |
+| LOG_INFO = 4 | INFO日志级别，使用OH_LOG_INFO接口打印。<br><!--Device-LOG_INFO = 4--><!--Device-LOG_INFO = 4-End--> |
+| LOG_WARN = 5 | WARN日志级别，使用OH_LOG_WARN接口打印。<br><!--Device-LOG_WARN = 5--><!--Device-LOG_WARN = 5-End--> |
+| LOG_ERROR = 6 | ERROR日志级别，使用OH_LOG_ERROR接口打印。<br><!--Device-LOG_ERROR = 6--><!--Device-LOG_ERROR = 6-End--> |
+| LOG_FATAL = 7 | FATAL日志级别，使用OH_LOG_FATAL接口打印。<br><!--Device-LOG_FATAL = 7--><!--Device-LOG_FATAL = 7-End--> |
 
 ### PreferStrategy
 
@@ -104,7 +104,7 @@ enum PreferStrategy
 
 偏好策略。在[OH_LOG_SetLogLevel](capi-log-h.md#oh_log_setloglevel)中使用。不同策略，实际生效的最低日志级别也不同。
 
-<!--Device-PreferStrategy--><!--Device-PreferStrategy-End-->
+<!--Device-enum PreferStrategy--><!--Device-enum PreferStrategy-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
@@ -112,9 +112,9 @@ enum PreferStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UNSET_LOGLEVEL = 0 | 清除设置，实际生效的最低日志级别是系统控制的最低级别。 |
-| PREFER_CLOSE_LOG = 1 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较大值。 |
-| PREFER_OPEN_LOG = 2 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较小值。 |
+| UNSET_LOGLEVEL = 0 | 清除设置，实际生效的最低日志级别是系统控制的最低级别。<br><!--Device-UNSET_LOGLEVEL = 0--><!--Device-UNSET_LOGLEVEL = 0-End--> |
+| PREFER_CLOSE_LOG = 1 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较大值。<br><!--Device-PREFER_CLOSE_LOG = 1--><!--Device-PREFER_CLOSE_LOG = 1-End--> |
+| PREFER_OPEN_LOG = 2 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较小值。<br><!--Device-PREFER_OPEN_LOG = 2--><!--Device-PREFER_OPEN_LOG = 2-End--> |
 
 
 ## 函数说明

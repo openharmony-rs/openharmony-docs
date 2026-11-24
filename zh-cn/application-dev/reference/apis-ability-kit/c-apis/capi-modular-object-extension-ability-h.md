@@ -39,7 +39,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle | 定义指向OH_AbilityRuntime_ModObjExtensionInstance的指针。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Ability.AbilityRuntime.Core |
+| OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle | 定义指向OH_AbilityRuntime_ModObjExtensionInstance的指针。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Ability.AbilityRuntime.Core<br><!--Device-OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle--><!--Device-OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle-End--> |
 
 ## 函数说明
 

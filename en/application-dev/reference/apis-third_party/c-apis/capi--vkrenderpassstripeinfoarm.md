@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkRect2D](capi--vkrect2d.md) stripeArea |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkRect2D](capi--vkrect2d.md) stripeArea | <!--Device-VkRect2D stripeArea--><!--Device-VkRect2D stripeArea-End--> |
 
 

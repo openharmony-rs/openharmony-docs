@@ -4,6 +4,8 @@
 
 Provides APIs for global text information, such as setting the text rendering high contrast mode and the presentation mode of undefined glyphs.
 
+**File to Include**: <native_drawing/drawing_text_global.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
@@ -40,7 +42,7 @@ enum OH_Drawing_TextHighContrast
 
 Defines an enum of the high contrast modes for text rendering.
 
-<!--Device-OH_Drawing_TextHighContrast--><!--Device-OH_Drawing_TextHighContrast-End-->
+<!--Device-enum OH_Drawing_TextHighContrast--><!--Device-enum OH_Drawing_TextHighContrast-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -48,9 +50,9 @@ Defines an enum of the high contrast modes for text rendering.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | Follows the high contrast mode for text rendering in the system settings. |
-| TEXT_APP_DISABLE_HIGH_CONTRAST | Disables the app's text rendering high contrast configuration. The priority of this mode is higher than the high contrast text configuration in system settings. |
-| TEXT_APP_ENABLE_HIGH_CONTRAST | Enables the app's text rendering high contrast configuration. The priority of this mode is higher than the high contrast text configuration in system settings. |
+| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | Follows the high contrast mode for text rendering in the system settings.<br><!--Device-TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST--><!--Device-TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST-End--> |
+| TEXT_APP_DISABLE_HIGH_CONTRAST | Disables the app's text rendering high contrast configuration. The priority of this mode is higher than the high contrast text configuration in system settings.<br><!--Device-TEXT_APP_DISABLE_HIGH_CONTRAST--><!--Device-TEXT_APP_DISABLE_HIGH_CONTRAST-End--> |
+| TEXT_APP_ENABLE_HIGH_CONTRAST | Enables the app's text rendering high contrast configuration. The priority of this mode is higher than the high contrast text configuration in system settings.<br><!--Device-TEXT_APP_ENABLE_HIGH_CONTRAST--><!--Device-TEXT_APP_ENABLE_HIGH_CONTRAST-End--> |
 
 ### OH_Drawing_TextUndefinedGlyphDisplay
 
@@ -62,7 +64,7 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 
 Defines an enum of the modes for displaying undefined glyphs.
 
-<!--Device-OH_Drawing_TextUndefinedGlyphDisplay--><!--Device-OH_Drawing_TextUndefinedGlyphDisplay-End-->
+<!--Device-enum OH_Drawing_TextUndefinedGlyphDisplay--><!--Device-enum OH_Drawing_TextUndefinedGlyphDisplay-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -70,8 +72,8 @@ Defines an enum of the modes for displaying undefined glyphs.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_NO_GLYPH_USE_DEFAULT = 0 | Uses the default glyph (which may be a blank box, space, or custom symbol) defined in the font file. |
-| TEXT_NO_GLYPH_USE_TOFU = 1 | Always uses tofu blocks to represent absent glyphs. |
+| TEXT_NO_GLYPH_USE_DEFAULT = 0 | Uses the default glyph (which may be a blank box, space, or custom symbol) defined in the font file.<br><!--Device-TEXT_NO_GLYPH_USE_DEFAULT = 0--><!--Device-TEXT_NO_GLYPH_USE_DEFAULT = 0-End--> |
+| TEXT_NO_GLYPH_USE_TOFU = 1 | Always uses tofu blocks to represent absent glyphs.<br><!--Device-TEXT_NO_GLYPH_USE_TOFU = 1--><!--Device-TEXT_NO_GLYPH_USE_TOFU = 1-End--> |
 
 
 ## Function description

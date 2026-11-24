@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t binaryCount |  |
-| const VkPipelineBinaryKHR* pPipelineBinaries |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t binaryCount | <!--Device-uint32_t binaryCount--><!--Device-uint32_t binaryCount-End--> |
+| const VkPipelineBinaryKHR* pPipelineBinaries | <!--Device-const VkPipelineBinaryKHR* pPipelineBinaries--><!--Device-const VkPipelineBinaryKHR* pPipelineBinaries-End--> |
 
 

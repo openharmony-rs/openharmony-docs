@@ -24,9 +24,9 @@ A struct that encapsulates the file sync result. It includes the absolute path o
 
 | Name | Description |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | Absolute path information of the file.<br>**Since**: 21 |
-| bool isSuccess{false} | Whether the operation is successful. The value true indicates the operation is successful; the value false (default) indicates the opposite.<br>**Since**: 21 |
-| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | File sync state. It takes effect only when **isSuccess** is set to true.<br>**Since**: 21 |
-| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | Reason why the file sync state fails to be obtained. It takes effect only when **isSuccess** is set to **false**.<br>**Since**: 21 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | Absolute path information of the file.<br>**Since**: 21<br><!--Device-CloudDisk_PathInfo pathInfo--><!--Device-CloudDisk_PathInfo pathInfo-End--> |
+| bool isSuccess{false} | Whether the operation is successful. The value true indicates the operation is successful; the value false (default) indicates the opposite.<br>**Since**: 21<br><!--Device-bool isSuccess{false}--><!--Device-bool isSuccess{false}-End--> |
+| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | File sync state. It takes effect only when **isSuccess** is set to true.<br>**Since**: 21<br><!--Device-CloudDisk_SyncState syncState--><!--Device-CloudDisk_SyncState syncState-End--> |
+| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | Reason why the file sync state fails to be obtained. It takes effect only when **isSuccess** is set to **false**.<br>**Since**: 21<br><!--Device-CloudDisk_ErrorReason errorReason--><!--Device-CloudDisk_ErrorReason errorReason-End--> |
 
 

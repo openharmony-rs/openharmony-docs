@@ -48,7 +48,7 @@ enum OH_ImageSource_SVGResourceLimitLevel
 
 SVG资源限制级别的枚举。 级别越高，解析和渲染SVG图片时允许使用的资源越少。 无论指定哪个级别，系统资源限制都会生效。
 
-<!--Device-OH_ImageSource_SVGResourceLimitLevel--><!--Device-OH_ImageSource_SVGResourceLimitLevel-End-->
+<!--Device-enum OH_ImageSource_SVGResourceLimitLevel--><!--Device-enum OH_ImageSource_SVGResourceLimitLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -58,10 +58,10 @@ SVG资源限制级别的枚举。 级别越高，解析和渲染SVG图片时允�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 | 使用默认的SVG资源限制。该级别不会禁用SVG资源保护。<br>**起始版本：** 26.0.1 |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 | 使用低级别限制，允许更多SVG资源预算用于复杂的SVG图片。<br>**起始版本：** 26.0.1 |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 | 使用中级别限制，允许适中的SVG资源预算， 在SVG兼容性和资源消耗之间取得平衡，适用于大多数SVG图片。<br>**起始版本：** 26.0.1 |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 | 使用高级别限制，允许较少的SVG资源预算，适用于简单的SVG图片， 例如图标和基础UI资源。<br>**起始版本：** 26.0.1 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 | 使用默认的SVG资源限制。该级别不会禁用SVG资源保护。<br>**起始版本：** 26.0.1<br><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0--><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0-End--> |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 | 使用低级别限制，允许更多SVG资源预算用于复杂的SVG图片。<br>**起始版本：** 26.0.1<br><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1--><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1-End--> |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 | 使用中级别限制，允许适中的SVG资源预算， 在SVG兼容性和资源消耗之间取得平衡，适用于大多数SVG图片。<br>**起始版本：** 26.0.1<br><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2--><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2-End--> |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 | 使用高级别限制，允许较少的SVG资源预算，适用于简单的SVG图片， 例如图标和基础UI资源。<br>**起始版本：** 26.0.1<br><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3--><!--Device-OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3-End--> |
 
 
 ## 函数说明

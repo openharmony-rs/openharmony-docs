@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| size_t dynamicMetadataSize |  |
-| const void* pDynamicMetadata |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| size_t dynamicMetadataSize | <!--Device-size_t dynamicMetadataSize--><!--Device-size_t dynamicMetadataSize-End--> |
+| const void* pDynamicMetadata | <!--Device-const void* pDynamicMetadata--><!--Device-const void* pDynamicMetadata-End--> |
 
 

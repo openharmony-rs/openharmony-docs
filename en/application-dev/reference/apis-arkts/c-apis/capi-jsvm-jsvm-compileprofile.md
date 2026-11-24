@@ -24,7 +24,7 @@ compile profile passed with JSVM_COMPILE_COMPILE_PROFILE
 
 | Name | Description |
 | -- | -- |
-| int *profile | profile pointer. |
-| size_t length | length. |
+| int *profile | profile pointer.<br><!--Device-int *profile--><!--Device-int *profile-End--> |
+| size_t length | length.<br><!--Device-size_t length--><!--Device-size_t length-End--> |
 
 

@@ -16,6 +16,14 @@ Declare underlying data structure.
 
 ## Summary
 
+### Structs
+
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_AudioSuite_ConverterFormatEx(System API)](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md) | OH_AudioSuite_ConverterFormatEx | Defines the format information of the extended audio converter, which is used to describe the audio format that supports any sampling rate.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_ConverterInputInfo(System API)](capi-ohaudiosuite-oh-audiosuite-converterinputinfo-sys.md) | OH_AudioSuite_ConverterInputInfo | Defines the input data structure of the audio converter.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_ConverterOutputInfo(System API)](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo-sys.md) | OH_AudioSuite_ConverterOutputInfo | Defines the output data structure of the audio converter, which is used to receive the converted audio data in direct processing mode.<br>**System API:** This is a system API. |
+
 ### Functions
 
 | Name | Description |
@@ -52,15 +60,15 @@ Create an audio converter that supports extended formats.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) *inputFormat | [Input parameter] Pointer to the input audio format. Cannot be NULL and must remain valid for the duration of the call. |
-| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) *outputFormat | [Input parameter] Pointer to the output audio format. Cannot be NULL and must remain valid for the duration of the call. |
+| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md) *inputFormat | [Input parameter] Pointer to the input audio format. Cannot be NULL and must remain valid for the duration of the call. |
+| [const OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md) *outputFormat | [Input parameter] Pointer to the output audio format. Cannot be NULL and must remain valid for the duration of the call. |
 | [OH_AudioConverter](capi-ohaudiosuite-oh-audioconverterstruct.md) **outOwnedConverter | [Output parameter] Pointer to the created audio converter instance. The caller owns the result and must use the [OH_AudioConverter_Destroy](capi-native-audio-converter-h.md#oh_audioconverter_destroy) Release. The value cannot be NULL and does not need to be initialized. No content is written when the call fails. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | <ul> <li>[AUDIOCONVERTER_SUCCESS](capi-native-audio-converter-h.md#oh_audioconverter_result) Execution succeeded. </li> <li>202 Permission verification failed because a non-system application uses the system API. </li> <li>[AUDIOCONVERTER_ERROR_INVALID_PARAM](capi-native-audio-converter-h.md#oh_audioconverter_result)The parameter is invalid. The possible causes are as follows: <br>1. The value of inputFormat is NULL. <br>2. The value of outputFormat is NULL. <br>3. outOwnedConverter is NULL. </li> <li>[AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT](capi-native-audio-converter-h.md#oh_audioconverter_result)The audio format in inputFormat/outputFormat is not supported. </li> <li>[AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED](capi-native-audio-converter-h.md#oh_audioconverter_result) Memory allocation failed. </li> </ul> |
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | <ul> <li>[AUDIOCONVERTER_SUCCESS](capi-native-audio-converter-h.md#oh_audioconverter_result) Execution succeeded. </li> <li>202 Permission verification failed because a non-system application uses the system API. </li> <li>[AUDIOCONVERTER_ERROR_INVALID_PARAM](capi-native-audio-converter-h.md#oh_audioconverter_result) The parameter is invalid. The possible causes are as follows: <br>1. The value of inputFormat is NULL. <br>2. The value of outputFormat is NULL. <br>3. outOwnedConverter is NULL. </li> <li>[AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT](capi-native-audio-converter-h.md#oh_audioconverter_result) The audio format in inputFormat/outputFormat is not supported. </li> <li>[AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED](capi-native-audio-converter-h.md#oh_audioconverter_result) Memory allocation failed. </li> </ul> |
 
 ### OH_AudioSuite_ConverterGetMinInOutSizes()
 
@@ -117,8 +125,8 @@ Converts the audio format and transfers the input data to the invoking party.<br
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioConverter](capi-ohaudiosuite-oh-audioconverterstruct.md) *converter | [Input parameter] Converter instance created by the [OH_AudioSuite_ConverterCreateEx](capi-native-audio-converter-h.md#oh_audiosuite_convertercreateex) or [OH_AudioConverter_Create](capi-native-audio-converter-h.md#oh_audioconverter_create). cannot be null and must remain valid during the call. |
-| [const OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo.md) *inData | [Input parameter] Pointer to the input audio data descriptor. Cannot be NULL and must remain valid for the duration of the call. **inData->size** indicates the number of input bytes, which must be an integer multiple of the minimum number of input bytes returned by the [OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes). |
-| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo.md) *outData | [Input parameter, output parameter] Pointer to the output audio data descriptor. Cannot be NULL and must remain valid for the duration of the call. <br>The caller needs to allocate the output buffer and set **outData->data** and **outData->size**. If **inData->size** is k times the minimum number of input bytes, **outData->size** must be greater than k times the minimum number of output bytes, The minimum number of input bytes and the minimum number of output bytes are obtained from [OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes). <br>The conversion result is written to **outData->data**. The actual number of written bytes is returned through **outData->writeSize**. <br>No content is written when the call fails. |
+| [const OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo-sys.md) *inData | [Input parameter] Pointer to the input audio data descriptor. Cannot be NULL and must remain valid for the duration of the call. **inData->size** indicates the number of input bytes, which must be an integer multiple of the minimum number of input bytes returned by the [OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes). |
+| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo-sys.md) *outData | [Input parameter, output parameter] Pointer to the output audio data descriptor. Cannot be NULL and must remain valid for the duration of the call. <br>The caller needs to allocate the output buffer and set **outData->data** and **outData->size**. If **inData->size** is k times the minimum number of input bytes, **outData->size** must be greater than k times the minimum number of output bytes, The minimum number of input bytes and the minimum number of output bytes are obtained from [OH_AudioSuite_ConverterGetMinInOutSizes](capi-native-audio-converter-h.md#oh_audiosuite_convertergetmininoutsizes). <br>The conversion result is written to **outData->data**. The actual number of written bytes is returned through **outData->writeSize**. <br>No content is written when the call fails. |
 
 **Returns**:
 

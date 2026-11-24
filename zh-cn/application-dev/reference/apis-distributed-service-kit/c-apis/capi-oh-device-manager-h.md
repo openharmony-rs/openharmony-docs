@@ -20,7 +20,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)](#oh_devicemanager_getlocaldevicename) | 获取本地设备显示名。 设备显示名称涉及用户的隐私数据，需要应用提供相关隐私声明，声明设备显示名的用途。(API26.0.0废弃) |
+| [int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)](#oh_devicemanager_getlocaldevicename) | 获取本地设备显示名。 设备显示名称涉及用户的隐私数据，需要应用提供相关隐私声明，声明设备显示名的用途。(已废弃) |
 | [int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned int *len)](#oh_devicemanager_getlocaldevicenamec) | 获取本地设备显示名。 设备显示名称涉及用户的隐私数据，需要应用提供相关隐私声明，声明设备显示名的用途。 |
 
 ## 函数说明

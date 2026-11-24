@@ -95,7 +95,7 @@ enum OH_Drawing_FontHinting
 
 字型轮廓效果类型枚举。
 
-<!--Device-OH_Drawing_FontHinting--><!--Device-OH_Drawing_FontHinting-End-->
+<!--Device-enum OH_Drawing_FontHinting--><!--Device-enum OH_Drawing_FontHinting-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -103,10 +103,10 @@ enum OH_Drawing_FontHinting
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FONT_HINTING_NONE | 不修改字型轮廓。<br>**起始版本：** 12 |
-| FONT_HINTING_SLIGHT | 最小限度修改字型轮廓以改善对比度。<br>**起始版本：** 12 |
-| FONT_HINTING_NORMAL | 修改字型轮廓以提高对比度。<br>**起始版本：** 12 |
-| FONT_HINTING_FULL | 修改字型轮廓以获得最大对比度。<br>**起始版本：** 12 |
+| FONT_HINTING_NONE | 不修改字型轮廓。<br>**起始版本：** 12<br><!--Device-FONT_HINTING_NONE--><!--Device-FONT_HINTING_NONE-End--> |
+| FONT_HINTING_SLIGHT | 最小限度修改字型轮廓以改善对比度。<br>**起始版本：** 12<br><!--Device-FONT_HINTING_SLIGHT--><!--Device-FONT_HINTING_SLIGHT-End--> |
+| FONT_HINTING_NORMAL | 修改字型轮廓以提高对比度。<br>**起始版本：** 12<br><!--Device-FONT_HINTING_NORMAL--><!--Device-FONT_HINTING_NORMAL-End--> |
+| FONT_HINTING_FULL | 修改字型轮廓以获得最大对比度。<br>**起始版本：** 12<br><!--Device-FONT_HINTING_FULL--><!--Device-FONT_HINTING_FULL-End--> |
 
 ### OH_Drawing_FontEdging
 
@@ -118,7 +118,7 @@ enum OH_Drawing_FontEdging
 
 字型边缘效果类型枚举。
 
-<!--Device-OH_Drawing_FontEdging--><!--Device-OH_Drawing_FontEdging-End-->
+<!--Device-enum OH_Drawing_FontEdging--><!--Device-enum OH_Drawing_FontEdging-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -126,9 +126,9 @@ enum OH_Drawing_FontEdging
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FONT_EDGING_ALIAS | 无抗锯齿处理。<br>**起始版本：** 12 |
-| FONT_EDGING_ANTI_ALIAS | 使用抗锯齿来平滑字型边缘。<br>**起始版本：** 12 |
-| FONT_EDGING_SUBPIXEL_ANTI_ALIAS | 使用次像素级别的抗锯齿来平滑字型边缘，可以获得更加平滑的字型渲染效果。<br>**起始版本：** 12 |
+| FONT_EDGING_ALIAS | 无抗锯齿处理。<br>**起始版本：** 12<br><!--Device-FONT_EDGING_ALIAS--><!--Device-FONT_EDGING_ALIAS-End--> |
+| FONT_EDGING_ANTI_ALIAS | 使用抗锯齿来平滑字型边缘。<br>**起始版本：** 12<br><!--Device-FONT_EDGING_ANTI_ALIAS--><!--Device-FONT_EDGING_ANTI_ALIAS-End--> |
+| FONT_EDGING_SUBPIXEL_ANTI_ALIAS | 使用次像素级别的抗锯齿来平滑字型边缘，可以获得更加平滑的字型渲染效果。<br>**起始版本：** 12<br><!--Device-FONT_EDGING_SUBPIXEL_ANTI_ALIAS--><!--Device-FONT_EDGING_SUBPIXEL_ANTI_ALIAS-End--> |
 
 
 ## 函数说明
@@ -496,12 +496,12 @@ OH_Drawing_ErrorCode OH_Drawing_FontTextToGlyphsWithFallback(const OH_Drawing_Fo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [in] 指向字型对象OH_Drawing_Font的指针。 |
-| const void *text | [in] 文本存储首地址。 |
-| uint32_t byteLength | [in] 文本长度，单位为字节。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [in] 文本编码类型OH_Drawing_TextEncoding。 |
-| [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) **typefaceFallbackInfo | [out] 指向OH_Drawing_TypefaceFallbackInfo数组首元素的指针。 作为出参使用。当不再需要时，使用[OH_Drawing_FontTypefaceFallbackInfoDestroy](capi-drawing-font-h.md#oh_drawing_fonttypefacefallbackinfodestroy)释放该数组。 |
-| uint32_t *infosCount | [out] 存储OH_Drawing_TypefaceFallbackInfo对象数组的大小。作为出参使用。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| const void *text | [入参] 文本存储首地址。 |
+| uint32_t byteLength | [入参] 文本长度，单位为字节。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [入参] 文本编码类型OH_Drawing_TextEncoding。 |
+| [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) **typefaceFallbackInfo | [出参] 指向OH_Drawing_TypefaceFallbackInfo数组首元素的指针。 作为出参使用。当不再需要时，使用[OH_Drawing_FontTypefaceFallbackInfoDestroy](capi-drawing-font-h.md#oh_drawing_fonttypefacefallbackinfodestroy)释放该数组。 |
+| uint32_t *infosCount | [出参] 存储OH_Drawing_TypefaceFallbackInfo对象数组的大小。作为出参使用。 |
 
 **返回值：**
 
@@ -648,12 +648,12 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithFallback(const OH_Drawing_Fon
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [in] 指向字型对象OH_Drawing_Font的指针。 |
-| const void *text | [in] 指向文本的指针。 |
-| uint32_t byteLength | [in] 文本长度，单位为字节。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [in] 文本编码类型。 |
-| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) *bounds | [out] 用于承载获取的边界框，可以为NULL，为NULL时不返回边界框信息，仅返回文本宽度。作为出参使用。 |
-| float *textWidth | [out] 用于存储得到的文本宽度，单位为物理像素px。作为出参使用。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| const void *text | [入参] 指向文本的指针。 |
+| uint32_t byteLength | [入参] 文本长度，单位为字节。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [入参] 文本编码类型。 |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) *bounds | [出参] 用于承载获取的边界框，可以为NULL，为NULL时不返回边界框信息，仅返回文本宽度。作为出参使用。 |
+| float *textWidth | [出参] 用于存储得到的文本宽度，单位为物理像素px。作为出参使用。 |
 
 **返回值：**
 
@@ -716,14 +716,14 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(const 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [in] 指向字型对象OH_Drawing_Font的指针。 |
-| const void *text | [in] 指向文本的指针。 |
-| uint32_t byteLength | [in]  文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [in] 文本编码类型。 |
-| [const OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) *brush | [in] 指向画刷对象OH_Drawing_Brush的指针。 |
-| [const OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) *pen | [in] 指向画笔对象OH_Drawing_Pen的指针。 |
-| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) *bounds | [out] 用于承载获取的边界框，可以为NULL，为NULL时不返回边界框信息，仅返回文本宽度。作为出参使用。 |
-| float *textWidth | [out] 用于存储得到的文本宽度，单位为物理像素px。作为出参使用。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| const void *text | [入参] 指向文本的指针。 |
+| uint32_t byteLength | [入参]  文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [入参] 文本编码类型。 |
+| [const OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) *brush | [入参] 指向画刷对象OH_Drawing_Brush的指针。 |
+| [const OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) *pen | [入参] 指向画笔对象OH_Drawing_Pen的指针。 |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) *bounds | [出参] 用于承载获取的边界框，可以为NULL，为NULL时不返回边界框信息，仅返回文本宽度。作为出参使用。 |
+| float *textWidth | [出参] 用于存储得到的文本宽度，单位为物理像素px。作为出参使用。 |
 
 **返回值：**
 
@@ -1463,8 +1463,8 @@ OH_Drawing_ErrorCode OH_Drawing_FontTypefaceFallbackInfoDestroy(OH_Drawing_Typef
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) *infos | [in] 指向OH_Drawing_TypefaceFallbackInfo对象数组的指针。 |
-| uint32_t count | [in] 数组的大小。 |
+| [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) *infos | [入参] 指向OH_Drawing_TypefaceFallbackInfo对象数组的指针。 |
+| uint32_t count | [入参] 数组的大小。 |
 
 **返回值：**
 

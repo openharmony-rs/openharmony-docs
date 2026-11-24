@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| float x |  |
-| float y |  |
-| float width |  |
-| float height |  |
-| float minDepth |  |
-| float maxDepth |  |
+| float x | <!--Device-float x--><!--Device-float x-End--> |
+| float y | <!--Device-float y--><!--Device-float y-End--> |
+| float width | <!--Device-float width--><!--Device-float width-End--> |
+| float height | <!--Device-float height--><!--Device-float height-End--> |
+| float minDepth | <!--Device-float minDepth--><!--Device-float minDepth-End--> |
+| float maxDepth | <!--Device-float maxDepth--><!--Device-float maxDepth-End--> |
 
 

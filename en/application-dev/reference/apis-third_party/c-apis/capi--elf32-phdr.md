@@ -10,13 +10,13 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Word p_type |  |
-| Elf32_Off p_offset |  |
-| Elf32_Addr p_vaddr |  |
-| Elf32_Addr p_paddr |  |
-| Elf32_Word p_filesz |  |
-| Elf32_Word p_memsz |  |
-| Elf32_Word p_flags |  |
-| Elf32_Word p_align |  |
+| Elf32_Word p_type | <!--Device-Elf32_Word p_type--><!--Device-Elf32_Word p_type-End--> |
+| Elf32_Off p_offset | <!--Device-Elf32_Off p_offset--><!--Device-Elf32_Off p_offset-End--> |
+| Elf32_Addr p_vaddr | <!--Device-Elf32_Addr p_vaddr--><!--Device-Elf32_Addr p_vaddr-End--> |
+| Elf32_Addr p_paddr | <!--Device-Elf32_Addr p_paddr--><!--Device-Elf32_Addr p_paddr-End--> |
+| Elf32_Word p_filesz | <!--Device-Elf32_Word p_filesz--><!--Device-Elf32_Word p_filesz-End--> |
+| Elf32_Word p_memsz | <!--Device-Elf32_Word p_memsz--><!--Device-Elf32_Word p_memsz-End--> |
+| Elf32_Word p_flags | <!--Device-Elf32_Word p_flags--><!--Device-Elf32_Word p_flags-End--> |
+| Elf32_Word p_align | <!--Device-Elf32_Word p_align--><!--Device-Elf32_Word p_align-End--> |
 
 

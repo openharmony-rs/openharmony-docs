@@ -172,7 +172,7 @@ Enumerates the URI authorization policies in the drag scenario.<br>
 - FileUri data: By default, the **READ**, **WRITE**, and **PERSIST** permissions are granted in drag scenarios.
 - HTML data: Grants read permission only to the URIs in the img tags of the HTML text.
 
-<!--Device-Udmf_AuthPermission--><!--Device-Udmf_AuthPermission-End-->
+<!--Device-enum Udmf_AuthPermission--><!--Device-enum Udmf_AuthPermission-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -180,10 +180,10 @@ Enumerates the URI authorization policies in the drag scenario.<br>
 
 | Enum item | Description |
 | -- | -- |
-| UDMF_PERM_NONE = 0 | No permission granted.<br>**Since**: 26.0.0 |
-| UDMF_PERM_READ = 1u << 0 | Permission to read or view data.<br>**Since**: 26.0.0 |
-| UDMF_PERM_WRITE = 1u << 1 | Permission to modify data (including READ).<br>**Since**: 26.0.0 |
-| UDMF_PERM_PERSIST = 1u << 2 | Permission to persist files.<br>**Since**: 26.0.0 |
+| UDMF_PERM_NONE = 0 | No permission granted.<br>**Since**: 26.0.0<br><!--Device-UDMF_PERM_NONE = 0--><!--Device-UDMF_PERM_NONE = 0-End--> |
+| UDMF_PERM_READ = 1u << 0 | Permission to read or view data.<br>**Since**: 26.0.0<br><!--Device-UDMF_PERM_READ = 1u << 0--><!--Device-UDMF_PERM_READ = 1u << 0-End--> |
+| UDMF_PERM_WRITE = 1u << 1 | Permission to modify data (including READ).<br>**Since**: 26.0.0<br><!--Device-UDMF_PERM_WRITE = 1u << 1--><!--Device-UDMF_PERM_WRITE = 1u << 1-End--> |
+| UDMF_PERM_PERSIST = 1u << 2 | Permission to persist files.<br>**Since**: 26.0.0<br><!--Device-UDMF_PERM_PERSIST = 1u << 2--><!--Device-UDMF_PERM_PERSIST = 1u << 2-End--> |
 
 
 ## Function description

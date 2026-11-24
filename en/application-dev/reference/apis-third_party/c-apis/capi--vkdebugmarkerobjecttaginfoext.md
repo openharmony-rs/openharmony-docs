@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDebugReportObjectTypeEXT objectType |  |
-| uint64_t object |  |
-| uint64_t tagName |  |
-| size_t tagSize |  |
-| const void* pTag |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDebugReportObjectTypeEXT objectType | <!--Device-VkDebugReportObjectTypeEXT objectType--><!--Device-VkDebugReportObjectTypeEXT objectType-End--> |
+| uint64_t object | <!--Device-uint64_t object--><!--Device-uint64_t object-End--> |
+| uint64_t tagName | <!--Device-uint64_t tagName--><!--Device-uint64_t tagName-End--> |
+| size_t tagSize | <!--Device-size_t tagSize--><!--Device-size_t tagSize-End--> |
+| const void* pTag | <!--Device-const void* pTag--><!--Device-const void* pTag-End--> |
 
 

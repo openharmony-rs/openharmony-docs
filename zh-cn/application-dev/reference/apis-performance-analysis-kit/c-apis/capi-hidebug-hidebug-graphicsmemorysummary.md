@@ -24,7 +24,7 @@ typedef struct HiDebug_GraphicsMemorySummary {...} HiDebug_GraphicsMemorySummary
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t gl | gl内存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。 |
-| uint32_t graph | graph内存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。 |
+| uint32_t gl | gl内存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。<br><!--Device-uint32_t gl--><!--Device-uint32_t gl-End--> |
+| uint32_t graph | graph内存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。<br><!--Device-uint32_t graph--><!--Device-uint32_t graph-End--> |
 
 

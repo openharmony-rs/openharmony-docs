@@ -94,7 +94,7 @@ enum ArkUI_DismissReason
 
 弹窗关闭的触发方式。
 
-<!--Device-ArkUI_DismissReason--><!--Device-ArkUI_DismissReason-End-->
+<!--Device-enum ArkUI_DismissReason--><!--Device-enum ArkUI_DismissReason-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,10 +102,10 @@ enum ArkUI_DismissReason
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DIALOG_DISMISS_BACK_PRESS = 0 | 点击三键back、侧滑（左滑/右滑）、键盘ESC触发。 |
-| DIALOG_DISMISS_TOUCH_OUTSIDE | 点击遮障层触发。 |
-| DIALOG_DISMISS_CLOSE_BUTTON | 点击关闭按钮。 |
-| DIALOG_DISMISS_SLIDE_DOWN | 下拉关闭。 |
+| DIALOG_DISMISS_BACK_PRESS = 0 | 点击三键back、侧滑（左滑/右滑）、键盘ESC触发。<br><!--Device-DIALOG_DISMISS_BACK_PRESS = 0--><!--Device-DIALOG_DISMISS_BACK_PRESS = 0-End--> |
+| DIALOG_DISMISS_TOUCH_OUTSIDE | 点击遮障层触发。<br><!--Device-DIALOG_DISMISS_TOUCH_OUTSIDE--><!--Device-DIALOG_DISMISS_TOUCH_OUTSIDE-End--> |
+| DIALOG_DISMISS_CLOSE_BUTTON | 点击关闭按钮。<br><!--Device-DIALOG_DISMISS_CLOSE_BUTTON--><!--Device-DIALOG_DISMISS_CLOSE_BUTTON-End--> |
+| DIALOG_DISMISS_SLIDE_DOWN | 下拉关闭。<br><!--Device-DIALOG_DISMISS_SLIDE_DOWN--><!--Device-DIALOG_DISMISS_SLIDE_DOWN-End--> |
 
 ### ArkUI_DialogState
 
@@ -117,7 +117,7 @@ enum ArkUI_DialogState
 
 枚举对话框的状态。
 
-<!--Device-ArkUI_DialogState--><!--Device-ArkUI_DialogState-End-->
+<!--Device-enum ArkUI_DialogState--><!--Device-enum ArkUI_DialogState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,12 +125,12 @@ enum ArkUI_DialogState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DIALOG_UNINITIALIZED = 0 | 未初始化，控制器未与dialog绑定时。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_INITIALIZED | 已初始化，控制器与dialog绑定后。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_APPEARING | 显示中，dialog显示动画过程中。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_APPEARED | 已显示，dialog显示动画结束。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_DISAPPEARING | 消失中，dialog消失动画过程中。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_DISAPPEARED | 已消失，dialog消失动画结束后。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| DIALOG_UNINITIALIZED = 0 | 未初始化，控制器未与dialog绑定时。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_UNINITIALIZED = 0--><!--Device-DIALOG_UNINITIALIZED = 0-End--> |
+| DIALOG_INITIALIZED | 已初始化，控制器与dialog绑定后。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_INITIALIZED--><!--Device-DIALOG_INITIALIZED-End--> |
+| DIALOG_APPEARING | 显示中，dialog显示动画过程中。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_APPEARING--><!--Device-DIALOG_APPEARING-End--> |
+| DIALOG_APPEARED | 已显示，dialog显示动画结束。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_APPEARED--><!--Device-DIALOG_APPEARED-End--> |
+| DIALOG_DISAPPEARING | 消失中，dialog消失动画过程中。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_DISAPPEARING--><!--Device-DIALOG_DISAPPEARING-End--> |
+| DIALOG_DISAPPEARED | 已消失，dialog消失动画结束后。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_DISAPPEARED--><!--Device-DIALOG_DISAPPEARED-End--> |
 
 ### ArkUI_LevelMode
 
@@ -142,7 +142,7 @@ enum ArkUI_LevelMode
 
 设置弹窗显示层级。
 
-<!--Device-ArkUI_LevelMode--><!--Device-ArkUI_LevelMode-End-->
+<!--Device-enum ArkUI_LevelMode--><!--Device-enum ArkUI_LevelMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,8 +150,8 @@ enum ArkUI_LevelMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LEVEL_MODE_OVERLAY = 0 | 显示在应用最上层。 |
-| ARKUI_LEVEL_MODE_EMBEDDED | 嵌入式显示在应用的页面内。 |
+| ARKUI_LEVEL_MODE_OVERLAY = 0 | 显示在应用最上层。<br><!--Device-ARKUI_LEVEL_MODE_OVERLAY = 0--><!--Device-ARKUI_LEVEL_MODE_OVERLAY = 0-End--> |
+| ARKUI_LEVEL_MODE_EMBEDDED | 嵌入式显示在应用的页面内。<br><!--Device-ARKUI_LEVEL_MODE_EMBEDDED--><!--Device-ARKUI_LEVEL_MODE_EMBEDDED-End--> |
 
 ### ArkUI_ImmersiveMode
 
@@ -163,7 +163,7 @@ enum ArkUI_ImmersiveMode
 
 指定嵌入式弹窗的蒙层覆盖区域。
 
-<!--Device-ArkUI_ImmersiveMode--><!--Device-ArkUI_ImmersiveMode-End-->
+<!--Device-enum ArkUI_ImmersiveMode--><!--Device-enum ArkUI_ImmersiveMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,8 +171,8 @@ enum ArkUI_ImmersiveMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | 弹窗蒙层按照显示页面给定的布局约束显示。 |
-| ARKUI_IMMERSIVE_MODE_EXTEND | 弹窗蒙层可扩展至覆盖状态栏和导航条。 |
+| ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | 弹窗蒙层按照显示页面给定的布局约束显示。<br><!--Device-ARKUI_IMMERSIVE_MODE_DEFAULT = 0--><!--Device-ARKUI_IMMERSIVE_MODE_DEFAULT = 0-End--> |
+| ARKUI_IMMERSIVE_MODE_EXTEND | 弹窗蒙层可扩展至覆盖状态栏和导航条。<br><!--Device-ARKUI_IMMERSIVE_MODE_EXTEND--><!--Device-ARKUI_IMMERSIVE_MODE_EXTEND-End--> |
 
 ### OH_ArkUI_DialogDisplayModeInSubWindow
 
@@ -184,7 +184,7 @@ enum OH_ArkUI_DialogDisplayModeInSubWindow
 
 弹窗在子窗口中的显示模式。
 
-<!--Device-OH_ArkUI_DialogDisplayModeInSubWindow--><!--Device-OH_ArkUI_DialogDisplayModeInSubWindow-End-->
+<!--Device-enum OH_ArkUI_DialogDisplayModeInSubWindow--><!--Device-enum OH_ArkUI_DialogDisplayModeInSubWindow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,8 +192,8 @@ enum OH_ArkUI_DialogDisplayModeInSubWindow
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0 | 弹窗在屏幕居中显示。<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED | 弹窗在应用窗口居中显示。<br>**起始版本：** 26.0.0 |
+| OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0 | 弹窗在屏幕居中显示。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0--><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0-End--> |
+| OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED | 弹窗在应用窗口居中显示。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED--><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED-End--> |
 
 
 ## 函数说明
@@ -1349,7 +1349,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| const ArkUI_AttributeItem* backgroundBlurStyleOptions | 弹窗的背景模糊效果。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br>.value[0].i32：表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。 <br>.value[1]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 <br>.value[2]?.f32：表示模糊效果程度，取[0.0,1.0]范围内的值，超出有效值区间时取边界值。 <br>.value[3]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[4]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[5]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy)枚举值。 <br>.value[6]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
+| const ArkUI_AttributeItem* backgroundBlurStyleOptions | 弹窗的背景模糊效果。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br>.value[0].i32：表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。 <br>.value[1]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 <br>.value[2]?.f32：表示模糊效果程度，取[0.0,1.0]范围内的值，超出有效值区间时取边界值。 <br>.value[3]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[4]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[5]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。 <br>.value[6]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
 
 **返回值：**
 
@@ -1378,7 +1378,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| const ArkUI_AttributeItem* backgroundEffect | 弹窗的背景效果参数。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br>.value[0].f32：表示模糊半径，单位为vp。 <br>.value[1]?.f32：表示饱和度。 <br>.value[2]?.f32：表示亮度。 <br>.value[3]?.u32：表示颜色，0xargb类型。 <br>.value[4]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 <br>.value[5]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[6]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[7]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy)枚举值。 <br>.value[8]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
+| const ArkUI_AttributeItem* backgroundEffect | 弹窗的背景效果参数。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br>.value[0].f32：表示模糊半径，单位为vp。 <br>.value[1]?.f32：表示饱和度。 <br>.value[2]?.f32：表示亮度。 <br>.value[3]?.u32：表示颜色，0xargb类型。 <br>.value[4]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 <br>.value[5]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[6]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。 <br>.value[7]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。 <br>.value[8]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
 
 **返回值：**
 

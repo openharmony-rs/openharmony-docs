@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 clustercullingShader |  |
-| VkBool32 multiviewClusterCullingShader |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 clustercullingShader | <!--Device-VkBool32 clustercullingShader--><!--Device-VkBool32 clustercullingShader-End--> |
+| VkBool32 multiviewClusterCullingShader | <!--Device-VkBool32 multiviewClusterCullingShader--><!--Device-VkBool32 multiviewClusterCullingShader-End--> |
 
 

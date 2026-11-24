@@ -24,7 +24,7 @@ Defines a struct for the certificate credential detail list.
 
 | Name | Description |
 | -- | -- |
-| uint32_t credentialCount | Number of certificate credential details. |
-| [OH_CM_Credential](capi-certmanagertype-oh-cm-credential.md) *credential | Indicates the credential data. |
+| uint32_t credentialCount | Number of certificate credential details.<br><!--Device-uint32_t credentialCount--><!--Device-uint32_t credentialCount-End--> |
+| [OH_CM_Credential](capi-certmanagertype-oh-cm-credential.md) *credential | Indicates the credential data.<br><!--Device-OH_CM_Credential *credential--><!--Device-OH_CM_Credential *credential-End--> |
 
 

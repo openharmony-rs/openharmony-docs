@@ -24,7 +24,7 @@ Subsample结构类型定义。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t clearHeaderLen | 头部清流数据的长度。<br>**起始版本：** 12 |
-| uint32_t payLoadLen | 加密数据的长度。<br>**起始版本：** 12 |
+| uint32_t clearHeaderLen | 头部清流数据的长度。<br>**起始版本：** 12<br><!--Device-uint32_t clearHeaderLen--><!--Device-uint32_t clearHeaderLen-End--> |
+| uint32_t payLoadLen | 加密数据的长度。<br>**起始版本：** 12<br><!--Device-uint32_t payLoadLen--><!--Device-uint32_t payLoadLen-End--> |
 
 

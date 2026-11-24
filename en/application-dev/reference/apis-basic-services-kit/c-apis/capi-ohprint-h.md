@@ -92,7 +92,7 @@ enum Print_ErrorCode
 
 Enumerates the error codes.
 
-<!--Device-Print_ErrorCode--><!--Device-Print_ErrorCode-End-->
+<!--Device-enum Print_ErrorCode--><!--Device-enum Print_ErrorCode-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -100,17 +100,17 @@ Enumerates the error codes.
 
 | Enum item | Description |
 | -- | -- |
-| PRINT_ERROR_NONE = 0 | Operation successful. |
-| PRINT_ERROR_NO_PERMISSION = 201 | Permission verification failed. Ensure that the corresponding permission has been declared in the app configuration. |
-| PRINT_ERROR_INVALID_PARAMETER = 401 | Invalid parameter. Check the type and value range of the passed parameter. |
-| PRINT_ERROR_GENERIC_FAILURE = 24300001 | Generic internal error. Check the running status of the printing service and try again. |
-| PRINT_ERROR_RPC_FAILURE = 24300002 | RPC communication error. Ensure that the printing service has been started and try again. |
-| PRINT_ERROR_SERVER_FAILURE = 24300003 | Server error. Check the running status of the printing service. |
-| PRINT_ERROR_INVALID_EXTENSION = 24300004 | Invalid extension. Ensure that a valid printing extension has been installed. |
-| PRINT_ERROR_INVALID_PRINTER = 24300005 | Invalid printer. Ensure that the printer is in the list of discovered or connected printers. |
-| PRINT_ERROR_INVALID_PRINT_JOB = 24300006 | Invalid print task. Ensure that the print task information is complete and the printer is connected. |
-| PRINT_ERROR_FILE_IO = 24300007 | Failure to read data from or write data to the file. Check the file path and access permission. |
-| PRINT_ERROR_UNKNOWN = 24300255 | Unknown error. Check the printing service status and try again. If the issue persists, contact technical support. |
+| PRINT_ERROR_NONE = 0 | Operation successful.<br><!--Device-PRINT_ERROR_NONE = 0--><!--Device-PRINT_ERROR_NONE = 0-End--> |
+| PRINT_ERROR_NO_PERMISSION = 201 | Permission verification failed. Ensure that the corresponding permission has been declared in the app configuration.<br><!--Device-PRINT_ERROR_NO_PERMISSION = 201--><!--Device-PRINT_ERROR_NO_PERMISSION = 201-End--> |
+| PRINT_ERROR_INVALID_PARAMETER = 401 | Invalid parameter. Check the type and value range of the passed parameter.<br><!--Device-PRINT_ERROR_INVALID_PARAMETER = 401--><!--Device-PRINT_ERROR_INVALID_PARAMETER = 401-End--> |
+| PRINT_ERROR_GENERIC_FAILURE = 24300001 | Generic internal error. Check the running status of the printing service and try again.<br><!--Device-PRINT_ERROR_GENERIC_FAILURE = 24300001--><!--Device-PRINT_ERROR_GENERIC_FAILURE = 24300001-End--> |
+| PRINT_ERROR_RPC_FAILURE = 24300002 | RPC communication error. Ensure that the printing service has been started and try again.<br><!--Device-PRINT_ERROR_RPC_FAILURE = 24300002--><!--Device-PRINT_ERROR_RPC_FAILURE = 24300002-End--> |
+| PRINT_ERROR_SERVER_FAILURE = 24300003 | Server error. Check the running status of the printing service.<br><!--Device-PRINT_ERROR_SERVER_FAILURE = 24300003--><!--Device-PRINT_ERROR_SERVER_FAILURE = 24300003-End--> |
+| PRINT_ERROR_INVALID_EXTENSION = 24300004 | Invalid extension. Ensure that a valid printing extension has been installed.<br><!--Device-PRINT_ERROR_INVALID_EXTENSION = 24300004--><!--Device-PRINT_ERROR_INVALID_EXTENSION = 24300004-End--> |
+| PRINT_ERROR_INVALID_PRINTER = 24300005 | Invalid printer. Ensure that the printer is in the list of discovered or connected printers.<br><!--Device-PRINT_ERROR_INVALID_PRINTER = 24300005--><!--Device-PRINT_ERROR_INVALID_PRINTER = 24300005-End--> |
+| PRINT_ERROR_INVALID_PRINT_JOB = 24300006 | Invalid print task. Ensure that the print task information is complete and the printer is connected.<br><!--Device-PRINT_ERROR_INVALID_PRINT_JOB = 24300006--><!--Device-PRINT_ERROR_INVALID_PRINT_JOB = 24300006-End--> |
+| PRINT_ERROR_FILE_IO = 24300007 | Failure to read data from or write data to the file. Check the file path and access permission.<br><!--Device-PRINT_ERROR_FILE_IO = 24300007--><!--Device-PRINT_ERROR_FILE_IO = 24300007-End--> |
+| PRINT_ERROR_UNKNOWN = 24300255 | Unknown error. Check the printing service status and try again. If the issue persists, contact technical support.<br><!--Device-PRINT_ERROR_UNKNOWN = 24300255--><!--Device-PRINT_ERROR_UNKNOWN = 24300255-End--> |
 
 ### Print_PrinterState
 
@@ -122,7 +122,7 @@ enum Print_PrinterState
 
 Enumerates the printer states.
 
-<!--Device-Print_PrinterState--><!--Device-Print_PrinterState-End-->
+<!--Device-enum Print_PrinterState--><!--Device-enum Print_PrinterState-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -130,9 +130,9 @@ Enumerates the printer states.
 
 | Enum item | Description |
 | -- | -- |
-| PRINTER_IDLE | The printer is idle. |
-| PRINTER_BUSY | The printer is busy. |
-| PRINTER_UNAVAILABLE | The printer is unavailable. |
+| PRINTER_IDLE | The printer is idle.<br><!--Device-PRINTER_IDLE--><!--Device-PRINTER_IDLE-End--> |
+| PRINTER_BUSY | The printer is busy.<br><!--Device-PRINTER_BUSY--><!--Device-PRINTER_BUSY-End--> |
+| PRINTER_UNAVAILABLE | The printer is unavailable.<br><!--Device-PRINTER_UNAVAILABLE--><!--Device-PRINTER_UNAVAILABLE-End--> |
 
 ### Print_DiscoveryEvent
 
@@ -144,7 +144,7 @@ enum Print_DiscoveryEvent
 
 Enumerates the printer discovery events.
 
-<!--Device-Print_DiscoveryEvent--><!--Device-Print_DiscoveryEvent-End-->
+<!--Device-enum Print_DiscoveryEvent--><!--Device-enum Print_DiscoveryEvent-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -152,10 +152,10 @@ Enumerates the printer discovery events.
 
 | Enum item | Description |
 | -- | -- |
-| PRINTER_DISCOVERED = 0 | Printer discovered. |
-| PRINTER_LOST = 1 | Printer lost. |
-| PRINTER_CONNECTING = 2 | Printer connecting. |
-| PRINTER_CONNECTED = 3 | Printer connected. |
+| PRINTER_DISCOVERED = 0 | Printer discovered.<br><!--Device-PRINTER_DISCOVERED = 0--><!--Device-PRINTER_DISCOVERED = 0-End--> |
+| PRINTER_LOST = 1 | Printer lost.<br><!--Device-PRINTER_LOST = 1--><!--Device-PRINTER_LOST = 1-End--> |
+| PRINTER_CONNECTING = 2 | Printer connecting.<br><!--Device-PRINTER_CONNECTING = 2--><!--Device-PRINTER_CONNECTING = 2-End--> |
+| PRINTER_CONNECTED = 3 | Printer connected.<br><!--Device-PRINTER_CONNECTED = 3--><!--Device-PRINTER_CONNECTED = 3-End--> |
 
 ### Print_PrinterEvent
 
@@ -167,7 +167,7 @@ enum Print_PrinterEvent
 
 Enumerates the printer change events.
 
-<!--Device-Print_PrinterEvent--><!--Device-Print_PrinterEvent-End-->
+<!--Device-enum Print_PrinterEvent--><!--Device-enum Print_PrinterEvent-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -175,10 +175,10 @@ Enumerates the printer change events.
 
 | Enum item | Description |
 | -- | -- |
-| PRINTER_ADDED = 0 | Printer added. |
-| PRINTER_DELETED = 1 | Printer deleted. |
-| PRINTER_STATE_CHANGED = 2 | Printer changed. |
-| PRINTER_INFO_CHANGED = 3 | Printer information changed. |
+| PRINTER_ADDED = 0 | Printer added.<br><!--Device-PRINTER_ADDED = 0--><!--Device-PRINTER_ADDED = 0-End--> |
+| PRINTER_DELETED = 1 | Printer deleted.<br><!--Device-PRINTER_DELETED = 1--><!--Device-PRINTER_DELETED = 1-End--> |
+| PRINTER_STATE_CHANGED = 2 | Printer changed.<br><!--Device-PRINTER_STATE_CHANGED = 2--><!--Device-PRINTER_STATE_CHANGED = 2-End--> |
+| PRINTER_INFO_CHANGED = 3 | Printer information changed.<br><!--Device-PRINTER_INFO_CHANGED = 3--><!--Device-PRINTER_INFO_CHANGED = 3-End--> |
 
 ### Print_DuplexMode
 
@@ -190,7 +190,7 @@ enum Print_DuplexMode
 
 Enumerates the duplex modes.
 
-<!--Device-Print_DuplexMode--><!--Device-Print_DuplexMode-End-->
+<!--Device-enum Print_DuplexMode--><!--Device-enum Print_DuplexMode-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -198,9 +198,9 @@ Enumerates the duplex modes.
 
 | Enum item | Description |
 | -- | -- |
-| DUPLEX_MODE_ONE_SIDED = 0 | Single-sided mode. |
-| DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1 | Duplex mode with flipping on long edge. |
-| DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2 | Duplex mode with flipping on short edge. |
+| DUPLEX_MODE_ONE_SIDED = 0 | Single-sided mode.<br><!--Device-DUPLEX_MODE_ONE_SIDED = 0--><!--Device-DUPLEX_MODE_ONE_SIDED = 0-End--> |
+| DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1 | Duplex mode with flipping on long edge.<br><!--Device-DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1--><!--Device-DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1-End--> |
+| DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2 | Duplex mode with flipping on short edge.<br><!--Device-DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2--><!--Device-DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2-End--> |
 
 ### Print_ColorMode
 
@@ -212,7 +212,7 @@ enum Print_ColorMode
 
 Enumerates the color modes.
 
-<!--Device-Print_ColorMode--><!--Device-Print_ColorMode-End-->
+<!--Device-enum Print_ColorMode--><!--Device-enum Print_ColorMode-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -220,9 +220,9 @@ Enumerates the color modes.
 
 | Enum item | Description |
 | -- | -- |
-| COLOR_MODE_MONOCHROME = 0 | B/W mode. |
-| COLOR_MODE_COLOR = 1 | Color mode. The color mode is suitable for documents (such as images) that require color display. The monochrome mode is suitable for printing plain text or drafts to save consumables. The automatic mode allows the system to automatically select the color mode. |
-| COLOR_MODE_AUTO = 2 | Auto mode. |
+| COLOR_MODE_MONOCHROME = 0 | B/W mode.<br><!--Device-COLOR_MODE_MONOCHROME = 0--><!--Device-COLOR_MODE_MONOCHROME = 0-End--> |
+| COLOR_MODE_COLOR = 1 | Color mode. The color mode is suitable for documents (such as images) that require color display. The monochrome mode is suitable for printing plain text or drafts to save consumables. The automatic mode allows the system to automatically select the color mode.<br><!--Device-COLOR_MODE_COLOR = 1--><!--Device-COLOR_MODE_COLOR = 1-End--> |
+| COLOR_MODE_AUTO = 2 | Auto mode.<br><!--Device-COLOR_MODE_AUTO = 2--><!--Device-COLOR_MODE_AUTO = 2-End--> |
 
 ### Print_OrientationMode
 
@@ -234,7 +234,7 @@ enum Print_OrientationMode
 
 Enumerates the orientation modes.
 
-<!--Device-Print_OrientationMode--><!--Device-Print_OrientationMode-End-->
+<!--Device-enum Print_OrientationMode--><!--Device-enum Print_OrientationMode-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -242,11 +242,11 @@ Enumerates the orientation modes.
 
 | Enum item | Description |
 | -- | -- |
-| ORIENTATION_MODE_PORTRAIT = 0 | Portrait mode. |
-| ORIENTATION_MODE_LANDSCAPE = 1 | Landscape mode. |
-| ORIENTATION_MODE_REVERSE_LANDSCAPE = 2 | Reverse landscape mode. |
-| ORIENTATION_MODE_REVERSE_PORTRAIT = 3 | Reverse portrait mode. |
-| ORIENTATION_MODE_NONE = 4 | Not specified. |
+| ORIENTATION_MODE_PORTRAIT = 0 | Portrait mode.<br><!--Device-ORIENTATION_MODE_PORTRAIT = 0--><!--Device-ORIENTATION_MODE_PORTRAIT = 0-End--> |
+| ORIENTATION_MODE_LANDSCAPE = 1 | Landscape mode.<br><!--Device-ORIENTATION_MODE_LANDSCAPE = 1--><!--Device-ORIENTATION_MODE_LANDSCAPE = 1-End--> |
+| ORIENTATION_MODE_REVERSE_LANDSCAPE = 2 | Reverse landscape mode.<br><!--Device-ORIENTATION_MODE_REVERSE_LANDSCAPE = 2--><!--Device-ORIENTATION_MODE_REVERSE_LANDSCAPE = 2-End--> |
+| ORIENTATION_MODE_REVERSE_PORTRAIT = 3 | Reverse portrait mode.<br><!--Device-ORIENTATION_MODE_REVERSE_PORTRAIT = 3--><!--Device-ORIENTATION_MODE_REVERSE_PORTRAIT = 3-End--> |
+| ORIENTATION_MODE_NONE = 4 | Not specified.<br><!--Device-ORIENTATION_MODE_NONE = 4--><!--Device-ORIENTATION_MODE_NONE = 4-End--> |
 
 ### Print_Quality
 
@@ -258,7 +258,7 @@ enum Print_Quality
 
 Enumerates the print qualities.
 
-<!--Device-Print_Quality--><!--Device-Print_Quality-End-->
+<!--Device-enum Print_Quality--><!--Device-enum Print_Quality-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -266,9 +266,9 @@ Enumerates the print qualities.
 
 | Enum item | Description |
 | -- | -- |
-| PRINT_QUALITY_DRAFT = 3 | Draft-quality mode. |
-| PRINT_QUALITY_NORMAL = 4 | Normal-quality mode. |
-| PRINT_QUALITY_HIGH = 5 | High-quality mode. |
+| PRINT_QUALITY_DRAFT = 3 | Draft-quality mode.<br><!--Device-PRINT_QUALITY_DRAFT = 3--><!--Device-PRINT_QUALITY_DRAFT = 3-End--> |
+| PRINT_QUALITY_NORMAL = 4 | Normal-quality mode.<br><!--Device-PRINT_QUALITY_NORMAL = 4--><!--Device-PRINT_QUALITY_NORMAL = 4-End--> |
+| PRINT_QUALITY_HIGH = 5 | High-quality mode.<br><!--Device-PRINT_QUALITY_HIGH = 5--><!--Device-PRINT_QUALITY_HIGH = 5-End--> |
 
 ### Print_DocumentFormat
 
@@ -280,7 +280,7 @@ enum Print_DocumentFormat
 
 Enumerates the MIME types.
 
-<!--Device-Print_DocumentFormat--><!--Device-Print_DocumentFormat-End-->
+<!--Device-enum Print_DocumentFormat--><!--Device-enum Print_DocumentFormat-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -288,11 +288,11 @@ Enumerates the MIME types.
 
 | Enum item | Description |
 | -- | -- |
-| DOCUMENT_FORMAT_AUTO | application/octet-stream. |
-| DOCUMENT_FORMAT_JPEG | image/jpeg. |
-| DOCUMENT_FORMAT_PDF | application/pdf. |
-| DOCUMENT_FORMAT_POSTSCRIPT | application/postscript. |
-| DOCUMENT_FORMAT_TEXT | text/plain. |
+| DOCUMENT_FORMAT_AUTO | application/octet-stream.<br><!--Device-DOCUMENT_FORMAT_AUTO--><!--Device-DOCUMENT_FORMAT_AUTO-End--> |
+| DOCUMENT_FORMAT_JPEG | image/jpeg.<br><!--Device-DOCUMENT_FORMAT_JPEG--><!--Device-DOCUMENT_FORMAT_JPEG-End--> |
+| DOCUMENT_FORMAT_PDF | application/pdf.<br><!--Device-DOCUMENT_FORMAT_PDF--><!--Device-DOCUMENT_FORMAT_PDF-End--> |
+| DOCUMENT_FORMAT_POSTSCRIPT | application/postscript.<br><!--Device-DOCUMENT_FORMAT_POSTSCRIPT--><!--Device-DOCUMENT_FORMAT_POSTSCRIPT-End--> |
+| DOCUMENT_FORMAT_TEXT | text/plain.<br><!--Device-DOCUMENT_FORMAT_TEXT--><!--Device-DOCUMENT_FORMAT_TEXT-End--> |
 
 ### Print_JobDocAdapterState
 
@@ -304,7 +304,7 @@ enum Print_JobDocAdapterState
 
 Enumerates the print job adapter states.
 
-<!--Device-Print_JobDocAdapterState--><!--Device-Print_JobDocAdapterState-End-->
+<!--Device-enum Print_JobDocAdapterState--><!--Device-enum Print_JobDocAdapterState-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -312,13 +312,13 @@ Enumerates the print job adapter states.
 
 | Enum item | Description |
 | -- | -- |
-| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0 | Print job preview destroyed. |
-| PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1 | Successful print job. |
-| PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2 | Print job failed. |
-| PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3 | Print job canceled. |
-| PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4 | Print job blocked. |
-| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | Print job preview destroyed due to cancellation. |
-| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6 | Print job preview destroyed due to startup. |
+| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0 | Print job preview destroyed.<br><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0--><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1 | Successful print job.<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2 | Print job failed.<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3 | Print job canceled.<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4 | Print job blocked.<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4-End--> |
+| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | Print job preview destroyed due to cancellation.<br><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5--><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5-End--> |
+| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6 | Print job preview destroyed due to startup.<br><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6--><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6-End--> |
 
 ### OH_Print_JobState
 
@@ -330,7 +330,7 @@ enum OH_Print_JobState
 
 Enumerates the print job states.
 
-<!--Device-OH_Print_JobState--><!--Device-OH_Print_JobState-End-->
+<!--Device-enum OH_Print_JobState--><!--Device-enum OH_Print_JobState-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -338,10 +338,10 @@ Enumerates the print job states.
 
 | Enum item | Description |
 | -- | -- |
-| OH_PRINT_JOB_SUCCEED = 0 | Successful print job. |
-| OH_PRINT_JOB_FAIL = 1 | Print job failed. |
-| OH_PRINT_JOB_CANCEL = 2 | Print job canceled. |
-| OH_PRINT_JOB_BLOCK = 3 | Print job blocked. |
+| OH_PRINT_JOB_SUCCEED = 0 | Successful print job.<br><!--Device-OH_PRINT_JOB_SUCCEED = 0--><!--Device-OH_PRINT_JOB_SUCCEED = 0-End--> |
+| OH_PRINT_JOB_FAIL = 1 | Print job failed.<br><!--Device-OH_PRINT_JOB_FAIL = 1--><!--Device-OH_PRINT_JOB_FAIL = 1-End--> |
+| OH_PRINT_JOB_CANCEL = 2 | Print job canceled.<br><!--Device-OH_PRINT_JOB_CANCEL = 2--><!--Device-OH_PRINT_JOB_CANCEL = 2-End--> |
+| OH_PRINT_JOB_BLOCK = 3 | Print job blocked.<br><!--Device-OH_PRINT_JOB_BLOCK = 3--><!--Device-OH_PRINT_JOB_BLOCK = 3-End--> |
 
 
 ## Function description

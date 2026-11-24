@@ -39,7 +39,7 @@ enum OH_Drawing_LatticeRectType
 
 Enumerates the types of rectangles used to fill the lattices. It is applicable only to rectangular lattice objects.
 
-<!--Device-OH_Drawing_LatticeRectType--><!--Device-OH_Drawing_LatticeRectType-End-->
+<!--Device-enum OH_Drawing_LatticeRectType--><!--Device-enum OH_Drawing_LatticeRectType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -47,9 +47,9 @@ Enumerates the types of rectangles used to fill the lattices. It is applicable o
 
 | Enum item | Description |
 | -- | -- |
-| DEFAULT | Draws an image into the rectangular lattice.<br>**Since**: 23 |
-| TRANSPARENT | Sets the rectangular lattice to be transparent.<br>**Since**: 23 |
-| FIXED_COLOR | Draws the colors from the **fColors** array of the rectangular lattice object into the lattice.<br>**Since**: 23 |
+| DEFAULT | Draws an image into the rectangular lattice.<br>**Since**: 23<br><!--Device-DEFAULT--><!--Device-DEFAULT-End--> |
+| TRANSPARENT | Sets the rectangular lattice to be transparent.<br>**Since**: 23<br><!--Device-TRANSPARENT--><!--Device-TRANSPARENT-End--> |
+| FIXED_COLOR | Draws the colors from the colors array of the rectangular lattice object into the lattice.<br>**Since**: 23<br><!--Device-FIXED_COLOR--><!--Device-FIXED_COLOR-End--> |
 
 
 ## Function description

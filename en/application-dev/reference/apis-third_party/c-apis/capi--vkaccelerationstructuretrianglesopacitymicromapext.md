@@ -10,15 +10,15 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkIndexType indexType |  |
-| [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) indexBuffer |  |
-| VkDeviceSize indexStride |  |
-| uint32_t baseTriangle |  |
-| uint32_t usageCountsCount |  |
-| [const VkMicromapUsageEXT*](capi--vkmicromapusageext.md) pUsageCounts |  |
-| const [VkMicromapUsageEXT](capi--vkmicromapusageext.md)* const* ppUsageCounts |  |
-| VkMicromapEXT micromap |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkIndexType indexType | <!--Device-VkIndexType indexType--><!--Device-VkIndexType indexType-End--> |
+| [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) indexBuffer | <!--Device-VkDeviceOrHostAddressConstKHR indexBuffer--><!--Device-VkDeviceOrHostAddressConstKHR indexBuffer-End--> |
+| VkDeviceSize indexStride | <!--Device-VkDeviceSize indexStride--><!--Device-VkDeviceSize indexStride-End--> |
+| uint32_t baseTriangle | <!--Device-uint32_t baseTriangle--><!--Device-uint32_t baseTriangle-End--> |
+| uint32_t usageCountsCount | <!--Device-uint32_t usageCountsCount--><!--Device-uint32_t usageCountsCount-End--> |
+| [const VkMicromapUsageEXT*](capi--vkmicromapusageext.md) pUsageCounts | <!--Device-const VkMicromapUsageEXT* pUsageCounts--><!--Device-const VkMicromapUsageEXT* pUsageCounts-End--> |
+| const [VkMicromapUsageEXT](capi--vkmicromapusageext.md)* const* ppUsageCounts | <!--Device-const VkMicromapUsageEXT* const* ppUsageCounts--><!--Device-const VkMicromapUsageEXT* const* ppUsageCounts-End--> |
+| VkMicromapEXT micromap | <!--Device-VkMicromapEXT micromap--><!--Device-VkMicromapEXT micromap-End--> |
 
 

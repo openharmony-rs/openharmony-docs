@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t width |  |
-| uint32_t height |  |
+| uint32_t width | <!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | <!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

@@ -24,9 +24,9 @@ typedef struct ArkUI_AccessibleRect {...} ArkUI_AccessibleRect
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t leftTopX | 左上角X轴坐标位置。 |
-| int32_t leftTopY | 左上角Y轴坐标位置。 |
-| int32_t rightBottomX | 右下角X轴坐标位置。 |
-| int32_t rightBottomY | 右下角Y轴坐标位置。 |
+| int32_t leftTopX | 左上角X轴坐标位置。<br><!--Device-int32_t leftTopX--><!--Device-int32_t leftTopX-End--> |
+| int32_t leftTopY | 左上角Y轴坐标位置。<br><!--Device-int32_t leftTopY--><!--Device-int32_t leftTopY-End--> |
+| int32_t rightBottomX | 右下角X轴坐标位置。<br><!--Device-int32_t rightBottomX--><!--Device-int32_t rightBottomX-End--> |
+| int32_t rightBottomY | 右下角Y轴坐标位置。<br><!--Device-int32_t rightBottomY--><!--Device-int32_t rightBottomY-End--> |
 
 

@@ -65,18 +65,18 @@ enum OH_AVRecorder_AudioSourceType
 
 Enumerates the audio source types of the AVRecorder.
 
-<!--Device-OH_AVRecorder_AudioSourceType--><!--Device-OH_AVRecorder_AudioSourceType-End-->
+<!--Device-enum OH_AVRecorder_AudioSourceType--><!--Device-enum OH_AVRecorder_AudioSourceType-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_DEFAULT = 0 | Default audio source. This parameter is applicable to common recording scenarios where no specific audio source type needs to be specified.<br>**Since**: 18 |
-| AVRECORDER_MIC = 1 | Microphone audio source.<br>**Since**: 18 |
-| AVRECORDER_VOICE_RECOGNITION = 2 | Audio source in speech recognition scenarios.<br>**Since**: 18 |
-| AVRECORDER_VOICE_COMMUNICATION = 7 | Voice communication source.<br>**Since**: 18 |
-| AVRECORDER_VOICE_MESSAGE = 10 | Voice message source.<br>**Since**: 18 |
-| AVRECORDER_CAMCORDER = 13 | Audio source in camera recording scenarios.<br>**Since**: 18 |
+| AVRECORDER_DEFAULT = 0 | Default audio source. This parameter is applicable to common recording scenarios where no specific audio source type needs to be specified.<br>**Since**: 18<br><!--Device-AVRECORDER_DEFAULT = 0--><!--Device-AVRECORDER_DEFAULT = 0-End--> |
+| AVRECORDER_MIC = 1 | Microphone audio source.<br>**Since**: 18<br><!--Device-AVRECORDER_MIC = 1--><!--Device-AVRECORDER_MIC = 1-End--> |
+| AVRECORDER_VOICE_RECOGNITION = 2 | Audio source in speech recognition scenarios.<br>**Since**: 18<br><!--Device-AVRECORDER_VOICE_RECOGNITION = 2--><!--Device-AVRECORDER_VOICE_RECOGNITION = 2-End--> |
+| AVRECORDER_VOICE_COMMUNICATION = 7 | Voice communication source.<br>**Since**: 18<br><!--Device-AVRECORDER_VOICE_COMMUNICATION = 7--><!--Device-AVRECORDER_VOICE_COMMUNICATION = 7-End--> |
+| AVRECORDER_VOICE_MESSAGE = 10 | Voice message source.<br>**Since**: 18<br><!--Device-AVRECORDER_VOICE_MESSAGE = 10--><!--Device-AVRECORDER_VOICE_MESSAGE = 10-End--> |
+| AVRECORDER_CAMCORDER = 13 | Audio source in camera recording scenarios.<br>**Since**: 18<br><!--Device-AVRECORDER_CAMCORDER = 13--><!--Device-AVRECORDER_CAMCORDER = 13-End--> |
 
 ### OH_AVRecorder_VideoSourceType
 
@@ -88,14 +88,14 @@ enum OH_AVRecorder_VideoSourceType
 
 Enumerates the video source types of the AVRecorder.
 
-<!--Device-OH_AVRecorder_VideoSourceType--><!--Device-OH_AVRecorder_VideoSourceType-End-->
+<!--Device-enum OH_AVRecorder_VideoSourceType--><!--Device-enum OH_AVRecorder_VideoSourceType-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_SURFACE_YUV = 0 | Raw data surface. This parameter is applicable to scenarios where the original video frame data needs to be encoded.<br>**Since**: 18 |
-| AVRECORDER_SURFACE_ES = 1 | ES data surface. This parameter is applicable to scenarios where the existing encoded data (such as the hard coding output) does not need to be encoded again.<br>**Since**: 18 |
+| AVRECORDER_SURFACE_YUV = 0 | Raw data surface. This parameter is applicable to scenarios where the original video frame data needs to be encoded.<br>**Since**: 18<br><!--Device-AVRECORDER_SURFACE_YUV = 0--><!--Device-AVRECORDER_SURFACE_YUV = 0-End--> |
+| AVRECORDER_SURFACE_ES = 1 | ES data surface. This parameter is applicable to scenarios where the existing encoded data (such as the hard coding output) does not need to be encoded again.<br>**Since**: 18<br><!--Device-AVRECORDER_SURFACE_ES = 1--><!--Device-AVRECORDER_SURFACE_ES = 1-End--> |
 
 ### OH_AVRecorder_CodecMimeType
 
@@ -107,20 +107,20 @@ enum OH_AVRecorder_CodecMimeType
 
 Enumerates the MIME types of the encoder, which are used to specify the encoding format of audio and video data during recording. The encoder type must match the container format. If they do not match, the recording will fail. For details about the mapping, see the description of the corresponding encoder type.
 
-<!--Device-OH_AVRecorder_CodecMimeType--><!--Device-OH_AVRecorder_CodecMimeType-End-->
+<!--Device-enum OH_AVRecorder_CodecMimeType--><!--Device-enum OH_AVRecorder_CodecMimeType-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_VIDEO_AVC = 2 | MIME type of the H.264 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18 |
-| AVRECORDER_AUDIO_AAC = 3 | MIME type of the AAC audio encoder. It must be used together with the AAC, MP4, or M4A container format.<br>**Since**: 18 |
-| AVRECORDER_AUDIO_MP3 = 4 | MIME type of the MP3 audio encoder. It must be used together with the MP3 container format.<br>**Since**: 18 |
-| AVRECORDER_AUDIO_G711MU = 5 | MIME type of the G711-mulaw audio encoder. It must be used together with the WAV container format.<br>**Since**: 18 |
-| AVRECORDER_VIDEO_MPEG4 = 6 | MIME type of the MPEG4 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18 |
-| AVRECORDER_VIDEO_HEVC = 8 | MIME type of the H.265 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18 |
-| AVRECORDER_AUDIO_AMR_NB = 9 | MIME type of the AMR_NB audio encoder. It must be used together with the AMR container format.<br>**Since**: 18 |
-| AVRECORDER_AUDIO_AMR_WB = 10 | MIME type of the AMR_WB audio encoder. It must be used together with the AMR container format.<br>**Since**: 18 |
+| AVRECORDER_VIDEO_AVC = 2 | MIME type of the H.264 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18<br><!--Device-AVRECORDER_VIDEO_AVC = 2--><!--Device-AVRECORDER_VIDEO_AVC = 2-End--> |
+| AVRECORDER_AUDIO_AAC = 3 | MIME type of the AAC audio encoder. It must be used together with the AAC, MP4, or M4A container format.<br>**Since**: 18<br><!--Device-AVRECORDER_AUDIO_AAC = 3--><!--Device-AVRECORDER_AUDIO_AAC = 3-End--> |
+| AVRECORDER_AUDIO_MP3 = 4 | MIME type of the MP3 audio encoder. It must be used together with the MP3 container format.<br>**Since**: 18<br><!--Device-AVRECORDER_AUDIO_MP3 = 4--><!--Device-AVRECORDER_AUDIO_MP3 = 4-End--> |
+| AVRECORDER_AUDIO_G711MU = 5 | MIME type of the G711-mulaw audio encoder. It must be used together with the WAV container format.<br>**Since**: 18<br><!--Device-AVRECORDER_AUDIO_G711MU = 5--><!--Device-AVRECORDER_AUDIO_G711MU = 5-End--> |
+| AVRECORDER_VIDEO_MPEG4 = 6 | MIME type of the MPEG4 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18<br><!--Device-AVRECORDER_VIDEO_MPEG4 = 6--><!--Device-AVRECORDER_VIDEO_MPEG4 = 6-End--> |
+| AVRECORDER_VIDEO_HEVC = 8 | MIME type of the H.265 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18<br><!--Device-AVRECORDER_VIDEO_HEVC = 8--><!--Device-AVRECORDER_VIDEO_HEVC = 8-End--> |
+| AVRECORDER_AUDIO_AMR_NB = 9 | MIME type of the AMR_NB audio encoder. It must be used together with the AMR container format.<br>**Since**: 18<br><!--Device-AVRECORDER_AUDIO_AMR_NB = 9--><!--Device-AVRECORDER_AUDIO_AMR_NB = 9-End--> |
+| AVRECORDER_AUDIO_AMR_WB = 10 | MIME type of the AMR_WB audio encoder. It must be used together with the AMR container format.<br>**Since**: 18<br><!--Device-AVRECORDER_AUDIO_AMR_WB = 10--><!--Device-AVRECORDER_AUDIO_AMR_WB = 10-End--> |
 
 ### OH_AVRecorder_ContainerFormatType
 
@@ -132,18 +132,18 @@ enum OH_AVRecorder_ContainerFormatType
 
 Enumerates the Container Format Types (CFTs), which are used to specify the encapsulation format of recording files. The container format must be compatible with the MIME type of the encoder. If they are incompatible, the recording will fail. For details about the encoder types supported by each container format, see the description of the corresponding container format.
 
-<!--Device-OH_AVRecorder_ContainerFormatType--><!--Device-OH_AVRecorder_ContainerFormatType-End-->
+<!--Device-enum OH_AVRecorder_ContainerFormatType--><!--Device-enum OH_AVRecorder_ContainerFormatType-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_CFT_MPEG_4 = 2 | Video container format mp4. AAC audio encoder and MPEG4, H.264, or H.265 video encoder are supported.<br>**Since**: 18 |
-| AVRECORDER_CFT_MPEG_4A = 6 | Audio container format m4a. AAC audio encoder is supported.<br>**Since**: 18 |
-| AVRECORDER_CFT_AMR = 8 | Audio container format amr. AMR_NB and AMR_WB audio encoders are supported.<br>**Since**: 18 |
-| AVRECORDER_CFT_MP3 = 9 | Audio container format mp3. MP3 audio encoder is supported.<br>**Since**: 18 |
-| AVRECORDER_CFT_WAV = 10 | Audio container format wav. G711-mulaw audio encoder is supported.<br>**Since**: 18 |
-| AVRECORDER_CFT_AAC = 11 | Audio container format aac (with ADTS header). AAC audio encoder is supported.<br>**Since**: 20 |
+| AVRECORDER_CFT_MPEG_4 = 2 | Video container format mp4. AAC audio encoder and MPEG4, H.264, or H.265 video encoder are supported.<br>**Since**: 18<br><!--Device-AVRECORDER_CFT_MPEG_4 = 2--><!--Device-AVRECORDER_CFT_MPEG_4 = 2-End--> |
+| AVRECORDER_CFT_MPEG_4A = 6 | Audio container format m4a. AAC audio encoder is supported.<br>**Since**: 18<br><!--Device-AVRECORDER_CFT_MPEG_4A = 6--><!--Device-AVRECORDER_CFT_MPEG_4A = 6-End--> |
+| AVRECORDER_CFT_AMR = 8 | Audio container format amr. AMR_NB and AMR_WB audio encoders are supported.<br>**Since**: 18<br><!--Device-AVRECORDER_CFT_AMR = 8--><!--Device-AVRECORDER_CFT_AMR = 8-End--> |
+| AVRECORDER_CFT_MP3 = 9 | Audio container format mp3. MP3 audio encoder is supported.<br>**Since**: 18<br><!--Device-AVRECORDER_CFT_MP3 = 9--><!--Device-AVRECORDER_CFT_MP3 = 9-End--> |
+| AVRECORDER_CFT_WAV = 10 | Audio container format wav. G711-mulaw audio encoder is supported.<br>**Since**: 18<br><!--Device-AVRECORDER_CFT_WAV = 10--><!--Device-AVRECORDER_CFT_WAV = 10-End--> |
+| AVRECORDER_CFT_AAC = 11 | Audio container format aac (with ADTS header). AAC audio encoder is supported.<br>**Since**: 20<br><!--Device-AVRECORDER_CFT_AAC = 11--><!--Device-AVRECORDER_CFT_AAC = 11-End--> |
 
 ### OH_AVRecorder_State
 
@@ -155,19 +155,19 @@ enum OH_AVRecorder_State
 
 Enumerates the AVRecorder states, which indicate the different phases of the recorder in its lifecycle. The operations that can be performed vary depending on the state.
 
-<!--Device-OH_AVRecorder_State--><!--Device-OH_AVRecorder_State-End-->
+<!--Device-enum OH_AVRecorder_State--><!--Device-enum OH_AVRecorder_State-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_IDLE = 0 | Idle. This is the default initial state after an AVRecorder instance is created. In this state, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) to set recording parameters, and the AVRecorder transitions to the **AVRECORDER_PREPARED** state.<br>**Since**: 18 |
-| AVRECORDER_PREPARED = 1 | Prepared. After the parameters are set, you can call [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start) to start recording, and the AVRecorder transitions to the **AVRECORDER_STARTED** state.<br>**Since**: 18 |
-| AVRECORDER_STARTED = 2 | Started. Recording is in progress. In this case, you can call [OH_AVRecorder_Pause][OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause) to pause recording, and the AVRecorder transitions to the **AVRECORDER_PAUSED** state.<br>You can also call [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop) to stop recording, and the AVRecorder transitions to the **AVRECORDER_STOPPED** state.<br>**Since**: 18 |
-| AVRECORDER_PAUSED = 3 | Paused. In this state, you can call [OH_AVRecorder_Resume][OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume) to resume recording, and the AVRecorder transitions to the **AVRECORDER_STARTED** state.<br>You can also call [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop) to stop recording, and the AVRecorder transitions to the **AVRECORDER_STOPPED** state.<br>**Since**: 18 |
-| AVRECORDER_STOPPED = 4 | Stopped. In this state, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) to set recording parameters, and the AVRecorder reenters the **AVRECORDER_PREPARED** state.<br>**Since**: 18 |
-| AVRECORDER_RELEASED = 5 | Released. The recording resources are released. No operation can be performed at this time. In any other state, you can call [OH_AVRecorder_Release][OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release) to transition to the **AVRECORDER_RELEASED** state.<br>**Since**: 18 |
-| AVRECORDER_ERROR = 6 | Error state. AVRecorder transitions to this state when an irreversible error occurs in the AVRecorder instance. <br>You should call [OH_AVRecorder_Reset][OH_AVRecorder_Reset](capi-avrecorder-h.md#oh_avrecorder_reset) to reset the AVRecorder instance or call [OH_AVRecorder_Release][OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release) to release resources in the **AVRECORDER_ERROR**<br>state. The recording cannot continue.<br>**Since**: 18 |
+| AVRECORDER_IDLE = 0 | Idle. This is the default initial state after an AVRecorder instance is created. In this state, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) to set recording parameters, and the AVRecorder transitions to the **AVRECORDER_PREPARED** state.<br>**Since**: 18<br><!--Device-AVRECORDER_IDLE = 0--><!--Device-AVRECORDER_IDLE = 0-End--> |
+| AVRECORDER_PREPARED = 1 | Prepared. After the parameters are set, you can call [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start) to start recording, and the AVRecorder transitions to the **AVRECORDER_STARTED** state.<br>**Since**: 18<br><!--Device-AVRECORDER_PREPARED = 1--><!--Device-AVRECORDER_PREPARED = 1-End--> |
+| AVRECORDER_STARTED = 2 | Started. Recording is in progress. In this case, you can call [OH_AVRecorder_Pause][OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause) to pause recording, and the AVRecorder transitions to the **AVRECORDER_PAUSED** state.<br>You can also call [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop) to stop recording, and the AVRecorder transitions to the **AVRECORDER_STOPPED** state.<br>**Since**: 18<br><!--Device-AVRECORDER_STARTED = 2--><!--Device-AVRECORDER_STARTED = 2-End--> |
+| AVRECORDER_PAUSED = 3 | Paused. In this state, you can call [OH_AVRecorder_Resume][OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume) to resume recording, and the AVRecorder transitions to the **AVRECORDER_STARTED** state.<br>You can also call [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop) to stop recording, and the AVRecorder transitions to the **AVRECORDER_STOPPED** state.<br>**Since**: 18<br><!--Device-AVRECORDER_PAUSED = 3--><!--Device-AVRECORDER_PAUSED = 3-End--> |
+| AVRECORDER_STOPPED = 4 | Stopped. In this state, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) to set recording parameters, and the AVRecorder reenters the **AVRECORDER_PREPARED** state.<br>**Since**: 18<br><!--Device-AVRECORDER_STOPPED = 4--><!--Device-AVRECORDER_STOPPED = 4-End--> |
+| AVRECORDER_RELEASED = 5 | Released. The recording resources are released. No operation can be performed at this time. In any other state, you can call [OH_AVRecorder_Release][OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release) to transition to the **AVRECORDER_RELEASED** state.<br>**Since**: 18<br><!--Device-AVRECORDER_RELEASED = 5--><!--Device-AVRECORDER_RELEASED = 5-End--> |
+| AVRECORDER_ERROR = 6 | Error state. AVRecorder transitions to this state when an irreversible error occurs in the AVRecorder instance. <br>You should call [OH_AVRecorder_Reset][OH_AVRecorder_Reset](capi-avrecorder-h.md#oh_avrecorder_reset) to reset the AVRecorder instance or call [OH_AVRecorder_Release][OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release) to release resources in the **AVRECORDER_ERROR**<br>state. The recording cannot continue.<br>**Since**: 18<br><!--Device-AVRECORDER_ERROR = 6--><!--Device-AVRECORDER_ERROR = 6-End--> |
 
 ### OH_AVRecorder_StateChangeReason
 
@@ -179,14 +179,14 @@ enum OH_AVRecorder_StateChangeReason
 
 Enumerates the reasons for AVRecorder state changes, which are used to determine whether the state change is triggered by a user operation or a background event. This helps the app execute the corresponding processing logic based on the reason.
 
-<!--Device-OH_AVRecorder_StateChangeReason--><!--Device-OH_AVRecorder_StateChangeReason-End-->
+<!--Device-enum OH_AVRecorder_StateChangeReason--><!--Device-enum OH_AVRecorder_StateChangeReason-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_USER = 0 | The state change is caused by user operations. For example, when the user proactively calls the **Start**, **Pause**, **Resume**, or **Stop** API.<br>**Since**: 18 |
-| AVRECORDER_BACKGROUND = 1 | The state change is caused by background operations. For example, when the recording state is automatically changed due to audio interruption or recording timeout.<br>**Since**: 18 |
+| AVRECORDER_USER = 0 | The state change is caused by user operations. For example, when the user proactively calls the **Start**, **Pause**, **Resume**, or **Stop** API.<br>**Since**: 18<br><!--Device-AVRECORDER_USER = 0--><!--Device-AVRECORDER_USER = 0-End--> |
+| AVRECORDER_BACKGROUND = 1 | The state change is caused by background operations. For example, when the recording state is automatically changed due to audio interruption or recording timeout.<br>**Since**: 18<br><!--Device-AVRECORDER_BACKGROUND = 1--><!--Device-AVRECORDER_BACKGROUND = 1-End--> |
 
 ### OH_AVRecorder_FileGenerationMode
 
@@ -198,14 +198,14 @@ enum OH_AVRecorder_FileGenerationMode
 
 Defines the mode for generating a recording file. This mode specifies how media files are created. It is applicable to recording scenarios where you need to choose whether the app or the system automatically manages the files.
 
-<!--Device-OH_AVRecorder_FileGenerationMode--><!--Device-OH_AVRecorder_FileGenerationMode-End-->
+<!--Device-enum OH_AVRecorder_FileGenerationMode--><!--Device-enum OH_AVRecorder_FileGenerationMode-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_APP_CREATE = 0 | The app creates a media file in the sandbox. In this mode, the [OH_AVRecorder_OnUri][OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri) callback will not be triggered.<br>**Since**: 18 |
-| AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1 | The system creates a media file. In this mode, the [OH_AVRecorder_OnUri][OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri) callback will be triggered. The app can obtain the media resource object generated during recording through the callback.<br>**Since**: 18 |
+| AVRECORDER_APP_CREATE = 0 | The app creates a media file in the sandbox. In this mode, the [OH_AVRecorder_OnUri][OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri) callback will not be triggered.<br>**Since**: 18<br><!--Device-AVRECORDER_APP_CREATE = 0--><!--Device-AVRECORDER_APP_CREATE = 0-End--> |
+| AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1 | The system creates a media file. In this mode, the [OH_AVRecorder_OnUri][OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri) callback will be triggered. The app can obtain the media resource object generated during recording through the callback.<br>**Since**: 18<br><!--Device-AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1--><!--Device-AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1-End--> |
 
 
 ## Function description

@@ -24,11 +24,11 @@ Defines the session between a CA and a TA.
 
 | Name | Description |
 | -- | -- |
-| uint32_t session_id | Session ID for the session. |
-| [TEEC_UUID](capi-teeclient-teec-uuid.md) service_id | UUID representing the service associated with the session. |
-| uint32_t ops_cnt | The number of operations associated with the session. |
-| head | Linked list head for session-related data. |
-| imp | Implementation-specific data. |
-| [TEEC_Context](capi-teeclient-teec-context.md) *context | Pointer to the TEEC context associated with the session. |
+| uint32_t session_id | Session ID for the session.<br><!--Device-uint32_t session_id--><!--Device-uint32_t session_id-End--> |
+| [TEEC_UUID](capi-teeclient-teec-uuid.md) service_id | UUID representing the service associated with the session.<br><!--Device-TEEC_UUID service_id--><!--Device-TEEC_UUID service_id-End--> |
+| uint32_t ops_cnt | The number of operations associated with the session.<br><!--Device-uint32_t ops_cnt--><!--Device-uint32_t ops_cnt-End--> |
+| head | Linked list head for session-related data.<br><!--Device-head--><!--Device-head-End--> |
+| imp | Implementation-specific data.<br><!--Device-imp--><!--Device-imp-End--> |
+| [TEEC_Context](capi-teeclient-teec-context.md) *context | Pointer to the TEEC context associated with the session.<br><!--Device-TEEC_Context *context--><!--Device-TEEC_Context *context-End--> |
 
 

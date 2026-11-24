@@ -55,7 +55,7 @@ enum OH_AVTranscoder_State
 
 转码状态。
 
-<!--Device-OH_AVTranscoder_State--><!--Device-OH_AVTranscoder_State-End-->
+<!--Device-enum OH_AVTranscoder_State--><!--Device-enum OH_AVTranscoder_State-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -63,11 +63,11 @@ enum OH_AVTranscoder_State
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVTRANSCODER_PREPARED = 1 | 准备 |
-| AVTRANSCODER_STARTED = 2 | 开始 |
-| AVTRANSCODER_PAUSED = 3 | 暂停 |
-| AVTRANSCODER_CANCELLED = 4 | 取消 |
-| AVTRANSCODER_COMPLETED = 5 | 完成 |
+| AVTRANSCODER_PREPARED = 1 | 准备<br><!--Device-AVTRANSCODER_PREPARED = 1--><!--Device-AVTRANSCODER_PREPARED = 1-End--> |
+| AVTRANSCODER_STARTED = 2 | 开始<br><!--Device-AVTRANSCODER_STARTED = 2--><!--Device-AVTRANSCODER_STARTED = 2-End--> |
+| AVTRANSCODER_PAUSED = 3 | 暂停<br><!--Device-AVTRANSCODER_PAUSED = 3--><!--Device-AVTRANSCODER_PAUSED = 3-End--> |
+| AVTRANSCODER_CANCELLED = 4 | 取消<br><!--Device-AVTRANSCODER_CANCELLED = 4--><!--Device-AVTRANSCODER_CANCELLED = 4-End--> |
+| AVTRANSCODER_COMPLETED = 5 | 完成<br><!--Device-AVTRANSCODER_COMPLETED = 5--><!--Device-AVTRANSCODER_COMPLETED = 5-End--> |
 
 
 ## 函数说明

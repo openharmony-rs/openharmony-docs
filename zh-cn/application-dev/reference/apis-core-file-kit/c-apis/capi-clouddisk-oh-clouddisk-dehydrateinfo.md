@@ -24,7 +24,7 @@ typedef struct OH_CloudDisk_DehydrateInfo {...} OH_CloudDisk_DehydrateInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | 同步根内相对文件路径。<br>**起始版本：** 26.0.1 |
-| bool allow | 是否允许脱水。<br>**起始版本：** 26.0.1 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | 同步根内相对文件路径。<br>**起始版本：** 26.0.1<br><!--Device-CloudDisk_PathInfo filePath--><!--Device-CloudDisk_PathInfo filePath-End--> |
+| bool allow | 是否允许脱水。<br>**起始版本：** 26.0.1<br><!--Device-bool allow--><!--Device-bool allow-End--> |
 
 

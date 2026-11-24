@@ -24,7 +24,7 @@ Defines the struct for listening for device hot swapping. It is applicable to ap
 
 | Name | Description |
 | -- | -- |
-| [Input_DeviceAddedCallback](capi-oh-input-manager-h.md#input_deviceaddedcallback) deviceAddedCallback | Defines a callback used to receive device hot-plug events. |
-| [Input_DeviceRemovedCallback](capi-oh-input-manager-h.md#input_deviceremovedcallback) deviceRemovedCallback | Defines a callback used to receive device hot-unplug events. |
+| [Input_DeviceAddedCallback](capi-oh-input-manager-h.md#input_deviceaddedcallback) deviceAddedCallback | Defines a callback used to receive device hot-plug events.<br><!--Device-Input_DeviceAddedCallback deviceAddedCallback--><!--Device-Input_DeviceAddedCallback deviceAddedCallback-End--> |
+| [Input_DeviceRemovedCallback](capi-oh-input-manager-h.md#input_deviceremovedcallback) deviceRemovedCallback | Defines a callback used to receive device hot-unplug events.<br><!--Device-Input_DeviceRemovedCallback deviceRemovedCallback--><!--Device-Input_DeviceRemovedCallback deviceRemovedCallback-End--> |
 
 

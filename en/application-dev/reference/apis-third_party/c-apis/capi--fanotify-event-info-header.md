@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned char info_type |  |
-| unsigned char pad |  |
-| unsigned short len |  |
+| unsigned char info_type | <!--Device-unsigned char info_type--><!--Device-unsigned char info_type-End--> |
+| unsigned char pad | <!--Device-unsigned char pad--><!--Device-unsigned char pad-End--> |
+| unsigned short len | <!--Device-unsigned short len--><!--Device-unsigned short len-End--> |
 
 

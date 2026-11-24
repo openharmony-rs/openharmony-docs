@@ -22,7 +22,7 @@ Describes the geographical location information about a media asset and supports
 
 | Name | Description |
 | -- | -- |
-| float latitude | Latitude. The value range is [-90,90], in degrees (°). This parameter must be used together with longitude to provide complete geographical location information. If the value is out of the range, an error occurs.<br>**Since**: 18 |
-| float longitude | Longitude. The value range is [-180,180], in degrees (°). This parameter must be used together with latitude to provide complete geographical location information. If the value is out of the range, an error occurs.<br>**Since**: 18 |
+| float latitude | Latitude. The value range is [-90,90], in degrees (°). This parameter must be used together with longitude to provide complete geographical location information. If the value is out of the range, an error occurs.<br>**Since**: 18<br><!--Device-float latitude--><!--Device-float latitude-End--> |
+| float longitude | Longitude. The value range is [-180,180], in degrees (°). This parameter must be used together with latitude to provide complete geographical location information. If the value is out of the range, an error occurs.<br>**Since**: 18<br><!--Device-float longitude--><!--Device-float longitude-End--> |
 
 

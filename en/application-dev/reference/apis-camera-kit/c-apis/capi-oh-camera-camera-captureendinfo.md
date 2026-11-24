@@ -24,7 +24,7 @@ The struct describes the capture end information.
 
 | Name | Description |
 | -- | -- |
-| int32_t captureId | Capture ID. |
-| int64_t frameCount | Number of frames captured. |
+| int32_t captureId | Capture ID.<br><!--Device-int32_t captureId--><!--Device-int32_t captureId-End--> |
+| int64_t frameCount | Number of frames captured.<br><!--Device-int64_t frameCount--><!--Device-int64_t frameCount-End--> |
 
 

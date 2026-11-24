@@ -24,7 +24,7 @@ A 128-bit value stored as two unsigned 64-bit integers. It serves as a UUID with
 
 | Name | Description |
 | -- | -- |
-| uint64_t lower | lower type. |
-| uint64_t upper | upper type. |
+| uint64_t lower | lower type.<br><!--Device-uint64_t lower--><!--Device-uint64_t lower-End--> |
+| uint64_t upper | upper type.<br><!--Device-uint64_t upper--><!--Device-uint64_t upper-End--> |
 
 

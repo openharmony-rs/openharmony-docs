@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| [VkGeometryTrianglesNV](capi--vkgeometrytrianglesnv.md) triangles |  |
-| [VkGeometryAABBNV](capi--vkgeometryaabbnv.md) aabbs |  |
+| [VkGeometryTrianglesNV](capi--vkgeometrytrianglesnv.md) triangles | <!--Device-VkGeometryTrianglesNV triangles--><!--Device-VkGeometryTrianglesNV triangles-End--> |
+| [VkGeometryAABBNV](capi--vkgeometryaabbnv.md) aabbs | <!--Device-VkGeometryAABBNV aabbs--><!--Device-VkGeometryAABBNV aabbs-End--> |
 
 

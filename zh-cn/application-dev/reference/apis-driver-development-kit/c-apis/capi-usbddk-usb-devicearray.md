@@ -24,7 +24,7 @@ typedef struct Usb_DeviceArray {...} Usb_DeviceArray
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t* deviceIds | 开发者申请好的设备ID数组首地址，申请的数组大小建议不超过128，以避免过度占用内存。 |
-| uint32_t num | 实际返回的设备数量，根据数量遍历deviceIds获得设备ID。当该值为0时，表示不存在USB设备。 |
+| uint64_t* deviceIds | 开发者申请好的设备ID数组首地址，申请的数组大小建议不超过128，以避免过度占用内存。<br><!--Device-uint64_t* deviceIds--><!--Device-uint64_t* deviceIds-End--> |
+| uint32_t num | 实际返回的设备数量，根据数量遍历deviceIds获得设备ID。当该值为0时，表示不存在USB设备。<br><!--Device-uint32_t num--><!--Device-uint32_t num-End--> |
 
 

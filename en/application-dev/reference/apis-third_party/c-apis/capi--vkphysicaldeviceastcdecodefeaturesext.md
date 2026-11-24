@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 decodeModeSharedExponent |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 decodeModeSharedExponent | <!--Device-VkBool32 decodeModeSharedExponent--><!--Device-VkBool32 decodeModeSharedExponent-End--> |
 
 

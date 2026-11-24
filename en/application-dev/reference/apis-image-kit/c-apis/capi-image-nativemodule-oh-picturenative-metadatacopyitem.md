@@ -24,7 +24,7 @@ This structure is used to specify a metadata copy rule when creating a deep copy
 
 | Name | Description |
 | -- | -- |
-| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) srcType | Source metadata type. It specifies the type of metadata to be copied from the source picture.<br>**Since**: 26.0.0 |
-| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) dstType | Destination metadata type. It specifies the type under which the copied metadata will be stored in the destination picture.<br>**Since**: 26.0.0 |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) srcType | Source metadata type. It specifies the type of metadata to be copied from the source picture.<br>**Since**: 26.0.0<br><!--Device-Image_MetadataType srcType--><!--Device-Image_MetadataType srcType-End--> |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) dstType | Destination metadata type. It specifies the type under which the copied metadata will be stored in the destination picture.<br>**Since**: 26.0.0<br><!--Device-Image_MetadataType dstType--><!--Device-Image_MetadataType dstType-End--> |
 
 

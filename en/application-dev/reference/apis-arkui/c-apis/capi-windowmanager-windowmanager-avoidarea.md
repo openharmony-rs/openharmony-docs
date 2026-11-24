@@ -24,9 +24,9 @@ The struct describes the avoid area.
 
 | Name | Description |
 | -- | -- |
-| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) topRect | Top rectangle of the avoid area. |
-| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) leftRect | Left rectangle of the avoid area. |
-| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) rightRect | Right rectangle of the avoid area. |
-| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) bottomRect | Bottom rectangle of the avoid area. |
+| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) topRect | Top rectangle of the avoid area.<br><!--Device-WindowManager_Rect topRect--><!--Device-WindowManager_Rect topRect-End--> |
+| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) leftRect | Left rectangle of the avoid area.<br><!--Device-WindowManager_Rect leftRect--><!--Device-WindowManager_Rect leftRect-End--> |
+| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) rightRect | Right rectangle of the avoid area.<br><!--Device-WindowManager_Rect rightRect--><!--Device-WindowManager_Rect rightRect-End--> |
+| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) bottomRect | Bottom rectangle of the avoid area.<br><!--Device-WindowManager_Rect bottomRect--><!--Device-WindowManager_Rect bottomRect-End--> |
 
 

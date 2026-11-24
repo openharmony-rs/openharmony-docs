@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| HANDLE Handle |  |
-| ULONG Events |  |
-| NTSTATUS Status |  |
+| HANDLE Handle | <!--Device-HANDLE Handle--><!--Device-HANDLE Handle-End--> |
+| ULONG Events | <!--Device-ULONG Events--><!--Device-ULONG Events-End--> |
+| NTSTATUS Status | <!--Device-NTSTATUS Status--><!--Device-NTSTATUS Status-End--> |
 
 

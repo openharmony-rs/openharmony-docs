@@ -73,7 +73,7 @@ enum ArkUI_DatePickerMode
 
 Enumerates the column display modes of the date picker.
 
-<!--Device-ArkUI_DatePickerMode--><!--Device-ArkUI_DatePickerMode-End-->
+<!--Device-enum ArkUI_DatePickerMode--><!--Device-enum ArkUI_DatePickerMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,9 +81,9 @@ Enumerates the column display modes of the date picker.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_DATEPICKER_MODE_DATE = 0 | A mode that displays the date in months, days of month, and years.<br>**Since**: 18 |
-| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 | A mode that displays the date in months and years.<br>**Since**: 18 |
-| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 | A mode that displays the date in months and days of the month.<br>**Since**: 18 |
+| ARKUI_DATEPICKER_MODE_DATE = 0 | A mode that displays the date in months, days of month, and years.<br>**Since**: 18<br><!--Device-ARKUI_DATEPICKER_MODE_DATE = 0--><!--Device-ARKUI_DATEPICKER_MODE_DATE = 0-End--> |
+| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 | A mode that displays the date in months and years.<br>**Since**: 18<br><!--Device-ARKUI_DATEPICKER_YEAR_AND_MONTH = 1--><!--Device-ARKUI_DATEPICKER_YEAR_AND_MONTH = 1-End--> |
+| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 | A mode that displays the date in months and days of the month.<br>**Since**: 18<br><!--Device-ARKUI_DATEPICKER_MONTH_AND_DAY = 2--><!--Device-ARKUI_DATEPICKER_MONTH_AND_DAY = 2-End--> |
 
 ### ArkUI_TextPickerRangeType
 
@@ -95,7 +95,7 @@ enum ArkUI_TextPickerRangeType
 
 Enumerates the types of the text picker.
 
-<!--Device-ArkUI_TextPickerRangeType--><!--Device-ArkUI_TextPickerRangeType-End-->
+<!--Device-enum ArkUI_TextPickerRangeType--><!--Device-enum ArkUI_TextPickerRangeType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,10 +103,10 @@ Enumerates the types of the text picker.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | Single-column text picker.<br>**Since**: 12 |
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | Multi-column text picker.<br>**Since**: 12 |
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | Single-column text picker with image resources.<br>**Since**: 12 |
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | Interconnected multi-column text picker.<br>**Since**: 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | Single-column text picker.<br>**Since**: 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0-End--> |
+| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | Multi-column text picker.<br>**Since**: 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1-End--> |
+| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | Single-column text picker with image resources.<br>**Since**: 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2-End--> |
+| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | Interconnected multi-column text picker.<br>**Since**: 12<br><!--Device-ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3--><!--Device-ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3-End--> |
 
 ### ArkUI_CalendarAlignment
 
@@ -118,7 +118,7 @@ enum ArkUI_CalendarAlignment
 
 Enumerates the alignment modes between the calendar picker and the entry component.
 
-<!--Device-ArkUI_CalendarAlignment--><!--Device-ArkUI_CalendarAlignment-End-->
+<!--Device-enum ArkUI_CalendarAlignment--><!--Device-enum ArkUI_CalendarAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,9 +126,9 @@ Enumerates the alignment modes between the calendar picker and the entry compone
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_CALENDAR_ALIGNMENT_START = 0 | Left aligned.<br>**Since**: 12 |
-| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | Center aligned.<br>**Since**: 12 |
-| ARKUI_CALENDAR_ALIGNMENT_END = 2 | Right aligned.<br>**Since**: 12 |
+| ARKUI_CALENDAR_ALIGNMENT_START = 0 | Left aligned.<br>**Since**: 12<br><!--Device-ARKUI_CALENDAR_ALIGNMENT_START = 0--><!--Device-ARKUI_CALENDAR_ALIGNMENT_START = 0-End--> |
+| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | Center aligned.<br>**Since**: 12<br><!--Device-ARKUI_CALENDAR_ALIGNMENT_CENTER = 1--><!--Device-ARKUI_CALENDAR_ALIGNMENT_CENTER = 1-End--> |
+| ARKUI_CALENDAR_ALIGNMENT_END = 2 | Right aligned.<br>**Since**: 12<br><!--Device-ARKUI_CALENDAR_ALIGNMENT_END = 2--><!--Device-ARKUI_CALENDAR_ALIGNMENT_END = 2-End--> |
 
 ### ArkUI_PickerIndicatorType
 
@@ -140,7 +140,7 @@ enum ArkUI_PickerIndicatorType
 
 Enumerates the indicator types of the selected item.
 
-<!--Device-ArkUI_PickerIndicatorType--><!--Device-ArkUI_PickerIndicatorType-End-->
+<!--Device-enum ArkUI_PickerIndicatorType--><!--Device-enum ArkUI_PickerIndicatorType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,8 +148,8 @@ Enumerates the indicator types of the selected item.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 | background.<br>**Since**: 23 |
-| ARKUI_PICKER_INDICATOR_DIVIDER = 1 | divider.<br>**Since**: 23 |
+| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 | background.<br>**Since**: 23<br><!--Device-ARKUI_PICKER_INDICATOR_BACKGROUND = 0--><!--Device-ARKUI_PICKER_INDICATOR_BACKGROUND = 0-End--> |
+| ARKUI_PICKER_INDICATOR_DIVIDER = 1 | divider.<br>**Since**: 23<br><!--Device-ARKUI_PICKER_INDICATOR_DIVIDER = 1--><!--Device-ARKUI_PICKER_INDICATOR_DIVIDER = 1-End--> |
 
 
 ## Function description

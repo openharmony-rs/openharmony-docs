@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 graphicsPipelineLibraryFastLinking |  |
-| VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 graphicsPipelineLibraryFastLinking | <!--Device-VkBool32 graphicsPipelineLibraryFastLinking--><!--Device-VkBool32 graphicsPipelineLibraryFastLinking-End--> |
+| VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration | <!--Device-VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration--><!--Device-VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration-End--> |
 
 

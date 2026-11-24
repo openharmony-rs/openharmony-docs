@@ -24,7 +24,7 @@ The struct describes the video information.
 
 | Name | Description |
 | -- | -- |
-| [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) videoCapInfo | Video capture info |
-| [OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md) videoEncInfo | Video encoder info |
+| [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) videoCapInfo | Video capture info<br><!--Device-OH_VideoCaptureInfo videoCapInfo--><!--Device-OH_VideoCaptureInfo videoCapInfo-End--> |
+| [OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md) videoEncInfo | Video encoder info<br><!--Device-OH_VideoEncInfo videoEncInfo--><!--Device-OH_VideoEncInfo videoEncInfo-End--> |
 
 

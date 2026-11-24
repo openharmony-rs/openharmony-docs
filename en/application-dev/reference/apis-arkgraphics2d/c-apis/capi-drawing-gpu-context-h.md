@@ -24,7 +24,7 @@ This file declares the functions related to the GPU context in the drawing modul
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOptions gpuContextOptions)](#oh_drawing_gpucontextcreatefromgl) | Creates an **OH_Drawing_GpuContext** object that uses OpenGL as the backend interface.(Deprecated in API18) |
+| [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOptions gpuContextOptions)](#oh_drawing_gpucontextcreatefromgl) | Creates an **OH_Drawing_GpuContext** object that uses OpenGL as the backend interface.(Deprecated) |
 | [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)](#oh_drawing_gpucontextcreate) | Creates an **OH_Drawing_GpuContext** object, for which the backend type depends on the device. |
 | [void OH_Drawing_GpuContextDestroy(OH_Drawing_GpuContext* gpuContext)](#oh_drawing_gpucontextdestroy) | Destroys an **OH_Drawing_GpuContext** object and reclaims the memory occupied by the object. |
 

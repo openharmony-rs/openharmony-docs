@@ -24,9 +24,9 @@ typedef struct NetConn_NetAddr {...} NetConn_NetAddr
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t family | 网络地址族。 |
-| uint8_t prefixlen | 前缀长度。 |
-| uint8_t port | 端口号。 |
-| char address[NETCONN_MAX_STR_LEN] | 地址。 |
+| uint8_t family | 网络地址族。<br><!--Device-uint8_t family--><!--Device-uint8_t family-End--> |
+| uint8_t prefixlen | 前缀长度。<br><!--Device-uint8_t prefixlen--><!--Device-uint8_t prefixlen-End--> |
+| uint8_t port | 端口号。<br><!--Device-uint8_t port--><!--Device-uint8_t port-End--> |
+| char address[NETCONN_MAX_STR_LEN] | 地址。<br><!--Device-char address[NETCONN_MAX_STR_LEN]--><!--Device-char address[NETCONN_MAX_STR_LEN]-End--> |
 
 

@@ -24,6 +24,6 @@ declare the audio session state change event
 
 | Name | Description |
 | -- | -- |
-| [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) stateChangeHint | audio session state change hints. |
+| [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) stateChangeHint | audio session state change hints.<br><!--Device-OH_AudioSession_StateChangeHint stateChangeHint--><!--Device-OH_AudioSession_StateChangeHint stateChangeHint-End--> |
 
 

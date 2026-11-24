@@ -24,10 +24,10 @@ typedef struct OH_ImageBufferData {...} OH_ImageBufferData
 
 | Name | Description |
 | -- | -- |
-| int32_t *rowStride | rowStride of each component. |
-| int32_t *pixelStride | pixelStride of each component. |
-| int32_t numStride | number of strides. |
-| size_t bufferSize | byte length of the buffer |
-| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-oh-nativebuffer-oh-nativebuffer.md) *nativeBuffer | native buffer of the image. |
+| int32_t *rowStride | rowStride of each component.<br><!--Device-int32_t *rowStride--><!--Device-int32_t *rowStride-End--> |
+| int32_t *pixelStride | pixelStride of each component.<br><!--Device-int32_t *pixelStride--><!--Device-int32_t *pixelStride-End--> |
+| int32_t numStride | number of strides.<br><!--Device-int32_t numStride--><!--Device-int32_t numStride-End--> |
+| size_t bufferSize | byte length of the buffer<br><!--Device-size_t bufferSize--><!--Device-size_t bufferSize-End--> |
+| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-oh-nativebuffer-oh-nativebuffer.md) *nativeBuffer | native buffer of the image.<br><!--Device-OH_NativeBuffer *nativeBuffer--><!--Device-OH_NativeBuffer *nativeBuffer-End--> |
 
 

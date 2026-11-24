@@ -10,9 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Sword d_tag |  |
-| d_un |  |
-| d_un.d_val |  |
-| d_un.d_ptr |  |
+| Elf32_Sword d_tag | <!--Device-Elf32_Sword d_tag--><!--Device-Elf32_Sword d_tag-End--> |
+| d_un.d_val | <!--Device-d_un.d_val--><!--Device-d_un.d_val-End--> |
+| d_un.d_ptr | <!--Device-d_un.d_ptr--><!--Device-d_un.d_ptr-End--> |
 
 

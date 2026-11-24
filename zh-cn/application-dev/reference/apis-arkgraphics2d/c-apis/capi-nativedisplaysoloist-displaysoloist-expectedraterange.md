@@ -24,8 +24,8 @@ typedef struct DisplaySoloist_ExpectedRateRange {...} DisplaySoloist_ExpectedRat
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t min | 期望的最小帧率，单位为帧/秒（fps），取值范围为[0, 设备支持的最大刷新率]。 |
-| int32_t max | 期望的最大帧率，单位为帧/秒（fps），取值范围为[min, 设备支持的最大刷新率]。 |
-| int32_t expected | 期望的目标帧率，单位为帧/秒（fps），取值范围为[min, max]。 |
+| int32_t min | 期望的最小帧率，单位为帧/秒（fps），取值范围为[0, 设备支持的最大刷新率]。<br><!--Device-int32_t min--><!--Device-int32_t min-End--> |
+| int32_t max | 期望的最大帧率，单位为帧/秒（fps），取值范围为[min, 设备支持的最大刷新率]。<br><!--Device-int32_t max--><!--Device-int32_t max-End--> |
+| int32_t expected | 期望的目标帧率，单位为帧/秒（fps），取值范围为[min, max]。<br><!--Device-int32_t expected--><!--Device-int32_t expected-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct NetConn_NetSpecifier {...} NetConn_NetSpecifier
 
 | 名称 | 描述 |
 | -- | -- |
-| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) caps | 网络能力集。 |
-| char *bearerPrivateIdentifier | 网络标识符。 |
+| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) caps | 网络能力集。<br><!--Device-NetConn_NetCapabilities caps--><!--Device-NetConn_NetCapabilities caps-End--> |
+| char *bearerPrivateIdentifier | 网络标识符。<br><!--Device-char *bearerPrivateIdentifier--><!--Device-char *bearerPrivateIdentifier-End--> |
 
 

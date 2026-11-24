@@ -24,14 +24,14 @@ typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_NativeGestureAPI_2*](capi-arkui-nativemodule-arkui-nativegestureapi-2.md) gestureApi2 | 指向ArkUI_NativeGestureAPI_2结构体的指针。<br>**起始版本：** 26.0.0 |
+| [ArkUI_NativeGestureAPI_2*](capi-arkui-nativemodule-arkui-nativegestureapi-2.md) gestureApi2 | 指向ArkUI_NativeGestureAPI_2结构体的指针。<br>**起始版本：** 26.0.0<br><!--Device-ArkUI_NativeGestureAPI_2* gestureApi2--><!--Device-ArkUI_NativeGestureAPI_2* gestureApi2-End--> |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_ErrorCode (\*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (\*parallelGesture)(ArkUI_ParallelGestureEvent* event))](#setgestureparallelto) | - | Sets the callback function for a parallel gesture event. |
+| [ArkUI_ErrorCode (\*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (\*parallelGesture)(ArkUI_ParallelGestureEvent* event))](#setgestureparallelto) | Sets the callback function for a parallel gesture event. |
 
 ## 成员函数说明
 

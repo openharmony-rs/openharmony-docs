@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkAccelerationStructureMemoryRequirementsTypeNV type |  |
-| VkAccelerationStructureNV accelerationStructure |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkAccelerationStructureMemoryRequirementsTypeNV type | <!--Device-VkAccelerationStructureMemoryRequirementsTypeNV type--><!--Device-VkAccelerationStructureMemoryRequirementsTypeNV type-End--> |
+| VkAccelerationStructureNV accelerationStructure | <!--Device-VkAccelerationStructureNV accelerationStructure--><!--Device-VkAccelerationStructureNV accelerationStructure-End--> |
 
 

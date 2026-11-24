@@ -51,13 +51,13 @@ Declares the queue interfaces in C.
 | [FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)](#ffrt_queue_wait) | Waits until a task in the queue is complete. |
 | [FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)](#ffrt_queue_cancel) | Cancels a task in the queue.<br> Tasks that have already started executing cannot be canceled. |
 | [FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)](#ffrt_get_main_queue) | Gets the application main thread queue. |
-| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | Gets the application worker (ArkTS) thread queue.(Deprecated in API18) |
+| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | Gets the application worker (ArkTS) thread queue.(Deprecated) |
 
 ### Variables
 
 | Name | Description |
 | -- | -- |
-| void* ffrt_queue_t | Queue handle, which identifies different queues.<br>**Since**: 10<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
+| void* ffrt_queue_t | Queue handle, which identifies different queues.<br>**Since**: 10<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-void* ffrt_queue_t--><!--Device-void* ffrt_queue_t-End--> |
 
 ## Enum type description
 
@@ -71,7 +71,7 @@ enum ffrt_queue_type_t
 
 Enumerates the queue types.
 
-<!--Device-ffrt_queue_type_t--><!--Device-ffrt_queue_type_t-End-->
+<!--Device-enum ffrt_queue_type_t--><!--Device-enum ffrt_queue_type_t-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -79,9 +79,9 @@ Enumerates the queue types.
 
 | Enum item | Description |
 | -- | -- |
-| ffrt_queue_serial | Serial queue. |
-| ffrt_queue_concurrent | Concurrent queue. |
-| ffrt_queue_max | Maximum valid queue type value, used as a sentinel (for example, in iteration). |
+| ffrt_queue_serial | Serial queue.<br><!--Device-ffrt_queue_serial--><!--Device-ffrt_queue_serial-End--> |
+| ffrt_queue_concurrent | Concurrent queue.<br><!--Device-ffrt_queue_concurrent--><!--Device-ffrt_queue_concurrent-End--> |
+| ffrt_queue_max | Maximum valid queue type value, used as a sentinel (for example, in iteration).<br><!--Device-ffrt_queue_max--><!--Device-ffrt_queue_max-End--> |
 
 
 ## Function description

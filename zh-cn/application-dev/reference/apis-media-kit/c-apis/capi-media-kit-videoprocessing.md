@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供用于视频处理的API函数。
+提供用于视频处理的API函数。 <!--RP1--><!--RP1End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 

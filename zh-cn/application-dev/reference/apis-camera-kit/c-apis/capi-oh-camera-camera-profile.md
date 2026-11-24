@@ -24,7 +24,7 @@ typedef struct Camera_Profile {...} Camera_Profile
 
 | 名称 | 描述 |
 | -- | -- |
-| [Camera_Format](capi-camera-h.md#camera_format) format | 相机格式。 |
-| [Camera_Size](capi-oh-camera-camera-size.md) size | 图片大小。 |
+| [Camera_Format](capi-camera-h.md#camera_format) format | 相机格式。<br><!--Device-Camera_Format format--><!--Device-Camera_Format format-End--> |
+| [Camera_Size](capi-oh-camera-camera-size.md) size | 图片大小。<br><!--Device-Camera_Size size--><!--Device-Camera_Size size-End--> |
 
 

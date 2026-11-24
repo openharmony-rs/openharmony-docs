@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSemaphore semaphore |  |
-| uint64_t value |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSemaphore semaphore | <!--Device-VkSemaphore semaphore--><!--Device-VkSemaphore semaphore-End--> |
+| uint64_t value | <!--Device-uint64_t value--><!--Device-uint64_t value-End--> |
 
 

@@ -43,7 +43,7 @@ enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode
 
 Enumerates the result codes of UI event injection.<br> This enumeration is shared by all injection APIs, including relaxed interaction injection (non-precise) and precise component-targeted injection. A nonzero result code indicates an execution failure, and its specific value conveys the failure reason.
 
-<!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode--><!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode--><!--Device-enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,10 +51,10 @@ Enumerates the result codes of UI event injection.<br> This enumeration is share
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | The injected command was executed successfully.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | No component or target could be found to respond to the injected command.<br> For example, the click coordinates do not hit any component, or the target required by the execution mode cannot be located.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | The command cannot be executed in the current UI context.<br> The command is structurally valid, but its type or execution mode is not supported by the current UI state.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | The injected command was interrupted by a user operation.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | The injected command was executed successfully.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | No component or target could be found to respond to the injected command.<br> For example, the click coordinates do not hit any component, or the target required by the execution mode cannot be located.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | The command cannot be executed in the current UI context.<br> The command is structurally valid, but its type or execution mode is not supported by the current UI state.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | The injected command was interrupted by a user operation.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3-End--> |
 
 
 ## Function description

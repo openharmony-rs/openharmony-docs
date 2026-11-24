@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned char bi_pri |  |
-| int bi_flag |  |
+| unsigned char bi_pri | <!--Device-unsigned char bi_pri--><!--Device-unsigned char bi_pri-End--> |
+| int bi_flag | <!--Device-int bi_flag--><!--Device-int bi_flag-End--> |
 
 

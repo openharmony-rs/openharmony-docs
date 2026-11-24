@@ -24,6 +24,6 @@ typedef union OH_CloudDisk_CallbackResponse {...} OH_CloudDisk_CallbackResponse
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) *fetchData | 获取数据响应。当callbackType为[OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype)时生效。<br>**起始版本：** 26.0.1 |
+| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) *fetchData | 获取数据响应。当callbackType为[OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype)时生效。<br>**起始版本：** 26.0.1<br><!--Device-OH_CloudDisk_FetchData *fetchData--><!--Device-OH_CloudDisk_FetchData *fetchData-End--> |
 
 

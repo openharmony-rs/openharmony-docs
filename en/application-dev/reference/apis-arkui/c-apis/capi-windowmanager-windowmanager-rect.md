@@ -24,9 +24,9 @@ The struct describes the window rectangle, including the window position, width,
 
 | Name | Description |
 | -- | -- |
-| int32_t posX | X coordinate of the window, in px. The value is an integer. |
-| int32_t posY | Y coordinate of the window, in px. The value is an integer. |
-| uint32_t width | Window width, in px. The value is an integer. |
-| uint32_t height | Window height, in px. The value is an integer. |
+| int32_t posX | X coordinate of the window, in px. The value is an integer.<br><!--Device-int32_t posX--><!--Device-int32_t posX-End--> |
+| int32_t posY | Y coordinate of the window, in px. The value is an integer.<br><!--Device-int32_t posY--><!--Device-int32_t posY-End--> |
+| uint32_t width | Window width, in px. The value is an integer.<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | Window height, in px. The value is an integer.<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

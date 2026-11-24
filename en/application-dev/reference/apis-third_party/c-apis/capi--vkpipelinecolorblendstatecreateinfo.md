@@ -10,13 +10,13 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineColorBlendStateCreateFlags flags |  |
-| VkBool32 logicOpEnable |  |
-| VkLogicOp logicOp |  |
-| uint32_t attachmentCount |  |
-| [const VkPipelineColorBlendAttachmentState*](capi--vkpipelinecolorblendattachmentstate.md) pAttachments |  |
-| float blendConstants[4] |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineColorBlendStateCreateFlags flags | <!--Device-VkPipelineColorBlendStateCreateFlags flags--><!--Device-VkPipelineColorBlendStateCreateFlags flags-End--> |
+| VkBool32 logicOpEnable | <!--Device-VkBool32 logicOpEnable--><!--Device-VkBool32 logicOpEnable-End--> |
+| VkLogicOp logicOp | <!--Device-VkLogicOp logicOp--><!--Device-VkLogicOp logicOp-End--> |
+| uint32_t attachmentCount | <!--Device-uint32_t attachmentCount--><!--Device-uint32_t attachmentCount-End--> |
+| [const VkPipelineColorBlendAttachmentState*](capi--vkpipelinecolorblendattachmentstate.md) pAttachments | <!--Device-const VkPipelineColorBlendAttachmentState* pAttachments--><!--Device-const VkPipelineColorBlendAttachmentState* pAttachments-End--> |
+| float blendConstants[4] | <!--Device-float blendConstants[4]--><!--Device-float blendConstants[4]-End--> |
 
 

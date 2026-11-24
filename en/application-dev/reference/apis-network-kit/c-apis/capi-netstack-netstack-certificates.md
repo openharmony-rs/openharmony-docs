@@ -24,7 +24,7 @@ Define certificate information.
 
 | Name | Description |
 | -- | -- |
-| char **content | PEM content of the certificate. |
-| size_t length | Number of certificates. |
+| char **content | PEM content of the certificate.<br><!--Device-char **content--><!--Device-char **content-End--> |
+| size_t length | Number of certificates.<br><!--Device-size_t length--><!--Device-size_t length-End--> |
 
 

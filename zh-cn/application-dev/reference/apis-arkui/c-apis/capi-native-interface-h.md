@@ -48,7 +48,7 @@ enum ArkUI_NativeAPIVariantKind
 
 定义Native接口集合类型。
 
-<!--Device-ArkUI_NativeAPIVariantKind--><!--Device-ArkUI_NativeAPIVariantKind-End-->
+<!--Device-enum ArkUI_NativeAPIVariantKind--><!--Device-enum ArkUI_NativeAPIVariantKind-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,11 +56,11 @@ enum ArkUI_NativeAPIVariantKind
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NATIVE_NODE | UI组件相关接口类型，详见[native_node.h](capi-native-node-h.md)中的结构体类型定义。 |
-| ARKUI_NATIVE_DIALOG | 弹窗相关接口类型，详见[native_dialog.h](capi-native-dialog-h.md)中的结构体类型定义。 |
-| ARKUI_NATIVE_GESTURE | 手势相关接口类型，详见[native_gesture.h](capi-native-gesture-h.md)中的结构体类型定义。 |
-| ARKUI_NATIVE_ANIMATE | 动画相关接口类型，详见[native_animate.h](capi-native-animate-h.md)中的结构体类型定义。 |
-| ARKUI_MULTI_THREAD_NATIVE_NODE | 多线程UI组件相关接口类型，详见[native_node.h](capi-native-node-h.md)中的结构体类型定义。<br>**起始版本：** 22 |
+| ARKUI_NATIVE_NODE | UI组件相关接口类型，详见[native_node.h](capi-native-node-h.md)中的结构体类型定义。<br><!--Device-ARKUI_NATIVE_NODE--><!--Device-ARKUI_NATIVE_NODE-End--> |
+| ARKUI_NATIVE_DIALOG | 弹窗相关接口类型，详见[native_dialog.h](capi-native-dialog-h.md)中的结构体类型定义。<br><!--Device-ARKUI_NATIVE_DIALOG--><!--Device-ARKUI_NATIVE_DIALOG-End--> |
+| ARKUI_NATIVE_GESTURE | 手势相关接口类型，详见[native_gesture.h](capi-native-gesture-h.md)中的结构体类型定义。<br><!--Device-ARKUI_NATIVE_GESTURE--><!--Device-ARKUI_NATIVE_GESTURE-End--> |
+| ARKUI_NATIVE_ANIMATE | 动画相关接口类型，详见[native_animate.h](capi-native-animate-h.md)中的结构体类型定义。<br><!--Device-ARKUI_NATIVE_ANIMATE--><!--Device-ARKUI_NATIVE_ANIMATE-End--> |
+| ARKUI_MULTI_THREAD_NATIVE_NODE | 多线程UI组件相关接口类型，详见[native_node.h](capi-native-node-h.md)中的结构体类型定义。<br>**起始版本：** 22<br><!--Device-ARKUI_MULTI_THREAD_NATIVE_NODE--><!--Device-ARKUI_MULTI_THREAD_NATIVE_NODE-End--> |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckType
 
@@ -72,7 +72,7 @@ enum OH_ArkUI_NativeModule_RuntimeCheckType
 
 ArkUI C API的运行时检查类型枚举。<br> 每种检查类型对应一种ArkUI C API的不当使用场景，用于在运行时检测开发者 对C API的误用行为（如跨线程调用、访问已销毁对象等）。 可通过[OH_ArkUI_NativeModule_SetRuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_setruntimecheckmode)为每种检查类型 独立配置运行时检查模式，检查失败时的行为由所配置的运行时检查模式决定，模式取值见[OH_ArkUI_NativeModule_RuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)。
 
-<!--Device-OH_ArkUI_NativeModule_RuntimeCheckType--><!--Device-OH_ArkUI_NativeModule_RuntimeCheckType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckType--><!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,10 +80,10 @@ ArkUI C API的运行时检查类型枚举。<br> 每种检查类型对应一种A
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0 | UI线程检查类型：部分ArkUI C API要求必须在UI线程调用， 此类型用于检测这些API是否被非UI线程调用。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | 节点销毁检查类型：检测传递给C API的ArkUI_NodeHandle是否已经被销毁。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2 | 属性匹配检查类型：检测传递给SetAttribute/GetAttribute/ResetAttribute的 ArkUI_NodeAttributeType是否与节点实际组件类型匹配。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3 | 多线程竞争检查类型：检测调用多线程API时，是否已有其他线程 正在操作同一棵组件树。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0 | UI线程检查类型：部分ArkUI C API要求必须在UI线程调用， 此类型用于检测这些API是否被非UI线程调用。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | 节点销毁检查类型：检测传递给C API的ArkUI_NodeHandle是否已经被销毁。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2 | 属性匹配检查类型：检测传递给SetAttribute/GetAttribute/ResetAttribute的 ArkUI_NodeAttributeType是否与节点实际组件类型匹配。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3 | 多线程竞争检查类型：检测调用多线程API时，是否已有其他线程 正在操作同一棵组件树。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3-End--> |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckMode
 
@@ -95,7 +95,7 @@ enum OH_ArkUI_NativeModule_RuntimeCheckMode
 
 ArkUI C API运行时检查的模式枚举。<br> 所有C API的运行时检查类型均使用本枚举中定义的相同模式集合（DISABLED、LOG、CRASH）设置检查失败时的行为， 即每种检查类型都可以独立设置为以下三种模式之一。 默认模式取决于应用程序的构建类型： 以debug模式编译的应用（DevEco Studio中Debug构建，用于开发调试） 默认为[OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)， 以release模式编译的应用（DevEco Studio中Release构建，用于正式发布） 默认为[OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode)。
 
-<!--Device-OH_ArkUI_NativeModule_RuntimeCheckMode--><!--Device-OH_ArkUI_NativeModule_RuntimeCheckMode-End-->
+<!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckMode--><!--Device-enum OH_ArkUI_NativeModule_RuntimeCheckMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,9 +103,9 @@ ArkUI C API运行时检查的模式枚举。<br> 所有C API的运行时检查�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0 | 禁用指定的运行时检查。C API行为与引入该检查之前一致。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1 | 打印诊断日志（检查类型、API名称、原因、native堆栈）并继续C API调用。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2 | 打印诊断日志并立即终止应用程序。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0 | 禁用指定的运行时检查。C API行为与引入该检查之前一致。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1 | 打印诊断日志（检查类型、API名称、原因、native堆栈）并继续C API调用。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_LOG = 1-End--> |
+| OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2 | 打印诊断日志并立即终止应用程序。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2--><!--Device-OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH = 2-End--> |
 
 
 ## 函数说明

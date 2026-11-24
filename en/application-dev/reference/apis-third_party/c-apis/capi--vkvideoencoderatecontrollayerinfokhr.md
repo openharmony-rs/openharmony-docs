@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint64_t averageBitrate |  |
-| uint64_t maxBitrate |  |
-| uint32_t frameRateNumerator |  |
-| uint32_t frameRateDenominator |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint64_t averageBitrate | <!--Device-uint64_t averageBitrate--><!--Device-uint64_t averageBitrate-End--> |
+| uint64_t maxBitrate | <!--Device-uint64_t maxBitrate--><!--Device-uint64_t maxBitrate-End--> |
+| uint32_t frameRateNumerator | <!--Device-uint32_t frameRateNumerator--><!--Device-uint32_t frameRateNumerator-End--> |
+| uint32_t frameRateDenominator | <!--Device-uint32_t frameRateDenominator--><!--Device-uint32_t frameRateDenominator-End--> |
 
 

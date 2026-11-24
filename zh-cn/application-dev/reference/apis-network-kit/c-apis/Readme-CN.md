@@ -39,6 +39,7 @@
     - [WebSocket_OpenResult](capi-netstack-websocket-openresult.md)
     - [WebSocket_Header](capi-netstack-websocket-header.md)
     - [WebSocket_RequestOptions](capi-netstack-websocket-requestoptions.md)
+    - [WebSocket](capi-netstack-websocket.md)
     - [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md)
     - [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md)
     - [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md)

@@ -24,9 +24,9 @@ Represents the paper size information in a print task, including key attributes 
 
 | Name | Description |
 | -- | -- |
-| char *id | Unique ID of the paper size, which is used to distinguish different paper specifications. |
-| char *name | Name of the paper size, for example, **A4** or **Letter**. |
-| uint32_t width | Paper width, in mils (1 mil = 1/1000 inch). The value must be greater than **0**. |
-| uint32_t height | Paper height, in mils (1 mil = 1/1000 inch). The value must be greater than **0**. |
+| char *id | Unique ID of the paper size, which is used to distinguish different paper specifications.<br><!--Device-char *id--><!--Device-char *id-End--> |
+| char *name | Name of the paper size, for example, **A4** or **Letter**.<br><!--Device-char *name--><!--Device-char *name-End--> |
+| uint32_t width | Paper width, in mils (1 mil = 1/1000 inch). The value must be greater than **0**.<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | Paper height, in mils (1 mil = 1/1000 inch). The value must be greater than **0**.<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

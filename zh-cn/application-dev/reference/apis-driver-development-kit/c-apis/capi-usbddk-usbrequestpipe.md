@@ -24,8 +24,8 @@ struct UsbRequestPipe {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t interfaceHandle | 接口操作句柄，用于标识USB设备上的接口，由[OH_Usb_ClaimInterface](capi-usb-ddk-api-h.md#oh_usb_claiminterface)接口获取。 |
-| uint32_t timeout | 超时时间，单位：ms。值为0表示等待直到操作完成；非0值表示在指定毫秒数内未完成则超时。 |
-| uint8_t endpoint | 要通信的端点的地址。 |
+| uint64_t interfaceHandle | 接口操作句柄，用于标识USB设备上的接口，由[OH_Usb_ClaimInterface](capi-usb-ddk-api-h.md#oh_usb_claiminterface)接口获取。<br><!--Device-uint64_t interfaceHandle--><!--Device-uint64_t interfaceHandle-End--> |
+| uint32_t timeout | 超时时间，单位：ms。值为0表示等待直到操作完成；非0值表示在指定毫秒数内未完成则超时。<br><!--Device-uint32_t timeout--><!--Device-uint32_t timeout-End--> |
+| uint8_t endpoint | 要通信的端点的地址。<br><!--Device-uint8_t endpoint--><!--Device-uint8_t endpoint-End--> |
 
 

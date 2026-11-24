@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| char l_name[FMNAMESZ + 1] |  |
+| char l_name[FMNAMESZ + 1] | <!--Device-char l_name[FMNAMESZ + 1]--><!--Device-char l_name[FMNAMESZ + 1]-End--> |
 
 

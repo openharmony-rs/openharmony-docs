@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkIndirectExecutionSetInfoTypeEXT type |  |
-| VkShaderStageFlags shaderStages |  |
+| VkIndirectExecutionSetInfoTypeEXT type | <!--Device-VkIndirectExecutionSetInfoTypeEXT type--><!--Device-VkIndirectExecutionSetInfoTypeEXT type-End--> |
+| VkShaderStageFlags shaderStages | <!--Device-VkShaderStageFlags shaderStages--><!--Device-VkShaderStageFlags shaderStages-End--> |
 
 

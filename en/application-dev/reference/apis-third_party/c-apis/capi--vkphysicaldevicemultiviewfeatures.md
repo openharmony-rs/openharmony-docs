@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 multiview |  |
-| VkBool32 multiviewGeometryShader |  |
-| VkBool32 multiviewTessellationShader |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 multiview | <!--Device-VkBool32 multiview--><!--Device-VkBool32 multiview-End--> |
+| VkBool32 multiviewGeometryShader | <!--Device-VkBool32 multiviewGeometryShader--><!--Device-VkBool32 multiviewGeometryShader-End--> |
+| VkBool32 multiviewTessellationShader | <!--Device-VkBool32 multiviewTessellationShader--><!--Device-VkBool32 multiviewTessellationShader-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct OH_CloudDisk_FetchDataRequest {...} OH_CloudDisk_FetchDataRequest
 
 | 名称 | 描述 |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | 同步根内相对文件路径。<br>**起始版本：** 26.0.1 |
-| [OH_CloudDisk_HydratePriority](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_hydratepriority) priority | 水合优先级。<br>**起始版本：** 26.0.1 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | 同步根内相对文件路径。<br>**起始版本：** 26.0.1<br><!--Device-CloudDisk_PathInfo filePath--><!--Device-CloudDisk_PathInfo filePath-End--> |
+| [OH_CloudDisk_HydratePriority](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_hydratepriority) priority | 水合优先级。<br>**起始版本：** 26.0.1<br><!--Device-OH_CloudDisk_HydratePriority priority--><!--Device-OH_CloudDisk_HydratePriority priority-End--> |
 
 

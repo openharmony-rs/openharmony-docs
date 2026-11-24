@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkImageAspectFlags aspectMask |  |
-| uint32_t colorAttachment |  |
-| [VkClearValue](capi--vkclearvalue.md) clearValue |  |
+| VkImageAspectFlags aspectMask | <!--Device-VkImageAspectFlags aspectMask--><!--Device-VkImageAspectFlags aspectMask-End--> |
+| uint32_t colorAttachment | <!--Device-uint32_t colorAttachment--><!--Device-uint32_t colorAttachment-End--> |
+| [VkClearValue](capi--vkclearvalue.md) clearValue | <!--Device-VkClearValue clearValue--><!--Device-VkClearValue clearValue-End--> |
 
 

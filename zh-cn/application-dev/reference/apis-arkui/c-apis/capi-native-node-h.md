@@ -185,8 +185,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | Set the subnode mounting policy of the target node. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy* policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | 获取目标节点当前的子节点挂载策略。目标节点的默认子节点挂载策略为OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE。 |
 | [ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context, bool enable)](#oh_arkui_nodeutils_setuidvsyncswitch) | - | 设置UI Dvsync开关。开启后系统会更及时地响应Vsync请求，更频繁执行渲染任务。通常在自渲染框架中动效开始时使能，结束后关闭，以确保动画效果更加流畅，同时避免频繁的Vsync影响其他业务。在非UI线程上调用此函数将导致应用退出。 |
-| [int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)](#oh_arkui_nativemodule_adoptchildwithpolicy) | - | 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点。 而是仅允许其接收对应子节点的生命周期回调。通过策略配置被接纳节点的浮层节点渲染位置。 |
-| [int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation) | - | 设置从被接纳的子节点到接纳其的父节点件的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。首先通过 compensationOffset平移 然后通过CompensationTransform 进行变换。补偿只有当子节点已通过以下策略被接纳时才生效： [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy)。 |
+| [int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)](#oh_arkui_nativemodule_adoptchildwithpolicy) | - | 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点， 而是仅允许其接收对应子节点的生命周期回调。通过策略配置被接纳节点的浮层节点渲染位置。 |
+| [int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation) | - | 设置从被接纳的子节点到接纳其的父节点间的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。 compensationOffset是纯渲染节点的累计偏移量补偿，只包含每个节点的偏移。compensationTransform是纯渲染节点的累计变换补偿矩阵， 包含每个节点的偏移、旋转和缩放等变换。补偿只有当子节点已通过以下策略被接纳时才生效： [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy)。 |
 
 ## 枚举类型说明
 
@@ -200,7 +200,7 @@ enum ArkUI_NodeType
 
 Enumerates ArkUI component types that can be created on the native side.
 
-<!--Device-ArkUI_NodeType--><!--Device-ArkUI_NodeType-End-->
+<!--Device-enum ArkUI_NodeType--><!--Device-enum ArkUI_NodeType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,51 +208,51 @@ Enumerates ArkUI component types that can be created on the native side.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NODE_CUSTOM = 0 | Custom node. |
-| ARKUI_NODE_TEXT = 1 | Text. |
-| ARKUI_NODE_SPAN = 2 | Text span. |
-| ARKUI_NODE_IMAGE_SPAN = 3 | Image span. |
-| ARKUI_NODE_IMAGE = 4 | Image. |
-| ARKUI_NODE_TOGGLE = 5 | Toggle. |
-| ARKUI_NODE_LOADING_PROGRESS = 6 | Loading icon. |
-| ARKUI_NODE_TEXT_INPUT = 7 | Single-line text input. |
-| ARKUI_NODE_TEXT_AREA = 8 | Multi-line text input. |
-| ARKUI_NODE_BUTTON = 9 | Button. |
-| ARKUI_NODE_PROGRESS = 10 | Progress indicator. |
-| ARKUI_NODE_CHECKBOX = 11 | Check box. |
-| ARKUI_NODE_XCOMPONENT = 12 | SURFACE类型XComponent。 |
-| ARKUI_NODE_DATE_PICKER = 13 | 日期选择器组件。 |
-| ARKUI_NODE_TIME_PICKER = 14 | 时间选择组件。 |
-| ARKUI_NODE_TEXT_PICKER = 15 | 滑动选择文本内容的组件。 |
-| ARKUI_NODE_CALENDAR_PICKER = 16 | 日历选择器组件。 |
-| ARKUI_NODE_SLIDER = 17 | Slider. |
-| ARKUI_NODE_RADIO = 18 | Radio |
-| ARKUI_NODE_IMAGE_ANIMATOR = 19 | Image animator. |
-| ARKUI_NODE_XCOMPONENT_TEXTURE | TEXTURE类型XComponent。 @since 18<br>**起始版本：** 18 |
-| ARKUI_NODE_CHECKBOX_GROUP = 21 | Check box group. @since 15<br>**起始版本：** 15 |
-| ARKUI_NODE_TEXT_EDITOR = 22 | 文本编辑器。<br>**起始版本：** 24 |
-| ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | Stack container. |
-| ARKUI_NODE_SWIPER | Swiper. |
-| ARKUI_NODE_SCROLL | 滚动容器。 |
-| ARKUI_NODE_LIST | 列表。 |
-| ARKUI_NODE_LIST_ITEM | 列表项。 |
-| ARKUI_NODE_LIST_ITEM_GROUP | 列表item分组。 |
-| ARKUI_NODE_COLUMN | Column container. |
-| ARKUI_NODE_ROW | Row container. |
-| ARKUI_NODE_FLEX | Flex container. |
-| ARKUI_NODE_REFRESH | Refresh component. |
-| ARKUI_NODE_WATER_FLOW | 瀑布流容器。 |
-| ARKUI_NODE_FLOW_ITEM | 瀑布流子组件。 |
-| ARKUI_NODE_RELATIVE_CONTAINER | Relative layout component. |
-| ARKUI_NODE_GRID | 网格容器。 |
-| ARKUI_NODE_GRID_ITEM | 网格子组件。 |
-| ARKUI_NODE_CUSTOM_SPAN | Custom span. |
-| ARKUI_NODE_EMBEDDED_COMPONENT | 同应用进程嵌入式组件。<br>**起始版本：** 20 |
-| ARKUI_NODE_UNDEFINED | 组件类型未定义。在反色接口中代表全部组件类型。<br>**起始版本：** 20 |
-| ARKUI_NODE_PICKER = 1018 | Picker容器，用于实现用户选择操作的组件。<br>**起始版本：** 23 |
-| ARKUI_NODE_ARC_LIST = 1019 | ArcList容器。<br>**起始版本：** 26.0.0 |
-| ARKUI_NODE_ARC_LIST_ITEM = 1020 | ArcListItem容器。<br>**起始版本：** 26.0.0 |
-| ARKUI_NODE_ARC_SCROLL_BAR = 1021 | ArcScrollBar容器。<br>**起始版本：** 26.0.0 |
+| ARKUI_NODE_CUSTOM = 0 | Custom node.<br><!--Device-ARKUI_NODE_CUSTOM = 0--><!--Device-ARKUI_NODE_CUSTOM = 0-End--> |
+| ARKUI_NODE_TEXT = 1 | Text.<br><!--Device-ARKUI_NODE_TEXT = 1--><!--Device-ARKUI_NODE_TEXT = 1-End--> |
+| ARKUI_NODE_SPAN = 2 | Text span.<br><!--Device-ARKUI_NODE_SPAN = 2--><!--Device-ARKUI_NODE_SPAN = 2-End--> |
+| ARKUI_NODE_IMAGE_SPAN = 3 | Image span.<br><!--Device-ARKUI_NODE_IMAGE_SPAN = 3--><!--Device-ARKUI_NODE_IMAGE_SPAN = 3-End--> |
+| ARKUI_NODE_IMAGE = 4 | Image.<br><!--Device-ARKUI_NODE_IMAGE = 4--><!--Device-ARKUI_NODE_IMAGE = 4-End--> |
+| ARKUI_NODE_TOGGLE = 5 | Toggle.<br><!--Device-ARKUI_NODE_TOGGLE = 5--><!--Device-ARKUI_NODE_TOGGLE = 5-End--> |
+| ARKUI_NODE_LOADING_PROGRESS = 6 | Loading icon.<br><!--Device-ARKUI_NODE_LOADING_PROGRESS = 6--><!--Device-ARKUI_NODE_LOADING_PROGRESS = 6-End--> |
+| ARKUI_NODE_TEXT_INPUT = 7 | Single-line text input.<br><!--Device-ARKUI_NODE_TEXT_INPUT = 7--><!--Device-ARKUI_NODE_TEXT_INPUT = 7-End--> |
+| ARKUI_NODE_TEXT_AREA = 8 | Multi-line text input.<br><!--Device-ARKUI_NODE_TEXT_AREA = 8--><!--Device-ARKUI_NODE_TEXT_AREA = 8-End--> |
+| ARKUI_NODE_BUTTON = 9 | Button.<br><!--Device-ARKUI_NODE_BUTTON = 9--><!--Device-ARKUI_NODE_BUTTON = 9-End--> |
+| ARKUI_NODE_PROGRESS = 10 | Progress indicator.<br><!--Device-ARKUI_NODE_PROGRESS = 10--><!--Device-ARKUI_NODE_PROGRESS = 10-End--> |
+| ARKUI_NODE_CHECKBOX = 11 | Check box.<br><!--Device-ARKUI_NODE_CHECKBOX = 11--><!--Device-ARKUI_NODE_CHECKBOX = 11-End--> |
+| ARKUI_NODE_XCOMPONENT = 12 | SURFACE类型XComponent。<br><!--Device-ARKUI_NODE_XCOMPONENT = 12--><!--Device-ARKUI_NODE_XCOMPONENT = 12-End--> |
+| ARKUI_NODE_DATE_PICKER = 13 | 日期选择器组件。<br><!--Device-ARKUI_NODE_DATE_PICKER = 13--><!--Device-ARKUI_NODE_DATE_PICKER = 13-End--> |
+| ARKUI_NODE_TIME_PICKER = 14 | 时间选择组件。<br><!--Device-ARKUI_NODE_TIME_PICKER = 14--><!--Device-ARKUI_NODE_TIME_PICKER = 14-End--> |
+| ARKUI_NODE_TEXT_PICKER = 15 | 滑动选择文本内容的组件。<br><!--Device-ARKUI_NODE_TEXT_PICKER = 15--><!--Device-ARKUI_NODE_TEXT_PICKER = 15-End--> |
+| ARKUI_NODE_CALENDAR_PICKER = 16 | 日历选择器组件。<br><!--Device-ARKUI_NODE_CALENDAR_PICKER = 16--><!--Device-ARKUI_NODE_CALENDAR_PICKER = 16-End--> |
+| ARKUI_NODE_SLIDER = 17 | Slider.<br><!--Device-ARKUI_NODE_SLIDER = 17--><!--Device-ARKUI_NODE_SLIDER = 17-End--> |
+| ARKUI_NODE_RADIO = 18 | Radio<br><!--Device-ARKUI_NODE_RADIO = 18--><!--Device-ARKUI_NODE_RADIO = 18-End--> |
+| ARKUI_NODE_IMAGE_ANIMATOR = 19 | Image animator.<br><!--Device-ARKUI_NODE_IMAGE_ANIMATOR = 19--><!--Device-ARKUI_NODE_IMAGE_ANIMATOR = 19-End--> |
+| ARKUI_NODE_XCOMPONENT_TEXTURE | TEXTURE类型XComponent。 @since 18<br>**起始版本：** 18<br><!--Device-ARKUI_NODE_XCOMPONENT_TEXTURE--><!--Device-ARKUI_NODE_XCOMPONENT_TEXTURE-End--> |
+| ARKUI_NODE_CHECKBOX_GROUP = 21 | Check box group. @since 15<br>**起始版本：** 15<br><!--Device-ARKUI_NODE_CHECKBOX_GROUP = 21--><!--Device-ARKUI_NODE_CHECKBOX_GROUP = 21-End--> |
+| ARKUI_NODE_TEXT_EDITOR = 22 | 文本编辑器。<br>**起始版本：** 24<br><!--Device-ARKUI_NODE_TEXT_EDITOR = 22--><!--Device-ARKUI_NODE_TEXT_EDITOR = 22-End--> |
+| ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | Stack container.<br><!--Device-ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM--><!--Device-ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM-End--> |
+| ARKUI_NODE_SWIPER | Swiper.<br><!--Device-ARKUI_NODE_SWIPER--><!--Device-ARKUI_NODE_SWIPER-End--> |
+| ARKUI_NODE_SCROLL | 滚动容器。<br><!--Device-ARKUI_NODE_SCROLL--><!--Device-ARKUI_NODE_SCROLL-End--> |
+| ARKUI_NODE_LIST | 列表。<br><!--Device-ARKUI_NODE_LIST--><!--Device-ARKUI_NODE_LIST-End--> |
+| ARKUI_NODE_LIST_ITEM | 列表项。<br><!--Device-ARKUI_NODE_LIST_ITEM--><!--Device-ARKUI_NODE_LIST_ITEM-End--> |
+| ARKUI_NODE_LIST_ITEM_GROUP | 列表item分组。<br><!--Device-ARKUI_NODE_LIST_ITEM_GROUP--><!--Device-ARKUI_NODE_LIST_ITEM_GROUP-End--> |
+| ARKUI_NODE_COLUMN | Column container.<br><!--Device-ARKUI_NODE_COLUMN--><!--Device-ARKUI_NODE_COLUMN-End--> |
+| ARKUI_NODE_ROW | Row container.<br><!--Device-ARKUI_NODE_ROW--><!--Device-ARKUI_NODE_ROW-End--> |
+| ARKUI_NODE_FLEX | Flex container.<br><!--Device-ARKUI_NODE_FLEX--><!--Device-ARKUI_NODE_FLEX-End--> |
+| ARKUI_NODE_REFRESH | Refresh component.<br><!--Device-ARKUI_NODE_REFRESH--><!--Device-ARKUI_NODE_REFRESH-End--> |
+| ARKUI_NODE_WATER_FLOW | 瀑布流容器。<br><!--Device-ARKUI_NODE_WATER_FLOW--><!--Device-ARKUI_NODE_WATER_FLOW-End--> |
+| ARKUI_NODE_FLOW_ITEM | 瀑布流子组件。<br><!--Device-ARKUI_NODE_FLOW_ITEM--><!--Device-ARKUI_NODE_FLOW_ITEM-End--> |
+| ARKUI_NODE_RELATIVE_CONTAINER | Relative layout component.<br><!--Device-ARKUI_NODE_RELATIVE_CONTAINER--><!--Device-ARKUI_NODE_RELATIVE_CONTAINER-End--> |
+| ARKUI_NODE_GRID | 网格容器。<br><!--Device-ARKUI_NODE_GRID--><!--Device-ARKUI_NODE_GRID-End--> |
+| ARKUI_NODE_GRID_ITEM | 网格子组件。<br><!--Device-ARKUI_NODE_GRID_ITEM--><!--Device-ARKUI_NODE_GRID_ITEM-End--> |
+| ARKUI_NODE_CUSTOM_SPAN | Custom span.<br><!--Device-ARKUI_NODE_CUSTOM_SPAN--><!--Device-ARKUI_NODE_CUSTOM_SPAN-End--> |
+| ARKUI_NODE_EMBEDDED_COMPONENT | 同应用进程嵌入式组件。<br>**起始版本：** 20<br><!--Device-ARKUI_NODE_EMBEDDED_COMPONENT--><!--Device-ARKUI_NODE_EMBEDDED_COMPONENT-End--> |
+| ARKUI_NODE_UNDEFINED | 组件类型未定义。在反色接口中代表全部组件类型。<br>**起始版本：** 20<br><!--Device-ARKUI_NODE_UNDEFINED--><!--Device-ARKUI_NODE_UNDEFINED-End--> |
+| ARKUI_NODE_PICKER = 1018 | Picker容器，用于实现用户选择操作的组件。<br>**起始版本：** 23<br><!--Device-ARKUI_NODE_PICKER = 1018--><!--Device-ARKUI_NODE_PICKER = 1018-End--> |
+| ARKUI_NODE_ARC_LIST = 1019 | ArcList容器。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_NODE_ARC_LIST = 1019--><!--Device-ARKUI_NODE_ARC_LIST = 1019-End--> |
+| ARKUI_NODE_ARC_LIST_ITEM = 1020 | ArcListItem容器。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_NODE_ARC_LIST_ITEM = 1020--><!--Device-ARKUI_NODE_ARC_LIST_ITEM = 1020-End--> |
+| ARKUI_NODE_ARC_SCROLL_BAR = 1021 | ArcScrollBar容器。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_NODE_ARC_SCROLL_BAR = 1021--><!--Device-ARKUI_NODE_ARC_SCROLL_BAR = 1021-End--> |
 
 ### ArkUI_NodeDirtyFlag
 
@@ -264,7 +264,7 @@ enum ArkUI_NodeDirtyFlag
 
 Defines the dirty area flag passed in the <b>::markDirty</b> API.
 
-<!--Device-ArkUI_NodeDirtyFlag--><!--Device-ArkUI_NodeDirtyFlag-End-->
+<!--Device-enum ArkUI_NodeDirtyFlag--><!--Device-enum ArkUI_NodeDirtyFlag-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -272,9 +272,9 @@ Defines the dirty area flag passed in the <b>::markDirty</b> API.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NODE_NEED_MEASURE = 1 | Remeasure.<br> When this type of flag is specified, re-layout is triggered by default. |
-| NODE_NEED_LAYOUT | Re-layout. |
-| NODE_NEED_RENDER | Re-rendering. |
+| NODE_NEED_MEASURE = 1 | Remeasure.<br> When this type of flag is specified, re-layout is triggered by default.<br><!--Device-NODE_NEED_MEASURE = 1--><!--Device-NODE_NEED_MEASURE = 1-End--> |
+| NODE_NEED_LAYOUT | Re-layout.<br><!--Device-NODE_NEED_LAYOUT--><!--Device-NODE_NEED_LAYOUT-End--> |
+| NODE_NEED_RENDER | Re-rendering.<br><!--Device-NODE_NEED_RENDER--><!--Device-NODE_NEED_RENDER-End--> |
 
 ### ArkUI_NodeCustomEventType
 
@@ -286,7 +286,7 @@ enum ArkUI_NodeCustomEventType
 
 Defines the custom component event type.
 
-<!--Device-ArkUI_NodeCustomEventType--><!--Device-ArkUI_NodeCustomEventType-End-->
+<!--Device-enum ArkUI_NodeCustomEventType--><!--Device-enum ArkUI_NodeCustomEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,13 +294,13 @@ Defines the custom component event type.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | Measure type. |
-| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | Layout type. |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | Draw type. |
-| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | Foreground type. |
-| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | Overlay type. |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | Draw front type.<br>**起始版本：** 20 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | Draw behind type.<br>**起始版本：** 20 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | Measure type.<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | Layout type.<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | Draw type.<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | Foreground type.<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | Overlay type.<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | Draw front type.<br>**起始版本：** 20<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | Draw behind type.<br>**起始版本：** 20<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6-End--> |
 
 ### ArkUI_NodeAdapterEventType
 
@@ -312,7 +312,7 @@ enum ArkUI_NodeAdapterEventType
 
 Enumerates component adapter events.
 
-<!--Device-ArkUI_NodeAdapterEventType--><!--Device-ArkUI_NodeAdapterEventType-End-->
+<!--Device-enum ArkUI_NodeAdapterEventType--><!--Device-enum ArkUI_NodeAdapterEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,11 +320,11 @@ Enumerates component adapter events.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE = 1 | This event occurs when the component is attached to the adapter. |
-| NODE_ADAPTER_EVENT_WILL_DETACH_FROM_NODE = 2 | This event occurs when the component is detached from the adapter. |
-| NODE_ADAPTER_EVENT_ON_GET_NODE_ID = 3 | This event occurs when the adapter obtains the unique ID of the new element to add. |
-| NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER = 4 | This event occurs when the adapter obtains the content of the new element to add. |
-| NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER = 5 | This event occurs when the adapter removes an element. |
+| NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE = 1 | This event occurs when the component is attached to the adapter.<br><!--Device-NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE = 1--><!--Device-NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE = 1-End--> |
+| NODE_ADAPTER_EVENT_WILL_DETACH_FROM_NODE = 2 | This event occurs when the component is detached from the adapter.<br><!--Device-NODE_ADAPTER_EVENT_WILL_DETACH_FROM_NODE = 2--><!--Device-NODE_ADAPTER_EVENT_WILL_DETACH_FROM_NODE = 2-End--> |
+| NODE_ADAPTER_EVENT_ON_GET_NODE_ID = 3 | This event occurs when the adapter obtains the unique ID of the new element to add.<br><!--Device-NODE_ADAPTER_EVENT_ON_GET_NODE_ID = 3--><!--Device-NODE_ADAPTER_EVENT_ON_GET_NODE_ID = 3-End--> |
+| NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER = 4 | This event occurs when the adapter obtains the content of the new element to add.<br><!--Device-NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER = 4--><!--Device-NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER = 4-End--> |
+| NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER = 5 | This event occurs when the adapter removes an element.<br><!--Device-NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER = 5--><!--Device-NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER = 5-End--> |
 
 ### ArkUI_NodeContentEventType
 
@@ -336,7 +336,7 @@ enum ArkUI_NodeContentEventType
 
 Defines the node content event type.
 
-<!--Device-ArkUI_NodeContentEventType--><!--Device-ArkUI_NodeContentEventType-End-->
+<!--Device-enum ArkUI_NodeContentEventType--><!--Device-enum ArkUI_NodeContentEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -344,8 +344,8 @@ Defines the node content event type.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0 | Defines the attach event. |
-| NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1 | Defines the detach event. |
+| NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0 | Defines the attach event.<br><!--Device-NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0--><!--Device-NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0-End--> |
+| NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1 | Defines the detach event.<br><!--Device-NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1--><!--Device-NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1-End--> |
 
 ### ArkUI_InspectorErrorCode
 
@@ -357,7 +357,7 @@ enum ArkUI_InspectorErrorCode
 
 Enumerates the inspector error codes.
 
-<!--Device-ArkUI_InspectorErrorCode--><!--Device-ArkUI_InspectorErrorCode-End-->
+<!--Device-enum ArkUI_InspectorErrorCode--><!--Device-enum ArkUI_InspectorErrorCode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -365,8 +365,8 @@ Enumerates the inspector error codes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0 | &nbsp;Success. |
-| ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1 | &nbsp;Invalid parameter. |
+| ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0 | &nbsp;Success.<br><!--Device-ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0--><!--Device-ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0-End--> |
+| ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1 | &nbsp;Invalid parameter.<br><!--Device-ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1--><!--Device-ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1-End--> |
 
 ### OH_ArkUI_AdoptPolicy
 
@@ -378,7 +378,7 @@ enum OH_ArkUI_AdoptPolicy
 
 枚举接纳子节点的策略。
 
-<!--Device-OH_ArkUI_AdoptPolicy--><!--Device-OH_ArkUI_AdoptPolicy-End-->
+<!--Device-enum OH_ArkUI_AdoptPolicy--><!--Device-enum OH_ArkUI_AdoptPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -386,7 +386,7 @@ enum OH_ArkUI_AdoptPolicy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 | 被接纳节点的浮层节点基于接纳此节点的寄养父节点链计算显示位置，并在每个接纳边距应用开发者提供的补偿。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 | 被接纳节点的浮层节点基于接纳此节点的寄养父节点链计算显示位置，并在每个接纳边界应用开发者调用 [OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation](capi-native-node-h.md#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation)接口提供的补偿。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0--><!--Device-OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0-End--> |
 
 
 ## 函数说明
@@ -3982,7 +3982,7 @@ int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_
 
 **描述：**
 
-当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点。 而是仅允许其接收对应子节点的生命周期回调。通过策略配置被接纳节点的浮层节点渲染位置。
+当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点， 而是仅允许其接收对应子节点的生命周期回调。通过策略配置被接纳节点的浮层节点渲染位置。
 
 <!--Device-int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)--><!--Device-int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)-End-->
 
@@ -3994,15 +3994,15 @@ int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [in] ArkUI_NodeHandle指针, 指定待接纳节点的父节点。 |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | [in] ArkUI_NodeHandle指针, 指定被接纳的子节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [in] ArkUI_NodeHandle指针，指定待接纳节点的父节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | [in] ArkUI_NodeHandle指针，指定待被接纳的子节点。 |
 | [OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy) policy | [in] 被接纳节点的浮层节点渲染位置策略。有效值对应[OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值. <ul><li>如果操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果CAPI初始化失败，返回[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果被接纳的节点已有父节点，返回[ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果节点无法被接纳为附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果节点无法接纳其他附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-error-code-h.md#arkui_errorcode)。</li></ul> |
+| int32_t | 返回值。<ul><li>如果操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果CAPI初始化失败，返回[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果被接纳的节点已有父节点，返回[ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果节点无法被接纳为附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果节点无法接纳其他附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-error-code-h.md#arkui_errorcode)。</li></ul> |
 
 ### OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation()
 
@@ -4012,7 +4012,7 @@ int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_N
 
 **描述：**
 
-设置从被接纳的子节点到接纳其的父节点件的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。首先通过 compensationOffset平移 然后通过CompensationTransform 进行变换。补偿只有当子节点已通过以下策略被接纳时才生效： [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy)。
+设置从被接纳的子节点到接纳其的父节点间的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。 compensationOffset是纯渲染节点的累计偏移量补偿，只包含每个节点的偏移。compensationTransform是纯渲染节点的累计变换补偿矩阵， 包含每个节点的偏移、旋转和缩放等变换。补偿只有当子节点已通过以下策略被接纳时才生效： [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy)。
 
 <!--Device-int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)--><!--Device-int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)-End-->
 
@@ -4024,14 +4024,14 @@ int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_N
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) adoptedChild | [in] 需要进行位置补偿的被接纳节点. |
-| const ArkUI_PointF* compensationOffset | [in] x/y 偏移量补偿（以像素为单位）. |
-| const ArkUI_Matrix4* compensationTransform | [in] 聚合变换补偿. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) adoptedChild | [in] 需要进行位置补偿的被接纳节点。 |
+| const ArkUI_PointF* compensationOffset | [in] x/y 补偿偏移量（以像素为单位）。 |
+| const ArkUI_Matrix4* compensationTransform | [in] 聚合变换补偿矩阵。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值. <ul><li>如果操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果CAPI初始化失败，返回[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果参数异常，返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果节点没有按要求的策略被接纳，返回 [ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN](capi-error-code-h.md#arkui_errorcode)。</li></ul> |
+| int32_t | 返回值。<ul><li>如果操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果CAPI初始化失败，返回[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果参数异常，返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果节点没有按要求的策略被接纳，返回 [ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN](capi-error-code-h.md#arkui_errorcode)。</li></ul> |
 
 

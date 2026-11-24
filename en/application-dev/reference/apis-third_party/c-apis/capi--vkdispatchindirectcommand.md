@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t x |  |
-| uint32_t y |  |
-| uint32_t z |  |
+| uint32_t x | <!--Device-uint32_t x--><!--Device-uint32_t x-End--> |
+| uint32_t y | <!--Device-uint32_t y--><!--Device-uint32_t y-End--> |
+| uint32_t z | <!--Device-uint32_t z--><!--Device-uint32_t z-End--> |
 
 

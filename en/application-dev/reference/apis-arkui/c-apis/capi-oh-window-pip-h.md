@@ -73,7 +73,7 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 
 | Name | Description |
 | -- | -- |
-| void* PictureInPicture_PipConfig | Picture in picture config.<br>**Since**: 20<br>**System capability**: SystemCapability.Window.SessionManager |
+| void* PictureInPicture_PipConfig | Picture in picture config.<br>**Since**: 20<br>**System capability**: SystemCapability.Window.SessionManager<br><!--Device-void* PictureInPicture_PipConfig--><!--Device-void* PictureInPicture_PipConfig-End--> |
 
 ## Enum type description
 
@@ -87,7 +87,7 @@ enum PictureInPicture_PipTemplateType
 
 Enumerates the types of PiP templates.
 
-<!--Device-PictureInPicture_PipTemplateType--><!--Device-PictureInPicture_PipTemplateType-End-->
+<!--Device-enum PictureInPicture_PipTemplateType--><!--Device-enum PictureInPicture_PipTemplateType-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -95,10 +95,10 @@ Enumerates the types of PiP templates.
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_PLAY = 0 | Video playback template. A PiP window will be started during video playback, and the video playback template is loaded.<br>**Since**: 20 |
-| VIDEO_CALL = 1 | Video call template. A PiP window will be started during a video call, and the video call template will be loaded.<br>**Since**: 20 |
-| VIDEO_MEETING = 2 | Video meeting template. A PiP window will be started during a video meeting, and the video meeting template will be loaded.<br>**Since**: 20 |
-| VIDEO_LIVE = 3 | Live template. A PiP window will be started during a live, and the live template is loaded.<br>**Since**: 20 |
+| VIDEO_PLAY = 0 | Video playback template. A PiP window will be started during video playback, and the video playback template is loaded.<br>**Since**: 20<br><!--Device-VIDEO_PLAY = 0--><!--Device-VIDEO_PLAY = 0-End--> |
+| VIDEO_CALL = 1 | Video call template. A PiP window will be started during a video call, and the video call template will be loaded.<br>**Since**: 20<br><!--Device-VIDEO_CALL = 1--><!--Device-VIDEO_CALL = 1-End--> |
+| VIDEO_MEETING = 2 | Video meeting template. A PiP window will be started during a video meeting, and the video meeting template will be loaded.<br>**Since**: 20<br><!--Device-VIDEO_MEETING = 2--><!--Device-VIDEO_MEETING = 2-End--> |
+| VIDEO_LIVE = 3 | Live template. A PiP window will be started during a live, and the live template is loaded.<br>**Since**: 20<br><!--Device-VIDEO_LIVE = 3--><!--Device-VIDEO_LIVE = 3-End--> |
 
 ### PictureInPicture_PipControlGroup
 
@@ -110,7 +110,7 @@ enum PictureInPicture_PipControlGroup
 
 Enumerates the types of component groups displayed on the PiP controller.
 
-<!--Device-PictureInPicture_PipControlGroup--><!--Device-PictureInPicture_PipControlGroup-End-->
+<!--Device-enum PictureInPicture_PipControlGroup--><!--Device-enum PictureInPicture_PipControlGroup-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -118,18 +118,18 @@ Enumerates the types of component groups displayed on the PiP controller.
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101 | Previous/Next component group for video playback. This component group is mutually exclusive with the fast- forward/rewind component group. It cannot be added if the fast-forward/rewind component group is added.<br>**Since**: 20 |
-| VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102 | Fast-forward/Rewind component group for video playback. This component group is mutually exclusive with the previous/next component group. It cannot be added if the previous/next component group is added.<br>**Since**: 20 |
-| VIDEO_CALL_MICROPHONE_SWITCH = 201 | Microphone on/off component group for video calls.<br>**Since**: 20 |
-| VIDEO_CALL_HANG_UP_BUTTON = 202 | Hang-up component group for video calls.<br>**Since**: 20 |
-| VIDEO_CALL_CAMERA_SWITCH = 203 | Camera on/off component group for video calls.<br>**Since**: 20 |
-| VIDEO_CALL_MUTE_SWITCH = 204 | Mute component group for video calls.<br>**Since**: 20 |
-| VIDEO_MEETING_HANG_UP_BUTTON = 301 | Hang-up component group for video meetings.<br>**Since**: 20 |
-| VIDEO_MEETING_CAMERA_SWITCH = 302 | Camera on/off component group for video meetings.<br>**Since**: 20 |
-| VIDEO_MEETING_MUTE_SWITCH = 303 | Mute component group for video meetings.<br>**Since**: 20 |
-| VIDEO_MEETING_MICROPHONE_SWITCH = 304 | Microphone on/off component group for video meetings.<br>**Since**: 20 |
-| VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401 | Play/Pause component group for live streaming.<br>**Since**: 20 |
-| VIDEO_LIVE_MUTE_SWITCH = 402 | Mute component group for live streaming.<br>**Since**: 20 |
+| VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101 | Previous/Next component group for video playback. This component group is mutually exclusive with the fast- forward/rewind component group. It cannot be added if the fast-forward/rewind component group is added.<br>**Since**: 20<br><!--Device-VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101--><!--Device-VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101-End--> |
+| VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102 | Fast-forward/Rewind component group for video playback. This component group is mutually exclusive with the previous/next component group. It cannot be added if the previous/next component group is added.<br>**Since**: 20<br><!--Device-VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102--><!--Device-VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102-End--> |
+| VIDEO_CALL_MICROPHONE_SWITCH = 201 | Microphone on/off component group for video calls.<br>**Since**: 20<br><!--Device-VIDEO_CALL_MICROPHONE_SWITCH = 201--><!--Device-VIDEO_CALL_MICROPHONE_SWITCH = 201-End--> |
+| VIDEO_CALL_HANG_UP_BUTTON = 202 | Hang-up component group for video calls.<br>**Since**: 20<br><!--Device-VIDEO_CALL_HANG_UP_BUTTON = 202--><!--Device-VIDEO_CALL_HANG_UP_BUTTON = 202-End--> |
+| VIDEO_CALL_CAMERA_SWITCH = 203 | Camera on/off component group for video calls.<br>**Since**: 20<br><!--Device-VIDEO_CALL_CAMERA_SWITCH = 203--><!--Device-VIDEO_CALL_CAMERA_SWITCH = 203-End--> |
+| VIDEO_CALL_MUTE_SWITCH = 204 | Mute component group for video calls.<br>**Since**: 20<br><!--Device-VIDEO_CALL_MUTE_SWITCH = 204--><!--Device-VIDEO_CALL_MUTE_SWITCH = 204-End--> |
+| VIDEO_MEETING_HANG_UP_BUTTON = 301 | Hang-up component group for video meetings.<br>**Since**: 20<br><!--Device-VIDEO_MEETING_HANG_UP_BUTTON = 301--><!--Device-VIDEO_MEETING_HANG_UP_BUTTON = 301-End--> |
+| VIDEO_MEETING_CAMERA_SWITCH = 302 | Camera on/off component group for video meetings.<br>**Since**: 20<br><!--Device-VIDEO_MEETING_CAMERA_SWITCH = 302--><!--Device-VIDEO_MEETING_CAMERA_SWITCH = 302-End--> |
+| VIDEO_MEETING_MUTE_SWITCH = 303 | Mute component group for video meetings.<br>**Since**: 20<br><!--Device-VIDEO_MEETING_MUTE_SWITCH = 303--><!--Device-VIDEO_MEETING_MUTE_SWITCH = 303-End--> |
+| VIDEO_MEETING_MICROPHONE_SWITCH = 304 | Microphone on/off component group for video meetings.<br>**Since**: 20<br><!--Device-VIDEO_MEETING_MICROPHONE_SWITCH = 304--><!--Device-VIDEO_MEETING_MICROPHONE_SWITCH = 304-End--> |
+| VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401 | Play/Pause component group for live streaming.<br>**Since**: 20<br><!--Device-VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401--><!--Device-VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401-End--> |
+| VIDEO_LIVE_MUTE_SWITCH = 402 | Mute component group for live streaming.<br>**Since**: 20<br><!--Device-VIDEO_LIVE_MUTE_SWITCH = 402--><!--Device-VIDEO_LIVE_MUTE_SWITCH = 402-End--> |
 
 ### PictureInPicture_PipControlType
 
@@ -141,7 +141,7 @@ enum PictureInPicture_PipControlType
 
 Enumerates the types of components displayed on the PiP controller.
 
-<!--Device-PictureInPicture_PipControlType--><!--Device-PictureInPicture_PipControlType-End-->
+<!--Device-enum PictureInPicture_PipControlType--><!--Device-enum PictureInPicture_PipControlType-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -149,15 +149,15 @@ Enumerates the types of components displayed on the PiP controller.
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_PLAY_PAUSE = 0 | Play/Pause component.<br>**Since**: 20 |
-| VIDEO_PREVIOUS = 1 | Previous component in video scenarios.<br>**Since**: 20 |
-| VIDEO_NEXT = 2 | Next component in video scenarios.<br>**Since**: 20 |
-| FAST_FORWARD = 3 | Fast-forward component in video scenarios.<br>**Since**: 20 |
-| FAST_BACKWARD = 4 | Rewind component in video scenarios.<br>**Since**: 20 |
-| HANG_UP_BUTTON = 5 | Hang-up component.<br>**Since**: 20 |
-| MICROPHONE_SWITCH = 6 | Microphone on/off component.<br>**Since**: 20 |
-| CAMERA_SWITCH = 7 | Camera on/off component.<br>**Since**: 20 |
-| MUTE_SWITCH = 8 | Mute/Unmute component.<br>**Since**: 20 |
+| VIDEO_PLAY_PAUSE = 0 | Play/Pause component.<br>**Since**: 20<br><!--Device-VIDEO_PLAY_PAUSE = 0--><!--Device-VIDEO_PLAY_PAUSE = 0-End--> |
+| VIDEO_PREVIOUS = 1 | Previous component in video scenarios.<br>**Since**: 20<br><!--Device-VIDEO_PREVIOUS = 1--><!--Device-VIDEO_PREVIOUS = 1-End--> |
+| VIDEO_NEXT = 2 | Next component in video scenarios.<br>**Since**: 20<br><!--Device-VIDEO_NEXT = 2--><!--Device-VIDEO_NEXT = 2-End--> |
+| FAST_FORWARD = 3 | Fast-forward component in video scenarios.<br>**Since**: 20<br><!--Device-FAST_FORWARD = 3--><!--Device-FAST_FORWARD = 3-End--> |
+| FAST_BACKWARD = 4 | Rewind component in video scenarios.<br>**Since**: 20<br><!--Device-FAST_BACKWARD = 4--><!--Device-FAST_BACKWARD = 4-End--> |
+| HANG_UP_BUTTON = 5 | Hang-up component.<br>**Since**: 20<br><!--Device-HANG_UP_BUTTON = 5--><!--Device-HANG_UP_BUTTON = 5-End--> |
+| MICROPHONE_SWITCH = 6 | Microphone on/off component.<br>**Since**: 20<br><!--Device-MICROPHONE_SWITCH = 6--><!--Device-MICROPHONE_SWITCH = 6-End--> |
+| CAMERA_SWITCH = 7 | Camera on/off component.<br>**Since**: 20<br><!--Device-CAMERA_SWITCH = 7--><!--Device-CAMERA_SWITCH = 7-End--> |
+| MUTE_SWITCH = 8 | Mute/Unmute component.<br>**Since**: 20<br><!--Device-MUTE_SWITCH = 8--><!--Device-MUTE_SWITCH = 8-End--> |
 
 ### PictureInPicture_PipControlStatus
 
@@ -169,7 +169,7 @@ enum PictureInPicture_PipControlStatus
 
 Enumerates the statuses of components displayed on the PiP controller.
 
-<!--Device-PictureInPicture_PipControlStatus--><!--Device-PictureInPicture_PipControlStatus-End-->
+<!--Device-enum PictureInPicture_PipControlStatus--><!--Device-enum PictureInPicture_PipControlStatus-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -177,10 +177,10 @@ Enumerates the statuses of components displayed on the PiP controller.
 
 | Enum item | Description |
 | -- | -- |
-| PLAY = 1 | A video is playing.<br>**Since**: 20 |
-| PAUSE = 0 | A video is paused.<br>**Since**: 20 |
-| OPEN = 1 | The camera, microphone, and mute components are enabled.<br>**Since**: 20 |
-| CLOSE = 0 | The camera, microphone, and mute components are disabled.<br>**Since**: 20 |
+| PLAY = 1 | A video is playing.<br>**Since**: 20<br><!--Device-PLAY = 1--><!--Device-PLAY = 1-End--> |
+| PAUSE = 0 | A video is paused.<br>**Since**: 20<br><!--Device-PAUSE = 0--><!--Device-PAUSE = 0-End--> |
+| OPEN = 1 | The camera, microphone, and mute components are enabled.<br>**Since**: 20<br><!--Device-OPEN = 1--><!--Device-OPEN = 1-End--> |
+| CLOSE = 0 | The camera, microphone, and mute components are disabled.<br>**Since**: 20<br><!--Device-CLOSE = 0--><!--Device-CLOSE = 0-End--> |
 
 ### PictureInPicture_PipState
 
@@ -192,7 +192,7 @@ enum PictureInPicture_PipState
 
 Enumerates the PiP lifecycle states.
 
-<!--Device-PictureInPicture_PipState--><!--Device-PictureInPicture_PipState-End-->
+<!--Device-enum PictureInPicture_PipState--><!--Device-enum PictureInPicture_PipState-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -200,12 +200,12 @@ Enumerates the PiP lifecycle states.
 
 | Enum item | Description |
 | -- | -- |
-| ABOUT_TO_START = 1 | PiP is about to start.<br>**Since**: 20 |
-| STARTED = 2 | PiP is started.<br>**Since**: 20 |
-| ABOUT_TO_STOP = 3 | PiP is about to stop.<br>**Since**: 20 |
-| STOPPED = 4 | PiP is stopped.<br>**Since**: 20 |
-| ABOUT_TO_RESTORE = 5 | The original page is about to restore.<br>**Since**: 20 |
-| ERROR = 6 | An error occurs during the execution of the PiP lifecycle.<br>**Since**: 20 |
+| ABOUT_TO_START = 1 | PiP is about to start.<br>**Since**: 20<br><!--Device-ABOUT_TO_START = 1--><!--Device-ABOUT_TO_START = 1-End--> |
+| STARTED = 2 | PiP is started.<br>**Since**: 20<br><!--Device-STARTED = 2--><!--Device-STARTED = 2-End--> |
+| ABOUT_TO_STOP = 3 | PiP is about to stop.<br>**Since**: 20<br><!--Device-ABOUT_TO_STOP = 3--><!--Device-ABOUT_TO_STOP = 3-End--> |
+| STOPPED = 4 | PiP is stopped.<br>**Since**: 20<br><!--Device-STOPPED = 4--><!--Device-STOPPED = 4-End--> |
+| ABOUT_TO_RESTORE = 5 | The original page is about to restore.<br>**Since**: 20<br><!--Device-ABOUT_TO_RESTORE = 5--><!--Device-ABOUT_TO_RESTORE = 5-End--> |
+| ERROR = 6 | An error occurs during the execution of the PiP lifecycle.<br>**Since**: 20<br><!--Device-ERROR = 6--><!--Device-ERROR = 6-End--> |
 
 
 ## Function description

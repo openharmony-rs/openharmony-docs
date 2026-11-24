@@ -12,7 +12,7 @@ The struct describes a native object for the media memory interface.
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
-**Since**: 12
+**Since**: 11
 
 **Related module**: [Multimedia_Drm](capi-avcodec-kit-multimedia-drm.md)
 

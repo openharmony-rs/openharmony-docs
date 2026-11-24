@@ -116,12 +116,12 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromTextWithFallback(const void *t
 
 | 参数项 | 描述 |
 | -- | -- |
-| const void *text | [in] 指向文本的指针。 |
-| uint32_t byteLength | [in] 文本长度，单位为字节。 |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [in] 指向字型对象OH_Drawing_Font的指针。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | [in] 文本编码类型OH_Drawing_TextEncoding。 |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) ***textBlobs | [out] 指向OH_Drawing_TextBlob对象数组的指针。作为出参使用。当不再需要时，使用[OH_Drawing_TextBlobsArrayDestroy](capi-drawing-text-blob-h.md#oh_drawing_textblobsarraydestroy)释放该数组。 |
-| uint32_t *textBlobsCount | [out] 返回数组中文本对象的数量。作为出参使用。 |
+| const void *text | [入参] 指向文本的指针。 |
+| uint32_t byteLength | [入参] 文本长度，单位为字节。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | [入参] 文本编码类型OH_Drawing_TextEncoding。 |
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) ***textBlobs | [出参] 指向OH_Drawing_TextBlob对象数组的指针。作为出参使用。当不再需要时，使用[OH_Drawing_TextBlobsArrayDestroy](capi-drawing-text-blob-h.md#oh_drawing_textblobsarraydestroy)释放该数组。 |
+| uint32_t *textBlobsCount | [出参] 返回数组中文本对象的数量。作为出参使用。 |
 
 **返回值：**
 
@@ -183,13 +183,13 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromPosTextWithFallback(const void
 
 | 参数项 | 描述 |
 | -- | -- |
-| const void *text | [in] 指向文本的指针。 |
-| uint32_t byteLength | [in] 文本长度，单位为字节。 |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) *point2D | [in] 二维点OH_Drawing_Point2D数组首地址，数组个数由[OH_Drawing_FontCountText](capi-drawing-font-h.md#oh_drawing_fontcounttext)的计算结果决定。 |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [in] 指向字型对象OH_Drawing_Font的指针。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | [in] 文本编码类型OH_Drawing_TextEncoding。 |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) ***textBlobs | [out] 指向OH_Drawing_TextBlob对象数组的指针。作为出参使用。当不再需要时，使用[OH_Drawing_TextBlobsArrayDestroy](capi-drawing-text-blob-h.md#oh_drawing_textblobsarraydestroy)释放该数组。 |
-| uint32_t *textBlobsCount | [out] 返回数组中文本对象的数量。作为出参使用。 |
+| const void *text | [入参] 指向文本的指针。 |
+| uint32_t byteLength | [入参] 文本长度，单位为字节。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) *point2D | [入参] 二维点OH_Drawing_Point2D数组首地址，数组个数由[OH_Drawing_FontCountText](capi-drawing-font-h.md#oh_drawing_fontcounttext)的计算结果决定。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象OH_Drawing_Font的指针。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | [入参] 文本编码类型OH_Drawing_TextEncoding。 |
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) ***textBlobs | [出参] 指向OH_Drawing_TextBlob对象数组的指针。作为出参使用。当不再需要时，使用[OH_Drawing_TextBlobsArrayDestroy](capi-drawing-text-blob-h.md#oh_drawing_textblobsarraydestroy)释放该数组。 |
+| uint32_t *textBlobsCount | [出参] 返回数组中文本对象的数量。作为出参使用。 |
 
 **返回值：**
 
@@ -249,11 +249,11 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromStringWithFallback(const char 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *str | [in] 指向字符串的指针。 |
-| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [in] 指向字型对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | [in] 文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。 |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) ***textBlobs | [out] 指向OH_Drawing_TextBlob对象数组的指针。作为出参使用。当不再需要时，使用[OH_Drawing_TextBlobsArrayDestroy](capi-drawing-text-blob-h.md#oh_drawing_textblobsarraydestroy)释放该数组。 |
-| uint32_t *textBlobsCount | [out] 返回数组中文本对象的数量。作为出参使用。 |
+| const char *str | [入参] 指向字符串的指针。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [入参] 指向字型对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | [入参] 文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。 |
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) ***textBlobs | [出参] 指向OH_Drawing_TextBlob对象数组的指针。作为出参使用。当不再需要时，使用[OH_Drawing_TextBlobsArrayDestroy](capi-drawing-text-blob-h.md#oh_drawing_textblobsarraydestroy)释放该数组。 |
+| uint32_t *textBlobsCount | [出参] 返回数组中文本对象的数量。作为出参使用。 |
 
 **返回值：**
 
@@ -435,8 +435,8 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobsArrayDestroy(OH_Drawing_TextBlob **text
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) **textBlobs | [in] 指向OH_Drawing_TextBlob对象数组的指针。 |
-| uint32_t count | [in] 数组的大小。 |
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) **textBlobs | [入参] 指向OH_Drawing_TextBlob对象数组的指针。 |
+| uint32_t count | [入参] 数组的大小。 |
 
 **返回值：**
 

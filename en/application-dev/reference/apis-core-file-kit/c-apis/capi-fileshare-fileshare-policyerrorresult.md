@@ -24,8 +24,8 @@ Define the FileShare_PolicyErrorResult structure type.<br> Failed policy result 
 
 | Name | Description |
 | -- | -- |
-| char *uri | Indicates the failed uri of the policy information. |
-| [FileShare_PolicyErrorCode](capi-oh-file-share-h.md#fileshare_policyerrorcode) code | Indicates the error code of the failure in the policy information. |
-| char *message | Indicates the reason of the failure in the policy information. |
+| char *uri | Indicates the failed uri of the policy information.<br><!--Device-char *uri--><!--Device-char *uri-End--> |
+| [FileShare_PolicyErrorCode](capi-oh-file-share-h.md#fileshare_policyerrorcode) code | Indicates the error code of the failure in the policy information.<br><!--Device-FileShare_PolicyErrorCode code--><!--Device-FileShare_PolicyErrorCode code-End--> |
+| char *message | Indicates the reason of the failure in the policy information.<br><!--Device-char *message--><!--Device-char *message-End--> |
 
 

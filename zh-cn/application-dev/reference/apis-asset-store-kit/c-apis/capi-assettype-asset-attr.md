@@ -24,7 +24,7 @@ typedef struct Asset_Attr {...} Asset_Attr
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t tag | 关键资产属性的标签。 |
-| [Asset_Value](capi-assettype-asset-value.md) value | 关键资产属性的值（内容）。 |
+| uint32_t tag | 关键资产属性的标签。<br><!--Device-uint32_t tag--><!--Device-uint32_t tag-End--> |
+| [Asset_Value](capi-assettype-asset-value.md) value | 关键资产属性的值（内容）。<br><!--Device-Asset_Value value--><!--Device-Asset_Value value-End--> |
 
 

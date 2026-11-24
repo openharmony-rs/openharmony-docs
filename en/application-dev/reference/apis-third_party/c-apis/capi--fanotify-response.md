@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int fd |  |
-| unsigned response |  |
+| int fd | <!--Device-int fd--><!--Device-int fd-End--> |
+| unsigned response | <!--Device-unsigned response--><!--Device-unsigned response-End--> |
 
 

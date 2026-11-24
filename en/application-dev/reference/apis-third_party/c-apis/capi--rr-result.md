@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| uint16_t            rrr_flags |  |
-| uint8_t             rrr_ordinal |  |
-| uint8_t             rrr_matchedlen |  |
-| uint32_t            rrr_ifid |  |
-| struct in6_addr     rrr_prefix |  |
+| uint16_t            rrr_flags | <!--Device-uint16_t rrr_flags--><!--Device-uint16_t rrr_flags-End--> |
+| uint8_t             rrr_ordinal | <!--Device-uint8_t rrr_ordinal--><!--Device-uint8_t rrr_ordinal-End--> |
+| uint8_t             rrr_matchedlen | <!--Device-uint8_t rrr_matchedlen--><!--Device-uint8_t rrr_matchedlen-End--> |
+| uint32_t            rrr_ifid | <!--Device-uint32_t rrr_ifid--><!--Device-uint32_t rrr_ifid-End--> |
+| struct in6_addr     rrr_prefix | <!--Device-struct in6_addr rrr_prefix--><!--Device-struct in6_addr rrr_prefix-End--> |
 
 

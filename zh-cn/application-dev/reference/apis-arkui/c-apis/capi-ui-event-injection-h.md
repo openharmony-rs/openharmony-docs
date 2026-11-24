@@ -43,7 +43,7 @@ enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode
 
 枚举UI事件注入的结果码。<br> 所有注入接口共用此枚举，包括宽松交互注入（非精确）和面向指定组件的精确注入。 非零结果码表示执行失败，其具体值表示失败原因。
 
-<!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode--><!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode--><!--Device-enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,10 +51,10 @@ enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | 注入的命令执行成功。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | 未找到能够响应注入命令的组件或目标。<br> 例如，点击坐标未命中任何组件，或无法定位执行模式所需的目标。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | 当前UI上下文无法执行该命令。<br> 命令结构有效，但当前UI状态不支持该命令的类型或执行模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | 注入的命令被用户操作中断。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | 注入的命令执行成功。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | 未找到能够响应注入命令的组件或目标。<br> 例如，点击坐标未命中任何组件，或无法定位执行模式所需的目标。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | 当前UI上下文无法执行该命令。<br> 命令结构有效，但当前UI状态不支持该命令的类型或执行模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | 注入的命令被用户操作中断。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3-End--> |
 
 
 ## 函数说明

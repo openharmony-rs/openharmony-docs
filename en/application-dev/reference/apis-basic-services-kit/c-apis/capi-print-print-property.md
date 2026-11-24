@@ -24,7 +24,7 @@ Describes the printer properties in key-value pair format. You can use this stru
 
 | Name | Description |
 | -- | -- |
-| char *key | Property key, which identifies the type of a printer property. The value must be a valid property name defined in the OH_Print module. |
-| char *value | Property value, which corresponds to the property key. The format and valid range of the value depend on the corresponding property key. |
+| char *key | Property key, which identifies the type of a printer property. The value must be a valid property name defined in the OH_Print module.<br><!--Device-char *key--><!--Device-char *key-End--> |
+| char *value | Property value, which corresponds to the property key. The format and valid range of the value depend on the corresponding property key.<br><!--Device-char *value--><!--Device-char *value-End--> |
 
 

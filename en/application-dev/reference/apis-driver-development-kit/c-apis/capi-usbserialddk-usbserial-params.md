@@ -24,9 +24,9 @@ Defines the USB serial port parameters for the USB Serial DDK, which are used fo
 
 | Name | Description |
 | -- | -- |
-| uint32_t baudRate | Baud rate, unit: baud. |
-| uint8_t nDataBits | Number of data bits. |
-| uint8_t nStopBits | Number of stop bits. |
-| uint8_t parity | Parity setting (0: no parity; 1: odd parity; 2: even parity). |
+| uint32_t baudRate | Baud rate, unit: baud.<br><!--Device-uint32_t baudRate--><!--Device-uint32_t baudRate-End--> |
+| uint8_t nDataBits | Number of data bits.<br><!--Device-uint8_t nDataBits--><!--Device-uint8_t nDataBits-End--> |
+| uint8_t nStopBits | Number of stop bits.<br><!--Device-uint8_t nStopBits--><!--Device-uint8_t nStopBits-End--> |
+| uint8_t parity | Parity setting (0: no parity; 1: odd parity; 2: even parity).<br><!--Device-uint8_t parity--><!--Device-uint8_t parity-End--> |
 
 

@@ -24,8 +24,8 @@ ArkWeb_ProxyMethod is a struct that defines a JavaScript proxy method. It suppor
 
 | Name | Description |
 | -- | -- |
-| const char* methodName | Pointer to the method name to be injected. |
-| [ArkWeb_OnJavaScriptProxyCallback](capi-arkweb-type-h.md#arkweb_onjavascriptproxycallback) callback | Callback triggered when JavaScript calls this method through a Proxy object, used to handle method calls from JavaScript. The callback can access the parameters (dataArray) passed in from JavaScript and execute the corresponding native logic. |
-| void* userData | Custom data to be carried in the callback. |
+| const char* methodName | Pointer to the method name to be injected.<br><!--Device-const char* methodName--><!--Device-const char* methodName-End--> |
+| [ArkWeb_OnJavaScriptProxyCallback](capi-arkweb-type-h.md#arkweb_onjavascriptproxycallback) callback | Callback triggered when JavaScript calls this method through a Proxy object, used to handle method calls from JavaScript. The callback can access the parameters (dataArray) passed in from JavaScript and execute the corresponding native logic.<br><!--Device-ArkWeb_OnJavaScriptProxyCallback callback--><!--Device-ArkWeb_OnJavaScriptProxyCallback callback-End--> |
+| void* userData | Custom data to be carried in the callback.<br><!--Device-void* userData--><!--Device-void* userData-End--> |
 
 

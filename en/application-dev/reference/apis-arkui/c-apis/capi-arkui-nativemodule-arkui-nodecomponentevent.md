@@ -24,6 +24,6 @@ Defines the parameter type of a component callback event, which is used to pass 
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) data[MAX_COMPONENT_EVENT_ARG_NUM] | Data array object. |
+| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) data[MAX_COMPONENT_EVENT_ARG_NUM] | Data array object.<br><!--Device-ArkUI_NumberValue data[MAX_COMPONENT_EVENT_ARG_NUM]--><!--Device-ArkUI_NumberValue data[MAX_COMPONENT_EVENT_ARG_NUM]-End--> |
 
 

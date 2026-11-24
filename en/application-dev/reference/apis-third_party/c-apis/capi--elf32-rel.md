@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Addr r_offset |  |
-| Elf32_Word r_info |  |
+| Elf32_Addr r_offset | <!--Device-Elf32_Addr r_offset--><!--Device-Elf32_Addr r_offset-End--> |
+| Elf32_Word r_info | <!--Device-Elf32_Word r_info--><!--Device-Elf32_Word r_info-End--> |
 
 

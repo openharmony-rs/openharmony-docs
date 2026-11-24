@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t pixelRate |  |
-| uint32_t texelRate |  |
-| uint32_t fmaRate |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t pixelRate | <!--Device-uint32_t pixelRate--><!--Device-uint32_t pixelRate-End--> |
+| uint32_t texelRate | <!--Device-uint32_t texelRate--><!--Device-uint32_t texelRate-End--> |
+| uint32_t fmaRate | <!--Device-uint32_t fmaRate--><!--Device-uint32_t fmaRate-End--> |
 
 

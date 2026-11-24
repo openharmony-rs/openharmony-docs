@@ -69,7 +69,7 @@ enum CryptoSignature_ParamType
 
 Defines signature parameter types.
 
-<!--Device-CryptoSignature_ParamType--><!--Device-CryptoSignature_ParamType-End-->
+<!--Device-enum CryptoSignature_ParamType--><!--Device-enum CryptoSignature_ParamType-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -77,12 +77,12 @@ Defines signature parameter types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_PSS_MD_NAME_STR = 100 | Algorithm name of the message digest function.<br>**Since**: 12 |
-| CRYPTO_PSS_MGF_NAME_STR = 101 | Algorithm name of the mask generation function.<br>**Since**: 12 |
-| CRYPTO_PSS_MGF1_NAME_STR = 102 | Message digest parameter of the MGF1 mask generation function.<br>**Since**: 12 |
-| CRYPTO_PSS_SALT_LEN_INT = 103 | Byte length of the salt value.<br>**Since**: 12 |
-| CRYPTO_PSS_TRAILER_FIELD_INT = 104 | Value of the trailer field.<br>**Since**: 12 |
-| CRYPTO_SM2_USER_ID_DATABLOB = 105 | User ID value for the SM2 algorithm.<br>**Since**: 12 |
+| CRYPTO_PSS_MD_NAME_STR = 100 | Algorithm name of the message digest function.<br>**Since**: 12<br><!--Device-CRYPTO_PSS_MD_NAME_STR = 100--><!--Device-CRYPTO_PSS_MD_NAME_STR = 100-End--> |
+| CRYPTO_PSS_MGF_NAME_STR = 101 | Algorithm name of the mask generation function.<br>**Since**: 12<br><!--Device-CRYPTO_PSS_MGF_NAME_STR = 101--><!--Device-CRYPTO_PSS_MGF_NAME_STR = 101-End--> |
+| CRYPTO_PSS_MGF1_NAME_STR = 102 | Message digest parameter of the MGF1 mask generation function.<br>**Since**: 12<br><!--Device-CRYPTO_PSS_MGF1_NAME_STR = 102--><!--Device-CRYPTO_PSS_MGF1_NAME_STR = 102-End--> |
+| CRYPTO_PSS_SALT_LEN_INT = 103 | Byte length of the salt value.<br>**Since**: 12<br><!--Device-CRYPTO_PSS_SALT_LEN_INT = 103--><!--Device-CRYPTO_PSS_SALT_LEN_INT = 103-End--> |
+| CRYPTO_PSS_TRAILER_FIELD_INT = 104 | Value of the trailer field.<br>**Since**: 12<br><!--Device-CRYPTO_PSS_TRAILER_FIELD_INT = 104--><!--Device-CRYPTO_PSS_TRAILER_FIELD_INT = 104-End--> |
+| CRYPTO_SM2_USER_ID_DATABLOB = 105 | User ID value for the SM2 algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_SM2_USER_ID_DATABLOB = 105--><!--Device-CRYPTO_SM2_USER_ID_DATABLOB = 105-End--> |
 
 
 ## Function description

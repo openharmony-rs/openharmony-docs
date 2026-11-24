@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_PacketController OH_TrafficFilter_PacketControll
 
 ## 概述
 
-报文控制器
+报文控制器。
 
 <!--Device-typedef struct OH_TrafficFilter_PacketController OH_TrafficFilter_PacketController--><!--Device-typedef struct OH_TrafficFilter_PacketController OH_TrafficFilter_PacketController-End-->
 

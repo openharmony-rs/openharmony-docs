@@ -24,8 +24,8 @@ typedef struct ffrt_function_header_t {...} ffrt_function_header_t
 
 | 名称 | 描述 |
 | -- | -- |
-| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) exec | 执行任务的函数。在任务被调度时由框架调用。 |
-| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) destroy | 销毁任务的函数。在任务执行完毕后由框架调用以释放资源。 |
-| uint64_t reserve[2] | 保留字段。需设置为0。 |
+| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) exec | 执行任务的函数。在任务被调度时由框架调用。<br><!--Device-ffrt_function_t exec--><!--Device-ffrt_function_t exec-End--> |
+| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) destroy | 销毁任务的函数。在任务执行完毕后由框架调用以释放资源。<br><!--Device-ffrt_function_t destroy--><!--Device-ffrt_function_t destroy-End--> |
+| uint64_t reserve[2] | 保留字段。需设置为0。<br><!--Device-uint64_t reserve[2]--><!--Device-uint64_t reserve[2]-End--> |
 
 

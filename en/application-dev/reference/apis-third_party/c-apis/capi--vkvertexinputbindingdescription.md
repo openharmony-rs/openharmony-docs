@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t binding |  |
-| uint32_t stride |  |
-| VkVertexInputRate inputRate |  |
+| uint32_t binding | <!--Device-uint32_t binding--><!--Device-uint32_t binding-End--> |
+| uint32_t stride | <!--Device-uint32_t stride--><!--Device-uint32_t stride-End--> |
+| VkVertexInputRate inputRate | <!--Device-VkVertexInputRate inputRate--><!--Device-VkVertexInputRate inputRate-End--> |
 
 

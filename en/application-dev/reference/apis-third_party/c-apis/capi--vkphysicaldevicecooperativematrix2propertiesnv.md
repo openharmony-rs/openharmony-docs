@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize |  |
-| uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension |  |
-| uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize | <!--Device-uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize--><!--Device-uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize-End--> |
+| uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension | <!--Device-uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension--><!--Device-uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension-End--> |
+| uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory | <!--Device-uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory--><!--Device-uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory-End--> |
 
 

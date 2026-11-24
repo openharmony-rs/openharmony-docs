@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_PortRange {...} OH_TrafficFilter_PortRange
 
 ## Overview
 
-Port match value for range match
+Defines the port matching value for range matching.
 
 <!--Device-struct OH_TrafficFilter_PortRange {...}--><!--Device-struct OH_TrafficFilter_PortRange {...}-End-->
 
@@ -24,7 +24,7 @@ Port match value for range match
 
 | Name | Description |
 | -- | -- |
-| uint16_t startPort | Start port of the range<br>**Since**: 26.0.0 |
-| uint16_t endPort | End port of the range<br>**Since**: 26.0.0 |
+| uint16_t startPort | Start port of the range.<br>**Since**: 26.0.0<br><!--Device-uint16_t startPort--><!--Device-uint16_t startPort-End--> |
+| uint16_t endPort | End port of the range.<br>**Since**: 26.0.0<br><!--Device-uint16_t endPort--><!--Device-uint16_t endPort-End--> |
 
 

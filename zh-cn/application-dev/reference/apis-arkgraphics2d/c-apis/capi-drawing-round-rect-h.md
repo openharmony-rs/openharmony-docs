@@ -43,7 +43,7 @@ enum OH_Drawing_CornerPos
 
 用于描述圆角位置的枚举。
 
-<!--Device-OH_Drawing_CornerPos--><!--Device-OH_Drawing_CornerPos-End-->
+<!--Device-enum OH_Drawing_CornerPos--><!--Device-enum OH_Drawing_CornerPos-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -51,10 +51,10 @@ enum OH_Drawing_CornerPos
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CORNER_POS_TOP_LEFT | 左上角圆角位置。 |
-| CORNER_POS_TOP_RIGHT | 右上角圆角位置。 |
-| CORNER_POS_BOTTOM_RIGHT | 右下角圆角位置。 |
-| CORNER_POS_BOTTOM_LEFT | 左下角圆角位置。 |
+| CORNER_POS_TOP_LEFT | 左上角圆角位置。<br><!--Device-CORNER_POS_TOP_LEFT--><!--Device-CORNER_POS_TOP_LEFT-End--> |
+| CORNER_POS_TOP_RIGHT | 右上角圆角位置。<br><!--Device-CORNER_POS_TOP_RIGHT--><!--Device-CORNER_POS_TOP_RIGHT-End--> |
+| CORNER_POS_BOTTOM_RIGHT | 右下角圆角位置。<br><!--Device-CORNER_POS_BOTTOM_RIGHT--><!--Device-CORNER_POS_BOTTOM_RIGHT-End--> |
+| CORNER_POS_BOTTOM_LEFT | 左下角圆角位置。<br><!--Device-CORNER_POS_BOTTOM_LEFT--><!--Device-CORNER_POS_BOTTOM_LEFT-End--> |
 
 
 ## 函数说明

@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| Elf64_Half vd_version |  |
-| Elf64_Half vd_flags |  |
-| Elf64_Half vd_ndx |  |
-| Elf64_Half vd_cnt |  |
-| Elf64_Word vd_hash |  |
-| Elf64_Word vd_aux |  |
-| Elf64_Word vd_next |  |
+| Elf64_Half vd_version | <!--Device-Elf64_Half vd_version--><!--Device-Elf64_Half vd_version-End--> |
+| Elf64_Half vd_flags | <!--Device-Elf64_Half vd_flags--><!--Device-Elf64_Half vd_flags-End--> |
+| Elf64_Half vd_ndx | <!--Device-Elf64_Half vd_ndx--><!--Device-Elf64_Half vd_ndx-End--> |
+| Elf64_Half vd_cnt | <!--Device-Elf64_Half vd_cnt--><!--Device-Elf64_Half vd_cnt-End--> |
+| Elf64_Word vd_hash | <!--Device-Elf64_Word vd_hash--><!--Device-Elf64_Word vd_hash-End--> |
+| Elf64_Word vd_aux | <!--Device-Elf64_Word vd_aux--><!--Device-Elf64_Word vd_aux-End--> |
+| Elf64_Word vd_next | <!--Device-Elf64_Word vd_next--><!--Device-Elf64_Word vd_next-End--> |
 
 

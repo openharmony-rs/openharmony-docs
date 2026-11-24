@@ -24,8 +24,8 @@ The struct describes the Protection System Specific Header (PSSH) data for a DRM
 
 | Name | Description |
 | -- | -- |
-| uint8_t uuid[DRM_UUID_LEN] | Uuid. |
-| int32_t dataLen | Length of the PSSH data payload. |
-| uint8_t data[MAX_PSSH_DATA_LEN] | uint8_t PSSH data. |
+| uint8_t uuid[DRM_UUID_LEN] | Uuid.<br><!--Device-uint8_t uuid[DRM_UUID_LEN]--><!--Device-uint8_t uuid[DRM_UUID_LEN]-End--> |
+| int32_t dataLen | Length of the PSSH data payload.<br><!--Device-int32_t dataLen--><!--Device-int32_t dataLen-End--> |
+| uint8_t data[MAX_PSSH_DATA_LEN] | uint8_t PSSH data.<br><!--Device-uint8_t data[MAX_PSSH_DATA_LEN]--><!--Device-uint8_t data[MAX_PSSH_DATA_LEN]-End--> |
 
 

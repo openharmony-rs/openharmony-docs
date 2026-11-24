@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 transformFeedback |  |
-| VkBool32 geometryStreams |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 transformFeedback | <!--Device-VkBool32 transformFeedback--><!--Device-VkBool32 transformFeedback-End--> |
+| VkBool32 geometryStreams | <!--Device-VkBool32 geometryStreams--><!--Device-VkBool32 geometryStreams-End--> |
 
 

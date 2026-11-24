@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 deviceGeneratedCompute |  |
-| VkBool32 deviceGeneratedComputePipelines |  |
-| VkBool32 deviceGeneratedComputeCaptureReplay |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 deviceGeneratedCompute | <!--Device-VkBool32 deviceGeneratedCompute--><!--Device-VkBool32 deviceGeneratedCompute-End--> |
+| VkBool32 deviceGeneratedComputePipelines | <!--Device-VkBool32 deviceGeneratedComputePipelines--><!--Device-VkBool32 deviceGeneratedComputePipelines-End--> |
+| VkBool32 deviceGeneratedComputeCaptureReplay | <!--Device-VkBool32 deviceGeneratedComputeCaptureReplay--><!--Device-VkBool32 deviceGeneratedComputeCaptureReplay-End--> |
 
 

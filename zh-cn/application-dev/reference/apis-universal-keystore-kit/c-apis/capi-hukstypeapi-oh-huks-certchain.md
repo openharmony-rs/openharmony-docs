@@ -24,7 +24,7 @@ typedef struct OH_Huks_CertChain {...} OH_Huks_CertChain
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *certs | 指向证书数据的指针。 |
-| uint32_t certsCount | 证书数量。 |
+| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *certs | 指向证书数据的指针。<br><!--Device-struct OH_Huks_Blob *certs--><!--Device-struct OH_Huks_Blob *certs-End--> |
+| uint32_t certsCount | 证书数量。<br><!--Device-uint32_t certsCount--><!--Device-uint32_t certsCount-End--> |
 
 

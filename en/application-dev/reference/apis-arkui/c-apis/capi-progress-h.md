@@ -55,7 +55,7 @@ enum ArkUI_ProgressType
 
 Enumerates progress indicator types.
 
-<!--Device-ArkUI_ProgressType--><!--Device-ArkUI_ProgressType-End-->
+<!--Device-enum ArkUI_ProgressType--><!--Device-enum ArkUI_ProgressType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,11 +63,11 @@ Enumerates progress indicator types.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_PROGRESS_TYPE_LINEAR = 0 | Linear style. |
-| ARKUI_PROGRESS_TYPE_RING | Indeterminate ring style. |
-| ARKUI_PROGRESS_TYPE_ECLIPSE | Eclipse style. |
-| ARKUI_PROGRESS_TYPE_SCALE_RING | Determinate ring style. |
-| ARKUI_PROGRESS_TYPE_CAPSULE | Capsule style. |
+| ARKUI_PROGRESS_TYPE_LINEAR = 0 | Linear style.<br><!--Device-ARKUI_PROGRESS_TYPE_LINEAR = 0--><!--Device-ARKUI_PROGRESS_TYPE_LINEAR = 0-End--> |
+| ARKUI_PROGRESS_TYPE_RING | Indeterminate ring style.<br><!--Device-ARKUI_PROGRESS_TYPE_RING--><!--Device-ARKUI_PROGRESS_TYPE_RING-End--> |
+| ARKUI_PROGRESS_TYPE_ECLIPSE | Eclipse style.<br><!--Device-ARKUI_PROGRESS_TYPE_ECLIPSE--><!--Device-ARKUI_PROGRESS_TYPE_ECLIPSE-End--> |
+| ARKUI_PROGRESS_TYPE_SCALE_RING | Determinate ring style.<br><!--Device-ARKUI_PROGRESS_TYPE_SCALE_RING--><!--Device-ARKUI_PROGRESS_TYPE_SCALE_RING-End--> |
+| ARKUI_PROGRESS_TYPE_CAPSULE | Capsule style.<br><!--Device-ARKUI_PROGRESS_TYPE_CAPSULE--><!--Device-ARKUI_PROGRESS_TYPE_CAPSULE-End--> |
 
 
 ## Function description

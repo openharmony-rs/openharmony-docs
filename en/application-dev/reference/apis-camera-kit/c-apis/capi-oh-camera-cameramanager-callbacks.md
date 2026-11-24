@@ -24,6 +24,6 @@ The struct describes the callbacks used to listen for camera status changes.
 
 | Name | Description |
 | -- | -- |
-| [OH_CameraManager_StatusCallback](capi-camera-manager-h.md#oh_cameramanager_statuscallback) onCameraStatus | Camera status change event. |
+| [OH_CameraManager_StatusCallback](capi-camera-manager-h.md#oh_cameramanager_statuscallback) onCameraStatus | Camera status change event.<br><!--Device-OH_CameraManager_StatusCallback onCameraStatus--><!--Device-OH_CameraManager_StatusCallback onCameraStatus-End--> |
 
 

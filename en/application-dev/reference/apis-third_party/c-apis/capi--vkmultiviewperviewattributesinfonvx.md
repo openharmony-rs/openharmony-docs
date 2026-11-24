@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 perViewAttributes |  |
-| VkBool32 perViewAttributesPositionXOnly |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 perViewAttributes | <!--Device-VkBool32 perViewAttributes--><!--Device-VkBool32 perViewAttributes-End--> |
+| VkBool32 perViewAttributesPositionXOnly | <!--Device-VkBool32 perViewAttributesPositionXOnly--><!--Device-VkBool32 perViewAttributesPositionXOnly-End--> |
 
 

@@ -24,6 +24,6 @@ Provides a white point array structure. The white point is the coordinate that r
 
 | Name | Description |
 | -- | -- |
-| float arr[2] | Indicates white point return array |
+| float arr[2] | Indicates white point return array<br><!--Device-float arr[2]--><!--Device-float arr[2]-End--> |
 
 

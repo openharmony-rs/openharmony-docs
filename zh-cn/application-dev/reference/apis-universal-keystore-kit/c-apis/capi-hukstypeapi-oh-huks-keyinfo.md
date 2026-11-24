@@ -24,7 +24,7 @@ typedef struct OH_Huks_KeyInfo {...} OH_Huks_KeyInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | 密钥认证时的别名。 |
-| [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | 指向密钥参数集的指针。 |
+| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | 密钥认证时的别名。<br><!--Device-struct OH_Huks_Blob alias--><!--Device-struct OH_Huks_Blob alias-End--> |
+| [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | 指向密钥参数集的指针。<br><!--Device-struct OH_Huks_ParamSet *paramSet--><!--Device-struct OH_Huks_ParamSet *paramSet-End--> |
 
 

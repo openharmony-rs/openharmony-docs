@@ -24,7 +24,7 @@ typedef struct ffrt_dependence_t {...} ffrt_dependence_t
 
 | 名称 | 描述 |
 | -- | -- |
-| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | 依赖类型。 |
-| const void* ptr | 依赖指针。数据依赖时指向数据，任务依赖时指向任务句柄。 |
+| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | 依赖类型。<br><!--Device-ffrt_dependence_type_t type--><!--Device-ffrt_dependence_type_t type-End--> |
+| const void* ptr | 依赖指针。数据依赖时指向数据，任务依赖时指向任务句柄。<br><!--Device-const void* ptr--><!--Device-const void* ptr-End--> |
 
 

@@ -24,7 +24,7 @@ This struct describes the information about a font weight mapping.
 
 | Name | Description |
 | -- | -- |
-| int weight | Original font weight. |
-| int to | Font weight displayed in the application. |
+| int weight | Original font weight.<br><!--Device-int weight--><!--Device-int weight-End--> |
+| int to | Font weight displayed in the application.<br><!--Device-int to--><!--Device-int to-End--> |
 
 

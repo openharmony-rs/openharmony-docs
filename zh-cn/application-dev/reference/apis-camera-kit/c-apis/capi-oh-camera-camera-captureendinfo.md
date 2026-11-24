@@ -24,7 +24,7 @@ typedef struct Camera_CaptureEndInfo {...} Camera_CaptureEndInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t captureId | 捕获id。 |
-| int64_t frameCount | 帧数。 |
+| int32_t captureId | 捕获id。<br><!--Device-int32_t captureId--><!--Device-int32_t captureId-End--> |
+| int64_t frameCount | 帧数。<br><!--Device-int64_t frameCount--><!--Device-int64_t frameCount-End--> |
 
 

@@ -24,8 +24,8 @@ typedef struct OH_NativeBundle_Metadata {...} OH_NativeBundle_Metadata
 
 | 名称 | 描述 |
 | -- | -- |
-| char* name | 元数据名称。<br>**起始版本：** 20 |
-| char* value | 元数据值。<br>**起始版本：** 20 |
-| char* resource | 元数据资源。<br>**起始版本：** 20 |
+| char* name | 元数据名称。<br>**起始版本：** 20<br><!--Device-char* name--><!--Device-char* name-End--> |
+| char* value | 元数据值。<br>**起始版本：** 20<br><!--Device-char* value--><!--Device-char* value-End--> |
+| char* resource | 元数据资源。<br>**起始版本：** 20<br><!--Device-char* resource--><!--Device-char* resource-End--> |
 
 

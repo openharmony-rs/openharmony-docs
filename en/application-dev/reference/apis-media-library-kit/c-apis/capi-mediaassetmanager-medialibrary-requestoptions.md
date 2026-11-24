@@ -24,6 +24,6 @@ The struct defines how media assets are requested and processed.
 
 | Name | Description |
 | -- | -- |
-| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | delivery mode |
+| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | delivery mode<br><!--Device-MediaLibrary_DeliveryMode deliveryMode--><!--Device-MediaLibrary_DeliveryMode deliveryMode-End--> |
 
 

@@ -24,9 +24,9 @@ typedef struct CloudDisk_ResultList {...} CloudDisk_ResultList
 
 | 名称 | 描述 |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | 文件的绝对路径信息。<br>**起始版本：** 21 |
-| bool isSuccess{false} | 表示操作是否成功。true：表示操作成功；false：表示操作失败。默认值为false。<br>**起始版本：** 21 |
-| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态。当isSuccess为true时才生效。<br>**起始版本：** 21 |
-| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步状态获取失败的原因。当isSuccess为false时才生效。<br>**起始版本：** 21 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | 文件的绝对路径信息。<br>**起始版本：** 21<br><!--Device-CloudDisk_PathInfo pathInfo--><!--Device-CloudDisk_PathInfo pathInfo-End--> |
+| bool isSuccess{false} | 表示操作是否成功。true：表示操作成功；false：表示操作失败。默认值为false。<br>**起始版本：** 21<br><!--Device-bool isSuccess{false}--><!--Device-bool isSuccess{false}-End--> |
+| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态。当isSuccess为true时才生效。<br>**起始版本：** 21<br><!--Device-CloudDisk_SyncState syncState--><!--Device-CloudDisk_SyncState syncState-End--> |
+| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步状态获取失败的原因。当isSuccess为false时才生效。<br>**起始版本：** 21<br><!--Device-CloudDisk_ErrorReason errorReason--><!--Device-CloudDisk_ErrorReason errorReason-End--> |
 
 

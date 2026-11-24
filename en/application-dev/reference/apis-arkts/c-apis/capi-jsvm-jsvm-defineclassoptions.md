@@ -24,10 +24,9 @@ DefineClass options.
 
 | Name | Description |
 | -- | -- |
-| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | DefineClass option id. |
-| content | option content. |
-| content.ptr | for option value with pointer type. |
-| content.num | for option value with integer type |
-| content.boolean | for option value with bool type |
+| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | DefineClass option id.<br><!--Device-JSVM_DefineClassOptionsId id--><!--Device-JSVM_DefineClassOptionsId id-End--> |
+| content.ptr | for option value with pointer type.<br><!--Device-content.ptr--><!--Device-content.ptr-End--> |
+| content.num | for option value with integer type<br><!--Device-content.num--><!--Device-content.num-End--> |
+| content.boolean | for option value with bool type<br><!--Device-content.boolean--><!--Device-content.boolean-End--> |
 
 

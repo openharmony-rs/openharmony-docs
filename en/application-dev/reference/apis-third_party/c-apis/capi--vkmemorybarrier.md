@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkAccessFlags srcAccessMask |  |
-| VkAccessFlags dstAccessMask |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkAccessFlags srcAccessMask | <!--Device-VkAccessFlags srcAccessMask--><!--Device-VkAccessFlags srcAccessMask-End--> |
+| VkAccessFlags dstAccessMask | <!--Device-VkAccessFlags dstAccessMask--><!--Device-VkAccessFlags dstAccessMask-End--> |
 
 

@@ -24,10 +24,9 @@ Compile Options
 
 | Name | Description |
 | -- | -- |
-| [JSVM_CompileOptionId](capi-jsvm-types-h.md#jsvm_compileoptionid) id | compile option id. |
-| content | option content. |
-| content.ptr | ptr type. |
-| content.num | int type. |
-| content.boolean | bool type. |
+| [JSVM_CompileOptionId](capi-jsvm-types-h.md#jsvm_compileoptionid) id | compile option id.<br><!--Device-JSVM_CompileOptionId id--><!--Device-JSVM_CompileOptionId id-End--> |
+| content.ptr | ptr type.<br><!--Device-content.ptr--><!--Device-content.ptr-End--> |
+| content.num | int type.<br><!--Device-content.num--><!--Device-content.num-End--> |
+| content.boolean | bool type.<br><!--Device-content.boolean--><!--Device-content.boolean-End--> |
 
 

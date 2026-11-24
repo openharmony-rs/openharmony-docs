@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkDescriptorType type |  |
-| uint32_t descriptorCount |  |
+| VkDescriptorType type | <!--Device-VkDescriptorType type--><!--Device-VkDescriptorType type-End--> |
+| uint32_t descriptorCount | <!--Device-uint32_t descriptorCount--><!--Device-uint32_t descriptorCount-End--> |
 
 

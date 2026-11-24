@@ -24,7 +24,7 @@ Defines the privacy protection information.
 
 | Name | Description |
 | -- | -- |
-| bool systemWindowProtection |  |
-| bool sensitiveAppProtection |  |
+| bool systemWindowProtection | <!--Device-bool systemWindowProtection--><!--Device-bool systemWindowProtection-End--> |
+| bool sensitiveAppProtection | <!--Device-bool sensitiveAppProtection--><!--Device-bool sensitiveAppProtection-End--> |
 
 

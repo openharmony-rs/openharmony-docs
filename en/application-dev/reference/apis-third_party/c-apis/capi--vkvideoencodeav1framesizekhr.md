@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t intraFrameSize |  |
-| uint32_t predictiveFrameSize |  |
-| uint32_t bipredictiveFrameSize |  |
+| uint32_t intraFrameSize | <!--Device-uint32_t intraFrameSize--><!--Device-uint32_t intraFrameSize-End--> |
+| uint32_t predictiveFrameSize | <!--Device-uint32_t predictiveFrameSize--><!--Device-uint32_t predictiveFrameSize-End--> |
+| uint32_t bipredictiveFrameSize | <!--Device-uint32_t bipredictiveFrameSize--><!--Device-uint32_t bipredictiveFrameSize-End--> |
 
 

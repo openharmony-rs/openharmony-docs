@@ -24,7 +24,7 @@ typedef struct Asset_Result {...} Asset_Result
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t count | 关键资产属性的个数。 |
-| [Asset_Attr](capi-assettype-asset-attr.md) *attrs | 指向关键资产属性数组的指针。 |
+| uint32_t count | 关键资产属性的个数。<br><!--Device-uint32_t count--><!--Device-uint32_t count-End--> |
+| [Asset_Attr](capi-assettype-asset-attr.md) *attrs | 指向关键资产属性数组的指针。<br><!--Device-Asset_Attr *attrs--><!--Device-Asset_Attr *attrs-End--> |
 
 

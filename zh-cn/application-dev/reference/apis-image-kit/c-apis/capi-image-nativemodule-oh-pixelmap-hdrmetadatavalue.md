@@ -24,9 +24,9 @@ Pixelmap使用的HDR元数据值，和OH_Pixelmap_HdrMetadataKey相对应。当�
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Pixelmap_HdrMetadataType](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatatype) type | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_METADATA_TYPE关键字对应的HDR元数据值类型，用于表示HDR元数据的类型。 不同取值对应不同类型的HDR元数据，需根据HDR图像的实际元数据类型选择合适的值，并填充对应类型的元数据成员字段。 |
-| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) staticMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_STATIC_METADATA关键字对应的元数据值类型，用于存储HDR静态元数据。 |
-| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) dynamicMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_DYNAMIC_METADATA关键字对应的元数据值类型，用于存储HDR动态元数据， 格式遵循相关HDR动态元数据标准。 |
-| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) gainmapMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_GAINMAP_METADATA关键字对应的元数据值类型，用于存储HDR增益图元数据， 参考ISO 21496-1。 |
+| [OH_Pixelmap_HdrMetadataType](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatatype) type | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_METADATA_TYPE关键字对应的HDR元数据值类型，用于表示HDR元数据的类型。 不同取值对应不同类型的HDR元数据，需根据HDR图像的实际元数据类型选择合适的值，并填充对应类型的元数据成员字段。<br><!--Device-OH_Pixelmap_HdrMetadataType type--><!--Device-OH_Pixelmap_HdrMetadataType type-End--> |
+| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) staticMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_STATIC_METADATA关键字对应的元数据值类型，用于存储HDR静态元数据。<br><!--Device-OH_Pixelmap_HdrStaticMetadata staticMetadata--><!--Device-OH_Pixelmap_HdrStaticMetadata staticMetadata-End--> |
+| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) dynamicMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_DYNAMIC_METADATA关键字对应的元数据值类型，用于存储HDR动态元数据， 格式遵循相关HDR动态元数据标准。<br><!--Device-OH_Pixelmap_HdrDynamicMetadata dynamicMetadata--><!--Device-OH_Pixelmap_HdrDynamicMetadata dynamicMetadata-End--> |
+| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) gainmapMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_GAINMAP_METADATA关键字对应的元数据值类型，用于存储HDR增益图元数据， 参考ISO 21496-1。<br><!--Device-OH_Pixelmap_HdrGainmapMetadata gainmapMetadata--><!--Device-OH_Pixelmap_HdrGainmapMetadata gainmapMetadata-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkExternalSemaphoreHandleTypeFlags handleTypes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkExternalSemaphoreHandleTypeFlags handleTypes | <!--Device-VkExternalSemaphoreHandleTypeFlags handleTypes--><!--Device-VkExternalSemaphoreHandleTypeFlags handleTypes-End--> |
 
 

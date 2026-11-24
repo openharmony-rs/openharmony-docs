@@ -38,7 +38,7 @@ enum FileIO_FileLocation
 
 Enumerates the file location.
 
-<!--Device-FileIO_FileLocation--><!--Device-FileIO_FileLocation-End-->
+<!--Device-enum FileIO_FileLocation--><!--Device-enum FileIO_FileLocation-End-->
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -46,9 +46,9 @@ Enumerates the file location.
 
 | Enum item | Description |
 | -- | -- |
-| LOCAL = 1 | The file is stored on the local device.<br>**Since**: 12 |
-| CLOUD = 2 | The file is stored on the cloud.<br>**Since**: 12 |
-| LOCAL_AND_CLOUD = 3 | The file is stored on the local device and cloud.<br>**Since**: 12 |
+| LOCAL = 1 | The file is stored on the local device.<br>**Since**: 12<br><!--Device-LOCAL = 1--><!--Device-LOCAL = 1-End--> |
+| CLOUD = 2 | The file is stored on the cloud.<br>**Since**: 12<br><!--Device-CLOUD = 2--><!--Device-CLOUD = 2-End--> |
+| LOCAL_AND_CLOUD = 3 | The file is stored on the local device and cloud.<br>**Since**: 12<br><!--Device-LOCAL_AND_CLOUD = 3--><!--Device-LOCAL_AND_CLOUD = 3-End--> |
 
 
 ## Function description

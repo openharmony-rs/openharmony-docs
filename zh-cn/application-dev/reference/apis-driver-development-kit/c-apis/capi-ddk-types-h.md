@@ -40,7 +40,7 @@ enum DDK_RetCode
 
 枚举基本DDK中使用的错误代码。开发者调用DDK接口后，通过检查这些错误码来判断操作是否成功，并根据具体错误码（如参数无效、空指针异常等）进行相应的错误处理。
 
-<!--Device-DDK_RetCode--><!--Device-DDK_RetCode-End-->
+<!--Device-enum DDK_RetCode--><!--Device-enum DDK_RetCode-End-->
 
 **系统能力：** SystemCapability.Driver.DDK.Extension
 
@@ -48,10 +48,10 @@ enum DDK_RetCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DDK_SUCCESS = 0 | 接口调用成功完成，操作按预期执行。 |
-| DDK_FAILURE = 28600001 | 接口调用过程中发生通用错误，操作无法完成。表示操作因非特定原因失败（如资源不足、内部错误等通用错误场景）。 |
-| DDK_INVALID_PARAMETER = 28600002 | 传入的参数不符合接口要求，如参数值为空、超出范围或类型不匹配。 |
-| DDK_INVALID_OPERATION = 28600003 | 执行了不支持或禁止的操作，如在错误的设备状态下执行操作。 |
-| DDK_NULL_PTR = 28600004 | 检测到必要的指针参数为NULL，导致无法继续执行操作。 |
+| DDK_SUCCESS = 0 | 接口调用成功完成，操作按预期执行。<br><!--Device-DDK_SUCCESS = 0--><!--Device-DDK_SUCCESS = 0-End--> |
+| DDK_FAILURE = 28600001 | 接口调用过程中发生通用错误，操作无法完成。表示操作因非特定原因失败（如资源不足、内部错误等通用错误场景）。<br><!--Device-DDK_FAILURE = 28600001--><!--Device-DDK_FAILURE = 28600001-End--> |
+| DDK_INVALID_PARAMETER = 28600002 | 传入的参数不符合接口要求，如参数值为空、超出范围或类型不匹配。<br><!--Device-DDK_INVALID_PARAMETER = 28600002--><!--Device-DDK_INVALID_PARAMETER = 28600002-End--> |
+| DDK_INVALID_OPERATION = 28600003 | 执行了不支持或禁止的操作，如在错误的设备状态下执行操作。<br><!--Device-DDK_INVALID_OPERATION = 28600003--><!--Device-DDK_INVALID_OPERATION = 28600003-End--> |
+| DDK_NULL_PTR = 28600004 | 检测到必要的指针参数为NULL，导致无法继续执行操作。<br><!--Device-DDK_NULL_PTR = 28600004--><!--Device-DDK_NULL_PTR = 28600004-End--> |
 
 

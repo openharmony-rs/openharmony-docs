@@ -24,7 +24,7 @@ typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 
 | 名称 | 描述 |
 | -- | -- |
-| [Hid_RelAxes](capi-hid-ddk-types-h.md#hid_relaxes) *hidRelAxes | 相对坐标属性编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。 |
-| uint16_t length | 数组的有效长度，不超过hidRelAxes数组的实际长度。 |
+| [Hid_RelAxes](capi-hid-ddk-types-h.md#hid_relaxes) *hidRelAxes | 相对坐标属性编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。<br><!--Device-Hid_RelAxes *hidRelAxes--><!--Device-Hid_RelAxes *hidRelAxes-End--> |
+| uint16_t length | 数组的有效长度，不超过hidRelAxes数组的实际长度。<br><!--Device-uint16_t length--><!--Device-uint16_t length-End--> |
 
 

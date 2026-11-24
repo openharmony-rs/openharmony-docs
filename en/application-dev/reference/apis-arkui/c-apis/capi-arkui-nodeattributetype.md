@@ -22,6 +22,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 - [Background Display](capi-arkui-nodeattributetype-background-display.md)
 - [Visual](capi-arkui-nodeattributetype-visual.md)
 - [Interaction](capi-arkui-nodeattributetype-interaction.md)
+- [Visual](capi-arkui-nodeattributetype-visual.md)
 - [Animate](capi-arkui-nodeattributetype-animate.md)
 - [Accessibility](capi-arkui-nodeattributetype-accessibility.md)
 - [Text Display](capi-arkui-nodeattributetype-text-display.md)

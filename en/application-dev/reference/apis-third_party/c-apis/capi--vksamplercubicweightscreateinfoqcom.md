@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkCubicFilterWeightsQCOM cubicWeights |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkCubicFilterWeightsQCOM cubicWeights | <!--Device-VkCubicFilterWeightsQCOM cubicWeights--><!--Device-VkCubicFilterWeightsQCOM cubicWeights-End--> |
 
 

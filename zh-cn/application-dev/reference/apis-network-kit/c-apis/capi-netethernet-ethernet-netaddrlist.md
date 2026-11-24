@@ -24,7 +24,7 @@ typedef struct Ethernet_NetAddrList {...} Ethernet_NetAddrList
 
 | 名称 | 描述 |
 | -- | -- |
-| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] | 以太网网络地址列表。<br>**起始版本：** 26.0.0 |
-| int32_t netAddrListSize | netAddrList的实际大小。<br>**起始版本：** 26.0.0 |
+| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] | 以太网网络地址列表。<br>**起始版本：** 26.0.0<br><!--Device-Ethernet_NetAddrInfo netAddrList[ETHERNET_MAX_NET_SIZE]--><!--Device-Ethernet_NetAddrInfo netAddrList[ETHERNET_MAX_NET_SIZE]-End--> |
+| int32_t netAddrListSize | netAddrList的实际大小。<br>**起始版本：** 26.0.0<br><!--Device-int32_t netAddrListSize--><!--Device-int32_t netAddrListSize-End--> |
 
 

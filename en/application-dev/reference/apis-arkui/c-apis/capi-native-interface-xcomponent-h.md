@@ -83,8 +83,8 @@ Declares APIs for accessing a Native XComponent.
 | [int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range)](#oh_nativexcomponent_setexpectedframeraterange) | Set the Expected FrameRateRange. |
 | [int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp))](#oh_nativexcomponent_registeronframecallback) | Registers a callback for this <b>OH_NativeXComponent</b> instance. |
 | [int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component)](#oh_nativexcomponent_unregisteronframecallback) | UnRegister a callback for this <b>OH_NativeXComponent</b> instance. |
-| [int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_attachnativerootnode) | Attaches the UI component created through the native API of ArkUI to this <b>OH_NativeXComponent</b> instance.(Deprecated in API20) |
-| [int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_detachnativerootnode) | Detaches the native component of ArkUI from this <b>OH_NativeXComponent</b> instance.(Deprecated in API20) |
+| [int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_attachnativerootnode) | Attaches the UI component created through the native API of ArkUI to this <b>OH_NativeXComponent</b> instance.(Deprecated) |
+| [int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_detachnativerootnode) | Detaches the native component of ArkUI from this <b>OH_NativeXComponent</b> instance.(Deprecated) |
 | [int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, void* window))](#oh_nativexcomponent_registersurfaceshowcallback) | Registers a callback for this <b>OH_NativeXComponent</b> instance. |
 | [int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, void* window))](#oh_nativexcomponent_registersurfacehidecallback) | Registers a callback for this <b>OH_NativeXComponent</b> instance. |
 | [int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, ArkUI_UIInputEvent* event, ArkUI_UIInputEvent_Type type), ArkUI_UIInputEvent_Type type)](#oh_nativexcomponent_registeruiinputeventcallback) | Registers a UI input event callback for an <b>OH_NativeXComponent</b> instance and enables the callback to be invoked when a UI input event is received. Currently, only axis events are supported. |
@@ -124,13 +124,14 @@ Declares APIs for accessing a Native XComponent.
 | [void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)](#oh_arkui_xcomponentsurfaceconfig_dispose) | Dispose of an <b>ArkUI_XComponentSurfaceConfig</b> object. |
 | [void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)](#oh_arkui_xcomponentsurfaceconfig_setisopaque) | Set whether the surface held by XComponent needs to be considered opaque, even if the surface has translucent pixel. |
 | [int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder *surfaceHolder, ArkUI_XComponentSurfaceConfig *config)](#oh_arkui_surfaceholder_setsurfaceconfig) | Set surface config for this <b>OH_ArkUI_SurfaceHolder</b> instance. |
+| [int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)](#oh_arkui_xcomponent_enablesurfacevisibilitylifecycle) | Enables the surface visibility lifecycle for an XComponent. Only supports being called on the UI thread. |
 
 ### Variables
 
 | Name | Description |
 | -- | -- |
-| const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | Declares APIs for accessing a Native XComponent.<br>**Since**: 8<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 |  |
+| const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | Declares APIs for accessing a Native XComponent.<br>**Since**: 8<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128--><!--Device-const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128-End--> |
+| const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | <!--Device-const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10--><!--Device-const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10-End--> |
 
 ## Enum type description
 
@@ -144,7 +145,7 @@ enum anonymous0
 
 Enumerates the API access states.
 
-<!--Device-anonymous0--><!--Device-anonymous0-End-->
+<!--Device-enum anonymous0--><!--Device-enum anonymous0-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,9 +153,9 @@ Enumerates the API access states.
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0 | Successful. |
-| OH_NATIVEXCOMPONENT_RESULT_FAILED = -1 | Failed. |
-| OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2 | Invalid parameters. |
+| OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0 | Successful.<br><!--Device-OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0--><!--Device-OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0-End--> |
+| OH_NATIVEXCOMPONENT_RESULT_FAILED = -1 | Failed.<br><!--Device-OH_NATIVEXCOMPONENT_RESULT_FAILED = -1--><!--Device-OH_NATIVEXCOMPONENT_RESULT_FAILED = -1-End--> |
+| OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2 | Invalid parameters.<br><!--Device-OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2--><!--Device-OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2-End--> |
 
 ### ArkUI_XComponent_ImageAnalyzerState
 
@@ -166,7 +167,7 @@ enum ArkUI_XComponent_ImageAnalyzerState
 
 Status code for AI analyzer.
 
-<!--Device-ArkUI_XComponent_ImageAnalyzerState--><!--Device-ArkUI_XComponent_ImageAnalyzerState-End-->
+<!--Device-enum ArkUI_XComponent_ImageAnalyzerState--><!--Device-enum ArkUI_XComponent_ImageAnalyzerState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,11 +175,11 @@ Status code for AI analyzer.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0 | AI analyzer execution is finished. |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000 | AI analyzer is disabled. |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001 | AI analyzer is unsupported. |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002 | AI analyzer is ongoing. |
-| ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003 | AI analyzer is stopped. |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0 | AI analyzer execution is finished.<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED = 0-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000 | AI analyzer is disabled.<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_DISABLED = 110000-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001 | AI analyzer is unsupported.<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_UNSUPPORTED = 110001-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002 | AI analyzer is ongoing.<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING = 110002-End--> |
+| ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003 | AI analyzer is stopped.<br><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003--><!--Device-ARKUI_XCOMPONENT_AI_ANALYSIS_STOPPED = 110003-End--> |
 
 ### OH_NativeXComponent_TouchEventType
 
@@ -190,7 +191,7 @@ enum OH_NativeXComponent_TouchEventType
 
 Represents the type of touch event.
 
-<!--Device-OH_NativeXComponent_TouchEventType--><!--Device-OH_NativeXComponent_TouchEventType-End-->
+<!--Device-enum OH_NativeXComponent_TouchEventType--><!--Device-enum OH_NativeXComponent_TouchEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -198,11 +199,11 @@ Represents the type of touch event.
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_DOWN = 0 | Trigger a touch event when a finger is pressed. |
-| OH_NATIVEXCOMPONENT_UP | Trigger a touch event when a finger is lifted. |
-| OH_NATIVEXCOMPONENT_MOVE | Trigger a touch event when a finger moves on the screen in pressed state. |
-| OH_NATIVEXCOMPONENT_CANCEL | Trigger an event when a touch event is canceled. |
-| OH_NATIVEXCOMPONENT_UNKNOWN | Invalid touch type. |
+| OH_NATIVEXCOMPONENT_DOWN = 0 | Trigger a touch event when a finger is pressed.<br><!--Device-OH_NATIVEXCOMPONENT_DOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_DOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_UP | Trigger a touch event when a finger is lifted.<br><!--Device-OH_NATIVEXCOMPONENT_UP--><!--Device-OH_NATIVEXCOMPONENT_UP-End--> |
+| OH_NATIVEXCOMPONENT_MOVE | Trigger a touch event when a finger moves on the screen in pressed state.<br><!--Device-OH_NATIVEXCOMPONENT_MOVE--><!--Device-OH_NATIVEXCOMPONENT_MOVE-End--> |
+| OH_NATIVEXCOMPONENT_CANCEL | Trigger an event when a touch event is canceled.<br><!--Device-OH_NATIVEXCOMPONENT_CANCEL--><!--Device-OH_NATIVEXCOMPONENT_CANCEL-End--> |
+| OH_NATIVEXCOMPONENT_UNKNOWN | Invalid touch type.<br><!--Device-OH_NATIVEXCOMPONENT_UNKNOWN--><!--Device-OH_NATIVEXCOMPONENT_UNKNOWN-End--> |
 
 ### OH_NativeXComponent_TouchPointToolType
 
@@ -214,7 +215,7 @@ enum OH_NativeXComponent_TouchPointToolType
 
 Represents the touch point tool type.
 
-<!--Device-OH_NativeXComponent_TouchPointToolType--><!--Device-OH_NativeXComponent_TouchPointToolType-End-->
+<!--Device-enum OH_NativeXComponent_TouchPointToolType--><!--Device-enum OH_NativeXComponent_TouchPointToolType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,15 +223,15 @@ Represents the touch point tool type.
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0 | Indicates invalid tool type. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER | Indicates a finger. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN | Indicates a stylus. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER | Indicates an eraser. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH | Indicates a brush. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL | Indicates a pencil. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH | Indicates a brush. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE | Indicates a mouse. |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS | Indicates a lens. |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0 | Indicates invalid tool type.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER | Indicates a finger.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN | Indicates a stylus.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER | Indicates an eraser.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH | Indicates a brush.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL | Indicates a pencil.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH | Indicates a brush.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE | Indicates a mouse.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE-End--> |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS | Indicates a lens.<br><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS--><!--Device-OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS-End--> |
 
 ### OH_NativeXComponent_EventSourceType
 
@@ -242,7 +243,7 @@ enum OH_NativeXComponent_EventSourceType
 
 Represents the touch event source type.
 
-<!--Device-OH_NativeXComponent_EventSourceType--><!--Device-OH_NativeXComponent_EventSourceType-End-->
+<!--Device-enum OH_NativeXComponent_EventSourceType--><!--Device-enum OH_NativeXComponent_EventSourceType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,12 +251,12 @@ Represents the touch event source type.
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | Indicates an unknown input source type. |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE | Indicates that the input source generates a mouse multi-touch event. |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN | Indicates that the input source generates a touchscreen multi-touch event. |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD | Indicates that the input source generates a touchpad multi-touch event. |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK | Indicates that the input source generates a joystick multi-touch event. |
-| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD | Indicates that the input source generates a keyboard event.<br>**Since**: 10 |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0 | Indicates an unknown input source type.<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_UNKNOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE | Indicates that the input source generates a mouse multi-touch event.<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_MOUSE-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN | Indicates that the input source generates a touchscreen multi-touch event.<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHSCREEN-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD | Indicates that the input source generates a touchpad multi-touch event.<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_TOUCHPAD-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK | Indicates that the input source generates a joystick multi-touch event.<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_JOYSTICK-End--> |
+| OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD | Indicates that the input source generates a keyboard event.<br>**Since**: 10<br><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD--><!--Device-OH_NATIVEXCOMPONENT_SOURCE_TYPE_KEYBOARD-End--> |
 
 ### OH_NativeXComponent_MouseEventAction
 
@@ -267,7 +268,7 @@ enum OH_NativeXComponent_MouseEventAction
 
 Represents the mouse event action.
 
-<!--Device-OH_NativeXComponent_MouseEventAction--><!--Device-OH_NativeXComponent_MouseEventAction-End-->
+<!--Device-enum OH_NativeXComponent_MouseEventAction--><!--Device-enum OH_NativeXComponent_MouseEventAction-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,11 +276,11 @@ Represents the mouse event action.
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 |  |
-| OH_NATIVEXCOMPONENT_MOUSE_PRESS |  |
-| OH_NATIVEXCOMPONENT_MOUSE_RELEASE |  |
-| OH_NATIVEXCOMPONENT_MOUSE_MOVE |  |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | Triggered when the mouse event is canceled.<br>**Since**: 18 |
+| OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 | <!--Device-OH_NATIVEXCOMPONENT_MOUSE_NONE = 0--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_NONE = 0-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_PRESS | <!--Device-OH_NATIVEXCOMPONENT_MOUSE_PRESS--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_PRESS-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_RELEASE | <!--Device-OH_NATIVEXCOMPONENT_MOUSE_RELEASE--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_RELEASE-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_MOVE | <!--Device-OH_NATIVEXCOMPONENT_MOUSE_MOVE--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_MOVE-End--> |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | Triggered when the mouse event is canceled.<br>**Since**: 18<br><!--Device-OH_NATIVEXCOMPONENT_MOUSE_CANCEL--><!--Device-OH_NATIVEXCOMPONENT_MOUSE_CANCEL-End--> |
 
 ### OH_NativeXComponent_MouseEventButton
 
@@ -291,7 +292,7 @@ enum OH_NativeXComponent_MouseEventButton
 
 Represents the mouse event button.
 
-<!--Device-OH_NativeXComponent_MouseEventButton--><!--Device-OH_NativeXComponent_MouseEventButton-End-->
+<!--Device-enum OH_NativeXComponent_MouseEventButton--><!--Device-enum OH_NativeXComponent_MouseEventButton-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -299,12 +300,12 @@ Represents the mouse event button.
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_NONE_BUTTON = 0 |  |
-| OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01 |  |
-| OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02 |  |
-| OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04 |  |
-| OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08 |  |
-| OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10 |  |
+| OH_NATIVEXCOMPONENT_NONE_BUTTON = 0 | <!--Device-OH_NATIVEXCOMPONENT_NONE_BUTTON = 0--><!--Device-OH_NATIVEXCOMPONENT_NONE_BUTTON = 0-End--> |
+| OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01 | <!--Device-OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01--><!--Device-OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01-End--> |
+| OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02 | <!--Device-OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02--><!--Device-OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02-End--> |
+| OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04 | <!--Device-OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04--><!--Device-OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04-End--> |
+| OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08 | <!--Device-OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08--><!--Device-OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08-End--> |
+| OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10 | <!--Device-OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10--><!--Device-OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10-End--> |
 
 ### OH_NativeXComponent_TouchEvent_SourceTool
 
@@ -316,7 +317,7 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 
 Represents the source tool type of TouchEvent
 
-<!--Device-OH_NativeXComponent_TouchEvent_SourceTool--><!--Device-OH_NativeXComponent_TouchEvent_SourceTool-End-->
+<!--Device-enum OH_NativeXComponent_TouchEvent_SourceTool--><!--Device-enum OH_NativeXComponent_TouchEvent_SourceTool-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,16 +325,16 @@ Represents the source tool type of TouchEvent
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8 |  |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8-End--> |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9 | <!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9--><!--Device-OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9-End--> |
 
 
 ## Function description
@@ -2422,5 +2423,34 @@ Set surface config for this <b>OH_ArkUI_SurfaceHolder</b> instance.
 | Type | Description |
 | -- | -- |
 | int32_t | Returns the status code of the execution. ARKUI_ERROR_CODE_NO_ERROR the execution is successful. ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+
+### OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle()
+
+```c
+int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)
+```
+
+**Description**
+
+Enables the surface visibility lifecycle for an XComponent. Only supports being called on the UI thread.
+
+<!--Device-int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)--><!--Device-int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent *component, bool isVisibilityLifecycle)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) *component | [in] Indicates the pointer to the XComponent. |
+| bool isVisibilityLifecycle | [in] Indicates whether to enable the surface visibility lifecycle. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Returns the status code of the execution. <ul> <li>ARKUI_ERROR_CODE_NO_ERROR the execution is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> </ul> |
 
 

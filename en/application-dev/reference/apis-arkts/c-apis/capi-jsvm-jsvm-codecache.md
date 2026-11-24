@@ -24,7 +24,7 @@ code cache passed with JSVM_COMPILE_CODE_CACHE
 
 | Name | Description |
 | -- | -- |
-| uint8_t *cache | cache pointer. |
-| size_t length | length. |
+| uint8_t *cache | cache pointer.<br><!--Device-uint8_t *cache--><!--Device-uint8_t *cache-End--> |
+| size_t length | length.<br><!--Device-size_t length--><!--Device-size_t length-End--> |
 
 

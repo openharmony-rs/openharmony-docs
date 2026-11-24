@@ -24,6 +24,6 @@ Defines the mutex structure used to store internal data of the mutex.
 
 | Name | Description |
 | -- | -- |
-| uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage backing the mutex. Do not access directly; use the `ffrt_mutex_*` APIs. |
+| uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage backing the mutex. Do not access directly; use the `ffrt_mutex_*` APIs.<br><!--Device-uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]--><!--Device-uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]-End--> |
 
 

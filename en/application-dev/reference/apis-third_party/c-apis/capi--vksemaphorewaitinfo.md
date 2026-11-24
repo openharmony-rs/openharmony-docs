@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSemaphoreWaitFlags flags |  |
-| uint32_t semaphoreCount |  |
-| const VkSemaphore* pSemaphores |  |
-| const uint64_t* pValues |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSemaphoreWaitFlags flags | <!--Device-VkSemaphoreWaitFlags flags--><!--Device-VkSemaphoreWaitFlags flags-End--> |
+| uint32_t semaphoreCount | <!--Device-uint32_t semaphoreCount--><!--Device-uint32_t semaphoreCount-End--> |
+| const VkSemaphore* pSemaphores | <!--Device-const VkSemaphore* pSemaphores--><!--Device-const VkSemaphore* pSemaphores-End--> |
+| const uint64_t* pValues | <!--Device-const uint64_t* pValues--><!--Device-const uint64_t* pValues-End--> |
 
 

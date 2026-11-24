@@ -24,8 +24,8 @@ typedef struct OH_Huks_ParamSet {...} OH_Huks_ParamSet
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t paramSetSize | 参数集的内存大小。 |
-| uint32_t paramsCnt | 参数的个数。 |
-| [struct OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) params | 参数数组。 |
+| uint32_t paramSetSize | 参数集的内存大小。<br><!--Device-uint32_t paramSetSize--><!--Device-uint32_t paramSetSize-End--> |
+| uint32_t paramsCnt | 参数的个数。<br><!--Device-uint32_t paramsCnt--><!--Device-uint32_t paramsCnt-End--> |
+| [struct OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) params[] | 参数数组。<br><!--Device-struct OH_Huks_Param params[]--><!--Device-struct OH_Huks_Param params[]-End--> |
 
 

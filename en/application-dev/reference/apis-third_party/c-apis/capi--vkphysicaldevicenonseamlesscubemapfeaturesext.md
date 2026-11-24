@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 nonSeamlessCubeMap |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 nonSeamlessCubeMap | <!--Device-VkBool32 nonSeamlessCubeMap--><!--Device-VkBool32 nonSeamlessCubeMap-End--> |
 
 

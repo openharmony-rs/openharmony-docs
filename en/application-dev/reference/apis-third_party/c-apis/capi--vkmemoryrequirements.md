@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceSize size |  |
-| VkDeviceSize alignment |  |
-| uint32_t memoryTypeBits |  |
+| VkDeviceSize size | <!--Device-VkDeviceSize size--><!--Device-VkDeviceSize size-End--> |
+| VkDeviceSize alignment | <!--Device-VkDeviceSize alignment--><!--Device-VkDeviceSize alignment-End--> |
+| uint32_t memoryTypeBits | <!--Device-uint32_t memoryTypeBits--><!--Device-uint32_t memoryTypeBits-End--> |
 
 

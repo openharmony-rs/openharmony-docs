@@ -93,7 +93,7 @@ enum ArkUI_FontStyle
 
 定义字体样式枚举值。
 
-<!--Device-ArkUI_FontStyle--><!--Device-ArkUI_FontStyle-End-->
+<!--Device-enum ArkUI_FontStyle--><!--Device-enum ArkUI_FontStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,8 +101,8 @@ enum ArkUI_FontStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FONT_STYLE_NORMAL = 0 | 标准字体样式。 |
-| ARKUI_FONT_STYLE_ITALIC | 斜体字体样式。 |
+| ARKUI_FONT_STYLE_NORMAL = 0 | 标准字体样式。<br><!--Device-ARKUI_FONT_STYLE_NORMAL = 0--><!--Device-ARKUI_FONT_STYLE_NORMAL = 0-End--> |
+| ARKUI_FONT_STYLE_ITALIC | 斜体字体样式。<br><!--Device-ARKUI_FONT_STYLE_ITALIC--><!--Device-ARKUI_FONT_STYLE_ITALIC-End--> |
 
 ### ArkUI_FontWeight
 
@@ -114,7 +114,7 @@ enum ArkUI_FontWeight
 
 定义字体粗细/字重枚举值。
 
-<!--Device-ArkUI_FontWeight--><!--Device-ArkUI_FontWeight-End-->
+<!--Device-enum ArkUI_FontWeight--><!--Device-enum ArkUI_FontWeight-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,21 +122,21 @@ enum ArkUI_FontWeight
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FONT_WEIGHT_W100 = 0 | 100 |
-| ARKUI_FONT_WEIGHT_W200 | 200 |
-| ARKUI_FONT_WEIGHT_W300 | 300 |
-| ARKUI_FONT_WEIGHT_W400 | 400 |
-| ARKUI_FONT_WEIGHT_W500 | 500 |
-| ARKUI_FONT_WEIGHT_W600 | 600 |
-| ARKUI_FONT_WEIGHT_W700 | 700 |
-| ARKUI_FONT_WEIGHT_W800 | 800 |
-| ARKUI_FONT_WEIGHT_W900 | 900 |
-| ARKUI_FONT_WEIGHT_BOLD | 字体较粗。 |
-| ARKUI_FONT_WEIGHT_NORMAL | 字体粗细正常，与ARKUI_FONT_WEIGHT_NORMAL相同。 |
-| ARKUI_FONT_WEIGHT_BOLDER | 字体非常粗。 |
-| ARKUI_FONT_WEIGHT_LIGHTER | 字体较细。 |
-| ARKUI_FONT_WEIGHT_MEDIUM | 字体粗细适中。 |
-| ARKUI_FONT_WEIGHT_REGULAR | 字体粗细正常，与ARKUI_FONT_WEIGHT_NORMAL相同。 |
+| ARKUI_FONT_WEIGHT_W100 = 0 | 100<br><!--Device-ARKUI_FONT_WEIGHT_W100 = 0--><!--Device-ARKUI_FONT_WEIGHT_W100 = 0-End--> |
+| ARKUI_FONT_WEIGHT_W200 | 200<br><!--Device-ARKUI_FONT_WEIGHT_W200--><!--Device-ARKUI_FONT_WEIGHT_W200-End--> |
+| ARKUI_FONT_WEIGHT_W300 | 300<br><!--Device-ARKUI_FONT_WEIGHT_W300--><!--Device-ARKUI_FONT_WEIGHT_W300-End--> |
+| ARKUI_FONT_WEIGHT_W400 | 400<br><!--Device-ARKUI_FONT_WEIGHT_W400--><!--Device-ARKUI_FONT_WEIGHT_W400-End--> |
+| ARKUI_FONT_WEIGHT_W500 | 500<br><!--Device-ARKUI_FONT_WEIGHT_W500--><!--Device-ARKUI_FONT_WEIGHT_W500-End--> |
+| ARKUI_FONT_WEIGHT_W600 | 600<br><!--Device-ARKUI_FONT_WEIGHT_W600--><!--Device-ARKUI_FONT_WEIGHT_W600-End--> |
+| ARKUI_FONT_WEIGHT_W700 | 700<br><!--Device-ARKUI_FONT_WEIGHT_W700--><!--Device-ARKUI_FONT_WEIGHT_W700-End--> |
+| ARKUI_FONT_WEIGHT_W800 | 800<br><!--Device-ARKUI_FONT_WEIGHT_W800--><!--Device-ARKUI_FONT_WEIGHT_W800-End--> |
+| ARKUI_FONT_WEIGHT_W900 | 900<br><!--Device-ARKUI_FONT_WEIGHT_W900--><!--Device-ARKUI_FONT_WEIGHT_W900-End--> |
+| ARKUI_FONT_WEIGHT_BOLD | 字体较粗。<br><!--Device-ARKUI_FONT_WEIGHT_BOLD--><!--Device-ARKUI_FONT_WEIGHT_BOLD-End--> |
+| ARKUI_FONT_WEIGHT_NORMAL | 字体粗细正常，与ARKUI_FONT_WEIGHT_NORMAL相同。<br><!--Device-ARKUI_FONT_WEIGHT_NORMAL--><!--Device-ARKUI_FONT_WEIGHT_NORMAL-End--> |
+| ARKUI_FONT_WEIGHT_BOLDER | 字体非常粗。<br><!--Device-ARKUI_FONT_WEIGHT_BOLDER--><!--Device-ARKUI_FONT_WEIGHT_BOLDER-End--> |
+| ARKUI_FONT_WEIGHT_LIGHTER | 字体较细。<br><!--Device-ARKUI_FONT_WEIGHT_LIGHTER--><!--Device-ARKUI_FONT_WEIGHT_LIGHTER-End--> |
+| ARKUI_FONT_WEIGHT_MEDIUM | 字体粗细适中。<br><!--Device-ARKUI_FONT_WEIGHT_MEDIUM--><!--Device-ARKUI_FONT_WEIGHT_MEDIUM-End--> |
+| ARKUI_FONT_WEIGHT_REGULAR | 字体粗细正常，与ARKUI_FONT_WEIGHT_NORMAL相同。<br><!--Device-ARKUI_FONT_WEIGHT_REGULAR--><!--Device-ARKUI_FONT_WEIGHT_REGULAR-End--> |
 
 ### ArkUI_TextHeightAdaptivePolicy
 
@@ -148,7 +148,7 @@ enum ArkUI_TextHeightAdaptivePolicy
 
 定义文本自适应高度的方式。
 
-<!--Device-ArkUI_TextHeightAdaptivePolicy--><!--Device-ArkUI_TextHeightAdaptivePolicy-End-->
+<!--Device-enum ArkUI_TextHeightAdaptivePolicy--><!--Device-enum ArkUI_TextHeightAdaptivePolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,9 +156,9 @@ enum ArkUI_TextHeightAdaptivePolicy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | 设置文本高度自适应方式为以MaxLines优先。优先保持最大行数（maxLines）设置，当文本内容超出显示区域时，优先满足maxLines限制，超出部分可能被截断或通过其他方式处理。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | 设置文本高度自适应方式为以缩小字体优先。当文本内容超出显示区域时，优先通过缩小字体大小来适应高度限制，确保文本完整显示，字体大小会在允许范围内自动调整。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | 设置文本高度自适应方式为以布局约束（高度）优先。严格遵循布局约束的高度设置，不自动调整文本高度或字体大小，超出部分可能被截断或通过其他方式处理。 |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | 设置文本高度自适应方式为以MaxLines优先。优先保持最大行数（maxLines）设置，当文本内容超出显示区域时，优先满足maxLines限制，超出部分可能被截断或通过其他方式处理。<br><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0--><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0-End--> |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | 设置文本高度自适应方式为以缩小字体优先。当文本内容超出显示区域时，优先通过缩小字体大小来适应高度限制，确保文本完整显示，字体大小会在允许范围内自动调整。<br><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST--><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST-End--> |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | 设置文本高度自适应方式为以布局约束（高度）优先。严格遵循布局约束的高度设置，不自动调整文本高度或字体大小，超出部分可能被截断或通过其他方式处理。<br><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST--><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST-End--> |
 
 ### ArkUI_TextDataDetectorType
 
@@ -170,7 +170,7 @@ enum ArkUI_TextDataDetectorType
 
 定义文本识别的实体类型。
 
-<!--Device-ArkUI_TextDataDetectorType--><!--Device-ArkUI_TextDataDetectorType-End-->
+<!--Device-enum ArkUI_TextDataDetectorType--><!--Device-enum ArkUI_TextDataDetectorType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,10 +178,10 @@ enum ArkUI_TextDataDetectorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0 | 电话号码。 |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_URL | 链接。 |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL | 邮箱。 |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS | 地址。 |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0 | 电话号码。<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0-End--> |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_URL | 链接。<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_URL--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_URL-End--> |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL | 邮箱。<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL-End--> |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS | 地址。<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS-End--> |
 
 ### ArkUI_MarqueeStartPolicy
 
@@ -193,7 +193,7 @@ enum ArkUI_MarqueeStartPolicy
 
 定义跑马灯启动策略枚举。
 
-<!--Device-ArkUI_MarqueeStartPolicy--><!--Device-ArkUI_MarqueeStartPolicy-End-->
+<!--Device-enum ArkUI_MarqueeStartPolicy--><!--Device-enum ArkUI_MarqueeStartPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,8 +201,8 @@ enum ArkUI_MarqueeStartPolicy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0 | 默认持续滚动。 |
-| ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | 获焦以及鼠标悬浮时开始滚动。 |
+| ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0 | 默认持续滚动。<br><!--Device-ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0--><!--Device-ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0-End--> |
+| ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | 获焦以及鼠标悬浮时开始滚动。<br><!--Device-ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1--><!--Device-ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1-End--> |
 
 ### ArkUI_MarqueeUpdatePolicy
 
@@ -214,7 +214,7 @@ enum ArkUI_MarqueeUpdatePolicy
 
 定义跑马灯更新策略枚举。
 
-<!--Device-ArkUI_MarqueeUpdatePolicy--><!--Device-ArkUI_MarqueeUpdatePolicy-End-->
+<!--Device-enum ArkUI_MarqueeUpdatePolicy--><!--Device-enum ArkUI_MarqueeUpdatePolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,8 +222,8 @@ enum ArkUI_MarqueeUpdatePolicy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | 跑马灯组件属性更新后，从开始位置，运行跑马灯效果。 |
-| ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | 跑马灯组件属性更新后，保持当前位置，运行跑马灯效果。 |
+| ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | 跑马灯组件属性更新后，从开始位置，运行跑马灯效果。<br><!--Device-ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0--><!--Device-ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0-End--> |
+| ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | 跑马灯组件属性更新后，保持当前位置，运行跑马灯效果。<br><!--Device-ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1--><!--Device-ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1-End--> |
 
 
 ## 函数说明

@@ -24,8 +24,8 @@ typedef struct Camera_VideoProfile {...} Camera_VideoProfile
 
 | 名称 | 描述 |
 | -- | -- |
-| [Camera_Format](capi-camera-h.md#camera_format) format | 相机格式。 |
-| [Camera_Size](capi-oh-camera-camera-size.md) size | 图片大小。 |
-| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) range | 帧速率，单位为fps（每秒帧数）。 |
+| [Camera_Format](capi-camera-h.md#camera_format) format | 相机格式。<br><!--Device-Camera_Format format--><!--Device-Camera_Format format-End--> |
+| [Camera_Size](capi-oh-camera-camera-size.md) size | 图片大小。<br><!--Device-Camera_Size size--><!--Device-Camera_Size size-End--> |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) range | 帧速率，单位为fps（每秒帧数）。<br><!--Device-Camera_FrameRateRange range--><!--Device-Camera_FrameRateRange range-End--> |
 
 

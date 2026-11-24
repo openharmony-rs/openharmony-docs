@@ -49,7 +49,7 @@ enum OH_ArkUI_NativeModule_UIJsonFormat
 
 定义JSON输出格式的枚举类型。
 
-<!--Device-OH_ArkUI_NativeModule_UIJsonFormat--><!--Device-OH_ArkUI_NativeModule_UIJsonFormat-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIJsonFormat--><!--Device-enum OH_ArkUI_NativeModule_UIJsonFormat-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,8 +57,8 @@ enum OH_ArkUI_NativeModule_UIJsonFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | 输出不含多余空白字符的规范JSON。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | 输出带有两个空格缩进和换行符的JSON。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | 输出不含多余空白字符的规范JSON。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | 输出带有两个空格缩进和换行符的JSON。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1-End--> |
 
 
 ## 函数说明

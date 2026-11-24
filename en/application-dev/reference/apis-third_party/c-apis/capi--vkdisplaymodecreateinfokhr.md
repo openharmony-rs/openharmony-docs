@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDisplayModeCreateFlagsKHR flags |  |
-| [VkDisplayModeParametersKHR](capi--vkdisplaymodeparameterskhr.md) parameters |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDisplayModeCreateFlagsKHR flags | <!--Device-VkDisplayModeCreateFlagsKHR flags--><!--Device-VkDisplayModeCreateFlagsKHR flags-End--> |
+| [VkDisplayModeParametersKHR](capi--vkdisplaymodeparameterskhr.md) parameters | <!--Device-VkDisplayModeParametersKHR parameters--><!--Device-VkDisplayModeParametersKHR parameters-End--> |
 
 

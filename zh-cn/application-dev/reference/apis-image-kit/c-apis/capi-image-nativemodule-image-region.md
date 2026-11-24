@@ -6,7 +6,7 @@ typedef struct Image_Region Image_Region
 
 ## 概述
 
-待解码的图像源区域结构体。
+待解码的图像源区域结构体。区域坐标以图像左上角像素为原点（即(0, 0)），X轴正方向向右，Y轴正方向向下。
 
 <!--Device-typedef struct Image_Region Image_Region--><!--Device-typedef struct Image_Region Image_Region-End-->
 

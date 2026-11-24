@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkPresentModeKHR presentMode |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkPresentModeKHR presentMode | <!--Device-VkPresentModeKHR presentMode--><!--Device-VkPresentModeKHR presentMode-End--> |
 
 

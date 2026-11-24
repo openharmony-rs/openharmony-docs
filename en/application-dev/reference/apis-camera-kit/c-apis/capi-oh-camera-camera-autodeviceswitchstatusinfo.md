@@ -24,7 +24,7 @@ Auto device switch status info.
 
 | Name | Description |
 | -- | -- |
-| bool isDeviceSwitched | is device switched. |
-| bool isDeviceCapabilityChanged | is device capability changed. |
+| bool isDeviceSwitched | is device switched.<br><!--Device-bool isDeviceSwitched--><!--Device-bool isDeviceSwitched-End--> |
+| bool isDeviceCapabilityChanged | is device capability changed.<br><!--Device-bool isDeviceCapabilityChanged--><!--Device-bool isDeviceCapabilityChanged-End--> |
 
 

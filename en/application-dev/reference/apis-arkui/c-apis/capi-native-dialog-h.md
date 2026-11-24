@@ -97,7 +97,7 @@ enum ArkUI_DismissReason
 
 Enumerates the actions for triggering closure of the dialog box.
 
-<!--Device-ArkUI_DismissReason--><!--Device-ArkUI_DismissReason-End-->
+<!--Device-enum ArkUI_DismissReason--><!--Device-enum ArkUI_DismissReason-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,10 +105,10 @@ Enumerates the actions for triggering closure of the dialog box.
 
 | Enum item | Description |
 | -- | -- |
-| DIALOG_DISMISS_BACK_PRESS = 0 | Touching the system-defined Back button or pressing the Esc key. |
-| DIALOG_DISMISS_TOUCH_OUTSIDE | Touching the mask. |
-| DIALOG_DISMISS_CLOSE_BUTTON | Touching the Close button. |
-| DIALOG_DISMISS_SLIDE_DOWN | Sliding down. |
+| DIALOG_DISMISS_BACK_PRESS = 0 | Touching the system-defined Back button or pressing the Esc key.<br><!--Device-DIALOG_DISMISS_BACK_PRESS = 0--><!--Device-DIALOG_DISMISS_BACK_PRESS = 0-End--> |
+| DIALOG_DISMISS_TOUCH_OUTSIDE | Touching the mask.<br><!--Device-DIALOG_DISMISS_TOUCH_OUTSIDE--><!--Device-DIALOG_DISMISS_TOUCH_OUTSIDE-End--> |
+| DIALOG_DISMISS_CLOSE_BUTTON | Touching the Close button.<br><!--Device-DIALOG_DISMISS_CLOSE_BUTTON--><!--Device-DIALOG_DISMISS_CLOSE_BUTTON-End--> |
+| DIALOG_DISMISS_SLIDE_DOWN | Sliding down.<br><!--Device-DIALOG_DISMISS_SLIDE_DOWN--><!--Device-DIALOG_DISMISS_SLIDE_DOWN-End--> |
 
 ### ArkUI_DialogState
 
@@ -120,7 +120,7 @@ enum ArkUI_DialogState
 
 Enumerates the state of dialog.
 
-<!--Device-ArkUI_DialogState--><!--Device-ArkUI_DialogState-End-->
+<!--Device-enum ArkUI_DialogState--><!--Device-enum ArkUI_DialogState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,12 +128,12 @@ Enumerates the state of dialog.
 
 | Enum item | Description |
 | -- | -- |
-| DIALOG_UNINITIALIZED = 0 | Uninitialized.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_INITIALIZED | Initialized.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_APPEARING | Appearing.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_APPEARED | Appeared.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_DISAPPEARING | Disappearing.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| DIALOG_DISAPPEARED | Disappeared.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| DIALOG_UNINITIALIZED = 0 | Uninitialized.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_UNINITIALIZED = 0--><!--Device-DIALOG_UNINITIALIZED = 0-End--> |
+| DIALOG_INITIALIZED | Initialized.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_INITIALIZED--><!--Device-DIALOG_INITIALIZED-End--> |
+| DIALOG_APPEARING | Appearing.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_APPEARING--><!--Device-DIALOG_APPEARING-End--> |
+| DIALOG_APPEARED | Appeared.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_APPEARED--><!--Device-DIALOG_APPEARED-End--> |
+| DIALOG_DISAPPEARING | Disappearing.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_DISAPPEARING--><!--Device-DIALOG_DISAPPEARING-End--> |
+| DIALOG_DISAPPEARED | Disappeared.<br>**Since**: 20<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-DIALOG_DISAPPEARED--><!--Device-DIALOG_DISAPPEARED-End--> |
 
 ### ArkUI_LevelMode
 
@@ -145,7 +145,7 @@ enum ArkUI_LevelMode
 
 Enumerates the level mode.
 
-<!--Device-ArkUI_LevelMode--><!--Device-ArkUI_LevelMode-End-->
+<!--Device-enum ArkUI_LevelMode--><!--Device-enum ArkUI_LevelMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,8 +153,8 @@ Enumerates the level mode.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LEVEL_MODE_OVERLAY = 0 | overlay mode. |
-| ARKUI_LEVEL_MODE_EMBEDDED | embedded mode. |
+| ARKUI_LEVEL_MODE_OVERLAY = 0 | overlay mode.<br><!--Device-ARKUI_LEVEL_MODE_OVERLAY = 0--><!--Device-ARKUI_LEVEL_MODE_OVERLAY = 0-End--> |
+| ARKUI_LEVEL_MODE_EMBEDDED | embedded mode.<br><!--Device-ARKUI_LEVEL_MODE_EMBEDDED--><!--Device-ARKUI_LEVEL_MODE_EMBEDDED-End--> |
 
 ### ArkUI_ImmersiveMode
 
@@ -166,7 +166,7 @@ enum ArkUI_ImmersiveMode
 
 Enumerates the immersive mode.
 
-<!--Device-ArkUI_ImmersiveMode--><!--Device-ArkUI_ImmersiveMode-End-->
+<!--Device-enum ArkUI_ImmersiveMode--><!--Device-enum ArkUI_ImmersiveMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,8 +174,8 @@ Enumerates the immersive mode.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | Mask covering the parent node area. |
-| ARKUI_IMMERSIVE_MODE_EXTEND | Mask extend safe area includes status bar and navigation bar. |
+| ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | Mask covering the parent node area.<br><!--Device-ARKUI_IMMERSIVE_MODE_DEFAULT = 0--><!--Device-ARKUI_IMMERSIVE_MODE_DEFAULT = 0-End--> |
+| ARKUI_IMMERSIVE_MODE_EXTEND | Mask extend safe area includes status bar and navigation bar.<br><!--Device-ARKUI_IMMERSIVE_MODE_EXTEND--><!--Device-ARKUI_IMMERSIVE_MODE_EXTEND-End--> |
 
 ### OH_ArkUI_NativeModule_HandednessMode
 
@@ -187,7 +187,7 @@ enum OH_ArkUI_NativeModule_HandednessMode
 
 Enumerates the handedness adaptation mode of the dialog box.
 
-<!--Device-OH_ArkUI_NativeModule_HandednessMode--><!--Device-OH_ArkUI_NativeModule_HandednessMode-End-->
+<!--Device-enum OH_ArkUI_NativeModule_HandednessMode--><!--Device-enum OH_ArkUI_NativeModule_HandednessMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,9 +195,9 @@ Enumerates the handedness adaptation mode of the dialog box.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_NONE = 0 | No adaptation. The dialog box keeps the current layout.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR = 1 | The dialog box follows the position of the component that triggers it.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND = 2 | he dialog box follows the grip hand (the hand holding the device).<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_NONE = 0 | No adaptation. The dialog box keeps the current layout.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_NONE = 0--><!--Device-OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_NONE = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR = 1 | The dialog box follows the position of the component that triggers it.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR = 1--><!--Device-OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR = 1-End--> |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND = 2 | he dialog box follows the grip hand (the hand holding the device).<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND = 2--><!--Device-OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND = 2-End--> |
 
 ### OH_ArkUI_DialogDisplayModeInSubWindow
 
@@ -209,7 +209,7 @@ enum OH_ArkUI_DialogDisplayModeInSubWindow
 
 Enumerates the dialog display mode in subwindow.
 
-<!--Device-OH_ArkUI_DialogDisplayModeInSubWindow--><!--Device-OH_ArkUI_DialogDisplayModeInSubWindow-End-->
+<!--Device-enum OH_ArkUI_DialogDisplayModeInSubWindow--><!--Device-enum OH_ArkUI_DialogDisplayModeInSubWindow-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,8 +217,8 @@ Enumerates the dialog display mode in subwindow.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0 | The dialog box is displayed based on the screen.<br>**Since**: 26.0.0 |
-| OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED | The dialog box is displayed based on the window.<br>**Since**: 26.0.0 |
+| OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0 | The dialog box is displayed based on the screen.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0--><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0-End--> |
+| OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED | The dialog box is displayed based on the window.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED--><!--Device-OH_ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED-End--> |
 
 
 ## Function description

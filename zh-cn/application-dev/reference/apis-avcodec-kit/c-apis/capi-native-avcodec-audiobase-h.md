@@ -26,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *OH_MD_KEY_AUDIO_DSD_CODEC_TYPE | DSD解码类型的键，值类型为int32_t，取值请参见[OH_AVCodec_DSDCodecType](capi-native-avcodec-audiobase-h.md#oh_avcodec_dsdcodectype)。 该键是可选参数，只用来标记DSD解码类型，默认值为OH_AVCODEC_DSD_CODEC_LSBF_PLANAR(0)。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_AUDIO_DSD_CODEC_TYPE | DSD解码类型的键，值类型为int32_t，取值请参见[OH_AVCodec_DSDCodecType](capi-native-avcodec-audiobase-h.md#oh_avcodec_dsdcodectype)。 该键是可选参数，只用来标记DSD解码类型，默认值为OH_AVCODEC_DSD_CODEC_LSBF_PLANAR(0)。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_AUDIO_DSD_CODEC_TYPE--><!--Device-const char *OH_MD_KEY_AUDIO_DSD_CODEC_TYPE-End--> |
 
 ## 枚举类型说明
 
@@ -40,7 +40,7 @@ enum OH_AVCodec_DSDCodecType
 
 DSD（Direct Stream Digital）编解码类型。
 
-<!--Device-OH_AVCodec_DSDCodecType--><!--Device-OH_AVCodec_DSDCodecType-End-->
+<!--Device-enum OH_AVCodec_DSDCodecType--><!--Device-enum OH_AVCodec_DSDCodecType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -48,8 +48,8 @@ DSD（Direct Stream Digital）编解码类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AVCODEC_DSD_CODEC_LSBF_PLANAR = 0 | 适用于低位先行（LSB first）和平面排布的dsf容器格式。<br>**起始版本：** 26.1.0 |
-| OH_AVCODEC_DSD_CODEC_MSBF_PLANAR = 1 | 适用于高位先行（MSB first）和平面排布的dsf容器格式。<br>**起始版本：** 26.1.0 |
-| OH_AVCODEC_DSD_CODEC_MSBF = 2 | 适用于高位先行（MSB first）和交织排布的dff容器格式。<br>**起始版本：** 26.1.0 |
+| OH_AVCODEC_DSD_CODEC_LSBF_PLANAR = 0 | 适用于低位先行（LSB first）和平面排布的dsf容器格式。<br>**起始版本：** 26.1.0<br><!--Device-OH_AVCODEC_DSD_CODEC_LSBF_PLANAR = 0--><!--Device-OH_AVCODEC_DSD_CODEC_LSBF_PLANAR = 0-End--> |
+| OH_AVCODEC_DSD_CODEC_MSBF_PLANAR = 1 | 适用于高位先行（MSB first）和平面排布的dsf容器格式。<br>**起始版本：** 26.1.0<br><!--Device-OH_AVCODEC_DSD_CODEC_MSBF_PLANAR = 1--><!--Device-OH_AVCODEC_DSD_CODEC_MSBF_PLANAR = 1-End--> |
+| OH_AVCODEC_DSD_CODEC_MSBF = 2 | 适用于高位先行（MSB first）和交织排布的dff容器格式。<br>**起始版本：** 26.1.0<br><!--Device-OH_AVCODEC_DSD_CODEC_MSBF = 2--><!--Device-OH_AVCODEC_DSD_CODEC_MSBF = 2-End--> |
 
 

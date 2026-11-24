@@ -24,7 +24,7 @@ The struct describes the profile of a camera stream.
 
 | Name | Description |
 | -- | -- |
-| [Camera_Format](capi-camera-h.md#camera_format) format | Camera format. |
-| [Camera_Size](capi-oh-camera-camera-size.md) size | Image size. |
+| [Camera_Format](capi-camera-h.md#camera_format) format | Camera format.<br><!--Device-Camera_Format format--><!--Device-Camera_Format format-End--> |
+| [Camera_Size](capi-oh-camera-camera-size.md) size | Image size.<br><!--Device-Camera_Size size--><!--Device-Camera_Size size-End--> |
 
 

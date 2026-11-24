@@ -4,6 +4,8 @@
 
 This file declares the capabilities for obtaining the character position in a text line, obtaining the run information, and truncating text by line.
 
+**File to Include**: <native_drawing/drawing_text_line.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing

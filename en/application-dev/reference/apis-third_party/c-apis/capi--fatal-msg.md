@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| size_t size |  |
-| char msg[0] |  |
+| size_t size | <!--Device-size_t size--><!--Device-size_t size-End--> |
+| char msg[0] | <!--Device-char msg[0]--><!--Device-char msg[0]-End--> |
 
 

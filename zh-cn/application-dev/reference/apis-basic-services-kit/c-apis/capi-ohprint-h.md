@@ -92,7 +92,7 @@ enum Print_ErrorCode
 
 定义错误码。
 
-<!--Device-Print_ErrorCode--><!--Device-Print_ErrorCode-End-->
+<!--Device-enum Print_ErrorCode--><!--Device-enum Print_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -100,17 +100,17 @@ enum Print_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRINT_ERROR_NONE = 0 | 操作成功。 |
-| PRINT_ERROR_NO_PERMISSION = 201 | 权限校验失败，请确认已在应用配置中声明对应的权限。 |
-| PRINT_ERROR_INVALID_PARAMETER = 401 | 参数无效，请检查传入参数的类型和取值范围。 |
-| PRINT_ERROR_GENERIC_FAILURE = 24300001 | 通用内部错误，请检查打印服务运行状态后重试。 |
-| PRINT_ERROR_RPC_FAILURE = 24300002 | RPC通信错误，请确认打印服务已正常启动后重试。 |
-| PRINT_ERROR_SERVER_FAILURE = 24300003 | 服务端错误，请检查打印服务运行状态。 |
-| PRINT_ERROR_INVALID_EXTENSION = 24300004 | 无效的扩展，请确认已安装有效的打印扩展。 |
-| PRINT_ERROR_INVALID_PRINTER = 24300005 | 无效的打印机，请确认打印机已在已发现或已连接的打印机列表中。 |
-| PRINT_ERROR_INVALID_PRINT_JOB = 24300006 | 无效的打印任务，请确认打印任务信息完整且打印机已连接。 |
-| PRINT_ERROR_FILE_IO = 24300007 | 读写文件失败，请检查文件路径及访问权限。 |
-| PRINT_ERROR_UNKNOWN = 24300255 | 未知错误，请检查打印服务状态后重试，若问题持续请联系技术支持。 |
+| PRINT_ERROR_NONE = 0 | 操作成功。<br><!--Device-PRINT_ERROR_NONE = 0--><!--Device-PRINT_ERROR_NONE = 0-End--> |
+| PRINT_ERROR_NO_PERMISSION = 201 | 权限校验失败，请确认已在应用配置中声明对应的权限。<br><!--Device-PRINT_ERROR_NO_PERMISSION = 201--><!--Device-PRINT_ERROR_NO_PERMISSION = 201-End--> |
+| PRINT_ERROR_INVALID_PARAMETER = 401 | 参数无效，请检查传入参数的类型和取值范围。<br><!--Device-PRINT_ERROR_INVALID_PARAMETER = 401--><!--Device-PRINT_ERROR_INVALID_PARAMETER = 401-End--> |
+| PRINT_ERROR_GENERIC_FAILURE = 24300001 | 通用内部错误，请检查打印服务运行状态后重试。<br><!--Device-PRINT_ERROR_GENERIC_FAILURE = 24300001--><!--Device-PRINT_ERROR_GENERIC_FAILURE = 24300001-End--> |
+| PRINT_ERROR_RPC_FAILURE = 24300002 | RPC通信错误，请确认打印服务已正常启动后重试。<br><!--Device-PRINT_ERROR_RPC_FAILURE = 24300002--><!--Device-PRINT_ERROR_RPC_FAILURE = 24300002-End--> |
+| PRINT_ERROR_SERVER_FAILURE = 24300003 | 服务端错误，请检查打印服务运行状态。<br><!--Device-PRINT_ERROR_SERVER_FAILURE = 24300003--><!--Device-PRINT_ERROR_SERVER_FAILURE = 24300003-End--> |
+| PRINT_ERROR_INVALID_EXTENSION = 24300004 | 无效的扩展，请确认已安装有效的打印扩展。<br><!--Device-PRINT_ERROR_INVALID_EXTENSION = 24300004--><!--Device-PRINT_ERROR_INVALID_EXTENSION = 24300004-End--> |
+| PRINT_ERROR_INVALID_PRINTER = 24300005 | 无效的打印机，请确认打印机已在已发现或已连接的打印机列表中。<br><!--Device-PRINT_ERROR_INVALID_PRINTER = 24300005--><!--Device-PRINT_ERROR_INVALID_PRINTER = 24300005-End--> |
+| PRINT_ERROR_INVALID_PRINT_JOB = 24300006 | 无效的打印任务，请确认打印任务信息完整且打印机已连接。<br><!--Device-PRINT_ERROR_INVALID_PRINT_JOB = 24300006--><!--Device-PRINT_ERROR_INVALID_PRINT_JOB = 24300006-End--> |
+| PRINT_ERROR_FILE_IO = 24300007 | 读写文件失败，请检查文件路径及访问权限。<br><!--Device-PRINT_ERROR_FILE_IO = 24300007--><!--Device-PRINT_ERROR_FILE_IO = 24300007-End--> |
+| PRINT_ERROR_UNKNOWN = 24300255 | 未知错误，请检查打印服务状态后重试，若问题持续请联系技术支持。<br><!--Device-PRINT_ERROR_UNKNOWN = 24300255--><!--Device-PRINT_ERROR_UNKNOWN = 24300255-End--> |
 
 ### Print_PrinterState
 
@@ -122,7 +122,7 @@ enum Print_PrinterState
 
 表示打印机状态。
 
-<!--Device-Print_PrinterState--><!--Device-Print_PrinterState-End-->
+<!--Device-enum Print_PrinterState--><!--Device-enum Print_PrinterState-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -130,9 +130,9 @@ enum Print_PrinterState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRINTER_IDLE | 打印机空闲。 |
-| PRINTER_BUSY | 打印机忙。 |
-| PRINTER_UNAVAILABLE | 打印机不可用。 |
+| PRINTER_IDLE | 打印机空闲。<br><!--Device-PRINTER_IDLE--><!--Device-PRINTER_IDLE-End--> |
+| PRINTER_BUSY | 打印机忙。<br><!--Device-PRINTER_BUSY--><!--Device-PRINTER_BUSY-End--> |
+| PRINTER_UNAVAILABLE | 打印机不可用。<br><!--Device-PRINTER_UNAVAILABLE--><!--Device-PRINTER_UNAVAILABLE-End--> |
 
 ### Print_DiscoveryEvent
 
@@ -144,7 +144,7 @@ enum Print_DiscoveryEvent
 
 表示打印机发现事件。
 
-<!--Device-Print_DiscoveryEvent--><!--Device-Print_DiscoveryEvent-End-->
+<!--Device-enum Print_DiscoveryEvent--><!--Device-enum Print_DiscoveryEvent-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -152,10 +152,10 @@ enum Print_DiscoveryEvent
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRINTER_DISCOVERED = 0 | 发现打印机。 |
-| PRINTER_LOST = 1 | 丢失打印机。 |
-| PRINTER_CONNECTING = 2 | 正在连接打印机。 |
-| PRINTER_CONNECTED = 3 | 打印机已连接。 |
+| PRINTER_DISCOVERED = 0 | 发现打印机。<br><!--Device-PRINTER_DISCOVERED = 0--><!--Device-PRINTER_DISCOVERED = 0-End--> |
+| PRINTER_LOST = 1 | 丢失打印机。<br><!--Device-PRINTER_LOST = 1--><!--Device-PRINTER_LOST = 1-End--> |
+| PRINTER_CONNECTING = 2 | 正在连接打印机。<br><!--Device-PRINTER_CONNECTING = 2--><!--Device-PRINTER_CONNECTING = 2-End--> |
+| PRINTER_CONNECTED = 3 | 打印机已连接。<br><!--Device-PRINTER_CONNECTED = 3--><!--Device-PRINTER_CONNECTED = 3-End--> |
 
 ### Print_PrinterEvent
 
@@ -167,7 +167,7 @@ enum Print_PrinterEvent
 
 表示打印机变更事件。
 
-<!--Device-Print_PrinterEvent--><!--Device-Print_PrinterEvent-End-->
+<!--Device-enum Print_PrinterEvent--><!--Device-enum Print_PrinterEvent-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -175,10 +175,10 @@ enum Print_PrinterEvent
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRINTER_ADDED = 0 | 打印机已添加。 |
-| PRINTER_DELETED = 1 | 打印机已删除。 |
-| PRINTER_STATE_CHANGED = 2 | 打印机状态已变更。 |
-| PRINTER_INFO_CHANGED = 3 | 打印机信息已变更。 |
+| PRINTER_ADDED = 0 | 打印机已添加。<br><!--Device-PRINTER_ADDED = 0--><!--Device-PRINTER_ADDED = 0-End--> |
+| PRINTER_DELETED = 1 | 打印机已删除。<br><!--Device-PRINTER_DELETED = 1--><!--Device-PRINTER_DELETED = 1-End--> |
+| PRINTER_STATE_CHANGED = 2 | 打印机状态已变更。<br><!--Device-PRINTER_STATE_CHANGED = 2--><!--Device-PRINTER_STATE_CHANGED = 2-End--> |
+| PRINTER_INFO_CHANGED = 3 | 打印机信息已变更。<br><!--Device-PRINTER_INFO_CHANGED = 3--><!--Device-PRINTER_INFO_CHANGED = 3-End--> |
 
 ### Print_DuplexMode
 
@@ -190,7 +190,7 @@ enum Print_DuplexMode
 
 表示双面打印模式。
 
-<!--Device-Print_DuplexMode--><!--Device-Print_DuplexMode-End-->
+<!--Device-enum Print_DuplexMode--><!--Device-enum Print_DuplexMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -198,9 +198,9 @@ enum Print_DuplexMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DUPLEX_MODE_ONE_SIDED = 0 | 单面模式。 |
-| DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1 | 长边翻转双面模式。 |
-| DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2 | 短边翻转双面模式。 |
+| DUPLEX_MODE_ONE_SIDED = 0 | 单面模式。<br><!--Device-DUPLEX_MODE_ONE_SIDED = 0--><!--Device-DUPLEX_MODE_ONE_SIDED = 0-End--> |
+| DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1 | 长边翻转双面模式。<br><!--Device-DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1--><!--Device-DUPLEX_MODE_TWO_SIDED_LONG_EDGE = 1-End--> |
+| DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2 | 短边翻转双面模式。<br><!--Device-DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2--><!--Device-DUPLEX_MODE_TWO_SIDED_SHORT_EDGE = 2-End--> |
 
 ### Print_ColorMode
 
@@ -212,7 +212,7 @@ enum Print_ColorMode
 
 表示色彩模式。
 
-<!--Device-Print_ColorMode--><!--Device-Print_ColorMode-End-->
+<!--Device-enum Print_ColorMode--><!--Device-enum Print_ColorMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -220,9 +220,9 @@ enum Print_ColorMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| COLOR_MODE_MONOCHROME = 0 | 黑白模式。 |
-| COLOR_MODE_COLOR = 1 | 彩色模式。 |
-| COLOR_MODE_AUTO = 2 | 自动模式。 |
+| COLOR_MODE_MONOCHROME = 0 | 黑白模式。<br><!--Device-COLOR_MODE_MONOCHROME = 0--><!--Device-COLOR_MODE_MONOCHROME = 0-End--> |
+| COLOR_MODE_COLOR = 1 | 彩色模式。<br><!--Device-COLOR_MODE_COLOR = 1--><!--Device-COLOR_MODE_COLOR = 1-End--> |
+| COLOR_MODE_AUTO = 2 | 自动模式。<br><!--Device-COLOR_MODE_AUTO = 2--><!--Device-COLOR_MODE_AUTO = 2-End--> |
 
 ### Print_OrientationMode
 
@@ -234,7 +234,7 @@ enum Print_OrientationMode
 
 表示方向模式。
 
-<!--Device-Print_OrientationMode--><!--Device-Print_OrientationMode-End-->
+<!--Device-enum Print_OrientationMode--><!--Device-enum Print_OrientationMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -242,11 +242,11 @@ enum Print_OrientationMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ORIENTATION_MODE_PORTRAIT = 0 | 纵向模式。 |
-| ORIENTATION_MODE_LANDSCAPE = 1 | 横向模式。 |
-| ORIENTATION_MODE_REVERSE_LANDSCAPE = 2 | 反向横向模式。 |
-| ORIENTATION_MODE_REVERSE_PORTRAIT = 3 | 反向纵向模式。 |
-| ORIENTATION_MODE_NONE = 4 | 未指定。 |
+| ORIENTATION_MODE_PORTRAIT = 0 | 纵向模式。<br><!--Device-ORIENTATION_MODE_PORTRAIT = 0--><!--Device-ORIENTATION_MODE_PORTRAIT = 0-End--> |
+| ORIENTATION_MODE_LANDSCAPE = 1 | 横向模式。<br><!--Device-ORIENTATION_MODE_LANDSCAPE = 1--><!--Device-ORIENTATION_MODE_LANDSCAPE = 1-End--> |
+| ORIENTATION_MODE_REVERSE_LANDSCAPE = 2 | 反向横向模式。<br><!--Device-ORIENTATION_MODE_REVERSE_LANDSCAPE = 2--><!--Device-ORIENTATION_MODE_REVERSE_LANDSCAPE = 2-End--> |
+| ORIENTATION_MODE_REVERSE_PORTRAIT = 3 | 反向纵向模式。<br><!--Device-ORIENTATION_MODE_REVERSE_PORTRAIT = 3--><!--Device-ORIENTATION_MODE_REVERSE_PORTRAIT = 3-End--> |
+| ORIENTATION_MODE_NONE = 4 | 未指定。<br><!--Device-ORIENTATION_MODE_NONE = 4--><!--Device-ORIENTATION_MODE_NONE = 4-End--> |
 
 ### Print_Quality
 
@@ -258,7 +258,7 @@ enum Print_Quality
 
 表示打印质量。
 
-<!--Device-Print_Quality--><!--Device-Print_Quality-End-->
+<!--Device-enum Print_Quality--><!--Device-enum Print_Quality-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -266,9 +266,9 @@ enum Print_Quality
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRINT_QUALITY_DRAFT = 3 | 草稿质量模式。 |
-| PRINT_QUALITY_NORMAL = 4 | 正常质量模式。 |
-| PRINT_QUALITY_HIGH = 5 | 高质量模式。 |
+| PRINT_QUALITY_DRAFT = 3 | 草稿质量模式。<br><!--Device-PRINT_QUALITY_DRAFT = 3--><!--Device-PRINT_QUALITY_DRAFT = 3-End--> |
+| PRINT_QUALITY_NORMAL = 4 | 正常质量模式。<br><!--Device-PRINT_QUALITY_NORMAL = 4--><!--Device-PRINT_QUALITY_NORMAL = 4-End--> |
+| PRINT_QUALITY_HIGH = 5 | 高质量模式。<br><!--Device-PRINT_QUALITY_HIGH = 5--><!--Device-PRINT_QUALITY_HIGH = 5-End--> |
 
 ### Print_DocumentFormat
 
@@ -280,7 +280,7 @@ enum Print_DocumentFormat
 
 表示文档的MIME媒体类型。
 
-<!--Device-Print_DocumentFormat--><!--Device-Print_DocumentFormat-End-->
+<!--Device-enum Print_DocumentFormat--><!--Device-enum Print_DocumentFormat-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -288,11 +288,11 @@ enum Print_DocumentFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DOCUMENT_FORMAT_AUTO | MIME类型：application/octet-stream。 |
-| DOCUMENT_FORMAT_JPEG | MIME类型：image/jpeg。 |
-| DOCUMENT_FORMAT_PDF | MIME类型：application/pdf。 |
-| DOCUMENT_FORMAT_POSTSCRIPT | MIME类型：application/postscript。 |
-| DOCUMENT_FORMAT_TEXT | MIME类型：text/plain。 |
+| DOCUMENT_FORMAT_AUTO | MIME类型：application/octet-stream。<br><!--Device-DOCUMENT_FORMAT_AUTO--><!--Device-DOCUMENT_FORMAT_AUTO-End--> |
+| DOCUMENT_FORMAT_JPEG | MIME类型：image/jpeg。<br><!--Device-DOCUMENT_FORMAT_JPEG--><!--Device-DOCUMENT_FORMAT_JPEG-End--> |
+| DOCUMENT_FORMAT_PDF | MIME类型：application/pdf。<br><!--Device-DOCUMENT_FORMAT_PDF--><!--Device-DOCUMENT_FORMAT_PDF-End--> |
+| DOCUMENT_FORMAT_POSTSCRIPT | MIME类型：application/postscript。<br><!--Device-DOCUMENT_FORMAT_POSTSCRIPT--><!--Device-DOCUMENT_FORMAT_POSTSCRIPT-End--> |
+| DOCUMENT_FORMAT_TEXT | MIME类型：text/plain。<br><!--Device-DOCUMENT_FORMAT_TEXT--><!--Device-DOCUMENT_FORMAT_TEXT-End--> |
 
 ### Print_JobDocAdapterState
 
@@ -304,7 +304,7 @@ enum Print_JobDocAdapterState
 
 表示打印任务文档适配器状态。
 
-<!--Device-Print_JobDocAdapterState--><!--Device-Print_JobDocAdapterState-End-->
+<!--Device-enum Print_JobDocAdapterState--><!--Device-enum Print_JobDocAdapterState-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -312,13 +312,13 @@ enum Print_JobDocAdapterState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0 | 打印任务预览能力销毁。 |
-| PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1 | 打印任务成功。 |
-| PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2 | 打印任务失败。 |
-| PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3 | 打印任务取消。 |
-| PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4 | 打印任务阻塞。 |
-| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | 因取消导致的打印任务预览能力销毁。 |
-| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6 | 因启动导致的打印任务预览能力销毁。 |
+| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0 | 打印任务预览能力销毁。<br><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0--><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY = 0-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1 | 打印任务成功。<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_SUCCEED = 1-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2 | 打印任务失败。<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_FAIL = 2-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3 | 打印任务取消。<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_CANCEL = 3-End--> |
+| PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4 | 打印任务阻塞。<br><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4--><!--Device-PRINT_DOC_ADAPTER_PRINT_TASK_BLOCK = 4-End--> |
+| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | 因取消导致的打印任务预览能力销毁。<br><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5--><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5-End--> |
+| PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6 | 因启动导致的打印任务预览能力销毁。<br><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6--><!--Device-PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6-End--> |
 
 ### OH_Print_JobState
 
@@ -330,7 +330,7 @@ enum OH_Print_JobState
 
 表示打印任务状态。
 
-<!--Device-OH_Print_JobState--><!--Device-OH_Print_JobState-End-->
+<!--Device-enum OH_Print_JobState--><!--Device-enum OH_Print_JobState-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -338,10 +338,10 @@ enum OH_Print_JobState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_PRINT_JOB_SUCCEED = 0 | 打印任务成功。 |
-| OH_PRINT_JOB_FAIL = 1 | 打印任务失败。 |
-| OH_PRINT_JOB_CANCEL = 2 | 打印任务取消。 |
-| OH_PRINT_JOB_BLOCK = 3 | 打印任务阻塞。 |
+| OH_PRINT_JOB_SUCCEED = 0 | 打印任务成功。<br><!--Device-OH_PRINT_JOB_SUCCEED = 0--><!--Device-OH_PRINT_JOB_SUCCEED = 0-End--> |
+| OH_PRINT_JOB_FAIL = 1 | 打印任务失败。<br><!--Device-OH_PRINT_JOB_FAIL = 1--><!--Device-OH_PRINT_JOB_FAIL = 1-End--> |
+| OH_PRINT_JOB_CANCEL = 2 | 打印任务取消。<br><!--Device-OH_PRINT_JOB_CANCEL = 2--><!--Device-OH_PRINT_JOB_CANCEL = 2-End--> |
+| OH_PRINT_JOB_BLOCK = 3 | 打印任务阻塞。<br><!--Device-OH_PRINT_JOB_BLOCK = 3--><!--Device-OH_PRINT_JOB_BLOCK = 3-End--> |
 
 
 ## 函数说明

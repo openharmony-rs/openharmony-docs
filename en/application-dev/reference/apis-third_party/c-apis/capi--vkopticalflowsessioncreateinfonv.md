@@ -10,16 +10,16 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t width |  |
-| uint32_t height |  |
-| VkFormat imageFormat |  |
-| VkFormat flowVectorFormat |  |
-| VkFormat costFormat |  |
-| VkOpticalFlowGridSizeFlagsNV outputGridSize |  |
-| VkOpticalFlowGridSizeFlagsNV hintGridSize |  |
-| VkOpticalFlowPerformanceLevelNV performanceLevel |  |
-| VkOpticalFlowSessionCreateFlagsNV flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t width | <!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | <!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
+| VkFormat imageFormat | <!--Device-VkFormat imageFormat--><!--Device-VkFormat imageFormat-End--> |
+| VkFormat flowVectorFormat | <!--Device-VkFormat flowVectorFormat--><!--Device-VkFormat flowVectorFormat-End--> |
+| VkFormat costFormat | <!--Device-VkFormat costFormat--><!--Device-VkFormat costFormat-End--> |
+| VkOpticalFlowGridSizeFlagsNV outputGridSize | <!--Device-VkOpticalFlowGridSizeFlagsNV outputGridSize--><!--Device-VkOpticalFlowGridSizeFlagsNV outputGridSize-End--> |
+| VkOpticalFlowGridSizeFlagsNV hintGridSize | <!--Device-VkOpticalFlowGridSizeFlagsNV hintGridSize--><!--Device-VkOpticalFlowGridSizeFlagsNV hintGridSize-End--> |
+| VkOpticalFlowPerformanceLevelNV performanceLevel | <!--Device-VkOpticalFlowPerformanceLevelNV performanceLevel--><!--Device-VkOpticalFlowPerformanceLevelNV performanceLevel-End--> |
+| VkOpticalFlowSessionCreateFlagsNV flags | <!--Device-VkOpticalFlowSessionCreateFlagsNV flags--><!--Device-VkOpticalFlowSessionCreateFlagsNV flags-End--> |
 
 

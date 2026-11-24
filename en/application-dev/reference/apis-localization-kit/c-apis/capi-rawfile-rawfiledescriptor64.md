@@ -24,8 +24,8 @@ Provides the rawfile file descriptor information, including the file descriptor,
 
 | Name | Description |
 | -- | -- |
-| int fd | File descriptor of the rawfile. |
-| int64_t start | Start position of the rawfile in the HAP, in bytes. |
-| int64_t length | Length of the rawfile, in bytes. |
+| int fd | File descriptor of the rawfile.<br><!--Device-int fd--><!--Device-int fd-End--> |
+| int64_t start | Start position of the rawfile in the HAP, in bytes.<br><!--Device-int64_t start--><!--Device-int64_t start-End--> |
+| int64_t length | Length of the rawfile, in bytes.<br><!--Device-int64_t length--><!--Device-int64_t length-End--> |
 
 

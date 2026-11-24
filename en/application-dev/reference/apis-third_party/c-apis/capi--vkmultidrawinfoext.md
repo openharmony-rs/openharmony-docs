@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t firstVertex |  |
-| uint32_t vertexCount |  |
+| uint32_t firstVertex | <!--Device-uint32_t firstVertex--><!--Device-uint32_t firstVertex-End--> |
+| uint32_t vertexCount | <!--Device-uint32_t vertexCount--><!--Device-uint32_t vertexCount-End--> |
 
 

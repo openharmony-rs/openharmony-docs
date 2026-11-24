@@ -26,7 +26,7 @@ HDR元数据结构体定义。
 
 | 名称 | 描述 |
 | -- | -- |
-| [OHHDRMetadataKey](capi-external-window-h.md#ohhdrmetadatakey) key |  |
-| float value |  |
+| [OHHDRMetadataKey](capi-external-window-h.md#ohhdrmetadatakey) key | <!--Device-OHHDRMetadataKey key--><!--Device-OHHDRMetadataKey key-End--> |
+| float value | <!--Device-float value--><!--Device-float value-End--> |
 
 

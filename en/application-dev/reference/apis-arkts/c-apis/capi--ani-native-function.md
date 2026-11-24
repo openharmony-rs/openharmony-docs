@@ -12,8 +12,8 @@
 
 | Name | Description |
 | -- | -- |
-| const char *name |  |
-| const char *signature |  |
-| const void *pointer |  |
+| const char *name | <!--Device-const char *name--><!--Device-const char *name-End--> |
+| const char *signature | <!--Device-const char *signature--><!--Device-const char *signature-End--> |
+| const void *pointer | <!--Device-const void *pointer--><!--Device-const void *pointer-End--> |
 
 

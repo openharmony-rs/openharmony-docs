@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 image2DViewOf3D |  |
-| VkBool32 sampler2DViewOf3D |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 image2DViewOf3D | <!--Device-VkBool32 image2DViewOf3D--><!--Device-VkBool32 image2DViewOf3D-End--> |
+| VkBool32 sampler2DViewOf3D | <!--Device-VkBool32 sampler2DViewOf3D--><!--Device-VkBool32 sampler2DViewOf3D-End--> |
 
 

@@ -60,7 +60,7 @@ enum ArkUI_WaterFlowLayoutMode
 
 定义WaterFlow组件布局模式枚举值。
 
-<!--Device-ArkUI_WaterFlowLayoutMode--><!--Device-ArkUI_WaterFlowLayoutMode-End-->
+<!--Device-enum ArkUI_WaterFlowLayoutMode--><!--Device-enum ArkUI_WaterFlowLayoutMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,8 +68,8 @@ enum ArkUI_WaterFlowLayoutMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | Layout from top to bottom. In scenarios where column switching occurs, the layout starts from the first water flow item to the currently displayed water flow item. |
-| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW | Sliding window layout. In scenarios where column switching occurs, only the range of water flow items currently on display is re-laid out. As the user scrolls down with their finger, water flow items that enter the display range from above are subsequently laid out. |
+| ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | Layout from top to bottom. In scenarios where column switching occurs, the layout starts from the first water flow item to the currently displayed water flow item.<br><!--Device-ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0--><!--Device-ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0-End--> |
+| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW | Sliding window layout. In scenarios where column switching occurs, only the range of water flow items currently on display is re-laid out. As the user scrolls down with their finger, water flow items that enter the display range from above are subsequently laid out.<br><!--Device-ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW--><!--Device-ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW-End--> |
 
 
 ## 函数说明

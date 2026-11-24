@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType                    sType |  |
-| [const struct VkBaseInStructure*](capi--vkbaseinstructure.md)    pNext |  |
+| VkStructureType                    sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| [const struct VkBaseInStructure*](capi--vkbaseinstructure.md)    pNext | <!--Device-const struct VkBaseInStructure* pNext--><!--Device-const struct VkBaseInStructure* pNext-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t shaderCount |  |
-| const VkShaderEXT* pShaders |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t shaderCount | <!--Device-uint32_t shaderCount--><!--Device-uint32_t shaderCount-End--> |
+| const VkShaderEXT* pShaders | <!--Device-const VkShaderEXT* pShaders--><!--Device-const VkShaderEXT* pShaders-End--> |
 
 

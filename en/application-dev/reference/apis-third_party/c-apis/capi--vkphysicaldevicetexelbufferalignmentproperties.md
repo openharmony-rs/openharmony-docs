@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkDeviceSize storageTexelBufferOffsetAlignmentBytes |  |
-| VkBool32 storageTexelBufferOffsetSingleTexelAlignment |  |
-| VkDeviceSize uniformTexelBufferOffsetAlignmentBytes |  |
-| VkBool32 uniformTexelBufferOffsetSingleTexelAlignment |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkDeviceSize storageTexelBufferOffsetAlignmentBytes | <!--Device-VkDeviceSize storageTexelBufferOffsetAlignmentBytes--><!--Device-VkDeviceSize storageTexelBufferOffsetAlignmentBytes-End--> |
+| VkBool32 storageTexelBufferOffsetSingleTexelAlignment | <!--Device-VkBool32 storageTexelBufferOffsetSingleTexelAlignment--><!--Device-VkBool32 storageTexelBufferOffsetSingleTexelAlignment-End--> |
+| VkDeviceSize uniformTexelBufferOffsetAlignmentBytes | <!--Device-VkDeviceSize uniformTexelBufferOffsetAlignmentBytes--><!--Device-VkDeviceSize uniformTexelBufferOffsetAlignmentBytes-End--> |
+| VkBool32 uniformTexelBufferOffsetSingleTexelAlignment | <!--Device-VkBool32 uniformTexelBufferOffsetSingleTexelAlignment--><!--Device-VkBool32 uniformTexelBufferOffsetSingleTexelAlignment-End--> |
 
 

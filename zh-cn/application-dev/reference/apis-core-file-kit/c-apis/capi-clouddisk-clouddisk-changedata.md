@@ -24,13 +24,13 @@ typedef struct CloudDisk_ChangeData {...} CloudDisk_ChangeData
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t updateSequenceNumber{0} | 变更事件的更新序列号。每次文件更改时单调递增加1，用于增量变更查询。范围：[0, 2^64 - 1]。<br>**起始版本：** 21 |
-| CloudDisk_FileIdInfo fileId | 全局唯一的文件ID。在文件的生命周期内保持不变。<br>**起始版本：** 21 |
-| CloudDisk_FileIdInfo parentFileId | 文件或目录所属父目录的唯一ID。<br>**起始版本：** 21 |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根路径下的文件，相对于同步根路径的相对路径。<br>**起始版本：** 21 |
-| [CloudDisk_OperationType](capi-oh-cloud-disk-manager-h.md#clouddisk_operationtype) operationType | 此文件的变更操作类型（如：创建、删除、移动等）。<br>**起始版本：** 21 |
-| uint64_t size{0} | 文件大小，单位：Byte。<br>**起始版本：** 21 |
-| uint64_t mtime{0} | 文件修改时间，单位：ms。<br>**起始版本：** 21 |
-| uint64_t timeStamp{0} | 变更事件发生时间，单位：ms。<br>**起始版本：** 21 |
+| uint64_t updateSequenceNumber{0} | 变更事件的更新序列号。每次文件更改时单调递增加1，用于增量变更查询。范围：[0, 2^64 - 1]。<br>**起始版本：** 21<br><!--Device-uint64_t updateSequenceNumber{0}--><!--Device-uint64_t updateSequenceNumber{0}-End--> |
+| CloudDisk_FileIdInfo fileId | 全局唯一的文件ID。在文件的生命周期内保持不变。<br>**起始版本：** 21<br><!--Device-CloudDisk_FileIdInfo fileId--><!--Device-CloudDisk_FileIdInfo fileId-End--> |
+| CloudDisk_FileIdInfo parentFileId | 文件或目录所属父目录的唯一ID。<br>**起始版本：** 21<br><!--Device-CloudDisk_FileIdInfo parentFileId--><!--Device-CloudDisk_FileIdInfo parentFileId-End--> |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根路径下的文件，相对于同步根路径的相对路径。<br>**起始版本：** 21<br><!--Device-CloudDisk_PathInfo relativePathInfo--><!--Device-CloudDisk_PathInfo relativePathInfo-End--> |
+| [CloudDisk_OperationType](capi-oh-cloud-disk-manager-h.md#clouddisk_operationtype) operationType | 此文件的变更操作类型（如：创建、删除、移动等）。<br>**起始版本：** 21<br><!--Device-CloudDisk_OperationType operationType--><!--Device-CloudDisk_OperationType operationType-End--> |
+| uint64_t size{0} | 文件大小，单位：Byte。<br>**起始版本：** 21<br><!--Device-uint64_t size{0}--><!--Device-uint64_t size{0}-End--> |
+| uint64_t mtime{0} | 文件修改时间，单位：ms。<br>**起始版本：** 21<br><!--Device-uint64_t mtime{0}--><!--Device-uint64_t mtime{0}-End--> |
+| uint64_t timeStamp{0} | 变更事件发生时间，单位：ms。<br>**起始版本：** 21<br><!--Device-uint64_t timeStamp{0}--><!--Device-uint64_t timeStamp{0}-End--> |
 
 

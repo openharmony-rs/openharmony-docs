@@ -67,7 +67,7 @@ enum anonymous0
 
 Enumerates the pixel map alpha types.
 
-<!--Device-anonymous0--><!--Device-anonymous0-End-->
+<!--Device-enum anonymous0--><!--Device-enum anonymous0-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -75,10 +75,10 @@ Enumerates the pixel map alpha types.
 
 | Enum item | Description |
 | -- | -- |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0 | Unknown format. |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1 | Opaque format. |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2 | Premultiplied format. |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3 | Unpremultiplied format. |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0 | Unknown format.<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0-End--> |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1 | Opaque format.<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1-End--> |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2 | Premultiplied format.<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2-End--> |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3 | Unpremultiplied format.<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3-End--> |
 
 ### anonymous1
 
@@ -90,7 +90,7 @@ enum anonymous1
 
 Enumerates the pixel map editing types.
 
-<!--Device-anonymous1--><!--Device-anonymous1-End-->
+<!--Device-enum anonymous1--><!--Device-enum anonymous1-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -98,8 +98,8 @@ Enumerates the pixel map editing types.
 
 | Enum item | Description |
 | -- | -- |
-| OHOS_PIXEL_MAP_READ_ONLY = 0 | Read-only. |
-| OHOS_PIXEL_MAP_EDITABLE = 1 | Editable. |
+| OHOS_PIXEL_MAP_READ_ONLY = 0 | Read-only.<br><!--Device-OHOS_PIXEL_MAP_READ_ONLY = 0--><!--Device-OHOS_PIXEL_MAP_READ_ONLY = 0-End--> |
+| OHOS_PIXEL_MAP_EDITABLE = 1 | Editable.<br><!--Device-OHOS_PIXEL_MAP_EDITABLE = 1--><!--Device-OHOS_PIXEL_MAP_EDITABLE = 1-End--> |
 
 ### OH_PixelMap_AntiAliasingLevel
 
@@ -111,7 +111,7 @@ enum OH_PixelMap_AntiAliasingLevel
 
 Enumerates the anti-aliasing level.
 
-<!--Device-OH_PixelMap_AntiAliasingLevel--><!--Device-OH_PixelMap_AntiAliasingLevel-End-->
+<!--Device-enum OH_PixelMap_AntiAliasingLevel--><!--Device-enum OH_PixelMap_AntiAliasingLevel-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -119,10 +119,10 @@ Enumerates the anti-aliasing level.
 
 | Enum item | Description |
 | -- | -- |
-| OH_PixelMap_AntiAliasing_NONE = 0 | Nearest-neighbor interpolation. |
-| OH_PixelMap_AntiAliasing_LOW = 1 | Bilinear interpolation, without mipmap linear filtering. |
-| OH_PixelMap_AntiAliasing_MEDIUM = 2 | Bilinear interpolation, with mipmap linear filtering. |
-| OH_PixelMap_AntiAliasing_HIGH = 3 | Cubic interpolation. |
+| OH_PixelMap_AntiAliasing_NONE = 0 | Nearest-neighbor interpolation.<br><!--Device-OH_PixelMap_AntiAliasing_NONE = 0--><!--Device-OH_PixelMap_AntiAliasing_NONE = 0-End--> |
+| OH_PixelMap_AntiAliasing_LOW = 1 | Bilinear interpolation, without mipmap linear filtering.<br><!--Device-OH_PixelMap_AntiAliasing_LOW = 1--><!--Device-OH_PixelMap_AntiAliasing_LOW = 1-End--> |
+| OH_PixelMap_AntiAliasing_MEDIUM = 2 | Bilinear interpolation, with mipmap linear filtering.<br><!--Device-OH_PixelMap_AntiAliasing_MEDIUM = 2--><!--Device-OH_PixelMap_AntiAliasing_MEDIUM = 2-End--> |
+| OH_PixelMap_AntiAliasing_HIGH = 3 | Cubic interpolation.<br><!--Device-OH_PixelMap_AntiAliasing_HIGH = 3--><!--Device-OH_PixelMap_AntiAliasing_HIGH = 3-End--> |
 
 
 ## Function description

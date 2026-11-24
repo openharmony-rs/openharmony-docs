@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t maxPushDescriptors |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t maxPushDescriptors | <!--Device-uint32_t maxPushDescriptors--><!--Device-uint32_t maxPushDescriptors-End--> |
 
 

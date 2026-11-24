@@ -52,7 +52,7 @@ enum CryptoMac_ParamType
 
 定义MAC算法参数类型。
 
-<!--Device-CryptoMac_ParamType--><!--Device-CryptoMac_ParamType-End-->
+<!--Device-enum CryptoMac_ParamType--><!--Device-enum CryptoMac_ParamType-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -60,8 +60,8 @@ enum CryptoMac_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_MAC_DIGEST_NAME_STR = 0 | HMAC的消息摘要算法名称，通过[OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam)设置。 取值："SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"、"SM3"、"MD5"。 从API version 26.0.0开始支持"SHA3-256"、"SHA3-384"、"SHA3-512"。<br>**起始版本：** 20 |
-| CRYPTO_MAC_CIPHER_NAME_STR = 1 | CMAC的对称加密算法名称，通过[OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam)设置。 取值："AES128"、"AES256"。<br>**起始版本：** 20 |
+| CRYPTO_MAC_DIGEST_NAME_STR = 0 | HMAC的消息摘要算法名称，通过[OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam)设置。 取值："SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"、"SM3"、"MD5"。 从API version 26.0.0开始支持"SHA3-256"、"SHA3-384"、"SHA3-512"。<br>**起始版本：** 20<br><!--Device-CRYPTO_MAC_DIGEST_NAME_STR = 0--><!--Device-CRYPTO_MAC_DIGEST_NAME_STR = 0-End--> |
+| CRYPTO_MAC_CIPHER_NAME_STR = 1 | CMAC的对称加密算法名称，通过[OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam)设置。 取值："AES128"、"AES256"。<br>**起始版本：** 20<br><!--Device-CRYPTO_MAC_CIPHER_NAME_STR = 1--><!--Device-CRYPTO_MAC_CIPHER_NAME_STR = 1-End--> |
 
 
 ## 函数说明

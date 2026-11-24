@@ -24,11 +24,11 @@ typedef struct AnnualTimeZoneRule {...} AnnualTimeZoneRule
 
 | 名称 | 描述 |
 | -- | -- |
-| char* name | 时区规则的名称。 |
-| int32_t startYear | 时区规则生效的起始年份。 |
-| int32_t endYear | 时区规则生效的终止年份。 |
-| int32_t rawOffset | 时区的原始偏移量，单位为毫秒（ms）。 |
-| int32_t dstSavings | 夏令时的偏移量，单位为毫秒（ms）。 |
-| [DateTimeRule](capi-i18n-datetimerule.md) dateTimeRule | 时间日期规则。 |
+| char* name | 时区规则的名称。<br><!--Device-char* name--><!--Device-char* name-End--> |
+| int32_t startYear | 时区规则生效的起始年份。<br><!--Device-int32_t startYear--><!--Device-int32_t startYear-End--> |
+| int32_t endYear | 时区规则生效的终止年份。<br><!--Device-int32_t endYear--><!--Device-int32_t endYear-End--> |
+| int32_t rawOffset | 时区的原始偏移量，单位为毫秒（ms）。<br><!--Device-int32_t rawOffset--><!--Device-int32_t rawOffset-End--> |
+| int32_t dstSavings | 夏令时的偏移量，单位为毫秒（ms）。<br><!--Device-int32_t dstSavings--><!--Device-int32_t dstSavings-End--> |
+| [DateTimeRule](capi-i18n-datetimerule.md) dateTimeRule | 时间日期规则。<br><!--Device-DateTimeRule dateTimeRule--><!--Device-DateTimeRule dateTimeRule-End--> |
 
 

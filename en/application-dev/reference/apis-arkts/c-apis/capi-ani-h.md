@@ -63,13 +63,13 @@ Defines native api of ArkTS 1.2 native module.
 
 | Name | Description |
 | -- | -- |
-| typedef uint8_t ani_boolean | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI |
-| typedef uint16_t ani_char | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI |
-| typedef int8_t ani_byte | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI |
-| typedef int16_t ani_short | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI |
-| typedef int32_t ani_int | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI |
-| typedef float ani_float | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI |
-| typedef double ani_double | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI |
+| typedef uint8_t ani_boolean | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI<br><!--Device-typedef uint8_t ani_boolean--><!--Device-typedef uint8_t ani_boolean-End--> |
+| typedef uint16_t ani_char | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI<br><!--Device-typedef uint16_t ani_char--><!--Device-typedef uint16_t ani_char-End--> |
+| typedef int8_t ani_byte | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI<br><!--Device-typedef int8_t ani_byte--><!--Device-typedef int8_t ani_byte-End--> |
+| typedef int16_t ani_short | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI<br><!--Device-typedef int16_t ani_short--><!--Device-typedef int16_t ani_short-End--> |
+| typedef int32_t ani_int | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI<br><!--Device-typedef int32_t ani_int--><!--Device-typedef int32_t ani_int-End--> |
+| typedef float ani_float | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI<br><!--Device-typedef float ani_float--><!--Device-typedef float ani_float-End--> |
+| typedef double ani_double | Defines native api of ArkTS 1.2 native module.<br>**Since**: 23<br>**System capability**: SystemCapability.ArkCompiler.ANI<br><!--Device-typedef double ani_double--><!--Device-typedef double ani_double-End--> |
 
 ## Enum type description
 
@@ -121,7 +121,7 @@ enum ani_status
 
 Defines native api of ArkTS 1.2 native module.
 
-<!--Device-ani_status--><!--Device-ani_status-End-->
+<!--Device-enum ani_status--><!--Device-enum ani_status-End-->
 
 **System capability**: SystemCapability.ArkCompiler.ANI
 
@@ -129,20 +129,20 @@ Defines native api of ArkTS 1.2 native module.
 
 | Enum item | Description |
 | -- | -- |
-| ANI_OK |  |
-| ANI_ERROR |  |
-| ANI_INVALID_ARGS |  |
-| ANI_INVALID_TYPE |  |
-| ANI_INVALID_DESCRIPTOR |  |
-| ANI_INCORRECT_REF |  |
-| ANI_PENDING_ERROR |  |
-| ANI_NOT_FOUND |  |
-| ANI_ALREADY_BINDED |  |
-| ANI_OUT_OF_REF |  |
-| ANI_OUT_OF_MEMORY |  |
-| ANI_OUT_OF_RANGE |  |
-| ANI_BUFFER_TO_SMALL |  |
-| ANI_INVALID_VERSION |  |
-| ANI_AMBIGUOUS |  |
+| ANI_OK | <!--Device-ANI_OK--><!--Device-ANI_OK-End--> |
+| ANI_ERROR | <!--Device-ANI_ERROR--><!--Device-ANI_ERROR-End--> |
+| ANI_INVALID_ARGS | <!--Device-ANI_INVALID_ARGS--><!--Device-ANI_INVALID_ARGS-End--> |
+| ANI_INVALID_TYPE | <!--Device-ANI_INVALID_TYPE--><!--Device-ANI_INVALID_TYPE-End--> |
+| ANI_INVALID_DESCRIPTOR | <!--Device-ANI_INVALID_DESCRIPTOR--><!--Device-ANI_INVALID_DESCRIPTOR-End--> |
+| ANI_INCORRECT_REF | <!--Device-ANI_INCORRECT_REF--><!--Device-ANI_INCORRECT_REF-End--> |
+| ANI_PENDING_ERROR | <!--Device-ANI_PENDING_ERROR--><!--Device-ANI_PENDING_ERROR-End--> |
+| ANI_NOT_FOUND | <!--Device-ANI_NOT_FOUND--><!--Device-ANI_NOT_FOUND-End--> |
+| ANI_ALREADY_BINDED | <!--Device-ANI_ALREADY_BINDED--><!--Device-ANI_ALREADY_BINDED-End--> |
+| ANI_OUT_OF_REF | <!--Device-ANI_OUT_OF_REF--><!--Device-ANI_OUT_OF_REF-End--> |
+| ANI_OUT_OF_MEMORY | <!--Device-ANI_OUT_OF_MEMORY--><!--Device-ANI_OUT_OF_MEMORY-End--> |
+| ANI_OUT_OF_RANGE | <!--Device-ANI_OUT_OF_RANGE--><!--Device-ANI_OUT_OF_RANGE-End--> |
+| ANI_BUFFER_TO_SMALL | <!--Device-ANI_BUFFER_TO_SMALL--><!--Device-ANI_BUFFER_TO_SMALL-End--> |
+| ANI_INVALID_VERSION | <!--Device-ANI_INVALID_VERSION--><!--Device-ANI_INVALID_VERSION-End--> |
+| ANI_AMBIGUOUS | <!--Device-ANI_AMBIGUOUS--><!--Device-ANI_AMBIGUOUS-End--> |
 
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-定义HTTP请求模块的接口。
+定义HTTP请求模块的C接口。
 
 **库：** libnet_http.so
 

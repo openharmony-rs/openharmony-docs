@@ -24,7 +24,7 @@ Defines the struct of key information.
 
 | Name | Description |
 | -- | -- |
-| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | Key alias. |
-| [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the key parameter set. |
+| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | Key alias.<br><!--Device-struct OH_Huks_Blob alias--><!--Device-struct OH_Huks_Blob alias-End--> |
+| [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the key parameter set.<br><!--Device-struct OH_Huks_ParamSet *paramSet--><!--Device-struct OH_Huks_ParamSet *paramSet-End--> |
 
 

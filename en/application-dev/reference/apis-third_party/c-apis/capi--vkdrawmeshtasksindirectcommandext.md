@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t groupCountX |  |
-| uint32_t groupCountY |  |
-| uint32_t groupCountZ |  |
+| uint32_t groupCountX | <!--Device-uint32_t groupCountX--><!--Device-uint32_t groupCountX-End--> |
+| uint32_t groupCountY | <!--Device-uint32_t groupCountY--><!--Device-uint32_t groupCountY-End--> |
+| uint32_t groupCountZ | <!--Device-uint32_t groupCountZ--><!--Device-uint32_t groupCountZ-End--> |
 
 

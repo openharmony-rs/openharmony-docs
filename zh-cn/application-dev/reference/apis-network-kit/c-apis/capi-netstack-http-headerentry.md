@@ -24,8 +24,8 @@ typedef struct Http_HeaderEntry {...} Http_HeaderEntry
 
 | 名称 | 描述 |
 | -- | -- |
-| char *key | 请求或者响应的标头中的键。 |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md). |
-| [struct Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | 链式存储。指向下一个Http_HeaderEntry。 |
+| char *key | 请求或者响应的标头中的键。<br><!--Device-char *key--><!--Device-char *key-End--> |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | 请求或者响应的标头中的键对应的值，参考[Http_HeaderValue](capi-netstack-http-headervalue.md)。<br><!--Device-Http_HeaderValue *value--><!--Device-Http_HeaderValue *value-End--> |
+| [struct Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | 链式存储。指向下一个Http_HeaderEntry。<br><!--Device-struct Http_HeaderEntry *next--><!--Device-struct Http_HeaderEntry *next-End--> |
 
 

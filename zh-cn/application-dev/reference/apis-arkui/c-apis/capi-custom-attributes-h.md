@@ -34,7 +34,7 @@ enum ArkUI_NodeCustomEventType
 
 定义自定义组件事件类型。
 
-<!--Device-ArkUI_NodeCustomEventType--><!--Device-ArkUI_NodeCustomEventType-End-->
+<!--Device-enum ArkUI_NodeCustomEventType--><!--Device-enum ArkUI_NodeCustomEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,12 +42,12 @@ enum ArkUI_NodeCustomEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | 自定义测量类型。<br>**起始版本：** 12 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | 自定义布局类型。<br>**起始版本：** 12 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | 自定义内容层绘制类型。<br>**起始版本：** 12 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | 自定义前景绘制类型。<br>**起始版本：** 12 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | 自定义浮层绘制类型。<br>**起始版本：** 12 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | 自定义内容层前景绘制类型。<br>**起始版本：** 20 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | 自定义内容层背景绘制类型。<br>**起始版本：** 20 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | 自定义测量类型。<br>**起始版本：** 12<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | 自定义布局类型。<br>**起始版本：** 12<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | 自定义内容层绘制类型。<br>**起始版本：** 12<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | 自定义前景绘制类型。<br>**起始版本：** 12<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | 自定义浮层绘制类型。<br>**起始版本：** 12<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | 自定义内容层前景绘制类型。<br>**起始版本：** 20<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5-End--> |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | 自定义内容层背景绘制类型。<br>**起始版本：** 20<br><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6--><!--Device-ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6-End--> |
 
 

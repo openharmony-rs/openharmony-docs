@@ -4,6 +4,8 @@
 
 This file declares the capabilities of runs, such as obtaining the typographic boundary and drawing.
 
+**File to Include**: <native_drawing/drawing_text_run.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing

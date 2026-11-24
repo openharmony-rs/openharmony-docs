@@ -24,8 +24,8 @@ typedef struct OH_Camera_PhysicalAperture {...} OH_Camera_PhysicalAperture
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) zoomRange | 变焦范围。<br>**起始版本：** 24 |
-| float* apertures | 支持的光圈值数组。<br>**起始版本：** 24 |
-| size_t apertureCount | 光圈值数量。<br>**起始版本：** 24 |
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) zoomRange | 变焦范围。<br>**起始版本：** 24<br><!--Device-OH_Camera_ZoomRange zoomRange--><!--Device-OH_Camera_ZoomRange zoomRange-End--> |
+| float* apertures | 支持的光圈值数组。<br>**起始版本：** 24<br><!--Device-float* apertures--><!--Device-float* apertures-End--> |
+| size_t apertureCount | 光圈值数量。<br>**起始版本：** 24<br><!--Device-size_t apertureCount--><!--Device-size_t apertureCount-End--> |
 
 

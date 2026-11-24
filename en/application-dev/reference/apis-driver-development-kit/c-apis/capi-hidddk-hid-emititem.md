@@ -24,8 +24,8 @@ Defines the struct for the information of a HID event, including the event type,
 
 | Name | Description |
 | -- | -- |
-| uint16_t type | HID event type, which is used to identify the event type, such as key press and movement. For details, see the HID protocol specifications. |
-| uint16_t code | HID event code, which is used to identify a specific HID event. For details, see the HID protocol specifications. |
-| uint32_t value | HID event value, which indicates the parameters or status of the event. The specific meaning depends on the event type and code. For example, for a key press event, this parameter indicates the key status; for a movement event, this parameter indicates the movement distance. |
+| uint16_t type | HID event type, which is used to identify the event type, such as key press and movement. For details, see the HID protocol specifications.<br><!--Device-uint16_t type--><!--Device-uint16_t type-End--> |
+| uint16_t code | HID event code, which is used to identify a specific HID event. For details, see the HID protocol specifications.<br><!--Device-uint16_t code--><!--Device-uint16_t code-End--> |
+| uint32_t value | HID event value, which indicates the parameters or status of the event. The specific meaning depends on the event type and code. For example, for a key press event, this parameter indicates the key status; for a movement event, this parameter indicates the movement distance.<br><!--Device-uint32_t value--><!--Device-uint32_t value-End--> |
 
 

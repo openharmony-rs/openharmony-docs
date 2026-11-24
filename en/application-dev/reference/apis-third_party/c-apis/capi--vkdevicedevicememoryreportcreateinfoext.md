@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDeviceMemoryReportFlagsEXT flags |  |
-| PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback |  |
-| void* pUserData |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDeviceMemoryReportFlagsEXT flags | <!--Device-VkDeviceMemoryReportFlagsEXT flags--><!--Device-VkDeviceMemoryReportFlagsEXT flags-End--> |
+| PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback | <!--Device-PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback--><!--Device-PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback-End--> |
+| void* pUserData | <!--Device-void* pUserData--><!--Device-void* pUserData-End--> |
 
 

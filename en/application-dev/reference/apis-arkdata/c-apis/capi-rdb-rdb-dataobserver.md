@@ -24,7 +24,7 @@ Indicates the observer of data.
 
 | Name | Description |
 | -- | -- |
-| void *context | The context of data observer. |
-| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) callback | The callback of data observer. |
+| void *context | The context of data observer.<br><!--Device-void *context--><!--Device-void *context-End--> |
+| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) callback | The callback of data observer.<br><!--Device-Rdb_SubscribeCallback callback--><!--Device-Rdb_SubscribeCallback callback-End--> |
 
 

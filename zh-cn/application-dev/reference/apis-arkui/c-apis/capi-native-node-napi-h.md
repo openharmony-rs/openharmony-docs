@@ -43,6 +43,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)](#oh_arkui_initmoduleforarktsenv) | 初始化指定上下文环境的ArkUI相关接口。该函数禁止在非UI线程中调用，否则程序将主动abort。 |
 | [void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)](#oh_arkui_notifyarktsenvdestroy) | 通知指定的上下文环境已销毁。该函数禁止在非UI线程中调用，否则程序将主动abort。 |
 | [ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, bool enabled, ArkUI_RawInputEventType type)](#oh_arkui_enableeventpassthrough) | 启用或禁用事件透传。事件透传表示在事件分发过程中，事件直接传递给组件而不进行重采样。 |
+| [ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)](#oh_arkui_enabletouchpadevent) | 设置应用是否上报触控板事件。 |
 
 ## 函数说明
 
@@ -730,5 +731,33 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 | 类型 | 说明 |
 | -- | -- |
 | ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) uiContext对象无效 。 |
+
+### OH_ArkUI_EnableTouchPadEvent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)
+```
+
+**描述：**
+
+设置应用是否上报触控板事件。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| bool enabled | [in] 是否使能应用级触控板事件上报。true表示使能，false表示禁用，默认值为false。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode) C API未初始化。</li> </ul> |
 
 

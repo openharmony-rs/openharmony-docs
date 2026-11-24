@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkVideoSessionParametersKHR videoSessionParameters |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkVideoSessionParametersKHR videoSessionParameters | <!--Device-VkVideoSessionParametersKHR videoSessionParameters--><!--Device-VkVideoSessionParametersKHR videoSessionParameters-End--> |
 
 

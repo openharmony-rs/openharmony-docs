@@ -24,14 +24,14 @@ struct UsbInterfaceDescriptor {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t bLength | 该描述符的大小，单位：Byte。 |
-| uint8_t bDescriptorType | 描述符类型。 |
-| uint8_t bInterfaceNumber | 接口编号。 |
-| uint8_t bAlternateSetting | 用来选择该接口的备用设置的值。 |
-| uint8_t bNumEndpoints | 该接口所使用的端点数量（不包括端点零）。 |
-| uint8_t bInterfaceClass | 由USB标准化组织（USB-IF）分配的接口类代码。 |
-| uint8_t bInterfaceSubClass | 由USB标准化组织（USB-IF）分配的子类代码，其值由bInterfaceClass的值限定。 |
-| uint8_t bInterfaceProtocol | 由USB标准化组织（USB-IF）分配的协议代码，其值由bInterfaceClass和bInterfaceSubClass的值限定。 |
-| uint8_t iInterface | 描述该接口的字符串描述符的索引。 |
+| uint8_t bLength | 该描述符的大小，单位：Byte。<br><!--Device-uint8_t bLength--><!--Device-uint8_t bLength-End--> |
+| uint8_t bDescriptorType | 描述符类型。<br><!--Device-uint8_t bDescriptorType--><!--Device-uint8_t bDescriptorType-End--> |
+| uint8_t bInterfaceNumber | 接口编号。<br><!--Device-uint8_t bInterfaceNumber--><!--Device-uint8_t bInterfaceNumber-End--> |
+| uint8_t bAlternateSetting | 用来选择该接口的备用设置的值。<br><!--Device-uint8_t bAlternateSetting--><!--Device-uint8_t bAlternateSetting-End--> |
+| uint8_t bNumEndpoints | 该接口所使用的端点数量（不包括端点零）。<br><!--Device-uint8_t bNumEndpoints--><!--Device-uint8_t bNumEndpoints-End--> |
+| uint8_t bInterfaceClass | 由USB标准化组织（USB-IF）分配的接口类代码。<br><!--Device-uint8_t bInterfaceClass--><!--Device-uint8_t bInterfaceClass-End--> |
+| uint8_t bInterfaceSubClass | 由USB标准化组织（USB-IF）分配的子类代码，其值由bInterfaceClass的值限定。<br><!--Device-uint8_t bInterfaceSubClass--><!--Device-uint8_t bInterfaceSubClass-End--> |
+| uint8_t bInterfaceProtocol | 由USB标准化组织（USB-IF）分配的协议代码，其值由bInterfaceClass和bInterfaceSubClass的值限定。<br><!--Device-uint8_t bInterfaceProtocol--><!--Device-uint8_t bInterfaceProtocol-End--> |
+| uint8_t iInterface | 描述该接口的字符串描述符的索引。<br><!--Device-uint8_t iInterface--><!--Device-uint8_t iInterface-End--> |
 
 

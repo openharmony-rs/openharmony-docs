@@ -24,8 +24,8 @@ typedef struct Camera_Location {...} Camera_Location
 
 | 名称 | 描述 |
 | -- | -- |
-| double latitude | 纬度。 |
-| double longitude | 经度。 |
-| double altitude | 海拔高度，单位为米。 |
+| double latitude | 纬度。<br><!--Device-double latitude--><!--Device-double latitude-End--> |
+| double longitude | 经度。<br><!--Device-double longitude--><!--Device-double longitude-End--> |
+| double altitude | 海拔高度，单位为米。<br><!--Device-double altitude--><!--Device-double altitude-End--> |
 
 

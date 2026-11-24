@@ -24,7 +24,7 @@ The struct describes the capture start information.
 
 | Name | Description |
 | -- | -- |
-| int32_t captureId | Capture ID. |
-| int64_t time | Estimated duration when the sensor captures frames at the bottom layer in a single capture. If **–1** is reported, there is no estimated duration. |
+| int32_t captureId | Capture ID.<br><!--Device-int32_t captureId--><!--Device-int32_t captureId-End--> |
+| int64_t time | Estimated duration when the sensor captures frames at the bottom layer in a single capture. If **–1** is reported, there is no estimated duration.<br><!--Device-int64_t time--><!--Device-int64_t time-End--> |
 
 

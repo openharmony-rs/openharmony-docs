@@ -51,17 +51,17 @@ enum OH_AVTranscoder_State
 
 Enumerates the transcoding states.
 
-<!--Device-OH_AVTranscoder_State--><!--Device-OH_AVTranscoder_State-End-->
+<!--Device-enum OH_AVTranscoder_State--><!--Device-enum OH_AVTranscoder_State-End-->
 
 **Since**: 20
 
 | Enum item | Description |
 | -- | -- |
-| AVTRANSCODER_PREPARED = 1 | The transcoding process is prepared and ready to start. |
-| AVTRANSCODER_STARTED = 2 | The transcoding process has started. |
-| AVTRANSCODER_PAUSED = 3 | The transcoding process is paused. |
-| AVTRANSCODER_CANCELLED = 4 | The transcoding process has been canceled. |
-| AVTRANSCODER_COMPLETED = 5 | The transcoding process is completed. |
+| AVTRANSCODER_PREPARED = 1 | The transcoding process is prepared and ready to start.<br><!--Device-AVTRANSCODER_PREPARED = 1--><!--Device-AVTRANSCODER_PREPARED = 1-End--> |
+| AVTRANSCODER_STARTED = 2 | The transcoding process has started.<br><!--Device-AVTRANSCODER_STARTED = 2--><!--Device-AVTRANSCODER_STARTED = 2-End--> |
+| AVTRANSCODER_PAUSED = 3 | The transcoding process is paused.<br><!--Device-AVTRANSCODER_PAUSED = 3--><!--Device-AVTRANSCODER_PAUSED = 3-End--> |
+| AVTRANSCODER_CANCELLED = 4 | The transcoding process has been canceled.<br><!--Device-AVTRANSCODER_CANCELLED = 4--><!--Device-AVTRANSCODER_CANCELLED = 4-End--> |
+| AVTRANSCODER_COMPLETED = 5 | The transcoding process is completed.<br><!--Device-AVTRANSCODER_COMPLETED = 5--><!--Device-AVTRANSCODER_COMPLETED = 5-End--> |
 
 
 ## Function description

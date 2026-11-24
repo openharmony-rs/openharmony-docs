@@ -24,7 +24,7 @@ Describes the size and handle of the ION memory.
 
 | Name | Description |
 | -- | -- |
-| int ion_share_fd | File descriptor for the shared ion memory. |
-| uint32_t ion_size | Size of the ion memory. |
+| int ion_share_fd | File descriptor for the shared ion memory.<br><!--Device-int ion_share_fd--><!--Device-int ion_share_fd-End--> |
+| uint32_t ion_size | Size of the ion memory.<br><!--Device-uint32_t ion_size--><!--Device-uint32_t ion_size-End--> |
 
 

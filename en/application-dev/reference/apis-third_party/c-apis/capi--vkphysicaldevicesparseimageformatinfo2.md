@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkFormat format |  |
-| VkImageType type |  |
-| VkSampleCountFlagBits samples |  |
-| VkImageUsageFlags usage |  |
-| VkImageTiling tiling |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkFormat format | <!--Device-VkFormat format--><!--Device-VkFormat format-End--> |
+| VkImageType type | <!--Device-VkImageType type--><!--Device-VkImageType type-End--> |
+| VkSampleCountFlagBits samples | <!--Device-VkSampleCountFlagBits samples--><!--Device-VkSampleCountFlagBits samples-End--> |
+| VkImageUsageFlags usage | <!--Device-VkImageUsageFlags usage--><!--Device-VkImageUsageFlags usage-End--> |
+| VkImageTiling tiling | <!--Device-VkImageTiling tiling--><!--Device-VkImageTiling tiling-End--> |
 
 

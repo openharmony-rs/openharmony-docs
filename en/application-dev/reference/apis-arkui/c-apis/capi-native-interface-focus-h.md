@@ -42,7 +42,7 @@ enum ArkUI_KeyProcessingMode
 
 Enumerates the processing modes of key events.
 
-<!--Device-ArkUI_KeyProcessingMode--><!--Device-ArkUI_KeyProcessingMode-End-->
+<!--Device-enum ArkUI_KeyProcessingMode--><!--Device-enum ArkUI_KeyProcessingMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,8 +50,8 @@ Enumerates the processing modes of key events.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0 | Key events are used for focus navigation. |
-| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT | Key events are passed up to ancestor components. |
+| ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0 | Key events are used for focus navigation.<br><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0--><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0-End--> |
+| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT | Key events are passed up to ancestor components.<br><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT--><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT-End--> |
 
 
 ## Function description

@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int type |  |
-| pid_t pid |  |
+| int type | <!--Device-int type--><!--Device-int type-End--> |
+| pid_t pid | <!--Device-pid_t pid--><!--Device-pid_t pid-End--> |
 
 

@@ -82,7 +82,7 @@ enum OH_AudioSession_Scene
 
 音频会话场景。
 
-<!--Device-OH_AudioSession_Scene--><!--Device-OH_AudioSession_Scene-End-->
+<!--Device-enum OH_AudioSession_Scene--><!--Device-enum OH_AudioSession_Scene-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -90,10 +90,10 @@ enum OH_AudioSession_Scene
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_SESSION_SCENE_MEDIA = 0 | 媒体音频会话场景。 |
-| AUDIO_SESSION_SCENE_GAME = 1 | 游戏音频会话场景。 |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2 | VoIP语音通话音频会话场景。 |
-| AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3 | 语音消息音频会话场景。<br>**起始版本：** 26.0.1 |
+| AUDIO_SESSION_SCENE_MEDIA = 0 | 媒体音频会话场景。<br><!--Device-AUDIO_SESSION_SCENE_MEDIA = 0--><!--Device-AUDIO_SESSION_SCENE_MEDIA = 0-End--> |
+| AUDIO_SESSION_SCENE_GAME = 1 | 游戏音频会话场景。<br><!--Device-AUDIO_SESSION_SCENE_GAME = 1--><!--Device-AUDIO_SESSION_SCENE_GAME = 1-End--> |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2 | VoIP语音通话音频会话场景。<br><!--Device-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2--><!--Device-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2-End--> |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3 | 语音消息音频会话场景。<br>**起始版本：** 26.0.1<br><!--Device-AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3--><!--Device-AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3-End--> |
 
 ### OH_AudioSession_StateChangeHint
 
@@ -105,7 +105,7 @@ enum OH_AudioSession_StateChangeHint
 
 音频会话状态变更的提示信息。
 
-<!--Device-OH_AudioSession_StateChangeHint--><!--Device-OH_AudioSession_StateChangeHint-End-->
+<!--Device-enum OH_AudioSession_StateChangeHint--><!--Device-enum OH_AudioSession_StateChangeHint-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -113,16 +113,16 @@ enum OH_AudioSession_StateChangeHint
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0 | 提示音频会话恢复，应用可主动触发开始渲染等相关操作。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1 | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到AUDIO_SESSION_STATE_CHANGE_HINT_RESUME事件。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2 | 提示音频会话在焦点被抢占后停止，彻底失去音频焦点。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3 | 提示长时间没有音频业务，音频会话将被系统停止，彻底失去音频焦点。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4 | 提示音频会话躲避开始，降低音量播放。 如果已启用[OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers)，此时可以选择执行静音操作。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5 | 提示音频会话躲避结束，恢复音量播放。 如果已启用[OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers)，此时可取消静音。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6 | 静音播放建议。当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。<br>**起始版本：** 23 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7 | 取消静音播放建议。当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。<br>**起始版本：** 23 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8 | 提示音频会话静音。该提示仅在以下条件满足后才会收到： 通过接口[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)设置参数 [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED， 并已调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)，且音频会话已激活。<br>**起始版本：** 24 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9 | 提示音频会话解除静音。该提示仅在以下条件满足后才会收到： 通过接口[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)设置参数 [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED， 并已调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)，且音频会话已激活。<br>**起始版本：** 24 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0 | 提示音频会话恢复，应用可主动触发开始渲染等相关操作。<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1 | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到AUDIO_SESSION_STATE_CHANGE_HINT_RESUME事件。<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2 | 提示音频会话在焦点被抢占后停止，彻底失去音频焦点。<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3 | 提示长时间没有音频业务，音频会话将被系统停止，彻底失去音频焦点。<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4 | 提示音频会话躲避开始，降低音量播放。 如果已启用[OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers)，此时可以选择执行静音操作。<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5 | 提示音频会话躲避结束，恢复音量播放。 如果已启用[OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers)，此时可取消静音。<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6 | 静音播放建议。当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。<br>**起始版本：** 23<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7 | 取消静音播放建议。当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。<br>**起始版本：** 23<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8 | 提示音频会话静音。该提示仅在以下条件满足后才会收到： 通过接口[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)设置参数 [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED， 并已调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)，且音频会话已激活。<br>**起始版本：** 24<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8-End--> |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9 | 提示音频会话解除静音。该提示仅在以下条件满足后才会收到： 通过接口[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)设置参数 [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED， 并已调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)，且音频会话已激活。<br>**起始版本：** 24<br><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9--><!--Device-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9-End--> |
 
 ### OH_AudioSession_OutputDeviceChangeRecommendedAction
 
@@ -134,7 +134,7 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 输出设备变更后推荐的操作。 <br>常见场景示例：耳机设备和外放设备之间进行切换。当佩戴耳机时，从外放设备切换到耳机设备，系统会推荐继续播放， 提示应用无需停止当前播放。当摘下耳机设备切换到外放设备时，系统会推荐停止播放。
 
-<!--Device-OH_AudioSession_OutputDeviceChangeRecommendedAction--><!--Device-OH_AudioSession_OutputDeviceChangeRecommendedAction-End-->
+<!--Device-enum OH_AudioSession_OutputDeviceChangeRecommendedAction--><!--Device-enum OH_AudioSession_OutputDeviceChangeRecommendedAction-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -142,8 +142,8 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | 推荐继续播放（该事件作为播放维持提示，作用是告知应用本次设备变动音频无需停止播放， 但不可将其作为启动音频播放的判断依据）。 |
-| DEVICE_CHANGE_RECOMMEND_TO_STOP = 1 | 推荐停止播放。 |
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | 推荐继续播放（该事件作为播放维持提示，作用是告知应用本次设备变动音频无需停止播放， 但不可将其作为启动音频播放的判断依据）。<br><!--Device-DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0--><!--Device-DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0-End--> |
+| DEVICE_CHANGE_RECOMMEND_TO_STOP = 1 | 推荐停止播放。<br><!--Device-DEVICE_CHANGE_RECOMMEND_TO_STOP = 1--><!--Device-DEVICE_CHANGE_RECOMMEND_TO_STOP = 1-End--> |
 
 ### OH_AudioSession_DeactivatedReason
 
@@ -155,7 +155,7 @@ enum OH_AudioSession_DeactivatedReason
 
 音频会话停用原因。
 
-<!--Device-OH_AudioSession_DeactivatedReason--><!--Device-OH_AudioSession_DeactivatedReason-End-->
+<!--Device-enum OH_AudioSession_DeactivatedReason--><!--Device-enum OH_AudioSession_DeactivatedReason-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -163,8 +163,8 @@ enum OH_AudioSession_DeactivatedReason
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DEACTIVATED_LOWER_PRIORITY = 0 | 应用焦点被抢占。 |
-| DEACTIVATED_TIMEOUT = 1 | 应用停流后超时。 |
+| DEACTIVATED_LOWER_PRIORITY = 0 | 应用焦点被抢占。<br><!--Device-DEACTIVATED_LOWER_PRIORITY = 0--><!--Device-DEACTIVATED_LOWER_PRIORITY = 0-End--> |
+| DEACTIVATED_TIMEOUT = 1 | 应用停流后超时。<br><!--Device-DEACTIVATED_TIMEOUT = 1--><!--Device-DEACTIVATED_TIMEOUT = 1-End--> |
 
 ### OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
@@ -176,7 +176,7 @@ enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
 在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。
 
-<!--Device-OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory--><!--Device-OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory-End-->
+<!--Device-enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory--><!--Device-enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -184,10 +184,10 @@ enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PREFERRED_NONE = 0 | 无指定设备偏好。 |
-| PREFERRED_DEFAULT = 1 | 更偏好使用蓝牙或星闪录音。是否使用低延迟或高质量录音取决于系统。 |
-| PREFERRED_LOW_LATENCY = 2 | 更偏好使用蓝牙或星闪低延迟模式进行录音。 |
-| PREFERRED_HIGH_QUALITY = 3 | 更偏好使用蓝牙或星闪高质量模式进行录音。 |
+| PREFERRED_NONE = 0 | 无指定设备偏好。<br><!--Device-PREFERRED_NONE = 0--><!--Device-PREFERRED_NONE = 0-End--> |
+| PREFERRED_DEFAULT = 1 | 更偏好使用蓝牙或星闪录音。是否使用低延迟或高质量录音取决于系统。<br><!--Device-PREFERRED_DEFAULT = 1--><!--Device-PREFERRED_DEFAULT = 1-End--> |
+| PREFERRED_LOW_LATENCY = 2 | 更偏好使用蓝牙或星闪低延迟模式进行录音。<br><!--Device-PREFERRED_LOW_LATENCY = 2--><!--Device-PREFERRED_LOW_LATENCY = 2-End--> |
+| PREFERRED_HIGH_QUALITY = 3 | 更偏好使用蓝牙或星闪高质量模式进行录音。<br><!--Device-PREFERRED_HIGH_QUALITY = 3--><!--Device-PREFERRED_HIGH_QUALITY = 3-End--> |
 
 
 ## 函数说明

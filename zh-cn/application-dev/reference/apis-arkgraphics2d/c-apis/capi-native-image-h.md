@@ -34,7 +34,7 @@
 | [int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)](#oh_nativeimage_detachcontext) | - | 将OH_NativeImage实例从当前OpenGL ES上下文分离。 本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)](#oh_nativeimage_updatesurfaceimage) | - | 通过OH_NativeImage获取最新帧更新相关联的OpenGL ES纹理。 本接口需要在OpenGL ES环境上下文的线程中调用。 本接口需要在接收到OH_OnFrameAvailableListener回调后调用。 本接口为非线程安全类型接口。 |
 | [int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)](#oh_nativeimage_gettimestamp) | - | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的相关时间戳。 本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16])](#oh_nativeimage_gettransformmatrix) | - | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变化矩阵。(API12废弃) |
+| [int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16])](#oh_nativeimage_gettransformmatrix) | - | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变化矩阵。(已废弃) |
 | [int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)](#oh_nativeimage_getsurfaceid) | - | 获取OH_NativeImage的surface编号。 本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnFrameAvailableListener listener)](#oh_nativeimage_setonframeavailablelistener) | - | 设置帧可用回调。 不允许在回调函数中调用本模块的其他接口。 本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)](#oh_nativeimage_unsetonframeavailablelistener) | - | 取消设置帧可用回调。 本接口为非线程安全类型接口。 |

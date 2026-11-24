@@ -40,7 +40,7 @@ enum OH_Drawing_TextHighContrast
 
 文本渲染高对比度模式枚举。
 
-<!--Device-OH_Drawing_TextHighContrast--><!--Device-OH_Drawing_TextHighContrast-End-->
+<!--Device-enum OH_Drawing_TextHighContrast--><!--Device-enum OH_Drawing_TextHighContrast-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -48,9 +48,9 @@ enum OH_Drawing_TextHighContrast
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | 跟随系统设置中的高对比度文字配置。 |
-| TEXT_APP_DISABLE_HIGH_CONTRAST | 关闭应用的文本渲染高对比度配置，该模式的优先级要高于系统设置中的高对比度文字配置。 |
-| TEXT_APP_ENABLE_HIGH_CONTRAST | 开启应用的文本渲染高对比度配置，该模式的优先级要高于系统设置中的高对比度文字配置。 |
+| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | 跟随系统设置中的高对比度文字配置。<br><!--Device-TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST--><!--Device-TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST-End--> |
+| TEXT_APP_DISABLE_HIGH_CONTRAST | 关闭应用的文本渲染高对比度配置，该模式的优先级要高于系统设置中的高对比度文字配置。<br><!--Device-TEXT_APP_DISABLE_HIGH_CONTRAST--><!--Device-TEXT_APP_DISABLE_HIGH_CONTRAST-End--> |
+| TEXT_APP_ENABLE_HIGH_CONTRAST | 开启应用的文本渲染高对比度配置，该模式的优先级要高于系统设置中的高对比度文字配置。<br><!--Device-TEXT_APP_ENABLE_HIGH_CONTRAST--><!--Device-TEXT_APP_ENABLE_HIGH_CONTRAST-End--> |
 
 ### OH_Drawing_TextUndefinedGlyphDisplay
 
@@ -62,7 +62,7 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 
 显示未定义字形的方式。
 
-<!--Device-OH_Drawing_TextUndefinedGlyphDisplay--><!--Device-OH_Drawing_TextUndefinedGlyphDisplay-End-->
+<!--Device-enum OH_Drawing_TextUndefinedGlyphDisplay--><!--Device-enum OH_Drawing_TextUndefinedGlyphDisplay-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -70,8 +70,8 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TEXT_NO_GLYPH_USE_DEFAULT = 0 | 使用字体文件中定义的默认字形（可能是空框、空白或自定义符号等）。 |
-| TEXT_NO_GLYPH_USE_TOFU = 1 | 始终使用豆腐块显示缺失的字形。 |
+| TEXT_NO_GLYPH_USE_DEFAULT = 0 | 使用字体文件中定义的默认字形（可能是空框、空白或自定义符号等）。<br><!--Device-TEXT_NO_GLYPH_USE_DEFAULT = 0--><!--Device-TEXT_NO_GLYPH_USE_DEFAULT = 0-End--> |
+| TEXT_NO_GLYPH_USE_TOFU = 1 | 始终使用豆腐块显示缺失的字形。<br><!--Device-TEXT_NO_GLYPH_USE_TOFU = 1--><!--Device-TEXT_NO_GLYPH_USE_TOFU = 1-End--> |
 
 
 ## 函数说明

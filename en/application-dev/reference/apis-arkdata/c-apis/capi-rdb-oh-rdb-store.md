@@ -24,6 +24,6 @@ Define OH_Rdb_Store type.
 
 | Name | Description |
 | -- | -- |
-| int64_t id | The id used to uniquely identify the OH_Rdb_Store struct. |
+| int64_t id | The id used to uniquely identify the OH_Rdb_Store struct.<br><!--Device-int64_t id--><!--Device-int64_t id-End--> |
 
 

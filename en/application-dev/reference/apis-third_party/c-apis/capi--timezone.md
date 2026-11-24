@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int tz_minuteswest |  |
-| int tz_dsttime |  |
+| int tz_minuteswest | <!--Device-int tz_minuteswest--><!--Device-int tz_minuteswest-End--> |
+| int tz_dsttime | <!--Device-int tz_dsttime--><!--Device-int tz_dsttime-End--> |
 
 

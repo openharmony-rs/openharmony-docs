@@ -10,13 +10,13 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t             rpu_uselen |  |
-| uint8_t             rpu_keeplen |  |
-| uint8_t             rpu_ramask |  |
-| uint8_t             rpu_raflags |  |
-| uint32_t            rpu_vltime |  |
-| uint32_t            rpu_pltime |  |
-| uint32_t            rpu_flags |  |
-| struct in6_addr     rpu_prefix |  |
+| uint8_t             rpu_uselen | <!--Device-uint8_t rpu_uselen--><!--Device-uint8_t rpu_uselen-End--> |
+| uint8_t             rpu_keeplen | <!--Device-uint8_t rpu_keeplen--><!--Device-uint8_t rpu_keeplen-End--> |
+| uint8_t             rpu_ramask | <!--Device-uint8_t rpu_ramask--><!--Device-uint8_t rpu_ramask-End--> |
+| uint8_t             rpu_raflags | <!--Device-uint8_t rpu_raflags--><!--Device-uint8_t rpu_raflags-End--> |
+| uint32_t            rpu_vltime | <!--Device-uint32_t rpu_vltime--><!--Device-uint32_t rpu_vltime-End--> |
+| uint32_t            rpu_pltime | <!--Device-uint32_t rpu_pltime--><!--Device-uint32_t rpu_pltime-End--> |
+| uint32_t            rpu_flags | <!--Device-uint32_t rpu_flags--><!--Device-uint32_t rpu_flags-End--> |
+| struct in6_addr     rpu_prefix | <!--Device-struct in6_addr rpu_prefix--><!--Device-struct in6_addr rpu_prefix-End--> |
 
 

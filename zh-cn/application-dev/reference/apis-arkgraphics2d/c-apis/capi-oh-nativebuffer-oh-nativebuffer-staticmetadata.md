@@ -24,7 +24,7 @@ typedef struct OH_NativeBuffer_StaticMetadata {...} OH_NativeBuffer_StaticMetada
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_NativeBuffer_Smpte2086](capi-oh-nativebuffer-oh-nativebuffer-smpte2086.md) smpte2086 | smpte2086静态元数据 |
-| [OH_NativeBuffer_Cta861](capi-oh-nativebuffer-oh-nativebuffer-cta861.md) cta861 | CTA-861.3静态元数据 |
+| [OH_NativeBuffer_Smpte2086](capi-oh-nativebuffer-oh-nativebuffer-smpte2086.md) smpte2086 | smpte2086静态元数据<br><!--Device-OH_NativeBuffer_Smpte2086 smpte2086--><!--Device-OH_NativeBuffer_Smpte2086 smpte2086-End--> |
+| [OH_NativeBuffer_Cta861](capi-oh-nativebuffer-oh-nativebuffer-cta861.md) cta861 | CTA-861.3静态元数据<br><!--Device-OH_NativeBuffer_Cta861 cta861--><!--Device-OH_NativeBuffer_Cta861 cta861-End--> |
 
 

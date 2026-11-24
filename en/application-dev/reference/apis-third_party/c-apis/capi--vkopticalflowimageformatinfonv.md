@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkOpticalFlowUsageFlagsNV usage |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkOpticalFlowUsageFlagsNV usage | <!--Device-VkOpticalFlowUsageFlagsNV usage--><!--Device-VkOpticalFlowUsageFlagsNV usage-End--> |
 
 

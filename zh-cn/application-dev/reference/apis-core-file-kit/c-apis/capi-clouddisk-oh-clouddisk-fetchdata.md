@@ -24,10 +24,10 @@ typedef struct OH_CloudDisk_FetchData {...} OH_CloudDisk_FetchData
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t offset | 本次数据在文件中的起始偏移，以字节为单位。<br>**起始版本：** 26.0.1 |
-| uint64_t size | 本次下载数据长度，以字节为单位。<br>**起始版本：** 26.0.1 |
-| uint64_t totalSize | 云端文件总大小，以字节为单位。<br>**起始版本：** 26.0.1 |
-| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) data | 文件数据缓冲区。<br>**起始版本：** 26.0.1 |
-| bool isComplete | 是否是最后一块数据。<br>**起始版本：** 26.0.1 |
+| uint64_t offset | 本次数据在文件中的起始偏移，以字节为单位。<br>**起始版本：** 26.0.1<br><!--Device-uint64_t offset--><!--Device-uint64_t offset-End--> |
+| uint64_t size | 本次下载数据长度，以字节为单位。<br>**起始版本：** 26.0.1<br><!--Device-uint64_t size--><!--Device-uint64_t size-End--> |
+| uint64_t totalSize | 云端文件总大小，以字节为单位。由首次调用OH_CloudDisk_Execute()回传时决定， 后续回传需保持一致。<br>**起始版本：** 26.0.1<br><!--Device-uint64_t totalSize--><!--Device-uint64_t totalSize-End--> |
+| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) data | 文件数据缓冲区。<br>**起始版本：** 26.0.1<br><!--Device-OH_CloudDisk_DataBuf data--><!--Device-OH_CloudDisk_DataBuf data-End--> |
+| bool isComplete | 是否是最后一块数据。<br>**起始版本：** 26.0.1<br><!--Device-bool isComplete--><!--Device-bool isComplete-End--> |
 
 

@@ -24,8 +24,8 @@ typedef struct HiDebug_SystemMemInfo {...} HiDebug_SystemMemInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t totalMem | 系统总的内存，以KB为单位。 |
-| uint32_t freeMem | 系统空闲的内存，以KB为单位。 |
-| uint32_t availableMem | 系统可用的内存，以KB为单位。 |
+| uint32_t totalMem | 系统总的内存，以KB为单位。<br><!--Device-uint32_t totalMem--><!--Device-uint32_t totalMem-End--> |
+| uint32_t freeMem | 系统空闲的内存，以KB为单位。<br><!--Device-uint32_t freeMem--><!--Device-uint32_t freeMem-End--> |
+| uint32_t availableMem | 系统可用的内存，以KB为单位。<br><!--Device-uint32_t availableMem--><!--Device-uint32_t availableMem-End--> |
 
 

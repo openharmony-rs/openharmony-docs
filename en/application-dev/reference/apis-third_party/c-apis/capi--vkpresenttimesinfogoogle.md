@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t swapchainCount |  |
-| [const VkPresentTimeGOOGLE*](capi--vkpresenttimegoogle.md) pTimes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t swapchainCount | <!--Device-uint32_t swapchainCount--><!--Device-uint32_t swapchainCount-End--> |
+| [const VkPresentTimeGOOGLE*](capi--vkpresenttimegoogle.md) pTimes | <!--Device-const VkPresentTimeGOOGLE* pTimes--><!--Device-const VkPresentTimeGOOGLE* pTimes-End--> |
 
 

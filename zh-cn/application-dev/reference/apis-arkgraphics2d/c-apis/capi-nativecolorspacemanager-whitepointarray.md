@@ -24,6 +24,6 @@ typedef struct WhitePointArray {...} WhitePointArray
 
 | 名称 | 描述 |
 | -- | -- |
-| float arr[2] | Indicates white point return array |
+| float arr[2] | Indicates white point return array<br><!--Device-float arr[2]--><!--Device-float arr[2]-End--> |
 
 

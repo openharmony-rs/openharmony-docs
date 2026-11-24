@@ -34,13 +34,13 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_LEFT | 用于描述单个ROI矩形左侧坐标（x）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM | 用于描述单个ROI矩形底部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_TOP](capi-native-avcodec-videobase-h.md#变量), OH_MD_KEY_VIDEO_HEIGHT]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT | 用于描述单个ROI矩形右侧坐标（x）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_LEFT](capi-native-avcodec-videobase-h.md#变量), OH_MD_KEY_VIDEO_WIDTH]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP | 用于描述单个ROI的量化参数（QP）相对偏移值的键，值类型为int32_t。<br> 该变量取值范围为[-51, 51]。 这是配置ROI参数时的可选键。 如果未设置此键，编码器将对此区域使用其默认的量化参数策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL | 用于描述单个ROI语义标签的键，值类型为int32_t。<br> 该变量值必须与[OH_VideoMetadataRoiSemanticLabel](capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。 这是配置ROI参数时的可选键。 如果未设置此键，该区域将采用默认的语义处理策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA | 定义采编联合低功耗优化的使能的键。该键是采编联合低功耗优化的配置开关。<br> 使用[OH_AVFormat_SetIntValue](capi-native-avformat-h.md#oh_avformat_setintvalue)设置启用状态：1表示开启采编联合低功耗优化，0表示关闭此能力（默认）。<br> 使用约束：该键仅对视频编码器有效，为可选参数。可通过[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)初始化时配置，或在运行时通过[OH_VideoEncoder_SetParameter](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter)启用。启用后，采集侧会根据编码信息调整采集配置策略，以降低整体功耗。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_TOP--><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_TOP-End--> |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_LEFT | 用于描述单个ROI矩形左侧坐标（x）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为[0, [OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT](capi-native-avcodec-videobase-h.md#变量))。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_LEFT--><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_LEFT-End--> |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM | 用于描述单个ROI矩形底部坐标（y）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_TOP](capi-native-avcodec-videobase-h.md#变量), OH_MD_KEY_VIDEO_HEIGHT]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM--><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM-End--> |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT | 用于描述单个ROI矩形右侧坐标（x）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_LEFT](capi-native-avcodec-videobase-h.md#变量), OH_MD_KEY_VIDEO_WIDTH]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT--><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT-End--> |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP | 用于描述单个ROI的量化参数（QP）相对偏移值的键，值类型为int32_t。<br> 该变量取值范围为[-51, 51]。 这是配置ROI参数时的可选键。 如果未设置此键，编码器将对此区域使用其默认的量化参数策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP--><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP-End--> |
+| const char *OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL | 用于描述单个ROI语义标签的键，值类型为int32_t。<br> 该变量值必须与[OH_VideoMetadataRoiSemanticLabel](capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。 这是配置ROI参数时的可选键。 如果未设置此键，该区域将采用默认的语义处理策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL--><!--Device-const char *OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL-End--> |
+| const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA | 定义采编联合低功耗优化的使能的键。该键是采编联合低功耗优化的配置开关。<br> 使用[OH_AVFormat_SetIntValue](capi-native-avformat-h.md#oh_avformat_setintvalue)设置启用状态：1表示开启采编联合低功耗优化，0表示关闭此能力（默认）。<br> 使用约束：该键仅对视频编码器有效，为可选参数。可通过[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)初始化时配置，或在运行时通过[OH_VideoEncoder_SetParameter](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter) 启用。启用后，采集侧会根据编码信息调整采集配置策略，以降低整体功耗。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase<br><!--Device-const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA--><!--Device-const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA-End--> |
 
 ## 枚举类型说明
 
@@ -54,7 +54,7 @@ enum OH_VideoMetadataRoiSemanticLabel
 
 视频编码中感兴趣区域（ROI）的语义标签。
 
-<!--Device-OH_VideoMetadataRoiSemanticLabel--><!--Device-OH_VideoMetadataRoiSemanticLabel-End-->
+<!--Device-enum OH_VideoMetadataRoiSemanticLabel--><!--Device-enum OH_VideoMetadataRoiSemanticLabel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -62,8 +62,8 @@ enum OH_VideoMetadataRoiSemanticLabel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER = 0 | 表示未指定或未知的区域。<br>**起始版本：** 26.0.0 |
-| OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE = 1 | 表示该ROI包含人脸。<br>**起始版本：** 26.0.0 |
+| OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER = 0 | 表示未指定或未知的区域。<br>**起始版本：** 26.0.0<br><!--Device-OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER = 0--><!--Device-OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER = 0-End--> |
+| OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE = 1 | 表示该ROI包含人脸。<br>**起始版本：** 26.0.0<br><!--Device-OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE = 1--><!--Device-OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE = 1-End--> |
 
 
 ## 函数说明

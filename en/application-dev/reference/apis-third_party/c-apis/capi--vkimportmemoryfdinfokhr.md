@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkExternalMemoryHandleTypeFlagBits handleType |  |
-| int fd |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkExternalMemoryHandleTypeFlagBits handleType | <!--Device-VkExternalMemoryHandleTypeFlagBits handleType--><!--Device-VkExternalMemoryHandleTypeFlagBits handleType-End--> |
+| int fd | <!--Device-int fd--><!--Device-int fd-End--> |
 
 

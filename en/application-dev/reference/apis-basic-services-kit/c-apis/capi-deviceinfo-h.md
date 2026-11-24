@@ -49,7 +49,7 @@ Declares the APIs for querying device information. This module provides the capa
 | [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | Obtains the ISV distribution OS version. |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | Obtains the ISV distribution OS API version. |
 | [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | Obtains the ISV distribution OS release type. |
-| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | Obtains the Disk Serial Number. |
+| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | Obtain the disk serial number. The size of the parameter buffer cannot be less than 65 bytes. |
 | [const char *OH_GetOdid(void)](#oh_getodid) | Obtains the Open device identifier. |
 
 ## Function description
@@ -700,7 +700,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 **Description**
 
-Obtains the Disk Serial Number.
+Obtain the disk serial number. The size of the parameter buffer cannot be less than 65 bytes.
 
 <!--Device-int32_t OH_GetDiskSN(char *diskSn)--><!--Device-int32_t OH_GetDiskSN(char *diskSn)-End-->
 
@@ -714,13 +714,13 @@ Obtains the Disk Serial Number.
 
 | Parameter | Description |
 | -- | -- |
-| char *diskSn | [out] Disk Serial Number. |
+| char *diskSn | [out] Serial number of the disk. The size of the parameter buffer cannot be less than 65 bytes. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul> <li>0 if the operation is successful.</li> <li>201 if the caller does not have ohos.permission.ACCESS_DISK_PHY_INFO.</li> <li>401 if the caller passes an invalid input parameter.</li> </ul> |
+| int32_t | <ul> <li>0 if the operation is successful.</li> <li>201 if the caller does not have ohos.permission.ACCESS_DISK_PHY_INFO.</li> <li>401 If the caller passes null or invalid parameters.</li> </ul> |
 
 ### OH_GetOdid()
 

@@ -74,7 +74,7 @@ enum OH_Drawing_PenLineCapStyle
 
 Enumerates the line cap styles of a pen. The line cap style defines the style of both ends of a line segment drawn by the pen.
 
-<!--Device-OH_Drawing_PenLineCapStyle--><!--Device-OH_Drawing_PenLineCapStyle-End-->
+<!--Device-enum OH_Drawing_PenLineCapStyle--><!--Device-enum OH_Drawing_PenLineCapStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -82,9 +82,9 @@ Enumerates the line cap styles of a pen. The line cap style defines the style of
 
 | Enum item | Description |
 | -- | -- |
-| LINE_FLAT_CAP | There is no cap style. Both ends of the line segment are cut off square. |
-| LINE_SQUARE_CAP | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width. |
-| LINE_ROUND_CAP | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment. |
+| LINE_FLAT_CAP | There is no cap style. Both ends of the line segment are cut off square.<br><!--Device-LINE_FLAT_CAP--><!--Device-LINE_FLAT_CAP-End--> |
+| LINE_SQUARE_CAP | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.<br><!--Device-LINE_SQUARE_CAP--><!--Device-LINE_SQUARE_CAP-End--> |
+| LINE_ROUND_CAP | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment.<br><!--Device-LINE_ROUND_CAP--><!--Device-LINE_ROUND_CAP-End--> |
 
 ### OH_Drawing_PenLineJoinStyle
 
@@ -96,7 +96,7 @@ enum OH_Drawing_PenLineJoinStyle
 
 Enumerates the line join styles of a pen. The line join style defines the shape of the joints of a polyline segment drawn by the pen.
 
-<!--Device-OH_Drawing_PenLineJoinStyle--><!--Device-OH_Drawing_PenLineJoinStyle-End-->
+<!--Device-enum OH_Drawing_PenLineJoinStyle--><!--Device-enum OH_Drawing_PenLineJoinStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -104,9 +104,9 @@ Enumerates the line join styles of a pen. The line join style defines the shape 
 
 | Enum item | Description |
 | -- | -- |
-| LINE_MITER_JOIN | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length. |
-| LINE_ROUND_JOIN | Round corner. |
-| LINE_BEVEL_JOIN | Beveled corner. |
+| LINE_MITER_JOIN | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.<br><!--Device-LINE_MITER_JOIN--><!--Device-LINE_MITER_JOIN-End--> |
+| LINE_ROUND_JOIN | Round corner.<br><!--Device-LINE_ROUND_JOIN--><!--Device-LINE_ROUND_JOIN-End--> |
+| LINE_BEVEL_JOIN | Beveled corner.<br><!--Device-LINE_BEVEL_JOIN--><!--Device-LINE_BEVEL_JOIN-End--> |
 
 
 ## Function description

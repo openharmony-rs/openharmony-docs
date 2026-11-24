@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| const uint8_t* pVersionData |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| const uint8_t* pVersionData | <!--Device-const uint8_t* pVersionData--><!--Device-const uint8_t* pVersionData-End--> |
 
 

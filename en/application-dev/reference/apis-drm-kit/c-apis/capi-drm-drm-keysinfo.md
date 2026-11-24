@@ -24,8 +24,8 @@ The struct describes the information about media keys.
 
 | Name | Description |
 | -- | -- |
-| uint32_t keysInfoCount | Keys count. |
-| uint8_t keyId[MAX_KEY_INFO_COUNT][MAX_KEY_ID_LEN] | Key id. |
-| char statusValue[MAX_KEY_INFO_COUNT][MAX_KEY_STATUS_VALUE_LEN] | Key status value. |
+| uint32_t keysInfoCount | Keys count.<br><!--Device-uint32_t keysInfoCount--><!--Device-uint32_t keysInfoCount-End--> |
+| uint8_t keyId[MAX_KEY_INFO_COUNT][MAX_KEY_ID_LEN] | Key id.<br><!--Device-uint8_t keyId[MAX_KEY_INFO_COUNT][MAX_KEY_ID_LEN]--><!--Device-uint8_t keyId[MAX_KEY_INFO_COUNT][MAX_KEY_ID_LEN]-End--> |
+| char statusValue[MAX_KEY_INFO_COUNT][MAX_KEY_STATUS_VALUE_LEN] | Key status value.<br><!--Device-char statusValue[MAX_KEY_INFO_COUNT][MAX_KEY_STATUS_VALUE_LEN]--><!--Device-char statusValue[MAX_KEY_INFO_COUNT][MAX_KEY_STATUS_VALUE_LEN]-End--> |
 
 

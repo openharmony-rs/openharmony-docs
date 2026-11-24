@@ -40,7 +40,7 @@ enum Vibrator_ErrorCode : int32_t
 
 Enumerates the error codes. If an exception occurs during use of vibration APIs, the corresponding error code is returned.
 
-<!--Device-Vibrator_ErrorCode--><!--Device-Vibrator_ErrorCode-End-->
+<!--Device-enum Vibrator_ErrorCode : int32_t--><!--Device-enum Vibrator_ErrorCode : int32_t-End-->
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -48,10 +48,10 @@ Enumerates the error codes. If an exception occurs during use of vibration APIs,
 
 | Enum item | Description |
 | -- | -- |
-| PERMISSION_DENIED = 201 | Permission verification failed. Check whether you have requested the required permission * (for example, **ohos.permission.VIBRATE**). |
-| PARAMETER_ERROR = 401 | Parameter check failed. For example, a mandatory parameter is not passed in, or the parameter type passed * in is incorrect. |
-| UNSUPPORTED = 801 | The device does not support the API. This error code is reported when the device supports the SysCap but * does not support a specific API. |
-| DEVICE_OPERATION_FAILED = 14600101 | Device operation failed. Check the device status and parameter configuration. |
+| PERMISSION_DENIED = 201 | Permission verification failed. Check whether you have requested the required permission (for example, **ohos.permission.VIBRATE**).<br><!--Device-PERMISSION_DENIED = 201--><!--Device-PERMISSION_DENIED = 201-End--> |
+| PARAMETER_ERROR = 401 | Parameter check failed. For example, a mandatory parameter is not passed in, or the parameter type passed in is incorrect.<br><!--Device-PARAMETER_ERROR = 401--><!--Device-PARAMETER_ERROR = 401-End--> |
+| UNSUPPORTED = 801 | The device does not support the API. This error code is reported when the device supports the SysCap but does not support a specific API.<br><!--Device-UNSUPPORTED = 801--><!--Device-UNSUPPORTED = 801-End--> |
+| DEVICE_OPERATION_FAILED = 14600101 | Device operation failed. Check the device status and parameter configuration.<br><!--Device-DEVICE_OPERATION_FAILED = 14600101--><!--Device-DEVICE_OPERATION_FAILED = 14600101-End--> |
 
 ### Vibrator_Usage
 
@@ -63,7 +63,7 @@ enum Vibrator_Usage
 
 Enumerates the vibration priorities in different scenarios. A vibration with a higher priority interrupts a vibration with a lower priority. Suggestions: Select a proper priority based on the application scenario. In scenarios where continuous vibration is required, keep the priority consistent to avoid performance loss caused by frequently switching priorities. It is recommended that a higher priority be used for physical feedback and touch vibrations to ensure timely response.
 
-<!--Device-Vibrator_Usage--><!--Device-Vibrator_Usage-End-->
+<!--Device-enum Vibrator_Usage--><!--Device-enum Vibrator_Usage-End-->
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -71,15 +71,15 @@ Enumerates the vibration priorities in different scenarios. A vibration with a h
 
 | Enum item | Description |
 | -- | -- |
-| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario, with the lowest priority. Choose this option when the specific application scenario * cannot be determined. In this case, the system complies with the default policy. |
-| VIBRATOR_USAGE_ALARM = 1 | Alarm. Choose this option in scenarios such as alarm clock and countdown reminders. The vibration is * strong and lasts for a long time. |
-| VIBRATOR_USAGE_RING = 2 | Ringtone. Choose this option for incoming calls. The vibration mode is cyclic vibration, which helps * users answer calls in a timely manner. |
-| VIBRATOR_USAGE_NOTIFICATION = 3 | Notification. Choose this option in scenarios such as system notifications and app messages. * The vibration is short, prompting users to view the notifications. |
-| VIBRATOR_USAGE_COMMUNICATION = 4 | Communication. Choose this option in communication scenarios such as calls, instant messaging, and SMS * messages. The vibration mode is one-shot vibration. |
-| VIBRATOR_USAGE_TOUCH = 5 | Touch. Choose this option in feedback scenarios such as screen touches and key operations. The vibration * is extremely short, providing a sense of operation confirmation. |
-| VIBRATOR_USAGE_MEDIA = 6 | Media. Choose this option in media app scenarios such as music and videos. The vibration is synchronized * with the media content to enhance the immersive experience. |
-| VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback. Choose this option in scenarios that require physical feedback, such as games and * simulations. It provides physical interaction experiences such as physical key feedback and tactile force * feedback. The vibration mode can be customized to simulate real touch sensations. |
-| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | Simulated reality. Choose this option for tactile feedback in immersive scenarios such as VR/AR. The * vibration intensity and mode are precisely controllable to provide realistic environmental feedback. |
-| VIBRATOR_USAGE_MAX |  |
+| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario, with the lowest priority. Choose this option when the specific application scenario cannot be determined. In this case, the system complies with the default policy.<br><!--Device-VIBRATOR_USAGE_UNKNOWN = 0--><!--Device-VIBRATOR_USAGE_UNKNOWN = 0-End--> |
+| VIBRATOR_USAGE_ALARM = 1 | Alarm. Choose this option in scenarios such as alarm clock and countdown reminders. The vibration is strong and lasts for a long time.<br><!--Device-VIBRATOR_USAGE_ALARM = 1--><!--Device-VIBRATOR_USAGE_ALARM = 1-End--> |
+| VIBRATOR_USAGE_RING = 2 | Ringtone. Choose this option for incoming calls. The vibration mode is cyclic vibration, which helps users answer calls in a timely manner.<br><!--Device-VIBRATOR_USAGE_RING = 2--><!--Device-VIBRATOR_USAGE_RING = 2-End--> |
+| VIBRATOR_USAGE_NOTIFICATION = 3 | Notification. Choose this option in scenarios such as system notifications and app messages. The vibration is short, prompting users to view the notifications.<br><!--Device-VIBRATOR_USAGE_NOTIFICATION = 3--><!--Device-VIBRATOR_USAGE_NOTIFICATION = 3-End--> |
+| VIBRATOR_USAGE_COMMUNICATION = 4 | Communication. Choose this option in communication scenarios such as calls, instant messaging, and SMS messages. The vibration mode is one-shot vibration.<br><!--Device-VIBRATOR_USAGE_COMMUNICATION = 4--><!--Device-VIBRATOR_USAGE_COMMUNICATION = 4-End--> |
+| VIBRATOR_USAGE_TOUCH = 5 | Touch. Choose this option in feedback scenarios such as screen touches and key operations. The vibration is extremely short, providing a sense of operation confirmation.<br><!--Device-VIBRATOR_USAGE_TOUCH = 5--><!--Device-VIBRATOR_USAGE_TOUCH = 5-End--> |
+| VIBRATOR_USAGE_MEDIA = 6 | Media. Choose this option in media app scenarios such as music and videos. The vibration is synchronized with the media content to enhance the immersive experience.<br><!--Device-VIBRATOR_USAGE_MEDIA = 6--><!--Device-VIBRATOR_USAGE_MEDIA = 6-End--> |
+| VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback. Choose this option in scenarios that require physical feedback, such as games and simulations. It provides physical interaction experiences such as physical key feedback and tactile force feedback. The vibration mode can be customized to simulate real touch sensations.<br><!--Device-VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7--><!--Device-VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7-End--> |
+| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | Simulated reality. Choose this option for tactile feedback in immersive scenarios such as VR/AR. The vibration intensity and mode are precisely controllable to provide realistic environmental feedback.<br><!--Device-VIBRATOR_USAGE_SIMULATED_REALITY = 8--><!--Device-VIBRATOR_USAGE_SIMULATED_REALITY = 8-End--> |
+| VIBRATOR_USAGE_MAX | <!--Device-VIBRATOR_USAGE_MAX--><!--Device-VIBRATOR_USAGE_MAX-End--> |
 
 

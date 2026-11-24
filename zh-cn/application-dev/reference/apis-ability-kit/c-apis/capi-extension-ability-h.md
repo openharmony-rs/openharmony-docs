@@ -31,7 +31,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc) OH_AbilityRuntime_OnNativeExtensionCreate | ExtensionAbility入口函数名称声明。开发者需要实现一个类型为[AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc)的函数， 并将其命名为OH_AbilityRuntime_OnNativeExtensionCreate。系统会自动查找并调用此函数来完成ExtensionAbility实例的初始化。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Ability.AbilityRuntime.Core |
+| [AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc) OH_AbilityRuntime_OnNativeExtensionCreate | ExtensionAbility入口函数名称声明。开发者需要实现一个类型为[AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc)的函数， 并将其命名为OH_AbilityRuntime_OnNativeExtensionCreate。系统会自动查找并调用此函数来完成ExtensionAbility实例的初始化。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Ability.AbilityRuntime.Core<br><!--Device-AbilityRuntime_Extension_CreateFunc OH_AbilityRuntime_OnNativeExtensionCreate--><!--Device-AbilityRuntime_Extension_CreateFunc OH_AbilityRuntime_OnNativeExtensionCreate-End--> |
 
 ## 函数说明
 

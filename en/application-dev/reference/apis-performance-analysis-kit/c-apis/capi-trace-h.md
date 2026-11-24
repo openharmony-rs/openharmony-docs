@@ -83,7 +83,7 @@ enum HiTraceId_Valid
 
 Enumerates whether a **HiTraceId** instance is valid.
 
-<!--Device-HiTraceId_Valid--><!--Device-HiTraceId_Valid-End-->
+<!--Device-enum HiTraceId_Valid--><!--Device-enum HiTraceId_Valid-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -91,8 +91,8 @@ Enumerates whether a **HiTraceId** instance is valid.
 
 | Enum item | Description |
 | -- | -- |
-| HITRACE_ID_INVALID = 0 | Invalid **HiTraceId**.<br>**Since**: 12 |
-| HITRACE_ID_VALID = 1 | Valid **HiTraceId**.<br>**Since**: 12 |
+| HITRACE_ID_INVALID = 0 | Invalid **HiTraceId**.<br>**Since**: 12<br><!--Device-HITRACE_ID_INVALID = 0--><!--Device-HITRACE_ID_INVALID = 0-End--> |
+| HITRACE_ID_VALID = 1 | Valid **HiTraceId**.<br>**Since**: 12<br><!--Device-HITRACE_ID_VALID = 1--><!--Device-HITRACE_ID_VALID = 1-End--> |
 
 ### HiTrace_Version
 
@@ -104,7 +104,7 @@ enum HiTrace_Version
 
 Enumerates the HiTrace versions.
 
-<!--Device-HiTrace_Version--><!--Device-HiTrace_Version-End-->
+<!--Device-enum HiTrace_Version--><!--Device-enum HiTrace_Version-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -112,7 +112,7 @@ Enumerates the HiTrace versions.
 
 | Enum item | Description |
 | -- | -- |
-| HITRACE_VER_1 = 0 | Version 1.<br>**Since**: 12 |
+| HITRACE_VER_1 = 0 | Version 1.<br>**Since**: 12<br><!--Device-HITRACE_VER_1 = 0--><!--Device-HITRACE_VER_1 = 0-End--> |
 
 ### HiTrace_Flag
 
@@ -124,7 +124,7 @@ enum HiTrace_Flag
 
 Enumerates the HiTrace flags.
 
-<!--Device-HiTrace_Flag--><!--Device-HiTrace_Flag-End-->
+<!--Device-enum HiTrace_Flag--><!--Device-enum HiTrace_Flag-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -132,14 +132,14 @@ Enumerates the HiTrace flags.
 
 | Enum item | Description |
 | -- | -- |
-| HITRACE_FLAG_DEFAULT = 0 | Default flag.<br>**Since**: 12 |
-| HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0 | Asynchronous call flag. When this flag is set, both synchronous and asynchronous calls are traced. By default, only synchronous calls are traced.<br>**Since**: 12 |
-| HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1 | No span flag. When this flag is set, no span information is created. By default, span information is created.<br>**Since**: 12 |
-| HITRACE_FLAG_TP_INFO = 1 << 2 | Trace point flag. When this flag is set in the debugging scenario, the HiLog logs about the trace point are printed when the [OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint) API is called. By default, the HiLog logs about the trace point are not printed.<br>**Since**: 12 |
-| HITRACE_FLAG_NO_BE_INFO = 1 << 3 | No begin and end flag. When this flag is set in the debugging scenario, the HiLog logs about the start and end of tracing are printed when the [OH_HiTrace_BeginChain](capi-trace-h.md#oh_hitrace_beginchain) and [OH_HiTrace_EndChain](capi-trace-h.md#oh_hitrace_endchain) APIs are called. By default, the HiLog logs about the start and end of tracing are not printed.<br>**Since**: 12 |
-| HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4 | Log association flag. When this flag is set, the **HiTraceId** information is not added to the HiLog logs. By default, the **<br>HiTraceId** information is added to the HiLog logs.<br>**Since**: 12 |
-| HITRACE_FLAG_FAULT_TRIGGER = 1 << 5 | Failure trigger flag. This is a reserved flag.<br>**Since**: 12 |
-| HITRACE_FLAG_D2D_TP_INFO = 1 << 6 | Device-to-device trace point flag. It is a subset of [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag), which is used in debugging scenarios. When the [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag) flag is set, the [HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag) flag does not take effect. When the [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag) flag is not set, set the [HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag) flag. In this case, when the information tracing API [OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint) is called, the HiLog of the tracing point information is printed only when the **mode** parameter is set to [HITRACE_CM_DEVICE](capi-trace-h.md#hitrace_communication_mode).<br>**Since**: 12 |
+| HITRACE_FLAG_DEFAULT = 0 | Default flag.<br>**Since**: 12<br><!--Device-HITRACE_FLAG_DEFAULT = 0--><!--Device-HITRACE_FLAG_DEFAULT = 0-End--> |
+| HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0 | Asynchronous call flag. When this flag is set, both synchronous and asynchronous calls are traced. By default, only synchronous calls are traced.<br>**Since**: 12<br><!--Device-HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0--><!--Device-HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0-End--> |
+| HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1 | No span flag. When this flag is set, no span information is created. By default, span information is created.<br>**Since**: 12<br><!--Device-HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1--><!--Device-HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1-End--> |
+| HITRACE_FLAG_TP_INFO = 1 << 2 | Trace point flag. When this flag is set in the debugging scenario, the HiLog logs about the trace point are printed when the [OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint) API is called. By default, the HiLog logs about the trace point are not printed.<br>**Since**: 12<br><!--Device-HITRACE_FLAG_TP_INFO = 1 << 2--><!--Device-HITRACE_FLAG_TP_INFO = 1 << 2-End--> |
+| HITRACE_FLAG_NO_BE_INFO = 1 << 3 | No begin and end flag. When this flag is set in the debugging scenario, the HiLog logs about the start and end of tracing are printed when the [OH_HiTrace_BeginChain](capi-trace-h.md#oh_hitrace_beginchain) and [OH_HiTrace_EndChain](capi-trace-h.md#oh_hitrace_endchain) APIs are called. By default, the HiLog logs about the start and end of tracing are not printed.<br>**Since**: 12<br><!--Device-HITRACE_FLAG_NO_BE_INFO = 1 << 3--><!--Device-HITRACE_FLAG_NO_BE_INFO = 1 << 3-End--> |
+| HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4 | Log association flag. When this flag is set, the **HiTraceId** information is not added to the HiLog logs. By default, the **<br>HiTraceId** information is added to the HiLog logs.<br>**Since**: 12<br><!--Device-HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4--><!--Device-HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4-End--> |
+| HITRACE_FLAG_FAULT_TRIGGER = 1 << 5 | Failure trigger flag. This is a reserved flag.<br>**Since**: 12<br><!--Device-HITRACE_FLAG_FAULT_TRIGGER = 1 << 5--><!--Device-HITRACE_FLAG_FAULT_TRIGGER = 1 << 5-End--> |
+| HITRACE_FLAG_D2D_TP_INFO = 1 << 6 | Device-to-device trace point flag. It is a subset of [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag), which is used in debugging scenarios. When the [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag) flag is set, the [HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag) flag does not take effect. When the [HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag) flag is not set, set the [HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag) flag. In this case, when the information tracing API [OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint) is called, the HiLog of the tracing point information is printed only when the **mode** parameter is set to [HITRACE_CM_DEVICE](capi-trace-h.md#hitrace_communication_mode).<br>**Since**: 12<br><!--Device-HITRACE_FLAG_D2D_TP_INFO = 1 << 6--><!--Device-HITRACE_FLAG_D2D_TP_INFO = 1 << 6-End--> |
 
 ### HiTrace_Tracepoint_Type
 
@@ -151,7 +151,7 @@ enum HiTrace_Tracepoint_Type
 
 Enumerates the trace point types.
 
-<!--Device-HiTrace_Tracepoint_Type--><!--Device-HiTrace_Tracepoint_Type-End-->
+<!--Device-enum HiTrace_Tracepoint_Type--><!--Device-enum HiTrace_Tracepoint_Type-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -159,11 +159,11 @@ Enumerates the trace point types.
 
 | Enum item | Description |
 | -- | -- |
-| HITRACE_TP_CS = 0 | CS trace point.<br>**Since**: 12 |
-| HITRACE_TP_CR = 1 | CR trace point.<br>**Since**: 12 |
-| HITRACE_TP_SS = 2 | SS trace point.<br>**Since**: 12 |
-| HITRACE_TP_SR = 3 | SR trace point.<br>**Since**: 12 |
-| HITRACE_TP_GENERAL = 4 | General type, which identifies the trace points except **HITRACE_TP_CS**, **HITRACE_TP_CR**, **<br>HITRACE_TP_SS**, and **HITRACE_TP_SR**.<br>**Since**: 12 |
+| HITRACE_TP_CS = 0 | CS trace point.<br>**Since**: 12<br><!--Device-HITRACE_TP_CS = 0--><!--Device-HITRACE_TP_CS = 0-End--> |
+| HITRACE_TP_CR = 1 | CR trace point.<br>**Since**: 12<br><!--Device-HITRACE_TP_CR = 1--><!--Device-HITRACE_TP_CR = 1-End--> |
+| HITRACE_TP_SS = 2 | SS trace point.<br>**Since**: 12<br><!--Device-HITRACE_TP_SS = 2--><!--Device-HITRACE_TP_SS = 2-End--> |
+| HITRACE_TP_SR = 3 | SR trace point.<br>**Since**: 12<br><!--Device-HITRACE_TP_SR = 3--><!--Device-HITRACE_TP_SR = 3-End--> |
+| HITRACE_TP_GENERAL = 4 | General type, which identifies the trace points except **HITRACE_TP_CS**, **HITRACE_TP_CR**, **<br>HITRACE_TP_SS**, and **HITRACE_TP_SR**.<br>**Since**: 12<br><!--Device-HITRACE_TP_GENERAL = 4--><!--Device-HITRACE_TP_GENERAL = 4-End--> |
 
 ### HiTrace_Communication_Mode
 
@@ -175,7 +175,7 @@ enum HiTrace_Communication_Mode
 
 Enumerates the trace communication types.
 
-<!--Device-HiTrace_Communication_Mode--><!--Device-HiTrace_Communication_Mode-End-->
+<!--Device-enum HiTrace_Communication_Mode--><!--Device-enum HiTrace_Communication_Mode-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -183,10 +183,10 @@ Enumerates the trace communication types.
 
 | Enum item | Description |
 | -- | -- |
-| HITRACE_CM_DEFAULT = 0 | Default communication.<br>**Since**: 12 |
-| HITRACE_CM_THREAD = 1 | Inter-thread communication.<br>**Since**: 12 |
-| HITRACE_CM_PROCESS = 2 | Inter-process communication (IPC).<br>**Since**: 12 |
-| HITRACE_CM_DEVICE = 3 | Inter-device communication.<br>**Since**: 12 |
+| HITRACE_CM_DEFAULT = 0 | Default communication.<br>**Since**: 12<br><!--Device-HITRACE_CM_DEFAULT = 0--><!--Device-HITRACE_CM_DEFAULT = 0-End--> |
+| HITRACE_CM_THREAD = 1 | Inter-thread communication.<br>**Since**: 12<br><!--Device-HITRACE_CM_THREAD = 1--><!--Device-HITRACE_CM_THREAD = 1-End--> |
+| HITRACE_CM_PROCESS = 2 | Inter-process communication (IPC).<br>**Since**: 12<br><!--Device-HITRACE_CM_PROCESS = 2--><!--Device-HITRACE_CM_PROCESS = 2-End--> |
+| HITRACE_CM_DEVICE = 3 | Inter-device communication.<br>**Since**: 12<br><!--Device-HITRACE_CM_DEVICE = 3--><!--Device-HITRACE_CM_DEVICE = 3-End--> |
 
 ### HiTrace_Output_Level
 
@@ -198,7 +198,7 @@ enum HiTrace_Output_Level
 
 Enumerates the HiTrace output levels. The trace output level lower than the threshold does not take effect. The threshold for the log version is [HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level), and that for the no-log version is [HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level).
 
-<!--Device-HiTrace_Output_Level--><!--Device-HiTrace_Output_Level-End-->
+<!--Device-enum HiTrace_Output_Level--><!--Device-enum HiTrace_Output_Level-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -206,11 +206,11 @@ Enumerates the HiTrace output levels. The trace output level lower than the thre
 
 | Enum item | Description |
 | -- | -- |
-| HITRACE_LEVEL_DEBUG = 0 | Level used only for debugging, which has the lowest priority.<br>**Since**: 19 |
-| HITRACE_LEVEL_INFO = 1 | Level for the log version.<br>**Since**: 19 |
-| HITRACE_LEVEL_CRITICAL = 2 | Level for the log version, which has a higher priority than **INFO**.<br>**Since**: 19 |
-| HITRACE_LEVEL_COMMERCIAL = 3 | Level for the nolog version, which has the highest priority.<br>**Since**: 19 |
-| HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL | The maximum output level.<br>**Since**: 19 |
+| HITRACE_LEVEL_DEBUG = 0 | Level used only for debugging, which has the lowest priority.<br>**Since**: 19<br><!--Device-HITRACE_LEVEL_DEBUG = 0--><!--Device-HITRACE_LEVEL_DEBUG = 0-End--> |
+| HITRACE_LEVEL_INFO = 1 | Level for the log version.<br>**Since**: 19<br><!--Device-HITRACE_LEVEL_INFO = 1--><!--Device-HITRACE_LEVEL_INFO = 1-End--> |
+| HITRACE_LEVEL_CRITICAL = 2 | Level for the log version, which has a higher priority than **INFO**.<br>**Since**: 19<br><!--Device-HITRACE_LEVEL_CRITICAL = 2--><!--Device-HITRACE_LEVEL_CRITICAL = 2-End--> |
+| HITRACE_LEVEL_COMMERCIAL = 3 | Level for the nolog version, which has the highest priority.<br>**Since**: 19<br><!--Device-HITRACE_LEVEL_COMMERCIAL = 3--><!--Device-HITRACE_LEVEL_COMMERCIAL = 3-End--> |
+| HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL | The maximum output level.<br>**Since**: 19<br><!--Device-HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL--><!--Device-HITRACE_LEVEL_MAX = HITRACE_LEVEL_COMMERCIAL-End--> |
 
 
 ## Function description

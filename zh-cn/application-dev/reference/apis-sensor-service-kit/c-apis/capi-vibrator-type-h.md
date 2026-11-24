@@ -40,7 +40,7 @@ enum Vibrator_ErrorCode : int32_t
 
 定义错误码，在使用振动相关API时，若发生异常情况会返回相应的错误码。
 
-<!--Device-Vibrator_ErrorCode--><!--Device-Vibrator_ErrorCode-End-->
+<!--Device-enum Vibrator_ErrorCode : int32_t--><!--Device-enum Vibrator_ErrorCode : int32_t-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -48,10 +48,10 @@ enum Vibrator_ErrorCode : int32_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PERMISSION_DENIED = 201 | 权限校验失败，请检查是否已申请所需权限（如ohos.permission.VIBRATE）。 |
-| PARAMETER_ERROR = 401 | 参数检查失败，包括必选参数未传入、参数类型错误等。 |
-| UNSUPPORTED = 801 | 设备不支持此API。通常在设备已支持该SysCap时，用于处理少量不支持的情况。 |
-| DEVICE_OPERATION_FAILED = 14600101 | 设备操作失败，请检查设备状态和参数配置。 |
+| PERMISSION_DENIED = 201 | 权限校验失败，请检查是否已申请所需权限（如ohos.permission.VIBRATE）。<br><!--Device-PERMISSION_DENIED = 201--><!--Device-PERMISSION_DENIED = 201-End--> |
+| PARAMETER_ERROR = 401 | 参数检查失败，包括必选参数未传入、参数类型错误等。<br><!--Device-PARAMETER_ERROR = 401--><!--Device-PARAMETER_ERROR = 401-End--> |
+| UNSUPPORTED = 801 | 设备不支持此API。通常在设备已支持该SysCap时，用于处理少量不支持的情况。<br><!--Device-UNSUPPORTED = 801--><!--Device-UNSUPPORTED = 801-End--> |
+| DEVICE_OPERATION_FAILED = 14600101 | 设备操作失败，请检查设备状态和参数配置。<br><!--Device-DEVICE_OPERATION_FAILED = 14600101--><!--Device-DEVICE_OPERATION_FAILED = 14600101-End--> |
 
 ### Vibrator_Usage
 
@@ -63,7 +63,7 @@ enum Vibrator_Usage
 
 振动优先级，用于定义不同场景下振动的优先级，高优先级的振动会打断低优先级的振动。使用时建议：根据应用场景选择合适的优先级；在需要连续振动的场景中保持一致优先级，避免频繁切换导致性能损耗； 物理反馈和触摸类振动建议使用较高优先级以确保及时响应。
 
-<!--Device-Vibrator_Usage--><!--Device-Vibrator_Usage-End-->
+<!--Device-enum Vibrator_Usage--><!--Device-enum Vibrator_Usage-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -71,15 +71,15 @@ enum Vibrator_Usage
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIBRATOR_USAGE_UNKNOWN = 0 | 未知场景，最低优先级。用于无法确定具体使用场景时，系统按默认策略处理。 |
-| VIBRATOR_USAGE_ALARM = 1 | 报警。用于闹钟、倒计时等提醒场景，振动强度较高，持续时间长。 |
-| VIBRATOR_USAGE_RING = 2 | 铃声。用于电话呼入场景，振动模式为循环振动，便于用户及时接听。 |
-| VIBRATOR_USAGE_NOTIFICATION = 3 | 通知。用于系统通知、应用消息等提醒场景，振动较短，提醒用户查看。 |
-| VIBRATOR_USAGE_COMMUNICATION = 4 | 通信。用于通话、即时通讯消息、短信等通信场景的振动反馈，振动模式为短促单次振动。 |
-| VIBRATOR_USAGE_TOUCH = 5 | 触摸。用于屏幕触摸、按键操作等反馈场景，振动极短，提供操作确认感。 |
-| VIBRATOR_USAGE_MEDIA = 6 | 媒体。用于音乐、视频等媒体应用场景，振动与媒体内容同步，增强沉浸体验。 |
-| VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | 物理反馈。用于游戏、模拟等需要物理反馈的场景，提供物理按键反馈、触觉力反馈等物理交互体验，振动模式可自定义，模拟真实触感。 |
-| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | 模拟现实。用于VR/AR等沉浸式场景的触觉反馈，振动强度和模式精确可控，提供逼真的环境反馈。 |
-| VIBRATOR_USAGE_MAX |  |
+| VIBRATOR_USAGE_UNKNOWN = 0 | 未知场景，最低优先级。用于无法确定具体使用场景时，系统按默认策略处理。<br><!--Device-VIBRATOR_USAGE_UNKNOWN = 0--><!--Device-VIBRATOR_USAGE_UNKNOWN = 0-End--> |
+| VIBRATOR_USAGE_ALARM = 1 | 报警。用于闹钟、倒计时等提醒场景，振动强度较高，持续时间长。<br><!--Device-VIBRATOR_USAGE_ALARM = 1--><!--Device-VIBRATOR_USAGE_ALARM = 1-End--> |
+| VIBRATOR_USAGE_RING = 2 | 铃声。用于电话呼入场景，振动模式为循环振动，便于用户及时接听。<br><!--Device-VIBRATOR_USAGE_RING = 2--><!--Device-VIBRATOR_USAGE_RING = 2-End--> |
+| VIBRATOR_USAGE_NOTIFICATION = 3 | 通知。用于系统通知、应用消息等提醒场景，振动较短，提醒用户查看。<br><!--Device-VIBRATOR_USAGE_NOTIFICATION = 3--><!--Device-VIBRATOR_USAGE_NOTIFICATION = 3-End--> |
+| VIBRATOR_USAGE_COMMUNICATION = 4 | 通信。用于通话、即时通讯消息、短信等通信场景的振动反馈，振动模式为短促单次振动。<br><!--Device-VIBRATOR_USAGE_COMMUNICATION = 4--><!--Device-VIBRATOR_USAGE_COMMUNICATION = 4-End--> |
+| VIBRATOR_USAGE_TOUCH = 5 | 触摸。用于屏幕触摸、按键操作等反馈场景，振动极短，提供操作确认感。<br><!--Device-VIBRATOR_USAGE_TOUCH = 5--><!--Device-VIBRATOR_USAGE_TOUCH = 5-End--> |
+| VIBRATOR_USAGE_MEDIA = 6 | 媒体。用于音乐、视频等媒体应用场景，振动与媒体内容同步，增强沉浸体验。<br><!--Device-VIBRATOR_USAGE_MEDIA = 6--><!--Device-VIBRATOR_USAGE_MEDIA = 6-End--> |
+| VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | 物理反馈。用于游戏、模拟等需要物理反馈的场景，提供物理按键反馈、触觉力反馈等物理交互体验，振动模式可自定义，模拟真实触感。<br><!--Device-VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7--><!--Device-VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7-End--> |
+| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | 模拟现实。用于VR/AR等沉浸式场景的触觉反馈，振动强度和模式精确可控，提供逼真的环境反馈。<br><!--Device-VIBRATOR_USAGE_SIMULATED_REALITY = 8--><!--Device-VIBRATOR_USAGE_SIMULATED_REALITY = 8-End--> |
+| VIBRATOR_USAGE_MAX | <!--Device-VIBRATOR_USAGE_MAX--><!--Device-VIBRATOR_USAGE_MAX-End--> |
 
 

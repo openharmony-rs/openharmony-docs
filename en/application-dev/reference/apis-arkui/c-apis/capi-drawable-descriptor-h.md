@@ -70,7 +70,7 @@ enum DrawableDescriptor_AnimationStatus
 
 Enumerates the playback states of DrawableDescriptor animations.
 
-<!--Device-DrawableDescriptor_AnimationStatus--><!--Device-DrawableDescriptor_AnimationStatus-End-->
+<!--Device-enum DrawableDescriptor_AnimationStatus--><!--Device-enum DrawableDescriptor_AnimationStatus-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,10 +78,10 @@ Enumerates the playback states of DrawableDescriptor animations.
 
 | Enum item | Description |
 | -- | -- |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0 | The animation is in the initial state.<br>**Since**: 22 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1 | The animation is being played.<br>**Since**: 22 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.<br>**Since**: 22 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.<br>**Since**: 22 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0 | The animation is in the initial state.<br>**Since**: 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1 | The animation is being played.<br>**Since**: 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.<br>**Since**: 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.<br>**Since**: 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3-End--> |
 
 ### DrawableDescriptor_AnimationStopMode
 
@@ -93,7 +93,7 @@ enum DrawableDescriptor_AnimationStopMode
 
 Enumerates the stop modes of [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) animations.
 
-<!--Device-DrawableDescriptor_AnimationStopMode--><!--Device-DrawableDescriptor_AnimationStopMode-End-->
+<!--Device-enum DrawableDescriptor_AnimationStopMode--><!--Device-enum DrawableDescriptor_AnimationStopMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,8 +101,8 @@ Enumerates the stop modes of [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-
 
 | Enum item | Description |
 | -- | -- |
-| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 | The animation returns to the first frame when it stops.<br>**Since**: 24 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 | The animation stays at the last frame when it stops.<br>**Since**: 24 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 | The animation returns to the first frame when it stops.<br>**Since**: 24<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 | The animation stays at the last frame when it stops.<br>**Since**: 24<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1-End--> |
 
 
 ## Function description

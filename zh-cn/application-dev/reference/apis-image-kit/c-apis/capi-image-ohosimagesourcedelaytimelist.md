@@ -24,9 +24,9 @@ struct OhosImageSourceDelayTimeList {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t* delayTimeList | 图像源延迟时间列表头地址。<br>**起始版本：** 10 |
-| size_t size = 0 | Size of the image source delay time list.<br>**起始版本：** 10 |
-| int32_t* delayTimeList | 图像源延迟时间列表头地址。<br>**起始版本：** 10 |
-| size_t size | Size of the image source delay time list.<br>**起始版本：** 10 |
+| int32_t* delayTimeList | 图像源延迟时间列表头地址。<br>**起始版本：** 10<br><!--Device-int32_t* delayTimeList--><!--Device-int32_t* delayTimeList-End--> |
+| size_t size = 0 | Size of the image source delay time list.<br>**起始版本：** 10<br><!--Device-size_t size = 0--><!--Device-size_t size = 0-End--> |
+| int32_t* delayTimeList | 图像源延迟时间列表头地址。<br>**起始版本：** 10<br><!--Device-int32_t* delayTimeList--><!--Device-int32_t* delayTimeList-End--> |
+| size_t size | Size of the image source delay time list.<br>**起始版本：** 10<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

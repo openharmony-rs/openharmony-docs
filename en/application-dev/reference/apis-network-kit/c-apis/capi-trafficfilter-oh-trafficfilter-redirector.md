@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_Redirector OH_TrafficFilter_Redirector
 
 ## Overview
 
-Traffic redirector
+Defines a traffic redirector.
 
 <!--Device-typedef struct OH_TrafficFilter_Redirector OH_TrafficFilter_Redirector--><!--Device-typedef struct OH_TrafficFilter_Redirector OH_TrafficFilter_Redirector-End-->
 

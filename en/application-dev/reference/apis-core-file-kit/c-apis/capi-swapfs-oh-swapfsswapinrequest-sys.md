@@ -26,8 +26,8 @@ Request parameters for swap-in operation.
 
 | Name | Description |
 | -- | -- |
-| uint64_t keyId | The keyId returned by a previous swap-out operation.<br>**Since**: 26.0.0 |
-| void *buffer | Pointer to the buffer for receiving swapped-in data. Must not be NULL. In DIO mode, the buffer address and size must be aligned to SWAPFS_DIO_ALIGNMENT, and bufferSize must be greater than or equal to occupiedSize. In buffered mode, bufferSize must be greater than or equal to dataSize.<br>**Since**: 26.0.0 |
-| uint64_t bufferSize | Size of the receiving buffer in bytes.<br>**Since**: 26.0.0 |
+| uint64_t keyId | The keyId returned by a previous swap-out operation.<br>**Since**: 26.0.0<br><!--Device-uint64_t keyId--><!--Device-uint64_t keyId-End--> |
+| void *buffer | Pointer to the buffer for receiving swapped-in data. Must not be NULL. In DIO mode, the buffer address and size must be aligned to SWAPFS_DIO_ALIGNMENT, and bufferSize must be greater than or equal to occupiedSize. In buffered mode, bufferSize must be greater than or equal to dataSize.<br>**Since**: 26.0.0<br><!--Device-void *buffer--><!--Device-void *buffer-End--> |
+| uint64_t bufferSize | Size of the receiving buffer in bytes.<br>**Since**: 26.0.0<br><!--Device-uint64_t bufferSize--><!--Device-uint64_t bufferSize-End--> |
 
 

@@ -24,9 +24,9 @@ The struct describes the configuration such as the size, type, and timestamp of 
 
 | Name | Description |
 | -- | -- |
-| uint8_t *buf | Audio buffer memory block |
-| int32_t size | Audio buffer memory block size |
-| int64_t timestamp | Audio buffer timestamp info, in nanosecond |
-| [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) type | Audio capture source type |
+| uint8_t *buf | Audio buffer memory block<br><!--Device-uint8_t *buf--><!--Device-uint8_t *buf-End--> |
+| int32_t size | Audio buffer memory block size<br><!--Device-int32_t size--><!--Device-int32_t size-End--> |
+| int64_t timestamp | Audio buffer timestamp info, in nanosecond<br><!--Device-int64_t timestamp--><!--Device-int64_t timestamp-End--> |
+| [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) type | Audio capture source type<br><!--Device-OH_AudioCaptureSourceType type--><!--Device-OH_AudioCaptureSourceType type-End--> |
 
 

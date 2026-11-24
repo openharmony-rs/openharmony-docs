@@ -24,7 +24,7 @@ typedef struct OH_Huks_Blob {...} OH_Huks_Blob
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t size | 数据大小。 |
-| uint8_t *data | 指向数据内存的指针。 |
+| uint32_t size | 数据大小。<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| uint8_t *data | 指向数据内存的指针。<br><!--Device-uint8_t *data--><!--Device-uint8_t *data-End--> |
 
 

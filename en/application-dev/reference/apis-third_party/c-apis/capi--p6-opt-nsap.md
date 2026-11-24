@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ip6on_type |  |
-| uint8_t ip6on_len |  |
-| uint8_t ip6on_src_nsap_len |  |
-| uint8_t ip6on_dst_nsap_len |  |
+| uint8_t ip6on_type | <!--Device-uint8_t ip6on_type--><!--Device-uint8_t ip6on_type-End--> |
+| uint8_t ip6on_len | <!--Device-uint8_t ip6on_len--><!--Device-uint8_t ip6on_len-End--> |
+| uint8_t ip6on_src_nsap_len | <!--Device-uint8_t ip6on_src_nsap_len--><!--Device-uint8_t ip6on_src_nsap_len-End--> |
+| uint8_t ip6on_dst_nsap_len | <!--Device-uint8_t ip6on_dst_nsap_len--><!--Device-uint8_t ip6on_dst_nsap_len-End--> |
 
 

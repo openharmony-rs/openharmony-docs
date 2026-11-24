@@ -24,7 +24,7 @@ typedef struct Camera_Point {...} Camera_Point
 
 | 名称 | 描述 |
 | -- | -- |
-| double x | X坐标，取值范围为[0,1]。 |
-| double y | Y坐标，取值范围为[0,1]。 |
+| double x | X坐标，取值范围为[0,1]。<br><!--Device-double x--><!--Device-double x-End--> |
+| double y | Y坐标，取值范围为[0,1]。<br><!--Device-double y--><!--Device-double y-End--> |
 
 

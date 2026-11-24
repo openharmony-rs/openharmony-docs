@@ -26,14 +26,14 @@ OH_SwapfsStats用于获取swapfs管理器的统计信息，包括活跃key数量
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t totalKeys | 管理器中活跃key的总数。<br>**起始版本：** 26.0.0 |
-| uint64_t totalDataSize | 所有key的原始数据总大小，单位：Byte。<br>**起始版本：** 26.0.0 |
-| uint64_t totalOccupiedSize | 所有key的对齐后文件总大小，单位：Byte。<br>**起始版本：** 26.0.0 |
-| uint64_t spaceLimitBytes | 配置的交换空间上限，单位：Byte。<br>**起始版本：** 26.0.0 |
-| bool featureEnabled | 换出功能是否已启用。当设备空间低于5GB或控制策略禁用该功能时为false。<br>**起始版本：** 26.0.0 |
-| OH_SwapfsDisableReason disableReason | 换出功能被禁用的原因。仅在featureEnabled为false时有效。<br>**起始版本：** 26.0.0 |
-| uint64_t accumulatedWriteBytes | 成功换出操作累计写入量，单位：Byte。<br>**起始版本：** 26.0.0 |
-| int64_t lastSpaceCheckTime | 最近一次检查设备空间的时间戳（Unix纪元，单位为ms）。<br>**起始版本：** 26.0.0 |
-| uint64_t availableDeviceSpace | 最近一次检查时缓存设备的可用存储空间，单位：Byte。<br>**起始版本：** 26.0.0 |
+| uint64_t totalKeys | 管理器中活跃key的总数。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t totalKeys--><!--Device-uint64_t totalKeys-End--> |
+| uint64_t totalDataSize | 所有key的原始数据总大小，单位：Byte。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t totalDataSize--><!--Device-uint64_t totalDataSize-End--> |
+| uint64_t totalOccupiedSize | 所有key的对齐后文件总大小，单位：Byte。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t totalOccupiedSize--><!--Device-uint64_t totalOccupiedSize-End--> |
+| uint64_t spaceLimitBytes | 配置的交换空间上限，单位：Byte。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t spaceLimitBytes--><!--Device-uint64_t spaceLimitBytes-End--> |
+| bool featureEnabled | 换出功能是否已启用。当设备空间低于5GB或控制策略禁用该功能时为false。<br>**起始版本：** 26.0.0<br><!--Device-bool featureEnabled--><!--Device-bool featureEnabled-End--> |
+| OH_SwapfsDisableReason disableReason | 换出功能被禁用的原因。仅在featureEnabled为false时有效。<br>**起始版本：** 26.0.0<br><!--Device-OH_SwapfsDisableReason disableReason--><!--Device-OH_SwapfsDisableReason disableReason-End--> |
+| uint64_t accumulatedWriteBytes | 成功换出操作累计写入量，单位：Byte。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t accumulatedWriteBytes--><!--Device-uint64_t accumulatedWriteBytes-End--> |
+| int64_t lastSpaceCheckTime | 最近一次检查设备空间的时间戳（Unix纪元，单位为ms）。<br>**起始版本：** 26.0.0<br><!--Device-int64_t lastSpaceCheckTime--><!--Device-int64_t lastSpaceCheckTime-End--> |
+| uint64_t availableDeviceSpace | 最近一次检查时缓存设备的可用存储空间，单位：Byte。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t availableDeviceSpace--><!--Device-uint64_t availableDeviceSpace-End--> |
 
 

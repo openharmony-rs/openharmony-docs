@@ -67,7 +67,7 @@ enum anonymous0
 
 PixelMap透明度类型的枚举。
 
-<!--Device-anonymous0--><!--Device-anonymous0-End-->
+<!--Device-enum anonymous0--><!--Device-enum anonymous0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -75,10 +75,10 @@ PixelMap透明度类型的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0 | 未知的格式。 |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1 | 不透明的格式。 |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2 | 预乘的格式。 |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3 | 非预乘的格式。 |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0 | 未知的格式。<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0-End--> |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1 | 不透明的格式。<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1-End--> |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2 | 预乘的格式。<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2-End--> |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3 | 非预乘的格式。<br><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3--><!--Device-OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3-End--> |
 
 ### anonymous1
 
@@ -90,7 +90,7 @@ enum anonymous1
 
 PixelMap编辑类型的枚举。
 
-<!--Device-anonymous1--><!--Device-anonymous1-End-->
+<!--Device-enum anonymous1--><!--Device-enum anonymous1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -98,8 +98,8 @@ PixelMap编辑类型的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OHOS_PIXEL_MAP_READ_ONLY = 0 | 只读的格式。 |
-| OHOS_PIXEL_MAP_EDITABLE = 1 | 可编辑的格式。 |
+| OHOS_PIXEL_MAP_READ_ONLY = 0 | 只读的格式。<br><!--Device-OHOS_PIXEL_MAP_READ_ONLY = 0--><!--Device-OHOS_PIXEL_MAP_READ_ONLY = 0-End--> |
+| OHOS_PIXEL_MAP_EDITABLE = 1 | 可编辑的格式。<br><!--Device-OHOS_PIXEL_MAP_EDITABLE = 1--><!--Device-OHOS_PIXEL_MAP_EDITABLE = 1-End--> |
 
 ### OH_PixelMap_AntiAliasingLevel
 
@@ -111,7 +111,7 @@ enum OH_PixelMap_AntiAliasingLevel
 
 Pixelmap缩放时采用的缩放算法。
 
-<!--Device-OH_PixelMap_AntiAliasingLevel--><!--Device-OH_PixelMap_AntiAliasingLevel-End-->
+<!--Device-enum OH_PixelMap_AntiAliasingLevel--><!--Device-enum OH_PixelMap_AntiAliasingLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -119,10 +119,10 @@ Pixelmap缩放时采用的缩放算法。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_PixelMap_AntiAliasing_NONE = 0 | 最近邻插值算法。 |
-| OH_PixelMap_AntiAliasing_LOW = 1 | 双线性插值算法。 |
-| OH_PixelMap_AntiAliasing_MEDIUM = 2 | 双线性插值算法，同时开启Mipmap。缩小图片时建议使用。 |
-| OH_PixelMap_AntiAliasing_HIGH = 3 | 三次插值算法。 |
+| OH_PixelMap_AntiAliasing_NONE = 0 | 最近邻插值算法。<br><!--Device-OH_PixelMap_AntiAliasing_NONE = 0--><!--Device-OH_PixelMap_AntiAliasing_NONE = 0-End--> |
+| OH_PixelMap_AntiAliasing_LOW = 1 | 双线性插值算法。<br><!--Device-OH_PixelMap_AntiAliasing_LOW = 1--><!--Device-OH_PixelMap_AntiAliasing_LOW = 1-End--> |
+| OH_PixelMap_AntiAliasing_MEDIUM = 2 | 双线性插值算法，同时开启Mipmap。缩小图片时建议使用。<br><!--Device-OH_PixelMap_AntiAliasing_MEDIUM = 2--><!--Device-OH_PixelMap_AntiAliasing_MEDIUM = 2-End--> |
+| OH_PixelMap_AntiAliasing_HIGH = 3 | 三次插值算法。<br><!--Device-OH_PixelMap_AntiAliasing_HIGH = 3--><!--Device-OH_PixelMap_AntiAliasing_HIGH = 3-End--> |
 
 
 ## 函数说明

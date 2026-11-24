@@ -24,10 +24,10 @@ typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t* tids | 待采样的线程号数组。最大支持10个线程的同时采样，数组长度超出时，将取前10个线程进行采样。 |
-| uint32_t size | tids指向的数组长度。该值必须与tids数组的实际长度一致。 |
-| uint32_t frequency | 采样频率，取值范围[1-200]，单位Hz。超出取值范围时取默认值100。 |
-| uint32_t duration | 采样时长，取值范围[1000-10000]，单位ms。小于1000时，接口调用异常；大于10000时，取10000。 |
-| uint32_t reserved | 保留字段。 |
+| uint32_t* tids | 待采样的线程号数组。最大支持10个线程的同时采样，数组长度超出时，将取前10个线程进行采样。<br><!--Device-uint32_t* tids--><!--Device-uint32_t* tids-End--> |
+| uint32_t size | tids指向的数组长度。该值必须与tids数组的实际长度一致。<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| uint32_t frequency | 采样频率，取值范围[1-200]，单位Hz。超出取值范围时取默认值100。<br><!--Device-uint32_t frequency--><!--Device-uint32_t frequency-End--> |
+| uint32_t duration | 采样时长，取值范围[1000-10000]，单位ms。小于1000时，接口调用异常；大于10000时，取10000。<br><!--Device-uint32_t duration--><!--Device-uint32_t duration-End--> |
+| uint32_t reserved | 保留字段。<br><!--Device-uint32_t reserved--><!--Device-uint32_t reserved-End--> |
 
 

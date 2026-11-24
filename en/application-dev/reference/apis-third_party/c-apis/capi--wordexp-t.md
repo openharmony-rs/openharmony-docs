@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| size_t we_wordc |  |
-| char **we_wordv |  |
-| size_t we_offs |  |
+| size_t we_wordc | <!--Device-size_t we_wordc--><!--Device-size_t we_wordc-End--> |
+| char **we_wordv | <!--Device-char **we_wordv--><!--Device-char **we_wordv-End--> |
+| size_t we_offs | <!--Device-size_t we_offs--><!--Device-size_t we_offs-End--> |
 
 

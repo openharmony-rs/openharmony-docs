@@ -60,7 +60,7 @@ enum HiCollie_ErrorCode
 
 Enumerates the error codes used in the HiCollie module.
 
-<!--Device-HiCollie_ErrorCode--><!--Device-HiCollie_ErrorCode-End-->
+<!--Device-enum HiCollie_ErrorCode--><!--Device-enum HiCollie_ErrorCode-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiCollie
 
@@ -68,15 +68,15 @@ Enumerates the error codes used in the HiCollie module.
 
 | Enum item | Description |
 | -- | -- |
-| HICOLLIE_SUCCESS = 0 | The operation is successful.<br>**Since**: 12 |
-| HICOLLIE_INVALID_ARGUMENT = 401 | The parameter is invalid.<br>**Since**: 12 |
-| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | The called thread is incorrect.<br>**Since**: 12 |
-| HICOLLIE_REMOTE_FAILED = 29800002 | The remote call fails.<br>**Since**: 12 |
-| HICOLLIE_INVALID_TIMER_NAME = 29800003 | The timer name is invalid.<br>**Since**: 18 |
-| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | The function execution timeout value is invalid.<br>**Since**: 18 |
-| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | The process to be accessed is incorrect.<br>**Since**: 18 |
-| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | The pointer used to save the returned timer ID is null.<br>**Since**: 18 |
-| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | The reporting frequency exceeds the limit.<br>**Since**: 24 |
+| HICOLLIE_SUCCESS = 0 | The operation is successful.<br>**Since**: 12<br><!--Device-HICOLLIE_SUCCESS = 0--><!--Device-HICOLLIE_SUCCESS = 0-End--> |
+| HICOLLIE_INVALID_ARGUMENT = 401 | The parameter is invalid.<br>**Since**: 12<br><!--Device-HICOLLIE_INVALID_ARGUMENT = 401--><!--Device-HICOLLIE_INVALID_ARGUMENT = 401-End--> |
+| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | The called thread is incorrect.<br>**Since**: 12<br><!--Device-HICOLLIE_WRONG_THREAD_CONTEXT = 29800001--><!--Device-HICOLLIE_WRONG_THREAD_CONTEXT = 29800001-End--> |
+| HICOLLIE_REMOTE_FAILED = 29800002 | The remote call fails.<br>**Since**: 12<br><!--Device-HICOLLIE_REMOTE_FAILED = 29800002--><!--Device-HICOLLIE_REMOTE_FAILED = 29800002-End--> |
+| HICOLLIE_INVALID_TIMER_NAME = 29800003 | The timer name is invalid.<br>**Since**: 18<br><!--Device-HICOLLIE_INVALID_TIMER_NAME = 29800003--><!--Device-HICOLLIE_INVALID_TIMER_NAME = 29800003-End--> |
+| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | The function execution timeout value is invalid.<br>**Since**: 18<br><!--Device-HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004--><!--Device-HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004-End--> |
+| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | The process to be accessed is incorrect.<br>**Since**: 18<br><!--Device-HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005--><!--Device-HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005-End--> |
+| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | The pointer used to save the returned timer ID is null.<br>**Since**: 18<br><!--Device-HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006--><!--Device-HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006-End--> |
+| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | The reporting frequency exceeds the limit.<br>**Since**: 24<br><!--Device-OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007--><!--Device-OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007-End--> |
 
 ### HiCollie_Flag
 
@@ -88,7 +88,7 @@ enum HiCollie_Flag
 
 Enumerates the actions to be performed when a function times out.
 
-<!--Device-HiCollie_Flag--><!--Device-HiCollie_Flag-End-->
+<!--Device-enum HiCollie_Flag--><!--Device-enum HiCollie_Flag-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiCollie
 
@@ -96,10 +96,10 @@ Enumerates the actions to be performed when a function times out.
 
 | Enum item | Description |
 | -- | -- |
-| HICOLLIE_FLAG_DEFAULT = (~0) | Default action is generate log file and do recovery.<br>**Since**: 18 |
-| HICOLLIE_FLAG_NOOP = (0) | Do nothing except call the callback function<br>**Since**: 18 |
-| HICOLLIE_FLAG_LOG = (1 << 0) | Generate log file<br>**Since**: 18 |
-| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Do recovery by call the exit syscall<br>**Since**: 18 |
+| HICOLLIE_FLAG_DEFAULT = (~0) | Default action is generate log file and do recovery.<br>**Since**: 18<br><!--Device-HICOLLIE_FLAG_DEFAULT = (~0)--><!--Device-HICOLLIE_FLAG_DEFAULT = (~0)-End--> |
+| HICOLLIE_FLAG_NOOP = (0) | Do nothing except call the callback function<br>**Since**: 18<br><!--Device-HICOLLIE_FLAG_NOOP = (0)--><!--Device-HICOLLIE_FLAG_NOOP = (0)-End--> |
+| HICOLLIE_FLAG_LOG = (1 << 0) | Generate log file<br>**Since**: 18<br><!--Device-HICOLLIE_FLAG_LOG = (1 << 0)--><!--Device-HICOLLIE_FLAG_LOG = (1 << 0)-End--> |
+| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Do recovery by call the exit syscall<br>**Since**: 18<br><!--Device-HICOLLIE_FLAG_RECOVERY = (1 << 1)--><!--Device-HICOLLIE_FLAG_RECOVERY = (1 << 1)-End--> |
 
 ### OH_HiCollie_Freeze_Type
 
@@ -111,7 +111,7 @@ enum OH_HiCollie_Freeze_Type
 
 Enumerates the freeze event types returned by **FreezeCallback**.
 
-<!--Device-OH_HiCollie_Freeze_Type--><!--Device-OH_HiCollie_Freeze_Type-End-->
+<!--Device-enum OH_HiCollie_Freeze_Type--><!--Device-enum OH_HiCollie_Freeze_Type-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiCollie
 
@@ -119,14 +119,14 @@ Enumerates the freeze event types returned by **FreezeCallback**.
 
 | Enum item | Description |
 | -- | -- |
-| OH_THREAD_BLOCK_3S | The main thread times out for one period.<br>**Since**: 24 |
-| OH_THREAD_BLOCK_6S | The main thread times out for two periods.<br>**Since**: 24 |
-| OH_LIFECYCLE_HALF_TIMEOUT | The ability lifecycle times out for one period.<br>**Since**: 24 |
-| OH_LIFECYCLE_TIMEOUT | The ability lifecycle times out for two periods.<br>**Since**: 24 |
-| OH_APP_INPUT_BLOCK | Input event processing timeout.<br>**Since**: 24 |
-| OH_BUSINESS_THREAD_BLOCK_3S | A 3s freeze event is reported through [OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report).<br>**Since**: 24 |
-| OH_BUSINESS_THREAD_BLOCK_6S | A 6s freeze event is reported through [OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report).<br>**Since**: 24 |
-| OH_BUSINESS_INPUT_BLOCK | A freeze event is reported through [OH_HiCollie_ReportInputBlock](capi-hicollie-h.md#oh_hicollie_reportinputblock).<br>**Since**: 24 |
+| OH_THREAD_BLOCK_3S | The main thread times out for one period.<br>**Since**: 24<br><!--Device-OH_THREAD_BLOCK_3S--><!--Device-OH_THREAD_BLOCK_3S-End--> |
+| OH_THREAD_BLOCK_6S | The main thread times out for two periods.<br>**Since**: 24<br><!--Device-OH_THREAD_BLOCK_6S--><!--Device-OH_THREAD_BLOCK_6S-End--> |
+| OH_LIFECYCLE_HALF_TIMEOUT | The ability lifecycle times out for one period.<br>**Since**: 24<br><!--Device-OH_LIFECYCLE_HALF_TIMEOUT--><!--Device-OH_LIFECYCLE_HALF_TIMEOUT-End--> |
+| OH_LIFECYCLE_TIMEOUT | The ability lifecycle times out for two periods.<br>**Since**: 24<br><!--Device-OH_LIFECYCLE_TIMEOUT--><!--Device-OH_LIFECYCLE_TIMEOUT-End--> |
+| OH_APP_INPUT_BLOCK | Input event processing timeout.<br>**Since**: 24<br><!--Device-OH_APP_INPUT_BLOCK--><!--Device-OH_APP_INPUT_BLOCK-End--> |
+| OH_BUSINESS_THREAD_BLOCK_3S | A 3s freeze event is reported through [OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report).<br>**Since**: 24<br><!--Device-OH_BUSINESS_THREAD_BLOCK_3S--><!--Device-OH_BUSINESS_THREAD_BLOCK_3S-End--> |
+| OH_BUSINESS_THREAD_BLOCK_6S | A 6s freeze event is reported through [OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report).<br>**Since**: 24<br><!--Device-OH_BUSINESS_THREAD_BLOCK_6S--><!--Device-OH_BUSINESS_THREAD_BLOCK_6S-End--> |
+| OH_BUSINESS_INPUT_BLOCK | A freeze event is reported through [OH_HiCollie_ReportInputBlock](capi-hicollie-h.md#oh_hicollie_reportinputblock).<br>**Since**: 24<br><!--Device-OH_BUSINESS_INPUT_BLOCK--><!--Device-OH_BUSINESS_INPUT_BLOCK-End--> |
 
 
 ## Function description

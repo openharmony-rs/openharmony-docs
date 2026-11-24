@@ -49,7 +49,7 @@ enum OH_Huks_ExternalCryptoTag
 
 Enumerates the tag values used in a parameter set.
 
-<!--Device-OH_Huks_ExternalCryptoTag--><!--Device-OH_Huks_ExternalCryptoTag-End-->
+<!--Device-enum OH_Huks_ExternalCryptoTag--><!--Device-enum OH_Huks_ExternalCryptoTag-End-->
 
 **System capability**: SystemCapability.Security.Huks.CryptoExtension
 
@@ -57,12 +57,12 @@ Enumerates the tag values used in a parameter set.
 
 | Enum item | Description |
 | -- | -- |
-| OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001 | PIN code.<br>**Since**: 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002 | Ability name.<br>**Since**: 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003 | Extra data.<br>**Since**: 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004 | UID of the caller.<br>**Since**: 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005 | Purpose of the certificate chain.<br>**Since**: 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006 | Timeout interval for obtaining properties, in seconds.<br>**Since**: 22 |
+| OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001 | PIN code.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002 | Ability name.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003 | Extra data.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004 | UID of the caller.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005 | Purpose of the certificate chain.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006 | Timeout interval for obtaining properties, in seconds.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006-End--> |
 
 ### OH_Huks_ExternalPinAuthState
 
@@ -74,7 +74,7 @@ enum OH_Huks_ExternalPinAuthState
 
 Enumerates the UKey PIN authentication states.
 
-<!--Device-OH_Huks_ExternalPinAuthState--><!--Device-OH_Huks_ExternalPinAuthState-End-->
+<!--Device-enum OH_Huks_ExternalPinAuthState--><!--Device-enum OH_Huks_ExternalPinAuthState-End-->
 
 **System capability**: SystemCapability.Security.Huks.CryptoExtension
 
@@ -82,8 +82,8 @@ Enumerates the UKey PIN authentication states.
 
 | Enum item | Description |
 | -- | -- |
-| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN code not authenticated.<br>**Since**: 22 |
-| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN code authentication succeeded.<br>**Since**: 22 |
-| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN code locked.<br>**Since**: 22 |
+| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN code not authenticated.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0--><!--Device-OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0-End--> |
+| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN code authentication succeeded.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1--><!--Device-OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1-End--> |
+| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN code locked.<br>**Since**: 22<br><!--Device-OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2--><!--Device-OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2-End--> |
 
 

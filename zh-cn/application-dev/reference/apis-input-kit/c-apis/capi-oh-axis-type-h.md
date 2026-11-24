@@ -36,7 +36,7 @@ enum InputEvent_AxisType
 
 输入设备的轴类型。
 
-<!--Device-InputEvent_AxisType--><!--Device-InputEvent_AxisType-End-->
+<!--Device-enum InputEvent_AxisType--><!--Device-enum InputEvent_AxisType-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -44,11 +44,11 @@ enum InputEvent_AxisType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AXIS_TYPE_UNKNOWN = 0 | 未知轴类型，通常作为初始值。<br>**起始版本：** 12 |
-| AXIS_TYPE_SCROLL_VERTICAL = 1 | 垂直滚动轴，当您滚动鼠标滚轮或在触控板上进行单指或双指滑动时，垂直滚动轴的状态改变。<br>**起始版本：** 12 |
-| AXIS_TYPE_SCROLL_HORIZONTAL = 2 | 水平滚动轴，当您滚动鼠标滚轮或在触控板上进行双指滑动时，水平滚动轴的状态发生变化。<br>**起始版本：** 12 |
-| AXIS_TYPE_PINCH = 3 | 捏合轴，用于描述触控板上的双指捏合手势。<br>**起始版本：** 12 |
-| AXIS_TYPE_ROTATE = 4 | 旋转轴，用于描述触控板上的双指旋转手势。<br>**起始版本：** 12 |
+| AXIS_TYPE_UNKNOWN = 0 | 未知轴类型，通常作为初始值。<br>**起始版本：** 12<br><!--Device-AXIS_TYPE_UNKNOWN = 0--><!--Device-AXIS_TYPE_UNKNOWN = 0-End--> |
+| AXIS_TYPE_SCROLL_VERTICAL = 1 | 垂直滚动轴，当您滚动鼠标滚轮或在触控板上进行单指或双指滑动时，垂直滚动轴的状态改变。<br>**起始版本：** 12<br><!--Device-AXIS_TYPE_SCROLL_VERTICAL = 1--><!--Device-AXIS_TYPE_SCROLL_VERTICAL = 1-End--> |
+| AXIS_TYPE_SCROLL_HORIZONTAL = 2 | 水平滚动轴，当您滚动鼠标滚轮或在触控板上进行双指滑动时，水平滚动轴的状态发生变化。<br>**起始版本：** 12<br><!--Device-AXIS_TYPE_SCROLL_HORIZONTAL = 2--><!--Device-AXIS_TYPE_SCROLL_HORIZONTAL = 2-End--> |
+| AXIS_TYPE_PINCH = 3 | 捏合轴，用于描述触控板上的双指捏合手势。<br>**起始版本：** 12<br><!--Device-AXIS_TYPE_PINCH = 3--><!--Device-AXIS_TYPE_PINCH = 3-End--> |
+| AXIS_TYPE_ROTATE = 4 | 旋转轴，用于描述触控板上的双指旋转手势。<br>**起始版本：** 12<br><!--Device-AXIS_TYPE_ROTATE = 4--><!--Device-AXIS_TYPE_ROTATE = 4-End--> |
 
 ### InputEvent_AxisEventType
 
@@ -60,7 +60,7 @@ enum InputEvent_AxisEventType
 
 输入设备的轴事件类型。
 
-<!--Device-InputEvent_AxisEventType--><!--Device-InputEvent_AxisEventType-End-->
+<!--Device-enum InputEvent_AxisEventType--><!--Device-enum InputEvent_AxisEventType-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -68,8 +68,8 @@ enum InputEvent_AxisEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AXIS_EVENT_TYPE_PINCH = 1 | 双指捏合事件，包含AXIS_TYPE_PINCH和AXIS_TYPE_ROTATE两种[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)。<br>**起始版本：** 12 |
-| AXIS_EVENT_TYPE_SCROLL = 2 | 滚轴事件，包含AXIS_TYPE_SCROLL_VERTICAL和AXIS_TYPE_SCROLL_HORIZONTAL两种[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)， 其中鼠标滚轮事件仅包含AXIS_TYPE_SCROLL_VERTICAL一种[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)。<br>**起始版本：** 12 |
+| AXIS_EVENT_TYPE_PINCH = 1 | 双指捏合事件，包含AXIS_TYPE_PINCH和AXIS_TYPE_ROTATE两种[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)。<br>**起始版本：** 12<br><!--Device-AXIS_EVENT_TYPE_PINCH = 1--><!--Device-AXIS_EVENT_TYPE_PINCH = 1-End--> |
+| AXIS_EVENT_TYPE_SCROLL = 2 | 滚轴事件，包含AXIS_TYPE_SCROLL_VERTICAL和AXIS_TYPE_SCROLL_HORIZONTAL两种[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)， 其中鼠标滚轮事件仅包含AXIS_TYPE_SCROLL_VERTICAL一种[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)。<br>**起始版本：** 12<br><!--Device-AXIS_EVENT_TYPE_SCROLL = 2--><!--Device-AXIS_EVENT_TYPE_SCROLL = 2-End--> |
 
 ### InputEvent_AxisAction
 
@@ -81,7 +81,7 @@ enum InputEvent_AxisAction
 
 轴事件动作。
 
-<!--Device-InputEvent_AxisAction--><!--Device-InputEvent_AxisAction-End-->
+<!--Device-enum InputEvent_AxisAction--><!--Device-enum InputEvent_AxisAction-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -89,9 +89,9 @@ enum InputEvent_AxisAction
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AXIS_ACTION_CANCEL = 0 | 轴事件取消。<br>**起始版本：** 12 |
-| AXIS_ACTION_BEGIN = 1 | 轴事件开始。<br>**起始版本：** 12 |
-| AXIS_ACTION_UPDATE = 2 | 轴事件更新。<br>**起始版本：** 12 |
-| AXIS_ACTION_END = 3 | 轴事件结束。<br>**起始版本：** 12 |
+| AXIS_ACTION_CANCEL = 0 | 轴事件取消。<br>**起始版本：** 12<br><!--Device-AXIS_ACTION_CANCEL = 0--><!--Device-AXIS_ACTION_CANCEL = 0-End--> |
+| AXIS_ACTION_BEGIN = 1 | 轴事件开始。<br>**起始版本：** 12<br><!--Device-AXIS_ACTION_BEGIN = 1--><!--Device-AXIS_ACTION_BEGIN = 1-End--> |
+| AXIS_ACTION_UPDATE = 2 | 轴事件更新。<br>**起始版本：** 12<br><!--Device-AXIS_ACTION_UPDATE = 2--><!--Device-AXIS_ACTION_UPDATE = 2-End--> |
+| AXIS_ACTION_END = 3 | 轴事件结束。<br>**起始版本：** 12<br><!--Device-AXIS_ACTION_END = 3--><!--Device-AXIS_ACTION_END = 3-End--> |
 
 

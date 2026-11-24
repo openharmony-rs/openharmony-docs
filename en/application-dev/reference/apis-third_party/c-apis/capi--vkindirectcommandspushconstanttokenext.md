@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| [VkPushConstantRange](capi--vkpushconstantrange.md) updateRange |  |
+| [VkPushConstantRange](capi--vkpushconstantrange.md) updateRange | <!--Device-VkPushConstantRange updateRange--><!--Device-VkPushConstantRange updateRange-End--> |
 
 

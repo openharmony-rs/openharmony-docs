@@ -24,15 +24,15 @@ This struct describes the detailed information about a system font.
 
 | Name | Description |
 | -- | -- |
-| char* path | File path of the system font. |
-| char* postScriptName | PostScript name that uniquely identifies the system font. |
-| char* fullName | Full name of the system font. |
-| char* fontFamily | Family of the system font. |
-| char* fontSubfamily | Subfamily of the system font. |
-| int weight | Weight of the system font. |
-| int width | Width of the system font. |
-| int italic | Slope of the system font. |
-| bool monoSpace | Whether the system font is monospace. The value true means the font is monospace, and false means the opposite. |
-| bool symbolic | Whether the system font supports symbols. **true** means yes; **false** otherwise. |
+| char* path | File path of the system font.<br><!--Device-char* path--><!--Device-char* path-End--> |
+| char* postScriptName | PostScript name that uniquely identifies the system font.<br><!--Device-char* postScriptName--><!--Device-char* postScriptName-End--> |
+| char* fullName | Full name of the system font.<br><!--Device-char* fullName--><!--Device-char* fullName-End--> |
+| char* fontFamily | Family of the system font.<br><!--Device-char* fontFamily--><!--Device-char* fontFamily-End--> |
+| char* fontSubfamily | Subfamily of the system font.<br><!--Device-char* fontSubfamily--><!--Device-char* fontSubfamily-End--> |
+| int weight | Weight of the system font.<br><!--Device-int weight--><!--Device-int weight-End--> |
+| int width | Width of the system font.<br><!--Device-int width--><!--Device-int width-End--> |
+| int italic | Slope of the system font.<br><!--Device-int italic--><!--Device-int italic-End--> |
+| bool monoSpace | Whether the system font is monospace. The value true means the font is monospace, and false means the opposite.<br><!--Device-bool monoSpace--><!--Device-bool monoSpace-End--> |
+| bool symbolic | Whether the system font supports symbols. **true** means yes; **false** otherwise.<br><!--Device-bool symbolic--><!--Device-bool symbolic-End--> |
 
 

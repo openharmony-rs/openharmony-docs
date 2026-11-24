@@ -24,7 +24,7 @@ Opaque custom information associated with a placeholder.
 
 | Name | Description |
 | -- | -- |
-| size_t dataLength | Length of the custom information, in bytes.<br>**Since**: 26.0.1 |
-| const uint8_t *data | Pointer to the custom information.<br>**Since**: 26.0.1 |
+| size_t dataLength | Length of the custom information, in bytes.<br>**Since**: 26.0.1<br><!--Device-size_t dataLength--><!--Device-size_t dataLength-End--> |
+| const uint8_t *data | Pointer to the custom information.<br>**Since**: 26.0.1<br><!--Device-const uint8_t *data--><!--Device-const uint8_t *data-End--> |
 
 

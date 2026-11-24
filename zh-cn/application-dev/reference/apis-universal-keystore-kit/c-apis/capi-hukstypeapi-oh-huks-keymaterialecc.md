@@ -24,10 +24,10 @@ typedef struct OH_Huks_KeyMaterialEcc {...} OH_Huks_KeyMaterialEcc
 
 | 名称 | 描述 |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。 |
-| uint32_t keySize | 密钥的长度，单位：Bit。 |
-| uint32_t xSize | x值的长度，单位：Byte。 |
-| uint32_t ySize | y值的长度，单位：Byte。 |
-| uint32_t zSize | z值的长度，对应私钥d的数据大小，单位：Byte。 |
+| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。<br><!--Device-enum OH_Huks_KeyAlg keyAlg--><!--Device-enum OH_Huks_KeyAlg keyAlg-End--> |
+| uint32_t keySize | 密钥的长度，单位：Bit。<br><!--Device-uint32_t keySize--><!--Device-uint32_t keySize-End--> |
+| uint32_t xSize | x值的长度，单位：Byte。<br><!--Device-uint32_t xSize--><!--Device-uint32_t xSize-End--> |
+| uint32_t ySize | y值的长度，单位：Byte。<br><!--Device-uint32_t ySize--><!--Device-uint32_t ySize-End--> |
+| uint32_t zSize | z值的长度，对应私钥d的数据大小，单位：Byte。<br><!--Device-uint32_t zSize--><!--Device-uint32_t zSize-End--> |
 
 

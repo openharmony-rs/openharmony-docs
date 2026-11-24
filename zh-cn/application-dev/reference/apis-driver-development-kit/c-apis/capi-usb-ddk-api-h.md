@@ -189,8 +189,6 @@ void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 
 **系统能力：** SystemCapability.Driver.USB.Extension
 
-**需要权限：** ohos.permission.ACCESS_DDK_USB
-
 **起始版本：** 10
 
 **参数：**
@@ -498,8 +496,6 @@ void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 <!--Device-void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)--><!--Device-void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)-End-->
 
 **系统能力：** SystemCapability.Driver.USB.Extension
-
-**需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
 

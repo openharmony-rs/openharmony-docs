@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineCompilerControlFlagsAMD compilerControlFlags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineCompilerControlFlagsAMD compilerControlFlags | <!--Device-VkPipelineCompilerControlFlagsAMD compilerControlFlags--><!--Device-VkPipelineCompilerControlFlagsAMD compilerControlFlags-End--> |
 
 

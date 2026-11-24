@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkPerformanceValueTypeINTEL type |  |
-| [VkPerformanceValueDataINTEL](capi--vkperformancevaluedataintel.md) data |  |
+| VkPerformanceValueTypeINTEL type | <!--Device-VkPerformanceValueTypeINTEL type--><!--Device-VkPerformanceValueTypeINTEL type-End--> |
+| [VkPerformanceValueDataINTEL](capi--vkperformancevaluedataintel.md) data | <!--Device-VkPerformanceValueDataINTEL data--><!--Device-VkPerformanceValueDataINTEL data-End--> |
 
 

@@ -41,7 +41,7 @@ enum OH_Drawing_FilterMode
 
 过滤模式枚举。
 
-<!--Device-OH_Drawing_FilterMode--><!--Device-OH_Drawing_FilterMode-End-->
+<!--Device-enum OH_Drawing_FilterMode--><!--Device-enum OH_Drawing_FilterMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -49,8 +49,8 @@ enum OH_Drawing_FilterMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FILTER_MODE_NEAREST | 邻近过滤模式，采用最近邻采样，使用距离采样点最近的像素值。适合对性能要求高、对画面平滑度要求不高的场景。 |
-| FILTER_MODE_LINEAR | 线性过滤模式，采用线性插值采样，在相邻像素之间进行插值计算。适合对画面平滑度和质量要求较高的场景。 |
+| FILTER_MODE_NEAREST | 邻近过滤模式，采用最近邻采样，使用距离采样点最近的像素值。适合对性能要求高、对画面平滑度要求不高的场景。<br><!--Device-FILTER_MODE_NEAREST--><!--Device-FILTER_MODE_NEAREST-End--> |
+| FILTER_MODE_LINEAR | 线性过滤模式，采用线性插值采样，在相邻像素之间进行插值计算。适合对画面平滑度和质量要求较高的场景。<br><!--Device-FILTER_MODE_LINEAR--><!--Device-FILTER_MODE_LINEAR-End--> |
 
 ### OH_Drawing_MipmapMode
 
@@ -62,7 +62,7 @@ enum OH_Drawing_MipmapMode
 
 多级渐远纹理模式枚举。
 
-<!--Device-OH_Drawing_MipmapMode--><!--Device-OH_Drawing_MipmapMode-End-->
+<!--Device-enum OH_Drawing_MipmapMode--><!--Device-enum OH_Drawing_MipmapMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -70,9 +70,9 @@ enum OH_Drawing_MipmapMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MIPMAP_MODE_NONE | 忽略多级渐远纹理级别。适合不使用多级渐远纹理的场景。 |
-| MIPMAP_MODE_NEAREST | 邻近多级渐远纹理级别采样。适合性能优先的场景。 |
-| MIPMAP_MODE_LINEAR | 两个邻近多级渐远纹理级别之间，线性插值采样。适合对画质要求较高的场景。 |
+| MIPMAP_MODE_NONE | 忽略多级渐远纹理级别。适合不使用多级渐远纹理的场景。<br><!--Device-MIPMAP_MODE_NONE--><!--Device-MIPMAP_MODE_NONE-End--> |
+| MIPMAP_MODE_NEAREST | 邻近多级渐远纹理级别采样。适合性能优先的场景。<br><!--Device-MIPMAP_MODE_NEAREST--><!--Device-MIPMAP_MODE_NEAREST-End--> |
+| MIPMAP_MODE_LINEAR | 两个邻近多级渐远纹理级别之间，线性插值采样。适合对画质要求较高的场景。<br><!--Device-MIPMAP_MODE_LINEAR--><!--Device-MIPMAP_MODE_LINEAR-End--> |
 
 
 ## 函数说明

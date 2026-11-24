@@ -60,7 +60,7 @@ enum OH_AudioDevice_ChangeType
 
 Defines the audio device change type.
 
-<!--Device-OH_AudioDevice_ChangeType--><!--Device-OH_AudioDevice_ChangeType-End-->
+<!--Device-enum OH_AudioDevice_ChangeType--><!--Device-enum OH_AudioDevice_ChangeType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -68,8 +68,8 @@ Defines the audio device change type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0 | Device connection. |
-| AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1 | Device disconnection. |
+| AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0 | Device connection.<br><!--Device-AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0--><!--Device-AUDIO_DEVICE_CHANGE_TYPE_CONNECT = 0-End--> |
+| AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1 | Device disconnection.<br><!--Device-AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1--><!--Device-AUDIO_DEVICE_CHANGE_TYPE_DISCONNECT = 1-End--> |
 
 ### OH_AudioDevice_Role
 
@@ -81,7 +81,7 @@ enum OH_AudioDevice_Role
 
 Defines the audio device role.
 
-<!--Device-OH_AudioDevice_Role--><!--Device-OH_AudioDevice_Role-End-->
+<!--Device-enum OH_AudioDevice_Role--><!--Device-enum OH_AudioDevice_Role-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -89,8 +89,8 @@ Defines the audio device role.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_DEVICE_ROLE_INPUT = 1 | Input role. |
-| AUDIO_DEVICE_ROLE_OUTPUT = 2 | Output role. |
+| AUDIO_DEVICE_ROLE_INPUT = 1 | Input role.<br><!--Device-AUDIO_DEVICE_ROLE_INPUT = 1--><!--Device-AUDIO_DEVICE_ROLE_INPUT = 1-End--> |
+| AUDIO_DEVICE_ROLE_OUTPUT = 2 | Output role.<br><!--Device-AUDIO_DEVICE_ROLE_OUTPUT = 2--><!--Device-AUDIO_DEVICE_ROLE_OUTPUT = 2-End--> |
 
 ### OH_AudioDevice_Type
 
@@ -102,7 +102,7 @@ enum OH_AudioDevice_Type
 
 Defines the audio device type.
 
-<!--Device-OH_AudioDevice_Type--><!--Device-OH_AudioDevice_Type-End-->
+<!--Device-enum OH_AudioDevice_Type--><!--Device-enum OH_AudioDevice_Type-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -110,24 +110,24 @@ Defines the audio device type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_DEVICE_TYPE_INVALID = 0 | Invalid device. |
-| AUDIO_DEVICE_TYPE_EARPIECE = 1 | Built-in earpiece. |
-| AUDIO_DEVICE_TYPE_SPEAKER = 2 | Built-in speaker. |
-| AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3 | Wired headset, which is a combination of a pair of earpieces and a microphone. |
-| AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4 | A pair of wired headphones. |
-| AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7 | Bluetooth device using the synchronous connection oriented link (SCO). |
-| AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8 | Bluetooth device using advanced audio distibution profile (A2DP). |
-| AUDIO_DEVICE_TYPE_MIC = 15 | Built-in microphone. |
-| AUDIO_DEVICE_TYPE_USB_HEADSET = 22 | USB audio headset. |
-| AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23 | Display port device. |
-| AUDIO_DEVICE_TYPE_REMOTE_CAST = 24 | Device type for rerouting audio to other remote devices by system application. |
-| AUDIO_DEVICE_TYPE_USB_DEVICE = 25 | Usb audio device.<br>**Since**: 18 |
-| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | Accessory device, such as the microphone on a remote control.<br>**Since**: 19 |
-| AUDIO_DEVICE_TYPE_HDMI = 27 | HDMI device, such as a device connected through an HDMI, ARC, or eARC interface.<br>**Since**: 19 |
-| AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28 | Line-connected, digital audio output device, such as an S/PDIF device.<br>**Since**: 19 |
-| AUDIO_DEVICE_TYPE_HEARING_AID = 30 | Hearing aid device.<br>**Since**: 20 |
-| AUDIO_DEVICE_TYPE_NEARLINK = 31 | Nearlink device.<br>**Since**: 20 |
-| AUDIO_DEVICE_TYPE_DEFAULT = 1000 | Default device type. |
+| AUDIO_DEVICE_TYPE_INVALID = 0 | Invalid device.<br><!--Device-AUDIO_DEVICE_TYPE_INVALID = 0--><!--Device-AUDIO_DEVICE_TYPE_INVALID = 0-End--> |
+| AUDIO_DEVICE_TYPE_EARPIECE = 1 | Built-in earpiece.<br><!--Device-AUDIO_DEVICE_TYPE_EARPIECE = 1--><!--Device-AUDIO_DEVICE_TYPE_EARPIECE = 1-End--> |
+| AUDIO_DEVICE_TYPE_SPEAKER = 2 | Built-in speaker.<br><!--Device-AUDIO_DEVICE_TYPE_SPEAKER = 2--><!--Device-AUDIO_DEVICE_TYPE_SPEAKER = 2-End--> |
+| AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3 | Wired headset, which is a combination of a pair of earpieces and a microphone.<br><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3--><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADSET = 3-End--> |
+| AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4 | A pair of wired headphones.<br><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4--><!--Device-AUDIO_DEVICE_TYPE_WIRED_HEADPHONES = 4-End--> |
+| AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7 | Bluetooth device using the synchronous connection oriented link (SCO).<br><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7--><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_SCO = 7-End--> |
+| AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8 | Bluetooth device using advanced audio distibution profile (A2DP).<br><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8--><!--Device-AUDIO_DEVICE_TYPE_BLUETOOTH_A2DP = 8-End--> |
+| AUDIO_DEVICE_TYPE_MIC = 15 | Built-in microphone.<br><!--Device-AUDIO_DEVICE_TYPE_MIC = 15--><!--Device-AUDIO_DEVICE_TYPE_MIC = 15-End--> |
+| AUDIO_DEVICE_TYPE_USB_HEADSET = 22 | USB audio headset.<br><!--Device-AUDIO_DEVICE_TYPE_USB_HEADSET = 22--><!--Device-AUDIO_DEVICE_TYPE_USB_HEADSET = 22-End--> |
+| AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23 | Display port device.<br><!--Device-AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23--><!--Device-AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23-End--> |
+| AUDIO_DEVICE_TYPE_REMOTE_CAST = 24 | Device type for rerouting audio to other remote devices by system application.<br><!--Device-AUDIO_DEVICE_TYPE_REMOTE_CAST = 24--><!--Device-AUDIO_DEVICE_TYPE_REMOTE_CAST = 24-End--> |
+| AUDIO_DEVICE_TYPE_USB_DEVICE = 25 | Usb audio device.<br>**Since**: 18<br><!--Device-AUDIO_DEVICE_TYPE_USB_DEVICE = 25--><!--Device-AUDIO_DEVICE_TYPE_USB_DEVICE = 25-End--> |
+| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | Accessory device, such as the microphone on a remote control.<br>**Since**: 19<br><!--Device-AUDIO_DEVICE_TYPE_ACCESSORY = 26--><!--Device-AUDIO_DEVICE_TYPE_ACCESSORY = 26-End--> |
+| AUDIO_DEVICE_TYPE_HDMI = 27 | HDMI device, such as a device connected through an HDMI, ARC, or eARC interface.<br>**Since**: 19<br><!--Device-AUDIO_DEVICE_TYPE_HDMI = 27--><!--Device-AUDIO_DEVICE_TYPE_HDMI = 27-End--> |
+| AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28 | Line-connected, digital audio output device, such as an S/PDIF device.<br>**Since**: 19<br><!--Device-AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28--><!--Device-AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28-End--> |
+| AUDIO_DEVICE_TYPE_HEARING_AID = 30 | Hearing aid device.<br>**Since**: 20<br><!--Device-AUDIO_DEVICE_TYPE_HEARING_AID = 30--><!--Device-AUDIO_DEVICE_TYPE_HEARING_AID = 30-End--> |
+| AUDIO_DEVICE_TYPE_NEARLINK = 31 | Nearlink device.<br>**Since**: 20<br><!--Device-AUDIO_DEVICE_TYPE_NEARLINK = 31--><!--Device-AUDIO_DEVICE_TYPE_NEARLINK = 31-End--> |
+| AUDIO_DEVICE_TYPE_DEFAULT = 1000 | Default device type.<br><!--Device-AUDIO_DEVICE_TYPE_DEFAULT = 1000--><!--Device-AUDIO_DEVICE_TYPE_DEFAULT = 1000-End--> |
 
 ### OH_AudioDevice_UsbHeadsetType
 
@@ -139,7 +139,7 @@ enum OH_AudioDevice_UsbHeadsetType
 
 Defines the USB headset subtype.
 
-<!--Device-OH_AudioDevice_UsbHeadsetType--><!--Device-OH_AudioDevice_UsbHeadsetType-End-->
+<!--Device-enum OH_AudioDevice_UsbHeadsetType--><!--Device-enum OH_AudioDevice_UsbHeadsetType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -147,9 +147,9 @@ Defines the USB headset subtype.
 
 | Enum item | Description |
 | -- | -- |
-| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_INVALID = 0 | Invalid USB headset subtype.<br>**Since**: 26.1.0 |
-| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_HIFI = 1 | HiFi USB headset.<br>**Since**: 26.1.0 |
-| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_ARM = 2 | ARM USB headset.<br>**Since**: 26.1.0 |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_INVALID = 0 | Invalid USB headset subtype.<br>**Since**: 26.1.0<br><!--Device-OH_AUDIO_DEVICE_USB_HEADSET_TYPE_INVALID = 0--><!--Device-OH_AUDIO_DEVICE_USB_HEADSET_TYPE_INVALID = 0-End--> |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_HIFI = 1 | HiFi USB headset.<br>**Since**: 26.1.0<br><!--Device-OH_AUDIO_DEVICE_USB_HEADSET_TYPE_HIFI = 1--><!--Device-OH_AUDIO_DEVICE_USB_HEADSET_TYPE_HIFI = 1-End--> |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_ARM = 2 | ARM USB headset.<br>**Since**: 26.1.0<br><!--Device-OH_AUDIO_DEVICE_USB_HEADSET_TYPE_ARM = 2--><!--Device-OH_AUDIO_DEVICE_USB_HEADSET_TYPE_ARM = 2-End--> |
 
 ### OH_AudioDevice_Flag
 
@@ -161,7 +161,7 @@ enum OH_AudioDevice_Flag
 
 Defines the audio device flag.
 
-<!--Device-OH_AudioDevice_Flag--><!--Device-OH_AudioDevice_Flag-End-->
+<!--Device-enum OH_AudioDevice_Flag--><!--Device-enum OH_AudioDevice_Flag-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -169,10 +169,10 @@ Defines the audio device flag.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_DEVICE_FLAG_NONE = 0 | None device. |
-| AUDIO_DEVICE_FLAG_OUTPUT = 1 | Output device. |
-| AUDIO_DEVICE_FLAG_INPUT = 2 | Input device. |
-| AUDIO_DEVICE_FLAG_ALL = 3 | All device. |
+| AUDIO_DEVICE_FLAG_NONE = 0 | None device.<br><!--Device-AUDIO_DEVICE_FLAG_NONE = 0--><!--Device-AUDIO_DEVICE_FLAG_NONE = 0-End--> |
+| AUDIO_DEVICE_FLAG_OUTPUT = 1 | Output device.<br><!--Device-AUDIO_DEVICE_FLAG_OUTPUT = 1--><!--Device-AUDIO_DEVICE_FLAG_OUTPUT = 1-End--> |
+| AUDIO_DEVICE_FLAG_INPUT = 2 | Input device.<br><!--Device-AUDIO_DEVICE_FLAG_INPUT = 2--><!--Device-AUDIO_DEVICE_FLAG_INPUT = 2-End--> |
+| AUDIO_DEVICE_FLAG_ALL = 3 | All device.<br><!--Device-AUDIO_DEVICE_FLAG_ALL = 3--><!--Device-AUDIO_DEVICE_FLAG_ALL = 3-End--> |
 
 ### OH_AudioDevice_Usage
 
@@ -184,7 +184,7 @@ enum OH_AudioDevice_Usage
 
 Defines the audio device usage.
 
-<!--Device-OH_AudioDevice_Usage--><!--Device-OH_AudioDevice_Usage-End-->
+<!--Device-enum OH_AudioDevice_Usage--><!--Device-enum OH_AudioDevice_Usage-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -192,12 +192,12 @@ Defines the audio device usage.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1 | Device used for media output.<br>**Since**: 12 |
-| AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2 | Device used for media input.<br>**Since**: 12 |
-| AUDIO_DEVICE_USAGE_MEDIA_ALL = 3 | Device used for media, including input and output.<br>**Since**: 12 |
-| AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4 | Device used for call output.<br>**Since**: 12 |
-| AUDIO_DEVICE_USAGE_CALL_INPUT = 8 | Device used for call input.<br>**Since**: 12 |
-| AUDIO_DEVICE_USAGE_CALL_ALL = 12 | Device used for call, including input and output.<br>**Since**: 12 |
+| AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1 | Device used for media output.<br>**Since**: 12<br><!--Device-AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1--><!--Device-AUDIO_DEVICE_USAGE_MEDIA_OUTPUT = 1-End--> |
+| AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2 | Device used for media input.<br>**Since**: 12<br><!--Device-AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2--><!--Device-AUDIO_DEVICE_USAGE_MEDIA_INPUT = 2-End--> |
+| AUDIO_DEVICE_USAGE_MEDIA_ALL = 3 | Device used for media, including input and output.<br>**Since**: 12<br><!--Device-AUDIO_DEVICE_USAGE_MEDIA_ALL = 3--><!--Device-AUDIO_DEVICE_USAGE_MEDIA_ALL = 3-End--> |
+| AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4 | Device used for call output.<br>**Since**: 12<br><!--Device-AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4--><!--Device-AUDIO_DEVICE_USAGE_CALL_OUTPUT = 4-End--> |
+| AUDIO_DEVICE_USAGE_CALL_INPUT = 8 | Device used for call input.<br>**Since**: 12<br><!--Device-AUDIO_DEVICE_USAGE_CALL_INPUT = 8--><!--Device-AUDIO_DEVICE_USAGE_CALL_INPUT = 8-End--> |
+| AUDIO_DEVICE_USAGE_CALL_ALL = 12 | Device used for call, including input and output.<br>**Since**: 12<br><!--Device-AUDIO_DEVICE_USAGE_CALL_ALL = 12--><!--Device-AUDIO_DEVICE_USAGE_CALL_ALL = 12-End--> |
 
 ### OH_AudioDevice_BlockStatus
 
@@ -209,7 +209,7 @@ enum OH_AudioDevice_BlockStatus
 
 Declaring the audio device blocked status. By default, the audio device is considered as unblocked.
 
-<!--Device-OH_AudioDevice_BlockStatus--><!--Device-OH_AudioDevice_BlockStatus-End-->
+<!--Device-enum OH_AudioDevice_BlockStatus--><!--Device-enum OH_AudioDevice_BlockStatus-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -217,8 +217,8 @@ Declaring the audio device blocked status. By default, the audio device is consi
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_DEVICE_UNBLOCKED = 0 | Audio device is unblocked.<br>**Since**: 13 |
-| AUDIO_DEVICE_BLOCKED = 1 | Audio Device is blocked.<br>**Since**: 13 |
+| AUDIO_DEVICE_UNBLOCKED = 0 | Audio device is unblocked.<br>**Since**: 13<br><!--Device-AUDIO_DEVICE_UNBLOCKED = 0--><!--Device-AUDIO_DEVICE_UNBLOCKED = 0-End--> |
+| AUDIO_DEVICE_BLOCKED = 1 | Audio Device is blocked.<br>**Since**: 13<br><!--Device-AUDIO_DEVICE_BLOCKED = 1--><!--Device-AUDIO_DEVICE_BLOCKED = 1-End--> |
 
 
 ## Function description

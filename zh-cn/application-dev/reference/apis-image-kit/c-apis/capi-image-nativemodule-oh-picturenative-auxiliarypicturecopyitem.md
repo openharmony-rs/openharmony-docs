@@ -24,7 +24,7 @@ typedef struct OH_PictureNative_AuxiliaryPictureCopyItem {...} OH_PictureNative_
 
 | 名称 | 描述 |
 | -- | -- |
-| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) srcType |  |
-| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) dstType |  |
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) srcType | <!--Device-Image_AuxiliaryPictureType srcType--><!--Device-Image_AuxiliaryPictureType srcType-End--> |
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) dstType | <!--Device-Image_AuxiliaryPictureType dstType--><!--Device-Image_AuxiliaryPictureType dstType-End--> |
 
 

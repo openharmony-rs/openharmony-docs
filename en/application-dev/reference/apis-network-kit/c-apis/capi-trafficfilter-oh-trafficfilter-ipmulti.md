@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_IPMulti {...} OH_TrafficFilter_IPMulti
 
 ## Overview
 
-IP match value for multi-IP match
+Defines the IP match value for multi-IP matching.
 
 <!--Device-struct OH_TrafficFilter_IPMulti {...}--><!--Device-struct OH_TrafficFilter_IPMulti {...}-End-->
 
@@ -24,7 +24,7 @@ IP match value for multi-IP match
 
 | Name | Description |
 | -- | -- |
-| uint32_t ipCount | Number of IP addresses in the array<br>**Since**: 26.0.0 |
-| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) ips[OH_TRAFFICFILTER_MAX_MULTI_IP_COUNT] | IP address array<br>**Since**: 26.0.0 |
+| uint32_t ipCount | Number of IP addresses in the array.<br>**Since**: 26.0.0<br><!--Device-uint32_t ipCount--><!--Device-uint32_t ipCount-End--> |
+| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) ips[OH_TRAFFICFILTER_MAX_MULTI_IP_COUNT] | Array of IP addresses.<br>**Since**: 26.0.0<br><!--Device-OH_TrafficFilter_IPAddress ips[OH_TRAFFICFILTER_MAX_MULTI_IP_COUNT]--><!--Device-OH_TrafficFilter_IPAddress ips[OH_TRAFFICFILTER_MAX_MULTI_IP_COUNT]-End--> |
 
 

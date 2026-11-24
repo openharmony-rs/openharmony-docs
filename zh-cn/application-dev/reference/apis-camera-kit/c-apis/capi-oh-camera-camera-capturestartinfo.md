@@ -24,7 +24,7 @@ typedef struct Camera_CaptureStartInfo {...} Camera_CaptureStartInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t captureId | 拍照id。 |
-| int64_t time | 预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。 |
+| int32_t captureId | 拍照id。<br><!--Device-int32_t captureId--><!--Device-int32_t captureId-End--> |
+| int64_t time | 预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。<br><!--Device-int64_t time--><!--Device-int64_t time-End--> |
 
 

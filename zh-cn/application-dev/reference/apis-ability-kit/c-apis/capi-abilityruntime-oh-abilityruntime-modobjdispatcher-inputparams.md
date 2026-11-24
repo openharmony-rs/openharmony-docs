@@ -24,7 +24,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_InputParams {...} OH_AbilityRu
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjDispatcher_Variant*](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-variant.md) rgvarg | 参数变体数组。<br>**起始版本：** 26.0.0 |
-| uint32_t cArgs | 参数数量。<br>**起始版本：** 26.0.0 |
+| [OH_AbilityRuntime_ModObjDispatcher_Variant*](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-variant.md) rgvarg | 参数变体数组。<br>**起始版本：** 26.0.0<br><!--Device-OH_AbilityRuntime_ModObjDispatcher_Variant* rgvarg--><!--Device-OH_AbilityRuntime_ModObjDispatcher_Variant* rgvarg-End--> |
+| uint32_t cArgs | 参数数量。<br>**起始版本：** 26.0.0<br><!--Device-uint32_t cArgs--><!--Device-uint32_t cArgs-End--> |
 
 

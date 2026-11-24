@@ -24,7 +24,7 @@ Defines a struct for the request/response header information of the interceptor.
 
 | Name | Description |
 | -- | -- |
-| char *data | Pointer to the request/response header information of the interceptor.<br>**Since**: 24 |
-| [struct OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) *next | Pointer to the next header information.<br>**Since**: 24 |
+| char *data | Pointer to the request/response header information of the interceptor.<br>**Since**: 24<br><!--Device-char *data--><!--Device-char *data-End--> |
+| [struct OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) *next | Pointer to the next header information.<br>**Since**: 24<br><!--Device-struct OH_Http_Interceptor_Headers *next--><!--Device-struct OH_Http_Interceptor_Headers *next-End--> |
 
 

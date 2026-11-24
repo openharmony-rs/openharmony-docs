@@ -24,9 +24,9 @@ SCSI命令（READ CAPACITY）的请求结构体，用于发送读取存储容量
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t lbAddress | 逻辑块地址，用于指定读取容量的起始逻辑块位置。取值为0时获取设备整体容量信息。 |
-| uint8_t control | Control字段，用于指定SCSI命令的控制信息。 |
-| uint8_t byte8 | CDB（Command Descriptor Block，命令描述符块）的第八个字节。 |
-| uint32_t timeout | 超时时间（单位：ms）。 |
+| uint32_t lbAddress | 逻辑块地址，用于指定读取容量的起始逻辑块位置。取值为0时获取设备整体容量信息。<br><!--Device-uint32_t lbAddress--><!--Device-uint32_t lbAddress-End--> |
+| uint8_t control | Control字段，用于指定SCSI命令的控制信息。<br><!--Device-uint8_t control--><!--Device-uint8_t control-End--> |
+| uint8_t byte8 | CDB（Command Descriptor Block，命令描述符块）的第八个字节。<br><!--Device-uint8_t byte8--><!--Device-uint8_t byte8-End--> |
+| uint32_t timeout | 超时时间（单位：ms）。<br><!--Device-uint32_t timeout--><!--Device-uint32_t timeout-End--> |
 
 

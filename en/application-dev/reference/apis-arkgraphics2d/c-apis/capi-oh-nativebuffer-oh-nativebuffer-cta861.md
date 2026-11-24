@@ -24,7 +24,7 @@ Indicates the cta861.3 metadata.
 
 | Name | Description |
 | -- | -- |
-| float maxContentLightLevel | max content lightLevel |
-| float maxFrameAverageLightLevel | max frame average light level |
+| float maxContentLightLevel | max content lightLevel<br><!--Device-float maxContentLightLevel--><!--Device-float maxContentLightLevel-End--> |
+| float maxFrameAverageLightLevel | max frame average light level<br><!--Device-float maxFrameAverageLightLevel--><!--Device-float maxFrameAverageLightLevel-End--> |
 
 

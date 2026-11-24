@@ -24,6 +24,6 @@ Defines the list of file descriptor information passed to the child process. The
 
 | Name | Description |
 | -- | -- |
-| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head | Pointer to the first file descriptor in the linked list passed to the child process.<br>**Since**: 13 |
+| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head | Pointer to the first file descriptor in the linked list passed to the child process.<br>**Since**: 13<br><!--Device-struct NativeChildProcess_Fd* head--><!--Device-struct NativeChildProcess_Fd* head-End--> |
 
 

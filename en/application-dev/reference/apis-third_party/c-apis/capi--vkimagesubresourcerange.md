@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkImageAspectFlags aspectMask |  |
-| uint32_t baseMipLevel |  |
-| uint32_t levelCount |  |
-| uint32_t baseArrayLayer |  |
-| uint32_t layerCount |  |
+| VkImageAspectFlags aspectMask | <!--Device-VkImageAspectFlags aspectMask--><!--Device-VkImageAspectFlags aspectMask-End--> |
+| uint32_t baseMipLevel | <!--Device-uint32_t baseMipLevel--><!--Device-uint32_t baseMipLevel-End--> |
+| uint32_t levelCount | <!--Device-uint32_t levelCount--><!--Device-uint32_t levelCount-End--> |
+| uint32_t baseArrayLayer | <!--Device-uint32_t baseArrayLayer--><!--Device-uint32_t baseArrayLayer-End--> |
+| uint32_t layerCount | <!--Device-uint32_t layerCount--><!--Device-uint32_t layerCount-End--> |
 
 

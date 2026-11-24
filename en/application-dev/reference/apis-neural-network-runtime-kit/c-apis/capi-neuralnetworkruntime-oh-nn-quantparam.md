@@ -28,9 +28,9 @@ Quantization information.<br> In quantization scenarios, the 32-bit floating-poi
 
 | Name | Description |
 | -- | -- |
-| uint32_t quantCount | Specifies the length of the numBits, scale, and zeroPoint arrays. In the per-layer quantization scenario, <b>quantCount</b> is usually set to <b>1</b>. That is, all channels of a tensor share a set of quantization parameters. In the per-channel quantization scenario, <b>quantCount</b> is usually the same as the number of tensor channels, and each channel uses its own quantization parameters.<br>**Since**: 9 |
-| const uint32_t *numBits | Number of quantization bits |
-| const double *scale | Pointer to the scale data in the quantization formula |
-| const int32_t *zeroPoint | Pointer to the zero point data in the quantization formula |
+| uint32_t quantCount | Specifies the length of the numBits, scale, and zeroPoint arrays. In the per-layer quantization scenario, <b>quantCount</b> is usually set to <b>1</b>. That is, all channels of a tensor share a set of quantization parameters. In the per-channel quantization scenario, <b>quantCount</b> is usually the same as the number of tensor channels, and each channel uses its own quantization parameters.<br>**Since**: 9<br><!--Device-uint32_t quantCount--><!--Device-uint32_t quantCount-End--> |
+| const uint32_t *numBits | Number of quantization bits<br><!--Device-const uint32_t *numBits--><!--Device-const uint32_t *numBits-End--> |
+| const double *scale | Pointer to the scale data in the quantization formula<br><!--Device-const double *scale--><!--Device-const double *scale-End--> |
+| const int32_t *zeroPoint | Pointer to the zero point data in the quantization formula<br><!--Device-const int32_t *zeroPoint--><!--Device-const int32_t *zeroPoint-End--> |
 
 

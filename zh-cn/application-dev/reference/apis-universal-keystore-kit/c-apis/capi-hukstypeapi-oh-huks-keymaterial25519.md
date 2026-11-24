@@ -24,10 +24,10 @@ typedef struct OH_Huks_KeyMaterial25519 {...} OH_Huks_KeyMaterial25519
 
 | 名称 | 描述 |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。 |
-| uint32_t keySize | 25519类型密钥的长度，单位：Bit。 |
-| uint32_t pubKeySize | 公钥的长度，单位：Byte。 |
-| uint32_t priKeySize | 私钥的长度，单位：Byte。 |
-| uint32_t reserved | 保留字段。 |
+| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。<br><!--Device-enum OH_Huks_KeyAlg keyAlg--><!--Device-enum OH_Huks_KeyAlg keyAlg-End--> |
+| uint32_t keySize | 25519类型密钥的长度，单位：Bit。<br><!--Device-uint32_t keySize--><!--Device-uint32_t keySize-End--> |
+| uint32_t pubKeySize | 公钥的长度，单位：Byte。<br><!--Device-uint32_t pubKeySize--><!--Device-uint32_t pubKeySize-End--> |
+| uint32_t priKeySize | 私钥的长度，单位：Byte。<br><!--Device-uint32_t priKeySize--><!--Device-uint32_t priKeySize-End--> |
+| uint32_t reserved | 保留字段。<br><!--Device-uint32_t reserved--><!--Device-uint32_t reserved-End--> |
 
 

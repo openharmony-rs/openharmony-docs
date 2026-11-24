@@ -24,7 +24,7 @@ CIDR（Classless Inter-Domain Routing，无类别域间路由）匹配的IP匹�
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) base | CIDR块的基IP地址。<br>**起始版本：** 26.0.0 |
-| uint8_t prefixLen | CIDR前缀长度。<br>**起始版本：** 26.0.0 |
+| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) base | CIDR（无类别域间路由）块的基IP地址。<br>**起始版本：** 26.0.0<br><!--Device-OH_TrafficFilter_IPAddress base--><!--Device-OH_TrafficFilter_IPAddress base-End--> |
+| uint8_t prefixLen | CIDR前缀长度，表示网络掩码中前导1的位数（如24表示子网掩码255.255.255.0）。<br>**起始版本：** 26.0.0<br><!--Device-uint8_t prefixLen--><!--Device-uint8_t prefixLen-End--> |
 
 

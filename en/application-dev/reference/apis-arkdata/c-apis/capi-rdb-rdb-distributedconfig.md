@@ -24,7 +24,7 @@ Manages the distributed configuration of the table.
 
 | Name | Description |
 | -- | -- |
-| int version | The version used to uniquely identify the Rdb_DistributedConfig struct. |
-| bool isAutoSync | Specifies whether the table auto syncs. |
+| int version | The version used to uniquely identify the Rdb_DistributedConfig struct.<br><!--Device-int version--><!--Device-int version-End--> |
+| bool isAutoSync | Specifies whether the table auto syncs.<br><!--Device-bool isAutoSync--><!--Device-bool isAutoSync-End--> |
 
 

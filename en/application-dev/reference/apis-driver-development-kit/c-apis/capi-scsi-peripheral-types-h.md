@@ -65,7 +65,7 @@ enum ScsiPeripheral_DdkErrCode
 
 Enumerates the SCSI Peripheral DDK error codes.
 
-<!--Device-ScsiPeripheral_DdkErrCode--><!--Device-ScsiPeripheral_DdkErrCode-End-->
+<!--Device-enum ScsiPeripheral_DdkErrCode--><!--Device-enum ScsiPeripheral_DdkErrCode-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -73,16 +73,16 @@ Enumerates the SCSI Peripheral DDK error codes.
 
 | Enum item | Description |
 | -- | -- |
-| SCSIPERIPHERAL_DDK_NO_PERM = 201 | Permission denied. Ensure that you have correctly declared the required permissions. |
-| SCSIPERIPHERAL_DDK_INVALID_PARAMETER = 401 | Invalid parameter. Check whether the parameters meet the requirements. |
-| SCSIPERIPHERAL_DDK_SUCCESS = 31700000 | Operation success. |
-| SCSIPERIPHERAL_DDK_MEMORY_ERROR = 31700001 | Memory-related errors, such as insufficient memory, memory data replication failure, or memory request failure. Check the memory status and related parameters. |
-| SCSIPERIPHERAL_DDK_INVALID_OPERATION = 31700002 | Invalid operation. Check whether the operation logic is correct. |
-| SCSIPERIPHERAL_DDK_IO_ERROR = 31700003 | Device input/output operation failed. Check the transfer parameters and device specifications. |
-| SCSIPERIPHERAL_DDK_TIMEOUT = 31700004 | Transfer timeout. Check the timeout parameters and device status. |
-| SCSIPERIPHERAL_DDK_INIT_ERROR = 31700005 | DDK initialization error, or DDK uninitialized. Initialize the DDK service first. |
-| SCSIPERIPHERAL_DDK_SERVICE_ERROR = 31700006 | Communication with the SCSI Peripheral DDK failed. Check whether the DDK service is running properly. |
-| SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND = 31700007 | Device not found. Ensure that the input device information is correct. |
+| SCSIPERIPHERAL_DDK_NO_PERM = 201 | Permission denied. Ensure that you have correctly declared the required permissions.<br><!--Device-SCSIPERIPHERAL_DDK_NO_PERM = 201--><!--Device-SCSIPERIPHERAL_DDK_NO_PERM = 201-End--> |
+| SCSIPERIPHERAL_DDK_INVALID_PARAMETER = 401 | Invalid parameter. Check whether the parameters meet the requirements.<br><!--Device-SCSIPERIPHERAL_DDK_INVALID_PARAMETER = 401--><!--Device-SCSIPERIPHERAL_DDK_INVALID_PARAMETER = 401-End--> |
+| SCSIPERIPHERAL_DDK_SUCCESS = 31700000 | Operation success.<br><!--Device-SCSIPERIPHERAL_DDK_SUCCESS = 31700000--><!--Device-SCSIPERIPHERAL_DDK_SUCCESS = 31700000-End--> |
+| SCSIPERIPHERAL_DDK_MEMORY_ERROR = 31700001 | Memory-related errors, such as insufficient memory, memory data replication failure, or memory request failure. Check the memory status and related parameters.<br><!--Device-SCSIPERIPHERAL_DDK_MEMORY_ERROR = 31700001--><!--Device-SCSIPERIPHERAL_DDK_MEMORY_ERROR = 31700001-End--> |
+| SCSIPERIPHERAL_DDK_INVALID_OPERATION = 31700002 | Invalid operation. Check whether the operation logic is correct.<br><!--Device-SCSIPERIPHERAL_DDK_INVALID_OPERATION = 31700002--><!--Device-SCSIPERIPHERAL_DDK_INVALID_OPERATION = 31700002-End--> |
+| SCSIPERIPHERAL_DDK_IO_ERROR = 31700003 | Device input/output operation failed. Check the transfer parameters and device specifications.<br><!--Device-SCSIPERIPHERAL_DDK_IO_ERROR = 31700003--><!--Device-SCSIPERIPHERAL_DDK_IO_ERROR = 31700003-End--> |
+| SCSIPERIPHERAL_DDK_TIMEOUT = 31700004 | Transfer timeout. Check the timeout parameters and device status.<br><!--Device-SCSIPERIPHERAL_DDK_TIMEOUT = 31700004--><!--Device-SCSIPERIPHERAL_DDK_TIMEOUT = 31700004-End--> |
+| SCSIPERIPHERAL_DDK_INIT_ERROR = 31700005 | DDK initialization error, or DDK uninitialized. Initialize the DDK service first.<br><!--Device-SCSIPERIPHERAL_DDK_INIT_ERROR = 31700005--><!--Device-SCSIPERIPHERAL_DDK_INIT_ERROR = 31700005-End--> |
+| SCSIPERIPHERAL_DDK_SERVICE_ERROR = 31700006 | Communication with the SCSI Peripheral DDK failed. Check whether the DDK service is running properly.<br><!--Device-SCSIPERIPHERAL_DDK_SERVICE_ERROR = 31700006--><!--Device-SCSIPERIPHERAL_DDK_SERVICE_ERROR = 31700006-End--> |
+| SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND = 31700007 | Device not found. Ensure that the input device information is correct.<br><!--Device-SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND = 31700007--><!--Device-SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND = 31700007-End--> |
 
 ### ScsiPeripheral_Status
 
@@ -94,7 +94,7 @@ enum ScsiPeripheral_Status
 
 Enumerates the SCSI status codes used for the response.
 
-<!--Device-ScsiPeripheral_Status--><!--Device-ScsiPeripheral_Status-End-->
+<!--Device-enum ScsiPeripheral_Status--><!--Device-enum ScsiPeripheral_Status-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -102,13 +102,13 @@ Enumerates the SCSI status codes used for the response.
 
 | Enum item | Description |
 | -- | -- |
-| SCSIPERIPHERAL_STATUS_GOOD = 0x00 | Normal state. |
-| SCSIPERIPHERAL_STATUS_CHECK_CONDITION_NEEDED = 0x02 | Status check required. |
-| SCSIPERIPHERAL_STATUS_CONDITION_MET = 0x04 | Conditions met. |
-| SCSIPERIPHERAL_STATUS_BUSY = 0x08 | Occupying. |
-| SCSIPERIPHERAL_STATUS_RESERVATION_CONFLICT = 0x18 | Resource reservation conflict. |
-| SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28 | Task set already full. |
-| SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA activity status. |
-| SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | Task aborted. |
+| SCSIPERIPHERAL_STATUS_GOOD = 0x00 | Normal state.<br><!--Device-SCSIPERIPHERAL_STATUS_GOOD = 0x00--><!--Device-SCSIPERIPHERAL_STATUS_GOOD = 0x00-End--> |
+| SCSIPERIPHERAL_STATUS_CHECK_CONDITION_NEEDED = 0x02 | Status check required.<br><!--Device-SCSIPERIPHERAL_STATUS_CHECK_CONDITION_NEEDED = 0x02--><!--Device-SCSIPERIPHERAL_STATUS_CHECK_CONDITION_NEEDED = 0x02-End--> |
+| SCSIPERIPHERAL_STATUS_CONDITION_MET = 0x04 | Conditions met.<br><!--Device-SCSIPERIPHERAL_STATUS_CONDITION_MET = 0x04--><!--Device-SCSIPERIPHERAL_STATUS_CONDITION_MET = 0x04-End--> |
+| SCSIPERIPHERAL_STATUS_BUSY = 0x08 | Occupying.<br><!--Device-SCSIPERIPHERAL_STATUS_BUSY = 0x08--><!--Device-SCSIPERIPHERAL_STATUS_BUSY = 0x08-End--> |
+| SCSIPERIPHERAL_STATUS_RESERVATION_CONFLICT = 0x18 | Resource reservation conflict.<br><!--Device-SCSIPERIPHERAL_STATUS_RESERVATION_CONFLICT = 0x18--><!--Device-SCSIPERIPHERAL_STATUS_RESERVATION_CONFLICT = 0x18-End--> |
+| SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28 | Task set already full.<br><!--Device-SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28--><!--Device-SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28-End--> |
+| SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA activity status.<br><!--Device-SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30--><!--Device-SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30-End--> |
+| SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | Task aborted.<br><!--Device-SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40--><!--Device-SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40-End--> |
 
 

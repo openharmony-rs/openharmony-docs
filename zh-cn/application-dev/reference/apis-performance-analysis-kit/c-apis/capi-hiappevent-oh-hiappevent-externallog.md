@@ -24,9 +24,9 @@ typedef struct OH_HiAppEvent_ExternalLog {...} OH_HiAppEvent_ExternalLog
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* filePath | 日志文件路径。<br>**起始版本：** 26.0.1 |
-| long long generationTs | 文件生成的时间戳，单位为ms。<br>**起始版本：** 26.0.1 |
-| long fileSize | 文件大小（以KB为单位）。<br>**起始版本：** 26.0.1 |
-| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event | 系统事件类型。<br>**起始版本：** 26.0.1 |
+| const char* filePath | 日志文件路径。<br>**起始版本：** 26.0.1<br><!--Device-const char* filePath--><!--Device-const char* filePath-End--> |
+| long long generationTs | 文件生成的时间戳，单位为ms。<br>**起始版本：** 26.0.1<br><!--Device-long long generationTs--><!--Device-long long generationTs-End--> |
+| long fileSize | 文件大小（以KB为单位）。<br>**起始版本：** 26.0.1<br><!--Device-long fileSize--><!--Device-long fileSize-End--> |
+| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event | 系统事件类型。<br>**起始版本：** 26.0.1<br><!--Device-OH_HiAppEvent_SysEvent event--><!--Device-OH_HiAppEvent_SysEvent event-End--> |
 
 

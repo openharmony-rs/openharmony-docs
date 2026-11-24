@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkRect2D](capi--vkrect2d.md) srcRect |  |
-| [VkRect2D](capi--vkrect2d.md) dstRect |  |
-| VkBool32 persistent |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkRect2D](capi--vkrect2d.md) srcRect | <!--Device-VkRect2D srcRect--><!--Device-VkRect2D srcRect-End--> |
+| [VkRect2D](capi--vkrect2d.md) dstRect | <!--Device-VkRect2D dstRect--><!--Device-VkRect2D dstRect-End--> |
+| VkBool32 persistent | <!--Device-VkBool32 persistent--><!--Device-VkBool32 persistent-End--> |
 
 

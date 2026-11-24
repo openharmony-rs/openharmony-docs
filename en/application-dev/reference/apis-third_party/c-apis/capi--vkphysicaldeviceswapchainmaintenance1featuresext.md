@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 swapchainMaintenance1 |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 swapchainMaintenance1 | <!--Device-VkBool32 swapchainMaintenance1--><!--Device-VkBool32 swapchainMaintenance1-End--> |
 
 

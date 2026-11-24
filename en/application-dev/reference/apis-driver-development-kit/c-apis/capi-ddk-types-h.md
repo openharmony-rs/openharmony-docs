@@ -40,7 +40,7 @@ enum DDK_RetCode
 
 Enumerates error codes used in the BASE DDK. After calling a DDK API, you can check the return value to determine whether the operation is successful, and handle the error based on the specific error code (for example, invalid parameter or null pointer error).
 
-<!--Device-DDK_RetCode--><!--Device-DDK_RetCode-End-->
+<!--Device-enum DDK_RetCode--><!--Device-enum DDK_RetCode-End-->
 
 **System capability**: SystemCapability.Driver.DDK.Extension
 
@@ -48,10 +48,10 @@ Enumerates error codes used in the BASE DDK. After calling a DDK API, you can ch
 
 | Enum item | Description |
 | -- | -- |
-| DDK_SUCCESS = 0 | The API call is successful, and the operation is performed as expected. |
-| DDK_FAILURE = 28600001 | A common error occurs during the API call, and the operation cannot be completed. The operation fails due to unspecified reasons (such as common errors like insufficient resources or internal errors). |
-| DDK_INVALID_PARAMETER = 28600002 | The input parameter does not meet the API requirements. For example, the parameter value is empty, out of range, or does not match the expected type. |
-| DDK_INVALID_OPERATION = 28600003 | An unsupported or prohibited operation is performed, for example, an operation is performed when the device is in an incorrect state. |
-| DDK_NULL_PTR = 28600004 | A mandatory pointer parameter is null, and the operation cannot be performed. |
+| DDK_SUCCESS = 0 | The API call is successful, and the operation is performed as expected.<br><!--Device-DDK_SUCCESS = 0--><!--Device-DDK_SUCCESS = 0-End--> |
+| DDK_FAILURE = 28600001 | A common error occurs during the API call, and the operation cannot be completed. The operation fails due to unspecified reasons (such as common errors like insufficient resources or internal errors).<br><!--Device-DDK_FAILURE = 28600001--><!--Device-DDK_FAILURE = 28600001-End--> |
+| DDK_INVALID_PARAMETER = 28600002 | The input parameter does not meet the API requirements. For example, the parameter value is empty, out of range, or does not match the expected type.<br><!--Device-DDK_INVALID_PARAMETER = 28600002--><!--Device-DDK_INVALID_PARAMETER = 28600002-End--> |
+| DDK_INVALID_OPERATION = 28600003 | An unsupported or prohibited operation is performed, for example, an operation is performed when the device is in an incorrect state.<br><!--Device-DDK_INVALID_OPERATION = 28600003--><!--Device-DDK_INVALID_OPERATION = 28600003-End--> |
+| DDK_NULL_PTR = 28600004 | A mandatory pointer parameter is null, and the operation cannot be performed.<br><!--Device-DDK_NULL_PTR = 28600004--><!--Device-DDK_NULL_PTR = 28600004-End--> |
 
 

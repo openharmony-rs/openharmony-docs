@@ -24,7 +24,7 @@ Describes a parameter that carries small raw data passed by <b>value</b>.
 
 | Name | Description |
 | -- | -- |
-| uint32_t a | The first value. |
-| uint32_t b | The second value. |
+| uint32_t a | The first value.<br><!--Device-uint32_t a--><!--Device-uint32_t a-End--> |
+| uint32_t b | The second value.<br><!--Device-uint32_t b--><!--Device-uint32_t b-End--> |
 
 

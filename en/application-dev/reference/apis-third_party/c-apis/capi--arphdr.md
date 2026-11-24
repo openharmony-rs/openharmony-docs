@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| uint16_t ar_hrd |  |
-| uint16_t ar_pro |  |
-| uint8_t ar_hln |  |
-| uint8_t ar_pln |  |
-| uint16_t ar_op |  |
+| uint16_t ar_hrd | <!--Device-uint16_t ar_hrd--><!--Device-uint16_t ar_hrd-End--> |
+| uint16_t ar_pro | <!--Device-uint16_t ar_pro--><!--Device-uint16_t ar_pro-End--> |
+| uint8_t ar_hln | <!--Device-uint8_t ar_hln--><!--Device-uint8_t ar_hln-End--> |
+| uint8_t ar_pln | <!--Device-uint8_t ar_pln--><!--Device-uint8_t ar_pln-End--> |
+| uint16_t ar_op | <!--Device-uint16_t ar_op--><!--Device-uint16_t ar_op-End--> |
 
 

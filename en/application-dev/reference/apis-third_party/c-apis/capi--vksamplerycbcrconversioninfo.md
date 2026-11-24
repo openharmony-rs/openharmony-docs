@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSamplerYcbcrConversion conversion |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSamplerYcbcrConversion conversion | <!--Device-VkSamplerYcbcrConversion conversion--><!--Device-VkSamplerYcbcrConversion conversion-End--> |
 
 

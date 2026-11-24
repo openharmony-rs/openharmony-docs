@@ -42,7 +42,7 @@ enum NetStack_CertType
 
 Certificate type enums.
 
-<!--Device-NetStack_CertType--><!--Device-NetStack_CertType-End-->
+<!--Device-enum NetStack_CertType--><!--Device-enum NetStack_CertType-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -50,9 +50,9 @@ Certificate type enums.
 
 | Enum item | Description |
 | -- | -- |
-| NETSTACK_CERT_TYPE_PEM = 0 | PEM certificate. |
-| NETSTACK_CERT_TYPE_DER = 1 | DER certificate. |
-| NETSTACK_CERT_TYPE_INVALID | Invalid certificate. |
+| NETSTACK_CERT_TYPE_PEM = 0 | PEM certificate.<br><!--Device-NETSTACK_CERT_TYPE_PEM = 0--><!--Device-NETSTACK_CERT_TYPE_PEM = 0-End--> |
+| NETSTACK_CERT_TYPE_DER = 1 | DER certificate.<br><!--Device-NETSTACK_CERT_TYPE_DER = 1--><!--Device-NETSTACK_CERT_TYPE_DER = 1-End--> |
+| NETSTACK_CERT_TYPE_INVALID | Invalid certificate.<br><!--Device-NETSTACK_CERT_TYPE_INVALID--><!--Device-NETSTACK_CERT_TYPE_INVALID-End--> |
 
 ### NetStack_CertificatePinningKind
 
@@ -64,7 +64,7 @@ enum NetStack_CertificatePinningKind
 
 Certificate pinning type enums.
 
-<!--Device-NetStack_CertificatePinningKind--><!--Device-NetStack_CertificatePinningKind-End-->
+<!--Device-enum NetStack_CertificatePinningKind--><!--Device-enum NetStack_CertificatePinningKind-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -72,7 +72,7 @@ Certificate pinning type enums.
 
 | Enum item | Description |
 | -- | -- |
-| PUBLIC_KEY | Public key lock type. |
+| PUBLIC_KEY | Public key lock type.<br><!--Device-PUBLIC_KEY--><!--Device-PUBLIC_KEY-End--> |
 
 ### NetStack_HashAlgorithm
 
@@ -84,7 +84,7 @@ enum NetStack_HashAlgorithm
 
 Hash algorithm enums.
 
-<!--Device-NetStack_HashAlgorithm--><!--Device-NetStack_HashAlgorithm-End-->
+<!--Device-enum NetStack_HashAlgorithm--><!--Device-enum NetStack_HashAlgorithm-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -92,6 +92,6 @@ Hash algorithm enums.
 
 | Enum item | Description |
 | -- | -- |
-| SHA_256 | Sha256 |
+| SHA_256 | Sha256<br><!--Device-SHA_256--><!--Device-SHA_256-End--> |
 
 

@@ -24,18 +24,18 @@ ArkWeb_CookieManagerAPI是Cookie管理相关Native API结构体。该结构体�
 
 | 名称 | 描述 |
 | -- | -- |
-| size_t size | 结构体的大小。 |
+| size_t size | 结构体的大小。<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorCode (\*fetchCookieSync)(const char* url, bool incognito, bool includeHttpOnly, char** cookieValue)](#fetchcookiesync) | - | 获取指定URL对应的cookie值。用于用户登录状态维护、会话管理、个性化配置读取等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
-| [ArkWeb_ErrorCode (\*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)](#configcookiesync) | - | 设置指定URL的cookie值。用于保存用户偏好设置、维持登录状态、会话信息保存等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
-| [bool (\*existCookies)(bool incognito)](#existcookies) | - | 检查cookie是否存在。用于判断用户是否已登录、检查会话是否有效、验证身份状态等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
-| [void (\*clearAllCookiesSync)(bool incognito)](#clearallcookiessync) | - | 清除所有cookies（包括持久化cookies和会话cookies）。用于用户退出登录、清除隐私数据、重置用户状态等场景。若仅需清除会话cookies，建议使用 [clearSessionCookiesSync](capi-web-arkweb-cookiemanagerapi.md#clearsessioncookiessync)。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
-| [void (\*clearSessionCookiesSync)()](#clearsessioncookiessync) | - | 清除所有会话cookies。用于清除临时会话数据、关闭所有会话、会话超时清理等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
+| [ArkWeb_ErrorCode (\*fetchCookieSync)(const char* url, bool incognito, bool includeHttpOnly, char** cookieValue)](#fetchcookiesync) | 获取指定URL对应的cookie值。用于用户登录状态维护、会话管理、个性化配置读取等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
+| [ArkWeb_ErrorCode (\*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)](#configcookiesync) | 设置指定URL的cookie值。用于保存用户偏好设置、维持登录状态、会话信息保存等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
+| [bool (\*existCookies)(bool incognito)](#existcookies) | 检查cookie是否存在。用于判断用户是否已登录、检查会话是否有效、验证身份状态等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
+| [void (\*clearAllCookiesSync)(bool incognito)](#clearallcookiessync) | 清除所有cookies（包括持久化cookies和会话cookies）。用于用户退出登录、清除隐私数据、重置用户状态等场景。若仅需清除会话cookies，建议使用 [clearSessionCookiesSync](capi-web-arkweb-cookiemanagerapi.md#clearsessioncookiessync)。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
+| [void (\*clearSessionCookiesSync)()](#clearsessioncookiessync) | 清除所有会话cookies。用于清除临时会话数据、关闭所有会话、会话超时清理等场景。该方法需在UI线程调用，调用前建议校验函数指针的可用性。 从API版本26.0.1开始，调用[OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager)设置为true后，支持在非UI线程调用。 |
 
 ## 成员函数说明
 

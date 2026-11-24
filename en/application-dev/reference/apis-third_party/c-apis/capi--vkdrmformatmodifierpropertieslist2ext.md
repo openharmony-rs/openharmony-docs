@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t drmFormatModifierCount |  |
-| [VkDrmFormatModifierProperties2EXT*](capi--vkdrmformatmodifierproperties2ext.md) pDrmFormatModifierProperties |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t drmFormatModifierCount | <!--Device-uint32_t drmFormatModifierCount--><!--Device-uint32_t drmFormatModifierCount-End--> |
+| [VkDrmFormatModifierProperties2EXT*](capi--vkdrmformatmodifierproperties2ext.md) pDrmFormatModifierProperties | <!--Device-VkDrmFormatModifierProperties2EXT* pDrmFormatModifierProperties--><!--Device-VkDrmFormatModifierProperties2EXT* pDrmFormatModifierProperties-End--> |
 
 

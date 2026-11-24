@@ -380,7 +380,7 @@ int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *download
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 执行成功。</li> <li>202 权限验证失败。非系统应用调用系统API。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数为空指针或无效值。可能的原因如下：<ol><li>参数downloadManager为空指针。</li> <li>参数featureNames为空指针。</li> <li>参数featureNames中的值为空指针。</li> <li>参数installStatus为空指针。</li> <li>参数count为0或者大于5。</li> <li>参数installStatusSize小于count。</li></ol> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) IPC通信失败。</li> </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 执行成功。</li> <li>202 权限验证失败。非系统应用调用系统API。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数为空指针或无效值。可能的原因如下：<br>1. 参数downloadManager为空指针。<br>2. 参数featureNames为空指针。<br>3. 参数featureNames中的值为空指针。<br>4. 参数installStatus为空指针。<br>5. 参数count为0或者大于5。<br>6. 参数installStatusSize小于count。</li> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) IPC通信失败。</li> </ul> |
 
 ### OH_AudioSuite_GetFeatureStatus()
 
@@ -414,7 +414,7 @@ int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadMa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 执行成功。</li> <li>202 权限验证失败。非系统应用调用系统API。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数为空指针或无效值。可能的原因如下：<ol><li>参数downloadManager为空指针。</li> <li>参数featureNames为空指针。</li> <li>参数featureNames中的值为空指针。</li> <li>参数statusInfos为空指针。</li> <li>参数count为0或者大于5。</li> <li>参数statusInfosSize小于count。</li></ol> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) IPC通信失败。</li> </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 执行成功。</li> <li>202 权限验证失败。非系统应用调用系统API。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数为空指针或无效值。可能的原因如下：<br>1. 参数downloadManager为空指针。<br>2. 参数featureNames为空指针。<br>3. 参数featureNames中的值为空指针。<br>4. 参数statusInfos为空指针。<br>5. 参数count为0或者大于5。<br>6. 参数statusInfosSize小于count。</li> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) IPC通信失败。</li> </ul> |
 
 ### OH_AudioSuite_GetNewVersionInfo()
 
@@ -448,6 +448,6 @@ int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadM
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 执行成功。</li> <li>202 权限验证失败。非系统应用调用系统API。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数为空指针或无效值。可能的原因如下：<ol><li>参数downloadManager为空指针。</li> <li>参数featureNames为空指针。</li> <li>参数featureNames中的值为空指针。</li> <li>参数versionInfos为空指针。</li> <li>参数count为0或者大于5。</li> <li>参数versionInfosSize小于count。</li></ol> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) IPC通信失败。</li> <li>[AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET](capi-native-audio-common-h.md#oh_audiocommon_result) 当前网络状态不可用。</li> </ul> |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 执行成功。</li> <li>202 权限验证失败。非系统应用调用系统API。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数为空指针或无效值。可能的原因如下：<br>1. 参数downloadManager为空指针。<br>2. 参数featureNames为空指针。<br>3. 参数featureNames中的值为空指针。<br>4. 参数versionInfos为空指针。<br>5. 参数count为0或者大于5。<br>6. 参数versionInfosSize小于count。</li> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) IPC通信失败。</li> <li>[AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET](capi-native-audio-common-h.md#oh_audiocommon_result) 当前网络状态不可用。</li> </ul> |
 
 

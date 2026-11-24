@@ -24,7 +24,7 @@ Represents the query result of an asset.
 
 | Name | Description |
 | -- | -- |
-| uint32_t count | Number of asset attributes in the query result. |
-| [Asset_Attr](capi-assettype-asset-attr.md) *attrs | Pointer to the array of the asset attributes. |
+| uint32_t count | Number of asset attributes in the query result.<br><!--Device-uint32_t count--><!--Device-uint32_t count-End--> |
+| [Asset_Attr](capi-assettype-asset-attr.md) *attrs | Pointer to the array of the asset attributes.<br><!--Device-Asset_Attr *attrs--><!--Device-Asset_Attr *attrs-End--> |
 
 

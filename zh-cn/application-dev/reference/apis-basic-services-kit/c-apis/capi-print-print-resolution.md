@@ -24,7 +24,7 @@ Print_Resolution用于表示以dpi为单位的打印分辨率，可控制打印�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t horizontalDpi |  |
-| uint32_t verticalDpi |  |
+| uint32_t horizontalDpi | <!--Device-uint32_t horizontalDpi--><!--Device-uint32_t horizontalDpi-End--> |
+| uint32_t verticalDpi | <!--Device-uint32_t verticalDpi--><!--Device-uint32_t verticalDpi-End--> |
 
 

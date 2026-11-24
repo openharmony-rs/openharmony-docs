@@ -69,7 +69,7 @@ enum ArkUI_ListItemSwipeActionState
 
 定义ListItem组件swipeAction方法的列表项滑动状态。侧滑操作在垂直列表中沿水平方向进行，在水平列表中沿垂直方向进行。 默认值为ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED。
 
-<!--Device-ArkUI_ListItemSwipeActionState--><!--Device-ArkUI_ListItemSwipeActionState-End-->
+<!--Device-enum ArkUI_ListItemSwipeActionState--><!--Device-enum ArkUI_ListItemSwipeActionState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,9 +77,9 @@ enum ArkUI_ListItemSwipeActionState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0 | 收起状态，操作项处于隐藏状态。 |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED | 展开状态，操作项处于显示状态。 |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING | 长距离状态，表示ListItem进入长距删除区后处于删除操作中的状态。 |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0 | 收起状态，操作项处于隐藏状态。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED | 展开状态，操作项处于显示状态。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED-End--> |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING | 长距离状态，表示ListItem进入长距删除区后处于删除操作中的状态。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING-End--> |
 
 ### ArkUI_ListItemSwipeEdgeEffect
 
@@ -91,7 +91,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 
 定义ListItem组件swipeAction方法的边缘滑动效果，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。其中，划出组件是指侧滑操作时展示的操作项内容。
 
-<!--Device-ArkUI_ListItemSwipeEdgeEffect--><!--Device-ArkUI_ListItemSwipeEdgeEffect-End-->
+<!--Device-enum ArkUI_ListItemSwipeEdgeEffect--><!--Device-enum ArkUI_ListItemSwipeEdgeEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,8 +99,8 @@ enum ArkUI_ListItemSwipeEdgeEffect
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0 | ListItem滑动距离超过划出组件大小后可以继续滑动。 |
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE | ListItem滑动距离不能超过划出组件大小。 |
+| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0 | ListItem滑动距离超过划出组件大小后可以继续滑动。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0--><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE | ListItem滑动距离不能超过划出组件大小。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE--><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE-End--> |
 
 ### ArkUI_ListItemSwipeActionDirection
 
@@ -112,7 +112,7 @@ enum ArkUI_ListItemSwipeActionDirection
 
 ListItem划出菜单的展开方向。
 
-<!--Device-ArkUI_ListItemSwipeActionDirection--><!--Device-ArkUI_ListItemSwipeActionDirection-End-->
+<!--Device-enum ArkUI_ListItemSwipeActionDirection--><!--Device-enum ArkUI_ListItemSwipeActionDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,8 +120,8 @@ ListItem划出菜单的展开方向。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | 当列表方向为垂直时，LTR模式下表示ListItem的左边，RTL模式下表示ListItem的右边。当列表方向为水平时，表示ListItem的上边。 |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | 当列表方向为垂直时，LTR模式下表示ListItem的右边，RTL模式下表示ListItem的左边。当列表方向为水平时，表示ListItem的下边。 |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | 当列表方向为垂直时，LTR模式下表示ListItem的左边，RTL模式下表示ListItem的右边。当列表方向为水平时，表示ListItem的上边。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | 当列表方向为垂直时，LTR模式下表示ListItem的右边，RTL模式下表示ListItem的左边。当列表方向为水平时，表示ListItem的下边。<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1-End--> |
 
 
 ## 函数说明

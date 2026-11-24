@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags | <!--Device-VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags--><!--Device-VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags-End--> |
 
 

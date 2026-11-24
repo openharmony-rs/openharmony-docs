@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 workgroupMemoryExplicitLayout |  |
-| VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout |  |
-| VkBool32 workgroupMemoryExplicitLayout8BitAccess |  |
-| VkBool32 workgroupMemoryExplicitLayout16BitAccess |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 workgroupMemoryExplicitLayout | <!--Device-VkBool32 workgroupMemoryExplicitLayout--><!--Device-VkBool32 workgroupMemoryExplicitLayout-End--> |
+| VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout | <!--Device-VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout--><!--Device-VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout-End--> |
+| VkBool32 workgroupMemoryExplicitLayout8BitAccess | <!--Device-VkBool32 workgroupMemoryExplicitLayout8BitAccess--><!--Device-VkBool32 workgroupMemoryExplicitLayout8BitAccess-End--> |
+| VkBool32 workgroupMemoryExplicitLayout16BitAccess | <!--Device-VkBool32 workgroupMemoryExplicitLayout16BitAccess--><!--Device-VkBool32 workgroupMemoryExplicitLayout16BitAccess-End--> |
 
 

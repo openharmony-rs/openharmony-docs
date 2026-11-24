@@ -14,15 +14,13 @@
 
 **相关模块：** [VideoEncoder](capi-avcodec-kit-videoencoder.md)
 
-**相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
-
 ## 汇总
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_VideoEncodeBitrateMode](#oh_videoencodebitratemode) | OH_VideoEncodeBitrateMode | 视频编码器的码率控制模式。(API14废弃) |
+| [OH_VideoEncodeBitrateMode](#oh_videoencodebitratemode) | OH_VideoEncodeBitrateMode | 视频编码器的码率控制模式。(已废弃) |
 
 ### 函数
 
@@ -34,7 +32,7 @@
 | [OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec)](#oh_videoencoder_createprimarywithpreproc) | - | 创建支持前处理的主视频编码器实例。<br> 该编码器支持以下能力：<br> 1. 前处理功能（降采样、裁剪、丢帧）。<br> 2. 从该主编码器创建副编码器实现一入二出双路编码。<br> 通过该接口创建的编码器仅支持Surface模式，不支持Buffer模式和同步模式。创建成功后需通过[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)销毁。 |
 | [OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)](#oh_videoencoder_createsecondaryfromprimary) | - | 从主编码器创建副视频编码器实例。<br> 副编码器具有以下特性：<br> 1. 与主编码器共享输入源。<br> 2. 可独立配置编码参数。<br> 3. 可使用不同的前处理参数。<br> 4. 可独立启动/停止（不依赖主编码器的启停状态）。<br> 5. 生命周期必须短于主编码器。<br> 6. 一个主编码器同时只能拥有一个副编码器。<br> 必须在主编码器创建成功之后才能创建。创建成功后需通过[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)销毁。销毁顺序建议先Destroy Secondary再Destroy Primary。 |
 | [OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)](#oh_videoencoder_destroy) | - | 清理编码器内部资源，销毁编码器实例。不能重复销毁。 |
-| [OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videoencoder_setcallback) | - | 设置OH_AVCodecAsyncCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。(API11废弃) |
+| [OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videoencoder_setcallback) | - | 设置OH_AVCodecAsyncCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。(已废弃) |
 | [OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videoencoder_registercallback) | - | 注册OH_AVCodecCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。 |
 | [OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_VideoEncoder_OnNeedInputParameter onInputParameter, void *userData)](#oh_videoencoder_registerparametercallback) | - | 注册OH_VideoEncoder_OnNeedInputParameter输入参数回调函数，让应用可以响应视频编码器生成的事件。在Surface编码模式下，需要设置随帧参数时，须使用该接口。<br> 如果使用该接口，必须在[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)之前调用该接口。 |
 | [OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_configure) | - | 配置视频编码器的编码参数，通常需要配置输入视频帧的描述信息，如帧的宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。<br> 该接口对配置参数进行合法性校验，部分非法参数不会强校验，使用默认值或直接丢弃。部分非法参数会强校验，具体规则如下：<br> 以下参数的配置范围可通过[能力查询](../../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_I_FRAME_INTERVAL暂不支持能力查询。<br> 设置OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY、OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT参数时， 如果当前平台不支持这些功能，该接口不会报错，而是继续按照正常编码流程执行。 参数校验：
@@ -66,9 +64,9 @@
 | [OH_AVFormat *OH_VideoEncoder_GetOutputDescription(OH_AVCodec *codec)](#oh_videoencoder_getoutputdescription) | - | 获取编码器输出数据的OH_AVFormat信息。<br> 需要注意的是，返回值指向的OH_AVFormat实例的生命周期需要开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。 |
 | [OH_AVErrCode OH_VideoEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_setparameter) | - | 在编码器运行时设置编码器参数。 注意，此接口只有在编码器启动后才能调用。同时，不正确的参数设置可能会导致编码失败。 |
 | [OH_AVErrCode OH_VideoEncoder_GetSurface(OH_AVCodec *codec, OHNativeWindow **window)](#oh_videoencoder_getsurface) | - | 从视频编码器获取输入surface，必须在调用OH_VideoEncoder_Configure接口之后OH_VideoEncoder_Prepare接口之前调用此接口。 |
-| [OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)](#oh_videoencoder_freeoutputdata) | - | 将处理后的输出缓冲区返回给编码器。(API11废弃) |
+| [OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)](#oh_videoencoder_freeoutputdata) | - | 将处理后的输出缓冲区返回给编码器。(已废弃) |
 | [OH_AVErrCode OH_VideoEncoder_NotifyEndOfStream(OH_AVCodec *codec)](#oh_videoencoder_notifyendofstream) | - | 通知视频编码器输入流已结束。建议使用此接口进行通知。该接口只在Surface模式下使用， Buffer模式通过OH_AVBuffer携带EOS信息，通知输入流的结束。 |
-| [OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)](#oh_videoencoder_pushinputdata) | - | 将填入数据的输入缓冲区提交给视频编码器。(API11废弃) |
+| [OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)](#oh_videoencoder_pushinputdata) | - | 将填入数据的输入缓冲区提交给视频编码器。(已废弃) |
 | [OH_AVErrCode OH_VideoEncoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videoencoder_pushinputbuffer) | - | Buffer模式下，将index对应的OH_AVBuffer送入编码器编码。 |
 | [OH_AVErrCode OH_VideoEncoder_PushInputParameter(OH_AVCodec *codec, uint32_t index)](#oh_videoencoder_pushinputparameter) | - | Surface模式下，将index对应帧的编码参数送入编码器编码。 |
 | [OH_AVErrCode OH_VideoEncoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videoencoder_freeoutputbuffer) | - | 将处理后的index对应的OH_AVBuffer退回给编码器。开发者使用完需要及时调用此接口释放输出缓冲区，否则会阻塞编码流程。 |
@@ -91,7 +89,7 @@ enum OH_VideoEncodeBitrateMode
 
 视频编码器的码率控制模式。
 
-<!--Device-OH_VideoEncodeBitrateMode--><!--Device-OH_VideoEncodeBitrateMode-End-->
+<!--Device-enum OH_VideoEncodeBitrateMode--><!--Device-enum OH_VideoEncodeBitrateMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
@@ -99,13 +97,13 @@ enum OH_VideoEncodeBitrateMode
 
 **废弃版本：** 14
 
-**替代接口：** [OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode)
+**替代接口：** OH_BitrateMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CBR = 0 | 恒定码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode)  |
-| VBR = 1 | 可变码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode)  |
-| CQ = 2 | 恒定QP模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode)  |
+| CBR = 0 | 恒定码率模式。<br>**起始版本：** 9<br>**废弃版本：** 14<br>**替代接口：** BITRATE_MODE_CBR<br><!--Device-CBR = 0--><!--Device-CBR = 0-End--> |
+| VBR = 1 | 可变码率模式。<br>**起始版本：** 9<br>**废弃版本：** 14<br>**替代接口：** BITRATE_MODE_VBR<br><!--Device-VBR = 1--><!--Device-VBR = 1-End--> |
+| CQ = 2 | 恒定QP模式。<br>**起始版本：** 9<br>**废弃版本：** 14<br>**替代接口：** BITRATE_MODE_CQ<br><!--Device-CQ = 2--><!--Device-CQ = 2-End--> |
 
 
 ## 函数说明
@@ -240,7 +238,7 @@ OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_
 
 > **说明：**
 >
-> 生命周期管理： <br>- 主编码器的生命周期必须长于从编码器。 <br>- 建议销毁顺序：先销毁从编码器，再销毁主编码器。 <br>- 若主编码器在从编码器之前被销毁，系统会在释放主编码器资源前自动销毁从编码器。 <br>- 两个编码器都必须通过调用 [OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy) 接口完成销毁。 <br>- 一个主编码器同一时刻仅可关联一个从编码器。 从编码器销毁完成后，可基于同一个主编码器重新创建新的从编码器。
+> 生命周期管理： <br>- 主编码器的生命周期必须长于从编码器。 <br>- 建议销毁顺序：先销毁从编码器，再销毁主编码器。 <br>- 若主编码器在从编码器之前被销毁，系统会在释放主编码器资源前自动销毁从编码器。 <br>- 两个编码器都必须通过调用[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)接口完成销毁。 <br>- 一个主编码器同一时刻仅可关联一个从编码器。 从编码器销毁完成后，可基于同一个主编码器重新创建新的从编码器。
 
 <!--Device-OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)--><!--Device-OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)-End-->
 
@@ -307,7 +305,7 @@ OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 
 **废弃版本：** 11
 
-**替代接口：** [OH_VideoEncoder_RegisterCallback](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback)
+**替代接口：** OH_VideoEncoder_RegisterCallback
 
 **参数：**
 
@@ -676,7 +674,7 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 **废弃版本：** 11
 
-**替代接口：** [OH_VideoEncoder_FreeOutputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)
+**替代接口：** OH_VideoEncoder_FreeOutputBuffer
 
 **参数：**
 
@@ -737,7 +735,7 @@ OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 
 **废弃版本：** 11
 
-**替代接口：** [OH_VideoEncoder_PushInputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer)
+**替代接口：** OH_VideoEncoder_PushInputBuffer
 
 **参数：**
 
@@ -948,7 +946,7 @@ OH_AVBuffer *OH_VideoEncoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t i
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
-| uint32_t index | 输入buffer对应的索引值，可通过[OH_VideoEncoder_QueryInputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer) 接口获取。 |
+| uint32_t index | 输入buffer对应的索引值，可通过[OH_VideoEncoder_QueryInputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer)接口获取。 |
 
 **返回值：**
 

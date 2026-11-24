@@ -78,7 +78,7 @@ enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType
 
 Enumerates the observable UI interaction event types.<br> The values are bit flags. They are used to build the eventMask passed to [OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionregisterinteractionobserver).
 
-<!--Device-OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType--><!--Device-OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType--><!--Device-enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,16 +86,16 @@ Enumerates the observable UI interaction event types.<br> The values are bit fla
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | No event.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | Tap gesture.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | Click.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | Long press gesture.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | Pan gesture.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | Pinch gesture.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | Rotation gesture.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | Swipe gesture.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | Unified drag and drop.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | Raw touch down or up.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | No event.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | Tap gesture.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | Click.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | Long press gesture.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | Pan gesture.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | Pinch gesture.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | Rotation gesture.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | Swipe gesture.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | Unified drag and drop.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | Raw touch down or up.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8-End--> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeType
 
@@ -107,7 +107,7 @@ enum OH_ArkUI_NativeModule_UIAgentTreeType
 
 Enumeration of the collection type of the UI tree.
 
-<!--Device-OH_ArkUI_NativeModule_UIAgentTreeType--><!--Device-OH_ArkUI_NativeModule_UIAgentTreeType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIAgentTreeType--><!--Device-enum OH_ArkUI_NativeModule_UIAgentTreeType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,8 +115,8 @@ Enumeration of the collection type of the UI tree.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | Collects the full UI tree, including invisible, transparent, off-screen, and blocked nodes.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | Collects the visible tree after visibility, clipping, off-screen, and occlusion filtering.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | Collects the full UI tree, including invisible, transparent, off-screen, and blocked nodes.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | Collects the visible tree after visibility, clipping, off-screen, and occlusion filtering.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1-End--> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
@@ -128,7 +128,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
 UI Content Change Event Type Enumeration
 
-<!--Device-OH_ArkUI_NativeModule_UIContentChangeEventCategory--><!--Device-OH_ArkUI_NativeModule_UIContentChangeEventCategory-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventCategory--><!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventCategory-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,10 +136,10 @@ UI Content Change Event Type Enumeration
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | Page switch events, including Navigation, Router, Swiper, and Tabs switchover events.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | Scroll events.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | Overlay events, such as events for modals, menus, or popups.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | All supported event categories.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | Page switch events, including Navigation, Router, Swiper, and Tabs switchover events.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | Scroll events.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | Overlay events, such as events for modals, menus, or popups.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | All supported event categories.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U-End--> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
@@ -151,7 +151,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
 UI Content Change Event Ignore Enumeration
 
-<!--Device-OH_ArkUI_NativeModule_UIContentChangeIgnoreType--><!--Device-OH_ArkUI_NativeModule_UIContentChangeIgnoreType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType--><!--Device-enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,9 +159,9 @@ UI Content Change Event Ignore Enumeration
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | Scroll by events.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | Scroll to events.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast events.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | Scroll by events.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0--><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0-End--> |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | Scroll to events.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1--><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1-End--> |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast events.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2--><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2-End--> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventType
 
@@ -173,7 +173,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventType
 
 Enumerates ArkUI state change event types.
 
-<!--Device-OH_ArkUI_NativeModule_UIContentChangeEventType--><!--Device-OH_ArkUI_NativeModule_UIContentChangeEventType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventType--><!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,18 +181,18 @@ Enumerates ArkUI state change event types.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | Start of page change.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | End of page change<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | Start of scrolling events<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | A scroll interaction and any following inertial scrolling have ended.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | An overlay has finished appearing.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | An overlay has finished disappearing.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | A Swiper transition has started.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | A Swiper transition has completed, including its transition animation, if any.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | The Swiper transition is interrupted, and Swiper springs back to the starting index.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs Start Event<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs End Event<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Cancel the event after the Tabs switch starts. Rebound to the index after the start<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | Start of page change.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | End of page change<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | Start of scrolling events<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | A scroll interaction and any following inertial scrolling have ended.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | An overlay has finished appearing.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | An overlay has finished disappearing.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | A Swiper transition has started.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | A Swiper transition has completed, including its transition animation, if any.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | The Swiper transition is interrupted, and Swiper springs back to the starting index.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs Start Event<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs End Event<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Cancel the event after the Tabs switch starts. Rebound to the index after the start<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11-End--> |
 
 
 ## Function description

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 spheres |  |
-| VkBool32 linearSweptSpheres |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 spheres | <!--Device-VkBool32 spheres--><!--Device-VkBool32 spheres-End--> |
+| VkBool32 linearSweptSpheres | <!--Device-VkBool32 linearSweptSpheres--><!--Device-VkBool32 linearSweptSpheres-End--> |
 
 

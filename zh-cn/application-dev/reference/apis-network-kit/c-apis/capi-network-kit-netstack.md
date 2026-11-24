@@ -13,7 +13,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [net_http_type.h](capi-net-http-type-h.md) | 定义HTTP请求模块的C接口需要的数据结构。 |
-| [net_http.h](capi-net-http-h.md) | 定义HTTP请求模块的接口。 |
+| [net_http.h](capi-net-http-h.md) | 定义HTTP请求模块的C接口。 |
 | [net_websocket.h](capi-net-websocket-h.md) | 定义WebSocket客户端模块的接口。 |
 | [net_websocket_type.h](capi-net-websocket-type-h.md) | 定义WebSocket客户端模块的C接口需要的数据结构。 |
 | [http_interceptor_type.h](capi-http-interceptor-type-h.md) | 为HTTP全局拦截器模块提供C接口的数据结构定义，包含拦截器的请求/响应头信息、HTTP请求/响应数据包结构、拦截器配置信息以及相关的枚举类型和函数指针。 |

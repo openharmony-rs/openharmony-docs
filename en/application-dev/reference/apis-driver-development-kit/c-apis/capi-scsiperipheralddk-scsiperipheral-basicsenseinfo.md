@@ -24,11 +24,11 @@ Defines the basic information struct of SCSI sense data, which is used to encaps
 
 | Name | Description |
 | -- | -- |
-| uint8_t responseCode | Response code. It is automatically set by the driver layer when the sense data is received. |
-| bool valid | Information validity flag. If the value is **true**, the **information** and **commandSpecific** fields are valid. If the value is **false**, these fields should be ignored. Before using this flag, check it to avoid reading invalid data. |
-| uint64_t information | information** field. The value must comply with the SCSI protocol. |
-| uint64_t commandSpecific | commandSpecific** field. The value must comply with the SCSI protocol. |
-| bool sksv | Flag of the **senseKeySpecific** field. If the value is **true**, the **senseKeySpecific** field is valid and contains sense key specific data. If the value is **false**, the **senseKeySpecific** field should be ignored. Before using this flag, check it to avoid reading invalid data. |
-| uint32_t senseKeySpecific | senseKeySpecific** field. The value must comply with the SCSI protocol. |
+| uint8_t responseCode | Response code. It is automatically set by the driver layer when the sense data is received.<br><!--Device-uint8_t responseCode--><!--Device-uint8_t responseCode-End--> |
+| bool valid | Information validity flag. If the value is **true**, the **information** and **commandSpecific** fields are valid. If the value is **false**, these fields should be ignored. Before using this flag, check it to avoid reading invalid data.<br><!--Device-bool valid--><!--Device-bool valid-End--> |
+| uint64_t information | **information** field. The value must comply with the SCSI protocol.<br><!--Device-uint64_t information--><!--Device-uint64_t information-End--> |
+| uint64_t commandSpecific | **commandSpecific** field. The value must comply with the SCSI protocol.<br><!--Device-uint64_t commandSpecific--><!--Device-uint64_t commandSpecific-End--> |
+| bool sksv | Flag of the **senseKeySpecific** field. If the value is **true**, the **senseKeySpecific** field is valid and contains sense key specific data. If the value is **false**, the **senseKeySpecific** field should be ignored. Before using this flag, check it to avoid reading invalid data.<br><!--Device-bool sksv--><!--Device-bool sksv-End--> |
+| uint32_t senseKeySpecific | **senseKeySpecific** field. The value must comply with the SCSI protocol.<br><!--Device-uint32_t senseKeySpecific--><!--Device-uint32_t senseKeySpecific-End--> |
 
 

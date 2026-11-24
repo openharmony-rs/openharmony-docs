@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| struct \_\_tab *\_\_tab |  |
-| unsigned int \_\_unused1 |  |
-| unsigned int \_\_unused2 |  |
+| struct \_\_tab *\_\_tab | <!--Device-struct \_\_tab *\_\_tab--><!--Device-struct \_\_tab *\_\_tab-End--> |
+| unsigned int \_\_unused1 | <!--Device-unsigned int \_\_unused1--><!--Device-unsigned int \_\_unused1-End--> |
+| unsigned int \_\_unused2 | <!--Device-unsigned int \_\_unused2--><!--Device-unsigned int \_\_unused2-End--> |
 
 

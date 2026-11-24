@@ -49,7 +49,7 @@ enum OH_OrderType
 
 排序方式。
 
-<!--Device-OH_OrderType--><!--Device-OH_OrderType-End-->
+<!--Device-enum OH_OrderType--><!--Device-enum OH_OrderType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -57,8 +57,8 @@ enum OH_OrderType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASC = 0 | 升序排列。 |
-| DESC = 1 | 降序排列。 |
+| ASC = 0 | 升序排列。<br><!--Device-ASC = 0--><!--Device-ASC = 0-End--> |
+| DESC = 1 | 降序排列。<br><!--Device-DESC = 1--><!--Device-DESC = 1-End--> |
 
 
 ## 函数说明

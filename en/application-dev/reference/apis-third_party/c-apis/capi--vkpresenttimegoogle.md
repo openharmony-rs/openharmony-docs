@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t presentID |  |
-| uint64_t desiredPresentTime |  |
+| uint32_t presentID | <!--Device-uint32_t presentID--><!--Device-uint32_t presentID-End--> |
+| uint64_t desiredPresentTime | <!--Device-uint64_t desiredPresentTime--><!--Device-uint64_t desiredPresentTime-End--> |
 
 

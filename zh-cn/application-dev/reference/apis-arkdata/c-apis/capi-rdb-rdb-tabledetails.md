@@ -24,8 +24,8 @@ typedef struct Rdb_TableDetails {...} Rdb_TableDetails
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *table | 数据库表名。 |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) upload | 表示数据库表中端云同步上传过程的统计信息。 |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) download | 表示数据库表中端云同步下载过程的统计信息。 |
+| const char *table | 数据库表名。<br><!--Device-const char *table--><!--Device-const char *table-End--> |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) upload | 表示数据库表中端云同步上传过程的统计信息。<br><!--Device-Rdb_Statistic upload--><!--Device-Rdb_Statistic upload-End--> |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) download | 表示数据库表中端云同步下载过程的统计信息。<br><!--Device-Rdb_Statistic download--><!--Device-Rdb_Statistic download-End--> |
 
 

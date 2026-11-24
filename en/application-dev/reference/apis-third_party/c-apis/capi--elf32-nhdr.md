@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Word n_namesz |  |
-| Elf32_Word n_descsz |  |
-| Elf32_Word n_type |  |
+| Elf32_Word n_namesz | <!--Device-Elf32_Word n_namesz--><!--Device-Elf32_Word n_namesz-End--> |
+| Elf32_Word n_descsz | <!--Device-Elf32_Word n_descsz--><!--Device-Elf32_Word n_descsz-End--> |
+| Elf32_Word n_type | <!--Device-Elf32_Word n_type--><!--Device-Elf32_Word n_type-End--> |
 
 

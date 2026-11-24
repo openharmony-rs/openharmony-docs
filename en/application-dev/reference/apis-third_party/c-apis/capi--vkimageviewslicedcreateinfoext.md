@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t sliceOffset |  |
-| uint32_t sliceCount |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t sliceOffset | <!--Device-uint32_t sliceOffset--><!--Device-uint32_t sliceOffset-End--> |
+| uint32_t sliceCount | <!--Device-uint32_t sliceCount--><!--Device-uint32_t sliceCount-End--> |
 
 

@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| [VkExtent3D](capi--vkextent3d.md) maxExtent |  |
-| uint32_t maxMipLevels |  |
-| uint32_t maxArrayLayers |  |
-| VkSampleCountFlags sampleCounts |  |
-| VkDeviceSize maxResourceSize |  |
+| [VkExtent3D](capi--vkextent3d.md) maxExtent | <!--Device-VkExtent3D maxExtent--><!--Device-VkExtent3D maxExtent-End--> |
+| uint32_t maxMipLevels | <!--Device-uint32_t maxMipLevels--><!--Device-uint32_t maxMipLevels-End--> |
+| uint32_t maxArrayLayers | <!--Device-uint32_t maxArrayLayers--><!--Device-uint32_t maxArrayLayers-End--> |
+| VkSampleCountFlags sampleCounts | <!--Device-VkSampleCountFlags sampleCounts--><!--Device-VkSampleCountFlags sampleCounts-End--> |
+| VkDeviceSize maxResourceSize | <!--Device-VkDeviceSize maxResourceSize--><!--Device-VkDeviceSize maxResourceSize-End--> |
 
 

@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineRobustnessBufferBehavior storageBuffers |  |
-| VkPipelineRobustnessBufferBehavior uniformBuffers |  |
-| VkPipelineRobustnessBufferBehavior vertexInputs |  |
-| VkPipelineRobustnessImageBehavior images |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineRobustnessBufferBehavior storageBuffers | <!--Device-VkPipelineRobustnessBufferBehavior storageBuffers--><!--Device-VkPipelineRobustnessBufferBehavior storageBuffers-End--> |
+| VkPipelineRobustnessBufferBehavior uniformBuffers | <!--Device-VkPipelineRobustnessBufferBehavior uniformBuffers--><!--Device-VkPipelineRobustnessBufferBehavior uniformBuffers-End--> |
+| VkPipelineRobustnessBufferBehavior vertexInputs | <!--Device-VkPipelineRobustnessBufferBehavior vertexInputs--><!--Device-VkPipelineRobustnessBufferBehavior vertexInputs-End--> |
+| VkPipelineRobustnessImageBehavior images | <!--Device-VkPipelineRobustnessImageBehavior images--><!--Device-VkPipelineRobustnessImageBehavior images-End--> |
 
 

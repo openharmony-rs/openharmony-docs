@@ -24,10 +24,10 @@ The file declares the attribute definition of the media struct AVMemory.
 
 | Name | Description |
 | -- | -- |
-| [OH_AVMemory *OH_AVMemory_Create(int32_t size)](#oh_avmemory_create) | Creates an OH_AVMemory instance.(Deprecated in API11) |
-| [uint8_t *OH_AVMemory_GetAddr(struct OH_AVMemory *mem)](#oh_avmemory_getaddr) | Obtains the virtual memory address.(Deprecated in API11) |
-| [int32_t OH_AVMemory_GetSize(struct OH_AVMemory *mem)](#oh_avmemory_getsize) | Obtains the memory length.(Deprecated in API11) |
-| [OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)](#oh_avmemory_destroy) | Releases an OH_AVMemory instance.(Deprecated in API11) |
+| [OH_AVMemory *OH_AVMemory_Create(int32_t size)](#oh_avmemory_create) | Creates an OH_AVMemory instance.(Deprecated) |
+| [uint8_t *OH_AVMemory_GetAddr(struct OH_AVMemory *mem)](#oh_avmemory_getaddr) | Obtains the virtual memory address.(Deprecated) |
+| [int32_t OH_AVMemory_GetSize(struct OH_AVMemory *mem)](#oh_avmemory_getsize) | Obtains the memory length.(Deprecated) |
+| [OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)](#oh_avmemory_destroy) | Releases an OH_AVMemory instance.(Deprecated) |
 
 ## Function description
 

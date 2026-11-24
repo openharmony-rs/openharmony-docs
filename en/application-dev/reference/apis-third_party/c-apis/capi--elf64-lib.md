@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| Elf64_Word l_name |  |
-| Elf64_Word l_time_stamp |  |
-| Elf64_Word l_checksum |  |
-| Elf64_Word l_version |  |
-| Elf64_Word l_flags |  |
+| Elf64_Word l_name | <!--Device-Elf64_Word l_name--><!--Device-Elf64_Word l_name-End--> |
+| Elf64_Word l_time_stamp | <!--Device-Elf64_Word l_time_stamp--><!--Device-Elf64_Word l_time_stamp-End--> |
+| Elf64_Word l_checksum | <!--Device-Elf64_Word l_checksum--><!--Device-Elf64_Word l_checksum-End--> |
+| Elf64_Word l_version | <!--Device-Elf64_Word l_version--><!--Device-Elf64_Word l_version-End--> |
+| Elf64_Word l_flags | <!--Device-Elf64_Word l_flags--><!--Device-Elf64_Word l_flags-End--> |
 
 

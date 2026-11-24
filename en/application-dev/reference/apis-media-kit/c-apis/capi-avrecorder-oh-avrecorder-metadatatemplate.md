@@ -22,7 +22,7 @@ Defines the basic template of metadata during audio and video recording. Metadat
 
 | Name | Description |
 | -- | -- |
-| char *key | Metadata key.<br>**Since**: 18 |
-| char *value | Metadata value.<br>**Since**: 18 |
+| char *key | Metadata key.<br>**Since**: 18<br><!--Device-char *key--><!--Device-char *key-End--> |
+| char *value | Metadata value.<br>**Since**: 18<br><!--Device-char *value--><!--Device-char *value-End--> |
 
 

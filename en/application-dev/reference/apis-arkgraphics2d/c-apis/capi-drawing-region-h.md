@@ -27,7 +27,7 @@ This file declares the functions related to the region in the drawing module, in
 | [OH_Drawing_Region* OH_Drawing_RegionCreate(void)](#oh_drawing_regioncreate) | Creates an **OH_Drawing_Region** object for more accurate graphical control. |
 | [OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)](#oh_drawing_regioncopy) | Creates a copy of a region object. |
 | [bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)](#oh_drawing_regioncontains) | Checks whether a region contains the specified point. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **region** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)](#oh_drawing_regionop) | Combines two regions based on the specified operation mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **region** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned. |
+| [bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)](#oh_drawing_regionop) | Merges two regions based on the specified region operation type. <br>This API generates an error code, which can be obtained through [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). <br>Returns OH_DRAWING_ERROR_INVALID_PARAMETER if either region or other is NULL. <br>Returns OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE if op is not within the enum range. |
 | [bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* rect)](#oh_drawing_regionsetrect) | Sets the boundary for an **OH_Drawing_Region** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **region** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
 | [bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* path, const OH_Drawing_Region* clip)](#oh_drawing_regionsetpath) | Sets a region to the area described by the path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **region**, **path**, or **clip** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
 | [void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)](#oh_drawing_regiondestroy) | Destroys an **OH_Drawing_Region** object and reclaims the memory occupied by the object. |
@@ -53,7 +53,7 @@ enum OH_Drawing_RegionOpMode
 
 Enumerates the operation modes available for a region.
 
-<!--Device-OH_Drawing_RegionOpMode--><!--Device-OH_Drawing_RegionOpMode-End-->
+<!--Device-enum OH_Drawing_RegionOpMode--><!--Device-enum OH_Drawing_RegionOpMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -61,12 +61,12 @@ Enumerates the operation modes available for a region.
 
 | Enum item | Description |
 | -- | -- |
-| REGION_OP_MODE_DIFFERENCE | Difference operation. |
-| REGION_OP_MODE_INTERSECT | Intersection operation. |
-| REGION_OP_MODE_UNION | Union operation. |
-| REGION_OP_MODE_XOR | XOR operation. |
-| REGION_OP_MODE_REVERSE_DIFFERENCE | Reverse difference operation. |
-| REGION_OP_MODE_REPLACE | Replacement operation. |
+| REGION_OP_MODE_DIFFERENCE | Difference operation.<br><!--Device-REGION_OP_MODE_DIFFERENCE--><!--Device-REGION_OP_MODE_DIFFERENCE-End--> |
+| REGION_OP_MODE_INTERSECT | Intersection operation.<br><!--Device-REGION_OP_MODE_INTERSECT--><!--Device-REGION_OP_MODE_INTERSECT-End--> |
+| REGION_OP_MODE_UNION | Union operation.<br><!--Device-REGION_OP_MODE_UNION--><!--Device-REGION_OP_MODE_UNION-End--> |
+| REGION_OP_MODE_XOR | XOR operation.<br><!--Device-REGION_OP_MODE_XOR--><!--Device-REGION_OP_MODE_XOR-End--> |
+| REGION_OP_MODE_REVERSE_DIFFERENCE | Reverse difference operation.<br><!--Device-REGION_OP_MODE_REVERSE_DIFFERENCE--><!--Device-REGION_OP_MODE_REVERSE_DIFFERENCE-End--> |
+| REGION_OP_MODE_REPLACE | Replacement operation.<br><!--Device-REGION_OP_MODE_REPLACE--><!--Device-REGION_OP_MODE_REPLACE-End--> |
 
 
 ## Function description
@@ -159,7 +159,7 @@ bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* oth
 
 **Description**
 
-Combines two regions based on the specified operation mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **region** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+Merges two regions based on the specified region operation type. <br>This API generates an error code, which can be obtained through [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). <br>Returns OH_DRAWING_ERROR_INVALID_PARAMETER if either region or other is NULL. <br>Returns OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE if op is not within the enum range.
 
 <!--Device-bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)--><!--Device-bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)-End-->
 
@@ -171,9 +171,9 @@ Combines two regions based on the specified operation mode. This API may return 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to an [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object, in which the resulting region is saved. |
-| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* other | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object. |
-| [OH_Drawing_RegionOpMode](capi-drawing-region-h.md#oh_drawing_regionopmode) op | Operation mode of the region. For details about the available options, see [OH_Drawing_RegionOpMode](capi-drawing-region-h.md#oh_drawing_regionopmode). |
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the region object OH_Drawing_Region. The region result after the operation is stored in this region object. |
+| [const OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* other | Pointer to another region object OH_Drawing_Region that participates in the merge operation. It is merged with the region specified by the region parameter according to the operation type op. |
+| [OH_Drawing_RegionOpMode](capi-drawing-region-h.md#oh_drawing_regionopmode) op | Region operation enum type. For the supported modes, see the OH_Drawing_RegionOpMode enum. |
 
 **Returns**:
 

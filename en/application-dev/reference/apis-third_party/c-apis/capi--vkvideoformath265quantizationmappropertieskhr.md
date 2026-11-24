@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes | <!--Device-VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes--><!--Device-VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes-End--> |
 
 

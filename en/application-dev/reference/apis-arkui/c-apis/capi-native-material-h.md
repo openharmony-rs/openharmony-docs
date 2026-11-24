@@ -62,7 +62,7 @@ Provides immersive material types and API declarations for ArkUI on the native s
 
 | Name | Description |
 | -- | -- |
-| ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle | Defines the pointer to the light effect options.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle | Defines the pointer to the light effect options.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle--><!--Device-ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle-End--> |
 
 ## Enum type description
 
@@ -76,7 +76,7 @@ enum ArkUI_ImmersiveStyle
 
 Enumerates the immersive material styles. Different styles correspond to different material parameters, which affect the thickness of the material.
 
-<!--Device-ArkUI_ImmersiveStyle--><!--Device-ArkUI_ImmersiveStyle-End-->
+<!--Device-enum ArkUI_ImmersiveStyle--><!--Device-enum ArkUI_ImmersiveStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,11 +84,11 @@ Enumerates the immersive material styles. Different styles correspond to differe
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 | Ultra thin style. The material layer is ultra thin, with a very strong transparency effect.<br>**Since**: 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_THIN | Thin style. The material layer is thin, with a strong transparency effect.<br>**Since**: 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_REGULAR | Regular style. The material layer has a standard thickness with balanced visual effect.<br>**Since**: 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_THICK | Thick style. The blur effect is strong.<br>**Since**: 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK | Ultra thick style.<br>**Since**: 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 | Ultra thin style. The material layer is ultra thin, with a very strong transparency effect.<br>**Since**: 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0--><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0-End--> |
+| ARKUI_IMMERSIVE_STYLE_THIN | Thin style. The material layer is thin, with a strong transparency effect.<br>**Since**: 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_THIN--><!--Device-ARKUI_IMMERSIVE_STYLE_THIN-End--> |
+| ARKUI_IMMERSIVE_STYLE_REGULAR | Regular style. The material layer has a standard thickness with balanced visual effect.<br>**Since**: 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_REGULAR--><!--Device-ARKUI_IMMERSIVE_STYLE_REGULAR-End--> |
+| ARKUI_IMMERSIVE_STYLE_THICK | Thick style. The blur effect is strong.<br>**Since**: 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_THICK--><!--Device-ARKUI_IMMERSIVE_STYLE_THICK-End--> |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK | Ultra thick style.<br>**Since**: 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THICK--><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THICK-End--> |
 
 ### ArkUI_MaterialLevel
 
@@ -100,7 +100,7 @@ enum ArkUI_MaterialLevel
 
 Enumerates the material levels, which indicate the computing power level of the device. Use [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel) to obtain the material level of the current device.
 
-<!--Device-ArkUI_MaterialLevel--><!--Device-ArkUI_MaterialLevel-End-->
+<!--Device-enum ArkUI_MaterialLevel--><!--Device-enum ArkUI_MaterialLevel-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,9 +108,9 @@ Enumerates the material levels, which indicate the computing power level of the 
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | Exquisite level. The effect is exquisite and is suitable for high-end computing device.<br>**Since**: 26.0.0 |
-| ARKUI_MATERIAL_LEVEL_GENTLE | Gentle level. The effect is gentle and is suitable for mid-range computing device.<br>**Since**: 26.0.0 |
-| ARKUI_MATERIAL_LEVEL_SMOOTH | Smooth level. The effect is smooth and is suitable for low-end computing device.<br>**Since**: 26.0.0 |
+| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | Exquisite level. The effect is exquisite and is suitable for high-end computing device.<br>**Since**: 26.0.0<br><!--Device-ARKUI_MATERIAL_LEVEL_EXQUISITE = 0--><!--Device-ARKUI_MATERIAL_LEVEL_EXQUISITE = 0-End--> |
+| ARKUI_MATERIAL_LEVEL_GENTLE | Gentle level. The effect is gentle and is suitable for mid-range computing device.<br>**Since**: 26.0.0<br><!--Device-ARKUI_MATERIAL_LEVEL_GENTLE--><!--Device-ARKUI_MATERIAL_LEVEL_GENTLE-End--> |
+| ARKUI_MATERIAL_LEVEL_SMOOTH | Smooth level. The effect is smooth and is suitable for low-end computing device.<br>**Since**: 26.0.0<br><!--Device-ARKUI_MATERIAL_LEVEL_SMOOTH--><!--Device-ARKUI_MATERIAL_LEVEL_SMOOTH-End--> |
 
 
 ## Function description

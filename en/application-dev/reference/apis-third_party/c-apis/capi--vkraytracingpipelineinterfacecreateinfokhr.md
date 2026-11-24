@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t maxPipelineRayPayloadSize |  |
-| uint32_t maxPipelineRayHitAttributeSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t maxPipelineRayPayloadSize | <!--Device-uint32_t maxPipelineRayPayloadSize--><!--Device-uint32_t maxPipelineRayPayloadSize-End--> |
+| uint32_t maxPipelineRayHitAttributeSize | <!--Device-uint32_t maxPipelineRayHitAttributeSize--><!--Device-uint32_t maxPipelineRayHitAttributeSize-End--> |
 
 

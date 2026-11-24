@@ -24,10 +24,10 @@ Defines the struct for an RSA key.
 
 | Name | Description |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the key. |
-| uint32_t keySize | Length of the key. |
-| uint32_t nSize | Length of **n**. |
-| uint32_t eSize | Length of **e**. |
-| uint32_t dSize | Length of **d**. |
+| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the key.<br><!--Device-enum OH_Huks_KeyAlg keyAlg--><!--Device-enum OH_Huks_KeyAlg keyAlg-End--> |
+| uint32_t keySize | Length of the key.<br><!--Device-uint32_t keySize--><!--Device-uint32_t keySize-End--> |
+| uint32_t nSize | Length of **n**.<br><!--Device-uint32_t nSize--><!--Device-uint32_t nSize-End--> |
+| uint32_t eSize | Length of **e**.<br><!--Device-uint32_t eSize--><!--Device-uint32_t eSize-End--> |
+| uint32_t dSize | Length of **d**.<br><!--Device-uint32_t dSize--><!--Device-uint32_t dSize-End--> |
 
 

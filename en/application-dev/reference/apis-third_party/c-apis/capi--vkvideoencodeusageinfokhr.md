@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkVideoEncodeUsageFlagsKHR videoUsageHints |  |
-| VkVideoEncodeContentFlagsKHR videoContentHints |  |
-| VkVideoEncodeTuningModeKHR tuningMode |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkVideoEncodeUsageFlagsKHR videoUsageHints | <!--Device-VkVideoEncodeUsageFlagsKHR videoUsageHints--><!--Device-VkVideoEncodeUsageFlagsKHR videoUsageHints-End--> |
+| VkVideoEncodeContentFlagsKHR videoContentHints | <!--Device-VkVideoEncodeContentFlagsKHR videoContentHints--><!--Device-VkVideoEncodeContentFlagsKHR videoContentHints-End--> |
+| VkVideoEncodeTuningModeKHR tuningMode | <!--Device-VkVideoEncodeTuningModeKHR tuningMode--><!--Device-VkVideoEncodeTuningModeKHR tuningMode-End--> |
 
 

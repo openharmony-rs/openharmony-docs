@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineShaderStageCreateFlags flags |  |
-| VkShaderStageFlagBits stage |  |
-| VkShaderModule module |  |
-| const char* pName |  |
-| [const VkSpecializationInfo*](capi--vkspecializationinfo.md) pSpecializationInfo |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineShaderStageCreateFlags flags | <!--Device-VkPipelineShaderStageCreateFlags flags--><!--Device-VkPipelineShaderStageCreateFlags flags-End--> |
+| VkShaderStageFlagBits stage | <!--Device-VkShaderStageFlagBits stage--><!--Device-VkShaderStageFlagBits stage-End--> |
+| VkShaderModule module | <!--Device-VkShaderModule module--><!--Device-VkShaderModule module-End--> |
+| const char* pName | <!--Device-const char* pName--><!--Device-const char* pName-End--> |
+| [const VkSpecializationInfo*](capi--vkspecializationinfo.md) pSpecializationInfo | <!--Device-const VkSpecializationInfo* pSpecializationInfo--><!--Device-const VkSpecializationInfo* pSpecializationInfo-End--> |
 
 

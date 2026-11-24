@@ -24,7 +24,7 @@ Describes the width and height of a component.
 
 | Name | Description |
 | -- | -- |
-| int32_t width | Width, in px.<br>**Since**: 12 |
-| int32_t height | Height, in px.<br>**Since**: 12 |
+| int32_t width | Width, in px.<br>**Since**: 12<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | Height, in px.<br>**Since**: 12<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

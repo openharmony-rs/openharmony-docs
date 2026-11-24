@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkVideoCodecOperationFlagsKHR videoCodecOperations |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkVideoCodecOperationFlagsKHR videoCodecOperations | <!--Device-VkVideoCodecOperationFlagsKHR videoCodecOperations--><!--Device-VkVideoCodecOperationFlagsKHR videoCodecOperations-End--> |
 
 

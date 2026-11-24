@@ -49,7 +49,7 @@ enum OH_AT_AbilityAccessControlErrorCode
 
 访问控制操作的错误码。
 
-<!--Device-OH_AT_AbilityAccessControlErrorCode--><!--Device-OH_AT_AbilityAccessControlErrorCode-End-->
+<!--Device-enum OH_AT_AbilityAccessControlErrorCode--><!--Device-enum OH_AT_AbilityAccessControlErrorCode-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -57,12 +57,12 @@ enum OH_AT_AbilityAccessControlErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0 | 操作成功。<br>**起始版本：** 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801 | 不支持此能力。<br>**起始版本：** 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001 | 参数错误。权限数组为NULL、权限包含NULL或空字符串、permCount <= 0、permCount > 1024或NULL回调。<br>**起始版本：** 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007 | 系统服务工作异常。<br>**起始版本：** 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009 | 服务内部错误，例如拉起弹窗或获取用户操作结果失败。<br>**起始版本：** 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016 | 进程类型不允许。<br>**起始版本：** 26.1.0 |
+| OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0 | 操作成功。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801 | 不支持此能力。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001 | 参数错误。权限数组为NULL、权限包含NULL或空字符串、permCount <= 0、permCount > 1024或NULL回调。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007 | 系统服务工作异常。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009 | 服务内部错误，例如拉起弹窗或获取用户操作结果失败。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016 | 进程类型不允许。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016-End--> |
 
 ### OH_AT_PermissionOperResult
 
@@ -74,7 +74,7 @@ enum OH_AT_PermissionOperResult
 
 权限请求的结果枚举。
 
-<!--Device-OH_AT_PermissionOperResult--><!--Device-OH_AT_PermissionOperResult-End-->
+<!--Device-enum OH_AT_PermissionOperResult--><!--Device-enum OH_AT_PermissionOperResult-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -82,14 +82,14 @@ enum OH_AT_PermissionOperResult
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AT_PERMISSION_OPER_GRANTED = 0 | 已授权。<br>**起始版本：** 26.1.0 |
-| OH_AT_PERMISSION_OPER_SETTING = 1 | 未授权。结合OH_AT_PermissionsRequestResult.dialogShownResults进一步判断原因：若dialogShownResults为true，表示用户在本次申请中明确拒绝；若为false，表示当前状态无需再弹窗，通常需要用户前往“设置”修改权限的授权状态。<br>**起始版本：** 26.1.0 |
-| OH_AT_PERMISSION_OPER_INVALID_NAME = 2 | 权限名称无效。<br>**起始版本：** 26.1.0 |
-| OH_AT_PERMISSION_OPER_NOT_DECLARED = 3 | 拉起方应用或独立二进制（BIN）未声明该权限。<br>**起始版本：** 26.1.0 |
-| OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4 | 不满足对应权限的申请条件，例如部分位置权限需要满足附加前提条件。当前仅位置权限涉及，包括ohos.permission.LOCATION与ohos.permission.APPROXIMATELY_LOCATION。<br>**起始版本：** 26.1.0 |
-| OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5 | 该权限的授权模式与本接口不匹配。例如，该权限为manual_settings类型，需要用户前往“设置”开启对应开关。<br>**起始版本：** 26.1.0 |
-| OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6 | 用户未同意隐私声明。<br>**起始版本：** 26.1.0 |
-| OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7 | 该权限不支持通过权限弹窗进行申请，可能是申请方式受限或被系统策略管控。该权限无法修改授权状态。<br>**起始版本：** 26.1.0 |
+| OH_AT_PERMISSION_OPER_GRANTED = 0 | 已授权。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_GRANTED = 0--><!--Device-OH_AT_PERMISSION_OPER_GRANTED = 0-End--> |
+| OH_AT_PERMISSION_OPER_SETTING = 1 | 未授权。结合OH_AT_PermissionsRequestResult.dialogShownResults进一步判断原因：若dialogShownResults为true，表示用户在本次申请中明确拒绝；若为false，表示当前状态无需再弹窗，通常需要用户前往“设置”修改权限的授权状态。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_SETTING = 1--><!--Device-OH_AT_PERMISSION_OPER_SETTING = 1-End--> |
+| OH_AT_PERMISSION_OPER_INVALID_NAME = 2 | 权限名称无效。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_INVALID_NAME = 2--><!--Device-OH_AT_PERMISSION_OPER_INVALID_NAME = 2-End--> |
+| OH_AT_PERMISSION_OPER_NOT_DECLARED = 3 | 拉起方应用或独立二进制（BIN）未声明该权限。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_NOT_DECLARED = 3--><!--Device-OH_AT_PERMISSION_OPER_NOT_DECLARED = 3-End--> |
+| OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4 | 不满足对应权限的申请条件，例如部分位置权限需要满足附加前提条件。当前仅位置权限涉及，包括ohos.permission.LOCATION与ohos.permission.APPROXIMATELY_LOCATION。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4--><!--Device-OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4-End--> |
+| OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5 | 该权限的授权模式与本接口不匹配。例如，该权限为manual_settings类型，需要用户前往“设置”开启对应开关。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5--><!--Device-OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5-End--> |
+| OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6 | 用户未同意隐私声明。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6--><!--Device-OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6-End--> |
+| OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7 | 该权限不支持通过权限弹窗进行申请，可能是申请方式受限或被系统策略管控。该权限无法修改授权状态。<br>**起始版本：** 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7--><!--Device-OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7-End--> |
 
 
 ## 函数说明

@@ -6,7 +6,7 @@ typedef struct OH_DisplaySoloist OH_DisplaySoloist
 
 ## Overview
 
-Provides the declaration of an **OH_DisplaySoloist** struct.
+Declares the OH_DisplaySoloist struct, which is used for native-side services that need to implement frame rate control on a dedicated thread.
 
 <!--Device-typedef struct OH_DisplaySoloist OH_DisplaySoloist--><!--Device-typedef struct OH_DisplaySoloist OH_DisplaySoloist-End-->
 

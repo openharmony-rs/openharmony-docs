@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t colorAttachmentCount |  |
-| const uint32_t* pColorAttachmentLocations |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t colorAttachmentCount | <!--Device-uint32_t colorAttachmentCount--><!--Device-uint32_t colorAttachmentCount-End--> |
+| const uint32_t* pColorAttachmentLocations | <!--Device-const uint32_t* pColorAttachmentLocations--><!--Device-const uint32_t* pColorAttachmentLocations-End--> |
 
 

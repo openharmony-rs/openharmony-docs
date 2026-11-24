@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t location |  |
-| uint32_t binding |  |
-| VkFormat format |  |
-| uint32_t offset |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t location | <!--Device-uint32_t location--><!--Device-uint32_t location-End--> |
+| uint32_t binding | <!--Device-uint32_t binding--><!--Device-uint32_t binding-End--> |
+| VkFormat format | <!--Device-VkFormat format--><!--Device-VkFormat format-End--> |
+| uint32_t offset | <!--Device-uint32_t offset--><!--Device-uint32_t offset-End--> |
 
 

@@ -4,6 +4,8 @@
 
 Defines APIs related to font information, such as obtaining font information, finding and matching specified fonts, reading font descriptor properties, and obtaining Unicode codes and font counts.
 
+**File to Include**: <native_drawing/drawing_text_font_descriptor.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
@@ -63,6 +65,11 @@ Defines APIs related to font information, such as obtaining font information, fi
 | [uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)](#oh_drawing_getfontcountfromfile) | Obtains the number of fonts contained in a font file. |
 | [uint32_t OH_Drawing_GetFontCountFromBuffer(uint8_t* fontBuffer, size_t length)](#oh_drawing_getfontcountfrombuffer) | Obtains the number of fonts contained in a font buffer. |
 | [OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontType, size_t* pathCount)](#oh_drawing_getfontpathsbytype) | Obtains all font file paths of the specified font type. |
+| [OH_Drawing_ErrorCode OH_Drawing_CopyFontFamilyMappings(const OH_Drawing_FontFamilyMapping ***outCopiedMappings, uint32_t *outBorrowedCount)](#oh_drawing_copyfontfamilymappings) | Copies the content of the font family mapping table. |
+| [void OH_Drawing_FreeFontFamilyMappings(const OH_Drawing_FontFamilyMapping **mappings)](#oh_drawing_freefontfamilymappings) | Releases a font family mapping table. |
+| [OH_Drawing_ErrorCode OH_Drawing_GetSourceFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, const char **outBorrowedSourceFamily)](#oh_drawing_getsourcefamilyfrommapping) | Obtains the source font family name from a specified font family mapping object. |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTargetCountFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t *outBorrowedTargetCount)](#oh_drawing_gettargetcountfrommapping) | Obtains the number of target font families contained in a specified font family mapping object. |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTargetFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t index, const char **outBorrowedTargetFamily)](#oh_drawing_gettargetfamilyfrommapping) | Obtains the target font family name from a specified font family mapping object based on the index. |
 
 ## Enum type description
 
@@ -76,7 +83,7 @@ enum OH_Drawing_SystemFontType
 
 Defines an enum for the system font types.
 
-<!--Device-OH_Drawing_SystemFontType--><!--Device-OH_Drawing_SystemFontType-End-->
+<!--Device-enum OH_Drawing_SystemFontType--><!--Device-enum OH_Drawing_SystemFontType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -84,11 +91,11 @@ Defines an enum for the system font types.
 
 | Enum item | Description |
 | -- | -- |
-| ALL = 1 << 0 | All font types. |
-| GENERIC = 1 << 1 | System font type. |
-| STYLISH = 1 << 2 | Style font type. |
-| INSTALLED = 1 << 3 | User-installed font type. |
-| CUSTOMIZED = 1 << 4 | Custom font type.<br>**Since**: 18 |
+| ALL = 1 << 0 | All font types.<br><!--Device-ALL = 1 << 0--><!--Device-ALL = 1 << 0-End--> |
+| GENERIC = 1 << 1 | System font type.<br><!--Device-GENERIC = 1 << 1--><!--Device-GENERIC = 1 << 1-End--> |
+| STYLISH = 1 << 2 | Style font type.<br><!--Device-STYLISH = 1 << 2--><!--Device-STYLISH = 1 << 2-End--> |
+| INSTALLED = 1 << 3 | User-installed font type.<br><!--Device-INSTALLED = 1 << 3--><!--Device-INSTALLED = 1 << 3-End--> |
+| CUSTOMIZED = 1 << 4 | Custom font type.<br>**Since**: 18<br><!--Device-CUSTOMIZED = 1 << 4--><!--Device-CUSTOMIZED = 1 << 4-End--> |
 
 ### OH_Drawing_FontFullDescriptorAttributeId
 
@@ -100,7 +107,7 @@ enum OH_Drawing_FontFullDescriptorAttributeId
 
 Enumerates font descriptor attributes. You can use the corresponding APIs to obtain the attributes of different font descriptor types. For example, if **FULL_DESCRIPTOR_ATTR_I_WEIGHT** is of the int type, use the [OH_Drawing_GetFontFullDescriptorAttributeInt](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributeint) API to obtain its attribute value.
 
-<!--Device-OH_Drawing_FontFullDescriptorAttributeId--><!--Device-OH_Drawing_FontFullDescriptorAttributeId-End-->
+<!--Device-enum OH_Drawing_FontFullDescriptorAttributeId--><!--Device-enum OH_Drawing_FontFullDescriptorAttributeId-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -108,28 +115,28 @@ Enumerates font descriptor attributes. You can use the corresponding APIs to obt
 
 | Enum item | Description |
 | -- | -- |
-| FULL_DESCRIPTOR_ATTR_S_PATH = 0 | Font file path, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type. |
-| FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1 | Postscript font name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type. |
-| FULL_DESCRIPTOR_ATTR_S_FULL_NAME = 2 | Font name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type. |
-| FULL_DESCRIPTOR_ATTR_S_FAMILY_NAME = 3 | Font family name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type. |
-| FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4 | Font subfamily name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type. |
-| FULL_DESCRIPTOR_ATTR_I_WEIGHT = 5 | Font weight, of the int type. |
-| FULL_DESCRIPTOR_ATTR_I_WIDTH = 6 | Font width style, of the int type. |
-| FULL_DESCRIPTOR_ATTR_I_ITALIC = 7 | Whether the font is italic, of the int type. **1** means that the font is italic; **0** otherwise. |
-| FULL_DESCRIPTOR_ATTR_B_MONO = 8 | Whether the font is monospaced. The value is of the bool type. The value true means the font is monospaced, and false means the opposite. |
-| FULL_DESCRIPTOR_ATTR_B_SYMBOLIC = 9 | Whether the font supports the symbol font, of the bool type. **true** means yes; **false** otherwise. |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_POSTSCRIPT_NAME = 10 | Extracts the postscript name of the font based on the system language configuration.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_FULL_NAME = 11 | Extracts the full name of the font based on the system language configuration.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_FAMILY_NAME = 12 | Extracts the font family name based on the system language configuration.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_SUB_FAMILY_NAME = 13 | Extracts the font subfamily name based on the system language configuration.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_VERSION = 14 | Font version.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_MANUFACTURE = 15 | Font manufacturer information.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16 | The copyright of the font<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17 | Font trademark information.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_S_LICENSE = 18 | Font license information.<br>**Since**: 23 |
-| FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS = 19 | Font variable axis array.<br>**Since**: 24 |
-| FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE = 20 | Font variable instance array.<br>**Since**: 24 |
-| FULL_DESCRIPTOR_ATTR_I_INDEX = 21 | Font index.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_PATH = 0 | Font file path, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.<br><!--Device-FULL_DESCRIPTOR_ATTR_S_PATH = 0--><!--Device-FULL_DESCRIPTOR_ATTR_S_PATH = 0-End--> |
+| FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1 | Postscript font name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.<br><!--Device-FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1--><!--Device-FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1-End--> |
+| FULL_DESCRIPTOR_ATTR_S_FULL_NAME = 2 | Font name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.<br><!--Device-FULL_DESCRIPTOR_ATTR_S_FULL_NAME = 2--><!--Device-FULL_DESCRIPTOR_ATTR_S_FULL_NAME = 2-End--> |
+| FULL_DESCRIPTOR_ATTR_S_FAMILY_NAME = 3 | Font family name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.<br><!--Device-FULL_DESCRIPTOR_ATTR_S_FAMILY_NAME = 3--><!--Device-FULL_DESCRIPTOR_ATTR_S_FAMILY_NAME = 3-End--> |
+| FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4 | Font subfamily name, of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.<br><!--Device-FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4--><!--Device-FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4-End--> |
+| FULL_DESCRIPTOR_ATTR_I_WEIGHT = 5 | Font weight, of the int type.<br><!--Device-FULL_DESCRIPTOR_ATTR_I_WEIGHT = 5--><!--Device-FULL_DESCRIPTOR_ATTR_I_WEIGHT = 5-End--> |
+| FULL_DESCRIPTOR_ATTR_I_WIDTH = 6 | Font width style, of the int type.<br><!--Device-FULL_DESCRIPTOR_ATTR_I_WIDTH = 6--><!--Device-FULL_DESCRIPTOR_ATTR_I_WIDTH = 6-End--> |
+| FULL_DESCRIPTOR_ATTR_I_ITALIC = 7 | Whether the font is italic, of the int type. **1** means that the font is italic; **0** otherwise.<br><!--Device-FULL_DESCRIPTOR_ATTR_I_ITALIC = 7--><!--Device-FULL_DESCRIPTOR_ATTR_I_ITALIC = 7-End--> |
+| FULL_DESCRIPTOR_ATTR_B_MONO = 8 | Whether the font is monospaced. The value is of the bool type. The value true means the font is monospaced, and false means the opposite.<br><!--Device-FULL_DESCRIPTOR_ATTR_B_MONO = 8--><!--Device-FULL_DESCRIPTOR_ATTR_B_MONO = 8-End--> |
+| FULL_DESCRIPTOR_ATTR_B_SYMBOLIC = 9 | Whether the font supports the symbol font, of the bool type. **true** means yes; **false** otherwise.<br><!--Device-FULL_DESCRIPTOR_ATTR_B_SYMBOLIC = 9--><!--Device-FULL_DESCRIPTOR_ATTR_B_SYMBOLIC = 9-End--> |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_POSTSCRIPT_NAME = 10 | Extracts the postscript name of the font based on the system language configuration.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_POSTSCRIPT_NAME = 10--><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_POSTSCRIPT_NAME = 10-End--> |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_FULL_NAME = 11 | Extracts the full name of the font based on the system language configuration.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_FULL_NAME = 11--><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_FULL_NAME = 11-End--> |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_FAMILY_NAME = 12 | Extracts the font family name based on the system language configuration.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_FAMILY_NAME = 12--><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_FAMILY_NAME = 12-End--> |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_SUB_FAMILY_NAME = 13 | Extracts the font subfamily name based on the system language configuration.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_SUB_FAMILY_NAME = 13--><!--Device-FULL_DESCRIPTOR_ATTR_S_LOCAL_SUB_FAMILY_NAME = 13-End--> |
+| FULL_DESCRIPTOR_ATTR_S_VERSION = 14 | Font version.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_VERSION = 14--><!--Device-FULL_DESCRIPTOR_ATTR_S_VERSION = 14-End--> |
+| FULL_DESCRIPTOR_ATTR_S_MANUFACTURE = 15 | Font manufacturer information.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_MANUFACTURE = 15--><!--Device-FULL_DESCRIPTOR_ATTR_S_MANUFACTURE = 15-End--> |
+| FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16 | The copyright of the font<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16--><!--Device-FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16-End--> |
+| FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17 | Font trademark information.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17--><!--Device-FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17-End--> |
+| FULL_DESCRIPTOR_ATTR_S_LICENSE = 18 | Font license information.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_S_LICENSE = 18--><!--Device-FULL_DESCRIPTOR_ATTR_S_LICENSE = 18-End--> |
+| FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS = 19 | Font variable axis array.<br>**Since**: 24<br><!--Device-FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS = 19--><!--Device-FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS = 19-End--> |
+| FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE = 20 | Font variable instance array.<br>**Since**: 24<br><!--Device-FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE = 20--><!--Device-FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE = 20-End--> |
+| FULL_DESCRIPTOR_ATTR_I_INDEX = 21 | Font index.<br>**Since**: 23<br><!--Device-FULL_DESCRIPTOR_ATTR_I_INDEX = 21--><!--Device-FULL_DESCRIPTOR_ATTR_I_INDEX = 21-End--> |
 
 ### OH_Drawing_FontVariationAxisAttributeId
 
@@ -141,7 +148,7 @@ enum OH_Drawing_FontVariationAxisAttributeId
 
 Enumerates font variable axis attributes.
 
-<!--Device-OH_Drawing_FontVariationAxisAttributeId--><!--Device-OH_Drawing_FontVariationAxisAttributeId-End-->
+<!--Device-enum OH_Drawing_FontVariationAxisAttributeId--><!--Device-enum OH_Drawing_FontVariationAxisAttributeId-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -149,13 +156,13 @@ Enumerates font variable axis attributes.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_VARIATION_AXIS_ATTR_S_KEY = 0 | Keyword identifier of the font variable axis. |
-| FONT_VARIATION_AXIS_ATTR_D_MIN_VALUE = 1 | Minimum value of the font variable axis. |
-| FONT_VARIATION_AXIS_ATTR_D_MAX_VALUE = 2 | Maximum value of the font variable axis. |
-| FONT_VARIATION_AXIS_ATTR_D_DEFAULT_VALUE = 3 | Default value of the font variable axis. |
-| FONT_VARIATION_AXIS_ATTR_I_FLAGS = 4 | Flag of the font variable axis. The value **0** indicates that the axis is visible to users, and the value **1**<br>indicates that the axis should be hidden. |
-| FONT_VARIATION_AXIS_ATTR_S_NAME = 5 | English name of the font variable axis. |
-| FONT_VARIATION_AXIS_ATTR_S_LOCAL_NAME = 6 | Localized name of the font variable axis. |
+| FONT_VARIATION_AXIS_ATTR_S_KEY = 0 | Keyword identifier of the font variable axis.<br><!--Device-FONT_VARIATION_AXIS_ATTR_S_KEY = 0--><!--Device-FONT_VARIATION_AXIS_ATTR_S_KEY = 0-End--> |
+| FONT_VARIATION_AXIS_ATTR_D_MIN_VALUE = 1 | Minimum value of the font variable axis.<br><!--Device-FONT_VARIATION_AXIS_ATTR_D_MIN_VALUE = 1--><!--Device-FONT_VARIATION_AXIS_ATTR_D_MIN_VALUE = 1-End--> |
+| FONT_VARIATION_AXIS_ATTR_D_MAX_VALUE = 2 | Maximum value of the font variable axis.<br><!--Device-FONT_VARIATION_AXIS_ATTR_D_MAX_VALUE = 2--><!--Device-FONT_VARIATION_AXIS_ATTR_D_MAX_VALUE = 2-End--> |
+| FONT_VARIATION_AXIS_ATTR_D_DEFAULT_VALUE = 3 | Default value of the font variable axis.<br><!--Device-FONT_VARIATION_AXIS_ATTR_D_DEFAULT_VALUE = 3--><!--Device-FONT_VARIATION_AXIS_ATTR_D_DEFAULT_VALUE = 3-End--> |
+| FONT_VARIATION_AXIS_ATTR_I_FLAGS = 4 | Flag of the font variable axis. The value **0** indicates that the axis is visible to users, and the value **1** indicates that the axis should be hidden.<br><!--Device-FONT_VARIATION_AXIS_ATTR_I_FLAGS = 4--><!--Device-FONT_VARIATION_AXIS_ATTR_I_FLAGS = 4-End--> |
+| FONT_VARIATION_AXIS_ATTR_S_NAME = 5 | English name of the font variable axis.<br><!--Device-FONT_VARIATION_AXIS_ATTR_S_NAME = 5--><!--Device-FONT_VARIATION_AXIS_ATTR_S_NAME = 5-End--> |
+| FONT_VARIATION_AXIS_ATTR_S_LOCAL_NAME = 6 | Localized name of the font variable axis.<br><!--Device-FONT_VARIATION_AXIS_ATTR_S_LOCAL_NAME = 6--><!--Device-FONT_VARIATION_AXIS_ATTR_S_LOCAL_NAME = 6-End--> |
 
 ### OH_Drawing_FontVariationInstanceAttributeId
 
@@ -167,7 +174,7 @@ enum OH_Drawing_FontVariationInstanceAttributeId
 
 Enumerates font variable instance attributes.
 
-<!--Device-OH_Drawing_FontVariationInstanceAttributeId--><!--Device-OH_Drawing_FontVariationInstanceAttributeId-End-->
+<!--Device-enum OH_Drawing_FontVariationInstanceAttributeId--><!--Device-enum OH_Drawing_FontVariationInstanceAttributeId-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -175,8 +182,8 @@ Enumerates font variable instance attributes.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_VARIATION_INSTANCE_ATTR_S_NAME = 0 | English name of the font variable instance. |
-| FONT_VARIATION_INSTANCE_ATTR_S_LOCAL_NAME = 1 | Localized name of the font variable instance. |
+| FONT_VARIATION_INSTANCE_ATTR_S_NAME = 0 | English name of the font variable instance.<br><!--Device-FONT_VARIATION_INSTANCE_ATTR_S_NAME = 0--><!--Device-FONT_VARIATION_INSTANCE_ATTR_S_NAME = 0-End--> |
+| FONT_VARIATION_INSTANCE_ATTR_S_LOCAL_NAME = 1 | Localized name of the font variable instance.<br><!--Device-FONT_VARIATION_INSTANCE_ATTR_S_LOCAL_NAME = 1--><!--Device-FONT_VARIATION_INSTANCE_ATTR_S_LOCAL_NAME = 1-End--> |
 
 
 ## Function description
@@ -1030,5 +1037,146 @@ Obtains all font file paths of the specified font type.
 | Type | Description |
 | -- | -- |
 | OH_Drawing_String* | List of font paths returned. When no longer needed, use free to release the pointer to this object and the pointer held internally by each OH_Drawing_String object. |
+
+### OH_Drawing_CopyFontFamilyMappings()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_CopyFontFamilyMappings(const OH_Drawing_FontFamilyMapping ***outCopiedMappings, uint32_t *outBorrowedCount)
+```
+
+**Description**
+
+Copies the content of the font family mapping table.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_CopyFontFamilyMappings(const OH_Drawing_FontFamilyMapping ***outCopiedMappings, uint32_t *outBorrowedCount)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_CopyFontFamilyMappings(const OH_Drawing_FontFamilyMapping ***outCopiedMappings, uint32_t *outBorrowedCount)-End-->
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.1.0
+
+**Resource release**: [OH_Drawing_FreeFontFamilyMappings](#oh_drawing_freefontfamilymappings)
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_Drawing_FontFamilyMapping](capi-drawing-oh-drawing-fontfamilymapping.md) ***outCopiedMappings | [out] Content of the font family mapping table, populated on success. Call [OH_Drawing_FreeFontFamilyMappings](capi-drawing-text-font-descriptor-h.md#oh_drawing_freefontfamilymappings) to free the memory after use. |
+| uint32_t *outBorrowedCount | [out] Number of entries in the font family mapping table, populated on success. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| OH_Drawing_ErrorCode | <ul> <li>[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the operation is successful. </li> <li>[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the **outCopiedMappings** or **outBorrowedCount** parameter is a null pointer. </li> </ul> |
+
+### OH_Drawing_FreeFontFamilyMappings()
+
+```c
+void OH_Drawing_FreeFontFamilyMappings(const OH_Drawing_FontFamilyMapping **mappings)
+```
+
+**Description**
+
+Releases a font family mapping table.
+
+<!--Device-void OH_Drawing_FreeFontFamilyMappings(const OH_Drawing_FontFamilyMapping **mappings)--><!--Device-void OH_Drawing_FreeFontFamilyMappings(const OH_Drawing_FontFamilyMapping **mappings)-End-->
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_Drawing_FontFamilyMapping](capi-drawing-oh-drawing-fontfamilymapping.md) **mappings | [in] Pointer to the font family mapping table. |
+
+### OH_Drawing_GetSourceFamilyFromMapping()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetSourceFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, const char **outBorrowedSourceFamily)
+```
+
+**Description**
+
+Obtains the source font family name from a specified font family mapping object.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_GetSourceFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, const char **outBorrowedSourceFamily)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_GetSourceFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, const char **outBorrowedSourceFamily)-End-->
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_Drawing_FontFamilyMapping](capi-drawing-oh-drawing-fontfamilymapping.md) *mapping | [in] Pointer to a single font family mapping object. The pointer cannot be null and must remain valid during the call. The callee does not retain this reference, so the caller does not need to release it after the call. |
+| const char **outBorrowedSourceFamily | [out] Source font family name encoded in UTF-8, populated on success. The value of this parameter remains unchanged if the call fails. This parameter cannot be left empty and does not need to be initialized before the call. The string is owned by the **mapping** object and must not be released by the caller. It becomes invalid after the **mapping** object is modified or destroyed. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| OH_Drawing_ErrorCode | <ul> <li>[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the operation is successful. </li> <li>[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the **mapping** or **outBorrowedSourceFamily** parameter is a null pointer. </li> </ul> |
+
+### OH_Drawing_GetTargetCountFromMapping()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTargetCountFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t *outBorrowedTargetCount)
+```
+
+**Description**
+
+Obtains the number of target font families contained in a specified font family mapping object.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_GetTargetCountFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t *outBorrowedTargetCount)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_GetTargetCountFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t *outBorrowedTargetCount)-End-->
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_Drawing_FontFamilyMapping](capi-drawing-oh-drawing-fontfamilymapping.md) *mapping | [in] Pointer to a single font family mapping object. The pointer cannot be null and must remain valid during the call. The callee does not retain this reference, so the caller does not need to release it after the call. |
+| uint32_t *outBorrowedTargetCount | [out] Number of target font family names, populated on success. The value of this parameter remains unchanged if the call fails. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| OH_Drawing_ErrorCode | <ul> <li>[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the operation is successful. </li> <li>[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the **mapping** or **outBorrowedTargetCount** parameter is a null pointer. </li> </ul> |
+
+### OH_Drawing_GetTargetFamilyFromMapping()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTargetFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t index, const char **outBorrowedTargetFamily)
+```
+
+**Description**
+
+Obtains the target font family name from a specified font family mapping object based on the index.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_GetTargetFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t index, const char **outBorrowedTargetFamily)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_GetTargetFamilyFromMapping(const OH_Drawing_FontFamilyMapping *mapping, uint32_t index, const char **outBorrowedTargetFamily)-End-->
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_Drawing_FontFamilyMapping](capi-drawing-oh-drawing-fontfamilymapping.md) *mapping | [in] Pointer to a single font family mapping object. The pointer cannot be null and must remain valid during the call. The callee does not retain this reference, so the caller does not need to release it after the call. |
+| uint32_t index | [in] Index of the target font family name. The value range is [0, **targetCount** – 1]. You can obtain **targetCount** by calling [OH_Drawing_GetTargetCountFromMapping](capi-drawing-text-font-descriptor-h.md#oh_drawing_gettargetcountfrommapping). |
+| const char **outBorrowedTargetFamily | [out] Target font family name encoded in UTF-8, populated on success. The value of this parameter remains unchanged if the call fails. This parameter cannot be left empty and does not need to be initialized before the call. The string is owned by the **mapping** object and must not be released by the caller. It becomes invalid after the **mapping** object is modified or destroyed. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| OH_Drawing_ErrorCode | <ul> <li>[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the operation is successful. </li> <li>[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the **mapping** or **outBorrowedTargetFamily** parameter is a null pointer. </li> <li>[OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE](capi-drawing-error-code-h.md#oh_drawing_errorcode) is returned if the value of **index** is out of range. </li> </ul> |
 
 

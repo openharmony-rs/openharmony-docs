@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkMemoryRequirements](capi--vkmemoryrequirements.md) memoryRequirements |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkMemoryRequirements](capi--vkmemoryrequirements.md) memoryRequirements | <!--Device-VkMemoryRequirements memoryRequirements--><!--Device-VkMemoryRequirements memoryRequirements-End--> |
 
 

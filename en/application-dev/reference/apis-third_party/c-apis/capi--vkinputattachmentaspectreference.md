@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t subpass |  |
-| uint32_t inputAttachmentIndex |  |
-| VkImageAspectFlags aspectMask |  |
+| uint32_t subpass | <!--Device-uint32_t subpass--><!--Device-uint32_t subpass-End--> |
+| uint32_t inputAttachmentIndex | <!--Device-uint32_t inputAttachmentIndex--><!--Device-uint32_t inputAttachmentIndex-End--> |
+| VkImageAspectFlags aspectMask | <!--Device-VkImageAspectFlags aspectMask--><!--Device-VkImageAspectFlags aspectMask-End--> |
 
 

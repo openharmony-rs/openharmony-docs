@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkIndirectExecutionSetInfoTypeEXT type |  |
-| [VkIndirectExecutionSetInfoEXT](capi--vkindirectexecutionsetinfoext.md) info |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkIndirectExecutionSetInfoTypeEXT type | <!--Device-VkIndirectExecutionSetInfoTypeEXT type--><!--Device-VkIndirectExecutionSetInfoTypeEXT type-End--> |
+| [VkIndirectExecutionSetInfoEXT](capi--vkindirectexecutionsetinfoext.md) info | <!--Device-VkIndirectExecutionSetInfoEXT info--><!--Device-VkIndirectExecutionSetInfoEXT info-End--> |
 
 

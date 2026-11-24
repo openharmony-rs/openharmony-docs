@@ -53,7 +53,7 @@ enum OH_Drawing_RegionOpMode
 
 区域操作类型枚举。
 
-<!--Device-OH_Drawing_RegionOpMode--><!--Device-OH_Drawing_RegionOpMode-End-->
+<!--Device-enum OH_Drawing_RegionOpMode--><!--Device-enum OH_Drawing_RegionOpMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -61,12 +61,12 @@ enum OH_Drawing_RegionOpMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| REGION_OP_MODE_DIFFERENCE | 差集操作。 |
-| REGION_OP_MODE_INTERSECT | 交集操作。 |
-| REGION_OP_MODE_UNION | 并集操作。 |
-| REGION_OP_MODE_XOR | 异或操作。 |
-| REGION_OP_MODE_REVERSE_DIFFERENCE | 反向差集操作。 |
-| REGION_OP_MODE_REPLACE | 替换操作。 |
+| REGION_OP_MODE_DIFFERENCE | 差集操作。<br><!--Device-REGION_OP_MODE_DIFFERENCE--><!--Device-REGION_OP_MODE_DIFFERENCE-End--> |
+| REGION_OP_MODE_INTERSECT | 交集操作。<br><!--Device-REGION_OP_MODE_INTERSECT--><!--Device-REGION_OP_MODE_INTERSECT-End--> |
+| REGION_OP_MODE_UNION | 并集操作。<br><!--Device-REGION_OP_MODE_UNION--><!--Device-REGION_OP_MODE_UNION-End--> |
+| REGION_OP_MODE_XOR | 异或操作。<br><!--Device-REGION_OP_MODE_XOR--><!--Device-REGION_OP_MODE_XOR-End--> |
+| REGION_OP_MODE_REVERSE_DIFFERENCE | 反向差集操作。<br><!--Device-REGION_OP_MODE_REVERSE_DIFFERENCE--><!--Device-REGION_OP_MODE_REVERSE_DIFFERENCE-End--> |
+| REGION_OP_MODE_REPLACE | 替换操作。<br><!--Device-REGION_OP_MODE_REPLACE--><!--Device-REGION_OP_MODE_REPLACE-End--> |
 
 
 ## 函数说明

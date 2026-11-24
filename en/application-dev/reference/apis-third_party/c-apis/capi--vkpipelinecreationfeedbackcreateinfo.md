@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkPipelineCreationFeedback*](capi--vkpipelinecreationfeedback.md) pPipelineCreationFeedback |  |
-| uint32_t pipelineStageCreationFeedbackCount |  |
-| [VkPipelineCreationFeedback*](capi--vkpipelinecreationfeedback.md) pPipelineStageCreationFeedbacks |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkPipelineCreationFeedback*](capi--vkpipelinecreationfeedback.md) pPipelineCreationFeedback | <!--Device-VkPipelineCreationFeedback* pPipelineCreationFeedback--><!--Device-VkPipelineCreationFeedback* pPipelineCreationFeedback-End--> |
+| uint32_t pipelineStageCreationFeedbackCount | <!--Device-uint32_t pipelineStageCreationFeedbackCount--><!--Device-uint32_t pipelineStageCreationFeedbackCount-End--> |
+| [VkPipelineCreationFeedback*](capi--vkpipelinecreationfeedback.md) pPipelineStageCreationFeedbacks | <!--Device-VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks--><!--Device-VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks-End--> |
 
 

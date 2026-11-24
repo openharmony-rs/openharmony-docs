@@ -24,9 +24,9 @@ The struct describes the width, height, and image information of the rectangle u
 
 | Name | Description |
 | -- | -- |
-| int32_t x | X-coordinate of screen recording |
-| int32_t y | y-coordinate of screen recording |
-| int32_t width | Width of screen recording, in px |
-| int32_t height | Height of screen recording, in px |
+| int32_t x | X-coordinate of screen recording<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | y-coordinate of screen recording<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
+| int32_t width | Width of screen recording, in px<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | Height of screen recording, in px<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

@@ -18,7 +18,9 @@ NODE_IMAGE_ON_COMPLETE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE
 
 **Description**
 
-Defines the image loading success event.<br> This event is triggered when an image is successfully loaded or decoded. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains nine parameters:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: loading status. The value <b>0</b> indicates that the image is loaded successfully, and the value <b>1</b> indicates that the image is decoded successfully.</li> <li>ArkUI_NodeComponentEvent.data[1].f32: width of the image, in px.</li> <li>ArkUI_NodeComponentEvent.data[2].f32: height of the image, in px.</li> <li>ArkUI_NodeComponentEvent.data[3].f32: width of the component, in px.</li> <li>ArkUI_NodeComponentEvent.data[4].f32: height of the component, in px.</li> <li>ArkUI_NodeComponentEvent.data[5].f32: offset of the rendered content relative to the component on the x-axis, in px.</li> <li>ArkUI_NodeComponentEvent.data[6].f32: offset of the rendered content relative to the component on the y-axis, in px.</li> <li>ArkUI_NodeComponentEvent.data[7].f32: actual rendered width of the image, in px.</li> <li>ArkUI_NodeComponentEvent.data[8].f32: actual rendered height of the image, in px.</li> </ul>
+Defines the image loading success event.<br> This event is triggered when an image is successfully loaded or decoded. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains nine parameters:** <ul> <li>ArkUI_NodeComponentEvent.data[0].i32: loading status. The value <b>0</b> indicates that the image is loaded successfully, and the value <b>1</b> indicates that the image is decoded successfully.</li> <li>ArkUI_NodeComponentEvent.data[1].f32: width of the image, in px.</li> <li>ArkUI_NodeComponentEvent.data[2].f32: height of the image, in px.</li> <li>ArkUI_NodeComponentEvent.data[3].f32: width of the component, in px.</li> <li>ArkUI_NodeComponentEvent.data[4].f32: height of the component, in px.</li> <li>ArkUI_NodeComponentEvent.data[5].f32: offset of the rendered content relative to the component on the x-axis, in px.</li> <li>ArkUI_NodeComponentEvent.data[6].f32: offset of the rendered content relative to the component on the y-axis, in px.</li> <li>ArkUI_NodeComponentEvent.data[7].f32: actual rendered width of the image, in px.</li> <li>ArkUI_NodeComponentEvent.data[8].f32: actual rendered height of the image, in px.</li> </ul>
+
+<!--Device-NODE_IMAGE_ON_COMPLETE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE--><!--Device-NODE_IMAGE_ON_COMPLETE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE-End-->
 
 **Since**: 12
 
@@ -30,7 +32,9 @@ NODE_IMAGE_ON_ERROR
 
 **Description**
 
-Image loading failure event.<br> This event is triggered when an error occurs during image loading. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:**<br><ul> <li>**ArkUI_NodeComponentEvent.data[0].i32**: result code.<br><b>401</b>: The image could not be obtained because the image path is invalid.<br><b>103101</b>: The image format is not supported.</li> </ul>
+Image loading failure event.<br> This event is triggered when an error occurs during image loading. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:** <ul> <li>**ArkUI_NodeComponentEvent.data[0].i32**: result code.<br><b>401</b>: The image could not be obtained because the image path is invalid.<br><b>103101</b>: The image format is not supported.</li> </ul>
+
+<!--Device-NODE_IMAGE_ON_ERROR--><!--Device-NODE_IMAGE_ON_ERROR-End-->
 
 **Since**: 12
 
@@ -44,6 +48,8 @@ NODE_IMAGE_ON_SVG_PLAY_FINISH
 
 SVG animation playback completion event.<br> This event is triggered when the animation playback in the loaded SVG image is complete. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
+<!--Device-NODE_IMAGE_ON_SVG_PLAY_FINISH--><!--Device-NODE_IMAGE_ON_SVG_PLAY_FINISH-End-->
+
 **Since**: 12
 
 ### NODE_IMAGE_ON_DOWNLOAD_PROGRESS
@@ -54,7 +60,9 @@ NODE_IMAGE_ON_DOWNLOAD_PROGRESS
 
 **Description**
 
-Event triggered during image download.<br> This event is triggered when the page component downloads a web page image. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:**<br><ul> <li>**ArkUI_NodeComponentEvent.data[0].u32**: number of bytes that have been downloaded.</li> <li>**ArkUI_NodeComponentEvent.data[1].u32**: total number of bytes of the image to be downloaded.</li> </ul>
+Event triggered during image download.<br> This event is triggered when the page component downloads a web page image. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:** <ul> <li>**ArkUI_NodeComponentEvent.data[0].u32**: number of bytes that have been downloaded.</li> <li>**ArkUI_NodeComponentEvent.data[1].u32**: total number of bytes of the image to be downloaded.</li> </ul>
+
+<!--Device-NODE_IMAGE_ON_DOWNLOAD_PROGRESS--><!--Device-NODE_IMAGE_ON_DOWNLOAD_PROGRESS-End-->
 
 **Since**: 12
 

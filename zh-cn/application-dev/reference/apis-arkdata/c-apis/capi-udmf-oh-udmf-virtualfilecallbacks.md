@@ -24,9 +24,9 @@ typedef struct OH_UDMF_VirtualFileCallbacks {...} OH_UDMF_VirtualFileCallbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t structSize | 结构体大小。<br>**起始版本：** 26.1.0 |
-| [OH_UDMF_VirtualFileOnStat](capi-uds-h.md#oh_udmf_virtualfileonstat) onStat | 可选的元数据回调。<br>**起始版本：** 26.1.0 |
-| [OH_UDMF_VirtualFileOnRead](capi-uds-h.md#oh_udmf_virtualfileonread) onRead | 必选的内容读取回调。<br>**起始版本：** 26.1.0 |
-| [OH_UDMF_VirtualFileOnCancel](capi-uds-h.md#oh_udmf_virtualfileoncancel) onCancel | 可选的取消回调。为nullptr时，取消操作成功，不通知提供方。<br>**起始版本：** 26.1.0 |
+| uint32_t structSize | 结构体大小。<br>**起始版本：** 26.1.0<br><!--Device-uint32_t structSize--><!--Device-uint32_t structSize-End--> |
+| [OH_UDMF_VirtualFileOnStat](capi-uds-h.md#oh_udmf_virtualfileonstat) onStat | 可选的元数据回调。<br>**起始版本：** 26.1.0<br><!--Device-OH_UDMF_VirtualFileOnStat onStat--><!--Device-OH_UDMF_VirtualFileOnStat onStat-End--> |
+| [OH_UDMF_VirtualFileOnRead](capi-uds-h.md#oh_udmf_virtualfileonread) onRead | 必选的内容读取回调。<br>**起始版本：** 26.1.0<br><!--Device-OH_UDMF_VirtualFileOnRead onRead--><!--Device-OH_UDMF_VirtualFileOnRead onRead-End--> |
+| [OH_UDMF_VirtualFileOnCancel](capi-uds-h.md#oh_udmf_virtualfileoncancel) onCancel | 可选的取消回调。为nullptr时，取消操作成功，不通知提供方。<br>**起始版本：** 26.1.0<br><!--Device-OH_UDMF_VirtualFileOnCancel onCancel--><!--Device-OH_UDMF_VirtualFileOnCancel onCancel-End--> |
 
 

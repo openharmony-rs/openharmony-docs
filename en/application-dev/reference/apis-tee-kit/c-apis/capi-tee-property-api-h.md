@@ -42,8 +42,8 @@ Reference of TEE object api definitions.
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_PropSetHandle | Defines the property set handle type.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
-| typedef uint32_t TEE_PropSetHandle | Defines the property set handle type.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| uint32_t TEE_PropSetHandle | Defines the property set handle type.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-uint32_t TEE_PropSetHandle--><!--Device-uint32_t TEE_PropSetHandle-End--> |
+| typedef uint32_t TEE_PropSetHandle | Defines the property set handle type.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-typedef uint32_t TEE_PropSetHandle--><!--Device-typedef uint32_t TEE_PropSetHandle-End--> |
 
 ## Enum type description
 
@@ -57,7 +57,7 @@ enum Pseudo_PropSetHandle
 
 Enumerates the types of the property set.
 
-<!--Device-Pseudo_PropSetHandle--><!--Device-Pseudo_PropSetHandle-End-->
+<!--Device-enum Pseudo_PropSetHandle--><!--Device-enum Pseudo_PropSetHandle-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -65,10 +65,10 @@ Enumerates the types of the property set.
 
 | Enum item | Description |
 | -- | -- |
-| TEE_PROPSET_UNKNOW = 0 | Unknown property set type. |
-| TEE_PROPSET_TEE_IMPLEMENTATION = 0xFFFFFFFD | Property set type for TEE implementation. |
-| TEE_PROPSET_CURRENT_CLIENT = 0xFFFFFFFE | Property set type for the current client. |
-| TEE_PROPSET_CURRENT_TA = 0xFFFFFFFF | Property set type for the current Trusted Application (TA). |
+| TEE_PROPSET_UNKNOW = 0 | Unknown property set type.<br><!--Device-TEE_PROPSET_UNKNOW = 0--><!--Device-TEE_PROPSET_UNKNOW = 0-End--> |
+| TEE_PROPSET_TEE_IMPLEMENTATION = 0xFFFFFFFD | Property set type for TEE implementation.<br><!--Device-TEE_PROPSET_TEE_IMPLEMENTATION = 0xFFFFFFFD--><!--Device-TEE_PROPSET_TEE_IMPLEMENTATION = 0xFFFFFFFD-End--> |
+| TEE_PROPSET_CURRENT_CLIENT = 0xFFFFFFFE | Property set type for the current client.<br><!--Device-TEE_PROPSET_CURRENT_CLIENT = 0xFFFFFFFE--><!--Device-TEE_PROPSET_CURRENT_CLIENT = 0xFFFFFFFE-End--> |
+| TEE_PROPSET_CURRENT_TA = 0xFFFFFFFF | Property set type for the current Trusted Application (TA).<br><!--Device-TEE_PROPSET_CURRENT_TA = 0xFFFFFFFF--><!--Device-TEE_PROPSET_CURRENT_TA = 0xFFFFFFFF-End--> |
 
 
 ## Function description

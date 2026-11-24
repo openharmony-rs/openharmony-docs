@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkPerformanceCounterUnitKHR unit |  |
-| VkPerformanceCounterScopeKHR scope |  |
-| VkPerformanceCounterStorageKHR storage |  |
-| uint8_t uuid[VK_UUID_SIZE] |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkPerformanceCounterUnitKHR unit | <!--Device-VkPerformanceCounterUnitKHR unit--><!--Device-VkPerformanceCounterUnitKHR unit-End--> |
+| VkPerformanceCounterScopeKHR scope | <!--Device-VkPerformanceCounterScopeKHR scope--><!--Device-VkPerformanceCounterScopeKHR scope-End--> |
+| VkPerformanceCounterStorageKHR storage | <!--Device-VkPerformanceCounterStorageKHR storage--><!--Device-VkPerformanceCounterStorageKHR storage-End--> |
+| uint8_t uuid[VK_UUID_SIZE] | <!--Device-uint8_t uuid[VK_UUID_SIZE]--><!--Device-uint8_t uuid[VK_UUID_SIZE]-End--> |
 
 

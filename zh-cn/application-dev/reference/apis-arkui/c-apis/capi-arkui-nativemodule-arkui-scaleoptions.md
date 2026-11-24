@@ -24,10 +24,10 @@ Defines the scaling options for component transition.
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | Scale ratio along the x-axis. |
-| float y | Scale ratio along the y-axis. |
-| float z | Scale factor along the z-axis (not effective for the current 2D graphics). |
-| float centerX | X coordinate of the center point. |
-| float centerY | Y coordinate of the center point. |
+| float x | Scale ratio along the x-axis.<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | Scale ratio along the y-axis.<br><!--Device-float y--><!--Device-float y-End--> |
+| float z | Scale factor along the z-axis (not effective for the current 2D graphics).<br><!--Device-float z--><!--Device-float z-End--> |
+| float centerX | X coordinate of the center point.<br><!--Device-float centerX--><!--Device-float centerX-End--> |
+| float centerY | Y coordinate of the center point.<br><!--Device-float centerY--><!--Device-float centerY-End--> |
 
 

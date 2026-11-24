@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [const StdVideoEncodeAV1ReferenceInfo*](capi--stdvideoencodeav1referenceinfo.md) pStdReferenceInfo |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [const StdVideoEncodeAV1ReferenceInfo*](capi--stdvideoencodeav1referenceinfo.md) pStdReferenceInfo | <!--Device-const StdVideoEncodeAV1ReferenceInfo* pStdReferenceInfo--><!--Device-const StdVideoEncodeAV1ReferenceInfo* pStdReferenceInfo-End--> |
 
 

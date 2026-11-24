@@ -47,7 +47,7 @@ enum OH_Crypto_ErrCode
 
 Enumerates the error codes.
 
-<!--Device-OH_Crypto_ErrCode--><!--Device-OH_Crypto_ErrCode-End-->
+<!--Device-enum OH_Crypto_ErrCode--><!--Device-enum OH_Crypto_ErrCode-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -55,13 +55,13 @@ Enumerates the error codes.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_SUCCESS = 0 | Operation succeeded.<br>**Since**: 12 |
-| CRYPTO_INVALID_PARAMS = 401 | Invalid input parameters.<br>**Since**: 12 |
-| CRYPTO_NOT_SUPPORTED = 801 | Unsupported feature or algorithm.<br>**Since**: 12 |
-| CRYPTO_MEMORY_ERROR = 17620001 | Memory operation failed.<br>**Since**: 12 |
-| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | Parameter check failed.<br>**Since**: 20 |
-| CRYPTO_INVALID_CALL = 17620004 | Invalid function call.<br>**Since**: 26.0.0 |
-| CRYPTO_OPERTION_ERROR = 17630001 | Crypto operation error.<br>**Since**: 12 |
+| CRYPTO_SUCCESS = 0 | Operation succeeded.<br>**Since**: 12<br><!--Device-CRYPTO_SUCCESS = 0--><!--Device-CRYPTO_SUCCESS = 0-End--> |
+| CRYPTO_INVALID_PARAMS = 401 | Invalid input parameters.<br>**Since**: 12<br><!--Device-CRYPTO_INVALID_PARAMS = 401--><!--Device-CRYPTO_INVALID_PARAMS = 401-End--> |
+| CRYPTO_NOT_SUPPORTED = 801 | Unsupported feature or algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_NOT_SUPPORTED = 801--><!--Device-CRYPTO_NOT_SUPPORTED = 801-End--> |
+| CRYPTO_MEMORY_ERROR = 17620001 | Memory operation failed.<br>**Since**: 12<br><!--Device-CRYPTO_MEMORY_ERROR = 17620001--><!--Device-CRYPTO_MEMORY_ERROR = 17620001-End--> |
+| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | Parameter check failed.<br>**Since**: 20<br><!--Device-CRYPTO_PARAMETER_CHECK_FAILED = 17620003--><!--Device-CRYPTO_PARAMETER_CHECK_FAILED = 17620003-End--> |
+| CRYPTO_INVALID_CALL = 17620004 | Invalid function call.<br>**Since**: 26.0.0<br><!--Device-CRYPTO_INVALID_CALL = 17620004--><!--Device-CRYPTO_INVALID_CALL = 17620004-End--> |
+| CRYPTO_OPERTION_ERROR = 17630001 | Crypto operation error.<br>**Since**: 12<br><!--Device-CRYPTO_OPERTION_ERROR = 17630001--><!--Device-CRYPTO_OPERTION_ERROR = 17630001-End--> |
 
 ### Crypto_CipherMode
 
@@ -73,7 +73,7 @@ enum Crypto_CipherMode
 
 Defines the cipher mode.
 
-<!--Device-Crypto_CipherMode--><!--Device-Crypto_CipherMode-End-->
+<!--Device-enum Crypto_CipherMode--><!--Device-enum Crypto_CipherMode-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -81,8 +81,8 @@ Defines the cipher mode.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_ENCRYPT_MODE = 0 | Encryption operation.<br>**Since**: 12 |
-| CRYPTO_DECRYPT_MODE = 1 | Decryption operation.<br>**Since**: 12 |
+| CRYPTO_ENCRYPT_MODE = 0 | Encryption operation.<br>**Since**: 12<br><!--Device-CRYPTO_ENCRYPT_MODE = 0--><!--Device-CRYPTO_ENCRYPT_MODE = 0-End--> |
+| CRYPTO_DECRYPT_MODE = 1 | Decryption operation.<br>**Since**: 12<br><!--Device-CRYPTO_DECRYPT_MODE = 1--><!--Device-CRYPTO_DECRYPT_MODE = 1-End--> |
 
 
 ## Function description

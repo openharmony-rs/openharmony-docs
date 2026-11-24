@@ -24,16 +24,16 @@ Print_PrinterInfo表示打印机信息，包含打印机的状态、能力、默
 
 | 名称 | 描述 |
 | -- | -- |
-| [Print_PrinterState](capi-ohprint-h.md#print_printerstate) printerState | 打印机的当前运行状态。 |
-| [Print_PrinterCapability](capi-print-print-printercapability.md) capability | 打印机支持的能力集合，如支持的纸张尺寸、色彩模式等。 |
-| [Print_DefaultValue](capi-print-print-defaultvalue.md) defaultValue | 打印机默认属性，如默认纸张尺寸、色彩模式等。 |
-| bool isDefaultPrinter | 是否为默认打印机。true表示是默认打印机，false表示不是默认打印机。 |
-| char *printerId | 打印机ID。 |
-| char *printerName | 打印机名称。 |
-| char *description | 打印机描述。 |
-| char *location | 打印机位置。 |
-| char *makeAndModel | 打印机品牌和型号信息。 |
-| char *printerUri | 打印机URI，用于定位和访问打印机。格式形如scheme://[user@]host[:port]/resource。 |
-| char *detailInfo | JSON格式的详细信息。 <br>支持的键包括： <br>- **printerAlias**：string类型，表示打印机别名，**起始版本：** 24。 <br>- **vendorId**：int类型，表示USB打印机的VID，取值范围 [0, 65535]，**起始版本：** 12。 <br>- **productId**：int类型，表示USB打印机的PID，取值范围 [0, 65535]，**起始版本：** 12。 <br>- **protocol**：string数组，表示探测到的打印机支持的协议列表，取值包括ipp、ipps、lpd、socket，**起始版本：** 24。 <br>- **ipp**：string类型，表示探测到的IPP协议对应的打印机URI，**起始版本：** 24。 <br>- **ipps**：string类型，表示探测到的IPPS协议对应的打印机URI，**起始版本：** 24。 <br>- **lpd**：string类型，表示探测到的LPD协议对应的打印机URI，**起始版本：** 24。 <br>- **socket**：string类型，表示探测到的Socket协议对应的打印机URI，**起始版本：** 24。 |
+| [Print_PrinterState](capi-ohprint-h.md#print_printerstate) printerState | 打印机的当前运行状态。<br><!--Device-Print_PrinterState printerState--><!--Device-Print_PrinterState printerState-End--> |
+| [Print_PrinterCapability](capi-print-print-printercapability.md) capability | 打印机支持的能力集合，如支持的纸张尺寸、色彩模式等。<br><!--Device-Print_PrinterCapability capability--><!--Device-Print_PrinterCapability capability-End--> |
+| [Print_DefaultValue](capi-print-print-defaultvalue.md) defaultValue | 打印机默认属性，如默认纸张尺寸、色彩模式等。<br><!--Device-Print_DefaultValue defaultValue--><!--Device-Print_DefaultValue defaultValue-End--> |
+| bool isDefaultPrinter | 是否为默认打印机。true表示是默认打印机，false表示不是默认打印机。<br><!--Device-bool isDefaultPrinter--><!--Device-bool isDefaultPrinter-End--> |
+| char *printerId | 打印机ID。<br><!--Device-char *printerId--><!--Device-char *printerId-End--> |
+| char *printerName | 打印机名称。<br><!--Device-char *printerName--><!--Device-char *printerName-End--> |
+| char *description | 打印机描述。<br><!--Device-char *description--><!--Device-char *description-End--> |
+| char *location | 打印机位置。<br><!--Device-char *location--><!--Device-char *location-End--> |
+| char *makeAndModel | 打印机品牌和型号信息。<br><!--Device-char *makeAndModel--><!--Device-char *makeAndModel-End--> |
+| char *printerUri | 打印机URI，用于定位和访问打印机。格式形如scheme://[user@]host[:port]/resource。<br><!--Device-char *printerUri--><!--Device-char *printerUri-End--> |
+| char *detailInfo | JSON格式的详细信息。 <br>支持的键包括： <br>- **printerAlias**：string类型，表示打印机别名，**起始版本：** 24。 <br>- **vendorId**：int类型，表示USB打印机的VID，取值范围 [0, 65535]，**起始版本：** 12。 <br>- **productId**：int类型，表示USB打印机的PID，取值范围 [0, 65535]，**起始版本：** 12。 <br>- **protocol**：string数组，表示探测到的打印机支持的协议列表，取值包括ipp、ipps、lpd、socket，**起始版本：** 24。 <br>- **ipp**：string类型，表示探测到的IPP协议对应的打印机URI，**起始版本：** 24。 <br>- **ipps**：string类型，表示探测到的IPPS协议对应的打印机URI，**起始版本：** 24。 <br>- **lpd**：string类型，表示探测到的LPD协议对应的打印机URI，**起始版本：** 24。 <br>- **socket**：string类型，表示探测到的Socket协议对应的打印机URI，**起始版本：** 24。<br><!--Device-char *detailInfo--><!--Device-char *detailInfo-End--> |
 
 

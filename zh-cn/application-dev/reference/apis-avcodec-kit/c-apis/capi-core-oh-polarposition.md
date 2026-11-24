@@ -24,8 +24,8 @@ typedef struct OH_PolarPosition {...} OH_PolarPosition
 
 | 名称 | 描述 |
 | -- | -- |
-| float azimuth | 极坐标系下对象声源所在位置的方位角。<br> 取值范围为[-180.0, 180.0]，其中0.0表示正前方，90.0表示左侧，-90.0表示右侧，-180.0或180.0表示正后方。<br>**起始版本：** 26.0.0 |
-| float elevation | 极坐标系下对象声源所在位置的俯仰角。<br> 取值范围为[-90.0, 90.0]，其中0.0表示水平，90.0表示正上方，-90.0表示正下方。<br>**起始版本：** 26.0.0 |
-| float distance | 极坐标系下对象声源所在位置的归一化距离。<br> 取值范围为[0.0, 1.0]。<br>**起始版本：** 26.0.0 |
+| float azimuth | 极坐标系下对象声源所在位置的方位角。<br> 取值范围为[-180.0, 180.0]，其中0.0表示正前方，90.0表示左侧，-90.0表示右侧，-180.0或180.0表示正后方。<br>**起始版本：** 26.0.0<br><!--Device-float azimuth--><!--Device-float azimuth-End--> |
+| float elevation | 极坐标系下对象声源所在位置的俯仰角。<br> 取值范围为[-90.0, 90.0]，其中0.0表示水平，90.0表示正上方，-90.0表示正下方。<br>**起始版本：** 26.0.0<br><!--Device-float elevation--><!--Device-float elevation-End--> |
+| float distance | 极坐标系下对象声源所在位置的归一化距离。<br> 取值范围为[0.0, 1.0]。<br>**起始版本：** 26.0.0<br><!--Device-float distance--><!--Device-float distance-End--> |
 
 

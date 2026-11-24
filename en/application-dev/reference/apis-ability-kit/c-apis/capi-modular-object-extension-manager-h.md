@@ -57,7 +57,7 @@ enum OH_AbilityRuntime_LaunchMode
 
 Defines the launch mode of a ModularObjectExtensionAbility.
 
-<!--Device-OH_AbilityRuntime_LaunchMode--><!--Device-OH_AbilityRuntime_LaunchMode-End-->
+<!--Device-enum OH_AbilityRuntime_LaunchMode--><!--Device-enum OH_AbilityRuntime_LaunchMode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -65,8 +65,8 @@ Defines the launch mode of a ModularObjectExtensionAbility.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0 | All extensions under the same bundle share a single process.<br>**Since**: 26.0.0 |
-| OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1 | Allow modular object extension abilities to be started across processes.<br>**Since**: 26.0.0 |
+| OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0 | All extensions under the same bundle share a single process.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0--><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0-End--> |
+| OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1 | Allow modular object extension abilities to be started across processes.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1--><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1-End--> |
 
 ### OH_AbilityRuntime_ProcessMode
 
@@ -78,7 +78,7 @@ enum OH_AbilityRuntime_ProcessMode
 
 Defines the process mode of a ModularObjectExtensionAbility.
 
-<!--Device-OH_AbilityRuntime_ProcessMode--><!--Device-OH_AbilityRuntime_ProcessMode-End-->
+<!--Device-enum OH_AbilityRuntime_ProcessMode--><!--Device-enum OH_AbilityRuntime_ProcessMode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -86,9 +86,9 @@ Defines the process mode of a ModularObjectExtensionAbility.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0 | All modular object extensions under the same bundle share a single process.<br>**Since**: 26.0.0 |
-| OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1 | Modular object extensions with the same name share a single process.<br>**Since**: 26.0.0 |
-| OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2 | Each modular object extension instance is a process.<br>**Since**: 26.0.0 |
+| OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0 | All modular object extensions under the same bundle share a single process.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0--><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0-End--> |
+| OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1 | Modular object extensions with the same name share a single process.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1--><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1-End--> |
+| OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2 | Each modular object extension instance is a process.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2--><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2-End--> |
 
 ### OH_AbilityRuntime_ThreadMode
 
@@ -100,7 +100,7 @@ enum OH_AbilityRuntime_ThreadMode
 
 Defines the thread mode of a ModularObjectExtensionAbility.
 
-<!--Device-OH_AbilityRuntime_ThreadMode--><!--Device-OH_AbilityRuntime_ThreadMode-End-->
+<!--Device-enum OH_AbilityRuntime_ThreadMode--><!--Device-enum OH_AbilityRuntime_ThreadMode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -108,9 +108,9 @@ Defines the thread mode of a ModularObjectExtensionAbility.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0 | All modular object extensions under the same bundle share a single thread.<br>**Since**: 26.0.0 |
-| OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1 | Modular object extensions with the same name share a single thread.<br>**Since**: 26.0.0 |
-| OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2 | Each modular object extension instance is a thread.<br>**Since**: 26.0.0 |
+| OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0 | All modular object extensions under the same bundle share a single thread.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0--><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0-End--> |
+| OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1 | Modular object extensions with the same name share a single thread.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1--><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1-End--> |
+| OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2 | Each modular object extension instance is a thread.<br>**Since**: 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2--><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2-End--> |
 
 
 ## Function description

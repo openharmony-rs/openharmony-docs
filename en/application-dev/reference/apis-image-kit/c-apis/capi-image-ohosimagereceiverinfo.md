@@ -24,9 +24,9 @@ Defines the information about an image receiver.
 
 | Name | Description |
 | -- | -- |
-| int32_t width | Default width of the image received by the consumer, in pixels. |
-| int32_t height | Default height of the image received by the consumer, in pixels. |
-| int32_t format | Image format [OHOS_IMAGE_FORMAT_JPEG](capi-image-mdk-h.md#anonymous0) created by using the receiver. |
-| int32_t capicity | Maximum number of images that can be cached. |
+| int32_t width | Default width of the image received by the consumer, in pixels.<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | Default height of the image received by the consumer, in pixels.<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
+| int32_t format | Image format [OHOS_IMAGE_FORMAT_JPEG](capi-image-mdk-h.md#anonymous0) created by using the receiver.<br><!--Device-int32_t format--><!--Device-int32_t format-End--> |
+| int32_t capicity | Maximum number of images that can be cached.<br><!--Device-int32_t capicity--><!--Device-int32_t capicity-End--> |
 
 

@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| VkIndirectCommandsInputModeFlagBitsEXT mode |  |
+| VkIndirectCommandsInputModeFlagBitsEXT mode | <!--Device-VkIndirectCommandsInputModeFlagBitsEXT mode--><!--Device-VkIndirectCommandsInputModeFlagBitsEXT mode-End--> |
 
 

@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| float matrix[3][4] |  |
+| float matrix[3][4] | <!--Device-float matrix[3][4]--><!--Device-float matrix[3][4]-End--> |
 
 

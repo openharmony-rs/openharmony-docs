@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 storageBuffer16BitAccess |  |
-| VkBool32 uniformAndStorageBuffer16BitAccess |  |
-| VkBool32 storagePushConstant16 |  |
-| VkBool32 storageInputOutput16 |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 storageBuffer16BitAccess | <!--Device-VkBool32 storageBuffer16BitAccess--><!--Device-VkBool32 storageBuffer16BitAccess-End--> |
+| VkBool32 uniformAndStorageBuffer16BitAccess | <!--Device-VkBool32 uniformAndStorageBuffer16BitAccess--><!--Device-VkBool32 uniformAndStorageBuffer16BitAccess-End--> |
+| VkBool32 storagePushConstant16 | <!--Device-VkBool32 storagePushConstant16--><!--Device-VkBool32 storagePushConstant16-End--> |
+| VkBool32 storageInputOutput16 | <!--Device-VkBool32 storageInputOutput16--><!--Device-VkBool32 storageInputOutput16-End--> |
 
 

@@ -24,6 +24,6 @@ ArkWeb_AnyNativeAPI is the basic struct type of ArkWeb Native API, used to unifo
 
 | Name | Description |
 | -- | -- |
-| size_t size | Size of the struct. |
+| size_t size | Size of the struct.<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

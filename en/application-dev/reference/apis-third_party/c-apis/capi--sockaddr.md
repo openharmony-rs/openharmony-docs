@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| sa_family_t sa_family |  |
-| char sa_data[14] |  |
+| sa_family_t sa_family | <!--Device-sa_family_t sa_family--><!--Device-sa_family_t sa_family-End--> |
+| char sa_data[14] | <!--Device-char sa_data[14]--><!--Device-char sa_data[14]-End--> |
 
 

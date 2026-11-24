@@ -111,7 +111,7 @@ enum OH_Drawing_SrcRectConstraint
 
 Enumerates the constraint types of the source rectangle.
 
-<!--Device-OH_Drawing_SrcRectConstraint--><!--Device-OH_Drawing_SrcRectConstraint-End-->
+<!--Device-enum OH_Drawing_SrcRectConstraint--><!--Device-enum OH_Drawing_SrcRectConstraint-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -119,8 +119,8 @@ Enumerates the constraint types of the source rectangle.
 
 | Enum item | Description |
 | -- | -- |
-| STRICT_SRC_RECT_CONSTRAINT | The source rectangle must be completely contained in the image. |
-| FAST_SRC_RECT_CONSTRAINT | The source rectangle can be partly outside the image. |
+| STRICT_SRC_RECT_CONSTRAINT | The source rectangle must be completely contained in the image.<br><!--Device-STRICT_SRC_RECT_CONSTRAINT--><!--Device-STRICT_SRC_RECT_CONSTRAINT-End--> |
+| FAST_SRC_RECT_CONSTRAINT | The source rectangle can be partly outside the image.<br><!--Device-FAST_SRC_RECT_CONSTRAINT--><!--Device-FAST_SRC_RECT_CONSTRAINT-End--> |
 
 ### OH_Drawing_PointMode
 
@@ -132,7 +132,7 @@ enum OH_Drawing_PointMode
 
 Enumerates the modes of drawing multiple points. The modes include discrete points, line segments, and open polygons.
 
-<!--Device-OH_Drawing_PointMode--><!--Device-OH_Drawing_PointMode-End-->
+<!--Device-enum OH_Drawing_PointMode--><!--Device-enum OH_Drawing_PointMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -140,9 +140,9 @@ Enumerates the modes of drawing multiple points. The modes include discrete poin
 
 | Enum item | Description |
 | -- | -- |
-| POINT_MODE_POINTS | Draws each point separately. |
-| POINT_MODE_LINES | Draws every two points as a line segment. |
-| POINT_MODE_POLYGON | Draws an array of points as an open polygon. |
+| POINT_MODE_POINTS | Draws each point separately.<br><!--Device-POINT_MODE_POINTS--><!--Device-POINT_MODE_POINTS-End--> |
+| POINT_MODE_LINES | Draws every two points as a line segment.<br><!--Device-POINT_MODE_LINES--><!--Device-POINT_MODE_LINES-End--> |
+| POINT_MODE_POLYGON | Draws an array of points as an open polygon.<br><!--Device-POINT_MODE_POLYGON--><!--Device-POINT_MODE_POLYGON-End--> |
 
 ### OH_Drawing_CanvasClipOp
 
@@ -154,7 +154,7 @@ enum OH_Drawing_CanvasClipOp
 
 Enumerates the canvas clipping modes.
 
-<!--Device-OH_Drawing_CanvasClipOp--><!--Device-OH_Drawing_CanvasClipOp-End-->
+<!--Device-enum OH_Drawing_CanvasClipOp--><!--Device-enum OH_Drawing_CanvasClipOp-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -162,8 +162,8 @@ Enumerates the canvas clipping modes.
 
 | Enum item | Description |
 | -- | -- |
-| DIFFERENCE | Clips a specified area. That is, the difference set is obtained. |
-| INTERSECT | Retains a specified area. That is, the intersection is obtained. |
+| DIFFERENCE | Clips a specified area. That is, the difference set is obtained.<br><!--Device-DIFFERENCE--><!--Device-DIFFERENCE-End--> |
+| INTERSECT | Retains a specified area. That is, the intersection is obtained.<br><!--Device-INTERSECT--><!--Device-INTERSECT-End--> |
 
 ### OH_Drawing_CanvasShadowFlags
 
@@ -175,7 +175,7 @@ enum OH_Drawing_CanvasShadowFlags
 
 Enumerates the shadow flags.
 
-<!--Device-OH_Drawing_CanvasShadowFlags--><!--Device-OH_Drawing_CanvasShadowFlags-End-->
+<!--Device-enum OH_Drawing_CanvasShadowFlags--><!--Device-enum OH_Drawing_CanvasShadowFlags-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -183,10 +183,10 @@ Enumerates the shadow flags.
 
 | Enum item | Description |
 | -- | -- |
-| SHADOW_FLAGS_NONE | There is no shadow flag. |
-| SHADOW_FLAGS_TRANSPARENT_OCCLUDER | The occluding object is transparent. |
-| SHADOW_FLAGS_GEOMETRIC_ONLY | No analysis on the shadows is required. |
-| SHADOW_FLAGS_ALL | All the preceding shadow flags are used. |
+| SHADOW_FLAGS_NONE | There is no shadow flag.<br><!--Device-SHADOW_FLAGS_NONE--><!--Device-SHADOW_FLAGS_NONE-End--> |
+| SHADOW_FLAGS_TRANSPARENT_OCCLUDER | The occluding object is transparent.<br><!--Device-SHADOW_FLAGS_TRANSPARENT_OCCLUDER--><!--Device-SHADOW_FLAGS_TRANSPARENT_OCCLUDER-End--> |
+| SHADOW_FLAGS_GEOMETRIC_ONLY | No analysis on the shadows is required.<br><!--Device-SHADOW_FLAGS_GEOMETRIC_ONLY--><!--Device-SHADOW_FLAGS_GEOMETRIC_ONLY-End--> |
+| SHADOW_FLAGS_ALL | All the preceding shadow flags are used.<br><!--Device-SHADOW_FLAGS_ALL--><!--Device-SHADOW_FLAGS_ALL-End--> |
 
 ### OH_Drawing_VertexMode
 
@@ -198,7 +198,7 @@ enum OH_Drawing_VertexMode
 
 Enumerates the modes of interpreting the geometry of a given vertex.
 
-<!--Device-OH_Drawing_VertexMode--><!--Device-OH_Drawing_VertexMode-End-->
+<!--Device-enum OH_Drawing_VertexMode--><!--Device-enum OH_Drawing_VertexMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -206,9 +206,9 @@ Enumerates the modes of interpreting the geometry of a given vertex.
 
 | Enum item | Description |
 | -- | -- |
-| VERTEX_MODE_TRIANGLES | Draws a triangle list. Specifically, a list of isolated triangles are drawn using every three vertices. If the number of vertices is not a multiple of 3, the extra vertices will be ignored. |
-| VERTEX_MODE_TRIANGLES_STRIP | Draws a triangle strip. Specifically, the first triangle is drawn between the first 3 vertices, and all subsequent triangles use the previous 2 vertices plus the next additional vertex. |
-| VERTEX_MODE_TRIANGLE_FAN | Draws a triangle fan. A triangle fan is similar to a triangle strip, except that all the triangles share one vertex (the first vertex). |
+| VERTEX_MODE_TRIANGLES | Draws a triangle list. Specifically, a list of isolated triangles are drawn using every three vertices. If the number of vertices is not a multiple of 3, the extra vertices will be ignored.<br><!--Device-VERTEX_MODE_TRIANGLES--><!--Device-VERTEX_MODE_TRIANGLES-End--> |
+| VERTEX_MODE_TRIANGLES_STRIP | Draws a triangle strip. Specifically, the first triangle is drawn between the first 3 vertices, and all subsequent triangles use the previous 2 vertices plus the next additional vertex.<br><!--Device-VERTEX_MODE_TRIANGLES_STRIP--><!--Device-VERTEX_MODE_TRIANGLES_STRIP-End--> |
+| VERTEX_MODE_TRIANGLE_FAN | Draws a triangle fan. A triangle fan is similar to a triangle strip, except that all the triangles share one vertex (the first vertex).<br><!--Device-VERTEX_MODE_TRIANGLE_FAN--><!--Device-VERTEX_MODE_TRIANGLE_FAN-End--> |
 
 
 ## Function description

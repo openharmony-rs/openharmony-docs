@@ -51,7 +51,7 @@ enum TransientTask_ErrorCode
 
 定义短时任务错误码。
 
-<!--Device-TransientTask_ErrorCode--><!--Device-TransientTask_ErrorCode-End-->
+<!--Device-enum TransientTask_ErrorCode--><!--Device-enum TransientTask_ErrorCode-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
@@ -59,15 +59,15 @@ enum TransientTask_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ERR_TRANSIENT_TASK_OK = 0 | 成功。<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_INVALID_PARAM = 401 | 参数检查失败。可能原因：1.必选参数没有传入。2.参数类型错误。<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002 | Parcel读写操作失败<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003 | IPC通信失败。<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004 | 系统服务失败。<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001 | 短时任务客户端信息校验失败。<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002 | 短时任务服务端校验失败。<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003 | 短时任务Parcel读写操作失败。可能原因：1.参数非法。2.申请内存失败。<br>**起始版本：** 13 |
-| ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004 | 系统服务失败。<br>**起始版本：** 13 |
+| ERR_TRANSIENT_TASK_OK = 0 | 成功。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_OK = 0--><!--Device-ERR_TRANSIENT_TASK_OK = 0-End--> |
+| ERR_TRANSIENT_TASK_INVALID_PARAM = 401 | 参数检查失败。可能原因：1.必选参数没有传入。2.参数类型错误。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_INVALID_PARAM = 401--><!--Device-ERR_TRANSIENT_TASK_INVALID_PARAM = 401-End--> |
+| ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002 | Parcel读写操作失败<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002--><!--Device-ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002-End--> |
+| ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003 | IPC通信失败。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003--><!--Device-ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003-End--> |
+| ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004 | 系统服务失败。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004--><!--Device-ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004-End--> |
+| ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001 | 短时任务客户端信息校验失败。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001--><!--Device-ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001-End--> |
+| ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002 | 短时任务服务端校验失败。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002--><!--Device-ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002-End--> |
+| ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003 | 短时任务Parcel读写操作失败。可能原因：1.参数非法。2.申请内存失败。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003--><!--Device-ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003-End--> |
+| ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004 | 系统服务失败。<br>**起始版本：** 13<br><!--Device-ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004--><!--Device-ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004-End--> |
 
 
 ## 函数说明

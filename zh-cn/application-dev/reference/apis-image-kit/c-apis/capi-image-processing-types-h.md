@@ -34,12 +34,12 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 用于创建色彩空间转换的图片处理实例。 <br>色彩空间转换包括单层HDR图片转换SDR图片，SDR图片之间的转换，以及SDR图片转换单层HDR图片，部分能力由厂商支持。使用 [OH_ImageProcessing_IsColorSpaceConversionSupported](capi-image-processing-h.md#oh_imageprocessing_iscolorspaceconversionsupported)查询某种转换是否支持在单层图片之间进行。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION | 用于创建双层HDR图片转换单层HDR图片的图片处理实例。 <br>包括从双层HDR图片转换为单层HDR图片的能力。部分能力由厂商支持。 使用[OH_ImageProcessing_IsCompositionSupported](capi-image-processing-h.md#oh_imageprocessing_iscompositionsupported)查询是否支持从双层HDR图片到单层HDR图片的转换。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION | 用于创建单层HDR图片转换双层HDR图片的图片处理实例。 <br>包括从单层HDR图片转换为双层HDR图片的能力。部分能力由厂商支持。 使用[OH_ImageProcessing_IsDecompositionSupported](capi-image-processing-h.md#oh_imageprocessing_isdecompositionsupported)查询是否支持从单层HDR图片到双层HDR图片的转换。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION | 用于创建元数据生成的图片处理实例。 <br>生成单层HDR图片的HDR Vivid元数据。该能力由厂商支持。如果不支持该能力，[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)将返回 [IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-image-processing-types-h.md#imageprocessing_errorcode)。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER | 用于创建细节增强的图片处理实例。 <br>按指定图像质量缩放或调整图片大小，或仅增强图像细节以在不更改分辨率的情况下渲染图片。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 用于设定图像细节增强的质量级别。 <br>使用[ImageDetailEnhancer_QualityLevel](capi-image-processing-types-h.md#imagedetailenhancer_qualitylevel)获取其值。使用[OH_ImageProcessing_SetParameter](capi-image-processing-h.md#oh_imageprocessing_setparameter)设置质量级别。使用 [OH_ImageProcessing_GetParameter](capi-image-processing-h.md#oh_imageprocessing_getparameter)获取当前质量级别。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 用于创建色彩空间转换的图片处理实例。 <br>色彩空间转换包括单层HDR图片转换SDR图片，SDR图片之间的转换，以及SDR图片转换单层HDR图片，部分能力由厂商支持。使用 [OH_ImageProcessing_IsColorSpaceConversionSupported](capi-image-processing-h.md#oh_imageprocessing_iscolorspaceconversionsupported)查询某种转换是否支持在单层图片之间进行。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION--><!--Device-const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION-End--> |
+| const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION | 用于创建双层HDR图片转换单层HDR图片的图片处理实例。 <br>包括从双层HDR图片转换为单层HDR图片的能力。部分能力由厂商支持。 使用[OH_ImageProcessing_IsCompositionSupported](capi-image-processing-h.md#oh_imageprocessing_iscompositionsupported)查询是否支持从双层HDR图片到单层HDR图片的转换。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION--><!--Device-const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION-End--> |
+| const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION | 用于创建单层HDR图片转换双层HDR图片的图片处理实例。 <br>包括从单层HDR图片转换为双层HDR图片的能力。部分能力由厂商支持。 使用[OH_ImageProcessing_IsDecompositionSupported](capi-image-processing-h.md#oh_imageprocessing_isdecompositionsupported)查询是否支持从单层HDR图片到双层HDR图片的转换。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION--><!--Device-const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION-End--> |
+| const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION | 用于创建元数据生成的图片处理实例。 <br>生成单层HDR图片的HDR Vivid元数据。该能力由厂商支持。如果不支持该能力，[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)将返回 [IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-image-processing-types-h.md#imageprocessing_errorcode)。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION--><!--Device-const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION-End--> |
+| const int32_t IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER | 用于创建细节增强的图片处理实例。 <br>按指定图像质量缩放或调整图片大小，或仅增强图像细节以在不更改分辨率的情况下渲染图片。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER--><!--Device-const int32_t IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER-End--> |
+| const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 用于设定图像细节增强的质量级别。 <br>使用[ImageDetailEnhancer_QualityLevel](capi-image-processing-types-h.md#imagedetailenhancer_qualitylevel)获取其值。使用[OH_ImageProcessing_SetParameter](capi-image-processing-h.md#oh_imageprocessing_setparameter)设置质量级别。使用 [OH_ImageProcessing_GetParameter](capi-image-processing-h.md#oh_imageprocessing_getparameter)获取当前质量级别。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL--><!--Device-const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL-End--> |
 
 ## 枚举类型说明
 
@@ -53,7 +53,7 @@ enum ImageDetailEnhancer_QualityLevel
 
 质量级别，用于细节增强能力。 <br>键参数的值IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL。
 
-<!--Device-ImageDetailEnhancer_QualityLevel--><!--Device-ImageDetailEnhancer_QualityLevel-End-->
+<!--Device-enum ImageDetailEnhancer_QualityLevel--><!--Device-enum ImageDetailEnhancer_QualityLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -61,10 +61,10 @@ enum ImageDetailEnhancer_QualityLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | 无细节增强。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | 细节增强质量较低，但速度较快。默认级别。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | 细节增强质量中等，速度介于低级别与高级别之间。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 细节增强质量较高，但速度较慢。<br>API version 13-22支持输入分辨率（px）：宽：[512, 2000]，高：[512, 2000]。<br>API version 13-22支持输出分辨率（px）：宽： [512, 2000]，高：[512, 2000]。<br>API version 23及以后支持输入分辨率（px）：宽：[180, 2000]，高：[180, 2000]。<br>API version 23及以后支持输出分辨率（px）：宽：[512, 2000]，高：[512, 2000]。 |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | 无细节增强。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE--><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE-End--> |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | 细节增强质量较低，但速度较快。默认级别。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW--><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW-End--> |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | 细节增强质量中等，速度介于低级别与高级别之间。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM--><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM-End--> |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 细节增强质量较高，但速度较慢。<br>API version 13-22支持输入分辨率（px）：宽：[512, 2000]，高：[512, 2000]。<br>API version 13-22支持输出分辨率（px）：宽： [512, 2000]，高：[512, 2000]。<br>API version 23及以后支持输入分辨率（px）：宽：[180, 2000]，高：[180, 2000]。<br>API version 23及以后支持输出分辨率（px）：宽：[512, 2000]，高：[512, 2000]。<br><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH--><!--Device-IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH-End--> |
 
 **参考：**
 
@@ -81,7 +81,7 @@ enum ImageProcessing_ErrorCode
 
 图片处理接口错误码说明。
 
-<!--Device-ImageProcessing_ErrorCode--><!--Device-ImageProcessing_ErrorCode-End-->
+<!--Device-enum ImageProcessing_ErrorCode--><!--Device-enum ImageProcessing_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -89,16 +89,16 @@ enum ImageProcessing_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_PROCESSING_SUCCESS | &nbsp;成功。 |
-| IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;输入参数无效。 <br>在以下错误条件下返回该错误码： <br>1. 输入或输出buffer无效，例如图片buffer为空。 <br>2. 参数无效，例如参数为空。<br>3. 类型无效，例如在创建函数中传入的类型不存在。 |
-| IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | &nbsp;未知错误，例如GPU计算失败或memcpy失败。 |
-| IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;全局环境初始化失败，例如GPU环境初始化失败。 |
-| IMAGE_PROCESSING_ERROR_CREATE_FAILED | &nbsp;创建图片处理实例失败，例如实例数量超过上限。 |
-| IMAGE_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;处理图片buffer失败，例如处理超时。 |
-| IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;当前处理不支持，可以通过“OH_ImageProcessing_IsXXXSupported”接口查询是否支持该能力。 |
-| IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;无权限操作，可能由于状态不正确导致。 |
-| IMAGE_PROCESSING_ERROR_NO_MEMORY | &nbsp;内存不足。 |
-| IMAGE_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;无效的图片处理实例，可能由于实例为空导致。 |
-| IMAGE_PROCESSING_ERROR_INVALID_VALUE | &nbsp;输入值无效。<br>在以下错误条件下返回该错误码： <br>1. 输入或输出图片buffer无效，例如图片buffer的宽度（高度）过大或颜色空间不正确。 <br>2. 参数无效，例如参数不包括有效信息，例如细节增强的质量级别不正确。 |
+| IMAGE_PROCESSING_SUCCESS | &nbsp;成功。<br><!--Device-IMAGE_PROCESSING_SUCCESS--><!--Device-IMAGE_PROCESSING_SUCCESS-End--> |
+| IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;输入参数无效。 <br>在以下错误条件下返回该错误码： <br>1. 输入或输出buffer无效，例如图片buffer为空。 <br>2. 参数无效，例如参数为空。<br>3. 类型无效，例如在创建函数中传入的类型不存在。<br><!--Device-IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401--><!--Device-IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401-End--> |
+| IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | &nbsp;未知错误，例如GPU计算失败或memcpy失败。<br><!--Device-IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001--><!--Device-IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001-End--> |
+| IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;全局环境初始化失败，例如GPU环境初始化失败。<br><!--Device-IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED--><!--Device-IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED-End--> |
+| IMAGE_PROCESSING_ERROR_CREATE_FAILED | &nbsp;创建图片处理实例失败，例如实例数量超过上限。<br><!--Device-IMAGE_PROCESSING_ERROR_CREATE_FAILED--><!--Device-IMAGE_PROCESSING_ERROR_CREATE_FAILED-End--> |
+| IMAGE_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;处理图片buffer失败，例如处理超时。<br><!--Device-IMAGE_PROCESSING_ERROR_PROCESS_FAILED--><!--Device-IMAGE_PROCESSING_ERROR_PROCESS_FAILED-End--> |
+| IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;当前处理不支持，可以通过“OH_ImageProcessing_IsXXXSupported”接口查询是否支持该能力。<br><!--Device-IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING--><!--Device-IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING-End--> |
+| IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;无权限操作，可能由于状态不正确导致。<br><!--Device-IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED--><!--Device-IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED-End--> |
+| IMAGE_PROCESSING_ERROR_NO_MEMORY | &nbsp;内存不足。<br><!--Device-IMAGE_PROCESSING_ERROR_NO_MEMORY--><!--Device-IMAGE_PROCESSING_ERROR_NO_MEMORY-End--> |
+| IMAGE_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;无效的图片处理实例，可能由于实例为空导致。<br><!--Device-IMAGE_PROCESSING_ERROR_INVALID_INSTANCE--><!--Device-IMAGE_PROCESSING_ERROR_INVALID_INSTANCE-End--> |
+| IMAGE_PROCESSING_ERROR_INVALID_VALUE | &nbsp;输入值无效。<br>在以下错误条件下返回该错误码： <br>1. 输入或输出图片buffer无效，例如图片buffer的宽度（高度）过大或颜色空间不正确。 <br>2. 参数无效，例如参数不包括有效信息，例如细节增强的质量级别不正确。<br><!--Device-IMAGE_PROCESSING_ERROR_INVALID_VALUE--><!--Device-IMAGE_PROCESSING_ERROR_INVALID_VALUE-End--> |
 
 

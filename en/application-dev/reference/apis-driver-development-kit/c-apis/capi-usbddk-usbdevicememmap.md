@@ -24,10 +24,10 @@ Defines the device memory map created by calling [OH_Usb_CreateDeviceMemMap](cap
 
 | Name | Description |
 | -- | -- |
-| uint8_t * const address | Buffer address. |
-| const size_t size | Buffer size, in bytes. The value must be greater than 0. |
-| uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset. The offset is calculated from the buffer address. The sum of **offset** and **bufferLength** must be less than or equal to **size**. |
-| uint32_t bufferLength | Length of the used buffer. By default, the value is equal to the buffer size, indicating that the entire buffer is used. The sum of **offset** and **bufferLength** must be less than or equal to **size**. |
-| uint32_t transferedLength | Length of the data actually transferred, in bytes. |
+| uint8_t * const address | Buffer address.<br><!--Device-uint8_t * const address--><!--Device-uint8_t * const address-End--> |
+| const size_t size | Buffer size, in bytes. The value must be greater than 0.<br><!--Device-const size_t size--><!--Device-const size_t size-End--> |
+| uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset. The offset is calculated from the buffer address. The sum of **offset** and **bufferLength** must be less than or equal to **size**.<br><!--Device-uint32_t offset--><!--Device-uint32_t offset-End--> |
+| uint32_t bufferLength | Length of the used buffer. By default, the value is equal to the buffer size, indicating that the entire buffer is used. The sum of **offset** and **bufferLength** must be less than or equal to **size**.<br><!--Device-uint32_t bufferLength--><!--Device-uint32_t bufferLength-End--> |
+| uint32_t transferedLength | Length of the data actually transferred, in bytes.<br><!--Device-uint32_t transferedLength--><!--Device-uint32_t transferedLength-End--> |
 
 

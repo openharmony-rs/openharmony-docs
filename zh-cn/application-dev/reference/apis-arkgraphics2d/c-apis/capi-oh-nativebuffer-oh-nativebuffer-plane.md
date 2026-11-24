@@ -24,8 +24,8 @@ typedef struct OH_NativeBuffer_Plane {...} OH_NativeBuffer_Plane
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t offset | 平面字节偏移 |
-| uint32_t rowStride | 图像一行第一个值到下一行第一个值的字节距离 |
-| uint32_t columnStride | 图像一列第一个值到下一列第一个值的字节距离 |
+| uint64_t offset | 平面字节偏移<br><!--Device-uint64_t offset--><!--Device-uint64_t offset-End--> |
+| uint32_t rowStride | 图像一行第一个值到下一行第一个值的字节距离<br><!--Device-uint32_t rowStride--><!--Device-uint32_t rowStride-End--> |
+| uint32_t columnStride | 图像一列第一个值到下一列第一个值的字节距离<br><!--Device-uint32_t columnStride--><!--Device-uint32_t columnStride-End--> |
 
 

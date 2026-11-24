@@ -10,17 +10,17 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned char _r1 |  |
-| unsigned char medium |  |
-| unsigned char _r2 |  |
-| unsigned char block_desc_length |  |
-| unsigned char density |  |
-| unsigned char number_blocks_hi |  |
-| unsigned char number_blocks_med |  |
-| unsigned char number_blocks_lo |  |
-| unsigned char _r3 |  |
-| unsigned char block_length_hi |  |
-| unsigned char block_length_med |  |
-| unsigned char block_length_lo |  |
+| unsigned char _r1 | <!--Device-unsigned char _r1--><!--Device-unsigned char _r1-End--> |
+| unsigned char medium | <!--Device-unsigned char medium--><!--Device-unsigned char medium-End--> |
+| unsigned char _r2 | <!--Device-unsigned char _r2--><!--Device-unsigned char _r2-End--> |
+| unsigned char block_desc_length | <!--Device-unsigned char block_desc_length--><!--Device-unsigned char block_desc_length-End--> |
+| unsigned char density | <!--Device-unsigned char density--><!--Device-unsigned char density-End--> |
+| unsigned char number_blocks_hi | <!--Device-unsigned char number_blocks_hi--><!--Device-unsigned char number_blocks_hi-End--> |
+| unsigned char number_blocks_med | <!--Device-unsigned char number_blocks_med--><!--Device-unsigned char number_blocks_med-End--> |
+| unsigned char number_blocks_lo | <!--Device-unsigned char number_blocks_lo--><!--Device-unsigned char number_blocks_lo-End--> |
+| unsigned char _r3 | <!--Device-unsigned char _r3--><!--Device-unsigned char _r3-End--> |
+| unsigned char block_length_hi | <!--Device-unsigned char block_length_hi--><!--Device-unsigned char block_length_hi-End--> |
+| unsigned char block_length_med | <!--Device-unsigned char block_length_med--><!--Device-unsigned char block_length_med-End--> |
+| unsigned char block_length_lo | <!--Device-unsigned char block_length_lo--><!--Device-unsigned char block_length_lo-End--> |
 
 

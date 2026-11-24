@@ -24,9 +24,9 @@ Print_PageSize用于表示打印任务中的纸张尺寸信息，包含纸张ID�
 
 | 名称 | 描述 |
 | -- | -- |
-| char *id | 纸张尺寸的唯一标识ID，用于区分不同标准纸张规格。 |
-| char *name | 纸张尺寸的名称，如"A4"、"Letter"等标准纸张规格。 |
-| uint32_t width | 纸张宽度，单位：密尔（千分之一英寸）。取值原则：大于0。 |
-| uint32_t height | 纸张高度，单位：密尔（千分之一英寸）。取值原则：大于0。 |
+| char *id | 纸张尺寸的唯一标识ID，用于区分不同标准纸张规格。<br><!--Device-char *id--><!--Device-char *id-End--> |
+| char *name | 纸张尺寸的名称，如"A4"、"Letter"等标准纸张规格。<br><!--Device-char *name--><!--Device-char *name-End--> |
+| uint32_t width | 纸张宽度，单位：密尔（千分之一英寸）。取值原则：大于0。<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | 纸张高度，单位：密尔（千分之一英寸）。取值原则：大于0。<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

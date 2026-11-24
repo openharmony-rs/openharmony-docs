@@ -64,7 +64,7 @@ enum OH_RDB_TransType
 
 Indicates relation database transaction type.
 
-<!--Device-OH_RDB_TransType--><!--Device-OH_RDB_TransType-End-->
+<!--Device-enum OH_RDB_TransType--><!--Device-enum OH_RDB_TransType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -72,10 +72,10 @@ Indicates relation database transaction type.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_TRANS_DEFERRED = 0 | Indicates the transaction does not actually start until the database is first accessed. It's a default. |
-| RDB_TRANS_IMMEDIATE | Indicates the database connection to start a new write immediately, without waiting for a write statement. |
-| RDB_TRANS_EXCLUSIVE | Indicates it is similar to RDB_TRANS_IMMEDIATE in that a write transaction is started immediately. RDB_TRANS_EXCLUSIVE and RDB_TRANS_IMMEDIATE are the same in WAL mode, but in other journaling modes, EXCLUSIVE prevents other database connections from reading the database while the transaction is underway. |
-| RDB_TRANS_BUTT | The largest value for rdb transaction type. |
+| RDB_TRANS_DEFERRED = 0 | Indicates the transaction does not actually start until the database is first accessed. It's a default.<br><!--Device-RDB_TRANS_DEFERRED = 0--><!--Device-RDB_TRANS_DEFERRED = 0-End--> |
+| RDB_TRANS_IMMEDIATE | Indicates the database connection to start a new write immediately, without waiting for a write statement.<br><!--Device-RDB_TRANS_IMMEDIATE--><!--Device-RDB_TRANS_IMMEDIATE-End--> |
+| RDB_TRANS_EXCLUSIVE | Indicates it is similar to RDB_TRANS_IMMEDIATE in that a write transaction is started immediately. RDB_TRANS_EXCLUSIVE and RDB_TRANS_IMMEDIATE are the same in WAL mode, but in other journaling modes, EXCLUSIVE prevents other database connections from reading the database while the transaction is underway.<br><!--Device-RDB_TRANS_EXCLUSIVE--><!--Device-RDB_TRANS_EXCLUSIVE-End--> |
+| RDB_TRANS_BUTT | The largest value for rdb transaction type.<br><!--Device-RDB_TRANS_BUTT--><!--Device-RDB_TRANS_BUTT-End--> |
 
 
 ## Function description

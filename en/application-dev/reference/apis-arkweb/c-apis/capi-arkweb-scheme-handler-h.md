@@ -130,7 +130,7 @@ enum ArkWeb_CustomSchemeOption
 
 Enumerates the custom scheme options.
 
-<!--Device-ArkWeb_CustomSchemeOption--><!--Device-ArkWeb_CustomSchemeOption-End-->
+<!--Device-enum ArkWeb_CustomSchemeOption--><!--Device-enum ArkWeb_CustomSchemeOption-End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -138,15 +138,15 @@ Enumerates the custom scheme options.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKWEB_SCHEME_OPTION_NONE = 0 | No special behavior or capability is assigned when the custom scheme is registered. |
-| ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0 | The scheme is processed as a standard scheme. The standard schemes need to comply with the URL normalization and parsing rules defined in Section 3.1 of RFC 1738, which can be found in the http://www.ietf.org/rfc/rfc1738.txt. |
-| ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1 | The scheme is processed using the same security rule as the file URL. |
-| ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2 | The request of the scheme can be initiated only by the page that is loaded using the same scheme. |
-| ARKWEB_SCHEME_OPTION_SECURE = 1 << 3 | The scheme is processed using the same security rule as the HTTPS URL. |
-| ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4 | The scheme can send CORS requests. In most cases, this value should be set when **ARKWEB_SCHEME_OPTION_STANDARD**<br>is set. |
-| ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5 | The scheme can bypass the Content Security Policy (CSP) check. In most cases, this value should not be set when ARKWEB_SCHEME_OPTION_STANDARD is set. |
-| ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6 | The FETCH API request of the scheme can be initiated. |
-| ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7 | The JS resources of the scheme support code cache generation. |
+| OH_ARKWEB_SCHEME_OPTION_NONE = 0 | No special behavior or capability is assigned when the custom scheme is registered.<br><!--Device-OH_ARKWEB_SCHEME_OPTION_NONE = 0--><!--Device-OH_ARKWEB_SCHEME_OPTION_NONE = 0-End--> |
+| ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0 | The scheme is processed as a standard scheme. The standard schemes need to comply with the URL normalization and parsing rules defined in Section 3.1 of RFC 1738, which can be found in the http://www.ietf.org/rfc/rfc1738.txt.<br><!--Device-ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0--><!--Device-ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0-End--> |
+| ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1 | The scheme is processed using the same security rule as the file URL.<br><!--Device-ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1--><!--Device-ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1-End--> |
+| ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2 | The request of the scheme can be initiated only by the page that is loaded using the same scheme.<br><!--Device-ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2--><!--Device-ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2-End--> |
+| ARKWEB_SCHEME_OPTION_SECURE = 1 << 3 | The scheme is processed using the same security rule as the HTTPS URL.<br><!--Device-ARKWEB_SCHEME_OPTION_SECURE = 1 << 3--><!--Device-ARKWEB_SCHEME_OPTION_SECURE = 1 << 3-End--> |
+| ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4 | The scheme can send CORS requests. In most cases, this value should be set when **ARKWEB_SCHEME_OPTION_STANDARD** is set.<br><!--Device-ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4--><!--Device-ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4-End--> |
+| ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5 | The scheme can bypass the Content Security Policy (CSP) check. In most cases, this value should not be set when ARKWEB_SCHEME_OPTION_STANDARD is set.<br><!--Device-ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5--><!--Device-ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5-End--> |
+| ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6 | The FETCH API request of the scheme can be initiated.<br><!--Device-ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6--><!--Device-ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6-End--> |
+| ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7 | The JS resources of the scheme support code cache generation.<br><!--Device-ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7--><!--Device-ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7-End--> |
 
 ### ArkWeb_ResourceType
 
@@ -158,7 +158,7 @@ enum ArkWeb_ResourceType
 
 Enumerates the resource types of the request. The resource types match the corresponding items of **ResourceType** in Chromium and should not be renumbered.
 
-<!--Device-ArkWeb_ResourceType--><!--Device-ArkWeb_ResourceType-End-->
+<!--Device-enum ArkWeb_ResourceType--><!--Device-enum ArkWeb_ResourceType-End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -166,26 +166,26 @@ Enumerates the resource types of the request. The resource types match the corre
 
 | Enum item | Description |
 | -- | -- |
-| MAIN_FRAME = 0 | Main frame. |
-| SUB_FRAME = 1 | Frame or iframe. |
-| STYLE_SHEET = 2 | Cascading Style Sheets (CSS). |
-| SCRIPT = 3 | External script. |
-| IMAGE = 4 | Image (JPG, GIF, PNG, or other format). |
-| FONT_RESOURCE = 5 | Font. |
-| SUB_RESOURCE = 6 | Other sub-resource. If the type is unknown, the default type is used. |
-| OBJECT = 7 | The **Object** (or **embed**) tag of the plug-in, or the resource requested by the plug-in. |
-| MEDIA = 8 | Media resource. |
-| WORKER = 9 | Main resource of the dedicated worker thread. |
-| SHARED_WORKER = 10 | Main resource of a shared worker thread. |
-| PREFETCH = 11 | Explicit prefetch request. |
-| FAVICON = 12 | Website icon. |
-| XHR = 13 | XMLHttpRequest. |
-| PING = 14 | Ping request for <a ping>/sendBeacon. |
-| SERVICE_WORKER = 15 | Main resource of a service worker. |
-| CSP_REPORT = 16 | Report of Content Security Policy violation. |
-| PLUGIN_RESOURCE = 17 | Resource requested by the plug-in. |
-| NAVIGATION_PRELOAD_MAIN_FRAME = 19 | Main frame redirection request that triggers service worker preloading. |
-| NAVIGATION_PRELOAD_SUB_FRAME = 20 | Subframe redirection request that triggers service worker preloading. |
+| MAIN_FRAME = 0 | Main frame.<br><!--Device-MAIN_FRAME = 0--><!--Device-MAIN_FRAME = 0-End--> |
+| SUB_FRAME = 1 | Frame or iframe.<br><!--Device-SUB_FRAME = 1--><!--Device-SUB_FRAME = 1-End--> |
+| STYLE_SHEET = 2 | Cascading Style Sheets (CSS).<br><!--Device-STYLE_SHEET = 2--><!--Device-STYLE_SHEET = 2-End--> |
+| SCRIPT = 3 | External script.<br><!--Device-SCRIPT = 3--><!--Device-SCRIPT = 3-End--> |
+| IMAGE = 4 | Image (JPG, GIF, PNG, or other format).<br><!--Device-IMAGE = 4--><!--Device-IMAGE = 4-End--> |
+| FONT_RESOURCE = 5 | Font.<br><!--Device-FONT_RESOURCE = 5--><!--Device-FONT_RESOURCE = 5-End--> |
+| SUB_RESOURCE = 6 | Other sub-resource. If the type is unknown, the default type is used.<br><!--Device-SUB_RESOURCE = 6--><!--Device-SUB_RESOURCE = 6-End--> |
+| OBJECT = 7 | The **Object** (or **embed**) tag of the plug-in, or the resource requested by the plug-in.<br><!--Device-OBJECT = 7--><!--Device-OBJECT = 7-End--> |
+| MEDIA = 8 | Media resource.<br><!--Device-MEDIA = 8--><!--Device-MEDIA = 8-End--> |
+| WORKER = 9 | Main resource of the dedicated worker thread.<br><!--Device-WORKER = 9--><!--Device-WORKER = 9-End--> |
+| SHARED_WORKER = 10 | Main resource of a shared worker thread.<br><!--Device-SHARED_WORKER = 10--><!--Device-SHARED_WORKER = 10-End--> |
+| PREFETCH = 11 | Explicit prefetch request.<br><!--Device-PREFETCH = 11--><!--Device-PREFETCH = 11-End--> |
+| FAVICON = 12 | Website icon.<br><!--Device-FAVICON = 12--><!--Device-FAVICON = 12-End--> |
+| XHR = 13 | XMLHttpRequest.<br><!--Device-XHR = 13--><!--Device-XHR = 13-End--> |
+| PING = 14 | Ping request for <a ping>/sendBeacon.<br><!--Device-PING = 14--><!--Device-PING = 14-End--> |
+| SERVICE_WORKER = 15 | Main resource of a service worker.<br><!--Device-SERVICE_WORKER = 15--><!--Device-SERVICE_WORKER = 15-End--> |
+| CSP_REPORT = 16 | Report of Content Security Policy violation.<br><!--Device-CSP_REPORT = 16--><!--Device-CSP_REPORT = 16-End--> |
+| PLUGIN_RESOURCE = 17 | Resource requested by the plug-in.<br><!--Device-PLUGIN_RESOURCE = 17--><!--Device-PLUGIN_RESOURCE = 17-End--> |
+| NAVIGATION_PRELOAD_MAIN_FRAME = 19 | Main frame redirection request that triggers service worker preloading.<br><!--Device-NAVIGATION_PRELOAD_MAIN_FRAME = 19--><!--Device-NAVIGATION_PRELOAD_MAIN_FRAME = 19-End--> |
+| NAVIGATION_PRELOAD_SUB_FRAME = 20 | Subframe redirection request that triggers service worker preloading.<br><!--Device-NAVIGATION_PRELOAD_SUB_FRAME = 20--><!--Device-NAVIGATION_PRELOAD_SUB_FRAME = 20-End--> |
 
 
 ## Function description

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags |  |
-| VkBool32 depthClipEnable |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags | <!--Device-VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags--><!--Device-VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags-End--> |
+| VkBool32 depthClipEnable | <!--Device-VkBool32 depthClipEnable--><!--Device-VkBool32 depthClipEnable-End--> |
 
 

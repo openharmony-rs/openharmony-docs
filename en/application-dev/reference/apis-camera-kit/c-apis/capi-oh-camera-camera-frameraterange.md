@@ -24,7 +24,7 @@ The struct describes the frame rate range.
 
 | Name | Description |
 | -- | -- |
-| uint32_t min | Minimum frame rate, in fps. |
-| uint32_t max | Maximum frame rate, in fps. |
+| uint32_t min | Minimum frame rate, in fps.<br><!--Device-uint32_t min--><!--Device-uint32_t min-End--> |
+| uint32_t max | Maximum frame rate, in fps.<br><!--Device-uint32_t max--><!--Device-uint32_t max-End--> |
 
 

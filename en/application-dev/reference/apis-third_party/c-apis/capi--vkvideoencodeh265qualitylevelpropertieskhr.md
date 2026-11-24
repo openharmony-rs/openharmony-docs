@@ -10,15 +10,15 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags |  |
-| uint32_t preferredGopFrameCount |  |
-| uint32_t preferredIdrPeriod |  |
-| uint32_t preferredConsecutiveBFrameCount |  |
-| uint32_t preferredSubLayerCount |  |
-| [VkVideoEncodeH265QpKHR](capi--vkvideoencodeh265qpkhr.md) preferredConstantQp |  |
-| uint32_t preferredMaxL0ReferenceCount |  |
-| uint32_t preferredMaxL1ReferenceCount |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags | <!--Device-VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags--><!--Device-VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags-End--> |
+| uint32_t preferredGopFrameCount | <!--Device-uint32_t preferredGopFrameCount--><!--Device-uint32_t preferredGopFrameCount-End--> |
+| uint32_t preferredIdrPeriod | <!--Device-uint32_t preferredIdrPeriod--><!--Device-uint32_t preferredIdrPeriod-End--> |
+| uint32_t preferredConsecutiveBFrameCount | <!--Device-uint32_t preferredConsecutiveBFrameCount--><!--Device-uint32_t preferredConsecutiveBFrameCount-End--> |
+| uint32_t preferredSubLayerCount | <!--Device-uint32_t preferredSubLayerCount--><!--Device-uint32_t preferredSubLayerCount-End--> |
+| [VkVideoEncodeH265QpKHR](capi--vkvideoencodeh265qpkhr.md) preferredConstantQp | <!--Device-VkVideoEncodeH265QpKHR preferredConstantQp--><!--Device-VkVideoEncodeH265QpKHR preferredConstantQp-End--> |
+| uint32_t preferredMaxL0ReferenceCount | <!--Device-uint32_t preferredMaxL0ReferenceCount--><!--Device-uint32_t preferredMaxL0ReferenceCount-End--> |
+| uint32_t preferredMaxL1ReferenceCount | <!--Device-uint32_t preferredMaxL1ReferenceCount--><!--Device-uint32_t preferredMaxL1ReferenceCount-End--> |
 
 

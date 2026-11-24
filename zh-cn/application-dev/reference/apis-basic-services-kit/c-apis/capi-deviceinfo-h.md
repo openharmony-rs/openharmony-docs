@@ -49,7 +49,7 @@
 | [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | 获取ISV发行版系统版本号。 |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | 获取ISV发行版系统API版本。 |
 | [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | 获取ISV发行版系统类型。 |
-| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | 获取磁盘序列号。 |
+| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | 获取磁盘序列号。参数缓冲区容量不能低于65字节。 |
 | [const char *OH_GetOdid(void)](#oh_getodid) | 获取开发者匿名设备标识符。 |
 
 ## 函数说明
@@ -700,7 +700,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 **描述：**
 
-获取磁盘序列号。
+获取磁盘序列号。参数缓冲区容量不能低于65字节。
 
 <!--Device-int32_t OH_GetDiskSN(char *diskSn)--><!--Device-int32_t OH_GetDiskSN(char *diskSn)-End-->
 
@@ -714,7 +714,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *diskSn | 【out】 磁盘序列号。 |
+| char *diskSn | 【out】 磁盘序列号。参数缓冲区容量不能低于65字节。 |
 
 **返回值：**
 

@@ -66,7 +66,7 @@ enum DateRuleType
 
 日期规则类型的枚举。
 
-<!--Device-DateRuleType--><!--Device-DateRuleType-End-->
+<!--Device-enum DateRuleType--><!--Device-enum DateRuleType-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -74,10 +74,10 @@ enum DateRuleType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DOM = 0 | 当月的第几天，以2025年为例，十月十六日为：十月的第十六天。 |
-| DOW = 1 | 当月的第几个星期几，以2025年为例，十月十六日为：十月的第三个星期四。 |
-| DOW_GEQ_DOM = 2 | 当月第几天之后的第一个星期几，以2025年为例，十月十六日为：十月第十三天/十四天/十五天之后的第一个星期四。 |
-| DOW_LEQ_DOM = 3 | 当月第几天之前的最后一个星期几，以2025年为例，十月十六日为：十月第二十天之前的最后一个星期四。 |
+| DOM = 0 | 当月的第几天，以2025年为例，十月十六日为：十月的第十六天。<br><!--Device-DOM = 0--><!--Device-DOM = 0-End--> |
+| DOW = 1 | 当月的第几个星期几，以2025年为例，十月十六日为：十月的第三个星期四。<br><!--Device-DOW = 1--><!--Device-DOW = 1-End--> |
+| DOW_GEQ_DOM = 2 | 当月第几天之后的第一个星期几，以2025年为例，十月十六日为：十月第十三天/十四天/十五天之后的第一个星期四。<br><!--Device-DOW_GEQ_DOM = 2--><!--Device-DOW_GEQ_DOM = 2-End--> |
+| DOW_LEQ_DOM = 3 | 当月第几天之前的最后一个星期几，以2025年为例，十月十六日为：十月第二十天之前的最后一个星期四。<br><!--Device-DOW_LEQ_DOM = 3--><!--Device-DOW_LEQ_DOM = 3-End--> |
 
 ### TimeRuleType
 
@@ -89,7 +89,7 @@ enum TimeRuleType
 
 时间规则类型的枚举。
 
-<!--Device-TimeRuleType--><!--Device-TimeRuleType-End-->
+<!--Device-enum TimeRuleType--><!--Device-enum TimeRuleType-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -97,9 +97,9 @@ enum TimeRuleType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| WALL_TIME = 0 | 本地时钟时间（不考虑时区偏移）。 |
-| STANDARD_TIME = 1 | 本地标准时间（不考虑夏令时偏移）。 |
-| UTC_TIME = 2 | 世界标准时间（UTC时间）。 |
+| WALL_TIME = 0 | 本地时钟时间（不考虑时区偏移）。<br><!--Device-WALL_TIME = 0--><!--Device-WALL_TIME = 0-End--> |
+| STANDARD_TIME = 1 | 本地标准时间（不考虑夏令时偏移）。<br><!--Device-STANDARD_TIME = 1--><!--Device-STANDARD_TIME = 1-End--> |
+| UTC_TIME = 2 | 世界标准时间（UTC时间）。<br><!--Device-UTC_TIME = 2--><!--Device-UTC_TIME = 2-End--> |
 
 
 ## 函数说明

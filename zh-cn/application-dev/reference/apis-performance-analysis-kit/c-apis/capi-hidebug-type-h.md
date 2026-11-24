@@ -94,7 +94,7 @@ HiDebug模块代码结构体定义。
 
 | 名称 | 描述 |
 | -- | -- |
-| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | 定义HiDebug_ThreadCpuUsage的指针类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
+| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | 定义HiDebug_ThreadCpuUsage的指针类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug<br><!--Device-HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr--><!--Device-HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr-End--> |
 
 ## 枚举类型说明
 
@@ -108,7 +108,7 @@ enum HiDebug_ErrorCode
 
 错误码定义。用于HiDebug模块各功能接口的返回状态标识，包括成功、参数错误、权限问题、系统内部错误、设备不支持等多种情况。开发者可根据错误码定位问题原因并采取相应的错误处理措施。
 
-<!--Device-HiDebug_ErrorCode--><!--Device-HiDebug_ErrorCode-End-->
+<!--Device-enum HiDebug_ErrorCode--><!--Device-enum HiDebug_ErrorCode-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -116,39 +116,39 @@ enum HiDebug_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HIDEBUG_SUCCESS = 0 | 成功。 |
-| HIDEBUG_INVALID_ARGUMENT = 401 | 无效参数，可能的原因： 1.参数传值问题；2.参数类型问题。 |
-| HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102 | 重复采集。 |
-| HIDEBUG_NO_PERMISSION = 11400103 | 没有写文件的权限。 |
-| HIDEBUG_TRACE_ABNORMAL = 11400104 | 系统内部错误。 |
-| HIDEBUG_NO_TRACE_RUNNING = 11400105 | 当前没有trace正在运行。 |
-| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | trace文件存储达到限制。<br>**起始版本：** 24 |
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | 传入符号解析函数的pc地址是无效的。<br>**起始版本：** 20 |
-| HIDEBUG_NOT_SUPPORTED = 11400300 | 当前设备不支持。<br>**起始版本：** 22 |
-| HIDEBUG_UNDER_SAMPLING = 11400301 | 当前进程正在采样。<br>**起始版本：** 22 |
-| HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | 采样资源不可用。<br>**起始版本：** 22 |
-| HIDEBUG_RES_PROF_SUCCESS = 11400400 | 资源采集启动/停止成功。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 | 资源采集参数无效。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 | 资源采集最大持续时间参数无效。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 | 资源采集过滤大小参数无效。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 | 资源采集最大回栈深度参数无效。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 | 资源采集统计间隔参数无效。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 | 资源采集采样大小参数无效。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 | 资源采集资源类型参数无效。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | 资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | 资源采集重复启动。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | 资源采集未启动，停止失败。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | 资源采集进程数超过4个上限。 仅对发布签名应用生效，调试签名应用不受此限制， 用于开发和调试目的。已有采集任务停止后限制释放。[since 26.0.1] API版本26.0.0及以下，该限制对所有应用生效。[since 24 - 26.0.0]<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_CONFLICT = 11400424 | 资源采集与命令行工具或系统采集任务冲突。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | 资源采集到达指定最大持续时间限制自动停止。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | 资源采集每日配额超出限制。 发布签名应用：每应用每日限制采集2次，整机每日限制采集4次； 调试签名应用：采集不受限制，用于开发和调试目的。配额每日重置。[since 26.0.1] API版本26.0.0及以下，仅调试签名应用支持采集，每日限10次。[since 24 - 26.0.0]<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | 系统CPU处于高负载状态，禁止资源采集。 CPU占用率超过70%。CPU使用率恢复后可重试。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | 系统内存可用空间紧张，禁止资源采集。 可用空间不足2GB，该阈值为固定值，不随设备容量变化。 可用内存恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 系统存储可用空间紧张，禁止资源采集。 可用空间不足总容量的3%与15GB中的较大值。 可用存储恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。可检查系统条件后重试。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 无效的最大异步嵌套深度。<br>**起始版本：** 26.0.1 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 无效的最大异步任务栈深度。<br>**起始版本：** 26.0.1 |
-| HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | 无效的调用栈追踪模式。<br>**起始版本：** 26.0.1 |
+| HIDEBUG_SUCCESS = 0 | 成功。<br><!--Device-HIDEBUG_SUCCESS = 0--><!--Device-HIDEBUG_SUCCESS = 0-End--> |
+| HIDEBUG_INVALID_ARGUMENT = 401 | 无效参数，可能的原因： 1.参数传值问题；2.参数类型问题。<br><!--Device-HIDEBUG_INVALID_ARGUMENT = 401--><!--Device-HIDEBUG_INVALID_ARGUMENT = 401-End--> |
+| HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102 | 重复采集。<br><!--Device-HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102--><!--Device-HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102-End--> |
+| HIDEBUG_NO_PERMISSION = 11400103 | 没有写文件的权限。<br><!--Device-HIDEBUG_NO_PERMISSION = 11400103--><!--Device-HIDEBUG_NO_PERMISSION = 11400103-End--> |
+| HIDEBUG_TRACE_ABNORMAL = 11400104 | 系统内部错误。<br><!--Device-HIDEBUG_TRACE_ABNORMAL = 11400104--><!--Device-HIDEBUG_TRACE_ABNORMAL = 11400104-End--> |
+| HIDEBUG_NO_TRACE_RUNNING = 11400105 | 当前没有trace正在运行。<br><!--Device-HIDEBUG_NO_TRACE_RUNNING = 11400105--><!--Device-HIDEBUG_NO_TRACE_RUNNING = 11400105-End--> |
+| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | trace文件存储达到限制。<br>**起始版本：** 24<br><!--Device-OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120--><!--Device-OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120-End--> |
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | 传入符号解析函数的pc地址是无效的。<br>**起始版本：** 20<br><!--Device-HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200--><!--Device-HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200-End--> |
+| HIDEBUG_NOT_SUPPORTED = 11400300 | 当前设备不支持。<br>**起始版本：** 22<br><!--Device-HIDEBUG_NOT_SUPPORTED = 11400300--><!--Device-HIDEBUG_NOT_SUPPORTED = 11400300-End--> |
+| HIDEBUG_UNDER_SAMPLING = 11400301 | 当前进程正在采样。<br>**起始版本：** 22<br><!--Device-HIDEBUG_UNDER_SAMPLING = 11400301--><!--Device-HIDEBUG_UNDER_SAMPLING = 11400301-End--> |
+| HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | 采样资源不可用。<br>**起始版本：** 22<br><!--Device-HIDEBUG_RESOURCE_UNAVAILABLE = 11400302--><!--Device-HIDEBUG_RESOURCE_UNAVAILABLE = 11400302-End--> |
+| HIDEBUG_RES_PROF_SUCCESS = 11400400 | 资源采集启动/停止成功。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_SUCCESS = 11400400--><!--Device-HIDEBUG_RES_PROF_SUCCESS = 11400400-End--> |
+| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 | 资源采集参数无效。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_ARG = 11400410--><!--Device-HIDEBUG_RES_PROF_INVALID_ARG = 11400410-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 | 资源采集最大持续时间参数无效。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411-End--> |
+| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 | 资源采集过滤大小参数无效。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412--><!--Device-HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 | 资源采集最大回栈深度参数无效。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413-End--> |
+| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 | 资源采集统计间隔参数无效。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414--><!--Device-HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414-End--> |
+| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 | 资源采集采样大小参数无效。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415--><!--Device-HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415-End--> |
+| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 | 资源采集资源类型参数无效。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416--><!--Device-HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416-End--> |
+| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | 资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420--><!--Device-HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420-End--> |
+| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | 资源采集重复启动。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421--><!--Device-HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421-End--> |
+| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | 资源采集未启动，停止失败。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_NOT_STARTED = 11400422--><!--Device-HIDEBUG_RES_PROF_NOT_STARTED = 11400422-End--> |
+| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | 资源采集进程数超过4个上限。 仅对发布签名应用生效，调试签名应用不受此限制， 用于开发和调试目的。已有采集任务停止后限制释放。[since 26.0.1] API版本26.0.0及以下，该限制对所有应用生效。[since 24 - 26.0.0]<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423--><!--Device-HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423-End--> |
+| HIDEBUG_RES_PROF_CONFLICT = 11400424 | 资源采集与命令行工具或系统采集任务冲突。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_CONFLICT = 11400424--><!--Device-HIDEBUG_RES_PROF_CONFLICT = 11400424-End--> |
+| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | 资源采集到达指定最大持续时间限制自动停止。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425--><!--Device-HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425-End--> |
+| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | 资源采集每日配额超出限制。 发布签名应用：每应用每日限制采集2次，整机每日限制采集4次； 调试签名应用：采集不受限制，用于开发和调试目的。配额每日重置。[since 26.0.1] API版本26.0.0及以下，仅调试签名应用支持采集，每日限10次。[since 24 - 26.0.0]<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426--><!--Device-HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426-End--> |
+| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | 系统CPU处于高负载状态，禁止资源采集。 CPU占用率超过70%。CPU使用率恢复后可重试。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427--><!--Device-HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427-End--> |
+| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | 系统内存可用空间紧张，禁止资源采集。 可用空间不足2GB，该阈值为固定值，不随设备容量变化。 可用内存恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428--><!--Device-HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428-End--> |
+| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 系统存储可用空间紧张，禁止资源采集。 可用空间不足总容量的3%与15GB中的较大值。 可用存储恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429--><!--Device-HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429-End--> |
+| HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。可检查系统条件后重试。<br>**起始版本：** 24<br><!--Device-HIDEBUG_RES_PROF_FAILURE = 11400430--><!--Device-HIDEBUG_RES_PROF_FAILURE = 11400430-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 无效的最大异步嵌套深度。<br>**起始版本：** 26.0.1<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 无效的最大异步任务栈深度。<br>**起始版本：** 26.0.1<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432-End--> |
+| HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | 无效的调用栈追踪模式。<br>**起始版本：** 26.0.1<br><!--Device-HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433--><!--Device-HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433-End--> |
 
 ### HiDebug_TraceFlag
 
@@ -160,7 +160,7 @@ enum HiDebug_TraceFlag
 
 采集trace线程的类型。
 
-<!--Device-HiDebug_TraceFlag--><!--Device-HiDebug_TraceFlag-End-->
+<!--Device-enum HiDebug_TraceFlag--><!--Device-enum HiDebug_TraceFlag-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -168,8 +168,8 @@ enum HiDebug_TraceFlag
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1 | 只采集当前应用主线程。 |
-| HIDEBUG_TRACE_FLAG_ALL_THREADS = 2 | 采集当前应用下所有线程。 |
+| HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1 | 只采集当前应用主线程。<br><!--Device-HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1--><!--Device-HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1-End--> |
+| HIDEBUG_TRACE_FLAG_ALL_THREADS = 2 | 采集当前应用下所有线程。<br><!--Device-HIDEBUG_TRACE_FLAG_ALL_THREADS = 2--><!--Device-HIDEBUG_TRACE_FLAG_ALL_THREADS = 2-End--> |
 
 ### HiDebug_StackFrameType
 
@@ -181,7 +181,7 @@ enum HiDebug_StackFrameType
 
 栈帧类型的枚举值定义。
 
-<!--Device-HiDebug_StackFrameType--><!--Device-HiDebug_StackFrameType-End-->
+<!--Device-enum HiDebug_StackFrameType--><!--Device-enum HiDebug_StackFrameType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -189,8 +189,8 @@ enum HiDebug_StackFrameType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HIDEBUG_STACK_FRAME_TYPE_JS = 1 | js类型栈帧。 |
-| HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | native类型栈帧。 |
+| HIDEBUG_STACK_FRAME_TYPE_JS = 1 | js类型栈帧。<br><!--Device-HIDEBUG_STACK_FRAME_TYPE_JS = 1--><!--Device-HIDEBUG_STACK_FRAME_TYPE_JS = 1-End--> |
+| HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | native类型栈帧。<br><!--Device-HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2--><!--Device-HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2-End--> |
 
 ### HiDebug_CrashObjType
 
@@ -202,7 +202,7 @@ enum HiDebug_CrashObjType
 
 维测信息数据类型的枚举。
 
-<!--Device-HiDebug_CrashObjType--><!--Device-HiDebug_CrashObjType-End-->
+<!--Device-enum HiDebug_CrashObjType--><!--Device-enum HiDebug_CrashObjType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -210,12 +210,12 @@ enum HiDebug_CrashObjType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HIDEBUG_CRASHOBJ_STRING = 0 | 字符串 |
-| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096字节内存块 |
+| HIDEBUG_CRASHOBJ_STRING = 0 | 字符串<br><!--Device-HIDEBUG_CRASHOBJ_STRING = 0--><!--Device-HIDEBUG_CRASHOBJ_STRING = 0-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64字节内存块<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_64B = 1--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_64B = 1-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256字节内存块<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_256B = 2--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_256B = 2-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024字节内存块<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_1024B = 3--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_1024B = 3-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048字节内存块<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_2048B = 4--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_2048B = 4-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096字节内存块<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_4096B = 5--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_4096B = 5-End--> |
 
 ### OH_HiDebug_ResourceType
 
@@ -227,7 +227,7 @@ enum OH_HiDebug_ResourceType
 
 定义资源采集类型的枚举。
 
-<!--Device-OH_HiDebug_ResourceType--><!--Device-OH_HiDebug_ResourceType-End-->
+<!--Device-enum OH_HiDebug_ResourceType--><!--Device-enum OH_HiDebug_ResourceType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -235,14 +235,14 @@ enum OH_HiDebug_ResourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_RES_TYPE_FD | 文件描述符<br>**起始版本：** 24 |
-| OH_RES_TYPE_THREAD | 线程<br>**起始版本：** 24 |
-| OH_RES_TYPE_NATIVE | Native 内存<br>**起始版本：** 24 |
-| OH_RES_TYPE_GPU | GPU 内存<br>**起始版本：** 24 |
-| OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24 |
-| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.0.1 |
-| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.0.1 |
-| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.0.1 |
+| OH_RES_TYPE_FD | 文件描述符<br>**起始版本：** 24<br><!--Device-OH_RES_TYPE_FD--><!--Device-OH_RES_TYPE_FD-End--> |
+| OH_RES_TYPE_THREAD | 线程<br>**起始版本：** 24<br><!--Device-OH_RES_TYPE_THREAD--><!--Device-OH_RES_TYPE_THREAD-End--> |
+| OH_RES_TYPE_NATIVE | Native 内存<br>**起始版本：** 24<br><!--Device-OH_RES_TYPE_NATIVE--><!--Device-OH_RES_TYPE_NATIVE-End--> |
+| OH_RES_TYPE_GPU | GPU 内存<br>**起始版本：** 24<br><!--Device-OH_RES_TYPE_GPU--><!--Device-OH_RES_TYPE_GPU-End--> |
+| OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24<br><!--Device-OH_RES_TYPE_GLOBAL_HANDLE--><!--Device-OH_RES_TYPE_GLOBAL_HANDLE-End--> |
+| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.0.1<br><!--Device-OH_RES_TYPE_DMA--><!--Device-OH_RES_TYPE_DMA-End--> |
+| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.0.1<br><!--Device-OH_RES_TYPE_ASHMEM--><!--Device-OH_RES_TYPE_ASHMEM-End--> |
+| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.0.1<br><!--Device-OH_RES_TYPE_COMPOSITE_HEAP--><!--Device-OH_RES_TYPE_COMPOSITE_HEAP-End--> |
 
 ### OH_HiDebug_MemListenerType
 
@@ -254,7 +254,7 @@ enum OH_HiDebug_MemListenerType
 
 内存监听回调的类型枚举。开发者根据回调类型处理相关逻辑。
 
-<!--Device-OH_HiDebug_MemListenerType--><!--Device-OH_HiDebug_MemListenerType-End-->
+<!--Device-enum OH_HiDebug_MemListenerType--><!--Device-enum OH_HiDebug_MemListenerType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -262,9 +262,9 @@ enum OH_HiDebug_MemListenerType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HIDEBUG_DO_NOTHING = 0 | 无特定操作，仅通知回调。<br>**起始版本：** 26.0.0 |
-| OH_HIDEBUG_RUNNING_GC = 1 | 垃圾回收（GC）操作。<br>**起始版本：** 26.0.0 |
-| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | 导出内存快照。<br>**起始版本：** 26.0.0 |
+| OH_HIDEBUG_DO_NOTHING = 0 | 无特定操作，仅通知回调。<br>**起始版本：** 26.0.0<br><!--Device-OH_HIDEBUG_DO_NOTHING = 0--><!--Device-OH_HIDEBUG_DO_NOTHING = 0-End--> |
+| OH_HIDEBUG_RUNNING_GC = 1 | 垃圾回收（GC）操作。<br>**起始版本：** 26.0.0<br><!--Device-OH_HIDEBUG_RUNNING_GC = 1--><!--Device-OH_HIDEBUG_RUNNING_GC = 1-End--> |
+| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | 导出内存快照。<br>**起始版本：** 26.0.0<br><!--Device-OH_HIDEBUG_DUMP_SNAPSHOT = 2--><!--Device-OH_HIDEBUG_DUMP_SNAPSHOT = 2-End--> |
 
 ### OH_HiDebug_ProfilerStackTraceMode
 
@@ -276,7 +276,7 @@ enum OH_HiDebug_ProfilerStackTraceMode
 
 定义调用栈追踪模式枚举。
 
-<!--Device-OH_HiDebug_ProfilerStackTraceMode--><!--Device-OH_HiDebug_ProfilerStackTraceMode-End-->
+<!--Device-enum OH_HiDebug_ProfilerStackTraceMode--><!--Device-enum OH_HiDebug_ProfilerStackTraceMode-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -284,8 +284,8 @@ enum OH_HiDebug_ProfilerStackTraceMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0 | 保留所有调用栈追踪，包括已销毁的。<br>**起始版本：** 26.0.1 |
-| OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1 | 丢弃已销毁的调用栈追踪。<br>**起始版本：** 26.0.1 |
+| OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0 | 保留所有调用栈追踪，包括已销毁的。<br>**起始版本：** 26.0.1<br><!--Device-OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0--><!--Device-OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0-End--> |
+| OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1 | 丢弃已销毁的调用栈追踪。<br>**起始版本：** 26.0.1<br><!--Device-OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1--><!--Device-OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1-End--> |
 
 
 ## 函数说明

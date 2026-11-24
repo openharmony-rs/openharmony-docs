@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkVideoDecodeUsageFlagsKHR videoUsageHints |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkVideoDecodeUsageFlagsKHR videoUsageHints | <!--Device-VkVideoDecodeUsageFlagsKHR videoUsageHints--><!--Device-VkVideoDecodeUsageFlagsKHR videoUsageHints-End--> |
 
 

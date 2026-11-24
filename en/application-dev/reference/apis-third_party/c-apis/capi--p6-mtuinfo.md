@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| [struct sockaddr_in6](capi--sockaddr-in6.md) ip6m_addr |  |
-| uint32_t ip6m_mtu |  |
+| [struct sockaddr_in6](capi--sockaddr-in6.md) ip6m_addr | <!--Device-struct sockaddr_in6 ip6m_addr--><!--Device-struct sockaddr_in6 ip6m_addr-End--> |
+| uint32_t ip6m_mtu | <!--Device-uint32_t ip6m_mtu--><!--Device-uint32_t ip6m_mtu-End--> |
 
 

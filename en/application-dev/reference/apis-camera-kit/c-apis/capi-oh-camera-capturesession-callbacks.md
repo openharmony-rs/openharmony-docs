@@ -24,7 +24,7 @@ The struct describes the callbacks related to a capture session.
 
 | Name | Description |
 | -- | -- |
-| [OH_CaptureSession_OnFocusStateChange](capi-capture-session-h.md#oh_capturesession_onfocusstatechange) onFocusStateChange | Callback to report a focus status change of a capture session. |
-| [OH_CaptureSession_OnError](capi-capture-session-h.md#oh_capturesession_onerror) onError | Callback to report a capture session error. |
+| [OH_CaptureSession_OnFocusStateChange](capi-capture-session-h.md#oh_capturesession_onfocusstatechange) onFocusStateChange | Callback to report a focus status change of a capture session.<br><!--Device-OH_CaptureSession_OnFocusStateChange onFocusStateChange--><!--Device-OH_CaptureSession_OnFocusStateChange onFocusStateChange-End--> |
+| [OH_CaptureSession_OnError](capi-capture-session-h.md#oh_capturesession_onerror) onError | Callback to report a capture session error.<br><!--Device-OH_CaptureSession_OnError onError--><!--Device-OH_CaptureSession_OnError onError-End--> |
 
 

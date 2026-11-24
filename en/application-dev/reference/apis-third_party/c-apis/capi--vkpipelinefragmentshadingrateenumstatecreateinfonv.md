@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkFragmentShadingRateTypeNV shadingRateType |  |
-| VkFragmentShadingRateNV shadingRate |  |
-| VkFragmentShadingRateCombinerOpKHR combinerOps[2] |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkFragmentShadingRateTypeNV shadingRateType | <!--Device-VkFragmentShadingRateTypeNV shadingRateType--><!--Device-VkFragmentShadingRateTypeNV shadingRateType-End--> |
+| VkFragmentShadingRateNV shadingRate | <!--Device-VkFragmentShadingRateNV shadingRate--><!--Device-VkFragmentShadingRateNV shadingRate-End--> |
+| VkFragmentShadingRateCombinerOpKHR combinerOps[2] | <!--Device-VkFragmentShadingRateCombinerOpKHR combinerOps[2]--><!--Device-VkFragmentShadingRateCombinerOpKHR combinerOps[2]-End--> |
 
 

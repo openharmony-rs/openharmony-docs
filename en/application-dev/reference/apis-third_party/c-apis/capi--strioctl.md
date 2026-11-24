@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| int ic_cmd |  |
-| int ic_timout |  |
-| int ic_len |  |
-| char *ic_dp |  |
+| int ic_cmd | <!--Device-int ic_cmd--><!--Device-int ic_cmd-End--> |
+| int ic_timout | <!--Device-int ic_timout--><!--Device-int ic_timout-End--> |
+| int ic_len | <!--Device-int ic_len--><!--Device-int ic_len-End--> |
+| char *ic_dp | <!--Device-char *ic_dp--><!--Device-char *ic_dp-End--> |
 
 

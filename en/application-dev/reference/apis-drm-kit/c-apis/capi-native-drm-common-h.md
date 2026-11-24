@@ -87,7 +87,7 @@ enum DRM_EventType
 
 Enumerates the types of events that can be subscribed to.
 
-<!--Device-DRM_EventType--><!--Device-DRM_EventType-End-->
+<!--Device-enum DRM_EventType--><!--Device-enum DRM_EventType-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -95,12 +95,12 @@ Enumerates the types of events that can be subscribed to.
 
 | Enum item | Description |
 | -- | -- |
-| EVENT_DRM_BASE = 200 | DRM event. |
-| EVENT_PROVISION_REQUIRED = 201 | Event indicating that the application needs to request a device certificate. |
-| EVENT_KEY_REQUIRED = 202 | Event indicating that the application needs to request a media key. |
-| EVENT_KEY_EXPIRED = 203 | Event indicating that the media key expires. |
-| EVENT_VENDOR_DEFINED = 204 | Vendor-defined event. |
-| EVENT_EXPIRATION_UPDATE = 206 | Event indicating that the media key is updated on expiry. |
+| EVENT_DRM_BASE = 200 | DRM event.<br><!--Device-EVENT_DRM_BASE = 200--><!--Device-EVENT_DRM_BASE = 200-End--> |
+| EVENT_PROVISION_REQUIRED = 201 | Event indicating that the application needs to request a device certificate.<br><!--Device-EVENT_PROVISION_REQUIRED = 201--><!--Device-EVENT_PROVISION_REQUIRED = 201-End--> |
+| EVENT_KEY_REQUIRED = 202 | Event indicating that the application needs to request a media key.<br><!--Device-EVENT_KEY_REQUIRED = 202--><!--Device-EVENT_KEY_REQUIRED = 202-End--> |
+| EVENT_KEY_EXPIRED = 203 | Event indicating that the media key expires.<br><!--Device-EVENT_KEY_EXPIRED = 203--><!--Device-EVENT_KEY_EXPIRED = 203-End--> |
+| EVENT_VENDOR_DEFINED = 204 | Vendor-defined event.<br><!--Device-EVENT_VENDOR_DEFINED = 204--><!--Device-EVENT_VENDOR_DEFINED = 204-End--> |
+| EVENT_EXPIRATION_UPDATE = 206 | Event indicating that the media key is updated on expiry.<br><!--Device-EVENT_EXPIRATION_UPDATE = 206--><!--Device-EVENT_EXPIRATION_UPDATE = 206-End--> |
 
 ### DRM_ContentProtectionLevel
 
@@ -112,7 +112,7 @@ enum DRM_ContentProtectionLevel
 
 Enumerates the content protection levels.
 
-<!--Device-DRM_ContentProtectionLevel--><!--Device-DRM_ContentProtectionLevel-End-->
+<!--Device-enum DRM_ContentProtectionLevel--><!--Device-enum DRM_ContentProtectionLevel-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -120,11 +120,11 @@ Enumerates the content protection levels.
 
 | Enum item | Description |
 | -- | -- |
-| CONTENT_PROTECTION_LEVEL_UNKNOWN = 0 | Unknown level. |
-| CONTENT_PROTECTION_LEVEL_SW_CRYPTO | Software-based content protection. |
-| CONTENT_PROTECTION_LEVEL_HW_CRYPTO | Hardware-based content protection. |
-| CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO | Enhanced hardware-based content protection. |
-| CONTENT_PROTECTION_LEVEL_MAX | Maximum content protection level. |
+| CONTENT_PROTECTION_LEVEL_UNKNOWN = 0 | Unknown level.<br><!--Device-CONTENT_PROTECTION_LEVEL_UNKNOWN = 0--><!--Device-CONTENT_PROTECTION_LEVEL_UNKNOWN = 0-End--> |
+| CONTENT_PROTECTION_LEVEL_SW_CRYPTO | Software-based content protection.<br><!--Device-CONTENT_PROTECTION_LEVEL_SW_CRYPTO--><!--Device-CONTENT_PROTECTION_LEVEL_SW_CRYPTO-End--> |
+| CONTENT_PROTECTION_LEVEL_HW_CRYPTO | Hardware-based content protection.<br><!--Device-CONTENT_PROTECTION_LEVEL_HW_CRYPTO--><!--Device-CONTENT_PROTECTION_LEVEL_HW_CRYPTO-End--> |
+| CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO | Enhanced hardware-based content protection.<br><!--Device-CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO--><!--Device-CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO-End--> |
+| CONTENT_PROTECTION_LEVEL_MAX | Maximum content protection level.<br><!--Device-CONTENT_PROTECTION_LEVEL_MAX--><!--Device-CONTENT_PROTECTION_LEVEL_MAX-End--> |
 
 ### DRM_MediaKeyType
 
@@ -136,7 +136,7 @@ enum DRM_MediaKeyType
 
 Enumerates the types of media keys.
 
-<!--Device-DRM_MediaKeyType--><!--Device-DRM_MediaKeyType-End-->
+<!--Device-enum DRM_MediaKeyType--><!--Device-enum DRM_MediaKeyType-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -144,8 +144,8 @@ Enumerates the types of media keys.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_KEY_TYPE_OFFLINE = 0 | Offline media key. |
-| MEDIA_KEY_TYPE_ONLINE | Online media key. |
+| MEDIA_KEY_TYPE_OFFLINE = 0 | Offline media key.<br><!--Device-MEDIA_KEY_TYPE_OFFLINE = 0--><!--Device-MEDIA_KEY_TYPE_OFFLINE = 0-End--> |
+| MEDIA_KEY_TYPE_ONLINE | Online media key.<br><!--Device-MEDIA_KEY_TYPE_ONLINE--><!--Device-MEDIA_KEY_TYPE_ONLINE-End--> |
 
 ### DRM_MediaKeyRequestType
 
@@ -157,7 +157,7 @@ enum DRM_MediaKeyRequestType
 
 Enumerates the types of media key requests.
 
-<!--Device-DRM_MediaKeyRequestType--><!--Device-DRM_MediaKeyRequestType-End-->
+<!--Device-enum DRM_MediaKeyRequestType--><!--Device-enum DRM_MediaKeyRequestType-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -165,12 +165,12 @@ Enumerates the types of media key requests.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0 | Unknown type. |
-| MEDIA_KEY_REQUEST_TYPE_INITIAL | Initialization request. |
-| MEDIA_KEY_REQUEST_TYPE_RENEWAL | Renewal request. |
-| MEDIA_KEY_REQUEST_TYPE_RELEASE | Release request. |
-| MEDIA_KEY_REQUEST_TYPE_NONE | No request. |
-| MEDIA_KEY_REQUEST_TYPE_UPDATE | Update request. |
+| MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0 | Unknown type.<br><!--Device-MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0--><!--Device-MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0-End--> |
+| MEDIA_KEY_REQUEST_TYPE_INITIAL | Initialization request.<br><!--Device-MEDIA_KEY_REQUEST_TYPE_INITIAL--><!--Device-MEDIA_KEY_REQUEST_TYPE_INITIAL-End--> |
+| MEDIA_KEY_REQUEST_TYPE_RENEWAL | Renewal request.<br><!--Device-MEDIA_KEY_REQUEST_TYPE_RENEWAL--><!--Device-MEDIA_KEY_REQUEST_TYPE_RENEWAL-End--> |
+| MEDIA_KEY_REQUEST_TYPE_RELEASE | Release request.<br><!--Device-MEDIA_KEY_REQUEST_TYPE_RELEASE--><!--Device-MEDIA_KEY_REQUEST_TYPE_RELEASE-End--> |
+| MEDIA_KEY_REQUEST_TYPE_NONE | No request.<br><!--Device-MEDIA_KEY_REQUEST_TYPE_NONE--><!--Device-MEDIA_KEY_REQUEST_TYPE_NONE-End--> |
+| MEDIA_KEY_REQUEST_TYPE_UPDATE | Update request.<br><!--Device-MEDIA_KEY_REQUEST_TYPE_UPDATE--><!--Device-MEDIA_KEY_REQUEST_TYPE_UPDATE-End--> |
 
 ### DRM_OfflineMediaKeyStatus
 
@@ -182,7 +182,7 @@ enum DRM_OfflineMediaKeyStatus
 
 Enumerates the statuses of offline media keys.
 
-<!--Device-DRM_OfflineMediaKeyStatus--><!--Device-DRM_OfflineMediaKeyStatus-End-->
+<!--Device-enum DRM_OfflineMediaKeyStatus--><!--Device-enum DRM_OfflineMediaKeyStatus-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -190,9 +190,9 @@ Enumerates the statuses of offline media keys.
 
 | Enum item | Description |
 | -- | -- |
-| OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0 | Unknown status. |
-| OFFLINE_MEDIA_KEY_STATUS_USABLE | The media key is available. |
-| OFFLINE_MEDIA_KEY_STATUS_INACTIVE | The media key is inactive. |
+| OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0 | Unknown status.<br><!--Device-OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0--><!--Device-OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0-End--> |
+| OFFLINE_MEDIA_KEY_STATUS_USABLE | The media key is available.<br><!--Device-OFFLINE_MEDIA_KEY_STATUS_USABLE--><!--Device-OFFLINE_MEDIA_KEY_STATUS_USABLE-End--> |
+| OFFLINE_MEDIA_KEY_STATUS_INACTIVE | The media key is inactive.<br><!--Device-OFFLINE_MEDIA_KEY_STATUS_INACTIVE--><!--Device-OFFLINE_MEDIA_KEY_STATUS_INACTIVE-End--> |
 
 ### DRM_CertificateStatus
 
@@ -204,7 +204,7 @@ enum DRM_CertificateStatus
 
 Enumerates the device certificate statuses.
 
-<!--Device-DRM_CertificateStatus--><!--Device-DRM_CertificateStatus-End-->
+<!--Device-enum DRM_CertificateStatus--><!--Device-enum DRM_CertificateStatus-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -212,11 +212,11 @@ Enumerates the device certificate statuses.
 
 | Enum item | Description |
 | -- | -- |
-| CERT_STATUS_PROVISIONED = 0 | A device certificate is provisioned. |
-| CERT_STATUS_NOT_PROVISIONED | No device certificate is provisioned or the certificate status is abnormal. |
-| CERT_STATUS_EXPIRED | The device certificate has expired. |
-| CERT_STATUS_INVALID | The device certificate is invalid. |
-| CERT_STATUS_UNAVAILABLE | The device certificate is unavailable. |
+| CERT_STATUS_PROVISIONED = 0 | A device certificate is provisioned.<br><!--Device-CERT_STATUS_PROVISIONED = 0--><!--Device-CERT_STATUS_PROVISIONED = 0-End--> |
+| CERT_STATUS_NOT_PROVISIONED | No device certificate is provisioned or the certificate status is abnormal.<br><!--Device-CERT_STATUS_NOT_PROVISIONED--><!--Device-CERT_STATUS_NOT_PROVISIONED-End--> |
+| CERT_STATUS_EXPIRED | The device certificate has expired.<br><!--Device-CERT_STATUS_EXPIRED--><!--Device-CERT_STATUS_EXPIRED-End--> |
+| CERT_STATUS_INVALID | The device certificate is invalid.<br><!--Device-CERT_STATUS_INVALID--><!--Device-CERT_STATUS_INVALID-End--> |
+| CERT_STATUS_UNAVAILABLE | The device certificate is unavailable.<br><!--Device-CERT_STATUS_UNAVAILABLE--><!--Device-CERT_STATUS_UNAVAILABLE-End--> |
 
 
 ## Function description

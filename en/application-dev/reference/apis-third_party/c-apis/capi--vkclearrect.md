@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| [VkRect2D](capi--vkrect2d.md) rect |  |
-| uint32_t baseArrayLayer |  |
-| uint32_t layerCount |  |
+| [VkRect2D](capi--vkrect2d.md) rect | <!--Device-VkRect2D rect--><!--Device-VkRect2D rect-End--> |
+| uint32_t baseArrayLayer | <!--Device-uint32_t baseArrayLayer--><!--Device-uint32_t baseArrayLayer-End--> |
+| uint32_t layerCount | <!--Device-uint32_t layerCount--><!--Device-uint32_t layerCount-End--> |
 
 

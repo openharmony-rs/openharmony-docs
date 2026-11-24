@@ -24,7 +24,7 @@ Value for HDR_DYNAMIC_METADATA.
 
 | Name | Description |
 | -- | -- |
-| uint8_t* data | The value of dynamic metadata. |
-| uint32_t length | The length of dynamic metadata. |
+| uint8_t* data | The value of dynamic metadata.<br><!--Device-uint8_t* data--><!--Device-uint8_t* data-End--> |
+| uint32_t length | The length of dynamic metadata.<br><!--Device-uint32_t length--><!--Device-uint32_t length-End--> |
 
 

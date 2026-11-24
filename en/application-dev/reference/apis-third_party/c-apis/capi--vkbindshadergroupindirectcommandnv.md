@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t groupIndex |  |
+| uint32_t groupIndex | <!--Device-uint32_t groupIndex--><!--Device-uint32_t groupIndex-End--> |
 
 

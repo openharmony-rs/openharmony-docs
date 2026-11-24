@@ -24,7 +24,7 @@ typedef struct OH_TrafficFilter_PortRange {...} OH_TrafficFilter_PortRange
 
 | 名称 | 描述 |
 | -- | -- |
-| uint16_t startPort | 范围的起始端口。<br>**起始版本：** 26.0.0 |
-| uint16_t endPort | 范围的结束端口。<br>**起始版本：** 26.0.0 |
+| uint16_t startPort | 范围的起始端口。<br>**起始版本：** 26.0.0<br><!--Device-uint16_t startPort--><!--Device-uint16_t startPort-End--> |
+| uint16_t endPort | 范围的结束端口。<br>**起始版本：** 26.0.0<br><!--Device-uint16_t endPort--><!--Device-uint16_t endPort-End--> |
 
 

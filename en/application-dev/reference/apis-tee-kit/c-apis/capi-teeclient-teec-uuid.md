@@ -24,9 +24,9 @@ Defines the universally unique identifier (UUID) as defined in RFC4122 [2]. The 
 
 | Name | Description |
 | -- | -- |
-| uint32_t timeLow | The low part of the time field. |
-| uint16_t timeMid | The middle part of the time field. |
-| uint16_t timeHiAndVersion | The high part of the time field and version information. |
-| uint8_t clockSeqAndNode[8] | The clock sequence and node field (8 bytes). |
+| uint32_t timeLow | The low part of the time field.<br><!--Device-uint32_t timeLow--><!--Device-uint32_t timeLow-End--> |
+| uint16_t timeMid | The middle part of the time field.<br><!--Device-uint16_t timeMid--><!--Device-uint16_t timeMid-End--> |
+| uint16_t timeHiAndVersion | The high part of the time field and version information.<br><!--Device-uint16_t timeHiAndVersion--><!--Device-uint16_t timeHiAndVersion-End--> |
+| uint8_t clockSeqAndNode[8] | The clock sequence and node field (8 bytes).<br><!--Device-uint8_t clockSeqAndNode[8]--><!--Device-uint8_t clockSeqAndNode[8]-End--> |
 
 

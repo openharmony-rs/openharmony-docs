@@ -43,7 +43,7 @@ enum EffectErrorCode
 
 定义滤镜效果的状态码。这些状态码在使用滤镜效果相关接口时返回，开发者应根据 返回的状态码判断操作结果并进行相应处理。具体接口的状态码使用说明请参见对应接口文档。
 
-<!--Device-EffectErrorCode--><!--Device-EffectErrorCode-End-->
+<!--Device-enum EffectErrorCode--><!--Device-enum EffectErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -51,10 +51,10 @@ enum EffectErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EFFECT_SUCCESS = 0 | 操作成功完成。 |
-| EFFECT_BAD_PARAMETER = 401 | 参数错误，请检查参数类型和范围。 |
-| EFFECT_UNSUPPORTED_OPERATION = 7600201 | 当前操作不被支持，请检查API使用方式。 |
-| EFFECT_UNKNOWN_ERROR = 7600901 | 发生了未被明确识别的错误，可能原因包括系统资源异常、API调用方式不当等。 建议先检查API调用参数和系统资源状态。 |
+| EFFECT_SUCCESS = 0 | 操作成功完成。<br><!--Device-EFFECT_SUCCESS = 0--><!--Device-EFFECT_SUCCESS = 0-End--> |
+| EFFECT_BAD_PARAMETER = 401 | 参数错误，请检查参数类型和范围。<br><!--Device-EFFECT_BAD_PARAMETER = 401--><!--Device-EFFECT_BAD_PARAMETER = 401-End--> |
+| EFFECT_UNSUPPORTED_OPERATION = 7600201 | 当前操作不被支持，请检查API使用方式。<br><!--Device-EFFECT_UNSUPPORTED_OPERATION = 7600201--><!--Device-EFFECT_UNSUPPORTED_OPERATION = 7600201-End--> |
+| EFFECT_UNKNOWN_ERROR = 7600901 | 发生了未被明确识别的错误，可能原因包括系统资源异常、API调用方式不当等。 建议先检查API调用参数和系统资源状态。<br><!--Device-EFFECT_UNKNOWN_ERROR = 7600901--><!--Device-EFFECT_UNKNOWN_ERROR = 7600901-End--> |
 
 ### EffectTileMode
 
@@ -66,7 +66,7 @@ enum EffectTileMode
 
 定义着色器效果平铺模式的枚举。
 
-<!--Device-EffectTileMode--><!--Device-EffectTileMode-End-->
+<!--Device-enum EffectTileMode--><!--Device-enum EffectTileMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -74,9 +74,9 @@ enum EffectTileMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CLAMP = 0 | 边缘拉伸模式，如果着色器效果超出其原始边界，剩余区域使用着色器的边缘颜色 填充。适用于需要平滑过渡到纯色背景的场景。 |
-| REPEAT | 平铺重复模式，在水平和垂直方向上重复着色器效果。适用于需要无缝平铺纹理 的场景，如背景图案填充。 |
-| MIRROR | 镜像平铺模式，在水平和垂直方向上重复着色器效果，交替镜像图像，以便相邻 图像始终接合。适用于需要连续但避免生硬重复边缘的场景，如渐变背景。 |
-| DECAL | 贴花模式，仅在其原始边界内渲染着色器效果。适用于需要精确控制着色器边界 的场景，边界外保持透明或原有内容。 |
+| CLAMP = 0 | 边缘拉伸模式，如果着色器效果超出其原始边界，剩余区域使用着色器的边缘颜色 填充。适用于需要平滑过渡到纯色背景的场景。<br><!--Device-CLAMP = 0--><!--Device-CLAMP = 0-End--> |
+| REPEAT | 平铺重复模式，在水平和垂直方向上重复着色器效果。适用于需要无缝平铺纹理 的场景，如背景图案填充。<br><!--Device-REPEAT--><!--Device-REPEAT-End--> |
+| MIRROR | 镜像平铺模式，在水平和垂直方向上重复着色器效果，交替镜像图像，以便相邻 图像始终接合。适用于需要连续但避免生硬重复边缘的场景，如渐变背景。<br><!--Device-MIRROR--><!--Device-MIRROR-End--> |
+| DECAL | 贴花模式，仅在其原始边界内渲染着色器效果。适用于需要精确控制着色器边界 的场景，边界外保持透明或原有内容。<br><!--Device-DECAL--><!--Device-DECAL-End--> |
 
 

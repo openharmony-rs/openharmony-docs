@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_PacketController OH_TrafficFilter_PacketControll
 
 ## Overview
 
-Packet controller
+Defines the packet controller.
 
 <!--Device-typedef struct OH_TrafficFilter_PacketController OH_TrafficFilter_PacketController--><!--Device-typedef struct OH_TrafficFilter_PacketController OH_TrafficFilter_PacketController-End-->
 

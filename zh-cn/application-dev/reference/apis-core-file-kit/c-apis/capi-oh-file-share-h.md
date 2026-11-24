@@ -51,7 +51,7 @@ enum FileShare_OperationMode
 
 URI操作模式枚举值。
 
-<!--Device-FileShare_OperationMode--><!--Device-FileShare_OperationMode-End-->
+<!--Device-enum FileShare_OperationMode--><!--Device-enum FileShare_OperationMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -59,8 +59,8 @@ URI操作模式枚举值。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| READ_MODE = 1 << 0 | 读取权限，可单独使用，也可与WRITE_MODE组合使用。 |
-| WRITE_MODE = 1 << 1 | 写入权限，可单独使用，也可与READ_MODE组合使用。 |
+| READ_MODE = 1 << 0 | 读取权限，可单独使用，也可与WRITE_MODE组合使用。<br><!--Device-READ_MODE = 1 << 0--><!--Device-READ_MODE = 1 << 0-End--> |
+| WRITE_MODE = 1 << 1 | 写入权限，可单独使用，也可与READ_MODE组合使用。<br><!--Device-WRITE_MODE = 1 << 1--><!--Device-WRITE_MODE = 1 << 1-End--> |
 
 ### FileShare_PolicyErrorCode
 
@@ -72,7 +72,7 @@ enum FileShare_PolicyErrorCode
 
 授予或激活权限策略失败的URI对应的错误码。
 
-<!--Device-FileShare_PolicyErrorCode--><!--Device-FileShare_PolicyErrorCode-End-->
+<!--Device-enum FileShare_PolicyErrorCode--><!--Device-enum FileShare_PolicyErrorCode-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -80,10 +80,10 @@ enum FileShare_PolicyErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PERSISTENCE_FORBIDDEN = 1 | URI禁止被持久化，例如远端URI不支持持久化。 |
-| INVALID_MODE = 2 | 无效的模式，例如权限模式值不在支持范围内。 |
-| INVALID_PATH = 3 | 无效路径。 |
-| PERMISSION_NOT_PERSISTED = 4 | 权限没有被持久化。 |
+| PERSISTENCE_FORBIDDEN = 1 | URI禁止被持久化，例如远端URI不支持持久化。<br><!--Device-PERSISTENCE_FORBIDDEN = 1--><!--Device-PERSISTENCE_FORBIDDEN = 1-End--> |
+| INVALID_MODE = 2 | 无效的模式，例如权限模式值不在支持范围内。<br><!--Device-INVALID_MODE = 2--><!--Device-INVALID_MODE = 2-End--> |
+| INVALID_PATH = 3 | 无效路径。<br><!--Device-INVALID_PATH = 3--><!--Device-INVALID_PATH = 3-End--> |
+| PERMISSION_NOT_PERSISTED = 4 | 权限没有被持久化。<br><!--Device-PERMISSION_NOT_PERSISTED = 4--><!--Device-PERMISSION_NOT_PERSISTED = 4-End--> |
 
 
 ## 函数说明

@@ -24,8 +24,8 @@ This struct describes a font style.
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | Font weight. |
-| [OH_Drawing_FontWidth](capi-drawing-text-typography-h.md#oh_drawing_fontwidth) width | Font width. |
-| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) slant | Font slant. |
+| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | Font weight.<br><!--Device-OH_Drawing_FontWeight weight--><!--Device-OH_Drawing_FontWeight weight-End--> |
+| [OH_Drawing_FontWidth](capi-drawing-text-typography-h.md#oh_drawing_fontwidth) width | Font width.<br><!--Device-OH_Drawing_FontWidth width--><!--Device-OH_Drawing_FontWidth width-End--> |
+| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) slant | Font slant.<br><!--Device-OH_Drawing_FontStyle slant--><!--Device-OH_Drawing_FontStyle slant-End--> |
 
 

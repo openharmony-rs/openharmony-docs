@@ -24,9 +24,9 @@ typedef struct ArkUI_Margin {...} ArkUI_Margin
 
 | 名称 | 描述 |
 | -- | -- |
-| float top | 上外边距，单位为vp。 |
-| float right | 右外边距，单位为vp。 |
-| float bottom | 下外边距，单位为vp。 |
-| float left | 左外边距，单位为vp。 |
+| float top | 上外边距，单位为vp。<br><!--Device-float top--><!--Device-float top-End--> |
+| float right | 右外边距，单位为vp。<br><!--Device-float right--><!--Device-float right-End--> |
+| float bottom | 下外边距，单位为vp。<br><!--Device-float bottom--><!--Device-float bottom-End--> |
+| float left | 左外边距，单位为vp。<br><!--Device-float left--><!--Device-float left-End--> |
 
 

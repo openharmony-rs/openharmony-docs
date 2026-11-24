@@ -78,7 +78,7 @@ enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType
 
 定义可监听的UI交互事件类型。<br> 各枚举值均为位标志，用于构造传给 [OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionregisterinteractionobserver)的eventMask。
 
-<!--Device-OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType--><!--Device-OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType--><!--Device-enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,16 +86,16 @@ enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | 无事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | 点击手势。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | 点击事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | 长按手势。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | 拖动手势。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | 捏合手势。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | 旋转手势。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | 滑动手势。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | 统一拖拽事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | 原始触摸按下或抬起事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | 无事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | 点击手势。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | 点击事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | 长按手势。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | 拖动手势。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | 捏合手势。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | 旋转手势。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | 滑动手势。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | 统一拖拽事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7-End--> |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | 原始触摸按下或抬起事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8--><!--Device-OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8-End--> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeType
 
@@ -107,7 +107,7 @@ enum OH_ArkUI_NativeModule_UIAgentTreeType
 
 定义UI树采集类型的枚举。
 
-<!--Device-OH_ArkUI_NativeModule_UIAgentTreeType--><!--Device-OH_ArkUI_NativeModule_UIAgentTreeType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIAgentTreeType--><!--Device-enum OH_ArkUI_NativeModule_UIAgentTreeType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,8 +115,8 @@ enum OH_ArkUI_NativeModule_UIAgentTreeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | 采集完整UI树，包括不可见、透明、离屏及被遮挡的节点。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | 采集经过可见性、裁剪、离屏和遮挡过滤后的可见UI树。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | 采集完整UI树，包括不可见、透明、离屏及被遮挡的节点。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | 采集经过可见性、裁剪、离屏和遮挡过滤后的可见UI树。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1-End--> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
@@ -128,7 +128,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
 定义UI内容变化事件类别的枚举。
 
-<!--Device-OH_ArkUI_NativeModule_UIContentChangeEventCategory--><!--Device-OH_ArkUI_NativeModule_UIContentChangeEventCategory-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventCategory--><!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventCategory-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,10 +136,10 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | 页面切换事件，包括Navigation、Router、Swiper和Tabs的切换事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | 滚动事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | 浮层事件，例如模态、菜单或弹窗事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | 所有受支持的事件类别。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | 页面切换事件，包括Navigation、Router、Swiper和Tabs的切换事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | 滚动事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | 浮层事件，例如模态、菜单或弹窗事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | 所有受支持的事件类别。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U-End--> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
@@ -151,7 +151,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
 定义可忽略的UI内容变化事件类型。
 
-<!--Device-OH_ArkUI_NativeModule_UIContentChangeIgnoreType--><!--Device-OH_ArkUI_NativeModule_UIContentChangeIgnoreType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType--><!--Device-enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,9 +159,9 @@ enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | 按指定偏移量滚动（scrollBy）的事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | 滚动到指定位置（scrollTo）的事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast提示事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | 按指定偏移量滚动（scrollBy）的事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0--><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0-End--> |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | 滚动到指定位置（scrollTo）的事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1--><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1-End--> |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast提示事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2--><!--Device-OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2-End--> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventType
 
@@ -173,7 +173,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventType
 
 定义ArkUI状态变化事件类型的枚举。
 
-<!--Device-OH_ArkUI_NativeModule_UIContentChangeEventType--><!--Device-OH_ArkUI_NativeModule_UIContentChangeEventType-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventType--><!--Device-enum OH_ArkUI_NativeModule_UIContentChangeEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,18 +181,18 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | 页面切换开始。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | 页面切换结束。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | 滚动开始。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | 滚动交互及其后续的惯性滚动均已结束。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | 浮层显示完成。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | 浮层消失完成。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | Swiper切换开始。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | Swiper切换完成；如果存在过渡动画，则该动画也已完成。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | Swiper切换中断，并回弹到起始索引。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs切换开始事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs切换结束事件。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Tabs切换开始后被取消，并回弹到切换开始时的索引。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | 页面切换开始。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | 页面切换结束。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | 滚动开始。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | 滚动交互及其后续的惯性滚动均已结束。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | 浮层显示完成。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | 浮层消失完成。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | Swiper切换开始。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | Swiper切换完成；如果存在过渡动画，则该动画也已完成。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | Swiper切换中断，并回弹到起始索引。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs切换开始事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs切换结束事件。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10-End--> |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Tabs切换开始后被取消，并回弹到切换开始时的索引。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11--><!--Device-OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11-End--> |
 
 
 ## 函数说明

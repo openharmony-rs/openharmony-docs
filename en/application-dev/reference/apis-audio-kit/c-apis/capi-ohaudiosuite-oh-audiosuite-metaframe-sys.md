@@ -26,9 +26,9 @@ Define the audio meta data frame structure. This structure is used to pass audio
 
 | Name | Description |
 | -- | -- |
-| void* audioData | Audio data pointer.<br>**Since**: 26.0.0 |
-| int32_t audioDataSize | Audio data size.<br>**Since**: 26.0.0 |
-| void* metaData | Meta data pointer.<br>**Since**: 26.0.0 |
-| int32_t metaDataSize | Meta data size.<br>**Since**: 26.0.0 |
+| void* audioData | Audio data pointer.<br>**Since**: 26.0.0<br><!--Device-void* audioData--><!--Device-void* audioData-End--> |
+| int32_t audioDataSize | Audio data size.<br>**Since**: 26.0.0<br><!--Device-int32_t audioDataSize--><!--Device-int32_t audioDataSize-End--> |
+| void* metaData | Meta data pointer.<br>**Since**: 26.0.0<br><!--Device-void* metaData--><!--Device-void* metaData-End--> |
+| int32_t metaDataSize | Meta data size.<br>**Since**: 26.0.0<br><!--Device-int32_t metaDataSize--><!--Device-int32_t metaDataSize-End--> |
 
 

@@ -120,7 +120,7 @@ enum ArkUI_DragResult
 
 拖拽结果定义，由数据接收方设置，并由系统传递给数据拖出方，拖出方可感知接收方对数据的处理结果。
 
-<!--Device-ArkUI_DragResult--><!--Device-ArkUI_DragResult-End-->
+<!--Device-enum ArkUI_DragResult--><!--Device-enum ArkUI_DragResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,9 +128,9 @@ enum ArkUI_DragResult
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DRAG_RESULT_SUCCESSFUL = 0 | 拖拽处理成功。 |
-| ARKUI_DRAG_RESULT_FAILED | 拖拽处理失败。 |
-| ARKUI_DRAG_RESULT_CANCELED | 拖拽处理取消。 |
+| ARKUI_DRAG_RESULT_SUCCESSFUL = 0 | 拖拽处理成功。<br><!--Device-ARKUI_DRAG_RESULT_SUCCESSFUL = 0--><!--Device-ARKUI_DRAG_RESULT_SUCCESSFUL = 0-End--> |
+| ARKUI_DRAG_RESULT_FAILED | 拖拽处理失败。<br><!--Device-ARKUI_DRAG_RESULT_FAILED--><!--Device-ARKUI_DRAG_RESULT_FAILED-End--> |
+| ARKUI_DRAG_RESULT_CANCELED | 拖拽处理取消。<br><!--Device-ARKUI_DRAG_RESULT_CANCELED--><!--Device-ARKUI_DRAG_RESULT_CANCELED-End--> |
 
 ### ArkUI_DropOperation
 
@@ -142,7 +142,7 @@ enum ArkUI_DropOperation
 
 定义拖拽释放时的数据处理方式，影响角标的显示。当设置为复制行为时角标显示加号，设置为剪切行为时角标不显示加号。
 
-<!--Device-ArkUI_DropOperation--><!--Device-ArkUI_DropOperation-End-->
+<!--Device-enum ArkUI_DropOperation--><!--Device-enum ArkUI_DropOperation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,8 +150,8 @@ enum ArkUI_DropOperation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DROP_OPERATION_COPY = 0 | 复制行为。 |
-| ARKUI_DROP_OPERATION_MOVE | 剪切行为。 |
+| ARKUI_DROP_OPERATION_COPY = 0 | 复制行为。<br><!--Device-ARKUI_DROP_OPERATION_COPY = 0--><!--Device-ARKUI_DROP_OPERATION_COPY = 0-End--> |
+| ARKUI_DROP_OPERATION_MOVE | 剪切行为。<br><!--Device-ARKUI_DROP_OPERATION_MOVE--><!--Device-ARKUI_DROP_OPERATION_MOVE-End--> |
 
 ### ArkUI_PreDragStatus
 
@@ -163,7 +163,7 @@ enum ArkUI_PreDragStatus
 
 定义拖拽发起前的长按交互阶段的变化状态。
 
-<!--Device-ArkUI_PreDragStatus--><!--Device-ArkUI_PreDragStatus-End-->
+<!--Device-enum ArkUI_PreDragStatus--><!--Device-enum ArkUI_PreDragStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,14 +171,14 @@ enum ArkUI_PreDragStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1 | Unknown。 |
-| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING | 拖拽手势启动阶段。 |
-| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG | 拖拽准备完成，可发起拖拽阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED | 拖拽浮起动效发起阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED | 拖拽浮起动效结束阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED | 拖拽落回动效发起阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED | 拖拽落回动效结束阶段。 |
-| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG | 拖拽浮起落位动效中断。 |
+| ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1 | Unknown。<br><!--Device-ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1--><!--Device-ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1-End--> |
+| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING | 拖拽手势启动阶段。<br><!--Device-ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING--><!--Device-ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING-End--> |
+| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG | 拖拽准备完成，可发起拖拽阶段。<br><!--Device-ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG--><!--Device-ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED | 拖拽浮起动效发起阶段。<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED | 拖拽浮起动效结束阶段。<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED | 拖拽落回动效发起阶段。<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED-End--> |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED | 拖拽落回动效结束阶段。<br><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED--><!--Device-ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED-End--> |
+| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG | 拖拽浮起落位动效中断。<br><!--Device-ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG--><!--Device-ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG-End--> |
 
 ### ArkUI_DragPreviewScaleMode
 
@@ -190,7 +190,7 @@ enum ArkUI_DragPreviewScaleMode
 
 拖拽预览缩放模式。
 
-<!--Device-ArkUI_DragPreviewScaleMode--><!--Device-ArkUI_DragPreviewScaleMode-End-->
+<!--Device-enum ArkUI_DragPreviewScaleMode--><!--Device-enum ArkUI_DragPreviewScaleMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -198,8 +198,8 @@ enum ArkUI_DragPreviewScaleMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0 | 系统根据拖拽场景自动改变跟手点位置，根据规则自动对拖拽背板图进行缩放变换等。 |
-| ARKUI_DRAG_PREVIEW_SCALE_DISABLED | 禁用系统对拖拽背板图的缩放行为。 |
+| ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0 | 系统根据拖拽场景自动改变跟手点位置，根据规则自动对拖拽背板图进行缩放变换等。<br><!--Device-ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0--><!--Device-ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0-End--> |
+| ARKUI_DRAG_PREVIEW_SCALE_DISABLED | 禁用系统对拖拽背板图的缩放行为。<br><!--Device-ARKUI_DRAG_PREVIEW_SCALE_DISABLED--><!--Device-ARKUI_DRAG_PREVIEW_SCALE_DISABLED-End--> |
 
 ### ArkUI_DragStatus
 
@@ -211,7 +211,7 @@ enum ArkUI_DragStatus
 
 拖拽状态。
 
-<!--Device-ArkUI_DragStatus--><!--Device-ArkUI_DragStatus-End-->
+<!--Device-enum ArkUI_DragStatus--><!--Device-enum ArkUI_DragStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,9 +219,9 @@ enum ArkUI_DragStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown. |
-| ARKUI_DRAG_STATUS_STARTED | 拖拽开始。 |
-| ARKUI_DRAG_STATUS_ENDED | 拖拽结束。 |
+| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown.<br><!--Device-ARKUI_DRAG_STATUS_UNKNOWN = -1--><!--Device-ARKUI_DRAG_STATUS_UNKNOWN = -1-End--> |
+| ARKUI_DRAG_STATUS_STARTED | 拖拽开始。<br><!--Device-ARKUI_DRAG_STATUS_STARTED--><!--Device-ARKUI_DRAG_STATUS_STARTED-End--> |
+| ARKUI_DRAG_STATUS_ENDED | 拖拽结束。<br><!--Device-ARKUI_DRAG_STATUS_ENDED--><!--Device-ARKUI_DRAG_STATUS_ENDED-End--> |
 
 
 ## 函数说明

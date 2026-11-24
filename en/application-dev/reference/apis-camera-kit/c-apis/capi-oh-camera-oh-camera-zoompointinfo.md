@@ -24,7 +24,7 @@ Describes the zoom point info.
 
 | Name | Description |
 | -- | -- |
-| float zoomRatio | Zoom ratio.<br>**Since**: 26.0.0 |
-| uint32_t equivalentFocalLength | Equivalent focal length.<br>**Since**: 26.0.0 |
+| float zoomRatio | Zoom ratio.<br>**Since**: 26.0.0<br><!--Device-float zoomRatio--><!--Device-float zoomRatio-End--> |
+| uint32_t equivalentFocalLength | Equivalent focal length.<br>**Since**: 26.0.0<br><!--Device-uint32_t equivalentFocalLength--><!--Device-uint32_t equivalentFocalLength-End--> |
 
 

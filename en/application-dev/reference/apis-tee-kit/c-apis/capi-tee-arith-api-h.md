@@ -66,12 +66,12 @@ Provides APIs for operating big integers.
 
 | Name | Description |
 | -- | -- |
-| uint32_t TEE_BigInt | Defines the handle type representing a big integer.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
-| uint32_t TEE_BigIntFMM | Defines the handle of a big integer for Fast Modular Multiplication (FMM).<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
-| uint32_t TEE_BigIntFMMContext | Defines the handle of a context container for FMM operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
-| typedef uint32_t TEE_BigInt | Defines the handle type representing a big integer.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
-| typedef uint32_t TEE_BigIntFMM | Defines the handle of a big integer for Fast Modular Multiplication (FMM).<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
-| typedef uint32_t TEE_BigIntFMMContext | Defines the handle of a context container for FMM operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient |
+| uint32_t TEE_BigInt | Defines the handle type representing a big integer.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-uint32_t TEE_BigInt--><!--Device-uint32_t TEE_BigInt-End--> |
+| uint32_t TEE_BigIntFMM | Defines the handle of a big integer for Fast Modular Multiplication (FMM).<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-uint32_t TEE_BigIntFMM--><!--Device-uint32_t TEE_BigIntFMM-End--> |
+| uint32_t TEE_BigIntFMMContext | Defines the handle of a context container for FMM operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-uint32_t TEE_BigIntFMMContext--><!--Device-uint32_t TEE_BigIntFMMContext-End--> |
+| typedef uint32_t TEE_BigInt | Defines the handle type representing a big integer.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-typedef uint32_t TEE_BigInt--><!--Device-typedef uint32_t TEE_BigInt-End--> |
+| typedef uint32_t TEE_BigIntFMM | Defines the handle of a big integer for Fast Modular Multiplication (FMM).<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-typedef uint32_t TEE_BigIntFMM--><!--Device-typedef uint32_t TEE_BigIntFMM-End--> |
+| typedef uint32_t TEE_BigIntFMMContext | Defines the handle of a context container for FMM operations.<br>**Since**: 20<br>**System capability**: SystemCapability.Tee.TeeClient<br><!--Device-typedef uint32_t TEE_BigIntFMMContext--><!--Device-typedef uint32_t TEE_BigIntFMMContext-End--> |
 
 ## Function description
 

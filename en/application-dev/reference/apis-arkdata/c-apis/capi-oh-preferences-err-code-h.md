@@ -32,7 +32,7 @@ enum OH_Preferences_ErrCode
 
 Enumerates the error codes.
 
-<!--Device-OH_Preferences_ErrCode--><!--Device-OH_Preferences_ErrCode-End-->
+<!--Device-enum OH_Preferences_ErrCode--><!--Device-enum OH_Preferences_ErrCode-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -40,14 +40,14 @@ Enumerates the error codes.
 
 | Enum item | Description |
 | -- | -- |
-| PREFERENCES_OK = 0 | The operation is successful. |
-| PREFERENCES_ERROR_INVALID_PARAM = 401 | &nbsp;Invalid args. |
-| PREFERENCES_ERROR_NOT_SUPPORTED = 801 | &nbsp;Capability not supported. |
-| PREFERENCES_ERROR_BASE = 15500000 | &nbsp;Base error code. |
-| PREFERENCES_ERROR_DELETE_FILE = 15500010 | &nbsp;Failed to delete a file. |
-| PREFERENCES_ERROR_STORAGE = 15500011 | &nbsp;Storage error. |
-| PREFERENCES_ERROR_MALLOC = 15500012 | &nbsp;Failed to malloc memory. |
-| PREFERENCES_ERROR_KEY_NOT_FOUND = 15500013 | &nbsp;Key not found error. |
-| PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT = 15500019 | &nbsp;Failed to get DataObsMgrClient. |
+| PREFERENCES_OK = 0 | The operation is successful.<br><!--Device-PREFERENCES_OK = 0--><!--Device-PREFERENCES_OK = 0-End--> |
+| PREFERENCES_ERROR_INVALID_PARAM = 401 | &nbsp;Invalid args.<br><!--Device-PREFERENCES_ERROR_INVALID_PARAM = 401--><!--Device-PREFERENCES_ERROR_INVALID_PARAM = 401-End--> |
+| PREFERENCES_ERROR_NOT_SUPPORTED = 801 | &nbsp;Capability not supported.<br><!--Device-PREFERENCES_ERROR_NOT_SUPPORTED = 801--><!--Device-PREFERENCES_ERROR_NOT_SUPPORTED = 801-End--> |
+| PREFERENCES_ERROR_BASE = 15500000 | &nbsp;Base error code.<br><!--Device-PREFERENCES_ERROR_BASE = 15500000--><!--Device-PREFERENCES_ERROR_BASE = 15500000-End--> |
+| PREFERENCES_ERROR_DELETE_FILE = 15500010 | &nbsp;Failed to delete a file.<br><!--Device-PREFERENCES_ERROR_DELETE_FILE = 15500010--><!--Device-PREFERENCES_ERROR_DELETE_FILE = 15500010-End--> |
+| PREFERENCES_ERROR_STORAGE = 15500011 | &nbsp;Storage error.<br><!--Device-PREFERENCES_ERROR_STORAGE = 15500011--><!--Device-PREFERENCES_ERROR_STORAGE = 15500011-End--> |
+| PREFERENCES_ERROR_MALLOC = 15500012 | &nbsp;Failed to malloc memory.<br><!--Device-PREFERENCES_ERROR_MALLOC = 15500012--><!--Device-PREFERENCES_ERROR_MALLOC = 15500012-End--> |
+| PREFERENCES_ERROR_KEY_NOT_FOUND = 15500013 | &nbsp;Key not found error.<br><!--Device-PREFERENCES_ERROR_KEY_NOT_FOUND = 15500013--><!--Device-PREFERENCES_ERROR_KEY_NOT_FOUND = 15500013-End--> |
+| PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT = 15500019 | &nbsp;Failed to get DataObsMgrClient.<br><!--Device-PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT = 15500019--><!--Device-PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT = 15500019-End--> |
 
 

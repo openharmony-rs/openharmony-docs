@@ -24,7 +24,7 @@ Indicates the color x and y.
 
 | Name | Description |
 | -- | -- |
-| float x | color X |
-| float y | color Y |
+| float x | color X<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | color Y<br><!--Device-float y--><!--Device-float y-End--> |
 
 

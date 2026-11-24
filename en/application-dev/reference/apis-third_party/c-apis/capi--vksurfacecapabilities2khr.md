@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkSurfaceCapabilitiesKHR](capi--vksurfacecapabilitieskhr.md) surfaceCapabilities |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkSurfaceCapabilitiesKHR](capi--vksurfacecapabilitieskhr.md) surfaceCapabilities | <!--Device-VkSurfaceCapabilitiesKHR surfaceCapabilities--><!--Device-VkSurfaceCapabilitiesKHR surfaceCapabilities-End--> |
 
 

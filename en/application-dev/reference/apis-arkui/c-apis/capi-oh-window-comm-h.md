@@ -54,7 +54,7 @@ enum WindowManager_ErrorCode
 
 Enumerates the status codes returned by the window manager interface.
 
-<!--Device-WindowManager_ErrorCode--><!--Device-WindowManager_ErrorCode-End-->
+<!--Device-enum WindowManager_ErrorCode--><!--Device-enum WindowManager_ErrorCode-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -62,21 +62,21 @@ Enumerates the status codes returned by the window manager interface.
 
 | Enum item | Description |
 | -- | -- |
-| OK = 0 | Successful. |
-| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 | No permission.<br>**Since**: 15 |
-| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | Invalid parameter.<br>**Since**: 15 |
-| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | Not supported by the device.<br>**Since**: 15 |
-| INVAILD_WINDOW_ID = 1000 | Invalid window ID. |
-| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | Invalid window ID.<br>**Since**: 26.0.0 |
-| SERVICE_ERROR = 2000 | Service error. |
-| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | Abnormal window status.<br>**Since**: 15 |
-| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | Abnormal window manager service.<br>**Since**: 15 |
-| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 | Failed to destroy the PiP window.<br>**Since**: 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 | Abnormal PiP status.<br>**Since**: 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 | Failed to create the PiP window.<br>**Since**: 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 | An internal error occurs in PiP. Possible causes:<br>1. The window on which the PiP feature depends is abnormal. For example, the window is empty. 2. The PiP controller is abnormal.<br>**Since**: 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 | Repeated PiP operation.<br>**Since**: 20 |
-| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 | Incorrect parameter. Possible causes:<br>1. The parameter value range is invalid. 2. The number of parameters is invalid. 3. The parameter type is invalid.<br>**Since**: 20 |
+| OK = 0 | Successful.<br><!--Device-OK = 0--><!--Device-OK = 0-End--> |
+| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 | No permission.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201--><!--Device-WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201-End--> |
+| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | Invalid parameter.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401--><!--Device-WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401-End--> |
+| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | Not supported by the device.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801--><!--Device-WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801-End--> |
+| INVAILD_WINDOW_ID = 1000 | Invalid window ID.<br><!--Device-INVAILD_WINDOW_ID = 1000--><!--Device-INVAILD_WINDOW_ID = 1000-End--> |
+| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | Invalid window ID.<br>**Since**: 26.0.0<br><!--Device-INVALID_WINDOW_ID = INVAILD_WINDOW_ID--><!--Device-INVALID_WINDOW_ID = INVAILD_WINDOW_ID-End--> |
+| SERVICE_ERROR = 2000 | Service error.<br><!--Device-SERVICE_ERROR = 2000--><!--Device-SERVICE_ERROR = 2000-End--> |
+| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | Abnormal window status.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002--><!--Device-WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002-End--> |
+| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | Abnormal window manager service.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003--><!--Device-WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 | Failed to destroy the PiP window.<br>**Since**: 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 | Abnormal PiP status.<br>**Since**: 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 | Failed to create the PiP window.<br>**Since**: 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 | An internal error occurs in PiP. Possible causes:<br>1. The window on which the PiP feature depends is abnormal. For example, the window is empty. 2. The PiP controller is abnormal.<br>**Since**: 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 | Repeated PiP operation.<br>**Since**: 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015-End--> |
+| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 | Incorrect parameter. Possible causes:<br>1. The parameter value range is invalid. 2. The number of parameters is invalid. 3. The parameter type is invalid.<br>**Since**: 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016--><!--Device-WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016-End--> |
 
 ### WindowManager_AvoidAreaType
 
@@ -88,7 +88,7 @@ enum WindowManager_AvoidAreaType
 
 Enumerates the avoid area types.
 
-<!--Device-WindowManager_AvoidAreaType--><!--Device-WindowManager_AvoidAreaType-End-->
+<!--Device-enum WindowManager_AvoidAreaType--><!--Device-enum WindowManager_AvoidAreaType-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -96,11 +96,11 @@ Enumerates the avoid area types.
 
 | Enum item | Description |
 | -- | -- |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0 | System avoid area. |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1 | Cutout area. |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2 | System gesture area. |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3 | Keyboard area. |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4 | Navigation bar area. |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0 | System avoid area.<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1 | Cutout area.<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2 | System gesture area.<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3 | Keyboard area.<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4 | Navigation bar area.<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4-End--> |
 
 ### WindowManager_WindowType
 
@@ -112,7 +112,7 @@ enum WindowManager_WindowType
 
 Enumerates the window types.
 
-<!--Device-WindowManager_WindowType--><!--Device-WindowManager_WindowType-End-->
+<!--Device-enum WindowManager_WindowType--><!--Device-enum WindowManager_WindowType-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -120,10 +120,10 @@ Enumerates the window types.
 
 | Enum item | Description |
 | -- | -- |
-| WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | Child window.<br>**Since**: 15 |
-| WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | Main window.<br>**Since**: 15 |
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Global float window.<br>**Since**: 15 |
-| WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | Modal window.<br>**Since**: 15 |
+| WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | Child window.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_APP = 0--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_APP = 0-End--> |
+| WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | Main window.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1-End--> |
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Global float window.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8-End--> |
+| WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | Modal window.<br>**Since**: 15<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16-End--> |
 
 
 ## Function description

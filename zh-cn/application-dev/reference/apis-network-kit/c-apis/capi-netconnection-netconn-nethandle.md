@@ -24,6 +24,6 @@ typedef struct NetConn_NetHandle {...} NetConn_NetHandle
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t netId | 网络标识符。 |
+| int32_t netId | 网络标识符。<br><!--Device-int32_t netId--><!--Device-int32_t netId-End--> |
 
 

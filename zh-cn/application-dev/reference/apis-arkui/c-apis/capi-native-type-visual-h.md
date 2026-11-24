@@ -153,7 +153,7 @@ enum ArkUI_ShadowType
 
 定义阴影类型枚举值。
 
-<!--Device-ArkUI_ShadowType--><!--Device-ArkUI_ShadowType-End-->
+<!--Device-enum ArkUI_ShadowType--><!--Device-enum ArkUI_ShadowType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,8 +161,8 @@ enum ArkUI_ShadowType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHADOW_TYPE_COLOR = 0 | 彩色阴影。 |
-| ARKUI_SHADOW_TYPE_BLUR | 模糊阴影。 |
+| ARKUI_SHADOW_TYPE_COLOR = 0 | 彩色阴影。<br><!--Device-ARKUI_SHADOW_TYPE_COLOR = 0--><!--Device-ARKUI_SHADOW_TYPE_COLOR = 0-End--> |
+| ARKUI_SHADOW_TYPE_BLUR | 模糊阴影。<br><!--Device-ARKUI_SHADOW_TYPE_BLUR--><!--Device-ARKUI_SHADOW_TYPE_BLUR-End--> |
 
 ### ArkUI_ShadowStyle
 
@@ -174,7 +174,7 @@ enum ArkUI_ShadowStyle
 
 阴影效果枚举值。
 
-<!--Device-ArkUI_ShadowStyle--><!--Device-ArkUI_ShadowStyle-End-->
+<!--Device-enum ArkUI_ShadowStyle--><!--Device-enum ArkUI_ShadowStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,12 +182,12 @@ enum ArkUI_ShadowStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | 超小阴影。<br>!defaultxs |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM | 小阴影。<br>!defaultsm |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD | 中阴影。<br>!defaultmd |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG | 大阴影。<br>!defaultlg |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM | 浮动小阴影。<br>!floatingsm |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD | 浮动中阴影。<br>!floatingmd |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | 超小阴影。<br>!defaultxs<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM | 小阴影。<br>!defaultsm<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD | 中阴影。<br>!defaultmd<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG | 大阴影。<br>!defaultlg<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM | 浮动小阴影。<br>!floatingsm<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM--><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD | 浮动中阴影。<br>!floatingmd<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD--><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD-End--> |
 
 ### ArkUI_AnimationCurve
 
@@ -199,7 +199,7 @@ enum ArkUI_AnimationCurve
 
 动画曲线枚举值。
 
-<!--Device-ArkUI_AnimationCurve--><!--Device-ArkUI_AnimationCurve-End-->
+<!--Device-enum ArkUI_AnimationCurve--><!--Device-enum ArkUI_AnimationCurve-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,19 +207,19 @@ enum ArkUI_AnimationCurve
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CURVE_LINEAR = 0 | 动画从头到尾的速度都是相同。 |
-| ARKUI_CURVE_EASE | 动画以低速开始，然后加快，在结束前变慢。 |
-| ARKUI_CURVE_EASE_IN | 动画以低速开始。 |
-| ARKUI_CURVE_EASE_OUT | 动画以低速结束。 |
-| ARKUI_CURVE_EASE_IN_OUT | 动画以低速开始和结束，提供平滑自然的动画过渡效果。 |
-| ARKUI_CURVE_FAST_OUT_SLOW_IN | 动画标准曲线。 |
-| ARKUI_CURVE_LINEAR_OUT_SLOW_IN | 动画减速曲线。 |
-| ARKUI_CURVE_FAST_OUT_LINEAR_IN | 动画加速曲线。 |
-| ARKUI_CURVE_EXTREME_DECELERATION | 动画急缓曲线。 |
-| ARKUI_CURVE_SHARP | 动画锐利曲线。 |
-| ARKUI_CURVE_RHYTHM | 动画节奏曲线。 |
-| ARKUI_CURVE_SMOOTH | 动画平滑曲线。 |
-| ARKUI_CURVE_FRICTION | 动画阻尼曲线。 |
+| ARKUI_CURVE_LINEAR = 0 | 动画从头到尾的速度都是相同。<br><!--Device-ARKUI_CURVE_LINEAR = 0--><!--Device-ARKUI_CURVE_LINEAR = 0-End--> |
+| ARKUI_CURVE_EASE | 动画以低速开始，然后加快，在结束前变慢。<br><!--Device-ARKUI_CURVE_EASE--><!--Device-ARKUI_CURVE_EASE-End--> |
+| ARKUI_CURVE_EASE_IN | 动画以低速开始。<br><!--Device-ARKUI_CURVE_EASE_IN--><!--Device-ARKUI_CURVE_EASE_IN-End--> |
+| ARKUI_CURVE_EASE_OUT | 动画以低速结束。<br><!--Device-ARKUI_CURVE_EASE_OUT--><!--Device-ARKUI_CURVE_EASE_OUT-End--> |
+| ARKUI_CURVE_EASE_IN_OUT | 动画以低速开始和结束，提供平滑自然的动画过渡效果。<br><!--Device-ARKUI_CURVE_EASE_IN_OUT--><!--Device-ARKUI_CURVE_EASE_IN_OUT-End--> |
+| ARKUI_CURVE_FAST_OUT_SLOW_IN | 动画标准曲线。<br><!--Device-ARKUI_CURVE_FAST_OUT_SLOW_IN--><!--Device-ARKUI_CURVE_FAST_OUT_SLOW_IN-End--> |
+| ARKUI_CURVE_LINEAR_OUT_SLOW_IN | 动画减速曲线。<br><!--Device-ARKUI_CURVE_LINEAR_OUT_SLOW_IN--><!--Device-ARKUI_CURVE_LINEAR_OUT_SLOW_IN-End--> |
+| ARKUI_CURVE_FAST_OUT_LINEAR_IN | 动画加速曲线。<br><!--Device-ARKUI_CURVE_FAST_OUT_LINEAR_IN--><!--Device-ARKUI_CURVE_FAST_OUT_LINEAR_IN-End--> |
+| ARKUI_CURVE_EXTREME_DECELERATION | 动画急缓曲线。<br><!--Device-ARKUI_CURVE_EXTREME_DECELERATION--><!--Device-ARKUI_CURVE_EXTREME_DECELERATION-End--> |
+| ARKUI_CURVE_SHARP | 动画锐利曲线。<br><!--Device-ARKUI_CURVE_SHARP--><!--Device-ARKUI_CURVE_SHARP-End--> |
+| ARKUI_CURVE_RHYTHM | 动画节奏曲线。<br><!--Device-ARKUI_CURVE_RHYTHM--><!--Device-ARKUI_CURVE_RHYTHM-End--> |
+| ARKUI_CURVE_SMOOTH | 动画平滑曲线。<br><!--Device-ARKUI_CURVE_SMOOTH--><!--Device-ARKUI_CURVE_SMOOTH-End--> |
+| ARKUI_CURVE_FRICTION | 动画阻尼曲线。<br><!--Device-ARKUI_CURVE_FRICTION--><!--Device-ARKUI_CURVE_FRICTION-End--> |
 
 ### ArkUI_AnimationPlayMode
 
@@ -231,7 +231,7 @@ enum ArkUI_AnimationPlayMode
 
 定义动画播放模式。
 
-<!--Device-ArkUI_AnimationPlayMode--><!--Device-ArkUI_AnimationPlayMode-End-->
+<!--Device-enum ArkUI_AnimationPlayMode--><!--Device-enum ArkUI_AnimationPlayMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,10 +239,10 @@ enum ArkUI_AnimationPlayMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | 动画正向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_REVERSE | 动画反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | 动画正向播放。<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0--><!--Device-ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0-End--> |
+| ARKUI_ANIMATION_PLAY_MODE_REVERSE | 动画反向播放。<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_REVERSE--><!--Device-ARKUI_ANIMATION_PLAY_MODE_REVERSE-End--> |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE--><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE-End--> |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE--><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE-End--> |
 
 ### ArkUI_BlurStyle
 
@@ -254,7 +254,7 @@ enum ArkUI_BlurStyle
 
 定义背景模糊样式。
 
-<!--Device-ArkUI_BlurStyle--><!--Device-ArkUI_BlurStyle-End-->
+<!--Device-enum ArkUI_BlurStyle--><!--Device-enum ArkUI_BlurStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -262,19 +262,19 @@ enum ArkUI_BlurStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLUR_STYLE_THIN = 0 | 轻薄材质模糊。<br>!thin |
-| ARKUI_BLUR_STYLE_REGULAR | 普通厚度材质模糊。<br>!regular |
-| ARKUI_BLUR_STYLE_THICK | 厚材质模糊。<br>!thick |
-| ARKUI_BLUR_STYLE_BACKGROUND_THIN | 近距景深模糊。<br>!backgroundthin |
-| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR | 中距景深模糊。<br>!backgroundregular |
-| ARKUI_BLUR_STYLE_BACKGROUND_THICK | 远距景深模糊。<br>!backgroundthick |
-| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK | 超远距景深模糊。<br>!backgroundultrathick |
-| ARKUI_BLUR_STYLE_NONE | 关闭模糊。<br>!none |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN | 组件超轻薄材质模糊。<br>!componentultrathin |
-| ARKUI_BLUR_STYLE_COMPONENT_THIN | 组件轻薄材质模糊。<br>!componentthin |
-| ARKUI_BLUR_STYLE_COMPONENT_REGULAR | 组件普通材质模糊。<br>!componentregular |
-| ARKUI_BLUR_STYLE_COMPONENT_THICK | 组件厚材质模糊。<br>!componentthick |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK | 组件超厚材质模糊。<br>!componentultrathick |
+| ARKUI_BLUR_STYLE_THIN = 0 | 轻薄材质模糊。<br>!thin<br><!--Device-ARKUI_BLUR_STYLE_THIN = 0--><!--Device-ARKUI_BLUR_STYLE_THIN = 0-End--> |
+| ARKUI_BLUR_STYLE_REGULAR | 普通厚度材质模糊。<br>!regular<br><!--Device-ARKUI_BLUR_STYLE_REGULAR--><!--Device-ARKUI_BLUR_STYLE_REGULAR-End--> |
+| ARKUI_BLUR_STYLE_THICK | 厚材质模糊。<br>!thick<br><!--Device-ARKUI_BLUR_STYLE_THICK--><!--Device-ARKUI_BLUR_STYLE_THICK-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_THIN | 近距景深模糊。<br>!backgroundthin<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THIN--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THIN-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR | 中距景深模糊。<br>!backgroundregular<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_REGULAR--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_REGULAR-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_THICK | 远距景深模糊。<br>!backgroundthick<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THICK--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THICK-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK | 超远距景深模糊。<br>!backgroundultrathick<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK-End--> |
+| ARKUI_BLUR_STYLE_NONE | 关闭模糊。<br>!none<br><!--Device-ARKUI_BLUR_STYLE_NONE--><!--Device-ARKUI_BLUR_STYLE_NONE-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN | 组件超轻薄材质模糊。<br>!componentultrathin<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_THIN | 组件轻薄材质模糊。<br>!componentthin<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THIN--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THIN-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_REGULAR | 组件普通材质模糊。<br>!componentregular<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_REGULAR--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_REGULAR-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_THICK | 组件厚材质模糊。<br>!componentthick<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THICK--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THICK-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK | 组件超厚材质模糊。<br>!componentultrathick<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK-End--> |
 
 ### ArkUI_BlurStyleActivePolicy
 
@@ -286,7 +286,7 @@ enum ArkUI_BlurStyleActivePolicy
 
 定义背景模糊激活策略。
 
-<!--Device-ArkUI_BlurStyleActivePolicy--><!--Device-ArkUI_BlurStyleActivePolicy-End-->
+<!--Device-enum ArkUI_BlurStyleActivePolicy--><!--Device-enum ArkUI_BlurStyleActivePolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,9 +294,9 @@ enum ArkUI_BlurStyleActivePolicy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | 模糊效果跟随窗口焦点状态变化，非焦点不模糊，焦点模糊。 |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | 一直有模糊效果。 |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | 一直无模糊效果。 |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | 模糊效果跟随窗口焦点状态变化，非焦点不模糊，焦点模糊。<br><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0--><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0-End--> |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | 一直有模糊效果。<br><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE--><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE-End--> |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | 一直无模糊效果。<br><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE--><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE-End--> |
 
 ### ArkUI_BlendMode
 
@@ -308,7 +308,7 @@ enum ArkUI_BlendMode
 
 混合模式枚举值。
 
-<!--Device-ArkUI_BlendMode--><!--Device-ArkUI_BlendMode-End-->
+<!--Device-enum ArkUI_BlendMode--><!--Device-enum ArkUI_BlendMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,36 +316,36 @@ enum ArkUI_BlendMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLEND_MODE_NONE = 0 | 将上层图像直接覆盖到下层图像上，不进行任何混合操作。 |
-| ARKUI_BLEND_MODE_CLEAR | 将源像素覆盖的目标像素清除为完全透明。 |
-| ARKUI_BLEND_MODE_SRC | r = s，只显示源像素。 |
-| ARKUI_BLEND_MODE_DST | r = d，只显示目标像素。 |
-| ARKUI_BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d，将源像素按照透明度进行混合，覆盖在目标像素上。 |
-| ARKUI_BLEND_MODE_DST_OVER | r = d + (1 - da) * s，将目标像素按照透明度进行混合，覆盖在源像素上。 |
-| ARKUI_BLEND_MODE_SRC_IN | r = s * da，只显示源像素中与目标像素重叠的部分。 |
-| ARKUI_BLEND_MODE_DST_IN | r = d * sa，只显示目标像素中与源像素重叠的部分。 |
-| ARKUI_BLEND_MODE_SRC_OUT | r = s * (1 - da)，只显示源像素中与目标像素不重叠的部分。 |
-| ARKUI_BLEND_MODE_DST_OUT | r = d * (1 - sa)，只显示目标像素中与源像素不重叠的部分。 |
-| ARKUI_BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa)，在源像素和目标像素重叠的地方绘制源像素，在源像素和目标像素不重叠的地方绘制目标像素。 |
-| ARKUI_BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da)，在源像素和目标像素重叠的地方绘制目标像素，在源像素和目标像素不重叠的地方绘制源像素。 |
-| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa)，只显示源像素与目标像素不重叠的部分。 |
-| ARKUI_BLEND_MODE_PLUS | r = min(s + d, 1)，将源像素值与目标像素值相加，并将结果作为新的像素值。 |
-| ARKUI_BLEND_MODE_MODULATE | r = s * d，将源像素与目标像素进行乘法运算，并将结果作为新的像素值。 |
-| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d，将两个图像的像素值相加，然后减去它们的乘积来实现混合。 |
-| ARKUI_BLEND_MODE_OVERLAY | 根据目标像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。 |
-| ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver，当两个颜色重叠时，较暗的颜色会覆盖较亮的颜色。 |
-| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver，将源图像和目标图像中的像素进行比较，选取两者中较亮的像素作为最终的混合结果。 |
-| ARKUI_BLEND_MODE_COLOR_DODGE | 使目标像素变得更亮来反映源像素。 |
-| ARKUI_BLEND_MODE_COLOR_BURN | 使目标像素变得更暗来反映源像素。 |
-| ARKUI_BLEND_MODE_HARD_LIGHT | 根据源像素的值来决定目标像素变得更亮或者更暗。根据源像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。 |
-| ARKUI_BLEND_MODE_SOFT_LIGHT | 根据源像素来决定使用LIGHTEN混合模式还是DARKEN混合模式。 |
-| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生高对比度的效果。 |
-| ARKUI_BLEND_MODE_EXCLUSION | rc = s + d - 2 * (s * d), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生柔和的效果。 |
-| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d，将源图像与目标图像进行乘法混合，得到一张新的图像。 |
-| ARKUI_BLEND_MODE_HUE | 保留源图像的亮度和饱和度，但会使用目标图像的色调来替换源图像的色调。 |
-| ARKUI_BLEND_MODE_SATURATION | 保留目标像素的亮度和色调，但会使用源像素的饱和度来替换目标像素的饱和度。 |
-| ARKUI_BLEND_MODE_COLOR | 保留源像素的饱和度和色调，但会使用目标像素的亮度来替换源像素的亮度。 |
-| ARKUI_BLEND_MODE_LUMINOSITY | 保留目标像素的色调和饱和度，但会用源像素的亮度替换目标像素的亮度。 |
+| ARKUI_BLEND_MODE_NONE = 0 | 将上层图像直接覆盖到下层图像上，不进行任何混合操作。<br><!--Device-ARKUI_BLEND_MODE_NONE = 0--><!--Device-ARKUI_BLEND_MODE_NONE = 0-End--> |
+| ARKUI_BLEND_MODE_CLEAR | 将源像素覆盖的目标像素清除为完全透明。<br><!--Device-ARKUI_BLEND_MODE_CLEAR--><!--Device-ARKUI_BLEND_MODE_CLEAR-End--> |
+| ARKUI_BLEND_MODE_SRC | r = s，只显示源像素。<br><!--Device-ARKUI_BLEND_MODE_SRC--><!--Device-ARKUI_BLEND_MODE_SRC-End--> |
+| ARKUI_BLEND_MODE_DST | r = d，只显示目标像素。<br><!--Device-ARKUI_BLEND_MODE_DST--><!--Device-ARKUI_BLEND_MODE_DST-End--> |
+| ARKUI_BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d，将源像素按照透明度进行混合，覆盖在目标像素上。<br><!--Device-ARKUI_BLEND_MODE_SRC_OVER--><!--Device-ARKUI_BLEND_MODE_SRC_OVER-End--> |
+| ARKUI_BLEND_MODE_DST_OVER | r = d + (1 - da) * s，将目标像素按照透明度进行混合，覆盖在源像素上。<br><!--Device-ARKUI_BLEND_MODE_DST_OVER--><!--Device-ARKUI_BLEND_MODE_DST_OVER-End--> |
+| ARKUI_BLEND_MODE_SRC_IN | r = s * da，只显示源像素中与目标像素重叠的部分。<br><!--Device-ARKUI_BLEND_MODE_SRC_IN--><!--Device-ARKUI_BLEND_MODE_SRC_IN-End--> |
+| ARKUI_BLEND_MODE_DST_IN | r = d * sa，只显示目标像素中与源像素重叠的部分。<br><!--Device-ARKUI_BLEND_MODE_DST_IN--><!--Device-ARKUI_BLEND_MODE_DST_IN-End--> |
+| ARKUI_BLEND_MODE_SRC_OUT | r = s * (1 - da)，只显示源像素中与目标像素不重叠的部分。<br><!--Device-ARKUI_BLEND_MODE_SRC_OUT--><!--Device-ARKUI_BLEND_MODE_SRC_OUT-End--> |
+| ARKUI_BLEND_MODE_DST_OUT | r = d * (1 - sa)，只显示目标像素中与源像素不重叠的部分。<br><!--Device-ARKUI_BLEND_MODE_DST_OUT--><!--Device-ARKUI_BLEND_MODE_DST_OUT-End--> |
+| ARKUI_BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa)，在源像素和目标像素重叠的地方绘制源像素，在源像素和目标像素不重叠的地方绘制目标像素。<br><!--Device-ARKUI_BLEND_MODE_SRC_ATOP--><!--Device-ARKUI_BLEND_MODE_SRC_ATOP-End--> |
+| ARKUI_BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da)，在源像素和目标像素重叠的地方绘制目标像素，在源像素和目标像素不重叠的地方绘制源像素。<br><!--Device-ARKUI_BLEND_MODE_DST_ATOP--><!--Device-ARKUI_BLEND_MODE_DST_ATOP-End--> |
+| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa)，只显示源像素与目标像素不重叠的部分。<br><!--Device-ARKUI_BLEND_MODE_XOR--><!--Device-ARKUI_BLEND_MODE_XOR-End--> |
+| ARKUI_BLEND_MODE_PLUS | r = min(s + d, 1)，将源像素值与目标像素值相加，并将结果作为新的像素值。<br><!--Device-ARKUI_BLEND_MODE_PLUS--><!--Device-ARKUI_BLEND_MODE_PLUS-End--> |
+| ARKUI_BLEND_MODE_MODULATE | r = s * d，将源像素与目标像素进行乘法运算，并将结果作为新的像素值。<br><!--Device-ARKUI_BLEND_MODE_MODULATE--><!--Device-ARKUI_BLEND_MODE_MODULATE-End--> |
+| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d，将两个图像的像素值相加，然后减去它们的乘积来实现混合。<br><!--Device-ARKUI_BLEND_MODE_SCREEN--><!--Device-ARKUI_BLEND_MODE_SCREEN-End--> |
+| ARKUI_BLEND_MODE_OVERLAY | 根据目标像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。<br><!--Device-ARKUI_BLEND_MODE_OVERLAY--><!--Device-ARKUI_BLEND_MODE_OVERLAY-End--> |
+| ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver，当两个颜色重叠时，较暗的颜色会覆盖较亮的颜色。<br><!--Device-ARKUI_BLEND_MODE_DARKEN--><!--Device-ARKUI_BLEND_MODE_DARKEN-End--> |
+| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver，将源图像和目标图像中的像素进行比较，选取两者中较亮的像素作为最终的混合结果。<br><!--Device-ARKUI_BLEND_MODE_LIGHTEN--><!--Device-ARKUI_BLEND_MODE_LIGHTEN-End--> |
+| ARKUI_BLEND_MODE_COLOR_DODGE | 使目标像素变得更亮来反映源像素。<br><!--Device-ARKUI_BLEND_MODE_COLOR_DODGE--><!--Device-ARKUI_BLEND_MODE_COLOR_DODGE-End--> |
+| ARKUI_BLEND_MODE_COLOR_BURN | 使目标像素变得更暗来反映源像素。<br><!--Device-ARKUI_BLEND_MODE_COLOR_BURN--><!--Device-ARKUI_BLEND_MODE_COLOR_BURN-End--> |
+| ARKUI_BLEND_MODE_HARD_LIGHT | 根据源像素的值来决定目标像素变得更亮或者更暗。根据源像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。<br><!--Device-ARKUI_BLEND_MODE_HARD_LIGHT--><!--Device-ARKUI_BLEND_MODE_HARD_LIGHT-End--> |
+| ARKUI_BLEND_MODE_SOFT_LIGHT | 根据源像素来决定使用LIGHTEN混合模式还是DARKEN混合模式。<br><!--Device-ARKUI_BLEND_MODE_SOFT_LIGHT--><!--Device-ARKUI_BLEND_MODE_SOFT_LIGHT-End--> |
+| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生高对比度的效果。<br><!--Device-ARKUI_BLEND_MODE_DIFFERENCE--><!--Device-ARKUI_BLEND_MODE_DIFFERENCE-End--> |
+| ARKUI_BLEND_MODE_EXCLUSION | rc = s + d - 2 * (s * d), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生柔和的效果。<br><!--Device-ARKUI_BLEND_MODE_EXCLUSION--><!--Device-ARKUI_BLEND_MODE_EXCLUSION-End--> |
+| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d，将源图像与目标图像进行乘法混合，得到一张新的图像。<br><!--Device-ARKUI_BLEND_MODE_MULTIPLY--><!--Device-ARKUI_BLEND_MODE_MULTIPLY-End--> |
+| ARKUI_BLEND_MODE_HUE | 保留源图像的亮度和饱和度，但会使用目标图像的色调来替换源图像的色调。<br><!--Device-ARKUI_BLEND_MODE_HUE--><!--Device-ARKUI_BLEND_MODE_HUE-End--> |
+| ARKUI_BLEND_MODE_SATURATION | 保留目标像素的亮度和色调，但会使用源像素的饱和度来替换目标像素的饱和度。<br><!--Device-ARKUI_BLEND_MODE_SATURATION--><!--Device-ARKUI_BLEND_MODE_SATURATION-End--> |
+| ARKUI_BLEND_MODE_COLOR | 保留源像素的饱和度和色调，但会使用目标像素的亮度来替换源像素的亮度。<br><!--Device-ARKUI_BLEND_MODE_COLOR--><!--Device-ARKUI_BLEND_MODE_COLOR-End--> |
+| ARKUI_BLEND_MODE_LUMINOSITY | 保留目标像素的色调和饱和度，但会用源像素的亮度替换目标像素的亮度。<br><!--Device-ARKUI_BLEND_MODE_LUMINOSITY--><!--Device-ARKUI_BLEND_MODE_LUMINOSITY-End--> |
 
 ### ArkUI_ColorStrategy
 
@@ -357,7 +357,7 @@ enum ArkUI_ColorStrategy
 
 前景和阴影颜色的枚举值。
 
-<!--Device-ArkUI_ColorStrategy--><!--Device-ArkUI_ColorStrategy-End-->
+<!--Device-enum ArkUI_ColorStrategy--><!--Device-enum ArkUI_ColorStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -365,9 +365,9 @@ enum ArkUI_ColorStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_COLOR_STRATEGY_INVERT = 0 | 前景色为控件背景色的反色。 |
-| ARKUI_COLOR_STRATEGY_AVERAGE | 控件背景阴影色为控件背景阴影区域的平均色。 |
-| ARKUI_COLOR_STRATEGY_PRIMARY | 控件背景阴影色为控件背景阴影区域的主色。 |
+| ARKUI_COLOR_STRATEGY_INVERT = 0 | 前景色为控件背景色的反色。<br><!--Device-ARKUI_COLOR_STRATEGY_INVERT = 0--><!--Device-ARKUI_COLOR_STRATEGY_INVERT = 0-End--> |
+| ARKUI_COLOR_STRATEGY_AVERAGE | 控件背景阴影色为控件背景阴影区域的平均色。<br><!--Device-ARKUI_COLOR_STRATEGY_AVERAGE--><!--Device-ARKUI_COLOR_STRATEGY_AVERAGE-End--> |
+| ARKUI_COLOR_STRATEGY_PRIMARY | 控件背景阴影色为控件背景阴影区域的主色。<br><!--Device-ARKUI_COLOR_STRATEGY_PRIMARY--><!--Device-ARKUI_COLOR_STRATEGY_PRIMARY-End--> |
 
 ### ArkUI_MaskType
 
@@ -379,7 +379,7 @@ enum ArkUI_MaskType
 
 遮罩类型枚举。遮罩是一种用于限制组件显示区域的手段，它利用特定的形状对组件内容进行裁剪，从而实现只有遮罩区域内的内容才可见的效果。
 
-<!--Device-ArkUI_MaskType--><!--Device-ArkUI_MaskType-End-->
+<!--Device-enum ArkUI_MaskType--><!--Device-enum ArkUI_MaskType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -387,11 +387,11 @@ enum ArkUI_MaskType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MASK_TYPE_RECTANGLE = 0 | 矩形类型。 |
-| ARKUI_MASK_TYPE_CIRCLE | 圆形类型。 |
-| ARKUI_MASK_TYPE_ELLIPSE | 椭圆形类型。 |
-| ARKUI_MASK_TYPE_PATH | 路径类型。 |
-| ARKUI_MASK_TYPE_PROGRESS | 进度类型。 |
+| ARKUI_MASK_TYPE_RECTANGLE = 0 | 矩形类型。<br><!--Device-ARKUI_MASK_TYPE_RECTANGLE = 0--><!--Device-ARKUI_MASK_TYPE_RECTANGLE = 0-End--> |
+| ARKUI_MASK_TYPE_CIRCLE | 圆形类型。<br><!--Device-ARKUI_MASK_TYPE_CIRCLE--><!--Device-ARKUI_MASK_TYPE_CIRCLE-End--> |
+| ARKUI_MASK_TYPE_ELLIPSE | 椭圆形类型。<br><!--Device-ARKUI_MASK_TYPE_ELLIPSE--><!--Device-ARKUI_MASK_TYPE_ELLIPSE-End--> |
+| ARKUI_MASK_TYPE_PATH | 路径类型。<br><!--Device-ARKUI_MASK_TYPE_PATH--><!--Device-ARKUI_MASK_TYPE_PATH-End--> |
+| ARKUI_MASK_TYPE_PROGRESS | 进度类型。<br><!--Device-ARKUI_MASK_TYPE_PROGRESS--><!--Device-ARKUI_MASK_TYPE_PROGRESS-End--> |
 
 ### ArkUI_ClipType
 
@@ -403,7 +403,7 @@ enum ArkUI_ClipType
 
 裁剪类型枚举。
 
-<!--Device-ArkUI_ClipType--><!--Device-ArkUI_ClipType-End-->
+<!--Device-enum ArkUI_ClipType--><!--Device-enum ArkUI_ClipType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -411,10 +411,10 @@ enum ArkUI_ClipType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CLIP_TYPE_RECTANGLE = 0 | 矩形类型。 |
-| ARKUI_CLIP_TYPE_CIRCLE | 圆形类型。 |
-| ARKUI_CLIP_TYPE_ELLIPSE | 椭圆形类型。 |
-| ARKUI_CLIP_TYPE_PATH | 路径类型。 |
+| ARKUI_CLIP_TYPE_RECTANGLE = 0 | 矩形类型。<br><!--Device-ARKUI_CLIP_TYPE_RECTANGLE = 0--><!--Device-ARKUI_CLIP_TYPE_RECTANGLE = 0-End--> |
+| ARKUI_CLIP_TYPE_CIRCLE | 圆形类型。<br><!--Device-ARKUI_CLIP_TYPE_CIRCLE--><!--Device-ARKUI_CLIP_TYPE_CIRCLE-End--> |
+| ARKUI_CLIP_TYPE_ELLIPSE | 椭圆形类型。<br><!--Device-ARKUI_CLIP_TYPE_ELLIPSE--><!--Device-ARKUI_CLIP_TYPE_ELLIPSE-End--> |
+| ARKUI_CLIP_TYPE_PATH | 路径类型。<br><!--Device-ARKUI_CLIP_TYPE_PATH--><!--Device-ARKUI_CLIP_TYPE_PATH-End--> |
 
 ### ArkUI_ShapeType
 
@@ -426,7 +426,7 @@ enum ArkUI_ShapeType
 
 定义形状类型的枚举值。
 
-<!--Device-ArkUI_ShapeType--><!--Device-ArkUI_ShapeType-End-->
+<!--Device-enum ArkUI_ShapeType--><!--Device-enum ArkUI_ShapeType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -434,10 +434,10 @@ enum ArkUI_ShapeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHAPE_TYPE_RECTANGLE = 0 | 矩形类型。 |
-| ARKUI_SHAPE_TYPE_CIRCLE | 圆形类型。 |
-| ARKUI_SHAPE_TYPE_ELLIPSE | 椭圆形类型。 |
-| ARKUI_SHAPE_TYPE_PATH | 路径类型。 |
+| ARKUI_SHAPE_TYPE_RECTANGLE = 0 | 矩形类型。<br><!--Device-ARKUI_SHAPE_TYPE_RECTANGLE = 0--><!--Device-ARKUI_SHAPE_TYPE_RECTANGLE = 0-End--> |
+| ARKUI_SHAPE_TYPE_CIRCLE | 圆形类型。<br><!--Device-ARKUI_SHAPE_TYPE_CIRCLE--><!--Device-ARKUI_SHAPE_TYPE_CIRCLE-End--> |
+| ARKUI_SHAPE_TYPE_ELLIPSE | 椭圆形类型。<br><!--Device-ARKUI_SHAPE_TYPE_ELLIPSE--><!--Device-ARKUI_SHAPE_TYPE_ELLIPSE-End--> |
+| ARKUI_SHAPE_TYPE_PATH | 路径类型。<br><!--Device-ARKUI_SHAPE_TYPE_PATH--><!--Device-ARKUI_SHAPE_TYPE_PATH-End--> |
 
 ### ArkUI_LinearGradientDirection
 
@@ -449,7 +449,7 @@ enum ArkUI_LinearGradientDirection
 
 定义线性渐变方向枚举。
 
-<!--Device-ArkUI_LinearGradientDirection--><!--Device-ArkUI_LinearGradientDirection-End-->
+<!--Device-enum ArkUI_LinearGradientDirection--><!--Device-enum ArkUI_LinearGradientDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -457,16 +457,16 @@ enum ArkUI_LinearGradientDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0 | 向左渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP | 向上渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT | 向右渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM | 向下渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP | 向左上渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM | 向左下渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP | 向右上渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM | 向右下渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE | 不渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM | 自定义渐变方向。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0 | 向左渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP | 向上渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_TOP--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_TOP-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT | 向右渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM | 向下渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP | 向左上渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM | 向左下渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP | 向右上渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM | 向右下渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE | 不渐变。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_NONE--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_NONE-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM | 自定义渐变方向。<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM-End--> |
 
 ### ArkUI_TransitionEdge
 
@@ -478,7 +478,7 @@ enum ArkUI_TransitionEdge
 
 定义转场从边缘滑入和滑出的效果。
 
-<!--Device-ArkUI_TransitionEdge--><!--Device-ArkUI_TransitionEdge-End-->
+<!--Device-enum ArkUI_TransitionEdge--><!--Device-enum ArkUI_TransitionEdge-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -486,10 +486,10 @@ enum ArkUI_TransitionEdge
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TRANSITION_EDGE_TOP = 0 | 转场从窗口的上边缘滑入和滑出。 |
-| ARKUI_TRANSITION_EDGE_BOTTOM | 转场从窗口的下边缘滑入和滑出。 |
-| ARKUI_TRANSITION_EDGE_START | 转场从窗口的左边缘滑入和滑出。 |
-| ARKUI_TRANSITION_EDGE_END | 转场从窗口的右边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_TOP = 0 | 转场从窗口的上边缘滑入和滑出。<br><!--Device-ARKUI_TRANSITION_EDGE_TOP = 0--><!--Device-ARKUI_TRANSITION_EDGE_TOP = 0-End--> |
+| ARKUI_TRANSITION_EDGE_BOTTOM | 转场从窗口的下边缘滑入和滑出。<br><!--Device-ARKUI_TRANSITION_EDGE_BOTTOM--><!--Device-ARKUI_TRANSITION_EDGE_BOTTOM-End--> |
+| ARKUI_TRANSITION_EDGE_START | 转场从窗口的左边缘滑入和滑出。<br><!--Device-ARKUI_TRANSITION_EDGE_START--><!--Device-ARKUI_TRANSITION_EDGE_START-End--> |
+| ARKUI_TRANSITION_EDGE_END | 转场从窗口的右边缘滑入和滑出。<br><!--Device-ARKUI_TRANSITION_EDGE_END--><!--Device-ARKUI_TRANSITION_EDGE_END-End--> |
 
 ### ArkUI_BlendApplyType
 
@@ -501,7 +501,7 @@ enum ArkUI_BlendApplyType
 
 指定的混合模式应用于视图的内容选项。
 
-<!--Device-ArkUI_BlendApplyType--><!--Device-ArkUI_BlendApplyType-End-->
+<!--Device-enum ArkUI_BlendApplyType--><!--Device-enum ArkUI_BlendApplyType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -509,8 +509,8 @@ enum ArkUI_BlendApplyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| BLEND_APPLY_TYPE_FAST = 0 | 在目标图像上按顺序混合视图的内容。 |
-| BLEND_APPLY_TYPE_OFFSCREEN | 将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 |
+| BLEND_APPLY_TYPE_FAST = 0 | 在目标图像上按顺序混合视图的内容。<br><!--Device-BLEND_APPLY_TYPE_FAST = 0--><!--Device-BLEND_APPLY_TYPE_FAST = 0-End--> |
+| BLEND_APPLY_TYPE_OFFSCREEN | 将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。<br><!--Device-BLEND_APPLY_TYPE_OFFSCREEN--><!--Device-BLEND_APPLY_TYPE_OFFSCREEN-End--> |
 
 ### ArkUI_FinishCallbackType
 
@@ -522,7 +522,7 @@ enum ArkUI_FinishCallbackType
 
 在动画中定义[OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。
 
-<!--Device-ArkUI_FinishCallbackType--><!--Device-ArkUI_FinishCallbackType-End-->
+<!--Device-enum ArkUI_FinishCallbackType--><!--Device-enum ArkUI_FinishCallbackType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -530,8 +530,8 @@ enum ArkUI_FinishCallbackType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
-| ARKUI_FINISH_CALLBACK_LOGICALLY | 当动画在逻辑上已完成，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的残余变化过程，此时动画的数值变化已非常微小，接近目标值。 |
+| ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。<br><!--Device-ARKUI_FINISH_CALLBACK_REMOVED = 0--><!--Device-ARKUI_FINISH_CALLBACK_REMOVED = 0-End--> |
+| ARKUI_FINISH_CALLBACK_LOGICALLY | 当动画在逻辑上已完成，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的残余变化过程，此时动画的数值变化已非常微小，接近目标值。<br><!--Device-ARKUI_FINISH_CALLBACK_LOGICALLY--><!--Device-ARKUI_FINISH_CALLBACK_LOGICALLY-End--> |
 
 ### ArkUI_RenderFit
 
@@ -543,7 +543,7 @@ enum ArkUI_RenderFit
 
 定义动画终态内容大小与位置的枚举值。
 
-<!--Device-ArkUI_RenderFit--><!--Device-ArkUI_RenderFit-End-->
+<!--Device-enum ArkUI_RenderFit--><!--Device-enum ArkUI_RenderFit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -551,22 +551,22 @@ enum ArkUI_RenderFit
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDER_FIT_CENTER = 0 | 保持动画终态的内容大小，并且内容始终与组件保持中心对齐。 |
-| ARKUI_RENDER_FIT_TOP | 保持动画终态的内容大小，并且内容始终与组件保持顶部中心对齐。 |
-| ARKUI_RENDER_FIT_BOTTOM | 保持动画终态的内容大小，并且内容始终与组件保持底部中心对齐。 |
-| ARKUI_RENDER_FIT_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左侧对齐。 |
-| ARKUI_RENDER_FIT_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右侧对齐。 |
-| ARKUI_RENDER_FIT_TOP_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。 |
-| ARKUI_RENDER_FIT_TOP_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右上角对齐。 |
-| ARKUI_RENDER_FIT_BOTTOM_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左下角对齐。 |
-| ARKUI_RENDER_FIT_BOTTOM_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右下角对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_FILL | 不考虑动画终态内容的宽高比，并且内容始终缩放到组件的大小。 |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内，且与组件保持中心对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持左侧对齐，当组件高方向有剩余时，内容与组件保持顶部对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持右侧对齐，当组件高方向有剩余时，内容与组件保持底部对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_COVER | 保持动画终态内容的宽高比进行缩小或放大，使内容两边都大于或等于组件两边，且与组件保持中心对齐，显示内容的中间部分。 |
-| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持左侧对齐，显示内容的左侧部分。当内容高方向有剩余时，内容与组件保持顶部对齐，显示内容的顶侧部分。 |
-| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持右侧对齐，显示内容的右侧部分。当内容高方向有剩余时，内容与组件保持底部对齐，显示内容的底侧部分。 |
+| ARKUI_RENDER_FIT_CENTER = 0 | 保持动画终态的内容大小，并且内容始终与组件保持中心对齐。<br><!--Device-ARKUI_RENDER_FIT_CENTER = 0--><!--Device-ARKUI_RENDER_FIT_CENTER = 0-End--> |
+| ARKUI_RENDER_FIT_TOP | 保持动画终态的内容大小，并且内容始终与组件保持顶部中心对齐。<br><!--Device-ARKUI_RENDER_FIT_TOP--><!--Device-ARKUI_RENDER_FIT_TOP-End--> |
+| ARKUI_RENDER_FIT_BOTTOM | 保持动画终态的内容大小，并且内容始终与组件保持底部中心对齐。<br><!--Device-ARKUI_RENDER_FIT_BOTTOM--><!--Device-ARKUI_RENDER_FIT_BOTTOM-End--> |
+| ARKUI_RENDER_FIT_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左侧对齐。<br><!--Device-ARKUI_RENDER_FIT_LEFT--><!--Device-ARKUI_RENDER_FIT_LEFT-End--> |
+| ARKUI_RENDER_FIT_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右侧对齐。<br><!--Device-ARKUI_RENDER_FIT_RIGHT--><!--Device-ARKUI_RENDER_FIT_RIGHT-End--> |
+| ARKUI_RENDER_FIT_TOP_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。<br><!--Device-ARKUI_RENDER_FIT_TOP_LEFT--><!--Device-ARKUI_RENDER_FIT_TOP_LEFT-End--> |
+| ARKUI_RENDER_FIT_TOP_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右上角对齐。<br><!--Device-ARKUI_RENDER_FIT_TOP_RIGHT--><!--Device-ARKUI_RENDER_FIT_TOP_RIGHT-End--> |
+| ARKUI_RENDER_FIT_BOTTOM_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左下角对齐。<br><!--Device-ARKUI_RENDER_FIT_BOTTOM_LEFT--><!--Device-ARKUI_RENDER_FIT_BOTTOM_LEFT-End--> |
+| ARKUI_RENDER_FIT_BOTTOM_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右下角对齐。<br><!--Device-ARKUI_RENDER_FIT_BOTTOM_RIGHT--><!--Device-ARKUI_RENDER_FIT_BOTTOM_RIGHT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_FILL | 不考虑动画终态内容的宽高比，并且内容始终缩放到组件的大小。<br><!--Device-ARKUI_RENDER_FIT_RESIZE_FILL--><!--Device-ARKUI_RENDER_FIT_RESIZE_FILL-End--> |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内，且与组件保持中心对齐。<br><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN--><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN-End--> |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持左侧对齐，当组件高方向有剩余时，内容与组件保持顶部对齐。<br><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT--><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持右侧对齐，当组件高方向有剩余时，内容与组件保持底部对齐。<br><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT--><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_COVER | 保持动画终态内容的宽高比进行缩小或放大，使内容两边都大于或等于组件两边，且与组件保持中心对齐，显示内容的中间部分。<br><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER--><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER-End--> |
+| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持左侧对齐，显示内容的左侧部分。当内容高方向有剩余时，内容与组件保持顶部对齐，显示内容的顶侧部分。<br><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT--><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持右侧对齐，显示内容的右侧部分。当内容高方向有剩余时，内容与组件保持底部对齐，显示内容的底侧部分。<br><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT--><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT-End--> |
 
 ### ArkUI_AnimationFillMode
 
@@ -578,7 +578,7 @@ enum ArkUI_AnimationFillMode
 
 定义帧动画组件在动画开始前和结束后的状态。
 
-<!--Device-ArkUI_AnimationFillMode--><!--Device-ArkUI_AnimationFillMode-End-->
+<!--Device-enum ArkUI_AnimationFillMode--><!--Device-enum ArkUI_AnimationFillMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -586,10 +586,10 @@ enum ArkUI_AnimationFillMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_FILL_MODE_NONE | 动画未执行时不会将任何样式应用于目标，动画播放完成之后恢复初始默认状态。 |
-| ARKUI_ANIMATION_FILL_MODE_FORWARDS | 目标将保留动画执行期间最后一个关键帧的状态。 |
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在delay期间保留此值。 |
-| ARKUI_ANIMATION_FILL_MODE_BOTH | 动画将遵循[ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-visual-h.md#arkui_animationfillmode)和[ARKUI_ANIMATION_FILL_MODE_BACKWARDS](capi-native-type-visual-h.md#arkui_animationfillmode)的规则，从而在两个方向上扩展动画属性。 |
+| ARKUI_ANIMATION_FILL_MODE_NONE | 动画未执行时不会将任何样式应用于目标，动画播放完成之后恢复初始默认状态。<br><!--Device-ARKUI_ANIMATION_FILL_MODE_NONE--><!--Device-ARKUI_ANIMATION_FILL_MODE_NONE-End--> |
+| ARKUI_ANIMATION_FILL_MODE_FORWARDS | 目标将保留动画执行期间最后一个关键帧的状态。<br><!--Device-ARKUI_ANIMATION_FILL_MODE_FORWARDS--><!--Device-ARKUI_ANIMATION_FILL_MODE_FORWARDS-End--> |
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在delay期间保留此值。<br><!--Device-ARKUI_ANIMATION_FILL_MODE_BACKWARDS--><!--Device-ARKUI_ANIMATION_FILL_MODE_BACKWARDS-End--> |
+| ARKUI_ANIMATION_FILL_MODE_BOTH | 动画将遵循[ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-visual-h.md#arkui_animationfillmode)和[ARKUI_ANIMATION_FILL_MODE_BACKWARDS](capi-native-type-visual-h.md#arkui_animationfillmode)的规则，从而在两个方向上扩展动画属性。<br><!--Device-ARKUI_ANIMATION_FILL_MODE_BOTH--><!--Device-ARKUI_ANIMATION_FILL_MODE_BOTH-End--> |
 
 ### ArkUI_AnimationDirection
 
@@ -601,7 +601,7 @@ enum ArkUI_AnimationDirection
 
 动画播放方向。
 
-<!--Device-ArkUI_AnimationDirection--><!--Device-ArkUI_AnimationDirection-End-->
+<!--Device-enum ArkUI_AnimationDirection--><!--Device-enum ArkUI_AnimationDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -609,10 +609,10 @@ enum ArkUI_AnimationDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | 动画正向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_REVERSE | 动画反向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
+| ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | 动画正向循环播放。<br><!--Device-ARKUI_ANIMATION_DIRECTION_NORMAL = 0--><!--Device-ARKUI_ANIMATION_DIRECTION_NORMAL = 0-End--> |
+| ARKUI_ANIMATION_DIRECTION_REVERSE | 动画反向循环播放。<br><!--Device-ARKUI_ANIMATION_DIRECTION_REVERSE--><!--Device-ARKUI_ANIMATION_DIRECTION_REVERSE-End--> |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。<br><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE--><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE-End--> |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。<br><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE--><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE-End--> |
 
 ### OH_ArkUI_AnimationPropertyType
 
@@ -624,7 +624,7 @@ enum OH_ArkUI_AnimationPropertyType
 
 枚举属性动画、关键帧动画和路径动画的可动画属性类型。
 
-<!--Device-OH_ArkUI_AnimationPropertyType--><!--Device-OH_ArkUI_AnimationPropertyType-End-->
+<!--Device-enum OH_ArkUI_AnimationPropertyType--><!--Device-enum OH_ArkUI_AnimationPropertyType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -632,24 +632,24 @@ enum OH_ArkUI_AnimationPropertyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION = 0 | 在x和y方向上的平移。 设置或获取该属性值时，需要两个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x、y方向的平移量，单位为px。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_X = 1 | 在x方向上的平移。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Y = 2 | 在y方向上的平移。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Z = 3 | 在z方向上的平移。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_SCALE = 4 | 在x和y方向上的缩放。 设置或获取该属性值时，需要两个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x、y方向的缩放比例。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_SCALE_X = 5 | 在x方向上的缩放。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_SCALE_Y = 6 | 在y方向上的缩放。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_ROTATION = 7 | 所有轴的旋转角度。 设置或获取该属性值时，需要三个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x、y、z轴的旋转角度，单位为度。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_X = 8 | 围绕x轴的旋转角度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为度。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Y = 9 | 围绕y轴的旋转角度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为度。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Z = 10 | 围绕z轴的旋转角度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为度。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_OPACITY = 11 | 组件的不透明度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。 取值范围：[0, 1]。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS = 12 | 边界（位置和大小）。 设置或获取该属性值时，需要四个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x坐标、y坐标、宽度、高度，单位为px。 其中宽度和高度的取值范围为大于等于0。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_X = 13 | 边界左上角的x坐标位置。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_Y = 14 | 边界左上角的y坐标位置。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_WIDTH = 15 | 边界的宽度。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。取值范围为大于等于0。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_HEIGHT = 16 | 边界的高度。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。取值范围为大于等于0。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_PROPERTY_BACKGROUND_COLOR = 17 | 组件的背景颜色。 设置或获取该属性值时，需要一个u32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。<br>**起始版本：** 26.0.1 |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION = 0 | 在x和y方向上的平移。 设置或获取该属性值时，需要两个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x、y方向的平移量，单位为px。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION = 0--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION = 0-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_X = 1 | 在x方向上的平移。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_X = 1--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_X = 1-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Y = 2 | 在y方向上的平移。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Y = 2--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Y = 2-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Z = 3 | 在z方向上的平移。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Z = 3--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Z = 3-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_SCALE = 4 | 在x和y方向上的缩放。 设置或获取该属性值时，需要两个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x、y方向的缩放比例。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_SCALE = 4--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_SCALE = 4-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_SCALE_X = 5 | 在x方向上的缩放。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_SCALE_X = 5--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_SCALE_X = 5-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_SCALE_Y = 6 | 在y方向上的缩放。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_SCALE_Y = 6--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_SCALE_Y = 6-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION = 7 | 所有轴的旋转角度。 设置或获取该属性值时，需要三个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x、y、z轴的旋转角度，单位为度。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION = 7--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION = 7-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_X = 8 | 围绕x轴的旋转角度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为度。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION_X = 8--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION_X = 8-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Y = 9 | 围绕y轴的旋转角度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为度。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Y = 9--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Y = 9-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Z = 10 | 围绕z轴的旋转角度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为度。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Z = 10--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Z = 10-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_OPACITY = 11 | 组件的不透明度。 设置或获取该属性值时，需要一个f32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。 取值范围：[0, 1]。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_OPACITY = 11--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_OPACITY = 11-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS = 12 | 边界（位置和大小）。 设置或获取该属性值时，需要四个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，依次为x坐标、y坐标、宽度、高度，单位为px。 其中宽度和高度的取值范围为大于等于0。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS = 12--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS = 12-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_X = 13 | 边界左上角的x坐标位置。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_X = 13--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_X = 13-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_Y = 14 | 边界左上角的y坐标位置。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_Y = 14--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_Y = 14-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_WIDTH = 15 | 边界的宽度。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。取值范围为大于等于0。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_WIDTH = 15--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_WIDTH = 15-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_HEIGHT = 16 | 边界的高度。 设置或获取该属性值时，需要一个i32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素，单位为px。取值范围为大于等于0。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_HEIGHT = 16--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_HEIGHT = 16-End--> |
+| OH_ARKUI_ANIMATION_PROPERTY_BACKGROUND_COLOR = 17 | 组件的背景颜色。 设置或获取该属性值时，需要一个u32类型的[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)元素。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BACKGROUND_COLOR = 17--><!--Device-OH_ARKUI_ANIMATION_PROPERTY_BACKGROUND_COLOR = 17-End--> |
 
 ### OH_ArkUI_AnimationGroupState
 
@@ -661,7 +661,7 @@ enum OH_ArkUI_AnimationGroupState
 
 枚举动画组的播放状态。
 
-<!--Device-OH_ArkUI_AnimationGroupState--><!--Device-OH_ArkUI_AnimationGroupState-End-->
+<!--Device-enum OH_ArkUI_AnimationGroupState--><!--Device-enum OH_ArkUI_AnimationGroupState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -669,9 +669,9 @@ enum OH_ArkUI_AnimationGroupState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING = 0 | 动画组正在运行。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED = 1 | 动画组已暂停。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_GROUP_STATE_INACTIVE = 2 | 动画组处于非活动状态，例如动画已结束或动画组处于无效状态。<br>**起始版本：** 26.0.1 |
+| OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING = 0 | 动画组正在运行。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING = 0--><!--Device-OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING = 0-End--> |
+| OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED = 1 | 动画组已暂停。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED = 1--><!--Device-OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED = 1-End--> |
+| OH_ARKUI_ANIMATION_GROUP_STATE_INACTIVE = 2 | 动画组处于非活动状态，例如动画已结束或动画组处于无效状态。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_GROUP_STATE_INACTIVE = 2--><!--Device-OH_ARKUI_ANIMATION_GROUP_STATE_INACTIVE = 2-End--> |
 
 ### OH_ArkUI_AnimationFinishMode
 
@@ -683,7 +683,7 @@ enum OH_ArkUI_AnimationFinishMode
 
 枚举动画组的结束模式。
 
-<!--Device-OH_ArkUI_AnimationFinishMode--><!--Device-OH_ArkUI_AnimationFinishMode-End-->
+<!--Device-enum OH_ArkUI_AnimationFinishMode--><!--Device-enum OH_ArkUI_AnimationFinishMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -691,9 +691,9 @@ enum OH_ArkUI_AnimationFinishMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_ANIMATION_FINISH_TO_START = 0 | 结束动画组并跳转到起始状态。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_FINISH_TO_CURRENT = 1 | 结束动画组并保持在当前值。<br>**起始版本：** 26.0.1 |
-| OH_ARKUI_ANIMATION_FINISH_TO_END = 2 | 结束动画组并跳转到结束状态。<br>**起始版本：** 26.0.1 |
+| OH_ARKUI_ANIMATION_FINISH_TO_START = 0 | 结束动画组并跳转到起始状态。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_FINISH_TO_START = 0--><!--Device-OH_ARKUI_ANIMATION_FINISH_TO_START = 0-End--> |
+| OH_ARKUI_ANIMATION_FINISH_TO_CURRENT = 1 | 结束动画组并保持在当前值。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_FINISH_TO_CURRENT = 1--><!--Device-OH_ARKUI_ANIMATION_FINISH_TO_CURRENT = 1-End--> |
+| OH_ARKUI_ANIMATION_FINISH_TO_END = 2 | 结束动画组并跳转到结束状态。<br>**起始版本：** 26.0.1<br><!--Device-OH_ARKUI_ANIMATION_FINISH_TO_END = 2--><!--Device-OH_ARKUI_ANIMATION_FINISH_TO_END = 2-End--> |
 
 ### OH_ArkUI_LinearGradientBlurDirection
 
@@ -705,7 +705,7 @@ enum OH_ArkUI_LinearGradientBlurDirection
 
 枚举线性渐变模糊的渐变方向。
 
-<!--Device-OH_ArkUI_LinearGradientBlurDirection--><!--Device-OH_ArkUI_LinearGradientBlurDirection-End-->
+<!--Device-enum OH_ArkUI_LinearGradientBlurDirection--><!--Device-enum OH_ArkUI_LinearGradientBlurDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -713,14 +713,14 @@ enum OH_ArkUI_LinearGradientBlurDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0 | 线性渐变模糊从右到左。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1 | 线性渐变模糊从下到上。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2 | 线性渐变模糊从左到右。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3 | 线性渐变模糊从上到下。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4 | 线性渐变模糊从右下到左上。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5 | 线性渐变模糊从右上到左下。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6 | 线性渐变模糊从左下到右上。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7 | 线性渐变模糊从左上到右下。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0 | 线性渐变模糊从右到左。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0-End--> |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1 | 线性渐变模糊从下到上。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1-End--> |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2 | 线性渐变模糊从左到右。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2-End--> |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3 | 线性渐变模糊从上到下。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3-End--> |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4 | 线性渐变模糊从右下到左上。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4-End--> |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5 | 线性渐变模糊从右上到左下。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5-End--> |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6 | 线性渐变模糊从左下到右上。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6-End--> |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7 | 线性渐变模糊从左上到右下。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7--><!--Device-OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7-End--> |
 
 
 ## 函数说明

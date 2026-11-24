@@ -24,13 +24,13 @@ typedef struct OH_Pixelmap_HdrStaticMetadata {...} OH_Pixelmap_HdrStaticMetadata
 
 | 名称 | 描述 |
 | -- | -- |
-| float displayPrimariesX[3] | 归一化后显示设备三基色的X坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。 |
-| float displayPrimariesY[3] | 归一化后显示设备三基色的Y坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。 |
-| float whitePointX | 归一化后白点值的X坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。 |
-| float whitePointY | 归一化后白点值的Y坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。 |
-| float maxLuminance | 图像主监视器的最大亮度。以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。 |
-| float minLuminance | 图像主监视器的最小亮度。以0.0001为单位，取值范围是[0, 6.5535]。单位：尼特（nit）。 |
-| float maxContentLightLevel | 显示内容的最大亮度。以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。 |
-| float maxFrameAverageLightLevel | 显示内容的最大平均亮度。以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。 |
+| float displayPrimariesX[3] | 归一化后显示设备三基色的X坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。<br><!--Device-float displayPrimariesX[3]--><!--Device-float displayPrimariesX[3]-End--> |
+| float displayPrimariesY[3] | 归一化后显示设备三基色的Y坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。<br><!--Device-float displayPrimariesY[3]--><!--Device-float displayPrimariesY[3]-End--> |
+| float whitePointX | 归一化后白点值的X坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。<br><!--Device-float whitePointX--><!--Device-float whitePointX-End--> |
+| float whitePointY | 归一化后白点值的Y坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。<br><!--Device-float whitePointY--><!--Device-float whitePointY-End--> |
+| float maxLuminance | 图像主监视器的最大亮度。以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。<br><!--Device-float maxLuminance--><!--Device-float maxLuminance-End--> |
+| float minLuminance | 图像主监视器的最小亮度。以0.0001为单位，取值范围是[0, 6.5535]。单位：尼特（nit）。<br><!--Device-float minLuminance--><!--Device-float minLuminance-End--> |
+| float maxContentLightLevel | 显示内容的最大亮度。以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。<br><!--Device-float maxContentLightLevel--><!--Device-float maxContentLightLevel-End--> |
+| float maxFrameAverageLightLevel | 显示内容的最大平均亮度。以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。<br><!--Device-float maxFrameAverageLightLevel--><!--Device-float maxFrameAverageLightLevel-End--> |
 
 

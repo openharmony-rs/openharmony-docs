@@ -28,10 +28,10 @@ Declaring the callback struct for renderer stream.
 
 | Name | Description |
 | -- | -- |
-| [int32_t (\*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer,void* userData,void* buffer,int32_t length)](#oh_audiorenderer_onwritedata) | - | This function pointer will point to the callback function that is used to write audio data |
-| [int32_t (\*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Event event)](#oh_audiorenderer_onstreamevent) | - | This function pointer will point to the callback function that is used to handle audio renderer stream events. |
-| [int32_t (\*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiorenderer_oninterruptevent) | - | This function pointer will point to the callback function that is used to handle audio interrupt events. |
-| [int32_t (\*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Result error)](#oh_audiorenderer_onerror) | - | This function pointer will point to the callback function that is used to handle audio error result. |
+| [int32_t (\*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer,void* userData,void* buffer,int32_t length)](#oh_audiorenderer_onwritedata) | This function pointer will point to the callback function that is used to write audio data |
+| [int32_t (\*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Event event)](#oh_audiorenderer_onstreamevent) | This function pointer will point to the callback function that is used to handle audio renderer stream events. |
+| [int32_t (\*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiorenderer_oninterruptevent) | This function pointer will point to the callback function that is used to handle audio interrupt events. |
+| [int32_t (\*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Result error)](#oh_audiorenderer_onerror) | This function pointer will point to the callback function that is used to handle audio error result. |
 
 ## Member function description
 

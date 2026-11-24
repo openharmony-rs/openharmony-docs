@@ -24,7 +24,7 @@ Definitions the TEE time.
 
 | Name | Description |
 | -- | -- |
-| uint32_t seconds | Seconds part of the time. |
-| uint32_t millis | Milliseconds part of the time. |
+| uint32_t seconds | Seconds part of the time.<br><!--Device-uint32_t seconds--><!--Device-uint32_t seconds-End--> |
+| uint32_t millis | Milliseconds part of the time.<br><!--Device-uint32_t millis--><!--Device-uint32_t millis-End--> |
 
 

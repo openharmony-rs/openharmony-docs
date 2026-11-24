@@ -55,7 +55,7 @@ enum CryptoSm2CiphertextSpec_item
 
 定义SM2密文规格项类型。
 
-<!--Device-CryptoSm2CiphertextSpec_item--><!--Device-CryptoSm2CiphertextSpec_item-End-->
+<!--Device-enum CryptoSm2CiphertextSpec_item--><!--Device-enum CryptoSm2CiphertextSpec_item-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -63,10 +63,10 @@ enum CryptoSm2CiphertextSpec_item
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_SM2_CIPHERTEXT_C1_X = 0 | 公钥x，也称为C1x。<br>**起始版本：** 20 |
-| CRYPTO_SM2_CIPHERTEXT_C1_Y = 1 | 公钥y，也称为C1y。<br>**起始版本：** 20 |
-| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | 密文数据，也称为C2。<br>**起始版本：** 20 |
-| CRYPTO_SM2_CIPHERTEXT_C3 = 3 | 消息摘要（哈希值），也称为C3。<br>**起始版本：** 20 |
+| CRYPTO_SM2_CIPHERTEXT_C1_X = 0 | 公钥x，也称为C1x。<br>**起始版本：** 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_X = 0--><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_X = 0-End--> |
+| CRYPTO_SM2_CIPHERTEXT_C1_Y = 1 | 公钥y，也称为C1y。<br>**起始版本：** 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_Y = 1--><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_Y = 1-End--> |
+| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | 密文数据，也称为C2。<br>**起始版本：** 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C2 = 2--><!--Device-CRYPTO_SM2_CIPHERTEXT_C2 = 2-End--> |
+| CRYPTO_SM2_CIPHERTEXT_C3 = 3 | 消息摘要（哈希值），也称为C3。<br>**起始版本：** 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C3 = 3--><!--Device-CRYPTO_SM2_CIPHERTEXT_C3 = 3-End--> |
 
 
 ## 函数说明

@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| struct timeval it_interval |  |
-| struct timeval it_value |  |
+| struct timeval it_interval | <!--Device-struct timeval it_interval--><!--Device-struct timeval it_interval-End--> |
+| struct timeval it_value | <!--Device-struct timeval it_value--><!--Device-struct timeval it_value-End--> |
 
 
