@@ -1088,6 +1088,10 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 | -- | -- |
 | int32_t | 应用实际填充有效音频数据的长度。返回值必须在[0, audioDataSize]范围内。<br> 如果返回值小于0，系统将调整为0。 并且，如果返回值大于audioDataSize，系统将其调整到audioDataSize。<br> 注意返回值必须是单个采样点大小的整数倍。<br> 比如，双声道S16格式的音频数据，必须是4(2 * 16 / 8)的整数倍。<br> 否则，可能造成播放杂音。 |
 
+**参考：**
+
+[OH_AudioRenderer_OnWriteDataCallback](capi-native-audiostream-base-h#oh_audiorenderer_onwritedatacallback)
+
 ### OH_AudioRenderer_GetLatency()
 
 ```c
