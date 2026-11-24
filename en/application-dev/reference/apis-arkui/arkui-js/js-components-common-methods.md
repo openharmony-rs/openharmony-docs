@@ -1,38 +1,38 @@
 # Universal Methods
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:37.971Z pushedAt=2026-06-23T06:24:17.363Z -->
+<!-- md-trans-meta sourceCommit=02f1ea87b715fc9e1f4d61a21cdaf2d807cb5a11 translatedAt=2026-11-12T04:24:41.074Z pushedAt=2026-11-18T07:14:47.436Z nl=1 -->
 
 >  **NOTE**
 >  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
 After a component is assigned the **id** attribute, you can use the ID to obtain the component objects and call methods on them.
 
+
 ## animate
 
 animate( keyframes: Keyframes, options: Options): void
 
-A list of objects for setting animation styles and animation attributes.
+Creates an animation effect on the component by passing in keyframe styles and animation parameters, and returns an animation object for controlling operations such as animation playback and pausing.
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type      | Mandatory | Description                                   |
 | --------- | --------- | ---- | ------------------------------------ |
-| keyframes | keyframes | Yes    | Animation style.                               |
+| keyframes | Keyframes | Yes | Keyframe style. |
 | options   | Options   | Yes    | Array of objects used to set animation attributes. For details, see **Table 3** Options. |
 
-  **Table 1** keyframes
+  **Table 1** Keyframes
 
 | Attribute     | Type                 | Description                                     |
 | ------ | ------------------ | -------------------------------------- |
 | frames | Array&lt;Style&gt; | Array of objects used to set animation styles. For details, see **Table 2** Style. |
 
- **Table 2** Style
+  **Table 2** Style
 
 | Name                 | Type                                       | Default Value                  | Description                                       |
 | ------------------ | ---------------------------------------- | -------------------- | ---------------------------------------- |
@@ -40,12 +40,12 @@ A list of objects for setting animation styles and animation attributes.
 | height             | number                                   | -                    | Height set for the component during playback of the animation.                       |
 | backgroundColor    | &lt;color&gt;                            | none                 | Background color set for the component during playback of the animation.                      |
 | opacity            | number                                   | 1                    | Opacity set for the component. The value ranges from 0 to 1.                      |
-| backgroundPosition | string                                   | -                    | The value format is **"x&nbsp;y"**, in percentage or px.<br/>The first value indicates the horizontal position, and the second value indicates the vertical position.<br/>If only one value is specified, the other value is&nbsp;**50%**. |
-| transformOrigin    | string                                   | 'center&nbsp;center' | Origin position of the transformed element.<br/>The first value indicates the x-axis position. The value can be **left**, **center**, **right**, a length, or a percentage.<br/>The second value indicates the y-axis position. The value can be **top**, **center**, **bottom**, a length, or a percentage. |
+| backgroundPosition | string                                   | -                    | Format: "x&nbsp;y", in percentage or px.<br>The first value is the horizontal position, and the second value is the vertical position.<br>If only one value is specified, the other value is&nbsp;50%. |
+| transformOrigin    | string                                   | 'center&nbsp;center' | Center point of the transformation object.<br>The first parameter indicates the value of the x-axis, which can be set to left, center, right, a length value, or a percentage value.<br>The second parameter indicates the value of the y-axis, which can be set to top, center, bottom, a length value, or a percentage value. |
 | transform          | [Transform](js-components-common-animation.md#attributes) | -                    | Transformation type set for a transformed element.                             |
-| offset             | number                                   | -                    | -&nbsp;The value of **offset** must be within (0.0, 1.0] and sorted in ascending order if it is provided.<br/>-&nbsp;If there are only two frames, **offset** can be left empty.<br/>-&nbsp;If there are more than two frames, **offset** is mandatory. |
+| offset             | number                                   | -                    | -&nbsp;The offset value (if provided) must be between 0.0 and 1.0 (inclusive) and arranged in ascending order.<br>-&nbsp;If there are only two frames, the **offset** parameter can be omitted.<br>-&nbsp;If there are more than two frames, **offset** is required. |
 
- **Table 3** Options
+  **Table 3** Options
 
 | Name                     | Type                         | Default Value    | Description                                       |
 | ---------------------- | -------------------------- | ------ | ---------------------------------------- |
@@ -53,10 +53,10 @@ A list of objects for setting animation styles and animation attributes.
 | easing                 | string                     | linear | Time curve of the animation. For details about the supported types, see **Table 4** Available values of the easing attribute.           |
 | delay                  | number                     | 0      | Delay for the animation start. The default value indicates no delay.                    |
 | iterations             | number&nbsp;\|&nbsp;string | 1      | Number of times the animation will be played. **number** indicates a fixed number of playback operations, and **Infinity** indicates an unlimited number of playback operations. |
-| direction<sup>6+</sup> | string                     | normal | Mode of playing the animation.<br/>**normal**:&nbsp;Plays the animation in forward loop mode.<br/>**reverse**:&nbsp;Plays the animation in reverse loop mode.<br/>**alternate**: Plays the animation in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in backward direction.<br/>**alternate-reverse**: Plays the animation in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction. |
-| fill                   | string                     | none   | Start and end styles of the animation.<br/>**none**: No style is applied to the target before or after the animation is executed.<br/>**forwards**: The target keeps the state at the end of the animation (defined in the last key frame) after the animation is executed.<br/>**backwards**<sup>6+</sup>: The animation uses the value defined in the first key frame during the **animation-delay**. When **animation-direction** is set to **normal** or **alternate**, the value in the **from** key frame is used. When **animation-direction** is set to **reverse** or **alternate-reverse**, the value in the **to** key frame is used.<br/>**both**: The animation follows the **forwards** and **backwards** rules. |
+| direction<sup>6+</sup> | string                     | normal | Playback mode of the animation.<br>**normal**:&nbsp;The animation is played forward in a loop.<br>**reverse**:&nbsp;The animation is played backward in a loop.<br>**alternate**: The animation is played in alternating directions in a loop, forward on odd iterations and backward on even iterations.<br>**alternate-reverse**: The animation is played in alternating directions in a loop, backward on odd iterations and forward on even iterations. |
+| fill                   | string                     | none   | State of the animation at the start and end.<br>**none**: No style is applied to the target before or after the animation execution.<br>**forwards**: After the animation ends, the target retains the state at the end of the animation (defined in the last keyframe).<br>**backwards**<sup>6+</sup>: The animation applies the value defined in the first keyframe during **animation-delay**. When **animation-direction** is set to **"normal"** or **"alternate"**, the value in the **from** keyframe is applied; when **animation-direction** is set to **"reverse"** or **"alternate-reverse"**, the value in the **to** keyframe is applied.<br>**both**: The animation follows the rules of both **forwards** and **backwards**, thereby extending the animation properties in both directions. |
 
- **Table 4** Available values of the easing attribute
+  **Table 4** Available values of the easing attribute
 
 | Value                                        | Description                                       |
 | ---------------------------------------- | ---------------------------------------- |
@@ -65,21 +65,21 @@ A list of objects for setting animation styles and animation attributes.
 | ease-out                                 | The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used. |
 | ease-in-out                              | The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used. |
 | friction                                 | The animation uses the friction cubic-bezier curve (0.2, 0.0, 0.2, 1.0). |
-| extreme-deceleration                     | The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0). |
+| extreme-deceleration                     | The animation uses the extreme deceleration curve cubic-bezier(0.0,&nbsp;0.0,&nbsp;0.0,&nbsp;1.0). |
 | sharp                                    | The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0). |
 | rhythm                                   | The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0). |
 | smooth                                   | The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0). |
 | cubic-bezier(x1,&nbsp;y1,&nbsp;x2,&nbsp;y2) | You can customize an animation speed curve in the **cubic-bezier()** function. The x and y values of each input parameter must be between 0 and 1.      |
-| steps(number,&nbsp;step-position)<sup>6+</sup> | The animation uses the step curve.<br/>**number** must be set and only an integer is supported.<br/>**step-position** is optional. It can be set to **start** or **end**. The default value is **end**. |
+| steps(number,&nbsp;step-position)<sup>6+</sup> | The animation uses the step curve.<br>**number** is mandatory and supports the int type.<br>**step-position** is optional and supports **start** or **end**, with the default value **end**. |
 
-**Return value**
+**Return value** 
   The **animation** attributes are as follows.
 
 | Attribute        | Type      | Description                                       |
 | --------- | ------- | ---------------------------------------- |
 | finished  | boolean | Read-only attribute, which indicates whether the animation playback is complete. The value **true** indicates the animation playback is complete, and **false** indicates the opposite.                      |
 | pending   | boolean | Read-only attribute, which indicates whether the animation is waiting for the completion of other asynchronous operations (for example, start an animation with a delay). The value **true** indicates the animation is waiting, and **false** indicates the opposite. |
-| playState | string  | Read-write attribute, which indicates the playback status of the animation:<br/>-&nbsp;**idle**: The animation is not running (playback ended or not started).<br/>-&nbsp;**running**: The animation is running.<br/>-&nbsp;**paused**: The animation is paused.<br/>-&nbsp;**finished**: The animation finishes playing. |
+| playState | string  | Read-write attribute. The animation execution states are as follows:<br>-&nbsp;**idle**: not executed, including finished or not started.<br>-&nbsp;**running**: the animation is running.<br>-&nbsp;**paused**: the animation playback is paused.<br>-&nbsp;**finished**: the animation playback is complete. |
 | startTime | number  | Read-write attribute, which indicates the animation start time. This attribute is similar to **delay** in the **Options** attribute.  |
 
   The **animation** methods are as follows.
@@ -92,7 +92,7 @@ A list of objects for setting animation styles and animation attributes.
 | cancel  | -    | Cancels the animation. |
 | reverse | -    | Plays the animation in reverse. |
 
-The **animation** events are as follows.
+  The **animation** events are as follows.
 
 | Event               | Description              |
 | ------------------- | ------------------------ |
@@ -101,12 +101,11 @@ The **animation** events are as follows.
 | finish              | The animation playback is complete. |
 | repeat              | The animation repeats. |
 
-**Example**
-
+**Example** 
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <div id="idName" class="box"></div>
+  <div id="animBox" class="box"></div>
   <div class="buttonBox">
     <button @click="start">
       start
@@ -178,7 +177,7 @@ export default {
     },
 
     start() {
-        this.animation = this.$element('idName').animate(this.frames, this.options);
+        this.animation = this.$element('animBox').animate(this.frames, this.options);
         this.animation.play();
     },
     cancel() {
@@ -195,7 +194,7 @@ getBoundingClientRect(): \<Rect>
 
 Obtains the size of the element and its position relative to the window.
 
-**Return value**
+**Return value** 
 
   **Table 5** Rect<sup>6+</sup>
 
@@ -207,20 +206,18 @@ Obtains the size of the element and its position relative to the window.
 | top       | number | Offset between the upper boundary of the element and the window.  |
 
 **Example** 
-
 ```js
 // xxx.js
 var rect = this.$element('id').getBoundingClientRect();
 console.info(`current element position is ${rect.left}, ${rect.top}`);
 ```
-
 ## createIntersectionObserver
 
 createIntersectionObserver(param?:  ObserverParam): Observer
 
-Listens for the visibility of the element on the current page.
+Creates an intersection observer that, by setting a threshold, monitors the ratio change between the visible area and the intersection area of an element on the current page.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type | Mandatory | Description |
 | ----- | ------------- | ---- | -------------- |
@@ -242,7 +239,6 @@ Listens for the visibility of the element on the current page.
 | unobserve | - | Unsubscribes from events of the observed object. |
 
 **Example** 
-
 ```js
 // xxx.js
 let observer = this.$element('broad').createIntersectionObserver({

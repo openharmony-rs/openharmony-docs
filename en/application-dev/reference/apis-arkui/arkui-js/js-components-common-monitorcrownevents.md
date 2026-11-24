@@ -1,14 +1,13 @@
 # Crown Rotation Event Monitoring
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:31.055Z pushedAt=2026-06-23T06:35:54.305Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T06:12:47.024Z pushedAt=2026-11-23T06:36:54.428Z nl=1 -->
 
-This module provides the capability of setting a crown rotation event monitor for the current page and supporting the registration of page-level crown rotation event monitors. It is only supported on devices equipped with crown rotation.
+This module provides the capability of setting a crown rotation event monitor for the current page. It supports registering a page-level crown rotation event monitor, and is applicable to scenarios where crown rotation operations need to be monitored uniformly at the page level and event distribution needs to be controlled. It is supported only on devices equipped with crown rotation.
 
 > **NOTE**
 >
@@ -36,25 +35,28 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| handler | Function | Yes | Callback executed after a crown rotation event occurs, in the format of **(event)=>{ return false/true; }**.<br/>When **true** is returned, the crown rotation event is no longer dispatched to the component that gains a focus.<br/>When **false** is returned, the crown rotation event continues to be dispatched to the component that gains a focus. If the callback's return value is abnormal, for example, **undefined** or no return value, the value **false** is used by default.<br/>The crown rotation event information can be obtained through the input parameter. For the event information, see **Table 1** CrownEvent. |
+| handler | Function | Yes | Callback invoked when the crown rotation event occurs. The callback format is `(event)=>{ return false/true; }`.<br>When **true** is returned, the crown rotation event is no longer distributed to the component that gains focus.<br>When **false** is returned, the crown rotation event continues to be distributed to the component that gains focus. If the callback returns **undefined** or no value, the default value is **false**.<br>The crown rotation event information can be obtained through the input parameter. For details about the event information, see **Table 1 CrownEvent object attributes**. |
+
 
 **Table 1** CrownEvent
 
 | Name | Type | Read-Only | Optional | Description |
 | --------------------- | -------- | ------- |--------- |-------------------------------------- |
-| timestamp | number | No | No | Timestamp. |
-| angularVelocity | number | No | No | Rotation angular velocity, indicating the angle rotated per second.<br/>The rotation angular velocity is a positive number when the crown is rotated counterclockwise, and a negative number when rotated clockwise.<br/>Unit: degree/s |
-| degree | number | No | No | Relative rotation angle.<br/>The relative rotation angle is a positive number when the crown is rotated counterclockwise, and a negative number when rotated clockwise.<br/>Unit: degree.<br/>Value range: [-360, 360] |
+| timestamp | number | No | No | Timestamp, indicating the time elapsed since system startup when the event occurs.<br>Unit: ms. |
+| angularVelocity | number | No | No | Rotation angular velocity, indicating the angle rotated per second.<br>The rotation angular velocity is a positive number when the crown is rotated counterclockwise, and a negative number when rotated clockwise.<br>Unit: °/s |
+| degree | number | No | No | Relative rotation angle.<br>The relative rotation angle is a positive number when the crown is rotated counterclockwise, and a negative number when rotated clockwise.<br>Unit: degree.<br>Value range: [-360, 360] |
+
 
 ## clearMonitorForCrownEvents
 
 clearMonitorForCrownEvents(): void
 
-Clears the crown rotation event monitor for the current page.
+Clears the crown rotation event monitor for the current page. This API applies to scenarios where the page no longer needs to monitor crown rotation events, or where the default response of the focused component to crown rotation events needs to be restored.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Model restriction:** This API can be used only in the FA model.
+
 
 ## Example
 
@@ -63,7 +65,6 @@ Clears the crown rotation event monitor for the current page.
 This example describes how to set a crown rotation event monitor for a page through [setMonitorForCrownEvents](#setmonitorforcrownevents), and control whether the **List** component responds to the crown rotation event through the callback's return value of the monitor.
 
 Since API version 24, the [setMonitorForCrownEvents](#setmonitorforcrownevents) and [clearMonitorForCrownEvents](#clearmonitorforcrownevents) APIs are added.
-
 ```css
 /* xxx.css */
 .container {
@@ -142,7 +143,7 @@ export default {
                 event.angularVelocity);
             console.info('rotate is: ', event.rotate);
             return this.flag;
-        })
+        });
     },
     flagChange() {
         this.flag = !this.flag;
