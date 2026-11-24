@@ -2097,6 +2097,10 @@ int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bi
 | -- | -- |
 | int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误：1. 传入的参数owner或者exportedRoot为空指针或无效句柄。<br>2. exportedRoot已存在有效绑定。上述错误均为无副作用的确定性校验结果：不会创建绑定，也不会修改已有绑定。修正参数后（对于错误2，可先调用[OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree)，或改用其他子树），即可安全重试。 |
 
+**参考：**
+
+[OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree)
+
 ### OH_ArkUI_Accessibility_UnbindExportTree()
 
 ```c
@@ -2160,6 +2164,10 @@ int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_Node
 | -- | -- |
 | int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>node为空指针时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>handleAccessibilityHoverEvent为空指针时返回[ARKUI_ERROR_CODE_PARAM_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>node类型不为ARKUI_NODE_XCOMPONENT、ARKUI_NODE_CUSTOM或ARKUI_NODE_XCOMPONENT_TEXTURE时返回[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
+**参考：**
+
+[OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unregisteraccessibilityhovereventhandler)
+
 ### OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler()
 
 ```c
@@ -2189,3 +2197,7 @@ ArkUI不释放注册时传入的userData所指向的内存，其生命周期由�
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，包括节点未注册回调的情况。<br>node为空指针时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>node类型不为ARKUI_NODE_XCOMPONENT、ARKUI_NODE_CUSTOM或ARKUI_NODE_XCOMPONENT_TEXTURE时返回[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+
+**参考：**
+
+[OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_registeraccessibilityhovereventhandler)
