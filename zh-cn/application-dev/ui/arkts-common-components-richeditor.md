@@ -1601,6 +1601,7 @@ struct SelectedDataDetector {
   textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
 
   build() {
+    // ...
       Column({ space: 12 }) {
         // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
         RichEditor({ controller: this.controller })
@@ -1613,6 +1614,7 @@ struct SelectedDataDetector {
           .height(300)
           .margin(10)
       }
+    // ...
   }
 }
 ```

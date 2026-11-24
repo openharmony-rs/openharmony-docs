@@ -340,7 +340,7 @@ TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、
 - TextInput
 
   <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
-
+  
   ``` TypeScript
   // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
   TextInput({ text: $r('app.string.show_selected_menu') })
@@ -351,7 +351,7 @@ TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、
 - TextArea
 
   <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
-
+  
   ``` TypeScript
   // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
   TextArea({ text: $r('app.string.show_selected_menu') })
@@ -567,7 +567,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 - TextInput
 
   <!-- @[selectedDataDetector_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectedDataDetector.ets) -->
-
+  
   ``` TypeScript
   // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
   TextInput({ text: $r('app.string.SelectedDataDetector_Text_One') })
@@ -581,7 +581,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 - TextArea
 
   <!-- @[selectedDataDetector_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectedDataDetector.ets) -->
-
+  
   ``` TypeScript
   // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
   TextArea({ text: $r('app.string.SelectedDataDetector_Text_One') })
@@ -595,7 +595,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 - Search
 
   <!-- @[selectedDataDetector_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectedDataDetector.ets) -->
-
+  
   ``` TypeScript
   // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
   Search({ value: $r('app.string.SelectedDataDetector_Text_One') })

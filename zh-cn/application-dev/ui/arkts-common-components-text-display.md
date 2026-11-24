@@ -1303,6 +1303,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   @Component
   struct SelectedDataDetector {
     build() {
+      // ...
         Column({ space: 12 }) {
           // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
           Text($r('app.string.SelectedDataDetector_Text_One'))
@@ -1312,6 +1313,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
             .padding(10)
             .margin(10)
         }
+      // ...
     }
   }
   ```
