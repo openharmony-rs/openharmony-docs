@@ -10002,6 +10002,34 @@
  
 **起始版本**：26.1.0
 
+## ohos.permission.SCAN_SIDELOAD_ABILITY
+ 
+允许应用对自由分发的应用发起病毒查杀。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.1.0
+ 
+ ## ohos.permission.ACCESS_SECURE_AIGATEWAY
+ 
+允许应用接入AI网关。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：PC/2in1 | Tablet
+ 
+**起始版本**：26.1.0
+ 
 ## ohos.permission.RESOURCE_SCHEDULE_PERF_HINT
  
 允许系统应用上报性能敏感场景信息。
