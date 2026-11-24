@@ -1,7 +1,7 @@
 ---
 kits: ["ArkWeb Kit / 方舟Web"]
 description: "介绍使用Web组件打印前端页面的两种方式：前端调用W3C标准window.print()拉起打印，以及应用侧创建打印适配器配合打印接口完成打印。"
-keywords: [页面打印, window.print, createWebPrintDocumentAdapter, print.print, 打印适配器, \@media print, iframe打印, ohos.permission.PRINT]
+keywords: [页面打印, window.print, createWebPrintDocumentAdapter, print.print, 打印适配器, "@media print", iframe打印, ohos.permission.PRINT]
 doctype: guide
 status: active
 ---
