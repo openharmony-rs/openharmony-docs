@@ -33502,6 +33502,11 @@
 						"end_line":127,
 						"name":"update_badge_count_idempotent",
 						"start_line":112
+					},
+					{
+						"end_line":98,
+						"name":"get_badge_count",
+						"start_line":91
 					}
 				]
 			},
@@ -33512,6 +33517,11 @@
 						"end_line":24,
 						"name":"manage_notification_badges_header",
 						"start_line":16
+					},
+					{
+						"end_line":98,
+						"name":"get_badge_count",
+						"start_line":91
 					}
 				]
 			}
@@ -33532,6 +33542,21 @@
 						"end_line":68,
 						"name":"cancel_notification_content",
 						"start_line":58
+					},
+					{
+						"end_line":83,
+						"name":"cancel_all_notification_content",
+						"start_line":73
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets",
+				"functions":[
+					{
+						"end_line":83,
+						"name":"cancel_all_notification_content",
+						"start_line":73
 					}
 				]
 			}
