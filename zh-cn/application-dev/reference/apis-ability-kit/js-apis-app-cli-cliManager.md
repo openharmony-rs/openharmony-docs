@@ -29,7 +29,7 @@ import { cliManager } from '@kit.AbilityKit';
 
 | 名称       | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ---- | ---- | ---- | ------------------ |
-| workDir    | string | 否 | 是 | 命令执行的工作目录，如果不传或传空，则使用系统服务的默认工作目录。 |
+| workDir    | string | 否 | 是 | 命令执行的工作目录，如果不传或传空，则为根目录。 |
 | env        | Record\<string, string\> | 否 | 是 | 命令执行的环境变量。 |
 | background | boolean | 否 | 是 | 表示命令是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
 | yieldMs    | number | 否 | 是 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。超出取值范围时抛出错误码401。 |
