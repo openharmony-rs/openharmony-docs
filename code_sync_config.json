@@ -72125,7 +72125,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":86,
 						"name":"assessment_request_permissions",
 						"start_line":15
 					}
