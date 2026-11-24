@@ -1041,3 +1041,37 @@ Allows an MDM application to register and unregister daemon services.
 **Supported devices**: PCs/2-in-1 devices | tablets
  
 **Valid since**: 26.1.0
+
+## ohos.permission.ENTERPRISE_READ_MESSAGES
+ 
+Allows a device management application to read text messages.
+
+<!--RP1--><!--RP1End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0
+
+## ohos.permission.ENTERPRISE_RECEIVE_SMS
+ 
+Allows a device management application to receive SMS broadcasts.
+
+<!--RP1--><!--RP1End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0
