@@ -1,4 +1,4 @@
-# 地址数据捐赠
+# 地址数据捐赠 (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @weixin_40768329-->
@@ -28,7 +28,7 @@
 
 ## 开发步骤
 
-地址数据捐赠的相关接口请参见[地址数据捐赠（系统接口）](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md)。
+地址数据捐赠的相关接口请参见[@ohos.data.dataFabricAddress (地址数据捐赠)(系统接口)](../reference/apis-arkdata/js-apis-data-dataFabricAddress-sys.md)。
 
 1. 权限配置与申请。
 
