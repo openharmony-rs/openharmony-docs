@@ -4388,6 +4388,9 @@ zh-cn/application-dev/reference/apis-ipc-kit/capi-ohipcremoteobject.md @xdx19211
 zh-cn/application-dev/reference/apis-ipc-kit/capi-ohipcskeleton.md @xdx19211 @luodonghui0157 @zhaopeng_gitee @zhang_yixin13
 zh-cn/application-dev/reference/apis-ipc-kit/errorcode-rpc.md @xdx19211 @luodonghui0157 @zhaopeng_gitee @zhang_yixin13
 zh-cn/application-dev/reference/apis-ipc-kit/js-apis-rpc.md @xdx19211 @luodonghui0157 @zhaopeng_gitee @zhang_yixin13
+zh-cn/application-dev/reference/apis-kernel-enhance-kit/capi-memory-purgmem.md @sagittary @OH-wxy @fang-jinxu
+zh-cn/application-dev/reference/apis-kernel-enhance-kit/capi-memory.md @sagittary @OH-wxy @fang-jinxu
+zh-cn/application-dev/reference/apis-kernel-enhance-kit/capi-purgeable-memory-h.md @sagittary @OH-wxy @fang-jinxu
 zh-cn/application-dev/reference/apis-kernel-enhance-kit/capi-qos-h.md @gatieme @tanyihua @fang-jinxu
 zh-cn/application-dev/reference/apis-kernel-enhance-kit/capi-qos-oh-qos-gewucreatesessionresult.md @gatieme @tanyihua @fang-jinxu
 zh-cn/application-dev/reference/apis-kernel-enhance-kit/capi-qos-oh-qos-gewusubmitrequestresult.md @gatieme @tanyihua @fang-jinxu
@@ -5032,9 +5035,6 @@ zh-cn/application-dev/reference/common/capi-jsvm-jsvm-vminfo.md @yuanxiaogou @kn
 zh-cn/application-dev/reference/common/capi-jsvm-jsvm-vmscope--8h.md @yuanxiaogou @knightaoko @k1ngqaquuu
 zh-cn/application-dev/reference/common/capi-jsvm-types-h.md @yuanxiaogou @knightaoko @k1ngqaquuu
 zh-cn/application-dev/reference/common/capi-jsvm.md @yuanxiaogou @knightaoko @k1ngqaquuu
-zh-cn/application-dev/reference/common/capi-memory-purgmem.md @sagittary @OH-wxy @fang-jinxu
-zh-cn/application-dev/reference/common/capi-memory.md @sagittary @OH-wxy @fang-jinxu
-zh-cn/application-dev/reference/common/capi-purgeable-memory-h.md @sagittary @OH-wxy @fang-jinxu
 zh-cn/application-dev/reference/common/init.md @chenjinxiang3 @liveery @fang-jinxu
 zh-cn/application-dev/reference/common/js-apis-common-load-native-module.md @yao_dashuai @k1ngqaquuu
 zh-cn/application-dev/reference/common/js-apis-logs.md @wang_zhaoyong @k1ngqaquuu
