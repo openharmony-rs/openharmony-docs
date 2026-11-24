@@ -21147,6 +21147,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/CustomDialogHoverModeExample.ets",
+				"functions":[
+					{
+						"end_line":108,
+						"name":"custom_dialog_hover_mode",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
