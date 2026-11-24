@@ -9996,6 +9996,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SelectedDataDetector.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"richEditor_selectedDataDetector",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -19633,6 +19643,11 @@
 						"end_line":32,
 						"name":"auto_fill",
 						"start_line":25
+					},
+					{
+						"end_line":55,
+						"name":"auto_fill_textarea",
+						"start_line":36
 					}
 				]
 			},
@@ -19695,6 +19710,26 @@
 						"end_line":43,
 						"name":"textmenushowmode_create_textinput",
 						"start_line":37
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectedDataDetector.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"selectedDataDetector_textinput",
+						"start_line":26
+					},
+					{
+						"end_line":44,
+						"name":"selectedDataDetector_textarea",
+						"start_line":36
+					},
+					{
+						"end_line":54,
+						"name":"selectedDataDetector_search",
+						"start_line":46
 					}
 				]
 			}
@@ -22730,6 +22765,16 @@
 						"end_line":79,
 						"name":"cross_node_controller",
 						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectedDataDetector.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"selectedDataDetector_text",
+						"start_line":16
 					}
 				]
 			}
