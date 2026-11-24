@@ -11633,7 +11633,7 @@ enableAutoReload(enable: boolean): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11685,7 +11685,7 @@ isAutoReloadEnabled(): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11807,7 +11807,7 @@ setNavigationEntryUserData(key: string, value: string): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11867,7 +11867,7 @@ getNavigationEntryUserData(key: string): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11897,7 +11897,7 @@ removeNavigationEntryUserData(key: string): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
