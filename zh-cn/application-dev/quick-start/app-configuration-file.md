@@ -64,7 +64,6 @@
     "ubsanEnabled": false,
     "cloudFileSyncEnabled": false,
     "cloudStructuredDataSyncEnabled": false,
-    "keepDataOnUninstall": false,
     "configuration": "$profile:configuration",
     "assetAccessGroups": [
       "com.ohos.photos",
