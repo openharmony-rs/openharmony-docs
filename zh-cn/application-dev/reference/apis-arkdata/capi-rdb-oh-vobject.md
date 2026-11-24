@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_VObject
+typedef struct OH_VObject {...} OH_VObject
 ```
 
 ## 概述
