@@ -22,7 +22,7 @@
 ## 约束限制
 
 - 本功能仅对系统应用开放。
-- 本功能仅支持在内存大于8GB的手机（Phone）设备上使用，其他设备调用时返回[801](../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。
+- 本功能仅支持在内存大于8GB的手机（Phone）设备上使用，其他设备调用时返回[801](../reference/errorcode-universal.md#801-该设备不支持此api)错误码。
 - 本功能仅支持Stage模型。
 - 使用本功能前，需要确保设备已开启定位开关，并已申请[ohos.permission.LOCATION](../security/AccessToken/permissions-for-all-user.md#ohospermissionlocation)、[ohos.permission.APPROXIMATELY_LOCATION](../security/AccessToken/permissions-for-all-user.md#ohospermissionapproximately_location)和[ohos.permission.LOCATION_IN_BACKGROUND](../security/AccessToken/permissions-for-all-user.md#ohospermissionlocation_in_background)权限。
 
