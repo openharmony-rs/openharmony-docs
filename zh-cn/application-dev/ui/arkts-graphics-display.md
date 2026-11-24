@@ -844,8 +844,6 @@ struct ImageExample4 {
   }
 }
 ```
-
-![zh-cn_image_0000001607845173](figures/image-view4.gif)
 <!--RP4End-->
 
 ## 事件调用
