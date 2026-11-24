@@ -312,7 +312,7 @@ setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise&lt;vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [DevicePowerMode](js-apis-power.md#devicepowermode9) | 是 | 电源模式。各模式含义请参见[DevicePowerMode](js-apis-power.md#devicepowermode9)枚举说明。 |
-| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。各模式含义请参见[DevicePowerSubMode](js-apis-power.md#devicepowersubmode)枚举说明。仅 603 搭配 SUB_MODE_SUPER_POWER_SAVE 或 SUB_MODE_EMERGENCY，非 603 模式不支持子模式。 |
+| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。各模式含义请参见[DevicePowerSubMode](js-apis-power.md#devicepowersubmode)枚举说明。仅 MODE_EXTREME_POWER_SAVE（603）支持电源模式子模式，subMode 默认值为 SUB_MODE_EMERGENCY（603002）。 |
 
 **返回值：**
 
