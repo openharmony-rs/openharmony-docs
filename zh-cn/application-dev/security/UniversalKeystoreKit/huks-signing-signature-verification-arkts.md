@@ -15,7 +15,7 @@
 - 密钥算法为RSA、摘要算法为SHA256、填充模式为PSS，请见开发案例：[RSA/SHA256/PSS](#rsasha256pss)
 - 密钥算法为RSA、摘要算法为SHA256、填充模式为PKCS1_V1_5，请见开发案例：[RSA/SHA256/PKCS1_V1_5](#rsasha256pkcs1_v1_5)
 - 密钥算法为RSA、摘要算法为SHA384、填充模式为PSS，请见开发案例：[RSA2048/SHA384/PSS](#rsa2048sha384pss)
-- 密钥算法为ML-DSA，支持纯模式、预哈希模式和外部μ模式，请见：[ML-DSA签名模式](#mldsa签名模式)
+- 密钥算法为ML-DSA，支持纯模式、预哈希模式和外部μ模式，请见：[ML-DSA签名模式](#ml-dsa签名模式)
 <!--RP1--><!--RP1End-->
 
 具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-signing-signature-verification-overview.md#支持的算法)。
