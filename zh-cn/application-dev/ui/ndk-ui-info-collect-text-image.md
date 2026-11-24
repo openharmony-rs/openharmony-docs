@@ -138,7 +138,7 @@
    - 同一UI实例上一次请求未完成时提交会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，页面应在收到结果前禁用触发采集的交互，不要用连续提交的方式重试。
 
    <!-- @[ndk_image_collect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // 页面调用的桥接入口：collectImages(nodeIds)。
    // 返回的Promise在请求受理后完成，结果包含受理结果与全部结果项。
@@ -197,7 +197,7 @@
    - 页面可能已经退出，回调仍然会执行。示例的回调只做结果转换与清理，不访问页面状态；页面侧用active标记判断页面是否仍然存在，已退出时丢弃结果，见下文“4. 页面展示采集结果”。
 
    <!-- @[ndk_image_take_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // 每个被受理的请求在UI线程执行一次：取出并转换全部结果项，
    // 返回前释放集合。
@@ -261,7 +261,7 @@
    结果项被转换成ArkTS对象后交给页面渲染。示例的桥接结果包含受理结果、整体结果和结果项数组，每个结果项包含节点ID、取出结果、单项错误码、像素尺寸和可选的PixelMap。
 
    <!-- @[ndk_image_result_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
    export interface ImageItemResult {
      // 本结果项的节点ID。每个请求的节点ID都有一项，失败项也包含在内。
@@ -276,7 +276,7 @@
      // 采集到的图片。示例在此不释放，对象由ArkTS持有。
      pixelMap?: image.PixelMap;
    }
-
+   
    export interface ImageCollectionResult {
      // 请求的受理结果。非0表示请求被拒绝，没有任何结果项。
      submitError: number;
@@ -290,7 +290,7 @@
    页面在调用采集前读取节点ID，拿到结果后按请求顺序渲染每一项。示例用active标记页面是否仍然存在，页面退出后不再修改状态。
 
    <!-- @[ndk_image_page_collect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/ImagePage.ets) -->
-
+   
    ``` TypeScript
    private async capture(nodeIds: number[]): Promise<void> {
      if (this.busy) {
@@ -359,7 +359,7 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
             "Cannot obtain the native UI context.");
     }
 
-    // 在UI线程的ArkUI事件中同步调用，不能从工作线程或异步任务中调用。
+    // 在 UI 线程的 ArkUI 事件中同步调用，不能从工作线程或异步任务中调用。
     OH_ArkUI_NativeModule_UIJsonWrapper *pageText = nullptr;
     code = OH_ArkUI_NativeModule_UIAgentGetPageText(context, &pageText);
     JsonOwner ownedText(pageText, OH_ArkUI_NativeModule_UIJsonWrapperDestroy);
@@ -372,7 +372,7 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
     }
     uint32_t size = OH_ArkUI_NativeModule_UIJsonWrapperGetSize(ownedText.get());
     napi_value result = nullptr;
-    // N-API会在函数退出、所属包装器销毁前复制UTF-8字节。
+    // N-API 会在函数退出、所属包装器销毁前复制 UTF-8 字节。
     if (napi_create_string_utf8(env, jsonData, size, &result) != napi_ok) {
         return ThrowError(env, ARKUI_ERROR_CODE_INTERNAL_ERROR, "Cannot copy the collected JSON to ArkTS.");
     }
@@ -387,9 +387,9 @@ napi_value GetPageText(napi_env env, napi_callback_info info)
 
 ``` TypeScript
 export interface PageTextItem {
-  // 原生节点ID，与ArkTS组件的.id('sampleText')不同，也无关联性。
+  // 原生节点 ID；它与 ArkTS 组件的 .id('sampleText') 不同。
   id: number;
-  // 相对于目标窗口的物理像素坐标[x, y, width, height]。
+  // 相对于目标窗口的物理像素坐标 [x, y, width, height]。
   rect: number[];
   content: string;
 }
@@ -399,7 +399,7 @@ export interface PageTextResult {
   texts: PageTextItem[];
 }
 
-/** 解析原生页面文本API返回的带版本 JSON。 */
+/** 解析原生页面文本 API 返回的带版本 JSON。 */
 export function parsePageText(json: string): PageTextResult {
   const result: PageTextResult = JSON.parse(json) as PageTextResult;
   if (result.schemaVersion !== 1 || !Array.isArray(result.texts)) {
