@@ -111,7 +111,7 @@ ohos-pasteboard get-data
 
 | 错误码 | 说明 | 处理建议 |
 | ------- | -------- | -------- |
-| ERR_PERMISSION_DENIED | 权限不足。 | 申请ohos.permission.READ_PASTEBOARD权限。 |
+| ERR_PERMISSION_DENIED | 权限不足。 | 申请[ohos.permission.READ_PASTEBOARD](../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限。 |
 | ERR_NO_DATA | 剪贴板为空。 | 先执行set-data设置数据。 |
 | ERR_NO_USER_DATA | 当前用户无剪贴板数据。 | 先执行set-data设置数据。 |
 | ERR_DATA_EXPIRED | 剪贴板数据已过期。 | 数据已因过期被自动清除，重新执行set-data设置数据。 |
