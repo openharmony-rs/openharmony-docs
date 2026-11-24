@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-02T00:59:12.388Z pushedAt=2026-11-02T09:50:20.075Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1329268b35b162fd1d73b5adc97910b9c14d19e7 translatedAt=2026-11-24T08:20:31.358Z pushedAt=2026-11-24T10:43:14.512Z nl=1 -->
 
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. This module provides APIs for cross-device file access management, encrypted storage, and access authorization. DLP protects sensitive files through encryption and generates encrypted files in .dlp format. When opening a DLP file, the system automatically creates an isolated DLP sandbox environment to ensure that the file content is not leaked to unauthorized environments. Fine-grained permission control is supported for enterprise DLP files, including management of permissions to view, edit, copy, print, and screen-record files.
 
@@ -1273,6 +1273,8 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 
 Sets the enterprise app protection policy. After a successful call, DLP protection for the enterprise app is executed according to the configured policy.
 
+<!--RP1--><!--RP1End-->
+
 This API can be used by enterprise administrators to configure DLP security policies for unified management of enterprise data security protection rules.
 
 > **NOTE**
@@ -1296,7 +1298,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100021 | Failed to set the enterprise policy. |
@@ -1381,8 +1383,29 @@ Enumerates the DLP file permission types.
 | -------- | -------- | -------- |
 | NO_PERMISSION | 0 | No file permission. |
 | READ_ONLY | 1 | Read-only permission for the file. |
-| CONTENT_EDIT | 2 | Indicates the edit permission of the file. |
+| CONTENT_EDIT | 2 | Edit permission of the file. |
 | FULL_CONTROL | 3 | Full control permission for the file. |
+| ATOMIC_CONTROL | 4 | The user has atomic control over the file. Fine-grained permission management is implemented through the [DlpAtomicPermissionType](#dlpatomicpermissiontype)-bit mask. Compared with **FULL_CONTROL**, this option provides finer-grained control. <br>**Since:** 26.1.0 <br>**Model restriction:** This API can only be used in the Stage model.|
+
+## DlpAtomicPermissionType
+
+Enumerates the atomic permissions on a DLP file, including user operations and application permission control. This enum supports combining multiple permissions using bitwise OR operations.
+
+**Since:** 26.1.0
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| ATOMIC_READ | 0x01 | Atomic permission to read the file. |
+| ATOMIC_EDIT | 0x02 | Atomic permission to edit the file. |
+| ATOMIC_COPY | 0x04 | Atomic permission to copy the file content. |
+| ATOMIC_SCREENSHOT | 0x08 | Atomic permission to take a screenshot of the file. |
+| ATOMIC_PRINT | 0x10 | Atomic permission to print the file. |
+| ATOMIC_APP_PERMISSION | 0x20 | Atomic permission that allows a sandbox application to access restricted system services.<br>When a DLP file is accessed, the system creates an independent sandbox for the application. The sandbox inherits the data, configuration, and permissions of the application.<br>This flag allows the sandbox to access system services within the inherited permissions. For example, if the original application does not have the permission to use Bluetooth, the sandbox application cannot call Bluetooth-related APIs even if this flag is enabled.<br>Specifically, the following permissions are included:<br> - Permissions to access the Internet, set Wi-Fi configuration, set Wi-Fi information, and manage Wi-Fi hotspots.<br> - Permissions to use Bluetooth, manage Bluetooth, access Bluetooth, and discover Bluetooth.<br> - Permissions to access NearLink and manage NearLink.<br> - Permissions to use cloud public services, cloud backup services, and cloud drive services, synchronize cloud files, and use the cloud file synchronization manager.<br> - Permissions to send messages and receive SMS messages, MMS messages, and WAP push messages.<br> - Permissions to write audios, files, images/videos, and media data.<br> - Permission to read and write the download directory, the desktop directory, and the document directory.<br> - Permissions to write the entire calendar.<br> - Permission on proxy authorization URIs.<br> -Permission on the file access manager.<br> - Permission on distributed data synchronization.<br> -NFC tag permission.<br>This permission can be combined with other atomic permissions using bitwise OR operations.<br>For details, see [DLP Service Development Guide](../../security/DataProtectionKit/dlp-guidelines.md). |
+
 
 ## DLPPermissionInfo
 
@@ -1447,6 +1470,8 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 Encrypts a plaintext file to generate an enterprise account DLP file. This API can only be called by enterprise accounts. This API uses a promise to return the result.
 
+<!--RP1--><!--RP1End-->
+
 Used to encrypt a plaintext file to generate a DLP permission-controlled file for enterprise accounts, implementing enterprise-level file permission management.
 
 > **NOTE**
@@ -1479,7 +1504,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1533,6 +1558,8 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 Decrypts a DLP file to generate a plaintext file. Only enterprise accounts are supported. This API uses a promise to return the result.
 
+<!--RP1--><!--RP1End-->
+
 This API is used to decrypt a DLP-encrypted file into a plaintext file, suitable for owner-privileged users to export or migrate files.
 > **NOTE**
 >
@@ -1562,7 +1589,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1605,6 +1632,8 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 Parses the file header in a DLP file to obtain the DLP plaintext policy. The returned policy JSON string contains [DLPProperty](#dlpproperty21) and [CustomProperty](#customproperty21) information. This API uses a promise to return the result.
 
+<!--RP1--><!--RP1End-->
+
 This API can be used in scenarios such as viewing DLP file permission configurations, to obtain the file's policy information for analysis.
 
 > **NOTE**
@@ -1634,7 +1663,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1736,6 +1765,7 @@ Represents authorized user data.
 | authAccountType | [AccountType](#accounttype21) | No | No | Type of the account. |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | No | No | Permission granted to the user. |
 | permExpiryTime | number | No | No | Timestamp when the authorization has expired. The value must be greater than or equal to 0. If the value is out of range, it will be forcibly converted to an unsigned integer. Unit: s. |
+| atomicDlpFileAccess | number | No | Yes | Bit mask for the DLP file atomic permission control. The value is a mask formed by the bitwise OR operator (\|) of the DlpAtomicPermissionType flags, which controls read, edit, copy, screenshot, print, and application-level permissions.<br>**Since:** 26.1.0 <br>**Model restriction:** this API can only be used in the Stage model.|
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1751,6 +1781,8 @@ Used in the registerPlugin API to register callback capabilities to the SA (Syst
 connectServer(requestId: string, requestData: string, callback: Callback\<string\>): void
 
 This function is called by the SA (System Ability) side. After processing the request for connecting to the cloud service, it returns the result to the SA (System Ability) via the callback.
+
+<!--RP1--><!--RP1End-->
 
 This API can be used in scenarios such as enterprise account authentication and cloud permission verification, enabling communication between the SA and the cloud server to complete the permission verification or account verification process.
 
@@ -1777,7 +1809,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100011 | The system ability works abnormally. |
   
 **Example**
@@ -1817,6 +1849,8 @@ Used to call the registerPlugin and unregisterPlugin APIs to register or unregis
 constructor()
 
 Constructor for instantiating [DlpConnManager](#dlpconnmanager21).
+
+<!--RP1--><!--RP1End-->
  
 **Required permissions:** From API version 26.0.0, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE; for API versions 21 to 24, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE.
  
@@ -1829,7 +1863,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
   
 **Example**
 
@@ -1843,6 +1877,8 @@ let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnMana
 static registerPlugin(plugin: DlpConnPlugin): number
   
 Registers a callback with the SA (System Ability) side.
+
+<!--RP1--><!--RP1End-->
 
 > **NOTE**
 >
@@ -1871,7 +1907,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1907,6 +1943,8 @@ static unregisterPlugin(): void
   
 Provides the capability to unregister callbacks from the SA (System Ability) side.
 
+<!--RP1--><!--RP1End-->
+
 This API unregisters a callback and releases resources when an app exits.
 
 > **NOTE**
@@ -1924,7 +1962,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1942,6 +1980,8 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 Represents the query options for enterprise DLP files.
 
+<!--RP1--><!--RP1End-->
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1957,6 +1997,8 @@ Represents the query options for enterprise DLP files.
 queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 Queries the URI list of opened enterprise DLP files that match the specified options. This API uses a promise to return the result.
+
+<!--RP1--><!--RP1End-->
 
 Call this API when you need to manage or track the enterprise DLP files opened by the current app. It can be used in scenarios such as file status check and resource management.
 
@@ -2019,6 +2061,8 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 Closes all currently opened enterprise DLP files that match the specified options. This API uses a promise to return the result.
 
+<!--RP1--><!--RP1End-->
+
 Call this API when you need to batch close enterprise DLP files, clean up file resources, or release file handles before the app exits.
 
 > **NOTE**
@@ -2078,6 +2122,8 @@ dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
 setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&lt;void&gt;
 
 Sets the list of apps controlled by enterprise DLP. This API uses a promise to return the result.
+
+<!--RP1--><!--RP1End-->
   
 **Since**: 26.0.0
 
@@ -2135,6 +2181,8 @@ dlpPermission.setControlledAppLists(appList, userId).then(() => {
 getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
 
 Obtains the list of apps controlled by enterprise DLP for the current user. This API uses a promise to return the result.
+
+<!--RP1--><!--RP1End-->
 
 >**NOTE**
 >
