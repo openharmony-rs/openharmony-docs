@@ -36,6 +36,8 @@
 
 本开发指导涉及的关键接口如下表所示，完整参数、返回值和错误码说明见[ui_info_collection.h](../reference/apis-arkui/capi-ui-info-collection-h.md)和[ui_json_wrapper.h](../reference/apis-arkui/capi-ui-json-wrapper-h.md)，常见失败情形见[常见问题](#常见问题)。图像采集取出的PixelMap需配合Image Kit的`<multimedia/image_framework/image/pixelmap_native.h>`处理，例如通过[OH_PixelmapNative_ConvertPixelmapNativeToNapi](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)转换为ArkTS对象渲染。
 
+### 节点图片采集接口
+
 三个函数的用途见下表。
 
 | 接口名 | 描述 |
@@ -44,7 +46,7 @@
 | [OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectiontakeitembynodeid) | 从结果集合中取出指定节点ID对应的结果项。成功时PixelMap所有权转移给应用，需调用[OH_PixelmapNative_Destroy](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放，详见[结果项的取出规则](#结果项的取出规则)。 |
 | [OH_ArkUI_NativeModule_ImageCollectionDestroy](../reference/apis-arkui/capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectiondestroy) | 销毁结果集合，释放尚未取出的PixelMap。由集合所有者调用一次，详见[集合的释放规则](#集合的释放规则)。 |
 
-### 结果的分层模型
+#### 结果的分层模型
 
 一次采集会产生四个层次的返回值，分别对应提交、整体、单项和取出动作，判断某一层失败时不能套用另一层的结论。
 
@@ -57,7 +59,7 @@
 
 整体结果与单项结果还可能返回[ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，分别表示集合分配失败与该节点生成图片所需的内存分配失败。
 
-### 请求中的节点ID与数量
+#### 请求中的节点ID与数量
 
 请求以整数节点ID定位目标，节点ID由[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取，与组件通过`id()`设置的字符串标识不是同一个值。结果集合按节点ID组织，每个被受理的节点ID都有一个结果项，应用可以按自己的请求顺序逐项取出并渲染，不依赖集合内部的排列。
 
@@ -65,30 +67,18 @@
 - 节点ID只在节点存在期间有效。节点被移除、页面重建或列表回收后，原有节点ID不再对应任何节点，采集该ID会得到[ARKUI_ERROR_CODE_NODE_NOT_FOUND](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
 - 采集不要求节点处于可见状态，节点不在当前可见区域内也可以作为目标。
 
-### 图片内容的取用规则
-
-图片内容与像素尺寸取决于目标节点类型（含Image节点取不到源图的情形），返回值与所有权规则相同。
-
-| 目标节点 | 返回的图片 | 说明 |
-|---|---|---|
-| Image节点 | 组件的完整源图。 | 像素尺寸为源图尺寸，不是页面上的显示尺寸。示例工程的源图为640×480，页面显示尺寸为96vp。 |
-| Image节点（源图不可用） | 节点边界内的渲染内容。 | 与下一行的行为一致。 |
-| 其他节点 | 节点边界内的渲染内容。 | 结果为该节点边界范围内的渲染内容，像素尺寸随节点在页面上的显示尺寸变化。 |
-
-### 结果项的取出规则
+#### 结果项的取出规则
 
 每个结果项在集合有效期内只能取出一次，取出后集合不再持有该项的PixelMap。失败项同样需要取出，用于获取该节点的错误码。
 
 - 采集成功：outPixelmap接收PixelMap，所有权转移到应用，由应用调用[OH_PixelmapNative_Destroy](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放。
 - 采集失败：outPixelmap被置为空指针，错误码写入outItemError，本次取出仍返回0。
-- 同一节点ID重复取出、或传入不属于该集合的节点ID时，取出会失败，返回值定义见[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
+
 - 取出接口不得与同一集合的其他集合操作接口并发调用。
 
-### 集合的释放规则
+#### 集合的释放规则
 
 回调返回的每个非空集合都必须销毁，包括所有结果项都已取出的情况。销毁集合只释放应用尚未取出的PixelMap，不会使已经转移给应用的PixelMap失效。
-
-集合与其中的PixelMap分属两层所有权：PixelMap在取出时转移，集合在销毁时释放。应用如果把PixelMap转换成ArkTS对象使用，应在转换完成后及时释放native对象，不必与集合的销毁时机对齐。销毁集合同样不得与同一集合的其他集合操作接口并发调用。
 
 ### 页面文本采集接口
 
@@ -119,13 +109,15 @@
 
 采集接口要求上下文句柄指向目标页面的UI实例。示例工程通过页面上的[NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md)获取上下文。Native侧在其中挂载一个空节点，再用[OH_ArkUI_GetContextByNode](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_getcontextbynode)从该节点反查。实现见示例工程中的AttachImageAnchor与GetImageContext。也可以把页面上的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)通过[OH_ArkUI_GetContextFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getcontextfromnapivalue)转换为[ArkUI_ContextHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-context8h.md)，与从节点反查得到的是同一个UI实例的句柄。
 
-### 获取目标节点ID
+### 采集节点图片
+
+#### 获取目标节点ID
 
 目标节点ID从页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)获取：先通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)按组件`id()`设置的字符串标识得到FrameNode，再调用[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取整数节点ID。
 
 节点ID只在节点存在期间有效，示例在每次采集前重新读取，不缓存。[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)返回空表示该标识当前没有对应节点，此时应放弃本次采集，不要用无效值提交请求；示例的单节点与批量入口未做该判断，实际应用需要自行补充。
 
-### 提交采集请求
+#### 提交采集请求
 
 提交时把节点ID数组和回调交给采集接口，由框架在目标UI实例的UI线程回调一次。示例把回调结果包装为Promise，页面侧按异步流程处理。
 
@@ -185,7 +177,7 @@ napi_value CollectImages(napi_env env, napi_callback_info info)
 }
 ```
 
-### 获取采集结果
+#### 获取采集结果
 
 回调在目标UI实例的UI线程执行，结果集合在回调中转移给应用，由应用负责取出与销毁。示例在回调内按请求顺序取出全部结果项，并在回调返回前完成清理。
 
@@ -256,7 +248,7 @@ void OnImages(ArkUI_ErrorCode overallError, OH_ArkUI_NativeModule_ImageCollectio
 }
 ```
 
-### 页面展示采集结果
+#### 页面展示采集结果
 
 结果项被转换成ArkTS对象后交给页面渲染。示例的桥接结果包含受理结果、整体结果和结果项数组，每个结果项包含节点ID、取出结果、单项错误码、像素尺寸和可选的PixelMap。
 
@@ -323,7 +315,7 @@ private async capture(nodeIds: number[]): Promise<void> {
 }
 ```
 
-### 接口返回示例
+#### 接口返回示例
 
 示例工程把受理结果、整体结果与结果项数量放在同一行状态中显示。下表列出页面中三个场景的实际返回。
 
