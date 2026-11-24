@@ -617,11 +617,14 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     <!-- @[player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp)-->
 
     ```c++
-    void Player::ReleaseVideoDecoder()
+    void Player::ReleaseVideoDecoder(bool trackCleanup)
     {
         OHNativeWindow *decoderWindow = decoderWindowLease_.GetWindow();
         if (videoDecoder_ != nullptr) {
             // ...
+            if (trackCleanup) {
+                cleanupProgress_.Enter("codec.video.destroy");
+            }
             RecordCleanup("video.decoder.destroy", videoDecoder_->Release());
             videoDecoder_.reset();
         }
