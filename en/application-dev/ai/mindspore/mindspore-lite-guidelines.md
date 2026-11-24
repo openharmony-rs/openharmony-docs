@@ -6,20 +6,13 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=74dbc0b46883bf93067f37341e912d6ceee0317b translatedAt=2026-11-23T08:58:42.472Z pushedAt=2026-11-24T07:14:07.997Z nl=1 -->
 
 ## When to Use
 
 MindSpore Lite is an AI engine that provides AI model inference for different hardware devices. It has been used in a wide range of fields, such as image classification, target recognition, facial recognition, and character recognition.
 
 This document describes the general development process for MindSpore Lite model inference.
-
-## Basic Concepts
-
-Before getting started, you need to understand the following basic concepts:
-
-**Tensor**: a special data structure that is similar to arrays and matrices. It is basic data structure used in MindSpore Lite network operations.
-
-**Float16 inference mode**: an inference mode in half-precision format, where a number is represented with 16 bits.
 
 ## Available APIs
 
@@ -125,9 +118,9 @@ The development process consists of the following main steps:
    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
    ```
 
-   Scenario 2: The neural network runtime (NNRT) and CPU heterogeneous inference contexts are created.
+   Scenario 2: Create a context for NNRT (Neural Network Runtime) and CPU [heterogeneous inference](mindspore-lite-term.md#heterogeneous-inference).
 
-   NNRT is the runtime for cross-chip inference computing in the AI field. Generally, the acceleration hardware connected to NNRT, such as the NPU, has strong inference capabilities but supports only a limited number of operators, whereas the general-purpose CPU has weak inference capabilities but supports a wide range of operators. MindSpore Lite supports NNRT and CPU heterogeneous inference. Model operators are preferentially scheduled to NNRT for inference. If certain operators are not supported by NNRT, then they are scheduled to the CPU for inference. The following is the sample code for configuring NNRT/CPU heterogeneous inference:
+   NNRT is a cross-chip inference computing runtime for the AI field. Generally, the acceleration hardware connected to NNRT, such as the [NPU](mindspore-lite-term.md#npu), provides strong inference capabilities but supports fewer [operator](mindspore-lite-term.md#operator) specifications, whereas the general-purpose CPU provides weaker inference capabilities but supports more comprehensive operator specifications. MindSpore Lite supports configuring heterogeneous inference on NNRT hardware and the CPU: it preferentially schedules model operators to NNRT for inference, and schedules operators that NNRT does not support to the CPU for inference. You can configure NNRT/CPU heterogeneous inference through the following operations.
    <!--Del-->
 
    > **NOTE**
@@ -201,7 +194,7 @@ The development process consists of the following main steps:
    // Obtain the input tensor.
    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
    if (inputs.handle_list == NULL) {
-     printf("OH_AI_ModelGetInputs failed, ret: %d.\n", ret);
+     printf("OH_AI_ModelGetInputs failed.\n");
      OH_AI_ModelDestroy(&model);
      OH_AI_ContextDestroy(&context);
      return ret;
@@ -261,7 +254,7 @@ The development process consists of the following main steps:
 
 7. Destroy the model.
 
-   If the MindSpore Lite inference framework is no longer needed, you need to destroy the created model.
+   When you no longer use the MindSpore Lite inference framework, release the corresponding resources. The model uses the context resources. Therefore, release the model first and then the context.
 
    ```c
    // Release the model and context.
@@ -301,7 +294,7 @@ The development process consists of the following main steps:
    ./demo mobilenetv2.ms
    ```
 
-   The inference is successful if the output is similar to the following:
+   The operation is successful if the output is similar to the following:
 
    ```shell
    # ./demo ./mobilenetv2.ms                                            

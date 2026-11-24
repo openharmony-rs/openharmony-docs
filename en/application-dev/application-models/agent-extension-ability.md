@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / Program Framework Service"]
+description: "Describes how to use the AgentExtensionAbility component to implement the agent service server, covering lifecycle implementation, bidirectional data sending and receiving, and the security authentication mechanism. It is applicable to cross-application agent collaboration scenarios."
+keywords: [AgentExtensionAbility, agent service, AgentHostProxy]
+doctype: guide
+status: active
+---
 # Using the AgentExtensionAbility Component to Implement Agent Services
 
 <!--Kit: Ability Kit-->
@@ -6,7 +13,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7b9a2b20c0ccde8a6fcec022ec0fcbcafa6267c4 translatedAt=2026-07-06T02:47:28.815Z pushedAt=2026-07-10T10:03:42.589Z -->
+<!-- md-trans-meta sourceCommit=f92d5a4fab1366fe913ccd9c81db56ab439390df translatedAt=2026-11-23T07:47:20.026Z pushedAt=2026-11-24T08:24:58.567Z nl=1 -->
 
 ## Overview
 
@@ -22,7 +29,7 @@ Manually create an [AgentExtensionAbility](../reference/apis-ability-kit/js-apis
 
 1. In the ets directory of the project module, right-click and choose **New > Directory**, then create a new directory named agentextability.
 
-2. In the AgentExtAbility directory, right-click and choose **New > ArkTS File**, then create a new file named AgentExtAbility.ets.
+2. In the agentextability directory, right-click and choose **New > ArkTS File**, then create a new file named AgentExtAbility.ets.
 
     ``` txt
     ├── ets
@@ -33,7 +40,7 @@ Manually create an [AgentExtensionAbility](../reference/apis-ability-kit/js-apis
 3. In the AgentExtAbility.ets file, add the import module for [AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md), and define a custom class AgentExtAbility that inherits from [AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md) and implements the lifecycle callbacks.
 
     <!-- @[ability_agent_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets) -->
-
+    
     ``` TypeScript
     import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -78,7 +85,7 @@ Manually create an [AgentExtensionAbility](../reference/apis-ability-kit/js-apis
         } catch (err) {
           let code = (err as BusinessError).code;
           let msg = (err as BusinessError).message;
-          console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+          console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
         }
       }
       // Destroy
@@ -87,6 +94,7 @@ Manually create an [AgentExtensionAbility](../reference/apis-ability-kit/js-apis
       }
     }
     ```
+
 
 4. Register the AgentExtensionAbility in the [module.json5 Configuration File](../quick-start/module-configuration-file.md) of the project module. Set the type tag to "agent", and use the srcEntry tag to specify the code path of the current ExtensionAbility component.
 
@@ -104,7 +112,7 @@ Manually create an [AgentExtensionAbility](../reference/apis-ability-kit/js-apis
             "metadata": [
               {
                 "name": "ohos.extension.agent",
-                "resource": "$profile:agent_config",
+                "resource": "$profile:agent_config"
               }
             ]
           }
@@ -113,7 +121,7 @@ Manually create an [AgentExtensionAbility](../reference/apis-ability-kit/js-apis
     }
     ```
 
-5. Create an agent_config.json file in the `resources/base/profile/` directory of the project module, and then configure the [AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md) information in it. For detailed steps, see [Agent Configuration File Description](./agent-extension-configuration.md).
+5. Create an agent_config.json file in the `resources/base/profile/` directory of the project module, and then configure the [AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md) information in it. For detailed steps, see [Agent Configuration File](./agent-extension-configuration.md).
 
 ## Sending and Receiving Data Using the AgentExtensionAbility Component
 
@@ -165,10 +173,9 @@ export default class AgentExtAbility extends AgentExtensionAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let msg = (err as BusinessError).message;
-      console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+      console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
     }
   }
   // ...
 }
 ```
-<!--no_check-->

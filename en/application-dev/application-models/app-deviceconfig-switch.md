@@ -4,13 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T07:48:57.848Z pushedAt=2026-11-24T08:31:09.410Z nl=1 -->
 
 
 To help you better maintain the configuration of application-level attributes, OpenHarmony has extracted the **app** and **deviceConfig** tags from the **config.json** file to the **app.json5** file and changed certain tag names in the [stage model](ability-terminology.md#stage-model).
 
-**Table 1** Comparison of the app tag in the configuration files
+
+  **Table 1** Comparison of the app tag in the configuration files
 
 | Configuration Item| app in config.json in [FA Model](ability-terminology.md#fa-model)| app in app.json5 in Stage Model|
 | -------- | -------- | -------- |
@@ -24,7 +26,8 @@ To help you better maintain the configuration of application-level attributes, O
 
 OpenHarmony has reconstructed the [deviceConfig](../quick-start/deviceconfig-structure.md) tag of the **config.json** file in the **app.json5** file. It has integrated the fields related to device information under **deviceConfig** into the **app** tag of the [app.json5](../quick-start/app-configuration-file.md) file.
 
-**Table 2** Comparison of the deviceConfig tag in the configuration files
+
+  **Table 2** Comparison of the deviceConfig tag in the configuration files
 
 | deviceConfig in the FA Model| Description| Stage Model| Difference|
 | -------- | -------- | -------- | -------- |

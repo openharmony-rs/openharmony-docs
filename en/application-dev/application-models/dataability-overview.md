@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:08:24.608Z pushedAt=2026-11-24T09:05:06.735Z nl=1 -->
 
 
 A DataAbility is an ability that uses the Data template. It provides unified data access objects for external systems, but not a UI for user interaction. A DataAbility can be started by a PageAbility, a ServiceAbility, or other applications. It remains to run in the background even after the user switches to another application.

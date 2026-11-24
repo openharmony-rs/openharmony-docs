@@ -1,11 +1,19 @@
+---
+kits: ["Ability Kit / Program Framework Service"]
+description: "Describes how to implement secure inter-application redirection through App Linking, covering domain name declaration, website association configuration, link processing code, and development steps for the launcher to call the openLink API."
+keywords: [App Linking, inter-application redirection, openLink, domain name verification, domainVerify, application link]
+doctype: guide
+status: active
+---
 # Using App Linking for Application Redirection
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f92d5a4fab1366fe913ccd9c81db56ab439390df translatedAt=2026-11-23T07:49:58.548Z pushedAt=2026-11-24T08:41:11.905Z nl=1 -->
 
 ## Overview
 
@@ -105,7 +113,7 @@ Perform the following operations on the developer website to associate the appli
 
 1. Create the domain name configuration file **applinking.json**.
 
-   The content is as follows:
+   The file content is as follows:
 
    ```json
    {
@@ -140,6 +148,10 @@ Add code to the **onCreate()** or **onNewWant()** lifecycle callback of the abil
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG  = '[AppLinkEntryAbility]';
 
 export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -148,11 +160,15 @@ export default class AppLinkEntryAbility extends UIAbility {
     let uri = want?.uri;
     if (uri) {
       // Parse the query parameter from the link. You can perform subsequent processing based on service requirements.
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action');
-      // For example, if action is set to showall, all programs are displayed.
-      if (action === 'showall') {
-        // ...
+      try {
+        let urlObject = url.URL.parseURL(want?.uri);
+        let action = urlObject.params.get('action');
+        // For example, when action is showall, display all programs.
+        if (action === 'showall') {
+          // ...
+        }
+      } catch (error) {
+        hilog.error(DOMAIN_NUMBER, TAG, 'Failed to parse URL: %{public}s', JSON.stringify(error));
       }
     }
   }
@@ -199,10 +215,10 @@ struct Index {
         // Open the application only in App Linking mode.
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
           })
           .catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
@@ -210,12 +226,12 @@ struct Index {
 ```
 
 
-If the target application is started, the App Linking configuration of the target application is correct.
+Execute the preceding code in the launcher application. If the target application is launched successfully, the App Linking configuration of the target application is correct.
 
 ## FAQs
 
 
-1. What should I do when the value of **skills** in the **Modules.json5** file of the application is incorrect?
+1. The skills settings in the module.json5 file of the application are incorrect.
 
    Ensure that the value of **host** is the domain name of the application.
 
@@ -237,4 +253,3 @@ If the target application is started, the App Linking configuration of the targe
    You can configure the **applinking.json** file to associate a domain name with multiple applications. If the **uris** field in the **module.json5** file of each application is set to the same value, the system displays a dialog box for users to select the application to start.
    
    You can also use the **path** field to distinguish the applications to start. For example, use **https://www.example.com/path1** to start target application 1 and use **https://www.example.com/path2** to start target application 2.
-  

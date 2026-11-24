@@ -1,12 +1,11 @@
 # SceneType
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=9bb5a62ecd61b6f45356eb97818a280b50c70dac translatedAt=2026-08-20T12:26:45.649Z pushedAt=2026-08-21T06:20:15.034Z -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-23T09:07:51.992Z pushedAt=2026-11-24T12:50:22.842Z nl=1 -->
 
 This module provides the common data types in ArkGraphics 3D.
 

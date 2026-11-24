@@ -1,12 +1,11 @@
 # ScenePostProcessSettings
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8bb9848b7b451305a97994d9b8833fe195588c67 translatedAt=2026-08-20T12:26:11.705Z pushedAt=2026-08-21T07:08:14.940Z -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-23T09:04:46.792Z pushedAt=2026-11-24T12:34:55.729Z nl=1 -->
 
 This module provides image post-processing methods such as tone mapping in ArkGraphics 3D.
 

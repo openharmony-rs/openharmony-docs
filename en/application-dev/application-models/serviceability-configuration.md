@@ -3,14 +3,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:34:21.580Z pushedAt=2026-11-24T09:06:23.499Z nl=1 -->
 
 
 Similar to a PageAbility, a ServiceAbility is configured in **abilities** under **module** of the **config.json** file. The difference between a ServiceAbility and PageAbility lies in the **type** and **backgroundModes** fields.
 
 
-**Table 1** ServiceAbility configuration items
+  **Table 1** ServiceAbility configuration items
 
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |

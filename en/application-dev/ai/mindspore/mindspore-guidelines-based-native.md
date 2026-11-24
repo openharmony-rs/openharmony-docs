@@ -6,7 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d1226d126745b3e8706e636f468e8781c9592562 translatedAt=2026-09-23T08:12:36.808Z pushedAt=2026-09-23T08:19:29.203Z -->
+<!-- md-trans-meta sourceCommit=0a700173e5c84025d84d507df3bd0f7bc887e989 translatedAt=2026-11-23T08:55:40.665Z pushedAt=2026-11-24T06:49:19.775Z nl=1 -->
 
 ## When to Use
 
@@ -36,7 +36,7 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 1. Include the corresponding header file.
 
    <!-- @[napi_image_classification_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
-
+   
    ```c++
    #include <iostream>
    #include <sstream>
@@ -70,20 +70,25 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
        auto rawFile = OH_ResourceManager_OpenRawFile(nativeResourceManager, modelName.c_str());
        if (rawFile == nullptr) {
            LOGE("MS_LITE_ERR: Open model file failed");
-           OH_ResourceManager_CloseRawFile(rawFile);
            return nullptr;
        }
        long fileSize = OH_ResourceManager_GetRawFileSize(rawFile);
        if (fileSize <= 0) {
            LOGE("MS_LITE_ERR: FileSize not correct");
+           OH_ResourceManager_CloseRawFile(rawFile);
+           return nullptr;
        }
        void *modelBuffer = malloc(fileSize);
        if (modelBuffer == nullptr) {
            LOGE("MS_LITE_ERR: malloc failed");
+           OH_ResourceManager_CloseRawFile(rawFile);
+           return nullptr;
        }
        int ret = OH_ResourceManager_ReadRawFile(rawFile, modelBuffer, fileSize);
        if (ret == 0) {
            LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
+           free(modelBuffer);
+           modelBuffer = nullptr;
            OH_ResourceManager_CloseRawFile(rawFile);
            return nullptr;
        }
@@ -328,7 +333,7 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 1. In **entry/src/main/cpp/types/libentry/Index.d.ts**, define the ArkTS API **runDemo ()**. The content is as follows:
 
    <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
    export const runDemo: (a: number[], b:Object) => Array<number>;
    ```
@@ -586,9 +591,9 @@ struct Index {
 
 Touch the **photo** button on the device screen, select an image, and touch **OK**. The top 4 categories of the image are displayed below the image.
 
-![stepc1](figures/stepc1.png)           ![step2](figures/step2.png)
+![stepc1](figures/stepc1.png)
 
-![step3](figures/step3.png)         ![stepc4](figures/stepc4.png) 
+                                       ![stepc4](figures/stepc4.png) 
 
 ## Related Samples
 
@@ -597,4 +602,3 @@ The following sample is provided to help you better understand how to develop im
 - [MindSpore Lite Application Development Based on Native APIs (C/C++) (API 11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo)
 
 <!--RP1--><!--RP1End-->
-<!--no_check-->

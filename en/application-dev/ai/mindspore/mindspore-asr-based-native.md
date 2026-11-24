@@ -6,6 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=6e7b55e58dd0ee426a220be9644b6d48faa92192 translatedAt=2026-11-23T08:55:24.559Z pushedAt=2026-11-24T03:26:09.790Z nl=1 -->
 
 ## When to Use
 
@@ -15,11 +16,7 @@ Speech recognition can convert an audio file into text, which is widely used in 
 
 ## Environment Configuration
 
-If you want to execute the sample on an emulator, see [Running Your App on the Emulator](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-emulator).
-
-## Basic Concepts
-
-- N-API: a set of native APIs used to build ArkTS components. N-APIs can be used to encapsulate C/C++ libraries into ArkTS modules.
+To run this sample on an emulator, see [Running an Application on the Emulator](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-emulator).
 
 ## How to Develop
 
@@ -38,10 +35,9 @@ The speech recognition model files **tiny-encoder.ms**, **tiny-decoder-main.ms**
 
 Call [@ohos.multimedia.media](../../reference/apis-media-kit/arkts-apis-media.md) and [@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis-audio.md) to play audio.
 
-<!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) -->
+<!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) --> 
 
-```typescript
-// player.ets
+``` TypeScript
 import { media } from '@kit.MediaKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -199,16 +195,20 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
        long fileSize = OH_ResourceManager_GetRawFileSize(rawFile);
        if (fileSize <= 0) {
            LOGE("MS_LITE_ERR: FileSize not correct");
+           OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
        void *buffer = malloc(fileSize);
        if (buffer == nullptr) {
-           LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
+           LOGE("MS_LITE_ERR: malloc failed");
+           OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
        int ret = OH_ResourceManager_ReadRawFile(rawFile, buffer, fileSize);
        if (ret == 0) {
            LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
+           free(buffer);
+           buffer = nullptr;
            OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
@@ -226,16 +226,20 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
        long fileSize = OH_ResourceManager_GetRawFileSize(rawFile);
        if (fileSize <= 0) {
            LOGE("MS_LITE_ERR: FileSize not correct");
+           OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
        void *buffer = malloc(fileSize);
        if (buffer == nullptr) {
-           LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
+           LOGE("MS_LITE_ERR: malloc failed");
+           OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
        int ret = OH_ResourceManager_ReadRawFile(rawFile, buffer, fileSize);
        if (ret == 0) {
            LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
+           free(buffer);
+           buffer = nullptr;
            OH_ResourceManager_CloseRawFile(rawFile);
            return BinBuffer(nullptr, 0);
        }
@@ -393,13 +397,14 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
    }
    ```
 
-   <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
-
-   ```c++
+   <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
+   
+   ``` C++
    void SuppressTokens(BinBuffer &logits, bool isInitial)
    {
        auto logits_data = static_cast<float *>(logits.first);
        if (isInitial) {
+           // Assume these two values are the index positions in logits.
            logits_data[WHISPER_EOT] = NEG_INF;
            logits_data[WHISPER_BLANK] = NEG_INF;
        }
@@ -412,14 +417,15 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
    }
    ```
 
-   <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
-
-   ```c++
+   <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
+   
+   ``` C++
    std::vector<int> LoopPredict(const OH_AI_ModelHandle model, const BinBuffer &n_layer_cross_k,
                                 const BinBuffer &n_layer_cross_v, const BinBuffer &logits_init,
                                 BinBuffer &out_n_layer_self_k_cache, BinBuffer &out_n_layer_self_v_cache,
                                 const BinBuffer &data_embedding, const int loop, const int offset_init)
    {
+       // logits
        BinBuffer logits{nullptr, 51865 * sizeof(float)};
        logits.first = malloc(logits.second);
        if (!logits.first) {
@@ -441,6 +447,10 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
            }
        }
    
+       free(logits.first);
+       logits.first = nullptr;
+       logits_data = nullptr;
+
        int offset = offset_init;
        BinBuffer slice{nullptr, 0};
        slice.second = WHISPER_N_TEXT_STATE * sizeof(float);
@@ -467,6 +477,12 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
            void *data_embedding_src =
                static_cast<char *>(data_embedding.first) + offset * WHISPER_N_TEXT_STATE * sizeof(float);
            memcpy(slice.first, data_embedding_src, slice.second);
+           // out_n_layer_self_k_cache
+           // out_n_layer_self_v_cache
+           // n_layer_cross_k
+           // n_layer_cross_v
+           // slice
+           // token
            BinBuffer mask_bin(mask.data(), mask.size() * sizeof(float));
            int ret = RunMSLiteModel(model, {tokens, out_n_layer_self_k_cache_new, out_n_layer_self_v_cache_new,
                                             n_layer_cross_k, n_layer_cross_v, slice, mask_bin});
@@ -488,6 +504,8 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
            }
            LOGI("MS_LITE_LOG: run decoder loop %{public}d ok!\n token = %{public}d", i, max_token_id);
        }
+       free(slice.first);
+       slice.first = nullptr;
        return output_token;
    }
    
@@ -528,6 +546,8 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
        size_t dataSize = audioBin.second;
        uint8_t *dataBuffer = (uint8_t *)audioBin.first;
        bool ok = audioFile.loadFromMemory(std::vector<uint8_t>(dataBuffer, dataBuffer + dataSize));
+       DestroyModelBuffer(&audioBin.first);
+       dataBuffer = nullptr;
        if (!ok) {
            LOGE("MS_LITE_ERR: Fail to read  %{public}s!", filePath.c_str());
            return error_ret;
@@ -563,8 +583,6 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
        // Run inference on tiny-encoder.ms.
        auto encoderBin = ReadBinFile(resourcesManager, "tiny-encoder.ms");
        if (encoderBin.first == nullptr) {
-           free(dataBuffer);
-           dataBuffer = nullptr;
            return error_ret;
        }
    
@@ -612,8 +630,8 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
        auto modelBuffer3 = ReadBinFile(resourcesManager, modelName3);
        auto decoder_loop = CreateMSLiteModel(modelBuffer3);
    
-       const std::string dataName_embedding = "tiny-positional_embedding.bin"; // Obtain the input data.
-       auto data_embedding = ReadBinFile(resourcesManager, dataName_embedding);
+       const std::string dataNameEmbedding = "tiny-positional_embedding.bin"; // Obtain the input data.
+       auto data_embedding = ReadBinFile(resourcesManager, dataNameEmbedding);
        if (data_embedding.first == nullptr) {
            OH_AI_ModelDestroy(&encoder);
            OH_AI_ModelDestroy(&decoder_main);
@@ -712,10 +730,9 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 In **entry/src/main/ets/pages/Index.ets**, call the encapsulated ArkTS module to process the inference result. If the system displays a message indicating that @nutpi/chinese_transverter does not exist, install @nutpi/chinese_transverter by referring to the guide of the third-party library for the simplified and traditional chinese converter.
 
 
-<!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) --> 
 
-```ts
-// Index.ets
+``` TypeScript
 import msliteNapi from 'libentry.so'
 import AVPlayerDemo from './player';
 import { transverter, TransverterType, TransverterLanguage } from "@nutpi/chinese_transverter"
@@ -737,7 +754,7 @@ struct Index {
           .fontSize(30)
           .fontWeight(FontWeight.Bold);
         Button() {
-          Text('Play Audio')
+          Text($r('app.string.play'))
             .fontSize(20)
             .fontWeight(FontWeight.Medium)
         }
@@ -755,7 +772,7 @@ struct Index {
           myClass.avPlayerFdSrcDemo();
         })
         Button() {
-          Text ('Recognize Audio')
+          Text($r('app.string.asr'))
             .fontSize(20)
             .fontWeight(FontWeight.Medium)
         }
@@ -787,7 +804,7 @@ struct Index {
 
         // Display the recognized content.
         if (this.content) {
-          Text ('Recognized content:\n' + transverter({
+          Text('Recognized content:\n' + transverter({
             type: TransverterType.SIMPLIFIED,
             str: this.content,
             language: TransverterLanguage.ZH_CN
@@ -802,7 +819,7 @@ struct Index {
 
 ### Verification
 
-1. On DevEco Studio, connect to the device, click **Run entry**, and build your own HAP. 
+1. Connect the device in DevEco Studio, click **Run entry** to compile the HAP, and the following is displayed:
 
    ```shell
    Launching com.samples.mindsporelitecdemoasr
@@ -862,6 +879,6 @@ After you tap the **Play Audio** button on the device screen, the sample audio f
 
 The following sample is provided to help you better understand how to develop speech recognition applications using MindSpore Lite:
 
-- [MindSpore Lite ASR Application Development Based on Native APIs (C/C++) (API 14)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
+- [MindSpore Lite ASR Application Development Based on Native APIs (C/C++) (API 14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
 
 <!--RP1--><!--RP1End-->

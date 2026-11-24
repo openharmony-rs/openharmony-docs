@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / Program Framework Service"]
+description: "Introduces three solutions for application restart: active application restart, atomic service restart, and passive restart on fault recovery. Compares the restart methods of preserving the window and not preserving the window to help developers select an appropriate restart strategy based on the scenario."
+keywords: [application restart, restartApp, restartSelfAtomicService, restart with window preserved, application fault restart]
+doctype: guide
+status: active
+---
 # App Restart
 
 <!--Kit: Ability Kit-->
@@ -6,7 +13,7 @@
 <!--Designer: @wendel-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=17d3b236d2c2a3bbfc7bc46d7fe0f1415b7b5049 translatedAt=2026-11-02T13:41:01.106Z pushedAt=2026-11-03T04:23:43.788Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f92d5a4fab1366fe913ccd9c81db56ab439390df translatedAt=2026-11-23T07:50:13.310Z pushedAt=2026-11-24T08:41:19.441Z nl=1 -->
 
 App restart is used to reinitialize an app or restore its normal state in different scenarios. The system provides proactive app restart, proactive atomic service restart, and passive app restart for fault recovery. Developers can select an appropriate solution based on actual requirements.
 

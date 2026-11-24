@@ -6,7 +6,7 @@
 <!--Designer: @jayleehw-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=f513c81199f72302f41dc822fad2997ee23361fd translatedAt=2026-11-02T13:26:41.174Z pushedAt=2026-11-03T07:08:57.702Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ca8a4da928efb7d65be5020e86ec58161ae580c2 translatedAt=2026-11-23T08:33:03.003Z pushedAt=2026-11-24T13:14:26.825Z nl=1 -->
 
 
 - [About This Kit](abilitykit-overview.md)
@@ -82,6 +82,7 @@
     - [Application Quick Start](hyperstartup-application.md)
   - [App Exit](app-stop.md)<!--RP2--><!--RP2End-->
   - [App Restart](app-restart.md)
+  - [UIAbility Backup Restore Adaptation Guide](app-restore-adaptation.md)
   - [Obtaining the Cause of Abnormal App Exit](ability-exit-info-record.md)
 - Cross-App Navigation<!--inter-app-redirection-->
   - [Cross-App Navigation Overview](link-between-apps-overview.md)

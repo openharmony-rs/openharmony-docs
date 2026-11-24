@@ -4,15 +4,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=44da4106816f0fa51f767760459fa4941200eb6f translatedAt=2026-11-23T08:40:06.355Z pushedAt=2026-11-24T09:07:30.501Z nl=1 -->
 
 <!--deprecated_code_no_check-->
 
-When the launch type of a PageAbility is set to **singleton** (default), the **onNewWant()** callback is triggered if the PageAbility is not started for the first time. For details about the launch type, see [PageAbility Launch Type](pageability-launch-type.md). In this case, you can use the **want** parameter to transfer startup information. For example, if you want to start a PageAbility with a specified page, pass the pages information in **parameters** of **want**.
+When the launch mode of a PageAbility is set to singleton (for specific setting methods and typical scenario examples, see [PageAbility launch mode](pageability-launch-type.md); the default is the singleton instance mode), if the PageAbility has already been launched, starting the PageAbility again triggers the onNewWant callback (that is, it is not launched for the first time). The developer can pass startup parameters through Want. For example, if the developer wants to start the PageAbility from a specified page, the pages information can be passed through the parameters parameter in Want. The example code is as follows:
 
 
-In **app.ets** or **page** of the caller PageAbility, use **startAbility()** to start the PageAbility again, with the page information passed in the **uri** parameter in **want**.
+In the app.ets or page of the caller PageAbility, use startAbility to launch the PageAbility again, and pass the page information through the uri parameter in Want:
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -30,7 +31,7 @@ const domain: number = 0xFF00;
     parameters: { page: 'pages/second' }
   };
   featureAbility.startAbility({ want: wantInfo }).then((data) => {
-    hilog.debug(domain, TAG, `restartAbility success : ${data}`);
+    hilog.info(domain, TAG, `restartAbility success : ${data}`);
   });
 })()
 ```
@@ -135,10 +136,10 @@ struct First {
 ```
 
 
-When a PageAbility in multiton mode is started or when the PageAbility in singleton mode is started for the first time, you can use the **parameters** parameter in **want** to transfer the pages information and use the **startAbility()** method to start the PageAbility. For details about the launch type, see [PageAbility Launch Type](pageability-launch-type.md). The target PageAbility can use the **featureAbility.getWant()** method in **onCreate** to obtain the **want** parameter, and then call **router.pushUrl** to start a specified page.
+When the launch mode of a PageAbility is set to multi-instance mode, or when a singleton-mode PageAbility is started for the first time (for specific setting methods and typical scenario examples, see [PageAbility launch mode](pageability-launch-type.md)), in the caller PageAbility, the pages information of the specified page to be started is passed through the parameters parameter in Want, and the startAbility() method is called to start the PageAbility. The called end can use the getWant method of featureAbility in onCreate to obtain the Want, and then call router.pushUrl to start the specified page.
 
 
-When a user touches the button on the page of the caller PageAbility, the **startAbility()** method is called to start the target PageAbility. The **want** parameter in **startAbility()** carries the specified page information.
+In the page of the caller, a button click is implemented to trigger the startAbility method to start the target-end PageAbility. The Want input parameter of the startAbility method carries the specified page information. The example code is as follows:
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -173,7 +174,7 @@ struct PagePageAbilityFirst {
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
             }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
+              hilog.error(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }
@@ -191,7 +192,7 @@ struct PagePageAbilityFirst {
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
             }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
+              hilog.error(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }
@@ -205,7 +206,7 @@ struct PagePageAbilityFirst {
 ```
 
 
-In the **onCreate()** callback of the target PageAbility, use the **featureAbility.getWant()** method to obtain the **want** parameter, parse the parameter, and start the specified page.
+In the onCreate lifecycle callback of the target-end PageAbility, the getWant method of featureAbility is used to obtain the Want, and the parameters are parsed to launch the specified page:
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';

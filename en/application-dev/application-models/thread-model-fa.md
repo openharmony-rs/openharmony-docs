@@ -1,11 +1,12 @@
-# Thread Model (FA Model)
+# Thread Model of the FA Model
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=72d653d33f4588226f36115e7b3ce3bd5dcf26b3 translatedAt=2026-11-23T08:43:25.490Z pushedAt=2026-11-24T09:08:01.727Z nl=1 -->
 
 There are three types of threads in the [FA model](ability-terminology.md#fa-model):
 

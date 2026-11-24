@@ -4,12 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:28:50.578Z pushedAt=2026-11-24T09:06:07.044Z nl=1 -->
+
 
 The PageAbility is configured in **abilities** under **module** in the **config.json** file. The **icon** field indicates the index of the ability icon resource file, and the **label** field indicates the ability name presented to users, and the **skills** field indicates the type of Want that is acceptable to the ability.
 
-**Table 1** PageAbility configuration items
+
+  **Table 1** PageAbility configuration items
 
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |

@@ -1,26 +1,34 @@
+---
+kits: ["Ability Kit / Program Framework Service"]
+description: "Describes how to obtain the reason for abnormal application exit and process runtime information through the LaunchParam parameter of UIAbility, helping developers analyze issues and optimize business logic."
+keywords: [abnormal exit, lastExitReason, LaunchParam, LastExitDetailInfo, exit reason]
+doctype: guide
+status: active
+---
 # Obtaining Reasons for Abnormal Application Exits
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f92d5a4fab1366fe913ccd9c81db56ab439390df translatedAt=2026-11-23T07:44:36.777Z pushedAt=2026-11-24T08:02:12.055Z nl=1 -->
 
 If an application crashes and then restarts, you often need to know why it crashed and what the state was, such as the RSS and PSS values of the application memory and the time of the last exit. You can obtain the information from the **launchParam** parameter in the **OnCreate** lifecycle function of the UIAbility and UIExtensionAbility. You can use the information to analyze and improve the application experience, adjust service logic, and boost the application stability.
 
 ## Constraints
 
-Only the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) and [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) support the obtaining of the last exit reason.
+Only the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability) and [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability) support the obtaining of the last exit reason.
 
 ## Available APIs
 
-Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam) for the API reference.
+Read [LaunchParam](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam) for the API reference.
 
 | **API** | **Description**|
 | -------- | -------- |
 | [LaunchParam](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)       | Parameters for starting an ability. The **lastExitReason**, **lastExitMessage**, and **lastExitDetailInfo** fields record the information about the last abnormal exit of the ability. |
-| [LastExitDetailInfo](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitdetailinfo18)       | Detailed information about the last exit of the application. This is supported since API version 18.|
+| [LastExitDetailInfo](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitdetailinfo18)       | Starting from API version 18, records the key running information of the process where the Ability resides at its last exit. |
 
 ## How to Develop
 

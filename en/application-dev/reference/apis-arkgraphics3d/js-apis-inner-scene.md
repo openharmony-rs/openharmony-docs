@@ -1,12 +1,11 @@
 # Scene
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4d7e02a7df2a06122e229dcfa39cff42326177c0 translatedAt=2026-08-20T12:29:13.068Z pushedAt=2026-08-21T08:29:48.033Z -->
+<!-- md-trans-meta sourceCommit=f411103a7251b131df59126b5bf82b1298760c0a translatedAt=2026-11-23T09:08:35.452Z pushedAt=2026-11-24T12:52:10.648Z nl=1 -->
 
 The module is the basic module of ArkGraphics 3D and provides common data types such as **SceneResourceParameters** and **SceneNodeParameters**. It also provides basic methods such as glTF model loading, scene creation, and resource creation.
 
@@ -201,7 +200,6 @@ function createImageResource(): Promise<Image> {
 ```
 
 ### createImageStream
-
 createImageStream(params: SceneResourceParameters): Promise\<ImageStream>
 
 Creates an image stream based on the scene resource parameters. This API uses a promise to return the result.
@@ -213,19 +211,16 @@ Creates an image stream based on the scene resource parameters. This API uses a 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | params | [SceneResourceParameters](#sceneresourceparameters) | Yes | Parameters for creating the image stream. |
 
 **Return value**
-
 | Type | Description |
 | ---- | ---- |
 | Promise\<[ImageStream](js-apis-inner-scene-resources.md#imagestream)> | Promise used to return the created image stream. |
 
 **Example**
-
 ```ts
 import { ImageStream, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
 
@@ -379,6 +374,8 @@ function createSamplerResource(): Promise<Sampler> {
 createScene(uri?: ResourceStr): Promise\<Scene>
 
 Creates a scene from the specified resource URI. If no URI is specified, an empty scene is created. This API uses a promise to return the result.
+
+This API is a time-consuming operation. During the execution of the asynchronous task, calling other APIs may be blocked until the asynchronous task is complete.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -1005,6 +1002,8 @@ static load(uri?: ResourceStr): Promise\<Scene>
 
 Loads resources through the passed resource path. This API uses a promise to return the result. After the call, you should call [destroy](#destroy) to release resources when the Scene is no longer used; otherwise, resource leakage may occur.
 
+This API is a time-consuming operation. During the execution of the asynchronous task, calling other APIs may be blocked until the asynchronous task is complete.
+
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
@@ -1022,7 +1021,6 @@ Loads resources through the passed resource path. This API uses a promise to ret
 **Example**
 
 Example 1: Load resources via rawfile (a relative path).
-
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 
@@ -1036,7 +1034,6 @@ function loadModel(): void {
 ```
 
 Example 2: Load via an absolute path (from /data/storage/el2/base/files in the application sandbox directory).
-
 ```ts
 import { common } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';

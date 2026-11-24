@@ -1,13 +1,21 @@
+---
+kits: ["Ability Kit"]
+description: "Introduces the capability scope and core features provided by Ability Kit (program framework service), covering scenarios such as application lifecycle management, inter-component interaction, multi-module development, and cross-device migration."
+keywords: [Ability Kit, program framework service, application model, UIAbility, Stage model, lifecycle management, component interaction, cross-device migration, multi-module]
+doctype: guide
+status: active
+---
 # About This Kit
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f92d5a4fab1366fe913ccd9c81db56ab439390df translatedAt=2026-11-23T07:45:43.277Z pushedAt=2026-11-24T08:04:17.551Z nl=1 -->
 
-Ability Kit provides an application model for application development and running. The application model is the abstraction of capabilities required by an application. It provides components and mechanisms required for running the application. You can develop applications based on a unified set of models, which makes your development simpler and more efficient.
+Ability Kit (application framework service) provides the application model for application development and running. Based on the application model, developers can implement different types of application components to more easily and efficiently complete business logic such as application lifecycle management, inter-component interaction, and process and thread management, without focusing on the underlying implementation details.
 
 ## Use Scenarios
 
@@ -58,17 +66,10 @@ Ability Kit provides an application model for application development and runnin
    - Diverse application components (such as service widgets and input methods) for specific scenarios.
    - Standardized background process management. To deliver a better user experience, the stage model manages background application processes in a more orderly manner. Applications cannot reside in the background randomly, and their background behavior is strictly managed to minimize malicious behavior.
 
+<!--RP3--><!--RP3End-->
+
 ## Relationship with Related Kits
 
 ArkUI: The UIAbility component of Ability Kit can use the components, events, animations, and status management capabilities provided by ArkUI.
 
-ArkTS: provides language runtime capabilities for Ability Kit.
-
-## Emulator Support
-
-This kit supports development using the Emulator. However, there are some functional differences compared to real devices, as detailed below:
-
-- Launching vertical application panels is not supported.
-- Launching atomic services in installation-free mode is not supported.
-- Using App Linking for cross-application redirection is not supported.
-- Using Deep Linking to trigger the application selection dialog box is not supported. Since the Emulator lacks an application selection dialog box, when multiple applications match a Deep Link, the dialog box cannot be displayed.
+ArkTS: ArkTS provides language runtime capabilities.

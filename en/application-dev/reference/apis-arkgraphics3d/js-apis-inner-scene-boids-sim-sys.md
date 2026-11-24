@@ -1,16 +1,15 @@
 # SceneBoidsSim (System API)
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8bb9848b7b451305a97994d9b8833fe195588c67 translatedAt=2026-08-20T12:26:26.448Z pushedAt=2026-08-21T02:58:38.821Z -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-23T09:03:28.670Z pushedAt=2026-11-24T09:15:30.935Z nl=1 -->
 
 This module provides types and operation methods for Boids simulation animation in ArkGraphics 3D. Boids simulation animation is a computer animation method that drives individuals in a group through rules such as separation, alignment, and cohesion, making them exhibit movement characteristics similar to flocks of birds or schools of fish in nature.
 
-> **NOTE**
+> **NOTE** 
 > - The APIs of this module are system APIs.
 > - Before using the APIs of this module, you need to load the Boids simulation plugin [BoidsSimPlugin](#boidssimplugin) through [RenderContext.loadPlugin](js-apis-inner-scene.md#loadplugin20).
 
@@ -134,7 +133,6 @@ Starts or resumes the boids simulation. When the boids simulation is in the stop
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
-
 ```ts
 import { BoidsSimWorld } from '@kit.ArkGraphics3D';
 
@@ -158,7 +156,6 @@ Pauses the Boids simulation.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
-
 ```ts
 import { BoidsSimWorld } from '@kit.ArkGraphics3D';
 
@@ -182,7 +179,6 @@ Stops the Boids simulation and resets the state.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
-
 ```ts
 import { BoidsSimWorld } from '@kit.ArkGraphics3D';
 
@@ -206,14 +202,12 @@ Adds a flock behavior component at the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 | param | [BoidsSimParameters](#boidssimparameters) | Yes | Flock behavior parameters. |
 
 **Example**
-
 ```ts
 import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -253,14 +247,12 @@ Updates the flock behavior component on the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 | param | [BoidsSimParameters](#boidssimparameters) | Yes | Flock behavior parameters. |
 
 **Example**
-
 ```ts
 import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -290,14 +282,12 @@ Adds an attraction field component at the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 | param | [BoidsSimGravityParameters](#boidssimgravityparameters) | Yes | Attraction field parameters. |
 
 **Example**
-
 ```ts
 import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -332,14 +322,12 @@ Updates the attraction field component on the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 | param | [BoidsSimGravityParameters](#boidssimgravityparameters) | Yes | Attraction field parameters. |
 
 **Example**
-
 ```ts
 import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -364,14 +352,12 @@ Adds a repulsion field component at the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 | param | [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) | Yes | Repulsion field parameters. |
 
 **Example**
-
 ```ts
 import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -406,14 +392,12 @@ Updates the repulsion field component on the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 | param | [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) | Yes | Repulsion field parameters. |
 
 **Example**
-
 ```ts
 import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -438,19 +422,16 @@ Gets the flock behavior parameters on the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 
 **Return value**
-
 | Type | Description |
 | ---- | ---- |
 | [BoidsSimParameters](#boidssimparameters) \| null | Returns the flock behavior parameters, or null if the node does not have this component mounted. |
 
 **Example**
-
 ```ts
 import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -477,19 +458,16 @@ Gets the attraction field parameters on the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 
 **Return value**
-
 | Type | Description |
 | ---- | ---- |
 | [BoidsSimGravityParameters](#boidssimgravityparameters) \| null | Returns the attraction field parameters, or null if the node does not have this component mounted. |
 
 **Example**
-
 ```ts
 import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -516,19 +494,16 @@ Gets the repulsion field parameters on the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 
 **Return value**
-
 | Type | Description |
 | ---- | ---- |
 | [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) \| null | Returns the repulsion field parameters, or null if the node does not have this component mounted. |
 
 **Example**
-
 ```ts
 import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -555,13 +530,11 @@ Removes the flock behavior component from the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 
 **Example**
-
 ```ts
 import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -585,13 +558,11 @@ Removes the attraction field component on the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 
 **Example**
-
 ```ts
 import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -615,13 +586,11 @@ Removes the repulsion field component from the specified node.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node of the target scene. |
 
 **Example**
-
 ```ts
 import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
 
@@ -657,19 +626,16 @@ Gets the Boids simulation world instance associated with the specified scene.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
-
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | scene | [Scene](js-apis-inner-scene.md#scene-1) | Yes | Object of the target scene. |
 
 **Return value**
-
 | Type | Description |
 | ---- | ---- |
 | [BoidsSimWorld](#boidssimworld) \| null | Returns the Boids simulation world instance, or null if it does not exist. |
 
 **Example**
-
 ```ts
 import { BoidsSimPlugin, BoidsSimWorld, Scene, RenderContext } from '@kit.ArkGraphics3D';
 
