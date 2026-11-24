@@ -1249,6 +1249,113 @@ struct TabsTabViewCustomizationExample {
 
 ![tabViewCustomization](figures/tabViewCustomization.jpg)
 
+### showBottomBarOnSidebarCollapse
+
+showBottomBarOnSidebarCollapse(value: Optional\<boolean>)
+
+当用户通过侧边页签栏控制按钮收起侧边页签栏时，设置是否同步显示底部页签栏。未通过该接口设置时，不同步显示底部页签栏。
+
+> **说明：**
+>
+> - 需要配合侧边页签栏控制按钮使用，具体请参考[showSidebarControlButton](#showsidebarcontrolbutton)。
+> - 不管showBottomBarOnSidebarCollapse设置为何值，通过侧边页签栏控制按钮显示侧边页签栏时都会隐藏底部页签栏。
+> - 当showBottomBarOnSidebarCollapse设置为true时，隐藏侧边页签栏的同时会显示底部页签栏。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<boolean> | 是 | 收起侧边页签栏时是否同步显示底部页签栏。<br/>true表示会显示底部页签栏；false表示不会显示底部页签栏。<br/>设置undefined时，取默认值false。 |
+
+**示例：**
+
+该示例通过[showBottomBarOnSidebarCollapse](#showbottombaronsidebarcollapse)属性，开启收起侧边页签栏时会同步显示底部页签栏的功能。
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabsShowBottomBarOnSidebarCollapseSample {
+  @State showBottomBar: boolean = true;
+
+  @Builder
+  ControlPanel(index: number) {
+    Column() {
+      Text(`Content${index}`)
+      Text(`showBottomBar: `)
+      Row() {
+        Radio({group: `showBottomBar${index}`, value: `enable`}).checked(this.showBottomBar).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.showBottomBar = true;
+          }
+        })
+        Text(`enable`)
+        Radio({group: `showBottomBar${index}`, value: `disable`}).checked(!this.showBottomBar).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.showBottomBar = false;
+          }
+        })
+        Text(`disable`)
+      }
+    }
+  }
+
+  build() {
+    Stack({alignContent: Alignment.Center}) {
+      Tabs() {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            this.ControlPanel(0)
+          }
+          .width('100%')
+          .height('100%')
+        }
+        // 请开发者将$r('app.media.startIcon')替换为实际的资源
+        .tabBar({icon: $r('app.media.startIcon'), text: `content0`})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            this.ControlPanel(1)
+          }
+          .width('100%')
+          .height('100%')
+        }
+        // 请开发者将$r('app.media.startIcon')替换为实际的资源
+        .tabBar({icon: $r('app.media.startIcon'), text: `content1`})
+      }
+      .border({width: 1, color: Color.Black})
+      .width(500)
+      .height(400)
+      .barStyle(TabBarStyle.SIDEBAR)
+      .barPosition(BarPosition.End)
+      .vertical(false)
+      .sidebarPosition(BarPosition.Start)
+      .showSidebarControlButton(true)
+      .showBottomBarOnSidebarCollapse(this.showBottomBar)
+      .barOverlap(true)
+      .barFloatingStyle({
+        barSideMargin: '20',
+        barBottomMargin: '20',
+        systemMaterial: new uiMaterial.ImmersiveMaterial({style: uiMaterial.ImmersiveStyle.ULTRA_THIN})
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![showBottomBarOnSidebarCollapse](figures/showBottomBarOnSidebarCollapse.gif)
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
