@@ -1602,6 +1602,8 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 **起始版本：** 26.1.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4564,6 +4566,8 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 
 **起始版本：** 26.1.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| TRANSLATION | 0 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统配置的默认输入法，否则请求将被拒绝并返回12800010错误码。 |
+| TRANSLATION | 0 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统配置的默认输入法，否则请求将被拒绝并返回12800010错误码。<br>**起始版本：** 26.1.0</br><br>**模型约束：** 该参数仅可在Stage模型下使用。</br>|

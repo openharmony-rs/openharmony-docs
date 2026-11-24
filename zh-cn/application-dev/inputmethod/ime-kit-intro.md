@@ -40,7 +40,7 @@ IME Kit提供输入法框架和输入法服务两类API。用于实现输入法�
 
 ## 与相关Kit的关系
 
-ArkUI: IME Kit在输入法软键盘和自绘编辑框时使用ArkUI提供的部分组件、事件、动效、状态管理等能力，例如Text、Button组件，onClick点击事件。
+ArkUI:IME Kit在输入法软键盘和自绘编辑框时使用ArkUI提供的部分组件、事件、动效、状态管理等能力，例如Text、Button组件，onClick点击事件。
 
 
 ## 约束限制
