@@ -24,7 +24,7 @@ Defines the parameter structure for method invocation. rgvarg points to the arra
 
 | Name | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjDispatcher_Variant*](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-variant.md) rgvarg | Array of argument variants.<br>**Since**: 26.0.0 |
-| uint32_t cArgs | Number of arguments.<br>**Since**: 26.0.0 |
+| [OH_AbilityRuntime_ModObjDispatcher_Variant*](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-variant.md) rgvarg | Array of argument variants.<br>**Since**: 26.0.0<br><!--Device-OH_AbilityRuntime_ModObjDispatcher_Variant* rgvarg--><!--Device-OH_AbilityRuntime_ModObjDispatcher_Variant* rgvarg-End--> |
+| uint32_t cArgs | Number of arguments.<br>**Since**: 26.0.0<br><!--Device-uint32_t cArgs--><!--Device-uint32_t cArgs-End--> |
 
 

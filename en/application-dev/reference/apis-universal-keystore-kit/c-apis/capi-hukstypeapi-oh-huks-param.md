@@ -24,11 +24,11 @@ Defines the types of the parameters in a parameter set.
 
 | Name | Description |
 | -- | -- |
-| uint32_t tag | Tag value. |
-| boolParam | Parameter of the Boolean type. |
-| int32Param | Parameter of the int32_t type. |
-| uint32Param | Parameter of the uint32_t type. |
-| uint64Param | Parameter of the uint64_t type. |
-| blob | Parameter of the struct OH_Huks_Blob type. |
+| uint32_t tag | Tag value.<br><!--Device-uint32_t tag--><!--Device-uint32_t tag-End--> |
+| boolParam | Parameter of the Boolean type.<br><!--Device-boolParam--><!--Device-boolParam-End--> |
+| int32Param | Parameter of the int32_t type.<br><!--Device-int32Param--><!--Device-int32Param-End--> |
+| uint32Param | Parameter of the uint32_t type.<br><!--Device-uint32Param--><!--Device-uint32Param-End--> |
+| uint64Param | Parameter of the uint64_t type.<br><!--Device-uint64Param--><!--Device-uint64Param-End--> |
+| blob | Parameter of the struct OH_Huks_Blob type.<br><!--Device-blob--><!--Device-blob-End--> |
 
 

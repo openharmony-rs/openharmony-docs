@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| const char* pApplicationName |  |
-| uint32_t applicationVersion |  |
-| const char* pEngineName |  |
-| uint32_t engineVersion |  |
-| uint32_t apiVersion |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| const char* pApplicationName | <!--Device-const char* pApplicationName--><!--Device-const char* pApplicationName-End--> |
+| uint32_t applicationVersion | <!--Device-uint32_t applicationVersion--><!--Device-uint32_t applicationVersion-End--> |
+| const char* pEngineName | <!--Device-const char* pEngineName--><!--Device-const char* pEngineName-End--> |
+| uint32_t engineVersion | <!--Device-uint32_t engineVersion--><!--Device-uint32_t engineVersion-End--> |
+| uint32_t apiVersion | <!--Device-uint32_t apiVersion--><!--Device-uint32_t apiVersion-End--> |
 
 

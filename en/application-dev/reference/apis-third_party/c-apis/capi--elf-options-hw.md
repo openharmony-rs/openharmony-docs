@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Word hwp_flags1 |  |
-| Elf32_Word hwp_flags2 |  |
+| Elf32_Word hwp_flags1 | <!--Device-Elf32_Word hwp_flags1--><!--Device-Elf32_Word hwp_flags1-End--> |
+| Elf32_Word hwp_flags2 | <!--Device-Elf32_Word hwp_flags2--><!--Device-Elf32_Word hwp_flags2-End--> |
 
 

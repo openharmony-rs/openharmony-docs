@@ -24,11 +24,11 @@ This struct describes the information about a system font configuration.
 
 | Name | Description |
 | -- | -- |
-| size_t fontDirSize | Number of system font file paths. |
-| size_t fontGenericInfoSize | Number of generic fonts. |
-| size_t fallbackGroupSize | Number of font fallbacks. |
-| char** fontDirSet | Double pointer to the system font file paths. |
-| [OH_Drawing_FontGenericInfo*](capi-drawing-oh-drawing-fontgenericinfo.md) fontGenericInfoSet | Pointer to a set of generic fonts. |
-| [OH_Drawing_FontFallbackGroup*](capi-drawing-oh-drawing-fontfallbackgroup.md) fallbackGroupSet | Pointer to a set of font fallbacks. |
+| size_t fontDirSize | Number of system font file paths.<br><!--Device-size_t fontDirSize--><!--Device-size_t fontDirSize-End--> |
+| size_t fontGenericInfoSize | Number of generic fonts.<br><!--Device-size_t fontGenericInfoSize--><!--Device-size_t fontGenericInfoSize-End--> |
+| size_t fallbackGroupSize | Number of font fallbacks.<br><!--Device-size_t fallbackGroupSize--><!--Device-size_t fallbackGroupSize-End--> |
+| char** fontDirSet | Double pointer to the system font file paths.<br><!--Device-char** fontDirSet--><!--Device-char** fontDirSet-End--> |
+| [OH_Drawing_FontGenericInfo*](capi-drawing-oh-drawing-fontgenericinfo.md) fontGenericInfoSet | Pointer to a set of generic fonts.<br><!--Device-OH_Drawing_FontGenericInfo* fontGenericInfoSet--><!--Device-OH_Drawing_FontGenericInfo* fontGenericInfoSet-End--> |
+| [OH_Drawing_FontFallbackGroup*](capi-drawing-oh-drawing-fontfallbackgroup.md) fallbackGroupSet | Pointer to a set of font fallbacks.<br><!--Device-OH_Drawing_FontFallbackGroup* fallbackGroupSet--><!--Device-OH_Drawing_FontFallbackGroup* fallbackGroupSet-End--> |
 
 

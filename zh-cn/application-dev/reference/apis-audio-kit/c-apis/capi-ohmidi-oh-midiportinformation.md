@@ -24,9 +24,9 @@ typedef struct OH_MIDIPortInformation {...} OH_MIDIPortInformation
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t portIndex | 端口在设备中的索引号。<br>**起始版本：** 24 |
-| int64_t deviceId | 端口所属的MIDI设备ID。<br>**起始版本：** 24 |
-| [OH_MIDIPortDirection](capi-native-midi-base-h.md#oh_midiportdirection) direction | 端口方向（输入或输出）。<br>**起始版本：** 24 |
-| char name[64] | 端口名称。<br>**起始版本：** 24 |
+| uint32_t portIndex | 端口在设备中的索引号。<br>**起始版本：** 24<br><!--Device-uint32_t portIndex--><!--Device-uint32_t portIndex-End--> |
+| int64_t deviceId | 端口所属的MIDI设备ID。<br>**起始版本：** 24<br><!--Device-int64_t deviceId--><!--Device-int64_t deviceId-End--> |
+| [OH_MIDIPortDirection](capi-native-midi-base-h.md#oh_midiportdirection) direction | 端口方向（输入或输出）。<br>**起始版本：** 24<br><!--Device-OH_MIDIPortDirection direction--><!--Device-OH_MIDIPortDirection direction-End--> |
+| char name[64] | 端口名称。<br>**起始版本：** 24<br><!--Device-char name[64]--><!--Device-char name[64]-End--> |
 
 

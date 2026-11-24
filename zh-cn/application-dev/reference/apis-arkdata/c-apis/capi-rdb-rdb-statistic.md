@@ -24,9 +24,9 @@ typedef struct Rdb_Statistic {...} Rdb_Statistic
 
 | 名称 | 描述 |
 | -- | -- |
-| int total | 表示数据库表中需要端云同步的总行数。 |
-| int successful | 表示数据库表中端云同步成功的行数。 |
-| int failed | 表示数据库表中端云同步失败的行数。 |
-| int remained | 表示数据库表中端云同步剩余未执行的行数。 |
+| int total | 表示数据库表中需要端云同步的总行数。<br><!--Device-int total--><!--Device-int total-End--> |
+| int successful | 表示数据库表中端云同步成功的行数。<br><!--Device-int successful--><!--Device-int successful-End--> |
+| int failed | 表示数据库表中端云同步失败的行数。<br><!--Device-int failed--><!--Device-int failed-End--> |
+| int remained | 表示数据库表中端云同步剩余未执行的行数。<br><!--Device-int remained--><!--Device-int remained-End--> |
 
 

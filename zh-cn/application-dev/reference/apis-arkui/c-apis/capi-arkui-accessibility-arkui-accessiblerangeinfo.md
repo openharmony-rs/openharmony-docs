@@ -24,8 +24,8 @@ typedef struct ArkUI_AccessibleRangeInfo {...} ArkUI_AccessibleRangeInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| double min | 最小值。 |
-| double max | 最大值。 |
-| double current | 当前值。 |
+| double min | 最小值。<br><!--Device-double min--><!--Device-double min-End--> |
+| double max | 最大值。<br><!--Device-double max--><!--Device-double max-End--> |
+| double current | 当前值。<br><!--Device-double current--><!--Device-double current-End--> |
 
 

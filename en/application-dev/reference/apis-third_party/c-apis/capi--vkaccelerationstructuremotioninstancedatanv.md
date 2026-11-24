@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| [VkAccelerationStructureInstanceKHR](capi--vkaccelerationstructureinstancekhr.md) staticInstance |  |
-| [VkAccelerationStructureMatrixMotionInstanceNV](capi--vkaccelerationstructurematrixmotioninstancenv.md) matrixMotionInstance |  |
-| [VkAccelerationStructureSRTMotionInstanceNV](capi--vkaccelerationstructuresrtmotioninstancenv.md) srtMotionInstance |  |
+| [VkAccelerationStructureInstanceKHR](capi--vkaccelerationstructureinstancekhr.md) staticInstance | <!--Device-VkAccelerationStructureInstanceKHR staticInstance--><!--Device-VkAccelerationStructureInstanceKHR staticInstance-End--> |
+| [VkAccelerationStructureMatrixMotionInstanceNV](capi--vkaccelerationstructurematrixmotioninstancenv.md) matrixMotionInstance | <!--Device-VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance--><!--Device-VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance-End--> |
+| [VkAccelerationStructureSRTMotionInstanceNV](capi--vkaccelerationstructuresrtmotioninstancenv.md) srtMotionInstance | <!--Device-VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance--><!--Device-VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance-End--> |
 
 

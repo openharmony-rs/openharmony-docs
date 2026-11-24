@@ -10,13 +10,13 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting |  |
-| VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting |  |
-| VkBool32 depthStencilSwizzleOneSupport |  |
-| VkBool32 polygonModePointSize |  |
-| VkBool32 nonStrictSinglePixelWideLinesUseParallelogram |  |
-| VkBool32 nonStrictWideLinesUseParallelogram |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting | <!--Device-VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting--><!--Device-VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting-End--> |
+| VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting | <!--Device-VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting--><!--Device-VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting-End--> |
+| VkBool32 depthStencilSwizzleOneSupport | <!--Device-VkBool32 depthStencilSwizzleOneSupport--><!--Device-VkBool32 depthStencilSwizzleOneSupport-End--> |
+| VkBool32 polygonModePointSize | <!--Device-VkBool32 polygonModePointSize--><!--Device-VkBool32 polygonModePointSize-End--> |
+| VkBool32 nonStrictSinglePixelWideLinesUseParallelogram | <!--Device-VkBool32 nonStrictSinglePixelWideLinesUseParallelogram--><!--Device-VkBool32 nonStrictSinglePixelWideLinesUseParallelogram-End--> |
+| VkBool32 nonStrictWideLinesUseParallelogram | <!--Device-VkBool32 nonStrictWideLinesUseParallelogram--><!--Device-VkBool32 nonStrictWideLinesUseParallelogram-End--> |
 
 

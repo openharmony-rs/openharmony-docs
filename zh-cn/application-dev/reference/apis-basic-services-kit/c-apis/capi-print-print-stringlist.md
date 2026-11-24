@@ -24,7 +24,7 @@ typedef struct Print_StringList {...} Print_StringList
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t count | 字符串数量，表示list数组中的元素数量。 |
-| char **list | 指向字符串数组的指针，数组元素数量须与count值一致。 |
+| uint32_t count | 字符串数量，表示list数组中的元素数量。<br><!--Device-uint32_t count--><!--Device-uint32_t count-End--> |
+| char **list | 指向字符串数组的指针，数组元素数量须与count值一致。<br><!--Device-char **list--><!--Device-char **list-End--> |
 
 

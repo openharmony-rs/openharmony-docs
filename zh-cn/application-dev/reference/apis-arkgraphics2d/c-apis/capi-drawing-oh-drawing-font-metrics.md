@@ -24,21 +24,21 @@ typedef struct OH_Drawing_Font_Metrics {...} OH_Drawing_Font_Metrics
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t flags | 指示哪些度量是有效的。<br>**起始版本：** 12 |
-| float top | 字符最高点到基线的最大距离。<br>**起始版本：** 12 |
-| float ascent | 字符最高点到基线的推荐距离。<br>**起始版本：** 12 |
-| float descent | 字符最低点到基线的推荐距离。<br>**起始版本：** 12 |
-| float bottom | 字符最低点到基线的最大距离。<br>**起始版本：** 12 |
-| float leading | 行间距。<br>**起始版本：** 12 |
-| float avgCharWidth | 平均字符宽度，如果未知则为零。<br>**起始版本：** 12 |
-| float maxCharWidth | 最大字符宽度，如果未知则为零。<br>**起始版本：** 12 |
-| float xMin | 任何字形边界框原点左侧的最大范围，通常为负值；不推荐使用可变字体。<br>**起始版本：** 12 |
-| float xMax | 任何字形边界框原点右侧的最大范围，通常为负值；不推荐使用可变字体。<br>**起始版本：** 12 |
-| float xHeight | 小写字母的高度，如果未知则为零，通常为负数。<br>**起始版本：** 12 |
-| float capHeight | 大写字母的高度，如果未知则为零，通常为负数。<br>**起始版本：** 12 |
-| float underlineThickness | 下划线粗细。<br>**起始版本：** 12 |
-| float underlinePosition | 表示下划线的位置，即从基线到文字下方笔画顶部的垂直距离，通常为正值。<br>**起始版本：** 12 |
-| float strikeoutThickness | 删除线粗细。<br>**起始版本：** 12 |
-| float strikeoutPosition | 表示删除线的位置，即从基线到文字上方笔画底部的垂直距离，通常为负值。<br>**起始版本：** 12 |
+| uint32_t flags | 指示哪些度量是有效的。<br>**起始版本：** 12<br><!--Device-uint32_t flags--><!--Device-uint32_t flags-End--> |
+| float top | 字符最高点到基线的最大距离。<br>**起始版本：** 12<br><!--Device-float top--><!--Device-float top-End--> |
+| float ascent | 字符最高点到基线的推荐距离。<br>**起始版本：** 12<br><!--Device-float ascent--><!--Device-float ascent-End--> |
+| float descent | 字符最低点到基线的推荐距离。<br>**起始版本：** 12<br><!--Device-float descent--><!--Device-float descent-End--> |
+| float bottom | 字符最低点到基线的最大距离。<br>**起始版本：** 12<br><!--Device-float bottom--><!--Device-float bottom-End--> |
+| float leading | 行间距。<br>**起始版本：** 12<br><!--Device-float leading--><!--Device-float leading-End--> |
+| float avgCharWidth | 平均字符宽度，如果未知则为零。<br>**起始版本：** 12<br><!--Device-float avgCharWidth--><!--Device-float avgCharWidth-End--> |
+| float maxCharWidth | 最大字符宽度，如果未知则为零。<br>**起始版本：** 12<br><!--Device-float maxCharWidth--><!--Device-float maxCharWidth-End--> |
+| float xMin | 任何字形边界框原点左侧的最大范围，通常为负值；不推荐使用可变字体。<br>**起始版本：** 12<br><!--Device-float xMin--><!--Device-float xMin-End--> |
+| float xMax | 任何字形边界框原点右侧的最大范围，通常为负值；不推荐使用可变字体。<br>**起始版本：** 12<br><!--Device-float xMax--><!--Device-float xMax-End--> |
+| float xHeight | 小写字母的高度，如果未知则为零，通常为负数。<br>**起始版本：** 12<br><!--Device-float xHeight--><!--Device-float xHeight-End--> |
+| float capHeight | 大写字母的高度，如果未知则为零，通常为负数。<br>**起始版本：** 12<br><!--Device-float capHeight--><!--Device-float capHeight-End--> |
+| float underlineThickness | 下划线粗细。<br>**起始版本：** 12<br><!--Device-float underlineThickness--><!--Device-float underlineThickness-End--> |
+| float underlinePosition | 表示下划线的位置，即从基线到文字下方笔画顶部的垂直距离，通常为正值。<br>**起始版本：** 12<br><!--Device-float underlinePosition--><!--Device-float underlinePosition-End--> |
+| float strikeoutThickness | 删除线粗细。<br>**起始版本：** 12<br><!--Device-float strikeoutThickness--><!--Device-float strikeoutThickness-End--> |
+| float strikeoutPosition | 表示删除线的位置，即从基线到文字上方笔画底部的垂直距离，通常为负值。<br>**起始版本：** 12<br><!--Device-float strikeoutPosition--><!--Device-float strikeoutPosition-End--> |
 
 

@@ -24,8 +24,8 @@ typedef struct NativeDisplayManager_CutoutInfo {...} NativeDisplayManager_Cutout
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t boundingRectsLength | boundingRects length |
-| [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md) *boundingRects | boundingRects info pointer |
-| [NativeDisplayManager_WaterfallDisplayAreaRects](capi-oh-displaymanager-nativedisplaymanager-waterfalldisplayarearects.md) waterfallDisplayAreaRects | waterfallDisplayAreaRects info |
+| int32_t boundingRectsLength | boundingRects length<br><!--Device-int32_t boundingRectsLength--><!--Device-int32_t boundingRectsLength-End--> |
+| [NativeDisplayManager_Rect](capi-oh-displaymanager-nativedisplaymanager-rect.md) *boundingRects | boundingRects info pointer<br><!--Device-NativeDisplayManager_Rect *boundingRects--><!--Device-NativeDisplayManager_Rect *boundingRects-End--> |
+| [NativeDisplayManager_WaterfallDisplayAreaRects](capi-oh-displaymanager-nativedisplaymanager-waterfalldisplayarearects.md) waterfallDisplayAreaRects | waterfallDisplayAreaRects info<br><!--Device-NativeDisplayManager_WaterfallDisplayAreaRects waterfallDisplayAreaRects--><!--Device-NativeDisplayManager_WaterfallDisplayAreaRects waterfallDisplayAreaRects-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ether_dhost[ETH_ALEN] |  |
-| uint8_t ether_shost[ETH_ALEN] |  |
-| uint16_t ether_type |  |
+| uint8_t ether_dhost[ETH_ALEN] | <!--Device-uint8_t ether_dhost[ETH_ALEN]--><!--Device-uint8_t ether_dhost[ETH_ALEN]-End--> |
+| uint8_t ether_shost[ETH_ALEN] | <!--Device-uint8_t ether_shost[ETH_ALEN]--><!--Device-uint8_t ether_shost[ETH_ALEN]-End--> |
+| uint16_t ether_type | <!--Device-uint16_t ether_type--><!--Device-uint16_t ether_type-End--> |
 
 

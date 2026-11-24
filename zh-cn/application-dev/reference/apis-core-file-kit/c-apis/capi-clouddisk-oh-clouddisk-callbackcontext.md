@@ -24,9 +24,8 @@ typedef union OH_CloudDisk_CallbackContext {...} OH_CloudDisk_CallbackContext
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) *fetchData | 获取数据请求。当callbackType为CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA时生效。<br>**起始版本：** 26.0.1 |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) *cancelFetchData | 取消获取数据请求。当callbackType为CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA时生效。<br>**起始版本：** 26.0.1 |
-| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) *dehydrateData | 脱水授权请求。当callbackType为CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE时生效。<br>**起始版本：** 26.0.1 |
-| [OH_CloudDisk_FetchRangeDataRequest](capi-clouddisk-oh-clouddisk-fetchrangedatarequest.md) *fetchRangeData | 获取范围数据请求。当callbackType为CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA时生效。<br>**起始版本：** 26.1.0 |
+| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) *fetchData | 获取数据请求。当callbackType为CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA时生效。<br>**起始版本：** 26.0.1<br><!--Device-OH_CloudDisk_FetchDataRequest *fetchData--><!--Device-OH_CloudDisk_FetchDataRequest *fetchData-End--> |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) *cancelFetchData | 取消获取数据请求。当callbackType为CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA时生效。<br>**起始版本：** 26.0.1<br><!--Device-CloudDisk_PathInfo *cancelFetchData--><!--Device-CloudDisk_PathInfo *cancelFetchData-End--> |
+| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) *dehydrateData | 脱水授权请求。当callbackType为CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE时生效。<br>**起始版本：** 26.0.1<br><!--Device-OH_CloudDisk_DehydrateInfo *dehydrateData--><!--Device-OH_CloudDisk_DehydrateInfo *dehydrateData-End--> |
 
 

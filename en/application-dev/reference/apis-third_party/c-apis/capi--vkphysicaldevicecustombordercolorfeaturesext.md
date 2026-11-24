@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 customBorderColors |  |
-| VkBool32 customBorderColorWithoutFormat |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 customBorderColors | <!--Device-VkBool32 customBorderColors--><!--Device-VkBool32 customBorderColors-End--> |
+| VkBool32 customBorderColorWithoutFormat | <!--Device-VkBool32 customBorderColorWithoutFormat--><!--Device-VkBool32 customBorderColorWithoutFormat-End--> |
 
 

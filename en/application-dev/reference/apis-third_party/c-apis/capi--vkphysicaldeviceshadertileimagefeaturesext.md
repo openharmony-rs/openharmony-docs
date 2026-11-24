@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shaderTileImageColorReadAccess |  |
-| VkBool32 shaderTileImageDepthReadAccess |  |
-| VkBool32 shaderTileImageStencilReadAccess |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shaderTileImageColorReadAccess | <!--Device-VkBool32 shaderTileImageColorReadAccess--><!--Device-VkBool32 shaderTileImageColorReadAccess-End--> |
+| VkBool32 shaderTileImageDepthReadAccess | <!--Device-VkBool32 shaderTileImageDepthReadAccess--><!--Device-VkBool32 shaderTileImageDepthReadAccess-End--> |
+| VkBool32 shaderTileImageStencilReadAccess | <!--Device-VkBool32 shaderTileImageStencilReadAccess--><!--Device-VkBool32 shaderTileImageStencilReadAccess-End--> |
 
 

@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| sa_family_t sun_family |  |
-| char sun_path[108] |  |
+| sa_family_t sun_family | <!--Device-sa_family_t sun_family--><!--Device-sa_family_t sun_family-End--> |
+| char sun_path[108] | <!--Device-char sun_path[108]--><!--Device-char sun_path[108]-End--> |
 
 

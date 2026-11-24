@@ -85,7 +85,7 @@ enum OH_Archive_Format
 
 Archive format enumeration.
 
-<!--Device-OH_Archive_Format--><!--Device-OH_Archive_Format-End-->
+<!--Device-enum OH_Archive_Format--><!--Device-enum OH_Archive_Format-End-->
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -93,7 +93,7 @@ Archive format enumeration.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARCHIVE_FMT_ZIP = 0 | ZIP format.<br>**Since**: 26.0.0 |
+| OH_ARCHIVE_FMT_ZIP = 0 | ZIP format.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_FMT_ZIP = 0--><!--Device-OH_ARCHIVE_FMT_ZIP = 0-End--> |
 
 ### OH_Archive_CompressMethod
 
@@ -105,7 +105,7 @@ enum OH_Archive_CompressMethod
 
 Archive compression method enumeration.
 
-<!--Device-OH_Archive_CompressMethod--><!--Device-OH_Archive_CompressMethod-End-->
+<!--Device-enum OH_Archive_CompressMethod--><!--Device-enum OH_Archive_CompressMethod-End-->
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -113,8 +113,8 @@ Archive compression method enumeration.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARCHIVE_NO_COMPRESSION = 0 | No compression.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_COMPRESS_DEFLATE = 8 | Deflate compression method.<br>**Since**: 26.0.0 |
+| OH_ARCHIVE_NO_COMPRESSION = 0 | No compression.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_NO_COMPRESSION = 0--><!--Device-OH_ARCHIVE_NO_COMPRESSION = 0-End--> |
+| OH_ARCHIVE_COMPRESS_DEFLATE = 8 | Deflate compression method.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_COMPRESS_DEFLATE = 8--><!--Device-OH_ARCHIVE_COMPRESS_DEFLATE = 8-End--> |
 
 ### OH_Archive_OpenMode
 
@@ -126,7 +126,7 @@ enum OH_Archive_OpenMode
 
 Archive open mode enumeration.
 
-<!--Device-OH_Archive_OpenMode--><!--Device-OH_Archive_OpenMode-End-->
+<!--Device-enum OH_Archive_OpenMode--><!--Device-enum OH_Archive_OpenMode-End-->
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -134,7 +134,7 @@ Archive open mode enumeration.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARCHIVE_OPEN_MODE_CREATE = 0 | Create mode.<br>**Since**: 26.0.0 |
+| OH_ARCHIVE_OPEN_MODE_CREATE = 0 | Create mode.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_OPEN_MODE_CREATE = 0--><!--Device-OH_ARCHIVE_OPEN_MODE_CREATE = 0-End--> |
 
 ### OH_Archive_ProgressType
 
@@ -146,7 +146,7 @@ enum OH_Archive_ProgressType
 
 Archive progress type enumeration.
 
-<!--Device-OH_Archive_ProgressType--><!--Device-OH_Archive_ProgressType-End-->
+<!--Device-enum OH_Archive_ProgressType--><!--Device-enum OH_Archive_ProgressType-End-->
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -154,8 +154,8 @@ Archive progress type enumeration.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARCHIVE_PROGRESS_CONTINUE = 0 | Continue compression/decompression operation.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_PROGRESS_CANCEL = 1 | Cancel compression/decompression operation.<br>**Since**: 26.0.0 |
+| OH_ARCHIVE_PROGRESS_CONTINUE = 0 | Continue compression/decompression operation.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_PROGRESS_CONTINUE = 0--><!--Device-OH_ARCHIVE_PROGRESS_CONTINUE = 0-End--> |
+| OH_ARCHIVE_PROGRESS_CANCEL = 1 | Cancel compression/decompression operation.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_PROGRESS_CANCEL = 1--><!--Device-OH_ARCHIVE_PROGRESS_CANCEL = 1-End--> |
 
 ### OH_Archive_StreamChecksumAlg
 
@@ -167,7 +167,7 @@ enum OH_Archive_StreamChecksumAlg
 
 Hash algorithm used for checksum.
 
-<!--Device-OH_Archive_StreamChecksumAlg--><!--Device-OH_Archive_StreamChecksumAlg-End-->
+<!--Device-enum OH_Archive_StreamChecksumAlg--><!--Device-enum OH_Archive_StreamChecksumAlg-End-->
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -175,8 +175,8 @@ Hash algorithm used for checksum.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARCHIVE_NO_CHECKSUM = 0 | Do not calculate the hash value additionally.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_CRC32 = 1 | Use CRC32 calculate the hash value.<br>**Since**: 26.0.0 |
+| OH_ARCHIVE_NO_CHECKSUM = 0 | Do not calculate the hash value additionally.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_NO_CHECKSUM = 0--><!--Device-OH_ARCHIVE_NO_CHECKSUM = 0-End--> |
+| OH_ARCHIVE_CRC32 = 1 | Use CRC32 calculate the hash value.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_CRC32 = 1--><!--Device-OH_ARCHIVE_CRC32 = 1-End--> |
 
 
 ## Function description

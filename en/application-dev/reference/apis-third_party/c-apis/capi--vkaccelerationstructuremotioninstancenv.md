@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkAccelerationStructureMotionInstanceTypeNV type |  |
-| VkAccelerationStructureMotionInstanceFlagsNV flags |  |
-| [VkAccelerationStructureMotionInstanceDataNV](capi--vkaccelerationstructuremotioninstancedatanv.md) data |  |
+| VkAccelerationStructureMotionInstanceTypeNV type | <!--Device-VkAccelerationStructureMotionInstanceTypeNV type--><!--Device-VkAccelerationStructureMotionInstanceTypeNV type-End--> |
+| VkAccelerationStructureMotionInstanceFlagsNV flags | <!--Device-VkAccelerationStructureMotionInstanceFlagsNV flags--><!--Device-VkAccelerationStructureMotionInstanceFlagsNV flags-End--> |
+| [VkAccelerationStructureMotionInstanceDataNV](capi--vkaccelerationstructuremotioninstancedatanv.md) data | <!--Device-VkAccelerationStructureMotionInstanceDataNV data--><!--Device-VkAccelerationStructureMotionInstanceDataNV data-End--> |
 
 

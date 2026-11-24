@@ -24,7 +24,7 @@ The struct describes the DRM information for encrypted content.
 
 | Name | Description |
 | -- | -- |
-| uint32_t psshCount | PSSH count. |
-| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) psshInfo[MAX_PSSH_INFO_COUNT] | PSSH info. |
+| uint32_t psshCount | PSSH count.<br><!--Device-uint32_t psshCount--><!--Device-uint32_t psshCount-End--> |
+| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) psshInfo[MAX_PSSH_INFO_COUNT] | PSSH info.<br><!--Device-DRM_PsshInfo psshInfo[MAX_PSSH_INFO_COUNT]--><!--Device-DRM_PsshInfo psshInfo[MAX_PSSH_INFO_COUNT]-End--> |
 
 

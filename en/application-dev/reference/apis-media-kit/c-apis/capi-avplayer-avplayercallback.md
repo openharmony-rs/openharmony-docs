@@ -26,7 +26,7 @@ The struct contains the set of the **OH_AVPlayerOnInfo** and **OH_AVPlayerOnErro
 
 | Name | Description |
 | -- | -- |
-| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo |  |
-| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError |  |
+| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo | <!--Device-OH_AVPlayerOnInfo onInfo--><!--Device-OH_AVPlayerOnInfo onInfo-End--> |
+| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError | <!--Device-OH_AVPlayerOnError onError--><!--Device-OH_AVPlayerOnError onError-End--> |
 
 

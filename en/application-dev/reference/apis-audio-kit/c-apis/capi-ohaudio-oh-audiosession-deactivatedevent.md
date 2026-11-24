@@ -24,6 +24,6 @@ declare the audio session deactivated event
 
 | Name | Description |
 | -- | -- |
-| [OH_AudioSession_DeactivatedReason](capi-native-audio-session-manager-h.md#oh_audiosession_deactivatedreason) reason | audio session deactivated reason |
+| [OH_AudioSession_DeactivatedReason](capi-native-audio-session-manager-h.md#oh_audiosession_deactivatedreason) reason | audio session deactivated reason<br><!--Device-OH_AudioSession_DeactivatedReason reason--><!--Device-OH_AudioSession_DeactivatedReason reason-End--> |
 
 

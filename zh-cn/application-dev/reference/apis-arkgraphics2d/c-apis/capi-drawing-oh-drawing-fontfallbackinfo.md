@@ -24,7 +24,7 @@ typedef struct OH_Drawing_FontFallbackInfo {...} OH_Drawing_FontFallbackInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char* language | 字体集所支持的语言类型，语言格式为bcp47。 |
-| char* familyName | 字体家族名。 |
+| char* language | 字体集所支持的语言类型，语言格式为bcp47。<br><!--Device-char* language--><!--Device-char* language-End--> |
+| char* familyName | 字体家族名。<br><!--Device-char* familyName--><!--Device-char* familyName-End--> |
 
 

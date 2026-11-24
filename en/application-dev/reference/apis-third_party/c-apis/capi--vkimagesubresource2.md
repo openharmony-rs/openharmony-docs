@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkImageSubresource](capi--vkimagesubresource.md) imageSubresource |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkImageSubresource](capi--vkimagesubresource.md) imageSubresource | <!--Device-VkImageSubresource imageSubresource--><!--Device-VkImageSubresource imageSubresource-End--> |
 
 

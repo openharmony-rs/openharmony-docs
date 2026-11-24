@@ -67,7 +67,7 @@ enum OH_AVPixelFormat
 
 Enumerates the video pixel formats.
 
-<!--Device-OH_AVPixelFormat--><!--Device-OH_AVPixelFormat-End-->
+<!--Device-enum OH_AVPixelFormat--><!--Device-enum OH_AVPixelFormat-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -75,12 +75,12 @@ Enumerates the video pixel formats.
 
 | Enum item | Description |
 | -- | -- |
-| AV_PIXEL_FORMAT_YUVI420 = 1 | YUV 420 Planar.<br>**Since**: 9 |
-| AV_PIXEL_FORMAT_NV12 = 2 | NV12. YUV 420 semi-planar.<br>**Since**: 9 |
-| AV_PIXEL_FORMAT_NV21 = 3 | NV21. YVU 420 semi-planar.<br>**Since**: 9 |
-| AV_PIXEL_FORMAT_SURFACE_FORMAT = 4 | Pixel format obtained from the surface. This value takes effect only in surface mode.<br>**Since**: 9 |
-| AV_PIXEL_FORMAT_RGBA = 5 | RGBA8888<br>**Since**: 9 |
-| AV_PIXEL_FORMAT_RGBA1010102 = 6 | RGBA1010102<br>**Since**: 20 |
+| AV_PIXEL_FORMAT_YUVI420 = 1 | YUV 420 Planar.<br>**Since**: 9<br><!--Device-AV_PIXEL_FORMAT_YUVI420 = 1--><!--Device-AV_PIXEL_FORMAT_YUVI420 = 1-End--> |
+| AV_PIXEL_FORMAT_NV12 = 2 | NV12. YUV 420 semi-planar.<br>**Since**: 9<br><!--Device-AV_PIXEL_FORMAT_NV12 = 2--><!--Device-AV_PIXEL_FORMAT_NV12 = 2-End--> |
+| AV_PIXEL_FORMAT_NV21 = 3 | NV21. YVU 420 semi-planar.<br>**Since**: 9<br><!--Device-AV_PIXEL_FORMAT_NV21 = 3--><!--Device-AV_PIXEL_FORMAT_NV21 = 3-End--> |
+| AV_PIXEL_FORMAT_SURFACE_FORMAT = 4 | Pixel format obtained from the surface. This value takes effect only in surface mode.<br>**Since**: 9<br><!--Device-AV_PIXEL_FORMAT_SURFACE_FORMAT = 4--><!--Device-AV_PIXEL_FORMAT_SURFACE_FORMAT = 4-End--> |
+| AV_PIXEL_FORMAT_RGBA = 5 | RGBA8888<br>**Since**: 9<br><!--Device-AV_PIXEL_FORMAT_RGBA = 5--><!--Device-AV_PIXEL_FORMAT_RGBA = 5-End--> |
+| AV_PIXEL_FORMAT_RGBA1010102 = 6 | RGBA1010102<br>**Since**: 20<br><!--Device-AV_PIXEL_FORMAT_RGBA1010102 = 6--><!--Device-AV_PIXEL_FORMAT_RGBA1010102 = 6-End--> |
 
 
 ## Function description
@@ -276,7 +276,7 @@ Assigns an unsigned int value to the key of an OH_AVFormat instance. This API ca
 
 | Type | Description |
 | -- | -- |
-| bool | **true** if the operation is successful; **false** otherwise. <br>The possible causes of an operation failure are as follows: <br>1. The value of **format** is nullptr. <br>2. The value of **format** fails parameter structure verification. <br>3. The value of **key** is nullptr. |
+| bool | **true** if the operation is successful; **false** otherwise. <br>The possible causes of an operation failure are as follows: <br>1. The value of **format** is nullptr. <br>2. The value of **format** fails parameter structure verification. <br>3. The value of **key** is nullptr. <br>4. The value type corresponding to the key is incorrect. |
 
 ### OH_AVFormat_SetLongValue()
 
@@ -487,7 +487,7 @@ Obtains the value of the unsigned int type from an OH_AVFormat instance using a 
 
 | Type | Description |
 | -- | -- |
-| bool | **true** if the operation is successful; **false** otherwise. <br>The possible causes of an operation failure are as follows: <br>1. The value of **format** is nullptr. <br>2. The value of **format** fails parameter structure verification. <br>3. The value of **key** is nullptr. <br>4. The value of **out** is nullptr. |
+| bool | **true** if the operation is successful; **false** otherwise. <br>The possible causes of an operation failure are as follows: <br>1. The value of **format** is nullptr. <br>2. The value of **format** fails parameter structure verification. <br>3. The value of **key** is nullptr. <br>4. The value of **out** is nullptr. <br>5. The obtained key does not exist or is not set. |
 
 ### OH_AVFormat_GetLongValue()
 

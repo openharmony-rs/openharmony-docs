@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| StdVideoH264ProfileIdc stdProfileIdc |  |
-| VkVideoDecodeH264PictureLayoutFlagBitsKHR pictureLayout |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| StdVideoH264ProfileIdc stdProfileIdc | <!--Device-StdVideoH264ProfileIdc stdProfileIdc--><!--Device-StdVideoH264ProfileIdc stdProfileIdc-End--> |
+| VkVideoDecodeH264PictureLayoutFlagBitsKHR pictureLayout | <!--Device-VkVideoDecodeH264PictureLayoutFlagBitsKHR pictureLayout--><!--Device-VkVideoDecodeH264PictureLayoutFlagBitsKHR pictureLayout-End--> |
 
 

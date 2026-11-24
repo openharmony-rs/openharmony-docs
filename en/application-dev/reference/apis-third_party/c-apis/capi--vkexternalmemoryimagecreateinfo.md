@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkExternalMemoryHandleTypeFlags handleTypes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkExternalMemoryHandleTypeFlags handleTypes | <!--Device-VkExternalMemoryHandleTypeFlags handleTypes--><!--Device-VkExternalMemoryHandleTypeFlags handleTypes-End--> |
 
 

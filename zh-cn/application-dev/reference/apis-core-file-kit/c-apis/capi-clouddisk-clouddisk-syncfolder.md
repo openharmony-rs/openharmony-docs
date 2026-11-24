@@ -24,8 +24,8 @@ typedef struct CloudDisk_SyncFolder {...} CloudDisk_SyncFolder
 
 | 名称 | 描述 |
 | -- | -- |
-| CloudDisk_SyncFolderPath path | 同步根路径<br>**起始版本：** 21 |
-| [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 同步根路径状态。<br>**起始版本：** 21 |
-| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步根路径别名信息。<br>**起始版本：** 21 |
+| CloudDisk_SyncFolderPath path | 同步根路径<br>**起始版本：** 21<br><!--Device-CloudDisk_SyncFolderPath path--><!--Device-CloudDisk_SyncFolderPath path-End--> |
+| [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 同步根路径状态。<br>**起始版本：** 21<br><!--Device-CloudDisk_SyncFolderState state--><!--Device-CloudDisk_SyncFolderState state-End--> |
+| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步根路径别名信息。<br>**起始版本：** 21<br><!--Device-CloudDisk_DisplayNameInfo displayNameInfo--><!--Device-CloudDisk_DisplayNameInfo displayNameInfo-End--> |
 
 

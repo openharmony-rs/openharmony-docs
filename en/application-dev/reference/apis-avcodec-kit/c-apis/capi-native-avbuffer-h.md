@@ -177,7 +177,7 @@ Obtains parameters except basic attributes of a buffer. The information is carri
 
 | Type | Description |
 | -- | -- |
-| [OH_AVFormat *](capi-core-oh-avformat.md) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows: <br>1. The value of **buffer** is nullptr. <br>2. The meta of the buffer is nullptr. <br>3. The value of **buffer** fails parameter structure verification. |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | If the operation is successful, the pointer to the OH_AVFormat instance is returned. Otherwise, NULL is returned. <br>The possible causes are as follows: <br>1. The value of **buffer** is nullptr. <br>2. The meta of the buffer is nullptr. <br>3. The value of **buffer** fails parameter structure verification. |
 
 ### OH_AVBuffer_SetParameter()
 

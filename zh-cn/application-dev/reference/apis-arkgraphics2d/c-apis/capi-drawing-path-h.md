@@ -97,7 +97,7 @@ enum OH_Drawing_PathDirection
 
 添加闭合路径方向枚举。
 
-<!--Device-OH_Drawing_PathDirection--><!--Device-OH_Drawing_PathDirection-End-->
+<!--Device-enum OH_Drawing_PathDirection--><!--Device-enum OH_Drawing_PathDirection-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -105,8 +105,8 @@ enum OH_Drawing_PathDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PATH_DIRECTION_CW | 顺时针方向添加闭合轮廓。 |
-| PATH_DIRECTION_CCW | 逆时针方向添加闭合轮廓。 |
+| PATH_DIRECTION_CW | 顺时针方向添加闭合轮廓。<br><!--Device-PATH_DIRECTION_CW--><!--Device-PATH_DIRECTION_CW-End--> |
+| PATH_DIRECTION_CCW | 逆时针方向添加闭合轮廓。<br><!--Device-PATH_DIRECTION_CCW--><!--Device-PATH_DIRECTION_CCW-End--> |
 
 ### OH_Drawing_PathFillType
 
@@ -118,7 +118,7 @@ enum OH_Drawing_PathFillType
 
 定义路径的填充类型枚举。
 
-<!--Device-OH_Drawing_PathFillType--><!--Device-OH_Drawing_PathFillType-End-->
+<!--Device-enum OH_Drawing_PathFillType--><!--Device-enum OH_Drawing_PathFillType-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -126,10 +126,10 @@ enum OH_Drawing_PathFillType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PATH_FILL_TYPE_WINDING | 绘制区域中的任意一点，向任意方向射出一条射线，对于射线和路径的所有交点，初始计数为0，<br>遇到每个顺时针的交点（路径从射线的左边向右穿过），计数加1，遇到每个逆时针的交点（路径从射线的右边向左穿过），计数减1， 若最终的计数结果不为0，则认为这个点在路径内部，需要被涂色；若计数为0则不被涂色。 |
-| PATH_FILL_TYPE_EVEN_ODD | 绘制区域中的任意一点，向任意方向射出一条射线，若这条射线和路径相交的次数是奇数，则这个点被认为在路径内部，需要被涂色；若是偶数则不被涂色。 |
-| PATH_FILL_TYPE_INVERSE_WINDING | PATH_FILL_TYPE_WINDING 涂色规则取反。 |
-| PATH_FILL_TYPE_INVERSE_EVEN_ODD | PATH_FILL_TYPE_EVEN_ODD 涂色规则取反。 |
+| PATH_FILL_TYPE_WINDING | 绘制区域中的任意一点，向任意方向射出一条射线，对于射线和路径的所有交点，初始计数为0，<br>遇到每个顺时针的交点（路径从射线的左边向右穿过），计数加1，遇到每个逆时针的交点（路径从射线的右边向左穿过），计数减1， 若最终的计数结果不为0，则认为这个点在路径内部，需要被涂色；若计数为0则不被涂色。<br><!--Device-PATH_FILL_TYPE_WINDING--><!--Device-PATH_FILL_TYPE_WINDING-End--> |
+| PATH_FILL_TYPE_EVEN_ODD | 绘制区域中的任意一点，向任意方向射出一条射线，若这条射线和路径相交的次数是奇数，则这个点被认为在路径内部，需要被涂色；若是偶数则不被涂色。<br><!--Device-PATH_FILL_TYPE_EVEN_ODD--><!--Device-PATH_FILL_TYPE_EVEN_ODD-End--> |
+| PATH_FILL_TYPE_INVERSE_WINDING | PATH_FILL_TYPE_WINDING 涂色规则取反。<br><!--Device-PATH_FILL_TYPE_INVERSE_WINDING--><!--Device-PATH_FILL_TYPE_INVERSE_WINDING-End--> |
+| PATH_FILL_TYPE_INVERSE_EVEN_ODD | PATH_FILL_TYPE_EVEN_ODD 涂色规则取反。<br><!--Device-PATH_FILL_TYPE_INVERSE_EVEN_ODD--><!--Device-PATH_FILL_TYPE_INVERSE_EVEN_ODD-End--> |
 
 ### OH_Drawing_PathAddMode
 
@@ -141,7 +141,7 @@ enum OH_Drawing_PathAddMode
 
 用于指定路径添加模式的枚举类型。
 
-<!--Device-OH_Drawing_PathAddMode--><!--Device-OH_Drawing_PathAddMode-End-->
+<!--Device-enum OH_Drawing_PathAddMode--><!--Device-enum OH_Drawing_PathAddMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -149,8 +149,8 @@ enum OH_Drawing_PathAddMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PATH_ADD_MODE_APPEND | 以追加的方式添加路径。 |
-| PATH_ADD_MODE_EXTEND | 如果当前路径未闭合，则添加直线闭合当前路径。 |
+| PATH_ADD_MODE_APPEND | 以追加的方式添加路径。<br><!--Device-PATH_ADD_MODE_APPEND--><!--Device-PATH_ADD_MODE_APPEND-End--> |
+| PATH_ADD_MODE_EXTEND | 如果当前路径未闭合，则添加直线闭合当前路径。<br><!--Device-PATH_ADD_MODE_EXTEND--><!--Device-PATH_ADD_MODE_EXTEND-End--> |
 
 ### OH_Drawing_PathOpMode
 
@@ -162,7 +162,7 @@ enum OH_Drawing_PathOpMode
 
 路径操作类型枚举。
 
-<!--Device-OH_Drawing_PathOpMode--><!--Device-OH_Drawing_PathOpMode-End-->
+<!--Device-enum OH_Drawing_PathOpMode--><!--Device-enum OH_Drawing_PathOpMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -170,11 +170,11 @@ enum OH_Drawing_PathOpMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PATH_OP_MODE_DIFFERENCE | 差集操作。 |
-| PATH_OP_MODE_INTERSECT | 交集操作。 |
-| PATH_OP_MODE_UNION | 并集操作。 |
-| PATH_OP_MODE_XOR | 异或操作。 |
-| PATH_OP_MODE_REVERSE_DIFFERENCE | 反向差集操作。 |
+| PATH_OP_MODE_DIFFERENCE | 差集操作。<br><!--Device-PATH_OP_MODE_DIFFERENCE--><!--Device-PATH_OP_MODE_DIFFERENCE-End--> |
+| PATH_OP_MODE_INTERSECT | 交集操作。<br><!--Device-PATH_OP_MODE_INTERSECT--><!--Device-PATH_OP_MODE_INTERSECT-End--> |
+| PATH_OP_MODE_UNION | 并集操作。<br><!--Device-PATH_OP_MODE_UNION--><!--Device-PATH_OP_MODE_UNION-End--> |
+| PATH_OP_MODE_XOR | 异或操作。<br><!--Device-PATH_OP_MODE_XOR--><!--Device-PATH_OP_MODE_XOR-End--> |
+| PATH_OP_MODE_REVERSE_DIFFERENCE | 反向差集操作。<br><!--Device-PATH_OP_MODE_REVERSE_DIFFERENCE--><!--Device-PATH_OP_MODE_REVERSE_DIFFERENCE-End--> |
 
 ### OH_Drawing_PathMeasureMatrixFlags
 
@@ -186,7 +186,7 @@ enum OH_Drawing_PathMeasureMatrixFlags
 
 路径测量获取相应矩阵信息维度枚举。
 
-<!--Device-OH_Drawing_PathMeasureMatrixFlags--><!--Device-OH_Drawing_PathMeasureMatrixFlags-End-->
+<!--Device-enum OH_Drawing_PathMeasureMatrixFlags--><!--Device-enum OH_Drawing_PathMeasureMatrixFlags-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -194,9 +194,9 @@ enum OH_Drawing_PathMeasureMatrixFlags
 
 | 枚举项 | 描述 |
 | -- | -- |
-| GET_POSITION_MATRIX | 获取位置信息对应的矩阵。 |
-| GET_TANGENT_MATRIX | 获取切线信息对应的矩阵。 |
-| GET_POSITION_AND_TANGENT_MATRIX | 获取位置和切线信息对应的矩阵。 |
+| GET_POSITION_MATRIX | 获取位置信息对应的矩阵。<br><!--Device-GET_POSITION_MATRIX--><!--Device-GET_POSITION_MATRIX-End--> |
+| GET_TANGENT_MATRIX | 获取切线信息对应的矩阵。<br><!--Device-GET_TANGENT_MATRIX--><!--Device-GET_TANGENT_MATRIX-End--> |
+| GET_POSITION_AND_TANGENT_MATRIX | 获取位置和切线信息对应的矩阵。<br><!--Device-GET_POSITION_AND_TANGENT_MATRIX--><!--Device-GET_POSITION_AND_TANGENT_MATRIX-End--> |
 
 
 ## 函数说明

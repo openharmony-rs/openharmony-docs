@@ -24,11 +24,10 @@ Describes the primary keys or row-ids of changed rows.
 
 | Name | Description |
 | -- | -- |
-| int count | Indicates the count of the primary keys or row-ids. |
-| int type | Indicates data type [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) of the key. |
-| data | Indicates the data of the key info. |
-| data.integer | Indicates uint64_t type of the data. |
-| data.real | Indicates double type of the data. |
-| data.text | Indicates const char * type of the data. |
+| int count | Indicates the count of the primary keys or row-ids.<br><!--Device-int count--><!--Device-int count-End--> |
+| int type | Indicates data type [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) of the key.<br><!--Device-int type--><!--Device-int type-End--> |
+| data.integer | Indicates uint64_t type of the data.<br><!--Device-data.integer--><!--Device-data.integer-End--> |
+| data.real | Indicates double type of the data.<br><!--Device-data.real--><!--Device-data.real-End--> |
+| data.text | Indicates const char * type of the data.<br><!--Device-data.text--><!--Device-data.text-End--> |
 
 

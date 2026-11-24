@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceAddress deviceAddress |  |
-| void* hostAddress |  |
+| VkDeviceAddress deviceAddress | <!--Device-VkDeviceAddress deviceAddress--><!--Device-VkDeviceAddress deviceAddress-End--> |
+| void* hostAddress | <!--Device-void* hostAddress--><!--Device-void* hostAddress-End--> |
 
 

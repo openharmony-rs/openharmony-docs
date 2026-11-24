@@ -32,7 +32,7 @@ enum BundleManager_ErrorCode
 
 枚举错误码，详细介绍请参见通用错误码。
 
-<!--Device-BundleManager_ErrorCode--><!--Device-BundleManager_ErrorCode-End-->
+<!--Device-enum BundleManager_ErrorCode--><!--Device-enum BundleManager_ErrorCode-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,8 +40,8 @@ enum BundleManager_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0 | 执行成功。<br>**起始版本：** 21 |
-| BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201 | 权限被拒绝。<br>**起始版本：** 21 |
-| BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401 | 参数无效。<br>**起始版本：** 21 |
+| BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0 | 执行成功。<br>**起始版本：** 21<br><!--Device-BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0--><!--Device-BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0-End--> |
+| BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201 | 权限被拒绝。<br>**起始版本：** 21<br><!--Device-BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201--><!--Device-BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201-End--> |
+| BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401 | 参数无效。<br>**起始版本：** 21<br><!--Device-BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401--><!--Device-BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401-End--> |
 
 

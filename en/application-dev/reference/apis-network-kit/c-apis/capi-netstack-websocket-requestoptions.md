@@ -24,6 +24,6 @@ Defines the parameters for the connection between the WebSocket client and serve
 
 | Name | Description |
 | -- | -- |
-| [struct WebSocket_Header](capi-netstack-websocket-header.md) *headers |  |
+| [struct WebSocket_Header](capi-netstack-websocket-header.md) *headers | Pointer to the header information.<br><!--Device-struct WebSocket_Header *headers--><!--Device-struct WebSocket_Header *headers-End--> |
 
 

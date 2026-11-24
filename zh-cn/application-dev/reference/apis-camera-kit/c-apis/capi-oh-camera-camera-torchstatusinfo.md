@@ -24,8 +24,8 @@ typedef struct Camera_TorchStatusInfo {...} Camera_TorchStatusInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| bool isTorchAvailable | 手电筒是否可用，true表示可用，false表示不可用。 |
-| bool isTorchActive | 手电筒是否激活，true表示激活，false表示未激活。 |
-| float torchLevel | 手电筒亮度等级。取值范围为[0,1]，越靠近1，亮度越大。 |
+| bool isTorchAvailable | 手电筒是否可用，true表示可用，false表示不可用。<br><!--Device-bool isTorchAvailable--><!--Device-bool isTorchAvailable-End--> |
+| bool isTorchActive | 手电筒是否激活，true表示激活，false表示未激活。<br><!--Device-bool isTorchActive--><!--Device-bool isTorchActive-End--> |
+| float torchLevel | 手电筒亮度等级。取值范围为[0,1]，越靠近1，亮度越大。<br><!--Device-float torchLevel--><!--Device-float torchLevel-End--> |
 
 

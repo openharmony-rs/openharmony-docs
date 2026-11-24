@@ -24,7 +24,7 @@ The struct describes the parameters passed to the child process.
 
 | Name | Description |
 | -- | -- |
-| char* entryParams | Pointer to the entry parameters. The size cannot exceed 150 KB.<br>**Since**: 13 |
-| [struct NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList | List of file descriptors passed to the child process.<br>**Since**: 13 |
+| char* entryParams | Pointer to the entry parameters. The size cannot exceed 150 KB.<br>**Since**: 13<br><!--Device-char* entryParams--><!--Device-char* entryParams-End--> |
+| [struct NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList | List of file descriptors passed to the child process.<br>**Since**: 13<br><!--Device-struct NativeChildProcess_FdList fdList--><!--Device-struct NativeChildProcess_FdList fdList-End--> |
 
 

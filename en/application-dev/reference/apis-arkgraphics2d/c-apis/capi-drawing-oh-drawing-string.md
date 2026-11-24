@@ -24,7 +24,7 @@ This struct describes a string of characters encoded in UTF-16.
 
 | Name | Description |
 | -- | -- |
-| uint8_t* strData | Pointer to a byte array that stores characters in the UTF-16 encoding format.<br>**Since**: 14 |
-| uint32_t strLen | Actual length of the string that **strData** points to, in bytes.<br>**Since**: 14 |
+| uint8_t* strData | Pointer to a byte array that stores characters in the UTF-16 encoding format.<br>**Since**: 14<br><!--Device-uint8_t* strData--><!--Device-uint8_t* strData-End--> |
+| uint32_t strLen | Actual length of the string that **strData** points to, in bytes.<br>**Since**: 14<br><!--Device-uint32_t strLen--><!--Device-uint32_t strLen-End--> |
 
 

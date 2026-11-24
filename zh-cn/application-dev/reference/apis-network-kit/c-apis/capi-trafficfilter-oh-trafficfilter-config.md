@@ -6,16 +6,7 @@ typedef struct OH_TrafficFilter_Config {...} OH_TrafficFilter_Config
 
 ## 概述
 
-NFQueue配置结构体
-- 如果`config`为**NULL**，实现将应用以下默认值：
-- `packetCopyLen` = 0xFFFF（拷贝整个报文）
-- `nfqueueMaxlen` = 0 （使用系统默认值，即1024）
-- `nfqueueFlags` = OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN
-- 如果`config`为**非NULL**，调用者**必须**：
-1. 将整个结构体零初始化（例如`memset(&cfg, 0, sizeof(cfg))`）。
-2. 设置`size` = `sizeof(OH_TrafficFilter_Config)`。
-3. 将所有其他字段设置为定义范围内的有效值（见下文）。
-- **未遵守**此约定（例如`size`不正确、字段值超出范围） 将导致接口返回`OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。
+NFQueue（Netfilter 框架里的一个“数据包排队通道”）配置结构体。 <br>初始化规则：调用[OH_TrafficFilter_CreatePacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_createpacketcontroller)之前，调用者必须将该结构体清零（例如使用memset）， 然后将size设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_Config)。 <br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过size来确定哪些字段可以被安全读取。 如果size小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。 如果size大于系统已知的大小，多余的字段将被忽略。
 
 <!--Device-struct OH_TrafficFilter_Config {...}--><!--Device-struct OH_TrafficFilter_Config {...}-End-->
 
@@ -33,10 +24,10 @@ NFQueue配置结构体
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t size | 调用者必须将其设置为`sizeof(OH_TrafficFilter_Config)`。 调用者需要先零初始化结构体，然后设置此字段。 实现使用此值来确定有效数据范围，以实现二进制兼容。<br>**起始版本：** 26.0.1 |
-| uint32_t packetCopyMode | NFQueue报文拷贝模式，参见OH_TrafficFilter_PacketCopyMode<br>**起始版本：** 26.0.1 |
-| uint32_t packetCopyLen | NFQueue报文拷贝长度（字节），0xFFFF表示拷贝整个报文，较小的值仅拷贝报文头<br>**起始版本：** 26.0.1 |
-| uint32_t nfqueueMaxlen | NFQueue最大队列长度（报文数量），0表示系统默认值（1024）<br>**起始版本：** 26.0.1 |
-| uint32_t nfqueueFlags | NFQueue队列标志，参见OH_TRAFFICFILTER_NFQUEUE_FLAG_*定义<br>**起始版本：** 26.0.1 |
+| uint32_t size | 调用者分配的结构体实际大小。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| uint32_t packetCopyMode | 报文拷贝模式，请参考[OH_TrafficFilter_PacketCopyMode](capi-net-trafficfilter-type-h.md#oh_trafficfilter_packetcopymode)。默认值为2。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t packetCopyMode--><!--Device-uint32_t packetCopyMode-End--> |
+| uint32_t packetCopyLen | NFQueue报文拷贝长度（字节），取值范围为[0, 0xFFFF]，0xFFFF表示复制整个报文，其他值复制指定长度的报文头部。默认值为0xFFFF。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t packetCopyLen--><!--Device-uint32_t packetCopyLen-End--> |
+| uint32_t nfqueueMaxlen | NFQueue最大队列长度（报文数量），0表示使用系统默认值（1024）。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t nfqueueMaxlen--><!--Device-uint32_t nfqueueMaxlen-End--> |
+| uint32_t nfqueueFlags | NFQueue队列标志，参见[OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN](capi-net-trafficfilter-type-h.md#宏定义)。默认值为0x1。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t nfqueueFlags--><!--Device-uint32_t nfqueueFlags-End--> |
 
 

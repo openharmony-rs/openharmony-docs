@@ -94,7 +94,7 @@ Defines the code of the HiDebug module.
 
 | Name | Description |
 | -- | -- |
-| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
+| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug<br><!--Device-HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr--><!--Device-HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr-End--> |
 
 ## Enum type description
 
@@ -108,7 +108,7 @@ enum HiDebug_ErrorCode
 
 Enumerates the error codes used in the HiDebug module.
 
-<!--Device-HiDebug_ErrorCode--><!--Device-HiDebug_ErrorCode-End-->
+<!--Device-enum HiDebug_ErrorCode--><!--Device-enum HiDebug_ErrorCode-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -116,39 +116,39 @@ Enumerates the error codes used in the HiDebug module.
 
 | Enum item | Description |
 | -- | -- |
-| HIDEBUG_SUCCESS = 0 | Operation successful. |
-| HIDEBUG_INVALID_ARGUMENT = 401 | Invalid parameter. Possible causes: 1. The parameter value is incorrect. 2. The parameter type is incorrect. |
-| HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102 | Repeated collection. |
-| HIDEBUG_NO_PERMISSION = 11400103 | No file write permission. |
-| HIDEBUG_TRACE_ABNORMAL = 11400104 | Internal system error. |
-| HIDEBUG_NO_TRACE_RUNNING = 11400105 | No trace task is running. |
-| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | The trace file storage reaches the upper limit.<br>**Since**: 24 |
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | PC address passed to the symbol parsing function is invalid.<br>**Since**: 20 |
-| HIDEBUG_NOT_SUPPORTED = 11400300 | Current device is not supported.<br>**Since**: 22 |
-| HIDEBUG_UNDER_SAMPLING = 11400301 | Current process is being sampled.<br>**Since**: 22 |
-| HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | Sampling resources are unavailable.<br>**Since**: 22 |
-| HIDEBUG_RES_PROF_SUCCESS = 11400400 | Resource profiling started or stopped successfully.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 | Invalid resource profiling parameter.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 | Invalid maximum duration for resource profiling.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 | Invalid resource profiling filtering size.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 | Invalid maximum stack depth for resource profiling.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 | Invalid statistics interval for resource profiling.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 | Invalid sampling size for resource profiling.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 | Invalid resource type for resource profiling.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | Resource profiling is repeatedly started.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | Failed to stop resource profiling because it is not started.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | The number of resource profiling processes exceeds 4. This limit applies only to release-signed applications. Debug-signed applications are not subject to this limit for development and debugging purposes. The limit is released when an existing profiling task stops. [since 26.0.1] On API 26.0.0 and below, this limit applied to all applications. [since 24 - 26.0.0]<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_CONFLICT = 11400424 | Resource profiling conflicts with CLI tools or system collection tasks.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | Resource profiling automatically stopped due to the duration limit.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | The daily quota for resource profiling is exceeded. For release-signed applications, the limit is 2 times per day per application and 4 times per day for device. Debug-signed applications are not subject to this limit for development and debugging purposes. The quota resets at the start of each day. [since 26.0.1] On API 26.0.0 and below, only debug-signed applications were supported, with a limit of 10 times per day. [since 24 - 26.0.0]<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | Resource profiling requests are not permitted when the system CPU is overloaded, with the CPU usage exceeding 70%. Callers may retry when CPU usage drops below the threshold.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | Resource profiling requests are not permitted when the system is under memory pressure. Memory pressure is defined as available system memory below 2GB, a fixed threshold independent of device capacity. Callers may retry when available memory recovers. [since 26.0.1] On API 26.0.0 and below, memory pressure was defined as available memory below 15%. [since 24 - 26.0.0]<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | Resource profiling requests are not permitted when the system is under storage pressure. Storage pressure is defined as available system storage dropping below the greater of 3% of total storage and 15GB. Callers may retry when available storage recovers. [since 26.0.1] On API 26.0.0 and below, storage pressure was defined as available storage below 15%. [since 24 - 26.0.0]<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_FAILURE = 11400430 | Failed to start or stop resource profiling. Callers may check system conditions and retry.<br>**Since**: 24 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | Invalid maximum asynchronous nesting depth.<br>**Since**: 26.0.1 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | Invalid maximum asynchronous task stack depth.<br>**Since**: 26.0.1 |
-| HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | Invalid stack trace mode.<br>**Since**: 26.0.1 |
+| HIDEBUG_SUCCESS = 0 | Operation successful.<br><!--Device-HIDEBUG_SUCCESS = 0--><!--Device-HIDEBUG_SUCCESS = 0-End--> |
+| HIDEBUG_INVALID_ARGUMENT = 401 | Invalid parameter. Possible causes: 1. The parameter value is incorrect. 2. The parameter type is incorrect.<br><!--Device-HIDEBUG_INVALID_ARGUMENT = 401--><!--Device-HIDEBUG_INVALID_ARGUMENT = 401-End--> |
+| HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102 | Repeated collection.<br><!--Device-HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102--><!--Device-HIDEBUG_TRACE_CAPTURED_ALREADY = 11400102-End--> |
+| HIDEBUG_NO_PERMISSION = 11400103 | No file write permission.<br><!--Device-HIDEBUG_NO_PERMISSION = 11400103--><!--Device-HIDEBUG_NO_PERMISSION = 11400103-End--> |
+| HIDEBUG_TRACE_ABNORMAL = 11400104 | Internal system error.<br><!--Device-HIDEBUG_TRACE_ABNORMAL = 11400104--><!--Device-HIDEBUG_TRACE_ABNORMAL = 11400104-End--> |
+| HIDEBUG_NO_TRACE_RUNNING = 11400105 | No trace task is running.<br><!--Device-HIDEBUG_NO_TRACE_RUNNING = 11400105--><!--Device-HIDEBUG_NO_TRACE_RUNNING = 11400105-End--> |
+| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | The trace file storage reaches the upper limit.<br>**Since**: 24<br><!--Device-OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120--><!--Device-OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120-End--> |
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | PC address passed to the symbol parsing function is invalid.<br>**Since**: 20<br><!--Device-HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200--><!--Device-HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200-End--> |
+| HIDEBUG_NOT_SUPPORTED = 11400300 | Current device is not supported.<br>**Since**: 22<br><!--Device-HIDEBUG_NOT_SUPPORTED = 11400300--><!--Device-HIDEBUG_NOT_SUPPORTED = 11400300-End--> |
+| HIDEBUG_UNDER_SAMPLING = 11400301 | Current process is being sampled.<br>**Since**: 22<br><!--Device-HIDEBUG_UNDER_SAMPLING = 11400301--><!--Device-HIDEBUG_UNDER_SAMPLING = 11400301-End--> |
+| HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | Sampling resources are unavailable.<br>**Since**: 22<br><!--Device-HIDEBUG_RESOURCE_UNAVAILABLE = 11400302--><!--Device-HIDEBUG_RESOURCE_UNAVAILABLE = 11400302-End--> |
+| HIDEBUG_RES_PROF_SUCCESS = 11400400 | Resource profiling started or stopped successfully.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_SUCCESS = 11400400--><!--Device-HIDEBUG_RES_PROF_SUCCESS = 11400400-End--> |
+| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 | Invalid resource profiling parameter.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_ARG = 11400410--><!--Device-HIDEBUG_RES_PROF_INVALID_ARG = 11400410-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 | Invalid maximum duration for resource profiling.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411-End--> |
+| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 | Invalid resource profiling filtering size.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412--><!--Device-HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 | Invalid maximum stack depth for resource profiling.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413-End--> |
+| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 | Invalid statistics interval for resource profiling.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414--><!--Device-HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414-End--> |
+| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 | Invalid sampling size for resource profiling.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415--><!--Device-HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415-End--> |
+| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 | Invalid resource type for resource profiling.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416--><!--Device-HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416-End--> |
+| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420--><!--Device-HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420-End--> |
+| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | Resource profiling is repeatedly started.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421--><!--Device-HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421-End--> |
+| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | Failed to stop resource profiling because it is not started.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_NOT_STARTED = 11400422--><!--Device-HIDEBUG_RES_PROF_NOT_STARTED = 11400422-End--> |
+| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | The number of resource profiling processes exceeds 4. This limit applies only to release-signed applications. Debug-signed applications are not subject to this limit for development and debugging purposes. The limit is released when an existing profiling task stops. [since 26.0.1] On API 26.0.0 and below, this limit applied to all applications. [since 24 - 26.0.0]<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423--><!--Device-HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423-End--> |
+| HIDEBUG_RES_PROF_CONFLICT = 11400424 | Resource profiling conflicts with CLI tools or system collection tasks.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_CONFLICT = 11400424--><!--Device-HIDEBUG_RES_PROF_CONFLICT = 11400424-End--> |
+| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | Resource profiling automatically stopped due to the duration limit.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425--><!--Device-HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425-End--> |
+| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | The daily quota for resource profiling is exceeded. For release-signed applications, the limit is 2 times per day per application and 4 times per day for device. Debug-signed applications are not subject to this limit for development and debugging purposes. The quota resets at the start of each day. [since 26.0.1] On API 26.0.0 and below, only debug-signed applications were supported, with a limit of 10 times per day. [since 24 - 26.0.0]<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426--><!--Device-HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426-End--> |
+| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | Resource profiling requests are not permitted when the system CPU is overloaded, with the CPU usage exceeding 70%. Callers may retry when CPU usage drops below the threshold.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427--><!--Device-HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427-End--> |
+| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | Resource profiling requests are not permitted when the system is under memory pressure. Memory pressure is defined as available system memory below 2GB, a fixed threshold independent of device capacity. Callers may retry when available memory recovers. [since 26.0.1] On API 26.0.0 and below, memory pressure was defined as available memory below 15%. [since 24 - 26.0.0]<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428--><!--Device-HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428-End--> |
+| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | Resource profiling requests are not permitted when the system is under storage pressure. Storage pressure is defined as available system storage dropping below the greater of 3% of total storage and 15GB. Callers may retry when available storage recovers. [since 26.0.1] On API 26.0.0 and below, storage pressure was defined as available storage below 15%. [since 24 - 26.0.0]<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429--><!--Device-HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429-End--> |
+| HIDEBUG_RES_PROF_FAILURE = 11400430 | Failed to start or stop resource profiling. Callers may check system conditions and retry.<br>**Since**: 24<br><!--Device-HIDEBUG_RES_PROF_FAILURE = 11400430--><!--Device-HIDEBUG_RES_PROF_FAILURE = 11400430-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | Invalid maximum asynchronous nesting depth.<br>**Since**: 26.0.1<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431-End--> |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | Invalid maximum asynchronous task stack depth.<br>**Since**: 26.0.1<br><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432--><!--Device-HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432-End--> |
+| HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | Invalid stack trace mode.<br>**Since**: 26.0.1<br><!--Device-HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433--><!--Device-HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433-End--> |
 
 ### HiDebug_TraceFlag
 
@@ -160,7 +160,7 @@ enum HiDebug_TraceFlag
 
 Enumerates the thread types for trace collection.
 
-<!--Device-HiDebug_TraceFlag--><!--Device-HiDebug_TraceFlag-End-->
+<!--Device-enum HiDebug_TraceFlag--><!--Device-enum HiDebug_TraceFlag-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -168,8 +168,8 @@ Enumerates the thread types for trace collection.
 
 | Enum item | Description |
 | -- | -- |
-| HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1 | Only the main thread of the current application. |
-| HIDEBUG_TRACE_FLAG_ALL_THREADS = 2 | All threads of the application. |
+| HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1 | Only the main thread of the current application.<br><!--Device-HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1--><!--Device-HIDEBUG_TRACE_FLAG_MAIN_THREAD = 1-End--> |
+| HIDEBUG_TRACE_FLAG_ALL_THREADS = 2 | All threads of the application.<br><!--Device-HIDEBUG_TRACE_FLAG_ALL_THREADS = 2--><!--Device-HIDEBUG_TRACE_FLAG_ALL_THREADS = 2-End--> |
 
 ### HiDebug_StackFrameType
 
@@ -181,7 +181,7 @@ enum HiDebug_StackFrameType
 
 Enumerates the stack frame types.
 
-<!--Device-HiDebug_StackFrameType--><!--Device-HiDebug_StackFrameType-End-->
+<!--Device-enum HiDebug_StackFrameType--><!--Device-enum HiDebug_StackFrameType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -189,8 +189,8 @@ Enumerates the stack frame types.
 
 | Enum item | Description |
 | -- | -- |
-| HIDEBUG_STACK_FRAME_TYPE_JS = 1 | JS stack frame. |
-| HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | Native stack frame. |
+| HIDEBUG_STACK_FRAME_TYPE_JS = 1 | JS stack frame.<br><!--Device-HIDEBUG_STACK_FRAME_TYPE_JS = 1--><!--Device-HIDEBUG_STACK_FRAME_TYPE_JS = 1-End--> |
+| HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | Native stack frame.<br><!--Device-HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2--><!--Device-HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2-End--> |
 
 ### HiDebug_CrashObjType
 
@@ -202,7 +202,7 @@ enum HiDebug_CrashObjType
 
 Enumerates the data types of debugging information.
 
-<!--Device-HiDebug_CrashObjType--><!--Device-HiDebug_CrashObjType-End-->
+<!--Device-enum HiDebug_CrashObjType--><!--Device-enum HiDebug_CrashObjType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -210,12 +210,12 @@ Enumerates the data types of debugging information.
 
 | Enum item | Description |
 | -- | -- |
-| HIDEBUG_CRASHOBJ_STRING = 0 | String. |
-| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64-byte memory block. |
-| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256-byte memory block. |
-| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024-byte memory block. |
-| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048-byte memory block. |
-| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096-byte memory block. |
+| HIDEBUG_CRASHOBJ_STRING = 0 | String.<br><!--Device-HIDEBUG_CRASHOBJ_STRING = 0--><!--Device-HIDEBUG_CRASHOBJ_STRING = 0-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64-byte memory block.<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_64B = 1--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_64B = 1-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256-byte memory block.<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_256B = 2--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_256B = 2-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024-byte memory block.<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_1024B = 3--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_1024B = 3-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048-byte memory block.<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_2048B = 4--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_2048B = 4-End--> |
+| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096-byte memory block.<br><!--Device-HIDEBUG_CRASHOBJ_MEMORY_4096B = 5--><!--Device-HIDEBUG_CRASHOBJ_MEMORY_4096B = 5-End--> |
 
 ### OH_HiDebug_ResourceType
 
@@ -227,7 +227,7 @@ enum OH_HiDebug_ResourceType
 
 Enumerates the resource profiling types.
 
-<!--Device-OH_HiDebug_ResourceType--><!--Device-OH_HiDebug_ResourceType-End-->
+<!--Device-enum OH_HiDebug_ResourceType--><!--Device-enum OH_HiDebug_ResourceType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -235,14 +235,14 @@ Enumerates the resource profiling types.
 
 | Enum item | Description |
 | -- | -- |
-| OH_RES_TYPE_FD | File descriptor.<br>**Since**: 24 |
-| OH_RES_TYPE_THREAD | Thread.<br>**Since**: 24 |
-| OH_RES_TYPE_NATIVE | Native memory.<br>**Since**: 24 |
-| OH_RES_TYPE_GPU | GPU memory.<br>**Since**: 24 |
-| OH_RES_TYPE_GLOBAL_HANDLE | Global handle.<br>**Since**: 24 |
-| OH_RES_TYPE_DMA | DMA memory.<br>**Since**: 26.0.1 |
-| OH_RES_TYPE_ASHMEM | Anonymous Shared Memory.<br>**Since**: 26.0.1 |
-| OH_RES_TYPE_COMPOSITE_HEAP | Composite heap.<br>**Since**: 26.0.1 |
+| OH_RES_TYPE_FD | File descriptor.<br>**Since**: 24<br><!--Device-OH_RES_TYPE_FD--><!--Device-OH_RES_TYPE_FD-End--> |
+| OH_RES_TYPE_THREAD | Thread.<br>**Since**: 24<br><!--Device-OH_RES_TYPE_THREAD--><!--Device-OH_RES_TYPE_THREAD-End--> |
+| OH_RES_TYPE_NATIVE | Native memory.<br>**Since**: 24<br><!--Device-OH_RES_TYPE_NATIVE--><!--Device-OH_RES_TYPE_NATIVE-End--> |
+| OH_RES_TYPE_GPU | GPU memory.<br>**Since**: 24<br><!--Device-OH_RES_TYPE_GPU--><!--Device-OH_RES_TYPE_GPU-End--> |
+| OH_RES_TYPE_GLOBAL_HANDLE | Global handle.<br>**Since**: 24<br><!--Device-OH_RES_TYPE_GLOBAL_HANDLE--><!--Device-OH_RES_TYPE_GLOBAL_HANDLE-End--> |
+| OH_RES_TYPE_DMA | DMA memory.<br>**Since**: 26.0.1<br><!--Device-OH_RES_TYPE_DMA--><!--Device-OH_RES_TYPE_DMA-End--> |
+| OH_RES_TYPE_ASHMEM | Anonymous Shared Memory.<br>**Since**: 26.0.1<br><!--Device-OH_RES_TYPE_ASHMEM--><!--Device-OH_RES_TYPE_ASHMEM-End--> |
+| OH_RES_TYPE_COMPOSITE_HEAP | Composite heap.<br>**Since**: 26.0.1<br><!--Device-OH_RES_TYPE_COMPOSITE_HEAP--><!--Device-OH_RES_TYPE_COMPOSITE_HEAP-End--> |
 
 ### OH_HiDebug_MemListenerType
 
@@ -254,7 +254,7 @@ enum OH_HiDebug_MemListenerType
 
 Enumerates the memory listener callback types. You can process the related logic based on the callback type.
 
-<!--Device-OH_HiDebug_MemListenerType--><!--Device-OH_HiDebug_MemListenerType-End-->
+<!--Device-enum OH_HiDebug_MemListenerType--><!--Device-enum OH_HiDebug_MemListenerType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -262,9 +262,9 @@ Enumerates the memory listener callback types. You can process the related logic
 
 | Enum item | Description |
 | -- | -- |
-| OH_HIDEBUG_DO_NOTHING = 0 | Default value. No processing is required.<br>**Since**: 26.0.0 |
-| OH_HIDEBUG_RUNNING_GC = 1 | GC operation<br>**Since**: 26.0.0 |
-| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | Dump memory snapshot<br>**Since**: 26.0.0 |
+| OH_HIDEBUG_DO_NOTHING = 0 | Default value. No processing is required.<br>**Since**: 26.0.0<br><!--Device-OH_HIDEBUG_DO_NOTHING = 0--><!--Device-OH_HIDEBUG_DO_NOTHING = 0-End--> |
+| OH_HIDEBUG_RUNNING_GC = 1 | GC operation<br>**Since**: 26.0.0<br><!--Device-OH_HIDEBUG_RUNNING_GC = 1--><!--Device-OH_HIDEBUG_RUNNING_GC = 1-End--> |
+| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | Dump memory snapshot<br>**Since**: 26.0.0<br><!--Device-OH_HIDEBUG_DUMP_SNAPSHOT = 2--><!--Device-OH_HIDEBUG_DUMP_SNAPSHOT = 2-End--> |
 
 ### OH_HiDebug_ProfilerStackTraceMode
 
@@ -276,7 +276,7 @@ enum OH_HiDebug_ProfilerStackTraceMode
 
 Defines an enum for stack trace mode.
 
-<!--Device-OH_HiDebug_ProfilerStackTraceMode--><!--Device-OH_HiDebug_ProfilerStackTraceMode-End-->
+<!--Device-enum OH_HiDebug_ProfilerStackTraceMode--><!--Device-enum OH_HiDebug_ProfilerStackTraceMode-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -284,8 +284,8 @@ Defines an enum for stack trace mode.
 
 | Enum item | Description |
 | -- | -- |
-| OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0 | Keep all traces including destroyed ones.<br>**Since**: 26.0.1 |
-| OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1 | Discard destroyed traces.<br>**Since**: 26.0.1 |
+| OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0 | Keep all traces including destroyed ones.<br>**Since**: 26.0.1<br><!--Device-OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0--><!--Device-OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0-End--> |
+| OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1 | Discard destroyed traces.<br>**Since**: 26.0.1<br><!--Device-OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1--><!--Device-OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1-End--> |
 
 
 ## Function description

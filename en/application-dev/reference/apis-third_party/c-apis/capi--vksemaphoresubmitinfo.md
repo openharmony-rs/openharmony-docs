@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSemaphore semaphore |  |
-| uint64_t value |  |
-| VkPipelineStageFlags2 stageMask |  |
-| uint32_t deviceIndex |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSemaphore semaphore | <!--Device-VkSemaphore semaphore--><!--Device-VkSemaphore semaphore-End--> |
+| uint64_t value | <!--Device-uint64_t value--><!--Device-uint64_t value-End--> |
+| VkPipelineStageFlags2 stageMask | <!--Device-VkPipelineStageFlags2 stageMask--><!--Device-VkPipelineStageFlags2 stageMask-End--> |
+| uint32_t deviceIndex | <!--Device-uint32_t deviceIndex--><!--Device-uint32_t deviceIndex-End--> |
 
 

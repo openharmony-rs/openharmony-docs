@@ -24,9 +24,9 @@ Init the JavaScript VM with init option.
 
 | Name | Description |
 | -- | -- |
-| const intptr_t* externalReferences | Optional nullptr-terminated array of raw adddresses in the embedder that the VM can match against during serialization and use for deserialization. This array and its content must stay valid for the entire lifetime of the VM instance. |
-| int* argc | Flags for the VM. IF removeFlags is true, recognized flags will be removed from (argc, argv). Note that these flags are specific to VM. They are mainly used for development. Do not include them in production as they might not take effect if the VM is different from the development environment. |
-| char** argv | argv . |
-| bool removeFlags | remove flags. |
+| const intptr_t* externalReferences | Optional nullptr-terminated array of raw adddresses in the embedder that the VM can match against during serialization and use for deserialization. This array and its content must stay valid for the entire lifetime of the VM instance.<br><!--Device-const intptr_t* externalReferences--><!--Device-const intptr_t* externalReferences-End--> |
+| int* argc | Flags for the VM. IF removeFlags is true, recognized flags will be removed from (argc, argv). Note that these flags are specific to VM. They are mainly used for development. Do not include them in production as they might not take effect if the VM is different from the development environment.<br><!--Device-int* argc--><!--Device-int* argc-End--> |
+| char** argv | argv .<br><!--Device-char** argv--><!--Device-char** argv-End--> |
+| bool removeFlags | remove flags.<br><!--Device-bool removeFlags--><!--Device-bool removeFlags-End--> |
 
 

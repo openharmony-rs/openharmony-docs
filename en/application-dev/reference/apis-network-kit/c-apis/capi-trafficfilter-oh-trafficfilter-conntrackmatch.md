@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_ConntrackMatch {...} OH_TrafficFilter_ConntrackM
 
 ## Overview
 
-Connection tracking match condition<br> Matches packets based on connection tracking states
+Defines the connection tracking match condition.
 
 <!--Device-struct OH_TrafficFilter_ConntrackMatch {...}--><!--Device-struct OH_TrafficFilter_ConntrackMatch {...}-End-->
 
@@ -24,7 +24,7 @@ Connection tracking match condition<br> Matches packets based on connection trac
 
 | Name | Description |
 | -- | -- |
-| bool enable | Enable conntrack matching<br>**Since**: 26.0.1 |
-| uint8_t stateMask | Connection states (use OH_TRAFFICFILTER_CT_STATE_* bitmap)<br>**Since**: 26.0.1 |
+| bool enable | Whether to enable connection tracking match. The value **true** means to enable connection tracking match, and **false** means not to enable it.<br>**Since**: 26.0.1<br><!--Device-bool enable--><!--Device-bool enable-End--> |
+| uint8_t stateMask | Connection state.<br>**Since**: 26.0.1<br><!--Device-uint8_t stateMask--><!--Device-uint8_t stateMask-End--> |
 
 

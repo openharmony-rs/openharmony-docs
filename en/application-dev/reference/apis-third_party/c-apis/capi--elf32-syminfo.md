@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Half si_boundto |  |
-| Elf32_Half si_flags |  |
+| Elf32_Half si_boundto | <!--Device-Elf32_Half si_boundto--><!--Device-Elf32_Half si_boundto-End--> |
+| Elf32_Half si_flags | <!--Device-Elf32_Half si_flags--><!--Device-Elf32_Half si_flags-End--> |
 
 

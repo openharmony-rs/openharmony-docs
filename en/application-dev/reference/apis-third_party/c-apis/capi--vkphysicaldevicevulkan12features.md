@@ -10,54 +10,54 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 samplerMirrorClampToEdge |  |
-| VkBool32 drawIndirectCount |  |
-| VkBool32 storageBuffer8BitAccess |  |
-| VkBool32 uniformAndStorageBuffer8BitAccess |  |
-| VkBool32 storagePushConstant8 |  |
-| VkBool32 shaderBufferInt64Atomics |  |
-| VkBool32 shaderSharedInt64Atomics |  |
-| VkBool32 shaderFloat16 |  |
-| VkBool32 shaderInt8 |  |
-| VkBool32 descriptorIndexing |  |
-| VkBool32 shaderInputAttachmentArrayDynamicIndexing |  |
-| VkBool32 shaderUniformTexelBufferArrayDynamicIndexing |  |
-| VkBool32 shaderStorageTexelBufferArrayDynamicIndexing |  |
-| VkBool32 shaderUniformBufferArrayNonUniformIndexing |  |
-| VkBool32 shaderSampledImageArrayNonUniformIndexing |  |
-| VkBool32 shaderStorageBufferArrayNonUniformIndexing |  |
-| VkBool32 shaderStorageImageArrayNonUniformIndexing |  |
-| VkBool32 shaderInputAttachmentArrayNonUniformIndexing |  |
-| VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing |  |
-| VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing |  |
-| VkBool32 descriptorBindingUniformBufferUpdateAfterBind |  |
-| VkBool32 descriptorBindingSampledImageUpdateAfterBind |  |
-| VkBool32 descriptorBindingStorageImageUpdateAfterBind |  |
-| VkBool32 descriptorBindingStorageBufferUpdateAfterBind |  |
-| VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind |  |
-| VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind |  |
-| VkBool32 descriptorBindingUpdateUnusedWhilePending |  |
-| VkBool32 descriptorBindingPartiallyBound |  |
-| VkBool32 descriptorBindingVariableDescriptorCount |  |
-| VkBool32 runtimeDescriptorArray |  |
-| VkBool32 samplerFilterMinmax |  |
-| VkBool32 scalarBlockLayout |  |
-| VkBool32 imagelessFramebuffer |  |
-| VkBool32 uniformBufferStandardLayout |  |
-| VkBool32 shaderSubgroupExtendedTypes |  |
-| VkBool32 separateDepthStencilLayouts |  |
-| VkBool32 hostQueryReset |  |
-| VkBool32 timelineSemaphore |  |
-| VkBool32 bufferDeviceAddress |  |
-| VkBool32 bufferDeviceAddressCaptureReplay |  |
-| VkBool32 bufferDeviceAddressMultiDevice |  |
-| VkBool32 vulkanMemoryModel |  |
-| VkBool32 vulkanMemoryModelDeviceScope |  |
-| VkBool32 vulkanMemoryModelAvailabilityVisibilityChains |  |
-| VkBool32 shaderOutputViewportIndex |  |
-| VkBool32 shaderOutputLayer |  |
-| VkBool32 subgroupBroadcastDynamicId |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 samplerMirrorClampToEdge | <!--Device-VkBool32 samplerMirrorClampToEdge--><!--Device-VkBool32 samplerMirrorClampToEdge-End--> |
+| VkBool32 drawIndirectCount | <!--Device-VkBool32 drawIndirectCount--><!--Device-VkBool32 drawIndirectCount-End--> |
+| VkBool32 storageBuffer8BitAccess | <!--Device-VkBool32 storageBuffer8BitAccess--><!--Device-VkBool32 storageBuffer8BitAccess-End--> |
+| VkBool32 uniformAndStorageBuffer8BitAccess | <!--Device-VkBool32 uniformAndStorageBuffer8BitAccess--><!--Device-VkBool32 uniformAndStorageBuffer8BitAccess-End--> |
+| VkBool32 storagePushConstant8 | <!--Device-VkBool32 storagePushConstant8--><!--Device-VkBool32 storagePushConstant8-End--> |
+| VkBool32 shaderBufferInt64Atomics | <!--Device-VkBool32 shaderBufferInt64Atomics--><!--Device-VkBool32 shaderBufferInt64Atomics-End--> |
+| VkBool32 shaderSharedInt64Atomics | <!--Device-VkBool32 shaderSharedInt64Atomics--><!--Device-VkBool32 shaderSharedInt64Atomics-End--> |
+| VkBool32 shaderFloat16 | <!--Device-VkBool32 shaderFloat16--><!--Device-VkBool32 shaderFloat16-End--> |
+| VkBool32 shaderInt8 | <!--Device-VkBool32 shaderInt8--><!--Device-VkBool32 shaderInt8-End--> |
+| VkBool32 descriptorIndexing | <!--Device-VkBool32 descriptorIndexing--><!--Device-VkBool32 descriptorIndexing-End--> |
+| VkBool32 shaderInputAttachmentArrayDynamicIndexing | <!--Device-VkBool32 shaderInputAttachmentArrayDynamicIndexing--><!--Device-VkBool32 shaderInputAttachmentArrayDynamicIndexing-End--> |
+| VkBool32 shaderUniformTexelBufferArrayDynamicIndexing | <!--Device-VkBool32 shaderUniformTexelBufferArrayDynamicIndexing--><!--Device-VkBool32 shaderUniformTexelBufferArrayDynamicIndexing-End--> |
+| VkBool32 shaderStorageTexelBufferArrayDynamicIndexing | <!--Device-VkBool32 shaderStorageTexelBufferArrayDynamicIndexing--><!--Device-VkBool32 shaderStorageTexelBufferArrayDynamicIndexing-End--> |
+| VkBool32 shaderUniformBufferArrayNonUniformIndexing | <!--Device-VkBool32 shaderUniformBufferArrayNonUniformIndexing--><!--Device-VkBool32 shaderUniformBufferArrayNonUniformIndexing-End--> |
+| VkBool32 shaderSampledImageArrayNonUniformIndexing | <!--Device-VkBool32 shaderSampledImageArrayNonUniformIndexing--><!--Device-VkBool32 shaderSampledImageArrayNonUniformIndexing-End--> |
+| VkBool32 shaderStorageBufferArrayNonUniformIndexing | <!--Device-VkBool32 shaderStorageBufferArrayNonUniformIndexing--><!--Device-VkBool32 shaderStorageBufferArrayNonUniformIndexing-End--> |
+| VkBool32 shaderStorageImageArrayNonUniformIndexing | <!--Device-VkBool32 shaderStorageImageArrayNonUniformIndexing--><!--Device-VkBool32 shaderStorageImageArrayNonUniformIndexing-End--> |
+| VkBool32 shaderInputAttachmentArrayNonUniformIndexing | <!--Device-VkBool32 shaderInputAttachmentArrayNonUniformIndexing--><!--Device-VkBool32 shaderInputAttachmentArrayNonUniformIndexing-End--> |
+| VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing | <!--Device-VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing--><!--Device-VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing-End--> |
+| VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing | <!--Device-VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing--><!--Device-VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing-End--> |
+| VkBool32 descriptorBindingUniformBufferUpdateAfterBind | <!--Device-VkBool32 descriptorBindingUniformBufferUpdateAfterBind--><!--Device-VkBool32 descriptorBindingUniformBufferUpdateAfterBind-End--> |
+| VkBool32 descriptorBindingSampledImageUpdateAfterBind | <!--Device-VkBool32 descriptorBindingSampledImageUpdateAfterBind--><!--Device-VkBool32 descriptorBindingSampledImageUpdateAfterBind-End--> |
+| VkBool32 descriptorBindingStorageImageUpdateAfterBind | <!--Device-VkBool32 descriptorBindingStorageImageUpdateAfterBind--><!--Device-VkBool32 descriptorBindingStorageImageUpdateAfterBind-End--> |
+| VkBool32 descriptorBindingStorageBufferUpdateAfterBind | <!--Device-VkBool32 descriptorBindingStorageBufferUpdateAfterBind--><!--Device-VkBool32 descriptorBindingStorageBufferUpdateAfterBind-End--> |
+| VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind | <!--Device-VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind--><!--Device-VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind-End--> |
+| VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind | <!--Device-VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind--><!--Device-VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind-End--> |
+| VkBool32 descriptorBindingUpdateUnusedWhilePending | <!--Device-VkBool32 descriptorBindingUpdateUnusedWhilePending--><!--Device-VkBool32 descriptorBindingUpdateUnusedWhilePending-End--> |
+| VkBool32 descriptorBindingPartiallyBound | <!--Device-VkBool32 descriptorBindingPartiallyBound--><!--Device-VkBool32 descriptorBindingPartiallyBound-End--> |
+| VkBool32 descriptorBindingVariableDescriptorCount | <!--Device-VkBool32 descriptorBindingVariableDescriptorCount--><!--Device-VkBool32 descriptorBindingVariableDescriptorCount-End--> |
+| VkBool32 runtimeDescriptorArray | <!--Device-VkBool32 runtimeDescriptorArray--><!--Device-VkBool32 runtimeDescriptorArray-End--> |
+| VkBool32 samplerFilterMinmax | <!--Device-VkBool32 samplerFilterMinmax--><!--Device-VkBool32 samplerFilterMinmax-End--> |
+| VkBool32 scalarBlockLayout | <!--Device-VkBool32 scalarBlockLayout--><!--Device-VkBool32 scalarBlockLayout-End--> |
+| VkBool32 imagelessFramebuffer | <!--Device-VkBool32 imagelessFramebuffer--><!--Device-VkBool32 imagelessFramebuffer-End--> |
+| VkBool32 uniformBufferStandardLayout | <!--Device-VkBool32 uniformBufferStandardLayout--><!--Device-VkBool32 uniformBufferStandardLayout-End--> |
+| VkBool32 shaderSubgroupExtendedTypes | <!--Device-VkBool32 shaderSubgroupExtendedTypes--><!--Device-VkBool32 shaderSubgroupExtendedTypes-End--> |
+| VkBool32 separateDepthStencilLayouts | <!--Device-VkBool32 separateDepthStencilLayouts--><!--Device-VkBool32 separateDepthStencilLayouts-End--> |
+| VkBool32 hostQueryReset | <!--Device-VkBool32 hostQueryReset--><!--Device-VkBool32 hostQueryReset-End--> |
+| VkBool32 timelineSemaphore | <!--Device-VkBool32 timelineSemaphore--><!--Device-VkBool32 timelineSemaphore-End--> |
+| VkBool32 bufferDeviceAddress | <!--Device-VkBool32 bufferDeviceAddress--><!--Device-VkBool32 bufferDeviceAddress-End--> |
+| VkBool32 bufferDeviceAddressCaptureReplay | <!--Device-VkBool32 bufferDeviceAddressCaptureReplay--><!--Device-VkBool32 bufferDeviceAddressCaptureReplay-End--> |
+| VkBool32 bufferDeviceAddressMultiDevice | <!--Device-VkBool32 bufferDeviceAddressMultiDevice--><!--Device-VkBool32 bufferDeviceAddressMultiDevice-End--> |
+| VkBool32 vulkanMemoryModel | <!--Device-VkBool32 vulkanMemoryModel--><!--Device-VkBool32 vulkanMemoryModel-End--> |
+| VkBool32 vulkanMemoryModelDeviceScope | <!--Device-VkBool32 vulkanMemoryModelDeviceScope--><!--Device-VkBool32 vulkanMemoryModelDeviceScope-End--> |
+| VkBool32 vulkanMemoryModelAvailabilityVisibilityChains | <!--Device-VkBool32 vulkanMemoryModelAvailabilityVisibilityChains--><!--Device-VkBool32 vulkanMemoryModelAvailabilityVisibilityChains-End--> |
+| VkBool32 shaderOutputViewportIndex | <!--Device-VkBool32 shaderOutputViewportIndex--><!--Device-VkBool32 shaderOutputViewportIndex-End--> |
+| VkBool32 shaderOutputLayer | <!--Device-VkBool32 shaderOutputLayer--><!--Device-VkBool32 shaderOutputLayer-End--> |
+| VkBool32 subgroupBroadcastDynamicId | <!--Device-VkBool32 subgroupBroadcastDynamicId--><!--Device-VkBool32 subgroupBroadcastDynamicId-End--> |
 
 

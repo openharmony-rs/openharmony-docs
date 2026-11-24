@@ -39,7 +39,7 @@ enum Bluetooth_SwitchState
 
 Enumeration state of bluetooth switch.
 
-<!--Device-Bluetooth_SwitchState--><!--Device-Bluetooth_SwitchState-End-->
+<!--Device-enum Bluetooth_SwitchState--><!--Device-enum Bluetooth_SwitchState-End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -47,13 +47,13 @@ Enumeration state of bluetooth switch.
 
 | Enum item | Description |
 | -- | -- |
-| BLUETOOTH_STATE_OFF = 0 | Indicates the local bluetooth is off. |
-| BLUETOOTH_STATE_TURNING_ON = 1 | Indicates the local bluetooth is turning on. |
-| BLUETOOTH_STATE_ON = 2 | Indicates the local bluetooth is on, and ready for use. |
-| BLUETOOTH_STATE_TURNING_OFF = 3 | Indicates the local bluetooth is turning off. |
-| BLUETOOTH_STATE_BLE_TURNING_ON = 4 | Indicates the local bluetooth is turning LE mode on. |
-| BLUETOOTH_STATE_BLE_ON = 5 | Indicates the local bluetooth is in LE only mode. |
-| BLUETOOTH_STATE_BLE_TURNING_OFF = 6 | Indicates the local bluetooth is turning off LE only mode. |
+| BLUETOOTH_STATE_OFF = 0 | Indicates the local bluetooth is off.<br><!--Device-BLUETOOTH_STATE_OFF = 0--><!--Device-BLUETOOTH_STATE_OFF = 0-End--> |
+| BLUETOOTH_STATE_TURNING_ON = 1 | Indicates the local bluetooth is turning on.<br><!--Device-BLUETOOTH_STATE_TURNING_ON = 1--><!--Device-BLUETOOTH_STATE_TURNING_ON = 1-End--> |
+| BLUETOOTH_STATE_ON = 2 | Indicates the local bluetooth is on, and ready for use.<br><!--Device-BLUETOOTH_STATE_ON = 2--><!--Device-BLUETOOTH_STATE_ON = 2-End--> |
+| BLUETOOTH_STATE_TURNING_OFF = 3 | Indicates the local bluetooth is turning off.<br><!--Device-BLUETOOTH_STATE_TURNING_OFF = 3--><!--Device-BLUETOOTH_STATE_TURNING_OFF = 3-End--> |
+| BLUETOOTH_STATE_BLE_TURNING_ON = 4 | Indicates the local bluetooth is turning LE mode on.<br><!--Device-BLUETOOTH_STATE_BLE_TURNING_ON = 4--><!--Device-BLUETOOTH_STATE_BLE_TURNING_ON = 4-End--> |
+| BLUETOOTH_STATE_BLE_ON = 5 | Indicates the local bluetooth is in LE only mode.<br><!--Device-BLUETOOTH_STATE_BLE_ON = 5--><!--Device-BLUETOOTH_STATE_BLE_ON = 5-End--> |
+| BLUETOOTH_STATE_BLE_TURNING_OFF = 6 | Indicates the local bluetooth is turning off LE only mode.<br><!--Device-BLUETOOTH_STATE_BLE_TURNING_OFF = 6--><!--Device-BLUETOOTH_STATE_BLE_TURNING_OFF = 6-End--> |
 
 ### Bluetooth_ResultCode
 
@@ -65,7 +65,7 @@ enum Bluetooth_ResultCode
 
 Enumeration the bluetooth result codes.
 
-<!--Device-Bluetooth_ResultCode--><!--Device-Bluetooth_ResultCode-End-->
+<!--Device-enum Bluetooth_ResultCode--><!--Device-enum Bluetooth_ResultCode-End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -73,8 +73,8 @@ Enumeration the bluetooth result codes.
 
 | Enum item | Description |
 | -- | -- |
-| BLUETOOTH_SUCCESS = 0 | &nbsp;The operation is successful. |
-| BLUETOOTH_INVALID_PARAM = 401 | &nbsp;Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
+| BLUETOOTH_SUCCESS = 0 | &nbsp;The operation is successful.<br><!--Device-BLUETOOTH_SUCCESS = 0--><!--Device-BLUETOOTH_SUCCESS = 0-End--> |
+| BLUETOOTH_INVALID_PARAM = 401 | &nbsp;Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range.<br><!--Device-BLUETOOTH_INVALID_PARAM = 401--><!--Device-BLUETOOTH_INVALID_PARAM = 401-End--> |
 
 
 ## Function description

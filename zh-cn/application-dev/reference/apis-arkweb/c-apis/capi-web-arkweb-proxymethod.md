@@ -24,8 +24,8 @@ ArkWeb_ProxyMethod是用于定义JavaScript代理方法的结构体，支持实�
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* methodName | 注入的方法名。 |
-| [ArkWeb_OnJavaScriptProxyCallback](capi-arkweb-type-h.md#arkweb_onjavascriptproxycallback) callback | JavaScript通过Proxy对象调用该方法时触发的回调函数，用于处理来自JavaScript的方法调用。回调函数中可以访问JavaScript传入的参数（dataArray）并执行相应的Native逻辑。 |
-| void* userData | 需要在回调中携带的自定义数据。 |
+| const char* methodName | 注入的方法名。<br><!--Device-const char* methodName--><!--Device-const char* methodName-End--> |
+| [ArkWeb_OnJavaScriptProxyCallback](capi-arkweb-type-h.md#arkweb_onjavascriptproxycallback) callback | JavaScript通过Proxy对象调用该方法时触发的回调函数，用于处理来自JavaScript的方法调用。回调函数中可以访问JavaScript传入的参数（dataArray）并执行相应的Native逻辑。<br><!--Device-ArkWeb_OnJavaScriptProxyCallback callback--><!--Device-ArkWeb_OnJavaScriptProxyCallback callback-End--> |
+| void* userData | 需要在回调中携带的自定义数据。<br><!--Device-void* userData--><!--Device-void* userData-End--> |
 
 

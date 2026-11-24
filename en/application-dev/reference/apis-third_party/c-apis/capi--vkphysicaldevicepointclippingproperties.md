@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkPointClippingBehavior pointClippingBehavior |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkPointClippingBehavior pointClippingBehavior | <!--Device-VkPointClippingBehavior pointClippingBehavior--><!--Device-VkPointClippingBehavior pointClippingBehavior-End--> |
 
 

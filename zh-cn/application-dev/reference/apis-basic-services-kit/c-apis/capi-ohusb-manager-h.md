@@ -58,7 +58,7 @@ enum OH_UsbManager_ErrorCode
 
 枚举USB管理器的错误码。
 
-<!--Device-OH_UsbManager_ErrorCode--><!--Device-OH_UsbManager_ErrorCode-End-->
+<!--Device-enum OH_UsbManager_ErrorCode--><!--Device-enum OH_UsbManager_ErrorCode-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -66,13 +66,13 @@ enum OH_UsbManager_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_USBMANAGER_SUCCESS = 0 | 操作成功。<br>**起始版本：** 26.0.1 |
-| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | 权限被拒绝。<br>**起始版本：** 26.0.1 |
-| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | 服务异常。<br>**起始版本：** 26.0.1 |
-| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | 不存在该设备（可能已被断开连接）。<br>**起始版本：** 26.0.1 |
-| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | 内存不足。<br>**起始版本：** 26.0.1 |
-| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | 传输I/O错误。<br>**起始版本：** 26.0.1 |
-| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | 无效参数。对不可为空的参数传入了空指针。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_SUCCESS = 0 | 操作成功。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_SUCCESS = 0--><!--Device-OH_USBMANAGER_SUCCESS = 0-End--> |
+| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | 权限被拒绝。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001--><!--Device-OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001-End--> |
+| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | 服务异常。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004--><!--Device-OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004-End--> |
+| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | 不存在该设备（可能已被断开连接）。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_NO_DEVICE = 14400008--><!--Device-OH_USBMANAGER_ERROR_NO_DEVICE = 14400008-End--> |
+| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | 内存不足。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_NO_MEMORY = 14400009--><!--Device-OH_USBMANAGER_ERROR_NO_MEMORY = 14400009-End--> |
+| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | 传输I/O错误。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_IO_ERROR = 14400012--><!--Device-OH_USBMANAGER_ERROR_IO_ERROR = 14400012-End--> |
+| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | 无效参数。对不可为空的参数传入了空指针。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014--><!--Device-OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014-End--> |
 
 ### OH_UsbManager_RequestDirection
 
@@ -84,7 +84,7 @@ enum OH_UsbManager_RequestDirection
 
 枚举USB请求方向。
 
-<!--Device-OH_UsbManager_RequestDirection--><!--Device-OH_UsbManager_RequestDirection-End-->
+<!--Device-enum OH_UsbManager_RequestDirection--><!--Device-enum OH_UsbManager_RequestDirection-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -92,8 +92,8 @@ enum OH_UsbManager_RequestDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | 用于从主机向设备写入数据的请求。<br>**起始版本：** 26.0.1 |
-| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | 用于从设备向主机读取数据的请求。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | 用于从主机向设备写入数据的请求。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0--><!--Device-OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0-End--> |
+| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | 用于从设备向主机读取数据的请求。<br>**起始版本：** 26.0.1<br><!--Device-OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80--><!--Device-OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80-End--> |
 
 
 ## 函数说明

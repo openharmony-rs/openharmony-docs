@@ -89,7 +89,7 @@ enum Image_AuxiliaryPictureType
 
 Type of the auxiliary picture.
 
-<!--Device-Image_AuxiliaryPictureType--><!--Device-Image_AuxiliaryPictureType-End-->
+<!--Device-enum Image_AuxiliaryPictureType--><!--Device-enum Image_AuxiliaryPictureType-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -97,13 +97,13 @@ Type of the auxiliary picture.
 
 | Enum item | Description |
 | -- | -- |
-| AUXILIARY_PICTURE_TYPE_GAINMAP = 1 | Gainmap |
-| AUXILIARY_PICTURE_TYPE_DEPTH_MAP = 2 | Depth map |
-| AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3 | Unrefocus map |
-| AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4 | Linear map |
-| AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5 | Fragment map |
-| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11 | Oxygen saturation map<br>**Since**: 26.0.1 |
-| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12 | Melanin concentration map<br>**Since**: 26.0.1 |
+| AUXILIARY_PICTURE_TYPE_GAINMAP = 1 | Gainmap<br><!--Device-AUXILIARY_PICTURE_TYPE_GAINMAP = 1--><!--Device-AUXILIARY_PICTURE_TYPE_GAINMAP = 1-End--> |
+| AUXILIARY_PICTURE_TYPE_DEPTH_MAP = 2 | Depth map<br><!--Device-AUXILIARY_PICTURE_TYPE_DEPTH_MAP = 2--><!--Device-AUXILIARY_PICTURE_TYPE_DEPTH_MAP = 2-End--> |
+| AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3 | Unrefocus map<br><!--Device-AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3--><!--Device-AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3-End--> |
+| AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4 | Linear map<br><!--Device-AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4--><!--Device-AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4-End--> |
+| AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5 | Fragment map<br><!--Device-AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5--><!--Device-AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5-End--> |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11 | Oxygen saturation map<br>**Since**: 26.0.1<br><!--Device-OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11--><!--Device-OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11-End--> |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12 | Melanin concentration map<br>**Since**: 26.0.1<br><!--Device-OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12--><!--Device-OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12-End--> |
 
 
 ## Function description

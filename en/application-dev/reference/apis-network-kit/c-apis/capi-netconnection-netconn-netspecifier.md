@@ -24,7 +24,7 @@ Defines network feature sets.
 
 | Name | Description |
 | -- | -- |
-| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) caps | Network capability set. |
-| char *bearerPrivateIdentifier | Network ID. |
+| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) caps | Network capability set.<br><!--Device-NetConn_NetCapabilities caps--><!--Device-NetConn_NetCapabilities caps-End--> |
+| char *bearerPrivateIdentifier | Network ID.<br><!--Device-char *bearerPrivateIdentifier--><!--Device-char *bearerPrivateIdentifier-End--> |
 
 

@@ -12,9 +12,9 @@ A UParseError struct is used to returned detailed information aboutparsing error
 
 | Name | Description |
 | -- | -- |
-| int32_t line | The line on which the error occurred. If the parser uses this field, it sets it to the line number of the source text line on which the error appears, which will be a value >= 1. If the parse does not support line numbers, the value will be <= 0. |
-| int32_t offset | The character offset to the error. If the line field is >= 1, then this is the offset from the start of the line. Otherwise, this is the offset from the start of the text. If the parser does not support this field, it will have a value < 0. |
-| UChar preContext[U_PARSE_CONTEXT_LEN] | Textual context before the error. Null-terminated. The empty string if not supported by parser. |
-| UChar postContext[U_PARSE_CONTEXT_LEN] | The error itself and/or textual context after the error. Null-terminated. The empty string if not supported by parser. |
+| int32_t line | The line on which the error occurred. If the parser uses this field, it sets it to the line number of the source text line on which the error appears, which will be a value >= 1. If the parse does not support line numbers, the value will be <= 0.<br><!--Device-int32_t line--><!--Device-int32_t line-End--> |
+| int32_t offset | The character offset to the error. If the line field is >= 1, then this is the offset from the start of the line. Otherwise, this is the offset from the start of the text. If the parser does not support this field, it will have a value < 0.<br><!--Device-int32_t offset--><!--Device-int32_t offset-End--> |
+| UChar preContext[U_PARSE_CONTEXT_LEN] | Textual context before the error. Null-terminated. The empty string if not supported by parser.<br><!--Device-UChar preContext[U_PARSE_CONTEXT_LEN]--><!--Device-UChar preContext[U_PARSE_CONTEXT_LEN]-End--> |
+| UChar postContext[U_PARSE_CONTEXT_LEN] | The error itself and/or textual context after the error. Null-terminated. The empty string if not supported by parser.<br><!--Device-UChar postContext[U_PARSE_CONTEXT_LEN]--><!--Device-UChar postContext[U_PARSE_CONTEXT_LEN]-End--> |
 
 

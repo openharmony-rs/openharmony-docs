@@ -24,7 +24,7 @@ Defines a struct for the accessible action.
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_Accessibility_ActionType](capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) actionType | Action type. |
-| const char* description | Action description. |
+| [ArkUI_Accessibility_ActionType](capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) actionType | Action type.<br><!--Device-ArkUI_Accessibility_ActionType actionType--><!--Device-ArkUI_Accessibility_ActionType actionType-End--> |
+| const char* description | Action description.<br><!--Device-const char* description--><!--Device-const char* description-End--> |
 
 

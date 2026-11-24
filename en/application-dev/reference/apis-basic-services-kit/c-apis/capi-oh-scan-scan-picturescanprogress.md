@@ -24,8 +24,8 @@ Defines the progress of scanning a picture by the scanner. This struct contains 
 
 | Name | Description |
 | -- | -- |
-| int32_t progress | Picture scanning progress, in percentage. The value range is [0, 100]. The value **0** indicates that the scanning starts, and the value **100** indicates that the scanning is complete. |
-| int32_t fd | File descriptor of the scanned picture, which is used to read the image data transmitted by the scanner. **fd**<br>is valid only when the value of **progress** is **100**. |
-| bool isFinal | Whether the picture is the last one to be scanned. The value **true** indicates that the picture is the last one to be scanned, and **false** indicates that the picture is not the last one. **isFinal** is valid only when the value of **progress** is **100**. |
+| int32_t progress | Picture scanning progress, in percentage. The value range is [0, 100]. The value **0** indicates that the scanning starts, and the value **100** indicates that the scanning is complete.<br><!--Device-int32_t progress--><!--Device-int32_t progress-End--> |
+| int32_t fd | File descriptor of the scanned picture, which is used to read the image data transmitted by the scanner. **fd** is valid only when the value of **progress** is **100**.<br><!--Device-int32_t fd--><!--Device-int32_t fd-End--> |
+| bool isFinal | Whether the picture is the last one to be scanned. The value **true** indicates that the picture is the last one to be scanned, and **false** indicates that the picture is not the last one. **isFinal** is valid only when the value of **progress** is **100**.<br><!--Device-bool isFinal--><!--Device-bool isFinal-End--> |
 
 

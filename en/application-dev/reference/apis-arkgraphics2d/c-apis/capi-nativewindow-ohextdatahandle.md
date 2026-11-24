@@ -26,8 +26,8 @@ Defines the ExtData Handle
 
 | Name | Description |
 | -- | -- |
-| int32_t fd | < Handle fd, -1 if not supported |
-| uint32_t reserveInts | < the number of reserved integer value |
-| int32_t reserve[0] | < the reserved data |
+| int32_t fd | < Handle fd, -1 if not supported<br><!--Device-int32_t fd--><!--Device-int32_t fd-End--> |
+| uint32_t reserveInts | < the number of reserved integer value<br><!--Device-uint32_t reserveInts--><!--Device-uint32_t reserveInts-End--> |
+| int32_t reserve[0] | < the reserved data<br><!--Device-int32_t reserve[0]--><!--Device-int32_t reserve[0]-End--> |
 
 

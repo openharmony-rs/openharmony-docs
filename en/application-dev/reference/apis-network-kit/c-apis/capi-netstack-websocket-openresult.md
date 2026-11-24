@@ -24,7 +24,7 @@ Defines the parameters for the connection success received by the WebSocket clie
 
 | Name | Description |
 | -- | -- |
-| uint32_t code | Result code for successful WebSocket client connection. |
-| const char *reason | Reason for successful WebSocket client connection. |
+| uint32_t code | Result code for successful WebSocket client connection.<br><!--Device-uint32_t code--><!--Device-uint32_t code-End--> |
+| const char *reason | Reason for successful WebSocket client connection.<br><!--Device-const char *reason--><!--Device-const char *reason-End--> |
 
 

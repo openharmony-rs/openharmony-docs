@@ -58,7 +58,7 @@ enum OH_UsbManager_ErrorCode
 
 Enumerates the USB Manager error codes.
 
-<!--Device-OH_UsbManager_ErrorCode--><!--Device-OH_UsbManager_ErrorCode-End-->
+<!--Device-enum OH_UsbManager_ErrorCode--><!--Device-enum OH_UsbManager_ErrorCode-End-->
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -66,13 +66,13 @@ Enumerates the USB Manager error codes.
 
 | Enum item | Description |
 | -- | -- |
-| OH_USBMANAGER_SUCCESS = 0 | Operation successful.<br>**Since**: 26.0.1 |
-| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | Permission denied.<br>**Since**: 26.0.1 |
-| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | Service exception.<br>**Since**: 26.0.1 |
-| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | No such device (it may have been disconnected).<br>**Since**: 26.0.1 |
-| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | Insufficient memory.<br>**Since**: 26.0.1 |
-| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | Transmission I/O error.<br>**Since**: 26.0.1 |
-| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | Invalid parameter. A null pointer is passed for a parameter that must not be null.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_SUCCESS = 0 | Operation successful.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_SUCCESS = 0--><!--Device-OH_USBMANAGER_SUCCESS = 0-End--> |
+| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | Permission denied.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001--><!--Device-OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001-End--> |
+| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | Service exception.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004--><!--Device-OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004-End--> |
+| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | No such device (it may have been disconnected).<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_NO_DEVICE = 14400008--><!--Device-OH_USBMANAGER_ERROR_NO_DEVICE = 14400008-End--> |
+| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | Insufficient memory.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_NO_MEMORY = 14400009--><!--Device-OH_USBMANAGER_ERROR_NO_MEMORY = 14400009-End--> |
+| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | Transmission I/O error.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_IO_ERROR = 14400012--><!--Device-OH_USBMANAGER_ERROR_IO_ERROR = 14400012-End--> |
+| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | Invalid parameter. A null pointer is passed for a parameter that must not be null.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014--><!--Device-OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014-End--> |
 
 ### OH_UsbManager_RequestDirection
 
@@ -84,7 +84,7 @@ enum OH_UsbManager_RequestDirection
 
 Enumerates USB request directions.
 
-<!--Device-OH_UsbManager_RequestDirection--><!--Device-OH_UsbManager_RequestDirection-End-->
+<!--Device-enum OH_UsbManager_RequestDirection--><!--Device-enum OH_UsbManager_RequestDirection-End-->
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -92,8 +92,8 @@ Enumerates USB request directions.
 
 | Enum item | Description |
 | -- | -- |
-| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | Request for writing data from the host to the device.<br>**Since**: 26.0.1 |
-| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | Request for reading data from the device to the host.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | Request for writing data from the host to the device.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0--><!--Device-OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0-End--> |
+| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | Request for reading data from the device to the host.<br>**Since**: 26.0.1<br><!--Device-OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80--><!--Device-OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80-End--> |
 
 
 ## Function description

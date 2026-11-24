@@ -45,7 +45,7 @@ enum ArkWeb_NativeAPIVariantKind
 
 定义Native API的类型枚举。
 
-<!--Device-ArkWeb_NativeAPIVariantKind--><!--Device-ArkWeb_NativeAPIVariantKind-End-->
+<!--Device-enum ArkWeb_NativeAPIVariantKind--><!--Device-enum ArkWeb_NativeAPIVariantKind-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -53,12 +53,12 @@ enum ArkWeb_NativeAPIVariantKind
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_NATIVE_COMPONENT | Component相关API类型。 |
-| ARKWEB_NATIVE_CONTROLLER | Controller相关API类型。 |
-| ARKWEB_NATIVE_WEB_MESSAGE_PORT | WebMessagePort相关API类型。 |
-| ARKWEB_NATIVE_WEB_MESSAGE | WebMessage相关API类型。 |
-| ARKWEB_NATIVE_COOKIE_MANAGER | CookieManager相关API类型。 |
-| ARKWEB_NATIVE_JAVASCRIPT_VALUE | JavaScriptValue相关API类型。<br>**起始版本：** 18 |
+| ARKWEB_NATIVE_COMPONENT | Component相关API类型。<br><!--Device-ARKWEB_NATIVE_COMPONENT--><!--Device-ARKWEB_NATIVE_COMPONENT-End--> |
+| ARKWEB_NATIVE_CONTROLLER | Controller相关API类型。<br><!--Device-ARKWEB_NATIVE_CONTROLLER--><!--Device-ARKWEB_NATIVE_CONTROLLER-End--> |
+| ARKWEB_NATIVE_WEB_MESSAGE_PORT | WebMessagePort相关API类型。<br><!--Device-ARKWEB_NATIVE_WEB_MESSAGE_PORT--><!--Device-ARKWEB_NATIVE_WEB_MESSAGE_PORT-End--> |
+| ARKWEB_NATIVE_WEB_MESSAGE | WebMessage相关API类型。<br><!--Device-ARKWEB_NATIVE_WEB_MESSAGE--><!--Device-ARKWEB_NATIVE_WEB_MESSAGE-End--> |
+| ARKWEB_NATIVE_COOKIE_MANAGER | CookieManager相关API类型。<br><!--Device-ARKWEB_NATIVE_COOKIE_MANAGER--><!--Device-ARKWEB_NATIVE_COOKIE_MANAGER-End--> |
+| ARKWEB_NATIVE_JAVASCRIPT_VALUE | JavaScriptValue相关API类型。<br>**起始版本：** 18<br><!--Device-ARKWEB_NATIVE_JAVASCRIPT_VALUE--><!--Device-ARKWEB_NATIVE_JAVASCRIPT_VALUE-End--> |
 
 
 ## 函数说明

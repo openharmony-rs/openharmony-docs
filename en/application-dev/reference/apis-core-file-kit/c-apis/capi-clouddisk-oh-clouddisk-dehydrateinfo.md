@@ -24,7 +24,7 @@ A struct that encapsulates the dehydrate authorization information.
 
 | Name | Description |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | Relative file path in the sync root path.<br>**Since**: 26.0.1 |
-| bool allow | Whether the dehydrate operation is allowed.<br>**Since**: 26.0.1 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | Relative file path in the sync root path.<br>**Since**: 26.0.1<br><!--Device-CloudDisk_PathInfo filePath--><!--Device-CloudDisk_PathInfo filePath-End--> |
+| bool allow | Whether the dehydrate operation is allowed.<br>**Since**: 26.0.1<br><!--Device-bool allow--><!--Device-bool allow-End--> |
 
 

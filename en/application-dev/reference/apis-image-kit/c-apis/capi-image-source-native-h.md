@@ -115,7 +115,7 @@ enum IMAGE_DYNAMIC_RANGE
 
 Enumerates the desired dynamic range for decoding.
 
-<!--Device-IMAGE_DYNAMIC_RANGE--><!--Device-IMAGE_DYNAMIC_RANGE-End-->
+<!--Device-enum IMAGE_DYNAMIC_RANGE--><!--Device-enum IMAGE_DYNAMIC_RANGE-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -123,9 +123,9 @@ Enumerates the desired dynamic range for decoding.
 
 | Enum item | Description |
 | -- | -- |
-| IMAGE_DYNAMIC_RANGE_AUTO = 0 | Dynamic range depends on the image. |
-| IMAGE_DYNAMIC_RANGE_SDR = 1 | Standard dynamic range. |
-| IMAGE_DYNAMIC_RANGE_HDR = 2 | High dynamic range. |
+| IMAGE_DYNAMIC_RANGE_AUTO = 0 | Dynamic range depends on the image.<br><!--Device-IMAGE_DYNAMIC_RANGE_AUTO = 0--><!--Device-IMAGE_DYNAMIC_RANGE_AUTO = 0-End--> |
+| IMAGE_DYNAMIC_RANGE_SDR = 1 | Standard dynamic range.<br><!--Device-IMAGE_DYNAMIC_RANGE_SDR = 1--><!--Device-IMAGE_DYNAMIC_RANGE_SDR = 1-End--> |
+| IMAGE_DYNAMIC_RANGE_HDR = 2 | High dynamic range.<br><!--Device-IMAGE_DYNAMIC_RANGE_HDR = 2--><!--Device-IMAGE_DYNAMIC_RANGE_HDR = 2-End--> |
 
 ### IMAGE_ALLOCATOR_TYPE
 
@@ -137,7 +137,7 @@ enum IMAGE_ALLOCATOR_TYPE
 
 Enumerates the types of allocators used to allocate PixelMap memory.
 
-<!--Device-IMAGE_ALLOCATOR_TYPE--><!--Device-IMAGE_ALLOCATOR_TYPE-End-->
+<!--Device-enum IMAGE_ALLOCATOR_TYPE--><!--Device-enum IMAGE_ALLOCATOR_TYPE-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -145,9 +145,9 @@ Enumerates the types of allocators used to allocate PixelMap memory.
 
 | Enum item | Description |
 | -- | -- |
-| IMAGE_ALLOCATOR_TYPE_AUTO = 0 | The system determines which memory to use to create the PixelMap. |
-| IMAGE_ALLOCATOR_TYPE_DMA = 1 | Use DMA buffer to create the PixelMap. |
-| IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY = 2 | Use share memory to create the PixelMap. |
+| IMAGE_ALLOCATOR_TYPE_AUTO = 0 | The system determines which memory to use to create the PixelMap.<br><!--Device-IMAGE_ALLOCATOR_TYPE_AUTO = 0--><!--Device-IMAGE_ALLOCATOR_TYPE_AUTO = 0-End--> |
+| IMAGE_ALLOCATOR_TYPE_DMA = 1 | Use DMA buffer to create the PixelMap.<br><!--Device-IMAGE_ALLOCATOR_TYPE_DMA = 1--><!--Device-IMAGE_ALLOCATOR_TYPE_DMA = 1-End--> |
+| IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY = 2 | Use share memory to create the PixelMap.<br><!--Device-IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY = 2--><!--Device-IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY = 2-End--> |
 
 ### Image_CropAndScaleStrategy
 
@@ -159,7 +159,7 @@ enum Image_CropAndScaleStrategy
 
 Enumerates the cropping and scaling strategies when **desiredSize** and **desiredRegion** are both specified.<br> If the **ImageCropAndScaleStrategy** parameter is not specified in [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) and both **desiredRegion** and **desiredSize** are set, the final decoding result may vary slightly due to differences in decoding algorithms used for different image formats.<br> For example, if the original image size is 200x200, and you specify **desiredSize:{width: 150, height: 150}, desiredRegion:{x: 0, y: 0, width: 100, height: 100}**, the expectation is to decode the top-left 1/4 region of the original image and then scale the pixelMap size to 150x150.<br> For JPEG and WebP images (as well as some DNG images that decode a JPEG preview within the file and therefore are treated as JPEG format), the system first performs downsampling. For instance, it might downsample by 7/8 and then crop the region based on a 175x175 image size. As a result, the final cropped region will be slightly larger than the top-left 1/4 of the original image.<br> For SVG images, which are vector-based and can be scaled without losing clarity, the system scales the image based on the ratio of **desiredSize** to the original image size and then crops the region. This results in a decoded region that may differ from the exact 1/4 region of the original image.<br> To ensure consistent results when both **desiredRegion** and **desiredSize** are set, set the **ImageCropAndScaleStrategy**<br>parameter to **CROP_FIRST**.
 
-<!--Device-Image_CropAndScaleStrategy--><!--Device-Image_CropAndScaleStrategy-End-->
+<!--Device-enum Image_CropAndScaleStrategy--><!--Device-enum Image_CropAndScaleStrategy-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -167,8 +167,8 @@ Enumerates the cropping and scaling strategies when **desiredSize** and **desire
 
 | Enum item | Description |
 | -- | -- |
-| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | Scales and then crops the image.<br>**Since**: 18 |
-| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | Crops and then scales the image.<br>**Since**: 18 |
+| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | Scales and then crops the image.<br>**Since**: 18<br><!--Device-IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1--><!--Device-IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1-End--> |
+| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | Crops and then scales the image.<br>**Since**: 18<br><!--Device-IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2--><!--Device-IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2-End--> |
 
 
 ## Function description

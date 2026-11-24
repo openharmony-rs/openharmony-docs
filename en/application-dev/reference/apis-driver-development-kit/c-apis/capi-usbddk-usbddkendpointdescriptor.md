@@ -24,8 +24,8 @@ Defines endpoint descriptors, including standard endpoint descriptors and descri
 
 | Name | Description |
 | -- | -- |
-| [struct UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) endpointDescriptor | Standard endpoint descriptor. |
-| const uint8_t *extra | Pointer to the unresolved descriptor, including class- or vendor-specific descriptors. |
-| uint32_t extraLength | Length of the unresolved descriptor. |
+| [struct UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) endpointDescriptor | Standard endpoint descriptor.<br><!--Device-struct UsbEndpointDescriptor endpointDescriptor--><!--Device-struct UsbEndpointDescriptor endpointDescriptor-End--> |
+| const uint8_t *extra | Pointer to the unresolved descriptor, including class- or vendor-specific descriptors.<br><!--Device-const uint8_t *extra--><!--Device-const uint8_t *extra-End--> |
+| uint32_t extraLength | Length of the unresolved descriptor.<br><!--Device-uint32_t extraLength--><!--Device-uint32_t extraLength-End--> |
 
 

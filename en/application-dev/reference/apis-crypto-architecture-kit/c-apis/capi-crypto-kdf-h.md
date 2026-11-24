@@ -52,7 +52,7 @@ enum CryptoKdf_ParamType
 
 Defines KDF parameter types.
 
-<!--Device-CryptoKdf_ParamType--><!--Device-CryptoKdf_ParamType-End-->
+<!--Device-enum CryptoKdf_ParamType--><!--Device-enum CryptoKdf_ParamType-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -60,14 +60,14 @@ Defines KDF parameter types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_KDF_KEY_DATABLOB = 0 | Key or password for KDF.<br>**Since**: 20 |
-| CRYPTO_KDF_SALT_DATABLOB = 1 | Salt value for KDF.<br>**Since**: 20 |
-| CRYPTO_KDF_INFO_DATABLOB = 2 | Info for KDF.<br>**Since**: 20 |
-| CRYPTO_KDF_ITER_COUNT_INT = 3 | Iteration count for PBKDF2.<br>**Since**: 20 |
-| CRYPTO_KDF_SCRYPT_N_UINT64 = 4 | n parameter for SCRYPT KDF.<br>**Since**: 20 |
-| CRYPTO_KDF_SCRYPT_R_UINT64 = 5 | r parameter for SCRYPT KDF.<br>**Since**: 20 |
-| CRYPTO_KDF_SCRYPT_P_UINT64 = 6 | p parameter for SCRYPT KDF.<br>**Since**: 20 |
-| CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64 = 7 | Maximum memory parameter for SCRYPT KDF.<br>**Since**: 20 |
+| CRYPTO_KDF_KEY_DATABLOB = 0 | Key or password for KDF.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_KEY_DATABLOB = 0--><!--Device-CRYPTO_KDF_KEY_DATABLOB = 0-End--> |
+| CRYPTO_KDF_SALT_DATABLOB = 1 | Salt value for KDF.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_SALT_DATABLOB = 1--><!--Device-CRYPTO_KDF_SALT_DATABLOB = 1-End--> |
+| CRYPTO_KDF_INFO_DATABLOB = 2 | Info for KDF.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_INFO_DATABLOB = 2--><!--Device-CRYPTO_KDF_INFO_DATABLOB = 2-End--> |
+| CRYPTO_KDF_ITER_COUNT_INT = 3 | Iteration count for PBKDF2.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_ITER_COUNT_INT = 3--><!--Device-CRYPTO_KDF_ITER_COUNT_INT = 3-End--> |
+| CRYPTO_KDF_SCRYPT_N_UINT64 = 4 | n parameter for SCRYPT KDF.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_SCRYPT_N_UINT64 = 4--><!--Device-CRYPTO_KDF_SCRYPT_N_UINT64 = 4-End--> |
+| CRYPTO_KDF_SCRYPT_R_UINT64 = 5 | r parameter for SCRYPT KDF.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_SCRYPT_R_UINT64 = 5--><!--Device-CRYPTO_KDF_SCRYPT_R_UINT64 = 5-End--> |
+| CRYPTO_KDF_SCRYPT_P_UINT64 = 6 | p parameter for SCRYPT KDF.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_SCRYPT_P_UINT64 = 6--><!--Device-CRYPTO_KDF_SCRYPT_P_UINT64 = 6-End--> |
+| CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64 = 7 | Maximum memory parameter for SCRYPT KDF.<br>**Since**: 20<br><!--Device-CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64 = 7--><!--Device-CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64 = 7-End--> |
 
 
 ## Function description

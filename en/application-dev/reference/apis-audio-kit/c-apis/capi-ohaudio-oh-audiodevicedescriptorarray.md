@@ -24,7 +24,7 @@ Declaring the audio device descriptor array.
 
 | Name | Description |
 | -- | -- |
-| uint32_t size | Audio device descriptor array size. |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) **descriptors | Audio device descriptor array. |
+| uint32_t size | Audio device descriptor array size.<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) **descriptors | Audio device descriptor array.<br><!--Device-OH_AudioDeviceDescriptor **descriptors--><!--Device-OH_AudioDeviceDescriptor **descriptors-End--> |
 
 

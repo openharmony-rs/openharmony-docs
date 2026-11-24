@@ -24,6 +24,6 @@ typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
 
 | 名称 | 描述 |
 | -- | -- |
-| char requestId[UUID_STR_MAX_LENGTH] | request id |
+| char requestId[UUID_STR_MAX_LENGTH] | request id<br><!--Device-char requestId[UUID_STR_MAX_LENGTH]--><!--Device-char requestId[UUID_STR_MAX_LENGTH]-End--> |
 
 

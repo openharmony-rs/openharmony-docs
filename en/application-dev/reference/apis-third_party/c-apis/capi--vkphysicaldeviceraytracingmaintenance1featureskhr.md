@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 rayTracingMaintenance1 |  |
-| VkBool32 rayTracingPipelineTraceRaysIndirect2 |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 rayTracingMaintenance1 | <!--Device-VkBool32 rayTracingMaintenance1--><!--Device-VkBool32 rayTracingMaintenance1-End--> |
+| VkBool32 rayTracingPipelineTraceRaysIndirect2 | <!--Device-VkBool32 rayTracingPipelineTraceRaysIndirect2--><!--Device-VkBool32 rayTracingPipelineTraceRaysIndirect2-End--> |
 
 

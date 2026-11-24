@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceAddress srcAddress |  |
-| VkDeviceAddress dstAddress |  |
-| VkDeviceSize compressedSize |  |
-| VkDeviceSize decompressedSize |  |
-| VkMemoryDecompressionMethodFlagsNV decompressionMethod |  |
+| VkDeviceAddress srcAddress | <!--Device-VkDeviceAddress srcAddress--><!--Device-VkDeviceAddress srcAddress-End--> |
+| VkDeviceAddress dstAddress | <!--Device-VkDeviceAddress dstAddress--><!--Device-VkDeviceAddress dstAddress-End--> |
+| VkDeviceSize compressedSize | <!--Device-VkDeviceSize compressedSize--><!--Device-VkDeviceSize compressedSize-End--> |
+| VkDeviceSize decompressedSize | <!--Device-VkDeviceSize decompressedSize--><!--Device-VkDeviceSize decompressedSize-End--> |
+| VkMemoryDecompressionMethodFlagsNV decompressionMethod | <!--Device-VkMemoryDecompressionMethodFlagsNV decompressionMethod--><!--Device-VkMemoryDecompressionMethodFlagsNV decompressionMethod-End--> |
 
 

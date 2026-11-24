@@ -24,10 +24,10 @@ typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *name | timer任务名称。任务名称不可为空。 |
-| unsigned int timeout | 任务超时时间阈值，单位：s，取值为大于0的正整数。当任务执行时间超过该阈值时，将触发超时处理机制。建议根据实际业务场景设置。 |
-| [OH_HiCollie_Callback](capi-hicollie-h.md#oh_hicollie_callback) func | 超时发生时执行的回调函数。 |
-| void *arg | 回调函数的参数。 |
-| [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | 超时发生时执行的动作，参考[HiCollie_Flag](capi-hicollie-h.md#hicollie_flag)。 |
+| const char *name | timer任务名称。任务名称不可为空。<br><!--Device-const char *name--><!--Device-const char *name-End--> |
+| unsigned int timeout | 任务超时时间阈值，单位：s，取值为大于0的正整数。当任务执行时间超过该阈值时，将触发超时处理机制。建议根据实际业务场景设置。<br><!--Device-unsigned int timeout--><!--Device-unsigned int timeout-End--> |
+| [OH_HiCollie_Callback](capi-hicollie-h.md#oh_hicollie_callback) func | 超时发生时执行的回调函数。<br><!--Device-OH_HiCollie_Callback func--><!--Device-OH_HiCollie_Callback func-End--> |
+| void *arg | 回调函数的参数。<br><!--Device-void *arg--><!--Device-void *arg-End--> |
+| [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | 超时发生时执行的动作，参考[HiCollie_Flag](capi-hicollie-h.md#hicollie_flag)。<br><!--Device-HiCollie_Flag flag--><!--Device-HiCollie_Flag flag-End--> |
 
 

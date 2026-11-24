@@ -49,7 +49,7 @@ enum Rdb_ConflictResolution
 
 Describe the security area of the database.
 
-<!--Device-Rdb_ConflictResolution--><!--Device-Rdb_ConflictResolution-End-->
+<!--Device-enum Rdb_ConflictResolution--><!--Device-enum Rdb_ConflictResolution-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -57,12 +57,12 @@ Describe the security area of the database.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_CONFLICT_NONE = 1 | Implements no operation when conflict occurs. |
-| RDB_CONFLICT_ROLLBACK | Implements rollback operation when conflict occurs. |
-| RDB_CONFLICT_ABORT | Implements abort operation when conflict occurs. |
-| RDB_CONFLICT_FAIL | Implements fail operation when conflict occurs. |
-| RDB_CONFLICT_IGNORE | Implements ignore operation when conflict occurs. |
-| RDB_CONFLICT_REPLACE | Implements replace operation when conflict occurs. |
+| RDB_CONFLICT_NONE = 1 | Implements no operation when conflict occurs.<br><!--Device-RDB_CONFLICT_NONE = 1--><!--Device-RDB_CONFLICT_NONE = 1-End--> |
+| RDB_CONFLICT_ROLLBACK | Implements rollback operation when conflict occurs.<br><!--Device-RDB_CONFLICT_ROLLBACK--><!--Device-RDB_CONFLICT_ROLLBACK-End--> |
+| RDB_CONFLICT_ABORT | Implements abort operation when conflict occurs.<br><!--Device-RDB_CONFLICT_ABORT--><!--Device-RDB_CONFLICT_ABORT-End--> |
+| RDB_CONFLICT_FAIL | Implements fail operation when conflict occurs.<br><!--Device-RDB_CONFLICT_FAIL--><!--Device-RDB_CONFLICT_FAIL-End--> |
+| RDB_CONFLICT_IGNORE | Implements ignore operation when conflict occurs.<br><!--Device-RDB_CONFLICT_IGNORE--><!--Device-RDB_CONFLICT_IGNORE-End--> |
+| RDB_CONFLICT_REPLACE | Implements replace operation when conflict occurs.<br><!--Device-RDB_CONFLICT_REPLACE--><!--Device-RDB_CONFLICT_REPLACE-End--> |
 
 
 ## Function description

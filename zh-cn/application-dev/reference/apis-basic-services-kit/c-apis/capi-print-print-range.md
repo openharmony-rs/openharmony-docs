@@ -24,9 +24,9 @@ typedef struct Print_Range {...} Print_Range
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t startPage | 打印起始页，页码从1开始计数，取值应为文档中的有效页码且需小于等于endPage。 |
-| uint32_t endPage | 打印结束页，页码从1开始计数，取值应为文档中的有效页码且需大于等于startPage。 |
-| uint32_t pagesArrayLen | 打印页码数组长度，须与pagesArray数组实际元素数一致，仅在pagesArray不为NULL时有效。 |
-| uint32_t *pagesArray | 打印页码数组，每个元素表示一个需要打印的页码，页码从1开始计数，取值应为文档中的有效页码，数组长度由pagesArrayLen决定。 |
+| uint32_t startPage | 打印起始页，页码从1开始计数，取值应为文档中的有效页码且需小于等于endPage。<br><!--Device-uint32_t startPage--><!--Device-uint32_t startPage-End--> |
+| uint32_t endPage | 打印结束页，页码从1开始计数，取值应为文档中的有效页码且需大于等于startPage。<br><!--Device-uint32_t endPage--><!--Device-uint32_t endPage-End--> |
+| uint32_t pagesArrayLen | 打印页码数组长度，须与pagesArray数组实际元素数一致，仅在pagesArray不为NULL时有效。<br><!--Device-uint32_t pagesArrayLen--><!--Device-uint32_t pagesArrayLen-End--> |
+| uint32_t *pagesArray | 打印页码数组，每个元素表示一个需要打印的页码，页码从1开始计数，取值应为文档中的有效页码，数组长度由pagesArrayLen决定。<br><!--Device-uint32_t *pagesArray--><!--Device-uint32_t *pagesArray-End--> |
 
 

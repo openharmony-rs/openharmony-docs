@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t gr_interface |  |
-| struct sockaddr_storage gr_group |  |
+| uint32_t gr_interface | <!--Device-uint32_t gr_interface--><!--Device-uint32_t gr_interface-End--> |
+| struct sockaddr_storage gr_group | <!--Device-struct sockaddr_storage gr_group--><!--Device-struct sockaddr_storage gr_group-End--> |
 
 

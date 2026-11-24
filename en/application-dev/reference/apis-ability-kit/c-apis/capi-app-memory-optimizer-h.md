@@ -40,7 +40,7 @@ enum OH_AbilityRuntime_ChildProcessState
 
 Enumerates the active states of a child process.<br> A child process is in the active state by default when it is started.
 
-<!--Device-OH_AbilityRuntime_ChildProcessState--><!--Device-OH_AbilityRuntime_ChildProcessState-End-->
+<!--Device-enum OH_AbilityRuntime_ChildProcessState--><!--Device-enum OH_AbilityRuntime_ChildProcessState-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -48,8 +48,8 @@ Enumerates the active states of a child process.<br> A child process is in the a
 
 | Enum item | Description |
 | -- | -- |
-| OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_ACTIVE = 0 | The child process is active. The system does not perform memory optimization on it.<br>**Since**: 26.1.0 |
-| OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_INACTIVE = 1 | The child process is inactive. The system can perform memory optimization on it.<br>**Since**: 26.1.0 |
+| OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_ACTIVE = 0 | The child process is active. The system does not perform memory optimization on it.<br>**Since**: 26.1.0<br><!--Device-OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_ACTIVE = 0--><!--Device-OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_ACTIVE = 0-End--> |
+| OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_INACTIVE = 1 | The child process is inactive. The system can perform memory optimization on it.<br>**Since**: 26.1.0<br><!--Device-OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_INACTIVE = 1--><!--Device-OH_ABILITY_RUNTIME_CHILD_PROCESS_STATE_INACTIVE = 1-End--> |
 
 
 ## Function description

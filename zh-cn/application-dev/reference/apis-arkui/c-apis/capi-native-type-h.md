@@ -400,7 +400,7 @@ enum ArkUI_XComponentType
 
 Enumerates the types of the <b><XComponent></b> component.
 
-<!--Device-ArkUI_XComponentType--><!--Device-ArkUI_XComponentType-End-->
+<!--Device-enum ArkUI_XComponentType--><!--Device-enum ArkUI_XComponentType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -408,8 +408,8 @@ Enumerates the types of the <b><XComponent></b> component.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | The custom content of EGL/OpenGL ES and media data is displayed individually on the screen. |
-| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | The custom content of EGL/OpenGL ES and media data is grouped and displayed together with content of the component. |
+| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | The custom content of EGL/OpenGL ES and media data is displayed individually on the screen.<br><!--Device-ARKUI_XCOMPONENT_TYPE_SURFACE = 0--><!--Device-ARKUI_XCOMPONENT_TYPE_SURFACE = 0-End--> |
+| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | The custom content of EGL/OpenGL ES and media data is grouped and displayed together with content of the component.<br><!--Device-ARKUI_XCOMPONENT_TYPE_TEXTURE = 2--><!--Device-ARKUI_XCOMPONENT_TYPE_TEXTURE = 2-End--> |
 
 ### ArkUI_CopyOptions
 
@@ -421,7 +421,7 @@ enum ArkUI_CopyOptions
 
 定义文本复制粘贴模式枚举值。
 
-<!--Device-ArkUI_CopyOptions--><!--Device-ArkUI_CopyOptions-End-->
+<!--Device-enum ArkUI_CopyOptions--><!--Device-enum ArkUI_CopyOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -429,10 +429,10 @@ enum ArkUI_CopyOptions
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_COPY_OPTIONS_NONE = 0 | 不支持复制。<br><!--Device-ARKUI_COPY_OPTIONS_NONE = 0--><!--Device-ARKUI_COPY_OPTIONS_NONE = 0-End--> |
+| ARKUI_COPY_OPTIONS_IN_APP | 支持应用内复制。<br><!--Device-ARKUI_COPY_OPTIONS_IN_APP--><!--Device-ARKUI_COPY_OPTIONS_IN_APP-End--> |
+| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。<br><!--Device-ARKUI_COPY_OPTIONS_LOCAL_DEVICE--><!--Device-ARKUI_COPY_OPTIONS_LOCAL_DEVICE-End--> |
+| ARKUI_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。<br><!--Device-ARKUI_COPY_OPTIONS_CROSS_DEVICE--><!--Device-ARKUI_COPY_OPTIONS_CROSS_DEVICE-End--> |
 
 ### ArkUI_ShadowType
 
@@ -444,7 +444,7 @@ enum ArkUI_ShadowType
 
 Enumerates the shadow types.
 
-<!--Device-ArkUI_ShadowType--><!--Device-ArkUI_ShadowType-End-->
+<!--Device-enum ArkUI_ShadowType--><!--Device-enum ArkUI_ShadowType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,8 +452,8 @@ Enumerates the shadow types.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHADOW_TYPE_COLOR = 0 | Color. |
-| ARKUI_SHADOW_TYPE_BLUR | Blur. |
+| ARKUI_SHADOW_TYPE_COLOR = 0 | Color.<br><!--Device-ARKUI_SHADOW_TYPE_COLOR = 0--><!--Device-ARKUI_SHADOW_TYPE_COLOR = 0-End--> |
+| ARKUI_SHADOW_TYPE_BLUR | Blur.<br><!--Device-ARKUI_SHADOW_TYPE_BLUR--><!--Device-ARKUI_SHADOW_TYPE_BLUR-End--> |
 
 ### ArkUI_FocusWrapMode
 
@@ -465,7 +465,7 @@ enum ArkUI_FocusWrapMode
 
 组件走焦换行规则。Grid、List组件默认值为ARKUI_FOCUS_WRAP_MODE_DEFAULT。
 
-<!--Device-ArkUI_FocusWrapMode--><!--Device-ArkUI_FocusWrapMode-End-->
+<!--Device-enum ArkUI_FocusWrapMode--><!--Device-enum ArkUI_FocusWrapMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -473,8 +473,8 @@ enum ArkUI_FocusWrapMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | 默认规则，使用方向键走焦不换行。 |
-| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | 使用方向键走焦自动换行。 |
+| ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | 默认规则，使用方向键走焦不换行。<br><!--Device-ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0--><!--Device-ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0-End--> |
+| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | 使用方向键走焦自动换行。<br><!--Device-ARKUI_FOCUS_WRAP_WITH_ARROW = 1--><!--Device-ARKUI_FOCUS_WRAP_WITH_ARROW = 1-End--> |
 
 ### ArkUI_ItemFillPolicy
 
@@ -486,7 +486,7 @@ enum ArkUI_ItemFillPolicy
 
 Specifies the number of columns for different responsive breakpoint specifications.
 
-<!--Device-ArkUI_ItemFillPolicy--><!--Device-ArkUI_ItemFillPolicy-End-->
+<!--Device-enum ArkUI_ItemFillPolicy--><!--Device-enum ArkUI_ItemFillPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -494,10 +494,10 @@ Specifies the number of columns for different responsive breakpoint specificatio
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ITEMFILLPOLICY_NONE = -1 | No responsive breakpoint configuration. |
-| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | Default responsive layout: <b>List</b> or <b>Swiper</b> component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger). <b>Grid</b> or <b>WaterFlow</b> component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger). |
-| ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1 | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger). |
-| ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2 | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger). |
+| ARKUI_ITEMFILLPOLICY_NONE = -1 | No responsive breakpoint configuration.<br><!--Device-ARKUI_ITEMFILLPOLICY_NONE = -1--><!--Device-ARKUI_ITEMFILLPOLICY_NONE = -1-End--> |
+| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | Default responsive layout: <b>List</b> or <b>Swiper</b> component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger). <b>Grid</b> or <b>WaterFlow</b> component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).<br><!--Device-ARKUI_ITEMFILLPOLICY_DEFAULT = 0--><!--Device-ARKUI_ITEMFILLPOLICY_DEFAULT = 0-End--> |
+| ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1 | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br><!--Device-ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1--><!--Device-ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1-End--> |
+| ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2 | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).<br><!--Device-ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2--><!--Device-ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2-End--> |
 
 ### ArkUI_BorderStyle
 
@@ -509,7 +509,7 @@ enum ArkUI_BorderStyle
 
 Enumerates the border styles.
 
-<!--Device-ArkUI_BorderStyle--><!--Device-ArkUI_BorderStyle-End-->
+<!--Device-enum ArkUI_BorderStyle--><!--Device-enum ArkUI_BorderStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -517,9 +517,9 @@ Enumerates the border styles.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border. |
-| ARKUI_BORDER_STYLE_DASHED | Dashed border. |
-| ARKUI_BORDER_STYLE_DOTTED | Dotted border. |
+| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border.<br><!--Device-ARKUI_BORDER_STYLE_SOLID = 0--><!--Device-ARKUI_BORDER_STYLE_SOLID = 0-End--> |
+| ARKUI_BORDER_STYLE_DASHED | Dashed border.<br><!--Device-ARKUI_BORDER_STYLE_DASHED--><!--Device-ARKUI_BORDER_STYLE_DASHED-End--> |
+| ARKUI_BORDER_STYLE_DOTTED | Dotted border.<br><!--Device-ARKUI_BORDER_STYLE_DOTTED--><!--Device-ARKUI_BORDER_STYLE_DOTTED-End--> |
 
 ### ArkUI_ShadowStyle
 
@@ -531,7 +531,7 @@ enum ArkUI_ShadowStyle
 
 Enumerates the shadow styles.
 
-<!--Device-ArkUI_ShadowStyle--><!--Device-ArkUI_ShadowStyle-End-->
+<!--Device-enum ArkUI_ShadowStyle--><!--Device-enum ArkUI_ShadowStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -539,12 +539,12 @@ Enumerates the shadow styles.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | Mini shadow. |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM | Little shadow. |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD | Medium shadow. |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG | Large shadow. |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM | Floating small shadow. |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD | Floating medium shadow. |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | Mini shadow.<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM | Little shadow.<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD | Medium shadow.<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG | Large shadow.<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG--><!--Device-ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM | Floating small shadow.<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM--><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM-End--> |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD | Floating medium shadow.<br><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD--><!--Device-ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD-End--> |
 
 ### ArkUI_AnimationCurve
 
@@ -556,7 +556,7 @@ enum ArkUI_AnimationCurve
 
 Enumerates the animation curves.
 
-<!--Device-ArkUI_AnimationCurve--><!--Device-ArkUI_AnimationCurve-End-->
+<!--Device-enum ArkUI_AnimationCurve--><!--Device-enum ArkUI_AnimationCurve-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,19 +564,19 @@ Enumerates the animation curves.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CURVE_LINEAR = 0 | The animation speed keeps unchanged. |
-| ARKUI_CURVE_EASE | The animation starts slowly, accelerates, and then slows down towards the end. |
-| ARKUI_CURVE_EASE_IN | The animation starts at a low speed and then picks up speed until the end. |
-| ARKUI_CURVE_EASE_OUT | The animation ends at a low speed. |
-| ARKUI_CURVE_EASE_IN_OUT | The animation starts and ends at a low speed. |
-| ARKUI_CURVE_FAST_OUT_SLOW_IN | The animation uses the standard curve |
-| ARKUI_CURVE_LINEAR_OUT_SLOW_IN | The animation uses the deceleration curve. |
-| ARKUI_CURVE_FAST_OUT_LINEAR_IN | The animation uses the acceleration curve. |
-| ARKUI_CURVE_EXTREME_DECELERATION | The animation uses the extreme deceleration curve. |
-| ARKUI_CURVE_SHARP | The animation uses the sharp curve. |
-| ARKUI_CURVE_RHYTHM | The animation uses the rhythm curve. |
-| ARKUI_CURVE_SMOOTH | The animation uses the smooth curve. |
-| ARKUI_CURVE_FRICTION | The animation uses the friction curve |
+| ARKUI_CURVE_LINEAR = 0 | The animation speed keeps unchanged.<br><!--Device-ARKUI_CURVE_LINEAR = 0--><!--Device-ARKUI_CURVE_LINEAR = 0-End--> |
+| ARKUI_CURVE_EASE | The animation starts slowly, accelerates, and then slows down towards the end.<br><!--Device-ARKUI_CURVE_EASE--><!--Device-ARKUI_CURVE_EASE-End--> |
+| ARKUI_CURVE_EASE_IN | The animation starts at a low speed and then picks up speed until the end.<br><!--Device-ARKUI_CURVE_EASE_IN--><!--Device-ARKUI_CURVE_EASE_IN-End--> |
+| ARKUI_CURVE_EASE_OUT | The animation ends at a low speed.<br><!--Device-ARKUI_CURVE_EASE_OUT--><!--Device-ARKUI_CURVE_EASE_OUT-End--> |
+| ARKUI_CURVE_EASE_IN_OUT | The animation starts and ends at a low speed.<br><!--Device-ARKUI_CURVE_EASE_IN_OUT--><!--Device-ARKUI_CURVE_EASE_IN_OUT-End--> |
+| ARKUI_CURVE_FAST_OUT_SLOW_IN | The animation uses the standard curve<br><!--Device-ARKUI_CURVE_FAST_OUT_SLOW_IN--><!--Device-ARKUI_CURVE_FAST_OUT_SLOW_IN-End--> |
+| ARKUI_CURVE_LINEAR_OUT_SLOW_IN | The animation uses the deceleration curve.<br><!--Device-ARKUI_CURVE_LINEAR_OUT_SLOW_IN--><!--Device-ARKUI_CURVE_LINEAR_OUT_SLOW_IN-End--> |
+| ARKUI_CURVE_FAST_OUT_LINEAR_IN | The animation uses the acceleration curve.<br><!--Device-ARKUI_CURVE_FAST_OUT_LINEAR_IN--><!--Device-ARKUI_CURVE_FAST_OUT_LINEAR_IN-End--> |
+| ARKUI_CURVE_EXTREME_DECELERATION | The animation uses the extreme deceleration curve.<br><!--Device-ARKUI_CURVE_EXTREME_DECELERATION--><!--Device-ARKUI_CURVE_EXTREME_DECELERATION-End--> |
+| ARKUI_CURVE_SHARP | The animation uses the sharp curve.<br><!--Device-ARKUI_CURVE_SHARP--><!--Device-ARKUI_CURVE_SHARP-End--> |
+| ARKUI_CURVE_RHYTHM | The animation uses the rhythm curve.<br><!--Device-ARKUI_CURVE_RHYTHM--><!--Device-ARKUI_CURVE_RHYTHM-End--> |
+| ARKUI_CURVE_SMOOTH | The animation uses the smooth curve.<br><!--Device-ARKUI_CURVE_SMOOTH--><!--Device-ARKUI_CURVE_SMOOTH-End--> |
+| ARKUI_CURVE_FRICTION | The animation uses the friction curve<br><!--Device-ARKUI_CURVE_FRICTION--><!--Device-ARKUI_CURVE_FRICTION-End--> |
 
 ### ArkUI_SwiperArrow
 
@@ -588,7 +588,7 @@ enum ArkUI_SwiperArrow
 
 Enumerates arrow styles of the navigation point indicator.
 
-<!--Device-ArkUI_SwiperArrow--><!--Device-ArkUI_SwiperArrow-End-->
+<!--Device-enum ArkUI_SwiperArrow--><!--Device-enum ArkUI_SwiperArrow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -596,9 +596,9 @@ Enumerates arrow styles of the navigation point indicator.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_ARROW_HIDE = 0 | The arrow is not displayed for the navigation point indicator. |
-| ARKUI_SWIPER_ARROW_SHOW | The arrow is displayed for the navigation point indicator. |
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | The arrow is displayed only when the mouse pointer hovers over the navigation point indicator. |
+| ARKUI_SWIPER_ARROW_HIDE = 0 | The arrow is not displayed for the navigation point indicator.<br><!--Device-ARKUI_SWIPER_ARROW_HIDE = 0--><!--Device-ARKUI_SWIPER_ARROW_HIDE = 0-End--> |
+| ARKUI_SWIPER_ARROW_SHOW | The arrow is displayed for the navigation point indicator.<br><!--Device-ARKUI_SWIPER_ARROW_SHOW--><!--Device-ARKUI_SWIPER_ARROW_SHOW-End--> |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | The arrow is displayed only when the mouse pointer hovers over the navigation point indicator.<br><!--Device-ARKUI_SWIPER_ARROW_SHOW_ON_HOVER--><!--Device-ARKUI_SWIPER_ARROW_SHOW_ON_HOVER-End--> |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -610,7 +610,7 @@ enum ArkUI_SwiperNestedScrollMode
 
 Nested scrolling mode for Swiper components and parent components.
 
-<!--Device-ArkUI_SwiperNestedScrollMode--><!--Device-ArkUI_SwiperNestedScrollMode-End-->
+<!--Device-enum ArkUI_SwiperNestedScrollMode--><!--Device-enum ArkUI_SwiperNestedScrollMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -618,8 +618,8 @@ Nested scrolling mode for Swiper components and parent components.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper only scrolls on its own and is not linked to its parent component. |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | The Swiper itself scrolls first, and the parent component scrolls after it reaches the edge. After the parent component scrolls to the edge, if the parent component has an edge effect, the parent component triggers the edge effect; otherwise, the Swiper triggers the edge effect. |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper only scrolls on its own and is not linked to its parent component.<br><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0--><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0-End--> |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | The Swiper itself scrolls first, and the parent component scrolls after it reaches the edge. After the parent component scrolls to the edge, if the parent component has an edge effect, the parent component triggers the edge effect; otherwise, the Swiper triggers the edge effect.<br><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST--><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST-End--> |
 
 ### ArkUI_PageFlipMode
 
@@ -631,7 +631,7 @@ enum ArkUI_PageFlipMode
 
 Enumerates the page flipping modes using the mouse wheel for the <b>Swiper</b> component.
 
-<!--Device-ArkUI_PageFlipMode--><!--Device-ArkUI_PageFlipMode-End-->
+<!--Device-enum ArkUI_PageFlipMode--><!--Device-enum ArkUI_PageFlipMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -639,8 +639,8 @@ Enumerates the page flipping modes using the mouse wheel for the <b>Swiper</b> c
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | When the mouse wheel is scrolled continuously, multiple pages are flipped, which is determined by the number of times that mouse events are reported. |
-| ARKUI_PAGE_FLIP_MODE_SINGLE | The system does not respond to other mouse wheel events until the page flipping animation ends. |
+| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | When the mouse wheel is scrolled continuously, multiple pages are flipped, which is determined by the number of times that mouse events are reported.<br><!--Device-ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0--><!--Device-ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0-End--> |
+| ARKUI_PAGE_FLIP_MODE_SINGLE | The system does not respond to other mouse wheel events until the page flipping animation ends.<br><!--Device-ARKUI_PAGE_FLIP_MODE_SINGLE--><!--Device-ARKUI_PAGE_FLIP_MODE_SINGLE-End--> |
 
 ### ArkUI_SwiperAnimationMode
 
@@ -652,7 +652,7 @@ enum ArkUI_SwiperAnimationMode
 
 Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype).
 
-<!--Device-ArkUI_SwiperAnimationMode--><!--Device-ArkUI_SwiperAnimationMode-End-->
+<!--Device-enum ArkUI_SwiperAnimationMode--><!--Device-enum ArkUI_SwiperAnimationMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -660,9 +660,9 @@ Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#ark
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_NO_ANIMATION = 0 | Jump to target index without animation. |
-| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | Scroll to target index with animation. |
-| ARKUI_SWIPER_FAST_ANIMATION = 2 | Jump to some index near the target index without animation, then scroll to target index with animation. |
+| ARKUI_SWIPER_NO_ANIMATION = 0 | Jump to target index without animation.<br><!--Device-ARKUI_SWIPER_NO_ANIMATION = 0--><!--Device-ARKUI_SWIPER_NO_ANIMATION = 0-End--> |
+| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | Scroll to target index with animation.<br><!--Device-ARKUI_SWIPER_DEFAULT_ANIMATION = 1--><!--Device-ARKUI_SWIPER_DEFAULT_ANIMATION = 1-End--> |
+| ARKUI_SWIPER_FAST_ANIMATION = 2 | Jump to some index near the target index without animation, then scroll to target index with animation.<br><!--Device-ARKUI_SWIPER_FAST_ANIMATION = 2--><!--Device-ARKUI_SWIPER_FAST_ANIMATION = 2-End--> |
 
 ### ArkUI_AccessibilityMode
 
@@ -674,7 +674,7 @@ enum ArkUI_AccessibilityMode
 
 定义无障碍辅助服务模式。
 
-<!--Device-ArkUI_AccessibilityMode--><!--Device-ArkUI_AccessibilityMode-End-->
+<!--Device-enum ArkUI_AccessibilityMode--><!--Device-enum ArkUI_AccessibilityMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -682,10 +682,10 @@ enum ArkUI_AccessibilityMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | 根据组件不同会转换为“enabled”或者“disabled”。 |
-| ARKUI_ACCESSIBILITY_MODE_ENABLED | 当前组件可被无障碍辅助服务所识别。 |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED | 当前组件不可被无障碍辅助服务所识别。 |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | 当前组件及其所有子组件不可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | 根据组件不同会转换为“enabled”或者“disabled”。<br><!--Device-ARKUI_ACCESSIBILITY_MODE_AUTO = 0--><!--Device-ARKUI_ACCESSIBILITY_MODE_AUTO = 0-End--> |
+| ARKUI_ACCESSIBILITY_MODE_ENABLED | 当前组件可被无障碍辅助服务所识别。<br><!--Device-ARKUI_ACCESSIBILITY_MODE_ENABLED--><!--Device-ARKUI_ACCESSIBILITY_MODE_ENABLED-End--> |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED | 当前组件不可被无障碍辅助服务所识别。<br><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED--><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED-End--> |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | 当前组件及其所有子组件不可被无障碍辅助服务所识别。<br><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS--><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS-End--> |
 
 ### ArkUI_AnimationPlayMode
 
@@ -697,7 +697,7 @@ enum ArkUI_AnimationPlayMode
 
 Enumerates the animation playback modes.
 
-<!--Device-ArkUI_AnimationPlayMode--><!--Device-ArkUI_AnimationPlayMode-End-->
+<!--Device-enum ArkUI_AnimationPlayMode--><!--Device-enum ArkUI_AnimationPlayMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -705,10 +705,10 @@ Enumerates the animation playback modes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | The animation is played forwards. |
-| ARKUI_ANIMATION_PLAY_MODE_REVERSE | The animation is played reversely. |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | The animation is played normally for an odd number of times (1, 3, 5...) and reversely for an even number of times (2, 4, 6...). |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | The animation is played reversely for an odd number of times (1, 3, 5...) and normally for an even number of times (2, 4, 6...). |
+| ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | The animation is played forwards.<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0--><!--Device-ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0-End--> |
+| ARKUI_ANIMATION_PLAY_MODE_REVERSE | The animation is played reversely.<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_REVERSE--><!--Device-ARKUI_ANIMATION_PLAY_MODE_REVERSE-End--> |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | The animation is played normally for an odd number of times (1, 3, 5...) and reversely for an even number of times (2, 4, 6...).<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE--><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE-End--> |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | The animation is played reversely for an odd number of times (1, 3, 5...) and normally for an even number of times (2, 4, 6...).<br><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE--><!--Device-ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE-End--> |
 
 ### ArkUI_AdaptiveColor
 
@@ -720,7 +720,7 @@ enum ArkUI_AdaptiveColor
 
 定义取色模式。
 
-<!--Device-ArkUI_AdaptiveColor--><!--Device-ArkUI_AdaptiveColor-End-->
+<!--Device-enum ArkUI_AdaptiveColor--><!--Device-enum ArkUI_AdaptiveColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -728,8 +728,8 @@ enum ArkUI_AdaptiveColor
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | 不使用取色模糊。 |
-| ARKUI_ADAPTIVE_COLOR_AVERAGE | 使用取色模糊。 |
+| ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | 不使用取色模糊。<br><!--Device-ARKUI_ADAPTIVE_COLOR_DEFAULT = 0--><!--Device-ARKUI_ADAPTIVE_COLOR_DEFAULT = 0-End--> |
+| ARKUI_ADAPTIVE_COLOR_AVERAGE | 使用取色模糊。<br><!--Device-ARKUI_ADAPTIVE_COLOR_AVERAGE--><!--Device-ARKUI_ADAPTIVE_COLOR_AVERAGE-End--> |
 
 ### ArkUI_ColorMode
 
@@ -741,7 +741,7 @@ enum ArkUI_ColorMode
 
 定义深浅色模式。
 
-<!--Device-ArkUI_ColorMode--><!--Device-ArkUI_ColorMode-End-->
+<!--Device-enum ArkUI_ColorMode--><!--Device-enum ArkUI_ColorMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -749,9 +749,9 @@ enum ArkUI_ColorMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_COLOR_MODE_SYSTEM = 0 | 跟随系统深浅色模式。 |
-| ARKUI_COLOR_MODE_LIGHT | 固定使用浅色模式。 |
-| ARKUI_COLOR_MODE_DARK | 固定使用深色模式。 |
+| ARKUI_COLOR_MODE_SYSTEM = 0 | 跟随系统深浅色模式。<br><!--Device-ARKUI_COLOR_MODE_SYSTEM = 0--><!--Device-ARKUI_COLOR_MODE_SYSTEM = 0-End--> |
+| ARKUI_COLOR_MODE_LIGHT | 固定使用浅色模式。<br><!--Device-ARKUI_COLOR_MODE_LIGHT--><!--Device-ARKUI_COLOR_MODE_LIGHT-End--> |
+| ARKUI_COLOR_MODE_DARK | 固定使用深色模式。<br><!--Device-ARKUI_COLOR_MODE_DARK--><!--Device-ARKUI_COLOR_MODE_DARK-End--> |
 
 ### ArkUI_SystemColorMode
 
@@ -763,7 +763,7 @@ enum ArkUI_SystemColorMode
 
 定义系统深浅色模式。
 
-<!--Device-ArkUI_SystemColorMode--><!--Device-ArkUI_SystemColorMode-End-->
+<!--Device-enum ArkUI_SystemColorMode--><!--Device-enum ArkUI_SystemColorMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -771,8 +771,8 @@ enum ArkUI_SystemColorMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | 浅色模式。 |
-| ARKUI_SYSTEM_COLOR_MODE_DARK | 深色模式。 |
+| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | 浅色模式。<br><!--Device-ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0--><!--Device-ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0-End--> |
+| ARKUI_SYSTEM_COLOR_MODE_DARK | 深色模式。<br><!--Device-ARKUI_SYSTEM_COLOR_MODE_DARK--><!--Device-ARKUI_SYSTEM_COLOR_MODE_DARK-End--> |
 
 ### ArkUI_BlurStyle
 
@@ -784,7 +784,7 @@ enum ArkUI_BlurStyle
 
 Enumerates the blur styles.
 
-<!--Device-ArkUI_BlurStyle--><!--Device-ArkUI_BlurStyle-End-->
+<!--Device-enum ArkUI_BlurStyle--><!--Device-enum ArkUI_BlurStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -792,19 +792,19 @@ Enumerates the blur styles.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLUR_STYLE_THIN = 0 | Thin material. |
-| ARKUI_BLUR_STYLE_REGULAR | Regular material. |
-| ARKUI_BLUR_STYLE_THICK | Thick material. |
-| ARKUI_BLUR_STYLE_BACKGROUND_THIN | Material that creates the minimum depth of field effect. |
-| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR | Material that creates a medium shallow depth of field effect. |
-| ARKUI_BLUR_STYLE_BACKGROUND_THICK | Material that creates a high shallow depth of field effect. |
-| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK | Material that creates the maximum depth of field effect. |
-| ARKUI_BLUR_STYLE_NONE | No blur. |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN | Component ultra-thin material. |
-| ARKUI_BLUR_STYLE_COMPONENT_THIN | Component thin material. |
-| ARKUI_BLUR_STYLE_COMPONENT_REGULAR | Component regular material. |
-| ARKUI_BLUR_STYLE_COMPONENT_THICK | Component thick material. |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK | Component ultra-thick material. |
+| ARKUI_BLUR_STYLE_THIN = 0 | Thin material.<br><!--Device-ARKUI_BLUR_STYLE_THIN = 0--><!--Device-ARKUI_BLUR_STYLE_THIN = 0-End--> |
+| ARKUI_BLUR_STYLE_REGULAR | Regular material.<br><!--Device-ARKUI_BLUR_STYLE_REGULAR--><!--Device-ARKUI_BLUR_STYLE_REGULAR-End--> |
+| ARKUI_BLUR_STYLE_THICK | Thick material.<br><!--Device-ARKUI_BLUR_STYLE_THICK--><!--Device-ARKUI_BLUR_STYLE_THICK-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_THIN | Material that creates the minimum depth of field effect.<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THIN--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THIN-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR | Material that creates a medium shallow depth of field effect.<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_REGULAR--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_REGULAR-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_THICK | Material that creates a high shallow depth of field effect.<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THICK--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_THICK-End--> |
+| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK | Material that creates the maximum depth of field effect.<br><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK--><!--Device-ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK-End--> |
+| ARKUI_BLUR_STYLE_NONE | No blur.<br><!--Device-ARKUI_BLUR_STYLE_NONE--><!--Device-ARKUI_BLUR_STYLE_NONE-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN | Component ultra-thin material.<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_THIN | Component thin material.<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THIN--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THIN-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_REGULAR | Component regular material.<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_REGULAR--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_REGULAR-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_THICK | Component thick material.<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THICK--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_THICK-End--> |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK | Component ultra-thick material.<br><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK--><!--Device-ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK-End--> |
 
 ### ArkUI_BlurStyleActivePolicy
 
@@ -816,7 +816,7 @@ enum ArkUI_BlurStyleActivePolicy
 
 Enumerates the activation policies for the background blur effect.
 
-<!--Device-ArkUI_BlurStyleActivePolicy--><!--Device-ArkUI_BlurStyleActivePolicy-End-->
+<!--Device-enum ArkUI_BlurStyleActivePolicy--><!--Device-enum ArkUI_BlurStyleActivePolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -824,9 +824,9 @@ Enumerates the activation policies for the background blur effect.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | The blur effect changes according to the window's focus state; it is inactive when the window is not in focus and active when the window is in focus. |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | The blur effect is always active. |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | The blur effect is always inactive. |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | The blur effect changes according to the window's focus state; it is inactive when the window is not in focus and active when the window is in focus.<br><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0--><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0-End--> |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | The blur effect is always active.<br><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE--><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE-End--> |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | The blur effect is always inactive.<br><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE--><!--Device-ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE-End--> |
 
 ### ArkUI_BlendMode
 
@@ -838,7 +838,7 @@ enum ArkUI_BlendMode
 
 Enumerates the blend modes.
 
-<!--Device-ArkUI_BlendMode--><!--Device-ArkUI_BlendMode-End-->
+<!--Device-enum ArkUI_BlendMode--><!--Device-enum ArkUI_BlendMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -846,36 +846,36 @@ Enumerates the blend modes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLEND_MODE_NONE = 0 | The top image is superimposed on the bottom image without any blending. |
-| ARKUI_BLEND_MODE_CLEAR | The target pixels covered by the source pixels are erased by being turned to completely transparent. |
-| ARKUI_BLEND_MODE_SRC | r = s: Only the source pixels are displayed. |
-| ARKUI_BLEND_MODE_DST | r = d: Only the target pixels are displayed. |
-| ARKUI_BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d: The source pixels are blended based on opacity and cover the target pixels. |
-| ARKUI_BLEND_MODE_DST_OVER | r = d + (1 - da) * s: The target pixels are blended based on opacity and cover on the source pixels. |
-| ARKUI_BLEND_MODE_SRC_IN | r = s * da: Only the part of the source pixels that overlap with the target pixels is displayed. |
-| ARKUI_BLEND_MODE_DST_IN | r = d * sa: Only the part of the target pixels that overlap with the source pixels is displayed. |
-| ARKUI_BLEND_MODE_SRC_OUT | r = s * (1 - da): Only the part of the source pixels that do not overlap with the target pixels is displayed. |
-| ARKUI_BLEND_MODE_DST_OUT | r = d * (1 - sa): Only the part of the target pixels that do not overlap with the source pixels is displayed. |
-| ARKUI_BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa): The part of the source pixels that overlap with the target pixels is displayed and the part of the target pixels that do not overlap with the source pixels are displayed. |
-| ARKUI_BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da): The part of the target pixels that overlap with the source pixels and the part of the source pixels that do not overlap with the target pixels are displayed. |
-| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa): Only the non-overlapping part between the source pixels and the target pixels is displayed. |
-| ARKUI_BLEND_MODE_PLUS | r = min(s + d, 1): New pixels resulting from adding the source pixels to the target pixels are displayed. |
-| ARKUI_BLEND_MODE_MODULATE | r = s * d: New pixels resulting from multiplying the source pixels with the target pixels are displayed. |
-| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication. |
-| ARKUI_BLEND_MODE_OVERLAY | The MULTIPLY or SCREEN mode is used based on the target pixels. |
-| ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used. |
-| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver: The final pixels are composed of the lightest values of pixels. |
-| ARKUI_BLEND_MODE_COLOR_DODGE | The colors of the target pixels are lightened to reflect the source pixels. |
-| ARKUI_BLEND_MODE_COLOR_BURN | The colors of the target pixels are darkened to reflect the source pixels. |
-| ARKUI_BLEND_MODE_HARD_LIGHT | The MULTIPLY or SCREEN mode is used, depending on the source pixels. |
-| ARKUI_BLEND_MODE_SOFT_LIGHT | The LIGHTEN or DARKEN mode is used, depending on the source pixels. |
-| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one. |
-| ARKUI_BLEND_MODE_EXCLUSION | rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast. |
-| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel. |
-| ARKUI_BLEND_MODE_HUE | The resultant image is created with the luminance and saturation of the source image and the hue of the target image. |
-| ARKUI_BLEND_MODE_SATURATION | The resultant image is created with the luminance and hue of the target image and the saturation of the source image. |
-| ARKUI_BLEND_MODE_COLOR | The resultant image is created with the saturation and hue of the source image and the luminance of the target image. |
-| ARKUI_BLEND_MODE_LUMINOSITY | The resultant image is created with the saturation and hue of the target image and the luminance of the source image. |
+| ARKUI_BLEND_MODE_NONE = 0 | The top image is superimposed on the bottom image without any blending.<br><!--Device-ARKUI_BLEND_MODE_NONE = 0--><!--Device-ARKUI_BLEND_MODE_NONE = 0-End--> |
+| ARKUI_BLEND_MODE_CLEAR | The target pixels covered by the source pixels are erased by being turned to completely transparent.<br><!--Device-ARKUI_BLEND_MODE_CLEAR--><!--Device-ARKUI_BLEND_MODE_CLEAR-End--> |
+| ARKUI_BLEND_MODE_SRC | r = s: Only the source pixels are displayed.<br><!--Device-ARKUI_BLEND_MODE_SRC--><!--Device-ARKUI_BLEND_MODE_SRC-End--> |
+| ARKUI_BLEND_MODE_DST | r = d: Only the target pixels are displayed.<br><!--Device-ARKUI_BLEND_MODE_DST--><!--Device-ARKUI_BLEND_MODE_DST-End--> |
+| ARKUI_BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d: The source pixels are blended based on opacity and cover the target pixels.<br><!--Device-ARKUI_BLEND_MODE_SRC_OVER--><!--Device-ARKUI_BLEND_MODE_SRC_OVER-End--> |
+| ARKUI_BLEND_MODE_DST_OVER | r = d + (1 - da) * s: The target pixels are blended based on opacity and cover on the source pixels.<br><!--Device-ARKUI_BLEND_MODE_DST_OVER--><!--Device-ARKUI_BLEND_MODE_DST_OVER-End--> |
+| ARKUI_BLEND_MODE_SRC_IN | r = s * da: Only the part of the source pixels that overlap with the target pixels is displayed.<br><!--Device-ARKUI_BLEND_MODE_SRC_IN--><!--Device-ARKUI_BLEND_MODE_SRC_IN-End--> |
+| ARKUI_BLEND_MODE_DST_IN | r = d * sa: Only the part of the target pixels that overlap with the source pixels is displayed.<br><!--Device-ARKUI_BLEND_MODE_DST_IN--><!--Device-ARKUI_BLEND_MODE_DST_IN-End--> |
+| ARKUI_BLEND_MODE_SRC_OUT | r = s * (1 - da): Only the part of the source pixels that do not overlap with the target pixels is displayed.<br><!--Device-ARKUI_BLEND_MODE_SRC_OUT--><!--Device-ARKUI_BLEND_MODE_SRC_OUT-End--> |
+| ARKUI_BLEND_MODE_DST_OUT | r = d * (1 - sa): Only the part of the target pixels that do not overlap with the source pixels is displayed.<br><!--Device-ARKUI_BLEND_MODE_DST_OUT--><!--Device-ARKUI_BLEND_MODE_DST_OUT-End--> |
+| ARKUI_BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa): The part of the source pixels that overlap with the target pixels is displayed and the part of the target pixels that do not overlap with the source pixels are displayed.<br><!--Device-ARKUI_BLEND_MODE_SRC_ATOP--><!--Device-ARKUI_BLEND_MODE_SRC_ATOP-End--> |
+| ARKUI_BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da): The part of the target pixels that overlap with the source pixels and the part of the source pixels that do not overlap with the target pixels are displayed.<br><!--Device-ARKUI_BLEND_MODE_DST_ATOP--><!--Device-ARKUI_BLEND_MODE_DST_ATOP-End--> |
+| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa): Only the non-overlapping part between the source pixels and the target pixels is displayed.<br><!--Device-ARKUI_BLEND_MODE_XOR--><!--Device-ARKUI_BLEND_MODE_XOR-End--> |
+| ARKUI_BLEND_MODE_PLUS | r = min(s + d, 1): New pixels resulting from adding the source pixels to the target pixels are displayed.<br><!--Device-ARKUI_BLEND_MODE_PLUS--><!--Device-ARKUI_BLEND_MODE_PLUS-End--> |
+| ARKUI_BLEND_MODE_MODULATE | r = s * d: New pixels resulting from multiplying the source pixels with the target pixels are displayed.<br><!--Device-ARKUI_BLEND_MODE_MODULATE--><!--Device-ARKUI_BLEND_MODE_MODULATE-End--> |
+| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication.<br><!--Device-ARKUI_BLEND_MODE_SCREEN--><!--Device-ARKUI_BLEND_MODE_SCREEN-End--> |
+| ARKUI_BLEND_MODE_OVERLAY | The MULTIPLY or SCREEN mode is used based on the target pixels.<br><!--Device-ARKUI_BLEND_MODE_OVERLAY--><!--Device-ARKUI_BLEND_MODE_OVERLAY-End--> |
+| ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used.<br><!--Device-ARKUI_BLEND_MODE_DARKEN--><!--Device-ARKUI_BLEND_MODE_DARKEN-End--> |
+| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver: The final pixels are composed of the lightest values of pixels.<br><!--Device-ARKUI_BLEND_MODE_LIGHTEN--><!--Device-ARKUI_BLEND_MODE_LIGHTEN-End--> |
+| ARKUI_BLEND_MODE_COLOR_DODGE | The colors of the target pixels are lightened to reflect the source pixels.<br><!--Device-ARKUI_BLEND_MODE_COLOR_DODGE--><!--Device-ARKUI_BLEND_MODE_COLOR_DODGE-End--> |
+| ARKUI_BLEND_MODE_COLOR_BURN | The colors of the target pixels are darkened to reflect the source pixels.<br><!--Device-ARKUI_BLEND_MODE_COLOR_BURN--><!--Device-ARKUI_BLEND_MODE_COLOR_BURN-End--> |
+| ARKUI_BLEND_MODE_HARD_LIGHT | The MULTIPLY or SCREEN mode is used, depending on the source pixels.<br><!--Device-ARKUI_BLEND_MODE_HARD_LIGHT--><!--Device-ARKUI_BLEND_MODE_HARD_LIGHT-End--> |
+| ARKUI_BLEND_MODE_SOFT_LIGHT | The LIGHTEN or DARKEN mode is used, depending on the source pixels.<br><!--Device-ARKUI_BLEND_MODE_SOFT_LIGHT--><!--Device-ARKUI_BLEND_MODE_SOFT_LIGHT-End--> |
+| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one.<br><!--Device-ARKUI_BLEND_MODE_DIFFERENCE--><!--Device-ARKUI_BLEND_MODE_DIFFERENCE-End--> |
+| ARKUI_BLEND_MODE_EXCLUSION | rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast.<br><!--Device-ARKUI_BLEND_MODE_EXCLUSION--><!--Device-ARKUI_BLEND_MODE_EXCLUSION-End--> |
+| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel.<br><!--Device-ARKUI_BLEND_MODE_MULTIPLY--><!--Device-ARKUI_BLEND_MODE_MULTIPLY-End--> |
+| ARKUI_BLEND_MODE_HUE | The resultant image is created with the luminance and saturation of the source image and the hue of the target image.<br><!--Device-ARKUI_BLEND_MODE_HUE--><!--Device-ARKUI_BLEND_MODE_HUE-End--> |
+| ARKUI_BLEND_MODE_SATURATION | The resultant image is created with the luminance and hue of the target image and the saturation of the source image.<br><!--Device-ARKUI_BLEND_MODE_SATURATION--><!--Device-ARKUI_BLEND_MODE_SATURATION-End--> |
+| ARKUI_BLEND_MODE_COLOR | The resultant image is created with the saturation and hue of the source image and the luminance of the target image.<br><!--Device-ARKUI_BLEND_MODE_COLOR--><!--Device-ARKUI_BLEND_MODE_COLOR-End--> |
+| ARKUI_BLEND_MODE_LUMINOSITY | The resultant image is created with the saturation and hue of the target image and the luminance of the source image.<br><!--Device-ARKUI_BLEND_MODE_LUMINOSITY--><!--Device-ARKUI_BLEND_MODE_LUMINOSITY-End--> |
 
 ### ArkUI_ColorStrategy
 
@@ -887,7 +887,7 @@ enum ArkUI_ColorStrategy
 
 前景和阴影颜色的枚举值。
 
-<!--Device-ArkUI_ColorStrategy--><!--Device-ArkUI_ColorStrategy-End-->
+<!--Device-enum ArkUI_ColorStrategy--><!--Device-enum ArkUI_ColorStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -895,9 +895,9 @@ enum ArkUI_ColorStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_COLOR_STRATEGY_INVERT = 0 | 前景色为控件背景色的反色。 |
-| ARKUI_COLOR_STRATEGY_AVERAGE | 控件背景阴影色为控件背景阴影区域的平均色。 |
-| ARKUI_COLOR_STRATEGY_PRIMARY | 控件背景阴影色为控件背景阴影区域的主色。 |
+| ARKUI_COLOR_STRATEGY_INVERT = 0 | 前景色为控件背景色的反色。<br><!--Device-ARKUI_COLOR_STRATEGY_INVERT = 0--><!--Device-ARKUI_COLOR_STRATEGY_INVERT = 0-End--> |
+| ARKUI_COLOR_STRATEGY_AVERAGE | 控件背景阴影色为控件背景阴影区域的平均色。<br><!--Device-ARKUI_COLOR_STRATEGY_AVERAGE--><!--Device-ARKUI_COLOR_STRATEGY_AVERAGE-End--> |
+| ARKUI_COLOR_STRATEGY_PRIMARY | 控件背景阴影色为控件背景阴影区域的主色。<br><!--Device-ARKUI_COLOR_STRATEGY_PRIMARY--><!--Device-ARKUI_COLOR_STRATEGY_PRIMARY-End--> |
 
 ### ArkUI_MaskType
 
@@ -909,7 +909,7 @@ enum ArkUI_MaskType
 
 遮罩类型枚举。遮罩是一种用于限制组件显示区域的手段，它利用特定的形状对组件内容进行裁剪，从而实现只有遮罩区域内的内容才可见的效果。
 
-<!--Device-ArkUI_MaskType--><!--Device-ArkUI_MaskType-End-->
+<!--Device-enum ArkUI_MaskType--><!--Device-enum ArkUI_MaskType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -917,11 +917,11 @@ enum ArkUI_MaskType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MASK_TYPE_RECTANGLE = 0 | 矩形类型。 |
-| ARKUI_MASK_TYPE_CIRCLE | 圆形类型。 |
-| ARKUI_MASK_TYPE_ELLIPSE | 椭圆形类型。 |
-| ARKUI_MASK_TYPE_PATH | 路径类型。 |
-| ARKUI_MASK_TYPE_PROGRESS | 进度类型。 |
+| ARKUI_MASK_TYPE_RECTANGLE = 0 | 矩形类型。<br><!--Device-ARKUI_MASK_TYPE_RECTANGLE = 0--><!--Device-ARKUI_MASK_TYPE_RECTANGLE = 0-End--> |
+| ARKUI_MASK_TYPE_CIRCLE | 圆形类型。<br><!--Device-ARKUI_MASK_TYPE_CIRCLE--><!--Device-ARKUI_MASK_TYPE_CIRCLE-End--> |
+| ARKUI_MASK_TYPE_ELLIPSE | 椭圆形类型。<br><!--Device-ARKUI_MASK_TYPE_ELLIPSE--><!--Device-ARKUI_MASK_TYPE_ELLIPSE-End--> |
+| ARKUI_MASK_TYPE_PATH | 路径类型。<br><!--Device-ARKUI_MASK_TYPE_PATH--><!--Device-ARKUI_MASK_TYPE_PATH-End--> |
+| ARKUI_MASK_TYPE_PROGRESS | 进度类型。<br><!--Device-ARKUI_MASK_TYPE_PROGRESS--><!--Device-ARKUI_MASK_TYPE_PROGRESS-End--> |
 
 ### ArkUI_ClipType
 
@@ -933,7 +933,7 @@ enum ArkUI_ClipType
 
 Enumerates the clipping region types.
 
-<!--Device-ArkUI_ClipType--><!--Device-ArkUI_ClipType-End-->
+<!--Device-enum ArkUI_ClipType--><!--Device-enum ArkUI_ClipType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -941,10 +941,10 @@ Enumerates the clipping region types.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CLIP_TYPE_RECTANGLE = 0 | Rectangle. |
-| ARKUI_CLIP_TYPE_CIRCLE | Circle. |
-| ARKUI_CLIP_TYPE_ELLIPSE | Ellipse. |
-| ARKUI_CLIP_TYPE_PATH | Path. |
+| ARKUI_CLIP_TYPE_RECTANGLE = 0 | Rectangle.<br><!--Device-ARKUI_CLIP_TYPE_RECTANGLE = 0--><!--Device-ARKUI_CLIP_TYPE_RECTANGLE = 0-End--> |
+| ARKUI_CLIP_TYPE_CIRCLE | Circle.<br><!--Device-ARKUI_CLIP_TYPE_CIRCLE--><!--Device-ARKUI_CLIP_TYPE_CIRCLE-End--> |
+| ARKUI_CLIP_TYPE_ELLIPSE | Ellipse.<br><!--Device-ARKUI_CLIP_TYPE_ELLIPSE--><!--Device-ARKUI_CLIP_TYPE_ELLIPSE-End--> |
+| ARKUI_CLIP_TYPE_PATH | Path.<br><!--Device-ARKUI_CLIP_TYPE_PATH--><!--Device-ARKUI_CLIP_TYPE_PATH-End--> |
 
 ### ArkUI_ShapeType
 
@@ -956,7 +956,7 @@ enum ArkUI_ShapeType
 
 Enumerates the custom shapes.
 
-<!--Device-ArkUI_ShapeType--><!--Device-ArkUI_ShapeType-End-->
+<!--Device-enum ArkUI_ShapeType--><!--Device-enum ArkUI_ShapeType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -964,10 +964,10 @@ Enumerates the custom shapes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHAPE_TYPE_RECTANGLE = 0 | Rectangle. |
-| ARKUI_SHAPE_TYPE_CIRCLE | Circle. |
-| ARKUI_SHAPE_TYPE_ELLIPSE | Ellipse. |
-| ARKUI_SHAPE_TYPE_PATH | Path. |
+| ARKUI_SHAPE_TYPE_RECTANGLE = 0 | Rectangle.<br><!--Device-ARKUI_SHAPE_TYPE_RECTANGLE = 0--><!--Device-ARKUI_SHAPE_TYPE_RECTANGLE = 0-End--> |
+| ARKUI_SHAPE_TYPE_CIRCLE | Circle.<br><!--Device-ARKUI_SHAPE_TYPE_CIRCLE--><!--Device-ARKUI_SHAPE_TYPE_CIRCLE-End--> |
+| ARKUI_SHAPE_TYPE_ELLIPSE | Ellipse.<br><!--Device-ARKUI_SHAPE_TYPE_ELLIPSE--><!--Device-ARKUI_SHAPE_TYPE_ELLIPSE-End--> |
+| ARKUI_SHAPE_TYPE_PATH | Path.<br><!--Device-ARKUI_SHAPE_TYPE_PATH--><!--Device-ARKUI_SHAPE_TYPE_PATH-End--> |
 
 ### ArkUI_LinearGradientDirection
 
@@ -979,7 +979,7 @@ enum ArkUI_LinearGradientDirection
 
 Enumerates the gradient directions.
 
-<!--Device-ArkUI_LinearGradientDirection--><!--Device-ArkUI_LinearGradientDirection-End-->
+<!--Device-enum ArkUI_LinearGradientDirection--><!--Device-enum ArkUI_LinearGradientDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -987,16 +987,16 @@ Enumerates the gradient directions.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0 | From right to left. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP | From bottom to top. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT | From left to right. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM | From top to bottom. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP | From lower right to upper left. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM | From upper right to lower left. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP | From lower left to upper right. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM | From upper left to lower right. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE | No gradient. |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM | Custom direction. |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0 | From right to left.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP | From bottom to top.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_TOP--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_TOP-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT | From left to right.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM | From top to bottom.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP | From lower right to upper left.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM | From upper right to lower left.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP | From lower left to upper right.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM | From upper left to lower right.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE | No gradient.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_NONE--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_NONE-End--> |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM | Custom direction.<br><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM--><!--Device-ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM-End--> |
 
 ### ArkUI_TransitionEdge
 
@@ -1008,7 +1008,7 @@ enum ArkUI_TransitionEdge
 
 Enumerates the slide-in and slide-out positions of the component from the screen edge during transition.
 
-<!--Device-ArkUI_TransitionEdge--><!--Device-ArkUI_TransitionEdge-End-->
+<!--Device-enum ArkUI_TransitionEdge--><!--Device-enum ArkUI_TransitionEdge-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1016,10 +1016,10 @@ Enumerates the slide-in and slide-out positions of the component from the screen
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TRANSITION_EDGE_TOP = 0 | Top edge of the window. |
-| ARKUI_TRANSITION_EDGE_BOTTOM | Bottom edge of the window. |
-| ARKUI_TRANSITION_EDGE_START | Left edge of the window. |
-| ARKUI_TRANSITION_EDGE_END | Right edge of the window. |
+| ARKUI_TRANSITION_EDGE_TOP = 0 | Top edge of the window.<br><!--Device-ARKUI_TRANSITION_EDGE_TOP = 0--><!--Device-ARKUI_TRANSITION_EDGE_TOP = 0-End--> |
+| ARKUI_TRANSITION_EDGE_BOTTOM | Bottom edge of the window.<br><!--Device-ARKUI_TRANSITION_EDGE_BOTTOM--><!--Device-ARKUI_TRANSITION_EDGE_BOTTOM-End--> |
+| ARKUI_TRANSITION_EDGE_START | Left edge of the window.<br><!--Device-ARKUI_TRANSITION_EDGE_START--><!--Device-ARKUI_TRANSITION_EDGE_START-End--> |
+| ARKUI_TRANSITION_EDGE_END | Right edge of the window.<br><!--Device-ARKUI_TRANSITION_EDGE_END--><!--Device-ARKUI_TRANSITION_EDGE_END-End--> |
 
 ### ArkUI_BlendApplyType
 
@@ -1031,7 +1031,7 @@ enum ArkUI_BlendApplyType
 
 Defines how the specified blend mode is applied.
 
-<!--Device-ArkUI_BlendApplyType--><!--Device-ArkUI_BlendApplyType-End-->
+<!--Device-enum ArkUI_BlendApplyType--><!--Device-enum ArkUI_BlendApplyType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1039,8 +1039,8 @@ Defines how the specified blend mode is applied.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| BLEND_APPLY_TYPE_FAST = 0 | The content of the view is blended in sequence on the target image. |
-| BLEND_APPLY_TYPE_OFFSCREEN | The content of the component and its child components are drawn on the offscreen canvas, and then blended with the existing content on the canvas. |
+| BLEND_APPLY_TYPE_FAST = 0 | The content of the view is blended in sequence on the target image.<br><!--Device-BLEND_APPLY_TYPE_FAST = 0--><!--Device-BLEND_APPLY_TYPE_FAST = 0-End--> |
+| BLEND_APPLY_TYPE_OFFSCREEN | The content of the component and its child components are drawn on the offscreen canvas, and then blended with the existing content on the canvas.<br><!--Device-BLEND_APPLY_TYPE_OFFSCREEN--><!--Device-BLEND_APPLY_TYPE_OFFSCREEN-End--> |
 
 ### ArkUI_FinishCallbackType
 
@@ -1052,7 +1052,7 @@ enum ArkUI_FinishCallbackType
 
 在动画中定义[OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。
 
-<!--Device-ArkUI_FinishCallbackType--><!--Device-ArkUI_FinishCallbackType-End-->
+<!--Device-enum ArkUI_FinishCallbackType--><!--Device-enum ArkUI_FinishCallbackType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1060,8 +1060,8 @@ enum ArkUI_FinishCallbackType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
-| ARKUI_FINISH_CALLBACK_LOGICALLY | 当动画在逻辑上已完成，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的 残余变化过程，此时动画的数值变化已非常微小，接近目标值。 |
+| ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。<br><!--Device-ARKUI_FINISH_CALLBACK_REMOVED = 0--><!--Device-ARKUI_FINISH_CALLBACK_REMOVED = 0-End--> |
+| ARKUI_FINISH_CALLBACK_LOGICALLY | 当动画在逻辑上已完成，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的 残余变化过程，此时动画的数值变化已非常微小，接近目标值。<br><!--Device-ARKUI_FINISH_CALLBACK_LOGICALLY--><!--Device-ARKUI_FINISH_CALLBACK_LOGICALLY-End--> |
 
 ### ArkUI_LengthMetricUnit
 
@@ -1073,7 +1073,7 @@ enum ArkUI_LengthMetricUnit
 
 Enumerates the component units.
 
-<!--Device-ArkUI_LengthMetricUnit--><!--Device-ArkUI_LengthMetricUnit-End-->
+<!--Device-enum ArkUI_LengthMetricUnit--><!--Device-enum ArkUI_LengthMetricUnit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1081,10 +1081,10 @@ Enumerates the component units.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts. |
-| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | px. |
-| ARKUI_LENGTH_METRIC_UNIT_VP | vp. |
-| ARKUI_LENGTH_METRIC_UNIT_FP | fp. |
+| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1--><!--Device-ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1-End--> |
+| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | px.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_PX = 0--><!--Device-ARKUI_LENGTH_METRIC_UNIT_PX = 0-End--> |
+| ARKUI_LENGTH_METRIC_UNIT_VP | vp.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_VP--><!--Device-ARKUI_LENGTH_METRIC_UNIT_VP-End--> |
+| ARKUI_LENGTH_METRIC_UNIT_FP | fp.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_FP--><!--Device-ARKUI_LENGTH_METRIC_UNIT_FP-End--> |
 
 ### ArkUI_RenderFit
 
@@ -1096,7 +1096,7 @@ enum ArkUI_RenderFit
 
 Enumerates the render fit.
 
-<!--Device-ArkUI_RenderFit--><!--Device-ArkUI_RenderFit-End-->
+<!--Device-enum ArkUI_RenderFit--><!--Device-enum ArkUI_RenderFit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1104,22 +1104,22 @@ Enumerates the render fit.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDER_FIT_CENTER = 0 | Maintains the content size of the animation's final state, and the content is always centered with the component. |
-| ARKUI_RENDER_FIT_TOP | Maintains the content size of the animation's final state, and the content is always aligned with the top center of the component. |
-| ARKUI_RENDER_FIT_BOTTOM | Maintains the content size of the animation's final state, and the content is always aligned with the bottom center of the component. |
-| ARKUI_RENDER_FIT_LEFT | Maintains the content size of the animation's final state, and the content is always aligned to the left of the component. |
-| ARKUI_RENDER_FIT_RIGHT | Maintains the content size of the animation's final state, and the content is always right-aligned with the component. |
-| ARKUI_RENDER_FIT_TOP_LEFT | Maintains the content size of the animation's final state, and the content is always aligned with the top left corner of the component. |
-| ARKUI_RENDER_FIT_TOP_RIGHT | Keep the content size of the animation final state, and the content is always aligned with the upper right corner of the component. |
-| ARKUI_RENDER_FIT_BOTTOM_LEFT | Keep the content size of the animation final state, and the content always aligns with the lower-left corner of the component. |
-| ARKUI_RENDER_FIT_BOTTOM_RIGHT | Keep the content size of the animation final state, and the content always aligns with the lower-right corner of the component. |
-| ARKUI_RENDER_FIT_RESIZE_FILL | The aspect ratio of the animation's final state content is not considered, and the content is always scaled to the size of the component. |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN | Reduce or enlarge the aspect ratio of the animation final state content, so that the content is fully displayed in the component, and keep the center aligned with the component. |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left over in the broad direction of the component, the content is aligned to the left of the component, and when there is left over in the high direction of the component, the content is aligned to the top of the component. |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left in the wide direction of the component, the content is aligned with the component on the right. When there is left in the high direction of the component, the content is aligned with the component on the bottom. |
-| ARKUI_RENDER_FIT_RESIZE_COVER | Keep the aspect ratio of the animation final state content reduced or enlarged, so that both sides of the content are greater than or equal to both sides of the component, and keep the center aligned with the component to display the middle part of the content. |
-| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content is aligned to the left of the component, and the left portion of the content is displayed. When the content is left in the high direction, the content and the component remain top aligned, showing the top side of the content. |
-| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content and the component remain right aligned, and the right part of the content is displayed. When the content is left in the high direction, the content and the component remain aligned at the bottom, and the bottom part of the content is displayed. |
+| ARKUI_RENDER_FIT_CENTER = 0 | Maintains the content size of the animation's final state, and the content is always centered with the component.<br><!--Device-ARKUI_RENDER_FIT_CENTER = 0--><!--Device-ARKUI_RENDER_FIT_CENTER = 0-End--> |
+| ARKUI_RENDER_FIT_TOP | Maintains the content size of the animation's final state, and the content is always aligned with the top center of the component.<br><!--Device-ARKUI_RENDER_FIT_TOP--><!--Device-ARKUI_RENDER_FIT_TOP-End--> |
+| ARKUI_RENDER_FIT_BOTTOM | Maintains the content size of the animation's final state, and the content is always aligned with the bottom center of the component.<br><!--Device-ARKUI_RENDER_FIT_BOTTOM--><!--Device-ARKUI_RENDER_FIT_BOTTOM-End--> |
+| ARKUI_RENDER_FIT_LEFT | Maintains the content size of the animation's final state, and the content is always aligned to the left of the component.<br><!--Device-ARKUI_RENDER_FIT_LEFT--><!--Device-ARKUI_RENDER_FIT_LEFT-End--> |
+| ARKUI_RENDER_FIT_RIGHT | Maintains the content size of the animation's final state, and the content is always right-aligned with the component.<br><!--Device-ARKUI_RENDER_FIT_RIGHT--><!--Device-ARKUI_RENDER_FIT_RIGHT-End--> |
+| ARKUI_RENDER_FIT_TOP_LEFT | Maintains the content size of the animation's final state, and the content is always aligned with the top left corner of the component.<br><!--Device-ARKUI_RENDER_FIT_TOP_LEFT--><!--Device-ARKUI_RENDER_FIT_TOP_LEFT-End--> |
+| ARKUI_RENDER_FIT_TOP_RIGHT | Keep the content size of the animation final state, and the content is always aligned with the upper right corner of the component.<br><!--Device-ARKUI_RENDER_FIT_TOP_RIGHT--><!--Device-ARKUI_RENDER_FIT_TOP_RIGHT-End--> |
+| ARKUI_RENDER_FIT_BOTTOM_LEFT | Keep the content size of the animation final state, and the content always aligns with the lower-left corner of the component.<br><!--Device-ARKUI_RENDER_FIT_BOTTOM_LEFT--><!--Device-ARKUI_RENDER_FIT_BOTTOM_LEFT-End--> |
+| ARKUI_RENDER_FIT_BOTTOM_RIGHT | Keep the content size of the animation final state, and the content always aligns with the lower-right corner of the component.<br><!--Device-ARKUI_RENDER_FIT_BOTTOM_RIGHT--><!--Device-ARKUI_RENDER_FIT_BOTTOM_RIGHT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_FILL | The aspect ratio of the animation's final state content is not considered, and the content is always scaled to the size of the component.<br><!--Device-ARKUI_RENDER_FIT_RESIZE_FILL--><!--Device-ARKUI_RENDER_FIT_RESIZE_FILL-End--> |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN | Reduce or enlarge the aspect ratio of the animation final state content, so that the content is fully displayed in the component, and keep the center aligned with the component.<br><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN--><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN-End--> |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left over in the broad direction of the component, the content is aligned to the left of the component, and when there is left over in the high direction of the component, the content is aligned to the top of the component.<br><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT--><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | Keep the aspect ratio of the animation final state content to reduce or enlarge, so that the content is fully displayed in the component. When there is left in the wide direction of the component, the content is aligned with the component on the right. When there is left in the high direction of the component, the content is aligned with the component on the bottom.<br><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT--><!--Device-ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_COVER | Keep the aspect ratio of the animation final state content reduced or enlarged, so that both sides of the content are greater than or equal to both sides of the component, and keep the center aligned with the component to display the middle part of the content.<br><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER--><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER-End--> |
+| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content is aligned to the left of the component, and the left portion of the content is displayed. When the content is left in the high direction, the content and the component remain top aligned, showing the top side of the content.<br><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT--><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT-End--> |
+| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | Keep the aspect ratio of the final content of the animation reduced or enlarged so that both sides of the content are exactly greater than or equal to both sides of the component. When the content width is left, the content and the component remain right aligned, and the right part of the content is displayed. When the content is left in the high direction, the content and the component remain aligned at the bottom, and the bottom part of the content is displayed.<br><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT--><!--Device-ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT-End--> |
 
 ### ArkUI_SwiperIndicatorType
 
@@ -1131,7 +1131,7 @@ enum ArkUI_SwiperIndicatorType
 
 Define the navigation indicator type of the swiper.
 
-<!--Device-ArkUI_SwiperIndicatorType--><!--Device-ArkUI_SwiperIndicatorType-End-->
+<!--Device-enum ArkUI_SwiperIndicatorType--><!--Device-enum ArkUI_SwiperIndicatorType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1139,8 +1139,8 @@ Define the navigation indicator type of the swiper.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT | dot type. |
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | digit type. |
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT | dot type.<br><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DOT--><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DOT-End--> |
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | digit type.<br><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DIGIT--><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DIGIT-End--> |
 
 ### ArkUI_AnimationStatus
 
@@ -1152,7 +1152,7 @@ enum ArkUI_AnimationStatus
 
 Defines the playback status for the image animator.
 
-<!--Device-ArkUI_AnimationStatus--><!--Device-ArkUI_AnimationStatus-End-->
+<!--Device-enum ArkUI_AnimationStatus--><!--Device-enum ArkUI_AnimationStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1160,10 +1160,10 @@ Defines the playback status for the image animator.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL | The animation is in the initial state. |
-| ARKUI_ANIMATION_STATUS_RUNNING | The animation is being played. |
-| ARKUI_ANIMATION_STATUS_PAUSED | The animation is paused. |
-| ARKUI_ANIMATION_STATUS_STOPPED | The animation is stopped. |
+| ARKUI_ANIMATION_STATUS_INITIAL | The animation is in the initial state.<br><!--Device-ARKUI_ANIMATION_STATUS_INITIAL--><!--Device-ARKUI_ANIMATION_STATUS_INITIAL-End--> |
+| ARKUI_ANIMATION_STATUS_RUNNING | The animation is being played.<br><!--Device-ARKUI_ANIMATION_STATUS_RUNNING--><!--Device-ARKUI_ANIMATION_STATUS_RUNNING-End--> |
+| ARKUI_ANIMATION_STATUS_PAUSED | The animation is paused.<br><!--Device-ARKUI_ANIMATION_STATUS_PAUSED--><!--Device-ARKUI_ANIMATION_STATUS_PAUSED-End--> |
+| ARKUI_ANIMATION_STATUS_STOPPED | The animation is stopped.<br><!--Device-ARKUI_ANIMATION_STATUS_STOPPED--><!--Device-ARKUI_ANIMATION_STATUS_STOPPED-End--> |
 
 ### ArkUI_AnimationFillMode
 
@@ -1175,7 +1175,7 @@ enum ArkUI_AnimationFillMode
 
 Defines the status before and after execution of the animation in the current playback direction.
 
-<!--Device-ArkUI_AnimationFillMode--><!--Device-ArkUI_AnimationFillMode-End-->
+<!--Device-enum ArkUI_AnimationFillMode--><!--Device-enum ArkUI_AnimationFillMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1183,10 +1183,10 @@ Defines the status before and after execution of the animation in the current pl
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_FILL_MODE_NONE | Before execution, the animation does not apply any styles to the target component. After execution, the animation restores the target component to its default state. |
-| ARKUI_ANIMATION_FILL_MODE_FORWARDS | The target component retains the state set by the last keyframe encountered during execution of the animation. |
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | The animation applies the values defined in the first relevant keyframe once it is applied to the target component, and retains the values during the period set by delay. |
-| ARKUI_ANIMATION_FILL_MODE_BOTH | The animation follows the rules for both Forwards and Backwards, extending the animation attributes in both directions. |
+| ARKUI_ANIMATION_FILL_MODE_NONE | Before execution, the animation does not apply any styles to the target component. After execution, the animation restores the target component to its default state.<br><!--Device-ARKUI_ANIMATION_FILL_MODE_NONE--><!--Device-ARKUI_ANIMATION_FILL_MODE_NONE-End--> |
+| ARKUI_ANIMATION_FILL_MODE_FORWARDS | The target component retains the state set by the last keyframe encountered during execution of the animation.<br><!--Device-ARKUI_ANIMATION_FILL_MODE_FORWARDS--><!--Device-ARKUI_ANIMATION_FILL_MODE_FORWARDS-End--> |
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | The animation applies the values defined in the first relevant keyframe once it is applied to the target component, and retains the values during the period set by delay.<br><!--Device-ARKUI_ANIMATION_FILL_MODE_BACKWARDS--><!--Device-ARKUI_ANIMATION_FILL_MODE_BACKWARDS-End--> |
+| ARKUI_ANIMATION_FILL_MODE_BOTH | The animation follows the rules for both Forwards and Backwards, extending the animation attributes in both directions.<br><!--Device-ARKUI_ANIMATION_FILL_MODE_BOTH--><!--Device-ARKUI_ANIMATION_FILL_MODE_BOTH-End--> |
 
 ### ArkUI_AccessibilityCheckedState
 
@@ -1198,7 +1198,7 @@ enum ArkUI_AccessibilityCheckedState
 
 定义无障碍复选框状态类型枚举值。
 
-<!--Device-ArkUI_AccessibilityCheckedState--><!--Device-ArkUI_AccessibilityCheckedState-End-->
+<!--Device-enum ArkUI_AccessibilityCheckedState--><!--Device-enum ArkUI_AccessibilityCheckedState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1206,8 +1206,8 @@ enum ArkUI_AccessibilityCheckedState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | 复选框未被选中。 |
-| ARKUI_ACCESSIBILITY_CHECKED | 复选框被选中。 |
+| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | 复选框未被选中。<br><!--Device-ARKUI_ACCESSIBILITY_UNCHECKED = 0--><!--Device-ARKUI_ACCESSIBILITY_UNCHECKED = 0-End--> |
+| ARKUI_ACCESSIBILITY_CHECKED | 复选框被选中。<br><!--Device-ARKUI_ACCESSIBILITY_CHECKED--><!--Device-ARKUI_ACCESSIBILITY_CHECKED-End--> |
 
 ### ArkUI_AnimationDirection
 
@@ -1219,7 +1219,7 @@ enum ArkUI_AnimationDirection
 
 Enumerates the animation playback modes.
 
-<!--Device-ArkUI_AnimationDirection--><!--Device-ArkUI_AnimationDirection-End-->
+<!--Device-enum ArkUI_AnimationDirection--><!--Device-enum ArkUI_AnimationDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1227,10 +1227,10 @@ Enumerates the animation playback modes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | The animation plays in forward loop mode. |
-| ARKUI_ANIMATION_DIRECTION_REVERSE | The animation plays in reverse loop mode. |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE | The animation plays in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction. |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | The animation plays in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction. |
+| ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | The animation plays in forward loop mode.<br><!--Device-ARKUI_ANIMATION_DIRECTION_NORMAL = 0--><!--Device-ARKUI_ANIMATION_DIRECTION_NORMAL = 0-End--> |
+| ARKUI_ANIMATION_DIRECTION_REVERSE | The animation plays in reverse loop mode.<br><!--Device-ARKUI_ANIMATION_DIRECTION_REVERSE--><!--Device-ARKUI_ANIMATION_DIRECTION_REVERSE-End--> |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE | The animation plays in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.<br><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE--><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE-End--> |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | The animation plays in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.<br><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE--><!--Device-ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE-End--> |
 
 ### ArkUI_AccessibilityActionType
 
@@ -1242,7 +1242,7 @@ enum ArkUI_AccessibilityActionType
 
 定义无障碍操作类型。
 
-<!--Device-ArkUI_AccessibilityActionType--><!--Device-ArkUI_AccessibilityActionType-End-->
+<!--Device-enum ArkUI_AccessibilityActionType--><!--Device-enum ArkUI_AccessibilityActionType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1250,11 +1250,11 @@ enum ArkUI_AccessibilityActionType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | 点击操作。 |
-| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | 长按操作。 |
-| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | 剪切操作。 |
-| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | 复制操作。 |
-| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | 粘贴操作。 |
+| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | 点击操作。<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0--><!--Device-ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | 长按操作。<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1--><!--Device-ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | 剪切操作。<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2--><!--Device-ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | 复制操作。<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3--><!--Device-ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | 粘贴操作。<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4--><!--Device-ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4-End--> |
 
 ### ArkUI_NavDestinationState
 
@@ -1266,7 +1266,7 @@ enum ArkUI_NavDestinationState
 
 定义NavDestination组件的状态，用于描述NavDestination在导航过程中的生命周期状态变化。
 
-<!--Device-ArkUI_NavDestinationState--><!--Device-ArkUI_NavDestinationState-End-->
+<!--Device-enum ArkUI_NavDestinationState--><!--Device-enum ArkUI_NavDestinationState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1274,17 +1274,17 @@ enum ArkUI_NavDestinationState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 | NavDestination组件显示。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 | NavDestination组件隐藏。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 | NavDestination挂载到组件树上。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 | NavDestination从组件树上卸载。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 | NavDestination组件显示之前。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | NavDestination组件隐藏之前。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | NavDestination挂载到组件树之前。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | NavDestination从组件树上卸载之前。 |
-| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 | NavDestination组件处于激活态。<br>**起始版本：** 26.1.0 |
-| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 | NavDestination组件处于非激活态。<br>**起始版本：** 26.1.0 |
-| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | NavDestination组件接收到返回操作时触发，例如用户点击返回键或调用返回导航接口。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 | NavDestination组件显示。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 | NavDestination组件隐藏。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 | NavDestination挂载到组件树上。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 | NavDestination从组件树上卸载。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 | NavDestination组件显示之前。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | NavDestination组件隐藏之前。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | NavDestination挂载到组件树之前。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | NavDestination从组件树上卸载之前。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 | NavDestination组件处于激活态。<br>**起始版本：** 26.1.0<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 | NavDestination组件处于非激活态。<br>**起始版本：** 26.1.0<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9-End--> |
+| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | NavDestination组件接收到返回操作时触发，例如用户点击返回键或调用返回导航接口。<br><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100--><!--Device-ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100-End--> |
 
 ### ArkUI_RouterPageState
 
@@ -1296,7 +1296,7 @@ enum ArkUI_RouterPageState
 
 Define the state of Router Page.
 
-<!--Device-ArkUI_RouterPageState--><!--Device-ArkUI_RouterPageState-End-->
+<!--Device-enum ArkUI_RouterPageState--><!--Device-enum ArkUI_RouterPageState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1304,11 +1304,11 @@ Define the state of Router Page.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0 | The Router Page is about to be created. |
-| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1 | The Router Page is about to be destroyed. |
-| ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2 | The Router Page show. |
-| ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3 | The Router Page hide. |
-| ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4 | The Router Page returns. |
+| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0 | The Router Page is about to be created.<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0--><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1 | The Router Page is about to be destroyed.<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1--><!--Device-ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2 | The Router Page show.<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2--><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3 | The Router Page hide.<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3--><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3-End--> |
+| ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4 | The Router Page returns.<br><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4--><!--Device-ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4-End--> |
 
 ### ArkUI_SafeAreaType
 
@@ -1320,7 +1320,7 @@ enum ArkUI_SafeAreaType
 
 定义扩展安全区域的枚举值。
 
-<!--Device-ArkUI_SafeAreaType--><!--Device-ArkUI_SafeAreaType-End-->
+<!--Device-enum ArkUI_SafeAreaType--><!--Device-enum ArkUI_SafeAreaType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1328,9 +1328,9 @@ enum ArkUI_SafeAreaType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | 默认安全区域，包括状态栏和导航栏。 |
-| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | 设备的非安全区域，如刘海屏或挖孔屏。 |
-| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | 软键盘区域。 |
+| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | 默认安全区域，包括状态栏和导航栏。<br><!--Device-ARKUI_SAFE_AREA_TYPE_SYSTEM = 1--><!--Device-ARKUI_SAFE_AREA_TYPE_SYSTEM = 1-End--> |
+| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | 设备的非安全区域，如刘海屏或挖孔屏。<br><!--Device-ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1--><!--Device-ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1-End--> |
+| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | 软键盘区域。<br><!--Device-ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2--><!--Device-ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2-End--> |
 
 ### ArkUI_KeyboardAvoidMode
 
@@ -1342,7 +1342,7 @@ enum ArkUI_KeyboardAvoidMode
 
 键盘避让模式。
 
-<!--Device-ArkUI_KeyboardAvoidMode--><!--Device-ArkUI_KeyboardAvoidMode-End-->
+<!--Device-enum ArkUI_KeyboardAvoidMode--><!--Device-enum ArkUI_KeyboardAvoidMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1350,8 +1350,8 @@ enum ArkUI_KeyboardAvoidMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | 默认避让软键盘并在到达极限高度之后进行高度压缩。 |
-| ARKUI_KEYBOARD_AVOID_MODE_NONE | 不避让键盘。 |
+| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | 默认避让软键盘并在到达极限高度之后进行高度压缩。<br><!--Device-ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0--><!--Device-ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0-End--> |
+| ARKUI_KEYBOARD_AVOID_MODE_NONE | 不避让键盘。<br><!--Device-ARKUI_KEYBOARD_AVOID_MODE_NONE--><!--Device-ARKUI_KEYBOARD_AVOID_MODE_NONE-End--> |
 
 ### ArkUI_HoverModeAreaType
 
@@ -1363,7 +1363,7 @@ enum ArkUI_HoverModeAreaType
 
 悬停态显示区域。
 
-<!--Device-ArkUI_HoverModeAreaType--><!--Device-ArkUI_HoverModeAreaType-End-->
+<!--Device-enum ArkUI_HoverModeAreaType--><!--Device-enum ArkUI_HoverModeAreaType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1371,8 +1371,8 @@ enum ArkUI_HoverModeAreaType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | 上半屏。 |
-| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | 下半屏。 |
+| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | 上半屏。<br><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0--><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0-End--> |
+| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | 下半屏。<br><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM--><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM-End--> |
 
 ### ArkUI_ExpandMode
 
@@ -1384,7 +1384,7 @@ enum ArkUI_ExpandMode
 
 定义子节点展开模式枚举值。
 
-<!--Device-ArkUI_ExpandMode--><!--Device-ArkUI_ExpandMode-End-->
+<!--Device-enum ArkUI_ExpandMode--><!--Device-enum ArkUI_ExpandMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1392,9 +1392,9 @@ enum ArkUI_ExpandMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NOT_EXPAND = 0 | 不展开。 |
-| ARKUI_EXPAND = 1 | 展开。 |
-| ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点，节点展开条件可以参考LazyForEach：数据懒加载。 |
+| ARKUI_NOT_EXPAND = 0 | 不展开。<br><!--Device-ARKUI_NOT_EXPAND = 0--><!--Device-ARKUI_NOT_EXPAND = 0-End--> |
+| ARKUI_EXPAND = 1 | 展开。<br><!--Device-ARKUI_EXPAND = 1--><!--Device-ARKUI_EXPAND = 1-End--> |
+| ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点，节点展开条件可以参考LazyForEach：数据懒加载。<br><!--Device-ARKUI_LAZY_EXPAND = 2--><!--Device-ARKUI_LAZY_EXPAND = 2-End--> |
 
 ### ArkUI_EdgeDirection
 
@@ -1406,7 +1406,7 @@ enum ArkUI_EdgeDirection
 
 定义矩形边方向。
 
-<!--Device-ArkUI_EdgeDirection--><!--Device-ArkUI_EdgeDirection-End-->
+<!--Device-enum ArkUI_EdgeDirection--><!--Device-enum ArkUI_EdgeDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1414,11 +1414,11 @@ enum ArkUI_EdgeDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_EDGE_DIRECTION_ALL = 0 | 设置四个方向的内容。 |
-| ARKUI_EDGE_DIRECTION_LEFT | 设置左侧方向内容。 |
-| ARKUI_EDGE_DIRECTION_RIGHT | 设置右侧方向内容。 |
-| ARKUI_EDGE_DIRECTION_TOP | 设置上侧方向内容。 |
-| ARKUI_EDGE_DIRECTION_BOTTOM | 设置下侧方向内容。 |
+| ARKUI_EDGE_DIRECTION_ALL = 0 | 设置四个方向的内容。<br><!--Device-ARKUI_EDGE_DIRECTION_ALL = 0--><!--Device-ARKUI_EDGE_DIRECTION_ALL = 0-End--> |
+| ARKUI_EDGE_DIRECTION_LEFT | 设置左侧方向内容。<br><!--Device-ARKUI_EDGE_DIRECTION_LEFT--><!--Device-ARKUI_EDGE_DIRECTION_LEFT-End--> |
+| ARKUI_EDGE_DIRECTION_RIGHT | 设置右侧方向内容。<br><!--Device-ARKUI_EDGE_DIRECTION_RIGHT--><!--Device-ARKUI_EDGE_DIRECTION_RIGHT-End--> |
+| ARKUI_EDGE_DIRECTION_TOP | 设置上侧方向内容。<br><!--Device-ARKUI_EDGE_DIRECTION_TOP--><!--Device-ARKUI_EDGE_DIRECTION_TOP-End--> |
+| ARKUI_EDGE_DIRECTION_BOTTOM | 设置下侧方向内容。<br><!--Device-ARKUI_EDGE_DIRECTION_BOTTOM--><!--Device-ARKUI_EDGE_DIRECTION_BOTTOM-End--> |
 
 ### ArkUI_CornerDirection
 
@@ -1430,7 +1430,7 @@ enum ArkUI_CornerDirection
 
 定义角度方向。
 
-<!--Device-ArkUI_CornerDirection--><!--Device-ArkUI_CornerDirection-End-->
+<!--Device-enum ArkUI_CornerDirection--><!--Device-enum ArkUI_CornerDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1438,11 +1438,11 @@ enum ArkUI_CornerDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CORNER_DIRECTION_ALL = 0 | 设置四个角度方向的内容。 |
-| ARKUI_CORNER_DIRECTION_TOP_LEFT | 设置左上侧方向内容。 |
-| ARKUI_CORNER_DIRECTION_TOP_RIGHT | 设置右上侧方向内容。 |
-| ARKUI_CORNER_DIRECTION_BOTTOM_LEFT | 设置左下侧方向内容。 |
-| ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT | 设置右下侧方向容。 |
+| ARKUI_CORNER_DIRECTION_ALL = 0 | 设置四个角度方向的内容。<br><!--Device-ARKUI_CORNER_DIRECTION_ALL = 0--><!--Device-ARKUI_CORNER_DIRECTION_ALL = 0-End--> |
+| ARKUI_CORNER_DIRECTION_TOP_LEFT | 设置左上侧方向内容。<br><!--Device-ARKUI_CORNER_DIRECTION_TOP_LEFT--><!--Device-ARKUI_CORNER_DIRECTION_TOP_LEFT-End--> |
+| ARKUI_CORNER_DIRECTION_TOP_RIGHT | 设置右上侧方向内容。<br><!--Device-ARKUI_CORNER_DIRECTION_TOP_RIGHT--><!--Device-ARKUI_CORNER_DIRECTION_TOP_RIGHT-End--> |
+| ARKUI_CORNER_DIRECTION_BOTTOM_LEFT | 设置左下侧方向内容。<br><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_LEFT--><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_LEFT-End--> |
+| ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT | 设置右下侧方向容。<br><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT--><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT-End--> |
 
 ### ArkUI_MenuPolicy
 
@@ -1454,7 +1454,7 @@ enum ArkUI_MenuPolicy
 
 菜单弹出策略。
 
-<!--Device-ArkUI_MenuPolicy--><!--Device-ArkUI_MenuPolicy-End-->
+<!--Device-enum ArkUI_MenuPolicy--><!--Device-enum ArkUI_MenuPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1462,9 +1462,9 @@ enum ArkUI_MenuPolicy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MENU_POLICY_DEFAULT = 0 | 根据底层默认逻辑确定是否弹出菜单。 |
-| ARKUI_MENU_POLICY_HIDE = 1 | 不弹出菜单。 |
-| ARKUI_MENU_POLICY_SHOW = 2 | 弹出菜单。 |
+| ARKUI_MENU_POLICY_DEFAULT = 0 | 根据底层默认逻辑确定是否弹出菜单。<br><!--Device-ARKUI_MENU_POLICY_DEFAULT = 0--><!--Device-ARKUI_MENU_POLICY_DEFAULT = 0-End--> |
+| ARKUI_MENU_POLICY_HIDE = 1 | 不弹出菜单。<br><!--Device-ARKUI_MENU_POLICY_HIDE = 1--><!--Device-ARKUI_MENU_POLICY_HIDE = 1-End--> |
+| ARKUI_MENU_POLICY_SHOW = 2 | 弹出菜单。<br><!--Device-ARKUI_MENU_POLICY_SHOW = 2--><!--Device-ARKUI_MENU_POLICY_SHOW = 2-End--> |
 
 ### ArkUI_RenderStrategy
 
@@ -1476,7 +1476,7 @@ enum ArkUI_RenderStrategy
 
 定义图形渲染策略。
 
-<!--Device-ArkUI_RenderStrategy--><!--Device-ArkUI_RenderStrategy-End-->
+<!--Device-enum ArkUI_RenderStrategy--><!--Device-enum ArkUI_RenderStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1484,8 +1484,8 @@ enum ArkUI_RenderStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST = 0 | 在线绘制模式。当前组件及其子组件将直接绘制到屏幕画布上。 |
-| ARKUI_RENDERSTRATEGY_OFFSCREEN | 离屏绘制模式。当前组件及其子组件将先绘制到离屏画布上，再经过一些图形渲染处理， 最终绘制到主画布上。 |
+| ARKUI_RENDERSTRATEGY_FAST = 0 | 在线绘制模式。当前组件及其子组件将直接绘制到屏幕画布上。<br><!--Device-ARKUI_RENDERSTRATEGY_FAST = 0--><!--Device-ARKUI_RENDERSTRATEGY_FAST = 0-End--> |
+| ARKUI_RENDERSTRATEGY_OFFSCREEN | 离屏绘制模式。当前组件及其子组件将先绘制到离屏画布上，再经过一些图形渲染处理， 最终绘制到主画布上。<br><!--Device-ARKUI_RENDERSTRATEGY_OFFSCREEN--><!--Device-ARKUI_RENDERSTRATEGY_OFFSCREEN-End--> |
 
 ### OH_ArkUI_CrossLanguageOperatingStatus
 
@@ -1497,7 +1497,7 @@ enum OH_ArkUI_CrossLanguageOperatingStatus
 
 Enumerates the tree operating status for the cross-language option.
 
-<!--Device-OH_ArkUI_CrossLanguageOperatingStatus--><!--Device-OH_ArkUI_CrossLanguageOperatingStatus-End-->
+<!--Device-enum OH_ArkUI_CrossLanguageOperatingStatus--><!--Device-enum OH_ArkUI_CrossLanguageOperatingStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1505,9 +1505,9 @@ Enumerates the tree operating status for the cross-language option.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0 | Undefined, the initial value of the node tree operating status. Nodes in this status do not support cross-language node tree operations.<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1 | Enable, which means that when the option is applied to the node, the node's tree operating status will be enabled.<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2 | Disable, which means that when the option is applied to the node, the node's tree operating status will be disabled.<br>**起始版本：** 26.0.0 |
+| OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0 | Undefined, the initial value of the node tree operating status. Nodes in this status do not support cross-language node tree operations.<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0--><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0-End--> |
+| OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1 | Enable, which means that when the option is applied to the node, the node's tree operating status will be enabled.<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1--><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1-End--> |
+| OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2 | Disable, which means that when the option is applied to the node, the node's tree operating status will be disabled.<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2--><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2-End--> |
 
 ### OH_ArkUI_NodeMountPolicy
 
@@ -1519,7 +1519,7 @@ enum OH_ArkUI_NodeMountPolicy
 
 Enumeration of the policy for mounting child node to the target node.
 
-<!--Device-OH_ArkUI_NodeMountPolicy--><!--Device-OH_ArkUI_NodeMountPolicy-End-->
+<!--Device-enum OH_ArkUI_NodeMountPolicy--><!--Device-enum OH_ArkUI_NodeMountPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1527,8 +1527,8 @@ Enumeration of the policy for mounting child node to the target node.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0 | If you want to mount a RenderNode as a child node, that RenderNode must be the only child.<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1 | Multiple child nodes of type Node or RenderNode allowed.<br>**起始版本：** 26.0.0 |
+| OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0 | If you want to mount a RenderNode as a child node, that RenderNode must be the only child.<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0--><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0-End--> |
+| OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1 | Multiple child nodes of type Node or RenderNode allowed.<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1--><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1-End--> |
 
 
 ## 函数说明

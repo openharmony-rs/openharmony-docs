@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineCoverageReductionStateCreateFlagsNV flags |  |
-| VkCoverageReductionModeNV coverageReductionMode |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineCoverageReductionStateCreateFlagsNV flags | <!--Device-VkPipelineCoverageReductionStateCreateFlagsNV flags--><!--Device-VkPipelineCoverageReductionStateCreateFlagsNV flags-End--> |
+| VkCoverageReductionModeNV coverageReductionMode | <!--Device-VkCoverageReductionModeNV coverageReductionMode--><!--Device-VkCoverageReductionModeNV coverageReductionMode-End--> |
 
 

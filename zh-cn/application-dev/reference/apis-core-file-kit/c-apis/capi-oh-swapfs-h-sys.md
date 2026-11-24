@@ -67,7 +67,7 @@ enum OH_SwapfsKeyStatus
 
 被swapfs换出的数据将以key（换出数据交换单元）的形式被swapfs管理，该枚举定义已经被swapfs换出的key的状态。
 
-<!--Device-OH_SwapfsKeyStatus--><!--Device-OH_SwapfsKeyStatus-End-->
+<!--Device-enum OH_SwapfsKeyStatus--><!--Device-enum OH_SwapfsKeyStatus-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.Swapfs
 
@@ -77,8 +77,8 @@ enum OH_SwapfsKeyStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SWAPFS_KEY_STATUS_ACTIVE = 0 | key处于活跃状态，可用于换入、查询或删除操作。<br>**起始版本：** 26.0.0 |
-| OH_SWAPFS_KEY_STATUS_REMOVING = 1 | key已被删除。新的换入或查询操作将被拒绝。<br>**起始版本：** 26.0.0 |
+| OH_SWAPFS_KEY_STATUS_ACTIVE = 0 | key处于活跃状态，可用于换入、查询或删除操作。<br>**起始版本：** 26.0.0<br><!--Device-OH_SWAPFS_KEY_STATUS_ACTIVE = 0--><!--Device-OH_SWAPFS_KEY_STATUS_ACTIVE = 0-End--> |
+| OH_SWAPFS_KEY_STATUS_REMOVING = 1 | key已被删除。新的换入或查询操作将被拒绝。<br>**起始版本：** 26.0.0<br><!--Device-OH_SWAPFS_KEY_STATUS_REMOVING = 1--><!--Device-OH_SWAPFS_KEY_STATUS_REMOVING = 1-End--> |
 
 ### OH_SwapfsDisableReason
 
@@ -90,7 +90,7 @@ enum OH_SwapfsDisableReason
 
 定义换出功能被禁用的原因。仅在featureEnabled为false时有效。
 
-<!--Device-OH_SwapfsDisableReason--><!--Device-OH_SwapfsDisableReason-End-->
+<!--Device-enum OH_SwapfsDisableReason--><!--Device-enum OH_SwapfsDisableReason-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.Swapfs
 
@@ -100,8 +100,8 @@ enum OH_SwapfsDisableReason
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SWAPFS_DISABLE_REASON_NONE = 0 | 换出功能已启用。<br>**起始版本：** 26.0.0 |
-| OH_SWAPFS_DISABLE_REASON_NOSPC = 1 | 设备存储空间不足。<br>**起始版本：** 26.0.0 |
+| OH_SWAPFS_DISABLE_REASON_NONE = 0 | 换出功能已启用。<br>**起始版本：** 26.0.0<br><!--Device-OH_SWAPFS_DISABLE_REASON_NONE = 0--><!--Device-OH_SWAPFS_DISABLE_REASON_NONE = 0-End--> |
+| OH_SWAPFS_DISABLE_REASON_NOSPC = 1 | 设备存储空间不足。<br>**起始版本：** 26.0.0<br><!--Device-OH_SWAPFS_DISABLE_REASON_NOSPC = 1--><!--Device-OH_SWAPFS_DISABLE_REASON_NOSPC = 1-End--> |
 
 
 ## 函数说明

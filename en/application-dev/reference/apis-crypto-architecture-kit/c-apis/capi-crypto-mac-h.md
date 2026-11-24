@@ -52,7 +52,7 @@ enum CryptoMac_ParamType
 
 Defines MAC algorithm parameter types.
 
-<!--Device-CryptoMac_ParamType--><!--Device-CryptoMac_ParamType-End-->
+<!--Device-enum CryptoMac_ParamType--><!--Device-enum CryptoMac_ParamType-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -60,8 +60,8 @@ Defines MAC algorithm parameter types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_MAC_DIGEST_NAME_STR = 0 | Algorithm name of the message digest function for HMAC, set via [OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam). Values: "SHA1", "SHA224", "SHA256", "SHA384", "SHA512", "SM3", "MD5". "SHA3-256", "SHA3-384", "SHA3-512" are supported since API version 26.0.0.<br>**Since**: 20 |
-| CRYPTO_MAC_CIPHER_NAME_STR = 1 | Algorithm name of the symmetric cipher function for CMAC, set via [OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam). Values: "AES128", "AES256".<br>**Since**: 20 |
+| CRYPTO_MAC_DIGEST_NAME_STR = 0 | Algorithm name of the message digest function for HMAC, set via [OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam). Values: "SHA1", "SHA224", "SHA256", "SHA384", "SHA512", "SM3", "MD5". "SHA3-256", "SHA3-384", "SHA3-512" are supported since API version 26.0.0.<br>**Since**: 20<br><!--Device-CRYPTO_MAC_DIGEST_NAME_STR = 0--><!--Device-CRYPTO_MAC_DIGEST_NAME_STR = 0-End--> |
+| CRYPTO_MAC_CIPHER_NAME_STR = 1 | Algorithm name of the symmetric cipher function for CMAC, set via [OH_CryptoMac_SetParam](capi-crypto-mac-h.md#oh_cryptomac_setparam). Values: "AES128", "AES256".<br>**Since**: 20<br><!--Device-CRYPTO_MAC_CIPHER_NAME_STR = 1--><!--Device-CRYPTO_MAC_CIPHER_NAME_STR = 1-End--> |
 
 
 ## Function description

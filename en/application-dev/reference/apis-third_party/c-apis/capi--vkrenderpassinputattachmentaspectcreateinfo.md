@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t aspectReferenceCount |  |
-| [const VkInputAttachmentAspectReference*](capi--vkinputattachmentaspectreference.md) pAspectReferences |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t aspectReferenceCount | <!--Device-uint32_t aspectReferenceCount--><!--Device-uint32_t aspectReferenceCount-End--> |
+| [const VkInputAttachmentAspectReference*](capi--vkinputattachmentaspectreference.md) pAspectReferences | <!--Device-const VkInputAttachmentAspectReference* pAspectReferences--><!--Device-const VkInputAttachmentAspectReference* pAspectReferences-End--> |
 
 

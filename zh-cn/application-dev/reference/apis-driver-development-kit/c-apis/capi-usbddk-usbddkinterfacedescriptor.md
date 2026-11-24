@@ -24,9 +24,9 @@ typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) interfaceDescriptor | 标准接口描述符。 |
-| [struct UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) *endPoint | 该接口所包含的端点描述符，可为空指针表示无端点（不包含控制端点0）。 |
-| const uint8_t *extra | 未做解析的描述符指针，包含特定于类或供应商的描述符。 |
-| uint32_t extraLength | 未做解析的描述符长度。 |
+| [struct UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) interfaceDescriptor | 标准接口描述符。<br><!--Device-struct UsbInterfaceDescriptor interfaceDescriptor--><!--Device-struct UsbInterfaceDescriptor interfaceDescriptor-End--> |
+| [struct UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) *endPoint | 该接口所包含的端点描述符，可为空指针表示无端点（不包含控制端点0）。<br><!--Device-struct UsbDdkEndpointDescriptor *endPoint--><!--Device-struct UsbDdkEndpointDescriptor *endPoint-End--> |
+| const uint8_t *extra | 未做解析的描述符指针，包含特定于类或供应商的描述符。<br><!--Device-const uint8_t *extra--><!--Device-const uint8_t *extra-End--> |
+| uint32_t extraLength | 未做解析的描述符长度。<br><!--Device-uint32_t extraLength--><!--Device-uint32_t extraLength-End--> |
 
 

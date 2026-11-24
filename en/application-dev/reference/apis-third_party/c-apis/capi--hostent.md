@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| char *h_name |  |
-| char **h_aliases |  |
-| int h_addrtype |  |
-| int h_length |  |
-| char **h_addr_list |  |
+| char *h_name | <!--Device-char *h_name--><!--Device-char *h_name-End--> |
+| char **h_aliases | <!--Device-char **h_aliases--><!--Device-char **h_aliases-End--> |
+| int h_addrtype | <!--Device-int h_addrtype--><!--Device-int h_addrtype-End--> |
+| int h_length | <!--Device-int h_length--><!--Device-int h_length-End--> |
+| char **h_addr_list | <!--Device-char **h_addr_list--><!--Device-char **h_addr_list-End--> |
 
 

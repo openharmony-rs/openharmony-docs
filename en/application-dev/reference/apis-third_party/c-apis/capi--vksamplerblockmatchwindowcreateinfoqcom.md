@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkExtent2D](capi--vkextent2d.md) windowExtent |  |
-| VkBlockMatchWindowCompareModeQCOM windowCompareMode |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkExtent2D](capi--vkextent2d.md) windowExtent | <!--Device-VkExtent2D windowExtent--><!--Device-VkExtent2D windowExtent-End--> |
+| VkBlockMatchWindowCompareModeQCOM windowCompareMode | <!--Device-VkBlockMatchWindowCompareModeQCOM windowCompareMode--><!--Device-VkBlockMatchWindowCompareModeQCOM windowCompareMode-End--> |
 
 

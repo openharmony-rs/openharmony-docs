@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceAddress bufferAddress |  |
-| uint32_t size |  |
-| uint32_t stride |  |
+| VkDeviceAddress bufferAddress | <!--Device-VkDeviceAddress bufferAddress--><!--Device-VkDeviceAddress bufferAddress-End--> |
+| uint32_t size | <!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| uint32_t stride | <!--Device-uint32_t stride--><!--Device-uint32_t stride-End--> |
 
 

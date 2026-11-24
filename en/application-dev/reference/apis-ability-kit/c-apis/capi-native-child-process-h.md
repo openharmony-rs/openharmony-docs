@@ -65,7 +65,7 @@ enum Ability_NativeChildProcess_ErrCode
 
 Defines an enum for the error codes used by the native child process module.
 
-<!--Device-Ability_NativeChildProcess_ErrCode--><!--Device-Ability_NativeChildProcess_ErrCode-End-->
+<!--Device-enum Ability_NativeChildProcess_ErrCode--><!--Device-enum Ability_NativeChildProcess_ErrCode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -73,20 +73,20 @@ Defines an enum for the error codes used by the native child process module.
 
 | Enum item | Description |
 | -- | -- |
-| NCP_NO_ERROR = 0 | Operation successful.<br>**Since**: 12 |
-| NCP_ERR_INVALID_PARAM = 401 | Invalid parameter.<br>**Since**: 12 |
-| NCP_ERR_NOT_SUPPORTED = 801 | Creating a native child process is not supported.<br>**Since**: 12 |
-| NCP_ERR_INTERNAL = 16000050 | Internal error.<br>**Since**: 12 |
-| NCP_ERR_BUSY = 16010001 | A new child process cannot be created during the startup of another native child process. You can try again after the child process is started. This function is deprecated since API version 15.<br>**Since**: 12 |
-| NCP_ERR_TIMEOUT = 16010002 | Starting the native child process times out.<br>**Since**: 12 |
-| NCP_ERR_SERVICE_ERROR = 16010003 | Server error.<br>**Since**: 12 |
-| NCP_ERR_MULTI_PROCESS_DISABLED = 16010004 | The multi-process mode is disabled. A child process cannot be started.<br>**Since**: 12 |
-| NCP_ERR_ALREADY_IN_CHILD = 16010005 | A process cannot be created in a child process.<br>**Since**: 12 |
-| NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | The number of native child processes reaches the maximum.<br>**Since**: 12 |
-| NCP_ERR_LIB_LOADING_FAILED = 16010007 | The child process fails to load the dynamic library because the file does not exist or the corresponding method is not implemented or exported.<br>**Since**: 12 |
-| NCP_ERR_CONNECTION_FAILED = 16010008 | The child process fails to call the OnConnect method of the dynamic library. An invalid IPC object pointer may be returned.<br>**Since**: 12 |
-| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | The parent process calls the **OH_Ability_UnregisterNativeChildProcessExitCallback** function to unregister a callback function, but the callback function is not found.<br>**Since**: 20<br>**Since**: 20 |
-| NCP_ERR_INVALID_PID = 16010010 | The specified PID does not exist, does not belong to a child process of the current process, or belongs to a child process started in SELF_FORK mode by calling childProcessManager.startChildProcess.<br>**Since**: 22<br>**Since**: 22 |
+| NCP_NO_ERROR = 0 | Operation successful.<br>**Since**: 12<br><!--Device-NCP_NO_ERROR = 0--><!--Device-NCP_NO_ERROR = 0-End--> |
+| NCP_ERR_INVALID_PARAM = 401 | Invalid parameter.<br>**Since**: 12<br><!--Device-NCP_ERR_INVALID_PARAM = 401--><!--Device-NCP_ERR_INVALID_PARAM = 401-End--> |
+| NCP_ERR_NOT_SUPPORTED = 801 | Creating a native child process is not supported.<br>**Since**: 12<br><!--Device-NCP_ERR_NOT_SUPPORTED = 801--><!--Device-NCP_ERR_NOT_SUPPORTED = 801-End--> |
+| NCP_ERR_INTERNAL = 16000050 | Internal error.<br>**Since**: 12<br><!--Device-NCP_ERR_INTERNAL = 16000050--><!--Device-NCP_ERR_INTERNAL = 16000050-End--> |
+| NCP_ERR_BUSY = 16010001 | A new child process cannot be created during the startup of another native child process. You can try again after the child process is started. This function is deprecated since API version 15.<br>**Since**: 12<br><!--Device-NCP_ERR_BUSY = 16010001--><!--Device-NCP_ERR_BUSY = 16010001-End--> |
+| NCP_ERR_TIMEOUT = 16010002 | Starting the native child process times out.<br>**Since**: 12<br><!--Device-NCP_ERR_TIMEOUT = 16010002--><!--Device-NCP_ERR_TIMEOUT = 16010002-End--> |
+| NCP_ERR_SERVICE_ERROR = 16010003 | Server error.<br>**Since**: 12<br><!--Device-NCP_ERR_SERVICE_ERROR = 16010003--><!--Device-NCP_ERR_SERVICE_ERROR = 16010003-End--> |
+| NCP_ERR_MULTI_PROCESS_DISABLED = 16010004 | The multi-process mode is disabled. A child process cannot be started.<br>**Since**: 12<br><!--Device-NCP_ERR_MULTI_PROCESS_DISABLED = 16010004--><!--Device-NCP_ERR_MULTI_PROCESS_DISABLED = 16010004-End--> |
+| NCP_ERR_ALREADY_IN_CHILD = 16010005 | A process cannot be created in a child process.<br>**Since**: 12<br><!--Device-NCP_ERR_ALREADY_IN_CHILD = 16010005--><!--Device-NCP_ERR_ALREADY_IN_CHILD = 16010005-End--> |
+| NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | The number of native child processes reaches the maximum.<br>**Since**: 12<br><!--Device-NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006--><!--Device-NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006-End--> |
+| NCP_ERR_LIB_LOADING_FAILED = 16010007 | The child process fails to load the dynamic library because the file does not exist or the corresponding method is not implemented or exported.<br>**Since**: 12<br><!--Device-NCP_ERR_LIB_LOADING_FAILED = 16010007--><!--Device-NCP_ERR_LIB_LOADING_FAILED = 16010007-End--> |
+| NCP_ERR_CONNECTION_FAILED = 16010008 | The child process fails to call the OnConnect method of the dynamic library. An invalid IPC object pointer may be returned.<br>**Since**: 12<br><!--Device-NCP_ERR_CONNECTION_FAILED = 16010008--><!--Device-NCP_ERR_CONNECTION_FAILED = 16010008-End--> |
+| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | The parent process calls the **OH_Ability_UnregisterNativeChildProcessExitCallback** function to unregister a callback function, but the callback function is not found.<br>**Since**: 20<br>**Since**: 20<br><!--Device-NCP_ERR_CALLBACK_NOT_EXIST = 16010009--><!--Device-NCP_ERR_CALLBACK_NOT_EXIST = 16010009-End--> |
+| NCP_ERR_INVALID_PID = 16010010 | The specified PID does not exist, does not belong to a child process of the current process, or belongs to a child process started in SELF_FORK mode by calling childProcessManager.startChildProcess.<br>**Since**: 22<br>**Since**: 22<br><!--Device-NCP_ERR_INVALID_PID = 16010010--><!--Device-NCP_ERR_INVALID_PID = 16010010-End--> |
 
 ### NativeChildProcess_IsolationMode
 
@@ -98,7 +98,7 @@ enum NativeChildProcess_IsolationMode
 
 Enumerates the sharing modes available for the data sandbox and network environment of a native child process.
 
-<!--Device-NativeChildProcess_IsolationMode--><!--Device-NativeChildProcess_IsolationMode-End-->
+<!--Device-enum NativeChildProcess_IsolationMode--><!--Device-enum NativeChildProcess_IsolationMode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,8 +106,8 @@ Enumerates the sharing modes available for the data sandbox and network environm
 
 | Enum item | Description |
 | -- | -- |
-| NCP_ISOLATION_MODE_NORMAL = 0 | In normal mode, the parent and child processes share the same sandbox or network environment.<br>**Since**: 13 |
-| NCP_ISOLATION_MODE_ISOLATED = 1 | In isolated mode, the parent and child processes each have their own separate sandbox and network environment.<br>**Since**: 13 |
+| NCP_ISOLATION_MODE_NORMAL = 0 | In normal mode, the parent and child processes share the same sandbox or network environment.<br>**Since**: 13<br><!--Device-NCP_ISOLATION_MODE_NORMAL = 0--><!--Device-NCP_ISOLATION_MODE_NORMAL = 0-End--> |
+| NCP_ISOLATION_MODE_ISOLATED = 1 | In isolated mode, the parent and child processes each have their own separate sandbox and network environment.<br>**Since**: 13<br><!--Device-NCP_ISOLATION_MODE_ISOLATED = 1--><!--Device-NCP_ISOLATION_MODE_ISOLATED = 1-End--> |
 
 
 ## Function description

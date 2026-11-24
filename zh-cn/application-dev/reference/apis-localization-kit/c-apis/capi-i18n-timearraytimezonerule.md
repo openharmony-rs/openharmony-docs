@@ -24,11 +24,11 @@ typedef struct TimeArrayTimeZoneRule {...} TimeArrayTimeZoneRule
 
 | 名称 | 描述 |
 | -- | -- |
-| char* name | 时区规则的名称。 |
-| int32_t rawOffset | 时区的原始偏移量，单位为毫秒（ms）。 |
-| int32_t dstSavings | 夏令时的偏移量，单位为毫秒（ms）。 |
-| double* startTimes | 规则生效的起始时间戳数组，起始时间戳单位为毫秒（ms）。 |
-| int32_t numStartTimes | 规则生效的起始时间戳数组的大小。 |
-| [TimeRuleType](capi-timezone-h.md#timeruletype) timeRuleType | 时间规则类型。 |
+| char* name | 时区规则的名称。<br><!--Device-char* name--><!--Device-char* name-End--> |
+| int32_t rawOffset | 时区的原始偏移量，单位为毫秒（ms）。<br><!--Device-int32_t rawOffset--><!--Device-int32_t rawOffset-End--> |
+| int32_t dstSavings | 夏令时的偏移量，单位为毫秒（ms）。<br><!--Device-int32_t dstSavings--><!--Device-int32_t dstSavings-End--> |
+| double* startTimes | 规则生效的起始时间戳数组，起始时间戳单位为毫秒（ms）。<br><!--Device-double* startTimes--><!--Device-double* startTimes-End--> |
+| int32_t numStartTimes | 规则生效的起始时间戳数组的大小。<br><!--Device-int32_t numStartTimes--><!--Device-int32_t numStartTimes-End--> |
+| [TimeRuleType](capi-timezone-h.md#timeruletype) timeRuleType | 时间规则类型。<br><!--Device-TimeRuleType timeRuleType--><!--Device-TimeRuleType timeRuleType-End--> |
 
 

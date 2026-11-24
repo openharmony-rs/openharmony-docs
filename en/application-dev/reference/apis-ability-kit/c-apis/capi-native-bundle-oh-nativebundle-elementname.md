@@ -24,8 +24,8 @@ The struct describes the elementName information.
 
 | Name | Description |
 | -- | -- |
-| char* bundleName | Pointer to the bundle name of the application.<br>**Since**: 13 |
-| char* moduleName | Pointer to the module name.<br>**Since**: 13 |
-| char* abilityName | Pointer to the ability name.<br>**Since**: 13 |
+| char* bundleName | Pointer to the bundle name of the application.<br>**Since**: 13<br><!--Device-char* bundleName--><!--Device-char* bundleName-End--> |
+| char* moduleName | Pointer to the module name.<br>**Since**: 13<br><!--Device-char* moduleName--><!--Device-char* moduleName-End--> |
+| char* abilityName | Pointer to the ability name.<br>**Since**: 13<br><!--Device-char* abilityName--><!--Device-char* abilityName-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t attachmentCount |  |
-| const VkImageView* pAttachments |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t attachmentCount | <!--Device-uint32_t attachmentCount--><!--Device-uint32_t attachmentCount-End--> |
+| const VkImageView* pAttachments | <!--Device-const VkImageView* pAttachments--><!--Device-const VkImageView* pAttachments-End--> |
 
 

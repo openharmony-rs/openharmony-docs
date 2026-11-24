@@ -37,7 +37,7 @@ enum ArkUI_TextInputType
 
 定义单行文本输入类型枚举值。
 
-<!--Device-ArkUI_TextInputType--><!--Device-ArkUI_TextInputType-End-->
+<!--Device-enum ArkUI_TextInputType--><!--Device-enum ArkUI_TextInputType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,17 +45,17 @@ enum ArkUI_TextInputType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | 基本输入模式，无特殊限制。 |
-| ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | 纯数字输入模式。 |
-| ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。<br>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。 |
-| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | 邮箱地址输入模式。<br>支持数字、字母、下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、{、\|、}、~以及@字符（只能存在一个@字符）。邮箱地址格式需符合基本规范：@字符前为用户名部分，@ 字符后为域名部分。 |
-| ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | 密码输入模式。<br>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。 |
-| ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | 纯数字密码输入模式。<br>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br>TV设备上输入框末尾默认不显示小眼睛图标， 其他设备输入框末尾默认显示小眼睛图标。 |
-| ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | 锁屏应用密码输入模式。支持输入数字、字母、下划线、空格、特殊字符。密码显示小眼睛图标并且默认会将文字变成圆点，从API version 12开始，Wearable设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。 |
-| ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | 用户名输入模式，无特殊限制。<br>在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | 新密码输入模式。<br>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。 |
-| ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | 带小数点的数字输入模式。<br>支持数字，小数点（只能存在一个小数点）。不支持负数（包括负数整数和负数小数）。 |
-| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | 验证码输入模式，无特殊限制。该模式下组件获焦后会默认拉起系统输入法。<br>**起始版本：** 20 |
+| ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | 基本输入模式，无特殊限制。<br><!--Device-ARKUI_TEXTINPUT_TYPE_NORMAL = 0--><!--Device-ARKUI_TEXTINPUT_TYPE_NORMAL = 0-End--> |
+| ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | 纯数字输入模式。<br><!--Device-ARKUI_TEXTINPUT_TYPE_NUMBER = 2--><!--Device-ARKUI_TEXTINPUT_TYPE_NUMBER = 2-End--> |
+| ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。<br>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br><!--Device-ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3--><!--Device-ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3-End--> |
+| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | 邮箱地址输入模式。<br>支持数字、字母、下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、{、\|、}、~以及@字符（只能存在一个@字符）。邮箱地址格式需符合基本规范：@字符前为用户名部分，@ 字符后为域名部分。<br><!--Device-ARKUI_TEXTINPUT_TYPE_EMAIL = 5--><!--Device-ARKUI_TEXTINPUT_TYPE_EMAIL = 5-End--> |
+| ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | 密码输入模式。<br>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br><!--Device-ARKUI_TEXTINPUT_TYPE_PASSWORD = 7--><!--Device-ARKUI_TEXTINPUT_TYPE_PASSWORD = 7-End--> |
+| ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | 纯数字密码输入模式。<br>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br>TV设备上输入框末尾默认不显示小眼睛图标， 其他设备输入框末尾默认显示小眼睛图标。<br><!--Device-ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8--><!--Device-ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8-End--> |
+| ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | 锁屏应用密码输入模式。支持输入数字、字母、下划线、空格、特殊字符。密码显示小眼睛图标并且默认会将文字变成圆点，从API version 12开始，Wearable设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。<br><!--Device-ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9--><!--Device-ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9-End--> |
+| ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | 用户名输入模式，无特殊限制。<br>在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_TYPE_USER_NAME = 10--><!--Device-ARKUI_TEXTINPUT_TYPE_USER_NAME = 10-End--> |
+| ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | 新密码输入模式。<br>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br><!--Device-ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11--><!--Device-ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11-End--> |
+| ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | 带小数点的数字输入模式。<br>支持数字，小数点（只能存在一个小数点）。不支持负数（包括负数整数和负数小数）。<br><!--Device-ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12--><!--Device-ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12-End--> |
+| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | 验证码输入模式，无特殊限制。该模式下组件获焦后会默认拉起系统输入法。<br>**起始版本：** 20<br><!--Device-ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14--><!--Device-ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14-End--> |
 
 ### ArkUI_CancelButtonStyle
 
@@ -67,7 +67,7 @@ enum ArkUI_CancelButtonStyle
 
 定义清除按钮样式枚举值。
 
-<!--Device-ArkUI_CancelButtonStyle--><!--Device-ArkUI_CancelButtonStyle-End-->
+<!--Device-enum ArkUI_CancelButtonStyle--><!--Device-enum ArkUI_CancelButtonStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,9 +75,9 @@ enum ArkUI_CancelButtonStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | 清除按钮常显样式。适用于需要始终显示清除按钮的场景，如搜索框等需要频繁清除内容的输入框。 |
-| ARKUI_CANCELBUTTON_STYLE_INVISIBLE | 清除按钮常隐样式。适用于不需要显示清除按钮的场景。 |
-| ARKUI_CANCELBUTTON_STYLE_INPUT | 清除按钮输入样式。即在有输入内容时显示清除按钮，无输入内容时隐藏清除按钮。适用于按需显示清除按钮的场景，为推荐使用的默认行为。 |
+| ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | 清除按钮常显样式。适用于需要始终显示清除按钮的场景，如搜索框等需要频繁清除内容的输入框。<br><!--Device-ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0--><!--Device-ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0-End--> |
+| ARKUI_CANCELBUTTON_STYLE_INVISIBLE | 清除按钮常隐样式。适用于不需要显示清除按钮的场景。<br><!--Device-ARKUI_CANCELBUTTON_STYLE_INVISIBLE--><!--Device-ARKUI_CANCELBUTTON_STYLE_INVISIBLE-End--> |
+| ARKUI_CANCELBUTTON_STYLE_INPUT | 清除按钮输入样式。即在有输入内容时显示清除按钮，无输入内容时隐藏清除按钮。适用于按需显示清除按钮的场景，为推荐使用的默认行为。<br><!--Device-ARKUI_CANCELBUTTON_STYLE_INPUT--><!--Device-ARKUI_CANCELBUTTON_STYLE_INPUT-End--> |
 
 ### ArkUI_TextInputContentType
 
@@ -89,7 +89,7 @@ enum ArkUI_TextInputContentType
 
 定义自动填充类型。
 
-<!--Device-ArkUI_TextInputContentType--><!--Device-ArkUI_TextInputContentType-End-->
+<!--Device-enum ArkUI_TextInputContentType--><!--Device-enum ArkUI_TextInputContentType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,39 +97,39 @@ enum ArkUI_TextInputContentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_USER_NAME = 0 | 【用户名】在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PASSWORD | 【密码】在已启用密码保险箱的情况下，支持密码的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_NEW_PASSWORD | 【新密码】在已启用密码保险箱的情况下，支持自动生成新密码。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_STREET_ADDRESS | 【详细地址】在已启用情景化自动填充的情况下，支持详细地址的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_HOUSE_NUMBER | 【门牌号】在已启用情景化自动填充的情况下，支持门牌号的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_DISTRICT_ADDRESS | 【区/县】在已启用情景化自动填充的情况下，支持区/县的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_CITY_ADDRESS | 【市】在已启用情景化自动填充的情况下，支持市的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PROVINCE_ADDRESS | 【省】在已启用情景化自动填充的情况下，支持省的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_COUNTRY_ADDRESS | 【国家】在已启用情景化自动填充的情况下，支持国家的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FULL_NAME | 【姓名】在已启用情景化自动填充的情况下，支持姓名的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_LAST_NAME | 【姓氏】在已启用情景化自动填充的情况下，支持姓氏的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FIRST_NAME | 【名字】在已启用情景化自动填充的情况下，支持名字的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_NUMBER | 【手机号】在已启用情景化自动填充的情况下，支持手机号的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_COUNTRY_CODE | 【国家代码】在已启用情景化自动填充的情况下，支持国家代码的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_PHONE_NUMBER | 【包含国家代码的手机号】在已启用情景化自动填充的情况下，支持包含国家代码的手机号的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_EMAIL_ADDRESS | 【邮箱地址】在已启用情景化自动填充的情况下，支持邮箱地址的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_BANK_CARD_NUMBER | 【银行卡号】在已启用情景化自动填充的情况下，支持银行卡号的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ID_CARD_NUMBER | 【身份证号】在已启用情景化自动填充的情况下，支持身份证号的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_NICKNAME | 【昵称】在已启用情景化自动填充的情况下，支持昵称的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_DETAIL_INFO_WITHOUT_STREET | 【无街道地址】在已启用情景化自动填充的情况下，支持无街道地址的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_FORMAT_ADDRESS | 【标准地址】在已启用情景化自动填充的情况下，支持标准地址的自动保存和自动填充。 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PASSPORT_NUMBER | 【护照号】在已启用情景化自动填充的情况下，支持护照号的自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_VALIDITY | 【护照有效期】在已启用情景化自动填充的情况下，支持护照有效期的自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ISSUE_AT | 【护照签发地】在已启用情景化自动填充的情况下，支持护照签发地的自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ORGANIZATION | 【发票抬头名称】在已启用情景化自动填充的情况下，支持发票抬头名称的自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_TAX_ID | 【税号】在已启用情景化自动填充的情况下，支持税号的自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ADDRESS_CITY_AND_STATE | 【所在地区】在已启用情景化自动填充的情况下，支持所在地区的自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_FLIGHT_NUMBER | 【航班号】暂不支持自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_NUMBER | 【驾驶证号】暂不支持自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER | 【驾驶证档案编号】暂不支持自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE | 【车牌号】在已启用情景化自动填充的情况下，支持车牌号的自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER | 【行驶证发动机号】暂不支持自动保存和自动填充。<br>**起始版本：** 18 |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER | 【车架号】暂不支持自动保存和自动填充。<br>**起始版本：** 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_USER_NAME = 0 | 【用户名】在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_USER_NAME = 0--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_USER_NAME = 0-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PASSWORD | 【密码】在已启用密码保险箱的情况下，支持密码的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PASSWORD--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PASSWORD-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_NEW_PASSWORD | 【新密码】在已启用密码保险箱的情况下，支持自动生成新密码。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_NEW_PASSWORD--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_NEW_PASSWORD-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_STREET_ADDRESS | 【详细地址】在已启用情景化自动填充的情况下，支持详细地址的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_STREET_ADDRESS--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_STREET_ADDRESS-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_HOUSE_NUMBER | 【门牌号】在已启用情景化自动填充的情况下，支持门牌号的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_HOUSE_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_HOUSE_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_DISTRICT_ADDRESS | 【区/县】在已启用情景化自动填充的情况下，支持区/县的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_DISTRICT_ADDRESS--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_DISTRICT_ADDRESS-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_CITY_ADDRESS | 【市】在已启用情景化自动填充的情况下，支持市的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_CITY_ADDRESS--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_CITY_ADDRESS-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PROVINCE_ADDRESS | 【省】在已启用情景化自动填充的情况下，支持省的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PROVINCE_ADDRESS--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PROVINCE_ADDRESS-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_COUNTRY_ADDRESS | 【国家】在已启用情景化自动填充的情况下，支持国家的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_COUNTRY_ADDRESS--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_COUNTRY_ADDRESS-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FULL_NAME | 【姓名】在已启用情景化自动填充的情况下，支持姓名的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FULL_NAME--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FULL_NAME-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_LAST_NAME | 【姓氏】在已启用情景化自动填充的情况下，支持姓氏的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_LAST_NAME--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_LAST_NAME-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FIRST_NAME | 【名字】在已启用情景化自动填充的情况下，支持名字的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FIRST_NAME--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PERSON_FIRST_NAME-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_NUMBER | 【手机号】在已启用情景化自动填充的情况下，支持手机号的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_COUNTRY_CODE | 【国家代码】在已启用情景化自动填充的情况下，支持国家代码的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_COUNTRY_CODE--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PHONE_COUNTRY_CODE-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_PHONE_NUMBER | 【包含国家代码的手机号】在已启用情景化自动填充的情况下，支持包含国家代码的手机号的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_PHONE_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FULL_PHONE_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_EMAIL_ADDRESS | 【邮箱地址】在已启用情景化自动填充的情况下，支持邮箱地址的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_EMAIL_ADDRESS--><!--Device-ARKUI_TEXTINPUT_CONTENT_EMAIL_ADDRESS-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_BANK_CARD_NUMBER | 【银行卡号】在已启用情景化自动填充的情况下，支持银行卡号的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_BANK_CARD_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_BANK_CARD_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ID_CARD_NUMBER | 【身份证号】在已启用情景化自动填充的情况下，支持身份证号的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ID_CARD_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ID_CARD_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_NICKNAME | 【昵称】在已启用情景化自动填充的情况下，支持昵称的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_NICKNAME--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_NICKNAME-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_DETAIL_INFO_WITHOUT_STREET | 【无街道地址】在已启用情景化自动填充的情况下，支持无街道地址的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_DETAIL_INFO_WITHOUT_STREET--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_DETAIL_INFO_WITHOUT_STREET-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_FORMAT_ADDRESS | 【标准地址】在已启用情景化自动填充的情况下，支持标准地址的自动保存和自动填充。<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FORMAT_ADDRESS--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FORMAT_ADDRESS-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PASSPORT_NUMBER | 【护照号】在已启用情景化自动填充的情况下，支持护照号的自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PASSPORT_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_PASSPORT_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_VALIDITY | 【护照有效期】在已启用情景化自动填充的情况下，支持护照有效期的自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_VALIDITY--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_VALIDITY-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ISSUE_AT | 【护照签发地】在已启用情景化自动填充的情况下，支持护照签发地的自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ISSUE_AT--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ISSUE_AT-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ORGANIZATION | 【发票抬头名称】在已启用情景化自动填充的情况下，支持发票抬头名称的自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ORGANIZATION--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ORGANIZATION-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_TAX_ID | 【税号】在已启用情景化自动填充的情况下，支持税号的自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_TAX_ID--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_TAX_ID-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ADDRESS_CITY_AND_STATE | 【所在地区】在已启用情景化自动填充的情况下，支持所在地区的自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ADDRESS_CITY_AND_STATE--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ADDRESS_CITY_AND_STATE-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_FLIGHT_NUMBER | 【航班号】暂不支持自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FLIGHT_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_FLIGHT_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_NUMBER | 【驾驶证号】暂不支持自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER | 【驾驶证档案编号】暂不支持自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE | 【车牌号】在已启用情景化自动填充的情况下，支持车牌号的自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER | 【行驶证发动机号】暂不支持自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER-End--> |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER | 【车架号】暂不支持自动保存和自动填充。<br>**起始版本：** 18<br><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER--><!--Device-ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER-End--> |
 
 ### ArkUI_TextInputStyle
 
@@ -141,7 +141,7 @@ enum ArkUI_TextInputStyle
 
 定义输入框风格。
 
-<!--Device-ArkUI_TextInputStyle--><!--Device-ArkUI_TextInputStyle-End-->
+<!--Device-enum ArkUI_TextInputStyle--><!--Device-enum ArkUI_TextInputStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,7 +149,7 @@ enum ArkUI_TextInputStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXTINPUT_STYLE_DEFAULT = 0 | 默认风格，光标宽度为1.5vp，选中底板高度与字体大小相关。适用于大多数输入框场景。 |
-| ARKUI_TEXTINPUT_STYLE_INLINE | 内联输入风格，文本选中底板高度与输入框高度相同。适用于输入框高度固定且需要文本选中底板高度与输入框高度一致的场景，如紧凑布局或内联编辑的输入框。 |
+| ARKUI_TEXTINPUT_STYLE_DEFAULT = 0 | 默认风格，光标宽度为1.5vp，选中底板高度与字体大小相关。适用于大多数输入框场景。<br><!--Device-ARKUI_TEXTINPUT_STYLE_DEFAULT = 0--><!--Device-ARKUI_TEXTINPUT_STYLE_DEFAULT = 0-End--> |
+| ARKUI_TEXTINPUT_STYLE_INLINE | 内联输入风格，文本选中底板高度与输入框高度相同。适用于输入框高度固定且需要文本选中底板高度与输入框高度一致的场景，如紧凑布局或内联编辑的输入框。<br><!--Device-ARKUI_TEXTINPUT_STYLE_INLINE--><!--Device-ARKUI_TEXTINPUT_STYLE_INLINE-End--> |
 
 

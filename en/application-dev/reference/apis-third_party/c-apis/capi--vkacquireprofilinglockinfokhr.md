@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkAcquireProfilingLockFlagsKHR flags |  |
-| uint64_t timeout |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkAcquireProfilingLockFlagsKHR flags | <!--Device-VkAcquireProfilingLockFlagsKHR flags--><!--Device-VkAcquireProfilingLockFlagsKHR flags-End--> |
+| uint64_t timeout | <!--Device-uint64_t timeout--><!--Device-uint64_t timeout-End--> |
 
 

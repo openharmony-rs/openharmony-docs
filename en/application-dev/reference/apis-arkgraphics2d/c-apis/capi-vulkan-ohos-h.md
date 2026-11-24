@@ -35,7 +35,7 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | move to vk_ohos_native_buffer.h(Deprecated in API23) |
+| [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | move to vk_ohos_native_buffer.h(Deprecated) |
 
 ### Macros
 
@@ -53,16 +53,16 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)](#pfn_vkcreatesurfaceohos) | PFN_vkCreateSurfaceOHOS | Defines the function pointer for creating a Vulkan surface. |
-| [typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#pfn_vksetnativefencefdopenharmony) | PFN_vkSetNativeFenceFdOpenHarmony | this type is deprecated, please use PFN_vkAcquireImageOHOS instead(Deprecated in API10) |
-| [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#pfn_vkgetnativefencefdopenharmony) | PFN_vkGetNativeFenceFdOpenHarmony | this type is deprecated, please use PFN_vkQueueSignalReleaseImageOHOS instead(Deprecated in API10) |
-| [typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#pfn_vkgetswapchaingrallocusageohos) | PFN_vkGetSwapchainGrallocUsageOHOS | move to vk_ohos_native_buffer.h(Deprecated in API23) |
-| [typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#pfn_vkacquireimageohos) | PFN_vkAcquireImageOHOS | move to vk_ohos_native_buffer.h(Deprecated in API23) |
-| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#pfn_vkqueuesignalreleaseimageohos) | PFN_vkQueueSignalReleaseImageOHOS | move to vk_ohos_native_buffer.h(Deprecated in API23) |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vksetnativefencefdopenharmony) | - | this interface is deprecated, please use vkAcquireImageOHOS instead(Deprecated in API10) |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkgetnativefencefdopenharmony) | - | this interface is deprecated, please use vkQueueSignalReleaseImageOHOS instead(Deprecated in API10) |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkgetswapchaingrallocusageohos) | - | Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. move to vk_ohos_native_buffer.h(Deprecated in API23) |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkacquireimageohos) | - | Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. move to vk_ohos_native_buffer.h(Deprecated in API23) |
-| [VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkqueuesignalreleaseimageohos) | - | Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. move to vk_ohos_native_buffer.h(Deprecated in API23) |
+| [typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#pfn_vksetnativefencefdopenharmony) | PFN_vkSetNativeFenceFdOpenHarmony | this type is deprecated, please use PFN_vkAcquireImageOHOS instead(Deprecated) |
+| [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#pfn_vkgetnativefencefdopenharmony) | PFN_vkGetNativeFenceFdOpenHarmony | this type is deprecated, please use PFN_vkQueueSignalReleaseImageOHOS instead(Deprecated) |
+| [typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#pfn_vkgetswapchaingrallocusageohos) | PFN_vkGetSwapchainGrallocUsageOHOS | move to vk_ohos_native_buffer.h(Deprecated) |
+| [typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#pfn_vkacquireimageohos) | PFN_vkAcquireImageOHOS | move to vk_ohos_native_buffer.h(Deprecated) |
+| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#pfn_vkqueuesignalreleaseimageohos) | PFN_vkQueueSignalReleaseImageOHOS | move to vk_ohos_native_buffer.h(Deprecated) |
+| [VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vksetnativefencefdopenharmony) | - | this interface is deprecated, please use vkAcquireImageOHOS instead(Deprecated) |
+| [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkgetnativefencefdopenharmony) | - | this interface is deprecated, please use vkQueueSignalReleaseImageOHOS instead(Deprecated) |
+| [VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkgetswapchaingrallocusageohos) | - | Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. move to vk_ohos_native_buffer.h(Deprecated) |
+| [VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkacquireimageohos) | - | Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. move to vk_ohos_native_buffer.h(Deprecated) |
+| [VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkqueuesignalreleaseimageohos) | - | Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. move to vk_ohos_native_buffer.h(Deprecated) |
 | [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)](#pfn_vkgetnativebufferpropertiesohos) | PFN_vkGetNativeBufferPropertiesOHOS | Defines a function pointer used to obtain <b>OH_NativeBuffer</b> properties. |
 | [typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)](#pfn_vkgetmemorynativebufferohos) | PFN_vkGetMemoryNativeBufferOHOS | Defines a function pointer used to obtain an <b>OH_NativeBuffer</b> instance. |
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)](#vkgetnativebufferpropertiesohos) | - | Obtains the properties of an <b>OH_NativeBuffer</b> instance. |
@@ -72,7 +72,7 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 
 | Name | Description |
 | -- | -- |
-| VkFlags VkSurfaceCreateFlagsOHOS | Defines the bit mask of the VkFlags type used for the creation of a Vulkan surface. It is a reserved flag type.<br>**Since**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan |
+| VkFlags VkSurfaceCreateFlagsOHOS | Defines the bit mask of the VkFlags type used for the creation of a Vulkan surface. It is a reserved flag type.<br>**Since**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan<br><!--Device-VkFlags VkSurfaceCreateFlagsOHOS--><!--Device-VkFlags VkSurfaceCreateFlagsOHOS-End--> |
 
 ## Enum type description
 
@@ -86,7 +86,7 @@ enum VkSwapchainImageUsageFlagBitsOHOS
 
 move to vk_ohos_native_buffer.h
 
-<!--Device-VkSwapchainImageUsageFlagBitsOHOS--><!--Device-VkSwapchainImageUsageFlagBitsOHOS-End-->
+<!--Device-enum VkSwapchainImageUsageFlagBitsOHOS--><!--Device-enum VkSwapchainImageUsageFlagBitsOHOS-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -96,8 +96,8 @@ move to vk_ohos_native_buffer.h
 
 | Enum item | Description |
 | -- | -- |
-| VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS = 0x00000001 |  |
-| VK_SWAPCHAIN_IMAGE_USAGE_FLAG_BITS_MAX_ENUM_OHOS = 0x7FFFFFFF |  |
+| VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS = 0x00000001 | <!--Device-VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS = 0x00000001--><!--Device-VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS = 0x00000001-End--> |
+| VK_SWAPCHAIN_IMAGE_USAGE_FLAG_BITS_MAX_ENUM_OHOS = 0x7FFFFFFF | <!--Device-VK_SWAPCHAIN_IMAGE_USAGE_FLAG_BITS_MAX_ENUM_OHOS = 0x7FFFFFFF--><!--Device-VK_SWAPCHAIN_IMAGE_USAGE_FLAG_BITS_MAX_ENUM_OHOS = 0x7FFFFFFF-End--> |
 
 
 ## Function description

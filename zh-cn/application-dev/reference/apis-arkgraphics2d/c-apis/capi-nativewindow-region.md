@@ -24,11 +24,10 @@ typedef struct Region {...} Region
 
 | 名称 | 描述 |
 | -- | -- |
-| rects | 如果rects是空指针nullptr，默认Buffer大小为脏区 |
-| rects.x |  |
-| rects.y |  |
-| rects.w |  |
-| rects.h |  |
-| int32_t rectNumber | 如果rectNumber是0，默认Buffer大小为脏区 |
+| rects.x | <!--Device-rects.x--><!--Device-rects.x-End--> |
+| rects.y | <!--Device-rects.y--><!--Device-rects.y-End--> |
+| rects.w | <!--Device-rects.w--><!--Device-rects.w-End--> |
+| rects.h | <!--Device-rects.h--><!--Device-rects.h-End--> |
+| int32_t rectNumber | 如果rectNumber是0，默认Buffer大小为脏区<br><!--Device-int32_t rectNumber--><!--Device-int32_t rectNumber-End--> |
 
 

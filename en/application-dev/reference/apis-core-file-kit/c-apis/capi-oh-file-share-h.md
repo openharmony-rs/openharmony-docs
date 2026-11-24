@@ -51,7 +51,7 @@ enum FileShare_OperationMode
 
 Enumerates the uri operate mode types.
 
-<!--Device-FileShare_OperationMode--><!--Device-FileShare_OperationMode-End-->
+<!--Device-enum FileShare_OperationMode--><!--Device-enum FileShare_OperationMode-End-->
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -59,8 +59,8 @@ Enumerates the uri operate mode types.
 
 | Enum item | Description |
 | -- | -- |
-| READ_MODE = 1 << 0 | Indicates read permissions. |
-| WRITE_MODE = 1 << 1 | Indicates write permissions. |
+| READ_MODE = 1 << 0 | Indicates read permissions.<br><!--Device-READ_MODE = 1 << 0--><!--Device-READ_MODE = 1 << 0-End--> |
+| WRITE_MODE = 1 << 1 | Indicates write permissions.<br><!--Device-WRITE_MODE = 1 << 1--><!--Device-WRITE_MODE = 1 << 1-End--> |
 
 ### FileShare_PolicyErrorCode
 
@@ -72,7 +72,7 @@ enum FileShare_PolicyErrorCode
 
 Enumerates the error code of the permission policy for the URI operation.
 
-<!--Device-FileShare_PolicyErrorCode--><!--Device-FileShare_PolicyErrorCode-End-->
+<!--Device-enum FileShare_PolicyErrorCode--><!--Device-enum FileShare_PolicyErrorCode-End-->
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -80,10 +80,10 @@ Enumerates the error code of the permission policy for the URI operation.
 
 | Enum item | Description |
 | -- | -- |
-| PERSISTENCE_FORBIDDEN = 1 | Indicates that the policy is not allowed to be persisted. |
-| INVALID_MODE = 2 | Indicates that the mode of this policy is invalid. |
-| INVALID_PATH = 3 | Indicates that the path of this policy is invalid. |
-| PERMISSION_NOT_PERSISTED = 4 | Indicates that the policy is no persistent capability. |
+| PERSISTENCE_FORBIDDEN = 1 | Indicates that the policy is not allowed to be persisted.<br><!--Device-PERSISTENCE_FORBIDDEN = 1--><!--Device-PERSISTENCE_FORBIDDEN = 1-End--> |
+| INVALID_MODE = 2 | Indicates that the mode of this policy is invalid.<br><!--Device-INVALID_MODE = 2--><!--Device-INVALID_MODE = 2-End--> |
+| INVALID_PATH = 3 | Indicates that the path of this policy is invalid.<br><!--Device-INVALID_PATH = 3--><!--Device-INVALID_PATH = 3-End--> |
+| PERMISSION_NOT_PERSISTED = 4 | Indicates that the policy is no persistent capability.<br><!--Device-PERMISSION_NOT_PERSISTED = 4--><!--Device-PERMISSION_NOT_PERSISTED = 4-End--> |
 
 
 ## Function description

@@ -24,15 +24,15 @@ Defines the callback type for when the animation playback is complete, which is 
 
 | Name | Description |
 | -- | -- |
-| ArkUI_FinishCallbackType type | Callback type for when the animation playback is complete, used to specify how the callback is triggered. The value options are as follows: **ARKUI_FINISH_CALLBACK_REMOVED(0)** indicates that the callback is triggered when the animation ends and is removed immediately, and **ARKUI_FINISH_CALLBACK_LOGICALLY(1)** indicates that the callback is triggered when the animation playback is logically complete (it may still be in the tailing state). Different callback types are triggered at different times. Select an appropriate type based on the service scenario. If **type** is not explicitly set, **ARKUI_FINISH_CALLBACK_REMOVED** is used. |
-| void* userData | Pointer to the user-defined data passed upon animation end callback. Ensure that **userData** is still valid when the animation completion callback is triggered to avoid undefined behavior caused by a dangling pointer. If this parameter is set to **NULL**, the callback function will not receive the **userData** parameter. |
+| ArkUI_FinishCallbackType type | Callback type for when the animation playback is complete, used to specify how the callback is triggered. The value options are as follows: **ARKUI_FINISH_CALLBACK_REMOVED(0)** indicates that the callback is triggered when the animation ends and is removed immediately, and **ARKUI_FINISH_CALLBACK_LOGICALLY(1)** indicates that the callback is triggered when the animation playback is logically complete (it may still be in the tailing state). Different callback types are triggered at different times. Select an appropriate type based on the service scenario. If **type** is not explicitly set, **ARKUI_FINISH_CALLBACK_REMOVED** is used.<br><!--Device-ArkUI_FinishCallbackType type--><!--Device-ArkUI_FinishCallbackType type-End--> |
+| void* userData | Pointer to the user-defined data passed upon animation end callback. Ensure that **userData** is still valid when the animation completion callback is triggered to avoid undefined behavior caused by a dangling pointer. If this parameter is set to **NULL**, the callback function will not receive the **userData** parameter.<br><!--Device-void* userData--><!--Device-void* userData-End--> |
 
 
 ### Member functions
 
 | Name | Description |
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) | - | Invoked when the animation playback is complete. It is used together with **type** and **userData**. The **type**<br>parameter determines the timing type for triggering the callback, and the callback function receives **userData**<br>as an input parameter. After this callback is set, it is automatically invoked when the animation playback ends. You can execute custom logic in the callback through the **userData** parameter, such as updating the UI state or handling subsequent operations after the animation playback is complete. |
+| [void (\*callback)(void* userData)](#callback) | Invoked when the animation playback is complete. It is used together with **type** and **userData**. The **type** parameter determines the timing type for triggering the callback, and the callback function receives **userData** as an input parameter. After this callback is set, it is automatically invoked when the animation playback ends. You can execute custom logic in the callback through the **userData** parameter, such as updating the UI state or handling subsequent operations after the animation playback is complete. |
 
 ## Member function description
 
@@ -44,7 +44,7 @@ void (*callback)(void* userData)
 
 **Description**
 
-Invoked when the animation playback is complete. It is used together with **type** and **userData**. The **type**<br>parameter determines the timing type for triggering the callback, and the callback function receives **userData**<br>as an input parameter. After this callback is set, it is automatically invoked when the animation playback ends. You can execute custom logic in the callback through the **userData** parameter, such as updating the UI state or handling subsequent operations after the animation playback is complete.
+Invoked when the animation playback is complete. It is used together with **type** and **userData**. The **type** parameter determines the timing type for triggering the callback, and the callback function receives **userData** as an input parameter. After this callback is set, it is automatically invoked when the animation playback ends. You can execute custom logic in the callback through the **userData** parameter, such as updating the UI state or handling subsequent operations after the animation playback is complete.
 
 <!--Device-void (*callback)(void* userData)--><!--Device-void (*callback)(void* userData)-End-->
 

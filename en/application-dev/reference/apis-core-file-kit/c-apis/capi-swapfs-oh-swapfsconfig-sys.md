@@ -26,8 +26,8 @@ Configuration for creating a swapfs manager.
 
 | Name | Description |
 | -- | -- |
-| const char *swapRootPath | Base path for swap data storage. Swapfs uses the fixed "swapfs" child directory. When NULL or empty, a default temporary base path under the application sandbox is used.<br>**Since**: 26.0.0 |
-| uint64_t spaceLimitBytes | Maximum swap space in bytes. When 0, the default limit is 1GB (1073741824).<br>**Since**: 26.0.0 |
-| bool useDirectIo | Whether to enforce Direct IO for swap-out operations. When false, buffered IO is used; when true, Direct IO is required and misaligned buffers will cause an error.<br>**Since**: 26.0.0 |
+| const char *swapRootPath | Base path for swap data storage. Swapfs uses the fixed "swapfs" child directory. When NULL or empty, a default temporary base path under the application sandbox is used.<br>**Since**: 26.0.0<br><!--Device-const char *swapRootPath--><!--Device-const char *swapRootPath-End--> |
+| uint64_t spaceLimitBytes | Maximum swap space in bytes. When 0, the default limit is 1GB (1073741824).<br>**Since**: 26.0.0<br><!--Device-uint64_t spaceLimitBytes--><!--Device-uint64_t spaceLimitBytes-End--> |
+| bool useDirectIo | Whether to enforce Direct IO for swap-out operations. When false, buffered IO is used; when true, Direct IO is required and misaligned buffers will cause an error.<br>**Since**: 26.0.0<br><!--Device-bool useDirectIo--><!--Device-bool useDirectIo-End--> |
 
 

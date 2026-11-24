@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t data |  |
+| uint32_t data | <!--Device-uint32_t data--><!--Device-uint32_t data-End--> |
 
 

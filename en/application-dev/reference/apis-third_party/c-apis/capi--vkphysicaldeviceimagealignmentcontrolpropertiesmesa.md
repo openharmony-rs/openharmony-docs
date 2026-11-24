@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t supportedImageAlignmentMask |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t supportedImageAlignmentMask | <!--Device-uint32_t supportedImageAlignmentMask--><!--Device-uint32_t supportedImageAlignmentMask-End--> |
 
 

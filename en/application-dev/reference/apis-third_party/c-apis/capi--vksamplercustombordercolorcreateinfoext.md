@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkClearColorValue](capi--vkclearcolorvalue.md) customBorderColor |  |
-| VkFormat format |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkClearColorValue](capi--vkclearcolorvalue.md) customBorderColor | <!--Device-VkClearColorValue customBorderColor--><!--Device-VkClearColorValue customBorderColor-End--> |
+| VkFormat format | <!--Device-VkFormat format--><!--Device-VkFormat format-End--> |
 
 

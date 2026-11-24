@@ -24,6 +24,6 @@ typedef struct CameraInput_Callbacks {...} CameraInput_Callbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_CameraInput_OnError](capi-camera-input-h.md#oh_camerainput_onerror) onError | 相机输入错误事件。 |
+| [OH_CameraInput_OnError](capi-camera-input-h.md#oh_camerainput_onerror) onError | 相机输入错误事件。<br><!--Device-OH_CameraInput_OnError onError--><!--Device-OH_CameraInput_OnError onError-End--> |
 
 

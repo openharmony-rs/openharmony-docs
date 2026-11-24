@@ -61,7 +61,7 @@ enum Data_AssetStatus
 
 Describes the status of asset.
 
-<!--Device-Data_AssetStatus--><!--Device-Data_AssetStatus-End-->
+<!--Device-enum Data_AssetStatus--><!--Device-enum Data_AssetStatus-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -69,13 +69,13 @@ Describes the status of asset.
 
 | Enum item | Description |
 | -- | -- |
-| ASSET_NULL = 0 | Means the status of asset is null. |
-| ASSET_NORMAL | Means the status of asset is normal. |
-| ASSET_INSERT | Means the asset needs to be inserted. |
-| ASSET_UPDATE | Means the asset needs to be updated. |
-| ASSET_DELETE | Means the asset needs to be deleted. |
-| ASSET_ABNORMAL | Means the status of asset is abnormal. |
-| ASSET_DOWNLOADING | Means the status of asset is downloading. |
+| ASSET_NULL = 0 | Means the status of asset is null.<br><!--Device-ASSET_NULL = 0--><!--Device-ASSET_NULL = 0-End--> |
+| ASSET_NORMAL | Means the status of asset is normal.<br><!--Device-ASSET_NORMAL--><!--Device-ASSET_NORMAL-End--> |
+| ASSET_INSERT | Means the asset needs to be inserted.<br><!--Device-ASSET_INSERT--><!--Device-ASSET_INSERT-End--> |
+| ASSET_UPDATE | Means the asset needs to be updated.<br><!--Device-ASSET_UPDATE--><!--Device-ASSET_UPDATE-End--> |
+| ASSET_DELETE | Means the asset needs to be deleted.<br><!--Device-ASSET_DELETE--><!--Device-ASSET_DELETE-End--> |
+| ASSET_ABNORMAL | Means the status of asset is abnormal.<br><!--Device-ASSET_ABNORMAL--><!--Device-ASSET_ABNORMAL-End--> |
+| ASSET_DOWNLOADING | Means the status of asset is downloading.<br><!--Device-ASSET_DOWNLOADING--><!--Device-ASSET_DOWNLOADING-End--> |
 
 
 ## Function description

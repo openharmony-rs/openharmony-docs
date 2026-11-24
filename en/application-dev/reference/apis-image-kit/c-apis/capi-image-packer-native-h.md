@@ -33,7 +33,7 @@ The file declares the APIs for image encoding.
 | Name | Description |
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | Creates the pointer to an OH_PackingOptions struct. |
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution. |
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Gets the MIME type in the encoding parameter. The format.data obtained through this interface does not contain the character string terminator '\ 0'. Exercise caution when running this command. <br>Restriction: Both options and format cannot be null pointers. If the value of format->size is not 0, the value of format->size must be greater than or equal to the length of the current MIME type. When the interface returns a failure, format.data should not be read. <br>Resource management: After the interface is successfully executed, the format.data is allocated by the interface. After the interface is used, the caller should use free() to release the format.data. The format.data returned by this interface does not end with the character string terminator '\ 0'. To process the character string as a C character string, you are advised to use [OH_PackingOptions_GetMimeTypeWithNull](capi-image-packer-native-h.md#oh_packingoptions_getmimetypewithnull). |
 | [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | Obtains the MIME type in the packing options. The output **format.data** ends with the string terminator **\0**. |
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | Sets the MIME type. |
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | Obtains the encoding quality. |
@@ -77,7 +77,7 @@ enum IMAGE_PACKER_DYNAMIC_RANGE
 
 Enumerates the dynamic range for encoding.
 
-<!--Device-IMAGE_PACKER_DYNAMIC_RANGE--><!--Device-IMAGE_PACKER_DYNAMIC_RANGE-End-->
+<!--Device-enum IMAGE_PACKER_DYNAMIC_RANGE--><!--Device-enum IMAGE_PACKER_DYNAMIC_RANGE-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -85,8 +85,8 @@ Enumerates the dynamic range for encoding.
 
 | Enum item | Description |
 | -- | -- |
-| IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0 | Packing according to the content of the image. |
-| IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1 | Packing to standard dynamic range. |
+| IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0 | Packing according to the content of the image.<br><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0--><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_AUTO = 0-End--> |
+| IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1 | Packing to standard dynamic range.<br><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1--><!--Device-IMAGE_PACKER_DYNAMIC_RANGE_SDR = 1-End--> |
 
 
 ## Function description
@@ -129,7 +129,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_
 
 **Description**
 
-Obtains the MIME type. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
+Gets the MIME type in the encoding parameter. The format.data obtained through this interface does not contain the character string terminator '\ 0'. Exercise caution when running this command. <br>Restriction: Both options and format cannot be null pointers. If the value of format->size is not 0, the value of format->size must be greater than or equal to the length of the current MIME type. When the interface returns a failure, format.data should not be read. <br>Resource management: After the interface is successfully executed, the format.data is allocated by the interface. After the interface is used, the caller should use free() to release the format.data. The format.data returned by this interface does not end with the character string terminator '\ 0'. To process the character string as a C character string, you are advised to use [OH_PackingOptions_GetMimeTypeWithNull](capi-image-packer-native-h.md#oh_packingoptions_getmimetypewithnull).
 
 <!--Device-Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)--><!--Device-Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)-End-->
 
@@ -141,14 +141,14 @@ Obtains the MIME type. **value.data** obtained through this API lacks the string
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct. |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the MIME type. You can pass in a null pointer with the size set to zero. In this case, the system will allocate memory, but you must release the memory after use. |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to OH_PackingOptions to be operated. |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Image format. The format does not need to be manually initialized. The system allocates memory, but the memory must be released after use. <br>The format.data obtained through this interface does not contain the character string terminator '\ 0'. Check whether the actual data length exceeds the length of the applied buffer. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or format is nullptr. <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) allocate memory failed. <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) copy memory failed |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) Execution succeeded. </li> <li>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) The parameter is incorrect. </li> <li>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) Memory allocation failed. </li> <li>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) Memory copy failed. </li> </ul> |
 
 ### OH_PackingOptions_GetMimeTypeWithNull()
 

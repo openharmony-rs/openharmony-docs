@@ -79,9 +79,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *OH_SCREEN_CAPTURE_CONTENT_RECT | 获取录屏图像帧中有效内容区域信息的key。<br> 通过此key获取到的返回值是一个int32_t数组，单位为像素（px）。 数组长度为4。数组元素定义为[top, left, width, height]，其中top表示矩形窗口左上角纵坐标，left表示矩形窗口左上角横坐标， width表示矩形窗口的宽度，height表示矩形窗口的高度。数组元素可以从[OH_AVFormat_GetIntBuffer](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_getintbuffer)中获取。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| uint32_t OH_AVScreenCapture_AutoPauseSceneSet | 屏幕录制自动暂停场景条件集声明。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| typedef uint32_t OH_AVScreenCapture_AutoPauseSceneSet | 屏幕录制自动暂停场景条件集声明。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
+| const char *OH_SCREEN_CAPTURE_CONTENT_RECT | 获取录屏图像帧中有效内容区域信息的key。<br> 通过此key获取到的返回值是一个int32_t数组，单位为像素（px）。 数组长度为4。数组元素定义为[top, left, width, height]，其中top表示矩形窗口左上角纵坐标，left表示矩形窗口左上角横坐标， width表示矩形窗口的宽度，height表示矩形窗口的高度。数组元素可以从[OH_AVFormat_GetIntBuffer](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_getintbuffer)中获取。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture<br><!--Device-const char *OH_SCREEN_CAPTURE_CONTENT_RECT--><!--Device-const char *OH_SCREEN_CAPTURE_CONTENT_RECT-End--> |
+| uint32_t OH_AVScreenCapture_AutoPauseSceneSet | 屏幕录制自动暂停场景条件集声明。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture<br><!--Device-uint32_t OH_AVScreenCapture_AutoPauseSceneSet--><!--Device-uint32_t OH_AVScreenCapture_AutoPauseSceneSet-End--> |
+| typedef uint32_t OH_AVScreenCapture_AutoPauseSceneSet | 屏幕录制自动暂停场景条件集声明。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture<br><!--Device-typedef uint32_t OH_AVScreenCapture_AutoPauseSceneSet--><!--Device-typedef uint32_t OH_AVScreenCapture_AutoPauseSceneSet-End--> |
 
 ## 枚举类型说明
 
@@ -95,7 +95,7 @@ enum OH_CaptureMode
 
 枚举，表示屏幕录制的不同模式。
 
-<!--Device-OH_CaptureMode--><!--Device-OH_CaptureMode-End-->
+<!--Device-enum OH_CaptureMode--><!--Device-enum OH_CaptureMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -103,11 +103,11 @@ enum OH_CaptureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。适用于全屏录制场景。 |
-| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。适用于多屏环境下选择特定屏幕的场景。 使用此模式需在[OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md)中指定屏幕ID（displayId）。 |
-| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。适用于仅录制单个应用窗口的场景。 使用此模式需在[OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md)中指定窗口ID（missionIDs）。 |
-| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 录制虚拟扩展屏幕。创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.0.1 |
-| OH_CAPTURE_INVAILD = -1 | 无效模式。 |
+| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。适用于全屏录制场景。<br><!--Device-OH_CAPTURE_HOME_SCREEN = 0--><!--Device-OH_CAPTURE_HOME_SCREEN = 0-End--> |
+| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。适用于多屏环境下选择特定屏幕的场景。 使用此模式需在[OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md)中指定屏幕ID（displayId）。<br><!--Device-OH_CAPTURE_SPECIFIED_SCREEN = 1--><!--Device-OH_CAPTURE_SPECIFIED_SCREEN = 1-End--> |
+| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。适用于仅录制单个应用窗口的场景。 使用此模式需在[OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md)中指定窗口ID（missionIDs）。<br><!--Device-OH_CAPTURE_SPECIFIED_WINDOW = 2--><!--Device-OH_CAPTURE_SPECIFIED_WINDOW = 2-End--> |
+| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 录制虚拟扩展屏幕。创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.0.1<br><!--Device-OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3--><!--Device-OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3-End--> |
+| OH_CAPTURE_INVAILD = -1 | 无效模式。<br><!--Device-OH_CAPTURE_INVAILD = -1--><!--Device-OH_CAPTURE_INVAILD = -1-End--> |
 
 ### OH_AudioCaptureSourceType
 
@@ -119,7 +119,7 @@ enum OH_AudioCaptureSourceType
 
 枚举，表示屏幕录制时的音频源类型。<br> 适用于不同的音频录制需求：OH_MIC适用于需要录制外部声音（如解说、旁白）的场景；OH_ALL_PLAYBACK适用于需要录制系统播放的所有 内部音频流（如系统音效、应用音频）的场景；OH_APP_PLAYBACK适用于需要仅录制指定应用播放音频的场景。
 
-<!--Device-OH_AudioCaptureSourceType--><!--Device-OH_AudioCaptureSourceType-End-->
+<!--Device-enum OH_AudioCaptureSourceType--><!--Device-enum OH_AudioCaptureSourceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -127,11 +127,11 @@ enum OH_AudioCaptureSourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SOURCE_INVALID = -1 | 无效音频源。 |
-| OH_SOURCE_DEFAULT = 0 | 默认音频源，默认为麦克风。 |
-| OH_MIC = 1 | 麦克风录制的外部音频流。 |
-| OH_ALL_PLAYBACK = 2 | 系统播放的所有内部音频流。 |
-| OH_APP_PLAYBACK = 3 | 指定应用播放的内部音频流。 |
+| OH_SOURCE_INVALID = -1 | 无效音频源。<br><!--Device-OH_SOURCE_INVALID = -1--><!--Device-OH_SOURCE_INVALID = -1-End--> |
+| OH_SOURCE_DEFAULT = 0 | 默认音频源，默认为麦克风。<br><!--Device-OH_SOURCE_DEFAULT = 0--><!--Device-OH_SOURCE_DEFAULT = 0-End--> |
+| OH_MIC = 1 | 麦克风录制的外部音频流。<br><!--Device-OH_MIC = 1--><!--Device-OH_MIC = 1-End--> |
+| OH_ALL_PLAYBACK = 2 | 系统播放的所有内部音频流。<br><!--Device-OH_ALL_PLAYBACK = 2--><!--Device-OH_ALL_PLAYBACK = 2-End--> |
+| OH_APP_PLAYBACK = 3 | 指定应用播放的内部音频流。<br><!--Device-OH_APP_PLAYBACK = 3--><!--Device-OH_APP_PLAYBACK = 3-End--> |
 
 ### OH_AudioCodecFormat
 
@@ -143,7 +143,7 @@ enum OH_AudioCodecFormat
 
 枚举，表示音频编码格式。<br> OH_AUDIO_DEFAULT为默认编码，适用于大多数音视频录制场景；OH_AAC_LC为AAC_LC编码， 适用于需要较好音质和较小文件大小的通用音视频应用场景。
 
-<!--Device-OH_AudioCodecFormat--><!--Device-OH_AudioCodecFormat-End-->
+<!--Device-enum OH_AudioCodecFormat--><!--Device-enum OH_AudioCodecFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -151,9 +151,9 @@ enum OH_AudioCodecFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AUDIO_DEFAULT = 0 | 默认音频编码，默认为AAC_LC。 |
-| OH_AAC_LC = 3 | AAC_LC音频编码。 |
-| OH_AUDIO_CODEC_FORMAT_BUTT | 无效格式。 |
+| OH_AUDIO_DEFAULT = 0 | 默认音频编码，默认为AAC_LC。<br><!--Device-OH_AUDIO_DEFAULT = 0--><!--Device-OH_AUDIO_DEFAULT = 0-End--> |
+| OH_AAC_LC = 3 | AAC_LC音频编码。<br><!--Device-OH_AAC_LC = 3--><!--Device-OH_AAC_LC = 3-End--> |
+| OH_AUDIO_CODEC_FORMAT_BUTT | 无效格式。<br><!--Device-OH_AUDIO_CODEC_FORMAT_BUTT--><!--Device-OH_AUDIO_CODEC_FORMAT_BUTT-End--> |
 
 ### OH_VideoCodecFormat
 
@@ -165,7 +165,7 @@ enum OH_VideoCodecFormat
 
 枚举，表示视频编码格式。
 
-<!--Device-OH_VideoCodecFormat--><!--Device-OH_VideoCodecFormat-End-->
+<!--Device-enum OH_VideoCodecFormat--><!--Device-enum OH_VideoCodecFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -173,13 +173,13 @@ enum OH_VideoCodecFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_VIDEO_DEFAULT = 0 | 默认视频编码，默认为H.264。 |
-| OH_H264 = 2 | H.264。适用于大多数录制场景，兼容性最好，是最广泛支持的视频编码格式。 |
-| OH_H265 = 4 | H.265/HEVC。适用于对压缩效率要求高的场景，相同画质下文件更小，但兼容性低于H.264。 |
-| OH_MPEG4 = 6 | MPEG4。适用于对兼容性要求不高的场景，压缩效率低于H.264/H.265。 |
-| OH_VP8 = 8 | VP8。适用于Web场景的开源编码格式，兼容性有限。 |
-| OH_VP9 = 10 | VP9。适用于Web高清场景的开源编码格式，压缩效率优于VP8，兼容性有限。 |
-| OH_VIDEO_CODEC_FORMAT_BUTT | 无效格式。 |
+| OH_VIDEO_DEFAULT = 0 | 默认视频编码，默认为H.264。<br><!--Device-OH_VIDEO_DEFAULT = 0--><!--Device-OH_VIDEO_DEFAULT = 0-End--> |
+| OH_H264 = 2 | H.264。适用于大多数录制场景，兼容性最好，是最广泛支持的视频编码格式。<br><!--Device-OH_H264 = 2--><!--Device-OH_H264 = 2-End--> |
+| OH_H265 = 4 | H.265/HEVC。适用于对压缩效率要求高的场景，相同画质下文件更小，但兼容性低于H.264。<br><!--Device-OH_H265 = 4--><!--Device-OH_H265 = 4-End--> |
+| OH_MPEG4 = 6 | MPEG4。适用于对兼容性要求不高的场景，压缩效率低于H.264/H.265。<br><!--Device-OH_MPEG4 = 6--><!--Device-OH_MPEG4 = 6-End--> |
+| OH_VP8 = 8 | VP8。适用于Web场景的开源编码格式，兼容性有限。<br><!--Device-OH_VP8 = 8--><!--Device-OH_VP8 = 8-End--> |
+| OH_VP9 = 10 | VP9。适用于Web高清场景的开源编码格式，压缩效率优于VP8，兼容性有限。<br><!--Device-OH_VP9 = 10--><!--Device-OH_VP9 = 10-End--> |
+| OH_VIDEO_CODEC_FORMAT_BUTT | 无效格式。<br><!--Device-OH_VIDEO_CODEC_FORMAT_BUTT--><!--Device-OH_VIDEO_CODEC_FORMAT_BUTT-End--> |
 
 ### OH_DataType
 
@@ -191,7 +191,7 @@ enum OH_DataType
 
 枚举，表示屏幕录制流的数据格式。<br> 根据使用需求选择合适的数据格式：原始流格式适用于需要实时处理音视频数据的场景（如实时预览、流式传输）； 保存文件格式适用于直接录制为文件的场景。<br> 当前仅支持原始流格式和保存文件格式。
 
-<!--Device-OH_DataType--><!--Device-OH_DataType-End-->
+<!--Device-enum OH_DataType--><!--Device-enum OH_DataType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -199,10 +199,10 @@ enum OH_DataType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ORIGINAL_STREAM = 0 | 原始流格式，如YUV/RGBA/PCM等。 |
-| OH_ENCODED_STREAM = 1 | 编码流格式，如H.264/AAC等。当前版本暂不支持。 |
-| OH_CAPTURE_FILE = 2 | 保存文件格式，支持mp4。 |
-| OH_INVAILD = -1 | 无效格式。 |
+| OH_ORIGINAL_STREAM = 0 | 原始流格式，如YUV/RGBA/PCM等。<br><!--Device-OH_ORIGINAL_STREAM = 0--><!--Device-OH_ORIGINAL_STREAM = 0-End--> |
+| OH_ENCODED_STREAM = 1 | 编码流格式，如H.264/AAC等。当前版本暂不支持。<br><!--Device-OH_ENCODED_STREAM = 1--><!--Device-OH_ENCODED_STREAM = 1-End--> |
+| OH_CAPTURE_FILE = 2 | 保存文件格式，支持mp4。<br><!--Device-OH_CAPTURE_FILE = 2--><!--Device-OH_CAPTURE_FILE = 2-End--> |
+| OH_INVAILD = -1 | 无效格式。<br><!--Device-OH_INVAILD = -1--><!--Device-OH_INVAILD = -1-End--> |
 
 ### OH_VideoSourceType
 
@@ -214,7 +214,7 @@ enum OH_VideoSourceType
 
 枚举，表示视频源格式。此枚举类型当前仅支持RGBA格式。
 
-<!--Device-OH_VideoSourceType--><!--Device-OH_VideoSourceType-End-->
+<!--Device-enum OH_VideoSourceType--><!--Device-enum OH_VideoSourceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -222,10 +222,10 @@ enum OH_VideoSourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_VIDEO_SOURCE_SURFACE_YUV = 0 | YUV格式。当前版本暂不支持。 |
-| OH_VIDEO_SOURCE_SURFACE_ES | raw格式。当前版本暂不支持。 |
-| OH_VIDEO_SOURCE_SURFACE_RGBA | RGBA格式。 |
-| OH_VIDEO_SOURCE_BUTT | 无效格式。 |
+| OH_VIDEO_SOURCE_SURFACE_YUV = 0 | YUV格式。当前版本暂不支持。<br><!--Device-OH_VIDEO_SOURCE_SURFACE_YUV = 0--><!--Device-OH_VIDEO_SOURCE_SURFACE_YUV = 0-End--> |
+| OH_VIDEO_SOURCE_SURFACE_ES | raw格式。当前版本暂不支持。<br><!--Device-OH_VIDEO_SOURCE_SURFACE_ES--><!--Device-OH_VIDEO_SOURCE_SURFACE_ES-End--> |
+| OH_VIDEO_SOURCE_SURFACE_RGBA | RGBA格式。<br><!--Device-OH_VIDEO_SOURCE_SURFACE_RGBA--><!--Device-OH_VIDEO_SOURCE_SURFACE_RGBA-End--> |
+| OH_VIDEO_SOURCE_BUTT | 无效格式。<br><!--Device-OH_VIDEO_SOURCE_BUTT--><!--Device-OH_VIDEO_SOURCE_BUTT-End--> |
 
 ### OH_ContainerFormatType
 
@@ -237,7 +237,7 @@ enum OH_ContainerFormatType
 
 枚举，表示屏幕录制生成的文件类型。<br> 适用于不同的文件输出需求：CFT_MPEG_4A为音频格式m4a，适用于仅需要录制音频的场景；CFT_MPEG_4为视频格式mp4， 适用于需要同时录制音视频的场景。
 
-<!--Device-OH_ContainerFormatType--><!--Device-OH_ContainerFormatType-End-->
+<!--Device-enum OH_ContainerFormatType--><!--Device-enum OH_ContainerFormatType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -245,8 +245,8 @@ enum OH_ContainerFormatType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CFT_MPEG_4A = 0 | 音频格式 m4a。 |
-| CFT_MPEG_4 = 1 | 视频格式 mp4。 |
+| CFT_MPEG_4A = 0 | 音频格式 m4a。<br><!--Device-CFT_MPEG_4A = 0--><!--Device-CFT_MPEG_4A = 0-End--> |
+| CFT_MPEG_4 = 1 | 视频格式 mp4。<br><!--Device-CFT_MPEG_4 = 1--><!--Device-CFT_MPEG_4 = 1-End--> |
 
 ### OH_AVScreenCaptureStateCode
 
@@ -258,7 +258,7 @@ enum OH_AVScreenCaptureStateCode
 
 枚举，表示状态码。<br> 状态码反映了录屏的生命周期变化，包括开始、暂停、恢复、停止、中断及隐私场景切换等状态， 状态变更通过OH_AVScreenCapture_OnStateChange回调通知应用。
 
-<!--Device-OH_AVScreenCaptureStateCode--><!--Device-OH_AVScreenCaptureStateCode-End-->
+<!--Device-enum OH_AVScreenCaptureStateCode--><!--Device-enum OH_AVScreenCaptureStateCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -266,21 +266,21 @@ enum OH_AVScreenCaptureStateCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SCREEN_CAPTURE_STATE_STARTED = 0 | 已开始录屏。 |
-| OH_SCREEN_CAPTURE_STATE_CANCELED = 1 | 已取消录屏。 |
-| OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER = 2 | 已停止录屏。 |
-| OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER = 3 | 录屏被其他录屏中断。 |
-| OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL = 4 | 录屏被通话中断。 |
-| OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE = 5 | 麦克风不可用。 |
-| OH_SCREEN_CAPTURE_STATE_MIC_MUTED_BY_USER = 6 | 麦克风被静音。 |
-| OH_SCREEN_CAPTURE_STATE_MIC_UNMUTED_BY_USER = 7 | 麦克风被取消静音。 |
-| OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8 | 进入隐私界面。 |
-| OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9 | 隐私界面退出。 |
-| OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10 | 系统用户切换，录屏中断。 |
-| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11 | 录屏已由用户暂停。<br>**起始版本：** 26.0.0 |
-| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12 | 录屏已由用户恢复。<br>**起始版本：** 26.0.0 |
-| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13 | 录屏已由应用程序暂停。<br>**起始版本：** 26.0.0 |
-| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14 | 录屏已由应用程序恢复。<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_STARTED = 0 | 已开始录屏。<br><!--Device-OH_SCREEN_CAPTURE_STATE_STARTED = 0--><!--Device-OH_SCREEN_CAPTURE_STATE_STARTED = 0-End--> |
+| OH_SCREEN_CAPTURE_STATE_CANCELED = 1 | 已取消录屏。<br><!--Device-OH_SCREEN_CAPTURE_STATE_CANCELED = 1--><!--Device-OH_SCREEN_CAPTURE_STATE_CANCELED = 1-End--> |
+| OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER = 2 | 已停止录屏。<br><!--Device-OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER = 2--><!--Device-OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER = 2-End--> |
+| OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER = 3 | 录屏被其他录屏中断。<br><!--Device-OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER = 3--><!--Device-OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER = 3-End--> |
+| OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL = 4 | 录屏被通话中断。<br><!--Device-OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL = 4--><!--Device-OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL = 4-End--> |
+| OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE = 5 | 麦克风不可用。<br><!--Device-OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE = 5--><!--Device-OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE = 5-End--> |
+| OH_SCREEN_CAPTURE_STATE_MIC_MUTED_BY_USER = 6 | 麦克风被静音。<br><!--Device-OH_SCREEN_CAPTURE_STATE_MIC_MUTED_BY_USER = 6--><!--Device-OH_SCREEN_CAPTURE_STATE_MIC_MUTED_BY_USER = 6-End--> |
+| OH_SCREEN_CAPTURE_STATE_MIC_UNMUTED_BY_USER = 7 | 麦克风被取消静音。<br><!--Device-OH_SCREEN_CAPTURE_STATE_MIC_UNMUTED_BY_USER = 7--><!--Device-OH_SCREEN_CAPTURE_STATE_MIC_UNMUTED_BY_USER = 7-End--> |
+| OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8 | 进入隐私界面。<br><!--Device-OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8--><!--Device-OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8-End--> |
+| OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9 | 隐私界面退出。<br><!--Device-OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9--><!--Device-OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9-End--> |
+| OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10 | 系统用户切换，录屏中断。<br><!--Device-OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10--><!--Device-OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10-End--> |
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11 | 录屏已由用户暂停。<br>**起始版本：** 26.0.0<br><!--Device-OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11--><!--Device-OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11-End--> |
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12 | 录屏已由用户恢复。<br>**起始版本：** 26.0.0<br><!--Device-OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12--><!--Device-OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12-End--> |
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13 | 录屏已由应用程序暂停。<br>**起始版本：** 26.0.0<br><!--Device-OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13--><!--Device-OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13-End--> |
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14 | 录屏已由应用程序恢复。<br>**起始版本：** 26.0.0<br><!--Device-OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14--><!--Device-OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14-End--> |
 
 ### OH_AVScreenCaptureBufferType
 
@@ -292,7 +292,7 @@ enum OH_AVScreenCaptureBufferType
 
 枚举，表示buffer类型。
 
-<!--Device-OH_AVScreenCaptureBufferType--><!--Device-OH_AVScreenCaptureBufferType-End-->
+<!--Device-enum OH_AVScreenCaptureBufferType--><!--Device-enum OH_AVScreenCaptureBufferType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -300,9 +300,9 @@ enum OH_AVScreenCaptureBufferType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO = 0 | 视频数据。 |
-| OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER = 1 | 内录音频数据。 |
-| OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC = 2 | 麦克风音频数据。 |
+| OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO = 0 | 视频数据。<br><!--Device-OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO = 0--><!--Device-OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO = 0-End--> |
+| OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER = 1 | 内录音频数据。<br><!--Device-OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER = 1--><!--Device-OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER = 1-End--> |
+| OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC = 2 | 麦克风音频数据。<br><!--Device-OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC = 2--><!--Device-OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC = 2-End--> |
 
 ### OH_AVScreenCaptureFilterableAudioContent
 
@@ -314,7 +314,7 @@ enum OH_AVScreenCaptureFilterableAudioContent
 
 枚举，表示可过滤的音频类型。<br> 在录屏场景中，可通过过滤特定音频类型来控制录制内容：过滤通知音适用于避免系统通知声音干扰录屏内容的场景； 过滤应用自身声音适用于仅录制应用内音频而排除其他声音的场景。
 
-<!--Device-OH_AVScreenCaptureFilterableAudioContent--><!--Device-OH_AVScreenCaptureFilterableAudioContent-End-->
+<!--Device-enum OH_AVScreenCaptureFilterableAudioContent--><!--Device-enum OH_AVScreenCaptureFilterableAudioContent-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -322,8 +322,8 @@ enum OH_AVScreenCaptureFilterableAudioContent
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO = 0 | 通知音。 |
-| OH_SCREEN_CAPTURE_CURRENT_APP_AUDIO = 1 | 应用自身声音。 |
+| OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO = 0 | 通知音。<br><!--Device-OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO = 0--><!--Device-OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO = 0-End--> |
+| OH_SCREEN_CAPTURE_CURRENT_APP_AUDIO = 1 | 应用自身声音。<br><!--Device-OH_SCREEN_CAPTURE_CURRENT_APP_AUDIO = 1--><!--Device-OH_SCREEN_CAPTURE_CURRENT_APP_AUDIO = 1-End--> |
 
 ### OH_AVScreenCaptureContentChangedEvent
 
@@ -335,7 +335,7 @@ enum OH_AVScreenCaptureContentChangedEvent
 
 枚举，表示录屏内容变更事件。
 
-<!--Device-OH_AVScreenCaptureContentChangedEvent--><!--Device-OH_AVScreenCaptureContentChangedEvent-End-->
+<!--Device-enum OH_AVScreenCaptureContentChangedEvent--><!--Device-enum OH_AVScreenCaptureContentChangedEvent-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -343,9 +343,9 @@ enum OH_AVScreenCaptureContentChangedEvent
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SCREEN_CAPTURE_CONTENT_HIDE = 0 | 录屏内容变为隐藏。 |
-| OH_SCREEN_CAPTURE_CONTENT_VISIBLE = 1 | 录屏内容变为可见。 |
-| OH_SCREEN_CAPTURE_CONTENT_UNAVAILABLE = 2 | 录屏内容状态变化为不可用，如录屏窗口关闭。 |
+| OH_SCREEN_CAPTURE_CONTENT_HIDE = 0 | 录屏内容变为隐藏。<br><!--Device-OH_SCREEN_CAPTURE_CONTENT_HIDE = 0--><!--Device-OH_SCREEN_CAPTURE_CONTENT_HIDE = 0-End--> |
+| OH_SCREEN_CAPTURE_CONTENT_VISIBLE = 1 | 录屏内容变为可见。<br><!--Device-OH_SCREEN_CAPTURE_CONTENT_VISIBLE = 1--><!--Device-OH_SCREEN_CAPTURE_CONTENT_VISIBLE = 1-End--> |
+| OH_SCREEN_CAPTURE_CONTENT_UNAVAILABLE = 2 | 录屏内容状态变化为不可用，如录屏窗口关闭。<br><!--Device-OH_SCREEN_CAPTURE_CONTENT_UNAVAILABLE = 2--><!--Device-OH_SCREEN_CAPTURE_CONTENT_UNAVAILABLE = 2-End--> |
 
 ### OH_ScreenCaptureHighlightMode
 
@@ -357,7 +357,7 @@ enum OH_ScreenCaptureHighlightMode
 
 枚举，表示屏幕录制高亮边框的模式。
 
-<!--Device-OH_ScreenCaptureHighlightMode--><!--Device-OH_ScreenCaptureHighlightMode-End-->
+<!--Device-enum OH_ScreenCaptureHighlightMode--><!--Device-enum OH_ScreenCaptureHighlightMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -365,8 +365,8 @@ enum OH_ScreenCaptureHighlightMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HIGHLIGHT_MODE_CLOSED = 0 | 默认模式，用方形全包边框高亮显示录制区域。 |
-| OH_HIGHLIGHT_MODE_CORNER_WRAP = 1 | 用四角包裹边框高亮显示录制区域。 |
+| OH_HIGHLIGHT_MODE_CLOSED = 0 | 默认模式，用方形全包边框高亮显示录制区域。<br><!--Device-OH_HIGHLIGHT_MODE_CLOSED = 0--><!--Device-OH_HIGHLIGHT_MODE_CLOSED = 0-End--> |
+| OH_HIGHLIGHT_MODE_CORNER_WRAP = 1 | 用四角包裹边框高亮显示录制区域。<br><!--Device-OH_HIGHLIGHT_MODE_CORNER_WRAP = 1--><!--Device-OH_HIGHLIGHT_MODE_CORNER_WRAP = 1-End--> |
 
 ### OH_AVScreenCapture_FillMode
 
@@ -378,7 +378,7 @@ enum OH_AVScreenCapture_FillMode
 
 枚举，图像填充模式。<br> OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT适用于需要保持图像原始宽高比、避免变形的场景；<br> OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL适用于需要完全填充目标区域、可接受图像变形的场景。
 
-<!--Device-OH_AVScreenCapture_FillMode--><!--Device-OH_AVScreenCapture_FillMode-End-->
+<!--Device-enum OH_AVScreenCapture_FillMode--><!--Device-enum OH_AVScreenCapture_FillMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -386,8 +386,8 @@ enum OH_AVScreenCapture_FillMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0 | 保持图像原始宽高比匹配目标图像大小，若比例不一致可能存在黑边。 |
-| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | 图像拉伸匹配目标图像大小，若比例不一致可能会导致图像变形。 |
+| OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0 | 保持图像原始宽高比匹配目标图像大小，若比例不一致可能存在黑边。<br><!--Device-OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0--><!--Device-OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0-End--> |
+| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | 图像拉伸匹配目标图像大小，若比例不一致可能会导致图像变形。<br><!--Device-OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1--><!--Device-OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1-End--> |
 
 ### OH_CapturePickerMode
 
@@ -399,7 +399,7 @@ enum OH_CapturePickerMode
 
 枚举，表示Picker显示模式。<br> 根据应用需求选择合适的Picker模式：仅显示窗口模式适用于只允许用户选择窗口进行录制的场景； 仅显示屏幕模式适用于只允许用户选择整个屏幕的场景； 同时显示屏幕和窗口模式为默认模式，适用于需要灵活选择录制目标的场景； 仅显示应用模式适用于只允许录制单个应用的场景。
 
-<!--Device-OH_CapturePickerMode--><!--Device-OH_CapturePickerMode-End-->
+<!--Device-enum OH_CapturePickerMode--><!--Device-enum OH_CapturePickerMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -407,13 +407,13 @@ enum OH_CapturePickerMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAPTURE_PICKER_MODE_WINDOW_ONLY = 0 | 仅显示窗口模式。 |
-| OH_CAPTURE_PICKER_MODE_SCREEN_ONLY = 1 | 仅显示屏幕模式。 |
-| OH_CAPTURE_PICKER_MODE_SCREEN_AND_WINDOW = 2 | 显示屏幕和窗口模式（默认模式）。 |
-| OH_CAPTURE_PICKER_MODE_APP_ONLY = 3 | 仅显示应用模式。<br>**起始版本：** 26.0.0 |
-| OH_CAPTURE_PICKER_MODE_WINDOW_AND_APP = 4 | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0 |
-| OH_CAPTURE_PICKER_MODE_SCREEN_AND_APP = 5 | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0 |
-| OH_CAPTURE_PICKER_MODE_SCREEN_WINDOW_AND_APP = 6 | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0 |
+| OH_CAPTURE_PICKER_MODE_WINDOW_ONLY = 0 | 仅显示窗口模式。<br><!--Device-OH_CAPTURE_PICKER_MODE_WINDOW_ONLY = 0--><!--Device-OH_CAPTURE_PICKER_MODE_WINDOW_ONLY = 0-End--> |
+| OH_CAPTURE_PICKER_MODE_SCREEN_ONLY = 1 | 仅显示屏幕模式。<br><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_ONLY = 1--><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_ONLY = 1-End--> |
+| OH_CAPTURE_PICKER_MODE_SCREEN_AND_WINDOW = 2 | 显示屏幕和窗口模式（默认模式）。<br><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_AND_WINDOW = 2--><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_AND_WINDOW = 2-End--> |
+| OH_CAPTURE_PICKER_MODE_APP_ONLY = 3 | 仅显示应用模式。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAPTURE_PICKER_MODE_APP_ONLY = 3--><!--Device-OH_CAPTURE_PICKER_MODE_APP_ONLY = 3-End--> |
+| OH_CAPTURE_PICKER_MODE_WINDOW_AND_APP = 4 | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAPTURE_PICKER_MODE_WINDOW_AND_APP = 4--><!--Device-OH_CAPTURE_PICKER_MODE_WINDOW_AND_APP = 4-End--> |
+| OH_CAPTURE_PICKER_MODE_SCREEN_AND_APP = 5 | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_AND_APP = 5--><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_AND_APP = 5-End--> |
+| OH_CAPTURE_PICKER_MODE_SCREEN_WINDOW_AND_APP = 6 | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_WINDOW_AND_APP = 6--><!--Device-OH_CAPTURE_PICKER_MODE_SCREEN_WINDOW_AND_APP = 6-End--> |
 
 ### typedef  OH_AVScreenCapture_AutoPauseCaptureSceneEnum
 
@@ -425,7 +425,7 @@ enum typedef  OH_AVScreenCapture_AutoPauseCaptureSceneEnum
 
 屏幕录制自动暂停场景枚举。
 
-<!--Device-typedef OH_AVScreenCapture_AutoPauseCaptureSceneEnum--><!--Device-typedef OH_AVScreenCapture_AutoPauseCaptureSceneEnum-End-->
+<!--Device-enum typedef OH_AVScreenCapture_AutoPauseCaptureSceneEnum--><!--Device-enum typedef OH_AVScreenCapture_AutoPauseCaptureSceneEnum-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -433,8 +433,8 @@ enum typedef  OH_AVScreenCapture_AutoPauseCaptureSceneEnum
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0 | 默认值，表示在任何场景下都不进行自动暂停。<br>**起始版本：** 26.1.0 |
-| OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0 | 屏幕折叠状态发生变化的场景。<br>**起始版本：** 26.1.0 |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0 | 默认值，表示在任何场景下都不进行自动暂停。<br>**起始版本：** 26.1.0<br><!--Device-OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0--><!--Device-OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0-End--> |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0 | 屏幕折叠状态发生变化的场景。<br>**起始版本：** 26.1.0<br><!--Device-OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0--><!--Device-OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0-End--> |
 
 
 ## 函数说明

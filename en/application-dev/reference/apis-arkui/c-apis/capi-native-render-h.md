@@ -215,7 +215,7 @@ enum OH_ArkUI_RenderNodeAttachPolicy
 
 Defines the attach policy for a child render node, which determines whether the child and it complete render node subtree inherit the parent render node's instance.
 
-<!--Device-OH_ArkUI_RenderNodeAttachPolicy--><!--Device-OH_ArkUI_RenderNodeAttachPolicy-End-->
+<!--Device-enum OH_ArkUI_RenderNodeAttachPolicy--><!--Device-enum OH_ArkUI_RenderNodeAttachPolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,8 +223,8 @@ Defines the attach policy for a child render node, which determines whether the 
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0 | The child and its render node subtree not inherit the parent render node's instance.<br>**Since**: 26.1.0 |
-| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1 | The child and its render node subtree inherit the parent render node's instance.<br>**Since**: 26.1.0 |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0 | The child and its render node subtree not inherit the parent render node's instance.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0--><!--Device-OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0-End--> |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1 | The child and its render node subtree inherit the parent render node's instance.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1--><!--Device-OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1-End--> |
 
 
 ## Function description

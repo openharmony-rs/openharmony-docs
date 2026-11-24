@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t pixelX |  |
-| uint32_t pixelY |  |
-| uint32_t sample |  |
+| uint32_t pixelX | <!--Device-uint32_t pixelX--><!--Device-uint32_t pixelX-End--> |
+| uint32_t pixelY | <!--Device-uint32_t pixelY--><!--Device-uint32_t pixelY-End--> |
+| uint32_t sample | <!--Device-uint32_t sample--><!--Device-uint32_t sample-End--> |
 
 

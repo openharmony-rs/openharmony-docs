@@ -20,6 +20,8 @@ NODE_TEXT_EDITOR_ON_SELECTION_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_EDIT
 
 定义TextEditor组件中选区或光标位置发生变化时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含两个参数： <ul> <li>ArkUI_NodeComponentEvent.data[0].i32：选区起始索引。</li> <li>ArkUI_NodeComponentEvent.data[1].i32：选区结束索引。</li> </ul>
 
+<!--Device-NODE_TEXT_EDITOR_ON_SELECTION_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_EDITOR--><!--Device-NODE_TEXT_EDITOR_ON_SELECTION_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_EDITOR-End-->
+
 **起始版本：** 24
 
 ### NODE_TEXT_EDITOR_ON_READY
@@ -31,6 +33,8 @@ NODE_TEXT_EDITOR_ON_READY
 **描述：**
 
 定义TextEditor组件首次初始化完成时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。
+
+<!--Device-NODE_TEXT_EDITOR_ON_READY--><!--Device-NODE_TEXT_EDITOR_ON_READY-End-->
 
 **起始版本：** 24
 
@@ -44,6 +48,8 @@ NODE_TEXT_EDITOR_ON_PASTE
 
 定义TextEditor组件执行粘贴时触发的事件。<br> 系统会根据回调函数返回值判断是否拦截组件的默认行为。 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。 返回值中索引为0的value.i32表示是否拦截组件的默认行为。 0：不拦截。1：拦截。
 
+<!--Device-NODE_TEXT_EDITOR_ON_PASTE--><!--Device-NODE_TEXT_EDITOR_ON_PASTE-End-->
+
 **起始版本：** 24
 
 ### NODE_TEXT_EDITOR_ON_EDITING_CHANGE
@@ -55,6 +61,8 @@ NODE_TEXT_EDITOR_ON_EDITING_CHANGE
 **描述：**
 
 定义TextEditor组件编辑状态发生变化时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含一个参数： <ul> <li>ArkUI_NodeComponentEvent.data[0].i32：组件的编辑状态。</li> </ul>
+
+<!--Device-NODE_TEXT_EDITOR_ON_EDITING_CHANGE--><!--Device-NODE_TEXT_EDITOR_ON_EDITING_CHANGE-End-->
 
 **起始版本：** 24
 
@@ -68,6 +76,8 @@ NODE_TEXT_EDITOR_ON_SUBMIT
 
 定义TextEditor组件输入法的回车键被按下时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含一个参数： <ul> <li>ArkUI_NodeComponentEvent.data[0].i32：输入法的回车键类型[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype)。</li> </ul>
 
+<!--Device-NODE_TEXT_EDITOR_ON_SUBMIT--><!--Device-NODE_TEXT_EDITOR_ON_SUBMIT-End-->
+
 **起始版本：** 24
 
 ### NODE_TEXT_EDITOR_ON_CUT
@@ -79,6 +89,8 @@ NODE_TEXT_EDITOR_ON_CUT
 **描述：**
 
 定义TextEditor组件执行剪切时触发的事件。<br> 系统会根据回调函数返回值判断是否拦截组件的默认行为。 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。 返回值中索引为0的value.i32表示是否拦截组件的默认行为。 0：不拦截。1：拦截。
+
+<!--Device-NODE_TEXT_EDITOR_ON_CUT--><!--Device-NODE_TEXT_EDITOR_ON_CUT-End-->
 
 **起始版本：** 24
 
@@ -92,6 +104,8 @@ NODE_TEXT_EDITOR_ON_COPY
 
 定义TextEditor组件执行复制时触发的事件。<br> 系统会根据回调函数返回值判断是否拦截组件的默认行为。 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。 返回值中索引为0的value.i32表示是否拦截组件的默认行为。 0：不拦截。1：拦截。
 
+<!--Device-NODE_TEXT_EDITOR_ON_COPY--><!--Device-NODE_TEXT_EDITOR_ON_COPY-End-->
+
 **起始版本：** 24
 
 ### NODE_TEXT_EDITOR_ON_WILL_CHANGE
@@ -103,6 +117,8 @@ NODE_TEXT_EDITOR_ON_WILL_CHANGE
 **描述：**
 
 定义TextEditor组件在内容将要改变时触发的事件。 <br>在任何导致文本内容发生变化的操作生效之前会触发该回调，开发者可根据回调事件中的信息决定是否拦截本次内容变更。 <br>当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent](capi-native-node-h.md#oh_arkui_nodeevent_gettexteditoronwillchangeevent)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获得 [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md)对象。 <br>使用OH_ArkUI_TextEditorChangeEvent_XXX系列接口可以从该对象中获取更多信息。 <br>系统会根据回调函数返回值判断当前内容是否允许被更改。 <br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。 <br>返回值中索引为0的value.i32表示当前内容是否允许被更改。<b>0</b>：不允许更改。<b>1</b>：允许更改。
+
+<!--Device-NODE_TEXT_EDITOR_ON_WILL_CHANGE--><!--Device-NODE_TEXT_EDITOR_ON_WILL_CHANGE-End-->
 
 **起始版本：** 24
 
@@ -116,6 +132,8 @@ NODE_TEXT_EDITOR_ON_DID_CHANGE
 
 定义TextEditor组件在内容改变时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含四个参数： <ul> <li>ArkUI_NodeComponentEvent.data[0].i32：文本变化前将要被替换的文本范围的起始索引。</li> <li>ArkUI_NodeComponentEvent.data[1].i32：文本变化前将要被替换的文本范围的结束索引。</li> <li>ArkUI_NodeComponentEvent.data[2].i32：文本变化后新增内容的文本范围的起始索引。</li> <li>ArkUI_NodeComponentEvent.data[3].i32：文本变化后新增内容的文本范围的结束索引。</li> </ul>
 
+<!--Device-NODE_TEXT_EDITOR_ON_DID_CHANGE--><!--Device-NODE_TEXT_EDITOR_ON_DID_CHANGE-End-->
+
 **起始版本：** 24
 
 ### NODE_TEXT_EDITOR_ON_CONTENT_SCROLL
@@ -127,6 +145,8 @@ NODE_TEXT_EDITOR_ON_CONTENT_SCROLL = 22009
 **描述：**
 
 定义TextEditor组件在文本内容滚动时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含两个参数： <ul> <li>ArkUI_NodeComponentEvent.data[0].f32：文本在内容区域内的水平偏移量。</li> <li>ArkUI_NodeComponentEvent.data[1].f32：文本在内容区域内的垂直偏移量。</li> </ul>
+
+<!--Device-NODE_TEXT_EDITOR_ON_CONTENT_SCROLL = 22009--><!--Device-NODE_TEXT_EDITOR_ON_CONTENT_SCROLL = 22009-End-->
 
 **起始版本：** 26.1.0
 
@@ -140,6 +160,8 @@ NODE_TEXT_EDITOR_ON_CONTENT_SIZE_CHANGE = 22010
 
 定义TextEditor组件在内容尺寸变化时触发的事件。 <br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含两个参数： <ul> <li>ArkUI_NodeComponentEvent.data[0].f32：文本内容的宽度。</li> <li>ArkUI_NodeComponentEvent.data[1].f32：文本内容的高度。</li> </ul>
 
+<!--Device-NODE_TEXT_EDITOR_ON_CONTENT_SIZE_CHANGE = 22010--><!--Device-NODE_TEXT_EDITOR_ON_CONTENT_SIZE_CHANGE = 22010-End-->
+
 **起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR
@@ -151,6 +173,8 @@ NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR = 22011
 **描述：**
 
 定义TextEditor组件的输入字符被inputFilter正则过滤时触发的事件。 <br>该事件仅在spanString模式下生效。 <br>仅在已注册onInputFilterError回调且输入字符被inputFilter正则拒绝时触发。 <br>当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetStringAsyncEvent](capi-native-node-h.md#oh_arkui_nodeevent_getstringasyncevent)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获取被过滤的字符。 <br><b>ArkUI_StringAsyncEvent.pStr</b>字段包含被拒字符的UTF-8字符串。
+
+<!--Device-NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR = 22011--><!--Device-NODE_TEXT_EDITOR_ON_INPUT_FILTER_ERROR = 22011-End-->
 
 **起始版本：** 26.1.0
 

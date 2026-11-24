@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t frameISize |  |
-| uint32_t framePSize |  |
-| uint32_t frameBSize |  |
+| uint32_t frameISize | <!--Device-uint32_t frameISize--><!--Device-uint32_t frameISize-End--> |
+| uint32_t framePSize | <!--Device-uint32_t framePSize--><!--Device-uint32_t framePSize-End--> |
+| uint32_t frameBSize | <!--Device-uint32_t frameBSize--><!--Device-uint32_t frameBSize-End--> |
 
 

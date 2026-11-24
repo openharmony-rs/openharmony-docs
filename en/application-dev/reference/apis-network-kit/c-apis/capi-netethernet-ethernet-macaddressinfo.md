@@ -24,7 +24,7 @@ Defines the MAC address of the Ethernet NIC.
 
 | Name | Description |
 | -- | -- |
-| char ifaceName[ETHERNET_MAX_STR_LEN] | The ethernet iface name.<br>**Since**: 26.0.0 |
-| char macAddr[ETHERNET_MAX_STR_LEN] | The character array of device Mac address.<br>**Since**: 26.0.0 |
+| char ifaceName[ETHERNET_MAX_STR_LEN] | The ethernet iface name.<br>**Since**: 26.0.0<br><!--Device-char ifaceName[ETHERNET_MAX_STR_LEN]--><!--Device-char ifaceName[ETHERNET_MAX_STR_LEN]-End--> |
+| char macAddr[ETHERNET_MAX_STR_LEN] | The character array of device Mac address.<br>**Since**: 26.0.0<br><!--Device-char macAddr[ETHERNET_MAX_STR_LEN]--><!--Device-char macAddr[ETHERNET_MAX_STR_LEN]-End--> |
 
 

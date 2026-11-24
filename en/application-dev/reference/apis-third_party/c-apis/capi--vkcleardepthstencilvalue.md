@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| float depth |  |
-| uint32_t stencil |  |
+| float depth | <!--Device-float depth--><!--Device-float depth-End--> |
+| uint32_t stencil | <!--Device-uint32_t stencil--><!--Device-uint32_t stencil-End--> |
 
 

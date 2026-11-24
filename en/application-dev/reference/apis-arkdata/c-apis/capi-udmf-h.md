@@ -155,7 +155,7 @@ enum Udmf_Intention
 
 Describe the intention type of the udmf.
 
-<!--Device-Udmf_Intention--><!--Device-Udmf_Intention-End-->
+<!--Device-enum Udmf_Intention--><!--Device-enum Udmf_Intention-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -163,12 +163,12 @@ Describe the intention type of the udmf.
 
 | Enum item | Description |
 | -- | -- |
-| UDMF_INTENTION_DRAG | The intention is drag. |
-| UDMF_INTENTION_PASTEBOARD | The intention is pasteboard. |
-| UDMF_INTENTION_DATA_HUB | The intention is data hub.<br>**Since**: 20 |
-| UDMF_INTENTION_SYSTEM_SHARE | The intention is system share.<br>**Since**: 20 |
-| UDMF_INTENTION_PICKER | The intention is picker.<br>**Since**: 20 |
-| UDMF_INTENTION_MENU | The intention is menu.<br>**Since**: 20 |
+| UDMF_INTENTION_DRAG | The intention is drag.<br><!--Device-UDMF_INTENTION_DRAG--><!--Device-UDMF_INTENTION_DRAG-End--> |
+| UDMF_INTENTION_PASTEBOARD | The intention is pasteboard.<br><!--Device-UDMF_INTENTION_PASTEBOARD--><!--Device-UDMF_INTENTION_PASTEBOARD-End--> |
+| UDMF_INTENTION_DATA_HUB | The intention is data hub.<br>**Since**: 20<br><!--Device-UDMF_INTENTION_DATA_HUB--><!--Device-UDMF_INTENTION_DATA_HUB-End--> |
+| UDMF_INTENTION_SYSTEM_SHARE | The intention is system share.<br>**Since**: 20<br><!--Device-UDMF_INTENTION_SYSTEM_SHARE--><!--Device-UDMF_INTENTION_SYSTEM_SHARE-End--> |
+| UDMF_INTENTION_PICKER | The intention is picker.<br>**Since**: 20<br><!--Device-UDMF_INTENTION_PICKER--><!--Device-UDMF_INTENTION_PICKER-End--> |
+| UDMF_INTENTION_MENU | The intention is menu.<br>**Since**: 20<br><!--Device-UDMF_INTENTION_MENU--><!--Device-UDMF_INTENTION_MENU-End--> |
 
 ### Udmf_ShareOption
 
@@ -180,7 +180,7 @@ enum Udmf_ShareOption
 
 Describe intra-device usage range type enumeration.
 
-<!--Device-Udmf_ShareOption--><!--Device-Udmf_ShareOption-End-->
+<!--Device-enum Udmf_ShareOption--><!--Device-enum Udmf_ShareOption-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -188,9 +188,9 @@ Describe intra-device usage range type enumeration.
 
 | Enum item | Description |
 | -- | -- |
-| SHARE_OPTIONS_INVALID | Invalid share option. |
-| SHARE_OPTIONS_IN_APP | Allowed to be used in the same application on this device. |
-| SHARE_OPTIONS_CROSS_APP | Allowed to be used in the cross application on this device. |
+| SHARE_OPTIONS_INVALID | Invalid share option.<br><!--Device-SHARE_OPTIONS_INVALID--><!--Device-SHARE_OPTIONS_INVALID-End--> |
+| SHARE_OPTIONS_IN_APP | Allowed to be used in the same application on this device.<br><!--Device-SHARE_OPTIONS_IN_APP--><!--Device-SHARE_OPTIONS_IN_APP-End--> |
+| SHARE_OPTIONS_CROSS_APP | Allowed to be used in the cross application on this device.<br><!--Device-SHARE_OPTIONS_CROSS_APP--><!--Device-SHARE_OPTIONS_CROSS_APP-End--> |
 
 ### Udmf_FileConflictOptions
 
@@ -202,7 +202,7 @@ enum Udmf_FileConflictOptions
 
 Describe the types of file conflict options when getting data from the udmf.
 
-<!--Device-Udmf_FileConflictOptions--><!--Device-Udmf_FileConflictOptions-End-->
+<!--Device-enum Udmf_FileConflictOptions--><!--Device-enum Udmf_FileConflictOptions-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -210,8 +210,8 @@ Describe the types of file conflict options when getting data from the udmf.
 
 | Enum item | Description |
 | -- | -- |
-| UDMF_OVERWRITE = 0 | Overwrite when dest uri has file with same name. |
-| UDMF_SKIP = 1 | Skip when dest uri has file with same name. |
+| UDMF_OVERWRITE = 0 | Overwrite when dest uri has file with same name.<br><!--Device-UDMF_OVERWRITE = 0--><!--Device-UDMF_OVERWRITE = 0-End--> |
+| UDMF_SKIP = 1 | Skip when dest uri has file with same name.<br><!--Device-UDMF_SKIP = 1--><!--Device-UDMF_SKIP = 1-End--> |
 
 ### Udmf_ProgressIndicator
 
@@ -223,7 +223,7 @@ enum Udmf_ProgressIndicator
 
 Describe the types of progress indicator when getting data from the udmf.
 
-<!--Device-Udmf_ProgressIndicator--><!--Device-Udmf_ProgressIndicator-End-->
+<!--Device-enum Udmf_ProgressIndicator--><!--Device-enum Udmf_ProgressIndicator-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -231,8 +231,8 @@ Describe the types of progress indicator when getting data from the udmf.
 
 | Enum item | Description |
 | -- | -- |
-| UDMF_NONE = 0 | Getting data without system default progress indicator. |
-| UDMF_DEFAULT = 1 | Getting data with system default progress indicator. |
+| UDMF_NONE = 0 | Getting data without system default progress indicator.<br><!--Device-UDMF_NONE = 0--><!--Device-UDMF_NONE = 0-End--> |
+| UDMF_DEFAULT = 1 | Getting data with system default progress indicator.<br><!--Device-UDMF_DEFAULT = 1--><!--Device-UDMF_DEFAULT = 1-End--> |
 
 ### Udmf_Visibility
 
@@ -244,7 +244,7 @@ enum Udmf_Visibility
 
 Describe the visibility range of data
 
-<!--Device-Udmf_Visibility--><!--Device-Udmf_Visibility-End-->
+<!--Device-enum Udmf_Visibility--><!--Device-enum Udmf_Visibility-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -252,8 +252,8 @@ Describe the visibility range of data
 
 | Enum item | Description |
 | -- | -- |
-| UDMF_ALL | The visibility level that specifies that any hap or native can be obtained. |
-| UDMF_OWN_PROCESS | The visibility level that specifies that only data providers can be obtained. |
+| UDMF_ALL | The visibility level that specifies that any hap or native can be obtained.<br><!--Device-UDMF_ALL--><!--Device-UDMF_ALL-End--> |
+| UDMF_OWN_PROCESS | The visibility level that specifies that only data providers can be obtained.<br><!--Device-UDMF_OWN_PROCESS--><!--Device-UDMF_OWN_PROCESS-End--> |
 
 
 ## Function description

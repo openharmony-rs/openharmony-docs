@@ -116,14 +116,14 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 
 | Name | Description |
 | -- | -- |
-| uint32_t ArkUI_GestureEventActionTypeMask | Defines a set of gesture event types. Example: ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| uint32_t ArkUI_GestureDirectionMask | Defines a set of gesture directions. <br>Example: ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT <br>This example indicates that the leftward and rightward directions are supported.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle | Defines the gesture recognizer handle, which is an alias wrapper of the **ArkUI_GestureRecognizer** pointer type and is used to represent a gesture recognizer object in the ArkUI native gesture APIs. This handle can be used as an object reference in scenarios such as gesture recognizer creation, property configuration, and event callback listening, facilitating unified passing, management, and operation of gesture recognizers at the native layer. For details about how to obtain and use it, see native_gesture.h.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray | Defines a gesture recognizer handle array, which is used to represent or pass multiple gesture recognizer handles, for example, to obtain the collection of gesture recognizers in the response chain. For details about the mechanism and usage, see the gesture API description in native_gesture.h.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle | Defines a touch recognizer handle, which is used to represent a touch recognizer object and pass the object in APIs such as gesture interruption and gesture collection interception. For details about the APIs, see native_gesture.h.<br>**Since**: 15<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray | Defines a touch recognizer handle array, which is used when managing multiple touch recognizers in batches, for example, obtaining multiple touch recognizer handles from gesture interruption information.<br>**Since**: 15<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| typedef uint32_t ArkUI_GestureEventActionTypeMask | Defines a set of gesture event types. Example: ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| typedef uint32_t ArkUI_GestureDirectionMask | Defines a set of gesture directions. <br>Example: ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT <br>This example indicates that the leftward and rightward directions are supported.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| uint32_t ArkUI_GestureEventActionTypeMask | Defines a set of gesture event types. Example: ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-uint32_t ArkUI_GestureEventActionTypeMask--><!--Device-uint32_t ArkUI_GestureEventActionTypeMask-End--> |
+| uint32_t ArkUI_GestureDirectionMask | Defines a set of gesture directions. <br>Example: ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT <br>This example indicates that the leftward and rightward directions are supported.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-uint32_t ArkUI_GestureDirectionMask--><!--Device-uint32_t ArkUI_GestureDirectionMask-End--> |
+| ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle | Defines the gesture recognizer handle, which is an alias wrapper of the **ArkUI_GestureRecognizer** pointer type and is used to represent a gesture recognizer object in the ArkUI native gesture APIs. This handle can be used as an object reference in scenarios such as gesture recognizer creation, property configuration, and event callback listening, facilitating unified passing, management, and operation of gesture recognizers at the native layer. For details about how to obtain and use it, see native_gesture.h.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle--><!--Device-ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle-End--> |
+| ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray | Defines a gesture recognizer handle array, which is used to represent or pass multiple gesture recognizer handles, for example, to obtain the collection of gesture recognizers in the response chain. For details about the mechanism and usage, see the gesture API description in native_gesture.h.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray--><!--Device-ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray-End--> |
+| ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle | Defines a touch recognizer handle, which is used to represent a touch recognizer object and pass the object in APIs such as gesture interruption and gesture collection interception. For details about the APIs, see native_gesture.h.<br>**Since**: 15<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle--><!--Device-ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle-End--> |
+| ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray | Defines a touch recognizer handle array, which is used when managing multiple touch recognizers in batches, for example, obtaining multiple touch recognizer handles from gesture interruption information.<br>**Since**: 15<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray--><!--Device-ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray-End--> |
+| typedef uint32_t ArkUI_GestureEventActionTypeMask | Defines a set of gesture event types. Example: ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-typedef uint32_t ArkUI_GestureEventActionTypeMask--><!--Device-typedef uint32_t ArkUI_GestureEventActionTypeMask-End--> |
+| typedef uint32_t ArkUI_GestureDirectionMask | Defines a set of gesture directions. <br>Example: ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT <br>This example indicates that the leftward and rightward directions are supported.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-typedef uint32_t ArkUI_GestureDirectionMask--><!--Device-typedef uint32_t ArkUI_GestureDirectionMask-End--> |
 
 ## Enum type description
 
@@ -137,7 +137,7 @@ enum ArkUI_GestureEventActionType
 
 Enumerates gesture event types.
 
-<!--Device-ArkUI_GestureEventActionType--><!--Device-ArkUI_GestureEventActionType-End-->
+<!--Device-enum ArkUI_GestureEventActionType--><!--Device-enum ArkUI_GestureEventActionType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,10 +145,10 @@ Enumerates gesture event types.
 
 | Enum item | Description |
 | -- | -- |
-| GESTURE_EVENT_ACTION_ACCEPT = 0x01 | Triggered. |
-| GESTURE_EVENT_ACTION_UPDATE = 0x02 | Updated. |
-| GESTURE_EVENT_ACTION_END = 0x04 | Ended. |
-| GESTURE_EVENT_ACTION_CANCEL = 0x08 | Canceled. |
+| GESTURE_EVENT_ACTION_ACCEPT = 0x01 | Triggered.<br><!--Device-GESTURE_EVENT_ACTION_ACCEPT = 0x01--><!--Device-GESTURE_EVENT_ACTION_ACCEPT = 0x01-End--> |
+| GESTURE_EVENT_ACTION_UPDATE = 0x02 | Updated.<br><!--Device-GESTURE_EVENT_ACTION_UPDATE = 0x02--><!--Device-GESTURE_EVENT_ACTION_UPDATE = 0x02-End--> |
+| GESTURE_EVENT_ACTION_END = 0x04 | Ended.<br><!--Device-GESTURE_EVENT_ACTION_END = 0x04--><!--Device-GESTURE_EVENT_ACTION_END = 0x04-End--> |
+| GESTURE_EVENT_ACTION_CANCEL = 0x08 | Canceled.<br><!--Device-GESTURE_EVENT_ACTION_CANCEL = 0x08--><!--Device-GESTURE_EVENT_ACTION_CANCEL = 0x08-End--> |
 
 ### ArkUI_GesturePriority
 
@@ -160,7 +160,7 @@ enum ArkUI_GesturePriority
 
 Enumerates gesture priorities. **NORMAL** applies to default gesture recognition scenarios; **PRIORITY**<br>applies to scenarios where a specific gesture needs to be prioritized (for example, prioritizing a tap over a swipe); **PARALLEL** applies to scenarios where multiple gestures need to respond independently and simultaneously (for example, recognizing pinch and rotation at the same time).
 
-<!--Device-ArkUI_GesturePriority--><!--Device-ArkUI_GesturePriority-End-->
+<!--Device-enum ArkUI_GesturePriority--><!--Device-enum ArkUI_GesturePriority-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,9 +168,9 @@ Enumerates gesture priorities. **NORMAL** applies to default gesture recognition
 
 | Enum item | Description |
 | -- | -- |
-| NORMAL = 0 | Normal. |
-| PRIORITY = 1 | High priority. |
-| PARALLEL = 2 | Parallel. |
+| NORMAL = 0 | Normal.<br><!--Device-NORMAL = 0--><!--Device-NORMAL = 0-End--> |
+| PRIORITY = 1 | High priority.<br><!--Device-PRIORITY = 1--><!--Device-PRIORITY = 1-End--> |
+| PARALLEL = 2 | Parallel.<br><!--Device-PARALLEL = 2--><!--Device-PARALLEL = 2-End--> |
 
 ### ArkUI_GroupGestureMode
 
@@ -182,7 +182,7 @@ enum ArkUI_GroupGestureMode
 
 Enumerates gesture group modes. **SEQUENTIAL_GROUP** applies to scenarios where gestures need to be recognized step by step (for example, long press followed by swipe); **PARALLEL_GROUP** applies to scenarios where multiple gestures need to be recognized independently and simultaneously (for example, listening for pinch and rotation at the same time); **EXCLUSIVE_GROUP** applies to scenarios where multiple gestures compete exclusively and only one needs to succeed (for example, swipe and long press being mutually exclusive).
 
-<!--Device-ArkUI_GroupGestureMode--><!--Device-ArkUI_GroupGestureMode-End-->
+<!--Device-enum ArkUI_GroupGestureMode--><!--Device-enum ArkUI_GroupGestureMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,9 +190,9 @@ Enumerates gesture group modes. **SEQUENTIAL_GROUP** applies to scenarios where 
 
 | Enum item | Description |
 | -- | -- |
-| SEQUENTIAL_GROUP = 0 | Sequential recognition. Gestures are recognized in the registration sequence until all gestures are recognized successfully. Once one gesture fails to be recognized, all subsequent gestures fail to be recognized. Only the last gesture in the gesture group can respond to the end event. |
-| PARALLEL_GROUP = 1 | Parallel recognition. Registered gestures are recognized concurrently until all gestures are recognized. The recognition result of each gesture does not affect each other. |
-| EXCLUSIVE_GROUP = 2 | Exclusive recognition. Registered gestures are identified concurrently. If one gesture is successfully recognized, gesture recognition ends. |
+| SEQUENTIAL_GROUP = 0 | Sequential recognition. Gestures are recognized in the registration sequence until all gestures are recognized successfully. Once one gesture fails to be recognized, all subsequent gestures fail to be recognized. Only the last gesture in the gesture group can respond to the end event.<br><!--Device-SEQUENTIAL_GROUP = 0--><!--Device-SEQUENTIAL_GROUP = 0-End--> |
+| PARALLEL_GROUP = 1 | Parallel recognition. Registered gestures are recognized concurrently until all gestures are recognized. The recognition result of each gesture does not affect each other.<br><!--Device-PARALLEL_GROUP = 1--><!--Device-PARALLEL_GROUP = 1-End--> |
+| EXCLUSIVE_GROUP = 2 | Exclusive recognition. Registered gestures are identified concurrently. If one gesture is successfully recognized, gesture recognition ends.<br><!--Device-EXCLUSIVE_GROUP = 2--><!--Device-EXCLUSIVE_GROUP = 2-End--> |
 
 ### ArkUI_GestureDirection
 
@@ -204,7 +204,7 @@ enum ArkUI_GestureDirection
 
 Enumerates gesture directions.
 
-<!--Device-ArkUI_GestureDirection--><!--Device-ArkUI_GestureDirection-End-->
+<!--Device-enum ArkUI_GestureDirection--><!--Device-enum ArkUI_GestureDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,14 +212,14 @@ Enumerates gesture directions.
 
 | Enum item | Description |
 | -- | -- |
-| GESTURE_DIRECTION_ALL = 0b1111 | All directions. |
-| GESTURE_DIRECTION_HORIZONTAL = 0b0011 | Horizontal direction. |
-| GESTURE_DIRECTION_VERTICAL = 0b1100 | Vertical direction. |
-| GESTURE_DIRECTION_LEFT = 0b0001 | Leftward. |
-| GESTURE_DIRECTION_RIGHT = 0b0010 | Rightward. |
-| GESTURE_DIRECTION_UP = 0b0100 | Upward. |
-| GESTURE_DIRECTION_DOWN = 0b1000 | Downward. |
-| GESTURE_DIRECTION_NONE = 0 | None. |
+| GESTURE_DIRECTION_ALL = 0b1111 | All directions.<br><!--Device-GESTURE_DIRECTION_ALL = 0b1111--><!--Device-GESTURE_DIRECTION_ALL = 0b1111-End--> |
+| GESTURE_DIRECTION_HORIZONTAL = 0b0011 | Horizontal direction.<br><!--Device-GESTURE_DIRECTION_HORIZONTAL = 0b0011--><!--Device-GESTURE_DIRECTION_HORIZONTAL = 0b0011-End--> |
+| GESTURE_DIRECTION_VERTICAL = 0b1100 | Vertical direction.<br><!--Device-GESTURE_DIRECTION_VERTICAL = 0b1100--><!--Device-GESTURE_DIRECTION_VERTICAL = 0b1100-End--> |
+| GESTURE_DIRECTION_LEFT = 0b0001 | Leftward.<br><!--Device-GESTURE_DIRECTION_LEFT = 0b0001--><!--Device-GESTURE_DIRECTION_LEFT = 0b0001-End--> |
+| GESTURE_DIRECTION_RIGHT = 0b0010 | Rightward.<br><!--Device-GESTURE_DIRECTION_RIGHT = 0b0010--><!--Device-GESTURE_DIRECTION_RIGHT = 0b0010-End--> |
+| GESTURE_DIRECTION_UP = 0b0100 | Upward.<br><!--Device-GESTURE_DIRECTION_UP = 0b0100--><!--Device-GESTURE_DIRECTION_UP = 0b0100-End--> |
+| GESTURE_DIRECTION_DOWN = 0b1000 | Downward.<br><!--Device-GESTURE_DIRECTION_DOWN = 0b1000--><!--Device-GESTURE_DIRECTION_DOWN = 0b1000-End--> |
+| GESTURE_DIRECTION_NONE = 0 | None.<br><!--Device-GESTURE_DIRECTION_NONE = 0--><!--Device-GESTURE_DIRECTION_NONE = 0-End--> |
 
 ### ArkUI_GestureMask
 
@@ -231,7 +231,7 @@ enum ArkUI_GestureMask
 
 Enumerates gesture masking modes. **NORMAL_GESTURE_MASK** applies to default scenarios, where child component gestures are recognized in the normal order; **IGNORE_INTERNAL_GESTURE_MASK** applies to scenarios where the parent component needs exclusive gesture control (for example, blocking gesture interference from child components during full-screen swiping), and it masks child component gestures, including system built-in gestures.
 
-<!--Device-ArkUI_GestureMask--><!--Device-ArkUI_GestureMask-End-->
+<!--Device-enum ArkUI_GestureMask--><!--Device-enum ArkUI_GestureMask-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,8 +239,8 @@ Enumerates gesture masking modes. **NORMAL_GESTURE_MASK** applies to default sce
 
 | Enum item | Description |
 | -- | -- |
-| NORMAL_GESTURE_MASK = 0 | The gestures of child components are enabled and recognized based on the default gesture recognition sequence. |
-| IGNORE_INTERNAL_GESTURE_MASK | The gestures of child components are disabled, including the built-in gestures. |
+| NORMAL_GESTURE_MASK = 0 | The gestures of child components are enabled and recognized based on the default gesture recognition sequence.<br><!--Device-NORMAL_GESTURE_MASK = 0--><!--Device-NORMAL_GESTURE_MASK = 0-End--> |
+| IGNORE_INTERNAL_GESTURE_MASK | The gestures of child components are disabled, including the built-in gestures.<br><!--Device-IGNORE_INTERNAL_GESTURE_MASK--><!--Device-IGNORE_INTERNAL_GESTURE_MASK-End--> |
 
 ### ArkUI_GestureRecognizerType
 
@@ -252,7 +252,7 @@ enum ArkUI_GestureRecognizerType
 
 Enumerates gesture recognizer types.
 
-<!--Device-ArkUI_GestureRecognizerType--><!--Device-ArkUI_GestureRecognizerType-End-->
+<!--Device-enum ArkUI_GestureRecognizerType--><!--Device-enum ArkUI_GestureRecognizerType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,15 +260,15 @@ Enumerates gesture recognizer types.
 
 | Enum item | Description |
 | -- | -- |
-| TAP_GESTURE = 0 | Tap. |
-| LONG_PRESS_GESTURE | Long press. |
-| PAN_GESTURE | Pan. |
-| PINCH_GESTURE | Pinch. |
-| ROTATION_GESTURE | Rotate. |
-| SWIPE_GESTURE | Swipe. |
-| GROUP_GESTURE | A group of gestures. |
-| CLICK_GESTURE | Click gesture registered with **onClick**.<br>**Since**: 20 |
-| DRAG_DROP | Drag-and-drop gesture.<br>**Since**: 20 |
+| TAP_GESTURE = 0 | Tap.<br><!--Device-TAP_GESTURE = 0--><!--Device-TAP_GESTURE = 0-End--> |
+| LONG_PRESS_GESTURE | Long press.<br><!--Device-LONG_PRESS_GESTURE--><!--Device-LONG_PRESS_GESTURE-End--> |
+| PAN_GESTURE | Pan.<br><!--Device-PAN_GESTURE--><!--Device-PAN_GESTURE-End--> |
+| PINCH_GESTURE | Pinch.<br><!--Device-PINCH_GESTURE--><!--Device-PINCH_GESTURE-End--> |
+| ROTATION_GESTURE | Rotate.<br><!--Device-ROTATION_GESTURE--><!--Device-ROTATION_GESTURE-End--> |
+| SWIPE_GESTURE | Swipe.<br><!--Device-SWIPE_GESTURE--><!--Device-SWIPE_GESTURE-End--> |
+| GROUP_GESTURE | A group of gestures.<br><!--Device-GROUP_GESTURE--><!--Device-GROUP_GESTURE-End--> |
+| CLICK_GESTURE | Click gesture registered with **onClick**.<br>**Since**: 20<br><!--Device-CLICK_GESTURE--><!--Device-CLICK_GESTURE-End--> |
+| DRAG_DROP | Drag-and-drop gesture.<br>**Since**: 20<br><!--Device-DRAG_DROP--><!--Device-DRAG_DROP-End--> |
 
 ### ArkUI_GestureInterruptResult
 
@@ -280,7 +280,7 @@ enum ArkUI_GestureInterruptResult
 
 Enumerates gesture interruption results.
 
-<!--Device-ArkUI_GestureInterruptResult--><!--Device-ArkUI_GestureInterruptResult-End-->
+<!--Device-enum ArkUI_GestureInterruptResult--><!--Device-enum ArkUI_GestureInterruptResult-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,8 +288,8 @@ Enumerates gesture interruption results.
 
 | Enum item | Description |
 | -- | -- |
-| GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | The gesture recognition process continues. |
-| GESTURE_INTERRUPT_RESULT_REJECT | The gesture recognition process is paused. |
+| GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | The gesture recognition process continues.<br><!--Device-GESTURE_INTERRUPT_RESULT_CONTINUE = 0--><!--Device-GESTURE_INTERRUPT_RESULT_CONTINUE = 0-End--> |
+| GESTURE_INTERRUPT_RESULT_REJECT | The gesture recognition process is paused.<br><!--Device-GESTURE_INTERRUPT_RESULT_REJECT--><!--Device-GESTURE_INTERRUPT_RESULT_REJECT-End--> |
 
 ### ArkUI_GestureRecognizerState
 
@@ -301,7 +301,7 @@ enum ArkUI_GestureRecognizerState
 
 Enumerates the gesture recognizer states.
 
-<!--Device-ArkUI_GestureRecognizerState--><!--Device-ArkUI_GestureRecognizerState-End-->
+<!--Device-enum ArkUI_GestureRecognizerState--><!--Device-enum ArkUI_GestureRecognizerState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,12 +309,12 @@ Enumerates the gesture recognizer states.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0 | Ready. |
-| ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1 | Detecting. |
-| ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2 | Pending. |
-| ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3 | Blocked. |
-| ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4 | Successful. |
-| ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5 | Failed. |
+| ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0 | Ready.<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1 | Detecting.<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2 | Pending.<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3 | Blocked.<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4 | Successful.<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5 | Failed.<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5-End--> |
 
 ### OH_ArkUI_GestureCollectIntervention
 
@@ -326,7 +326,7 @@ enum OH_ArkUI_GestureCollectIntervention
 
 Defines the intervention types for gesture and event collection.
 
-<!--Device-OH_ArkUI_GestureCollectIntervention--><!--Device-OH_ArkUI_GestureCollectIntervention-End-->
+<!--Device-enum OH_ArkUI_GestureCollectIntervention--><!--Device-enum OH_ArkUI_GestureCollectIntervention-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -334,11 +334,11 @@ Defines the intervention types for gesture and event collection.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0 | Continues the normal gesture and event collection flow. No intervention is performed.<br>**Since**: 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1 | Discards all low-priority gestures and events to be collected. <br>The gestures of the left sibling node and ancestor nodes (parent nodes and above) are discarded. <br>Only the gestures already collected on the current node and higher-priority nodes are retained.<br>**Since**: 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2 | Discards all collected high-priority gestures and events. <br>The gestures of the right sibling node and the current node are discarded. <br>Continues processing the collection flow for lower-priority gestures (left sibling and ancestor nodes).<br>**Since**: 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3 | Discards the gestures and events of the current node. <br>The gestures and events of the current node are excluded from the gesture tree. <br>The gestures of the sibling nodes (left and right) and the ancestor nodes are still collected.<br>**Since**: 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4 | Discards the gestures and events to be collected from the left sibling node. <br>The gestures and events of the current node and the collected gestures and events of the right sibling node are retained. <br>Continues processing the collection flow for the parent and ancestor nodes.<br>**Since**: 26.0.0 |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0 | Continues the normal gesture and event collection flow. No intervention is performed.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1 | Discards all low-priority gestures and events to be collected. <br>The gestures of the left sibling node and ancestor nodes (parent nodes and above) are discarded. <br>Only the gestures already collected on the current node and higher-priority nodes are retained.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2 | Discards all collected high-priority gestures and events. <br>The gestures of the right sibling node and the current node are discarded. <br>Continues processing the collection flow for lower-priority gestures (left sibling and ancestor nodes).<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3 | Discards the gestures and events of the current node. <br>The gestures and events of the current node are excluded from the gesture tree. <br>The gestures of the sibling nodes (left and right) and the ancestor nodes are still collected.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4 | Discards the gestures and events to be collected from the left sibling node. <br>The gestures and events of the current node and the collected gestures and events of the right sibling node are retained. <br>Continues processing the collection flow for the parent and ancestor nodes.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4-End--> |
 
 
 ## Function description

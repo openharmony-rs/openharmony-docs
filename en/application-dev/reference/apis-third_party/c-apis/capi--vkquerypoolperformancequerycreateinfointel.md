@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkQueryPoolSamplingModeINTEL performanceCountersSampling |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkQueryPoolSamplingModeINTEL performanceCountersSampling | <!--Device-VkQueryPoolSamplingModeINTEL performanceCountersSampling--><!--Device-VkQueryPoolSamplingModeINTEL performanceCountersSampling-End--> |
 
 

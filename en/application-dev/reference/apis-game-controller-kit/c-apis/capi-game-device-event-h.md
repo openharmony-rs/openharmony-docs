@@ -56,7 +56,7 @@ enum GameDevice_StatusChangedType
 
 Defines status change types of devices.
 
-<!--Device-GameDevice_StatusChangedType--><!--Device-GameDevice_StatusChangedType-End-->
+<!--Device-enum GameDevice_StatusChangedType--><!--Device-enum GameDevice_StatusChangedType-End-->
 
 **System capability**: SystemCapability.Game.GameController
 
@@ -64,8 +64,8 @@ Defines status change types of devices.
 
 | Enum item | Description |
 | -- | -- |
-| OFFLINE = 0 | The game device is offline.<br>**Since**: 21 |
-| ONLINE = 1 | The game device is online.<br>**Since**: 21 |
+| OFFLINE = 0 | The game device is offline.<br>**Since**: 21<br><!--Device-OFFLINE = 0--><!--Device-OFFLINE = 0-End--> |
+| ONLINE = 1 | The game device is online.<br>**Since**: 21<br><!--Device-ONLINE = 1--><!--Device-ONLINE = 1-End--> |
 
 ### GameDevice_DeviceType
 
@@ -77,7 +77,7 @@ enum GameDevice_DeviceType
 
 Defines device types.
 
-<!--Device-GameDevice_DeviceType--><!--Device-GameDevice_DeviceType-End-->
+<!--Device-enum GameDevice_DeviceType--><!--Device-enum GameDevice_DeviceType-End-->
 
 **System capability**: SystemCapability.Game.GameController
 
@@ -85,8 +85,8 @@ Defines device types.
 
 | Enum item | Description |
 | -- | -- |
-| UNKNOWN = 0 | Unknown.<br>**Since**: 21 |
-| GAME_PAD = 1 | Gamepad.<br>**Since**: 21 |
+| UNKNOWN = 0 | Unknown.<br>**Since**: 21<br><!--Device-UNKNOWN = 0--><!--Device-UNKNOWN = 0-End--> |
+| GAME_PAD = 1 | Gamepad.<br>**Since**: 21<br><!--Device-GAME_PAD = 1--><!--Device-GAME_PAD = 1-End--> |
 
 
 ## Function description

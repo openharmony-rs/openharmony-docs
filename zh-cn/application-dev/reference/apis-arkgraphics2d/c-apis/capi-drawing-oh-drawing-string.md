@@ -24,7 +24,7 @@ typedef struct OH_Drawing_String {...} OH_Drawing_String
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t* strData | 指向包含UTF-16编码的字节数组的指针。<br>**起始版本：** 14 |
-| uint32_t strLen | `strData`指向的字符串的实际长度，单位为字节。<br>**起始版本：** 14 |
+| uint8_t* strData | 指向包含UTF-16编码的字节数组的指针。<br>**起始版本：** 14<br><!--Device-uint8_t* strData--><!--Device-uint8_t* strData-End--> |
+| uint32_t strLen | `strData`指向的字符串的实际长度，单位为字节。<br>**起始版本：** 14<br><!--Device-uint32_t strLen--><!--Device-uint32_t strLen-End--> |
 
 

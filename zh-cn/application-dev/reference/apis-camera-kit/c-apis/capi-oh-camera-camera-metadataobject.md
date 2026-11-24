@@ -24,8 +24,8 @@ typedef struct Camera_MetadataObject {...} Camera_MetadataObject
 
 | 名称 | 描述 |
 | -- | -- |
-| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype) type | 元数据对象类型。 |
-| int64_t timestamp | 元数据对象时间戳，单位为纳秒（ns）。 |
-| [Camera_Rect*](capi-oh-camera-camera-rect.md) boundingBox | 检测到的元数据对象的轴对齐边界框。 |
+| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype) type | 元数据对象类型。<br><!--Device-Camera_MetadataObjectType type--><!--Device-Camera_MetadataObjectType type-End--> |
+| int64_t timestamp | 元数据对象时间戳，单位为纳秒（ns）。<br><!--Device-int64_t timestamp--><!--Device-int64_t timestamp-End--> |
+| [Camera_Rect*](capi-oh-camera-camera-rect.md) boundingBox | 检测到的元数据对象的轴对齐边界框。<br><!--Device-Camera_Rect* boundingBox--><!--Device-Camera_Rect* boundingBox-End--> |
 
 

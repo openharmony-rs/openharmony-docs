@@ -24,7 +24,7 @@ typedef struct OH_VideoInfo {...} OH_VideoInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) videoCapInfo | 视频采集信息，用于配置屏幕录制时的视频采集区域、分辨率等参数。 |
-| [OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md) videoEncInfo | 视频编码参数，用于配置屏幕录制输出的编码格式、比特率和帧率，不同编码配置将影响输出视频的画质、文件大小和编码效率。 |
+| [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) videoCapInfo | 视频采集信息，用于配置屏幕录制时的视频采集区域、分辨率等参数。<br><!--Device-OH_VideoCaptureInfo videoCapInfo--><!--Device-OH_VideoCaptureInfo videoCapInfo-End--> |
+| [OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md) videoEncInfo | 视频编码参数，用于配置屏幕录制输出的编码格式、比特率和帧率，不同编码配置将影响输出视频的画质、文件大小和编码效率。<br><!--Device-OH_VideoEncInfo videoEncInfo--><!--Device-OH_VideoEncInfo videoEncInfo-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct OH_Camera_ZoomRange {...} OH_Camera_ZoomRange
 
 | 名称 | 描述 |
 | -- | -- |
-| float minZoom | 最小变焦值。<br>**起始版本：** 24 |
-| float maxZoom | 最大变焦值。<br>**起始版本：** 24 |
+| float minZoom | 最小变焦值。<br>**起始版本：** 24<br><!--Device-float minZoom--><!--Device-float minZoom-End--> |
+| float maxZoom | 最大变焦值。<br>**起始版本：** 24<br><!--Device-float maxZoom--><!--Device-float maxZoom-End--> |
 
 

@@ -306,7 +306,7 @@ enum ArkUI_CopyOptions
 
 Enumerates the text copy and paste modes.
 
-<!--Device-ArkUI_CopyOptions--><!--Device-ArkUI_CopyOptions-End-->
+<!--Device-enum ArkUI_CopyOptions--><!--Device-enum ArkUI_CopyOptions-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,10 +314,10 @@ Enumerates the text copy and paste modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_COPY_OPTIONS_NONE = 0 | Copy is not allowed. |
-| ARKUI_COPY_OPTIONS_IN_APP | Intra-application copy is allowed. |
-| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | Intra-device copy is allowed. |
-| ARKUI_COPY_OPTIONS_CROSS_DEVICE | Cross-device copy is allowed. |
+| ARKUI_COPY_OPTIONS_NONE = 0 | Copy is not allowed.<br><!--Device-ARKUI_COPY_OPTIONS_NONE = 0--><!--Device-ARKUI_COPY_OPTIONS_NONE = 0-End--> |
+| ARKUI_COPY_OPTIONS_IN_APP | Intra-application copy is allowed.<br><!--Device-ARKUI_COPY_OPTIONS_IN_APP--><!--Device-ARKUI_COPY_OPTIONS_IN_APP-End--> |
+| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | Intra-device copy is allowed.<br><!--Device-ARKUI_COPY_OPTIONS_LOCAL_DEVICE--><!--Device-ARKUI_COPY_OPTIONS_LOCAL_DEVICE-End--> |
+| ARKUI_COPY_OPTIONS_CROSS_DEVICE | Cross-device copy is allowed.<br><!--Device-ARKUI_COPY_OPTIONS_CROSS_DEVICE--><!--Device-ARKUI_COPY_OPTIONS_CROSS_DEVICE-End--> |
 
 ### ArkUI_FocusWrapMode
 
@@ -329,7 +329,7 @@ enum ArkUI_FocusWrapMode
 
 Enumerates the focus wrap mode of components. The default value is **ARKUI_FOCUS_WRAP_MODE_DEFAULT** for the **Grid** and **List** components.
 
-<!--Device-ArkUI_FocusWrapMode--><!--Device-ArkUI_FocusWrapMode-End-->
+<!--Device-enum ArkUI_FocusWrapMode--><!--Device-enum ArkUI_FocusWrapMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,8 +337,8 @@ Enumerates the focus wrap mode of components. The default value is **ARKUI_FOCUS
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | Default mode, where focus does not wrap when arrow keys are used. |
-| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | Auto mode, where focus wraps automatically when arrow keys are used. |
+| ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | Default mode, where focus does not wrap when arrow keys are used.<br><!--Device-ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0--><!--Device-ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0-End--> |
+| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | Auto mode, where focus wraps automatically when arrow keys are used.<br><!--Device-ARKUI_FOCUS_WRAP_WITH_ARROW = 1--><!--Device-ARKUI_FOCUS_WRAP_WITH_ARROW = 1-End--> |
 
 ### ArkUI_ItemFillPolicy
 
@@ -350,7 +350,7 @@ enum ArkUI_ItemFillPolicy
 
 Enumerates column count policies for different responsive breakpoints.
 
-<!--Device-ArkUI_ItemFillPolicy--><!--Device-ArkUI_ItemFillPolicy-End-->
+<!--Device-enum ArkUI_ItemFillPolicy--><!--Device-enum ArkUI_ItemFillPolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,10 +358,10 @@ Enumerates column count policies for different responsive breakpoints.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ITEMFILLPOLICY_NONE = -1 | No responsive breakpoint policy is set. |
-| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | List** or **Swiper** component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow** component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger). |
-| ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1 | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger). |
-| ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2 | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger). |
+| ARKUI_ITEMFILLPOLICY_NONE = -1 | No responsive breakpoint policy is set.<br><!--Device-ARKUI_ITEMFILLPOLICY_NONE = -1--><!--Device-ARKUI_ITEMFILLPOLICY_NONE = -1-End--> |
+| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | **List** or **Swiper** component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow** component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).<br><!--Device-ARKUI_ITEMFILLPOLICY_DEFAULT = 0--><!--Device-ARKUI_ITEMFILLPOLICY_DEFAULT = 0-End--> |
+| ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1 | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br><!--Device-ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1--><!--Device-ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1-End--> |
+| ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2 | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).<br><!--Device-ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2--><!--Device-ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2-End--> |
 
 ### ArkUI_CrownSensitivity
 
@@ -373,7 +373,7 @@ enum ArkUI_CrownSensitivity
 
 Enumerates crown sensitivity levels.
 
-<!--Device-ArkUI_CrownSensitivity--><!--Device-ArkUI_CrownSensitivity-End-->
+<!--Device-enum ArkUI_CrownSensitivity--><!--Device-enum ArkUI_CrownSensitivity-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -381,9 +381,9 @@ Enumerates crown sensitivity levels.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_CROWN_SENSITIVITY_LOW = 0 | Low sensitivity.<br>**Since**: 26.0.0 |
-| ARKUI_CROWN_SENSITIVITY_MEDIUM = 1 | Medium sensitivity.<br>**Since**: 26.0.0 |
-| ARKUI_CROWN_SENSITIVITY_HIGH = 2 | High sensitivity.<br>**Since**: 26.0.0 |
+| ARKUI_CROWN_SENSITIVITY_LOW = 0 | Low sensitivity.<br>**Since**: 26.0.0<br><!--Device-ARKUI_CROWN_SENSITIVITY_LOW = 0--><!--Device-ARKUI_CROWN_SENSITIVITY_LOW = 0-End--> |
+| ARKUI_CROWN_SENSITIVITY_MEDIUM = 1 | Medium sensitivity.<br>**Since**: 26.0.0<br><!--Device-ARKUI_CROWN_SENSITIVITY_MEDIUM = 1--><!--Device-ARKUI_CROWN_SENSITIVITY_MEDIUM = 1-End--> |
+| ARKUI_CROWN_SENSITIVITY_HIGH = 2 | High sensitivity.<br>**Since**: 26.0.0<br><!--Device-ARKUI_CROWN_SENSITIVITY_HIGH = 2--><!--Device-ARKUI_CROWN_SENSITIVITY_HIGH = 2-End--> |
 
 ### ArkUI_BorderStyle
 
@@ -395,7 +395,7 @@ enum ArkUI_BorderStyle
 
 Enumerates the border styles.
 
-<!--Device-ArkUI_BorderStyle--><!--Device-ArkUI_BorderStyle-End-->
+<!--Device-enum ArkUI_BorderStyle--><!--Device-enum ArkUI_BorderStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -403,9 +403,9 @@ Enumerates the border styles.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border. This is the default value. |
-| ARKUI_BORDER_STYLE_DASHED | Dashed border. |
-| ARKUI_BORDER_STYLE_DOTTED | Dotted border. |
+| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border. This is the default value.<br><!--Device-ARKUI_BORDER_STYLE_SOLID = 0--><!--Device-ARKUI_BORDER_STYLE_SOLID = 0-End--> |
+| ARKUI_BORDER_STYLE_DASHED | Dashed border.<br><!--Device-ARKUI_BORDER_STYLE_DASHED--><!--Device-ARKUI_BORDER_STYLE_DASHED-End--> |
+| ARKUI_BORDER_STYLE_DOTTED | Dotted border.<br><!--Device-ARKUI_BORDER_STYLE_DOTTED--><!--Device-ARKUI_BORDER_STYLE_DOTTED-End--> |
 
 ### ArkUI_AccessibilityMode
 
@@ -417,7 +417,7 @@ enum ArkUI_AccessibilityMode
 
 Enumerates the accessibility modes.
 
-<!--Device-ArkUI_AccessibilityMode--><!--Device-ArkUI_AccessibilityMode-End-->
+<!--Device-enum ArkUI_AccessibilityMode--><!--Device-enum ArkUI_AccessibilityMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -425,10 +425,10 @@ Enumerates the accessibility modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | The mode is automatically set to enabled or disabled based on the component. |
-| ARKUI_ACCESSIBILITY_MODE_ENABLED | The component can be identified by the accessibility service. |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED | The component cannot be identified by the accessibility service. |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | The component and all its child components cannot be identified by the accessibility service. |
+| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | The mode is automatically set to enabled or disabled based on the component.<br><!--Device-ARKUI_ACCESSIBILITY_MODE_AUTO = 0--><!--Device-ARKUI_ACCESSIBILITY_MODE_AUTO = 0-End--> |
+| ARKUI_ACCESSIBILITY_MODE_ENABLED | The component can be identified by the accessibility service.<br><!--Device-ARKUI_ACCESSIBILITY_MODE_ENABLED--><!--Device-ARKUI_ACCESSIBILITY_MODE_ENABLED-End--> |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED | The component cannot be identified by the accessibility service.<br><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED--><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED-End--> |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | The component and all its child components cannot be identified by the accessibility service.<br><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS--><!--Device-ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS-End--> |
 
 ### ArkUI_AdaptiveColor
 
@@ -440,7 +440,7 @@ enum ArkUI_AdaptiveColor
 
 Enumerates the adaptive color modes.
 
-<!--Device-ArkUI_AdaptiveColor--><!--Device-ArkUI_AdaptiveColor-End-->
+<!--Device-enum ArkUI_AdaptiveColor--><!--Device-enum ArkUI_AdaptiveColor-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,8 +448,8 @@ Enumerates the adaptive color modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | Adaptive color mode is not used. |
-| ARKUI_ADAPTIVE_COLOR_AVERAGE | Adaptive color mode is used. |
+| ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | Adaptive color mode is not used.<br><!--Device-ARKUI_ADAPTIVE_COLOR_DEFAULT = 0--><!--Device-ARKUI_ADAPTIVE_COLOR_DEFAULT = 0-End--> |
+| ARKUI_ADAPTIVE_COLOR_AVERAGE | Adaptive color mode is used.<br><!--Device-ARKUI_ADAPTIVE_COLOR_AVERAGE--><!--Device-ARKUI_ADAPTIVE_COLOR_AVERAGE-End--> |
 
 ### ArkUI_ColorMode
 
@@ -461,7 +461,7 @@ enum ArkUI_ColorMode
 
 Enumerates the color modes.
 
-<!--Device-ArkUI_ColorMode--><!--Device-ArkUI_ColorMode-End-->
+<!--Device-enum ArkUI_ColorMode--><!--Device-enum ArkUI_ColorMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -469,9 +469,9 @@ Enumerates the color modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_COLOR_MODE_SYSTEM = 0 | Following the system color mode. |
-| ARKUI_COLOR_MODE_LIGHT | Light color mode. |
-| ARKUI_COLOR_MODE_DARK | Dark color mode. |
+| ARKUI_COLOR_MODE_SYSTEM = 0 | Following the system color mode.<br><!--Device-ARKUI_COLOR_MODE_SYSTEM = 0--><!--Device-ARKUI_COLOR_MODE_SYSTEM = 0-End--> |
+| ARKUI_COLOR_MODE_LIGHT | Light color mode.<br><!--Device-ARKUI_COLOR_MODE_LIGHT--><!--Device-ARKUI_COLOR_MODE_LIGHT-End--> |
+| ARKUI_COLOR_MODE_DARK | Dark color mode.<br><!--Device-ARKUI_COLOR_MODE_DARK--><!--Device-ARKUI_COLOR_MODE_DARK-End--> |
 
 ### ArkUI_SystemColorMode
 
@@ -483,7 +483,7 @@ enum ArkUI_SystemColorMode
 
 Enumerates the system color modes.
 
-<!--Device-ArkUI_SystemColorMode--><!--Device-ArkUI_SystemColorMode-End-->
+<!--Device-enum ArkUI_SystemColorMode--><!--Device-enum ArkUI_SystemColorMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -491,8 +491,8 @@ Enumerates the system color modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | Light mode. |
-| ARKUI_SYSTEM_COLOR_MODE_DARK | Dark mode. |
+| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | Light mode.<br><!--Device-ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0--><!--Device-ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0-End--> |
+| ARKUI_SYSTEM_COLOR_MODE_DARK | Dark mode.<br><!--Device-ARKUI_SYSTEM_COLOR_MODE_DARK--><!--Device-ARKUI_SYSTEM_COLOR_MODE_DARK-End--> |
 
 ### ArkUI_LengthMetricUnit
 
@@ -504,7 +504,7 @@ enum ArkUI_LengthMetricUnit
 
 Enumerates the component units.
 
-<!--Device-ArkUI_LengthMetricUnit--><!--Device-ArkUI_LengthMetricUnit-End-->
+<!--Device-enum ArkUI_LengthMetricUnit--><!--Device-enum ArkUI_LengthMetricUnit-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,10 +512,10 @@ Enumerates the component units.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts. |
-| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | The unit is px. |
-| ARKUI_LENGTH_METRIC_UNIT_VP | The unit is vp. |
-| ARKUI_LENGTH_METRIC_UNIT_FP | The unit is fp. |
+| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1--><!--Device-ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1-End--> |
+| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | The unit is px.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_PX = 0--><!--Device-ARKUI_LENGTH_METRIC_UNIT_PX = 0-End--> |
+| ARKUI_LENGTH_METRIC_UNIT_VP | The unit is vp.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_VP--><!--Device-ARKUI_LENGTH_METRIC_UNIT_VP-End--> |
+| ARKUI_LENGTH_METRIC_UNIT_FP | The unit is fp.<br><!--Device-ARKUI_LENGTH_METRIC_UNIT_FP--><!--Device-ARKUI_LENGTH_METRIC_UNIT_FP-End--> |
 
 ### ArkUI_AccessibilityCheckedState
 
@@ -527,7 +527,7 @@ enum ArkUI_AccessibilityCheckedState
 
 Enumerates the accessibility check box states.
 
-<!--Device-ArkUI_AccessibilityCheckedState--><!--Device-ArkUI_AccessibilityCheckedState-End-->
+<!--Device-enum ArkUI_AccessibilityCheckedState--><!--Device-enum ArkUI_AccessibilityCheckedState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -535,8 +535,8 @@ Enumerates the accessibility check box states.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | The check box is not selected. |
-| ARKUI_ACCESSIBILITY_CHECKED | The check box is selected. |
+| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | The check box is not selected.<br><!--Device-ARKUI_ACCESSIBILITY_UNCHECKED = 0--><!--Device-ARKUI_ACCESSIBILITY_UNCHECKED = 0-End--> |
+| ARKUI_ACCESSIBILITY_CHECKED | The check box is selected.<br><!--Device-ARKUI_ACCESSIBILITY_CHECKED--><!--Device-ARKUI_ACCESSIBILITY_CHECKED-End--> |
 
 ### ArkUI_AccessibilityActionType
 
@@ -548,7 +548,7 @@ enum ArkUI_AccessibilityActionType
 
 Enumerates the accessibility action types.
 
-<!--Device-ArkUI_AccessibilityActionType--><!--Device-ArkUI_AccessibilityActionType-End-->
+<!--Device-enum ArkUI_AccessibilityActionType--><!--Device-enum ArkUI_AccessibilityActionType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -556,11 +556,11 @@ Enumerates the accessibility action types.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | Tapping. |
-| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | Long press. |
-| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | Cut. |
-| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | Copy. |
-| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | Paste. |
+| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | Tapping.<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0--><!--Device-ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | Long press.<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1--><!--Device-ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | Cut.<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2--><!--Device-ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | Copy.<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3--><!--Device-ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3-End--> |
+| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | Paste.<br><!--Device-ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4--><!--Device-ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4-End--> |
 
 ### ArkUI_SafeAreaType
 
@@ -572,7 +572,7 @@ enum ArkUI_SafeAreaType
 
 Enumerates the types of expanded safe areas.
 
-<!--Device-ArkUI_SafeAreaType--><!--Device-ArkUI_SafeAreaType-End-->
+<!--Device-enum ArkUI_SafeAreaType--><!--Device-enum ArkUI_SafeAreaType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -580,9 +580,9 @@ Enumerates the types of expanded safe areas.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | Default non-safe area of the system, including the status bar and navigation bar. This is the default value. |
-| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | Non-safe area of the device, for example, the notch area. |
-| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | Soft keyboard area. |
+| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | Default non-safe area of the system, including the status bar and navigation bar. This is the default value.<br><!--Device-ARKUI_SAFE_AREA_TYPE_SYSTEM = 1--><!--Device-ARKUI_SAFE_AREA_TYPE_SYSTEM = 1-End--> |
+| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | Non-safe area of the device, for example, the notch area.<br><!--Device-ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1--><!--Device-ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1-End--> |
+| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | Soft keyboard area.<br><!--Device-ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2--><!--Device-ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2-End--> |
 
 ### ArkUI_KeyboardAvoidMode
 
@@ -594,7 +594,7 @@ enum ArkUI_KeyboardAvoidMode
 
 Enumerates the soft keyboard avoidance modes.
 
-<!--Device-ArkUI_KeyboardAvoidMode--><!--Device-ArkUI_KeyboardAvoidMode-End-->
+<!--Device-enum ArkUI_KeyboardAvoidMode--><!--Device-enum ArkUI_KeyboardAvoidMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -602,8 +602,8 @@ Enumerates the soft keyboard avoidance modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | Automatically avoids the soft keyboard and compresses the height when reaching the maximum limit. |
-| ARKUI_KEYBOARD_AVOID_MODE_NONE | The layout is not adjusted to avoid the keyboard. |
+| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | Automatically avoids the soft keyboard and compresses the height when reaching the maximum limit.<br><!--Device-ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0--><!--Device-ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0-End--> |
+| ARKUI_KEYBOARD_AVOID_MODE_NONE | The layout is not adjusted to avoid the keyboard.<br><!--Device-ARKUI_KEYBOARD_AVOID_MODE_NONE--><!--Device-ARKUI_KEYBOARD_AVOID_MODE_NONE-End--> |
 
 ### ArkUI_HoverModeAreaType
 
@@ -615,7 +615,7 @@ enum ArkUI_HoverModeAreaType
 
 Enumerates the types of display areas for the hover mode.
 
-<!--Device-ArkUI_HoverModeAreaType--><!--Device-ArkUI_HoverModeAreaType-End-->
+<!--Device-enum ArkUI_HoverModeAreaType--><!--Device-enum ArkUI_HoverModeAreaType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,8 +623,8 @@ Enumerates the types of display areas for the hover mode.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | Upper half screen. |
-| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | Lower half screen. |
+| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | Upper half screen.<br><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0--><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0-End--> |
+| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | Lower half screen.<br><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM--><!--Device-ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM-End--> |
 
 ### ArkUI_ExpandMode
 
@@ -636,7 +636,7 @@ enum ArkUI_ExpandMode
 
 Enumerates the expansion mode of child nodes.
 
-<!--Device-ArkUI_ExpandMode--><!--Device-ArkUI_ExpandMode-End-->
+<!--Device-enum ArkUI_ExpandMode--><!--Device-enum ArkUI_ExpandMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -644,9 +644,9 @@ Enumerates the expansion mode of child nodes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_NOT_EXPAND = 0 | Child nodes are not expanded. |
-| ARKUI_EXPAND = 1 | Child nodes are expanded immediately upon rendering. |
-| ARKUI_LAZY_EXPAND = 2 | Lazy expansion, indicating that child nodes are only expanded when needed. For details about the node expansion conditions, see LazyForEach: Lazy Data Loading. |
+| ARKUI_NOT_EXPAND = 0 | Child nodes are not expanded.<br><!--Device-ARKUI_NOT_EXPAND = 0--><!--Device-ARKUI_NOT_EXPAND = 0-End--> |
+| ARKUI_EXPAND = 1 | Child nodes are expanded immediately upon rendering.<br><!--Device-ARKUI_EXPAND = 1--><!--Device-ARKUI_EXPAND = 1-End--> |
+| ARKUI_LAZY_EXPAND = 2 | Lazy expansion, indicating that child nodes are only expanded when needed. For details about the node expansion conditions, see LazyForEach: Lazy Data Loading.<br><!--Device-ARKUI_LAZY_EXPAND = 2--><!--Device-ARKUI_LAZY_EXPAND = 2-End--> |
 
 ### ArkUI_EdgeDirection
 
@@ -658,7 +658,7 @@ enum ArkUI_EdgeDirection
 
 Enumerates rectangle edge directions.
 
-<!--Device-ArkUI_EdgeDirection--><!--Device-ArkUI_EdgeDirection-End-->
+<!--Device-enum ArkUI_EdgeDirection--><!--Device-enum ArkUI_EdgeDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -666,11 +666,11 @@ Enumerates rectangle edge directions.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_EDGE_DIRECTION_ALL = 0 | All four edges. |
-| ARKUI_EDGE_DIRECTION_LEFT | Left edge. |
-| ARKUI_EDGE_DIRECTION_RIGHT | Right edge. |
-| ARKUI_EDGE_DIRECTION_TOP | Top edge. |
-| ARKUI_EDGE_DIRECTION_BOTTOM | Bottom edge. |
+| ARKUI_EDGE_DIRECTION_ALL = 0 | All four edges.<br><!--Device-ARKUI_EDGE_DIRECTION_ALL = 0--><!--Device-ARKUI_EDGE_DIRECTION_ALL = 0-End--> |
+| ARKUI_EDGE_DIRECTION_LEFT | Left edge.<br><!--Device-ARKUI_EDGE_DIRECTION_LEFT--><!--Device-ARKUI_EDGE_DIRECTION_LEFT-End--> |
+| ARKUI_EDGE_DIRECTION_RIGHT | Right edge.<br><!--Device-ARKUI_EDGE_DIRECTION_RIGHT--><!--Device-ARKUI_EDGE_DIRECTION_RIGHT-End--> |
+| ARKUI_EDGE_DIRECTION_TOP | Top edge.<br><!--Device-ARKUI_EDGE_DIRECTION_TOP--><!--Device-ARKUI_EDGE_DIRECTION_TOP-End--> |
+| ARKUI_EDGE_DIRECTION_BOTTOM | Bottom edge.<br><!--Device-ARKUI_EDGE_DIRECTION_BOTTOM--><!--Device-ARKUI_EDGE_DIRECTION_BOTTOM-End--> |
 
 ### ArkUI_CornerDirection
 
@@ -682,7 +682,7 @@ enum ArkUI_CornerDirection
 
 Enumerates corner directions.
 
-<!--Device-ArkUI_CornerDirection--><!--Device-ArkUI_CornerDirection-End-->
+<!--Device-enum ArkUI_CornerDirection--><!--Device-enum ArkUI_CornerDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -690,11 +690,11 @@ Enumerates corner directions.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_CORNER_DIRECTION_ALL = 0 | All four corners. |
-| ARKUI_CORNER_DIRECTION_TOP_LEFT | Upper left corner. |
-| ARKUI_CORNER_DIRECTION_TOP_RIGHT | Upper right corner. |
-| ARKUI_CORNER_DIRECTION_BOTTOM_LEFT | Lower left corner. |
-| ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT | Lower right corner. |
+| ARKUI_CORNER_DIRECTION_ALL = 0 | All four corners.<br><!--Device-ARKUI_CORNER_DIRECTION_ALL = 0--><!--Device-ARKUI_CORNER_DIRECTION_ALL = 0-End--> |
+| ARKUI_CORNER_DIRECTION_TOP_LEFT | Upper left corner.<br><!--Device-ARKUI_CORNER_DIRECTION_TOP_LEFT--><!--Device-ARKUI_CORNER_DIRECTION_TOP_LEFT-End--> |
+| ARKUI_CORNER_DIRECTION_TOP_RIGHT | Upper right corner.<br><!--Device-ARKUI_CORNER_DIRECTION_TOP_RIGHT--><!--Device-ARKUI_CORNER_DIRECTION_TOP_RIGHT-End--> |
+| ARKUI_CORNER_DIRECTION_BOTTOM_LEFT | Lower left corner.<br><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_LEFT--><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_LEFT-End--> |
+| ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT | Lower right corner.<br><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT--><!--Device-ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT-End--> |
 
 ### ArkUI_MenuPolicy
 
@@ -706,7 +706,7 @@ enum ArkUI_MenuPolicy
 
 Enumerates menu display policies.
 
-<!--Device-ArkUI_MenuPolicy--><!--Device-ArkUI_MenuPolicy-End-->
+<!--Device-enum ArkUI_MenuPolicy--><!--Device-enum ArkUI_MenuPolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -714,9 +714,9 @@ Enumerates menu display policies.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MENU_POLICY_DEFAULT = 0 | Whether the menu is displayed depends on the underlying default logic. |
-| ARKUI_MENU_POLICY_HIDE = 1 | The menu is not popped up. |
-| ARKUI_MENU_POLICY_SHOW = 2 | The menu is popped up. |
+| ARKUI_MENU_POLICY_DEFAULT = 0 | Whether the menu is displayed depends on the underlying default logic.<br><!--Device-ARKUI_MENU_POLICY_DEFAULT = 0--><!--Device-ARKUI_MENU_POLICY_DEFAULT = 0-End--> |
+| ARKUI_MENU_POLICY_HIDE = 1 | The menu is not popped up.<br><!--Device-ARKUI_MENU_POLICY_HIDE = 1--><!--Device-ARKUI_MENU_POLICY_HIDE = 1-End--> |
+| ARKUI_MENU_POLICY_SHOW = 2 | The menu is popped up.<br><!--Device-ARKUI_MENU_POLICY_SHOW = 2--><!--Device-ARKUI_MENU_POLICY_SHOW = 2-End--> |
 
 ### ArkUI_RenderStrategy
 
@@ -728,7 +728,7 @@ enum ArkUI_RenderStrategy
 
 Enumerates strategies for drawing rounded corners.
 
-<!--Device-ArkUI_RenderStrategy--><!--Device-ArkUI_RenderStrategy-End-->
+<!--Device-enum ArkUI_RenderStrategy--><!--Device-enum ArkUI_RenderStrategy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -736,8 +736,8 @@ Enumerates strategies for drawing rounded corners.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST = 0 | Online drawing mode. |
-| ARKUI_RENDERSTRATEGY_OFFSCREEN | Off-screen drawing mode. |
+| ARKUI_RENDERSTRATEGY_FAST = 0 | Online drawing mode.<br><!--Device-ARKUI_RENDERSTRATEGY_FAST = 0--><!--Device-ARKUI_RENDERSTRATEGY_FAST = 0-End--> |
+| ARKUI_RENDERSTRATEGY_OFFSCREEN | Off-screen drawing mode.<br><!--Device-ARKUI_RENDERSTRATEGY_OFFSCREEN--><!--Device-ARKUI_RENDERSTRATEGY_OFFSCREEN-End--> |
 
 ### OH_ArkUI_CrossLanguageOperatingStatus
 
@@ -749,7 +749,7 @@ enum OH_ArkUI_CrossLanguageOperatingStatus
 
 Enumerates the node tree operation states of cross-language configuration options.
 
-<!--Device-OH_ArkUI_CrossLanguageOperatingStatus--><!--Device-OH_ArkUI_CrossLanguageOperatingStatus-End-->
+<!--Device-enum OH_ArkUI_CrossLanguageOperatingStatus--><!--Device-enum OH_ArkUI_CrossLanguageOperatingStatus-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -757,9 +757,9 @@ Enumerates the node tree operation states of cross-language configuration option
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0 | Undefined, which is the initial value of the node tree operation state. Nodes in this state do not support cross-language node tree operations.<br>**Since**: 26.0.0 |
-| OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1 | Enabled, which indicates that when the configuration option is applied to a node, the node tree operation state of the node will be enabled.<br>**Since**: 26.0.0 |
-| OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2 | Disabled, which indicates that when the configuration option is applied to a node, the node tree operation state of the node will be disabled.<br>**Since**: 26.0.0 |
+| OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0 | Undefined, which is the initial value of the node tree operation state. Nodes in this state do not support cross-language node tree operations.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0--><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0-End--> |
+| OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1 | Enabled, which indicates that when the configuration option is applied to a node, the node tree operation state of the node will be enabled.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1--><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1-End--> |
+| OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2 | Disabled, which indicates that when the configuration option is applied to a node, the node tree operation state of the node will be disabled.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2--><!--Device-OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2-End--> |
 
 ### OH_ArkUI_NodeMountPolicy
 
@@ -771,7 +771,7 @@ enum OH_ArkUI_NodeMountPolicy
 
 Enumerates the child node mounting policy types.
 
-<!--Device-OH_ArkUI_NodeMountPolicy--><!--Device-OH_ArkUI_NodeMountPolicy-End-->
+<!--Device-enum OH_ArkUI_NodeMountPolicy--><!--Device-enum OH_ArkUI_NodeMountPolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -779,8 +779,8 @@ Enumerates the child node mounting policy types.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0 | If a RenderNode needs to be mounted as a child node, this RenderNode must be the only child node.<br>**Since**: 26.0.0 |
-| OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1 | Multiple typeNodes and RenderNodes can be mounted at the same time.<br>**Since**: 26.0.0 |
+| OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0 | If a RenderNode needs to be mounted as a child node, this RenderNode must be the only child node.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0--><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0-End--> |
+| OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1 | Multiple typeNodes and RenderNodes can be mounted at the same time.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1--><!--Device-OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1-End--> |
 
 ### OH_ArkUI_ArcDirection
 
@@ -792,7 +792,7 @@ enum OH_ArkUI_ArcDirection
 
 Enumerates arc directions.
 
-<!--Device-OH_ArkUI_ArcDirection--><!--Device-OH_ArkUI_ArcDirection-End-->
+<!--Device-enum OH_ArkUI_ArcDirection--><!--Device-enum OH_ArkUI_ArcDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -800,9 +800,9 @@ Enumerates arc directions.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_ARCDIRECTION_THREE_CLOCK_DIRECTION = 0 | 3 o'clock direction.<br>**Since**: 26.0.1 |
-| OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION = 1 | 6 o'clock direction.<br>**Since**: 26.0.1 |
-| OH_ARKUI_ARCDIRECTION_NINE_CLOCK_DIRECTION = 2 | 9 o'clock direction.<br>**Since**: 26.0.1 |
+| OH_ARKUI_ARCDIRECTION_THREE_CLOCK_DIRECTION = 0 | 3 o'clock direction.<br>**Since**: 26.0.1<br><!--Device-OH_ARKUI_ARCDIRECTION_THREE_CLOCK_DIRECTION = 0--><!--Device-OH_ARKUI_ARCDIRECTION_THREE_CLOCK_DIRECTION = 0-End--> |
+| OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION = 1 | 6 o'clock direction.<br>**Since**: 26.0.1<br><!--Device-OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION = 1--><!--Device-OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION = 1-End--> |
+| OH_ARKUI_ARCDIRECTION_NINE_CLOCK_DIRECTION = 2 | 9 o'clock direction.<br>**Since**: 26.0.1<br><!--Device-OH_ARKUI_ARCDIRECTION_NINE_CLOCK_DIRECTION = 2--><!--Device-OH_ARKUI_ARCDIRECTION_NINE_CLOCK_DIRECTION = 2-End--> |
 
 
 ## Function description

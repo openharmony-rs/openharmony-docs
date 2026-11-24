@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint64_t address |  |
-| uint32_t length |  |
-| uint32_t recv_skip_hint |  |
+| uint64_t address | <!--Device-uint64_t address--><!--Device-uint64_t address-End--> |
+| uint32_t length | <!--Device-uint32_t length--><!--Device-uint32_t length-End--> |
+| uint32_t recv_skip_hint | <!--Device-uint32_t recv_skip_hint--><!--Device-uint32_t recv_skip_hint-End--> |
 
 

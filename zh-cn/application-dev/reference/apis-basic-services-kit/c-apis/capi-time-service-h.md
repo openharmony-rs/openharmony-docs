@@ -38,7 +38,7 @@ enum TimeService_ErrCode
 
 枚举错误码。
 
-<!--Device-TimeService_ErrCode--><!--Device-TimeService_ErrCode-End-->
+<!--Device-enum TimeService_ErrCode--><!--Device-enum TimeService_ErrCode-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -46,9 +46,9 @@ enum TimeService_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TIMESERVICE_ERR_OK = 0 | 成功。 |
-| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | 获取系统参数失败。请稍后重试，若问题持续存在请检查系统服务状态。 |
-| TIMESERVICE_ERR_INVALID_PARAMETER = 13000002 | 无效的参数。请检查timeZone是否为NULL指针，或时区名称（不包括结束字符（'\0'））的大小是否大于或等于len。 |
+| TIMESERVICE_ERR_OK = 0 | 成功。<br><!--Device-TIMESERVICE_ERR_OK = 0--><!--Device-TIMESERVICE_ERR_OK = 0-End--> |
+| TIMESERVICE_ERR_INTERNAL_ERROR = 13000001 | 获取系统参数失败。请稍后重试，若问题持续存在请检查系统服务状态。<br><!--Device-TIMESERVICE_ERR_INTERNAL_ERROR = 13000001--><!--Device-TIMESERVICE_ERR_INTERNAL_ERROR = 13000001-End--> |
+| TIMESERVICE_ERR_INVALID_PARAMETER = 13000002 | 无效的参数。请检查timeZone是否为NULL指针，或时区名称（不包括结束字符（'\0'））的大小是否大于或等于len。<br><!--Device-TIMESERVICE_ERR_INVALID_PARAMETER = 13000002--><!--Device-TIMESERVICE_ERR_INVALID_PARAMETER = 13000002-End--> |
 
 
 ## 函数说明

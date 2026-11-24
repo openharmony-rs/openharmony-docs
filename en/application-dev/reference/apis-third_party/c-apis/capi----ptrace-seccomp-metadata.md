@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint64_t filter_off |  |
-| uint64_t flags |  |
+| uint64_t filter_off | <!--Device-uint64_t filter_off--><!--Device-uint64_t filter_off-End--> |
+| uint64_t flags | <!--Device-uint64_t flags--><!--Device-uint64_t flags-End--> |
 
 

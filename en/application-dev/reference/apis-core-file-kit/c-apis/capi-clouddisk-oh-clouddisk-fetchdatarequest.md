@@ -24,7 +24,7 @@ A struct that encapsulates the fetch data request information.
 
 | Name | Description |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | Relative file path in the sync root path.<br>**Since**: 26.0.1 |
-| [OH_CloudDisk_HydratePriority](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_hydratepriority) priority | Hydrate priority.<br>**Since**: 26.0.1 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | Relative file path in the sync root path.<br>**Since**: 26.0.1<br><!--Device-CloudDisk_PathInfo filePath--><!--Device-CloudDisk_PathInfo filePath-End--> |
+| [OH_CloudDisk_HydratePriority](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_hydratepriority) priority | Hydrate priority.<br>**Since**: 26.0.1<br><!--Device-OH_CloudDisk_HydratePriority priority--><!--Device-OH_CloudDisk_HydratePriority priority-End--> |
 
 

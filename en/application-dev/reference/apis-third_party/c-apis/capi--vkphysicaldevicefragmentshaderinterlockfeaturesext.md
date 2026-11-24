@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 fragmentShaderSampleInterlock |  |
-| VkBool32 fragmentShaderPixelInterlock |  |
-| VkBool32 fragmentShaderShadingRateInterlock |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 fragmentShaderSampleInterlock | <!--Device-VkBool32 fragmentShaderSampleInterlock--><!--Device-VkBool32 fragmentShaderSampleInterlock-End--> |
+| VkBool32 fragmentShaderPixelInterlock | <!--Device-VkBool32 fragmentShaderPixelInterlock--><!--Device-VkBool32 fragmentShaderPixelInterlock-End--> |
+| VkBool32 fragmentShaderShadingRateInterlock | <!--Device-VkBool32 fragmentShaderShadingRateInterlock--><!--Device-VkBool32 fragmentShaderShadingRateInterlock-End--> |
 
 

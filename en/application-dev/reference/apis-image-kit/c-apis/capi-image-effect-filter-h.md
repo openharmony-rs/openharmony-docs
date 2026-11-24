@@ -96,7 +96,7 @@ enum ImageEffect_DataType
 
 Enumerates the data type
 
-<!--Device-ImageEffect_DataType--><!--Device-ImageEffect_DataType-End-->
+<!--Device-enum ImageEffect_DataType--><!--Device-enum ImageEffect_DataType-End-->
 
 **System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
@@ -104,14 +104,14 @@ Enumerates the data type
 
 | Enum item | Description |
 | -- | -- |
-| EFFECT_DATA_TYPE_UNKNOWN = 0 | unknown data type |
-| EFFECT_DATA_TYPE_INT32 = 1 | int32_t data type |
-| EFFECT_DATA_TYPE_FLOAT = 2 | float data type |
-| EFFECT_DATA_TYPE_DOUBLE = 3 | double data type |
-| EFFECT_DATA_TYPE_CHAR = 4 | char data type |
-| EFFECT_DATA_TYPE_LONG = 5 | long data type |
-| EFFECT_DATA_TYPE_BOOL = 6 | bool data type |
-| EFFECT_DATA_TYPE_PTR = 7 | point data type |
+| EFFECT_DATA_TYPE_UNKNOWN = 0 | unknown data type<br><!--Device-EFFECT_DATA_TYPE_UNKNOWN = 0--><!--Device-EFFECT_DATA_TYPE_UNKNOWN = 0-End--> |
+| EFFECT_DATA_TYPE_INT32 = 1 | int32_t data type<br><!--Device-EFFECT_DATA_TYPE_INT32 = 1--><!--Device-EFFECT_DATA_TYPE_INT32 = 1-End--> |
+| EFFECT_DATA_TYPE_FLOAT = 2 | float data type<br><!--Device-EFFECT_DATA_TYPE_FLOAT = 2--><!--Device-EFFECT_DATA_TYPE_FLOAT = 2-End--> |
+| EFFECT_DATA_TYPE_DOUBLE = 3 | double data type<br><!--Device-EFFECT_DATA_TYPE_DOUBLE = 3--><!--Device-EFFECT_DATA_TYPE_DOUBLE = 3-End--> |
+| EFFECT_DATA_TYPE_CHAR = 4 | char data type<br><!--Device-EFFECT_DATA_TYPE_CHAR = 4--><!--Device-EFFECT_DATA_TYPE_CHAR = 4-End--> |
+| EFFECT_DATA_TYPE_LONG = 5 | long data type<br><!--Device-EFFECT_DATA_TYPE_LONG = 5--><!--Device-EFFECT_DATA_TYPE_LONG = 5-End--> |
+| EFFECT_DATA_TYPE_BOOL = 6 | bool data type<br><!--Device-EFFECT_DATA_TYPE_BOOL = 6--><!--Device-EFFECT_DATA_TYPE_BOOL = 6-End--> |
+| EFFECT_DATA_TYPE_PTR = 7 | point data type<br><!--Device-EFFECT_DATA_TYPE_PTR = 7--><!--Device-EFFECT_DATA_TYPE_PTR = 7-End--> |
 
 ### ImageEffect_Format
 
@@ -123,7 +123,7 @@ enum ImageEffect_Format
 
 Enumerates the pixel format type
 
-<!--Device-ImageEffect_Format--><!--Device-ImageEffect_Format-End-->
+<!--Device-enum ImageEffect_Format--><!--Device-enum ImageEffect_Format-End-->
 
 **System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
@@ -131,13 +131,13 @@ Enumerates the pixel format type
 
 | Enum item | Description |
 | -- | -- |
-| EFFECT_PIXEL_FORMAT_UNKNOWN = 0 | Unknown pixel format |
-| EFFECT_PIXEL_FORMAT_RGBA8888 = 1 | RGBA8888 pixel format |
-| EFFECT_PIXEL_FORMAT_NV21 = 2 | NV21 pixel format |
-| EFFECT_PIXEL_FORMAT_NV12 = 3 | NV12 pixel format |
-| EFFECT_PIXEL_FORMAT_RGBA1010102 = 4 | RGBA 10bit pixel format |
-| EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5 | YCBCR420 semi-planar 10bit pixel format |
-| EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6 | YCRCB420 semi-planar 10bit pixel format |
+| EFFECT_PIXEL_FORMAT_UNKNOWN = 0 | Unknown pixel format<br><!--Device-EFFECT_PIXEL_FORMAT_UNKNOWN = 0--><!--Device-EFFECT_PIXEL_FORMAT_UNKNOWN = 0-End--> |
+| EFFECT_PIXEL_FORMAT_RGBA8888 = 1 | RGBA8888 pixel format<br><!--Device-EFFECT_PIXEL_FORMAT_RGBA8888 = 1--><!--Device-EFFECT_PIXEL_FORMAT_RGBA8888 = 1-End--> |
+| EFFECT_PIXEL_FORMAT_NV21 = 2 | NV21 pixel format<br><!--Device-EFFECT_PIXEL_FORMAT_NV21 = 2--><!--Device-EFFECT_PIXEL_FORMAT_NV21 = 2-End--> |
+| EFFECT_PIXEL_FORMAT_NV12 = 3 | NV12 pixel format<br><!--Device-EFFECT_PIXEL_FORMAT_NV12 = 3--><!--Device-EFFECT_PIXEL_FORMAT_NV12 = 3-End--> |
+| EFFECT_PIXEL_FORMAT_RGBA1010102 = 4 | RGBA 10bit pixel format<br><!--Device-EFFECT_PIXEL_FORMAT_RGBA1010102 = 4--><!--Device-EFFECT_PIXEL_FORMAT_RGBA1010102 = 4-End--> |
+| EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5 | YCBCR420 semi-planar 10bit pixel format<br><!--Device-EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5--><!--Device-EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5-End--> |
+| EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6 | YCRCB420 semi-planar 10bit pixel format<br><!--Device-EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6--><!--Device-EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6-End--> |
 
 ### ImageEffect_BufferType
 
@@ -149,7 +149,7 @@ enum ImageEffect_BufferType
 
 Enumerates the effect buffer type
 
-<!--Device-ImageEffect_BufferType--><!--Device-ImageEffect_BufferType-End-->
+<!--Device-enum ImageEffect_BufferType--><!--Device-enum ImageEffect_BufferType-End-->
 
 **System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
@@ -157,9 +157,9 @@ Enumerates the effect buffer type
 
 | Enum item | Description |
 | -- | -- |
-| EFFECT_BUFFER_TYPE_UNKNOWN = 0 | Unknown buffer type |
-| EFFECT_BUFFER_TYPE_PIXEL = 1 | Pixel buffer type |
-| EFFECT_BUFFER_TYPE_TEXTURE = 2 | Texture buffer type |
+| EFFECT_BUFFER_TYPE_UNKNOWN = 0 | Unknown buffer type<br><!--Device-EFFECT_BUFFER_TYPE_UNKNOWN = 0--><!--Device-EFFECT_BUFFER_TYPE_UNKNOWN = 0-End--> |
+| EFFECT_BUFFER_TYPE_PIXEL = 1 | Pixel buffer type<br><!--Device-EFFECT_BUFFER_TYPE_PIXEL = 1--><!--Device-EFFECT_BUFFER_TYPE_PIXEL = 1-End--> |
+| EFFECT_BUFFER_TYPE_TEXTURE = 2 | Texture buffer type<br><!--Device-EFFECT_BUFFER_TYPE_TEXTURE = 2--><!--Device-EFFECT_BUFFER_TYPE_TEXTURE = 2-End--> |
 
 
 ## Function description

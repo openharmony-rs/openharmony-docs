@@ -24,7 +24,7 @@ The struct describes the parameters related to a point.
 
 | Name | Description |
 | -- | -- |
-| double x | X coordinate. The value range is [0,1]. |
-| double y | Y coordinate. The value range is [0,1]. |
+| double x | X coordinate. The value range is [0,1].<br><!--Device-double x--><!--Device-double x-End--> |
+| double y | Y coordinate. The value range is [0,1].<br><!--Device-double y--><!--Device-double y-End--> |
 
 

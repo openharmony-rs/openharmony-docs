@@ -24,7 +24,7 @@ The struct describes the audio encoding information.
 
 | Name | Description |
 | -- | -- |
-| int32_t audioBitrate | Audio encoder bitrate, in bit/s |
-| [OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat) audioCodecformat | Audio codec format |
+| int32_t audioBitrate | Audio encoder bitrate, in bit/s<br><!--Device-int32_t audioBitrate--><!--Device-int32_t audioBitrate-End--> |
+| [OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat) audioCodecformat | Audio codec format<br><!--Device-OH_AudioCodecFormat audioCodecformat--><!--Device-OH_AudioCodecFormat audioCodecformat-End--> |
 
 

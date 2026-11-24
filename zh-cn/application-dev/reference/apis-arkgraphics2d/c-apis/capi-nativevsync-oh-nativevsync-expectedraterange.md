@@ -24,8 +24,8 @@ typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRat
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t min | 帧率范围的最小帧率。 |
-| int32_t max | 帧率范围的最大帧率。 |
-| int32_t expected | 帧率范围的期望帧率。 |
+| int32_t min | 帧率范围的最小帧率。<br><!--Device-int32_t min--><!--Device-int32_t min-End--> |
+| int32_t max | 帧率范围的最大帧率。<br><!--Device-int32_t max--><!--Device-int32_t max-End--> |
+| int32_t expected | 帧率范围的期望帧率。<br><!--Device-int32_t expected--><!--Device-int32_t expected-End--> |
 
 

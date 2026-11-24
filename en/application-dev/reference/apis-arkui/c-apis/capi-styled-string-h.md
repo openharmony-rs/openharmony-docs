@@ -310,7 +310,7 @@ enum OH_ArkUI_StyledStringKey
 
 Enumerates the styles of a styled string.
 
-<!--Device-OH_ArkUI_StyledStringKey--><!--Device-OH_ArkUI_StyledStringKey-End-->
+<!--Device-enum OH_ArkUI_StyledStringKey--><!--Device-enum OH_ArkUI_StyledStringKey-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,21 +318,21 @@ Enumerates the styles of a styled string.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1 | No style is specified.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | Text font style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | Text decorative line style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | Text baseline offset style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | Text letter spacing style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | Text shadow style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | Text line height style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | Text background color style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | URL style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8 | Text line spacing style.<br>**Since**: 26.0.0 |
-| OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100 | Gesture style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200 | Text paragraph style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300 | Image style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400 | Custom span style.<br>**Since**: 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500 | User data span style.<br>**Since**: 24 |
+| OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1 | No style is specified.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | Text font style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_FONT = 0--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_FONT = 0-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | Text decorative line style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | Text baseline offset style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | Text letter spacing style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | Text shadow style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | Text line height style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | Text background color style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | URL style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_URL = 7--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_URL = 7-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8 | Text line spacing style.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100 | Gesture style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200 | Text paragraph style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300 | Image style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400 | Custom span style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500 | User data span style.<br>**Since**: 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500-End--> |
 
 ### OH_ArkUI_SuperscriptStyle
 
@@ -344,7 +344,7 @@ enum OH_ArkUI_SuperscriptStyle
 
 Enumerates the text superscript and subscript styles.
 
-<!--Device-OH_ArkUI_SuperscriptStyle--><!--Device-OH_ArkUI_SuperscriptStyle-End-->
+<!--Device-enum OH_ArkUI_SuperscriptStyle--><!--Device-enum OH_ArkUI_SuperscriptStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,9 +352,9 @@ Enumerates the text superscript and subscript styles.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0 | Normal text style.<br>**Since**: 24 |
-| OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT | Superscript text style.<br>**Since**: 24 |
-| OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT | Subscript text style.<br>**Since**: 24 |
+| OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0 | Normal text style.<br>**Since**: 24<br><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0--><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0-End--> |
+| OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT | Superscript text style.<br>**Since**: 24<br><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT--><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT-End--> |
+| OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT | Subscript text style.<br>**Since**: 24<br><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT--><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT-End--> |
 
 ### OH_ArkUI_TextEncoding
 
@@ -366,7 +366,7 @@ enum OH_ArkUI_TextEncoding
 
 Enumerates the text encoding types supported by ArkUI text layout query APIs.
 
-<!--Device-OH_ArkUI_TextEncoding--><!--Device-OH_ArkUI_TextEncoding-End-->
+<!--Device-enum OH_ArkUI_TextEncoding--><!--Device-enum OH_ArkUI_TextEncoding-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,8 +374,8 @@ Enumerates the text encoding types supported by ArkUI text layout query APIs.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_TEXT_ENCODING_UTF8 = 0 | UTF-8 encoding. Character positions and character ranges are calculated by UTF-8 byte offsets.<br>**Since**: 26.0.0 |
-| OH_ARKUI_TEXT_ENCODING_UTF16 = 1 | UTF-16 encoding. Character positions and character ranges are calculated by UTF-16 code unit offsets.<br>**Since**: 26.0.0 |
+| OH_ARKUI_TEXT_ENCODING_UTF8 = 0 | UTF-8 encoding. Character positions and character ranges are calculated by UTF-8 byte offsets.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_TEXT_ENCODING_UTF8 = 0--><!--Device-OH_ARKUI_TEXT_ENCODING_UTF8 = 0-End--> |
+| OH_ARKUI_TEXT_ENCODING_UTF16 = 1 | UTF-16 encoding. Character positions and character ranges are calculated by UTF-16 code unit offsets.<br>**Since**: 26.0.0<br><!--Device-OH_ARKUI_TEXT_ENCODING_UTF16 = 1--><!--Device-OH_ARKUI_TEXT_ENCODING_UTF16 = 1-End--> |
 
 
 ## Function description

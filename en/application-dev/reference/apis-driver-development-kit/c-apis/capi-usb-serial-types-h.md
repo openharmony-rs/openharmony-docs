@@ -43,7 +43,7 @@ enum UsbSerial_DdkRetCode
 
 Defines the return codes used by the USB Serial DDK.
 
-<!--Device-UsbSerial_DdkRetCode--><!--Device-UsbSerial_DdkRetCode-End-->
+<!--Device-enum UsbSerial_DdkRetCode--><!--Device-enum UsbSerial_DdkRetCode-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -51,15 +51,15 @@ Defines the return codes used by the USB Serial DDK.
 
 | Enum item | Description |
 | -- | -- |
-| USB_SERIAL_DDK_NO_PERM = 201 | No access permission. Ensure that the required permissions are declared in the **module.json5** file of the app. |
-| USB_SERIAL_DDK_INVALID_PARAMETER = 401 | Invalid parameter. Ensure that the input parameter value is within the valid range. For details, see the parameter description of the related API. |
-| USB_SERIAL_DDK_SUCCESS = 31600000 | Operation success. |
-| USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | Invalid operation. For example, an invalid device handle is used. Ensure that the device is properly opened. |
-| USB_SERIAL_DDK_INIT_ERROR = 31600002 | Initialization error. Initialize the DDK service first. |
-| USB_SERIAL_DDK_SERVICE_ERROR = 31600003 | Service error. Check whether the DDK service status and API calling logic are normal. |
-| USB_SERIAL_DDK_MEMORY_ERROR = 31600004 | Memory-related errors, such as insufficient memory, memory data replication failure, or memory request failure. You are advised to optimize memory parameters and release unnecessary resources in a timely manner. |
-| USB_SERIAL_DDK_IO_ERROR = 31600005 | I/O error. Check whether the device connection is normal, whether the transmission cable is intact, and whether the device is working properly. |
-| USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006 | Device not found. Check the parameters and device connection status. |
+| USB_SERIAL_DDK_NO_PERM = 201 | No access permission. Ensure that the required permissions are declared in the **module.json5** file of the app.<br><!--Device-USB_SERIAL_DDK_NO_PERM = 201--><!--Device-USB_SERIAL_DDK_NO_PERM = 201-End--> |
+| USB_SERIAL_DDK_INVALID_PARAMETER = 401 | Invalid parameter. Ensure that the input parameter value is within the valid range. For details, see the parameter description of the related API.<br><!--Device-USB_SERIAL_DDK_INVALID_PARAMETER = 401--><!--Device-USB_SERIAL_DDK_INVALID_PARAMETER = 401-End--> |
+| USB_SERIAL_DDK_SUCCESS = 31600000 | Operation success.<br><!--Device-USB_SERIAL_DDK_SUCCESS = 31600000--><!--Device-USB_SERIAL_DDK_SUCCESS = 31600000-End--> |
+| USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | Invalid operation. For example, an invalid device handle is used. Ensure that the device is properly opened.<br><!--Device-USB_SERIAL_DDK_INVALID_OPERATION = 31600001--><!--Device-USB_SERIAL_DDK_INVALID_OPERATION = 31600001-End--> |
+| USB_SERIAL_DDK_INIT_ERROR = 31600002 | Initialization error. Initialize the DDK service first.<br><!--Device-USB_SERIAL_DDK_INIT_ERROR = 31600002--><!--Device-USB_SERIAL_DDK_INIT_ERROR = 31600002-End--> |
+| USB_SERIAL_DDK_SERVICE_ERROR = 31600003 | Service error. Check whether the DDK service status and API calling logic are normal.<br><!--Device-USB_SERIAL_DDK_SERVICE_ERROR = 31600003--><!--Device-USB_SERIAL_DDK_SERVICE_ERROR = 31600003-End--> |
+| USB_SERIAL_DDK_MEMORY_ERROR = 31600004 | Memory-related errors, such as insufficient memory, memory data replication failure, or memory request failure. You are advised to optimize memory parameters and release unnecessary resources in a timely manner.<br><!--Device-USB_SERIAL_DDK_MEMORY_ERROR = 31600004--><!--Device-USB_SERIAL_DDK_MEMORY_ERROR = 31600004-End--> |
+| USB_SERIAL_DDK_IO_ERROR = 31600005 | I/O error. Check whether the device connection is normal, whether the transmission cable is intact, and whether the device is working properly.<br><!--Device-USB_SERIAL_DDK_IO_ERROR = 31600005--><!--Device-USB_SERIAL_DDK_IO_ERROR = 31600005-End--> |
+| USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006 | Device not found. Check the parameters and device connection status.<br><!--Device-USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006--><!--Device-USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006-End--> |
 
 ### UsbSerial_FlowControl
 
@@ -71,7 +71,7 @@ enum UsbSerial_FlowControl
 
 Defines the flow control mode for the USB Serial DDK. When using the USB serial port for data transfer, you need to select a proper flow control mode based on the communication scenario. For example, in high-speed and large-volume data transmission scenarios, hardware flow control is recommended to avoid data loss. In low-speed or scenarios that do not require high real-time performance, software flow control can be used. In short-range and reliable point-to-point communication scenarios, no flow control can be selected.
 
-<!--Device-UsbSerial_FlowControl--><!--Device-UsbSerial_FlowControl-End-->
+<!--Device-enum UsbSerial_FlowControl--><!--Device-enum UsbSerial_FlowControl-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -79,9 +79,9 @@ Defines the flow control mode for the USB Serial DDK. When using the USB serial 
 
 | Enum item | Description |
 | -- | -- |
-| USB_SERIAL_NO_FLOW_CONTROL = 0 | No flow control. This mode is applicable to low-speed data transfer or scenarios where flow control is not required. However, data loss may occur. |
-| USB_SERIAL_SOFTWARE_FLOW_CONTROL = 1 | Software flow control. XON/XOFF control is applicable to devices that do not support hardware flow control. |
-| USB_SERIAL_HARDWARE_FLOW_CONTROL = 2 | Hardware flow control. RTS/CTS signal lines are used, which are applicable to high-speed data transfer and provide high reliability. |
+| USB_SERIAL_NO_FLOW_CONTROL = 0 | No flow control. This mode is applicable to low-speed data transfer or scenarios where flow control is not required. However, data loss may occur.<br><!--Device-USB_SERIAL_NO_FLOW_CONTROL = 0--><!--Device-USB_SERIAL_NO_FLOW_CONTROL = 0-End--> |
+| USB_SERIAL_SOFTWARE_FLOW_CONTROL = 1 | Software flow control. XON/XOFF control is applicable to devices that do not support hardware flow control.<br><!--Device-USB_SERIAL_SOFTWARE_FLOW_CONTROL = 1--><!--Device-USB_SERIAL_SOFTWARE_FLOW_CONTROL = 1-End--> |
+| USB_SERIAL_HARDWARE_FLOW_CONTROL = 2 | Hardware flow control. RTS/CTS signal lines are used, which are applicable to high-speed data transfer and provide high reliability.<br><!--Device-USB_SERIAL_HARDWARE_FLOW_CONTROL = 2--><!--Device-USB_SERIAL_HARDWARE_FLOW_CONTROL = 2-End--> |
 
 ### UsbSerial_Parity
 
@@ -93,7 +93,7 @@ enum UsbSerial_Parity
 
 Defines the enums of the parity parameter used by the USB Serial DDK. When configuring the USB serial port communication parameters, you need to select a proper parity mode based on the reliability requirements of data transmission. For example, in industrial control scenarios that require high data integrity, it is recommended that odd or even parity be used to detect transfer errors. In environments with high noise interference, parity can help recognize error data. In short-range and reliable communication scenarios, no parity can be selected to improve transfer efficiency.
 
-<!--Device-UsbSerial_Parity--><!--Device-UsbSerial_Parity-End-->
+<!--Device-enum UsbSerial_Parity--><!--Device-enum UsbSerial_Parity-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -101,8 +101,8 @@ Defines the enums of the parity parameter used by the USB Serial DDK. When confi
 
 | Enum item | Description |
 | -- | -- |
-| USB_SERIAL_PARITY_NONE = 0 | No parity. In short-range and reliable communication scenarios, no parity can be selected to improve transfer efficiency. |
-| USB_SERIAL_PARITY_ODD = 1 | Odd parity. This mode is applicable to scenarios that require high data integrity. |
-| USB_SERIAL_PARITY_EVEN = 2 | Even parity. This mode is applicable to scenarios that require high data integrity. |
+| USB_SERIAL_PARITY_NONE = 0 | No parity. In short-range and reliable communication scenarios, no parity can be selected to improve transfer efficiency.<br><!--Device-USB_SERIAL_PARITY_NONE = 0--><!--Device-USB_SERIAL_PARITY_NONE = 0-End--> |
+| USB_SERIAL_PARITY_ODD = 1 | Odd parity. This mode is applicable to scenarios that require high data integrity.<br><!--Device-USB_SERIAL_PARITY_ODD = 1--><!--Device-USB_SERIAL_PARITY_ODD = 1-End--> |
+| USB_SERIAL_PARITY_EVEN = 2 | Even parity. This mode is applicable to scenarios that require high data integrity.<br><!--Device-USB_SERIAL_PARITY_EVEN = 2--><!--Device-USB_SERIAL_PARITY_EVEN = 2-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| StdVideoAV1Level maxLevel |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| StdVideoAV1Level maxLevel | <!--Device-StdVideoAV1Level maxLevel--><!--Device-StdVideoAV1Level maxLevel-End--> |
 
 

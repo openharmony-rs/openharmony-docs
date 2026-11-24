@@ -28,10 +28,10 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t (\*OH_AudioCapturer_OnReadData)( OH_AudioCapturer* capturer, void* userData, void* buffer, int32_t length)](#oh_audiocapturer_onreaddata) | - | 该指向用于读取音频数据的回调函数。当采集器处于运行状态，此回调会周期性地触发，让开发者持续读取录音数据。 注意，回调函数仅用来读取音频数据，请勿在回调函数中调用AudioCapturer的状态切换接口，避免引起死锁问题。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
-| [int32_t (\*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Event event)](#oh_audiocapturer_onstreamevent) | - | 指向用于处理音频录制流事件的回调函数。当音频录制流的状态发生变化，如音频设备路由变化，会触发此回调。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
-| [int32_t (\*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiocapturer_oninterruptevent) | - | 指向用于处理音频录制中断事件的回调函数。当音频录制流被系统中其他高优先级音频打断，会触发此回调。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
-| [int32_t (\*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Result error)](#oh_audiocapturer_onerror) | - | 指向用于处理音频录制错误结果的回调函数。当录制流在使用过程中出现错误情况，会触发此回调。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
+| [int32_t (\*OH_AudioCapturer_OnReadData)( OH_AudioCapturer* capturer, void* userData, void* buffer, int32_t length)](#oh_audiocapturer_onreaddata) | 该指向用于读取音频数据的回调函数。当采集器处于运行状态，此回调会周期性地触发，让开发者持续读取录音数据。 注意，回调函数仅用来读取音频数据，请勿在回调函数中调用AudioCapturer的状态切换接口，避免引起死锁问题。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
+| [int32_t (\*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Event event)](#oh_audiocapturer_onstreamevent) | 指向用于处理音频录制流事件的回调函数。当音频录制流的状态发生变化，如音频设备路由变化，会触发此回调。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
+| [int32_t (\*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiocapturer_oninterruptevent) | 指向用于处理音频录制中断事件的回调函数。当音频录制流被系统中其他高优先级音频打断，会触发此回调。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
+| [int32_t (\*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Result error)](#oh_audiocapturer_onerror) | 指向用于处理音频录制错误结果的回调函数。当录制流在使用过程中出现错误情况，会触发此回调。 请确保该结构体成员变量被自定义的回调函数或空指针初始化，避免未初始化的回调函数被系统调用，引起不可预知的行为。 |
 
 ## 成员函数说明
 

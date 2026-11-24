@@ -63,7 +63,7 @@ enum DrmCencAlgorithm
 
 Drm CENC算法类型。
 
-<!--Device-DrmCencAlgorithm--><!--Device-DrmCencAlgorithm-End-->
+<!--Device-enum DrmCencAlgorithm--><!--Device-enum DrmCencAlgorithm-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -71,12 +71,12 @@ Drm CENC算法类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DRM_ALG_CENC_UNENCRYPTED = 0x0 | 不加密算法。<br>**起始版本：** 12 |
-| DRM_ALG_CENC_AES_CTR = 0x1 | AES CTR算法。<br>**起始版本：** 12 |
-| DRM_ALG_CENC_AES_WV = 0x2 | AES WV算法。<br>**起始版本：** 12 |
-| DRM_ALG_CENC_AES_CBC = 0x3 | AES CBC算法。<br>**起始版本：** 12 |
-| DRM_ALG_CENC_SM4_CBC = 0x4 | SM4 CBC算法。<br>**起始版本：** 12 |
-| DRM_ALG_CENC_SM4_CTR = 0x5 | SM4 CTR算法。<br>**起始版本：** 12 |
+| DRM_ALG_CENC_UNENCRYPTED = 0x0 | 不加密算法。<br>**起始版本：** 12<br><!--Device-DRM_ALG_CENC_UNENCRYPTED = 0x0--><!--Device-DRM_ALG_CENC_UNENCRYPTED = 0x0-End--> |
+| DRM_ALG_CENC_AES_CTR = 0x1 | AES CTR算法。<br>**起始版本：** 12<br><!--Device-DRM_ALG_CENC_AES_CTR = 0x1--><!--Device-DRM_ALG_CENC_AES_CTR = 0x1-End--> |
+| DRM_ALG_CENC_AES_WV = 0x2 | AES WV算法。<br>**起始版本：** 12<br><!--Device-DRM_ALG_CENC_AES_WV = 0x2--><!--Device-DRM_ALG_CENC_AES_WV = 0x2-End--> |
+| DRM_ALG_CENC_AES_CBC = 0x3 | AES CBC算法。<br>**起始版本：** 12<br><!--Device-DRM_ALG_CENC_AES_CBC = 0x3--><!--Device-DRM_ALG_CENC_AES_CBC = 0x3-End--> |
+| DRM_ALG_CENC_SM4_CBC = 0x4 | SM4 CBC算法。<br>**起始版本：** 12<br><!--Device-DRM_ALG_CENC_SM4_CBC = 0x4--><!--Device-DRM_ALG_CENC_SM4_CBC = 0x4-End--> |
+| DRM_ALG_CENC_SM4_CTR = 0x5 | SM4 CTR算法。<br>**起始版本：** 12<br><!--Device-DRM_ALG_CENC_SM4_CTR = 0x5--><!--Device-DRM_ALG_CENC_SM4_CTR = 0x5-End--> |
 
 ### DrmCencInfoMode
 
@@ -88,7 +88,7 @@ enum DrmCencInfoMode
 
 枚举类型，表示cencInfo中keyId/iv/subsample信息是否设置。
 
-<!--Device-DrmCencInfoMode--><!--Device-DrmCencInfoMode-End-->
+<!--Device-enum DrmCencInfoMode--><!--Device-enum DrmCencInfoMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -96,8 +96,8 @@ enum DrmCencInfoMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0 | keyId/iv/subsample信息已设置。<br>**起始版本：** 12 |
-| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1 | keyId/iv/subsample信息未设置。<br>**起始版本：** 12 |
+| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0 | keyId/iv/subsample信息已设置。<br>**起始版本：** 12<br><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0--><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET = 0x0-End--> |
+| DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1 | keyId/iv/subsample信息未设置。<br>**起始版本：** 12<br><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1--><!--Device-DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET = 0x1-End--> |
 
 
 ## 函数说明

@@ -45,7 +45,7 @@ enum ArkWeb_NativeAPIVariantKind
 
 Enumerates the native API types.
 
-<!--Device-ArkWeb_NativeAPIVariantKind--><!--Device-ArkWeb_NativeAPIVariantKind-End-->
+<!--Device-enum ArkWeb_NativeAPIVariantKind--><!--Device-enum ArkWeb_NativeAPIVariantKind-End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -53,12 +53,12 @@ Enumerates the native API types.
 
 | Enum item | Description |
 | -- | -- |
-| ARKWEB_NATIVE_COMPONENT | API type related to Component. |
-| ARKWEB_NATIVE_CONTROLLER | API type related to Controller. |
-| ARKWEB_NATIVE_WEB_MESSAGE_PORT | API type related to WebMessagePort. |
-| ARKWEB_NATIVE_WEB_MESSAGE | API type related to WebMessage. |
-| ARKWEB_NATIVE_COOKIE_MANAGER | API type related to CookieManager. |
-| ARKWEB_NATIVE_JAVASCRIPT_VALUE | API type related to ArkWeb JavaScript value.<br>**Since**: 18 |
+| ARKWEB_NATIVE_COMPONENT | API type related to Component.<br><!--Device-ARKWEB_NATIVE_COMPONENT--><!--Device-ARKWEB_NATIVE_COMPONENT-End--> |
+| ARKWEB_NATIVE_CONTROLLER | API type related to Controller.<br><!--Device-ARKWEB_NATIVE_CONTROLLER--><!--Device-ARKWEB_NATIVE_CONTROLLER-End--> |
+| ARKWEB_NATIVE_WEB_MESSAGE_PORT | API type related to WebMessagePort.<br><!--Device-ARKWEB_NATIVE_WEB_MESSAGE_PORT--><!--Device-ARKWEB_NATIVE_WEB_MESSAGE_PORT-End--> |
+| ARKWEB_NATIVE_WEB_MESSAGE | API type related to WebMessage.<br><!--Device-ARKWEB_NATIVE_WEB_MESSAGE--><!--Device-ARKWEB_NATIVE_WEB_MESSAGE-End--> |
+| ARKWEB_NATIVE_COOKIE_MANAGER | API type related to CookieManager.<br><!--Device-ARKWEB_NATIVE_COOKIE_MANAGER--><!--Device-ARKWEB_NATIVE_COOKIE_MANAGER-End--> |
+| ARKWEB_NATIVE_JAVASCRIPT_VALUE | API type related to ArkWeb JavaScript value.<br>**Since**: 18<br><!--Device-ARKWEB_NATIVE_JAVASCRIPT_VALUE--><!--Device-ARKWEB_NATIVE_JAVASCRIPT_VALUE-End--> |
 
 
 ## Function description

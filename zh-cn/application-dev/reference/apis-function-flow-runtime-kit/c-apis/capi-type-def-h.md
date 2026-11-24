@@ -57,12 +57,12 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| using qos = int | QoS类型。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| int ffrt_qos_t | QoS类型，用于设置任务的QoS等级。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| void* ffrt_task_handle_t | 任务句柄，用于标识不同的任务。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| int ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| typedef int ffrt_qos_t | QoS类型，用于设置任务的QoS等级。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| typedef int ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
+| using qos = int | QoS类型。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-using qos = int--><!--Device-using qos = int-End--> |
+| int ffrt_qos_t | QoS类型，用于设置任务的QoS等级。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-int ffrt_qos_t--><!--Device-int ffrt_qos_t-End--> |
+| void* ffrt_task_handle_t | 任务句柄，用于标识不同的任务。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-void* ffrt_task_handle_t--><!--Device-void* ffrt_task_handle_t-End--> |
+| int ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-int ffrt_timer_t--><!--Device-int ffrt_timer_t-End--> |
+| typedef int ffrt_qos_t | QoS类型，用于设置任务的QoS等级。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-typedef int ffrt_qos_t--><!--Device-typedef int ffrt_qos_t-End--> |
+| typedef int ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-typedef int ffrt_timer_t--><!--Device-typedef int ffrt_timer_t-End--> |
 
 ## 枚举类型说明
 
@@ -76,7 +76,7 @@ enum ffrt_queue_priority_t
 
 并发队列中用于排序任务调度的任务优先级类型枚举。
 
-<!--Device-ffrt_queue_priority_t--><!--Device-ffrt_queue_priority_t-End-->
+<!--Device-enum ffrt_queue_priority_t--><!--Device-enum ffrt_queue_priority_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -84,10 +84,10 @@ enum ffrt_queue_priority_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_queue_priority_immediate = 0 | 最高优先级。任务尽快被调度（句柄时间等于提交时间）；优先于`high`被调度。 |
-| ffrt_queue_priority_high | 高优先级。按句柄时间排序；优先于`low`被调度。 |
-| ffrt_queue_priority_low | 低优先级。按句柄时间排序；优先于`idle`被调度。 |
-| ffrt_queue_priority_idle | 最低优先级。按句柄时间排序；仅在队列中不存在其他优先级任务时才被调度。 |
+| ffrt_queue_priority_immediate = 0 | 最高优先级。任务尽快被调度（句柄时间等于提交时间）；优先于`high`被调度。<br><!--Device-ffrt_queue_priority_immediate = 0--><!--Device-ffrt_queue_priority_immediate = 0-End--> |
+| ffrt_queue_priority_high | 高优先级。按句柄时间排序；优先于`low`被调度。<br><!--Device-ffrt_queue_priority_high--><!--Device-ffrt_queue_priority_high-End--> |
+| ffrt_queue_priority_low | 低优先级。按句柄时间排序；优先于`idle`被调度。<br><!--Device-ffrt_queue_priority_low--><!--Device-ffrt_queue_priority_low-End--> |
+| ffrt_queue_priority_idle | 最低优先级。按句柄时间排序；仅在队列中不存在其他优先级任务时才被调度。<br><!--Device-ffrt_queue_priority_idle--><!--Device-ffrt_queue_priority_idle-End--> |
 
 ### ffrt_qos_default_t
 
@@ -99,7 +99,7 @@ enum ffrt_qos_default_t
 
 任务QoS类型枚举。
 
-<!--Device-ffrt_qos_default_t--><!--Device-ffrt_qos_default_t-End-->
+<!--Device-enum ffrt_qos_default_t--><!--Device-enum ffrt_qos_default_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -107,14 +107,14 @@ enum ffrt_qos_default_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_qos_inherit = -1 | 继承。<br> 继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
-| ffrt_qos_background | 后台任务。<br> 最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
-| ffrt_qos_utility | 实用工具类任务。<br> 用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
-| ffrt_qos_default | 默认类型。<br> 无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
-| ffrt_qos_user_initiated | 用户发起的任务。<br> 用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
-| ffrt_qos_deadline_request | 时限请求任务。<br> 用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
-| ffrt_qos_user_interactive | 用户交互任务。<br> 适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
-| ffrt_qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br> 等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
+| ffrt_qos_inherit = -1 | 继承。<br> 继承调用线程的QoS。用于任务需要采用创建者优先级的场景。<br><!--Device-ffrt_qos_inherit = -1--><!--Device-ffrt_qos_inherit = -1-End--> |
+| ffrt_qos_background | 后台任务。<br> 最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。<br><!--Device-ffrt_qos_background--><!--Device-ffrt_qos_background-End--> |
+| ffrt_qos_utility | 实用工具类任务。<br> 用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。<br><!--Device-ffrt_qos_utility--><!--Device-ffrt_qos_utility-End--> |
+| ffrt_qos_default | 默认类型。<br> 无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。<br><!--Device-ffrt_qos_default--><!--Device-ffrt_qos_default-End--> |
+| ffrt_qos_user_initiated | 用户发起的任务。<br> 用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。<br><!--Device-ffrt_qos_user_initiated--><!--Device-ffrt_qos_user_initiated-End--> |
+| ffrt_qos_deadline_request | 时限请求任务。<br> 用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23<br><!--Device-ffrt_qos_deadline_request--><!--Device-ffrt_qos_deadline_request-End--> |
+| ffrt_qos_user_interactive | 用户交互任务。<br> 适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23<br><!--Device-ffrt_qos_user_interactive--><!--Device-ffrt_qos_user_interactive-End--> |
+| ffrt_qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br> 等价于ffrt_qos_user_interactive。<br>**起始版本：** 23<br><!--Device-ffrt_qos_max = ffrt_qos_user_interactive--><!--Device-ffrt_qos_max = ffrt_qos_user_interactive-End--> |
 
 ### ffrt_storage_size_t
 
@@ -126,7 +126,7 @@ enum ffrt_storage_size_t
 
 多种类型结构体的存储大小定义，单位是字节。
 
-<!--Device-ffrt_storage_size_t--><!--Device-ffrt_storage_size_t-End-->
+<!--Device-enum ffrt_storage_size_t--><!--Device-enum ffrt_storage_size_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -134,15 +134,15 @@ enum ffrt_storage_size_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_task_attr_storage_size = 128 | 任务属性存储大小，单位是字节。 |
-| ffrt_auto_managed_function_storage_size = 64 + sizeof(ffrt_function_header_t) | 任务执行体存储大小，单位是字节。 |
-| ffrt_mutex_storage_size = 64 | 互斥锁存储大小，单位是字节。 |
-| ffrt_cond_storage_size = 64 | 条件变量存储大小，单位是字节。 |
-| ffrt_queue_attr_storage_size = 128 | 队列属性存储大小，单位是字节。 |
-| ffrt_rwlock_storage_size = 64 | 读写锁存储大小，单位是字节。<br>**起始版本：** 18 |
-| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
-| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
-| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
+| ffrt_task_attr_storage_size = 128 | 任务属性存储大小，单位是字节。<br><!--Device-ffrt_task_attr_storage_size = 128--><!--Device-ffrt_task_attr_storage_size = 128-End--> |
+| ffrt_auto_managed_function_storage_size = 64 + sizeof(ffrt_function_header_t) | 任务执行体存储大小，单位是字节。<br><!--Device-ffrt_auto_managed_function_storage_size = 64 + sizeof(ffrt_function_header_t)--><!--Device-ffrt_auto_managed_function_storage_size = 64 + sizeof(ffrt_function_header_t)-End--> |
+| ffrt_mutex_storage_size = 64 | 互斥锁存储大小，单位是字节。<br><!--Device-ffrt_mutex_storage_size = 64--><!--Device-ffrt_mutex_storage_size = 64-End--> |
+| ffrt_cond_storage_size = 64 | 条件变量存储大小，单位是字节。<br><!--Device-ffrt_cond_storage_size = 64--><!--Device-ffrt_cond_storage_size = 64-End--> |
+| ffrt_queue_attr_storage_size = 128 | 队列属性存储大小，单位是字节。<br><!--Device-ffrt_queue_attr_storage_size = 128--><!--Device-ffrt_queue_attr_storage_size = 128-End--> |
+| ffrt_rwlock_storage_size = 64 | 读写锁存储大小，单位是字节。<br>**起始版本：** 18<br><!--Device-ffrt_rwlock_storage_size = 64--><!--Device-ffrt_rwlock_storage_size = 64-End--> |
+| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20<br><!--Device-ffrt_fiber_storage_size = 8--><!--Device-ffrt_fiber_storage_size = 8-End--> |
+| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20<br><!--Device-ffrt_fiber_storage_size = 8--><!--Device-ffrt_fiber_storage_size = 8-End--> |
+| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20<br><!--Device-ffrt_fiber_storage_size = 8--><!--Device-ffrt_fiber_storage_size = 8-End--> |
 
 ### ffrt_function_kind_t
 
@@ -154,7 +154,7 @@ enum ffrt_function_kind_t
 
 任务类型枚举，用于区分通用并发任务和队列调度的任务。
 
-<!--Device-ffrt_function_kind_t--><!--Device-ffrt_function_kind_t-End-->
+<!--Device-enum ffrt_function_kind_t--><!--Device-enum ffrt_function_kind_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -162,8 +162,8 @@ enum ffrt_function_kind_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_function_kind_general | 通用任务。任务可提交到FFRT调度器并发执行。 |
-| ffrt_function_kind_queue | 队列任务。任务通过队列按提交顺序依次执行。 |
+| ffrt_function_kind_general | 通用任务。任务可提交到FFRT调度器并发执行。<br><!--Device-ffrt_function_kind_general--><!--Device-ffrt_function_kind_general-End--> |
+| ffrt_function_kind_queue | 队列任务。任务通过队列按提交顺序依次执行。<br><!--Device-ffrt_function_kind_queue--><!--Device-ffrt_function_kind_queue-End--> |
 
 ### ffrt_dependence_type_t
 
@@ -175,7 +175,7 @@ enum ffrt_dependence_type_t
 
 依赖类型枚举。<br> 用于指定任务间的依赖关系（数据就绪或任务完成）。
 
-<!--Device-ffrt_dependence_type_t--><!--Device-ffrt_dependence_type_t-End-->
+<!--Device-enum ffrt_dependence_type_t--><!--Device-enum ffrt_dependence_type_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -183,8 +183,8 @@ enum ffrt_dependence_type_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_dependence_data | 数据依赖类型。任务仅在所引用的数据就绪后被调度。 |
-| ffrt_dependence_task | 任务依赖类型。任务仅在所引用的任务完成后被调度。 |
+| ffrt_dependence_data | 数据依赖类型。任务仅在所引用的数据就绪后被调度。<br><!--Device-ffrt_dependence_data--><!--Device-ffrt_dependence_data-End--> |
+| ffrt_dependence_task | 任务依赖类型。任务仅在所引用的任务完成后被调度。<br><!--Device-ffrt_dependence_task--><!--Device-ffrt_dependence_task-End--> |
 
 ### ffrt_error_t
 
@@ -196,7 +196,7 @@ enum ffrt_error_t
 
 错误码枚举，由FFRT接口返回。
 
-<!--Device-ffrt_error_t--><!--Device-ffrt_error_t-End-->
+<!--Device-enum ffrt_error_t--><!--Device-enum ffrt_error_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -204,12 +204,12 @@ enum ffrt_error_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_error = -1 | 通用错误。 |
-| ffrt_success = 0 | 成功。 |
-| ffrt_error_nomem = ENOMEM | 内存不足错误。 |
-| ffrt_error_timedout = ETIMEDOUT | 超时错误。 |
-| ffrt_error_busy = EBUSY | 资源忙碌错误。资源正忙，请稍后重试。 |
-| ffrt_error_inval = EINVAL | 无效值错误。 |
+| ffrt_error = -1 | 通用错误。<br><!--Device-ffrt_error = -1--><!--Device-ffrt_error = -1-End--> |
+| ffrt_success = 0 | 成功。<br><!--Device-ffrt_success = 0--><!--Device-ffrt_success = 0-End--> |
+| ffrt_error_nomem = ENOMEM | 内存不足错误。<br><!--Device-ffrt_error_nomem = ENOMEM--><!--Device-ffrt_error_nomem = ENOMEM-End--> |
+| ffrt_error_timedout = ETIMEDOUT | 超时错误。<br><!--Device-ffrt_error_timedout = ETIMEDOUT--><!--Device-ffrt_error_timedout = ETIMEDOUT-End--> |
+| ffrt_error_busy = EBUSY | 资源忙碌错误。资源正忙，请稍后重试。<br><!--Device-ffrt_error_busy = EBUSY--><!--Device-ffrt_error_busy = EBUSY-End--> |
+| ffrt_error_inval = EINVAL | 无效值错误。<br><!--Device-ffrt_error_inval = EINVAL--><!--Device-ffrt_error_inval = EINVAL-End--> |
 
 ### ffrt_mutex_type
 
@@ -221,7 +221,7 @@ enum ffrt_mutex_type
 
 互斥锁类型枚举。
 
-<!--Device-ffrt_mutex_type--><!--Device-ffrt_mutex_type-End-->
+<!--Device-enum ffrt_mutex_type--><!--Device-enum ffrt_mutex_type-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -229,9 +229,9 @@ enum ffrt_mutex_type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_mutex_normal = 0 | 普通互斥锁类型。 |
-| ffrt_mutex_recursive = 2 | 递归互斥锁类型，允许同一线程对同一互斥锁多次加锁。 |
-| ffrt_mutex_default = ffrt_mutex_normal | 默认互斥锁类型，等价于`ffrt_mutex_normal`。 |
+| ffrt_mutex_normal = 0 | 普通互斥锁类型。<br><!--Device-ffrt_mutex_normal = 0--><!--Device-ffrt_mutex_normal = 0-End--> |
+| ffrt_mutex_recursive = 2 | 递归互斥锁类型，允许同一线程对同一互斥锁多次加锁。<br><!--Device-ffrt_mutex_recursive = 2--><!--Device-ffrt_mutex_recursive = 2-End--> |
+| ffrt_mutex_default = ffrt_mutex_normal | 默认互斥锁类型，等价于`ffrt_mutex_normal`。<br><!--Device-ffrt_mutex_default = ffrt_mutex_normal--><!--Device-ffrt_mutex_default = ffrt_mutex_normal-End--> |
 
 ### qos_default
 
@@ -243,7 +243,7 @@ enum qos_default
 
 任务QoS类型枚举。<br> 各枚举值与[ffrt_qos_default_t](capi-type-def-h.md#ffrt_qos_default_t)中对应的枚举值等价。
 
-<!--Device-qos_default--><!--Device-qos_default-End-->
+<!--Device-enum qos_default--><!--Device-enum qos_default-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -251,14 +251,14 @@ enum qos_default
 
 | 枚举项 | 描述 |
 | -- | -- |
-| qos_inherit = ffrt_qos_inherit | 继承。<br> 继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
-| qos_background = ffrt_qos_background | 后台任务。<br> 最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
-| qos_utility = ffrt_qos_utility | 实用工具类任务。<br> 用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
-| qos_default = ffrt_qos_default | 默认类型。<br> 无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
-| qos_user_initiated = ffrt_qos_user_initiated | 用户发起的任务。<br> 用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
-| qos_deadline_request = ffrt_qos_deadline_request | 时限请求任务。<br> 用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
-| qos_user_interactive = ffrt_qos_user_interactive | 用户交互任务。<br> 适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
-| qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br> 等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
+| qos_inherit = ffrt_qos_inherit | 继承。<br> 继承调用线程的QoS。用于任务需要采用创建者优先级的场景。<br><!--Device-qos_inherit = ffrt_qos_inherit--><!--Device-qos_inherit = ffrt_qos_inherit-End--> |
+| qos_background = ffrt_qos_background | 后台任务。<br> 最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。<br><!--Device-qos_background = ffrt_qos_background--><!--Device-qos_background = ffrt_qos_background-End--> |
+| qos_utility = ffrt_qos_utility | 实用工具类任务。<br> 用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。<br><!--Device-qos_utility = ffrt_qos_utility--><!--Device-qos_utility = ffrt_qos_utility-End--> |
+| qos_default = ffrt_qos_default | 默认类型。<br> 无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。<br><!--Device-qos_default = ffrt_qos_default--><!--Device-qos_default = ffrt_qos_default-End--> |
+| qos_user_initiated = ffrt_qos_user_initiated | 用户发起的任务。<br> 用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。<br><!--Device-qos_user_initiated = ffrt_qos_user_initiated--><!--Device-qos_user_initiated = ffrt_qos_user_initiated-End--> |
+| qos_deadline_request = ffrt_qos_deadline_request | 时限请求任务。<br> 用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23<br><!--Device-qos_deadline_request = ffrt_qos_deadline_request--><!--Device-qos_deadline_request = ffrt_qos_deadline_request-End--> |
+| qos_user_interactive = ffrt_qos_user_interactive | 用户交互任务。<br> 适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23<br><!--Device-qos_user_interactive = ffrt_qos_user_interactive--><!--Device-qos_user_interactive = ffrt_qos_user_interactive-End--> |
+| qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br> 等价于ffrt_qos_user_interactive。<br>**起始版本：** 23<br><!--Device-qos_max = ffrt_qos_user_interactive--><!--Device-qos_max = ffrt_qos_user_interactive-End--> |
 
 
 ## 函数说明

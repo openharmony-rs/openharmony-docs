@@ -24,9 +24,9 @@ Describes the margins of a component, which is used to define the blank area bet
 
 | Name | Description |
 | -- | -- |
-| float top | Top margin, in vp. |
-| float right | Right margin, in vp. |
-| float bottom | Bottom margin, in vp. |
-| float left | Left margin, in vp. |
+| float top | Top margin, in vp.<br><!--Device-float top--><!--Device-float top-End--> |
+| float right | Right margin, in vp.<br><!--Device-float right--><!--Device-float right-End--> |
+| float bottom | Bottom margin, in vp.<br><!--Device-float bottom--><!--Device-float bottom-End--> |
+| float left | Left margin, in vp.<br><!--Device-float left--><!--Device-float left-End--> |
 
 

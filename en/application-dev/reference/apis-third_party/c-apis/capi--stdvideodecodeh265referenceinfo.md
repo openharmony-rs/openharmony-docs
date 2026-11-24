@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| [StdVideoDecodeH265ReferenceInfoFlags](capi--stdvideodecodeh265referenceinfoflags.md) flags |  |
-| int32_t PicOrderCntVal |  |
+| [StdVideoDecodeH265ReferenceInfoFlags](capi--stdvideodecodeh265referenceinfoflags.md) flags | <!--Device-StdVideoDecodeH265ReferenceInfoFlags flags--><!--Device-StdVideoDecodeH265ReferenceInfoFlags flags-End--> |
+| int32_t PicOrderCntVal | <!--Device-int32_t PicOrderCntVal--><!--Device-int32_t PicOrderCntVal-End--> |
 
 

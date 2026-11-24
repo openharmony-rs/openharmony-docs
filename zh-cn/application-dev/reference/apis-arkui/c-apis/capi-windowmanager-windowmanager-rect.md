@@ -6,7 +6,7 @@ typedef struct WindowManager_Rect {...} WindowManager_Rect
 
 ## 概述
 
-The struct describes the window rectangle, including the window position, width, and height.
+定义窗口矩形结构体，包含窗口位置和宽高信息。
 
 <!--Device-typedef struct WindowManager_Rect {...} WindowManager_Rect--><!--Device-typedef struct WindowManager_Rect {...} WindowManager_Rect-End-->
 
@@ -24,9 +24,9 @@ The struct describes the window rectangle, including the window position, width,
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t posX | X coordinate of the window, in px. The value is an integer. |
-| int32_t posY | Y coordinate of the window, in px. The value is an integer. |
-| uint32_t width | Window width, in px. The value is an integer. |
-| uint32_t height | Window height, in px. The value is an integer. |
+| int32_t posX | 窗口的x坐标，单位为px，该参数为整数。<br><!--Device-int32_t posX--><!--Device-int32_t posX-End--> |
+| int32_t posY | 窗口的y坐标，单位为px，该参数为整数。<br><!--Device-int32_t posY--><!--Device-int32_t posY-End--> |
+| uint32_t width | 窗口的宽度，单位为px，该参数为整数。<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | 窗口的高度，单位为px，该参数为整数。<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

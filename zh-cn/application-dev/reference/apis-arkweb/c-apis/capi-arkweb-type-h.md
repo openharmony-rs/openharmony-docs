@@ -71,7 +71,7 @@ enum ArkWeb_WebMessageType
 
 Post Message数据类型。
 
-<!--Device-ArkWeb_WebMessageType--><!--Device-ArkWeb_WebMessageType-End-->
+<!--Device-enum ArkWeb_WebMessageType--><!--Device-enum ArkWeb_WebMessageType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -79,9 +79,9 @@ Post Message数据类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_NONE = 0 | 错误数据。 |
-| ARKWEB_STRING | 字符串数据类型。 |
-| ARKWEB_BUFFER | 字节流数据类型。 |
+| ARKWEB_NONE = 0 | 错误数据。<br><!--Device-ARKWEB_NONE = 0--><!--Device-ARKWEB_NONE = 0-End--> |
+| ARKWEB_STRING | 字符串数据类型。<br><!--Device-ARKWEB_STRING--><!--Device-ARKWEB_STRING-End--> |
+| ARKWEB_BUFFER | 字节流数据类型。<br><!--Device-ARKWEB_BUFFER--><!--Device-ARKWEB_BUFFER-End--> |
 
 ### ArkWeb_JavaScriptValueType
 
@@ -93,7 +93,7 @@ enum ArkWeb_JavaScriptValueType
 
 JavaScript数据类型。
 
-<!--Device-ArkWeb_JavaScriptValueType--><!--Device-ArkWeb_JavaScriptValueType-End-->
+<!--Device-enum ArkWeb_JavaScriptValueType--><!--Device-enum ArkWeb_JavaScriptValueType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -101,9 +101,9 @@ JavaScript数据类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_JAVASCRIPT_NONE = 0 | 错误数据。 |
-| ARKWEB_JAVASCRIPT_STRING | 字符串数据类型。 |
-| ARKWEB_JAVASCRIPT_BOOL | boolean数据类型。 |
+| ARKWEB_JAVASCRIPT_NONE = 0 | 错误数据。<br><!--Device-ARKWEB_JAVASCRIPT_NONE = 0--><!--Device-ARKWEB_JAVASCRIPT_NONE = 0-End--> |
+| ARKWEB_JAVASCRIPT_STRING | 字符串数据类型。<br><!--Device-ARKWEB_JAVASCRIPT_STRING--><!--Device-ARKWEB_JAVASCRIPT_STRING-End--> |
+| ARKWEB_JAVASCRIPT_BOOL | boolean数据类型。<br><!--Device-ARKWEB_JAVASCRIPT_BOOL--><!--Device-ARKWEB_JAVASCRIPT_BOOL-End--> |
 
 
 ## 函数说明

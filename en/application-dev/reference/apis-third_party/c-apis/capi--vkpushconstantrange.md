@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkShaderStageFlags stageFlags |  |
-| uint32_t offset |  |
-| uint32_t size |  |
+| VkShaderStageFlags stageFlags | <!--Device-VkShaderStageFlags stageFlags--><!--Device-VkShaderStageFlags stageFlags-End--> |
+| uint32_t offset | <!--Device-uint32_t offset--><!--Device-uint32_t offset-End--> |
+| uint32_t size | <!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
 
 

@@ -24,8 +24,8 @@ The struct describes an array of offline media key IDs.
 
 | Name | Description |
 | -- | -- |
-| uint32_t idsCount | Ids count. |
-| int32_t idsLen[MAX_OFFLINE_MEDIA_KEY_ID_COUNT] | Ids len. |
-| uint8_t ids[MAX_OFFLINE_MEDIA_KEY_ID_COUNT][MAX_OFFLINE_MEDIA_KEY_ID_LEN] | Ids. |
+| uint32_t idsCount | Ids count.<br><!--Device-uint32_t idsCount--><!--Device-uint32_t idsCount-End--> |
+| int32_t idsLen[MAX_OFFLINE_MEDIA_KEY_ID_COUNT] | Ids len.<br><!--Device-int32_t idsLen[MAX_OFFLINE_MEDIA_KEY_ID_COUNT]--><!--Device-int32_t idsLen[MAX_OFFLINE_MEDIA_KEY_ID_COUNT]-End--> |
+| uint8_t ids[MAX_OFFLINE_MEDIA_KEY_ID_COUNT][MAX_OFFLINE_MEDIA_KEY_ID_LEN] | Ids.<br><!--Device-uint8_t ids[MAX_OFFLINE_MEDIA_KEY_ID_COUNT][MAX_OFFLINE_MEDIA_KEY_ID_LEN]--><!--Device-uint8_t ids[MAX_OFFLINE_MEDIA_KEY_ID_COUNT][MAX_OFFLINE_MEDIA_KEY_ID_LEN]-End--> |
 
 

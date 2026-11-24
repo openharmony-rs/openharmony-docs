@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t ira_addr |  |
-| uint32_t ira_preference |  |
+| uint32_t ira_addr | <!--Device-uint32_t ira_addr--><!--Device-uint32_t ira_addr-End--> |
+| uint32_t ira_preference | <!--Device-uint32_t ira_preference--><!--Device-uint32_t ira_preference-End--> |
 
 

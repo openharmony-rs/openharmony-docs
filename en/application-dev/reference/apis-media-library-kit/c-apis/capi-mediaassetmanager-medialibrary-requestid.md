@@ -24,6 +24,6 @@ Defines a struct for the request ID.
 
 | Name | Description |
 | -- | -- |
-| char requestId[UUID_STR_MAX_LENGTH] | request id |
+| char requestId[UUID_STR_MAX_LENGTH] | request id<br><!--Device-char requestId[UUID_STR_MAX_LENGTH]--><!--Device-char requestId[UUID_STR_MAX_LENGTH]-End--> |
 
 

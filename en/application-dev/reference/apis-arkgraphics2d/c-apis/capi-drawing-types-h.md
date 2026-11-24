@@ -74,7 +74,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 | Name | Description |
 | -- | -- |
-| OH_Drawing_Point2D OH_Drawing_Corner_Radii | Defines corner radii, which is on x-axis and y-axis.<br>**Since**: 12<br>**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing |
+| OH_Drawing_Point2D OH_Drawing_Corner_Radii | Defines corner radii, which is on x-axis and y-axis.<br>**Since**: 12<br>**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing<br><!--Device-OH_Drawing_Point2D OH_Drawing_Corner_Radii--><!--Device-OH_Drawing_Point2D OH_Drawing_Corner_Radii-End--> |
 
 ## Enum type description
 
@@ -88,7 +88,7 @@ enum OH_Drawing_ColorFormat
 
 Defines an enum for the storage formats of bitmap pixels.
 
-<!--Device-OH_Drawing_ColorFormat--><!--Device-OH_Drawing_ColorFormat-End-->
+<!--Device-enum OH_Drawing_ColorFormat--><!--Device-enum OH_Drawing_ColorFormat-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -96,12 +96,12 @@ Defines an enum for the storage formats of bitmap pixels.
 
 | Enum item | Description |
 | -- | -- |
-| COLOR_FORMAT_UNKNOWN | Unknown format.<br>**Since**: 8 |
-| COLOR_FORMAT_ALPHA_8 | Each pixel is represented by 8 bits, which together indicate alpha.<br>**Since**: 8 |
-| COLOR_FORMAT_RGB_565 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, the first 5 bits indicate red, the subsequent 6 bits indicate green, and the last 5 bits indicate blue.<br>**Since**: 8 |
-| COLOR_FORMAT_ARGB_4444 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, every 4 bits indicate alpha, red, green, and blue, respectively.<br>**Since**: 8 |
-| COLOR_FORMAT_RGBA_8888 | Each pixel is represented by 32 bits. From the most significant bit to the least significant bit, every 8 bits indicate alpha, red, green, and blue, respectively.<br>**Since**: 8 |
-| COLOR_FORMAT_BGRA_8888 | Each pixel is represented by 32 bits. From the most significant bit to the least significant bit, every 8 bits indicate blue, green, red, and alpha, respectively.<br>**Since**: 8 |
+| COLOR_FORMAT_UNKNOWN | Unknown format.<br>**Since**: 8<br><!--Device-COLOR_FORMAT_UNKNOWN--><!--Device-COLOR_FORMAT_UNKNOWN-End--> |
+| COLOR_FORMAT_ALPHA_8 | Each pixel is represented by 8 bits, which together indicate alpha.<br>**Since**: 8<br><!--Device-COLOR_FORMAT_ALPHA_8--><!--Device-COLOR_FORMAT_ALPHA_8-End--> |
+| COLOR_FORMAT_RGB_565 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, the first 5 bits indicate red, the subsequent 6 bits indicate green, and the last 5 bits indicate blue.<br>**Since**: 8<br><!--Device-COLOR_FORMAT_RGB_565--><!--Device-COLOR_FORMAT_RGB_565-End--> |
+| COLOR_FORMAT_ARGB_4444 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, every 4 bits indicate alpha, red, green, and blue, respectively.<br>**Since**: 8<br><!--Device-COLOR_FORMAT_ARGB_4444--><!--Device-COLOR_FORMAT_ARGB_4444-End--> |
+| COLOR_FORMAT_RGBA_8888 | Each pixel is represented by 32 bits. From the most significant bit to the least significant bit, every 8 bits indicate alpha, red, green, and blue, respectively.<br>**Since**: 8<br><!--Device-COLOR_FORMAT_RGBA_8888--><!--Device-COLOR_FORMAT_RGBA_8888-End--> |
+| COLOR_FORMAT_BGRA_8888 | Each pixel is represented by 32 bits. From the most significant bit to the least significant bit, every 8 bits indicate blue, green, red, and alpha, respectively.<br>**Since**: 8<br><!--Device-COLOR_FORMAT_BGRA_8888--><!--Device-COLOR_FORMAT_BGRA_8888-End--> |
 
 ### OH_Drawing_AlphaFormat
 
@@ -113,7 +113,7 @@ enum OH_Drawing_AlphaFormat
 
 Defines an enum for the alpha formats of bitmap pixels.
 
-<!--Device-OH_Drawing_AlphaFormat--><!--Device-OH_Drawing_AlphaFormat-End-->
+<!--Device-enum OH_Drawing_AlphaFormat--><!--Device-enum OH_Drawing_AlphaFormat-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -121,10 +121,10 @@ Defines an enum for the alpha formats of bitmap pixels.
 
 | Enum item | Description |
 | -- | -- |
-| ALPHA_FORMAT_UNKNOWN | Unknown format.<br>**Since**: 8 |
-| ALPHA_FORMAT_OPAQUE | The bitmap does not have the alpha component.<br>**Since**: 8 |
-| ALPHA_FORMAT_PREMUL | The color component of each pixel is premultiplied by the alpha component.<br>**Since**: 8 |
-| ALPHA_FORMAT_UNPREMUL | The color component of each pixel is not premultiplied by the alpha component.<br>**Since**: 8 |
+| ALPHA_FORMAT_UNKNOWN | Unknown format.<br>**Since**: 8<br><!--Device-ALPHA_FORMAT_UNKNOWN--><!--Device-ALPHA_FORMAT_UNKNOWN-End--> |
+| ALPHA_FORMAT_OPAQUE | The bitmap does not have the alpha component.<br>**Since**: 8<br><!--Device-ALPHA_FORMAT_OPAQUE--><!--Device-ALPHA_FORMAT_OPAQUE-End--> |
+| ALPHA_FORMAT_PREMUL | The color component of each pixel is premultiplied by the alpha component.<br>**Since**: 8<br><!--Device-ALPHA_FORMAT_PREMUL--><!--Device-ALPHA_FORMAT_PREMUL-End--> |
+| ALPHA_FORMAT_UNPREMUL | The color component of each pixel is not premultiplied by the alpha component.<br>**Since**: 8<br><!--Device-ALPHA_FORMAT_UNPREMUL--><!--Device-ALPHA_FORMAT_UNPREMUL-End--> |
 
 ### OH_Drawing_BlendMode
 
@@ -136,7 +136,7 @@ enum OH_Drawing_BlendMode
 
 Defines an enum for blend modes. In blend mode, each operation generates a new color from two colors (source color and destination color). These operations are the same for the red, green, and blue color channels (the alpha channel follows a different rule). For simplicity, the following description uses the alpha channel as an example rather than naming each channel individually. For brevity, the following abbreviations are used: **s**: source. **d**: destination. **sa**: source alpha. **da**: destination alpha. The following abbreviations are used in the calculation result: **r**: The calculation methods of the four channels are the same. **ra**: used when only the alpha channel is manipulated. **rc**: used when the other three color channels are manipulated.
 
-<!--Device-OH_Drawing_BlendMode--><!--Device-OH_Drawing_BlendMode-End-->
+<!--Device-enum OH_Drawing_BlendMode--><!--Device-enum OH_Drawing_BlendMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -144,35 +144,35 @@ Defines an enum for blend modes. In blend mode, each operation generates a new c
 
 | Enum item | Description |
 | -- | -- |
-| BLEND_MODE_CLEAR | Clear mode. r = 0.<br>**Since**: 11 |
-| BLEND_MODE_SRC | r = s (The four channels of **result** are equal to the four channels of **source**, that is, the result is equal to the source.)<br>**Since**: 11 |
-| BLEND_MODE_DST | r = d (The four channels of **result** are equal to the four channels of **destination**, that is, the result is equal to the destination.)<br>**Since**: 11 |
-| BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d.<br>**Since**: 11 |
-| BLEND_MODE_DST_OVER | r = d + (1 - da) * s.<br>**Since**: 11 |
-| BLEND_MODE_SRC_IN | r = s * da.<br>**Since**: 11 |
-| BLEND_MODE_DST_IN | r = d * sa.<br>**Since**: 11 |
-| BLEND_MODE_SRC_OUT | r = s * (1 - da).<br>**Since**: 11 |
-| BLEND_MODE_DST_OUT | r = d * (1 - sa).<br>**Since**: 11 |
-| BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa).<br>**Since**: 11 |
-| BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da).<br>**Since**: 11 |
-| BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa).<br>**Since**: 11 |
-| BLEND_MODE_PLUS | r = min(s + d, 1).<br>**Since**: 11 |
-| BLEND_MODE_MODULATE | r = s * d.<br>**Since**: 11 |
-| BLEND_MODE_SCREEN | Screen mode. r = s + d - s * d.<br>**Since**: 11 |
-| BLEND_MODE_OVERLAY | Overlay mode.<br>**Since**: 11 |
-| BLEND_MODE_DARKEN | Darken mode. rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d.<br>**Since**: 11 |
-| BLEND_MODE_LIGHTEN | Lighten mode. rc = rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d.<br>**Since**: 11 |
-| BLEND_MODE_COLOR_DODGE | Color dodge mode.<br>**Since**: 11 |
-| BLEND_MODE_COLOR_BURN | Color burn mode.<br>**Since**: 11 |
-| BLEND_MODE_HARD_LIGHT | Hard light mode.<br>**Since**: 11 |
-| BLEND_MODE_SOFT_LIGHT | Soft light mode.<br>**Since**: 11 |
-| BLEND_MODE_DIFFERENCE | Difference mode. rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d.<br>**Since**: 11 |
-| BLEND_MODE_EXCLUSION | Exclusion mode. rc = s + d - two(s * d), ra = s + (1 - sa) * d.<br>**Since**: 11 |
-| BLEND_MODE_MULTIPLY | Multiply mode. r = s * (1 - da) + d * (1 - sa) + s * d.<br>**Since**: 11 |
-| BLEND_MODE_HUE | Hue mode.<br>**Since**: 11 |
-| BLEND_MODE_SATURATION | Saturation mode.<br>**Since**: 11 |
-| BLEND_MODE_COLOR | Color mode.<br>**Since**: 11 |
-| BLEND_MODE_LUMINOSITY | Luminosity mode.<br>**Since**: 11 |
+| BLEND_MODE_CLEAR | Clear mode. r = 0.<br>**Since**: 11<br><!--Device-BLEND_MODE_CLEAR--><!--Device-BLEND_MODE_CLEAR-End--> |
+| BLEND_MODE_SRC | r = s (The four channels of **result** are equal to the four channels of **source**, that is, the result is equal to the source.)<br>**Since**: 11<br><!--Device-BLEND_MODE_SRC--><!--Device-BLEND_MODE_SRC-End--> |
+| BLEND_MODE_DST | r = d (The four channels of **result** are equal to the four channels of **destination**, that is, the result is equal to the destination.)<br>**Since**: 11<br><!--Device-BLEND_MODE_DST--><!--Device-BLEND_MODE_DST-End--> |
+| BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_SRC_OVER--><!--Device-BLEND_MODE_SRC_OVER-End--> |
+| BLEND_MODE_DST_OVER | r = d + (1 - da) * s.<br>**Since**: 11<br><!--Device-BLEND_MODE_DST_OVER--><!--Device-BLEND_MODE_DST_OVER-End--> |
+| BLEND_MODE_SRC_IN | r = s * da.<br>**Since**: 11<br><!--Device-BLEND_MODE_SRC_IN--><!--Device-BLEND_MODE_SRC_IN-End--> |
+| BLEND_MODE_DST_IN | r = d * sa.<br>**Since**: 11<br><!--Device-BLEND_MODE_DST_IN--><!--Device-BLEND_MODE_DST_IN-End--> |
+| BLEND_MODE_SRC_OUT | r = s * (1 - da).<br>**Since**: 11<br><!--Device-BLEND_MODE_SRC_OUT--><!--Device-BLEND_MODE_SRC_OUT-End--> |
+| BLEND_MODE_DST_OUT | r = d * (1 - sa).<br>**Since**: 11<br><!--Device-BLEND_MODE_DST_OUT--><!--Device-BLEND_MODE_DST_OUT-End--> |
+| BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa).<br>**Since**: 11<br><!--Device-BLEND_MODE_SRC_ATOP--><!--Device-BLEND_MODE_SRC_ATOP-End--> |
+| BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da).<br>**Since**: 11<br><!--Device-BLEND_MODE_DST_ATOP--><!--Device-BLEND_MODE_DST_ATOP-End--> |
+| BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa).<br>**Since**: 11<br><!--Device-BLEND_MODE_XOR--><!--Device-BLEND_MODE_XOR-End--> |
+| BLEND_MODE_PLUS | r = min(s + d, 1).<br>**Since**: 11<br><!--Device-BLEND_MODE_PLUS--><!--Device-BLEND_MODE_PLUS-End--> |
+| BLEND_MODE_MODULATE | r = s * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_MODULATE--><!--Device-BLEND_MODE_MODULATE-End--> |
+| BLEND_MODE_SCREEN | Screen mode. r = s + d - s * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_SCREEN--><!--Device-BLEND_MODE_SCREEN-End--> |
+| BLEND_MODE_OVERLAY | Overlay mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_OVERLAY--><!--Device-BLEND_MODE_OVERLAY-End--> |
+| BLEND_MODE_DARKEN | Darken mode. rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_DARKEN--><!--Device-BLEND_MODE_DARKEN-End--> |
+| BLEND_MODE_LIGHTEN | Lighten mode. rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_LIGHTEN--><!--Device-BLEND_MODE_LIGHTEN-End--> |
+| BLEND_MODE_COLOR_DODGE | Color dodge mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_COLOR_DODGE--><!--Device-BLEND_MODE_COLOR_DODGE-End--> |
+| BLEND_MODE_COLOR_BURN | Color burn mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_COLOR_BURN--><!--Device-BLEND_MODE_COLOR_BURN-End--> |
+| BLEND_MODE_HARD_LIGHT | Hard light mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_HARD_LIGHT--><!--Device-BLEND_MODE_HARD_LIGHT-End--> |
+| BLEND_MODE_SOFT_LIGHT | Soft light mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_SOFT_LIGHT--><!--Device-BLEND_MODE_SOFT_LIGHT-End--> |
+| BLEND_MODE_DIFFERENCE | Difference mode. rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_DIFFERENCE--><!--Device-BLEND_MODE_DIFFERENCE-End--> |
+| BLEND_MODE_EXCLUSION | Exclusion mode. rc = s + d - 2 * (s * d), ra = s + (1 - sa) * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_EXCLUSION--><!--Device-BLEND_MODE_EXCLUSION-End--> |
+| BLEND_MODE_MULTIPLY | Multiply mode. r = s * (1 - da) + d * (1 - sa) + s * d.<br>**Since**: 11<br><!--Device-BLEND_MODE_MULTIPLY--><!--Device-BLEND_MODE_MULTIPLY-End--> |
+| BLEND_MODE_HUE | Hue mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_HUE--><!--Device-BLEND_MODE_HUE-End--> |
+| BLEND_MODE_SATURATION | Saturation mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_SATURATION--><!--Device-BLEND_MODE_SATURATION-End--> |
+| BLEND_MODE_COLOR | Color mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_COLOR--><!--Device-BLEND_MODE_COLOR-End--> |
+| BLEND_MODE_LUMINOSITY | Luminosity mode.<br>**Since**: 11<br><!--Device-BLEND_MODE_LUMINOSITY--><!--Device-BLEND_MODE_LUMINOSITY-End--> |
 
 ### OH_Drawing_TextEncoding
 
@@ -184,7 +184,7 @@ enum OH_Drawing_TextEncoding
 
 Defines an enum for the text encoding types.
 
-<!--Device-OH_Drawing_TextEncoding--><!--Device-OH_Drawing_TextEncoding-End-->
+<!--Device-enum OH_Drawing_TextEncoding--><!--Device-enum OH_Drawing_TextEncoding-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -192,9 +192,9 @@ Defines an enum for the text encoding types.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_ENCODING_UTF8 | One byte used to indicate UTF-8 or ASCII characters.<br>**Since**: 12 |
-| TEXT_ENCODING_UTF16 | Two bytes used to indicate most Unicode characters.<br>**Since**: 12 |
-| TEXT_ENCODING_UTF32 | Four bytes used to indicate all Unicode characters.<br>**Since**: 12 |
-| TEXT_ENCODING_GLYPH_ID | Two bytes used to indicate the glyph index.<br>**Since**: 12 |
+| TEXT_ENCODING_UTF8 | One byte used to indicate UTF-8 or ASCII characters.<br>**Since**: 12<br><!--Device-TEXT_ENCODING_UTF8--><!--Device-TEXT_ENCODING_UTF8-End--> |
+| TEXT_ENCODING_UTF16 | Two bytes used to indicate most Unicode characters.<br>**Since**: 12<br><!--Device-TEXT_ENCODING_UTF16--><!--Device-TEXT_ENCODING_UTF16-End--> |
+| TEXT_ENCODING_UTF32 | Four bytes used to indicate all Unicode characters.<br>**Since**: 12<br><!--Device-TEXT_ENCODING_UTF32--><!--Device-TEXT_ENCODING_UTF32-End--> |
+| TEXT_ENCODING_GLYPH_ID | Two bytes used to indicate the glyph index.<br>**Since**: 12<br><!--Device-TEXT_ENCODING_GLYPH_ID--><!--Device-TEXT_ENCODING_GLYPH_ID-End--> |
 
 

@@ -24,9 +24,8 @@ typedef struct Http_CustomProxy {...} Http_CustomProxy
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *host;
- int32_t port;
- const char *exclusionLists | 代理服务器主机名， 如果没有显式设置端口，端口将默认为1080。 |
-| int32_t port |  |
+| const char *host | 代理服务器主机名，如果没有显式设置端口，端口将默认为1080。<br><!--Device-const char *host--><!--Device-const char *host-End--> |
+| int32_t port | 主机端口。取值范围[0, 65535]。<br><!--Device-int32_t port--><!--Device-int32_t port-End--> |
+| const char *exclusionLists | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式。<br><!--Device-const char *exclusionLists--><!--Device-const char *exclusionLists-End--> |
 
 

@@ -58,7 +58,7 @@ enum Asset_TagType
 
 关键资产属性标签的类型。
 
-<!--Device-Asset_TagType--><!--Device-Asset_TagType-End-->
+<!--Device-enum Asset_TagType--><!--Device-enum Asset_TagType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -66,9 +66,9 @@ enum Asset_TagType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_TYPE_BOOL = 0x1 << 28 | 标识关键资产属性的类型是bool。 |
-| ASSET_TYPE_NUMBER = 0x2 << 28 | 标识关键资产属性的类型是uint32_t。 |
-| ASSET_TYPE_BYTES = 0x3 << 28 | 标识关键资产属性的类型是byte数组。 |
+| ASSET_TYPE_BOOL = 0x1 << 28 | 标识关键资产属性的类型是bool。<br><!--Device-ASSET_TYPE_BOOL = 0x1 << 28--><!--Device-ASSET_TYPE_BOOL = 0x1 << 28-End--> |
+| ASSET_TYPE_NUMBER = 0x2 << 28 | 标识关键资产属性的类型是uint32_t。<br><!--Device-ASSET_TYPE_NUMBER = 0x2 << 28--><!--Device-ASSET_TYPE_NUMBER = 0x2 << 28-End--> |
+| ASSET_TYPE_BYTES = 0x3 << 28 | 标识关键资产属性的类型是byte数组。<br><!--Device-ASSET_TYPE_BYTES = 0x3 << 28--><!--Device-ASSET_TYPE_BYTES = 0x3 << 28-End--> |
 
 ### Asset_Tag
 
@@ -80,7 +80,7 @@ enum Asset_Tag
 
 关键资产属性的标签。
 
-<!--Device-Asset_Tag--><!--Device-Asset_Tag-End-->
+<!--Device-enum Asset_Tag--><!--Device-enum Asset_Tag-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -88,38 +88,38 @@ enum Asset_Tag
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_TAG_SECRET = ASSET_TYPE_BYTES \| 0x01 | 表示用户敏感数据，如口令、令牌等，其值为bytes类型。 |
-| ASSET_TAG_ALIAS = ASSET_TYPE_BYTES \| 0x02 | 表示一个关键资产的标识，其值为bytes类型。 |
-| ASSET_TAG_ACCESSIBILITY = ASSET_TYPE_NUMBER \| 0x03 | 表示关键资产何时可访问，其值为uint32_t类型。 |
-| ASSET_TAG_REQUIRE_PASSWORD_SET = ASSET_TYPE_BOOL \| 0x04 | 表示关键资产是否在设备设置了锁屏密码时可用，其值为bool类型。true表示仅在设置了锁屏密码时可访问，false表示不受锁屏密码限制。 |
-| ASSET_TAG_AUTH_TYPE = ASSET_TYPE_NUMBER \| 0x05 | 表示关键资产需要的用户认证类型，其值为uint32_t类型。 |
-| ASSET_TAG_AUTH_VALIDITY_PERIOD = ASSET_TYPE_NUMBER \| 0x06 | 表示用户认证的有效时间，其值为uint32_t类型，单位为秒。 |
-| ASSET_TAG_AUTH_CHALLENGE = ASSET_TYPE_BYTES \| 0x07 | 表示认证时防重放用的挑战值，其值为bytes类型。 |
-| ASSET_TAG_AUTH_TOKEN = ASSET_TYPE_BYTES \| 0x08 | 表示用户认证后获取到的认证令牌，其值为bytes类型。 |
-| ASSET_TAG_SYNC_TYPE = ASSET_TYPE_NUMBER \| 0x10 | 表示关键资产的同步类型，其值为uint32_t类型。 |
-| ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11 | 表示关键资产是否需持久化存储，其值为bool类型。true表示应用卸载时保留关键资产，false表示不保留关键资产。 在调用OH_Asset_Add函数时传入该属性需要校验权限ohos.permission.STORE_PERSISTENT_DATA，申请方式请参考声明权限。 |
-| ASSET_TAG_DATA_LABEL_CRITICAL_1 = ASSET_TYPE_BYTES \| 0x20 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_CRITICAL_2 = ASSET_TYPE_BYTES \| 0x21 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_CRITICAL_3 = ASSET_TYPE_BYTES \| 0x22 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_CRITICAL_4 = ASSET_TYPE_BYTES \| 0x23 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_NORMAL_1 = ASSET_TYPE_BYTES \| 0x30 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_NORMAL_2 = ASSET_TYPE_BYTES \| 0x31 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_NORMAL_3 = ASSET_TYPE_BYTES \| 0x32 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_NORMAL_4 = ASSET_TYPE_BYTES \| 0x33 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1 = ASSET_TYPE_BYTES \| 0x34 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2 = ASSET_TYPE_BYTES \| 0x35 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3 = ASSET_TYPE_BYTES \| 0x36 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4 = ASSET_TYPE_BYTES \| 0x37 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
-| ASSET_TAG_RETURN_TYPE = ASSET_TYPE_NUMBER \| 0x40 | 表示查询关键资产时的返回类型，其值为uint32_t类型。 |
-| ASSET_TAG_RETURN_LIMIT = ASSET_TYPE_NUMBER \| 0x41 | 表示查询关键资产时的最大返回数量，其值为uint32_t类型。 |
-| ASSET_TAG_RETURN_OFFSET = ASSET_TYPE_NUMBER \| 0x42 | 表示查询关键资产时的偏移量，其值为uint32_t类型。 |
-| ASSET_TAG_RETURN_ORDERED_BY = ASSET_TYPE_NUMBER \| 0x43 | 表示查询关键资产时的排序依据，其值为uint32_t类型。 |
-| ASSET_TAG_CONFLICT_RESOLUTION = ASSET_TYPE_NUMBER \| 0x44 | 表示增加关键资产时的冲突处理策略，其值为uint32_t类型。 |
-| ASSET_TAG_UPDATE_TIME = ASSET_TYPE_BYTES \| 0x45 | 表示关键资产的更新时间（时间戳形式），其值为bytes类型。<br>**起始版本：** 12 |
-| ASSET_TAG_OPERATION_TYPE = ASSET_TYPE_NUMBER \| 0x46 | 表示附加的操作类型，其值为uint32_t类型。<br>**起始版本：** 12 |
-| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47 | 表示是否加密业务自定义附属信息，其值为bool类型。true表示加密业务自定义附属信息，false表示不加密。<br>**起始版本：** 14 |
-| ASSET_TAG_GROUP_ID = ASSET_TYPE_BYTES \| 0x48 | 表示关键资产所属群组，其值为bytes类型。<br>**起始版本：** 18 |
-| ASSET_TAG_WRAP_TYPE = ASSET_TYPE_NUMBER \| 0x49 | 表示关键资产支持的加密导入导出类型，其值为uint32_t类型。<br>**起始版本：** 18 |
+| ASSET_TAG_SECRET = ASSET_TYPE_BYTES \| 0x01 | 表示用户敏感数据，如口令、令牌等，其值为bytes类型。<br><!--Device-ASSET_TAG_SECRET = ASSET_TYPE_BYTES \| 0x01--><!--Device-ASSET_TAG_SECRET = ASSET_TYPE_BYTES \| 0x01-End--> |
+| ASSET_TAG_ALIAS = ASSET_TYPE_BYTES \| 0x02 | 表示一个关键资产的标识，其值为bytes类型。<br><!--Device-ASSET_TAG_ALIAS = ASSET_TYPE_BYTES \| 0x02--><!--Device-ASSET_TAG_ALIAS = ASSET_TYPE_BYTES \| 0x02-End--> |
+| ASSET_TAG_ACCESSIBILITY = ASSET_TYPE_NUMBER \| 0x03 | 表示关键资产何时可访问，其值为uint32_t类型。<br><!--Device-ASSET_TAG_ACCESSIBILITY = ASSET_TYPE_NUMBER \| 0x03--><!--Device-ASSET_TAG_ACCESSIBILITY = ASSET_TYPE_NUMBER \| 0x03-End--> |
+| ASSET_TAG_REQUIRE_PASSWORD_SET = ASSET_TYPE_BOOL \| 0x04 | 表示关键资产是否在设备设置了锁屏密码时可用，其值为bool类型。true表示仅在设置了锁屏密码时可访问，false表示不受锁屏密码限制。<br><!--Device-ASSET_TAG_REQUIRE_PASSWORD_SET = ASSET_TYPE_BOOL \| 0x04--><!--Device-ASSET_TAG_REQUIRE_PASSWORD_SET = ASSET_TYPE_BOOL \| 0x04-End--> |
+| ASSET_TAG_AUTH_TYPE = ASSET_TYPE_NUMBER \| 0x05 | 表示关键资产需要的用户认证类型，其值为uint32_t类型。<br><!--Device-ASSET_TAG_AUTH_TYPE = ASSET_TYPE_NUMBER \| 0x05--><!--Device-ASSET_TAG_AUTH_TYPE = ASSET_TYPE_NUMBER \| 0x05-End--> |
+| ASSET_TAG_AUTH_VALIDITY_PERIOD = ASSET_TYPE_NUMBER \| 0x06 | 表示用户认证的有效时间，其值为uint32_t类型，单位为秒。<br><!--Device-ASSET_TAG_AUTH_VALIDITY_PERIOD = ASSET_TYPE_NUMBER \| 0x06--><!--Device-ASSET_TAG_AUTH_VALIDITY_PERIOD = ASSET_TYPE_NUMBER \| 0x06-End--> |
+| ASSET_TAG_AUTH_CHALLENGE = ASSET_TYPE_BYTES \| 0x07 | 表示认证时防重放用的挑战值，其值为bytes类型。<br><!--Device-ASSET_TAG_AUTH_CHALLENGE = ASSET_TYPE_BYTES \| 0x07--><!--Device-ASSET_TAG_AUTH_CHALLENGE = ASSET_TYPE_BYTES \| 0x07-End--> |
+| ASSET_TAG_AUTH_TOKEN = ASSET_TYPE_BYTES \| 0x08 | 表示用户认证后获取到的认证令牌，其值为bytes类型。<br><!--Device-ASSET_TAG_AUTH_TOKEN = ASSET_TYPE_BYTES \| 0x08--><!--Device-ASSET_TAG_AUTH_TOKEN = ASSET_TYPE_BYTES \| 0x08-End--> |
+| ASSET_TAG_SYNC_TYPE = ASSET_TYPE_NUMBER \| 0x10 | 表示关键资产的同步类型，其值为uint32_t类型。<br><!--Device-ASSET_TAG_SYNC_TYPE = ASSET_TYPE_NUMBER \| 0x10--><!--Device-ASSET_TAG_SYNC_TYPE = ASSET_TYPE_NUMBER \| 0x10-End--> |
+| ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11 | 表示关键资产是否需持久化存储，其值为bool类型。true表示应用卸载时保留关键资产，false表示不保留关键资产。 在调用OH_Asset_Add函数时传入该属性需要校验权限ohos.permission.STORE_PERSISTENT_DATA，申请方式请参考声明权限。<br><!--Device-ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11--><!--Device-ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11-End--> |
+| ASSET_TAG_DATA_LABEL_CRITICAL_1 = ASSET_TYPE_BYTES \| 0x20 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_1 = ASSET_TYPE_BYTES \| 0x20--><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_1 = ASSET_TYPE_BYTES \| 0x20-End--> |
+| ASSET_TAG_DATA_LABEL_CRITICAL_2 = ASSET_TYPE_BYTES \| 0x21 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_2 = ASSET_TYPE_BYTES \| 0x21--><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_2 = ASSET_TYPE_BYTES \| 0x21-End--> |
+| ASSET_TAG_DATA_LABEL_CRITICAL_3 = ASSET_TYPE_BYTES \| 0x22 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_3 = ASSET_TYPE_BYTES \| 0x22--><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_3 = ASSET_TYPE_BYTES \| 0x22-End--> |
+| ASSET_TAG_DATA_LABEL_CRITICAL_4 = ASSET_TYPE_BYTES \| 0x23 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_4 = ASSET_TYPE_BYTES \| 0x23--><!--Device-ASSET_TAG_DATA_LABEL_CRITICAL_4 = ASSET_TYPE_BYTES \| 0x23-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_1 = ASSET_TYPE_BYTES \| 0x30 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_1 = ASSET_TYPE_BYTES \| 0x30--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_1 = ASSET_TYPE_BYTES \| 0x30-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_2 = ASSET_TYPE_BYTES \| 0x31 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_2 = ASSET_TYPE_BYTES \| 0x31--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_2 = ASSET_TYPE_BYTES \| 0x31-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_3 = ASSET_TYPE_BYTES \| 0x32 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_3 = ASSET_TYPE_BYTES \| 0x32--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_3 = ASSET_TYPE_BYTES \| 0x32-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_4 = ASSET_TYPE_BYTES \| 0x33 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_4 = ASSET_TYPE_BYTES \| 0x33--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_4 = ASSET_TYPE_BYTES \| 0x33-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1 = ASSET_TYPE_BYTES \| 0x34 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1 = ASSET_TYPE_BYTES \| 0x34--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1 = ASSET_TYPE_BYTES \| 0x34-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2 = ASSET_TYPE_BYTES \| 0x35 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2 = ASSET_TYPE_BYTES \| 0x35--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2 = ASSET_TYPE_BYTES \| 0x35-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3 = ASSET_TYPE_BYTES \| 0x36 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3 = ASSET_TYPE_BYTES \| 0x36--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3 = ASSET_TYPE_BYTES \| 0x36-End--> |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4 = ASSET_TYPE_BYTES \| 0x37 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12<br><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4 = ASSET_TYPE_BYTES \| 0x37--><!--Device-ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4 = ASSET_TYPE_BYTES \| 0x37-End--> |
+| ASSET_TAG_RETURN_TYPE = ASSET_TYPE_NUMBER \| 0x40 | 表示查询关键资产时的返回类型，其值为uint32_t类型。<br><!--Device-ASSET_TAG_RETURN_TYPE = ASSET_TYPE_NUMBER \| 0x40--><!--Device-ASSET_TAG_RETURN_TYPE = ASSET_TYPE_NUMBER \| 0x40-End--> |
+| ASSET_TAG_RETURN_LIMIT = ASSET_TYPE_NUMBER \| 0x41 | 表示查询关键资产时的最大返回数量，其值为uint32_t类型。<br><!--Device-ASSET_TAG_RETURN_LIMIT = ASSET_TYPE_NUMBER \| 0x41--><!--Device-ASSET_TAG_RETURN_LIMIT = ASSET_TYPE_NUMBER \| 0x41-End--> |
+| ASSET_TAG_RETURN_OFFSET = ASSET_TYPE_NUMBER \| 0x42 | 表示查询关键资产时的偏移量，其值为uint32_t类型。<br><!--Device-ASSET_TAG_RETURN_OFFSET = ASSET_TYPE_NUMBER \| 0x42--><!--Device-ASSET_TAG_RETURN_OFFSET = ASSET_TYPE_NUMBER \| 0x42-End--> |
+| ASSET_TAG_RETURN_ORDERED_BY = ASSET_TYPE_NUMBER \| 0x43 | 表示查询关键资产时的排序依据，其值为uint32_t类型。<br><!--Device-ASSET_TAG_RETURN_ORDERED_BY = ASSET_TYPE_NUMBER \| 0x43--><!--Device-ASSET_TAG_RETURN_ORDERED_BY = ASSET_TYPE_NUMBER \| 0x43-End--> |
+| ASSET_TAG_CONFLICT_RESOLUTION = ASSET_TYPE_NUMBER \| 0x44 | 表示增加关键资产时的冲突处理策略，其值为uint32_t类型。<br><!--Device-ASSET_TAG_CONFLICT_RESOLUTION = ASSET_TYPE_NUMBER \| 0x44--><!--Device-ASSET_TAG_CONFLICT_RESOLUTION = ASSET_TYPE_NUMBER \| 0x44-End--> |
+| ASSET_TAG_UPDATE_TIME = ASSET_TYPE_BYTES \| 0x45 | 表示关键资产的更新时间（时间戳形式），其值为bytes类型。<br>**起始版本：** 12<br><!--Device-ASSET_TAG_UPDATE_TIME = ASSET_TYPE_BYTES \| 0x45--><!--Device-ASSET_TAG_UPDATE_TIME = ASSET_TYPE_BYTES \| 0x45-End--> |
+| ASSET_TAG_OPERATION_TYPE = ASSET_TYPE_NUMBER \| 0x46 | 表示附加的操作类型，其值为uint32_t类型。<br>**起始版本：** 12<br><!--Device-ASSET_TAG_OPERATION_TYPE = ASSET_TYPE_NUMBER \| 0x46--><!--Device-ASSET_TAG_OPERATION_TYPE = ASSET_TYPE_NUMBER \| 0x46-End--> |
+| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47 | 表示是否加密业务自定义附属信息，其值为bool类型。true表示加密业务自定义附属信息，false表示不加密。<br>**起始版本：** 14<br><!--Device-ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47--><!--Device-ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47-End--> |
+| ASSET_TAG_GROUP_ID = ASSET_TYPE_BYTES \| 0x48 | 表示关键资产所属群组，其值为bytes类型。<br>**起始版本：** 18<br><!--Device-ASSET_TAG_GROUP_ID = ASSET_TYPE_BYTES \| 0x48--><!--Device-ASSET_TAG_GROUP_ID = ASSET_TYPE_BYTES \| 0x48-End--> |
+| ASSET_TAG_WRAP_TYPE = ASSET_TYPE_NUMBER \| 0x49 | 表示关键资产支持的加密导入导出类型，其值为uint32_t类型。<br>**起始版本：** 18<br><!--Device-ASSET_TAG_WRAP_TYPE = ASSET_TYPE_NUMBER \| 0x49--><!--Device-ASSET_TAG_WRAP_TYPE = ASSET_TYPE_NUMBER \| 0x49-End--> |
 
 ### Asset_ResultCode
 
@@ -131,7 +131,7 @@ enum Asset_ResultCode
 
 ASSET APIs使用的结果码。
 
-<!--Device-Asset_ResultCode--><!--Device-Asset_ResultCode-End-->
+<!--Device-enum Asset_ResultCode--><!--Device-enum Asset_ResultCode-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -139,27 +139,27 @@ ASSET APIs使用的结果码。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_SUCCESS = 0 | 表示操作成功。 |
-| ASSET_PERMISSION_DENIED = 201 | 表示权限校验失败，应用无权限使用该API，需要申请权限。 |
-| ASSET_INVALID_ARGUMENT = 401 | 表示参数错误。可能原因： 1. 必选参数未指定。 2. 参数类型错误。 3. 参数校验失败。 |
-| ASSET_SERVICE_UNAVAILABLE = 24000001 | 表示关键资产服务不可用。 |
-| ASSET_NOT_FOUND = 24000002 | 表示未找到关键资产。 |
-| ASSET_DUPLICATED = 24000003 | 表示关键资产已存在。 |
-| ASSET_ACCESS_DENIED = 24000004 | 表示访问被拒绝。 |
-| ASSET_STATUS_MISMATCH = 24000005 | 表示锁屏状态不匹配。 |
-| ASSET_OUT_OF_MEMORY = 24000006 | 表示系统内存不足。 |
-| ASSET_DATA_CORRUPTED = 24000007 | 表示关键资产损坏。 |
-| ASSET_DATABASE_ERROR = 24000008 | 表示数据库操作失败。 |
-| ASSET_CRYPTO_ERROR = 24000009 | 表示算法库操作失败。 |
-| ASSET_IPC_ERROR = 24000010 | 表示进程通信错误。 |
-| ASSET_BMS_ERROR = 24000011 | 表示包管理服务异常。 |
-| ASSET_ACCOUNT_ERROR = 24000012 | 表示账号系统服务异常。 |
-| ASSET_ACCESS_TOKEN_ERROR = 24000013 | 表示访问控制服务异常。 |
-| ASSET_FILE_OPERATION_ERROR = 24000014 | 表示文件操作失败。 |
-| ASSET_GET_SYSTEM_TIME_ERROR = 24000015 | 表示获取系统时间失败。 |
-| ASSET_LIMIT_EXCEEDED = 24000016 | 表示缓存数量超限。 |
-| ASSET_UNSUPPORTED = 24000017 | 表示该子功能不支持。 |
-| ASSET_PARAM_VERIFICATION_FAILED = 24000018 | 表示参数校验失败。<br>**起始版本：** 20 |
+| ASSET_SUCCESS = 0 | 表示操作成功。<br><!--Device-ASSET_SUCCESS = 0--><!--Device-ASSET_SUCCESS = 0-End--> |
+| ASSET_PERMISSION_DENIED = 201 | 表示权限校验失败，应用无权限使用该API，需要申请权限。<br><!--Device-ASSET_PERMISSION_DENIED = 201--><!--Device-ASSET_PERMISSION_DENIED = 201-End--> |
+| ASSET_INVALID_ARGUMENT = 401 | 表示参数错误。可能原因： 1. 必选参数未指定。 2. 参数类型错误。 3. 参数校验失败。<br><!--Device-ASSET_INVALID_ARGUMENT = 401--><!--Device-ASSET_INVALID_ARGUMENT = 401-End--> |
+| ASSET_SERVICE_UNAVAILABLE = 24000001 | 表示关键资产服务不可用。<br><!--Device-ASSET_SERVICE_UNAVAILABLE = 24000001--><!--Device-ASSET_SERVICE_UNAVAILABLE = 24000001-End--> |
+| ASSET_NOT_FOUND = 24000002 | 表示未找到关键资产。<br><!--Device-ASSET_NOT_FOUND = 24000002--><!--Device-ASSET_NOT_FOUND = 24000002-End--> |
+| ASSET_DUPLICATED = 24000003 | 表示关键资产已存在。<br><!--Device-ASSET_DUPLICATED = 24000003--><!--Device-ASSET_DUPLICATED = 24000003-End--> |
+| ASSET_ACCESS_DENIED = 24000004 | 表示访问被拒绝。<br><!--Device-ASSET_ACCESS_DENIED = 24000004--><!--Device-ASSET_ACCESS_DENIED = 24000004-End--> |
+| ASSET_STATUS_MISMATCH = 24000005 | 表示锁屏状态不匹配。<br><!--Device-ASSET_STATUS_MISMATCH = 24000005--><!--Device-ASSET_STATUS_MISMATCH = 24000005-End--> |
+| ASSET_OUT_OF_MEMORY = 24000006 | 表示系统内存不足。<br><!--Device-ASSET_OUT_OF_MEMORY = 24000006--><!--Device-ASSET_OUT_OF_MEMORY = 24000006-End--> |
+| ASSET_DATA_CORRUPTED = 24000007 | 表示关键资产损坏。<br><!--Device-ASSET_DATA_CORRUPTED = 24000007--><!--Device-ASSET_DATA_CORRUPTED = 24000007-End--> |
+| ASSET_DATABASE_ERROR = 24000008 | 表示数据库操作失败。<br><!--Device-ASSET_DATABASE_ERROR = 24000008--><!--Device-ASSET_DATABASE_ERROR = 24000008-End--> |
+| ASSET_CRYPTO_ERROR = 24000009 | 表示算法库操作失败。<br><!--Device-ASSET_CRYPTO_ERROR = 24000009--><!--Device-ASSET_CRYPTO_ERROR = 24000009-End--> |
+| ASSET_IPC_ERROR = 24000010 | 表示进程通信错误。<br><!--Device-ASSET_IPC_ERROR = 24000010--><!--Device-ASSET_IPC_ERROR = 24000010-End--> |
+| ASSET_BMS_ERROR = 24000011 | 表示包管理服务异常。<br><!--Device-ASSET_BMS_ERROR = 24000011--><!--Device-ASSET_BMS_ERROR = 24000011-End--> |
+| ASSET_ACCOUNT_ERROR = 24000012 | 表示账号系统服务异常。<br><!--Device-ASSET_ACCOUNT_ERROR = 24000012--><!--Device-ASSET_ACCOUNT_ERROR = 24000012-End--> |
+| ASSET_ACCESS_TOKEN_ERROR = 24000013 | 表示访问控制服务异常。<br><!--Device-ASSET_ACCESS_TOKEN_ERROR = 24000013--><!--Device-ASSET_ACCESS_TOKEN_ERROR = 24000013-End--> |
+| ASSET_FILE_OPERATION_ERROR = 24000014 | 表示文件操作失败。<br><!--Device-ASSET_FILE_OPERATION_ERROR = 24000014--><!--Device-ASSET_FILE_OPERATION_ERROR = 24000014-End--> |
+| ASSET_GET_SYSTEM_TIME_ERROR = 24000015 | 表示获取系统时间失败。<br><!--Device-ASSET_GET_SYSTEM_TIME_ERROR = 24000015--><!--Device-ASSET_GET_SYSTEM_TIME_ERROR = 24000015-End--> |
+| ASSET_LIMIT_EXCEEDED = 24000016 | 表示缓存数量超限。<br><!--Device-ASSET_LIMIT_EXCEEDED = 24000016--><!--Device-ASSET_LIMIT_EXCEEDED = 24000016-End--> |
+| ASSET_UNSUPPORTED = 24000017 | 表示该子功能不支持。<br><!--Device-ASSET_UNSUPPORTED = 24000017--><!--Device-ASSET_UNSUPPORTED = 24000017-End--> |
+| ASSET_PARAM_VERIFICATION_FAILED = 24000018 | 表示参数校验失败。<br>**起始版本：** 20<br><!--Device-ASSET_PARAM_VERIFICATION_FAILED = 24000018--><!--Device-ASSET_PARAM_VERIFICATION_FAILED = 24000018-End--> |
 
 ### Asset_Accessibility
 
@@ -171,7 +171,7 @@ enum Asset_Accessibility
 
 基于锁屏状态的访问控制类型。
 
-<!--Device-Asset_Accessibility--><!--Device-Asset_Accessibility-End-->
+<!--Device-enum Asset_Accessibility--><!--Device-enum Asset_Accessibility-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -179,9 +179,9 @@ enum Asset_Accessibility
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_ACCESSIBILITY_DEVICE_POWERED_ON = 0 | 开机后可访问。 |
-| ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED = 1 | 首次解锁后可访问。 |
-| ASSET_ACCESSIBILITY_DEVICE_UNLOCKED = 2 | 解锁时可访问。 |
+| ASSET_ACCESSIBILITY_DEVICE_POWERED_ON = 0 | 开机后可访问。<br><!--Device-ASSET_ACCESSIBILITY_DEVICE_POWERED_ON = 0--><!--Device-ASSET_ACCESSIBILITY_DEVICE_POWERED_ON = 0-End--> |
+| ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED = 1 | 首次解锁后可访问。<br><!--Device-ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED = 1--><!--Device-ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED = 1-End--> |
+| ASSET_ACCESSIBILITY_DEVICE_UNLOCKED = 2 | 解锁时可访问。<br><!--Device-ASSET_ACCESSIBILITY_DEVICE_UNLOCKED = 2--><!--Device-ASSET_ACCESSIBILITY_DEVICE_UNLOCKED = 2-End--> |
 
 ### Asset_AuthType
 
@@ -193,7 +193,7 @@ enum Asset_AuthType
 
 关键资产支持的用户认证类型。
 
-<!--Device-Asset_AuthType--><!--Device-Asset_AuthType-End-->
+<!--Device-enum Asset_AuthType--><!--Device-enum Asset_AuthType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -201,8 +201,8 @@ enum Asset_AuthType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_AUTH_TYPE_NONE = 0x00 | 访问关键资产前无需用户认证。 |
-| ASSET_AUTH_TYPE_ANY = 0xFF | 任意一种用户认证方式（PIN码、人脸、指纹等）通过后，均可访问关键资产。 |
+| ASSET_AUTH_TYPE_NONE = 0x00 | 访问关键资产前无需用户认证。<br><!--Device-ASSET_AUTH_TYPE_NONE = 0x00--><!--Device-ASSET_AUTH_TYPE_NONE = 0x00-End--> |
+| ASSET_AUTH_TYPE_ANY = 0xFF | 任意一种用户认证方式（PIN码、人脸、指纹等）通过后，均可访问关键资产。<br><!--Device-ASSET_AUTH_TYPE_ANY = 0xFF--><!--Device-ASSET_AUTH_TYPE_ANY = 0xFF-End--> |
 
 ### Asset_SyncType
 
@@ -214,7 +214,7 @@ enum Asset_SyncType
 
 关键资产支持的同步类型。
 
-<!--Device-Asset_SyncType--><!--Device-Asset_SyncType-End-->
+<!--Device-enum Asset_SyncType--><!--Device-enum Asset_SyncType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -222,10 +222,10 @@ enum Asset_SyncType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_SYNC_TYPE_NEVER = 0 | 不允许同步关键资产。 |
-| ASSET_SYNC_TYPE_THIS_DEVICE = 1 << 0 | 只在本设备进行同步，如仅在本设备还原的备份场景。 |
-| ASSET_SYNC_TYPE_TRUSTED_DEVICE = 1 << 1 | 只在可信设备间进行同步，如克隆场景。 |
-| ASSET_SYNC_TYPE_TRUSTED_ACCOUNT = 1 << 2 | 只在登录可信账号的设备间进行同步，如云同步场景。<br>**起始版本：** 12 |
+| ASSET_SYNC_TYPE_NEVER = 0 | 不允许同步关键资产。<br><!--Device-ASSET_SYNC_TYPE_NEVER = 0--><!--Device-ASSET_SYNC_TYPE_NEVER = 0-End--> |
+| ASSET_SYNC_TYPE_THIS_DEVICE = 1 << 0 | 只在本设备进行同步，如仅在本设备还原的备份场景。<br><!--Device-ASSET_SYNC_TYPE_THIS_DEVICE = 1 << 0--><!--Device-ASSET_SYNC_TYPE_THIS_DEVICE = 1 << 0-End--> |
+| ASSET_SYNC_TYPE_TRUSTED_DEVICE = 1 << 1 | 只在可信设备间进行同步，如克隆场景。<br><!--Device-ASSET_SYNC_TYPE_TRUSTED_DEVICE = 1 << 1--><!--Device-ASSET_SYNC_TYPE_TRUSTED_DEVICE = 1 << 1-End--> |
+| ASSET_SYNC_TYPE_TRUSTED_ACCOUNT = 1 << 2 | 只在登录可信账号的设备间进行同步，如云同步场景。<br>**起始版本：** 12<br><!--Device-ASSET_SYNC_TYPE_TRUSTED_ACCOUNT = 1 << 2--><!--Device-ASSET_SYNC_TYPE_TRUSTED_ACCOUNT = 1 << 2-End--> |
 
 ### Asset_WrapType
 
@@ -237,7 +237,7 @@ enum Asset_WrapType
 
 关键资产支持的加密导入导出类型。
 
-<!--Device-Asset_WrapType--><!--Device-Asset_WrapType-End-->
+<!--Device-enum Asset_WrapType--><!--Device-enum Asset_WrapType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -245,8 +245,8 @@ enum Asset_WrapType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_WRAP_TYPE_NEVER = 0 | 不允许加密导入导出关键资产。 |
-| ASSET_WRAP_TYPE_TRUSTED_ACCOUNT = 1 | 只在登录可信账号的设备进行加密导入导出关键资产。 |
+| ASSET_WRAP_TYPE_NEVER = 0 | 不允许加密导入导出关键资产。<br><!--Device-ASSET_WRAP_TYPE_NEVER = 0--><!--Device-ASSET_WRAP_TYPE_NEVER = 0-End--> |
+| ASSET_WRAP_TYPE_TRUSTED_ACCOUNT = 1 | 只在登录可信账号的设备进行加密导入导出关键资产。<br><!--Device-ASSET_WRAP_TYPE_TRUSTED_ACCOUNT = 1--><!--Device-ASSET_WRAP_TYPE_TRUSTED_ACCOUNT = 1-End--> |
 
 ### Asset_ConflictResolution
 
@@ -258,7 +258,7 @@ enum Asset_ConflictResolution
 
 新增关键资产时的冲突（如：别名相同）处理策略。
 
-<!--Device-Asset_ConflictResolution--><!--Device-Asset_ConflictResolution-End-->
+<!--Device-enum Asset_ConflictResolution--><!--Device-enum Asset_ConflictResolution-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -266,8 +266,8 @@ enum Asset_ConflictResolution
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_CONFLICT_OVERWRITE = 0 | 覆盖原本的关键资产。 |
-| ASSET_CONFLICT_THROW_ERROR = 1 | 抛出异常，由业务进行后续处理。 |
+| ASSET_CONFLICT_OVERWRITE = 0 | 覆盖原本的关键资产。<br><!--Device-ASSET_CONFLICT_OVERWRITE = 0--><!--Device-ASSET_CONFLICT_OVERWRITE = 0-End--> |
+| ASSET_CONFLICT_THROW_ERROR = 1 | 抛出异常，由业务进行后续处理。<br><!--Device-ASSET_CONFLICT_THROW_ERROR = 1--><!--Device-ASSET_CONFLICT_THROW_ERROR = 1-End--> |
 
 ### Asset_ReturnType
 
@@ -279,7 +279,7 @@ enum Asset_ReturnType
 
 关键资产查询返回的结果类型。
 
-<!--Device-Asset_ReturnType--><!--Device-Asset_ReturnType-End-->
+<!--Device-enum Asset_ReturnType--><!--Device-enum Asset_ReturnType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -287,8 +287,8 @@ enum Asset_ReturnType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_RETURN_ALL = 0 | 返回关键资产明文及属性。 |
-| ASSET_RETURN_ATTRIBUTES = 1 | 返回关键资产属性，不含关键资产明文。 |
+| ASSET_RETURN_ALL = 0 | 返回关键资产明文及属性。<br><!--Device-ASSET_RETURN_ALL = 0--><!--Device-ASSET_RETURN_ALL = 0-End--> |
+| ASSET_RETURN_ATTRIBUTES = 1 | 返回关键资产属性，不含关键资产明文。<br><!--Device-ASSET_RETURN_ATTRIBUTES = 1--><!--Device-ASSET_RETURN_ATTRIBUTES = 1-End--> |
 
 ### Asset_OperationType
 
@@ -300,7 +300,7 @@ enum Asset_OperationType
 
 附属的操作类型。
 
-<!--Device-Asset_OperationType--><!--Device-Asset_OperationType-End-->
+<!--Device-enum Asset_OperationType--><!--Device-enum Asset_OperationType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -308,7 +308,7 @@ enum Asset_OperationType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ASSET_NEED_SYNC = 0 | 需要进行同步操作。 |
-| ASSET_NEED_LOGOUT = 1 | 需要进行登出操作。 |
+| ASSET_NEED_SYNC = 0 | 需要进行同步操作。<br><!--Device-ASSET_NEED_SYNC = 0--><!--Device-ASSET_NEED_SYNC = 0-End--> |
+| ASSET_NEED_LOGOUT = 1 | 需要进行登出操作。<br><!--Device-ASSET_NEED_LOGOUT = 1--><!--Device-ASSET_NEED_LOGOUT = 1-End--> |
 
 

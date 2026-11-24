@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t stripeInfoCount |  |
-| [const VkRenderPassStripeInfoARM*](capi--vkrenderpassstripeinfoarm.md) pStripeInfos |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t stripeInfoCount | <!--Device-uint32_t stripeInfoCount--><!--Device-uint32_t stripeInfoCount-End--> |
+| [const VkRenderPassStripeInfoARM*](capi--vkrenderpassstripeinfoarm.md) pStripeInfos | <!--Device-const VkRenderPassStripeInfoARM* pStripeInfos--><!--Device-const VkRenderPassStripeInfoARM* pStripeInfos-End--> |
 
 

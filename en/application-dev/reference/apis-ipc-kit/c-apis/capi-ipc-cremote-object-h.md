@@ -60,7 +60,7 @@ enum OH_IPC_RequestMode
 
 Enumerates the IPC request modes. The synchronous request mode is suitable for scenarios where you need to wait for a response from the remote side. The asynchronous request mode is suitable for scenarios where you do not need to wait for a response or where you need to improve concurrent performance.
 
-<!--Device-OH_IPC_RequestMode--><!--Device-OH_IPC_RequestMode-End-->
+<!--Device-enum OH_IPC_RequestMode--><!--Device-enum OH_IPC_RequestMode-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -68,8 +68,8 @@ Enumerates the IPC request modes. The synchronous request mode is suitable for s
 
 | Enum item | Description |
 | -- | -- |
-| OH_IPC_REQUEST_MODE_SYNC = 0 | Synchronous request. Suitable for scenarios where you need to wait for a return result, such as query operations and simple request-response scenarios. |
-| OH_IPC_REQUEST_MODE_ASYNC = 1 | Asynchronous request. Suitable for scenarios where you do not need to obtain the result immediately or where operations are time-consuming, such as large-data transmission and background processing. |
+| OH_IPC_REQUEST_MODE_SYNC = 0 | Synchronous request. Suitable for scenarios where you need to wait for a return result, such as query operations and simple request-response scenarios.<br><!--Device-OH_IPC_REQUEST_MODE_SYNC = 0--><!--Device-OH_IPC_REQUEST_MODE_SYNC = 0-End--> |
+| OH_IPC_REQUEST_MODE_ASYNC = 1 | Asynchronous request. Suitable for scenarios where you do not need to obtain the result immediately or where operations are time-consuming, such as large-data transmission and background processing.<br><!--Device-OH_IPC_REQUEST_MODE_ASYNC = 1--><!--Device-OH_IPC_REQUEST_MODE_ASYNC = 1-End--> |
 
 
 ## Function description

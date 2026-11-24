@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| struct icmp6_hdr  nd_rs_hdr |  |
+| struct icmp6_hdr  nd_rs_hdr | <!--Device-struct icmp6_hdr nd_rs_hdr--><!--Device-struct icmp6_hdr nd_rs_hdr-End--> |
 
 

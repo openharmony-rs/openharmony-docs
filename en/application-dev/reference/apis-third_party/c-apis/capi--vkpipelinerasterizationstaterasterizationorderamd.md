@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkRasterizationOrderAMD rasterizationOrder |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkRasterizationOrderAMD rasterizationOrder | <!--Device-VkRasterizationOrderAMD rasterizationOrder--><!--Device-VkRasterizationOrderAMD rasterizationOrder-End--> |
 
 

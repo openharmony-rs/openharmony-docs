@@ -24,7 +24,7 @@ typedef struct Camera_ControlCenterStatusInfo {...} Camera_ControlCenterStatusIn
 
 | 名称 | 描述 |
 | -- | -- |
-| [Camera_ControlCenterEffectType](capi-camera-h.md#camera_controlcentereffecttype) effectType | 控制器效果类型。 |
-| bool isActive | 控制器是否激活。true表示激活，false表示未激活。 |
+| [Camera_ControlCenterEffectType](capi-camera-h.md#camera_controlcentereffecttype) effectType | 控制器效果类型。<br><!--Device-Camera_ControlCenterEffectType effectType--><!--Device-Camera_ControlCenterEffectType effectType-End--> |
+| bool isActive | 控制器是否激活。true表示激活，false表示未激活。<br><!--Device-bool isActive--><!--Device-bool isActive-End--> |
 
 

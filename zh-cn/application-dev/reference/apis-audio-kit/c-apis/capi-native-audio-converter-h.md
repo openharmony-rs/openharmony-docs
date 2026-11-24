@@ -19,9 +19,6 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AudioConverter_Format](capi-ohaudiosuite-oh-audioconverter-format.md) | OH_AudioConverter_Format | 定义音频转换器格式数据结构，用于描述基本音频格式。 |
-| [OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) | OH_AudioSuite_ConverterFormatEx | 定义扩展音频转换器格式信息结构体，用于描述支持任意采样率的音频格式。 |
-| [OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo.md) | OH_AudioSuite_ConverterInputInfo | 定义音频转换器输入数据结构体。 |
-| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo.md) | OH_AudioSuite_ConverterOutputInfo | 定义音频转换器输出数据结构体，用于直接处理模式接收转换后的音频数据。 |
 | [OH_AudioConverterStruct](capi-ohaudiosuite-oh-audioconverterstruct.md) | OH_AudioConverter | 声明音频格式转换器。<br> 音频格式转换器句柄用于执行音频格式转换相关功能。 |
 
 ### 枚举
@@ -53,7 +50,7 @@ enum OH_AudioConverter_Result
 
 定义函数执行的返回结果。
 
-<!--Device-OH_AudioConverter_Result--><!--Device-OH_AudioConverter_Result-End-->
+<!--Device-enum OH_AudioConverter_Result--><!--Device-enum OH_AudioConverter_Result-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -61,17 +58,17 @@ enum OH_AudioConverter_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOCONVERTER_SUCCESS = 0 | &nbsp;函数调用成功。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 | &nbsp;函数输入参数无效。例如传入的格式转换器指针为nullptr。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2 | &nbsp;不支持的音频格式。例如不支持的编码类型、采样格式等。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_SYSTEM = 3 | &nbsp;系统错误。例如使用已销毁的格式转换器执行格式转换。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 | &nbsp;内存分配失败。例如内部输出数据缓冲区内存分配失败。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 | &nbsp;输出缓存容量不足。例如设置的存储输出数据的容量不足以存储一帧输出数据量。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 | &nbsp;音频转换器实例未初始化。例如未创建格式转换器直接执行格式转换处理函数。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 | &nbsp;输入回调函数无效。例如输入回调函数返回数据量小于0或大于最大值400KB。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 | &nbsp;未设置回调函数。例如输入回调函数指针为空指针。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202 | 权限校验失败，非系统应用调用了系统API。<br>**起始版本：** 26.1.0 |
-| AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104 | 操作不支持。<br>**起始版本：** 26.1.0 |
+| AUDIOCONVERTER_SUCCESS = 0 | &nbsp;函数调用成功。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_SUCCESS = 0--><!--Device-AUDIOCONVERTER_SUCCESS = 0-End--> |
+| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 | &nbsp;函数输入参数无效。例如传入的格式转换器指针为nullptr。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_INVALID_PARAM = 1--><!--Device-AUDIOCONVERTER_ERROR_INVALID_PARAM = 1-End--> |
+| AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2 | &nbsp;不支持的音频格式。例如不支持的编码类型、采样格式等。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2--><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2-End--> |
+| AUDIOCONVERTER_ERROR_SYSTEM = 3 | &nbsp;系统错误。例如使用已销毁的格式转换器执行格式转换。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_SYSTEM = 3--><!--Device-AUDIOCONVERTER_ERROR_SYSTEM = 3-End--> |
+| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 | &nbsp;内存分配失败。例如内部输出数据缓冲区内存分配失败。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4--><!--Device-AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4-End--> |
+| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 | &nbsp;输出缓存容量不足。例如设置的存储输出数据的容量不足以存储一帧输出数据量。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5--><!--Device-AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5-End--> |
+| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 | &nbsp;音频转换器实例未初始化。例如未创建格式转换器直接执行格式转换处理函数。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6--><!--Device-AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6-End--> |
+| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 | &nbsp;输入回调函数无效。例如输入回调函数返回数据量小于0或大于最大值400KB。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7--><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7-End--> |
+| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 | &nbsp;未设置回调函数。例如输入回调函数指针为空指针。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8--><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8-End--> |
+| AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202 | 权限校验失败，非系统应用调用了系统API。<br>**起始版本：** 26.1.0<br><!--Device-AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202--><!--Device-AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202-End--> |
+| AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104 | 操作不支持。<br>**起始版本：** 26.1.0<br><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104--><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104-End--> |
 
 ### OH_AudioConverter_InputStatus
 
@@ -83,7 +80,7 @@ enum OH_AudioConverter_InputStatus
 
 定义回调函数[OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback)提供的输入音频数据的状态。 转换器使用此状态来确定如何处理后续的转换逻辑。例如，继续提取数据，暂停或清除缓存数据。 <br>注意：即使回调返回AUDIOCONVERTER_INPUT_DATA_FINISHED，也必须重复调用OH_AudioConverter_Process， 直到[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) 返回AUDIOCONVERTER_SUCCESS，并且outputSize=0（表示所有缓存数据均已处理完成）。
 
-<!--Device-OH_AudioConverter_InputStatus--><!--Device-OH_AudioConverter_InputStatus-End-->
+<!--Device-enum OH_AudioConverter_InputStatus--><!--Device-enum OH_AudioConverter_InputStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -91,9 +88,9 @@ enum OH_AudioConverter_InputStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOCONVERTER_INPUT_HAVE_DATA = 1 | 提供的输入数据有效。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2 | 暂时没有可用的输入数据。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_INPUT_DATA_FINISHED = 3 | 输入数据流已完成。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_INPUT_HAVE_DATA = 1 | 提供的输入数据有效。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_INPUT_HAVE_DATA = 1--><!--Device-AUDIOCONVERTER_INPUT_HAVE_DATA = 1-End--> |
+| AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2 | 暂时没有可用的输入数据。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2--><!--Device-AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2-End--> |
+| AUDIOCONVERTER_INPUT_DATA_FINISHED = 3 | 输入数据流已完成。<br>**起始版本：** 26.0.0<br><!--Device-AUDIOCONVERTER_INPUT_DATA_FINISHED = 3--><!--Device-AUDIOCONVERTER_INPUT_DATA_FINISHED = 3-End--> |
 
 
 ## 函数说明
@@ -128,7 +125,7 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：创建音频格式转换器成功，可以正常执行后续流程。<br>AUDIOCONVERTER_ERROR_INVALID_PARAM：函数输入参数无效，需要检查传入的音频格式转换器指针是否非空指针。<br>AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT：音频输入/输出格式组合不支持，输入或输出格式超出允许范围，需要检查配置的音频格式。<br>AUDIOCONVERTER_ERROR_SYSTEM：系统错误，需要检查是否使用已销毁的音频格式转换器执行格式转换。 |
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：创建音频格式转换器成功，可以正常执行后续流程。<br>AUDIOCONVERTER_ERROR_INVALID_PARAM：函数输入参数无效，需要检查传入的音频格式转换器指针是否非空指针。<br>AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT：音频输入/输出格式组合不支持，输入或输出格式超出允许范围，需要检查配置的音频格式。<br>AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED：创建音频格式转换器内存分配失败。<br>AUDIOCONVERTER_ERROR_SYSTEM：系统错误，需要检查是否使用已销毁的音频格式转换器执行格式转换。 |
 
 ### OH_AudioConverter_Destroy()
 

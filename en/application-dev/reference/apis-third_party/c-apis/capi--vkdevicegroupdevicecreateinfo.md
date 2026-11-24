@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t physicalDeviceCount |  |
-| const VkPhysicalDevice* pPhysicalDevices |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t physicalDeviceCount | <!--Device-uint32_t physicalDeviceCount--><!--Device-uint32_t physicalDeviceCount-End--> |
+| const VkPhysicalDevice* pPhysicalDevices | <!--Device-const VkPhysicalDevice* pPhysicalDevices--><!--Device-const VkPhysicalDevice* pPhysicalDevices-End--> |
 
 

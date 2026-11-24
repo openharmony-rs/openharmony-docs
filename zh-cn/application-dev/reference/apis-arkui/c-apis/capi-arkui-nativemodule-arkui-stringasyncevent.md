@@ -24,6 +24,6 @@ typedef struct ArkUI_StringAsyncEvent {...} ArkUI_StringAsyncEvent
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* pStr | 组件回调事件中传递的字符串数据。 |
+| const char* pStr | 组件回调事件中传递的字符串数据。<br><!--Device-const char* pStr--><!--Device-const char* pStr-End--> |
 
 

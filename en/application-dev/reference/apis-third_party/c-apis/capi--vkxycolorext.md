@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| float x |  |
-| float y |  |
+| float x | <!--Device-float x--><!--Device-float x-End--> |
+| float y | <!--Device-float y--><!--Device-float y-End--> |
 
 

@@ -2,6 +2,7 @@
 
 - 模块<!--basicserviceskit-module-->
     - [Pasteboard](capi-basic-services-kit-pasteboard.md)
+    - [BoardInfo](capi-basic-services-kit-boardinfo.md)
     - [SyscapNdk](capi-basic-services-kit-syscapndk.md)
     - [DeviceInfo](capi-basic-services-kit-deviceinfo.md)
     - [OsAccount](capi-basic-services-kit-osaccount.md)
@@ -14,6 +15,7 @@
 - 头文件<!--basicserviceskit-headerfile-->
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [oh_pasteboard.h](capi-oh-pasteboard-h.md)
+    - [boardinfo.h](capi-boardinfo-h.md)
     - [syscap_ndk.h](capi-syscap-ndk-h.md)
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [os_account.h](capi-os-account-h.md)

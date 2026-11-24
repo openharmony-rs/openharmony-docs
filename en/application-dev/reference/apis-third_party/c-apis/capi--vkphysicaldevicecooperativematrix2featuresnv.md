@@ -10,14 +10,14 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 cooperativeMatrixWorkgroupScope |  |
-| VkBool32 cooperativeMatrixFlexibleDimensions |  |
-| VkBool32 cooperativeMatrixReductions |  |
-| VkBool32 cooperativeMatrixConversions |  |
-| VkBool32 cooperativeMatrixPerElementOperations |  |
-| VkBool32 cooperativeMatrixTensorAddressing |  |
-| VkBool32 cooperativeMatrixBlockLoads |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 cooperativeMatrixWorkgroupScope | <!--Device-VkBool32 cooperativeMatrixWorkgroupScope--><!--Device-VkBool32 cooperativeMatrixWorkgroupScope-End--> |
+| VkBool32 cooperativeMatrixFlexibleDimensions | <!--Device-VkBool32 cooperativeMatrixFlexibleDimensions--><!--Device-VkBool32 cooperativeMatrixFlexibleDimensions-End--> |
+| VkBool32 cooperativeMatrixReductions | <!--Device-VkBool32 cooperativeMatrixReductions--><!--Device-VkBool32 cooperativeMatrixReductions-End--> |
+| VkBool32 cooperativeMatrixConversions | <!--Device-VkBool32 cooperativeMatrixConversions--><!--Device-VkBool32 cooperativeMatrixConversions-End--> |
+| VkBool32 cooperativeMatrixPerElementOperations | <!--Device-VkBool32 cooperativeMatrixPerElementOperations--><!--Device-VkBool32 cooperativeMatrixPerElementOperations-End--> |
+| VkBool32 cooperativeMatrixTensorAddressing | <!--Device-VkBool32 cooperativeMatrixTensorAddressing--><!--Device-VkBool32 cooperativeMatrixTensorAddressing-End--> |
+| VkBool32 cooperativeMatrixBlockLoads | <!--Device-VkBool32 cooperativeMatrixBlockLoads--><!--Device-VkBool32 cooperativeMatrixBlockLoads-End--> |
 
 

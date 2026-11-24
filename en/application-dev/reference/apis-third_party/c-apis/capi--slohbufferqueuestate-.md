@@ -12,7 +12,7 @@ OH Buffer queue state
 
 | Name | Description |
 | -- | -- |
-| SLuint32 count |  |
-| SLuint32 index |  |
+| SLuint32 count | <!--Device-SLuint32 count--><!--Device-SLuint32 count-End--> |
+| SLuint32 index | <!--Device-SLuint32 index--><!--Device-SLuint32 index-End--> |
 
 

@@ -24,7 +24,7 @@ A listener for native image, use <b>OH_NativeImage_SetOnFrameAvailableListener</
 
 | Name | Description |
 | -- | -- |
-| void *context | User defined context, returned to the user in the callback function |
-| [OH_OnFrameAvailable](capi-native-image-h.md#oh_onframeavailable) onFrameAvailable | The callback function of frame available. |
+| void *context | User defined context, returned to the user in the callback function<br><!--Device-void *context--><!--Device-void *context-End--> |
+| [OH_OnFrameAvailable](capi-native-image-h.md#oh_onframeavailable) onFrameAvailable | The callback function of frame available.<br><!--Device-OH_OnFrameAvailable onFrameAvailable--><!--Device-OH_OnFrameAvailable onFrameAvailable-End--> |
 
 

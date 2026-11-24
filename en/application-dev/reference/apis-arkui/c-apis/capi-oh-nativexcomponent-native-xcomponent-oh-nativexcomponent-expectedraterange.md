@@ -24,8 +24,8 @@ Defines the expected frame rate range struct.
 
 | Name | Description |
 | -- | -- |
-| int32_t min | The minimum frame rate of dynamical callback rate range. |
-| int32_t max | The maximum frame rate of dynamical callback rate range. |
-| int32_t expected | The expected frame rate of dynamical callback rate range. |
+| int32_t min | The minimum frame rate of dynamical callback rate range.<br><!--Device-int32_t min--><!--Device-int32_t min-End--> |
+| int32_t max | The maximum frame rate of dynamical callback rate range.<br><!--Device-int32_t max--><!--Device-int32_t max-End--> |
+| int32_t expected | The expected frame rate of dynamical callback rate range.<br><!--Device-int32_t expected--><!--Device-int32_t expected-End--> |
 
 

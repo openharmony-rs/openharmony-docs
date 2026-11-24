@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkRenderPassCreationFeedbackInfoEXT*](capi--vkrenderpasscreationfeedbackinfoext.md) pRenderPassFeedback |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkRenderPassCreationFeedbackInfoEXT*](capi--vkrenderpasscreationfeedbackinfoext.md) pRenderPassFeedback | <!--Device-VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback--><!--Device-VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback-End--> |
 
 

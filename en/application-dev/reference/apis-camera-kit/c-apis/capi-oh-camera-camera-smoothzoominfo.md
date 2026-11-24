@@ -24,6 +24,6 @@ The struct describes the smooth zoom information.
 
 | Name | Description |
 | -- | -- |
-| int32_t duration | Total duration of smooth zoom, in ms. |
+| int32_t duration | Total duration of smooth zoom, in ms.<br><!--Device-int32_t duration--><!--Device-int32_t duration-End--> |
 
 

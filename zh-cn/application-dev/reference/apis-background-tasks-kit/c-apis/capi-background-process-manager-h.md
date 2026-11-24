@@ -42,7 +42,7 @@ enum BackgroundProcessManager_ProcessPriority
 
 子进程压制档位。
 
-<!--Device-BackgroundProcessManager_ProcessPriority--><!--Device-BackgroundProcessManager_ProcessPriority-End-->
+<!--Device-enum BackgroundProcessManager_ProcessPriority--><!--Device-enum BackgroundProcessManager_ProcessPriority-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -50,8 +50,8 @@ enum BackgroundProcessManager_ProcessPriority
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PROCESS_BACKGROUND = 1 | 该档位相较PROCESS_INACTIVE压制效果更显著，获取到的CPU资源更少。推荐执行处于后台的图文页面等用户无感知业务的后台子进程时设置该档位。<br>**起始版本：** 17 |
-| PROCESS_INACTIVE = 2 | 推荐正在执行播放音频、导航等用户可感知业务的后台子进程时设置该档位。<br>**起始版本：** 17 |
+| PROCESS_BACKGROUND = 1 | 该档位相较PROCESS_INACTIVE压制效果更显著，获取到的CPU资源更少。推荐执行处于后台的图文页面等用户无感知业务的后台子进程时设置该档位。<br>**起始版本：** 17<br><!--Device-PROCESS_BACKGROUND = 1--><!--Device-PROCESS_BACKGROUND = 1-End--> |
+| PROCESS_INACTIVE = 2 | 推荐正在执行播放音频、导航等用户可感知业务的后台子进程时设置该档位。<br>**起始版本：** 17<br><!--Device-PROCESS_INACTIVE = 2--><!--Device-PROCESS_INACTIVE = 2-End--> |
 
 ### BackgroundProcessManager_ErrorCode
 
@@ -63,7 +63,7 @@ enum BackgroundProcessManager_ErrorCode
 
 定义后台子进程管控错误码。
 
-<!--Device-BackgroundProcessManager_ErrorCode--><!--Device-BackgroundProcessManager_ErrorCode-End-->
+<!--Device-enum BackgroundProcessManager_ErrorCode--><!--Device-enum BackgroundProcessManager_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -71,9 +71,9 @@ enum BackgroundProcessManager_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0 | 压制参数发送成功。<br>**起始版本：** 17 |
-| ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401 | 参数检查失败。<br>**起始版本：** 17 |
-| ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001 | 客户端进程请求系统服务进程，获取系统服务操作失败。<br>**起始版本：** 17 |
+| ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0 | 压制参数发送成功。<br>**起始版本：** 17<br><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0--><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0-End--> |
+| ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401 | 参数检查失败。<br>**起始版本：** 17<br><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401--><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401-End--> |
+| ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001 | 客户端进程请求系统服务进程，获取系统服务操作失败。<br>**起始版本：** 17<br><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001--><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001-End--> |
 
 
 ## 函数说明

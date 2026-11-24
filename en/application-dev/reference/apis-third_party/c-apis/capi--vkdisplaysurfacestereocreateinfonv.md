@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDisplaySurfaceStereoTypeNV stereoType |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDisplaySurfaceStereoTypeNV stereoType | <!--Device-VkDisplaySurfaceStereoTypeNV stereoType--><!--Device-VkDisplaySurfaceStereoTypeNV stereoType-End--> |
 
 

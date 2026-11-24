@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t perViewRenderAreaCount |  |
-| [const VkRect2D*](capi--vkrect2d.md) pPerViewRenderAreas |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t perViewRenderAreaCount | <!--Device-uint32_t perViewRenderAreaCount--><!--Device-uint32_t perViewRenderAreaCount-End--> |
+| [const VkRect2D*](capi--vkrect2d.md) pPerViewRenderAreas | <!--Device-const VkRect2D* pPerViewRenderAreas--><!--Device-const VkRect2D* pPerViewRenderAreas-End--> |
 
 

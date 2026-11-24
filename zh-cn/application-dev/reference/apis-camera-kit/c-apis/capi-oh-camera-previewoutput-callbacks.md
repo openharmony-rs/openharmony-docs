@@ -24,8 +24,8 @@ typedef struct PreviewOutput_Callbacks {...} PreviewOutput_Callbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_PreviewOutput_OnFrameStart](capi-preview-output-h.md#oh_previewoutput_onframestart) onFrameStart | 预览输出帧开始事件。 |
-| [OH_PreviewOutput_OnFrameEnd](capi-preview-output-h.md#oh_previewoutput_onframeend) onFrameEnd | 预览输出帧结束事件。 |
-| [OH_PreviewOutput_OnError](capi-preview-output-h.md#oh_previewoutput_onerror) onError | 预览输出错误事件。 |
+| [OH_PreviewOutput_OnFrameStart](capi-preview-output-h.md#oh_previewoutput_onframestart) onFrameStart | 预览输出帧开始事件。<br><!--Device-OH_PreviewOutput_OnFrameStart onFrameStart--><!--Device-OH_PreviewOutput_OnFrameStart onFrameStart-End--> |
+| [OH_PreviewOutput_OnFrameEnd](capi-preview-output-h.md#oh_previewoutput_onframeend) onFrameEnd | 预览输出帧结束事件。<br><!--Device-OH_PreviewOutput_OnFrameEnd onFrameEnd--><!--Device-OH_PreviewOutput_OnFrameEnd onFrameEnd-End--> |
+| [OH_PreviewOutput_OnError](capi-preview-output-h.md#oh_previewoutput_onerror) onError | 预览输出错误事件。<br><!--Device-OH_PreviewOutput_OnError onError--><!--Device-OH_PreviewOutput_OnError onError-End--> |
 
 

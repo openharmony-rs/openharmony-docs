@@ -24,7 +24,7 @@ typedef struct OH_Pixelmap_HdrDynamicMetadata {...} OH_Pixelmap_HdrDynamicMetada
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t *data | 动态元数据值的指针，指向存储动态元数据的二进制数据缓冲区，缓冲区长度由length成员指定。 |
-| uint32_t length | 动态元数据值的长度，单位：字节（Byte），取值需与data指向的数据缓冲区实际长度一致。 |
+| uint8_t *data | 动态元数据值的指针，指向存储动态元数据的二进制数据缓冲区，缓冲区长度由length成员指定。<br><!--Device-uint8_t *data--><!--Device-uint8_t *data-End--> |
+| uint32_t length | 动态元数据值的长度，单位：字节（Byte），取值需与data指向的数据缓冲区实际长度一致。<br><!--Device-uint32_t length--><!--Device-uint32_t length-End--> |
 
 

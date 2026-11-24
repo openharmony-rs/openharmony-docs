@@ -51,7 +51,7 @@ enum TransientTask_ErrorCode
 
 Enumerates the error codes available for a transient task.
 
-<!--Device-TransientTask_ErrorCode--><!--Device-TransientTask_ErrorCode-End-->
+<!--Device-enum TransientTask_ErrorCode--><!--Device-enum TransientTask_ErrorCode-End-->
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
@@ -59,15 +59,15 @@ Enumerates the error codes available for a transient task.
 
 | Enum item | Description |
 | -- | -- |
-| ERR_TRANSIENT_TASK_OK = 0 | Operation successful.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_INVALID_PARAM = 401 | Parameter check failed. Possible causes: 1. Mandatory parameters are not passed. 2. Incorrect parameter types.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002 | Parcel read/write operation failed.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003 | IPC failed.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004 | System service failed.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001 | Failed to verify the client information of the transient task.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002 | Failed to verify the server information of the transient task.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003 | Parcel read/write operation failed for the transient task. Possible causes: 1. The parameter is invalid. 2. Memory allocation fails.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004 | System service failed.<br>**Since**: 13 |
+| ERR_TRANSIENT_TASK_OK = 0 | Operation successful.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_OK = 0--><!--Device-ERR_TRANSIENT_TASK_OK = 0-End--> |
+| ERR_TRANSIENT_TASK_INVALID_PARAM = 401 | Parameter check failed. Possible causes: 1. Mandatory parameters are not passed. 2. Incorrect parameter types.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_INVALID_PARAM = 401--><!--Device-ERR_TRANSIENT_TASK_INVALID_PARAM = 401-End--> |
+| ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002 | Parcel read/write operation failed.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002--><!--Device-ERR_TRANSIENT_TASK_PARCEL_FAILED = 9800002-End--> |
+| ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003 | IPC failed.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003--><!--Device-ERR_TRANSIENT_TASK_TRANSACTION_FAILED = 9800003-End--> |
+| ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004 | System service failed.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004--><!--Device-ERR_TRANSIENT_TASK_SYS_NOT_READY = 9800004-End--> |
+| ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001 | Failed to verify the client information of the transient task.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001--><!--Device-ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001-End--> |
+| ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002 | Failed to verify the server information of the transient task.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002--><!--Device-ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002-End--> |
+| ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003 | Parcel read/write operation failed for the transient task. Possible causes: 1. The parameter is invalid. 2. Memory allocation fails.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003--><!--Device-ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003-End--> |
+| ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004 | System service failed.<br>**Since**: 13<br><!--Device-ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004--><!--Device-ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004-End--> |
 
 
 ## Function description

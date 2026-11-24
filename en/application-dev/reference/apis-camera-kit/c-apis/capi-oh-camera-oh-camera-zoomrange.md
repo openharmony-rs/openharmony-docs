@@ -24,7 +24,7 @@ Describes the zoom range configuration.
 
 | Name | Description |
 | -- | -- |
-| float minZoom | Minimum zoom value.<br>**Since**: 24 |
-| float maxZoom | Maximum zoom value.<br>**Since**: 24 |
+| float minZoom | Minimum zoom value.<br>**Since**: 24<br><!--Device-float minZoom--><!--Device-float minZoom-End--> |
+| float maxZoom | Maximum zoom value.<br>**Since**: 24<br><!--Device-float maxZoom--><!--Device-float maxZoom-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t disabledValidationCheckCount |  |
-| const VkValidationCheckEXT* pDisabledValidationChecks |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t disabledValidationCheckCount | <!--Device-uint32_t disabledValidationCheckCount--><!--Device-uint32_t disabledValidationCheckCount-End--> |
+| const VkValidationCheckEXT* pDisabledValidationChecks | <!--Device-const VkValidationCheckEXT* pDisabledValidationChecks--><!--Device-const VkValidationCheckEXT* pDisabledValidationChecks-End--> |
 
 

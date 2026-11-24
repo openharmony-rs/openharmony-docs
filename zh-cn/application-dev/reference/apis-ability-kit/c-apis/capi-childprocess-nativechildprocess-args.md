@@ -24,7 +24,7 @@ typedef struct NativeChildProcess_Args {...} NativeChildProcess_Args
 
 | 名称 | 描述 |
 | -- | -- |
-| char* entryParams | 入口参数，大小不能超过150KB。 |
-| [struct NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList | 传递给子进程的文件描述符信息列表。 |
+| char* entryParams | 入口参数，大小不能超过150KB。<br><!--Device-char* entryParams--><!--Device-char* entryParams-End--> |
+| [struct NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList | 传递给子进程的文件描述符信息列表。<br><!--Device-struct NativeChildProcess_FdList fdList--><!--Device-struct NativeChildProcess_FdList fdList-End--> |
 
 

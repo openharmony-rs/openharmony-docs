@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkBuffer buffer |  |
-| uint32_t bindCount |  |
-| [const VkSparseMemoryBind*](capi--vksparsememorybind.md) pBinds |  |
+| VkBuffer buffer | <!--Device-VkBuffer buffer--><!--Device-VkBuffer buffer-End--> |
+| uint32_t bindCount | <!--Device-uint32_t bindCount--><!--Device-uint32_t bindCount-End--> |
+| [const VkSparseMemoryBind*](capi--vksparsememorybind.md) pBinds | <!--Device-const VkSparseMemoryBind* pBinds--><!--Device-const VkSparseMemoryBind* pBinds-End--> |
 
 

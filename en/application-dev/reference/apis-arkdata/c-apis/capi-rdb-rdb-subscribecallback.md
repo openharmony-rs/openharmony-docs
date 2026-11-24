@@ -24,7 +24,7 @@ Indicates the callback functions.
 
 | Name | Description |
 | -- | -- |
-| [Rdb_DetailsObserver](capi-relational-store-h.md#rdb_detailsobserver) detailsObserver | The callback function of cloud data change details event. |
-| [Rdb_BriefObserver](capi-relational-store-h.md#rdb_briefobserver) briefObserver | The callback function of cloud data change event. |
+| [Rdb_DetailsObserver](capi-relational-store-h.md#rdb_detailsobserver) detailsObserver | The callback function of cloud data change details event.<br><!--Device-Rdb_DetailsObserver detailsObserver--><!--Device-Rdb_DetailsObserver detailsObserver-End--> |
+| [Rdb_BriefObserver](capi-relational-store-h.md#rdb_briefobserver) briefObserver | The callback function of cloud data change event.<br><!--Device-Rdb_BriefObserver briefObserver--><!--Device-Rdb_BriefObserver briefObserver-End--> |
 
 

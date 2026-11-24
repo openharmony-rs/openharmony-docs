@@ -24,8 +24,8 @@ The struct describes the audio information.
 
 | Name | Description |
 | -- | -- |
-| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) micCapInfo | Audio capture info of microphone |
-| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) innerCapInfo | Audio capture info of inner |
-| [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) audioEncInfo | Audio encoder info, no need to set, while dataType = OH_ORIGINAL_STREAM |
+| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) micCapInfo | Audio capture info of microphone<br><!--Device-OH_AudioCaptureInfo micCapInfo--><!--Device-OH_AudioCaptureInfo micCapInfo-End--> |
+| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) innerCapInfo | Audio capture info of inner<br><!--Device-OH_AudioCaptureInfo innerCapInfo--><!--Device-OH_AudioCaptureInfo innerCapInfo-End--> |
+| [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) audioEncInfo | Audio encoder info, no need to set, while dataType = OH_ORIGINAL_STREAM<br><!--Device-OH_AudioEncInfo audioEncInfo--><!--Device-OH_AudioEncInfo audioEncInfo-End--> |
 
 

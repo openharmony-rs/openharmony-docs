@@ -24,11 +24,11 @@ Indicates the smpte2086 metadata.
 
 | Name | Description |
 | -- | -- |
-| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryRed | primary red |
-| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryGreen | primary green |
-| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryBlue | primary blue |
-| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) whitePoint | white point |
-| float maxLuminance | max luminance |
-| float minLuminance | min luminance |
+| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryRed | primary red<br><!--Device-OH_NativeBuffer_ColorXY displayPrimaryRed--><!--Device-OH_NativeBuffer_ColorXY displayPrimaryRed-End--> |
+| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryGreen | primary green<br><!--Device-OH_NativeBuffer_ColorXY displayPrimaryGreen--><!--Device-OH_NativeBuffer_ColorXY displayPrimaryGreen-End--> |
+| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) displayPrimaryBlue | primary blue<br><!--Device-OH_NativeBuffer_ColorXY displayPrimaryBlue--><!--Device-OH_NativeBuffer_ColorXY displayPrimaryBlue-End--> |
+| [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) whitePoint | white point<br><!--Device-OH_NativeBuffer_ColorXY whitePoint--><!--Device-OH_NativeBuffer_ColorXY whitePoint-End--> |
+| float maxLuminance | max luminance<br><!--Device-float maxLuminance--><!--Device-float maxLuminance-End--> |
+| float minLuminance | min luminance<br><!--Device-float minLuminance--><!--Device-float minLuminance-End--> |
 
 

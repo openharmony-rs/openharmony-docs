@@ -24,7 +24,7 @@ Defines the image size.
 
 | Name | Description |
 | -- | -- |
-| int32_t width | Image width, in pixels. |
-| int32_t height | Image height, in pixels. |
+| int32_t width | Image width, in pixels.<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | Image height, in pixels.<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

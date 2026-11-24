@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| struct icmp6_hdr  nd_ns_hdr |  |
-| struct in6_addr   nd_ns_target |  |
+| struct icmp6_hdr  nd_ns_hdr | <!--Device-struct icmp6_hdr nd_ns_hdr--><!--Device-struct icmp6_hdr nd_ns_hdr-End--> |
+| struct in6_addr   nd_ns_target | <!--Device-struct in6_addr nd_ns_target--><!--Device-struct in6_addr nd_ns_target-End--> |
 
 

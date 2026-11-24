@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 subpassMergeFeedback |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 subpassMergeFeedback | <!--Device-VkBool32 subpassMergeFeedback--><!--Device-VkBool32 subpassMergeFeedback-End--> |
 
 

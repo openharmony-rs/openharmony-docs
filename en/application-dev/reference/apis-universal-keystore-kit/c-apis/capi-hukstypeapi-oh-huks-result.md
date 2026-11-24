@@ -24,8 +24,8 @@ Defines the returned data, including a status code and related description.
 
 | Name | Description |
 | -- | -- |
-| int32_t errorCode | Status code. For details, see [OH_Huks_ErrCode](capi-native-huks-type-h.md#oh_huks_errcode). |
-| const char *errorMsg | Description of the status code. |
-| uint8_t *data | Other data. |
+| int32_t errorCode | Status code. For details, see [OH_Huks_ErrCode](capi-native-huks-type-h.md#oh_huks_errcode).<br><!--Device-int32_t errorCode--><!--Device-int32_t errorCode-End--> |
+| const char *errorMsg | Description of the status code.<br><!--Device-const char *errorMsg--><!--Device-const char *errorMsg-End--> |
+| uint8_t *data | Other data.<br><!--Device-uint8_t *data--><!--Device-uint8_t *data-End--> |
 
 

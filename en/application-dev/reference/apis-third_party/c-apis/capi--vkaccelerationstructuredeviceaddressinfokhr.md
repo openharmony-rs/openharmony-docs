@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkAccelerationStructureKHR accelerationStructure |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkAccelerationStructureKHR accelerationStructure | <!--Device-VkAccelerationStructureKHR accelerationStructure--><!--Device-VkAccelerationStructureKHR accelerationStructure-End--> |
 
 

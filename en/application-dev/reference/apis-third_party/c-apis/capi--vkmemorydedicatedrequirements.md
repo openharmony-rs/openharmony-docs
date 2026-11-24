@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 prefersDedicatedAllocation |  |
-| VkBool32 requiresDedicatedAllocation |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 prefersDedicatedAllocation | <!--Device-VkBool32 prefersDedicatedAllocation--><!--Device-VkBool32 prefersDedicatedAllocation-End--> |
+| VkBool32 requiresDedicatedAllocation | <!--Device-VkBool32 requiresDedicatedAllocation--><!--Device-VkBool32 requiresDedicatedAllocation-End--> |
 
 

@@ -24,9 +24,9 @@ This structure is used to describe external log information, including the file 
 
 | Name | Description |
 | -- | -- |
-| const char* filePath | Log file path.<br>**Since**: 26.0.1 |
-| long long generationTs | Timestamp when a file is generated, in ms.<br>**Since**: 26.0.1 |
-| long fileSize | File size in KB.<br>**Since**: 26.0.1 |
-| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event | System event type.<br>**Since**: 26.0.1 |
+| const char* filePath | Log file path.<br>**Since**: 26.0.1<br><!--Device-const char* filePath--><!--Device-const char* filePath-End--> |
+| long long generationTs | Timestamp when a file is generated, in ms.<br>**Since**: 26.0.1<br><!--Device-long long generationTs--><!--Device-long long generationTs-End--> |
+| long fileSize | File size in KB.<br>**Since**: 26.0.1<br><!--Device-long fileSize--><!--Device-long fileSize-End--> |
+| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event | System event type.<br>**Since**: 26.0.1<br><!--Device-OH_HiAppEvent_SysEvent event--><!--Device-OH_HiAppEvent_SysEvent event-End--> |
 
 

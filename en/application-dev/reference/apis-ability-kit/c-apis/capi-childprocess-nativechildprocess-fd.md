@@ -24,8 +24,8 @@ The struct describes the information about the file descriptor passed to the chi
 
 | Name | Description |
 | -- | -- |
-| char* fdName | Pointer to the name of the file descriptor. It contains a maximum of 20 characters.<br>**Since**: 13 |
-| int32_t fd | Value of the file descriptor.<br>**Since**: 13 |
-| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next | Pointer to the next file descriptor.<br>**Since**: 13 |
+| char* fdName | Pointer to the name of the file descriptor. It contains a maximum of 20 characters.<br>**Since**: 13<br><!--Device-char* fdName--><!--Device-char* fdName-End--> |
+| int32_t fd | Value of the file descriptor.<br>**Since**: 13<br><!--Device-int32_t fd--><!--Device-int32_t fd-End--> |
+| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next | Pointer to the next file descriptor.<br>**Since**: 13<br><!--Device-struct NativeChildProcess_Fd* next--><!--Device-struct NativeChildProcess_Fd* next-End--> |
 
 

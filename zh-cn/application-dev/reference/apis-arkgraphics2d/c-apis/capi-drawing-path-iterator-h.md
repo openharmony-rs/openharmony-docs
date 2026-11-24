@@ -42,7 +42,7 @@ enum OH_Drawing_PathIteratorVerb
 
 迭代器包含的路径操作类型枚举，可用于读取路径的操作指令。
 
-<!--Device-OH_Drawing_PathIteratorVerb--><!--Device-OH_Drawing_PathIteratorVerb-End-->
+<!--Device-enum OH_Drawing_PathIteratorVerb--><!--Device-enum OH_Drawing_PathIteratorVerb-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -50,13 +50,13 @@ enum OH_Drawing_PathIteratorVerb
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MOVE = 0 | 设置路径的起始点。 |
-| LINE = 1 | 添加线段。 |
-| QUAD = 2 | 添加二阶贝塞尔曲线。 |
-| CONIC = 3 | 添加圆锥曲线。 |
-| CUBIC = 4 | 添加三阶贝塞尔曲线。 |
-| CLOSE = 5 | 闭合路径。 |
-| DONE = CLOSE + 1 | 表示路径操作迭代结束。 |
+| MOVE = 0 | 设置路径的起始点。<br><!--Device-MOVE = 0--><!--Device-MOVE = 0-End--> |
+| LINE = 1 | 添加线段。<br><!--Device-LINE = 1--><!--Device-LINE = 1-End--> |
+| QUAD = 2 | 添加二阶贝塞尔曲线。<br><!--Device-QUAD = 2--><!--Device-QUAD = 2-End--> |
+| CONIC = 3 | 添加圆锥曲线。<br><!--Device-CONIC = 3--><!--Device-CONIC = 3-End--> |
+| CUBIC = 4 | 添加三阶贝塞尔曲线。<br><!--Device-CUBIC = 4--><!--Device-CUBIC = 4-End--> |
+| CLOSE = 5 | 闭合路径。<br><!--Device-CLOSE = 5--><!--Device-CLOSE = 5-End--> |
+| DONE = CLOSE + 1 | 表示路径操作迭代结束。<br><!--Device-DONE = CLOSE + 1--><!--Device-DONE = CLOSE + 1-End--> |
 
 
 ## 函数说明

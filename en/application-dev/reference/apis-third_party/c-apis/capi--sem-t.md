@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| volatile int \_\_val[4*sizeof(long)/sizeof(int)] |  |
+| volatile int \_\_val[4*sizeof(long)/sizeof(int)] | <!--Device-volatile int \_\_val[4*sizeof(long)/sizeof(int)]--><!--Device-volatile int \_\_val[4*sizeof(long)/sizeof(int)]-End--> |
 
 

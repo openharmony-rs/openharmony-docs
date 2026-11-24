@@ -24,8 +24,8 @@ Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the table.
 
 | Name | Description |
 | -- | -- |
-| const char *table | Indicates the name of changed table. |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) upload | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the upload process. |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) download | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the download process. |
+| const char *table | Indicates the name of changed table.<br><!--Device-const char *table--><!--Device-const char *table-End--> |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) upload | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the upload process.<br><!--Device-Rdb_Statistic upload--><!--Device-Rdb_Statistic upload-End--> |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) download | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the download process.<br><!--Device-Rdb_Statistic download--><!--Device-Rdb_Statistic download-End--> |
 
 

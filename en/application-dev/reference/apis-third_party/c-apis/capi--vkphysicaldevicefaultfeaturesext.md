@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 deviceFault |  |
-| VkBool32 deviceFaultVendorBinary |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 deviceFault | <!--Device-VkBool32 deviceFault--><!--Device-VkBool32 deviceFault-End--> |
+| VkBool32 deviceFaultVendorBinary | <!--Device-VkBool32 deviceFaultVendorBinary--><!--Device-VkBool32 deviceFaultVendorBinary-End--> |
 
 

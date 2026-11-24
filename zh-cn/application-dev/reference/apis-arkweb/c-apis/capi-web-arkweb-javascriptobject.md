@@ -24,9 +24,9 @@ ArkWeb_JavaScriptObject结构体用于向Web页面注入JavaScript代码并获�
 
 | 名称 | 描述 |
 | -- | -- |
-| const uint8_t* buffer | 注入的JavaScript代码。该缓冲区长度需与size参数一致。 |
-| size_t size | JavaScript代码长度。单位：字节。需与buffer的实际长度一致，否则可能导致越界或截断。 |
-| [ArkWeb_OnJavaScriptCallback](capi-arkweb-type-h.md#arkweb_onjavascriptcallback) callback | JavaScript执行完成的回调。回调函数指针，传入NULL表示不需要回调。 |
-| void* userData | 需要在回调中携带的自定义数据。 |
+| const uint8_t* buffer | 注入的JavaScript代码。该缓冲区长度需与size参数一致。<br><!--Device-const uint8_t* buffer--><!--Device-const uint8_t* buffer-End--> |
+| size_t size | JavaScript代码长度。单位：字节。需与buffer的实际长度一致，否则可能导致越界或截断。<br><!--Device-size_t size--><!--Device-size_t size-End--> |
+| [ArkWeb_OnJavaScriptCallback](capi-arkweb-type-h.md#arkweb_onjavascriptcallback) callback | JavaScript执行完成的回调。回调函数指针，传入NULL表示不需要回调。<br><!--Device-ArkWeb_OnJavaScriptCallback callback--><!--Device-ArkWeb_OnJavaScriptCallback callback-End--> |
+| void* userData | 需要在回调中携带的自定义数据。<br><!--Device-void* userData--><!--Device-void* userData-End--> |
 
 

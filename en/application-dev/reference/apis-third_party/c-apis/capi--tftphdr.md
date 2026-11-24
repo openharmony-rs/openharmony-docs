@@ -10,11 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| short th_opcode |  |
-| th_u |  |
-| th_u.tu_block |  |
-| th_u.tu_code |  |
-| th_u.tu_stuff |  |
-| char th_data |  |
+| short th_opcode | <!--Device-short th_opcode--><!--Device-short th_opcode-End--> |
+| th_u.tu_block | <!--Device-th_u.tu_block--><!--Device-th_u.tu_block-End--> |
+| th_u.tu_code | <!--Device-th_u.tu_code--><!--Device-th_u.tu_code-End--> |
+| th_u.tu_stuff | <!--Device-th_u.tu_stuff--><!--Device-th_u.tu_stuff-End--> |
+| char th_data[1] | <!--Device-char th_data[1]--><!--Device-char th_data[1]-End--> |
 
 

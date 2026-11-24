@@ -86,7 +86,7 @@ enum CryptoAsymKey_ParamType
 
 定义非对称密钥参数类型。
 
-<!--Device-CryptoAsymKey_ParamType--><!--Device-CryptoAsymKey_ParamType-End-->
+<!--Device-enum CryptoAsymKey_ParamType--><!--Device-enum CryptoAsymKey_ParamType-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -94,36 +94,36 @@ enum CryptoAsymKey_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_DSA_P_DATABLOB = 101 | 表示DSA算法的素数p。<br>**起始版本：** 12 |
-| CRYPTO_DSA_Q_DATABLOB = 102 | 表示DSA算法的子素数q。<br>**起始版本：** 12 |
-| CRYPTO_DSA_G_DATABLOB = 103 | 表示DSA算法的基g。<br>**起始版本：** 12 |
-| CRYPTO_DSA_SK_DATABLOB = 104 | 表示DSA算法的私钥。<br>**起始版本：** 12 |
-| CRYPTO_DSA_PK_DATABLOB = 105 | 表示DSA算法的公钥。<br>**起始版本：** 12 |
-| CRYPTO_ECC_FP_P_DATABLOB = 201 | 表示椭圆曲线(EC)素数域的素数p。<br>**起始版本：** 12 |
-| CRYPTO_ECC_A_DATABLOB = 202 | 表示椭圆曲线的第一个系数a。<br>**起始版本：** 12 |
-| CRYPTO_ECC_B_DATABLOB = 203 | 表示椭圆曲线的第二个系数b。<br>**起始版本：** 12 |
-| CRYPTO_ECC_G_X_DATABLOB = 204 | 表示基点g的仿射x坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_G_Y_DATABLOB = 205 | 表示基点g的仿射y坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_N_DATABLOB = 206 | 表示基点g的阶。<br>**起始版本：** 12 |
-| CRYPTO_ECC_H_INT = 207 | 表示椭圆曲线的余因子。<br>**起始版本：** 12 |
-| CRYPTO_ECC_SK_DATABLOB = 208 | 表示ECC私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_ECC_PK_X_DATABLOB = 209 | 表示ECC公钥中公钥点的仿射x坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_PK_Y_DATABLOB = 210 | 表示ECC公钥中公钥点的仿射y坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_FIELD_TYPE_STR = 211 | 表示椭圆曲线有限域类型。<br>**起始版本：** 12 |
-| CRYPTO_ECC_FIELD_SIZE_INT = 212 | 表示有限域的比特长度。<br>**起始版本：** 12 |
-| CRYPTO_ECC_CURVE_NAME_STR = 213 | 表示SECG标准的曲线名称。<br>**起始版本：** 12 |
-| CRYPTO_RSA_N_DATABLOB = 301 | 表示RSA算法的模数n。<br>**起始版本：** 12 |
-| CRYPTO_RSA_D_DATABLOB = 302 | 表示RSA算法的私钥指数d。<br>**起始版本：** 12 |
-| CRYPTO_RSA_E_DATABLOB = 303 | 表示RSA算法的公钥指数e。<br>**起始版本：** 12 |
-| CRYPTO_DH_P_DATABLOB = 401 | 表示DH算法的素数p。<br>**起始版本：** 12 |
-| CRYPTO_DH_G_DATABLOB = 402 | 表示DH算法的生成元g。<br>**起始版本：** 12 |
-| CRYPTO_DH_L_INT = 403 | 表示DH算法中私钥长度的比特数。<br>**起始版本：** 12 |
-| CRYPTO_DH_SK_DATABLOB = 404 | 表示DH私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_DH_PK_DATABLOB = 405 | 表示DH公钥的公钥值。<br>**起始版本：** 12 |
-| CRYPTO_ED25519_SK_DATABLOB = 501 | 表示ED25519私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_ED25519_PK_DATABLOB = 502 | 表示ED25519公钥的公钥值。<br>**起始版本：** 12 |
-| CRYPTO_X25519_SK_DATABLOB = 601 | 表示X25519私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_X25519_PK_DATABLOB = 602 | 表示X25519公钥的公钥值。<br>**起始版本：** 12 |
+| CRYPTO_DSA_P_DATABLOB = 101 | 表示DSA算法的素数p。<br>**起始版本：** 12<br><!--Device-CRYPTO_DSA_P_DATABLOB = 101--><!--Device-CRYPTO_DSA_P_DATABLOB = 101-End--> |
+| CRYPTO_DSA_Q_DATABLOB = 102 | 表示DSA算法的子素数q。<br>**起始版本：** 12<br><!--Device-CRYPTO_DSA_Q_DATABLOB = 102--><!--Device-CRYPTO_DSA_Q_DATABLOB = 102-End--> |
+| CRYPTO_DSA_G_DATABLOB = 103 | 表示DSA算法的基g。<br>**起始版本：** 12<br><!--Device-CRYPTO_DSA_G_DATABLOB = 103--><!--Device-CRYPTO_DSA_G_DATABLOB = 103-End--> |
+| CRYPTO_DSA_SK_DATABLOB = 104 | 表示DSA算法的私钥。<br>**起始版本：** 12<br><!--Device-CRYPTO_DSA_SK_DATABLOB = 104--><!--Device-CRYPTO_DSA_SK_DATABLOB = 104-End--> |
+| CRYPTO_DSA_PK_DATABLOB = 105 | 表示DSA算法的公钥。<br>**起始版本：** 12<br><!--Device-CRYPTO_DSA_PK_DATABLOB = 105--><!--Device-CRYPTO_DSA_PK_DATABLOB = 105-End--> |
+| CRYPTO_ECC_FP_P_DATABLOB = 201 | 表示椭圆曲线(EC)素数域的素数p。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_FP_P_DATABLOB = 201--><!--Device-CRYPTO_ECC_FP_P_DATABLOB = 201-End--> |
+| CRYPTO_ECC_A_DATABLOB = 202 | 表示椭圆曲线的第一个系数a。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_A_DATABLOB = 202--><!--Device-CRYPTO_ECC_A_DATABLOB = 202-End--> |
+| CRYPTO_ECC_B_DATABLOB = 203 | 表示椭圆曲线的第二个系数b。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_B_DATABLOB = 203--><!--Device-CRYPTO_ECC_B_DATABLOB = 203-End--> |
+| CRYPTO_ECC_G_X_DATABLOB = 204 | 表示基点g的仿射x坐标。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_G_X_DATABLOB = 204--><!--Device-CRYPTO_ECC_G_X_DATABLOB = 204-End--> |
+| CRYPTO_ECC_G_Y_DATABLOB = 205 | 表示基点g的仿射y坐标。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_G_Y_DATABLOB = 205--><!--Device-CRYPTO_ECC_G_Y_DATABLOB = 205-End--> |
+| CRYPTO_ECC_N_DATABLOB = 206 | 表示基点g的阶。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_N_DATABLOB = 206--><!--Device-CRYPTO_ECC_N_DATABLOB = 206-End--> |
+| CRYPTO_ECC_H_INT = 207 | 表示椭圆曲线的余因子。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_H_INT = 207--><!--Device-CRYPTO_ECC_H_INT = 207-End--> |
+| CRYPTO_ECC_SK_DATABLOB = 208 | 表示ECC私钥的私钥值。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_SK_DATABLOB = 208--><!--Device-CRYPTO_ECC_SK_DATABLOB = 208-End--> |
+| CRYPTO_ECC_PK_X_DATABLOB = 209 | 表示ECC公钥中公钥点的仿射x坐标。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_PK_X_DATABLOB = 209--><!--Device-CRYPTO_ECC_PK_X_DATABLOB = 209-End--> |
+| CRYPTO_ECC_PK_Y_DATABLOB = 210 | 表示ECC公钥中公钥点的仿射y坐标。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_PK_Y_DATABLOB = 210--><!--Device-CRYPTO_ECC_PK_Y_DATABLOB = 210-End--> |
+| CRYPTO_ECC_FIELD_TYPE_STR = 211 | 表示椭圆曲线有限域类型。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_FIELD_TYPE_STR = 211--><!--Device-CRYPTO_ECC_FIELD_TYPE_STR = 211-End--> |
+| CRYPTO_ECC_FIELD_SIZE_INT = 212 | 表示有限域的比特长度。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_FIELD_SIZE_INT = 212--><!--Device-CRYPTO_ECC_FIELD_SIZE_INT = 212-End--> |
+| CRYPTO_ECC_CURVE_NAME_STR = 213 | 表示SECG标准的曲线名称。<br>**起始版本：** 12<br><!--Device-CRYPTO_ECC_CURVE_NAME_STR = 213--><!--Device-CRYPTO_ECC_CURVE_NAME_STR = 213-End--> |
+| CRYPTO_RSA_N_DATABLOB = 301 | 表示RSA算法的模数n。<br>**起始版本：** 12<br><!--Device-CRYPTO_RSA_N_DATABLOB = 301--><!--Device-CRYPTO_RSA_N_DATABLOB = 301-End--> |
+| CRYPTO_RSA_D_DATABLOB = 302 | 表示RSA算法的私钥指数d。<br>**起始版本：** 12<br><!--Device-CRYPTO_RSA_D_DATABLOB = 302--><!--Device-CRYPTO_RSA_D_DATABLOB = 302-End--> |
+| CRYPTO_RSA_E_DATABLOB = 303 | 表示RSA算法的公钥指数e。<br>**起始版本：** 12<br><!--Device-CRYPTO_RSA_E_DATABLOB = 303--><!--Device-CRYPTO_RSA_E_DATABLOB = 303-End--> |
+| CRYPTO_DH_P_DATABLOB = 401 | 表示DH算法的素数p。<br>**起始版本：** 12<br><!--Device-CRYPTO_DH_P_DATABLOB = 401--><!--Device-CRYPTO_DH_P_DATABLOB = 401-End--> |
+| CRYPTO_DH_G_DATABLOB = 402 | 表示DH算法的生成元g。<br>**起始版本：** 12<br><!--Device-CRYPTO_DH_G_DATABLOB = 402--><!--Device-CRYPTO_DH_G_DATABLOB = 402-End--> |
+| CRYPTO_DH_L_INT = 403 | 表示DH算法中私钥长度的比特数。<br>**起始版本：** 12<br><!--Device-CRYPTO_DH_L_INT = 403--><!--Device-CRYPTO_DH_L_INT = 403-End--> |
+| CRYPTO_DH_SK_DATABLOB = 404 | 表示DH私钥的私钥值。<br>**起始版本：** 12<br><!--Device-CRYPTO_DH_SK_DATABLOB = 404--><!--Device-CRYPTO_DH_SK_DATABLOB = 404-End--> |
+| CRYPTO_DH_PK_DATABLOB = 405 | 表示DH公钥的公钥值。<br>**起始版本：** 12<br><!--Device-CRYPTO_DH_PK_DATABLOB = 405--><!--Device-CRYPTO_DH_PK_DATABLOB = 405-End--> |
+| CRYPTO_ED25519_SK_DATABLOB = 501 | 表示ED25519私钥的私钥值。<br>**起始版本：** 12<br><!--Device-CRYPTO_ED25519_SK_DATABLOB = 501--><!--Device-CRYPTO_ED25519_SK_DATABLOB = 501-End--> |
+| CRYPTO_ED25519_PK_DATABLOB = 502 | 表示ED25519公钥的公钥值。<br>**起始版本：** 12<br><!--Device-CRYPTO_ED25519_PK_DATABLOB = 502--><!--Device-CRYPTO_ED25519_PK_DATABLOB = 502-End--> |
+| CRYPTO_X25519_SK_DATABLOB = 601 | 表示X25519私钥的私钥值。<br>**起始版本：** 12<br><!--Device-CRYPTO_X25519_SK_DATABLOB = 601--><!--Device-CRYPTO_X25519_SK_DATABLOB = 601-End--> |
+| CRYPTO_X25519_PK_DATABLOB = 602 | 表示X25519公钥的公钥值。<br>**起始版本：** 12<br><!--Device-CRYPTO_X25519_PK_DATABLOB = 602--><!--Device-CRYPTO_X25519_PK_DATABLOB = 602-End--> |
 
 ### Crypto_EncodingType
 
@@ -135,7 +135,7 @@ enum Crypto_EncodingType
 
 定义编码类型。
 
-<!--Device-Crypto_EncodingType--><!--Device-Crypto_EncodingType-End-->
+<!--Device-enum Crypto_EncodingType--><!--Device-enum Crypto_EncodingType-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -143,8 +143,8 @@ enum Crypto_EncodingType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_PEM = 0 | PEM格式。<br>**起始版本：** 12 |
-| CRYPTO_DER = 1 | DER格式。<br>**起始版本：** 12 |
+| CRYPTO_PEM = 0 | PEM格式。<br>**起始版本：** 12<br><!--Device-CRYPTO_PEM = 0--><!--Device-CRYPTO_PEM = 0-End--> |
+| CRYPTO_DER = 1 | DER格式。<br>**起始版本：** 12<br><!--Device-CRYPTO_DER = 1--><!--Device-CRYPTO_DER = 1-End--> |
 
 ### CryptoPrivKeyEncoding_ParamType
 
@@ -156,7 +156,7 @@ enum CryptoPrivKeyEncoding_ParamType
 
 定义私钥编码参数类型。
 
-<!--Device-CryptoPrivKeyEncoding_ParamType--><!--Device-CryptoPrivKeyEncoding_ParamType-End-->
+<!--Device-enum CryptoPrivKeyEncoding_ParamType--><!--Device-enum CryptoPrivKeyEncoding_ParamType-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -164,8 +164,8 @@ enum CryptoPrivKeyEncoding_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0 | 表示密码字符串。<br>**起始版本：** 20 |
-| CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1 | 对称加密算法名称，通过[OH_CryptoPrivKeyEncodingParams_SetParam](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam)设置。 取值："DES-EDE3-CBC"、"AES-128-CBC"、"AES-192-CBC"、"AES-256-CBC"。<br>**起始版本：** 20 |
+| CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0 | 表示密码字符串。<br>**起始版本：** 20<br><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0--><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0-End--> |
+| CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1 | 对称加密算法名称，通过[OH_CryptoPrivKeyEncodingParams_SetParam](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam)设置。 取值："DES-EDE3-CBC"、"AES-128-CBC"、"AES-192-CBC"、"AES-256-CBC"。<br>**起始版本：** 20<br><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1--><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1-End--> |
 
 ### CryptoAsymKeySpec_Type
 
@@ -177,7 +177,7 @@ enum CryptoAsymKeySpec_Type
 
 定义非对称密钥规格类型。
 
-<!--Device-CryptoAsymKeySpec_Type--><!--Device-CryptoAsymKeySpec_Type-End-->
+<!--Device-enum CryptoAsymKeySpec_Type--><!--Device-enum CryptoAsymKeySpec_Type-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -185,10 +185,10 @@ enum CryptoAsymKeySpec_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0 | 通用参数规格。<br>**起始版本：** 20 |
-| CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1 | 私钥规格。<br>**起始版本：** 20 |
-| CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2 | 公钥规格。<br>**起始版本：** 20 |
-| CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3 | 密钥对规格。<br>**起始版本：** 20 |
+| CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0 | 通用参数规格。<br>**起始版本：** 20<br><!--Device-CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0--><!--Device-CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0-End--> |
+| CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1 | 私钥规格。<br>**起始版本：** 20<br><!--Device-CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1--><!--Device-CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1-End--> |
+| CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2 | 公钥规格。<br>**起始版本：** 20<br><!--Device-CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2--><!--Device-CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2-End--> |
+| CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3 | 密钥对规格。<br>**起始版本：** 20<br><!--Device-CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3--><!--Device-CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3-End--> |
 
 
 ## 函数说明

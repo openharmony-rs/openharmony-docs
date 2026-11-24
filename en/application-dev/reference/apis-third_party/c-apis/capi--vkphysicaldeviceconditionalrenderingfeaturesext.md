@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 conditionalRendering |  |
-| VkBool32 inheritedConditionalRendering |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 conditionalRendering | <!--Device-VkBool32 conditionalRendering--><!--Device-VkBool32 conditionalRendering-End--> |
+| VkBool32 inheritedConditionalRendering | <!--Device-VkBool32 inheritedConditionalRendering--><!--Device-VkBool32 inheritedConditionalRendering-End--> |
 
 

@@ -24,6 +24,6 @@ typedef struct MediaLibrary_RequestOptions {...} MediaLibrary_RequestOptions
 
 | 名称 | 描述 |
 | -- | -- |
-| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | delivery mode |
+| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | delivery mode<br><!--Device-MediaLibrary_DeliveryMode deliveryMode--><!--Device-MediaLibrary_DeliveryMode deliveryMode-End--> |
 
 

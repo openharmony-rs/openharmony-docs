@@ -20,8 +20,8 @@ Audio AudioChannel Layout
 
 | Name | Description |
 | -- | -- |
-| [AudioChannelSet](#audiochannelset) | Enumerates the audio channels. Each channel is mapped to a variable of uint64_t.(Deprecated in API11) |
-| [AudioChannelLayout](#audiochannellayout) | Enumerates the layouts of audio channels. The output format of the decoder is described using the channel layout of the codec.(Deprecated in API11) |
+| [AudioChannelSet](#audiochannelset) | Enumerates the audio channels. Each channel is mapped to a variable of uint64_t.(Deprecated) |
+| [AudioChannelLayout](#audiochannellayout) | Enumerates the layouts of audio channels. The output format of the decoder is described using the channel layout of the codec.(Deprecated) |
 
 ## Enum type description
 
@@ -35,7 +35,7 @@ enum AudioChannelSet : uint64_t
 
 Enumerates the audio channels. Each channel is mapped to a variable of uint64_t.
 
-<!--Device-AudioChannelSet--><!--Device-AudioChannelSet-End-->
+<!--Device-enum AudioChannelSet : uint64_t--><!--Device-enum AudioChannelSet : uint64_t-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -47,56 +47,56 @@ Enumerates the audio channels. Each channel is mapped to a variable of uint64_t.
 
 | Enum item | Description |
 | -- | -- |
-| FRONT_LEFT = 1ULL << 0U |  |
-| FRONT_RIGHT = 1ULL << 1U |  |
-| FRONT_CENTER = 1ULL << 2U |  |
-| LOW_FREQUENCY = 1ULL << 3U |  |
-| BACK_LEFT = 1ULL << 4U |  |
-| BACK_RIGHT = 1ULL << 5U |  |
-| FRONT_LEFT_OF_CENTER = 1ULL << 6U |  |
-| FRONT_RIGHT_OF_CENTER = 1ULL << 7U |  |
-| BACK_CENTER = 1ULL << 8U |  |
-| SIDE_LEFT = 1ULL << 9U |  |
-| SIDE_RIGHT = 1ULL << 10U |  |
-| TOP_CENTER = 1ULL << 11U |  |
-| TOP_FRONT_LEFT = 1ULL << 12U |  |
-| TOP_FRONT_CENTER = 1ULL << 13U |  |
-| TOP_FRONT_RIGHT = 1ULL << 14U |  |
-| TOP_BACK_LEFT = 1ULL << 15U |  |
-| TOP_BACK_CENTER = 1ULL << 16U |  |
-| TOP_BACK_RIGHT = 1ULL << 17U |  |
-| STEREO_LEFT = 1ULL << 29U |  |
-| STEREO_RIGHT = 1ULL << 30U |  |
-| WIDE_LEFT = 1ULL << 31U |  |
-| WIDE_RIGHT = 1ULL << 32U |  |
-| SURROUND_DIRECT_LEFT = 1ULL << 33U |  |
-| SURROUND_DIRECT_RIGHT = 1ULL << 34U |  |
-| LOW_FREQUENCY_2 = 1ULL << 35U |  |
-| TOP_SIDE_LEFT = 1ULL << 36U |  |
-| TOP_SIDE_RIGHT = 1ULL << 37U |  |
-| BOTTOM_FRONT_CENTER = 1ULL << 38U |  |
-| BOTTOM_FRONT_LEFT = 1ULL << 39U |  |
-| BOTTOM_FRONT_RIGHT = 1ULL << 40U |  |
-| AMBISONICS_ACN0 = 1ULL << 41U |  |
-| AMBISONICS_ACN1 = 1ULL << 42U | AMBISONICS_ACN0 = 1ULL << 41U, /** 0th ambisonics channel number 0. |
-| AMBISONICS_ACN2 = 1ULL << 43U | AMBISONICS_ACN1 = 1ULL << 42U, /** first-order ambisonics channel number 1. |
-| AMBISONICS_ACN3 = 1ULL << 44U | AMBISONICS_ACN2 = 1ULL << 43U, /** first-order ambisonics channel number 2. |
-| AMBISONICS_W = AMBISONICS_ACN0 | AMBISONICS_ACN3 = 1ULL << 44U, /** first-order ambisonics channel number 3. |
-| AMBISONICS_Y = AMBISONICS_ACN1 | AMBISONICS_W = AMBISONICS_ACN0, /** same as 0th ambisonics channel number 0. |
-| AMBISONICS_Z = AMBISONICS_ACN2 | AMBISONICS_Y = AMBISONICS_ACN1, /** same as first-order ambisonics channel number 1. |
-| AMBISONICS_X = AMBISONICS_ACN3 | AMBISONICS_Z = AMBISONICS_ACN2, /** same as first-order ambisonics channel number 2. |
-| AMBISONICS_ACN4 = 1ULL << 45U |  |
-| AMBISONICS_ACN5 = 1ULL << 46U | AMBISONICS_ACN4 = 1ULL << 45U, /** second-order ambisonics channel number 4. |
-| AMBISONICS_ACN6 = 1ULL << 47U | AMBISONICS_ACN5 = 1ULL << 46U, /** second-order ambisonics channel number 5. |
-| AMBISONICS_ACN7 = 1ULL << 48U | AMBISONICS_ACN6 = 1ULL << 47U, /** second-order ambisonics channel number 6. |
-| AMBISONICS_ACN8 = 1ULL << 49U | AMBISONICS_ACN7 = 1ULL << 48U, /** second-order ambisonics channel number 7. |
-| AMBISONICS_ACN9 = 1ULL << 50U |  |
-| AMBISONICS_ACN10 = 1ULL << 51U | AMBISONICS_ACN9 = 1ULL << 50U, /** third-order ambisonics channel number 9. |
-| AMBISONICS_ACN11 = 1ULL << 52U | AMBISONICS_ACN10 = 1ULL << 51U, /** third-order ambisonics channel number 10. |
-| AMBISONICS_ACN12 = 1ULL << 53U | AMBISONICS_ACN11 = 1ULL << 52U, /** third-order ambisonics channel number 11. |
-| AMBISONICS_ACN13 = 1ULL << 54U | AMBISONICS_ACN12 = 1ULL << 53U, /** third-order ambisonics channel number 12. |
-| AMBISONICS_ACN14 = 1ULL << 55U | AMBISONICS_ACN13 = 1ULL << 54U, /** third-order ambisonics channel number 13. |
-| AMBISONICS_ACN15 = 1ULL << 56U | AMBISONICS_ACN14 = 1ULL << 55U, /** third-order ambisonics channel number 14. |
+| FRONT_LEFT = 1ULL << 0U | <!--Device-FRONT_LEFT = 1ULL << 0U--><!--Device-FRONT_LEFT = 1ULL << 0U-End--> |
+| FRONT_RIGHT = 1ULL << 1U | <!--Device-FRONT_RIGHT = 1ULL << 1U--><!--Device-FRONT_RIGHT = 1ULL << 1U-End--> |
+| FRONT_CENTER = 1ULL << 2U | <!--Device-FRONT_CENTER = 1ULL << 2U--><!--Device-FRONT_CENTER = 1ULL << 2U-End--> |
+| LOW_FREQUENCY = 1ULL << 3U | <!--Device-LOW_FREQUENCY = 1ULL << 3U--><!--Device-LOW_FREQUENCY = 1ULL << 3U-End--> |
+| BACK_LEFT = 1ULL << 4U | <!--Device-BACK_LEFT = 1ULL << 4U--><!--Device-BACK_LEFT = 1ULL << 4U-End--> |
+| BACK_RIGHT = 1ULL << 5U | <!--Device-BACK_RIGHT = 1ULL << 5U--><!--Device-BACK_RIGHT = 1ULL << 5U-End--> |
+| FRONT_LEFT_OF_CENTER = 1ULL << 6U | <!--Device-FRONT_LEFT_OF_CENTER = 1ULL << 6U--><!--Device-FRONT_LEFT_OF_CENTER = 1ULL << 6U-End--> |
+| FRONT_RIGHT_OF_CENTER = 1ULL << 7U | <!--Device-FRONT_RIGHT_OF_CENTER = 1ULL << 7U--><!--Device-FRONT_RIGHT_OF_CENTER = 1ULL << 7U-End--> |
+| BACK_CENTER = 1ULL << 8U | <!--Device-BACK_CENTER = 1ULL << 8U--><!--Device-BACK_CENTER = 1ULL << 8U-End--> |
+| SIDE_LEFT = 1ULL << 9U | <!--Device-SIDE_LEFT = 1ULL << 9U--><!--Device-SIDE_LEFT = 1ULL << 9U-End--> |
+| SIDE_RIGHT = 1ULL << 10U | <!--Device-SIDE_RIGHT = 1ULL << 10U--><!--Device-SIDE_RIGHT = 1ULL << 10U-End--> |
+| TOP_CENTER = 1ULL << 11U | <!--Device-TOP_CENTER = 1ULL << 11U--><!--Device-TOP_CENTER = 1ULL << 11U-End--> |
+| TOP_FRONT_LEFT = 1ULL << 12U | <!--Device-TOP_FRONT_LEFT = 1ULL << 12U--><!--Device-TOP_FRONT_LEFT = 1ULL << 12U-End--> |
+| TOP_FRONT_CENTER = 1ULL << 13U | <!--Device-TOP_FRONT_CENTER = 1ULL << 13U--><!--Device-TOP_FRONT_CENTER = 1ULL << 13U-End--> |
+| TOP_FRONT_RIGHT = 1ULL << 14U | <!--Device-TOP_FRONT_RIGHT = 1ULL << 14U--><!--Device-TOP_FRONT_RIGHT = 1ULL << 14U-End--> |
+| TOP_BACK_LEFT = 1ULL << 15U | <!--Device-TOP_BACK_LEFT = 1ULL << 15U--><!--Device-TOP_BACK_LEFT = 1ULL << 15U-End--> |
+| TOP_BACK_CENTER = 1ULL << 16U | <!--Device-TOP_BACK_CENTER = 1ULL << 16U--><!--Device-TOP_BACK_CENTER = 1ULL << 16U-End--> |
+| TOP_BACK_RIGHT = 1ULL << 17U | <!--Device-TOP_BACK_RIGHT = 1ULL << 17U--><!--Device-TOP_BACK_RIGHT = 1ULL << 17U-End--> |
+| STEREO_LEFT = 1ULL << 29U | <!--Device-STEREO_LEFT = 1ULL << 29U--><!--Device-STEREO_LEFT = 1ULL << 29U-End--> |
+| STEREO_RIGHT = 1ULL << 30U | <!--Device-STEREO_RIGHT = 1ULL << 30U--><!--Device-STEREO_RIGHT = 1ULL << 30U-End--> |
+| WIDE_LEFT = 1ULL << 31U | <!--Device-WIDE_LEFT = 1ULL << 31U--><!--Device-WIDE_LEFT = 1ULL << 31U-End--> |
+| WIDE_RIGHT = 1ULL << 32U | <!--Device-WIDE_RIGHT = 1ULL << 32U--><!--Device-WIDE_RIGHT = 1ULL << 32U-End--> |
+| SURROUND_DIRECT_LEFT = 1ULL << 33U | <!--Device-SURROUND_DIRECT_LEFT = 1ULL << 33U--><!--Device-SURROUND_DIRECT_LEFT = 1ULL << 33U-End--> |
+| SURROUND_DIRECT_RIGHT = 1ULL << 34U | <!--Device-SURROUND_DIRECT_RIGHT = 1ULL << 34U--><!--Device-SURROUND_DIRECT_RIGHT = 1ULL << 34U-End--> |
+| LOW_FREQUENCY_2 = 1ULL << 35U | <!--Device-LOW_FREQUENCY_2 = 1ULL << 35U--><!--Device-LOW_FREQUENCY_2 = 1ULL << 35U-End--> |
+| TOP_SIDE_LEFT = 1ULL << 36U | <!--Device-TOP_SIDE_LEFT = 1ULL << 36U--><!--Device-TOP_SIDE_LEFT = 1ULL << 36U-End--> |
+| TOP_SIDE_RIGHT = 1ULL << 37U | <!--Device-TOP_SIDE_RIGHT = 1ULL << 37U--><!--Device-TOP_SIDE_RIGHT = 1ULL << 37U-End--> |
+| BOTTOM_FRONT_CENTER = 1ULL << 38U | <!--Device-BOTTOM_FRONT_CENTER = 1ULL << 38U--><!--Device-BOTTOM_FRONT_CENTER = 1ULL << 38U-End--> |
+| BOTTOM_FRONT_LEFT = 1ULL << 39U | <!--Device-BOTTOM_FRONT_LEFT = 1ULL << 39U--><!--Device-BOTTOM_FRONT_LEFT = 1ULL << 39U-End--> |
+| BOTTOM_FRONT_RIGHT = 1ULL << 40U | <!--Device-BOTTOM_FRONT_RIGHT = 1ULL << 40U--><!--Device-BOTTOM_FRONT_RIGHT = 1ULL << 40U-End--> |
+| AMBISONICS_ACN0 = 1ULL << 41U | <!--Device-AMBISONICS_ACN0 = 1ULL << 41U--><!--Device-AMBISONICS_ACN0 = 1ULL << 41U-End--> |
+| AMBISONICS_ACN1 = 1ULL << 42U | AMBISONICS_ACN0 = 1ULL << 41U, 0th ambisonics channel number 0.<br><!--Device-AMBISONICS_ACN1 = 1ULL << 42U--><!--Device-AMBISONICS_ACN1 = 1ULL << 42U-End--> |
+| AMBISONICS_ACN2 = 1ULL << 43U | AMBISONICS_ACN1 = 1ULL << 42U, first-order ambisonics channel number 1.<br><!--Device-AMBISONICS_ACN2 = 1ULL << 43U--><!--Device-AMBISONICS_ACN2 = 1ULL << 43U-End--> |
+| AMBISONICS_ACN3 = 1ULL << 44U | AMBISONICS_ACN2 = 1ULL << 43U, first-order ambisonics channel number 2.<br><!--Device-AMBISONICS_ACN3 = 1ULL << 44U--><!--Device-AMBISONICS_ACN3 = 1ULL << 44U-End--> |
+| AMBISONICS_W = AMBISONICS_ACN0 | AMBISONICS_ACN3 = 1ULL << 44U, first-order ambisonics channel number 3.<br><!--Device-AMBISONICS_W = AMBISONICS_ACN0--><!--Device-AMBISONICS_W = AMBISONICS_ACN0-End--> |
+| AMBISONICS_Y = AMBISONICS_ACN1 | AMBISONICS_W = AMBISONICS_ACN0, same as 0th ambisonics channel number 0.<br><!--Device-AMBISONICS_Y = AMBISONICS_ACN1--><!--Device-AMBISONICS_Y = AMBISONICS_ACN1-End--> |
+| AMBISONICS_Z = AMBISONICS_ACN2 | AMBISONICS_Y = AMBISONICS_ACN1, same as first-order ambisonics channel number 1.<br><!--Device-AMBISONICS_Z = AMBISONICS_ACN2--><!--Device-AMBISONICS_Z = AMBISONICS_ACN2-End--> |
+| AMBISONICS_X = AMBISONICS_ACN3 | AMBISONICS_Z = AMBISONICS_ACN2, same as first-order ambisonics channel number 2.<br><!--Device-AMBISONICS_X = AMBISONICS_ACN3--><!--Device-AMBISONICS_X = AMBISONICS_ACN3-End--> |
+| AMBISONICS_ACN4 = 1ULL << 45U | <!--Device-AMBISONICS_ACN4 = 1ULL << 45U--><!--Device-AMBISONICS_ACN4 = 1ULL << 45U-End--> |
+| AMBISONICS_ACN5 = 1ULL << 46U | AMBISONICS_ACN4 = 1ULL << 45U, second-order ambisonics channel number 4.<br><!--Device-AMBISONICS_ACN5 = 1ULL << 46U--><!--Device-AMBISONICS_ACN5 = 1ULL << 46U-End--> |
+| AMBISONICS_ACN6 = 1ULL << 47U | AMBISONICS_ACN5 = 1ULL << 46U, second-order ambisonics channel number 5.<br><!--Device-AMBISONICS_ACN6 = 1ULL << 47U--><!--Device-AMBISONICS_ACN6 = 1ULL << 47U-End--> |
+| AMBISONICS_ACN7 = 1ULL << 48U | AMBISONICS_ACN6 = 1ULL << 47U, second-order ambisonics channel number 6.<br><!--Device-AMBISONICS_ACN7 = 1ULL << 48U--><!--Device-AMBISONICS_ACN7 = 1ULL << 48U-End--> |
+| AMBISONICS_ACN8 = 1ULL << 49U | AMBISONICS_ACN7 = 1ULL << 48U, second-order ambisonics channel number 7.<br><!--Device-AMBISONICS_ACN8 = 1ULL << 49U--><!--Device-AMBISONICS_ACN8 = 1ULL << 49U-End--> |
+| AMBISONICS_ACN9 = 1ULL << 50U | <!--Device-AMBISONICS_ACN9 = 1ULL << 50U--><!--Device-AMBISONICS_ACN9 = 1ULL << 50U-End--> |
+| AMBISONICS_ACN10 = 1ULL << 51U | AMBISONICS_ACN9 = 1ULL << 50U, third-order ambisonics channel number 9.<br><!--Device-AMBISONICS_ACN10 = 1ULL << 51U--><!--Device-AMBISONICS_ACN10 = 1ULL << 51U-End--> |
+| AMBISONICS_ACN11 = 1ULL << 52U | AMBISONICS_ACN10 = 1ULL << 51U, third-order ambisonics channel number 10.<br><!--Device-AMBISONICS_ACN11 = 1ULL << 52U--><!--Device-AMBISONICS_ACN11 = 1ULL << 52U-End--> |
+| AMBISONICS_ACN12 = 1ULL << 53U | AMBISONICS_ACN11 = 1ULL << 52U, third-order ambisonics channel number 11.<br><!--Device-AMBISONICS_ACN12 = 1ULL << 53U--><!--Device-AMBISONICS_ACN12 = 1ULL << 53U-End--> |
+| AMBISONICS_ACN13 = 1ULL << 54U | AMBISONICS_ACN12 = 1ULL << 53U, third-order ambisonics channel number 12.<br><!--Device-AMBISONICS_ACN13 = 1ULL << 54U--><!--Device-AMBISONICS_ACN13 = 1ULL << 54U-End--> |
+| AMBISONICS_ACN14 = 1ULL << 55U | AMBISONICS_ACN13 = 1ULL << 54U, third-order ambisonics channel number 13.<br><!--Device-AMBISONICS_ACN14 = 1ULL << 55U--><!--Device-AMBISONICS_ACN14 = 1ULL << 55U-End--> |
+| AMBISONICS_ACN15 = 1ULL << 56U | AMBISONICS_ACN14 = 1ULL << 55U, third-order ambisonics channel number 14.<br><!--Device-AMBISONICS_ACN15 = 1ULL << 56U--><!--Device-AMBISONICS_ACN15 = 1ULL << 56U-End--> |
 
 ### AudioChannelLayout
 
@@ -108,7 +108,7 @@ enum AudioChannelLayout : uint64_t
 
 Enumerates the layouts of audio channels. The output format of the decoder is described using the channel layout of the codec.
 
-<!--Device-AudioChannelLayout--><!--Device-AudioChannelLayout-End-->
+<!--Device-enum AudioChannelLayout : uint64_t--><!--Device-enum AudioChannelLayout : uint64_t-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -120,46 +120,46 @@ Enumerates the layouts of audio channels. The output format of the decoder is de
 
 | Enum item | Description |
 | -- | -- |
-| UNKNOWN_CHANNEL_LAYOUT = 0 |  |
-| MONO = (AudioChannelSet::FRONT_CENTER) |  |
-| STEREO = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT) |  |
-| CH_2POINT1 = (STEREO \| AudioChannelSet::LOW_FREQUENCY) |  |
-| CH_2_1 = (STEREO \| AudioChannelSet::BACK_CENTER) |  |
-| SURROUND = (STEREO \| AudioChannelSet::FRONT_CENTER) |  |
-| CH_3POINT1 = (SURROUND \| AudioChannelSet::LOW_FREQUENCY) |  |
-| CH_4POINT0 = (SURROUND \| AudioChannelSet::BACK_CENTER) |  |
-| CH_4POINT1 = (CH_4POINT0 \| AudioChannelSet::LOW_FREQUENCY) |  |
-| CH_2_2 = (STEREO \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT) |  |
-| QUAD = (STEREO \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) |  |
-| CH_5POINT0 = (SURROUND \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT) |  |
-| CH_5POINT1 = (CH_5POINT0 \| AudioChannelSet::LOW_FREQUENCY) |  |
-| CH_5POINT0_BACK = (SURROUND \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) |  |
-| CH_5POINT1_BACK = (CH_5POINT0_BACK \| AudioChannelSet::LOW_FREQUENCY) |  |
-| CH_6POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_CENTER) |  |
-| CH_6POINT0_FRONT = (CH_2_2 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) |  |
-| HEXAGONAL = (CH_5POINT0_BACK \| AudioChannelSet::BACK_CENTER) |  |
-| CH_6POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_CENTER) |  |
-| CH_6POINT1_BACK = (CH_5POINT1_BACK \| AudioChannelSet::BACK_CENTER) |  |
-| CH_6POINT1_FRONT = (CH_6POINT0_FRONT \| AudioChannelSet::LOW_FREQUENCY) |  |
-| CH_7POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) |  |
-| CH_7POINT0_FRONT = (CH_5POINT0 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) |  |
-| CH_7POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) |  |
-| CH_7POINT1_WIDE = (CH_5POINT1 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) |  |
-| CH_7POINT1_WIDE_BACK = (CH_5POINT1_BACK \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) |  |
-| CH_3POINT1POINT2 = (CH_3POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT) |  |
-| CH_5POINT1POINT2 = (CH_5POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT) |  |
-| CH_5POINT1POINT4 = (CH_5POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT) |  |
-| CH_7POINT1POINT2 = (CH_7POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT) |  |
-| CH_7POINT1POINT4 = (CH_7POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT) |  |
-| CH_9POINT1POINT4 = (CH_7POINT1POINT4 \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT) |  |
-| CH_9POINT1POINT6 = (CH_9POINT1POINT4 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT) |  |
-| CH_10POINT2 = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT \| AudioChannelSet::FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT) |  |
-| CH_22POINT2 = (CH_7POINT1POINT4 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::TOP_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT \| AudioChannelSet::BOTTOM_FRONT_LEFT \| AudioChannelSet::BOTTOM_FRONT_RIGHT \| AudioChannelSet::BOTTOM_FRONT_CENTER \| AudioChannelSet::LOW_FREQUENCY_2) |  |
-| OCTAGONAL = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::BACK_RIGHT) |  |
-| HEXADECAGONAL = (OCTAGONAL \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT) |  |
-| STEREO_DOWNMIX = (AudioChannelSet::STEREO_LEFT \| AudioChannelSet::STEREO_RIGHT) |  |
-| HOA_FIRST = AudioChannelSet::AMBISONICS_ACN0 \| AudioChannelSet::AMBISONICS_ACN1 \| AudioChannelSet::AMBISONICS_ACN2 \| AudioChannelSet::AMBISONICS_ACN3 |  |
-| HOA_SECOND = HOA_FIRST \| AudioChannelSet::AMBISONICS_ACN4 \| AudioChannelSet::AMBISONICS_ACN5 \| AudioChannelSet::AMBISONICS_ACN6 \| AudioChannelSet::AMBISONICS_ACN7 \| AudioChannelSet::AMBISONICS_ACN8 |  |
-| HOA_THIRD = HOA_SECOND \| AudioChannelSet::AMBISONICS_ACN9 \| AudioChannelSet::AMBISONICS_ACN10 \| AudioChannelSet::AMBISONICS_ACN11 \| AudioChannelSet::AMBISONICS_ACN12 \| AudioChannelSet::AMBISONICS_ACN13 \| AudioChannelSet::AMBISONICS_ACN14 \| AudioChannelSet::AMBISONICS_ACN15 |  |
+| UNKNOWN_CHANNEL_LAYOUT = 0 | <!--Device-UNKNOWN_CHANNEL_LAYOUT = 0--><!--Device-UNKNOWN_CHANNEL_LAYOUT = 0-End--> |
+| MONO = (AudioChannelSet::FRONT_CENTER) | <!--Device-MONO = (AudioChannelSet::FRONT_CENTER)--><!--Device-MONO = (AudioChannelSet::FRONT_CENTER)-End--> |
+| STEREO = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT) | <!--Device-STEREO = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT)--><!--Device-STEREO = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT)-End--> |
+| CH_2POINT1 = (STEREO \| AudioChannelSet::LOW_FREQUENCY) | <!--Device-CH_2POINT1 = (STEREO \| AudioChannelSet::LOW_FREQUENCY)--><!--Device-CH_2POINT1 = (STEREO \| AudioChannelSet::LOW_FREQUENCY)-End--> |
+| CH_2_1 = (STEREO \| AudioChannelSet::BACK_CENTER) | <!--Device-CH_2_1 = (STEREO \| AudioChannelSet::BACK_CENTER)--><!--Device-CH_2_1 = (STEREO \| AudioChannelSet::BACK_CENTER)-End--> |
+| SURROUND = (STEREO \| AudioChannelSet::FRONT_CENTER) | <!--Device-SURROUND = (STEREO \| AudioChannelSet::FRONT_CENTER)--><!--Device-SURROUND = (STEREO \| AudioChannelSet::FRONT_CENTER)-End--> |
+| CH_3POINT1 = (SURROUND \| AudioChannelSet::LOW_FREQUENCY) | <!--Device-CH_3POINT1 = (SURROUND \| AudioChannelSet::LOW_FREQUENCY)--><!--Device-CH_3POINT1 = (SURROUND \| AudioChannelSet::LOW_FREQUENCY)-End--> |
+| CH_4POINT0 = (SURROUND \| AudioChannelSet::BACK_CENTER) | <!--Device-CH_4POINT0 = (SURROUND \| AudioChannelSet::BACK_CENTER)--><!--Device-CH_4POINT0 = (SURROUND \| AudioChannelSet::BACK_CENTER)-End--> |
+| CH_4POINT1 = (CH_4POINT0 \| AudioChannelSet::LOW_FREQUENCY) | <!--Device-CH_4POINT1 = (CH_4POINT0 \| AudioChannelSet::LOW_FREQUENCY)--><!--Device-CH_4POINT1 = (CH_4POINT0 \| AudioChannelSet::LOW_FREQUENCY)-End--> |
+| CH_2_2 = (STEREO \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT) | <!--Device-CH_2_2 = (STEREO \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT)--><!--Device-CH_2_2 = (STEREO \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT)-End--> |
+| QUAD = (STEREO \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) | <!--Device-QUAD = (STEREO \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)--><!--Device-QUAD = (STEREO \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)-End--> |
+| CH_5POINT0 = (SURROUND \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT) | <!--Device-CH_5POINT0 = (SURROUND \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT)--><!--Device-CH_5POINT0 = (SURROUND \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT)-End--> |
+| CH_5POINT1 = (CH_5POINT0 \| AudioChannelSet::LOW_FREQUENCY) | <!--Device-CH_5POINT1 = (CH_5POINT0 \| AudioChannelSet::LOW_FREQUENCY)--><!--Device-CH_5POINT1 = (CH_5POINT0 \| AudioChannelSet::LOW_FREQUENCY)-End--> |
+| CH_5POINT0_BACK = (SURROUND \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) | <!--Device-CH_5POINT0_BACK = (SURROUND \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)--><!--Device-CH_5POINT0_BACK = (SURROUND \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)-End--> |
+| CH_5POINT1_BACK = (CH_5POINT0_BACK \| AudioChannelSet::LOW_FREQUENCY) | <!--Device-CH_5POINT1_BACK = (CH_5POINT0_BACK \| AudioChannelSet::LOW_FREQUENCY)--><!--Device-CH_5POINT1_BACK = (CH_5POINT0_BACK \| AudioChannelSet::LOW_FREQUENCY)-End--> |
+| CH_6POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_CENTER) | <!--Device-CH_6POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_CENTER)--><!--Device-CH_6POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_CENTER)-End--> |
+| CH_6POINT0_FRONT = (CH_2_2 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) | <!--Device-CH_6POINT0_FRONT = (CH_2_2 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)--><!--Device-CH_6POINT0_FRONT = (CH_2_2 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)-End--> |
+| HEXAGONAL = (CH_5POINT0_BACK \| AudioChannelSet::BACK_CENTER) | <!--Device-HEXAGONAL = (CH_5POINT0_BACK \| AudioChannelSet::BACK_CENTER)--><!--Device-HEXAGONAL = (CH_5POINT0_BACK \| AudioChannelSet::BACK_CENTER)-End--> |
+| CH_6POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_CENTER) | <!--Device-CH_6POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_CENTER)--><!--Device-CH_6POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_CENTER)-End--> |
+| CH_6POINT1_BACK = (CH_5POINT1_BACK \| AudioChannelSet::BACK_CENTER) | <!--Device-CH_6POINT1_BACK = (CH_5POINT1_BACK \| AudioChannelSet::BACK_CENTER)--><!--Device-CH_6POINT1_BACK = (CH_5POINT1_BACK \| AudioChannelSet::BACK_CENTER)-End--> |
+| CH_6POINT1_FRONT = (CH_6POINT0_FRONT \| AudioChannelSet::LOW_FREQUENCY) | <!--Device-CH_6POINT1_FRONT = (CH_6POINT0_FRONT \| AudioChannelSet::LOW_FREQUENCY)--><!--Device-CH_6POINT1_FRONT = (CH_6POINT0_FRONT \| AudioChannelSet::LOW_FREQUENCY)-End--> |
+| CH_7POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) | <!--Device-CH_7POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)--><!--Device-CH_7POINT0 = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)-End--> |
+| CH_7POINT0_FRONT = (CH_5POINT0 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) | <!--Device-CH_7POINT0_FRONT = (CH_5POINT0 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)--><!--Device-CH_7POINT0_FRONT = (CH_5POINT0 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)-End--> |
+| CH_7POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT) | <!--Device-CH_7POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)--><!--Device-CH_7POINT1 = (CH_5POINT1 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT)-End--> |
+| CH_7POINT1_WIDE = (CH_5POINT1 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) | <!--Device-CH_7POINT1_WIDE = (CH_5POINT1 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)--><!--Device-CH_7POINT1_WIDE = (CH_5POINT1 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)-End--> |
+| CH_7POINT1_WIDE_BACK = (CH_5POINT1_BACK \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER) | <!--Device-CH_7POINT1_WIDE_BACK = (CH_5POINT1_BACK \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)--><!--Device-CH_7POINT1_WIDE_BACK = (CH_5POINT1_BACK \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER)-End--> |
+| CH_3POINT1POINT2 = (CH_3POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT) | <!--Device-CH_3POINT1POINT2 = (CH_3POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT)--><!--Device-CH_3POINT1POINT2 = (CH_3POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT)-End--> |
+| CH_5POINT1POINT2 = (CH_5POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT) | <!--Device-CH_5POINT1POINT2 = (CH_5POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT)--><!--Device-CH_5POINT1POINT2 = (CH_5POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT)-End--> |
+| CH_5POINT1POINT4 = (CH_5POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT) | <!--Device-CH_5POINT1POINT4 = (CH_5POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT)--><!--Device-CH_5POINT1POINT4 = (CH_5POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT)-End--> |
+| CH_7POINT1POINT2 = (CH_7POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT) | <!--Device-CH_7POINT1POINT2 = (CH_7POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT)--><!--Device-CH_7POINT1POINT2 = (CH_7POINT1 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT)-End--> |
+| CH_7POINT1POINT4 = (CH_7POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT) | <!--Device-CH_7POINT1POINT4 = (CH_7POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT)--><!--Device-CH_7POINT1POINT4 = (CH_7POINT1 \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT)-End--> |
+| CH_9POINT1POINT4 = (CH_7POINT1POINT4 \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT) | <!--Device-CH_9POINT1POINT4 = (CH_7POINT1POINT4 \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT)--><!--Device-CH_9POINT1POINT4 = (CH_7POINT1POINT4 \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT)-End--> |
+| CH_9POINT1POINT6 = (CH_9POINT1POINT4 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT) | <!--Device-CH_9POINT1POINT6 = (CH_9POINT1POINT4 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT)--><!--Device-CH_9POINT1POINT6 = (CH_9POINT1POINT4 \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT)-End--> |
+| CH_10POINT2 = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT \| AudioChannelSet::FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT) | <!--Device-CH_10POINT2 = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT \| AudioChannelSet::FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT)--><!--Device-CH_10POINT2 = (AudioChannelSet::FRONT_LEFT \| AudioChannelSet::FRONT_RIGHT \| AudioChannelSet::FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_RIGHT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::SIDE_LEFT \| AudioChannelSet::SIDE_RIGHT \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT)-End--> |
+| CH_22POINT2 = (CH_7POINT1POINT4 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::TOP_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT \| AudioChannelSet::BOTTOM_FRONT_LEFT \| AudioChannelSet::BOTTOM_FRONT_RIGHT \| AudioChannelSet::BOTTOM_FRONT_CENTER \| AudioChannelSet::LOW_FREQUENCY_2) | <!--Device-CH_22POINT2 = (CH_7POINT1POINT4 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::TOP_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT \| AudioChannelSet::BOTTOM_FRONT_LEFT \| AudioChannelSet::BOTTOM_FRONT_RIGHT \| AudioChannelSet::BOTTOM_FRONT_CENTER \| AudioChannelSet::LOW_FREQUENCY_2)--><!--Device-CH_22POINT2 = (CH_7POINT1POINT4 \| AudioChannelSet::FRONT_LEFT_OF_CENTER \| AudioChannelSet::FRONT_RIGHT_OF_CENTER \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::TOP_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_SIDE_LEFT \| AudioChannelSet::TOP_SIDE_RIGHT \| AudioChannelSet::BOTTOM_FRONT_LEFT \| AudioChannelSet::BOTTOM_FRONT_RIGHT \| AudioChannelSet::BOTTOM_FRONT_CENTER \| AudioChannelSet::LOW_FREQUENCY_2)-End--> |
+| OCTAGONAL = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::BACK_RIGHT) | <!--Device-OCTAGONAL = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::BACK_RIGHT)--><!--Device-OCTAGONAL = (CH_5POINT0 \| AudioChannelSet::BACK_LEFT \| AudioChannelSet::BACK_CENTER \| AudioChannelSet::BACK_RIGHT)-End--> |
+| HEXADECAGONAL = (OCTAGONAL \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT) | <!--Device-HEXADECAGONAL = (OCTAGONAL \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT)--><!--Device-HEXADECAGONAL = (OCTAGONAL \| AudioChannelSet::WIDE_LEFT \| AudioChannelSet::WIDE_RIGHT \| AudioChannelSet::TOP_BACK_LEFT \| AudioChannelSet::TOP_BACK_RIGHT \| AudioChannelSet::TOP_BACK_CENTER \| AudioChannelSet::TOP_FRONT_CENTER \| AudioChannelSet::TOP_FRONT_LEFT \| AudioChannelSet::TOP_FRONT_RIGHT)-End--> |
+| STEREO_DOWNMIX = (AudioChannelSet::STEREO_LEFT \| AudioChannelSet::STEREO_RIGHT) | <!--Device-STEREO_DOWNMIX = (AudioChannelSet::STEREO_LEFT \| AudioChannelSet::STEREO_RIGHT)--><!--Device-STEREO_DOWNMIX = (AudioChannelSet::STEREO_LEFT \| AudioChannelSet::STEREO_RIGHT)-End--> |
+| HOA_FIRST = AudioChannelSet::AMBISONICS_ACN0 \| AudioChannelSet::AMBISONICS_ACN1 \| AudioChannelSet::AMBISONICS_ACN2 \| AudioChannelSet::AMBISONICS_ACN3 | <!--Device-HOA_FIRST = AudioChannelSet::AMBISONICS_ACN0 \| AudioChannelSet::AMBISONICS_ACN1 \| AudioChannelSet::AMBISONICS_ACN2 \| AudioChannelSet::AMBISONICS_ACN3--><!--Device-HOA_FIRST = AudioChannelSet::AMBISONICS_ACN0 \| AudioChannelSet::AMBISONICS_ACN1 \| AudioChannelSet::AMBISONICS_ACN2 \| AudioChannelSet::AMBISONICS_ACN3-End--> |
+| HOA_SECOND = HOA_FIRST \| AudioChannelSet::AMBISONICS_ACN4 \| AudioChannelSet::AMBISONICS_ACN5 \| AudioChannelSet::AMBISONICS_ACN6 \| AudioChannelSet::AMBISONICS_ACN7 \| AudioChannelSet::AMBISONICS_ACN8 | <!--Device-HOA_SECOND = HOA_FIRST \| AudioChannelSet::AMBISONICS_ACN4 \| AudioChannelSet::AMBISONICS_ACN5 \| AudioChannelSet::AMBISONICS_ACN6 \| AudioChannelSet::AMBISONICS_ACN7 \| AudioChannelSet::AMBISONICS_ACN8--><!--Device-HOA_SECOND = HOA_FIRST \| AudioChannelSet::AMBISONICS_ACN4 \| AudioChannelSet::AMBISONICS_ACN5 \| AudioChannelSet::AMBISONICS_ACN6 \| AudioChannelSet::AMBISONICS_ACN7 \| AudioChannelSet::AMBISONICS_ACN8-End--> |
+| HOA_THIRD = HOA_SECOND \| AudioChannelSet::AMBISONICS_ACN9 \| AudioChannelSet::AMBISONICS_ACN10 \| AudioChannelSet::AMBISONICS_ACN11 \| AudioChannelSet::AMBISONICS_ACN12 \| AudioChannelSet::AMBISONICS_ACN13 \| AudioChannelSet::AMBISONICS_ACN14 \| AudioChannelSet::AMBISONICS_ACN15 | <!--Device-HOA_THIRD = HOA_SECOND \| AudioChannelSet::AMBISONICS_ACN9 \| AudioChannelSet::AMBISONICS_ACN10 \| AudioChannelSet::AMBISONICS_ACN11 \| AudioChannelSet::AMBISONICS_ACN12 \| AudioChannelSet::AMBISONICS_ACN13 \| AudioChannelSet::AMBISONICS_ACN14 \| AudioChannelSet::AMBISONICS_ACN15--><!--Device-HOA_THIRD = HOA_SECOND \| AudioChannelSet::AMBISONICS_ACN9 \| AudioChannelSet::AMBISONICS_ACN10 \| AudioChannelSet::AMBISONICS_ACN11 \| AudioChannelSet::AMBISONICS_ACN12 \| AudioChannelSet::AMBISONICS_ACN13 \| AudioChannelSet::AMBISONICS_ACN14 \| AudioChannelSet::AMBISONICS_ACN15-End--> |
 
 

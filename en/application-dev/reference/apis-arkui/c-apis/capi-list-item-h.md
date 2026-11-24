@@ -69,7 +69,7 @@ enum ArkUI_ListItemSwipeActionState
 
 Enumerates the swipe action states of a ListItem. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**.
 
-<!--Device-ArkUI_ListItemSwipeActionState--><!--Device-ArkUI_ListItemSwipeActionState-End-->
+<!--Device-enum ArkUI_ListItemSwipeActionState--><!--Device-enum ArkUI_ListItemSwipeActionState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,9 +77,9 @@ Enumerates the swipe action states of a ListItem. The default value is **<br>ARK
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0 | Collapsed state. When the list item slides in the direction opposite to the main axis, the operation item is hidden. |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED | Expanded state. When the list item slides in the direction opposite to the main axis, the operation item is displayed. |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING | Actioning state. This state is triggered when the list item enters the long-distance deletion area and is deleted. |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0 | Collapsed state. When the list item slides in the direction opposite to the main axis, the operation item is hidden.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED | Expanded state. When the list item slides in the direction opposite to the main axis, the operation item is displayed.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED-End--> |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING | Actioning state. This state is triggered when the list item enters the long-distance deletion area and is deleted.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING-End--> |
 
 ### ArkUI_ListItemSwipeEdgeEffect
 
@@ -91,7 +91,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 
 Enumerates the edge effects of the swipe action for the ListItem component. The default value is **<br>ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**.
 
-<!--Device-ArkUI_ListItemSwipeEdgeEffect--><!--Device-ArkUI_ListItemSwipeEdgeEffect-End-->
+<!--Device-enum ArkUI_ListItemSwipeEdgeEffect--><!--Device-enum ArkUI_ListItemSwipeEdgeEffect-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,8 +99,8 @@ Enumerates the edge effects of the swipe action for the ListItem component. The 
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0 | The list item can continue to slide after the sliding distance exceeds the size of the operation item. |
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE | The sliding distance of the list item cannot exceed the size of the operation item. |
+| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0 | The list item can continue to slide after the sliding distance exceeds the size of the operation item.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0--><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE | The sliding distance of the list item cannot exceed the size of the operation item.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE--><!--Device-ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE-End--> |
 
 ### ArkUI_ListItemSwipeActionDirection
 
@@ -112,7 +112,7 @@ enum ArkUI_ListItemSwipeActionDirection
 
 Enumerates the directions to expand the swipe action of a ListItem.
 
-<!--Device-ArkUI_ListItemSwipeActionDirection--><!--Device-ArkUI_ListItemSwipeActionDirection-End-->
+<!--Device-enum ArkUI_ListItemSwipeActionDirection--><!--Device-enum ArkUI_ListItemSwipeActionDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,8 +120,8 @@ Enumerates the directions to expand the swipe action of a ListItem.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | When the list direction is vertical, it indicates the left in LTR mode and right in RTL mode. When the list direction is horizontal, it indicates the top. |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | When the list direction is vertical, it indicates the right in LTR mode and left in RTL mode. When the list direction is horizontal, it indicates the bottom. |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | When the list direction is vertical, it indicates the left in LTR mode and right in RTL mode. When the list direction is horizontal, it indicates the top.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | When the list direction is vertical, it indicates the right in LTR mode and left in RTL mode. When the list direction is horizontal, it indicates the bottom.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1--><!--Device-ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1-End--> |
 
 
 ## Function description

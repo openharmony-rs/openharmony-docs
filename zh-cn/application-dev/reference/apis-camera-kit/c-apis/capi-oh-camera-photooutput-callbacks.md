@@ -24,9 +24,9 @@ typedef struct PhotoOutput_Callbacks {...} PhotoOutput_Callbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_PhotoOutput_OnFrameStart](capi-photo-output-h.md#oh_photooutput_onframestart) onFrameStart | 拍照输出帧启动事件。 |
-| [OH_PhotoOutput_OnFrameShutter](capi-photo-output-h.md#oh_photooutput_onframeshutter) onFrameShutter | 拍照输出帧快门事件。 |
-| [OH_PhotoOutput_OnFrameEnd](capi-photo-output-h.md#oh_photooutput_onframeend) onFrameEnd | 拍照输出帧结束事件。 |
-| [OH_PhotoOutput_OnError](capi-photo-output-h.md#oh_photooutput_onerror) onError | 拍照输出错误事件。 |
+| [OH_PhotoOutput_OnFrameStart](capi-photo-output-h.md#oh_photooutput_onframestart) onFrameStart | 拍照输出帧启动事件。<br><!--Device-OH_PhotoOutput_OnFrameStart onFrameStart--><!--Device-OH_PhotoOutput_OnFrameStart onFrameStart-End--> |
+| [OH_PhotoOutput_OnFrameShutter](capi-photo-output-h.md#oh_photooutput_onframeshutter) onFrameShutter | 拍照输出帧快门事件。<br><!--Device-OH_PhotoOutput_OnFrameShutter onFrameShutter--><!--Device-OH_PhotoOutput_OnFrameShutter onFrameShutter-End--> |
+| [OH_PhotoOutput_OnFrameEnd](capi-photo-output-h.md#oh_photooutput_onframeend) onFrameEnd | 拍照输出帧结束事件。<br><!--Device-OH_PhotoOutput_OnFrameEnd onFrameEnd--><!--Device-OH_PhotoOutput_OnFrameEnd onFrameEnd-End--> |
+| [OH_PhotoOutput_OnError](capi-photo-output-h.md#oh_photooutput_onerror) onError | 拍照输出错误事件。<br><!--Device-OH_PhotoOutput_OnError onError--><!--Device-OH_PhotoOutput_OnError onError-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct OH_PrivacyProtectInfo {...} OH_PrivacyProtectInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| bool systemWindowProtection | 是否开启系统窗口隐私保护。true表示开启隐私保护，false表示关闭隐私保护，默认值为true。 系统窗口是指系统级应用（如输入法、通知等）的窗口。<br>**起始版本：** 24 |
-| bool sensitiveAppProtection | 是否开启敏感应用的隐私保护。true表示开启隐私保护，false表示关闭隐私保护，默认值为true。 敏感应用（如金融类应用）是指包含用户隐私数据的应用。<br>**起始版本：** 24 |
+| bool systemWindowProtection | 是否开启系统窗口隐私保护。true表示开启隐私保护，false表示关闭隐私保护，默认值为true。 系统窗口是指系统级应用（如输入法、通知等）的窗口。<br>**起始版本：** 24<br><!--Device-bool systemWindowProtection--><!--Device-bool systemWindowProtection-End--> |
+| bool sensitiveAppProtection | 是否开启敏感应用的隐私保护。true表示开启隐私保护，false表示关闭隐私保护，默认值为true。 敏感应用（如金融类应用）是指包含用户隐私数据的应用。<br>**起始版本：** 24<br><!--Device-bool sensitiveAppProtection--><!--Device-bool sensitiveAppProtection-End--> |
 
 

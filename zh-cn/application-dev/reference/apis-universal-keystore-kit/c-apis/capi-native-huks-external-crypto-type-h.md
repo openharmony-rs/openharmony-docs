@@ -49,7 +49,7 @@ enum OH_Huks_ExternalCryptoTag
 
 列举参数集合中使用的标签值。
 
-<!--Device-OH_Huks_ExternalCryptoTag--><!--Device-OH_Huks_ExternalCryptoTag-End-->
+<!--Device-enum OH_Huks_ExternalCryptoTag--><!--Device-enum OH_Huks_ExternalCryptoTag-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -57,12 +57,12 @@ enum OH_Huks_ExternalCryptoTag
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001 | PIN码。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002 | 能力名称。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003 | 附加数据。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004 | 调用方的UID。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005 | 证书链用途。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006 | 获取属性操作的超时时间，单位：s。<br>**起始版本：** 22 |
+| OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001 | PIN码。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UKEY_PIN = OH_HUKS_TAG_TYPE_BYTES \| 200001-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002 | 能力名称。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME = OH_HUKS_TAG_TYPE_BYTES \| 200002-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003 | 附加数据。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA = OH_HUKS_TAG_TYPE_BYTES \| 200003-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004 | 调用方的UID。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_UID = OH_HUKS_TAG_TYPE_INT \| 200004-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005 | 证书链用途。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005-End--> |
+| OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006 | 获取属性操作的超时时间，单位：s。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006--><!--Device-OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006-End--> |
 
 ### OH_Huks_ExternalPinAuthState
 
@@ -74,7 +74,7 @@ enum OH_Huks_ExternalPinAuthState
 
 列举Ukey PIN码认证状态。
 
-<!--Device-OH_Huks_ExternalPinAuthState--><!--Device-OH_Huks_ExternalPinAuthState-End-->
+<!--Device-enum OH_Huks_ExternalPinAuthState--><!--Device-enum OH_Huks_ExternalPinAuthState-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -82,8 +82,8 @@ enum OH_Huks_ExternalPinAuthState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN码未认证。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN码认证成功。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN码被锁定。<br>**起始版本：** 22 |
+| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN码未认证。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0--><!--Device-OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0-End--> |
+| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN码认证成功。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1--><!--Device-OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1-End--> |
+| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN码被锁定。<br>**起始版本：** 22<br><!--Device-OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2--><!--Device-OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2-End--> |
 
 

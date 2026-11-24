@@ -24,7 +24,7 @@ Defines the parameters for the connection error received by the WebSocket client
 
 | Name | Description |
 | -- | -- |
-| uint32_t errorCode | Error code. |
-| const char *errorMessage | Error message. |
+| uint32_t errorCode | Error code.<br><!--Device-uint32_t errorCode--><!--Device-uint32_t errorCode-End--> |
+| const char *errorMessage | Error message.<br><!--Device-const char *errorMessage--><!--Device-const char *errorMessage-End--> |
 
 

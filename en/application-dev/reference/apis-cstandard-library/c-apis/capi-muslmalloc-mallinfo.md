@@ -18,15 +18,15 @@ struct mallinfo {...}
 
 | Name | Description |
 | -- | -- |
-| int arena |  |
-| int ordblks |  |
-| int smblks |  |
-| int hblks |  |
-| int hblkhd |  |
-| int usmblks |  |
-| int fsmblks |  |
-| int uordblks |  |
-| int fordblks |  |
-| int keepcost |  |
+| int arena | <!--Device-int arena--><!--Device-int arena-End--> |
+| int ordblks | <!--Device-int ordblks--><!--Device-int ordblks-End--> |
+| int smblks | <!--Device-int smblks--><!--Device-int smblks-End--> |
+| int hblks | <!--Device-int hblks--><!--Device-int hblks-End--> |
+| int hblkhd | <!--Device-int hblkhd--><!--Device-int hblkhd-End--> |
+| int usmblks | <!--Device-int usmblks--><!--Device-int usmblks-End--> |
+| int fsmblks | <!--Device-int fsmblks--><!--Device-int fsmblks-End--> |
+| int uordblks | <!--Device-int uordblks--><!--Device-int uordblks-End--> |
+| int fordblks | <!--Device-int fordblks--><!--Device-int fordblks-End--> |
+| int keepcost | <!--Device-int keepcost--><!--Device-int keepcost-End--> |
 
 

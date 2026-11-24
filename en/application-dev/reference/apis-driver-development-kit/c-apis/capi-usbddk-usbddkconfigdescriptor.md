@@ -24,9 +24,9 @@ Defines configuration descriptors, including standard configuration descriptors 
 
 | Name | Description |
 | -- | -- |
-| [struct UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) configDescriptor | Standard configuration descriptor. |
-| [struct UsbDdkInterface](capi-usbddk-usbddkinterface.md) *interface | Interfaces contained in the configuration. |
-| const uint8_t *extra | Pointer to the unresolved descriptor, including class- or vendor-specific descriptors. |
-| uint32_t extraLength | Length of the unresolved descriptor. |
+| [struct UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) configDescriptor | Standard configuration descriptor.<br><!--Device-struct UsbConfigDescriptor configDescriptor--><!--Device-struct UsbConfigDescriptor configDescriptor-End--> |
+| [struct UsbDdkInterface](capi-usbddk-usbddkinterface.md) *interface | Interfaces contained in the configuration.<br><!--Device-struct UsbDdkInterface *interface--><!--Device-struct UsbDdkInterface *interface-End--> |
+| const uint8_t *extra | Pointer to the unresolved descriptor, including class- or vendor-specific descriptors.<br><!--Device-const uint8_t *extra--><!--Device-const uint8_t *extra-End--> |
+| uint32_t extraLength | Length of the unresolved descriptor.<br><!--Device-uint32_t extraLength--><!--Device-uint32_t extraLength-End--> |
 
 

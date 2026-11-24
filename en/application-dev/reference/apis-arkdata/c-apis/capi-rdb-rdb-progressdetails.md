@@ -24,9 +24,9 @@ Describes detail of the cloud sync progress.
 
 | Name | Description |
 | -- | -- |
-| int version | The version used to uniquely identify the Rdb_ProgressDetails struct. |
-| int schedule | Describes the status of data sync progress. Defined in [Rdb_Progress](capi-relational-store-h.md#rdb_progress). |
-| int code | Describes the code of data sync progress. Defined in [Rdb_ProgressCode](capi-relational-store-h.md#rdb_progresscode). |
-| int32_t tableLength | Describes the length of changed tables in data sync progress. |
+| int version | The version used to uniquely identify the Rdb_ProgressDetails struct.<br><!--Device-int version--><!--Device-int version-End--> |
+| int schedule | Describes the status of data sync progress. Defined in [Rdb_Progress](capi-relational-store-h.md#rdb_progress).<br><!--Device-int schedule--><!--Device-int schedule-End--> |
+| int code | Describes the code of data sync progress. Defined in [Rdb_ProgressCode](capi-relational-store-h.md#rdb_progresscode).<br><!--Device-int code--><!--Device-int code-End--> |
+| int32_t tableLength | Describes the length of changed tables in data sync progress.<br><!--Device-int32_t tableLength--><!--Device-int32_t tableLength-End--> |
 
 

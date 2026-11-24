@@ -24,7 +24,7 @@ A struct that encapsulates the list of files that failed to synchronize. It incl
 
 | Name | Description |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | Absolute path information of the file that failed to synchronize.<br>**Since**: 21 |
-| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | Reason why the file fails to be synchronized.<br>**Since**: 21 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | Absolute path information of the file that failed to synchronize.<br>**Since**: 21<br><!--Device-CloudDisk_PathInfo pathInfo--><!--Device-CloudDisk_PathInfo pathInfo-End--> |
+| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | Reason why the file fails to be synchronized.<br>**Since**: 21<br><!--Device-CloudDisk_ErrorReason errorReason--><!--Device-CloudDisk_ErrorReason errorReason-End--> |
 
 

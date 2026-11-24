@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shaderSubgroupClock |  |
-| VkBool32 shaderDeviceClock |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shaderSubgroupClock | <!--Device-VkBool32 shaderSubgroupClock--><!--Device-VkBool32 shaderSubgroupClock-End--> |
+| VkBool32 shaderDeviceClock | <!--Device-VkBool32 shaderDeviceClock--><!--Device-VkBool32 shaderDeviceClock-End--> |
 
 

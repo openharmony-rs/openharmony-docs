@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceFaultAddressTypeEXT addressType |  |
-| VkDeviceAddress reportedAddress |  |
-| VkDeviceSize addressPrecision |  |
+| VkDeviceFaultAddressTypeEXT addressType | <!--Device-VkDeviceFaultAddressTypeEXT addressType--><!--Device-VkDeviceFaultAddressTypeEXT addressType-End--> |
+| VkDeviceAddress reportedAddress | <!--Device-VkDeviceAddress reportedAddress--><!--Device-VkDeviceAddress reportedAddress-End--> |
+| VkDeviceSize addressPrecision | <!--Device-VkDeviceSize addressPrecision--><!--Device-VkDeviceSize addressPrecision-End--> |
 
 

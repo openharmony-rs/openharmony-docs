@@ -24,8 +24,8 @@ typedef struct Ethernet_NetAddrInfo {...} Ethernet_NetAddrInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char ifaceName[ETHERNET_MAX_STR_LEN] | 以太网网卡名称。<br>**起始版本：** 26.0.0 |
-| [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md) netAddrInfo[ETHERNET_MAX_NET_SIZE] | 网络地址。<br>**起始版本：** 26.0.0 |
-| int32_t netAddrInfoSize | 网络地址数组的实际大小。<br>**起始版本：** 26.0.0 |
+| char ifaceName[ETHERNET_MAX_STR_LEN] | 以太网网卡名称。<br>**起始版本：** 26.0.0<br><!--Device-char ifaceName[ETHERNET_MAX_STR_LEN]--><!--Device-char ifaceName[ETHERNET_MAX_STR_LEN]-End--> |
+| [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md) netAddrInfo[ETHERNET_MAX_NET_SIZE] | 网络地址。<br>**起始版本：** 26.0.0<br><!--Device-Ethernet_NetAddr netAddrInfo[ETHERNET_MAX_NET_SIZE]--><!--Device-Ethernet_NetAddr netAddrInfo[ETHERNET_MAX_NET_SIZE]-End--> |
+| int32_t netAddrInfoSize | 网络地址数组的实际大小。<br>**起始版本：** 26.0.0<br><!--Device-int32_t netAddrInfoSize--><!--Device-int32_t netAddrInfoSize-End--> |
 
 

@@ -24,9 +24,9 @@ Describes the camera rect ext.
 
 | Name | Description |
 | -- | -- |
-| double topLeftX | X coordinate of the top-left corner of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0 |
-| double topLeftY | Y coordinate of the top-left corner of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0 |
-| double width | Width of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0 |
-| double height | Height of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0 |
+| double topLeftX | X coordinate of the top-left corner of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0<br><!--Device-double topLeftX--><!--Device-double topLeftX-End--> |
+| double topLeftY | Y coordinate of the top-left corner of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0<br><!--Device-double topLeftY--><!--Device-double topLeftY-End--> |
+| double width | Width of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0<br><!--Device-double width--><!--Device-double width-End--> |
+| double height | Height of the rectangle, in the range of [0, 1].<br>**Since**: 26.0.0<br><!--Device-double height--><!--Device-double height-End--> |
 
 

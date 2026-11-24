@@ -10,9 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| \_\_sa_handler |  |
-| sigset_t sa_mask |  |
-| int sa_flags |  |
+| sigset_t sa_mask | <!--Device-sigset_t sa_mask--><!--Device-sigset_t sa_mask-End--> |
+| int sa_flags | <!--Device-int sa_flags--><!--Device-int sa_flags-End--> |
 
 
 ### Member functions

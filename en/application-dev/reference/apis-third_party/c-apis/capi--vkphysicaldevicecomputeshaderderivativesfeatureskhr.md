@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 computeDerivativeGroupQuads |  |
-| VkBool32 computeDerivativeGroupLinear |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 computeDerivativeGroupQuads | <!--Device-VkBool32 computeDerivativeGroupQuads--><!--Device-VkBool32 computeDerivativeGroupQuads-End--> |
+| VkBool32 computeDerivativeGroupLinear | <!--Device-VkBool32 computeDerivativeGroupLinear--><!--Device-VkBool32 computeDerivativeGroupLinear-End--> |
 
 

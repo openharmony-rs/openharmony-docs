@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkImageAspectFlagBits planeAspect |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkImageAspectFlagBits planeAspect | <!--Device-VkImageAspectFlagBits planeAspect--><!--Device-VkImageAspectFlagBits planeAspect-End--> |
 
 

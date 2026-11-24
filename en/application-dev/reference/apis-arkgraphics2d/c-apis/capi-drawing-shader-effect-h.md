@@ -49,7 +49,7 @@ enum OH_Drawing_TileMode
 
 Defines an enum for the tile modes of the shader effect.
 
-<!--Device-OH_Drawing_TileMode--><!--Device-OH_Drawing_TileMode-End-->
+<!--Device-enum OH_Drawing_TileMode--><!--Device-enum OH_Drawing_TileMode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -57,10 +57,10 @@ Defines an enum for the tile modes of the shader effect.
 
 | Enum item | Description |
 | -- | -- |
-| CLAMP | Replicates the edge color if the shader effect draws outside of its original boundary. |
-| REPEAT | Repeats the shader effect's image in both horizontal and vertical directions. |
-| MIRROR | Repeats the shader effect's image in both horizontal and vertical directions, alternating mirror images. |
-| DECAL | Renders the shader effect's image only within the original boundary, and returns transparent black elsewhere. |
+| CLAMP | Replicates the edge color if the shader effect draws outside of its original boundary.<br><!--Device-CLAMP--><!--Device-CLAMP-End--> |
+| REPEAT | Repeats the shader effect's image in both horizontal and vertical directions.<br><!--Device-REPEAT--><!--Device-REPEAT-End--> |
+| MIRROR | Repeats the shader effect's image in both horizontal and vertical directions, alternating mirror images.<br><!--Device-MIRROR--><!--Device-MIRROR-End--> |
+| DECAL | Renders the shader effect's image only within the original boundary, and returns transparent black elsewhere.<br><!--Device-DECAL--><!--Device-DECAL-End--> |
 
 
 ## Function description

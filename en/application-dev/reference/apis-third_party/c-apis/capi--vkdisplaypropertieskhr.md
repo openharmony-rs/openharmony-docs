@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkDisplayKHR display |  |
-| const char* displayName |  |
-| [VkExtent2D](capi--vkextent2d.md) physicalDimensions |  |
-| [VkExtent2D](capi--vkextent2d.md) physicalResolution |  |
-| VkSurfaceTransformFlagsKHR supportedTransforms |  |
-| VkBool32 planeReorderPossible |  |
-| VkBool32 persistentContent |  |
+| VkDisplayKHR display | <!--Device-VkDisplayKHR display--><!--Device-VkDisplayKHR display-End--> |
+| const char* displayName | <!--Device-const char* displayName--><!--Device-const char* displayName-End--> |
+| [VkExtent2D](capi--vkextent2d.md) physicalDimensions | <!--Device-VkExtent2D physicalDimensions--><!--Device-VkExtent2D physicalDimensions-End--> |
+| [VkExtent2D](capi--vkextent2d.md) physicalResolution | <!--Device-VkExtent2D physicalResolution--><!--Device-VkExtent2D physicalResolution-End--> |
+| VkSurfaceTransformFlagsKHR supportedTransforms | <!--Device-VkSurfaceTransformFlagsKHR supportedTransforms--><!--Device-VkSurfaceTransformFlagsKHR supportedTransforms-End--> |
+| VkBool32 planeReorderPossible | <!--Device-VkBool32 planeReorderPossible--><!--Device-VkBool32 planeReorderPossible-End--> |
+| VkBool32 persistentContent | <!--Device-VkBool32 persistentContent--><!--Device-VkBool32 persistentContent-End--> |
 
 

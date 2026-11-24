@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceAddress bufferAddress |  |
-| uint32_t size |  |
-| VkIndexType indexType |  |
+| VkDeviceAddress bufferAddress | <!--Device-VkDeviceAddress bufferAddress--><!--Device-VkDeviceAddress bufferAddress-End--> |
+| uint32_t size | <!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| VkIndexType indexType | <!--Device-VkIndexType indexType--><!--Device-VkIndexType indexType-End--> |
 
 

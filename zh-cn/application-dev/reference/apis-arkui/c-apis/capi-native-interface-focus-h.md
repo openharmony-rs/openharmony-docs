@@ -42,7 +42,7 @@ enum ArkUI_KeyProcessingMode
 
 按键事件处理的优先级。
 
-<!--Device-ArkUI_KeyProcessingMode--><!--Device-ArkUI_KeyProcessingMode-End-->
+<!--Device-enum ArkUI_KeyProcessingMode--><!--Device-enum ArkUI_KeyProcessingMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,8 +50,8 @@ enum ArkUI_KeyProcessingMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0 | 按键事件用于移动焦点。 |
-| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT | 按键事件向上传递给祖先组件。 |
+| ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0 | 按键事件用于移动焦点。<br><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0--><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0-End--> |
+| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT | 按键事件向上传递给祖先组件。<br><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT--><!--Device-ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT-End--> |
 
 
 ## 函数说明

@@ -30,15 +30,15 @@ enum OH_AVImageGenerator_QueryOptions
 
 Enumerates the mappings between time points and video frames.
 
-<!--Device-OH_AVImageGenerator_QueryOptions--><!--Device-OH_AVImageGenerator_QueryOptions-End-->
+<!--Device-enum OH_AVImageGenerator_QueryOptions--><!--Device-enum OH_AVImageGenerator_QueryOptions-End-->
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0 | Extracts the key frame at or next to the specified time. |
-| OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1 | Extracts the key frame at or prior to the specified time. |
-| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2 | Extracts the key frame closest to the specified time. |
-| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3 | Extracts the frame (not necessarily a key frame) closest to the specified time. |
+| OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0 | Extracts the key frame at or next to the specified time.<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_NEXT_SYNC = 0-End--> |
+| OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1 | Extracts the key frame at or prior to the specified time.<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_PREVIOUS_SYNC = 1-End--> |
+| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2 | Extracts the key frame closest to the specified time.<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST_SYNC = 2-End--> |
+| OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3 | Extracts the frame (not necessarily a key frame) closest to the specified time.<br><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3--><!--Device-OH_AVIMAGE_GENERATOR_QUERY_CLOSEST = 3-End--> |
 
 

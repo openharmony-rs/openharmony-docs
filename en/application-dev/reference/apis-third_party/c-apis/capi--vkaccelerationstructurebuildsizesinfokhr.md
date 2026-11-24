@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDeviceSize accelerationStructureSize |  |
-| VkDeviceSize updateScratchSize |  |
-| VkDeviceSize buildScratchSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDeviceSize accelerationStructureSize | <!--Device-VkDeviceSize accelerationStructureSize--><!--Device-VkDeviceSize accelerationStructureSize-End--> |
+| VkDeviceSize updateScratchSize | <!--Device-VkDeviceSize updateScratchSize--><!--Device-VkDeviceSize updateScratchSize-End--> |
+| VkDeviceSize buildScratchSize | <!--Device-VkDeviceSize buildScratchSize--><!--Device-VkDeviceSize buildScratchSize-End--> |
 
 

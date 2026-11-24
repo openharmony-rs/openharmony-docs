@@ -24,7 +24,7 @@ Represents a string list, which is used to transfer multiple strings in the prin
 
 | Name | Description |
 | -- | -- |
-| uint32_t count | String count, which indicates the number of elements in the **list** array. |
-| char **list | Pointer to the string array. The number of elements in the array must be the same as the value of **count**. |
+| uint32_t count | String count, which indicates the number of elements in the **list** array.<br><!--Device-uint32_t count--><!--Device-uint32_t count-End--> |
+| char **list | Pointer to the string array. The number of elements in the array must be the same as the value of **count**.<br><!--Device-char **list--><!--Device-char **list-End--> |
 
 

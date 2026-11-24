@@ -24,6 +24,6 @@ typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head | 子进程文件描述符记录链表中的第一个记录。 |
+| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head | 子进程文件描述符记录链表中的第一个记录。<br><!--Device-struct NativeChildProcess_Fd* head--><!--Device-struct NativeChildProcess_Fd* head-End--> |
 
 

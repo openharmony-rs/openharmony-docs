@@ -55,7 +55,7 @@ enum CryptoSymCipher_ParamsType
 
 Defines the cipher parameter types.
 
-<!--Device-CryptoSymCipher_ParamsType--><!--Device-CryptoSymCipher_ParamsType-End-->
+<!--Device-enum CryptoSymCipher_ParamsType--><!--Device-enum CryptoSymCipher_ParamsType-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -63,9 +63,9 @@ Defines the cipher parameter types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_IV_DATABLOB = 100 | Initialization vector (IV) parameter.<br>**Since**: 12 |
-| CRYPTO_AAD_DATABLOB = 101 | Additional authenticated data (AAD) for AEAD modes (e.g. GCM, CCM).<br>**Since**: 12 |
-| CRYPTO_TAG_DATABLOB = 102 | Authentication tag for AEAD modes (e.g. GCM, CCM), used for data integrity verification.<br>**Since**: 12 |
+| CRYPTO_IV_DATABLOB = 100 | Initialization vector (IV) parameter.<br>**Since**: 12<br><!--Device-CRYPTO_IV_DATABLOB = 100--><!--Device-CRYPTO_IV_DATABLOB = 100-End--> |
+| CRYPTO_AAD_DATABLOB = 101 | Additional authenticated data (AAD) for AEAD modes (e.g. GCM, CCM).<br>**Since**: 12<br><!--Device-CRYPTO_AAD_DATABLOB = 101--><!--Device-CRYPTO_AAD_DATABLOB = 101-End--> |
+| CRYPTO_TAG_DATABLOB = 102 | Authentication tag for AEAD modes (e.g. GCM, CCM), used for data integrity verification.<br>**Since**: 12<br><!--Device-CRYPTO_TAG_DATABLOB = 102--><!--Device-CRYPTO_TAG_DATABLOB = 102-End--> |
 
 
 ## Function description

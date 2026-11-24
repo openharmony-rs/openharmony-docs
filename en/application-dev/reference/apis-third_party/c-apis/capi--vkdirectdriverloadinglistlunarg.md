@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDirectDriverLoadingModeLUNARG mode |  |
-| uint32_t driverCount |  |
-| [const VkDirectDriverLoadingInfoLUNARG*](capi--vkdirectdriverloadinginfolunarg.md) pDrivers |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDirectDriverLoadingModeLUNARG mode | <!--Device-VkDirectDriverLoadingModeLUNARG mode--><!--Device-VkDirectDriverLoadingModeLUNARG mode-End--> |
+| uint32_t driverCount | <!--Device-uint32_t driverCount--><!--Device-uint32_t driverCount-End--> |
+| [const VkDirectDriverLoadingInfoLUNARG*](capi--vkdirectdriverloadinginfolunarg.md) pDrivers | <!--Device-const VkDirectDriverLoadingInfoLUNARG* pDrivers--><!--Device-const VkDirectDriverLoadingInfoLUNARG* pDrivers-End--> |
 
 

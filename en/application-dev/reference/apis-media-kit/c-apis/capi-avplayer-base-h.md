@@ -37,9 +37,9 @@ The file declares the structs and enums of the AVPlayer.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [typedef void (\*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)](#oh_avplayeroninfo) | OH_AVPlayerOnInfo | Called when the AVPlayer receives a message.(Deprecated in API12) |
+| [typedef void (\*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)](#oh_avplayeroninfo) | OH_AVPlayerOnInfo | Called when the AVPlayer receives a message.(Deprecated) |
 | [typedef void (\*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody, void *userData)](#oh_avplayeroninfocallback) | OH_AVPlayerOnInfoCallback | Called when the AVPlayer receives a message. If this callback is successfully set, the **OH_AVPlayerOnInfo**<br>function will not be invoked. |
-| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | Called when an error occurs in the AVPlayer. This callback is available in API version 9 or later.(Deprecated in API12) |
+| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | Called when an error occurs in the AVPlayer. This callback is available in API version 9 or later.(Deprecated) |
 | [typedef void (\*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avplayeronerrorcallback) | OH_AVPlayerOnErrorCallback | Called when an error occurs in the AVPlayer. If this callback is successfully set, the **OH_AVPlayerOnError**<br>function will not be invoked. |
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | Called when the maximum audio amplitude is calculated. |
 | [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | Called for obtaining SEI messages. This function is used to subscribe to SEI message events and returns detailed SEI information. |
@@ -50,52 +50,52 @@ The file declares the structs and enums of the AVPlayer.
 
 | Name | Description |
 | -- | -- |
-| const char *OH_PLAYER_STATE | Pointer to the key for obtaining the AVPlayer state. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_STATE_CHANGE_REASON | Pointer to the key for obtaining the AVPlayer state change reason. The value is of the int32_t type. The value **1** means that the change is triggered by user operations, and **2** means that the change is triggered by the system.<br>**Since**: 12 |
-| const char *OH_PLAYER_VOLUME | Pointer to the key for obtaining the volume. The value type is float.<br>**Since**: 12 |
-| const char *OH_PLAYER_BITRATE_ARRAY | Pointer to the key for obtaining the bit rate array. The value is of the uint8_t byte array type. When this key is used to obtain information, you need to: Use a pointer variable of the uint8_t type to store the bit rate list and use a variable of the size_t type to store the byte array length. Then it allocates several storage spaces of the uint32_t type to receive the bit rate integer of the uint32_t type, which is converted from the uint8_t byte array.<br>**Since**: 12 |
-| const char *OH_PLAYER_AUDIO_INTERRUPT_TYPE | Pointer to the key for obtaining the audio interruption type. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_AUDIO_INTERRUPT_FORCE | Pointer to the key for obtaining the FORCE type of audio interruption. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_AUDIO_INTERRUPT_HINT | Pointer to the key for obtaining the HINT type of audio interruption. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON | Pointer to the key for obtaining the audio device change reason. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_BUFFERING_TYPE | Pointer to the key for obtaining the type of the buffer update message. The value type is [AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype). When this key is used to obtain information, you must use a variable of the int32_t type to save the result and then convert the result to a value of AVPlayerBufferingType.<br>**Since**: 12 |
-| const char *OH_PLAYER_BUFFERING_VALUE | Pointer to the key for obtaining the value of the buffer update message. The value is of the int32_t type. For details, see [AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype). This parameter is valid only when the buffer update message type is **AVPLAYER_BUFFERING_PERCENT** or **<br>AVPLAYER_BUFFERING_CACHED_DURATION**.<br>**Since**: 12 |
-| const char *OH_PLAYER_SEEK_POSITION | Pointer to the key for obtaining the playback progress after the seek operation. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_PLAYBACK_SPEED | Pointer to the key for obtaining the playback speed. The value type is [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed). When this key is used to obtain information, you must use a variable of the int32_t type to save the result and then convert the result to a value of AVPlaybackSpeed.<br>**Since**: 12 |
-| const char *OH_PLAYER_BITRATE | Pointer to the key for obtaining the bit rate array. The value is of the uint8_t byte array type. When this key is used to obtain information, you need to: Use a pointer variable of the uint8_t type to store the bit rate list and use a variable of the size_t type to store the byte array length. Then it allocates several storage spaces of the uint32_t type to receive the bit rate integer of the uint32_t type, which is converted from the uint8_t byte array.<br>**Since**: 12 |
-| const char *OH_PLAYER_CURRENT_POSITION | Pointer to the key for obtaining the playback progress information. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_DURATION | Pointer to the key for obtaining the media asset duration. The value type is int64_t.<br>**Since**: 12 |
-| const char *OH_PLAYER_VIDEO_WIDTH | Pointer to the key for obtaining the video width. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_VIDEO_HEIGHT | Pointer to the key for obtaining the video height. The value is of the int32_t type.<br>**Since**: 12 |
-| const char *OH_PLAYER_MESSAGE_TYPE | Pointer to the key for obtaining the type of message received by the AVPlayer. The value is of the int32_t type. The value **1** means that the video frame starts to be rendered.<br>**Since**: 12 |
-| const char *OH_PLAYER_IS_LIVE_STREAM | Pointer to the key for checking whether a media asset is live streaming. The value is of the int32_t type. The value **1** means live streaming.<br>**Since**: 12 |
-| const char *OH_PLAYER_SEI_PAYLOAD_TYPE | Sei message key for payload type.<br>**Since**: 23 |
-| const char *OH_PLAYER_SEI_PAYLOAD_CONTENT | Sei message key for payload content.<br>**Since**: 23 |
-| const char *OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | Pointer to the key for indicating the enable state of the super resolution feature. The value type is int32_t. The value **1** indicates that the feature is enabled, and **0** indicates the opposite. It is used for information callback when the super resolution state changes.<br>**Since**: 23 |
-| const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX | Pointer to the key for indicating the track index in the track change information. The value type is int32_t.<br>**Since**: 23 |
-| const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED | Pointer to the key for indicating whether the track is selected in the track change information. The value type is int32_t.<br>**Since**: 23 |
-| const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION | Pointer to the key for indicating the duration in the subtitle update information. The value type is int32_t.<br>**Since**: 23 |
-| const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME | Pointer to the key for indicating the start time in the subtitle update information. The value type is int32_t.<br>**Since**: 23 |
-| const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT | Pointer to the key for indicating the subtitle text content in the subtitle update information. The value type is string.<br>**Since**: 23 |
-| const char *OH_PLAYER_PLAYBACK_RATE | Pointer to the key for obtaining the playback rate. The value is a floating-point number.<br>**Since**: 20 |
-| const char *OH_PLAYER_MD_KEY_HAS_VIDEO | Pointer to the key for obtaining whether the media resource contains video tracks. The value is of the int32_t type. The value **1** means that the media resource contains video tracks, and the value **0** means the opposite.<br>**Since**: 22 |
-| const char *OH_PLAYER_MD_KEY_HAS_AUDIO | Pointer to the key for obtaining whether the media resource contains audio tracks. The value is of the int32_t type. The value **1** means that the media resource contains audio tracks, and the value **0** means the opposite.<br>**Since**: 22 |
-| const char *OH_PLAYER_MD_KEY_HAS_SUBTITLE | Pointer to the key for obtaining whether the media resource contains subtitle tracks. The value is of the int32_t type. The value **1** means that the media resource contains subtitle tracks, and the value **0** means the opposite.<br>**Since**: 22 |
-| const char *OH_PLAYER_MD_KEY_TRACK_INDEX | Pointer to the key for obtaining the track index information of a media resource. The value is of the int32_t type.<br>**Since**: 22 |
-| const char *OH_MEDIA_EVENT_INFO_PREPARE_DURATION | Pointer to the key for obtaining the preparation duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_RESOURCE_CONNECTION_DURATION | Pointer to the key for obtaining the resource connection duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_FIRST_FRAME_DECAPSULATION_DURATION | Pointer to the key for obtaining the first-frame decapsulation duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_TOTAL_PLAYING_TIME | Pointer to the key for obtaining the total playback duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_REQUEST_COUNT | Pointer to the key for obtaining the total number of media resource loading requests in the statistic metric information. The value type is uint32_t.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_TIME | Pointer to the key for obtaining the total media resource loading duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE | Pointer to the key for obtaining the total size of loaded media resources in the statistic metric information. The value type is int64_t.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_STALLING_COUNT | Pointer to the key for obtaining the total number of stalling times in the statistic metric information. The value type is uint32_t.<br>**Since**: 23 |
-| const char *OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME | Pointer to the key for obtaining the total stalling duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23 |
-| const char *OH_PLAYER_SERVER_IP_ADDRESS | Playback info key for server ip address.<br>**Since**: 23 |
-| const char *OH_PLAYER_IS_DOWNLOADING | Playback info key for downloading state.<br>**Since**: 23 |
-| const char *OH_PLAYER_BUFFER_DURATION | Playback info key for buffer duration.<br>**Since**: 23 |
-| const char *OH_PLAYER_DOWNLOAD_RATE | Playback info key for download rate.<br>**Since**: 23 |
-| const char *OH_PLAYER_AVG_DOWNLOAD_RATE | Playback info key for average download rate.<br>**Since**: 23 |
+| const char *OH_PLAYER_STATE | Pointer to the key for obtaining the AVPlayer state. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_STATE--><!--Device-const char *OH_PLAYER_STATE-End--> |
+| const char *OH_PLAYER_STATE_CHANGE_REASON | Pointer to the key for obtaining the AVPlayer state change reason. The value is of the int32_t type. The value **1** means that the change is triggered by user operations, and **2** means that the change is triggered by the system.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_STATE_CHANGE_REASON--><!--Device-const char *OH_PLAYER_STATE_CHANGE_REASON-End--> |
+| const char *OH_PLAYER_VOLUME | Pointer to the key for obtaining the volume. The value type is float.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_VOLUME--><!--Device-const char *OH_PLAYER_VOLUME-End--> |
+| const char *OH_PLAYER_BITRATE_ARRAY | Pointer to the key for obtaining the bit rate array. The value is of the uint8_t byte array type. When this key is used to obtain information, you need to: Use a pointer variable of the uint8_t type to store the bit rate list and use a variable of the size_t type to store the byte array length. Then it allocates several storage spaces of the uint32_t type to receive the bit rate integer of the uint32_t type, which is converted from the uint8_t byte array.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_BITRATE_ARRAY--><!--Device-const char *OH_PLAYER_BITRATE_ARRAY-End--> |
+| const char *OH_PLAYER_AUDIO_INTERRUPT_TYPE | Pointer to the key for obtaining the audio interruption type. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_AUDIO_INTERRUPT_TYPE--><!--Device-const char *OH_PLAYER_AUDIO_INTERRUPT_TYPE-End--> |
+| const char *OH_PLAYER_AUDIO_INTERRUPT_FORCE | Pointer to the key for obtaining the FORCE type of audio interruption. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_AUDIO_INTERRUPT_FORCE--><!--Device-const char *OH_PLAYER_AUDIO_INTERRUPT_FORCE-End--> |
+| const char *OH_PLAYER_AUDIO_INTERRUPT_HINT | Pointer to the key for obtaining the HINT type of audio interruption. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_AUDIO_INTERRUPT_HINT--><!--Device-const char *OH_PLAYER_AUDIO_INTERRUPT_HINT-End--> |
+| const char *OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON | Pointer to the key for obtaining the audio device change reason. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON--><!--Device-const char *OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON-End--> |
+| const char *OH_PLAYER_BUFFERING_TYPE | Pointer to the key for obtaining the type of the buffer update message. The value type is [AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype). When this key is used to obtain information, you must use a variable of the int32_t type to save the result and then convert the result to a value of AVPlayerBufferingType.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_BUFFERING_TYPE--><!--Device-const char *OH_PLAYER_BUFFERING_TYPE-End--> |
+| const char *OH_PLAYER_BUFFERING_VALUE | Pointer to the key for obtaining the value of the buffer update message. The value is of the int32_t type. For details, see [AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype). This parameter is valid only when the buffer update message type is **AVPLAYER_BUFFERING_PERCENT** or **<br>AVPLAYER_BUFFERING_CACHED_DURATION**.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_BUFFERING_VALUE--><!--Device-const char *OH_PLAYER_BUFFERING_VALUE-End--> |
+| const char *OH_PLAYER_SEEK_POSITION | Pointer to the key for obtaining the playback progress after the seek operation. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_SEEK_POSITION--><!--Device-const char *OH_PLAYER_SEEK_POSITION-End--> |
+| const char *OH_PLAYER_PLAYBACK_SPEED | Pointer to the key for obtaining the playback speed. The value type is [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed). When this key is used to obtain information, you must use a variable of the int32_t type to save the result and then convert the result to a value of AVPlaybackSpeed.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_PLAYBACK_SPEED--><!--Device-const char *OH_PLAYER_PLAYBACK_SPEED-End--> |
+| const char *OH_PLAYER_BITRATE | Pointer to the key for obtaining the bit rate array. The value is of the uint8_t byte array type. When this key is used to obtain information, you need to: Use a pointer variable of the uint8_t type to store the bit rate list and use a variable of the size_t type to store the byte array length. Then it allocates several storage spaces of the uint32_t type to receive the bit rate integer of the uint32_t type, which is converted from the uint8_t byte array.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_BITRATE--><!--Device-const char *OH_PLAYER_BITRATE-End--> |
+| const char *OH_PLAYER_CURRENT_POSITION | Pointer to the key for obtaining the playback progress information. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_CURRENT_POSITION--><!--Device-const char *OH_PLAYER_CURRENT_POSITION-End--> |
+| const char *OH_PLAYER_DURATION | Pointer to the key for obtaining the media asset duration. The value type is int64_t.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_DURATION--><!--Device-const char *OH_PLAYER_DURATION-End--> |
+| const char *OH_PLAYER_VIDEO_WIDTH | Pointer to the key for obtaining the video width. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_VIDEO_WIDTH--><!--Device-const char *OH_PLAYER_VIDEO_WIDTH-End--> |
+| const char *OH_PLAYER_VIDEO_HEIGHT | Pointer to the key for obtaining the video height. The value is of the int32_t type.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_VIDEO_HEIGHT--><!--Device-const char *OH_PLAYER_VIDEO_HEIGHT-End--> |
+| const char *OH_PLAYER_MESSAGE_TYPE | Pointer to the key for obtaining the type of message received by the AVPlayer. The value is of the int32_t type. The value **1** means that the video frame starts to be rendered.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_MESSAGE_TYPE--><!--Device-const char *OH_PLAYER_MESSAGE_TYPE-End--> |
+| const char *OH_PLAYER_IS_LIVE_STREAM | Pointer to the key for checking whether a media asset is live streaming. The value is of the int32_t type. The value **1** means live streaming.<br>**Since**: 12<br><!--Device-const char *OH_PLAYER_IS_LIVE_STREAM--><!--Device-const char *OH_PLAYER_IS_LIVE_STREAM-End--> |
+| const char *OH_PLAYER_SEI_PAYLOAD_TYPE | Sei message key for payload type.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_SEI_PAYLOAD_TYPE--><!--Device-const char *OH_PLAYER_SEI_PAYLOAD_TYPE-End--> |
+| const char *OH_PLAYER_SEI_PAYLOAD_CONTENT | Sei message key for payload content.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_SEI_PAYLOAD_CONTENT--><!--Device-const char *OH_PLAYER_SEI_PAYLOAD_CONTENT-End--> |
+| const char *OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | Pointer to the key for indicating the enable state of the super resolution feature. The value type is int32_t. The value **1** indicates that the feature is enabled, and **0** indicates the opposite. It is used for information callback when the super resolution state changes.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE--><!--Device-const char *OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE-End--> |
+| const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX | Pointer to the key for indicating the track index in the track change information. The value type is int32_t.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX--><!--Device-const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX-End--> |
+| const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED | Pointer to the key for indicating whether the track is selected in the track change information. The value type is int32_t.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED--><!--Device-const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED-End--> |
+| const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION | Pointer to the key for indicating the duration in the subtitle update information. The value type is int32_t.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION--><!--Device-const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION-End--> |
+| const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME | Pointer to the key for indicating the start time in the subtitle update information. The value type is int32_t.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME--><!--Device-const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME-End--> |
+| const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT | Pointer to the key for indicating the subtitle text content in the subtitle update information. The value type is string.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT--><!--Device-const char *OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT-End--> |
+| const char *OH_PLAYER_PLAYBACK_RATE | Pointer to the key for obtaining the playback rate. The value is a floating-point number.<br>**Since**: 20<br><!--Device-const char *OH_PLAYER_PLAYBACK_RATE--><!--Device-const char *OH_PLAYER_PLAYBACK_RATE-End--> |
+| const char *OH_PLAYER_MD_KEY_HAS_VIDEO | Pointer to the key for obtaining whether the media resource contains video tracks. The value is of the int32_t type. The value **1** means that the media resource contains video tracks, and the value **0** means the opposite.<br>**Since**: 22<br><!--Device-const char *OH_PLAYER_MD_KEY_HAS_VIDEO--><!--Device-const char *OH_PLAYER_MD_KEY_HAS_VIDEO-End--> |
+| const char *OH_PLAYER_MD_KEY_HAS_AUDIO | Pointer to the key for obtaining whether the media resource contains audio tracks. The value is of the int32_t type. The value **1** means that the media resource contains audio tracks, and the value **0** means the opposite.<br>**Since**: 22<br><!--Device-const char *OH_PLAYER_MD_KEY_HAS_AUDIO--><!--Device-const char *OH_PLAYER_MD_KEY_HAS_AUDIO-End--> |
+| const char *OH_PLAYER_MD_KEY_HAS_SUBTITLE | Pointer to the key for obtaining whether the media resource contains subtitle tracks. The value is of the int32_t type. The value **1** means that the media resource contains subtitle tracks, and the value **0** means the opposite.<br>**Since**: 22<br><!--Device-const char *OH_PLAYER_MD_KEY_HAS_SUBTITLE--><!--Device-const char *OH_PLAYER_MD_KEY_HAS_SUBTITLE-End--> |
+| const char *OH_PLAYER_MD_KEY_TRACK_INDEX | Pointer to the key for obtaining the track index information of a media resource. The value is of the int32_t type.<br>**Since**: 22<br><!--Device-const char *OH_PLAYER_MD_KEY_TRACK_INDEX--><!--Device-const char *OH_PLAYER_MD_KEY_TRACK_INDEX-End--> |
+| const char *OH_MEDIA_EVENT_INFO_PREPARE_DURATION | Pointer to the key for obtaining the preparation duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_PREPARE_DURATION--><!--Device-const char *OH_MEDIA_EVENT_INFO_PREPARE_DURATION-End--> |
+| const char *OH_MEDIA_EVENT_INFO_RESOURCE_CONNECTION_DURATION | Pointer to the key for obtaining the resource connection duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_RESOURCE_CONNECTION_DURATION--><!--Device-const char *OH_MEDIA_EVENT_INFO_RESOURCE_CONNECTION_DURATION-End--> |
+| const char *OH_MEDIA_EVENT_INFO_FIRST_FRAME_DECAPSULATION_DURATION | Pointer to the key for obtaining the first-frame decapsulation duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_FIRST_FRAME_DECAPSULATION_DURATION--><!--Device-const char *OH_MEDIA_EVENT_INFO_FIRST_FRAME_DECAPSULATION_DURATION-End--> |
+| const char *OH_MEDIA_EVENT_INFO_TOTAL_PLAYING_TIME | Pointer to the key for obtaining the total playback duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_TOTAL_PLAYING_TIME--><!--Device-const char *OH_MEDIA_EVENT_INFO_TOTAL_PLAYING_TIME-End--> |
+| const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_REQUEST_COUNT | Pointer to the key for obtaining the total number of media resource loading requests in the statistic metric information. The value type is uint32_t.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_REQUEST_COUNT--><!--Device-const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_REQUEST_COUNT-End--> |
+| const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_TIME | Pointer to the key for obtaining the total media resource loading duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_TIME--><!--Device-const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_TIME-End--> |
+| const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE | Pointer to the key for obtaining the total size of loaded media resources in the statistic metric information. The value type is int64_t.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE--><!--Device-const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE-End--> |
+| const char *OH_MEDIA_EVENT_INFO_STALLING_COUNT | Pointer to the key for obtaining the total number of stalling times in the statistic metric information. The value type is uint32_t.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_STALLING_COUNT--><!--Device-const char *OH_MEDIA_EVENT_INFO_STALLING_COUNT-End--> |
+| const char *OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME | Pointer to the key for obtaining the total stalling duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23<br><!--Device-const char *OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME--><!--Device-const char *OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME-End--> |
+| const char *OH_PLAYER_SERVER_IP_ADDRESS | Playback info key for server ip address.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_SERVER_IP_ADDRESS--><!--Device-const char *OH_PLAYER_SERVER_IP_ADDRESS-End--> |
+| const char *OH_PLAYER_IS_DOWNLOADING | Playback info key for downloading state.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_IS_DOWNLOADING--><!--Device-const char *OH_PLAYER_IS_DOWNLOADING-End--> |
+| const char *OH_PLAYER_BUFFER_DURATION | Playback info key for buffer duration.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_BUFFER_DURATION--><!--Device-const char *OH_PLAYER_BUFFER_DURATION-End--> |
+| const char *OH_PLAYER_DOWNLOAD_RATE | Playback info key for download rate.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_DOWNLOAD_RATE--><!--Device-const char *OH_PLAYER_DOWNLOAD_RATE-End--> |
+| const char *OH_PLAYER_AVG_DOWNLOAD_RATE | Playback info key for average download rate.<br>**Since**: 23<br><!--Device-const char *OH_PLAYER_AVG_DOWNLOAD_RATE--><!--Device-const char *OH_PLAYER_AVG_DOWNLOAD_RATE-End--> |
 
 ## Enum type description
 
@@ -109,21 +109,21 @@ enum AVPlayerState
 
 Enumerates the AVPlayer states.
 
-<!--Device-AVPlayerState--><!--Device-AVPlayerState-End-->
+<!--Device-enum AVPlayerState--><!--Device-enum AVPlayerState-End-->
 
 **Since**: 11
 
 | Enum item | Description |
 | -- | -- |
-| AV_IDLE = 0 | idle states |
-| AV_INITIALIZED = 1 | initialized states |
-| AV_PREPARED = 2 | prepared states |
-| AV_PLAYING = 3 | playing states |
-| AV_PAUSED = 4 | paused states |
-| AV_STOPPED = 5 | stopped states |
-| AV_COMPLETED = 6 | Play to the end states |
-| AV_RELEASED = 7 | released states |
-| AV_ERROR = 8 | error states |
+| AV_IDLE = 0 | idle states<br><!--Device-AV_IDLE = 0--><!--Device-AV_IDLE = 0-End--> |
+| AV_INITIALIZED = 1 | initialized states<br><!--Device-AV_INITIALIZED = 1--><!--Device-AV_INITIALIZED = 1-End--> |
+| AV_PREPARED = 2 | prepared states<br><!--Device-AV_PREPARED = 2--><!--Device-AV_PREPARED = 2-End--> |
+| AV_PLAYING = 3 | playing states<br><!--Device-AV_PLAYING = 3--><!--Device-AV_PLAYING = 3-End--> |
+| AV_PAUSED = 4 | paused states<br><!--Device-AV_PAUSED = 4--><!--Device-AV_PAUSED = 4-End--> |
+| AV_STOPPED = 5 | stopped states<br><!--Device-AV_STOPPED = 5--><!--Device-AV_STOPPED = 5-End--> |
+| AV_COMPLETED = 6 | Play to the end states<br><!--Device-AV_COMPLETED = 6--><!--Device-AV_COMPLETED = 6-End--> |
+| AV_RELEASED = 7 | released states<br><!--Device-AV_RELEASED = 7--><!--Device-AV_RELEASED = 7-End--> |
+| AV_ERROR = 8 | error states<br><!--Device-AV_ERROR = 8--><!--Device-AV_ERROR = 8-End--> |
 
 ### AVPlayerSeekMode
 
@@ -135,16 +135,16 @@ enum AVPlayerSeekMode
 
 Enumerates the seek modes.
 
-<!--Device-AVPlayerSeekMode--><!--Device-AVPlayerSeekMode-End-->
+<!--Device-enum AVPlayerSeekMode--><!--Device-enum AVPlayerSeekMode-End-->
 
 **Since**: 11
 
 | Enum item | Description |
 | -- | -- |
-| AV_SEEK_NEXT_SYNC = 0 | sync to keyframes after the time point. |
-| AV_SEEK_PREVIOUS_SYNC | sync to keyframes before the time point. |
-| AV_SEEK_CLOSEST = 2 | Seeks to the frame closest to the specified position.<br>**Since**: 12 |
-| AV_SEEK_CONTINUOUS = 3 | Seeks in continuous drag mode. This mode provides a smoother drag experience, but the device must support continuous seeking for the current stream. Before using this mode, check whether continuous seeking is supported. For details, see [OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported).<br>**Since**: 23 |
+| AV_SEEK_NEXT_SYNC = 0 | sync to keyframes after the time point.<br><!--Device-AV_SEEK_NEXT_SYNC = 0--><!--Device-AV_SEEK_NEXT_SYNC = 0-End--> |
+| AV_SEEK_PREVIOUS_SYNC | sync to keyframes before the time point.<br><!--Device-AV_SEEK_PREVIOUS_SYNC--><!--Device-AV_SEEK_PREVIOUS_SYNC-End--> |
+| AV_SEEK_CLOSEST = 2 | Seeks to the frame closest to the specified position.<br>**Since**: 12<br><!--Device-AV_SEEK_CLOSEST = 2--><!--Device-AV_SEEK_CLOSEST = 2-End--> |
+| AV_SEEK_CONTINUOUS = 3 | Seeks in continuous drag mode. This mode provides a smoother drag experience, but the device must support continuous seeking for the current stream. Before using this mode, check whether continuous seeking is supported. For details, see [OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported).<br>**Since**: 23<br><!--Device-AV_SEEK_CONTINUOUS = 3--><!--Device-AV_SEEK_CONTINUOUS = 3-End--> |
 
 ### AVPlaybackSpeed
 
@@ -156,22 +156,22 @@ enum AVPlaybackSpeed
 
 Enumerates the playback speeds of the AVPlayer.
 
-<!--Device-AVPlaybackSpeed--><!--Device-AVPlaybackSpeed-End-->
+<!--Device-enum AVPlaybackSpeed--><!--Device-enum AVPlaybackSpeed-End-->
 
 **Since**: 11
 
 | Enum item | Description |
 | -- | -- |
-| AV_SPEED_FORWARD_0_75_X | Video playback at 0.75x normal speed |
-| AV_SPEED_FORWARD_1_00_X | Video playback at normal speed |
-| AV_SPEED_FORWARD_1_25_X | Video playback at 1.25x normal speed |
-| AV_SPEED_FORWARD_1_75_X | Video playback at 1.75x normal speed |
-| AV_SPEED_FORWARD_2_00_X | Video playback at 2.0x normal speed |
-| AV_SPEED_FORWARD_0_50_X | Plays the video at 0.5 times the normal speed.<br>**Since**: 12 |
-| AV_SPEED_FORWARD_1_50_X | Plays the video at 1.5 times the normal speed.<br>**Since**: 12 |
-| AV_SPEED_FORWARD_3_00_X | Plays the video at 3.0 times the normal speed.<br>**Since**: 13 |
-| AV_SPEED_FORWARD_0_25_X | Plays the video at 0.25 times the normal speed.<br>**Since**: 13 |
-| AV_SPEED_FORWARD_0_125_X | Plays the video at 0.125 times the normal speed.<br>**Since**: 13 |
+| AV_SPEED_FORWARD_0_75_X | Video playback at 0.75x normal speed<br><!--Device-AV_SPEED_FORWARD_0_75_X--><!--Device-AV_SPEED_FORWARD_0_75_X-End--> |
+| AV_SPEED_FORWARD_1_00_X | Video playback at normal speed<br><!--Device-AV_SPEED_FORWARD_1_00_X--><!--Device-AV_SPEED_FORWARD_1_00_X-End--> |
+| AV_SPEED_FORWARD_1_25_X | Video playback at 1.25x normal speed<br><!--Device-AV_SPEED_FORWARD_1_25_X--><!--Device-AV_SPEED_FORWARD_1_25_X-End--> |
+| AV_SPEED_FORWARD_1_75_X | Video playback at 1.75x normal speed<br><!--Device-AV_SPEED_FORWARD_1_75_X--><!--Device-AV_SPEED_FORWARD_1_75_X-End--> |
+| AV_SPEED_FORWARD_2_00_X | Video playback at 2.0x normal speed<br><!--Device-AV_SPEED_FORWARD_2_00_X--><!--Device-AV_SPEED_FORWARD_2_00_X-End--> |
+| AV_SPEED_FORWARD_0_50_X | Plays the video at 0.5 times the normal speed.<br>**Since**: 12<br><!--Device-AV_SPEED_FORWARD_0_50_X--><!--Device-AV_SPEED_FORWARD_0_50_X-End--> |
+| AV_SPEED_FORWARD_1_50_X | Plays the video at 1.5 times the normal speed.<br>**Since**: 12<br><!--Device-AV_SPEED_FORWARD_1_50_X--><!--Device-AV_SPEED_FORWARD_1_50_X-End--> |
+| AV_SPEED_FORWARD_3_00_X | Plays the video at 3.0 times the normal speed.<br>**Since**: 13<br><!--Device-AV_SPEED_FORWARD_3_00_X--><!--Device-AV_SPEED_FORWARD_3_00_X-End--> |
+| AV_SPEED_FORWARD_0_25_X | Plays the video at 0.25 times the normal speed.<br>**Since**: 13<br><!--Device-AV_SPEED_FORWARD_0_25_X--><!--Device-AV_SPEED_FORWARD_0_25_X-End--> |
+| AV_SPEED_FORWARD_0_125_X | Plays the video at 0.125 times the normal speed.<br>**Since**: 13<br><!--Device-AV_SPEED_FORWARD_0_125_X--><!--Device-AV_SPEED_FORWARD_0_125_X-End--> |
 
 ### AVPlayerOnInfoType
 
@@ -183,32 +183,32 @@ enum AVPlayerOnInfoType
 
 Enumerates the types of messages received by the AVPlayer. The enum can be used in **OH_AVPlayerOnInfoCallback** and **OH_AVPlayerOnInfo** (deprecated) to indicate the type of information received by the AVPlayer. Starting from API version 12, you are advised to use [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) instead. Different information (**infoBody**) can be obtained for different **OnInfo** types. **infoBody** contains the key-value pairs. For details, see the following enumerated value table. If you are using API version 11 for development, use **OH_AVPlayerOnInfo (deprecated)**. For details about the mappings used in this deprecated API, see [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo).
 
-<!--Device-AVPlayerOnInfoType--><!--Device-AVPlayerOnInfoType-End-->
+<!--Device-enum AVPlayerOnInfoType--><!--Device-enum AVPlayerOnInfoType-End-->
 
 **Since**: 11
 
 | Enum item | Description |
 | -- | -- |
-| AV_INFO_TYPE_SEEKDONE = 0 | return the message when seeking done. |
-| AV_INFO_TYPE_SPEEDDONE = 1 | return the message when speeding done. |
-| AV_INFO_TYPE_BITRATEDONE = 2 | return the message when select bitrate done |
-| AV_INFO_TYPE_EOS = 3 | return the message when playback is end of steam. |
-| AV_INFO_TYPE_STATE_CHANGE = 4 | return the message when PlayerStates changed. |
-| AV_INFO_TYPE_POSITION_UPDATE = 5 | return the current posion of playback automatically. |
-| AV_INFO_TYPE_MESSAGE = 6 | return the playback message. |
-| AV_INFO_TYPE_VOLUME_CHANGE = 7 | return the message when volume changed. |
-| AV_INFO_TYPE_RESOLUTION_CHANGE = 8 | return the message when video size is first known or updated. |
-| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | return multiqueue buffering time. |
-| AV_INFO_TYPE_BITRATE_COLLECT = 10 | return hls bitrate. Bitrate is to convert data into uint8_t array storage, which needs to be forcibly converted to uint32_t through offset access. |
-| AV_INFO_TYPE_INTERRUPT_EVENT = 11 | return the message when audio focus changed. |
-| AV_INFO_TYPE_DURATION_UPDATE = 12 | return the duration of playback. |
-| AV_INFO_TYPE_IS_LIVE_STREAM = 13 | return the playback is live stream. |
-| AV_INFO_TYPE_TRACKCHANGE = 14 | return the message when track changes. |
-| AV_INFO_TYPE_TRACK_INFO_UPDATE = 15 | return the message when subtitle track info updated. |
-| AV_INFO_TYPE_SUBTITLE_UPDATE = 16 | return the subtitle of playback. |
-| AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE = 17 | Message returned when the audio output device changes.<br> If **key** is set to **<br>OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON**, the value type is int32_t. The system uses int32_t to transfer the value, and the application uses int32_t to obtain the value. |
-| AV_INFO_TYPE_PLAYBACK_RATE_DONE = 18 | Message returned when the playback rate is applied. If **key** is set to **OH_PLAYER_PLAYBACK_RATE**, the value type is float. The system uses float to transfer the value, and the application uses float to obtain the value.<br>**Since**: 20 |
-| AV_INFO_TYPE_SUPER_RESOLUTION_CHANGED = 19 | Message returned when the super resolution changes.<br>**Since**: 23 |
+| AV_INFO_TYPE_SEEKDONE = 0 | return the message when seeking done.<br><!--Device-AV_INFO_TYPE_SEEKDONE = 0--><!--Device-AV_INFO_TYPE_SEEKDONE = 0-End--> |
+| AV_INFO_TYPE_SPEEDDONE = 1 | return the message when speeding done.<br><!--Device-AV_INFO_TYPE_SPEEDDONE = 1--><!--Device-AV_INFO_TYPE_SPEEDDONE = 1-End--> |
+| AV_INFO_TYPE_BITRATEDONE = 2 | return the message when select bitrate done<br><!--Device-AV_INFO_TYPE_BITRATEDONE = 2--><!--Device-AV_INFO_TYPE_BITRATEDONE = 2-End--> |
+| AV_INFO_TYPE_EOS = 3 | return the message when playback is end of steam.<br><!--Device-AV_INFO_TYPE_EOS = 3--><!--Device-AV_INFO_TYPE_EOS = 3-End--> |
+| AV_INFO_TYPE_STATE_CHANGE = 4 | return the message when PlayerStates changed.<br><!--Device-AV_INFO_TYPE_STATE_CHANGE = 4--><!--Device-AV_INFO_TYPE_STATE_CHANGE = 4-End--> |
+| AV_INFO_TYPE_POSITION_UPDATE = 5 | return the current posion of playback automatically.<br><!--Device-AV_INFO_TYPE_POSITION_UPDATE = 5--><!--Device-AV_INFO_TYPE_POSITION_UPDATE = 5-End--> |
+| AV_INFO_TYPE_MESSAGE = 6 | return the playback message.<br><!--Device-AV_INFO_TYPE_MESSAGE = 6--><!--Device-AV_INFO_TYPE_MESSAGE = 6-End--> |
+| AV_INFO_TYPE_VOLUME_CHANGE = 7 | return the message when volume changed.<br><!--Device-AV_INFO_TYPE_VOLUME_CHANGE = 7--><!--Device-AV_INFO_TYPE_VOLUME_CHANGE = 7-End--> |
+| AV_INFO_TYPE_RESOLUTION_CHANGE = 8 | return the message when video size is first known or updated.<br><!--Device-AV_INFO_TYPE_RESOLUTION_CHANGE = 8--><!--Device-AV_INFO_TYPE_RESOLUTION_CHANGE = 8-End--> |
+| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | return multiqueue buffering time.<br><!--Device-AV_INFO_TYPE_BUFFERING_UPDATE = 9--><!--Device-AV_INFO_TYPE_BUFFERING_UPDATE = 9-End--> |
+| AV_INFO_TYPE_BITRATE_COLLECT = 10 | return hls bitrate. Bitrate is to convert data into uint8_t array storage, which needs to be forcibly converted to uint32_t through offset access.<br><!--Device-AV_INFO_TYPE_BITRATE_COLLECT = 10--><!--Device-AV_INFO_TYPE_BITRATE_COLLECT = 10-End--> |
+| AV_INFO_TYPE_INTERRUPT_EVENT = 11 | return the message when audio focus changed.<br><!--Device-AV_INFO_TYPE_INTERRUPT_EVENT = 11--><!--Device-AV_INFO_TYPE_INTERRUPT_EVENT = 11-End--> |
+| AV_INFO_TYPE_DURATION_UPDATE = 12 | return the duration of playback.<br><!--Device-AV_INFO_TYPE_DURATION_UPDATE = 12--><!--Device-AV_INFO_TYPE_DURATION_UPDATE = 12-End--> |
+| AV_INFO_TYPE_IS_LIVE_STREAM = 13 | return the playback is live stream.<br><!--Device-AV_INFO_TYPE_IS_LIVE_STREAM = 13--><!--Device-AV_INFO_TYPE_IS_LIVE_STREAM = 13-End--> |
+| AV_INFO_TYPE_TRACKCHANGE = 14 | return the message when track changes.<br><!--Device-AV_INFO_TYPE_TRACKCHANGE = 14--><!--Device-AV_INFO_TYPE_TRACKCHANGE = 14-End--> |
+| AV_INFO_TYPE_TRACK_INFO_UPDATE = 15 | return the message when subtitle track info updated.<br><!--Device-AV_INFO_TYPE_TRACK_INFO_UPDATE = 15--><!--Device-AV_INFO_TYPE_TRACK_INFO_UPDATE = 15-End--> |
+| AV_INFO_TYPE_SUBTITLE_UPDATE = 16 | return the subtitle of playback.<br><!--Device-AV_INFO_TYPE_SUBTITLE_UPDATE = 16--><!--Device-AV_INFO_TYPE_SUBTITLE_UPDATE = 16-End--> |
+| AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE = 17 | Message returned when the audio output device changes.<br> If **key** is set to ** OH_PLAYER_AUDIO_DEVICE_CHANGE_REASON**, the value type is int32_t. The system uses int32_t to transfer the value, and the application uses int32_t to obtain the value.<br><!--Device-AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE = 17--><!--Device-AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE = 17-End--> |
+| AV_INFO_TYPE_PLAYBACK_RATE_DONE = 18 | Message returned when the playback rate is applied. If **key** is set to **OH_PLAYER_PLAYBACK_RATE**, the value type is float. The system uses float to transfer the value, and the application uses float to obtain the value.<br>**Since**: 20<br><!--Device-AV_INFO_TYPE_PLAYBACK_RATE_DONE = 18--><!--Device-AV_INFO_TYPE_PLAYBACK_RATE_DONE = 18-End--> |
+| AV_INFO_TYPE_SUPER_RESOLUTION_CHANGED = 19 | Message returned when the super resolution changes.<br>**Since**: 23<br><!--Device-AV_INFO_TYPE_SUPER_RESOLUTION_CHANGED = 19--><!--Device-AV_INFO_TYPE_SUPER_RESOLUTION_CHANGED = 19-End--> |
 
 ### AVPlayerBufferingType
 
@@ -220,16 +220,16 @@ enum AVPlayerBufferingType
 
 Enumerates the types of buffer messages of the AVPlayer.
 
-<!--Device-AVPlayerBufferingType--><!--Device-AVPlayerBufferingType-End-->
+<!--Device-enum AVPlayerBufferingType--><!--Device-enum AVPlayerBufferingType-End-->
 
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| AVPLAYER_BUFFERING_START = 1 | Buffering start message. |
-| AVPLAYER_BUFFERING_END | Buffering end message. |
-| AVPLAYER_BUFFERING_PERCENT | Buffer execution progress, in percentage. The value is an integer in the range [0, 100]. |
-| AVPLAYER_BUFFERING_CACHED_DURATION | Duration that cached data can be played, in milliseconds. |
+| AVPLAYER_BUFFERING_START = 1 | Buffering start message.<br><!--Device-AVPLAYER_BUFFERING_START = 1--><!--Device-AVPLAYER_BUFFERING_START = 1-End--> |
+| AVPLAYER_BUFFERING_END | Buffering end message.<br><!--Device-AVPLAYER_BUFFERING_END--><!--Device-AVPLAYER_BUFFERING_END-End--> |
+| AVPLAYER_BUFFERING_PERCENT | Buffer execution progress, in percentage. The value is an integer in the range [0, 100].<br><!--Device-AVPLAYER_BUFFERING_PERCENT--><!--Device-AVPLAYER_BUFFERING_PERCENT-End--> |
+| AVPLAYER_BUFFERING_CACHED_DURATION | Duration that cached data can be played, in milliseconds.<br><!--Device-AVPLAYER_BUFFERING_CACHED_DURATION--><!--Device-AVPLAYER_BUFFERING_CACHED_DURATION-End--> |
 
 ### AVPlayerTrackSwitchMode
 
@@ -241,15 +241,15 @@ enum AVPlayerTrackSwitchMode
 
 Enumerates the track switching modes.
 
-<!--Device-AVPlayerTrackSwitchMode--><!--Device-AVPlayerTrackSwitchMode-End-->
+<!--Device-enum AVPlayerTrackSwitchMode--><!--Device-enum AVPlayerTrackSwitchMode-End-->
 
 **Since**: 23
 
 | Enum item | Description |
 | -- | -- |
-| AV_TRACK_SWITCH_MODE_SMOOTH = 0 | Switch tracks smoothly. |
-| AV_TRACK_SWITCH_MODE_SEGMENT = 1 | Switch tracks by segment. |
-| AV_TRACK_SWITCH_MODE_CLOSEST = 2 | Switch to the closest track. |
+| AV_TRACK_SWITCH_MODE_SMOOTH = 0 | Switch tracks smoothly.<br><!--Device-AV_TRACK_SWITCH_MODE_SMOOTH = 0--><!--Device-AV_TRACK_SWITCH_MODE_SMOOTH = 0-End--> |
+| AV_TRACK_SWITCH_MODE_SEGMENT = 1 | Switch tracks by segment.<br><!--Device-AV_TRACK_SWITCH_MODE_SEGMENT = 1--><!--Device-AV_TRACK_SWITCH_MODE_SEGMENT = 1-End--> |
+| AV_TRACK_SWITCH_MODE_CLOSEST = 2 | Switch to the closest track.<br><!--Device-AV_TRACK_SWITCH_MODE_CLOSEST = 2--><!--Device-AV_TRACK_SWITCH_MODE_CLOSEST = 2-End--> |
 
 ### OH_VideoOutputResult
 
@@ -261,14 +261,14 @@ enum OH_VideoOutputResult
 
 Result of Video output.
 
-<!--Device-OH_VideoOutputResult--><!--Device-OH_VideoOutputResult-End-->
+<!--Device-enum OH_VideoOutputResult--><!--Device-enum OH_VideoOutputResult-End-->
 
 **Since**: 26.0.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_VIDEO_OUTPUT_OK = 0 | Output one decoded video frame.<br>**Since**: 26.0.0 |
-| OH_VIDEO_OUTPUT_NO_IMAGE = 1 | No frame ready to render.<br>**Since**: 26.0.0 |
+| OH_VIDEO_OUTPUT_OK = 0 | Output one decoded video frame.<br>**Since**: 26.0.0<br><!--Device-OH_VIDEO_OUTPUT_OK = 0--><!--Device-OH_VIDEO_OUTPUT_OK = 0-End--> |
+| OH_VIDEO_OUTPUT_NO_IMAGE = 1 | No frame ready to render.<br>**Since**: 26.0.0<br><!--Device-OH_VIDEO_OUTPUT_NO_IMAGE = 1--><!--Device-OH_VIDEO_OUTPUT_NO_IMAGE = 1-End--> |
 
 
 ## Function description

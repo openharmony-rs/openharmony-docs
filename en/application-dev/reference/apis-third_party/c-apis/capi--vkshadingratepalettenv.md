@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t shadingRatePaletteEntryCount |  |
-| const VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries |  |
+| uint32_t shadingRatePaletteEntryCount | <!--Device-uint32_t shadingRatePaletteEntryCount--><!--Device-uint32_t shadingRatePaletteEntryCount-End--> |
+| const VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries | <!--Device-const VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries--><!--Device-const VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries-End--> |
 
 

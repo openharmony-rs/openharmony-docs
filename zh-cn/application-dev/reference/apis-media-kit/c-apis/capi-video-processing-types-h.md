@@ -45,14 +45,14 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 表示创建颜色空间转换视频处理实例。 <br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建颜色空间转换视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode). VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>可以调用[OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported) 来检查是否支持这种处理。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | 表示创建元数据生成视频处理实例。 <br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建元数据生成视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode). VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>可以调用[OH_VideoProcessing_IsMetadataGenerationSupported](capi-video-processing-h.md#oh_videoprocessing_ismetadatagenerationsupported) 来检查是否支持这种处理。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | 表示创建细节增强视频处理实例。 <br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建细节增强视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode). VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 指定视频细节增强的质量等级，参考[VideoDetailEnhancer_QualityLevel](capi-video-processing-types-h.md#videodetailenhancer_qualitylevel)查看具体取值。 <br>调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置质量等级。 <br>调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前质量等级。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL | 指定视频元数据生成的风格模式。具体取值请参考[VideoMetadataGeneratorStyleControl](capi-video-processing-types-h.md#videometadatageneratorstylecontrol)。 <br>调用[OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue)设置视频元数据生成的风格模式到AVFormat参数。 <br>调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置当前视频元数据生成的风格模式。 <br>调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前视频元数据生成的风格模式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR | Used to define video aisr autoeffect in XComponent.<br> Use [OH_VideoProcessing_IsAutoEffectSupported](capi-video-processing-h.md#oh_videoprocessing_isautoeffectsupported) to query if aisr autoeffect is supported.<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_AUTOEFFECT_ENABLE | Sets the key value for enabling or disabling AutoEffect.<br> Use [OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the enable value (0 is false, 1 is true) to the AVFormat parameter. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters to the video processing instance.<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_AUTOEFFECT_AISR_STRENGTH | Sets the AISR strength.<br> Use [OH_AVFormat_SetFloatValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setfloatvalue) to set the strength value to the AVFormat parameter. When the value is in the range [0.0, 1.0], the larger the value, the better the image quality, If this parameter is set to a value less than 0, the image quality enhancement is adaptive. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters of the video processing instance.<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 表示创建颜色空间转换视频处理实例。 <br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建颜色空间转换视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode). VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>可以调用[OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported) 来检查是否支持这种处理。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION-End--> |
+| const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | 表示创建元数据生成视频处理实例。 <br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建元数据生成视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode). VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>可以调用[OH_VideoProcessing_IsMetadataGenerationSupported](capi-video-processing-h.md#oh_videoprocessing_ismetadatagenerationsupported) 来检查是否支持这种处理。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION-End--> |
+| const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | 表示创建细节增强视频处理实例。 <br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建细节增强视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode). VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER-End--> |
+| const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 指定视频细节增强的质量等级，参考[VideoDetailEnhancer_QualityLevel](capi-video-processing-types-h.md#videodetailenhancer_qualitylevel)查看具体取值。 <br>调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置质量等级。 <br>调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前质量等级。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL--><!--Device-const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL-End--> |
+| const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL | 指定视频元数据生成的风格模式。具体取值请参考[VideoMetadataGeneratorStyleControl](capi-video-processing-types-h.md#videometadatageneratorstylecontrol)。 <br>调用[OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue)设置视频元数据生成的风格模式到AVFormat参数。 <br>调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置当前视频元数据生成的风格模式。 <br>调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前视频元数据生成的风格模式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL--><!--Device-const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL-End--> |
+| const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR | Used to define video aisr autoeffect in XComponent.<br> Use [OH_VideoProcessing_IsAutoEffectSupported](capi-video-processing-h.md#oh_videoprocessing_isautoeffectsupported) to query if aisr autoeffect is supported.<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR-End--> |
+| const char *VIDEO_AUTOEFFECT_ENABLE | Sets the key value for enabling or disabling AutoEffect.<br> Use [OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the enable value (0 is false, 1 is true) to the AVFormat parameter. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters to the video processing instance.<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_AUTOEFFECT_ENABLE--><!--Device-const char *VIDEO_AUTOEFFECT_ENABLE-End--> |
+| const char *VIDEO_AUTOEFFECT_AISR_STRENGTH | Sets the AISR strength.<br> Use [OH_AVFormat_SetFloatValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setfloatvalue) to set the strength value to the AVFormat parameter. When the value is in the range [0.0, 1.0], the larger the value, the better the image quality, If this parameter is set to a value less than 0, the image quality enhancement is adaptive. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters of the video processing instance.<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_AUTOEFFECT_AISR_STRENGTH--><!--Device-const char *VIDEO_AUTOEFFECT_AISR_STRENGTH-End--> |
 
 ## 枚举类型说明
 
@@ -66,7 +66,7 @@ enum VideoDetailEnhancer_QualityLevel
 
 用于细节增强的质量等级。参数[VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#变量)的具体取值，设置方法详见开发指南。
 
-<!--Device-VideoDetailEnhancer_QualityLevel--><!--Device-VideoDetailEnhancer_QualityLevel-End-->
+<!--Device-enum VideoDetailEnhancer_QualityLevel--><!--Device-enum VideoDetailEnhancer_QualityLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -74,10 +74,10 @@ enum VideoDetailEnhancer_QualityLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | 无细节增强。 |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | 低质量等级细节增强，速度较快，默认设置。 |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | 中等质量等级细节增强，速度适中。 |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 高质量等级细节增强，速度相对较慢。 |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | 无细节增强。<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE-End--> |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | 低质量等级细节增强，速度较快，默认设置。<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW-End--> |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | 中等质量等级细节增强，速度适中。<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM-End--> |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 高质量等级细节增强，速度相对较慢。<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH-End--> |
 
 **参考：**
 
@@ -94,7 +94,7 @@ enum VideoMetadataGeneratorStyleControl
 
 视频元数据生成的风格模式。参数的具体取值请参考[VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#变量)。
 
-<!--Device-VideoMetadataGeneratorStyleControl--><!--Device-VideoMetadataGeneratorStyleControl-End-->
+<!--Device-enum VideoMetadataGeneratorStyleControl--><!--Device-enum VideoMetadataGeneratorStyleControl-End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -102,8 +102,8 @@ enum VideoMetadataGeneratorStyleControl
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0 | 对比度优先模式。 |
-| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1 | 亮度优先模式。 |
+| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0 | 对比度优先模式。<br><!--Device-VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0--><!--Device-VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0-End--> |
+| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1 | 亮度优先模式。<br><!--Device-VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1--><!--Device-VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1-End--> |
 
 **参考：**
 
@@ -120,7 +120,7 @@ enum VideoProcessing_ErrorCode
 
 视频处理错误码。
 
-<!--Device-VideoProcessing_ErrorCode--><!--Device-VideoProcessing_ErrorCode-End-->
+<!--Device-enum VideoProcessing_ErrorCode--><!--Device-enum VideoProcessing_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -128,17 +128,17 @@ enum VideoProcessing_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PROCESSING_SUCCESS | &nbsp;处理成功。 |
-| VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;输入参数无效。以下情况都会返回该错误码： <br>1. 无效的输入或输出视频buffer，视频buffer为空。 <br>2. 无效的参数，参数为空。 <br>3. 无效的处理类型。 |
-| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | &nbsp;未知错误，比如GPU计算失败或memcpy失败。 |
-| VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;视频处理全局环境初始化失败，比如初始化GPU环境失败。 请检查设备是否支持GPU加速，或尝试重启应用后重试。 |
-| VIDEO_PROCESSING_ERROR_CREATE_FAILED | &nbsp;创建视频处理实例失败，比如实例总数超出上限。可调用[OH_VideoProcessing_Destroy](capi-video-processing-h.md#oh_videoprocessing_destroy)释放不再使用的实例后重试。 |
-| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;处理过程失败，比如处理时间超时。 |
-| VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;不支持的处理类型，比如试图创建不支持的视频处理实例。 目前可对两种视频处理功能检查支持情况：[OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported), [OH_VideoProcessing_IsMetadataGenerationSupported](capi-video-processing-h.md#oh_videoprocessing_ismetadatagenerationsupported)。 |
-| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;不允许的操作，比如不满足调用接口所需的运行状态下调用该接口。 |
-| VIDEO_PROCESSING_ERROR_NO_MEMORY | &nbsp;内存不足。请释放不再使用的资源后重试，或减少视频处理的分辨率。 |
-| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;视频处理实例无效，比如视频处理实例为空实例。 |
-| VIDEO_PROCESSING_ERROR_INVALID_VALUE | &nbsp;输入值无效，以下情况都会造成这种错误： <br>1. 视频buffer宽高太大或者颜色空间错误。 <br>2. 参数包含无效的值，比如细节增强的质量等级错误。 |
+| VIDEO_PROCESSING_SUCCESS | &nbsp;处理成功。<br><!--Device-VIDEO_PROCESSING_SUCCESS--><!--Device-VIDEO_PROCESSING_SUCCESS-End--> |
+| VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;输入参数无效。以下情况都会返回该错误码： <br>1. 无效的输入或输出视频buffer，视频buffer为空。 <br>2. 无效的参数，参数为空。 <br>3. 无效的处理类型。<br><!--Device-VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401--><!--Device-VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401-End--> |
+| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | &nbsp;未知错误，比如GPU计算失败或memcpy失败。<br><!--Device-VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001--><!--Device-VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001-End--> |
+| VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;视频处理全局环境初始化失败，比如初始化GPU环境失败。 请检查设备是否支持GPU加速，或尝试重启应用后重试。<br><!--Device-VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED--><!--Device-VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED-End--> |
+| VIDEO_PROCESSING_ERROR_CREATE_FAILED | &nbsp;创建视频处理实例失败，比如实例总数超出上限。可调用[OH_VideoProcessing_Destroy](capi-video-processing-h.md#oh_videoprocessing_destroy)释放不再使用的实例后重试。<br><!--Device-VIDEO_PROCESSING_ERROR_CREATE_FAILED--><!--Device-VIDEO_PROCESSING_ERROR_CREATE_FAILED-End--> |
+| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;处理过程失败，比如处理时间超时。<br><!--Device-VIDEO_PROCESSING_ERROR_PROCESS_FAILED--><!--Device-VIDEO_PROCESSING_ERROR_PROCESS_FAILED-End--> |
+| VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;不支持的处理类型，比如试图创建不支持的视频处理实例。 目前可对两种视频处理功能检查支持情况：[OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported), [OH_VideoProcessing_IsMetadataGenerationSupported](capi-video-processing-h.md#oh_videoprocessing_ismetadatagenerationsupported)。<br><!--Device-VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING--><!--Device-VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING-End--> |
+| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;不允许的操作，比如不满足调用接口所需的运行状态下调用该接口。<br><!--Device-VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED--><!--Device-VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED-End--> |
+| VIDEO_PROCESSING_ERROR_NO_MEMORY | &nbsp;内存不足。请释放不再使用的资源后重试，或减少视频处理的分辨率。<br><!--Device-VIDEO_PROCESSING_ERROR_NO_MEMORY--><!--Device-VIDEO_PROCESSING_ERROR_NO_MEMORY-End--> |
+| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;视频处理实例无效，比如视频处理实例为空实例。<br><!--Device-VIDEO_PROCESSING_ERROR_INVALID_INSTANCE--><!--Device-VIDEO_PROCESSING_ERROR_INVALID_INSTANCE-End--> |
+| VIDEO_PROCESSING_ERROR_INVALID_VALUE | &nbsp;输入值无效，以下情况都会造成这种错误： <br>1. 视频buffer宽高太大或者颜色空间错误。 <br>2. 参数包含无效的值，比如细节增强的质量等级错误。<br><!--Device-VIDEO_PROCESSING_ERROR_INVALID_VALUE--><!--Device-VIDEO_PROCESSING_ERROR_INVALID_VALUE-End--> |
 
 ### VideoProcessing_State
 
@@ -150,7 +150,7 @@ enum VideoProcessing_State
 
 视频处理状态。视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)进行报告。
 
-<!--Device-VideoProcessing_State--><!--Device-VideoProcessing_State-End-->
+<!--Device-enum VideoProcessing_State--><!--Device-enum VideoProcessing_State-End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -158,8 +158,8 @@ enum VideoProcessing_State
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PROCESSING_STATE_RUNNING | 视频处理进行中。 |
-| VIDEO_PROCESSING_STATE_STOPPED | 视频处理已停止。 |
+| VIDEO_PROCESSING_STATE_RUNNING | 视频处理进行中。<br><!--Device-VIDEO_PROCESSING_STATE_RUNNING--><!--Device-VIDEO_PROCESSING_STATE_RUNNING-End--> |
+| VIDEO_PROCESSING_STATE_STOPPED | 视频处理已停止。<br><!--Device-VIDEO_PROCESSING_STATE_STOPPED--><!--Device-VIDEO_PROCESSING_STATE_STOPPED-End--> |
 
 
 ## 函数说明

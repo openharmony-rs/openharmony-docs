@@ -24,7 +24,7 @@ typedef struct JSVM_PropertyHandler {...} JSVM_PropertyHandler
 
 | 名称 | 描述 |
 | -- | -- |
-| JSVM_PropertyHandlerCfg propertyHandlerCfg | 访问实例对象属性触发相应的回调函数。 |
-| JSVM_Callback callAsFunctionCallback | 将实例对象作为函数调用将触发此回调。 |
+| JSVM_PropertyHandlerCfg propertyHandlerCfg | 访问实例对象属性触发相应的回调函数。<br><!--Device-JSVM_PropertyHandlerCfg propertyHandlerCfg--><!--Device-JSVM_PropertyHandlerCfg propertyHandlerCfg-End--> |
+| JSVM_Callback callAsFunctionCallback | 将实例对象作为函数调用将触发此回调。<br><!--Device-JSVM_Callback callAsFunctionCallback--><!--Device-JSVM_Callback callAsFunctionCallback-End--> |
 
 

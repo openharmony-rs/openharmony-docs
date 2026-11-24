@@ -24,7 +24,7 @@ The **Vibrator_Attribute** struct is used to describe the attributes of the vibr
 
 | Name | Description |
 | -- | -- |
-| int32_t vibratorId | Vibrator ID. Its value is obtained through the system API. This is the ID of the vibrator to be * operated. Different IDs correspond to different vibrators on the device. The value range is * [0, Maximum number of supported vibrators – 1]. |
-| [Vibrator_Usage](capi-vibrator-type-h.md#vibrator_usage) usage | Vibration scenario. This parameter specifies the application scenario of the vibrator. Different * scenarios correspond to different vibration modes. For example, notifications, buttons, and alarm clocks have * their own vibration effects. For details about the options, see the **Vibrator_Usage** enumeration. |
+| int32_t vibratorId | Vibrator ID. Its value is obtained through the system API. This is the ID of the vibrator to be operated. Different IDs correspond to different vibrators on the device. The value range is [0, Maximum number of supported vibrators – 1].<br><!--Device-int32_t vibratorId--><!--Device-int32_t vibratorId-End--> |
+| [Vibrator_Usage](capi-vibrator-type-h.md#vibrator_usage) usage | Vibration scenario. This parameter specifies the application scenario of the vibrator. Different scenarios correspond to different vibration modes. For example, notifications, buttons, and alarm clocks have their own vibration effects. For details about the options, see the **Vibrator_Usage** enumeration.<br><!--Device-Vibrator_Usage usage--><!--Device-Vibrator_Usage usage-End--> |
 
 

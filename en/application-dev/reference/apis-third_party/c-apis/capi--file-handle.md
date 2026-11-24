@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned handle_bytes |  |
-| int handle_type |  |
-| unsigned char f_handle[] |  |
+| unsigned handle_bytes | <!--Device-unsigned handle_bytes--><!--Device-unsigned handle_bytes-End--> |
+| int handle_type | <!--Device-int handle_type--><!--Device-int handle_type-End--> |
+| unsigned char f_handle[] | <!--Device-unsigned char f_handle[]--><!--Device-unsigned char f_handle[]-End--> |
 
 

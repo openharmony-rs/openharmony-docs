@@ -24,7 +24,7 @@ The struct describes a user-defined data source.
 
 | Name | Description |
 | -- | -- |
-| int64_t size | Size of the data source.<br>**Since**: 12 |
-| [OH_AVDataSourceReadAt](capi-native-avcodec-base-h.md#oh_avdatasourcereadat) readAt | Callback of the data source.<br>**Since**: 12 |
+| int64_t size | Total size of the data source, in bytes.<br>**Since**: 12<br><!--Device-int64_t size--><!--Device-int64_t size-End--> |
+| [OH_AVDataSourceReadAt](capi-native-avcodec-base-h.md#oh_avdatasourcereadat) readAt | Callback for reading data from the data source.<br>**Since**: 12<br><!--Device-OH_AVDataSourceReadAt readAt--><!--Device-OH_AVDataSourceReadAt readAt-End--> |
 
 

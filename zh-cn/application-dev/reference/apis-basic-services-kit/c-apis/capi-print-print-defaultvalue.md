@@ -24,16 +24,16 @@ typedef struct Print_DefaultValue {...} Print_DefaultValue
 
 | 名称 | 描述 |
 | -- | -- |
-| [Print_ColorMode](capi-ohprint-h.md#print_colormode) defaultColorMode | 默认色彩模式，表示打印输出的色彩方式，具体取值由打印机支持的色彩模式决定。 |
-| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) defaultDuplexMode | 默认双面模式，表示打印的单双面方式，具体取值由打印机支持的双面模式决定。 |
-| char *defaultMediaType | 默认介质类型，表示打印所使用的介质类型（如普通纸、光面纸等），具体取值由打印机支持的介质类型决定。 |
-| char *defaultPageSizeId | 默认纸张尺寸ID，表示打印所使用的纸张尺寸标识（如"A4"、"Letter"等），具体取值由打印机支持的纸张尺寸决定。 |
-| [Print_Margin](capi-print-print-margin.md) defaultMargin | 默认边距，表示打印输出页面的边距设置，具体取值由打印机支持的边距决定。 |
-| char *defaultPaperSource | 默认纸张来源，表示打印所使用的纸张来源（如自动进纸器、手动进纸等），具体取值由打印机支持的纸张来源决定。 |
-| [Print_Quality](capi-ohprint-h.md#print_quality) defaultPrintQuality | 默认打印质量，表示打印输出的质量等级设置，具体取值由打印机支持的打印质量决定。 |
-| uint32_t defaultCopies | 默认份数，取值原则：不小于1。 |
-| [Print_Resolution](capi-print-print-resolution.md) defaultResolution | 默认分辨率，表示打印输出的分辨率，具体取值由打印机支持的分辨率决定。 |
-| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) defaultOrientation | 默认打印方向，表示打印内容的方向模式（如纵向、横向等），具体取值由打印机支持的打印方向决定。 |
-| char *otherDefaultValues | JSON格式的其他默认值，用于表示未在上述成员变量中单独列出的额外打印默认属性，具体可设置的键值对由打印机支持的扩展能力决定。 |
+| [Print_ColorMode](capi-ohprint-h.md#print_colormode) defaultColorMode | 默认色彩模式，表示打印输出的色彩方式，具体取值由打印机支持的色彩模式决定。<br><!--Device-Print_ColorMode defaultColorMode--><!--Device-Print_ColorMode defaultColorMode-End--> |
+| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) defaultDuplexMode | 默认双面模式，表示打印的单双面方式，具体取值由打印机支持的双面模式决定。<br><!--Device-Print_DuplexMode defaultDuplexMode--><!--Device-Print_DuplexMode defaultDuplexMode-End--> |
+| char *defaultMediaType | 默认介质类型，表示打印所使用的介质类型（如普通纸、光面纸等），具体取值由打印机支持的介质类型决定。<br><!--Device-char *defaultMediaType--><!--Device-char *defaultMediaType-End--> |
+| char *defaultPageSizeId | 默认纸张尺寸ID，表示打印所使用的纸张尺寸标识（如"A4"、"Letter"等），具体取值由打印机支持的纸张尺寸决定。<br><!--Device-char *defaultPageSizeId--><!--Device-char *defaultPageSizeId-End--> |
+| [Print_Margin](capi-print-print-margin.md) defaultMargin | 默认边距，表示打印输出页面的边距设置，具体取值由打印机支持的边距决定。<br><!--Device-Print_Margin defaultMargin--><!--Device-Print_Margin defaultMargin-End--> |
+| char *defaultPaperSource | 默认纸张来源，表示打印所使用的纸张来源（如自动进纸器、手动进纸等），具体取值由打印机支持的纸张来源决定。<br><!--Device-char *defaultPaperSource--><!--Device-char *defaultPaperSource-End--> |
+| [Print_Quality](capi-ohprint-h.md#print_quality) defaultPrintQuality | 默认打印质量，表示打印输出的质量等级设置，具体取值由打印机支持的打印质量决定。<br><!--Device-Print_Quality defaultPrintQuality--><!--Device-Print_Quality defaultPrintQuality-End--> |
+| uint32_t defaultCopies | 默认份数，取值原则：不小于1。<br><!--Device-uint32_t defaultCopies--><!--Device-uint32_t defaultCopies-End--> |
+| [Print_Resolution](capi-print-print-resolution.md) defaultResolution | 默认分辨率，表示打印输出的分辨率，具体取值由打印机支持的分辨率决定。<br><!--Device-Print_Resolution defaultResolution--><!--Device-Print_Resolution defaultResolution-End--> |
+| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) defaultOrientation | 默认打印方向，表示打印内容的方向模式（如纵向、横向等），具体取值由打印机支持的打印方向决定。<br><!--Device-Print_OrientationMode defaultOrientation--><!--Device-Print_OrientationMode defaultOrientation-End--> |
+| char *otherDefaultValues | JSON格式的其他默认值，用于表示未在上述成员变量中单独列出的额外打印默认属性，具体可设置的键值对由打印机支持的扩展能力决定。<br><!--Device-char *otherDefaultValues--><!--Device-char *otherDefaultValues-End--> |
 
 

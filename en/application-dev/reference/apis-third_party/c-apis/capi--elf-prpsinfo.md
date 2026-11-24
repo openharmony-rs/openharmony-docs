@@ -10,15 +10,15 @@
 
 | Name | Description |
 | -- | -- |
-| char pr_state |  |
-| char pr_sname |  |
-| char pr_zomb |  |
-| char pr_nice |  |
-| unsigned long int pr_flag |  |
-| unsigned short int pr_uid |  |
-| unsigned short int pr_gid |  |
-| int pr_pid, pr_ppid, pr_pgrp, pr_sid |  |
-| char pr_fname[16] |  |
-| char pr_psargs[ELF_PRARGSZ] |  |
+| char pr_state | <!--Device-char pr_state--><!--Device-char pr_state-End--> |
+| char pr_sname | <!--Device-char pr_sname--><!--Device-char pr_sname-End--> |
+| char pr_zomb | <!--Device-char pr_zomb--><!--Device-char pr_zomb-End--> |
+| char pr_nice | <!--Device-char pr_nice--><!--Device-char pr_nice-End--> |
+| unsigned long int pr_flag | <!--Device-unsigned long int pr_flag--><!--Device-unsigned long int pr_flag-End--> |
+| unsigned short int pr_uid | <!--Device-unsigned short int pr_uid--><!--Device-unsigned short int pr_uid-End--> |
+| unsigned short int pr_gid | <!--Device-unsigned short int pr_gid--><!--Device-unsigned short int pr_gid-End--> |
+| int pr_pid, pr_ppid, pr_pgrp, pr_sid | <!--Device-int pr_pid, pr_ppid, pr_pgrp, pr_sid--><!--Device-int pr_pid, pr_ppid, pr_pgrp, pr_sid-End--> |
+| char pr_fname[16] | <!--Device-char pr_fname[16]--><!--Device-char pr_fname[16]-End--> |
+| char pr_psargs[ELF_PRARGSZ] | <!--Device-char pr_psargs[ELF_PRARGSZ]--><!--Device-char pr_psargs[ELF_PRARGSZ]-End--> |
 
 

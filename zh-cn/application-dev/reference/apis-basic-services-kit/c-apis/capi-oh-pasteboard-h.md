@@ -90,7 +90,7 @@ enum Pasteboard_NotifyType
 
 剪贴板的数据变更类型。适用于区分剪贴板数据变更的来源，判断是本地设备还是远端设备的数据变更。
 
-<!--Device-Pasteboard_NotifyType--><!--Device-Pasteboard_NotifyType-End-->
+<!--Device-enum Pasteboard_NotifyType--><!--Device-enum Pasteboard_NotifyType-End-->
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -98,8 +98,8 @@ enum Pasteboard_NotifyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NOTIFY_LOCAL_DATA_CHANGE = 1 | 本地设备剪贴板数据变更。 |
-| NOTIFY_REMOTE_DATA_CHANGE = 2 | 组网内的非本地设备剪贴板数据变更。 |
+| NOTIFY_LOCAL_DATA_CHANGE = 1 | 本地设备剪贴板数据变更。<br><!--Device-NOTIFY_LOCAL_DATA_CHANGE = 1--><!--Device-NOTIFY_LOCAL_DATA_CHANGE = 1-End--> |
+| NOTIFY_REMOTE_DATA_CHANGE = 2 | 组网内的非本地设备剪贴板数据变更。<br><!--Device-NOTIFY_REMOTE_DATA_CHANGE = 2--><!--Device-NOTIFY_REMOTE_DATA_CHANGE = 2-End--> |
 
 ### Pasteboard_FileConflictOptions
 
@@ -111,7 +111,7 @@ enum Pasteboard_FileConflictOptions
 
 定义文件拷贝冲突时的选项。当应用粘贴的目标路径已存在同名文件时，剪贴板会基于指定的策略处理冲突。
 
-<!--Device-Pasteboard_FileConflictOptions--><!--Device-Pasteboard_FileConflictOptions-End-->
+<!--Device-enum Pasteboard_FileConflictOptions--><!--Device-enum Pasteboard_FileConflictOptions-End-->
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -119,8 +119,8 @@ enum Pasteboard_FileConflictOptions
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PASTEBOARD_OVERWRITE = 0 | 目标路径存在同文件名时覆盖。 |
-| PASTEBOARD_SKIP = 1 | 目标路径存在同文件名时跳过。 |
+| PASTEBOARD_OVERWRITE = 0 | 目标路径存在同文件名时覆盖。<br><!--Device-PASTEBOARD_OVERWRITE = 0--><!--Device-PASTEBOARD_OVERWRITE = 0-End--> |
+| PASTEBOARD_SKIP = 1 | 目标路径存在同文件名时跳过。<br><!--Device-PASTEBOARD_SKIP = 1--><!--Device-PASTEBOARD_SKIP = 1-End--> |
 
 ### Pasteboard_ProgressIndicator
 
@@ -132,7 +132,7 @@ enum Pasteboard_ProgressIndicator
 
 定义进度条指示选项，可选择是否采用系统默认进度显示。
 
-<!--Device-Pasteboard_ProgressIndicator--><!--Device-Pasteboard_ProgressIndicator-End-->
+<!--Device-enum Pasteboard_ProgressIndicator--><!--Device-enum Pasteboard_ProgressIndicator-End-->
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -140,8 +140,8 @@ enum Pasteboard_ProgressIndicator
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PASTEBOARD_NONE = 0 | 不采用系统默认进度显示。 |
-| PASTEBOARD_DEFAULT = 1 | 采用系统默认进度显示。 |
+| PASTEBOARD_NONE = 0 | 不采用系统默认进度显示。<br><!--Device-PASTEBOARD_NONE = 0--><!--Device-PASTEBOARD_NONE = 0-End--> |
+| PASTEBOARD_DEFAULT = 1 | 采用系统默认进度显示。<br><!--Device-PASTEBOARD_DEFAULT = 1--><!--Device-PASTEBOARD_DEFAULT = 1-End--> |
 
 
 ## 函数说明

@@ -24,7 +24,7 @@ Defines the dependency data structure used to describe a single dependency betwe
 
 | Name | Description |
 | -- | -- |
-| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | Dependency type. |
-| const void* ptr | Dependency pointer. Points to the data (data dependency) or task handle (task dependency). |
+| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | Dependency type.<br><!--Device-ffrt_dependence_type_t type--><!--Device-ffrt_dependence_type_t type-End--> |
+| const void* ptr | Dependency pointer. Points to the data (data dependency) or task handle (task dependency).<br><!--Device-const void* ptr--><!--Device-const void* ptr-End--> |
 
 

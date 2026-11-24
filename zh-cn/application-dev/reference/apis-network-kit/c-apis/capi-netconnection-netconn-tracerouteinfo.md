@@ -24,8 +24,8 @@ typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t jumpNo | 跳数。 |
-| char address[NETCONN_MAX_STR_LEN] | 主机名或地址。 |
-| uint32_t rtt[NETCONN_MAX_RTT_NUM] | 往返时间RTT，单位微秒，包含最小值/平均值/最大值/标准差。 |
+| uint8_t jumpNo | 跳数。<br><!--Device-uint8_t jumpNo--><!--Device-uint8_t jumpNo-End--> |
+| char address[NETCONN_MAX_STR_LEN] | 主机名或地址。<br><!--Device-char address[NETCONN_MAX_STR_LEN]--><!--Device-char address[NETCONN_MAX_STR_LEN]-End--> |
+| uint32_t rtt[NETCONN_MAX_RTT_NUM] | 往返时间RTT，单位微秒，包含最小值/平均值/最大值/标准差。<br><!--Device-uint32_t rtt[NETCONN_MAX_RTT_NUM]--><!--Device-uint32_t rtt[NETCONN_MAX_RTT_NUM]-End--> |
 
 

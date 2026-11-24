@@ -6,7 +6,7 @@ typedef struct DisplaySoloist_ExpectedRateRange {...} DisplaySoloist_ExpectedRat
 
 ## Overview
 
-This struct describes the expected frame rate range.
+Defines the expected frame rate range struct, which is used to set the expected frame rate range of DisplaySoloist (variable frame rate drawing on an independent thread). The set expected frame rate range serves as a reference for system scheduling, and the system tries to adjust the drawing frame rate within this range.
 
 <!--Device-typedef struct DisplaySoloist_ExpectedRateRange {...} DisplaySoloist_ExpectedRateRange--><!--Device-typedef struct DisplaySoloist_ExpectedRateRange {...} DisplaySoloist_ExpectedRateRange-End-->
 
@@ -24,8 +24,8 @@ This struct describes the expected frame rate range.
 
 | Name | Description |
 | -- | -- |
-| int32_t min | Minimum value of the expected frame rate range. The value range is [0,120]. |
-| int32_t max | Maximum value of the expected frame rate range. The value range is [0,120]. |
-| int32_t expected | Expected frame rate. The value range is [0,120]. |
+| int32_t min | Expected minimum frame rate. Unit: fps. Value range: [0, maximum refresh rate supported by the device].<br><!--Device-int32_t min--><!--Device-int32_t min-End--> |
+| int32_t max | Expected maximum frame rate. Unit: fps. Value range: [min, maximum refresh rate supported by the device].<br><!--Device-int32_t max--><!--Device-int32_t max-End--> |
+| int32_t expected | Expected target frame rate. Unit: fps. Value range: [min, max].<br><!--Device-int32_t expected--><!--Device-int32_t expected-End--> |
 
 

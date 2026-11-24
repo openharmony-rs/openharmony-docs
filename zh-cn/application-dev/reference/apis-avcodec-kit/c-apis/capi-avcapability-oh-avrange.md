@@ -24,7 +24,7 @@ typedef struct OH_AVRange {...} OH_AVRange
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t minVal | 最小值。 |
-| int32_t maxVal | 最大值。 |
+| int32_t minVal | 最小值。<br>**起始版本：** 10<br><!--Device-int32_t minVal--><!--Device-int32_t minVal-End--> |
+| int32_t maxVal | 最大值。<br>**起始版本：** 10<br><!--Device-int32_t maxVal--><!--Device-int32_t maxVal-End--> |
 
 

@@ -24,8 +24,8 @@ typedef struct OH_Drawing_Point3D {...} OH_Drawing_Point3D
 
 | 名称 | 描述 |
 | -- | -- |
-| float x | x轴坐标。<br>**起始版本：** 12 |
-| float y | y轴坐标。<br>**起始版本：** 12 |
-| float z | z轴坐标。<br>**起始版本：** 12 |
+| float x | x轴坐标。<br>**起始版本：** 12<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | y轴坐标。<br>**起始版本：** 12<br><!--Device-float y--><!--Device-float y-End--> |
+| float z | z轴坐标。<br>**起始版本：** 12<br><!--Device-float z--><!--Device-float z-End--> |
 
 

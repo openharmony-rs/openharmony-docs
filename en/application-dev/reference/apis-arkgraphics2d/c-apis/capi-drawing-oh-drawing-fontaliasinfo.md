@@ -24,7 +24,7 @@ This struct describes the information about a font alias.
 
 | Name | Description |
 | -- | -- |
-| char* familyName | Pointer to the name of a font family. |
-| int weight | Font weight value. If the value is greater than 0, the font family contains only the font with the specified weight. If the value is 0, the font family contains all fonts. |
+| char* familyName | Pointer to the name of a font family.<br><!--Device-char* familyName--><!--Device-char* familyName-End--> |
+| int weight | Font weight value. If the value is greater than 0, the font family contains only the font with the specified weight. If the value is 0, the font family contains all fonts.<br><!--Device-int weight--><!--Device-int weight-End--> |
 
 

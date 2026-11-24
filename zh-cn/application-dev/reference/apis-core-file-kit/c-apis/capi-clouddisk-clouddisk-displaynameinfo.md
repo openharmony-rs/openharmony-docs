@@ -24,8 +24,8 @@ typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t displayNameResId | 应用同步根路径显示名称对应的静态资源ID。<br>**起始版本：** 21 |
-| char *customAlias |  |
-| size_t customAliasLength | 自定义别名的长度，范围：[0, 255]。<br>**起始版本：** 21 |
+| uint32_t displayNameResId | 应用同步根路径显示名称对应的静态资源ID。<br>**起始版本：** 21<br><!--Device-uint32_t displayNameResId--><!--Device-uint32_t displayNameResId-End--> |
+| char *customAlias | <!--Device-char *customAlias--><!--Device-char *customAlias-End--> |
+| size_t customAliasLength | 自定义别名的长度，范围：[0, 255]。<br>**起始版本：** 21<br><!--Device-size_t customAliasLength--><!--Device-size_t customAliasLength-End--> |
 
 

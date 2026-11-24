@@ -24,14 +24,11 @@ Enumerates the TEE parameter.
 
 | Name | Description |
 | -- | -- |
-| memref | Describes a memory reference.<br>**Since**: 20 |
-| memref.buffer | Pointer to the memory buffer. |
-| memref.size | Size of the memory buffer. |
-| value | Describes value parameters.<br>**Since**: 20 |
-| value.a | First value. |
-| value.b | Second value. |
-| sharedmem | Describes shared memory reference.<br>**Since**: 20 |
-| sharedmem.buffer | Pointer to the shared memory buffer. |
-| sharedmem.size | Size of the shared memory buffer. |
+| memref.buffer | Pointer to the memory buffer.<br><!--Device-memref.buffer--><!--Device-memref.buffer-End--> |
+| memref.size | Size of the memory buffer.<br><!--Device-memref.size--><!--Device-memref.size-End--> |
+| value.a | First value.<br><!--Device-value.a--><!--Device-value.a-End--> |
+| value.b | Second value.<br><!--Device-value.b--><!--Device-value.b-End--> |
+| sharedmem.buffer | Pointer to the shared memory buffer.<br><!--Device-sharedmem.buffer--><!--Device-sharedmem.buffer-End--> |
+| sharedmem.size | Size of the shared memory buffer.<br><!--Device-sharedmem.size--><!--Device-sharedmem.size-End--> |
 
 

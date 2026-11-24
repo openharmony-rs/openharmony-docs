@@ -24,12 +24,12 @@ typedef struct Hid_Device {...} Hid_Device
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *deviceName | 设备名称，最大长度128字符，不能为NULL。超出长度或为NULL时返回错误。 |
-| uint16_t vendorId | 厂商ID。 |
-| uint16_t productId | 产品ID。 |
-| uint16_t version | 版本号。 |
-| uint16_t bustype | 总线类型，取值含义参考标准HID协议的总线类型定义。 |
-| [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop) *properties | 设备特性。使用前应检查指针是否为空；该指针仅在Hid_Device对象有效期间有效，不应手动释放。 |
-| uint16_t propLength | 设备特性数量，表示properties数组的有效元素个数。注意：遍历数组时应以该值为边界条件；该值可能为0。 |
+| const char *deviceName | 设备名称，最大长度128字符，不能为NULL。超出长度或为NULL时返回错误。<br><!--Device-const char *deviceName--><!--Device-const char *deviceName-End--> |
+| uint16_t vendorId | 厂商ID。<br><!--Device-uint16_t vendorId--><!--Device-uint16_t vendorId-End--> |
+| uint16_t productId | 产品ID。<br><!--Device-uint16_t productId--><!--Device-uint16_t productId-End--> |
+| uint16_t version | 版本号。<br><!--Device-uint16_t version--><!--Device-uint16_t version-End--> |
+| uint16_t bustype | 总线类型，取值含义参考标准HID协议的总线类型定义。<br><!--Device-uint16_t bustype--><!--Device-uint16_t bustype-End--> |
+| [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop) *properties | 设备特性。使用前应检查指针是否为空；该指针仅在Hid_Device对象有效期间有效，不应手动释放。<br><!--Device-Hid_DeviceProp *properties--><!--Device-Hid_DeviceProp *properties-End--> |
+| uint16_t propLength | 设备特性数量，表示properties数组的有效元素个数。注意：遍历数组时应以该值为边界条件；该值可能为0。<br><!--Device-uint16_t propLength--><!--Device-uint16_t propLength-End--> |
 
 

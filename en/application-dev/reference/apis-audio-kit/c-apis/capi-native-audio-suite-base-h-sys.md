@@ -41,7 +41,7 @@ enum OH_AudioSuite_SystemNodeType
 
 Define audio node system type.
 
-<!--Device-OH_AudioSuite_SystemNodeType--><!--Device-OH_AudioSuite_SystemNodeType-End-->
+<!--Device-enum OH_AudioSuite_SystemNodeType--><!--Device-enum OH_AudioSuite_SystemNodeType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -51,7 +51,7 @@ Define audio node system type.
 
 | Enum item | Description |
 | -- | -- |
-| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301 | Dialogue Algo System Effect Node.<br>**Since**: 26.0.0 |
-| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302 | Voice Beautifier System Effect Node.<br>**Since**: 26.0.0 |
+| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301 | Dialogue Algo System Effect Node.<br>**Since**: 26.0.0<br><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301--><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301-End--> |
+| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302 | Voice Beautifier System Effect Node.<br>**Since**: 26.0.0<br><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302--><!--Device-OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302-End--> |
 
 

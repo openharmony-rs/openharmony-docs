@@ -24,7 +24,7 @@ typedef struct OH_MIDICallbacks {...} OH_MIDICallbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | 处理设备热插拔事件的回调函数指针。<br>**起始版本：** 24 |
-| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | 处理服务运行过程中发生的关键错误的回调函数指针。<br>**起始版本：** 24 |
+| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | 处理设备热插拔事件的回调函数指针。<br>**起始版本：** 24<br><!--Device-OH_MIDICallback_OnDeviceChange onDeviceChange--><!--Device-OH_MIDICallback_OnDeviceChange onDeviceChange-End--> |
+| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | 处理服务运行过程中发生的关键错误的回调函数指针。<br>**起始版本：** 24<br><!--Device-OH_MIDICallback_OnError onError--><!--Device-OH_MIDICallback_OnError onError-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkTimeDomainKHR timeDomain |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkTimeDomainKHR timeDomain | <!--Device-VkTimeDomainKHR timeDomain--><!--Device-VkTimeDomainKHR timeDomain-End--> |
 
 

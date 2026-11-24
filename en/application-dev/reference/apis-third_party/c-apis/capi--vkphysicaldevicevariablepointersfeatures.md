@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 variablePointersStorageBuffer |  |
-| VkBool32 variablePointers |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 variablePointersStorageBuffer | <!--Device-VkBool32 variablePointersStorageBuffer--><!--Device-VkBool32 variablePointersStorageBuffer-End--> |
+| VkBool32 variablePointers | <!--Device-VkBool32 variablePointers--><!--Device-VkBool32 variablePointers-End--> |
 
 

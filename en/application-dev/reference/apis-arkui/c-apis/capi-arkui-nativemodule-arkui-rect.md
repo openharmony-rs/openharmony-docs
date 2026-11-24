@@ -24,9 +24,9 @@ Defines a rectangular area.
 
 | Name | Description |
 | -- | -- |
-| float x | X coordinate of the rectangular area.<br>**Since**: 12 |
-| float y | Y coordinate of the rectangular area.<br>**Since**: 12 |
-| float width | Width of the rectangular area.<br>**Since**: 12 |
-| float height | Height of the rectangular area.<br>**Since**: 12 |
+| float x | X coordinate of the rectangular area.<br>**Since**: 12<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | Y coordinate of the rectangular area.<br>**Since**: 12<br><!--Device-float y--><!--Device-float y-End--> |
+| float width | Width of the rectangular area.<br>**Since**: 12<br><!--Device-float width--><!--Device-float width-End--> |
+| float height | Height of the rectangular area.<br>**Since**: 12<br><!--Device-float height--><!--Device-float height-End--> |
 
 

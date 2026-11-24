@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| float minDepthClamp |  |
-| float maxDepthClamp |  |
+| float minDepthClamp | <!--Device-float minDepthClamp--><!--Device-float minDepthClamp-End--> |
+| float maxDepthClamp | <!--Device-float maxDepthClamp--><!--Device-float maxDepthClamp-End--> |
 
 

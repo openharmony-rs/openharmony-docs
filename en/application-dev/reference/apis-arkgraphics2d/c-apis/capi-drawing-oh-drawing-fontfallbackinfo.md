@@ -24,7 +24,7 @@ This struct describes the information about a font fallback.
 
 | Name | Description |
 | -- | -- |
-| char* language | Pointer to the language supported by the font fallback. The language format is bcp47. |
-| char* familyName | Pointer to the name of a font family. |
+| char* language | Pointer to the language supported by the font fallback. The language format is bcp47.<br><!--Device-char* language--><!--Device-char* language-End--> |
+| char* familyName | Pointer to the name of a font family.<br><!--Device-char* familyName--><!--Device-char* familyName-End--> |
 
 

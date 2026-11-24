@@ -24,7 +24,7 @@ typedef struct JSVM_CodeCache {...} JSVM_CodeCache
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t *cache | 缓存地址。 |
-| size_t length | 缓存大小。 |
+| uint8_t *cache | 缓存地址。<br><!--Device-uint8_t *cache--><!--Device-uint8_t *cache-End--> |
+| size_t length | 缓存大小。<br><!--Device-size_t length--><!--Device-size_t length-End--> |
 
 

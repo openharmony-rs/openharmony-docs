@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDepthBiasRepresentationEXT depthBiasRepresentation |  |
-| VkBool32 depthBiasExact |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDepthBiasRepresentationEXT depthBiasRepresentation | <!--Device-VkDepthBiasRepresentationEXT depthBiasRepresentation--><!--Device-VkDepthBiasRepresentationEXT depthBiasRepresentation-End--> |
+| VkBool32 depthBiasExact | <!--Device-VkBool32 depthBiasExact--><!--Device-VkBool32 depthBiasExact-End--> |
 
 

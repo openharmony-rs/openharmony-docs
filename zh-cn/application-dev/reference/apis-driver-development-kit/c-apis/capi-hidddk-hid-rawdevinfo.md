@@ -24,8 +24,8 @@ HID原始设备信息，包含总线类型、供应商ID、产品ID等关键标�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t busType | 总线类型，用于标识HID设备的物理连接方式。 |
-| uint16_t vendor | 供应商ID。 |
-| uint16_t product | 产品ID。 |
+| uint32_t busType | 总线类型，用于标识HID设备的物理连接方式。<br><!--Device-uint32_t busType--><!--Device-uint32_t busType-End--> |
+| uint16_t vendor | 供应商ID。<br><!--Device-uint16_t vendor--><!--Device-uint16_t vendor-End--> |
+| uint16_t product | 产品ID。<br><!--Device-uint16_t product--><!--Device-uint16_t product-End--> |
 
 

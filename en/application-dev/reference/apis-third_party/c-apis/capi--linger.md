@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int l_onoff |  |
-| int l_linger |  |
+| int l_onoff | <!--Device-int l_onoff--><!--Device-int l_onoff-End--> |
+| int l_linger | <!--Device-int l_linger--><!--Device-int l_linger-End--> |
 
 

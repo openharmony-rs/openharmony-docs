@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceSize offset |  |
-| VkDeviceSize size |  |
-| VkDeviceSize rowPitch |  |
-| VkDeviceSize arrayPitch |  |
-| VkDeviceSize depthPitch |  |
+| VkDeviceSize offset | <!--Device-VkDeviceSize offset--><!--Device-VkDeviceSize offset-End--> |
+| VkDeviceSize size | <!--Device-VkDeviceSize size--><!--Device-VkDeviceSize size-End--> |
+| VkDeviceSize rowPitch | <!--Device-VkDeviceSize rowPitch--><!--Device-VkDeviceSize rowPitch-End--> |
+| VkDeviceSize arrayPitch | <!--Device-VkDeviceSize arrayPitch--><!--Device-VkDeviceSize arrayPitch-End--> |
+| VkDeviceSize depthPitch | <!--Device-VkDeviceSize depthPitch--><!--Device-VkDeviceSize depthPitch-End--> |
 
 

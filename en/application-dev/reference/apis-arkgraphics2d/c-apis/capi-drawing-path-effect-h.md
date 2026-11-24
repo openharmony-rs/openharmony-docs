@@ -44,7 +44,7 @@ enum OH_Drawing_PathDashStyle
 
 Enumerates the drawing styles for path effects.
 
-<!--Device-OH_Drawing_PathDashStyle--><!--Device-OH_Drawing_PathDashStyle-End-->
+<!--Device-enum OH_Drawing_PathDashStyle--><!--Device-enum OH_Drawing_PathDashStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -52,9 +52,9 @@ Enumerates the drawing styles for path effects.
 
 | Enum item | Description |
 | -- | -- |
-| DRAWING_PATH_DASH_STYLE_TRANSLATE | Translation effect. |
-| DRAWING_PATH_DASH_STYLE_ROTATE | Rotation effect. |
-| DRAWING_PATH_DASH_STYLE_MORPH | Morphing effect. |
+| DRAWING_PATH_DASH_STYLE_TRANSLATE | Translation effect.<br><!--Device-DRAWING_PATH_DASH_STYLE_TRANSLATE--><!--Device-DRAWING_PATH_DASH_STYLE_TRANSLATE-End--> |
+| DRAWING_PATH_DASH_STYLE_ROTATE | Rotation effect.<br><!--Device-DRAWING_PATH_DASH_STYLE_ROTATE--><!--Device-DRAWING_PATH_DASH_STYLE_ROTATE-End--> |
+| DRAWING_PATH_DASH_STYLE_MORPH | Morphing effect.<br><!--Device-DRAWING_PATH_DASH_STYLE_MORPH--><!--Device-DRAWING_PATH_DASH_STYLE_MORPH-End--> |
 
 
 ## Function description

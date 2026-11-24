@@ -60,7 +60,7 @@ enum LogType
 
 Enumerates the log types. You can use this function to specify the type of output logs. Currently, only **<br>LOG_APP** is available.
 
-<!--Device-LogType--><!--Device-LogType-End-->
+<!--Device-enum LogType--><!--Device-enum LogType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -68,7 +68,7 @@ Enumerates the log types. You can use this function to specify the type of outpu
 
 | Enum item | Description |
 | -- | -- |
-| LOG_APP = 0 | Application log. |
+| LOG_APP = 0 | Application log.<br><!--Device-LOG_APP = 0--><!--Device-LOG_APP = 0-End--> |
 
 ### LogLevel
 
@@ -80,7 +80,7 @@ enum LogLevel
 
 Enumerates the log levels. You are advised to select log levels based on their respective use cases. Log levels: <br>**DEBUG**: provides more detailed process information than INFO logs to help developers analyze service processes and locate faults. DEBUG logs are not recorded in official versions by default. They are available in debug versions or in official versions with the debug function enabled. <br>**INFO**: indicates the key service process nodes and exceptions (for example, no network signal or login failure) that occur during service running. These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions. <br>**WARN**: indicates a severe, unexpected fault that has little impact on users and can be rectified by the programs themselves or through simple operations. <br>**ERROR**: indicates a program or functional error that affects the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data. <br>**FATAL**: indicates that a program or functionality is about to crash and the fault cannot be rectified.
 
-<!--Device-LogLevel--><!--Device-LogLevel-End-->
+<!--Device-enum LogLevel--><!--Device-enum LogLevel-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -88,11 +88,11 @@ Enumerates the log levels. You are advised to select log levels based on their r
 
 | Enum item | Description |
 | -- | -- |
-| LOG_DEBUG = 3 | DEBUG level to be used by **OH_LOG_DEBUG**. |
-| LOG_INFO = 4 | INFO level to be used by **OH_LOG_INFO**. |
-| LOG_WARN = 5 | WARN level to be used by **OH_LOG_WARN**. |
-| LOG_ERROR = 6 | ERROR level to be used by **OH_LOG_ERROR**. |
-| LOG_FATAL = 7 | FATAL level to be used by **OH_LOG_FATAL**. |
+| LOG_DEBUG = 3 | DEBUG level to be used by **OH_LOG_DEBUG**.<br><!--Device-LOG_DEBUG = 3--><!--Device-LOG_DEBUG = 3-End--> |
+| LOG_INFO = 4 | INFO level to be used by **OH_LOG_INFO**.<br><!--Device-LOG_INFO = 4--><!--Device-LOG_INFO = 4-End--> |
+| LOG_WARN = 5 | WARN level to be used by **OH_LOG_WARN**.<br><!--Device-LOG_WARN = 5--><!--Device-LOG_WARN = 5-End--> |
+| LOG_ERROR = 6 | ERROR level to be used by **OH_LOG_ERROR**.<br><!--Device-LOG_ERROR = 6--><!--Device-LOG_ERROR = 6-End--> |
+| LOG_FATAL = 7 | FATAL level to be used by **OH_LOG_FATAL**.<br><!--Device-LOG_FATAL = 7--><!--Device-LOG_FATAL = 7-End--> |
 
 ### PreferStrategy
 
@@ -104,7 +104,7 @@ enum PreferStrategy
 
 Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](capi-log-h.md#oh_log_setloglevel). The minimum log level that takes effect varies according to the strategy.
 
-<!--Device-PreferStrategy--><!--Device-PreferStrategy-End-->
+<!--Device-enum PreferStrategy--><!--Device-enum PreferStrategy-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -112,9 +112,9 @@ Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](
 
 | Enum item | Description |
 | -- | -- |
-| UNSET_LOGLEVEL = 0 | The setting is cleared. The minimum log level that actually takes effect is the system-controlled minimum log level. |
-| PREFER_CLOSE_LOG = 1 | The minimum log level that actually takes effect is the larger value of the new log level and the system- controlled minimum log level. |
-| PREFER_OPEN_LOG = 2 | The minimum log level that actually takes effect is the smaller value of the new log level and the system- controlled minimum log level. |
+| UNSET_LOGLEVEL = 0 | The setting is cleared. The minimum log level that actually takes effect is the system-controlled minimum log level.<br><!--Device-UNSET_LOGLEVEL = 0--><!--Device-UNSET_LOGLEVEL = 0-End--> |
+| PREFER_CLOSE_LOG = 1 | The minimum log level that actually takes effect is the larger value of the new log level and the system- controlled minimum log level.<br><!--Device-PREFER_CLOSE_LOG = 1--><!--Device-PREFER_CLOSE_LOG = 1-End--> |
+| PREFER_OPEN_LOG = 2 | The minimum log level that actually takes effect is the smaller value of the new log level and the system- controlled minimum log level.<br><!--Device-PREFER_OPEN_LOG = 2--><!--Device-PREFER_OPEN_LOG = 2-End--> |
 
 
 ## Function description

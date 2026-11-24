@@ -24,7 +24,7 @@ typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* format | 编码格式。 |
-| int quality | 编码质量。 |
+| const char* format | 编码格式。<br><!--Device-const char* format--><!--Device-const char* format-End--> |
+| int quality | 编码质量。<br><!--Device-int quality--><!--Device-int quality-End--> |
 
 

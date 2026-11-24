@@ -55,7 +55,7 @@ enum ArkUI_ProgressType
 
 定义进度条类型枚举值。
 
-<!--Device-ArkUI_ProgressType--><!--Device-ArkUI_ProgressType-End-->
+<!--Device-enum ArkUI_ProgressType--><!--Device-enum ArkUI_ProgressType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,11 +63,11 @@ enum ArkUI_ProgressType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PROGRESS_TYPE_LINEAR = 0 | 线性样式。 |
-| ARKUI_PROGRESS_TYPE_RING | 环形无刻度样式，环形圆环逐渐显示直至完全填充。 |
-| ARKUI_PROGRESS_TYPE_ECLIPSE | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。 |
-| ARKUI_PROGRESS_TYPE_SCALE_RING | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。 |
-| ARKUI_PROGRESS_TYPE_CAPSULE | 胶囊样式，头尾两端圆弧处的进度展示效果与ARKUI_PROGRESS_TYPE_ECLIPSE相同，中段的进度展示效果与ARKUI_PROGRESS_TYPE_LINEAR相同。 |
+| ARKUI_PROGRESS_TYPE_LINEAR = 0 | 线性样式。<br><!--Device-ARKUI_PROGRESS_TYPE_LINEAR = 0--><!--Device-ARKUI_PROGRESS_TYPE_LINEAR = 0-End--> |
+| ARKUI_PROGRESS_TYPE_RING | 环形无刻度样式，环形圆环逐渐显示直至完全填充。<br><!--Device-ARKUI_PROGRESS_TYPE_RING--><!--Device-ARKUI_PROGRESS_TYPE_RING-End--> |
+| ARKUI_PROGRESS_TYPE_ECLIPSE | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。<br><!--Device-ARKUI_PROGRESS_TYPE_ECLIPSE--><!--Device-ARKUI_PROGRESS_TYPE_ECLIPSE-End--> |
+| ARKUI_PROGRESS_TYPE_SCALE_RING | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。<br><!--Device-ARKUI_PROGRESS_TYPE_SCALE_RING--><!--Device-ARKUI_PROGRESS_TYPE_SCALE_RING-End--> |
+| ARKUI_PROGRESS_TYPE_CAPSULE | 胶囊样式，头尾两端圆弧处的进度展示效果与ARKUI_PROGRESS_TYPE_ECLIPSE相同，中段的进度展示效果与ARKUI_PROGRESS_TYPE_LINEAR相同。<br><!--Device-ARKUI_PROGRESS_TYPE_CAPSULE--><!--Device-ARKUI_PROGRESS_TYPE_CAPSULE-End--> |
 
 
 ## 函数说明

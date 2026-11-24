@@ -87,7 +87,7 @@ enum OH_Archive_Format
 
 文件格式枚举。
 
-<!--Device-OH_Archive_Format--><!--Device-OH_Archive_Format-End-->
+<!--Device-enum OH_Archive_Format--><!--Device-enum OH_Archive_Format-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -95,7 +95,7 @@ enum OH_Archive_Format
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARCHIVE_FMT_ZIP = 0 | ZIP格式。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_FMT_ZIP = 0 | ZIP格式。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_FMT_ZIP = 0--><!--Device-OH_ARCHIVE_FMT_ZIP = 0-End--> |
 
 ### OH_Archive_CompressMethod
 
@@ -107,7 +107,7 @@ enum OH_Archive_CompressMethod
 
 压缩算法枚举。
 
-<!--Device-OH_Archive_CompressMethod--><!--Device-OH_Archive_CompressMethod-End-->
+<!--Device-enum OH_Archive_CompressMethod--><!--Device-enum OH_Archive_CompressMethod-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -115,8 +115,8 @@ enum OH_Archive_CompressMethod
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARCHIVE_NO_COMPRESSION = 0 | 不压缩。<br>**起始版本：** 26.0.0 |
-| OH_ARCHIVE_COMPRESS_DEFLATE = 8 | DEFLATE压缩算法。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_NO_COMPRESSION = 0 | 不压缩。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_NO_COMPRESSION = 0--><!--Device-OH_ARCHIVE_NO_COMPRESSION = 0-End--> |
+| OH_ARCHIVE_COMPRESS_DEFLATE = 8 | DEFLATE压缩算法。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_COMPRESS_DEFLATE = 8--><!--Device-OH_ARCHIVE_COMPRESS_DEFLATE = 8-End--> |
 
 ### OH_Archive_OpenMode
 
@@ -128,7 +128,7 @@ enum OH_Archive_OpenMode
 
 文件打开模式枚举。
 
-<!--Device-OH_Archive_OpenMode--><!--Device-OH_Archive_OpenMode-End-->
+<!--Device-enum OH_Archive_OpenMode--><!--Device-enum OH_Archive_OpenMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -136,7 +136,7 @@ enum OH_Archive_OpenMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARCHIVE_OPEN_MODE_CREATE = 0 | 创建模式。新建一个文件，如果文件已存在，则覆盖。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_OPEN_MODE_CREATE = 0 | 创建模式。新建一个文件，如果文件已存在，则覆盖。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_OPEN_MODE_CREATE = 0--><!--Device-OH_ARCHIVE_OPEN_MODE_CREATE = 0-End--> |
 
 ### OH_Archive_ProgressType
 
@@ -148,7 +148,7 @@ enum OH_Archive_ProgressType
 
 文件进度控制类型枚举。
 
-<!--Device-OH_Archive_ProgressType--><!--Device-OH_Archive_ProgressType-End-->
+<!--Device-enum OH_Archive_ProgressType--><!--Device-enum OH_Archive_ProgressType-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -156,8 +156,8 @@ enum OH_Archive_ProgressType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARCHIVE_PROGRESS_CONTINUE = 0 | 继续压缩/解压缩操作。<br>**起始版本：** 26.0.0 |
-| OH_ARCHIVE_PROGRESS_CANCEL = 1 | 取消压缩/解压缩操作。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_PROGRESS_CONTINUE = 0 | 继续压缩/解压缩操作。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_PROGRESS_CONTINUE = 0--><!--Device-OH_ARCHIVE_PROGRESS_CONTINUE = 0-End--> |
+| OH_ARCHIVE_PROGRESS_CANCEL = 1 | 取消压缩/解压缩操作。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_PROGRESS_CANCEL = 1--><!--Device-OH_ARCHIVE_PROGRESS_CANCEL = 1-End--> |
 
 ### OH_Archive_StreamChecksumAlg
 
@@ -169,7 +169,7 @@ enum OH_Archive_StreamChecksumAlg
 
 用于计算校验和的哈希算法。
 
-<!--Device-OH_Archive_StreamChecksumAlg--><!--Device-OH_Archive_StreamChecksumAlg-End-->
+<!--Device-enum OH_Archive_StreamChecksumAlg--><!--Device-enum OH_Archive_StreamChecksumAlg-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -177,8 +177,8 @@ enum OH_Archive_StreamChecksumAlg
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARCHIVE_NO_CHECKSUM = 0 | 不额外计算哈希值。<br>**起始版本：** 26.0.0 |
-| OH_ARCHIVE_CRC32 = 1 | 使用CRC32（Cyclic Redundancy Check，循环冗余校验）计算校验和。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_NO_CHECKSUM = 0 | 不额外计算哈希值。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_NO_CHECKSUM = 0--><!--Device-OH_ARCHIVE_NO_CHECKSUM = 0-End--> |
+| OH_ARCHIVE_CRC32 = 1 | 使用CRC32（Cyclic Redundancy Check，循环冗余校验）计算校验和。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARCHIVE_CRC32 = 1--><!--Device-OH_ARCHIVE_CRC32 = 1-End--> |
 
 
 ## 函数说明

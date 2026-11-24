@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ip6oj_type |  |
-| uint8_t ip6oj_len |  |
-| uint8_t ip6oj_jumbo_len[4] |  |
+| uint8_t ip6oj_type | <!--Device-uint8_t ip6oj_type--><!--Device-uint8_t ip6oj_type-End--> |
+| uint8_t ip6oj_len | <!--Device-uint8_t ip6oj_len--><!--Device-uint8_t ip6oj_len-End--> |
+| uint8_t ip6oj_jumbo_len[4] | <!--Device-uint8_t ip6oj_jumbo_len[4]--><!--Device-uint8_t ip6oj_jumbo_len[4]-End--> |
 
 

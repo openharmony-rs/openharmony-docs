@@ -24,8 +24,8 @@ Provides the expected frame rate range.
 
 | Name | Description |
 | -- | -- |
-| int32_t min | Minimum frame rate. |
-| int32_t max | Maximum frame rate. |
-| int32_t expected | Expected frame rate. |
+| int32_t min | Minimum frame rate.<br><!--Device-int32_t min--><!--Device-int32_t min-End--> |
+| int32_t max | Maximum frame rate.<br><!--Device-int32_t max--><!--Device-int32_t max-End--> |
+| int32_t expected | Expected frame rate.<br><!--Device-int32_t expected--><!--Device-int32_t expected-End--> |
 
 

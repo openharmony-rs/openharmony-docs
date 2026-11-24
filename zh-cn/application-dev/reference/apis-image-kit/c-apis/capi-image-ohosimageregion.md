@@ -24,9 +24,9 @@ struct OhosImageRegion {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t x | 起始x坐标，用pixels表示。 |
-| int32_t y | 起始y坐标，用pixels表示。 |
-| int32_t width | 宽度范围，用pixels表示。 |
-| int32_t height | 高度范围，用pixels表示。 |
+| int32_t x | 起始x坐标，用pixels表示。<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | 起始y坐标，用pixels表示。<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
+| int32_t width | 宽度范围，用pixels表示。<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | 高度范围，用pixels表示。<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

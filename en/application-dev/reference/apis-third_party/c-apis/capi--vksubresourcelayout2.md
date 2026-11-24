@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkSubresourceLayout](capi--vksubresourcelayout.md) subresourceLayout |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkSubresourceLayout](capi--vksubresourcelayout.md) subresourceLayout | <!--Device-VkSubresourceLayout subresourceLayout--><!--Device-VkSubresourceLayout subresourceLayout-End--> |
 
 

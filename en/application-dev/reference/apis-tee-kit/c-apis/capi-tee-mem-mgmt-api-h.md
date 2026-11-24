@@ -59,7 +59,7 @@ enum MALLOC_HINT
 
 Defines the enumeration values for memory allocation hints.
 
-<!--Device-MALLOC_HINT--><!--Device-MALLOC_HINT-End-->
+<!--Device-enum MALLOC_HINT--><!--Device-enum MALLOC_HINT-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -67,22 +67,22 @@ Defines the enumeration values for memory allocation hints.
 
 | Enum item | Description |
 | -- | -- |
-| ZERO = 0 | Uninitialized buffer. |
-| NOT_ZERO = 1 | Non-zero initialized buffer. |
-| ALIGN_004 = 0x80000002 | 4-byte aligned buffer. |
-| ALIGN_008 = 0x80000003 | 8-byte aligned buffer. |
-| ALIGN_016 = 0x80000004 | 16-byte aligned buffer. |
-| ALIGN_032 = 0x80000005 | 32-byte aligned buffer. |
-| ALIGN_064 = 0x80000006 | 64-byte aligned buffer. |
-| ALIGN_128 = 0x80000007 | 128-byte aligned buffer. |
-| ALIGN_256 = 0x80000008 | 256-byte aligned buffer. |
-| ALIGN_004_ZERO = 0x80000012 | 4-byte aligned buffer initialized to zero. |
-| ALIGN_008_ZERO = 0x80000013 | 8-byte aligned buffer initialized to zero. |
-| ALIGN_016_ZERO = 0x80000014 | 16-byte aligned buffer initialized to zero. |
-| ALIGN_032_ZERO = 0x80000015 | 32-byte aligned buffer initialized to zero. |
-| ALIGN_064_ZERO = 0x80000016 | 64-byte aligned buffer initialized to zero. |
-| ALIGN_128_ZERO = 0x80000017 | 128-byte aligned buffer initialized to zero. |
-| ALIGN_256_ZERO = 0x80000018 | 256-byte aligned buffer initialized to zero. |
+| ZERO = 0 | Uninitialized buffer.<br><!--Device-ZERO = 0--><!--Device-ZERO = 0-End--> |
+| NOT_ZERO = 1 | Non-zero initialized buffer.<br><!--Device-NOT_ZERO = 1--><!--Device-NOT_ZERO = 1-End--> |
+| ALIGN_004 = 0x80000002 | 4-byte aligned buffer.<br><!--Device-ALIGN_004 = 0x80000002--><!--Device-ALIGN_004 = 0x80000002-End--> |
+| ALIGN_008 = 0x80000003 | 8-byte aligned buffer.<br><!--Device-ALIGN_008 = 0x80000003--><!--Device-ALIGN_008 = 0x80000003-End--> |
+| ALIGN_016 = 0x80000004 | 16-byte aligned buffer.<br><!--Device-ALIGN_016 = 0x80000004--><!--Device-ALIGN_016 = 0x80000004-End--> |
+| ALIGN_032 = 0x80000005 | 32-byte aligned buffer.<br><!--Device-ALIGN_032 = 0x80000005--><!--Device-ALIGN_032 = 0x80000005-End--> |
+| ALIGN_064 = 0x80000006 | 64-byte aligned buffer.<br><!--Device-ALIGN_064 = 0x80000006--><!--Device-ALIGN_064 = 0x80000006-End--> |
+| ALIGN_128 = 0x80000007 | 128-byte aligned buffer.<br><!--Device-ALIGN_128 = 0x80000007--><!--Device-ALIGN_128 = 0x80000007-End--> |
+| ALIGN_256 = 0x80000008 | 256-byte aligned buffer.<br><!--Device-ALIGN_256 = 0x80000008--><!--Device-ALIGN_256 = 0x80000008-End--> |
+| ALIGN_004_ZERO = 0x80000012 | 4-byte aligned buffer initialized to zero.<br><!--Device-ALIGN_004_ZERO = 0x80000012--><!--Device-ALIGN_004_ZERO = 0x80000012-End--> |
+| ALIGN_008_ZERO = 0x80000013 | 8-byte aligned buffer initialized to zero.<br><!--Device-ALIGN_008_ZERO = 0x80000013--><!--Device-ALIGN_008_ZERO = 0x80000013-End--> |
+| ALIGN_016_ZERO = 0x80000014 | 16-byte aligned buffer initialized to zero.<br><!--Device-ALIGN_016_ZERO = 0x80000014--><!--Device-ALIGN_016_ZERO = 0x80000014-End--> |
+| ALIGN_032_ZERO = 0x80000015 | 32-byte aligned buffer initialized to zero.<br><!--Device-ALIGN_032_ZERO = 0x80000015--><!--Device-ALIGN_032_ZERO = 0x80000015-End--> |
+| ALIGN_064_ZERO = 0x80000016 | 64-byte aligned buffer initialized to zero.<br><!--Device-ALIGN_064_ZERO = 0x80000016--><!--Device-ALIGN_064_ZERO = 0x80000016-End--> |
+| ALIGN_128_ZERO = 0x80000017 | 128-byte aligned buffer initialized to zero.<br><!--Device-ALIGN_128_ZERO = 0x80000017--><!--Device-ALIGN_128_ZERO = 0x80000017-End--> |
+| ALIGN_256_ZERO = 0x80000018 | 256-byte aligned buffer initialized to zero.<br><!--Device-ALIGN_256_ZERO = 0x80000018--><!--Device-ALIGN_256_ZERO = 0x80000018-End--> |
 
 
 ## Function description

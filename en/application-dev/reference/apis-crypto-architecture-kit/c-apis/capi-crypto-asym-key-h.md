@@ -86,7 +86,7 @@ enum CryptoAsymKey_ParamType
 
 Defines asymmetric key parameter types.
 
-<!--Device-CryptoAsymKey_ParamType--><!--Device-CryptoAsymKey_ParamType-End-->
+<!--Device-enum CryptoAsymKey_ParamType--><!--Device-enum CryptoAsymKey_ParamType-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -94,36 +94,36 @@ Defines asymmetric key parameter types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_DSA_P_DATABLOB = 101 | Prime p of the DSA algorithm.<br>**Since**: 12 |
-| CRYPTO_DSA_Q_DATABLOB = 102 | Sub-prime q of the DSA algorithm.<br>**Since**: 12 |
-| CRYPTO_DSA_G_DATABLOB = 103 | Base g of the DSA algorithm.<br>**Since**: 12 |
-| CRYPTO_DSA_SK_DATABLOB = 104 | Private key of the DSA algorithm.<br>**Since**: 12 |
-| CRYPTO_DSA_PK_DATABLOB = 105 | Public key of the DSA algorithm.<br>**Since**: 12 |
-| CRYPTO_ECC_FP_P_DATABLOB = 201 | Prime p of the elliptic curve (EC) prime field.<br>**Since**: 12 |
-| CRYPTO_ECC_A_DATABLOB = 202 | First coefficient a of the elliptic curve.<br>**Since**: 12 |
-| CRYPTO_ECC_B_DATABLOB = 203 | Second coefficient b of the elliptic curve.<br>**Since**: 12 |
-| CRYPTO_ECC_G_X_DATABLOB = 204 | Affine x-coordinate of the base point g.<br>**Since**: 12 |
-| CRYPTO_ECC_G_Y_DATABLOB = 205 | Affine y-coordinate of the base point g.<br>**Since**: 12 |
-| CRYPTO_ECC_N_DATABLOB = 206 | Order of the base point g.<br>**Since**: 12 |
-| CRYPTO_ECC_H_INT = 207 | Cofactor of the elliptic curve.<br>**Since**: 12 |
-| CRYPTO_ECC_SK_DATABLOB = 208 | Private key value of the ECC private key.<br>**Since**: 12 |
-| CRYPTO_ECC_PK_X_DATABLOB = 209 | Affine x-coordinate of the public key point in the ECC public key.<br>**Since**: 12 |
-| CRYPTO_ECC_PK_Y_DATABLOB = 210 | Affine y-coordinate of the public key point in the ECC public key.<br>**Since**: 12 |
-| CRYPTO_ECC_FIELD_TYPE_STR = 211 | Finite field type of the elliptic curve.<br>**Since**: 12 |
-| CRYPTO_ECC_FIELD_SIZE_INT = 212 | Bit length of the finite field.<br>**Since**: 12 |
-| CRYPTO_ECC_CURVE_NAME_STR = 213 | Curve name of the SECG standard.<br>**Since**: 12 |
-| CRYPTO_RSA_N_DATABLOB = 301 | Modulus n of the RSA algorithm.<br>**Since**: 12 |
-| CRYPTO_RSA_D_DATABLOB = 302 | Private key exponent d of the RSA algorithm.<br>**Since**: 12 |
-| CRYPTO_RSA_E_DATABLOB = 303 | Public key exponent e of the RSA algorithm.<br>**Since**: 12 |
-| CRYPTO_DH_P_DATABLOB = 401 | Prime p of the DH algorithm.<br>**Since**: 12 |
-| CRYPTO_DH_G_DATABLOB = 402 | Generator g of the DH algorithm.<br>**Since**: 12 |
-| CRYPTO_DH_L_INT = 403 | Bit length of the private key in the DH algorithm.<br>**Since**: 12 |
-| CRYPTO_DH_SK_DATABLOB = 404 | Private key value of the DH private key.<br>**Since**: 12 |
-| CRYPTO_DH_PK_DATABLOB = 405 | Public key value of the DH public key.<br>**Since**: 12 |
-| CRYPTO_ED25519_SK_DATABLOB = 501 | Private key value of the ED25519 private key.<br>**Since**: 12 |
-| CRYPTO_ED25519_PK_DATABLOB = 502 | Public key value of the ED25519 public key.<br>**Since**: 12 |
-| CRYPTO_X25519_SK_DATABLOB = 601 | Private key value of the X25519 private key.<br>**Since**: 12 |
-| CRYPTO_X25519_PK_DATABLOB = 602 | Public key value of the X25519 public key.<br>**Since**: 12 |
+| CRYPTO_DSA_P_DATABLOB = 101 | Prime p of the DSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DSA_P_DATABLOB = 101--><!--Device-CRYPTO_DSA_P_DATABLOB = 101-End--> |
+| CRYPTO_DSA_Q_DATABLOB = 102 | Sub-prime q of the DSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DSA_Q_DATABLOB = 102--><!--Device-CRYPTO_DSA_Q_DATABLOB = 102-End--> |
+| CRYPTO_DSA_G_DATABLOB = 103 | Base g of the DSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DSA_G_DATABLOB = 103--><!--Device-CRYPTO_DSA_G_DATABLOB = 103-End--> |
+| CRYPTO_DSA_SK_DATABLOB = 104 | Private key of the DSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DSA_SK_DATABLOB = 104--><!--Device-CRYPTO_DSA_SK_DATABLOB = 104-End--> |
+| CRYPTO_DSA_PK_DATABLOB = 105 | Public key of the DSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DSA_PK_DATABLOB = 105--><!--Device-CRYPTO_DSA_PK_DATABLOB = 105-End--> |
+| CRYPTO_ECC_FP_P_DATABLOB = 201 | Prime p of the elliptic curve (EC) prime field.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_FP_P_DATABLOB = 201--><!--Device-CRYPTO_ECC_FP_P_DATABLOB = 201-End--> |
+| CRYPTO_ECC_A_DATABLOB = 202 | First coefficient a of the elliptic curve.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_A_DATABLOB = 202--><!--Device-CRYPTO_ECC_A_DATABLOB = 202-End--> |
+| CRYPTO_ECC_B_DATABLOB = 203 | Second coefficient b of the elliptic curve.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_B_DATABLOB = 203--><!--Device-CRYPTO_ECC_B_DATABLOB = 203-End--> |
+| CRYPTO_ECC_G_X_DATABLOB = 204 | Affine x-coordinate of the base point g.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_G_X_DATABLOB = 204--><!--Device-CRYPTO_ECC_G_X_DATABLOB = 204-End--> |
+| CRYPTO_ECC_G_Y_DATABLOB = 205 | Affine y-coordinate of the base point g.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_G_Y_DATABLOB = 205--><!--Device-CRYPTO_ECC_G_Y_DATABLOB = 205-End--> |
+| CRYPTO_ECC_N_DATABLOB = 206 | Order of the base point g.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_N_DATABLOB = 206--><!--Device-CRYPTO_ECC_N_DATABLOB = 206-End--> |
+| CRYPTO_ECC_H_INT = 207 | Cofactor of the elliptic curve.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_H_INT = 207--><!--Device-CRYPTO_ECC_H_INT = 207-End--> |
+| CRYPTO_ECC_SK_DATABLOB = 208 | Private key value of the ECC private key.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_SK_DATABLOB = 208--><!--Device-CRYPTO_ECC_SK_DATABLOB = 208-End--> |
+| CRYPTO_ECC_PK_X_DATABLOB = 209 | Affine x-coordinate of the public key point in the ECC public key.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_PK_X_DATABLOB = 209--><!--Device-CRYPTO_ECC_PK_X_DATABLOB = 209-End--> |
+| CRYPTO_ECC_PK_Y_DATABLOB = 210 | Affine y-coordinate of the public key point in the ECC public key.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_PK_Y_DATABLOB = 210--><!--Device-CRYPTO_ECC_PK_Y_DATABLOB = 210-End--> |
+| CRYPTO_ECC_FIELD_TYPE_STR = 211 | Finite field type of the elliptic curve.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_FIELD_TYPE_STR = 211--><!--Device-CRYPTO_ECC_FIELD_TYPE_STR = 211-End--> |
+| CRYPTO_ECC_FIELD_SIZE_INT = 212 | Bit length of the finite field.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_FIELD_SIZE_INT = 212--><!--Device-CRYPTO_ECC_FIELD_SIZE_INT = 212-End--> |
+| CRYPTO_ECC_CURVE_NAME_STR = 213 | Curve name of the SECG standard.<br>**Since**: 12<br><!--Device-CRYPTO_ECC_CURVE_NAME_STR = 213--><!--Device-CRYPTO_ECC_CURVE_NAME_STR = 213-End--> |
+| CRYPTO_RSA_N_DATABLOB = 301 | Modulus n of the RSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_RSA_N_DATABLOB = 301--><!--Device-CRYPTO_RSA_N_DATABLOB = 301-End--> |
+| CRYPTO_RSA_D_DATABLOB = 302 | Private key exponent d of the RSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_RSA_D_DATABLOB = 302--><!--Device-CRYPTO_RSA_D_DATABLOB = 302-End--> |
+| CRYPTO_RSA_E_DATABLOB = 303 | Public key exponent e of the RSA algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_RSA_E_DATABLOB = 303--><!--Device-CRYPTO_RSA_E_DATABLOB = 303-End--> |
+| CRYPTO_DH_P_DATABLOB = 401 | Prime p of the DH algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DH_P_DATABLOB = 401--><!--Device-CRYPTO_DH_P_DATABLOB = 401-End--> |
+| CRYPTO_DH_G_DATABLOB = 402 | Generator g of the DH algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DH_G_DATABLOB = 402--><!--Device-CRYPTO_DH_G_DATABLOB = 402-End--> |
+| CRYPTO_DH_L_INT = 403 | Bit length of the private key in the DH algorithm.<br>**Since**: 12<br><!--Device-CRYPTO_DH_L_INT = 403--><!--Device-CRYPTO_DH_L_INT = 403-End--> |
+| CRYPTO_DH_SK_DATABLOB = 404 | Private key value of the DH private key.<br>**Since**: 12<br><!--Device-CRYPTO_DH_SK_DATABLOB = 404--><!--Device-CRYPTO_DH_SK_DATABLOB = 404-End--> |
+| CRYPTO_DH_PK_DATABLOB = 405 | Public key value of the DH public key.<br>**Since**: 12<br><!--Device-CRYPTO_DH_PK_DATABLOB = 405--><!--Device-CRYPTO_DH_PK_DATABLOB = 405-End--> |
+| CRYPTO_ED25519_SK_DATABLOB = 501 | Private key value of the ED25519 private key.<br>**Since**: 12<br><!--Device-CRYPTO_ED25519_SK_DATABLOB = 501--><!--Device-CRYPTO_ED25519_SK_DATABLOB = 501-End--> |
+| CRYPTO_ED25519_PK_DATABLOB = 502 | Public key value of the ED25519 public key.<br>**Since**: 12<br><!--Device-CRYPTO_ED25519_PK_DATABLOB = 502--><!--Device-CRYPTO_ED25519_PK_DATABLOB = 502-End--> |
+| CRYPTO_X25519_SK_DATABLOB = 601 | Private key value of the X25519 private key.<br>**Since**: 12<br><!--Device-CRYPTO_X25519_SK_DATABLOB = 601--><!--Device-CRYPTO_X25519_SK_DATABLOB = 601-End--> |
+| CRYPTO_X25519_PK_DATABLOB = 602 | Public key value of the X25519 public key.<br>**Since**: 12<br><!--Device-CRYPTO_X25519_PK_DATABLOB = 602--><!--Device-CRYPTO_X25519_PK_DATABLOB = 602-End--> |
 
 ### Crypto_EncodingType
 
@@ -135,7 +135,7 @@ enum Crypto_EncodingType
 
 Defines the encoding type.
 
-<!--Device-Crypto_EncodingType--><!--Device-Crypto_EncodingType-End-->
+<!--Device-enum Crypto_EncodingType--><!--Device-enum Crypto_EncodingType-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -143,8 +143,8 @@ Defines the encoding type.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_PEM = 0 | PEM format.<br>**Since**: 12 |
-| CRYPTO_DER = 1 | DER format.<br>**Since**: 12 |
+| CRYPTO_PEM = 0 | PEM format.<br>**Since**: 12<br><!--Device-CRYPTO_PEM = 0--><!--Device-CRYPTO_PEM = 0-End--> |
+| CRYPTO_DER = 1 | DER format.<br>**Since**: 12<br><!--Device-CRYPTO_DER = 1--><!--Device-CRYPTO_DER = 1-End--> |
 
 ### CryptoPrivKeyEncoding_ParamType
 
@@ -156,7 +156,7 @@ enum CryptoPrivKeyEncoding_ParamType
 
 Defines private key encoding parameter types.
 
-<!--Device-CryptoPrivKeyEncoding_ParamType--><!--Device-CryptoPrivKeyEncoding_ParamType-End-->
+<!--Device-enum CryptoPrivKeyEncoding_ParamType--><!--Device-enum CryptoPrivKeyEncoding_ParamType-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -164,8 +164,8 @@ Defines private key encoding parameter types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0 | Password string.<br>**Since**: 20 |
-| CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1 | Symmetric cipher algorithm name, set via [OH_CryptoPrivKeyEncodingParams_SetParam](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam). Values: "DES-EDE3-CBC", "AES-128-CBC", "AES-192-CBC", "AES-256-CBC".<br>**Since**: 20 |
+| CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0 | Password string.<br>**Since**: 20<br><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0--><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0-End--> |
+| CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1 | Symmetric cipher algorithm name, set via [OH_CryptoPrivKeyEncodingParams_SetParam](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam). Values: "DES-EDE3-CBC", "AES-128-CBC", "AES-192-CBC", "AES-256-CBC".<br>**Since**: 20<br><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1--><!--Device-CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1-End--> |
 
 ### CryptoAsymKeySpec_Type
 
@@ -177,7 +177,7 @@ enum CryptoAsymKeySpec_Type
 
 Defines asymmetric key specification types.
 
-<!--Device-CryptoAsymKeySpec_Type--><!--Device-CryptoAsymKeySpec_Type-End-->
+<!--Device-enum CryptoAsymKeySpec_Type--><!--Device-enum CryptoAsymKeySpec_Type-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -185,10 +185,10 @@ Defines asymmetric key specification types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0 | Common parameter specification.<br>**Since**: 20 |
-| CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1 | Private key specification.<br>**Since**: 20 |
-| CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2 | Public key specification.<br>**Since**: 20 |
-| CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3 | Key pair specification.<br>**Since**: 20 |
+| CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0 | Common parameter specification.<br>**Since**: 20<br><!--Device-CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0--><!--Device-CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0-End--> |
+| CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1 | Private key specification.<br>**Since**: 20<br><!--Device-CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1--><!--Device-CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1-End--> |
+| CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2 | Public key specification.<br>**Since**: 20<br><!--Device-CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2--><!--Device-CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2-End--> |
+| CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3 | Key pair specification.<br>**Since**: 20<br><!--Device-CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3--><!--Device-CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3-End--> |
 
 
 ## Function description

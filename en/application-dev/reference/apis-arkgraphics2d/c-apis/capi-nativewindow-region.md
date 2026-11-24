@@ -24,11 +24,10 @@ indicates a dirty region where content is updated.
 
 | Name | Description |
 | -- | -- |
-| rects | if rects is nullptr, fill the Buffer dirty size by default |
-| rects.x |  |
-| rects.y |  |
-| rects.w |  |
-| rects.h |  |
-| int32_t rectNumber | if rectNumber is 0, fill the Buffer dirty size by default |
+| rects.x | <!--Device-rects.x--><!--Device-rects.x-End--> |
+| rects.y | <!--Device-rects.y--><!--Device-rects.y-End--> |
+| rects.w | <!--Device-rects.w--><!--Device-rects.w-End--> |
+| rects.h | <!--Device-rects.h--><!--Device-rects.h-End--> |
+| int32_t rectNumber | if rectNumber is 0, fill the Buffer dirty size by default<br><!--Device-int32_t rectNumber--><!--Device-int32_t rectNumber-End--> |
 
 

@@ -10,29 +10,29 @@
 
 | Name | Description |
 | -- | -- |
-| char *decimal_point |  |
-| char *thousands_sep |  |
-| char *grouping |  |
-| char *int_curr_symbol |  |
-| char *currency_symbol |  |
-| char *mon_decimal_point |  |
-| char *mon_thousands_sep |  |
-| char *mon_grouping |  |
-| char *positive_sign |  |
-| char *negative_sign |  |
-| char int_frac_digits |  |
-| char frac_digits |  |
-| char p_cs_precedes |  |
-| char p_sep_by_space |  |
-| char n_cs_precedes |  |
-| char n_sep_by_space |  |
-| char p_sign_posn |  |
-| char n_sign_posn |  |
-| char int_p_cs_precedes |  |
-| char int_p_sep_by_space |  |
-| char int_n_cs_precedes |  |
-| char int_n_sep_by_space |  |
-| char int_p_sign_posn |  |
-| char int_n_sign_posn |  |
+| char *decimal_point | <!--Device-char *decimal_point--><!--Device-char *decimal_point-End--> |
+| char *thousands_sep | <!--Device-char *thousands_sep--><!--Device-char *thousands_sep-End--> |
+| char *grouping | <!--Device-char *grouping--><!--Device-char *grouping-End--> |
+| char *int_curr_symbol | <!--Device-char *int_curr_symbol--><!--Device-char *int_curr_symbol-End--> |
+| char *currency_symbol | <!--Device-char *currency_symbol--><!--Device-char *currency_symbol-End--> |
+| char *mon_decimal_point | <!--Device-char *mon_decimal_point--><!--Device-char *mon_decimal_point-End--> |
+| char *mon_thousands_sep | <!--Device-char *mon_thousands_sep--><!--Device-char *mon_thousands_sep-End--> |
+| char *mon_grouping | <!--Device-char *mon_grouping--><!--Device-char *mon_grouping-End--> |
+| char *positive_sign | <!--Device-char *positive_sign--><!--Device-char *positive_sign-End--> |
+| char *negative_sign | <!--Device-char *negative_sign--><!--Device-char *negative_sign-End--> |
+| char int_frac_digits | <!--Device-char int_frac_digits--><!--Device-char int_frac_digits-End--> |
+| char frac_digits | <!--Device-char frac_digits--><!--Device-char frac_digits-End--> |
+| char p_cs_precedes | <!--Device-char p_cs_precedes--><!--Device-char p_cs_precedes-End--> |
+| char p_sep_by_space | <!--Device-char p_sep_by_space--><!--Device-char p_sep_by_space-End--> |
+| char n_cs_precedes | <!--Device-char n_cs_precedes--><!--Device-char n_cs_precedes-End--> |
+| char n_sep_by_space | <!--Device-char n_sep_by_space--><!--Device-char n_sep_by_space-End--> |
+| char p_sign_posn | <!--Device-char p_sign_posn--><!--Device-char p_sign_posn-End--> |
+| char n_sign_posn | <!--Device-char n_sign_posn--><!--Device-char n_sign_posn-End--> |
+| char int_p_cs_precedes | <!--Device-char int_p_cs_precedes--><!--Device-char int_p_cs_precedes-End--> |
+| char int_p_sep_by_space | <!--Device-char int_p_sep_by_space--><!--Device-char int_p_sep_by_space-End--> |
+| char int_n_cs_precedes | <!--Device-char int_n_cs_precedes--><!--Device-char int_n_cs_precedes-End--> |
+| char int_n_sep_by_space | <!--Device-char int_n_sep_by_space--><!--Device-char int_n_sep_by_space-End--> |
+| char int_p_sign_posn | <!--Device-char int_p_sign_posn--><!--Device-char int_p_sign_posn-End--> |
+| char int_n_sign_posn | <!--Device-char int_n_sign_posn--><!--Device-char int_n_sign_posn-End--> |
 
 

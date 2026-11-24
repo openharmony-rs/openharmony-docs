@@ -24,9 +24,9 @@ Defines the parameters required for creating a Vulkan surface.
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType | Struct sType is a VkStructureType value identifying this structure. it must be VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS. |
-| const void* pNext | pNext is NULL or a pointer to a structure extending this structure. pNext must be NULL. |
-| VkSurfaceCreateFlagsOHOS flags | flags is reserved for future use. flags must be 0. |
-| [OHNativeWindow*](capi-vulkan-nativewindow.md) window | window: is a pointer to a OHNativeWindow to associate the surface with. |
+| VkStructureType sType | Struct sType is a VkStructureType value identifying this structure. it must be VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS.<br><!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | pNext is NULL or a pointer to a structure extending this structure. pNext must be NULL.<br><!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSurfaceCreateFlagsOHOS flags | flags is reserved for future use. flags must be 0.<br><!--Device-VkSurfaceCreateFlagsOHOS flags--><!--Device-VkSurfaceCreateFlagsOHOS flags-End--> |
+| [OHNativeWindow*](capi-vulkan-nativewindow.md) window | window: is a pointer to a OHNativeWindow to associate the surface with.<br><!--Device-OHNativeWindow* window--><!--Device-OHNativeWindow* window-End--> |
 
 

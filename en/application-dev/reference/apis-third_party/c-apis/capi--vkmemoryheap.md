@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceSize size |  |
-| VkMemoryHeapFlags flags |  |
+| VkDeviceSize size | <!--Device-VkDeviceSize size--><!--Device-VkDeviceSize size-End--> |
+| VkMemoryHeapFlags flags | <!--Device-VkMemoryHeapFlags flags--><!--Device-VkMemoryHeapFlags flags-End--> |
 
 

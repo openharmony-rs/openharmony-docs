@@ -24,7 +24,7 @@ The struct describes the camera status information.
 
 | Name | Description |
 | -- | -- |
-| [Camera_Device*](capi-oh-camera-camera-device.md) camera | Pointer to the camera instance. |
-| [Camera_Status](capi-camera-h.md#camera_status) status | Camera status. |
+| [Camera_Device*](capi-oh-camera-camera-device.md) camera | Pointer to the camera instance.<br><!--Device-Camera_Device* camera--><!--Device-Camera_Device* camera-End--> |
+| [Camera_Status](capi-camera-h.md#camera_status) status | Camera status.<br><!--Device-Camera_Status status--><!--Device-Camera_Status status-End--> |
 
 

@@ -52,7 +52,7 @@ enum UsbDdkErrCode
 
 Enumerates the USB DDK error code definitions.
 
-<!--Device-UsbDdkErrCode--><!--Device-UsbDdkErrCode-End-->
+<!--Device-enum UsbDdkErrCode--><!--Device-enum UsbDdkErrCode-End-->
 
 **System capability**: SystemCapability.Driver.USB.Extension
 
@@ -60,15 +60,15 @@ Enumerates the USB DDK error code definitions.
 
 | Enum item | Description |
 | -- | -- |
-| USB_DDK_SUCCESS = 0 | Operation succeeded. |
-| USB_DDK_FAILED = -1 | Operation failed.<br>**Deprecated**: 16 |
-| USB_DDK_NO_PERM = 201 | No permission. Ensure that you have obtained the **ohos.permission.ACCESS_DDK_USB** permission.<br>**Since**: 14 |
-| USB_DDK_INVALID_PARAMETER = 401 | Invalid parameter. Check the validity of the input parameter, including whether the pointer is null and whether the value range is valid. The value is **-2** in versions earlier than API version 16. |
-| USB_DDK_MEMORY_ERROR = 27400001 | Memory-related error, for example, insufficient memory, memory data copy failure, or memory application failure. Check whether the available system memory is sufficient and whether the memory operation parameters are correct. The value is **-3** in versions earlier than API version 16. |
-| USB_DDK_NULL_PTR = -5 | Null pointer error. For example, the input pointer parameter is null. Check whether the input pointer parameter is valid.<br>**Deprecated**: 16 |
-| USB_DDK_DEVICE_BUSY = -6 | The device is busy. For example, the device is performing other operations or the device resources are occupied. Wait until the device is idle and try again, or release the occupied device resources.<br>**Deprecated**: 16 |
-| USB_DDK_INVALID_OPERATION = 27400002 | Invalid operation, for example, calling an API before the device is initialized or performing an operation when the device is in an incorrect state. Check whether the DDK has been initialized and whether the API handle is valid. The value is **-4** in versions earlier than API version 16. |
-| USB_DDK_IO_FAILED = 27400003 | Device I/O operation failure. Check whether the device connection is normal and whether the device supports the operation.<br>**Since**: 14 |
-| USB_DDK_TIMEOUT = 27400004 | Transfer timed out. Check whether the device response is normal or increase the timeout interval. The value is **-7** in versions earlier than API version 16. |
+| USB_DDK_SUCCESS = 0 | Operation succeeded.<br><!--Device-USB_DDK_SUCCESS = 0--><!--Device-USB_DDK_SUCCESS = 0-End--> |
+| USB_DDK_FAILED = -1 | Operation failed.<br>**Deprecated**: 16<br><!--Device-USB_DDK_FAILED = -1--><!--Device-USB_DDK_FAILED = -1-End--> |
+| USB_DDK_NO_PERM = 201 | No permission. Ensure that you have obtained the **ohos.permission.ACCESS_DDK_USB** permission.<br>**Since**: 14<br><!--Device-USB_DDK_NO_PERM = 201--><!--Device-USB_DDK_NO_PERM = 201-End--> |
+| USB_DDK_INVALID_PARAMETER = 401 | Invalid parameter. Check the validity of the input parameter, including whether the pointer is null and whether the value range is valid. The value is **-2** in versions earlier than API version 16.<br><!--Device-USB_DDK_INVALID_PARAMETER = 401--><!--Device-USB_DDK_INVALID_PARAMETER = 401-End--> |
+| USB_DDK_MEMORY_ERROR = 27400001 | Memory-related error, for example, insufficient memory, memory data copy failure, or memory application failure. Check whether the available system memory is sufficient and whether the memory operation parameters are correct. The value is **-3** in versions earlier than API version 16.<br><!--Device-USB_DDK_MEMORY_ERROR = 27400001--><!--Device-USB_DDK_MEMORY_ERROR = 27400001-End--> |
+| USB_DDK_NULL_PTR = -5 | Null pointer error. For example, the input pointer parameter is null. Check whether the input pointer parameter is valid.<br>**Deprecated**: 16<br><!--Device-USB_DDK_NULL_PTR = -5--><!--Device-USB_DDK_NULL_PTR = -5-End--> |
+| USB_DDK_DEVICE_BUSY = -6 | The device is busy. For example, the device is performing other operations or the device resources are occupied. Wait until the device is idle and try again, or release the occupied device resources.<br>**Deprecated**: 16<br><!--Device-USB_DDK_DEVICE_BUSY = -6--><!--Device-USB_DDK_DEVICE_BUSY = -6-End--> |
+| USB_DDK_INVALID_OPERATION = 27400002 | Invalid operation, for example, calling an API before the device is initialized or performing an operation when the device is in an incorrect state. Check whether the DDK has been initialized and whether the API handle is valid. The value is **-4** in versions earlier than API version 16.<br><!--Device-USB_DDK_INVALID_OPERATION = 27400002--><!--Device-USB_DDK_INVALID_OPERATION = 27400002-End--> |
+| USB_DDK_IO_FAILED = 27400003 | Device I/O operation failure. Check whether the device connection is normal and whether the device supports the operation.<br>**Since**: 14<br><!--Device-USB_DDK_IO_FAILED = 27400003--><!--Device-USB_DDK_IO_FAILED = 27400003-End--> |
+| USB_DDK_TIMEOUT = 27400004 | Transfer timed out. Check whether the device response is normal or increase the timeout interval. The value is **-7** in versions earlier than API version 16.<br><!--Device-USB_DDK_TIMEOUT = 27400004--><!--Device-USB_DDK_TIMEOUT = 27400004-End--> |
 
 

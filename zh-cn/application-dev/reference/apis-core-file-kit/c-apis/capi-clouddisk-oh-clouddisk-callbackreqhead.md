@@ -24,8 +24,8 @@ typedef struct OH_CloudDisk_CallbackReqHead {...} OH_CloudDisk_CallbackReqHead
 
 | 名称 | 描述 |
 | -- | -- |
-| CloudDisk_SyncFolderPath syncFolderPath | 回调请求所属同步根路径。<br>**起始版本：** 26.0.1 |
-| [OH_CloudDisk_CallbackType](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype) callbackType | 回调请求类型。<br>**起始版本：** 26.0.1 |
-| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) reqKey | 不透明请求标识。<br>**起始版本：** 26.0.1 |
+| CloudDisk_SyncFolderPath syncFolderPath | 回调请求所属同步根路径。<br>**起始版本：** 26.0.1<br><!--Device-CloudDisk_SyncFolderPath syncFolderPath--><!--Device-CloudDisk_SyncFolderPath syncFolderPath-End--> |
+| [OH_CloudDisk_CallbackType](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype) callbackType | 回调请求类型。<br>**起始版本：** 26.0.1<br><!--Device-OH_CloudDisk_CallbackType callbackType--><!--Device-OH_CloudDisk_CallbackType callbackType-End--> |
+| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) reqKey | 不透明请求标识。<br>**起始版本：** 26.0.1<br><!--Device-OH_CloudDisk_DataBuf reqKey--><!--Device-OH_CloudDisk_DataBuf reqKey-End--> |
 
 

@@ -24,8 +24,8 @@ Define the audio data array structure. This structure is used to get the process
 
 | Name | Description |
 | -- | -- |
-| void **audioDataArray | Pointer to the array of audio data pointers.<br>**Since**: 22 |
-| int32_t arraySize | Audio arraySize.<br>**Since**: 22 |
-| int32_t requestFrameSize | The memory size pointed to by each address in the audioDataArray array, in bytes. It should be ensured that the memory size pointed to by each address is requestFrameSize bytes.<br>**Since**: 22 |
+| void **audioDataArray | Pointer to the array of audio data pointers.<br>**Since**: 22<br><!--Device-void **audioDataArray--><!--Device-void **audioDataArray-End--> |
+| int32_t arraySize | Audio arraySize.<br>**Since**: 22<br><!--Device-int32_t arraySize--><!--Device-int32_t arraySize-End--> |
+| int32_t requestFrameSize | The memory size pointed to by each address in the audioDataArray array, in bytes. It should be ensured that the memory size pointed to by each address is requestFrameSize bytes.<br>**Since**: 22<br><!--Device-int32_t requestFrameSize--><!--Device-int32_t requestFrameSize-End--> |
 
 

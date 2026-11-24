@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceAddress startAddress |  |
-| VkDeviceSize strideInBytes |  |
+| VkDeviceAddress startAddress | <!--Device-VkDeviceAddress startAddress--><!--Device-VkDeviceAddress startAddress-End--> |
+| VkDeviceSize strideInBytes | <!--Device-VkDeviceSize strideInBytes--><!--Device-VkDeviceSize strideInBytes-End--> |
 
 

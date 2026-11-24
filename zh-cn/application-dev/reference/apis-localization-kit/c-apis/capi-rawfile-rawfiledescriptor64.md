@@ -24,8 +24,8 @@ typedef struct RawFileDescriptor64 {...} RawFileDescriptor64
 
 | 名称 | 描述 |
 | -- | -- |
-| int fd | rawfile文件描述符。 |
-| int64_t start | rawfile文件在HAP包中的起始位置，单位为Byte。 |
-| int64_t length | rawfile文件的长度，单位为Byte。 |
+| int fd | rawfile文件描述符。<br><!--Device-int fd--><!--Device-int fd-End--> |
+| int64_t start | rawfile文件在HAP包中的起始位置，单位为Byte。<br><!--Device-int64_t start--><!--Device-int64_t start-End--> |
+| int64_t length | rawfile文件的长度，单位为Byte。<br><!--Device-int64_t length--><!--Device-int64_t length-End--> |
 
 

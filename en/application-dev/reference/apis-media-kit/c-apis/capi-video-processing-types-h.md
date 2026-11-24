@@ -45,14 +45,14 @@ Type definitions for video processing.
 
 | Name | Description |
 | -- | -- |
-| const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | Used to create a video processing instance for color space conversion.<br> Some capabilities are supported by vendor. Use [OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported) to query if the conversion is supported.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | Used to create a video processing instance for metadata generation.<br> Generate HDR vivid metadata for video. The capability is supported by vendor. If the capability is not supported, [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) returns [VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-video-processing-types-h.md#videoprocessing_errorcode).<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | Used to create an video processing instance of detail enhancement.<br> Scale or resize video with the specified quality or just enhance details for rendering without changing its resolution.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | The key is used to specify the quality level for video detail enhancement.<br> See [VideoDetailEnhancer_QualityLevel](capi-video-processing-types-h.md#videodetailenhancer_qualitylevel) for its values. Use [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to set the quality level. Use [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to get the current quality level.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL | The key is used to specify the style control for video metadata generator.<br> See [VideoMetadataGeneratorStyleControl](capi-video-processing-types-h.md#videometadatageneratorstylecontrol) for its values. Use [OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the mode value into AVFormat parameter. Use [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to set parameter into video processing instance. Use [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to get the current mode.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR | Used to define video aisr autoeffect in XComponent.<br> Use [OH_VideoProcessing_IsAutoEffectSupported](capi-video-processing-h.md#oh_videoprocessing_isautoeffectsupported) to query if aisr autoeffect is supported.<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_AUTOEFFECT_ENABLE | Sets the key value for enabling or disabling AutoEffect.<br> Use [OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the enable value (0 is false, 1 is true) to the AVFormat parameter. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters to the video processing instance.<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *VIDEO_AUTOEFFECT_AISR_STRENGTH | Sets the AISR strength.<br> Use [OH_AVFormat_SetFloatValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setfloatvalue) to set the strength value to the AVFormat parameter. When the value is in the range [0.0, 1.0], the larger the value, the better the image quality, If this parameter is set to a value less than 0, the image quality enhancement is adaptive. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters of the video processing instance.<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | Used to create a video processing instance for color space conversion.<br> Some capabilities are supported by vendor. Use [OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported) to query if the conversion is supported.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION-End--> |
+| const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | Used to create a video processing instance for metadata generation.<br> Generate HDR vivid metadata for video. The capability is supported by vendor. If the capability is not supported, [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) returns [VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-video-processing-types-h.md#videoprocessing_errorcode).<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION-End--> |
+| const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | Used to create an video processing instance of detail enhancement.<br> Scale or resize video with the specified quality or just enhance details for rendering without changing its resolution.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER-End--> |
+| const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | The key is used to specify the quality level for video detail enhancement.<br> See [VideoDetailEnhancer_QualityLevel](capi-video-processing-types-h.md#videodetailenhancer_qualitylevel) for its values. Use [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to set the quality level. Use [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to get the current quality level.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL--><!--Device-const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL-End--> |
+| const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL | The key is used to specify the style control for video metadata generator.<br> See [VideoMetadataGeneratorStyleControl](capi-video-processing-types-h.md#videometadatageneratorstylecontrol) for its values. Use [OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the mode value into AVFormat parameter. Use [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to set parameter into video processing instance. Use [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to get the current mode.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL--><!--Device-const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL-End--> |
+| const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR | Used to define video aisr autoeffect in XComponent.<br> Use [OH_VideoProcessing_IsAutoEffectSupported](capi-video-processing-h.md#oh_videoprocessing_isautoeffectsupported) to query if aisr autoeffect is supported.<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR--><!--Device-const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR-End--> |
+| const char *VIDEO_AUTOEFFECT_ENABLE | Sets the key value for enabling or disabling AutoEffect.<br> Use [OH_AVFormat_SetIntValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the enable value (0 is false, 1 is true) to the AVFormat parameter. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters to the video processing instance.<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_AUTOEFFECT_ENABLE--><!--Device-const char *VIDEO_AUTOEFFECT_ENABLE-End--> |
+| const char *VIDEO_AUTOEFFECT_AISR_STRENGTH | Sets the AISR strength.<br> Use [OH_AVFormat_SetFloatValue](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_setfloatvalue) to set the strength value to the AVFormat parameter. When the value is in the range [0.0, 1.0], the larger the value, the better the image quality, If this parameter is set to a value less than 0, the image quality enhancement is adaptive. Use [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam) to set the parameters of the video processing instance.<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.Multimedia.VideoProcessingEngine<br><!--Device-const char *VIDEO_AUTOEFFECT_AISR_STRENGTH--><!--Device-const char *VIDEO_AUTOEFFECT_AISR_STRENGTH-End--> |
 
 ## Enum type description
 
@@ -66,7 +66,7 @@ enum VideoDetailEnhancer_QualityLevel
 
 The quality level is used for detail enhancement.<br> It is the value of the key parameter [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#variables).
 
-<!--Device-VideoDetailEnhancer_QualityLevel--><!--Device-VideoDetailEnhancer_QualityLevel-End-->
+<!--Device-enum VideoDetailEnhancer_QualityLevel--><!--Device-enum VideoDetailEnhancer_QualityLevel-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -74,10 +74,10 @@ The quality level is used for detail enhancement.<br> It is the value of the key
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | No detail enhancement |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | A low level of detail enhancement quality but with a fast speed. It's the default level |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | A medium level of detail enhancement quality. Its speed is between the low setting and high setting |
-| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | A high level of detail enhancement quality but with a relatively slow speed |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | No detail enhancement<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE-End--> |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | A low level of detail enhancement quality but with a fast speed. It's the default level<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW-End--> |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | A medium level of detail enhancement quality. Its speed is between the low setting and high setting<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM-End--> |
+| VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | A high level of detail enhancement quality but with a relatively slow speed<br><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH--><!--Device-VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH-End--> |
 
 **Reference**:
 
@@ -95,7 +95,7 @@ enum VideoMetadataGeneratorStyleControl
 
 The style control is used for video metadata generator.<br> It is the value of the key parameter [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#variables).
 
-<!--Device-VideoMetadataGeneratorStyleControl--><!--Device-VideoMetadataGeneratorStyleControl-End-->
+<!--Device-enum VideoMetadataGeneratorStyleControl--><!--Device-enum VideoMetadataGeneratorStyleControl-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -103,8 +103,8 @@ The style control is used for video metadata generator.<br> It is the value of t
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0 | Style Control into contrast mode |
-| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1 | Style Control into bright mode |
+| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0 | Style Control into contrast mode<br><!--Device-VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0--><!--Device-VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 0-End--> |
+| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1 | Style Control into bright mode<br><!--Device-VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1--><!--Device-VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 1-End--> |
 
 **Reference**:
 
@@ -123,7 +123,7 @@ enum VideoProcessing_ErrorCode
 
 Video processing error code.
 
-<!--Device-VideoProcessing_ErrorCode--><!--Device-VideoProcessing_ErrorCode-End-->
+<!--Device-enum VideoProcessing_ErrorCode--><!--Device-enum VideoProcessing_ErrorCode-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -131,17 +131,17 @@ Video processing error code.
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_PROCESSING_SUCCESS | &nbsp;Operation is successful. |
-| VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;Input parameter is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output video buffer - The video buffer is null. 2 - Invalid parameter - The parameter is null. 3 - Invalid type - The type passed in the create function does not exist. |
-| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | &nbsp;Some unknown error occurred, such as GPU calculation failure or memcpy failure. |
-| VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;The global environment initialization for video processing failed, such as failure to initialize the GPU environment. |
-| VIDEO_PROCESSING_ERROR_CREATE_FAILED | &nbsp;Failed to create video processing instance. For example, the number of instances exceeds the upper limit. |
-| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;Failed to process video buffer. For example, the processing times out. |
-| VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;The processing is not supported. You may call OH_VideoProcessing_IsXXXSupported to check whether the capability is supported. |
-| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;The operation is not permitted. This may be caused by incorrect status. |
-| VIDEO_PROCESSING_ERROR_NO_MEMORY | &nbsp;Out of memory. |
-| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;The video processing instance is invalid. This may be caused by null instance. |
-| VIDEO_PROCESSING_ERROR_INVALID_VALUE | &nbsp;Input value is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output video buffer - The video buffer width(height) is too large or colorspace is incorrect. 2 - Invalid parameter - The parameter does not contain valid information, such as detail enhancer level is incorrect. |
+| VIDEO_PROCESSING_SUCCESS | &nbsp;Operation is successful.<br><!--Device-VIDEO_PROCESSING_SUCCESS--><!--Device-VIDEO_PROCESSING_SUCCESS-End--> |
+| VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;Input parameter is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output video buffer - The video buffer is null. 2 - Invalid parameter - The parameter is null. 3 - Invalid type - The type passed in the create function does not exist.<br><!--Device-VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401--><!--Device-VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401-End--> |
+| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | &nbsp;Some unknown error occurred, such as GPU calculation failure or memcpy failure.<br><!--Device-VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001--><!--Device-VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001-End--> |
+| VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;The global environment initialization for video processing failed, such as failure to initialize the GPU environment.<br><!--Device-VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED--><!--Device-VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED-End--> |
+| VIDEO_PROCESSING_ERROR_CREATE_FAILED | &nbsp;Failed to create video processing instance. For example, the number of instances exceeds the upper limit.<br><!--Device-VIDEO_PROCESSING_ERROR_CREATE_FAILED--><!--Device-VIDEO_PROCESSING_ERROR_CREATE_FAILED-End--> |
+| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;Failed to process video buffer. For example, the processing times out.<br><!--Device-VIDEO_PROCESSING_ERROR_PROCESS_FAILED--><!--Device-VIDEO_PROCESSING_ERROR_PROCESS_FAILED-End--> |
+| VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;The processing is not supported. You may call OH_VideoProcessing_IsXXXSupported to check whether the capability is supported.<br><!--Device-VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING--><!--Device-VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING-End--> |
+| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;The operation is not permitted. This may be caused by incorrect status.<br><!--Device-VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED--><!--Device-VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED-End--> |
+| VIDEO_PROCESSING_ERROR_NO_MEMORY | &nbsp;Out of memory.<br><!--Device-VIDEO_PROCESSING_ERROR_NO_MEMORY--><!--Device-VIDEO_PROCESSING_ERROR_NO_MEMORY-End--> |
+| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;The video processing instance is invalid. This may be caused by null instance.<br><!--Device-VIDEO_PROCESSING_ERROR_INVALID_INSTANCE--><!--Device-VIDEO_PROCESSING_ERROR_INVALID_INSTANCE-End--> |
+| VIDEO_PROCESSING_ERROR_INVALID_VALUE | &nbsp;Input value is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output video buffer - The video buffer width(height) is too large or colorspace is incorrect. 2 - Invalid parameter - The parameter does not contain valid information, such as detail enhancer level is incorrect.<br><!--Device-VIDEO_PROCESSING_ERROR_INVALID_VALUE--><!--Device-VIDEO_PROCESSING_ERROR_INVALID_VALUE-End--> |
 
 ### VideoProcessing_State
 
@@ -153,7 +153,7 @@ enum VideoProcessing_State
 
 Video processing states.<br> The state is reported to user by callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate).
 
-<!--Device-VideoProcessing_State--><!--Device-VideoProcessing_State-End-->
+<!--Device-enum VideoProcessing_State--><!--Device-enum VideoProcessing_State-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -161,8 +161,8 @@ Video processing states.<br> The state is reported to user by callback function 
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_PROCESSING_STATE_RUNNING | Video processing is running |
-| VIDEO_PROCESSING_STATE_STOPPED | Video processing is stopped |
+| VIDEO_PROCESSING_STATE_RUNNING | Video processing is running<br><!--Device-VIDEO_PROCESSING_STATE_RUNNING--><!--Device-VIDEO_PROCESSING_STATE_RUNNING-End--> |
+| VIDEO_PROCESSING_STATE_STOPPED | Video processing is stopped<br><!--Device-VIDEO_PROCESSING_STATE_STOPPED--><!--Device-VIDEO_PROCESSING_STATE_STOPPED-End--> |
 
 
 ## Function description

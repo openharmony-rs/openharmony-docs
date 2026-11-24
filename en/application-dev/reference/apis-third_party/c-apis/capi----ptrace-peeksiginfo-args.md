@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint64_t off |  |
-| uint32_t flags |  |
-| int32_t nr |  |
+| uint64_t off | <!--Device-uint64_t off--><!--Device-uint64_t off-End--> |
+| uint32_t flags | <!--Device-uint32_t flags--><!--Device-uint32_t flags-End--> |
+| int32_t nr | <!--Device-int32_t nr--><!--Device-int32_t nr-End--> |
 
 

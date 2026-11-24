@@ -33,12 +33,12 @@ Provides APIs for creating and modifying tensor information.
 | [OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, size_t *shape_num)](#oh_ai_tensorgetshape) | Obtain the shape of the tensor. |
 | [OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format format)](#oh_ai_tensorsetformat) | Set the format for the tensor. |
 | [OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)](#oh_ai_tensorgetformat) | Obtain the format of the tensor. |
-| [OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)](#oh_ai_tensorsetdata) | Obtain the data for the tensor. |
+| [OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)](#oh_ai_tensorsetdata) | Set the data pointer for the tensor. |
 | [OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)](#oh_ai_tensorgetdata) | Obtain the data pointer of the tensor. |
 | [OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)](#oh_ai_tensorgetmutabledata) | Obtain the mutable data pointer of the tensor. If the internal data is empty, it will allocate memory. |
 | [OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)](#oh_ai_tensorgetelementnum) | Obtain the element number of the tensor. |
-| [OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)](#oh_ai_tensorgetdatasize) | Obtain the data size fo the tensor. |
-| [OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)](#oh_ai_tensorsetuserdata) | Set the data for the tensor with user-allocated data buffer.<br> The main purpose of this interface is providing a way of using memory already allocated by user as the Model's input, but not which allocated inside the Model object. It can reduce one copy. Note: The tensor won't free the data provided by invoker. Invoker has the responsibility to free it. And this free action should not be preformed before destruction of the tensor. |
+| [OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)](#oh_ai_tensorgetdatasize) | Obtain the data size of the tensor. |
+| [OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)](#oh_ai_tensorsetuserdata) | Set the data for the tensor with user-allocated data buffer.<br> The main purpose of this interface is providing a way of using memory already allocated by user as the Model's input, but not which allocated inside the Model object. It can reduce one copy. Note: The tensor won't free the data provided by invoker. Invoker has the responsibility to free it. And this free action should not be performed before destruction of the tensor. |
 | [OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tensor)](#oh_ai_tensorgetallocator) | Get allocator for the tensor.<br> The main purpose of this interface is providing a way of getting memory allocator of the tensor. |
 | [OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI_AllocatorHandle allocator)](#oh_ai_tensorsetallocator) | Set allocator to the tensor.<br> The main purpose of this interface is providing a way of setting memory allocator, so tensor's memory will be allocated by this allocator. |
 
@@ -46,8 +46,8 @@ Provides APIs for creating and modifying tensor information.
 
 | Name | Description |
 | -- | -- |
-| void *OH_AI_TensorHandle | Tensor object handle.<br>**Since**: 12 |
-| void *OH_AI_AllocatorHandle | Tensor allocator handle.<br>**Since**: 12 |
+| void *OH_AI_TensorHandle | Tensor object handle.<br>**Since**: 12<br><!--Device-void *OH_AI_TensorHandle--><!--Device-void *OH_AI_TensorHandle-End--> |
+| void *OH_AI_AllocatorHandle | Tensor allocator handle.<br>**Since**: 12<br><!--Device-void *OH_AI_AllocatorHandle--><!--Device-void *OH_AI_AllocatorHandle-End--> |
 
 ## Function description
 
@@ -220,7 +220,7 @@ Obtain the data type of the tensor.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API [OH_AI_DataType](capi-data-type-h.md#oh_ai_datatype) | The date type of the tensor. |
+| OH_AI_API [OH_AI_DataType](capi-data-type-h.md#oh_ai_datatype) | The data type of the tensor. |
 
 ### OH_AI_TensorSetShape()
 
@@ -263,7 +263,7 @@ Obtain the shape of the tensor.
 | Parameter | Description |
 | -- | -- |
 | const OH_AI_TensorHandle tensor | Tensor object handle. |
-| size_t *shape_num | Dimension of shape. |
+| size_t *shape_num | Output parameter that receives the number of shape dimensions. |
 
 **Returns**:
 
@@ -326,7 +326,7 @@ OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)
 
 **Description**
 
-Obtain the data for the tensor.
+Set the data pointer for the tensor.
 
 <!--Device-OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)--><!--Device-OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)-End-->
 
@@ -363,7 +363,7 @@ Obtain the data pointer of the tensor.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API const void * | The data pointer of the tensor. |
+| OH_AI_API const void * | The data pointer of the tensor, or NULL if the tensor or its data is unavailable. |
 
 ### OH_AI_TensorGetMutableData()
 
@@ -389,7 +389,7 @@ Obtain the mutable data pointer of the tensor. If the internal data is empty, it
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API void * | The data pointer of the tensor. |
+| OH_AI_API void * | The mutable data pointer, or NULL if the tensor is invalid or memory allocation fails. |
 
 ### OH_AI_TensorGetElementNum()
 
@@ -425,7 +425,7 @@ OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)
 
 **Description**
 
-Obtain the data size fo the tensor.
+Obtain the data size of the tensor.
 
 <!--Device-OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)-End-->
 
@@ -451,7 +451,7 @@ OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *
 
 **Description**
 
-Set the data for the tensor with user-allocated data buffer.<br> The main purpose of this interface is providing a way of using memory already allocated by user as the Model's input, but not which allocated inside the Model object. It can reduce one copy. Note: The tensor won't free the data provided by invoker. Invoker has the responsibility to free it. And this free action should not be preformed before destruction of the tensor.
+Set the data for the tensor with user-allocated data buffer.<br> The main purpose of this interface is providing a way of using memory already allocated by user as the Model's input, but not which allocated inside the Model object. It can reduce one copy. Note: The tensor won't free the data provided by invoker. Invoker has the responsibility to free it. And this free action should not be performed before destruction of the tensor.
 
 <!--Device-OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)--><!--Device-OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)-End-->
 
@@ -463,7 +463,7 @@ Set the data for the tensor with user-allocated data buffer.<br> The main purpos
 | -- | -- |
 | OH_AI_TensorHandle tensor | Tensor object handle. |
 | void *data | A pointer to the user data buffer. |
-| void *data | the byte size of the user data buffer. |
+| size_t data_size | Size of the user data buffer, in bytes. |
 
 **Returns**:
 
@@ -516,7 +516,7 @@ Set allocator to the tensor.<br> The main purpose of this interface is providing
 | Parameter | Description |
 | -- | -- |
 | OH_AI_TensorHandle tensor | Tensor object handle. |
-| OH_AI_AllocatorHandle allocator | A allocator handle. |
+| OH_AI_AllocatorHandle allocator | An allocator handle. |
 
 **Returns**:
 

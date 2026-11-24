@@ -24,7 +24,7 @@ typedef struct CaptureSession_Callbacks {...} CaptureSession_Callbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_CaptureSession_OnFocusStateChange](capi-capture-session-h.md#oh_capturesession_onfocusstatechange) onFocusStateChange | 捕获会话焦点状态更改事件。 |
-| [OH_CaptureSession_OnError](capi-capture-session-h.md#oh_capturesession_onerror) onError | 捕获会话错误事件。 |
+| [OH_CaptureSession_OnFocusStateChange](capi-capture-session-h.md#oh_capturesession_onfocusstatechange) onFocusStateChange | 捕获会话焦点状态更改事件。<br><!--Device-OH_CaptureSession_OnFocusStateChange onFocusStateChange--><!--Device-OH_CaptureSession_OnFocusStateChange onFocusStateChange-End--> |
+| [OH_CaptureSession_OnError](capi-capture-session-h.md#oh_capturesession_onerror) onError | 捕获会话错误事件。<br><!--Device-OH_CaptureSession_OnError onError--><!--Device-OH_CaptureSession_OnError onError-End--> |
 
 

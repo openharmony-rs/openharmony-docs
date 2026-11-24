@@ -34,7 +34,7 @@ enum OH_Core_HdrType
 
 HDR类型枚举。
 
-<!--Device-OH_Core_HdrType--><!--Device-OH_Core_HdrType-End-->
+<!--Device-enum OH_Core_HdrType--><!--Device-enum OH_Core_HdrType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -42,7 +42,7 @@ HDR类型枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CORE_HDR_TYPE_NONE = 0 | 此选项用于标记非HDR类型。<br>**起始版本：** 18 |
-| OH_CORE_HDR_TYPE_VIVID = 1 | 此选项用于标记HDR Vivid类型。<br>**起始版本：** 18 |
+| OH_CORE_HDR_TYPE_NONE = 0 | 此选项用于标记非HDR类型。<br>**起始版本：** 18<br><!--Device-OH_CORE_HDR_TYPE_NONE = 0--><!--Device-OH_CORE_HDR_TYPE_NONE = 0-End--> |
+| OH_CORE_HDR_TYPE_VIVID = 1 | 此选项用于标记HDR Vivid类型。<br>**起始版本：** 18<br><!--Device-OH_CORE_HDR_TYPE_VIVID = 1--><!--Device-OH_CORE_HDR_TYPE_VIVID = 1-End--> |
 
 

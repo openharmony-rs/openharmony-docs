@@ -133,7 +133,7 @@ enum PIXELMAP_ALPHA_TYPE
 
 Define a pixelmap alpha type.
 
-<!--Device-PIXELMAP_ALPHA_TYPE--><!--Device-PIXELMAP_ALPHA_TYPE-End-->
+<!--Device-enum PIXELMAP_ALPHA_TYPE--><!--Device-enum PIXELMAP_ALPHA_TYPE-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -141,10 +141,10 @@ Define a pixelmap alpha type.
 
 | Enum item | Description |
 | -- | -- |
-| PIXELMAP_ALPHA_TYPE_UNKNOWN = 0 | Unknown format |
-| PIXELMAP_ALPHA_TYPE_OPAQUE = 1 | Opaque format |
-| PIXELMAP_ALPHA_TYPE_PREMULTIPLIED = 2 | Premultiplied format |
-| PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED = 3 | Unpremultiplied format |
+| PIXELMAP_ALPHA_TYPE_UNKNOWN = 0 | Unknown format<br><!--Device-PIXELMAP_ALPHA_TYPE_UNKNOWN = 0--><!--Device-PIXELMAP_ALPHA_TYPE_UNKNOWN = 0-End--> |
+| PIXELMAP_ALPHA_TYPE_OPAQUE = 1 | Opaque format<br><!--Device-PIXELMAP_ALPHA_TYPE_OPAQUE = 1--><!--Device-PIXELMAP_ALPHA_TYPE_OPAQUE = 1-End--> |
+| PIXELMAP_ALPHA_TYPE_PREMULTIPLIED = 2 | Premultiplied format<br><!--Device-PIXELMAP_ALPHA_TYPE_PREMULTIPLIED = 2--><!--Device-PIXELMAP_ALPHA_TYPE_PREMULTIPLIED = 2-End--> |
+| PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED = 3 | Unpremultiplied format<br><!--Device-PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED = 3--><!--Device-PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED = 3-End--> |
 
 ### PIXEL_FORMAT
 
@@ -156,7 +156,7 @@ enum PIXEL_FORMAT
 
 Define a pixelmap alpha type.
 
-<!--Device-PIXEL_FORMAT--><!--Device-PIXEL_FORMAT-End-->
+<!--Device-enum PIXEL_FORMAT--><!--Device-enum PIXEL_FORMAT-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -174,20 +174,20 @@ typedef enum {
 
 | Enum item | Description |
 | -- | -- |
-| PIXEL_FORMAT_UNKNOWN = 0 | Unknown format |
-| PIXEL_FORMAT_RGB_565 = 2 | RGB_565 format |
-| PIXEL_FORMAT_RGBA_8888 = 3 | RGBA_8888 format |
-| PIXEL_FORMAT_BGRA_8888 = 4 | BGRA_8888 format |
-| PIXEL_FORMAT_RGB_888 = 5 | RGB_888 format |
-| PIXEL_FORMAT_ALPHA_8 = 6 | ALPHA_8 format |
-| PIXEL_FORMAT_RGBA_F16 = 7 | RGBA_F16 format |
-| PIXEL_FORMAT_NV21 = 8 | NV21 format |
-| PIXEL_FORMAT_NV12 = 9 | NV12 format |
-| PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102 format |
-| PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010 format |
-| PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010 format |
-| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8 format<br>**Since**: 26.0.0 |
-| PIXEL_FORMAT_ALPHA_F16 = 16 | ALPHA_F16 format<br>**Since**: 26.0.0 |
+| PIXEL_FORMAT_UNKNOWN = 0 | Unknown format<br><!--Device-PIXEL_FORMAT_UNKNOWN = 0--><!--Device-PIXEL_FORMAT_UNKNOWN = 0-End--> |
+| PIXEL_FORMAT_RGB_565 = 2 | RGB_565 format<br><!--Device-PIXEL_FORMAT_RGB_565 = 2--><!--Device-PIXEL_FORMAT_RGB_565 = 2-End--> |
+| PIXEL_FORMAT_RGBA_8888 = 3 | RGBA_8888 format<br><!--Device-PIXEL_FORMAT_RGBA_8888 = 3--><!--Device-PIXEL_FORMAT_RGBA_8888 = 3-End--> |
+| PIXEL_FORMAT_BGRA_8888 = 4 | BGRA_8888 format<br><!--Device-PIXEL_FORMAT_BGRA_8888 = 4--><!--Device-PIXEL_FORMAT_BGRA_8888 = 4-End--> |
+| PIXEL_FORMAT_RGB_888 = 5 | RGB_888 format<br><!--Device-PIXEL_FORMAT_RGB_888 = 5--><!--Device-PIXEL_FORMAT_RGB_888 = 5-End--> |
+| PIXEL_FORMAT_ALPHA_8 = 6 | ALPHA_8 format<br><!--Device-PIXEL_FORMAT_ALPHA_8 = 6--><!--Device-PIXEL_FORMAT_ALPHA_8 = 6-End--> |
+| PIXEL_FORMAT_RGBA_F16 = 7 | RGBA_F16 format<br><!--Device-PIXEL_FORMAT_RGBA_F16 = 7--><!--Device-PIXEL_FORMAT_RGBA_F16 = 7-End--> |
+| PIXEL_FORMAT_NV21 = 8 | NV21 format<br><!--Device-PIXEL_FORMAT_NV21 = 8--><!--Device-PIXEL_FORMAT_NV21 = 8-End--> |
+| PIXEL_FORMAT_NV12 = 9 | NV12 format<br><!--Device-PIXEL_FORMAT_NV12 = 9--><!--Device-PIXEL_FORMAT_NV12 = 9-End--> |
+| PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102 format<br><!--Device-PIXEL_FORMAT_RGBA_1010102 = 10--><!--Device-PIXEL_FORMAT_RGBA_1010102 = 10-End--> |
+| PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010 format<br><!--Device-PIXEL_FORMAT_YCBCR_P010 = 11--><!--Device-PIXEL_FORMAT_YCBCR_P010 = 11-End--> |
+| PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010 format<br><!--Device-PIXEL_FORMAT_YCRCB_P010 = 12--><!--Device-PIXEL_FORMAT_YCRCB_P010 = 12-End--> |
+| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8 format<br>**Since**: 26.0.0<br><!--Device-PIXEL_FORMAT_ALPHA_U8 = 15--><!--Device-PIXEL_FORMAT_ALPHA_U8 = 15-End--> |
+| PIXEL_FORMAT_ALPHA_F16 = 16 | ALPHA_F16 format<br>**Since**: 26.0.0<br><!--Device-PIXEL_FORMAT_ALPHA_F16 = 16--><!--Device-PIXEL_FORMAT_ALPHA_F16 = 16-End--> |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -199,7 +199,7 @@ enum OH_PixelmapNative_AntiAliasingLevel
 
 Defines the anti-aliasing level.
 
-<!--Device-OH_PixelmapNative_AntiAliasingLevel--><!--Device-OH_PixelmapNative_AntiAliasingLevel-End-->
+<!--Device-enum OH_PixelmapNative_AntiAliasingLevel--><!--Device-enum OH_PixelmapNative_AntiAliasingLevel-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -207,10 +207,10 @@ Defines the anti-aliasing level.
 
 | Enum item | Description |
 | -- | -- |
-| OH_PixelmapNative_AntiAliasing_NONE = 0 | Nearest-neighbor interpolation algorithm |
-| OH_PixelmapNative_AntiAliasing_LOW = 1 | Bilinear interpolation algorithm |
-| OH_PixelmapNative_AntiAliasing_MEDIUM = 2 | Bilinear interpolation algorithm with mipmap linear filtering |
-| OH_PixelmapNative_AntiAliasing_HIGH = 3 | Cubic interpolation algorithm |
+| OH_PixelmapNative_AntiAliasing_NONE = 0 | Nearest-neighbor interpolation algorithm<br><!--Device-OH_PixelmapNative_AntiAliasing_NONE = 0--><!--Device-OH_PixelmapNative_AntiAliasing_NONE = 0-End--> |
+| OH_PixelmapNative_AntiAliasing_LOW = 1 | Bilinear interpolation algorithm<br><!--Device-OH_PixelmapNative_AntiAliasing_LOW = 1--><!--Device-OH_PixelmapNative_AntiAliasing_LOW = 1-End--> |
+| OH_PixelmapNative_AntiAliasing_MEDIUM = 2 | Bilinear interpolation algorithm with mipmap linear filtering<br><!--Device-OH_PixelmapNative_AntiAliasing_MEDIUM = 2--><!--Device-OH_PixelmapNative_AntiAliasing_MEDIUM = 2-End--> |
+| OH_PixelmapNative_AntiAliasing_HIGH = 3 | Cubic interpolation algorithm<br><!--Device-OH_PixelmapNative_AntiAliasing_HIGH = 3--><!--Device-OH_PixelmapNative_AntiAliasing_HIGH = 3-End--> |
 
 ### OH_Pixelmap_HdrMetadataKey
 
@@ -222,7 +222,7 @@ enum OH_Pixelmap_HdrMetadataKey
 
 Enumerates the HDR metadata types that need to be stored in Pixelmap.
 
-<!--Device-OH_Pixelmap_HdrMetadataKey--><!--Device-OH_Pixelmap_HdrMetadataKey-End-->
+<!--Device-enum OH_Pixelmap_HdrMetadataKey--><!--Device-enum OH_Pixelmap_HdrMetadataKey-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -230,10 +230,10 @@ Enumerates the HDR metadata types that need to be stored in Pixelmap.
 
 | Enum item | Description |
 | -- | -- |
-| HDR_METADATA_TYPE = 0 | Indicate the types of metadata that image needs to use. |
-| HDR_STATIC_METADATA = 1 | Static metadata key. |
-| HDR_DYNAMIC_METADATA = 2 | Dynamic metadata key. |
-| HDR_GAINMAP_METADATA = 3 | Gainmap metadata key. |
+| HDR_METADATA_TYPE = 0 | Indicate the types of metadata that image needs to use.<br><!--Device-HDR_METADATA_TYPE = 0--><!--Device-HDR_METADATA_TYPE = 0-End--> |
+| HDR_STATIC_METADATA = 1 | Static metadata key.<br><!--Device-HDR_STATIC_METADATA = 1--><!--Device-HDR_STATIC_METADATA = 1-End--> |
+| HDR_DYNAMIC_METADATA = 2 | Dynamic metadata key.<br><!--Device-HDR_DYNAMIC_METADATA = 2--><!--Device-HDR_DYNAMIC_METADATA = 2-End--> |
+| HDR_GAINMAP_METADATA = 3 | Gainmap metadata key.<br><!--Device-HDR_GAINMAP_METADATA = 3--><!--Device-HDR_GAINMAP_METADATA = 3-End--> |
 
 ### OH_Pixelmap_HdrMetadataType
 
@@ -245,7 +245,7 @@ enum OH_Pixelmap_HdrMetadataType
 
 Value for HDR_METADATA_TYPE.
 
-<!--Device-OH_Pixelmap_HdrMetadataType--><!--Device-OH_Pixelmap_HdrMetadataType-End-->
+<!--Device-enum OH_Pixelmap_HdrMetadataType--><!--Device-enum OH_Pixelmap_HdrMetadataType-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -253,10 +253,10 @@ Value for HDR_METADATA_TYPE.
 
 | Enum item | Description |
 | -- | -- |
-| HDR_METADATA_TYPE_NONE = 0 | No metadata. |
-| HDR_METADATA_TYPE_BASE = 1 | Indicates that metadata will be used for the base image. |
-| HDR_METADATA_TYPE_GAINMAP = 2 | Indicates that metadata will be used for the gainmap image. |
-| HDR_METADATA_TYPE_ALTERNATE = 3 | Indicates that metadata will be used for the alternate image. |
+| HDR_METADATA_TYPE_NONE = 0 | No metadata.<br><!--Device-HDR_METADATA_TYPE_NONE = 0--><!--Device-HDR_METADATA_TYPE_NONE = 0-End--> |
+| HDR_METADATA_TYPE_BASE = 1 | Indicates that metadata will be used for the base image.<br><!--Device-HDR_METADATA_TYPE_BASE = 1--><!--Device-HDR_METADATA_TYPE_BASE = 1-End--> |
+| HDR_METADATA_TYPE_GAINMAP = 2 | Indicates that metadata will be used for the gainmap image.<br><!--Device-HDR_METADATA_TYPE_GAINMAP = 2--><!--Device-HDR_METADATA_TYPE_GAINMAP = 2-End--> |
+| HDR_METADATA_TYPE_ALTERNATE = 3 | Indicates that metadata will be used for the alternate image.<br><!--Device-HDR_METADATA_TYPE_ALTERNATE = 3--><!--Device-HDR_METADATA_TYPE_ALTERNATE = 3-End--> |
 
 
 ## Function description

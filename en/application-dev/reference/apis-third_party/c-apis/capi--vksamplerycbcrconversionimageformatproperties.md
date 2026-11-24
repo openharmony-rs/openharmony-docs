@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t combinedImageSamplerDescriptorCount |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t combinedImageSamplerDescriptorCount | <!--Device-uint32_t combinedImageSamplerDescriptorCount--><!--Device-uint32_t combinedImageSamplerDescriptorCount-End--> |
 
 

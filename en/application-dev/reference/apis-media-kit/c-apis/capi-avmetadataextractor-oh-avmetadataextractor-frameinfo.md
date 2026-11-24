@@ -22,9 +22,9 @@ Defines the information about a frame extracted from a video.
 
 | Name | Description |
 | -- | -- |
-| int64_t requestTimeUs | Time when the user sends the request. |
-| int64_t actualTimeUs | Time when the frame is actually extracted. If the extraction fails, the value is **-1**. |
-| [OH_PixelmapNative*](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md) image | Frame image extracted from the video. If the extraction fails, the value is a null pointer. |
-| [OH_AVMetadataExtractor_FetchState](capi-avmetadata-extractor-base-h.md#oh_avmetadataextractor_fetchstate) result | Result status of the frame extraction operation. |
+| int64_t requestTimeUs | Time when the user sends the request.<br><!--Device-int64_t requestTimeUs--><!--Device-int64_t requestTimeUs-End--> |
+| int64_t actualTimeUs | Time when the frame is actually extracted. If the extraction fails, the value is **-1**.<br><!--Device-int64_t actualTimeUs--><!--Device-int64_t actualTimeUs-End--> |
+| [OH_PixelmapNative*](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md) image | Frame image extracted from the video. If the extraction fails, the value is a null pointer.<br><!--Device-OH_PixelmapNative* image--><!--Device-OH_PixelmapNative* image-End--> |
+| [OH_AVMetadataExtractor_FetchState](capi-avmetadata-extractor-base-h.md#oh_avmetadataextractor_fetchstate) result | Result status of the frame extraction operation.<br><!--Device-OH_AVMetadataExtractor_FetchState result--><!--Device-OH_AVMetadataExtractor_FetchState result-End--> |
 
 

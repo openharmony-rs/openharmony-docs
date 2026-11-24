@@ -72,7 +72,7 @@ enum AVLoadingRequestError
 
 网络加载请求的错误码枚举。
 
-<!--Device-AVLoadingRequestError--><!--Device-AVLoadingRequestError-End-->
+<!--Device-enum AVLoadingRequestError--><!--Device-enum AVLoadingRequestError-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -80,13 +80,13 @@ enum AVLoadingRequestError
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_LOADING_ERROR_SUCCESS = 0 | 资源成功下载。 |
-| AV_LOADING_ERROR_NOT_READY = 1 | 资源未准备好，无法访问。 |
-| AV_LOADING_ERROR_NO_RESOURCE = 2 | 资源URL不存在。 |
-| AV_LOADING_ERROR_INVALID_HANDLE = 3 | 资源句柄的UUID无效。 |
-| AV_LOADING_ERROR_ACCESS_DENIED = 4 | 客户端无权请求该资源。 |
-| AV_LOADING_ERROR_ACCESS_TIMEOUT = 5 | 访问超时。 |
-| AV_LOADING_ERROR_AUTHORIZE_FAILED = 6 | 授权失败。 |
+| AV_LOADING_ERROR_SUCCESS = 0 | 资源成功下载。<br><!--Device-AV_LOADING_ERROR_SUCCESS = 0--><!--Device-AV_LOADING_ERROR_SUCCESS = 0-End--> |
+| AV_LOADING_ERROR_NOT_READY = 1 | 资源未准备好，无法访问。<br><!--Device-AV_LOADING_ERROR_NOT_READY = 1--><!--Device-AV_LOADING_ERROR_NOT_READY = 1-End--> |
+| AV_LOADING_ERROR_NO_RESOURCE = 2 | 资源URL不存在。<br><!--Device-AV_LOADING_ERROR_NO_RESOURCE = 2--><!--Device-AV_LOADING_ERROR_NO_RESOURCE = 2-End--> |
+| AV_LOADING_ERROR_INVALID_HANDLE = 3 | 资源句柄的UUID无效。<br><!--Device-AV_LOADING_ERROR_INVALID_HANDLE = 3--><!--Device-AV_LOADING_ERROR_INVALID_HANDLE = 3-End--> |
+| AV_LOADING_ERROR_ACCESS_DENIED = 4 | 客户端无权请求该资源。<br><!--Device-AV_LOADING_ERROR_ACCESS_DENIED = 4--><!--Device-AV_LOADING_ERROR_ACCESS_DENIED = 4-End--> |
+| AV_LOADING_ERROR_ACCESS_TIMEOUT = 5 | 访问超时。<br><!--Device-AV_LOADING_ERROR_ACCESS_TIMEOUT = 5--><!--Device-AV_LOADING_ERROR_ACCESS_TIMEOUT = 5-End--> |
+| AV_LOADING_ERROR_AUTHORIZE_FAILED = 6 | 授权失败。<br><!--Device-AV_LOADING_ERROR_AUTHORIZE_FAILED = 6--><!--Device-AV_LOADING_ERROR_AUTHORIZE_FAILED = 6-End--> |
 
 
 ## 函数说明

@@ -24,7 +24,7 @@ typedef struct OH_UsbManager_UsbPipe {...} OH_UsbManager_UsbPipe
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t busNum | 所连接设备的总线编号。<br>**起始版本：** 26.0.1 |
-| uint8_t devAddress | 所连接设备的设备地址。<br>**起始版本：** 26.0.1 |
+| uint8_t busNum | 所连接设备的总线编号。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t busNum--><!--Device-uint8_t busNum-End--> |
+| uint8_t devAddress | 所连接设备的设备地址。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t devAddress--><!--Device-uint8_t devAddress-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t maxVertexAttribDivisor |  |
-| VkBool32 supportsNonZeroFirstInstance |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t maxVertexAttribDivisor | <!--Device-uint32_t maxVertexAttribDivisor--><!--Device-uint32_t maxVertexAttribDivisor-End--> |
+| VkBool32 supportsNonZeroFirstInstance | <!--Device-VkBool32 supportsNonZeroFirstInstance--><!--Device-VkBool32 supportsNonZeroFirstInstance-End--> |
 
 

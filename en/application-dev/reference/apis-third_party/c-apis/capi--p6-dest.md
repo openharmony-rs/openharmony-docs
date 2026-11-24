@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ip6d_nxt |  |
-| uint8_t ip6d_len |  |
+| uint8_t ip6d_nxt | <!--Device-uint8_t ip6d_nxt--><!--Device-uint8_t ip6d_nxt-End--> |
+| uint8_t ip6d_len | <!--Device-uint8_t ip6d_len--><!--Device-uint8_t ip6d_len-End--> |
 
 

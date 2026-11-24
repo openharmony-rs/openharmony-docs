@@ -93,7 +93,7 @@ enum ArkUI_FontStyle
 
 Enumerates font styles.
 
-<!--Device-ArkUI_FontStyle--><!--Device-ArkUI_FontStyle-End-->
+<!--Device-enum ArkUI_FontStyle--><!--Device-enum ArkUI_FontStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,8 +101,8 @@ Enumerates font styles.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FONT_STYLE_NORMAL = 0 | Standard font style. |
-| ARKUI_FONT_STYLE_ITALIC | Italic font style. |
+| ARKUI_FONT_STYLE_NORMAL = 0 | Standard font style.<br><!--Device-ARKUI_FONT_STYLE_NORMAL = 0--><!--Device-ARKUI_FONT_STYLE_NORMAL = 0-End--> |
+| ARKUI_FONT_STYLE_ITALIC | Italic font style.<br><!--Device-ARKUI_FONT_STYLE_ITALIC--><!--Device-ARKUI_FONT_STYLE_ITALIC-End--> |
 
 ### ArkUI_FontWeight
 
@@ -114,7 +114,7 @@ enum ArkUI_FontWeight
 
 Enumerates font weights.
 
-<!--Device-ArkUI_FontWeight--><!--Device-ArkUI_FontWeight-End-->
+<!--Device-enum ArkUI_FontWeight--><!--Device-enum ArkUI_FontWeight-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,21 +122,21 @@ Enumerates font weights.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FONT_WEIGHT_W100 = 0 | 100 |
-| ARKUI_FONT_WEIGHT_W200 | 200 |
-| ARKUI_FONT_WEIGHT_W300 | 300 |
-| ARKUI_FONT_WEIGHT_W400 | 400 |
-| ARKUI_FONT_WEIGHT_W500 | 500 |
-| ARKUI_FONT_WEIGHT_W600 | 600 |
-| ARKUI_FONT_WEIGHT_W700 | 700 |
-| ARKUI_FONT_WEIGHT_W800 | 800 |
-| ARKUI_FONT_WEIGHT_W900 | 900 |
-| ARKUI_FONT_WEIGHT_BOLD | The font weight is bold. |
-| ARKUI_FONT_WEIGHT_NORMAL | The font weight is normal. |
-| ARKUI_FONT_WEIGHT_BOLDER | The font weight is bolder. |
-| ARKUI_FONT_WEIGHT_LIGHTER | The font weight is lighter. |
-| ARKUI_FONT_WEIGHT_MEDIUM | The font weight is medium. |
-| ARKUI_FONT_WEIGHT_REGULAR | The font weight is normal. |
+| ARKUI_FONT_WEIGHT_W100 = 0 | 100<br><!--Device-ARKUI_FONT_WEIGHT_W100 = 0--><!--Device-ARKUI_FONT_WEIGHT_W100 = 0-End--> |
+| ARKUI_FONT_WEIGHT_W200 | 200<br><!--Device-ARKUI_FONT_WEIGHT_W200--><!--Device-ARKUI_FONT_WEIGHT_W200-End--> |
+| ARKUI_FONT_WEIGHT_W300 | 300<br><!--Device-ARKUI_FONT_WEIGHT_W300--><!--Device-ARKUI_FONT_WEIGHT_W300-End--> |
+| ARKUI_FONT_WEIGHT_W400 | 400<br><!--Device-ARKUI_FONT_WEIGHT_W400--><!--Device-ARKUI_FONT_WEIGHT_W400-End--> |
+| ARKUI_FONT_WEIGHT_W500 | 500<br><!--Device-ARKUI_FONT_WEIGHT_W500--><!--Device-ARKUI_FONT_WEIGHT_W500-End--> |
+| ARKUI_FONT_WEIGHT_W600 | 600<br><!--Device-ARKUI_FONT_WEIGHT_W600--><!--Device-ARKUI_FONT_WEIGHT_W600-End--> |
+| ARKUI_FONT_WEIGHT_W700 | 700<br><!--Device-ARKUI_FONT_WEIGHT_W700--><!--Device-ARKUI_FONT_WEIGHT_W700-End--> |
+| ARKUI_FONT_WEIGHT_W800 | 800<br><!--Device-ARKUI_FONT_WEIGHT_W800--><!--Device-ARKUI_FONT_WEIGHT_W800-End--> |
+| ARKUI_FONT_WEIGHT_W900 | 900<br><!--Device-ARKUI_FONT_WEIGHT_W900--><!--Device-ARKUI_FONT_WEIGHT_W900-End--> |
+| ARKUI_FONT_WEIGHT_BOLD | The font weight is bold.<br><!--Device-ARKUI_FONT_WEIGHT_BOLD--><!--Device-ARKUI_FONT_WEIGHT_BOLD-End--> |
+| ARKUI_FONT_WEIGHT_NORMAL | The font weight is normal.<br><!--Device-ARKUI_FONT_WEIGHT_NORMAL--><!--Device-ARKUI_FONT_WEIGHT_NORMAL-End--> |
+| ARKUI_FONT_WEIGHT_BOLDER | The font weight is bolder.<br><!--Device-ARKUI_FONT_WEIGHT_BOLDER--><!--Device-ARKUI_FONT_WEIGHT_BOLDER-End--> |
+| ARKUI_FONT_WEIGHT_LIGHTER | The font weight is lighter.<br><!--Device-ARKUI_FONT_WEIGHT_LIGHTER--><!--Device-ARKUI_FONT_WEIGHT_LIGHTER-End--> |
+| ARKUI_FONT_WEIGHT_MEDIUM | The font weight is medium.<br><!--Device-ARKUI_FONT_WEIGHT_MEDIUM--><!--Device-ARKUI_FONT_WEIGHT_MEDIUM-End--> |
+| ARKUI_FONT_WEIGHT_REGULAR | The font weight is normal.<br><!--Device-ARKUI_FONT_WEIGHT_REGULAR--><!--Device-ARKUI_FONT_WEIGHT_REGULAR-End--> |
 
 ### ArkUI_TextHeightAdaptivePolicy
 
@@ -148,7 +148,7 @@ enum ArkUI_TextHeightAdaptivePolicy
 
 Enumerates how the adaptive height is determined for the text.
 
-<!--Device-ArkUI_TextHeightAdaptivePolicy--><!--Device-ArkUI_TextHeightAdaptivePolicy-End-->
+<!--Device-enum ArkUI_TextHeightAdaptivePolicy--><!--Device-enum ArkUI_TextHeightAdaptivePolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,9 +156,9 @@ Enumerates how the adaptive height is determined for the text.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | Prioritize the <b>maxLines</b> settings.When the text content exceeds the display area, the <b>maxLines</b> settings are met first, and the excess may be truncated or handled in other ways. |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | Prioritize the <b>minFontSize</b> settings.When the text content exceeds the display area, the font size is reduced first to fit the height limit, ensuring the text is fully displayed. The font size is automatically adjusted within the allowed range. |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | Prioritize the layout constraint settings in terms of height for strictly following the height setting of the layout constraint. The text height or font size is not automatically adjusted, and the excess may be truncated or handled in other ways. |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | Prioritize the <b>maxLines</b> settings.When the text content exceeds the display area, the <b>maxLines</b> settings are met first, and the excess may be truncated or handled in other ways.<br><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0--><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0-End--> |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | Prioritize the <b>minFontSize</b> settings.When the text content exceeds the display area, the font size is reduced first to fit the height limit, ensuring the text is fully displayed. The font size is automatically adjusted within the allowed range.<br><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST--><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST-End--> |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | Prioritize the layout constraint settings in terms of height for strictly following the height setting of the layout constraint. The text height or font size is not automatically adjusted, and the excess may be truncated or handled in other ways.<br><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST--><!--Device-ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST-End--> |
 
 ### ArkUI_TextDataDetectorType
 
@@ -170,7 +170,7 @@ enum ArkUI_TextDataDetectorType
 
 Enumerates the entity types of text recognition.
 
-<!--Device-ArkUI_TextDataDetectorType--><!--Device-ArkUI_TextDataDetectorType-End-->
+<!--Device-enum ArkUI_TextDataDetectorType--><!--Device-enum ArkUI_TextDataDetectorType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,10 +178,10 @@ Enumerates the entity types of text recognition.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0 | Phone Number. |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_URL | URL. |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL | Email address. |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS | Address. |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0 | Phone Number.<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0-End--> |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_URL | URL.<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_URL--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_URL-End--> |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL | Email address.<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL-End--> |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS | Address.<br><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS--><!--Device-ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS-End--> |
 
 ### ArkUI_MarqueeStartPolicy
 
@@ -193,7 +193,7 @@ enum ArkUI_MarqueeStartPolicy
 
 Enumerates marquee startup policies.
 
-<!--Device-ArkUI_MarqueeStartPolicy--><!--Device-ArkUI_MarqueeStartPolicy-End-->
+<!--Device-enum ArkUI_MarqueeStartPolicy--><!--Device-enum ArkUI_MarqueeStartPolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,8 +201,8 @@ Enumerates marquee startup policies.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0 | The marquee scrolls continuously by default. |
-| ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | The marquee starts scrolling when it has focus or when the mouse hovers over it. |
+| ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0 | The marquee scrolls continuously by default.<br><!--Device-ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0--><!--Device-ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0-End--> |
+| ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | The marquee starts scrolling when it has focus or when the mouse hovers over it.<br><!--Device-ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1--><!--Device-ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1-End--> |
 
 ### ArkUI_MarqueeUpdatePolicy
 
@@ -214,7 +214,7 @@ enum ArkUI_MarqueeUpdatePolicy
 
 Enumerates marquee update policies.
 
-<!--Device-ArkUI_MarqueeUpdatePolicy--><!--Device-ArkUI_MarqueeUpdatePolicy-End-->
+<!--Device-enum ArkUI_MarqueeUpdatePolicy--><!--Device-enum ArkUI_MarqueeUpdatePolicy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,8 +222,8 @@ Enumerates marquee update policies.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | Restarts the marquee from the start position after the attributes of the marquee component are updated. |
-| ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | Resumes the marquee from the current position after the attributes of the marquee component are updated. |
+| ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | Restarts the marquee from the start position after the attributes of the marquee component are updated.<br><!--Device-ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0--><!--Device-ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0-End--> |
+| ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | Resumes the marquee from the current position after the attributes of the marquee component are updated.<br><!--Device-ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1--><!--Device-ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1-End--> |
 
 
 ## Function description

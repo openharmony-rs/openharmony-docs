@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 dynamicRenderingLocalRead |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 dynamicRenderingLocalRead | <!--Device-VkBool32 dynamicRenderingLocalRead--><!--Device-VkBool32 dynamicRenderingLocalRead-End--> |
 
 

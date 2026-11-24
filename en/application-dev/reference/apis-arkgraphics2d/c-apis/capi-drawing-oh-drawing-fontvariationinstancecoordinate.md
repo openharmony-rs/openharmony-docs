@@ -24,7 +24,7 @@ Variable font attribute key-value pair.
 
 | Name | Description |
 | -- | -- |
-| char* axisKey | String identified by the keyword in the variable font attribute key-value pair. |
-| double value | Value of the variable font attribute key-value pair. |
+| char* axisKey | String identified by the keyword in the variable font attribute key-value pair.<br><!--Device-char* axisKey--><!--Device-char* axisKey-End--> |
+| double value | Value of the variable font attribute key-value pair.<br><!--Device-double value--><!--Device-double value-End--> |
 
 

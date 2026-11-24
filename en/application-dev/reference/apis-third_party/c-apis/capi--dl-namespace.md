@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| char name[NS_NAME_MAX+1] |  |
+| char name[NS_NAME_MAX+1] | <!--Device-char name[NS_NAME_MAX+1]--><!--Device-char name[NS_NAME_MAX+1]-End--> |
 
 

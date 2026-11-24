@@ -24,7 +24,7 @@ Defines the USB device pipe used to communicate with an opened device.
 
 | Name | Description |
 | -- | -- |
-| uint8_t busNum | Bus number of the connected device.<br>**Since**: 26.0.1 |
-| uint8_t devAddress | Device address of the connected device.<br>**Since**: 26.0.1 |
+| uint8_t busNum | Bus number of the connected device.<br>**Since**: 26.0.1<br><!--Device-uint8_t busNum--><!--Device-uint8_t busNum-End--> |
+| uint8_t devAddress | Device address of the connected device.<br>**Since**: 26.0.1<br><!--Device-uint8_t devAddress--><!--Device-uint8_t devAddress-End--> |
 
 

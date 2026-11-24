@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_PortMulti {...} OH_TrafficFilter_PortMulti
 
 ## Overview
 
-Port match value for multi-port match
+Defines the port matching value for multi-port matching.
 
 <!--Device-struct OH_TrafficFilter_PortMulti {...}--><!--Device-struct OH_TrafficFilter_PortMulti {...}-End-->
 
@@ -24,7 +24,7 @@ Port match value for multi-port match
 
 | Name | Description |
 | -- | -- |
-| uint32_t portCount | Number of ports in the array<br>**Since**: 26.0.0 |
-| uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT] | Port array<br>**Since**: 26.0.0 |
+| uint32_t portCount | Number of ports in the array.<br>**Since**: 26.0.0<br><!--Device-uint32_t portCount--><!--Device-uint32_t portCount-End--> |
+| uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT] | Port array.<br>**Since**: 26.0.0<br><!--Device-uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT]--><!--Device-uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT]-End--> |
 
 

@@ -32,7 +32,7 @@ enum AbilityBase_ErrorCode
 
 AbilityBase相关错误码枚举。
 
-<!--Device-AbilityBase_ErrorCode--><!--Device-AbilityBase_ErrorCode-End-->
+<!--Device-enum AbilityBase_ErrorCode--><!--Device-enum AbilityBase_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -40,7 +40,7 @@ AbilityBase相关错误码枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ABILITY_BASE_ERROR_CODE_NO_ERROR = 0 | 操作成功。 |
-| ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401 | 非法入参。 |
+| ABILITY_BASE_ERROR_CODE_NO_ERROR = 0 | 操作成功。<br><!--Device-ABILITY_BASE_ERROR_CODE_NO_ERROR = 0--><!--Device-ABILITY_BASE_ERROR_CODE_NO_ERROR = 0-End--> |
+| ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401 | 非法入参。<br><!--Device-ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401--><!--Device-ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401-End--> |
 
 

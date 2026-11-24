@@ -4,6 +4,8 @@
 
 Declares functions related to system font management, used to match and obtain fonts preset in the system. OH_Drawing_FontMgr (font manager) manages the font families preset in the system. Each font family corresponds to a font style set [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md), and each style set contains multiple typeface objects [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md).
 
+**File to Include**: <native_drawing/drawing_font_mgr.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing

@@ -56,7 +56,7 @@ enum ArkUI_AnimationStatus
 
 定义帧动画的播放状态。
 
-<!--Device-ArkUI_AnimationStatus--><!--Device-ArkUI_AnimationStatus-End-->
+<!--Device-enum ArkUI_AnimationStatus--><!--Device-enum ArkUI_AnimationStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,10 +64,10 @@ enum ArkUI_AnimationStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL = 0 | 动画初始状态。<br>**起始版本：** 12 |
-| ARKUI_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。<br>**起始版本：** 12 |
-| ARKUI_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。<br>**起始版本：** 12 |
-| ARKUI_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。<br>**起始版本：** 12 |
+| ARKUI_ANIMATION_STATUS_INITIAL = 0 | 动画初始状态。<br>**起始版本：** 12<br><!--Device-ARKUI_ANIMATION_STATUS_INITIAL = 0--><!--Device-ARKUI_ANIMATION_STATUS_INITIAL = 0-End--> |
+| ARKUI_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。<br>**起始版本：** 12<br><!--Device-ARKUI_ANIMATION_STATUS_RUNNING = 1--><!--Device-ARKUI_ANIMATION_STATUS_RUNNING = 1-End--> |
+| ARKUI_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。<br>**起始版本：** 12<br><!--Device-ARKUI_ANIMATION_STATUS_PAUSED = 2--><!--Device-ARKUI_ANIMATION_STATUS_PAUSED = 2-End--> |
+| ARKUI_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。<br>**起始版本：** 12<br><!--Device-ARKUI_ANIMATION_STATUS_STOPPED = 3--><!--Device-ARKUI_ANIMATION_STATUS_STOPPED = 3-End--> |
 
 
 ## 函数说明

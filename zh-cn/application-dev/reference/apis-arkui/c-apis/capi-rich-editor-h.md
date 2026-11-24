@@ -61,7 +61,7 @@ enum OH_ArkUI_HapticFeedbackMode
 
 触感反馈模式枚举，用于控制文本编辑器在用户交互（如长按、拖拽等操作）时的触感反馈行为。
 
-<!--Device-OH_ArkUI_HapticFeedbackMode--><!--Device-OH_ArkUI_HapticFeedbackMode-End-->
+<!--Device-enum OH_ArkUI_HapticFeedbackMode--><!--Device-enum OH_ArkUI_HapticFeedbackMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,9 +69,9 @@ enum OH_ArkUI_HapticFeedbackMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | 无振动效果。<br>**起始版本：** 24 |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | 有振动效果。<br>**起始版本：** 24 |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | 跟随系统的振动效果。<br>**起始版本：** 24 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | 无振动效果。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0--><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0-End--> |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | 有振动效果。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1--><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1-End--> |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | 跟随系统的振动效果。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2--><!--Device-OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2-End--> |
 
 ### OH_ArkUI_TextEditorSpanType
 
@@ -83,7 +83,7 @@ enum OH_ArkUI_TextEditorSpanType
 
 自定义文本选择菜单span类型枚举，用于标识文本编辑器中文本选择菜单的span类型。不同span类型对应不同的内容结构，影响自定义菜单的显示和交互行为。 例如，当用户选中纯文本内容时使用OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT类型，选中包含图文等混合内容时使用OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED类型， 需要自定义菜单项布局时使用OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER类型。
 
-<!--Device-OH_ArkUI_TextEditorSpanType--><!--Device-OH_ArkUI_TextEditorSpanType-End-->
+<!--Device-enum OH_ArkUI_TextEditorSpanType--><!--Device-enum OH_ArkUI_TextEditorSpanType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,11 +91,11 @@ enum OH_ArkUI_TextEditorSpanType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 | 文本span。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 | 图片span。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 | 混合span。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 | 自定义布局span。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 | 默认span。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 | 文本span。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 | 图片span。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 | 混合span。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 | 自定义布局span。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3-End--> |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 | 默认span。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4--><!--Device-OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4-End--> |
 
 ### OH_ArkUI_TextEditorResponseType
 
@@ -107,7 +107,7 @@ enum OH_ArkUI_TextEditorResponseType
 
 自定义文本选择菜单响应类型枚举，用于标识触发菜单弹出的交互方式。不同响应类型对应不同的用户操作（如右键点击、长按、鼠标选中），可根据响应类型定制不同的菜单内容。
 
-<!--Device-OH_ArkUI_TextEditorResponseType--><!--Device-OH_ArkUI_TextEditorResponseType-End-->
+<!--Device-enum OH_ArkUI_TextEditorResponseType--><!--Device-enum OH_ArkUI_TextEditorResponseType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,10 +115,10 @@ enum OH_ArkUI_TextEditorResponseType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 | 默认响应类型。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1-End--> |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2-End--> |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 | 默认响应类型。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3--><!--Device-OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3-End--> |
 
 ### OH_ArkUI_TextMenuType
 
@@ -130,7 +130,7 @@ enum OH_ArkUI_TextMenuType
 
 文本菜单类型枚举，用于区分文本编辑器中不同类型的弹出菜单，包括文本选择菜单和预览菜单。 不同菜单类型分别对应不同的交互场景和菜单展示方式。例如，文本选择菜单在用户选中文字时弹出，用于复制、删除等文本操作； 预览菜单在用户长按图片时弹出，用于触发图片内容拖拽预览以及复制、删除等操作。
 
-<!--Device-OH_ArkUI_TextMenuType--><!--Device-OH_ArkUI_TextMenuType-End-->
+<!--Device-enum OH_ArkUI_TextMenuType--><!--Device-enum OH_ArkUI_TextMenuType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,8 +138,8 @@ enum OH_ArkUI_TextMenuType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | 文本选择菜单。<br>**起始版本：** 24 |
-| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | 预览菜单。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | 文本选择菜单。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | 预览菜单。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1--><!--Device-OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1-End--> |
 
 ### OH_ArkUI_TextEditorType
 
@@ -151,7 +151,7 @@ enum OH_ArkUI_TextEditorType
 
 文本编辑器输入类型枚举，用于指定文本编辑器的输入模式。
 
-<!--Device-OH_ArkUI_TextEditorType--><!--Device-OH_ArkUI_TextEditorType-End-->
+<!--Device-enum OH_ArkUI_TextEditorType--><!--Device-enum OH_ArkUI_TextEditorType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,17 +159,17 @@ enum OH_ArkUI_TextEditorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | 普通输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | 数字输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | 邮箱地址输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | 密码输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | 数字密码输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | 锁屏密码输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | 用户名输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | 新密码输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | 带小数点的数字输入模式。<br>**起始版本：** 26.1.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | 一次性验证码输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | 普通输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | 数字输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | 邮箱地址输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | 密码输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | 数字密码输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | 锁屏密码输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | 用户名输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | 新密码输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | 带小数点的数字输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12-End--> |
+| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | 一次性验证码输入模式。<br>**起始版本：** 26.1.0<br><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14--><!--Device-OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14-End--> |
 
 
 ## 函数说明

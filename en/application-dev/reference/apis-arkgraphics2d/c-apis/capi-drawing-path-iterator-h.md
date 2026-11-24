@@ -42,7 +42,7 @@ enum OH_Drawing_PathIteratorVerb
 
 Enumerates the path operation types contained in an iterator. It is used to read path operation instructions.
 
-<!--Device-OH_Drawing_PathIteratorVerb--><!--Device-OH_Drawing_PathIteratorVerb-End-->
+<!--Device-enum OH_Drawing_PathIteratorVerb--><!--Device-enum OH_Drawing_PathIteratorVerb-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -50,13 +50,13 @@ Enumerates the path operation types contained in an iterator. It is used to read
 
 | Enum item | Description |
 | -- | -- |
-| MOVE = 0 | Sets the start point of the path. |
-| LINE = 1 | Adds a line segment. |
-| QUAD = 2 | Adds a quadratic Bezier curve for smooth transitions. |
-| CONIC = 3 | Adds a conic curve. |
-| CUBIC = 4 | Adds a cubic Bezier curve for smooth transitions. |
-| CLOSE = 5 | Closes the path. |
-| DONE = CLOSE + 1 | Completes the path configuration. |
+| MOVE = 0 | Sets the start point of the path.<br><!--Device-MOVE = 0--><!--Device-MOVE = 0-End--> |
+| LINE = 1 | Adds a line segment.<br><!--Device-LINE = 1--><!--Device-LINE = 1-End--> |
+| QUAD = 2 | Adds a quadratic Bezier curve for smooth transitions.<br><!--Device-QUAD = 2--><!--Device-QUAD = 2-End--> |
+| CONIC = 3 | Adds a conic curve.<br><!--Device-CONIC = 3--><!--Device-CONIC = 3-End--> |
+| CUBIC = 4 | Adds a cubic Bezier curve for smooth transitions.<br><!--Device-CUBIC = 4--><!--Device-CUBIC = 4-End--> |
+| CLOSE = 5 | Closes the path.<br><!--Device-CLOSE = 5--><!--Device-CLOSE = 5-End--> |
+| DONE = CLOSE + 1 | Completes the path configuration.<br><!--Device-DONE = CLOSE + 1--><!--Device-DONE = CLOSE + 1-End--> |
 
 
 ## Function description

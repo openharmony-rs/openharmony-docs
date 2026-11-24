@@ -24,8 +24,8 @@ The struct describes the audio capture information.
 
 | Name | Description |
 | -- | -- |
-| int32_t audioSampleRate | Audio capture sample rate info, in Hz |
-| int32_t audioChannels | Audio capture channel info |
-| [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) audioSource | Audio capture source type |
+| int32_t audioSampleRate | Audio capture sample rate info, in Hz<br><!--Device-int32_t audioSampleRate--><!--Device-int32_t audioSampleRate-End--> |
+| int32_t audioChannels | Audio capture channel info<br><!--Device-int32_t audioChannels--><!--Device-int32_t audioChannels-End--> |
+| [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) audioSource | Audio capture source type<br><!--Device-OH_AudioCaptureSourceType audioSource--><!--Device-OH_AudioCaptureSourceType audioSource-End--> |
 
 

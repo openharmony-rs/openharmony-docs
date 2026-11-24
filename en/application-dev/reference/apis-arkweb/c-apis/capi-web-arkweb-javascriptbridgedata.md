@@ -24,7 +24,7 @@ ArkWeb_JavaScriptBridgeData is a struct that defines JavaScript bridge data, use
 
 | Name | Description |
 | -- | -- |
-| const uint8_t* buffer | Pointer to the transmitted data. Supports String and ArrayBuffer types. Other types are JSON-serialized and passed as String. |
-| size_t size | Length of the transmitted data. It is recommended to set this value appropriately based on the actual data size and keep it consistent with the buffer size to avoid performance or data issues caused by excessively large or small values. |
+| const uint8_t* buffer | Pointer to the transmitted data. Supports String and ArrayBuffer types. Other types are JSON-serialized and passed as String.<br><!--Device-const uint8_t* buffer--><!--Device-const uint8_t* buffer-End--> |
+| size_t size | Length of the transmitted data. It is recommended to set this value appropriately based on the actual data size and keep it consistent with the buffer size to avoid performance or data issues caused by excessively large or small values.<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

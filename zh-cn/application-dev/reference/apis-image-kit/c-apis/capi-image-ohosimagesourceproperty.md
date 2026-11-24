@@ -24,9 +24,9 @@ struct OhosImageSourceProperty {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| char* value = nullptr | Image source property key and value string head.<br>**起始版本：** 10 |
-| size_t size = 0 | Image source property key and value string size.<br>**起始版本：** 10 |
-| char* value | Image source property key and value string head.<br>**起始版本：** 10 |
-| size_t size | Image source property key and value string size.<br>**起始版本：** 10 |
+| char* value = nullptr | Image source property key and value string head.<br>**起始版本：** 10<br><!--Device-char* value = nullptr--><!--Device-char* value = nullptr-End--> |
+| size_t size = 0 | Image source property key and value string size.<br>**起始版本：** 10<br><!--Device-size_t size = 0--><!--Device-size_t size = 0-End--> |
+| char* value | Image source property key and value string head.<br>**起始版本：** 10<br><!--Device-char* value--><!--Device-char* value-End--> |
+| size_t size | Image source property key and value string size.<br>**起始版本：** 10<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

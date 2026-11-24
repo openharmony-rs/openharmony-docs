@@ -24,8 +24,8 @@ typedef struct OH_AudioInfo {...} OH_AudioInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) micCapInfo | 音频麦克风采集信息，用于配置麦克风音频采集的采集参数。 |
-| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) innerCapInfo | 音频内录采集信息，用于配置内录音频采集的采集参数。 |
-| [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) audioEncInfo | 音频编码信息。采集原始码流时不需要设置编码参数。未设置时默认不进行音频编码。 |
+| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) micCapInfo | 音频麦克风采集信息，用于配置麦克风音频采集的采集参数。<br><!--Device-OH_AudioCaptureInfo micCapInfo--><!--Device-OH_AudioCaptureInfo micCapInfo-End--> |
+| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) innerCapInfo | 音频内录采集信息，用于配置内录音频采集的采集参数。<br><!--Device-OH_AudioCaptureInfo innerCapInfo--><!--Device-OH_AudioCaptureInfo innerCapInfo-End--> |
+| [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) audioEncInfo | 音频编码信息。采集原始码流时不需要设置编码参数。未设置时默认不进行音频编码。<br><!--Device-OH_AudioEncInfo audioEncInfo--><!--Device-OH_AudioEncInfo audioEncInfo-End--> |
 
 

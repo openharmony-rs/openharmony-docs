@@ -24,10 +24,10 @@ typedef struct TimeZoneRuleQuery {...} TimeZoneRuleQuery
 
 | 名称 | 描述 |
 | -- | -- |
-| double base | 查询的基准时间，单位为毫秒（ms），采用Unix时间戳格式。 |
-| int32_t prevRawOffset | 上一次的时区原始偏移量，单位为毫秒（ms）。 |
-| int32_t prevDSTSavings | 上一次的夏令时偏移量，单位为毫秒（ms）。 |
-| bool inclusive | 查询结果是否包含基准时间。true：查询结果包含基准时间；false：查询结果不包含基准时间。 |
-| double result | 查询结果，单位为毫秒（ms），采用Unix时间戳格式。 |
+| double base | 查询的基准时间，单位为毫秒（ms），采用Unix时间戳格式。<br><!--Device-double base--><!--Device-double base-End--> |
+| int32_t prevRawOffset | 上一次的时区原始偏移量，单位为毫秒（ms）。<br><!--Device-int32_t prevRawOffset--><!--Device-int32_t prevRawOffset-End--> |
+| int32_t prevDSTSavings | 上一次的夏令时偏移量，单位为毫秒（ms）。<br><!--Device-int32_t prevDSTSavings--><!--Device-int32_t prevDSTSavings-End--> |
+| bool inclusive | 查询结果是否包含基准时间。true：查询结果包含基准时间；false：查询结果不包含基准时间。<br><!--Device-bool inclusive--><!--Device-bool inclusive-End--> |
+| double result | 查询结果，单位为毫秒（ms），采用Unix时间戳格式。<br><!--Device-double result--><!--Device-double result-End--> |
 
 

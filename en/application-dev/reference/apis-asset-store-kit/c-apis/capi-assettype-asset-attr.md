@@ -24,7 +24,7 @@ Defines an asset attribute, which consists of a tag and a value in the form of a
 
 | Name | Description |
 | -- | -- |
-| uint32_t tag | The tag of an asset attribute. |
-| [Asset_Value](capi-assettype-asset-value.md) value | The value (content) of an asset attribute. |
+| uint32_t tag | The tag of an asset attribute.<br><!--Device-uint32_t tag--><!--Device-uint32_t tag-End--> |
+| [Asset_Value](capi-assettype-asset-value.md) value | The value (content) of an asset attribute.<br><!--Device-Asset_Value value--><!--Device-Asset_Value value-End--> |
 
 

@@ -24,9 +24,9 @@ Defines the property string (in key-value format) of the image source. It is use
 
 | Name | Description |
 | -- | -- |
-| char* value = nullptr | Image source property key and value string head.<br>**Since**: 10 |
-| size_t size = 0 | Image source property key and value string size.<br>**Since**: 10 |
-| char* value | Image source property key and value string head.<br>**Since**: 10 |
-| size_t size | Image source property key and value string size.<br>**Since**: 10 |
+| char* value = nullptr | Image source property key and value string head.<br>**Since**: 10<br><!--Device-char* value = nullptr--><!--Device-char* value = nullptr-End--> |
+| size_t size = 0 | Image source property key and value string size.<br>**Since**: 10<br><!--Device-size_t size = 0--><!--Device-size_t size = 0-End--> |
+| char* value | Image source property key and value string head.<br>**Since**: 10<br><!--Device-char* value--><!--Device-char* value-End--> |
+| size_t size | Image source property key and value string size.<br>**Since**: 10<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

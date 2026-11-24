@@ -39,7 +39,7 @@ enum OH_Drawing_BlurType
 
 蒙版滤波器模糊操作类型的枚举。
 
-<!--Device-OH_Drawing_BlurType--><!--Device-OH_Drawing_BlurType-End-->
+<!--Device-enum OH_Drawing_BlurType--><!--Device-enum OH_Drawing_BlurType-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -47,10 +47,10 @@ enum OH_Drawing_BlurType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL | 内外模糊。 |
-| SOLID | 内部实心，外部模糊。 |
-| OUTER | 内部空白，外部模糊。 |
-| INNER | 内部模糊，外部空白。 |
+| NORMAL | 内外模糊。<br><!--Device-NORMAL--><!--Device-NORMAL-End--> |
+| SOLID | 内部实心，外部模糊。<br><!--Device-SOLID--><!--Device-SOLID-End--> |
+| OUTER | 内部空白，外部模糊。<br><!--Device-OUTER--><!--Device-OUTER-End--> |
+| INNER | 内部模糊，外部空白。<br><!--Device-INNER--><!--Device-INNER-End--> |
 
 
 ## 函数说明

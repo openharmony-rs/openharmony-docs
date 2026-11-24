@@ -24,7 +24,7 @@ typedef struct Asset_Blob {...} Asset_Blob
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t size | 表示字节数组的大小。 |
-| uint8_t *data | 指向字节数组的指针。 |
+| uint32_t size | 表示字节数组的大小。<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
+| uint8_t *data | 指向字节数组的指针。<br><!--Device-uint8_t *data--><!--Device-uint8_t *data-End--> |
 
 

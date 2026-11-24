@@ -56,7 +56,7 @@ enum ArkUI_AnimationStatus
 
 Enumerates the playback states of the frame-by-frame animation.
 
-<!--Device-ArkUI_AnimationStatus--><!--Device-ArkUI_AnimationStatus-End-->
+<!--Device-enum ArkUI_AnimationStatus--><!--Device-enum ArkUI_AnimationStatus-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,10 +64,10 @@ Enumerates the playback states of the frame-by-frame animation.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL = 0 | The animation is in the initial state.<br>**Since**: 12 |
-| ARKUI_ANIMATION_STATUS_RUNNING = 1 | The animation is being played.<br>**Since**: 12 |
-| ARKUI_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.<br>**Since**: 12 |
-| ARKUI_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.<br>**Since**: 12 |
+| ARKUI_ANIMATION_STATUS_INITIAL = 0 | The animation is in the initial state.<br>**Since**: 12<br><!--Device-ARKUI_ANIMATION_STATUS_INITIAL = 0--><!--Device-ARKUI_ANIMATION_STATUS_INITIAL = 0-End--> |
+| ARKUI_ANIMATION_STATUS_RUNNING = 1 | The animation is being played.<br>**Since**: 12<br><!--Device-ARKUI_ANIMATION_STATUS_RUNNING = 1--><!--Device-ARKUI_ANIMATION_STATUS_RUNNING = 1-End--> |
+| ARKUI_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.<br>**Since**: 12<br><!--Device-ARKUI_ANIMATION_STATUS_PAUSED = 2--><!--Device-ARKUI_ANIMATION_STATUS_PAUSED = 2-End--> |
+| ARKUI_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.<br>**Since**: 12<br><!--Device-ARKUI_ANIMATION_STATUS_STOPPED = 3--><!--Device-ARKUI_ANIMATION_STATUS_STOPPED = 3-End--> |
 
 
 ## Function description

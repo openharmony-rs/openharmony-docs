@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkPipelineCreationFeedbackFlags flags |  |
-| uint64_t duration |  |
+| VkPipelineCreationFeedbackFlags flags | <!--Device-VkPipelineCreationFeedbackFlags flags--><!--Device-VkPipelineCreationFeedbackFlags flags-End--> |
+| uint64_t duration | <!--Device-uint64_t duration--><!--Device-uint64_t duration-End--> |
 
 

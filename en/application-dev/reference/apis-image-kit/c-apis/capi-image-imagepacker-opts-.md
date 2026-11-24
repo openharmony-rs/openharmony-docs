@@ -24,7 +24,7 @@ Defines the image packing options.
 
 | Name | Description |
 | -- | -- |
-| const char* format | Encoding format. |
-| int quality | Encoding quality. |
+| const char* format | Encoding format.<br><!--Device-const char* format--><!--Device-const char* format-End--> |
+| int quality | Encoding quality.<br><!--Device-int quality--><!--Device-int quality-End--> |
 
 

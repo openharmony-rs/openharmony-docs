@@ -69,7 +69,7 @@ enum GamePad_AxisSourceType
 
 此枚举定义手柄轴事件来源类型。
 
-<!--Device-GamePad_AxisSourceType--><!--Device-GamePad_AxisSourceType-End-->
+<!--Device-enum GamePad_AxisSourceType--><!--Device-enum GamePad_AxisSourceType-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -77,11 +77,11 @@ enum GamePad_AxisSourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DPAD = 0 | 轴事件来源于方向按键DPAD。<br>**起始版本：** 21 |
-| LEFT_THUMBSTICK = 1 | 轴事件来源于LeftThumbstick。<br>**起始版本：** 21 |
-| RIGHT_THUMBSTICK = 2 | 轴事件来源于RightThumbstick。<br>**起始版本：** 21 |
-| LEFT_TRIGGER = 3 | 轴事件来源于LeftTrigger。<br>**起始版本：** 21 |
-| RIGHT_TRIGGER = 4 | 轴事件来源于RightTrigger。<br>**起始版本：** 21 |
+| DPAD = 0 | 轴事件来源于方向按键DPAD。<br>**起始版本：** 21<br><!--Device-DPAD = 0--><!--Device-DPAD = 0-End--> |
+| LEFT_THUMBSTICK = 1 | 轴事件来源于LeftThumbstick。<br>**起始版本：** 21<br><!--Device-LEFT_THUMBSTICK = 1--><!--Device-LEFT_THUMBSTICK = 1-End--> |
+| RIGHT_THUMBSTICK = 2 | 轴事件来源于RightThumbstick。<br>**起始版本：** 21<br><!--Device-RIGHT_THUMBSTICK = 2--><!--Device-RIGHT_THUMBSTICK = 2-End--> |
+| LEFT_TRIGGER = 3 | 轴事件来源于LeftTrigger。<br>**起始版本：** 21<br><!--Device-LEFT_TRIGGER = 3--><!--Device-LEFT_TRIGGER = 3-End--> |
+| RIGHT_TRIGGER = 4 | 轴事件来源于RightTrigger。<br>**起始版本：** 21<br><!--Device-RIGHT_TRIGGER = 4--><!--Device-RIGHT_TRIGGER = 4-End--> |
 
 ### GamePad_Button_ActionType
 
@@ -93,7 +93,7 @@ enum GamePad_Button_ActionType
 
 此枚举定义手柄按键动作类型。
 
-<!--Device-GamePad_Button_ActionType--><!--Device-GamePad_Button_ActionType-End-->
+<!--Device-enum GamePad_Button_ActionType--><!--Device-enum GamePad_Button_ActionType-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -101,8 +101,8 @@ enum GamePad_Button_ActionType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DOWN = 0 | 按键按下。<br>**起始版本：** 21 |
-| UP = 1 | 按键抬起。<br>**起始版本：** 21 |
+| DOWN = 0 | 按键按下。<br>**起始版本：** 21<br><!--Device-DOWN = 0--><!--Device-DOWN = 0-End--> |
+| UP = 1 | 按键抬起。<br>**起始版本：** 21<br><!--Device-UP = 1--><!--Device-UP = 1-End--> |
 
 
 ## 函数说明

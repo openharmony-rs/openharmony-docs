@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t field_pic_flag : 1 |  |
-| uint32_t is_intra : 1 |  |
-| uint32_t IdrPicFlag : 1 |  |
-| uint32_t bottom_field_flag : 1 |  |
-| uint32_t is_reference : 1 |  |
-| uint32_t complementary_field_pair : 1 |  |
+| uint32_t field_pic_flag : 1 | <!--Device-uint32_t field_pic_flag : 1--><!--Device-uint32_t field_pic_flag : 1-End--> |
+| uint32_t is_intra : 1 | <!--Device-uint32_t is_intra : 1--><!--Device-uint32_t is_intra : 1-End--> |
+| uint32_t IdrPicFlag : 1 | <!--Device-uint32_t IdrPicFlag : 1--><!--Device-uint32_t IdrPicFlag : 1-End--> |
+| uint32_t bottom_field_flag : 1 | <!--Device-uint32_t bottom_field_flag : 1--><!--Device-uint32_t bottom_field_flag : 1-End--> |
+| uint32_t is_reference : 1 | <!--Device-uint32_t is_reference : 1--><!--Device-uint32_t is_reference : 1-End--> |
+| uint32_t complementary_field_pair : 1 | <!--Device-uint32_t complementary_field_pair : 1--><!--Device-uint32_t complementary_field_pair : 1-End--> |
 
 

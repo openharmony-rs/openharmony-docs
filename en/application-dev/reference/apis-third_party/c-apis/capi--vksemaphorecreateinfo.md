@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSemaphoreCreateFlags flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSemaphoreCreateFlags flags | <!--Device-VkSemaphoreCreateFlags flags--><!--Device-VkSemaphoreCreateFlags flags-End--> |
 
 

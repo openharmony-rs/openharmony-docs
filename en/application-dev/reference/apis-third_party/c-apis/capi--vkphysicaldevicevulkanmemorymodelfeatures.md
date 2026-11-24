@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 vulkanMemoryModel |  |
-| VkBool32 vulkanMemoryModelDeviceScope |  |
-| VkBool32 vulkanMemoryModelAvailabilityVisibilityChains |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 vulkanMemoryModel | <!--Device-VkBool32 vulkanMemoryModel--><!--Device-VkBool32 vulkanMemoryModel-End--> |
+| VkBool32 vulkanMemoryModelDeviceScope | <!--Device-VkBool32 vulkanMemoryModelDeviceScope--><!--Device-VkBool32 vulkanMemoryModelDeviceScope-End--> |
+| VkBool32 vulkanMemoryModelAvailabilityVisibilityChains | <!--Device-VkBool32 vulkanMemoryModelAvailabilityVisibilityChains--><!--Device-VkBool32 vulkanMemoryModelAvailabilityVisibilityChains-End--> |
 
 

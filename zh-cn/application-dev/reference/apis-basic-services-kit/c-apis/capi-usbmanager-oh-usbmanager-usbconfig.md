@@ -24,13 +24,13 @@ typedef struct OH_UsbManager_UsbConfig {...} OH_UsbManager_UsbConfig
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t id | USB配置的唯一标识。<br>**起始版本：** 26.0.1 |
-| uint8_t attributes | 配置属性。<br>**起始版本：** 26.0.1 |
-| uint8_t maxPower | 最大功耗，单位：mA。<br>**起始版本：** 26.0.1 |
-| const char *name | 配置名称，可以为空。<br>**起始版本：** 26.0.1 |
-| bool isRemoteWakeup | 是否支持远程唤醒。true表示支持远程唤醒；false表示不支持。<br>**起始版本：** 26.0.1 |
-| bool isSelfPowered | 是否支持独立供电。true表示支持独立供电；false表示不支持。<br>**起始版本：** 26.0.1 |
-| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) *interfaces | 支持的接口属性。<br>**起始版本：** 26.0.1 |
-| uint32_t interfaceCount | 配置中的接口数量。<br>**起始版本：** 26.0.1 |
+| uint8_t id | USB配置的唯一标识。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t id--><!--Device-uint8_t id-End--> |
+| uint8_t attributes | 配置属性。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t attributes--><!--Device-uint8_t attributes-End--> |
+| uint8_t maxPower | 最大功耗，单位：mA。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t maxPower--><!--Device-uint8_t maxPower-End--> |
+| const char *name | 配置名称，可以为空。<br>**起始版本：** 26.0.1<br><!--Device-const char *name--><!--Device-const char *name-End--> |
+| bool isRemoteWakeup | 是否支持远程唤醒。true表示支持远程唤醒；false表示不支持。<br>**起始版本：** 26.0.1<br><!--Device-bool isRemoteWakeup--><!--Device-bool isRemoteWakeup-End--> |
+| bool isSelfPowered | 是否支持独立供电。true表示支持独立供电；false表示不支持。<br>**起始版本：** 26.0.1<br><!--Device-bool isSelfPowered--><!--Device-bool isSelfPowered-End--> |
+| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) *interfaces | 支持的接口属性。<br>**起始版本：** 26.0.1<br><!--Device-OH_UsbManager_UsbInterface *interfaces--><!--Device-OH_UsbManager_UsbInterface *interfaces-End--> |
+| uint32_t interfaceCount | 配置中的接口数量。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t interfaceCount--><!--Device-uint32_t interfaceCount-End--> |
 
 

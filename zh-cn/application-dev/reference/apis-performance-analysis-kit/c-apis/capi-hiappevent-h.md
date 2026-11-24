@@ -104,7 +104,7 @@ enum HiAppEvent_ErrorCode
 
 错误码定义。
 
-<!--Device-HiAppEvent_ErrorCode--><!--Device-HiAppEvent_ErrorCode-End-->
+<!--Device-enum HiAppEvent_ErrorCode--><!--Device-enum HiAppEvent_ErrorCode-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -112,15 +112,15 @@ enum HiAppEvent_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HIAPPEVENT_SUCCESS = 0 | 操作成功。<br>**起始版本：** 15 |
-| HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4 | 参数值长度无效。<br>**起始版本：** 18 |
-| HIAPPEVENT_PROCESSOR_IS_NULL = -7 | 事件处理者为空。<br>**起始版本：** 18 |
-| HIAPPEVENT_PROCESSOR_NOT_FOUND = -8 | 事件处理者不存在。<br>**起始版本：** 18 |
-| HIAPPEVENT_INVALID_PARAM_VALUE = -9 | 参数值无效。<br>**起始版本：** 15 |
-| HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10 | 事件配置为空。<br>**起始版本：** 15 |
-| HIAPPEVENT_OPERATE_FAILED = -100 | 操作失败。<br>**起始版本：** 18 |
-| HIAPPEVENT_INVALID_UID = -200 | 无效的用户标识。<br>**起始版本：** 18 |
-| HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300 | 报告频率超限。<br>**起始版本：** 26.0.0 |
+| HIAPPEVENT_SUCCESS = 0 | 操作成功。<br>**起始版本：** 15<br><!--Device-HIAPPEVENT_SUCCESS = 0--><!--Device-HIAPPEVENT_SUCCESS = 0-End--> |
+| HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4 | 参数值长度无效。<br>**起始版本：** 18<br><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4--><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4-End--> |
+| HIAPPEVENT_PROCESSOR_IS_NULL = -7 | 事件处理者为空。<br>**起始版本：** 18<br><!--Device-HIAPPEVENT_PROCESSOR_IS_NULL = -7--><!--Device-HIAPPEVENT_PROCESSOR_IS_NULL = -7-End--> |
+| HIAPPEVENT_PROCESSOR_NOT_FOUND = -8 | 事件处理者不存在。<br>**起始版本：** 18<br><!--Device-HIAPPEVENT_PROCESSOR_NOT_FOUND = -8--><!--Device-HIAPPEVENT_PROCESSOR_NOT_FOUND = -8-End--> |
+| HIAPPEVENT_INVALID_PARAM_VALUE = -9 | 参数值无效。<br>**起始版本：** 15<br><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE = -9--><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE = -9-End--> |
+| HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10 | 事件配置为空。<br>**起始版本：** 15<br><!--Device-HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10--><!--Device-HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10-End--> |
+| HIAPPEVENT_OPERATE_FAILED = -100 | 操作失败。<br>**起始版本：** 18<br><!--Device-HIAPPEVENT_OPERATE_FAILED = -100--><!--Device-HIAPPEVENT_OPERATE_FAILED = -100-End--> |
+| HIAPPEVENT_INVALID_UID = -200 | 无效的用户标识。<br>**起始版本：** 18<br><!--Device-HIAPPEVENT_INVALID_UID = -200--><!--Device-HIAPPEVENT_INVALID_UID = -200-End--> |
+| HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300 | 报告频率超限。<br>**起始版本：** 26.0.0<br><!--Device-HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300--><!--Device-HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300-End--> |
 
 ### EventType
 
@@ -132,7 +132,7 @@ enum EventType
 
 事件类型。建议开发者根据不同的使用场景选择不同的事件类型。
 
-<!--Device-EventType--><!--Device-EventType-End-->
+<!--Device-enum EventType--><!--Device-enum EventType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -140,10 +140,10 @@ enum EventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FAULT = 1 | 故障事件类型。<br>**起始版本：** 8 |
-| STATISTIC = 2 | 统计事件类型。<br>**起始版本：** 8 |
-| SECURITY = 3 | 安全事件类型。<br>**起始版本：** 8 |
-| BEHAVIOR = 4 | 行为事件类型。<br>**起始版本：** 8 |
+| FAULT = 1 | 故障事件类型。<br>**起始版本：** 8<br><!--Device-FAULT = 1--><!--Device-FAULT = 1-End--> |
+| STATISTIC = 2 | 统计事件类型。<br>**起始版本：** 8<br><!--Device-STATISTIC = 2--><!--Device-STATISTIC = 2-End--> |
+| SECURITY = 3 | 安全事件类型。<br>**起始版本：** 8<br><!--Device-SECURITY = 3--><!--Device-SECURITY = 3-End--> |
+| BEHAVIOR = 4 | 行为事件类型。<br>**起始版本：** 8<br><!--Device-BEHAVIOR = 4--><!--Device-BEHAVIOR = 4-End--> |
 
 ### OH_HiAppEvent_SysEvent
 
@@ -155,7 +155,7 @@ enum OH_HiAppEvent_SysEvent
 
 系统事件类型。<br> *建议根据不同的使用场景选择不同的系统事件类型。
 
-<!--Device-OH_HiAppEvent_SysEvent--><!--Device-OH_HiAppEvent_SysEvent-End-->
+<!--Device-enum OH_HiAppEvent_SysEvent--><!--Device-enum OH_HiAppEvent_SysEvent-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -163,12 +163,12 @@ enum OH_HiAppEvent_SysEvent
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_APP_CRASH = 1 | 崩溃事件。<br>**起始版本：** 26.0.1 |
-| OH_APP_FREEZE = 2 | 应用冻屏事件。<br>**起始版本：** 26.0.1 |
-| OH_RESOURCE_OVERLIMIT = 3 | 资源泄漏事件。<br>**起始版本：** 26.0.1 |
-| OH_ADDRESS_SANITIZER = 4 | 地址越界事件。<br>**起始版本：** 26.0.1 |
-| OH_APP_HICOLLIE = 5 | 任务执行超时事件。<br>**起始版本：** 26.0.1 |
-| OH_CPU_USAGE_HIGH = 6 | CPU高负载事件。<br>**起始版本：** 26.0.1 |
+| OH_APP_CRASH = 1 | 崩溃事件。<br>**起始版本：** 26.0.1<br><!--Device-OH_APP_CRASH = 1--><!--Device-OH_APP_CRASH = 1-End--> |
+| OH_APP_FREEZE = 2 | 应用冻屏事件。<br>**起始版本：** 26.0.1<br><!--Device-OH_APP_FREEZE = 2--><!--Device-OH_APP_FREEZE = 2-End--> |
+| OH_RESOURCE_OVERLIMIT = 3 | 资源泄漏事件。<br>**起始版本：** 26.0.1<br><!--Device-OH_RESOURCE_OVERLIMIT = 3--><!--Device-OH_RESOURCE_OVERLIMIT = 3-End--> |
+| OH_ADDRESS_SANITIZER = 4 | 地址越界事件。<br>**起始版本：** 26.0.1<br><!--Device-OH_ADDRESS_SANITIZER = 4--><!--Device-OH_ADDRESS_SANITIZER = 4-End--> |
+| OH_APP_HICOLLIE = 5 | 任务执行超时事件。<br>**起始版本：** 26.0.1<br><!--Device-OH_APP_HICOLLIE = 5--><!--Device-OH_APP_HICOLLIE = 5-End--> |
+| OH_CPU_USAGE_HIGH = 6 | CPU高负载事件。<br>**起始版本：** 26.0.1<br><!--Device-OH_CPU_USAGE_HIGH = 6--><!--Device-OH_CPU_USAGE_HIGH = 6-End--> |
 
 ### OH_HiAppEvent_FrameworkType
 
@@ -180,7 +180,7 @@ enum OH_HiAppEvent_FrameworkType
 
 应用框架类型。建议开发者根据实际的使用场景选择对应的应用框架类型。
 
-<!--Device-OH_HiAppEvent_FrameworkType--><!--Device-OH_HiAppEvent_FrameworkType-End-->
+<!--Device-enum OH_HiAppEvent_FrameworkType--><!--Device-enum OH_HiAppEvent_FrameworkType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -188,9 +188,9 @@ enum OH_HiAppEvent_FrameworkType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_FLUTTER_DART = 0 | Flutter_dart类型。<br>**起始版本：** 26.0.0 |
-| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes类型。<br>**起始版本：** 26.0.0 |
-| OH_KMP_KOTLIN = 2 | Kmp_kotlin类型。<br>**起始版本：** 26.0.0 |
+| OH_FLUTTER_DART = 0 | Flutter_dart类型。<br>**起始版本：** 26.0.0<br><!--Device-OH_FLUTTER_DART = 0--><!--Device-OH_FLUTTER_DART = 0-End--> |
+| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes类型。<br>**起始版本：** 26.0.0<br><!--Device-OH_REACT_NATIVE_HERMES = 1--><!--Device-OH_REACT_NATIVE_HERMES = 1-End--> |
+| OH_KMP_KOTLIN = 2 | Kmp_kotlin类型。<br>**起始版本：** 26.0.0<br><!--Device-OH_KMP_KOTLIN = 2--><!--Device-OH_KMP_KOTLIN = 2-End--> |
 
 
 ## 函数说明
@@ -1334,7 +1334,7 @@ int OH_HiAppEvent_SetConfigName(HiAppEvent_Processor* processor, const char* con
 | 参数项 | 描述 |
 | -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | 指向处理者的指针（即[OH_HiAppEvent_CreateProcessor](capi-hiappevent-h.md#oh_hiappevent_createprocessor)接口返回的指针）。 |
-| const char* configName | 数据处理者的配置名称。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。 |
+| const char* configName | <!--RP1-->数据处理者的配置名称。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<!--RP1End--> |
 
 **返回值：**
 

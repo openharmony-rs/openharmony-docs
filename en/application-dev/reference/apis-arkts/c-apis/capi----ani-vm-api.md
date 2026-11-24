@@ -12,9 +12,9 @@
 
 | Name | Description |
 | -- | -- |
-| void *reserved0 |  |
-| void *reserved1 |  |
-| void *reserved2 |  |
-| void *reserved3 |  |
+| void *reserved0 | <!--Device-void *reserved0--><!--Device-void *reserved0-End--> |
+| void *reserved1 | <!--Device-void *reserved1--><!--Device-void *reserved1-End--> |
+| void *reserved2 | <!--Device-void *reserved2--><!--Device-void *reserved2-End--> |
+| void *reserved3 | <!--Device-void *reserved3--><!--Device-void *reserved3-End--> |
 
 

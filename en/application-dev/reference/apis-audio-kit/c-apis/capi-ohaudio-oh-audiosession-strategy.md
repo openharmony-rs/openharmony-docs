@@ -24,6 +24,6 @@ Declares the audio session strategy.
 
 | Name | Description |
 | -- | -- |
-| [OH_AudioSession_ConcurrencyMode](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) concurrencyMode | Audio session concurrency mode |
+| [OH_AudioSession_ConcurrencyMode](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) concurrencyMode | Audio session concurrency mode<br><!--Device-OH_AudioSession_ConcurrencyMode concurrencyMode--><!--Device-OH_AudioSession_ConcurrencyMode concurrencyMode-End--> |
 
 

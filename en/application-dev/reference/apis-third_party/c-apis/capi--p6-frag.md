@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ip6f_nxt |  |
-| uint8_t ip6f_reserved |  |
-| uint16_t ip6f_offlg |  |
-| uint32_t ip6f_ident |  |
+| uint8_t ip6f_nxt | <!--Device-uint8_t ip6f_nxt--><!--Device-uint8_t ip6f_nxt-End--> |
+| uint8_t ip6f_reserved | <!--Device-uint8_t ip6f_reserved--><!--Device-uint8_t ip6f_reserved-End--> |
+| uint16_t ip6f_offlg | <!--Device-uint16_t ip6f_offlg--><!--Device-uint16_t ip6f_offlg-End--> |
+| uint32_t ip6f_ident | <!--Device-uint32_t ip6f_ident--><!--Device-uint32_t ip6f_ident-End--> |
 
 

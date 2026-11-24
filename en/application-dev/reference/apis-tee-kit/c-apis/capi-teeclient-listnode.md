@@ -24,7 +24,7 @@ Defines the linked list type.
 
 | Name | Description |
 | -- | -- |
-| [struct ListNode](capi-teeclient-listnode.md) *next | Pointer to the next node in the list. |
-| [struct ListNode](capi-teeclient-listnode.md) *prev | Pointer to the previous node in the list. |
+| [struct ListNode](capi-teeclient-listnode.md) *next | Pointer to the next node in the list.<br><!--Device-struct ListNode *next--><!--Device-struct ListNode *next-End--> |
+| [struct ListNode](capi-teeclient-listnode.md) *prev | Pointer to the previous node in the list.<br><!--Device-struct ListNode *prev--><!--Device-struct ListNode *prev-End--> |
 
 

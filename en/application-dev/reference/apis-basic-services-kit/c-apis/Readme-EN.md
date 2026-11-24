@@ -3,6 +3,7 @@
 - Module<!--basicserviceskit-module-->
     - [Pasteboard](capi-basic-services-kit-pasteboard.md)
     - [InitSync](capi-basic-services-kit-initsync.md)
+    - [BoardInfo](capi-basic-services-kit-boardinfo.md)
     - [SyscapNdk](capi-basic-services-kit-syscapndk.md)
     - [DeviceInfo](capi-basic-services-kit-deviceinfo.md)
     - [OsAccount](capi-basic-services-kit-osaccount.md)
@@ -16,6 +17,7 @@
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [oh_pasteboard.h](capi-oh-pasteboard-h.md)
     - [init_sync.h](capi-init-sync-h.md)
+    - [boardinfo.h](capi-boardinfo-h.md)
     - [syscap_ndk.h](capi-syscap-ndk-h.md)
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [os_account.h](capi-os-account-h.md)

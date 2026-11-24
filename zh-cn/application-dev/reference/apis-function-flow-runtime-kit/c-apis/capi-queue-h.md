@@ -51,13 +51,13 @@
 | [FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)](#ffrt_queue_wait) | 等待队列中的任务执行完成。 |
 | [FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)](#ffrt_queue_cancel) | 取消队列中的任务。<br> 已开始执行的任务无法被取消。 |
 | [FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)](#ffrt_get_main_queue) | 获取应用主线程队列。 |
-| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | 获取应用Worker（ArkTS）线程队列。(API18废弃) |
+| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | 获取应用Worker（ArkTS）线程队列。(已废弃) |
 
 ### 变量
 
 | 名称 | 描述 |
 | -- | -- |
-| void* ffrt_queue_t | 队列句柄，用于标识不同的队列。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
+| void* ffrt_queue_t | 队列句柄，用于标识不同的队列。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-void* ffrt_queue_t--><!--Device-void* ffrt_queue_t-End--> |
 
 ## 枚举类型说明
 
@@ -71,7 +71,7 @@ enum ffrt_queue_type_t
 
 枚举队列类型。
 
-<!--Device-ffrt_queue_type_t--><!--Device-ffrt_queue_type_t-End-->
+<!--Device-enum ffrt_queue_type_t--><!--Device-enum ffrt_queue_type_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -79,9 +79,9 @@ enum ffrt_queue_type_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_queue_serial | 串行队列。 |
-| ffrt_queue_concurrent | 并发队列。 |
-| ffrt_queue_max | 最大有效队列类型值，作为哨兵使用（例如用于迭代）。 |
+| ffrt_queue_serial | 串行队列。<br><!--Device-ffrt_queue_serial--><!--Device-ffrt_queue_serial-End--> |
+| ffrt_queue_concurrent | 并发队列。<br><!--Device-ffrt_queue_concurrent--><!--Device-ffrt_queue_concurrent-End--> |
+| ffrt_queue_max | 最大有效队列类型值，作为哨兵使用（例如用于迭代）。<br><!--Device-ffrt_queue_max--><!--Device-ffrt_queue_max-End--> |
 
 
 ## 函数说明

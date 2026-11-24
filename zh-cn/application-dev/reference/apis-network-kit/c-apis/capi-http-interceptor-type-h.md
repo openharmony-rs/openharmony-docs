@@ -49,7 +49,7 @@ enum OH_Interceptor_Stage
 
 定义拦截器的执行阶段。
 
-<!--Device-OH_Interceptor_Stage--><!--Device-OH_Interceptor_Stage-End-->
+<!--Device-enum OH_Interceptor_Stage--><!--Device-enum OH_Interceptor_Stage-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -57,8 +57,8 @@ enum OH_Interceptor_Stage
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_STAGE_REQUEST | 拦截器处理请求。<br>**起始版本：** 24 |
-| OH_STAGE_RESPONSE | 拦截器处理响应。<br>**起始版本：** 24 |
+| OH_STAGE_REQUEST | 拦截器处理请求。<br>**起始版本：** 24<br><!--Device-OH_STAGE_REQUEST--><!--Device-OH_STAGE_REQUEST-End--> |
+| OH_STAGE_RESPONSE | 拦截器处理响应。<br>**起始版本：** 24<br><!--Device-OH_STAGE_RESPONSE--><!--Device-OH_STAGE_RESPONSE-End--> |
 
 ### OH_Interceptor_Type
 
@@ -70,7 +70,7 @@ enum OH_Interceptor_Type
 
 定义拦截器的类型。
 
-<!--Device-OH_Interceptor_Type--><!--Device-OH_Interceptor_Type-End-->
+<!--Device-enum OH_Interceptor_Type--><!--Device-enum OH_Interceptor_Type-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -78,8 +78,8 @@ enum OH_Interceptor_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TYPE_READ_ONLY | 只读拦截器。<br>**起始版本：** 24 |
-| OH_TYPE_MODIFY_NETWORK_KIT | 可修改拦截器。仅针对Network Kit HTTP请求生效。<br>**起始版本：** 26.0.0 |
+| OH_TYPE_READ_ONLY | 只读拦截器。<br>**起始版本：** 24<br><!--Device-OH_TYPE_READ_ONLY--><!--Device-OH_TYPE_READ_ONLY-End--> |
+| OH_TYPE_MODIFY_NETWORK_KIT | 可修改拦截器。仅针对Network Kit HTTP请求生效。<br>**起始版本：** 26.0.0<br><!--Device-OH_TYPE_MODIFY_NETWORK_KIT--><!--Device-OH_TYPE_MODIFY_NETWORK_KIT-End--> |
 
 ### OH_Interceptor_Result
 
@@ -91,7 +91,7 @@ enum OH_Interceptor_Result
 
 定义拦截器的处理结果。
 
-<!--Device-OH_Interceptor_Result--><!--Device-OH_Interceptor_Result-End-->
+<!--Device-enum OH_Interceptor_Result--><!--Device-enum OH_Interceptor_Result-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -99,8 +99,8 @@ enum OH_Interceptor_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CONTINUE | 继续处理。<br>**起始版本：** 24 |
-| OH_ABORT | 拦截处理。<br>**起始版本：** 24 |
+| OH_CONTINUE | 继续处理。<br>**起始版本：** 24<br><!--Device-OH_CONTINUE--><!--Device-OH_CONTINUE-End--> |
+| OH_ABORT | 拦截处理。<br>**起始版本：** 24<br><!--Device-OH_ABORT--><!--Device-OH_ABORT-End--> |
 
 
 ## 函数说明

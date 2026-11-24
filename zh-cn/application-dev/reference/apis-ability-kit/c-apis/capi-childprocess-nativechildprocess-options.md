@@ -24,7 +24,7 @@ typedef struct NativeChildProcess_Options {...} NativeChildProcess_Options
 
 | 名称 | 描述 |
 | -- | -- |
-| [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode) isolationMode | 子进程所采用的隔离模式。 |
-| int64_t reserved | 预留字段，供未来扩展使用。 |
+| [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode) isolationMode | 子进程所采用的隔离模式。<br><!--Device-NativeChildProcess_IsolationMode isolationMode--><!--Device-NativeChildProcess_IsolationMode isolationMode-End--> |
+| int64_t reserved | 预留字段，供未来扩展使用。<br><!--Device-int64_t reserved--><!--Device-int64_t reserved-End--> |
 
 

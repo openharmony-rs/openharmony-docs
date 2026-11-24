@@ -24,8 +24,8 @@ Defines the header linked list added to the WebSocket client.
 
 | Name | Description |
 | -- | -- |
-| const char *fieldName | Pointer to the field name of a header. |
-| const char *fieldValue | Pointer to the field value of a header. |
-| [struct WebSocket_Header](capi-netstack-websocket-header.md) *next | Next pointer of the header linked list. |
+| const char *fieldName | Pointer to the field name of a header.<br><!--Device-const char *fieldName--><!--Device-const char *fieldName-End--> |
+| const char *fieldValue | Pointer to the field value of a header.<br><!--Device-const char *fieldValue--><!--Device-const char *fieldValue-End--> |
+| [struct WebSocket_Header](capi-netstack-websocket-header.md) *next | Next pointer of the header linked list.<br><!--Device-struct WebSocket_Header *next--><!--Device-struct WebSocket_Header *next-End--> |
 
 

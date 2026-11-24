@@ -89,7 +89,7 @@ enum DRM_EventType
 
 监听事件类型。
 
-<!--Device-DRM_EventType--><!--Device-DRM_EventType-End-->
+<!--Device-enum DRM_EventType--><!--Device-enum DRM_EventType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -97,12 +97,12 @@ enum DRM_EventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EVENT_DRM_BASE = 200 | DRM基础事件。 |
-| EVENT_PROVISION_REQUIRED = 201 | 设备证书请求事件。 |
-| EVENT_KEY_REQUIRED = 202 | 密钥请求事件。 |
-| EVENT_KEY_EXPIRED = 203 | 密钥过期事件。 |
-| EVENT_VENDOR_DEFINED = 204 | DRM解决方案自定义事件。 |
-| EVENT_EXPIRATION_UPDATE = 206 | 密钥过期更新事件。 |
+| EVENT_DRM_BASE = 200 | DRM基础事件。<br><!--Device-EVENT_DRM_BASE = 200--><!--Device-EVENT_DRM_BASE = 200-End--> |
+| EVENT_PROVISION_REQUIRED = 201 | 设备证书请求事件。<br><!--Device-EVENT_PROVISION_REQUIRED = 201--><!--Device-EVENT_PROVISION_REQUIRED = 201-End--> |
+| EVENT_KEY_REQUIRED = 202 | 密钥请求事件。<br><!--Device-EVENT_KEY_REQUIRED = 202--><!--Device-EVENT_KEY_REQUIRED = 202-End--> |
+| EVENT_KEY_EXPIRED = 203 | 密钥过期事件。<br><!--Device-EVENT_KEY_EXPIRED = 203--><!--Device-EVENT_KEY_EXPIRED = 203-End--> |
+| EVENT_VENDOR_DEFINED = 204 | DRM解决方案自定义事件。<br><!--Device-EVENT_VENDOR_DEFINED = 204--><!--Device-EVENT_VENDOR_DEFINED = 204-End--> |
+| EVENT_EXPIRATION_UPDATE = 206 | 密钥过期更新事件。<br><!--Device-EVENT_EXPIRATION_UPDATE = 206--><!--Device-EVENT_EXPIRATION_UPDATE = 206-End--> |
 
 ### DRM_ContentProtectionLevel
 
@@ -114,7 +114,7 @@ enum DRM_ContentProtectionLevel
 
 内容保护级别。
 
-<!--Device-DRM_ContentProtectionLevel--><!--Device-DRM_ContentProtectionLevel-End-->
+<!--Device-enum DRM_ContentProtectionLevel--><!--Device-enum DRM_ContentProtectionLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -122,11 +122,11 @@ enum DRM_ContentProtectionLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CONTENT_PROTECTION_LEVEL_UNKNOWN = 0 | 未知级别。 |
-| CONTENT_PROTECTION_LEVEL_SW_CRYPTO | 软件安全级别。 |
-| CONTENT_PROTECTION_LEVEL_HW_CRYPTO | 硬件安全级别。 |
-| CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO | 硬件增强级别。 |
-| CONTENT_PROTECTION_LEVEL_MAX | 最大安全级别。 |
+| CONTENT_PROTECTION_LEVEL_UNKNOWN = 0 | 未知级别。<br><!--Device-CONTENT_PROTECTION_LEVEL_UNKNOWN = 0--><!--Device-CONTENT_PROTECTION_LEVEL_UNKNOWN = 0-End--> |
+| CONTENT_PROTECTION_LEVEL_SW_CRYPTO | 软件安全级别。<br><!--Device-CONTENT_PROTECTION_LEVEL_SW_CRYPTO--><!--Device-CONTENT_PROTECTION_LEVEL_SW_CRYPTO-End--> |
+| CONTENT_PROTECTION_LEVEL_HW_CRYPTO | 硬件安全级别。<br><!--Device-CONTENT_PROTECTION_LEVEL_HW_CRYPTO--><!--Device-CONTENT_PROTECTION_LEVEL_HW_CRYPTO-End--> |
+| CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO | 硬件增强级别。<br><!--Device-CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO--><!--Device-CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO-End--> |
+| CONTENT_PROTECTION_LEVEL_MAX | 最大安全级别。<br><!--Device-CONTENT_PROTECTION_LEVEL_MAX--><!--Device-CONTENT_PROTECTION_LEVEL_MAX-End--> |
 
 ### DRM_MediaKeyType
 
@@ -138,7 +138,7 @@ enum DRM_MediaKeyType
 
 媒体密钥类型。
 
-<!--Device-DRM_MediaKeyType--><!--Device-DRM_MediaKeyType-End-->
+<!--Device-enum DRM_MediaKeyType--><!--Device-enum DRM_MediaKeyType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -146,8 +146,8 @@ enum DRM_MediaKeyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_KEY_TYPE_OFFLINE = 0 | 离线。 |
-| MEDIA_KEY_TYPE_ONLINE | 在线。 |
+| MEDIA_KEY_TYPE_OFFLINE = 0 | 离线。<br><!--Device-MEDIA_KEY_TYPE_OFFLINE = 0--><!--Device-MEDIA_KEY_TYPE_OFFLINE = 0-End--> |
+| MEDIA_KEY_TYPE_ONLINE | 在线。<br><!--Device-MEDIA_KEY_TYPE_ONLINE--><!--Device-MEDIA_KEY_TYPE_ONLINE-End--> |
 
 ### DRM_MediaKeyRequestType
 
@@ -159,7 +159,7 @@ enum DRM_MediaKeyRequestType
 
 媒体密钥请求类型。
 
-<!--Device-DRM_MediaKeyRequestType--><!--Device-DRM_MediaKeyRequestType-End-->
+<!--Device-enum DRM_MediaKeyRequestType--><!--Device-enum DRM_MediaKeyRequestType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -167,12 +167,12 @@ enum DRM_MediaKeyRequestType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0 | 未知请求类型。 |
-| MEDIA_KEY_REQUEST_TYPE_INITIAL | 初始化请求。 |
-| MEDIA_KEY_REQUEST_TYPE_RENEWAL | 续订请求。 |
-| MEDIA_KEY_REQUEST_TYPE_RELEASE | 释放请求。 |
-| MEDIA_KEY_REQUEST_TYPE_NONE | 无请求。 |
-| MEDIA_KEY_REQUEST_TYPE_UPDATE | 更新请求。 |
+| MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0 | 未知请求类型。<br><!--Device-MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0--><!--Device-MEDIA_KEY_REQUEST_TYPE_UNKNOWN = 0-End--> |
+| MEDIA_KEY_REQUEST_TYPE_INITIAL | 初始化请求。<br><!--Device-MEDIA_KEY_REQUEST_TYPE_INITIAL--><!--Device-MEDIA_KEY_REQUEST_TYPE_INITIAL-End--> |
+| MEDIA_KEY_REQUEST_TYPE_RENEWAL | 续订请求。<br><!--Device-MEDIA_KEY_REQUEST_TYPE_RENEWAL--><!--Device-MEDIA_KEY_REQUEST_TYPE_RENEWAL-End--> |
+| MEDIA_KEY_REQUEST_TYPE_RELEASE | 释放请求。<br><!--Device-MEDIA_KEY_REQUEST_TYPE_RELEASE--><!--Device-MEDIA_KEY_REQUEST_TYPE_RELEASE-End--> |
+| MEDIA_KEY_REQUEST_TYPE_NONE | 无请求。<br><!--Device-MEDIA_KEY_REQUEST_TYPE_NONE--><!--Device-MEDIA_KEY_REQUEST_TYPE_NONE-End--> |
+| MEDIA_KEY_REQUEST_TYPE_UPDATE | 更新请求。<br><!--Device-MEDIA_KEY_REQUEST_TYPE_UPDATE--><!--Device-MEDIA_KEY_REQUEST_TYPE_UPDATE-End--> |
 
 ### DRM_OfflineMediaKeyStatus
 
@@ -184,7 +184,7 @@ enum DRM_OfflineMediaKeyStatus
 
 离线媒体密钥状态。
 
-<!--Device-DRM_OfflineMediaKeyStatus--><!--Device-DRM_OfflineMediaKeyStatus-End-->
+<!--Device-enum DRM_OfflineMediaKeyStatus--><!--Device-enum DRM_OfflineMediaKeyStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -192,9 +192,9 @@ enum DRM_OfflineMediaKeyStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0 | 未知状态。 |
-| OFFLINE_MEDIA_KEY_STATUS_USABLE | 可用状态。 |
-| OFFLINE_MEDIA_KEY_STATUS_INACTIVE | 失活状态。 |
+| OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0 | 未知状态。<br><!--Device-OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0--><!--Device-OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0-End--> |
+| OFFLINE_MEDIA_KEY_STATUS_USABLE | 可用状态。<br><!--Device-OFFLINE_MEDIA_KEY_STATUS_USABLE--><!--Device-OFFLINE_MEDIA_KEY_STATUS_USABLE-End--> |
+| OFFLINE_MEDIA_KEY_STATUS_INACTIVE | 失活状态。<br><!--Device-OFFLINE_MEDIA_KEY_STATUS_INACTIVE--><!--Device-OFFLINE_MEDIA_KEY_STATUS_INACTIVE-End--> |
 
 ### DRM_CertificateStatus
 
@@ -206,7 +206,7 @@ enum DRM_CertificateStatus
 
 设备DRM证书状态。
 
-<!--Device-DRM_CertificateStatus--><!--Device-DRM_CertificateStatus-End-->
+<!--Device-enum DRM_CertificateStatus--><!--Device-enum DRM_CertificateStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -214,11 +214,11 @@ enum DRM_CertificateStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CERT_STATUS_PROVISIONED = 0 | 设备已安装设备DRM证书。 |
-| CERT_STATUS_NOT_PROVISIONED | 设备未安装设备DRM证书或证书状态异常。 |
-| CERT_STATUS_EXPIRED | 设备DRM证书过期。 |
-| CERT_STATUS_INVALID | 设备DRM证书无效。 |
-| CERT_STATUS_UNAVAILABLE | 设备DRM证书不可用。 |
+| CERT_STATUS_PROVISIONED = 0 | 设备已安装设备DRM证书。<br><!--Device-CERT_STATUS_PROVISIONED = 0--><!--Device-CERT_STATUS_PROVISIONED = 0-End--> |
+| CERT_STATUS_NOT_PROVISIONED | 设备未安装设备DRM证书或证书状态异常。<br><!--Device-CERT_STATUS_NOT_PROVISIONED--><!--Device-CERT_STATUS_NOT_PROVISIONED-End--> |
+| CERT_STATUS_EXPIRED | 设备DRM证书过期。<br><!--Device-CERT_STATUS_EXPIRED--><!--Device-CERT_STATUS_EXPIRED-End--> |
+| CERT_STATUS_INVALID | 设备DRM证书无效。<br><!--Device-CERT_STATUS_INVALID--><!--Device-CERT_STATUS_INVALID-End--> |
+| CERT_STATUS_UNAVAILABLE | 设备DRM证书不可用。<br><!--Device-CERT_STATUS_UNAVAILABLE--><!--Device-CERT_STATUS_UNAVAILABLE-End--> |
 
 
 ## 函数说明

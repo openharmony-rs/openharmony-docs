@@ -24,7 +24,7 @@ OH_NativeBuffer的图像平面格式信息。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t planeCount | 不同平面的数量 |
-| [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) planes[4] | 图像平面数组 |
+| uint32_t planeCount | 不同平面的数量<br><!--Device-uint32_t planeCount--><!--Device-uint32_t planeCount-End--> |
+| [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) planes[4] | 图像平面数组<br><!--Device-OH_NativeBuffer_Plane planes[4]--><!--Device-OH_NativeBuffer_Plane planes[4]-End--> |
 
 

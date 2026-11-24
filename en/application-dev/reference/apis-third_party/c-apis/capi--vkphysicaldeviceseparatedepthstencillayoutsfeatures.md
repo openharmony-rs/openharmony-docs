@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 separateDepthStencilLayouts |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 separateDepthStencilLayouts | <!--Device-VkBool32 separateDepthStencilLayouts--><!--Device-VkBool32 separateDepthStencilLayouts-End--> |
 
 

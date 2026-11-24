@@ -26,8 +26,8 @@ move to vk_ohos_native_buffer.h
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSwapchainImageUsageFlagsOHOS usage |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSwapchainImageUsageFlagsOHOS usage | <!--Device-VkSwapchainImageUsageFlagsOHOS usage--><!--Device-VkSwapchainImageUsageFlagsOHOS usage-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkQueueFamilyProperties](capi--vkqueuefamilyproperties.md) queueFamilyProperties |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkQueueFamilyProperties](capi--vkqueuefamilyproperties.md) queueFamilyProperties | <!--Device-VkQueueFamilyProperties queueFamilyProperties--><!--Device-VkQueueFamilyProperties queueFamilyProperties-End--> |
 
 

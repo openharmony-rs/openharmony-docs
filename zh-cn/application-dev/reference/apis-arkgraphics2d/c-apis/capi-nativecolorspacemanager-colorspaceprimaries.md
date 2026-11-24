@@ -24,13 +24,13 @@ typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries
 
 | 名称 | 描述 |
 | -- | -- |
-| float rX | 红色的x轴坐标值。 |
-| float rY | 红色的y轴坐标值。 |
-| float gX | 绿色的x轴坐标值。 |
-| float gY | 绿色的y轴坐标值。 |
-| float bX | 蓝色的x轴坐标值。 |
-| float bY | 蓝色的y轴坐标值。 |
-| float wX | 白点的x轴坐标值。 |
-| float wY | 白点的y轴坐标值。 |
+| float rX | 红色的x轴坐标值。<br><!--Device-float rX--><!--Device-float rX-End--> |
+| float rY | 红色的y轴坐标值。<br><!--Device-float rY--><!--Device-float rY-End--> |
+| float gX | 绿色的x轴坐标值。<br><!--Device-float gX--><!--Device-float gX-End--> |
+| float gY | 绿色的y轴坐标值。<br><!--Device-float gY--><!--Device-float gY-End--> |
+| float bX | 蓝色的x轴坐标值。<br><!--Device-float bX--><!--Device-float bX-End--> |
+| float bY | 蓝色的y轴坐标值。<br><!--Device-float bY--><!--Device-float bY-End--> |
+| float wX | 白点的x轴坐标值。<br><!--Device-float wX--><!--Device-float wX-End--> |
+| float wY | 白点的y轴坐标值。<br><!--Device-float wY--><!--Device-float wY-End--> |
 
 

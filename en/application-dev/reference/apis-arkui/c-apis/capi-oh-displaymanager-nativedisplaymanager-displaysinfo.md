@@ -24,7 +24,7 @@ The struct describes the information about displays of a device with multiple sc
 
 | Name | Description |
 | -- | -- |
-| uint32_t displaysLength | Number of displays of a device with multiple screens. |
-| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) *displaysInfo | An array of NativeDisplayManager_DisplayInfo structs, each containing information about a display. |
+| uint32_t displaysLength | Number of displays of a device with multiple screens.<br><!--Device-uint32_t displaysLength--><!--Device-uint32_t displaysLength-End--> |
+| [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) *displaysInfo | An array of NativeDisplayManager_DisplayInfo structs, each containing information about a display.<br><!--Device-NativeDisplayManager_DisplayInfo *displaysInfo--><!--Device-NativeDisplayManager_DisplayInfo *displaysInfo-End--> |
 
 

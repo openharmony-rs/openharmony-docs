@@ -26,8 +26,8 @@ move to vk_ohos_native_buffer.h
 
 | Name | Description |
 | -- | -- |
-| VkStructureType    sType |  |
-| const void*        pNext |  |
-| struct OHBufferHandle*      handle |  |
+| VkStructureType    sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void*        pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| struct OHBufferHandle*      handle | <!--Device-struct OHBufferHandle* handle--><!--Device-struct OHBufferHandle* handle-End--> |
 
 

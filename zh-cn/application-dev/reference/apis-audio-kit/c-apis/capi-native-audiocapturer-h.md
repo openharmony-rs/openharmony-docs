@@ -66,7 +66,7 @@ OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-**需要权限：** ohos.permission.MICROPHONE
+**需要权限：** ohos.permission.MICROPHONE [since 10 - 26.0.1]
 
 **起始版本：** 10
 
@@ -126,7 +126,7 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-**需要权限：** ohos.permission.MICROPHONE
+**需要权限：** ohos.permission.MICROPHONE [since 10 - 26.0.1]
 
 **起始版本：** 10
 
@@ -156,7 +156,7 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-**需要权限：** ohos.permission.MICROPHONE
+**需要权限：** ohos.permission.MICROPHONE [since 10 - 26.0.1]
 
 **起始版本：** 10
 

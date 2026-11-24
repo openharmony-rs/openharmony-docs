@@ -18,11 +18,11 @@ The file declares the common enums and definitions of the window manager.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) | WindowManager_Rect | The struct describes the window rectangle, including the window position, width, and height. |
+| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md) | WindowManager_Rect | 定义窗口矩形结构体，包含窗口位置和宽高信息。 |
 | [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | Describes the configuration of the main window screenshot. |
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | The struct describes the main window information. |
 | [WindowManager_WindowProperties](capi-windowmanager-windowmanager-windowproperties.md) | WindowManager_WindowProperties | The struct describes the window properties. |
-| [WindowManager_AvoidArea](capi-windowmanager-windowmanager-avoidarea.md) | WindowManager_AvoidArea | The struct describes the avoid area. |
+| [WindowManager_AvoidArea](capi-windowmanager-windowmanager-avoidarea.md) | WindowManager_AvoidArea | 定义避让区域结构体。 |
 | [OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md) | OH_PixelmapNative | Describes the pixel image information. |
 | [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | 帧率指标数据对象。 |
 | [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | Window density information, including the system display size scaling factor, system default display size scaling factor, and custom display size scaling factor of the screen where the window is located. |
@@ -54,7 +54,7 @@ enum WindowManager_ErrorCode
 
 窗口管理接口返回状态码枚举。
 
-<!--Device-WindowManager_ErrorCode--><!--Device-WindowManager_ErrorCode-End-->
+<!--Device-enum WindowManager_ErrorCode--><!--Device-enum WindowManager_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -62,21 +62,21 @@ enum WindowManager_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OK = 0 | 成功。 |
-| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 | 无权限。<br>**起始版本：** 15 |
-| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | 非法参数。<br>**起始版本：** 15 |
-| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | 设备不支持。<br>**起始版本：** 15 |
-| INVAILD_WINDOW_ID = 1000 | 非法窗口ID。 |
-| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | 非法窗口ID。<br>**起始版本：** 26.0.0 |
-| SERVICE_ERROR = 2000 | 服务异常。 |
-| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | 窗口状态异常。<br>**起始版本：** 15 |
-| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | 窗口管理器服务异常。<br>**起始版本：** 15 |
-| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 | 画中画销毁失败。<br>**起始版本：** 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 | 画中画状态异常。<br>**起始版本：** 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 | 画中画创建失败。<br>**起始版本：** 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 | 画中画内部错误。可能原因：<br/>1.画中画依赖的窗口异常，可能窗口为空；2.画中画控制器异常。<br>**起始版本：** 20 |
-| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 | 画中画重复操作。<br>**起始版本：** 20 |
-| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 | 参数错误。可能原因：<br/>1.参数取值范围非法；2.参数数量非法；3.参数类型非法。<br>**起始版本：** 20 |
+| OK = 0 | 成功。<br><!--Device-OK = 0--><!--Device-OK = 0-End--> |
+| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 | 无权限。<br>**起始版本：** 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201--><!--Device-WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201-End--> |
+| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | 非法参数。<br>**起始版本：** 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401--><!--Device-WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401-End--> |
+| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | 设备不支持。<br>**起始版本：** 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801--><!--Device-WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801-End--> |
+| INVAILD_WINDOW_ID = 1000 | 非法窗口ID。<br><!--Device-INVAILD_WINDOW_ID = 1000--><!--Device-INVAILD_WINDOW_ID = 1000-End--> |
+| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | 非法窗口ID。<br>**起始版本：** 26.0.0<br><!--Device-INVALID_WINDOW_ID = INVAILD_WINDOW_ID--><!--Device-INVALID_WINDOW_ID = INVAILD_WINDOW_ID-End--> |
+| SERVICE_ERROR = 2000 | 服务异常。<br><!--Device-SERVICE_ERROR = 2000--><!--Device-SERVICE_ERROR = 2000-End--> |
+| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | 窗口状态异常。<br>**起始版本：** 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002--><!--Device-WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002-End--> |
+| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | 窗口管理器服务异常。<br>**起始版本：** 15<br><!--Device-WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003--><!--Device-WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 | 画中画销毁失败。<br>**起始版本：** 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 | 画中画状态异常。<br>**起始版本：** 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 | 画中画创建失败。<br>**起始版本：** 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 | 画中画内部错误。可能原因：<br/>1.画中画依赖的窗口异常，可能窗口为空；2.画中画控制器异常。<br>**起始版本：** 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014-End--> |
+| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 | 画中画重复操作。<br>**起始版本：** 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015--><!--Device-WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015-End--> |
+| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 | 参数错误。可能原因：<br/>1.参数取值范围非法；2.参数数量非法；3.参数类型非法。<br>**起始版本：** 20<br><!--Device-WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016--><!--Device-WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016-End--> |
 
 ### WindowManager_AvoidAreaType
 
@@ -88,7 +88,7 @@ enum WindowManager_AvoidAreaType
 
 避让区域枚举类型。
 
-<!--Device-WindowManager_AvoidAreaType--><!--Device-WindowManager_AvoidAreaType-End-->
+<!--Device-enum WindowManager_AvoidAreaType--><!--Device-enum WindowManager_AvoidAreaType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -96,11 +96,11 @@ enum WindowManager_AvoidAreaType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0 | 系统避让区域。 |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1 | 刘海屏避让。 |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2 | 系统手势区域。 |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3 | 键盘区域。 |
-| WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4 | 导航条区域。 |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0 | 系统避让区域。<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM = 0-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1 | 刘海屏避让。<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_CUTOUT = 1-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2 | 系统手势区域。<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_SYSTEM_GESTURE = 2-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3 | 键盘区域。<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_KEYBOARD = 3-End--> |
+| WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4 | 导航条区域。<br><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4--><!--Device-WINDOW_MANAGER_AVOID_AREA_TYPE_NAVIGATION_INDICATOR = 4-End--> |
 
 ### WindowManager_WindowType
 
@@ -112,7 +112,7 @@ enum WindowManager_WindowType
 
 窗口类型。
 
-<!--Device-WindowManager_WindowType--><!--Device-WindowManager_WindowType-End-->
+<!--Device-enum WindowManager_WindowType--><!--Device-enum WindowManager_WindowType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -120,10 +120,10 @@ enum WindowManager_WindowType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | 子窗口。 |
-| WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | 主窗口。 |
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 悬浮窗口。 |
-| WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | 模态窗口。 |
+| WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | 子窗口。<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_APP = 0--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_APP = 0-End--> |
+| WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | 主窗口。<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1-End--> |
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 悬浮窗口。<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8-End--> |
+| WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | 模态窗口。<br><!--Device-WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16--><!--Device-WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16-End--> |
 
 
 ## 函数说明

@@ -43,7 +43,7 @@ enum EffectErrorCode
 
 Enumerates the status codes of the filter effect. These status codes are returned when filter effect APIs are used. Developers should determine the operation result based on the returned status code and handle it accordingly. For usage instructions of the status codes for specific APIs, see the corresponding API documentation.
 
-<!--Device-EffectErrorCode--><!--Device-EffectErrorCode-End-->
+<!--Device-enum EffectErrorCode--><!--Device-enum EffectErrorCode-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -51,10 +51,10 @@ Enumerates the status codes of the filter effect. These status codes are returne
 
 | Enum item | Description |
 | -- | -- |
-| EFFECT_SUCCESS = 0 | The operation is successful. |
-| EFFECT_BAD_PARAMETER = 401 | Invalid parameter. Check the parameter type and range. |
-| EFFECT_UNSUPPORTED_OPERATION = 7600201 | The operation is not supported. Check the API usage. |
-| EFFECT_UNKNOWN_ERROR = 7600901 | An unidentified error occurred. Possible causes include abnormal system resources or improper API calling. Check the API call parameters and system resource status first. |
+| EFFECT_SUCCESS = 0 | The operation is successful.<br><!--Device-EFFECT_SUCCESS = 0--><!--Device-EFFECT_SUCCESS = 0-End--> |
+| EFFECT_BAD_PARAMETER = 401 | Invalid parameter. Check the parameter type and range.<br><!--Device-EFFECT_BAD_PARAMETER = 401--><!--Device-EFFECT_BAD_PARAMETER = 401-End--> |
+| EFFECT_UNSUPPORTED_OPERATION = 7600201 | The operation is not supported. Check the API usage.<br><!--Device-EFFECT_UNSUPPORTED_OPERATION = 7600201--><!--Device-EFFECT_UNSUPPORTED_OPERATION = 7600201-End--> |
+| EFFECT_UNKNOWN_ERROR = 7600901 | An unidentified error occurred. Possible causes include abnormal system resources or improper API calling. Check the API call parameters and system resource status first.<br><!--Device-EFFECT_UNKNOWN_ERROR = 7600901--><!--Device-EFFECT_UNKNOWN_ERROR = 7600901-End--> |
 
 ### EffectTileMode
 
@@ -66,7 +66,7 @@ enum EffectTileMode
 
 Enumerates the tile modes of the shader effect.
 
-<!--Device-EffectTileMode--><!--Device-EffectTileMode-End-->
+<!--Device-enum EffectTileMode--><!--Device-enum EffectTileMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -74,9 +74,9 @@ Enumerates the tile modes of the shader effect.
 
 | Enum item | Description |
 | -- | -- |
-| CLAMP = 0 | Clamp mode. If the shader effect exceeds its original bounds, the remaining area is filled with the edge color of the shader. Applicable to scenarios requiring a smooth transition to a solid color background. |
-| REPEAT | Repeat mode. Repeats the shader effect in both horizontal and vertical directions. Applicable to scenarios requiring seamless tiled textures, such as background pattern filling. |
-| MIRROR | Mirror mode. Repeats the shader effect in both horizontal and vertical directions, alternating mirrored images so that adjacent images always join seamlessly. Applicable to scenarios requiring continuity while avoiding abrupt repeating edges, such as gradient backgrounds. |
-| DECAL | Decal mode. Renders the shader effect only within its original bounds. Applicable to scenarios requiring precise control over shader boundaries, where areas outside the bounds remain transparent or retain the original content. |
+| CLAMP = 0 | Clamp mode. If the shader effect exceeds its original bounds, the remaining area is filled with the edge color of the shader. Applicable to scenarios requiring a smooth transition to a solid color background.<br><!--Device-CLAMP = 0--><!--Device-CLAMP = 0-End--> |
+| REPEAT | Repeat mode. Repeats the shader effect in both horizontal and vertical directions. Applicable to scenarios requiring seamless tiled textures, such as background pattern filling.<br><!--Device-REPEAT--><!--Device-REPEAT-End--> |
+| MIRROR | Mirror mode. Repeats the shader effect in both horizontal and vertical directions, alternating mirrored images so that adjacent images always join seamlessly. Applicable to scenarios requiring continuity while avoiding abrupt repeating edges, such as gradient backgrounds.<br><!--Device-MIRROR--><!--Device-MIRROR-End--> |
+| DECAL | Decal mode. Renders the shader effect only within its original bounds. Applicable to scenarios requiring precise control over shader boundaries, where areas outside the bounds remain transparent or retain the original content.<br><!--Device-DECAL--><!--Device-DECAL-End--> |
 
 

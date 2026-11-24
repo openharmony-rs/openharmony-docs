@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 srcPremultiplied |  |
-| VkBool32 dstPremultiplied |  |
-| VkBlendOverlapEXT blendOverlap |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 srcPremultiplied | <!--Device-VkBool32 srcPremultiplied--><!--Device-VkBool32 srcPremultiplied-End--> |
+| VkBool32 dstPremultiplied | <!--Device-VkBool32 dstPremultiplied--><!--Device-VkBool32 dstPremultiplied-End--> |
+| VkBlendOverlapEXT blendOverlap | <!--Device-VkBlendOverlapEXT blendOverlap--><!--Device-VkBlendOverlapEXT blendOverlap-End--> |
 
 

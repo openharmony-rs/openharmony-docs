@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 subgroupSizeControl |  |
-| VkBool32 computeFullSubgroups |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 subgroupSizeControl | <!--Device-VkBool32 subgroupSizeControl--><!--Device-VkBool32 subgroupSizeControl-End--> |
+| VkBool32 computeFullSubgroups | <!--Device-VkBool32 computeFullSubgroups--><!--Device-VkBool32 computeFullSubgroups-End--> |
 
 

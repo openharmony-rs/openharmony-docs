@@ -24,6 +24,6 @@ Defines the mutex attribute structure used to store mutex attribute information.
 
 | Name | Description |
 | -- | -- |
-| long storage | Internal storage backing the mutex attribute. Do not access directly; use [ffrt_mutexattr_init](capi-mutex-h.md#ffrt_mutexattr_init) to initialize. |
+| long storage | Internal storage backing the mutex attribute. Do not access directly; use [ffrt_mutexattr_init](capi-mutex-h.md#ffrt_mutexattr_init) to initialize.<br><!--Device-long storage--><!--Device-long storage-End--> |
 
 

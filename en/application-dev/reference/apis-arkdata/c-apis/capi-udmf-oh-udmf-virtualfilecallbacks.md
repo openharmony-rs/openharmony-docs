@@ -24,9 +24,9 @@ Describes the callbacks used to provide virtual file metadata and content.<br> <
 
 | Name | Description |
 | -- | -- |
-| uint32_t structSize | Structure size.<br>**Since**: 26.1.0 |
-| [OH_UDMF_VirtualFileOnStat](capi-uds-h.md#oh_udmf_virtualfileonstat) onStat | Optional metadata callback.<br>**Since**: 26.1.0 |
-| [OH_UDMF_VirtualFileOnRead](capi-uds-h.md#oh_udmf_virtualfileonread) onRead | Mandatory content read callback.<br>**Since**: 26.1.0 |
-| [OH_UDMF_VirtualFileOnCancel](capi-uds-h.md#oh_udmf_virtualfileoncancel) onCancel | Optional cancel callback. If the value is nullptr, the cancellation is successful and the provider is not notified.<br>**Since**: 26.1.0 |
+| uint32_t structSize | Structure size.<br>**Since**: 26.1.0<br><!--Device-uint32_t structSize--><!--Device-uint32_t structSize-End--> |
+| [OH_UDMF_VirtualFileOnStat](capi-uds-h.md#oh_udmf_virtualfileonstat) onStat | Optional metadata callback.<br>**Since**: 26.1.0<br><!--Device-OH_UDMF_VirtualFileOnStat onStat--><!--Device-OH_UDMF_VirtualFileOnStat onStat-End--> |
+| [OH_UDMF_VirtualFileOnRead](capi-uds-h.md#oh_udmf_virtualfileonread) onRead | Mandatory content read callback.<br>**Since**: 26.1.0<br><!--Device-OH_UDMF_VirtualFileOnRead onRead--><!--Device-OH_UDMF_VirtualFileOnRead onRead-End--> |
+| [OH_UDMF_VirtualFileOnCancel](capi-uds-h.md#oh_udmf_virtualfileoncancel) onCancel | Optional cancel callback. If the value is nullptr, the cancellation is successful and the provider is not notified.<br>**Since**: 26.1.0<br><!--Device-OH_UDMF_VirtualFileOnCancel onCancel--><!--Device-OH_UDMF_VirtualFileOnCancel onCancel-End--> |
 
 

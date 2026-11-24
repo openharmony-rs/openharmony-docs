@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkDeviceSize robustStorageBufferAccessSizeAlignment |  |
-| VkDeviceSize robustUniformBufferAccessSizeAlignment |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkDeviceSize robustStorageBufferAccessSizeAlignment | <!--Device-VkDeviceSize robustStorageBufferAccessSizeAlignment--><!--Device-VkDeviceSize robustStorageBufferAccessSizeAlignment-End--> |
+| VkDeviceSize robustUniformBufferAccessSizeAlignment | <!--Device-VkDeviceSize robustUniformBufferAccessSizeAlignment--><!--Device-VkDeviceSize robustUniformBufferAccessSizeAlignment-End--> |
 
 

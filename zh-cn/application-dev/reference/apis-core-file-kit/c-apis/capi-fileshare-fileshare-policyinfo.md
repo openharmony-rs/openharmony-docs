@@ -24,8 +24,8 @@ typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char *uri | 需要授予或激活访问权限的URI，需符合系统URI格式规范。 |
-| unsigned int length | uri指向字符串的字节长度，不包含字符串结束符'\0'。 |
-| unsigned int operationMode | 授予或激活权限的URI访问模式。READ_MODE表示读取权限，WRITE_MODE表示写入权限。 示例：FileShare_OperationMode.READ_MODE 或者FileShare_OperationMode.READ_MODE\|FileShare_OperationMode.WRITE_MODE。 |
+| char *uri | 需要授予或激活访问权限的URI，需符合系统URI格式规范。<br><!--Device-char *uri--><!--Device-char *uri-End--> |
+| unsigned int length | uri指向字符串的字节长度，不包含字符串结束符'\0'。<br><!--Device-unsigned int length--><!--Device-unsigned int length-End--> |
+| unsigned int operationMode | 授予或激活权限的URI访问模式。READ_MODE表示读取权限，WRITE_MODE表示写入权限。 示例：FileShare_OperationMode.READ_MODE 或者FileShare_OperationMode.READ_MODE\|FileShare_OperationMode.WRITE_MODE。<br><!--Device-unsigned int operationMode--><!--Device-unsigned int operationMode-End--> |
 
 

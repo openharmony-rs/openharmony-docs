@@ -24,9 +24,9 @@ Defines the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#seta
 
 | Name | Description |
 | -- | -- |
-| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value | Pointer to the numeric array used to store attribute parameters of the numeric type. The array length is specified by **size**.<br>**Since**: 12 |
-| int32_t size | Length of the **value** array, which must be used together with the **value** variable.<br>**Since**: 12 |
-| const char* string | Pointer to the string used to store attribute parameters of the string type.<br>**Since**: 12 |
-| void* object | Pointer to the object data used to store attribute parameters of the object type.<br>**Since**: 12 |
+| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value | Pointer to the numeric array used to store attribute parameters of the numeric type. The array length is specified by **size**.<br>**Since**: 12<br><!--Device-const ArkUI_NumberValue* value--><!--Device-const ArkUI_NumberValue* value-End--> |
+| int32_t size | Length of the **value** array, which must be used together with the **value** variable.<br>**Since**: 12<br><!--Device-int32_t size--><!--Device-int32_t size-End--> |
+| const char* string | Pointer to the string used to store attribute parameters of the string type.<br>**Since**: 12<br><!--Device-const char* string--><!--Device-const char* string-End--> |
+| void* object | Pointer to the object data used to store attribute parameters of the object type.<br>**Since**: 12<br><!--Device-void* object--><!--Device-void* object-End--> |
 
 

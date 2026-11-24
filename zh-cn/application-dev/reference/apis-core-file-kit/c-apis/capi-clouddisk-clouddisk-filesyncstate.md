@@ -24,7 +24,7 @@ typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
 
 | 名称 | 描述 |
 | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePathInfo | 文件的路径信息。<br>**起始版本：** 21 |
-| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态。<br>**起始版本：** 21 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePathInfo | 文件的路径信息。<br>**起始版本：** 21<br><!--Device-CloudDisk_PathInfo filePathInfo--><!--Device-CloudDisk_PathInfo filePathInfo-End--> |
+| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态。<br>**起始版本：** 21<br><!--Device-CloudDisk_SyncState syncState--><!--Device-CloudDisk_SyncState syncState-End--> |
 
 

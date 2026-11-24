@@ -24,7 +24,7 @@ The struct describes all the color spaces supported by a display.
 
 | Name | Description |
 | -- | -- |
-| uint32_t colorSpaceLength | Number of color spaces supported by the display. |
-| uint32_t *colorSpaces | Data of the color spaces supported by the display. |
+| uint32_t colorSpaceLength | Number of color spaces supported by the display.<br><!--Device-uint32_t colorSpaceLength--><!--Device-uint32_t colorSpaceLength-End--> |
+| uint32_t *colorSpaces | Data of the color spaces supported by the display.<br><!--Device-uint32_t *colorSpaces--><!--Device-uint32_t *colorSpaces-End--> |
 
 

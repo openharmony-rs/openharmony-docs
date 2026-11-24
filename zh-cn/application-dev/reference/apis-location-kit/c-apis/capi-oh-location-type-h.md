@@ -58,7 +58,7 @@ enum Location_ResultCode
 
 定义位置服务的错误码。
 
-<!--Device-Location_ResultCode--><!--Device-Location_ResultCode-End-->
+<!--Device-enum Location_ResultCode--><!--Device-enum Location_ResultCode-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -66,12 +66,12 @@ enum Location_ResultCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOCATION_SUCCESS = 0 | 操作成功。 |
-| LOCATION_PERMISSION_DENIED = 201 | 权限校验失败。 |
-| LOCATION_INVALID_PARAM = 401 | 参数错误。 可能原因：1.输入参数为空指针；2.参数数值超出定义范围。 |
-| LOCATION_NOT_SUPPORTED = 801 | 该功能不支持。由于设备能力有限，无法调用该函数。 |
-| LOCATION_SERVICE_UNAVAILABLE = 3301000 | 位置服务不可用。 |
-| LOCATION_SWITCH_OFF = 3301100 | 位置开关处于关闭状态。 |
+| LOCATION_SUCCESS = 0 | 操作成功。<br><!--Device-LOCATION_SUCCESS = 0--><!--Device-LOCATION_SUCCESS = 0-End--> |
+| LOCATION_PERMISSION_DENIED = 201 | 权限校验失败。<br><!--Device-LOCATION_PERMISSION_DENIED = 201--><!--Device-LOCATION_PERMISSION_DENIED = 201-End--> |
+| LOCATION_INVALID_PARAM = 401 | 参数错误。 可能原因：1.输入参数为空指针；2.参数数值超出定义范围。<br><!--Device-LOCATION_INVALID_PARAM = 401--><!--Device-LOCATION_INVALID_PARAM = 401-End--> |
+| LOCATION_NOT_SUPPORTED = 801 | 该功能不支持。由于设备能力有限，无法调用该函数。<br><!--Device-LOCATION_NOT_SUPPORTED = 801--><!--Device-LOCATION_NOT_SUPPORTED = 801-End--> |
+| LOCATION_SERVICE_UNAVAILABLE = 3301000 | 位置服务不可用。<br><!--Device-LOCATION_SERVICE_UNAVAILABLE = 3301000--><!--Device-LOCATION_SERVICE_UNAVAILABLE = 3301000-End--> |
+| LOCATION_SWITCH_OFF = 3301100 | 位置开关处于关闭状态。<br><!--Device-LOCATION_SWITCH_OFF = 3301100--><!--Device-LOCATION_SWITCH_OFF = 3301100-End--> |
 
 ### Location_UseScene
 
@@ -83,7 +83,7 @@ enum Location_UseScene
 
 定义位置请求中的用户活动场景类型。
 
-<!--Device-Location_UseScene--><!--Device-Location_UseScene-End-->
+<!--Device-enum Location_UseScene--><!--Device-enum Location_UseScene-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -91,10 +91,10 @@ enum Location_UseScene
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | 导航场景。 适用于在户外获取设备实时位置的场景，如车载、步行导航。 主要使用GNSS定位技术提供定位服务，功耗较高。 |
-| LOCATION_USE_SCENE_SPORT = 0x0402 | 表示运动场景。 适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。 主要使用GNSS定位技术提供定位服务，功耗较高。 |
-| LOCATION_USE_SCENE_TRANSPORT = 0x0403 | 表示出行场景。 适用于用户出行场景，如打车、乘坐公共交通等场景。 主要使用GNSS定位技术提供定位服务，功耗较高。 |
-| LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | 表示日常服务使用场景。 适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。 该场景仅使用网络定位技术提供定位服务，功耗较低。 |
+| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | 导航场景。 适用于在户外获取设备实时位置的场景，如车载、步行导航。 主要使用GNSS定位技术提供定位服务，功耗较高。<br><!--Device-LOCATION_USE_SCENE_NAVIGATION = 0x0401--><!--Device-LOCATION_USE_SCENE_NAVIGATION = 0x0401-End--> |
+| LOCATION_USE_SCENE_SPORT = 0x0402 | 表示运动场景。 适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。 主要使用GNSS定位技术提供定位服务，功耗较高。<br><!--Device-LOCATION_USE_SCENE_SPORT = 0x0402--><!--Device-LOCATION_USE_SCENE_SPORT = 0x0402-End--> |
+| LOCATION_USE_SCENE_TRANSPORT = 0x0403 | 表示出行场景。 适用于用户出行场景，如打车、乘坐公共交通等场景。 主要使用GNSS定位技术提供定位服务，功耗较高。<br><!--Device-LOCATION_USE_SCENE_TRANSPORT = 0x0403--><!--Device-LOCATION_USE_SCENE_TRANSPORT = 0x0403-End--> |
+| LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | 表示日常服务使用场景。 适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。 该场景仅使用网络定位技术提供定位服务，功耗较低。<br><!--Device-LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404--><!--Device-LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404-End--> |
 
 ### Location_PowerConsumptionScene
 
@@ -106,7 +106,7 @@ enum Location_PowerConsumptionScene
 
 定义位置请求中的功耗场景类型。
 
-<!--Device-Location_PowerConsumptionScene--><!--Device-Location_PowerConsumptionScene-End-->
+<!--Device-enum Location_PowerConsumptionScene--><!--Device-enum Location_PowerConsumptionScene-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -114,9 +114,9 @@ enum Location_PowerConsumptionScene
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOCATION_HIGH_POWER_CONSUMPTION = 0x0601 | 高功耗。 以GNSS定位技术为主。在GNSS提供稳定位置结果之前会使用网络定位技术提供服务。 在持续定位时，如果超过30秒无法获取GNSS定位结果则会使用网络定位技术获取位置。 对设备的硬件资源消耗较大，功耗较大。 |
-| LOCATION_LOW_POWER_CONSUMPTION = 0x0602 | 低功耗。 适用于对用户位置精度要求不高的使用场景，如新闻资讯、网购、点餐类应用。 该场景仅使用网络定位技术提供定位服务，功耗较低。 |
-| LOCATION_NO_POWER_CONSUMPTION = 0x0603 | 无功耗。 这种场景下不会主动触发定位，会在其他应用定位时，才给当前应用返回位置。 |
+| LOCATION_HIGH_POWER_CONSUMPTION = 0x0601 | 高功耗。 以GNSS定位技术为主。在GNSS提供稳定位置结果之前会使用网络定位技术提供服务。 在持续定位时，如果超过30秒无法获取GNSS定位结果则会使用网络定位技术获取位置。 对设备的硬件资源消耗较大，功耗较大。<br><!--Device-LOCATION_HIGH_POWER_CONSUMPTION = 0x0601--><!--Device-LOCATION_HIGH_POWER_CONSUMPTION = 0x0601-End--> |
+| LOCATION_LOW_POWER_CONSUMPTION = 0x0602 | 低功耗。 适用于对用户位置精度要求不高的使用场景，如新闻资讯、网购、点餐类应用。 该场景仅使用网络定位技术提供定位服务，功耗较低。<br><!--Device-LOCATION_LOW_POWER_CONSUMPTION = 0x0602--><!--Device-LOCATION_LOW_POWER_CONSUMPTION = 0x0602-End--> |
+| LOCATION_NO_POWER_CONSUMPTION = 0x0603 | 无功耗。 这种场景下不会主动触发定位，会在其他应用定位时，才给当前应用返回位置。<br><!--Device-LOCATION_NO_POWER_CONSUMPTION = 0x0603--><!--Device-LOCATION_NO_POWER_CONSUMPTION = 0x0603-End--> |
 
 ### Location_SourceType
 
@@ -128,7 +128,7 @@ enum Location_SourceType
 
 定义位置信息的来源。
 
-<!--Device-Location_SourceType--><!--Device-Location_SourceType-End-->
+<!--Device-enum Location_SourceType--><!--Device-enum Location_SourceType-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -136,10 +136,10 @@ enum Location_SourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOCATION_SOURCE_TYPE_GNSS = 1 | 表示定位结果来自于GNSS定位技术。 |
-| LOCATION_SOURCE_TYPE_NETWORK = 2 | 表示定位结果来自于网络定位技术。 |
-| LOCATION_SOURCE_TYPE_INDOOR = 3 | 表示定位结果来自于室内高精度定位技术。 |
-| LOCATION_SOURCE_TYPE_RTK = 4 | 表示定位结果来自于室外高精度定位技术。 |
+| LOCATION_SOURCE_TYPE_GNSS = 1 | 表示定位结果来自于GNSS定位技术。<br><!--Device-LOCATION_SOURCE_TYPE_GNSS = 1--><!--Device-LOCATION_SOURCE_TYPE_GNSS = 1-End--> |
+| LOCATION_SOURCE_TYPE_NETWORK = 2 | 表示定位结果来自于网络定位技术。<br><!--Device-LOCATION_SOURCE_TYPE_NETWORK = 2--><!--Device-LOCATION_SOURCE_TYPE_NETWORK = 2-End--> |
+| LOCATION_SOURCE_TYPE_INDOOR = 3 | 表示定位结果来自于室内高精度定位技术。<br><!--Device-LOCATION_SOURCE_TYPE_INDOOR = 3--><!--Device-LOCATION_SOURCE_TYPE_INDOOR = 3-End--> |
+| LOCATION_SOURCE_TYPE_RTK = 4 | 表示定位结果来自于室外高精度定位技术。<br><!--Device-LOCATION_SOURCE_TYPE_RTK = 4--><!--Device-LOCATION_SOURCE_TYPE_RTK = 4-End--> |
 
 
 ## 函数说明

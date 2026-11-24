@@ -24,7 +24,7 @@ Defines the data used for conversion of integers.
 
 | Name | Description |
 | -- | -- |
-| uint32_t src | Source |
-| uint32_t dest | Destination |
+| uint32_t src | Source<br><!--Device-uint32_t src--><!--Device-uint32_t src-End--> |
+| uint32_t dest | Destination<br><!--Device-uint32_t dest--><!--Device-uint32_t dest-End--> |
 
 

@@ -24,13 +24,13 @@ struct UsbEndpointDescriptor {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t bLength | 该描述符的大小，单位：Byte。 |
-| uint8_t bDescriptorType | 描述符类型。 |
-| uint8_t bEndpointAddress | 端点地址，包含端点编号以及端点方向。 |
-| uint8_t bmAttributes | 端点属性，包括传输类型、同步类型和使用类型。 |
-| uint16_t wMaxPacketSize | 该端点所能承载的最大包的大小，单位：Byte。 |
-| uint8_t bInterval | 数据传输时轮询端点的时间间隔。 |
-| uint8_t bRefresh | 用于音频类设备，同步反馈的速率。 |
-| uint8_t bSynchAddress | 用于音频类设备，同步端点的地址。 |
+| uint8_t bLength | 该描述符的大小，单位：Byte。<br><!--Device-uint8_t bLength--><!--Device-uint8_t bLength-End--> |
+| uint8_t bDescriptorType | 描述符类型。<br><!--Device-uint8_t bDescriptorType--><!--Device-uint8_t bDescriptorType-End--> |
+| uint8_t bEndpointAddress | 端点地址，包含端点编号以及端点方向。<br><!--Device-uint8_t bEndpointAddress--><!--Device-uint8_t bEndpointAddress-End--> |
+| uint8_t bmAttributes | 端点属性，包括传输类型、同步类型和使用类型。<br><!--Device-uint8_t bmAttributes--><!--Device-uint8_t bmAttributes-End--> |
+| uint16_t wMaxPacketSize | 该端点所能承载的最大包的大小，单位：Byte。<br><!--Device-uint16_t wMaxPacketSize--><!--Device-uint16_t wMaxPacketSize-End--> |
+| uint8_t bInterval | 数据传输时轮询端点的时间间隔。<br><!--Device-uint8_t bInterval--><!--Device-uint8_t bInterval-End--> |
+| uint8_t bRefresh | 用于音频类设备，同步反馈的速率。<br><!--Device-uint8_t bRefresh--><!--Device-uint8_t bRefresh-End--> |
+| uint8_t bSynchAddress | 用于音频类设备，同步端点的地址。<br><!--Device-uint8_t bSynchAddress--><!--Device-uint8_t bSynchAddress-End--> |
 
 

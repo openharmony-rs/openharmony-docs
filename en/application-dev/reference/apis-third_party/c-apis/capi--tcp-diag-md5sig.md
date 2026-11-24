@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t tcpm_family |  |
-| uint8_t tcpm_prefixlen |  |
-| uint16_t tcpm_keylen |  |
-| uint32_t tcpm_addr[4] |  |
-| uint8_t tcpm_key[TCP_MD5SIG_MAXKEYLEN] |  |
+| uint8_t tcpm_family | <!--Device-uint8_t tcpm_family--><!--Device-uint8_t tcpm_family-End--> |
+| uint8_t tcpm_prefixlen | <!--Device-uint8_t tcpm_prefixlen--><!--Device-uint8_t tcpm_prefixlen-End--> |
+| uint16_t tcpm_keylen | <!--Device-uint16_t tcpm_keylen--><!--Device-uint16_t tcpm_keylen-End--> |
+| uint32_t tcpm_addr[4] | <!--Device-uint32_t tcpm_addr[4]--><!--Device-uint32_t tcpm_addr[4]-End--> |
+| uint8_t tcpm_key[TCP_MD5SIG_MAXKEYLEN] | <!--Device-uint8_t tcpm_key[TCP_MD5SIG_MAXKEYLEN]--><!--Device-uint8_t tcpm_key[TCP_MD5SIG_MAXKEYLEN]-End--> |
 
 

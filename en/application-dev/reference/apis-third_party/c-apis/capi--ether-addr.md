@@ -10,6 +10,6 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ether_addr_octet[ETH_ALEN] |  |
+| uint8_t ether_addr_octet[ETH_ALEN] | <!--Device-uint8_t ether_addr_octet[ETH_ALEN]--><!--Device-uint8_t ether_addr_octet[ETH_ALEN]-End--> |
 
 

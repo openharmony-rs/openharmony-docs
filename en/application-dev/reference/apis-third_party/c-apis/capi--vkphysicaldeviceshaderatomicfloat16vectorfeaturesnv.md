@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shaderFloat16VectorAtomics |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shaderFloat16VectorAtomics | <!--Device-VkBool32 shaderFloat16VectorAtomics--><!--Device-VkBool32 shaderFloat16VectorAtomics-End--> |
 
 

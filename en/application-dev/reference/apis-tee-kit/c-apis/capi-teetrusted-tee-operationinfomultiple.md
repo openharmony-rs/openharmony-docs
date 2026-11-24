@@ -24,14 +24,14 @@ Defines information about an operation.
 
 | Name | Description |
 | -- | -- |
-| uint32_t algorithm | Algorithm ID |
-| uint32_t operationClass | Operation type |
-| uint32_t mode | Operation mode |
-| uint32_t digestLength | Digest length |
-| uint32_t maxKeySize | Maximum key length |
-| uint32_t handleState | Handle state |
-| uint32_t operationState | Operation state |
-| uint32_t numberOfKeys | Number of keys |
-| [TEE_OperationInfoKey](capi-teetrusted-tee-operationinfokey.md) keyInformation[] | Key information |
+| uint32_t algorithm | Algorithm ID<br><!--Device-uint32_t algorithm--><!--Device-uint32_t algorithm-End--> |
+| uint32_t operationClass | Operation type<br><!--Device-uint32_t operationClass--><!--Device-uint32_t operationClass-End--> |
+| uint32_t mode | Operation mode<br><!--Device-uint32_t mode--><!--Device-uint32_t mode-End--> |
+| uint32_t digestLength | Digest length<br><!--Device-uint32_t digestLength--><!--Device-uint32_t digestLength-End--> |
+| uint32_t maxKeySize | Maximum key length<br><!--Device-uint32_t maxKeySize--><!--Device-uint32_t maxKeySize-End--> |
+| uint32_t handleState | Handle state<br><!--Device-uint32_t handleState--><!--Device-uint32_t handleState-End--> |
+| uint32_t operationState | Operation state<br><!--Device-uint32_t operationState--><!--Device-uint32_t operationState-End--> |
+| uint32_t numberOfKeys | Number of keys<br><!--Device-uint32_t numberOfKeys--><!--Device-uint32_t numberOfKeys-End--> |
+| [TEE_OperationInfoKey](capi-teetrusted-tee-operationinfokey.md) keyInformation[] | Key information<br><!--Device-TEE_OperationInfoKey keyInformation[]--><!--Device-TEE_OperationInfoKey keyInformation[]-End--> |
 
 

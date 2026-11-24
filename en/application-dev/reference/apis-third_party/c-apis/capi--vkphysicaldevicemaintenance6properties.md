@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 blockTexelViewCompatibleMultipleLayers |  |
-| uint32_t maxCombinedImageSamplerDescriptorCount |  |
-| VkBool32 fragmentShadingRateClampCombinerInputs |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 blockTexelViewCompatibleMultipleLayers | <!--Device-VkBool32 blockTexelViewCompatibleMultipleLayers--><!--Device-VkBool32 blockTexelViewCompatibleMultipleLayers-End--> |
+| uint32_t maxCombinedImageSamplerDescriptorCount | <!--Device-uint32_t maxCombinedImageSamplerDescriptorCount--><!--Device-uint32_t maxCombinedImageSamplerDescriptorCount-End--> |
+| VkBool32 fragmentShadingRateClampCombinerInputs | <!--Device-VkBool32 fragmentShadingRateClampCombinerInputs--><!--Device-VkBool32 fragmentShadingRateClampCombinerInputs-End--> |
 
 

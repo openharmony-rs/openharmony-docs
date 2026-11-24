@@ -24,8 +24,8 @@ ArkUI 在 Native 侧使用的数字类型，用于通过统一类型承载浮点
 
 | 名称 | 描述 |
 | -- | -- |
-| float f32 | 浮点数。<br>**起始版本：** 12 |
-| int32_t i32 | 有符号整数。<br>**起始版本：** 12 |
-| uint32_t u32 | 无符号整数。<br>**起始版本：** 12 |
+| float f32 | 浮点数。<br>**起始版本：** 12<br><!--Device-float f32--><!--Device-float f32-End--> |
+| int32_t i32 | 有符号整数。<br>**起始版本：** 12<br><!--Device-int32_t i32--><!--Device-int32_t i32-End--> |
+| uint32_t u32 | 无符号整数。<br>**起始版本：** 12<br><!--Device-uint32_t u32--><!--Device-uint32_t u32-End--> |
 
 

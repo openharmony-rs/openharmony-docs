@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t attachmentInitialSampleLocationsCount |  |
-| [const VkAttachmentSampleLocationsEXT*](capi--vkattachmentsamplelocationsext.md) pAttachmentInitialSampleLocations |  |
-| uint32_t postSubpassSampleLocationsCount |  |
-| [const VkSubpassSampleLocationsEXT*](capi--vksubpasssamplelocationsext.md) pPostSubpassSampleLocations |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t attachmentInitialSampleLocationsCount | <!--Device-uint32_t attachmentInitialSampleLocationsCount--><!--Device-uint32_t attachmentInitialSampleLocationsCount-End--> |
+| [const VkAttachmentSampleLocationsEXT*](capi--vkattachmentsamplelocationsext.md) pAttachmentInitialSampleLocations | <!--Device-const VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations--><!--Device-const VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations-End--> |
+| uint32_t postSubpassSampleLocationsCount | <!--Device-uint32_t postSubpassSampleLocationsCount--><!--Device-uint32_t postSubpassSampleLocationsCount-End--> |
+| [const VkSubpassSampleLocationsEXT*](capi--vksubpasssamplelocationsext.md) pPostSubpassSampleLocations | <!--Device-const VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations--><!--Device-const VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations-End--> |
 
 

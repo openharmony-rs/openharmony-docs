@@ -24,7 +24,7 @@ typedef struct ArkUI_IntSize {...} ArkUI_IntSize
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t width | 宽度，单位为px。<br>**起始版本：** 12 |
-| int32_t height | 高度，单位为px。<br>**起始版本：** 12 |
+| int32_t width | 宽度，单位为px。<br>**起始版本：** 12<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | 高度，单位为px。<br>**起始版本：** 12<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

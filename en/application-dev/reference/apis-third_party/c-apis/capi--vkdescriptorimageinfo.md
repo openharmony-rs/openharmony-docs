@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkSampler sampler |  |
-| VkImageView imageView |  |
-| VkImageLayout imageLayout |  |
+| VkSampler sampler | <!--Device-VkSampler sampler--><!--Device-VkSampler sampler-End--> |
+| VkImageView imageView | <!--Device-VkImageView imageView--><!--Device-VkImageView imageView-End--> |
+| VkImageLayout imageLayout | <!--Device-VkImageLayout imageLayout--><!--Device-VkImageLayout imageLayout-End--> |
 
 

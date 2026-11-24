@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shaderSubgroupRotate |  |
-| VkBool32 shaderSubgroupRotateClustered |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shaderSubgroupRotate | <!--Device-VkBool32 shaderSubgroupRotate--><!--Device-VkBool32 shaderSubgroupRotate-End--> |
+| VkBool32 shaderSubgroupRotateClustered | <!--Device-VkBool32 shaderSubgroupRotateClustered--><!--Device-VkBool32 shaderSubgroupRotateClustered-End--> |
 
 

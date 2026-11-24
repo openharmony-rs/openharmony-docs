@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBool32 arrayOfPointers |  |
-| [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) data |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBool32 arrayOfPointers | <!--Device-VkBool32 arrayOfPointers--><!--Device-VkBool32 arrayOfPointers-End--> |
+| [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) data | <!--Device-VkDeviceOrHostAddressConstKHR data--><!--Device-VkDeviceOrHostAddressConstKHR data-End--> |
 
 

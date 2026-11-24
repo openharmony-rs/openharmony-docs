@@ -24,7 +24,7 @@ typedef struct OH_PictureNative_MetadataCopyItem {...} OH_PictureNative_Metadata
 
 | 名称 | 描述 |
 | -- | -- |
-| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) srcType |  |
-| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) dstType |  |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) srcType | <!--Device-Image_MetadataType srcType--><!--Device-Image_MetadataType srcType-End--> |
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) dstType | <!--Device-Image_MetadataType dstType--><!--Device-Image_MetadataType dstType-End--> |
 
 

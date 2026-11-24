@@ -10,15 +10,15 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t shaderGroupHandleSize |  |
-| uint32_t maxRecursionDepth |  |
-| uint32_t maxShaderGroupStride |  |
-| uint32_t shaderGroupBaseAlignment |  |
-| uint64_t maxGeometryCount |  |
-| uint64_t maxInstanceCount |  |
-| uint64_t maxTriangleCount |  |
-| uint32_t maxDescriptorSetAccelerationStructures |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t shaderGroupHandleSize | <!--Device-uint32_t shaderGroupHandleSize--><!--Device-uint32_t shaderGroupHandleSize-End--> |
+| uint32_t maxRecursionDepth | <!--Device-uint32_t maxRecursionDepth--><!--Device-uint32_t maxRecursionDepth-End--> |
+| uint32_t maxShaderGroupStride | <!--Device-uint32_t maxShaderGroupStride--><!--Device-uint32_t maxShaderGroupStride-End--> |
+| uint32_t shaderGroupBaseAlignment | <!--Device-uint32_t shaderGroupBaseAlignment--><!--Device-uint32_t shaderGroupBaseAlignment-End--> |
+| uint64_t maxGeometryCount | <!--Device-uint64_t maxGeometryCount--><!--Device-uint64_t maxGeometryCount-End--> |
+| uint64_t maxInstanceCount | <!--Device-uint64_t maxInstanceCount--><!--Device-uint64_t maxInstanceCount-End--> |
+| uint64_t maxTriangleCount | <!--Device-uint64_t maxTriangleCount--><!--Device-uint64_t maxTriangleCount-End--> |
+| uint32_t maxDescriptorSetAccelerationStructures | <!--Device-uint32_t maxDescriptorSetAccelerationStructures--><!--Device-uint32_t maxDescriptorSetAccelerationStructures-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct Camera_Size {...} Camera_Size
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t width | 宽度，单位为像素。 |
-| uint32_t height | 高度，单位为像素。 |
+| uint32_t width | 宽度，单位为像素。<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | 高度，单位为像素。<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

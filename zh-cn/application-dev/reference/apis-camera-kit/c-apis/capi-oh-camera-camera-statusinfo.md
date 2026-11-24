@@ -24,7 +24,7 @@ typedef struct Camera_StatusInfo {...} Camera_StatusInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [Camera_Device*](capi-oh-camera-camera-device.md) camera | 相机实例。 |
-| [Camera_Status](capi-camera-h.md#camera_status) status | 当前相机状态。 |
+| [Camera_Device*](capi-oh-camera-camera-device.md) camera | 相机实例。<br><!--Device-Camera_Device* camera--><!--Device-Camera_Device* camera-End--> |
+| [Camera_Status](capi-camera-h.md#camera_status) status | 当前相机状态。<br><!--Device-Camera_Status status--><!--Device-Camera_Status status-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDeviceDiagnosticsConfigFlagsNV flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDeviceDiagnosticsConfigFlagsNV flags | <!--Device-VkDeviceDiagnosticsConfigFlagsNV flags--><!--Device-VkDeviceDiagnosticsConfigFlagsNV flags-End--> |
 
 

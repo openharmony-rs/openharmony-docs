@@ -24,9 +24,9 @@ The **ArkWeb_JavaScriptObject** struct is used to inject JavaScript code into a 
 
 | Name | Description |
 | -- | -- |
-| const uint8_t* buffer | JavaScript code to be injected. The buffer length must be consistent with the **size** parameter. |
-| size_t size | Length of the JavaScript code, in bytes. Must be consistent with the actual length of **buffer**; otherwise, out- of-bounds access or truncation may occur. |
-| [ArkWeb_OnJavaScriptCallback](capi-arkweb-type-h.md#arkweb_onjavascriptcallback) callback | Callback invoked when JavaScript execution is complete. This is a callback function pointer. Passing **NULL**<br>indicates that no callback is needed. |
-| void* userData | Custom data to be carried in the callback. |
+| const uint8_t* buffer | JavaScript code to be injected. The buffer length must be consistent with the **size** parameter.<br><!--Device-const uint8_t* buffer--><!--Device-const uint8_t* buffer-End--> |
+| size_t size | Length of the JavaScript code, in bytes. Must be consistent with the actual length of **buffer**; otherwise, out- of-bounds access or truncation may occur.<br><!--Device-size_t size--><!--Device-size_t size-End--> |
+| [ArkWeb_OnJavaScriptCallback](capi-arkweb-type-h.md#arkweb_onjavascriptcallback) callback | Callback invoked when JavaScript execution is complete. This is a callback function pointer. Passing **NULL** indicates that no callback is needed.<br><!--Device-ArkWeb_OnJavaScriptCallback callback--><!--Device-ArkWeb_OnJavaScriptCallback callback-End--> |
+| void* userData | Custom data to be carried in the callback.<br><!--Device-void* userData--><!--Device-void* userData-End--> |
 
 

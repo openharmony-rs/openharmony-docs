@@ -24,7 +24,7 @@ typedef struct OH_AVDataSourceExt {...} OH_AVDataSourceExt
 
 | 名称 | 描述 |
 | -- | -- |
-| int64_t size | 数据源的总大小，单位为字节。 |
-| [OH_AVDataSourceReadAtExt](capi-native-avcodec-base-h.md#oh_avdatasourcereadatext) readAt | 数据源的数据读取回调。 |
+| int64_t size | 数据源的总大小，单位为字节。<br>**起始版本：** 20<br><!--Device-int64_t size--><!--Device-int64_t size-End--> |
+| [OH_AVDataSourceReadAtExt](capi-native-avcodec-base-h.md#oh_avdatasourcereadatext) readAt | 数据源的数据读取回调。<br>**起始版本：** 20<br><!--Device-OH_AVDataSourceReadAtExt readAt--><!--Device-OH_AVDataSourceReadAtExt readAt-End--> |
 
 

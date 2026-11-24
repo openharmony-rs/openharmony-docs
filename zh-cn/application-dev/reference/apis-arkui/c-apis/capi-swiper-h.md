@@ -113,7 +113,7 @@ enum ArkUI_SwiperArrow
 
 Swiper导航点箭头枚举值。
 
-<!--Device-ArkUI_SwiperArrow--><!--Device-ArkUI_SwiperArrow-End-->
+<!--Device-enum ArkUI_SwiperArrow--><!--Device-enum ArkUI_SwiperArrow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,9 +121,9 @@ Swiper导航点箭头枚举值。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_ARROW_HIDE = 0 | 不显示swiper中导航点箭头。<br>**起始版本：** 12 |
-| ARKUI_SWIPER_ARROW_SHOW | 显示swiper中导航点箭头。<br>**起始版本：** 12 |
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | 在hover状态下显示swiper中导航点箭头。<br>**起始版本：** 12 |
+| ARKUI_SWIPER_ARROW_HIDE = 0 | 不显示swiper中导航点箭头。<br>**起始版本：** 12<br><!--Device-ARKUI_SWIPER_ARROW_HIDE = 0--><!--Device-ARKUI_SWIPER_ARROW_HIDE = 0-End--> |
+| ARKUI_SWIPER_ARROW_SHOW | 显示swiper中导航点箭头。<br>**起始版本：** 12<br><!--Device-ARKUI_SWIPER_ARROW_SHOW--><!--Device-ARKUI_SWIPER_ARROW_SHOW-End--> |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | 在hover状态下显示swiper中导航点箭头。<br>**起始版本：** 12<br><!--Device-ARKUI_SWIPER_ARROW_SHOW_ON_HOVER--><!--Device-ARKUI_SWIPER_ARROW_SHOW_ON_HOVER-End--> |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -135,7 +135,7 @@ enum ArkUI_SwiperNestedScrollMode
 
 Swiper组件和父组件的嵌套滚动模式。
 
-<!--Device-ArkUI_SwiperNestedScrollMode--><!--Device-ArkUI_SwiperNestedScrollMode-End-->
+<!--Device-enum ArkUI_SwiperNestedScrollMode--><!--Device-enum ArkUI_SwiperNestedScrollMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,8 +143,8 @@ Swiper组件和父组件的嵌套滚动模式。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper只自身滚动，不与父组件联动。<br>**起始版本：** 12 |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。<br>**起始版本：** 12 |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper只自身滚动，不与父组件联动。<br>**起始版本：** 12<br><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0--><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0-End--> |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。<br>**起始版本：** 12<br><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST--><!--Device-ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST-End--> |
 
 ### ArkUI_PageFlipMode
 
@@ -156,7 +156,7 @@ enum ArkUI_PageFlipMode
 
 Swiper组件鼠标滚轮翻页模式。
 
-<!--Device-ArkUI_PageFlipMode--><!--Device-ArkUI_PageFlipMode-End-->
+<!--Device-enum ArkUI_PageFlipMode--><!--Device-enum ArkUI_PageFlipMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,8 +164,8 @@ Swiper组件鼠标滚轮翻页模式。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | 鼠标滚轮连续滚动时翻多页，根据鼠标事件上报次数确定。<br>**起始版本：** 15 |
-| ARKUI_PAGE_FLIP_MODE_SINGLE | 一次翻页动画结束前不响应其他鼠标滚轮事件。<br>**起始版本：** 15 |
+| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | 鼠标滚轮连续滚动时翻多页，根据鼠标事件上报次数确定。<br>**起始版本：** 15<br><!--Device-ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0--><!--Device-ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0-End--> |
+| ARKUI_PAGE_FLIP_MODE_SINGLE | 一次翻页动画结束前不响应其他鼠标滚轮事件。<br>**起始版本：** 15<br><!--Device-ARKUI_PAGE_FLIP_MODE_SINGLE--><!--Device-ARKUI_PAGE_FLIP_MODE_SINGLE-End--> |
 
 ### ArkUI_SwiperAnimationMode
 
@@ -177,7 +177,7 @@ enum ArkUI_SwiperAnimationMode
 
 Swiper组件跳转到目标index的动画模式。
 
-<!--Device-ArkUI_SwiperAnimationMode--><!--Device-ArkUI_SwiperAnimationMode-End-->
+<!--Device-enum ArkUI_SwiperAnimationMode--><!--Device-enum ArkUI_SwiperAnimationMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,9 +185,9 @@ Swiper组件跳转到目标index的动画模式。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_NO_ANIMATION = 0 | 无动画跳转到目标index。<br>**起始版本：** 15 |
-| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | 做动画跳转到目标index。<br>**起始版本：** 15 |
-| ARKUI_SWIPER_FAST_ANIMATION = 2 | 先无动画跳转到目标附近再做动画跳转到目标index。<br>**起始版本：** 15 |
+| ARKUI_SWIPER_NO_ANIMATION = 0 | 无动画跳转到目标index。<br>**起始版本：** 15<br><!--Device-ARKUI_SWIPER_NO_ANIMATION = 0--><!--Device-ARKUI_SWIPER_NO_ANIMATION = 0-End--> |
+| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | 做动画跳转到目标index。<br>**起始版本：** 15<br><!--Device-ARKUI_SWIPER_DEFAULT_ANIMATION = 1--><!--Device-ARKUI_SWIPER_DEFAULT_ANIMATION = 1-End--> |
+| ARKUI_SWIPER_FAST_ANIMATION = 2 | 先无动画跳转到目标附近再做动画跳转到目标index。<br>**起始版本：** 15<br><!--Device-ARKUI_SWIPER_FAST_ANIMATION = 2--><!--Device-ARKUI_SWIPER_FAST_ANIMATION = 2-End--> |
 
 ### ArkUI_SwiperIndicatorType
 
@@ -199,7 +199,7 @@ enum ArkUI_SwiperIndicatorType
 
 定义Swiper组件的导航指示器类型。
 
-<!--Device-ArkUI_SwiperIndicatorType--><!--Device-ArkUI_SwiperIndicatorType-End-->
+<!--Device-enum ArkUI_SwiperIndicatorType--><!--Device-enum ArkUI_SwiperIndicatorType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,8 +207,8 @@ enum ArkUI_SwiperIndicatorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT | 圆点指示器类型。<br>**起始版本：** 12 |
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | 数字指示器类型。<br>**起始版本：** 12 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT | 圆点指示器类型。<br>**起始版本：** 12<br><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DOT--><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DOT-End--> |
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | 数字指示器类型。<br>**起始版本：** 12<br><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DIGIT--><!--Device-ARKUI_SWIPER_INDICATOR_TYPE_DIGIT-End--> |
 
 
 ## 函数说明

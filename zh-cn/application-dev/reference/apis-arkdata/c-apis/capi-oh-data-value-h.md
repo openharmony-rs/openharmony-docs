@@ -69,7 +69,7 @@ enum OH_ColumnType
 
 表示列的类型。
 
-<!--Device-OH_ColumnType--><!--Device-OH_ColumnType-End-->
+<!--Device-enum OH_ColumnType--><!--Device-enum OH_ColumnType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -77,15 +77,15 @@ enum OH_ColumnType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TYPE_NULL = 0 | 表示NULL类型。<br>**起始版本：** 10 |
-| TYPE_INT64 | 表示INT64数据类型。<br>**起始版本：** 10 |
-| TYPE_REAL | 表示REAL数据类型。<br>**起始版本：** 10 |
-| TYPE_TEXT | 表示TEXT数据类型。<br>**起始版本：** 10 |
-| TYPE_BLOB | 表示BLOB数据类型。<br>**起始版本：** 10 |
-| TYPE_ASSET | 表示ASSET（资产附件）数据类型。<br>**起始版本：** 11 |
-| TYPE_ASSETS | 表示ASSETS（多个资产附件）数据类型。<br>**起始版本：** 11 |
-| TYPE_FLOAT_VECTOR | 表示FLOAT VECTOR数据类型。<br>**起始版本：** 18 |
-| TYPE_UNLIMITED_INT | 表示列类型为长度大于64位的数字。<br>**起始版本：** 18 |
+| TYPE_NULL = 0 | 表示NULL类型。<br>**起始版本：** 10<br><!--Device-TYPE_NULL = 0--><!--Device-TYPE_NULL = 0-End--> |
+| TYPE_INT64 | 表示INT64数据类型。<br>**起始版本：** 10<br><!--Device-TYPE_INT64--><!--Device-TYPE_INT64-End--> |
+| TYPE_REAL | 表示REAL数据类型。<br>**起始版本：** 10<br><!--Device-TYPE_REAL--><!--Device-TYPE_REAL-End--> |
+| TYPE_TEXT | 表示TEXT数据类型。<br>**起始版本：** 10<br><!--Device-TYPE_TEXT--><!--Device-TYPE_TEXT-End--> |
+| TYPE_BLOB | 表示BLOB数据类型。<br>**起始版本：** 10<br><!--Device-TYPE_BLOB--><!--Device-TYPE_BLOB-End--> |
+| TYPE_ASSET | 表示ASSET（资产附件）数据类型。<br>**起始版本：** 11<br><!--Device-TYPE_ASSET--><!--Device-TYPE_ASSET-End--> |
+| TYPE_ASSETS | 表示ASSETS（多个资产附件）数据类型。<br>**起始版本：** 11<br><!--Device-TYPE_ASSETS--><!--Device-TYPE_ASSETS-End--> |
+| TYPE_FLOAT_VECTOR | 表示FLOAT VECTOR数据类型。<br>**起始版本：** 18<br><!--Device-TYPE_FLOAT_VECTOR--><!--Device-TYPE_FLOAT_VECTOR-End--> |
+| TYPE_UNLIMITED_INT | 表示列类型为长度大于64位的数字。<br>**起始版本：** 18<br><!--Device-TYPE_UNLIMITED_INT--><!--Device-TYPE_UNLIMITED_INT-End--> |
 
 
 ## 函数说明

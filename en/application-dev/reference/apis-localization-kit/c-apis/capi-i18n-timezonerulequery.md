@@ -24,10 +24,10 @@ Used to input the query information and receive the query result.
 
 | Name | Description |
 | -- | -- |
-| double base | Indicates the reference time for the query, in milliseconds. The value is Unix timestamp. |
-| int32_t prevRawOffset | Indicates the previous raw offset of the time zone, in milliseconds. |
-| int32_t prevDSTSavings | Indicates the previous daylight saving time offset, in milliseconds. |
-| bool inclusive | Indicates whether the query result contains the base time. The value **true** indicates that the query result contains the base time. The value **false** indicates the opposite. |
-| double result | Indicates the query result, in milliseconds. The value is Unix timestamp. |
+| double base | Indicates the reference time for the query, in milliseconds. The value is Unix timestamp.<br><!--Device-double base--><!--Device-double base-End--> |
+| int32_t prevRawOffset | Indicates the previous raw offset of the time zone, in milliseconds.<br><!--Device-int32_t prevRawOffset--><!--Device-int32_t prevRawOffset-End--> |
+| int32_t prevDSTSavings | Indicates the previous daylight saving time offset, in milliseconds.<br><!--Device-int32_t prevDSTSavings--><!--Device-int32_t prevDSTSavings-End--> |
+| bool inclusive | Indicates whether the query result contains the base time. The value **true** indicates that the query result contains the base time. The value **false** indicates the opposite.<br><!--Device-bool inclusive--><!--Device-bool inclusive-End--> |
+| double result | Indicates the query result, in milliseconds. The value is Unix timestamp.<br><!--Device-double result--><!--Device-double result-End--> |
 
 

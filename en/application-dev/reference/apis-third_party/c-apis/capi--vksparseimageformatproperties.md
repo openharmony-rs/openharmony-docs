@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkImageAspectFlags aspectMask |  |
-| [VkExtent3D](capi--vkextent3d.md) imageGranularity |  |
-| VkSparseImageFormatFlags flags |  |
+| VkImageAspectFlags aspectMask | <!--Device-VkImageAspectFlags aspectMask--><!--Device-VkImageAspectFlags aspectMask-End--> |
+| [VkExtent3D](capi--vkextent3d.md) imageGranularity | <!--Device-VkExtent3D imageGranularity--><!--Device-VkExtent3D imageGranularity-End--> |
+| VkSparseImageFormatFlags flags | <!--Device-VkSparseImageFormatFlags flags--><!--Device-VkSparseImageFormatFlags flags-End--> |
 
 

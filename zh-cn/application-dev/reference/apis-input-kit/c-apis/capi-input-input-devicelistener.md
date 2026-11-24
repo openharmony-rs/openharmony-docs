@@ -24,7 +24,7 @@ typedef struct Input_DeviceListener {...} Input_DeviceListener
 
 | 名称 | 描述 |
 | -- | -- |
-| [Input_DeviceAddedCallback](capi-oh-input-manager-h.md#input_deviceaddedcallback) deviceAddedCallback | 定义一个回调函数，用于接收设备热插事件。 |
-| [Input_DeviceRemovedCallback](capi-oh-input-manager-h.md#input_deviceremovedcallback) deviceRemovedCallback | 定义一个回调函数，用于接收设备热拔事件。 |
+| [Input_DeviceAddedCallback](capi-oh-input-manager-h.md#input_deviceaddedcallback) deviceAddedCallback | 定义一个回调函数，用于接收设备热插事件。<br><!--Device-Input_DeviceAddedCallback deviceAddedCallback--><!--Device-Input_DeviceAddedCallback deviceAddedCallback-End--> |
+| [Input_DeviceRemovedCallback](capi-oh-input-manager-h.md#input_deviceremovedcallback) deviceRemovedCallback | 定义一个回调函数，用于接收设备热拔事件。<br><!--Device-Input_DeviceRemovedCallback deviceRemovedCallback--><!--Device-Input_DeviceRemovedCallback deviceRemovedCallback-End--> |
 
 

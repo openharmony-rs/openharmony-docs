@@ -24,8 +24,8 @@ Define the FileShare_PolicyInfo structure type.<br> Policy information to manage
 
 | Name | Description |
 | -- | -- |
-| char *uri | Indicates the uri of the policy information. |
-| unsigned int length | Indicates The length of the uri. |
-| unsigned int operationMode | Indicates the mode of operation for the URI. example { FileShare_OperationMode.READ_MODE } or { FileShare_OperationMode.READ_MODE \| FileShare_OperationMode.WRITE_MODE }. |
+| char *uri | Indicates the uri of the policy information.<br><!--Device-char *uri--><!--Device-char *uri-End--> |
+| unsigned int length | Indicates The length of the uri.<br><!--Device-unsigned int length--><!--Device-unsigned int length-End--> |
+| unsigned int operationMode | Indicates the mode of operation for the URI. example { FileShare_OperationMode.READ_MODE } or { FileShare_OperationMode.READ_MODE \| FileShare_OperationMode.WRITE_MODE }.<br><!--Device-unsigned int operationMode--><!--Device-unsigned int operationMode-End--> |
 
 

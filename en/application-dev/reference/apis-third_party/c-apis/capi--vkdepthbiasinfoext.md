@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| float depthBiasConstantFactor |  |
-| float depthBiasClamp |  |
-| float depthBiasSlopeFactor |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| float depthBiasConstantFactor | <!--Device-float depthBiasConstantFactor--><!--Device-float depthBiasConstantFactor-End--> |
+| float depthBiasClamp | <!--Device-float depthBiasClamp--><!--Device-float depthBiasClamp-End--> |
+| float depthBiasSlopeFactor | <!--Device-float depthBiasSlopeFactor--><!--Device-float depthBiasSlopeFactor-End--> |
 
 

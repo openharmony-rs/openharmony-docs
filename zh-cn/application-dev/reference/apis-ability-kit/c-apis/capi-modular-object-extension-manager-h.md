@@ -57,7 +57,7 @@ enum OH_AbilityRuntime_LaunchMode
 
 定义ModularObjectExtensionAbility的启动模式。
 
-<!--Device-OH_AbilityRuntime_LaunchMode--><!--Device-OH_AbilityRuntime_LaunchMode-End-->
+<!--Device-enum OH_AbilityRuntime_LaunchMode--><!--Device-enum OH_AbilityRuntime_LaunchMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -65,8 +65,8 @@ enum OH_AbilityRuntime_LaunchMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0 | 表示ModularObjectExtensionAbility将在调用方（客户端）进程中启动。在此模式下，ModularObjectExtensionAbility与调用方共享同一个进程， 适用于对进程隔离无要求的场景。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1 | 表示ModularObjectExtensionAbility允许跨进程启动。在此模式下，ModularObjectExtensionAbility运行在独立的进程中，与调用方进程隔离， 适用于需要进程级隔离以提高稳定性和安全性的场景。<br>**起始版本：** 26.0.0 |
+| OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0 | 表示ModularObjectExtensionAbility将在调用方（客户端）进程中启动。在此模式下，ModularObjectExtensionAbility与调用方共享同一个进程， 适用于对进程隔离无要求的场景。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0--><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS = 0-End--> |
+| OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1 | 表示ModularObjectExtensionAbility允许跨进程启动。在此模式下，ModularObjectExtensionAbility运行在独立的进程中，与调用方进程隔离， 适用于需要进程级隔离以提高稳定性和安全性的场景。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1--><!--Device-OH_ABILITY_RUNTIME_LAUNCH_MODE_CROSS_PROCESS = 1-End--> |
 
 ### OH_AbilityRuntime_ProcessMode
 
@@ -78,7 +78,7 @@ enum OH_AbilityRuntime_ProcessMode
 
 定义ModularObjectExtensionAbility的进程模式。
 
-<!--Device-OH_AbilityRuntime_ProcessMode--><!--Device-OH_AbilityRuntime_ProcessMode-End-->
+<!--Device-enum OH_AbilityRuntime_ProcessMode--><!--Device-enum OH_AbilityRuntime_ProcessMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -86,9 +86,9 @@ enum OH_AbilityRuntime_ProcessMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0 | 表示同一应用下的所有ModularObjectExtensionAbility实例共享一个进程。所有实例运行在同一进程中，减少系统资源消耗。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1 | 表示Ability名称相同的ModularObjectExtensionAbility实例共享一个进程。具有相同Ability名称的Extension实例被分配到同一进程中， 不同Ability名称的实例运行在不同进程中。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2 | 表示每个ModularObjectExtensionAbility实例独占一个进程。每个Extension实例拥有独立的进程空间，实现最大程度的进程隔离，适用于对稳定性和安全性要求极高的场景。<br>**起始版本：** 26.0.0 |
+| OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0 | 表示同一应用下的所有ModularObjectExtensionAbility实例共享一个进程。所有实例运行在同一进程中，减少系统资源消耗。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0--><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_BUNDLE = 0-End--> |
+| OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1 | 表示Ability名称相同的ModularObjectExtensionAbility实例共享一个进程。具有相同Ability名称的Extension实例被分配到同一进程中， 不同Ability名称的实例运行在不同进程中。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1--><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_TYPE = 1-End--> |
+| OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2 | 表示每个ModularObjectExtensionAbility实例独占一个进程。每个Extension实例拥有独立的进程空间，实现最大程度的进程隔离，适用于对稳定性和安全性要求极高的场景。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2--><!--Device-OH_ABILITY_RUNTIME_PROCESS_MODE_INSTANCE = 2-End--> |
 
 ### OH_AbilityRuntime_ThreadMode
 
@@ -100,7 +100,7 @@ enum OH_AbilityRuntime_ThreadMode
 
 定义ModularObjectExtensionAbility的线程模式。
 
-<!--Device-OH_AbilityRuntime_ThreadMode--><!--Device-OH_AbilityRuntime_ThreadMode-End-->
+<!--Device-enum OH_AbilityRuntime_ThreadMode--><!--Device-enum OH_AbilityRuntime_ThreadMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -108,9 +108,9 @@ enum OH_AbilityRuntime_ThreadMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0 | 表示同一应用下的所有ModularObjectExtensionAbility实例共享一个线程。所有实例在同一线程中依次执行，资源开销最小，但需注意避免单实例阻塞影响其他实例。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1 | 表示Ability名称相同的ModularObjectExtensionAbility实例共享一个线程。具有相同类型的Extension实例共享线程，不同类型的实例使用不同线程，在资源消耗与并发性能之间取得平衡。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2 | 表示每个ModularObjectExtensionAbility实例独占一个线程。每个Extension实例拥有独立的线程，互不干扰，适用于需要高并发或对响应时间有严格要求的场景。<br>**起始版本：** 26.0.0 |
+| OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0 | 表示同一应用下的所有ModularObjectExtensionAbility实例共享一个线程。所有实例在同一线程中依次执行，资源开销最小，但需注意避免单实例阻塞影响其他实例。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0--><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0-End--> |
+| OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1 | 表示Ability名称相同的ModularObjectExtensionAbility实例共享一个线程。具有相同类型的Extension实例共享线程，不同类型的实例使用不同线程，在资源消耗与并发性能之间取得平衡。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1--><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1-End--> |
+| OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2 | 表示每个ModularObjectExtensionAbility实例独占一个线程。每个Extension实例拥有独立的线程，互不干扰，适用于需要高并发或对响应时间有严格要求的场景。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2--><!--Device-OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2-End--> |
 
 
 ## 函数说明

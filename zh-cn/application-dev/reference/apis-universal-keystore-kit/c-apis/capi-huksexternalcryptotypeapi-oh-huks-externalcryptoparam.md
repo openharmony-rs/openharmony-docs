@@ -24,11 +24,11 @@ typedef struct OH_Huks_ExternalCryptoParam {...} OH_Huks_ExternalCryptoParam
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t tag | 标签值。<br>**起始版本：** 22 |
-| boolParam | 布尔类型参数。<br>**起始版本：** 22 |
-| int32Param | int32_t类型参数。<br>**起始版本：** 22 |
-| uint32Param | uint32_t类型参数。<br>**起始版本：** 22 |
-| uint64Param | uint64_t类型参数。<br>**起始版本：** 22 |
-| blob | OH_Huks_Blob类型参数。<br>**起始版本：** 22 |
+| uint32_t tag | 标签值。<br>**起始版本：** 22<br><!--Device-uint32_t tag--><!--Device-uint32_t tag-End--> |
+| boolParam | 布尔类型参数。<br>**起始版本：** 22<br><!--Device-boolParam--><!--Device-boolParam-End--> |
+| int32Param | int32_t类型参数。<br>**起始版本：** 22<br><!--Device-int32Param--><!--Device-int32Param-End--> |
+| uint32Param | uint32_t类型参数。<br>**起始版本：** 22<br><!--Device-uint32Param--><!--Device-uint32Param-End--> |
+| uint64Param | uint64_t类型参数。<br>**起始版本：** 22<br><!--Device-uint64Param--><!--Device-uint64Param-End--> |
+| blob | OH_Huks_Blob类型参数。<br>**起始版本：** 22<br><!--Device-blob--><!--Device-blob-End--> |
 
 

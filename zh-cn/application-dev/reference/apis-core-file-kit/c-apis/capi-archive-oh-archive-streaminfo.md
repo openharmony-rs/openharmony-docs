@@ -24,8 +24,8 @@ typedef struct OH_Archive_StreamInfo {...} OH_Archive_StreamInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t totalInSize | 压缩/解压缩前输入数据大小，单位为bytes。<br>**起始版本：** 26.0.0 |
-| uint64_t totalOutSize | 压缩/解压缩后输出数据大小，单位为bytes。<br>**起始版本：** 26.0.0 |
-| uint32_t checksum | 未压缩数据的校验和。当[OH_Archive_StreamChecksumAlg](capi-oh-archive-h.md#oh_archive_streamchecksumalg)设置为OH_ARCHIVE_NO_CHECKSUM时，checksum为0。<br>**起始版本：** 26.0.0 |
+| uint64_t totalInSize | 压缩/解压缩前输入数据大小，单位为bytes。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t totalInSize--><!--Device-uint64_t totalInSize-End--> |
+| uint64_t totalOutSize | 压缩/解压缩后输出数据大小，单位为bytes。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t totalOutSize--><!--Device-uint64_t totalOutSize-End--> |
+| uint32_t checksum | 未压缩数据的校验和。当[OH_Archive_StreamChecksumAlg](capi-oh-archive-h.md#oh_archive_streamchecksumalg)设置为OH_ARCHIVE_NO_CHECKSUM时，checksum为0。<br>**起始版本：** 26.0.0<br><!--Device-uint32_t checksum--><!--Device-uint32_t checksum-End--> |
 
 

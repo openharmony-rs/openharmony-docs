@@ -25,15 +25,15 @@ typedef struct JSVM_CallbackStruct {...} JSVM_CallbackStruct
 | 名称 | 描述 |
 | -- | -- |
 | JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,
- JSVM_CallbackInfo info) | 用户提供的native回调函数的指针。 |
-| void* data | 用户提供的native回调函数的数据。 |
+ JSVM_CallbackInfo info) | 用户提供的native回调函数的指针。<br><!--Device-JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env, JSVM_CallbackInfo info)--><!--Device-JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env, JSVM_CallbackInfo info)-End--> |
+| void* data | 用户提供的native回调函数的数据。<br><!--Device-void* data--><!--Device-void* data-End--> |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#callback) | - | 用户提供的native回调函数的指针。 |
+| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#callback) | 用户提供的native回调函数的指针。 |
 
 ## 成员函数说明
 

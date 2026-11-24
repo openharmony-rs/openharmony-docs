@@ -24,7 +24,7 @@ typedef struct Ethernet_MacAddressInfo {...} Ethernet_MacAddressInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char ifaceName[ETHERNET_MAX_STR_LEN] | 以太网网卡名称。<br>**起始版本：** 26.0.0 |
-| char macAddr[ETHERNET_MAX_STR_LEN] | 以太网网卡MAC地址。<br>**起始版本：** 26.0.0 |
+| char ifaceName[ETHERNET_MAX_STR_LEN] | 以太网网卡名称。<br>**起始版本：** 26.0.0<br><!--Device-char ifaceName[ETHERNET_MAX_STR_LEN]--><!--Device-char ifaceName[ETHERNET_MAX_STR_LEN]-End--> |
+| char macAddr[ETHERNET_MAX_STR_LEN] | 以太网网卡MAC地址。<br>**起始版本：** 26.0.0<br><!--Device-char macAddr[ETHERNET_MAX_STR_LEN]--><!--Device-char macAddr[ETHERNET_MAX_STR_LEN]-End--> |
 
 

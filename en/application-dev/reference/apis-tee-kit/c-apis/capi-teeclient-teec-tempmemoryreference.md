@@ -24,7 +24,7 @@ Defines a pointer to a temporary buffer.
 
 | Name | Description |
 | -- | -- |
-| void *buffer | Pointer to the temporary memory buffer. |
-| uint32_t size | Size of the temporary memory buffer. |
+| void *buffer | Pointer to the temporary memory buffer.<br><!--Device-void *buffer--><!--Device-void *buffer-End--> |
+| uint32_t size | Size of the temporary memory buffer.<br><!--Device-uint32_t size--><!--Device-uint32_t size-End--> |
 
 

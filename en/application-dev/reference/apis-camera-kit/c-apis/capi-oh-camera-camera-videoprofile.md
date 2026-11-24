@@ -24,8 +24,8 @@ The struct describes the video profile.
 
 | Name | Description |
 | -- | -- |
-| [Camera_Format](capi-camera-h.md#camera_format) format | Camera format. |
-| [Camera_Size](capi-oh-camera-camera-size.md) size | Image size. |
-| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) range | Frame rate, in frames per second (FPS). |
+| [Camera_Format](capi-camera-h.md#camera_format) format | Camera format.<br><!--Device-Camera_Format format--><!--Device-Camera_Format format-End--> |
+| [Camera_Size](capi-oh-camera-camera-size.md) size | Image size.<br><!--Device-Camera_Size size--><!--Device-Camera_Size size-End--> |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) range | Frame rate, in frames per second (FPS).<br><!--Device-Camera_FrameRateRange range--><!--Device-Camera_FrameRateRange range-End--> |
 
 

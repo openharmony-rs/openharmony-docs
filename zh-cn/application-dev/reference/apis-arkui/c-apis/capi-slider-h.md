@@ -34,7 +34,7 @@ enum ArkUI_SliderBlockStyle
 
 定义滑块形状。
 
-<!--Device-ArkUI_SliderBlockStyle--><!--Device-ArkUI_SliderBlockStyle-End-->
+<!--Device-enum ArkUI_SliderBlockStyle--><!--Device-enum ArkUI_SliderBlockStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,9 +42,9 @@ enum ArkUI_SliderBlockStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | 使用默认滑块（圆形）。<br>**起始版本：** 12 |
-| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | 使用图片资源作为滑块。<br>**起始版本：** 12 |
-| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | 使用自定义形状作为滑块。<br>**起始版本：** 12 |
+| ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | 使用默认滑块（圆形）。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0--><!--Device-ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0-End--> |
+| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | 使用图片资源作为滑块。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_BLOCK_STYLE_IMAGE--><!--Device-ARKUI_SLIDER_BLOCK_STYLE_IMAGE-End--> |
+| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | 使用自定义形状作为滑块。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_BLOCK_STYLE_SHAPE--><!--Device-ARKUI_SLIDER_BLOCK_STYLE_SHAPE-End--> |
 
 ### ArkUI_SliderDirection
 
@@ -56,7 +56,7 @@ enum ArkUI_SliderDirection
 
 定义滑动条滑动方向。
 
-<!--Device-ArkUI_SliderDirection--><!--Device-ArkUI_SliderDirection-End-->
+<!--Device-enum ArkUI_SliderDirection--><!--Device-enum ArkUI_SliderDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,8 +64,8 @@ enum ArkUI_SliderDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | 方向为纵向。<br>**起始版本：** 12 |
-| ARKUI_SLIDER_DIRECTION_HORIZONTAL | 方向为横向。<br>**起始版本：** 12 |
+| ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | 方向为纵向。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_DIRECTION_VERTICAL = 0--><!--Device-ARKUI_SLIDER_DIRECTION_VERTICAL = 0-End--> |
+| ARKUI_SLIDER_DIRECTION_HORIZONTAL | 方向为横向。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_DIRECTION_HORIZONTAL--><!--Device-ARKUI_SLIDER_DIRECTION_HORIZONTAL-End--> |
 
 ### ArkUI_SliderStyle
 
@@ -77,7 +77,7 @@ enum ArkUI_SliderStyle
 
 定义滑块与滑轨显示样式。
 
-<!--Device-ArkUI_SliderStyle--><!--Device-ArkUI_SliderStyle-End-->
+<!--Device-enum ArkUI_SliderStyle--><!--Device-enum ArkUI_SliderStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,8 +85,8 @@ enum ArkUI_SliderStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SLIDER_STYLE_OUT_SET = 0 | 滑块在滑轨上。<br>**起始版本：** 12 |
-| ARKUI_SLIDER_STYLE_IN_SET | 滑块在滑轨内。<br>**起始版本：** 12 |
-| ARKUI_SLIDER_STYLE_NONE | 无滑块。<br>**起始版本：** 12 |
+| ARKUI_SLIDER_STYLE_OUT_SET = 0 | 滑块在滑轨上。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_STYLE_OUT_SET = 0--><!--Device-ARKUI_SLIDER_STYLE_OUT_SET = 0-End--> |
+| ARKUI_SLIDER_STYLE_IN_SET | 滑块在滑轨内。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_STYLE_IN_SET--><!--Device-ARKUI_SLIDER_STYLE_IN_SET-End--> |
+| ARKUI_SLIDER_STYLE_NONE | 无滑块。<br>**起始版本：** 12<br><!--Device-ARKUI_SLIDER_STYLE_NONE--><!--Device-ARKUI_SLIDER_STYLE_NONE-End--> |
 
 

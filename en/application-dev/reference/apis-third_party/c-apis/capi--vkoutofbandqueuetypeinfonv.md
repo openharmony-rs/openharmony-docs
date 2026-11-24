@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkOutOfBandQueueTypeNV queueType |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkOutOfBandQueueTypeNV queueType | <!--Device-VkOutOfBandQueueTypeNV queueType--><!--Device-VkOutOfBandQueueTypeNV queueType-End--> |
 
 

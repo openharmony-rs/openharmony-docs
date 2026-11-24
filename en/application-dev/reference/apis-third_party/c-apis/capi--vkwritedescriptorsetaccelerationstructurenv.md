@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t accelerationStructureCount |  |
-| const VkAccelerationStructureNV* pAccelerationStructures |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t accelerationStructureCount | <!--Device-uint32_t accelerationStructureCount--><!--Device-uint32_t accelerationStructureCount-End--> |
+| const VkAccelerationStructureNV* pAccelerationStructures | <!--Device-const VkAccelerationStructureNV* pAccelerationStructures--><!--Device-const VkAccelerationStructureNV* pAccelerationStructures-End--> |
 
 

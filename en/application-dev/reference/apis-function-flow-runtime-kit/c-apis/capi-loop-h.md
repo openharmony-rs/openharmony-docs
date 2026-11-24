@@ -36,7 +36,7 @@ Declares the event loop interfaces in C.
 
 | Name | Description |
 | -- | -- |
-| void* ffrt_loop_t | Loop handle, which identifies different loops.<br>**Since**: 12<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
+| void* ffrt_loop_t | Loop handle, which identifies different loops.<br>**Since**: 12<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-void* ffrt_loop_t--><!--Device-void* ffrt_loop_t-End--> |
 
 ## Function description
 

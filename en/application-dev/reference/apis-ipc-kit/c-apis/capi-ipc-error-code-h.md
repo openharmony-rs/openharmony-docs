@@ -34,7 +34,7 @@ enum OH_IPC_ErrorCode
 
 Enumerates the IPC error codes.
 
-<!--Device-OH_IPC_ErrorCode--><!--Device-OH_IPC_ErrorCode-End-->
+<!--Device-enum OH_IPC_ErrorCode--><!--Device-enum OH_IPC_ErrorCode-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -42,18 +42,18 @@ Enumerates the IPC error codes.
 
 | Enum item | Description |
 | -- | -- |
-| OH_IPC_SUCCESS = 0 | Execution successful. |
-| OH_IPC_ERROR_CODE_BASE = 1901000 | Start error code. |
-| OH_IPC_CHECK_PARAM_ERROR = OH_IPC_ERROR_CODE_BASE | Invalid parameter. This error code is returned if the input parameter is a null pointer, the parameter value is out of the valid range, or the parameter type does not match. Check whether the parameter is valid. |
-| OH_IPC_PARCEL_WRITE_ERROR = OH_IPC_ERROR_CODE_BASE + 1 | Failed to write data to the serialized object. This error may occur when memory is insufficient during data serialization or the data format is not supported. Check whether the data size and format meet the requirements. |
-| OH_IPC_PARCEL_READ_ERROR = OH_IPC_ERROR_CODE_BASE + 2 | Failed to read data from the serialized object. This error may occur when the length of the data to be read exceeds the actual data length or the data format does not match. Check whether the data reading sequence and data format are correct. |
-| OH_IPC_MEM_ALLOCATOR_ERROR = OH_IPC_ERROR_CODE_BASE + 3 | Failed to allocate memory. This error code is returned when the system memory is insufficient or the memory allocator is abnormal. Check the memory usage, release unnecessary resources, and try again. |
-| OH_IPC_CODE_OUT_OF_RANGE = OH_IPC_ERROR_CODE_BASE + 4 | The command word is out of the value range [0x01, 0x00FFFFFF]. This error code is returned when the command word used for IPC communication is out of the valid range. Check whether the command word meets the specifications. |
-| OH_IPC_DEAD_REMOTE_OBJECT = OH_IPC_ERROR_CODE_BASE + 5 | The remote object is dead. This error code is returned when the peer process of IPC communication has exited or the remote object has been destroyed. Re-establish the connection or use an alternative service. |
-| OH_IPC_INVALID_USER_ERROR_CODE = OH_IPC_ERROR_CODE_BASE + 6 | The custom error code is out of the range [1909000, 1909999]. This error code is returned when the custom error code is out of the allowed range. Ensure that the custom error code is within the valid range. |
-| OH_IPC_INNER_ERROR = OH_IPC_ERROR_CODE_BASE + 7 | IPC internal error. This error code is returned when an unknown error occurs in the IPC system. Record logs and contact technical support or try again later. |
-| OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 1000 | Maximum error code. |
-| OH_IPC_USER_ERROR_CODE_MIN = 1909000 | Minimum value for a custom error code. |
-| OH_IPC_USER_ERROR_CODE_MAX = 1909999 | Maximum value for a custom error code. |
+| OH_IPC_SUCCESS = 0 | Execution successful.<br><!--Device-OH_IPC_SUCCESS = 0--><!--Device-OH_IPC_SUCCESS = 0-End--> |
+| OH_IPC_ERROR_CODE_BASE = 1901000 | Start error code.<br><!--Device-OH_IPC_ERROR_CODE_BASE = 1901000--><!--Device-OH_IPC_ERROR_CODE_BASE = 1901000-End--> |
+| OH_IPC_CHECK_PARAM_ERROR = OH_IPC_ERROR_CODE_BASE | Invalid parameter. This error code is returned if the input parameter is a null pointer, the parameter value is out of the valid range, or the parameter type does not match. Check whether the parameter is valid.<br><!--Device-OH_IPC_CHECK_PARAM_ERROR = OH_IPC_ERROR_CODE_BASE--><!--Device-OH_IPC_CHECK_PARAM_ERROR = OH_IPC_ERROR_CODE_BASE-End--> |
+| OH_IPC_PARCEL_WRITE_ERROR = OH_IPC_ERROR_CODE_BASE + 1 | Failed to write data to the serialized object. This error may occur when memory is insufficient during data serialization or the data format is not supported. Check whether the data size and format meet the requirements.<br><!--Device-OH_IPC_PARCEL_WRITE_ERROR = OH_IPC_ERROR_CODE_BASE + 1--><!--Device-OH_IPC_PARCEL_WRITE_ERROR = OH_IPC_ERROR_CODE_BASE + 1-End--> |
+| OH_IPC_PARCEL_READ_ERROR = OH_IPC_ERROR_CODE_BASE + 2 | Failed to read data from the serialized object. This error may occur when the length of the data to be read exceeds the actual data length or the data format does not match. Check whether the data reading sequence and data format are correct.<br><!--Device-OH_IPC_PARCEL_READ_ERROR = OH_IPC_ERROR_CODE_BASE + 2--><!--Device-OH_IPC_PARCEL_READ_ERROR = OH_IPC_ERROR_CODE_BASE + 2-End--> |
+| OH_IPC_MEM_ALLOCATOR_ERROR = OH_IPC_ERROR_CODE_BASE + 3 | Failed to allocate memory. This error code is returned when the system memory is insufficient or the memory allocator is abnormal. Check the memory usage, release unnecessary resources, and try again.<br><!--Device-OH_IPC_MEM_ALLOCATOR_ERROR = OH_IPC_ERROR_CODE_BASE + 3--><!--Device-OH_IPC_MEM_ALLOCATOR_ERROR = OH_IPC_ERROR_CODE_BASE + 3-End--> |
+| OH_IPC_CODE_OUT_OF_RANGE = OH_IPC_ERROR_CODE_BASE + 4 | The command word is out of the value range [0x01, 0x00FFFFFF]. This error code is returned when the command word used for IPC communication is out of the valid range. Check whether the command word meets the specifications.<br><!--Device-OH_IPC_CODE_OUT_OF_RANGE = OH_IPC_ERROR_CODE_BASE + 4--><!--Device-OH_IPC_CODE_OUT_OF_RANGE = OH_IPC_ERROR_CODE_BASE + 4-End--> |
+| OH_IPC_DEAD_REMOTE_OBJECT = OH_IPC_ERROR_CODE_BASE + 5 | The remote object is dead. This error code is returned when the peer process of IPC communication has exited or the remote object has been destroyed. Re-establish the connection or use an alternative service.<br><!--Device-OH_IPC_DEAD_REMOTE_OBJECT = OH_IPC_ERROR_CODE_BASE + 5--><!--Device-OH_IPC_DEAD_REMOTE_OBJECT = OH_IPC_ERROR_CODE_BASE + 5-End--> |
+| OH_IPC_INVALID_USER_ERROR_CODE = OH_IPC_ERROR_CODE_BASE + 6 | The custom error code is out of the range [1909000, 1909999]. This error code is returned when the custom error code is out of the allowed range. Ensure that the custom error code is within the valid range.<br><!--Device-OH_IPC_INVALID_USER_ERROR_CODE = OH_IPC_ERROR_CODE_BASE + 6--><!--Device-OH_IPC_INVALID_USER_ERROR_CODE = OH_IPC_ERROR_CODE_BASE + 6-End--> |
+| OH_IPC_INNER_ERROR = OH_IPC_ERROR_CODE_BASE + 7 | IPC internal error. This error code is returned when an unknown error occurs in the IPC system. Record logs and contact technical support or try again later.<br><!--Device-OH_IPC_INNER_ERROR = OH_IPC_ERROR_CODE_BASE + 7--><!--Device-OH_IPC_INNER_ERROR = OH_IPC_ERROR_CODE_BASE + 7-End--> |
+| OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 1000 | Maximum error code.<br><!--Device-OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 1000--><!--Device-OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 1000-End--> |
+| OH_IPC_USER_ERROR_CODE_MIN = 1909000 | Minimum value for a custom error code.<br><!--Device-OH_IPC_USER_ERROR_CODE_MIN = 1909000--><!--Device-OH_IPC_USER_ERROR_CODE_MIN = 1909000-End--> |
+| OH_IPC_USER_ERROR_CODE_MAX = 1909999 | Maximum value for a custom error code.<br><!--Device-OH_IPC_USER_ERROR_CODE_MAX = 1909999--><!--Device-OH_IPC_USER_ERROR_CODE_MAX = 1909999-End--> |
 
 

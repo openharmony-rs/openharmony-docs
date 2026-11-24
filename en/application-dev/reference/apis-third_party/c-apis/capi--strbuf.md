@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| int maxlen |  |
-| int len |  |
-| char *buf |  |
+| int maxlen | <!--Device-int maxlen--><!--Device-int maxlen-End--> |
+| int len | <!--Device-int len--><!--Device-int len-End--> |
+| char *buf | <!--Device-char *buf--><!--Device-char *buf-End--> |
 
 

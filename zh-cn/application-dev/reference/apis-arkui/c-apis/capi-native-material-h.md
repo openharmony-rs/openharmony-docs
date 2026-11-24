@@ -61,7 +61,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle | 定义指向光感交互效果配置对象的指针，开发者通过该指针可配置和管理沉浸式材质的光感交互效果参数。 <br>必须通过{[OH_ArkUI_NativeModule_LightEffectOptions_Create](capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_create)创建光感交互效果配置对象，使用完毕后必须调用 [OH_ArkUI_NativeModule_LightEffectOptions_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_destroy)接口销毁配置对象 以释放资源，销毁后继续使用该指针会导致未定义行为。两者必须配对使用。未调用Destroy销毁对象会导致资源泄漏。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle | 定义指向光感交互效果配置对象的指针，开发者通过该指针可配置和管理沉浸式材质的光感交互效果参数。 <br>必须通过{[OH_ArkUI_NativeModule_LightEffectOptions_Create](capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_create)创建光感交互效果配置对象，使用完毕后必须调用 [OH_ArkUI_NativeModule_LightEffectOptions_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_destroy)接口销毁配置对象 以释放资源，销毁后继续使用该指针会导致未定义行为。两者必须配对使用。未调用Destroy销毁对象会导致资源泄漏。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle--><!--Device-ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle-End--> |
 
 ## 枚举类型说明
 
@@ -75,7 +75,7 @@ enum ArkUI_ImmersiveStyle
 
 沉浸式材质样式枚举。不同样式对应不同的材质参数，影响材质的薄厚程度。
 
-<!--Device-ArkUI_ImmersiveStyle--><!--Device-ArkUI_ImmersiveStyle-End-->
+<!--Device-enum ArkUI_ImmersiveStyle--><!--Device-enum ArkUI_ImmersiveStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,11 +83,11 @@ enum ArkUI_ImmersiveStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 | 超薄样式。材质层极薄，透明度效果极强。<br>**起始版本：** 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_THIN | 薄样式。材质层较薄，透明度效果强。<br>**起始版本：** 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_REGULAR | 常规样式。材质层厚度标准，视觉效果均衡。<br>**起始版本：** 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_THICK | 厚样式。模糊效果强。<br>**起始版本：** 26.0.0 |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK | 超厚样式。材质层极厚，模糊效果极强。<br>**起始版本：** 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 | 超薄样式。材质层极薄，透明度效果极强。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0--><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0-End--> |
+| ARKUI_IMMERSIVE_STYLE_THIN | 薄样式。材质层较薄，透明度效果强。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_THIN--><!--Device-ARKUI_IMMERSIVE_STYLE_THIN-End--> |
+| ARKUI_IMMERSIVE_STYLE_REGULAR | 常规样式。材质层厚度标准，视觉效果均衡。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_REGULAR--><!--Device-ARKUI_IMMERSIVE_STYLE_REGULAR-End--> |
+| ARKUI_IMMERSIVE_STYLE_THICK | 厚样式。模糊效果强。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_THICK--><!--Device-ARKUI_IMMERSIVE_STYLE_THICK-End--> |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK | 超厚样式。材质层极厚，模糊效果极强。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THICK--><!--Device-ARKUI_IMMERSIVE_STYLE_ULTRA_THICK-End--> |
 
 ### ArkUI_MaterialLevel
 
@@ -99,7 +99,7 @@ enum ArkUI_MaterialLevel
 
 材质等级枚举，与设备的算力等级相关。 <br>使用[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)可获取当前设备的材质等级。
 
-<!--Device-ArkUI_MaterialLevel--><!--Device-ArkUI_MaterialLevel-End-->
+<!--Device-enum ArkUI_MaterialLevel--><!--Device-enum ArkUI_MaterialLevel-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,9 +107,9 @@ enum ArkUI_MaterialLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | 高算力设备材质等级。<br>**起始版本：** 26.0.0 |
-| ARKUI_MATERIAL_LEVEL_GENTLE | 中算力设备材质等级。<br>**起始版本：** 26.0.0 |
-| ARKUI_MATERIAL_LEVEL_SMOOTH | 低算力设备材质等级。<br>**起始版本：** 26.0.0 |
+| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | 高算力设备材质等级。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_MATERIAL_LEVEL_EXQUISITE = 0--><!--Device-ARKUI_MATERIAL_LEVEL_EXQUISITE = 0-End--> |
+| ARKUI_MATERIAL_LEVEL_GENTLE | 中算力设备材质等级。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_MATERIAL_LEVEL_GENTLE--><!--Device-ARKUI_MATERIAL_LEVEL_GENTLE-End--> |
+| ARKUI_MATERIAL_LEVEL_SMOOTH | 低算力设备材质等级。<br>**起始版本：** 26.0.0<br><!--Device-ARKUI_MATERIAL_LEVEL_SMOOTH--><!--Device-ARKUI_MATERIAL_LEVEL_SMOOTH-End--> |
 
 
 ## 函数说明

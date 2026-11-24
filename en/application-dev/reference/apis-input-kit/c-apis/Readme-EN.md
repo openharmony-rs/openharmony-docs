@@ -22,3 +22,5 @@
     - [Input_CursorConfig](capi-input-input-cursorconfig.md)
     - [Input_InterceptorOptions](capi-input-input-interceptoroptions.md)
     - [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)
+    - [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)
+    - [OH_Input_Event](capi-input-oh-input-event.md)

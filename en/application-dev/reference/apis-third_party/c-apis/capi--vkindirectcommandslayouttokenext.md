@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkIndirectCommandsTokenTypeEXT type |  |
-| [VkIndirectCommandsTokenDataEXT](capi--vkindirectcommandstokendataext.md) data |  |
-| uint32_t offset |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkIndirectCommandsTokenTypeEXT type | <!--Device-VkIndirectCommandsTokenTypeEXT type--><!--Device-VkIndirectCommandsTokenTypeEXT type-End--> |
+| [VkIndirectCommandsTokenDataEXT](capi--vkindirectcommandstokendataext.md) data | <!--Device-VkIndirectCommandsTokenDataEXT data--><!--Device-VkIndirectCommandsTokenDataEXT data-End--> |
+| uint32_t offset | <!--Device-uint32_t offset--><!--Device-uint32_t offset-End--> |
 
 

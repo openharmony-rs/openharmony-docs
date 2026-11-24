@@ -55,7 +55,7 @@ enum ArkUI_ListItemAlignment
 
 Enumerates the alignment modes of items along the cross axis. The default value is **<br>ARKUI_LIST_ITEM_ALIGNMENT_START**.
 
-<!--Device-ArkUI_ListItemAlignment--><!--Device-ArkUI_ListItemAlignment-End-->
+<!--Device-enum ArkUI_ListItemAlignment--><!--Device-enum ArkUI_ListItemAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,9 +63,9 @@ Enumerates the alignment modes of items along the cross axis. The default value 
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | The list items are packed toward the start edge of the **List** component along the cross axis. |
-| ARKUI_LIST_ITEM_ALIGNMENT_CENTER | The list items are centered in the **List** component along the cross axis. |
-| ARKUI_LIST_ITEM_ALIGNMENT_END | The list items are packed toward the end edge of the **List** component along the cross axis. |
+| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | The list items are packed toward the start edge of the **List** component along the cross axis.<br><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_START = 0--><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_START = 0-End--> |
+| ARKUI_LIST_ITEM_ALIGNMENT_CENTER | The list items are centered in the **List** component along the cross axis.<br><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_CENTER--><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_CENTER-End--> |
+| ARKUI_LIST_ITEM_ALIGNMENT_END | The list items are packed toward the end edge of the **List** component along the cross axis.<br><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_END--><!--Device-ARKUI_LIST_ITEM_ALIGNMENT_END-End--> |
 
 ### ArkUI_StickyStyle
 
@@ -77,7 +77,7 @@ enum ArkUI_StickyStyle
 
 Enumerates the modes for pinning the header to the top or the footer to the bottom.
 
-<!--Device-ArkUI_StickyStyle--><!--Device-ArkUI_StickyStyle-End-->
+<!--Device-enum ArkUI_StickyStyle--><!--Device-enum ArkUI_StickyStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,10 +85,10 @@ Enumerates the modes for pinning the header to the top or the footer to the bott
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | header and footer of ListItemGroup are not pinned to the top and bottom, respectively. |
-| ARKUI_STICKY_STYLE_HEADER = 1 | header of ListItemGroup is pinned to the top, and footer is not pinned to the bottom. |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | header of ListItemGroup is not pinned to the top, and footer is pinned to the bottom. |
-| ARKUI_STICKY_STYLE_BOTH = 3 | header of ListItemGroup is pinned to the top, and footer is pinned to the bottom. |
+| ARKUI_STICKY_STYLE_NONE = 0 | header and footer of ListItemGroup are not pinned to the top and bottom, respectively.<br><!--Device-ARKUI_STICKY_STYLE_NONE = 0--><!--Device-ARKUI_STICKY_STYLE_NONE = 0-End--> |
+| ARKUI_STICKY_STYLE_HEADER = 1 | header of ListItemGroup is pinned to the top, and footer is not pinned to the bottom.<br><!--Device-ARKUI_STICKY_STYLE_HEADER = 1--><!--Device-ARKUI_STICKY_STYLE_HEADER = 1-End--> |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | header of ListItemGroup is not pinned to the top, and footer is pinned to the bottom.<br><!--Device-ARKUI_STICKY_STYLE_FOOTER = 2--><!--Device-ARKUI_STICKY_STYLE_FOOTER = 2-End--> |
+| ARKUI_STICKY_STYLE_BOTH = 3 | header of ListItemGroup is pinned to the top, and footer is pinned to the bottom.<br><!--Device-ARKUI_STICKY_STYLE_BOTH = 3--><!--Device-ARKUI_STICKY_STYLE_BOTH = 3-End--> |
 
 ### ArkUI_ListItemGroupArea
 
@@ -100,7 +100,7 @@ enum ArkUI_ListItemGroupArea
 
 Enumerates the areas in the ListItemGroup component. The default value is **<br>ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE**.
 
-<!--Device-ArkUI_ListItemGroupArea--><!--Device-ArkUI_ListItemGroupArea-End-->
+<!--Device-enum ArkUI_ListItemGroupArea--><!--Device-enum ArkUI_ListItemGroupArea-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,11 +108,11 @@ Enumerates the areas in the ListItemGroup component. The default value is **<br>
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | Outside the area of the **ListItemGroup** component. |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area without the header, footer, and ListItem in the **ListItemGroup** component. |
-| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | List item area of the **ListItemGroup** component. |
-| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | Header area of the **ListItemGroup** component. |
-| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | Footer area of the **ListItemGroup** component. |
+| ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | Outside the area of the **ListItemGroup** component.<br><!--Device-ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0--><!--Device-ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area without the header, footer, and ListItem in the **ListItemGroup** component.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_NONE--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_NONE-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | List item area of the **ListItemGroup** component.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_ITEM--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_ITEM-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | Header area of the **ListItemGroup** component.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_HEADER--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_HEADER-End--> |
+| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | Footer area of the **ListItemGroup** component.<br><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER--><!--Device-ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER-End--> |
 
 
 ## Function description

@@ -24,9 +24,9 @@ Describes a rectangle with int32_t coordinates and dimensions.<br> Used by SET_S
 
 | Name | Description |
 | -- | -- |
-| int32_t x | x offset in pixels<br>**Since**: 26.1.0 |
-| int32_t y | y offset in pixels<br>**Since**: 26.1.0 |
-| int32_t w | width in pixels<br>**Since**: 26.1.0 |
-| int32_t h | height in pixels<br>**Since**: 26.1.0 |
+| int32_t x | x offset in pixels<br>**Since**: 26.1.0<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | y offset in pixels<br>**Since**: 26.1.0<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
+| int32_t w | width in pixels<br>**Since**: 26.1.0<br><!--Device-int32_t w--><!--Device-int32_t w-End--> |
+| int32_t h | height in pixels<br>**Since**: 26.1.0<br><!--Device-int32_t h--><!--Device-int32_t h-End--> |
 
 

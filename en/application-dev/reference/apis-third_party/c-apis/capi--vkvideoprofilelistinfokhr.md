@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t profileCount |  |
-| [const VkVideoProfileInfoKHR*](capi--vkvideoprofileinfokhr.md) pProfiles |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t profileCount | <!--Device-uint32_t profileCount--><!--Device-uint32_t profileCount-End--> |
+| [const VkVideoProfileInfoKHR*](capi--vkvideoprofileinfokhr.md) pProfiles | <!--Device-const VkVideoProfileInfoKHR* pProfiles--><!--Device-const VkVideoProfileInfoKHR* pProfiles-End--> |
 
 

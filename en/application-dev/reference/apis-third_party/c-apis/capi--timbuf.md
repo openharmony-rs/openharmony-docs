@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| time_t actime |  |
-| time_t modtime |  |
+| time_t actime | <!--Device-time_t actime--><!--Device-time_t actime-End--> |
+| time_t modtime | <!--Device-time_t modtime--><!--Device-time_t modtime-End--> |
 
 

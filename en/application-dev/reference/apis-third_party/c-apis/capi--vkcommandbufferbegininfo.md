@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkCommandBufferUsageFlags flags |  |
-| [const VkCommandBufferInheritanceInfo*](capi--vkcommandbufferinheritanceinfo.md) pInheritanceInfo |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkCommandBufferUsageFlags flags | <!--Device-VkCommandBufferUsageFlags flags--><!--Device-VkCommandBufferUsageFlags flags-End--> |
+| [const VkCommandBufferInheritanceInfo*](capi--vkcommandbufferinheritanceinfo.md) pInheritanceInfo | <!--Device-const VkCommandBufferInheritanceInfo* pInheritanceInfo--><!--Device-const VkCommandBufferInheritanceInfo* pInheritanceInfo-End--> |
 
 

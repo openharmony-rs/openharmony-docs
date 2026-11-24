@@ -24,7 +24,7 @@ Defines the HTTP buffer structure.
 
 | Name | Description |
 | -- | -- |
-| const char *buffer | Buffer data. |
-| uint32_t length | Buffer length. |
+| const char *buffer | Buffer data.<br><!--Device-const char *buffer--><!--Device-const char *buffer-End--> |
+| uint32_t length | Buffer length.<br><!--Device-uint32_t length--><!--Device-uint32_t length-End--> |
 
 

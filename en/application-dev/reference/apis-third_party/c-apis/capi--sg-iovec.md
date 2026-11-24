@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| void *iov_base |  |
-| unsigned long iov_len |  |
+| void *iov_base | <!--Device-void *iov_base--><!--Device-void *iov_base-End--> |
+| unsigned long iov_len | <!--Device-unsigned long iov_len--><!--Device-unsigned long iov_len-End--> |
 
 

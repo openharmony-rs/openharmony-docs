@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkImageViewType imageViewType |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkImageViewType imageViewType | <!--Device-VkImageViewType imageViewType--><!--Device-VkImageViewType imageViewType-End--> |
 
 

@@ -32,7 +32,7 @@ enum ArkUI_CheckboxShape
 
 Enumerates the shapes of the check box.
 
-<!--Device-ArkUI_CheckboxShape--><!--Device-ArkUI_CheckboxShape-End-->
+<!--Device-enum ArkUI_CheckboxShape--><!--Device-enum ArkUI_CheckboxShape-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ Enumerates the shapes of the check box.
 
 | Enum item | Description |
 | -- | -- |
-| ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | Checkbox shape is circle.<br>**Since**: 12 |
-| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | Checkbox shape is rounded square.<br>**Since**: 12 |
+| ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | Checkbox shape is circle.<br>**Since**: 12<br><!--Device-ArkUI_CHECKBOX_SHAPE_CIRCLE = 0--><!--Device-ArkUI_CHECKBOX_SHAPE_CIRCLE = 0-End--> |
+| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | Checkbox shape is rounded square.<br>**Since**: 12<br><!--Device-ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE--><!--Device-ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE-End--> |
 
 

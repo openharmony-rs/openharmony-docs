@@ -60,7 +60,7 @@ enum OH_IPC_RequestMode
 
 IPC请求模式定义。同步请求模式适用于需要等待远端响应的场景，异步请求模式适用于不需要等待远端响应或需要提高并发性能 的场景。
 
-<!--Device-OH_IPC_RequestMode--><!--Device-OH_IPC_RequestMode-End-->
+<!--Device-enum OH_IPC_RequestMode--><!--Device-enum OH_IPC_RequestMode-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -68,8 +68,8 @@ IPC请求模式定义。同步请求模式适用于需要等待远端响应的�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_IPC_REQUEST_MODE_SYNC = 0 | 同步请求模式。适用于需要等待返回结果的场景，如查询操作、简单请求响应场景。 |
-| OH_IPC_REQUEST_MODE_ASYNC = 1 | 异步请求模式。适用于不需要立即获取结果或耗时操作的场景，如大批量数据传输、后台处理等。 |
+| OH_IPC_REQUEST_MODE_SYNC = 0 | 同步请求模式。适用于需要等待返回结果的场景，如查询操作、简单请求响应场景。<br><!--Device-OH_IPC_REQUEST_MODE_SYNC = 0--><!--Device-OH_IPC_REQUEST_MODE_SYNC = 0-End--> |
+| OH_IPC_REQUEST_MODE_ASYNC = 1 | 异步请求模式。适用于不需要立即获取结果或耗时操作的场景，如大批量数据传输、后台处理等。<br><!--Device-OH_IPC_REQUEST_MODE_ASYNC = 1--><!--Device-OH_IPC_REQUEST_MODE_ASYNC = 1-End--> |
 
 
 ## 函数说明

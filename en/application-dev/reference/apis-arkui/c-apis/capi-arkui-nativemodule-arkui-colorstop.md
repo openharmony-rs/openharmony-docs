@@ -24,8 +24,8 @@ Defines the gradient color stop structure.
 
 | Name | Description |
 | -- | -- |
-| const uint32_t* colors | Color array. |
-| float* stops | Position array. |
-| int size | Length array. |
+| const uint32_t* colors | Color array.<br><!--Device-const uint32_t* colors--><!--Device-const uint32_t* colors-End--> |
+| float* stops | Position array.<br><!--Device-float* stops--><!--Device-float* stops-End--> |
+| int size | Length array.<br><!--Device-int size--><!--Device-int size-End--> |
 
 

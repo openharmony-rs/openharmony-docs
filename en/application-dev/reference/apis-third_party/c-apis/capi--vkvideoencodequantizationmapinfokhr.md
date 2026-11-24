@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkImageView quantizationMap |  |
-| [VkExtent2D](capi--vkextent2d.md) quantizationMapExtent |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkImageView quantizationMap | <!--Device-VkImageView quantizationMap--><!--Device-VkImageView quantizationMap-End--> |
+| [VkExtent2D](capi--vkextent2d.md) quantizationMapExtent | <!--Device-VkExtent2D quantizationMapExtent--><!--Device-VkExtent2D quantizationMapExtent-End--> |
 
 

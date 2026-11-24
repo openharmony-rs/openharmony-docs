@@ -24,14 +24,14 @@ typedef struct ArkUI_ContextCallback {...} ArkUI_ContextCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| void* userData | 用户自定义数据。<br>**起始版本：** 12 |
+| void* userData | 用户自定义数据。<br>**起始版本：** 12<br><!--Device-void* userData--><!--Device-void* userData-End--> |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) | - | 事件触发时执行的回调函数，调用时会传入userData指向的用户自定义数据。 |
+| [void (\*callback)(void* userData)](#callback) | 事件触发时执行的回调函数，调用时会传入userData指向的用户自定义数据。 |
 
 ## 成员函数说明
 

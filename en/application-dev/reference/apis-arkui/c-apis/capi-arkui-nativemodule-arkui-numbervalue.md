@@ -24,8 +24,8 @@ Defines a numeric type used by ArkUI on the native side, including floating-poin
 
 | Name | Description |
 | -- | -- |
-| float f32 | Variable of floating-point type, used to store floating-point values.<br>**Since**: 12 |
-| int32_t i32 | Variable of signed integer type, used to store signed integer values.<br>**Since**: 12 |
-| uint32_t u32 | Variable of unsigned integer type, used to store unsigned integer values.<br>**Since**: 12 |
+| float f32 | Variable of floating-point type, used to store floating-point values.<br>**Since**: 12<br><!--Device-float f32--><!--Device-float f32-End--> |
+| int32_t i32 | Variable of signed integer type, used to store signed integer values.<br>**Since**: 12<br><!--Device-int32_t i32--><!--Device-int32_t i32-End--> |
+| uint32_t u32 | Variable of unsigned integer type, used to store unsigned integer values.<br>**Since**: 12<br><!--Device-uint32_t u32--><!--Device-uint32_t u32-End--> |
 
 

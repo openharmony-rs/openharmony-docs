@@ -24,7 +24,7 @@ Defines an array of event type codes, which stores information about the event t
 
 | Name | Description |
 | -- | -- |
-| [Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype) *hidEventType | Pointer to the array of event type codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
-| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
+| [Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype) *hidEventType | Pointer to the array of event type codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length.<br><!--Device-Hid_EventType *hidEventType--><!--Device-Hid_EventType *hidEventType-End--> |
+| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array.<br><!--Device-uint16_t length--><!--Device-uint16_t length-End--> |
 
 

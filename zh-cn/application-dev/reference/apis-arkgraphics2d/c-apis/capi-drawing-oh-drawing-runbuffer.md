@@ -24,9 +24,9 @@ typedef struct OH_Drawing_RunBuffer {...} OH_Drawing_RunBuffer
 
 | 名称 | 描述 |
 | -- | -- |
-| uint16_t* glyphs | 存储字形索引。 |
-| float* pos | 存储文字的位置。单位为物理像素px。 |
-| char* utf8text | 存储文字UTF-8编码。 |
-| uint32_t* clusters | 存储文字簇UTF-8编码（簇指的是集合）。 |
+| uint16_t* glyphs | 存储字形索引。<br><!--Device-uint16_t* glyphs--><!--Device-uint16_t* glyphs-End--> |
+| float* pos | 存储文字的位置。单位为物理像素px。<br><!--Device-float* pos--><!--Device-float* pos-End--> |
+| char* utf8text | 存储文字UTF-8编码。<br><!--Device-char* utf8text--><!--Device-char* utf8text-End--> |
+| uint32_t* clusters | 存储文字簇UTF-8编码（簇指的是集合）。<br><!--Device-uint32_t* clusters--><!--Device-uint32_t* clusters-End--> |
 
 

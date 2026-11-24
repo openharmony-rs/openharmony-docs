@@ -24,9 +24,8 @@ typedef struct OH_AudioObjectPosition {...} OH_AudioObjectPosition
 
 | 名称 | 描述 |
 | -- | -- |
-| bool isCartesian | 对象声源是否使用笛卡尔坐标表示。<br> true表示使用笛卡尔坐标，false表示不使用笛卡尔坐标系，使用极坐标系。<br>**起始版本：** 26.0.0 |
-| pos | 包含笛卡尔坐标或极坐标位置数据的联合体。<br>**起始版本：** 26.0.0 |
-| pos.cartesian | 笛卡尔坐标表示的位置。<br>**起始版本：** 26.0.0 |
-| pos.polar | 极坐标表示的位置。<br>**起始版本：** 26.0.0 |
+| bool isCartesian | 对象声源是否使用笛卡尔坐标表示。<br> true表示使用笛卡尔坐标，false表示不使用笛卡尔坐标系，使用极坐标系。<br>**起始版本：** 26.0.0<br><!--Device-bool isCartesian--><!--Device-bool isCartesian-End--> |
+| pos.cartesian | 笛卡尔坐标表示的位置。<br>**起始版本：** 26.0.0<br><!--Device-pos.cartesian--><!--Device-pos.cartesian-End--> |
+| pos.polar | 极坐标表示的位置。<br>**起始版本：** 26.0.0<br><!--Device-pos.polar--><!--Device-pos.polar-End--> |
 
 

@@ -39,7 +39,7 @@ Declares the interfaces of a ModularObjectExtensionAbility instance, including t
 
 | Name | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle | Defines the pointer to OH_AbilityRuntime_ModObjExtensionInstance.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
+| OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle | Defines the pointer to OH_AbilityRuntime_ModObjExtensionInstance.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core<br><!--Device-OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle--><!--Device-OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle-End--> |
 
 ## Function description
 

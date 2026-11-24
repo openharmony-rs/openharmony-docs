@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| char *c_name |  |
-| int c_val |  |
+| char *c_name | <!--Device-char *c_name--><!--Device-char *c_name-End--> |
+| int c_val | <!--Device-int c_val--><!--Device-int c_val-End--> |
 
 

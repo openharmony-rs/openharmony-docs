@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkRenderPassSubpassFeedbackInfoEXT*](capi--vkrenderpasssubpassfeedbackinfoext.md) pSubpassFeedback |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkRenderPassSubpassFeedbackInfoEXT*](capi--vkrenderpasssubpassfeedbackinfoext.md) pSubpassFeedback | <!--Device-VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback--><!--Device-VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback-End--> |
 
 

@@ -24,8 +24,8 @@ typedef struct AbilityBase_Element {...} AbilityBase_Element
 
 | 名称 | 描述 |
 | -- | -- |
-| char* bundleName | 应用的包名。 |
-| char* moduleName | 模块名称。 |
-| char* abilityName | Ability名称。 |
+| char* bundleName | 应用的包名。<br><!--Device-char* bundleName--><!--Device-char* bundleName-End--> |
+| char* moduleName | 模块名称。<br><!--Device-char* moduleName--><!--Device-char* moduleName-End--> |
+| char* abilityName | Ability名称。<br><!--Device-char* abilityName--><!--Device-char* abilityName-End--> |
 
 

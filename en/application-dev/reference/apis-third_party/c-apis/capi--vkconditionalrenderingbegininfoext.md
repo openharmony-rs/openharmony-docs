@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkBuffer buffer |  |
-| VkDeviceSize offset |  |
-| VkConditionalRenderingFlagsEXT flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkBuffer buffer | <!--Device-VkBuffer buffer--><!--Device-VkBuffer buffer-End--> |
+| VkDeviceSize offset | <!--Device-VkDeviceSize offset--><!--Device-VkDeviceSize offset-End--> |
+| VkConditionalRenderingFlagsEXT flags | <!--Device-VkConditionalRenderingFlagsEXT flags--><!--Device-VkConditionalRenderingFlagsEXT flags-End--> |
 
 

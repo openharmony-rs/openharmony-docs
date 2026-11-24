@@ -24,7 +24,7 @@ This structure is used to specify an auxiliary picture copy rule when creating a
 
 | Name | Description |
 | -- | -- |
-| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) srcType | Source auxiliary picture type. It specifies the type of auxiliary picture to be copied from the source picture.<br>**Since**: 26.0.0 |
-| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) dstType | Destination auxiliary picture type. It specifies the type under which the copied auxiliary picture will be stored in the destination picture.<br>**Since**: 26.0.0 |
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) srcType | Source auxiliary picture type. It specifies the type of auxiliary picture to be copied from the source picture.<br>**Since**: 26.0.0<br><!--Device-Image_AuxiliaryPictureType srcType--><!--Device-Image_AuxiliaryPictureType srcType-End--> |
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) dstType | Destination auxiliary picture type. It specifies the type under which the copied auxiliary picture will be stored in the destination picture.<br>**Since**: 26.0.0<br><!--Device-Image_AuxiliaryPictureType dstType--><!--Device-Image_AuxiliaryPictureType dstType-End--> |
 
 

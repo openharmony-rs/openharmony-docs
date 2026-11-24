@@ -24,7 +24,7 @@ The struct describes the callbacks related to metadata output.
 
 | Name | Description |
 | -- | -- |
-| [OH_MetadataOutput_OnMetadataObjectAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectavailable) onMetadataObjectAvailable | Callback to report the metadata output result. |
-| [OH_MetadataOutput_OnError](capi-metadata-output-h.md#oh_metadataoutput_onerror) onError | Callback to report a metadata output error. |
+| [OH_MetadataOutput_OnMetadataObjectAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectavailable) onMetadataObjectAvailable | Callback to report the metadata output result.<br><!--Device-OH_MetadataOutput_OnMetadataObjectAvailable onMetadataObjectAvailable--><!--Device-OH_MetadataOutput_OnMetadataObjectAvailable onMetadataObjectAvailable-End--> |
+| [OH_MetadataOutput_OnError](capi-metadata-output-h.md#oh_metadataoutput_onerror) onError | Callback to report a metadata output error.<br><!--Device-OH_MetadataOutput_OnError onError--><!--Device-OH_MetadataOutput_OnError onError-End--> |
 
 

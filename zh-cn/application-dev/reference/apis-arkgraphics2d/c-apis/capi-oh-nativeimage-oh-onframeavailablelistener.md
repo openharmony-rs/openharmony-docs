@@ -24,7 +24,7 @@ typedef struct OH_OnFrameAvailableListener {...} OH_OnFrameAvailableListener
 
 | 名称 | 描述 |
 | -- | -- |
-| void *context | 用户自定义的上下文信息，会在回调触发时返回给用户 |
-| [OH_OnFrameAvailable](capi-native-image-h.md#oh_onframeavailable) onFrameAvailable | 有buffer可获取时触发的回调函数 |
+| void *context | 用户自定义的上下文信息，会在回调触发时返回给用户<br><!--Device-void *context--><!--Device-void *context-End--> |
+| [OH_OnFrameAvailable](capi-native-image-h.md#oh_onframeavailable) onFrameAvailable | 有buffer可获取时触发的回调函数<br><!--Device-OH_OnFrameAvailable onFrameAvailable--><!--Device-OH_OnFrameAvailable onFrameAvailable-End--> |
 
 

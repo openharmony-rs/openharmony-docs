@@ -310,7 +310,7 @@ enum OH_ArkUI_StyledStringKey
 
 属性字符串的样式类型枚举。
 
-<!--Device-OH_ArkUI_StyledStringKey--><!--Device-OH_ArkUI_StyledStringKey-End-->
+<!--Device-enum OH_ArkUI_StyledStringKey--><!--Device-enum OH_ArkUI_StyledStringKey-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,21 +318,21 @@ enum OH_ArkUI_StyledStringKey
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1 | 未指定样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | 文本字体样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | 文本装饰线样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | 文本基线偏移量样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | 文本字符间距样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | 文本阴影样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | 文本行高样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | 文本背景颜色样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | 超链接样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8 | 文本行间距样式。<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100 | 事件手势样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200 | 文本段落样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300 | 图片样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400 | 自定义绘制Span样式。<br>**起始版本：** 24 |
-| OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500 | 用户数据Span样式。<br>**起始版本：** 24 |
+| OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1 | 未指定样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | 文本字体样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_FONT = 0--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_FONT = 0-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | 文本装饰线样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | 文本基线偏移量样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | 文本字符间距样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | 文本阴影样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | 文本行高样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | 文本背景颜色样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | 超链接样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_URL = 7--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_URL = 7-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8 | 文本行间距样式。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100 | 事件手势样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200 | 文本段落样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300 | 图片样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_IMAGE = 300-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400 | 自定义绘制Span样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_CUSTOM_SPAN = 400-End--> |
+| OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500 | 用户数据Span样式。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500--><!--Device-OH_ARKUI_STYLEDSTRINGKEY_USER_DATA = 500-End--> |
 
 ### OH_ArkUI_SuperscriptStyle
 
@@ -344,7 +344,7 @@ enum OH_ArkUI_SuperscriptStyle
 
 定义文本上下角标样式枚举。
 
-<!--Device-OH_ArkUI_SuperscriptStyle--><!--Device-OH_ArkUI_SuperscriptStyle-End-->
+<!--Device-enum OH_ArkUI_SuperscriptStyle--><!--Device-enum OH_ArkUI_SuperscriptStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,9 +352,9 @@ enum OH_ArkUI_SuperscriptStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0 | 普通文本样式，适用于不需要上下标效果的常规文本场景。<br>**起始版本：** 24 |
-| OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT | 上标文本样式，适用于数学公式中的指数表示（如x²）或脚注引用标记等场景。<br>**起始版本：** 24 |
-| OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT | 下标文本样式，适用于化学式中的元素下标表示（如H₂O）或数学变量下标等场景。<br>**起始版本：** 24 |
+| OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0 | 普通文本样式，适用于不需要上下标效果的常规文本场景。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0--><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0-End--> |
+| OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT | 上标文本样式，适用于数学公式中的指数表示（如x²）或脚注引用标记等场景。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT--><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT-End--> |
+| OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT | 下标文本样式，适用于化学式中的元素下标表示（如H₂O）或数学变量下标等场景。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT--><!--Device-OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT-End--> |
 
 ### OH_ArkUI_TextEncoding
 
@@ -366,7 +366,7 @@ enum OH_ArkUI_TextEncoding
 
 文本布局查询接口支持的文本编码类型。
 
-<!--Device-OH_ArkUI_TextEncoding--><!--Device-OH_ArkUI_TextEncoding-End-->
+<!--Device-enum OH_ArkUI_TextEncoding--><!--Device-enum OH_ArkUI_TextEncoding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,8 +374,8 @@ enum OH_ArkUI_TextEncoding
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_ENCODING_UTF8 = 0 | UTF-8编码。字符位置或字符范围按UTF-8字节偏移量计算。<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_TEXT_ENCODING_UTF16 = 1 | UTF-16编码。字符位置或字符范围按UTF-16 code unit偏移量计算。<br>**起始版本：** 26.0.0 |
+| OH_ARKUI_TEXT_ENCODING_UTF8 = 0 | UTF-8编码。字符位置或字符范围按UTF-8字节偏移量计算。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_TEXT_ENCODING_UTF8 = 0--><!--Device-OH_ARKUI_TEXT_ENCODING_UTF8 = 0-End--> |
+| OH_ARKUI_TEXT_ENCODING_UTF16 = 1 | UTF-16编码。字符位置或字符范围按UTF-16 code unit偏移量计算。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_TEXT_ENCODING_UTF16 = 1--><!--Device-OH_ARKUI_TEXT_ENCODING_UTF16 = 1-End--> |
 
 
 ## 函数说明

@@ -24,8 +24,8 @@ typedef struct ArkUI_TextChangeEvent {...} ArkUI_TextChangeEvent
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* pStr | 文本变更事件中的文本内容字符串。 |
-| const char* pExtendStr | 文本变更事件中的扩展字符串，用于存储额外的文本信息。 |
-| int32_t number | 事件的数字参数值，用于记录文本变更事件中的数值信息。取值范围[-2147483648, 2147483647]。 |
+| const char* pStr | 文本变更事件中的文本内容字符串。<br><!--Device-const char* pStr--><!--Device-const char* pStr-End--> |
+| const char* pExtendStr | 文本变更事件中的扩展字符串，用于存储额外的文本信息。<br><!--Device-const char* pExtendStr--><!--Device-const char* pExtendStr-End--> |
+| int32_t number | 事件的数字参数值，用于记录文本变更事件中的数值信息。取值范围[-2147483648, 2147483647]。<br><!--Device-int32_t number--><!--Device-int32_t number-End--> |
 
 

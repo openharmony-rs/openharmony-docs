@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkDebugReportFlagsEXT flags |  |
-| PFN_vkDebugReportCallbackEXT pfnCallback |  |
-| void* pUserData |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkDebugReportFlagsEXT flags | <!--Device-VkDebugReportFlagsEXT flags--><!--Device-VkDebugReportFlagsEXT flags-End--> |
+| PFN_vkDebugReportCallbackEXT pfnCallback | <!--Device-PFN_vkDebugReportCallbackEXT pfnCallback--><!--Device-PFN_vkDebugReportCallbackEXT pfnCallback-End--> |
+| void* pUserData | <!--Device-void* pUserData--><!--Device-void* pUserData-End--> |
 
 

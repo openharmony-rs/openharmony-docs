@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 rasterizationOrderColorAttachmentAccess |  |
-| VkBool32 rasterizationOrderDepthAttachmentAccess |  |
-| VkBool32 rasterizationOrderStencilAttachmentAccess |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 rasterizationOrderColorAttachmentAccess | <!--Device-VkBool32 rasterizationOrderColorAttachmentAccess--><!--Device-VkBool32 rasterizationOrderColorAttachmentAccess-End--> |
+| VkBool32 rasterizationOrderDepthAttachmentAccess | <!--Device-VkBool32 rasterizationOrderDepthAttachmentAccess--><!--Device-VkBool32 rasterizationOrderDepthAttachmentAccess-End--> |
+| VkBool32 rasterizationOrderStencilAttachmentAccess | <!--Device-VkBool32 rasterizationOrderStencilAttachmentAccess--><!--Device-VkBool32 rasterizationOrderStencilAttachmentAccess-End--> |
 
 

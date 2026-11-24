@@ -24,8 +24,8 @@ Defines a text change event, which is used to listen for and handle text changes
 
 | Name | Description |
 | -- | -- |
-| const char* pStr | Pointer to the text content string in the text change event. |
-| const char* pExtendStr | Pointer to the extended string in the text change event, used to store additional text information. |
-| int32_t number | Numeric parameter value of the event, used to record the numeric information in the text change event. The value range is [-2147483648, 2147483647]. |
+| const char* pStr | Pointer to the text content string in the text change event.<br><!--Device-const char* pStr--><!--Device-const char* pStr-End--> |
+| const char* pExtendStr | Pointer to the extended string in the text change event, used to store additional text information.<br><!--Device-const char* pExtendStr--><!--Device-const char* pExtendStr-End--> |
+| int32_t number | Numeric parameter value of the event, used to record the numeric information in the text change event. The value range is [-2147483648, 2147483647].<br><!--Device-int32_t number--><!--Device-int32_t number-End--> |
 
 

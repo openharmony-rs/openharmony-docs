@@ -24,10 +24,10 @@ This struct describes the placeholder that acts as a span.
 
 | Name | Description |
 | -- | -- |
-| double width | Width of a placeholder. |
-| double height | Height of a placeholder. |
-| [OH_Drawing_PlaceholderVerticalAlignment](capi-drawing-text-typography-h.md#oh_drawing_placeholderverticalalignment) alignment | Alignment mode of a placeholder. |
-| [OH_Drawing_TextBaseline](capi-drawing-text-typography-h.md#oh_drawing_textbaseline) baseline | Baseline of a placeholder. |
-| double baselineOffset | Baseline offset of a placeholder. |
+| double width | Width of a placeholder.<br><!--Device-double width--><!--Device-double width-End--> |
+| double height | Height of a placeholder.<br><!--Device-double height--><!--Device-double height-End--> |
+| [OH_Drawing_PlaceholderVerticalAlignment](capi-drawing-text-typography-h.md#oh_drawing_placeholderverticalalignment) alignment | Alignment mode of a placeholder.<br><!--Device-OH_Drawing_PlaceholderVerticalAlignment alignment--><!--Device-OH_Drawing_PlaceholderVerticalAlignment alignment-End--> |
+| [OH_Drawing_TextBaseline](capi-drawing-text-typography-h.md#oh_drawing_textbaseline) baseline | Baseline of a placeholder.<br><!--Device-OH_Drawing_TextBaseline baseline--><!--Device-OH_Drawing_TextBaseline baseline-End--> |
+| double baselineOffset | Baseline offset of a placeholder.<br><!--Device-double baselineOffset--><!--Device-double baselineOffset-End--> |
 
 

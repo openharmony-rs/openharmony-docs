@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkCudaModuleNV module |  |
-| const char* pName |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkCudaModuleNV module | <!--Device-VkCudaModuleNV module--><!--Device-VkCudaModuleNV module-End--> |
+| const char* pName | <!--Device-const char* pName--><!--Device-const char* pName-End--> |
 
 

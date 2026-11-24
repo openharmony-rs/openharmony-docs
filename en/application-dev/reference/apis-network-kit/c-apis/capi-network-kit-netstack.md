@@ -2,7 +2,7 @@
 
 ## Overview
 
-Provides C APIs for the Http client module.
+Provides C APIs for the HTTP request module.
 
 **System capability**: SystemCapability.Communication.NetStack
 

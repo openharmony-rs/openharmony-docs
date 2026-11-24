@@ -52,7 +52,7 @@ enum ArkUI_GridItemAlignment
 
 GridItem对齐方式枚举。
 
-<!--Device-ArkUI_GridItemAlignment--><!--Device-ArkUI_GridItemAlignment-End-->
+<!--Device-enum ArkUI_GridItemAlignment--><!--Device-enum ArkUI_GridItemAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,8 +60,8 @@ GridItem对齐方式枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Grid的默认对齐方式。 |
-| GRID_ITEM_ALIGNMENT_STRETCH = 1 | 以一行中的最高的GridItem作为其他GridItem的高度。 |
+| GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Grid的默认对齐方式。<br><!--Device-GRID_ITEM_ALIGNMENT_DEFAULT = 0--><!--Device-GRID_ITEM_ALIGNMENT_DEFAULT = 0-End--> |
+| GRID_ITEM_ALIGNMENT_STRETCH = 1 | 以一行中的最高的GridItem作为其他GridItem的高度。<br><!--Device-GRID_ITEM_ALIGNMENT_STRETCH = 1--><!--Device-GRID_ITEM_ALIGNMENT_STRETCH = 1-End--> |
 
 ### ArkUI_GridItemStyle
 
@@ -73,7 +73,7 @@ enum ArkUI_GridItemStyle
 
 GridItem样式枚举。
 
-<!--Device-ArkUI_GridItemStyle--><!--Device-ArkUI_GridItemStyle-End-->
+<!--Device-enum ArkUI_GridItemStyle--><!--Device-enum ArkUI_GridItemStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,8 +81,8 @@ GridItem样式枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| GRID_ITEM_STYLE_NONE = 0 | 无样式。 |
-| GRID_ITEM_STYLE_PLAIN = 1 | 显示Hover、Press态样式。 |
+| GRID_ITEM_STYLE_NONE = 0 | 无样式。<br><!--Device-GRID_ITEM_STYLE_NONE = 0--><!--Device-GRID_ITEM_STYLE_NONE = 0-End--> |
+| GRID_ITEM_STYLE_PLAIN = 1 | 显示Hover、Press态样式。<br><!--Device-GRID_ITEM_STYLE_PLAIN = 1--><!--Device-GRID_ITEM_STYLE_PLAIN = 1-End--> |
 
 
 ## 函数说明

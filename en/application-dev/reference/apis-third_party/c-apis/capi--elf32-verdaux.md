@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Word vda_name |  |
-| Elf32_Word vda_next |  |
+| Elf32_Word vda_name | <!--Device-Elf32_Word vda_name--><!--Device-Elf32_Word vda_name-End--> |
+| Elf32_Word vda_next | <!--Device-Elf32_Word vda_next--><!--Device-Elf32_Word vda_next-End--> |
 
 

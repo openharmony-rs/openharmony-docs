@@ -95,7 +95,7 @@ enum OH_Drawing_FontHinting
 
 Defines an enum for the font hinting types.
 
-<!--Device-OH_Drawing_FontHinting--><!--Device-OH_Drawing_FontHinting-End-->
+<!--Device-enum OH_Drawing_FontHinting--><!--Device-enum OH_Drawing_FontHinting-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -103,10 +103,10 @@ Defines an enum for the font hinting types.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_HINTING_NONE | No font hinting is used.<br>**Since**: 12 |
-| FONT_HINTING_SLIGHT | Slight font hinting is used to improve contrast.<br>**Since**: 12 |
-| FONT_HINTING_NORMAL | Normal font hinting is used to improve contrast.<br>**Since**: 12 |
-| FONT_HINTING_FULL | Full font hinting is used to improve contrast.<br>**Since**: 12 |
+| FONT_HINTING_NONE | No font hinting is used.<br>**Since**: 12<br><!--Device-FONT_HINTING_NONE--><!--Device-FONT_HINTING_NONE-End--> |
+| FONT_HINTING_SLIGHT | Slight font hinting is used to improve contrast.<br>**Since**: 12<br><!--Device-FONT_HINTING_SLIGHT--><!--Device-FONT_HINTING_SLIGHT-End--> |
+| FONT_HINTING_NORMAL | Normal font hinting is used to improve contrast.<br>**Since**: 12<br><!--Device-FONT_HINTING_NORMAL--><!--Device-FONT_HINTING_NORMAL-End--> |
+| FONT_HINTING_FULL | Full font hinting is used to improve contrast.<br>**Since**: 12<br><!--Device-FONT_HINTING_FULL--><!--Device-FONT_HINTING_FULL-End--> |
 
 ### OH_Drawing_FontEdging
 
@@ -118,7 +118,7 @@ enum OH_Drawing_FontEdging
 
 Enumerates the font edging types.
 
-<!--Device-OH_Drawing_FontEdging--><!--Device-OH_Drawing_FontEdging-End-->
+<!--Device-enum OH_Drawing_FontEdging--><!--Device-enum OH_Drawing_FontEdging-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -126,9 +126,9 @@ Enumerates the font edging types.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_EDGING_ALIAS | No anti-aliasing processing is used.<br>**Since**: 12 |
-| FONT_EDGING_ANTI_ALIAS | Uses anti-aliasing to smooth the jagged edges.<br>**Since**: 12 |
-| FONT_EDGING_SUBPIXEL_ANTI_ALIAS | Uses sub-pixel anti-aliasing to provide a smoother effect for jagged edges.<br>**Since**: 12 |
+| FONT_EDGING_ALIAS | No anti-aliasing processing is used.<br>**Since**: 12<br><!--Device-FONT_EDGING_ALIAS--><!--Device-FONT_EDGING_ALIAS-End--> |
+| FONT_EDGING_ANTI_ALIAS | Uses anti-aliasing to smooth the jagged edges.<br>**Since**: 12<br><!--Device-FONT_EDGING_ANTI_ALIAS--><!--Device-FONT_EDGING_ANTI_ALIAS-End--> |
+| FONT_EDGING_SUBPIXEL_ANTI_ALIAS | Uses sub-pixel anti-aliasing to provide a smoother effect for jagged edges.<br>**Since**: 12<br><!--Device-FONT_EDGING_SUBPIXEL_ANTI_ALIAS--><!--Device-FONT_EDGING_SUBPIXEL_ANTI_ALIAS-End--> |
 
 
 ## Function description

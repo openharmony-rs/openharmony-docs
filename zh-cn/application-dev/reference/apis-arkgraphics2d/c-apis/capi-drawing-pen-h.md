@@ -74,7 +74,7 @@ enum OH_Drawing_PenLineCapStyle
 
 枚举集合定义了画笔笔帽的样式，即画笔在绘制线段时，在线段头尾端点的样式。
 
-<!--Device-OH_Drawing_PenLineCapStyle--><!--Device-OH_Drawing_PenLineCapStyle-End-->
+<!--Device-enum OH_Drawing_PenLineCapStyle--><!--Device-enum OH_Drawing_PenLineCapStyle-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -82,9 +82,9 @@ enum OH_Drawing_PenLineCapStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LINE_FLAT_CAP | 没有笔帽样式，线条头尾端点处横切。 |
-| LINE_SQUARE_CAP | 笔帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段厚度的一半。 |
-| LINE_ROUND_CAP | 笔帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段厚度一致。 |
+| LINE_FLAT_CAP | 没有笔帽样式，线条头尾端点处横切。<br><!--Device-LINE_FLAT_CAP--><!--Device-LINE_FLAT_CAP-End--> |
+| LINE_SQUARE_CAP | 笔帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段厚度的一半。<br><!--Device-LINE_SQUARE_CAP--><!--Device-LINE_SQUARE_CAP-End--> |
+| LINE_ROUND_CAP | 笔帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段厚度一致。<br><!--Device-LINE_ROUND_CAP--><!--Device-LINE_ROUND_CAP-End--> |
 
 ### OH_Drawing_PenLineJoinStyle
 
@@ -96,7 +96,7 @@ enum OH_Drawing_PenLineJoinStyle
 
 枚举集合定义了线条转角的样式，即画笔在绘制折线段时，在折线转角处的样式。
 
-<!--Device-OH_Drawing_PenLineJoinStyle--><!--Device-OH_Drawing_PenLineJoinStyle-End-->
+<!--Device-enum OH_Drawing_PenLineJoinStyle--><!--Device-enum OH_Drawing_PenLineJoinStyle-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -104,9 +104,9 @@ enum OH_Drawing_PenLineJoinStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LINE_MITER_JOIN | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。 |
-| LINE_ROUND_JOIN | 转角类型为圆头。 |
-| LINE_BEVEL_JOIN | 转角类型为平角。 |
+| LINE_MITER_JOIN | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。<br><!--Device-LINE_MITER_JOIN--><!--Device-LINE_MITER_JOIN-End--> |
+| LINE_ROUND_JOIN | 转角类型为圆头。<br><!--Device-LINE_ROUND_JOIN--><!--Device-LINE_ROUND_JOIN-End--> |
+| LINE_BEVEL_JOIN | 转角类型为平角。<br><!--Device-LINE_BEVEL_JOIN--><!--Device-LINE_BEVEL_JOIN-End--> |
 
 
 ## 函数说明

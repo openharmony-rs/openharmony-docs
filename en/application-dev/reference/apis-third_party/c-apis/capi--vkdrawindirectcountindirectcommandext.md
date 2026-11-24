@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkDeviceAddress bufferAddress |  |
-| uint32_t stride |  |
-| uint32_t commandCount |  |
+| VkDeviceAddress bufferAddress | <!--Device-VkDeviceAddress bufferAddress--><!--Device-VkDeviceAddress bufferAddress-End--> |
+| uint32_t stride | <!--Device-uint32_t stride--><!--Device-uint32_t stride-End--> |
+| uint32_t commandCount | <!--Device-uint32_t commandCount--><!--Device-uint32_t commandCount-End--> |
 
 

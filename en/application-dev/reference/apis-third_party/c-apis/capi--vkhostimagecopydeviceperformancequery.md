@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 optimalDeviceAccess |  |
-| VkBool32 identicalMemoryLayout |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 optimalDeviceAccess | <!--Device-VkBool32 optimalDeviceAccess--><!--Device-VkBool32 optimalDeviceAccess-End--> |
+| VkBool32 identicalMemoryLayout | <!--Device-VkBool32 identicalMemoryLayout--><!--Device-VkBool32 identicalMemoryLayout-End--> |
 
 

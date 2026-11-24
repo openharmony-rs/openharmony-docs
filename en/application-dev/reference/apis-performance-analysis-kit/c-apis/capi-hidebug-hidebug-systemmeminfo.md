@@ -24,8 +24,8 @@ Defines a struct for the system memory information.
 
 | Name | Description |
 | -- | -- |
-| uint32_t totalMem | Total memory of the system, in KB. |
-| uint32_t freeMem | Free memory of the system, in KB. |
-| uint32_t availableMem | Available memory of the system, in KB. |
+| uint32_t totalMem | Total memory of the system, in KB.<br><!--Device-uint32_t totalMem--><!--Device-uint32_t totalMem-End--> |
+| uint32_t freeMem | Free memory of the system, in KB.<br><!--Device-uint32_t freeMem--><!--Device-uint32_t freeMem-End--> |
+| uint32_t availableMem | Available memory of the system, in KB.<br><!--Device-uint32_t availableMem--><!--Device-uint32_t availableMem-End--> |
 
 

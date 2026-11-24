@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| [VkImageFormatProperties](capi--vkimageformatproperties.md) imageFormatProperties |  |
-| VkExternalMemoryFeatureFlagsNV externalMemoryFeatures |  |
-| VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes |  |
-| VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes |  |
+| [VkImageFormatProperties](capi--vkimageformatproperties.md) imageFormatProperties | <!--Device-VkImageFormatProperties imageFormatProperties--><!--Device-VkImageFormatProperties imageFormatProperties-End--> |
+| VkExternalMemoryFeatureFlagsNV externalMemoryFeatures | <!--Device-VkExternalMemoryFeatureFlagsNV externalMemoryFeatures--><!--Device-VkExternalMemoryFeatureFlagsNV externalMemoryFeatures-End--> |
+| VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes | <!--Device-VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes--><!--Device-VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes-End--> |
+| VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes | <!--Device-VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes--><!--Device-VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes-End--> |
 
 

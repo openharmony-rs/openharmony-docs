@@ -49,7 +49,7 @@ enum OH_AT_AbilityAccessControlErrorCode
 
 Error codes for ability access control operations.
 
-<!--Device-OH_AT_AbilityAccessControlErrorCode--><!--Device-OH_AT_AbilityAccessControlErrorCode-End-->
+<!--Device-enum OH_AT_AbilityAccessControlErrorCode--><!--Device-enum OH_AT_AbilityAccessControlErrorCode-End-->
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -57,12 +57,12 @@ Error codes for ability access control operations.
 
 | Enum item | Description |
 | -- | -- |
-| OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0 | Operation succeeded.<br>**Since**: 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801 | This capability is not supported.<br>**Since**: 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001 | Parameter error. Permission array is NULL, permission contains NULL or empty string, permCount <= 0, permCount > 1024, or NULL callback.<br>**Since**: 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007 | Service exception.<br>**Since**: 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009 | An internal service error occurs. For example, a pop-up window fails to be opened or a user operation result fails to be obtained.<br>**Since**: 26.1.0 |
-| OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016 | The process type is not allowed.<br>**Since**: 26.1.0 |
+| OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0 | Operation succeeded.<br>**Since**: 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SUCCESS = 0-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801 | This capability is not supported.<br>**Since**: 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_SUPPORTED_ERROR = 801-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001 | Parameter error. Permission array is NULL, permission contains NULL or empty string, permCount <= 0, permCount > 1024, or NULL callback.<br>**Since**: 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_INVALID_PARAMETER_ERROR = 12100001-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007 | Service exception.<br>**Since**: 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_SERVICE_EXCEPTION_ERROR = 12100007-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009 | An internal service error occurs. For example, a pop-up window fails to be opened or a user operation result fails to be obtained.<br>**Since**: 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_COMMON_INNER_ERROR = 12100009-End--> |
+| OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016 | The process type is not allowed.<br>**Since**: 26.1.0<br><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016--><!--Device-OH_AT_ABILITY_ACCESS_CONTROL_NOT_PERMITTED_PROCESS_TYPE_ERROR = 12100016-End--> |
 
 ### OH_AT_PermissionOperResult
 
@@ -74,7 +74,7 @@ enum OH_AT_PermissionOperResult
 
 Enumeration of the result of the permission request.
 
-<!--Device-OH_AT_PermissionOperResult--><!--Device-OH_AT_PermissionOperResult-End-->
+<!--Device-enum OH_AT_PermissionOperResult--><!--Device-enum OH_AT_PermissionOperResult-End-->
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -82,14 +82,14 @@ Enumeration of the result of the permission request.
 
 | Enum item | Description |
 | -- | -- |
-| OH_AT_PERMISSION_OPER_GRANTED = 0 | Authorized.<br>**Since**: 26.1.0 |
-| OH_AT_PERMISSION_OPER_SETTING = 1 | If the user is not authorized, determine the cause based on OH_AT_PermissionsRequestResult.dialogShownResults. If the value of dialogShownResults is true, the user rejects the application. If the value is false, no dialog box is displayed for the current status. Generally, you need to go to Settings to modify the authorization status of the permission.<br>**Since**: 26.1.0 |
-| OH_AT_PERMISSION_OPER_INVALID_NAME = 2 | Permission name is invalid.<br>**Since**: 26.1.0 |
-| OH_AT_PERMISSION_OPER_NOT_DECLARED = 3 | The lifter application or standalone binary (BIN) does not declare this permission.<br>**Since**: 26.1.0 |
-| OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4 | The permission application conditions are not met. For example, some location permissions must meet the additional prerequisites. Currently, only the location permission is involved, including ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION.<br>**Since**: 26.1.0 |
-| OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5 | The authorization mode of the permission does not match this interface. For example, if the permission is of the manual_settings type, you need to go to Settings to enable the corresponding function.<br>**Since**: 26.1.0 |
-| OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6 | The user does not agree to the privacy statement.<br>**Since**: 26.1.0 |
-| OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7 | This permission cannot be applied for in the permission pop-up window. The application method may be restricted or controlled by system policies. The authorization status cannot be modified for this permission.<br>**Since**: 26.1.0 |
+| OH_AT_PERMISSION_OPER_GRANTED = 0 | Authorized.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_GRANTED = 0--><!--Device-OH_AT_PERMISSION_OPER_GRANTED = 0-End--> |
+| OH_AT_PERMISSION_OPER_SETTING = 1 | If the user is not authorized, determine the cause based on OH_AT_PermissionsRequestResult.dialogShownResults. If the value of dialogShownResults is true, the user rejects the application. If the value is false, no dialog box is displayed for the current status. Generally, you need to go to Settings to modify the authorization status of the permission.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_SETTING = 1--><!--Device-OH_AT_PERMISSION_OPER_SETTING = 1-End--> |
+| OH_AT_PERMISSION_OPER_INVALID_NAME = 2 | Permission name is invalid.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_INVALID_NAME = 2--><!--Device-OH_AT_PERMISSION_OPER_INVALID_NAME = 2-End--> |
+| OH_AT_PERMISSION_OPER_NOT_DECLARED = 3 | The lifter application or standalone binary (BIN) does not declare this permission.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_NOT_DECLARED = 3--><!--Device-OH_AT_PERMISSION_OPER_NOT_DECLARED = 3-End--> |
+| OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4 | The permission application conditions are not met. For example, some location permissions must meet the additional prerequisites. Currently, only the location permission is involved, including ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4--><!--Device-OH_AT_PERMISSION_OPER_CONSTRAINTS_NOT_MET = 4-End--> |
+| OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5 | The authorization mode of the permission does not match this interface. For example, if the permission is of the manual_settings type, you need to go to Settings to enable the corresponding function.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5--><!--Device-OH_AT_PERMISSION_OPER_GRANT_MODE_MISMATCH = 5-End--> |
+| OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6 | The user does not agree to the privacy statement.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6--><!--Device-OH_AT_PERMISSION_OPER_PRIVACY_STATEMENT_REQUIRED = 6-End--> |
+| OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7 | This permission cannot be applied for in the permission pop-up window. The application method may be restricted or controlled by system policies. The authorization status cannot be modified for this permission.<br>**Since**: 26.1.0<br><!--Device-OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7--><!--Device-OH_AT_PERMISSION_OPER_POP_UP_RESTRICTED = 7-End--> |
 
 
 ## Function description

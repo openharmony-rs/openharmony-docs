@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkResolveModeFlags supportedDepthResolveModes |  |
-| VkResolveModeFlags supportedStencilResolveModes |  |
-| VkBool32 independentResolveNone |  |
-| VkBool32 independentResolve |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkResolveModeFlags supportedDepthResolveModes | <!--Device-VkResolveModeFlags supportedDepthResolveModes--><!--Device-VkResolveModeFlags supportedDepthResolveModes-End--> |
+| VkResolveModeFlags supportedStencilResolveModes | <!--Device-VkResolveModeFlags supportedStencilResolveModes--><!--Device-VkResolveModeFlags supportedStencilResolveModes-End--> |
+| VkBool32 independentResolveNone | <!--Device-VkBool32 independentResolveNone--><!--Device-VkBool32 independentResolveNone-End--> |
+| VkBool32 independentResolve | <!--Device-VkBool32 independentResolve--><!--Device-VkBool32 independentResolve-End--> |
 
 

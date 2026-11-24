@@ -24,9 +24,9 @@ typedef struct OH_HiDebug_RequestTraceConfig {...} OH_HiDebug_RequestTraceConfig
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* identifier | 采集trace输出的文件名前缀。文件名前缀只取字符串前20个字符，超过部分将抛弃。前20个字符只包含大小写字母和下划线，若不符合则默认为空字符串。<br>**起始版本：** 24 |
-| uint32_t bufferSizeKb | trace文件的缓存大小，以KB为单位。取值范围为[1024, 15360]，传入参数超过取值范围，参数将被设置为最近的边界值。<br>**起始版本：** 24 |
-| uint32_t durationMs | trace采集时长，以ms为单位。取值范围为[1000, 15000]，传入参数超过取值范围，参数将被设置为最近的边界值。<br>**起始版本：** 24 |
-| uint32_t reserved | 预留字段，可以设置为0。<br>**起始版本：** 24 |
+| const char* identifier | 采集trace输出的文件名前缀。文件名前缀只取字符串前20个字符，超过部分将抛弃。前20个字符只包含大小写字母和下划线，若不符合则默认为空字符串。<br>**起始版本：** 24<br><!--Device-const char* identifier--><!--Device-const char* identifier-End--> |
+| uint32_t bufferSizeKb | trace文件的缓存大小，以KB为单位。取值范围为[1024, 15360]，传入参数超过取值范围，参数将被设置为最近的边界值。<br>**起始版本：** 24<br><!--Device-uint32_t bufferSizeKb--><!--Device-uint32_t bufferSizeKb-End--> |
+| uint32_t durationMs | trace采集时长，以ms为单位。取值范围为[1000, 15000]，传入参数超过取值范围，参数将被设置为最近的边界值。<br>**起始版本：** 24<br><!--Device-uint32_t durationMs--><!--Device-uint32_t durationMs-End--> |
+| uint32_t reserved | 预留字段，可以设置为0。<br>**起始版本：** 24<br><!--Device-uint32_t reserved--><!--Device-uint32_t reserved-End--> |
 
 

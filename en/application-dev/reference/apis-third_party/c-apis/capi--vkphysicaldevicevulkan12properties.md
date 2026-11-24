@@ -10,59 +10,59 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkDriverId driverID |  |
-| char driverName[VK_MAX_DRIVER_NAME_SIZE] |  |
-| char driverInfo[VK_MAX_DRIVER_INFO_SIZE] |  |
-| [VkConformanceVersion](capi--vkconformanceversion.md) conformanceVersion |  |
-| VkShaderFloatControlsIndependence denormBehaviorIndependence |  |
-| VkShaderFloatControlsIndependence roundingModeIndependence |  |
-| VkBool32 shaderSignedZeroInfNanPreserveFloat16 |  |
-| VkBool32 shaderSignedZeroInfNanPreserveFloat32 |  |
-| VkBool32 shaderSignedZeroInfNanPreserveFloat64 |  |
-| VkBool32 shaderDenormPreserveFloat16 |  |
-| VkBool32 shaderDenormPreserveFloat32 |  |
-| VkBool32 shaderDenormPreserveFloat64 |  |
-| VkBool32 shaderDenormFlushToZeroFloat16 |  |
-| VkBool32 shaderDenormFlushToZeroFloat32 |  |
-| VkBool32 shaderDenormFlushToZeroFloat64 |  |
-| VkBool32 shaderRoundingModeRTEFloat16 |  |
-| VkBool32 shaderRoundingModeRTEFloat32 |  |
-| VkBool32 shaderRoundingModeRTEFloat64 |  |
-| VkBool32 shaderRoundingModeRTZFloat16 |  |
-| VkBool32 shaderRoundingModeRTZFloat32 |  |
-| VkBool32 shaderRoundingModeRTZFloat64 |  |
-| uint32_t maxUpdateAfterBindDescriptorsInAllPools |  |
-| VkBool32 shaderUniformBufferArrayNonUniformIndexingNative |  |
-| VkBool32 shaderSampledImageArrayNonUniformIndexingNative |  |
-| VkBool32 shaderStorageBufferArrayNonUniformIndexingNative |  |
-| VkBool32 shaderStorageImageArrayNonUniformIndexingNative |  |
-| VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative |  |
-| VkBool32 robustBufferAccessUpdateAfterBind |  |
-| VkBool32 quadDivergentImplicitLod |  |
-| uint32_t maxPerStageDescriptorUpdateAfterBindSamplers |  |
-| uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers |  |
-| uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers |  |
-| uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages |  |
-| uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages |  |
-| uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments |  |
-| uint32_t maxPerStageUpdateAfterBindResources |  |
-| uint32_t maxDescriptorSetUpdateAfterBindSamplers |  |
-| uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers |  |
-| uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic |  |
-| uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers |  |
-| uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic |  |
-| uint32_t maxDescriptorSetUpdateAfterBindSampledImages |  |
-| uint32_t maxDescriptorSetUpdateAfterBindStorageImages |  |
-| uint32_t maxDescriptorSetUpdateAfterBindInputAttachments |  |
-| VkResolveModeFlags supportedDepthResolveModes |  |
-| VkResolveModeFlags supportedStencilResolveModes |  |
-| VkBool32 independentResolveNone |  |
-| VkBool32 independentResolve |  |
-| VkBool32 filterMinmaxSingleComponentFormats |  |
-| VkBool32 filterMinmaxImageComponentMapping |  |
-| uint64_t maxTimelineSemaphoreValueDifference |  |
-| VkSampleCountFlags framebufferIntegerColorSampleCounts |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkDriverId driverID | <!--Device-VkDriverId driverID--><!--Device-VkDriverId driverID-End--> |
+| char driverName[VK_MAX_DRIVER_NAME_SIZE] | <!--Device-char driverName[VK_MAX_DRIVER_NAME_SIZE]--><!--Device-char driverName[VK_MAX_DRIVER_NAME_SIZE]-End--> |
+| char driverInfo[VK_MAX_DRIVER_INFO_SIZE] | <!--Device-char driverInfo[VK_MAX_DRIVER_INFO_SIZE]--><!--Device-char driverInfo[VK_MAX_DRIVER_INFO_SIZE]-End--> |
+| [VkConformanceVersion](capi--vkconformanceversion.md) conformanceVersion | <!--Device-VkConformanceVersion conformanceVersion--><!--Device-VkConformanceVersion conformanceVersion-End--> |
+| VkShaderFloatControlsIndependence denormBehaviorIndependence | <!--Device-VkShaderFloatControlsIndependence denormBehaviorIndependence--><!--Device-VkShaderFloatControlsIndependence denormBehaviorIndependence-End--> |
+| VkShaderFloatControlsIndependence roundingModeIndependence | <!--Device-VkShaderFloatControlsIndependence roundingModeIndependence--><!--Device-VkShaderFloatControlsIndependence roundingModeIndependence-End--> |
+| VkBool32 shaderSignedZeroInfNanPreserveFloat16 | <!--Device-VkBool32 shaderSignedZeroInfNanPreserveFloat16--><!--Device-VkBool32 shaderSignedZeroInfNanPreserveFloat16-End--> |
+| VkBool32 shaderSignedZeroInfNanPreserveFloat32 | <!--Device-VkBool32 shaderSignedZeroInfNanPreserveFloat32--><!--Device-VkBool32 shaderSignedZeroInfNanPreserveFloat32-End--> |
+| VkBool32 shaderSignedZeroInfNanPreserveFloat64 | <!--Device-VkBool32 shaderSignedZeroInfNanPreserveFloat64--><!--Device-VkBool32 shaderSignedZeroInfNanPreserveFloat64-End--> |
+| VkBool32 shaderDenormPreserveFloat16 | <!--Device-VkBool32 shaderDenormPreserveFloat16--><!--Device-VkBool32 shaderDenormPreserveFloat16-End--> |
+| VkBool32 shaderDenormPreserveFloat32 | <!--Device-VkBool32 shaderDenormPreserveFloat32--><!--Device-VkBool32 shaderDenormPreserveFloat32-End--> |
+| VkBool32 shaderDenormPreserveFloat64 | <!--Device-VkBool32 shaderDenormPreserveFloat64--><!--Device-VkBool32 shaderDenormPreserveFloat64-End--> |
+| VkBool32 shaderDenormFlushToZeroFloat16 | <!--Device-VkBool32 shaderDenormFlushToZeroFloat16--><!--Device-VkBool32 shaderDenormFlushToZeroFloat16-End--> |
+| VkBool32 shaderDenormFlushToZeroFloat32 | <!--Device-VkBool32 shaderDenormFlushToZeroFloat32--><!--Device-VkBool32 shaderDenormFlushToZeroFloat32-End--> |
+| VkBool32 shaderDenormFlushToZeroFloat64 | <!--Device-VkBool32 shaderDenormFlushToZeroFloat64--><!--Device-VkBool32 shaderDenormFlushToZeroFloat64-End--> |
+| VkBool32 shaderRoundingModeRTEFloat16 | <!--Device-VkBool32 shaderRoundingModeRTEFloat16--><!--Device-VkBool32 shaderRoundingModeRTEFloat16-End--> |
+| VkBool32 shaderRoundingModeRTEFloat32 | <!--Device-VkBool32 shaderRoundingModeRTEFloat32--><!--Device-VkBool32 shaderRoundingModeRTEFloat32-End--> |
+| VkBool32 shaderRoundingModeRTEFloat64 | <!--Device-VkBool32 shaderRoundingModeRTEFloat64--><!--Device-VkBool32 shaderRoundingModeRTEFloat64-End--> |
+| VkBool32 shaderRoundingModeRTZFloat16 | <!--Device-VkBool32 shaderRoundingModeRTZFloat16--><!--Device-VkBool32 shaderRoundingModeRTZFloat16-End--> |
+| VkBool32 shaderRoundingModeRTZFloat32 | <!--Device-VkBool32 shaderRoundingModeRTZFloat32--><!--Device-VkBool32 shaderRoundingModeRTZFloat32-End--> |
+| VkBool32 shaderRoundingModeRTZFloat64 | <!--Device-VkBool32 shaderRoundingModeRTZFloat64--><!--Device-VkBool32 shaderRoundingModeRTZFloat64-End--> |
+| uint32_t maxUpdateAfterBindDescriptorsInAllPools | <!--Device-uint32_t maxUpdateAfterBindDescriptorsInAllPools--><!--Device-uint32_t maxUpdateAfterBindDescriptorsInAllPools-End--> |
+| VkBool32 shaderUniformBufferArrayNonUniformIndexingNative | <!--Device-VkBool32 shaderUniformBufferArrayNonUniformIndexingNative--><!--Device-VkBool32 shaderUniformBufferArrayNonUniformIndexingNative-End--> |
+| VkBool32 shaderSampledImageArrayNonUniformIndexingNative | <!--Device-VkBool32 shaderSampledImageArrayNonUniformIndexingNative--><!--Device-VkBool32 shaderSampledImageArrayNonUniformIndexingNative-End--> |
+| VkBool32 shaderStorageBufferArrayNonUniformIndexingNative | <!--Device-VkBool32 shaderStorageBufferArrayNonUniformIndexingNative--><!--Device-VkBool32 shaderStorageBufferArrayNonUniformIndexingNative-End--> |
+| VkBool32 shaderStorageImageArrayNonUniformIndexingNative | <!--Device-VkBool32 shaderStorageImageArrayNonUniformIndexingNative--><!--Device-VkBool32 shaderStorageImageArrayNonUniformIndexingNative-End--> |
+| VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative | <!--Device-VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative--><!--Device-VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative-End--> |
+| VkBool32 robustBufferAccessUpdateAfterBind | <!--Device-VkBool32 robustBufferAccessUpdateAfterBind--><!--Device-VkBool32 robustBufferAccessUpdateAfterBind-End--> |
+| VkBool32 quadDivergentImplicitLod | <!--Device-VkBool32 quadDivergentImplicitLod--><!--Device-VkBool32 quadDivergentImplicitLod-End--> |
+| uint32_t maxPerStageDescriptorUpdateAfterBindSamplers | <!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindSamplers--><!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindSamplers-End--> |
+| uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers | <!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers--><!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers-End--> |
+| uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers | <!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers--><!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers-End--> |
+| uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages | <!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages--><!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages-End--> |
+| uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages | <!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages--><!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages-End--> |
+| uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments | <!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments--><!--Device-uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments-End--> |
+| uint32_t maxPerStageUpdateAfterBindResources | <!--Device-uint32_t maxPerStageUpdateAfterBindResources--><!--Device-uint32_t maxPerStageUpdateAfterBindResources-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindSamplers | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindSamplers--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindSamplers-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindSampledImages | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindSampledImages--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindSampledImages-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindStorageImages | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindStorageImages--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindStorageImages-End--> |
+| uint32_t maxDescriptorSetUpdateAfterBindInputAttachments | <!--Device-uint32_t maxDescriptorSetUpdateAfterBindInputAttachments--><!--Device-uint32_t maxDescriptorSetUpdateAfterBindInputAttachments-End--> |
+| VkResolveModeFlags supportedDepthResolveModes | <!--Device-VkResolveModeFlags supportedDepthResolveModes--><!--Device-VkResolveModeFlags supportedDepthResolveModes-End--> |
+| VkResolveModeFlags supportedStencilResolveModes | <!--Device-VkResolveModeFlags supportedStencilResolveModes--><!--Device-VkResolveModeFlags supportedStencilResolveModes-End--> |
+| VkBool32 independentResolveNone | <!--Device-VkBool32 independentResolveNone--><!--Device-VkBool32 independentResolveNone-End--> |
+| VkBool32 independentResolve | <!--Device-VkBool32 independentResolve--><!--Device-VkBool32 independentResolve-End--> |
+| VkBool32 filterMinmaxSingleComponentFormats | <!--Device-VkBool32 filterMinmaxSingleComponentFormats--><!--Device-VkBool32 filterMinmaxSingleComponentFormats-End--> |
+| VkBool32 filterMinmaxImageComponentMapping | <!--Device-VkBool32 filterMinmaxImageComponentMapping--><!--Device-VkBool32 filterMinmaxImageComponentMapping-End--> |
+| uint64_t maxTimelineSemaphoreValueDifference | <!--Device-uint64_t maxTimelineSemaphoreValueDifference--><!--Device-uint64_t maxTimelineSemaphoreValueDifference-End--> |
+| VkSampleCountFlags framebufferIntegerColorSampleCounts | <!--Device-VkSampleCountFlags framebufferIntegerColorSampleCounts--><!--Device-VkSampleCountFlags framebufferIntegerColorSampleCounts-End--> |
 
 

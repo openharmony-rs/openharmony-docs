@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkProvokingVertexModeEXT provokingVertexMode |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkProvokingVertexModeEXT provokingVertexMode | <!--Device-VkProvokingVertexModeEXT provokingVertexMode--><!--Device-VkProvokingVertexModeEXT provokingVertexMode-End--> |
 
 

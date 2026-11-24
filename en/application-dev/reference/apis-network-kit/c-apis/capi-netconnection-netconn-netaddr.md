@@ -24,9 +24,9 @@ Defines network addresses.
 
 | Name | Description |
 | -- | -- |
-| uint8_t family | Network address family. |
-| uint8_t prefixlen | Prefix length. |
-| uint8_t port | Port number. |
-| char address[NETCONN_MAX_STR_LEN] | Address |
+| uint8_t family | Network address family.<br><!--Device-uint8_t family--><!--Device-uint8_t family-End--> |
+| uint8_t prefixlen | Prefix length.<br><!--Device-uint8_t prefixlen--><!--Device-uint8_t prefixlen-End--> |
+| uint8_t port | Port number.<br><!--Device-uint8_t port--><!--Device-uint8_t port-End--> |
+| char address[NETCONN_MAX_STR_LEN] | Address<br><!--Device-char address[NETCONN_MAX_STR_LEN]--><!--Device-char address[NETCONN_MAX_STR_LEN]-End--> |
 
 

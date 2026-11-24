@@ -24,7 +24,7 @@ Defines the proxy configuration structure.
 
 | Name | Description |
 | -- | -- |
-| [Http_ProxyType](capi-net-http-type-h.md#http_proxytype) proxyType | Proxy configuration type. For details, see [Http_ProxyType](capi-net-http-type-h.md#http_proxytype). |
-| [Http_CustomProxy](capi-netstack-http-customproxy.md) customProxy | Custom proxy configuration. For details, see [Http_CustomProxy](capi-netstack-http-customproxy.md). |
+| [Http_ProxyType](capi-net-http-type-h.md#http_proxytype) proxyType | Proxy configuration type. For details, see [Http_ProxyType](capi-net-http-type-h.md#http_proxytype).<br><!--Device-Http_ProxyType proxyType--><!--Device-Http_ProxyType proxyType-End--> |
+| [Http_CustomProxy](capi-netstack-http-customproxy.md) customProxy | Custom proxy configuration. For details, see [Http_CustomProxy](capi-netstack-http-customproxy.md).<br><!--Device-Http_CustomProxy customProxy--><!--Device-Http_CustomProxy customProxy-End--> |
 
 

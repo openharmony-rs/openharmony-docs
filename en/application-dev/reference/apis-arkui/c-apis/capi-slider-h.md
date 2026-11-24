@@ -34,7 +34,7 @@ enum ArkUI_SliderBlockStyle
 
 Enumerates the styles of the slider in the block direction.
 
-<!--Device-ArkUI_SliderBlockStyle--><!--Device-ArkUI_SliderBlockStyle-End-->
+<!--Device-enum ArkUI_SliderBlockStyle--><!--Device-enum ArkUI_SliderBlockStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,9 +42,9 @@ Enumerates the styles of the slider in the block direction.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | Round slider.<br>**Since**: 12 |
-| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | Slider with an image background.<br>**Since**: 12 |
-| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | Slider in a custom shape.<br>**Since**: 12 |
+| ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | Round slider.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0--><!--Device-ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0-End--> |
+| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | Slider with an image background.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_BLOCK_STYLE_IMAGE--><!--Device-ARKUI_SLIDER_BLOCK_STYLE_IMAGE-End--> |
+| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | Slider in a custom shape.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_BLOCK_STYLE_SHAPE--><!--Device-ARKUI_SLIDER_BLOCK_STYLE_SHAPE-End--> |
 
 ### ArkUI_SliderDirection
 
@@ -56,7 +56,7 @@ enum ArkUI_SliderDirection
 
 Enumerates the scroll directions of the slider.
 
-<!--Device-ArkUI_SliderDirection--><!--Device-ArkUI_SliderDirection-End-->
+<!--Device-enum ArkUI_SliderDirection--><!--Device-enum ArkUI_SliderDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,8 +64,8 @@ Enumerates the scroll directions of the slider.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | Vertical direction.<br>**Since**: 12 |
-| ARKUI_SLIDER_DIRECTION_HORIZONTAL | Horizontal direction.<br>**Since**: 12 |
+| ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | Vertical direction.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_DIRECTION_VERTICAL = 0--><!--Device-ARKUI_SLIDER_DIRECTION_VERTICAL = 0-End--> |
+| ARKUI_SLIDER_DIRECTION_HORIZONTAL | Horizontal direction.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_DIRECTION_HORIZONTAL--><!--Device-ARKUI_SLIDER_DIRECTION_HORIZONTAL-End--> |
 
 ### ArkUI_SliderStyle
 
@@ -77,7 +77,7 @@ enum ArkUI_SliderStyle
 
 Enumerates the slider styles.
 
-<!--Device-ArkUI_SliderStyle--><!--Device-ArkUI_SliderStyle-End-->
+<!--Device-enum ArkUI_SliderStyle--><!--Device-enum ArkUI_SliderStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,8 +85,8 @@ Enumerates the slider styles.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SLIDER_STYLE_OUT_SET = 0 | The slider is on the slider rail.<br>**Since**: 12 |
-| ARKUI_SLIDER_STYLE_IN_SET | The slider is in the slider rail.<br>**Since**: 12 |
-| ARKUI_SLIDER_STYLE_NONE | There is no thumb.<br>**Since**: 12 |
+| ARKUI_SLIDER_STYLE_OUT_SET = 0 | The slider is on the slider rail.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_STYLE_OUT_SET = 0--><!--Device-ARKUI_SLIDER_STYLE_OUT_SET = 0-End--> |
+| ARKUI_SLIDER_STYLE_IN_SET | The slider is in the slider rail.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_STYLE_IN_SET--><!--Device-ARKUI_SLIDER_STYLE_IN_SET-End--> |
+| ARKUI_SLIDER_STYLE_NONE | There is no thumb.<br>**Since**: 12<br><!--Device-ARKUI_SLIDER_STYLE_NONE--><!--Device-ARKUI_SLIDER_STYLE_NONE-End--> |
 
 

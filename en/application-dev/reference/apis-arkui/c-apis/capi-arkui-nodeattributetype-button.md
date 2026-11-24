@@ -20,6 +20,8 @@ NODE_BUTTON_LABEL = MAX_NODE_SCOPE_NUM * ARKUI_NODE_BUTTON
 
 Defines the button text content. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: default text content.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: default text content.</li> </ul>
 
+<!--Device-NODE_BUTTON_LABEL = MAX_NODE_SCOPE_NUM * ARKUI_NODE_BUTTON--><!--Device-NODE_BUTTON_LABEL = MAX_NODE_SCOPE_NUM * ARKUI_NODE_BUTTON-End-->
+
 **Since**: 12
 
 ### NODE_BUTTON_TYPE
@@ -31,6 +33,8 @@ NODE_BUTTON_TYPE
 **Description**
 
 Button type. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: Button type. The parameter type is [ArkUI_ButtonType](capi-button-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: Button type. The parameter type is [ArkUI_ButtonType](capi-button-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.</li> </ul>
+
+<!--Device-NODE_BUTTON_TYPE--><!--Device-NODE_BUTTON_TYPE-End-->
 
 **Since**: 12
 
@@ -44,6 +48,8 @@ NODE_BUTTON_MIN_FONT_SCALE
 
 Minimum font scale factor for the button. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].f32: Minimum font scale factor for the button. The default unit is fp.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].f32: Minimum font scale factor for the button. The default unit is fp.</li> </ul>
 
+<!--Device-NODE_BUTTON_MIN_FONT_SCALE--><!--Device-NODE_BUTTON_MIN_FONT_SCALE-End-->
+
 **Since**: 18
 
 ### NODE_BUTTON_MAX_FONT_SCALE
@@ -55,6 +61,8 @@ NODE_BUTTON_MAX_FONT_SCALE
 **Description**
 
 Maximum font scale factor for the button. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].f32: Maximum font scale factor for the button. The default unit is fp.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].f32: Maximum font scale factor for the button. The default unit is fp.</li> </ul>
+
+<!--Device-NODE_BUTTON_MAX_FONT_SCALE--><!--Device-NODE_BUTTON_MAX_FONT_SCALE-End-->
 
 **Since**: 18
 

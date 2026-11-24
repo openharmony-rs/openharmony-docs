@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkPipelineStageFlags2 checkpointExecutionStageMask |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkPipelineStageFlags2 checkpointExecutionStageMask | <!--Device-VkPipelineStageFlags2 checkpointExecutionStageMask--><!--Device-VkPipelineStageFlags2 checkpointExecutionStageMask-End--> |
 
 

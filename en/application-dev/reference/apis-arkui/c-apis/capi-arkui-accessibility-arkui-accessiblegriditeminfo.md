@@ -24,11 +24,11 @@ Defines a struct for the accessible grid item information.
 
 | Name | Description |
 | -- | -- |
-| bool heading | Whether it is a header. |
-| bool selected | Whether it is selected. |
-| int32_t columnIndex | Column index. |
-| int32_t rowIndex | Row index. |
-| int32_t columnSpan | Column span. |
-| int32_t rowSpan | Row span. |
+| bool heading | Whether it is a header.<br><!--Device-bool heading--><!--Device-bool heading-End--> |
+| bool selected | Whether it is selected.<br><!--Device-bool selected--><!--Device-bool selected-End--> |
+| int32_t columnIndex | Column index.<br><!--Device-int32_t columnIndex--><!--Device-int32_t columnIndex-End--> |
+| int32_t rowIndex | Row index.<br><!--Device-int32_t rowIndex--><!--Device-int32_t rowIndex-End--> |
+| int32_t columnSpan | Column span.<br><!--Device-int32_t columnSpan--><!--Device-int32_t columnSpan-End--> |
+| int32_t rowSpan | Row span.<br><!--Device-int32_t rowSpan--><!--Device-int32_t rowSpan-End--> |
 
 

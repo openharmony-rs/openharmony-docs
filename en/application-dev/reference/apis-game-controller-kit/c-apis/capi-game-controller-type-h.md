@@ -32,7 +32,7 @@ enum GameController_ErrorCode
 
 Defines error codes of the game controller.
 
-<!--Device-GameController_ErrorCode--><!--Device-GameController_ErrorCode-End-->
+<!--Device-enum GameController_ErrorCode--><!--Device-enum GameController_ErrorCode-End-->
 
 **System capability**: SystemCapability.Game.GameController
 
@@ -40,9 +40,9 @@ Defines error codes of the game controller.
 
 | Enum item | Description |
 | -- | -- |
-| GAME_CONTROLLER_SUCCESS = 0 | Success.<br>**Since**: 21 |
-| GAME_CONTROLLER_PARAM_ERROR = 401 | &nbsp;Invalid parameter.<br>**Since**: 21 |
-| GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR = 32200001 | &nbsp;Failed to query all game device information in multimodal input.<br>**Since**: 21 |
-| GAME_CONTROLLER_NO_MEMORY = 32200002 | &nbsp;Insufficient game device memory.<br>**Since**: 21 |
+| GAME_CONTROLLER_SUCCESS = 0 | Success.<br>**Since**: 21<br><!--Device-GAME_CONTROLLER_SUCCESS = 0--><!--Device-GAME_CONTROLLER_SUCCESS = 0-End--> |
+| GAME_CONTROLLER_PARAM_ERROR = 401 | &nbsp;Invalid parameter.<br>**Since**: 21<br><!--Device-GAME_CONTROLLER_PARAM_ERROR = 401--><!--Device-GAME_CONTROLLER_PARAM_ERROR = 401-End--> |
+| GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR = 32200001 | &nbsp;Failed to query all game device information in multimodal input.<br>**Since**: 21<br><!--Device-GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR = 32200001--><!--Device-GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR = 32200001-End--> |
+| GAME_CONTROLLER_NO_MEMORY = 32200002 | &nbsp;Insufficient game device memory.<br>**Since**: 21<br><!--Device-GAME_CONTROLLER_NO_MEMORY = 32200002--><!--Device-GAME_CONTROLLER_NO_MEMORY = 32200002-End--> |
 
 

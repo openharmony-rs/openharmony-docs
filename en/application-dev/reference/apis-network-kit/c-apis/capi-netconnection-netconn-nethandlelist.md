@@ -24,7 +24,7 @@ Defines the network list.
 
 | Name | Description |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) netHandles[NETCONN_MAX_NET_SIZE] | Network handle list |
-| int32_t netHandleListSize | Actual size of the network handle list. |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) netHandles[NETCONN_MAX_NET_SIZE] | Network handle list<br><!--Device-NetConn_NetHandle netHandles[NETCONN_MAX_NET_SIZE]--><!--Device-NetConn_NetHandle netHandles[NETCONN_MAX_NET_SIZE]-End--> |
+| int32_t netHandleListSize | Actual size of the network handle list.<br><!--Device-int32_t netHandleListSize--><!--Device-int32_t netHandleListSize-End--> |
 
 

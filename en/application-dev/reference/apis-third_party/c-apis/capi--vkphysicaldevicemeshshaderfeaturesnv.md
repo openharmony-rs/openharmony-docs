@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 taskShader |  |
-| VkBool32 meshShader |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 taskShader | <!--Device-VkBool32 taskShader--><!--Device-VkBool32 taskShader-End--> |
+| VkBool32 meshShader | <!--Device-VkBool32 meshShader--><!--Device-VkBool32 meshShader-End--> |
 
 

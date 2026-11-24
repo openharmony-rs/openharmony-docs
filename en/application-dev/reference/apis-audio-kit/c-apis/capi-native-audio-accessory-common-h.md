@@ -43,7 +43,7 @@ enum OH_AudioAccessoryType
 
 Enumerates audio accessory connection types.
 
-<!--Device-OH_AudioAccessoryType--><!--Device-OH_AudioAccessoryType-End-->
+<!--Device-enum OH_AudioAccessoryType--><!--Device-enum OH_AudioAccessoryType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -51,6 +51,6 @@ Enumerates audio accessory connection types.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_ACCESSORY_TYPE_BT_SPP = 1 | Bluetooth SPP (Serial Port Profile) connection.<br>**Since**: 26.0.0 |
+| AUDIO_ACCESSORY_TYPE_BT_SPP = 1 | Bluetooth SPP (Serial Port Profile) connection.<br>**Since**: 26.0.0<br><!--Device-AUDIO_ACCESSORY_TYPE_BT_SPP = 1--><!--Device-AUDIO_ACCESSORY_TYPE_BT_SPP = 1-End--> |
 
 

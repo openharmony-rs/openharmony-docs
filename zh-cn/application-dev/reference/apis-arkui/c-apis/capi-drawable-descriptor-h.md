@@ -71,7 +71,7 @@ enum DrawableDescriptor_AnimationStatus
 
 定义DrawableDescriptor动图的播放状态。
 
-<!--Device-DrawableDescriptor_AnimationStatus--><!--Device-DrawableDescriptor_AnimationStatus-End-->
+<!--Device-enum DrawableDescriptor_AnimationStatus--><!--Device-enum DrawableDescriptor_AnimationStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,10 +79,10 @@ enum DrawableDescriptor_AnimationStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0 | 动画初始状态。<br>**起始版本：** 22 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。<br>**起始版本：** 22 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。<br>**起始版本：** 22 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。<br>**起始版本：** 22 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0 | 动画初始状态。<br>**起始版本：** 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。<br>**起始版本：** 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。<br>**起始版本：** 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。<br>**起始版本：** 22<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3-End--> |
 
 ### DrawableDescriptor_AnimationStopMode
 
@@ -94,7 +94,7 @@ enum DrawableDescriptor_AnimationStopMode
 
 定义[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。
 
-<!--Device-DrawableDescriptor_AnimationStopMode--><!--Device-DrawableDescriptor_AnimationStopMode-End-->
+<!--Device-enum DrawableDescriptor_AnimationStopMode--><!--Device-enum DrawableDescriptor_AnimationStopMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,8 +102,8 @@ enum DrawableDescriptor_AnimationStopMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 | 动图停止时回到首帧。<br>**起始版本：** 24 |
-| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 | 动图停止时停留在最后一帧。<br>**起始版本：** 24 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 | 动图停止时回到首帧。<br>**起始版本：** 24<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0-End--> |
+| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 | 动图停止时停留在最后一帧。<br>**起始版本：** 24<br><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1--><!--Device-DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1-End--> |
 
 
 ## 函数说明

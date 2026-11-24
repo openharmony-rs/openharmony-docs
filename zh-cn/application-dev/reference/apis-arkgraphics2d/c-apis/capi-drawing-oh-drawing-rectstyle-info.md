@@ -24,10 +24,10 @@ typedef struct OH_Drawing_RectStyle_Info {...} OH_Drawing_RectStyle_Info
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t color | 矩形框的颜色。<br>**起始版本：** 12 |
-| double leftTopRadius | 矩形框的左上半径。<br>**起始版本：** 12 |
-| double rightTopRadius | 矩形框的右上半径。<br>**起始版本：** 12 |
-| double rightBottomRadius | 矩形框的右下半径。<br>**起始版本：** 12 |
-| double leftBottomRadius | 矩形框的左下半径。<br>**起始版本：** 12 |
+| uint32_t color | 矩形框的颜色。<br>**起始版本：** 12<br><!--Device-uint32_t color--><!--Device-uint32_t color-End--> |
+| double leftTopRadius | 矩形框的左上半径。<br>**起始版本：** 12<br><!--Device-double leftTopRadius--><!--Device-double leftTopRadius-End--> |
+| double rightTopRadius | 矩形框的右上半径。<br>**起始版本：** 12<br><!--Device-double rightTopRadius--><!--Device-double rightTopRadius-End--> |
+| double rightBottomRadius | 矩形框的右下半径。<br>**起始版本：** 12<br><!--Device-double rightBottomRadius--><!--Device-double rightBottomRadius-End--> |
+| double leftBottomRadius | 矩形框的左下半径。<br>**起始版本：** 12<br><!--Device-double leftBottomRadius--><!--Device-double leftBottomRadius-End--> |
 
 

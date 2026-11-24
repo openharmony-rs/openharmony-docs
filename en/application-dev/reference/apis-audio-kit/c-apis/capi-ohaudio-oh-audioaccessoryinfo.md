@@ -24,12 +24,12 @@ Defines the basic information of an audio accessory.<br> <b>Version Control:</b>
 
 | Name | Description |
 | -- | -- |
-| uint32_t structSize | Size of this structure in bytes. Must be initialized by the caller (e.g., info.structSize = sizeof(OH_AudioAccessoryInfo)). The framework uses this to determine which version of the structure is being used.<br>**Since**: 26.0.0 |
-| const char *accessoryName | Accessory name for UX display, such as "DJI Mic 2". The framework performs a deep copy of this field.<br>**Since**: 26.0.0 |
-| const char *manufacturer | Manufacturer name, such as "DJI". The framework performs a deep copy of this field.<br>**Since**: 26.0.0 |
-| const char *modelNumber | Model number, such as "CP236". The framework performs a deep copy of this field.<br>**Since**: 26.0.0 |
-| const char *macAddress | MAC address of the accessory, such as "00:11:22:33:44:55". The framework performs a deep copy of this field.<br>**Since**: 26.0.0 |
-| [OH_AudioAccessoryType](capi-native-audio-accessory-common-h.md#oh_audioaccessorytype) type | Accessory connection type.<br>**Since**: 26.0.0 |
-| bool isUnidirectional | Indicates whether the accessory is a unidirectional audio device. true: unidirectional device; false: bidirectional device.<br>**Since**: 26.0.0 |
+| uint32_t structSize | Size of this structure in bytes. Must be initialized by the caller (e.g., info.structSize = sizeof(OH_AudioAccessoryInfo)). The framework uses this to determine which version of the structure is being used.<br>**Since**: 26.0.0<br><!--Device-uint32_t structSize--><!--Device-uint32_t structSize-End--> |
+| const char *accessoryName | Accessory name for UX display, such as "DJI Mic 2". The framework performs a deep copy of this field.<br>**Since**: 26.0.0<br><!--Device-const char *accessoryName--><!--Device-const char *accessoryName-End--> |
+| const char *manufacturer | Manufacturer name, such as "DJI". The framework performs a deep copy of this field.<br>**Since**: 26.0.0<br><!--Device-const char *manufacturer--><!--Device-const char *manufacturer-End--> |
+| const char *modelNumber | Model number, such as "CP236". The framework performs a deep copy of this field.<br>**Since**: 26.0.0<br><!--Device-const char *modelNumber--><!--Device-const char *modelNumber-End--> |
+| const char *macAddress | MAC address of the accessory, such as "00:11:22:33:44:55". The framework performs a deep copy of this field.<br>**Since**: 26.0.0<br><!--Device-const char *macAddress--><!--Device-const char *macAddress-End--> |
+| [OH_AudioAccessoryType](capi-native-audio-accessory-common-h.md#oh_audioaccessorytype) type | Accessory connection type.<br>**Since**: 26.0.0<br><!--Device-OH_AudioAccessoryType type--><!--Device-OH_AudioAccessoryType type-End--> |
+| bool isUnidirectional | Indicates whether the accessory is a unidirectional audio device. true: unidirectional device; false: bidirectional device.<br>**Since**: 26.0.0<br><!--Device-bool isUnidirectional--><!--Device-bool isUnidirectional-End--> |
 
 

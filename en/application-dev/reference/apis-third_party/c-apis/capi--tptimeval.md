@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| struct timeval time |  |
-| long maxerror, esterror |  |
+| struct timeval time | <!--Device-struct timeval time--><!--Device-struct timeval time-End--> |
+| long maxerror, esterror | <!--Device-long maxerror, esterror--><!--Device-long maxerror, esterror-End--> |
 
 

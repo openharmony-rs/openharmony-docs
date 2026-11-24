@@ -24,10 +24,10 @@ This struct describes the information about generic fonts supported by the syste
 
 | Name | Description |
 | -- | -- |
-| char* familyName | Pointer to the name of a font family. |
-| size_t aliasInfoSize | Number of font aliases. |
-| size_t adjustInfoSize | Number of font weight mappings. |
-| [OH_Drawing_FontAliasInfo*](capi-drawing-oh-drawing-fontaliasinfo.md) aliasInfoSet | Pointer to a set of font aliases. |
-| [OH_Drawing_FontAdjustInfo*](capi-drawing-oh-drawing-fontadjustinfo.md) adjustInfoSet | Pointer to a set of font weight mappings. |
+| char* familyName | Pointer to the name of a font family.<br><!--Device-char* familyName--><!--Device-char* familyName-End--> |
+| size_t aliasInfoSize | Number of font aliases.<br><!--Device-size_t aliasInfoSize--><!--Device-size_t aliasInfoSize-End--> |
+| size_t adjustInfoSize | Number of font weight mappings.<br><!--Device-size_t adjustInfoSize--><!--Device-size_t adjustInfoSize-End--> |
+| [OH_Drawing_FontAliasInfo*](capi-drawing-oh-drawing-fontaliasinfo.md) aliasInfoSet | Pointer to a set of font aliases.<br><!--Device-OH_Drawing_FontAliasInfo* aliasInfoSet--><!--Device-OH_Drawing_FontAliasInfo* aliasInfoSet-End--> |
+| [OH_Drawing_FontAdjustInfo*](capi-drawing-oh-drawing-fontadjustinfo.md) adjustInfoSet | Pointer to a set of font weight mappings.<br><!--Device-OH_Drawing_FontAdjustInfo* adjustInfoSet--><!--Device-OH_Drawing_FontAdjustInfo* adjustInfoSet-End--> |
 
 

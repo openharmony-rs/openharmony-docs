@@ -24,11 +24,11 @@ typedef struct ArkUI_AccessibleGridItemInfo {...} ArkUI_AccessibleGridItemInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| bool heading | 是否是标题。 true表示是标题，false表示不是标题。 |
-| bool selected | 是否被选中。 true表示被选中，false表示未被选中。 |
-| int32_t columnIndex | 列下标。 |
-| int32_t rowIndex | 行下标。 |
-| int32_t columnSpan | 列跨度。 |
-| int32_t rowSpan | 行跨度。 |
+| bool heading | 是否是标题。 true表示是标题，false表示不是标题。<br><!--Device-bool heading--><!--Device-bool heading-End--> |
+| bool selected | 是否被选中。 true表示被选中，false表示未被选中。<br><!--Device-bool selected--><!--Device-bool selected-End--> |
+| int32_t columnIndex | 列下标。<br><!--Device-int32_t columnIndex--><!--Device-int32_t columnIndex-End--> |
+| int32_t rowIndex | 行下标。<br><!--Device-int32_t rowIndex--><!--Device-int32_t rowIndex-End--> |
+| int32_t columnSpan | 列跨度。<br><!--Device-int32_t columnSpan--><!--Device-int32_t columnSpan-End--> |
+| int32_t rowSpan | 行跨度。<br><!--Device-int32_t rowSpan--><!--Device-int32_t rowSpan-End--> |
 
 

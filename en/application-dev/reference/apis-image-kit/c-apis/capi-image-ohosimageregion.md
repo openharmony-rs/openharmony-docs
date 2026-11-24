@@ -24,9 +24,9 @@ Defines the region of the image source to decode. It is used in [OhosImageDecodi
 
 | Name | Description |
 | -- | -- |
-| int32_t x | X coordinate of the start point, in pixels. |
-| int32_t y | Y coordinate of the start point, in pixels. |
-| int32_t width | Width of the region, in pixels. |
-| int32_t height | Height of the region, in pixels. |
+| int32_t x | X coordinate of the start point, in pixels.<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | Y coordinate of the start point, in pixels.<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
+| int32_t width | Width of the region, in pixels.<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | Height of the region, in pixels.<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

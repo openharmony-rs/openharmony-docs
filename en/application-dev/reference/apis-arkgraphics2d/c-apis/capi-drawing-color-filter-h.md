@@ -20,7 +20,7 @@ This file declares the functions related to the color filter in the drawing modu
 | -- | -- |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH_Drawing_BlendMode blendMode)](#oh_drawing_colorfiltercreateblendmode) | Creates an **OH_Drawing_ColorFilter** object with a given blend mode. |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilter* outerColorFilter, OH_Drawing_ColorFilter* innerColorFilter)](#oh_drawing_colorfiltercreatecompose) | Creates an **OH_Drawing_ColorFilter** object by combining another two color filters. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **outerColorFilter** or **innerColorFilter** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20])](#oh_drawing_colorfiltercreatematrix) | Creates an **OH_Drawing_ColorFilter** object with a given 5x4 color matrix. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20])](#oh_drawing_colorfiltercreatematrix) | Creates a color filter with a 4x5 color matrix, which is suitable for scenarios where custom color transformation is required. <br>This API generates an error code, which can be viewed through [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). <br>If matrix is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned. Check and ensure that the passed matrix is a valid pointer to a floating-point array. |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)](#oh_drawing_colorfiltercreatelineartosrgbgamma) | Creates an **OH_Drawing_ColorFilter** object that applies the sRGB gamma curve to the RGB channels. |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)](#oh_drawing_colorfiltercreatesrgbgammatolinear) | Creates an **OH_Drawing_ColorFilter** object that applies the RGB channels to the sRGB gamma curve. |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)](#oh_drawing_colorfiltercreateluma) | Creates a **ColorFilter** object that multiplies the luma into the alpha channel and sets the RGB channels to zero. |
@@ -95,7 +95,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20
 
 **Description**
 
-Creates an **OH_Drawing_ColorFilter** object with a given 5x4 color matrix. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Creates a color filter with a 4x5 color matrix, which is suitable for scenarios where custom color transformation is required. <br>This API generates an error code, which can be viewed through [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). <br>If matrix is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned. Check and ensure that the passed matrix is a valid pointer to a floating-point array.
 
 <!--Device-OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20])--><!--Device-OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20])-End-->
 

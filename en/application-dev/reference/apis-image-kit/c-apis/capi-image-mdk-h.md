@@ -52,7 +52,7 @@ enum anonymous0
 
 Enumerates the image formats.
 
-<!--Device-anonymous0--><!--Device-anonymous0-End-->
+<!--Device-enum anonymous0--><!--Device-enum anonymous0-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -60,8 +60,8 @@ Enumerates the image formats.
 
 | Enum item | Description |
 | -- | -- |
-| OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000 | YCbCr422 semi-planar format. |
-| OHOS_IMAGE_FORMAT_JPEG = 2000 | JPEG encoding format. |
+| OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000 | YCbCr422 semi-planar format.<br><!--Device-OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000--><!--Device-OHOS_IMAGE_FORMAT_YCBCR_422_SP = 1000-End--> |
+| OHOS_IMAGE_FORMAT_JPEG = 2000 | JPEG encoding format.<br><!--Device-OHOS_IMAGE_FORMAT_JPEG = 2000--><!--Device-OHOS_IMAGE_FORMAT_JPEG = 2000-End--> |
 
 ### anonymous1
 
@@ -73,7 +73,7 @@ enum anonymous1
 
 Enumerates the image components.
 
-<!--Device-anonymous1--><!--Device-anonymous1-End-->
+<!--Device-enum anonymous1--><!--Device-enum anonymous1-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -81,10 +81,10 @@ Enumerates the image components.
 
 | Enum item | Description |
 | -- | -- |
-| OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1 | Luminance component. |
-| OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2 | Chrominance component - blue projection. |
-| OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | Chrominance component - red projection. |
-| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG format. |
+| OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1 | Luminance component.<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1-End--> |
+| OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2 | Chrominance component - blue projection.<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2-End--> |
+| OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | Chrominance component - red projection.<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3-End--> |
+| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG format.<br><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4--><!--Device-OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4-End--> |
 
 
 ## Function description

@@ -10,12 +10,12 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 accelerationStructure |  |
-| VkBool32 accelerationStructureCaptureReplay |  |
-| VkBool32 accelerationStructureIndirectBuild |  |
-| VkBool32 accelerationStructureHostCommands |  |
-| VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 accelerationStructure | <!--Device-VkBool32 accelerationStructure--><!--Device-VkBool32 accelerationStructure-End--> |
+| VkBool32 accelerationStructureCaptureReplay | <!--Device-VkBool32 accelerationStructureCaptureReplay--><!--Device-VkBool32 accelerationStructureCaptureReplay-End--> |
+| VkBool32 accelerationStructureIndirectBuild | <!--Device-VkBool32 accelerationStructureIndirectBuild--><!--Device-VkBool32 accelerationStructureIndirectBuild-End--> |
+| VkBool32 accelerationStructureHostCommands | <!--Device-VkBool32 accelerationStructureHostCommands--><!--Device-VkBool32 accelerationStructureHostCommands-End--> |
+| VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind | <!--Device-VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind--><!--Device-VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind-End--> |
 
 

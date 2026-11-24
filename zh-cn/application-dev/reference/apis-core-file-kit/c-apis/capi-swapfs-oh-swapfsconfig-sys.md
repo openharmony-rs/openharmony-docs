@@ -26,8 +26,8 @@ typedef struct OH_SwapfsConfig {...} OH_SwapfsConfig
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *swapRootPath | 存储换出数据的根路径。设置不同的根路径会影响swapfs数据的存储位置和访问性能，确保路径具有足够的存储空间和读写权限。 swapfs使用固定的 “swapfs” 子目录。当为空指针或空字符串时，使用应用沙箱下的默认临时根路径 “/data/storage/el2/base/temp/swapfs”。<br>**起始版本：** 26.0.0 |
-| uint64_t spaceLimitBytes | 最大换出空间，单位：Byte。当spaceLimitBytes为0时，默认限制为1,073,741,824 Bytes（即1GB）。<br>**起始版本：** 26.0.0 |
-| bool useDirectIo | 是否对换出操作强制使用Direct I/O。为false时使用缓冲IO；为true时使用Direct I/O，将对缓冲区进行强制对齐，未对齐的缓冲区将导致错误。<br>**起始版本：** 26.0.0 |
+| const char *swapRootPath | 存储换出数据的根路径。设置不同的根路径会影响swapfs数据的存储位置和访问性能，确保路径具有足够的存储空间和读写权限。 swapfs使用固定的 “swapfs” 子目录。当为空指针或空字符串时，使用应用沙箱下的默认临时根路径 “/data/storage/el2/base/temp/swapfs”。<br>**起始版本：** 26.0.0<br><!--Device-const char *swapRootPath--><!--Device-const char *swapRootPath-End--> |
+| uint64_t spaceLimitBytes | 最大换出空间，单位：Byte。当spaceLimitBytes为0时，默认限制为1,073,741,824 Bytes（即1GB）。<br>**起始版本：** 26.0.0<br><!--Device-uint64_t spaceLimitBytes--><!--Device-uint64_t spaceLimitBytes-End--> |
+| bool useDirectIo | 是否对换出操作强制使用Direct I/O。为false时使用缓冲IO；为true时使用Direct I/O，将对缓冲区进行强制对齐，未对齐的缓冲区将导致错误。<br>**起始版本：** 26.0.0<br><!--Device-bool useDirectIo--><!--Device-bool useDirectIo-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| StdVideoH265LevelIdc maxLevelIdc |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| StdVideoH265LevelIdc maxLevelIdc | <!--Device-StdVideoH265LevelIdc maxLevelIdc--><!--Device-StdVideoH265LevelIdc maxLevelIdc-End--> |
 
 

@@ -24,7 +24,7 @@ The struct describes the parameters related to the size.
 
 | Name | Description |
 | -- | -- |
-| uint32_t width | Width, in pixels. |
-| uint32_t height | Height, in pixels. |
+| uint32_t width | Width, in pixels.<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | Height, in pixels.<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

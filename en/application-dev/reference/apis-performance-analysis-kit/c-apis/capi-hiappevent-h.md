@@ -104,7 +104,7 @@ enum HiAppEvent_ErrorCode
 
 Enumerates the error codes used in the HiAppEvent module.
 
-<!--Device-HiAppEvent_ErrorCode--><!--Device-HiAppEvent_ErrorCode-End-->
+<!--Device-enum HiAppEvent_ErrorCode--><!--Device-enum HiAppEvent_ErrorCode-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -112,15 +112,15 @@ Enumerates the error codes used in the HiAppEvent module.
 
 | Enum item | Description |
 | -- | -- |
-| HIAPPEVENT_SUCCESS = 0 | The operation is successful.<br>**Since**: 15 |
-| HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4 | The parameter value length is invalid.<br>**Since**: 18 |
-| HIAPPEVENT_PROCESSOR_IS_NULL = -7 | The processor is null.<br>**Since**: 18 |
-| HIAPPEVENT_PROCESSOR_NOT_FOUND = -8 | The processor is not found.<br>**Since**: 18 |
-| HIAPPEVENT_INVALID_PARAM_VALUE = -9 | The parameter value is invalid.<br>**Since**: 15 |
-| HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10 | The event configuration is null.<br>**Since**: 15 |
-| HIAPPEVENT_OPERATE_FAILED = -100 | The operation failed.<br>**Since**: 18 |
-| HIAPPEVENT_INVALID_UID = -200 | The user ID is invalid.<br>**Since**: 18 |
-| HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300 | The reporting frequency exceeds the limit.<br>**Since**: 26.0.0 |
+| HIAPPEVENT_SUCCESS = 0 | The operation is successful.<br>**Since**: 15<br><!--Device-HIAPPEVENT_SUCCESS = 0--><!--Device-HIAPPEVENT_SUCCESS = 0-End--> |
+| HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4 | The parameter value length is invalid.<br>**Since**: 18<br><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4--><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH = 4-End--> |
+| HIAPPEVENT_PROCESSOR_IS_NULL = -7 | The processor is null.<br>**Since**: 18<br><!--Device-HIAPPEVENT_PROCESSOR_IS_NULL = -7--><!--Device-HIAPPEVENT_PROCESSOR_IS_NULL = -7-End--> |
+| HIAPPEVENT_PROCESSOR_NOT_FOUND = -8 | The processor is not found.<br>**Since**: 18<br><!--Device-HIAPPEVENT_PROCESSOR_NOT_FOUND = -8--><!--Device-HIAPPEVENT_PROCESSOR_NOT_FOUND = -8-End--> |
+| HIAPPEVENT_INVALID_PARAM_VALUE = -9 | The parameter value is invalid.<br>**Since**: 15<br><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE = -9--><!--Device-HIAPPEVENT_INVALID_PARAM_VALUE = -9-End--> |
+| HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10 | The event configuration is null.<br>**Since**: 15<br><!--Device-HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10--><!--Device-HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10-End--> |
+| HIAPPEVENT_OPERATE_FAILED = -100 | The operation failed.<br>**Since**: 18<br><!--Device-HIAPPEVENT_OPERATE_FAILED = -100--><!--Device-HIAPPEVENT_OPERATE_FAILED = -100-End--> |
+| HIAPPEVENT_INVALID_UID = -200 | The user ID is invalid.<br>**Since**: 18<br><!--Device-HIAPPEVENT_INVALID_UID = -200--><!--Device-HIAPPEVENT_INVALID_UID = -200-End--> |
+| HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300 | The reporting frequency exceeds the limit.<br>**Since**: 26.0.0<br><!--Device-HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300--><!--Device-HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300-End--> |
 
 ### EventType
 
@@ -132,7 +132,7 @@ enum EventType
 
 Enumerates the event types. You are advised to select different event types based on application scenarios.
 
-<!--Device-EventType--><!--Device-EventType-End-->
+<!--Device-enum EventType--><!--Device-enum EventType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -140,10 +140,10 @@ Enumerates the event types. You are advised to select different event types base
 
 | Enum item | Description |
 | -- | -- |
-| FAULT = 1 | Fault event type.<br>**Since**: 8 |
-| STATISTIC = 2 | Statistics event type.<br>**Since**: 8 |
-| SECURITY = 3 | Security event type.<br>**Since**: 8 |
-| BEHAVIOR = 4 | Behavior event type.<br>**Since**: 8 |
+| FAULT = 1 | Fault event type.<br>**Since**: 8<br><!--Device-FAULT = 1--><!--Device-FAULT = 1-End--> |
+| STATISTIC = 2 | Statistics event type.<br>**Since**: 8<br><!--Device-STATISTIC = 2--><!--Device-STATISTIC = 2-End--> |
+| SECURITY = 3 | Security event type.<br>**Since**: 8<br><!--Device-SECURITY = 3--><!--Device-SECURITY = 3-End--> |
+| BEHAVIOR = 4 | Behavior event type.<br>**Since**: 8<br><!--Device-BEHAVIOR = 4--><!--Device-BEHAVIOR = 4-End--> |
 
 ### OH_HiAppEvent_SysEvent
 
@@ -155,7 +155,7 @@ enum OH_HiAppEvent_SysEvent
 
 System event types.<br> You are advised to select system event types based on their respective usage scenarios.
 
-<!--Device-OH_HiAppEvent_SysEvent--><!--Device-OH_HiAppEvent_SysEvent-End-->
+<!--Device-enum OH_HiAppEvent_SysEvent--><!--Device-enum OH_HiAppEvent_SysEvent-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -163,12 +163,12 @@ System event types.<br> You are advised to select system event types based on th
 
 | Enum item | Description |
 | -- | -- |
-| OH_APP_CRASH = 1 | Crash event.<br>**Since**: 26.0.1 |
-| OH_APP_FREEZE = 2 | Apply the screen freezing event.<br>**Since**: 26.0.1 |
-| OH_RESOURCE_OVERLIMIT = 3 | Resource leakage event.<br>**Since**: 26.0.1 |
-| OH_ADDRESS_SANITIZER = 4 | Address out-of-bounds event.<br>**Since**: 26.0.1 |
-| OH_APP_HICOLLIE = 5 | Task execution timeout event.<br>**Since**: 26.0.1 |
-| OH_CPU_USAGE_HIGH = 6 | The CPU is overloaded.<br>**Since**: 26.0.1 |
+| OH_APP_CRASH = 1 | Crash event.<br>**Since**: 26.0.1<br><!--Device-OH_APP_CRASH = 1--><!--Device-OH_APP_CRASH = 1-End--> |
+| OH_APP_FREEZE = 2 | Apply the screen freezing event.<br>**Since**: 26.0.1<br><!--Device-OH_APP_FREEZE = 2--><!--Device-OH_APP_FREEZE = 2-End--> |
+| OH_RESOURCE_OVERLIMIT = 3 | Resource leakage event.<br>**Since**: 26.0.1<br><!--Device-OH_RESOURCE_OVERLIMIT = 3--><!--Device-OH_RESOURCE_OVERLIMIT = 3-End--> |
+| OH_ADDRESS_SANITIZER = 4 | Address out-of-bounds event.<br>**Since**: 26.0.1<br><!--Device-OH_ADDRESS_SANITIZER = 4--><!--Device-OH_ADDRESS_SANITIZER = 4-End--> |
+| OH_APP_HICOLLIE = 5 | Task execution timeout event.<br>**Since**: 26.0.1<br><!--Device-OH_APP_HICOLLIE = 5--><!--Device-OH_APP_HICOLLIE = 5-End--> |
+| OH_CPU_USAGE_HIGH = 6 | The CPU is overloaded.<br>**Since**: 26.0.1<br><!--Device-OH_CPU_USAGE_HIGH = 6--><!--Device-OH_CPU_USAGE_HIGH = 6-End--> |
 
 ### OH_HiAppEvent_FrameworkType
 
@@ -180,7 +180,7 @@ enum OH_HiAppEvent_FrameworkType
 
 Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario.
 
-<!--Device-OH_HiAppEvent_FrameworkType--><!--Device-OH_HiAppEvent_FrameworkType-End-->
+<!--Device-enum OH_HiAppEvent_FrameworkType--><!--Device-enum OH_HiAppEvent_FrameworkType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -188,9 +188,9 @@ Enumerates the application framework types. You are advised to select an applica
 
 | Enum item | Description |
 | -- | -- |
-| OH_FLUTTER_DART = 0 | Flutter_dart type.<br>**Since**: 26.0.0 |
-| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes type.<br>**Since**: 26.0.0 |
-| OH_KMP_KOTLIN = 2 | Indicates the Kmp_kotlin type.<br>**Since**: 26.0.0 |
+| OH_FLUTTER_DART = 0 | Flutter_dart type.<br>**Since**: 26.0.0<br><!--Device-OH_FLUTTER_DART = 0--><!--Device-OH_FLUTTER_DART = 0-End--> |
+| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes type.<br>**Since**: 26.0.0<br><!--Device-OH_REACT_NATIVE_HERMES = 1--><!--Device-OH_REACT_NATIVE_HERMES = 1-End--> |
+| OH_KMP_KOTLIN = 2 | Indicates the Kmp_kotlin type.<br>**Since**: 26.0.0<br><!--Device-OH_KMP_KOTLIN = 2--><!--Device-OH_KMP_KOTLIN = 2-End--> |
 
 
 ## Function description
@@ -1338,7 +1338,7 @@ Sets the configuration name of the processor.
 | Parameter | Description |
 | -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by [OH_HiAppEvent_CreateProcessor](capi-hiappevent-h.md#oh_hiappevent_createprocessor). |
-| const char* configName | Configuration name of the data processor, which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters. |
+| const char* configName | <!--RP1-->Configuration name of the data processor. The value can contain only uppercase letters, lowercase letters, digits, underscores(_), and dollar sign($), and cannot start with a digit. The value cannot be empty and cannot exceed 256 characters. <!--RP1End--> |
 
 **Returns**:
 

@@ -24,6 +24,6 @@ Defines the string type parameter used by the component callback event, which is
 
 | Name | Description |
 | -- | -- |
-| const char* pStr | String. |
+| const char* pStr | String.<br><!--Device-const char* pStr--><!--Device-const char* pStr-End--> |
 
 

@@ -24,11 +24,11 @@ typedef struct OH_Drawing_FontConfigInfo {...} OH_Drawing_FontConfigInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| size_t fontDirSize | 系统字体文件路径数量。 |
-| size_t fontGenericInfoSize | 通用字体集列表数量。 |
-| size_t fallbackGroupSize | 备用字体集数量。 |
-| char** fontDirSet | 系统字体文件路径列表。 |
-| [OH_Drawing_FontGenericInfo*](capi-drawing-oh-drawing-fontgenericinfo.md) fontGenericInfoSet | 通用字体集列表。 |
-| [OH_Drawing_FontFallbackGroup*](capi-drawing-oh-drawing-fontfallbackgroup.md) fallbackGroupSet | 备用字体集列表。 |
+| size_t fontDirSize | 系统字体文件路径数量。<br><!--Device-size_t fontDirSize--><!--Device-size_t fontDirSize-End--> |
+| size_t fontGenericInfoSize | 通用字体集列表数量。<br><!--Device-size_t fontGenericInfoSize--><!--Device-size_t fontGenericInfoSize-End--> |
+| size_t fallbackGroupSize | 备用字体集数量。<br><!--Device-size_t fallbackGroupSize--><!--Device-size_t fallbackGroupSize-End--> |
+| char** fontDirSet | 系统字体文件路径列表。<br><!--Device-char** fontDirSet--><!--Device-char** fontDirSet-End--> |
+| [OH_Drawing_FontGenericInfo*](capi-drawing-oh-drawing-fontgenericinfo.md) fontGenericInfoSet | 通用字体集列表。<br><!--Device-OH_Drawing_FontGenericInfo* fontGenericInfoSet--><!--Device-OH_Drawing_FontGenericInfo* fontGenericInfoSet-End--> |
+| [OH_Drawing_FontFallbackGroup*](capi-drawing-oh-drawing-fontfallbackgroup.md) fallbackGroupSet | 备用字体集列表。<br><!--Device-OH_Drawing_FontFallbackGroup* fallbackGroupSet--><!--Device-OH_Drawing_FontFallbackGroup* fallbackGroupSet-End--> |
 
 

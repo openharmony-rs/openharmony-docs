@@ -24,7 +24,7 @@ Defines the offset of the current component relative to its parent component.
 
 | Name | Description |
 | -- | -- |
-| int32_t x | Horizontal offset, in px. A positive value means the component moves right, and a negative value means it moves left.<br>**Since**: 12 |
-| int32_t y | Vertical offset, in px. A positive value means the component moves down, and a negative value means it moves up.<br>**Since**: 12 |
+| int32_t x | Horizontal offset, in px. A positive value means the component moves right, and a negative value means it moves left.<br>**Since**: 12<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | Vertical offset, in px. A positive value means the component moves down, and a negative value means it moves up.<br>**Since**: 12<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
 
 

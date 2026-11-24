@@ -4,6 +4,8 @@
 
 This file declares the functions related to typography in the drawing module.
 
+**File to Include**: <native_drawing/drawing_text_typography.h>
+
 **Library**: libnative_drawing.so
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
@@ -136,7 +138,7 @@ This file declares the functions related to typography in the drawing module.
 | [float OH_Drawing_GetBottomFromTextBox(OH_Drawing_TextBox* textbox, int index)](#oh_drawing_getbottomfromtextbox) | Obtains the bottom position of a text box. |
 | [int OH_Drawing_GetTextDirectionFromTextBox(OH_Drawing_TextBox* textbox, int index)](#oh_drawing_gettextdirectionfromtextbox) | Obtains the text direction of a text box. |
 | [size_t OH_Drawing_GetSizeOfTextBox(OH_Drawing_TextBox* textBox)](#oh_drawing_getsizeoftextbox) | Obtains the number of text boxes. |
-| [OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinate(OH_Drawing_Typography* typography, double dx, double dy)](#oh_drawing_typographygetglyphpositionatcoordinate) | Obtains the position and affinity of the glyph at the given coordinates.(Deprecated in API18) |
+| [OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinate(OH_Drawing_Typography* typography, double dx, double dy)](#oh_drawing_typographygetglyphpositionatcoordinate) | Obtains the position and affinity of the glyph at the given coordinates.(Deprecated) |
 | [OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster(OH_Drawing_Typography* typography, double dx, double dy)](#oh_drawing_typographygetglyphpositionatcoordinatewithcluster) | Obtains the index position and affinity of the character cluster to which the text at the coordinate belongs. A character cluster refers to a group of one or more characters. When the [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) is no longer needed, use [OH_Drawing_DestroyPositionAndAffinity](capi-drawing-text-typography-h.md#oh_drawing_destroypositionandaffinity) to release the pointer to the object. |
 | [size_t OH_Drawing_GetPositionFromPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_getpositionfrompositionandaffinity) | Obtains the position attribute of an **OH_Drawing_PositionAndAffinity** object. |
 | [int OH_Drawing_GetAffinityFromPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_getaffinityfrompositionandaffinity) | Obtains the affinity attribute of an **OH_Drawing_PositionAndAffinity** object. The affinity determines whether the font is close to the front text or rear text. |
@@ -149,8 +151,8 @@ This file declares the functions related to typography in the drawing module.
 | [void OH_Drawing_SetTextStyleLetterSpacing(OH_Drawing_TextStyle* style, double letterSpacing)](#oh_drawing_settextstyleletterspacing) | Sets the letter spacing for a text style. |
 | [void OH_Drawing_SetTextStyleWordSpacing(OH_Drawing_TextStyle* style, double wordSpacing)](#oh_drawing_settextstylewordspacing) | Sets the word spacing for a text style. |
 | [void OH_Drawing_SetTextStyleHalfLeading(OH_Drawing_TextStyle* style, bool halfLeading)](#oh_drawing_settextstylehalfleading) | Sets whether to enable half leading for a text style. |
-| [void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* ellipsis)](#oh_drawing_settextstyleellipsis) | Sets the ellipsis content for a text style.(Deprecated in API18) |
-| [void OH_Drawing_SetTextStyleEllipsisModal(OH_Drawing_TextStyle* style, int ellipsisModal)](#oh_drawing_settextstyleellipsismodal) | Sets the ellipsis style for a text style.(Deprecated in API18) |
+| [void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* ellipsis)](#oh_drawing_settextstyleellipsis) | Sets the ellipsis content for a text style.(Deprecated) |
+| [void OH_Drawing_SetTextStyleEllipsisModal(OH_Drawing_TextStyle* style, int ellipsisModal)](#oh_drawing_settextstyleellipsismodal) | Sets the ellipsis style for a text style.(Deprecated) |
 | [void OH_Drawing_SetTypographyTextBreakStrategy(OH_Drawing_TypographyStyle* style, int breakStrategy)](#oh_drawing_settypographytextbreakstrategy) | Sets the text break strategy. |
 | [void OH_Drawing_SetTypographyTextWordBreakType(OH_Drawing_TypographyStyle* style, int wordBreakType)](#oh_drawing_settypographytextwordbreaktype) | Sets the word break type. |
 | [void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style, int ellipsisModal)](#oh_drawing_settypographytextellipsismodal) | Sets the ellipsis style for a text style. |
@@ -172,7 +174,7 @@ This file declares the functions related to typography in the drawing module.
 | [void OH_Drawing_SetTypographyTextLocale(OH_Drawing_TypographyStyle* style, const char* locale)](#oh_drawing_settypographytextlocale) | Sets the locale for a typography style. |
 | [void OH_Drawing_SetTypographyTextSplitRatio(OH_Drawing_TypographyStyle* style, float textSplitRatio)](#oh_drawing_settypographytextsplitratio) | Sets the text division ratio, which is used to determine the cursor position within a glyph when tapping to locate a character. |
 | [OH_Drawing_TextStyle* OH_Drawing_TypographyGetTextStyle(OH_Drawing_TypographyStyle* style)](#oh_drawing_typographygettextstyle) | Obtains the default text style of a typography style. |
-| [int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style)](#oh_drawing_typographygeteffectivealignment) | Obtains the text alignment mode.(Deprecated in API18) |
+| [int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style)](#oh_drawing_typographygeteffectivealignment) | Obtains the text alignment mode.(Deprecated) |
 | [bool OH_Drawing_TypographyIsLineUnlimited(OH_Drawing_TypographyStyle* style)](#oh_drawing_typographyislineunlimited) | Checks whether the maximum number of lines is limited for text. |
 | [bool OH_Drawing_TypographyIsEllipsized(OH_Drawing_TypographyStyle* style)](#oh_drawing_typographyisellipsized) | Checks whether an ellipsis is configured for a typography style. |
 | [void OH_Drawing_SetTypographyTextStyle(OH_Drawing_TypographyStyle* handler, OH_Drawing_TextStyle* style)](#oh_drawing_settypographytextstyle) | Sets a text style. |
@@ -308,7 +310,7 @@ enum OH_Drawing_TextDirection
 
 Enumerates the text directions.
 
-<!--Device-OH_Drawing_TextDirection--><!--Device-OH_Drawing_TextDirection-End-->
+<!--Device-enum OH_Drawing_TextDirection--><!--Device-enum OH_Drawing_TextDirection-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -316,8 +318,8 @@ Enumerates the text directions.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_DIRECTION_RTL | Right to left (RTL). |
-| TEXT_DIRECTION_LTR | Left to right (LTR). |
+| TEXT_DIRECTION_RTL | Right to left (RTL).<br><!--Device-TEXT_DIRECTION_RTL--><!--Device-TEXT_DIRECTION_RTL-End--> |
+| TEXT_DIRECTION_LTR | Left to right (LTR).<br><!--Device-TEXT_DIRECTION_LTR--><!--Device-TEXT_DIRECTION_LTR-End--> |
 
 ### OH_Drawing_TextAlign
 
@@ -329,7 +331,7 @@ enum OH_Drawing_TextAlign
 
 Enumerates the text alignment modes.
 
-<!--Device-OH_Drawing_TextAlign--><!--Device-OH_Drawing_TextAlign-End-->
+<!--Device-enum OH_Drawing_TextAlign--><!--Device-enum OH_Drawing_TextAlign-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -337,12 +339,12 @@ Enumerates the text alignment modes.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_ALIGN_LEFT | Left-aligned. |
-| TEXT_ALIGN_RIGHT | Right-aligned. |
-| TEXT_ALIGN_CENTER | Center-aligned. |
-| TEXT_ALIGN_JUSTIFY | Justified, which means that each line (except the last line) is stretched so that every line has equal width, and the left and right margins are straight. |
-| TEXT_ALIGN_START | When **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_LTR**, **TEXT_ALIGN_START** and **TEXT_ALIGN_LEFT**<br>are the same.<br>Similarly, when **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_RTL**, **<br>TEXT_ALIGN_START** and **TEXT_ALIGN_RIGHT** are the same. |
-| TEXT_ALIGN_END | When **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_LTR**, **TEXT_ALIGN_END** and **TEXT_ALIGN_RIGHT**<br>are the same.<br>Similarly, when **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_RTL**, **TEXT_ALIGN_END*<br> and **TEXT_ALIGN_LEFT** are the same. |
+| TEXT_ALIGN_LEFT | Left-aligned.<br><!--Device-TEXT_ALIGN_LEFT--><!--Device-TEXT_ALIGN_LEFT-End--> |
+| TEXT_ALIGN_RIGHT | Right-aligned.<br><!--Device-TEXT_ALIGN_RIGHT--><!--Device-TEXT_ALIGN_RIGHT-End--> |
+| TEXT_ALIGN_CENTER | Center-aligned.<br><!--Device-TEXT_ALIGN_CENTER--><!--Device-TEXT_ALIGN_CENTER-End--> |
+| TEXT_ALIGN_JUSTIFY | Justified, which means that each line (except the last line) is stretched so that every line has equal width, and the left and right margins are straight.<br><!--Device-TEXT_ALIGN_JUSTIFY--><!--Device-TEXT_ALIGN_JUSTIFY-End--> |
+| TEXT_ALIGN_START | When **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_LTR**, **TEXT_ALIGN_START** and **TEXT_ALIGN_LEFT** are the same.<br>Similarly, when **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_RTL**, ** TEXT_ALIGN_START** and **TEXT_ALIGN_RIGHT** are the same.<br><!--Device-TEXT_ALIGN_START--><!--Device-TEXT_ALIGN_START-End--> |
+| TEXT_ALIGN_END | When **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_LTR**, **TEXT_ALIGN_END** and **TEXT_ALIGN_RIGHT** are the same.<br>Similarly, when **OH_Drawing_TextDirection** is set to **TEXT_DIRECTION_RTL**, **TEXT_ALIGN_END* * and **TEXT_ALIGN_LEFT** are the same.<br><!--Device-TEXT_ALIGN_END--><!--Device-TEXT_ALIGN_END-End--> |
 
 ### OH_Drawing_FontWeight
 
@@ -354,7 +356,7 @@ enum OH_Drawing_FontWeight
 
 Enumerates the font weights.
 
-<!--Device-OH_Drawing_FontWeight--><!--Device-OH_Drawing_FontWeight-End-->
+<!--Device-enum OH_Drawing_FontWeight--><!--Device-enum OH_Drawing_FontWeight-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -362,15 +364,15 @@ Enumerates the font weights.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_WEIGHT_100 | Thin. |
-| FONT_WEIGHT_200 | Extra-light. |
-| FONT_WEIGHT_300 | Light. |
-| FONT_WEIGHT_400 | Normal/Regular. |
-| FONT_WEIGHT_500 | Medium. |
-| FONT_WEIGHT_600 | Semi-bold. |
-| FONT_WEIGHT_700 | Bold. |
-| FONT_WEIGHT_800 | Extra-bold. |
-| FONT_WEIGHT_900 | Black. |
+| FONT_WEIGHT_100 | Thin.<br><!--Device-FONT_WEIGHT_100--><!--Device-FONT_WEIGHT_100-End--> |
+| FONT_WEIGHT_200 | Extra-light.<br><!--Device-FONT_WEIGHT_200--><!--Device-FONT_WEIGHT_200-End--> |
+| FONT_WEIGHT_300 | Light.<br><!--Device-FONT_WEIGHT_300--><!--Device-FONT_WEIGHT_300-End--> |
+| FONT_WEIGHT_400 | Normal/Regular.<br><!--Device-FONT_WEIGHT_400--><!--Device-FONT_WEIGHT_400-End--> |
+| FONT_WEIGHT_500 | Medium.<br><!--Device-FONT_WEIGHT_500--><!--Device-FONT_WEIGHT_500-End--> |
+| FONT_WEIGHT_600 | Semi-bold.<br><!--Device-FONT_WEIGHT_600--><!--Device-FONT_WEIGHT_600-End--> |
+| FONT_WEIGHT_700 | Bold.<br><!--Device-FONT_WEIGHT_700--><!--Device-FONT_WEIGHT_700-End--> |
+| FONT_WEIGHT_800 | Extra-bold.<br><!--Device-FONT_WEIGHT_800--><!--Device-FONT_WEIGHT_800-End--> |
+| FONT_WEIGHT_900 | Black.<br><!--Device-FONT_WEIGHT_900--><!--Device-FONT_WEIGHT_900-End--> |
 
 ### OH_Drawing_TextBaseline
 
@@ -382,7 +384,7 @@ enum OH_Drawing_TextBaseline
 
 Enumerates the text baselines.
 
-<!--Device-OH_Drawing_TextBaseline--><!--Device-OH_Drawing_TextBaseline-End-->
+<!--Device-enum OH_Drawing_TextBaseline--><!--Device-enum OH_Drawing_TextBaseline-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -390,8 +392,8 @@ Enumerates the text baselines.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_BASELINE_ALPHABETIC | Alphabetic, where the letters in alphabets like English sit on. |
-| TEXT_BASELINE_IDEOGRAPHIC | Ideographic, where the baseline is at the bottom of the text area. |
+| TEXT_BASELINE_ALPHABETIC | Alphabetic, where the letters in alphabets like English sit on.<br><!--Device-TEXT_BASELINE_ALPHABETIC--><!--Device-TEXT_BASELINE_ALPHABETIC-End--> |
+| TEXT_BASELINE_IDEOGRAPHIC | Ideographic, where the baseline is at the bottom of the text area.<br><!--Device-TEXT_BASELINE_IDEOGRAPHIC--><!--Device-TEXT_BASELINE_IDEOGRAPHIC-End--> |
 
 ### OH_Drawing_TextDecoration
 
@@ -403,7 +405,7 @@ enum OH_Drawing_TextDecoration
 
 Enumerates the text decorations.
 
-<!--Device-OH_Drawing_TextDecoration--><!--Device-OH_Drawing_TextDecoration-End-->
+<!--Device-enum OH_Drawing_TextDecoration--><!--Device-enum OH_Drawing_TextDecoration-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -411,10 +413,10 @@ Enumerates the text decorations.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_DECORATION_NONE = 0x0 | No decoration. |
-| TEXT_DECORATION_UNDERLINE = 0x1 | An underline is used for decoration. |
-| TEXT_DECORATION_OVERLINE = 0x2 | An overline is used for decoration. |
-| TEXT_DECORATION_LINE_THROUGH = 0x4 | A strikethrough is used for decoration. |
+| TEXT_DECORATION_NONE = 0x0 | No decoration.<br><!--Device-TEXT_DECORATION_NONE = 0x0--><!--Device-TEXT_DECORATION_NONE = 0x0-End--> |
+| TEXT_DECORATION_UNDERLINE = 0x1 | An underline is used for decoration.<br><!--Device-TEXT_DECORATION_UNDERLINE = 0x1--><!--Device-TEXT_DECORATION_UNDERLINE = 0x1-End--> |
+| TEXT_DECORATION_OVERLINE = 0x2 | An overline is used for decoration.<br><!--Device-TEXT_DECORATION_OVERLINE = 0x2--><!--Device-TEXT_DECORATION_OVERLINE = 0x2-End--> |
+| TEXT_DECORATION_LINE_THROUGH = 0x4 | A strikethrough is used for decoration.<br><!--Device-TEXT_DECORATION_LINE_THROUGH = 0x4--><!--Device-TEXT_DECORATION_LINE_THROUGH = 0x4-End--> |
 
 ### OH_Drawing_FontStyle
 
@@ -426,7 +428,7 @@ enum OH_Drawing_FontStyle
 
 Font styles, including non-italic, italic, and oblique.
 
-<!--Device-OH_Drawing_FontStyle--><!--Device-OH_Drawing_FontStyle-End-->
+<!--Device-enum OH_Drawing_FontStyle--><!--Device-enum OH_Drawing_FontStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -434,9 +436,9 @@ Font styles, including non-italic, italic, and oblique.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_STYLE_NORMAL | Normal style. |
-| FONT_STYLE_ITALIC | Italic. |
-| FONT_STYLE_OBLIQUE | Oblique. |
+| FONT_STYLE_NORMAL | Normal style.<br><!--Device-FONT_STYLE_NORMAL--><!--Device-FONT_STYLE_NORMAL-End--> |
+| FONT_STYLE_ITALIC | Italic.<br><!--Device-FONT_STYLE_ITALIC--><!--Device-FONT_STYLE_ITALIC-End--> |
+| FONT_STYLE_OBLIQUE | Oblique.<br><!--Device-FONT_STYLE_OBLIQUE--><!--Device-FONT_STYLE_OBLIQUE-End--> |
 
 ### OH_Drawing_PlaceholderVerticalAlignment
 
@@ -448,7 +450,7 @@ enum OH_Drawing_PlaceholderVerticalAlignment
 
 Enumerates the vertical alignment modes of placeholders.
 
-<!--Device-OH_Drawing_PlaceholderVerticalAlignment--><!--Device-OH_Drawing_PlaceholderVerticalAlignment-End-->
+<!--Device-enum OH_Drawing_PlaceholderVerticalAlignment--><!--Device-enum OH_Drawing_PlaceholderVerticalAlignment-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -456,13 +458,13 @@ Enumerates the vertical alignment modes of placeholders.
 
 | Enum item | Description |
 | -- | -- |
-| ALIGNMENT_OFFSET_AT_BASELINE | Aligned to the baseline. |
-| ALIGNMENT_ABOVE_BASELINE | Aligned above the baseline. |
-| ALIGNMENT_BELOW_BASELINE | Aligned below the baseline. |
-| ALIGNMENT_TOP_OF_ROW_BOX | Aligned to the top of the row box. |
-| ALIGNMENT_BOTTOM_OF_ROW_BOX | Aligned to the bottom of the row box. |
-| ALIGNMENT_CENTER_OF_ROW_BOX | Aligned to the center of the row box. |
-| ALIGNMENT_FOLLOW_PARAGRAPH | Follows the text vertical alignment.<br>**Since**: 20 |
+| ALIGNMENT_OFFSET_AT_BASELINE | Aligned to the baseline.<br><!--Device-ALIGNMENT_OFFSET_AT_BASELINE--><!--Device-ALIGNMENT_OFFSET_AT_BASELINE-End--> |
+| ALIGNMENT_ABOVE_BASELINE | Aligned above the baseline.<br><!--Device-ALIGNMENT_ABOVE_BASELINE--><!--Device-ALIGNMENT_ABOVE_BASELINE-End--> |
+| ALIGNMENT_BELOW_BASELINE | Aligned below the baseline.<br><!--Device-ALIGNMENT_BELOW_BASELINE--><!--Device-ALIGNMENT_BELOW_BASELINE-End--> |
+| ALIGNMENT_TOP_OF_ROW_BOX | Aligned to the top of the row box.<br><!--Device-ALIGNMENT_TOP_OF_ROW_BOX--><!--Device-ALIGNMENT_TOP_OF_ROW_BOX-End--> |
+| ALIGNMENT_BOTTOM_OF_ROW_BOX | Aligned to the bottom of the row box.<br><!--Device-ALIGNMENT_BOTTOM_OF_ROW_BOX--><!--Device-ALIGNMENT_BOTTOM_OF_ROW_BOX-End--> |
+| ALIGNMENT_CENTER_OF_ROW_BOX | Aligned to the center of the row box.<br><!--Device-ALIGNMENT_CENTER_OF_ROW_BOX--><!--Device-ALIGNMENT_CENTER_OF_ROW_BOX-End--> |
+| ALIGNMENT_FOLLOW_PARAGRAPH | Follows the text vertical alignment.<br>**Since**: 20<br><!--Device-ALIGNMENT_FOLLOW_PARAGRAPH--><!--Device-ALIGNMENT_FOLLOW_PARAGRAPH-End--> |
 
 ### OH_Drawing_TextDecorationStyle
 
@@ -474,7 +476,7 @@ enum OH_Drawing_TextDecorationStyle
 
 Enumerates the text decoration styles.
 
-<!--Device-OH_Drawing_TextDecorationStyle--><!--Device-OH_Drawing_TextDecorationStyle-End-->
+<!--Device-enum OH_Drawing_TextDecorationStyle--><!--Device-enum OH_Drawing_TextDecorationStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -482,11 +484,11 @@ Enumerates the text decoration styles.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_DECORATION_STYLE_SOLID | Solid style. |
-| TEXT_DECORATION_STYLE_DOUBLE | Double style. |
-| TEXT_DECORATION_STYLE_DOTTED | Dotted style. |
-| TEXT_DECORATION_STYLE_DASHED | Dashed style. |
-| TEXT_DECORATION_STYLE_WAVY | Wavy style. |
+| TEXT_DECORATION_STYLE_SOLID | Solid style.<br><!--Device-TEXT_DECORATION_STYLE_SOLID--><!--Device-TEXT_DECORATION_STYLE_SOLID-End--> |
+| TEXT_DECORATION_STYLE_DOUBLE | Double style.<br><!--Device-TEXT_DECORATION_STYLE_DOUBLE--><!--Device-TEXT_DECORATION_STYLE_DOUBLE-End--> |
+| TEXT_DECORATION_STYLE_DOTTED | Dotted style.<br><!--Device-TEXT_DECORATION_STYLE_DOTTED--><!--Device-TEXT_DECORATION_STYLE_DOTTED-End--> |
+| TEXT_DECORATION_STYLE_DASHED | Dashed style.<br><!--Device-TEXT_DECORATION_STYLE_DASHED--><!--Device-TEXT_DECORATION_STYLE_DASHED-End--> |
+| TEXT_DECORATION_STYLE_WAVY | Wavy style.<br><!--Device-TEXT_DECORATION_STYLE_WAVY--><!--Device-TEXT_DECORATION_STYLE_WAVY-End--> |
 
 ### OH_Drawing_EllipsisModal
 
@@ -498,7 +500,7 @@ enum OH_Drawing_EllipsisModal
 
 Enumerates the ellipsis styles.
 
-<!--Device-OH_Drawing_EllipsisModal--><!--Device-OH_Drawing_EllipsisModal-End-->
+<!--Device-enum OH_Drawing_EllipsisModal--><!--Device-enum OH_Drawing_EllipsisModal-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -506,11 +508,11 @@ Enumerates the ellipsis styles.
 
 | Enum item | Description |
 | -- | -- |
-| ELLIPSIS_MODAL_HEAD = 0 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines). |
-| ELLIPSIS_MODAL_MIDDLE = 1 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines). |
-| ELLIPSIS_MODAL_TAIL = 2 | End ellipsis mode, that is, the ellipsis appears at the end of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines). |
-| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24 |
-| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24 |
+| ELLIPSIS_MODAL_HEAD = 0 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br><!--Device-ELLIPSIS_MODAL_HEAD = 0--><!--Device-ELLIPSIS_MODAL_HEAD = 0-End--> |
+| ELLIPSIS_MODAL_MIDDLE = 1 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br><!--Device-ELLIPSIS_MODAL_MIDDLE = 1--><!--Device-ELLIPSIS_MODAL_MIDDLE = 1-End--> |
+| ELLIPSIS_MODAL_TAIL = 2 | End ellipsis mode, that is, the ellipsis appears at the end of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br><!--Device-ELLIPSIS_MODAL_TAIL = 2--><!--Device-ELLIPSIS_MODAL_TAIL = 2-End--> |
+| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24<br><!--Device-ELLIPSIS_MODAL_MULTILINE_HEAD = 3--><!--Device-ELLIPSIS_MODAL_MULTILINE_HEAD = 3-End--> |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24<br><!--Device-ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4--><!--Device-ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4-End--> |
 
 ### OH_Drawing_BreakStrategy
 
@@ -522,7 +524,7 @@ enum OH_Drawing_BreakStrategy
 
 Enumerates the text break strategies.
 
-<!--Device-OH_Drawing_BreakStrategy--><!--Device-OH_Drawing_BreakStrategy-End-->
+<!--Device-enum OH_Drawing_BreakStrategy--><!--Device-enum OH_Drawing_BreakStrategy-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -530,9 +532,9 @@ Enumerates the text break strategies.
 
 | Enum item | Description |
 | -- | -- |
-| BREAK_STRATEGY_GREEDY = 0 | Each line is filled as much as possible during line break. |
-| BREAK_STRATEGY_HIGH_QUALITY = 1 | Text continuity is preferentially considered during line break. |
-| BREAK_STRATEGY_BALANCED = 2 | Line breaks are performed at the word boundary. |
+| BREAK_STRATEGY_GREEDY = 0 | Each line is filled as much as possible during line break.<br><!--Device-BREAK_STRATEGY_GREEDY = 0--><!--Device-BREAK_STRATEGY_GREEDY = 0-End--> |
+| BREAK_STRATEGY_HIGH_QUALITY = 1 | Text continuity is preferentially considered during line break.<br><!--Device-BREAK_STRATEGY_HIGH_QUALITY = 1--><!--Device-BREAK_STRATEGY_HIGH_QUALITY = 1-End--> |
+| BREAK_STRATEGY_BALANCED = 2 | Line breaks are performed at the word boundary.<br><!--Device-BREAK_STRATEGY_BALANCED = 2--><!--Device-BREAK_STRATEGY_BALANCED = 2-End--> |
 
 ### OH_Drawing_WordBreakType
 
@@ -544,7 +546,7 @@ enum OH_Drawing_WordBreakType
 
 Enumerates the word break types.
 
-<!--Device-OH_Drawing_WordBreakType--><!--Device-OH_Drawing_WordBreakType-End-->
+<!--Device-enum OH_Drawing_WordBreakType--><!--Device-enum OH_Drawing_WordBreakType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -552,10 +554,10 @@ Enumerates the word break types.
 
 | Enum item | Description |
 | -- | -- |
-| WORD_BREAK_TYPE_NORMAL = 0 | Normal mode. |
-| WORD_BREAK_TYPE_BREAK_ALL = 1 | Breaks the words at any character to prevent overflow. |
-| WORD_BREAK_TYPE_BREAK_WORD = 2 | Breaks the words at arbitrary points to prevent overflow. |
-| WORD_BREAK_TYPE_BREAK_HYPHEN = 3 | Attempts to break words at the end of each line by inserting a hyphen ("-"). If a hyphen cannot be added, the behavior is the same as `WORD_BREAK_TYPE_BREAK_WORD`.<br>**Since**: 18 |
+| WORD_BREAK_TYPE_NORMAL = 0 | Normal mode.<br><!--Device-WORD_BREAK_TYPE_NORMAL = 0--><!--Device-WORD_BREAK_TYPE_NORMAL = 0-End--> |
+| WORD_BREAK_TYPE_BREAK_ALL = 1 | Breaks the words at any character to prevent overflow.<br><!--Device-WORD_BREAK_TYPE_BREAK_ALL = 1--><!--Device-WORD_BREAK_TYPE_BREAK_ALL = 1-End--> |
+| WORD_BREAK_TYPE_BREAK_WORD = 2 | Breaks the words at arbitrary points to prevent overflow.<br><!--Device-WORD_BREAK_TYPE_BREAK_WORD = 2--><!--Device-WORD_BREAK_TYPE_BREAK_WORD = 2-End--> |
+| WORD_BREAK_TYPE_BREAK_HYPHEN = 3 | Attempts to break words at the end of each line by inserting a hyphen ("-"). If a hyphen cannot be added, the behavior is the same as `WORD_BREAK_TYPE_BREAK_WORD`.<br>**Since**: 18<br><!--Device-WORD_BREAK_TYPE_BREAK_HYPHEN = 3--><!--Device-WORD_BREAK_TYPE_BREAK_HYPHEN = 3-End--> |
 
 ### OH_Drawing_RectHeightStyle
 
@@ -567,7 +569,7 @@ enum OH_Drawing_RectHeightStyle
 
 Enumerates the rectangle height styles.
 
-<!--Device-OH_Drawing_RectHeightStyle--><!--Device-OH_Drawing_RectHeightStyle-End-->
+<!--Device-enum OH_Drawing_RectHeightStyle--><!--Device-enum OH_Drawing_RectHeightStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -575,12 +577,12 @@ Enumerates the rectangle height styles.
 
 | Enum item | Description |
 | -- | -- |
-| RECT_HEIGHT_STYLE_TIGHT | Tight style. The text box height closely fits the text content boundary. |
-| RECT_HEIGHT_STYLE_MAX | Max style. The text box height takes the maximum height among all lines. |
-| RECT_HEIGHT_STYLE_INCLUDELINESPACEMIDDLE | Include line spacing middle style. The text box height includes the middle portion of the line spacing. |
-| RECT_HEIGHT_STYLE_INCLUDELINESPACETOP | Include line spacing top style. The text box height includes the top portion of the line spacing. |
-| RECT_HEIGHT_STYLE_INCLUDELINESPACEBOTTOM | Include line spacing bottom style. The text box height includes the bottom portion of the line spacing. |
-| RECT_HEIGHT_STYLE_STRUCT | Struct style. The Strut Style determines the text box height. |
+| RECT_HEIGHT_STYLE_TIGHT | Tight style. The text box height closely fits the text content boundary.<br><!--Device-RECT_HEIGHT_STYLE_TIGHT--><!--Device-RECT_HEIGHT_STYLE_TIGHT-End--> |
+| RECT_HEIGHT_STYLE_MAX | Max style. The text box height takes the maximum height among all lines.<br><!--Device-RECT_HEIGHT_STYLE_MAX--><!--Device-RECT_HEIGHT_STYLE_MAX-End--> |
+| RECT_HEIGHT_STYLE_INCLUDELINESPACEMIDDLE | Include line spacing middle style. The text box height includes the middle portion of the line spacing.<br><!--Device-RECT_HEIGHT_STYLE_INCLUDELINESPACEMIDDLE--><!--Device-RECT_HEIGHT_STYLE_INCLUDELINESPACEMIDDLE-End--> |
+| RECT_HEIGHT_STYLE_INCLUDELINESPACETOP | Include line spacing top style. The text box height includes the top portion of the line spacing.<br><!--Device-RECT_HEIGHT_STYLE_INCLUDELINESPACETOP--><!--Device-RECT_HEIGHT_STYLE_INCLUDELINESPACETOP-End--> |
+| RECT_HEIGHT_STYLE_INCLUDELINESPACEBOTTOM | Include line spacing bottom style. The text box height includes the bottom portion of the line spacing.<br><!--Device-RECT_HEIGHT_STYLE_INCLUDELINESPACEBOTTOM--><!--Device-RECT_HEIGHT_STYLE_INCLUDELINESPACEBOTTOM-End--> |
+| RECT_HEIGHT_STYLE_STRUCT | Struct style. The Strut Style determines the text box height.<br><!--Device-RECT_HEIGHT_STYLE_STRUCT--><!--Device-RECT_HEIGHT_STYLE_STRUCT-End--> |
 
 ### OH_Drawing_RectWidthStyle
 
@@ -592,7 +594,7 @@ enum OH_Drawing_RectWidthStyle
 
 Enumerates the rectangle width styles.
 
-<!--Device-OH_Drawing_RectWidthStyle--><!--Device-OH_Drawing_RectWidthStyle-End-->
+<!--Device-enum OH_Drawing_RectWidthStyle--><!--Device-enum OH_Drawing_RectWidthStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -600,8 +602,8 @@ Enumerates the rectangle width styles.
 
 | Enum item | Description |
 | -- | -- |
-| RECT_WIDTH_STYLE_TIGHT | Tight style. The text box height closely fits the text content boundary. |
-| RECT_WIDTH_STYLE_MAX | Max style. The text box height takes the maximum height among all lines. |
+| RECT_WIDTH_STYLE_TIGHT | Tight style. The text box height closely fits the text content boundary.<br><!--Device-RECT_WIDTH_STYLE_TIGHT--><!--Device-RECT_WIDTH_STYLE_TIGHT-End--> |
+| RECT_WIDTH_STYLE_MAX | Max style. The text box height takes the maximum height among all lines.<br><!--Device-RECT_WIDTH_STYLE_MAX--><!--Device-RECT_WIDTH_STYLE_MAX-End--> |
 
 ### OH_Drawing_FontConfigInfoErrorCode
 
@@ -613,7 +615,7 @@ enum OH_Drawing_FontConfigInfoErrorCode
 
 Enumerates the error codes for the system font configuration information list.
 
-<!--Device-OH_Drawing_FontConfigInfoErrorCode--><!--Device-OH_Drawing_FontConfigInfoErrorCode-End-->
+<!--Device-enum OH_Drawing_FontConfigInfoErrorCode--><!--Device-enum OH_Drawing_FontConfigInfoErrorCode-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -621,11 +623,11 @@ Enumerates the error codes for the system font configuration information list.
 
 | Enum item | Description |
 | -- | -- |
-| SUCCESS_FONT_CONFIG_INFO = 0 | Operation successful. |
-| ERROR_FONT_CONFIG_INFO_UNKNOWN = 1 | Unknown error. |
-| ERROR_FONT_CONFIG_INFO_PARSE_FILE = 2 | Failed to parse the system configuration file. |
-| ERROR_FONT_CONFIG_INFO_ALLOC_MEMORY = 3 | Memory allocation fails. |
-| ERROR_FONT_CONFIG_INFO_COPY_STRING_DATA = 4 | Failed to copy the string data. |
+| SUCCESS_FONT_CONFIG_INFO = 0 | Operation successful.<br><!--Device-SUCCESS_FONT_CONFIG_INFO = 0--><!--Device-SUCCESS_FONT_CONFIG_INFO = 0-End--> |
+| ERROR_FONT_CONFIG_INFO_UNKNOWN = 1 | Unknown error.<br><!--Device-ERROR_FONT_CONFIG_INFO_UNKNOWN = 1--><!--Device-ERROR_FONT_CONFIG_INFO_UNKNOWN = 1-End--> |
+| ERROR_FONT_CONFIG_INFO_PARSE_FILE = 2 | Failed to parse the system configuration file.<br><!--Device-ERROR_FONT_CONFIG_INFO_PARSE_FILE = 2--><!--Device-ERROR_FONT_CONFIG_INFO_PARSE_FILE = 2-End--> |
+| ERROR_FONT_CONFIG_INFO_ALLOC_MEMORY = 3 | Memory allocation fails.<br><!--Device-ERROR_FONT_CONFIG_INFO_ALLOC_MEMORY = 3--><!--Device-ERROR_FONT_CONFIG_INFO_ALLOC_MEMORY = 3-End--> |
+| ERROR_FONT_CONFIG_INFO_COPY_STRING_DATA = 4 | Failed to copy the string data.<br><!--Device-ERROR_FONT_CONFIG_INFO_COPY_STRING_DATA = 4--><!--Device-ERROR_FONT_CONFIG_INFO_COPY_STRING_DATA = 4-End--> |
 
 ### OH_Drawing_TextHeightBehavior
 
@@ -637,7 +639,7 @@ enum OH_Drawing_TextHeightBehavior
 
 Enumerates the text height modifier patterns.
 
-<!--Device-OH_Drawing_TextHeightBehavior--><!--Device-OH_Drawing_TextHeightBehavior-End-->
+<!--Device-enum OH_Drawing_TextHeightBehavior--><!--Device-enum OH_Drawing_TextHeightBehavior-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -645,10 +647,10 @@ Enumerates the text height modifier patterns.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_HEIGHT_ALL = 0x0 | Enables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for the top of the first line and the bottom of the last line in a paragraph. |
-| TEXT_HEIGHT_DISABLE_FIRST_ASCENT = 0x1 | Disables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for the top of the first line in a paragraph. |
-| TEXT_HEIGHT_DISABLE_LAST_ASCENT = 0x2 | Disables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for the bottom of the last line in a paragraph. |
-| TEXT_HEIGHT_DISABLE_ALL = 0x1 \| 0x2 | Disables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for both the top of the first line and the bottom of the last line in a paragraph. |
+| TEXT_HEIGHT_ALL = 0x0 | Enables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for the top of the first line and the bottom of the last line in a paragraph.<br><!--Device-TEXT_HEIGHT_ALL = 0x0--><!--Device-TEXT_HEIGHT_ALL = 0x0-End--> |
+| TEXT_HEIGHT_DISABLE_FIRST_ASCENT = 0x1 | Disables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for the top of the first line in a paragraph.<br><!--Device-TEXT_HEIGHT_DISABLE_FIRST_ASCENT = 0x1--><!--Device-TEXT_HEIGHT_DISABLE_FIRST_ASCENT = 0x1-End--> |
+| TEXT_HEIGHT_DISABLE_LAST_ASCENT = 0x2 | Disables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for the bottom of the last line in a paragraph.<br><!--Device-TEXT_HEIGHT_DISABLE_LAST_ASCENT = 0x2--><!--Device-TEXT_HEIGHT_DISABLE_LAST_ASCENT = 0x2-End--> |
+| TEXT_HEIGHT_DISABLE_ALL = 0x1 \| 0x2 | Disables the height set by calling [OH_Drawing_SetTextStyleFontHeight](capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) for both the top of the first line and the bottom of the last line in a paragraph.<br><!--Device-TEXT_HEIGHT_DISABLE_ALL = 0x1 \| 0x2--><!--Device-TEXT_HEIGHT_DISABLE_ALL = 0x1 \| 0x2-End--> |
 
 ### OH_Drawing_TextStyleType
 
@@ -660,7 +662,7 @@ enum OH_Drawing_TextStyleType
 
 Enumerates the text style types.
 
-<!--Device-OH_Drawing_TextStyleType--><!--Device-OH_Drawing_TextStyleType-End-->
+<!--Device-enum OH_Drawing_TextStyleType--><!--Device-enum OH_Drawing_TextStyleType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -668,15 +670,15 @@ Enumerates the text style types.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_STYLE_NONE | No text style. |
-| TEXT_STYLE_ALL_ATTRIBUTES | All text styles. |
-| TEXT_STYLE_FONT | Font style. |
-| TEXT_STYLE_FOREGROUND | Text foreground style. |
-| TEXT_STYLE_BACKGROUND | Text background style. |
-| TEXT_STYLE_SHADOW | Text shadow style. |
-| TEXT_STYLE_DECORATIONS | Text decoration style. |
-| TEXT_STYLE_LETTER_SPACING | Text letter spacing style. |
-| TEXT_STYLE_WORD_SPACING | Text word spacing style. |
+| TEXT_STYLE_NONE | No text style.<br><!--Device-TEXT_STYLE_NONE--><!--Device-TEXT_STYLE_NONE-End--> |
+| TEXT_STYLE_ALL_ATTRIBUTES | All text styles.<br><!--Device-TEXT_STYLE_ALL_ATTRIBUTES--><!--Device-TEXT_STYLE_ALL_ATTRIBUTES-End--> |
+| TEXT_STYLE_FONT | Font style.<br><!--Device-TEXT_STYLE_FONT--><!--Device-TEXT_STYLE_FONT-End--> |
+| TEXT_STYLE_FOREGROUND | Text foreground style.<br><!--Device-TEXT_STYLE_FOREGROUND--><!--Device-TEXT_STYLE_FOREGROUND-End--> |
+| TEXT_STYLE_BACKGROUND | Text background style.<br><!--Device-TEXT_STYLE_BACKGROUND--><!--Device-TEXT_STYLE_BACKGROUND-End--> |
+| TEXT_STYLE_SHADOW | Text shadow style.<br><!--Device-TEXT_STYLE_SHADOW--><!--Device-TEXT_STYLE_SHADOW-End--> |
+| TEXT_STYLE_DECORATIONS | Text decoration style.<br><!--Device-TEXT_STYLE_DECORATIONS--><!--Device-TEXT_STYLE_DECORATIONS-End--> |
+| TEXT_STYLE_LETTER_SPACING | Text letter spacing style.<br><!--Device-TEXT_STYLE_LETTER_SPACING--><!--Device-TEXT_STYLE_LETTER_SPACING-End--> |
+| TEXT_STYLE_WORD_SPACING | Text word spacing style.<br><!--Device-TEXT_STYLE_WORD_SPACING--><!--Device-TEXT_STYLE_WORD_SPACING-End--> |
 
 ### OH_Drawing_FontWidth
 
@@ -688,7 +690,7 @@ enum OH_Drawing_FontWidth
 
 Enumerates the font widths.
 
-<!--Device-OH_Drawing_FontWidth--><!--Device-OH_Drawing_FontWidth-End-->
+<!--Device-enum OH_Drawing_FontWidth--><!--Device-enum OH_Drawing_FontWidth-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -696,15 +698,15 @@ Enumerates the font widths.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_WIDTH_ULTRA_CONDENSED = 1 | Ultra condensed font. |
-| FONT_WIDTH_EXTRA_CONDENSED = 2 | Extra condensed font. |
-| FONT_WIDTH_CONDENSED = 3 | Condensed font. |
-| FONT_WIDTH_SEMI_CONDENSED = 4 | Semi-condensed font. |
-| FONT_WIDTH_NORMAL = 5 | Normal font. |
-| FONT_WIDTH_SEMI_EXPANDED = 6 | Semi-expanded font. |
-| FONT_WIDTH_EXPANDED = 7 | Expanded font. |
-| FONT_WIDTH_EXTRA_EXPANDED = 8 | Extra expanded font. |
-| FONT_WIDTH_ULTRA_EXPANDED = 9 | Ultra expanded font. |
+| FONT_WIDTH_ULTRA_CONDENSED = 1 | Ultra condensed font.<br><!--Device-FONT_WIDTH_ULTRA_CONDENSED = 1--><!--Device-FONT_WIDTH_ULTRA_CONDENSED = 1-End--> |
+| FONT_WIDTH_EXTRA_CONDENSED = 2 | Extra condensed font.<br><!--Device-FONT_WIDTH_EXTRA_CONDENSED = 2--><!--Device-FONT_WIDTH_EXTRA_CONDENSED = 2-End--> |
+| FONT_WIDTH_CONDENSED = 3 | Condensed font.<br><!--Device-FONT_WIDTH_CONDENSED = 3--><!--Device-FONT_WIDTH_CONDENSED = 3-End--> |
+| FONT_WIDTH_SEMI_CONDENSED = 4 | Semi-condensed font.<br><!--Device-FONT_WIDTH_SEMI_CONDENSED = 4--><!--Device-FONT_WIDTH_SEMI_CONDENSED = 4-End--> |
+| FONT_WIDTH_NORMAL = 5 | Normal font.<br><!--Device-FONT_WIDTH_NORMAL = 5--><!--Device-FONT_WIDTH_NORMAL = 5-End--> |
+| FONT_WIDTH_SEMI_EXPANDED = 6 | Semi-expanded font.<br><!--Device-FONT_WIDTH_SEMI_EXPANDED = 6--><!--Device-FONT_WIDTH_SEMI_EXPANDED = 6-End--> |
+| FONT_WIDTH_EXPANDED = 7 | Expanded font.<br><!--Device-FONT_WIDTH_EXPANDED = 7--><!--Device-FONT_WIDTH_EXPANDED = 7-End--> |
+| FONT_WIDTH_EXTRA_EXPANDED = 8 | Extra expanded font.<br><!--Device-FONT_WIDTH_EXTRA_EXPANDED = 8--><!--Device-FONT_WIDTH_EXTRA_EXPANDED = 8-End--> |
+| FONT_WIDTH_ULTRA_EXPANDED = 9 | Ultra expanded font.<br><!--Device-FONT_WIDTH_ULTRA_EXPANDED = 9--><!--Device-FONT_WIDTH_ULTRA_EXPANDED = 9-End--> |
 
 ### OH_Drawing_TextStyleAttributeId
 
@@ -716,7 +718,7 @@ enum OH_Drawing_TextStyleAttributeId
 
 Enumerates the text style attributes.
 
-<!--Device-OH_Drawing_TextStyleAttributeId--><!--Device-OH_Drawing_TextStyleAttributeId-End-->
+<!--Device-enum OH_Drawing_TextStyleAttributeId--><!--Device-enum OH_Drawing_TextStyleAttributeId-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -724,11 +726,11 @@ Enumerates the text style attributes.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | Maximum line height.<br>If line height scaling is enabled, the maximum line height takes effect only when **<br>FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the positive part of a single-precision floating point number. |
-| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when **<br>FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**. |
-| TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle). |
-| TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | Font width. |
-| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 | Font edge processing mode. Anti-aliasing is used by default. For details about how to process font edges, see [OH_Drawing_FontEdging](capi-drawing-font-h.md#oh_drawing_fontedging).<br>**Since**: 24 |
+| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | Maximum line height.<br>If line height scaling is enabled, the maximum line height takes effect only when ** FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the positive part of a single-precision floating point number.<br><!--Device-TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0--><!--Device-TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0-End--> |
+| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when ** FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**.<br><!--Device-TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1--><!--Device-TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1-End--> |
+| TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle).<br><!--Device-TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2--><!--Device-TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2-End--> |
+| TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | Font width.<br><!--Device-TEXT_STYLE_ATTR_I_FONT_WIDTH = 3--><!--Device-TEXT_STYLE_ATTR_I_FONT_WIDTH = 3-End--> |
+| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 | Font edge processing mode. Anti-aliasing is used by default. For details about how to process font edges, see [OH_Drawing_FontEdging](capi-drawing-font-h.md#oh_drawing_fontedging).<br>**Since**: 24<br><!--Device-TEXT_STYLE_ATTR_I_FONT_EDGING = 4--><!--Device-TEXT_STYLE_ATTR_I_FONT_EDGING = 4-End--> |
 
 ### OH_Drawing_LineHeightStyle
 
@@ -740,7 +742,7 @@ enum OH_Drawing_LineHeightStyle
 
 Enumerates the scaling base styles of the line height. The default style is **TEXT_LINE_HEIGHT_BY_FONT_SIZE**.
 
-<!--Device-OH_Drawing_LineHeightStyle--><!--Device-OH_Drawing_LineHeightStyle-End-->
+<!--Device-enum OH_Drawing_LineHeightStyle--><!--Device-enum OH_Drawing_LineHeightStyle-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -748,8 +750,8 @@ Enumerates the scaling base styles of the line height. The default style is **TE
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | Uses the font size as the scaling base.<br>Formula for calculating the line height: **FontSize** x **FontHeight**<br>.<br>**FontSize** can be obtained from the [OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize) API.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API. |
-| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | Uses the font height as the scaling base.<br>Formula for calculating the line height: font height x **FontHeight*<br>*.<br>The font height is obtained after the text is shaped using the font file.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API. |
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | Uses the font size as the scaling base.<br>Formula for calculating the line height: **FontSize** x **FontHeight** .<br>**FontSize** can be obtained from the [OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize) API.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.<br><!--Device-TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0--><!--Device-TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0-End--> |
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | Uses the font height as the scaling base.<br>Formula for calculating the line height: font height x **FontHeight* *.<br>The font height is obtained after the text is shaped using the font file.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.<br><!--Device-TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1--><!--Device-TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1-End--> |
 
 ### OH_Drawing_TypographyStyleAttributeId
 
@@ -761,7 +763,7 @@ enum OH_Drawing_TypographyStyleAttributeId
 
 Enumerates the typography style attributes. <br>For the common attributes of the typography styles and text styles, you are advised to use the text style attributes, which can be obtained from [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).
 
-<!--Device-OH_Drawing_TypographyStyleAttributeId--><!--Device-OH_Drawing_TypographyStyleAttributeId-End-->
+<!--Device-enum OH_Drawing_TypographyStyleAttributeId--><!--Device-enum OH_Drawing_TypographyStyleAttributeId-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -769,18 +771,18 @@ Enumerates the typography style attributes. <br>For the common attributes of the
 
 | Enum item | Description |
 | -- | -- |
-| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | Maximum line height.<br>If line height scaling is enabled, the maximum line height takes effect only when **<br>FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the positive part of a single-precision floating point number. |
-| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when **<br>FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**. |
-| TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | Interline spacing.<br>**lineSpacing** is not restricted by the maximum and minimum line heights.<br>By default, line spacing is added to the last line.<br>You can set **textHeightBehavior** to **DISABLE_LAST_ASCENT** in [OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior) to disable the line spacing of the last line.<br>The default value is **0**. |
-| TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle). |
-| TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | Font width. |
-| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | Whether to enable line-start punctuation compression during text typography.<br>**NOTE**<br>1. The font file must support the "ss08" feature in [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md); otherwise, compression cannot be applied.<br> 2. Only punctuation within the line-start punctuation compression range is affected by this feature.<br>**Since**: 23 |
-| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | Whether to enable the internal padding of the font during text typography.<br>**Since**: 23 |
-| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | Whether to enable the line spacing fallback mechanism during text typography.<br>**Since**: 23 |
-| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | Ellipsis style. For details about the ellipsis style, see [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal).<br>**Since**: 24 |
-| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 | First-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0 |
-| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 | First-line indent of a paragraph. The indent value must be greater than or equal to 0.<br>**Since**: 26.0.0 |
-| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 | Last-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0 |
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | Maximum line height.<br>If line height scaling is enabled, the maximum line height takes effect only when ** FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the positive part of a single-precision floating point number.<br><!--Device-TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0--><!--Device-TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0-End--> |
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when ** FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**.<br><!--Device-TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1--><!--Device-TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1-End--> |
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | Interline spacing.<br>**lineSpacing** is not restricted by the maximum and minimum line heights.<br>By default, line spacing is added to the last line.<br>You can set **textHeightBehavior** to **DISABLE_LAST_ASCENT** in [OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior) to disable the line spacing of the last line.<br>The default value is **0**.<br><!--Device-TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2--><!--Device-TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2-End--> |
+| TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle).<br><!--Device-TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3--><!--Device-TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3-End--> |
+| TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | Font width.<br><!--Device-TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4--><!--Device-TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4-End--> |
+| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | Whether to enable line-start punctuation compression during text typography.<br>**NOTE**<br>1. The font file must support the "ss08" feature in [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md); otherwise, compression cannot be applied.<br> 2. Only punctuation within the line-start punctuation compression range is affected by this feature.<br>**Since**: 23<br><!--Device-TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5--><!--Device-TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5-End--> |
+| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | Whether to enable the internal padding of the font during text typography.<br>**Since**: 23<br><!--Device-TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6--><!--Device-TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6-End--> |
+| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | Whether to enable the line spacing fallback mechanism during text typography.<br>**Since**: 23<br><!--Device-TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7--><!--Device-TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7-End--> |
+| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | Ellipsis style. For details about the ellipsis style, see [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal).<br>**Since**: 24<br><!--Device-TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8--><!--Device-TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8-End--> |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 | First-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0<br><!--Device-TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9--><!--Device-TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9-End--> |
+| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 | First-line indent of a paragraph. The indent value must be greater than or equal to 0.<br>**Since**: 26.0.0<br><!--Device-TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10--><!--Device-TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10-End--> |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 | Last-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0<br><!--Device-TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11--><!--Device-TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11-End--> |
 
 ### OH_Drawing_TypographyAttributeId
 
@@ -792,7 +794,7 @@ enum OH_Drawing_TypographyAttributeId
 
 Enumerates the typography attributes.
 
-<!--Device-OH_Drawing_TypographyAttributeId--><!--Device-OH_Drawing_TypographyAttributeId-End-->
+<!--Device-enum OH_Drawing_TypographyAttributeId--><!--Device-enum OH_Drawing_TypographyAttributeId-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -800,7 +802,7 @@ Enumerates the typography attributes.
 
 | Enum item | Description |
 | -- | -- |
-| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | Whether to force reuse the rasterization result. True means to force reuse of the rasterization result. False means to allow updates to the rasterization result. The default value is false.<br>**Since**: 26.0.0 |
+| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | Whether to force reuse the rasterization result. True means to force reuse of the rasterization result. False means to allow updates to the rasterization result. The default value is false.<br>**Since**: 26.0.0<br><!--Device-TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0--><!--Device-TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0-End--> |
 
 ### OH_Drawing_TextBadgeType
 
@@ -812,7 +814,7 @@ enum OH_Drawing_TextBadgeType
 
 Enumerates the text badge styles.
 
-<!--Device-OH_Drawing_TextBadgeType--><!--Device-OH_Drawing_TextBadgeType-End-->
+<!--Device-enum OH_Drawing_TextBadgeType--><!--Device-enum OH_Drawing_TextBadgeType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -820,9 +822,9 @@ Enumerates the text badge styles.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_BADGE_NONE | Disable superscript or subscript. |
-| TEXT_SUPERSCRIPT | Enable superscript. |
-| TEXT_SUBSCRIPT | Enable subscript. |
+| TEXT_BADGE_NONE | Disable superscript or subscript.<br><!--Device-TEXT_BADGE_NONE--><!--Device-TEXT_BADGE_NONE-End--> |
+| TEXT_SUPERSCRIPT | Enable superscript.<br><!--Device-TEXT_SUPERSCRIPT--><!--Device-TEXT_SUPERSCRIPT-End--> |
+| TEXT_SUBSCRIPT | Enable subscript.<br><!--Device-TEXT_SUBSCRIPT--><!--Device-TEXT_SUBSCRIPT-End--> |
 
 ### OH_Drawing_TextVerticalAlignment
 
@@ -834,7 +836,7 @@ enum OH_Drawing_TextVerticalAlignment
 
 Enumerates the vertical alignment modes.
 
-<!--Device-OH_Drawing_TextVerticalAlignment--><!--Device-OH_Drawing_TextVerticalAlignment-End-->
+<!--Device-enum OH_Drawing_TextVerticalAlignment--><!--Device-enum OH_Drawing_TextVerticalAlignment-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -842,10 +844,10 @@ Enumerates the vertical alignment modes.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_VERTICAL_ALIGNMENT_BASELINE | Aligned to the baseline. |
-| TEXT_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned. |
-| TEXT_VERTICAL_ALIGNMENT_CENTER | Center-aligned. |
-| TEXT_VERTICAL_ALIGNMENT_TOP | Top aligned. |
+| TEXT_VERTICAL_ALIGNMENT_BASELINE | Aligned to the baseline.<br><!--Device-TEXT_VERTICAL_ALIGNMENT_BASELINE--><!--Device-TEXT_VERTICAL_ALIGNMENT_BASELINE-End--> |
+| TEXT_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned.<br><!--Device-TEXT_VERTICAL_ALIGNMENT_BOTTOM--><!--Device-TEXT_VERTICAL_ALIGNMENT_BOTTOM-End--> |
+| TEXT_VERTICAL_ALIGNMENT_CENTER | Center-aligned.<br><!--Device-TEXT_VERTICAL_ALIGNMENT_CENTER--><!--Device-TEXT_VERTICAL_ALIGNMENT_CENTER-End--> |
+| TEXT_VERTICAL_ALIGNMENT_TOP | Top aligned.<br><!--Device-TEXT_VERTICAL_ALIGNMENT_TOP--><!--Device-TEXT_VERTICAL_ALIGNMENT_TOP-End--> |
 
 
 ## Function description

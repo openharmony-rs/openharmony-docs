@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 provokingVertexModePerPipeline |  |
-| VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 provokingVertexModePerPipeline | <!--Device-VkBool32 provokingVertexModePerPipeline--><!--Device-VkBool32 provokingVertexModePerPipeline-End--> |
+| VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex | <!--Device-VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex--><!--Device-VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex-End--> |
 
 

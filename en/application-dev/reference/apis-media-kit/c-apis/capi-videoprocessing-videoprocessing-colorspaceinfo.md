@@ -24,8 +24,8 @@ The struct describes the color space information of video processing.
 
 | Name | Description |
 | -- | -- |
-| int32_t metadataType | The metadata type of the video, see enum OH_NativeBuffer_MetadataType |
-| int32_t colorSpace | The color space type of the video, see enum OH_NativeBuffer_ColorSpace |
-| int32_t pixelFormat | The pixel format of the video, see enum OH_NativeBuffer_Format |
+| int32_t metadataType | The metadata type of the video, see enum OH_NativeBuffer_MetadataType<br><!--Device-int32_t metadataType--><!--Device-int32_t metadataType-End--> |
+| int32_t colorSpace | The color space type of the video, see enum OH_NativeBuffer_ColorSpace<br><!--Device-int32_t colorSpace--><!--Device-int32_t colorSpace-End--> |
+| int32_t pixelFormat | The pixel format of the video, see enum OH_NativeBuffer_Format<br><!--Device-int32_t pixelFormat--><!--Device-int32_t pixelFormat-End--> |
 
 

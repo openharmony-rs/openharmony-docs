@@ -24,9 +24,9 @@ typedef struct OH_Camera_Rect_Ext {...} OH_Camera_Rect_Ext
 
 | 名称 | 描述 |
 | -- | -- |
-| double topLeftX | 矩形左上角的X坐标，范围[0, 1]。<br>**起始版本：** 26.0.0 |
-| double topLeftY | 矩形左上角的Y坐标，范围[0, 1]。<br>**起始版本：** 26.0.0 |
-| double width | 矩形宽度，范围[0, 1]。<br>**起始版本：** 26.0.0 |
-| double height | 矩形高度，范围[0, 1]。<br>**起始版本：** 26.0.0 |
+| double topLeftX | 矩形左上角的X坐标，范围[0, 1]。<br>**起始版本：** 26.0.0<br><!--Device-double topLeftX--><!--Device-double topLeftX-End--> |
+| double topLeftY | 矩形左上角的Y坐标，范围[0, 1]。<br>**起始版本：** 26.0.0<br><!--Device-double topLeftY--><!--Device-double topLeftY-End--> |
+| double width | 矩形宽度，范围[0, 1]。<br>**起始版本：** 26.0.0<br><!--Device-double width--><!--Device-double width-End--> |
+| double height | 矩形高度，范围[0, 1]。<br>**起始版本：** 26.0.0<br><!--Device-double height--><!--Device-double height-End--> |
 
 

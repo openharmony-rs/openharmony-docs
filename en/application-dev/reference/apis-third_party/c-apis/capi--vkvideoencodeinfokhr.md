@@ -10,16 +10,16 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkVideoEncodeFlagsKHR flags |  |
-| VkBuffer dstBuffer |  |
-| VkDeviceSize dstBufferOffset |  |
-| VkDeviceSize dstBufferRange |  |
-| [VkVideoPictureResourceInfoKHR](capi--vkvideopictureresourceinfokhr.md) srcPictureResource |  |
-| [const VkVideoReferenceSlotInfoKHR*](capi--vkvideoreferenceslotinfokhr.md) pSetupReferenceSlot |  |
-| uint32_t referenceSlotCount |  |
-| [const VkVideoReferenceSlotInfoKHR*](capi--vkvideoreferenceslotinfokhr.md) pReferenceSlots |  |
-| uint32_t precedingExternallyEncodedBytes |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkVideoEncodeFlagsKHR flags | <!--Device-VkVideoEncodeFlagsKHR flags--><!--Device-VkVideoEncodeFlagsKHR flags-End--> |
+| VkBuffer dstBuffer | <!--Device-VkBuffer dstBuffer--><!--Device-VkBuffer dstBuffer-End--> |
+| VkDeviceSize dstBufferOffset | <!--Device-VkDeviceSize dstBufferOffset--><!--Device-VkDeviceSize dstBufferOffset-End--> |
+| VkDeviceSize dstBufferRange | <!--Device-VkDeviceSize dstBufferRange--><!--Device-VkDeviceSize dstBufferRange-End--> |
+| [VkVideoPictureResourceInfoKHR](capi--vkvideopictureresourceinfokhr.md) srcPictureResource | <!--Device-VkVideoPictureResourceInfoKHR srcPictureResource--><!--Device-VkVideoPictureResourceInfoKHR srcPictureResource-End--> |
+| [const VkVideoReferenceSlotInfoKHR*](capi--vkvideoreferenceslotinfokhr.md) pSetupReferenceSlot | <!--Device-const VkVideoReferenceSlotInfoKHR* pSetupReferenceSlot--><!--Device-const VkVideoReferenceSlotInfoKHR* pSetupReferenceSlot-End--> |
+| uint32_t referenceSlotCount | <!--Device-uint32_t referenceSlotCount--><!--Device-uint32_t referenceSlotCount-End--> |
+| [const VkVideoReferenceSlotInfoKHR*](capi--vkvideoreferenceslotinfokhr.md) pReferenceSlots | <!--Device-const VkVideoReferenceSlotInfoKHR* pReferenceSlots--><!--Device-const VkVideoReferenceSlotInfoKHR* pReferenceSlots-End--> |
+| uint32_t precedingExternallyEncodedBytes | <!--Device-uint32_t precedingExternallyEncodedBytes--><!--Device-uint32_t precedingExternallyEncodedBytes-End--> |
 
 

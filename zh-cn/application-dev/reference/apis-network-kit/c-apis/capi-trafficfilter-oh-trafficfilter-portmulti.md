@@ -24,7 +24,7 @@ typedef struct OH_TrafficFilter_PortMulti {...} OH_TrafficFilter_PortMulti
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t portCount | 数组中的端口数量。<br>**起始版本：** 26.0.0 |
-| uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT] | 端口数组<br>**起始版本：** 26.0.0 |
+| uint32_t portCount | 数组中的端口数量。<br>**起始版本：** 26.0.0<br><!--Device-uint32_t portCount--><!--Device-uint32_t portCount-End--> |
+| uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT] | 端口数组<br>**起始版本：** 26.0.0<br><!--Device-uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT]--><!--Device-uint16_t ports[OH_TRAFFICFILTER_MAX_MULTI_PORT_COUNT]-End--> |
 
 

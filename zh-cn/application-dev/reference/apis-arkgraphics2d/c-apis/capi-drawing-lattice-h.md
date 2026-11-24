@@ -39,7 +39,7 @@ enum OH_Drawing_LatticeRectType
 
 定义填充网格的矩形类型的枚举，决定对应网格单元格的渲染方式。
 
-<!--Device-OH_Drawing_LatticeRectType--><!--Device-OH_Drawing_LatticeRectType-End-->
+<!--Device-enum OH_Drawing_LatticeRectType--><!--Device-enum OH_Drawing_LatticeRectType-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -47,9 +47,9 @@ enum OH_Drawing_LatticeRectType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DEFAULT | 将图像绘制到矩形网格中。<br>**起始版本：** 23 |
-| TRANSPARENT | 将矩形网格设置为透明的。<br>**起始版本：** 23 |
-| FIXED_COLOR | 将矩形网格对象中colors数组的颜色绘制到矩形网格中。<br>**起始版本：** 23 |
+| DEFAULT | 将图像绘制到矩形网格中。<br>**起始版本：** 23<br><!--Device-DEFAULT--><!--Device-DEFAULT-End--> |
+| TRANSPARENT | 将矩形网格设置为透明的。<br>**起始版本：** 23<br><!--Device-TRANSPARENT--><!--Device-TRANSPARENT-End--> |
+| FIXED_COLOR | 将矩形网格对象中colors数组的颜色绘制到矩形网格中。<br>**起始版本：** 23<br><!--Device-FIXED_COLOR--><!--Device-FIXED_COLOR-End--> |
 
 
 ## 函数说明

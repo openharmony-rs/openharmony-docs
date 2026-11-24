@@ -20,7 +20,7 @@ The file declares the functions related to the speaker layout during recording a
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioChannelSet](#oh_audiochannelset) | OH_AudioChannelSet | Enumerates the audio channels.<br> Each channel is mapped to a variable of uint64_t. |
+| [OH_AudioChannelSet](#oh_audiochannelset) | OH_AudioChannelSet | Enumerates the audio channels.<br> A 64-bit integer represents a channel position. |
 | [OH_AmbAttributeSet](#oh_ambattributeset) | OH_AmbAttributeSet | Ambisonic attribute set.<br> A set of 64-bit integers indicate the ambisonic attributes. |
 | [OH_AudioChannelLayout](#oh_audiochannellayout) | OH_AudioChannelLayout | Enumerates the layouts of audio channels.<br> Int64 integers are used to indicate the appearance and sequence of speakers during recording or playback. |
 
@@ -34,9 +34,9 @@ enum OH_AudioChannelSet
 
 **Description**
 
-Enumerates the audio channels.<br> Each channel is mapped to a variable of uint64_t.
+Enumerates the audio channels.<br> A 64-bit integer represents a channel position.
 
-<!--Device-OH_AudioChannelSet--><!--Device-OH_AudioChannelSet-End-->
+<!--Device-enum OH_AudioChannelSet--><!--Device-enum OH_AudioChannelSet-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -44,36 +44,36 @@ Enumerates the audio channels.<br> Each channel is mapped to a variable of uint6
 
 | Enum item | Description |
 | -- | -- |
-| CH_SET_FRONT_LEFT = 1ULL << 0U | Front left channel.<br>**Since**: 11 |
-| CH_SET_FRONT_RIGHT = 1ULL << 1U | Front right channel.<br>**Since**: 11 |
-| CH_SET_FRONT_CENTER = 1ULL << 2U | Front center channel.<br>**Since**: 11 |
-| CH_SET_LOW_FREQUENCY = 1ULL << 3U | Low-frequency channel.<br>**Since**: 11 |
-| CH_SET_BACK_LEFT = 1ULL << 4U | Rear left channel.<br>**Since**: 11 |
-| CH_SET_BACK_RIGHT = 1ULL << 5U | Rear right channel.<br>**Since**: 11 |
-| CH_SET_FRONT_LEFT_OF_CENTER = 1ULL << 6U | Front left center channel.<br>**Since**: 11 |
-| CH_SET_FRONT_RIGHT_OF_CENTER = 1ULL << 7U | Front right center channel.<br>**Since**: 11 |
-| CH_SET_BACK_CENTER = 1ULL << 8U | Rear center channel.<br>**Since**: 11 |
-| CH_SET_SIDE_LEFT = 1ULL << 9U | Left channel.<br>**Since**: 11 |
-| CH_SET_SIDE_RIGHT = 1ULL << 10U | Right channel.<br>**Since**: 11 |
-| CH_SET_TOP_CENTER = 1ULL << 11U | Top center channel.<br>**Since**: 11 |
-| CH_SET_TOP_FRONT_LEFT = 1ULL << 12U | Top left front channel.<br>**Since**: 11 |
-| CH_SET_TOP_FRONT_CENTER = 1ULL << 13U | Top center front channel.<br>**Since**: 11 |
-| CH_SET_TOP_FRONT_RIGHT = 1ULL << 14U | Top right front channel.<br>**Since**: 11 |
-| CH_SET_TOP_BACK_LEFT = 1ULL << 15U | Top left rear channel.<br>**Since**: 11 |
-| CH_SET_TOP_BACK_CENTER = 1ULL << 16U | Top center rear channel.<br>**Since**: 11 |
-| CH_SET_TOP_BACK_RIGHT = 1ULL << 17U | Top right rear channel.<br>**Since**: 11 |
-| CH_SET_STEREO_LEFT = 1ULL << 29U | Stereo left channel.<br>**Since**: 11 |
-| CH_SET_STEREO_RIGHT = 1ULL << 30U | Stereo right channel.<br>**Since**: 11 |
-| CH_SET_WIDE_LEFT = 1ULL << 31U | Wide left channel.<br>**Since**: 11 |
-| CH_SET_WIDE_RIGHT = 1ULL << 32U | Wide right channel.<br>**Since**: 11 |
-| CH_SET_SURROUND_DIRECT_LEFT = 1ULL << 33U | Left surround channel.<br>**Since**: 11 |
-| CH_SET_SURROUND_DIRECT_RIGHT = 1ULL << 34U | Right surround channel.<br>**Since**: 11 |
-| CH_SET_LOW_FREQUENCY_2 = 1ULL << 35U | Low-frequency channel 2.<br>**Since**: 11 |
-| CH_SET_TOP_SIDE_LEFT = 1ULL << 36U | Top left channel.<br>**Since**: 11 |
-| CH_SET_TOP_SIDE_RIGHT = 1ULL << 37U | Top right channel.<br>**Since**: 11 |
-| CH_SET_BOTTOM_FRONT_CENTER = 1ULL << 38U | Bottom center front channel.<br>**Since**: 11 |
-| CH_SET_BOTTOM_FRONT_LEFT = 1ULL << 39U | Bottom left front channel.<br>**Since**: 11 |
-| CH_SET_BOTTOM_FRONT_RIGHT = 1ULL << 40U | Bottom right front channel.<br>**Since**: 11 |
+| CH_SET_FRONT_LEFT = 1ULL << 0U | Front left channel.<br>**Since**: 11<br><!--Device-CH_SET_FRONT_LEFT = 1ULL << 0U--><!--Device-CH_SET_FRONT_LEFT = 1ULL << 0U-End--> |
+| CH_SET_FRONT_RIGHT = 1ULL << 1U | Front right channel.<br>**Since**: 11<br><!--Device-CH_SET_FRONT_RIGHT = 1ULL << 1U--><!--Device-CH_SET_FRONT_RIGHT = 1ULL << 1U-End--> |
+| CH_SET_FRONT_CENTER = 1ULL << 2U | Front center channel.<br>**Since**: 11<br><!--Device-CH_SET_FRONT_CENTER = 1ULL << 2U--><!--Device-CH_SET_FRONT_CENTER = 1ULL << 2U-End--> |
+| CH_SET_LOW_FREQUENCY = 1ULL << 3U | Low-frequency channel.<br>**Since**: 11<br><!--Device-CH_SET_LOW_FREQUENCY = 1ULL << 3U--><!--Device-CH_SET_LOW_FREQUENCY = 1ULL << 3U-End--> |
+| CH_SET_BACK_LEFT = 1ULL << 4U | Rear left channel.<br>**Since**: 11<br><!--Device-CH_SET_BACK_LEFT = 1ULL << 4U--><!--Device-CH_SET_BACK_LEFT = 1ULL << 4U-End--> |
+| CH_SET_BACK_RIGHT = 1ULL << 5U | Rear right channel.<br>**Since**: 11<br><!--Device-CH_SET_BACK_RIGHT = 1ULL << 5U--><!--Device-CH_SET_BACK_RIGHT = 1ULL << 5U-End--> |
+| CH_SET_FRONT_LEFT_OF_CENTER = 1ULL << 6U | Front left center channel.<br>**Since**: 11<br><!--Device-CH_SET_FRONT_LEFT_OF_CENTER = 1ULL << 6U--><!--Device-CH_SET_FRONT_LEFT_OF_CENTER = 1ULL << 6U-End--> |
+| CH_SET_FRONT_RIGHT_OF_CENTER = 1ULL << 7U | Front right center channel.<br>**Since**: 11<br><!--Device-CH_SET_FRONT_RIGHT_OF_CENTER = 1ULL << 7U--><!--Device-CH_SET_FRONT_RIGHT_OF_CENTER = 1ULL << 7U-End--> |
+| CH_SET_BACK_CENTER = 1ULL << 8U | Rear center channel.<br>**Since**: 11<br><!--Device-CH_SET_BACK_CENTER = 1ULL << 8U--><!--Device-CH_SET_BACK_CENTER = 1ULL << 8U-End--> |
+| CH_SET_SIDE_LEFT = 1ULL << 9U | Left channel.<br>**Since**: 11<br><!--Device-CH_SET_SIDE_LEFT = 1ULL << 9U--><!--Device-CH_SET_SIDE_LEFT = 1ULL << 9U-End--> |
+| CH_SET_SIDE_RIGHT = 1ULL << 10U | Right channel.<br>**Since**: 11<br><!--Device-CH_SET_SIDE_RIGHT = 1ULL << 10U--><!--Device-CH_SET_SIDE_RIGHT = 1ULL << 10U-End--> |
+| CH_SET_TOP_CENTER = 1ULL << 11U | Top center channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_CENTER = 1ULL << 11U--><!--Device-CH_SET_TOP_CENTER = 1ULL << 11U-End--> |
+| CH_SET_TOP_FRONT_LEFT = 1ULL << 12U | Top left front channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_FRONT_LEFT = 1ULL << 12U--><!--Device-CH_SET_TOP_FRONT_LEFT = 1ULL << 12U-End--> |
+| CH_SET_TOP_FRONT_CENTER = 1ULL << 13U | Top center front channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_FRONT_CENTER = 1ULL << 13U--><!--Device-CH_SET_TOP_FRONT_CENTER = 1ULL << 13U-End--> |
+| CH_SET_TOP_FRONT_RIGHT = 1ULL << 14U | Top right front channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_FRONT_RIGHT = 1ULL << 14U--><!--Device-CH_SET_TOP_FRONT_RIGHT = 1ULL << 14U-End--> |
+| CH_SET_TOP_BACK_LEFT = 1ULL << 15U | Top left rear channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_BACK_LEFT = 1ULL << 15U--><!--Device-CH_SET_TOP_BACK_LEFT = 1ULL << 15U-End--> |
+| CH_SET_TOP_BACK_CENTER = 1ULL << 16U | Top center rear channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_BACK_CENTER = 1ULL << 16U--><!--Device-CH_SET_TOP_BACK_CENTER = 1ULL << 16U-End--> |
+| CH_SET_TOP_BACK_RIGHT = 1ULL << 17U | Top right rear channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_BACK_RIGHT = 1ULL << 17U--><!--Device-CH_SET_TOP_BACK_RIGHT = 1ULL << 17U-End--> |
+| CH_SET_STEREO_LEFT = 1ULL << 29U | Stereo left channel.<br>**Since**: 11<br><!--Device-CH_SET_STEREO_LEFT = 1ULL << 29U--><!--Device-CH_SET_STEREO_LEFT = 1ULL << 29U-End--> |
+| CH_SET_STEREO_RIGHT = 1ULL << 30U | Stereo right channel.<br>**Since**: 11<br><!--Device-CH_SET_STEREO_RIGHT = 1ULL << 30U--><!--Device-CH_SET_STEREO_RIGHT = 1ULL << 30U-End--> |
+| CH_SET_WIDE_LEFT = 1ULL << 31U | Wide left channel.<br>**Since**: 11<br><!--Device-CH_SET_WIDE_LEFT = 1ULL << 31U--><!--Device-CH_SET_WIDE_LEFT = 1ULL << 31U-End--> |
+| CH_SET_WIDE_RIGHT = 1ULL << 32U | Wide right channel.<br>**Since**: 11<br><!--Device-CH_SET_WIDE_RIGHT = 1ULL << 32U--><!--Device-CH_SET_WIDE_RIGHT = 1ULL << 32U-End--> |
+| CH_SET_SURROUND_DIRECT_LEFT = 1ULL << 33U | Left surround channel.<br>**Since**: 11<br><!--Device-CH_SET_SURROUND_DIRECT_LEFT = 1ULL << 33U--><!--Device-CH_SET_SURROUND_DIRECT_LEFT = 1ULL << 33U-End--> |
+| CH_SET_SURROUND_DIRECT_RIGHT = 1ULL << 34U | Right surround channel.<br>**Since**: 11<br><!--Device-CH_SET_SURROUND_DIRECT_RIGHT = 1ULL << 34U--><!--Device-CH_SET_SURROUND_DIRECT_RIGHT = 1ULL << 34U-End--> |
+| CH_SET_LOW_FREQUENCY_2 = 1ULL << 35U | Low-frequency channel 2.<br>**Since**: 11<br><!--Device-CH_SET_LOW_FREQUENCY_2 = 1ULL << 35U--><!--Device-CH_SET_LOW_FREQUENCY_2 = 1ULL << 35U-End--> |
+| CH_SET_TOP_SIDE_LEFT = 1ULL << 36U | Top left channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_SIDE_LEFT = 1ULL << 36U--><!--Device-CH_SET_TOP_SIDE_LEFT = 1ULL << 36U-End--> |
+| CH_SET_TOP_SIDE_RIGHT = 1ULL << 37U | Top right channel.<br>**Since**: 11<br><!--Device-CH_SET_TOP_SIDE_RIGHT = 1ULL << 37U--><!--Device-CH_SET_TOP_SIDE_RIGHT = 1ULL << 37U-End--> |
+| CH_SET_BOTTOM_FRONT_CENTER = 1ULL << 38U | Bottom center front channel.<br>**Since**: 11<br><!--Device-CH_SET_BOTTOM_FRONT_CENTER = 1ULL << 38U--><!--Device-CH_SET_BOTTOM_FRONT_CENTER = 1ULL << 38U-End--> |
+| CH_SET_BOTTOM_FRONT_LEFT = 1ULL << 39U | Bottom left front channel.<br>**Since**: 11<br><!--Device-CH_SET_BOTTOM_FRONT_LEFT = 1ULL << 39U--><!--Device-CH_SET_BOTTOM_FRONT_LEFT = 1ULL << 39U-End--> |
+| CH_SET_BOTTOM_FRONT_RIGHT = 1ULL << 40U | Bottom right front channel.<br>**Since**: 11<br><!--Device-CH_SET_BOTTOM_FRONT_RIGHT = 1ULL << 40U--><!--Device-CH_SET_BOTTOM_FRONT_RIGHT = 1ULL << 40U-End--> |
 
 ### OH_AmbAttributeSet
 
@@ -85,7 +85,7 @@ enum OH_AmbAttributeSet
 
 Ambisonic attribute set.<br> A set of 64-bit integers indicate the ambisonic attributes.
 
-<!--Device-OH_AmbAttributeSet--><!--Device-OH_AmbAttributeSet-End-->
+<!--Device-enum OH_AmbAttributeSet--><!--Device-enum OH_AmbAttributeSet-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -93,14 +93,14 @@ Ambisonic attribute set.<br> A set of 64-bit integers indicate the ambisonic att
 
 | Enum item | Description |
 | -- | -- |
-| AMB_ORD_1 = 1ULL << 0U | Ambisonic attribute: order 1.<br>**Since**: 11 |
-| AMB_ORD_2 = 2ULL << 0U | Ambisonic attribute: order 2.<br>**Since**: 11 |
-| AMB_ORD_3 = 3ULL << 0U | Ambisonic attribute: order 3.<br>**Since**: 11 |
-| AMB_COM_ACN = 0ULL << 8U | Ambisonic attribute: ACN Component Ordering.<br>**Since**: 11 |
-| AMB_COM_FUMA = 1ULL << 8U | Ambisonic attribute: FUMA Component Ordering.<br>**Since**: 11 |
-| AMB_NOR_N3D = 0ULL << 12U | Ambisonic attribute: N3D Normalization.<br>**Since**: 11 |
-| AMB_NOR_SN3D = 1ULL << 12U | Ambisonic attribute: SN3D Normalization.<br>**Since**: 11 |
-| AMB_MODE = 1ULL << 44U | Channel layout: Ambisonic mode.<br>**Since**: 11 |
+| AMB_ORD_1 = 1ULL << 0U | Ambisonic attribute: order 1.<br>**Since**: 11<br><!--Device-AMB_ORD_1 = 1ULL << 0U--><!--Device-AMB_ORD_1 = 1ULL << 0U-End--> |
+| AMB_ORD_2 = 2ULL << 0U | Ambisonic attribute: order 2.<br>**Since**: 11<br><!--Device-AMB_ORD_2 = 2ULL << 0U--><!--Device-AMB_ORD_2 = 2ULL << 0U-End--> |
+| AMB_ORD_3 = 3ULL << 0U | Ambisonic attribute: order 3.<br>**Since**: 11<br><!--Device-AMB_ORD_3 = 3ULL << 0U--><!--Device-AMB_ORD_3 = 3ULL << 0U-End--> |
+| AMB_COM_ACN = 0ULL << 8U | Ambisonic attribute: ACN Component Ordering.<br>**Since**: 11<br><!--Device-AMB_COM_ACN = 0ULL << 8U--><!--Device-AMB_COM_ACN = 0ULL << 8U-End--> |
+| AMB_COM_FUMA = 1ULL << 8U | Ambisonic attribute: FUMA Component Ordering.<br>**Since**: 11<br><!--Device-AMB_COM_FUMA = 1ULL << 8U--><!--Device-AMB_COM_FUMA = 1ULL << 8U-End--> |
+| AMB_NOR_N3D = 0ULL << 12U | Ambisonic attribute: N3D Normalization.<br>**Since**: 11<br><!--Device-AMB_NOR_N3D = 0ULL << 12U--><!--Device-AMB_NOR_N3D = 0ULL << 12U-End--> |
+| AMB_NOR_SN3D = 1ULL << 12U | Ambisonic attribute: SN3D Normalization.<br>**Since**: 11<br><!--Device-AMB_NOR_SN3D = 1ULL << 12U--><!--Device-AMB_NOR_SN3D = 1ULL << 12U-End--> |
+| AMB_MODE = 1ULL << 44U | Channel layout: Ambisonic mode.<br>**Since**: 11<br><!--Device-AMB_MODE = 1ULL << 44U--><!--Device-AMB_MODE = 1ULL << 44U-End--> |
 
 ### OH_AudioChannelLayout
 
@@ -112,7 +112,7 @@ enum OH_AudioChannelLayout
 
 Enumerates the layouts of audio channels.<br> Int64 integers are used to indicate the appearance and sequence of speakers during recording or playback.
 
-<!--Device-OH_AudioChannelLayout--><!--Device-OH_AudioChannelLayout-End-->
+<!--Device-enum OH_AudioChannelLayout--><!--Device-enum OH_AudioChannelLayout-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -120,55 +120,55 @@ Enumerates the layouts of audio channels.<br> Int64 integers are used to indicat
 
 | Enum item | Description |
 | -- | -- |
-| CH_LAYOUT_UNKNOWN = 0ULL | Unknown.<br>**Since**: 11 |
-| CH_LAYOUT_MONO = CH_SET_FRONT_CENTER | Mono layout; 1 audio channel in total.<br>**Since**: 11 |
-| CH_LAYOUT_STEREO = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT | Stereo layout; 2 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_STEREO_DOWNMIX = CH_SET_STEREO_LEFT \| CH_SET_STEREO_RIGHT | Stereo downmix layout; 2 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_2POINT1 = CH_LAYOUT_STEREO \| CH_SET_LOW_FREQUENCY | 2.1 layout; 3 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_3POINT0 = CH_LAYOUT_STEREO \| CH_SET_BACK_CENTER | 3.0 layout; 3 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_SURROUND = CH_LAYOUT_STEREO \| CH_SET_FRONT_CENTER | Surround; 3 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_3POINT1 = CH_LAYOUT_SURROUND \| CH_SET_LOW_FREQUENCY | 3.1 layout; 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_4POINT0 = CH_LAYOUT_SURROUND \| CH_SET_BACK_CENTER | 4.0 layout; 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_QUAD_SIDE = CH_LAYOUT_STEREO \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT | Quad side layout; 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_QUAD = CH_LAYOUT_STEREO \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | Quad layout; 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_2POINT0POINT2 = CH_LAYOUT_STEREO \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 2.0.2 layout; 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER1_ACN_N3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_N3D | First-order FOA layout in ACN_N3D (ITU standards); 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER1_ACN_SN3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_SN3D | First-order FOA layout in ACN_SN3D (ITU standards); 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER1_FUMA = AMB_MODE \| AMB_ORD_1 \| AMB_COM_FUMA | First-order FOA layout in FUMA (ITU standards); 4 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_4POINT1 = CH_LAYOUT_4POINT0 \| CH_SET_LOW_FREQUENCY | 4.1 layout; 5 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_5POINT0 = CH_LAYOUT_SURROUND \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT | 5.0 layout; 5 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_5POINT0_BACK = CH_LAYOUT_SURROUND \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | 5.0 rear layout; 5 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_2POINT1POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_LOW_FREQUENCY | 2.1.2 layout; 5 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_3POINT0POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_FRONT_CENTER | 3.0.2 layout; 5 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_5POINT1 = CH_LAYOUT_5POINT0 \| CH_SET_LOW_FREQUENCY | 5.1 layout; 6 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_5POINT1_BACK = CH_LAYOUT_5POINT0_BACK \| CH_SET_LOW_FREQUENCY | 5.1 rear layout; 6 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_6POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_CENTER | 6.0 layout; 6 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_3POINT1POINT2 = CH_LAYOUT_3POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT | 3.1.2 layout; 6 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_6POINT0_FRONT = CH_LAYOUT_QUAD_SIDE \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 6.0 front layout; 6 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_HEXAGONAL = CH_LAYOUT_5POINT0_BACK \| CH_SET_BACK_CENTER | Hexagonal layout; 6 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_6POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_CENTER | 6.1 layout; 7 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_6POINT1_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_BACK_CENTER | 6.1 rear layout; 7 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_6POINT1_FRONT = CH_LAYOUT_6POINT0_FRONT \| CH_SET_LOW_FREQUENCY | 6.1 front layout; 7 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_7POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | 7.0 layout; 7 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_7POINT0_FRONT = CH_LAYOUT_5POINT0 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 7.0 front layout; 7 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_7POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | 7.1 layout; 8 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_OCTAGONAL = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_CENTER \| CH_SET_BACK_RIGHT | Octagonal layout; 8 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_5POINT1POINT2 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 5.1.2 layout; 8 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_7POINT1_WIDE = CH_LAYOUT_5POINT1 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 7.1 wide layout; 8 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_7POINT1_WIDE_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 7.1 rear wide layout; 8 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER2_ACN_N3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_N3D | Second-order HOA layout in ACN_N3D (ITU standards); 9 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER2_ACN_SN3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_SN3D | Second-order HOA layout in ACN_SN3D (ITU standards); 9 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER2_FUMA = AMB_MODE \| AMB_ORD_2 \| AMB_COM_FUMA | Second-order HOA layout in FUMA (ITU standards); 9 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_5POINT1POINT4 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT | 5.1.4 layout; 10 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_7POINT1POINT2 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 7.1.2 layout; 10 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_7POINT1POINT4 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT | 7.1.4 layout; 12 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_10POINT2 = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT \| CH_SET_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT \| CH_SET_BACK_CENTER \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT | 10.2 layout; 12 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_9POINT1POINT4 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT | 9.1.4 layout; 14 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_9POINT1POINT6 = CH_LAYOUT_9POINT1POINT4 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 9.1.6 layout; 16 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_HEXADECAGONAL = CH_LAYOUT_OCTAGONAL \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT | Hexadecagonal layout; 16 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER3_ACN_N3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_N3D | Third-order HOA layout in ACN_N3D (ITU standards); 16 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER3_ACN_SN3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_SN3D | Third-order HOA layout in ACN_SN3D (ITU standards); 16 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_AMB_ORDER3_FUMA = AMB_MODE \| AMB_ORD_3 \| AMB_COM_FUMA | Third-order HOA layout in FUMA (ITU standards); 16 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_22POINT2 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER \| CH_SET_BACK_CENTER \| CH_SET_TOP_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT \| CH_SET_BOTTOM_FRONT_LEFT \| CH_SET_BOTTOM_FRONT_RIGHT \| CH_SET_BOTTOM_FRONT_CENTER \| CH_SET_LOW_FREQUENCY_2 | 22.2 layout; 24 audio channels in total.<br>**Since**: 11 |
+| CH_LAYOUT_UNKNOWN = 0ULL | Unknown.<br>**Since**: 11<br><!--Device-CH_LAYOUT_UNKNOWN = 0ULL--><!--Device-CH_LAYOUT_UNKNOWN = 0ULL-End--> |
+| CH_LAYOUT_MONO = CH_SET_FRONT_CENTER | Mono layout; 1 audio channel in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_MONO = CH_SET_FRONT_CENTER--><!--Device-CH_LAYOUT_MONO = CH_SET_FRONT_CENTER-End--> |
+| CH_LAYOUT_STEREO = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT | Stereo layout; 2 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_STEREO = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT--><!--Device-CH_LAYOUT_STEREO = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT-End--> |
+| CH_LAYOUT_STEREO_DOWNMIX = CH_SET_STEREO_LEFT \| CH_SET_STEREO_RIGHT | Stereo downmix layout; 2 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_STEREO_DOWNMIX = CH_SET_STEREO_LEFT \| CH_SET_STEREO_RIGHT--><!--Device-CH_LAYOUT_STEREO_DOWNMIX = CH_SET_STEREO_LEFT \| CH_SET_STEREO_RIGHT-End--> |
+| CH_LAYOUT_2POINT1 = CH_LAYOUT_STEREO \| CH_SET_LOW_FREQUENCY | 2.1 layout; 3 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_2POINT1 = CH_LAYOUT_STEREO \| CH_SET_LOW_FREQUENCY--><!--Device-CH_LAYOUT_2POINT1 = CH_LAYOUT_STEREO \| CH_SET_LOW_FREQUENCY-End--> |
+| CH_LAYOUT_3POINT0 = CH_LAYOUT_STEREO \| CH_SET_BACK_CENTER | 3.0 layout; 3 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_3POINT0 = CH_LAYOUT_STEREO \| CH_SET_BACK_CENTER--><!--Device-CH_LAYOUT_3POINT0 = CH_LAYOUT_STEREO \| CH_SET_BACK_CENTER-End--> |
+| CH_LAYOUT_SURROUND = CH_LAYOUT_STEREO \| CH_SET_FRONT_CENTER | Surround; 3 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_SURROUND = CH_LAYOUT_STEREO \| CH_SET_FRONT_CENTER--><!--Device-CH_LAYOUT_SURROUND = CH_LAYOUT_STEREO \| CH_SET_FRONT_CENTER-End--> |
+| CH_LAYOUT_3POINT1 = CH_LAYOUT_SURROUND \| CH_SET_LOW_FREQUENCY | 3.1 layout; 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_3POINT1 = CH_LAYOUT_SURROUND \| CH_SET_LOW_FREQUENCY--><!--Device-CH_LAYOUT_3POINT1 = CH_LAYOUT_SURROUND \| CH_SET_LOW_FREQUENCY-End--> |
+| CH_LAYOUT_4POINT0 = CH_LAYOUT_SURROUND \| CH_SET_BACK_CENTER | 4.0 layout; 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_4POINT0 = CH_LAYOUT_SURROUND \| CH_SET_BACK_CENTER--><!--Device-CH_LAYOUT_4POINT0 = CH_LAYOUT_SURROUND \| CH_SET_BACK_CENTER-End--> |
+| CH_LAYOUT_QUAD_SIDE = CH_LAYOUT_STEREO \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT | Quad side layout; 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_QUAD_SIDE = CH_LAYOUT_STEREO \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT--><!--Device-CH_LAYOUT_QUAD_SIDE = CH_LAYOUT_STEREO \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT-End--> |
+| CH_LAYOUT_QUAD = CH_LAYOUT_STEREO \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | Quad layout; 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_QUAD = CH_LAYOUT_STEREO \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT--><!--Device-CH_LAYOUT_QUAD = CH_LAYOUT_STEREO \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT-End--> |
+| CH_LAYOUT_2POINT0POINT2 = CH_LAYOUT_STEREO \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 2.0.2 layout; 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_2POINT0POINT2 = CH_LAYOUT_STEREO \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT--><!--Device-CH_LAYOUT_2POINT0POINT2 = CH_LAYOUT_STEREO \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT-End--> |
+| CH_LAYOUT_AMB_ORDER1_ACN_N3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_N3D | First-order FOA layout in ACN_N3D (ITU standards); 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER1_ACN_N3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_N3D--><!--Device-CH_LAYOUT_AMB_ORDER1_ACN_N3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_N3D-End--> |
+| CH_LAYOUT_AMB_ORDER1_ACN_SN3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_SN3D | First-order FOA layout in ACN_SN3D (ITU standards); 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER1_ACN_SN3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_SN3D--><!--Device-CH_LAYOUT_AMB_ORDER1_ACN_SN3D = AMB_MODE \| AMB_ORD_1 \| AMB_COM_ACN \| AMB_NOR_SN3D-End--> |
+| CH_LAYOUT_AMB_ORDER1_FUMA = AMB_MODE \| AMB_ORD_1 \| AMB_COM_FUMA | First-order FOA layout in FUMA (ITU standards); 4 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER1_FUMA = AMB_MODE \| AMB_ORD_1 \| AMB_COM_FUMA--><!--Device-CH_LAYOUT_AMB_ORDER1_FUMA = AMB_MODE \| AMB_ORD_1 \| AMB_COM_FUMA-End--> |
+| CH_LAYOUT_4POINT1 = CH_LAYOUT_4POINT0 \| CH_SET_LOW_FREQUENCY | 4.1 layout; 5 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_4POINT1 = CH_LAYOUT_4POINT0 \| CH_SET_LOW_FREQUENCY--><!--Device-CH_LAYOUT_4POINT1 = CH_LAYOUT_4POINT0 \| CH_SET_LOW_FREQUENCY-End--> |
+| CH_LAYOUT_5POINT0 = CH_LAYOUT_SURROUND \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT | 5.0 layout; 5 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_5POINT0 = CH_LAYOUT_SURROUND \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT--><!--Device-CH_LAYOUT_5POINT0 = CH_LAYOUT_SURROUND \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT-End--> |
+| CH_LAYOUT_5POINT0_BACK = CH_LAYOUT_SURROUND \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | 5.0 rear layout; 5 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_5POINT0_BACK = CH_LAYOUT_SURROUND \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT--><!--Device-CH_LAYOUT_5POINT0_BACK = CH_LAYOUT_SURROUND \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT-End--> |
+| CH_LAYOUT_2POINT1POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_LOW_FREQUENCY | 2.1.2 layout; 5 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_2POINT1POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_LOW_FREQUENCY--><!--Device-CH_LAYOUT_2POINT1POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_LOW_FREQUENCY-End--> |
+| CH_LAYOUT_3POINT0POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_FRONT_CENTER | 3.0.2 layout; 5 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_3POINT0POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_FRONT_CENTER--><!--Device-CH_LAYOUT_3POINT0POINT2 = CH_LAYOUT_2POINT0POINT2 \| CH_SET_FRONT_CENTER-End--> |
+| CH_LAYOUT_5POINT1 = CH_LAYOUT_5POINT0 \| CH_SET_LOW_FREQUENCY | 5.1 layout; 6 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_5POINT1 = CH_LAYOUT_5POINT0 \| CH_SET_LOW_FREQUENCY--><!--Device-CH_LAYOUT_5POINT1 = CH_LAYOUT_5POINT0 \| CH_SET_LOW_FREQUENCY-End--> |
+| CH_LAYOUT_5POINT1_BACK = CH_LAYOUT_5POINT0_BACK \| CH_SET_LOW_FREQUENCY | 5.1 rear layout; 6 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_5POINT1_BACK = CH_LAYOUT_5POINT0_BACK \| CH_SET_LOW_FREQUENCY--><!--Device-CH_LAYOUT_5POINT1_BACK = CH_LAYOUT_5POINT0_BACK \| CH_SET_LOW_FREQUENCY-End--> |
+| CH_LAYOUT_6POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_CENTER | 6.0 layout; 6 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_6POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_CENTER--><!--Device-CH_LAYOUT_6POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_CENTER-End--> |
+| CH_LAYOUT_3POINT1POINT2 = CH_LAYOUT_3POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT | 3.1.2 layout; 6 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_3POINT1POINT2 = CH_LAYOUT_3POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT--><!--Device-CH_LAYOUT_3POINT1POINT2 = CH_LAYOUT_3POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT-End--> |
+| CH_LAYOUT_6POINT0_FRONT = CH_LAYOUT_QUAD_SIDE \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 6.0 front layout; 6 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_6POINT0_FRONT = CH_LAYOUT_QUAD_SIDE \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER--><!--Device-CH_LAYOUT_6POINT0_FRONT = CH_LAYOUT_QUAD_SIDE \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER-End--> |
+| CH_LAYOUT_HEXAGONAL = CH_LAYOUT_5POINT0_BACK \| CH_SET_BACK_CENTER | Hexagonal layout; 6 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_HEXAGONAL = CH_LAYOUT_5POINT0_BACK \| CH_SET_BACK_CENTER--><!--Device-CH_LAYOUT_HEXAGONAL = CH_LAYOUT_5POINT0_BACK \| CH_SET_BACK_CENTER-End--> |
+| CH_LAYOUT_6POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_CENTER | 6.1 layout; 7 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_6POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_CENTER--><!--Device-CH_LAYOUT_6POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_CENTER-End--> |
+| CH_LAYOUT_6POINT1_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_BACK_CENTER | 6.1 rear layout; 7 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_6POINT1_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_BACK_CENTER--><!--Device-CH_LAYOUT_6POINT1_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_BACK_CENTER-End--> |
+| CH_LAYOUT_6POINT1_FRONT = CH_LAYOUT_6POINT0_FRONT \| CH_SET_LOW_FREQUENCY | 6.1 front layout; 7 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_6POINT1_FRONT = CH_LAYOUT_6POINT0_FRONT \| CH_SET_LOW_FREQUENCY--><!--Device-CH_LAYOUT_6POINT1_FRONT = CH_LAYOUT_6POINT0_FRONT \| CH_SET_LOW_FREQUENCY-End--> |
+| CH_LAYOUT_7POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | 7.0 layout; 7 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_7POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT--><!--Device-CH_LAYOUT_7POINT0 = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT-End--> |
+| CH_LAYOUT_7POINT0_FRONT = CH_LAYOUT_5POINT0 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 7.0 front layout; 7 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_7POINT0_FRONT = CH_LAYOUT_5POINT0 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER--><!--Device-CH_LAYOUT_7POINT0_FRONT = CH_LAYOUT_5POINT0 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER-End--> |
+| CH_LAYOUT_7POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT | 7.1 layout; 8 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_7POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT--><!--Device-CH_LAYOUT_7POINT1 = CH_LAYOUT_5POINT1 \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT-End--> |
+| CH_LAYOUT_OCTAGONAL = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_CENTER \| CH_SET_BACK_RIGHT | Octagonal layout; 8 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_OCTAGONAL = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_CENTER \| CH_SET_BACK_RIGHT--><!--Device-CH_LAYOUT_OCTAGONAL = CH_LAYOUT_5POINT0 \| CH_SET_BACK_LEFT \| CH_SET_BACK_CENTER \| CH_SET_BACK_RIGHT-End--> |
+| CH_LAYOUT_5POINT1POINT2 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 5.1.2 layout; 8 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_5POINT1POINT2 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT--><!--Device-CH_LAYOUT_5POINT1POINT2 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT-End--> |
+| CH_LAYOUT_7POINT1_WIDE = CH_LAYOUT_5POINT1 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 7.1 wide layout; 8 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_7POINT1_WIDE = CH_LAYOUT_5POINT1 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER--><!--Device-CH_LAYOUT_7POINT1_WIDE = CH_LAYOUT_5POINT1 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER-End--> |
+| CH_LAYOUT_7POINT1_WIDE_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER | 7.1 rear wide layout; 8 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_7POINT1_WIDE_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER--><!--Device-CH_LAYOUT_7POINT1_WIDE_BACK = CH_LAYOUT_5POINT1_BACK \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER-End--> |
+| CH_LAYOUT_AMB_ORDER2_ACN_N3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_N3D | Second-order HOA layout in ACN_N3D (ITU standards); 9 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER2_ACN_N3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_N3D--><!--Device-CH_LAYOUT_AMB_ORDER2_ACN_N3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_N3D-End--> |
+| CH_LAYOUT_AMB_ORDER2_ACN_SN3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_SN3D | Second-order HOA layout in ACN_SN3D (ITU standards); 9 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER2_ACN_SN3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_SN3D--><!--Device-CH_LAYOUT_AMB_ORDER2_ACN_SN3D = AMB_MODE \| AMB_ORD_2 \| AMB_COM_ACN \| AMB_NOR_SN3D-End--> |
+| CH_LAYOUT_AMB_ORDER2_FUMA = AMB_MODE \| AMB_ORD_2 \| AMB_COM_FUMA | Second-order HOA layout in FUMA (ITU standards); 9 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER2_FUMA = AMB_MODE \| AMB_ORD_2 \| AMB_COM_FUMA--><!--Device-CH_LAYOUT_AMB_ORDER2_FUMA = AMB_MODE \| AMB_ORD_2 \| AMB_COM_FUMA-End--> |
+| CH_LAYOUT_5POINT1POINT4 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT | 5.1.4 layout; 10 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_5POINT1POINT4 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT--><!--Device-CH_LAYOUT_5POINT1POINT4 = CH_LAYOUT_5POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT-End--> |
+| CH_LAYOUT_7POINT1POINT2 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 7.1.2 layout; 10 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_7POINT1POINT2 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT--><!--Device-CH_LAYOUT_7POINT1POINT2 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT-End--> |
+| CH_LAYOUT_7POINT1POINT4 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT | 7.1.4 layout; 12 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_7POINT1POINT4 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT--><!--Device-CH_LAYOUT_7POINT1POINT4 = CH_LAYOUT_7POINT1 \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT-End--> |
+| CH_LAYOUT_10POINT2 = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT \| CH_SET_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT \| CH_SET_BACK_CENTER \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT | 10.2 layout; 12 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_10POINT2 = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT \| CH_SET_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT \| CH_SET_BACK_CENTER \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT--><!--Device-CH_LAYOUT_10POINT2 = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT \| CH_SET_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT \| CH_SET_BACK_LEFT \| CH_SET_BACK_RIGHT \| CH_SET_BACK_CENTER \| CH_SET_SIDE_LEFT \| CH_SET_SIDE_RIGHT \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT-End--> |
+| CH_LAYOUT_9POINT1POINT4 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT | 9.1.4 layout; 14 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_9POINT1POINT4 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT--><!--Device-CH_LAYOUT_9POINT1POINT4 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT-End--> |
+| CH_LAYOUT_9POINT1POINT6 = CH_LAYOUT_9POINT1POINT4 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT | 9.1.6 layout; 16 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_9POINT1POINT6 = CH_LAYOUT_9POINT1POINT4 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT--><!--Device-CH_LAYOUT_9POINT1POINT6 = CH_LAYOUT_9POINT1POINT4 \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT-End--> |
+| CH_LAYOUT_HEXADECAGONAL = CH_LAYOUT_OCTAGONAL \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT | Hexadecagonal layout; 16 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_HEXADECAGONAL = CH_LAYOUT_OCTAGONAL \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT--><!--Device-CH_LAYOUT_HEXADECAGONAL = CH_LAYOUT_OCTAGONAL \| CH_SET_WIDE_LEFT \| CH_SET_WIDE_RIGHT \| CH_SET_TOP_BACK_LEFT \| CH_SET_TOP_BACK_RIGHT \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_FRONT_LEFT \| CH_SET_TOP_FRONT_RIGHT-End--> |
+| CH_LAYOUT_AMB_ORDER3_ACN_N3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_N3D | Third-order HOA layout in ACN_N3D (ITU standards); 16 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER3_ACN_N3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_N3D--><!--Device-CH_LAYOUT_AMB_ORDER3_ACN_N3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_N3D-End--> |
+| CH_LAYOUT_AMB_ORDER3_ACN_SN3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_SN3D | Third-order HOA layout in ACN_SN3D (ITU standards); 16 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER3_ACN_SN3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_SN3D--><!--Device-CH_LAYOUT_AMB_ORDER3_ACN_SN3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_SN3D-End--> |
+| CH_LAYOUT_AMB_ORDER3_FUMA = AMB_MODE \| AMB_ORD_3 \| AMB_COM_FUMA | Third-order HOA layout in FUMA (ITU standards); 16 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_AMB_ORDER3_FUMA = AMB_MODE \| AMB_ORD_3 \| AMB_COM_FUMA--><!--Device-CH_LAYOUT_AMB_ORDER3_FUMA = AMB_MODE \| AMB_ORD_3 \| AMB_COM_FUMA-End--> |
+| CH_LAYOUT_22POINT2 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER \| CH_SET_BACK_CENTER \| CH_SET_TOP_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT \| CH_SET_BOTTOM_FRONT_LEFT \| CH_SET_BOTTOM_FRONT_RIGHT \| CH_SET_BOTTOM_FRONT_CENTER \| CH_SET_LOW_FREQUENCY_2 | 22.2 layout; 24 audio channels in total.<br>**Since**: 11<br><!--Device-CH_LAYOUT_22POINT2 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER \| CH_SET_BACK_CENTER \| CH_SET_TOP_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT \| CH_SET_BOTTOM_FRONT_LEFT \| CH_SET_BOTTOM_FRONT_RIGHT \| CH_SET_BOTTOM_FRONT_CENTER \| CH_SET_LOW_FREQUENCY_2--><!--Device-CH_LAYOUT_22POINT2 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER \| CH_SET_BACK_CENTER \| CH_SET_TOP_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT \| CH_SET_BOTTOM_FRONT_LEFT \| CH_SET_BOTTOM_FRONT_RIGHT \| CH_SET_BOTTOM_FRONT_CENTER \| CH_SET_LOW_FREQUENCY_2-End--> |
 
 

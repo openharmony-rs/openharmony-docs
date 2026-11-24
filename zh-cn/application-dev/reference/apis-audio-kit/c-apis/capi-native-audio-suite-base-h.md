@@ -60,15 +60,15 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | 默认均衡器频带增益效果。 各频带增益：{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | 均衡器节点内置民谣效果。 各频带增益：{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | 均衡器节点内置中国风效果。 各频带增益：{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | 均衡器节点内置古典效果。 各频带增益：{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | 均衡器节点内置舞曲效果。 各频带增益：{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | 均衡器节点内置爵士效果。 各频带增益：{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | 均衡器节点内置流行效果。 各频带增益：{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | 均衡器节点内置R&B效果。 各频带增益：{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | 均衡器节点内置摇滚效果。 各频带增益：{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DEFAULT | 默认均衡器频带增益效果。 各频带增益：{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DEFAULT--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DEFAULT-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_BALLADS | 均衡器节点内置民谣效果。 各频带增益：{3, 5, 2, -4, 1, 2, -3, 1, 4, 5}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_BALLADS--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_BALLADS-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CHINESE_STYLE | 均衡器节点内置中国风效果。 各频带增益：{0, 0, 2, 0, 0, 4, 4, 2, 2, 5}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CHINESE_STYLE--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CHINESE_STYLE-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_CLASSICAL | 均衡器节点内置古典效果。 各频带增益：{2, 3, 2, 1, 0, 0, -5, -5, -5, -6}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CLASSICAL--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_CLASSICAL-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_DANCE_MUSIC | 均衡器节点内置舞曲效果。 各频带增益：{4, 3, 2, -3, 0, 0, 5, 4, 2, 0}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DANCE_MUSIC--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_DANCE_MUSIC-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_JAZZ | 均衡器节点内置爵士效果。 各频带增益：{2, 0, 2, 3, 6, 5, -1, 3, 4, 4}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_JAZZ--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_JAZZ-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_POP | 均衡器节点内置流行效果。 各频带增益：{5, 2, 1, -1, -5, -5, -2, 1, 2, 4}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_POP--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_POP-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_RB | 均衡器节点内置R&B效果。 各频带增益：{1, 4, 5, 3, -2, -2, 2, 3, 5, 5}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_RB--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_RB-End--> |
+| const [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) OH_EQUALIZER_PARAM_ROCK | 均衡器节点内置摇滚效果。 各频带增益：{6, 4, 4, 2, 0, 1, 3, 3, 5, 4}。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_ROCK--><!--Device-const OH_EqualizerFrequencyBandGains OH_EQUALIZER_PARAM_ROCK-End--> |
 
 ## 枚举类型说明
 
@@ -82,7 +82,7 @@ enum OH_AudioNode_Type
 
 定义音频编创节点类型。
 
-<!--Device-OH_AudioNode_Type--><!--Device-OH_AudioNode_Type-End-->
+<!--Device-enum OH_AudioNode_Type--><!--Device-enum OH_AudioNode_Type-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -90,20 +90,20 @@ enum OH_AudioNode_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| INPUT_NODE_TYPE_DEFAULT = 1 | 输入节点，支持从应用程序获取音频数据。<br>**起始版本：** 22 |
-| OUTPUT_NODE_TYPE_DEFAULT = 101 | 输出节点，支持向应用程序提供音频数据。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_EQUALIZER = 201 | 均衡器效果节点。均衡器效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | 降噪效果节点。降噪效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：1。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | 声场效果节点。声场效果节点支持的声场类型：[OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)。<br> 声场效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式： [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | 音源分离效果节点。音源分离效果节点只能连接输出节点。<br> 音源分离效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). AUDIO_SAMPLE_F32LE。<br> 声道数：4（前2个声道用于人声，后2个声道用于伴奏）。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | 声音美化效果节点。声音美化效果节点支持的声音美化类型：[OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)。<br> 声音美化效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式： [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | 环境效果节点。环境效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | 混音效果节点。混音效果节点输出的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate)。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). AUDIO_SAMPLE_F32LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_SPACE_RENDER = 208 | 空间渲染效果节点。空间渲染效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 2。<br>**起始版本：** 23 |
-| EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209 | 传统变声效果节点。传统变声效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 1。<br>**起始版本：** 23 |
-| EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210 | 通用变声效果节点。通用变声效果节点的输出音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 2。<br>**起始版本：** 23 |
-| EFFECT_NODE_TYPE_TEMPO_PITCH = 211 | 变速变调效果节点。变速变调效果节点的输出音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 1。<br>**起始版本：** 23 |
-| EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212 | HOA（High-Order Ambisonics）转双耳空间音频节点。HOA转双耳空间音频节点输入的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_16000、 [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_48000。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat)。<br> 声道布局：1阶至3阶HOA，取值如下：< br> [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_AMB_ORDER1_ACN_SN3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_FUMA、 [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_AMB_ORDER2_ACN_SN3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_FUMA、 [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_N3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_AMB_ORDER3_ACN_SN3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_FUMA。 HOA转双耳空间音频节点的输出音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S32LE。<br> 声道数：2。<br> 该节点的前置节点必须连接音频格式为HOA的输入节点， 如果未正确连接，在调用[OH_AudioSuiteEngine_StartPipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline)接口时将会报错。<br>**起始版本：** 26.0.0 |
+| INPUT_NODE_TYPE_DEFAULT = 1 | 输入节点，支持从应用程序获取音频数据。<br>**起始版本：** 22<br><!--Device-INPUT_NODE_TYPE_DEFAULT = 1--><!--Device-INPUT_NODE_TYPE_DEFAULT = 1-End--> |
+| OUTPUT_NODE_TYPE_DEFAULT = 101 | 输出节点，支持向应用程序提供音频数据。<br>**起始版本：** 22<br><!--Device-OUTPUT_NODE_TYPE_DEFAULT = 101--><!--Device-OUTPUT_NODE_TYPE_DEFAULT = 101-End--> |
+| EFFECT_NODE_TYPE_EQUALIZER = 201 | 均衡器效果节点。均衡器效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22<br><!--Device-EFFECT_NODE_TYPE_EQUALIZER = 201--><!--Device-EFFECT_NODE_TYPE_EQUALIZER = 201-End--> |
+| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | 降噪效果节点。降噪效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：1。<br>**起始版本：** 22<br><!--Device-EFFECT_NODE_TYPE_NOISE_REDUCTION = 202--><!--Device-EFFECT_NODE_TYPE_NOISE_REDUCTION = 202-End--> |
+| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | 声场效果节点。声场效果节点支持的声场类型：[OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)。<br> 声场效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式： [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22<br><!--Device-EFFECT_NODE_TYPE_SOUND_FIELD = 203--><!--Device-EFFECT_NODE_TYPE_SOUND_FIELD = 203-End--> |
+| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | 音源分离效果节点。音源分离效果节点只能连接输出节点。<br> 音源分离效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). AUDIO_SAMPLE_F32LE。<br> 声道数：4（前2个声道用于人声，后2个声道用于伴奏）。<br>**起始版本：** 22<br><!--Device-EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204--><!--Device-EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204-End--> |
+| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | 声音美化效果节点。声音美化效果节点支持的声音美化类型：[OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)。<br> 声音美化效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式： [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22<br><!--Device-EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205--><!--Device-EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205-End--> |
+| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | 环境效果节点。环境效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22<br><!--Device-EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206--><!--Device-EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206-End--> |
+| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | 混音效果节点。混音效果节点输出的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate)。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat). AUDIO_SAMPLE_F32LE。<br> 声道数：2。<br>**起始版本：** 22<br><!--Device-EFFECT_NODE_TYPE_AUDIO_MIXER = 207--><!--Device-EFFECT_NODE_TYPE_AUDIO_MIXER = 207-End--> |
+| EFFECT_NODE_TYPE_SPACE_RENDER = 208 | 空间渲染效果节点。空间渲染效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 2。<br>**起始版本：** 23<br><!--Device-EFFECT_NODE_TYPE_SPACE_RENDER = 208--><!--Device-EFFECT_NODE_TYPE_SPACE_RENDER = 208-End--> |
+| EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209 | 传统变声效果节点。传统变声效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 1。<br>**起始版本：** 23<br><!--Device-EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209--><!--Device-EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209-End--> |
+| EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210 | 通用变声效果节点。通用变声效果节点的输出音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 2。<br>**起始版本：** 23<br><!--Device-EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210--><!--Device-EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210-End--> |
+| EFFECT_NODE_TYPE_TEMPO_PITCH = 211 | 变速变调效果节点。变速变调效果节点的输出音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数： 1。<br>**起始版本：** 23<br><!--Device-EFFECT_NODE_TYPE_TEMPO_PITCH = 211--><!--Device-EFFECT_NODE_TYPE_TEMPO_PITCH = 211-End--> |
+| EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212 | HOA（High-Order Ambisonics）转双耳空间音频节点。HOA转双耳空间音频节点输入的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_16000、 [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_48000。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat)。<br> 声道布局：1阶至3阶HOA，取值如下：< br> [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_AMB_ORDER1_ACN_SN3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_FUMA、 [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_AMB_ORDER2_ACN_SN3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_FUMA、 [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_N3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_AMB_ORDER3_ACN_SN3D、[OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_FUMA。 HOA转双耳空间音频节点的输出音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S32LE。<br> 声道数：2。<br> 该节点的前置节点必须连接音频格式为HOA的输入节点， 如果未正确连接，在调用[OH_AudioSuiteEngine_StartPipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline)接口时将会报错。<br>**起始版本：** 26.0.0<br><!--Device-EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212--><!--Device-EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212-End--> |
 
 ### OH_AudioSuite_PipelineWorkMode
 
@@ -115,7 +115,7 @@ enum OH_AudioSuite_PipelineWorkMode
 
 定义音频编创管线工作模式。
 
-<!--Device-OH_AudioSuite_PipelineWorkMode--><!--Device-OH_AudioSuite_PipelineWorkMode-End-->
+<!--Device-enum OH_AudioSuite_PipelineWorkMode--><!--Device-enum OH_AudioSuite_PipelineWorkMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -123,8 +123,8 @@ enum OH_AudioSuite_PipelineWorkMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | 编辑模式，管线处于该工作模式下可创建多种效果节点进行音频处理。<br>**起始版本：** 22 |
-| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | 实时预览模式，即在音频处理过程中实时预览已处理的音频。<br> 在API version 23之前， 实时预览模式下管线仅支持均衡器效果节点；<br> 在API version 23及以后，实时预览模式下管线支持所有效果节点。<br>**起始版本：** 22 |
+| AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | 编辑模式，管线处于该工作模式下可创建多种效果节点进行音频处理。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_PIPELINE_EDIT_MODE = 1--><!--Device-AUDIOSUITE_PIPELINE_EDIT_MODE = 1-End--> |
+| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | 实时预览模式，即在音频处理过程中实时预览已处理的音频。<br> 在API version 23之前， 实时预览模式下管线仅支持均衡器效果节点；<br> 在API version 23及以后，实时预览模式下管线支持所有效果节点。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_PIPELINE_REALTIME_MODE = 2--><!--Device-AUDIOSUITE_PIPELINE_REALTIME_MODE = 2-End--> |
 
 ### OH_AudioSuite_PipelineState
 
@@ -136,7 +136,7 @@ enum OH_AudioSuite_PipelineState
 
 定义音频编创管线运行状态。
 
-<!--Device-OH_AudioSuite_PipelineState--><!--Device-OH_AudioSuite_PipelineState-End-->
+<!--Device-enum OH_AudioSuite_PipelineState--><!--Device-enum OH_AudioSuite_PipelineState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -144,8 +144,8 @@ enum OH_AudioSuite_PipelineState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSUITE_PIPELINE_STOPPED = 1 | 管线处于停止状态。<br>**起始版本：** 22 |
-| AUDIOSUITE_PIPELINE_RUNNING = 2 | 管线处于运行状态。<br>**起始版本：** 22 |
+| AUDIOSUITE_PIPELINE_STOPPED = 1 | 管线处于停止状态。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_PIPELINE_STOPPED = 1--><!--Device-AUDIOSUITE_PIPELINE_STOPPED = 1-End--> |
+| AUDIOSUITE_PIPELINE_RUNNING = 2 | 管线处于运行状态。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_PIPELINE_RUNNING = 2--><!--Device-AUDIOSUITE_PIPELINE_RUNNING = 2-End--> |
 
 ### OH_AudioSuite_Result
 
@@ -157,7 +157,7 @@ enum OH_AudioSuite_Result
 
 音频编创错误码。
 
-<!--Device-OH_AudioSuite_Result--><!--Device-OH_AudioSuite_Result-End-->
+<!--Device-enum OH_AudioSuite_Result--><!--Device-enum OH_AudioSuite_Result-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -165,20 +165,20 @@ enum OH_AudioSuite_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSUITE_SUCCESS = 0 | &nbsp;调用成功。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_INVALID_PARAM = 1 | &nbsp;输入参数无效。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_INVALID_STATE = 2 | &nbsp;非法状态。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_SYSTEM = 3 | &nbsp;系统通用错误。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;不支持的音频格式，如不支持的编码类型、采样格式等。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 | &nbsp;引擎不存在。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 | &nbsp;管线不存在。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | &nbsp;节点不存在。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | &nbsp;节点之间不支持连接。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | &nbsp;不支持的操作。例如，效果节点不支持设置音频格式。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | &nbsp;创建管线或者节点超过系统最大数量限制。具体情况如下： <br>引擎最多支持创建10条管线（其中，实时预览管线最多创建1条）。 <br>每一个管线中，输出节点的数量不超过1个，混音节点的数量不超过3个，音源分离节点的数量不超过1个。 <br>在API version 24之前，每一个管线中，输入节点的数量不超过5个，其余效果节点的数量不超过5个。 <br>在API version 24及以后，每一个管线中，输入节点的数量不超过15个，其余效果节点的数量不超过15个。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | &nbsp;参数缺少必要参数。例如，输入节点未设置回调函数、输出节点未设置音频格式。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_TIMEOUT = 12 | &nbsp;操作超时。<br>**起始版本：** 22 |
-| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | &nbsp;内存申请失败。<br>**起始版本：** 22 |
+| AUDIOSUITE_SUCCESS = 0 | &nbsp;调用成功。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_SUCCESS = 0--><!--Device-AUDIOSUITE_SUCCESS = 0-End--> |
+| AUDIOSUITE_ERROR_INVALID_PARAM = 1 | &nbsp;输入参数无效。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_INVALID_PARAM = 1--><!--Device-AUDIOSUITE_ERROR_INVALID_PARAM = 1-End--> |
+| AUDIOSUITE_ERROR_INVALID_STATE = 2 | &nbsp;非法状态。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_INVALID_STATE = 2--><!--Device-AUDIOSUITE_ERROR_INVALID_STATE = 2-End--> |
+| AUDIOSUITE_ERROR_SYSTEM = 3 | &nbsp;系统通用错误。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_SYSTEM = 3--><!--Device-AUDIOSUITE_ERROR_SYSTEM = 3-End--> |
+| AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;不支持的音频格式，如不支持的编码类型、采样格式等。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4--><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT = 4-End--> |
+| AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5 | &nbsp;引擎不存在。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5--><!--Device-AUDIOSUITE_ERROR_ENGINE_NOT_EXIST = 5-End--> |
+| AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6 | &nbsp;管线不存在。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6--><!--Device-AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST = 6-End--> |
+| AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | &nbsp;节点不存在。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7--><!--Device-AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7-End--> |
+| AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | &nbsp;节点之间不支持连接。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8--><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8-End--> |
+| AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | &nbsp;不支持的操作。例如，效果节点不支持设置音频格式。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9--><!--Device-AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9-End--> |
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | &nbsp;创建管线或者节点超过系统最大数量限制。具体情况如下： <br>引擎最多支持创建10条管线（其中，实时预览管线最多创建1条）。 <br>每一个管线中，输出节点的数量不超过1个，混音节点的数量不超过3个，音源分离节点的数量不超过1个。 <br>在API version 24之前，每一个管线中，输入节点的数量不超过5个，其余效果节点的数量不超过5个。 <br>在API version 24及以后，每一个管线中，输入节点的数量不超过15个，其余效果节点的数量不超过15个。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10--><!--Device-AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10-End--> |
+| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | &nbsp;参数缺少必要参数。例如，输入节点未设置回调函数、输出节点未设置音频格式。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11--><!--Device-AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11-End--> |
+| AUDIOSUITE_ERROR_TIMEOUT = 12 | &nbsp;操作超时。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_TIMEOUT = 12--><!--Device-AUDIOSUITE_ERROR_TIMEOUT = 12-End--> |
+| AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | &nbsp;内存申请失败。<br>**起始版本：** 22<br><!--Device-AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13--><!--Device-AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13-End--> |
 
 ### OH_Audio_SampleFormat
 
@@ -190,7 +190,7 @@ enum OH_Audio_SampleFormat
 
 定义音频编创节点音频流的位深度。
 
-<!--Device-OH_Audio_SampleFormat--><!--Device-OH_Audio_SampleFormat-End-->
+<!--Device-enum OH_Audio_SampleFormat--><!--Device-enum OH_Audio_SampleFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -198,11 +198,11 @@ enum OH_Audio_SampleFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_SAMPLE_U8 = 0 | Unsigned 8位。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_S16LE = 1 | Signed 16位小端。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_S24LE = 2 | Signed 24位小端。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_S32LE = 3 | Signed 32位小端。<br>**起始版本：** 22 |
-| AUDIO_SAMPLE_F32LE = 4 | Float 32位小端。<br>**起始版本：** 22 |
+| AUDIO_SAMPLE_U8 = 0 | Unsigned 8位。<br>**起始版本：** 22<br><!--Device-AUDIO_SAMPLE_U8 = 0--><!--Device-AUDIO_SAMPLE_U8 = 0-End--> |
+| AUDIO_SAMPLE_S16LE = 1 | Signed 16位小端。<br>**起始版本：** 22<br><!--Device-AUDIO_SAMPLE_S16LE = 1--><!--Device-AUDIO_SAMPLE_S16LE = 1-End--> |
+| AUDIO_SAMPLE_S24LE = 2 | Signed 24位小端。<br>**起始版本：** 22<br><!--Device-AUDIO_SAMPLE_S24LE = 2--><!--Device-AUDIO_SAMPLE_S24LE = 2-End--> |
+| AUDIO_SAMPLE_S32LE = 3 | Signed 32位小端。<br>**起始版本：** 22<br><!--Device-AUDIO_SAMPLE_S32LE = 3--><!--Device-AUDIO_SAMPLE_S32LE = 3-End--> |
+| AUDIO_SAMPLE_F32LE = 4 | Float 32位小端。<br>**起始版本：** 22<br><!--Device-AUDIO_SAMPLE_F32LE = 4--><!--Device-AUDIO_SAMPLE_F32LE = 4-End--> |
 
 ### OH_Audio_EncodingType
 
@@ -214,7 +214,7 @@ enum OH_Audio_EncodingType
 
 定义音频流编码类型。
 
-<!--Device-OH_Audio_EncodingType--><!--Device-OH_Audio_EncodingType-End-->
+<!--Device-enum OH_Audio_EncodingType--><!--Device-enum OH_Audio_EncodingType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -222,7 +222,7 @@ enum OH_Audio_EncodingType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_ENCODING_TYPE_RAW = 0 | PCM编码。<br>**起始版本：** 22 |
+| AUDIO_ENCODING_TYPE_RAW = 0 | PCM编码。<br>**起始版本：** 22<br><!--Device-AUDIO_ENCODING_TYPE_RAW = 0--><!--Device-AUDIO_ENCODING_TYPE_RAW = 0-End--> |
 
 ### OH_Audio_SampleRate
 
@@ -234,7 +234,7 @@ enum OH_Audio_SampleRate
 
 定义音频采样率。
 
-<!--Device-OH_Audio_SampleRate--><!--Device-OH_Audio_SampleRate-End-->
+<!--Device-enum OH_Audio_SampleRate--><!--Device-enum OH_Audio_SampleRate-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -242,20 +242,20 @@ enum OH_Audio_SampleRate
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SAMPLE_RATE_8000 = 8000 | 采样率8kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_11025 = 11025 | 采样率11.025kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_12000 = 12000 | 采样率12kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_16000 = 16000 | 采样率16kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_22050 = 22050 | 采样率22.05kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_24000 = 24000 | 采样率24kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_32000 = 32000 | 采样率32kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_44100 = 44100 | 采样率44.1kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_48000 = 48000 | 采样率48kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_64000 = 64000 | 采样率64kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_88200 = 88200 | 采样率88.2kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_96000 = 96000 | 采样率96kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_176400 = 176400 | 采样率176.4kHz。<br>**起始版本：** 22 |
-| SAMPLE_RATE_192000 = 192000 | 采样率192kHz。<br>**起始版本：** 22 |
+| SAMPLE_RATE_8000 = 8000 | 采样率8kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_8000 = 8000--><!--Device-SAMPLE_RATE_8000 = 8000-End--> |
+| SAMPLE_RATE_11025 = 11025 | 采样率11.025kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_11025 = 11025--><!--Device-SAMPLE_RATE_11025 = 11025-End--> |
+| SAMPLE_RATE_12000 = 12000 | 采样率12kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_12000 = 12000--><!--Device-SAMPLE_RATE_12000 = 12000-End--> |
+| SAMPLE_RATE_16000 = 16000 | 采样率16kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_16000 = 16000--><!--Device-SAMPLE_RATE_16000 = 16000-End--> |
+| SAMPLE_RATE_22050 = 22050 | 采样率22.05kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_22050 = 22050--><!--Device-SAMPLE_RATE_22050 = 22050-End--> |
+| SAMPLE_RATE_24000 = 24000 | 采样率24kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_24000 = 24000--><!--Device-SAMPLE_RATE_24000 = 24000-End--> |
+| SAMPLE_RATE_32000 = 32000 | 采样率32kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_32000 = 32000--><!--Device-SAMPLE_RATE_32000 = 32000-End--> |
+| SAMPLE_RATE_44100 = 44100 | 采样率44.1kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_44100 = 44100--><!--Device-SAMPLE_RATE_44100 = 44100-End--> |
+| SAMPLE_RATE_48000 = 48000 | 采样率48kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_48000 = 48000--><!--Device-SAMPLE_RATE_48000 = 48000-End--> |
+| SAMPLE_RATE_64000 = 64000 | 采样率64kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_64000 = 64000--><!--Device-SAMPLE_RATE_64000 = 64000-End--> |
+| SAMPLE_RATE_88200 = 88200 | 采样率88.2kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_88200 = 88200--><!--Device-SAMPLE_RATE_88200 = 88200-End--> |
+| SAMPLE_RATE_96000 = 96000 | 采样率96kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_96000 = 96000--><!--Device-SAMPLE_RATE_96000 = 96000-End--> |
+| SAMPLE_RATE_176400 = 176400 | 采样率176.4kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_176400 = 176400--><!--Device-SAMPLE_RATE_176400 = 176400-End--> |
+| SAMPLE_RATE_192000 = 192000 | 采样率192kHz。<br>**起始版本：** 22<br><!--Device-SAMPLE_RATE_192000 = 192000--><!--Device-SAMPLE_RATE_192000 = 192000-End--> |
 
 ### OH_SoundFieldType
 
@@ -267,7 +267,7 @@ enum OH_SoundFieldType
 
 定义音频编创声场效果节点的效果模式。
 
-<!--Device-OH_SoundFieldType--><!--Device-OH_SoundFieldType-End-->
+<!--Device-enum OH_SoundFieldType--><!--Device-enum OH_SoundFieldType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -275,10 +275,10 @@ enum OH_SoundFieldType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SOUND_FIELD_FRONT_FACING = 1 | 前置声场效果。<br>**起始版本：** 22 |
-| SOUND_FIELD_GRAND = 2 | 宏大声场效果。<br>**起始版本：** 22 |
-| SOUND_FIELD_NEAR = 3 | 聆听声场效果。<br>**起始版本：** 22 |
-| SOUND_FIELD_WIDE = 4 | 宽广声场效果。<br>**起始版本：** 22 |
+| SOUND_FIELD_FRONT_FACING = 1 | 前置声场效果。<br>**起始版本：** 22<br><!--Device-SOUND_FIELD_FRONT_FACING = 1--><!--Device-SOUND_FIELD_FRONT_FACING = 1-End--> |
+| SOUND_FIELD_GRAND = 2 | 宏大声场效果。<br>**起始版本：** 22<br><!--Device-SOUND_FIELD_GRAND = 2--><!--Device-SOUND_FIELD_GRAND = 2-End--> |
+| SOUND_FIELD_NEAR = 3 | 聆听声场效果。<br>**起始版本：** 22<br><!--Device-SOUND_FIELD_NEAR = 3--><!--Device-SOUND_FIELD_NEAR = 3-End--> |
+| SOUND_FIELD_WIDE = 4 | 宽广声场效果。<br>**起始版本：** 22<br><!--Device-SOUND_FIELD_WIDE = 4--><!--Device-SOUND_FIELD_WIDE = 4-End--> |
 
 ### OH_EnvironmentType
 
@@ -290,7 +290,7 @@ enum OH_EnvironmentType
 
 定义音频编创环境效果节点的模式。
 
-<!--Device-OH_EnvironmentType--><!--Device-OH_EnvironmentType-End-->
+<!--Device-enum OH_EnvironmentType--><!--Device-enum OH_EnvironmentType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -298,10 +298,10 @@ enum OH_EnvironmentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ENVIRONMENT_TYPE_BROADCAST = 1 | 环境节点效果为广播。<br>**起始版本：** 22 |
-| ENVIRONMENT_TYPE_EARPIECE = 2 | 环境节点效果为电话听筒。<br>**起始版本：** 22 |
-| ENVIRONMENT_TYPE_UNDERWATER = 3 | 环境节点效果为水下。<br>**起始版本：** 22 |
-| ENVIRONMENT_TYPE_GRAMOPHONE = 4 | 环境节点效果为留声机。<br>**起始版本：** 22 |
+| ENVIRONMENT_TYPE_BROADCAST = 1 | 环境节点效果为广播。<br>**起始版本：** 22<br><!--Device-ENVIRONMENT_TYPE_BROADCAST = 1--><!--Device-ENVIRONMENT_TYPE_BROADCAST = 1-End--> |
+| ENVIRONMENT_TYPE_EARPIECE = 2 | 环境节点效果为电话听筒。<br>**起始版本：** 22<br><!--Device-ENVIRONMENT_TYPE_EARPIECE = 2--><!--Device-ENVIRONMENT_TYPE_EARPIECE = 2-End--> |
+| ENVIRONMENT_TYPE_UNDERWATER = 3 | 环境节点效果为水下。<br>**起始版本：** 22<br><!--Device-ENVIRONMENT_TYPE_UNDERWATER = 3--><!--Device-ENVIRONMENT_TYPE_UNDERWATER = 3-End--> |
+| ENVIRONMENT_TYPE_GRAMOPHONE = 4 | 环境节点效果为留声机。<br>**起始版本：** 22<br><!--Device-ENVIRONMENT_TYPE_GRAMOPHONE = 4--><!--Device-ENVIRONMENT_TYPE_GRAMOPHONE = 4-End--> |
 
 ### OH_VoiceBeautifierType
 
@@ -313,7 +313,7 @@ enum OH_VoiceBeautifierType
 
 定义音频编创美化效果节点模式。
 
-<!--Device-OH_VoiceBeautifierType--><!--Device-OH_VoiceBeautifierType-End-->
+<!--Device-enum OH_VoiceBeautifierType--><!--Device-enum OH_VoiceBeautifierType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -321,10 +321,10 @@ enum OH_VoiceBeautifierType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VOICE_BEAUTIFIER_TYPE_CLEAR = 1 | 声音美化节点效果为清澈。<br>**起始版本：** 22 |
-| VOICE_BEAUTIFIER_TYPE_THEATRE = 2 | 声音美化节点效果为剧场。<br>**起始版本：** 22 |
-| VOICE_BEAUTIFIER_TYPE_CD = 3 | 声音美化节点效果为CD。<br>**起始版本：** 22 |
-| VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4 | 声音美化节点效果为录音棚。<br>**起始版本：** 22 |
+| VOICE_BEAUTIFIER_TYPE_CLEAR = 1 | 声音美化节点效果为清澈。<br>**起始版本：** 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_CLEAR = 1--><!--Device-VOICE_BEAUTIFIER_TYPE_CLEAR = 1-End--> |
+| VOICE_BEAUTIFIER_TYPE_THEATRE = 2 | 声音美化节点效果为剧场。<br>**起始版本：** 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_THEATRE = 2--><!--Device-VOICE_BEAUTIFIER_TYPE_THEATRE = 2-End--> |
+| VOICE_BEAUTIFIER_TYPE_CD = 3 | 声音美化节点效果为CD。<br>**起始版本：** 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_CD = 3--><!--Device-VOICE_BEAUTIFIER_TYPE_CD = 3-End--> |
+| VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4 | 声音美化节点效果为录音棚。<br>**起始版本：** 22<br><!--Device-VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4--><!--Device-VOICE_BEAUTIFIER_TYPE_RECORDING_STUDIO = 4-End--> |
 
 ### OH_AudioSuite_SurroundDirection
 
@@ -336,7 +336,7 @@ enum OH_AudioSuite_SurroundDirection
 
 定义空间渲染效果节点旋转模式环绕方向。
 
-<!--Device-OH_AudioSuite_SurroundDirection--><!--Device-OH_AudioSuite_SurroundDirection-End-->
+<!--Device-enum OH_AudioSuite_SurroundDirection--><!--Device-enum OH_AudioSuite_SurroundDirection-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -344,8 +344,8 @@ enum OH_AudioSuite_SurroundDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SPACE_RENDER_CCW = 0 | 逆时针旋转。<br>**起始版本：** 23 |
-| SPACE_RENDER_CW = 1 | 顺时针旋转。<br>**起始版本：** 23 |
+| SPACE_RENDER_CCW = 0 | 逆时针旋转。<br>**起始版本：** 23<br><!--Device-SPACE_RENDER_CCW = 0--><!--Device-SPACE_RENDER_CCW = 0-End--> |
+| SPACE_RENDER_CW = 1 | 顺时针旋转。<br>**起始版本：** 23<br><!--Device-SPACE_RENDER_CW = 1--><!--Device-SPACE_RENDER_CW = 1-End--> |
 
 ### OH_AudioSuite_PureVoiceChangeGenderOption
 
@@ -357,7 +357,7 @@ enum OH_AudioSuite_PureVoiceChangeGenderOption
 
 定义音频编创传统变声效果节点的性别。
 
-<!--Device-OH_AudioSuite_PureVoiceChangeGenderOption--><!--Device-OH_AudioSuite_PureVoiceChangeGenderOption-End-->
+<!--Device-enum OH_AudioSuite_PureVoiceChangeGenderOption--><!--Device-enum OH_AudioSuite_PureVoiceChangeGenderOption-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -365,8 +365,8 @@ enum OH_AudioSuite_PureVoiceChangeGenderOption
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PURE_VOICE_CHANGE_FEMALE = 1 | 设置女声。<br>**起始版本：** 23 |
-| PURE_VOICE_CHANGE_MALE = 2 | 设置男声。<br>**起始版本：** 23 |
+| PURE_VOICE_CHANGE_FEMALE = 1 | 设置女声。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_FEMALE = 1--><!--Device-PURE_VOICE_CHANGE_FEMALE = 1-End--> |
+| PURE_VOICE_CHANGE_MALE = 2 | 设置男声。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_MALE = 2--><!--Device-PURE_VOICE_CHANGE_MALE = 2-End--> |
 
 ### OH_AudioSuite_PureVoiceChangeType
 
@@ -378,7 +378,7 @@ enum OH_AudioSuite_PureVoiceChangeType
 
 定义音频编创传统变声效果节点的变声类型。
 
-<!--Device-OH_AudioSuite_PureVoiceChangeType--><!--Device-OH_AudioSuite_PureVoiceChangeType-End-->
+<!--Device-enum OH_AudioSuite_PureVoiceChangeType--><!--Device-enum OH_AudioSuite_PureVoiceChangeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -386,13 +386,13 @@ enum OH_AudioSuite_PureVoiceChangeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PURE_VOICE_CHANGE_TYPE_CARTOON = 1 | 传统变声效果节点为卡通类型。<br>**起始版本：** 23 |
-| PURE_VOICE_CHANGE_TYPE_CUTE = 2 | 传统变声效果节点为萝莉类型。<br>**起始版本：** 23 |
-| PURE_VOICE_CHANGE_TYPE_FEMALE = 3 | 传统变声效果节点为女声类型。<br>**起始版本：** 23 |
-| PURE_VOICE_CHANGE_TYPE_MALE = 4 | 传统变声效果节点为男声类型。<br>**起始版本：** 23 |
-| PURE_VOICE_CHANGE_TYPE_MONSTER = 5 | 传统变声效果节点为怪兽类型。<br>**起始版本：** 23 |
-| PURE_VOICE_CHANGE_TYPE_ROBOTS = 6 | 传统变声效果节点为机器人类型。<br>**起始版本：** 23 |
-| PURE_VOICE_CHANGE_TYPE_SEASONED = 7 | 传统变声效果节点为大叔类型。<br>**起始版本：** 23 |
+| PURE_VOICE_CHANGE_TYPE_CARTOON = 1 | 传统变声效果节点为卡通类型。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_CARTOON = 1--><!--Device-PURE_VOICE_CHANGE_TYPE_CARTOON = 1-End--> |
+| PURE_VOICE_CHANGE_TYPE_CUTE = 2 | 传统变声效果节点为萝莉类型。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_CUTE = 2--><!--Device-PURE_VOICE_CHANGE_TYPE_CUTE = 2-End--> |
+| PURE_VOICE_CHANGE_TYPE_FEMALE = 3 | 传统变声效果节点为女声类型。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_FEMALE = 3--><!--Device-PURE_VOICE_CHANGE_TYPE_FEMALE = 3-End--> |
+| PURE_VOICE_CHANGE_TYPE_MALE = 4 | 传统变声效果节点为男声类型。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_MALE = 4--><!--Device-PURE_VOICE_CHANGE_TYPE_MALE = 4-End--> |
+| PURE_VOICE_CHANGE_TYPE_MONSTER = 5 | 传统变声效果节点为怪兽类型。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_MONSTER = 5--><!--Device-PURE_VOICE_CHANGE_TYPE_MONSTER = 5-End--> |
+| PURE_VOICE_CHANGE_TYPE_ROBOTS = 6 | 传统变声效果节点为机器人类型。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_ROBOTS = 6--><!--Device-PURE_VOICE_CHANGE_TYPE_ROBOTS = 6-End--> |
+| PURE_VOICE_CHANGE_TYPE_SEASONED = 7 | 传统变声效果节点为大叔类型。<br>**起始版本：** 23<br><!--Device-PURE_VOICE_CHANGE_TYPE_SEASONED = 7--><!--Device-PURE_VOICE_CHANGE_TYPE_SEASONED = 7-End--> |
 
 ### OH_AudioSuite_GeneralVoiceChangeType
 
@@ -404,7 +404,7 @@ enum OH_AudioSuite_GeneralVoiceChangeType
 
 定义音频编创通用变声的节点类型。
 
-<!--Device-OH_AudioSuite_GeneralVoiceChangeType--><!--Device-OH_AudioSuite_GeneralVoiceChangeType-End-->
+<!--Device-enum OH_AudioSuite_GeneralVoiceChangeType--><!--Device-enum OH_AudioSuite_GeneralVoiceChangeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -412,15 +412,15 @@ enum OH_AudioSuite_GeneralVoiceChangeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| GENERAL_VOICE_CHANGE_TYPE_CUTE = 1 | 传统变声效果节点为萝莉类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2 | 通用变声效果节点为赛博朋克类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3 | 传统变声效果节点为女声类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_MALE = 4 | 传统变声效果节点为男声类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_MIX = 5 | 通用变声效果节点为混响类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6 | 传统变声效果节点为怪兽类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7 | 传统变声效果节点为大叔类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8 | 通用变声效果节点为合成器类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_TRILL = 9 | 通用变声效果节点为颤音类型。<br>**起始版本：** 23 |
-| GENERAL_VOICE_CHANGE_TYPE_WAR = 10 | 通用变声效果节点为战争类型。<br>**起始版本：** 23 |
+| GENERAL_VOICE_CHANGE_TYPE_CUTE = 1 | 传统变声效果节点为萝莉类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_CUTE = 1--><!--Device-GENERAL_VOICE_CHANGE_TYPE_CUTE = 1-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2 | 通用变声效果节点为赛博朋克类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2--><!--Device-GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3 | 传统变声效果节点为女声类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3--><!--Device-GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_MALE = 4 | 传统变声效果节点为男声类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_MALE = 4--><!--Device-GENERAL_VOICE_CHANGE_TYPE_MALE = 4-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_MIX = 5 | 通用变声效果节点为混响类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_MIX = 5--><!--Device-GENERAL_VOICE_CHANGE_TYPE_MIX = 5-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6 | 传统变声效果节点为怪兽类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6--><!--Device-GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7 | 传统变声效果节点为大叔类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7--><!--Device-GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8 | 通用变声效果节点为合成器类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8--><!--Device-GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_TRILL = 9 | 通用变声效果节点为颤音类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_TRILL = 9--><!--Device-GENERAL_VOICE_CHANGE_TYPE_TRILL = 9-End--> |
+| GENERAL_VOICE_CHANGE_TYPE_WAR = 10 | 通用变声效果节点为战争类型。<br>**起始版本：** 23<br><!--Device-GENERAL_VOICE_CHANGE_TYPE_WAR = 10--><!--Device-GENERAL_VOICE_CHANGE_TYPE_WAR = 10-End--> |
 
 

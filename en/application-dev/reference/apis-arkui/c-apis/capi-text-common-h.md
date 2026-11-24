@@ -90,7 +90,7 @@ enum ArkUI_TextAlignment
 
 Enumerates text horizontal alignment styles.
 
-<!--Device-ArkUI_TextAlignment--><!--Device-ArkUI_TextAlignment-End-->
+<!--Device-enum ArkUI_TextAlignment--><!--Device-enum ArkUI_TextAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,12 +98,12 @@ Enumerates text horizontal alignment styles.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_ALIGNMENT_START = 0 | Aligned with the start. |
-| ARKUI_TEXT_ALIGNMENT_CENTER | Horizontally centered. |
-| ARKUI_TEXT_ALIGNMENT_END | Aligned with the end. |
-| ARKUI_TEXT_ALIGNMENT_JUSTIFY | Aligned with both margins. |
-| ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | Aligned with left to right.<br>**Since**: 23 |
-| ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | Aligned with right to left.<br>**Since**: 23 |
+| ARKUI_TEXT_ALIGNMENT_START = 0 | Aligned with the start.<br><!--Device-ARKUI_TEXT_ALIGNMENT_START = 0--><!--Device-ARKUI_TEXT_ALIGNMENT_START = 0-End--> |
+| ARKUI_TEXT_ALIGNMENT_CENTER | Horizontally centered.<br><!--Device-ARKUI_TEXT_ALIGNMENT_CENTER--><!--Device-ARKUI_TEXT_ALIGNMENT_CENTER-End--> |
+| ARKUI_TEXT_ALIGNMENT_END | Aligned with the end.<br><!--Device-ARKUI_TEXT_ALIGNMENT_END--><!--Device-ARKUI_TEXT_ALIGNMENT_END-End--> |
+| ARKUI_TEXT_ALIGNMENT_JUSTIFY | Aligned with both margins.<br><!--Device-ARKUI_TEXT_ALIGNMENT_JUSTIFY--><!--Device-ARKUI_TEXT_ALIGNMENT_JUSTIFY-End--> |
+| ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | Aligned with left to right.<br>**Since**: 23<br><!--Device-ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4--><!--Device-ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4-End--> |
+| ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | Aligned with right to left.<br>**Since**: 23<br><!--Device-ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5--><!--Device-ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5-End--> |
 
 ### ArkUI_TextVerticalAlignment
 
@@ -115,7 +115,7 @@ enum ArkUI_TextVerticalAlignment
 
 Enumerates text vertical alignment styles.
 
-<!--Device-ArkUI_TextVerticalAlignment--><!--Device-ArkUI_TextVerticalAlignment-End-->
+<!--Device-enum ArkUI_TextVerticalAlignment--><!--Device-enum ArkUI_TextVerticalAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,10 +123,10 @@ Enumerates text vertical alignment styles.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | Aligned to the baseline. |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned. |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | Center aligned. |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | Top aligned. |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | Aligned to the baseline.<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0-End--> |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned.<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM-End--> |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | Center aligned.<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER-End--> |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | Top aligned.<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP-End--> |
 
 ### ArkUI_TextContentAlign
 
@@ -138,7 +138,7 @@ enum ArkUI_TextContentAlign
 
 Enumerates vertical alignment styles in the text content area.
 
-<!--Device-ArkUI_TextContentAlign--><!--Device-ArkUI_TextContentAlign-End-->
+<!--Device-enum ArkUI_TextContentAlign--><!--Device-enum ArkUI_TextContentAlign-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,9 +146,9 @@ Enumerates vertical alignment styles in the text content area.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_CONTENT_ALIGN_TOP = 0 | Top aligned. |
-| ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1 | Center aligned. |
-| ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2 | Bottom aligned. |
+| ARKUI_TEXT_CONTENT_ALIGN_TOP = 0 | Top aligned.<br><!--Device-ARKUI_TEXT_CONTENT_ALIGN_TOP = 0--><!--Device-ARKUI_TEXT_CONTENT_ALIGN_TOP = 0-End--> |
+| ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1 | Center aligned.<br><!--Device-ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1--><!--Device-ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1-End--> |
+| ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2 | Bottom aligned.<br><!--Device-ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2--><!--Device-ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2-End--> |
 
 ### ArkUI_TextDirection
 
@@ -160,7 +160,7 @@ enum ArkUI_TextDirection
 
 Enumerates text layout directions.
 
-<!--Device-ArkUI_TextDirection--><!--Device-ArkUI_TextDirection-End-->
+<!--Device-enum ArkUI_TextDirection--><!--Device-enum ArkUI_TextDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,10 +168,10 @@ Enumerates text layout directions.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_DIRECTION_LTR = 0 | The text direction is left to right. |
-| ARKUI_TEXT_DIRECTION_RTL = 1 | The text direction is right to left. |
-| ARKUI_TEXT_DIRECTION_DEFAULT = 2 | The text direction follows the component layout. |
-| ARKUI_TEXT_DIRECTION_AUTO = 3 | The text direction follows the actual text. |
+| ARKUI_TEXT_DIRECTION_LTR = 0 | The text direction is left to right.<br><!--Device-ARKUI_TEXT_DIRECTION_LTR = 0--><!--Device-ARKUI_TEXT_DIRECTION_LTR = 0-End--> |
+| ARKUI_TEXT_DIRECTION_RTL = 1 | The text direction is right to left.<br><!--Device-ARKUI_TEXT_DIRECTION_RTL = 1--><!--Device-ARKUI_TEXT_DIRECTION_RTL = 1-End--> |
+| ARKUI_TEXT_DIRECTION_DEFAULT = 2 | The text direction follows the component layout.<br><!--Device-ARKUI_TEXT_DIRECTION_DEFAULT = 2--><!--Device-ARKUI_TEXT_DIRECTION_DEFAULT = 2-End--> |
+| ARKUI_TEXT_DIRECTION_AUTO = 3 | The text direction follows the actual text.<br><!--Device-ARKUI_TEXT_DIRECTION_AUTO = 3--><!--Device-ARKUI_TEXT_DIRECTION_AUTO = 3-End--> |
 
 ### ArkUI_EnterKeyType
 
@@ -183,7 +183,7 @@ enum ArkUI_EnterKeyType
 
 Enumerates the types of the **Enter** key for single-line text input.
 
-<!--Device-ArkUI_EnterKeyType--><!--Device-ArkUI_EnterKeyType-End-->
+<!--Device-enum ArkUI_EnterKeyType--><!--Device-enum ArkUI_EnterKeyType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,13 +191,13 @@ Enumerates the types of the **Enter** key for single-line text input.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ENTER_KEY_TYPE_GO = 2 | The Enter key is labeled "Go." |
-| ARKUI_ENTER_KEY_TYPE_SEARCH = 3 | The Enter key is labeled "Search." |
-| ARKUI_ENTER_KEY_TYPE_SEND | The Enter key is labeled "Send." |
-| ARKUI_ENTER_KEY_TYPE_NEXT | The Enter key is labeled "Next." |
-| ARKUI_ENTER_KEY_TYPE_DONE | The Enter key is labeled "Done." |
-| ARKUI_ENTER_KEY_TYPE_PREVIOUS | The Enter key is labeled "Previous." |
-| ARKUI_ENTER_KEY_TYPE_NEW_LINE | The Enter key is labeled "New Line." |
+| ARKUI_ENTER_KEY_TYPE_GO = 2 | The Enter key is labeled "Go."<br><!--Device-ARKUI_ENTER_KEY_TYPE_GO = 2--><!--Device-ARKUI_ENTER_KEY_TYPE_GO = 2-End--> |
+| ARKUI_ENTER_KEY_TYPE_SEARCH = 3 | The Enter key is labeled "Search."<br><!--Device-ARKUI_ENTER_KEY_TYPE_SEARCH = 3--><!--Device-ARKUI_ENTER_KEY_TYPE_SEARCH = 3-End--> |
+| ARKUI_ENTER_KEY_TYPE_SEND | The Enter key is labeled "Send."<br><!--Device-ARKUI_ENTER_KEY_TYPE_SEND--><!--Device-ARKUI_ENTER_KEY_TYPE_SEND-End--> |
+| ARKUI_ENTER_KEY_TYPE_NEXT | The Enter key is labeled "Next."<br><!--Device-ARKUI_ENTER_KEY_TYPE_NEXT--><!--Device-ARKUI_ENTER_KEY_TYPE_NEXT-End--> |
+| ARKUI_ENTER_KEY_TYPE_DONE | The Enter key is labeled "Done."<br><!--Device-ARKUI_ENTER_KEY_TYPE_DONE--><!--Device-ARKUI_ENTER_KEY_TYPE_DONE-End--> |
+| ARKUI_ENTER_KEY_TYPE_PREVIOUS | The Enter key is labeled "Previous."<br><!--Device-ARKUI_ENTER_KEY_TYPE_PREVIOUS--><!--Device-ARKUI_ENTER_KEY_TYPE_PREVIOUS-End--> |
+| ARKUI_ENTER_KEY_TYPE_NEW_LINE | The Enter key is labeled "New Line."<br><!--Device-ARKUI_ENTER_KEY_TYPE_NEW_LINE--><!--Device-ARKUI_ENTER_KEY_TYPE_NEW_LINE-End--> |
 
 ### ArkUI_TextDecorationType
 
@@ -209,7 +209,7 @@ enum ArkUI_TextDecorationType
 
 Enumerates text decoration types.
 
-<!--Device-ArkUI_TextDecorationType--><!--Device-ArkUI_TextDecorationType-End-->
+<!--Device-enum ArkUI_TextDecorationType--><!--Device-enum ArkUI_TextDecorationType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,10 +217,10 @@ Enumerates text decoration types.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | No text decoration. |
-| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | Line under the text. |
-| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | Line over the text. |
-| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | Line through the text. |
+| ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | No text decoration.<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_NONE = 0--><!--Device-ARKUI_TEXT_DECORATION_TYPE_NONE = 0-End--> |
+| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | Line under the text.<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_UNDERLINE--><!--Device-ARKUI_TEXT_DECORATION_TYPE_UNDERLINE-End--> |
+| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | Line over the text.<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_OVERLINE--><!--Device-ARKUI_TEXT_DECORATION_TYPE_OVERLINE-End--> |
+| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | Line through the text.<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH--><!--Device-ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH-End--> |
 
 ### ArkUI_TextDecorationStyle
 
@@ -232,7 +232,7 @@ enum ArkUI_TextDecorationStyle
 
 Enumerates text decoration styles.
 
-<!--Device-ArkUI_TextDecorationStyle--><!--Device-ArkUI_TextDecorationStyle-End-->
+<!--Device-enum ArkUI_TextDecorationStyle--><!--Device-enum ArkUI_TextDecorationStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,11 +240,11 @@ Enumerates text decoration styles.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | Single solid line. |
-| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | Double solid line. |
-| ARKUI_TEXT_DECORATION_STYLE_DOTTED | Dotted line. |
-| ARKUI_TEXT_DECORATION_STYLE_DASHED | Dashed line. |
-| ARKUI_TEXT_DECORATION_STYLE_WAVY | Wavy line. |
+| ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | Single solid line.<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_SOLID = 0--><!--Device-ARKUI_TEXT_DECORATION_STYLE_SOLID = 0-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | Double solid line.<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOUBLE--><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOUBLE-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_DOTTED | Dotted line.<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOTTED--><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOTTED-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_DASHED | Dashed line.<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_DASHED--><!--Device-ARKUI_TEXT_DECORATION_STYLE_DASHED-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_WAVY | Wavy line.<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_WAVY--><!--Device-ARKUI_TEXT_DECORATION_STYLE_WAVY-End--> |
 
 ### ArkUI_TextCase
 
@@ -256,7 +256,7 @@ enum ArkUI_TextCase
 
 Enumerates text cases.
 
-<!--Device-ArkUI_TextCase--><!--Device-ArkUI_TextCase-End-->
+<!--Device-enum ArkUI_TextCase--><!--Device-enum ArkUI_TextCase-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,9 +264,9 @@ Enumerates text cases.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_CASE_NORMAL = 0 | The original case of the text is retained. |
-| ARKUI_TEXT_CASE_LOWER | All letters in the text are in lowercase. |
-| ARKUI_TEXT_CASE_UPPER | All letters in the text are in uppercase. |
+| ARKUI_TEXT_CASE_NORMAL = 0 | The original case of the text is retained.<br><!--Device-ARKUI_TEXT_CASE_NORMAL = 0--><!--Device-ARKUI_TEXT_CASE_NORMAL = 0-End--> |
+| ARKUI_TEXT_CASE_LOWER | All letters in the text are in lowercase.<br><!--Device-ARKUI_TEXT_CASE_LOWER--><!--Device-ARKUI_TEXT_CASE_LOWER-End--> |
+| ARKUI_TEXT_CASE_UPPER | All letters in the text are in uppercase.<br><!--Device-ARKUI_TEXT_CASE_UPPER--><!--Device-ARKUI_TEXT_CASE_UPPER-End--> |
 
 ### ArkUI_TextCopyOptions
 
@@ -278,7 +278,7 @@ enum ArkUI_TextCopyOptions
 
 Enumerates copy options, which define whether copy and paste is allowed for text content.
 
-<!--Device-ArkUI_TextCopyOptions--><!--Device-ArkUI_TextCopyOptions-End-->
+<!--Device-enum ArkUI_TextCopyOptions--><!--Device-enum ArkUI_TextCopyOptions-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,10 +286,10 @@ Enumerates copy options, which define whether copy and paste is allowed for text
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | Copy is not allowed. |
-| ARKUI_TEXT_COPY_OPTIONS_IN_APP | Intra-application copy is allowed. |
-| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | Intra-device copy is allowed. |
-| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | Cross-device copy is allowed. |
+| ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | Copy is not allowed.<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_NONE = 0--><!--Device-ARKUI_TEXT_COPY_OPTIONS_NONE = 0-End--> |
+| ARKUI_TEXT_COPY_OPTIONS_IN_APP | Intra-application copy is allowed.<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_IN_APP--><!--Device-ARKUI_TEXT_COPY_OPTIONS_IN_APP-End--> |
+| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | Intra-device copy is allowed.<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE--><!--Device-ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE-End--> |
+| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | Cross-device copy is allowed.<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE--><!--Device-ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE-End--> |
 
 ### ArkUI_TextOverflow
 
@@ -301,7 +301,7 @@ enum ArkUI_TextOverflow
 
 Enumerates the display modes when the text is too long.
 
-<!--Device-ArkUI_TextOverflow--><!--Device-ArkUI_TextOverflow-End-->
+<!--Device-enum ArkUI_TextOverflow--><!--Device-enum ArkUI_TextOverflow-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,10 +309,10 @@ Enumerates the display modes when the text is too long.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_OVERFLOW_NONE = 0 | Extra-long text is not clipped. |
-| ARKUI_TEXT_OVERFLOW_CLIP | Extra-long text is clipped. |
-| ARKUI_TEXT_OVERFLOW_ELLIPSIS | An ellipsis (...) is used to represent text overflow. |
-| ARKUI_TEXT_OVERFLOW_MARQUEE | Text continuously scrolls when text overflow occurs. |
+| ARKUI_TEXT_OVERFLOW_NONE = 0 | Extra-long text is not clipped.<br><!--Device-ARKUI_TEXT_OVERFLOW_NONE = 0--><!--Device-ARKUI_TEXT_OVERFLOW_NONE = 0-End--> |
+| ARKUI_TEXT_OVERFLOW_CLIP | Extra-long text is clipped.<br><!--Device-ARKUI_TEXT_OVERFLOW_CLIP--><!--Device-ARKUI_TEXT_OVERFLOW_CLIP-End--> |
+| ARKUI_TEXT_OVERFLOW_ELLIPSIS | An ellipsis (...) is used to represent text overflow.<br><!--Device-ARKUI_TEXT_OVERFLOW_ELLIPSIS--><!--Device-ARKUI_TEXT_OVERFLOW_ELLIPSIS-End--> |
+| ARKUI_TEXT_OVERFLOW_MARQUEE | Text continuously scrolls when text overflow occurs.<br><!--Device-ARKUI_TEXT_OVERFLOW_MARQUEE--><!--Device-ARKUI_TEXT_OVERFLOW_MARQUEE-End--> |
 
 ### ArkUI_WordBreak
 
@@ -324,7 +324,7 @@ enum ArkUI_WordBreak
 
 Enumerates word break rules.
 
-<!--Device-ArkUI_WordBreak--><!--Device-ArkUI_WordBreak-End-->
+<!--Device-enum ArkUI_WordBreak--><!--Device-enum ArkUI_WordBreak-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,10 +332,10 @@ Enumerates word break rules.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_WORD_BREAK_NORMAL = 0 | Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text, but can occur only at a space character for non-CJK text (such as English). |
-| ARKUI_WORD_BREAK_BREAK_ALL | Word breaks can occur between any two characters for non-CJK text. CJK text behavior is the same as for <b>NORMAL</b>. |
-| ARKUI_WORD_BREAK_BREAK_WORD | This option has the same effect as <b>BREAK_ALL</b> for non-CJK text, except that if it preferentially wraps lines at appropriate characters (for example, spaces) whenever possible. CJK text behavior is the same as for <b>NORMAL</b>. |
-| ARKUI_WORD_BREAK_HYPHENATION | Line breaks can occur between any two syllabic units for non-CJK text. CJK text behavior is the same as for <b>NORMAL</b>.<br>**Since**: 18 |
+| ARKUI_WORD_BREAK_NORMAL = 0 | Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text, but can occur only at a space character for non-CJK text (such as English).<br><!--Device-ARKUI_WORD_BREAK_NORMAL = 0--><!--Device-ARKUI_WORD_BREAK_NORMAL = 0-End--> |
+| ARKUI_WORD_BREAK_BREAK_ALL | Word breaks can occur between any two characters for non-CJK text. CJK text behavior is the same as for <b>NORMAL</b>.<br><!--Device-ARKUI_WORD_BREAK_BREAK_ALL--><!--Device-ARKUI_WORD_BREAK_BREAK_ALL-End--> |
+| ARKUI_WORD_BREAK_BREAK_WORD | This option has the same effect as <b>BREAK_ALL</b> for non-CJK text, except that if it preferentially wraps lines at appropriate characters (for example, spaces) whenever possible. CJK text behavior is the same as for <b>NORMAL</b>.<br><!--Device-ARKUI_WORD_BREAK_BREAK_WORD--><!--Device-ARKUI_WORD_BREAK_BREAK_WORD-End--> |
+| ARKUI_WORD_BREAK_HYPHENATION | Line breaks can occur between any two syllabic units for non-CJK text. CJK text behavior is the same as for <b>NORMAL</b>.<br>**Since**: 18<br><!--Device-ARKUI_WORD_BREAK_HYPHENATION--><!--Device-ARKUI_WORD_BREAK_HYPHENATION-End--> |
 
 ### ArkUI_EllipsisMode
 
@@ -347,7 +347,7 @@ enum ArkUI_EllipsisMode
 
 Enumerates ellipsis positions.
 
-<!--Device-ArkUI_EllipsisMode--><!--Device-ArkUI_EllipsisMode-End-->
+<!--Device-enum ArkUI_EllipsisMode--><!--Device-enum ArkUI_EllipsisMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -355,11 +355,11 @@ Enumerates ellipsis positions.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ELLIPSIS_MODE_START = 0 | An ellipsis is used at the start of the line of text. |
-| ARKUI_ELLIPSIS_MODE_CENTER | An ellipsis is used at the center of the line of text. |
-| ARKUI_ELLIPSIS_MODE_END | An ellipsis is used at the end of the line of text. |
-| ARKUI_ELLIPSIS_MODE_MULTILINE_START | An ellipsis is used at the start of the line of text for multiline and single line.<br>**Since**: 24 |
-| ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER | An ellipsis is used at the center of the line of text for multiline and single line.<br>**Since**: 24 |
+| ARKUI_ELLIPSIS_MODE_START = 0 | An ellipsis is used at the start of the line of text.<br><!--Device-ARKUI_ELLIPSIS_MODE_START = 0--><!--Device-ARKUI_ELLIPSIS_MODE_START = 0-End--> |
+| ARKUI_ELLIPSIS_MODE_CENTER | An ellipsis is used at the center of the line of text.<br><!--Device-ARKUI_ELLIPSIS_MODE_CENTER--><!--Device-ARKUI_ELLIPSIS_MODE_CENTER-End--> |
+| ARKUI_ELLIPSIS_MODE_END | An ellipsis is used at the end of the line of text.<br><!--Device-ARKUI_ELLIPSIS_MODE_END--><!--Device-ARKUI_ELLIPSIS_MODE_END-End--> |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_START | An ellipsis is used at the start of the line of text for multiline and single line.<br>**Since**: 24<br><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_START--><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_START-End--> |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER | An ellipsis is used at the center of the line of text for multiline and single line.<br>**Since**: 24<br><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER--><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER-End--> |
 
 ### ArkUI_KeyboardAppearance
 
@@ -371,7 +371,7 @@ enum ArkUI_KeyboardAppearance
 
 Enumerates the appearance of the keyboard when the text box is focused.
 
-<!--Device-ArkUI_KeyboardAppearance--><!--Device-ArkUI_KeyboardAppearance-End-->
+<!--Device-enum ArkUI_KeyboardAppearance--><!--Device-enum ArkUI_KeyboardAppearance-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -379,10 +379,10 @@ Enumerates the appearance of the keyboard when the text box is focused.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0 | Default appearance mode, won't adopt immersive styles.<br>**Since**: 15 |
-| ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1 | Immersive mode.<br>**Since**: 15 |
-| ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2 | Light immersive style.<br>**Since**: 15 |
-| ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3 | Dark immersive style.<br>**Since**: 15 |
+| ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0 | Default appearance mode, won't adopt immersive styles.<br>**Since**: 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0--><!--Device-ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0-End--> |
+| ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1 | Immersive mode.<br>**Since**: 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1--><!--Device-ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1-End--> |
+| ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2 | Light immersive style.<br>**Since**: 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2--><!--Device-ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2-End--> |
+| ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3 | Dark immersive style.<br>**Since**: 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3--><!--Device-ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3-End--> |
 
 ### ArkUI_TextMenuItemId
 
@@ -394,7 +394,7 @@ enum ArkUI_TextMenuItemId
 
 Enumerates the IDs of text menu items.
 
-<!--Device-ArkUI_TextMenuItemId--><!--Device-ArkUI_TextMenuItemId-End-->
+<!--Device-enum ArkUI_TextMenuItemId--><!--Device-enum ArkUI_TextMenuItemId-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -402,27 +402,27 @@ Enumerates the IDs of text menu items.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_MENU_ITEM_ID_CUT = 0 | Cut. |
-| ARKUI_TEXT_MENU_ITEM_ID_COPY = 1 | Copy. |
-| ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2 | Paste. |
-| ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3 | Select all. |
-| ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4 | Collaboration service that provides cross-device interaction capabilities, such as cross-device camera access. |
-| ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5 | Camera input. |
-| ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6 | AI-assisted writing. This menu item depends on a large language model to take effect. |
-| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7 | ID for the translate menu item. The translation service is provided for the selected text. |
-| ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8 | Search. This menu item launches a browser to search for the selected text. |
-| ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9 | ID for the share menu item. This menu item launches a window for sharing the selected text. |
-| ARKUI_TEXT_MENU_ITEM_ID_URL = 10 | ID for the URL menu item. This menu item provides the redirection service for the selected URL, launching a browser search or application page. |
-| ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11 | ID for the email menu item. This menu item provides the redirection service for the selected email address, launching the email application. |
-| ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12 | ID for the phone call menu item. This menu item provides the redirection service for the selected phone number, launching the phone dialer page. |
-| ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | ID for the navigation menu item. This menu item provides the redirection service for the selected address, launching the map application. |
-| ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | ID for the event creation menu item. This menu item provides the redirection service for the selected date and time, launching the page for creating a calendar event. |
-| ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | Ask AI. This menu item provides the AI query capability for the selected text. This menu item depends on a large language model to take effect. |
-| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | Autofill. For example, the account and password can be automatically filled.<br>**Since**: 24 |
-| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | Password vault.<br>**Since**: 24 |
-| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18 | Quick translation.<br>**Since**: 26.1.0 |
-| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | Start ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs. |
-| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | End ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs. |
+| ARKUI_TEXT_MENU_ITEM_ID_CUT = 0 | Cut.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CUT = 0--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CUT = 0-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_COPY = 1 | Copy.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COPY = 1--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COPY = 1-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2 | Paste.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3 | Select all.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4 | Collaboration service that provides cross-device interaction capabilities, such as cross-device camera access.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5 | Camera input.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6 | AI-assisted writing. This menu item depends on a large language model to take effect.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7 | ID for the translate menu item. The translation service is provided for the selected text.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8 | Search. This menu item launches a browser to search for the selected text.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9 | ID for the share menu item. This menu item launches a window for sharing the selected text.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_URL = 10 | ID for the URL menu item. This menu item provides the redirection service for the selected URL, launching a browser search or application page.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_URL = 10--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_URL = 10-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11 | ID for the email menu item. This menu item provides the redirection service for the selected email address, launching the email application.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12 | ID for the phone call menu item. This menu item provides the redirection service for the selected phone number, launching the phone dialer page.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | ID for the navigation menu item. This menu item provides the redirection service for the selected address, launching the map application.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | ID for the event creation menu item. This menu item provides the redirection service for the selected date and time, launching the page for creating a calendar event.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | Ask AI. This menu item provides the AI query capability for the selected text. This menu item depends on a large language model to take effect.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | Autofill. For example, the account and password can be automatically filled.<br>**Since**: 24<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | Password vault.<br>**Since**: 24<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18 | Quick translation.<br>**Since**: 26.1.0<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | Start ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | End ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs.<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000-End--> |
 
 ### OH_ArkUI_LineBreakStrategy
 
@@ -434,7 +434,7 @@ enum OH_ArkUI_LineBreakStrategy
 
 Enumerates line break policies.
 
-<!--Device-OH_ArkUI_LineBreakStrategy--><!--Device-OH_ArkUI_LineBreakStrategy-End-->
+<!--Device-enum OH_ArkUI_LineBreakStrategy--><!--Device-enum OH_ArkUI_LineBreakStrategy-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -442,9 +442,9 @@ Enumerates line break policies.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | Greedy mode.<br>Places as many words on a line as possible and moves to the next line only if no more words can fit into the same line.<br>**Since**: 24 |
-| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | High-quality mode.<br>Fills in lines as much as possible on the basis of **BALANCED**, which may results in a large blank area on the last line.<br>**Since**: 24 |
-| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | Balance mode.<br>Without splitting words, the width of each line in a paragraph is the same as much as possible.<br>**Since**: 24 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | Greedy mode.<br>Places as many words on a line as possible and moves to the next line only if no more words can fit into the same line.<br>**Since**: 24<br><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0--><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0-End--> |
+| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | High-quality mode.<br>Fills in lines as much as possible on the basis of **BALANCED**, which may results in a large blank area on the last line.<br>**Since**: 24<br><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1--><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1-End--> |
+| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | Balance mode.<br>Without splitting words, the width of each line in a paragraph is the same as much as possible.<br>**Since**: 24<br><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2--><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2-End--> |
 
 ### OH_ArkUI_StrokeJoinStyle
 
@@ -456,7 +456,7 @@ enum OH_ArkUI_StrokeJoinStyle
 
 Enumerates the join styles of a text stroke.
 
-<!--Device-OH_ArkUI_StrokeJoinStyle--><!--Device-OH_ArkUI_StrokeJoinStyle-End-->
+<!--Device-enum OH_ArkUI_StrokeJoinStyle--><!--Device-enum OH_ArkUI_StrokeJoinStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,9 +464,9 @@ Enumerates the join styles of a text stroke.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0 | Miter join. The text stroke joins with a sharp corner.<br>**Since**: 26.1.0 |
-| OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN = 1 | Round join. The text stroke joins with a rounded corner.<br>**Since**: 26.1.0 |
-| OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN = 2 | Bevel join. The text stroke joins with a beveled corner.<br>**Since**: 26.1.0 |
+| OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0 | Miter join. The text stroke joins with a sharp corner.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0--><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0-End--> |
+| OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN = 1 | Round join. The text stroke joins with a rounded corner.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN = 1--><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN = 1-End--> |
+| OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN = 2 | Bevel join. The text stroke joins with a beveled corner.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN = 2--><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN = 2-End--> |
 
 ### ArkUI_TextSpanType
 
@@ -478,7 +478,7 @@ enum ArkUI_TextSpanType
 
 Enumerates the recognition types of a custom text selection menu.
 
-<!--Device-ArkUI_TextSpanType--><!--Device-ArkUI_TextSpanType-End-->
+<!--Device-enum ArkUI_TextSpanType--><!--Device-enum ArkUI_TextSpanType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -486,10 +486,10 @@ Enumerates the recognition types of a custom text selection menu.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_SPAN_TYPE_TEXT = 0 | The span type only contains text. |
-| ARKUI_TEXT_SPAN_TYPE_IMAGE = 1 | The span type only contains image. |
-| ARKUI_TEXT_SPAN_TYPE_MIXED = 2 | The span type contains both text and image. |
-| ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type of the selected text is displayed after the text is selected. If this type is set but other types are not set, the menu corresponding to this type is displayed after the text is selected. For example, if there are two menus whose recognition types are **ARKUI_TEXT_SPAN_TYPE_TEXT** and **ARKUI_TEXT_SPAN_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_SPAN_TYPE_TEXT** is displayed when the text is selected, and the menu corresponding to **ARKUI_TEXT_SPAN_TYPE_DEFAULT** is displayed when the image is selected. |
+| ARKUI_TEXT_SPAN_TYPE_TEXT = 0 | The span type only contains text.<br><!--Device-ARKUI_TEXT_SPAN_TYPE_TEXT = 0--><!--Device-ARKUI_TEXT_SPAN_TYPE_TEXT = 0-End--> |
+| ARKUI_TEXT_SPAN_TYPE_IMAGE = 1 | The span type only contains image.<br><!--Device-ARKUI_TEXT_SPAN_TYPE_IMAGE = 1--><!--Device-ARKUI_TEXT_SPAN_TYPE_IMAGE = 1-End--> |
+| ARKUI_TEXT_SPAN_TYPE_MIXED = 2 | The span type contains both text and image.<br><!--Device-ARKUI_TEXT_SPAN_TYPE_MIXED = 2--><!--Device-ARKUI_TEXT_SPAN_TYPE_MIXED = 2-End--> |
+| ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type of the selected text is displayed after the text is selected. If this type is set but other types are not set, the menu corresponding to this type is displayed after the text is selected. For example, if there are two menus whose recognition types are **ARKUI_TEXT_SPAN_TYPE_TEXT** and **ARKUI_TEXT_SPAN_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_SPAN_TYPE_TEXT** is displayed when the text is selected, and the menu corresponding to **ARKUI_TEXT_SPAN_TYPE_DEFAULT** is displayed when the image is selected.<br><!--Device-ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3--><!--Device-ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3-End--> |
 
 ### ArkUI_TextResponseType
 
@@ -501,7 +501,7 @@ enum ArkUI_TextResponseType
 
 Enumerates the response types of a custom text selection menu.
 
-<!--Device-ArkUI_TextResponseType--><!--Device-ArkUI_TextResponseType-End-->
+<!--Device-enum ArkUI_TextResponseType--><!--Device-enum ArkUI_TextResponseType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -509,10 +509,10 @@ Enumerates the response types of a custom text selection menu.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0 | The menu is displayed when the component is right-clicked. |
-| ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | The menu is displayed when the component is long-pressed. |
-| ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected. |
-| ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type is displayed when the operation of another type is triggered. If this type is set but other types are not set, the menu corresponding to this type is displayed when the operation of another type is triggered. For example, if there are two menus whose response types are **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** and **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** is displayed when you right-click the menu, and the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** is displayed when you hold down the right mouse button. |
+| ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0 | The menu is displayed when the component is right-clicked.<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0-End--> |
+| ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | The menu is displayed when the component is long-pressed.<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1-End--> |
+| ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected.<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2-End--> |
+| ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type is displayed when the operation of another type is triggered. If this type is set but other types are not set, the menu corresponding to this type is displayed when the operation of another type is triggered. For example, if there are two menus whose response types are **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** and **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** is displayed when you right-click the menu, and the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** is displayed when you hold down the right mouse button.<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3-End--> |
 
 
 ## Function description

@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| Elf64_Addr r_offset |  |
-| Elf64_Xword r_info |  |
+| Elf64_Addr r_offset | <!--Device-Elf64_Addr r_offset--><!--Device-Elf64_Addr r_offset-End--> |
+| Elf64_Xword r_info | <!--Device-Elf64_Xword r_info--><!--Device-Elf64_Xword r_info-End--> |
 
 

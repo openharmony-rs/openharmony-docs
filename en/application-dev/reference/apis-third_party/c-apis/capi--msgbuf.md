@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| long mtype |  |
-| char mtext[1] |  |
+| long mtype | <!--Device-long mtype--><!--Device-long mtype-End--> |
+| char mtext[1] | <!--Device-char mtext[1]--><!--Device-char mtext[1]-End--> |
 
 

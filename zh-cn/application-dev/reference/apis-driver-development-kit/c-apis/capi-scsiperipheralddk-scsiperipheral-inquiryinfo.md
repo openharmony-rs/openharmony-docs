@@ -24,10 +24,10 @@ SCSI INQUIRY 数据，用于存储SCSI外设的INQUIRY命令查询结果。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t deviceType | SCSI外设的设备类型，具体类型值定义参见SCSI标准协议。 |
-| char idVendor[SCSIPERIPHERAL_VENDOR_ID_LEN + 1] | 制造商 ID。 |
-| char idProduct[SCSIPERIPHERAL_PRODUCT_ID_LEN + 1] | 产品 ID。 |
-| char revProduct[SCSIPERIPHERAL_PRODUCT_REV_LEN + 1] | 产品版本。 |
-| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) *data | 指向设备内存映射的指针，用于存储查询得到的数据。 |
+| uint8_t deviceType | SCSI外设的设备类型，具体类型值定义参见SCSI标准协议。<br><!--Device-uint8_t deviceType--><!--Device-uint8_t deviceType-End--> |
+| char idVendor[SCSIPERIPHERAL_VENDOR_ID_LEN + 1] | 制造商 ID。<br><!--Device-char idVendor[SCSIPERIPHERAL_VENDOR_ID_LEN + 1]--><!--Device-char idVendor[SCSIPERIPHERAL_VENDOR_ID_LEN + 1]-End--> |
+| char idProduct[SCSIPERIPHERAL_PRODUCT_ID_LEN + 1] | 产品 ID。<br><!--Device-char idProduct[SCSIPERIPHERAL_PRODUCT_ID_LEN + 1]--><!--Device-char idProduct[SCSIPERIPHERAL_PRODUCT_ID_LEN + 1]-End--> |
+| char revProduct[SCSIPERIPHERAL_PRODUCT_REV_LEN + 1] | 产品版本。<br><!--Device-char revProduct[SCSIPERIPHERAL_PRODUCT_REV_LEN + 1]--><!--Device-char revProduct[SCSIPERIPHERAL_PRODUCT_REV_LEN + 1]-End--> |
+| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) *data | 指向设备内存映射的指针，用于存储查询得到的数据。<br><!--Device-ScsiPeripheral_DeviceMemMap *data--><!--Device-ScsiPeripheral_DeviceMemMap *data-End--> |
 
 

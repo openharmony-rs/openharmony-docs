@@ -127,7 +127,7 @@ enum OH_AbilityRuntime_ModObjDispatcher_ValueType
 
 定义变体类型枚举，用于标识变体值的数据类型。 <br>变体（Variant）是一种能够存储多种不同类型值的通用数据容器，类似于C语言的联合体（union）。每个变体在同一时刻只持有一种类型的值，通过本枚举值标识其实际存储的数据类型。 <br>在本模块中，变体用于方法调用的参数传递和返回值接收，使得同一套接口能够处理布尔、整数、浮点数、字符串、数组、向量、集合、映射、结构体、远端通信对象等多种数据类型。
 
-<!--Device-OH_AbilityRuntime_ModObjDispatcher_ValueType--><!--Device-OH_AbilityRuntime_ModObjDispatcher_ValueType-End-->
+<!--Device-enum OH_AbilityRuntime_ModObjDispatcher_ValueType--><!--Device-enum OH_AbilityRuntime_ModObjDispatcher_ValueType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -135,28 +135,28 @@ enum OH_AbilityRuntime_ModObjDispatcher_ValueType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY = 0 | 空值。表示未初始化或无效的变体值。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VOID = 1 | void类型。用于方法不返回任何值。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_BOOL = 2 | 布尔值。取值为true或false，true表示真，false表示假。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I8 = 3 | 8位有符号整数。取值范围：[-128, 127]。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I16 = 4 | 16位有符号整数。取值范围：[-32768, 32767]。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32 = 5 | 32位有符号整数。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I64 = 6 | 64位有符号整数。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U8 = 7 | 8位无符号整数。取值范围：[0, 255]。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U16 = 8 | 16位无符号整数。取值范围：[0, 65535]。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U32 = 9 | 32位无符号整数。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U64 = 10 | 64位无符号整数。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F32 = 11 | 32位浮点数（单精度）。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F64 = 12 | 64位浮点数（双精度）。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING = 13 | UTF-8字符串。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY = 14 | 数组。固定大小的有序元素集合，所有元素类型相同，支持按索引设置获取元素和查询数组大小。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VECTOR = 15 | 向量。动态大小的有序元素集合，所有元素类型相同，支持添加元素、按索引获取元素、查询向量大小和清空操作。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_SET = 16 | 集合。不重复元素的无序集合，所有元素类型相同，支持添加元素、删除元素、查询指定元素是否存在、按索引获取元素、查询集合大小和清空操作。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP = 17 | 映射。键值对的有序集合，键和值类型在创建时指定，支持添加或更新键值对、按键获取值、删除键值对、查询指定键是否存在、按索引获取键或值、查询映射大小和清空操作。键仅支持基本类型（BOOL、有符号整数、无符号整数、 浮点数、STRING、ENUM），不支持容器类型和复杂类型。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT = 18 | 结构体。具名字段的集合，字段类型通过类型库元数据定义。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_PROXY = 19 | 用于跨进程通信的远端Proxy对象。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_STUB = 20 | 用于跨进程通信的远端Stub对象。<br>**起始版本：** 26.0.0 |
-| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ENUM = 21 | 枚举值。以int32_t形式存储，枚举定义可通过类型描述符查询。<br>**起始版本：** 26.0.0 |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY = 0 | 空值。表示未初始化或无效的变体值。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY = 0--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY = 0-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VOID = 1 | void类型。用于方法不返回任何值。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VOID = 1--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VOID = 1-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_BOOL = 2 | 布尔值。取值为true或false，true表示真，false表示假。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_BOOL = 2--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_BOOL = 2-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I8 = 3 | 8位有符号整数。取值范围：[-128, 127]。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I8 = 3--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I8 = 3-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I16 = 4 | 16位有符号整数。取值范围：[-32768, 32767]。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I16 = 4--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I16 = 4-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32 = 5 | 32位有符号整数。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32 = 5--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32 = 5-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I64 = 6 | 64位有符号整数。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I64 = 6--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I64 = 6-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U8 = 7 | 8位无符号整数。取值范围：[0, 255]。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U8 = 7--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U8 = 7-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U16 = 8 | 16位无符号整数。取值范围：[0, 65535]。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U16 = 8--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U16 = 8-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U32 = 9 | 32位无符号整数。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U32 = 9--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U32 = 9-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U64 = 10 | 64位无符号整数。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U64 = 10--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_U64 = 10-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F32 = 11 | 32位浮点数（单精度）。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F32 = 11--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F32 = 11-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F64 = 12 | 64位浮点数（双精度）。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F64 = 12--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_F64 = 12-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING = 13 | UTF-8字符串。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING = 13--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING = 13-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY = 14 | 数组。固定大小的有序元素集合，所有元素类型相同，支持按索引设置获取元素和查询数组大小。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY = 14--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY = 14-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VECTOR = 15 | 向量。动态大小的有序元素集合，所有元素类型相同，支持添加元素、按索引获取元素、查询向量大小和清空操作。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VECTOR = 15--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VECTOR = 15-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_SET = 16 | 集合。不重复元素的无序集合，所有元素类型相同，支持添加元素、删除元素、查询指定元素是否存在、按索引获取元素、查询集合大小和清空操作。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_SET = 16--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_SET = 16-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP = 17 | 映射。键值对的有序集合，键和值类型在创建时指定，支持添加或更新键值对、按键获取值、删除键值对、查询指定键是否存在、按索引获取键或值、查询映射大小和清空操作。键仅支持基本类型（BOOL、有符号整数、无符号整数、 浮点数、STRING、ENUM），不支持容器类型和复杂类型。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP = 17--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP = 17-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT = 18 | 结构体。具名字段的集合，字段类型通过类型库元数据定义。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT = 18--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT = 18-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_PROXY = 19 | 用于跨进程通信的远端Proxy对象。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_PROXY = 19--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_PROXY = 19-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_STUB = 20 | 用于跨进程通信的远端Stub对象。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_STUB = 20--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_IPC_REMOTE_STUB = 20-End--> |
+| OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ENUM = 21 | 枚举值。以int32_t形式存储，枚举定义可通过类型描述符查询。<br>**起始版本：** 26.0.0<br><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ENUM = 21--><!--Device-OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ENUM = 21-End--> |
 
 
 ## 函数说明

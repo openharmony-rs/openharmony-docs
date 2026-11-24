@@ -24,7 +24,7 @@ Represents the printing resolution, in dpi. This API can be used to control the 
 
 | Name | Description |
 | -- | -- |
-| uint32_t horizontalDpi |  |
-| uint32_t verticalDpi |  |
+| uint32_t horizontalDpi | <!--Device-uint32_t horizontalDpi--><!--Device-uint32_t horizontalDpi-End--> |
+| uint32_t verticalDpi | <!--Device-uint32_t verticalDpi--><!--Device-uint32_t verticalDpi-End--> |
 
 

@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| Elf32_Word vna_hash |  |
-| Elf32_Half vna_flags |  |
-| Elf32_Half vna_other |  |
-| Elf32_Word vna_name |  |
-| Elf32_Word vna_next |  |
+| Elf32_Word vna_hash | <!--Device-Elf32_Word vna_hash--><!--Device-Elf32_Word vna_hash-End--> |
+| Elf32_Half vna_flags | <!--Device-Elf32_Half vna_flags--><!--Device-Elf32_Half vna_flags-End--> |
+| Elf32_Half vna_other | <!--Device-Elf32_Half vna_other--><!--Device-Elf32_Half vna_other-End--> |
+| Elf32_Word vna_name | <!--Device-Elf32_Word vna_name--><!--Device-Elf32_Word vna_name-End--> |
+| Elf32_Word vna_next | <!--Device-Elf32_Word vna_next--><!--Device-Elf32_Word vna_next-End--> |
 
 

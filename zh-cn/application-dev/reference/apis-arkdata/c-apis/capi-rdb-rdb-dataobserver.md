@@ -24,7 +24,7 @@ typedef struct Rdb_DataObserver {...} Rdb_DataObserver
 
 | 名称 | 描述 |
 | -- | -- |
-| void *context | 表示数据观察者的上下文。 |
-| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) callback | 数据观察者的回调。 |
+| void *context | 表示数据观察者的上下文。<br><!--Device-void *context--><!--Device-void *context-End--> |
+| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) callback | 数据观察者的回调。<br><!--Device-Rdb_SubscribeCallback callback--><!--Device-Rdb_SubscribeCallback callback-End--> |
 
 

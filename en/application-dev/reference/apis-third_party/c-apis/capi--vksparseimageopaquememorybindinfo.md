@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkImage image |  |
-| uint32_t bindCount |  |
-| [const VkSparseMemoryBind*](capi--vksparsememorybind.md) pBinds |  |
+| VkImage image | <!--Device-VkImage image--><!--Device-VkImage image-End--> |
+| uint32_t bindCount | <!--Device-uint32_t bindCount--><!--Device-uint32_t bindCount-End--> |
+| [const VkSparseMemoryBind*](capi--vksparsememorybind.md) pBinds | <!--Device-const VkSparseMemoryBind* pBinds--><!--Device-const VkSparseMemoryBind* pBinds-End--> |
 
 

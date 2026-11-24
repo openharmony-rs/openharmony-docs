@@ -96,7 +96,7 @@ enum ImageEffect_DataType
 
 数据类型枚举值。
 
-<!--Device-ImageEffect_DataType--><!--Device-ImageEffect_DataType-End-->
+<!--Device-enum ImageEffect_DataType--><!--Device-enum ImageEffect_DataType-End-->
 
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
@@ -104,14 +104,14 @@ enum ImageEffect_DataType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EFFECT_DATA_TYPE_UNKNOWN = 0 | 未定义类型。 |
-| EFFECT_DATA_TYPE_INT32 = 1 | 整形。 |
-| EFFECT_DATA_TYPE_FLOAT = 2 | 单精度浮点型。 |
-| EFFECT_DATA_TYPE_DOUBLE = 3 | 双精度浮点型。 |
-| EFFECT_DATA_TYPE_CHAR = 4 | 字节类型。 |
-| EFFECT_DATA_TYPE_LONG = 5 | 长整型。 |
-| EFFECT_DATA_TYPE_BOOL = 6 | 布尔类型。 |
-| EFFECT_DATA_TYPE_PTR = 7 | 指针类型。 |
+| EFFECT_DATA_TYPE_UNKNOWN = 0 | 未定义类型。<br><!--Device-EFFECT_DATA_TYPE_UNKNOWN = 0--><!--Device-EFFECT_DATA_TYPE_UNKNOWN = 0-End--> |
+| EFFECT_DATA_TYPE_INT32 = 1 | 整形。<br><!--Device-EFFECT_DATA_TYPE_INT32 = 1--><!--Device-EFFECT_DATA_TYPE_INT32 = 1-End--> |
+| EFFECT_DATA_TYPE_FLOAT = 2 | 单精度浮点型。<br><!--Device-EFFECT_DATA_TYPE_FLOAT = 2--><!--Device-EFFECT_DATA_TYPE_FLOAT = 2-End--> |
+| EFFECT_DATA_TYPE_DOUBLE = 3 | 双精度浮点型。<br><!--Device-EFFECT_DATA_TYPE_DOUBLE = 3--><!--Device-EFFECT_DATA_TYPE_DOUBLE = 3-End--> |
+| EFFECT_DATA_TYPE_CHAR = 4 | 字节类型。<br><!--Device-EFFECT_DATA_TYPE_CHAR = 4--><!--Device-EFFECT_DATA_TYPE_CHAR = 4-End--> |
+| EFFECT_DATA_TYPE_LONG = 5 | 长整型。<br><!--Device-EFFECT_DATA_TYPE_LONG = 5--><!--Device-EFFECT_DATA_TYPE_LONG = 5-End--> |
+| EFFECT_DATA_TYPE_BOOL = 6 | 布尔类型。<br><!--Device-EFFECT_DATA_TYPE_BOOL = 6--><!--Device-EFFECT_DATA_TYPE_BOOL = 6-End--> |
+| EFFECT_DATA_TYPE_PTR = 7 | 指针类型。<br><!--Device-EFFECT_DATA_TYPE_PTR = 7--><!--Device-EFFECT_DATA_TYPE_PTR = 7-End--> |
 
 ### ImageEffect_Format
 
@@ -123,7 +123,7 @@ enum ImageEffect_Format
 
 像素格式枚举值。
 
-<!--Device-ImageEffect_Format--><!--Device-ImageEffect_Format-End-->
+<!--Device-enum ImageEffect_Format--><!--Device-enum ImageEffect_Format-End-->
 
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
@@ -131,13 +131,13 @@ enum ImageEffect_Format
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EFFECT_PIXEL_FORMAT_UNKNOWN = 0 | 未定义类型。 |
-| EFFECT_PIXEL_FORMAT_RGBA8888 = 1 | RGBA8888类型。 |
-| EFFECT_PIXEL_FORMAT_NV21 = 2 | NV21类型。 |
-| EFFECT_PIXEL_FORMAT_NV12 = 3 | NV12类型。 |
-| EFFECT_PIXEL_FORMAT_RGBA1010102 = 4 | 10bit RGBA类型。 |
-| EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5 | 10bit YCBCR420类型。 |
-| EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6 | 10bit YCRCB420类型。 |
+| EFFECT_PIXEL_FORMAT_UNKNOWN = 0 | 未定义类型。<br><!--Device-EFFECT_PIXEL_FORMAT_UNKNOWN = 0--><!--Device-EFFECT_PIXEL_FORMAT_UNKNOWN = 0-End--> |
+| EFFECT_PIXEL_FORMAT_RGBA8888 = 1 | RGBA8888类型。<br><!--Device-EFFECT_PIXEL_FORMAT_RGBA8888 = 1--><!--Device-EFFECT_PIXEL_FORMAT_RGBA8888 = 1-End--> |
+| EFFECT_PIXEL_FORMAT_NV21 = 2 | NV21类型。<br><!--Device-EFFECT_PIXEL_FORMAT_NV21 = 2--><!--Device-EFFECT_PIXEL_FORMAT_NV21 = 2-End--> |
+| EFFECT_PIXEL_FORMAT_NV12 = 3 | NV12类型。<br><!--Device-EFFECT_PIXEL_FORMAT_NV12 = 3--><!--Device-EFFECT_PIXEL_FORMAT_NV12 = 3-End--> |
+| EFFECT_PIXEL_FORMAT_RGBA1010102 = 4 | 10bit RGBA类型。<br><!--Device-EFFECT_PIXEL_FORMAT_RGBA1010102 = 4--><!--Device-EFFECT_PIXEL_FORMAT_RGBA1010102 = 4-End--> |
+| EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5 | 10bit YCBCR420类型。<br><!--Device-EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5--><!--Device-EFFECT_PIXEL_FORMAT_YCBCR_P010 = 5-End--> |
+| EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6 | 10bit YCRCB420类型。<br><!--Device-EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6--><!--Device-EFFECT_PIXEL_FORMAT_YCRCB_P010 = 6-End--> |
 
 ### ImageEffect_BufferType
 
@@ -149,7 +149,7 @@ enum ImageEffect_BufferType
 
 内存类型枚举值。
 
-<!--Device-ImageEffect_BufferType--><!--Device-ImageEffect_BufferType-End-->
+<!--Device-enum ImageEffect_BufferType--><!--Device-enum ImageEffect_BufferType-End-->
 
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
@@ -157,9 +157,9 @@ enum ImageEffect_BufferType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EFFECT_BUFFER_TYPE_UNKNOWN = 0 | 未定义类型。 |
-| EFFECT_BUFFER_TYPE_PIXEL = 1 | 像素图类型。 |
-| EFFECT_BUFFER_TYPE_TEXTURE = 2 | 纹理类型。 |
+| EFFECT_BUFFER_TYPE_UNKNOWN = 0 | 未定义类型。<br><!--Device-EFFECT_BUFFER_TYPE_UNKNOWN = 0--><!--Device-EFFECT_BUFFER_TYPE_UNKNOWN = 0-End--> |
+| EFFECT_BUFFER_TYPE_PIXEL = 1 | 像素图类型。<br><!--Device-EFFECT_BUFFER_TYPE_PIXEL = 1--><!--Device-EFFECT_BUFFER_TYPE_PIXEL = 1-End--> |
+| EFFECT_BUFFER_TYPE_TEXTURE = 2 | 纹理类型。<br><!--Device-EFFECT_BUFFER_TYPE_TEXTURE = 2--><!--Device-EFFECT_BUFFER_TYPE_TEXTURE = 2-End--> |
 
 
 ## 函数说明

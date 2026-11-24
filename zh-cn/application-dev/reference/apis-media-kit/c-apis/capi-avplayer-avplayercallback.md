@@ -28,7 +28,7 @@ AVPlayerCallback（AVPlayer回调）是AVPlayer（音视频播放器）的回调
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo |  |
-| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError |  |
+| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo | <!--Device-OH_AVPlayerOnInfo onInfo--><!--Device-OH_AVPlayerOnInfo onInfo-End--> |
+| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError | <!--Device-OH_AVPlayerOnError onError--><!--Device-OH_AVPlayerOnError onError-End--> |
 
 

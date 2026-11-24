@@ -24,6 +24,6 @@ typedef struct ffrt_condattr_t {...} ffrt_condattr_t
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | 条件变量属性的内部存储。请勿直接访问。 |
+| long storage | 条件变量属性的内部存储。请勿直接访问。<br><!--Device-long storage--><!--Device-long storage-End--> |
 
 

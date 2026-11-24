@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| int \_\_pad1 |  |
-| socklen_t cmsg_len |  |
-| int cmsg_level |  |
-| int cmsg_type |  |
+| int \_\_pad1 | <!--Device-int \_\_pad1--><!--Device-int \_\_pad1-End--> |
+| socklen_t cmsg_len | <!--Device-socklen_t cmsg_len--><!--Device-socklen_t cmsg_len-End--> |
+| int cmsg_level | <!--Device-int cmsg_level--><!--Device-int cmsg_level-End--> |
+| int cmsg_type | <!--Device-int cmsg_type--><!--Device-int cmsg_type-End--> |
 
 

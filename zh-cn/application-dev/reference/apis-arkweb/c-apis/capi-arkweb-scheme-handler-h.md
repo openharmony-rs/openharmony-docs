@@ -130,7 +130,7 @@ enum ArkWeb_CustomSchemeOption
 
 custom scheme的配置信息。
 
-<!--Device-ArkWeb_CustomSchemeOption--><!--Device-ArkWeb_CustomSchemeOption-End-->
+<!--Device-enum ArkWeb_CustomSchemeOption--><!--Device-enum ArkWeb_CustomSchemeOption-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -138,15 +138,15 @@ custom scheme的配置信息。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKWEB_SCHEME_OPTION_NONE = 0 | 表示注册自定义scheme时不赋予它任何特殊行为或能力。 |
-| ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0 | 如果设置了ARKWEB_SCHEME_OPTION_STANDARD，那么该scheme将被视为标准scheme来处理。 |
-| ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1 | 如果设置了ARKWEB_SCHEME_OPTION_LOCAL，则将使用与“file” URL相同的安全规则来处理该scheme。 |
-| ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2 | 如果设置了ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED，则该scheme的请求只能由使用相同scheme加载的页面中发起。 |
-| ARKWEB_SCHEME_OPTION_SECURE = 1 << 3 | 如果设置了ARKWEB_SCHEME_OPTION_SECURE，则将使用与“https” URL相同的安全规则来处理该scheme。 |
-| ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4 | 如果设置了ARKWEB_SCHEME_OPTION_CORS_ENABLED，则该scheme可以发送CORS请求。在大多数情况下，当设置了ARKWEB_SCHEME_OPTION_STANDARD时，应该设置此值。 |
-| ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5 | 如果设置了ARKWEB_SCHEME_OPTION_CSP_BYPASSING，则该scheme可以绕过内容安全策略（CSP）检查。在大多数情况下，当设置了ARKWEB_SCHEME_OPTION_STANDARD时， 此值不应被设置。 |
-| ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6 | 如果设置了ARKWEB_SCHEME_OPTION_FETCH_ENABLED，则可以发起该scheme的FETCH API请求。 |
-| ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7 | 如果设置了ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED，则该scheme的js资源支持生成code cache。 |
+| OH_ARKWEB_SCHEME_OPTION_NONE = 0 | 表示注册自定义scheme时不赋予它任何特殊行为或能力。<br><!--Device-OH_ARKWEB_SCHEME_OPTION_NONE = 0--><!--Device-OH_ARKWEB_SCHEME_OPTION_NONE = 0-End--> |
+| ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0 | 如果设置了ARKWEB_SCHEME_OPTION_STANDARD，那么该scheme将被视为标准scheme来处理。<br><!--Device-ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0--><!--Device-ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0-End--> |
+| ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1 | 如果设置了ARKWEB_SCHEME_OPTION_LOCAL，则将使用与“file” URL相同的安全规则来处理该scheme。<br><!--Device-ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1--><!--Device-ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1-End--> |
+| ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2 | 如果设置了ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED，则该scheme的请求只能由使用相同scheme加载的页面中发起。<br><!--Device-ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2--><!--Device-ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2-End--> |
+| ARKWEB_SCHEME_OPTION_SECURE = 1 << 3 | 如果设置了ARKWEB_SCHEME_OPTION_SECURE，则将使用与“https” URL相同的安全规则来处理该scheme。<br><!--Device-ARKWEB_SCHEME_OPTION_SECURE = 1 << 3--><!--Device-ARKWEB_SCHEME_OPTION_SECURE = 1 << 3-End--> |
+| ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4 | 如果设置了ARKWEB_SCHEME_OPTION_CORS_ENABLED，则该scheme可以发送CORS请求。在大多数情况下，当设置了ARKWEB_SCHEME_OPTION_STANDARD时，应该设置此值。<br><!--Device-ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4--><!--Device-ARKWEB_SCHEME_OPTION_CORS_ENABLED = 1 << 4-End--> |
+| ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5 | 如果设置了ARKWEB_SCHEME_OPTION_CSP_BYPASSING，则该scheme可以绕过内容安全策略（CSP）检查。在大多数情况下，当设置了ARKWEB_SCHEME_OPTION_STANDARD时， 此值不应被设置。<br><!--Device-ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5--><!--Device-ARKWEB_SCHEME_OPTION_CSP_BYPASSING = 1 << 5-End--> |
+| ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6 | 如果设置了ARKWEB_SCHEME_OPTION_FETCH_ENABLED，则可以发起该scheme的FETCH API请求。<br><!--Device-ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6--><!--Device-ARKWEB_SCHEME_OPTION_FETCH_ENABLED = 1 << 6-End--> |
+| ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7 | 如果设置了ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED，则该scheme的js资源支持生成code cache。<br><!--Device-ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7--><!--Device-ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED = 1 << 7-End--> |
 
 ### ArkWeb_ResourceType
 
@@ -158,7 +158,7 @@ enum ArkWeb_ResourceType
 
 请求的资源类型。这些常量与Chromium中的ResourceType的对应项相匹配，不应重新编号。
 
-<!--Device-ArkWeb_ResourceType--><!--Device-ArkWeb_ResourceType-End-->
+<!--Device-enum ArkWeb_ResourceType--><!--Device-enum ArkWeb_ResourceType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -166,26 +166,26 @@ enum ArkWeb_ResourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MAIN_FRAME = 0 | 顶层页面。 |
-| SUB_FRAME = 1 | Frame或Iframe。 |
-| STYLE_SHEET = 2 | CSS样式表。 |
-| SCRIPT = 3 | 外部脚本。 |
-| IMAGE = 4 | 图片（jpg/gif/png/以及其他）。 |
-| FONT_RESOURCE = 5 | 字体。 |
-| SUB_RESOURCE = 6 | 其他子资源。如果实际类型未知，则是默认类型。 |
-| OBJECT = 7 | 插件的Object（或embed）标签，或者插件请求的资源。 |
-| MEDIA = 8 | 媒体资源。 |
-| WORKER = 9 | 专用工作线程的主资源。 |
-| SHARED_WORKER = 10 | 共享工作线程的主资源。 |
-| PREFETCH = 11 | 明确的预取请求。 |
-| FAVICON = 12 | 网站图标。 |
-| XHR = 13 | XMLHttpRequest。 |
-| PING = 14 | sendBeacon的Ping请求。 |
-| SERVICE_WORKER = 15 | service worker的主资源。 |
-| CSP_REPORT = 16 | 内容安全策略违规报告。 |
-| PLUGIN_RESOURCE = 17 | 插件请求的资源。 |
-| NAVIGATION_PRELOAD_MAIN_FRAME = 19 | 触发service worker预热的主frame跳转请求。 |
-| NAVIGATION_PRELOAD_SUB_FRAME = 20 | 触发service worker预热的子frame跳转请求。 |
+| MAIN_FRAME = 0 | 顶层页面。<br><!--Device-MAIN_FRAME = 0--><!--Device-MAIN_FRAME = 0-End--> |
+| SUB_FRAME = 1 | Frame或Iframe。<br><!--Device-SUB_FRAME = 1--><!--Device-SUB_FRAME = 1-End--> |
+| STYLE_SHEET = 2 | CSS样式表。<br><!--Device-STYLE_SHEET = 2--><!--Device-STYLE_SHEET = 2-End--> |
+| SCRIPT = 3 | 外部脚本。<br><!--Device-SCRIPT = 3--><!--Device-SCRIPT = 3-End--> |
+| IMAGE = 4 | 图片（jpg/gif/png/以及其他）。<br><!--Device-IMAGE = 4--><!--Device-IMAGE = 4-End--> |
+| FONT_RESOURCE = 5 | 字体。<br><!--Device-FONT_RESOURCE = 5--><!--Device-FONT_RESOURCE = 5-End--> |
+| SUB_RESOURCE = 6 | 其他子资源。如果实际类型未知，则是默认类型。<br><!--Device-SUB_RESOURCE = 6--><!--Device-SUB_RESOURCE = 6-End--> |
+| OBJECT = 7 | 插件的Object（或embed）标签，或者插件请求的资源。<br><!--Device-OBJECT = 7--><!--Device-OBJECT = 7-End--> |
+| MEDIA = 8 | 媒体资源。<br><!--Device-MEDIA = 8--><!--Device-MEDIA = 8-End--> |
+| WORKER = 9 | 专用工作线程的主资源。<br><!--Device-WORKER = 9--><!--Device-WORKER = 9-End--> |
+| SHARED_WORKER = 10 | 共享工作线程的主资源。<br><!--Device-SHARED_WORKER = 10--><!--Device-SHARED_WORKER = 10-End--> |
+| PREFETCH = 11 | 明确的预取请求。<br><!--Device-PREFETCH = 11--><!--Device-PREFETCH = 11-End--> |
+| FAVICON = 12 | 网站图标。<br><!--Device-FAVICON = 12--><!--Device-FAVICON = 12-End--> |
+| XHR = 13 | XMLHttpRequest。<br><!--Device-XHR = 13--><!--Device-XHR = 13-End--> |
+| PING = 14 | sendBeacon的Ping请求。<br><!--Device-PING = 14--><!--Device-PING = 14-End--> |
+| SERVICE_WORKER = 15 | service worker的主资源。<br><!--Device-SERVICE_WORKER = 15--><!--Device-SERVICE_WORKER = 15-End--> |
+| CSP_REPORT = 16 | 内容安全策略违规报告。<br><!--Device-CSP_REPORT = 16--><!--Device-CSP_REPORT = 16-End--> |
+| PLUGIN_RESOURCE = 17 | 插件请求的资源。<br><!--Device-PLUGIN_RESOURCE = 17--><!--Device-PLUGIN_RESOURCE = 17-End--> |
+| NAVIGATION_PRELOAD_MAIN_FRAME = 19 | 触发service worker预热的主frame跳转请求。<br><!--Device-NAVIGATION_PRELOAD_MAIN_FRAME = 19--><!--Device-NAVIGATION_PRELOAD_MAIN_FRAME = 19-End--> |
+| NAVIGATION_PRELOAD_SUB_FRAME = 20 | 触发service worker预热的子frame跳转请求。<br><!--Device-NAVIGATION_PRELOAD_SUB_FRAME = 20--><!--Device-NAVIGATION_PRELOAD_SUB_FRAME = 20-End--> |
 
 
 ## 函数说明

@@ -24,10 +24,10 @@ typedef struct OH_Huks_KeyMaterialRsa {...} OH_Huks_KeyMaterialRsa
 
 | 名称 | 描述 |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。 |
-| uint32_t keySize | 密钥的长度，单位：Bit。 |
-| uint32_t nSize | n值的长度，单位：Byte。 |
-| uint32_t eSize | e值的长度，单位：Byte。 |
-| uint32_t dSize | d值的长度，单位：Byte。 |
+| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。<br><!--Device-enum OH_Huks_KeyAlg keyAlg--><!--Device-enum OH_Huks_KeyAlg keyAlg-End--> |
+| uint32_t keySize | 密钥的长度，单位：Bit。<br><!--Device-uint32_t keySize--><!--Device-uint32_t keySize-End--> |
+| uint32_t nSize | n值的长度，单位：Byte。<br><!--Device-uint32_t nSize--><!--Device-uint32_t nSize-End--> |
+| uint32_t eSize | e值的长度，单位：Byte。<br><!--Device-uint32_t eSize--><!--Device-uint32_t eSize-End--> |
+| uint32_t dSize | d值的长度，单位：Byte。<br><!--Device-uint32_t dSize--><!--Device-uint32_t dSize-End--> |
 
 

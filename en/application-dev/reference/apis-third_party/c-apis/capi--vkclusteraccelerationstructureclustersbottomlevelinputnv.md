@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t maxTotalClusterCount |  |
-| uint32_t maxClusterCountPerAccelerationStructure |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t maxTotalClusterCount | <!--Device-uint32_t maxTotalClusterCount--><!--Device-uint32_t maxTotalClusterCount-End--> |
+| uint32_t maxClusterCountPerAccelerationStructure | <!--Device-uint32_t maxClusterCountPerAccelerationStructure--><!--Device-uint32_t maxClusterCountPerAccelerationStructure-End--> |
 
 

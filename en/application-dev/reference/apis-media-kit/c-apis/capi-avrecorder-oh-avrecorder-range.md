@@ -22,7 +22,7 @@ Defines the value range of AVRecorder parameters (such as the bit rate and frame
 
 | Name | Description |
 | -- | -- |
-| int32_t min | Minimum value of an AVRecorder parameter. The unit is the same as that of the described parameter.<br>**Since**: 18 |
-| int32_t max | Maximum value of an AVRecorder parameter. The unit is the same as that of the described parameter.<br>**Since**: 18 |
+| int32_t min | Minimum value of an AVRecorder parameter. The unit is the same as that of the described parameter.<br>**Since**: 18<br><!--Device-int32_t min--><!--Device-int32_t min-End--> |
+| int32_t max | Maximum value of an AVRecorder parameter. The unit is the same as that of the described parameter.<br>**Since**: 18<br><!--Device-int32_t max--><!--Device-int32_t max-End--> |
 
 

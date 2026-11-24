@@ -24,6 +24,6 @@ Defines network handles for network IDs.
 
 | Name | Description |
 | -- | -- |
-| int32_t netId | Network ID. |
+| int32_t netId | Network ID.<br><!--Device-int32_t netId--><!--Device-int32_t netId-End--> |
 
 

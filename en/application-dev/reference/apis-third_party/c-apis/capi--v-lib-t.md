@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| HMODULE handle |  |
-| char* errmsg |  |
+| HMODULE handle | <!--Device-HMODULE handle--><!--Device-HMODULE handle-End--> |
+| char* errmsg | <!--Device-char* errmsg--><!--Device-char* errmsg-End--> |
 
 

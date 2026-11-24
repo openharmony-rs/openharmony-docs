@@ -24,9 +24,9 @@ Print_Margin用于表示打印页面的边距信息，支持设置左、上、�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t leftMargin | 左边距，单位：毫米。取值原则：大于0。 |
-| uint32_t topMargin | 上边距，单位：毫米。取值原则：大于0。 |
-| uint32_t rightMargin | 右边距，单位：毫米。取值原则：大于0。 |
-| uint32_t bottomMargin | 下边距，单位：毫米。取值原则：大于0。 |
+| uint32_t leftMargin | 左边距，单位：毫米。取值原则：大于0。<br><!--Device-uint32_t leftMargin--><!--Device-uint32_t leftMargin-End--> |
+| uint32_t topMargin | 上边距，单位：毫米。取值原则：大于0。<br><!--Device-uint32_t topMargin--><!--Device-uint32_t topMargin-End--> |
+| uint32_t rightMargin | 右边距，单位：毫米。取值原则：大于0。<br><!--Device-uint32_t rightMargin--><!--Device-uint32_t rightMargin-End--> |
+| uint32_t bottomMargin | 下边距，单位：毫米。取值原则：大于0。<br><!--Device-uint32_t bottomMargin--><!--Device-uint32_t bottomMargin-End--> |
 
 

@@ -24,7 +24,7 @@ Represents a callback for the printed document. This API can be used by native a
 
 | Name | Description |
 | -- | -- |
-| [Print_OnStartLayoutWrite](capi-ohprint-h.md#print_onstartlayoutwrite) startLayoutWriteCb | Callback invoked when the file write-back starts. When the file write-back starts, the system calls this callback to instruct the app to write the content to be printed. |
-| [Print_OnJobStateChanged](capi-ohprint-h.md#print_onjobstatechanged) jobStateChangedCb | Callback invoked when the print job state changes. When the print job state changes, the system invokes this callback to notify the app of the change. |
+| [Print_OnStartLayoutWrite](capi-ohprint-h.md#print_onstartlayoutwrite) startLayoutWriteCb | Callback invoked when the file write-back starts. When the file write-back starts, the system calls this callback to instruct the app to write the content to be printed.<br><!--Device-Print_OnStartLayoutWrite startLayoutWriteCb--><!--Device-Print_OnStartLayoutWrite startLayoutWriteCb-End--> |
+| [Print_OnJobStateChanged](capi-ohprint-h.md#print_onjobstatechanged) jobStateChangedCb | Callback invoked when the print job state changes. When the print job state changes, the system invokes this callback to notify the app of the change.<br><!--Device-Print_OnJobStateChanged jobStateChangedCb--><!--Device-Print_OnJobStateChanged jobStateChangedCb-End--> |
 
 

@@ -24,7 +24,7 @@ Defines a two-dimensional coordinate point, used to describe coordinate informat
 
 | Name | Description |
 | -- | -- |
-| float x | X-coordinate, in px. Value range: (-∞, +∞). |
-| float y | Y-coordinate, in px. Value range: (-∞, +∞). |
+| float x | X-coordinate, in px. Value range: (-∞, +∞).<br><!--Device-float x--><!--Device-float x-End--> |
+| float y | Y-coordinate, in px. Value range: (-∞, +∞).<br><!--Device-float y--><!--Device-float y-End--> |
 
 

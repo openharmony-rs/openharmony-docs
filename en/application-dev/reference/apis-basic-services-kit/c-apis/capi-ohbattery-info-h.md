@@ -31,9 +31,9 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 | Name | Description |
 | -- | -- |
-| static const char *COMMON_EVENT_KEY_CAPACITY = "soc" | Defines the common event indicating a battery capacity change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core |
-| static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | Defines the common event indicating a charging status change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core |
-| static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | Defines the common event indicating a battery plugged type change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core |
+| static const char *COMMON_EVENT_KEY_CAPACITY = "soc" | Defines the common event indicating a battery capacity change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core<br><!--Device-static const char *COMMON_EVENT_KEY_CAPACITY = "soc"--><!--Device-static const char *COMMON_EVENT_KEY_CAPACITY = "soc"-End--> |
+| static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | Defines the common event indicating a charging status change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core<br><!--Device-static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState"--><!--Device-static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState"-End--> |
+| static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | Defines the common event indicating a battery plugged type change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core<br><!--Device-static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType"--><!--Device-static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType"-End--> |
 
 ## Enum type description
 
@@ -47,7 +47,7 @@ enum BatteryInfo_BatteryPluggedType
 
 Enumerates the battery plugged types.
 
-<!--Device-BatteryInfo_BatteryPluggedType--><!--Device-BatteryInfo_BatteryPluggedType-End-->
+<!--Device-enum BatteryInfo_BatteryPluggedType--><!--Device-enum BatteryInfo_BatteryPluggedType-End-->
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
@@ -55,11 +55,11 @@ Enumerates the battery plugged types.
 
 | Enum item | Description |
 | -- | -- |
-| PLUGGED_TYPE_NONE | No power supply.<br>**Since**: 13 |
-| PLUGGED_TYPE_AC | AC charging.<br>**Since**: 13 |
-| PLUGGED_TYPE_USB | USB DC charging.<br>**Since**: 13 |
-| PLUGGED_TYPE_WIRELESS | Wireless charging.<br>**Since**: 13 |
-| PLUGGED_TYPE_BUTT | Unknown type.<br>**Since**: 13 |
+| PLUGGED_TYPE_NONE | No power supply.<br>**Since**: 13<br><!--Device-PLUGGED_TYPE_NONE--><!--Device-PLUGGED_TYPE_NONE-End--> |
+| PLUGGED_TYPE_AC | AC charging.<br>**Since**: 13<br><!--Device-PLUGGED_TYPE_AC--><!--Device-PLUGGED_TYPE_AC-End--> |
+| PLUGGED_TYPE_USB | USB DC charging.<br>**Since**: 13<br><!--Device-PLUGGED_TYPE_USB--><!--Device-PLUGGED_TYPE_USB-End--> |
+| PLUGGED_TYPE_WIRELESS | Wireless charging.<br>**Since**: 13<br><!--Device-PLUGGED_TYPE_WIRELESS--><!--Device-PLUGGED_TYPE_WIRELESS-End--> |
+| PLUGGED_TYPE_BUTT | Unknown type.<br>**Since**: 13<br><!--Device-PLUGGED_TYPE_BUTT--><!--Device-PLUGGED_TYPE_BUTT-End--> |
 
 
 ## Function description

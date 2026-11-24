@@ -24,7 +24,7 @@ typedef struct OH_CloudDisk_DataBuf {...} OH_CloudDisk_DataBuf
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t *data | 数据缓冲区指针。<br>**起始版本：** 26.0.1 |
-| uint64_t dataSize | 数据缓冲区大小，以字节为单位。<br>**起始版本：** 26.0.1 |
+| uint8_t *data | 数据缓冲区指针。<br>**起始版本：** 26.0.1<br><!--Device-uint8_t *data--><!--Device-uint8_t *data-End--> |
+| uint64_t dataSize | 数据缓冲区大小，以字节为单位。<br>**起始版本：** 26.0.1<br><!--Device-uint64_t dataSize--><!--Device-uint64_t dataSize-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 primitiveTopologyListRestart |  |
-| VkBool32 primitiveTopologyPatchListRestart |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 primitiveTopologyListRestart | <!--Device-VkBool32 primitiveTopologyListRestart--><!--Device-VkBool32 primitiveTopologyListRestart-End--> |
+| VkBool32 primitiveTopologyPatchListRestart | <!--Device-VkBool32 primitiveTopologyPatchListRestart--><!--Device-VkBool32 primitiveTopologyPatchListRestart-End--> |
 
 

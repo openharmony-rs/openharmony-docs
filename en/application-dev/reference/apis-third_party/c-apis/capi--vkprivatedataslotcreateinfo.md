@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPrivateDataSlotCreateFlags flags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPrivateDataSlotCreateFlags flags | <!--Device-VkPrivateDataSlotCreateFlags flags--><!--Device-VkPrivateDataSlotCreateFlags flags-End--> |
 
 

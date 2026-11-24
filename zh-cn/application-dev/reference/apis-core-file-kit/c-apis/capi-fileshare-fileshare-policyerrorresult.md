@@ -24,8 +24,8 @@ typedef struct FileShare_PolicyErrorResult {...} FileShare_PolicyErrorResult
 
 | 名称 | 描述 |
 | -- | -- |
-| char *uri | 授予或激活权限失败的URI。 |
-| [FileShare_PolicyErrorCode](capi-oh-file-share-h.md#fileshare_policyerrorcode) code | 授予或激活权限失败的URI对应的错误码。 |
-| char *message | 授予或激活权限失败的URI对应的原因，由系统管理，无需手动释放。 |
+| char *uri | 授予或激活权限失败的URI。<br><!--Device-char *uri--><!--Device-char *uri-End--> |
+| [FileShare_PolicyErrorCode](capi-oh-file-share-h.md#fileshare_policyerrorcode) code | 授予或激活权限失败的URI对应的错误码。<br><!--Device-FileShare_PolicyErrorCode code--><!--Device-FileShare_PolicyErrorCode code-End--> |
+| char *message | 授予或激活权限失败的URI对应的原因，由系统管理，无需手动释放。<br><!--Device-char *message--><!--Device-char *message-End--> |
 
 

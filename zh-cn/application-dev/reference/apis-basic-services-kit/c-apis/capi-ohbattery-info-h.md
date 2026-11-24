@@ -31,9 +31,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| static const char *COMMON_EVENT_KEY_CAPACITY = "soc" | 标识剩余电池电量百分比变化后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core |
-| static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | 标识充电状态更改后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core |
-| static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | 标识连接的充电器类型更改后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core |
+| static const char *COMMON_EVENT_KEY_CAPACITY = "soc" | 标识剩余电池电量百分比变化后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core<br><!--Device-static const char *COMMON_EVENT_KEY_CAPACITY = "soc"--><!--Device-static const char *COMMON_EVENT_KEY_CAPACITY = "soc"-End--> |
+| static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | 标识充电状态更改后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core<br><!--Device-static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState"--><!--Device-static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState"-End--> |
+| static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | 标识连接的充电器类型更改后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core<br><!--Device-static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType"--><!--Device-static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType"-End--> |
 
 ## 枚举类型说明
 
@@ -47,7 +47,7 @@ enum BatteryInfo_BatteryPluggedType
 
 定义连接的充电器类型。
 
-<!--Device-BatteryInfo_BatteryPluggedType--><!--Device-BatteryInfo_BatteryPluggedType-End-->
+<!--Device-enum BatteryInfo_BatteryPluggedType--><!--Device-enum BatteryInfo_BatteryPluggedType-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -55,11 +55,11 @@ enum BatteryInfo_BatteryPluggedType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PLUGGED_TYPE_NONE | 电源已拔下。<br>**起始版本：** 13 |
-| PLUGGED_TYPE_AC | 电源是交流充电。<br>**起始版本：** 13 |
-| PLUGGED_TYPE_USB | 电源是USB充电。<br>**起始版本：** 13 |
-| PLUGGED_TYPE_WIRELESS | 电源是无线充电。<br>**起始版本：** 13 |
-| PLUGGED_TYPE_BUTT | 未知类型。<br>**起始版本：** 13 |
+| PLUGGED_TYPE_NONE | 电源已拔下。<br>**起始版本：** 13<br><!--Device-PLUGGED_TYPE_NONE--><!--Device-PLUGGED_TYPE_NONE-End--> |
+| PLUGGED_TYPE_AC | 电源是交流充电。<br>**起始版本：** 13<br><!--Device-PLUGGED_TYPE_AC--><!--Device-PLUGGED_TYPE_AC-End--> |
+| PLUGGED_TYPE_USB | 电源是USB充电。<br>**起始版本：** 13<br><!--Device-PLUGGED_TYPE_USB--><!--Device-PLUGGED_TYPE_USB-End--> |
+| PLUGGED_TYPE_WIRELESS | 电源是无线充电。<br>**起始版本：** 13<br><!--Device-PLUGGED_TYPE_WIRELESS--><!--Device-PLUGGED_TYPE_WIRELESS-End--> |
+| PLUGGED_TYPE_BUTT | 未知类型。<br>**起始版本：** 13<br><!--Device-PLUGGED_TYPE_BUTT--><!--Device-PLUGGED_TYPE_BUTT-End--> |
 
 
 ## 函数说明

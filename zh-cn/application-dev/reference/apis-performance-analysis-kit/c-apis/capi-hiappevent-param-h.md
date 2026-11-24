@@ -27,10 +27,11 @@
 | MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT "sample_count" | 用于MAIN_THREAD_JANK_V2事件，主线程超时检测的采样栈的次数。<br>**起始版本：** 22 |
 | MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP "report_times_per_app" | 用于MAIN_THREAD_JANK_V2事件，每个应用PID一个生命周期内，主线程超时采样上报的次数，一个生命周期内只能设置一次。<br>**起始版本：** 22 |
 | MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING "auto_stop_sampling" | 用于MAIN_THREAD_JANK_V2事件，主线程超时结束时，是否停止采样主线程堆栈。<br>**起始版本：** 22 |
+| MAIN_THREAD_JANK_PARAM_ENABLE_EVENT_HANDLER_DUMP "enable_event_handler_dump" | 用于MAIN_THREAD_JANK_V2事件，主线程超时发生时，是否采集EventHandler任务队列信息。<br>**起始版本：** 26.1.0 |
 | OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING "extend_pc_lr_printing" | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否打印PC、LR寄存器扩展字节范围的内存内容。<br>**起始版本：** 24 |
 | OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES "log_file_cutoff_sz_bytes" | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，按设置的参数值大小截断CPP_CRASH日志。<br>**起始版本：** 24 |
 | OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING "simplify_vma_printing" | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否只打印崩溃日志中出现的地址所属的VMA映射信息，以减小CPP_CRASH日志文件大小。<br>**起始版本：** 24 |
 | OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG "merge_cppcrash_app_log" | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否在CPP_CRASH场景拼接应用沙箱中指定文件的日志。<br>**起始版本：** 24 |
-| OH_APP_CRASH_PARAM_COLLECT_MINIDUMP "collect_minidump" | 用于APP_CRASH事件，是否使能minidump。<br>**起始版本：** 26.0.0 |
+| OH_APP_CRASH_PARAM_COLLECT_MINIDUMP "collect_minidump" | <!--RP1-->用于APP_CRASH事件，是否使能minidump。<!--RP1End--><br>**起始版本：** 26.0.0 |
 | OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH "publish_on_next_launch" | 用于APP_CRASH事件，是否使能固定在重启后收到事件回调。<br>**起始版本：** 26.1.0 |
 

@@ -16,7 +16,7 @@ OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例�
 
 **废弃版本：** 11
 
-**替代接口：** [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md)
+**替代接口：** OH_AVCodecCallback
 
 **相关模块：** [CodecBase](capi-avcodec-kit-codecbase.md)
 
@@ -28,9 +28,9 @@ OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例�
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AVCodecOnError](capi-native-avcodec-base-h.md#oh_avcodeconerror) onError |  |
-| [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) onStreamChanged |  |
-| [OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata) onNeedInputData |  |
-| [OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata) onNeedOutputData |  |
+| [OH_AVCodecOnError](capi-native-avcodec-base-h.md#oh_avcodeconerror) onError | <!--Device-OH_AVCodecOnError onError--><!--Device-OH_AVCodecOnError onError-End--> |
+| [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) onStreamChanged | <!--Device-OH_AVCodecOnStreamChanged onStreamChanged--><!--Device-OH_AVCodecOnStreamChanged onStreamChanged-End--> |
+| [OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata) onNeedInputData | <!--Device-OH_AVCodecOnNeedInputData onNeedInputData--><!--Device-OH_AVCodecOnNeedInputData onNeedInputData-End--> |
+| [OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata) onNeedOutputData | <!--Device-OH_AVCodecOnNewOutputData onNeedOutputData--><!--Device-OH_AVCodecOnNewOutputData onNeedOutputData-End--> |
 
 

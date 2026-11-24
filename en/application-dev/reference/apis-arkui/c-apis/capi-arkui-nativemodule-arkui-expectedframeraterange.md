@@ -24,8 +24,8 @@ Sets the expected frame rate for an animation. This struct defines the frame rat
 
 | Name | Description |
 | -- | -- |
-| uint32_t min | Expected minimum frame rate, in fps. Rule: The value of **min** must be less than or equal to that of **max**, and must be less than or equal to that of **expected**. That is, **min** &le; **expected** &le; **max**. If this condition is not met, the expected frame rate range does not take effect. |
-| uint32_t max | Expected maximum frame rate, in fps. Rule: The value of **max** must be greater than or equal to that of **min**, and must be greater than or equal to that of **expected**. That is, **min** &le; **expected** &le; **max**. |
-| uint32_t expected | Expected optimal frame rate, in fps. Rule: The value of **expected** must be within the range of [**min**, **max**]. |
+| uint32_t min | Expected minimum frame rate, in fps. Rule: The value of **min** must be less than or equal to that of **max**, and must be less than or equal to that of **expected**. That is, **min** &le; **expected** &le; **max**. If this condition is not met, the expected frame rate range does not take effect.<br><!--Device-uint32_t min--><!--Device-uint32_t min-End--> |
+| uint32_t max | Expected maximum frame rate, in fps. Rule: The value of **max** must be greater than or equal to that of **min**, and must be greater than or equal to that of **expected**. That is, **min** &le; **expected** &le; **max**.<br><!--Device-uint32_t max--><!--Device-uint32_t max-End--> |
+| uint32_t expected | Expected optimal frame rate, in fps. Rule: The value of **expected** must be within the range of [**min**, **max**].<br><!--Device-uint32_t expected--><!--Device-uint32_t expected-End--> |
 
 

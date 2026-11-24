@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t attachment |  |
-| VkImageLayout layout |  |
-| VkImageAspectFlags aspectMask |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t attachment | <!--Device-uint32_t attachment--><!--Device-uint32_t attachment-End--> |
+| VkImageLayout layout | <!--Device-VkImageLayout layout--><!--Device-VkImageLayout layout-End--> |
+| VkImageAspectFlags aspectMask | <!--Device-VkImageAspectFlags aspectMask--><!--Device-VkImageAspectFlags aspectMask-End--> |
 
 

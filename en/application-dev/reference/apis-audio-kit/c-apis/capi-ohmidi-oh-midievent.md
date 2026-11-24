@@ -24,8 +24,8 @@ MIDI Event Structure (Universal). The event data is transferred in Universal MID
 
 | Name | Description |
 | -- | -- |
-| uint64_t timestamp | Timestamp in nanoseconds. Base time obtained via clock_gettime(CLOCK_MONOTONIC, &time) 0 indicates "send immediately".<br>**Since**: 24 |
-| size_t length | Number of 32-bit words in the packet. e.g., 1 for Type 2/4 (64-bit messages use 2 words)<br>**Since**: 24 |
-| uint32_t *data | Pointer to UMP data (Must be 4-byte aligned). This contains the raw UMP words (uint32_t).<br>**Since**: 24 |
+| uint64_t timestamp | Timestamp in nanoseconds. Base time obtained via clock_gettime(CLOCK_MONOTONIC, &time) 0 indicates "send immediately".<br>**Since**: 24<br><!--Device-uint64_t timestamp--><!--Device-uint64_t timestamp-End--> |
+| size_t length | Number of 32-bit words in the packet. e.g., 1 for Type 2/4 (64-bit messages use 2 words)<br>**Since**: 24<br><!--Device-size_t length--><!--Device-size_t length-End--> |
+| uint32_t *data | Pointer to UMP data (Must be 4-byte aligned). This contains the raw UMP words (uint32_t).<br>**Since**: 24<br><!--Device-uint32_t *data--><!--Device-uint32_t *data-End--> |
 
 

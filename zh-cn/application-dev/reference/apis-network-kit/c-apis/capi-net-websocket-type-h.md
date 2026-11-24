@@ -18,37 +18,28 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [WebSocket_CloseResult](capi-netstack-websocket-closeresult.md) | websocket客户端接收到服务端关闭的参数。 |
-| [WebSocket_CloseOption](capi-netstack-websocket-closeoption.md) | websocket客户端主动关闭的参数。 |
-| [WebSocket_ErrorResult](capi-netstack-websocket-errorresult.md) | websocket客户端来自服务端连接错误的参数。 |
-| [WebSocket_OpenResult](capi-netstack-websocket-openresult.md) | websocket客户端来自服务端连接成功的参数。 |
-| [WebSocket_Header](capi-netstack-websocket-header.md) | websocket客户端增加header的链表节点。 |
+| [WebSocket_CloseResult](capi-netstack-websocket-closeresult.md) | WebSocket客户端接收到服务端关闭的参数。 |
+| [WebSocket_CloseOption](capi-netstack-websocket-closeoption.md) | WebSocket客户端主动关闭的参数。 |
+| [WebSocket_ErrorResult](capi-netstack-websocket-errorresult.md) | WebSocket客户端来自服务端连接错误的参数。 |
+| [WebSocket_OpenResult](capi-netstack-websocket-openresult.md) | WebSocket客户端来自服务端连接成功的参数。 |
+| [WebSocket_Header](capi-netstack-websocket-header.md) | WebSocket客户端增加header的链表节点。 |
 | [WebSocket_RequestOptions](capi-netstack-websocket-requestoptions.md) | webSocket客户端和服务端建立连接的参数。 |
+| [WebSocket](capi-netstack-websocket.md) | WebSocket客户端结构体。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [WebSocket_ErrCode](#websocket_errcode) | WebSocket_ErrCode | Defines the WebSocket client structure. |
+| [WebSocket_ErrCode](#websocket_errcode) | WebSocket_ErrCode | 定义WebSocket请求的错误码。 |
 
 ### 函数
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)](#websocket_onopencallback) | WebSocket_OnOpenCallback | websocket客户端接收open消息的回调函数定义。 |
-| [typedef void (\*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)](#websocket_onmessagecallback) | WebSocket_OnMessageCallback | websocket客户端接收数据的回调函数定义。 |
-| [typedef void (\*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)](#websocket_onerrorcallback) | WebSocket_OnErrorCallback | websocket客户端接收error错误消息的回调函数定义。 |
-| [typedef void (\*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)](#websocket_onclosecallback) | WebSocket_OnCloseCallback | webSocket客户端接收close消息的回调函数定义。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| [WebSocket_OnOpenCallback](capi-net-websocket-type-h.md#websocket_onopencallback) onOpen | Pointer to the callback invoked when the WebSocket client receives a connection message.<br>**系统能力：** SystemCapability.Communication.NetStack |
-| [WebSocket_OnMessageCallback](capi-net-websocket-type-h.md#websocket_onmessagecallback) onMessage | Pointer to the callback invoked when the WebSocket client receives a message.<br>**系统能力：** SystemCapability.Communication.NetStack |
-| [WebSocket_OnErrorCallback](capi-net-websocket-type-h.md#websocket_onerrorcallback) onError | Pointer to the callback invoked when the WebSocket client receives an error message.<br>**系统能力：** SystemCapability.Communication.NetStack |
-| [WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback) onClose | Pointer to the callback invoked when the WebSocket client receives a close message.<br>**系统能力：** SystemCapability.Communication.NetStack |
-| [WebSocket_RequestOptions](capi-netstack-websocket-requestoptions.md) requestOptions | 客户端建立连接请求内容。<br>**系统能力：** SystemCapability.Communication.NetStack |
+| [typedef void (\*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)](#websocket_onopencallback) | WebSocket_OnOpenCallback | WebSocket客户端接收open消息的回调函数定义。 |
+| [typedef void (\*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)](#websocket_onmessagecallback) | WebSocket_OnMessageCallback | WebSocket客户端接收数据的回调函数定义。 |
+| [typedef void (\*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)](#websocket_onerrorcallback) | WebSocket_OnErrorCallback | WebSocket客户端接收error错误消息的回调函数定义。 |
+| [typedef void (\*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)](#websocket_onclosecallback) | WebSocket_OnCloseCallback | WebSocket客户端接收close消息的回调函数定义。 |
 
 ## 枚举类型说明
 
@@ -60,9 +51,9 @@ enum WebSocket_ErrCode
 
 **描述：**
 
-Defines the WebSocket client structure.
+定义WebSocket请求的错误码。
 
-<!--Device-WebSocket_ErrCode--><!--Device-WebSocket_ErrCode-End-->
+<!--Device-enum WebSocket_ErrCode--><!--Device-enum WebSocket_ErrCode-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -70,25 +61,25 @@ Defines the WebSocket client structure.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| WEBSOCKET_OK = 0 | 操作成功。 |
-| E_BASE = 1000 | 错误码基准值。 |
-| WEBSOCKET_CLIENT_NULL = (E_BASE + 1) | websocket客户端为空。 |
-| WEBSOCKET_CLIENT_NOT_CREATED = (E_BASE + 2) | websocket客户端未创建。 |
-| WEBSOCKET_CONNECTION_ERROR = (E_BASE + 3) | 建立websocket连接时发生错误。 |
-| WEBSOCKET_CONNECTION_PARSE_URL_ERROR = (E_BASE + 5) | 解析websocket连接参数时出错。 |
-| WEBSOCKET_CONNECTION_NO_MEMORY = (E_BASE + 6) | websocket客户端建立连接过程中内存不足。 |
-| WEBSOCKET_CONNECTION_CLOSED_BY_PEER = (E_BASE + 7) | websocket连接被对端关闭。 |
-| WEBSOCKET_DESTROYED = (E_BASE + 8) | websocket连接断开。 |
-| WEBSOCKET_PROTOCOL_ERROR = (E_BASE + 9) | 协议错误。 |
-| WEBSOCKET_SEND_NO_MEMORY = (E_BASE + 10) | websocket客户端发送数据时系统内存不足。 |
-| WEBSOCKET_SEND_DATA_NULL = (E_BASE + 11) | 发送数据为空。 |
-| WEBSOCKET_DATA_LENGTH_EXCEEDED = (E_BASE + 12) | 发送数据长度超出限制。 |
-| WEBSOCKET_QUEUE_LENGTH_EXCEEDED = (E_BASE + 13) | 发送数据队列长度超出限制。 |
-| WEBSOCKET_NO_CLIENT_CONTEXT = (E_BASE + 14) | websocket客户端的上下文为空。 |
-| WEBSOCKET_NO_HEADER_CONTEXT = (E_BASE + 15) | webSocket客户端协议头为空。 |
-| WEBSOCKET_HEADER_EXCEEDED = (E_BASE + 16) | webSocket客户端协议头超出限制。 |
-| WEBSOCKET_NO_CONNECTION = (E_BASE + 17) | websocket客户端未连接。 |
-| WEBSOCKET_NO_CONNECTION_CONTEXT = (E_BASE + 18) | 释放websocket连接上下文时无相应上下文。 |
+| WEBSOCKET_OK = 0 | 操作成功。<br><!--Device-WEBSOCKET_OK = 0--><!--Device-WEBSOCKET_OK = 0-End--> |
+| E_BASE = 1000 | 错误码基准值。<br><!--Device-E_BASE = 1000--><!--Device-E_BASE = 1000-End--> |
+| WEBSOCKET_CLIENT_NULL = (E_BASE + 1) | WebSocket客户端为空。<br><!--Device-WEBSOCKET_CLIENT_NULL = (E_BASE + 1)--><!--Device-WEBSOCKET_CLIENT_NULL = (E_BASE + 1)-End--> |
+| WEBSOCKET_CLIENT_NOT_CREATED = (E_BASE + 2) | WebSocket客户端未创建。<br><!--Device-WEBSOCKET_CLIENT_NOT_CREATED = (E_BASE + 2)--><!--Device-WEBSOCKET_CLIENT_NOT_CREATED = (E_BASE + 2)-End--> |
+| WEBSOCKET_CONNECTION_ERROR = (E_BASE + 3) | 建立WebSocket连接时发生错误。<br><!--Device-WEBSOCKET_CONNECTION_ERROR = (E_BASE + 3)--><!--Device-WEBSOCKET_CONNECTION_ERROR = (E_BASE + 3)-End--> |
+| WEBSOCKET_CONNECTION_PARSE_URL_ERROR = (E_BASE + 5) | 解析WebSocket连接参数时出错。<br><!--Device-WEBSOCKET_CONNECTION_PARSE_URL_ERROR = (E_BASE + 5)--><!--Device-WEBSOCKET_CONNECTION_PARSE_URL_ERROR = (E_BASE + 5)-End--> |
+| WEBSOCKET_CONNECTION_NO_MEMORY = (E_BASE + 6) | WebSocket客户端建立连接过程中内存不足。<br><!--Device-WEBSOCKET_CONNECTION_NO_MEMORY = (E_BASE + 6)--><!--Device-WEBSOCKET_CONNECTION_NO_MEMORY = (E_BASE + 6)-End--> |
+| WEBSOCKET_CONNECTION_CLOSED_BY_PEER = (E_BASE + 7) | WebSocket连接被对端关闭。<br><!--Device-WEBSOCKET_CONNECTION_CLOSED_BY_PEER = (E_BASE + 7)--><!--Device-WEBSOCKET_CONNECTION_CLOSED_BY_PEER = (E_BASE + 7)-End--> |
+| WEBSOCKET_DESTROYED = (E_BASE + 8) | WebSocket连接断开。<br><!--Device-WEBSOCKET_DESTROYED = (E_BASE + 8)--><!--Device-WEBSOCKET_DESTROYED = (E_BASE + 8)-End--> |
+| WEBSOCKET_PROTOCOL_ERROR = (E_BASE + 9) | 协议错误。<br><!--Device-WEBSOCKET_PROTOCOL_ERROR = (E_BASE + 9)--><!--Device-WEBSOCKET_PROTOCOL_ERROR = (E_BASE + 9)-End--> |
+| WEBSOCKET_SEND_NO_MEMORY = (E_BASE + 10) | WebSocket客户端发送数据时系统内存不足。<br><!--Device-WEBSOCKET_SEND_NO_MEMORY = (E_BASE + 10)--><!--Device-WEBSOCKET_SEND_NO_MEMORY = (E_BASE + 10)-End--> |
+| WEBSOCKET_SEND_DATA_NULL = (E_BASE + 11) | 发送数据为空。<br><!--Device-WEBSOCKET_SEND_DATA_NULL = (E_BASE + 11)--><!--Device-WEBSOCKET_SEND_DATA_NULL = (E_BASE + 11)-End--> |
+| WEBSOCKET_DATA_LENGTH_EXCEEDED = (E_BASE + 12) | 发送数据长度超出限制。<br><!--Device-WEBSOCKET_DATA_LENGTH_EXCEEDED = (E_BASE + 12)--><!--Device-WEBSOCKET_DATA_LENGTH_EXCEEDED = (E_BASE + 12)-End--> |
+| WEBSOCKET_QUEUE_LENGTH_EXCEEDED = (E_BASE + 13) | 发送数据队列长度超出限制。<br><!--Device-WEBSOCKET_QUEUE_LENGTH_EXCEEDED = (E_BASE + 13)--><!--Device-WEBSOCKET_QUEUE_LENGTH_EXCEEDED = (E_BASE + 13)-End--> |
+| WEBSOCKET_NO_CLIENT_CONTEXT = (E_BASE + 14) | WebSocket客户端的上下文为空。<br><!--Device-WEBSOCKET_NO_CLIENT_CONTEXT = (E_BASE + 14)--><!--Device-WEBSOCKET_NO_CLIENT_CONTEXT = (E_BASE + 14)-End--> |
+| WEBSOCKET_NO_HEADER_CONTEXT = (E_BASE + 15) | WebSocket客户端协议头为空。<br><!--Device-WEBSOCKET_NO_HEADER_CONTEXT = (E_BASE + 15)--><!--Device-WEBSOCKET_NO_HEADER_CONTEXT = (E_BASE + 15)-End--> |
+| WEBSOCKET_HEADER_EXCEEDED = (E_BASE + 16) | WebSocket客户端协议头超出限制。<br><!--Device-WEBSOCKET_HEADER_EXCEEDED = (E_BASE + 16)--><!--Device-WEBSOCKET_HEADER_EXCEEDED = (E_BASE + 16)-End--> |
+| WEBSOCKET_NO_CONNECTION = (E_BASE + 17) | WebSocket客户端未连接。<br><!--Device-WEBSOCKET_NO_CONNECTION = (E_BASE + 17)--><!--Device-WEBSOCKET_NO_CONNECTION = (E_BASE + 17)-End--> |
+| WEBSOCKET_NO_CONNECTION_CONTEXT = (E_BASE + 18) | 释放WebSocket连接上下文时无相应上下文。<br><!--Device-WEBSOCKET_NO_CONNECTION_CONTEXT = (E_BASE + 18)--><!--Device-WEBSOCKET_NO_CONNECTION_CONTEXT = (E_BASE + 18)-End--> |
 
 
 ## 函数说明
@@ -101,7 +92,7 @@ typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_Ope
 
 **描述：**
 
-websocket客户端接收open消息的回调函数定义。
+WebSocket客户端接收open消息的回调函数定义。
 
 <!--Device-typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)--><!--Device-typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)-End-->
 
@@ -113,8 +104,8 @@ websocket客户端接收open消息的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct WebSocket *client | websocket客户端。 |
-| [WebSocket_OpenResult](capi-netstack-websocket-openresult.md) openResult | websocket客户端接收建立连接消息的内容。 |
+| [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket客户端。 |
+| [WebSocket_OpenResult](capi-netstack-websocket-openresult.md) openResult | WebSocket客户端接收建立连接消息的内容。 |
 
 ### WebSocket_OnMessageCallback()
 
@@ -124,7 +115,7 @@ typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data
 
 **描述：**
 
-websocket客户端接收数据的回调函数定义。
+WebSocket客户端接收数据的回调函数定义。
 
 <!--Device-typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)--><!--Device-typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)-End-->
 
@@ -136,9 +127,9 @@ websocket客户端接收数据的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct WebSocket *client | websocket客户端。 |
-| char *data | Data received by the websocket客户端。 |
-| uint32_t length | Length of the data received by the websocket客户端。 |
+| [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket客户端。 |
+| char *data | WebSocket客户端接收的数据。 |
+| uint32_t length | WebSocket客户端接收数据的长度。 |
 
 ### WebSocket_OnErrorCallback()
 
@@ -148,7 +139,7 @@ typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_Er
 
 **描述：**
 
-websocket客户端接收error错误消息的回调函数定义。
+WebSocket客户端接收error错误消息的回调函数定义。
 
 <!--Device-typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)--><!--Device-typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)-End-->
 
@@ -160,8 +151,8 @@ websocket客户端接收error错误消息的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct WebSocket *client | websocket客户端。 |
-| [WebSocket_ErrorResult](capi-netstack-websocket-errorresult.md) errorResult | websocket客户端接收连接错误消息的内容。 |
+| [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket客户端。 |
+| [WebSocket_ErrorResult](capi-netstack-websocket-errorresult.md) errorResult | WebSocket客户端接收连接错误消息的内容。 |
 
 ### WebSocket_OnCloseCallback()
 
@@ -171,7 +162,7 @@ typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_Cl
 
 **描述：**
 
-webSocket客户端接收close消息的回调函数定义。
+WebSocket客户端接收close消息的回调函数定义。
 
 <!--Device-typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)--><!--Device-typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)-End-->
 
@@ -183,7 +174,7 @@ webSocket客户端接收close消息的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct WebSocket *client | websocket客户端。 |
-| [WebSocket_CloseResult](capi-netstack-websocket-closeresult.md) closeResult | webSocket客户端接收关闭消息的内容。 |
+| [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket客户端。 |
+| [WebSocket_CloseResult](capi-netstack-websocket-closeresult.md) closeResult | WebSocket客户端接收的关闭消息内容。 |
 
 

@@ -10,14 +10,14 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkVideoEncodeCapabilityFlagsKHR flags |  |
-| VkVideoEncodeRateControlModeFlagsKHR rateControlModes |  |
-| uint32_t maxRateControlLayers |  |
-| uint64_t maxBitrate |  |
-| uint32_t maxQualityLevels |  |
-| [VkExtent2D](capi--vkextent2d.md) encodeInputPictureGranularity |  |
-| VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkVideoEncodeCapabilityFlagsKHR flags | <!--Device-VkVideoEncodeCapabilityFlagsKHR flags--><!--Device-VkVideoEncodeCapabilityFlagsKHR flags-End--> |
+| VkVideoEncodeRateControlModeFlagsKHR rateControlModes | <!--Device-VkVideoEncodeRateControlModeFlagsKHR rateControlModes--><!--Device-VkVideoEncodeRateControlModeFlagsKHR rateControlModes-End--> |
+| uint32_t maxRateControlLayers | <!--Device-uint32_t maxRateControlLayers--><!--Device-uint32_t maxRateControlLayers-End--> |
+| uint64_t maxBitrate | <!--Device-uint64_t maxBitrate--><!--Device-uint64_t maxBitrate-End--> |
+| uint32_t maxQualityLevels | <!--Device-uint32_t maxQualityLevels--><!--Device-uint32_t maxQualityLevels-End--> |
+| [VkExtent2D](capi--vkextent2d.md) encodeInputPictureGranularity | <!--Device-VkExtent2D encodeInputPictureGranularity--><!--Device-VkExtent2D encodeInputPictureGranularity-End--> |
+| VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags | <!--Device-VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags--><!--Device-VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags-End--> |
 
 

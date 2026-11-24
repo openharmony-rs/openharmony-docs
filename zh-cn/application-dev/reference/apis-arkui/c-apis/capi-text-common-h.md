@@ -90,7 +90,7 @@ enum ArkUI_TextAlignment
 
 定义文本水平对齐样式枚举值。
 
-<!--Device-ArkUI_TextAlignment--><!--Device-ArkUI_TextAlignment-End-->
+<!--Device-enum ArkUI_TextAlignment--><!--Device-enum ArkUI_TextAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,12 +98,12 @@ enum ArkUI_TextAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_ALIGNMENT_START = 0 | 水平对齐首部。 |
-| ARKUI_TEXT_ALIGNMENT_CENTER | 水平居中对齐。 |
-| ARKUI_TEXT_ALIGNMENT_END | 水平对齐尾部。 |
-| ARKUI_TEXT_ALIGNMENT_JUSTIFY | 双端对齐。 |
-| ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | 从左到右对齐。<br>**起始版本：** 23 |
-| ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | 从右到左对齐。<br>**起始版本：** 23 |
+| ARKUI_TEXT_ALIGNMENT_START = 0 | 水平对齐首部。<br><!--Device-ARKUI_TEXT_ALIGNMENT_START = 0--><!--Device-ARKUI_TEXT_ALIGNMENT_START = 0-End--> |
+| ARKUI_TEXT_ALIGNMENT_CENTER | 水平居中对齐。<br><!--Device-ARKUI_TEXT_ALIGNMENT_CENTER--><!--Device-ARKUI_TEXT_ALIGNMENT_CENTER-End--> |
+| ARKUI_TEXT_ALIGNMENT_END | 水平对齐尾部。<br><!--Device-ARKUI_TEXT_ALIGNMENT_END--><!--Device-ARKUI_TEXT_ALIGNMENT_END-End--> |
+| ARKUI_TEXT_ALIGNMENT_JUSTIFY | 双端对齐。<br><!--Device-ARKUI_TEXT_ALIGNMENT_JUSTIFY--><!--Device-ARKUI_TEXT_ALIGNMENT_JUSTIFY-End--> |
+| ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | 从左到右对齐。<br>**起始版本：** 23<br><!--Device-ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4--><!--Device-ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4-End--> |
+| ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | 从右到左对齐。<br>**起始版本：** 23<br><!--Device-ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5--><!--Device-ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5-End--> |
 
 ### ArkUI_TextVerticalAlignment
 
@@ -115,7 +115,7 @@ enum ArkUI_TextVerticalAlignment
 
 定义文本垂直对齐样式枚举值。
 
-<!--Device-ArkUI_TextVerticalAlignment--><!--Device-ArkUI_TextVerticalAlignment-End-->
+<!--Device-enum ArkUI_TextVerticalAlignment--><!--Device-enum ArkUI_TextVerticalAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,10 +123,10 @@ enum ArkUI_TextVerticalAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | 基线对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | 底部对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | 居中对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | 顶部对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | 基线对齐。<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0-End--> |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | 底部对齐。<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM-End--> |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | 居中对齐。<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER-End--> |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | 顶部对齐。<br><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP--><!--Device-ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP-End--> |
 
 ### ArkUI_TextContentAlign
 
@@ -138,7 +138,7 @@ enum ArkUI_TextContentAlign
 
 定义文本内容区垂直对齐样式枚举值。
 
-<!--Device-ArkUI_TextContentAlign--><!--Device-ArkUI_TextContentAlign-End-->
+<!--Device-enum ArkUI_TextContentAlign--><!--Device-enum ArkUI_TextContentAlign-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,9 +146,9 @@ enum ArkUI_TextContentAlign
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_CONTENT_ALIGN_TOP = 0 | 顶部对齐。 |
-| ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1 | 居中对齐。 |
-| ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2 | 底部对齐。 |
+| ARKUI_TEXT_CONTENT_ALIGN_TOP = 0 | 顶部对齐。<br><!--Device-ARKUI_TEXT_CONTENT_ALIGN_TOP = 0--><!--Device-ARKUI_TEXT_CONTENT_ALIGN_TOP = 0-End--> |
+| ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1 | 居中对齐。<br><!--Device-ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1--><!--Device-ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1-End--> |
+| ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2 | 底部对齐。<br><!--Device-ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2--><!--Device-ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2-End--> |
 
 ### ArkUI_TextDirection
 
@@ -160,7 +160,7 @@ enum ArkUI_TextDirection
 
 定义文本排版方向枚举值。
 
-<!--Device-ArkUI_TextDirection--><!--Device-ArkUI_TextDirection-End-->
+<!--Device-enum ArkUI_TextDirection--><!--Device-enum ArkUI_TextDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,10 +168,10 @@ enum ArkUI_TextDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_DIRECTION_LTR = 0 | 文本排版方向从左到右。 |
-| ARKUI_TEXT_DIRECTION_RTL = 1 | 文本排版方向从右到左。 |
-| ARKUI_TEXT_DIRECTION_DEFAULT = 2 | 文本排版方向遵循组件布局。 |
-| ARKUI_TEXT_DIRECTION_AUTO = 3 | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。 |
+| ARKUI_TEXT_DIRECTION_LTR = 0 | 文本排版方向从左到右。<br><!--Device-ARKUI_TEXT_DIRECTION_LTR = 0--><!--Device-ARKUI_TEXT_DIRECTION_LTR = 0-End--> |
+| ARKUI_TEXT_DIRECTION_RTL = 1 | 文本排版方向从右到左。<br><!--Device-ARKUI_TEXT_DIRECTION_RTL = 1--><!--Device-ARKUI_TEXT_DIRECTION_RTL = 1-End--> |
+| ARKUI_TEXT_DIRECTION_DEFAULT = 2 | 文本排版方向遵循组件布局。<br><!--Device-ARKUI_TEXT_DIRECTION_DEFAULT = 2--><!--Device-ARKUI_TEXT_DIRECTION_DEFAULT = 2-End--> |
+| ARKUI_TEXT_DIRECTION_AUTO = 3 | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。<br><!--Device-ARKUI_TEXT_DIRECTION_AUTO = 3--><!--Device-ARKUI_TEXT_DIRECTION_AUTO = 3-End--> |
 
 ### ArkUI_EnterKeyType
 
@@ -183,7 +183,7 @@ enum ArkUI_EnterKeyType
 
 定义单行文本输入回车键类型枚举值。
 
-<!--Device-ArkUI_EnterKeyType--><!--Device-ArkUI_EnterKeyType-End-->
+<!--Device-enum ArkUI_EnterKeyType--><!--Device-enum ArkUI_EnterKeyType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,13 +191,13 @@ enum ArkUI_EnterKeyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ENTER_KEY_TYPE_GO = 2 | 显示为开始样式。 |
-| ARKUI_ENTER_KEY_TYPE_SEARCH = 3 | 显示为搜索样式。 |
-| ARKUI_ENTER_KEY_TYPE_SEND | 显示为发送样式。 |
-| ARKUI_ENTER_KEY_TYPE_NEXT | 显示为下一个样式。 |
-| ARKUI_ENTER_KEY_TYPE_DONE | 显示为完成样式。 |
-| ARKUI_ENTER_KEY_TYPE_PREVIOUS | 显示为上一个样式。 |
-| ARKUI_ENTER_KEY_TYPE_NEW_LINE | 显示为换行样式。 |
+| ARKUI_ENTER_KEY_TYPE_GO = 2 | 显示为开始样式。<br><!--Device-ARKUI_ENTER_KEY_TYPE_GO = 2--><!--Device-ARKUI_ENTER_KEY_TYPE_GO = 2-End--> |
+| ARKUI_ENTER_KEY_TYPE_SEARCH = 3 | 显示为搜索样式。<br><!--Device-ARKUI_ENTER_KEY_TYPE_SEARCH = 3--><!--Device-ARKUI_ENTER_KEY_TYPE_SEARCH = 3-End--> |
+| ARKUI_ENTER_KEY_TYPE_SEND | 显示为发送样式。<br><!--Device-ARKUI_ENTER_KEY_TYPE_SEND--><!--Device-ARKUI_ENTER_KEY_TYPE_SEND-End--> |
+| ARKUI_ENTER_KEY_TYPE_NEXT | 显示为下一个样式。<br><!--Device-ARKUI_ENTER_KEY_TYPE_NEXT--><!--Device-ARKUI_ENTER_KEY_TYPE_NEXT-End--> |
+| ARKUI_ENTER_KEY_TYPE_DONE | 显示为完成样式。<br><!--Device-ARKUI_ENTER_KEY_TYPE_DONE--><!--Device-ARKUI_ENTER_KEY_TYPE_DONE-End--> |
+| ARKUI_ENTER_KEY_TYPE_PREVIOUS | 显示为上一个样式。<br><!--Device-ARKUI_ENTER_KEY_TYPE_PREVIOUS--><!--Device-ARKUI_ENTER_KEY_TYPE_PREVIOUS-End--> |
+| ARKUI_ENTER_KEY_TYPE_NEW_LINE | 显示为换行样式。<br><!--Device-ARKUI_ENTER_KEY_TYPE_NEW_LINE--><!--Device-ARKUI_ENTER_KEY_TYPE_NEW_LINE-End--> |
 
 ### ArkUI_TextDecorationType
 
@@ -209,7 +209,7 @@ enum ArkUI_TextDecorationType
 
 定义装饰线类型枚举值。
 
-<!--Device-ArkUI_TextDecorationType--><!--Device-ArkUI_TextDecorationType-End-->
+<!--Device-enum ArkUI_TextDecorationType--><!--Device-enum ArkUI_TextDecorationType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,10 +217,10 @@ enum ArkUI_TextDecorationType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | 不使用装饰线。 |
-| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | 文字下划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | 文字上划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | 穿过文本的修饰线。 |
+| ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | 不使用装饰线。<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_NONE = 0--><!--Device-ARKUI_TEXT_DECORATION_TYPE_NONE = 0-End--> |
+| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | 文字下划线修饰。<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_UNDERLINE--><!--Device-ARKUI_TEXT_DECORATION_TYPE_UNDERLINE-End--> |
+| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | 文字上划线修饰。<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_OVERLINE--><!--Device-ARKUI_TEXT_DECORATION_TYPE_OVERLINE-End--> |
+| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | 穿过文本的修饰线。<br><!--Device-ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH--><!--Device-ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH-End--> |
 
 ### ArkUI_TextDecorationStyle
 
@@ -232,7 +232,7 @@ enum ArkUI_TextDecorationStyle
 
 定义装饰线样式枚举值。
 
-<!--Device-ArkUI_TextDecorationStyle--><!--Device-ArkUI_TextDecorationStyle-End-->
+<!--Device-enum ArkUI_TextDecorationStyle--><!--Device-enum ArkUI_TextDecorationStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,11 +240,11 @@ enum ArkUI_TextDecorationStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | 单实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | 双实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOTTED | 点线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DASHED | 虚线。 |
-| ARKUI_TEXT_DECORATION_STYLE_WAVY | 波浪线。 |
+| ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | 单实线。<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_SOLID = 0--><!--Device-ARKUI_TEXT_DECORATION_STYLE_SOLID = 0-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | 双实线。<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOUBLE--><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOUBLE-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_DOTTED | 点线。<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOTTED--><!--Device-ARKUI_TEXT_DECORATION_STYLE_DOTTED-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_DASHED | 虚线。<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_DASHED--><!--Device-ARKUI_TEXT_DECORATION_STYLE_DASHED-End--> |
+| ARKUI_TEXT_DECORATION_STYLE_WAVY | 波浪线。<br><!--Device-ARKUI_TEXT_DECORATION_STYLE_WAVY--><!--Device-ARKUI_TEXT_DECORATION_STYLE_WAVY-End--> |
 
 ### ArkUI_TextCase
 
@@ -256,7 +256,7 @@ enum ArkUI_TextCase
 
 定义文本大小写枚举值。
 
-<!--Device-ArkUI_TextCase--><!--Device-ArkUI_TextCase-End-->
+<!--Device-enum ArkUI_TextCase--><!--Device-enum ArkUI_TextCase-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,9 +264,9 @@ enum ArkUI_TextCase
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_CASE_NORMAL = 0 | 保持原有大小写。 |
-| ARKUI_TEXT_CASE_LOWER | 文本全小写。 |
-| ARKUI_TEXT_CASE_UPPER | 文本全大写。 |
+| ARKUI_TEXT_CASE_NORMAL = 0 | 保持原有大小写。<br><!--Device-ARKUI_TEXT_CASE_NORMAL = 0--><!--Device-ARKUI_TEXT_CASE_NORMAL = 0-End--> |
+| ARKUI_TEXT_CASE_LOWER | 文本全小写。<br><!--Device-ARKUI_TEXT_CASE_LOWER--><!--Device-ARKUI_TEXT_CASE_LOWER-End--> |
+| ARKUI_TEXT_CASE_UPPER | 文本全大写。<br><!--Device-ARKUI_TEXT_CASE_UPPER--><!--Device-ARKUI_TEXT_CASE_UPPER-End--> |
 
 ### ArkUI_TextCopyOptions
 
@@ -278,7 +278,7 @@ enum ArkUI_TextCopyOptions
 
 定义组件支持设置文本是否可复制粘贴。
 
-<!--Device-ArkUI_TextCopyOptions--><!--Device-ArkUI_TextCopyOptions-End-->
+<!--Device-enum ArkUI_TextCopyOptions--><!--Device-enum ArkUI_TextCopyOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,10 +286,10 @@ enum ArkUI_TextCopyOptions
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | 不支持复制。<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_NONE = 0--><!--Device-ARKUI_TEXT_COPY_OPTIONS_NONE = 0-End--> |
+| ARKUI_TEXT_COPY_OPTIONS_IN_APP | 支持应用内复制。<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_IN_APP--><!--Device-ARKUI_TEXT_COPY_OPTIONS_IN_APP-End--> |
+| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE--><!--Device-ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE-End--> |
+| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。<br><!--Device-ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE--><!--Device-ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE-End--> |
 
 ### ArkUI_TextOverflow
 
@@ -301,7 +301,7 @@ enum ArkUI_TextOverflow
 
 定义文本超长时的显示方式。
 
-<!--Device-ArkUI_TextOverflow--><!--Device-ArkUI_TextOverflow-End-->
+<!--Device-enum ArkUI_TextOverflow--><!--Device-enum ArkUI_TextOverflow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,10 +309,10 @@ enum ArkUI_TextOverflow
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_OVERFLOW_NONE = 0 | 文本超长时不裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_CLIP | 文本超长时进行裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_ELLIPSIS | 文本超长时显示不下的文本用省略号代替。 |
-| ARKUI_TEXT_OVERFLOW_MARQUEE | 文本超长时以跑马灯的方式展示。 |
+| ARKUI_TEXT_OVERFLOW_NONE = 0 | 文本超长时不裁剪显示。<br><!--Device-ARKUI_TEXT_OVERFLOW_NONE = 0--><!--Device-ARKUI_TEXT_OVERFLOW_NONE = 0-End--> |
+| ARKUI_TEXT_OVERFLOW_CLIP | 文本超长时进行裁剪显示。<br><!--Device-ARKUI_TEXT_OVERFLOW_CLIP--><!--Device-ARKUI_TEXT_OVERFLOW_CLIP-End--> |
+| ARKUI_TEXT_OVERFLOW_ELLIPSIS | 文本超长时显示不下的文本用省略号代替。<br><!--Device-ARKUI_TEXT_OVERFLOW_ELLIPSIS--><!--Device-ARKUI_TEXT_OVERFLOW_ELLIPSIS-End--> |
+| ARKUI_TEXT_OVERFLOW_MARQUEE | 文本超长时以跑马灯的方式展示。<br><!--Device-ARKUI_TEXT_OVERFLOW_MARQUEE--><!--Device-ARKUI_TEXT_OVERFLOW_MARQUEE-End--> |
 
 ### ArkUI_WordBreak
 
@@ -324,7 +324,7 @@ enum ArkUI_WordBreak
 
 定义文本断行规则。
 
-<!--Device-ArkUI_WordBreak--><!--Device-ArkUI_WordBreak-End-->
+<!--Device-enum ArkUI_WordBreak--><!--Device-enum ArkUI_WordBreak-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,10 +332,10 @@ enum ArkUI_WordBreak
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_WORD_BREAK_NORMAL = 0 | CJK（中文、日文、韩文）文本可以在任意2个字符间断行，而Non-CJK文本（如英文等）只能在空白符处断行。适用于对断行控制要求不高的通用场景。 |
-| ARKUI_WORD_BREAK_BREAK_ALL | 对于Non-CJK的文本，可在任意2个字符间断行。CJK（中文、日文、韩文）文本可以在任意2个字符间断行。 |
-| ARKUI_WORD_BREAK_BREAK_WORD | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断点（如空白符）时，优先按断点换行。对于CJK的文本，换行效果与NORMAL效果保持一致。 |
-| ARKUI_WORD_BREAK_HYPHENATION | 对于Non-CJK的文本，可以按照音节断行。对于CJK的文本，换行效果与NORMAL效果保持一致。<br>**起始版本：** 18 |
+| ARKUI_WORD_BREAK_NORMAL = 0 | CJK（中文、日文、韩文）文本可以在任意2个字符间断行，而Non-CJK文本（如英文等）只能在空白符处断行。适用于对断行控制要求不高的通用场景。<br><!--Device-ARKUI_WORD_BREAK_NORMAL = 0--><!--Device-ARKUI_WORD_BREAK_NORMAL = 0-End--> |
+| ARKUI_WORD_BREAK_BREAK_ALL | 对于Non-CJK的文本，可在任意2个字符间断行。CJK（中文、日文、韩文）文本可以在任意2个字符间断行。<br><!--Device-ARKUI_WORD_BREAK_BREAK_ALL--><!--Device-ARKUI_WORD_BREAK_BREAK_ALL-End--> |
+| ARKUI_WORD_BREAK_BREAK_WORD | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断点（如空白符）时，优先按断点换行。对于CJK的文本，换行效果与NORMAL效果保持一致。<br><!--Device-ARKUI_WORD_BREAK_BREAK_WORD--><!--Device-ARKUI_WORD_BREAK_BREAK_WORD-End--> |
+| ARKUI_WORD_BREAK_HYPHENATION | 对于Non-CJK的文本，可以按照音节断行。对于CJK的文本，换行效果与NORMAL效果保持一致。<br>**起始版本：** 18<br><!--Device-ARKUI_WORD_BREAK_HYPHENATION--><!--Device-ARKUI_WORD_BREAK_HYPHENATION-End--> |
 
 ### ArkUI_EllipsisMode
 
@@ -347,7 +347,7 @@ enum ArkUI_EllipsisMode
 
 定义文本省略位置。
 
-<!--Device-ArkUI_EllipsisMode--><!--Device-ArkUI_EllipsisMode-End-->
+<!--Device-enum ArkUI_EllipsisMode--><!--Device-enum ArkUI_EllipsisMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -355,11 +355,11 @@ enum ArkUI_EllipsisMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ELLIPSIS_MODE_START = 0 | 省略行首内容。适用单行文本场景。 |
-| ARKUI_ELLIPSIS_MODE_CENTER | 省略行中内容。适用单行文本场景。 |
-| ARKUI_ELLIPSIS_MODE_END | 省略行末内容。适用单行文本和多行文本场景。 |
-| ARKUI_ELLIPSIS_MODE_MULTILINE_START | 省略行首内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
-| ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER | 省略行中内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
+| ARKUI_ELLIPSIS_MODE_START = 0 | 省略行首内容。适用单行文本场景。<br><!--Device-ARKUI_ELLIPSIS_MODE_START = 0--><!--Device-ARKUI_ELLIPSIS_MODE_START = 0-End--> |
+| ARKUI_ELLIPSIS_MODE_CENTER | 省略行中内容。适用单行文本场景。<br><!--Device-ARKUI_ELLIPSIS_MODE_CENTER--><!--Device-ARKUI_ELLIPSIS_MODE_CENTER-End--> |
+| ARKUI_ELLIPSIS_MODE_END | 省略行末内容。适用单行文本和多行文本场景。<br><!--Device-ARKUI_ELLIPSIS_MODE_END--><!--Device-ARKUI_ELLIPSIS_MODE_END-End--> |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_START | 省略行首内容。适用单行文本和多行文本场景。<br>**起始版本：** 24<br><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_START--><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_START-End--> |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER | 省略行中内容。适用单行文本和多行文本场景。<br>**起始版本：** 24<br><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER--><!--Device-ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER-End--> |
 
 ### ArkUI_KeyboardAppearance
 
@@ -371,7 +371,7 @@ enum ArkUI_KeyboardAppearance
 
 定义输入框拉起的键盘样式。
 
-<!--Device-ArkUI_KeyboardAppearance--><!--Device-ArkUI_KeyboardAppearance-End-->
+<!--Device-enum ArkUI_KeyboardAppearance--><!--Device-enum ArkUI_KeyboardAppearance-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -379,10 +379,10 @@ enum ArkUI_KeyboardAppearance
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0 | 默认模式，不使用沉浸式样式。<br>**起始版本：** 15 |
-| ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1 | 沉浸式模式，由系统决定采用的样式。<br>**起始版本：** 15 |
-| ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2 | 浅色沉浸式样式。<br>**起始版本：** 15 |
-| ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3 | 深色沉浸式样式。<br>**起始版本：** 15 |
+| ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0 | 默认模式，不使用沉浸式样式。<br>**起始版本：** 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0--><!--Device-ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0-End--> |
+| ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1 | 沉浸式模式，由系统决定采用的样式。<br>**起始版本：** 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1--><!--Device-ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1-End--> |
+| ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2 | 浅色沉浸式样式。<br>**起始版本：** 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2--><!--Device-ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2-End--> |
+| ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3 | 深色沉浸式样式。<br>**起始版本：** 15<br><!--Device-ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3--><!--Device-ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3-End--> |
 
 ### ArkUI_TextMenuItemId
 
@@ -394,7 +394,7 @@ enum ArkUI_TextMenuItemId
 
 文本菜单项id枚举。
 
-<!--Device-ArkUI_TextMenuItemId--><!--Device-ArkUI_TextMenuItemId-End-->
+<!--Device-enum ArkUI_TextMenuItemId--><!--Device-enum ArkUI_TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -402,27 +402,27 @@ enum ArkUI_TextMenuItemId
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_MENU_ITEM_ID_CUT = 0 | 剪切。 |
-| ARKUI_TEXT_MENU_ITEM_ID_COPY = 1 | 复制。 |
-| ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2 | 粘贴。 |
-| ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3 | 全选。 |
-| ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4 | 互通服务，提供跨设备交互能力，例如跨设备相机访问。 |
-| ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5 | 拍摄输入。 |
-| ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6 | AI帮写。该菜单项依赖大模型能力才能生效。 |
-| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7 | 翻译。对选中的文本提供翻译服务。 |
-| ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8 | 搜索。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。 |
-| ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9 | 分享。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。 |
-| ARKUI_TEXT_MENU_ITEM_ID_URL = 10 | 打开链接。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。 |
-| ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11 | 新建邮件。对选中的邮箱地址提供跳转服务，拉起邮箱应用。 |
-| ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12 | 呼叫。对选中的电话号码跳转服务，拉起电话拨号页面。 |
-| ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | 导航前往。对选中的地址提供跳转服务，拉起地图应用。 |
-| ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。 |
-| ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | 问问AI。对选中的文本提供AI问询能力。该菜单项依赖大模型能力才能生效。 |
-| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | 自动填充。例如自动填充账号密码。<br>**起始版本：** 24 |
-| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | 密码保险箱。<br>**起始版本：** 24 |
-| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18 | 快捷翻译。<br>**起始版本：** 26.1.0 |
-| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | 应用自定义菜单项起始id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
-| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | 应用自定义菜单项结束id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
+| ARKUI_TEXT_MENU_ITEM_ID_CUT = 0 | 剪切。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CUT = 0--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CUT = 0-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_COPY = 1 | 复制。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COPY = 1--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COPY = 1-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2 | 粘贴。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3 | 全选。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4 | 互通服务，提供跨设备交互能力，例如跨设备相机访问。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5 | 拍摄输入。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6 | AI帮写。该菜单项依赖大模型能力才能生效。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7 | 翻译。对选中的文本提供翻译服务。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8 | 搜索。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9 | 分享。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_URL = 10 | 打开链接。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_URL = 10--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_URL = 10-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11 | 新建邮件。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12 | 呼叫。对选中的电话号码跳转服务，拉起电话拨号页面。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | 导航前往。对选中的地址提供跳转服务，拉起地图应用。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | 问问AI。对选中的文本提供AI问询能力。该菜单项依赖大模型能力才能生效。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | 自动填充。例如自动填充账号密码。<br>**起始版本：** 24<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | 密码保险箱。<br>**起始版本：** 24<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18 | 快捷翻译。<br>**起始版本：** 26.1.0<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | 应用自定义菜单项起始id，除了系统内置的菜单项id，应用还可以自定义菜单项id。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000-End--> |
+| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | 应用自定义菜单项结束id，除了系统内置的菜单项id，应用还可以自定义菜单项id。<br><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000--><!--Device-ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000-End--> |
 
 ### OH_ArkUI_LineBreakStrategy
 
@@ -434,7 +434,7 @@ enum OH_ArkUI_LineBreakStrategy
 
 换行策略类型枚举。
 
-<!--Device-OH_ArkUI_LineBreakStrategy--><!--Device-OH_ArkUI_LineBreakStrategy-End-->
+<!--Device-enum OH_ArkUI_LineBreakStrategy--><!--Device-enum OH_ArkUI_LineBreakStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -442,9 +442,9 @@ enum OH_ArkUI_LineBreakStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | 贪婪模式。<br>使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。<br>**起始版本：** 24 |
-| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | 高质量模式。<br>在平衡模式的基础上，尽可能填满行，同时最后一行的权重较低，可能出现最后一行留白较多的情形。<br>**起始版本：** 24 |
-| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | 平衡模式。<br>在不拆词的情况下，尽量使一个段落中每一行的宽度相同。<br>**起始版本：** 24 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | 贪婪模式。<br>使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0--><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0-End--> |
+| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | 高质量模式。<br>在平衡模式的基础上，尽可能填满行，同时最后一行的权重较低，可能出现最后一行留白较多的情形。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1--><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1-End--> |
+| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | 平衡模式。<br>在不拆词的情况下，尽量使一个段落中每一行的宽度相同。<br>**起始版本：** 24<br><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2--><!--Device-OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2-End--> |
 
 ### OH_ArkUI_StrokeJoinStyle
 
@@ -456,7 +456,7 @@ enum OH_ArkUI_StrokeJoinStyle
 
 定义文本描边拐角样式枚举值。
 
-<!--Device-OH_ArkUI_StrokeJoinStyle--><!--Device-OH_ArkUI_StrokeJoinStyle-End-->
+<!--Device-enum OH_ArkUI_StrokeJoinStyle--><!--Device-enum OH_ArkUI_StrokeJoinStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,9 +464,9 @@ enum OH_ArkUI_StrokeJoinStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0 | 尖角连接，文本描边拐角处显示为尖角。 |
-| OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN | 圆角连接，文本描边拐角处显示为圆角。 |
-| OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN | 斜角连接，文本描边拐角处显示为斜角。 |
+| OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0 | 尖角连接，文本描边拐角处显示为尖角。<br><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0--><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0-End--> |
+| OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN | 圆角连接，文本描边拐角处显示为圆角。<br><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN--><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN-End--> |
+| OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN | 斜角连接，文本描边拐角处显示为斜角。<br><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN--><!--Device-OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN-End--> |
 
 ### ArkUI_TextSpanType
 
@@ -478,7 +478,7 @@ enum ArkUI_TextSpanType
 
 自定义文本选择菜单的文本识别类型枚举。
 
-<!--Device-ArkUI_TextSpanType--><!--Device-ArkUI_TextSpanType-End-->
+<!--Device-enum ArkUI_TextSpanType--><!--Device-enum ArkUI_TextSpanType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -486,10 +486,10 @@ enum ArkUI_TextSpanType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_SPAN_TYPE_TEXT = 0 | 选中文本内容为文字类型。 |
-| ARKUI_TEXT_SPAN_TYPE_IMAGE = 1 | 选中文本内容为图像类型。 |
-| ARKUI_TEXT_SPAN_TYPE_MIXED = 2 | 选中文本内容为图文混合类型。 |
-| ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，选中文本后会显示与选中文本内容类型对应的菜单。如果设置为此类型但其他类型未设置时，选中文本后会显示此类型对应的菜单。例如， 同时设置了文本识别类型为ARKUI_TEXT_SPAN_TYPE_TEXT、ARKUI_TEXT_SPAN_TYPE_DEFAULT的两个菜单， 此时选中文本内容为文字类型会触发ARKUI_TEXT_SPAN_TYPE_TEXT对应的菜单弹出，选中文本内容为图像类型则会触发ARKUI_TEXT_SPAN_TYPE_DEFAULT对应的菜单弹出。 |
+| ARKUI_TEXT_SPAN_TYPE_TEXT = 0 | 选中文本内容为文字类型。<br><!--Device-ARKUI_TEXT_SPAN_TYPE_TEXT = 0--><!--Device-ARKUI_TEXT_SPAN_TYPE_TEXT = 0-End--> |
+| ARKUI_TEXT_SPAN_TYPE_IMAGE = 1 | 选中文本内容为图像类型。<br><!--Device-ARKUI_TEXT_SPAN_TYPE_IMAGE = 1--><!--Device-ARKUI_TEXT_SPAN_TYPE_IMAGE = 1-End--> |
+| ARKUI_TEXT_SPAN_TYPE_MIXED = 2 | 选中文本内容为图文混合类型。<br><!--Device-ARKUI_TEXT_SPAN_TYPE_MIXED = 2--><!--Device-ARKUI_TEXT_SPAN_TYPE_MIXED = 2-End--> |
+| ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，选中文本后会显示与选中文本内容类型对应的菜单。如果设置为此类型但其他类型未设置时，选中文本后会显示此类型对应的菜单。例如， 同时设置了文本识别类型为ARKUI_TEXT_SPAN_TYPE_TEXT、ARKUI_TEXT_SPAN_TYPE_DEFAULT的两个菜单， 此时选中文本内容为文字类型会触发ARKUI_TEXT_SPAN_TYPE_TEXT对应的菜单弹出，选中文本内容为图像类型则会触发ARKUI_TEXT_SPAN_TYPE_DEFAULT对应的菜单弹出。<br><!--Device-ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3--><!--Device-ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3-End--> |
 
 ### ArkUI_TextResponseType
 
@@ -501,7 +501,7 @@ enum ArkUI_TextResponseType
 
 自定义文本选择菜单的响应类型枚举。
 
-<!--Device-ArkUI_TextResponseType--><!--Device-ArkUI_TextResponseType-End-->
+<!--Device-enum ArkUI_TextResponseType--><!--Device-enum ArkUI_TextResponseType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -509,10 +509,10 @@ enum ArkUI_TextResponseType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。 |
-| ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
-| ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
-| ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如， 同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单， 此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
+| ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0-End--> |
+| ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1-End--> |
+| ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2-End--> |
+| ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如， 同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单， 此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。<br><!--Device-ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3--><!--Device-ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3-End--> |
 
 
 ## 函数说明

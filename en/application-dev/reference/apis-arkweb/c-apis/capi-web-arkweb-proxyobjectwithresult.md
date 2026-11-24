@@ -24,8 +24,8 @@ ArkWeb_ProxyObjectWithResult is a JavaScript proxy object struct with a return v
 
 | Name | Description |
 | -- | -- |
-| const char* objName | Name of the injected object, used for referencing the object in JavaScript calls. The name must follow JavaScript identifier rules and cannot contain special characters. |
-| [const ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | Array of method structs carried by the injected object. The array length is specified by the **size** parameter. Each method in the array is registered to the web page, and JavaScript can call it in the format of "objectName. methodName". |
-| size_t size | Length of the method struct array. Must be consistent with the actual number of elements in the methodList array. The minimum value is 0, and the maximum value depends on system resource limits. |
+| const char* objName | Name of the injected object, used for referencing the object in JavaScript calls. The name must follow JavaScript identifier rules and cannot contain special characters.<br><!--Device-const char* objName--><!--Device-const char* objName-End--> |
+| [const ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | Array of method structs carried by the injected object. The array length is specified by the **size** parameter. Each method in the array is registered to the web page, and JavaScript can call it in the format of "objectName. methodName".<br><!--Device-const ArkWeb_ProxyMethodWithResult* methodList--><!--Device-const ArkWeb_ProxyMethodWithResult* methodList-End--> |
+| size_t size | Length of the method struct array. Must be consistent with the actual number of elements in the methodList array. The minimum value is 0, and the maximum value depends on system resource limits.<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

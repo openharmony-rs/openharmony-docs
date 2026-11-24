@@ -24,7 +24,7 @@ Defines the return value for the [OH_ArkUI_GridLayoutOptions_RegisterGetIrregula
 
 | Name | Description |
 | -- | -- |
-| uint32_t rowSpan | Number of rows occupied by a grid item, which is used to set the span of the grid item in the row direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a horizontal grid layout, if the value exceeds the actual number of rows, the actual number of rows is used. |
-| uint32_t columnSpan | Number of columns occupied by a grid item, which is used to set the span of the grid item in the column direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a vertical grid layout, if the value exceeds the actual number of columns, the actual number of columns is used. |
+| uint32_t rowSpan | Number of rows occupied by a grid item, which is used to set the span of the grid item in the row direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a horizontal grid layout, if the value exceeds the actual number of rows, the actual number of rows is used.<br><!--Device-uint32_t rowSpan--><!--Device-uint32_t rowSpan-End--> |
+| uint32_t columnSpan | Number of columns occupied by a grid item, which is used to set the span of the grid item in the column direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a vertical grid layout, if the value exceeds the actual number of columns, the actual number of columns is used.<br><!--Device-uint32_t columnSpan--><!--Device-uint32_t columnSpan-End--> |
 
 

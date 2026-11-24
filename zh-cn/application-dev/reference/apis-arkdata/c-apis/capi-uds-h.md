@@ -172,7 +172,7 @@ enum Udmf_AuthPermission
 - FileUri类型数据：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。
 - HTML类型数据：仅针对HTML文本中img标签下的uri做读授权。
 
-<!--Device-Udmf_AuthPermission--><!--Device-Udmf_AuthPermission-End-->
+<!--Device-enum Udmf_AuthPermission--><!--Device-enum Udmf_AuthPermission-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -180,10 +180,10 @@ enum Udmf_AuthPermission
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UDMF_PERM_NONE = 0 | 表示未授予任何权限。<br>**起始版本：** 26.0.0 |
-| UDMF_PERM_READ = 1u << 0 | 表示读取或查看数据的权限。<br>**起始版本：** 26.0.0 |
-| UDMF_PERM_WRITE = 1u << 1 | 表示修改数据的权限（包含READ）。<br>**起始版本：** 26.0.0 |
-| UDMF_PERM_PERSIST = 1u << 2 | 表示持久化文件的权限。<br>**起始版本：** 26.0.0 |
+| UDMF_PERM_NONE = 0 | 表示未授予任何权限。<br>**起始版本：** 26.0.0<br><!--Device-UDMF_PERM_NONE = 0--><!--Device-UDMF_PERM_NONE = 0-End--> |
+| UDMF_PERM_READ = 1u << 0 | 表示读取或查看数据的权限。<br>**起始版本：** 26.0.0<br><!--Device-UDMF_PERM_READ = 1u << 0--><!--Device-UDMF_PERM_READ = 1u << 0-End--> |
+| UDMF_PERM_WRITE = 1u << 1 | 表示修改数据的权限（包含READ）。<br>**起始版本：** 26.0.0<br><!--Device-UDMF_PERM_WRITE = 1u << 1--><!--Device-UDMF_PERM_WRITE = 1u << 1-End--> |
+| UDMF_PERM_PERSIST = 1u << 2 | 表示持久化文件的权限。<br>**起始版本：** 26.0.0<br><!--Device-UDMF_PERM_PERSIST = 1u << 2--><!--Device-UDMF_PERM_PERSIST = 1u << 2-End--> |
 
 ### OH_UDMF_VirtualItemType
 
@@ -195,7 +195,7 @@ enum OH_UDMF_VirtualItemType
 
 描述虚拟节点类型。
 
-<!--Device-OH_UDMF_VirtualItemType--><!--Device-OH_UDMF_VirtualItemType-End-->
+<!--Device-enum OH_UDMF_VirtualItemType--><!--Device-enum OH_UDMF_VirtualItemType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -203,8 +203,8 @@ enum OH_UDMF_VirtualItemType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_UDMF_VIRTUAL_ITEM_FILE = 0 | 虚拟文件。<br>**起始版本：** 26.1.0 |
-| OH_UDMF_VIRTUAL_ITEM_DIRECTORY = 1 | 虚拟目录。<br>**起始版本：** 26.1.0 |
+| OH_UDMF_VIRTUAL_ITEM_FILE = 0 | 虚拟文件。<br>**起始版本：** 26.1.0<br><!--Device-OH_UDMF_VIRTUAL_ITEM_FILE = 0--><!--Device-OH_UDMF_VIRTUAL_ITEM_FILE = 0-End--> |
+| OH_UDMF_VIRTUAL_ITEM_DIRECTORY = 1 | 虚拟目录。<br>**起始版本：** 26.1.0<br><!--Device-OH_UDMF_VIRTUAL_ITEM_DIRECTORY = 1--><!--Device-OH_UDMF_VIRTUAL_ITEM_DIRECTORY = 1-End--> |
 
 
 ## 函数说明

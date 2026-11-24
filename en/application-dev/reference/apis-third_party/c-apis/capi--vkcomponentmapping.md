@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkComponentSwizzle r |  |
-| VkComponentSwizzle g |  |
-| VkComponentSwizzle b |  |
-| VkComponentSwizzle a |  |
+| VkComponentSwizzle r | <!--Device-VkComponentSwizzle r--><!--Device-VkComponentSwizzle r-End--> |
+| VkComponentSwizzle g | <!--Device-VkComponentSwizzle g--><!--Device-VkComponentSwizzle g-End--> |
+| VkComponentSwizzle b | <!--Device-VkComponentSwizzle b--><!--Device-VkComponentSwizzle b-End--> |
+| VkComponentSwizzle a | <!--Device-VkComponentSwizzle a--><!--Device-VkComponentSwizzle a-End--> |
 
 

@@ -24,10 +24,10 @@ Defines the AE initialization data.
 
 | Name | Description |
 | -- | -- |
-| void *nonce | nonce |
-| size_t nonce_len | Leng of nonce |
-| uint32_t tag_len | Length of the tag |
-| size_t aad_len | Length of the additional authenticated data (AAD) |
-| size_t payload_len | Length of the payload |
+| void *nonce | nonce<br><!--Device-void *nonce--><!--Device-void *nonce-End--> |
+| size_t nonce_len | Leng of nonce<br><!--Device-size_t nonce_len--><!--Device-size_t nonce_len-End--> |
+| uint32_t tag_len | Length of the tag<br><!--Device-uint32_t tag_len--><!--Device-uint32_t tag_len-End--> |
+| size_t aad_len | Length of the additional authenticated data (AAD)<br><!--Device-size_t aad_len--><!--Device-size_t aad_len-End--> |
+| size_t payload_len | Length of the payload<br><!--Device-size_t payload_len--><!--Device-size_t payload_len-End--> |
 
 

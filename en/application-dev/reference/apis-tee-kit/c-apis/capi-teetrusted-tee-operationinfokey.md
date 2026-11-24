@@ -24,7 +24,7 @@ Defines the key information stored in the <b>OperationInfo</b>.
 
 | Name | Description |
 | -- | -- |
-| uint32_t keySize | Key length |
-| uint32_t requiredKeyUsage | Required key usage |
+| uint32_t keySize | Key length<br><!--Device-uint32_t keySize--><!--Device-uint32_t keySize-End--> |
+| uint32_t requiredKeyUsage | Required key usage<br><!--Device-uint32_t requiredKeyUsage--><!--Device-uint32_t requiredKeyUsage-End--> |
 
 

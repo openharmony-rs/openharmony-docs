@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| char *key |  |
-| void *data |  |
+| char *key | <!--Device-char *key--><!--Device-char *key-End--> |
+| void *data | <!--Device-void *data--><!--Device-void *data-End--> |
 
 

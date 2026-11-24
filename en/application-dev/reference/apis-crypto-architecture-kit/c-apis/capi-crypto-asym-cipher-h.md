@@ -55,7 +55,7 @@ enum CryptoSm2CiphertextSpec_item
 
 Defines SM2 ciphertext specification item types.
 
-<!--Device-CryptoSm2CiphertextSpec_item--><!--Device-CryptoSm2CiphertextSpec_item-End-->
+<!--Device-enum CryptoSm2CiphertextSpec_item--><!--Device-enum CryptoSm2CiphertextSpec_item-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -63,10 +63,10 @@ Defines SM2 ciphertext specification item types.
 
 | Enum item | Description |
 | -- | -- |
-| CRYPTO_SM2_CIPHERTEXT_C1_X = 0 | Public key x, also known as C1x.<br>**Since**: 20 |
-| CRYPTO_SM2_CIPHERTEXT_C1_Y = 1 | Public key y, also known as C1y.<br>**Since**: 20 |
-| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | Ciphertext data, also known as C2.<br>**Since**: 20 |
-| CRYPTO_SM2_CIPHERTEXT_C3 = 3 | Message digest (hash value), also known as C3.<br>**Since**: 20 |
+| CRYPTO_SM2_CIPHERTEXT_C1_X = 0 | Public key x, also known as C1x.<br>**Since**: 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_X = 0--><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_X = 0-End--> |
+| CRYPTO_SM2_CIPHERTEXT_C1_Y = 1 | Public key y, also known as C1y.<br>**Since**: 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_Y = 1--><!--Device-CRYPTO_SM2_CIPHERTEXT_C1_Y = 1-End--> |
+| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | Ciphertext data, also known as C2.<br>**Since**: 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C2 = 2--><!--Device-CRYPTO_SM2_CIPHERTEXT_C2 = 2-End--> |
+| CRYPTO_SM2_CIPHERTEXT_C3 = 3 | Message digest (hash value), also known as C3.<br>**Since**: 20<br><!--Device-CRYPTO_SM2_CIPHERTEXT_C3 = 3--><!--Device-CRYPTO_SM2_CIPHERTEXT_C3 = 3-End--> |
 
 
 ## Function description

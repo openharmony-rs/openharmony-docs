@@ -24,7 +24,7 @@ typedef struct OH_TrafficFilter_IPRange {...} OH_TrafficFilter_IPRange
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) start | 范围的起始IP地址。<br>**起始版本：** 26.0.0 |
-| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) end | 范围的结束IP地址。<br>**起始版本：** 26.0.0 |
+| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) start | 范围的起始IP地址。<br>**起始版本：** 26.0.0<br><!--Device-OH_TrafficFilter_IPAddress start--><!--Device-OH_TrafficFilter_IPAddress start-End--> |
+| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) end | 范围的结束IP地址。<br>**起始版本：** 26.0.0<br><!--Device-OH_TrafficFilter_IPAddress end--><!--Device-OH_TrafficFilter_IPAddress end-End--> |
 
 

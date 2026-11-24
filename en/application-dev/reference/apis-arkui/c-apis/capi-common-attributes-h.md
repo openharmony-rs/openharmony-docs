@@ -64,7 +64,7 @@ enum ArkUI_HitTestMode
 
 Enumerates the hit test modes.
 
-<!--Device-ArkUI_HitTestMode--><!--Device-ArkUI_HitTestMode-End-->
+<!--Device-enum ArkUI_HitTestMode--><!--Device-enum ArkUI_HitTestMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,12 +72,12 @@ Enumerates the hit test modes.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes. |
-| ARKUI_HIT_TEST_MODE_BLOCK | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes. |
-| ARKUI_HIT_TEST_MODE_TRANSPARENT | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes. |
-| ARKUI_HIT_TEST_MODE_NONE | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes. |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Since**: 20 |
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS | Neither the node itself nor any of its descendant nodes responds to the hit test. It does not affect the hit test of ancestor nodes.<br>**Since**: 20 |
+| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.<br><!--Device-ARKUI_HIT_TEST_MODE_DEFAULT = 0--><!--Device-ARKUI_HIT_TEST_MODE_DEFAULT = 0-End--> |
+| ARKUI_HIT_TEST_MODE_BLOCK | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes.<br><!--Device-ARKUI_HIT_TEST_MODE_BLOCK--><!--Device-ARKUI_HIT_TEST_MODE_BLOCK-End--> |
+| ARKUI_HIT_TEST_MODE_TRANSPARENT | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.<br><!--Device-ARKUI_HIT_TEST_MODE_TRANSPARENT--><!--Device-ARKUI_HIT_TEST_MODE_TRANSPARENT-End--> |
+| ARKUI_HIT_TEST_MODE_NONE | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.<br><!--Device-ARKUI_HIT_TEST_MODE_NONE--><!--Device-ARKUI_HIT_TEST_MODE_NONE-End--> |
+| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Since**: 20<br><!--Device-ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY--><!--Device-ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY-End--> |
+| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS | Neither the node itself nor any of its descendant nodes responds to the hit test. It does not affect the hit test of ancestor nodes.<br>**Since**: 20<br><!--Device-ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS--><!--Device-ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS-End--> |
 
 ### ArkUI_Visibility
 
@@ -89,7 +89,7 @@ enum ArkUI_Visibility
 
 Enumerates the visibility values.
 
-<!--Device-ArkUI_Visibility--><!--Device-ArkUI_Visibility-End-->
+<!--Device-enum ArkUI_Visibility--><!--Device-enum ArkUI_Visibility-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,9 +97,9 @@ Enumerates the visibility values.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_VISIBILITY_VISIBLE = 0 | The component is visible. |
-| ARKUI_VISIBILITY_HIDDEN | The component is hidden, and a placeholder is used for it in the layout. |
-| ARKUI_VISIBILITY_NONE | The component is hidden. It is not involved in the layout, and no placeholder is used for it. |
+| ARKUI_VISIBILITY_VISIBLE = 0 | The component is visible.<br><!--Device-ARKUI_VISIBILITY_VISIBLE = 0--><!--Device-ARKUI_VISIBILITY_VISIBLE = 0-End--> |
+| ARKUI_VISIBILITY_HIDDEN | The component is hidden, and a placeholder is used for it in the layout.<br><!--Device-ARKUI_VISIBILITY_HIDDEN--><!--Device-ARKUI_VISIBILITY_HIDDEN-End--> |
+| ARKUI_VISIBILITY_NONE | The component is hidden. It is not involved in the layout, and no placeholder is used for it.<br><!--Device-ARKUI_VISIBILITY_NONE--><!--Device-ARKUI_VISIBILITY_NONE-End--> |
 
 ### ArkUI_HoverEffect
 
@@ -111,7 +111,7 @@ enum ArkUI_HoverEffect
 
 Enumerates the hover effects when a component is hovered over.
 
-<!--Device-ArkUI_HoverEffect--><!--Device-ArkUI_HoverEffect-End-->
+<!--Device-enum ArkUI_HoverEffect--><!--Device-enum ArkUI_HoverEffect-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,10 +119,10 @@ Enumerates the hover effects when a component is hovered over.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_HOVER_EFFECT_AUTO = 0 | Default effect. |
-| ARKUI_HOVER_EFFECT_SCALE | Scale effect. |
-| ARKUI_HOVER_EFFECT_HIGHLIGHT | Highlight effect. |
-| ARKUI_HOVER_EFFECT_NONE | No effect. |
+| ARKUI_HOVER_EFFECT_AUTO = 0 | Default effect.<br><!--Device-ARKUI_HOVER_EFFECT_AUTO = 0--><!--Device-ARKUI_HOVER_EFFECT_AUTO = 0-End--> |
+| ARKUI_HOVER_EFFECT_SCALE | Scale effect.<br><!--Device-ARKUI_HOVER_EFFECT_SCALE--><!--Device-ARKUI_HOVER_EFFECT_SCALE-End--> |
+| ARKUI_HOVER_EFFECT_HIGHLIGHT | Highlight effect.<br><!--Device-ARKUI_HOVER_EFFECT_HIGHLIGHT--><!--Device-ARKUI_HOVER_EFFECT_HIGHLIGHT-End--> |
+| ARKUI_HOVER_EFFECT_NONE | No effect.<br><!--Device-ARKUI_HOVER_EFFECT_NONE--><!--Device-ARKUI_HOVER_EFFECT_NONE-End--> |
 
 ### ArkUI_FocusPriority
 
@@ -134,7 +134,7 @@ enum ArkUI_FocusPriority
 
 Enumerates the priority levels for focus management within the application. These levels determine the sequence in which UI components receive focus during user interaction.
 
-<!--Device-ArkUI_FocusPriority--><!--Device-ArkUI_FocusPriority-End-->
+<!--Device-enum ArkUI_FocusPriority--><!--Device-enum ArkUI_FocusPriority-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,9 +142,9 @@ Enumerates the priority levels for focus management within the application. Thes
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FOCUS_PRIORITY_AUTO = 0 | Default priority. |
-| ARKUI_FOCUS_PRIORITY_PRIOR = 2000 | Priority that indicates the component is prioritized in the container. |
-| ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000 | Priority of a previously focused node in the container. |
+| ARKUI_FOCUS_PRIORITY_AUTO = 0 | Default priority.<br><!--Device-ARKUI_FOCUS_PRIORITY_AUTO = 0--><!--Device-ARKUI_FOCUS_PRIORITY_AUTO = 0-End--> |
+| ARKUI_FOCUS_PRIORITY_PRIOR = 2000 | Priority that indicates the component is prioritized in the container.<br><!--Device-ARKUI_FOCUS_PRIORITY_PRIOR = 2000--><!--Device-ARKUI_FOCUS_PRIORITY_PRIOR = 2000-End--> |
+| ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000 | Priority of a previously focused node in the container.<br><!--Device-ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000--><!--Device-ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000-End--> |
 
 ### ArkUI_UIState
 
@@ -156,7 +156,7 @@ enum ArkUI_UIState
 
 Enumerates the UI states of a component, used for handling state-specific styles.
 
-<!--Device-ArkUI_UIState--><!--Device-ArkUI_UIState-End-->
+<!--Device-enum ArkUI_UIState--><!--Device-enum ArkUI_UIState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,12 +164,12 @@ Enumerates the UI states of a component, used for handling state-specific styles
 
 | Enum item | Description |
 | -- | -- |
-| UI_STATE_NORMAL = 0 | Normal state. |
-| UI_STATE_PRESSED = 1 << 0 | Pressed state. |
-| UI_STATE_FOCUSED = 1 << 1 | Focused state. |
-| UI_STATE_DISABLED = 1 << 2 | Disabled state. |
-| UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**. |
-| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br>**Since**: 26.0.0 |
+| UI_STATE_NORMAL = 0 | Normal state.<br><!--Device-UI_STATE_NORMAL = 0--><!--Device-UI_STATE_NORMAL = 0-End--> |
+| UI_STATE_PRESSED = 1 << 0 | Pressed state.<br><!--Device-UI_STATE_PRESSED = 1 << 0--><!--Device-UI_STATE_PRESSED = 1 << 0-End--> |
+| UI_STATE_FOCUSED = 1 << 1 | Focused state.<br><!--Device-UI_STATE_FOCUSED = 1 << 1--><!--Device-UI_STATE_FOCUSED = 1 << 1-End--> |
+| UI_STATE_DISABLED = 1 << 2 | Disabled state.<br><!--Device-UI_STATE_DISABLED = 1 << 2--><!--Device-UI_STATE_DISABLED = 1 << 2-End--> |
+| UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**.<br><!--Device-UI_STATE_SELECTED = 1 << 3--><!--Device-UI_STATE_SELECTED = 1 << 3-End--> |
+| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br>**Since**: 26.0.0<br><!--Device-UI_STATE_HOVERED = 1 << 4--><!--Device-UI_STATE_HOVERED = 1 << 4-End--> |
 
 ### ArkUI_FocusMove
 
@@ -181,7 +181,7 @@ enum ArkUI_FocusMove
 
 Enumerates the focus movement directions.
 
-<!--Device-ArkUI_FocusMove--><!--Device-ArkUI_FocusMove-End-->
+<!--Device-enum ArkUI_FocusMove--><!--Device-enum ArkUI_FocusMove-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,12 +189,12 @@ Enumerates the focus movement directions.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_FOCUS_MOVE_FORWARD = 0 | Move focus forward. |
-| ARKUI_FOCUS_MOVE_BACKWARD | Move focus backward. |
-| ARKUI_FOCUS_MOVE_UP | Move focus up. |
-| ARKUI_FOCUS_MOVE_DOWN | Move focus down. |
-| ARKUI_FOCUS_MOVE_LEFT | Move focus left. |
-| ARKUI_FOCUS_MOVE_RIGHT | Move focus right. |
+| ARKUI_FOCUS_MOVE_FORWARD = 0 | Move focus forward.<br><!--Device-ARKUI_FOCUS_MOVE_FORWARD = 0--><!--Device-ARKUI_FOCUS_MOVE_FORWARD = 0-End--> |
+| ARKUI_FOCUS_MOVE_BACKWARD | Move focus backward.<br><!--Device-ARKUI_FOCUS_MOVE_BACKWARD--><!--Device-ARKUI_FOCUS_MOVE_BACKWARD-End--> |
+| ARKUI_FOCUS_MOVE_UP | Move focus up.<br><!--Device-ARKUI_FOCUS_MOVE_UP--><!--Device-ARKUI_FOCUS_MOVE_UP-End--> |
+| ARKUI_FOCUS_MOVE_DOWN | Move focus down.<br><!--Device-ARKUI_FOCUS_MOVE_DOWN--><!--Device-ARKUI_FOCUS_MOVE_DOWN-End--> |
+| ARKUI_FOCUS_MOVE_LEFT | Move focus left.<br><!--Device-ARKUI_FOCUS_MOVE_LEFT--><!--Device-ARKUI_FOCUS_MOVE_LEFT-End--> |
+| ARKUI_FOCUS_MOVE_RIGHT | Move focus right.<br><!--Device-ARKUI_FOCUS_MOVE_RIGHT--><!--Device-ARKUI_FOCUS_MOVE_RIGHT-End--> |
 
 ### ArkUI_ResponseRegionSupportedTool
 
@@ -206,7 +206,7 @@ enum ArkUI_ResponseRegionSupportedTool
 
 Enumerates the input tool types supported for response region configuration.
 
-<!--Device-ArkUI_ResponseRegionSupportedTool--><!--Device-ArkUI_ResponseRegionSupportedTool-End-->
+<!--Device-enum ArkUI_ResponseRegionSupportedTool--><!--Device-enum ArkUI_ResponseRegionSupportedTool-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,10 +214,10 @@ Enumerates the input tool types supported for response region configuration.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL = 0 | All. |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER = 1 | Finger. |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN = 2 | Stylus. |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE = 3 | Mouse. |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL = 0 | All.<br><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL = 0--><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL = 0-End--> |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER = 1 | Finger.<br><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER = 1--><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER = 1-End--> |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN = 2 | Stylus.<br><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN = 2--><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN = 2-End--> |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE = 3 | Mouse.<br><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE = 3--><!--Device-ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE = 3-End--> |
 
 ### ArkUI_RawInputEventType
 
@@ -229,7 +229,7 @@ enum ArkUI_RawInputEventType
 
 Enumerates the types of raw input events.
 
-<!--Device-ArkUI_RawInputEventType--><!--Device-ArkUI_RawInputEventType-End-->
+<!--Device-enum ArkUI_RawInputEventType--><!--Device-enum ArkUI_RawInputEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,8 +237,8 @@ Enumerates the types of raw input events.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | Touch event.<br>**Since**: 26.0.0 |
-| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | Mouse event.<br>**Since**: 26.0.0 |
+| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | Touch event.<br>**Since**: 26.0.0<br><!--Device-ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0--><!--Device-ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0-End--> |
+| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | Mouse event.<br>**Since**: 26.0.0<br><!--Device-ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1--><!--Device-ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1-End--> |
 
 
 ## Function description

@@ -24,6 +24,6 @@ Defines a struct for the USB certificate credential information.
 
 | Name | Description |
 | -- | -- |
-| [OH_CM_CertificatePurpose](capi-cm-native-type-h.md#oh_cm_certificatepurpose) certPurpose | Purpose of a certificate credential. |
+| [OH_CM_CertificatePurpose](capi-cm-native-type-h.md#oh_cm_certificatepurpose) certPurpose | Purpose of a certificate credential.<br><!--Device-OH_CM_CertificatePurpose certPurpose--><!--Device-OH_CM_CertificatePurpose certPurpose-End--> |
 
 

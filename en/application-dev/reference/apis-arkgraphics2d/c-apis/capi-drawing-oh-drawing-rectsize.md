@@ -24,7 +24,7 @@ Defines a text rectangle structure.
 
 | Name | Description |
 | -- | -- |
-| double width | Rectangle width. |
-| double height | Rectangle height. |
+| double width | Rectangle width.<br><!--Device-double width--><!--Device-double width-End--> |
+| double height | Rectangle height.<br><!--Device-double height--><!--Device-double height-End--> |
 
 

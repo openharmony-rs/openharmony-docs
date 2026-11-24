@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 cooperativeVector |  |
-| VkBool32 cooperativeVectorTraining |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 cooperativeVector | <!--Device-VkBool32 cooperativeVector--><!--Device-VkBool32 cooperativeVector-End--> |
+| VkBool32 cooperativeVectorTraining | <!--Device-VkBool32 cooperativeVectorTraining--><!--Device-VkBool32 cooperativeVectorTraining-End--> |
 
 

@@ -24,8 +24,8 @@ The struct describes the Element in Want.
 
 | Name | Description |
 | -- | -- |
-| char* bundleName | Pointer to the bundle name of the application.<br>**Since**: 15 |
-| char* moduleName | Pointer to the module name.<br>**Since**: 15 |
-| char* abilityName | Pointer to the ability name.<br>**Since**: 15 |
+| char* bundleName | Pointer to the bundle name of the application.<br>**Since**: 15<br><!--Device-char* bundleName--><!--Device-char* bundleName-End--> |
+| char* moduleName | Pointer to the module name.<br>**Since**: 15<br><!--Device-char* moduleName--><!--Device-char* moduleName-End--> |
+| char* abilityName | Pointer to the ability name.<br>**Since**: 15<br><!--Device-char* abilityName--><!--Device-char* abilityName-End--> |
 
 

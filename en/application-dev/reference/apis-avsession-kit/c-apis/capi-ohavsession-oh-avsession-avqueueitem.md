@@ -24,7 +24,7 @@ Declaring the avqueue item. The instance of AVQueueItem.
 
 | Name | Description |
 | -- | -- |
-| uint32_t itemId | itemId. |
-| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md) *description | media item info. |
+| uint32_t itemId | itemId.<br><!--Device-uint32_t itemId--><!--Device-uint32_t itemId-End--> |
+| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md) *description | media item info.<br><!--Device-OH_AVSession_AVMediaDescription *description--><!--Device-OH_AVSession_AVMediaDescription *description-End--> |
 
 

@@ -24,9 +24,9 @@ Defines image source supported format string. [OhosImageSourceSupportedFormatLis
 
 | Name | Description |
 | -- | -- |
-| char* format = nullptr | Image source supported format string head.<br>**Since**: 10 |
-| size_t size = 0 | Image source supported format string size.<br>**Since**: 10 |
-| char* format | Image source supported format string head.<br>**Since**: 10 |
-| size_t size | Image source supported format string size.<br>**Since**: 10 |
+| char* format = nullptr | Image source supported format string head.<br>**Since**: 10<br><!--Device-char* format = nullptr--><!--Device-char* format = nullptr-End--> |
+| size_t size = 0 | Image source supported format string size.<br>**Since**: 10<br><!--Device-size_t size = 0--><!--Device-size_t size = 0-End--> |
+| char* format | Image source supported format string head.<br>**Since**: 10<br><!--Device-char* format--><!--Device-char* format-End--> |
+| size_t size | Image source supported format string size.<br>**Since**: 10<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

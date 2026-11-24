@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkPipelineStageFlags2 stage |  |
-| void* pCheckpointMarker |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkPipelineStageFlags2 stage | <!--Device-VkPipelineStageFlags2 stage--><!--Device-VkPipelineStageFlags2 stage-End--> |
+| void* pCheckpointMarker | <!--Device-void* pCheckpointMarker--><!--Device-void* pCheckpointMarker-End--> |
 
 

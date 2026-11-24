@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t viewFormatCount |  |
-| const VkFormat* pViewFormats |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t viewFormatCount | <!--Device-uint32_t viewFormatCount--><!--Device-uint32_t viewFormatCount-End--> |
+| const VkFormat* pViewFormats | <!--Device-const VkFormat* pViewFormats--><!--Device-const VkFormat* pViewFormats-End--> |
 
 

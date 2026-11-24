@@ -55,7 +55,7 @@ enum Rdb_EncryptionAlgo
 
 数据库加密算法。
 
-<!--Device-Rdb_EncryptionAlgo--><!--Device-Rdb_EncryptionAlgo-End-->
+<!--Device-enum Rdb_EncryptionAlgo--><!--Device-enum Rdb_EncryptionAlgo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -63,9 +63,9 @@ enum Rdb_EncryptionAlgo
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_AES_256_GCM = 0 | 表示数据库使用RDB_AES_256_GCM加密。 |
-| RDB_AES_256_CBC | 表示数据库使用RDB_AES_256_CBC加密。 |
-| RDB_PLAIN_TEXT | 表示数据库不加密。<br>**起始版本：** 22 |
+| RDB_AES_256_GCM = 0 | 表示数据库使用RDB_AES_256_GCM加密。<br><!--Device-RDB_AES_256_GCM = 0--><!--Device-RDB_AES_256_GCM = 0-End--> |
+| RDB_AES_256_CBC | 表示数据库使用RDB_AES_256_CBC加密。<br><!--Device-RDB_AES_256_CBC--><!--Device-RDB_AES_256_CBC-End--> |
+| RDB_PLAIN_TEXT | 表示数据库不加密。<br>**起始版本：** 22<br><!--Device-RDB_PLAIN_TEXT--><!--Device-RDB_PLAIN_TEXT-End--> |
 
 ### Rdb_HmacAlgo
 
@@ -77,7 +77,7 @@ enum Rdb_HmacAlgo
 
 打开数据库时支持的HMAC算法。
 
-<!--Device-Rdb_HmacAlgo--><!--Device-Rdb_HmacAlgo-End-->
+<!--Device-enum Rdb_HmacAlgo--><!--Device-enum Rdb_HmacAlgo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -85,9 +85,9 @@ enum Rdb_HmacAlgo
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_HMAC_SHA1 = 0 | RDB_HMAC_SHA1算法。 |
-| RDB_HMAC_SHA256 | RDB_HMAC_SHA256算法。 |
-| RDB_HMAC_SHA512 | RDB_HMAC_SHA512算法。 |
+| RDB_HMAC_SHA1 = 0 | RDB_HMAC_SHA1算法。<br><!--Device-RDB_HMAC_SHA1 = 0--><!--Device-RDB_HMAC_SHA1 = 0-End--> |
+| RDB_HMAC_SHA256 | RDB_HMAC_SHA256算法。<br><!--Device-RDB_HMAC_SHA256--><!--Device-RDB_HMAC_SHA256-End--> |
+| RDB_HMAC_SHA512 | RDB_HMAC_SHA512算法。<br><!--Device-RDB_HMAC_SHA512--><!--Device-RDB_HMAC_SHA512-End--> |
 
 ### Rdb_KdfAlgo
 
@@ -99,7 +99,7 @@ enum Rdb_KdfAlgo
 
 打开数据库时支持的KDF算法。
 
-<!--Device-Rdb_KdfAlgo--><!--Device-Rdb_KdfAlgo-End-->
+<!--Device-enum Rdb_KdfAlgo--><!--Device-enum Rdb_KdfAlgo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -107,9 +107,9 @@ enum Rdb_KdfAlgo
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_KDF_SHA1 = 0 | RDB_KDF_SHA1算法。 |
-| RDB_KDF_SHA256 | RDB_KDF_SHA256算法。 |
-| RDB_KDF_SHA512 | RDB_KDF_SHA512算法。 |
+| RDB_KDF_SHA1 = 0 | RDB_KDF_SHA1算法。<br><!--Device-RDB_KDF_SHA1 = 0--><!--Device-RDB_KDF_SHA1 = 0-End--> |
+| RDB_KDF_SHA256 | RDB_KDF_SHA256算法。<br><!--Device-RDB_KDF_SHA256--><!--Device-RDB_KDF_SHA256-End--> |
+| RDB_KDF_SHA512 | RDB_KDF_SHA512算法。<br><!--Device-RDB_KDF_SHA512--><!--Device-RDB_KDF_SHA512-End--> |
 
 
 ## 函数说明

@@ -151,7 +151,7 @@ enum OH_Rdb_SecurityLevel
 
 数据库的安全级别枚举。
 
-<!--Device-OH_Rdb_SecurityLevel--><!--Device-OH_Rdb_SecurityLevel-End-->
+<!--Device-enum OH_Rdb_SecurityLevel--><!--Device-enum OH_Rdb_SecurityLevel-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -159,10 +159,10 @@ enum OH_Rdb_SecurityLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| S1 = 1 | S1: 表示数据库的安全级别为低级别。当数据泄露时会产生较低影响。 |
-| S2 | S2: 表示数据库的安全级别为中级别。当数据泄露时会产生较大影响。 |
-| S3 | S3: 表示数据库的安全级别为高级别。当数据泄露时会产生重大影响。 |
-| S4 | S4: 表示数据库的安全级别为关键级别。当数据泄露时会产生严重影响。 |
+| S1 = 1 | S1: 表示数据库的安全级别为低级别。当数据泄露时会产生较低影响。<br><!--Device-S1 = 1--><!--Device-S1 = 1-End--> |
+| S2 | S2: 表示数据库的安全级别为中级别。当数据泄露时会产生较大影响。<br><!--Device-S2--><!--Device-S2-End--> |
+| S3 | S3: 表示数据库的安全级别为高级别。当数据泄露时会产生重大影响。<br><!--Device-S3--><!--Device-S3-End--> |
+| S4 | S4: 表示数据库的安全级别为关键级别。当数据泄露时会产生严重影响。<br><!--Device-S4--><!--Device-S4-End--> |
 
 ### Rdb_SecurityArea
 
@@ -174,7 +174,7 @@ enum Rdb_SecurityArea
 
 描述数据库的安全区域等级。
 
-<!--Device-Rdb_SecurityArea--><!--Device-Rdb_SecurityArea-End-->
+<!--Device-enum Rdb_SecurityArea--><!--Device-enum Rdb_SecurityArea-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -182,11 +182,11 @@ enum Rdb_SecurityArea
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_SECURITY_AREA_EL1 = 1 | 安全区域等级为1。 |
-| RDB_SECURITY_AREA_EL2 | 安全区域等级为2。 |
-| RDB_SECURITY_AREA_EL3 | 安全区域等级为3。 |
-| RDB_SECURITY_AREA_EL4 | 安全区域等级为4。 |
-| RDB_SECURITY_AREA_EL5 | 安全区域等级为5。<br>**起始版本：** 12 |
+| RDB_SECURITY_AREA_EL1 = 1 | 安全区域等级为1。<br><!--Device-RDB_SECURITY_AREA_EL1 = 1--><!--Device-RDB_SECURITY_AREA_EL1 = 1-End--> |
+| RDB_SECURITY_AREA_EL2 | 安全区域等级为2。<br><!--Device-RDB_SECURITY_AREA_EL2--><!--Device-RDB_SECURITY_AREA_EL2-End--> |
+| RDB_SECURITY_AREA_EL3 | 安全区域等级为3。<br><!--Device-RDB_SECURITY_AREA_EL3--><!--Device-RDB_SECURITY_AREA_EL3-End--> |
+| RDB_SECURITY_AREA_EL4 | 安全区域等级为4。<br><!--Device-RDB_SECURITY_AREA_EL4--><!--Device-RDB_SECURITY_AREA_EL4-End--> |
+| RDB_SECURITY_AREA_EL5 | 安全区域等级为5。<br>**起始版本：** 12<br><!--Device-RDB_SECURITY_AREA_EL5--><!--Device-RDB_SECURITY_AREA_EL5-End--> |
 
 ### Rdb_DBType
 
@@ -198,7 +198,7 @@ enum Rdb_DBType
 
 描述数据库的内核类型。
 
-<!--Device-Rdb_DBType--><!--Device-Rdb_DBType-End-->
+<!--Device-enum Rdb_DBType--><!--Device-enum Rdb_DBType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -206,9 +206,9 @@ enum Rdb_DBType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_SQLITE = 1 | 表示使用sqlite作为数据库内核。<br>**起始版本：** 14 |
-| RDB_CAYLEY = 2 | 表示使用凯莱数据库作为数据库内核。<br>**起始版本：** 14 |
-| DBTYPE_BUTT = 64 | 表示内核类型枚举值允许取值的最大值，这是一个非法值。<br>**起始版本：** 14 |
+| RDB_SQLITE = 1 | 表示使用sqlite作为数据库内核。<br>**起始版本：** 14<br><!--Device-RDB_SQLITE = 1--><!--Device-RDB_SQLITE = 1-End--> |
+| RDB_CAYLEY = 2 | 表示使用凯莱数据库作为数据库内核。<br>**起始版本：** 14<br><!--Device-RDB_CAYLEY = 2--><!--Device-RDB_CAYLEY = 2-End--> |
+| DBTYPE_BUTT = 64 | 表示内核类型枚举值允许取值的最大值，这是一个非法值。<br>**起始版本：** 14<br><!--Device-DBTYPE_BUTT = 64--><!--Device-DBTYPE_BUTT = 64-End--> |
 
 ### Rdb_Tokenizer
 
@@ -220,7 +220,7 @@ enum Rdb_Tokenizer
 
 描述数据库的分词器类型。
 
-<!--Device-Rdb_Tokenizer--><!--Device-Rdb_Tokenizer-End-->
+<!--Device-enum Rdb_Tokenizer--><!--Device-enum Rdb_Tokenizer-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -228,9 +228,9 @@ enum Rdb_Tokenizer
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_NONE_TOKENIZER = 1 | 表示不使用分词器。<br><br>**起始版本：** 17 |
-| RDB_ICU_TOKENIZER = 2 | 表示使用ICU分词器。<br><br>**起始版本：** 17 |
-| RDB_CUSTOM_TOKENIZER = 3 | 表示使用CUSTOM分词器。<br><br>**起始版本：** 18 |
+| RDB_NONE_TOKENIZER = 1 | 表示不使用分词器。<br><br>**起始版本：** 17<br><!--Device-RDB_NONE_TOKENIZER = 1--><!--Device-RDB_NONE_TOKENIZER = 1-End--> |
+| RDB_ICU_TOKENIZER = 2 | 表示使用ICU分词器。<br><br>**起始版本：** 17<br><!--Device-RDB_ICU_TOKENIZER = 2--><!--Device-RDB_ICU_TOKENIZER = 2-End--> |
+| RDB_CUSTOM_TOKENIZER = 3 | 表示使用CUSTOM分词器。<br><br>**起始版本：** 18<br><!--Device-RDB_CUSTOM_TOKENIZER = 3--><!--Device-RDB_CUSTOM_TOKENIZER = 3-End--> |
 
 ### Rdb_DistributedType
 
@@ -242,7 +242,7 @@ enum Rdb_DistributedType
 
 描述表的分布式类型的枚举。
 
-<!--Device-Rdb_DistributedType--><!--Device-Rdb_DistributedType-End-->
+<!--Device-enum Rdb_DistributedType--><!--Device-enum Rdb_DistributedType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -250,7 +250,7 @@ enum Rdb_DistributedType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_DISTRIBUTED_CLOUD | 表示在设备和云端之间分布式的数据库表。 |
+| RDB_DISTRIBUTED_CLOUD | 表示在设备和云端之间分布式的数据库表。<br><!--Device-RDB_DISTRIBUTED_CLOUD--><!--Device-RDB_DISTRIBUTED_CLOUD-End--> |
 
 ### Rdb_ChangeType
 
@@ -262,7 +262,7 @@ enum Rdb_ChangeType
 
 描述数据变更类型。
 
-<!--Device-Rdb_ChangeType--><!--Device-Rdb_ChangeType-End-->
+<!--Device-enum Rdb_ChangeType--><!--Device-enum Rdb_ChangeType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -270,8 +270,8 @@ enum Rdb_ChangeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_DATA_CHANGE | 表示是数据发生变更。 |
-| RDB_ASSET_CHANGE | 表示是资产附件发生了变更。 |
+| RDB_DATA_CHANGE | 表示是数据发生变更。<br><!--Device-RDB_DATA_CHANGE--><!--Device-RDB_DATA_CHANGE-End--> |
+| RDB_ASSET_CHANGE | 表示是资产附件发生了变更。<br><!--Device-RDB_ASSET_CHANGE--><!--Device-RDB_ASSET_CHANGE-End--> |
 
 ### Rdb_SubscribeType
 
@@ -283,7 +283,7 @@ enum Rdb_SubscribeType
 
 描述订阅类型。
 
-<!--Device-Rdb_SubscribeType--><!--Device-Rdb_SubscribeType-End-->
+<!--Device-enum Rdb_SubscribeType--><!--Device-enum Rdb_SubscribeType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -291,9 +291,9 @@ enum Rdb_SubscribeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_SUBSCRIBE_TYPE_CLOUD | 订阅云端数据更改。 |
-| RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS | 订阅云端数据更改详情。 |
-| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | 订阅本地数据更改详情。<br>**起始版本：** 12 |
+| RDB_SUBSCRIBE_TYPE_CLOUD | 订阅云端数据更改。<br><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD--><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD-End--> |
+| RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS | 订阅云端数据更改详情。<br><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS--><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS-End--> |
+| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | 订阅本地数据更改详情。<br>**起始版本：** 12<br><!--Device-RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS--><!--Device-RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS-End--> |
 
 ### Rdb_SyncMode
 
@@ -305,7 +305,7 @@ enum Rdb_SyncMode
 
 表示数据库的同步模式。
 
-<!--Device-Rdb_SyncMode--><!--Device-Rdb_SyncMode-End-->
+<!--Device-enum Rdb_SyncMode--><!--Device-enum Rdb_SyncMode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -313,9 +313,9 @@ enum Rdb_SyncMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_SYNC_MODE_TIME_FIRST | 表示数据从修改时间较近的一端同步到修改时间较远的一端。 |
-| RDB_SYNC_MODE_NATIVE_FIRST | 表示数据从本地设备同步到云端。 |
-| RDB_SYNC_MODE_CLOUD_FIRST | 表示数据从云端同步到本地设备。 |
+| RDB_SYNC_MODE_TIME_FIRST | 表示数据从修改时间较近的一端同步到修改时间较远的一端。<br><!--Device-RDB_SYNC_MODE_TIME_FIRST--><!--Device-RDB_SYNC_MODE_TIME_FIRST-End--> |
+| RDB_SYNC_MODE_NATIVE_FIRST | 表示数据从本地设备同步到云端。<br><!--Device-RDB_SYNC_MODE_NATIVE_FIRST--><!--Device-RDB_SYNC_MODE_NATIVE_FIRST-End--> |
+| RDB_SYNC_MODE_CLOUD_FIRST | 表示数据从云端同步到本地设备。<br><!--Device-RDB_SYNC_MODE_CLOUD_FIRST--><!--Device-RDB_SYNC_MODE_CLOUD_FIRST-End--> |
 
 ### Rdb_Progress
 
@@ -327,7 +327,7 @@ enum Rdb_Progress
 
 描述端云同步过程。
 
-<!--Device-Rdb_Progress--><!--Device-Rdb_Progress-End-->
+<!--Device-enum Rdb_Progress--><!--Device-enum Rdb_Progress-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -335,9 +335,9 @@ enum Rdb_Progress
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_SYNC_BEGIN | 表示端云同步过程开始。 |
-| RDB_SYNC_IN_PROGRESS | 表示正在端云同步过程中。 |
-| RDB_SYNC_FINISH | 表示端云同步过程已完成。 |
+| RDB_SYNC_BEGIN | 表示端云同步过程开始。<br><!--Device-RDB_SYNC_BEGIN--><!--Device-RDB_SYNC_BEGIN-End--> |
+| RDB_SYNC_IN_PROGRESS | 表示正在端云同步过程中。<br><!--Device-RDB_SYNC_IN_PROGRESS--><!--Device-RDB_SYNC_IN_PROGRESS-End--> |
+| RDB_SYNC_FINISH | 表示端云同步过程已完成。<br><!--Device-RDB_SYNC_FINISH--><!--Device-RDB_SYNC_FINISH-End--> |
 
 ### Rdb_ProgressCode
 
@@ -349,7 +349,7 @@ enum Rdb_ProgressCode
 
 表示端云同步过程的状态。
 
-<!--Device-Rdb_ProgressCode--><!--Device-Rdb_ProgressCode-End-->
+<!--Device-enum Rdb_ProgressCode--><!--Device-enum Rdb_ProgressCode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -357,13 +357,13 @@ enum Rdb_ProgressCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_SUCCESS | 表示端云同步过程成功。 |
-| RDB_UNKNOWN_ERROR | 表示端云同步过程遇到未知错误。 |
-| RDB_NETWORK_ERROR | 表示端云同步过程遇到网络错误。 |
-| RDB_CLOUD_DISABLED | 表示云端不可用。 |
-| RDB_LOCKED_BY_OTHERS | 表示有其他设备正在端云同步，本设备无法进行端云同步。 |
-| RDB_RECORD_LIMIT_EXCEEDED | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。 |
-| RDB_NO_SPACE_FOR_ASSET | 表示云空间剩余空间小于待同步的资产大小。 |
+| RDB_SUCCESS | 表示端云同步过程成功。<br><!--Device-RDB_SUCCESS--><!--Device-RDB_SUCCESS-End--> |
+| RDB_UNKNOWN_ERROR | 表示端云同步过程遇到未知错误。<br><!--Device-RDB_UNKNOWN_ERROR--><!--Device-RDB_UNKNOWN_ERROR-End--> |
+| RDB_NETWORK_ERROR | 表示端云同步过程遇到网络错误。<br><!--Device-RDB_NETWORK_ERROR--><!--Device-RDB_NETWORK_ERROR-End--> |
+| RDB_CLOUD_DISABLED | 表示云端不可用。<br><!--Device-RDB_CLOUD_DISABLED--><!--Device-RDB_CLOUD_DISABLED-End--> |
+| RDB_LOCKED_BY_OTHERS | 表示有其他设备正在端云同步，本设备无法进行端云同步。<br><!--Device-RDB_LOCKED_BY_OTHERS--><!--Device-RDB_LOCKED_BY_OTHERS-End--> |
+| RDB_RECORD_LIMIT_EXCEEDED | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。<br><!--Device-RDB_RECORD_LIMIT_EXCEEDED--><!--Device-RDB_RECORD_LIMIT_EXCEEDED-End--> |
+| RDB_NO_SPACE_FOR_ASSET | 表示云空间剩余空间小于待同步的资产大小。<br><!--Device-RDB_NO_SPACE_FOR_ASSET--><!--Device-RDB_NO_SPACE_FOR_ASSET-End--> |
 
 
 ## 函数说明

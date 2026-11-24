@@ -38,7 +38,7 @@ enum OH_Archive_ErrCode
 
 Error codes for the Archive.
 
-<!--Device-OH_Archive_ErrCode--><!--Device-OH_Archive_ErrCode-End-->
+<!--Device-enum OH_Archive_ErrCode--><!--Device-enum OH_Archive_ErrCode-End-->
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -46,25 +46,25 @@ Error codes for the Archive.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARCHIVE_OK = 0 | Operation completed successfully.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_PARAM_ERROR = 401 | Invalid input parameters.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_UNKNOWN_ERROR = 13900100 | An unknown error occurred.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_CANCEL_ERROR = 13900101 | Operation cancelled by user.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_UNSUPPORTED_ERROR = 13900102 | Format not supported.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_MEM_ERROR = 13900103 | Memory allocation failed.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_OPEN_ERROR = 13900104 | Failed to open archive file.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_WRITE_ERROR = 13900105 | Write operation failed.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_READ_ERROR = 13900106 | Read operation failed.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_STREAM_OUTPUT_ERROR = 13900107 | Stream output error.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_INSUFFICIENT_OUTBUF_ERROR = 13900108 | Insufficient output buffer error.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_NO_SPACE_ERROR = 13900200 | Insufficient disk space.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_PATH_NOT_EXIST_ERROR = 13900201 | Path does not exist.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_PATH_EXISTS_ERROR = 13900202 | Path already exists.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_PATH_ACCESS_ERROR = 13900203 | Path access error.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_NAME_TOO_LONG_ERROR = 13900204 | File name too long.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_FULL_PATH_TOO_LONG_ERROR = 13900205 | Full path too long.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_DATA_ERROR = 13900300 | Data integrity error.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_CRC_ERROR = 13900301 | CRC check error.<br>**Since**: 26.0.0 |
-| OH_ARCHIVE_DEFLATE_ERROR = 13900302 | Deflate method error.<br>**Since**: 26.0.0 |
+| OH_ARCHIVE_OK = 0 | Operation completed successfully.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_OK = 0--><!--Device-OH_ARCHIVE_OK = 0-End--> |
+| OH_ARCHIVE_PARAM_ERROR = 401 | Invalid input parameters.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_PARAM_ERROR = 401--><!--Device-OH_ARCHIVE_PARAM_ERROR = 401-End--> |
+| OH_ARCHIVE_UNKNOWN_ERROR = 13900100 | An unknown error occurred.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_UNKNOWN_ERROR = 13900100--><!--Device-OH_ARCHIVE_UNKNOWN_ERROR = 13900100-End--> |
+| OH_ARCHIVE_CANCEL_ERROR = 13900101 | Operation cancelled by user.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_CANCEL_ERROR = 13900101--><!--Device-OH_ARCHIVE_CANCEL_ERROR = 13900101-End--> |
+| OH_ARCHIVE_UNSUPPORTED_ERROR = 13900102 | Format not supported.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_UNSUPPORTED_ERROR = 13900102--><!--Device-OH_ARCHIVE_UNSUPPORTED_ERROR = 13900102-End--> |
+| OH_ARCHIVE_MEM_ERROR = 13900103 | Memory allocation failed.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_MEM_ERROR = 13900103--><!--Device-OH_ARCHIVE_MEM_ERROR = 13900103-End--> |
+| OH_ARCHIVE_OPEN_ERROR = 13900104 | Failed to open archive file.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_OPEN_ERROR = 13900104--><!--Device-OH_ARCHIVE_OPEN_ERROR = 13900104-End--> |
+| OH_ARCHIVE_WRITE_ERROR = 13900105 | Write operation failed.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_WRITE_ERROR = 13900105--><!--Device-OH_ARCHIVE_WRITE_ERROR = 13900105-End--> |
+| OH_ARCHIVE_READ_ERROR = 13900106 | Read operation failed.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_READ_ERROR = 13900106--><!--Device-OH_ARCHIVE_READ_ERROR = 13900106-End--> |
+| OH_ARCHIVE_STREAM_OUTPUT_ERROR = 13900107 | Stream output error.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_STREAM_OUTPUT_ERROR = 13900107--><!--Device-OH_ARCHIVE_STREAM_OUTPUT_ERROR = 13900107-End--> |
+| OH_ARCHIVE_INSUFFICIENT_OUTBUF_ERROR = 13900108 | Insufficient output buffer error.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_INSUFFICIENT_OUTBUF_ERROR = 13900108--><!--Device-OH_ARCHIVE_INSUFFICIENT_OUTBUF_ERROR = 13900108-End--> |
+| OH_ARCHIVE_NO_SPACE_ERROR = 13900200 | Insufficient disk space.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_NO_SPACE_ERROR = 13900200--><!--Device-OH_ARCHIVE_NO_SPACE_ERROR = 13900200-End--> |
+| OH_ARCHIVE_PATH_NOT_EXIST_ERROR = 13900201 | Path does not exist.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_PATH_NOT_EXIST_ERROR = 13900201--><!--Device-OH_ARCHIVE_PATH_NOT_EXIST_ERROR = 13900201-End--> |
+| OH_ARCHIVE_PATH_EXISTS_ERROR = 13900202 | Path already exists.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_PATH_EXISTS_ERROR = 13900202--><!--Device-OH_ARCHIVE_PATH_EXISTS_ERROR = 13900202-End--> |
+| OH_ARCHIVE_PATH_ACCESS_ERROR = 13900203 | Path access error.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_PATH_ACCESS_ERROR = 13900203--><!--Device-OH_ARCHIVE_PATH_ACCESS_ERROR = 13900203-End--> |
+| OH_ARCHIVE_NAME_TOO_LONG_ERROR = 13900204 | File name too long.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_NAME_TOO_LONG_ERROR = 13900204--><!--Device-OH_ARCHIVE_NAME_TOO_LONG_ERROR = 13900204-End--> |
+| OH_ARCHIVE_FULL_PATH_TOO_LONG_ERROR = 13900205 | Full path too long.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_FULL_PATH_TOO_LONG_ERROR = 13900205--><!--Device-OH_ARCHIVE_FULL_PATH_TOO_LONG_ERROR = 13900205-End--> |
+| OH_ARCHIVE_DATA_ERROR = 13900300 | Data integrity error.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_DATA_ERROR = 13900300--><!--Device-OH_ARCHIVE_DATA_ERROR = 13900300-End--> |
+| OH_ARCHIVE_CRC_ERROR = 13900301 | CRC check error.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_CRC_ERROR = 13900301--><!--Device-OH_ARCHIVE_CRC_ERROR = 13900301-End--> |
+| OH_ARCHIVE_DEFLATE_ERROR = 13900302 | Deflate method error.<br>**Since**: 26.0.0<br><!--Device-OH_ARCHIVE_DEFLATE_ERROR = 13900302--><!--Device-OH_ARCHIVE_DEFLATE_ERROR = 13900302-End--> |
 
 

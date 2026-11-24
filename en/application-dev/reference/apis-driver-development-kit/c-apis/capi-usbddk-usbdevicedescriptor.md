@@ -24,19 +24,19 @@ Defines standard device descriptors, which correspond to **Standard Device Descr
 
 | Name | Description |
 | -- | -- |
-| uint8_t bLength | Size of the descriptor, in bytes. |
-| uint8_t bDescriptorType | Descriptor type. |
-| uint16_t bcdUSB | Version of the USB protocol. |
-| uint8_t bDeviceClass | Device class code allocated by the USB-IF. |
-| uint8_t bDeviceSubClass | Device subclass code allocated by the USB-IF. The value is limited by that of **bDeviceClass**. |
-| uint8_t bDeviceProtocol | Device protocol code allocated by the USB-IF. The value is limited by that of **bDeviceClass** and **bDeviceSubClass**. |
-| uint8_t bMaxPacketSize0 | Maximum packet size of endpoint 0 (control endpoint). Only values 8, 16, 32, and 64 are valid. |
-| uint16_t idVendor | Vendor ID allocated by USB-IF. |
-| uint16_t idProduct | Product ID allocated by the vendor. |
-| uint16_t bcdDevice | Device version number. |
-| uint8_t iManufacturer | Index of the string descriptor that describes the vendor. |
-| uint8_t iProduct | Index of the string descriptor that describes the product. |
-| uint8_t iSerialNumber | Index of the string descriptor that describes the device SN. |
-| uint8_t bNumConfigurations | Configuration quantity. |
+| uint8_t bLength | Size of the descriptor, in bytes.<br><!--Device-uint8_t bLength--><!--Device-uint8_t bLength-End--> |
+| uint8_t bDescriptorType | Descriptor type.<br><!--Device-uint8_t bDescriptorType--><!--Device-uint8_t bDescriptorType-End--> |
+| uint16_t bcdUSB | Version of the USB protocol.<br><!--Device-uint16_t bcdUSB--><!--Device-uint16_t bcdUSB-End--> |
+| uint8_t bDeviceClass | Device class code allocated by the USB-IF.<br><!--Device-uint8_t bDeviceClass--><!--Device-uint8_t bDeviceClass-End--> |
+| uint8_t bDeviceSubClass | Device subclass code allocated by the USB-IF. The value is limited by that of **bDeviceClass**.<br><!--Device-uint8_t bDeviceSubClass--><!--Device-uint8_t bDeviceSubClass-End--> |
+| uint8_t bDeviceProtocol | Device protocol code allocated by the USB-IF. The value is limited by that of **bDeviceClass** and **bDeviceSubClass**.<br><!--Device-uint8_t bDeviceProtocol--><!--Device-uint8_t bDeviceProtocol-End--> |
+| uint8_t bMaxPacketSize0 | Maximum packet size of endpoint 0 (control endpoint). Only values 8, 16, 32, and 64 are valid.<br><!--Device-uint8_t bMaxPacketSize0--><!--Device-uint8_t bMaxPacketSize0-End--> |
+| uint16_t idVendor | Vendor ID allocated by USB-IF.<br><!--Device-uint16_t idVendor--><!--Device-uint16_t idVendor-End--> |
+| uint16_t idProduct | Product ID allocated by the vendor.<br><!--Device-uint16_t idProduct--><!--Device-uint16_t idProduct-End--> |
+| uint16_t bcdDevice | Device version number.<br><!--Device-uint16_t bcdDevice--><!--Device-uint16_t bcdDevice-End--> |
+| uint8_t iManufacturer | Index of the string descriptor that describes the vendor.<br><!--Device-uint8_t iManufacturer--><!--Device-uint8_t iManufacturer-End--> |
+| uint8_t iProduct | Index of the string descriptor that describes the product.<br><!--Device-uint8_t iProduct--><!--Device-uint8_t iProduct-End--> |
+| uint8_t iSerialNumber | Index of the string descriptor that describes the device SN.<br><!--Device-uint8_t iSerialNumber--><!--Device-uint8_t iSerialNumber-End--> |
+| uint8_t bNumConfigurations | Configuration quantity.<br><!--Device-uint8_t bNumConfigurations--><!--Device-uint8_t bNumConfigurations-End--> |
 
 

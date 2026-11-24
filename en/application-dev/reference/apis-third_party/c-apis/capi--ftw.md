@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int base |  |
-| int level |  |
+| int base | <!--Device-int base--><!--Device-int base-End--> |
+| int level | <!--Device-int level--><!--Device-int level-End--> |
 
 

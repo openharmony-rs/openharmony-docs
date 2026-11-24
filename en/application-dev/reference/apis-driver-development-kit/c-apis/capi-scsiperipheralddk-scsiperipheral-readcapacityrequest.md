@@ -24,9 +24,9 @@ Defines the SCSI command (**READ CAPACITY**) request struct, which is used to se
 
 | Name | Description |
 | -- | -- |
-| uint32_t lbAddress | Logical block address, which specifies the start position for reading the capacity. If the value is **0**, the overall capacity of the device is obtained. |
-| uint8_t control | Control** field used to specify the control information of the SCSI command. |
-| uint8_t byte8 | Eighth byte of the command descriptor block (CDB). |
-| uint32_t timeout | Timeout interval, in milliseconds. |
+| uint32_t lbAddress | Logical block address, which specifies the start position for reading the capacity. If the value is **0**, the overall capacity of the device is obtained.<br><!--Device-uint32_t lbAddress--><!--Device-uint32_t lbAddress-End--> |
+| uint8_t control | **Control** field used to specify the control information of the SCSI command.<br><!--Device-uint8_t control--><!--Device-uint8_t control-End--> |
+| uint8_t byte8 | Eighth byte of the command descriptor block (CDB).<br><!--Device-uint8_t byte8--><!--Device-uint8_t byte8-End--> |
+| uint32_t timeout | Timeout interval, in milliseconds.<br><!--Device-uint32_t timeout--><!--Device-uint32_t timeout-End--> |
 
 

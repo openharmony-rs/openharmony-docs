@@ -24,14 +24,14 @@ Defines a collection of gesture APIs. Based on [ArkUI_NativeGestureAPI_1](capi-a
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_NativeGestureAPI_1*](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) gestureApi1 | Pointer to the **ArkUI_NativeGestureAPI_1** struct. |
+| [ArkUI_NativeGestureAPI_1*](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) gestureApi1 | Pointer to the **ArkUI_NativeGestureAPI_1** struct.<br><!--Device-ArkUI_NativeGestureAPI_1* gestureApi1--><!--Device-ArkUI_NativeGestureAPI_1* gestureApi1-End--> |
 
 
 ### Member functions
 
 | Name | Description |
 | -- | -- |
-| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData,ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | - | Sets the callback function for gesture interruption events. It is applicable to scenarios where you need to decide, based on the current interaction state during gesture recognition, whether the gesture continues to respond or is interrupted. |
+| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData,ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | Sets the callback function for gesture interruption events. It is applicable to scenarios where you need to decide, based on the current interaction state during gesture recognition, whether the gesture continues to respond or is interrupted. |
 
 ## Member function description
 

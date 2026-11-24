@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t timingCount |  |
-| [VkLatencyTimingsFrameReportNV*](capi--vklatencytimingsframereportnv.md) pTimings |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t timingCount | <!--Device-uint32_t timingCount--><!--Device-uint32_t timingCount-End--> |
+| [VkLatencyTimingsFrameReportNV*](capi--vklatencytimingsframereportnv.md) pTimings | <!--Device-VkLatencyTimingsFrameReportNV* pTimings--><!--Device-VkLatencyTimingsFrameReportNV* pTimings-End--> |
 
 

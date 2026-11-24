@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 perStageDescriptorSet |  |
-| VkBool32 dynamicPipelineLayout |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 perStageDescriptorSet | <!--Device-VkBool32 perStageDescriptorSet--><!--Device-VkBool32 perStageDescriptorSet-End--> |
+| VkBool32 dynamicPipelineLayout | <!--Device-VkBool32 dynamicPipelineLayout--><!--Device-VkBool32 dynamicPipelineLayout-End--> |
 
 

@@ -20,6 +20,8 @@ NODE_ON_PRE_DRAG = 14
 
 Notifies the listener of the interaction state prior to a drop and drop operation.<br> This event is triggered when a drag operation is about to start on a draggable item. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter: <ul> <li><b>ArkUI_NodeComponentEvent.data[0].i32</b>: corresponds to [ArkUI_PreDragStatus](capi-drag-and-drop-h.md#arkui_predragstatus).</li> </ul>
 
+<!--Device-NODE_ON_PRE_DRAG = 14--><!--Device-NODE_ON_PRE_DRAG = 14-End-->
+
 **起始版本：** 12
 
 ### NODE_ON_DRAG_START
@@ -31,6 +33,8 @@ NODE_ON_DRAG_START = 15
 **描述：**
 
 Called when the user starts to drag an ite<br> A drag operation is recognized only when the dragged item is moved far enough. When the event callback occurs, the [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
+
+<!--Device-NODE_ON_DRAG_START = 15--><!--Device-NODE_ON_DRAG_START = 15-End-->
 
 **起始版本：** 12
 
@@ -44,6 +48,8 @@ NODE_ON_DRAG_ENTER = 16
 
 Called when a dragged item enters the boundaries of the current component.<br> The current component refers to the component that listens for this event. When the event callback occurs, the [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
 
+<!--Device-NODE_ON_DRAG_ENTER = 16--><!--Device-NODE_ON_DRAG_ENTER = 16-End-->
+
 **起始版本：** 12
 
 ### NODE_ON_DRAG_MOVE
@@ -55,6 +61,8 @@ NODE_ON_DRAG_MOVE = 17
 **描述：**
 
 Called when a dragged item moves in the current component.<br> The current component refers to the component that listens for this event. When the event callback occurs, the [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
+
+<!--Device-NODE_ON_DRAG_MOVE = 17--><!--Device-NODE_ON_DRAG_MOVE = 17-End-->
 
 **起始版本：** 12
 
@@ -68,6 +76,8 @@ NODE_ON_DRAG_LEAVE = 18
 
 Called when a dragged item leaves the boundaries of the current component.<br> The current component refers to the component that listens for this event. When the event callback occurs, the [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
 
+<!--Device-NODE_ON_DRAG_LEAVE = 18--><!--Device-NODE_ON_DRAG_LEAVE = 18-End-->
+
 **起始版本：** 12
 
 ### NODE_ON_DROP
@@ -80,6 +90,8 @@ NODE_ON_DROP = 19
 
 Called when a dragged item is dropped on the current component. The component can obtain the drag data for processing through the callback.<br> The current component refers to the component that listens for this event. When the event callback occurs, the [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
 
+<!--Device-NODE_ON_DROP = 19--><!--Device-NODE_ON_DROP = 19-End-->
+
 **起始版本：** 12
 
 ### NODE_ON_DRAG_END
@@ -91,6 +103,8 @@ NODE_ON_DRAG_END = 20
 **描述：**
 
 Called when a drag operation ends. The drag source can obtain the drag result by registering this callback.<br> A drag operation ends when the dragged item is released. When the event callback occurs, the [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
+
+<!--Device-NODE_ON_DRAG_END = 20--><!--Device-NODE_ON_DRAG_END = 20-End-->
 
 **起始版本：** 12
 

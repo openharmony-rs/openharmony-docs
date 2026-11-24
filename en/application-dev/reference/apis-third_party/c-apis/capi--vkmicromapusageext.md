@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t count |  |
-| uint32_t subdivisionLevel |  |
-| uint32_t format |  |
+| uint32_t count | <!--Device-uint32_t count--><!--Device-uint32_t count-End--> |
+| uint32_t subdivisionLevel | <!--Device-uint32_t subdivisionLevel--><!--Device-uint32_t subdivisionLevel-End--> |
+| uint32_t format | <!--Device-uint32_t format--><!--Device-uint32_t format-End--> |
 
 

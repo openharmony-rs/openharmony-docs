@@ -31,7 +31,7 @@ Provides the type declaration of the ExtensionAbility callback function and the 
 
 | Name | Description |
 | -- | -- |
-| [AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc) OH_AbilityRuntime_OnNativeExtensionCreate | The name of the function that native extension ability instance looks for when launching its native code.<br>**Since**: 24<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
+| [AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc) OH_AbilityRuntime_OnNativeExtensionCreate | The name of the function that native extension ability instance looks for when launching its native code.<br>**Since**: 24<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core<br><!--Device-AbilityRuntime_Extension_CreateFunc OH_AbilityRuntime_OnNativeExtensionCreate--><!--Device-AbilityRuntime_Extension_CreateFunc OH_AbilityRuntime_OnNativeExtensionCreate-End--> |
 
 ## Function description
 

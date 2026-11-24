@@ -24,10 +24,10 @@ typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [Camera_Device](capi-oh-camera-camera-device.md) camera | 相机实例。 |
-| [Camera_ConcurrentType](capi-camera-h.md#camera_concurrenttype) type | 相机并发状态。 |
-| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)* sceneModes | 相机并发支持的模式。 |
-| [Camera_OutputCapability*](capi-oh-camera-camera-outputcapability.md) outputCapabilities | 相机输出能力集。 |
-| uint32_t modeAndCapabilitySize | 相机输出能力集大小。 |
+| [Camera_Device](capi-oh-camera-camera-device.md) camera | 相机实例。<br><!--Device-Camera_Device camera--><!--Device-Camera_Device camera-End--> |
+| [Camera_ConcurrentType](capi-camera-h.md#camera_concurrenttype) type | 相机并发状态。<br><!--Device-Camera_ConcurrentType type--><!--Device-Camera_ConcurrentType type-End--> |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)* sceneModes | 相机并发支持的模式。<br><!--Device-Camera_SceneMode* sceneModes--><!--Device-Camera_SceneMode* sceneModes-End--> |
+| [Camera_OutputCapability*](capi-oh-camera-camera-outputcapability.md) outputCapabilities | 相机输出能力集。<br><!--Device-Camera_OutputCapability* outputCapabilities--><!--Device-Camera_OutputCapability* outputCapabilities-End--> |
+| uint32_t modeAndCapabilitySize | 相机输出能力集大小。<br><!--Device-uint32_t modeAndCapabilitySize--><!--Device-uint32_t modeAndCapabilitySize-End--> |
 
 

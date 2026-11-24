@@ -24,7 +24,7 @@ This struct describes a font feature.
 
 | Name | Description |
 | -- | -- |
-| char* tag | Tag of the font feature. |
-| int value | Value of the font feature. |
+| char* tag | Tag of the font feature.<br><!--Device-char* tag--><!--Device-char* tag-End--> |
+| int value | Value of the font feature.<br><!--Device-int value--><!--Device-int value-End--> |
 
 

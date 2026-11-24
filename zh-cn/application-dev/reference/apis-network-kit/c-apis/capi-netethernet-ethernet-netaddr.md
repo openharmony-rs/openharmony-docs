@@ -24,9 +24,9 @@ typedef struct Ethernet_NetAddr {...} Ethernet_NetAddr
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t family | 网络地址族。IPv4 = 1，IPv6 = 2。<br>**起始版本：** 26.0.0 |
-| uint8_t prefixlen | 前缀长度。<br>**起始版本：** 26.0.0 |
-| uint16_t port | 端口号。<br>**起始版本：** 26.0.0 |
-| char address[ETHERNET_MAX_STR_LEN] | IP地址。<br>**起始版本：** 26.0.0 |
+| uint8_t family | 网络地址族。IPv4 = 1，IPv6 = 2。<br>**起始版本：** 26.0.0<br><!--Device-uint8_t family--><!--Device-uint8_t family-End--> |
+| uint8_t prefixlen | 前缀长度。<br>**起始版本：** 26.0.0<br><!--Device-uint8_t prefixlen--><!--Device-uint8_t prefixlen-End--> |
+| uint16_t port | 端口号。<br>**起始版本：** 26.0.0<br><!--Device-uint16_t port--><!--Device-uint16_t port-End--> |
+| char address[ETHERNET_MAX_STR_LEN] | IP地址。<br>**起始版本：** 26.0.0<br><!--Device-char address[ETHERNET_MAX_STR_LEN]--><!--Device-char address[ETHERNET_MAX_STR_LEN]-End--> |
 
 

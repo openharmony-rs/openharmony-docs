@@ -24,7 +24,7 @@ typedef struct ArkUI_AccessibleAction {...} ArkUI_AccessibleAction
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_Accessibility_ActionType](capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) actionType | 无障碍操作类型。 |
-| const char* description | 操作描述信息。 |
+| [ArkUI_Accessibility_ActionType](capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) actionType | 无障碍操作类型。<br><!--Device-ArkUI_Accessibility_ActionType actionType--><!--Device-ArkUI_Accessibility_ActionType actionType-End--> |
+| const char* description | 操作描述信息。<br><!--Device-const char* description--><!--Device-const char* description-End--> |
 
 

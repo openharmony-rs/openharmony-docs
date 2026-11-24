@@ -39,7 +39,7 @@ enum CRYPTO_ENGINE
 
 Enumerates the types of the crypto engine.
 
-<!--Device-CRYPTO_ENGINE--><!--Device-CRYPTO_ENGINE-End-->
+<!--Device-enum CRYPTO_ENGINE--><!--Device-enum CRYPTO_ENGINE-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -47,11 +47,11 @@ Enumerates the types of the crypto engine.
 
 | Enum item | Description |
 | -- | -- |
-| DX_CRYPTO = 0 | The hardware-based DX crypto engine. |
-| EPS_CRYPTO = 1 | The hardware-based MSPE crypto engine. |
-| SOFT_CRYPTO = 2 | The software-based crypto engine, such as OpenSSL. |
-| SEC_CRYPTO = 3 | The SEC crypto engine, commonly employed in vehicle platforms. |
-| CRYPTO_ENGINE_MAX = 1024 | The maximum value of the crypto engine. |
+| DX_CRYPTO = 0 | The hardware-based DX crypto engine.<br><!--Device-DX_CRYPTO = 0--><!--Device-DX_CRYPTO = 0-End--> |
+| EPS_CRYPTO = 1 | The hardware-based MSPE crypto engine.<br><!--Device-EPS_CRYPTO = 1--><!--Device-EPS_CRYPTO = 1-End--> |
+| SOFT_CRYPTO = 2 | The software-based crypto engine, such as OpenSSL.<br><!--Device-SOFT_CRYPTO = 2--><!--Device-SOFT_CRYPTO = 2-End--> |
+| SEC_CRYPTO = 3 | The SEC crypto engine, commonly employed in vehicle platforms.<br><!--Device-SEC_CRYPTO = 3--><!--Device-SEC_CRYPTO = 3-End--> |
+| CRYPTO_ENGINE_MAX = 1024 | The maximum value of the crypto engine.<br><!--Device-CRYPTO_ENGINE_MAX = 1024--><!--Device-CRYPTO_ENGINE_MAX = 1024-End--> |
 
 
 ## Function description

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t luma_weight_l0_flag |  |
-| uint32_t chroma_weight_l0_flag |  |
-| uint32_t luma_weight_l1_flag |  |
-| uint32_t chroma_weight_l1_flag |  |
+| uint32_t luma_weight_l0_flag | <!--Device-uint32_t luma_weight_l0_flag--><!--Device-uint32_t luma_weight_l0_flag-End--> |
+| uint32_t chroma_weight_l0_flag | <!--Device-uint32_t chroma_weight_l0_flag--><!--Device-uint32_t chroma_weight_l0_flag-End--> |
+| uint32_t luma_weight_l1_flag | <!--Device-uint32_t luma_weight_l1_flag--><!--Device-uint32_t luma_weight_l1_flag-End--> |
+| uint32_t chroma_weight_l1_flag | <!--Device-uint32_t chroma_weight_l1_flag--><!--Device-uint32_t chroma_weight_l1_flag-End--> |
 
 

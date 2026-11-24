@@ -36,7 +36,7 @@ Declare the underlying data structure.
 | [OH_AudioStream_Usage](#oh_audiostream_usage) | OH_AudioStream_Usage | Define the audio stream usage. Audio stream usage is used to describe what work scenario the current stream is used for. |
 | [OH_AudioStream_LatencyMode](#oh_audiostream_latencymode) | OH_AudioStream_LatencyMode | Define the audio latency mode. |
 | [OH_AudioStream_DirectPlaybackMode](#oh_audiostream_directplaybackmode) | OH_AudioStream_DirectPlaybackMode | Enumerates audio direct playback modes. |
-| [OH_AudioStream_Event](#oh_audiostream_event) | OH_AudioStream_Event | Define the audio event.(Deprecated in API20) |
+| [OH_AudioStream_Event](#oh_audiostream_event) | OH_AudioStream_Event | Define the audio event.(Deprecated) |
 | [OH_AudioStream_State](#oh_audiostream_state) | OH_AudioStream_State | The audio stream states |
 | [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | Defines the audio interrupt type. |
 | [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) | OH_AudioInterrupt_Hint | Defines the audio interrupt hint type. |
@@ -73,7 +73,7 @@ enum OH_AudioStream_Result
 
 Define the result of the function execution.
 
-<!--Device-OH_AudioStream_Result--><!--Device-OH_AudioStream_Result-End-->
+<!--Device-enum OH_AudioStream_Result--><!--Device-enum OH_AudioStream_Result-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -81,14 +81,14 @@ Define the result of the function execution.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 | &nbsp;Execution status exception.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_SYSTEM = 3 | &nbsp;An system error has occurred.<br>**Since**: 10 |
-| AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 19 |
-| AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED = 201 | Permission denied.<br>**Since**: 26.1.0 |
-| AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | &nbsp;Unsupported audio stream ability, including function and configuration.<br>**Since**: 26.0.0 |
-| AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | &nbsp;Audio server process died.<br>**Since**: 26.0.0 |
+| AUDIOSTREAM_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SUCCESS = 0--><!--Device-AUDIOSTREAM_SUCCESS = 0-End--> |
+| AUDIOSTREAM_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_ERROR_INVALID_PARAM = 1--><!--Device-AUDIOSTREAM_ERROR_INVALID_PARAM = 1-End--> |
+| AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 | &nbsp;Execution status exception.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2--><!--Device-AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2-End--> |
+| AUDIOSTREAM_ERROR_SYSTEM = 3 | &nbsp;An system error has occurred.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_ERROR_SYSTEM = 3--><!--Device-AUDIOSTREAM_ERROR_SYSTEM = 3-End--> |
+| AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 19<br><!--Device-AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4--><!--Device-AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4-End--> |
+| AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED = 201 | Permission denied.<br>**Since**: 26.1.0<br><!--Device-AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED = 201--><!--Device-AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED = 201-End--> |
+| AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | &nbsp;Unsupported audio stream ability, including function and configuration.<br>**Since**: 26.0.0<br><!--Device-AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104--><!--Device-AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104-End--> |
+| AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | &nbsp;Audio server process died.<br>**Since**: 26.0.0<br><!--Device-AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302--><!--Device-AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302-End--> |
 
 ### OH_AudioStream_Type
 
@@ -100,7 +100,7 @@ enum OH_AudioStream_Type
 
 Define the audio stream type.
 
-<!--Device-OH_AudioStream_Type--><!--Device-OH_AudioStream_Type-End-->
+<!--Device-enum OH_AudioStream_Type--><!--Device-enum OH_AudioStream_Type-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -108,8 +108,8 @@ Define the audio stream type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_TYPE_RENDERER = 1 | The type for audio stream is renderer.<br>**Since**: 10 |
-| AUDIOSTREAM_TYPE_CAPTURER = 2 | The type for audio stream is capturer.<br>**Since**: 10 |
+| AUDIOSTREAM_TYPE_RENDERER = 1 | The type for audio stream is renderer.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_TYPE_RENDERER = 1--><!--Device-AUDIOSTREAM_TYPE_RENDERER = 1-End--> |
+| AUDIOSTREAM_TYPE_CAPTURER = 2 | The type for audio stream is capturer.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_TYPE_CAPTURER = 2--><!--Device-AUDIOSTREAM_TYPE_CAPTURER = 2-End--> |
 
 ### OH_AudioStream_SampleFormat
 
@@ -121,7 +121,7 @@ enum OH_AudioStream_SampleFormat
 
 Define the audio stream sample format.
 
-<!--Device-OH_AudioStream_SampleFormat--><!--Device-OH_AudioStream_SampleFormat-End-->
+<!--Device-enum OH_AudioStream_SampleFormat--><!--Device-enum OH_AudioStream_SampleFormat-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -129,11 +129,11 @@ Define the audio stream sample format.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_SAMPLE_U8 = 0 | Unsigned 8 format.<br>**Since**: 10 |
-| AUDIOSTREAM_SAMPLE_S16LE = 1 | Signed 16 bit integer, little endian.<br>**Since**: 10 |
-| AUDIOSTREAM_SAMPLE_S24LE = 2 | Signed 24 bit integer, little endian.<br>**Since**: 10 |
-| AUDIOSTREAM_SAMPLE_S32LE = 3 | Signed 32 bit integer, little endian.<br>**Since**: 10 |
-| AUDIOSTREAM_SAMPLE_F32LE = 4 | Float 32, little endian.<br>**Since**: 17 |
+| AUDIOSTREAM_SAMPLE_U8 = 0 | Unsigned 8 format.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SAMPLE_U8 = 0--><!--Device-AUDIOSTREAM_SAMPLE_U8 = 0-End--> |
+| AUDIOSTREAM_SAMPLE_S16LE = 1 | Signed 16 bit integer, little endian.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SAMPLE_S16LE = 1--><!--Device-AUDIOSTREAM_SAMPLE_S16LE = 1-End--> |
+| AUDIOSTREAM_SAMPLE_S24LE = 2 | Signed 24 bit integer, little endian.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SAMPLE_S24LE = 2--><!--Device-AUDIOSTREAM_SAMPLE_S24LE = 2-End--> |
+| AUDIOSTREAM_SAMPLE_S32LE = 3 | Signed 32 bit integer, little endian.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SAMPLE_S32LE = 3--><!--Device-AUDIOSTREAM_SAMPLE_S32LE = 3-End--> |
+| AUDIOSTREAM_SAMPLE_F32LE = 4 | Float 32, little endian.<br>**Since**: 17<br><!--Device-AUDIOSTREAM_SAMPLE_F32LE = 4--><!--Device-AUDIOSTREAM_SAMPLE_F32LE = 4-End--> |
 
 ### OH_AudioStream_EncodingType
 
@@ -145,7 +145,7 @@ enum OH_AudioStream_EncodingType
 
 Define the audio encoding type.
 
-<!--Device-OH_AudioStream_EncodingType--><!--Device-OH_AudioStream_EncodingType-End-->
+<!--Device-enum OH_AudioStream_EncodingType--><!--Device-enum OH_AudioStream_EncodingType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -153,9 +153,9 @@ Define the audio encoding type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_ENCODING_TYPE_RAW = 0 | PCM encoding type.<br>**Since**: 10 |
-| AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID = 1 | AudioVivid encoding type.<br>**Since**: 12 |
-| AUDIOSTREAM_ENCODING_TYPE_E_AC3 = 2 | E_AC3 encoding type.<br>**Since**: 19 |
+| AUDIOSTREAM_ENCODING_TYPE_RAW = 0 | PCM encoding type.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_ENCODING_TYPE_RAW = 0--><!--Device-AUDIOSTREAM_ENCODING_TYPE_RAW = 0-End--> |
+| AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID = 1 | AudioVivid encoding type.<br>**Since**: 12<br><!--Device-AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID = 1--><!--Device-AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID = 1-End--> |
+| AUDIOSTREAM_ENCODING_TYPE_E_AC3 = 2 | E_AC3 encoding type.<br>**Since**: 19<br><!--Device-AUDIOSTREAM_ENCODING_TYPE_E_AC3 = 2--><!--Device-AUDIOSTREAM_ENCODING_TYPE_E_AC3 = 2-End--> |
 
 ### OH_AudioStream_Usage
 
@@ -167,7 +167,7 @@ enum OH_AudioStream_Usage
 
 Define the audio stream usage. Audio stream usage is used to describe what work scenario the current stream is used for.
 
-<!--Device-OH_AudioStream_Usage--><!--Device-OH_AudioStream_Usage-End-->
+<!--Device-enum OH_AudioStream_Usage--><!--Device-enum OH_AudioStream_Usage-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -175,20 +175,20 @@ Define the audio stream usage. Audio stream usage is used to describe what work 
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_USAGE_UNKNOWN = 0 | Unknown usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_MUSIC = 1 | Music usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_VOICE_COMMUNICATION = 2 | Voice communication usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_VOICE_ASSISTANT = 3 | Voice assistant usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_ALARM = 4 | Alarm usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_VOICE_MESSAGE = 5 | Voice message usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_RINGTONE = 6 | Ringtone usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_NOTIFICATION = 7 | Notification usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_ACCESSIBILITY = 8 | Accessibility usage, such as screen reader.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_MOVIE = 10 | Movie or video usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_GAME = 11 | Game sound effect usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_AUDIOBOOK = 12 | Audiobook usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_NAVIGATION = 13 | Navigation usage.<br>**Since**: 10 |
-| AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION = 17 | Video call usage.<br>**Since**: 12 |
+| AUDIOSTREAM_USAGE_UNKNOWN = 0 | Unknown usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_UNKNOWN = 0--><!--Device-AUDIOSTREAM_USAGE_UNKNOWN = 0-End--> |
+| AUDIOSTREAM_USAGE_MUSIC = 1 | Music usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_MUSIC = 1--><!--Device-AUDIOSTREAM_USAGE_MUSIC = 1-End--> |
+| AUDIOSTREAM_USAGE_VOICE_COMMUNICATION = 2 | Voice communication usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_VOICE_COMMUNICATION = 2--><!--Device-AUDIOSTREAM_USAGE_VOICE_COMMUNICATION = 2-End--> |
+| AUDIOSTREAM_USAGE_VOICE_ASSISTANT = 3 | Voice assistant usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_VOICE_ASSISTANT = 3--><!--Device-AUDIOSTREAM_USAGE_VOICE_ASSISTANT = 3-End--> |
+| AUDIOSTREAM_USAGE_ALARM = 4 | Alarm usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_ALARM = 4--><!--Device-AUDIOSTREAM_USAGE_ALARM = 4-End--> |
+| AUDIOSTREAM_USAGE_VOICE_MESSAGE = 5 | Voice message usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_VOICE_MESSAGE = 5--><!--Device-AUDIOSTREAM_USAGE_VOICE_MESSAGE = 5-End--> |
+| AUDIOSTREAM_USAGE_RINGTONE = 6 | Ringtone usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_RINGTONE = 6--><!--Device-AUDIOSTREAM_USAGE_RINGTONE = 6-End--> |
+| AUDIOSTREAM_USAGE_NOTIFICATION = 7 | Notification usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_NOTIFICATION = 7--><!--Device-AUDIOSTREAM_USAGE_NOTIFICATION = 7-End--> |
+| AUDIOSTREAM_USAGE_ACCESSIBILITY = 8 | Accessibility usage, such as screen reader.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_ACCESSIBILITY = 8--><!--Device-AUDIOSTREAM_USAGE_ACCESSIBILITY = 8-End--> |
+| AUDIOSTREAM_USAGE_MOVIE = 10 | Movie or video usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_MOVIE = 10--><!--Device-AUDIOSTREAM_USAGE_MOVIE = 10-End--> |
+| AUDIOSTREAM_USAGE_GAME = 11 | Game sound effect usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_GAME = 11--><!--Device-AUDIOSTREAM_USAGE_GAME = 11-End--> |
+| AUDIOSTREAM_USAGE_AUDIOBOOK = 12 | Audiobook usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_AUDIOBOOK = 12--><!--Device-AUDIOSTREAM_USAGE_AUDIOBOOK = 12-End--> |
+| AUDIOSTREAM_USAGE_NAVIGATION = 13 | Navigation usage.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_USAGE_NAVIGATION = 13--><!--Device-AUDIOSTREAM_USAGE_NAVIGATION = 13-End--> |
+| AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION = 17 | Video call usage.<br>**Since**: 12<br><!--Device-AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION = 17--><!--Device-AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION = 17-End--> |
 
 ### OH_AudioStream_LatencyMode
 
@@ -200,7 +200,7 @@ enum OH_AudioStream_LatencyMode
 
 Define the audio latency mode.
 
-<!--Device-OH_AudioStream_LatencyMode--><!--Device-OH_AudioStream_LatencyMode-End-->
+<!--Device-enum OH_AudioStream_LatencyMode--><!--Device-enum OH_AudioStream_LatencyMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -208,9 +208,9 @@ Define the audio latency mode.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_LATENCY_MODE_NORMAL = 0 | This is a normal audio scene.<br>**Since**: 10 |
-| AUDIOSTREAM_LATENCY_MODE_FAST = 1 | This is a low latency audio scene.<br>**Since**: 10 |
-| AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2 | Indicates the ultra-low latency audio stream mode. <br>In this mode, the length of each callback data is 2.5 ms, and the length of each callback data is 5 ms in low-latency mode. <br>The performance requirements and power consumption impact of this mode are significantly higher than those of the low-latency mode, which may cause audio freeze risks and increased power consumption. Recommended only in scenarios where delay is extremely sensitive and the [AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode) mode cannot meet delay requirements. Use this mode again, for example, in scenarios such as K song soft ear return. <br>This mode is recommended for continuous audio playback or recording. It is not recommended for short audio. Otherwise, user experience may be affected. <br>Before creating audio streams in this mode, you must have the `ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM` permission. <br>This mode supports less [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) than [AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode), So before setting this mode, use [OH_AudioStreamManager_IsUltraFastPlaybackSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastplaybacksupported) or [OH_AudioStreamManager_IsUltraFastRecordingSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported) Queries whether the current device supports this function. <br>If you do not have the permission, [AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED](capi-native-audiostream-base-h.md#oh_audiostream_result) is returned when you create an audio stream. The current hardware is used. If this function is not supported, [AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY](capi-native-audiostream-base-h.md#oh_audiostream_result) is returned when an audio stream is created. <br>After the audio stream is successfully started, the audio stream can be started through [OH_AudioRenderer_GetFastStatus](capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus) or [OH_AudioCapturer_GetFastStatus](capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus) Check whether the system is running in this mode. <br>If you want to obtain the change of the running mode in a timely manner, click {@link} OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback} or {@link OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback} Register callback.<br>**Since**: 26.1.0 |
+| AUDIOSTREAM_LATENCY_MODE_NORMAL = 0 | This is a normal audio scene.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_LATENCY_MODE_NORMAL = 0--><!--Device-AUDIOSTREAM_LATENCY_MODE_NORMAL = 0-End--> |
+| AUDIOSTREAM_LATENCY_MODE_FAST = 1 | This is a low latency audio scene.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_LATENCY_MODE_FAST = 1--><!--Device-AUDIOSTREAM_LATENCY_MODE_FAST = 1-End--> |
+| AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2 | Indicates the ultra-low latency audio stream mode. <br>In this mode, the length of each callback data is 2.5 ms, and the length of each callback data is 5 ms in low-latency mode. <br>The performance requirements and power consumption impact of this mode are significantly higher than those of the low-latency mode, which may cause audio freeze risks and increased power consumption. Recommended only in scenarios where delay is extremely sensitive and the [AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode) mode cannot meet delay requirements. Use this mode again, for example, in scenarios such as K song soft ear return. <br>This mode is recommended for continuous audio playback or recording. It is not recommended for short audio. Otherwise, user experience may be affected. <br>Before creating audio streams in this mode, you must have the `ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM` permission. <br>This mode supports less [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) than [AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode), So before setting this mode, use [OH_AudioStreamManager_IsUltraFastPlaybackSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastplaybacksupported) or [OH_AudioStreamManager_IsUltraFastRecordingSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported) Queries whether the current device supports this function. <br>If you do not have the permission, [AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED](capi-native-audiostream-base-h.md#oh_audiostream_result) is returned when you create an audio stream. The current hardware is used. If this function is not supported, [AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY](capi-native-audiostream-base-h.md#oh_audiostream_result) is returned when an audio stream is created. <br>After the audio stream is successfully started, the audio stream can be started through [OH_AudioRenderer_GetFastStatus](capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus) or [OH_AudioCapturer_GetFastStatus](capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus) Check whether the system is running in this mode. <br>If you want to obtain the change of the running mode in a timely manner, click {@link} OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback} or {@link OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback} Register callback.<br>**Since**: 26.1.0<br><!--Device-AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2--><!--Device-AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2-End--> |
 
 ### OH_AudioStream_DirectPlaybackMode
 
@@ -222,7 +222,7 @@ enum OH_AudioStream_DirectPlaybackMode
 
 Enumerates audio direct playback modes.
 
-<!--Device-OH_AudioStream_DirectPlaybackMode--><!--Device-OH_AudioStream_DirectPlaybackMode-End-->
+<!--Device-enum OH_AudioStream_DirectPlaybackMode--><!--Device-enum OH_AudioStream_DirectPlaybackMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -230,9 +230,9 @@ Enumerates audio direct playback modes.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_DIRECT_PLAYBACK_NOT_SUPPORTED = 0 | Direct playback is not supported.<br>**Since**: 19 |
-| AUDIOSTREAM_DIRECT_PLAYBACK_BITSTREAM_SUPPORTED = 1 | Direct playback mode which is bitstream pass-through such as compressed pass-through.<br>**Since**: 19 |
-| AUDIOSTREAM_DIRECT_PLAYBACK_PCM_SUPPORTED = 2 | Direct playback mode of pcm.<br>**Since**: 19 |
+| AUDIOSTREAM_DIRECT_PLAYBACK_NOT_SUPPORTED = 0 | Direct playback is not supported.<br>**Since**: 19<br><!--Device-AUDIOSTREAM_DIRECT_PLAYBACK_NOT_SUPPORTED = 0--><!--Device-AUDIOSTREAM_DIRECT_PLAYBACK_NOT_SUPPORTED = 0-End--> |
+| AUDIOSTREAM_DIRECT_PLAYBACK_BITSTREAM_SUPPORTED = 1 | Direct playback mode which is bitstream pass-through such as compressed pass-through.<br>**Since**: 19<br><!--Device-AUDIOSTREAM_DIRECT_PLAYBACK_BITSTREAM_SUPPORTED = 1--><!--Device-AUDIOSTREAM_DIRECT_PLAYBACK_BITSTREAM_SUPPORTED = 1-End--> |
+| AUDIOSTREAM_DIRECT_PLAYBACK_PCM_SUPPORTED = 2 | Direct playback mode of pcm.<br>**Since**: 19<br><!--Device-AUDIOSTREAM_DIRECT_PLAYBACK_PCM_SUPPORTED = 2--><!--Device-AUDIOSTREAM_DIRECT_PLAYBACK_PCM_SUPPORTED = 2-End--> |
 
 ### OH_AudioStream_Event
 
@@ -244,7 +244,7 @@ enum OH_AudioStream_Event
 
 Define the audio event.
 
-<!--Device-OH_AudioStream_Event--><!--Device-OH_AudioStream_Event-End-->
+<!--Device-enum OH_AudioStream_Event--><!--Device-enum OH_AudioStream_Event-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -256,7 +256,7 @@ Define the audio event.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | The routing of the audio has changed.<br>**Since**: 10<br>**Deprecated**: 20<br>**Replaced by**: OH_AudioRenderer_OutputDeviceChangeCallback. |
+| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | The routing of the audio has changed.<br>**Since**: 10<br>**Deprecated**: 20<br>**Replaced by**: OH_AudioRenderer_OutputDeviceChangeCallback.<br><!--Device-AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0--><!--Device-AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0-End--> |
 
 ### OH_AudioStream_State
 
@@ -268,7 +268,7 @@ enum OH_AudioStream_State
 
 The audio stream states
 
-<!--Device-OH_AudioStream_State--><!--Device-OH_AudioStream_State-End-->
+<!--Device-enum OH_AudioStream_State--><!--Device-enum OH_AudioStream_State-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -276,13 +276,13 @@ The audio stream states
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_STATE_INVALID = -1 | The invalid state.<br>**Since**: 10 |
-| AUDIOSTREAM_STATE_NEW = 0 | Create new instance state.<br>**Since**: 10 |
-| AUDIOSTREAM_STATE_PREPARED = 1 | The prepared state.<br>**Since**: 10 |
-| AUDIOSTREAM_STATE_RUNNING = 2 | The stream is running.<br>**Since**: 10 |
-| AUDIOSTREAM_STATE_STOPPED = 3 | The stream is stopped.<br>**Since**: 10 |
-| AUDIOSTREAM_STATE_RELEASED = 4 | The stream is released.<br>**Since**: 10 |
-| AUDIOSTREAM_STATE_PAUSED = 5 | The stream is paused.<br>**Since**: 10 |
+| AUDIOSTREAM_STATE_INVALID = -1 | The invalid state.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_STATE_INVALID = -1--><!--Device-AUDIOSTREAM_STATE_INVALID = -1-End--> |
+| AUDIOSTREAM_STATE_NEW = 0 | Create new instance state.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_STATE_NEW = 0--><!--Device-AUDIOSTREAM_STATE_NEW = 0-End--> |
+| AUDIOSTREAM_STATE_PREPARED = 1 | The prepared state.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_STATE_PREPARED = 1--><!--Device-AUDIOSTREAM_STATE_PREPARED = 1-End--> |
+| AUDIOSTREAM_STATE_RUNNING = 2 | The stream is running.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_STATE_RUNNING = 2--><!--Device-AUDIOSTREAM_STATE_RUNNING = 2-End--> |
+| AUDIOSTREAM_STATE_STOPPED = 3 | The stream is stopped.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_STATE_STOPPED = 3--><!--Device-AUDIOSTREAM_STATE_STOPPED = 3-End--> |
+| AUDIOSTREAM_STATE_RELEASED = 4 | The stream is released.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_STATE_RELEASED = 4--><!--Device-AUDIOSTREAM_STATE_RELEASED = 4-End--> |
+| AUDIOSTREAM_STATE_PAUSED = 5 | The stream is paused.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_STATE_PAUSED = 5--><!--Device-AUDIOSTREAM_STATE_PAUSED = 5-End--> |
 
 ### OH_AudioInterrupt_ForceType
 
@@ -294,7 +294,7 @@ enum OH_AudioInterrupt_ForceType
 
 Defines the audio interrupt type.
 
-<!--Device-OH_AudioInterrupt_ForceType--><!--Device-OH_AudioInterrupt_ForceType-End-->
+<!--Device-enum OH_AudioInterrupt_ForceType--><!--Device-enum OH_AudioInterrupt_ForceType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -302,8 +302,8 @@ Defines the audio interrupt type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_INTERRUPT_FORCE = 0 | Force type, system change audio state.<br>**Since**: 10 |
-| AUDIOSTREAM_INTERRUPT_SHARE = 1 | Share type, application change audio state.<br>**Since**: 10 |
+| AUDIOSTREAM_INTERRUPT_FORCE = 0 | Force type, system change audio state.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_FORCE = 0--><!--Device-AUDIOSTREAM_INTERRUPT_FORCE = 0-End--> |
+| AUDIOSTREAM_INTERRUPT_SHARE = 1 | Share type, application change audio state.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_SHARE = 1--><!--Device-AUDIOSTREAM_INTERRUPT_SHARE = 1-End--> |
 
 ### OH_AudioInterrupt_Hint
 
@@ -315,7 +315,7 @@ enum OH_AudioInterrupt_Hint
 
 Defines the audio interrupt hint type.
 
-<!--Device-OH_AudioInterrupt_Hint--><!--Device-OH_AudioInterrupt_Hint-End-->
+<!--Device-enum OH_AudioInterrupt_Hint--><!--Device-enum OH_AudioInterrupt_Hint-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -323,14 +323,14 @@ Defines the audio interrupt hint type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_INTERRUPT_HINT_NONE = 0 | None.<br>**Since**: 10 |
-| AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1 | Resume the stream.<br>**Since**: 10 |
-| AUDIOSTREAM_INTERRUPT_HINT_PAUSE = 2 | Pause the stream.<br>**Since**: 10 |
-| AUDIOSTREAM_INTERRUPT_HINT_STOP = 3 | Stop the stream.<br>**Since**: 10 |
-| AUDIOSTREAM_INTERRUPT_HINT_DUCK = 4 | Ducked the stream.<br>**Since**: 10 |
-| AUDIOSTREAM_INTERRUPT_HINT_UNDUCK = 5 | Unducked the stream.<br>**Since**: 10 |
-| AUDIOSTREAM_INTERRUPT_HINT_MUTE = 6 | Mute the stream.<br>**Since**: 20 |
-| AUDIOSTREAM_INTERRUPT_HINT_UNMUTE = 7 | Unmute the stream.<br>**Since**: 20 |
+| AUDIOSTREAM_INTERRUPT_HINT_NONE = 0 | None.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_NONE = 0--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_NONE = 0-End--> |
+| AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1 | Resume the stream.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1-End--> |
+| AUDIOSTREAM_INTERRUPT_HINT_PAUSE = 2 | Pause the stream.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_PAUSE = 2--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_PAUSE = 2-End--> |
+| AUDIOSTREAM_INTERRUPT_HINT_STOP = 3 | Stop the stream.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_STOP = 3--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_STOP = 3-End--> |
+| AUDIOSTREAM_INTERRUPT_HINT_DUCK = 4 | Ducked the stream.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_DUCK = 4--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_DUCK = 4-End--> |
+| AUDIOSTREAM_INTERRUPT_HINT_UNDUCK = 5 | Unducked the stream.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_UNDUCK = 5--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_UNDUCK = 5-End--> |
+| AUDIOSTREAM_INTERRUPT_HINT_MUTE = 6 | Mute the stream.<br>**Since**: 20<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_MUTE = 6--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_MUTE = 6-End--> |
+| AUDIOSTREAM_INTERRUPT_HINT_UNMUTE = 7 | Unmute the stream.<br>**Since**: 20<br><!--Device-AUDIOSTREAM_INTERRUPT_HINT_UNMUTE = 7--><!--Device-AUDIOSTREAM_INTERRUPT_HINT_UNMUTE = 7-End--> |
 
 ### OH_AudioStream_SourceType
 
@@ -342,7 +342,7 @@ enum OH_AudioStream_SourceType
 
 Defines the audio source type.
 
-<!--Device-OH_AudioStream_SourceType--><!--Device-OH_AudioStream_SourceType-End-->
+<!--Device-enum OH_AudioStream_SourceType--><!--Device-enum OH_AudioStream_SourceType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -350,16 +350,16 @@ Defines the audio source type.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_SOURCE_TYPE_INVALID = -1 | Invalid type.<br>**Since**: 10 |
-| AUDIOSTREAM_SOURCE_TYPE_MIC = 0 | Mic source type.<br>**Since**: 10 |
-| AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1 | Voice recognition source type.<br>**Since**: 10 |
-| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | Playback capture source type.<br>**Since**: 10<br>**Deprecated**: 12<br>**Replaced by**: OH_AVScreenCapture in native interface. |
-| AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7 | Voice communication source type.<br>**Since**: 10 |
-| AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10 | Voice message source type.<br>**Since**: 12 |
-| AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | Camcorder source type.<br>**Since**: 13 |
-| AUDIOSTREAM_SOURCE_TYPE_UNPROCESSED = 14 | Unprocessed source type.<br>**Since**: 14 |
-| AUDIOSTREAM_SOURCE_TYPE_LIVE = 17 | Live Broadcast source type.<br>**Since**: 20 |
-| AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK = 22 | Voice call downlink source type. The audio capturer using this source type should be created after the voice call started. Note that ohos.permission.CAPTURE_PLAYBACK_DOWNLINK is needed when using [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer) to create the capturer stream, the function will return an error without permission.<br>**Since**: 26.0.0 |
+| AUDIOSTREAM_SOURCE_TYPE_INVALID = -1 | Invalid type.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_INVALID = -1--><!--Device-AUDIOSTREAM_SOURCE_TYPE_INVALID = -1-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_MIC = 0 | Mic source type.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_MIC = 0--><!--Device-AUDIOSTREAM_SOURCE_TYPE_MIC = 0-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1 | Voice recognition source type.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1--><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | Playback capture source type.<br>**Since**: 10<br>**Deprecated**: 12<br>**Replaced by**: OH_AVScreenCapture in native interface.<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2--><!--Device-AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7 | Voice communication source type.<br>**Since**: 10<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7--><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10 | Voice message source type.<br>**Since**: 12<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10--><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | Camcorder source type.<br>**Since**: 13<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13--><!--Device-AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_UNPROCESSED = 14 | Unprocessed source type.<br>**Since**: 14<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_UNPROCESSED = 14--><!--Device-AUDIOSTREAM_SOURCE_TYPE_UNPROCESSED = 14-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_LIVE = 17 | Live Broadcast source type.<br>**Since**: 20<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_LIVE = 17--><!--Device-AUDIOSTREAM_SOURCE_TYPE_LIVE = 17-End--> |
+| AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK = 22 | Voice call downlink source type. The audio capturer using this source type should be created after the voice call started. Note that ohos.permission.CAPTURE_PLAYBACK_DOWNLINK is needed when using [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer) to create the capturer stream, the function will return an error without permission.<br>**Since**: 26.0.0<br><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK = 22--><!--Device-AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK = 22-End--> |
 
 ### OH_AudioInterrupt_Mode
 
@@ -371,7 +371,7 @@ enum OH_AudioInterrupt_Mode
 
 Defines the audio interrupt mode.
 
-<!--Device-OH_AudioInterrupt_Mode--><!--Device-OH_AudioInterrupt_Mode-End-->
+<!--Device-enum OH_AudioInterrupt_Mode--><!--Device-enum OH_AudioInterrupt_Mode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -379,8 +379,8 @@ Defines the audio interrupt mode.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_INTERRUPT_MODE_SHARE = 0 | Share mode |
-| AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT = 1 | Independent mode |
+| AUDIOSTREAM_INTERRUPT_MODE_SHARE = 0 | Share mode<br><!--Device-AUDIOSTREAM_INTERRUPT_MODE_SHARE = 0--><!--Device-AUDIOSTREAM_INTERRUPT_MODE_SHARE = 0-End--> |
+| AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT = 1 | Independent mode<br><!--Device-AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT = 1--><!--Device-AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT = 1-End--> |
 
 ### OH_AudioStream_AudioEffectMode
 
@@ -392,7 +392,7 @@ enum OH_AudioStream_AudioEffectMode
 
 Defines the audio effect mode.
 
-<!--Device-OH_AudioStream_AudioEffectMode--><!--Device-OH_AudioStream_AudioEffectMode-End-->
+<!--Device-enum OH_AudioStream_AudioEffectMode--><!--Device-enum OH_AudioStream_AudioEffectMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -400,8 +400,8 @@ Defines the audio effect mode.
 
 | Enum item | Description |
 | -- | -- |
-| EFFECT_NONE = 0 | Audio Effect Mode effect none.<br>**Since**: 12 |
-| EFFECT_DEFAULT = 1 | Audio Effect Mode effect default.<br>**Since**: 12 |
+| EFFECT_NONE = 0 | Audio Effect Mode effect none.<br>**Since**: 12<br><!--Device-EFFECT_NONE = 0--><!--Device-EFFECT_NONE = 0-End--> |
+| EFFECT_DEFAULT = 1 | Audio Effect Mode effect default.<br>**Since**: 12<br><!--Device-EFFECT_DEFAULT = 1--><!--Device-EFFECT_DEFAULT = 1-End--> |
 
 ### OH_AudioStream_FastStatus
 
@@ -413,7 +413,7 @@ enum OH_AudioStream_FastStatus
 
 Defines the fast status.
 
-<!--Device-OH_AudioStream_FastStatus--><!--Device-OH_AudioStream_FastStatus-End-->
+<!--Device-enum OH_AudioStream_FastStatus--><!--Device-enum OH_AudioStream_FastStatus-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -421,9 +421,9 @@ Defines the fast status.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_FASTSTATUS_NORMAL = 0 | normal status |
-| AUDIOSTREAM_FASTSTATUS_FAST = 1 | fast status |
-| AUDIOSTREAM_FASTSTATUS_ULTRA_FAST = 2 | Indicates the status of the ultra-low latency audio stream.<br>**Since**: 26.1.0 |
+| AUDIOSTREAM_FASTSTATUS_NORMAL = 0 | normal status<br><!--Device-AUDIOSTREAM_FASTSTATUS_NORMAL = 0--><!--Device-AUDIOSTREAM_FASTSTATUS_NORMAL = 0-End--> |
+| AUDIOSTREAM_FASTSTATUS_FAST = 1 | fast status<br><!--Device-AUDIOSTREAM_FASTSTATUS_FAST = 1--><!--Device-AUDIOSTREAM_FASTSTATUS_FAST = 1-End--> |
+| AUDIOSTREAM_FASTSTATUS_ULTRA_FAST = 2 | Indicates the status of the ultra-low latency audio stream.<br>**Since**: 26.1.0<br><!--Device-AUDIOSTREAM_FASTSTATUS_ULTRA_FAST = 2--><!--Device-AUDIOSTREAM_FASTSTATUS_ULTRA_FAST = 2-End--> |
 
 ### OH_AudioStream_DeviceChangeReason
 
@@ -435,7 +435,7 @@ enum OH_AudioStream_DeviceChangeReason
 
 Defines reason for device changes of one audio stream.
 
-<!--Device-OH_AudioStream_DeviceChangeReason--><!--Device-OH_AudioStream_DeviceChangeReason-End-->
+<!--Device-enum OH_AudioStream_DeviceChangeReason--><!--Device-enum OH_AudioStream_DeviceChangeReason-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -443,12 +443,12 @@ Defines reason for device changes of one audio stream.
 
 | Enum item | Description |
 | -- | -- |
-| REASON_UNKNOWN = 0 | Unknown. |
-| REASON_NEW_DEVICE_AVAILABLE = 1 | New Device available. |
-| REASON_OLD_DEVICE_UNAVAILABLE = 2 | Old Device unavailable. Applications should consider to pause the audio playback when this reason is reported. |
-| REASON_OVERRODE = 3 | Device is overrode by user or system. |
-| REASON_SESSION_ACTIVATED = 4 | Device information when the audio session is activated.<br>**Since**: 20 |
-| REASON_STREAM_PRIORITY_CHANGED = 5 | There is a higher-priority stream, causing the system device to change.<br>**Since**: 20 |
+| REASON_UNKNOWN = 0 | Unknown.<br><!--Device-REASON_UNKNOWN = 0--><!--Device-REASON_UNKNOWN = 0-End--> |
+| REASON_NEW_DEVICE_AVAILABLE = 1 | New Device available.<br><!--Device-REASON_NEW_DEVICE_AVAILABLE = 1--><!--Device-REASON_NEW_DEVICE_AVAILABLE = 1-End--> |
+| REASON_OLD_DEVICE_UNAVAILABLE = 2 | Old Device unavailable. Applications should consider to pause the audio playback when this reason is reported.<br><!--Device-REASON_OLD_DEVICE_UNAVAILABLE = 2--><!--Device-REASON_OLD_DEVICE_UNAVAILABLE = 2-End--> |
+| REASON_OVERRODE = 3 | Device is overrode by user or system.<br><!--Device-REASON_OVERRODE = 3--><!--Device-REASON_OVERRODE = 3-End--> |
+| REASON_SESSION_ACTIVATED = 4 | Device information when the audio session is activated.<br>**Since**: 20<br><!--Device-REASON_SESSION_ACTIVATED = 4--><!--Device-REASON_SESSION_ACTIVATED = 4-End--> |
+| REASON_STREAM_PRIORITY_CHANGED = 5 | There is a higher-priority stream, causing the system device to change.<br>**Since**: 20<br><!--Device-REASON_STREAM_PRIORITY_CHANGED = 5--><!--Device-REASON_STREAM_PRIORITY_CHANGED = 5-End--> |
 
 ### OH_AudioStream_PrivacyType
 
@@ -460,7 +460,7 @@ enum OH_AudioStream_PrivacyType
 
 Defines Enumeration of audio stream privacy type for playback capture.
 
-<!--Device-OH_AudioStream_PrivacyType--><!--Device-OH_AudioStream_PrivacyType-End-->
+<!--Device-enum OH_AudioStream_PrivacyType--><!--Device-enum OH_AudioStream_PrivacyType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -468,9 +468,9 @@ Defines Enumeration of audio stream privacy type for playback capture.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0 | Privacy type that stream can be captured by third party applications.<br>**Since**: 12 |
-| AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1 | Privacy type that stream can not be captured.<br>**Since**: 12 |
-| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | Privacy type that stream can be safely captured and screen casting. For example,[AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage) will not be captured or screen casted by third party applications under AUDIO_STREAM_PRIVACY_TYPE_PUBLIC policy. However, the internal capture is allowed under the AUDIO_STREAM_PRIVACY_TYPE_SHARED policy.<br>**Since**: 21 |
+| AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0 | Privacy type that stream can be captured by third party applications.<br>**Since**: 12<br><!--Device-AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0--><!--Device-AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0-End--> |
+| AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1 | Privacy type that stream can not be captured.<br>**Since**: 12<br><!--Device-AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1--><!--Device-AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1-End--> |
+| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | Privacy type that stream can be safely captured and screen casting. For example,[AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage) will not be captured or screen casted by third party applications under AUDIO_STREAM_PRIVACY_TYPE_PUBLIC policy. However, the internal capture is allowed under the AUDIO_STREAM_PRIVACY_TYPE_SHARED policy.<br>**Since**: 21<br><!--Device-AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2--><!--Device-AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2-End--> |
 
 ### OH_AudioData_Callback_Result
 
@@ -482,7 +482,7 @@ enum OH_AudioData_Callback_Result
 
 Defines enumeration of audio data callback result.
 
-<!--Device-OH_AudioData_Callback_Result--><!--Device-OH_AudioData_Callback_Result-End-->
+<!--Device-enum OH_AudioData_Callback_Result--><!--Device-enum OH_AudioData_Callback_Result-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -490,8 +490,8 @@ Defines enumeration of audio data callback result.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_DATA_CALLBACK_RESULT_INVALID = -1 | Result of audio data callback is invalid. |
-| AUDIO_DATA_CALLBACK_RESULT_VALID = 0 | Result of audio data callback is valid. |
+| AUDIO_DATA_CALLBACK_RESULT_INVALID = -1 | Result of audio data callback is invalid.<br><!--Device-AUDIO_DATA_CALLBACK_RESULT_INVALID = -1--><!--Device-AUDIO_DATA_CALLBACK_RESULT_INVALID = -1-End--> |
+| AUDIO_DATA_CALLBACK_RESULT_VALID = 0 | Result of audio data callback is valid.<br><!--Device-AUDIO_DATA_CALLBACK_RESULT_VALID = 0--><!--Device-AUDIO_DATA_CALLBACK_RESULT_VALID = 0-End--> |
 
 ### OH_AudioStream_VolumeMode
 
@@ -503,7 +503,7 @@ enum OH_AudioStream_VolumeMode
 
 Define the audio stream volume mode.
 
-<!--Device-OH_AudioStream_VolumeMode--><!--Device-OH_AudioStream_VolumeMode-End-->
+<!--Device-enum OH_AudioStream_VolumeMode--><!--Device-enum OH_AudioStream_VolumeMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -511,8 +511,8 @@ Define the audio stream volume mode.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL = 0 | Indicates this audio stream volume will be affected by system volume, also the default behavior.<br>**Since**: 19 |
-| AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL = 1 | Indicates this audio stream volume will be affected by app's individual volume percentage which set by yourself using the app volume api.<br>**Since**: 19 |
+| AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL = 0 | Indicates this audio stream volume will be affected by system volume, also the default behavior.<br>**Since**: 19<br><!--Device-AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL = 0--><!--Device-AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL = 0-End--> |
+| AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL = 1 | Indicates this audio stream volume will be affected by app's individual volume percentage which set by yourself using the app volume api.<br>**Since**: 19<br><!--Device-AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL = 1--><!--Device-AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL = 1-End--> |
 
 ### OH_AudioStream_LatencyType
 
@@ -524,7 +524,7 @@ enum OH_AudioStream_LatencyType
 
 Defines audio latency types.
 
-<!--Device-OH_AudioStream_LatencyType--><!--Device-OH_AudioStream_LatencyType-End-->
+<!--Device-enum OH_AudioStream_LatencyType--><!--Device-enum OH_AudioStream_LatencyType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -532,9 +532,9 @@ Defines audio latency types.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_LATENCY_TYPE_ALL = 0 | Type to get latency of all audio processing units, including software and hardware.<br>**Since**: 23 |
-| AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1 | Type to get latency of software part, including audio effects in software.<br>**Since**: 23 |
-| AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2 | Type to get latency of hardware part, including audio effects in hal, driver and hardware.<br>**Since**: 23 |
+| AUDIOSTREAM_LATENCY_TYPE_ALL = 0 | Type to get latency of all audio processing units, including software and hardware.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_LATENCY_TYPE_ALL = 0--><!--Device-AUDIOSTREAM_LATENCY_TYPE_ALL = 0-End--> |
+| AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1 | Type to get latency of software part, including audio effects in software.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1--><!--Device-AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1-End--> |
+| AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2 | Type to get latency of hardware part, including audio effects in hal, driver and hardware.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2--><!--Device-AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2-End--> |
 
 ### OH_AudioStream_PlaybackCaptureMode
 
@@ -546,7 +546,7 @@ enum OH_AudioStream_PlaybackCaptureMode
 
 Defines mode for playback capture, each mode means different target streams to capture.
 
-<!--Device-OH_AudioStream_PlaybackCaptureMode--><!--Device-OH_AudioStream_PlaybackCaptureMode-End-->
+<!--Device-enum OH_AudioStream_PlaybackCaptureMode--><!--Device-enum OH_AudioStream_PlaybackCaptureMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -554,9 +554,9 @@ Defines mode for playback capture, each mode means different target streams to c
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_DEFAULT = 0x0 | Default mode. Capture most of the audio streams, except tone streams and privacy streams.<br>**Since**: 23 |
-| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_MEDIA = 0x1 | Media mode. Capture media, voice message and also unknown streams.<br>**Since**: 23 |
-| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF = 0x8000 | Excluding self mode. Capture streams excluding the audio played by application itself.<br>**Since**: 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_DEFAULT = 0x0 | Default mode. Capture most of the audio streams, except tone streams and privacy streams.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_MODE_DEFAULT = 0x0--><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_MODE_DEFAULT = 0x0-End--> |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_MEDIA = 0x1 | Media mode. Capture media, voice message and also unknown streams.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_MODE_MEDIA = 0x1--><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_MODE_MEDIA = 0x1-End--> |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF = 0x8000 | Excluding self mode. Capture streams excluding the audio played by application itself.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF = 0x8000--><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF = 0x8000-End--> |
 
 ### OH_AudioStream_PlaybackCaptureStartState
 
@@ -568,7 +568,7 @@ enum OH_AudioStream_PlaybackCaptureStartState
 
 Defines the playback capture start state, which is returned asynchronously after calling [OH_AudioCapturer_RequestPlaybackCaptureStart](capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart) function.
 
-<!--Device-OH_AudioStream_PlaybackCaptureStartState--><!--Device-OH_AudioStream_PlaybackCaptureStartState-End-->
+<!--Device-enum OH_AudioStream_PlaybackCaptureStartState--><!--Device-enum OH_AudioStream_PlaybackCaptureStartState-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -576,9 +576,9 @@ Defines the playback capture start state, which is returned asynchronously after
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS = 0 | Start playback capture success state.<br>**Since**: 23 |
-| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_FAILED = 1 | Start playback capture failed state, because the request for interrupt is denied or meet system internal error.<br>**Since**: 23 |
-| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED = 2 | Start playback capture but user not authorized state.<br>**Since**: 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS = 0 | Start playback capture success state.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS = 0--><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS = 0-End--> |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_FAILED = 1 | Start playback capture failed state, because the request for interrupt is denied or meet system internal error.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_FAILED = 1--><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_FAILED = 1-End--> |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED = 2 | Start playback capture but user not authorized state.<br>**Since**: 23<br><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED = 2--><!--Device-AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED = 2-End--> |
 
 
 ## Function description

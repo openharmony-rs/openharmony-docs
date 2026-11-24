@@ -32,7 +32,7 @@ enum ArkUI_ButtonType
 
 Enumerates the button types.
 
-<!--Device-ArkUI_ButtonType--><!--Device-ArkUI_ButtonType-End-->
+<!--Device-enum ArkUI_ButtonType--><!--Device-enum ArkUI_ButtonType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,9 +40,9 @@ Enumerates the button types.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_BUTTON_TYPE_NORMAL = 0 | Normal button (without rounded corners by default).<br>**Since**: 12 |
-| ARKUI_BUTTON_TYPE_CAPSULE | Capsule-type button (the round corner is half of the height by default).<br>**Since**: 12 |
-| ARKUI_BUTTON_TYPE_CIRCLE | Circle button.<br>**Since**: 12 |
-| ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 | Rounded rectangle button.<br>**Since**: 19 |
+| ARKUI_BUTTON_TYPE_NORMAL = 0 | Normal button (without rounded corners by default).<br>**Since**: 12<br><!--Device-ARKUI_BUTTON_TYPE_NORMAL = 0--><!--Device-ARKUI_BUTTON_TYPE_NORMAL = 0-End--> |
+| ARKUI_BUTTON_TYPE_CAPSULE | Capsule-type button (the round corner is half of the height by default).<br>**Since**: 12<br><!--Device-ARKUI_BUTTON_TYPE_CAPSULE--><!--Device-ARKUI_BUTTON_TYPE_CAPSULE-End--> |
+| ARKUI_BUTTON_TYPE_CIRCLE | Circle button.<br>**Since**: 12<br><!--Device-ARKUI_BUTTON_TYPE_CIRCLE--><!--Device-ARKUI_BUTTON_TYPE_CIRCLE-End--> |
+| ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 | Rounded rectangle button.<br>**Since**: 19<br><!--Device-ARKUI_BUTTON_ROUNDED_RECTANGLE = 8--><!--Device-ARKUI_BUTTON_ROUNDED_RECTANGLE = 8-End--> |
 
 

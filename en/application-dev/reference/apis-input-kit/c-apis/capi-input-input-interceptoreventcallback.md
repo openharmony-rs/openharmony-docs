@@ -24,8 +24,8 @@ Defines the interceptor callback event structure, which is used to define the ca
 
 | Name | Description |
 | -- | -- |
-| [Input_MouseEventCallback](capi-oh-input-manager-h.md#input_mouseeventcallback) mouseCallback | Callback for mouse events.<br>**Since**: 12 |
-| [Input_TouchEventCallback](capi-oh-input-manager-h.md#input_toucheventcallback) touchCallback | Callback for touch input events.<br>**Since**: 12 |
-| [Input_AxisEventCallback](capi-oh-input-manager-h.md#input_axiseventcallback) axisCallback | Callback for axis events.<br>**Since**: 12 |
+| [Input_MouseEventCallback](capi-oh-input-manager-h.md#input_mouseeventcallback) mouseCallback | Callback for mouse events.<br>**Since**: 12<br><!--Device-Input_MouseEventCallback mouseCallback--><!--Device-Input_MouseEventCallback mouseCallback-End--> |
+| [Input_TouchEventCallback](capi-oh-input-manager-h.md#input_toucheventcallback) touchCallback | Callback for touch input events.<br>**Since**: 12<br><!--Device-Input_TouchEventCallback touchCallback--><!--Device-Input_TouchEventCallback touchCallback-End--> |
+| [Input_AxisEventCallback](capi-oh-input-manager-h.md#input_axiseventcallback) axisCallback | Callback for axis events.<br>**Since**: 12<br><!--Device-Input_AxisEventCallback axisCallback--><!--Device-Input_AxisEventCallback axisCallback-End--> |
 
 

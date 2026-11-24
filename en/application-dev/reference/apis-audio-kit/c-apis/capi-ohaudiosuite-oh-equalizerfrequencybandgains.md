@@ -24,6 +24,6 @@ Specify equalizer frequency band gains.
 
 | Name | Description |
 | -- | -- |
-| int32_t gains[EQUALIZER_BAND_NUM] | The equalizer supports gain adjustment for 10 specific frequencies. Frequencies: 31 Hz, 62 Hz, 125 Hz, 250 Hz, 500 Hz, 1 kHz, 2 kHz, 4 kHz, 8 kHz, 16 kHz.<br>**Since**: 22 |
+| int32_t gains[EQUALIZER_BAND_NUM] | The equalizer supports gain adjustment for 10 specific frequencies. Frequencies: 31 Hz, 62 Hz, 125 Hz, 250 Hz, 500 Hz, 1 kHz, 2 kHz, 4 kHz, 8 kHz, 16 kHz.<br>**Since**: 22<br><!--Device-int32_t gains[EQUALIZER_BAND_NUM]--><!--Device-int32_t gains[EQUALIZER_BAND_NUM]-End--> |
 
 

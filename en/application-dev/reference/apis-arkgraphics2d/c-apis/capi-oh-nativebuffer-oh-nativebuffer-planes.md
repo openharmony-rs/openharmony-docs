@@ -24,7 +24,7 @@ Holds all image planes.
 
 | Name | Description |
 | -- | -- |
-| uint32_t planeCount | Number of distinct planes. |
-| [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) planes[4] | Array of image planes. |
+| uint32_t planeCount | Number of distinct planes.<br><!--Device-uint32_t planeCount--><!--Device-uint32_t planeCount-End--> |
+| [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) planes[4] | Array of image planes.<br><!--Device-OH_NativeBuffer_Plane planes[4]--><!--Device-OH_NativeBuffer_Plane planes[4]-End--> |
 
 

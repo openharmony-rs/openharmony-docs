@@ -80,7 +80,7 @@ enum Http_ErrCode
 
 定义HTTP请求的错误码。
 
-<!--Device-Http_ErrCode--><!--Device-Http_ErrCode-End-->
+<!--Device-enum Http_ErrCode--><!--Device-enum Http_ErrCode-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -88,41 +88,41 @@ enum Http_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HTTP_RESULT_OK = 0 | 请求成功。 |
-| OH_HTTP_PARAMETER_ERROR = 401 | 参数错误。 |
-| OH_HTTP_PERMISSION_DENIED = 201 | 权限校验失败。 |
-| OH_HTTP_NETSTACK_E_BASE = 2300000 | 基础错误码偏移。 |
-| OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1) | 不支持的协议。 |
-| OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3) | URL格式错误。 |
-| OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5) | 代理服务器域名解析失败。 |
-| OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6) | 域名解析失败。 |
-| OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7) | 无法连接到服务器。 |
-| OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8) | 服务器返回非法数据。 |
-| OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9) | 拒绝访问远程资源。 |
-| OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16) | HTTP2框架层出现错误。 |
-| OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18) | 传输了部分文件。 |
-| OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23) | 无法将接收到的数据写入磁盘或应用程序。 |
-| OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25) | 上传失败。 |
-| OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26) | 无法打开或读取文件或应用程序中的本地数据。 |
-| OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27) | 内存不足。 |
-| OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28) | 操作超时。 |
-| OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47) | 重定向次数已达到允许的最大值。 |
-| OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52) | 服务器没有返回任何内容（没有标头或数据）。 |
-| OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55) | 发送数据失败。 |
-| OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56) | 接收数据失败。 |
-| OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58) | 本地SSL证书错误。 |
-| OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59) | 指定的加密套件不可用。 |
-| OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60) | SSL对等证书或SSH远程密钥无效。 |
-| OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61) | HTTP编码格式无效。 |
-| OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63) | 超出最大文件大小。 |
-| OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70) | 远端磁盘满。 |
-| OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73) | 远端文件已存在。 |
-| OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | SSL CA证书不存在或无法访问。 |
-| OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | 远端文件未找到。 |
-| OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | 身份验证错误。 |
-| OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996) | 请求已被 HTTP 全局拦截器拦截。<br>**起始版本：** 26.0.0 |
-| OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | 不允许访问该域。 |
-| OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | 未知错误。 |
+| OH_HTTP_RESULT_OK = 0 | 请求成功。<br><!--Device-OH_HTTP_RESULT_OK = 0--><!--Device-OH_HTTP_RESULT_OK = 0-End--> |
+| OH_HTTP_PARAMETER_ERROR = 401 | 参数错误。<br><!--Device-OH_HTTP_PARAMETER_ERROR = 401--><!--Device-OH_HTTP_PARAMETER_ERROR = 401-End--> |
+| OH_HTTP_PERMISSION_DENIED = 201 | 权限校验失败。<br><!--Device-OH_HTTP_PERMISSION_DENIED = 201--><!--Device-OH_HTTP_PERMISSION_DENIED = 201-End--> |
+| OH_HTTP_NETSTACK_E_BASE = 2300000 | 基础错误码偏移。<br><!--Device-OH_HTTP_NETSTACK_E_BASE = 2300000--><!--Device-OH_HTTP_NETSTACK_E_BASE = 2300000-End--> |
+| OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1) | 不支持的协议。<br><!--Device-OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1)--><!--Device-OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1)-End--> |
+| OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3) | URL格式错误。<br><!--Device-OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3)--><!--Device-OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3)-End--> |
+| OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5) | 代理服务器域名解析失败。<br><!--Device-OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5)--><!--Device-OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5)-End--> |
+| OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6) | 域名解析失败。<br><!--Device-OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6)--><!--Device-OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6)-End--> |
+| OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7) | 无法连接到服务器。<br><!--Device-OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7)--><!--Device-OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7)-End--> |
+| OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8) | 服务器返回非法数据。<br><!--Device-OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8)--><!--Device-OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8)-End--> |
+| OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9) | 拒绝访问远程资源。<br><!--Device-OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9)--><!--Device-OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9)-End--> |
+| OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16) | HTTP2框架层出现错误。<br><!--Device-OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16)--><!--Device-OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16)-End--> |
+| OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18) | 传输了部分文件。<br><!--Device-OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18)--><!--Device-OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18)-End--> |
+| OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23) | 无法将接收到的数据写入磁盘或应用程序。<br><!--Device-OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23)--><!--Device-OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23)-End--> |
+| OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25) | 上传失败。<br><!--Device-OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25)--><!--Device-OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25)-End--> |
+| OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26) | 无法打开或读取文件或应用程序中的本地数据。<br><!--Device-OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26)--><!--Device-OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26)-End--> |
+| OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27) | 内存不足。<br><!--Device-OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27)--><!--Device-OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27)-End--> |
+| OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28) | 操作超时。<br><!--Device-OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28)--><!--Device-OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28)-End--> |
+| OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47) | 重定向次数已达到允许的最大值。<br><!--Device-OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47)--><!--Device-OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47)-End--> |
+| OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52) | 服务器没有返回任何内容（没有标头或数据）。<br><!--Device-OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52)--><!--Device-OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52)-End--> |
+| OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55) | 发送数据失败。<br><!--Device-OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55)--><!--Device-OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55)-End--> |
+| OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56) | 接收数据失败。<br><!--Device-OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56)--><!--Device-OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56)-End--> |
+| OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58) | 本地SSL证书错误。<br><!--Device-OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58)--><!--Device-OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58)-End--> |
+| OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59) | 指定的加密套件不可用。<br><!--Device-OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59)--><!--Device-OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59)-End--> |
+| OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60) | SSL对等证书或SSH远程密钥无效。<br><!--Device-OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60)--><!--Device-OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60)-End--> |
+| OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61) | HTTP编码格式无效。<br><!--Device-OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61)--><!--Device-OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61)-End--> |
+| OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63) | 超出最大文件大小。<br><!--Device-OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63)--><!--Device-OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63)-End--> |
+| OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70) | 远端磁盘满。<br><!--Device-OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70)--><!--Device-OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70)-End--> |
+| OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73) | 远端文件已存在。<br><!--Device-OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73)--><!--Device-OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73)-End--> |
+| OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | SSL CA证书不存在或无法访问。<br><!--Device-OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77)--><!--Device-OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77)-End--> |
+| OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | 远端文件未找到。<br><!--Device-OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78)--><!--Device-OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78)-End--> |
+| OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | 身份验证错误。<br><!--Device-OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94)--><!--Device-OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94)-End--> |
+| OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996) | 请求已被 HTTP 全局拦截器拦截。<br>**起始版本：** 26.0.0<br><!--Device-OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996)--><!--Device-OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996)-End--> |
+| OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | 不允许访问该域。<br><!--Device-OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998)--><!--Device-OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998)-End--> |
+| OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | 未知错误。<br><!--Device-OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999)--><!--Device-OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999)-End--> |
 
 ### Http_ResponseCode
 
@@ -134,7 +134,7 @@ enum Http_ResponseCode
 
 定义HTTP响应码。
 
-<!--Device-Http_ResponseCode--><!--Device-Http_ResponseCode-End-->
+<!--Device-enum Http_ResponseCode--><!--Device-enum Http_ResponseCode-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -142,42 +142,42 @@ enum Http_ResponseCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HTTP_OK = 200 | 请求成功。 |
-| OH_HTTP_CREATED = 201 | 成功请求并创建新资源。 |
-| OH_HTTP_ACCEPTED = 202 | 请求已被接受但尚未完全处理。 |
-| OH_HTTP_NON_AUTHORITATIVE_INFO = 203 | 请求成功。但是有未授权信息。 |
-| OH_HTTP_NO_CONTENT = 204 | 服务器处理成功，但未返回内容。 |
-| OH_HTTP_RESET = 205 | 重置内容。 |
-| OH_HTTP_PARTIAL = 206 | 服务器成功处理了部分GET请求。 |
-| OH_HTTP_MULTI_CHOICE = 300 | 多种选择。 |
-| OH_HTTP_MOVED_PERM = 301 | 请求的资源已永久移动到新的URI，返回信息将包含新的URI。浏览器将自动重定向到新的URI。 |
-| OH_HTTP_MOVED_TEMP = 302 | 临时重定向。 |
-| OH_HTTP_SEE_OTHER = 303 | 查看其他地址。请求的资源已移动到新的URL，客户端应使用GET方法访问该URL。 |
-| OH_HTTP_NOT_MODIFIED = 304 | 请求的资源没有修改。 |
-| OH_HTTP_USE_PROXY = 305 | 请求资源需要使用代理访问。 |
-| OH_HTTP_BAD_REQUEST = 400 | 服务器无法理解客户端请求的语法错误。 |
-| OH_HTTP_UNAUTHORIZED = 401 | 请求用户身份验证。 |
-| OH_HTTP_PAYMENT_REQUIRED = 402 | 保留以供将来使用。 |
-| OH_HTTP_FORBIDDEN = 403 | 服务器理解来自请求客户端的请求，但拒绝执行。 |
-| OH_HTTP_NOT_FOUND = 404 | 服务器无法根据客户端的请求找到资源。 |
-| OH_HTTP_BAD_METHOD = 405 | 客户端请求中的方法被禁止。 |
-| OH_HTTP_NOT_ACCEPTABLE = 406 | 服务器无法根据客户端请求的内容特征完成请求。 |
-| OH_HTTP_PROXY_AUTH = 407 | 请求验证代理人的身份。 |
-| OH_HTTP_CLIENT_TIMEOUT = 408 | 请求耗时太长，超时。 |
-| OH_HTTP_CONFLICT = 409 | 服务器在完成客户端的PUT请求时可能返回此代码，因为服务器在处理请求时发生冲突。 |
-| OH_HTTP_GONE = 410 | 客户端请求的资源不再存在。 |
-| OH_HTTP_LENGTH_REQUIRED = 411 | 服务器无法处理客户端发送的不带Content Length的请求信息。 |
-| OH_HTTP_PRECON_FAILED = 412 | 向客户端请求信息的前提条件不正确。 |
-| OH_HTTP_ENTITY_TOO_LARGE = 413 | 请求被拒绝，因为请求的实体太大，服务器无法处理。 |
-| OH_HTTP_REQUEST_TOO_LONG = 414 | 请求的URI超过了服务器能够解析的长度，服务器无法处理。 |
-| OH_HTTP_UNSUPPORTED_TYPE = 415 | 服务器无法处理请求的格式。 |
-| OH_HTTP_RANGE_NOT_MET = 416 | 请求的范围无法满足。 |
-| OH_HTTP_INTERNAL_ERROR = 500 | 内部服务器错误，无法完成请求。 |
-| OH_HTTP_NOT_IMPLEMENTED = 501 | 服务器不支持请求的功能，无法完成请求。 |
-| OH_HTTP_BAD_GATEWAY = 502 | 充当网关或代理的服务器从远程服务器收到无效请求。 |
-| OH_HTTP_UNAVAILABLE = 503 | 由于超载或系统维护，服务器暂时无法处理客户端请求。 |
-| OH_HTTP_GATEWAY_TIMEOUT = 504 | 作为网关的服务器没有及时从远程服务器获取请求。 |
-| OH_HTTP_VERSION = 505 | 服务器请求的HTTP协议版本。 |
+| OH_HTTP_OK = 200 | 请求成功。<br><!--Device-OH_HTTP_OK = 200--><!--Device-OH_HTTP_OK = 200-End--> |
+| OH_HTTP_CREATED = 201 | 成功请求并创建新资源。<br><!--Device-OH_HTTP_CREATED = 201--><!--Device-OH_HTTP_CREATED = 201-End--> |
+| OH_HTTP_ACCEPTED = 202 | 请求已被接受但尚未完全处理。<br><!--Device-OH_HTTP_ACCEPTED = 202--><!--Device-OH_HTTP_ACCEPTED = 202-End--> |
+| OH_HTTP_NON_AUTHORITATIVE_INFO = 203 | 请求成功，但是有未授权信息。<br><!--Device-OH_HTTP_NON_AUTHORITATIVE_INFO = 203--><!--Device-OH_HTTP_NON_AUTHORITATIVE_INFO = 203-End--> |
+| OH_HTTP_NO_CONTENT = 204 | 服务器处理成功，但未返回内容。<br><!--Device-OH_HTTP_NO_CONTENT = 204--><!--Device-OH_HTTP_NO_CONTENT = 204-End--> |
+| OH_HTTP_RESET = 205 | 重置内容。<br><!--Device-OH_HTTP_RESET = 205--><!--Device-OH_HTTP_RESET = 205-End--> |
+| OH_HTTP_PARTIAL = 206 | 服务器成功处理了部分GET请求。<br><!--Device-OH_HTTP_PARTIAL = 206--><!--Device-OH_HTTP_PARTIAL = 206-End--> |
+| OH_HTTP_MULTI_CHOICE = 300 | 多种选择。<br><!--Device-OH_HTTP_MULTI_CHOICE = 300--><!--Device-OH_HTTP_MULTI_CHOICE = 300-End--> |
+| OH_HTTP_MOVED_PERM = 301 | 请求的资源已永久移动到新的URI，返回信息将包含新的URI。浏览器将自动重定向到新的URI。<br><!--Device-OH_HTTP_MOVED_PERM = 301--><!--Device-OH_HTTP_MOVED_PERM = 301-End--> |
+| OH_HTTP_MOVED_TEMP = 302 | 临时重定向。<br><!--Device-OH_HTTP_MOVED_TEMP = 302--><!--Device-OH_HTTP_MOVED_TEMP = 302-End--> |
+| OH_HTTP_SEE_OTHER = 303 | 查看其他地址。请求的资源已移动到新的URL，客户端应使用GET方法访问该URL。<br><!--Device-OH_HTTP_SEE_OTHER = 303--><!--Device-OH_HTTP_SEE_OTHER = 303-End--> |
+| OH_HTTP_NOT_MODIFIED = 304 | 请求的资源没有修改。<br><!--Device-OH_HTTP_NOT_MODIFIED = 304--><!--Device-OH_HTTP_NOT_MODIFIED = 304-End--> |
+| OH_HTTP_USE_PROXY = 305 | 请求资源需要使用代理访问。<br><!--Device-OH_HTTP_USE_PROXY = 305--><!--Device-OH_HTTP_USE_PROXY = 305-End--> |
+| OH_HTTP_BAD_REQUEST = 400 | 服务器无法理解客户端请求的语法错误。<br><!--Device-OH_HTTP_BAD_REQUEST = 400--><!--Device-OH_HTTP_BAD_REQUEST = 400-End--> |
+| OH_HTTP_UNAUTHORIZED = 401 | 请求用户身份验证。<br><!--Device-OH_HTTP_UNAUTHORIZED = 401--><!--Device-OH_HTTP_UNAUTHORIZED = 401-End--> |
+| OH_HTTP_PAYMENT_REQUIRED = 402 | 保留以供将来使用。<br><!--Device-OH_HTTP_PAYMENT_REQUIRED = 402--><!--Device-OH_HTTP_PAYMENT_REQUIRED = 402-End--> |
+| OH_HTTP_FORBIDDEN = 403 | 服务器理解来自请求客户端的请求，但拒绝执行。<br><!--Device-OH_HTTP_FORBIDDEN = 403--><!--Device-OH_HTTP_FORBIDDEN = 403-End--> |
+| OH_HTTP_NOT_FOUND = 404 | 服务器无法根据客户端的请求找到资源。<br><!--Device-OH_HTTP_NOT_FOUND = 404--><!--Device-OH_HTTP_NOT_FOUND = 404-End--> |
+| OH_HTTP_BAD_METHOD = 405 | 客户端请求中的方法被禁止。<br><!--Device-OH_HTTP_BAD_METHOD = 405--><!--Device-OH_HTTP_BAD_METHOD = 405-End--> |
+| OH_HTTP_NOT_ACCEPTABLE = 406 | 服务器无法根据客户端请求的内容特征完成请求。<br><!--Device-OH_HTTP_NOT_ACCEPTABLE = 406--><!--Device-OH_HTTP_NOT_ACCEPTABLE = 406-End--> |
+| OH_HTTP_PROXY_AUTH = 407 | 请求验证代理人的身份。<br><!--Device-OH_HTTP_PROXY_AUTH = 407--><!--Device-OH_HTTP_PROXY_AUTH = 407-End--> |
+| OH_HTTP_CLIENT_TIMEOUT = 408 | 请求耗时太长，超时。<br><!--Device-OH_HTTP_CLIENT_TIMEOUT = 408--><!--Device-OH_HTTP_CLIENT_TIMEOUT = 408-End--> |
+| OH_HTTP_CONFLICT = 409 | 服务器在完成客户端的PUT请求时可能返回此代码，因为服务器在处理请求时发生冲突。<br><!--Device-OH_HTTP_CONFLICT = 409--><!--Device-OH_HTTP_CONFLICT = 409-End--> |
+| OH_HTTP_GONE = 410 | 客户端请求的资源不再存在。<br><!--Device-OH_HTTP_GONE = 410--><!--Device-OH_HTTP_GONE = 410-End--> |
+| OH_HTTP_LENGTH_REQUIRED = 411 | 服务器无法处理客户端发送的不带Content Length的请求信息。<br><!--Device-OH_HTTP_LENGTH_REQUIRED = 411--><!--Device-OH_HTTP_LENGTH_REQUIRED = 411-End--> |
+| OH_HTTP_PRECON_FAILED = 412 | 向客户端请求信息的前提条件不正确。<br><!--Device-OH_HTTP_PRECON_FAILED = 412--><!--Device-OH_HTTP_PRECON_FAILED = 412-End--> |
+| OH_HTTP_ENTITY_TOO_LARGE = 413 | 请求被拒绝，因为请求的实体太大，服务器无法处理。<br><!--Device-OH_HTTP_ENTITY_TOO_LARGE = 413--><!--Device-OH_HTTP_ENTITY_TOO_LARGE = 413-End--> |
+| OH_HTTP_REQUEST_TOO_LONG = 414 | 请求的URI超过了服务器能够解析的长度，服务器无法处理。<br><!--Device-OH_HTTP_REQUEST_TOO_LONG = 414--><!--Device-OH_HTTP_REQUEST_TOO_LONG = 414-End--> |
+| OH_HTTP_UNSUPPORTED_TYPE = 415 | 服务器无法处理请求的格式。<br><!--Device-OH_HTTP_UNSUPPORTED_TYPE = 415--><!--Device-OH_HTTP_UNSUPPORTED_TYPE = 415-End--> |
+| OH_HTTP_RANGE_NOT_MET = 416 | 请求的范围无法满足。<br><!--Device-OH_HTTP_RANGE_NOT_MET = 416--><!--Device-OH_HTTP_RANGE_NOT_MET = 416-End--> |
+| OH_HTTP_INTERNAL_ERROR = 500 | 内部服务器错误，无法完成请求。<br><!--Device-OH_HTTP_INTERNAL_ERROR = 500--><!--Device-OH_HTTP_INTERNAL_ERROR = 500-End--> |
+| OH_HTTP_NOT_IMPLEMENTED = 501 | 服务器不支持请求的功能，无法完成请求。<br><!--Device-OH_HTTP_NOT_IMPLEMENTED = 501--><!--Device-OH_HTTP_NOT_IMPLEMENTED = 501-End--> |
+| OH_HTTP_BAD_GATEWAY = 502 | 充当网关或代理的服务器从远程服务器收到无效请求。<br><!--Device-OH_HTTP_BAD_GATEWAY = 502--><!--Device-OH_HTTP_BAD_GATEWAY = 502-End--> |
+| OH_HTTP_UNAVAILABLE = 503 | 由于超载或系统维护，服务器暂时无法处理客户端请求。<br><!--Device-OH_HTTP_UNAVAILABLE = 503--><!--Device-OH_HTTP_UNAVAILABLE = 503-End--> |
+| OH_HTTP_GATEWAY_TIMEOUT = 504 | 作为网关的服务器没有及时从远程服务器获取请求。<br><!--Device-OH_HTTP_GATEWAY_TIMEOUT = 504--><!--Device-OH_HTTP_GATEWAY_TIMEOUT = 504-End--> |
+| OH_HTTP_VERSION = 505 | 服务器请求的HTTP协议版本。<br><!--Device-OH_HTTP_VERSION = 505--><!--Device-OH_HTTP_VERSION = 505-End--> |
 
 ### Http_AddressFamilyType
 
@@ -189,7 +189,7 @@ enum Http_AddressFamilyType
 
 定义解析目标域名时限定的地址类型。
 
-<!--Device-Http_AddressFamilyType--><!--Device-Http_AddressFamilyType-End-->
+<!--Device-enum Http_AddressFamilyType--><!--Device-enum Http_AddressFamilyType-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -197,9 +197,9 @@ enum Http_AddressFamilyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HTTP_ADDRESS_FAMILY_DEFAULT = 0 | 默认值，系统将自行选择目标域名的IPv4地址或IPv6地址。 |
-| HTTP_ADDRESS_FAMILY_ONLY_V4 = 1 | 系统仅解析目标域名的IPv4地址，忽略IPv6地址。 |
-| HTTP_ADDRESS_FAMILY_ONLY_V6 = 2 | 系统仅解析目标域名的IPv6地址，忽略IPv4地址。 |
+| HTTP_ADDRESS_FAMILY_DEFAULT = 0 | 默认值，系统将自行选择目标域名的IPv4地址或IPv6地址。<br><!--Device-HTTP_ADDRESS_FAMILY_DEFAULT = 0--><!--Device-HTTP_ADDRESS_FAMILY_DEFAULT = 0-End--> |
+| HTTP_ADDRESS_FAMILY_ONLY_V4 = 1 | 系统仅解析目标域名的IPv4地址，忽略IPv6地址。<br><!--Device-HTTP_ADDRESS_FAMILY_ONLY_V4 = 1--><!--Device-HTTP_ADDRESS_FAMILY_ONLY_V4 = 1-End--> |
+| HTTP_ADDRESS_FAMILY_ONLY_V6 = 2 | 系统仅解析目标域名的IPv6地址，忽略IPv4地址。<br><!--Device-HTTP_ADDRESS_FAMILY_ONLY_V6 = 2--><!--Device-HTTP_ADDRESS_FAMILY_ONLY_V6 = 2-End--> |
 
 ### Http_HttpProtocol
 
@@ -211,7 +211,7 @@ enum Http_HttpProtocol
 
 HTTP协议版本号枚举定义。
 
-<!--Device-Http_HttpProtocol--><!--Device-Http_HttpProtocol-End-->
+<!--Device-enum Http_HttpProtocol--><!--Device-enum Http_HttpProtocol-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -219,10 +219,10 @@ HTTP协议版本号枚举定义。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HTTP_NONE = 0 | 遵循curl的协议版本选择。 |
-| OH_HTTP1_1 | HTTP1.1版本。 |
-| OH_HTTP2 | HTTP2版本。 |
-| OH_HTTP3 | HTTP3版本。 |
+| OH_HTTP_NONE = 0 | 遵循curl的协议版本选择。<br><!--Device-OH_HTTP_NONE = 0--><!--Device-OH_HTTP_NONE = 0-End--> |
+| OH_HTTP1_1 | HTTP1.1版本。<br><!--Device-OH_HTTP1_1--><!--Device-OH_HTTP1_1-End--> |
+| OH_HTTP2 | HTTP2版本。<br><!--Device-OH_HTTP2--><!--Device-OH_HTTP2-End--> |
+| OH_HTTP3 | HTTP3版本。<br><!--Device-OH_HTTP3--><!--Device-OH_HTTP3-End--> |
 
 ### Http_CertType
 
@@ -234,7 +234,7 @@ enum Http_CertType
 
 证书类型枚举。
 
-<!--Device-Http_CertType--><!--Device-Http_CertType-End-->
+<!--Device-enum Http_CertType--><!--Device-enum Http_CertType-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -242,9 +242,9 @@ enum Http_CertType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HTTP_PEM = 0 | PEM证书类型。 |
-| OH_HTTP_DER = 1 | DER证书类型。 |
-| OH_HTTP_P12 = 2 | P12证书类型。 |
+| OH_HTTP_PEM = 0 | PEM证书类型。<br><!--Device-OH_HTTP_PEM = 0--><!--Device-OH_HTTP_PEM = 0-End--> |
+| OH_HTTP_DER = 1 | DER证书类型。<br><!--Device-OH_HTTP_DER = 1--><!--Device-OH_HTTP_DER = 1-End--> |
+| OH_HTTP_P12 = 2 | P12证书类型。<br><!--Device-OH_HTTP_P12 = 2--><!--Device-OH_HTTP_P12 = 2-End--> |
 
 ### Http_ProxyType
 
@@ -256,7 +256,7 @@ enum Http_ProxyType
 
 代理配置类型枚举定义。
 
-<!--Device-Http_ProxyType--><!--Device-Http_ProxyType-End-->
+<!--Device-enum Http_ProxyType--><!--Device-enum Http_ProxyType-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -264,9 +264,9 @@ enum Http_ProxyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HTTP_PROXY_NOT_USE | 不使用代理。 |
-| HTTP_PROXY_SYSTEM | 使用系统代理。 |
-| HTTP_PROXY_CUSTOM | 使用用户自定义代理。 |
+| HTTP_PROXY_NOT_USE | 不使用代理。<br><!--Device-HTTP_PROXY_NOT_USE--><!--Device-HTTP_PROXY_NOT_USE-End--> |
+| HTTP_PROXY_SYSTEM | 使用系统代理。<br><!--Device-HTTP_PROXY_SYSTEM--><!--Device-HTTP_PROXY_SYSTEM-End--> |
+| HTTP_PROXY_CUSTOM | 使用用户自定义代理。<br><!--Device-HTTP_PROXY_CUSTOM--><!--Device-HTTP_PROXY_CUSTOM-End--> |
 
 
 ## 函数说明
@@ -292,7 +292,7 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 | 参数项 | 描述 |
 | -- | -- |
 | [struct Http_Response](capi-netstack-http-response.md) *response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
-| uint32_t errCode | 响应码。 |
+| uint32_t errCode | HTTP请求错误码。 |
 
 ### Http_OnDataReceiveCallback()
 

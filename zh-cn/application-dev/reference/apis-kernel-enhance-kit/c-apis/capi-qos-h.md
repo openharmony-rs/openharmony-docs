@@ -52,8 +52,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| unsigned int OH_QoS_GewuSession | 会话句柄。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Resourceschedule.QoS.Core |
-| unsigned int OH_QoS_GewuRequest | 请求句柄。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Resourceschedule.QoS.Core |
+| unsigned int OH_QoS_GewuSession | 会话句柄。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Resourceschedule.QoS.Core<br><!--Device-unsigned int OH_QoS_GewuSession--><!--Device-unsigned int OH_QoS_GewuSession-End--> |
+| unsigned int OH_QoS_GewuRequest | 请求句柄。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Resourceschedule.QoS.Core<br><!--Device-unsigned int OH_QoS_GewuRequest--><!--Device-unsigned int OH_QoS_GewuRequest-End--> |
 
 ## 枚举类型说明
 
@@ -67,7 +67,7 @@ enum QoS_Level
 
 描述QoS等级。
 
-<!--Device-QoS_Level--><!--Device-QoS_Level-End-->
+<!--Device-enum QoS_Level--><!--Device-enum QoS_Level-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.QoS.Core
 
@@ -75,12 +75,12 @@ enum QoS_Level
 
 | 枚举项 | 描述 |
 | -- | -- |
-| QOS_BACKGROUND = 0 | 表示QoS等级为用户不可见任务。 |
-| QOS_UTILITY | 表示QoS等级为后台重要任务。 |
-| QOS_DEFAULT | 表示QoS等级为默认。 |
-| QOS_USER_INITIATED | 表示QoS等级为用户触发任务。 |
-| QOS_DEADLINE_REQUEST | 表示QoS等级为限时任务。 |
-| QOS_USER_INTERACTIVE | 表示QoS等级为用户交互任务。 |
+| QOS_BACKGROUND = 0 | 表示QoS等级为用户不可见任务。<br><!--Device-QOS_BACKGROUND = 0--><!--Device-QOS_BACKGROUND = 0-End--> |
+| QOS_UTILITY | 表示QoS等级为后台重要任务。<br><!--Device-QOS_UTILITY--><!--Device-QOS_UTILITY-End--> |
+| QOS_DEFAULT | 表示QoS等级为默认。<br><!--Device-QOS_DEFAULT--><!--Device-QOS_DEFAULT-End--> |
+| QOS_USER_INITIATED | 表示QoS等级为用户触发任务。<br><!--Device-QOS_USER_INITIATED--><!--Device-QOS_USER_INITIATED-End--> |
+| QOS_DEADLINE_REQUEST | 表示QoS等级为限时任务。<br><!--Device-QOS_DEADLINE_REQUEST--><!--Device-QOS_DEADLINE_REQUEST-End--> |
+| QOS_USER_INTERACTIVE | 表示QoS等级为用户交互任务。<br><!--Device-QOS_USER_INTERACTIVE--><!--Device-QOS_USER_INTERACTIVE-End--> |
 
 ### OH_QoS_GewuErrorCode
 
@@ -92,7 +92,7 @@ enum OH_QoS_GewuErrorCode
 
 格物错误码。
 
-<!--Device-OH_QoS_GewuErrorCode--><!--Device-OH_QoS_GewuErrorCode-End-->
+<!--Device-enum OH_QoS_GewuErrorCode--><!--Device-enum OH_QoS_GewuErrorCode-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.QoS.Core
 
@@ -100,14 +100,14 @@ enum OH_QoS_GewuErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_QOS_GEWU_OK = 0 | 成功。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_NOPERM = 201 | 权限错误。可能原因：调用者缺少所需权限。解决措施：请确认已申请相关权限。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_NOMEM = 203 | 内存错误。可能原因：系统内存不足。解决措施：请释放资源后重试。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_INVAL = 401 | 参数错误。可能原因：参数类型不正确或参数值无效。解决措施：请检查参数类型和取值范围。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_EXIST = 501 | 已存在句柄。可能原因：重复创建已存在的会话或请求。解决措施：请勿重复创建，或先销毁已有句柄。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_NOENT = 502 | 找不到句柄。可能原因：传入的会话或请求句柄无效或已被销毁。解决措施：请检查句柄是否有效。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_NOSYS = 801 | 找不到子系统。可能原因：目标设备不支持该功能。解决措施：更换为支持该功能的设备。<br>**起始版本：** 20 |
-| OH_QOS_GEWU_FAULT = 901 | 其他错误。可能原因：未覆盖的内部系统错误。解决措施：请检查系统日志获取详细错误信息，或联系技术支持。<br>**起始版本：** 20 |
+| OH_QOS_GEWU_OK = 0 | 成功。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_OK = 0--><!--Device-OH_QOS_GEWU_OK = 0-End--> |
+| OH_QOS_GEWU_NOPERM = 201 | 权限错误。可能原因：调用者缺少所需权限。解决措施：请确认已申请相关权限。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_NOPERM = 201--><!--Device-OH_QOS_GEWU_NOPERM = 201-End--> |
+| OH_QOS_GEWU_NOMEM = 203 | 内存错误。可能原因：系统内存不足。解决措施：请释放资源后重试。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_NOMEM = 203--><!--Device-OH_QOS_GEWU_NOMEM = 203-End--> |
+| OH_QOS_GEWU_INVAL = 401 | 参数错误。可能原因：参数类型不正确或参数值无效。解决措施：请检查参数类型和取值范围。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_INVAL = 401--><!--Device-OH_QOS_GEWU_INVAL = 401-End--> |
+| OH_QOS_GEWU_EXIST = 501 | 已存在句柄。可能原因：重复创建已存在的会话或请求。解决措施：请勿重复创建，或先销毁已有句柄。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_EXIST = 501--><!--Device-OH_QOS_GEWU_EXIST = 501-End--> |
+| OH_QOS_GEWU_NOENT = 502 | 找不到句柄。可能原因：传入的会话或请求句柄无效或已被销毁。解决措施：请检查句柄是否有效。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_NOENT = 502--><!--Device-OH_QOS_GEWU_NOENT = 502-End--> |
+| OH_QOS_GEWU_NOSYS = 801 | 找不到子系统。可能原因：目标设备不支持该功能。解决措施：更换为支持该功能的设备。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_NOSYS = 801--><!--Device-OH_QOS_GEWU_NOSYS = 801-End--> |
+| OH_QOS_GEWU_FAULT = 901 | 其他错误。可能原因：未覆盖的内部系统错误。解决措施：请检查系统日志获取详细错误信息，或联系技术支持。<br>**起始版本：** 20<br><!--Device-OH_QOS_GEWU_FAULT = 901--><!--Device-OH_QOS_GEWU_FAULT = 901-End--> |
 
 
 ## 函数说明

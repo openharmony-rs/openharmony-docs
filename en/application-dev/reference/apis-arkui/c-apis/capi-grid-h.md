@@ -52,7 +52,7 @@ enum ArkUI_GridItemAlignment
 
 Enumerates the alignment modes of the GridItem component.
 
-<!--Device-ArkUI_GridItemAlignment--><!--Device-ArkUI_GridItemAlignment-End-->
+<!--Device-enum ArkUI_GridItemAlignment--><!--Device-enum ArkUI_GridItemAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,8 +60,8 @@ Enumerates the alignment modes of the GridItem component.
 
 | Enum item | Description |
 | -- | -- |
-| GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Use the default alignment mode of the grid. |
-| GRID_ITEM_ALIGNMENT_STRETCH = 1 | Use the height of the tallest grid item in a row as the height for all other grid items in that row. |
+| GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Use the default alignment mode of the grid.<br><!--Device-GRID_ITEM_ALIGNMENT_DEFAULT = 0--><!--Device-GRID_ITEM_ALIGNMENT_DEFAULT = 0-End--> |
+| GRID_ITEM_ALIGNMENT_STRETCH = 1 | Use the height of the tallest grid item in a row as the height for all other grid items in that row.<br><!--Device-GRID_ITEM_ALIGNMENT_STRETCH = 1--><!--Device-GRID_ITEM_ALIGNMENT_STRETCH = 1-End--> |
 
 ### ArkUI_GridItemStyle
 
@@ -73,7 +73,7 @@ enum ArkUI_GridItemStyle
 
 Enumerates styles of grid items.
 
-<!--Device-ArkUI_GridItemStyle--><!--Device-ArkUI_GridItemStyle-End-->
+<!--Device-enum ArkUI_GridItemStyle--><!--Device-enum ArkUI_GridItemStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,8 +81,8 @@ Enumerates styles of grid items.
 
 | Enum item | Description |
 | -- | -- |
-| GRID_ITEM_STYLE_NONE = 0 | No style. |
-| GRID_ITEM_STYLE_PLAIN = 1 | Hover or press style. |
+| GRID_ITEM_STYLE_NONE = 0 | No style.<br><!--Device-GRID_ITEM_STYLE_NONE = 0--><!--Device-GRID_ITEM_STYLE_NONE = 0-End--> |
+| GRID_ITEM_STYLE_PLAIN = 1 | Hover or press style.<br><!--Device-GRID_ITEM_STYLE_PLAIN = 1--><!--Device-GRID_ITEM_STYLE_PLAIN = 1-End--> |
 
 
 ## Function description

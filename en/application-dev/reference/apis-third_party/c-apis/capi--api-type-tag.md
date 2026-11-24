@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint64_t lower |  |
-| uint64_t upper |  |
+| uint64_t lower | <!--Device-uint64_t lower--><!--Device-uint64_t lower-End--> |
+| uint64_t upper | <!--Device-uint64_t upper--><!--Device-uint64_t upper-End--> |
 
 

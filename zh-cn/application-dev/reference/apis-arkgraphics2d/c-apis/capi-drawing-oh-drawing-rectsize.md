@@ -24,7 +24,7 @@ typedef struct OH_Drawing_RectSize {...} OH_Drawing_RectSize
 
 | 名称 | 描述 |
 | -- | -- |
-| double width | 矩形宽度。 |
-| double height | 矩形高度。 |
+| double width | 矩形宽度。<br><!--Device-double width--><!--Device-double width-End--> |
+| double height | 矩形高度。<br><!--Device-double height--><!--Device-double height-End--> |
 
 

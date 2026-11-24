@@ -51,7 +51,7 @@ enum Preferences_StorageType
 
 Enumerates the preferences storage types.
 
-<!--Device-Preferences_StorageType--><!--Device-Preferences_StorageType-End-->
+<!--Device-enum Preferences_StorageType--><!--Device-enum Preferences_StorageType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -59,8 +59,8 @@ Enumerates the preferences storage types.
 
 | Enum item | Description |
 | -- | -- |
-| PREFERENCES_STORAGE_XML = 0 | XML. In this type is used, data operations are performed in the memory and data is persisted after [OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close) is called. This type does not multi-processes operations. |
-| PREFERENCES_STORAGE_GSKV | CLKV. If this type is used, data operations are flushed on a real-time basis. This type supports multi-process operations. |
+| PREFERENCES_STORAGE_XML = 0 | XML. In this type is used, data operations are performed in the memory and data is persisted after [OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close) is called. This type does not multi-processes operations.<br><!--Device-PREFERENCES_STORAGE_XML = 0--><!--Device-PREFERENCES_STORAGE_XML = 0-End--> |
+| PREFERENCES_STORAGE_GSKV | CLKV. If this type is used, data operations are flushed on a real-time basis. This type supports multi-process operations.<br><!--Device-PREFERENCES_STORAGE_GSKV--><!--Device-PREFERENCES_STORAGE_GSKV-End--> |
 
 
 ## Function description

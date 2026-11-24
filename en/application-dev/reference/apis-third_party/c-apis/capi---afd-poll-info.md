@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| LARGE_INTEGER Timeout |  |
-| ULONG NumberOfHandles |  |
-| ULONG Exclusive |  |
-| AFD_POLL_HANDLE_INFO Handles[1] |  |
+| LARGE_INTEGER Timeout | <!--Device-LARGE_INTEGER Timeout--><!--Device-LARGE_INTEGER Timeout-End--> |
+| ULONG NumberOfHandles | <!--Device-ULONG NumberOfHandles--><!--Device-ULONG NumberOfHandles-End--> |
+| ULONG Exclusive | <!--Device-ULONG Exclusive--><!--Device-ULONG Exclusive-End--> |
+| AFD_POLL_HANDLE_INFO Handles[1] | <!--Device-AFD_POLL_HANDLE_INFO Handles[1]--><!--Device-AFD_POLL_HANDLE_INFO Handles[1]-End--> |
 
 

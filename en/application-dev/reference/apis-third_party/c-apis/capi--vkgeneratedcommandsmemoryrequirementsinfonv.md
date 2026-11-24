@@ -10,11 +10,11 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkPipelineBindPoint pipelineBindPoint |  |
-| VkPipeline pipeline |  |
-| VkIndirectCommandsLayoutNV indirectCommandsLayout |  |
-| uint32_t maxSequencesCount |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkPipelineBindPoint pipelineBindPoint | <!--Device-VkPipelineBindPoint pipelineBindPoint--><!--Device-VkPipelineBindPoint pipelineBindPoint-End--> |
+| VkPipeline pipeline | <!--Device-VkPipeline pipeline--><!--Device-VkPipeline pipeline-End--> |
+| VkIndirectCommandsLayoutNV indirectCommandsLayout | <!--Device-VkIndirectCommandsLayoutNV indirectCommandsLayout--><!--Device-VkIndirectCommandsLayoutNV indirectCommandsLayout-End--> |
+| uint32_t maxSequencesCount | <!--Device-uint32_t maxSequencesCount--><!--Device-uint32_t maxSequencesCount-End--> |
 
 

@@ -24,8 +24,8 @@ typedef struct OH_Drawing_FontFallbackGroup {...} OH_Drawing_FontFallbackGroup
 
 | 名称 | 描述 |
 | -- | -- |
-| char* groupName | 备用字体集所对应的字体集名称，如果值为空，表示可以使用备用字体集列表中所有的字体。 |
-| size_t fallbackInfoSize | 备用字体集数量。 |
-| [OH_Drawing_FontFallbackInfo*](capi-drawing-oh-drawing-fontfallbackinfo.md) fallbackInfoSet | 备用字体集列表。 |
+| char* groupName | 备用字体集所对应的字体集名称，如果值为空，表示可以使用备用字体集列表中所有的字体。<br><!--Device-char* groupName--><!--Device-char* groupName-End--> |
+| size_t fallbackInfoSize | 备用字体集数量。<br><!--Device-size_t fallbackInfoSize--><!--Device-size_t fallbackInfoSize-End--> |
+| [OH_Drawing_FontFallbackInfo*](capi-drawing-oh-drawing-fontfallbackinfo.md) fallbackInfoSet | 备用字体集列表。<br><!--Device-OH_Drawing_FontFallbackInfo* fallbackInfoSet--><!--Device-OH_Drawing_FontFallbackInfo* fallbackInfoSet-End--> |
 
 

@@ -20,7 +20,7 @@ Provides APIs to obtain information about trusted devices and local devices.
 
 | Name | Description |
 | -- | -- |
-| [int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)](#oh_devicemanager_getlocaldevicename) | Obtains the display name of the local device. The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.(Deprecated in API26.0.0) |
+| [int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)](#oh_devicemanager_getlocaldevicename) | Obtains the display name of the local device. The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.(Deprecated) |
 | [int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned int *len)](#oh_devicemanager_getlocaldevicenamec) | Obtains the display name of the local device. The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name. |
 
 ## Function description

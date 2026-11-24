@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkImageCompressionFlagsEXT imageCompressionFlags |  |
-| VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkImageCompressionFlagsEXT imageCompressionFlags | <!--Device-VkImageCompressionFlagsEXT imageCompressionFlags--><!--Device-VkImageCompressionFlagsEXT imageCompressionFlags-End--> |
+| VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags | <!--Device-VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags--><!--Device-VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags-End--> |
 
 

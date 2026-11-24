@@ -24,7 +24,7 @@ Range contain min and max value
 
 | Name | Description |
 | -- | -- |
-| int32_t minVal |  |
-| int32_t maxVal |  |
+| int32_t minVal | Minimum value.<br>**Since**: 10<br><!--Device-int32_t minVal--><!--Device-int32_t minVal-End--> |
+| int32_t maxVal | Maximum value.<br>**Since**: 10<br><!--Device-int32_t maxVal--><!--Device-int32_t maxVal-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t location |  |
-| uint32_t binding |  |
-| VkFormat format |  |
-| uint32_t offset |  |
+| uint32_t location | <!--Device-uint32_t location--><!--Device-uint32_t location-End--> |
+| uint32_t binding | <!--Device-uint32_t binding--><!--Device-uint32_t binding-End--> |
+| VkFormat format | <!--Device-VkFormat format--><!--Device-VkFormat format-End--> |
+| uint32_t offset | <!--Device-uint32_t offset--><!--Device-uint32_t offset-End--> |
 
 

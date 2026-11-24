@@ -58,7 +58,7 @@ enum Location_ResultCode
 
 Enumerates the location result codes.
 
-<!--Device-Location_ResultCode--><!--Device-Location_ResultCode-End-->
+<!--Device-enum Location_ResultCode--><!--Device-enum Location_ResultCode-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -66,12 +66,12 @@ Enumerates the location result codes.
 
 | Enum item | Description |
 | -- | -- |
-| LOCATION_SUCCESS = 0 | &nbsp;The operation is successful. |
-| LOCATION_PERMISSION_DENIED = 201 | &nbsp;Permission verification failed. The application does not have the permission required to call the API. |
-| LOCATION_INVALID_PARAM = 401 | &nbsp;Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range. |
-| LOCATION_NOT_SUPPORTED = 801 | &nbsp;Capability not supported. Failed to call function due to limited device capabilities. |
-| LOCATION_SERVICE_UNAVAILABLE = 3301000 | &nbsp;The location service is unavailable. Possible reasons: Abnormal startup of location services. |
-| LOCATION_SWITCH_OFF = 3301100 | &nbsp;The location switch is off. |
+| LOCATION_SUCCESS = 0 | &nbsp;The operation is successful.<br><!--Device-LOCATION_SUCCESS = 0--><!--Device-LOCATION_SUCCESS = 0-End--> |
+| LOCATION_PERMISSION_DENIED = 201 | &nbsp;Permission verification failed. The application does not have the permission required to call the API.<br><!--Device-LOCATION_PERMISSION_DENIED = 201--><!--Device-LOCATION_PERMISSION_DENIED = 201-End--> |
+| LOCATION_INVALID_PARAM = 401 | &nbsp;Parameter error. Possible reasons: 1. The input parameter is a null pointer; 2. Parameter values exceed the defined range.<br><!--Device-LOCATION_INVALID_PARAM = 401--><!--Device-LOCATION_INVALID_PARAM = 401-End--> |
+| LOCATION_NOT_SUPPORTED = 801 | &nbsp;Capability not supported. Failed to call function due to limited device capabilities.<br><!--Device-LOCATION_NOT_SUPPORTED = 801--><!--Device-LOCATION_NOT_SUPPORTED = 801-End--> |
+| LOCATION_SERVICE_UNAVAILABLE = 3301000 | &nbsp;The location service is unavailable. Possible reasons: Abnormal startup of location services.<br><!--Device-LOCATION_SERVICE_UNAVAILABLE = 3301000--><!--Device-LOCATION_SERVICE_UNAVAILABLE = 3301000-End--> |
+| LOCATION_SWITCH_OFF = 3301100 | &nbsp;The location switch is off.<br><!--Device-LOCATION_SWITCH_OFF = 3301100--><!--Device-LOCATION_SWITCH_OFF = 3301100-End--> |
 
 ### Location_UseScene
 
@@ -83,7 +83,7 @@ enum Location_UseScene
 
 Enumeration values of use scenarios.
 
-<!--Device-Location_UseScene--><!--Device-Location_UseScene-End-->
+<!--Device-enum Location_UseScene--><!--Device-enum Location_UseScene-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -91,10 +91,10 @@ Enumeration values of use scenarios.
 
 | Enum item | Description |
 | -- | -- |
-| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | Indicates the navigation scenario. This feature applies to outdoor scenarios where real-time device locations need to be obtained, such as vehicle-mounted and pedestrian navigation. The GNSS positioning technology is used to provide positioning services, and the power consumption is high. |
-| LOCATION_USE_SCENE_SPORT = 0x0402 | Indicates the sport scenario. This feature applies to scenarios where user location tracks are recorded, for example, sports apps. The GNSS positioning technology is used to provide positioning services, and the power consumption is high. |
-| LOCATION_USE_SCENE_TRANSPORT = 0x0403 | Indicates a travel scenario. This mode applies to travel scenarios, such as taxi and public transportation. The GNSS positioning technology is used to provide positioning services, and the power consumption is high. |
-| LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | Indicates the daily service usage scenario. This mode applies to scenarios where precise user location is not required, such as news, online shopping, and ordering applications. In this scenario, only a network positioning technology is used to provide a positioning service, and power consumption is relatively low. |
+| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | Indicates the navigation scenario. This feature applies to outdoor scenarios where real-time device locations need to be obtained, such as vehicle-mounted and pedestrian navigation. The GNSS positioning technology is used to provide positioning services, and the power consumption is high.<br><!--Device-LOCATION_USE_SCENE_NAVIGATION = 0x0401--><!--Device-LOCATION_USE_SCENE_NAVIGATION = 0x0401-End--> |
+| LOCATION_USE_SCENE_SPORT = 0x0402 | Indicates the sport scenario. This feature applies to scenarios where user location tracks are recorded, for example, sports apps. The GNSS positioning technology is used to provide positioning services, and the power consumption is high.<br><!--Device-LOCATION_USE_SCENE_SPORT = 0x0402--><!--Device-LOCATION_USE_SCENE_SPORT = 0x0402-End--> |
+| LOCATION_USE_SCENE_TRANSPORT = 0x0403 | Indicates a travel scenario. This mode applies to travel scenarios, such as taxi and public transportation. The GNSS positioning technology is used to provide positioning services, and the power consumption is high.<br><!--Device-LOCATION_USE_SCENE_TRANSPORT = 0x0403--><!--Device-LOCATION_USE_SCENE_TRANSPORT = 0x0403-End--> |
+| LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | Indicates the daily service usage scenario. This mode applies to scenarios where precise user location is not required, such as news, online shopping, and ordering applications. In this scenario, only a network positioning technology is used to provide a positioning service, and power consumption is relatively low.<br><!--Device-LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404--><!--Device-LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404-End--> |
 
 ### Location_PowerConsumptionScene
 
@@ -106,7 +106,7 @@ enum Location_PowerConsumptionScene
 
 Enumerates the power consumption scenario.
 
-<!--Device-Location_PowerConsumptionScene--><!--Device-Location_PowerConsumptionScene-End-->
+<!--Device-enum Location_PowerConsumptionScene--><!--Device-enum Location_PowerConsumptionScene-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -114,9 +114,9 @@ Enumerates the power consumption scenario.
 
 | Enum item | Description |
 | -- | -- |
-| LOCATION_HIGH_POWER_CONSUMPTION = 0x0601 | High power consumption. GNSS positioning technology is mainly used. We will use network positioning technology to provide services before GNSS provides stable location results; During continuous positioning, if the GNSS positioning result cannot be obtained for more than 30 seconds, the network positioning technology is used to obtain the location. Consumes a large number of hardware resources and power. |
-| LOCATION_LOW_POWER_CONSUMPTION = 0x0602 | Low power consumption. This mode applies to scenarios that do not require high user location precision, such as news, online shopping, and meal ordering. In this scenario, only a network positioning technology is used to provide a positioning service, and power consumption is relatively low. |
-| LOCATION_NO_POWER_CONSUMPTION = 0x0603 | No power consumption. In this scenario, the location is not proactively triggered. The location is returned to the current app only when other apps are located. |
+| LOCATION_HIGH_POWER_CONSUMPTION = 0x0601 | High power consumption. GNSS positioning technology is mainly used. We will use network positioning technology to provide services before GNSS provides stable location results; During continuous positioning, if the GNSS positioning result cannot be obtained for more than 30 seconds, the network positioning technology is used to obtain the location. Consumes a large number of hardware resources and power.<br><!--Device-LOCATION_HIGH_POWER_CONSUMPTION = 0x0601--><!--Device-LOCATION_HIGH_POWER_CONSUMPTION = 0x0601-End--> |
+| LOCATION_LOW_POWER_CONSUMPTION = 0x0602 | Low power consumption. This mode applies to scenarios that do not require high user location precision, such as news, online shopping, and meal ordering. In this scenario, only a network positioning technology is used to provide a positioning service, and power consumption is relatively low.<br><!--Device-LOCATION_LOW_POWER_CONSUMPTION = 0x0602--><!--Device-LOCATION_LOW_POWER_CONSUMPTION = 0x0602-End--> |
+| LOCATION_NO_POWER_CONSUMPTION = 0x0603 | No power consumption. In this scenario, the location is not proactively triggered. The location is returned to the current app only when other apps are located.<br><!--Device-LOCATION_NO_POWER_CONSUMPTION = 0x0603--><!--Device-LOCATION_NO_POWER_CONSUMPTION = 0x0603-End--> |
 
 ### Location_SourceType
 
@@ -128,7 +128,7 @@ enum Location_SourceType
 
 Enumerates the source type of location.
 
-<!--Device-Location_SourceType--><!--Device-Location_SourceType-End-->
+<!--Device-enum Location_SourceType--><!--Device-enum Location_SourceType-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -136,10 +136,10 @@ Enumerates the source type of location.
 
 | Enum item | Description |
 | -- | -- |
-| LOCATION_SOURCE_TYPE_GNSS = 1 | The positioning result is based on the GNSS positioning technology. |
-| LOCATION_SOURCE_TYPE_NETWORK = 2 | The positioning result comes from the network positioning technology. |
-| LOCATION_SOURCE_TYPE_INDOOR = 3 | The positioning result comes from the high-precision indoor positioning technology. |
-| LOCATION_SOURCE_TYPE_RTK = 4 | The positioning result comes from the high-precision positioning technology. |
+| LOCATION_SOURCE_TYPE_GNSS = 1 | The positioning result is based on the GNSS positioning technology.<br><!--Device-LOCATION_SOURCE_TYPE_GNSS = 1--><!--Device-LOCATION_SOURCE_TYPE_GNSS = 1-End--> |
+| LOCATION_SOURCE_TYPE_NETWORK = 2 | The positioning result comes from the network positioning technology.<br><!--Device-LOCATION_SOURCE_TYPE_NETWORK = 2--><!--Device-LOCATION_SOURCE_TYPE_NETWORK = 2-End--> |
+| LOCATION_SOURCE_TYPE_INDOOR = 3 | The positioning result comes from the high-precision indoor positioning technology.<br><!--Device-LOCATION_SOURCE_TYPE_INDOOR = 3--><!--Device-LOCATION_SOURCE_TYPE_INDOOR = 3-End--> |
+| LOCATION_SOURCE_TYPE_RTK = 4 | The positioning result comes from the high-precision positioning technology.<br><!--Device-LOCATION_SOURCE_TYPE_RTK = 4--><!--Device-LOCATION_SOURCE_TYPE_RTK = 4-End--> |
 
 
 ## Function description

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkShaderCorePropertiesFlagsAMD shaderCoreFeatures |  |
-| uint32_t activeComputeUnitCount |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkShaderCorePropertiesFlagsAMD shaderCoreFeatures | <!--Device-VkShaderCorePropertiesFlagsAMD shaderCoreFeatures--><!--Device-VkShaderCorePropertiesFlagsAMD shaderCoreFeatures-End--> |
+| uint32_t activeComputeUnitCount | <!--Device-uint32_t activeComputeUnitCount--><!--Device-uint32_t activeComputeUnitCount-End--> |
 
 

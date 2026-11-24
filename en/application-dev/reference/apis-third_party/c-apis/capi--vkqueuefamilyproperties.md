@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkQueueFlags queueFlags |  |
-| uint32_t queueCount |  |
-| uint32_t timestampValidBits |  |
-| [VkExtent3D](capi--vkextent3d.md) minImageTransferGranularity |  |
+| VkQueueFlags queueFlags | <!--Device-VkQueueFlags queueFlags--><!--Device-VkQueueFlags queueFlags-End--> |
+| uint32_t queueCount | <!--Device-uint32_t queueCount--><!--Device-uint32_t queueCount-End--> |
+| uint32_t timestampValidBits | <!--Device-uint32_t timestampValidBits--><!--Device-uint32_t timestampValidBits-End--> |
+| [VkExtent3D](capi--vkextent3d.md) minImageTransferGranularity | <!--Device-VkExtent3D minImageTransferGranularity--><!--Device-VkExtent3D minImageTransferGranularity-End--> |
 
 

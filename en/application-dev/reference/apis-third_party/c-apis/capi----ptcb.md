@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| void *\_\_x |  |
-| [struct \_\_ptcb](capi----ptcb.md) *\_\_next |  |
+| void *\_\_x | <!--Device-void *\_\_x--><!--Device-void *\_\_x-End--> |
+| [struct \_\_ptcb](capi----ptcb.md) *\_\_next | <!--Device-struct \_\_ptcb *\_\_next--><!--Device-struct \_\_ptcb *\_\_next-End--> |
 
 
 ### Member functions

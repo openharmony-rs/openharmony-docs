@@ -42,7 +42,7 @@ enum BackgroundProcessManager_ProcessPriority
 
 Enumerates child process priorities.
 
-<!--Device-BackgroundProcessManager_ProcessPriority--><!--Device-BackgroundProcessManager_ProcessPriority-End-->
+<!--Device-enum BackgroundProcessManager_ProcessPriority--><!--Device-enum BackgroundProcessManager_ProcessPriority-End-->
 
 **System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -50,8 +50,8 @@ Enumerates child process priorities.
 
 | Enum item | Description |
 | -- | -- |
-| PROCESS_BACKGROUND = 1 | Compared with **PROCESS_INACTIVE**, this priority has a more obvious suppression effect. Child processes can obtain less CPU resources. You are advised to set this priority when executing background child processes that cannot be perceived by users, such as background image-text pages.<br>**Since**: 17 |
-| PROCESS_INACTIVE = 2 | You are advised to set this priority when executing background child processes that can be perceived by users, such as audio playback and navigation.<br>**Since**: 17 |
+| PROCESS_BACKGROUND = 1 | Compared with **PROCESS_INACTIVE**, this priority has a more obvious suppression effect. Child processes can obtain less CPU resources. You are advised to set this priority when executing background child processes that cannot be perceived by users, such as background image-text pages.<br>**Since**: 17<br><!--Device-PROCESS_BACKGROUND = 1--><!--Device-PROCESS_BACKGROUND = 1-End--> |
+| PROCESS_INACTIVE = 2 | You are advised to set this priority when executing background child processes that can be perceived by users, such as audio playback and navigation.<br>**Since**: 17<br><!--Device-PROCESS_INACTIVE = 2--><!--Device-PROCESS_INACTIVE = 2-End--> |
 
 ### BackgroundProcessManager_ErrorCode
 
@@ -63,7 +63,7 @@ enum BackgroundProcessManager_ErrorCode
 
 Enumerates the error codes used by the background child process management.
 
-<!--Device-BackgroundProcessManager_ErrorCode--><!--Device-BackgroundProcessManager_ErrorCode-End-->
+<!--Device-enum BackgroundProcessManager_ErrorCode--><!--Device-enum BackgroundProcessManager_ErrorCode-End-->
 
 **System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -71,9 +71,9 @@ Enumerates the error codes used by the background child process management.
 
 | Enum item | Description |
 | -- | -- |
-| ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0 | result is OK.<br>**Since**: 17 |
-| ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401 | invalid parameter. Possible causes: 1. priority is out of range.<br>**Since**: 17 |
-| ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001 | remote error. Possible causes: 1. remote is not work.<br>**Since**: 17 |
+| ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0 | result is OK.<br>**Since**: 17<br><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0--><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS = 0-End--> |
+| ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401 | invalid parameter. Possible causes: 1. priority is out of range.<br>**Since**: 17<br><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401--><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM = 401-End--> |
+| ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001 | remote error. Possible causes: 1. remote is not work.<br>**Since**: 17<br><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001--><!--Device-ERR_BACKGROUND_PROCESS_MANAGER_REMOTE_ERROR = 31800001-End--> |
 
 
 ## Function description

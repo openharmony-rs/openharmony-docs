@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| char *p_name |  |
-| char **p_aliases |  |
-| int p_proto |  |
+| char *p_name | <!--Device-char *p_name--><!--Device-char *p_name-End--> |
+| char **p_aliases | <!--Device-char **p_aliases--><!--Device-char **p_aliases-End--> |
+| int p_proto | <!--Device-int p_proto--><!--Device-int p_proto-End--> |
 
 

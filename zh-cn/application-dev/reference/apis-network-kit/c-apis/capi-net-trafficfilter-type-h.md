@@ -2,7 +2,7 @@
 
 ## 概述
 
-声明网络流量过滤与重定向功能所需的通用类型和错误码。该头文件定义了流量过滤与重定向功能中使用的IP地址、端口、接口等匹配条件结构体，报文过滤规则、重定向规则等配置结构体，以及操作返回的错误码。 <br>适用于调用[OH_TrafficFilter_CreateRedirector](capi-net-trafficfilter-h.md#oh_trafficfilter_createredirector)等接口时构造参数和解析返回值。
+声明网络流量过滤与重定向功能所需的通用类型和错误码。 该头文件定义了流量过滤与重定向功能中使用的IP地址、端口、接口等匹配条件结构体，报文过滤规则、重定向规则等配置结构体，以及操作返回的错误码。 <br>适用于调用[OH_TrafficFilter_CreateRedirector](capi-net-trafficfilter-h.md#oh_trafficfilter_createredirector)等接口时构造参数和解析返回值。
 
 **库：** libnet_trafficfilter.so
 
@@ -27,17 +27,17 @@
 | [OH_TrafficFilter_PortRange](capi-trafficfilter-oh-trafficfilter-portrange.md) | OH_TrafficFilter_PortRange | 范围匹配的端口匹配值。 |
 | [OH_TrafficFilter_PortMulti](capi-trafficfilter-oh-trafficfilter-portmulti.md) | OH_TrafficFilter_PortMulti | 多端口匹配的端口匹配值。 |
 | [OH_TrafficFilter_PortMatch](capi-trafficfilter-oh-trafficfilter-portmatch.md) | OH_TrafficFilter_PortMatch | 端口匹配条件。 |
-| [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) | OH_TrafficFilter_ConnectionInfo | 连接信息结构体。描述一条网络连接的五元组信息（源IP、目的IP、源端口、目的端口、协议类型），用于查询发起该连接的进程信息。<br>初始化规则：调用 [OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)之前，调用者必须将该结构体清零（例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof( OH_TrafficFilter_ConnectionInfo)。<br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。 |
-| [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md) | OH_TrafficFilter_ProcessInfo | 进程信息结构体。存储[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)返回的进程信息。<br>初始化规则：调用[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)之前， 调用者必须将该结构体清零（例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_ProcessInfo)。<br>二进制兼容规则（ABI， 即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些输出字段可以被安全写入。只有被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)完全覆盖的字段才会被系统写入。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于读取 [size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)字段本身所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。<br> 输出有效性规则：当[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)返回[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)时，被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)覆盖的字段包含有效的输出值。当接口返回错误时， 调用者不应依赖[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)以外的输出字段的值。 |
-| [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md) | OH_TrafficFilter_RedirectRule | 流量重定向规则。定义TCP流量重定向规则，将匹配的流量重定向到指定的代理服务器。<br>初始化规则：调用[OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)之前，调用者必须将该结构体清零（ 例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_RedirectRule)。<br>二进制兼容规则（ABI，即应用程序二进制接口， 保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回 [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。<br>失败规则：如果 [OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)返回错误，不保证规则已被添加或生效。调用者应在假设规则生效之前检查返回值。 |
-| [OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md) | OH_TrafficFilter_PacketDesc | 报文描述符<br> 包含五元组信息和报文数据 |
-| [OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md) | OH_TrafficFilter_Config | NFQueue配置结构体 - 如果`config`为**NULL**，实现将应用以下默认值： - `packetCopyLen` = 0xFFFF（拷贝整个报文） - `nfqueueMaxlen` = 0 （使用系统默认值，即1024） - `nfqueueFlags` = OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN - 如果`config`为**非NULL**，调用者**必须**： 1. 将整个结构体零初始化（例如`memset(&cfg, 0, sizeof(cfg))`）。 2. 设置`size` = `sizeof(OH_TrafficFilter_Config)`。 3. 将所有其他字段设置为定义范围内的有效值（见下文）。 - **未遵守**此约定（例如`size`不正确、字段值超出范围） 将导致接口返回`OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。 |
-| [OH_TrafficFilter_MACMatch](capi-trafficfilter-oh-trafficfilter-macmatch.md) | OH_TrafficFilter_MACMatch | MAC地址匹配条件<br> 基于MAC地址匹配报文 仅支持源MAC地址 |
-| [OH_TrafficFilter_TCPFlagsMatch](capi-trafficfilter-oh-trafficfilter-tcpflagsmatch.md) | OH_TrafficFilter_TCPFlagsMatch | TCP标志匹配条件<br> 基于TCP标志设置匹配TCP报文 |
-| [OH_TrafficFilter_ConntrackMatch](capi-trafficfilter-oh-trafficfilter-conntrackmatch.md) | OH_TrafficFilter_ConntrackMatch | 连接跟踪匹配条件<br> 基于连接跟踪状态匹配报文 |
-| [OH_TrafficFilter_FilterRule](capi-trafficfilter-oh-trafficfilter-filterrule.md) | OH_TrafficFilter_FilterRule | 报文过滤规则<br> 定义报文匹配条件。 1. **初始化约定（调用方）**： - 调用者必须在使用前将整个结构体**零初始化**（例如通过`memset`）。 - `size`字段**必须**显式设置为`sizeof(OH_TrafficFilter_FilterRule)`。 - 如果`size`小于`sizeof(OH_TrafficFilter_FilterRule)`，实现将仅读取截至`size`的稳定 前缀字段，忽略后续字节。<br> 2. **读取约定（实现方）**： - 实现严格根据`size`值确定有效字段范围。 - 如果`size` < `sizeof(OH_TrafficFilter_FilterRule)`，实现将其视为旧版本，仅读取 与该大小兼容的前缀字段。 - 如果`size`为0或指针为NULL，实现必须返回错误。 |
+| [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) | OH_TrafficFilter_ConnectionInfo | 连接信息结构体。 描述一条网络连接的五元组信息（源IP、目的IP、源端口、目的端口、协议类型），用于查询发起该连接的进程信息。 <br>初始化规则：调用[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)之前，调用者必须将该结构体清零（例如使用memset）， 然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_ConnectionInfo)。 <br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。 |
+| [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md) | OH_TrafficFilter_ProcessInfo | 进程信息结构体。 存储[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)返回的进程信息。<br>初始化规则：调用[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)之前， 调用者必须将该结构体清零（例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小， 通常为sizeof(OH_TrafficFilter_ProcessInfo)。 <br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）： 系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些输出字段可以被安全写入。只有被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)完全覆盖的字段才会被系统写入。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于读取[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)字段本身所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。 <br>输出有效性规则：当[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)返回[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)时，被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)覆盖的字段包含有效的输出值。 当接口返回错误时，调用者不应依赖[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)以外的输出字段的值。 |
+| [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md) | OH_TrafficFilter_RedirectRule | 流量重定向规则。定义TCP流量重定向规则，将匹配的流量重定向到指定的代理服务器。 <br>初始化规则：调用[OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)之前，调用者必须将该结构体清零（例如使用memset）， 然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_RedirectRule)。 <br>二进制兼容规则（ABI，即应用程序二进制接口， 保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。 <br>失败规则：如果[OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)返回错误，不保证规则已被添加或生效。 调用者应在假设规则生效之前检查返回值。 |
+| [OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md) | OH_TrafficFilter_PacketDesc | 报文描述符。<br> 包含五元组信息和报文数据 |
+| [OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md) | OH_TrafficFilter_Config | NFQueue（Netfilter 框架里的一个“数据包排队通道”）配置结构体。 <br>初始化规则：调用[OH_TrafficFilter_CreatePacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_createpacketcontroller)之前，调用者必须将该结构体清零（例如使用memset）， 然后将size设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_Config)。 <br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过size来确定哪些字段可以被安全读取。 如果size小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。 如果size大于系统已知的大小，多余的字段将被忽略。 |
+| [OH_TrafficFilter_MACMatch](capi-trafficfilter-oh-trafficfilter-macmatch.md) | OH_TrafficFilter_MACMatch | MAC地址匹配条件。 |
+| [OH_TrafficFilter_TCPFlagsMatch](capi-trafficfilter-oh-trafficfilter-tcpflagsmatch.md) | OH_TrafficFilter_TCPFlagsMatch | TCP标志位匹配条件。仅对TCP协议有效。 |
+| [OH_TrafficFilter_ConntrackMatch](capi-trafficfilter-oh-trafficfilter-conntrackmatch.md) | OH_TrafficFilter_ConntrackMatch | 连接跟踪（Connection Tracking）匹配条件。 |
+| [OH_TrafficFilter_FilterRule](capi-trafficfilter-oh-trafficfilter-filterrule.md) | OH_TrafficFilter_FilterRule | 报文过滤规则。单个OH_TrafficFilter_FilterRule结构内的条件为逻辑与关系， 添加到同一OH_TrafficFilter_PacketController的多个规则为逻辑或关系。 <br>初始化规则：调用[OH_TrafficFilter_AddPacketRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)之前，调用者必须将该结构体清零（例如使用memset）， 然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_FilterRule)。 <br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）： 系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小， 接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。 <br>失败规则：如果[OH_TrafficFilter_AddPacketRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)返回错误，不保证规则已被添加或生效。 调用者应先检查返回值，再确认规则是否生效。 |
 | [OH_TrafficFilter_Redirector](capi-trafficfilter-oh-trafficfilter-redirector.md) | OH_TrafficFilter_Redirector | 流量重定向器。 |
-| [OH_TrafficFilter_PacketController](capi-trafficfilter-oh-trafficfilter-packetcontroller.md) | OH_TrafficFilter_PacketController | 报文控制器 |
+| [OH_TrafficFilter_PacketController](capi-trafficfilter-oh-trafficfilter-packetcontroller.md) | OH_TrafficFilter_PacketController | 报文控制器。 |
 
 ### 枚举
 
@@ -47,9 +47,9 @@
 | [OH_TrafficFilter_IPMatchType](#oh_trafficfilter_ipmatchtype) | OH_TrafficFilter_IPMatchType | IP匹配类型。 |
 | [OH_TrafficFilter_IPFamily](#oh_trafficfilter_ipfamily) | OH_TrafficFilter_IPFamily | IP地址族。 |
 | [OH_TrafficFilter_PortMatchType](#oh_trafficfilter_portmatchtype) | OH_TrafficFilter_PortMatchType | 端口匹配类型。 |
-| [OH_TrafficFilter_HookPoint](#oh_trafficfilter_hookpoint) | OH_TrafficFilter_HookPoint | 钩子点类型，指定规则在网络协议栈中生效的位置。报文经过内核网络协议栈时会在不同阶段触发钩子点，规则在对应钩子点处对报文进行拦截。例如INPUT链处理进入本机的报文，OUTPUT链处理本机发出的报文。 |
-| [OH_TrafficFilter_PacketDecision](#oh_trafficfilter_packetdecision) | OH_TrafficFilter_PacketDecision | 报文决策类型 |
-| [OH_TrafficFilter_PacketCopyMode](#oh_trafficfilter_packetcopymode) | OH_TrafficFilter_PacketCopyMode | 报文拷贝模式枚举 |
+| [OH_TrafficFilter_HookPoint](#oh_trafficfilter_hookpoint) | OH_TrafficFilter_HookPoint | 钩子点类型，指定规则在网络协议栈中生效的位置。 报文经过内核网络协议栈时会在不同阶段触发钩子点，规则在对应钩子点处对报文进行拦截。 例如INPUT链处理进入本机的报文，OUTPUT链处理本机发出的报文。 |
+| [OH_TrafficFilter_PacketDecision](#oh_trafficfilter_packetdecision) | OH_TrafficFilter_PacketDecision | 报文处理决策类型。 |
+| [OH_TrafficFilter_PacketCopyMode](#oh_trafficfilter_packetcopymode) | OH_TrafficFilter_PacketCopyMode | 报文拷贝模式枚举。 |
 
 ### 宏定义
 
@@ -63,19 +63,23 @@
 | OH_TRAFFICFILTER_DEFAULT_COPY_LEN    0xFFFF | 默认NFQueue报文拷贝长度（字节）。设置为0xFFFF表示拷贝整个报文，较小的值（如128）仅拷贝报文头。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_DEFAULT_QUEUE_MAXLEN  1024 | 默认NFQueue最大队列长度（报文数量）。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN  0x1 | NFQueue队列标志：FAIL-OPEN模式。当用户态进程崩溃时，内核自动放行报文以避免网络中断。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | MAC地址字符串最大长度（XX:XX:XX:XX:XX:XX）<br>**起始版本：** 26.0.1 |
+| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | MAC地址字符串最大长度（XX:XX:XX:XX:XX:XX）。<br>**起始版本：** 26.0.1 |
 | OH_TRAFFICFILTER_MIN_PRIORITY        1 | 最小优先级值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_MAX_PRIORITY        10000 | 最大优先级值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_MIN_GROUP_ID        1 | 最小Group ID值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_MAX_GROUP_ID        65535 | 最大Group ID值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_IFNAMSIZ            32 | 网络接口名称最大长度。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_ANY           0 | 协议类型常量：任意协议。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_PROTO_TCP           6 | 协议类型常量：TCP协议。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_PROTO_UDP           17 | 协议类型常量：UDP协议。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_PROTO_ICMP          1 | 协议类型常量：ICMP协议。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_PROTO_ICMPV6        58 | 协议类型常量：ICMPV6协议。<br>**起始版本：** 26.0.0 |
 
 ### 函数
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef OH_TrafficFilter_PacketDecision (\*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)](#oh_trafficfilter_packetcallback) | OH_TrafficFilter_PacketCallback | 报文回调函数类型 |
+| [typedef OH_TrafficFilter_PacketDecision (\*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)](#oh_trafficfilter_packetcallback) | OH_TrafficFilter_PacketCallback | 报文回调函数类型。 |
 
 ## 枚举类型说明
 
@@ -89,7 +93,7 @@ enum OH_TrafficFilter_ErrCode
 
 流量过滤与重定向错误码。
 
-<!--Device-OH_TrafficFilter_ErrCode--><!--Device-OH_TrafficFilter_ErrCode-End-->
+<!--Device-enum OH_TrafficFilter_ErrCode--><!--Device-enum OH_TrafficFilter_ErrCode-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -97,14 +101,14 @@ enum OH_TrafficFilter_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TRAFFICFILTER_OK = 0 | 操作成功。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_E_BASE = 29410000 | 错误码基值。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED = 201 | 缺少权限。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_ERROR_INVALID_PARAM = (OH_TRAFFICFILTER_E_BASE + 101) | 参数错误（无效的优先级、IP地址、端口或Group ID）。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_ERROR_NOT_FOUND = (OH_TRAFFICFILTER_E_BASE + 102) | 资源未找到（规则、目标、进程或Group ID未找到）。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES = (OH_TRAFFICFILTER_E_BASE + 103) | 规则数量过多。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE = (OH_TRAFFICFILTER_E_BASE + 104) | Group ID已被占用。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_ERROR_NFQUEUE_ERROR = (OH_TRAFFICFILTER_E_BASE + 105) | NFQueue错误（初始化失败或无可用队列）。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_OK = 0 | 操作成功。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_OK = 0--><!--Device-OH_TRAFFICFILTER_OK = 0-End--> |
+| OH_TRAFFICFILTER_E_BASE = 29410000 | 错误码基值。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_E_BASE = 29410000--><!--Device-OH_TRAFFICFILTER_E_BASE = 29410000-End--> |
+| OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED = 201 | 缺少权限。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED = 201--><!--Device-OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED = 201-End--> |
+| OH_TRAFFICFILTER_ERROR_INVALID_PARAM = (OH_TRAFFICFILTER_E_BASE + 101) | 参数错误（无效的优先级、IP地址、端口或Group ID）。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_ERROR_INVALID_PARAM = (OH_TRAFFICFILTER_E_BASE + 101)--><!--Device-OH_TRAFFICFILTER_ERROR_INVALID_PARAM = (OH_TRAFFICFILTER_E_BASE + 101)-End--> |
+| OH_TRAFFICFILTER_ERROR_NOT_FOUND = (OH_TRAFFICFILTER_E_BASE + 102) | 资源未找到（规则、目标、进程或Group ID未找到）。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_ERROR_NOT_FOUND = (OH_TRAFFICFILTER_E_BASE + 102)--><!--Device-OH_TRAFFICFILTER_ERROR_NOT_FOUND = (OH_TRAFFICFILTER_E_BASE + 102)-End--> |
+| OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES = (OH_TRAFFICFILTER_E_BASE + 103) | 规则数量过多。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES = (OH_TRAFFICFILTER_E_BASE + 103)--><!--Device-OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES = (OH_TRAFFICFILTER_E_BASE + 103)-End--> |
+| OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE = (OH_TRAFFICFILTER_E_BASE + 104) | Group ID已被占用。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE = (OH_TRAFFICFILTER_E_BASE + 104)--><!--Device-OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE = (OH_TRAFFICFILTER_E_BASE + 104)-End--> |
+| OH_TRAFFICFILTER_ERROR_NFQUEUE_ERROR = (OH_TRAFFICFILTER_E_BASE + 105) | NFQueue错误（初始化失败或无可用队列）。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_ERROR_NFQUEUE_ERROR = (OH_TRAFFICFILTER_E_BASE + 105)--><!--Device-OH_TRAFFICFILTER_ERROR_NFQUEUE_ERROR = (OH_TRAFFICFILTER_E_BASE + 105)-End--> |
 
 ### OH_TrafficFilter_IPMatchType
 
@@ -116,7 +120,7 @@ enum OH_TrafficFilter_IPMatchType
 
 IP匹配类型。
 
-<!--Device-OH_TrafficFilter_IPMatchType--><!--Device-OH_TrafficFilter_IPMatchType-End-->
+<!--Device-enum OH_TrafficFilter_IPMatchType--><!--Device-enum OH_TrafficFilter_IPMatchType-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -124,11 +128,11 @@ IP匹配类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TRAFFICFILTER_IP_MATCH_ANY = 0 | 任意IP。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_IP_MATCH_SINGLE | 单个IP。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_IP_MATCH_CIDR | CIDR格式（如192.168.1.0/24，表示匹配该子网内的所有IP）。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_IP_MATCH_RANGE | IP范围。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_IP_MATCH_MULTI | 多个IP。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_IP_MATCH_ANY = 0 | 任意IP。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_MATCH_ANY = 0--><!--Device-OH_TRAFFICFILTER_IP_MATCH_ANY = 0-End--> |
+| OH_TRAFFICFILTER_IP_MATCH_SINGLE | 单个IP。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_MATCH_SINGLE--><!--Device-OH_TRAFFICFILTER_IP_MATCH_SINGLE-End--> |
+| OH_TRAFFICFILTER_IP_MATCH_CIDR | CIDR格式（如192.168.1.0/24，表示匹配该子网内的所有IP）。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_MATCH_CIDR--><!--Device-OH_TRAFFICFILTER_IP_MATCH_CIDR-End--> |
+| OH_TRAFFICFILTER_IP_MATCH_RANGE | IP范围。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_MATCH_RANGE--><!--Device-OH_TRAFFICFILTER_IP_MATCH_RANGE-End--> |
+| OH_TRAFFICFILTER_IP_MATCH_MULTI | 多个IP。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_MATCH_MULTI--><!--Device-OH_TRAFFICFILTER_IP_MATCH_MULTI-End--> |
 
 ### OH_TrafficFilter_IPFamily
 
@@ -140,7 +144,7 @@ enum OH_TrafficFilter_IPFamily
 
 IP地址族。
 
-<!--Device-OH_TrafficFilter_IPFamily--><!--Device-OH_TrafficFilter_IPFamily-End-->
+<!--Device-enum OH_TrafficFilter_IPFamily--><!--Device-enum OH_TrafficFilter_IPFamily-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -148,9 +152,9 @@ IP地址族。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TRAFFICFILTER_IP_FAMILY_UNSPEC = 0 | 未指定的IP地址族。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_IP_FAMILY_V4 = 1 | IPv4地址族。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_IP_FAMILY_V6 = 2 | IPv6地址族。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_IP_FAMILY_UNSPEC = 0 | 未指定的IP地址族。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_FAMILY_UNSPEC = 0--><!--Device-OH_TRAFFICFILTER_IP_FAMILY_UNSPEC = 0-End--> |
+| OH_TRAFFICFILTER_IP_FAMILY_V4 = 1 | IPv4地址族。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_FAMILY_V4 = 1--><!--Device-OH_TRAFFICFILTER_IP_FAMILY_V4 = 1-End--> |
+| OH_TRAFFICFILTER_IP_FAMILY_V6 = 2 | IPv6地址族。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_IP_FAMILY_V6 = 2--><!--Device-OH_TRAFFICFILTER_IP_FAMILY_V6 = 2-End--> |
 
 ### OH_TrafficFilter_PortMatchType
 
@@ -162,7 +166,7 @@ enum OH_TrafficFilter_PortMatchType
 
 端口匹配类型。
 
-<!--Device-OH_TrafficFilter_PortMatchType--><!--Device-OH_TrafficFilter_PortMatchType-End-->
+<!--Device-enum OH_TrafficFilter_PortMatchType--><!--Device-enum OH_TrafficFilter_PortMatchType-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -170,10 +174,10 @@ enum OH_TrafficFilter_PortMatchType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TRAFFICFILTER_PORT_MATCH_ANY = 0 | 任意端口。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_PORT_MATCH_SINGLE | 单个端口。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_PORT_MATCH_RANGE | 端口范围。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_PORT_MATCH_MULTI | 多个端口。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_PORT_MATCH_ANY = 0 | 任意端口。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_PORT_MATCH_ANY = 0--><!--Device-OH_TRAFFICFILTER_PORT_MATCH_ANY = 0-End--> |
+| OH_TRAFFICFILTER_PORT_MATCH_SINGLE | 单个端口。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_PORT_MATCH_SINGLE--><!--Device-OH_TRAFFICFILTER_PORT_MATCH_SINGLE-End--> |
+| OH_TRAFFICFILTER_PORT_MATCH_RANGE | 端口范围。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_PORT_MATCH_RANGE--><!--Device-OH_TRAFFICFILTER_PORT_MATCH_RANGE-End--> |
+| OH_TRAFFICFILTER_PORT_MATCH_MULTI | 多个端口。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_PORT_MATCH_MULTI--><!--Device-OH_TRAFFICFILTER_PORT_MATCH_MULTI-End--> |
 
 ### OH_TrafficFilter_HookPoint
 
@@ -183,9 +187,9 @@ enum OH_TrafficFilter_HookPoint
 
 **描述：**
 
-钩子点类型，指定规则在网络协议栈中生效的位置。报文经过内核网络协议栈时会在不同阶段触发钩子点，规则在对应钩子点处对报文进行拦截。例如INPUT链处理进入本机的报文，OUTPUT链处理本机发出的报文。
+钩子点类型，指定规则在网络协议栈中生效的位置。 报文经过内核网络协议栈时会在不同阶段触发钩子点，规则在对应钩子点处对报文进行拦截。 例如INPUT链处理进入本机的报文，OUTPUT链处理本机发出的报文。
 
-<!--Device-OH_TrafficFilter_HookPoint--><!--Device-OH_TrafficFilter_HookPoint-End-->
+<!--Device-enum OH_TrafficFilter_HookPoint--><!--Device-enum OH_TrafficFilter_HookPoint-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -193,11 +197,11 @@ enum OH_TrafficFilter_HookPoint
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TRAFFICFILTER_HOOK_INPUT = 0 | INPUT链，处理进入本机的报文。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_HOOK_OUTPUT | OUTPUT链，处理本机发出的报文。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_HOOK_FORWARD | FORWARD链，处理本机转发的报文。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_HOOK_PREROUTING | PREROUTING链，处理刚到达网卡、尚未路由的报文。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_HOOK_POSTROUTING | POSTROUTING链，处理即将从网卡发出的报文。<br>**起始版本：** 26.0.0 |
+| OH_TRAFFICFILTER_HOOK_INPUT = 0 | INPUT链，处理进入本机的报文。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_HOOK_INPUT = 0--><!--Device-OH_TRAFFICFILTER_HOOK_INPUT = 0-End--> |
+| OH_TRAFFICFILTER_HOOK_OUTPUT | OUTPUT链，处理本机发出的报文。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_HOOK_OUTPUT--><!--Device-OH_TRAFFICFILTER_HOOK_OUTPUT-End--> |
+| OH_TRAFFICFILTER_HOOK_FORWARD | FORWARD链，处理本机转发的报文。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_HOOK_FORWARD--><!--Device-OH_TRAFFICFILTER_HOOK_FORWARD-End--> |
+| OH_TRAFFICFILTER_HOOK_PREROUTING | PREROUTING链，处理刚到达网卡、尚未路由的报文。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_HOOK_PREROUTING--><!--Device-OH_TRAFFICFILTER_HOOK_PREROUTING-End--> |
+| OH_TRAFFICFILTER_HOOK_POSTROUTING | POSTROUTING链，处理即将从网卡发出的报文。<br>**起始版本：** 26.0.0<br><!--Device-OH_TRAFFICFILTER_HOOK_POSTROUTING--><!--Device-OH_TRAFFICFILTER_HOOK_POSTROUTING-End--> |
 
 ### OH_TrafficFilter_PacketDecision
 
@@ -207,9 +211,9 @@ enum OH_TrafficFilter_PacketDecision
 
 **描述：**
 
-报文决策类型
+报文处理决策类型。
 
-<!--Device-OH_TrafficFilter_PacketDecision--><!--Device-OH_TrafficFilter_PacketDecision-End-->
+<!--Device-enum OH_TrafficFilter_PacketDecision--><!--Device-enum OH_TrafficFilter_PacketDecision-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -217,8 +221,8 @@ enum OH_TrafficFilter_PacketDecision
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TRAFFICFILTER_DECISION_ACCEPT = 0 | 接收报文<br>**起始版本：** 26.0.1 |
-| OH_TRAFFICFILTER_DECISION_DROP | 丢弃报文<br>**起始版本：** 26.0.1 |
+| OH_TRAFFICFILTER_DECISION_ACCEPT = 0 | 接收报文。<br>**起始版本：** 26.0.1<br><!--Device-OH_TRAFFICFILTER_DECISION_ACCEPT = 0--><!--Device-OH_TRAFFICFILTER_DECISION_ACCEPT = 0-End--> |
+| OH_TRAFFICFILTER_DECISION_DROP | 丢弃报文。<br>**起始版本：** 26.0.1<br><!--Device-OH_TRAFFICFILTER_DECISION_DROP--><!--Device-OH_TRAFFICFILTER_DECISION_DROP-End--> |
 
 ### OH_TrafficFilter_PacketCopyMode
 
@@ -228,9 +232,9 @@ enum OH_TrafficFilter_PacketCopyMode
 
 **描述：**
 
-报文拷贝模式枚举
+报文拷贝模式枚举。
 
-<!--Device-OH_TrafficFilter_PacketCopyMode--><!--Device-OH_TrafficFilter_PacketCopyMode-End-->
+<!--Device-enum OH_TrafficFilter_PacketCopyMode--><!--Device-enum OH_TrafficFilter_PacketCopyMode-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -238,10 +242,10 @@ enum OH_TrafficFilter_PacketCopyMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TRAFFICFILTER_COPY_MODE_META = 0 | 仅拷贝元数据（不拷贝报文数据）<br>**起始版本：** 26.0.1 |
-| OH_TRAFFICFILTER_COPY_MODE_HEADER = 1 | 仅拷贝报文头（由packetCopyLen指定）<br>**起始版本：** 26.0.1 |
-| OH_TRAFFICFILTER_COPY_MODE_FULL = 2 | 拷贝整个报文<br>**起始版本：** 26.0.1 |
-| OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3 | 按指定最大长度拷贝报文<br>**起始版本：** 26.0.1 |
+| OH_TRAFFICFILTER_COPY_MODE_META = 0 | 仅拷贝元数据（不拷贝报文数据）。<br>**起始版本：** 26.0.1<br><!--Device-OH_TRAFFICFILTER_COPY_MODE_META = 0--><!--Device-OH_TRAFFICFILTER_COPY_MODE_META = 0-End--> |
+| OH_TRAFFICFILTER_COPY_MODE_HEADER = 1 | 仅拷贝报文头（由packetCopyLen指定）。<br>**起始版本：** 26.0.1<br><!--Device-OH_TRAFFICFILTER_COPY_MODE_HEADER = 1--><!--Device-OH_TRAFFICFILTER_COPY_MODE_HEADER = 1-End--> |
+| OH_TRAFFICFILTER_COPY_MODE_FULL = 2 | 拷贝整个报文。<br>**起始版本：** 26.0.1<br><!--Device-OH_TRAFFICFILTER_COPY_MODE_FULL = 2--><!--Device-OH_TRAFFICFILTER_COPY_MODE_FULL = 2-End--> |
+| OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3 | 按指定最大长度拷贝报文。<br>**起始版本：** 26.0.1<br><!--Device-OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3--><!--Device-OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3-End--> |
 
 
 ## 函数说明
@@ -254,7 +258,7 @@ typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const
 
 **描述：**
 
-报文回调函数类型
+报文回调函数类型。
 
 <!--Device-typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)--><!--Device-typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)-End-->
 
@@ -266,13 +270,13 @@ typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md)* packet | 报文描述符 |
-| void* userData | 用户数据 |
+| [const OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md)* packet | 报文描述符。 |
+| void* userData | 用户数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_TrafficFilter_PacketDecision](capi-net-trafficfilter-type-h.md#oh_trafficfilter_packetdecision) | 报文决策（接收或丢弃） |
+| [OH_TrafficFilter_PacketDecision](capi-net-trafficfilter-type-h.md#oh_trafficfilter_packetdecision) | 报文决策（接收或丢弃）。 |
 
 

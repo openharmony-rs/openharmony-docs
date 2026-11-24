@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| uint32_t numFramesPerBatch |  |
-| uint32_t presentConfigFeedback |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| uint32_t numFramesPerBatch | <!--Device-uint32_t numFramesPerBatch--><!--Device-uint32_t numFramesPerBatch-End--> |
+| uint32_t presentConfigFeedback | <!--Device-uint32_t presentConfigFeedback--><!--Device-uint32_t presentConfigFeedback-End--> |
 
 

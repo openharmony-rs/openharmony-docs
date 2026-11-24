@@ -34,7 +34,7 @@ enum ArkUI_ImageSpanAlignment
 
 Enumerates image alignment modes based on text.
 
-<!--Device-ArkUI_ImageSpanAlignment--><!--Device-ArkUI_ImageSpanAlignment-End-->
+<!--Device-enum ArkUI_ImageSpanAlignment--><!--Device-enum ArkUI_ImageSpanAlignment-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,10 +42,10 @@ Enumerates image alignment modes based on text.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0 | The image is bottom aligned with the text baseline. |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM | The image is bottom aligned with the text. |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER | The image is centered aligned with the text. |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_TOP | The image is top aligned with the text. |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH | The image alignment mode follows the text component's alignment mode.<br>**Since**: 20 |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0 | The image is bottom aligned with the text baseline.<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM | The image is bottom aligned with the text.<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER | The image is centered aligned with the text.<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_TOP | The image is top aligned with the text.<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_TOP--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_TOP-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH | The image alignment mode follows the text component's alignment mode.<br>**Since**: 20<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH-End--> |
 
 

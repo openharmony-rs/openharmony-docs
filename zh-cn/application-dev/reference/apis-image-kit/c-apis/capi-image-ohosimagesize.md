@@ -24,7 +24,7 @@ struct OhosImageSize {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t width | 像素中的图像宽度，用pixels表示。 |
-| int32_t height | 像素中的图像高度，用pixels表示。 |
+| int32_t width | 像素中的图像宽度，用pixels表示。<br><!--Device-int32_t width--><!--Device-int32_t width-End--> |
+| int32_t height | 像素中的图像高度，用pixels表示。<br><!--Device-int32_t height--><!--Device-int32_t height-End--> |
 
 

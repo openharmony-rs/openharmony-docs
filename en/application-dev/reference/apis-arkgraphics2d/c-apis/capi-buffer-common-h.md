@@ -47,7 +47,7 @@ enum OH_NativeBuffer_ColorSpace
 
 Indicates the color space of a native buffer. Move from native_buffer.h to native_common.h
 
-<!--Device-OH_NativeBuffer_ColorSpace--><!--Device-OH_NativeBuffer_ColorSpace-End-->
+<!--Device-enum OH_NativeBuffer_ColorSpace--><!--Device-enum OH_NativeBuffer_ColorSpace-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -55,40 +55,40 @@ Indicates the color space of a native buffer. Move from native_buffer.h to nativ
 
 | Enum item | Description |
 | -- | -- |
-| OH_COLORSPACE_NONE | None color space |
-| OH_COLORSPACE_BT601_EBU_FULL | COLORPRIMARIES_BT601_P \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_P << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_BT601_SMPTE_C_FULL | COLORPRIMARIES_BT601_N \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_BT709_FULL | COLORPRIMARIES_BT709 \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT709 << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_BT2020_HLG_FULL | COLORPRIMARIES_BT2020 \| (TRANSFUNC_HLG << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_BT2020_PQ_FULL | COLORPRIMARIES_BT2020 \| (TRANSFUNC_PQ << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_BT601_EBU_LIMIT | COLORPRIMARIES_BT601_P \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_P << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_BT601_SMPTE_C_LIMIT | COLORPRIMARIES_BT601_N \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_BT709_LIMIT | COLORPRIMARIES_BT709 \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT709 << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_BT2020_HLG_LIMIT | COLORPRIMARIES_BT2020 \| (TRANSFUNC_HLG << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_BT2020_PQ_LIMIT | COLORPRIMARIES_BT2020 \| (TRANSFUNC_PQ << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_SRGB_FULL | COLORPRIMARIES_SRGB \| (TRANSFUNC_SRGB << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_P3_FULL | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_SRGB << 8) \| (MATRIX_P3 << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_P3_HLG_FULL | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_HLG << 8) \| (MATRIX_P3 << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_P3_PQ_FULL | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_PQ << 8) \| (MATRIX_P3 << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_ADOBERGB_FULL | COLORPRIMARIES_ADOBERGB \| (TRANSFUNC_ADOBERGB << 8) \| (MATRIX_ADOBERGB << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_SRGB_LIMIT | COLORPRIMARIES_SRGB \| (TRANSFUNC_SRGB << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_P3_LIMIT | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_SRGB << 8) \| (MATRIX_P3 << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_P3_HLG_LIMIT | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_HLG << 8) \| (MATRIX_P3 << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_P3_PQ_LIMIT | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_PQ << 8) \| (MATRIX_P3 << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_ADOBERGB_LIMIT | COLORPRIMARIES_ADOBERGB \| (TRANSFUNC_ADOBERGB << 8) \| (MATRIX_ADOBERGB << 16) \| (RANGE_LIMITED << 21) |
-| OH_COLORSPACE_LINEAR_SRGB | COLORPRIMARIES_SRGB \| (TRANSFUNC_LINEAR << 8) |
-| OH_COLORSPACE_LINEAR_BT709 | equal to OH_COLORSPACE_LINEAR_SRGB |
-| OH_COLORSPACE_LINEAR_P3 | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_LINEAR << 8) |
-| OH_COLORSPACE_LINEAR_BT2020 | COLORPRIMARIES_BT2020 \| (TRANSFUNC_LINEAR << 8) |
-| OH_COLORSPACE_DISPLAY_SRGB | equal to OH_COLORSPACE_SRGB_FULL |
-| OH_COLORSPACE_DISPLAY_P3_SRGB | equal to OH_COLORSPACE_P3_FULL |
-| OH_COLORSPACE_DISPLAY_P3_HLG | equal to OH_COLORSPACE_P3_HLG_FULL |
-| OH_COLORSPACE_DISPLAY_P3_PQ | equal to OH_COLORSPACE_P3_PQ_FULL |
-| OH_COLORSPACE_DISPLAY_BT2020_SRGB | COLORPRIMARIES_BT2020 \| (TRANSFUNC_SRGB << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_FULL << 21) |
-| OH_COLORSPACE_DISPLAY_BT2020_HLG | equal to OH_COLORSPACE_BT2020_HLG_FULL |
-| OH_COLORSPACE_DISPLAY_BT2020_PQ | equal to OH_COLORSPACE_BT2020_PQ_FULL |
-| OH_COLORSPACE_BT2020_LOG_FULL | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_FULL << 21)<br>**Since**: 26.0.0 |
-| OH_COLORSPACE_BT2020_LOG_LIMIT | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_LIMITED << 21)<br>**Since**: 26.0.0 |
+| OH_COLORSPACE_NONE | None color space<br><!--Device-OH_COLORSPACE_NONE--><!--Device-OH_COLORSPACE_NONE-End--> |
+| OH_COLORSPACE_BT601_EBU_FULL | COLORPRIMARIES_BT601_P \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_P << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_BT601_EBU_FULL--><!--Device-OH_COLORSPACE_BT601_EBU_FULL-End--> |
+| OH_COLORSPACE_BT601_SMPTE_C_FULL | COLORPRIMARIES_BT601_N \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_BT601_SMPTE_C_FULL--><!--Device-OH_COLORSPACE_BT601_SMPTE_C_FULL-End--> |
+| OH_COLORSPACE_BT709_FULL | COLORPRIMARIES_BT709 \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT709 << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_BT709_FULL--><!--Device-OH_COLORSPACE_BT709_FULL-End--> |
+| OH_COLORSPACE_BT2020_HLG_FULL | COLORPRIMARIES_BT2020 \| (TRANSFUNC_HLG << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_BT2020_HLG_FULL--><!--Device-OH_COLORSPACE_BT2020_HLG_FULL-End--> |
+| OH_COLORSPACE_BT2020_PQ_FULL | COLORPRIMARIES_BT2020 \| (TRANSFUNC_PQ << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_BT2020_PQ_FULL--><!--Device-OH_COLORSPACE_BT2020_PQ_FULL-End--> |
+| OH_COLORSPACE_BT601_EBU_LIMIT | COLORPRIMARIES_BT601_P \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_P << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_BT601_EBU_LIMIT--><!--Device-OH_COLORSPACE_BT601_EBU_LIMIT-End--> |
+| OH_COLORSPACE_BT601_SMPTE_C_LIMIT | COLORPRIMARIES_BT601_N \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_BT601_SMPTE_C_LIMIT--><!--Device-OH_COLORSPACE_BT601_SMPTE_C_LIMIT-End--> |
+| OH_COLORSPACE_BT709_LIMIT | COLORPRIMARIES_BT709 \| (TRANSFUNC_BT709 << 8) \| (MATRIX_BT709 << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_BT709_LIMIT--><!--Device-OH_COLORSPACE_BT709_LIMIT-End--> |
+| OH_COLORSPACE_BT2020_HLG_LIMIT | COLORPRIMARIES_BT2020 \| (TRANSFUNC_HLG << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_BT2020_HLG_LIMIT--><!--Device-OH_COLORSPACE_BT2020_HLG_LIMIT-End--> |
+| OH_COLORSPACE_BT2020_PQ_LIMIT | COLORPRIMARIES_BT2020 \| (TRANSFUNC_PQ << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_BT2020_PQ_LIMIT--><!--Device-OH_COLORSPACE_BT2020_PQ_LIMIT-End--> |
+| OH_COLORSPACE_SRGB_FULL | COLORPRIMARIES_SRGB \| (TRANSFUNC_SRGB << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_SRGB_FULL--><!--Device-OH_COLORSPACE_SRGB_FULL-End--> |
+| OH_COLORSPACE_P3_FULL | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_SRGB << 8) \| (MATRIX_P3 << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_P3_FULL--><!--Device-OH_COLORSPACE_P3_FULL-End--> |
+| OH_COLORSPACE_P3_HLG_FULL | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_HLG << 8) \| (MATRIX_P3 << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_P3_HLG_FULL--><!--Device-OH_COLORSPACE_P3_HLG_FULL-End--> |
+| OH_COLORSPACE_P3_PQ_FULL | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_PQ << 8) \| (MATRIX_P3 << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_P3_PQ_FULL--><!--Device-OH_COLORSPACE_P3_PQ_FULL-End--> |
+| OH_COLORSPACE_ADOBERGB_FULL | COLORPRIMARIES_ADOBERGB \| (TRANSFUNC_ADOBERGB << 8) \| (MATRIX_ADOBERGB << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_ADOBERGB_FULL--><!--Device-OH_COLORSPACE_ADOBERGB_FULL-End--> |
+| OH_COLORSPACE_SRGB_LIMIT | COLORPRIMARIES_SRGB \| (TRANSFUNC_SRGB << 8) \| (MATRIX_BT601_N << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_SRGB_LIMIT--><!--Device-OH_COLORSPACE_SRGB_LIMIT-End--> |
+| OH_COLORSPACE_P3_LIMIT | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_SRGB << 8) \| (MATRIX_P3 << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_P3_LIMIT--><!--Device-OH_COLORSPACE_P3_LIMIT-End--> |
+| OH_COLORSPACE_P3_HLG_LIMIT | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_HLG << 8) \| (MATRIX_P3 << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_P3_HLG_LIMIT--><!--Device-OH_COLORSPACE_P3_HLG_LIMIT-End--> |
+| OH_COLORSPACE_P3_PQ_LIMIT | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_PQ << 8) \| (MATRIX_P3 << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_P3_PQ_LIMIT--><!--Device-OH_COLORSPACE_P3_PQ_LIMIT-End--> |
+| OH_COLORSPACE_ADOBERGB_LIMIT | COLORPRIMARIES_ADOBERGB \| (TRANSFUNC_ADOBERGB << 8) \| (MATRIX_ADOBERGB << 16) \| (RANGE_LIMITED << 21)<br><!--Device-OH_COLORSPACE_ADOBERGB_LIMIT--><!--Device-OH_COLORSPACE_ADOBERGB_LIMIT-End--> |
+| OH_COLORSPACE_LINEAR_SRGB | COLORPRIMARIES_SRGB \| (TRANSFUNC_LINEAR << 8)<br><!--Device-OH_COLORSPACE_LINEAR_SRGB--><!--Device-OH_COLORSPACE_LINEAR_SRGB-End--> |
+| OH_COLORSPACE_LINEAR_BT709 | equal to OH_COLORSPACE_LINEAR_SRGB<br><!--Device-OH_COLORSPACE_LINEAR_BT709--><!--Device-OH_COLORSPACE_LINEAR_BT709-End--> |
+| OH_COLORSPACE_LINEAR_P3 | COLORPRIMARIES_P3_D65 \| (TRANSFUNC_LINEAR << 8)<br><!--Device-OH_COLORSPACE_LINEAR_P3--><!--Device-OH_COLORSPACE_LINEAR_P3-End--> |
+| OH_COLORSPACE_LINEAR_BT2020 | COLORPRIMARIES_BT2020 \| (TRANSFUNC_LINEAR << 8)<br><!--Device-OH_COLORSPACE_LINEAR_BT2020--><!--Device-OH_COLORSPACE_LINEAR_BT2020-End--> |
+| OH_COLORSPACE_DISPLAY_SRGB | equal to OH_COLORSPACE_SRGB_FULL<br><!--Device-OH_COLORSPACE_DISPLAY_SRGB--><!--Device-OH_COLORSPACE_DISPLAY_SRGB-End--> |
+| OH_COLORSPACE_DISPLAY_P3_SRGB | equal to OH_COLORSPACE_P3_FULL<br><!--Device-OH_COLORSPACE_DISPLAY_P3_SRGB--><!--Device-OH_COLORSPACE_DISPLAY_P3_SRGB-End--> |
+| OH_COLORSPACE_DISPLAY_P3_HLG | equal to OH_COLORSPACE_P3_HLG_FULL<br><!--Device-OH_COLORSPACE_DISPLAY_P3_HLG--><!--Device-OH_COLORSPACE_DISPLAY_P3_HLG-End--> |
+| OH_COLORSPACE_DISPLAY_P3_PQ | equal to OH_COLORSPACE_P3_PQ_FULL<br><!--Device-OH_COLORSPACE_DISPLAY_P3_PQ--><!--Device-OH_COLORSPACE_DISPLAY_P3_PQ-End--> |
+| OH_COLORSPACE_DISPLAY_BT2020_SRGB | COLORPRIMARIES_BT2020 \| (TRANSFUNC_SRGB << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_FULL << 21)<br><!--Device-OH_COLORSPACE_DISPLAY_BT2020_SRGB--><!--Device-OH_COLORSPACE_DISPLAY_BT2020_SRGB-End--> |
+| OH_COLORSPACE_DISPLAY_BT2020_HLG | equal to OH_COLORSPACE_BT2020_HLG_FULL<br><!--Device-OH_COLORSPACE_DISPLAY_BT2020_HLG--><!--Device-OH_COLORSPACE_DISPLAY_BT2020_HLG-End--> |
+| OH_COLORSPACE_DISPLAY_BT2020_PQ | equal to OH_COLORSPACE_BT2020_PQ_FULL<br><!--Device-OH_COLORSPACE_DISPLAY_BT2020_PQ--><!--Device-OH_COLORSPACE_DISPLAY_BT2020_PQ-End--> |
+| OH_COLORSPACE_BT2020_LOG_FULL | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_FULL << 21)<br>**Since**: 26.0.0<br><!--Device-OH_COLORSPACE_BT2020_LOG_FULL--><!--Device-OH_COLORSPACE_BT2020_LOG_FULL-End--> |
+| OH_COLORSPACE_BT2020_LOG_LIMIT | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_LIMITED << 21)<br>**Since**: 26.0.0<br><!--Device-OH_COLORSPACE_BT2020_LOG_LIMIT--><!--Device-OH_COLORSPACE_BT2020_LOG_LIMIT-End--> |
 
 ### OH_NativeBuffer_MetadataType
 
@@ -100,7 +100,7 @@ enum OH_NativeBuffer_MetadataType
 
 Indicates the HDR metadata type of a native buffer.
 
-<!--Device-OH_NativeBuffer_MetadataType--><!--Device-OH_NativeBuffer_MetadataType-End-->
+<!--Device-enum OH_NativeBuffer_MetadataType--><!--Device-enum OH_NativeBuffer_MetadataType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -108,14 +108,14 @@ Indicates the HDR metadata type of a native buffer.
 
 | Enum item | Description |
 | -- | -- |
-| OH_VIDEO_HDR_HLG | HLG |
-| OH_VIDEO_HDR_HDR10 | HDR10 |
-| OH_VIDEO_HDR_VIVID | HDR VIVID |
-| OH_IMAGE_HDR_VIVID_DUAL | HDR IMAGE DUAL.<br>**Since**: 22 |
-| OH_IMAGE_HDR_VIVID_SINGLE | HDR IMAGE SINGLE.<br>**Since**: 22 |
-| OH_IMAGE_HDR_ISO_DUAL | HDR IMAGE ISO DUAL.<br>**Since**: 23 |
-| OH_IMAGE_HDR_ISO_SINGLE | HDR IMAGE ISO SINGLE.<br>**Since**: 23 |
-| OH_VIDEO_NONE = -1 | NONE Metadata<br>**Since**: 13 |
+| OH_VIDEO_HDR_HLG | HLG<br><!--Device-OH_VIDEO_HDR_HLG--><!--Device-OH_VIDEO_HDR_HLG-End--> |
+| OH_VIDEO_HDR_HDR10 | HDR10<br><!--Device-OH_VIDEO_HDR_HDR10--><!--Device-OH_VIDEO_HDR_HDR10-End--> |
+| OH_VIDEO_HDR_VIVID | HDR VIVID<br><!--Device-OH_VIDEO_HDR_VIVID--><!--Device-OH_VIDEO_HDR_VIVID-End--> |
+| OH_IMAGE_HDR_VIVID_DUAL | HDR IMAGE DUAL.<br>**Since**: 22<br><!--Device-OH_IMAGE_HDR_VIVID_DUAL--><!--Device-OH_IMAGE_HDR_VIVID_DUAL-End--> |
+| OH_IMAGE_HDR_VIVID_SINGLE | HDR IMAGE SINGLE.<br>**Since**: 22<br><!--Device-OH_IMAGE_HDR_VIVID_SINGLE--><!--Device-OH_IMAGE_HDR_VIVID_SINGLE-End--> |
+| OH_IMAGE_HDR_ISO_DUAL | HDR IMAGE ISO DUAL.<br>**Since**: 23<br><!--Device-OH_IMAGE_HDR_ISO_DUAL--><!--Device-OH_IMAGE_HDR_ISO_DUAL-End--> |
+| OH_IMAGE_HDR_ISO_SINGLE | HDR IMAGE ISO SINGLE.<br>**Since**: 23<br><!--Device-OH_IMAGE_HDR_ISO_SINGLE--><!--Device-OH_IMAGE_HDR_ISO_SINGLE-End--> |
+| OH_VIDEO_NONE = -1 | NONE Metadata<br>**Since**: 13<br><!--Device-OH_VIDEO_NONE = -1--><!--Device-OH_VIDEO_NONE = -1-End--> |
 
 ### OH_NativeBuffer_MetadataKey
 
@@ -127,7 +127,7 @@ enum OH_NativeBuffer_MetadataKey
 
 Indicates the descriptive information of a native buffer, such as HDR metadata, ROI metadata, etc.
 
-<!--Device-OH_NativeBuffer_MetadataKey--><!--Device-OH_NativeBuffer_MetadataKey-End-->
+<!--Device-enum OH_NativeBuffer_MetadataKey--><!--Device-enum OH_NativeBuffer_MetadataKey-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -135,10 +135,10 @@ Indicates the descriptive information of a native buffer, such as HDR metadata, 
 
 | Enum item | Description |
 | -- | -- |
-| OH_HDR_METADATA_TYPE | value: OH_NativeBuffer_MetadataType |
-| OH_HDR_STATIC_METADATA | value: OH_NativeBuffer_StaticMetadata |
-| OH_HDR_DYNAMIC_METADATA | byte stream of SEI in video stream |
-| OH_REGION_OF_INTEREST_METADATA | Region of interest(ROI) metadata is used to configure ROI feature in video encoding. Value type is string in the format "Top1,Left1-Bottom1,Right1[=Params1];Top2,Left2-Bottom2,Right2[=Params2];". Each "Top,Left-Bottom,Right" represents the coordinate information of one ROI. The "[=Params]" is optional. The format of "[=Params]" varies by version: 1. Prior to version 26.0.0: Only a single int32_t value representing the quantization parameter offset is supported (e.g., "=QpOffset"). 2. Since version 26.0.0: A Key-Value format is additionally supported and recommended. It uses comma-separated key-value pairs (e.g., "=dqp:-6,slb:1"). Supported keys: - "dqp": Quantization parameter offset. - "slb": Semantic label. The value must correspond to [OH_VideoMetadataRoiSemanticLabel](../../apis-avcodec-kit/c-apis/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel). If "=Params" is omitted entirely, like "Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2=dqp:-6;", the encoder will use the default parameters to perform the ROI encoding on the first ROI and use the specified parameters on the second ROI. Note that the number of ROIs that can be applied simultaneously does not exceed six, and the total area must not exceed one-fifth of the total image area.<br>**Since**: 22 |
+| OH_HDR_METADATA_TYPE | value: OH_NativeBuffer_MetadataType<br><!--Device-OH_HDR_METADATA_TYPE--><!--Device-OH_HDR_METADATA_TYPE-End--> |
+| OH_HDR_STATIC_METADATA | value: OH_NativeBuffer_StaticMetadata<br><!--Device-OH_HDR_STATIC_METADATA--><!--Device-OH_HDR_STATIC_METADATA-End--> |
+| OH_HDR_DYNAMIC_METADATA | byte stream of SEI in video stream<br><!--Device-OH_HDR_DYNAMIC_METADATA--><!--Device-OH_HDR_DYNAMIC_METADATA-End--> |
+| OH_REGION_OF_INTEREST_METADATA | Region of interest(ROI) metadata is used to configure ROI feature in video encoding. Value type is string in the format "Top1,Left1-Bottom1,Right1[=Params1];Top2,Left2-Bottom2,Right2[=Params2];". Each "Top,Left-Bottom,Right" represents the coordinate information of one ROI. The "[=Params]" is optional. The format of "[=Params]" varies by version: 1. Prior to version 26.0.0: Only a single int32_t value representing the quantization parameter offset is supported (e.g., "=QpOffset"). 2. Since version 26.0.0: A Key-Value format is additionally supported and recommended. It uses comma-separated key-value pairs (e.g., "=dqp:-6,slb:1"). Supported keys: - "dqp": Quantization parameter offset. - "slb": Semantic label. The value must correspond to [OH_VideoMetadataRoiSemanticLabel](../../apis-avcodec-kit/c-apis/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel). If "=Params" is omitted entirely, like "Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2=dqp:-6;", the encoder will use the default parameters to perform the ROI encoding on the first ROI and use the specified parameters on the second ROI. Note that the number of ROIs that can be applied simultaneously does not exceed six, and the total area must not exceed one-fifth of the total image area.<br>**Since**: 22<br><!--Device-OH_REGION_OF_INTEREST_METADATA--><!--Device-OH_REGION_OF_INTEREST_METADATA-End--> |
 
 ### OH_NativeBuffer_Format
 
@@ -150,7 +150,7 @@ enum OH_NativeBuffer_Format
 
 Indicates the format of a native buffer.
 
-<!--Device-OH_NativeBuffer_Format--><!--Device-OH_NativeBuffer_Format-End-->
+<!--Device-enum OH_NativeBuffer_Format--><!--Device-enum OH_NativeBuffer_Format-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -158,50 +158,50 @@ Indicates the format of a native buffer.
 
 | Enum item | Description |
 | -- | -- |
-| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 | CLUT8 format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_CLUT1 | CLUT1 format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_CLUT4 | CLUT4 format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565 format |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658 format |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444 format |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_4444 | RGBA4444 format |
-| NATIVEBUFFER_PIXEL_FMT_RGB_444 | RGB444 format |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_5551 | RGBX5551 format |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5551 | RGBA5551 format |
-| NATIVEBUFFER_PIXEL_FMT_RGB_555 | RGB555 format |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_8888 | RGBX8888 format |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | RGBA8888 format |
-| NATIVEBUFFER_PIXEL_FMT_RGB_888 | RGB888 format |
-| NATIVEBUFFER_PIXEL_FMT_BGR_565 | BGR565 format |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_4444 | BGRX4444 format |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_4444 | BGRA4444 format |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_5551 | BGRX5551 format |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551 format |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888 format |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888 format |
-| NATIVEBUFFER_PIXEL_FMT_YUV_422_I | YUV422 interleaved format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP | YCBCR422 semi-plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP | YCRCB422 semi-plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP | YCBCR420 semi-plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP | YCRCB420 semi-plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P | YCBCR422 plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P | YCRCB422 plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P | YCBCR420 plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P | YCRCB420 plannar format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG | YUYV422 packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB format<br>**Since**: 15 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float format<br>**Since**: 15 |
-| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8 format<br>**Since**: 20 |
-| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16 format<br>**Since**: 20 |
-| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask format<br>**Since**: 12 |
-| NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | Invalid pixel format |
+| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 | CLUT8 format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0--><!--Device-NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0-End--> |
+| NATIVEBUFFER_PIXEL_FMT_CLUT1 | CLUT1 format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_CLUT1--><!--Device-NATIVEBUFFER_PIXEL_FMT_CLUT1-End--> |
+| NATIVEBUFFER_PIXEL_FMT_CLUT4 | CLUT4 format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_CLUT4--><!--Device-NATIVEBUFFER_PIXEL_FMT_CLUT4-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_5658--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_5658-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBX_4444--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBX_4444-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_4444 | RGBA4444 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_4444--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_4444-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGB_444 | RGB444 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_444--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_444-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_5551 | RGBX5551 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBX_5551--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBX_5551-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_5551 | RGBA5551 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_5551--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_5551-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGB_555 | RGB555 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_555--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_555-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_8888 | RGBX8888 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBX_8888--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBX_8888-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | RGBA8888 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_8888--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_8888-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGB_888 | RGB888 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_888--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGB_888-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BGR_565 | BGR565 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BGR_565--><!--Device-NATIVEBUFFER_PIXEL_FMT_BGR_565-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_4444 | BGRX4444 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRX_4444--><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRX_4444-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_4444 | BGRA4444 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRA_4444--><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRA_4444-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_5551 | BGRX5551 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRX_5551--><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRX_5551-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRA_5551--><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRA_5551-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRX_8888--><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRX_8888-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888 format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRA_8888--><!--Device-NATIVEBUFFER_PIXEL_FMT_BGRA_8888-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YUV_422_I | YUV422 interleaved format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YUV_422_I--><!--Device-NATIVEBUFFER_PIXEL_FMT_YUV_422_I-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP | YCBCR422 semi-plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP | YCRCB422 semi-plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP | YCBCR420 semi-plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP | YCRCB420 semi-plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P | YCBCR422 plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P | YCRCB422 plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P | YCBCR420 plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P | YCRCB420 plannar format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG | YUYV422 packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG--><!--Device-NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG-End--> |
+| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG--><!--Device-NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG--><!--Device-NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG-End--> |
+| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG--><!--Device-NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_1010102--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA_1010102-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_P010--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCBCR_P010-End--> |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_P010--><!--Device-NATIVEBUFFER_PIXEL_FMT_YCRCB_P010-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RAW10--><!--Device-NATIVEBUFFER_PIXEL_FMT_RAW10-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB format<br>**Since**: 15<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BLOB--><!--Device-NATIVEBUFFER_PIXEL_FMT_BLOB-End--> |
+| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float format<br>**Since**: 15<br><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT--><!--Device-NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT-End--> |
+| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8 format<br>**Since**: 20<br><!--Device-NATIVEBUFFER_PIXEL_FMT_Y8 = 40--><!--Device-NATIVEBUFFER_PIXEL_FMT_Y8 = 40-End--> |
+| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16 format<br>**Since**: 20<br><!--Device-NATIVEBUFFER_PIXEL_FMT_Y16 = 41--><!--Device-NATIVEBUFFER_PIXEL_FMT_Y16 = 41-End--> |
+| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask format<br>**Since**: 12<br><!--Device-NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000--><!--Device-NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000-End--> |
+| NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | Invalid pixel format<br><!--Device-NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF--><!--Device-NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF-End--> |
 
 ### OH_NativeBuffer_TransformType
 
@@ -213,7 +213,7 @@ enum OH_NativeBuffer_TransformType
 
 Indicates the transform type of a native buffer.
 
-<!--Device-OH_NativeBuffer_TransformType--><!--Device-OH_NativeBuffer_TransformType-End-->
+<!--Device-enum OH_NativeBuffer_TransformType--><!--Device-enum OH_NativeBuffer_TransformType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -221,18 +221,18 @@ Indicates the transform type of a native buffer.
 
 | Enum item | Description |
 | -- | -- |
-| NATIVEBUFFER_ROTATE_NONE = 0 | No rotation |
-| NATIVEBUFFER_ROTATE_90 | Rotation by 90 degrees |
-| NATIVEBUFFER_ROTATE_180 | Rotation by 180 degrees |
-| NATIVEBUFFER_ROTATE_270 | Rotation by 270 degrees |
-| NATIVEBUFFER_FLIP_H | Flip horizontally |
-| NATIVEBUFFER_FLIP_V | Flip vertically |
-| NATIVEBUFFER_FLIP_H_ROT90 | Flip horizontally and rotate 90 degrees |
-| NATIVEBUFFER_FLIP_V_ROT90 | Flip vertically and rotate 90 degrees |
-| NATIVEBUFFER_FLIP_H_ROT180 | Flip horizontally and rotate 180 degrees |
-| NATIVEBUFFER_FLIP_V_ROT180 | Flip vertically and rotate 180 degrees |
-| NATIVEBUFFER_FLIP_H_ROT270 | Flip horizontally and rotate 270 degrees |
-| NATIVEBUFFER_FLIP_V_ROT270 | Flip vertically and rotate 270 degrees |
+| NATIVEBUFFER_ROTATE_NONE = 0 | No rotation<br><!--Device-NATIVEBUFFER_ROTATE_NONE = 0--><!--Device-NATIVEBUFFER_ROTATE_NONE = 0-End--> |
+| NATIVEBUFFER_ROTATE_90 | Rotation by 90 degrees<br><!--Device-NATIVEBUFFER_ROTATE_90--><!--Device-NATIVEBUFFER_ROTATE_90-End--> |
+| NATIVEBUFFER_ROTATE_180 | Rotation by 180 degrees<br><!--Device-NATIVEBUFFER_ROTATE_180--><!--Device-NATIVEBUFFER_ROTATE_180-End--> |
+| NATIVEBUFFER_ROTATE_270 | Rotation by 270 degrees<br><!--Device-NATIVEBUFFER_ROTATE_270--><!--Device-NATIVEBUFFER_ROTATE_270-End--> |
+| NATIVEBUFFER_FLIP_H | Flip horizontally<br><!--Device-NATIVEBUFFER_FLIP_H--><!--Device-NATIVEBUFFER_FLIP_H-End--> |
+| NATIVEBUFFER_FLIP_V | Flip vertically<br><!--Device-NATIVEBUFFER_FLIP_V--><!--Device-NATIVEBUFFER_FLIP_V-End--> |
+| NATIVEBUFFER_FLIP_H_ROT90 | Flip horizontally and rotate 90 degrees<br><!--Device-NATIVEBUFFER_FLIP_H_ROT90--><!--Device-NATIVEBUFFER_FLIP_H_ROT90-End--> |
+| NATIVEBUFFER_FLIP_V_ROT90 | Flip vertically and rotate 90 degrees<br><!--Device-NATIVEBUFFER_FLIP_V_ROT90--><!--Device-NATIVEBUFFER_FLIP_V_ROT90-End--> |
+| NATIVEBUFFER_FLIP_H_ROT180 | Flip horizontally and rotate 180 degrees<br><!--Device-NATIVEBUFFER_FLIP_H_ROT180--><!--Device-NATIVEBUFFER_FLIP_H_ROT180-End--> |
+| NATIVEBUFFER_FLIP_V_ROT180 | Flip vertically and rotate 180 degrees<br><!--Device-NATIVEBUFFER_FLIP_V_ROT180--><!--Device-NATIVEBUFFER_FLIP_V_ROT180-End--> |
+| NATIVEBUFFER_FLIP_H_ROT270 | Flip horizontally and rotate 270 degrees<br><!--Device-NATIVEBUFFER_FLIP_H_ROT270--><!--Device-NATIVEBUFFER_FLIP_H_ROT270-End--> |
+| NATIVEBUFFER_FLIP_V_ROT270 | Flip vertically and rotate 270 degrees<br><!--Device-NATIVEBUFFER_FLIP_V_ROT270--><!--Device-NATIVEBUFFER_FLIP_V_ROT270-End--> |
 
 ### OH_NativeBuffer_VideoDimensionType
 
@@ -244,7 +244,7 @@ enum OH_NativeBuffer_VideoDimensionType
 
 Indicates video dimension type.
 
-<!--Device-OH_NativeBuffer_VideoDimensionType--><!--Device-OH_NativeBuffer_VideoDimensionType-End-->
+<!--Device-enum OH_NativeBuffer_VideoDimensionType--><!--Device-enum OH_NativeBuffer_VideoDimensionType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -252,10 +252,10 @@ Indicates video dimension type.
 
 | Enum item | Description |
 | -- | -- |
-| OH_VIDEO_DIM_TYPE_2D = 0 | 2-dimension video |
-| OH_VIDEO_DIM_TYPE_3D_SBS | 3-dimension video, format: side by side |
-| OH_VIDEO_DIM_TYPE_3D_TAB | 3-dimension video, format: top and bottom |
-| OH_VIDEO_DIM_TYPE_BUTT | Invalid video dimension type |
+| OH_VIDEO_DIM_TYPE_2D = 0 | 2-dimension video<br><!--Device-OH_VIDEO_DIM_TYPE_2D = 0--><!--Device-OH_VIDEO_DIM_TYPE_2D = 0-End--> |
+| OH_VIDEO_DIM_TYPE_3D_SBS | 3-dimension video, format: side by side<br><!--Device-OH_VIDEO_DIM_TYPE_3D_SBS--><!--Device-OH_VIDEO_DIM_TYPE_3D_SBS-End--> |
+| OH_VIDEO_DIM_TYPE_3D_TAB | 3-dimension video, format: top and bottom<br><!--Device-OH_VIDEO_DIM_TYPE_3D_TAB--><!--Device-OH_VIDEO_DIM_TYPE_3D_TAB-End--> |
+| OH_VIDEO_DIM_TYPE_BUTT | Invalid video dimension type<br><!--Device-OH_VIDEO_DIM_TYPE_BUTT--><!--Device-OH_VIDEO_DIM_TYPE_BUTT-End--> |
 
 ### OH_NativeBuffer_3D_MetadataKey
 
@@ -267,7 +267,7 @@ enum OH_NativeBuffer_3D_MetadataKey
 
 Indicates the descriptive 3D information of a native buffer.
 
-<!--Device-OH_NativeBuffer_3D_MetadataKey--><!--Device-OH_NativeBuffer_3D_MetadataKey-End-->
+<!--Device-enum OH_NativeBuffer_3D_MetadataKey--><!--Device-enum OH_NativeBuffer_3D_MetadataKey-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -275,6 +275,6 @@ Indicates the descriptive 3D information of a native buffer.
 
 | Enum item | Description |
 | -- | -- |
-| OH_VIDEO_DIM_TYPE | value: the video dimension type of the native buffer |
+| OH_VIDEO_DIM_TYPE | value: the video dimension type of the native buffer<br><!--Device-OH_VIDEO_DIM_TYPE--><!--Device-OH_VIDEO_DIM_TYPE-End--> |
 
 

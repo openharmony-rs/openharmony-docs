@@ -24,6 +24,6 @@ The struct describes the callbacks used to listen for camera input errors.
 
 | Name | Description |
 | -- | -- |
-| [OH_CameraInput_OnError](capi-camera-input-h.md#oh_camerainput_onerror) onError | Camera input error event. |
+| [OH_CameraInput_OnError](capi-camera-input-h.md#oh_camerainput_onerror) onError | Camera input error event.<br><!--Device-OH_CameraInput_OnError onError--><!--Device-OH_CameraInput_OnError onError-End--> |
 
 

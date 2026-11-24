@@ -849,7 +849,7 @@ This API associates data with the currently running JSVM environment. data can l
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
 | void* data | The data item to make available to bindings of this instance. |
-| JSVM_Finalize finalizeCb | The function to call when the environment is being torn down. The function receives data so that it might free it. JSVM_Finalize provides more details. |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | The function to call when the environment is being torn down. The function receives data so that it might free it. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
 
 **Returns**:
@@ -1807,7 +1807,7 @@ This API allocates a JavaScript value with external data attached to it. This is
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | void* data | Raw pointer to the external data. |
-| JSVM_Finalize finalizeCb | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing an external value. |
 
@@ -4145,7 +4145,7 @@ Wraps a native instance in a JavaScript object. The native instance can be retri
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | The JavaScript object that will be the wrapper for the native object. |
 | void* nativeObject | The native instance that will be wrapped in the JavaScript object. |
-| JSVM_Finalize finalizeCb | Optional native callback that can be used to free the native instance when the JavaScript object has been garbage-collected. |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | Optional native callback that can be used to free the native instance when the JavaScript object has been garbage-collected. |
 | void* finalizeHint | Optional contextual hint that is passed to the finalize callback. properties, accessors, and methods on the class See JSVM_PropertyDescriptor. |
 | [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Optional reference to the wrapped object. |
 
@@ -4299,7 +4299,7 @@ This API can be called multiple times on a single JavaScript object.
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | The JavaScript object to which the native data will be attached. |
 | void* finalizeData | Optional data to be passed to finalizeCb. |
-| JSVM_Finalize finalizeCb | Native callback that will be used to free the native data when the JavaScript object has been garbage-collected. JSVM_Finalize provides more details. |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | Native callback that will be used to free the native data when the JavaScript object has been garbage-collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional contextual hint that is passed to the finalize callback. |
 | [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Optional reference to the JavaScript object. |
 
@@ -4749,7 +4749,7 @@ This function stops the CPU profiler and output to the stream.
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | THe VM to start CPU profiler for. |
 | [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md) profiler | The CPU profiler to stop. |
-| JSVM_OutputStream stream | The output stream callback for receiving the data. |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | The output stream callback for receiving the data. |
 | void* streamData | Optional data to be passed to the stream callback. |
 
 **Returns**:
@@ -4779,7 +4779,7 @@ This function takes the current heap snapshot and output to the stream.
 | Parameter | Description |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap snapshot is taken. |
-| JSVM_OutputStream stream | The output stream callback for receiving the data. |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | The output stream callback for receiving the data. |
 | void* streamData | Optional data to be passed to the stream callback. |
 
 **Returns**:
@@ -4809,7 +4809,7 @@ This function takes the current heap snapshot and outputs it to the stream in ra
 | Parameter | Description |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap snapshot is taken. |
-| JSVM_OutputStream stream | The output stream callback for receiving the binary data. |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | The output stream callback for receiving the binary data. |
 | void *streamData | Optional data to be passed to the stream callback. |
 
 **Returns**:
@@ -4840,7 +4840,7 @@ Set a heap threshold callback for vm and the vm can only have one heap threshold
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap usage will be monitored. |
 | uint64_t threshold | The heap usage threshold in bytes. The value must be greater than 0 and must not exceed heapSizeLimit, where heapSizeLimit is a field in JSVM_HeapStatistics. |
-| JSVM_HandlerForHeapThreshold callback | The callback function to be invoked when a threshold check observes heap usage greater than or equal to threshold. |
+| [JSVM_HandlerForHeapThreshold](capi-jsvm-types-h.md#jsvm_handlerforheapthreshold) callback | The callback function to be invoked when a threshold check observes heap usage greater than or equal to threshold. |
 | void *data | Optional user-provided data passed to the callback.The caller is responsible for managing the lifetime of this data. |
 
 **Returns**:
@@ -4871,7 +4871,7 @@ Clear the heap threshold callback previously registered for vm. This API is not 
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap threshold callback is to be cleared. |
 | uint64_t threshold | The heap usage threshold in bytes which is previously registered. |
-| JSVM_HandlerForHeapThreshold callback | The callback function previously registered by OH_JSVM_SetHeapThresholdCallback. |
+| [JSVM_HandlerForHeapThreshold](capi-jsvm-types-h.md#jsvm_handlerforheapthreshold) callback | The callback function previously registered by OH_JSVM_SetHeapThresholdCallback. |
 | void *data | The user-provided data used during registration. |
 
 **Returns**:
@@ -6107,7 +6107,7 @@ This API creates an external JavaScript string value from an ISO-8859-1-encoded 
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | char* str | Character buffer representing an ISO-8859-1-encoded string. |
 | size_t length | The length of the string in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
-| JSVM_Finalize finalizeCallback | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript external string. |
 | bool* copied | flag indicate whether the external string is successfully created, true for faild to create external ones and fall back to non-external strings, false for success. |
@@ -6141,7 +6141,7 @@ This API creates an external JavaScript string value from an UTF16-LE-encoded C 
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | char16_t* str | Character buffer representing an UTF16-LE-encoded string. |
 | size_t length | The length of the string in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
-| JSVM_Finalize finalizeCallback | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript external string. |
 | bool* copied | flag indicate whether the external string is successfully created, true for faild to create external ones and fall back to non-external strings, false for success. |
@@ -6855,7 +6855,7 @@ Trace stop for specified categories for all JSVM VM.(Non-thread-safe)
 
 | Parameter | Description |
 | -- | -- |
-| JSVM_OutputStream stream | The output stream callback for receiving the data. |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | The output stream callback for receiving the data. |
 | void* streamData | Data passed to the stream callback. |
 
 **Returns**:
@@ -6885,7 +6885,7 @@ Set Handler For OOM Error. If this function is invoked repeatedly, only the last
 | Parameter | Description |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
-| JSVM_HandlerForOOMError handler | The handler for OOM Error. |
+| [JSVM_HandlerForOOMError](capi-jsvm-types-h.md#jsvm_handlerforoomerror) handler | The handler for OOM Error. |
 
 **Returns**:
 
@@ -6944,7 +6944,7 @@ Set Handler For Fatal Error. If this function is invoked repeatedly, only the la
 | Parameter | Description |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
-| JSVM_HandlerForFatalError handler | The handler for Fatal Error. |
+| [JSVM_HandlerForFatalError](capi-jsvm-types-h.md#jsvm_handlerforfatalerror) handler | The handler for Fatal Error. |
 
 **Returns**:
 
@@ -6973,7 +6973,7 @@ Set Handler For Promise Reject. If this function is invoked repeatedly, only the
 | Parameter | Description |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
-| JSVM_HandlerForPromiseReject handler | The handler for Promise Reject. |
+| [JSVM_HandlerForPromiseReject](capi-jsvm-types-h.md#jsvm_handlerforpromisereject) handler | The handler for Promise Reject. |
 
 **Returns**:
 
@@ -7040,7 +7040,7 @@ Add VM GC Callback.
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | The timing of GC callback trigger. |
-| JSVM_HandlerForGC handler | When Trigger gc, the callback function will be called. |
+| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler | When Trigger gc, the callback function will be called. |
 | [JSVM_GCType](capi-jsvm-types-h.md#jsvm_gctype) gcType | The type of gc. |
 | void* userData | The native pointer data. |
 
@@ -7072,7 +7072,7 @@ Remove VM GC Callback.
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | The timing of GC callback trigger. |
-| JSVM_HandlerForGC handler | When Trigger gc, the callback function will be called. |
+| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler | When Trigger gc, the callback function will be called. |
 | void* userData | The native pointer data. |
 
 **Returns**:
@@ -7407,7 +7407,7 @@ Creates a JavaScript ArrayBuffer whose content is initialized from user-provided
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | void* externalData | Pointer to the source memory block. Must be 8-byte aligned. Can be nullptr only if byteLength is 0. |
 | size_t byteLength | The length in bytes of the source memory block. Must not exceed the engine's maximum ArrayBuffer size. |
-| JSVM_FinalizeArrayBuffer finalizeCb | Optional callback invoked when the ArrayBuffer object created by this API is garbage collected. The callback receives the original externalData pointer, finalizeHint, and a boolean indicating whether the data was copied. When copied is true, the engine does not reference externalData and the caller may free it immediately after this API returns. When copied is false (zero-copy), externalData is still in use and should only be freed in this callback. Can be NULL if no cleanup is needed. |
+| [JSVM_FinalizeArrayBuffer](capi-jsvm-types-h.md#jsvm_finalizearraybuffer) finalizeCb | Optional callback invoked when the ArrayBuffer object created by this API is garbage collected. The callback receives the original externalData pointer, finalizeHint, and a boolean indicating whether the data was copied. When copied is true, the engine does not reference externalData and the caller may free it immediately after this API returns. When copied is false (zero-copy), externalData is still in use and should only be freed in this callback. Can be NULL if no cleanup is needed. |
 | void* finalizeHint | Optional hint passed to finalizeCb. Can be NULL. |
 | bool* copied | Optional output parameter. If non-NULL, set to true when data was copied into an internal buffer, or false when zero-copy was used. Pass NULL if the caller does not need this information. |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing the created JavaScript ArrayBuffer. |

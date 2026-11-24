@@ -20,6 +20,8 @@ NODE_TOUCH_EVENT = 0
 
 Defines the gesture event type.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
+<!--Device-NODE_TOUCH_EVENT = 0--><!--Device-NODE_TOUCH_EVENT = 0-End-->
+
 **Since**: 12
 
 ### NODE_EVENT_ON_APPEAR
@@ -31,6 +33,8 @@ NODE_EVENT_ON_APPEAR
 **Description**
 
 Mount event. This event is triggered when the component is mounted and displayed. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+
+<!--Device-NODE_EVENT_ON_APPEAR--><!--Device-NODE_EVENT_ON_APPEAR-End-->
 
 **Since**: 12
 
@@ -44,6 +48,8 @@ NODE_EVENT_ON_DISAPPEAR
 
 Unmount event. This event is triggered when the component is unmounted from the component tree and disappears. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
+<!--Device-NODE_EVENT_ON_DISAPPEAR--><!--Device-NODE_EVENT_ON_DISAPPEAR-End-->
+
 **Since**: 12
 
 ### NODE_EVENT_ON_AREA_CHANGE
@@ -55,6 +61,8 @@ NODE_EVENT_ON_AREA_CHANGE
 **Description**
 
 Component area change event. This event is triggered when the component area changes. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 12 parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].f32</b>: original width of the target element, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: original height of the target element, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[2].f32</b>: original X coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[3].f32</b>: original Y coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[4].f32</b>: original X coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[5].f32</b>: original Y coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[6].f32</b>: new width of the target element, in vp. The value is a number.</li> <li>ArkUI_NodeComponentEvent.data[7].f32</b>: new height of the target element, in vp. The value is a number.</li> <li>ArkUI_NodeComponentEvent.data[8].f32</b>: new X coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[9].f32</b>: new Y coordinate of the target element's upper left corner relative to the parent element's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[10].f32</b>: new X coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> <li>ArkUI_NodeComponentEvent.data[11].f32</b>: new Y coordinate of the target element's upper left corner relative to the page's, in vp. The value type is number.</li> </ul>
+
+<!--Device-NODE_EVENT_ON_AREA_CHANGE--><!--Device-NODE_EVENT_ON_AREA_CHANGE-End-->
 
 **Since**: 12
 
@@ -68,6 +76,8 @@ NODE_ON_FOCUS
 
 Event of obtaining focus. This event is triggered when the component obtains the focus. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
+<!--Device-NODE_ON_FOCUS--><!--Device-NODE_ON_FOCUS-End-->
+
 **Since**: 12
 
 ### NODE_ON_BLUR
@@ -79,6 +89,8 @@ NODE_ON_BLUR
 **Description**
 
 Event of losing focus. This event is triggered when the component loses the focus. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+
+<!--Device-NODE_ON_BLUR--><!--Device-NODE_ON_BLUR-End-->
 
 **Since**: 12
 
@@ -92,6 +104,8 @@ NODE_ON_CLICK
 
 Click event. This event is triggered when the component is clicked. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains 12 parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].f32</b>: X coordinate of the click relative to the upper left corner of the clicked component's original area, in vp.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: Y coordinate of the click relative to the upper left corner of the clicked component's original area, in vp.</li> <li>ArkUI_NodeComponentEvent.data[2].f32</b>: event timestamp. It is the interval between the time when the event is triggered and the time when the system starts, in microseconds.</li> <li>ArkUI_NodeComponentEvent.data[3].i32</b>: event input device. The value <b>1</b> indicates the mouse, <li>2</b> indicates the touchscreen, and <b>4</b> indicates the key.</li> <li>ArkUI_NodeComponentEvent.data[4].f32</b>: X coordinate of the click relative to the upper left corner of the application window, in vp.</li> <li>ArkUI_NodeComponentEvent.data[5].f32</b>: Y coordinate of the click relative to the upper left corner of the application window, in vp.</li> <li>ArkUI_NodeComponentEvent.data[6].f32</b>: X coordinate of the click relative to the upper left corner of the application screen, in vp.</li> <li>ArkUI_NodeComponentEvent.data[7].f32</b>: Y coordinate of the click relative to the upper left corner of the application screen, in vp.</li> </ul>
 
+<!--Device-NODE_ON_CLICK--><!--Device-NODE_ON_CLICK-End-->
+
 **Since**: 12
 
 ### NODE_ON_TOUCH_INTERCEPT
@@ -103,6 +117,8 @@ NODE_ON_TOUCH_INTERCEPT
 **Description**
 
 Custom component event interception. This event is triggered when the component is touched. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
+
+<!--Device-NODE_ON_TOUCH_INTERCEPT--><!--Device-NODE_ON_TOUCH_INTERCEPT-End-->
 
 **Since**: 12
 
@@ -116,6 +132,8 @@ NODE_EVENT_ON_VISIBLE_AREA_CHANGE
 
 Visible area change event. This event is triggered when the ratio of the component's visible area to its total area is greater than or less than the threshold. Before registering the event, you need to use <b>NODE_VISIBLE_AREA_CHANGE_RATIO</b> to configure the threshold. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains two parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].i32</b>: how the ratio of the component's visible area to its total area changes compared to the previous one. The value <b>1</b> indicates an increase, and <b>0</b> indicates a decrease.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: ratio of the component's visible area to its total area when this callback is invoked.</li> </ul>
 
+<!--Device-NODE_EVENT_ON_VISIBLE_AREA_CHANGE--><!--Device-NODE_EVENT_ON_VISIBLE_AREA_CHANGE-End-->
+
 **Since**: 12
 
 ### NODE_ON_HOVER
@@ -127,6 +145,8 @@ NODE_ON_HOVER
 **Description**
 
 Event triggered when the mouse pointer moves over or away from the component. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter: <ul> <li>ArkUI_NodeComponentEvent.data[0].i32</b>: whether the mouse pointer is hovered over the component. The value <b>1</b> indicates that the mouse pointer is hovered over the component, and <b>0</b> indicates that the mouse pointer is moved away from the component.</li> </ul>
+
+<!--Device-NODE_ON_HOVER--><!--Device-NODE_ON_HOVER-End-->
 
 **Since**: 12
 
@@ -140,6 +160,8 @@ NODE_ON_MOUSE
 
 Mouse event. This event is triggered when the component is clicked by a mouse device button or when the mouse pointer moves within the component. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
+<!--Device-NODE_ON_MOUSE--><!--Device-NODE_ON_MOUSE-End-->
+
 **Since**: 12
 
 ### NODE_EVENT_ON_ATTACH
@@ -151,6 +173,8 @@ NODE_EVENT_ON_ATTACH
 **Description**
 
 Attach event. This event is triggered when the component is attached to the component tree. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+
+<!--Device-NODE_EVENT_ON_ATTACH--><!--Device-NODE_EVENT_ON_ATTACH-End-->
 
 **Since**: 12
 
@@ -164,6 +188,8 @@ NODE_EVENT_ON_DETACH
 
 Detach event. This event is triggered when the component is detached from the component tree. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
+<!--Device-NODE_EVENT_ON_DETACH--><!--Device-NODE_EVENT_ON_DETACH-End-->
+
 **Since**: 12
 
 ### NODE_ON_KEY_EVENT
@@ -175,6 +201,8 @@ NODE_ON_KEY_EVENT = 21
 **Description**
 
 Event triggered when a key event occurs. The callback can be triggered during interactions with a focused window using an external keyboard or other input device. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
+
+<!--Device-NODE_ON_KEY_EVENT = 21--><!--Device-NODE_ON_KEY_EVENT = 21-End-->
 
 **Since**: 14
 
@@ -188,6 +216,8 @@ NODE_ON_KEY_PRE_IME = 22
 
 Event triggered before the input method responds to the key action. If the return value of this callback is <b>true</b>, the key event is considered consumed, and subsequent event callbacks (<b>keyboardShortcut</b>, input method events, <b>onKeyEvent</b>) will be intercepted and no longer triggered. The callback can be triggered during interactions with a focused window using an external keyboard or other input device. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
 
+<!--Device-NODE_ON_KEY_PRE_IME = 22--><!--Device-NODE_ON_KEY_PRE_IME = 22-End-->
+
 **Since**: 14
 
 ### NODE_ON_FOCUS_AXIS
@@ -199,6 +229,8 @@ NODE_ON_FOCUS_AXIS = 23
 **Description**
 
 Event triggered when the bound component receives a focus axis event after gaining focus. The event callback is triggered by interactions with a joystick and a focused component. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
+
+<!--Device-NODE_ON_FOCUS_AXIS = 23--><!--Device-NODE_ON_FOCUS_AXIS = 23-End-->
 
 **Since**: 15
 
@@ -212,6 +244,8 @@ NODE_DISPATCH_KEY_EVENT = 24
 
 Component key event re-dispatch event. When a component node receives a key event, this callback is triggered instead of dispatching the event to its child nodes. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).
 
+<!--Device-NODE_DISPATCH_KEY_EVENT = 24--><!--Device-NODE_DISPATCH_KEY_EVENT = 24-End-->
+
 **Since**: 15
 
 ### NODE_ON_AXIS
@@ -223,6 +257,8 @@ NODE_ON_AXIS = 25
 **Description**
 
 Defines the event triggered when the bound component receives an axis event.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
+
+<!--Device-NODE_ON_AXIS = 25--><!--Device-NODE_ON_AXIS = 25-End-->
 
 **Since**: 17
 
@@ -236,6 +272,8 @@ NODE_ON_CLICK_EVENT = 26
 
 Event triggered when the bound component is clicked. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md).
 
+<!--Device-NODE_ON_CLICK_EVENT = 26--><!--Device-NODE_ON_CLICK_EVENT = 26-End-->
+
 **Since**: 18
 
 ### NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_EVENT
@@ -247,6 +285,8 @@ NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_EVENT = 28
 **Description**
 
 Sets the callback for the NODE_EVENT_ON_VISIBLE_AREA_CHANGE event, which limits the callback interval.<br> The callback is triggered when the ratio of the component's visible area to its total area is greater than or less than the threshold. Before registering the event, you need to use <b>NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_RATIO</b> to configure the threshold and update interval. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains two parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].i32</b>: how the ratio of the component's visible area to its total area changes compared to the previous one. The value <b>1</b> indicates an increase, and <b>0</b> indicates a decrease.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: ratio of the component's visible area to its total area when this callback is invoked.</li> </ul>
+
+<!--Device-NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_EVENT = 28--><!--Device-NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_EVENT = 28-End-->
 
 **Since**: 17
 
@@ -260,6 +300,8 @@ NODE_ON_HOVER_MOVE = 29
 
 Hover event. This event is triggered when the stylus pointer hovers over the component. When the event callback occurs, the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object can be obtained from the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object.
 
+<!--Device-NODE_ON_HOVER_MOVE = 29--><!--Device-NODE_ON_HOVER_MOVE = 29-End-->
+
 **Since**: 15
 
 ### NODE_ON_SIZE_CHANGE
@@ -271,6 +313,8 @@ NODE_ON_SIZE_CHANGE = 30
 **Description**
 
 Size change event. This event is triggered when the component size changes. <br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains four parameters: <ul> <li>ArkUI_NodeComponentEvent.data[0].f32</b>: width of the component before the size change.</li> <li>ArkUI_NodeComponentEvent.data[1].f32</b>: height of the component before the size change.</li> <li>ArkUI_NodeComponentEvent.data[2].f32</b>: width of the component after the size change.</li> <li>ArkUI_NodeComponentEvent.data[3].f32</b>: height of the component after the size change.</li> </ul>
+
+<!--Device-NODE_ON_SIZE_CHANGE = 30--><!--Device-NODE_ON_SIZE_CHANGE = 30-End-->
 
 **Since**: 21
 
@@ -284,6 +328,8 @@ NODE_ON_COASTING_AXIS_EVENT = 31
 
 Coasting axis event. When a user slides two fingers on the touchpad for a certain distance and quickly lifts the fingers, the system continuously constructs the event based on the speed at which the fingers are lifted and a certain attenuation curve. You can listen to this type of events to handle the fling effect after the normal scrolling axis event. When the event callback occurs, the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object through [OH_ArkUI_NodeEvent_GetInputEvent](capi-native-node-h.md#oh_arkui_nodeevent_getinputevent). And the [ArkUI_CoastingAxisEvent](capi-arkui-eventmodule-arkui-coastingaxisevent.md) object can be obtained from the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object through [OH_ArkUI_UIInputEvent_GetCoastingAxisEvent](capi-ui-input-event-h.md#oh_arkui_uiinputevent_getcoastingaxisevent).
 
+<!--Device-NODE_ON_COASTING_AXIS_EVENT = 31--><!--Device-NODE_ON_COASTING_AXIS_EVENT = 31-End-->
+
 **Since**: 22
 
 ### NODE_ON_CHILD_TOUCH_TEST
@@ -295,6 +341,8 @@ NODE_ON_CHILD_TOUCH_TEST = 32
 **Description**
 
 Pre-touch test event of a child component. This event is called to specify how to perform a touch test on the child component of the current component. This event is triggered when the component is touched. When the event callback occurs, you can obtain the [ArkUI_TouchTestInfo](capi-arkui-eventmodule-arkui-touchtestinfo.md) object from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object by calling [OH_ArkUI_NodeEvent_GetTouchTestInfo](capi-native-node-h.md#oh_arkui_nodeevent_gettouchtestinfo).
+
+<!--Device-NODE_ON_CHILD_TOUCH_TEST = 32--><!--Device-NODE_ON_CHILD_TOUCH_TEST = 32-End-->
 
 **Since**: 22
 
@@ -308,6 +356,8 @@ NODE_ON_DIGITAL_CROWN = 33
 
 Defines the crown event. This event is triggered when the crown is rotated. When the event callback occurs, the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
 
+<!--Device-NODE_ON_DIGITAL_CROWN = 33--><!--Device-NODE_ON_DIGITAL_CROWN = 33-End-->
+
 **Since**: 24
 
 ### NODE_ON_GESTURE_COLLECT_INTERCEPT
@@ -320,6 +370,36 @@ NODE_ON_GESTURE_COLLECT_INTERCEPT = 37
 
 This callback is invoked when the events and gestures on this node and higher-priority nodes are collected. This callback is used to intervene in the collection result of events and gestures. <br> When the event callback occurs, the [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
 
+<!--Device-NODE_ON_GESTURE_COLLECT_INTERCEPT = 37--><!--Device-NODE_ON_GESTURE_COLLECT_INTERCEPT = 37-End-->
+
 **Since**: 26.0.0
+
+### NODE_ON_TOUCH_PAD_EVENT
+
+```c
+NODE_ON_TOUCH_PAD_EVENT = 38
+```
+
+**Description**
+
+Defines the event triggered when a raw touchpad event is reported.<br> When the event callback occurs, the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object through [OH_ArkUI_NodeEvent_GetInputEvent](capi-native-node-h.md#oh_arkui_nodeevent_getinputevent). The input event type is [ARKUI_UIINPUTEVENT_TYPE_TOUCHPAD](capi-ui-input-event-h.md#arkui_uiinputevent_type).
+
+<!--Device-NODE_ON_TOUCH_PAD_EVENT = 38--><!--Device-NODE_ON_TOUCH_PAD_EVENT = 38-End-->
+
+**Since**: 26.1.0
+
+### NODE_ON_TOUCH_PAD_EVENT_INTERCEPT
+
+```c
+NODE_ON_TOUCH_PAD_EVENT_INTERCEPT = 39
+```
+
+**Description**
+
+Defines the interception event for touchpad event hit testing.<br> When the event callback occurs, the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object through [OH_ArkUI_NodeEvent_GetInputEvent](capi-native-node-h.md#oh_arkui_nodeevent_getinputevent). The input event type is [ARKUI_UIINPUTEVENT_TYPE_TOUCHPAD](capi-ui-input-event-h.md#arkui_uiinputevent_type). Call [OH_ArkUI_PointerEvent_SetInterceptHitTestMode](capi-ui-input-event-h.md#oh_arkui_pointerevent_setintercepthittestmode) with the obtained input event to set the hit test mode. The specified mode determines the hit test behavior of the component for the current touchpad event chain and does not affect touch, mouse, axis, or system gesture event chains.
+
+<!--Device-NODE_ON_TOUCH_PAD_EVENT_INTERCEPT = 39--><!--Device-NODE_ON_TOUCH_PAD_EVENT_INTERCEPT = 39-End-->
+
+**Since**: 26.1.0
 
 

@@ -38,7 +38,7 @@ enum OH_AVCodecBufferFlags
 
 Enumerates the flags for the buffer of an OH_AVCodec instance.
 
-<!--Device-OH_AVCodecBufferFlags--><!--Device-OH_AVCodecBufferFlags-End-->
+<!--Device-enum OH_AVCodecBufferFlags--><!--Device-enum OH_AVCodecBufferFlags-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -46,12 +46,12 @@ Enumerates the flags for the buffer of an OH_AVCodec instance.
 
 | Enum item | Description |
 | -- | -- |
-| AVCODEC_BUFFER_FLAGS_NONE = 0 | Common frame.<br>**Since**: 9 |
-| AVCODEC_BUFFER_FLAGS_EOS = 1 << 0 | The buffer is an end-of-stream frame.<br>**Since**: 9 |
-| AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1 | The buffer contains key frames.<br>**Since**: 9 |
-| AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2 | The data in the buffer is only part of the frame.<br>**Since**: 9 |
-| AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3 | The buffer contains codec-specific data.<br>**Since**: 9 |
-| AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4 | Flag is used to discard packets which are required to maintain valid decoder state but are not required for output and should be dropped after decoding.<br>**Since**: 12 |
-| AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5 | Flag is used to indicate packets that contain frames that can be discarded by the decoder, I.e. Non-reference frames.<br>**Since**: 12 |
+| AVCODEC_BUFFER_FLAGS_NONE = 0 | Common frame.<br>**Since**: 9<br><!--Device-AVCODEC_BUFFER_FLAGS_NONE = 0--><!--Device-AVCODEC_BUFFER_FLAGS_NONE = 0-End--> |
+| AVCODEC_BUFFER_FLAGS_EOS = 1 << 0 | The buffer is an end-of-stream frame.<br>**Since**: 9<br><!--Device-AVCODEC_BUFFER_FLAGS_EOS = 1 << 0--><!--Device-AVCODEC_BUFFER_FLAGS_EOS = 1 << 0-End--> |
+| AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1 | The buffer contains key frames.<br>**Since**: 9<br><!--Device-AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1--><!--Device-AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1-End--> |
+| AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2 | The data in the buffer is only part of the frame.<br>**Since**: 9<br><!--Device-AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2--><!--Device-AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2-End--> |
+| AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3 | The buffer contains codec-specific data.<br>**Since**: 9<br><!--Device-AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3--><!--Device-AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3-End--> |
+| AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4 | Flag is used to discard packets which are required to maintain valid decoder state but are not required for output and should be dropped after decoding.<br>**Since**: 12<br><!--Device-AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4--><!--Device-AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4-End--> |
+| AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5 | Flag is used to indicate packets that contain frames that can be discarded by the decoder, I.e. Non-reference frames.<br>**Since**: 12<br><!--Device-AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5--><!--Device-AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5-End--> |
 
 

@@ -20,6 +20,8 @@ NODE_CHECKBOX_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX
 
 Defines whether the check box is selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether the check box is selected. The value <b>1</b> means that the check box is selected, and <b>0</b> means the opposite.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: The value <b>1</b> means that the check box is selected, and <b>0</b> means the opposite.</li> </ul>
 
+<!--Device-NODE_CHECKBOX_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX--><!--Device-NODE_CHECKBOX_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX-End-->
+
 **Since**: 12
 
 ### NODE_CHECKBOX_SELECT_COLOR
@@ -31,6 +33,8 @@ NODE_CHECKBOX_SELECT_COLOR
 **Description**
 
 Color of the **CheckBox** component when it is selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: Color of the check box when it is selected, in 0xARGB format, for example, **0xFF1122FF**.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: Color of the check box when it is selected, in 0xARGB format, for example, **0xFF1122FF**.</li> </ul>
+
+<!--Device-NODE_CHECKBOX_SELECT_COLOR--><!--Device-NODE_CHECKBOX_SELECT_COLOR-End-->
 
 **Since**: 12
 
@@ -44,6 +48,8 @@ NODE_CHECKBOX_UNSELECT_COLOR
 
 Border color of the **CheckBox** component when it is not selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: Border color, in 0xARGB format, for example, **0xFF1122FF**.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: Border color, in 0xARGB format, for example, **0xFF1122FF**.</li> </ul>
 
+<!--Device-NODE_CHECKBOX_UNSELECT_COLOR--><!--Device-NODE_CHECKBOX_UNSELECT_COLOR-End-->
+
 **Since**: 12
 
 ### NODE_CHECKBOX_MARK
@@ -55,6 +61,8 @@ NODE_CHECKBOX_MARK
 **Description**
 
 Internal mark style of the **CheckBox** component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: Border color, in 0xARGB format, for example, **0xFF1122FF**.</li> <li>.value[1]?.f32: Size of the internal mark, in vp. This parameter is optional.</li> <li>.value[2]?.f32: Stroke width of the internal mark, in vp. This parameter is optional. The default value is **2**.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: Border color, in 0xARGB format, for example, **0xFF1122FF**.</li> <li>.value[1].f32: Size of the internal mark, in vp.</li> <li>.value[2].f32: Stroke width of the internal mark, in vp. The default value is **2**.</li> </ul>
+
+<!--Device-NODE_CHECKBOX_MARK--><!--Device-NODE_CHECKBOX_MARK-End-->
 
 **Since**: 12
 
@@ -68,6 +76,8 @@ NODE_CHECKBOX_SHAPE
 
 Shape of the **CheckBox** component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).</li> </ul>
 
+<!--Device-NODE_CHECKBOX_SHAPE--><!--Device-NODE_CHECKBOX_SHAPE-End-->
+
 **Since**: 12
 
 ### NODE_CHECKBOX_NAME
@@ -80,6 +90,8 @@ NODE_CHECKBOX_NAME
 
 Name of the **CheckBox** component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: Component name.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: Component name.</li> </ul>
 
+<!--Device-NODE_CHECKBOX_NAME--><!--Device-NODE_CHECKBOX_NAME-End-->
+
 **Since**: 15
 
 ### NODE_CHECKBOX_GROUP
@@ -91,6 +103,8 @@ NODE_CHECKBOX_GROUP
 **Description**
 
 Name of the **CheckboxGroup** component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: Component name.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: Component name.</li> </ul>
+
+<!--Device-NODE_CHECKBOX_GROUP--><!--Device-NODE_CHECKBOX_GROUP-End-->
 
 **Since**: 15
 

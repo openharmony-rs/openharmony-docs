@@ -24,6 +24,6 @@ typedef struct Camera_FrameShutterEndInfo {...} Camera_FrameShutterEndInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t captureId | 捕获id。 |
+| int32_t captureId | 捕获id。<br><!--Device-int32_t captureId--><!--Device-int32_t captureId-End--> |
 
 

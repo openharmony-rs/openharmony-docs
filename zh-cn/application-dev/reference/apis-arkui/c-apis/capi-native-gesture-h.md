@@ -116,14 +116,14 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t ArkUI_GestureEventActionTypeMask | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| uint32_t ArkUI_GestureDirectionMask | 定义滑动手势方向集合。 <br>例：ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT。 <br>directions 表明支持左右水平方向。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle | 定义手势识别器句柄类型，是ArkUI_GestureRecognizer指针类型的别名封装，用于在ArkUI原生手势接口中表示手势识别器对象。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray | 定义手势识别器句柄数组类型，用于表示或传递多个手势识别器句柄，例如获取响应链中的手势识别器集合。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle | 定义触摸识别器句柄，用于表示触摸识别器对象，并在手势打断、手势收集拦截等接口中传递该对象。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组，用于在批量管理多个触摸识别器时使用，例如从手势打断信息中获取多个触摸识别器句柄。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| typedef uint32_t ArkUI_GestureEventActionTypeMask | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| typedef uint32_t ArkUI_GestureDirectionMask | 定义滑动手势方向集合。 <br>例：ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT。 <br>directions 表明支持左右水平方向。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| uint32_t ArkUI_GestureEventActionTypeMask | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-uint32_t ArkUI_GestureEventActionTypeMask--><!--Device-uint32_t ArkUI_GestureEventActionTypeMask-End--> |
+| uint32_t ArkUI_GestureDirectionMask | 定义滑动手势方向集合。 <br>例：ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT。 <br>directions 表明支持左右水平方向。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-uint32_t ArkUI_GestureDirectionMask--><!--Device-uint32_t ArkUI_GestureDirectionMask-End--> |
+| ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle | 定义手势识别器句柄类型，是ArkUI_GestureRecognizer指针类型的别名封装，用于在ArkUI原生手势接口中表示手势识别器对象。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle--><!--Device-ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle-End--> |
+| ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray | 定义手势识别器句柄数组类型，用于表示或传递多个手势识别器句柄，例如获取响应链中的手势识别器集合。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray--><!--Device-ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray-End--> |
+| ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle | 定义触摸识别器句柄，用于表示触摸识别器对象，并在手势打断、手势收集拦截等接口中传递该对象。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle--><!--Device-ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle-End--> |
+| ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组，用于在批量管理多个触摸识别器时使用，例如从手势打断信息中获取多个触摸识别器句柄。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray--><!--Device-ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray-End--> |
+| typedef uint32_t ArkUI_GestureEventActionTypeMask | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-typedef uint32_t ArkUI_GestureEventActionTypeMask--><!--Device-typedef uint32_t ArkUI_GestureEventActionTypeMask-End--> |
+| typedef uint32_t ArkUI_GestureDirectionMask | 定义滑动手势方向集合。 <br>例：ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT。 <br>directions 表明支持左右水平方向。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br><!--Device-typedef uint32_t ArkUI_GestureDirectionMask--><!--Device-typedef uint32_t ArkUI_GestureDirectionMask-End--> |
 
 ## 枚举类型说明
 
@@ -137,7 +137,7 @@ enum ArkUI_GestureEventActionType
 
 定义手势事件类型。
 
-<!--Device-ArkUI_GestureEventActionType--><!--Device-ArkUI_GestureEventActionType-End-->
+<!--Device-enum ArkUI_GestureEventActionType--><!--Device-enum ArkUI_GestureEventActionType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,10 +145,10 @@ enum ArkUI_GestureEventActionType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| GESTURE_EVENT_ACTION_ACCEPT = 0x01 | 手势事件触发。 |
-| GESTURE_EVENT_ACTION_UPDATE = 0x02 | 手势事件更新。 |
-| GESTURE_EVENT_ACTION_END = 0x04 | 手势事件结束。 |
-| GESTURE_EVENT_ACTION_CANCEL = 0x08 | 手势事件取消。 |
+| GESTURE_EVENT_ACTION_ACCEPT = 0x01 | 手势事件触发。<br><!--Device-GESTURE_EVENT_ACTION_ACCEPT = 0x01--><!--Device-GESTURE_EVENT_ACTION_ACCEPT = 0x01-End--> |
+| GESTURE_EVENT_ACTION_UPDATE = 0x02 | 手势事件更新。<br><!--Device-GESTURE_EVENT_ACTION_UPDATE = 0x02--><!--Device-GESTURE_EVENT_ACTION_UPDATE = 0x02-End--> |
+| GESTURE_EVENT_ACTION_END = 0x04 | 手势事件结束。<br><!--Device-GESTURE_EVENT_ACTION_END = 0x04--><!--Device-GESTURE_EVENT_ACTION_END = 0x04-End--> |
+| GESTURE_EVENT_ACTION_CANCEL = 0x08 | 手势事件取消。<br><!--Device-GESTURE_EVENT_ACTION_CANCEL = 0x08--><!--Device-GESTURE_EVENT_ACTION_CANCEL = 0x08-End--> |
 
 ### ArkUI_GesturePriority
 
@@ -160,7 +160,7 @@ enum ArkUI_GesturePriority
 
 定义手势优先级。NORMAL适用于默认手势识别场景；PRIORITY适用于需要确保某个手势优先响应的场景（如优先响应点击而非滑动）；PARALLEL适用于多个手势需要同时独立响应的场景（如同时识别捏合和旋转）。
 
-<!--Device-ArkUI_GesturePriority--><!--Device-ArkUI_GesturePriority-End-->
+<!--Device-enum ArkUI_GesturePriority--><!--Device-enum ArkUI_GesturePriority-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,9 +168,9 @@ enum ArkUI_GesturePriority
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL = 0 | 正常手势。 |
-| PRIORITY = 1 | 高优先级手势。 |
-| PARALLEL = 2 | 并发手势。 |
+| NORMAL = 0 | 正常手势。<br><!--Device-NORMAL = 0--><!--Device-NORMAL = 0-End--> |
+| PRIORITY = 1 | 高优先级手势。<br><!--Device-PRIORITY = 1--><!--Device-PRIORITY = 1-End--> |
+| PARALLEL = 2 | 并发手势。<br><!--Device-PARALLEL = 2--><!--Device-PARALLEL = 2-End--> |
 
 ### ArkUI_GroupGestureMode
 
@@ -182,7 +182,7 @@ enum ArkUI_GroupGestureMode
 
 定义手势组事件模式。SEQUENTIAL_GROUP适用于需要按步骤依次识别手势的场景（如先长按再滑动）；PARALLEL_GROUP适用于多个手势需要独立同时识别的场景（如同时监听捏合和旋转）； EXCLUSIVE_GROUP适用于多个手势互斥竞争、只需一个成功的场景（如滑动和长按互斥）。
 
-<!--Device-ArkUI_GroupGestureMode--><!--Device-ArkUI_GroupGestureMode-End-->
+<!--Device-enum ArkUI_GroupGestureMode--><!--Device-enum ArkUI_GroupGestureMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,9 +190,9 @@ enum ArkUI_GroupGestureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SEQUENTIAL_GROUP = 0 | 顺序手势模式，按照注册顺序识别手势，直到所有手势识别成功。若有识别失败，后续识别均失败。仅有最后一个手势响应结束事件。 |
-| PARALLEL_GROUP = 1 | 并发手势模式，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。 |
-| EXCLUSIVE_GROUP = 2 | 互斥手势模式，注册的手势同时识别，若有一个手势识别成功，则结束手势识别。 |
+| SEQUENTIAL_GROUP = 0 | 顺序手势模式，按照注册顺序识别手势，直到所有手势识别成功。若有识别失败，后续识别均失败。仅有最后一个手势响应结束事件。<br><!--Device-SEQUENTIAL_GROUP = 0--><!--Device-SEQUENTIAL_GROUP = 0-End--> |
+| PARALLEL_GROUP = 1 | 并发手势模式，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。<br><!--Device-PARALLEL_GROUP = 1--><!--Device-PARALLEL_GROUP = 1-End--> |
+| EXCLUSIVE_GROUP = 2 | 互斥手势模式，注册的手势同时识别，若有一个手势识别成功，则结束手势识别。<br><!--Device-EXCLUSIVE_GROUP = 2--><!--Device-EXCLUSIVE_GROUP = 2-End--> |
 
 ### ArkUI_GestureDirection
 
@@ -204,7 +204,7 @@ enum ArkUI_GestureDirection
 
 定义滑动手势方向。
 
-<!--Device-ArkUI_GestureDirection--><!--Device-ArkUI_GestureDirection-End-->
+<!--Device-enum ArkUI_GestureDirection--><!--Device-enum ArkUI_GestureDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,14 +212,14 @@ enum ArkUI_GestureDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| GESTURE_DIRECTION_ALL = 0b1111 | 所有方向。 |
-| GESTURE_DIRECTION_HORIZONTAL = 0b0011 | 水平方向。 |
-| GESTURE_DIRECTION_VERTICAL = 0b1100 | 竖直方向。 |
-| GESTURE_DIRECTION_LEFT = 0b0001 | 向左方向。 |
-| GESTURE_DIRECTION_RIGHT = 0b0010 | 向右方向。 |
-| GESTURE_DIRECTION_UP = 0b0100 | 向上方向。 |
-| GESTURE_DIRECTION_DOWN = 0b1000 | 向下方向。 |
-| GESTURE_DIRECTION_NONE = 0 | 任何方向都不触发手势事件。 |
+| GESTURE_DIRECTION_ALL = 0b1111 | 所有方向。<br><!--Device-GESTURE_DIRECTION_ALL = 0b1111--><!--Device-GESTURE_DIRECTION_ALL = 0b1111-End--> |
+| GESTURE_DIRECTION_HORIZONTAL = 0b0011 | 水平方向。<br><!--Device-GESTURE_DIRECTION_HORIZONTAL = 0b0011--><!--Device-GESTURE_DIRECTION_HORIZONTAL = 0b0011-End--> |
+| GESTURE_DIRECTION_VERTICAL = 0b1100 | 竖直方向。<br><!--Device-GESTURE_DIRECTION_VERTICAL = 0b1100--><!--Device-GESTURE_DIRECTION_VERTICAL = 0b1100-End--> |
+| GESTURE_DIRECTION_LEFT = 0b0001 | 向左方向。<br><!--Device-GESTURE_DIRECTION_LEFT = 0b0001--><!--Device-GESTURE_DIRECTION_LEFT = 0b0001-End--> |
+| GESTURE_DIRECTION_RIGHT = 0b0010 | 向右方向。<br><!--Device-GESTURE_DIRECTION_RIGHT = 0b0010--><!--Device-GESTURE_DIRECTION_RIGHT = 0b0010-End--> |
+| GESTURE_DIRECTION_UP = 0b0100 | 向上方向。<br><!--Device-GESTURE_DIRECTION_UP = 0b0100--><!--Device-GESTURE_DIRECTION_UP = 0b0100-End--> |
+| GESTURE_DIRECTION_DOWN = 0b1000 | 向下方向。<br><!--Device-GESTURE_DIRECTION_DOWN = 0b1000--><!--Device-GESTURE_DIRECTION_DOWN = 0b1000-End--> |
+| GESTURE_DIRECTION_NONE = 0 | 任何方向都不触发手势事件。<br><!--Device-GESTURE_DIRECTION_NONE = 0--><!--Device-GESTURE_DIRECTION_NONE = 0-End--> |
 
 ### ArkUI_GestureMask
 
@@ -231,7 +231,7 @@ enum ArkUI_GestureMask
 
 定义手势屏蔽模式。NORMAL_GESTURE_MASK适用于默认场景，子组件手势按正常顺序识别；IGNORE_INTERNAL_GESTURE_MASK适用于父组件需要独占手势控制的场景（ 如全屏滑动时屏蔽子组件的手势干扰），会屏蔽子组件包括系统内置的手势。
 
-<!--Device-ArkUI_GestureMask--><!--Device-ArkUI_GestureMask-End-->
+<!--Device-enum ArkUI_GestureMask--><!--Device-enum ArkUI_GestureMask-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,8 +239,8 @@ enum ArkUI_GestureMask
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL_GESTURE_MASK = 0 | 不屏蔽子组件的手势，按照默认手势识别顺序进行识别。 |
-| IGNORE_INTERNAL_GESTURE_MASK | 屏蔽子组件的手势，包括子组件上系统内置的手势。 |
+| NORMAL_GESTURE_MASK = 0 | 不屏蔽子组件的手势，按照默认手势识别顺序进行识别。<br><!--Device-NORMAL_GESTURE_MASK = 0--><!--Device-NORMAL_GESTURE_MASK = 0-End--> |
+| IGNORE_INTERNAL_GESTURE_MASK | 屏蔽子组件的手势，包括子组件上系统内置的手势。<br><!--Device-IGNORE_INTERNAL_GESTURE_MASK--><!--Device-IGNORE_INTERNAL_GESTURE_MASK-End--> |
 
 ### ArkUI_GestureRecognizerType
 
@@ -252,7 +252,7 @@ enum ArkUI_GestureRecognizerType
 
 定义手势类型。
 
-<!--Device-ArkUI_GestureRecognizerType--><!--Device-ArkUI_GestureRecognizerType-End-->
+<!--Device-enum ArkUI_GestureRecognizerType--><!--Device-enum ArkUI_GestureRecognizerType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,15 +260,15 @@ enum ArkUI_GestureRecognizerType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TAP_GESTURE = 0 | 敲击手势。 |
-| LONG_PRESS_GESTURE | 长按手势。 |
-| PAN_GESTURE | 滑动手势。 |
-| PINCH_GESTURE | 捏合手势。 |
-| ROTATION_GESTURE | 旋转手势。 |
-| SWIPE_GESTURE | 快滑手势。 |
-| GROUP_GESTURE | 手势组合。 |
-| CLICK_GESTURE | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
-| DRAG_DROP | 用于拖放的拖拽手势。<br>**起始版本：** 20 |
+| TAP_GESTURE = 0 | 敲击手势。<br><!--Device-TAP_GESTURE = 0--><!--Device-TAP_GESTURE = 0-End--> |
+| LONG_PRESS_GESTURE | 长按手势。<br><!--Device-LONG_PRESS_GESTURE--><!--Device-LONG_PRESS_GESTURE-End--> |
+| PAN_GESTURE | 滑动手势。<br><!--Device-PAN_GESTURE--><!--Device-PAN_GESTURE-End--> |
+| PINCH_GESTURE | 捏合手势。<br><!--Device-PINCH_GESTURE--><!--Device-PINCH_GESTURE-End--> |
+| ROTATION_GESTURE | 旋转手势。<br><!--Device-ROTATION_GESTURE--><!--Device-ROTATION_GESTURE-End--> |
+| SWIPE_GESTURE | 快滑手势。<br><!--Device-SWIPE_GESTURE--><!--Device-SWIPE_GESTURE-End--> |
+| GROUP_GESTURE | 手势组合。<br><!--Device-GROUP_GESTURE--><!--Device-GROUP_GESTURE-End--> |
+| CLICK_GESTURE | 通过onClick注册的点击手势。<br>**起始版本：** 20<br><!--Device-CLICK_GESTURE--><!--Device-CLICK_GESTURE-End--> |
+| DRAG_DROP | 用于拖放的拖拽手势。<br>**起始版本：** 20<br><!--Device-DRAG_DROP--><!--Device-DRAG_DROP-End--> |
 
 ### ArkUI_GestureInterruptResult
 
@@ -280,7 +280,7 @@ enum ArkUI_GestureInterruptResult
 
 定义手势打断结果。
 
-<!--Device-ArkUI_GestureInterruptResult--><!--Device-ArkUI_GestureInterruptResult-End-->
+<!--Device-enum ArkUI_GestureInterruptResult--><!--Device-enum ArkUI_GestureInterruptResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,8 +288,8 @@ enum ArkUI_GestureInterruptResult
 
 | 枚举项 | 描述 |
 | -- | -- |
-| GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | 手势继续。 |
-| GESTURE_INTERRUPT_RESULT_REJECT | 手势打断。 |
+| GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | 手势继续。<br><!--Device-GESTURE_INTERRUPT_RESULT_CONTINUE = 0--><!--Device-GESTURE_INTERRUPT_RESULT_CONTINUE = 0-End--> |
+| GESTURE_INTERRUPT_RESULT_REJECT | 手势打断。<br><!--Device-GESTURE_INTERRUPT_RESULT_REJECT--><!--Device-GESTURE_INTERRUPT_RESULT_REJECT-End--> |
 
 ### ArkUI_GestureRecognizerState
 
@@ -301,7 +301,7 @@ enum ArkUI_GestureRecognizerState
 
 定义手势识别器状态。
 
-<!--Device-ArkUI_GestureRecognizerState--><!--Device-ArkUI_GestureRecognizerState-End-->
+<!--Device-enum ArkUI_GestureRecognizerState--><!--Device-enum ArkUI_GestureRecognizerState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,12 +309,12 @@ enum ArkUI_GestureRecognizerState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0 | 准备状态。 |
-| ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1 | 检测状态。 |
-| ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2 | 等待状态。 |
-| ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3 | 阻塞状态。 |
-| ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4 | 成功状态。 |
-| ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5 | 失败状态。 |
+| ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0 | 准备状态。<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_READY = 0-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1 | 检测状态。<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_DETECTING = 1-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2 | 等待状态。<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_PENDING = 2-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3 | 阻塞状态。<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_BLOCKED = 3-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4 | 成功状态。<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_SUCCESSFUL = 4-End--> |
+| ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5 | 失败状态。<br><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5--><!--Device-ARKUI_GESTURE_RECOGNIZER_STATE_FAILED = 5-End--> |
 
 ### OH_ArkUI_GestureCollectIntervention
 
@@ -326,7 +326,7 @@ enum OH_ArkUI_GestureCollectIntervention
 
 定义手势和事件收集的干预操作类型。
 
-<!--Device-OH_ArkUI_GestureCollectIntervention--><!--Device-OH_ArkUI_GestureCollectIntervention-End-->
+<!--Device-enum OH_ArkUI_GestureCollectIntervention--><!--Device-enum OH_ArkUI_GestureCollectIntervention-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -334,11 +334,11 @@ enum OH_ArkUI_GestureCollectIntervention
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0 | 继续正常的手势和事件收集流程。不进行任何干预。<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1 | 丢弃所有待收集的低优先级手势和事件。 <br>丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。 <br>仅保留当前节点和更高优先级节点中已收集的手势。<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2 | 丢弃已经收集到的高优先级手势和事件。 <br>会丢弃已收集的右侧兄弟节点和当前节点上的手势。 <br>将继续处理低优先级手势的收集流程（左侧兄弟节点和祖先节点）。<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3 | 丢弃当前节点自身的手势和事件。 <br>当前节点的手势和事件将从手势树中排除。 <br>兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。<br>**起始版本：** 26.0.0 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4 | 丢弃左侧兄弟节点中待收集的手势和事件。 <br>当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。 <br>将继续处理父节点以及祖先节点的收集流程。<br>**起始版本：** 26.0.0 |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0 | 继续正常的手势和事件收集流程。不进行任何干预。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1 | 丢弃所有待收集的低优先级手势和事件。 <br>丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。 <br>仅保留当前节点和更高优先级节点中已收集的手势。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2 | 丢弃已经收集到的高优先级手势和事件。 <br>会丢弃已收集的右侧兄弟节点和当前节点上的手势。 <br>将继续处理低优先级手势的收集流程（左侧兄弟节点和祖先节点）。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3 | 丢弃当前节点自身的手势和事件。 <br>当前节点的手势和事件将从手势树中排除。 <br>兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3-End--> |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4 | 丢弃左侧兄弟节点中待收集的手势和事件。 <br>当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。 <br>将继续处理父节点以及祖先节点的收集流程。<br>**起始版本：** 26.0.0<br><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4--><!--Device-OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4-End--> |
 
 
 ## 函数说明

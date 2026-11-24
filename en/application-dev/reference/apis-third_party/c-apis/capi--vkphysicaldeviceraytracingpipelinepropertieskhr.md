@@ -10,15 +10,15 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| uint32_t shaderGroupHandleSize |  |
-| uint32_t maxRayRecursionDepth |  |
-| uint32_t maxShaderGroupStride |  |
-| uint32_t shaderGroupBaseAlignment |  |
-| uint32_t shaderGroupHandleCaptureReplaySize |  |
-| uint32_t maxRayDispatchInvocationCount |  |
-| uint32_t shaderGroupHandleAlignment |  |
-| uint32_t maxRayHitAttributeSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| uint32_t shaderGroupHandleSize | <!--Device-uint32_t shaderGroupHandleSize--><!--Device-uint32_t shaderGroupHandleSize-End--> |
+| uint32_t maxRayRecursionDepth | <!--Device-uint32_t maxRayRecursionDepth--><!--Device-uint32_t maxRayRecursionDepth-End--> |
+| uint32_t maxShaderGroupStride | <!--Device-uint32_t maxShaderGroupStride--><!--Device-uint32_t maxShaderGroupStride-End--> |
+| uint32_t shaderGroupBaseAlignment | <!--Device-uint32_t shaderGroupBaseAlignment--><!--Device-uint32_t shaderGroupBaseAlignment-End--> |
+| uint32_t shaderGroupHandleCaptureReplaySize | <!--Device-uint32_t shaderGroupHandleCaptureReplaySize--><!--Device-uint32_t shaderGroupHandleCaptureReplaySize-End--> |
+| uint32_t maxRayDispatchInvocationCount | <!--Device-uint32_t maxRayDispatchInvocationCount--><!--Device-uint32_t maxRayDispatchInvocationCount-End--> |
+| uint32_t shaderGroupHandleAlignment | <!--Device-uint32_t shaderGroupHandleAlignment--><!--Device-uint32_t shaderGroupHandleAlignment-End--> |
+| uint32_t maxRayHitAttributeSize | <!--Device-uint32_t maxRayHitAttributeSize--><!--Device-uint32_t maxRayHitAttributeSize-End--> |
 
 

@@ -24,10 +24,10 @@ Defines the route configuration.
 
 | Name | Description |
 | -- | -- |
-| char iface[NETCONN_MAX_STR_LEN] | Network interface |
-| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) destination | Destination address. |
-| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) gateway | Gateway IP address. |
-| int32_t hasGateway | Whether a gateway exists. |
-| int32_t isDefaultRoute | Whether the default route is used. |
+| char iface[NETCONN_MAX_STR_LEN] | Network interface<br><!--Device-char iface[NETCONN_MAX_STR_LEN]--><!--Device-char iface[NETCONN_MAX_STR_LEN]-End--> |
+| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) destination | Destination address.<br><!--Device-NetConn_NetAddr destination--><!--Device-NetConn_NetAddr destination-End--> |
+| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) gateway | Gateway IP address.<br><!--Device-NetConn_NetAddr gateway--><!--Device-NetConn_NetAddr gateway-End--> |
+| int32_t hasGateway | Whether a gateway exists.<br><!--Device-int32_t hasGateway--><!--Device-int32_t hasGateway-End--> |
+| int32_t isDefaultRoute | Whether the default route is used.<br><!--Device-int32_t isDefaultRoute--><!--Device-int32_t isDefaultRoute-End--> |
 
 

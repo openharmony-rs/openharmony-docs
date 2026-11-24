@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| size_t descriptorOffset |  |
-| uint32_t descriptorSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| size_t descriptorOffset | <!--Device-size_t descriptorOffset--><!--Device-size_t descriptorOffset-End--> |
+| uint32_t descriptorSize | <!--Device-uint32_t descriptorSize--><!--Device-uint32_t descriptorSize-End--> |
 
 

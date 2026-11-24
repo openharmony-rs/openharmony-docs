@@ -72,7 +72,7 @@ enum Preference_ValueType
 
 Enumerates the data types of **PreferencesValue**.
 
-<!--Device-Preference_ValueType--><!--Device-Preference_ValueType-End-->
+<!--Device-enum Preference_ValueType--><!--Device-enum Preference_ValueType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -80,19 +80,19 @@ Enumerates the data types of **PreferencesValue**.
 
 | Enum item | Description |
 | -- | -- |
-| PREFERENCE_TYPE_NULL = 0 | Null. |
-| PREFERENCE_TYPE_INT | Integer. |
-| PREFERENCE_TYPE_BOOL | Boolean. |
-| PREFERENCE_TYPE_STRING | String. |
-| PREFERENCE_TYPE_INT64 | 64-bit integer.<br>**Since**: 23 |
-| PREFERENCE_TYPE_DOUBLE | Double.<br>**Since**: 23 |
-| PREFERENCE_TYPE_INT_ARRAY | Integer array.<br>**Since**: 23 |
-| PREFERENCE_TYPE_BOOL_ARRAY | Boolean array.<br>**Since**: 23 |
-| PREFERENCE_TYPE_STRING_ARRAY | String array.<br>**Since**: 23 |
-| PREFERENCE_TYPE_INT64_ARRAY | 64-bit integer array.<br>**Since**: 23 |
-| PREFERENCE_TYPE_DOUBLE_ARRAY | Double array.<br>**Since**: 23 |
-| PREFERENCE_TYPE_BLOB | Blob.<br>**Since**: 23 |
-| PREFERENCE_TYPE_BUTT | End type. |
+| PREFERENCE_TYPE_NULL = 0 | Null.<br><!--Device-PREFERENCE_TYPE_NULL = 0--><!--Device-PREFERENCE_TYPE_NULL = 0-End--> |
+| PREFERENCE_TYPE_INT | Integer.<br><!--Device-PREFERENCE_TYPE_INT--><!--Device-PREFERENCE_TYPE_INT-End--> |
+| PREFERENCE_TYPE_BOOL | Boolean.<br><!--Device-PREFERENCE_TYPE_BOOL--><!--Device-PREFERENCE_TYPE_BOOL-End--> |
+| PREFERENCE_TYPE_STRING | String.<br><!--Device-PREFERENCE_TYPE_STRING--><!--Device-PREFERENCE_TYPE_STRING-End--> |
+| PREFERENCE_TYPE_INT64 | 64-bit integer.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_INT64--><!--Device-PREFERENCE_TYPE_INT64-End--> |
+| PREFERENCE_TYPE_DOUBLE | Double.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_DOUBLE--><!--Device-PREFERENCE_TYPE_DOUBLE-End--> |
+| PREFERENCE_TYPE_INT_ARRAY | Integer array.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_INT_ARRAY--><!--Device-PREFERENCE_TYPE_INT_ARRAY-End--> |
+| PREFERENCE_TYPE_BOOL_ARRAY | Boolean array.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_BOOL_ARRAY--><!--Device-PREFERENCE_TYPE_BOOL_ARRAY-End--> |
+| PREFERENCE_TYPE_STRING_ARRAY | String array.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_STRING_ARRAY--><!--Device-PREFERENCE_TYPE_STRING_ARRAY-End--> |
+| PREFERENCE_TYPE_INT64_ARRAY | 64-bit integer array.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_INT64_ARRAY--><!--Device-PREFERENCE_TYPE_INT64_ARRAY-End--> |
+| PREFERENCE_TYPE_DOUBLE_ARRAY | Double array.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_DOUBLE_ARRAY--><!--Device-PREFERENCE_TYPE_DOUBLE_ARRAY-End--> |
+| PREFERENCE_TYPE_BLOB | Blob.<br>**Since**: 23<br><!--Device-PREFERENCE_TYPE_BLOB--><!--Device-PREFERENCE_TYPE_BLOB-End--> |
+| PREFERENCE_TYPE_BUTT | End type.<br><!--Device-PREFERENCE_TYPE_BUTT--><!--Device-PREFERENCE_TYPE_BUTT-End--> |
 
 
 ## Function description

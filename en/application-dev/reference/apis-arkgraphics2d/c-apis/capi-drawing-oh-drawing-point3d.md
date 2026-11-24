@@ -24,8 +24,8 @@ This struct describes a three-dimensional coordinate point.
 
 | Name | Description |
 | -- | -- |
-| float x |  |
-| float y |  |
-| float z |  |
+| float x | <!--Device-float x--><!--Device-float x-End--> |
+| float y | <!--Device-float y--><!--Device-float y-End--> |
+| float z | <!--Device-float z--><!--Device-float z-End--> |
 
 

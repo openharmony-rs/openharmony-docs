@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkExtent2D](capi--vkextent2d.md) quantizationMapTexelSize |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkExtent2D](capi--vkextent2d.md) quantizationMapTexelSize | <!--Device-VkExtent2D quantizationMapTexelSize--><!--Device-VkExtent2D quantizationMapTexelSize-End--> |
 
 

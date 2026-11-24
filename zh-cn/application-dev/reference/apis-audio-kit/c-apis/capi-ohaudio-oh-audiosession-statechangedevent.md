@@ -24,6 +24,6 @@ typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChan
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) stateChangeHint | 音频会话状态变更提示，用于表示状态变化的类型，如静音、取消静音、暂停、恢复等。 |
+| [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) stateChangeHint | 音频会话状态变更提示，用于表示状态变化的类型，如静音、取消静音、暂停、恢复等。<br><!--Device-OH_AudioSession_StateChangeHint stateChangeHint--><!--Device-OH_AudioSession_StateChangeHint stateChangeHint-End--> |
 
 

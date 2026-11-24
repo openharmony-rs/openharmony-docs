@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkRenderPass renderPass |  |
-| uint32_t subpass |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkRenderPass renderPass | <!--Device-VkRenderPass renderPass--><!--Device-VkRenderPass renderPass-End--> |
+| uint32_t subpass | <!--Device-uint32_t subpass--><!--Device-uint32_t subpass-End--> |
 
 

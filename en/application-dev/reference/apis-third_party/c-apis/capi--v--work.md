@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| void* wq |  |
+| void* wq[2] | <!--Device-void* wq[2]--><!--Device-void* wq[2]-End--> |
 
 
 ### Member functions

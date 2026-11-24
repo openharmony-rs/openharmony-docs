@@ -24,8 +24,8 @@ Provides rawfile file descriptor information, including the file descriptor, sta
 
 | Name | Description |
 | -- | -- |
-| int fd | File descriptor of the rawfile. |
-| long start | Start position of the rawfile in the HAP, in bytes. |
-| long length | Length of the rawfile, in bytes. |
+| int fd | File descriptor of the rawfile.<br><!--Device-int fd--><!--Device-int fd-End--> |
+| long start | Start position of the rawfile in the HAP, in bytes.<br><!--Device-long start--><!--Device-long start-End--> |
+| long length | Length of the rawfile, in bytes.<br><!--Device-long length--><!--Device-long length-End--> |
 
 

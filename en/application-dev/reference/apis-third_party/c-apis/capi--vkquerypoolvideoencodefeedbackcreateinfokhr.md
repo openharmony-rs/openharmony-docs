@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags | <!--Device-VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags--><!--Device-VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags-End--> |
 
 

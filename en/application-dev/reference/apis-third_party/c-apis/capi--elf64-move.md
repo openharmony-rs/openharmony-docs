@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| Elf64_Xword m_value |  |
-| Elf64_Xword m_info |  |
-| Elf64_Xword m_poffset |  |
-| Elf64_Half m_repeat |  |
-| Elf64_Half m_stride |  |
+| Elf64_Xword m_value | <!--Device-Elf64_Xword m_value--><!--Device-Elf64_Xword m_value-End--> |
+| Elf64_Xword m_info | <!--Device-Elf64_Xword m_info--><!--Device-Elf64_Xword m_info-End--> |
+| Elf64_Xword m_poffset | <!--Device-Elf64_Xword m_poffset--><!--Device-Elf64_Xword m_poffset-End--> |
+| Elf64_Half m_repeat | <!--Device-Elf64_Half m_repeat--><!--Device-Elf64_Half m_repeat-End--> |
+| Elf64_Half m_stride | <!--Device-Elf64_Half m_stride--><!--Device-Elf64_Half m_stride-End--> |
 
 

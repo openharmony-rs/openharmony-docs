@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t binding |  |
-| uint32_t divisor |  |
+| uint32_t binding | <!--Device-uint32_t binding--><!--Device-uint32_t binding-End--> |
+| uint32_t divisor | <!--Device-uint32_t divisor--><!--Device-uint32_t divisor-End--> |
 
 

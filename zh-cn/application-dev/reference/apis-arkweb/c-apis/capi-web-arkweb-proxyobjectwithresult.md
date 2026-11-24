@@ -24,8 +24,8 @@ ArkWeb_ProxyObjectWithResult是带返回值的JavaScript代理对象结构体，
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* objName | 注入的对象名，用于JavaScript调用时引用该对象。命名应遵循JavaScript标识符规则，不支持特殊字符。 |
-| [const ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | 注入的对象携带的方法结构体数组，数组长度由 size 参数指定。数组中的每个方法会被注册到Web页面中，JavaScript可通过“对象名.方法名”的方式进行调用。 |
-| size_t size | 方法结构体数组的长度，即数组中元素的个数。该值必须与 methodList 数组的实际长度一致，最小值为 0，最大值取决于系统资源限制。 |
+| const char* objName | 注入的对象名，用于JavaScript调用时引用该对象。命名应遵循JavaScript标识符规则，不支持特殊字符。<br><!--Device-const char* objName--><!--Device-const char* objName-End--> |
+| [const ArkWeb_ProxyMethodWithResult*](capi-web-arkweb-proxymethodwithresult.md) methodList | 注入的对象携带的方法结构体数组，数组长度由 size 参数指定。数组中的每个方法会被注册到Web页面中，JavaScript可通过“对象名.方法名”的方式进行调用。<br><!--Device-const ArkWeb_ProxyMethodWithResult* methodList--><!--Device-const ArkWeb_ProxyMethodWithResult* methodList-End--> |
+| size_t size | 方法结构体数组的长度，即数组中元素的个数。该值必须与 methodList 数组的实际长度一致，最小值为 0，最大值取决于系统资源限制。<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 

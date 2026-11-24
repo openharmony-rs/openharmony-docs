@@ -43,7 +43,7 @@ enum OH_Drawing_CornerPos
 
 Defines an enum for the corner positions of a rounded rectangle.
 
-<!--Device-OH_Drawing_CornerPos--><!--Device-OH_Drawing_CornerPos-End-->
+<!--Device-enum OH_Drawing_CornerPos--><!--Device-enum OH_Drawing_CornerPos-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -51,10 +51,10 @@ Defines an enum for the corner positions of a rounded rectangle.
 
 | Enum item | Description |
 | -- | -- |
-| CORNER_POS_TOP_LEFT | Top left corner of the rounded rectangle. |
-| CORNER_POS_TOP_RIGHT | Top right corner of the rounded rectangle. |
-| CORNER_POS_BOTTOM_RIGHT | Bottom right corner of the rounded rectangle. |
-| CORNER_POS_BOTTOM_LEFT | Bottom left corner of the rounded rectangle. |
+| CORNER_POS_TOP_LEFT | Top left corner of the rounded rectangle.<br><!--Device-CORNER_POS_TOP_LEFT--><!--Device-CORNER_POS_TOP_LEFT-End--> |
+| CORNER_POS_TOP_RIGHT | Top right corner of the rounded rectangle.<br><!--Device-CORNER_POS_TOP_RIGHT--><!--Device-CORNER_POS_TOP_RIGHT-End--> |
+| CORNER_POS_BOTTOM_RIGHT | Bottom right corner of the rounded rectangle.<br><!--Device-CORNER_POS_BOTTOM_RIGHT--><!--Device-CORNER_POS_BOTTOM_RIGHT-End--> |
+| CORNER_POS_BOTTOM_LEFT | Bottom left corner of the rounded rectangle.<br><!--Device-CORNER_POS_BOTTOM_LEFT--><!--Device-CORNER_POS_BOTTOM_LEFT-End--> |
 
 
 ## Function description
@@ -80,8 +80,8 @@ Creates an **OH_Drawing_RoundRect** object. This API may return an error code. F
 | Parameter | Description |
 | -- | -- |
 | [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object. |
-| float xRad | Radius of the rounded corner on the X axis. A negative number is invalid. |
-| float yRad | Radius of the rounded corner on the Y axis. A negative number is invalid. |
+| float xRad | Corner radius on the X-axis. The value is invalid when it is less than or equal to 0. The unit is physical pixels (px). |
+| float yRad | Corner radius on the Y-axis. The value is invalid when it is less than or equal to 0. The unit is physical pixels (px). |
 
 **Returns**:
 

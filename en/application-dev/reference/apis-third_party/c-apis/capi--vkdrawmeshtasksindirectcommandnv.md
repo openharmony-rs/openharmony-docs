@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t taskCount |  |
-| uint32_t firstTask |  |
+| uint32_t taskCount | <!--Device-uint32_t taskCount--><!--Device-uint32_t taskCount-End--> |
+| uint32_t firstTask | <!--Device-uint32_t firstTask--><!--Device-uint32_t firstTask-End--> |
 
 

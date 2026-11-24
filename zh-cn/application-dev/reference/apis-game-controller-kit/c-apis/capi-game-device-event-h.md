@@ -56,7 +56,7 @@ enum GameDevice_StatusChangedType
 
 此枚举定义设备的状态变化类型。
 
-<!--Device-GameDevice_StatusChangedType--><!--Device-GameDevice_StatusChangedType-End-->
+<!--Device-enum GameDevice_StatusChangedType--><!--Device-enum GameDevice_StatusChangedType-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -64,8 +64,8 @@ enum GameDevice_StatusChangedType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFFLINE = 0 | 设备下线。<br>**起始版本：** 21 |
-| ONLINE = 1 | 设备上线。<br>**起始版本：** 21 |
+| OFFLINE = 0 | 设备下线。<br>**起始版本：** 21<br><!--Device-OFFLINE = 0--><!--Device-OFFLINE = 0-End--> |
+| ONLINE = 1 | 设备上线。<br>**起始版本：** 21<br><!--Device-ONLINE = 1--><!--Device-ONLINE = 1-End--> |
 
 ### GameDevice_DeviceType
 
@@ -77,7 +77,7 @@ enum GameDevice_DeviceType
 
 此枚举定义设备类型。
 
-<!--Device-GameDevice_DeviceType--><!--Device-GameDevice_DeviceType-End-->
+<!--Device-enum GameDevice_DeviceType--><!--Device-enum GameDevice_DeviceType-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -85,8 +85,8 @@ enum GameDevice_DeviceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UNKNOWN = 0 | 未知。<br>**起始版本：** 21 |
-| GAME_PAD = 1 | 游戏手柄。<br>**起始版本：** 21 |
+| UNKNOWN = 0 | 未知。<br>**起始版本：** 21<br><!--Device-UNKNOWN = 0--><!--Device-UNKNOWN = 0-End--> |
+| GAME_PAD = 1 | 游戏手柄。<br>**起始版本：** 21<br><!--Device-GAME_PAD = 1--><!--Device-GAME_PAD = 1-End--> |
 
 
 ## 函数说明

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint64_t drmFormatModifier |  |
-| uint32_t drmFormatModifierPlaneCount |  |
-| VkFormatFeatureFlags2 drmFormatModifierTilingFeatures |  |
+| uint64_t drmFormatModifier | <!--Device-uint64_t drmFormatModifier--><!--Device-uint64_t drmFormatModifier-End--> |
+| uint32_t drmFormatModifierPlaneCount | <!--Device-uint32_t drmFormatModifierPlaneCount--><!--Device-uint32_t drmFormatModifierPlaneCount-End--> |
+| VkFormatFeatureFlags2 drmFormatModifierTilingFeatures | <!--Device-VkFormatFeatureFlags2 drmFormatModifierTilingFeatures--><!--Device-VkFormatFeatureFlags2 drmFormatModifierTilingFeatures-End--> |
 
 

@@ -26,9 +26,9 @@ typedef struct OH_AudioSuite_MetaFrame {...} OH_AudioSuite_MetaFrame
 
 | 名称 | 描述 |
 | -- | -- |
-| void* audioData | 音频数据指针。<br>**起始版本：** 26.0.0 |
-| int32_t audioDataSize | 音频数据大小。<br>**起始版本：** 26.0.0 |
-| void* metaData | 元数据指针。<br>**起始版本：** 26.0.0 |
-| int32_t metaDataSize | 元数据大小。<br>**起始版本：** 26.0.0 |
+| void* audioData | 音频数据指针。<br>**起始版本：** 26.0.0<br><!--Device-void* audioData--><!--Device-void* audioData-End--> |
+| int32_t audioDataSize | 音频数据大小。<br>**起始版本：** 26.0.0<br><!--Device-int32_t audioDataSize--><!--Device-int32_t audioDataSize-End--> |
+| void* metaData | 元数据指针。<br>**起始版本：** 26.0.0<br><!--Device-void* metaData--><!--Device-void* metaData-End--> |
+| int32_t metaDataSize | 元数据大小。<br>**起始版本：** 26.0.0<br><!--Device-int32_t metaDataSize--><!--Device-int32_t metaDataSize-End--> |
 
 

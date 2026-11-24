@@ -24,9 +24,9 @@ struct UsbSerial_Params {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t baudRate | 波特率，单位：波特。 |
-| uint8_t nDataBits | 数据位比特数。 |
-| uint8_t nStopBits | 停止位比特数。 |
-| uint8_t parity | 校验参数设置（0：无校验；1：奇校验；2：偶校验）。 |
+| uint32_t baudRate | 波特率，单位：波特。<br><!--Device-uint32_t baudRate--><!--Device-uint32_t baudRate-End--> |
+| uint8_t nDataBits | 数据位比特数。<br><!--Device-uint8_t nDataBits--><!--Device-uint8_t nDataBits-End--> |
+| uint8_t nStopBits | 停止位比特数。<br><!--Device-uint8_t nStopBits--><!--Device-uint8_t nStopBits-End--> |
+| uint8_t parity | 校验参数设置（0：无校验；1：奇校验；2：偶校验）。<br><!--Device-uint8_t parity--><!--Device-uint8_t parity-End--> |
 
 

@@ -24,7 +24,7 @@ typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t x | 水平方向的偏移量，单位为px。x为正数时组件向右偏移，为负数时向左偏移。<br>**起始版本：** 12 |
-| int32_t y | 竖直方向的偏移量，单位为px。y为正数时组件向下偏移，为负数时向上偏移。<br>**起始版本：** 12 |
+| int32_t x | 水平方向的偏移量，单位为px。x为正数时组件向右偏移，为负数时向左偏移。<br>**起始版本：** 12<br><!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | 竖直方向的偏移量，单位为px。y为正数时组件向下偏移，为负数时向上偏移。<br>**起始版本：** 12<br><!--Device-int32_t y--><!--Device-int32_t y-End--> |
 
 

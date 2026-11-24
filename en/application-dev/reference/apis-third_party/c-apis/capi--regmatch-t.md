@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| regoff_t rm_so |  |
-| regoff_t rm_eo |  |
+| regoff_t rm_so | <!--Device-regoff_t rm_so--><!--Device-regoff_t rm_so-End--> |
+| regoff_t rm_eo | <!--Device-regoff_t rm_eo--><!--Device-regoff_t rm_eo-End--> |
 
 

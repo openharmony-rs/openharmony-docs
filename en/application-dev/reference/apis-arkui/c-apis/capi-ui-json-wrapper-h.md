@@ -49,7 +49,7 @@ enum OH_ArkUI_NativeModule_UIJsonFormat
 
 Enumerated type of the JSON output format.
 
-<!--Device-OH_ArkUI_NativeModule_UIJsonFormat--><!--Device-OH_ArkUI_NativeModule_UIJsonFormat-End-->
+<!--Device-enum OH_ArkUI_NativeModule_UIJsonFormat--><!--Device-enum OH_ArkUI_NativeModule_UIJsonFormat-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,8 +57,8 @@ Enumerated type of the JSON output format.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | Produces canonical JSON without unnecessary whitespace.<br>**Since**: 26.1.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | Generates JSON with double-space indentation and line breaks.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | Produces canonical JSON without unnecessary whitespace.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0-End--> |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | Generates JSON with double-space indentation and line breaks.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1--><!--Device-OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1-End--> |
 
 
 ## Function description

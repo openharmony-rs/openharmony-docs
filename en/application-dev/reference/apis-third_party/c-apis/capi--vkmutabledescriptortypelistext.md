@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint32_t descriptorTypeCount |  |
-| const VkDescriptorType* pDescriptorTypes |  |
+| uint32_t descriptorTypeCount | <!--Device-uint32_t descriptorTypeCount--><!--Device-uint32_t descriptorTypeCount-End--> |
+| const VkDescriptorType* pDescriptorTypes | <!--Device-const VkDescriptorType* pDescriptorTypes--><!--Device-const VkDescriptorType* pDescriptorTypes-End--> |
 
 

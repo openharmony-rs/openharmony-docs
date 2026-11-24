@@ -24,8 +24,8 @@ Defines a struct for the multi-screen recording capability. It includes whether 
 
 | Name | Description |
 | -- | -- |
-| bool isMultiDisplaySupport | Whether multi-screen recording is supported. **true**: yes; **false**: no. |
-| uint32_t width | Width of the screen area that can be recorded, in pixels. |
-| uint32_t height | Height of the screen area that can be recorded, in pixels. |
+| bool isMultiDisplaySupport | Whether multi-screen recording is supported. **true**: yes; **false**: no.<br><!--Device-bool isMultiDisplaySupport--><!--Device-bool isMultiDisplaySupport-End--> |
+| uint32_t width | Width of the screen area that can be recorded, in pixels.<br><!--Device-uint32_t width--><!--Device-uint32_t width-End--> |
+| uint32_t height | Height of the screen area that can be recorded, in pixels.<br><!--Device-uint32_t height--><!--Device-uint32_t height-End--> |
 
 

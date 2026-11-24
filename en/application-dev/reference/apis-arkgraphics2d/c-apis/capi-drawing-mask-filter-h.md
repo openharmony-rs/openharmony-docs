@@ -39,7 +39,7 @@ enum OH_Drawing_BlurType
 
 Defines an enum for the blur types.
 
-<!--Device-OH_Drawing_BlurType--><!--Device-OH_Drawing_BlurType-End-->
+<!--Device-enum OH_Drawing_BlurType--><!--Device-enum OH_Drawing_BlurType-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -47,10 +47,10 @@ Defines an enum for the blur types.
 
 | Enum item | Description |
 | -- | -- |
-| NORMAL | Blurs both inside and outside the original border. |
-| SOLID | Draws solid inside the border, and blurs outside. |
-| OUTER | Draws nothing inside the border, and blurs outside. |
-| INNER | Blurs inside the border, and draws nothing outside. |
+| NORMAL | Blurs both inside and outside the original border.<br><!--Device-NORMAL--><!--Device-NORMAL-End--> |
+| SOLID | Draws solid inside the border, and blurs outside.<br><!--Device-SOLID--><!--Device-SOLID-End--> |
+| OUTER | Draws nothing inside the border, and blurs outside.<br><!--Device-OUTER--><!--Device-OUTER-End--> |
+| INNER | Blurs inside the border, and draws nothing outside.<br><!--Device-INNER--><!--Device-INNER-End--> |
 
 
 ## Function description

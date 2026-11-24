@@ -24,8 +24,8 @@ The struct describes the video encoding information.
 
 | Name | Description |
 | -- | -- |
-| [OH_VideoCodecFormat](capi-native-avscreen-capture-base-h.md#oh_videocodecformat) videoCodec | Video encoder format |
-| int32_t videoBitrate | Video encoder bitrate, in bit/s |
-| int32_t videoFrameRate | Video encoder frame rate, in fps |
+| [OH_VideoCodecFormat](capi-native-avscreen-capture-base-h.md#oh_videocodecformat) videoCodec | Video encoder format<br><!--Device-OH_VideoCodecFormat videoCodec--><!--Device-OH_VideoCodecFormat videoCodec-End--> |
+| int32_t videoBitrate | Video encoder bitrate, in bit/s<br><!--Device-int32_t videoBitrate--><!--Device-int32_t videoBitrate-End--> |
+| int32_t videoFrameRate | Video encoder frame rate, in fps<br><!--Device-int32_t videoFrameRate--><!--Device-int32_t videoFrameRate-End--> |
 
 

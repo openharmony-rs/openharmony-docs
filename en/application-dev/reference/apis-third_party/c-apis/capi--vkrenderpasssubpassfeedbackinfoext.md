@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkSubpassMergeStatusEXT subpassMergeStatus |  |
-| char description[VK_MAX_DESCRIPTION_SIZE] |  |
-| uint32_t postMergeIndex |  |
+| VkSubpassMergeStatusEXT subpassMergeStatus | <!--Device-VkSubpassMergeStatusEXT subpassMergeStatus--><!--Device-VkSubpassMergeStatusEXT subpassMergeStatus-End--> |
+| char description[VK_MAX_DESCRIPTION_SIZE] | <!--Device-char description[VK_MAX_DESCRIPTION_SIZE]--><!--Device-char description[VK_MAX_DESCRIPTION_SIZE]-End--> |
+| uint32_t postMergeIndex | <!--Device-uint32_t postMergeIndex--><!--Device-uint32_t postMergeIndex-End--> |
 
 

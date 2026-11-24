@@ -148,7 +148,7 @@ enum OH_Rdb_SecurityLevel
 
 Describe the security level of the database.
 
-<!--Device-OH_Rdb_SecurityLevel--><!--Device-OH_Rdb_SecurityLevel-End-->
+<!--Device-enum OH_Rdb_SecurityLevel--><!--Device-enum OH_Rdb_SecurityLevel-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -156,10 +156,10 @@ Describe the security level of the database.
 
 | Enum item | Description |
 | -- | -- |
-| S1 = 1 | Low-level security. Data leaks have a minor impact. |
-| S2 | Medium-level security. Data leaks have a major impact. |
-| S3 | High-level security. Data leaks have a severe impact. |
-| S4 | Critical-level security. Data leaks have a critical impact. |
+| S1 = 1 | Low-level security. Data leaks have a minor impact.<br><!--Device-S1 = 1--><!--Device-S1 = 1-End--> |
+| S2 | Medium-level security. Data leaks have a major impact.<br><!--Device-S2--><!--Device-S2-End--> |
+| S3 | High-level security. Data leaks have a severe impact.<br><!--Device-S3--><!--Device-S3-End--> |
+| S4 | Critical-level security. Data leaks have a critical impact.<br><!--Device-S4--><!--Device-S4-End--> |
 
 ### Rdb_SecurityArea
 
@@ -171,7 +171,7 @@ enum Rdb_SecurityArea
 
 Describe the security area of the database.
 
-<!--Device-Rdb_SecurityArea--><!--Device-Rdb_SecurityArea-End-->
+<!--Device-enum Rdb_SecurityArea--><!--Device-enum Rdb_SecurityArea-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -179,11 +179,11 @@ Describe the security area of the database.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_SECURITY_AREA_EL1 = 1 | Security Area 1. |
-| RDB_SECURITY_AREA_EL2 | Security Area 2. |
-| RDB_SECURITY_AREA_EL3 | Security Area 3. |
-| RDB_SECURITY_AREA_EL4 | Security Area 4. |
-| RDB_SECURITY_AREA_EL5 | Security Area 5.<br>**Since**: 12 |
+| RDB_SECURITY_AREA_EL1 = 1 | Security Area 1.<br><!--Device-RDB_SECURITY_AREA_EL1 = 1--><!--Device-RDB_SECURITY_AREA_EL1 = 1-End--> |
+| RDB_SECURITY_AREA_EL2 | Security Area 2.<br><!--Device-RDB_SECURITY_AREA_EL2--><!--Device-RDB_SECURITY_AREA_EL2-End--> |
+| RDB_SECURITY_AREA_EL3 | Security Area 3.<br><!--Device-RDB_SECURITY_AREA_EL3--><!--Device-RDB_SECURITY_AREA_EL3-End--> |
+| RDB_SECURITY_AREA_EL4 | Security Area 4.<br><!--Device-RDB_SECURITY_AREA_EL4--><!--Device-RDB_SECURITY_AREA_EL4-End--> |
+| RDB_SECURITY_AREA_EL5 | Security Area 5.<br>**Since**: 12<br><!--Device-RDB_SECURITY_AREA_EL5--><!--Device-RDB_SECURITY_AREA_EL5-End--> |
 
 ### Rdb_DBType
 
@@ -195,7 +195,7 @@ enum Rdb_DBType
 
 Define Rdb_DBType type.
 
-<!--Device-Rdb_DBType--><!--Device-Rdb_DBType-End-->
+<!--Device-enum Rdb_DBType--><!--Device-enum Rdb_DBType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -203,9 +203,9 @@ Define Rdb_DBType type.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_SQLITE = 1 | Means using SQLITE as the db kernel<br>**Since**: 14 |
-| RDB_CAYLEY = 2 | Means using CAYLEY_DB as the db kernel<br>**Since**: 14 |
-| DBTYPE_BUTT = 64 | Means largest value for Rdb_DBType<br>**Since**: 14 |
+| RDB_SQLITE = 1 | Means using SQLITE as the db kernel<br>**Since**: 14<br><!--Device-RDB_SQLITE = 1--><!--Device-RDB_SQLITE = 1-End--> |
+| RDB_CAYLEY = 2 | Means using CAYLEY_DB as the db kernel<br>**Since**: 14<br><!--Device-RDB_CAYLEY = 2--><!--Device-RDB_CAYLEY = 2-End--> |
+| DBTYPE_BUTT = 64 | Means largest value for Rdb_DBType<br>**Since**: 14<br><!--Device-DBTYPE_BUTT = 64--><!--Device-DBTYPE_BUTT = 64-End--> |
 
 ### Rdb_Tokenizer
 
@@ -217,7 +217,7 @@ enum Rdb_Tokenizer
 
 Define Rdb_Tokenizer type.
 
-<!--Device-Rdb_Tokenizer--><!--Device-Rdb_Tokenizer-End-->
+<!--Device-enum Rdb_Tokenizer--><!--Device-enum Rdb_Tokenizer-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -225,9 +225,9 @@ Define Rdb_Tokenizer type.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_NONE_TOKENIZER = 1 | Means not using tokenizer.<br>**Since**: 17 |
-| RDB_ICU_TOKENIZER = 2 | Means using native icu tokenizer.<br>**Since**: 17 |
-| RDB_CUSTOM_TOKENIZER = 3 | Means using self-developed enhance tokenizer.<br>**Since**: 18 |
+| RDB_NONE_TOKENIZER = 1 | Means not using tokenizer.<br>**Since**: 17<br><!--Device-RDB_NONE_TOKENIZER = 1--><!--Device-RDB_NONE_TOKENIZER = 1-End--> |
+| RDB_ICU_TOKENIZER = 2 | Means using native icu tokenizer.<br>**Since**: 17<br><!--Device-RDB_ICU_TOKENIZER = 2--><!--Device-RDB_ICU_TOKENIZER = 2-End--> |
+| RDB_CUSTOM_TOKENIZER = 3 | Means using self-developed enhance tokenizer.<br>**Since**: 18<br><!--Device-RDB_CUSTOM_TOKENIZER = 3--><!--Device-RDB_CUSTOM_TOKENIZER = 3-End--> |
 
 ### Rdb_DistributedType
 
@@ -239,7 +239,7 @@ enum Rdb_DistributedType
 
 Describes the distribution type of the tables.
 
-<!--Device-Rdb_DistributedType--><!--Device-Rdb_DistributedType-End-->
+<!--Device-enum Rdb_DistributedType--><!--Device-enum Rdb_DistributedType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -247,7 +247,7 @@ Describes the distribution type of the tables.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_DISTRIBUTED_CLOUD | Indicates the table is distributed among the devices. |
+| RDB_DISTRIBUTED_CLOUD | Indicates the table is distributed among the devices.<br><!--Device-RDB_DISTRIBUTED_CLOUD--><!--Device-RDB_DISTRIBUTED_CLOUD-End--> |
 
 ### Rdb_ChangeType
 
@@ -259,7 +259,7 @@ enum Rdb_ChangeType
 
 Describes the change type.
 
-<!--Device-Rdb_ChangeType--><!--Device-Rdb_ChangeType-End-->
+<!--Device-enum Rdb_ChangeType--><!--Device-enum Rdb_ChangeType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -267,8 +267,8 @@ Describes the change type.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_DATA_CHANGE | Means the change type is data change. |
-| RDB_ASSET_CHANGE | Means the change type is asset change. |
+| RDB_DATA_CHANGE | Means the change type is data change.<br><!--Device-RDB_DATA_CHANGE--><!--Device-RDB_DATA_CHANGE-End--> |
+| RDB_ASSET_CHANGE | Means the change type is asset change.<br><!--Device-RDB_ASSET_CHANGE--><!--Device-RDB_ASSET_CHANGE-End--> |
 
 ### Rdb_SubscribeType
 
@@ -280,7 +280,7 @@ enum Rdb_SubscribeType
 
 Indicates the subscribe type.
 
-<!--Device-Rdb_SubscribeType--><!--Device-Rdb_SubscribeType-End-->
+<!--Device-enum Rdb_SubscribeType--><!--Device-enum Rdb_SubscribeType-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -288,9 +288,9 @@ Indicates the subscribe type.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_SUBSCRIBE_TYPE_CLOUD | Subscription to cloud data changes. |
-| RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS | Subscription to cloud data change details. |
-| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | Subscription to local data change details.<br>**Since**: 12 |
+| RDB_SUBSCRIBE_TYPE_CLOUD | Subscription to cloud data changes.<br><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD--><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD-End--> |
+| RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS | Subscription to cloud data change details.<br><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS--><!--Device-RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS-End--> |
+| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | Subscription to local data change details.<br>**Since**: 12<br><!--Device-RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS--><!--Device-RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS-End--> |
 
 ### Rdb_SyncMode
 
@@ -302,7 +302,7 @@ enum Rdb_SyncMode
 
 Indicates the database synchronization mode.
 
-<!--Device-Rdb_SyncMode--><!--Device-Rdb_SyncMode-End-->
+<!--Device-enum Rdb_SyncMode--><!--Device-enum Rdb_SyncMode-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -310,9 +310,9 @@ Indicates the database synchronization mode.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_SYNC_MODE_TIME_FIRST | Indicates that data is synchronized from the end with the closest modification time to the end with a more distant modification time. |
-| RDB_SYNC_MODE_NATIVE_FIRST | Indicates that data is synchronized from local to cloud. |
-| RDB_SYNC_MODE_CLOUD_FIRST | Indicates that data is synchronized from cloud to local. |
+| RDB_SYNC_MODE_TIME_FIRST | Indicates that data is synchronized from the end with the closest modification time to the end with a more distant modification time.<br><!--Device-RDB_SYNC_MODE_TIME_FIRST--><!--Device-RDB_SYNC_MODE_TIME_FIRST-End--> |
+| RDB_SYNC_MODE_NATIVE_FIRST | Indicates that data is synchronized from local to cloud.<br><!--Device-RDB_SYNC_MODE_NATIVE_FIRST--><!--Device-RDB_SYNC_MODE_NATIVE_FIRST-End--> |
+| RDB_SYNC_MODE_CLOUD_FIRST | Indicates that data is synchronized from cloud to local.<br><!--Device-RDB_SYNC_MODE_CLOUD_FIRST--><!--Device-RDB_SYNC_MODE_CLOUD_FIRST-End--> |
 
 ### Rdb_Progress
 
@@ -324,7 +324,7 @@ enum Rdb_Progress
 
 The cloud sync progress
 
-<!--Device-Rdb_Progress--><!--Device-Rdb_Progress-End-->
+<!--Device-enum Rdb_Progress--><!--Device-enum Rdb_Progress-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -332,9 +332,9 @@ The cloud sync progress
 
 | Enum item | Description |
 | -- | -- |
-| RDB_SYNC_BEGIN | Means the sync process begin. |
-| RDB_SYNC_IN_PROGRESS | Means the sync process is in progress |
-| RDB_SYNC_FINISH | Means the sync process is finished |
+| RDB_SYNC_BEGIN | Means the sync process begin.<br><!--Device-RDB_SYNC_BEGIN--><!--Device-RDB_SYNC_BEGIN-End--> |
+| RDB_SYNC_IN_PROGRESS | Means the sync process is in progress<br><!--Device-RDB_SYNC_IN_PROGRESS--><!--Device-RDB_SYNC_IN_PROGRESS-End--> |
+| RDB_SYNC_FINISH | Means the sync process is finished<br><!--Device-RDB_SYNC_FINISH--><!--Device-RDB_SYNC_FINISH-End--> |
 
 ### Rdb_ProgressCode
 
@@ -346,7 +346,7 @@ enum Rdb_ProgressCode
 
 Describes the status of cloud sync progress.
 
-<!--Device-Rdb_ProgressCode--><!--Device-Rdb_ProgressCode-End-->
+<!--Device-enum Rdb_ProgressCode--><!--Device-enum Rdb_ProgressCode-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -354,13 +354,13 @@ Describes the status of cloud sync progress.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_SUCCESS | Means the status of progress is success. |
-| RDB_UNKNOWN_ERROR | Means the progress meets unknown error. |
-| RDB_NETWORK_ERROR | Means the progress meets network error. |
-| RDB_CLOUD_DISABLED | Means cloud is disabled. |
-| RDB_LOCKED_BY_OTHERS | Means the progress is locked by others. |
-| RDB_RECORD_LIMIT_EXCEEDED | Means the record exceeds the limit. |
-| RDB_NO_SPACE_FOR_ASSET | Means the cloud has no space for the asset. |
+| RDB_SUCCESS | Means the status of progress is success.<br><!--Device-RDB_SUCCESS--><!--Device-RDB_SUCCESS-End--> |
+| RDB_UNKNOWN_ERROR | Means the progress meets unknown error.<br><!--Device-RDB_UNKNOWN_ERROR--><!--Device-RDB_UNKNOWN_ERROR-End--> |
+| RDB_NETWORK_ERROR | Means the progress meets network error.<br><!--Device-RDB_NETWORK_ERROR--><!--Device-RDB_NETWORK_ERROR-End--> |
+| RDB_CLOUD_DISABLED | Means cloud is disabled.<br><!--Device-RDB_CLOUD_DISABLED--><!--Device-RDB_CLOUD_DISABLED-End--> |
+| RDB_LOCKED_BY_OTHERS | Means the progress is locked by others.<br><!--Device-RDB_LOCKED_BY_OTHERS--><!--Device-RDB_LOCKED_BY_OTHERS-End--> |
+| RDB_RECORD_LIMIT_EXCEEDED | Means the record exceeds the limit.<br><!--Device-RDB_RECORD_LIMIT_EXCEEDED--><!--Device-RDB_RECORD_LIMIT_EXCEEDED-End--> |
+| RDB_NO_SPACE_FOR_ASSET | Means the cloud has no space for the asset.<br><!--Device-RDB_NO_SPACE_FOR_ASSET--><!--Device-RDB_NO_SPACE_FOR_ASSET-End--> |
 
 
 ## Function description
@@ -2677,7 +2677,7 @@ Registers corrupted handler for the database.
 
 | Type | Description |
 | -- | -- |
-| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. RDB_E_SUB_OVER_LIMIT - Indicates the number of subscriptions exceeds the limit. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+| int | Returns a specific error code. [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful. [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) - The error code for common invalid args. [RDB_E_SUB_LIMIT_REACHED](capi-relational-store-error-code-h.md#oh_rdb_errcode) - Indicates the number of subscriptions exceeds the limit. Specific error codes can be referenced [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **Reference**:
 

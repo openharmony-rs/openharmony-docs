@@ -24,6 +24,6 @@ Defines the queue attribute structure used to store queue attribute information.
 
 | Name | Description |
 | -- | -- |
-| uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage backing the queue attribute. Do not access directly; use the [ffrt_queue_attr_init](../../apis-third_party/c-apis/capi-queue-h.md#ffrt_queue_attr_init) and `ffrt_queue_attr_set_*` APIs to manage contents. |
+| uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage backing the queue attribute. Do not access directly; use the [ffrt_queue_attr_init](../../apis-third_party/c-apis/capi-queue-h.md#ffrt_queue_attr_init) and `ffrt_queue_attr_set_*` APIs to manage contents.<br><!--Device-uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]--><!--Device-uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]-End--> |
 
 

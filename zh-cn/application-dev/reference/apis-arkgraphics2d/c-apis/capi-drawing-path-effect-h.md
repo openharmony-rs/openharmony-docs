@@ -44,7 +44,7 @@ enum OH_Drawing_PathDashStyle
 
 路径效果的绘制样式枚举。
 
-<!--Device-OH_Drawing_PathDashStyle--><!--Device-OH_Drawing_PathDashStyle-End-->
+<!--Device-enum OH_Drawing_PathDashStyle--><!--Device-enum OH_Drawing_PathDashStyle-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -52,9 +52,9 @@ enum OH_Drawing_PathDashStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DRAWING_PATH_DASH_STYLE_TRANSLATE | 表示虚线段沿路径平移绘制，不发生旋转或变形。 |
-| DRAWING_PATH_DASH_STYLE_ROTATE | 表示虚线段沿路径旋转，使其方向跟随路径切线方向。 |
-| DRAWING_PATH_DASH_STYLE_MORPH | 表示虚线段沿路径发生变形，以适应路径走向。 |
+| DRAWING_PATH_DASH_STYLE_TRANSLATE | 表示虚线段沿路径平移绘制，不发生旋转或变形。<br><!--Device-DRAWING_PATH_DASH_STYLE_TRANSLATE--><!--Device-DRAWING_PATH_DASH_STYLE_TRANSLATE-End--> |
+| DRAWING_PATH_DASH_STYLE_ROTATE | 表示虚线段沿路径旋转，使其方向跟随路径切线方向。<br><!--Device-DRAWING_PATH_DASH_STYLE_ROTATE--><!--Device-DRAWING_PATH_DASH_STYLE_ROTATE-End--> |
+| DRAWING_PATH_DASH_STYLE_MORPH | 表示虚线段沿路径发生变形，以适应路径走向。<br><!--Device-DRAWING_PATH_DASH_STYLE_MORPH--><!--Device-DRAWING_PATH_DASH_STYLE_MORPH-End--> |
 
 
 ## 函数说明

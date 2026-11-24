@@ -58,7 +58,7 @@ enum Scan_ErrorCode
 
 Enumerates the error codes.
 
-<!--Device-Scan_ErrorCode--><!--Device-Scan_ErrorCode-End-->
+<!--Device-enum Scan_ErrorCode--><!--Device-enum Scan_ErrorCode-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -66,21 +66,21 @@ Enumerates the error codes.
 
 | Enum item | Description |
 | -- | -- |
-| SCAN_ERROR_NONE = 0 | Operation successful. |
-| SCAN_ERROR_NO_PERMISSION = 201 | Permission verification failed. Request the required permissions. |
-| SCAN_ERROR_INVALID_PARAMETER = 401 | Invalid parameter. For example, the pointer or string is null. Check whether the input parameter is valid. |
-| SCAN_ERROR_GENERIC_FAILURE = 24300101 | A generic internal error occurred. Try again later. |
-| SCAN_ERROR_RPC_FAILURE = 24300102 | RPC communication error. Check the scanning service status and try again. |
-| SCAN_ERROR_SERVER_FAILURE = 24300103 | An error occurred during scanning. Try again later. |
-| SCAN_ERROR_UNSUPPORTED = 24300104 | The operation is not supported. Check whether the current scanner supports this operation. |
-| SCAN_ERROR_CANCELED = 24300105 | The operation has been canceled. Start scanning again. |
-| SCAN_ERROR_DEVICE_BUSY = 24300106 | The scanner is busy. Try again later. |
-| SCAN_ERROR_INVALID = 24300107 | Invalid data (for example, no device is available when the scanner is started). Check the scanner connection status. |
-| SCAN_ERROR_JAMMED = 24300108 | Paper jammed at the paper feeder. Remove the jammed paper and try again. |
-| SCAN_ERROR_NO_DOCS = 24300109 | Out of paper. Place paper in the feeder and try again. |
-| SCAN_ERROR_COVER_OPEN = 24300110 | The scanner cover is open. Close the cover and try again. |
-| SCAN_ERROR_IO_ERROR = 24300111 | Scanner I/O error. Check the scanner connection and try again. |
-| SCAN_ERROR_NO_MEMORY = 24300112 | Insufficient memory. Release resources and try again. |
+| SCAN_ERROR_NONE = 0 | Operation successful.<br><!--Device-SCAN_ERROR_NONE = 0--><!--Device-SCAN_ERROR_NONE = 0-End--> |
+| SCAN_ERROR_NO_PERMISSION = 201 | Permission verification failed. Request the required permissions.<br><!--Device-SCAN_ERROR_NO_PERMISSION = 201--><!--Device-SCAN_ERROR_NO_PERMISSION = 201-End--> |
+| SCAN_ERROR_INVALID_PARAMETER = 401 | Invalid parameter. For example, the pointer or string is null. Check whether the input parameter is valid.<br><!--Device-SCAN_ERROR_INVALID_PARAMETER = 401--><!--Device-SCAN_ERROR_INVALID_PARAMETER = 401-End--> |
+| SCAN_ERROR_GENERIC_FAILURE = 24300101 | A generic internal error occurred. Try again later.<br><!--Device-SCAN_ERROR_GENERIC_FAILURE = 24300101--><!--Device-SCAN_ERROR_GENERIC_FAILURE = 24300101-End--> |
+| SCAN_ERROR_RPC_FAILURE = 24300102 | RPC communication error. Check the scanning service status and try again.<br><!--Device-SCAN_ERROR_RPC_FAILURE = 24300102--><!--Device-SCAN_ERROR_RPC_FAILURE = 24300102-End--> |
+| SCAN_ERROR_SERVER_FAILURE = 24300103 | An error occurred during scanning. Try again later.<br><!--Device-SCAN_ERROR_SERVER_FAILURE = 24300103--><!--Device-SCAN_ERROR_SERVER_FAILURE = 24300103-End--> |
+| SCAN_ERROR_UNSUPPORTED = 24300104 | The operation is not supported. Check whether the current scanner supports this operation.<br><!--Device-SCAN_ERROR_UNSUPPORTED = 24300104--><!--Device-SCAN_ERROR_UNSUPPORTED = 24300104-End--> |
+| SCAN_ERROR_CANCELED = 24300105 | The operation has been canceled. Start scanning again.<br><!--Device-SCAN_ERROR_CANCELED = 24300105--><!--Device-SCAN_ERROR_CANCELED = 24300105-End--> |
+| SCAN_ERROR_DEVICE_BUSY = 24300106 | The scanner is busy. Try again later.<br><!--Device-SCAN_ERROR_DEVICE_BUSY = 24300106--><!--Device-SCAN_ERROR_DEVICE_BUSY = 24300106-End--> |
+| SCAN_ERROR_INVALID = 24300107 | Invalid data (for example, no device is available when the scanner is started). Check the scanner connection status.<br><!--Device-SCAN_ERROR_INVALID = 24300107--><!--Device-SCAN_ERROR_INVALID = 24300107-End--> |
+| SCAN_ERROR_JAMMED = 24300108 | Paper jammed at the paper feeder. Remove the jammed paper and try again.<br><!--Device-SCAN_ERROR_JAMMED = 24300108--><!--Device-SCAN_ERROR_JAMMED = 24300108-End--> |
+| SCAN_ERROR_NO_DOCS = 24300109 | Out of paper. Place paper in the feeder and try again.<br><!--Device-SCAN_ERROR_NO_DOCS = 24300109--><!--Device-SCAN_ERROR_NO_DOCS = 24300109-End--> |
+| SCAN_ERROR_COVER_OPEN = 24300110 | The scanner cover is open. Close the cover and try again.<br><!--Device-SCAN_ERROR_COVER_OPEN = 24300110--><!--Device-SCAN_ERROR_COVER_OPEN = 24300110-End--> |
+| SCAN_ERROR_IO_ERROR = 24300111 | Scanner I/O error. Check the scanner connection and try again.<br><!--Device-SCAN_ERROR_IO_ERROR = 24300111--><!--Device-SCAN_ERROR_IO_ERROR = 24300111-End--> |
+| SCAN_ERROR_NO_MEMORY = 24300112 | Insufficient memory. Release resources and try again.<br><!--Device-SCAN_ERROR_NO_MEMORY = 24300112--><!--Device-SCAN_ERROR_NO_MEMORY = 24300112-End--> |
 
 
 ## Function description

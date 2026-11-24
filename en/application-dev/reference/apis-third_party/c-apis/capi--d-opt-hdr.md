@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t nd_opt_type |  |
-| uint8_t nd_opt_len |  |
+| uint8_t nd_opt_type | <!--Device-uint8_t nd_opt_type--><!--Device-uint8_t nd_opt_type-End--> |
+| uint8_t nd_opt_len | <!--Device-uint8_t nd_opt_len--><!--Device-uint8_t nd_opt_len-End--> |
 
 

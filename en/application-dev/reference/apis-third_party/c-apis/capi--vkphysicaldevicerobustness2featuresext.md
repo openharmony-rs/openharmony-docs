@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 robustBufferAccess2 |  |
-| VkBool32 robustImageAccess2 |  |
-| VkBool32 nullDescriptor |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 robustBufferAccess2 | <!--Device-VkBool32 robustBufferAccess2--><!--Device-VkBool32 robustBufferAccess2-End--> |
+| VkBool32 robustImageAccess2 | <!--Device-VkBool32 robustImageAccess2--><!--Device-VkBool32 robustImageAccess2-End--> |
+| VkBool32 nullDescriptor | <!--Device-VkBool32 nullDescriptor--><!--Device-VkBool32 nullDescriptor-End--> |
 
 

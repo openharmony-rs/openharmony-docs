@@ -36,7 +36,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void* ffrt_loop_t | loop句柄，用于标识不同的loop。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
+| void* ffrt_loop_t | loop句柄，用于标识不同的loop。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core<br><!--Device-void* ffrt_loop_t--><!--Device-void* ffrt_loop_t-End--> |
 
 ## 函数说明
 

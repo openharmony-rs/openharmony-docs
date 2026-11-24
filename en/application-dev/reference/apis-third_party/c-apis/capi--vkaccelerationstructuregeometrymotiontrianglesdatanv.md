@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) vertexData |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) vertexData | <!--Device-VkDeviceOrHostAddressConstKHR vertexData--><!--Device-VkDeviceOrHostAddressConstKHR vertexData-End--> |
 
 

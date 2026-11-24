@@ -24,10 +24,10 @@ typedef struct OH_CloudDisk_SyncFolderEx {...} OH_CloudDisk_SyncFolderEx
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t version | 指示此结构体的版本。必须初始化为有效的版本宏，例如 [OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义)。<br>**起始版本：** 26.0.1 |
-| CloudDisk_SyncFolderPath path | sync文件夹路径。<br>**起始版本：** 26.0.1 |
-| [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 指示同步文件夹的状态。<br>**起始版本：** 26.0.1 |
-| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步文件夹的displayName信息。<br>**起始版本：** 26.0.1 |
-| bool isSupportPlaceHolder | 同步文件夹是否支持占位符。<br>**起始版本：** 26.0.1 |
+| uint32_t version | 指示此结构体的版本。必须初始化为有效的版本宏，例如 [OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义)。<br>**起始版本：** 26.0.1<br><!--Device-uint32_t version--><!--Device-uint32_t version-End--> |
+| CloudDisk_SyncFolderPath path | sync文件夹路径。<br>**起始版本：** 26.0.1<br><!--Device-CloudDisk_SyncFolderPath path--><!--Device-CloudDisk_SyncFolderPath path-End--> |
+| [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 指示同步文件夹的状态。<br>**起始版本：** 26.0.1<br><!--Device-CloudDisk_SyncFolderState state--><!--Device-CloudDisk_SyncFolderState state-End--> |
+| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步文件夹的displayName信息。<br>**起始版本：** 26.0.1<br><!--Device-CloudDisk_DisplayNameInfo displayNameInfo--><!--Device-CloudDisk_DisplayNameInfo displayNameInfo-End--> |
+| bool isSupportPlaceHolder | 同步文件夹是否支持占位符。<br>**起始版本：** 26.0.1<br><!--Device-bool isSupportPlaceHolder--><!--Device-bool isSupportPlaceHolder-End--> |
 
 

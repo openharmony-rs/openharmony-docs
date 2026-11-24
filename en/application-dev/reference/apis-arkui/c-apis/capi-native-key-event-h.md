@@ -75,12 +75,15 @@ Declares the APIs of **NativeKeyEvent** for obtaining the type, key code, key va
 | [ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo *info)](#oh_arkui_applicationshortcutcallbackinfo_getuicontext) | - | Obtains the UI context of the UI instance where an application-level keyboard shortcut is triggered. |
 | [ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t *registrationId)](#oh_arkui_applicationshortcut_register) | - | Registers an application-level keyboard shortcut. The shortcut takes effect globally in the application. A matching component-level shortcut is triggered before the application-level shortcut. This function must be called on the UI thread. This API does not support Form render and Dynamic render containers.<br> Each registration generates a positive integer registration ID unique within the application, even when the shortcut and callback are identical. Multiple registrations of the same shortcut are retained, and all matching registrations are invoked in increasing registration ID order when the shortcut is triggered. Registration IDs are not reused during the application lifetime. The registration ID is a positive int32 value; if the ID space is exhausted, 0 is returned to indicate failure. Callbacks already collected for the current event can still run after the corresponding registration is unregistered; <b>userData</b> must remain valid until the current event completes. |
 | [ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)](#oh_arkui_applicationshortcut_unregister) | - | Unregisters the application-level keyboard shortcut binding identified by the registration ID. This function must be called on the UI thread.<br> Only the specified binding is removed. Other bindings are unaffected. Callbacks already collected for the current event can still run. If the ID does not exist or has already been unregistered, this method does nothing and still succeeds. |
+| [typedef void (\*OH_ArkUI_KeyboardShortcutCallback)(void *userData)](#oh_arkui_keyboardshortcutcallback) | OH_ArkUI_KeyboardShortcutCallback | Defines the callback function that is invoked when a component-level keyboard shortcut is triggered. |
+| [ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Register(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_KeyboardShortcutCallback callback)](#oh_arkui_nodekeyboardshortcut_register) | - | Registers a keyboard shortcut for a component. If the same shortcut is registered again for the same component, the latest registration takes effect. Component-level shortcuts take precedence over matching application-level shortcuts. |
+| [ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Unregister(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys)](#oh_arkui_nodekeyboardshortcut_unregister) | - | Unregisters a keyboard shortcut from a component. If no matching shortcut is registered, the operation still succeeds. |
 
 ### Variables
 
 | Name | Description |
 | -- | -- |
-| ArkUI_KeyIntension OH_ArkUI_KeyIntention | Defines the correctly spelled alias for the key event intention type.<br> The original type name [ArkUI_KeyIntension](capi-native-key-event-h.md#arkui_keyintension) is retained for compatibility.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| ArkUI_KeyIntension OH_ArkUI_KeyIntention | Defines the correctly spelled alias for the key event intention type.<br> The original type name [ArkUI_KeyIntension](capi-native-key-event-h.md#arkui_keyintension) is retained for compatibility.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full<br><!--Device-ArkUI_KeyIntension OH_ArkUI_KeyIntention--><!--Device-ArkUI_KeyIntension OH_ArkUI_KeyIntention-End--> |
 
 ## Enum type description
 
@@ -94,7 +97,7 @@ enum ArkUI_KeyCode
 
 Enumerates the key codes for key events.
 
-<!--Device-ArkUI_KeyCode--><!--Device-ArkUI_KeyCode-End-->
+<!--Device-enum ArkUI_KeyCode--><!--Device-enum ArkUI_KeyCode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,152 +105,152 @@ Enumerates the key codes for key events.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEYCODE_UNKNOWN = -1 | Unknown key |
-| ARKUI_KEYCODE_FN = 0 | Function (Fn) key |
-| ARKUI_KEYCODE_VOLUME_UP = 16 | Volume Up key |
-| ARKUI_KEYCODE_VOLUME_DOWN = 17 | Volume Down key |
-| ARKUI_KEYCODE_POWER = 18 | Power key |
-| ARKUI_KEYCODE_CAMERA = 19 | Camera key |
-| ARKUI_KEYCODE_VOLUME_MUTE = 22 | Speaker Mute key |
-| ARKUI_KEYCODE_MUTE = 23 | Mute key |
-| ARKUI_KEYCODE_BRIGHTNESS_UP = 40 | Brightness Up key. |
-| ARKUI_KEYCODE_BRIGHTNESS_DOWN = 41 | Brightness Down key. |
-| ARKUI_KEYCODE_0 = 2000 | Key 0 |
-| ARKUI_KEYCODE_1 = 2001 | Key 1 |
-| ARKUI_KEYCODE_2 = 2002 | Key 2 |
-| ARKUI_KEYCODE_3 = 2003 | Key 3 |
-| ARKUI_KEYCODE_4 = 2004 | Key 4 |
-| ARKUI_KEYCODE_5 = 2005 | Key 5 |
-| ARKUI_KEYCODE_6 = 2006 | Key 6 |
-| ARKUI_KEYCODE_7 = 2007 | Key 7 |
-| ARKUI_KEYCODE_8 = 2008 | Key 8 |
-| ARKUI_KEYCODE_9 = 2009 | Key 9 |
-| ARKUI_KEYCODE_STAR = 2010 | Key |
-| ARKUI_KEYCODE_POUND = 2011 | Key # |
-| ARKUI_KEYCODE_DPAD_UP = 2012 | Up key on D-pad. |
-| ARKUI_KEYCODE_DPAD_DOWN = 2013 | Down key on D-pad. |
-| ARKUI_KEYCODE_DPAD_LEFT = 2014 | Left key on D-pad. |
-| ARKUI_KEYCODE_DPAD_RIGHT = 2015 | Right key on D-pad. |
-| ARKUI_KEYCODE_DPAD_CENTER = 2016 | Center key on D-pad. |
-| ARKUI_KEYCODE_A = 2017 | Key A |
-| ARKUI_KEYCODE_B = 2018 | Key B |
-| ARKUI_KEYCODE_C = 2019 | Key C |
-| ARKUI_KEYCODE_D = 2020 | Key D |
-| ARKUI_KEYCODE_E = 2021 | Key E |
-| ARKUI_KEYCODE_F = 2022 | Key F |
-| ARKUI_KEYCODE_G = 2023 | Key G |
-| ARKUI_KEYCODE_H = 2024 | Key H |
-| ARKUI_KEYCODE_I = 2025 | Key I |
-| ARKUI_KEYCODE_J = 2026 | Key J |
-| ARKUI_KEYCODE_K = 2027 | Key K |
-| ARKUI_KEYCODE_L = 2028 | Key L |
-| ARKUI_KEYCODE_M = 2029 | Key M |
-| ARKUI_KEYCODE_N = 2030 | Key N |
-| ARKUI_KEYCODE_O = 2031 | Key O |
-| ARKUI_KEYCODE_P = 2032 | Key P |
-| ARKUI_KEYCODE_Q = 2033 | Key Q |
-| ARKUI_KEYCODE_R = 2034 | Key R |
-| ARKUI_KEYCODE_S = 2035 | Key S |
-| ARKUI_KEYCODE_T = 2036 | Key T |
-| ARKUI_KEYCODE_U = 2037 | Key U |
-| ARKUI_KEYCODE_V = 2038 | Key V |
-| ARKUI_KEYCODE_W = 2039 | Key W |
-| ARKUI_KEYCODE_X = 2040 | Key X |
-| ARKUI_KEYCODE_Y = 2041 | Key Y |
-| ARKUI_KEYCODE_Z = 2042 | Key Z |
-| ARKUI_KEYCODE_COMMA = 2043 | Key , |
-| ARKUI_KEYCODE_PERIOD = 2044 | Key . |
-| ARKUI_KEYCODE_ALT_LEFT = 2045 | Left Alt key |
-| ARKUI_KEYCODE_ALT_RIGHT = 2046 | Right Alt key |
-| ARKUI_KEYCODE_SHIFT_LEFT = 2047 | Left Shift key |
-| ARKUI_KEYCODE_SHIFT_RIGHT = 2048 | Right Shift key |
-| ARKUI_KEYCODE_TAB = 2049 | Tab key |
-| ARKUI_KEYCODE_SPACE = 2050 | Space key |
-| ARKUI_KEYCODE_SYM = 2051 | Symbol key |
-| ARKUI_KEYCODE_EXPLORER = 2052 | Explorer key, which is used to start the explorer application |
-| ARKUI_KEYCODE_ENVELOPE = 2053 | Email key, which is used to start the email application |
-| ARKUI_KEYCODE_ENTER = 2054 | Enter key |
-| ARKUI_KEYCODE_DEL = 2055 | Delete key |
-| ARKUI_KEYCODE_GRAVE = 2056 | Key ` |
-| ARKUI_KEYCODE_MINUS = 2057 | Key - |
-| ARKUI_KEYCODE_EQUALS = 2058 | Key = |
-| ARKUI_KEYCODE_LEFT_BRACKET = 2059 | Key [ |
-| ARKUI_KEYCODE_RIGHT_BRACKET = 2060 | Key ] |
-| ARKUI_KEYCODE_BACKSLASH = 2061 | Key \ |
-| ARKUI_KEYCODE_SEMICOLON = 2062 | Key ; |
-| ARKUI_KEYCODE_APOSTROPHE = 2063 | Key ' |
-| ARKUI_KEYCODE_SLASH = 2064 | Key |
-| ARKUI_KEYCODE_AT = 2065 | Key @ |
-| ARKUI_KEYCODE_PLUS = 2066 | Key + |
-| ARKUI_KEYCODE_MENU = 2067 | Menu key |
-| ARKUI_KEYCODE_PAGE_UP = 2068 | Page Up key |
-| ARKUI_KEYCODE_PAGE_DOWN = 2069 | Page Down key |
-| ARKUI_KEYCODE_ESCAPE = 2070 | ESC key. |
-| ARKUI_KEYCODE_FORWARD_DEL = 2071 | Forward Delete key |
-| ARKUI_KEYCODE_CTRL_LEFT = 2072 | Left Ctrl key |
-| ARKUI_KEYCODE_CTRL_RIGHT = 2073 | Right Ctrl key |
-| ARKUI_KEYCODE_CAPS_LOCK = 2074 | Caps Lock key |
-| ARKUI_KEYCODE_SCROLL_LOCK = 2075 | Scroll Lock key |
-| ARKUI_KEYCODE_META_LEFT = 2076 | Left Meta key |
-| ARKUI_KEYCODE_META_RIGHT = 2077 | Right Meta key |
-| ARKUI_KEYCODE_FUNCTION = 2078 | Function key |
-| ARKUI_KEYCODE_SYSRQ = 2079 | System Request/Print Screen key |
-| ARKUI_KEYCODE_BREAK = 2080 | Break/Pause key |
-| ARKUI_KEYCODE_MOVE_HOME = 2081 | Move to Home key |
-| ARKUI_KEYCODE_MOVE_END = 2082 | Move to End key |
-| ARKUI_KEYCODE_INSERT = 2083 | Insert key |
-| ARKUI_KEYCODE_FORWARD = 2084 | Forward key |
-| ARKUI_KEYCODE_MEDIA_PLAY = 2085 | Play key |
-| ARKUI_KEYCODE_MEDIA_PAUSE = 2086 | Pause key |
-| ARKUI_KEYCODE_MEDIA_CLOSE = 2087 | Close key |
-| ARKUI_KEYCODE_MEDIA_EJECT = 2088 | Eject key |
-| ARKUI_KEYCODE_MEDIA_RECORD = 2089 | Record key |
-| ARKUI_KEYCODE_F1 = 2090 | F1 key |
-| ARKUI_KEYCODE_F2 = 2091 | F2 key |
-| ARKUI_KEYCODE_F3 = 2092 | F3 key |
-| ARKUI_KEYCODE_F4 = 2093 | F4 key |
-| ARKUI_KEYCODE_F5 = 2094 | F5 key |
-| ARKUI_KEYCODE_F6 = 2095 | F6 key |
-| ARKUI_KEYCODE_F7 = 2096 | F7 key |
-| ARKUI_KEYCODE_F8 = 2097 | F8 key |
-| ARKUI_KEYCODE_F9 = 2098 | F9 key |
-| ARKUI_KEYCODE_F10 = 2099 | F10 key |
-| ARKUI_KEYCODE_F11 = 2100 | F11 key |
-| ARKUI_KEYCODE_F12 = 2101 | F12 key |
-| ARKUI_KEYCODE_NUM_LOCK = 2102 | Number Lock key on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_0 = 2103 | Key 0 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_1 = 2104 | Key 1 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_2 = 2105 | Key 2 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_3 = 2106 | Key 3 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_4 = 2107 | Key 4 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_5 = 2108 | Key 5 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_6 = 2109 | Key 6 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_7 = 2110 | Key 7 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_8 = 2111 | Key 8 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_9 = 2112 | Key 9 on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_DIVIDE = 2113 | Key / on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_MULTIPLY = 2114 | Key * on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_SUBTRACT = 2115 | Key - on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_ADD = 2116 | Key + on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_DOT = 2117 | Key . on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_COMMA = 2118 | Key , on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_ENTER = 2119 | Enter key on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_EQUALS = 2120 | Key = on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_LEFT_PAREN = 2121 | Key ( on numeric keypad |
-| ARKUI_KEYCODE_NUMPAD_RIGHT_PAREN = 2122 | Key ) on numeric keypad |
-| ARKUI_KEYCODE_BUTTON_A = 2301 | Joystick key A<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_B = 2302 | Joystick key B<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_X = 2304 | Joystick key X<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_Y = 2305 | Joystick key Y<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_L1 = 2307 | Joystick key L1<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_R1 = 2308 | Joystick key R1<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_L2 = 2309 | Joystick key L2<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_R2 = 2310 | Joystick key R2<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_SELECT = 2311 | Joystick key Select<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_START = 2312 | Joystick key Start<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_MODE = 2313 | Joystick key Mode<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_THUMBL = 2314 | Joystick key THUMBL<br>**Since**: 15 |
-| ARKUI_KEYCODE_BUTTON_THUMBR = 2315 | Joystick key THUMBR<br>**Since**: 15 |
+| ARKUI_KEYCODE_UNKNOWN = -1 | Unknown key<br><!--Device-ARKUI_KEYCODE_UNKNOWN = -1--><!--Device-ARKUI_KEYCODE_UNKNOWN = -1-End--> |
+| ARKUI_KEYCODE_FN = 0 | Function (Fn) key<br><!--Device-ARKUI_KEYCODE_FN = 0--><!--Device-ARKUI_KEYCODE_FN = 0-End--> |
+| ARKUI_KEYCODE_VOLUME_UP = 16 | Volume Up key<br><!--Device-ARKUI_KEYCODE_VOLUME_UP = 16--><!--Device-ARKUI_KEYCODE_VOLUME_UP = 16-End--> |
+| ARKUI_KEYCODE_VOLUME_DOWN = 17 | Volume Down key<br><!--Device-ARKUI_KEYCODE_VOLUME_DOWN = 17--><!--Device-ARKUI_KEYCODE_VOLUME_DOWN = 17-End--> |
+| ARKUI_KEYCODE_POWER = 18 | Power key<br><!--Device-ARKUI_KEYCODE_POWER = 18--><!--Device-ARKUI_KEYCODE_POWER = 18-End--> |
+| ARKUI_KEYCODE_CAMERA = 19 | Camera key<br><!--Device-ARKUI_KEYCODE_CAMERA = 19--><!--Device-ARKUI_KEYCODE_CAMERA = 19-End--> |
+| ARKUI_KEYCODE_VOLUME_MUTE = 22 | Speaker Mute key<br><!--Device-ARKUI_KEYCODE_VOLUME_MUTE = 22--><!--Device-ARKUI_KEYCODE_VOLUME_MUTE = 22-End--> |
+| ARKUI_KEYCODE_MUTE = 23 | Mute key<br><!--Device-ARKUI_KEYCODE_MUTE = 23--><!--Device-ARKUI_KEYCODE_MUTE = 23-End--> |
+| ARKUI_KEYCODE_BRIGHTNESS_UP = 40 | Brightness Up key.<br><!--Device-ARKUI_KEYCODE_BRIGHTNESS_UP = 40--><!--Device-ARKUI_KEYCODE_BRIGHTNESS_UP = 40-End--> |
+| ARKUI_KEYCODE_BRIGHTNESS_DOWN = 41 | Brightness Down key.<br><!--Device-ARKUI_KEYCODE_BRIGHTNESS_DOWN = 41--><!--Device-ARKUI_KEYCODE_BRIGHTNESS_DOWN = 41-End--> |
+| ARKUI_KEYCODE_0 = 2000 | Key 0<br><!--Device-ARKUI_KEYCODE_0 = 2000--><!--Device-ARKUI_KEYCODE_0 = 2000-End--> |
+| ARKUI_KEYCODE_1 = 2001 | Key 1<br><!--Device-ARKUI_KEYCODE_1 = 2001--><!--Device-ARKUI_KEYCODE_1 = 2001-End--> |
+| ARKUI_KEYCODE_2 = 2002 | Key 2<br><!--Device-ARKUI_KEYCODE_2 = 2002--><!--Device-ARKUI_KEYCODE_2 = 2002-End--> |
+| ARKUI_KEYCODE_3 = 2003 | Key 3<br><!--Device-ARKUI_KEYCODE_3 = 2003--><!--Device-ARKUI_KEYCODE_3 = 2003-End--> |
+| ARKUI_KEYCODE_4 = 2004 | Key 4<br><!--Device-ARKUI_KEYCODE_4 = 2004--><!--Device-ARKUI_KEYCODE_4 = 2004-End--> |
+| ARKUI_KEYCODE_5 = 2005 | Key 5<br><!--Device-ARKUI_KEYCODE_5 = 2005--><!--Device-ARKUI_KEYCODE_5 = 2005-End--> |
+| ARKUI_KEYCODE_6 = 2006 | Key 6<br><!--Device-ARKUI_KEYCODE_6 = 2006--><!--Device-ARKUI_KEYCODE_6 = 2006-End--> |
+| ARKUI_KEYCODE_7 = 2007 | Key 7<br><!--Device-ARKUI_KEYCODE_7 = 2007--><!--Device-ARKUI_KEYCODE_7 = 2007-End--> |
+| ARKUI_KEYCODE_8 = 2008 | Key 8<br><!--Device-ARKUI_KEYCODE_8 = 2008--><!--Device-ARKUI_KEYCODE_8 = 2008-End--> |
+| ARKUI_KEYCODE_9 = 2009 | Key 9<br><!--Device-ARKUI_KEYCODE_9 = 2009--><!--Device-ARKUI_KEYCODE_9 = 2009-End--> |
+| ARKUI_KEYCODE_STAR = 2010 | Key *<br><!--Device-ARKUI_KEYCODE_STAR = 2010--><!--Device-ARKUI_KEYCODE_STAR = 2010-End--> |
+| ARKUI_KEYCODE_POUND = 2011 | Key #<br><!--Device-ARKUI_KEYCODE_POUND = 2011--><!--Device-ARKUI_KEYCODE_POUND = 2011-End--> |
+| ARKUI_KEYCODE_DPAD_UP = 2012 | Up key on D-pad.<br><!--Device-ARKUI_KEYCODE_DPAD_UP = 2012--><!--Device-ARKUI_KEYCODE_DPAD_UP = 2012-End--> |
+| ARKUI_KEYCODE_DPAD_DOWN = 2013 | Down key on D-pad.<br><!--Device-ARKUI_KEYCODE_DPAD_DOWN = 2013--><!--Device-ARKUI_KEYCODE_DPAD_DOWN = 2013-End--> |
+| ARKUI_KEYCODE_DPAD_LEFT = 2014 | Left key on D-pad.<br><!--Device-ARKUI_KEYCODE_DPAD_LEFT = 2014--><!--Device-ARKUI_KEYCODE_DPAD_LEFT = 2014-End--> |
+| ARKUI_KEYCODE_DPAD_RIGHT = 2015 | Right key on D-pad.<br><!--Device-ARKUI_KEYCODE_DPAD_RIGHT = 2015--><!--Device-ARKUI_KEYCODE_DPAD_RIGHT = 2015-End--> |
+| ARKUI_KEYCODE_DPAD_CENTER = 2016 | Center key on D-pad.<br><!--Device-ARKUI_KEYCODE_DPAD_CENTER = 2016--><!--Device-ARKUI_KEYCODE_DPAD_CENTER = 2016-End--> |
+| ARKUI_KEYCODE_A = 2017 | Key A<br><!--Device-ARKUI_KEYCODE_A = 2017--><!--Device-ARKUI_KEYCODE_A = 2017-End--> |
+| ARKUI_KEYCODE_B = 2018 | Key B<br><!--Device-ARKUI_KEYCODE_B = 2018--><!--Device-ARKUI_KEYCODE_B = 2018-End--> |
+| ARKUI_KEYCODE_C = 2019 | Key C<br><!--Device-ARKUI_KEYCODE_C = 2019--><!--Device-ARKUI_KEYCODE_C = 2019-End--> |
+| ARKUI_KEYCODE_D = 2020 | Key D<br><!--Device-ARKUI_KEYCODE_D = 2020--><!--Device-ARKUI_KEYCODE_D = 2020-End--> |
+| ARKUI_KEYCODE_E = 2021 | Key E<br><!--Device-ARKUI_KEYCODE_E = 2021--><!--Device-ARKUI_KEYCODE_E = 2021-End--> |
+| ARKUI_KEYCODE_F = 2022 | Key F<br><!--Device-ARKUI_KEYCODE_F = 2022--><!--Device-ARKUI_KEYCODE_F = 2022-End--> |
+| ARKUI_KEYCODE_G = 2023 | Key G<br><!--Device-ARKUI_KEYCODE_G = 2023--><!--Device-ARKUI_KEYCODE_G = 2023-End--> |
+| ARKUI_KEYCODE_H = 2024 | Key H<br><!--Device-ARKUI_KEYCODE_H = 2024--><!--Device-ARKUI_KEYCODE_H = 2024-End--> |
+| ARKUI_KEYCODE_I = 2025 | Key I<br><!--Device-ARKUI_KEYCODE_I = 2025--><!--Device-ARKUI_KEYCODE_I = 2025-End--> |
+| ARKUI_KEYCODE_J = 2026 | Key J<br><!--Device-ARKUI_KEYCODE_J = 2026--><!--Device-ARKUI_KEYCODE_J = 2026-End--> |
+| ARKUI_KEYCODE_K = 2027 | Key K<br><!--Device-ARKUI_KEYCODE_K = 2027--><!--Device-ARKUI_KEYCODE_K = 2027-End--> |
+| ARKUI_KEYCODE_L = 2028 | Key L<br><!--Device-ARKUI_KEYCODE_L = 2028--><!--Device-ARKUI_KEYCODE_L = 2028-End--> |
+| ARKUI_KEYCODE_M = 2029 | Key M<br><!--Device-ARKUI_KEYCODE_M = 2029--><!--Device-ARKUI_KEYCODE_M = 2029-End--> |
+| ARKUI_KEYCODE_N = 2030 | Key N<br><!--Device-ARKUI_KEYCODE_N = 2030--><!--Device-ARKUI_KEYCODE_N = 2030-End--> |
+| ARKUI_KEYCODE_O = 2031 | Key O<br><!--Device-ARKUI_KEYCODE_O = 2031--><!--Device-ARKUI_KEYCODE_O = 2031-End--> |
+| ARKUI_KEYCODE_P = 2032 | Key P<br><!--Device-ARKUI_KEYCODE_P = 2032--><!--Device-ARKUI_KEYCODE_P = 2032-End--> |
+| ARKUI_KEYCODE_Q = 2033 | Key Q<br><!--Device-ARKUI_KEYCODE_Q = 2033--><!--Device-ARKUI_KEYCODE_Q = 2033-End--> |
+| ARKUI_KEYCODE_R = 2034 | Key R<br><!--Device-ARKUI_KEYCODE_R = 2034--><!--Device-ARKUI_KEYCODE_R = 2034-End--> |
+| ARKUI_KEYCODE_S = 2035 | Key S<br><!--Device-ARKUI_KEYCODE_S = 2035--><!--Device-ARKUI_KEYCODE_S = 2035-End--> |
+| ARKUI_KEYCODE_T = 2036 | Key T<br><!--Device-ARKUI_KEYCODE_T = 2036--><!--Device-ARKUI_KEYCODE_T = 2036-End--> |
+| ARKUI_KEYCODE_U = 2037 | Key U<br><!--Device-ARKUI_KEYCODE_U = 2037--><!--Device-ARKUI_KEYCODE_U = 2037-End--> |
+| ARKUI_KEYCODE_V = 2038 | Key V<br><!--Device-ARKUI_KEYCODE_V = 2038--><!--Device-ARKUI_KEYCODE_V = 2038-End--> |
+| ARKUI_KEYCODE_W = 2039 | Key W<br><!--Device-ARKUI_KEYCODE_W = 2039--><!--Device-ARKUI_KEYCODE_W = 2039-End--> |
+| ARKUI_KEYCODE_X = 2040 | Key X<br><!--Device-ARKUI_KEYCODE_X = 2040--><!--Device-ARKUI_KEYCODE_X = 2040-End--> |
+| ARKUI_KEYCODE_Y = 2041 | Key Y<br><!--Device-ARKUI_KEYCODE_Y = 2041--><!--Device-ARKUI_KEYCODE_Y = 2041-End--> |
+| ARKUI_KEYCODE_Z = 2042 | Key Z<br><!--Device-ARKUI_KEYCODE_Z = 2042--><!--Device-ARKUI_KEYCODE_Z = 2042-End--> |
+| ARKUI_KEYCODE_COMMA = 2043 | Key ,<br><!--Device-ARKUI_KEYCODE_COMMA = 2043--><!--Device-ARKUI_KEYCODE_COMMA = 2043-End--> |
+| ARKUI_KEYCODE_PERIOD = 2044 | Key .<br><!--Device-ARKUI_KEYCODE_PERIOD = 2044--><!--Device-ARKUI_KEYCODE_PERIOD = 2044-End--> |
+| ARKUI_KEYCODE_ALT_LEFT = 2045 | Left Alt key<br><!--Device-ARKUI_KEYCODE_ALT_LEFT = 2045--><!--Device-ARKUI_KEYCODE_ALT_LEFT = 2045-End--> |
+| ARKUI_KEYCODE_ALT_RIGHT = 2046 | Right Alt key<br><!--Device-ARKUI_KEYCODE_ALT_RIGHT = 2046--><!--Device-ARKUI_KEYCODE_ALT_RIGHT = 2046-End--> |
+| ARKUI_KEYCODE_SHIFT_LEFT = 2047 | Left Shift key<br><!--Device-ARKUI_KEYCODE_SHIFT_LEFT = 2047--><!--Device-ARKUI_KEYCODE_SHIFT_LEFT = 2047-End--> |
+| ARKUI_KEYCODE_SHIFT_RIGHT = 2048 | Right Shift key<br><!--Device-ARKUI_KEYCODE_SHIFT_RIGHT = 2048--><!--Device-ARKUI_KEYCODE_SHIFT_RIGHT = 2048-End--> |
+| ARKUI_KEYCODE_TAB = 2049 | Tab key<br><!--Device-ARKUI_KEYCODE_TAB = 2049--><!--Device-ARKUI_KEYCODE_TAB = 2049-End--> |
+| ARKUI_KEYCODE_SPACE = 2050 | Space key<br><!--Device-ARKUI_KEYCODE_SPACE = 2050--><!--Device-ARKUI_KEYCODE_SPACE = 2050-End--> |
+| ARKUI_KEYCODE_SYM = 2051 | Symbol key<br><!--Device-ARKUI_KEYCODE_SYM = 2051--><!--Device-ARKUI_KEYCODE_SYM = 2051-End--> |
+| ARKUI_KEYCODE_EXPLORER = 2052 | Explorer key, which is used to start the explorer application<br><!--Device-ARKUI_KEYCODE_EXPLORER = 2052--><!--Device-ARKUI_KEYCODE_EXPLORER = 2052-End--> |
+| ARKUI_KEYCODE_ENVELOPE = 2053 | Email key, which is used to start the email application<br><!--Device-ARKUI_KEYCODE_ENVELOPE = 2053--><!--Device-ARKUI_KEYCODE_ENVELOPE = 2053-End--> |
+| ARKUI_KEYCODE_ENTER = 2054 | Enter key<br><!--Device-ARKUI_KEYCODE_ENTER = 2054--><!--Device-ARKUI_KEYCODE_ENTER = 2054-End--> |
+| ARKUI_KEYCODE_DEL = 2055 | Delete key<br><!--Device-ARKUI_KEYCODE_DEL = 2055--><!--Device-ARKUI_KEYCODE_DEL = 2055-End--> |
+| ARKUI_KEYCODE_GRAVE = 2056 | Key `<br><!--Device-ARKUI_KEYCODE_GRAVE = 2056--><!--Device-ARKUI_KEYCODE_GRAVE = 2056-End--> |
+| ARKUI_KEYCODE_MINUS = 2057 | Key -<br><!--Device-ARKUI_KEYCODE_MINUS = 2057--><!--Device-ARKUI_KEYCODE_MINUS = 2057-End--> |
+| ARKUI_KEYCODE_EQUALS = 2058 | Key =<br><!--Device-ARKUI_KEYCODE_EQUALS = 2058--><!--Device-ARKUI_KEYCODE_EQUALS = 2058-End--> |
+| ARKUI_KEYCODE_LEFT_BRACKET = 2059 | Key [<br><!--Device-ARKUI_KEYCODE_LEFT_BRACKET = 2059--><!--Device-ARKUI_KEYCODE_LEFT_BRACKET = 2059-End--> |
+| ARKUI_KEYCODE_RIGHT_BRACKET = 2060 | Key ]<br><!--Device-ARKUI_KEYCODE_RIGHT_BRACKET = 2060--><!--Device-ARKUI_KEYCODE_RIGHT_BRACKET = 2060-End--> |
+| ARKUI_KEYCODE_BACKSLASH = 2061 | Key \<br><!--Device-ARKUI_KEYCODE_BACKSLASH = 2061--><!--Device-ARKUI_KEYCODE_BACKSLASH = 2061-End--> |
+| ARKUI_KEYCODE_SEMICOLON = 2062 | Key ;<br><!--Device-ARKUI_KEYCODE_SEMICOLON = 2062--><!--Device-ARKUI_KEYCODE_SEMICOLON = 2062-End--> |
+| ARKUI_KEYCODE_APOSTROPHE = 2063 | Key '<br><!--Device-ARKUI_KEYCODE_APOSTROPHE = 2063--><!--Device-ARKUI_KEYCODE_APOSTROPHE = 2063-End--> |
+| ARKUI_KEYCODE_SLASH = 2064 | Key<br><!--Device-ARKUI_KEYCODE_SLASH = 2064--><!--Device-ARKUI_KEYCODE_SLASH = 2064-End--> |
+| ARKUI_KEYCODE_AT = 2065 | Key @<br><!--Device-ARKUI_KEYCODE_AT = 2065--><!--Device-ARKUI_KEYCODE_AT = 2065-End--> |
+| ARKUI_KEYCODE_PLUS = 2066 | Key +<br><!--Device-ARKUI_KEYCODE_PLUS = 2066--><!--Device-ARKUI_KEYCODE_PLUS = 2066-End--> |
+| ARKUI_KEYCODE_MENU = 2067 | Menu key<br><!--Device-ARKUI_KEYCODE_MENU = 2067--><!--Device-ARKUI_KEYCODE_MENU = 2067-End--> |
+| ARKUI_KEYCODE_PAGE_UP = 2068 | Page Up key<br><!--Device-ARKUI_KEYCODE_PAGE_UP = 2068--><!--Device-ARKUI_KEYCODE_PAGE_UP = 2068-End--> |
+| ARKUI_KEYCODE_PAGE_DOWN = 2069 | Page Down key<br><!--Device-ARKUI_KEYCODE_PAGE_DOWN = 2069--><!--Device-ARKUI_KEYCODE_PAGE_DOWN = 2069-End--> |
+| ARKUI_KEYCODE_ESCAPE = 2070 | ESC key.<br><!--Device-ARKUI_KEYCODE_ESCAPE = 2070--><!--Device-ARKUI_KEYCODE_ESCAPE = 2070-End--> |
+| ARKUI_KEYCODE_FORWARD_DEL = 2071 | Forward Delete key<br><!--Device-ARKUI_KEYCODE_FORWARD_DEL = 2071--><!--Device-ARKUI_KEYCODE_FORWARD_DEL = 2071-End--> |
+| ARKUI_KEYCODE_CTRL_LEFT = 2072 | Left Ctrl key<br><!--Device-ARKUI_KEYCODE_CTRL_LEFT = 2072--><!--Device-ARKUI_KEYCODE_CTRL_LEFT = 2072-End--> |
+| ARKUI_KEYCODE_CTRL_RIGHT = 2073 | Right Ctrl key<br><!--Device-ARKUI_KEYCODE_CTRL_RIGHT = 2073--><!--Device-ARKUI_KEYCODE_CTRL_RIGHT = 2073-End--> |
+| ARKUI_KEYCODE_CAPS_LOCK = 2074 | Caps Lock key<br><!--Device-ARKUI_KEYCODE_CAPS_LOCK = 2074--><!--Device-ARKUI_KEYCODE_CAPS_LOCK = 2074-End--> |
+| ARKUI_KEYCODE_SCROLL_LOCK = 2075 | Scroll Lock key<br><!--Device-ARKUI_KEYCODE_SCROLL_LOCK = 2075--><!--Device-ARKUI_KEYCODE_SCROLL_LOCK = 2075-End--> |
+| ARKUI_KEYCODE_META_LEFT = 2076 | Left Meta key<br><!--Device-ARKUI_KEYCODE_META_LEFT = 2076--><!--Device-ARKUI_KEYCODE_META_LEFT = 2076-End--> |
+| ARKUI_KEYCODE_META_RIGHT = 2077 | Right Meta key<br><!--Device-ARKUI_KEYCODE_META_RIGHT = 2077--><!--Device-ARKUI_KEYCODE_META_RIGHT = 2077-End--> |
+| ARKUI_KEYCODE_FUNCTION = 2078 | Function key<br><!--Device-ARKUI_KEYCODE_FUNCTION = 2078--><!--Device-ARKUI_KEYCODE_FUNCTION = 2078-End--> |
+| ARKUI_KEYCODE_SYSRQ = 2079 | System Request/Print Screen key<br><!--Device-ARKUI_KEYCODE_SYSRQ = 2079--><!--Device-ARKUI_KEYCODE_SYSRQ = 2079-End--> |
+| ARKUI_KEYCODE_BREAK = 2080 | Break/Pause key<br><!--Device-ARKUI_KEYCODE_BREAK = 2080--><!--Device-ARKUI_KEYCODE_BREAK = 2080-End--> |
+| ARKUI_KEYCODE_MOVE_HOME = 2081 | Move to Home key<br><!--Device-ARKUI_KEYCODE_MOVE_HOME = 2081--><!--Device-ARKUI_KEYCODE_MOVE_HOME = 2081-End--> |
+| ARKUI_KEYCODE_MOVE_END = 2082 | Move to End key<br><!--Device-ARKUI_KEYCODE_MOVE_END = 2082--><!--Device-ARKUI_KEYCODE_MOVE_END = 2082-End--> |
+| ARKUI_KEYCODE_INSERT = 2083 | Insert key<br><!--Device-ARKUI_KEYCODE_INSERT = 2083--><!--Device-ARKUI_KEYCODE_INSERT = 2083-End--> |
+| ARKUI_KEYCODE_FORWARD = 2084 | Forward key<br><!--Device-ARKUI_KEYCODE_FORWARD = 2084--><!--Device-ARKUI_KEYCODE_FORWARD = 2084-End--> |
+| ARKUI_KEYCODE_MEDIA_PLAY = 2085 | Play key<br><!--Device-ARKUI_KEYCODE_MEDIA_PLAY = 2085--><!--Device-ARKUI_KEYCODE_MEDIA_PLAY = 2085-End--> |
+| ARKUI_KEYCODE_MEDIA_PAUSE = 2086 | Pause key<br><!--Device-ARKUI_KEYCODE_MEDIA_PAUSE = 2086--><!--Device-ARKUI_KEYCODE_MEDIA_PAUSE = 2086-End--> |
+| ARKUI_KEYCODE_MEDIA_CLOSE = 2087 | Close key<br><!--Device-ARKUI_KEYCODE_MEDIA_CLOSE = 2087--><!--Device-ARKUI_KEYCODE_MEDIA_CLOSE = 2087-End--> |
+| ARKUI_KEYCODE_MEDIA_EJECT = 2088 | Eject key<br><!--Device-ARKUI_KEYCODE_MEDIA_EJECT = 2088--><!--Device-ARKUI_KEYCODE_MEDIA_EJECT = 2088-End--> |
+| ARKUI_KEYCODE_MEDIA_RECORD = 2089 | Record key<br><!--Device-ARKUI_KEYCODE_MEDIA_RECORD = 2089--><!--Device-ARKUI_KEYCODE_MEDIA_RECORD = 2089-End--> |
+| ARKUI_KEYCODE_F1 = 2090 | F1 key<br><!--Device-ARKUI_KEYCODE_F1 = 2090--><!--Device-ARKUI_KEYCODE_F1 = 2090-End--> |
+| ARKUI_KEYCODE_F2 = 2091 | F2 key<br><!--Device-ARKUI_KEYCODE_F2 = 2091--><!--Device-ARKUI_KEYCODE_F2 = 2091-End--> |
+| ARKUI_KEYCODE_F3 = 2092 | F3 key<br><!--Device-ARKUI_KEYCODE_F3 = 2092--><!--Device-ARKUI_KEYCODE_F3 = 2092-End--> |
+| ARKUI_KEYCODE_F4 = 2093 | F4 key<br><!--Device-ARKUI_KEYCODE_F4 = 2093--><!--Device-ARKUI_KEYCODE_F4 = 2093-End--> |
+| ARKUI_KEYCODE_F5 = 2094 | F5 key<br><!--Device-ARKUI_KEYCODE_F5 = 2094--><!--Device-ARKUI_KEYCODE_F5 = 2094-End--> |
+| ARKUI_KEYCODE_F6 = 2095 | F6 key<br><!--Device-ARKUI_KEYCODE_F6 = 2095--><!--Device-ARKUI_KEYCODE_F6 = 2095-End--> |
+| ARKUI_KEYCODE_F7 = 2096 | F7 key<br><!--Device-ARKUI_KEYCODE_F7 = 2096--><!--Device-ARKUI_KEYCODE_F7 = 2096-End--> |
+| ARKUI_KEYCODE_F8 = 2097 | F8 key<br><!--Device-ARKUI_KEYCODE_F8 = 2097--><!--Device-ARKUI_KEYCODE_F8 = 2097-End--> |
+| ARKUI_KEYCODE_F9 = 2098 | F9 key<br><!--Device-ARKUI_KEYCODE_F9 = 2098--><!--Device-ARKUI_KEYCODE_F9 = 2098-End--> |
+| ARKUI_KEYCODE_F10 = 2099 | F10 key<br><!--Device-ARKUI_KEYCODE_F10 = 2099--><!--Device-ARKUI_KEYCODE_F10 = 2099-End--> |
+| ARKUI_KEYCODE_F11 = 2100 | F11 key<br><!--Device-ARKUI_KEYCODE_F11 = 2100--><!--Device-ARKUI_KEYCODE_F11 = 2100-End--> |
+| ARKUI_KEYCODE_F12 = 2101 | F12 key<br><!--Device-ARKUI_KEYCODE_F12 = 2101--><!--Device-ARKUI_KEYCODE_F12 = 2101-End--> |
+| ARKUI_KEYCODE_NUM_LOCK = 2102 | Number Lock key on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUM_LOCK = 2102--><!--Device-ARKUI_KEYCODE_NUM_LOCK = 2102-End--> |
+| ARKUI_KEYCODE_NUMPAD_0 = 2103 | Key 0 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_0 = 2103--><!--Device-ARKUI_KEYCODE_NUMPAD_0 = 2103-End--> |
+| ARKUI_KEYCODE_NUMPAD_1 = 2104 | Key 1 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_1 = 2104--><!--Device-ARKUI_KEYCODE_NUMPAD_1 = 2104-End--> |
+| ARKUI_KEYCODE_NUMPAD_2 = 2105 | Key 2 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_2 = 2105--><!--Device-ARKUI_KEYCODE_NUMPAD_2 = 2105-End--> |
+| ARKUI_KEYCODE_NUMPAD_3 = 2106 | Key 3 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_3 = 2106--><!--Device-ARKUI_KEYCODE_NUMPAD_3 = 2106-End--> |
+| ARKUI_KEYCODE_NUMPAD_4 = 2107 | Key 4 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_4 = 2107--><!--Device-ARKUI_KEYCODE_NUMPAD_4 = 2107-End--> |
+| ARKUI_KEYCODE_NUMPAD_5 = 2108 | Key 5 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_5 = 2108--><!--Device-ARKUI_KEYCODE_NUMPAD_5 = 2108-End--> |
+| ARKUI_KEYCODE_NUMPAD_6 = 2109 | Key 6 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_6 = 2109--><!--Device-ARKUI_KEYCODE_NUMPAD_6 = 2109-End--> |
+| ARKUI_KEYCODE_NUMPAD_7 = 2110 | Key 7 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_7 = 2110--><!--Device-ARKUI_KEYCODE_NUMPAD_7 = 2110-End--> |
+| ARKUI_KEYCODE_NUMPAD_8 = 2111 | Key 8 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_8 = 2111--><!--Device-ARKUI_KEYCODE_NUMPAD_8 = 2111-End--> |
+| ARKUI_KEYCODE_NUMPAD_9 = 2112 | Key 9 on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_9 = 2112--><!--Device-ARKUI_KEYCODE_NUMPAD_9 = 2112-End--> |
+| ARKUI_KEYCODE_NUMPAD_DIVIDE = 2113 | Key / on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_DIVIDE = 2113--><!--Device-ARKUI_KEYCODE_NUMPAD_DIVIDE = 2113-End--> |
+| ARKUI_KEYCODE_NUMPAD_MULTIPLY = 2114 | Key * on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_MULTIPLY = 2114--><!--Device-ARKUI_KEYCODE_NUMPAD_MULTIPLY = 2114-End--> |
+| ARKUI_KEYCODE_NUMPAD_SUBTRACT = 2115 | Key - on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_SUBTRACT = 2115--><!--Device-ARKUI_KEYCODE_NUMPAD_SUBTRACT = 2115-End--> |
+| ARKUI_KEYCODE_NUMPAD_ADD = 2116 | Key + on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_ADD = 2116--><!--Device-ARKUI_KEYCODE_NUMPAD_ADD = 2116-End--> |
+| ARKUI_KEYCODE_NUMPAD_DOT = 2117 | Key . on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_DOT = 2117--><!--Device-ARKUI_KEYCODE_NUMPAD_DOT = 2117-End--> |
+| ARKUI_KEYCODE_NUMPAD_COMMA = 2118 | Key , on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_COMMA = 2118--><!--Device-ARKUI_KEYCODE_NUMPAD_COMMA = 2118-End--> |
+| ARKUI_KEYCODE_NUMPAD_ENTER = 2119 | Enter key on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_ENTER = 2119--><!--Device-ARKUI_KEYCODE_NUMPAD_ENTER = 2119-End--> |
+| ARKUI_KEYCODE_NUMPAD_EQUALS = 2120 | Key = on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_EQUALS = 2120--><!--Device-ARKUI_KEYCODE_NUMPAD_EQUALS = 2120-End--> |
+| ARKUI_KEYCODE_NUMPAD_LEFT_PAREN = 2121 | Key ( on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_LEFT_PAREN = 2121--><!--Device-ARKUI_KEYCODE_NUMPAD_LEFT_PAREN = 2121-End--> |
+| ARKUI_KEYCODE_NUMPAD_RIGHT_PAREN = 2122 | Key ) on numeric keypad<br><!--Device-ARKUI_KEYCODE_NUMPAD_RIGHT_PAREN = 2122--><!--Device-ARKUI_KEYCODE_NUMPAD_RIGHT_PAREN = 2122-End--> |
+| ARKUI_KEYCODE_BUTTON_A = 2301 | Joystick key A<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_A = 2301--><!--Device-ARKUI_KEYCODE_BUTTON_A = 2301-End--> |
+| ARKUI_KEYCODE_BUTTON_B = 2302 | Joystick key B<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_B = 2302--><!--Device-ARKUI_KEYCODE_BUTTON_B = 2302-End--> |
+| ARKUI_KEYCODE_BUTTON_X = 2304 | Joystick key X<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_X = 2304--><!--Device-ARKUI_KEYCODE_BUTTON_X = 2304-End--> |
+| ARKUI_KEYCODE_BUTTON_Y = 2305 | Joystick key Y<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_Y = 2305--><!--Device-ARKUI_KEYCODE_BUTTON_Y = 2305-End--> |
+| ARKUI_KEYCODE_BUTTON_L1 = 2307 | Joystick key L1<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_L1 = 2307--><!--Device-ARKUI_KEYCODE_BUTTON_L1 = 2307-End--> |
+| ARKUI_KEYCODE_BUTTON_R1 = 2308 | Joystick key R1<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_R1 = 2308--><!--Device-ARKUI_KEYCODE_BUTTON_R1 = 2308-End--> |
+| ARKUI_KEYCODE_BUTTON_L2 = 2309 | Joystick key L2<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_L2 = 2309--><!--Device-ARKUI_KEYCODE_BUTTON_L2 = 2309-End--> |
+| ARKUI_KEYCODE_BUTTON_R2 = 2310 | Joystick key R2<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_R2 = 2310--><!--Device-ARKUI_KEYCODE_BUTTON_R2 = 2310-End--> |
+| ARKUI_KEYCODE_BUTTON_SELECT = 2311 | Joystick key Select<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_SELECT = 2311--><!--Device-ARKUI_KEYCODE_BUTTON_SELECT = 2311-End--> |
+| ARKUI_KEYCODE_BUTTON_START = 2312 | Joystick key Start<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_START = 2312--><!--Device-ARKUI_KEYCODE_BUTTON_START = 2312-End--> |
+| ARKUI_KEYCODE_BUTTON_MODE = 2313 | Joystick key Mode<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_MODE = 2313--><!--Device-ARKUI_KEYCODE_BUTTON_MODE = 2313-End--> |
+| ARKUI_KEYCODE_BUTTON_THUMBL = 2314 | Joystick key THUMBL<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_THUMBL = 2314--><!--Device-ARKUI_KEYCODE_BUTTON_THUMBL = 2314-End--> |
+| ARKUI_KEYCODE_BUTTON_THUMBR = 2315 | Joystick key THUMBR<br>**Since**: 15<br><!--Device-ARKUI_KEYCODE_BUTTON_THUMBR = 2315--><!--Device-ARKUI_KEYCODE_BUTTON_THUMBR = 2315-End--> |
 
 ### ArkUI_KeyEventType
 
@@ -259,7 +262,7 @@ enum ArkUI_KeyEventType
 
 Enumerates the types of key events.
 
-<!--Device-ArkUI_KeyEventType--><!--Device-ArkUI_KeyEventType-End-->
+<!--Device-enum ArkUI_KeyEventType--><!--Device-enum ArkUI_KeyEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,11 +270,11 @@ Enumerates the types of key events.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEY_EVENT_UNKNOWN = -1 | Unknown type. |
-| ARKUI_KEY_EVENT_DOWN = 0 | Key press. |
-| ARKUI_KEY_EVENT_UP = 1 | Release of a key. |
-| ARKUI_KEY_EVENT_LONG_PRESS = 2 | Long press of a key. |
-| ARKUI_KEY_EVENT_CLICK = 3 | Click of a key. |
+| ARKUI_KEY_EVENT_UNKNOWN = -1 | Unknown type.<br><!--Device-ARKUI_KEY_EVENT_UNKNOWN = -1--><!--Device-ARKUI_KEY_EVENT_UNKNOWN = -1-End--> |
+| ARKUI_KEY_EVENT_DOWN = 0 | Key press.<br><!--Device-ARKUI_KEY_EVENT_DOWN = 0--><!--Device-ARKUI_KEY_EVENT_DOWN = 0-End--> |
+| ARKUI_KEY_EVENT_UP = 1 | Release of a key.<br><!--Device-ARKUI_KEY_EVENT_UP = 1--><!--Device-ARKUI_KEY_EVENT_UP = 1-End--> |
+| ARKUI_KEY_EVENT_LONG_PRESS = 2 | Long press of a key.<br><!--Device-ARKUI_KEY_EVENT_LONG_PRESS = 2--><!--Device-ARKUI_KEY_EVENT_LONG_PRESS = 2-End--> |
+| ARKUI_KEY_EVENT_CLICK = 3 | Click of a key.<br><!--Device-ARKUI_KEY_EVENT_CLICK = 3--><!--Device-ARKUI_KEY_EVENT_CLICK = 3-End--> |
 
 ### ArkUI_KeySourceType
 
@@ -283,7 +286,7 @@ enum ArkUI_KeySourceType
 
 Enumerates the types of input devices that trigger key events.
 
-<!--Device-ArkUI_KeySourceType--><!--Device-ArkUI_KeySourceType-End-->
+<!--Device-enum ArkUI_KeySourceType--><!--Device-enum ArkUI_KeySourceType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -291,10 +294,10 @@ Enumerates the types of input devices that trigger key events.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEY_SOURCE_UNKNOWN = 0 | Unknown type. |
-| ARKUI_KEY_SOURCE_TYPE_MOUSE = 1 | Mouse. |
-| ARKUI_KEY_SOURCE_TYPE_KEYBOARD = 4 | Keyboard. |
-| ARKUI_KEY_SOURCE_TYPE_JOYSTICK = 5 | Game controller.<br>**Since**: 15 |
+| ARKUI_KEY_SOURCE_UNKNOWN = 0 | Unknown type.<br><!--Device-ARKUI_KEY_SOURCE_UNKNOWN = 0--><!--Device-ARKUI_KEY_SOURCE_UNKNOWN = 0-End--> |
+| ARKUI_KEY_SOURCE_TYPE_MOUSE = 1 | Mouse.<br><!--Device-ARKUI_KEY_SOURCE_TYPE_MOUSE = 1--><!--Device-ARKUI_KEY_SOURCE_TYPE_MOUSE = 1-End--> |
+| ARKUI_KEY_SOURCE_TYPE_KEYBOARD = 4 | Keyboard.<br><!--Device-ARKUI_KEY_SOURCE_TYPE_KEYBOARD = 4--><!--Device-ARKUI_KEY_SOURCE_TYPE_KEYBOARD = 4-End--> |
+| ARKUI_KEY_SOURCE_TYPE_JOYSTICK = 5 | Game controller.<br>**Since**: 15<br><!--Device-ARKUI_KEY_SOURCE_TYPE_JOYSTICK = 5--><!--Device-ARKUI_KEY_SOURCE_TYPE_JOYSTICK = 5-End--> |
 
 ### ArkUI_KeyIntension
 
@@ -306,7 +309,7 @@ enum ArkUI_KeyIntension
 
 Enumerates the intentions corresponding to key events.
 
-<!--Device-ArkUI_KeyIntension--><!--Device-ArkUI_KeyIntension-End-->
+<!--Device-enum ArkUI_KeyIntension--><!--Device-enum ArkUI_KeyIntension-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,31 +317,31 @@ Enumerates the intentions corresponding to key events.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEY_INTENSION_UNKNOWN = -1 | Unknown intention. |
-| ARKUI_KEY_INTENSION_UP = 1 | Upward. |
-| ARKUI_KEY_INTENSION_DOWN = 2 | Downward. |
-| ARKUI_KEY_INTENSION_LEFT = 3 | Leftward. |
-| ARKUI_KEY_INTENSION_RIGHT = 4 | Rightward. |
-| ARKUI_KEY_INTENSION_SELECT = 5 | Select. |
-| ARKUI_KEY_INTENSION_ESCAPE = 6 | Return. |
-| ARKUI_KEY_INTENSION_BACK = 7 | Back. |
-| ARKUI_KEY_INTENSION_FORWARD = 8 | Forward. |
-| ARKUI_KEY_INTENSION_MENU = 9 | Menu. |
-| ARKUI_KEY_INTENSION_HOME = 10 | Home page. |
-| ARKUI_KEY_INTENSION_PAGE_UP = 11 | Previous. |
-| ARKUI_KEY_INTENSION_PAGE_DOWN = 12 | Next. |
-| ARKUI_KEY_INTENSION_ZOOM_OUT = 13 | Zoom out. |
-| ARKUI_KEY_INTENSION_ZOOM_IN = 14 | Zoom in. |
-| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play/Pause. |
-| ARKUI_KEY_INTENTION_MEDIA_FAST_FORWARD = 101 | Fast-forward. |
-| ARKUI_KEY_INTENTION_MEDIA_FAST_PLAYBACK = 103 | Fast playback. |
-| ARKUI_KEY_INTENTION_MEDIA_NEXT = 104 | Play the next media asset. |
-| ARKUI_KEY_INTENTION_MEDIA_PREVIOUS = 105 | Play the previous media asset. |
-| ARKUI_KEY_INTENTION_MEDIA_MUTE = 106 | Mute. |
-| ARKUI_KEY_INTENTION_VOLUME_UP = 107 | Volume up. |
-| ARKUI_KEY_INTENTION_VOLUME_DOWN = 108 | Volume down. |
-| ARKUI_KEY_INTENTION_CALL = 200 | Answer a call. |
-| ARKUI_KEY_INTENTION_CAMERA = 300 | Take a photo. |
+| ARKUI_KEY_INTENSION_UNKNOWN = -1 | Unknown intention.<br><!--Device-ARKUI_KEY_INTENSION_UNKNOWN = -1--><!--Device-ARKUI_KEY_INTENSION_UNKNOWN = -1-End--> |
+| ARKUI_KEY_INTENSION_UP = 1 | Upward.<br><!--Device-ARKUI_KEY_INTENSION_UP = 1--><!--Device-ARKUI_KEY_INTENSION_UP = 1-End--> |
+| ARKUI_KEY_INTENSION_DOWN = 2 | Downward.<br><!--Device-ARKUI_KEY_INTENSION_DOWN = 2--><!--Device-ARKUI_KEY_INTENSION_DOWN = 2-End--> |
+| ARKUI_KEY_INTENSION_LEFT = 3 | Leftward.<br><!--Device-ARKUI_KEY_INTENSION_LEFT = 3--><!--Device-ARKUI_KEY_INTENSION_LEFT = 3-End--> |
+| ARKUI_KEY_INTENSION_RIGHT = 4 | Rightward.<br><!--Device-ARKUI_KEY_INTENSION_RIGHT = 4--><!--Device-ARKUI_KEY_INTENSION_RIGHT = 4-End--> |
+| ARKUI_KEY_INTENSION_SELECT = 5 | Select.<br><!--Device-ARKUI_KEY_INTENSION_SELECT = 5--><!--Device-ARKUI_KEY_INTENSION_SELECT = 5-End--> |
+| ARKUI_KEY_INTENSION_ESCAPE = 6 | Return.<br><!--Device-ARKUI_KEY_INTENSION_ESCAPE = 6--><!--Device-ARKUI_KEY_INTENSION_ESCAPE = 6-End--> |
+| ARKUI_KEY_INTENSION_BACK = 7 | Back.<br><!--Device-ARKUI_KEY_INTENSION_BACK = 7--><!--Device-ARKUI_KEY_INTENSION_BACK = 7-End--> |
+| ARKUI_KEY_INTENSION_FORWARD = 8 | Forward.<br><!--Device-ARKUI_KEY_INTENSION_FORWARD = 8--><!--Device-ARKUI_KEY_INTENSION_FORWARD = 8-End--> |
+| ARKUI_KEY_INTENSION_MENU = 9 | Menu.<br><!--Device-ARKUI_KEY_INTENSION_MENU = 9--><!--Device-ARKUI_KEY_INTENSION_MENU = 9-End--> |
+| ARKUI_KEY_INTENSION_HOME = 10 | Home page.<br><!--Device-ARKUI_KEY_INTENSION_HOME = 10--><!--Device-ARKUI_KEY_INTENSION_HOME = 10-End--> |
+| ARKUI_KEY_INTENSION_PAGE_UP = 11 | Previous.<br><!--Device-ARKUI_KEY_INTENSION_PAGE_UP = 11--><!--Device-ARKUI_KEY_INTENSION_PAGE_UP = 11-End--> |
+| ARKUI_KEY_INTENSION_PAGE_DOWN = 12 | Next.<br><!--Device-ARKUI_KEY_INTENSION_PAGE_DOWN = 12--><!--Device-ARKUI_KEY_INTENSION_PAGE_DOWN = 12-End--> |
+| ARKUI_KEY_INTENSION_ZOOM_OUT = 13 | Zoom out.<br><!--Device-ARKUI_KEY_INTENSION_ZOOM_OUT = 13--><!--Device-ARKUI_KEY_INTENSION_ZOOM_OUT = 13-End--> |
+| ARKUI_KEY_INTENSION_ZOOM_IN = 14 | Zoom in.<br><!--Device-ARKUI_KEY_INTENSION_ZOOM_IN = 14--><!--Device-ARKUI_KEY_INTENSION_ZOOM_IN = 14-End--> |
+| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play/Pause.<br><!--Device-ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100--><!--Device-ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100-End--> |
+| ARKUI_KEY_INTENTION_MEDIA_FAST_FORWARD = 101 | Fast-forward.<br><!--Device-ARKUI_KEY_INTENTION_MEDIA_FAST_FORWARD = 101--><!--Device-ARKUI_KEY_INTENTION_MEDIA_FAST_FORWARD = 101-End--> |
+| ARKUI_KEY_INTENTION_MEDIA_FAST_PLAYBACK = 103 | Fast playback.<br><!--Device-ARKUI_KEY_INTENTION_MEDIA_FAST_PLAYBACK = 103--><!--Device-ARKUI_KEY_INTENTION_MEDIA_FAST_PLAYBACK = 103-End--> |
+| ARKUI_KEY_INTENTION_MEDIA_NEXT = 104 | Play the next media asset.<br><!--Device-ARKUI_KEY_INTENTION_MEDIA_NEXT = 104--><!--Device-ARKUI_KEY_INTENTION_MEDIA_NEXT = 104-End--> |
+| ARKUI_KEY_INTENTION_MEDIA_PREVIOUS = 105 | Play the previous media asset.<br><!--Device-ARKUI_KEY_INTENTION_MEDIA_PREVIOUS = 105--><!--Device-ARKUI_KEY_INTENTION_MEDIA_PREVIOUS = 105-End--> |
+| ARKUI_KEY_INTENTION_MEDIA_MUTE = 106 | Mute.<br><!--Device-ARKUI_KEY_INTENTION_MEDIA_MUTE = 106--><!--Device-ARKUI_KEY_INTENTION_MEDIA_MUTE = 106-End--> |
+| ARKUI_KEY_INTENTION_VOLUME_UP = 107 | Volume up.<br><!--Device-ARKUI_KEY_INTENTION_VOLUME_UP = 107--><!--Device-ARKUI_KEY_INTENTION_VOLUME_UP = 107-End--> |
+| ARKUI_KEY_INTENTION_VOLUME_DOWN = 108 | Volume down.<br><!--Device-ARKUI_KEY_INTENTION_VOLUME_DOWN = 108--><!--Device-ARKUI_KEY_INTENTION_VOLUME_DOWN = 108-End--> |
+| ARKUI_KEY_INTENTION_CALL = 200 | Answer a call.<br><!--Device-ARKUI_KEY_INTENTION_CALL = 200--><!--Device-ARKUI_KEY_INTENTION_CALL = 200-End--> |
+| ARKUI_KEY_INTENTION_CAMERA = 300 | Take a photo.<br><!--Device-ARKUI_KEY_INTENTION_CAMERA = 300--><!--Device-ARKUI_KEY_INTENTION_CAMERA = 300-End--> |
 
 ### OH_ArkUI_KeyboardShortcutModifierKey
 
@@ -350,7 +353,7 @@ enum OH_ArkUI_KeyboardShortcutModifierKey
 
 Enumerates the modifier keys supported by keyboard shortcuts.<br> The values are bit flags and can be combined by using the bitwise OR operator.
 
-<!--Device-OH_ArkUI_KeyboardShortcutModifierKey--><!--Device-OH_ArkUI_KeyboardShortcutModifierKey-End-->
+<!--Device-enum OH_ArkUI_KeyboardShortcutModifierKey--><!--Device-enum OH_ArkUI_KeyboardShortcutModifierKey-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,10 +361,10 @@ Enumerates the modifier keys supported by keyboard shortcuts.<br> The values are
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE = 0 | No modifier key. This value can be used only with a function key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_CTRL = 1 | Ctrl key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_SHIFT = 2 | Shift key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_ALT = 4 | Alt key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE = 0 | No modifier key. This value can be used only with a function key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE = 0--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE = 0-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_CTRL = 1 | Ctrl key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_CTRL = 1--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_CTRL = 1-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_SHIFT = 2 | Shift key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_SHIFT = 2--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_SHIFT = 2-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_ALT = 4 | Alt key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_ALT = 4--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_ALT = 4-End--> |
 
 ### OH_ArkUI_KeyboardShortcutFunctionKey
 
@@ -373,7 +376,7 @@ enum OH_ArkUI_KeyboardShortcutFunctionKey
 
 Enumerates the function keys supported by keyboard shortcuts.
 
-<!--Device-OH_ArkUI_KeyboardShortcutFunctionKey--><!--Device-OH_ArkUI_KeyboardShortcutFunctionKey-End-->
+<!--Device-enum OH_ArkUI_KeyboardShortcutFunctionKey--><!--Device-enum OH_ArkUI_KeyboardShortcutFunctionKey-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -381,38 +384,36 @@ Enumerates the function keys supported by keyboard shortcuts.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC = 0 | Esc key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F1 = 1 | F1 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F2 = 2 | F2 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F3 = 3 | F3 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F4 = 4 | F4 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F5 = 5 | F5 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F6 = 6 | F6 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F7 = 7 | F7 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F8 = 8 | F8 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F9 = 9 | F9 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F10 = 10 | F10 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F11 = 11 | F11 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F12 = 12 | F12 key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_TAB = 13 | Tab key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_UP = 14 | Up arrow key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_DOWN = 15 | Down arrow key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_LEFT = 16 | Left arrow key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_RIGHT = 17 | Right arrow key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_CAPS_LOCK = 18 | CapsLock key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PRINT_SCREEN = 19 | PrintScreen key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SCROLL_LOCK = 20 | ScrollLock key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAUSE_BREAK = 21 | Pause/Break key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_NUM_LOCK = 22 | NumLock key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_INSERT = 23 | Insert key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DELETE = 24 | Delete key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_HOME = 25 | Home key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_END = 26 | End key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_UP = 27 | Page Up key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_DOWN = 28 | Page Down key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ENTER = 29 | Enter key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_BACKSPACE = 30 | Backspace key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SPACE = 31 | Space key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC = 0 | Esc key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC = 0--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC = 0-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F1 = 1 | F1 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F1 = 1--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F1 = 1-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F2 = 2 | F2 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F2 = 2--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F2 = 2-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F3 = 3 | F3 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F3 = 3--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F3 = 3-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F4 = 4 | F4 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F4 = 4--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F4 = 4-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F5 = 5 | F5 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F5 = 5--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F5 = 5-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F6 = 6 | F6 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F6 = 6--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F6 = 6-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F7 = 7 | F7 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F7 = 7--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F7 = 7-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F8 = 8 | F8 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F8 = 8--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F8 = 8-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F9 = 9 | F9 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F9 = 9--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F9 = 9-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F10 = 10 | F10 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F10 = 10--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F10 = 10-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F11 = 11 | F11 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F11 = 11--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F11 = 11-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F12 = 12 | F12 key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F12 = 12--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F12 = 12-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_TAB = 13 | Tab key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_TAB = 13--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_TAB = 13-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_UP = 14 | Up arrow key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_UP = 14--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_UP = 14-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_DOWN = 15 | Down arrow key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_DOWN = 15--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_DOWN = 15-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_LEFT = 16 | Left arrow key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_LEFT = 16--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_LEFT = 16-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_RIGHT = 17 | Right arrow key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_RIGHT = 17--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_RIGHT = 17-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_CAPS_LOCK = 18 | CapsLock key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_CAPS_LOCK = 18--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_CAPS_LOCK = 18-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SCROLL_LOCK = 19 | ScrollLock key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SCROLL_LOCK = 19--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SCROLL_LOCK = 19-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAUSE_BREAK = 20 | Pause/Break key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAUSE_BREAK = 20--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAUSE_BREAK = 20-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_NUM_LOCK = 21 | NumLock key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_NUM_LOCK = 21--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_NUM_LOCK = 21-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_INSERT = 22 | Press the Insert key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_INSERT = 22--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_INSERT = 22-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DELETE = 23 | Press the Delete key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DELETE = 23--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DELETE = 23-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_HOME = 24 | Home key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_HOME = 24--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_HOME = 24-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_END = 25 | End key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_END = 25--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_END = 25-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_UP = 26 | Page Up key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_UP = 26--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_UP = 26-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_DOWN = 27 | Page Down key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_DOWN = 27--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_DOWN = 27-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ENTER = 28 | Press Enter.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ENTER = 28--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ENTER = 28-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_BACKSPACE = 29 | Backspace key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_BACKSPACE = 29--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_BACKSPACE = 29-End--> |
 
 ### OH_ArkUI_KeyboardShortcutKeyType
 
@@ -424,7 +425,7 @@ enum OH_ArkUI_KeyboardShortcutKeyType
 
 Enumerates the types of keys supported by keyboard shortcuts.
 
-<!--Device-OH_ArkUI_KeyboardShortcutKeyType--><!--Device-OH_ArkUI_KeyboardShortcutKeyType-End-->
+<!--Device-enum OH_ArkUI_KeyboardShortcutKeyType--><!--Device-enum OH_ArkUI_KeyboardShortcutKeyType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -432,8 +433,8 @@ Enumerates the types of keys supported by keyboard shortcuts.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER = 0 | Character key.<br>**Since**: 26.1.0 |
-| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY = 1 | Function key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER = 0 | Character key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER = 0--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER = 0-End--> |
+| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY = 1 | Function key.<br>**Since**: 26.1.0<br><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY = 1--><!--Device-OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY = 1-End--> |
 
 
 ## Function description
@@ -1478,5 +1479,89 @@ Unregisters the application-level keyboard shortcut binding identified by the re
 | Type | Description |
 | -- | -- |
 | ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation succeeds or the registration ID does not exist. |
+
+### OH_ArkUI_KeyboardShortcutCallback()
+
+```c
+typedef void (*OH_ArkUI_KeyboardShortcutCallback)(void *userData)
+```
+
+**Description**
+
+Defines the callback function that is invoked when a component-level keyboard shortcut is triggered.
+
+<!--Device-typedef void (*OH_ArkUI_KeyboardShortcutCallback)(void *userData)--><!--Device-typedef void (*OH_ArkUI_KeyboardShortcutCallback)(void *userData)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| void *userData | User-defined data transferred when a shortcut key is registered. |
+
+### OH_ArkUI_NodeKeyboardShortcut_Register()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Register(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_KeyboardShortcutCallback callback)
+```
+
+**Description**
+
+Registers a keyboard shortcut for a component. If the same shortcut is registered again for the same component, the latest registration takes effect. Component-level shortcuts take precedence over matching application-level shortcuts.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Register(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_KeyboardShortcutCallback callback)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Register(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_KeyboardShortcutCallback callback)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| ArkUI_NodeHandle node | [in] Target component node. |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to a keyboard shortcut key object created by [OH_ArkUI_KeyboardShortcutKey_Create](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_create). The value must not be <b>nullptr</b>. For a character key, the character set through [OH_ArkUI_KeyboardShortcutKey_SetCharacter](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_setcharacter) must be a single keyboard-input character. |
+| uint32_t modifierKeys | [in] Modifier key bitmask. Use a bitwise OR combination of values in [OH_ArkUI_KeyboardShortcutModifierKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey). For a function key, use [OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey) to register the shortcut without a modifier key. At least one modifier key must be specified for a character key. Only the bits defined in [OH_ArkUI_KeyboardShortcutModifierKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey) are accepted; if any other bit is set, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| void *userData | [in] User-defined data passed to the callback. The value can be <b>nullptr</b>. The value is not copied and must remain valid until the shortcut is unregistered. |
+| [OH_ArkUI_KeyboardShortcutCallback](capi-native-key-event-h.md#oh_arkui_keyboardshortcutcallback) callback | [in] Callback invoked when the shortcut is triggered. If <b>callback</b> is <b>nullptr</b>, the click event of the component is triggered. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is invalid.</li> </ul> |
+
+### OH_ArkUI_NodeKeyboardShortcut_Unregister()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Unregister(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys)
+```
+
+**Description**
+
+Unregisters a keyboard shortcut from a component. If no matching shortcut is registered, the operation still succeeds.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Unregister(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NodeKeyboardShortcut_Unregister(ArkUI_NodeHandle node, const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| ArkUI_NodeHandle node | [in] Target component node. |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to a keyboard shortcut key object used during registration. The value must not be <b>nullptr</b>. |
+| uint32_t modifierKeys | [in] Modifier key bitmask used during registration. Only the bits defined in [OH_ArkUI_KeyboardShortcutModifierKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey) are accepted; if any other bit is set, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is invalid.</li> </ul> |
 
 

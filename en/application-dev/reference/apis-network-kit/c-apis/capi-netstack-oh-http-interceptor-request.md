@@ -24,9 +24,9 @@ Defines a struct for the HTTP request data packet of the interceptor.
 
 | Name | Description |
 | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) url | Request URL. For details, see [Http_Buffer](capi-netstack-http-buffer.md).<br>**Since**: 24 |
-| [Http_Buffer](capi-netstack-http-buffer.md) method | Request method. For details, see [Http_Buffer](capi-netstack-http-buffer.md).<br>**Since**: 24 |
-| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) *headers | HTTP request header. For details, see [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md).<br>**Since**: 24 |
-| [Http_Buffer](capi-netstack-http-buffer.md) body | Request body. For details, see [Http_Buffer](capi-netstack-http-buffer.md).<br>**Since**: 24 |
+| [Http_Buffer](capi-netstack-http-buffer.md) url | Request URL. For details, see [Http_Buffer](capi-netstack-http-buffer.md).<br>**Since**: 24<br><!--Device-Http_Buffer url--><!--Device-Http_Buffer url-End--> |
+| [Http_Buffer](capi-netstack-http-buffer.md) method | Request method. For details, see [Http_Buffer](capi-netstack-http-buffer.md).<br>**Since**: 24<br><!--Device-Http_Buffer method--><!--Device-Http_Buffer method-End--> |
+| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) *headers | HTTP request header. For details, see [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md).<br>**Since**: 24<br><!--Device-OH_Http_Interceptor_Headers *headers--><!--Device-OH_Http_Interceptor_Headers *headers-End--> |
+| [Http_Buffer](capi-netstack-http-buffer.md) body | Request body. For details, see [Http_Buffer](capi-netstack-http-buffer.md).<br>**Since**: 24<br><!--Device-Http_Buffer body--><!--Device-Http_Buffer body-End--> |
 
 

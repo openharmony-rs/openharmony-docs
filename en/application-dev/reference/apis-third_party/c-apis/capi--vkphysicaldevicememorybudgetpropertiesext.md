@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkDeviceSize heapBudget[VK_MAX_MEMORY_HEAPS] |  |
-| VkDeviceSize heapUsage[VK_MAX_MEMORY_HEAPS] |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkDeviceSize heapBudget[VK_MAX_MEMORY_HEAPS] | <!--Device-VkDeviceSize heapBudget[VK_MAX_MEMORY_HEAPS]--><!--Device-VkDeviceSize heapBudget[VK_MAX_MEMORY_HEAPS]-End--> |
+| VkDeviceSize heapUsage[VK_MAX_MEMORY_HEAPS] | <!--Device-VkDeviceSize heapUsage[VK_MAX_MEMORY_HEAPS]--><!--Device-VkDeviceSize heapUsage[VK_MAX_MEMORY_HEAPS]-End--> |
 
 

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkSurfaceFormatKHR](capi--vksurfaceformatkhr.md) surfaceFormat |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkSurfaceFormatKHR](capi--vksurfaceformatkhr.md) surfaceFormat | <!--Device-VkSurfaceFormatKHR surfaceFormat--><!--Device-VkSurfaceFormatKHR surfaceFormat-End--> |
 
 

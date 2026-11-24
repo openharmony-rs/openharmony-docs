@@ -44,7 +44,7 @@ enum DLP_ErrCode
 
 DLP错误码的枚举。
 
-<!--Device-DLP_ErrCode--><!--Device-DLP_ErrCode-End-->
+<!--Device-enum DLP_ErrCode--><!--Device-enum DLP_ErrCode-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -52,14 +52,14 @@ DLP错误码的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ERR_OH_SUCCESS = 0 | 表示操作成功。 |
-| OH_DLP_NOT_SUPPORTED = 801 | 功能不支持。可能原因：车不支持。<br>**起始版本：** 26.0.1 |
-| ERR_OH_INVALID_PARAMETER = 19100001 | 表示入参错误。 |
-| ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | 表示非DLP沙箱应用。 |
-| ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | 表示DLP沙箱应用不允许调用此接口。 |
-| ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011 | 表示系统服务工作异常。 |
-| ERR_OH_OUT_OF_MEMORY = 19100012 | 表示内存申请失败。 |
-| ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018 | 表示应用未授权。 |
+| ERR_OH_SUCCESS = 0 | 表示操作成功。<br><!--Device-ERR_OH_SUCCESS = 0--><!--Device-ERR_OH_SUCCESS = 0-End--> |
+| OH_DLP_NOT_SUPPORTED = 801 | 功能不支持。可能原因：车不支持。<br>**起始版本：** 26.0.1<br><!--Device-OH_DLP_NOT_SUPPORTED = 801--><!--Device-OH_DLP_NOT_SUPPORTED = 801-End--> |
+| ERR_OH_INVALID_PARAMETER = 19100001 | 表示入参错误。<br><!--Device-ERR_OH_INVALID_PARAMETER = 19100001--><!--Device-ERR_OH_INVALID_PARAMETER = 19100001-End--> |
+| ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | 表示非DLP沙箱应用。<br><!--Device-ERR_OH_API_ONLY_FOR_SANDBOX = 19100006--><!--Device-ERR_OH_API_ONLY_FOR_SANDBOX = 19100006-End--> |
+| ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | 表示DLP沙箱应用不允许调用此接口。<br><!--Device-ERR_OH_API_NOT_FOR_SANDBOX = 19100007--><!--Device-ERR_OH_API_NOT_FOR_SANDBOX = 19100007-End--> |
+| ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011 | 表示系统服务工作异常。<br><!--Device-ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011--><!--Device-ERR_OH_SYSTEM_SERVICE_EXCEPTION = 19100011-End--> |
+| ERR_OH_OUT_OF_MEMORY = 19100012 | 表示内存申请失败。<br><!--Device-ERR_OH_OUT_OF_MEMORY = 19100012--><!--Device-ERR_OH_OUT_OF_MEMORY = 19100012-End--> |
+| ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018 | 表示应用未授权。<br><!--Device-ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018--><!--Device-ERR_OH_APPLICATION_NOT_AUTHORIZED = 19100018-End--> |
 
 ### DLP_FileAccess
 
@@ -71,7 +71,7 @@ enum DLP_FileAccess
 
 DLP文件授权类型的枚举。
 
-<!--Device-DLP_FileAccess--><!--Device-DLP_FileAccess-End-->
+<!--Device-enum DLP_FileAccess--><!--Device-enum DLP_FileAccess-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -79,10 +79,10 @@ DLP文件授权类型的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NO_PERMISSION = 0 | 表示无文件权限。 |
-| READ_ONLY = 1 | 表示文件的只读权限。 |
-| CONTENT_EDIT = 2 | 表示文件的编辑权限。 |
-| FULL_CONTROL = 3 | 表示文件的完全控制权限。 |
+| NO_PERMISSION = 0 | 表示无文件权限。<br><!--Device-NO_PERMISSION = 0--><!--Device-NO_PERMISSION = 0-End--> |
+| READ_ONLY = 1 | 表示文件的只读权限。<br><!--Device-READ_ONLY = 1--><!--Device-READ_ONLY = 1-End--> |
+| CONTENT_EDIT = 2 | 表示文件的编辑权限。<br><!--Device-CONTENT_EDIT = 2--><!--Device-CONTENT_EDIT = 2-End--> |
+| FULL_CONTROL = 3 | 表示文件的完全控制权限。<br><!--Device-FULL_CONTROL = 3--><!--Device-FULL_CONTROL = 3-End--> |
 
 
 ## 函数说明

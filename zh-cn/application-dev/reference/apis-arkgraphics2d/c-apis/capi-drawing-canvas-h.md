@@ -108,7 +108,7 @@ enum OH_Drawing_SrcRectConstraint
 
 源矩形区域约束类型枚举。
 
-<!--Device-OH_Drawing_SrcRectConstraint--><!--Device-OH_Drawing_SrcRectConstraint-End-->
+<!--Device-enum OH_Drawing_SrcRectConstraint--><!--Device-enum OH_Drawing_SrcRectConstraint-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -116,8 +116,8 @@ enum OH_Drawing_SrcRectConstraint
 
 | 枚举项 | 描述 |
 | -- | -- |
-| STRICT_SRC_RECT_CONSTRAINT | 严格约束，源矩形区域必须完全包含在图像中。 |
-| FAST_SRC_RECT_CONSTRAINT | 快速约束，源矩形区域可以部分位于图像之外。 |
+| STRICT_SRC_RECT_CONSTRAINT | 严格约束，源矩形区域必须完全包含在图像中。<br><!--Device-STRICT_SRC_RECT_CONSTRAINT--><!--Device-STRICT_SRC_RECT_CONSTRAINT-End--> |
+| FAST_SRC_RECT_CONSTRAINT | 快速约束，源矩形区域可以部分位于图像之外。<br><!--Device-FAST_SRC_RECT_CONSTRAINT--><!--Device-FAST_SRC_RECT_CONSTRAINT-End--> |
 
 ### OH_Drawing_PointMode
 
@@ -129,7 +129,7 @@ enum OH_Drawing_PointMode
 
 绘制多个点的方式枚举，方式分为离散点、直线或开放多边形。
 
-<!--Device-OH_Drawing_PointMode--><!--Device-OH_Drawing_PointMode-End-->
+<!--Device-enum OH_Drawing_PointMode--><!--Device-enum OH_Drawing_PointMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -137,9 +137,9 @@ enum OH_Drawing_PointMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| POINT_MODE_POINTS | 分别绘制每个点。 |
-| POINT_MODE_LINES | 将每两个点绘制为线段。 |
-| POINT_MODE_POLYGON | 将点阵列绘制为开放多边形。 |
+| POINT_MODE_POINTS | 分别绘制每个点。<br><!--Device-POINT_MODE_POINTS--><!--Device-POINT_MODE_POINTS-End--> |
+| POINT_MODE_LINES | 将每两个点绘制为线段。<br><!--Device-POINT_MODE_LINES--><!--Device-POINT_MODE_LINES-End--> |
+| POINT_MODE_POLYGON | 将点阵列绘制为开放多边形。<br><!--Device-POINT_MODE_POLYGON--><!--Device-POINT_MODE_POLYGON-End--> |
 
 ### OH_Drawing_CanvasClipOp
 
@@ -151,7 +151,7 @@ enum OH_Drawing_CanvasClipOp
 
 画布裁剪方式的枚举集合。
 
-<!--Device-OH_Drawing_CanvasClipOp--><!--Device-OH_Drawing_CanvasClipOp-End-->
+<!--Device-enum OH_Drawing_CanvasClipOp--><!--Device-enum OH_Drawing_CanvasClipOp-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -159,8 +159,8 @@ enum OH_Drawing_CanvasClipOp
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DIFFERENCE | 将指定区域裁剪（取差集）。 |
-| INTERSECT | 将指定区域保留（取交集）。 |
+| DIFFERENCE | 将指定区域裁剪（取差集）。<br><!--Device-DIFFERENCE--><!--Device-DIFFERENCE-End--> |
+| INTERSECT | 将指定区域保留（取交集）。<br><!--Device-INTERSECT--><!--Device-INTERSECT-End--> |
 
 ### OH_Drawing_CanvasShadowFlags
 
@@ -172,7 +172,7 @@ enum OH_Drawing_CanvasShadowFlags
 
 阴影标志枚举。
 
-<!--Device-OH_Drawing_CanvasShadowFlags--><!--Device-OH_Drawing_CanvasShadowFlags-End-->
+<!--Device-enum OH_Drawing_CanvasShadowFlags--><!--Device-enum OH_Drawing_CanvasShadowFlags-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -180,10 +180,10 @@ enum OH_Drawing_CanvasShadowFlags
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SHADOW_FLAGS_NONE | 无阴影标志。 |
-| SHADOW_FLAGS_TRANSPARENT_OCCLUDER | 遮挡物对象不透明标志。 |
-| SHADOW_FLAGS_GEOMETRIC_ONLY | 不分析阴影标志。 |
-| SHADOW_FLAGS_ALL | 使能以上所有阴影标志。 |
+| SHADOW_FLAGS_NONE | 无阴影标志。<br><!--Device-SHADOW_FLAGS_NONE--><!--Device-SHADOW_FLAGS_NONE-End--> |
+| SHADOW_FLAGS_TRANSPARENT_OCCLUDER | 遮挡物对象不透明标志。<br><!--Device-SHADOW_FLAGS_TRANSPARENT_OCCLUDER--><!--Device-SHADOW_FLAGS_TRANSPARENT_OCCLUDER-End--> |
+| SHADOW_FLAGS_GEOMETRIC_ONLY | 不分析阴影标志。<br><!--Device-SHADOW_FLAGS_GEOMETRIC_ONLY--><!--Device-SHADOW_FLAGS_GEOMETRIC_ONLY-End--> |
+| SHADOW_FLAGS_ALL | 使能以上所有阴影标志。<br><!--Device-SHADOW_FLAGS_ALL--><!--Device-SHADOW_FLAGS_ALL-End--> |
 
 ### OH_Drawing_VertexMode
 
@@ -195,7 +195,7 @@ enum OH_Drawing_VertexMode
 
 用于指定如何解释给定顶点的几何形状的枚举类型。
 
-<!--Device-OH_Drawing_VertexMode--><!--Device-OH_Drawing_VertexMode-End-->
+<!--Device-enum OH_Drawing_VertexMode--><!--Device-enum OH_Drawing_VertexMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -203,9 +203,9 @@ enum OH_Drawing_VertexMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VERTEX_MODE_TRIANGLES | 每三个顶点表示一个三角形，如果顶点数不是3的倍数，则多余的顶点会被忽略。 |
-| VERTEX_MODE_TRIANGLES_STRIP | 相邻三个顶点表示一个三角形，每个新的顶点将与前两个顶点组成一个新的三角形。 |
-| VERTEX_MODE_TRIANGLE_FAN | 第一个顶点作为中心点，后续的每个顶点都与前一个顶点和中心点组成一个三角形。 |
+| VERTEX_MODE_TRIANGLES | 每三个顶点表示一个三角形，如果顶点数不是3的倍数，则多余的顶点会被忽略。<br><!--Device-VERTEX_MODE_TRIANGLES--><!--Device-VERTEX_MODE_TRIANGLES-End--> |
+| VERTEX_MODE_TRIANGLES_STRIP | 相邻三个顶点表示一个三角形，每个新的顶点将与前两个顶点组成一个新的三角形。<br><!--Device-VERTEX_MODE_TRIANGLES_STRIP--><!--Device-VERTEX_MODE_TRIANGLES_STRIP-End--> |
+| VERTEX_MODE_TRIANGLE_FAN | 第一个顶点作为中心点，后续的每个顶点都与前一个顶点和中心点组成一个三角形。<br><!--Device-VERTEX_MODE_TRIANGLE_FAN--><!--Device-VERTEX_MODE_TRIANGLE_FAN-End--> |
 
 
 ## 函数说明

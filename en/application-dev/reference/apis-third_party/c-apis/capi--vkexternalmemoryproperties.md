@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkExternalMemoryFeatureFlags externalMemoryFeatures |  |
-| VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes |  |
-| VkExternalMemoryHandleTypeFlags compatibleHandleTypes |  |
+| VkExternalMemoryFeatureFlags externalMemoryFeatures | <!--Device-VkExternalMemoryFeatureFlags externalMemoryFeatures--><!--Device-VkExternalMemoryFeatureFlags externalMemoryFeatures-End--> |
+| VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes | <!--Device-VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes--><!--Device-VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes-End--> |
+| VkExternalMemoryHandleTypeFlags compatibleHandleTypes | <!--Device-VkExternalMemoryHandleTypeFlags compatibleHandleTypes--><!--Device-VkExternalMemoryHandleTypeFlags compatibleHandleTypes-End--> |
 
 

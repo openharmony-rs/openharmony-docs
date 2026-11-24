@@ -24,16 +24,16 @@ ArkWeb_WebMessagePortAPI是Web消息端口相关Native API结构体。该结构�
 
 | 名称 | 描述 |
 | -- | -- |
-| size_t size | 结构体的大小（字节）。 |
+| size_t size | 结构体的大小（字节）。<br><!--Device-size_t size--><!--Device-size_t size-End--> |
 
 
 ### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorCode (\*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)](#postmessage) | - | 发送消息到HTML。在Native代码向Web页面传递数据、指令或配置信息时使用，例如表单数据同步、控制指令下发等。 |
-| [void (\*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)](#close) | - | 关闭消息端口。 |
-| [void (\*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)](#setmessageeventhandler) | - | 设置接收HTML消息的回调。在需要接收和处理来自Web页面的消息、请求或事件通知时使用。例如接收用户输入、状态更新通知等。 |
+| [ArkWeb_ErrorCode (\*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)](#postmessage) | 发送消息到HTML。在Native代码向Web页面传递数据、指令或配置信息时使用，例如表单数据同步、控制指令下发等。 |
+| [void (\*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)](#close) | 关闭消息端口。 |
+| [void (\*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)](#setmessageeventhandler) | 设置接收HTML消息的回调。在需要接收和处理来自Web页面的消息、请求或事件通知时使用。例如接收用户输入、状态更新通知等。 |
 
 ## 成员函数说明
 

@@ -18,7 +18,9 @@ NODE_IMAGE_SRC = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE
 
 **描述：**
 
-Defines the image source of the <Image> component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+Defines the image source of the <Image> component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+
+<!--Device-NODE_IMAGE_SRC = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE--><!--Device-NODE_IMAGE_SRC = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE-End-->
 
 **起始版本：** 12
 
@@ -30,7 +32,9 @@ NODE_IMAGE_OBJECT_FIT
 
 **描述：**
 
-Defines how the image is resized to fit its container. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: how the image is resized to fit its container. The value is an enum of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: how the image is resized to fit its container. The value is an enum of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul>
+Defines how the image is resized to fit its container. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: how the image is resized to fit its container. The value is an enum of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: how the image is resized to fit its container. The value is an enum of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul>
+
+<!--Device-NODE_IMAGE_OBJECT_FIT--><!--Device-NODE_IMAGE_OBJECT_FIT-End-->
 
 **起始版本：** 12
 
@@ -42,7 +46,9 @@ NODE_IMAGE_INTERPOLATION
 
 **描述：**
 
-Defines the interpolation effect of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: interpolation effect of the image. The value is an enum of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: interpolation effect of the image. The value is an enum of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul>
+Defines the interpolation effect of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: interpolation effect of the image. The value is an enum of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: interpolation effect of the image. The value is an enum of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul>
+
+<!--Device-NODE_IMAGE_INTERPOLATION--><!--Device-NODE_IMAGE_INTERPOLATION-End-->
 
 **起始版本：** 12
 
@@ -54,7 +60,9 @@ NODE_IMAGE_OBJECT_REPEAT
 
 **描述：**
 
-Defines how the image is repeated. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: how the image is repeated. The value is an enum of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: how the image is repeated. The value is an enum of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul>
+Defines how the image is repeated. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: how the image is repeated. The value is an enum of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: how the image is repeated. The value is an enum of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul>
+
+<!--Device-NODE_IMAGE_OBJECT_REPEAT--><!--Device-NODE_IMAGE_OBJECT_REPEAT-End-->
 
 **起始版本：** 12
 
@@ -66,7 +74,9 @@ NODE_IMAGE_COLOR_FILTER
 
 **描述：**
 
-Defines the color filter of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: the pointer to OH_Drawing_ColorFilter. Either .value or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: the pointer to OH_Drawing_ColorFilter.</li> </ul>
+Defines the color filter of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: the pointer to OH_Drawing_ColorFilter. Either .value or .object must be set.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: the pointer to OH_Drawing_ColorFilter.</li> </ul>
+
+<!--Device-NODE_IMAGE_COLOR_FILTER--><!--Device-NODE_IMAGE_COLOR_FILTER-End-->
 
 **起始版本：** 12
 
@@ -78,7 +88,9 @@ NODE_IMAGE_AUTO_RESIZE
 
 **描述：**
 
-Defines the auto resize attribute, which can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to resize the image source.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to resize the image source.</li> </ul>
+Defines the auto resize attribute, which can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether to resize the image source.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: whether to resize the image source.</li> </ul>
+
+<!--Device-NODE_IMAGE_AUTO_RESIZE--><!--Device-NODE_IMAGE_AUTO_RESIZE-End-->
 
 **起始版本：** 12
 
@@ -90,7 +102,9 @@ NODE_IMAGE_ALT
 
 **描述：**
 
-Defines the placeholder image source. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+Defines the placeholder image source. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+
+<!--Device-NODE_IMAGE_ALT--><!--Device-NODE_IMAGE_ALT-End-->
 
 **起始版本：** 12
 
@@ -102,7 +116,9 @@ NODE_IMAGE_DRAGGABLE
 
 **描述：**
 
-Defines whether the image is draggable. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image is draggable. The value <b>true</b> means that the image is draggable.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image is draggable.</li> </ul>
+Defines whether the image is draggable. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether the image is draggable. The value <b>true</b> means that the image is draggable.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: whether the image is draggable.</li> </ul>
+
+<!--Device-NODE_IMAGE_DRAGGABLE--><!--Device-NODE_IMAGE_DRAGGABLE-End-->
 
 **起始版本：** 12
 
@@ -114,7 +130,9 @@ NODE_IMAGE_RENDER_MODE
 
 **描述：**
 
-Defines the image rendering mode. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul>
+Defines the image rendering mode. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul>
+
+<!--Device-NODE_IMAGE_RENDER_MODE--><!--Device-NODE_IMAGE_RENDER_MODE-End-->
 
 **起始版本：** 12
 
@@ -126,7 +144,9 @@ NODE_IMAGE_FIT_ORIGINAL_SIZE
 
 **描述：**
 
-Defines whether the image display size follows the image source size. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to follow the image source size. The value <b>true</b> means to follow.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to follow the image source size. The value <b>true</b> means to follow.</li> </ul>
+Defines whether the image display size follows the image source size. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether to follow the image source size. The value <b>true</b> means to follow.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: whether to follow the image source size. The value <b>true</b> means to follow.</li> </ul>
+
+<!--Device-NODE_IMAGE_FIT_ORIGINAL_SIZE--><!--Device-NODE_IMAGE_FIT_ORIGINAL_SIZE-End-->
 
 **起始版本：** 12
 
@@ -138,7 +158,9 @@ NODE_IMAGE_FILL_COLOR
 
 **描述：**
 
-Defines the fill color of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: fill color, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: fill color, in 0xARGB format.</li> </ul>
+Defines the fill color of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: fill color, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: fill color, in 0xARGB format.</li> </ul>
+
+<!--Device-NODE_IMAGE_FILL_COLOR--><!--Device-NODE_IMAGE_FILL_COLOR-End-->
 
 **起始版本：** 12
 
@@ -152,6 +174,8 @@ NODE_IMAGE_RESIZABLE
 
 图片拉伸时，支持通过设置边框大小或者使用矩阵方格对象调整其大小，1）设置边框大小可以设置left/top/right/bottom宽度，2）设置矩阵方格对象：该对象是通过图形侧的接口创建，并将对象地址传入。 接口调用时需要保证设置和获取的参数类型是相同的。
 
+<!--Device-NODE_IMAGE_RESIZABLE--><!--Device-NODE_IMAGE_RESIZABLE-End-->
+
 **起始版本：** 12
 
 ### NODE_IMAGE_SYNC_LOAD
@@ -163,6 +187,8 @@ NODE_IMAGE_SYNC_LOAD = 4012
 **描述：**
 
 定义Image是否同步加载 这个属性包含设置，重置，获取接口
+
+<!--Device-NODE_IMAGE_SYNC_LOAD = 4012--><!--Device-NODE_IMAGE_SYNC_LOAD = 4012-End-->
 
 **起始版本：** 20
 
@@ -176,6 +202,8 @@ NODE_IMAGE_SOURCE_SIZE = 4013
 
 定义图片的解码尺寸属性。支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数ArkUI_AttributeItem格式：<br> .value[0].i32 表示图片解码的宽，单位px。<br> .value[1].i32 表示图片解码的高，单位px。<br> 属性获取方法返回值ArkUI_AttributeItem格式：<br> .value[0].i32 表示图片解码的宽，单位px。<br> .value[1].i32 表示图片解码的高，单位px。
 
+<!--Device-NODE_IMAGE_SOURCE_SIZE = 4013--><!--Device-NODE_IMAGE_SOURCE_SIZE = 4013-End-->
+
 **起始版本：** 21
 
 ### NODE_IMAGE_IMAGE_MATRIX
@@ -188,6 +216,8 @@ NODE_IMAGE_IMAGE_MATRIX = 4014
 
 支持使用浮点数实现仿射图像变换。 该属性可以通过API根据需要设置、重置和获取。 set和get的参数类型应该是相同的。<br> 设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： .value[0....f32表示16个浮点数。<br> 返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式为： .value[0....f32表示16个浮点数。
 
+<!--Device-NODE_IMAGE_IMAGE_MATRIX = 4014--><!--Device-NODE_IMAGE_IMAGE_MATRIX = 4014-End-->
+
 **起始版本：** 21
 
 ### NODE_IMAGE_MATCH_TEXT_DIRECTION
@@ -198,7 +228,9 @@ NODE_IMAGE_MATCH_TEXT_DIRECTION = 4015
 
 **描述：**
 
-Defines the image follow text direction attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image follows the text direction.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image follows the text direction.</li> </ul>
+Defines the image follow text direction attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether the image follows the text direction.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: whether the image follows the text direction.</li> </ul>
+
+<!--Device-NODE_IMAGE_MATCH_TEXT_DIRECTION = 4015--><!--Device-NODE_IMAGE_MATCH_TEXT_DIRECTION = 4015-End-->
 
 **起始版本：** 21
 
@@ -212,6 +244,8 @@ NODE_IMAGE_COPY_OPTION = 4016
 
 定义图片复制粘贴属性。支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数ArkUI_AttributeItem格式：<br> .value[0].i32：复制粘贴方式ArkUI_CopyOptions，默认值为ARKUI_COPY_OPTIONS_NONE；<br> 属性获取方法返回值ArkUI_AttributeItem格式：<br> .value[0].i32：复制粘贴方式ArkUI_CopyOptions。
 
+<!--Device-NODE_IMAGE_COPY_OPTION = 4016--><!--Device-NODE_IMAGE_COPY_OPTION = 4016-End-->
+
 **起始版本：** 21
 
 ### NODE_IMAGE_ENABLE_ANALYZER
@@ -222,7 +256,9 @@ NODE_IMAGE_ENABLE_ANALYZER = 4017
 
 **描述：**
 
-Defines the image AI analysis enable attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable AI analysis for the image.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to enable AI analysis for the image.</li> </ul>
+Defines the image AI analysis enable attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether to enable AI analysis for the image.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: whether to enable AI analysis for the image.</li> </ul>
+
+<!--Device-NODE_IMAGE_ENABLE_ANALYZER = 4017--><!--Device-NODE_IMAGE_ENABLE_ANALYZER = 4017-End-->
 
 **起始版本：** 21
 
@@ -236,6 +272,8 @@ NODE_IMAGE_DYNAMIC_RANGE_MODE = 4018
 
 定义图片显示动态范围属性。支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数ArkUI_AttributeItem格式：<br> .value[0].i32：动态范围类型ArkUI_DynamicRangeMode，默认值为<br> ARKUI_DYNAMIC_RANGE_MODE_STANDARD；<br> 属性获取方法返回值ArkUI_AttributeItem格式：<br> .value[0].i32：动态范围类型ArkUI_DynamicRangeMode。
 
+<!--Device-NODE_IMAGE_DYNAMIC_RANGE_MODE = 4018--><!--Device-NODE_IMAGE_DYNAMIC_RANGE_MODE = 4018-End-->
+
 **起始版本：** 21
 
 ### NODE_IMAGE_HDR_BRIGHTNESS
@@ -247,6 +285,8 @@ NODE_IMAGE_HDR_BRIGHTNESS = 4019
 **描述：**
 
 定义图片显示动态范围的亮度属性。支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数ArkUI_AttributeItem格式：<br> .value[0].f32：动态范围亮度，值的范围[0, 1]。<br> 属性获取方法返回值ArkUI_AttributeItem格式：<br> .value[0].f32：动态范围亮度，值的范围[0, 1]。
+
+<!--Device-NODE_IMAGE_HDR_BRIGHTNESS = 4019--><!--Device-NODE_IMAGE_HDR_BRIGHTNESS = 4019-End-->
 
 **起始版本：** 21
 
@@ -260,6 +300,8 @@ NODE_IMAGE_ORIENTATION = 4020
 
 定义图片显示方向属性。支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数ArkUI_AttributeItem格式：<br> .value[0].i32：动态范围类型ArkUI_Orientation，默认值为ARKUI_ORIENTATION_UP；<br> 属性获取方法返回值ArkUI_AttributeItem格式：<br> .value[0].i32：动态范围类型ArkUI_Orientation。
 
+<!--Device-NODE_IMAGE_ORIENTATION = 4020--><!--Device-NODE_IMAGE_ORIENTATION = 4020-End-->
+
 **起始版本：** 21
 
 ### NODE_IMAGE_SUPPORT_SVG2
@@ -270,7 +312,9 @@ NODE_IMAGE_SUPPORT_SVG2 = 4021
 
 **描述：**
 
-Defines the range of SVG parsing capabilities supported through an enable switch. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: enable switch.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: enable switch.</li> </ul>
+Defines the range of SVG parsing capabilities supported through an enable switch. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: enable switch.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: enable switch.</li> </ul>
+
+<!--Device-NODE_IMAGE_SUPPORT_SVG2 = 4021--><!--Device-NODE_IMAGE_SUPPORT_SVG2 = 4021-End-->
 
 **起始版本：** 21
 
@@ -284,6 +328,8 @@ NODE_IMAGE_CONTENT_TRANSITION = 4022
 
 Set the animation effect for the image content transformation. This attribute can be set, reset, and obtained as required through APIs.<br> Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute: .object: The parameter type is [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md). Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md): .object: The parameter type is [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md).
 
+<!--Device-NODE_IMAGE_CONTENT_TRANSITION = 4022--><!--Device-NODE_IMAGE_CONTENT_TRANSITION = 4022-End-->
+
 **起始版本：** 21
 
 ### NODE_IMAGE_ALT_PLACEHOLDER
@@ -294,7 +340,9 @@ NODE_IMAGE_ALT_PLACEHOLDER = 4023
 
 **描述：**
 
-Defines the placeholder image during loading process. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+Defines the placeholder image during loading process. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+
+<!--Device-NODE_IMAGE_ALT_PLACEHOLDER = 4023--><!--Device-NODE_IMAGE_ALT_PLACEHOLDER = 4023-End-->
 
 **起始版本：** 22
 
@@ -306,7 +354,9 @@ NODE_IMAGE_ALT_ERROR = 4024
 
 **描述：**
 
-Defines the placeholder image when loading fails. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+Defines the placeholder image when loading fails. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+
+<!--Device-NODE_IMAGE_ALT_ERROR = 4024--><!--Device-NODE_IMAGE_ALT_ERROR = 4024-End-->
 
 **起始版本：** 22
 
@@ -319,6 +369,8 @@ NODE_IMAGE_ANTIALIASED = 4025
 **描述：**
 
 通过开关配置图片边缘抗锯齿使能；true-开启抗锯齿，false-不开启，默认不开启抗锯齿。
+
+<!--Device-NODE_IMAGE_ANTIALIASED = 4025--><!--Device-NODE_IMAGE_ANTIALIASED = 4025-End-->
 
 **起始版本：** 23
 

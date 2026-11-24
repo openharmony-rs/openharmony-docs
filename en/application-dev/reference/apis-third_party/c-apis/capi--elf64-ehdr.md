@@ -10,19 +10,19 @@
 
 | Name | Description |
 | -- | -- |
-| unsigned char e_ident[EI_NIDENT] |  |
-| Elf64_Half e_type |  |
-| Elf64_Half e_machine |  |
-| Elf64_Word e_version |  |
-| Elf64_Addr e_entry |  |
-| Elf64_Off e_phoff |  |
-| Elf64_Off e_shoff |  |
-| Elf64_Word e_flags |  |
-| Elf64_Half e_ehsize |  |
-| Elf64_Half e_phentsize |  |
-| Elf64_Half e_phnum |  |
-| Elf64_Half e_shentsize |  |
-| Elf64_Half e_shnum |  |
-| Elf64_Half e_shstrndx |  |
+| unsigned char e_ident[EI_NIDENT] | <!--Device-unsigned char e_ident[EI_NIDENT]--><!--Device-unsigned char e_ident[EI_NIDENT]-End--> |
+| Elf64_Half e_type | <!--Device-Elf64_Half e_type--><!--Device-Elf64_Half e_type-End--> |
+| Elf64_Half e_machine | <!--Device-Elf64_Half e_machine--><!--Device-Elf64_Half e_machine-End--> |
+| Elf64_Word e_version | <!--Device-Elf64_Word e_version--><!--Device-Elf64_Word e_version-End--> |
+| Elf64_Addr e_entry | <!--Device-Elf64_Addr e_entry--><!--Device-Elf64_Addr e_entry-End--> |
+| Elf64_Off e_phoff | <!--Device-Elf64_Off e_phoff--><!--Device-Elf64_Off e_phoff-End--> |
+| Elf64_Off e_shoff | <!--Device-Elf64_Off e_shoff--><!--Device-Elf64_Off e_shoff-End--> |
+| Elf64_Word e_flags | <!--Device-Elf64_Word e_flags--><!--Device-Elf64_Word e_flags-End--> |
+| Elf64_Half e_ehsize | <!--Device-Elf64_Half e_ehsize--><!--Device-Elf64_Half e_ehsize-End--> |
+| Elf64_Half e_phentsize | <!--Device-Elf64_Half e_phentsize--><!--Device-Elf64_Half e_phentsize-End--> |
+| Elf64_Half e_phnum | <!--Device-Elf64_Half e_phnum--><!--Device-Elf64_Half e_phnum-End--> |
+| Elf64_Half e_shentsize | <!--Device-Elf64_Half e_shentsize--><!--Device-Elf64_Half e_shentsize-End--> |
+| Elf64_Half e_shnum | <!--Device-Elf64_Half e_shnum--><!--Device-Elf64_Half e_shnum-End--> |
+| Elf64_Half e_shstrndx | <!--Device-Elf64_Half e_shstrndx--><!--Device-Elf64_Half e_shstrndx-End--> |
 
 

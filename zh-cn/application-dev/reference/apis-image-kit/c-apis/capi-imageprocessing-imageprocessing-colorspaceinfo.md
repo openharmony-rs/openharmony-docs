@@ -24,8 +24,8 @@ typedef struct ImageProcessing_ColorSpaceInfo {...} ImageProcessing_ColorSpaceIn
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t metadataType | 定义元数据类型，参考[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)。 |
-| int32_t colorSpace | 定义色彩空间，参考[ColorSpaceName](../../apis-arkgraphics2d/c-apis/capi-native-color-space-manager-h.md#colorspacename)。 |
-| int32_t pixelFormat | 定义像素格式，参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t metadataType | 定义元数据类型，参考[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)。<br><!--Device-int32_t metadataType--><!--Device-int32_t metadataType-End--> |
+| int32_t colorSpace | 定义色彩空间，参考[ColorSpaceName](../../apis-arkgraphics2d/c-apis/capi-native-color-space-manager-h.md#colorspacename)。<br><!--Device-int32_t colorSpace--><!--Device-int32_t colorSpace-End--> |
+| int32_t pixelFormat | 定义像素格式，参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。<br><!--Device-int32_t pixelFormat--><!--Device-int32_t pixelFormat-End--> |
 
 

@@ -108,7 +108,7 @@ enum Camera_ErrorCode
 
 相机错误代码的枚举。
 
-<!--Device-Camera_ErrorCode--><!--Device-Camera_ErrorCode-End-->
+<!--Device-enum Camera_ErrorCode--><!--Device-enum Camera_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -116,22 +116,22 @@ enum Camera_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_OK = 0 | 相机结果正常。 |
-| CAMERA_INVALID_ARGUMENT = 7400101 | 参数丢失或参数类型不正确。 |
-| CAMERA_OPERATION_NOT_ALLOWED = 7400102 | 不允许操作。 |
-| CAMERA_SESSION_NOT_CONFIG = 7400103 | 会话未配置。 |
-| CAMERA_SESSION_NOT_RUNNING = 7400104 | 会话未运行。 |
-| CAMERA_SESSION_CONFIG_LOCKED = 7400105 | 会话配置已锁定。 |
-| CAMERA_DEVICE_SETTING_LOCKED = 7400106 | 设备设置已锁定。 |
-| CAMERA_CONFLICT_CAMERA = 7400107 | 因冲突而无法使用相机。 |
-| CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
-| CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
-| CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
-| CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | 可选属性不存在。<br>**起始版本：** 26.0.0 |
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
-| CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | 表示设备当前不支持该能力。<br>**起始版本：** 26.0.0 |
-| CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115 | 不支持的多摄组合。当因为硬件限制或驱动约束而尝试使用不支持的多摄组合时会返回此错误。请考虑使用其他相机组合，或查看设备支持的相机配置。<br>**起始版本：** 26.0.1 |
-| CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116 | 参数超出范围。当参数值（如ISO、曝光时间或对焦距离）超出有效范围时会返回此错误。请确保取值在当前相机配置支持的范围内。<br>**起始版本：** 26.0.1 |
+| CAMERA_OK = 0 | 相机结果正常。<br><!--Device-CAMERA_OK = 0--><!--Device-CAMERA_OK = 0-End--> |
+| CAMERA_INVALID_ARGUMENT = 7400101 | 参数丢失或参数类型不正确。<br><!--Device-CAMERA_INVALID_ARGUMENT = 7400101--><!--Device-CAMERA_INVALID_ARGUMENT = 7400101-End--> |
+| CAMERA_OPERATION_NOT_ALLOWED = 7400102 | 不允许操作。<br><!--Device-CAMERA_OPERATION_NOT_ALLOWED = 7400102--><!--Device-CAMERA_OPERATION_NOT_ALLOWED = 7400102-End--> |
+| CAMERA_SESSION_NOT_CONFIG = 7400103 | 会话未配置。<br><!--Device-CAMERA_SESSION_NOT_CONFIG = 7400103--><!--Device-CAMERA_SESSION_NOT_CONFIG = 7400103-End--> |
+| CAMERA_SESSION_NOT_RUNNING = 7400104 | 会话未运行。<br><!--Device-CAMERA_SESSION_NOT_RUNNING = 7400104--><!--Device-CAMERA_SESSION_NOT_RUNNING = 7400104-End--> |
+| CAMERA_SESSION_CONFIG_LOCKED = 7400105 | 会话配置已锁定。<br><!--Device-CAMERA_SESSION_CONFIG_LOCKED = 7400105--><!--Device-CAMERA_SESSION_CONFIG_LOCKED = 7400105-End--> |
+| CAMERA_DEVICE_SETTING_LOCKED = 7400106 | 设备设置已锁定。<br><!--Device-CAMERA_DEVICE_SETTING_LOCKED = 7400106--><!--Device-CAMERA_DEVICE_SETTING_LOCKED = 7400106-End--> |
+| CAMERA_CONFLICT_CAMERA = 7400107 | 因冲突而无法使用相机。<br><!--Device-CAMERA_CONFLICT_CAMERA = 7400107--><!--Device-CAMERA_CONFLICT_CAMERA = 7400107-End--> |
+| CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。<br><!--Device-CAMERA_DEVICE_DISABLED = 7400108--><!--Device-CAMERA_DEVICE_DISABLED = 7400108-End--> |
+| CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。<br><!--Device-CAMERA_DEVICE_PREEMPTED = 7400109--><!--Device-CAMERA_DEVICE_PREEMPTED = 7400109-End--> |
+| CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12<br><!--Device-CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110--><!--Device-CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110-End--> |
+| CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | 可选属性不存在。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113--><!--Device-CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113-End--> |
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。<br><!--Device-CAMERA_SERVICE_FATAL_ERROR = 7400201--><!--Device-CAMERA_SERVICE_FATAL_ERROR = 7400201-End--> |
+| CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | 表示设备当前不支持该能力。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114--><!--Device-CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114-End--> |
+| CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115 | 不支持的多摄组合。当因为硬件限制或驱动约束而尝试使用不支持的多摄组合时会返回此错误。请考虑使用其他相机组合，或查看设备支持的相机配置。<br>**起始版本：** 26.0.1<br><!--Device-CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115--><!--Device-CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115-End--> |
+| CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116 | 参数超出范围。当参数值（如ISO、曝光时间或对焦距离）超出有效范围时会返回此错误。请确保取值在当前相机配置支持的范围内。<br>**起始版本：** 26.0.1<br><!--Device-CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116--><!--Device-CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116-End--> |
 
 ### Camera_Status
 
@@ -143,7 +143,7 @@ enum Camera_Status
 
 相机状态的枚举。
 
-<!--Device-Camera_Status--><!--Device-Camera_Status-End-->
+<!--Device-enum Camera_Status--><!--Device-enum Camera_Status-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -151,10 +151,10 @@ enum Camera_Status
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_STATUS_APPEAR = 0 | 显示状态。 |
-| CAMERA_STATUS_DISAPPEAR = 1 | 消失状态。 |
-| CAMERA_STATUS_AVAILABLE = 2 | 可用状态。 |
-| CAMERA_STATUS_UNAVAILABLE = 3 | 不可用状态。 |
+| CAMERA_STATUS_APPEAR = 0 | 显示状态。<br><!--Device-CAMERA_STATUS_APPEAR = 0--><!--Device-CAMERA_STATUS_APPEAR = 0-End--> |
+| CAMERA_STATUS_DISAPPEAR = 1 | 消失状态。<br><!--Device-CAMERA_STATUS_DISAPPEAR = 1--><!--Device-CAMERA_STATUS_DISAPPEAR = 1-End--> |
+| CAMERA_STATUS_AVAILABLE = 2 | 可用状态。<br><!--Device-CAMERA_STATUS_AVAILABLE = 2--><!--Device-CAMERA_STATUS_AVAILABLE = 2-End--> |
+| CAMERA_STATUS_UNAVAILABLE = 3 | 不可用状态。<br><!--Device-CAMERA_STATUS_UNAVAILABLE = 3--><!--Device-CAMERA_STATUS_UNAVAILABLE = 3-End--> |
 
 ### Camera_SceneMode
 
@@ -166,7 +166,7 @@ enum Camera_SceneMode
 
 相机模式的枚举。
 
-<!--Device-Camera_SceneMode--><!--Device-Camera_SceneMode-End-->
+<!--Device-enum Camera_SceneMode--><!--Device-enum Camera_SceneMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -174,9 +174,9 @@ enum Camera_SceneMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL_PHOTO = 1 | 普通相机模式。 |
-| NORMAL_VIDEO = 2 | 普通视频模式。 |
-| SECURE_PHOTO = 12 | 安全相机模式，主要为银行等有活体检测等安全诉求的应用提供。安全相机的使用需要加密算法框架及可信应用服务，详情请参见Device Certificate Kit简介。 |
+| NORMAL_PHOTO = 1 | 普通相机模式。<br><!--Device-NORMAL_PHOTO = 1--><!--Device-NORMAL_PHOTO = 1-End--> |
+| NORMAL_VIDEO = 2 | 普通视频模式。<br><!--Device-NORMAL_VIDEO = 2--><!--Device-NORMAL_VIDEO = 2-End--> |
+| SECURE_PHOTO = 12 | 安全相机模式，主要为银行等有活体检测等安全诉求的应用提供。安全相机的使用需要加密算法框架及可信应用服务，详情请参见Device Certificate Kit简介。<br><!--Device-SECURE_PHOTO = 12--><!--Device-SECURE_PHOTO = 12-End--> |
 
 ### Camera_Position
 
@@ -188,7 +188,7 @@ enum Camera_Position
 
 相机位置的枚举。
 
-<!--Device-Camera_Position--><!--Device-Camera_Position-End-->
+<!--Device-enum Camera_Position--><!--Device-enum Camera_Position-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -196,9 +196,9 @@ enum Camera_Position
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_POSITION_UNSPECIFIED = 0 | 相对于设备屏幕没有固定的朝向的相机。 |
-| CAMERA_POSITION_BACK = 1 | 后置。 |
-| CAMERA_POSITION_FRONT = 2 | 前置。 |
+| CAMERA_POSITION_UNSPECIFIED = 0 | 相对于设备屏幕没有固定的朝向的相机。<br><!--Device-CAMERA_POSITION_UNSPECIFIED = 0--><!--Device-CAMERA_POSITION_UNSPECIFIED = 0-End--> |
+| CAMERA_POSITION_BACK = 1 | 后置。<br><!--Device-CAMERA_POSITION_BACK = 1--><!--Device-CAMERA_POSITION_BACK = 1-End--> |
+| CAMERA_POSITION_FRONT = 2 | 前置。<br><!--Device-CAMERA_POSITION_FRONT = 2--><!--Device-CAMERA_POSITION_FRONT = 2-End--> |
 
 ### OH_Camera_AutomotiveCameraPosition
 
@@ -210,7 +210,7 @@ enum OH_Camera_AutomotiveCameraPosition
 
 Car设备摄像头位置的枚举。
 
-<!--Device-OH_Camera_AutomotiveCameraPosition--><!--Device-OH_Camera_AutomotiveCameraPosition-End-->
+<!--Device-enum OH_Camera_AutomotiveCameraPosition--><!--Device-enum OH_Camera_AutomotiveCameraPosition-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -218,21 +218,21 @@ Car设备摄像头位置的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0 | Car设备外部其他位置摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1 | Car设备外部前侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2 | Car设备外部后侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3 | Car设备外部左侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4 | Car设备外部右侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5 | Car设备内部其他位置摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6 | Car设备内部第一排左侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7 | Car设备内部第一排中央摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8 | Car设备内部第一排右侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9 | Car设备内部第二排左侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10 | Car设备内部第二排中央摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11 | Car设备内部第二排右侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Car设备内部第三排左侧摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Car设备内部第三排中央摄像头。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Car设备内部第三排右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0 | Car设备外部其他位置摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1 | Car设备外部前侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2 | Car设备外部后侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3 | Car设备外部左侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4 | Car设备外部右侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5 | Car设备内部其他位置摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6 | Car设备内部第一排左侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7 | Car设备内部第一排中央摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8 | Car设备内部第一排右侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9 | Car设备内部第二排左侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10 | Car设备内部第二排中央摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11 | Car设备内部第二排右侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Car设备内部第三排左侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Car设备内部第三排中央摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13-End--> |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Car设备内部第三排右侧摄像头。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14--><!--Device-OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14-End--> |
 
 ### Camera_Type
 
@@ -244,7 +244,7 @@ enum Camera_Type
 
 相机类型的枚举。
 
-<!--Device-Camera_Type--><!--Device-Camera_Type-End-->
+<!--Device-enum Camera_Type--><!--Device-enum Camera_Type-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -252,11 +252,11 @@ enum Camera_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_TYPE_DEFAULT = 0 | 默认相机类型。 |
-| CAMERA_TYPE_WIDE_ANGLE = 1 | 广角相机。 |
-| CAMERA_TYPE_ULTRA_WIDE = 2 | 超广角相机。 |
-| CAMERA_TYPE_TELEPHOTO = 3 | 长焦相机。 |
-| CAMERA_TYPE_TRUE_DEPTH = 4 | 景深相机。 |
+| CAMERA_TYPE_DEFAULT = 0 | 默认相机类型。<br><!--Device-CAMERA_TYPE_DEFAULT = 0--><!--Device-CAMERA_TYPE_DEFAULT = 0-End--> |
+| CAMERA_TYPE_WIDE_ANGLE = 1 | 广角相机。<br><!--Device-CAMERA_TYPE_WIDE_ANGLE = 1--><!--Device-CAMERA_TYPE_WIDE_ANGLE = 1-End--> |
+| CAMERA_TYPE_ULTRA_WIDE = 2 | 超广角相机。<br><!--Device-CAMERA_TYPE_ULTRA_WIDE = 2--><!--Device-CAMERA_TYPE_ULTRA_WIDE = 2-End--> |
+| CAMERA_TYPE_TELEPHOTO = 3 | 长焦相机。<br><!--Device-CAMERA_TYPE_TELEPHOTO = 3--><!--Device-CAMERA_TYPE_TELEPHOTO = 3-End--> |
+| CAMERA_TYPE_TRUE_DEPTH = 4 | 景深相机。<br><!--Device-CAMERA_TYPE_TRUE_DEPTH = 4--><!--Device-CAMERA_TYPE_TRUE_DEPTH = 4-End--> |
 
 ### Camera_Connection
 
@@ -268,7 +268,7 @@ enum Camera_Connection
 
 相机连接类型的枚举。
 
-<!--Device-Camera_Connection--><!--Device-Camera_Connection-End-->
+<!--Device-enum Camera_Connection--><!--Device-enum Camera_Connection-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -276,9 +276,9 @@ enum Camera_Connection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_CONNECTION_BUILT_IN = 0 | 内置相机。 |
-| CAMERA_CONNECTION_USB_PLUGIN = 1 | 使用USB连接的相机。 |
-| CAMERA_CONNECTION_REMOTE = 2 | 远程相机。 |
+| CAMERA_CONNECTION_BUILT_IN = 0 | 内置相机。<br><!--Device-CAMERA_CONNECTION_BUILT_IN = 0--><!--Device-CAMERA_CONNECTION_BUILT_IN = 0-End--> |
+| CAMERA_CONNECTION_USB_PLUGIN = 1 | 使用USB连接的相机。<br><!--Device-CAMERA_CONNECTION_USB_PLUGIN = 1--><!--Device-CAMERA_CONNECTION_USB_PLUGIN = 1-End--> |
+| CAMERA_CONNECTION_REMOTE = 2 | 远程相机。<br><!--Device-CAMERA_CONNECTION_REMOTE = 2--><!--Device-CAMERA_CONNECTION_REMOTE = 2-End--> |
 
 ### OH_Camera_SensorColorFilterArrangement
 
@@ -290,7 +290,7 @@ enum OH_Camera_SensorColorFilterArrangement
 
 传感器滤色阵列排列方式。
 
-<!--Device-OH_Camera_SensorColorFilterArrangement--><!--Device-OH_Camera_SensorColorFilterArrangement-End-->
+<!--Device-enum OH_Camera_SensorColorFilterArrangement--><!--Device-enum OH_Camera_SensorColorFilterArrangement-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -298,10 +298,10 @@ enum OH_Camera_SensorColorFilterArrangement
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_SENSOR_CFA_BGGR = 0 | BGGR（Blue-Green-Green-Red）滤色阵列排列。<br>**起始版本：** 24 |
-| OH_CAMERA_SENSOR_CFA_GBRG = 1 | GBRG（Green-Blue-Red-Green）滤色阵列排列。<br>**起始版本：** 24 |
-| OH_CAMERA_SENSOR_CFA_GRBG = 2 | GRBG（Green-Red-Blue-Green）滤色阵列排列。<br>**起始版本：** 24 |
-| OH_CAMERA_SENSOR_CFA_RGGB = 3 | RGGB（Red-Green-Green-Blue）滤色阵列排列。<br>**起始版本：** 24 |
+| OH_CAMERA_SENSOR_CFA_BGGR = 0 | BGGR（Blue-Green-Green-Red）滤色阵列排列。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_SENSOR_CFA_BGGR = 0--><!--Device-OH_CAMERA_SENSOR_CFA_BGGR = 0-End--> |
+| OH_CAMERA_SENSOR_CFA_GBRG = 1 | GBRG（Green-Blue-Red-Green）滤色阵列排列。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_SENSOR_CFA_GBRG = 1--><!--Device-OH_CAMERA_SENSOR_CFA_GBRG = 1-End--> |
+| OH_CAMERA_SENSOR_CFA_GRBG = 2 | GRBG（Green-Red-Blue-Green）滤色阵列排列。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_SENSOR_CFA_GRBG = 2--><!--Device-OH_CAMERA_SENSOR_CFA_GRBG = 2-End--> |
+| OH_CAMERA_SENSOR_CFA_RGGB = 3 | RGGB（Red-Green-Green-Blue）滤色阵列排列。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_SENSOR_CFA_RGGB = 3--><!--Device-OH_CAMERA_SENSOR_CFA_RGGB = 3-End--> |
 
 ### Camera_Format
 
@@ -313,7 +313,7 @@ enum Camera_Format
 
 相机格式类型的枚举。
 
-<!--Device-Camera_Format--><!--Device-Camera_Format-End-->
+<!--Device-enum Camera_Format--><!--Device-enum Camera_Format-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -321,14 +321,14 @@ enum Camera_Format
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。 |
-| CAMERA_FORMAT_DNG = 4 | DNG格式。<br>**起始版本：** 24 |
-| CAMERA_FORMAT_DNG_XDRAW = 5 | 增强型DNG格式。<br>**起始版本：** 26.0.0 |
-| CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。 |
-| CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
-| CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
-| CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010 格式。<br>**起始版本：** 12 |
-| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 23 |
+| CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。<br><!--Device-CAMERA_FORMAT_RGBA_8888 = 3--><!--Device-CAMERA_FORMAT_RGBA_8888 = 3-End--> |
+| CAMERA_FORMAT_DNG = 4 | DNG格式。<br>**起始版本：** 24<br><!--Device-CAMERA_FORMAT_DNG = 4--><!--Device-CAMERA_FORMAT_DNG = 4-End--> |
+| CAMERA_FORMAT_DNG_XDRAW = 5 | 增强型DNG格式。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_FORMAT_DNG_XDRAW = 5--><!--Device-CAMERA_FORMAT_DNG_XDRAW = 5-End--> |
+| CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。<br><!--Device-CAMERA_FORMAT_YUV_420_SP = 1003--><!--Device-CAMERA_FORMAT_YUV_420_SP = 1003-End--> |
+| CAMERA_FORMAT_JPEG = 2000 | JPEG格式。<br><!--Device-CAMERA_FORMAT_JPEG = 2000--><!--Device-CAMERA_FORMAT_JPEG = 2000-End--> |
+| CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12<br><!--Device-CAMERA_FORMAT_YCBCR_P010 = 2001--><!--Device-CAMERA_FORMAT_YCBCR_P010 = 2001-End--> |
+| CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010 格式。<br>**起始版本：** 12<br><!--Device-CAMERA_FORMAT_YCRCB_P010 = 2002--><!--Device-CAMERA_FORMAT_YCRCB_P010 = 2002-End--> |
+| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 23<br><!--Device-CAMERA_FORMAT_HEIC = 2003--><!--Device-CAMERA_FORMAT_HEIC = 2003-End--> |
 
 ### Camera_FlashMode
 
@@ -340,7 +340,7 @@ enum Camera_FlashMode
 
 闪光模式的枚举。
 
-<!--Device-Camera_FlashMode--><!--Device-Camera_FlashMode-End-->
+<!--Device-enum Camera_FlashMode--><!--Device-enum Camera_FlashMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -348,10 +348,10 @@ enum Camera_FlashMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FLASH_MODE_CLOSE = 0 | 关闭模式。 |
-| FLASH_MODE_OPEN = 1 | 打开模式。 |
-| FLASH_MODE_AUTO = 2 | 自动模式。 |
-| FLASH_MODE_ALWAYS_OPEN = 3 | 始终打开模式。 |
+| FLASH_MODE_CLOSE = 0 | 关闭模式。<br><!--Device-FLASH_MODE_CLOSE = 0--><!--Device-FLASH_MODE_CLOSE = 0-End--> |
+| FLASH_MODE_OPEN = 1 | 打开模式。<br><!--Device-FLASH_MODE_OPEN = 1--><!--Device-FLASH_MODE_OPEN = 1-End--> |
+| FLASH_MODE_AUTO = 2 | 自动模式。<br><!--Device-FLASH_MODE_AUTO = 2--><!--Device-FLASH_MODE_AUTO = 2-End--> |
+| FLASH_MODE_ALWAYS_OPEN = 3 | 始终打开模式。<br><!--Device-FLASH_MODE_ALWAYS_OPEN = 3--><!--Device-FLASH_MODE_ALWAYS_OPEN = 3-End--> |
 
 ### OH_Camera_FlashState
 
@@ -363,7 +363,7 @@ enum OH_Camera_FlashState
 
 闪光灯状态枚举。
 
-<!--Device-OH_Camera_FlashState--><!--Device-OH_Camera_FlashState-End-->
+<!--Device-enum OH_Camera_FlashState--><!--Device-enum OH_Camera_FlashState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -371,9 +371,9 @@ enum OH_Camera_FlashState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0 | 闪光灯为不可用状态，为默认值。<br>**起始版本：** 24 |
-| OH_CAMERA_FLASH_STATE_READY = 1 | 闪光灯为可用状态。<br>**起始版本：** 24 |
-| OH_CAMERA_FLASH_STATE_FLASHING = 2 | 闪光灯已经被打开。<br>**起始版本：** 24 |
+| OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0 | 闪光灯为不可用状态，为默认值。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0--><!--Device-OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0-End--> |
+| OH_CAMERA_FLASH_STATE_READY = 1 | 闪光灯为可用状态。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_FLASH_STATE_READY = 1--><!--Device-OH_CAMERA_FLASH_STATE_READY = 1-End--> |
+| OH_CAMERA_FLASH_STATE_FLASHING = 2 | 闪光灯已经被打开。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_FLASH_STATE_FLASHING = 2--><!--Device-OH_CAMERA_FLASH_STATE_FLASHING = 2-End--> |
 
 ### Camera_ExposureMode
 
@@ -385,7 +385,7 @@ enum Camera_ExposureMode
 
 曝光模式的枚举。
 
-<!--Device-Camera_ExposureMode--><!--Device-Camera_ExposureMode-End-->
+<!--Device-enum Camera_ExposureMode--><!--Device-enum Camera_ExposureMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -393,11 +393,11 @@ enum Camera_ExposureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EXPOSURE_MODE_UNSPECIFIED = -1 | 曝光模式未指定。<br>**起始版本：** 24 |
-| EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。 |
-| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用[OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
-| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。 |
-| EXPOSURE_MODE_MANUAL = 3 | 手动曝光模式。可以使用[OH_CaptureSession_SetExposureDuration](capi-capture-session-h.md#oh_capturesession_setexposureduration)接口设置曝光时长。<br>**起始版本：** 24 |
+| EXPOSURE_MODE_UNSPECIFIED = -1 | 曝光模式未指定。<br>**起始版本：** 24<br><!--Device-EXPOSURE_MODE_UNSPECIFIED = -1--><!--Device-EXPOSURE_MODE_UNSPECIFIED = -1-End--> |
+| EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。<br><!--Device-EXPOSURE_MODE_LOCKED = 0--><!--Device-EXPOSURE_MODE_LOCKED = 0-End--> |
+| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用[OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。<br><!--Device-EXPOSURE_MODE_AUTO = 1--><!--Device-EXPOSURE_MODE_AUTO = 1-End--> |
+| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。<br><!--Device-EXPOSURE_MODE_CONTINUOUS_AUTO = 2--><!--Device-EXPOSURE_MODE_CONTINUOUS_AUTO = 2-End--> |
+| EXPOSURE_MODE_MANUAL = 3 | 手动曝光模式。可以使用[OH_CaptureSession_SetExposureDuration](capi-capture-session-h.md#oh_capturesession_setexposureduration)接口设置曝光时长。<br>**起始版本：** 24<br><!--Device-EXPOSURE_MODE_MANUAL = 3--><!--Device-EXPOSURE_MODE_MANUAL = 3-End--> |
 
 ### OH_Camera_ExposureMeteringMode
 
@@ -409,7 +409,7 @@ enum OH_Camera_ExposureMeteringMode
 
 曝光测光模式枚举。
 
-<!--Device-OH_Camera_ExposureMeteringMode--><!--Device-OH_Camera_ExposureMeteringMode-End-->
+<!--Device-enum OH_Camera_ExposureMeteringMode--><!--Device-enum OH_Camera_ExposureMeteringMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -417,9 +417,9 @@ enum OH_Camera_ExposureMeteringMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0 | 矩阵测光模式。对整个画面测光，适用于自然风景拍摄。<br>**起始版本：** 24 |
-| OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1 | 中央测光模式。对画面中心区域测光，适用于人像拍摄。<br>**起始版本：** 24 |
-| OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2 | 点测光模式。对指定微小区域测光，适用于拍摄主体细节（如人物眼睛）。<br>**起始版本：** 24 |
+| OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0 | 矩阵测光模式。对整个画面测光，适用于自然风景拍摄。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0--><!--Device-OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0-End--> |
+| OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1 | 中央测光模式。对画面中心区域测光，适用于人像拍摄。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1--><!--Device-OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1-End--> |
+| OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2 | 点测光模式。对指定微小区域测光，适用于拍摄主体细节（如人物眼睛）。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2--><!--Device-OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2-End--> |
 
 ### OH_Camera_ExposureState
 
@@ -431,7 +431,7 @@ enum OH_Camera_ExposureState
 
 枚举相机曝光状态。
 
-<!--Device-OH_Camera_ExposureState--><!--Device-OH_Camera_ExposureState-End-->
+<!--Device-enum OH_Camera_ExposureState--><!--Device-enum OH_Camera_ExposureState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -439,8 +439,8 @@ enum OH_Camera_ExposureState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | 表示曝光处于扫描状态。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 表示曝光已经收敛。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | 表示曝光处于扫描状态。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_EXPOSURE_STATE_SCAN = 0--><!--Device-OH_CAMERA_EXPOSURE_STATE_SCAN = 0-End--> |
+| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 表示曝光已经收敛。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1--><!--Device-OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1-End--> |
 
 ### Camera_WhiteBalanceMode
 
@@ -452,7 +452,7 @@ enum Camera_WhiteBalanceMode
 
 白平衡模式枚举。
 
-<!--Device-Camera_WhiteBalanceMode--><!--Device-Camera_WhiteBalanceMode-End-->
+<!--Device-enum Camera_WhiteBalanceMode--><!--Device-enum Camera_WhiteBalanceMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -460,13 +460,13 @@ enum Camera_WhiteBalanceMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_WHITE_BALANCE_MODE_AUTO = 0 | 白平衡模式：自动。 |
-| CAMERA_WHITE_BALANCE_MODE_CLOUDY = 1 | 白平衡模式：阴天。 |
-| CAMERA_WHITE_BALANCE_MODE_INCANDESCENT = 2 | 白平衡模式：白炽灯。 |
-| CAMERA_WHITE_BALANCE_MODE_FLUORESCENT = 3 | 白平衡模式：荧光。 |
-| CAMERA_WHITE_BALANCE_MODE_DAYLIGHT = 4 | 白平衡模式：晴天。 |
-| CAMERA_WHITE_BALANCE_MODE_MANUAL = 5 | 白平衡模式：手动。 |
-| CAMERA_WHITE_BALANCE_MODE_LOCKED = 6 | 白平衡模式：锁定。 |
+| CAMERA_WHITE_BALANCE_MODE_AUTO = 0 | 白平衡模式：自动。<br><!--Device-CAMERA_WHITE_BALANCE_MODE_AUTO = 0--><!--Device-CAMERA_WHITE_BALANCE_MODE_AUTO = 0-End--> |
+| CAMERA_WHITE_BALANCE_MODE_CLOUDY = 1 | 白平衡模式：阴天。<br><!--Device-CAMERA_WHITE_BALANCE_MODE_CLOUDY = 1--><!--Device-CAMERA_WHITE_BALANCE_MODE_CLOUDY = 1-End--> |
+| CAMERA_WHITE_BALANCE_MODE_INCANDESCENT = 2 | 白平衡模式：白炽灯。<br><!--Device-CAMERA_WHITE_BALANCE_MODE_INCANDESCENT = 2--><!--Device-CAMERA_WHITE_BALANCE_MODE_INCANDESCENT = 2-End--> |
+| CAMERA_WHITE_BALANCE_MODE_FLUORESCENT = 3 | 白平衡模式：荧光。<br><!--Device-CAMERA_WHITE_BALANCE_MODE_FLUORESCENT = 3--><!--Device-CAMERA_WHITE_BALANCE_MODE_FLUORESCENT = 3-End--> |
+| CAMERA_WHITE_BALANCE_MODE_DAYLIGHT = 4 | 白平衡模式：晴天。<br><!--Device-CAMERA_WHITE_BALANCE_MODE_DAYLIGHT = 4--><!--Device-CAMERA_WHITE_BALANCE_MODE_DAYLIGHT = 4-End--> |
+| CAMERA_WHITE_BALANCE_MODE_MANUAL = 5 | 白平衡模式：手动。<br><!--Device-CAMERA_WHITE_BALANCE_MODE_MANUAL = 5--><!--Device-CAMERA_WHITE_BALANCE_MODE_MANUAL = 5-End--> |
+| CAMERA_WHITE_BALANCE_MODE_LOCKED = 6 | 白平衡模式：锁定。<br><!--Device-CAMERA_WHITE_BALANCE_MODE_LOCKED = 6--><!--Device-CAMERA_WHITE_BALANCE_MODE_LOCKED = 6-End--> |
 
 ### Camera_FocusMode
 
@@ -478,7 +478,7 @@ enum Camera_FocusMode
 
 聚焦模式的枚举。
 
-<!--Device-Camera_FocusMode--><!--Device-Camera_FocusMode-End-->
+<!--Device-enum Camera_FocusMode--><!--Device-enum Camera_FocusMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -486,10 +486,10 @@ enum Camera_FocusMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FOCUS_MODE_MANUAL = 0 | 手动模式。 |
-| FOCUS_MODE_CONTINUOUS_AUTO = 1 | 连续自动模式。 |
-| FOCUS_MODE_AUTO = 2 | 自动模式。 |
-| FOCUS_MODE_LOCKED = 3 | 锁定模式。 |
+| FOCUS_MODE_MANUAL = 0 | 手动模式。<br><!--Device-FOCUS_MODE_MANUAL = 0--><!--Device-FOCUS_MODE_MANUAL = 0-End--> |
+| FOCUS_MODE_CONTINUOUS_AUTO = 1 | 连续自动模式。<br><!--Device-FOCUS_MODE_CONTINUOUS_AUTO = 1--><!--Device-FOCUS_MODE_CONTINUOUS_AUTO = 1-End--> |
+| FOCUS_MODE_AUTO = 2 | 自动模式。<br><!--Device-FOCUS_MODE_AUTO = 2--><!--Device-FOCUS_MODE_AUTO = 2-End--> |
+| FOCUS_MODE_LOCKED = 3 | 锁定模式。<br><!--Device-FOCUS_MODE_LOCKED = 3--><!--Device-FOCUS_MODE_LOCKED = 3-End--> |
 
 ### Camera_FocusState
 
@@ -501,7 +501,7 @@ enum Camera_FocusState
 
 焦点状态的枚举。
 
-<!--Device-Camera_FocusState--><!--Device-Camera_FocusState-End-->
+<!--Device-enum Camera_FocusState--><!--Device-enum Camera_FocusState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -509,9 +509,9 @@ enum Camera_FocusState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FOCUS_STATE_SCAN = 0 | 扫描状态。 |
-| FOCUS_STATE_FOCUSED = 1 | 聚焦状态。 |
-| FOCUS_STATE_UNFOCUSED = 2 | 非聚焦状态。 |
+| FOCUS_STATE_SCAN = 0 | 扫描状态。<br><!--Device-FOCUS_STATE_SCAN = 0--><!--Device-FOCUS_STATE_SCAN = 0-End--> |
+| FOCUS_STATE_FOCUSED = 1 | 聚焦状态。<br><!--Device-FOCUS_STATE_FOCUSED = 1--><!--Device-FOCUS_STATE_FOCUSED = 1-End--> |
+| FOCUS_STATE_UNFOCUSED = 2 | 非聚焦状态。<br><!--Device-FOCUS_STATE_UNFOCUSED = 2--><!--Device-FOCUS_STATE_UNFOCUSED = 2-End--> |
 
 ### Camera_VideoStabilizationMode
 
@@ -523,7 +523,7 @@ enum Camera_VideoStabilizationMode
 
 录像防抖模式的枚举。
 
-<!--Device-Camera_VideoStabilizationMode--><!--Device-Camera_VideoStabilizationMode-End-->
+<!--Device-enum Camera_VideoStabilizationMode--><!--Device-enum Camera_VideoStabilizationMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -531,11 +531,11 @@ enum Camera_VideoStabilizationMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| STABILIZATION_MODE_OFF = 0 | 关闭录像防抖。 |
-| STABILIZATION_MODE_LOW = 1 | LOW模式，提供基本的防抖效果。 |
-| STABILIZATION_MODE_MIDDLE = 2 | MIDDLE模式，表示通过算法可以获得比LOW模式更好的效果。 |
-| STABILIZATION_MODE_HIGH = 3 | HIGH模式，表示通过算法可以获得比MIDDLE模式更好的效果。 |
-| STABILIZATION_MODE_AUTO = 4 | 自动选择模式，HDF相机可用。 |
+| STABILIZATION_MODE_OFF = 0 | 关闭录像防抖。<br><!--Device-STABILIZATION_MODE_OFF = 0--><!--Device-STABILIZATION_MODE_OFF = 0-End--> |
+| STABILIZATION_MODE_LOW = 1 | LOW模式，提供基本的防抖效果。<br><!--Device-STABILIZATION_MODE_LOW = 1--><!--Device-STABILIZATION_MODE_LOW = 1-End--> |
+| STABILIZATION_MODE_MIDDLE = 2 | MIDDLE模式，表示通过算法可以获得比LOW模式更好的效果。<br><!--Device-STABILIZATION_MODE_MIDDLE = 2--><!--Device-STABILIZATION_MODE_MIDDLE = 2-End--> |
+| STABILIZATION_MODE_HIGH = 3 | HIGH模式，表示通过算法可以获得比MIDDLE模式更好的效果。<br><!--Device-STABILIZATION_MODE_HIGH = 3--><!--Device-STABILIZATION_MODE_HIGH = 3-End--> |
+| STABILIZATION_MODE_AUTO = 4 | 自动选择模式，HDF相机可用。<br><!--Device-STABILIZATION_MODE_AUTO = 4--><!--Device-STABILIZATION_MODE_AUTO = 4-End--> |
 
 ### Camera_ImageRotation
 
@@ -547,7 +547,7 @@ enum Camera_ImageRotation
 
 图像旋转角度的枚举。
 
-<!--Device-Camera_ImageRotation--><!--Device-Camera_ImageRotation-End-->
+<!--Device-enum Camera_ImageRotation--><!--Device-enum Camera_ImageRotation-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -555,14 +555,14 @@ enum Camera_ImageRotation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 23 |
-| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 23 |
-| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 23 |
-| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 23 |
+| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](capi-camera-h.md#camera_imagerotation)。<br><!--Device-IAMGE_ROTATION_0 = 0--><!--Device-IAMGE_ROTATION_0 = 0-End--> |
+| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 23<br><!--Device-CAMERA_IMAGE_ROTATION_0 = 0--><!--Device-CAMERA_IMAGE_ROTATION_0 = 0-End--> |
+| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](capi-camera-h.md#camera_imagerotation)。<br><!--Device-IAMGE_ROTATION_90 = 90--><!--Device-IAMGE_ROTATION_90 = 90-End--> |
+| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 23<br><!--Device-CAMERA_IMAGE_ROTATION_90 = 90--><!--Device-CAMERA_IMAGE_ROTATION_90 = 90-End--> |
+| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](capi-camera-h.md#camera_imagerotation)。<br><!--Device-IAMGE_ROTATION_180 = 180--><!--Device-IAMGE_ROTATION_180 = 180-End--> |
+| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 23<br><!--Device-CAMERA_IMAGE_ROTATION_180 = 180--><!--Device-CAMERA_IMAGE_ROTATION_180 = 180-End--> |
+| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](capi-camera-h.md#camera_imagerotation)。<br><!--Device-IAMGE_ROTATION_270 = 270--><!--Device-IAMGE_ROTATION_270 = 270-End--> |
+| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 23<br><!--Device-CAMERA_IMAGE_ROTATION_270 = 270--><!--Device-CAMERA_IMAGE_ROTATION_270 = 270-End--> |
 
 ### Camera_QualityLevel
 
@@ -574,7 +574,7 @@ enum Camera_QualityLevel
 
 图像质量等级的枚举。
 
-<!--Device-Camera_QualityLevel--><!--Device-Camera_QualityLevel-End-->
+<!--Device-enum Camera_QualityLevel--><!--Device-enum Camera_QualityLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -582,9 +582,9 @@ enum Camera_QualityLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| QUALITY_LEVEL_HIGH = 0 | 高图像质量。 |
-| QUALITY_LEVEL_MEDIUM = 1 | 中等图像质量。 |
-| QUALITY_LEVEL_LOW = 2 | 低图像质量。 |
+| QUALITY_LEVEL_HIGH = 0 | 高图像质量。<br><!--Device-QUALITY_LEVEL_HIGH = 0--><!--Device-QUALITY_LEVEL_HIGH = 0-End--> |
+| QUALITY_LEVEL_MEDIUM = 1 | 中等图像质量。<br><!--Device-QUALITY_LEVEL_MEDIUM = 1--><!--Device-QUALITY_LEVEL_MEDIUM = 1-End--> |
+| QUALITY_LEVEL_LOW = 2 | 低图像质量。<br><!--Device-QUALITY_LEVEL_LOW = 2--><!--Device-QUALITY_LEVEL_LOW = 2-End--> |
 
 ### Camera_MetadataObjectType
 
@@ -596,7 +596,7 @@ enum Camera_MetadataObjectType
 
 元数据对象类型的枚举。
 
-<!--Device-Camera_MetadataObjectType--><!--Device-Camera_MetadataObjectType-End-->
+<!--Device-enum Camera_MetadataObjectType--><!--Device-enum Camera_MetadataObjectType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -604,16 +604,16 @@ enum Camera_MetadataObjectType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype)。 |
-| CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br>**起始版本：** 23 |
-| CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | 元数据的对象类型，用于人体检测。<br>**起始版本：** 23 |
-| CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2 | 元数据的对象类型，用于猫脸检测。<br>**起始版本：** 26.0.0 |
-| CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3 | 元数据的对象类型，用于猫体检测。<br>**起始版本：** 26.0.0 |
-| CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4 | 元数据的对象类型，用于狗脸检测。<br>**起始版本：** 26.0.0 |
-| CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5 | 元数据的对象类型，用于狗体检测。<br>**起始版本：** 26.0.0 |
-| CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6 | 元数据的对象类型，用于显著性物体检测。<br>**起始版本：** 26.0.0 |
-| CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7 | 元数据的对象类型，用于二维码检测。<br>**起始版本：** 26.0.0 |
-| CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8 | 元数据的对象类型，用于基础人脸检测。<br>**起始版本：** 26.0.0 |
+| FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype)。<br><!--Device-FACE_DETECTION = 0--><!--Device-FACE_DETECTION = 0-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br>**起始版本：** 23<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0--><!--Device-CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | 元数据的对象类型，用于人体检测。<br>**起始版本：** 23<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1--><!--Device-CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2 | 元数据的对象类型，用于猫脸检测。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2--><!--Device-CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3 | 元数据的对象类型，用于猫体检测。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3--><!--Device-CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4 | 元数据的对象类型，用于狗脸检测。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4--><!--Device-CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5 | 元数据的对象类型，用于狗体检测。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5--><!--Device-CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6 | 元数据的对象类型，用于显著性物体检测。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6--><!--Device-CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7 | 元数据的对象类型，用于二维码检测。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7--><!--Device-CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7-End--> |
+| CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8 | 元数据的对象类型，用于基础人脸检测。<br>**起始版本：** 26.0.0<br><!--Device-CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8--><!--Device-CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8-End--> |
 
 ### Camera_TorchMode
 
@@ -625,7 +625,7 @@ enum Camera_TorchMode
 
 手电筒模式的枚举。
 
-<!--Device-Camera_TorchMode--><!--Device-Camera_TorchMode-End-->
+<!--Device-enum Camera_TorchMode--><!--Device-enum Camera_TorchMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -633,12 +633,12 @@ enum Camera_TorchMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFF = 0 | 设备手电筒常关。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](capi-camera-h.md#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 23 |
-| ON = 1 | 设备手电筒常开。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](capi-camera-h.md#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 23 |
-| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](capi-camera-h.md#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 23 |
+| OFF = 0 | 设备手电筒常关。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](capi-camera-h.md#camera_torchmode)。<br><!--Device-OFF = 0--><!--Device-OFF = 0-End--> |
+| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 23<br><!--Device-CAMERA_TORCH_MODE_OFF = 0--><!--Device-CAMERA_TORCH_MODE_OFF = 0-End--> |
+| ON = 1 | 设备手电筒常开。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](capi-camera-h.md#camera_torchmode)。<br><!--Device-ON = 1--><!--Device-ON = 1-End--> |
+| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 23<br><!--Device-CAMERA_TORCH_MODE_ON = 1--><!--Device-CAMERA_TORCH_MODE_ON = 1-End--> |
+| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](capi-camera-h.md#camera_torchmode)。<br><!--Device-AUTO = 2--><!--Device-AUTO = 2-End--> |
+| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 23<br><!--Device-CAMERA_TORCH_MODE_AUTO = 2--><!--Device-CAMERA_TORCH_MODE_AUTO = 2-End--> |
 
 ### Camera_SmoothZoomMode
 
@@ -650,7 +650,7 @@ enum Camera_SmoothZoomMode
 
 平滑变焦模式的枚举。
 
-<!--Device-Camera_SmoothZoomMode--><!--Device-Camera_SmoothZoomMode-End-->
+<!--Device-enum Camera_SmoothZoomMode--><!--Device-enum Camera_SmoothZoomMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -658,8 +658,8 @@ enum Camera_SmoothZoomMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](capi-camera-h.md#camera_smoothzoommode)。 |
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 23 |
+| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](capi-camera-h.md#camera_smoothzoommode)。<br><!--Device-NORMAL = 0--><!--Device-NORMAL = 0-End--> |
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 23<br><!--Device-CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0--><!--Device-CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0-End--> |
 
 ### Camera_PreconfigType
 
@@ -671,7 +671,7 @@ enum Camera_PreconfigType
 
 预配置照片分辨率的枚举。
 
-<!--Device-Camera_PreconfigType--><!--Device-Camera_PreconfigType-End-->
+<!--Device-enum Camera_PreconfigType--><!--Device-enum Camera_PreconfigType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -679,11 +679,11 @@ enum Camera_PreconfigType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRECONFIG_720P = 0 | 预配置照片分辨率为720P。 |
-| PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。 |
-| PRECONFIG_4K = 2 | 预配置照片分辨率为4K。 |
-| PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。 |
-| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**起始版本：** 23 |
+| PRECONFIG_720P = 0 | 预配置照片分辨率为720P。<br><!--Device-PRECONFIG_720P = 0--><!--Device-PRECONFIG_720P = 0-End--> |
+| PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。<br><!--Device-PRECONFIG_1080P = 1--><!--Device-PRECONFIG_1080P = 1-End--> |
+| PRECONFIG_4K = 2 | 预配置照片分辨率为4K。<br><!--Device-PRECONFIG_4K = 2--><!--Device-PRECONFIG_4K = 2-End--> |
+| PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。<br><!--Device-PRECONFIG_HIGH_QUALITY = 3--><!--Device-PRECONFIG_HIGH_QUALITY = 3-End--> |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**起始版本：** 23<br><!--Device-PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4--><!--Device-PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4-End--> |
 
 ### Camera_PreconfigRatio
 
@@ -695,7 +695,7 @@ enum Camera_PreconfigRatio
 
 预配置照片比例的枚举。
 
-<!--Device-Camera_PreconfigRatio--><!--Device-Camera_PreconfigRatio-End-->
+<!--Device-enum Camera_PreconfigRatio--><!--Device-enum Camera_PreconfigRatio-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -703,9 +703,9 @@ enum Camera_PreconfigRatio
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRECONFIG_RATIO_1_1 = 0 | 预配置照片比例为1:1。 |
-| PRECONFIG_RATIO_4_3 = 1 | 预配置照片比例为4:3。 |
-| PRECONFIG_RATIO_16_9 = 2 | 预配置照片比例为16:9。 |
+| PRECONFIG_RATIO_1_1 = 0 | 预配置照片比例为1:1。<br><!--Device-PRECONFIG_RATIO_1_1 = 0--><!--Device-PRECONFIG_RATIO_1_1 = 0-End--> |
+| PRECONFIG_RATIO_4_3 = 1 | 预配置照片比例为4:3。<br><!--Device-PRECONFIG_RATIO_4_3 = 1--><!--Device-PRECONFIG_RATIO_4_3 = 1-End--> |
+| PRECONFIG_RATIO_16_9 = 2 | 预配置照片比例为16:9。<br><!--Device-PRECONFIG_RATIO_16_9 = 2--><!--Device-PRECONFIG_RATIO_16_9 = 2-End--> |
 
 ### Camera_HostDeviceType
 
@@ -717,7 +717,7 @@ enum Camera_HostDeviceType
 
 远程设备类型枚举。
 
-<!--Device-Camera_HostDeviceType--><!--Device-Camera_HostDeviceType-End-->
+<!--Device-enum Camera_HostDeviceType--><!--Device-enum Camera_HostDeviceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -725,10 +725,10 @@ enum Camera_HostDeviceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HOST_DEVICE_TYPE_UNKNOWN_TYPE = 0 | 未知设备类型。 |
-| HOST_DEVICE_TYPE_PHONE = 0x0E | 手机设备。 |
-| HOST_DEVICE_TYPE_TABLET = 0x11 | 平板设备。 |
-| HOST_DEVICE_TYPE_GLASSES = 0xA31 | 眼镜设备。<br>**起始版本：** 26.0.1 |
+| HOST_DEVICE_TYPE_UNKNOWN_TYPE = 0 | 未知设备类型。<br><!--Device-HOST_DEVICE_TYPE_UNKNOWN_TYPE = 0--><!--Device-HOST_DEVICE_TYPE_UNKNOWN_TYPE = 0-End--> |
+| HOST_DEVICE_TYPE_PHONE = 0x0E | 手机设备。<br><!--Device-HOST_DEVICE_TYPE_PHONE = 0x0E--><!--Device-HOST_DEVICE_TYPE_PHONE = 0x0E-End--> |
+| HOST_DEVICE_TYPE_TABLET = 0x11 | 平板设备。<br><!--Device-HOST_DEVICE_TYPE_TABLET = 0x11--><!--Device-HOST_DEVICE_TYPE_TABLET = 0x11-End--> |
+| HOST_DEVICE_TYPE_GLASSES = 0xA31 | 眼镜设备。<br>**起始版本：** 26.0.1<br><!--Device-HOST_DEVICE_TYPE_GLASSES = 0xA31--><!--Device-HOST_DEVICE_TYPE_GLASSES = 0xA31-End--> |
 
 ### Camera_FoldStatus
 
@@ -740,7 +740,7 @@ enum Camera_FoldStatus
 
 折叠状态枚举。
 
-<!--Device-Camera_FoldStatus--><!--Device-Camera_FoldStatus-End-->
+<!--Device-enum Camera_FoldStatus--><!--Device-enum Camera_FoldStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -748,12 +748,12 @@ enum Camera_FoldStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](capi-camera-h.md#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 23 |
-| EXPANDED = 1 | 展开状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](capi-camera-h.md#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 23 |
-| FOLDED = 2 | 折叠状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](capi-camera-h.md#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 23 |
+| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](capi-camera-h.md#camera_foldstatus)。<br><!--Device-NON_FOLDABLE = 0--><!--Device-NON_FOLDABLE = 0-End--> |
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 23<br><!--Device-CAMERA_FOLD_STATUS_NON_FOLDABLE = 0--><!--Device-CAMERA_FOLD_STATUS_NON_FOLDABLE = 0-End--> |
+| EXPANDED = 1 | 展开状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](capi-camera-h.md#camera_foldstatus)。<br><!--Device-EXPANDED = 1--><!--Device-EXPANDED = 1-End--> |
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 23<br><!--Device-CAMERA_FOLD_STATUS_EXPANDED = 1--><!--Device-CAMERA_FOLD_STATUS_EXPANDED = 1-End--> |
+| FOLDED = 2 | 折叠状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](capi-camera-h.md#camera_foldstatus)。<br><!--Device-FOLDED = 2--><!--Device-FOLDED = 2-End--> |
+| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 23<br><!--Device-CAMERA_FOLD_STATUS_FOLDED = 2--><!--Device-CAMERA_FOLD_STATUS_FOLDED = 2-End--> |
 
 ### Camera_QualityPrioritization
 
@@ -765,7 +765,7 @@ enum Camera_QualityPrioritization
 
 录像质量优先级的枚举。
 
-<!--Device-Camera_QualityPrioritization--><!--Device-Camera_QualityPrioritization-End-->
+<!--Device-enum Camera_QualityPrioritization--><!--Device-enum Camera_QualityPrioritization-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -773,8 +773,8 @@ enum Camera_QualityPrioritization
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HIGH_QUALITY = 0 | 高录像质量。 |
-| POWER_BALANCE = 1 | 功耗平衡录像质量。 |
+| HIGH_QUALITY = 0 | 高录像质量。<br><!--Device-HIGH_QUALITY = 0--><!--Device-HIGH_QUALITY = 0-End--> |
+| POWER_BALANCE = 1 | 功耗平衡录像质量。<br><!--Device-POWER_BALANCE = 1--><!--Device-POWER_BALANCE = 1-End--> |
 
 ### OH_Camera_AuxiliaryPhotoType
 
@@ -786,7 +786,7 @@ enum OH_Camera_AuxiliaryPhotoType
 
 辅助图类型的枚举。在用于拍摄皮肤健康评估的辅助图时，使用该枚举类型来指定检测目标。
 
-<!--Device-OH_Camera_AuxiliaryPhotoType--><!--Device-OH_Camera_AuxiliaryPhotoType-End-->
+<!--Device-enum OH_Camera_AuxiliaryPhotoType--><!--Device-enum OH_Camera_AuxiliaryPhotoType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -794,8 +794,8 @@ enum OH_Camera_AuxiliaryPhotoType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_AUXILIARY_PHOTO_TYPE_OXYGEN = 0 | 血氧图。<br>**起始版本：** 26.0.1 |
-| OH_CAMERA_AUXILIARY_PHOTO_TYPE_PIGMENTATION = 1 | 色斑图。<br>**起始版本：** 26.0.1 |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_OXYGEN = 0 | 血氧图。<br>**起始版本：** 26.0.1<br><!--Device-OH_CAMERA_AUXILIARY_PHOTO_TYPE_OXYGEN = 0--><!--Device-OH_CAMERA_AUXILIARY_PHOTO_TYPE_OXYGEN = 0-End--> |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_PIGMENTATION = 1 | 色斑图。<br>**起始版本：** 26.0.1<br><!--Device-OH_CAMERA_AUXILIARY_PHOTO_TYPE_PIGMENTATION = 1--><!--Device-OH_CAMERA_AUXILIARY_PHOTO_TYPE_PIGMENTATION = 1-End--> |
 
 ### Camera_ConcurrentType
 
@@ -807,7 +807,7 @@ enum Camera_ConcurrentType
 
 相机并发状态的枚举。
 
-<!--Device-Camera_ConcurrentType--><!--Device-Camera_ConcurrentType-End-->
+<!--Device-enum Camera_ConcurrentType--><!--Device-enum Camera_ConcurrentType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -815,8 +815,8 @@ enum Camera_ConcurrentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY = 0 | 相机限制并发。 |
-| CAMERA_CONCURRENT_TYPE_FULL_CAPABILITY = 1 | 相机全量并发。 |
+| CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY = 0 | 相机限制并发。<br><!--Device-CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY = 0--><!--Device-CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY = 0-End--> |
+| CAMERA_CONCURRENT_TYPE_FULL_CAPABILITY = 1 | 相机全量并发。<br><!--Device-CAMERA_CONCURRENT_TYPE_FULL_CAPABILITY = 1--><!--Device-CAMERA_CONCURRENT_TYPE_FULL_CAPABILITY = 1-End--> |
 
 ### Camera_SystemPressureLevel
 
@@ -828,7 +828,7 @@ enum Camera_SystemPressureLevel
 
 系统压力等级的枚举。
 
-<!--Device-Camera_SystemPressureLevel--><!--Device-Camera_SystemPressureLevel-End-->
+<!--Device-enum Camera_SystemPressureLevel--><!--Device-enum Camera_SystemPressureLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -836,11 +836,11 @@ enum Camera_SystemPressureLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SYSTEM_PRESSURE_NORMAL = 0 | 系统压力正常。 |
-| SYSTEM_PRESSURE_MILD = 1 | 系统压力升高，但是系统不会主动管控。 |
-| SYSTEM_PRESSURE_SEVERE = 2 | 系统压力可能对图像总质量、性能产生影响。 |
-| SYSTEM_PRESSURE_CRITICAL = 3 | 系统图像质量、性能产生显著影响。 |
-| SYSTEM_PRESSURE_SHUTDOWN = 4 | 系统压力过高，停止工作。 |
+| SYSTEM_PRESSURE_NORMAL = 0 | 系统压力正常。<br><!--Device-SYSTEM_PRESSURE_NORMAL = 0--><!--Device-SYSTEM_PRESSURE_NORMAL = 0-End--> |
+| SYSTEM_PRESSURE_MILD = 1 | 系统压力升高，但是系统不会主动管控。<br><!--Device-SYSTEM_PRESSURE_MILD = 1--><!--Device-SYSTEM_PRESSURE_MILD = 1-End--> |
+| SYSTEM_PRESSURE_SEVERE = 2 | 系统压力可能对图像总质量、性能产生影响。<br><!--Device-SYSTEM_PRESSURE_SEVERE = 2--><!--Device-SYSTEM_PRESSURE_SEVERE = 2-End--> |
+| SYSTEM_PRESSURE_CRITICAL = 3 | 系统图像质量、性能产生显著影响。<br><!--Device-SYSTEM_PRESSURE_CRITICAL = 3--><!--Device-SYSTEM_PRESSURE_CRITICAL = 3-End--> |
+| SYSTEM_PRESSURE_SHUTDOWN = 4 | 系统压力过高，停止工作。<br><!--Device-SYSTEM_PRESSURE_SHUTDOWN = 4--><!--Device-SYSTEM_PRESSURE_SHUTDOWN = 4-End--> |
 
 ### Camera_PhotoQualityPrioritization
 
@@ -852,7 +852,7 @@ enum Camera_PhotoQualityPrioritization
 
 拍照画质优先策略枚举。
 
-<!--Device-Camera_PhotoQualityPrioritization--><!--Device-Camera_PhotoQualityPrioritization-End-->
+<!--Device-enum Camera_PhotoQualityPrioritization--><!--Device-enum Camera_PhotoQualityPrioritization-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -860,8 +860,8 @@ enum Camera_PhotoQualityPrioritization
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0 | 画质优先，拍照需要较长的时间，以输出高画质的图片。 |
-| CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1 | 性能优先，会降低画质来提升拍照的速度。 |
+| CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0 | 画质优先，拍照需要较长的时间，以输出高画质的图片。<br><!--Device-CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0--><!--Device-CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0-End--> |
+| CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1 | 性能优先，会降低画质来提升拍照的速度。<br><!--Device-CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1--><!--Device-CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1-End--> |
 
 ### Camera_ControlCenterEffectType
 
@@ -873,7 +873,7 @@ enum Camera_ControlCenterEffectType
 
 控制器效果类型枚举。
 
-<!--Device-Camera_ControlCenterEffectType--><!--Device-Camera_ControlCenterEffectType-End-->
+<!--Device-enum Camera_ControlCenterEffectType--><!--Device-enum Camera_ControlCenterEffectType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -881,10 +881,10 @@ enum Camera_ControlCenterEffectType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
-| CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
-| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24 |
-| CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | 控制器效果类型：XMAGE风格。<br>**起始版本：** 26.0.0 |
+| CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。<br><!--Device-CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0--><!--Device-CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0-End--> |
+| CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。<br><!--Device-CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1--><!--Device-CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1-End--> |
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24<br><!--Device-CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2--><!--Device-CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2-End--> |
+| CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | 控制器效果类型：XMAGE风格。<br>**起始版本：** 26.0.0<br><!--Device-CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3--><!--Device-CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3-End--> |
 
 ### OH_Camera_OISMode
 
@@ -896,7 +896,7 @@ enum OH_Camera_OISMode
 
 光学防抖（Optical Image Stabilization）模式枚举。
 
-<!--Device-OH_Camera_OISMode--><!--Device-OH_Camera_OISMode-End-->
+<!--Device-enum OH_Camera_OISMode--><!--Device-enum OH_Camera_OISMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -904,9 +904,9 @@ enum OH_Camera_OISMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_OIS_MODE_OFF = 0 | 关闭光学防抖模式。<br>**起始版本：** 24 |
-| OH_CAMERA_OIS_MODE_AUTO = 1 | 自动光学防抖模式。<br>**起始版本：** 24 |
-| OH_CAMERA_OIS_MODE_CUSTOM = 2 | 手动光学防抖模式。<br>**起始版本：** 24 |
+| OH_CAMERA_OIS_MODE_OFF = 0 | 关闭光学防抖模式。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_OIS_MODE_OFF = 0--><!--Device-OH_CAMERA_OIS_MODE_OFF = 0-End--> |
+| OH_CAMERA_OIS_MODE_AUTO = 1 | 自动光学防抖模式。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_OIS_MODE_AUTO = 1--><!--Device-OH_CAMERA_OIS_MODE_AUTO = 1-End--> |
+| OH_CAMERA_OIS_MODE_CUSTOM = 2 | 手动光学防抖模式。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_OIS_MODE_CUSTOM = 2--><!--Device-OH_CAMERA_OIS_MODE_CUSTOM = 2-End--> |
 
 ### OH_Camera_OISAxes
 
@@ -918,7 +918,7 @@ enum OH_Camera_OISAxes
 
 光学防抖（OIS）轴枚举。
 
-<!--Device-OH_Camera_OISAxes--><!--Device-OH_Camera_OISAxes-End-->
+<!--Device-enum OH_Camera_OISAxes--><!--Device-enum OH_Camera_OISAxes-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -926,8 +926,8 @@ enum OH_Camera_OISAxes
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。<br>**起始版本：** 24 |
-| OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。<br>**起始版本：** 24 |
+| OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_OIS_AXES_PITCH = 0--><!--Device-OH_CAMERA_OIS_AXES_PITCH = 0-End--> |
+| OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。<br>**起始版本：** 24<br><!--Device-OH_CAMERA_OIS_AXES_YAW = 1--><!--Device-OH_CAMERA_OIS_AXES_YAW = 1-End--> |
 
 ### OH_Camera_MetadataObjectEmotion
 
@@ -939,7 +939,7 @@ enum OH_Camera_MetadataObjectEmotion
 
 元数据对象情绪类型枚举。
 
-<!--Device-OH_Camera_MetadataObjectEmotion--><!--Device-OH_Camera_MetadataObjectEmotion-End-->
+<!--Device-enum OH_Camera_MetadataObjectEmotion--><!--Device-enum OH_Camera_MetadataObjectEmotion-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -947,10 +947,10 @@ enum OH_Camera_MetadataObjectEmotion
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0 | 平静。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 | 悲伤。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | 微笑。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | 惊讶。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0 | 平静。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0--><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0-End--> |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 | 悲伤。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1--><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1-End--> |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | 微笑。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2--><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2-End--> |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | 惊讶。<br>**起始版本：** 26.0.0<br><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3--><!--Device-OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3-End--> |
 
 
 ## 函数说明

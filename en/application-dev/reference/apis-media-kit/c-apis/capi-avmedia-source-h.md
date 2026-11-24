@@ -70,7 +70,7 @@ enum AVLoadingRequestError
 
 Enumerates the error codes of network loading requests.
 
-<!--Device-AVLoadingRequestError--><!--Device-AVLoadingRequestError-End-->
+<!--Device-enum AVLoadingRequestError--><!--Device-enum AVLoadingRequestError-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -78,13 +78,13 @@ Enumerates the error codes of network loading requests.
 
 | Enum item | Description |
 | -- | -- |
-| AV_LOADING_ERROR_SUCCESS = 0 | The resource is successfully downloaded. |
-| AV_LOADING_ERROR_NOT_READY = 1 | The resource is not ready and cannot be accessed. |
-| AV_LOADING_ERROR_NO_RESOURCE = 2 | The resource URL does not exist. |
-| AV_LOADING_ERROR_INVALID_HANDLE = 3 | The UUID of the resource handle is invalid. |
-| AV_LOADING_ERROR_ACCESS_DENIED = 4 | The client does not have the permission to request the resource. |
-| AV_LOADING_ERROR_ACCESS_TIMEOUT = 5 | The access times out. |
-| AV_LOADING_ERROR_AUTHORIZE_FAILED = 6 | The authorization failed. |
+| AV_LOADING_ERROR_SUCCESS = 0 | The resource is successfully downloaded.<br><!--Device-AV_LOADING_ERROR_SUCCESS = 0--><!--Device-AV_LOADING_ERROR_SUCCESS = 0-End--> |
+| AV_LOADING_ERROR_NOT_READY = 1 | The resource is not ready and cannot be accessed.<br><!--Device-AV_LOADING_ERROR_NOT_READY = 1--><!--Device-AV_LOADING_ERROR_NOT_READY = 1-End--> |
+| AV_LOADING_ERROR_NO_RESOURCE = 2 | The resource URL does not exist.<br><!--Device-AV_LOADING_ERROR_NO_RESOURCE = 2--><!--Device-AV_LOADING_ERROR_NO_RESOURCE = 2-End--> |
+| AV_LOADING_ERROR_INVALID_HANDLE = 3 | The UUID of the resource handle is invalid.<br><!--Device-AV_LOADING_ERROR_INVALID_HANDLE = 3--><!--Device-AV_LOADING_ERROR_INVALID_HANDLE = 3-End--> |
+| AV_LOADING_ERROR_ACCESS_DENIED = 4 | The client does not have the permission to request the resource.<br><!--Device-AV_LOADING_ERROR_ACCESS_DENIED = 4--><!--Device-AV_LOADING_ERROR_ACCESS_DENIED = 4-End--> |
+| AV_LOADING_ERROR_ACCESS_TIMEOUT = 5 | The access times out.<br><!--Device-AV_LOADING_ERROR_ACCESS_TIMEOUT = 5--><!--Device-AV_LOADING_ERROR_ACCESS_TIMEOUT = 5-End--> |
+| AV_LOADING_ERROR_AUTHORIZE_FAILED = 6 | The authorization failed.<br><!--Device-AV_LOADING_ERROR_AUTHORIZE_FAILED = 6--><!--Device-AV_LOADING_ERROR_AUTHORIZE_FAILED = 6-End--> |
 
 
 ## Function description

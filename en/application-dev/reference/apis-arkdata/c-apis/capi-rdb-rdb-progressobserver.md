@@ -24,7 +24,7 @@ The observer of progress.
 
 | Name | Description |
 | -- | -- |
-| void *context | The context of progress observer. |
-| [Rdb_ProgressCallback](capi-relational-store-h.md#rdb_progresscallback) callback | The callback function of progress observer. |
+| void *context | The context of progress observer.<br><!--Device-void *context--><!--Device-void *context-End--> |
+| [Rdb_ProgressCallback](capi-relational-store-h.md#rdb_progresscallback) callback | The callback function of progress observer.<br><!--Device-Rdb_ProgressCallback callback--><!--Device-Rdb_ProgressCallback callback-End--> |
 
 

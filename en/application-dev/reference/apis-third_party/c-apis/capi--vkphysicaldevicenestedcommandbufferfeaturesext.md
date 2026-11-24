@@ -10,10 +10,10 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 nestedCommandBuffer |  |
-| VkBool32 nestedCommandBufferRendering |  |
-| VkBool32 nestedCommandBufferSimultaneousUse |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 nestedCommandBuffer | <!--Device-VkBool32 nestedCommandBuffer--><!--Device-VkBool32 nestedCommandBuffer-End--> |
+| VkBool32 nestedCommandBufferRendering | <!--Device-VkBool32 nestedCommandBufferRendering--><!--Device-VkBool32 nestedCommandBufferRendering-End--> |
+| VkBool32 nestedCommandBufferSimultaneousUse | <!--Device-VkBool32 nestedCommandBufferSimultaneousUse--><!--Device-VkBool32 nestedCommandBufferSimultaneousUse-End--> |
 
 

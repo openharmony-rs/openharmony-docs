@@ -10,19 +10,19 @@
 
 | Name | Description |
 | -- | -- |
-| uint64_t start_code |  |
-| uint64_t end_code |  |
-| uint64_t start_data |  |
-| uint64_t end_data |  |
-| uint64_t start_brk |  |
-| uint64_t brk |  |
-| uint64_t start_stack |  |
-| uint64_t arg_start |  |
-| uint64_t arg_end |  |
-| uint64_t env_start |  |
-| uint64_t env_end |  |
-| uint64_t *auxv |  |
-| uint32_t auxv_size |  |
-| uint32_t exe_fd |  |
+| uint64_t start_code | <!--Device-uint64_t start_code--><!--Device-uint64_t start_code-End--> |
+| uint64_t end_code | <!--Device-uint64_t end_code--><!--Device-uint64_t end_code-End--> |
+| uint64_t start_data | <!--Device-uint64_t start_data--><!--Device-uint64_t start_data-End--> |
+| uint64_t end_data | <!--Device-uint64_t end_data--><!--Device-uint64_t end_data-End--> |
+| uint64_t start_brk | <!--Device-uint64_t start_brk--><!--Device-uint64_t start_brk-End--> |
+| uint64_t brk | <!--Device-uint64_t brk--><!--Device-uint64_t brk-End--> |
+| uint64_t start_stack | <!--Device-uint64_t start_stack--><!--Device-uint64_t start_stack-End--> |
+| uint64_t arg_start | <!--Device-uint64_t arg_start--><!--Device-uint64_t arg_start-End--> |
+| uint64_t arg_end | <!--Device-uint64_t arg_end--><!--Device-uint64_t arg_end-End--> |
+| uint64_t env_start | <!--Device-uint64_t env_start--><!--Device-uint64_t env_start-End--> |
+| uint64_t env_end | <!--Device-uint64_t env_end--><!--Device-uint64_t env_end-End--> |
+| uint64_t *auxv | <!--Device-uint64_t *auxv--><!--Device-uint64_t *auxv-End--> |
+| uint32_t auxv_size | <!--Device-uint32_t auxv_size--><!--Device-uint32_t auxv_size-End--> |
+| uint32_t exe_fd | <!--Device-uint32_t exe_fd--><!--Device-uint32_t exe_fd-End--> |
 
 

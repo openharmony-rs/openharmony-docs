@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| struct in6_addr ipi6_addr |  |
-| unsigned ipi6_ifindex |  |
+| struct in6_addr ipi6_addr | <!--Device-struct in6_addr ipi6_addr--><!--Device-struct in6_addr ipi6_addr-End--> |
+| unsigned ipi6_ifindex | <!--Device-unsigned ipi6_ifindex--><!--Device-unsigned ipi6_ifindex-End--> |
 
 

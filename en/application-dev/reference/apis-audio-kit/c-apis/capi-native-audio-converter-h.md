@@ -19,9 +19,6 @@ Declare underlying data structure.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioConverter_Format](capi-ohaudiosuite-oh-audioconverter-format.md) | OH_AudioConverter_Format | Define the audio converter format info structure, used to describe basic audio format. |
-| [OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) | OH_AudioSuite_ConverterFormatEx | Defines the format information of the extended audio converter, which is used to describe the audio format that supports any sampling rate. |
-| [OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo.md) | OH_AudioSuite_ConverterInputInfo | Defines the input data structure of the audio converter. |
-| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo.md) | OH_AudioSuite_ConverterOutputInfo | Defines the output data structure of the audio converter, which is used to receive the converted audio data in direct processing mode. |
 | [OH_AudioConverterStruct](capi-ohaudiosuite-oh-audioconverterstruct.md) | OH_AudioConverter | Declare the audio converter. The handle of audio converter is used for audio converter related functions. |
 
 ### Enums
@@ -53,7 +50,7 @@ enum OH_AudioConverter_Result
 
 Define the result of the function execution.
 
-<!--Device-OH_AudioConverter_Result--><!--Device-OH_AudioConverter_Result-End-->
+<!--Device-enum OH_AudioConverter_Result--><!--Device-enum OH_AudioConverter_Result-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -61,17 +58,17 @@ Define the result of the function execution.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOCONVERTER_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_SYSTEM = 3 | &nbsp;A system error has occurred.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 | &nbsp;Memory allocation failed.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 | &nbsp;Buffer capacity is insufficient.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 | &nbsp;Audio converter instance is not initialized.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 | &nbsp;Callback is invalid.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 | &nbsp;Callback is not set.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202 | Permission verification failed. A non-system application invokes the system API.<br>**Since**: 26.1.0 |
-| AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104 | The operation is not supported.<br>**Since**: 26.1.0 |
+| AUDIOCONVERTER_SUCCESS = 0 | &nbsp;The call was successful.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_SUCCESS = 0--><!--Device-AUDIOCONVERTER_SUCCESS = 0-End--> |
+| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 | &nbsp;This means that the function was executed with an invalid input parameter.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_INVALID_PARAM = 1--><!--Device-AUDIOCONVERTER_ERROR_INVALID_PARAM = 1-End--> |
+| AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2--><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2-End--> |
+| AUDIOCONVERTER_ERROR_SYSTEM = 3 | &nbsp;A system error has occurred.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_SYSTEM = 3--><!--Device-AUDIOCONVERTER_ERROR_SYSTEM = 3-End--> |
+| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 | &nbsp;Memory allocation failed.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4--><!--Device-AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4-End--> |
+| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 | &nbsp;Buffer capacity is insufficient.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5--><!--Device-AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5-End--> |
+| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 | &nbsp;Audio converter instance is not initialized.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6--><!--Device-AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6-End--> |
+| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 | &nbsp;Callback is invalid.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7--><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7-End--> |
+| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 | &nbsp;Callback is not set.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8--><!--Device-AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8-End--> |
+| AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202 | Permission verification failed. A non-system application invokes the system API.<br>**Since**: 26.1.0<br><!--Device-AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202--><!--Device-AUDIOCONVERTER_ERROR_NOT_SYSTEM_APP = 202-End--> |
+| AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104 | The operation is not supported.<br>**Since**: 26.1.0<br><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104--><!--Device-AUDIOCONVERTER_ERROR_UNSUPPORTED_OPERATION = 6800104-End--> |
 
 ### OH_AudioConverter_InputStatus
 
@@ -83,7 +80,7 @@ enum OH_AudioConverter_InputStatus
 
 Define the status of input audio data provided by the callback [OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback). The converter uses this status to determine how to handle subsequent conversion logic (e.g., continue pulling data, pause, or flush cached data). Note for callers: Even if the callback returns [AUDIOCONVERTER_INPUT_DATA_FINISHED](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus), [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) must be called repeatedly until it returns [AUDIOCONVERTER_SUCCESS](capi-native-audio-converter-h.md#oh_audioconverter_result) with outputSize being 0 (indicating all cached data has been flushed).
 
-<!--Device-OH_AudioConverter_InputStatus--><!--Device-OH_AudioConverter_InputStatus-End-->
+<!--Device-enum OH_AudioConverter_InputStatus--><!--Device-enum OH_AudioConverter_InputStatus-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -91,9 +88,9 @@ Define the status of input audio data provided by the callback [OH_AudioConverte
 
 | Enum item | Description |
 | -- | -- |
-| AUDIOCONVERTER_INPUT_HAVE_DATA = 1 | Valid input data is available and provided.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2 | No input data is available temporarily.<br>**Since**: 26.0.0 |
-| AUDIOCONVERTER_INPUT_DATA_FINISHED = 3 | The input data stream is complete.<br>**Since**: 26.0.0 |
+| AUDIOCONVERTER_INPUT_HAVE_DATA = 1 | Valid input data is available and provided.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_INPUT_HAVE_DATA = 1--><!--Device-AUDIOCONVERTER_INPUT_HAVE_DATA = 1-End--> |
+| AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2 | No input data is available temporarily.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2--><!--Device-AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA = 2-End--> |
+| AUDIOCONVERTER_INPUT_DATA_FINISHED = 3 | The input data stream is complete.<br>**Since**: 26.0.0<br><!--Device-AUDIOCONVERTER_INPUT_DATA_FINISHED = 3--><!--Device-AUDIOCONVERTER_INPUT_DATA_FINISHED = 3-End--> |
 
 
 ## Function description

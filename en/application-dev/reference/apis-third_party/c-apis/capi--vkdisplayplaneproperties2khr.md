@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| [VkDisplayPlanePropertiesKHR](capi--vkdisplayplanepropertieskhr.md) displayPlaneProperties |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| [VkDisplayPlanePropertiesKHR](capi--vkdisplayplanepropertieskhr.md) displayPlaneProperties | <!--Device-VkDisplayPlanePropertiesKHR displayPlaneProperties--><!--Device-VkDisplayPlanePropertiesKHR displayPlaneProperties-End--> |
 
 

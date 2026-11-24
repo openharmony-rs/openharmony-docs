@@ -34,7 +34,7 @@ enum ArkUI_ImageSpanAlignment
 
 定义图片基于文本的对齐方式。
 
-<!--Device-ArkUI_ImageSpanAlignment--><!--Device-ArkUI_ImageSpanAlignment-End-->
+<!--Device-enum ArkUI_ImageSpanAlignment--><!--Device-enum ArkUI_ImageSpanAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,10 +42,10 @@ enum ArkUI_ImageSpanAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0 | 图片下边沿与文本基线对齐。 |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM | 图片下边沿与文本下边沿对齐。 |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER | 图片中间与文本中间对齐。 |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_TOP | 图片上边沿与文本上边沿对齐。 |
-| ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH | 图片对齐方式跟随Text组件对齐方式。<br>**起始版本：** 20 |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0 | 图片下边沿与文本基线对齐。<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BASELINE = 0-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM | 图片下边沿与文本下边沿对齐。<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_BOTTOM-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER | 图片中间与文本中间对齐。<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_TOP | 图片上边沿与文本上边沿对齐。<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_TOP--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_TOP-End--> |
+| ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH | 图片对齐方式跟随Text组件对齐方式。<br>**起始版本：** 20<br><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH--><!--Device-ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH-End--> |
 
 

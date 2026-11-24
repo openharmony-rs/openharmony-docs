@@ -24,8 +24,8 @@ typedef struct OH_Drawing_FontStyleStruct {...} OH_Drawing_FontStyleStruct
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | 字体字重。 |
-| [OH_Drawing_FontWidth](capi-drawing-text-typography-h.md#oh_drawing_fontwidth) width | 字宽。 |
-| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) slant | 字体斜体。 |
+| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | 字体字重。<br><!--Device-OH_Drawing_FontWeight weight--><!--Device-OH_Drawing_FontWeight weight-End--> |
+| [OH_Drawing_FontWidth](capi-drawing-text-typography-h.md#oh_drawing_fontwidth) width | 字宽。<br><!--Device-OH_Drawing_FontWidth width--><!--Device-OH_Drawing_FontWidth width-End--> |
+| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) slant | 字体斜体。<br><!--Device-OH_Drawing_FontStyle slant--><!--Device-OH_Drawing_FontStyle slant-End--> |
 
 

@@ -24,8 +24,8 @@ typedef struct OH_Huks_ExternalCryptoParamSet {...} OH_Huks_ExternalCryptoParamS
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t paramSetSize | 参数集合所占内存大小，单位：Byte。<br>**起始版本：** 22 |
-| uint32_t paramsCnt | 参数集合中的参数数量。<br>**起始版本：** 22 |
-| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) params[] | 参数数组，大小由paramSetSize与paramsCnt决定。<br>**起始版本：** 22 |
+| uint32_t paramSetSize | 参数集合所占内存大小，单位：Byte。<br>**起始版本：** 22<br><!--Device-uint32_t paramSetSize--><!--Device-uint32_t paramSetSize-End--> |
+| uint32_t paramsCnt | 参数集合中的参数数量。<br>**起始版本：** 22<br><!--Device-uint32_t paramsCnt--><!--Device-uint32_t paramsCnt-End--> |
+| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) params[] | 参数数组，大小由paramSetSize与paramsCnt决定。<br>**起始版本：** 22<br><!--Device-OH_Huks_ExternalCryptoParam params[]--><!--Device-OH_Huks_ExternalCryptoParam params[]-End--> |
 
 

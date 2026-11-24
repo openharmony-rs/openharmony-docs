@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| void *pData |  |
-| EGLint iWidth |  |
-| EGLint iHeight |  |
-| EGLint iStride |  |
+| void *pData | <!--Device-void *pData--><!--Device-void *pData-End--> |
+| EGLint iWidth | <!--Device-EGLint iWidth--><!--Device-EGLint iWidth-End--> |
+| EGLint iHeight | <!--Device-EGLint iHeight--><!--Device-EGLint iHeight-End--> |
+| EGLint iStride | <!--Device-EGLint iStride--><!--Device-EGLint iStride-End--> |
 
 

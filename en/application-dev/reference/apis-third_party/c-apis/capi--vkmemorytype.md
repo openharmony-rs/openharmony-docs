@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| VkMemoryPropertyFlags propertyFlags |  |
-| uint32_t heapIndex |  |
+| VkMemoryPropertyFlags propertyFlags | <!--Device-VkMemoryPropertyFlags propertyFlags--><!--Device-VkMemoryPropertyFlags propertyFlags-End--> |
+| uint32_t heapIndex | <!--Device-uint32_t heapIndex--><!--Device-uint32_t heapIndex-End--> |
 
 

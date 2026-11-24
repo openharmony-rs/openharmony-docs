@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| struct in_addr imr_multiaddr |  |
-| struct in_addr imr_interface |  |
-| struct in_addr imr_sourceaddr |  |
+| struct in_addr imr_multiaddr | <!--Device-struct in_addr imr_multiaddr--><!--Device-struct in_addr imr_multiaddr-End--> |
+| struct in_addr imr_interface | <!--Device-struct in_addr imr_interface--><!--Device-struct in_addr imr_interface-End--> |
+| struct in_addr imr_sourceaddr | <!--Device-struct in_addr imr_sourceaddr--><!--Device-struct in_addr imr_sourceaddr-End--> |
 
 

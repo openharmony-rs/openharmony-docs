@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| VkSamplerReductionMode reductionMode |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| VkSamplerReductionMode reductionMode | <!--Device-VkSamplerReductionMode reductionMode--><!--Device-VkSamplerReductionMode reductionMode-End--> |
 
 

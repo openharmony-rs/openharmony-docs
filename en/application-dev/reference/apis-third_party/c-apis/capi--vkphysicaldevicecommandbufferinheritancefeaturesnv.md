@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 commandBufferInheritance |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 commandBufferInheritance | <!--Device-VkBool32 commandBufferInheritance--><!--Device-VkBool32 commandBufferInheritance-End--> |
 
 

@@ -10,9 +10,9 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| void* pNext |  |
-| VkBool32 shaderBufferInt64Atomics |  |
-| VkBool32 shaderSharedInt64Atomics |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| void* pNext | <!--Device-void* pNext--><!--Device-void* pNext-End--> |
+| VkBool32 shaderBufferInt64Atomics | <!--Device-VkBool32 shaderBufferInt64Atomics--><!--Device-VkBool32 shaderBufferInt64Atomics-End--> |
+| VkBool32 shaderSharedInt64Atomics | <!--Device-VkBool32 shaderSharedInt64Atomics--><!--Device-VkBool32 shaderSharedInt64Atomics-End--> |
 
 

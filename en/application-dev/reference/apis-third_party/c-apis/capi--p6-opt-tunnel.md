@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| uint8_t ip6ot_type |  |
-| uint8_t ip6ot_len |  |
-| uint8_t ip6ot_encap_limit |  |
+| uint8_t ip6ot_type | <!--Device-uint8_t ip6ot_type--><!--Device-uint8_t ip6ot_type-End--> |
+| uint8_t ip6ot_len | <!--Device-uint8_t ip6ot_len--><!--Device-uint8_t ip6ot_len-End--> |
+| uint8_t ip6ot_encap_limit | <!--Device-uint8_t ip6ot_encap_limit--><!--Device-uint8_t ip6ot_encap_limit-End--> |
 
 

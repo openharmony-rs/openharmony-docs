@@ -64,7 +64,7 @@ enum Usage_Constants
 
 Enumerates the usages of the key of the <b>TEE_ObjectHandle</b>.
 
-<!--Device-Usage_Constants--><!--Device-Usage_Constants-End-->
+<!--Device-enum Usage_Constants--><!--Device-enum Usage_Constants-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -72,14 +72,14 @@ Enumerates the usages of the key of the <b>TEE_ObjectHandle</b>.
 
 | Enum item | Description |
 | -- | -- |
-| TEE_USAGE_EXTRACTABLE = 0x00000001 | The object's key is extractable. |
-| TEE_USAGE_ENCRYPT = 0x00000002 | Used for encryption. |
-| TEE_USAGE_DECRYPT = 0x00000004 | Used for decryption. |
-| TEE_USAGE_MAC = 0x00000008 | Used for hash calculation. |
-| TEE_USAGE_SIGN = 0x00000010 | Used for creating a signature. |
-| TEE_USAGE_VERIFY = 0x00000020 | Used for signature verification. |
-| TEE_USAGE_DERIVE = 0x00000040 | Used for key derivation. |
-| TEE_USAGE_DEFAULT = 0xFFFFFFFF | Used for object initialization, with all permissions assigned by default. |
+| TEE_USAGE_EXTRACTABLE = 0x00000001 | The object's key is extractable.<br><!--Device-TEE_USAGE_EXTRACTABLE = 0x00000001--><!--Device-TEE_USAGE_EXTRACTABLE = 0x00000001-End--> |
+| TEE_USAGE_ENCRYPT = 0x00000002 | Used for encryption.<br><!--Device-TEE_USAGE_ENCRYPT = 0x00000002--><!--Device-TEE_USAGE_ENCRYPT = 0x00000002-End--> |
+| TEE_USAGE_DECRYPT = 0x00000004 | Used for decryption.<br><!--Device-TEE_USAGE_DECRYPT = 0x00000004--><!--Device-TEE_USAGE_DECRYPT = 0x00000004-End--> |
+| TEE_USAGE_MAC = 0x00000008 | Used for hash calculation.<br><!--Device-TEE_USAGE_MAC = 0x00000008--><!--Device-TEE_USAGE_MAC = 0x00000008-End--> |
+| TEE_USAGE_SIGN = 0x00000010 | Used for creating a signature.<br><!--Device-TEE_USAGE_SIGN = 0x00000010--><!--Device-TEE_USAGE_SIGN = 0x00000010-End--> |
+| TEE_USAGE_VERIFY = 0x00000020 | Used for signature verification.<br><!--Device-TEE_USAGE_VERIFY = 0x00000020--><!--Device-TEE_USAGE_VERIFY = 0x00000020-End--> |
+| TEE_USAGE_DERIVE = 0x00000040 | Used for key derivation.<br><!--Device-TEE_USAGE_DERIVE = 0x00000040--><!--Device-TEE_USAGE_DERIVE = 0x00000040-End--> |
+| TEE_USAGE_DEFAULT = 0xFFFFFFFF | Used for object initialization, with all permissions assigned by default.<br><!--Device-TEE_USAGE_DEFAULT = 0xFFFFFFFF--><!--Device-TEE_USAGE_DEFAULT = 0xFFFFFFFF-End--> |
 
 ### Handle_Flag_Constants
 
@@ -91,7 +91,7 @@ enum Handle_Flag_Constants
 
 Defines information about the object pointed to by the flag of the <b>TEE_ObjectHandle</b>, for example, whether the object is a persistent object or is initialized.
 
-<!--Device-Handle_Flag_Constants--><!--Device-Handle_Flag_Constants-End-->
+<!--Device-enum Handle_Flag_Constants--><!--Device-enum Handle_Flag_Constants-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -99,10 +99,10 @@ Defines information about the object pointed to by the flag of the <b>TEE_Object
 
 | Enum item | Description |
 | -- | -- |
-| TEE_HANDLE_FLAG_PERSISTENT = 0x00010000 | The object is a persistent object. |
-| TEE_HANDLE_FLAG_INITIALIZED = 0x00020000 | The object is initialized. |
-| TEE_HANDLE_FLAG_KEY_SET = 0x00040000 | The object is a key set. |
-| TEE_HANDLE_FLAG_EXPECT_TWO_KEYS = 0x00080000 | The object is expected to have two keys. |
+| TEE_HANDLE_FLAG_PERSISTENT = 0x00010000 | The object is a persistent object.<br><!--Device-TEE_HANDLE_FLAG_PERSISTENT = 0x00010000--><!--Device-TEE_HANDLE_FLAG_PERSISTENT = 0x00010000-End--> |
+| TEE_HANDLE_FLAG_INITIALIZED = 0x00020000 | The object is initialized.<br><!--Device-TEE_HANDLE_FLAG_INITIALIZED = 0x00020000--><!--Device-TEE_HANDLE_FLAG_INITIALIZED = 0x00020000-End--> |
+| TEE_HANDLE_FLAG_KEY_SET = 0x00040000 | The object is a key set.<br><!--Device-TEE_HANDLE_FLAG_KEY_SET = 0x00040000--><!--Device-TEE_HANDLE_FLAG_KEY_SET = 0x00040000-End--> |
+| TEE_HANDLE_FLAG_EXPECT_TWO_KEYS = 0x00080000 | The object is expected to have two keys.<br><!--Device-TEE_HANDLE_FLAG_EXPECT_TWO_KEYS = 0x00080000--><!--Device-TEE_HANDLE_FLAG_EXPECT_TWO_KEYS = 0x00080000-End--> |
 
 
 ## Function description

@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| StdVideoH264ProfileIdc stdProfileIdc |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| StdVideoH264ProfileIdc stdProfileIdc | <!--Device-StdVideoH264ProfileIdc stdProfileIdc--><!--Device-StdVideoH264ProfileIdc stdProfileIdc-End--> |
 
 

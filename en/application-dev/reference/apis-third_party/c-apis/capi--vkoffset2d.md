@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| int32_t x |  |
-| int32_t y |  |
+| int32_t x | <!--Device-int32_t x--><!--Device-int32_t x-End--> |
+| int32_t y | <!--Device-int32_t y--><!--Device-int32_t y-End--> |
 
 

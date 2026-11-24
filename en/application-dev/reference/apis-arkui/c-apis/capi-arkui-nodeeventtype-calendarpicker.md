@@ -20,6 +20,8 @@ NODE_CALENDAR_PICKER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CALENDAR_
 
 Defines the event triggered when a date is selected in the <b>NODE_CALENDAR_PICKER</b>.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). <ul> <li><b>ArkUI_NodeComponent.data[0].u32</b>: year of the selected date.</li> <li><b>ArkUI_NodeComponent.data[1].u32</b>: month of the selected date.</li> <li><b>ArkUI_NodeComponent.data[2].u32</b>: day of the selected date.</li> </ul>
 
+<!--Device-NODE_CALENDAR_PICKER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CALENDAR_PICKER--><!--Device-NODE_CALENDAR_PICKER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CALENDAR_PICKER-End-->
+
 **Since**: 12
 
 

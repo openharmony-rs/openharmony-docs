@@ -24,11 +24,11 @@ native栈帧内容的定义。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t relativePc | 相对pc地址。当前pc相对于其所在的映射区域（如可执行文件或共享库）起始地址的偏移量。 |
-| uint64_t funcOffset | 函数偏移量。当前栈帧对应的函数在其所在的映射区域（如可执行文件或共享库）内的偏移量。 |
-| const char* mapName | 映射名称。当前栈帧所属的映射区域的名称。 |
-| const char* functionName | 函数名称。当前栈帧对应的函数的名称。 |
-| const char* buildId | 构建标识符。当前映射区域（如可执行文件或共享库）相关的唯一标识符。在调试和符号解析时，buildId可确保使用的符号文件与实际运行的二进制文件版本一致。 |
-| const char* reserved | 保留字段。为了后续扩展预留的字段。 |
+| uint64_t relativePc | 相对pc地址。当前pc相对于其所在的映射区域（如可执行文件或共享库）起始地址的偏移量。<br><!--Device-uint64_t relativePc--><!--Device-uint64_t relativePc-End--> |
+| uint64_t funcOffset | 函数偏移量。当前栈帧对应的函数在其所在的映射区域（如可执行文件或共享库）内的偏移量。<br><!--Device-uint64_t funcOffset--><!--Device-uint64_t funcOffset-End--> |
+| const char* mapName | 映射名称。当前栈帧所属的映射区域的名称。<br><!--Device-const char* mapName--><!--Device-const char* mapName-End--> |
+| const char* functionName | 函数名称。当前栈帧对应的函数的名称。<br><!--Device-const char* functionName--><!--Device-const char* functionName-End--> |
+| const char* buildId | 构建标识符。当前映射区域（如可执行文件或共享库）相关的唯一标识符。在调试和符号解析时，buildId可确保使用的符号文件与实际运行的二进制文件版本一致。<br><!--Device-const char* buildId--><!--Device-const char* buildId-End--> |
+| const char* reserved | 保留字段。为了后续扩展预留的字段。<br><!--Device-const char* reserved--><!--Device-const char* reserved-End--> |
 
 

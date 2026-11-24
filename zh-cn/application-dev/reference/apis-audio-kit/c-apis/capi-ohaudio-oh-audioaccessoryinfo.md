@@ -24,12 +24,12 @@ typedef struct OH_AudioAccessoryInfo {...} OH_AudioAccessoryInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t structSize | 结构体大小，单位为字节。 调用方必须初始化此字段（例如：info.structSize = sizeof(OH_AudioAccessoryInfo)）。 框架通过此字段判断所使用的结构体版本。<br>**起始版本：** 26.0.0 |
-| const char *accessoryName | 配件名称，用于UX展示，如"DJI Mic 2"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0 |
-| const char *manufacturer | 制造商名称，如"DJI"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0 |
-| const char *modelNumber | 型号编号，如"CP236"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0 |
-| const char *macAddress | 配件MAC地址，如"00:11:22:33:44:55"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0 |
-| [OH_AudioAccessoryType](capi-native-audio-accessory-common-h.md#oh_audioaccessorytype) type | 配件连接类型。<br>**起始版本：** 26.0.0 |
-| bool isUnidirectional | 标识配件是否为单向音频设备。 true：单向设备；false：双向设备。<br>**起始版本：** 26.0.0 |
+| uint32_t structSize | 结构体大小，单位为字节。 调用方必须初始化此字段（例如：info.structSize = sizeof(OH_AudioAccessoryInfo)）。 框架通过此字段判断所使用的结构体版本。<br>**起始版本：** 26.0.0<br><!--Device-uint32_t structSize--><!--Device-uint32_t structSize-End--> |
+| const char *accessoryName | 配件名称，用于UX展示，如"DJI Mic 2"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0<br><!--Device-const char *accessoryName--><!--Device-const char *accessoryName-End--> |
+| const char *manufacturer | 制造商名称，如"DJI"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0<br><!--Device-const char *manufacturer--><!--Device-const char *manufacturer-End--> |
+| const char *modelNumber | 型号编号，如"CP236"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0<br><!--Device-const char *modelNumber--><!--Device-const char *modelNumber-End--> |
+| const char *macAddress | 配件MAC地址，如"00:11:22:33:44:55"。 框架会对此字段进行深拷贝。<br>**起始版本：** 26.0.0<br><!--Device-const char *macAddress--><!--Device-const char *macAddress-End--> |
+| [OH_AudioAccessoryType](capi-native-audio-accessory-common-h.md#oh_audioaccessorytype) type | 配件连接类型。<br>**起始版本：** 26.0.0<br><!--Device-OH_AudioAccessoryType type--><!--Device-OH_AudioAccessoryType type-End--> |
+| bool isUnidirectional | 标识配件是否为单向音频设备。 true：单向设备；false：双向设备。<br>**起始版本：** 26.0.0<br><!--Device-bool isUnidirectional--><!--Device-bool isUnidirectional-End--> |
 
 

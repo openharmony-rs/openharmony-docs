@@ -51,7 +51,7 @@ enum Rdb_ConflictResolution
 
 表示冲突解决策略的枚举。
 
-<!--Device-Rdb_ConflictResolution--><!--Device-Rdb_ConflictResolution-End-->
+<!--Device-enum Rdb_ConflictResolution--><!--Device-enum Rdb_ConflictResolution-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -59,12 +59,12 @@ enum Rdb_ConflictResolution
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_CONFLICT_NONE = 1 | 发生冲突时不执行任何操作。 |
-| RDB_CONFLICT_ROLLBACK | 发生冲突时抛出错误码，同时回滚本次事务。 |
-| RDB_CONFLICT_ABORT | 发生冲突时抛出错误码，同时回滚本次修改。 |
-| RDB_CONFLICT_FAIL | 发生冲突时抛出错误码，不回滚冲突前的修改同时终止本次修改。 |
-| RDB_CONFLICT_IGNORE | 发生冲突时忽略冲突的数据，继续执行后续修改。 |
-| RDB_CONFLICT_REPLACE | 发生冲突时，尝试删除后插入，如果还是冲突则等同于RDB_CONFLICT_ABORT。 |
+| RDB_CONFLICT_NONE = 1 | 发生冲突时不执行任何操作。<br><!--Device-RDB_CONFLICT_NONE = 1--><!--Device-RDB_CONFLICT_NONE = 1-End--> |
+| RDB_CONFLICT_ROLLBACK | 发生冲突时抛出错误码，同时回滚本次事务。<br><!--Device-RDB_CONFLICT_ROLLBACK--><!--Device-RDB_CONFLICT_ROLLBACK-End--> |
+| RDB_CONFLICT_ABORT | 发生冲突时抛出错误码，同时回滚本次修改。<br><!--Device-RDB_CONFLICT_ABORT--><!--Device-RDB_CONFLICT_ABORT-End--> |
+| RDB_CONFLICT_FAIL | 发生冲突时抛出错误码，不回滚冲突前的修改同时终止本次修改。<br><!--Device-RDB_CONFLICT_FAIL--><!--Device-RDB_CONFLICT_FAIL-End--> |
+| RDB_CONFLICT_IGNORE | 发生冲突时忽略冲突的数据，继续执行后续修改。<br><!--Device-RDB_CONFLICT_IGNORE--><!--Device-RDB_CONFLICT_IGNORE-End--> |
+| RDB_CONFLICT_REPLACE | 发生冲突时，尝试删除后插入，如果还是冲突则等同于RDB_CONFLICT_ABORT。<br><!--Device-RDB_CONFLICT_REPLACE--><!--Device-RDB_CONFLICT_REPLACE-End--> |
 
 
 ## 函数说明

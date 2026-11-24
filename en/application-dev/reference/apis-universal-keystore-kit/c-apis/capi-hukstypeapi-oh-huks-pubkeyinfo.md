@@ -24,10 +24,10 @@ Defines the struct of a public key.
 
 | Name | Description |
 | -- | -- |
-| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the public key. |
-| uint32_t keySize | Length of the public key. |
-| uint32_t nOrXSize | Length of **n** or **X**. |
-| uint32_t eOrYSize | Length of **e** or **Y**. |
-| uint32_t placeHolder | Placeholder size, intended for memory alignment or reserving space for future algorithmic extensions. |
+| enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the public key.<br><!--Device-enum OH_Huks_KeyAlg keyAlg--><!--Device-enum OH_Huks_KeyAlg keyAlg-End--> |
+| uint32_t keySize | Length of the public key.<br><!--Device-uint32_t keySize--><!--Device-uint32_t keySize-End--> |
+| uint32_t nOrXSize | Length of **n** or **X**.<br><!--Device-uint32_t nOrXSize--><!--Device-uint32_t nOrXSize-End--> |
+| uint32_t eOrYSize | Length of **e** or **Y**.<br><!--Device-uint32_t eOrYSize--><!--Device-uint32_t eOrYSize-End--> |
+| uint32_t placeHolder | Placeholder size, intended for memory alignment or reserving space for future algorithmic extensions.<br><!--Device-uint32_t placeHolder--><!--Device-uint32_t placeHolder-End--> |
 
 

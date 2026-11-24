@@ -10,8 +10,8 @@
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType |  |
-| const void* pNext |  |
-| [const StdVideoDecodeH265ReferenceInfo*](capi--stdvideodecodeh265referenceinfo.md) pStdReferenceInfo |  |
+| VkStructureType sType | <!--Device-VkStructureType sType--><!--Device-VkStructureType sType-End--> |
+| const void* pNext | <!--Device-const void* pNext--><!--Device-const void* pNext-End--> |
+| [const StdVideoDecodeH265ReferenceInfo*](capi--stdvideodecodeh265referenceinfo.md) pStdReferenceInfo | <!--Device-const StdVideoDecodeH265ReferenceInfo* pStdReferenceInfo--><!--Device-const StdVideoDecodeH265ReferenceInfo* pStdReferenceInfo-End--> |
 
 

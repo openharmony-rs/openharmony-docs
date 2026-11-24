@@ -24,7 +24,7 @@ typedef struct Camera_AutoDeviceSwitchStatusInfo {...} Camera_AutoDeviceSwitchSt
 
 | 名称 | 描述 |
 | -- | -- |
-| bool isDeviceSwitched | 设备是否已切换，true表示已切换，false表示未切换。 |
-| bool isDeviceCapabilityChanged | 设备功能是否改变，true表示已改变，false表示未改变。 |
+| bool isDeviceSwitched | 设备是否已切换，true表示已切换，false表示未切换。<br><!--Device-bool isDeviceSwitched--><!--Device-bool isDeviceSwitched-End--> |
+| bool isDeviceCapabilityChanged | 设备功能是否改变，true表示已改变，false表示未改变。<br><!--Device-bool isDeviceCapabilityChanged--><!--Device-bool isDeviceCapabilityChanged-End--> |
 
 

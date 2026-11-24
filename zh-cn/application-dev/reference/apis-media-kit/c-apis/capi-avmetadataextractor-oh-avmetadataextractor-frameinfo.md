@@ -24,9 +24,9 @@ typedef struct OH_AVMetadataExtractor_FrameInfo {...} OH_AVMetadataExtractor_Fra
 
 | 名称 | 描述 |
 | -- | -- |
-| int64_t requestTimeUs | 用户传入的请求时间。 |
-| int64_t actualTimeUs | 实际提取到的帧的时间；若提取失败，则为-1。 |
-| OH_PixelmapNative* image | 从视频中提取出的帧图像；若提取失败，则为空指针。 |
-| [OH_AVMetadataExtractor_FetchState](capi-avmetadata-extractor-base-h.md#oh_avmetadataextractor_fetchstate) result | 本次帧提取操作的结果状态。 |
+| int64_t requestTimeUs | 用户传入的请求时间。<br><!--Device-int64_t requestTimeUs--><!--Device-int64_t requestTimeUs-End--> |
+| int64_t actualTimeUs | 实际提取到的帧的时间；若提取失败，则为-1。<br><!--Device-int64_t actualTimeUs--><!--Device-int64_t actualTimeUs-End--> |
+| OH_PixelmapNative* image | 从视频中提取出的帧图像；若提取失败，则为空指针。<br><!--Device-OH_PixelmapNative* image--><!--Device-OH_PixelmapNative* image-End--> |
+| [OH_AVMetadataExtractor_FetchState](capi-avmetadata-extractor-base-h.md#oh_avmetadataextractor_fetchstate) result | 本次帧提取操作的结果状态。<br><!--Device-OH_AVMetadataExtractor_FetchState result--><!--Device-OH_AVMetadataExtractor_FetchState result-End--> |
 
 

@@ -60,7 +60,7 @@ enum HiCollie_ErrorCode
 
 错误码定义。
 
-<!--Device-HiCollie_ErrorCode--><!--Device-HiCollie_ErrorCode-End-->
+<!--Device-enum HiCollie_ErrorCode--><!--Device-enum HiCollie_ErrorCode-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiCollie
 
@@ -68,15 +68,15 @@ enum HiCollie_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HICOLLIE_SUCCESS = 0 | 成功。<br>**起始版本：** 12 |
-| HICOLLIE_INVALID_ARGUMENT = 401 | 无效参数。<br>**起始版本：** 12 |
-| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | 调用线程错误。<br>**起始版本：** 12 |
-| HICOLLIE_REMOTE_FAILED = 29800002 | 远程调用错误。<br>**起始版本：** 12 |
-| HICOLLIE_INVALID_TIMER_NAME = 29800003 | 无效的计时器名称。<br>**起始版本：** 18 |
-| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | 无效的函数执行超时时间阈值。<br>**起始版本：** 18 |
-| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | 函数执行超时检测接入进程错误。<br>**起始版本：** 18 |
-| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的计时器id的指针不应为NULL。<br>**起始版本：** 18 |
-| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 上报频率超过限制。<br>**起始版本：** 24 |
+| HICOLLIE_SUCCESS = 0 | 成功。<br>**起始版本：** 12<br><!--Device-HICOLLIE_SUCCESS = 0--><!--Device-HICOLLIE_SUCCESS = 0-End--> |
+| HICOLLIE_INVALID_ARGUMENT = 401 | 无效参数。<br>**起始版本：** 12<br><!--Device-HICOLLIE_INVALID_ARGUMENT = 401--><!--Device-HICOLLIE_INVALID_ARGUMENT = 401-End--> |
+| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | 调用线程错误。<br>**起始版本：** 12<br><!--Device-HICOLLIE_WRONG_THREAD_CONTEXT = 29800001--><!--Device-HICOLLIE_WRONG_THREAD_CONTEXT = 29800001-End--> |
+| HICOLLIE_REMOTE_FAILED = 29800002 | 远程调用错误。<br>**起始版本：** 12<br><!--Device-HICOLLIE_REMOTE_FAILED = 29800002--><!--Device-HICOLLIE_REMOTE_FAILED = 29800002-End--> |
+| HICOLLIE_INVALID_TIMER_NAME = 29800003 | 无效的计时器名称。<br>**起始版本：** 18<br><!--Device-HICOLLIE_INVALID_TIMER_NAME = 29800003--><!--Device-HICOLLIE_INVALID_TIMER_NAME = 29800003-End--> |
+| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | 无效的函数执行超时时间阈值。<br>**起始版本：** 18<br><!--Device-HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004--><!--Device-HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004-End--> |
+| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | 函数执行超时检测接入进程错误。<br>**起始版本：** 18<br><!--Device-HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005--><!--Device-HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005-End--> |
+| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的计时器id的指针不应为NULL。<br>**起始版本：** 18<br><!--Device-HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006--><!--Device-HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006-End--> |
+| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 上报频率超过限制。<br>**起始版本：** 24<br><!--Device-OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007--><!--Device-OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007-End--> |
 
 ### HiCollie_Flag
 
@@ -88,7 +88,7 @@ enum HiCollie_Flag
 
 定义函数执行超时时发生的动作。
 
-<!--Device-HiCollie_Flag--><!--Device-HiCollie_Flag-End-->
+<!--Device-enum HiCollie_Flag--><!--Device-enum HiCollie_Flag-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiCollie
 
@@ -96,10 +96,10 @@ enum HiCollie_Flag
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HICOLLIE_FLAG_DEFAULT = (~0) | 默认动作，生成日志及执行恢复动作。 |
-| HICOLLIE_FLAG_NOOP = (0) | 仅执行回调函数。 |
-| HICOLLIE_FLAG_LOG = (1 << 0) | 生成日志。 |
-| HICOLLIE_FLAG_RECOVERY = (1 << 1) | 执行恢复动作。 |
+| HICOLLIE_FLAG_DEFAULT = (~0) | 默认动作，生成日志及执行恢复动作。<br><!--Device-HICOLLIE_FLAG_DEFAULT = (~0)--><!--Device-HICOLLIE_FLAG_DEFAULT = (~0)-End--> |
+| HICOLLIE_FLAG_NOOP = (0) | 仅执行回调函数。<br><!--Device-HICOLLIE_FLAG_NOOP = (0)--><!--Device-HICOLLIE_FLAG_NOOP = (0)-End--> |
+| HICOLLIE_FLAG_LOG = (1 << 0) | 生成日志。<br><!--Device-HICOLLIE_FLAG_LOG = (1 << 0)--><!--Device-HICOLLIE_FLAG_LOG = (1 << 0)-End--> |
+| HICOLLIE_FLAG_RECOVERY = (1 << 1) | 执行恢复动作。<br><!--Device-HICOLLIE_FLAG_RECOVERY = (1 << 1)--><!--Device-HICOLLIE_FLAG_RECOVERY = (1 << 1)-End--> |
 
 ### OH_HiCollie_Freeze_Type
 
@@ -111,7 +111,7 @@ enum OH_HiCollie_Freeze_Type
 
 定义FreezeCallback返回的冻屏事件类型。
 
-<!--Device-OH_HiCollie_Freeze_Type--><!--Device-OH_HiCollie_Freeze_Type-End-->
+<!--Device-enum OH_HiCollie_Freeze_Type--><!--Device-enum OH_HiCollie_Freeze_Type-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiCollie
 
@@ -119,14 +119,14 @@ enum OH_HiCollie_Freeze_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_THREAD_BLOCK_3S | 主线程超时一个周期。<br>**起始版本：** 24 |
-| OH_THREAD_BLOCK_6S | 主线程超时两个周期。<br>**起始版本：** 24 |
-| OH_LIFECYCLE_HALF_TIMEOUT | Ability生命周期超时一个周期。<br>**起始版本：** 24 |
-| OH_LIFECYCLE_TIMEOUT | Ability生命周期超时两个周期。<br>**起始版本：** 24 |
-| OH_APP_INPUT_BLOCK | 输入事件超时。<br>**起始版本：** 24 |
-| OH_BUSINESS_THREAD_BLOCK_3S | 通过[OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report)上报3秒冻屏事件。<br>**起始版本：** 24 |
-| OH_BUSINESS_THREAD_BLOCK_6S | 通过[OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report)上报6秒冻屏事件。<br>**起始版本：** 24 |
-| OH_BUSINESS_INPUT_BLOCK | 通过[OH_HiCollie_ReportInputBlock](capi-hicollie-h.md#oh_hicollie_reportinputblock)上报冻屏事件。<br>**起始版本：** 24 |
+| OH_THREAD_BLOCK_3S | 主线程超时一个周期。<br>**起始版本：** 24<br><!--Device-OH_THREAD_BLOCK_3S--><!--Device-OH_THREAD_BLOCK_3S-End--> |
+| OH_THREAD_BLOCK_6S | 主线程超时两个周期。<br>**起始版本：** 24<br><!--Device-OH_THREAD_BLOCK_6S--><!--Device-OH_THREAD_BLOCK_6S-End--> |
+| OH_LIFECYCLE_HALF_TIMEOUT | Ability生命周期超时一个周期。<br>**起始版本：** 24<br><!--Device-OH_LIFECYCLE_HALF_TIMEOUT--><!--Device-OH_LIFECYCLE_HALF_TIMEOUT-End--> |
+| OH_LIFECYCLE_TIMEOUT | Ability生命周期超时两个周期。<br>**起始版本：** 24<br><!--Device-OH_LIFECYCLE_TIMEOUT--><!--Device-OH_LIFECYCLE_TIMEOUT-End--> |
+| OH_APP_INPUT_BLOCK | 输入事件超时。<br>**起始版本：** 24<br><!--Device-OH_APP_INPUT_BLOCK--><!--Device-OH_APP_INPUT_BLOCK-End--> |
+| OH_BUSINESS_THREAD_BLOCK_3S | 通过[OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report)上报3秒冻屏事件。<br>**起始版本：** 24<br><!--Device-OH_BUSINESS_THREAD_BLOCK_3S--><!--Device-OH_BUSINESS_THREAD_BLOCK_3S-End--> |
+| OH_BUSINESS_THREAD_BLOCK_6S | 通过[OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report)上报6秒冻屏事件。<br>**起始版本：** 24<br><!--Device-OH_BUSINESS_THREAD_BLOCK_6S--><!--Device-OH_BUSINESS_THREAD_BLOCK_6S-End--> |
+| OH_BUSINESS_INPUT_BLOCK | 通过[OH_HiCollie_ReportInputBlock](capi-hicollie-h.md#oh_hicollie_reportinputblock)上报冻屏事件。<br>**起始版本：** 24<br><!--Device-OH_BUSINESS_INPUT_BLOCK--><!--Device-OH_BUSINESS_INPUT_BLOCK-End--> |
 
 
 ## 函数说明

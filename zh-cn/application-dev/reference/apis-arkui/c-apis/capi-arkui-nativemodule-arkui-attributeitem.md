@@ -24,9 +24,9 @@ typedef struct ArkUI_AttributeItem {...} ArkUI_AttributeItem
 
 | 名称 | 描述 |
 | -- | -- |
-| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value | 数值数组。<br>**起始版本：** 12 |
-| int32_t size | 数值数组长度。<br>**起始版本：** 12 |
-| const char* string | 字符串参数。<br>**起始版本：** 12 |
-| void* object | 对象参数。<br>**起始版本：** 12 |
+| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value | 数值数组。<br>**起始版本：** 12<br><!--Device-const ArkUI_NumberValue* value--><!--Device-const ArkUI_NumberValue* value-End--> |
+| int32_t size | 数值数组长度。<br>**起始版本：** 12<br><!--Device-int32_t size--><!--Device-int32_t size-End--> |
+| const char* string | 字符串参数。<br>**起始版本：** 12<br><!--Device-const char* string--><!--Device-const char* string-End--> |
+| void* object | 对象参数。<br>**起始版本：** 12<br><!--Device-void* object--><!--Device-void* object-End--> |
 
 

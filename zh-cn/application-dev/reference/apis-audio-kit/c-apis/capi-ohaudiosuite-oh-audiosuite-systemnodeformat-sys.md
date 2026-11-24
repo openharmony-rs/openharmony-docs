@@ -26,10 +26,10 @@ typedef struct OH_AudioSuite_SystemNodeFormat {...} OH_AudioSuite_SystemNodeForm
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | 音频流采样率。<br>**起始版本：** 26.0.0 |
-| [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout) channelLayout | 音频流声道布局。<br>**起始版本：** 26.0.0 |
-| uint32_t channelCount | 音频流声道个数。<br>**起始版本：** 26.0.0 |
-| int32_t encoding | 音频流编码类型。取值为1或者9，1表示PCM编码格式，9表示PCM与MetaData混合音频数据。<br>**起始版本：** 26.0.0 |
-| [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | 音频流采样格式。<br>**起始版本：** 26.0.0 |
+| [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | 音频流采样率。<br>**起始版本：** 26.0.0<br><!--Device-OH_Audio_SampleRate samplingRate--><!--Device-OH_Audio_SampleRate samplingRate-End--> |
+| [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout) channelLayout | 音频流声道布局。<br>**起始版本：** 26.0.0<br><!--Device-OH_AudioChannelLayout channelLayout--><!--Device-OH_AudioChannelLayout channelLayout-End--> |
+| uint32_t channelCount | 音频流声道个数。<br>**起始版本：** 26.0.0<br><!--Device-uint32_t channelCount--><!--Device-uint32_t channelCount-End--> |
+| int32_t encoding | 音频流编码类型。取值为1或者9，1表示PCM编码格式，9表示PCM与MetaData混合音频数据。<br>**起始版本：** 26.0.0<br><!--Device-int32_t encoding--><!--Device-int32_t encoding-End--> |
+| [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | 音频流采样格式。<br>**起始版本：** 26.0.0<br><!--Device-OH_Audio_SampleFormat sampleFormat--><!--Device-OH_Audio_SampleFormat sampleFormat-End--> |
 
 
