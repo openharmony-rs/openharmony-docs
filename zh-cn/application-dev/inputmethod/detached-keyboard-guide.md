@@ -1,4 +1,4 @@
-# 分离键盘开发指南
+# 适配分离键盘
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
@@ -10,7 +10,11 @@
 
 在大屏设备（折叠屏展开态、平板）上，用户双手握持设备两侧打字时，传统底部固定键盘无法满足舒适的握持体验。分离键盘（FLAG_DETACHED）将软键盘左右分离、中间镂空，双手自然落在分离键盘上，中间区域可显示更多应用内容。
 
-本指南在已实现一个输入法应用的前提下，介绍如何适配分离键盘，包括切换分离态、分离态布局、热区设置、键盘拖动等功能。
+本指南在已实现一个输入法应用的前提下，介绍如何适配分离键盘，包括切换面板到分离态、设置分离态UI布局、设置分离态热区、拖动分离态键盘、切换回固定态等功能。
+
+## 约束与限制
+
+分离态键盘从API 26.1.0开始支持。在输入法应用已经创建面板的情况下，可以切换面板状态到分离态，分离态键盘面板宽度会自动调整为屏幕宽度，只能纵向移动。
 
 ## 框架原理
 
@@ -30,7 +34,7 @@
 
 ### 切换面板到分离态
 
-输入法应用创建SOFT_KEYBOARD类型面板后，可以调用[changeFlag](../reference/apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)或[updatePanelRectSync](../reference/apis-ime-kit/js-apis-inputmethodengine.md#updatepanelrectsync)将面板切换至分离态。切换成功后，面板宽度自动等于屏幕宽度，无需手动设置，建议使用updatePanelRectSync同时切换PanelFlag和设置键盘窗口高度。
+在实现一个输入法应用，并创建SOFT_KEYBOARD类型面板后，可以调用[changeFlag](../reference/apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)或[updatePanelRectSync](../reference/apis-ime-kit/js-apis-inputmethodengine.md#updatepanelrectsync)将面板切换至分离态。切换成功后，面板宽度自动等于屏幕宽度，无需手动设置，建议使用updatePanelRectSync同时切换PanelFlag和设置键盘窗口高度。
 
 ArkTS-Dyn示例：
 
@@ -92,66 +96,21 @@ public switchToDetachedPanel(): void {
 }
 ```
 
-
 ArkTS-Sta示例：
 
 <!-- @[input_case_detached_switchToDetachedPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
-``` TypeScript
-public switchToDetachedPanel(): void {
-  if (this.mPanel === undefined) {
-    this.addLog('switchToDetachedPanel panel is undefined');
-    return;
-  }
-  let dis: display.Display | undefined = undefined;
-  try {
-    dis = display.getDefaultDisplaySync();
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToDetachedPanel get display catch error: ${error.code} ${error.message}`);
-    return;
-  }
-  if (dis === undefined) {
-    this.addLog('switchToDetachedPanel display is undefined');
-    return;
-  }
-  let screenWidth = Double.toInt(dis.width);
-  let screenHeight = Double.toInt(dis.height);
-  if (dis.width > dis.height) {
-    screenWidth = Double.toInt(dis.height);
-    screenHeight = Double.toInt(dis.width);
-  }
-  let detachedHeight: int = Double.toInt(screenHeight * KEYBOARD_DETACHED_HEIGHT_RATE);
-  let landHeight: int = Double.toInt(screenWidth * KEYBOARD_DETACHED_HEIGHT_RATE);
-  let landscapeRect: window.Rect = {
-    left: 0,
-    top: screenWidth - landHeight,
-    width: screenHeight,
-    height: landHeight
-  };
-  let portraitRect: window.Rect = {
-    left: 0,
-    top: screenHeight - detachedHeight,
-    width: screenWidth,
-    height: detachedHeight
-  };
-  let panelRect: inputMethodEngine.PanelRect = {
-    landscapeRect: landscapeRect,
-    portraitRect: portraitRect
-  };
-  try {
-    this.mPanel!.updatePanelRectSync(inputMethodEngine.PanelFlag.FLAG_DETACHED, panelRect);
-    this.mPanelWidth = screenWidth;
-    this.mPanelHeight = dis.width > dis.height ? landHeight : detachedHeight;
-    this.addLog(`switchToDetachedPanel success, width = ${dis.width}, height = ${detachedHeight}`);
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToDetachedPanel catch error: ${error.code} ${error.message}`);
-  }
-  // 将左右两半键盘区域设置为热区，中间透明区域不接收输入事件
-  this.refreshSplitHotZone(this.mPanelWidth, detachedHeight);
-}
-```
+### 设置分离态UI布局
+
+分离态下，键盘UI需要根据`isSplitKeyboard`状态切换布局：左右两半键盘区域+中间透明镂空区域。键盘根组件背景在分离态下设为透明，使中间镂空区域可穿透显示下层应用内容。
+
+ArkTS-Dyn示例：
+
+<!-- @[input_case_detached_detached_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/components/KeyMenu.ets) -->
+
+ArkTS-Sta示例：
+
+<!-- @[input_case_detached_detached_ui](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/components/KeyMenu.ets) -->
 
 
 ### 设置分离态热区
@@ -162,67 +121,12 @@ ArkTS-Dyn示例：
 
 <!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
-``` TypeScript
-// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
-public refreshSplitHotZone(width: number, height: number): void {
-  if (this.mPanel === undefined) {
-    this.addLog('refreshSplitHotZone panel is undefined');
-    return;
-  }
-  if (width <= 0 || height <= 0) {
-    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
-    return;
-  }
-  let halfWidth = Math.floor(width * KEYBOARD_SPLIT_WIDTH_RATE);
-  let inputRegion: window.Rect[] = [
-    { left: 0, top: 0, width: halfWidth, height: height },
-    { left: width - halfWidth, top: 0, width: halfWidth, height: height }
-  ];
-  try {
-    this.mPanel.updateRegion(inputRegion);
-    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
 ArkTS-Sta示例：
 
 <!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
-``` TypeScript
-// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
-public refreshSplitHotZone(width: int, height: int): void {
-  if (this.mPanel === undefined) {
-    this.addLog('refreshSplitHotZone panel is undefined');
-    return;
-  }
-  if (width <= 0 || height <= 0) {
-    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
-    return;
-  }
-  let halfWidth: int = Double.toInt(width * KEYBOARD_SPLIT_WIDTH_RATE);
-  let w: int = width;
-  let h: int = height;
-  let inputRegion: Array<window.Rect> = [
-    { left: 0, top: 0, width: halfWidth, height: h },
-    { left: w - halfWidth, top: 0, width: halfWidth, height: h }
-  ];
-  try {
-    this.mPanel!.updateRegion(inputRegion);
-    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
-  }
-}
-```
 
-
-### 分离态键盘拖动
+### 拖动分离态键盘
 
 分离态面板支持通过[startMoving](../reference/apis-ime-kit/js-apis-inputmethodengine.md#startmoving15)启动拖动模式。
 
@@ -232,485 +136,10 @@ ArkTS-Dyn示例：
 
 <!-- @[input_case_detached_startMovingPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
-``` TypeScript
-public startMovingPanel(): void {
-  if (this.mPanel === undefined) {
-    this.addLog('startMovingPanel panel is undefined');
-    return;
-  }
-  try {
-    this.mPanel.startMoving();
-    this.addLog('startMovingPanel success');
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`startMovingPanel catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
 ArkTS-Sta示例：
 
 <!-- @[input_case_detached_startMovingPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
-``` TypeScript
-public startMovingPanel(): void {
-  if (this.mPanel === undefined) {
-    this.addLog('startMovingPanel panel is undefined');
-    return;
-  }
-  try {
-    this.mPanel!.startMoving();
-    this.addLog('startMovingPanel success');
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`startMovingPanel catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
-### 分离态UI布局
-
-分离态下，键盘UI需要根据`isSplitKeyboard`状态切换布局：左右两半键盘区域+中间透明镂空区域。键盘根组件背景在分离态下设为透明，使中间镂空区域可穿透显示下层应用内容。
-
-ArkTS-Dyn示例：
-
-<!-- @[input_case_detached_detached_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/components/KeyMenu.ets) -->
-
-``` TypeScript
-// 分体键盘左半部分
-@Builder
-splitLeft() {
-  Column({ space: this.inputStyle.keyGap }) {
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(0, 5), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(10, 15), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      Stack() {
-        Image($rawfile(this.keyState === KeyState.ONCE_UPPER_CASE ? 'shift light.svg' : this.keyState === KeyState.UPPER_CASE ? 'shift light long.svg' : 'shift.svg'))
-          .width(this.inputStyle.featurePicSize)
-          .height(this.inputStyle.featurePicSize)
-      }
-      .backgroundColor($r('app.color.key_item_gray'))
-      .borderRadius(4)
-      .onClick(() => {
-        if (this.keyState === KeyState.LOWER_CASE) {
-          this.keyState = KeyState.ONCE_UPPER_CASE;
-        } else if (this.keyState === KeyState.ONCE_UPPER_CASE) {
-          this.keyState = KeyState.UPPER_CASE;
-        } else if (this.keyState === KeyState.UPPER_CASE) {
-          this.keyState = KeyState.LOWER_CASE;
-        }
-      })
-      .height('100%')
-      .layoutWeight(1.5)
-      .shadow({ radius: 1, color: $r('app.color.shadow'), offsetY: 3 })
-      .stateStyles({
-        normal: normalStyles, pressed: pressedStyles
-      })
-
-      ForEach(this.keyList.slice(19, 23), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      KeyItem({ keyValue: { content: ',', title: ',', upperContent: ',' } })
-      SpaceItem({ spaceWeight: 2.5 })
-    }
-    .width('100%')
-    .layoutWeight(1)
-  }
-  .width('40%')
-  .height('100%')
-  .backgroundColor(this.styleMode === 1 ? '#D5D8DD' : '#ffffff')
-  .borderRadius(16)
-  .padding(this.inputStyle.keyGap)
-}
-
-// 分体键盘右半部分
-@Builder
-splitRight() {
-  Column({ space: this.inputStyle.keyGap }) {
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(5, 10), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(15, 19), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(23), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-      DeleteItem()
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      KeyItem({ keyValue: { content: '.', title: '.', upperContent: '.' } })
-      ReturnItem({ returnWeight: 2 })
-    }
-    .width('100%')
-    .layoutWeight(1)
-  }
-  .width('40%')
-  .height('100%')
-  .backgroundColor(this.styleMode === 1 ? '#D5D8DD' : '#ffffff')
-  .borderRadius(16)
-  .padding(this.inputStyle.keyGap)
-}
-
-build() {
-  if (this.isSplitKeyboard) {
-    Column() {
-      Row() {
-        this.splitLeft()
-        Column()
-          .layoutWeight(1)
-          .height('100%')
-        this.splitRight()
-      }
-      .width('100%')
-      .layoutWeight(1)
-      .padding({
-        left: this.inputStyle.paddingLeftRight,
-        right: this.inputStyle.paddingLeftRight
-      })
-    }
-    .width('100%')
-    .height('100%')
-  } else {
-    Column() {
-      Column({ space: this.inputStyle.keyGap }) {
-      Row({ space: this.inputStyle.keyGap }) {
-        ForEach(this.keyList.slice(0, 10), (item: keySourceListType) => {
-          KeyItemNumber({ keyValue: item })
-        }, (item: keySourceListType) => item.content)
-      }
-      .width('100%')
-      .layoutWeight(1)
-
-      Row({ space: this.inputStyle.keyGap }) {
-        Stack() {
-        }.layoutWeight(0.5)
-
-        ForEach(this.keyList.slice(10, 19), (item: keySourceListType) => {
-          KeyItemNumber({ keyValue: item })
-        }, (item: keySourceListType) => item.content)
-        Stack() {
-        }.layoutWeight(0.5)
-      }
-      .width('100%')
-      .layoutWeight(1)
-
-      Row({ space: this.inputStyle.keyGap }) {
-        Stack() {
-          Image($rawfile(this.keyState === KeyState.ONCE_UPPER_CASE ? 'shift light.svg' : this.keyState === KeyState.UPPER_CASE ? 'shift light long.svg' : 'shift.svg'))
-            .width(this.inputStyle.featurePicSize)
-            .height(this.inputStyle.featurePicSize)
-        }
-        .backgroundColor($r('app.color.key_item_gray'))
-        .borderRadius(4)
-        .onClick(() => {
-          if (this.keyState === KeyState.LOWER_CASE) {
-            this.keyState = KeyState.ONCE_UPPER_CASE;
-          } else if (this.keyState === KeyState.ONCE_UPPER_CASE) {
-            this.keyState = KeyState.UPPER_CASE;
-          } else if (this.keyState === KeyState.UPPER_CASE) {
-            this.keyState = KeyState.LOWER_CASE;
-          }
-        })
-        .height('100%')
-        .layoutWeight(1.5)
-        .shadow({ radius: 1, color: $r('app.color.shadow'), offsetY: 3 })
-        .stateStyles({
-          normal: normalStyles, pressed: pressedStyles
-        })
-
-        ForEach(this.keyList.slice(19), (item: keySourceListType) => {
-          KeyItemNumber({ keyValue: item })
-        }, (item: keySourceListType) => item.content)
-        DeleteItem()
-      }
-      .width('100%')
-      .layoutWeight(1)
-
-      Row({ space: this.inputStyle.keyGap }) {
-        KeyItem({ keyValue: { content: ',', title: ',', upperContent: ',' } })
-        SpaceItem({ spaceWeight: 5 })
-        KeyItem({ keyValue: { content: '.', title: '.', upperContent: '.' } })
-        ReturnItem({ returnWeight: 2.5 })
-      }
-      .width('100%')
-      .layoutWeight(1)
-
-    }
-    .width('100%')
-    .layoutWeight(1)
-    .padding({
-      left: this.inputStyle.paddingLeftRight,
-      right: this.inputStyle.paddingLeftRight,
-      top: this.inputStyle.keyGap,
-      bottom: this.inputStyle.keyGap
-    })
-    .backgroundColor(this.styleMode === 1 ? '' : '#ffffff')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-<!-- @[input_case_detached_detached_ui](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/components/KeyMenu.ets) -->
-
-``` TypeScript
-// 分体键盘左半部分
-@Builder
-splitLeft(): void {
-  Column({ space: this.inputStyle.keyGap }) {
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(0, 5), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(10, 15), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      Stack() {
-        Image($rawfile(this.keyState === KeyState.ONCE_UPPER_CASE ? 'shift light.svg' : this.keyState === KeyState.UPPER_CASE ? 'shift light long.svg' : 'shift.svg'))
-          .width(this.inputStyle.featurePicSize)
-          .height(this.inputStyle.featurePicSize)
-      }
-      .backgroundColor($r('app.color.key_item_gray'))
-      .borderRadius(4)
-      .onClick((e: ClickEvent): void => {
-        if (this.keyState === KeyState.LOWER_CASE) {
-          this.keyState = KeyState.ONCE_UPPER_CASE;
-        } else if (this.keyState === KeyState.ONCE_UPPER_CASE) {
-          this.keyState = KeyState.UPPER_CASE;
-        } else if (this.keyState === KeyState.UPPER_CASE) {
-          this.keyState = KeyState.LOWER_CASE;
-        }
-      })
-      .height('100%')
-      .layoutWeight(1.5)
-      .shadow({ radius: 1, color: $r('app.color.shadow'), offsetY: 3 } as ShadowOptions)
-      .stateStyles({
-        normal: () => {
-          this.backgroundColor($r('app.color.key_item_gray'))
-        },
-        pressed: () => {
-          this.backgroundColor($r('app.color.key_item_gray_pressed'))
-        }
-      } as StateStyles)
-
-      ForEach(this.keyList.slice(19, 23), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      KeyItem({ keyValue: { content: ',', title: ',', upperContent: ',' } })
-      SpaceItem({ spaceWeight: 2.5 })
-    }
-    .width('100%')
-    .layoutWeight(1)
-  }
-  .width('40%')
-  .height('100%')
-  .backgroundColor(this.styleMode === 1 ? '#D5D8DD' : '#ffffff')
-  .borderRadius(16)
-  .padding(this.inputStyle.keyGap)
-}
-
-// 分体键盘右半部分
-@Builder
-splitRight(): void {
-  Column({ space: this.inputStyle.keyGap }) {
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(5, 10), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(15, 19), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      ForEach(this.keyList.slice(23), (item: keySourceListType) => {
-        KeyItemNumber({ keyValue: item })
-      }, (item: keySourceListType) => item.content)
-      DeleteItem()
-    }
-    .width('100%')
-    .layoutWeight(1)
-
-    Row({ space: this.inputStyle.keyGap }) {
-      KeyItem({ keyValue: { content: '.', title: '.', upperContent: '.' } })
-      ReturnItem({ returnWeight: 2 })
-    }
-    .width('100%')
-    .layoutWeight(1)
-  }
-  .width('40%')
-  .height('100%')
-  .backgroundColor(this.styleMode === 1 ? '#D5D8DD' : '#ffffff')
-  .borderRadius(16)
-  .padding(this.inputStyle.keyGap)
-}
-
-build(): void {
-  if (this.isSplitKeyboard) {
-    Column() {
-      Row() {
-        this.splitLeft()
-        Column()
-          .layoutWeight(1)
-          .height('100%')
-        this.splitRight()
-      }
-      .width('100%')
-      .layoutWeight(1)
-      .padding({
-        left: this.inputStyle.paddingLeftRight,
-        right: this.inputStyle.paddingLeftRight
-      })
-    }
-    .width('100%')
-    .height('100%')
-  } else {
-    Column() {
-      Column({ space: this.inputStyle.keyGap }) {
-        Row({ space: this.inputStyle.keyGap }) {
-          ForEach(this.keyList.slice(0, 10), (item: keySourceListType) => {
-            KeyItemNumber({ keyValue: item })
-          }, (item: keySourceListType) => item.content)
-        }
-        .width('100%')
-        .layoutWeight(1)
-
-        Row({ space: this.inputStyle.keyGap }) {
-          Stack() {
-          }.layoutWeight(0.5)
-
-          ForEach(this.keyList.slice(10, 19), (item: keySourceListType) => {
-            KeyItemNumber({ keyValue: item })
-          }, (item: keySourceListType) => item.content)
-          Stack() {
-          }.layoutWeight(0.5)
-        }
-        .width('100%')
-        .layoutWeight(1)
-
-        Row({ space: this.inputStyle.keyGap }) {
-          Stack() {
-            Image($rawfile(this.keyState === KeyState.ONCE_UPPER_CASE ? 'shift light.svg' : this.keyState === KeyState.UPPER_CASE ? 'shift light long.svg' : 'shift.svg'))
-              .width(this.inputStyle.featurePicSize)
-              .height(this.inputStyle.featurePicSize)
-          }
-          .backgroundColor($r('app.color.key_item_gray'))
-          .borderRadius(4)
-          .onClick((e: ClickEvent): void => {
-            if (this.keyState === KeyState.LOWER_CASE) {
-              this.keyState = KeyState.ONCE_UPPER_CASE;
-            } else if (this.keyState === KeyState.ONCE_UPPER_CASE) {
-              this.keyState = KeyState.UPPER_CASE;
-            } else if (this.keyState === KeyState.UPPER_CASE) {
-              this.keyState = KeyState.LOWER_CASE;
-            }
-          })
-          .height('100%')
-          .layoutWeight(1.5)
-          .shadow({ radius: 1, color: $r('app.color.shadow'), offsetY: 3 } as ShadowOptions)
-          .stateStyles({
-            normal: () => {
-              this.backgroundColor($r('app.color.key_item_gray'))
-            },
-            pressed: () => {
-              this.backgroundColor($r('app.color.key_item_gray_pressed'))
-            }
-          } as StateStyles)
-
-          ForEach(this.keyList.slice(19), (item: keySourceListType) => {
-            KeyItemNumber({ keyValue: item })
-          }, (item: keySourceListType) => item.content)
-          DeleteItem()
-        }
-        .width('100%')
-        .layoutWeight(1)
-
-        Row({ space: this.inputStyle.keyGap }) {
-          KeyItem({ keyValue: { content: ',', title: ',', upperContent: ',' } })
-          SpaceItem({ spaceWeight: 5 })
-          KeyItem({ keyValue: { content: '.', title: '.', upperContent: '.' } })
-          ReturnItem({ returnWeight: 2.5 })
-        }
-        .width('100%')
-        .layoutWeight(1)
-
-      }
-      .width('100%')
-      .layoutWeight(1)
-      .padding({
-        left: this.inputStyle.paddingLeftRight,
-        right: this.inputStyle.paddingLeftRight,
-        top: this.inputStyle.keyGap,
-        bottom: this.inputStyle.keyGap
-      })
-      .backgroundColor(this.styleMode === 1 ? '' : '#ffffff')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ### 切换回固定态
 
@@ -720,136 +149,9 @@ ArkTS-Dyn示例：
 
 <!-- @[input_case_detached_switchToFixedPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
-``` TypeScript
-public switchToFixedPanel(): void {
-  if (this.mPanel === undefined) {
-    this.addLog('switchToFixedPanel panel is undefined');
-    return;
-  }
-  let dis: display.Display | undefined = undefined;
-  try {
-    dis = display.getPrimaryDisplaySync();
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToFixedPanel get display catch error: ${error.code} ${error.message}`);
-    return;
-  }
-  if (dis === undefined) {
-    this.addLog('switchToFixedPanel display is undefined');
-    return;
-  }
-  let screenWidth = dis.width;
-  let screenHeight = dis.height;
-  if (dis.width > dis.height) {
-    screenWidth = dis.height;
-    screenHeight = dis.width;
-  }
-  let keyHeight = Math.floor(screenHeight * KEYBOARD_HEIGHT_RATE_PHONE);
-  let landHeight = Math.floor(screenWidth * KEYBOARD_HEIGHT_RATE_PHONE)
-  let landscapeRect: window.Rect = {
-    left: 0,
-    top: screenWidth - landHeight,
-    width: screenHeight,
-    height: landHeight
-  };
-  let portraitRect: window.Rect = {
-    left: 0,
-    top: screenHeight - keyHeight,
-    width: screenWidth,
-    height: keyHeight
-  };
-  let panelRect: inputMethodEngine.PanelRect = {
-    landscapeRect: landscapeRect,
-    portraitRect: portraitRect
-  };
-  try {
-    this.mPanel.updatePanelRectSync(inputMethodEngine.PanelFlag.FLG_FIXED, panelRect);
-    this.addLog(`switchToFixedPanel success`);
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToFixedPanel catch error: ${error.code} ${error.message}`);
-  }
-  // 恢复普通键盘后，将热区重置为整个面板区域
-  let inputRegion: window.Rect[] = [
-    { left: 0, top: 0, width: dis.width, height: keyHeight }
-  ];
-  try {
-    this.mPanel.updateRegion(inputRegion);
-    this.addLog('switchToFixedPanel updateRegion success');
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToFixedPanel updateRegion catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
 ArkTS-Sta示例：
 
 <!-- @[input_case_detached_switchToFixedPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
-``` TypeScript
-public switchToFixedPanel(): void {
-  if (this.mPanel === undefined) {
-    this.addLog('switchToFixedPanel panel is undefined');
-    return;
-  }
-  let dis: display.Display | undefined = undefined;
-  try {
-    dis = display.getDefaultDisplaySync();
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToFixedPanel get display catch error: ${error.code} ${error.message}`);
-    return;
-  }
-  if (dis === undefined) {
-    this.addLog('switchToFixedPanel display is undefined');
-    return;
-  }
-  let screenWidth = Double.toInt(dis.width);
-  let screenHeight = Double.toInt(dis.height);
-  if (dis.width > dis.height) {
-    screenWidth = Double.toInt(dis.height);
-    screenHeight = Double.toInt(dis.width);
-  }
-  let keyHeight: int = Double.toInt(screenHeight * KEYBOARD_HEIGHT_RATE_PHONE);
-  let landHeight: int = Double.toInt(screenWidth * KEYBOARD_HEIGHT_RATE_PHONE);
-  let landscapeRect: window.Rect = {
-    left: 0,
-    top: screenWidth - landHeight,
-    width: screenHeight,
-    height: landHeight
-  };
-  let portraitRect: window.Rect = {
-    left: 0,
-    top: screenHeight - keyHeight,
-    width: screenWidth,
-    height: keyHeight
-  };
-  let panelRect: inputMethodEngine.PanelRect = {
-    landscapeRect: landscapeRect,
-    portraitRect: portraitRect
-  };
-  try {
-    this.mPanel!.updatePanelRectSync(inputMethodEngine.PanelFlag.FLG_FIXED, panelRect);
-    this.addLog(`switchToFixedPanel success`);
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToFixedPanel catch error: ${error.code} ${error.message}`);
-  }
-  // 恢复普通键盘后，将热区重置为整个面板区域
-  let inputRegion: Array<window.Rect> = [
-    { left: 0, top: 0, width: screenWidth, height: keyHeight }
-  ];
-  try {
-    this.mPanel!.updateRegion(inputRegion);
-    this.addLog('switchToFixedPanel updateRegion success');
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`switchToFixedPanel updateRegion catch error: ${error.code} ${error.message}`);
-  }
-}
-```
 
 
 ## 实现效果

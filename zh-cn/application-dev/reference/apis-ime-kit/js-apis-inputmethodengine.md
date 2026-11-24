@@ -7716,7 +7716,7 @@ ArkTS-Sta: getAttachOptions(): AttachOptions | null
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>适用版本：19-19。<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>适用版本：19<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 
 > **注意：**
 >
@@ -7756,7 +7756,7 @@ on(type: 'attachOptionsDidChange', callback: Callback&lt;AttachOptions&gt;): voi
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19-19。 |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>适用版本：19 |
 
 > **注意：**
 >
