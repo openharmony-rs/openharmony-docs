@@ -39,7 +39,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -82,12 +82,12 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey =  aesGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
   function doCmacBySync() {
@@ -137,11 +137,11 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
   <!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
   
   ``` TypeScript
-  
+
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -190,12 +190,12 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey = aesGenerator.convertKeySync(symKeyBlob);
-    console.info('[Sync]convertKey result: success.');
+    console.info('[Sync]convertKeySync result: success.');
     return symKey;
   }
   function doLoopCmacBySync() {
