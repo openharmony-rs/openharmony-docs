@@ -65,11 +65,11 @@ Supported.
 
 
 ```html
-<!-- xxx.hml -->
-<stack class="stack-parent">
-  <div class="back-child bd-radius"></div>
-  <div class="positioned-child bd-radius"></div>
-  <div class="front-child bd-radius"></div>
+</!-- xxx.hml -->
+</stack class="stack-parent">
+  </div class="back-child bd-radius"></div>
+  </div class="positioned-child bd-radius"></div>
+  </div class="front-child bd-radius"></div>
 </stack>
 ```
 
