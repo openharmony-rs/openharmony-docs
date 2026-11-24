@@ -1527,11 +1527,9 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 卷信息详情。
 
-### 属性
-
 **系统接口**：此接口为系统接口。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
 
 | 名称         | 类型    | 只读   | 可选   | 说明                 |
 | ----------- | ------- | ------- | ----- | -------------------- |
@@ -1573,8 +1571,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 磁盘信息详情。
 
-### 属性
-
 **起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1596,8 +1592,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 分区信息详情。
 
-### 属性
-
 **起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1618,8 +1612,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 ## PartitionTableInfo
 
 分区表信息详情。
-
-### 属性
 
 **起始版本**：26.0.0
 
@@ -1643,8 +1635,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 
 对指定磁盘执行创建分区时所需的参数。
 
-### 属性
-
 **起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1663,8 +1653,6 @@ volumeManager.isVolumeInUse(volumePath).then(() => {
 ## FormatParams
 
 对指定分区执行格式化时所需的参数。
-
-### 属性
 
 **起始版本**：26.0.0
 
