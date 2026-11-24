@@ -5309,7 +5309,7 @@ Input_Result OH_Input_EventHandler_Create(OH_Input_EventTypeMask mask, OH_Input_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_EventHandler_Create 函数返回值。<br> [INPUT_SUCCESS](#input_result)创建handler成功。<br> [INPUT_PERMISSION_DENIED](#input_result)权限校验失败。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：mask为0、onEventFunc为NULL、onDisabledFunc为NULL、handler为NULL，或mask包含不支持的位。<br> [INPUT_DEVICE_NOT_SUPPORTED](#input_result)功能不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_EventHandler_Create函数返回值。<br> [INPUT_SUCCESS](#input_result)创建handler成功。<br> [INPUT_PERMISSION_DENIED](#input_result)权限校验失败。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：mask为0、onEventFunc为NULL、onDisabledFunc为NULL、handler为NULL，或mask包含不支持的位。<br> [INPUT_DEVICE_NOT_SUPPORTED](#input_result)功能不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。 |
 
 ### OH_Input_EventHandler_Destroy()
 
@@ -5360,7 +5360,7 @@ Input_Result OH_Input_EventHandler_Enable(OH_Input_EventHandler* handler, bool e
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_EventHandler_Enable 函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL。<br> [INPUT_PERMISSION_DENIED](#input_result)权限校验失败。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。<br> [INPUT_REPEAT_HANDLER](#input_result)该进程内已存在handler。 |
+| [Input_Result](#input_result) | OH_Input_EventHandler_Enable函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL。<br> [INPUT_PERMISSION_DENIED](#input_result)权限校验失败。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。<br> [INPUT_REPEAT_HANDLER](#input_result)该进程内已存在handler。 |
 
 ### OH_Input_EventHandler_IsEnabled()
 
@@ -5388,7 +5388,7 @@ Input_Result OH_Input_EventHandler_IsEnabled(const OH_Input_EventHandler* handle
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_EventHandler_IsEnabled 函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL或enabled为NULL。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_EventHandler_IsEnabled函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL或enabled为NULL。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。 |
 
 ### OH_Input_EventHandler_GetMask()
 
@@ -5416,7 +5416,7 @@ Input_Result OH_Input_EventHandler_GetMask(const OH_Input_EventHandler* handler,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_EventHandler_GetMask 函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL或mask为NULL。 |
+| [Input_Result](#input_result) | OH_Input_EventHandler_GetMask函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL或mask为NULL。 |
 
 ### OH_Input_Event_GetType()
 
@@ -5444,7 +5444,7 @@ Input_Result OH_Input_Event_GetType(const OH_Input_Event* event, OH_Input_EventT
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_Event_GetType 函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL或type为NULL。 |
+| [Input_Result](#input_result) | OH_Input_Event_GetType函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL或type为NULL。 |
 
 ### OH_Input_Event_AsKeyEvent()
 
@@ -5454,7 +5454,7 @@ Input_Result OH_Input_Event_AsKeyEvent(const OH_Input_Event* event, const Input_
 
 **描述**
 
-从输入事件中获取只读的[Input_KeyEvent](capi-input-input-keyevent.md)。仅在事件类型为[OH_INPUT_EVENT_KEY](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于 event。仅在当前调用期间（即 event有效期间）有效。请勿使用[OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent)释放该指针，请勿对其调用 Set* 类函数。请使用现有的Get*访问器（例如[OH_Input_GetKeyEventKeyCode](#oh_input_getkeyeventkeycode)）读取按键事件字段。
+从输入事件中获取只读的[Input_KeyEvent](capi-input-input-keyevent.md)。仅在事件类型为[OH_INPUT_EVENT_KEY](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetKeyEventKeyCode](#oh_input_getkeyeventkeycode)）读取按键事件字段。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -5472,7 +5472,7 @@ Input_Result OH_Input_Event_AsKeyEvent(const OH_Input_Event* event, const Input_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_Event_AsKeyEvent 函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、keyEvent为NULL，或事件类型不是[OH_INPUT_EVENT_KEY](#oh_input_eventtype)。 |
+| [Input_Result](#input_result) | OH_Input_Event_AsKeyEvent函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、keyEvent为NULL，或事件类型不是[OH_INPUT_EVENT_KEY](#oh_input_eventtype)。 |
 
 ### OH_Input_Event_AsMouseEvent()
 
@@ -5482,7 +5482,7 @@ Input_Result OH_Input_Event_AsMouseEvent(const OH_Input_Event* event, const Inpu
 
 **描述**
 
-从输入事件中获取只读的[Input_MouseEvent](capi-input-input-mouseevent.md)。仅在事件类型为[OH_INPUT_EVENT_MOUSE](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于 event。仅在当前调用期间（即 event有效期间）有效。请勿使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)释放该指针，请勿对其调用 Set* 类函数。请使用现有的Get*访问器（例如[OH_Input_GetMouseEventAction](#oh_input_getmouseeventaction)）读取鼠标事件字段。
+从输入事件中获取只读的[Input_MouseEvent](capi-input-input-mouseevent.md)。仅在事件类型为[OH_INPUT_EVENT_MOUSE](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetMouseEventAction](#oh_input_getmouseeventaction)）读取鼠标事件字段。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -5500,7 +5500,7 @@ Input_Result OH_Input_Event_AsMouseEvent(const OH_Input_Event* event, const Inpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_Event_AsMouseEvent 函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、mouseEvent为NULL，或事件类型不是[OH_INPUT_EVENT_MOUSE](#oh_input_eventtype)。 |
+| [Input_Result](#input_result) | OH_Input_Event_AsMouseEvent函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、mouseEvent为NULL，或事件类型不是[OH_INPUT_EVENT_MOUSE](#oh_input_eventtype)。 |
 
 ### OH_Input_Event_AsTouchEvent()
 
@@ -5510,7 +5510,7 @@ Input_Result OH_Input_Event_AsTouchEvent(const OH_Input_Event* event, const Inpu
 
 **描述**
 
-从输入事件中获取只读的[Input_TouchEvent](capi-input-input-touchevent.md)。仅在事件类型为[OH_INPUT_EVENT_TOUCH](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于 event。仅在当前调用期间（即 event有效期间）有效。请勿使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)释放该指针，请勿对其调用 Set* 类函数。请使用现有的Get*访问器（例如[OH_Input_GetTouchEventAction](#oh_input_gettoucheventaction)）读取触摸事件字段。
+从输入事件中获取只读的[Input_TouchEvent](capi-input-input-touchevent.md)。仅在事件类型为[OH_INPUT_EVENT_TOUCH](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetTouchEventAction](#oh_input_gettoucheventaction)）读取触摸事件字段。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -5528,7 +5528,7 @@ Input_Result OH_Input_Event_AsTouchEvent(const OH_Input_Event* event, const Inpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_Event_AsTouchEvent 函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、touchEvent为NULL，或事件类型不是[OH_INPUT_EVENT_TOUCH](#oh_input_eventtype)。 |
+| [Input_Result](#input_result) | OH_Input_Event_AsTouchEvent函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、touchEvent为NULL，或事件类型不是[OH_INPUT_EVENT_TOUCH](#oh_input_eventtype)。 |
 
 ### OH_Input_Event_AsAxisEvent()
 
@@ -5538,7 +5538,7 @@ Input_Result OH_Input_Event_AsAxisEvent(const OH_Input_Event* event, const Input
 
 **描述**
 
-从输入事件中获取只读的[Input_AxisEvent](capi-input-input-axisevent.md)。仅在事件类型为[OH_INPUT_EVENT_AXIS](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于 event。仅在当前调用期间（即 event有效期间）有效。请勿使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)释放该指针，请勿对其调用 Set* 类函数。请使用现有的Get*访问器（例如[OH_Input_GetAxisEventAction](#oh_input_getaxiseventaction)）读取轴事件字段。
+从输入事件中获取只读的[Input_AxisEvent](capi-input-input-axisevent.md)。仅在事件类型为[OH_INPUT_EVENT_AXIS](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetAxisEventAction](#oh_input_getaxiseventaction)）读取轴事件字段。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -5556,4 +5556,4 @@ Input_Result OH_Input_Event_AsAxisEvent(const OH_Input_Event* event, const Input
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_Event_AsAxisEvent 函数错误码。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、axisEvent为NULL，或者事件类型不是[OH_INPUT_EVENT_AXIS](#oh_input_eventtype)。 |
+| [Input_Result](#input_result) | OH_Input_Event_AsAxisEvent函数错误码。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、axisEvent为NULL，或者事件类型不是[OH_INPUT_EVENT_AXIS](#oh_input_eventtype)。 |

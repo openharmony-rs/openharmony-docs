@@ -83,6 +83,7 @@ const OH_Input_Event* OnEvent(OH_Input_EventHandler* handler, const OH_Input_Eve
 void OnDisabled(OH_Input_EventHandler* handler)
 {
     // handler已被禁用，输入事件恢复默认分发；如需继续处理，可重新调用OH_Input_EventHandler_Enable启用
+    // ...
 }
 
 static napi_value CreateAndEnableHandler(napi_env env, napi_callback_info info)
@@ -106,6 +107,7 @@ static napi_value CreateAndEnableHandler(napi_env env, napi_callback_info info)
     // 查询handler的事件类型掩码
     OH_Input_EventTypeMask maskOfHandler = 0;
     ret = OH_Input_EventHandler_GetMask(handler, &maskOfHandler);
+    // ...
     // ...
 }
 ```
@@ -234,6 +236,3 @@ static napi_value DisableAndDestroyHandler(napi_env env, napi_callback_info info
 }
 ```
 
-## 完整示例
-
-- [事件末端拦截再分发（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/InputKit/NDKInputEventHook)
