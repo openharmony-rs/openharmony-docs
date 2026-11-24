@@ -88,6 +88,8 @@ With this permission, the application can obtain the write permission on user fi
 
 Allows an application to interact across local accounts.
 
+<!--RP8--><!--RP8End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -106,6 +108,8 @@ Allows an application to interact across local accounts.
 Allows an application to query the identities (such as names and IDs) of specified or all local accounts.
 
 With this permission, the application can query the identities of specified or all local accounts in the system. Based on the obtained identities, the application can further access or manage the target local accounts.
+
+<!--RP13--><!--RP13End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -222,6 +226,8 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 ## ohos.permission.GET_DOMAIN_ACCOUNTS
 
 Allows an application to obtain domain account information.
+
+<!--RP12--><!--RP12End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -347,6 +353,8 @@ Currently, this permission is available only to 2-in-1 device applications.
 
 Allows an application to obtain domain account server configurations.
 
+<!--RP9--><!--RP9End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -362,6 +370,8 @@ Allows an application to obtain domain account server configurations.
 
 Allows an application to manage domain account server configurations.
 
+<!--RP10--><!--RP10End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -376,6 +386,8 @@ Allows an application to manage domain account server configurations.
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNTS
 
 Allows an application to manage domain accounts.
+
+<!--RP11--><!--RP11End-->
 
 <!--RP2--><!--RP2End-->
 
