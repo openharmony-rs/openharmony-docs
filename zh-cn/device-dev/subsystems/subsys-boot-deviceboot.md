@@ -141,7 +141,7 @@
   | 名称        | 示例                                                         | 说明                                                         |
   | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
   | initrd      | 0x84000000,0x292e00                                          | 参考内核文档。<br/>[ramfs-rootfs-initramfs.rst](https://gitcode.com/openharmony/kernel_linux_5.10/blob/master/Documentation/filesystems/ramfs-rootfs-initramfs.rst)<br/>[initrd.rst](https://gitcode.com/openharmony/kernel_linux_5.10/blob/master/Documentation/admin-guide/initrd.rst) |
-  | init        | /init                                                        |                                                              |
+  | init        | /init                                                        | -                                                            |
   | blkdevparts | mmcblk0:1M(boot),15M(kernel),200M(system),200M(vendor),<br/>2M(misc),20M(updater),-(userdata) | 分区表信息，kernel会根据此信息创建物理分区                 |
   | hardware    | Hi3516DV300、rk3568等                                                  | （必要信息）硬件平台 |
   | root        | /dev/ram0(Hi3516DV300)、root=PARTUUID=614e0000-0000 rw(rk3568)                                                   | kernel加载的启动设备 |
@@ -191,7 +191,7 @@
       > 从此处开始出现的代码是按逻辑顺序展示的关键代码行，不代表其在源码当中真正的相邻关系。
 
       1. 获取required设备信息
-          ```
+          ```c
           Fstab* LoadRequiredFstab(void)
           {
               Fstab *fstab = NULL;
@@ -211,12 +211,12 @@
           以上代码分别展示了获取fstab信息的两种方式，首先调用`LoadFstabFromCommandLine()`，从cmdline中获取fstab信息，如果获取失败，则输出log，表示继续尝试从`fstab.required`文件中获取fstab信息。
 
           对于system分区来说，其读到devices中的关键信息如下所示：
-          ```
+          ```text
           /dev/block/platform/fe310000.sdhci/by-name/system
           ```
 
       2. 创建socket，触发内核上报uevent事件
-         ```
+         ```c
          static int StartUeventd(char **requiredDevices, int num)
          {
              INIT_ERROR_CHECK(requiredDevices != NULL && num > 0, return -1, "Failed parameters");
@@ -232,7 +232,7 @@
          ```
 
       3. 读取cmdline，获得default_boot_device
-         ```
+         ```c
          char *buffer = ReadFileData("/proc/cmdline");
          int ret = GetProcCmdlineValue("default_boot_device", buffer, bootDevice, CMDLINE_VALUE_LEN_MAX);
          INIT_CHECK_ONLY_ELOG(ret == 0, "Failed get default_boot_device value from cmdline");
@@ -240,7 +240,7 @@
          这里取得的`default_boot_device`的值应该是`soc/10100000.himci.eMMC`，也就对应了system分区设备所在目录，这一值存放在了bootDevice这个全局变量当中，将在后续创建system分区设备软链接前进行匹配。
 
       4. 处理required设备uevent事件
-         ```
+         ```c
          if (uevent->partitionName == NULL) {
              INIT_LOGI("Match with %s for %s", devices[i], uevent->syspath);
              deviceName = strstr(devices[i], "/dev/block");
@@ -262,7 +262,7 @@
       5. 创建required设备节点和对应软链接
 
          首先应该格式化对应软链接的路径，这一部分就用到了`bootargs`中`default_boot_device`的值，与上报的required设备节点路径进行匹配，以创建平台无关的可读性更高的指向该设备节点的软链接，关键部分代码如下：
-         ```
+         ```c
          if (STRINGEQUAL(bus, "/sys/bus/platform")) {
              INIT_LOGV("Find a platform device: %s", parent);
              parent = FindPlatformDeviceName(parent);
@@ -281,19 +281,20 @@
          - bus: 这是一个保存了路径信息的字符串，路径是当前处理的设备所连接的总线路径。
          - parent: 同样是一个保存了路径信息的字符串，路径是从`uevent->syspath`取出的当前处理的设备路径。
          - links：事先申请好的指向保存软链接路径内存的指针。
-         - bootDevice: 存放`bootargs`中`default_boot_device`值的字符串。
-         根据代码可知，只有处理到所连接总线类型为platform时的设备才会创建对应软链接，这一软链接所在的目录是：
-         ```
-         /dev/block/platform/soc/10100000.himci.eMMC/by-name
+          - bootDevice: 存放`bootargs`中`default_boot_device`值的字符串。
+
+          根据代码可知，只有处理到所连接总线类型为platform时的设备才会创建对应软链接，这一软链接所在的目录是：
+          ```text
+          /dev/block/platform/soc/10100000.himci.eMMC/by-name
          ```
          而只有匹配到设备目录为bootDevice中路径的设备时，才会创建平台无关目录的软链接。
 
-         对于system分区设备来说，其所在目录如下：
-         ```
+          对于system分区设备来说，其所在目录如下：
+         ```text
          /sys/devices/platform/soc/10100000.himci.eMMC/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p5
          ```
-         因此在处理内核上报的该设备uevent消息时，会与bootDevice中的路径`soc/10100000.himci.eMMC`相匹配，因此而创建相应的软链接，这一软链接的路径是：
-         ```
+          因此在处理内核上报的该设备uevent消息时，会与bootDevice中的路径`soc/10100000.himci.eMMC`相匹配，因此而创建相应的软链接，这一软链接的路径是：
+         ```text
          /dev/block/by-name/system
          ```
 
@@ -301,9 +302,9 @@
 
       6. 挂载required分区
 
-         设备节点创建完成后，即可挂载对应分区，主要接口如下：
-         ```
-          int MountRequiredPartitions(const Fstab *fstab)
+          设备节点创建完成后，即可挂载对应分区，主要接口如下：
+         ```c
+         int MountRequiredPartitions(const Fstab *fstab)
           {
               INIT_ERROR_CHECK(fstab != NULL, return -1, "Failed fstab is NULL");
               int rc;
@@ -313,19 +314,19 @@
           }
          ```
          因此，当我们看到"Mount required partitions"打印的时候，表示required分区设备已经准备完成，即将执行挂载动作。分区挂载过程中，还有一些关键打印如下：
-         ```
+         ```c
          BEGET_LOGE("Unsupported file system \" %s \"", item->fsType);
          ```
          表示当前文件系统类型不支持。
-         ```
+         ```c
          BEGET_LOGE("Cannot get stat of \" %s \", err = %d", target, errno);
          ```
          表示无法获取挂载点目录信息。
-         ```
+         ```c
          BEGET_LOGE("Failed to create dir \" %s \", err = %d", target, errno);
          ```
          表示无法创建挂载点目录。
-         ```
+         ```c
          BEGET_LOGI("Mount %s to %s successful", item->deviceName, item->mountPoint);
          ```
          表示成功挂载设备，打印中还包含了挂载的设备名和挂载点信息。
@@ -338,7 +339,7 @@
 
 - 文件内容
 
-  ```
+  ```text
   # fstab file.
   #<src>      <mnt_point> <type>  <mnt_flags and options>   <fs_mgr_flags>
   /dev/block/platform/fe310000.sdhci/by-name/system    /usr       ext4     ro,barrier=1  wait,required
@@ -360,7 +361,7 @@
 
 - mnt_flags and options 参数说明
 
-  ```
+  ```text
   auto 在启动时或键入mount -a命令时自动挂载
   noauto 开机不自动挂载，不再使用mount -a命令（例如系统启动时）加载该文件系统
   exec 允许执行此分区的二进制文件
@@ -401,7 +402,7 @@ OpenHarmony现支持A/B双分区启动（主备系统分区），即在设备的
   bootslots是指当前支持的启动分区个数，当前bootslots的值被设置为2，表示支持A/B双系统分区启动，如果该值为1，则表示不支持A/B分区启动，仅可从默认系统分区启动。
 
   init启动的第一阶段将会读取bootslots值，根据该值判断当前系统是否支持A/B分区，若不支持，则按照默认fstab挂载系统分区；若支持，则继续判断本次启动需要挂载哪一套系统分区。init获取bootslots的主要接口如下：
-  ```
+  ```c
   int GetBootSlots(void)
   {
       int bootSlots = GetSlotInfoFromParameter("bootslots");
@@ -411,7 +412,7 @@ OpenHarmony现支持A/B双分区启动（主备系统分区），即在设备的
   }
   ```
   在系统正常启动后，用户可以在控制台通过系统参数`ohos.boot.bootslots`来获取`bootslots`的值，以查看当前系统是否支持A/B分区启动。获取该系统参数的具体命令如下：
-  ```
+  ```shell
   param get ohos.boot.bootslots
   ```
 
@@ -420,7 +421,7 @@ OpenHarmony现支持A/B双分区启动（主备系统分区），即在设备的
   currentslot是指当前启动的系统分区，比如A分区或B分区。currentslot的值使用数字表示，比如数字1表示当前启动A分区，数字2表示当前启动B分区。
 
   init在启动的第一阶段通过bootslots判断系统是否支持A/B分区，若不支持，将不再获取`currentslot`值，直接启动默认系统分区；若支持，将会继续获取`currentslot`值，根据该值判断当前启动的系统分区为A分区或B分区。init获取`currentslot`的主要接口如下：
-  ```
+  ```c
   int GetCurrentSlot(void)
   {
       // get current slot from parameter
@@ -445,7 +446,7 @@ OpenHarmony现支持A/B双分区启动（主备系统分区），即在设备的
   3. 按照构造后的分区挂载配置挂载带有相应后缀的分区并切换到启动的第二阶段，启动第二阶段将在具体的A分区或B分区中进行，涉及A/B分区启动部分至此结束。
 
   调整分区挂载配置的主要接口如下：
-  ```
+  ```c
   static void AdjustPartitionNameByPartitionSlot(FstabItem *item)
   {
       BEGET_CHECK_ONLY_RETURN(strstr(item->deviceName, "/system") != NULL ||

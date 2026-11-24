@@ -4,15 +4,15 @@
 
 ### 系统服务进程退出后不自动重启
 
-    查看服务进程的cfg文件，是否将"once"项配置为1；该项若为1，则表示为一次性进程，进程退出后不会再被init拉起
+查看服务进程的cfg文件，是否将"once"项配置为1；该项若为1，则表示为一次性进程，进程退出后不会再被init拉起
 
 ### 如何默认disable系统服务进程
 
-    当前服务的cfg文件中配置"disable" 项未启用，可以通过配置"start-mode" 项来控制启动方式
+当前服务的cfg文件中配置"disable" 项未启用，可以通过配置"start-mode" 项来控制启动方式
 
 ### 如何关闭系统服务进程沙盒
 
-    在服务的cfg文件中配置 "sandbox" : 0 即服务不进入沙盒、1为进入沙盒，默认服务是进入沙盒
+在服务的cfg文件中配置 "sandbox" : 0 即服务不进入沙盒、1为进入沙盒，默认服务是进入沙盒
 
 ### 服务不存在
 
@@ -37,12 +37,12 @@
 
     解决方法：执行begetctl setloglevel 0并重启设备，通过串口查看内核日志。确认init的二级启动是否正常完成，关键log如下：
     
-  ```
-  [32.173144][pid=1] [Init] [INFO] [init.c:206]Start init second stage.
-  [33.173144][pid=1] [Init] [DEBUG] [init.c:206]Parse init configs from /etc/init.cfg.
-  ```
+    ```text
+    [32.173144][pid=1] [Init] [INFO] [init.c:206]Start init second stage.
+    [33.173144][pid=1] [Init] [DEBUG] [init.c:206]Parse init configs from /etc/init.cfg.
+    ```
 
-​   如果此时hdcd服务没有启动，或者分区没有挂载好，无法执行begetctl 命令。需要修改init 代码，设置log等级。确保init 的debug log能正常输出。
+    如果此时hdcd服务没有启动，或者分区没有挂载好，无法执行begetctl 命令。需要修改init 代码，设置log等级。确保init 的debug log能正常输出。
 
  2. 原因分析：init.cfg 解析失败。
 
@@ -63,7 +63,7 @@
 
        1. 查看日志， 查看Kernel command line 中是否required mount 分区配置；如果配置，查看cmdline格式是否出错，按照格式修改或添加命令。
           
-          ```
+          ```text
           [0.000000] Kernel command line: currentslot=0 bootslots=0 rw rootwait earlycon=uart8250,mmio32,0xfe660000 console=ttyFIQ0 ohos.boot.eng_mode=on root=PARTUUID=614e0000-0000 hardware=rk3568 default_boot_device=fe310000.sdhci ohos.required_mount.system=/dev/block/platform/fe310000.sdhci/by-name/system@/usr@ext4@ro,barrier=1@wait,required ohos.required_mount.vendor=/dev/block/platform/fe310000.sdhci/by-name/vendor@/vendor@ext4@ro,barrier=1@wait,required ohos.required_mount.misc=/dev/block/platform/fe310000.sdhci/by-name/misc@none@none@none@wait,required ohos.required_mount.bootctrl=/dev/block/platform/fe310000.sdhci/by-name/bootctrl@none@none@none@wait,required
           ```
 
@@ -86,7 +86,7 @@
 
      1. 在日志中查看log： 
 
-        ```
+        ```text
         [10.175192] [pid=1] [Init] [INFO] [init_service_manager.c:1088]Start service bootanimation
         ```
 
@@ -105,7 +105,8 @@
      1. "wait for file:/dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata failed after"。
      2. 日志中看不到userdata 任何挂载相关的输出。
      3. "Mount /dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata to /data failed"，如果fstab 配置了nofail，log 有"Mount no fail     device /dev/block/platform/soc/10100000.himci.eMMC/by-name/userdata to /data failed"
-      nofail，表示该设备的挂载，不可以失败。
+
+        nofail，表示该设备的挂载，不可以失败。
 
 ### 卡在开机动画界面
 
@@ -149,11 +150,11 @@
  1. 插件安装成功，在板子中查看/system/lib/init/reboot/librebootmodule.z.so是否安装成功。
  2. 执行begetctl setloglevel 0设置日志级别，日志打印：
 
-  ```
-  08-10 18:48:07.653  1421  1421 D C02c0b/BEGET: [init_reboot_innerkits.c:51]Reboot cmd reboot
-  ```
+    ```text
+    08-10 18:48:07.653  1421  1421 D C02c0b/BEGET: [init_reboot_innerkits.c:51]Reboot cmd reboot
+    ```
 
-​    查看 reboot 命令， reboot命令不超过96字节。
+    查看 reboot 命令， reboot命令不超过96字节。
 
  3. hdc shell 执行param set ohos.startup.powerctrl reboot， 观察是否重启， 重启表示系统参数设置成功。
  4. 日志中有 permission denied，init 进程报权限问题。关闭selinux，重新验证，如果验证成功，则是selinux策略配置不正确导致， 重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
@@ -164,7 +165,7 @@
 
   系统启动过程中，解析init.cfg文件错误，启动过程停止，打印日志如下：
 
-  ```
+  ```text
   Cfg error, failed to parse json etc/init.cfg
   ```
 

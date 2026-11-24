@@ -33,7 +33,7 @@
    | d-caps       | 可选 | 标准系统 | 服务分布式能力。| 类型：字符串数组， 如 "d-caps" : ["OHOS_DMS"]。 |
    | apl          | 可选 | 标准系统 | 服务能力特权级别。 | 类型：字符串， 如 "apl" : "system_core"。<br> 目前支持"system_core"（默认值）, "normal", "system_basic"。 |
    | start-mode   | 可选 | 标准系统 | 服务的启动模式。 | 类型：字符串， 如 "start-mode" : "condition"。<br>目前支持"boot", "normal", "condition"。具体说明参考：init服务启动控制。 |
-   | ondemand     | 可选 | 小型系统和标准系统 | 按需启动服务的标志。 | 类型：bool，如"ondemand" : true，小型系统只在Linux内核上支持。<br>具体说明参考：[init服务按需启动](#section56901555920)。|
+   | ondemand     | 可选 | 小型系统和标准系统 | 按需启动服务的标志。 | 类型：bool，如"ondemand" : true，小型系统只在Linux内核上支持。<br>具体说明参考：init服务按需启动。|
    | disabled | 可选 | 小型系统和标准系统 | 预留字段，无实际意义。 | 无。 |
    | sandbox | 可选 | 标准系统 | 沙盒功能是否打开。 | 1：打开服务的沙盒功能 （默认值）。<br>0：关闭服务的沙盒功能。 |
    | socket | 可选 | 标准系统 | 配置socket属性相关设置。 | 由socket创建流程的服务需配置此项。 |
@@ -70,7 +70,7 @@
     - "on-restart"：在服务重启时执行，在init进程中执行。
 
     参考配置如下：
-    ```
+    ```json
     "services" : [{
           "name" : "serviceName",
           "path" : ["/system/bin/serviceName"],
@@ -84,12 +84,12 @@
 
   通过并行启动和命令执行能力，可以实现进程的并行启动。
 
-  - init按需启动(仅标准系统以上提供) <a name="section56901555920"></a>
+  - init按需启动(仅标准系统以上提供)
 
     配置按需启动后，init进程不会启动对应的服务，只有服务被需要时才会被拉起。通过"ondemand"标记来控制服务是否被拉起。
 
     “ondemand”参考配置如下：
-    ```
+    ```json
       "services" : [{
         "name" : "serviceName",
         "path" : ["/system/bin/serviceName"],
@@ -120,7 +120,7 @@
     - init提供修改\*.cfg配置文件，为服务提供抑制机制。
 
     服务进程启动&回收能力增强配置，如下：
-      ```
+      ```json
       "services" : [{
           "name" : "serviceName",
           "path" : ["/system/bin/serviceName"]
@@ -136,7 +136,7 @@
   - 定时启动
 
     通过约定时间拉起服务， 若服务已拉起， 则不再重新拉起服务。具体命令参考： **[begetctl命令说明](subsys-boot-init-plugin.md)** 。
-    ```
+    ```shell
     timer_start servicename timeout
     ```
 ## 服务进程创建基本流程
@@ -147,7 +147,7 @@
 
   配置文件完成后，需要安装到对应目录，init中在/base/startup/init/services/etc/BUILD.gn文件配置如下：
 
-  ```
+  ```text
   ohos_prebuilt_etc("watchdog.cfg") {
     source = "//base/startup/init/services/etc/watchdog.cfg"
     relative_install_dir = "init"
@@ -166,7 +166,7 @@
 
   服务进程及其配置文件创建完成后，需要在对应模块的bundle.json文件中添加其build路径,例如：
 
-  ```
+  ```json
       "build": {
           "group_type": {
               "base_group": [],
@@ -226,7 +226,7 @@
 
   - 若gid,uid设置为root或system，则需要在对应产品目录下的security_config/high_privilege_process_list.json文件中添加白名单，例如：
 
-  ```
+  ```json
     {
         "high_privilege_process_list": [
             {
@@ -260,22 +260,22 @@
 
 - 配置服务进程的SELinux权限
 
-  1、首先可以先不配置selinux 标签，确认服务进程是否可以在permissive时可以启动起来，若可以启动，则无需配置。
+  1. 首先可以先不配置selinux 标签，确认服务进程是否可以在permissive时可以启动起来，若可以启动，则无需配置。
 
-  2、若需要配置selinux规则，首先要在服务进程的配置文件中通过“secon”项设置selinux 标签。
+  2. 若需要配置selinux规则，首先要在服务进程的配置文件中通过“secon”项设置selinux 标签。
 
-  3、在selinux模块对服务进程的标签进行定义。具体如下：
+  3. 在selinux模块对服务进程的标签进行定义。具体如下：
 
   在base/security/selinux_adapter/sepolicy/base/system/file_contexts文件定义执行程序的标签，如：
 
-  ```
+  ```text
     /system/bin/watchdog_service        u:object_r:watchdog_service_exec:s0
     /system/bin/hdcd        u:object_r:hdcd_exec:s0
   ```
 
   在base/security/selinux_adapter/sepolicy/base/public/type.te文件定义标签的作用域，如：
 
-  ```
+  ```text
     type watchdog_service, sadomain, domain;
     type watchdog_service_exec, exec_attr, file_attr, system_file_attr;
   ```
@@ -286,7 +286,7 @@
 
 | 枚举               | 枚举值 | 错误信息                 | 说明                    |
 | ------------------ | ------ | ------------------------ | ----------------------- |
-| INIT_OK            | 0      |                          | 执行成功                |
+| INIT_OK            | 0      | -                        | 执行成功                |
 | INIT_EPARAMETER    | 1      | parameter                | 接口参数无效            |
 | INIT_EFORMAT       | 2      | Format string fail       | 字符串格式化错误        |
 | INIT_ECFG          | 3      | cfg error                | cfg解析错误             |
@@ -324,9 +324,9 @@
 
   - 服务控制接口为特权接口，因此需要配置DAC和selinux权限，具体如下：
 
-   - 服务控制接口配置DAC，需要修改/base/startup/init/services/etc/group文件，在组servicectrl中添加对应的用户id，例如：
+  - 服务控制接口配置DAC，需要修改/base/startup/init/services/etc/group文件，在组servicectrl中添加对应的用户id，例如：
 
-    ```
+    ```text
     servicectrl:x:1050:root,shell,system,samgr,hdf_devmgr
     ```
 

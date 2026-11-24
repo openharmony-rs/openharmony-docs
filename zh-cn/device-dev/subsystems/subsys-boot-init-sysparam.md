@@ -530,11 +530,11 @@ hilog_param=40960
 
 ### 如何设置一个系统参数
 
-  1、hdc shell进入终端，执行param set param.key.xxx(系统参数名) param.value.xxx(系统参数名值), 确认参数是否可以设置成功，成功则无需其他设置
+  1. hdc shell进入终端，执行param set param.key.xxx(系统参数名) param.value.xxx(系统参数名值), 确认参数是否可以设置成功，成功则无需其他设置
 
-  2、代码侧设置系统参数，调用SetParameter接口，具体参照[接口说明](#接口说明)
+  2. 代码侧设置系统参数，调用SetParameter接口，具体参照[接口说明](#接口说明)
   
-  3、执行param set 失败，则根据失败的日志确定对应的排查操作：
+  3. 执行param set 失败，则根据失败的日志确定对应的排查操作：
 
   若dac 权限不足，参照DAC访问控制权限设置进行设置
 
@@ -544,11 +544,11 @@ hilog_param=40960
 
 ### 如何读取一个系统参数
 
-  1、hdc shell进入终端，执行param get param.key.xxx(系统参数名), 查看参数是否可以读取成功，读取成功则无需其他操作
+  1. hdc shell进入终端，执行param get param.key.xxx(系统参数名), 查看参数是否可以读取成功，读取成功则无需其他操作
 
-  2、代码侧获取系统参数，调用GetParameter接口，具体参照[接口说明](#接口说明)
+  2. 代码侧获取系统参数，调用GetParameter接口，具体参照[接口说明](#接口说明)
 
-  3、执行param get 失败，则根据失败的日志确定对应的排查操作：
+  3. 执行param get 失败，则根据失败的日志确定对应的排查操作：
 
   首先需要确认该参数是否被设置，若没有被设置，则需要先设置该参数；若已设置，则进行下一步排查
 
@@ -558,11 +558,11 @@ hilog_param=40960
 
 ### 如何订阅一个系统参数的变化
 
-  1、hdc shell进入终端，执行param shell，进入Parameter shell后执行 watcher parameter param.key.xxx(系统参数名)，当系统参数值发生变化时，会收到类似"Receive parameter commit 691 change aaa.aaa 11111"的消息
+  1. hdc shell进入终端，执行param shell，进入Parameter shell后执行 watcher parameter param.key.xxx(系统参数名)，当系统参数值发生变化时，会收到类似"Receive parameter commit 691 change aaa.aaa 11111"的消息
 
-  2、代码侧监控系统参数变化，调用WatchParameter接口
+  2. 代码侧监控系统参数变化，调用WatchParameter接口
 
-  3、执行watcher parameter 失败，则根据失败的日志确定对应的排查操作：
+  3. 执行watcher parameter 失败，则根据失败的日志确定对应的排查操作：
 
   若dac 权限不足，参照DAC访问控制权限设置进行设置
 
