@@ -10,7 +10,7 @@
 
 **图1** 指纹认证功能整体框架
 
-![image](figures/指纹认证功能整体框架图.png "指纹认证功能整体框架图")
+![image](figures/指纹认证功能整体框架图.png)
 
 ### 基本概念
 
@@ -70,11 +70,12 @@
 ### 运作机制
 
 Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprint_auth服务提供稳定的指纹认证基础能力，保证设备上指纹认证功能可以正常运行。如图2，Fingerprint_auth服务通过执行器列表接口获取执行器信息后，向用户认证框架注册执行器。Fingerprint_auth服务通过执行器功能接口实现和Fingerprint_auth驱动的认证、识别、查询等功能的信息交互。
+
 开发者可基于HDF框架对不同芯片进行各自驱动的开发及HDI层接口的调用。
 
 **图2** Fingerprint_auth服务和Fingerprint_auth驱动交互
 
-![image](figures/指纹认证服务和驱动接口.png "指纹认证服务和驱动接口")
+![image](figures/指纹认证服务和驱动接口.png)
 
 ### 约束与限制
 
@@ -89,6 +90,7 @@ Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprin
 ### 接口说明
 
 注：以下接口列举的为IDL接口描述生成的对应C++语言函数接口，接口声明见idl文件（/drivers/interface/fingerprint_auth）。
+
 在本文中，指纹凭据的录入、认证、识别和删除相关的HDI接口如表1所示，表2中的回调函数分别用于指纹执行器返回操作结果给框架和返回操作过程中的提示信息给上层应用。
 
 **表1** 接口功能介绍
@@ -179,7 +181,7 @@ Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprin
        HDF_LOGI("%{public}s: driver bind start", __func__);
        auto *hdfFingerprintAuthInterfaceHost = new (std::nothrow) HdfFingerprintAuthInterfaceHost;
        if (hdfFingerprintAuthInterfaceHost == nullptr) {
-           HDF_LOGE("%{public}s: failed to create create HdfFingerprintAuthInterfaceHost object", __func__);
+           HDF_LOGE("%{public}s: failed to create HdfFingerprintAuthInterfaceHost object", __func__);
            return HDF_FAILURE;
        }
 
@@ -284,7 +286,7 @@ Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprin
        return HDF_SUCCESS;
    }
 
-   // 实现执行器注册成功后，获取用户认证框架的公钥信息、获取用户认证框架的模板列表接口。将公钥信息保持，模板列表用于和本地的模板做对账
+   // 实现执行器注册成功后，获取用户认证框架的公钥信息、获取用户认证框架的模板列表接口。将公钥信息保存，模板列表用于和本地的模板做对账
    int32_t AllInOneExecutorImpl::OnRegisterFinish(const std::vector<uint64_t> &templateIdList,
        const std::vector<uint8_t> &frameworkPublicKey, const std::vector<uint8_t> &extraInfo)
    {
@@ -467,75 +469,75 @@ Fingerprint_auth驱动的主要工作是为上层用户认证框架和Fingerprin
 
 驱动开发完成后，开发者可以通过[用户认证API接口](../../application-dev/reference/apis-user-authentication-kit/js-apis-useriam-userauth.md)开发HAP应用，基于RK3568平台验证。认证和取消功能验证的测试代码如下：
 
-1.发起认证并获取认证结果的测试代码如下：
+1. 发起认证并获取认证结果的测试代码如下：
 
-```ts
-  // API version 10
-  import type {BusinessError} from '@ohos.base';
-  import userIAM_userAuth from '@ohos.userIAM.userAuth';
+   ```ts
+   // API version 10
+   import type {BusinessError} from '@ohos.base';
+   import userIAM_userAuth from '@ohos.userIAM.userAuth';
   
-  // 设置认证参数
-  const authParam: userIAM_userAuth.AuthParam = {
-    challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
-    authType: [userIAM_userAuth.UserAuthType.PIN, userIAM_userAuth.UserAuthType.FINGERPRINT],
-    authTrustLevel: userIAM_userAuth.AuthTrustLevel.ATL3,
-  };
+   // 设置认证参数
+   const authParam: userIAM_userAuth.AuthParam = {
+     challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+     authType: [userIAM_userAuth.UserAuthType.PIN, userIAM_userAuth.UserAuthType.FINGERPRINT],
+     authTrustLevel: userIAM_userAuth.AuthTrustLevel.ATL3,
+   };
 
-  // 配置认证界面
-  const widgetParam: userIAM_userAuth.WidgetParam = {
-    title: '请进行身份认证',
-  };
+   // 配置认证界面
+   const widgetParam: userIAM_userAuth.WidgetParam = {
+     title: '请进行身份认证',
+   };
 
-  try {
-    // 获取认证对象
-    let userAuthInstance = userIAM_userAuth.getUserAuthInstance(authParam, widgetParam);
-    console.info('get userAuth instance success');
-    // 订阅认证结果
-    userAuthInstance.on('result', {
-      onResult(result) {
-        console.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-        // 可在认证结束或其他业务需要场景，取消订阅认证结果
-        userAuthInstance.off('result');
-      }
-    });
-    console.info('auth on success');
-    userAuthInstance.start();
-    console.info('auth start success');
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-  }
-```
-    
-2.取消认证的测试代码如下：
+   try {
+     // 获取认证对象
+     let userAuthInstance = userIAM_userAuth.getUserAuthInstance(authParam, widgetParam);
+     console.info('get userAuth instance success');
+     // 订阅认证结果
+     userAuthInstance.on('result', {
+       onResult(result) {
+         console.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
+         // 可在认证结束或其他业务需要场景，取消订阅认证结果
+         userAuthInstance.off('result');
+       }
+     });
+     console.info('auth on success');
+     userAuthInstance.start();
+     console.info('auth start success');
+   } catch (error) {
+     const err: BusinessError = error as BusinessError;
+     console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+   }
+   ```
 
-```ts
-  // API version 10
-  import type {BusinessError} from '@ohos.base';
-  import userIAM_userAuth from '@ohos.userIAM.userAuth';
+2. 取消认证的测试代码如下：
+
+   ```ts
+   // API version 10
+   import type {BusinessError} from '@ohos.base';
+   import userIAM_userAuth from '@ohos.userIAM.userAuth';
   
-  const authParam: userIAM_userAuth.AuthParam = {
-    challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
-    authType: [userIAM_userAuth.UserAuthType.PIN, userIAM_userAuth.UserAuthType.FINGERPRINT],
-    authTrustLevel: userIAM_userAuth.AuthTrustLevel.ATL3,
-  };
+   const authParam: userIAM_userAuth.AuthParam = {
+     challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+     authType: [userIAM_userAuth.UserAuthType.PIN, userIAM_userAuth.UserAuthType.FINGERPRINT],
+     authTrustLevel: userIAM_userAuth.AuthTrustLevel.ATL3,
+   };
 
-  const widgetParam: userIAM_userAuth.WidgetParam = {
-    title: '请进行身份认证',
-  };
+   const widgetParam: userIAM_userAuth.WidgetParam = {
+     title: '请进行身份认证',
+   };
   
-  try {
-    // 获取认证对象
-    let userAuthInstance = userIAM_userAuth.getUserAuthInstance(authParam, widgetParam);
-    console.info('get userAuth instance success');
-    // 开始认证
-    userAuthInstance.start();
-    console.info('auth start success');
-    // 取消认证
-    userAuthInstance.cancel();
-    console.info('auth cancel success');
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-  }
-```
+   try {
+     // 获取认证对象
+     let userAuthInstance = userIAM_userAuth.getUserAuthInstance(authParam, widgetParam);
+     console.info('get userAuth instance success');
+     // 开始认证
+     userAuthInstance.start();
+     console.info('auth start success');
+     // 取消认证
+     userAuthInstance.cancel();
+     console.info('auth cancel success');
+   } catch (error) {
+     const err: BusinessError = error as BusinessError;
+     console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+   }
+   ```

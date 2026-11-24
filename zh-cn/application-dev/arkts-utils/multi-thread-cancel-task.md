@@ -13,7 +13,7 @@
    <!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/Sendable.ets) --> 
    
    ``` TypeScript
-   // sendable.ets
+   // Sendable.ets
    @Sendable
    export class SendableTest {
      // 存储任务ID

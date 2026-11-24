@@ -21,7 +21,7 @@
 
 3. 解析证书吊销列表信息。
 
-   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档[X509CRL11+](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11)。
+   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档[X509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11)。
 
 4. 基于已有公钥信息，创建PublicKey公钥对象。
 

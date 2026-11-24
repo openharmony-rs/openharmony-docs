@@ -53,7 +53,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -61,7 +61,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -69,7 +69,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -77,7 +77,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function main() {
     try {
       let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
@@ -109,7 +109,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -117,7 +117,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|ECB|PKCS7');
@@ -125,7 +125,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -133,7 +133,7 @@ SM4（ECB模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
     try {
       let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
@@ -199,13 +199,13 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16); // 16 bytes
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -214,9 +214,9 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     };
     return ivParamsSpec;
   }
-  
+
   let iv = genIvParamsSpec();
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -224,7 +224,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -232,7 +232,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -240,7 +240,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function main() {
     try {
       let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
@@ -273,13 +273,13 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16); // 16 bytes
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -288,9 +288,9 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     };
     return ivParamsSpec;
   }
-  
+
   let iv = genIvParamsSpec();
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -298,7 +298,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -306,7 +306,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -314,7 +314,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
     try {
       let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
@@ -384,13 +384,13 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -410,9 +410,9 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 加密消息
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM');
@@ -422,7 +422,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     gcmParams.authTag = await cipher.doFinal(null);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM');
@@ -435,7 +435,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     }
     return decryptUpdate;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -443,7 +443,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -475,13 +475,13 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -501,9 +501,9 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 加密消息
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM');
@@ -513,7 +513,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     gcmParams.authTag = cipher.doFinalSync(null);
     return encryptUpdate;
   }
-  
+
   // 解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM');
@@ -526,7 +526,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     }
     return decryptUpdate;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -534,7 +534,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -607,13 +607,14 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12);
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -632,9 +633,9 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 分段加密消息
   async function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM');
@@ -657,7 +658,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  
+
   // 分段解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM');
@@ -682,7 +683,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
-  
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -690,19 +691,26 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     console.info('convertKey result: success.');
     return symKey;
   }
-  
+
   async function sm4() {
-    let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
-    let symKey = await genSymKeyByData(keyData);
-    let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8解码后，也是43字节
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = await encryptMessageUpdateBySegment(symKey, plainText);
-    let decryptText = await decryptMessagePromise(symKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+      let symKey = await genSymKeyByData(keyData);
+      let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8编码后，也是43字节
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await encryptMessageUpdateBySegment(symKey, plainText);
+      let decryptText = await decryptMessagePromise(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`SM4 failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -714,13 +722,14 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-  
+
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -739,9 +748,9 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     };
     return gcmParamsSpec;
   }
-  
+
   let gcmParams = genGcmParamsSpec();
-  
+
   // 分段加密消息
   function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM');
@@ -764,7 +773,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  
+
   // 分段解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM');
@@ -789,7 +798,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
-  
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -797,19 +806,26 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-  
+
   function main() {
-    let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
-    let symKey = genSymKeyByData(keyData);
-    let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8解码后，也是43字节
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = encryptMessageUpdateBySegment(symKey, plainText);
-    let decryptText = decryptMessage(symKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+      let symKey = genSymKeyByData(keyData);
+      let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8编码后，也是43字节
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessageUpdateBySegment(symKey, plainText);
+      let decryptText = decryptMessage(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`SM4 failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
