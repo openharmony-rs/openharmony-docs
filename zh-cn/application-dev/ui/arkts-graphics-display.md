@@ -793,6 +793,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     .syncLoad(true)
   ```
 
+<!--RP2--><!--RP2End-->
 <!--RP4-->
 
 ### 开启图像AI分析
