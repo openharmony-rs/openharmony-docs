@@ -1,7 +1,7 @@
 ---
 kits: ["AVCodec Kit / 音视频编解码服务"]
-description: "介绍通过AVCapability接口查询系统支持的编解码器及能力规格的方法，涵盖指定名称创建、软硬件差异化配置、多路编解码器创建、档位级别查询与DRM安全解码器筛选等场景。"
-keywords: [编码能力查询, 解码能力查询, 编解码器参数查询, 编解码器属性查询, DRM安全解码器查询, OH_AVCapability]
+description: "介绍通过AVCapability接口查询系统支持的编解码器及能力规格的方法，涵盖指定名称创建、软硬件差异化配置、多路编解码器创建、档位级别查询与DRM解码器筛选等场景。"
+keywords: [软硬件编解码器, 多路编解码器, 码控模式, 编解码档次和级别, DRM解码器, OH_AVCapability]
 doctype: guide
 status: active
 ---
