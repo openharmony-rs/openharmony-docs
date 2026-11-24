@@ -121,221 +121,221 @@
 
 1. 获取目标节点ID
 
-目标节点ID从页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)获取：先通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)按组件`id()`设置的字符串标识得到FrameNode，再调用[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取整数节点ID。
+   目标节点ID从页面的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)获取：先通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)按组件`id()`设置的字符串标识得到FrameNode，再调用[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取整数节点ID。
 
-节点ID只在节点存在期间有效，示例在每次采集前重新读取，不缓存。[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)返回空表示该标识当前没有对应节点，此时应放弃本次采集，不要用无效值提交请求；示例的单节点与批量入口未做该判断，实际应用需要自行补充。
+   节点ID只在节点存在期间有效，示例在每次采集前重新读取，不缓存。[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)返回空表示该标识当前没有对应节点，此时应放弃本次采集，不要用无效值提交请求；示例的单节点与批量入口未做该判断，实际应用需要自行补充。
 
 2. 提交采集请求
 
-提交时把节点ID数组和回调交给采集接口，由框架在目标UI实例的UI线程回调一次。示例把回调结果包装为Promise，页面侧按异步流程处理。
+   提交时把节点ID数组和回调交给采集接口，由框架在目标UI实例的UI线程回调一次。示例把回调结果包装为Promise，页面侧按异步流程处理。
 
-以下代码块中的Arguments、ReadNodeIds、NumberProperty、ImageItem、ImageRequest、GetImageContext，以及页面代码中的failure、DOMAIN、TAG，均为示例工程自行实现的辅助函数、结构体或常量。本专题新介绍的接口仅为[接口说明](#接口说明)中的三个函数与回调类型，其余接口见各自参考文档。
+   以下代码块中的Arguments、ReadNodeIds、NumberProperty、ImageItem、ImageRequest、GetImageContext，以及页面代码中的failure、DOMAIN、TAG，均为示例工程自行实现的辅助函数、结构体或常量。本专题新介绍的接口仅为[接口说明](#接口说明)中的三个函数与回调类型，其余接口见各自参考文档。
 
-提交时需要注意以下三点。
+   提交时需要注意以下三点。
 
-- 请求被拒绝时不会再有回调，示例直接把拒绝码作为受理结果返回，页面不会等待一个不会发生的回调。
-- nodeIds数组在函数返回前已被复制，示例在提交后不再持有调用方数组。
-- 同一UI实例上一次请求未完成时提交会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，页面应在收到结果前禁用触发采集的交互，不要用连续提交的方式重试。
+   - 请求被拒绝时不会再有回调，示例直接把拒绝码作为受理结果返回，页面不会等待一个不会发生的回调。
+   - nodeIds数组在函数返回前已被复制，示例在提交后不再持有调用方数组。
+   - 同一UI实例上一次请求未完成时提交会返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，页面应在收到结果前禁用触发采集的交互，不要用连续提交的方式重试。
 
-<!-- @[ndk_image_collect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[ndk_image_collect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-// 页面调用的桥接入口：collectImages(nodeIds)。
-// 返回的Promise在请求受理后完成，结果包含受理结果与全部结果项。
-napi_value CollectImages(napi_env env, napi_callback_info info)
-{
-    napi_value args[IMAGE_ARG_COUNT];
-    if (!Arguments(env, info, IMAGE_ARG_COUNT, args)) {
-        return nullptr;
-    }
-    auto context = GetImageContext(env);
-    if (!context) {
-        return nullptr;
-    }
-    std::vector<int32_t> nodeIds;
-    if (!ReadNodeIds(env, args[IMAGE_NODE_IDS_ARG], nodeIds)) {
-        return nullptr;
-    }
-    napi_value promise = nullptr;
-    auto* request = new (std::nothrow) ImageRequest();
-    if (request == nullptr || napi_create_promise(env, &request->deferred, &promise) != napi_ok) {
-        delete request;
-        napi_throw_error(env, nullptr, "Cannot create the image collection promise");
-        return nullptr;
-    }
-    request->env = env;
-    request->nodeIds = nodeIds;
-    // 框架会在本函数返回前复制节点ID，request持有自己的副本，
-    // 调用方可以立即释放数组。
-    const auto code = OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(context, request->nodeIds.data(),
-        static_cast<uint32_t>(request->nodeIds.size()), OnImages, request);
-    if (code != ARKUI_ERROR_CODE_NO_ERROR) {
-        // 请求被拒绝：不会再收到回调，直接返回受理结果并结束。
-        napi_value rejected = nullptr;
-        napi_value empty = nullptr;
-        if (napi_create_object(env, &rejected) == napi_ok && napi_create_array(env, &empty) == napi_ok) {
-            NumberProperty(env, rejected, "submitError", static_cast<int32_t>(code));
-            NumberProperty(env, rejected, "overallError", static_cast<int32_t>(code));
-            napi_set_named_property(env, rejected, "items", empty);
-            napi_resolve_deferred(env, request->deferred, rejected);
-        }
-        delete request;
-    }
-    return promise;
-}
-```
+   ``` C++
+   // 页面调用的桥接入口：collectImages(nodeIds)。
+   // 返回的Promise在请求受理后完成，结果包含受理结果与全部结果项。
+   napi_value CollectImages(napi_env env, napi_callback_info info)
+   {
+       napi_value args[IMAGE_ARG_COUNT];
+       if (!Arguments(env, info, IMAGE_ARG_COUNT, args)) {
+           return nullptr;
+       }
+       auto context = GetImageContext(env);
+       if (!context) {
+           return nullptr;
+       }
+       std::vector<int32_t> nodeIds;
+       if (!ReadNodeIds(env, args[IMAGE_NODE_IDS_ARG], nodeIds)) {
+           return nullptr;
+       }
+       napi_value promise = nullptr;
+       auto* request = new (std::nothrow) ImageRequest();
+       if (request == nullptr || napi_create_promise(env, &request->deferred, &promise) != napi_ok) {
+           delete request;
+           napi_throw_error(env, nullptr, "Cannot create the image collection promise");
+           return nullptr;
+       }
+       request->env = env;
+       request->nodeIds = nodeIds;
+       // 框架会在本函数返回前复制节点ID，request持有自己的副本，
+       // 调用方可以立即释放数组。
+       const auto code = OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(context, request->nodeIds.data(),
+           static_cast<uint32_t>(request->nodeIds.size()), OnImages, request);
+       if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+           // 请求被拒绝：不会再收到回调，直接返回受理结果并结束。
+           napi_value rejected = nullptr;
+           napi_value empty = nullptr;
+           if (napi_create_object(env, &rejected) == napi_ok && napi_create_array(env, &empty) == napi_ok) {
+               NumberProperty(env, rejected, "submitError", static_cast<int32_t>(code));
+               NumberProperty(env, rejected, "overallError", static_cast<int32_t>(code));
+               napi_set_named_property(env, rejected, "items", empty);
+               napi_resolve_deferred(env, request->deferred, rejected);
+           }
+           delete request;
+       }
+       return promise;
+   }
+   ```
 
 3. 获取采集结果
 
-回调在目标UI实例的UI线程执行，结果集合在回调中转移给应用，由应用负责取出与销毁。示例在回调内按请求顺序取出全部结果项，并在回调返回前完成清理。
+   回调在目标UI实例的UI线程执行，结果集合在回调中转移给应用，由应用负责取出与销毁。示例在回调内按请求顺序取出全部结果项，并在回调返回前完成清理。
 
-以下示例中：
+   以下示例中：
 
-- collection为NULL表示本次请求没有可用的结果集合（上下文失效或集合分配失败），此时直接按整体错误码处理，不要调用取出接口。
-- 取出的PixelMap在转换成ArkTS对象后立即释放，避免在回调中持有native对象跨出本次回调。
-- 无论取出是否全部成功，回调结束前都销毁集合，释放未被取出的PixelMap。
-- 页面可能已经退出，回调仍然会执行。示例的回调只做结果转换与清理，不访问页面状态；页面侧用active标记判断页面是否仍然存在，已退出时丢弃结果，见下文“4. 页面展示采集结果”。
+   - collection为NULL表示本次请求没有可用的结果集合（上下文失效或集合分配失败），此时直接按整体错误码处理，不要调用取出接口。
+   - 取出的PixelMap在转换成ArkTS对象后立即释放，避免在回调中持有native对象跨出本次回调。
+   - 无论取出是否全部成功，回调结束前都销毁集合，释放未被取出的PixelMap。
+   - 页面可能已经退出，回调仍然会执行。示例的回调只做结果转换与清理，不访问页面状态；页面侧用active标记判断页面是否仍然存在，已退出时丢弃结果，见下文“4. 页面展示采集结果”。
 
-<!-- @[ndk_image_take_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[ndk_image_take_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-// 每个被受理的请求在UI线程执行一次：取出并转换全部结果项，
-// 返回前释放集合。
-void OnImages(ArkUI_ErrorCode overallError, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData)
-{
-    auto* request = static_cast<ImageRequest*>(userData);
-    if (request == nullptr) {
-        // 已无业务对象接收该结果：仍需销毁集合以释放其中的图片。
-        OH_ArkUI_NativeModule_ImageCollectionDestroy(collection);
-        return;
-    }
-    napi_env env = request->env;
-    napi_handle_scope scope = nullptr;
-    if (napi_open_handle_scope(env, &scope) != napi_ok) {
-        OH_ArkUI_NativeModule_ImageCollectionDestroy(collection);
-        delete request;
-        return;
-    }
-    napi_value result = nullptr;
-    napi_value items = nullptr;
-    bool built = napi_create_object(env, &result) == napi_ok &&
-        napi_create_array(env, &items) == napi_ok;
-    if (built) {
-        uint32_t count = 0;
-        for (int32_t nodeId : request->nodeIds) {
-            OH_PixelmapNative* pixelmap = nullptr;
-            // 集合为空表示本次请求没有产生任何结果项，无法取出。
-            ArkUI_ErrorCode itemError = collection == nullptr ? overallError : ARKUI_ERROR_CODE_NO_ERROR;
-            const ArkUI_ErrorCode takeError = collection == nullptr ? overallError :
-                OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(collection, nodeId, &pixelmap, &itemError);
-            napi_value item = ImageItem(env, nodeId, takeError, itemError, pixelmap);
-            if (pixelmap != nullptr) {
-                // 取出时所有权已转移到此处，上面的转换已完成。
-                OH_PixelmapNative_Destroy(&pixelmap);
-            }
-            if (item != nullptr) {
-                napi_set_element(env, items, count, item);
-                count += 1;
-            }
-        }
-        built = NumberProperty(env, result, "submitError", 0) &&
-            NumberProperty(env, result, "overallError", static_cast<int32_t>(overallError)) &&
-            napi_set_named_property(env, result, "items", items) == napi_ok;
-    }
-    if (built) {
-        napi_resolve_deferred(env, request->deferred, result);
-    } else {
-        napi_value error = nullptr;
-        if (napi_create_string_utf8(env, "image result bridge failed", NAPI_AUTO_LENGTH, &error) == napi_ok) {
-            napi_reject_deferred(env, request->deferred, error);
-        }
-    }
-    OH_ArkUI_NativeModule_ImageCollectionDestroy(collection);
-    napi_close_handle_scope(env, scope);
-    delete request;
-}
-```
+   ``` C++
+   // 每个被受理的请求在UI线程执行一次：取出并转换全部结果项，
+   // 返回前释放集合。
+   void OnImages(ArkUI_ErrorCode overallError, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData)
+   {
+       auto* request = static_cast<ImageRequest*>(userData);
+       if (request == nullptr) {
+           // 已无业务对象接收该结果：仍需销毁集合以释放其中的图片。
+           OH_ArkUI_NativeModule_ImageCollectionDestroy(collection);
+           return;
+       }
+       napi_env env = request->env;
+       napi_handle_scope scope = nullptr;
+       if (napi_open_handle_scope(env, &scope) != napi_ok) {
+           OH_ArkUI_NativeModule_ImageCollectionDestroy(collection);
+           delete request;
+           return;
+       }
+       napi_value result = nullptr;
+       napi_value items = nullptr;
+       bool built = napi_create_object(env, &result) == napi_ok &&
+           napi_create_array(env, &items) == napi_ok;
+       if (built) {
+           uint32_t count = 0;
+           for (int32_t nodeId : request->nodeIds) {
+               OH_PixelmapNative* pixelmap = nullptr;
+               // 集合为空表示本次请求没有产生任何结果项，无法取出。
+               ArkUI_ErrorCode itemError = collection == nullptr ? overallError : ARKUI_ERROR_CODE_NO_ERROR;
+               const ArkUI_ErrorCode takeError = collection == nullptr ? overallError :
+                   OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(collection, nodeId, &pixelmap, &itemError);
+               napi_value item = ImageItem(env, nodeId, takeError, itemError, pixelmap);
+               if (pixelmap != nullptr) {
+                   // 取出时所有权已转移到此处，上面的转换已完成。
+                   OH_PixelmapNative_Destroy(&pixelmap);
+               }
+               if (item != nullptr) {
+                   napi_set_element(env, items, count, item);
+                   count += 1;
+               }
+           }
+           built = NumberProperty(env, result, "submitError", 0) &&
+               NumberProperty(env, result, "overallError", static_cast<int32_t>(overallError)) &&
+               napi_set_named_property(env, result, "items", items) == napi_ok;
+       }
+       if (built) {
+           napi_resolve_deferred(env, request->deferred, result);
+       } else {
+           napi_value error = nullptr;
+           if (napi_create_string_utf8(env, "image result bridge failed", NAPI_AUTO_LENGTH, &error) == napi_ok) {
+               napi_reject_deferred(env, request->deferred, error);
+           }
+       }
+       OH_ArkUI_NativeModule_ImageCollectionDestroy(collection);
+       napi_close_handle_scope(env, scope);
+       delete request;
+   }
+   ```
 
 4. 页面展示采集结果
 
-结果项被转换成ArkTS对象后交给页面渲染。示例的桥接结果包含受理结果、整体结果和结果项数组，每个结果项包含节点ID、取出结果、单项错误码、像素尺寸和可选的PixelMap。
+   结果项被转换成ArkTS对象后交给页面渲染。示例的桥接结果包含受理结果、整体结果和结果项数组，每个结果项包含节点ID、取出结果、单项错误码、像素尺寸和可选的PixelMap。
 
-<!-- @[ndk_image_result_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @[ndk_image_result_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
-``` TypeScript
-export interface ImageItemResult {
-  // 本结果项的节点ID。每个请求的节点ID都有一项，失败项也包含在内。
-  nodeId: number;
-  // 从集合中取出该项的结果。0表示取出成功。
-  takeError: number;
-  // 该节点图片的采集结果。非0表示该项没有图片。
-  itemError: number;
-  // 图片的像素尺寸。该项没有图片时这两个字段不存在。
-  width?: number;
-  height?: number;
-  // 采集到的图片。示例在此不释放，对象由ArkTS持有。
-  pixelMap?: image.PixelMap;
-}
+   ``` TypeScript
+   export interface ImageItemResult {
+     // 本结果项的节点ID。每个请求的节点ID都有一项，失败项也包含在内。
+     nodeId: number;
+     // 从集合中取出该项的结果。0表示取出成功。
+     takeError: number;
+     // 该节点图片的采集结果。非0表示该项没有图片。
+     itemError: number;
+     // 图片的像素尺寸。该项没有图片时这两个字段不存在。
+     width?: number;
+     height?: number;
+     // 采集到的图片。示例在此不释放，对象由ArkTS持有。
+     pixelMap?: image.PixelMap;
+   }
 
-export interface ImageCollectionResult {
-  // 请求的受理结果。非0表示请求被拒绝，没有任何结果项。
-  submitError: number;
-  // 回调上报的整体结果。部分失败时仍会返回全部结果项。
-  // 请求被拒绝时不会执行回调，此处与submitError相同。
-  overallError: number;
-  items: ImageItemResult[];
-}
-```
+   export interface ImageCollectionResult {
+     // 请求的受理结果。非0表示请求被拒绝，没有任何结果项。
+     submitError: number;
+     // 回调上报的整体结果。部分失败时仍会返回全部结果项。
+     // 请求被拒绝时不会执行回调，此处与submitError相同。
+     overallError: number;
+     items: ImageItemResult[];
+   }
+   ```
 
-页面在调用采集前读取节点ID，拿到结果后按请求顺序渲染每一项。示例用active标记页面是否仍然存在，页面退出后不再修改状态。
+   页面在调用采集前读取节点ID，拿到结果后按请求顺序渲染每一项。示例用active标记页面是否仍然存在，页面退出后不再修改状态。
 
-<!-- @[ndk_image_page_collect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/ImagePage.ets) -->
+   <!-- @[ndk_image_page_collect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UiInfoCollectionAndInjection/entry/src/main/ets/pages/ImagePage.ets) -->
 
-``` TypeScript
-private async capture(nodeIds: number[]): Promise<void> {
-  if (this.busy) {
-    return;
-  }
-  this.busy = true;
-  this.status = 'pending';
-  hilog.info(DOMAIN, TAG, 'collectImages begin, nodes=%{public}d', nodeIds.length);
-  try {
-    const result: ImageCollectionResult = await nativeUi.collectImages(nodeIds);
-    if (!this.active) {
-      return;
-    }
-    this.items = result.items;
-    this.status = `submitError=${result.submitError}; overallError=${result.overallError}; ` +
-      `items=${result.items.length}`;
-    hilog.info(DOMAIN, TAG, 'collectImages done, submitError=%{public}d, overallError=%{public}d, items=%{public}d',
-      result.submitError, result.overallError, result.items.length);
-  } catch (error) {
-    const reason: string = failure(error);
-    if (this.active) {
-      this.status = reason;
-      hilog.error(DOMAIN, TAG, 'collectImages failed, reason=%{public}s', reason);
-    }
-  } finally {
-    if (this.active) {
-      this.busy = false;
-    }
-  }
-}
-```
+   ``` TypeScript
+   private async capture(nodeIds: number[]): Promise<void> {
+     if (this.busy) {
+       return;
+     }
+     this.busy = true;
+     this.status = 'pending';
+     hilog.info(DOMAIN, TAG, 'collectImages begin, nodes=%{public}d', nodeIds.length);
+     try {
+       const result: ImageCollectionResult = await nativeUi.collectImages(nodeIds);
+       if (!this.active) {
+         return;
+       }
+       this.items = result.items;
+       this.status = `submitError=${result.submitError}; overallError=${result.overallError}; ` +
+         `items=${result.items.length}`;
+       hilog.info(DOMAIN, TAG, 'collectImages done, submitError=%{public}d, overallError=%{public}d, items=%{public}d',
+         result.submitError, result.overallError, result.items.length);
+     } catch (error) {
+       const reason: string = failure(error);
+       if (this.active) {
+         this.status = reason;
+         hilog.error(DOMAIN, TAG, 'collectImages failed, reason=%{public}s', reason);
+       }
+     } finally {
+       if (this.active) {
+         this.busy = false;
+       }
+     }
+   }
+   ```
 
 5. 接口返回示例
 
-示例工程把受理结果、整体结果与结果项数量放在同一行状态中显示。下表列出页面中三个场景的实际返回。
+   示例工程把受理结果、整体结果与结果项数量放在同一行状态中显示。下表列出页面中三个场景的实际返回。
 
-| 场景 | 请求 | 页面返回 |
-|---|---|---|
-| 单个Image节点 | 1个节点ID | 返回1个结果项，尺寸为640×480。 |
-| 三个节点 | Image节点与两个Text节点各1个 | 返回3个结果项，按请求顺序展示，都有图片。 |
-| 含已移除节点 | Image节点与一个已移除节点的节点ID | 返回2个结果项，已移除节点的结果项没有图片，其余正常。 |
+   | 场景 | 请求 | 页面返回 |
+   |---|---|---|
+   | 单个Image节点 | 1个节点ID | 返回1个结果项，尺寸为640×480。 |
+   | 三个节点 | Image节点与两个Text节点各1个 | 返回3个结果项，按请求顺序展示，都有图片。 |
+   | 含已移除节点 | Image节点与一个已移除节点的节点ID | 返回2个结果项，已移除节点的结果项没有图片，其余正常。 |
 
-示例桥接返回submitError、overallError和items三个字段，其中submitError表示请求是否被受理，overallError表示这一批的总体结果，items按请求顺序给出每个节点的结果项。请求被拒绝时items为空数组。
+   示例桥接返回submitError、overallError和items三个字段，其中submitError表示请求是否被受理，overallError表示这一批的总体结果，items按请求顺序给出每个节点的结果项。请求被拒绝时items为空数组。
 
-示例返回中的错误码含义与取值见[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
+   示例返回中的错误码含义与取值见[ArkUI_ErrorCode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
 
 ### 采集页面文本
 
