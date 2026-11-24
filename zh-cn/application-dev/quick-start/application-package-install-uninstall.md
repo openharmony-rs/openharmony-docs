@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用程序包的安装、卸载流程及两种更新方式，涵盖开发者通过bm工具调试安装卸载与应用市场分发更新两种场景。"
+keywords: [应用安装, 应用卸载, 应用更新, bm工具, install, uninstall, versionCode, 应用市场]
+doctype: guide
+status: active
+---
 # 应用安装卸载与更新开发指导
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

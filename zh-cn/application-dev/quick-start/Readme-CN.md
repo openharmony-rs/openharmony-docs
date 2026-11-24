@@ -13,7 +13,8 @@
 <!--DelEnd-->
 <!--RP1-->
 <!--RP1End-->
-- 开发基础知识<!--development-fundamentals-->
+- 应用程序包<!--development-fundamentals-->
+  - [应用程序包指南配套示例代码](ability-kit-samples.md)
   - 应用程序包基础知识<!--application-package-fundamentals-->
     - [应用程序包概述](application-package-overview.md)
     - [应用程序包结构](application-package-structure-stage.md)

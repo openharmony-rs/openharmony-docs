@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍模块级配置文件module.json5的结构与全部字段，包含模块基本信息、设备类型、UIAbility与ExtensionAbility组件、权限以及metadata等配置。"
+keywords: [module.json5, UIAbility, ExtensionAbility, deviceTypes, abilities, requestPermissions, skills, pages, metadata]
+doctype: guide
+status: active
+---
 # module.json5配置文件
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

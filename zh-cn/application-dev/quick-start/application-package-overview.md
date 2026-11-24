@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "概述HarmonyOS应用程序包的设计机制与多Module设计，介绍HAP、HAR、HSP三种包类型的区别、使用场景、规格对比与选型建议。"
+keywords: [应用程序包, Module类型, HAP, HAR, HSP, 多Module, 包类型对比]
+doctype: guide
+status: active
+---
 # 应用程序包概述
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
