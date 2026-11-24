@@ -74,6 +74,10 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 | -- | -- |
 | bool | true：流打开成功。<br>false：流打开失败。 |
 
+**参考：**
+
+[OH_AudioAccessoryInputStreamManager_RegisterStartCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessoryinputstreammanager_registerstartcallback)
+
 ### OH_AudioAccessoryInputStream_StartCallback()
 
 ```c
