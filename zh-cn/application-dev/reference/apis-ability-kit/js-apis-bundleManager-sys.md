@@ -8833,6 +8833,57 @@ try {
 }
 ```
 
+## bundleManager.getThemeRefreshTime
+
+getThemeRefreshTime(): Promise\<string>
+
+获取当前主题的刷新时间。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<string> | Promise对象，返回调用方所属用户的当前主题刷新时间戳（十进制字符串），单位为ms；无记录时返回空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 17700101 | Bundle manager service exception. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getThemeRefreshTime().then((data: string) => {
+    hilog.info(0x0000, 'testTag', 'getThemeRefreshTime successfully: %{public}s', data);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getThemeRefreshTime failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getThemeRefreshTime failed. Cause: %{public}s', message);
+}
+```
+
 ## PermissionDef
 
 type PermissionDef = _PermissionDef
