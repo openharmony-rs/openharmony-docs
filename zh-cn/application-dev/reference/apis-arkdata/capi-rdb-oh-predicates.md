@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_Predicates
+typedef struct OH_Predicates {...} OH_Predicates
 ```
 
 ## 概述

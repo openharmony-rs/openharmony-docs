@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_Cursor
+typedef struct OH_Cursor {...} OH_Cursor
 ```
 
 ## 概述

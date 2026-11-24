@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_VBucket
+typedef struct OH_VBucket {...} OH_VBucket
 ```
 
 ## 概述
