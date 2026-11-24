@@ -49599,6 +49599,26 @@
 						"end_line":290,
 						"name":"AudioDecoder::Release",
 						"start_line":278
+					},
+					{
+						"end_line":24,
+						"name":"AudioDecoder::IncludeDrmHeaders",
+						"start_line":19
+					},
+					{
+						"end_line":102,
+						"name":"AudioDecoder::SetDecryptionConfig",
+						"start_line":77
+					},
+					{
+						"end_line":27,
+						"name":"AudioDecoder::IncludeCencHeaders",
+						"start_line":25
+					},
+					{
+						"end_line":294,
+						"name":"AudioDecoder::SetAVBuffer",
+						"start_line":240
 					}
 				]
 			},
@@ -49999,6 +50019,26 @@
 						"end_line":307,
 						"name":"AudioDecoder::PushInputBuffer",
 						"start_line":296
+					},
+					{
+						"end_line":24,
+						"name":"AudioDecoder::IncludeDrmHeaders",
+						"start_line":19
+					},
+					{
+						"end_line":102,
+						"name":"AudioDecoder::SetDecryptionConfig",
+						"start_line":77
+					},
+					{
+						"end_line":27,
+						"name":"AudioDecoder::IncludeCencHeaders",
+						"start_line":25
+					},
+					{
+						"end_line":294,
+						"name":"AudioDecoder::SetAVBuffer",
+						"start_line":240
 					}
 				]
 			},
