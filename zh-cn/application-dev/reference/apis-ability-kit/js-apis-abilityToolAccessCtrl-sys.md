@@ -506,6 +506,176 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 });
 ```
 
+## abilityToolAccessCtrl.generateTaskChallenge
+
+generateTaskChallenge(taskIdentityInfo: TaskIdentityInfo): Promise&lt;Uint8Array&gt;
+
+基于任务身份信息生成挑战值。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| taskIdentityInfo | [TaskIdentityInfo](#taskidentityinfo) | 是 | 用于生成挑战值的任务身份信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回Uint8Array格式的挑战值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[工具访问控制错误码](errorcode-abilityToolAccessCtrl-sys.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 24010000 | Invalid parameter. TaskId is empty, etc. |
+| 24010001 | Service is abnormal. Possible cause: IPC failed. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
+
+**示例：**
+
+```ts
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let taskIdentityInfo: abilityToolAccessCtrl.TaskIdentityInfo = {
+  taskId: 'task-001',
+  taskExpireTime: 1735689600,
+  executeType: abilityToolAccessCtrl.ExecuteType.INSTANT,
+  allowScreenLockExecution: false,
+  authToken: new Uint8Array([1, 2, 3]),
+  allowableDuration: 3600000
+};
+abilityToolAccessCtrl.generateTaskChallenge(taskIdentityInfo).then((challenge: Uint8Array) => {
+  console.info('generateTaskChallenge success, challenge length: ' + challenge.length);
+}).catch((err: BusinessError): void => {
+  console.error(`generateTaskChallenge fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## abilityToolAccessCtrl.generateTaskIdentity
+
+generateTaskIdentity(taskIdentityInfo: TaskIdentityInfo): Promise&lt;TaskIdentity&gt;
+
+智能体命令生成任务标识。该函数根据调用者身份和基本任务属性（例如任务ID和任务过期时间）生成该标识。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| taskIdentityInfo | [TaskIdentityInfo](#taskidentityinfo) | 是 | 要生成任务标识的任务信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[TaskIdentity](#taskidentity)&gt; | Promise对象，返回生成的任务标识（TaskIdentity），包含任务属性、标识信息和挑战值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[工具访问控制错误码](errorcode-abilityToolAccessCtrl-sys.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 24010000 | Invalid parameter. TaskId is empty, etc. |
+| 24010001 | Service is abnormal. Possible cause: IPC failed. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
+
+**示例：**
+
+```ts
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let taskIdentityInfoWithToken: abilityToolAccessCtrl.TaskIdentityInfo = {
+  taskId: 'task-003',
+  taskExpireTime: 1735689600,
+  executeType: abilityToolAccessCtrl.ExecuteType.INSTANT,
+  allowScreenLockExecution: false,
+  authToken: new Uint8Array([1, 2, 3]),
+  allowableDuration: 3600000
+};
+abilityToolAccessCtrl.generateTaskIdentity(taskIdentityInfoWithToken).then((data: abilityToolAccessCtrl.TaskIdentity) => {
+  console.info('generateTaskIdentity success, identity: ' + data.identity);
+}).catch((err: BusinessError): void => {
+  console.error(`generateTaskIdentity fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## abilityToolAccessCtrl.revokeTaskIdentity
+
+revokeTaskIdentity(taskId: string[]): Promise&lt;void&gt;
+
+批量撤销智能体命令的任务标识，并删除任务属性的本地缓存。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| taskId | string[] | 是 | 待撤销的任务ID列表。列表的最大长度为100。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[工具访问控制错误码](errorcode-abilityToolAccessCtrl-sys.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 24010000 | Invalid parameter. Task ID is invalid, etc. |
+| 24010001 | Service is abnormal. Possible cause: IPC failed. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
+
+**示例：**
+
+```ts
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let taskId: string[] = ['task-001', 'task-002', 'task-003'];
+abilityToolAccessCtrl.revokeTaskIdentity(taskId).then(() => {
+  console.info('revokeTaskIdentity success');
+}).catch((err: BusinessError): void => {
+  console.error(`revokeTaskIdentity fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## RemoteControlParams
 
 表示远程控制交互参数。
@@ -557,6 +727,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | remoteInfo | [RemoteInfo](#remoteinfo) | 否 | 是 | 远端设备信息。用于远程授权场景，包含设备角色、设备ID、华为账号ID等远程设备相关信息。<br>**起始版本：** 26.0.1 |
 | callerTokenId | number | 否 | 是 | 调用方进程的tokenId。当需要为其他进程查询或授权时，可指定目标进程的tokenId。<br>如果未传入该参数，默认获取调用方进程的tokenId。|
 | domainId | string | 否 | 是 | 域标识。<br>如果未传入该参数，则默认获取调用方当前的域标识。|
+| taskIdentity | [TaskIdentity](#taskidentity) | 否 | 是 | 任务标识，用于智能体命令的任务身份验证。可通过[generateTaskIdentity](#abilitytoolaccessctrlgeneratetaskidentity)获取。<br>默认值：空。<br>**起始版本：** 26.1.0 |
 
 ## RemoteInfo
 
@@ -778,3 +949,53 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | -------- | -------- | -------- |
 | ENABLE | 0x01 | 启用远程授权，允许设备向远程设备授予权限。 |
 | DISABLE | 0x02 | 禁用远程授权，不允许远程授权。 |
+
+## TaskIdentityInfo
+
+任务标识的输入参数，包含任务ID、过期时间、执行类型等信息，用于生成任务挑战值或任务标识。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| taskId | string | 否 | 否 | 任务ID。 |
+| taskExpireTime | number | 否 | 否 | 任务过期时间。单位为：秒。取值为-1或正整数。-1表示无过期时间。 |
+| executeType | [ExecuteType](#executetype) | 否 | 否 | 任务执行类别。 |
+| allowScreenLockExecution | boolean | 否 | 否 | 任务是否允许在锁屏下执行。true表示允许在锁屏下执行；false表示不允许在锁屏下执行。 |
+| authToken | Uint8Array | 否 | 是 | 可信持有物的认证凭据。长度不超过4096字节。<br>默认值：空。 |
+| allowableDuration | number | 否 | 是 | 可信持有物认证凭据的有效时长。单位为：毫秒。取值范围：(0, 86400000]。默认值：600000。 |
+
+## TaskIdentity
+
+任务标识。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| taskAttributes | string | 否 | 否 | 任务属性。为JSON格式的字符串，包含taskId、taskExpireTime、executeType、allowScreenLockExecution、authToken、allowableDuration字段。 |
+| identity | string | 否 | 否 | 任务属性的标识信息。 |
+| challenge | string | 否 | 否 | 挑战值。 |
+
+## ExecuteType
+
+任务执行类别。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| INSTANT | 0x01 | 即时任务，任务立即执行。 |
+| DELAYED | 0x02 | 延时任务，任务在指定条件下延后执行。 |
