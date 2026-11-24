@@ -252,7 +252,9 @@ struct SectionExample {
 
 ### keepAlive
 
-keepAlive(keepAlive: Optional\<boolean\>)
+ArkTS-Dyn: keepAlive(keepAlive: Optional\<boolean\>)
+
+ArkTS-Sta: keepAlive(keepAlive: boolean \| undefined)
 
 标记该TabContent为不可回收状态。当配置了[Tabs.cachedMaxCount](ts-container-tabs.md#cachedmaxcount19)时，若该TabContent的keepAlive设置为true，即使其超出缓存范围，也不会被缓存机制销毁。未通过该接口设置时，标记该TabContent为可回收状态。
 
@@ -260,7 +262,7 @@ keepAlive(keepAlive: Optional\<boolean\>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -268,7 +270,7 @@ keepAlive(keepAlive: Optional\<boolean\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | ----- |
-| keepAlive | Optional\<boolean\> | 是 | 是否将该TabContent保持为常驻不可回收状态。<br/>设置为true时该TabContent不会被缓存机制销毁，设置为false时会被缓存机制销毁。<br/>设置undefined时恢复默认值false。 |
+| keepAlive | ArkTS-Dyn: Optional\<boolean\> <br/>ArkTS-Sta: boolean \| undefined | 是 | 是否将该TabContent保持为常驻不可回收状态。<br/>设置为true时该TabContent不会被缓存机制销毁，设置为false时会被缓存机制销毁。<br/>设置undefined时恢复默认值false。 |
 
 **示例：**
 
