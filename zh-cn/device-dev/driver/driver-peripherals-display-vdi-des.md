@@ -202,6 +202,7 @@ OpenHarmony中有一个默认VDI实现，芯片厂商可参考此实现。见`dr
   | 废弃Buffer缓存                 | int32_t InvalidateCache(const BufferHandle& handle) |
   | 判断是否能申请请求的buffer       | int32_t IsSupportedAlloc(const std::vector\<VerifyAllocInfo>& infos, std::vector\<bool>& supporteds) |
   | 注册Buffer                    | int32_t RegisterBuffer(const BufferHandle& handle) |
+  | 设置Buffer的元数据              | int32_t SetMetadata(const BufferHandle& handle, uint32_t key, const std::vector<uint8_t>& value) |
   | 获取Buffer的元数据              | int32_t GetMetadata(const BufferHandle& handle, uint32_t key, std::vector<uint8_t>& value) |
   | 列出所有元数据的key             | int32_t ListMetadataKeys(const BufferHandle& handle, std::vector<uint32_t>& keys) |
   | 清除指定key的元数据信息          | int32_t EraseMetadataKey(const BufferHandle& handle, uint32_t key) |
