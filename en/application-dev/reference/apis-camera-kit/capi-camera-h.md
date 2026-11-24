@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1a90449abe56ae310254be96c4e5d2c7b281a047 translatedAt=2026-10-12T11:58:03.781Z pushedAt=2026-10-13T04:58:00.891Z -->
+<!-- md-trans-meta sourceCommit=5ac893f4cf59ce96714ebe7c475a6507a3b6614d translatedAt=2026-11-18T03:38:11.193Z pushedAt=2026-11-20T07:35:24.825Z nl=1 -->
 
 ## Overview
 
@@ -96,6 +96,7 @@ Defines the basic APIs of the camera.
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | Enumerates the exposure states of the camera.|
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | Enumerates the metadata object emotion types.|
 | [OH_Camera_AutomotiveCameraPosition](#oh_camera_automotivecameraposition) | OH_Camera_AutomotiveCameraPosition | Enumerates the camera positions on a car. |
+| [OH_Camera_AuxiliaryPhotoType](#oh_camera_auxiliaryphototype) | OH_Camera_AuxiliaryPhotoType | Enumerates auxiliary image types. Use this enum type to specify the detection target in auxiliary images for skin health assessment capture. |
 
 ### Functions
 
@@ -134,6 +135,8 @@ Enumerates the camera error codes.
 | CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | The optional attribute does not exist.<br>**Since:** 26.0.0 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal,<br> for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 | CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | The device currently does not support this capability.<br>**Since:** 26.0.0 |
+| CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115 | Unsupported multi-camera combination. This error is returned when an attempt is made to use an unsupported multi-camera combination due to hardware limitations or driver constraints. Consider using another camera combination, or check the camera configurations supported by the device.<br>**Since:** 26.0.1 |
+| CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116 | Parameter out of range. This error is returned when a parameter value (such as ISO, exposure time, or focus distance) exceeds the valid range. Ensure that the value is within the range supported by the current camera configuration.<br>**Since:** 26.0.1 |
 
 ### Camera_Status
 
@@ -581,6 +584,7 @@ Enumerates the remote device types.
 | HOST_DEVICE_TYPE_UNKNOWN_TYPE = 0 | Unknown type.|
 | HOST_DEVICE_TYPE_PHONE = 0x0E | Mobile phone.|
 | HOST_DEVICE_TYPE_TABLET = 0x11 | Tablet.|
+| HOST_DEVICE_TYPE_GLASSES = 0xA31 | Glasses device.<br>**Since:** 26.0.1 |
 
 ### Camera_FoldStatus
 
@@ -795,6 +799,23 @@ Enumerates the camera positions on a car.
 | OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Left camera in the third row inside the car.<br>**Since:** 26.0.0 |
 | OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Central camera in the third row inside the car.<br>**Since:** 26.0.0 |
 | OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Right camera in the third row inside the car.<br>**Since:** 26.0.0 |
+
+### OH_Camera_AuxiliaryPhotoType
+
+```c
+enum OH_Camera_AuxiliaryPhotoType
+```
+
+**Description**
+
+Enumerates auxiliary image types. Use this enum type to specify the detection target in auxiliary images for skin health assessment capture.
+
+**Since:** 26.0.1
+
+| Enum Item | Description |
+| -- | -- |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_OXYGEN = 0 | Blood oxygen image.<br>**Since:** 26.0.1 |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_PIGMENTATION = 1 | Pigmentation image.<br>**Since:** 26.0.1 |
 
 ## Function Description
 

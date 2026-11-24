@@ -21,16 +21,15 @@
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function test() {
+async function test() {
   // ...
   try {
-    cert.createTrustAnchorsWithKeyStore(p12Data, '123456').then((data) => {
-      console.info('createTrustAnchorsWithKeyStore result: success, the num of result is :' + data.length);
-    }).catch((err: BusinessError) => {
-      console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${err.code}, message: ${err.message}`);
-    })
+    let data = await cert.createTrustAnchorsWithKeyStore(p12Data, '123456');
+    console.info('createTrustAnchorsWithKeyStore result: success, the num of result is :' + data.length);
   } catch (error) {
-    console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

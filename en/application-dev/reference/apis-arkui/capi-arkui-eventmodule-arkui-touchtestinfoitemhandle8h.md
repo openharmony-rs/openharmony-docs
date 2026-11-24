@@ -1,11 +1,11 @@
 # ArkUI_TouchTestInfoItemHandle*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=26540f6216e6b0b2302d490e45a3297867c5a404 translatedAt=2026-10-10T10:47:12.593Z pushedAt=2026-10-12T01:04:35.832Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-19T09:34:13.531Z pushedAt=2026-11-19T09:34:49.171Z nl=1 -->
 
 ```c++
 typedef ArkUI_TouchTestInfoItemHandle* ArkUI_TouchTestInfoItemArray

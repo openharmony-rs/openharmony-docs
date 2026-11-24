@@ -30,7 +30,7 @@ ComponentInit: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentAppear
 
@@ -46,7 +46,7 @@ ComponentAppear: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentBuilt
 
@@ -62,7 +62,7 @@ ComponentBuilt: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentDisappear
 
@@ -78,7 +78,7 @@ ComponentDisappear: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentReuse
 
@@ -106,7 +106,7 @@ ComponentReuse: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentRecycle
 
@@ -122,7 +122,7 @@ ComponentRecycle: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentActive
 
@@ -140,7 +140,7 @@ ComponentActive: MethodDecorator
 
 **示例：**
 
-参见[激活和非激活生命周期使用示例](#激活和非激活生命周期使用示例)。
+参见[示例2（激活和非激活生命周期使用）](#示例2激活和非激活生命周期使用)。
 
 ## \@ComponentInactive
 
@@ -158,7 +158,7 @@ ComponentInactive: MethodDecorator
 
 **示例：**
 
-参见[激活和非激活生命周期使用示例](#激活和非激活生命周期使用示例)。
+参见[示例2（激活和非激活生命周期使用）](#示例2激活和非激活生命周期使用)。
 
 ## CustomComponentLifecycle
 
@@ -449,7 +449,9 @@ struct Index {
 }
 ```
 
-## 生命周期使用示例
+## 示例
+
+### 示例1（生命周期使用）
 
 本示例展示了生命周期回调函数的部分使用场景：
 
@@ -538,7 +540,7 @@ struct Child {
 }
 ```
 
-## 激活和非激活生命周期使用示例
+### 示例2（激活和非激活生命周期使用）
 
 本示例展示了组件回收复用场景下，自定义组件激活和非激活生命周期回调函数触发情况，建议按以下步骤执行：
 

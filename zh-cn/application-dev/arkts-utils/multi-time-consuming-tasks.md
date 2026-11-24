@@ -77,7 +77,9 @@
          }
        }
      }
-     // The length of iconItemSourceList is 360
+     // 日志预期打印：The length of iconItemSourceList is 360
      console.info('The length of iconItemSourceList is ' + (iconItemSourceList?.length ?? 0));
-   })
+   }).catch((e: BusinessError) => {
+     console.error(`taskpool execute error, code: ${e.code}, message is: ${e.message}`);
+   });
    ```

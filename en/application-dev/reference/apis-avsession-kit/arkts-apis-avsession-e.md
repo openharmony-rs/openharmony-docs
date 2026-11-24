@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=253bb63fed885402f390ba0c66a75439619635cd translatedAt=2026-11-18T03:19:00.527Z pushedAt=2026-11-19T11:16:57.930Z nl=1 -->
 
 > **NOTE**
 >
@@ -263,6 +264,7 @@ Enumerates the error codes used in the media session.
 | ERR_CODE_CAST_CONTROL_DRM_DEVICE_REVOKED<sup>13+</sup>     | 6616007 | The DRM permission has been revoked from the device.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DRM_LICENSE_EXPIRED<sup>13+</sup>   | 6616008 | The DRM license that is being loaded has expired.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DRM_PROVIDE_KEY_RESPONSE_ERROR<sup>13+</sup>    | 6616100 | An error occurs when the DRM processes the key response.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_SERVICE_NOT_RUNNING   | 6700101 | The session service is not running. <br>**Since:** 26.0.1 <br> **Model restriction:** This API can only be used in the Stage model.<br>**System capability:** SystemCapability.Multimedia.AVSession.Manager |
 
 ## SkipIntervals<sup>11+</sup>
 

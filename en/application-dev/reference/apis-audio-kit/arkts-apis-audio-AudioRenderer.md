@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e2bac062111f9118e281f8f0d45c0ddb4af26ea3 translatedAt=2026-10-08T12:02:23.917Z pushedAt=2026-10-12T02:30:48.003Z -->
+<!-- md-trans-meta sourceCommit=e043fa6283e20117e939754fa590740df7e56af9 translatedAt=2026-11-18T03:06:55.509Z pushedAt=2026-11-19T08:41:36.979Z nl=1 -->
 
 This interface provides APIs for audio rendering.
 
@@ -1531,16 +1531,16 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
   if (err) {
     console.error(`getCurrentOutputDevices Fail: ${err}`);
   } else {
-    for (let i = 0; i < deviceInfo.length; i++) {
-      console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-      console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-      console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-      console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-      console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-      console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-      console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-      console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-    }
+    deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
   }
 });
 ```
@@ -1564,16 +1564,16 @@ Obtains the output device information of the audio stream. This API uses a promi
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getCurrentOutputDevices().then((deviceInfo: audio.AudioDeviceDescriptors) => {
-  for (let i = 0; i < deviceInfo.length; i++) {
-    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-  }
+  deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
 }).catch((err: BusinessError) => {
   console.error(`Get current output devices Fail: ${err}`);
 });
@@ -1600,16 +1600,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let deviceInfo: audio.AudioDeviceDescriptors = audioRenderer.getCurrentOutputDevicesSync();
-  for (let i = 0; i < deviceInfo.length; i++) {
-    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-  }
+  deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
 } catch (err) {
   let error = err as BusinessError;
   console.error(`Get current output devices Fail: ${error}`);

@@ -5,7 +5,7 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:24:47.598Z pushedAt=2026-10-10T07:12:55.326Z -->
+<!-- md-trans-meta sourceCommit=37ca604503d451441f6924864481deef5fcc486f translatedAt=2026-11-18T04:16:31.382Z pushedAt=2026-11-20T09:27:38.242Z nl=1 -->
 
 
 
@@ -160,6 +160,8 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
 Starts NearLink advertising. This API uses a promise to return the result. This API is applicable to scenarios where the local device capabilities or data needs to be advertised, such as device discovery and device information advertising. You can use [advertising.onAdvertisingStateChange](#advertisingonadvertisingstatechange) to monitor the advertising status.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -186,8 +188,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Integer out of range. |
 | 36100043 | Invalid UUID. |
@@ -251,6 +253,8 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
 Stops NearLink advertising. This API uses a promise to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -277,8 +281,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Invalid advertising ID. |
 | 36100099 | Operation failed. |
@@ -309,6 +313,8 @@ Subscribes to the NearLink advertising state change event. This API uses an asyn
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -327,7 +333,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example** 
 ```typescript
@@ -353,6 +359,8 @@ offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;)
 
 Unsubscribes from the NearLink advertising state change event. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -371,7 +379,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example** 
 ```typescript

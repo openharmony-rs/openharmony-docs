@@ -781,11 +781,9 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 使用enableAnalyzer属性开启图像AI分析功能。可通过XComponentController控制开始、停止图像AI分析。
 
-<!--RP1-->
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。
-<!--RP1End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
@@ -917,7 +915,7 @@ struct XComponentExample {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
@@ -1077,7 +1075,7 @@ struct Index {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets

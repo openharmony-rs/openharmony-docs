@@ -2,12 +2,13 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @guozejun-->
-<!--Designer: @zcdqs-->
+<!--Owner: @guozejun; @rongShao-Z-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ee926c6497c10f13d209f27a3035fc83b4019199 translatedAt=2026-11-17T03:55:29.758Z pushedAt=2026-11-19T08:20:04.857Z nl=1 -->
 
-The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
+A grid container consists of cells divided by rows and columns. Various layouts are implemented by specifying the cells where items are placed.
 
 > **NOTE**
 >
@@ -22,14 +23,16 @@ Defines the grid layout options.
 
 To improve the layout performance and accuracy of the grid that contains nodes of irregular sizes, you can use the **onGetStartIndexByOffset** and **onGetStartIndexByIndex** callback parameters. The two callbacks must be set at the same time to take effect. In this scenario, you are advised to set [onScrollBarUpdate](ts-container-grid.md#onscrollbarupdate10) to accurately locate the scrollbar.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type     | Read-Only  | Optional| Description                   |
 | ----- | ------- | ---- | --  | --------------------- |
-| onGetStartIndexByOffset<sup>23+</sup> | [OnGetStartIndexByOffsetCallback](#ongetstartindexbyoffsetcallback23)| No| Yes| Calculates the start line position of the current page in the grid based on the total scrolling offset of the **Grid** component, which is used for fast scrolling or reverse scrolling.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
-| onGetStartIndexByIndex<sup>23+</sup> | [OnGetStartIndexByIndexCallback](#ongetstartindexbyindexcallback23)| No| Yes| Calculates the start line on the page when the grid is scrolled to the specified target index. This API is used to support operations such as [scrollToIndex](ts-container-scroll.md#scrolltoindex).<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| onGetStartIndexByOffset<sup>23+</sup> | [OnGetStartIndexByOffsetCallback](#ongetstartindexbyoffsetcallback23) | No | Yes | Calculates the start row position of the current grid page based on the total scroll offset, used for fast scrolling or reverse scrolling scenarios. If not set, this callback is not enabled. It must be set simultaneously with **onGetStartIndexByIndex** to take effect.<br/>**System API:** This is a system API.<br/>**Model restriction:** This API can be used only in the stage model. |
+| onGetStartIndexByIndex<sup>23+</sup> | [OnGetStartIndexByIndexCallback](#ongetstartindexbyindexcallback23) | No | Yes | Calculates the start row within the page when the **Grid** scrolls to a specified target index, used to support operations such as [scrollToIndex](ts-container-scroll.md#scrolltoindex). If not set, this callback is not enabled. It must be set simultaneously with **onGetStartIndexByOffset** to take effect.<br/>**System API:** This is a system API.<br/>**Model restriction:** This API can be used only in the stage model. |
 
-## StartLineInfo<sup>23+</sup> 
+## StartLineInfo<sup>23+</sup>
 
 Records the position of the start line in the grid.
 
@@ -41,8 +44,8 @@ Records the position of the start line in the grid.
 
 | Name| Type| Read-Only| Optional| Description|
 |------|------|------|------|------|
-| startIndex | number | No| No| Start index of the row where the target index or target offset is located.|
-| startLine | number | No| No| Start line of the **GridItem** corresponding to **startIndex**. Generally, the start line is in the **Grid** window. For a **GridItem** that spans multiple lines, the start line of the node needs to be found, which may be outside the window.|
+| startIndex | number | No | No | In **OnGetStartIndexByOffsetCallback**, indicates the start index of the row where the scroll offset is located; in **OnGetStartIndexByIndexCallback**, indicates the start index of the row where the target index is located. |
+| startLine | number | No | No | Start row number of the **GridItem** corresponding to **startIndex** in the grid layout. If the **GridItem** spans multiple rows and the current viewport starts displaying from the middle of the **GridItem**, **startLine** still indicates the actual first row number occupied by the **GridItem** in the complete grid layout. |
 | startOffset | number | No| No| Offset between the top of the **GridItem** corresponding to **startIndex** and the top of the **Grid**.<br>Unit: vp|
 | totalOffset | number | No| No| Total scrolling offset, that is, the offset between the top of the first **GridItem** in the **Grid** component and the top of the **Grid** component.<br>Unit: vp |
 
@@ -50,7 +53,7 @@ Records the position of the start line in the grid.
 
 type OnGetStartIndexByOffsetCallback = (totalOffset: number) => StartLineInfo
 
-Calculates the start line position of the current page based on the total offset of the **Grid** component, which is used for fast scrolling or reverse scrolling.
+Calculates the start line position of the current page based on the total offset of the **Grid** component, which is used for fast scrolling or reverse scrolling. This callback must be set simultaneously with **onGetStartIndexByIndex** to take effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +77,7 @@ Calculates the start line position of the current page based on the total offset
 
 type OnGetStartIndexByIndexCallback = (targetIndex: number) => StartLineInfo
 
-Calculates the start line on the page when the grid is scrolled to the specified target index. This API is used to support operations such as [scrollToIndex](ts-container-scroll.md#scrolltoindex).
+Calculates the start line on the page when the grid is scrolled to the specified target index. This API is used to support operations such as [scrollToIndex](ts-container-scroll.md#scrolltoindex). This callback must be set simultaneously with **onGetStartIndexByOffset** to take effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,7 +100,7 @@ Calculates the start line on the page when the grid is scrolled to the specified
 ## Examples
 
 ### Example 1: Basic Usage
-This example shows how to use the **onGetStartIndexByOffset** and **onGetStartIndexByIndex** in [GridLayoutOptions](#gridlayoutoptions10) to quickly locate the scrolling position.
+This example shows how to use **onGetStartIndexByOffset** and **onGetStartIndexByIndex** in [GridLayoutOptions](#gridlayoutoptions10) to quickly locate the grid scrolling position.
 
 **GridLayoutOptions** supports **onGetStartIndexByOffset** and **onGetStartIndexByIndex** since API version 23.
 ```ts
@@ -136,9 +139,9 @@ struct Index {
     },
     onGetStartIndexByIndex: (index: number) => {
       let line = Math.floor(index / this.crossCount)
-      let offset = index % 3 == 2 ? -this.itemHeight : 0
+      let offset = index % this.crossCount == this.crossCount - 1 ? -this.itemHeight : 0
       return {
-        startIndex: line * 3,
+        startIndex: line * this.crossCount,
         startLine: line * 2,
         startOffset: offset,
         totalOffset: line * this.itemHeight * 2 - offset
@@ -150,7 +153,7 @@ struct Index {
   aboutToAppear() {
     let list: string[] = [];
     let irregularList: number[] = []
-    for (let i = 0; i <= this.childrenCount; i++) {
+    for (let i = 0; i < this.childrenCount; i++) {
       list.push(i.toString())
       if (i % 3 == 0) {
         irregularList.push(i)
@@ -197,9 +200,9 @@ struct Index {
         console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return {
           totalOffset: (index / this.crossCount) * (this.itemHeight) * 2 - offset,
-          totalLength: this.itemHeight * 2 * (this.childrenCount + 1) / this.crossCount
+          totalLength: this.itemHeight * 2 * Math.ceil(this.childrenCount / this.crossCount)
         };
-      }) // The sample code applies only to the current data source. If the data source changes, modify the code.
+      }) // The calculation of totalOffset and totalLength depends on the amount of data, the number of columns, and the irregular node rules in the current example. Adjust them accordingly when the data source is modified.
     }.width('100%').margin({ top: 5 })
   }
 }

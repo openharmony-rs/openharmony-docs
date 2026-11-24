@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=19f2219e5037128b010d30c8935ea3043507556c translatedAt=2026-11-18T03:23:10.662Z pushedAt=2026-11-19T11:43:18.720Z nl=1 -->
 
 The AVSession module provides APIs for media playback control so that applications can access the system's Media Controller.
 
@@ -27,27 +28,27 @@ import { avSession } from '@kit.AVSessionKit';
 
 This topic describes only system APIs. Before using these APIs, you must create an instance. For details about how to create an instance, see the description and example of the public API [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10).
 
-## avSession.getAllSessionDescriptors 
+## avSession.getAllSessionDescriptors
 
 getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void 
 
 Obtains the descriptors of all sessions that have been configured with media information and registered with the control callback. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES (available only to system applications)
+**Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES (available only to system applications) 
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                      | 
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ | 
 | callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.| 
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
 
 | ID| Error Message| 
 | -------- | ---------------------------------------- | 
@@ -55,7 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not System App. |
 | 6600101  |Session service exception. | 
 
-**Example**
+**Example** 
 
 ```ts 
 import { avSession } from '@kit.AVSessionKit';
@@ -130,6 +131,59 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
     console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
     console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
   }
+});
+```
+
+## avSession.getSessionDescriptorsForAudioZone
+ 
+getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
+ 
+Obtains the session description of the audio zone to which the specified user belongs. This API uses a promise to return the result.<br> An audio zone refers to an audio output area. Different audio zones can play media independently.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
+ 
+**System capability**: SystemCapability.Multimedia.AVSession.Manager
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**System API**: This is a system API. 
+ 
+**Parameters** 
+ 
+| Name        | Type           | Mandatory | Description |
+| ------------ | -------------- |------|------|
+| userId       | number            | Yes   | ID of the specified user. |
+ 
+**Return value**
+ 
+| Type                                                                        | Description                                   |
+| --------------------------------------------------------------------------- | -------------------------------------- |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise used to return a read-only object of the session description of the corresponding audio zone. |
+ 
+**Error codes** 
+ 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md). 
+ 
+| ID | Error Message | 
+| -------- | ---------------------------------------- | 
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 6700101  |  Session service is not running.  |
+ 
+**Example** 
+ 
+```ts
+avSession.getSessionDescriptorsForAudioZone(100).then((descriptors: avSession.AVSessionDescriptor[]) => {
+    console.info(`Succeeded in getting session descriptors for userId, length: ${descriptors.length}`);
+    if (descriptors.length > 0 ) {
+      console.info(`Succeeded in getting session descriptors for userId, isActive: ${descriptors[0].isActive}`);
+      console.info(`Succeeded in getting session descriptors for userId, type: ${descriptors[0].type}`);
+      console.info(`Succeeded in getting session descriptors for userId, sessionTag: ${descriptors[0].sessionTag}`);
+      console.info(`Succeeded in getting session descriptors for userId, sessionId: ${descriptors[0].sessionId}`);
+      console.info(`Succeeded in getting session descriptors for userId, bundleName: ${descriptors[0].elementName.bundleName}`);
+    }
 });
 ```
 
@@ -309,28 +363,28 @@ avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]
 });
 ```
 
-## avSession.createController 
+## avSession.createController
 
 createController(sessionId: string, callback: AsyncCallback\<AVSessionController>): void 
 
 Creates a session controller based on the session ID. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES (available only to system applications)
+**Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES (available only to system applications) 
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                                       | Mandatory| Description                                                        | 
 | --------- | ----------------------------------------------------------- | ---- |------------------------------------------------------------ | 
 | sessionId | string                                                      | Yes  | Session ID.                                                    | 
 | callback  | AsyncCallback<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | Yes  | Callback used to return the session controller created, which can be used to obtain the session ID,<br>send commands and events to sessions, and obtain metadata and playback state information.|
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
 
 | ID| Error Message| 
 | -------- | ---------------------------------------- | 
@@ -340,7 +394,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 6600101  | Session service exception. | 
 | 6600102  | The session does not exist. | 
 
-**Example**
+**Example** 
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
@@ -529,6 +583,59 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 });
 ```
 
+## avSession.startAVPlaybackForAudioZone
+ 
+startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string, info?: CommandInfo, extraInfo?: ExtraInfo): Promise\<void\>
+ 
+Starts the media playback application of the specified user. This API uses a promise to return the result.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
+ 
+**System capability**: SystemCapability.Multimedia.AVSession.Manager
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**System API**: This is a system API.
+ 
+**Parameters**
+ 
+| Name        | Type           | Mandatory | Description |
+| ------------ | -------------- |------|------|
+| userId       | number            | Yes   | ID of the specified user. |
+| bundleName   | string         | Yes   | Application bundle name.   |
+| assetId      | string         | Yes   | Media asset ID.    |
+| info         | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)    | No   | Command information sent to the session. |
+| extraInfo |  [ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)    |  No  |  Cold start extension information. |
+ 
+**Return value**
+ 
+| Type           | Description                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise used to return the result. If the playback succeeds, no value is returned; otherwise, an error object is returned. |
+ 
+**Error codes**
+ 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
+ 
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes:  1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 6700101  | Session service is not running. |
+ 
+**Example**
+ 
+```ts
+import { avSession } from '@kit.AVSessionKit';
+ 
+avSession.startAVPlaybackForAudioZone(100, "com.example.myapplication", "121278").then(() => {
+  console.info('Succeeded in starting AV playback for audio zone.');
+});
+```
+
 ## avSession.getDistributedSessionController<sup>18+</sup>
 
 getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array\<AVSessionController>>
@@ -591,26 +698,26 @@ Describes the information about a session token.
 | pid       | number | No | Yes| Process ID of the session.|
 | uid       | number | No  | Yes| User ID.      |
 
-## avSession.on('sessionCreate') 
+## avSession.on('sessionCreate')
 
 on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): void 
 
 Subscribes to session creation events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
-**Parameters**
+**Parameters** 
  
 | Name   | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | Yes  | Event type. The event **'sessionCreate'** is triggered when a session is created.|
 | callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | Yes  | Callback used to report the session descriptor.|
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
 
 | ID| Error Message| 
 | -------- | ---------------------------------------- | 
@@ -618,7 +725,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
 | 6600101  | Session service exception. | 
 
- **Example**
+ **Example** 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
 
@@ -645,26 +752,26 @@ struct Index {
 
 ```
 
-## avSession.on('sessionDestroy') 
+## avSession.on('sessionDestroy')
 
 on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void 
 
 Subscribes to session destroy events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type           | Mandatory| Description                                                        |
 | -------- | ---------------| ---- | ------------------------------------------------------------ |
 | type     | string         | Yes  | Event type. The event **'sessionDestroy'** is triggered when a session is destroyed.|
 | callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | Yes  | Callback used to report the session descriptor.|
 
- **Error codes**
+ **Error codes** 
 
- For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+ For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
  
  | ID| Error Message| 
  | -------- | ---------------------------------------- | 
@@ -697,26 +804,26 @@ struct Index {
 }
 ```
  
-## avSession.on('topSessionChange') 
+## avSession.on('topSessionChange')
 
 on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): void 
 
 Subscribes to the top session change events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
 | type     | string      | Yes  | Event type. The event **'topSessionChange'** is triggered when the top session is changed.|
 | callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | Yes  | Callback used to report the session descriptor.|
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
 
 | ID| Error Message| 
 | -------- | ---------------------------------------- | 
@@ -724,7 +831,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
 | 6600101  | Session service exception. | 
 
-**Example**
+**Example** 
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
@@ -751,15 +858,15 @@ struct Index {
 }
 ```
 
-## avSession.off('sessionCreate') 
+## avSession.off('sessionCreate')
 
 off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): void 
 
 Unsubscribes from session creation events. After unsubscription, the event will no longer be received.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
  **Parameters**
 
@@ -768,9 +875,9 @@ Unsubscribes from session creation events. After unsubscription, the event will 
 | type     | string    | Yes  | Event type, which is **'sessionCreate'** in this case.|
 | callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.                              |
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
 
 | ID| Error Message| 
 | -------- | ---------------------------------------- | 
@@ -803,15 +910,15 @@ struct Index {
 }
 ```
 
-## avSession.off('sessionDestroy') 
+## avSession.off('sessionDestroy')
 
 off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): void 
 
 Unsubscribes from session destroy events. After unsubscription, the event will no longer be received.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
 **Parameters**
 
@@ -820,9 +927,9 @@ Unsubscribes from session destroy events. After unsubscription, the event will n
 | type     | string     | Yes  | Event type, which is **'sessionDestroy'** in this case.|
 | callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
 
 | ID| Error Message| 
 | -------- | ---------------------------------------- | 
@@ -855,15 +962,15 @@ struct Index {
 }
 ```
 
-## avSession.off('topSessionChange') 
+## avSession.off('topSessionChange')
 
 off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void): void 
 
 Unsubscribes from the top session change events. After unsubscription, the event will no longer be received.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Manager
+**System capability**: SystemCapability.Multimedia.AVSession.Manager 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
 **Parameters**
 
@@ -872,9 +979,9 @@ Unsubscribes from the top session change events. After unsubscription, the event
 | type     | string           | Yes  | Event type, which is **'topSessionChange'** in this case.|
 | callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md). 
 
 | ID| Error Message| 
 | -------- | ---------------------------------------- | 

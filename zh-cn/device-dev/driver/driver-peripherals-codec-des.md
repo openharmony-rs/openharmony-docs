@@ -9,7 +9,7 @@ Codec HDI驱动框架基于HDF驱动框架实现。Codec HDI驱动架构组成�
 
 **图 1**  Codec HDI驱动框架
 
-![image](figures/Codec框架图.png "Codec HDI驱动框架图")
+![image](figures/Codec框架图.png)
 
 - Codec HDI Callback Remote Service：匿名Callback服务，通过该服务，可以处理回调。
 - Codec HDI Interface：提供了基于OpenMax的标准接口，上层可通过这些接口来实现硬件的编解码。
@@ -58,7 +58,7 @@ Codec模块主要完成对视频数据的硬件编解码，将H264等裸流数�
 
   | 接口名称                                                                                                                                                       | 功能描述                      |
   | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------|
-  | int32_t CreateComponent(sptr<ICodecComponent>& component, uint32_t& componentId,<br />const std::string& compName, int64_t appData, const sptr<ICodecCallback>& callbacks) | 创建Codec组件实例             |
+  | int32_t CreateComponent(sptr\<ICodecComponent>& component, uint32_t& componentId,<br />const std::string& compName, int64_t appData, const sptr\<ICodecCallback>& callbacks) | 创建Codec组件实例             |
   | int32_t DestoryComponent(uint32_t componentId)                                                                | 销毁Codec组件实例                  |
 
 - icodec_component.h
@@ -150,7 +150,7 @@ static struct HdfDriverEntry g_codeccomponentmanagerDriverEntry = {
     }
     ```
     
-- HdfCodecComponentTypeDriverRelease：释放驱动实例。
+- HdfCodecComponentManagerDriverRelease：释放驱动实例。
 
     ```c
     static void HdfCodecComponentManagerDriverRelease(struct HdfDeviceObject *deviceObject)
@@ -176,6 +176,7 @@ HCS配置包括两部分：
 HCS配置内容包括：驱动节点、加载顺序、服务名称等。HCS语法可参考[配置管理](driver-hdf-manage.md)。
 
 以RK3568开发板为例，标准系统配置文件路径（其它系统暂不涉及）：
+
 vendor/hihope/rk3568/hdf_config/uhdf/
 
 1. device相关配置
@@ -203,11 +204,11 @@ vendor/hihope/rk3568/hdf_config/uhdf/
     在media_codec\media_codec_capabilities.hcs中增加组件配置，具体配置如下：
     ```c
     /* node name explanation -- HDF_video_hw_enc_avc_rk：
-    **
-    **    HDF____________video__________________hw____________________enc____________avc_______rk
-    **     |               |                    |                      |              |        |
-    ** HDF or OMX    video or audio    hardware or software    encoder or decoder    mime    vendor
-    */
+     *
+     *    HDF____________video__________________hw____________________enc____________avc_______rk
+     *     |               |                    |                      |              |        |
+     * HDF or OMX    video or audio    hardware or software    encoder or decoder    mime    vendor
+     */
     HDF_video_hw_enc_avc_rk {
         role = 1;                                           // AvCodecRole配置
         type = 1;                                           // CodecType配置
@@ -659,7 +660,7 @@ int32_t CodecHdiDecode::EventHandler(CodecEventType event, const EventInfo &info
             break;
         }
         case OMX_EventPortSettingsChanged: {
-            HDF_LOGI("OMX_EventPortSeetingsChanged reached");
+            HDF_LOGI("OMX_EventPortSettingsChanged reached");
             this->HandleEventPortSettingsChanged(info.data1, info.data2);
         }
 
@@ -751,7 +752,7 @@ OpenMax对AVCC格式的数据处理，第一帧一定要是extra_data，可能�
 
 **解决办法**
 
-将sps和pps按照extrea_data格式写入buffer，并设置好buffer的flag为OMX_BUFFERFLAG_EXTRADATA。
+将sps和pps按照extra_data格式写入buffer，并设置好buffer的flag为OMX_BUFFERFLAG_EXTRADATA。
 
 ## 编码输出播放不了
 

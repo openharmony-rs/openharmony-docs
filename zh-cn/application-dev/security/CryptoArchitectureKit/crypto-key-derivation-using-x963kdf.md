@@ -17,7 +17,7 @@
 
    X963KdfSpec是[KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11)的子类，需要指定：
 
-   - algName：指定算法'X963Kdf'。
+   - algName：指定算法'X963KDF'。
    - key：原始密钥材料。
 
       如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、Base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
@@ -62,6 +62,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -77,22 +78,24 @@
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
-  function kdfPromise() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.X963KdfSpec = {
-      algName: 'X963KDF',
-      key: keyData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
-    let kdfPromise = kdf.generateSecret(spec);
-    kdfPromise.then((secret) => {
+  async function kdfPromise() {
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.X963KdfSpec = {
+        algName: 'X963KDF',
+        key: keyData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
+      let secret = await kdf.generateSecret(spec);
       console.info('key derivation output: ' + secret.data);
-    }).catch((error: BusinessError) => {
-      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`key derivation failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -121,6 +124,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

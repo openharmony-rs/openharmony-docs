@@ -45,6 +45,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 
   // 证书链校验数据，需业务自行赋值。
@@ -59,6 +60,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`X509CertChain validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

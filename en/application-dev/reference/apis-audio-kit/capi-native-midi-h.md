@@ -5,7 +5,7 @@
 <!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1e020c03bdc7e8347d2df773c6dec6050603f0f7 translatedAt=2026-11-09T10:27:06.471Z pushedAt=2026-11-09T11:28:38.002Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8b296682d2d29c251bc5ec7cd52af7f79605ed7f translatedAt=2026-11-18T03:09:53.518Z pushedAt=2026-11-19T09:04:59.025Z nl=1 -->
 
 ## Overview
 
@@ -255,7 +255,7 @@ Closes a MIDI device.
 
 | Type| Description|
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK: operation succeeded.<br>         OH_MIDI_STATUS_INVALID_CLIENT: invalid client handle.<br>         OH_MIDI_STATUS_INVALID_DEVICE_HANDLE: invalid device handle.<br>         OH_MIDI_STATUS_GENERIC_IPC_FAILURE: IPC communication failed. |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | **OH_MIDI_STATUS_OK**: The operation is successful.<br>         **OH_MIDI_STATUS_INVALID_CLIENT**:  The client handle is invalid.<br>         **OH_MIDI_STATUS_INVALID_DEVICE_HANDLE**: The device handle is invalid. |
 
 ### OH_MIDIClient_GetPortCount()
 
@@ -496,7 +496,7 @@ Sends SysEx (System Exclusive) messages longer than the standard MIDI message le
 
 | Type| Description|
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK: all data has been successfully processed and written.<br>         OH_MIDI_STATUS_INVALID_DEVICE_HANDLE: the device handle is invalid.<br>         OH_MIDI_STATUS_INVALID_PORT: the port index is invalid or the port is not opened.<br>         OH_MIDI_STATUS_TIMEOUT: the operation timed out and the write could not be completed within the timeout period specified by the system. You can call [OH_MIDIDevice_FlushOutputPort](capi-native-midi-h.md#oh_mididevice_flushoutputport) to reset the output port and retry.<br>         OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT: the parameter data is nullptr, or byteSize is 0.<br>         OH_MIDI_STATUS_GENERIC_IPC_FAILURE: failed to connect to system service. |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | **OH_MIDI_STATUS_OK**: All data has been successfully processed and written.<br>         **OH_MIDI_STATUS_INVALID_DEVICE_HANDLE**: The device handle is invalid.<br>         **OH_MIDI_STATUS_INVALID_PORT**: The port index is invalid or the port is not open.<br>         **OH_MIDI_STATUS_TIMEOUT**: The operation timed out and the write operation could not be completed within the system-defined timeout period. You can call [OH_MIDIDevice_FlushOutputPort](capi-native-midi-h.md#oh_mididevice_flushoutputport) to reset the output port and retry.<br>         **OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT**: The **data** parameter is **nullptr**, or **byteSize** is **0**. |
 
 ### OH_MIDIDevice_FlushOutputPort()
 

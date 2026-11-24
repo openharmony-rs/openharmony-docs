@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T12:58:47.887Z pushedAt=2026-10-12T11:13:03.701Z -->
+<!-- md-trans-meta sourceCommit=d9733e3ac7d8a63ef9dfc6509aaa72c6c8245978 translatedAt=2026-11-18T03:28:32.938Z pushedAt=2026-11-19T11:47:39.882Z nl=1 -->
 
 **CameraManager** implements camera management. Before calling any API in **CameraManager**, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a **CameraManager** instance.
 
@@ -81,10 +81,16 @@ Obtains the scene modes supported by a camera device. This API returns the resul
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function getSupportedSceneModes(cameraManager: camera.CameraManager, camera: camera.CameraDevice): Array<camera.SceneMode> {
+function getSupportedSceneModes(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): Array<camera.SceneMode> {
   let modes: Array<camera.SceneMode> = [];
   try {
-    modes = cameraManager.getSupportedSceneModes(camera);
+    let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+    if (cameras.some(camera => camera.cameraId === cameraDevice.cameraId)) {
+      modes = cameraManager.getSupportedSceneModes(cameraDevice);
+    } else {
+      console.error(`current camera invalid.`);
+      return [];
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The getSupportedSceneModes call failed. error code: ${err.code}`);
@@ -119,8 +125,17 @@ Obtains the output capability supported by a camera device in a given scene mode
 **Example**
 
 ```ts
-function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
-  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedOutputCapability(camera, sceneMode);
+function getSupportedOutputCapability(camera: camera.CameraDevice,
+  cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability | undefined {
+  let cameras = cameraManager.getSupportedCameras();
+  let cameraOutputCapability: camera.CameraOutputCapability | undefined = undefined;
+  if (cameras.some(cameraValue => cameraValue.cameraId === camera.cameraId)) {
+    if (cameraManager.getSupportedSceneModes(camera).some(mode => mode === sceneMode)) {
+      cameraOutputCapability = cameraManager.getSupportedOutputCapability(camera, sceneMode);
+      return cameraOutputCapability;
+    }
+  }
+  console.error(`invalid camera or sceneMode.`);
   return cameraOutputCapability;
 }
 ```
@@ -134,7 +149,7 @@ Obtains the complete output capabilities supported by a specified camera in a sp
 > **NOTE**
 >
 > Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.
-
+ 
 **Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -159,9 +174,17 @@ Obtains the complete output capabilities supported by a specified camera in a sp
 ```ts
 import { camera } from '@kit.CameraKit';
 
-function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
-  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
-  return cameraOutputCapability;
+function getSupportedFullOutputCapability(camera: camera.CameraDevice,
+  cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability | undefined {
+  let cameras = cameraManager.getSupportedCameras();
+  if (cameras.some(cameraValue => cameraValue.cameraId === camera.cameraId)) {
+    if (cameraManager.getSupportedSceneModes(camera).some(mode => mode === sceneMode)) {
+      let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
+      return cameraOutputCapability;
+    }
+  }
+  console.error(`camera or sceneMode invalid.`);
+  return undefined;
 }
 ```
 
@@ -234,7 +257,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function createCameraInput(camera: camera.CameraDevice, cameraManager: camera.CameraManager): camera.CameraInput | undefined {
   let cameraInput: camera.CameraInput | undefined = undefined;
   try {
-    cameraInput = cameraManager.createCameraInput(camera);
+    let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+    if (cameras.some(cameraValue => cameraValue.cameraId === camera.cameraId)) {
+      cameraInput = cameraManager.createCameraInput(camera);
+    } else {
+      console.error(`camera invalid.`);
+      return undefined;
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -338,11 +367,20 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager, surfaceId: string): camera.PreviewOutput | undefined {
-  let profile: camera.Profile = cameraOutputCapability.previewProfiles[0];
+function createPreviewOutput(previewProfile: camera.Profile, cameraDevice: camera.CameraDevice,
+  cameraManager: camera.CameraManager, surfaceId: string): camera.PreviewOutput | undefined {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  if (cameraOutputCapability.previewProfiles.findIndex((profile: camera.Profile) => {
+    return profile.format == previewProfile.format &&
+      profile.size.width == previewProfile.size.width &&
+      profile.size.height == previewProfile.size.height;
+  }) == -1) {
+    console.error(`invalid previewProfile.`);
+    return undefined;
+  }
   let previewOutput: camera.PreviewOutput | undefined = undefined;
   try {
-    previewOutput = cameraManager.createPreviewOutput(profile, surfaceId);
+    previewOutput = cameraManager.createPreviewOutput(previewProfile, surfaceId);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -437,15 +475,24 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
-  let profile: camera.Profile = cameraOutputCapability.previewProfiles[0];
+function createDeferredPreviewOutput(previewProfile: camera.Profile, cameraDevice: camera.CameraDevice,
+  cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  if (cameraOutputCapability.previewProfiles.findIndex((profile: camera.Profile) => {
+    return profile.format == previewProfile.format &&
+      profile.size.width == previewProfile.size.width &&
+      profile.size.height == previewProfile.size.height;
+  }) == -1) {
+    console.error(`invalid previewProfile.`);
+    return undefined;
+  }
   let previewOutput: camera.PreviewOutput | undefined = undefined;
   try {
-    previewOutput = cameraManager.createDeferredPreviewOutput(profile);
+    previewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
-    console.error(`The createPreviewOutput call failed. error code: ${err.code}`);
+    console.error(`The createDeferredPreviewOutput call failed. error code: ${err.code}`);
   }
   return previewOutput;
 }
@@ -487,11 +534,20 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager): camera.PhotoOutput | undefined {
-  let profile: camera.Profile = cameraOutputCapability.photoProfiles[0];
+function createPhotoOutput(photoProfile: camera.Profile, cameraDevice: camera.CameraDevice,
+  cameraManager: camera.CameraManager): camera.PhotoOutput | undefined {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  if (cameraOutputCapability.photoProfiles.findIndex((profile: camera.Profile) => {
+    return profile.format == photoProfile.format &&
+      profile.size.width == photoProfile.size.width &&
+      profile.size.height == photoProfile.size.height;
+  }) == -1) {
+    console.error(`invalid photoProfile.`);
+    return undefined;
+  }
   let photoOutput: camera.PhotoOutput | undefined = undefined;
   try {
-    photoOutput = cameraManager.createPhotoOutput(profile);
+    photoOutput = cameraManager.createPhotoOutput(photoProfile);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -545,11 +601,22 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function createVideoOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager, surfaceId: string): camera.VideoOutput | undefined {
-  let profile: camera.VideoProfile = cameraOutputCapability.videoProfiles[0];
+function createVideoOutput(videoProfile: camera.VideoProfile, cameraDevice: camera.CameraDevice,
+  cameraManager: camera.CameraManager, surfaceId: string): camera.VideoOutput | undefined {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO);
+  if (cameraOutputCapability.videoProfiles.findIndex((profile: camera.VideoProfile) => {
+    return profile.format == videoProfile.format &&
+      profile.size.width == videoProfile.size.width &&
+      profile.size.height == videoProfile.size.height &&
+      profile.frameRateRange.min == videoProfile.frameRateRange.min &&
+      profile.frameRateRange.max == videoProfile.frameRateRange.max;
+  }) == -1) {
+    console.error(`invalid videoProfile.`);
+    return undefined;
+  }
   let videoOutput: camera.VideoOutput | undefined = undefined;
   try {
-    videoOutput = cameraManager.createVideoOutput(profile, surfaceId);
+    videoOutput = cameraManager.createVideoOutput(videoProfile, surfaceId);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -644,15 +711,23 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function createMetadataOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability): void {
+function createMetadataOutput(metadataTypes: Array<camera.MetadataObjectType>,
+  cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.MetadataOutput | undefined {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   let metadataObjectTypes: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataTypes.every(type => metadataObjectTypes.includes(type))) {
+    console.error(`invalid metadataTypes.`);
+    return undefined;
+  }
   let metadataOutput: camera.MetadataOutput | undefined = undefined;
   try {
-    metadataOutput = cameraManager.createMetadataOutput(metadataObjectTypes);
+    metadataOutput = cameraManager.createMetadataOutput(metadataTypes);
+    return metadataOutput;
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
     console.error(`createMetadataOutput error. error code: ${err.code}`);
+    return metadataOutput;
   }
 }
 ```
@@ -662,6 +737,8 @@ function createMetadataOutput(cameraManager: camera.CameraManager, cameraOutputC
 createSession\<T extends Session\>(mode: SceneMode): T
 
 Creates a **Session** instance with a given scene mode. This API returns the result synchronously.
+
+The mode to set can be obtained through [getSupportedSceneModes](#getsupportedscenemodes11).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -693,10 +770,16 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function createSession(cameraManager: camera.CameraManager, mode: camera.SceneMode): camera.Session | undefined {
+function createSession(cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, sceneMode: camera.SceneMode): camera.Session | undefined {
   let photoSession: camera.PhotoSession | undefined = undefined;
+  let modes = cameraManager.getSupportedSceneModes(cameraDevice);
+  if (!modes.includes(sceneMode)) {
+    console.error(`invalid sceneMode.`);
+    return undefined;
+  }
   try {
-    photoSession = cameraManager.createSession(mode) as camera.PhotoSession;
+    photoSession = cameraManager.createSession(sceneMode) as camera.PhotoSession;
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -1232,6 +1315,13 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager,
   cameraDeviceArray: Array<camera.CameraDevice>): Array<camera.CameraConcurrentInfo> {
   let cameraConcurrentInfos: Array<camera.CameraConcurrentInfo> = [];
   try {
+    let cameras = cameraManager.getSupportedCameras();
+    // Check whether the selected camera lens combination is in the camera list.
+    if (cameraDeviceArray.length === 0 ||
+      !cameraDeviceArray.every(camera => cameras.some(cameraValue => cameraValue.cameraId === camera.cameraId))) {
+      console.error(`invalid cameraDeviceArray.`);
+      return cameraConcurrentInfos;
+    }
     cameraConcurrentInfos = cameraManager.getCameraConcurrentInfos(cameraDeviceArray);
   } catch (error) {
     // If the operation fails, an error code is returned and processed.

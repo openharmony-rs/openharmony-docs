@@ -5,6 +5,7 @@
 <!--Designer: @leoqsl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:31:58.673Z pushedAt=2026-11-20T04:39:23.915Z nl=1 -->
 
 **ManualIso** inherits from [ManualIsoQuery](arkts-apis-camera-ManualIsoQuery.md).
 
@@ -41,7 +42,7 @@ Obtains the ISO value.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |
@@ -86,7 +87,7 @@ When [ExposureMode](arkts-apis-camera-e.md#exposuremode) is set to **EXPOSURE_MO
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |
@@ -98,6 +99,11 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function setIso(photoSession: camera.PhotoSession, iso: number): void {
+  let isoArray = photoSession.getSupportedIsoRange();
+  if (!isoArray.includes(iso)) {
+    console.error(`invalid iso.`);
+    return;
+  }
   try {
     photoSession.setIso(iso);
   } catch (error) {

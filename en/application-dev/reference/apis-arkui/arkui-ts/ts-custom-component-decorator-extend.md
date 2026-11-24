@@ -1,12 +1,11 @@
 # @Extend: Extended Component Styles
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4b4c3fae8bb5dd3f2fd16533483d2b6e26cbc14a translatedAt=2026-08-11T01:45:46.697Z pushedAt=2026-08-13T06:19:07.407Z -->
+<!-- md-trans-meta sourceCommit=f24ab2ebc42adc6817bb90750c345012d67d9b25 translatedAt=2026-11-17T05:04:45.424Z pushedAt=2026-11-19T08:20:04.927Z nl=1 -->
 
 The **\@Extend** decorator is used to extend the styles of specified components. It supports defining multiple style attributes in a unified manner within the decorated function, and enables flexible style reuse through parameter passing. This is suitable for scenarios where the same styles need to be applied to multiple components, reducing style code duplication.
 

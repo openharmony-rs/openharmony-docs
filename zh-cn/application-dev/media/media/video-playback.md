@@ -107,7 +107,7 @@
        case 'idle': // 成功调用reset接口后触发该状态机上报。
          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state idle called.`);
          break;
-       case 'initialized': // avplayer 设置播放源后触发该状态上报。
+       case 'initialized': // avplayer设置播放源后触发该状态上报。
          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state initialized called.`);
          if (this.surfaceId) {
            this.avPlayer.surfaceId = this.surfaceId; // 设置显示画面，当播放的资源为纯音频时无需设置。
@@ -220,7 +220,7 @@
    <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
-   // 更换url。
+   // 更换URL。
    let url = '';
    if (this.avPlayer == null) {
        return;
@@ -330,7 +330,7 @@
    <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 更换url。
+   // 更换URL。
    let url = '';
    if (this.avPlayer == null) {
        return;

@@ -2,32 +2,38 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=eb72b2b287c105d9e2c131ea3e695cbf188b1b71 translatedAt=2026-11-17T04:26:44.476Z pushedAt=2026-11-19T08:20:04.901Z nl=1 -->
 
-The **Stack** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
+Defines a stack container where child components are successively stacked in the order they are added, and the latter one overwrites the previous one. It is suitable for scenarios where multiple child components need to be overlaid in the same area, such as floating layers, dialog boxes, and loading masks. When used with positioning attributes, it implements absolute positioning layout to precisely control the positions of child components, meeting the layout requirements of complex UI hierarchies.
 
 > **NOTE**
 >
-> This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [Stack](ts-container-stack.md).
+> - The APIs of this module can be used only in the stage model.
+>
+> - This page contains only the system APIs of this module. For details, see [Stack](ts-container-stack.md).
 
 ## Attributes
 
-### pointLight
+### pointLight<sup>11+</sup>
 
 pointLight(value: PointLightStyle)
 
-Sets the point light style.
+Sets the point light style to add a point light effect to the **Stack** component, affecting the lighting rendering of its stacked child components. A point light is a light source that emits light in all directions from a specific position, and can be used to enhance the three-dimensional appearance and visual depth of the UI. You can configure parameters such as the light position, color, and intensity through **PointLightStyle**. For details, see [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle).
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description        |
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
-| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | Yes  | Point light style.|
+| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | Yes   | Point light style, used to set the UI effect of a point light illuminating surrounding components, affecting the light rendering of the component. The PointLightStyle object contains parameters such as the light source position, color, and intensity. For details about the configuration, see the link. Only the Image, Column, Flex, Row, and Stack components support setting a point light. |
+
+
+

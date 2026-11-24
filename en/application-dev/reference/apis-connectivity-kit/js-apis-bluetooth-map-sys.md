@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T13:08:33.995Z pushedAt=2026-10-10T07:09:12.831Z -->
+<!-- md-trans-meta sourceCommit=0c35e2da2a6ef71cfecc03dfb2bbc3c0f3345833 translatedAt=2026-11-18T04:00:55.613Z pushedAt=2026-11-20T09:18:24.874Z nl=1 -->
 
 The **map** module provides the capability of accessing Bluetooth messages (such as SMS and email) on remote devices based on [Message Access Profile (MAP)](../../connectivity/bluetooth/terminology.md#map), and supports functions such as disconnecting the MAP service and setting and obtaining permissions to access messages. This module is applicable to scenarios where message data needs to be exchanged with a remote device via Bluetooth.
 
@@ -91,7 +91,7 @@ Sets the message access authorization for a device. This API uses a promise to r
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -144,7 +144,7 @@ Obtains the message access authorization of a device. This API uses a promise to
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise used to return the access permission of the information. |
 
 **Error codes**
 

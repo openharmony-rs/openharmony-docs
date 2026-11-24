@@ -1,12 +1,11 @@
 # progress
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:26:36.775Z pushedAt=2026-07-27T09:23:36.731Z -->
+<!-- md-trans-meta sourceCommit=8817783065c9116803c935936bcc8c3459db7c1e translatedAt=2026-11-18T03:03:09.224Z pushedAt=2026-11-19T08:36:14.669Z nl=1 -->
 
 The **\<progress>** component is used to provide a progress bar that displays the progress of content loading or operation processing.
 
@@ -14,9 +13,11 @@ The **\<progress>** component is used to provide a progress bar that displays th
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
+
 ## Child Components
 
 Not supported.
+
 
 ## Attributes
 
@@ -31,16 +32,15 @@ Not supported.
 Different types of progress bars support different attributes.
 
 - When the type is **horizontal**, the following attributes are supported.
-
   | Name| Type| Default Value| Mandatory| Description|
   | -------- | -------- | -------- | -------- | -------- |
   | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
 
 - When the type is **arc**, the following attributes are supported.
-
   | Name| Type| Default Value| Mandatory| Description|
   | -------- | -------- | -------- | -------- | -------- |
   | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
+
 
 ## Events
 
@@ -49,6 +49,7 @@ Different types of progress bars support different attributes.
 | click | - | Triggered when the component is clicked.|
 | longpress | - | Triggered when the component is long pressed.|
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component. |
+
 
 ## Styles
 
@@ -67,10 +68,10 @@ Different types of progress bars support different attributes.
   | background-color | &lt;color&gt;  | -      | No  | Background color of the arc progress bar.                                        |
   | stroke-width     | &lt;length&gt; | -      | No  | Width of the arc progress bar.<br>A larger width value means that the progress bar is closer to the center of the circle. The width is always within the radius range.|
   | start-angle      | &lt;deg&gt;    | 240    | No  | Start angle of the arc progress bar, which starts from the direction of zero o'clock. The value ranges from 0 to 360 degrees (clockwise).|
-  | total-angle      | &lt;deg&gt;    | 240    | No   | Total length of the arc progress bar. The value ranges from –360 to 360. A negative number indicates anticlockwise. |
-  | center-x         | &lt;length&gt; | -      | No  | Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style must be used together with **center-y** and **radius**.|
-  | center-y         | &lt;length&gt; | -      | No  | Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style must be used together with **center-x** and **radius**.|
-  | radius           | &lt;length&gt; | -      | No  | Radius of the arc progress bar. This style must be used together with **center-x** and **center-y**.        |
+  | total-angle      | &lt;deg&gt;    | 240    | No   | Total length of the arc progress bar. The value ranges from –360 to 360. A negative number indicates counterclockwise. |
+  | center-x         | &lt;length&gt; | -      | No   | Center position of the arc progress bar (the coordinate origin is the upper-left corner of the component). When this style is used, center-y and radius must also be set. |
+  | center-y         | &lt;length&gt; | -      | No   | Center position of the arc progress bar (the coordinate origin is the upper-left corner of the component). When this style is used, center-x and radius must also be set. |
+  | radius           | &lt;length&gt; | -      | No   | Radius of the arc progress bar. When this style is used, center-x and center-y must also be set.         |
 
 In addition to the preceding styles, the following styles are supported.
 
