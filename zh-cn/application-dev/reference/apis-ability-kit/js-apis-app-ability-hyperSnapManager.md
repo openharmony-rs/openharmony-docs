@@ -80,9 +80,9 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | [HyperSnapErrorCode](#hypersnaperrorcode) | 是 | 否 | 错误码。 |
-| msg | string | 是 | 否 | 错误消息，表明快启失败的原因。 |
-| occurTimeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
+| code | [HyperSnapErrorCode](#hypersnaperrorcode) | 否 | 否 | 错误码。 |
+| msg | string | 否 | 否 | 错误消息，表明快启失败的原因。 |
+| occurTimeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
 ## hyperSnapManager.setHyperSnapEnabled
 
@@ -202,12 +202,11 @@ getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000050 | Internal error. |
+| 16000050 | Connect to system service failed. |
 
 **示例：**
 
@@ -223,7 +222,7 @@ try {
         console.info('No Hyper Snap error occurred.');
         return;
       }
-      console.info(`Last error code: ${errInfo.code}, msg: ${errInfo.msg}, occurTimeStamp: ${errInfo.occurTimeStamp}`);
+      console.error(`Last error code: ${errInfo.code}, msg: ${errInfo.msg}, occurTimeStamp: ${errInfo.occurTimeStamp}`);
     })
     .catch((err: BusinessError) => {
       console.error(`Failed to get last error. Code: ${err.code}, message: ${err.message}`);
@@ -232,5 +231,55 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`Failed to get last error. Code: ${code}, Message: ${message}`);
+}
+```
+
+## hyperSnapManager.isHyperSnapInitializing
+
+isHyperSnapInitializing(): boolean
+
+查询当前进程是否正在进行快启初始化。
+
+> **说明：**
+>
+> - 该接口可用于应用区分正常冷启动和快启模板进程初始化，从而调整初始化逻辑。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 表示当前进程是否正在进行快启初始化。true表示正在进行快启初始化，false表示未进行快启初始化（快照已完成、失败或进程不是模板进程）。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | Connect to system service failed. |
+
+**示例：**
+
+```ts
+import { hyperSnapManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isInitializing: boolean = hyperSnapManager.isHyperSnapInitializing();
+  if (isInitializing) {
+    console.info('The current process is undergoing Hyper Snap initialization.');
+  } else {
+    console.info('The current process is not undergoing Hyper Snap initialization.');
+  }
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`Failed to check Hyper Snap initialization. Code: ${code}, Message: ${message}`);
 }
 ```

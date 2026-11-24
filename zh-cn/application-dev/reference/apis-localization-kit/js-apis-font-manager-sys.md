@@ -26,7 +26,7 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
-## installFont<sup>19+</sup>
+## fontManager.installFont<sup>19+</sup>
 
 ArkTS-Dyn: installFont(path: string): Promise&lt;number&gt;
 
@@ -89,7 +89,7 @@ ArkTS-Sta: installFont(path: string): Promise&lt;int&gt;
   }
 ```
 
-## uninstallFont<sup>19+</sup>
+## fontManager.uninstallFont<sup>19+</sup>
 
 ArkTS-Dyn: uninstallFont(fullName: string): Promise&lt;number&gt;
 
@@ -144,7 +144,7 @@ ArkTS-Sta: uninstallFont(fullName: string): Promise&lt;int&gt;
   }
 ```
 
-## dataMigration<sup>23+</sup>
+## fontManager.dataMigration<sup>23+</sup>
 
 ArkTS-Dyn: dataMigration(callback: DataMigrationCallback): number
 

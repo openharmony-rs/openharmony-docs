@@ -83,7 +83,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例25（使用相对路径显示图片）](#示例25使用相对路径显示图片)，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例24（使用相对路径显示图片）](#示例24使用相对路径显示图片)，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
 
 ### Image<sup>23+</sup>
 
@@ -111,7 +111,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10)&nbsp;\|&nbsp;[ImageContent](#imagecontent12)&nbsp;\|&nbsp;undefined | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例25（使用相对路径显示图片）](#示例25使用相对路径显示图片)，例如Image("common/test.jpg")，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。当访问的路径中包含特殊符号时，需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)去做转换。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>4. 传入[ImageContent](#imagecontent12)类型，指定图像内容。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。<br/>当src的值为undefined时，图片显示为空白。 |
+| src  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10)&nbsp;\|&nbsp;[ImageContent](#imagecontent12)&nbsp;\|&nbsp;undefined | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例24（使用相对路径显示图片）](#示例24使用相对路径显示图片)，例如Image("common/test.jpg")，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。当访问的路径中包含特殊符号时，需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)去做转换。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>4. 传入[ImageContent](#imagecontent12)类型，指定图像内容。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。<br/>当src的值为undefined时，图片显示为空白。 |
 | imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否   | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
 
 ### Image<sup>12+</sup>
@@ -675,7 +675,7 @@ ArkTS-Dyn: autoResize(value: boolean)
 
 ArkTS-Sta: autoResize(value: boolean | undefined)
 
-设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。
+设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。当图片尺寸较大时，设置为false可能导致内存占用过高，引发进程闪退，具体原因参见[应用被查杀类问题分析方法](https://developer.huawei.com/consumer/cn/doc/doccenter-app-quality/bpta-stability-app-killed-way?docScope=all)中的ResourceLeak(GpuRsLeak)原因。
 
 原图尺寸和显示尺寸不匹配时，图片都会出现些许的失真、模糊。最佳清晰度配置建议：
 
@@ -787,7 +787,7 @@ ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | undefined)
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
-颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
+颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例8](#示例8为图像设置颜色滤镜效果)。
 
 ### colorFilter
 
@@ -827,6 +827,10 @@ ArkTS-Sta: draggable(value: boolean | undefined)
 
 设置组件默认拖拽效果。
 
+> **说明：**
+>
+> 当Image组件的数据源为[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型且像素格式为RGBA_1010102时，若在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中未写入有效的拖拽数据，系统将使用默认的PixelMap数据填充，此时拖拽数据传递至放置目标时目标端无法正确解析该像素格式的图片数据。建议在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中自行处理该格式的数据转换。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -851,7 +855,7 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。该特性依赖设备能力。
 
-分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7)类型，使用方式见[示例5（开启图像AI分析）](#示例5开启图像ai分析)。
+分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7)类型，使用方式见[开启图像AI分析](../../../ui/arkts-graphics-display.md#开启图像ai分析)。
 
 [alt](#alt)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性[obscured](ts-universal-attributes-obscured.md#obscured)打开时不支持分析。
 
@@ -1860,59 +1864,7 @@ struct ImageExample3 {
 
 ![zh-cn_image_0000001607845173](figures/Dyn-sky.gif)
 
-### 示例5（开启图像AI分析）
-
-该示例使用[enableAnalyzer](#enableanalyzer11)接口开启图像AI分析。
-<!--RP2-->
-
-```ts
-import { image } from '@kit.ImageKit';
-
-@Entry
-@Component
-struct ImageExample4 {
-  @State imagePixelMap: image.PixelMap | undefined = undefined;
-  private aiController: ImageAnalyzerController = new ImageAnalyzerController();
-  private options: ImageAIOptions = {
-    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT],
-    aiController: this.aiController
-  };
-
-  async aboutToAppear() {
-    // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
-    this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.app_icon'));
-  }
-
-  build() {
-    Column() {
-      Image(this.imagePixelMap, this.options)
-        .enableAnalyzer(true)
-        .width(200)
-        .height(200)
-        .margin({bottom:10})
-      Button('getTypes', { type: ButtonType.Circle, stateEffect: false })
-        .width(100)
-        .height(100)
-        .onClick(() => {
-          this.aiController.getImageAnalyzerSupportTypes();
-        })
-    }
-  }
-  private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
-  }
-}
-```
-
-![zh-cn_image_0000001607845173](figures/image-view4.gif)
-<!--RP2End-->
-### 示例6（通过slice拉伸图片）
+### 示例5（通过slice拉伸图片）
 
 该示例通过[resizable](#resizable11)属性的slice选项，调整不同方向对图片进行拉伸。
 
@@ -1981,7 +1933,7 @@ struct Index {
 
 ![imageResizable](figures/imageResizable.gif)
 
-### 示例7（通过lattice拉伸图片）
+### 示例6（通过lattice拉伸图片）
 
 该示例使用[resizable](#resizable11)属性的lattice选项，使用矩形网格对象对图片进行拉伸。
 
@@ -2027,7 +1979,7 @@ struct drawingLatticeTest {
 
 ![imageResizableLattice](figures/imageResizableLattice.png)
 
-### 示例8（播放PixelMap数组动画）
+### 示例7（播放PixelMap数组动画）
 
 该示例通过[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)对象播放PixelMap数组动画。
 
@@ -2107,7 +2059,7 @@ struct ImageExample {
 
 ![zh-cn_image_0000001607845173](figures/image-view6.gif)
 
-### 示例9（为图像设置颜色滤镜效果）
+### 示例8（为图像设置颜色滤镜效果）
 
 该示例通过[colorFilter](#colorfilter9)属性实现了给图像设置颜色滤镜效果。
 
@@ -2174,7 +2126,7 @@ struct ImageExample3 {
 ```
 ![imageSetColorFilter](figures/imageSetColorFilter.gif)
 
-### 示例10（为图像设置填充效果）
+### 示例9（为图像设置填充效果）
 
 该示例通过[objectFit](#objectfit)属性为图像设置填充效果。
 
@@ -2225,7 +2177,7 @@ struct ImageExample{
 
 ![imageResizable](figures/imageSetFit.gif)
 
-### 示例11（切换显示不同类型图片）
+### 示例10（切换显示不同类型图片）
 
 该示例展示了[ResourceStr](ts-types.md#resourcestr)类型与[ImageContent](#imagecontent12)类型作为数据源的显示图片效果。
 
@@ -2255,7 +2207,7 @@ struct ImageContentExample {
 
 ![switchingBetweenDifferentTypes](figures/switchingBetweenDifferentTypes.gif)
 
-### 示例12（配置隐私隐藏）
+### 示例11（配置隐私隐藏）
 
 该示例通过[privacySensitive](#privacysensitive12)属性展示了如何配置隐私隐藏，效果展示需要卡片框架支持。
 
@@ -2280,7 +2232,7 @@ struct ImageExample {
 
 ![securingSensitiveInformation](figures/securingSensitiveInformation.gif)
 
-### 示例13（为图片设置扫光效果）
+### 示例12（为图片设置扫光效果）
 
 该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和[animateTo()](../arkts-apis-uicontext-uicontext.md#animateto)接口实现了给图片设置扫光效果。
 
@@ -2369,7 +2321,7 @@ struct ImageExample11 {
 
 ![imageContent](figures/imageScanEffect.gif)
 
-### 示例14（为图片添加变换效果）
+### 示例13（为图片添加变换效果）
 
 该示例通过[imageMatrix](#imagematrix15)和[objectFit](#objectfit)属性，为图片添加旋转和平移的效果。
 
@@ -2438,7 +2390,7 @@ struct Test {
 
 ![imageMatrix](figures/imageMatrix.jpeg)
 
-### 示例15（通过sourceSize设置图片解码尺寸）
+### 示例14（通过sourceSize设置图片解码尺寸）
 
 该示例通过[sourceSize](ts-basic-components-image.md#sourcesize)接口自定义图片的解码尺寸。
 
@@ -2471,7 +2423,7 @@ struct Index {
 
 ![sourceSizeExample](figures/sourceSizeExample.png)
 
-### 示例16（通过renderMode设置图片的渲染模式）
+### 示例15（通过renderMode设置图片的渲染模式）
 
 该示例通过[renderMode](ts-basic-components-image.md#rendermode)接口设置图片渲染模式为黑白模式。
 
@@ -2497,7 +2449,7 @@ struct Index {
 
 ![renderModeExample](figures/renderModeExample.png)
 
-### 示例17（通过objectRepeat设置图片的重复样式）
+### 示例16（通过objectRepeat设置图片的重复样式）
 
 该示例通过[objectRepeat](ts-basic-components-image.md#objectrepeat)接口在竖直轴上重复绘制图片。
 
@@ -2523,7 +2475,7 @@ struct Index {
 
 ![objectRepeatExample](figures/objectRepeatExample.png)
 
-### 示例18（设置SVG图片的填充颜色）
+### 示例17（设置SVG图片的填充颜色）
 
 该示例通过[fillColor](#fillcolor15)属性为SVG图片设置不同颜色的填充效果。
 
@@ -2573,7 +2525,7 @@ struct Index {
 
 ![fillColorExample](figures/fillColorExample.png)
 
-### 示例19（设置HDR图源动态提亮）
+### 示例18（设置HDR图源动态提亮）
 
 该示例通过[hdrBrightness](#hdrbrightness19)属性调整HDR图源的亮度，将hdrBrightness从0调整到1。
 
@@ -2631,7 +2583,7 @@ struct Index {
 }
 ```
 
-### 示例20（设置图片是否跟随系统语言方向）
+### 示例19（设置图片是否跟随系统语言方向）
 
 该示例通过[matchTextDirection](#matchtextdirection)接口，设置手机语言为维语时图片是否显示镜像翻转显示效果。
 
@@ -2664,7 +2616,7 @@ struct Index {
 
 ![matchTextDirection](figures/matchTextDirection.png)
 
-### 示例21（设置图像内容的显示方向）
+### 示例20（设置图像内容的显示方向）
 
 该示例通过[orientation](#orientation14)属性，设置图像内容的显示方向。
 
@@ -2758,7 +2710,7 @@ struct OrientationExample {
 
 ![orientation](figures/orientation.png)
 
-### 示例22（获取图片的exif信息并设置图像内容的显示方向）
+### 示例21（获取图片的exif信息并设置图像内容的显示方向）
 
 该示例通过[getImageProperty](../../apis-image-kit/arkts-apis-image-ImageSource.md#getimageproperty11)接口，获取图片的exif信息，再根据获取到的exif信息，通过[orientation](#orientation14)属性设置图像内容显示为正确方向。
 
@@ -2878,7 +2830,7 @@ struct Example {
 
 ![orientation2](figures/orientation2.png)
 
-### 示例23（动态切换SVG图片的填充颜色）
+### 示例22（动态切换SVG图片的填充颜色）
 
 通过按钮切换不同色域下的颜色值，动态改变SVG图片的填充颜色效果，以展示[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型的使用方式和显示差异。
 
@@ -2939,7 +2891,7 @@ struct fillColorMetricsDemo {
 ![colorMetrics](figures/colorMetrics.gif)
 
 
-### 示例24（使用应用沙箱路径显示图片）
+### 示例23（使用应用沙箱路径显示图片）
 
 在当前应用的`haps/entry/files`目录下预置一张名为`cloud.png`的图片，随后使用应用沙箱路径显示该图片。
 
@@ -2974,7 +2926,7 @@ struct Index {
 
 ![sandBox](figures/cloud1.png)
 
-### 示例25（使用相对路径显示图片）
+### 示例24（使用相对路径显示图片）
 
 在工程`pages`目录同级位置创建`common`目录，在`common`目录下预置一张名为`cloud1.png`的图片，随后使用相对路径显示该图片。
 
@@ -2995,7 +2947,7 @@ struct Index {
 ```
 ![relativePath](figures/cloud1.png)
 
-### 示例26（使用supportSvg2属性时，SVG图片的显示效果）
+### 示例25（使用supportSvg2属性时，SVG图片的显示效果）
 
 该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
 
@@ -3032,7 +2984,7 @@ struct Index {
 
 ![sandBox](figures/svg2.PNG)
 
-### 示例27（使用ContentTransition属性实现图片淡入淡出切换效果）
+### 示例26（使用ContentTransition属性实现图片淡入淡出切换效果）
 
 从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
 
@@ -3064,7 +3016,7 @@ struct ImageExample {
 ```
 ![sandBox](figures/trans.gif)
 
-### 示例28（使用alt属性实现设置加载过程中图片和加载失败时图片）
+### 示例27（使用alt属性设置加载过程中和加载失败时的占位图）
 
 该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片。
 
@@ -3102,7 +3054,7 @@ struct ImageExample {
 ```
 ![sandBox](figures/imagealt.gif)
 
-### 示例29（使用onError回调监听网络图片加载异常信息）
+### 示例28（使用onError回调监听网络图片加载异常信息）
 
 该示例演示如何通过[onError](#onerror9)回调获取网络图片加载异常时的详细下载信息[ImageError](#imageerror9)。当图片加载失败时，可通过ImageError中的downloadInfo属性获取网络图片下载的详细信息，包括下载的资源信息、网络请求信息以及性能统计信息，有助于快速定位网络异常或资源错误原因。
 
@@ -3127,7 +3079,7 @@ struct Index {
 }
 ```
 
-### 示例30（设置位图图片边缘抗锯齿）
+### 示例29（设置位图图片边缘抗锯齿）
 
 该示例演示了如何通过设置[antialiased](#antialiased23)接口开启位图图片边缘的抗锯齿功能。
 

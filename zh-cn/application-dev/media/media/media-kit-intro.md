@@ -1,8 +1,16 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "Media Kit（媒体服务）能力总览，介绍AVPlayer、SoundPool、AVRecorder、AVScreenCapture、AVMetadataExtractor、AVImageGenerator、AVTranscoder等模块，涵盖播放、录制、元数据获取、缩略图、转码及各自支持的格式与协议。"
+keywords: [Media Kit, 媒体服务, AVPlayer, SoundPool, AVRecorder, AVScreenCapture, AVTranscoder, 轻量媒体引擎, HDR]
+doctype: guide
+status: active
+---
+
 # Media Kit简介
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -294,7 +302,7 @@ AVScreenCapture主要工作是捕获音频信号、视频信号，并通过音�
 
 ## AVMetadataExtractor
 
-AVMetadataExtractor 主要用于获取音视频元数据。通过使用 AVMetadataExtractor，开发者可以从原始媒体资源中提取出丰富的元数据信息。以音频资源为例，我们可以获取到关于该音频的标题、艺术家、专辑名称、时长等详细信息。视频资源的元数据获取流程与音频类似，由于视频没有专辑封面，所以无法获取视频资源的专辑封面。
+AVMetadataExtractor 主要用于获取音视频元数据。通过使用 AVMetadataExtractor，开发者可以从原始媒体资源中提取出丰富的元数据信息。以音频资源为例，开发者可以获取到关于该音频的标题、艺术家、专辑名称、时长等详细信息。视频资源的元数据获取流程与音频类似，由于视频没有专辑封面，所以无法获取视频资源的专辑封面。
 
 获取音频资源的元数据的全流程包含：创建AVMetadataExtractor，设置资源，获取元数据，获取专辑封面（可选），销毁资源。
 
@@ -329,7 +337,7 @@ AVTranscoder主要用于将已压缩编码的视频文件按照指定参数转�
 
    | 封装格式  | 视频编码类型   | 音频编码类型   |
    | -------- | :------------------| :---------------- |
-   | mp4      | AVC（H.264）<!--RP7--><!--RP7End-->、HEVC（H.265） | AAC、MPEG（MP3） |
+   | mp4      | AVC（H.264）<!--RP7--><!--RP7End--> | AAC、MPEG（MP3） |
 
 - 支持的目标音频格式：
 
@@ -346,5 +354,7 @@ AVTranscoder主要用于将已压缩编码的视频文件按照指定参数转�
   - 不支持字幕轨。若原视频存在字幕轨，转码后字幕轨将被丢弃。
   - 仅支持输出一条视频轨。若原视频存在多条视频轨，默认选择第一条视频轨进行转码。
   - 仅支持输出一条音频轨。若原视频存在多条音频轨，默认选择第一条音频轨进行转码。
+
+<!--RP3--><!--RP3End-->
 
 <!--RP2--><!--RP2End-->

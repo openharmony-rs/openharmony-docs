@@ -30,7 +30,7 @@ ComponentInit: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentAppear
 
@@ -46,7 +46,7 @@ ComponentAppear: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentBuilt
 
@@ -62,7 +62,7 @@ ComponentBuilt: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentDisappear
 
@@ -78,7 +78,7 @@ ComponentDisappear: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentReuse
 
@@ -106,7 +106,7 @@ ComponentReuse: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentRecycle
 
@@ -122,7 +122,7 @@ ComponentRecycle: MethodDecorator
 
 **示例：**
 
-参见[生命周期使用示例](#生命周期使用示例)。
+参见[示例1（生命周期使用）](#示例1生命周期使用)。
 
 ## \@ComponentActive
 
@@ -137,6 +137,10 @@ ArkTS-Dyn: ComponentActive: MethodDecorator
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+参见[示例2（激活和非激活生命周期使用）](#示例2激活和非激活生命周期使用)。
 
 ## \@ComponentInactive
 
@@ -154,7 +158,7 @@ ArkTS-Dyn: ComponentInactive: MethodDecorator
 
 **示例：**
 
-参见[激活状态生命周期使用示例](#激活状态生命周期使用示例)。
+参见[示例2（激活和非激活生命周期使用）](#示例2激活和非激活生命周期使用)。
 
 ## CustomComponentLifecycle
 
@@ -493,7 +497,44 @@ struct Index {
 }
 ```
 
-## 生命周期使用示例
+## \@ComponentActive
+
+激活生命周期装饰器。
+
+被装饰的函数会在自定义组件从非激活态切换为激活态时触发。
+
+自定义组件在创建后默认为激活态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+参见[示例2（激活和非激活生命周期使用）](#示例2激活和非激活生命周期使用)。
+
+## \@ComponentInactive
+
+非激活生命周期装饰器。
+
+被装饰的函数会在自定义组件从激活态切换为非激活态时触发。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+参见[示例2（激活和非激活生命周期使用）](#示例2激活和非激活生命周期使用)。
+
+
+## 示例
+
+### 示例1（生命周期使用）
 
 本示例展示了生命周期回调函数的部分使用场景：
 
@@ -582,41 +623,7 @@ struct Child {
 }
 ```
 
-## \@ComponentActive
-
-激活生命周期装饰器。
-
-被装饰的函数会在自定义组件从非激活态切换为激活态时触发。
-
-自定义组件在创建后默认为激活态。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**示例：**
-
-参考[激活状态生命周期使用示例](#激活状态生命周期使用示例)。
-
-## \@ComponentInactive
-
-非激活生命周期装饰器。
-
-被装饰的函数会在自定义组件从激活态切换为非激活态时触发。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**示例：**
-
-参考[激活状态生命周期使用示例](#激活状态生命周期使用示例)。
-
-## 激活状态生命周期使用示例
+### 示例2（激活和非激活生命周期使用）
 
 以自定义组件复用场景为例，展示激活态与非激活态的状态切换与回调触发。
 

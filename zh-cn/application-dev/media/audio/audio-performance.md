@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍低时延、低功耗、音频工作组、音频时间戳等系统性能能力，以及使用DevEco Profiler、HiSmartPerf定位音频性能问题的方法。"
+keywords: [音频性能, 低时延, 低功耗, 音频工作组, 音频时间戳, 性能优化, DevEco Profiler, HiSmartPerf, 性能日志]
+doctype: guide
+status: active
+---
 # 提升音频性能体验
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

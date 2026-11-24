@@ -54,7 +54,7 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取最终的面板大小，完成最终的面板布局刷新。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取最终的面板大小，完成最终的面板布局刷新。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -100,7 +100,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

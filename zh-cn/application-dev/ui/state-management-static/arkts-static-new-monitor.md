@@ -1,6 +1,13 @@
 # \@Monitor装饰器：状态变量修改监听
 
-为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@Monitor装饰器对状态变量进行监听。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用[\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor-static.md#monitor-1)装饰器对状态变量进行监听。
 
 >**说明：**
 >

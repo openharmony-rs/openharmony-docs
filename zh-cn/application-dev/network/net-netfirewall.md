@@ -39,7 +39,7 @@
 ## 针对特定IP联网访问控制
 
 1. 设备通过硬件接口，插入网线。
-2. 从@kit.NetworkKit中导入netfirewall命名空间。
+2. 从@kit.NetworkKit中导入netFirewall命名空间。
 
    <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -207,13 +207,13 @@
          domain: '*.HarmonyOS.cn'
        },{
          isWildcard: true,
-         domain: '*w.HarmonyOS.cn' // 从API版本26.0.0开始支持
+         domain: '*w.HarmonyOS.cn' // 从API版本26.0.1开始支持
        },{
          isWildcard: true,
-         domain: 'www.HarmonyOS.*' // 从API版本26.0.0开始支持
+         domain: 'www.HarmonyOS.*' // 从API版本26.0.1开始支持
        },{
          isWildcard: true,
-         domain: 'www.HarmonyOS.c*' // 从API版本26.0.0开始支持
+         domain: 'www.HarmonyOS.c*' // 从API版本26.0.1开始支持
      }] as domain[],
      userId: 100,
      interface:'wlan0' // 从API版本26.0.0开始支持
@@ -232,7 +232,7 @@
 ## 查询防火墙拦截记录
 
 1. 设备通过硬件接口，插入网线。
-2. 从@kit.NetworkKit中导入netfirewall命名空间。
+2. 从@kit.NetworkKit中导入netFirewall命名空间。
 
     ```ts
     // 从@kit.NetworkKit中导入netFirewall命名空间。
@@ -240,7 +240,7 @@
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
-3. 用户态通过getInterceptRecords方法查询拦截记录。
+3. 用户态通过getInterceptedRecords方法查询拦截记录。
 
     ```ts
     // 通过getInterceptedRecords方法分页查询拦截记录。

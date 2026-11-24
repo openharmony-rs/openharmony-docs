@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件与ArkUI可滚动容器嵌套滚动的两种方案：简单联动通过设置滚动模式实现，复杂场景由父组件统一派发滚动偏移量并自定义控制。"
+keywords: [嵌套滚动, nestedScroll, NestedScrollMode, setScrollable, scrollBy, onScrollFrameBegin, onGestureRecognizerJudgeBegin]
+doctype: guide
+status: active
+---
+
 # Web组件嵌套滚动
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -197,7 +205,7 @@ struct NestedScroll {
     ```
     (2) 再使用[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13)方法，禁止Web组件自带的滚动手势触发。
     ```ts
-    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, otherArray<GestureRecognizer>) => {
+    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => {
       if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
         return GestureJudgeResult.REJECT;
       }

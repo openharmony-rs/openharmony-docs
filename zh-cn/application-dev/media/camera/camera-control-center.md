@@ -16,40 +16,46 @@
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-    ```ts
-    import { camera } from '@kit.CameraKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
+   ```ts
+   import { camera } from '@kit.CameraKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. 通过[isControlCenterSupported](../../reference/apis-camera-kit/arkts-apis-camera-ControlCenterQuery.md#iscontrolcentersupported20)接口，查询当前设备及当前场景是否支持相机控制器。
 
-    ```ts
-    function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
-      let isSupported: boolean = videoSession.isControlCenterSupported();
-      return isSupported;
-    }
-    ```
+   <!-- @[camera_controlCenterSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   isControlCenterSupported(videoSession: camera.VideoSession): boolean {
+     let isSupported: boolean = videoSession.isControlCenterSupported();
+     return isSupported;
+   }
+   ```
 
 3. 通过[getSupportedEffectTypes](../../reference/apis-camera-kit/arkts-apis-camera-ControlCenterQuery.md#getsupportedeffecttypes20)接口，查询当前设备及当前场景下，相机控制器支持的效果类型。
 
-    ```ts
-    function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {
-      let effectTypes: Array<camera.ControlCenterEffectType> = [];
-      effectTypes = videoSession.getSupportedEffectTypes();
-      return effectTypes;
-    }
-    ```
+   <!-- @[camera_getSupportedEffectType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   getSupportedEffectTypes(videoSession: camera.VideoSession): camera.ControlCenterEffectType[] {
+     let effectTypes: camera.ControlCenterEffectType[] = [];
+     effectTypes = videoSession.getSupportedEffectTypes();
+     return effectTypes;
+   }
+   ```
 
 4. 若设备及场景支持相机控制器，使用[enableControlCenter](../../reference/apis-camera-kit/arkts-apis-camera-ControlCenter.md#enablecontrolcenter20)接口可启用或关闭控制器。
 
-    ```ts
-    function enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {
-      let isSupported: boolean = videoSession.isControlCenterSupported();
-      if (isSupported) {
-        videoSession.enableControlCenter(enable);
-      }
-    }
-    ```
+   <!-- @[camera_enableControlCenter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   enableControlCenter(videoSession: camera.VideoSession, enable: boolean): void {
+     let isSupported: boolean = videoSession.isControlCenterSupported();
+     if (isSupported) {
+       videoSession.enableControlCenter(enable);
+     }
+   }
+   ```
 
 5. 使能相机控制器后，可以在状态栏看到新增的`视频效果`图标。
 
@@ -68,11 +74,10 @@
 
 当控制器中某效果使能状态发生变化时，callback返回[ControlCenterStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#controlcenterstatusinfo20)参数。
 
-```ts
-import { camera } from '@kit.CameraKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[camera_controlCenterStatusChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-function callback(err: BusinessError, status: camera.ControlCenterStatusInfo): void {
+``` TypeScript
+controlCenterEffectStatusChangeCallback(err: BusinessError, status: camera.ControlCenterStatusInfo): void {
   if (err !== undefined && err.code !== 0) {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
@@ -80,7 +85,7 @@ function callback(err: BusinessError, status: camera.ControlCenterStatusInfo): v
   console.info(`controlCenterEffectStatusChange: ${status}`);
 }
 
-function registerControlCenterEffectStatusChangeCallback(videoSession: camera.VideoSession): void {
-  videoSession.on('controlCenterEffectStatusChange', callback);
+registerControlCenterEffectStatusChangeCallback(videoSession: camera.VideoSession): void {
+  videoSession.on('controlCenterEffectStatusChange', this.controlCenterEffectStatusChangeCallback);
 }
 ```

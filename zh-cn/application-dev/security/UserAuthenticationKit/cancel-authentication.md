@@ -27,7 +27,7 @@
 
 3. 使用已经成功发起认证的UserAuthInstance对象调用[UserAuthInstance.cancel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10)接口取消本次认证。
 
-示例代码为发起认证可信等级≥ATL3的人脸+锁屏口令认证后，取消认证请求：
+示例代码为发起认证可信等级≥ATL3的人脸+锁屏密码认证后，取消认证请求：
 
 ArkTS-Dyn示例：
 <!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
@@ -124,5 +124,5 @@ cancelingUserAuthentication() {
 
 ## 示例代码
 
-  - [认证过程中取消认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
-  - [认证过程中取消认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)
+  - 可参考[用户认证服务(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)示例代码。
+  - 可参考[用户认证服务(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)示例代码。

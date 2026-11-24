@@ -27,6 +27,8 @@ getFocusDistance(): number
 
 获取当前对焦距离。取值范围为[0.0, 1.0]，其中0.0表示镜头可以对焦的最短距离，1.0表示最远距离。默认值为1.0。
 
+获取前可以通过[isFocusDistanceSupported](arkts-apis-camera-ManualFocusQuery.md#isfocusdistancesupported24)检测是否支持设置对焦距离。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -54,7 +56,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function getFocusDistance(photoSession: camera.PhotoSession): number {
   let focusDistance = 1.0;
   try {
-    focusDistance = photoSession.getFocusDistance();
+    if (photoSession.isFocusDistanceSupported()) {
+      focusDistance = photoSession.getFocusDistance();
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -69,6 +73,8 @@ function getFocusDistance(photoSession: camera.PhotoSession): number {
 setFocusDistance(distance: number): void
 
 设置对焦距离。取值范围为[0.0, 1.0]，其中0.0表示镜头可以对焦的最短距离，1.0表示最远距离。默认值为1.0。输入参数超出值域时，统一按边界值处理。
+
+设置前可以通过[isFocusDistanceSupported](arkts-apis-camera-ManualFocusQuery.md#isfocusdistancesupported24)检测是否支持设置对焦距离。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -96,7 +102,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setFocusDistance(photoSession: camera.PhotoSession, distance: number): void {
   try {
-    photoSession.setFocusDistance(distance);
+    if (photoSession.isFocusDistanceSupported()) {
+      photoSession.setFocusDistance(distance);
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

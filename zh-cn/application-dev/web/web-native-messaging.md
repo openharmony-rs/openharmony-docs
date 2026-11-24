@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过WebNativeMessagingExtensionAbility实现浏览器扩展与应用通信的方法，涵盖连接机制、生命周期回调与双端开发步骤。"
+keywords: [WebNativeMessagingExtensionAbility, 浏览器扩展, connectNative, onConnectNative, WebNativeMessagingExtensionManager]
+doctype: guide
+status: active
+---
+
 # 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -8,11 +16,11 @@
 
 ## 概述
 
-浏览器的扩展程序（extension）支持与系统上安装的应用交换消息，应用向扩展提供服务，帮助扩展实现一些应用才具备的能力，常见的例子是密码管理器：应用负责存储和加密你的密码信息，以便浏览器扩展程序自动填充网页中的表单字段。
+浏览器的扩展程序（extension）支持与系统上安装的应用交换消息，应用向扩展提供服务，帮助扩展实现一些应用才具备的能力，常见的例子是密码管理器：应用负责存储和加密开发者的密码信息，以便浏览器扩展程序自动填充网页中的表单字段。
 
 从API version 21开始，支持开发者在应用中使用[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)组件，为浏览器扩展提供后台服务能力。
 
-浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。
+浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility。连接建立后，扩展通过 runtime.Port 收发消息；应用则基于浏览器传递的文件描述符，调用文件 I/O接口完成消息收发。
 
 
 ![](figures/connect-native-overview.png)
@@ -88,7 +96,7 @@ extension配置格式：
   ]
 }
 ```
-extension配置通过[dataShare配置项](../database/share-config.md#modulejson5-配置)向浏览器应用暴露，具体的配置方式可参考下方[实现一个WebNativeMessagingExtensionAbility（应用开发者）](#实现一个webnativemessagingextensionability应用开发者)中步骤6。其中，uri为固定格式：datashareproxy://[包名]/browserNativeMessagingHosts，value字段填写上述extension配置的JSON字符串，allowList字段填写允许访问该配置的浏览器应用的appIdentifier。
+extension配置通过[dataShare配置项](../database/share-config.md#modulejson5配置)向浏览器应用暴露，具体的配置方式可参考下方[实现一个WebNativeMessagingExtensionAbility（应用开发者）](#实现一个webnativemessagingextensionability应用开发者)中步骤6。其中，uri为固定格式：datashareproxy://[包名]/browserNativeMessagingHosts，value字段填写上述extension配置的JSON字符串，allowList字段填写允许访问该配置的浏览器应用的appIdentifier。
 
 ### WebNativeMessagingExtensionAbility生命周期管理
 - [onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative)：当浏览器扩展调用一次runtime.connectNative时触发，如果WebNativeMessagingExtensionAbility尚未运行，调用runtime.connectNative会拉起WebNativeMessagingExtensionAbility，并触发该回调。
@@ -139,9 +147,9 @@ NativeMessaging连接使用的具体格式，每个消息都使用JSON进行序�
 ```js
 // 从html中触发调用
 function sendMessageToNative() {
-  var message = "ping"; // 发送ping
+  let message = 'ping'; // 发送ping
   chrome.runtime.sendMessage({
-    type: "sendMessage",
+    type: 'sendMessage',
     message: message
   }, function (response) {});
 }
@@ -150,11 +158,11 @@ function sendMessageToNative() {
 
 1. 使用chrome.runtime.connectNative连接
    ```typescript
-   var port = null;
+   let port = null;
    // 监听来自main.js的信息
    chrome.runtime.onMessage.addListener(
      function (request, sender, sendResponse) {
-       if (request.type == "sendMessage") {
+       if (request.type === 'sendMessage') {
          if (port == null) {
            connectToNativeHost();
          }
@@ -163,7 +171,7 @@ function sendMessageToNative() {
        return true; // 保持消息通道开放
    });
    function connectToNativeHost() {
-     var bundleName = "com.example.app"; // 插件对应应用的bundleName
+     let bundleName = 'com.example.app'; // 插件对应应用的bundleName
      port = chrome.runtime.connectNative(bundleName); // 根据bundleName名得到通信端口port
      port.onMessage.addListener(onNativeMessage); // 监听native应用程序是否发来消息
      port.onDisconnect.addListener(onDisconnected); // 监听是否断开连接
@@ -181,14 +189,14 @@ function sendMessageToNative() {
 2. 使用chrome.runtime.sendNativeMessage连接
    ```typescript
    function sendNativeMessage() {
-     var bundleName = "com.example.app"; // 插件对应应用的bundleName
-     var nativeMessage = "ping"; // 插件要发给应用的内容
+     let bundleName = 'com.example.app'; // 插件对应应用的bundleName
+     let nativeMessage = 'ping'; // 插件要发给应用的内容
      chrome.runtime.sendNativeMessage(
        bundleName,
        {message: nativeMessage},
        function(response) {
        // 收到一次应用回复的信息后断开连接
-       console.info("sendNativeMessage收到应用程序响应:", JSON.stringify(response));
+       console.info('sendNativeMessage收到应用程序响应:', JSON.stringify(response));
        }
      )
    }
@@ -276,7 +284,6 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_extension_ability_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/ExtensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
    
    ``` TypeScript
-   'use static'
    import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
    import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -415,7 +422,7 @@ function sendMessageToNative() {
          try {
            const result = results[i];
            const json = result.value;
-           if (typeof json !== "string") {
+           if (typeof json !== 'string') {
              continue;
            }
            let jsonStr:string = json as string;
@@ -453,7 +460,6 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_get_manifest_data_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   'use static'
    import dataShare from '@ohos.data.dataShare';
    
    class ExtensionConfig {
@@ -568,7 +574,6 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_connect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   'use static'
    import UIAbility from '@ohos.app.ability.UIAbility';
    import Want from '@ohos.app.ability.Want';
    import common from '@ohos.app.ability.common';
@@ -633,7 +638,6 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_disconnect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   'use static'
    import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
    
    function disconnencNative(connectId: int) : void {

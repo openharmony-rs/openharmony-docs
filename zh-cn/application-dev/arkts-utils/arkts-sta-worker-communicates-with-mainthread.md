@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)适合需要独占线程、长期驻留或固定线程上下文的任务。宿主线程可以通过EAWorker.run向EAWorker提交任务，也可以通过MessageHandler和Message按消息类型进行即时通信。
+[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)适合需要独占线程、长期驻留或固定线程上下文的任务。宿主线程可以通过EAWorker.run向EAWorker提交任务，也可以通过MessageHandler和Message按消息类型进行即时通信。
 
 ArkTS-Sta中不使用ArkTS-Dyn的Worker线程文件和postMessage接口。EAWorker消息通信基于concurrency.MessageHandler和concurrency.Message实现，消息携带的数据默认按共享对象引用传递。
 
@@ -70,4 +70,4 @@ async function communicateWithWorker(): Promise<void> {
 
 如果只需要向EAWorker提交一次任务并获取结果，优先使用worker.run；如果需要按消息类型分发、取消待处理消息或在多个EAWorker之间持续通信，使用MessageHandler和Message更合适。
 
-更多接口说明请参见[MessageHandler](../reference/apis-arkts/message_handler.md)和[Message](../reference/apis-arkts/message.md)。
+更多接口说明请参见[MessageHandler](../reference/apis-arkts/message-handler.md)和[Message](../reference/apis-arkts/message.md)。

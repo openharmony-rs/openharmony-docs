@@ -426,7 +426,7 @@ globalConnect参数类型。
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，对应数值：0-4，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)。不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密级别数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
-|ignoreReadOnlyProperties      | boolean   |否   |是    |是否忽略只读属性。当值为false时，反序列化含有只读属性的类（例如被[@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter函数）时会抛出错误。当值为true时，将忽略只读属性，不会抛出错误。默认值为false。<br>**起始版本：** 26.2.0 <br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+|ignoreReadOnlyProperties      | boolean   |否   |是    |是否忽略只读属性。当值为false时，反序列化含有只读属性的类（例如被[@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter函数）时会抛出错误。当值为true时，将忽略只读属性，不会抛出错误。默认值为false。<br>**起始版本：** 26.1.0 <br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
@@ -2174,7 +2174,7 @@ struct CompV2 {
 
 ## CustomComponentContext
 
-`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例。
+`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例，开发者请勿自行实现或重写该接口。
 
 **起始版本：** 26.0.0
 
@@ -2243,17 +2243,13 @@ struct PoolOwner {
 
 ### getDefaultReusePool
 
-getDefaultReusePool?(): IDefaultReusePool | undefined
+getDefaultReusePool(): IDefaultReusePool | undefined
 
 返回该自定义组件拥有的默认复用池。与[getReusePool](#getreusepool)返回的全局复用池不同，默认复用池用于缓存该组件回收的直接子组件，无需开发者配置。当组件存在默认复用池时返回默认复用池，否则返回`undefined`。
 
-> **说明：**
->
-> 该方法为可选方法，调用时建议使用`getDefaultReusePool?.()`的形式。
+**起始版本：** 26.1.0
 
-**起始版本：** 26.2.0
-
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2301,7 +2297,7 @@ struct Index {
 
   clearDefaultPool() {
     // 获取当前组件的默认复用池
-    const pool = UIUtils.getCustomComponentContext(this).getDefaultReusePool?.();
+    const pool = UIUtils.getCustomComponentContext(this).getDefaultReusePool();
     if (!pool) {
       console.info('No default reuse pool available.');
       return;
@@ -2335,7 +2331,7 @@ struct Index {
 
 ## IReusePool
 
-`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。
+`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。通过[CustomComponentContext.getReusePool](#getreusepool)获取实例，开发者请勿自行实现或重写该接口。
 
 **起始版本：** 26.0.0
 
@@ -2557,11 +2553,11 @@ struct CompA {
 
 ## IDefaultReusePool
 
-`IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例。
+`IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例，开发者请勿自行实现或重写该接口。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2578,9 +2574,9 @@ clearCache(reuseId?: string): void
 > 1. 已从复用池中取出、正参与复用的组件不受影响。
 > 2. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2650,12 +2646,12 @@ struct Index {
       Button('Clear All')
         .onClick(() => {
           // 清理默认复用池中的全部组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
         })
       Button('Clear A')
         .onClick(() => {
           // 仅清理reuseId为'A'的组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
         })
     }
   }

@@ -1139,7 +1139,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function UpdateDatay(imageSourceObj : image.ImageSource) {
+async function UpdateData(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
   try {
     // 该接口为异步接口，调用时需保证执行时序。
@@ -1352,7 +1352,7 @@ async function CreatePictures() {
     try {
       let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
       console.info('Succeeded in creating picture for frame: ' + index);
-    } catch (e) {
+    } catch (error) {
       console.error('Failed to create picture for frame: ' + index);
     }
   }
@@ -1369,7 +1369,7 @@ async function CreatePictures(imageSourceApi: image.ImageSource) {
       if (pictureObj) {
         console.info('Create picture succeeded for frame: ' + index);
       }
-    } catch (e) {
+    } catch (error) {
       console.error('Create picture failed for frame: ' + index);
     }
   }
@@ -2161,7 +2161,7 @@ ArkTS-Sta: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocator
 
 ArkTS-Dyn示例：
 ```ts
-async function CreatePixelMapUsingAllocator(context : Context) {
+async function CreatePixelMapUsingAllocatorSync(context : Context) {
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);
@@ -2783,6 +2783,8 @@ release(callback: AsyncCallback\<void>): void
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 6
@@ -2840,6 +2842,8 @@ release(): Promise\<void>
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用该方法，及时释放内存。
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

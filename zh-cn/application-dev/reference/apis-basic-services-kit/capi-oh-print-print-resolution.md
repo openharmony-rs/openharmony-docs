@@ -1,18 +1,18 @@
 # Print_Resolution
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @Zouhaifeng1-->
+ <!--Designer: @baozewei-->
+ <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
 
-```c
+```cpp
 typedef struct {...} Print_Resolution
 ```
 
 ## 概述
 
-表示以 dpi 为单位的打印分辨率。
+Print_Resolution用于表示以dpi为单位的打印分辨率，可控制打印输出的精细度与质量。
 
 **起始版本：** 12
 
@@ -26,8 +26,8 @@ typedef struct {...} Print_Resolution
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t [horizontalDpi](#horizontaldpi) | 水平分辨率，单位：dpi。 |
-| uint32_t [verticalDpi](#verticaldpi) | 垂直分辨率，单位：dpi。 |
+| uint32_t [horizontalDpi](#horizontaldpi) | 水平方向的打印分辨率，单位为dpi。 |
+| uint32_t [verticalDpi](#verticaldpi) | 垂直方向的打印分辨率，单位为dpi。 |
 
 
 ## 结构体成员变量说明

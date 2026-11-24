@@ -23,30 +23,30 @@
 ### Taihe声明
 
 ```rust
-function showOptionalString(@optional a: Optional<String>): Optional<String>;
-//对应.d.ts函数声明为
-// function showOptionalString(a?: string): string | undefined;
-function showOptionalBool(a: Optional<bool>): Optional<bool>;
-//对应.d.ts函数声明为
-// function showOptionalBool(a: boolean | undefined): boolean | undefined;
+function optionalIntToString(@optional a: Optional<i32>): Optional<String>;
+// 对应.d.ts函数声明为
+// function optionalIntToString(a?: number): string | undefined;
+function optionalBooleanToString(a: Optional<bool>): Optional<String>;
+// 对应.d.ts函数声明为
+// function optionalBooleanToString(a: boolean | undefined): string | undefined;
 ```
 
 ### C++实现
 
 ```cpp
-::taihe::optional<::taihe::string> showOptionalString(::taihe::optional_view<::taihe::string> a) {
+::taihe::optional<::taihe::string> optionalIntToString(::taihe::optional_view<::taihe::string> a) {
     if (a.has_value()) {
-      return a;
+      return taihe::optional<::taihe::string>(std::in_place, taihe::to_string(*a));
     } else {
-      return ::taihe::optional<::taihe::string>{std::nullopt};
+      return std::nullopt;
     }
 }
 
-::taihe::optional<bool> showOptionalBool(::taihe::optional_view<bool> a) {
+::taihe::optional<::taihe::string> optionalBooleanToString(::taihe::optional_view<bool> a) {
     if (a.has_value()) {
-        return a;
+        return taihe::optional<::taihe::string>(std::in_place, taihe::to_string(*a));
     } else {
-        return ::taihe::optional<bool>{std::nullopt};
+        return std::nullopt;
     }
 }
 ```
@@ -54,20 +54,23 @@ function showOptionalBool(a: Optional<bool>): Optional<bool>;
 ### ets侧使用
 
 ```typescript
-let result1 = showOptionalString("my_opt_str");
-let result2 = showOptionalString();
-let result3 = showOptionalBool(undefined);
-console.info("show my optional string value: " + result1);
-console.info("show my optional string undefined: " + result2);
-console.info("show my optional string param undefined: " + result3);
+let result1 = optionalIntToString(1);
+let result2 = optionalIntToString();
+let result3 = optionalBooleanToString(true);
+let result4 = optionalBooleanToString(undefined);
+console.info("optionalIntToString(1) = " + result1);
+console.info("optionalIntToString() = " + result2);
+console.info("optionalBooleanToString(true) = " + result3);
+console.info("optionalBooleanToString(undefined) = " + result4);
 ```
 
-Output：
+### 输出结果
 
 ```sh
-show my optional string value: my_opt_str
-show my optional string undefined: undefined
-show my optional string param undefined: undefined
+optionalIntToString(1) = 1
+optionalIntToString() = undefined
+optionalBooleanToString(true) = true
+optionalBooleanToString(undefined) = undefined
 ```
 
 ## Optional C++使用方法

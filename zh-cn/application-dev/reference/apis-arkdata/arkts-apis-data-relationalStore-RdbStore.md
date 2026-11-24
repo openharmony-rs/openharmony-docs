@@ -5963,8 +5963,6 @@ setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 
 设置分布式数据库表，使用callback异步回调。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -6008,8 +6006,6 @@ if (store != undefined) {
 setDistributedTables(tables: Array&lt;string&gt;): Promise&lt;void&gt;
 
 设置分布式数据库表，使用Promise异步回调。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -6061,8 +6057,6 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callbac
 
 设置分布式数据库表，支持指定表的分布式类型，使用callback异步回调。
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -6108,8 +6102,6 @@ if (store != undefined) {
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void
 
 设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用callback异步回调。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -6159,8 +6151,6 @@ if (store != undefined) {
 setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
 
 设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用Promise异步回调。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -6220,8 +6210,6 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 > **说明：**
 >
 > 其中device通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -6291,8 +6279,6 @@ obtainDistributedTableName(device: string, table: string): Promise&lt;string&gt;
 > **说明：**
 >
 > 其中device通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -6404,9 +6390,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -6426,9 +6412,9 @@ if (store != undefined) {
       return;
     }
     console.info('Sync done.');
-    for (let i = 0; i < result.length; i++) {
-      console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
-    }
+    result.forEach((item) => {
+      console.info(`device= ${item[0]}, status= ${item[1]}`);
+    });
   });
 }
 ```
@@ -6485,9 +6471,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -6499,9 +6485,9 @@ predicates.inDevices(deviceIds);
 if (store != undefined) {
   (store as relationalStore.RdbStore).sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result) => {
     console.info('Sync done.');
-    for (let i = 0; i < result.length; i++) {
-      console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
-    }
+    result.forEach((item) => {
+      console.info(`device= ${item[0]}, status= ${item[1]}`);
+    });
   }).catch((err: Error) => {
     let businessError = err as BusinessError;
     console.error(`Sync failed, code is ${businessError.code},message is ${businessError.message}`);
@@ -6561,9 +6547,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -6573,15 +6559,15 @@ try {
 let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates.inDevices(deviceIds);
 store.syncEx(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result: relationalStore.SyncResult[]) => {
-  for (let i = 0; i < result.length; i++) {
-    let code = result[i].code;
-    let message = result[i].message;
+  result.forEach((item: relationalStore.SyncResult) => {
+    let code = item.code;
+    let message = item.message;
     if (code === 0) {
       console.info(`SyncEx success`);
     } else {
       console.error(`SyncEx failed, message: ${message} code : ${code}`);
     }
-  }
+  });
 }).catch((err: Error) => {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
@@ -6600,9 +6586,9 @@ let deviceIds: Array<string> = [];
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].networkId!;
-  }
+  devices.forEach((item: distributedDeviceManager.DeviceBasicInfo) => {
+    deviceIds.push(item.networkId!);
+  });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -6612,15 +6598,15 @@ try {
 let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates.inDevices(deviceIds);
 store!.syncEx(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result: relationalStore.SyncResult[]) => {
-  for (let i = 0; i < result.length; i++) {
-    let code = result[i].code;
-    let message = result[i].message;
+  result.forEach((item: relationalStore.SyncResult) => {
+    let code = item.code;
+    let message = item.message;
     if (code === 0) {
       console.info(`SyncEx success`);
     } else {
       console.error(`SyncEx failed, message: ${message} code : ${code}`);
     }
-  }
+  });
 }).catch((err: Error) => {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
@@ -6990,9 +6976,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -7033,7 +7019,6 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 
 | **错误码ID** | **错误信息**        |
 |-----------|-------------|
-| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+    |
@@ -7045,9 +7030,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -7066,9 +7051,9 @@ try {
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
-  for (let i = 0; i < changeInfos.length; i++) {
-    console.info(`changeInfos = ${JSON.stringify(changeInfos[i])}`);
-  }
+  changeInfos.forEach((changeInfo: relationalStore.ChangeInfo) => {
+    console.info(`changeInfos = ${JSON.stringify(changeInfo)}`);
+  });
 };
 
 try {
@@ -7138,9 +7123,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -7159,9 +7144,9 @@ try {
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
-  for (let i = 0; i < changeInfos.length; i++) {
-    console.info(`changeInfos = ${JSON.stringify(changeInfos[i])}`);
-  }
+  changeInfos.forEach((changeInfo: relationalStore.ChangeInfo) => {
+    console.info(`changeInfos = ${JSON.stringify(changeInfo)}`);
+  });
 };
 
 try {
@@ -7805,9 +7790,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -7857,7 +7842,6 @@ off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;str
 
 | **错误码ID** | **错误信息**        |
 |-----------|-------------|
-| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+    |
@@ -7869,9 +7853,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 
@@ -7930,9 +7914,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
   if (devices !== undefined) {
-    for (let i = 0; i < devices.length; i++) {
-      console.info(`device= ${devices[i]} data changed`);
-    }
+    devices.forEach((device: string) => {
+      console.info(`device= ${device} data changed`);
+    });
   }
 };
 

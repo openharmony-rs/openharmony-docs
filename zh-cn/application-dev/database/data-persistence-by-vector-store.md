@@ -1,8 +1,8 @@
 # 通过向量数据库实现数据持久化 (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @htt1997-->
-<!--Designer: @widecode-->
+<!--Owner: @baijidong-->
+<!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -27,7 +27,7 @@
 
 - 当应用被卸载完成后，设备上的相关数据库文件及临时文件会被自动清除。
 
-- ArkTS侧支持的基本数据类型：number、string、二进制类型数据、boolean；特殊数据类型：ValueType。
+- ArkTS侧支持的基本数据类型：number、string、二进制类型数据、boolean；特殊数据类型：[ValueType](../reference/apis-arkdata/arkts-apis-data-relationalStore-t.md#valuetype)。
 
 - 为保证插入并读取数据成功，建议一条数据不要超过2M。单条数据超出该大小时，即使插入成功，也会出现读取失败的情况。
 
@@ -135,7 +135,6 @@ SQL语句中的函数，如下所示：
    import { relationalStore } from '@kit.ArkData'; // 导入模块
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
    // ...
      // 判断当前系统是否支持向量数据库
      let ret = relationalStore.isVectorSupported();
@@ -161,8 +160,6 @@ SQL语句中的函数，如下所示：
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
-   /* context为应用的上下文信息，此处获取方式仅为示例。 */
-   let context: Context = new UIContext().getHostContext() as common.UIAbilityContext;
    const STORE_CONFIG: relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
@@ -177,7 +174,7 @@ SQL语句中的函数，如下所示：
        }
        // 建表语句，floatvector(2)代表repr的维度是2
        const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
-       // 第二个入参表示不开启显示事务，第三个参数undefined表示未使用参数绑定
+       // 第二个入参表示不开启显式事务，第三个参数undefined表示未使用参数绑定
        await store!.execute(SQL_CREATE_TABLE, 0, undefined);
      } catch(err) {
        console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);

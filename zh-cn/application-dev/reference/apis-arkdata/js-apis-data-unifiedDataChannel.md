@@ -351,14 +351,6 @@ constructor(record: UnifiedRecord)
 | ------ | ------------------------------- | ---- |-----------------------------------------|
 | record | [UnifiedRecord](#unifiedrecord) | 是   | 要添加到统一数据对象中的数据记录，该记录为UnifiedRecord或其子类对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -407,14 +399,6 @@ addRecord(record: UnifiedRecord): void
 | 参数名 | 类型                            | 必填 | 说明                                          |
 | ------ | ------------------------------- | ---- |---------------------------------------------|
 | record | [UnifiedRecord](#unifiedrecord) | 是   | 要添加到统一数据对象中的数据记录，该记录为UnifiedRecord子类对象。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -506,8 +490,7 @@ let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 unifiedData.addRecord(link);
 
 let records = unifiedData.getRecords();
-for (let i = 0; i < records.length; i++) {
-  let record = records[i];
+records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
   let types = record.getTypes();
   if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
     let plainText = record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as unifiedDataChannel.PlainText;
@@ -516,7 +499,7 @@ for (let i = 0; i < records.length; i++) {
     let hyperlink = record.getEntry(uniformTypeDescriptor.UniformDataType.HYPERLINK) as unifiedDataChannel.Hyperlink;
     console.info(`linkUrl: ${hyperlink.url}`);
   }
-}
+});
 ```
 
 ArkTS-Sta示例：
@@ -581,14 +564,6 @@ hasType(type: string): boolean
 | 类型                                     | 说明                      |
 | ---------------------------------------- |-------------------------|
 | boolean | 有指定的数据类型返回true，否则返回false。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -807,14 +782,6 @@ constructor(type: string, value: ValueType)
 | type | string | 是   | 要创建的数据记录的类型。 |
 | value | [ValueType](#valuetype12) | 是   | 要创建的数据记录的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1013,14 +980,6 @@ addEntry(type: string, value: ValueType): void
 | type | string | 是   | 要创建的数据类型，见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | value | [ValueType](#valuetype12) | 是   | 要创建的数据的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1104,14 +1063,6 @@ getEntry(type: string): ValueType
 | 类型   | 说明                                                   |
 | ------ |------------------------------------------------------|
 | [ValueType](#valuetype12) | 当前数据记录对应的值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2272,7 +2223,7 @@ insertData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;strin
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2367,7 +2318,7 @@ insertData(options: Options, data: UnifiedData): Promise&lt;string&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2461,7 +2412,7 @@ updateData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;void&
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2603,7 +2554,7 @@ updateData(options: Options, data: UnifiedData): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2732,7 +2683,7 @@ queryData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;&
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2835,7 +2786,7 @@ queryData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2916,7 +2867,7 @@ deleteData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -3019,7 +2970,7 @@ deleteData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -3101,8 +3052,8 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 20400001     | Settings already exist.       |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.        |
 
 **示例：**
 
@@ -3145,7 +3096,7 @@ removeAppShareOptions(intention: Intention): void
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -3186,14 +3137,6 @@ convertRecordsToEntries(data: UnifiedData): void
 | 参数名    | 类型                    | 必填 | 说明                                                         |
 | --------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | data    | [UnifiedData](#unifieddata) | 是  | 目标数据。           |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                                 |
-| ------------ | ------------------------------------------------------------ |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

@@ -1369,7 +1369,7 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 
 复制源目录及其内容至目标路径下。使用callback异步回调。
 
-如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留。
+如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部拷贝至目标目录下，目标目录下未冲突文件将继续保留。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1431,7 +1431,7 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 复制源目录及其内容至目标路径下。使用callback异步回调。
 
-如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
+如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部拷贝至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1481,7 +1481,7 @@ copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<voi
 
 复制源目录及其内容至目标路径下。使用callback异步回调。
 
-如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
+如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部拷贝至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1532,7 +1532,7 @@ ArkTS-Dyn: copyDirSync(src: string, dest: string, mode?: number): void
 
 ArkTS-Sta: copyDirSync(src: string, dest: string, mode?: int): void
 
-以同步方法复制源目录至目标路径下。
+以同步方法复制源目录及其内容至目标路径下。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3615,7 +3615,7 @@ fileIo.truncateSync(filePath, len);
 
 readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
-逐行读取文件文本内容，使用Promise异步回调。只支持读取utf-8格式文件。
+逐行读取文件文本内容，只支持读取utf-8格式文件。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4982,7 +4982,7 @@ listFile(path: string, options?: ListFileOptions): Promise&lt;string[]&gt;
 
 默认列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。使用Promise异步回调。
 
-可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+可通过配置ListFileOptions中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5632,7 +5632,7 @@ moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCa
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
 | mode | int | 是 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
-| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步移动目录之后的回调。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 回调函数。当移动文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -5685,7 +5685,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步移动目录之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 当移动文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -5751,7 +5751,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步移动目录之后的回调。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 当移动文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -5805,7 +5805,7 @@ moveDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<voi
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步移动目录之后的回调。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 当移动文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -8011,6 +8011,8 @@ let copyOption: fileIo.CopyOptions = {
 | mtimeNs<sup>15+</sup> | bigint | 是 | 是 | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | ctimeNs<sup>15+</sup> | bigint | 是 | 是 | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | location<sup>11+</sup> | [LocationType](#locationtype11) | 是 | 否 | 文件的位置，表示该文件是本地文件或者云端文件。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| blocks | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 是 | 分配给文件的块数，以512字节为单位。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 
 > **说明：**
 >
@@ -8042,7 +8044,7 @@ isBlockDevice(): boolean
 
 ```ts
 let filePath = pathDir + "/test.txt";
-let isBLockDevice = fileIo.statSync(filePath).isBlockDevice();
+let isBlockDevice = fileIo.statSync(filePath).isBlockDevice();
 ```
 
 ### isCharacterDevice
@@ -9265,7 +9267,7 @@ lock(exclusive: boolean, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| exclusive | boolean | 是 | 是否施加独占锁，默认false。true：施加独占锁；false：不施加独占锁。 |
+| exclusive | boolean | 是 | 是否施加独占锁。true：施加独占锁；false：不施加独占锁。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当文件上锁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**

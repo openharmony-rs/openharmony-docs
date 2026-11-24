@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍系统应用如何实现UIServiceExtension浮窗类扩展组件，包括生命周期、启动连接方式及客户端与服务端双向通信。"
+keywords: [UIServiceExtension, UIServiceExtensionAbility, 系统应用, startUIServiceExtensionAbility, connectUIServiceExtensionAbility, UIServiceProxy]
+doctype: guide
+status: active
+---
 # UIServiceExtension（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->
@@ -69,7 +76,7 @@
 
 - **onDestroy**
   
-  当不再使用服务且准备将其销毁该实例时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。
+  当不再使用服务且准备将该实例销毁时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。
 
 ## 实现一种UIService类型Extension基类
 

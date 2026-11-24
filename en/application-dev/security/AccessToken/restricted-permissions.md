@@ -1182,3 +1182,17 @@ Allows an application to manage sandbox applications.
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+Allows an application to obtain the device hardware information.
+ 
+<!--RP118--><!--RP118End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1

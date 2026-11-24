@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb Native侧的PostWebMessage能力，在C++环境与前端页面间直接收发消息，避免ArkTS环境冗余切换与UI线程阻塞。"
+keywords: [ArkWeb NDK, Native PostWebMessage, OH_ArkWeb_GetNativeAPI, ArkWeb_WebMessagePortAPI, createWebMessagePorts, postWebMessage, setMessageEventHandler, 应用与前端页面通信]
+doctype: guide
+status: active
+---
+
 # 建立应用侧与前端页面数据通道(C/C++)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -60,7 +68,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 ### 完整示例
 
-在调用API前建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。[createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports)、[postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage)、[close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close)需运行在UI线程。
+在调用API前建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。[createWebMessagePorts()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports)、[postWebMessage()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage)、[close()](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close)需运行在UI线程。
 
 * 前端页面代码
 
@@ -117,7 +125,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       }
   })
   window.onerror = function(message, url, line, column, error) {
-    console.info("JavaScript Error: " + message + " on line " + line + " in " + url);
+    console.error("JavaScript Error: " + message + " on line " + line + " in " + url);
     document.getElementById("h1").innerHTML = "执行函数失败"
   };
 
@@ -195,7 +203,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 * ArkTS侧代码
 
   ArkTS-Dyn示例：
-  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->  
   
   ``` TypeScript
   import testNapi from 'libentry.so';
@@ -216,7 +224,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
     }
   
     aboutToDisappear() {
-      console.error('aboutToDisappear');
+      console.info('aboutToDisappear');
     }
   
     build() {
@@ -721,24 +729,25 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   ```
 
 * Node-API侧编译配置
-
-  ```c++
+  <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/CMakeLists.txt) -->
+  
+  ``` Text
   # entry/src/main/cpp/CMakeLists.txt
   # the minimum version of CMake.
-  cmake_minimum_required(VERSION 3.4.1)
+  cmake_minimum_required(VERSION 3.5.0)
   project(NDKPostMessage)
-
+  
   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
+  
   if(DEFINED PACKAGE_FIND_FILE)
       include(${PACKAGE_FIND_FILE})
   endif()
-
+  
   include_directories(${NATIVERENDER_ROOT_PATH}
                       ${NATIVERENDER_ROOT_PATH}/include)
-
+  
   add_library(entry SHARED hello.cpp)
-
+  
   find_library(
       # Sets the name of the path variable.
       hilog-lib
@@ -746,7 +755,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       # you want CMake to locate.
       hilog_ndk.z
   )
-
+  
   target_link_libraries(entry PUBLIC libace_napi.z.so ${hilog-lib} libohweb.so)
   ```
 
@@ -976,7 +985,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       // 注册回调
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler begin");
+          "Native Development Kit setMessageEventHandlerThread begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -986,7 +995,8 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTagValue, WebMessagePortCallback, NULL);
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit setMessageEventHandlerThread end, web message port size:%{public}d",
+          g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
@@ -1109,14 +1119,14 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // 关闭端口，先调用close，再调用destroyWebMessagePorts
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit closeMessagePort begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
       }
       webMessagePort->close(g_web_message_port_arr[0], webTagValue);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit closeMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       controller->refresh(webTagValue);
       delete[] webTagValue;
       return nullptr;
@@ -1139,7 +1149,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // 释放内存，先调用close，再调用destroyWebMessagePorts
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit destroyMessagePort begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -1147,7 +1157,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit destroyMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
@@ -1169,13 +1179,13 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // 释放内存，先调用close，再调用destroyWebMessagePorts
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit destroyNullMessagePort begin");
   
       controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
   
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit destroyNullMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }

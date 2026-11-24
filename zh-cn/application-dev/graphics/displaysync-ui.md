@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍如何使用DisplaySync为UI绘制申请独立帧率，并通过设置期望帧率范围和注册每帧回调实现UI内容的差异化刷新。"
+keywords: [DisplaySync, UI绘制帧率, 期望帧率, 每帧回调, 订阅函数]
+doctype: guide
+status: active
+---
+
 # 请求UI绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->

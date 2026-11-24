@@ -349,6 +349,83 @@ ArkTS-Sta: hdrBrightness(brightness: double | undefined, type?: HdrType)
 | brightness | ArkTS-Dyn: number <br>ArkTS-Sta: double \| undefined | 是  | HDR内容的亮度。<br>默认值：1.0<br>取值范围：[0.0, 1.0]。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。<br>0.0表示内容按照SDR亮度显示，1.0表示内容按照当前允许的最高HDR亮度显示。<br>ArkTS-Sta模式下可不传，不传时使用默认值1.0。|
 | type | [HdrType](#hdrtype24枚举说明) | 否   | 显示HDR内容时的HDR类型。<br>默认值：HdrType.DEFAULT|
 
+### bufferQueueCount
+
+ArkTS-Dyn: bufferQueueCount(count: number)
+
+ArkTS-Sta: bufferQueueCount(count: int)
+
+设置XComponent的buffer队列大小。未通过该接口设置时，默认大小为5。
+
+XComponent持有的Surface通过buffer队列进行渲染上屏：生产侧（应用、相机、播放器等）将渲染内容提交到buffer队列，系统渲染侧从队列中获取buffer并显示到屏幕。buffer队列大小决定了渲染链路中可同时流转的buffer数量：
+
+- 队列越小，画面从生产到上屏的时延越低，占用的内存越少，适用于相机预览、投屏等对显示时延敏感的场景；
+- 队列越大，渲染缓冲越充裕，可更好地吸收生产侧的帧率波动，适用于视频播放等对流畅性要求较高、对时延不敏感的场景。
+
+该属性支持运行时动态修改：组件创建后，可根据使用场景动态切换buffer队列大小。例如，从视频播放切换到相机预览时，可将队列调小以降低显示时延；从相机预览切换到视频播放时，可将队列调大以获得更充裕的渲染缓冲。
+
+> **说明：**
+>
+> 在buffer轮转过程中修改buffer队列大小，可能引起丢帧。建议在切换前后短暂停止生产侧的渲染提交，以减少丢帧。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                   |
+| -------- | ------- | ---- | ---------------------- |
+| count | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | buffer队列大小。<br>取值范围：[2, 5]。大于5的值按5处理，小于2的值按2处理，传入非整数值时按默认值5处理。<br>ArkTS-Sta模式下参数类型为int，不可传入非整数值。|
+
+### enableSurfaceVisibilityLifecycle
+
+enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional\<boolean\>)
+
+为XComponent启用Surface可见性生命周期。未通过该接口设置时，默认禁用Surface可见性生命周期。
+
+默认情况下，XComponent持有的Surface生命周期回调跟随组件的挂载与卸载触发。启用后，Surface生命周期回调跟随组件的可见性变化触发：组件不可见时触发[onSurfaceDestroyed](#onsurfacedestroyed12)回调，组件重新可见时触发[onSurfaceCreated](#onsurfacecreated12)回调，可在组件不显示时释放Surface资源，降低内存占用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                   |
+| -------- | ------- | ---- | ---------------------- |
+| isVisibilityLifecycle | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否启用Surface可见性生命周期。<br>true：启用，Surface生命周期回调跟随组件可见性变化；false：关闭，Surface生命周期回调跟随组件挂载与卸载。传入undefined时按false处理。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 20 }) {
+      XComponent({ id: 'enableSurfaceVisibilityLifecycle', type: XComponentType.SURFACE, libraryname: 'nativerender' })
+        // 启用Surface可见性生命周期，组件不可见时销毁Surface，重新可见时创建Surface。
+        .enableSurfaceVisibilityLifecycle(true)
+        .width('90%')
+        .height('40%')
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ### attributeModifier<sup>23+</sup>
 
 attributeModifier(modifier: AttributeModifier\<XComponentAttribute> | AttributeModifier\<CommonMethod> | undefined)
@@ -547,25 +624,27 @@ getXComponentSurfaceId(): string
 ```ts
 // xxx.ets
 
-@Entry
-  @Component
-  struct Index {
-    myXComponentController: XComponentController = new XComponentController();
+class MyXComponentController extends XComponentController {
+  onSurfaceCreated(surfaceId: string): void {
+    console.info("XComponent SurfaceId: " + this.getXComponentSurfaceId());
+  }
+}
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        XComponent({
-          type: XComponentType.SURFACE,
-          controller: this.myXComponentController
-        })
-          .onLoad(() => {
-            let surfaceId: string = this.myXComponentController.getXComponentSurfaceId();
-            console.info("XComponent SurfaceId: " + surfaceId);
-          })
-      }
+@Entry
+@Component
+struct Index {
+  myXComponentController: XComponentController = new MyXComponentController();
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.myXComponentController
+      })
     }
   }
-  ```
+}
+```
 
 ### setXComponentSurfaceSize<sup>(deprecated)</sup>
 
@@ -1025,11 +1104,9 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 使用enableAnalyzer属性开启图像AI分析功能。可通过XComponentController控制开始、停止图像AI分析。
 
-<!--RP1-->
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。
-<!--RP1End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
@@ -1160,16 +1237,22 @@ struct XComponentExample {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
 import nativeRender from 'libnativerender.so';
 
 class MyXComponentController extends XComponentController {
+  isLock: boolean = true;
+
   onSurfaceCreated(surfaceId: string): void {
     console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
     nativeRender.SetSurfaceId(BigInt(surfaceId));
+    let surfaceRotation: SurfaceRotationOptions = { lock: this.isLock };
+    this.setXComponentSurfaceRotation(surfaceRotation);
+    console.info("Surface getXComponentSurfaceRotation lock = " +
+    this.getXComponentSurfaceRotation().lock);
   }
 
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
@@ -1186,10 +1269,9 @@ class MyXComponentController extends XComponentController {
 @Entry
 @Component
 struct Index {
-  @State isLock: boolean = true;
   @State xcWidth: number = 500;
   @State xcHeight: number = 700;
-  myXComponentController: XComponentController = new MyXComponentController();
+  myXComponentController: MyXComponentController = new MyXComponentController();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
@@ -1198,12 +1280,6 @@ struct Index {
         type: XComponentType.SURFACE,
         controller: this.myXComponentController
       })
-        .onLoad(() => {
-          let surfaceRotation: SurfaceRotationOptions = { lock: this.isLock };
-          this.myXComponentController.setXComponentSurfaceRotation(surfaceRotation);
-          console.info("Surface getXComponentSurfaceRotation lock = " +
-          this.myXComponentController.getXComponentSurfaceRotation().lock);
-        })
         .width(this.xcWidth)
         .height(this.xcHeight)
       Button("Draw")
@@ -1224,39 +1300,43 @@ struct Index {
 // xxx.ets
 import { drawing } from '@kit.ArkGraphics2D';
 
+class MyXComponentController extends XComponentController {
+  private mCanvas: DrawingCanvas | null = null;
+
+  onSurfaceCreated(surfaceId: string): void {
+    this.mCanvas = this.lockCanvas();
+    if (this.mCanvas) {
+      this.mCanvas.drawColor(255, 240, 250, 255); // 每次绘制前必须完全重绘整个XComponent区域，可以调用此方法实现
+      const brush = new drawing.Brush(); // 创建画刷对象
+      brush.setColor({ // 设置画刷的颜色
+        alpha: 255,
+        red: 39,
+        green: 135,
+        blue: 217
+      });
+      this.mCanvas.attachBrush(brush); // 绑定画刷到画布上
+      this.mCanvas.drawRect({ // 绘制一个矩形
+        left: 300,
+        right: 800,
+        top: 100,
+        bottom: 800
+      });
+      this.mCanvas.detachBrush(); // 将画刷与画布解绑
+      this.unlockCanvasAndPost(this.mCanvas);
+    }
+  }
+}
+
 @Entry
 @Component
 struct Index {
-  private xcController: XComponentController = new XComponentController();
-  private mCanvas: DrawingCanvas | null = null;
+  private xcController: XComponentController = new MyXComponentController();
 
   build() {
     Column() {
       XComponent({ type: XComponentType.SURFACE, controller: this.xcController })
         .width("80%")
         .height("80%")
-        .onLoad(() => {
-          this.mCanvas = this.xcController.lockCanvas();
-          if (this.mCanvas) {
-            this.mCanvas.drawColor(255, 240, 250, 255); // 每次绘制前必须完全重绘整个XComponent区域，可以调用此方法实现
-            const brush = new drawing.Brush(); // 创建画刷对象
-            brush.setColor({ // 设置画刷的颜色
-              alpha: 255,
-              red: 39,
-              green: 135,
-              blue: 217
-            });
-            this.mCanvas.attachBrush(brush); // 绑定画刷到画布上
-            this.mCanvas.drawRect({ // 绘制一个矩形
-              left: 300,
-              right: 800,
-              top: 100,
-              bottom: 800
-            });
-            this.mCanvas.detachBrush(); // 将画刷与画布解绑
-            this.xcController.unlockCanvasAndPost(this.mCanvas);
-          }
-        })
     }
     .height('100%')
     .width('100%')
@@ -1272,37 +1352,36 @@ struct Index {
 ```ts
 // xxx.ets
 import { display } from '@kit.ArkUI';
-@Entry
-@Component
-struct Index {
-  private xcController: XComponentController = new XComponentController();
+
+class MyXComponentController extends XComponentController {
   private mCanvas: DrawingCanvas | null = null;
-  @State screenWidth: number = 0;
-  @State screenHeight:number = 0;
-  aboutToAppear() {
+
+  onSurfaceCreated(surfaceId: string): void {
     try {
       const displayClass = display.getDefaultDisplaySync();
-      this.screenWidth = displayClass.width;
-      this.screenHeight = displayClass.height;
+      // 请在此处设置Surface大小，过大可能会导致绘制时间长
+      this.setXComponentSurfaceRect({surfaceWidth: displayClass.width, surfaceHeight: displayClass.height, offsetX: 0, offsetY: 0});
     } catch (error) {
       console.error(`Failed to get default display. Code: ${error.code}, message: ${error.message}`);
     }
+    this.mCanvas = this.lockCanvas();
+    if (this.mCanvas) {
+      this.mCanvas.drawColor(255, 39, 135, 217); // 每次绘制前必须完全重绘整个XComponent区域，可以调用此方法实现
+      this.unlockCanvasAndPost(this.mCanvas);
+    }
   }
+}
+
+@Entry
+@Component
+struct Index {
+  private xcController: XComponentController = new MyXComponentController();
 
   build() {
     Column() {
       XComponent({ type: XComponentType.SURFACE, controller: this.xcController })
         .width('100%')
         .height('100%')
-        .onLoad(() => {
-          // 请在此处设置Surface大小，过大可能会导致绘制时间长
-          this.xcController.setXComponentSurfaceRect({surfaceWidth: this.screenWidth, surfaceHeight: this.screenHeight, offsetX: 0, offsetY: 0});
-          this.mCanvas = this.xcController.lockCanvas();
-          if (this.mCanvas) {
-            this.mCanvas.drawColor(255, 39, 135, 217); // 每次绘制前必须完全重绘整个XComponent区域，可以调用此方法实现
-            this.xcController.unlockCanvasAndPost(this.mCanvas);
-          }
-        })
         .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]);
     }
     .height('100%')
@@ -1318,7 +1397,7 @@ struct Index {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
@@ -1413,3 +1492,104 @@ struct Index {
 ```
 
 ![setXComponentSurfaceConfig示例图](./figures/surfaceConfig.jpeg)
+
+### 示例6（设置XComponent的buffer队列大小）
+
+该示例通过[bufferQueueCount](#bufferqueuecount)属性设置XComponent的buffer队列大小，并演示运行时的动态切换：在相机预览、投屏等对显示时延敏感的场景下，可减小buffer队列，以降低画面从生产到上屏的时延并减少内存占用；在视频播放等对流畅性要求较高的场景下，可保持默认值以获得更充裕的渲染缓冲。
+
+从API版本26.1.0开始，新增bufferQueueCount属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isLowLatency: boolean = false;
+  @State queueSize: number = 5; // buffer队列大小，默认值为5。
+  xComponentController: XComponentController = new XComponentController();
+
+  build() {
+    Column({ space: 20 }) {
+      XComponent({ type: XComponentType.SURFACE, controller: this.xComponentController })
+        // 根据场景设置buffer队列大小。取值范围：[2, 5]；大于5的值按5处理，小于2的值按2处理。
+        // 队列越小显示时延越低，队列越大渲染缓冲越充裕。
+        .bufferQueueCount(this.queueSize)
+        .width('90%')
+        .height('40%')
+
+      Row({ space: 8 }) {
+        Toggle({ type: ToggleType.Switch, isOn: this.isLowLatency })
+          .onChange((isOn: boolean) => {
+            this.isLowLatency = isOn;
+            // 支持运行时动态修改buffer队列大小。
+            // 说明：在buffer轮转过程中修改buffer队列大小，可能引起丢帧。
+            this.queueSize = isOn ? 2 : 5;
+          })
+        Text(this.isLowLatency ? '低时延模式（buffer队列大小：2）' : '标准模式（buffer队列大小：5）')
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  ColumnOptions,
+  Row,
+  RowOptions,
+  Text,
+  Toggle,
+  ToggleOptions,
+  ToggleType,
+  FlexAlign,
+  XComponent,
+  XComponentOptions,
+  XComponentController,
+  XComponentType
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State isLowLatency: boolean = false;
+  @State queueSize: int = 5; // buffer队列大小，默认值为5。
+  xComponentController: XComponentController = new XComponentController();
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      XComponent({ type: XComponentType.SURFACE, controller: this.xComponentController } as XComponentOptions)
+        // 根据场景设置buffer队列大小。取值范围：[2, 5]；大于5的值按5处理，小于2的值按2处理。
+        // 队列越小显示时延越低，队列越大渲染缓冲越充裕。
+        .bufferQueueCount(this.queueSize)
+        .width('90%')
+        .height('40%')
+
+      Row({ space: 8 } as RowOptions) {
+        Toggle({ type: ToggleType.Switch, isOn: this.isLowLatency } as ToggleOptions)
+          .onChange((isOn: boolean) => {
+            this.isLowLatency = isOn;
+            // 支持运行时动态修改buffer队列大小。
+            // 说明：在buffer轮转过程中修改buffer队列大小，可能引起丢帧。
+            this.queueSize = isOn ? 2 : 5;
+          })
+        Text(this.isLowLatency ? '低时延模式（buffer队列大小：2）' : '标准模式（buffer队列大小：5）')
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```

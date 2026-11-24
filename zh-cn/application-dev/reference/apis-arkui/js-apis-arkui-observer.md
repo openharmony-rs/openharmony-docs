@@ -44,8 +44,8 @@ NavDestination组件状态。
 | ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23|
 | ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23|
-| ABOUT_TO_APPEAR | 10 | NavDestination外层自定义组件即将出现。<br/>**说明：**<br/>当此状态触发时，[NavDestinationInfo](#navdestinationinfo)中navDestinationId、state、size和uniqueId可用，其他信息由于此时外层自定义组件尚未挂载到组件树上而无法获取。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.2.0<br/>**ArkTS-Sta起始版本：** 26.2.0 |
-| ABOUT_TO_DISAPPEAR | 11 | NavDestination外层自定义组件即将消失。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.2.0<br/>**ArkTS-Sta起始版本：** 26.2.0 |
+| ABOUT_TO_APPEAR | 10 | NavDestination外层自定义组件即将出现。<br/>**说明：**<br/>当此状态触发时，[NavDestinationInfo](#navdestinationinfo)中navDestinationId、state、size和uniqueId可用，其他信息由于此时外层自定义组件尚未挂载到组件树上而无法获取。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0 |
+| ABOUT_TO_DISAPPEAR | 11 | NavDestination外层自定义组件即将消失。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0 |
 | ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ScrollEventType<sup>12+</sup>
@@ -859,7 +859,7 @@ onRouterPageUpdate(context: UIAbilityContext | UIContext, callback: Callback\<Ro
 **示例：**
 
 ```ts
-// used in UIAbility
+// 在UIAbility中使用
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { UIContext, window, uiObserver } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -888,7 +888,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 
-  // ... other function in EntryAbility
+  // EntryAbility中的其他函数
 }
 ```
 
@@ -944,7 +944,7 @@ offRouterPageUpdate(context: UIAbilityContext | UIContext, callback?: Callback\<
 **示例：**
 
 ```ts
-// used in UIAbility
+// 在UIAbility中使用
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { uiObserver, UIContext } from '@kit.ArkUI';
 
@@ -964,7 +964,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // ... other function in EntryAbility
+  // EntryAbility中的其他函数
 }
 ```
 
@@ -1426,7 +1426,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
+    // 主窗口已创建，为该Ability设置主页面
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -1439,17 +1439,17 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
+    // 主窗口已销毁，释放UI相关资源
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability已切换至前台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
-    // Ability has back to background
+    // Ability已切换至后台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }
@@ -1638,7 +1638,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
+    // 主窗口已创建，为该Ability设置主页面
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -1651,17 +1651,17 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
+    // 主窗口已销毁，释放UI相关资源
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability已切换至前台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
-    // Ability has back to background
+    // Ability已切换至后台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "说明如何在手机开发者选项中开启意图框架调试能力，查询已注册意图并执行意图来验证接入结果。"
+keywords: [意图调试, 开发者选项, 意图查询, 意图执行, 调试工具, API 20]
+doctype: guide
+status: active
+---
 # 调试意图
 
 <!--Kit: Ability Kit-->

@@ -2,11 +2,11 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @osmanthusblossom-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-DeviceStatus（设备状态感知）模块提供设备状态感知能力，可以获取到设备的信息，例如：获取设备静止姿态感知状态（支架态）。
+DeviceStatus（设备状态感知）模块提供设备状态感知能力，可以获取到设备的状态感知信息，例如：获取设备静止姿态感知状态（支架态）和设备跌落检测状态。
 
 详细的接口介绍请参考[@ohos.multimodalAwareness.deviceStatus (设备状态感知)](../../reference/apis-multimodalawareness-kit/js-apis-awareness-deviceStatus.md)。
 
@@ -17,6 +17,10 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
 - 支架态
 
     设备进入支架态指设备静止，且屏幕与水平面角度处于45度-135度。折叠屏手机需处于折叠状态或者完全展开状态。
+
+- 跌落检测
+
+    通过传感器感知设备跌落事件，并返回跌落检测状态。正常状态（STATUS_NORMAL）表示设备处于正常握持或放置状态，跌落状态（STATUS_DROPPED）表示设备检测到跌落事件。
 
 ## 获取设备静止姿态感知状态（支架态）开发指导
 
@@ -107,5 +111,80 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
      // ...
    }
    ```
-   
 
+## 设备跌落检测开发指导
+
+### 场景介绍
+
+应用可以订阅设备跌落检测事件，通过回调函数获取设备的跌落检测状态，并根据业务需要执行相应的保护措施。
+
+### 约束与限制
+
+- 仅支持HarmonyOS 26.1.0及以上版本的手机设备。
+- 设备需要配置加速度传感器。
+- 仅支持Stage模型。
+- 设备需要支持SystemCapability.MultimodalAwareness.DeviceStatus系统能力。不支持设备跌落检测的设备调用接口时，会抛出错误码801。
+- 同一回调重复订阅时，会抛出错误码32500002。不再需要监听时，应取消订阅以释放资源。
+
+### 接口说明
+
+| 接口名 | 描述 |
+| ---- | ---- |
+| onDropDetect(callback: Callback&lt;DropDetectionStatus&gt;): void | 订阅设备跌落检测事件，通过callback返回设备的跌落检测状态。 |
+| offDropDetect(callback?: Callback&lt;DropDetectionStatus&gt;): void | 取消订阅设备跌落检测事件。不传入callback时，取消当前客户端订阅的所有跌落检测回调。 |
+
+### 开发步骤
+
+1. 导入模块。
+
+   <!-- @[import_the_device_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Stationary/DeviceStatusSta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { deviceStatus } from '@kit.MultimodalAwarenessKit';
+   ```
+
+2. 订阅设备跌落检测事件。
+
+   <!-- @[drop_detect_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Stationary/DeviceStatusSta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   try {
+     deviceStatus.onDropDetect(this.dropDetectCallback);
+     // ...
+   } catch (err: BusinessError<void>) {
+     hilog.error(DOMAIN, TAG, 'Drop detection subscribe failed, code: %{public}d, message: %{public}s',
+       err.code, err.message);
+     // ...
+   }
+   ```
+
+3. 取消本客户端订阅的所有设备跌落检测事件。
+
+   <!-- @[drop_detect_unsubscribe_all](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Stationary/DeviceStatusSta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   try {
+     deviceStatus.offDropDetect();
+     // ...
+   } catch (err: BusinessError<void>) {
+     hilog.error(DOMAIN, TAG, 'Cancel all drop detection subscriptions failed, code: %{public}d, message: %{public}s',
+       err.code, err.message);
+     // ...
+   }
+   ```
+
+4. 取消订阅设备跌落检测事件的特定回调。
+
+   <!-- @[drop_detect_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Stationary/DeviceStatusSta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Cancel the same callback that was registered by subscribeDropDetect.
+   try {
+     deviceStatus.offDropDetect(this.dropDetectCallback);
+     // ...
+   } catch (err: BusinessError<void>) {
+     hilog.error(DOMAIN, TAG, 'Cancel drop detection callback failed, code: %{public}d, message: %{public}s',
+       err.code, err.message);
+     // ...
+   }
+   ```

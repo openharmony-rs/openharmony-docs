@@ -75,9 +75,7 @@
    ArkTS-Dyn示例：
    ``` TypeScript
    // 导入runningLock、commonEventManager模块
-   import { runningLock } from '@kit.BasicServicesKit';
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { runningLock, commonEventManager, BusinessError} from '@kit.BasicServicesKit';
    ```
    ArkTS-Sta示例：
    ``` TypeScript
@@ -91,8 +89,7 @@
 
    ``` TypeScript
    // CommonEventHelper.ets
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { commonEventManager, BusinessError} from '@kit.BasicServicesKit';
 
    type SubscriberInfo = commonEventManager.CommonEventSubscribeInfo;
    type Subscriber = commonEventManager.CommonEventSubscriber;

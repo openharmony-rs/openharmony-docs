@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍系统应用中UIExtensionAbility的嵌入式显示与系统弹窗两种形式，以及生命周期、进程模型选择和开发步骤。"
+keywords: [UIExtensionAbility, UIExtensionComponent, 嵌入式显示, 系统弹窗, 进程模型, extensionProcessMode, 多实例, 系统应用]
+doctype: guide
+status: active
+---
 # UIExtensionAbility（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

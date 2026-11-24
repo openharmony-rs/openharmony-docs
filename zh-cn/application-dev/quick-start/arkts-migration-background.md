@@ -1,9 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "从程序稳定性、程序性能、代码兼容性及与TS/JS交互等角度，阐述ArkTS通过强制静态类型强化检查的动机，说明将TS代码适配为ArkTS的价值。"
+keywords: [ArkTS, 语法适配, 适配背景, 静态类型, TypeScript, 程序稳定性, 程序性能, 代码兼容]
+doctype: guide
+status: active
+---
+
 # ArkTS语法适配背景
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao; @cy917474985-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -173,11 +181,11 @@ foo(c);
 
 **应用环境限制**
 
-1. 强制使用严格模式（use strict）
-2. 禁止使用`eval()`
-3. 禁止使用`with() {}`
-4. 禁止以字符串为代码创建函数
-5. 禁止循环依赖
+1. 强制使用严格模式（use strict）。
+2. 禁止使用`eval()`。
+3. 禁止使用`with() {}`。
+4. 禁止以字符串为代码创建函数。
+5. 禁止循环依赖。
 
     循环依赖示例:
     

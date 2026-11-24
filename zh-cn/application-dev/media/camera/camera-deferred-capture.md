@@ -29,32 +29,59 @@
 
 1. 导入依赖，需要导入相机框架、媒体库、图片相关领域依赖。
 
-   ```ts
+   <!-- @[camera_deferredCaptureImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets) -->
+
+   ``` TypeScript
    import { camera } from '@kit.CameraKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    ```
 
-2. 确定拍照输出流。
+2. 查询相机是否支持拍照模式。
+
+   通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取传入镜头支持的模式，查询是否支持拍照模式。
+
+   <!-- @[camera_getSupportedSceneMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   getSupportedSceneMode(cameraDevice: camera.CameraDevice,
+     cameraManager: camera.CameraManager): camera.SceneMode[] {
+     // 获取相机设备支持的模式列表。
+     let sceneModeArray: camera.SceneMode[] = cameraManager.getSupportedSceneModes(cameraDevice);
+     if (sceneModeArray != undefined && sceneModeArray.length > 0) {
+       for (let index = 0; index < sceneModeArray.length; index++) {
+         console.info(`Camera SceneMode : ${sceneModeArray[index]}`);
+       }
+       return sceneModeArray;
+     } else {
+       console.error(`getSupportedSceneModes error`);
+       return [];
+     }
+   }
+   ```
+
+3. 确定拍照输出流。
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法创建拍照输出流。
 
-   ```ts
-   function getPhotoOutput(cameraManager: camera.CameraManager, 
+   <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+
+   ``` TypeScript
+   getPhotoOutput(cameraManager: camera.CameraManager,
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
-     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
-     if (photoProfilesArray===null || photoProfilesArray===undefined) {
-       console.error("createOutput photoProfilesArray is null!");
+     let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
+     if (!photoProfilesArray || photoProfilesArray.length === 0) {
+       console.error(`photoProfilesArray is null or []`);
        return undefined;
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
-      if (photoProfilesArray.length > 0) {
-          photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
-      } else {
-          console.error("the length of photoProfilesArray<=0!");
-          return undefined;
-      }
+       if (photoProfilesArray.length > 0) {
+         photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
+       } else {
+         console.error(`the length of photoProfiles=0!`);
+         return undefined;
+       }
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to createPhotoOutput. error: ${err}`);
@@ -63,7 +90,7 @@
    }
    ```
 
-3. 设置拍照photoAssetAvailable的回调。
+4. 设置拍照photoAssetAvailable的回调。
 
    > **注意：**
    >
@@ -71,51 +98,43 @@
    >
    > 不建议开发者同时注册[photoAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)和[photoAssetAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)。
 
-   ```ts
-   function getPhotoAccessHelper(context: Context): photoAccessHelper.PhotoAccessHelper {
+   <!-- @[camera_getPhotoAccessHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+
+   ``` TypeScript
+   getPhotoAccessHelper(context: Context): photoAccessHelper.PhotoAccessHelper {
      let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
      return phAccessHelper;
    }
 
-   function onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
+   onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
      photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
        if (err) {
          console.error(`photoAssetAvailable error: ${err}.`);
          return;
        }
-       console.info('photoOutPutCallBack photoAssetAvailable');
+       console.info(`photoOutputCallBack photoAssetAvailable`);
        // 开发者可通过photoAsset调用媒体库相关接口，自定义处理图片。
        // 处理方式一：调用媒体库落盘接口保存一阶段图，二阶段图就绪后媒体库会主动帮应用替换落盘图片。
-       mediaLibSavePhoto(photoAsset, getPhotoAccessHelper(context));
+       this.mediaLibSavePhoto(photoAsset, this.getPhotoAccessHelper(context));
        // 处理方式二：调用媒体库接口请求图片并注册一阶段图或二阶段图buffer回调，自定义使用。
-       mediaLibRequestBuffer(photoAsset, context);
+       this.mediaLibRequestBuffer(photoAsset, context);
      });
    }
 
-   async function mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
+   async mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
      phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<void> {
      try {
-       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+         new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
        assetChangeRequest.saveCameraPhoto();
        await phAccessHelper.applyChanges(assetChangeRequest);
-       console.info('apply saveCameraPhoto successfully');
+       console.info(`apply saveCameraPhoto successfully`);
      } catch (err) {
        console.error(`apply saveCameraPhoto failed with error: ${err.code}, ${err.message}`);
      }
    }
 
-   class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
-     onDataPrepared(data: ArrayBuffer) {
-       if (data === undefined) {
-         console.error('Error occurred when preparing data');
-         return;
-       }
-       // 应用获取到图片buffer后可自定义处理。
-       console.info('on image data prepared');
-     }
-   }
-
-   async function mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: Context) {
+   async mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: Context) {
      let requestOptions: photoAccessHelper.RequestOptions = {
        // 按照业务需求配置回图模式。
        // FAST_MODE：仅接收一阶段低质量图回调。
@@ -125,7 +144,7 @@
      }
      const handler = new MediaDataHandler();
      await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, handler);
-     console.info('requestImageData successfully');
+     console.info(`requestImageData successfully`);
    }
    ```
 
@@ -133,7 +152,7 @@
 
    请求图片参考媒体库接口：[requestImageData](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestimagedata11) 和 [onDataPrepared](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md#ondataprepared11)
 
-4. 拍照时的会话配置及触发拍照的方式，与普通拍照相同，请参考[拍照](camera-shooting.md)的步骤4-5。
+5. 拍照时的会话配置及触发拍照的方式，与普通拍照相同，请参考[拍照](camera-shooting.md)的步骤6-7。
 
 ## 状态监听
 
@@ -141,8 +160,10 @@
 
 - 通过注册固定的captureStartWithInfo回调函数获取监听拍照开始结果，photoOutput创建成功时即可监听，相机设备已经准备开始这次拍照时触发，该事件返回此次拍照的captureId。
 
-  ```ts
-  function onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
+  <!-- @[camera_onPhotoOutputCaptureStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+
+  ``` TypeScript
+  onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo) => {
       if (err !== undefined && err.code !== 0) {
         return;
@@ -154,8 +175,10 @@
 
 - 通过注册固定的captureEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听，该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo)。
 
-  ```ts
-  function onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
+  <!-- @[camera_onPhotoOutputCaptureEnd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+
+  ``` TypeScript
+  onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo) => {
       if (err !== undefined && err.code !== 0) {
         return;
@@ -168,8 +191,10 @@
 
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
-  ```ts
-  function onPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
+  <!-- @[camera_onPhotoOutputCaptureReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+
+  ``` TypeScript
+  onPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('captureReady', (err: BusinessError) => {
       if (err !== undefined && err.code !== 0) {
         return;
@@ -181,8 +206,10 @@
 
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
-  ```ts
-  function onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
+  <!-- @[camera_onPhotoOutputError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+
+  ``` TypeScript
+  onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('error', (error: BusinessError) => {
       console.error(`Photo output error code: ${error.code}`);
     });

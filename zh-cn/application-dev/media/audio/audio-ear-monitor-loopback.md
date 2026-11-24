@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者使用AudioLoopback实现低时延耳返，由系统内部搭建低时延数据链路，支持音量、混响、均衡器设置与状态监听。"
+keywords: [耳返, 低时延耳返, AudioLoopback, 音频返听, 混响, 均衡器, 返听音量, K歌]
+doctype: guide
+status: active
+---
 # 实现低时延耳返
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -18,7 +25,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
 ## 使用前提
 
-- 当前支持通过有线耳机及部分星闪耳机实现低时延返听功能。当连接有线耳机时，音频由耳机进行采集并播放；当连接星闪耳机时，音频由手机进行采集，耳机进行播放。
+- 当前支持通过部分有线耳机及部分星闪耳机实现低时延返听功能，耳机是否支持需连接设备后通过调用[getSupportedDevicePairs](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getsupporteddevicepairs)方法判断（API版本26.0.0之前通过[getStatus](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getstatus20)方法）。当连接有线耳机时，音频由耳机进行采集并播放；当连接星闪耳机时，音频由手机进行采集，耳机进行播放。
 
 - 低功耗渲染器和低时延渲染器在API version 20不能实现并发。若要启用渲染器，建议采用[STREAM_USAGE_UNKNOWN](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)；系统内决策采用[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)创建普通渲染器。
 
@@ -552,7 +559,6 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
 
-const TAG = 'AudioLoopbackDemo';
 let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
 let audioLoopback: audio.AudioLoopback | undefined = undefined;
 let currentReverbPreset: audio.AudioLoopbackReverbPreset = audio.AudioLoopbackReverbPreset.THEATER;
@@ -728,7 +734,6 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
 
-const TAG = 'AudioLoopbackDemo';
 let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
 let audioLoopback: audio.AudioLoopback | undefined = undefined;
 let currentReverbPreset: audio.AudioLoopbackReverbPreset = audio.AudioLoopbackReverbPreset.THEATER;

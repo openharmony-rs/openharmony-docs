@@ -106,11 +106,10 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
          const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
          // put form info
          await storage.put(formId, JSON.stringify(formInfo));
-         hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `storeFormInfo, put form info successfully, formId: ${formId}`);
          await storage.flush();
        } catch (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to storeFormInfo,
-         err: ${JSON.stringify(err as BusinessError)}`);
+         hilog.error(DOMAIN_NUMBER, TAG, `failed to storeFormInfo, code: ${err.code}, message: ${err.message}`);
        }
      }
    let deleteFormInfo = async (formId: string, context: common.FormExtensionContext): Promise<void> => {
@@ -118,11 +117,10 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
        const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
        // del form info
        await storage.delete(formId);
-       hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] deleteFormInfo, del form info successfully, formId: ${formId}`);
+       hilog.info(DOMAIN_NUMBER, TAG, `deleteFormInfo, del form info successfully, formId: ${formId}`);
        await storage.flush();
      } catch (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
-         err: ${JSON.stringify(err as BusinessError)}`);
+       hilog.error(DOMAIN_NUMBER, TAG, `failed to deleteFormInfo, code: ${err.code}, message: ${err.message}`);
      }
    };
    
@@ -149,38 +147,43 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
    
      onRemoveForm(formId: string): void {
        // 删除卡片实例数据
-       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+       hilog.info(DOMAIN_NUMBER, TAG, 'onRemoveForm');
        // 删除之前持久化的卡片实例数据
        deleteFormInfo(formId, this.context);
      }
    
      onUpdateForm(formId: string): void {
        // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则卡片提供方需要重写该方法以支持数据更新
-       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
+       hilog.info(DOMAIN_NUMBER, TAG, 'onUpdateForm');
        let obj: Record<string, string> = {
          'title': 'titleOnUpdate',
          'detail': 'detailOnUpdate'
        };
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
        formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+         hilog.error(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
        });
      }
    
      onFormEvent(formId: string, message: string): void {
        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
-       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
-       // 获取message事件中传递的detail参数
-       let msg: Record<string, string> = JSON.parse(message);
-       if (msg.detail === 'message detail') {
-         // 执行业务逻辑，由用户自行实现
-         hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+       hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent');
+       try {
+         // 获取message事件中传递的detail参数
+         let msg: Record<string, string> = JSON.parse(message);
+         if (msg.detail === 'message detail') {
+           // 执行业务逻辑，由用户自行实现
+           hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+         }
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${err.code}, message: ${err.message}`);
        }
      }
    
    }
    
    ```
+
 
    ArkTS-Sta示例：
    <!-- @[JSForm_JsCardFormAbility_FormExtensionAbilitySta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
@@ -392,7 +395,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
    ArkTS-Dyn示例：
-<!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -411,11 +414,10 @@ let storeFormInfo =
       const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
       // put form info
       await storage.put(formId, JSON.stringify(formInfo));
-      hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
+      hilog.info(DOMAIN_NUMBER, TAG, `storeFormInfo, put form info successfully, formId: ${formId}`);
       await storage.flush();
     } catch (err) {
-      hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to storeFormInfo,
-      err: ${JSON.stringify(err as BusinessError)}`);
+      hilog.error(DOMAIN_NUMBER, TAG, `failed to storeFormInfo, code: ${err.code}, message: ${err.message}`);
     }
   }
 // ...
@@ -502,7 +504,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 且需要适配onRemoveForm卡片删除通知接口，在其中实现卡片实例数据的删除。
 
    ArkTS-Dyn示例：
-<!-- @[JSForm_JsCardFormAbility_onRemoveForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @[JSForm_JsCardFormAbility_onRemoveForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -515,11 +517,10 @@ let deleteFormInfo = async (formId: string, context: common.FormExtensionContext
     const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
     // del form info
     await storage.delete(formId);
-    hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] deleteFormInfo, del form info successfully, formId: ${formId}`);
+    hilog.info(DOMAIN_NUMBER, TAG, `deleteFormInfo, del form info successfully, formId: ${formId}`);
     await storage.flush();
   } catch (err) {
-    hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
-      err: ${JSON.stringify(err as BusinessError)}`);
+    hilog.error(DOMAIN_NUMBER, TAG, `failed to deleteFormInfo, code: ${err.code}, message: ${err.message}`);
   }
 };
 
@@ -528,7 +529,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
   // ...
   onRemoveForm(formId: string): void {
     // 删除卡片实例数据
-    hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+    hilog.info(DOMAIN_NUMBER, TAG, 'onRemoveForm');
     // 删除之前持久化的卡片实例数据
     deleteFormInfo(formId, this.context);
   }
@@ -556,7 +557,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
    ArkTS-Dyn示例：
-<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->  
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -569,14 +570,14 @@ export default class JsCardFormAbility extends FormExtensionAbility {
   // ...
   onUpdateForm(formId: string): void {
     // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则卡片提供方需要重写该方法以支持数据更新
-    hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
+    hilog.info(DOMAIN_NUMBER, TAG, 'onUpdateForm');
     let obj: Record<string, string> = {
       'title': 'titleOnUpdate',
       'detail': 'detailOnUpdate'
     };
     let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
     formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+      hilog.error(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
     });
   }
 
@@ -837,7 +838,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 > 
 > "data"中JSON Value支持多级嵌套数据，在更新数据时，需要注意携带完整数据。
 
-当前卡片显示07.18日Mr.Zhang的课程信息，示例如下。
+当前卡片显示7月18日Mr.Zhang的课程信息，示例如下。
   ```ts
   "data": {
       "Day": "07.18",
@@ -847,7 +848,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
       }
   }
   ```
-当卡片内容需要更新为07.18日Mr.Li的课程信息时，需要传递待更新的完整数据，不能只传递单个数据项，如只传name或只传course，示例如下。
+当卡片内容需要更新为7月18日Mr.Li的课程信息时，需要传递待更新的完整数据，不能只传递单个数据项，如只传name或只传course，示例如下。
   ```ts
   "teacher": {
       "name": "Mr.Li",
@@ -919,7 +920,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
    ArkTS-Dyn示例：
     <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
-
+    
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
     const TAG: string = 'JsCardFormAbility';
@@ -931,12 +932,16 @@ export default class JsCardFormAbility extends FormExtensionAbility {
       // ...
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
-        // 获取message事件中传递的detail参数
-        let msg: Record<string, string> = JSON.parse(message);
-        if (msg.detail === 'message detail') {
-          // 执行业务逻辑，由用户自行实现
-          hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+        hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent');
+        try {
+          // 获取message事件中传递的detail参数
+          let msg: Record<string, string> = JSON.parse(message);
+          if (msg.detail === 'message detail') {
+            // 执行业务逻辑，由用户自行实现
+            hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+          }
+        } catch (err) {
+          hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${err.code}, message: ${err.message}`);
         }
       }
     

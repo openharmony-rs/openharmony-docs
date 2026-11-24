@@ -318,8 +318,8 @@ try {
 | DEVICE_TYPE_TABLET   | 0x01 | 平板。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
 | DEVICE_TYPE_CAR      | 0x02 | 车机。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
 | DEVICE_TYPE_TV       | 0x04 | 智慧屏。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
-| DEVICE_TYPE_WEARABLE | 0x06 | 智能手表。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
-| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | PC/2in1。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23   |
+| DEVICE_TYPE_WEARABLE | 0x06 | 智能穿戴。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | 2in1。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23   |
 <!--RP1End-->
 
 ## ScreenDensity
@@ -9939,7 +9939,7 @@ getNumber(resource: Resource): number
 
 | 类型     | 说明              |
 | ------ | --------------- |
-| number | resource对象对应的数值。<br>integer类型资源返回资源文件中定义的原始数值。<br>float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
+| number | resource对象对应的数值。integer类型或者float类型均返回资源文件中定义的原始数值。|
 
 **错误码：**
 

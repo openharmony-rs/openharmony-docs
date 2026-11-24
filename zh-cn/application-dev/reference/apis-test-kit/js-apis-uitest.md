@@ -489,7 +489,7 @@ text(txt: string, pattern?: MatchPattern): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -532,7 +532,7 @@ id(id: string): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -576,7 +576,7 @@ id(id: string, pattern: MatchPattern): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -619,7 +619,7 @@ type(tp: string): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -663,7 +663,7 @@ type(tp: string, pattern: MatchPattern): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -706,7 +706,7 @@ clickable(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -749,7 +749,7 @@ longClickable(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -792,7 +792,7 @@ scrollable(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -835,7 +835,7 @@ enabled(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -878,7 +878,7 @@ focused(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -921,7 +921,7 @@ selected(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -964,7 +964,7 @@ checked(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1007,7 +1007,7 @@ checkable(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1050,7 +1050,7 @@ isBefore(on: On): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1141,7 +1141,7 @@ isAfter(on: On): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1232,7 +1232,7 @@ within(on: On): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1323,7 +1323,7 @@ inWindow(bundleName: string): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1367,7 +1367,7 @@ description(val: string, pattern?: MatchPattern): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1411,7 +1411,7 @@ hint(val: string, pattern?: MatchPattern): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2280,7 +2280,7 @@ inputText(text: string): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2332,7 +2332,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **示例：**
@@ -2429,7 +2429,7 @@ scrollSearch(on: On): Promise\<Component>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2487,7 +2487,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2545,7 +2545,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Component \| nu
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2596,7 +2596,7 @@ ArkTS-Sta: scrollToTop(speed?: int): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2649,7 +2649,7 @@ ArkTS-Sta: scrollToBottom(speed?: int): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2702,7 +2702,7 @@ dragTo(target: Component): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2756,7 +2756,7 @@ ArkTS-Sta: pinchOut(scale: double): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -2809,7 +2809,7 @@ ArkTS-Sta: pinchIn(scale: double): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3082,7 +3082,7 @@ ArkTS-Sta: delayMs(duration: int): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -3131,7 +3131,7 @@ findComponent(on: On): Promise\<Component>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3178,7 +3178,7 @@ findComponent(on: On): Promise\<Component \| null>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3227,7 +3227,7 @@ findComponents(on: On): Promise\<Array\<Component>>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3274,7 +3274,7 @@ findComponents(on: On): Promise\<Array\<Component> | null\>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3323,7 +3323,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3370,7 +3370,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow | null\>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3420,7 +3420,7 @@ waitForComponent(on: On, time: number): Promise\<Component>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3468,7 +3468,7 @@ waitForComponent(on: On, time: int): Promise\<Component | null\>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3516,7 +3516,7 @@ assertComponentExist(on: On): Promise\<void>
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
 | 17000003 | Assertion failed.   |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3658,7 +3658,7 @@ ArkTS-Sta: triggerKey(keyCode: int): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3709,7 +3709,7 @@ ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3761,7 +3761,7 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void\>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3816,7 +3816,7 @@ ArkTS-Sta: triggerCombineKeys(key0: int, key1: int, key2?: int, displayId?: int)
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3866,7 +3866,7 @@ ArkTS-Sta: click(x: int, y: int): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4015,7 +4015,7 @@ ArkTS-Sta: doubleClick(x: int, y: int): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4112,7 +4112,7 @@ ArkTS-Sta: longClick(x: int, y: int): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4241,7 +4241,7 @@ ArkTS-Sta: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): P
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4401,7 +4401,7 @@ ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4559,7 +4559,7 @@ screenCap(savePath: string): Promise\<boolean>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Sync/Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4609,7 +4609,7 @@ ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Sync/Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4709,7 +4709,7 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4851,7 +4851,7 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5220,7 +5220,7 @@ ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5272,7 +5272,7 @@ ArkTS-Sta: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<voi
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5322,7 +5322,7 @@ ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promi
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5388,7 +5388,7 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5439,7 +5439,7 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<v
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5487,7 +5487,7 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync/Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5544,7 +5544,7 @@ ArkTS-Sta: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Pro
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5595,7 +5595,7 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5642,7 +5642,7 @@ mouseMoveTo(p: Point): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5736,7 +5736,7 @@ ArkTS-Sta: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5788,7 +5788,7 @@ ArkTS-Sta: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5840,7 +5840,7 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5895,7 +5895,7 @@ ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int, 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5946,7 +5946,7 @@ ArkTS-Sta: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<voi
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -5999,7 +5999,7 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6053,7 +6053,7 @@ ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promi
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6162,7 +6162,7 @@ inputText(p: Point, text: string): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6215,7 +6215,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. function can not work correctly due to limited device capabilities. |
 
 **示例：**
@@ -6281,7 +6281,7 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.        |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6383,7 +6383,7 @@ penClick(point: Point): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6433,7 +6433,7 @@ ArkTS-Sta: penLongClick(point: Point, pressure?: double): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6481,7 +6481,7 @@ penDoubleClick(point: Point): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6533,7 +6533,7 @@ ArkTS-Sta: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -6585,7 +6585,7 @@ ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -7043,7 +7043,7 @@ ArkTS-Sta: static create(fingers: int, steps: int): PointerMatrix
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -7084,7 +7084,7 @@ setPoint(finger: number, step: number, point: Point): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -7465,7 +7465,7 @@ ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -7521,7 +7521,7 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 | 17000002 | The API does not support concurrent calls.                   |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.                             |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 ```ts
 // xxx.test.ets
@@ -7894,7 +7894,7 @@ once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -7944,7 +7944,7 @@ onceToastShow(callback: Callback\<UIElementInfo>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -7993,7 +7993,7 @@ once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -8039,7 +8039,7 @@ onceDialogShow(callback: Callback\<UIElementInfo>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401      | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -9468,7 +9468,7 @@ assertComponentExist(by: By): Promise\<void>
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 401      | if the input parameters are invalid.             |
+| 401      | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 17000002 | The API does not support concurrent calls. |
 | 17000003 | if the assertion failed.                         |
 

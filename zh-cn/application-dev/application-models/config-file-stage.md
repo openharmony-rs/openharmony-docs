@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "概述Stage模型应用配置文件的作用与组成，说明app.json5和module.json5在编译构建、分发和运行阶段的使用方式。"
+keywords: [Stage模型, 配置文件, app.json5, module.json5, 应用配置, 应用分发]
+doctype: guide
+status: active
+---
 # 应用配置文件
 
 <!--Kit: Ability Kit-->

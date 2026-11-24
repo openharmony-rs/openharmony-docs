@@ -71,7 +71,7 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    ```
 
 3. Define a demo page, which contains two **XComponents**.
-   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    import XComponentContext from '../interface/XComponentContext';
@@ -181,7 +181,7 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    ```
 
 5. Register and deregister the callback function for each frame at the TS layer.
-   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    Row() {

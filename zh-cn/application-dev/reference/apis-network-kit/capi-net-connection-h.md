@@ -641,8 +641,8 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 
 | 参数项 | 描述 |
 | -- | -- |
-| netSpecifier | 网络特征集。 |
-| callback | 注册的回调函数集合。 |
+| specifier | 网络特征集。 |
+| netConnCallback | 注册的回调函数集合。 |
 | uint32_t timeout | 超时时间，单位为毫秒，为0时表示无限等待。 |
 | uint32_t *callbackId | 出参，对应本次注册成功的回调。 |
 
@@ -719,7 +719,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 **描述**
 
-设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。
+设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：`http://127.0.0.1:21998/PacProxyScript.pac`。通过解析脚本地址可以获取代理信息。
 
 **需要权限：** ohos.permission.SET_PAC_URL
 

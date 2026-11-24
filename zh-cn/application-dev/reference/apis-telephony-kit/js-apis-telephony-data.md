@@ -283,7 +283,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8300999  | Unknown error.                            |
 
 **示例：**
 
@@ -325,7 +325,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 | 201      | Permission denied.                           |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                              |
+| 8300999  | Unknown error.                          |
 
 **示例：**
 
@@ -460,7 +460,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8300999  | Unknown error.                             |
 
 **示例：**
 
@@ -642,7 +642,7 @@ setPreferredApn(apnId: number): Promise\<boolean\>
 
 异步设置apnId对应的APN为首选APN。
 
-> 注意:
+> **注意：**
 >
 > 如果传入的apnId为无效的apnId，切回运营商默认配置的优选Apn。
 

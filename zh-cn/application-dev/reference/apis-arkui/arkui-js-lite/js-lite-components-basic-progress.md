@@ -68,9 +68,9 @@
   | stroke-width     | &lt;length&gt; | -      | 否   | 弧形进度条的宽度。<br/>进度条宽度越大，进度条越靠近圆心。即进度条始终在半径区域内。 |
   | start-angle      | &lt;deg&gt;    | 240    | 否   | 弧形进度条起始角度，以时钟0点为基线。范围为0到360（顺时针）。 |
   | total-angle      | &lt;deg&gt;    | 240    | 否   | 弧形进度条总长度，范围为-360到360，负数表示起点到终点为逆时针。 |
-  | center-x         | &lt;length&gt; | -      | 否   | 弧形进度条中心位置，（坐标原点为组件左上角顶点）。该样式需要和center-y和radius一起。 |
-  | center-y         | &lt;length&gt; | -      | 否   | 弧形进度条中心位置，（坐标原点为组件左上角顶点）。该样式需要和center-x和radius一起。 |
-  | radius           | &lt;length&gt; | -      | 否   | 弧形进度条半径，该样式需要和center-x和center-y一起。         |
+  | center-x         | &lt;length&gt; | -      | 否   | 弧形进度条中心位置（坐标原点为组件左上角顶点）。使用该样式时，需要同时设置center-y和radius。 |
+  | center-y         | &lt;length&gt; | -      | 否   | 弧形进度条中心位置（坐标原点为组件左上角顶点）。使用该样式时，需要同时设置center-x和radius。 |
+  | radius           | &lt;length&gt; | -      | 否   | 弧形进度条半径。使用该样式时，需要同时设置center-x和center-y。         |
 
 除上述样式之外，还支持如下样式：
 

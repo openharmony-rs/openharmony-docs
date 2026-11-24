@@ -1,4 +1,4 @@
-# @ohos.net.netFirewall (网络防火墙)(系统接口)
+# @ohos.net.netFirewall (网络防火墙)（系统接口）
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

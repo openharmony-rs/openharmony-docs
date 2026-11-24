@@ -1,6 +1,13 @@
 # \@Provide装饰器和\@Consume装饰器：与后代组件双向同步
 
-\@Provide和\@Consume用于与后代组件的双向数据同步和跨层级传递。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+[\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide-static.md#provide-1)和[\@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume-static.md#consume-1)用于与后代组件的双向数据同步和跨层级传递。
 
 其中，\@Provide装饰的变量定义在祖先组件中，可以理解为被“提供”给后代的状态变量。\@Consume装饰的变量定义在后代组件中，去“消费（绑定）”祖先组件提供的变量。
 

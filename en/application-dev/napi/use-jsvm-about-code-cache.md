@@ -1,8 +1,8 @@
 # Accelerating Compilation Using a Code Cache
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039; @string_sz-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 

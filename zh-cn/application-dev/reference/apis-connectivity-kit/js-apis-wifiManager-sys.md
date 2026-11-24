@@ -1450,6 +1450,9 @@ try {
 | macAddress | string | 否 | 否 | MAC地址。 |
 | macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | 否 | 是 | MAC地址类型。 |
 | ipAddress | string | 否 | 否 | IP地址。 |
+| reasonCode | number | 否 | 是 | 断开原因码，由IEEE 802.11协议定义，默认值：1。<br />仅Car设备返回真实值，其他设备固定返回默认值。<br />**ArkTS-Dyn起始版本：** 26.1.0<br />**ArkTS-Sta起始版本：** 26.1.0<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
+| locallyGenerated | boolean | 否 | 是 | 断开是否由本地设备发起，默认值：false。<br />true表示本地设备发起断开，false表示对端设备发起断开。<br />仅Car设备返回真实值，其他设备固定返回默认值。<br />**ArkTS-Dyn起始版本：** 26.1.0<br />**ArkTS-Sta起始版本：** 26.1.0<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
+| rssi | number | 否 | 是 | 设备断开时的信号强度，单位dBm，默认值：-127。<br />仅Car设备返回真实值，其他设备固定返回默认值。<br />**ArkTS-Dyn起始版本：** 26.1.0<br />**ArkTS-Sta起始版本：** 26.1.0<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 

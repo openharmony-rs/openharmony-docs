@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -122,7 +122,7 @@ ArkTS-Sta: static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, t
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| ArkTS-Dyn: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md)<br/>ArkTS-Sta: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| undefined | 返回基于图片的着色器对象。 |
+| ArkTS-Dyn: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md)<br/>ArkTS-Sta: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| undefined | 返回基于图片的着色器对象。传入的图片对象无效时返回undefined。 |
 
 **错误码：**
 
@@ -245,7 +245,7 @@ ArkTS-Sta: static createLinearGradient(startPt: common2D.Point, endPt: common2D.
 | endPt   | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的终点。 |
 | colors | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 表示在两个点之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
-| pos | ArkTS-Dyn: Array\<number> \|  null<br/>ArkTS-Sta: Array\<double> \| null  | 否   | ArkTS-Dyn: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当pos传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示颜色均匀分布在起点和终点之间。<br/>ArkTS-Sta: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当不传该参数，或者pos传入undefined时，默认为null，表示颜色均匀分布在起点和终点之间。 |
+| pos | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<double> \| null | 否   | ArkTS-Dyn: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当pos传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示颜色均匀分布在起点和终点之间。<br/>ArkTS-Sta: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当不传该参数，或者pos传入undefined时，默认为null，表示颜色均匀分布在起点和终点之间。 |
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | ArkTS-Dyn: 矩阵对象，用于对着色器做矩阵变换。当matrix传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示单位矩阵。<br/>ArkTS-Sta: 矩阵对象，用于对着色器做矩阵变换。当不传该参数，或者matrix传入undefined时，默认为null，表示单位矩阵。 |
 
 ![LinearGradient](figures/createLinearGradient.png)
@@ -307,7 +307,7 @@ ArkTS-Sta: static createRadialGradient(centerPt: common2D.Point, radius: double,
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的圆心。 |
-| radius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 是   | 表示渐变的半径，小于等于0时无效，该参数为浮点数。 |
+| radius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 是   | 表示渐变的半径，小于等于0时无效，该参数为浮点数。单位为物理像素px。 |
 | colors | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 表示在圆心和圆边界之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<double> \| null | 否   | ArkTS-Dyn: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当pos传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示颜色均匀分布在圆心和圆边界之间。<br/>ArkTS-Sta: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当不传该参数，或者pos传入undefined时，默认为null，表示颜色均匀分布在圆心和圆边界之间。 |
@@ -375,7 +375,7 @@ ArkTS-Sta: static createSweepGradient(centerPt: common2D.Point, colors: Array\<i
 | startAngle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示扇形渐变的起始角度，单位为度。0度时为x轴正方向，正数往顺时针方向偏移，负数往逆时针方向偏移。该参数为浮点数。 |
 | endAngle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示扇形渐变的结束角度，单位为度。0度时为x轴正方向，正数往顺时针方向偏移，负数往逆时针方向偏移。小于起始角度时无效。该参数为浮点数。 |
 | pos | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<double> \| null | 否   | ArkTS-Dyn: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当pos传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示颜色均匀分布在起始角度和结束角度之间。<br/>ArkTS-Sta: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当不传该参数，或者pos传入undefined时，默认为null，表示颜色均匀分布在起始角度和结束角度之间。 |
-| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | ArkTS-Dyn:  矩阵对象，用于对着色器做矩阵变换。当matrix传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示单位矩阵。<br/>ArkTS-Sta: 矩阵对象，用于对着色器做矩阵变换。当不传该参数，或者matrix传入undefined时，默认为null，表示单位矩阵。 |
+| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | ArkTS-Dyn: 矩阵对象，用于对着色器做矩阵变换。当matrix传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示单位矩阵。<br/>ArkTS-Sta: 矩阵对象，用于对着色器做矩阵变换。当不传该参数，或者matrix传入undefined时，默认为null，表示单位矩阵。 |
 
 ![SweepGradient](figures/createSweepGradient.png)
 
@@ -434,9 +434,9 @@ ArkTS-Sta: static createConicalGradient(startPt: common2D.Point, startRadius: do
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的起始圆的圆心。 |
-| startRadius | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。 |
+| startRadius | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | endPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的结束圆的圆心。 |
-| endRadius | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。 |
+| endRadius | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | colors | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 表示在起始圆和结束圆之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<double> \| null | 否   | ArkTS-Dyn: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当pos传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示颜色均匀分布在起始圆和结束圆之间。<br/>ArkTS-Sta: 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。当不传该参数，或者pos传入undefined时，默认为null，表示颜色均匀分布在起始圆和结束圆之间。 |

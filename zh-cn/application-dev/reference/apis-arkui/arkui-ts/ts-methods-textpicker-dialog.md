@@ -136,6 +136,7 @@ static show(options?: TextPickerDialogOptions)
 | disappearTextStyle | [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15类型说明) | 否 | 是 | 设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>},<br/>minFontSize: 0,<br/>maxFontSize: 0,<br/>overflow: TextOverflow.CLIP<br/>}<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | textStyle | [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15类型说明) | 否 | 是 | 设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>},<br/>minFontSize: 0,<br/>maxFontSize: 0,<br/>overflow: TextOverflow.CLIP<br/>}<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | selectedTextStyle | [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15类型说明) | 否 | 是 | 设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>},<br/>minFontSize: 0,<br/>maxFontSize: 0,<br/>overflow: TextOverflow.CLIP<br/>}<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE<br>**说明：**<br>当alignment不为DialogAlignment.Default，或者offset值不为0时，该接口不生效。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## TextPickerResult对象说明
 
@@ -761,3 +762,69 @@ struct TextPickerExample {
 ```
 
 ![TextPickerDialog](figures/TextPickerDialog_BackgroundEffect.png)
+
+### 示例11（设置弹窗适配握持习惯）
+
+该示例通过[TextPickerDialogOptionsExt](#textpickerdialogoptionsext20对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[TextPickerDialogOptionsExt](#textpickerdialogoptionsext20对象说明)中新增了adaptToHandedness属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// TextPickerDialogExampleDyn.ets
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextPickerDialogExample {
+  private showText: string[] = ['Text1', 'Text2', 'Text3', 'Text4', 'Text5', 'Text6'];
+
+  build() {
+    Column() {
+      Button('TextPickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showTextPickerDialog({
+            range: this.showText,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// TextPickerDialogExampleSta.ets
+
+import { Entry, Component, Column, Button, TextPickerDialogOptionsExt } from '@ohos.arkui.component';
+import { HandednessFollowMode } from '@ohos.arkui.dialog';
+
+@Entry
+@Component
+struct TextPickerDialogExample {
+  private showText: string[] = ['Text1', 'Text2', 'Text3', 'Text4', 'Text5', 'Text6'];
+
+  build() {
+    Column() {
+      Button('TextPickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showTextPickerDialog({
+            range: this.showText,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          } as TextPickerDialogOptionsExt);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/textpickerdialoghandedness.gif)

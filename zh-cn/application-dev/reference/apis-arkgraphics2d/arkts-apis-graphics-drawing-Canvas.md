@@ -1,7 +1,7 @@
 # Class (Canvas)
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -17,10 +17,8 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-> **说明：**
 >
-> 画布自带一个默认画刷，该画刷为黑色，具备抗锯齿，不具备其他任何样式效果。当画布中没有主动设置画刷和画笔时，该默认画刷生效。
+> - 画布自带一个默认画刷，该画刷为黑色，具备抗锯齿，不具备其他任何样式效果。当画布中没有主动设置画刷和画笔时，该默认画刷生效。
 
 ## 导入模块
 
@@ -116,7 +114,7 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     canvas.attachPen(pen);
-    canvas.drawRect({ left : 0.0, right : 10.0, top : 0.0, bottom : 10.0 });
+    canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
     canvas.detachPen();
   }
 }
@@ -158,10 +156,10 @@ ArkTS-Sta: drawRect(left: double, top: double, right: double, bottom: double): v
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角x轴坐标，该参数为浮点数。 |
-| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角y轴坐标，该参数为浮点数。 |
-| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角x轴坐标，该参数为浮点数。 |
-| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角y轴坐标，该参数为浮点数。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -247,8 +245,8 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let rect: common2D.Rect = { left : 100.0, top : 100.0, right : 400.0, bottom : 500.0 };
-    let roundRect = new drawing.RoundRect(rect, 10.0, 10.0);
+    let rect: common2D.Rect = { left : 100, top : 100, right : 400, bottom : 500 };
+    let roundRect = new drawing.RoundRect(rect, 10, 10);
     canvas.drawRoundRect(roundRect);
   }
 }
@@ -306,10 +304,10 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let inRect: common2D.Rect = { left : 200.0, top : 200.0, right : 400.0, bottom : 500.0 };
-    let outRect: common2D.Rect = { left : 100.0, top : 100.0, right : 400.0, bottom : 500 };
-    let outRoundRect = new drawing.RoundRect(outRect, 10.0, 10.0);
-    let inRoundRect = new drawing.RoundRect(inRect, 10.0, 10.0);
+    let inRect: common2D.Rect = { left : 200, top : 200, right : 400, bottom : 500 };
+    let outRect: common2D.Rect = { left : 100, top : 100, right : 400, bottom : 500 };
+    let outRoundRect = new drawing.RoundRect(outRect, 10, 10);
+    let inRoundRect = new drawing.RoundRect(inRect, 10, 10);
     canvas.drawNestedRoundRect(outRoundRect, inRoundRect);
     canvas.drawRoundRect(outRoundRect);
   }
@@ -415,7 +413,7 @@ ArkTS-Sta: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: co
 | path | [Path](arkts-apis-graphics-drawing-Path.md)                | 是    | 路径对象，可生成阴影。 |
 | planeParams  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 表示一个三维向量，用于计算遮挡物相对于画布在z轴上的偏移量，偏移量的值由该向量的x坐标与y坐标计算得出。 |
 | devLightPos  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 光线相对于画布的位置。 |
-| lightRadius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 圆形灯半径，该参数为浮点数。单位为物理像素px。      |
+| lightRadius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double           | 是    | 圆形灯半径，取值范围>0，该参数为浮点数。单位为物理像素px。      |
 | ambientColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是    | 环境阴影颜色。 |
 | spotColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是    | 点阴影颜色。 |
 | flag         | [ShadowFlag](arkts-apis-graphics-drawing-e.md#shadowflag12)                  | 是    | 阴影标志，用于控制阴影的绘制方式。    |
@@ -450,10 +448,10 @@ class DrawingRenderNode extends RenderNode {
     let brushColor : common2D.Color = { alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00 };
     brush.setColor(brushColor);
     canvas.attachBrush(brush);
-    let point1 : common2D.Point3d = {x: 100.0, y: 80.0, z:80.0};
-    let point2 : common2D.Point3d = {x: 200.0, y: 10.0, z:40.0};
-    let color1 : common2D.Color = {alpha: 0xFF, red:0, green:0, blue:0xFF};
-    let color2 : common2D.Color = {alpha: 0xFF, red:0xFF, green:0, blue:0};
+    let planeParams : common2D.Point3d = {x: 100, y: 80, z: 80};
+    let devLightPos : common2D.Point3d = {x: 200, y: 10, z: 40};
+    let ambientColor : common2D.Color = {alpha: 0xFF, red: 0, green: 0, blue: 0xFF};
+    let spotColor : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0, blue: 0};
     let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
     canvas.drawShadow(path, planeParams, devLightPos, 30, ambientColor, spotColor, shadowFlag);
     canvas.detachPen();
@@ -513,9 +511,9 @@ ArkTS-Sta: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: co
 | path | [Path](arkts-apis-graphics-drawing-Path.md)                | 是    | 路径对象，可生成阴影。 |
 | planeParams  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 表示一个三维向量，用于计算遮挡物相对于画布在z轴上的偏移量，偏移量的值由该向量的x坐标与y坐标计算得出。 |
 | devLightPos  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 光线相对于画布的位置。 |
-| lightRadius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 圆形灯半径，该参数为浮点数。单位为物理像素px      |
+| lightRadius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double           | 是    | 圆形灯半径，该参数为浮点数。单位为物理像素px。      |
 | ambientColor  | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是    | 环境阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
-| spotColor  |ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \|number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是    | 点阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
+| spotColor  |ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是    | 点阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
 | flag         | [ShadowFlag](arkts-apis-graphics-drawing-e.md#shadowflag12)                  | 是    | 阴影标志，用于控制阴影的绘制方式。    |
 
 **错误码：**
@@ -769,8 +767,8 @@ ArkTS-Sta: drawImage(pixelmap: image.PixelMap, left: double, top: double, sampli
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 图片的PixelMap。                  |
-| left     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 图片位置的左上角x轴坐标，该参数为浮点数。 |
-| top      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 图片位置的左上角y轴坐标，该参数为浮点数。 |
+| left     | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                       | 是   | 图片位置的左上角x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| top      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                       | 是   | 图片位置的左上角y轴坐标，该参数为浮点数。单位为物理像素px。 |
 | samplingOptions<sup>12+</sup>  | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)  | 否  | ArkTS-Dyn: 采样选项对象。当samplingOptions传入undefined时，该方法将抛错误码。不传该参数时，默认为不使用任何参数构造的原始采样选项对象。<br/>ArkTS-Sta: 采样选项对象。当不传该参数，或者samplingOptions传入undefined时，默认为不使用任何参数构造的原始采样选项对象。 |
 
 **错误码：**
@@ -1096,7 +1094,7 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 | 参数名    | 类型                                                 | 必填 | 说明                             |
 | --------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | color     | [common2D.Color](js-apis-graphics-common2D.md#color) | 是   | ARGB格式的颜色，每个颜色通道的取值范围为[0, 255]的整数。                   |
-| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | ArkTS-Dyn: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当blendMode传入undefined时，该方法将抛错误码。不传该参数时，默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
+| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | ArkTS-Dyn: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当需要自定义颜色叠加效果时传入此参数，不传入时默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -1164,11 +1162,11 @@ ArkTS-Sta: drawColor(alpha: int, red: int, green: int, blue: int, blendMode?: Bl
 
 | 参数名     | 类型                    | 必填 | 说明                                               |
 | --------- | ----------------------- | ---- | ------------------------------------------------- |
-| alpha     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的透明度通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。 |
-| red       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的红色通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。   |
-| green     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的绿色通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。   |
-| blue      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的蓝色通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。   |
-| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | 否   | ArkTS-Dyn: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当blendMode传入undefined时，该方法将抛错误码。不传该参数时，默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
+| alpha     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 是   | ARGB格式颜色的透明度通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。 |
+| red       | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 是   | ARGB格式颜色的红色通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。   |
+| green     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 是   | ARGB格式颜色的绿色通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。   |
+| blue      | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 是   | ARGB格式颜色的蓝色通道值，取值范围为[0, 255]的整数，传入范围内的浮点数会向下取整。   |
+| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | 否   | ArkTS-Dyn: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当需要自定义颜色叠加效果时传入此参数，不传入时默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。                   |
 
 **错误码：**
 
@@ -1225,7 +1223,7 @@ ArkTS-Sta: drawColor(color: int, blendMode?: BlendMode): void
 | 参数名    | 类型                                                 | 必填 | 说明                             |
 | --------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | color     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 16进制ARGB格式的颜色，用32位无符号整数表示，例如：0xAARRGGBB。                   |
-| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | ArkTS-Dyn: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当blendMode传入undefined时，该方法将抛错误码。不传该参数时，默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
+| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | ArkTS-Dyn: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当需要自定义颜色叠加效果时传入此参数，不传入时默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式，用于指定绘制颜色与画布已有内容的混合方式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -1282,11 +1280,11 @@ ArkTS-Sta: drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Arr
 | 参数名      | 类型            | 必填 | 说明                            |
 | ----------- | -------------  | ---- | ------------------------------- |
 | vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
-| vertexCount   | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>     | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| vertexCount   | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 顶点数组元素的数量，值为大于等于3的整数，输入浮点数则仅保留整数部分。 |
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
 | texs    | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
 | colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值，每个颜色值用16进制ARGB格式的32位无符号整数表示，例如：0xAARRGGBB。其可以为空，表明不使用顶点颜色插值，颜色效果取决于当前画布绑定的画刷或画笔所设置的颜色；若不为空其长度必须等于vertexCount。 |
-| indexCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
+| indexCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数，输入浮点数则仅保留整数部分。|
 | indices  | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
 | mode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 是   | 颜色混合模式。 |
 
@@ -1377,12 +1375,12 @@ ArkTS-Sta: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight
 | 参数名      | 类型            | 必填 | 说明                            |
 | ----------- | -------------  | ---- | ------------------------------- |
 | pixelmap    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 用于绘制网格的像素图。 |
-| meshWidth   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 网格中的列数，大于0的整数。 |
-| meshHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 网格中的行数，大于0的整数。 |
-| vertices    | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> | 是   | 顶点数组，指定网格的绘制位置，浮点数组，大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
-| vertOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 绘图前要跳过的vert元素数，大于等于0的整数。 |
+| meshWidth   | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 网格中的列数，大于0的整数。 |
+| meshHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 网格中的行数，大于0的整数。 |
+| vertices    | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> | 是   | 顶点数组，指定网格的绘制位置，该参数为浮点数组，单位为物理像素px。大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
+| vertOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 绘图前要跳过的vert元素数，大于等于0的整数。 |
 | colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int>  \| null | 是   | 颜色数组，在每个顶点指定一种颜色，每个颜色值用16进制ARGB格式的32位无符号整数表示，例如：0xAARRGGBB，可为null，大小必须为(meshWidth+1) * (meshHeight+1) + colorOffset。 |
-| colorOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 绘制前要跳过的颜色元素数，大于等于0的整数。 |
+| colorOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 绘制前要跳过的颜色元素数，大于等于0的整数。 |
 
 **错误码：**
 
@@ -1550,7 +1548,7 @@ ArkTS-Sta: clear(color: common2D.Color \| int): void
 
 | 参数名    | 类型                                                 | 必填 | 说明                             |
 | --------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| color     | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta:  [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是   | 颜色，可以用16进制ARGB格式的32位无符号整数表示，例如：0xAARRGGBB。  |
+| color     | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int| 是   | 颜色，可以用16进制ARGB格式的32位无符号整数表示，例如：0xAARRGGBB。  |
 
 **示例：**
 
@@ -1600,7 +1598,7 @@ ArkTS-Sta: getWidth(): int
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的宽度。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的宽度，该参数为浮点数。单位为物理像素px。 |
 
 **示例：**
 
@@ -1650,7 +1648,7 @@ ArkTS-Sta: getHeight(): int
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的高度。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的高度，该参数为浮点数。单位为物理像素px。 |
 
 **示例：**
 
@@ -1840,8 +1838,8 @@ ArkTS-Sta: drawPoint(x: double, y: double): void
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
-| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 点的x轴坐标，该参数为浮点数。 |
-| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 点的y轴坐标，该参数为浮点数。 |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -1906,7 +1904,7 @@ drawPoints(points: Array\<common2D.Point>, mode?: PointMode): void
 | 参数名  | 类型                                       | 必填   | 说明        |
 | ---- | ---------------------------------------- | ---- | --------- |
 | points  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | 是    | 要绘制的点的数组。长度不能为0。   |
-| mode | [PointMode](arkts-apis-graphics-drawing-e.md#pointmode12)                  | 否    | ArkTS-Dyn: 绘制数组中的点的方式。当mode传入undefined时，该方法将抛错误码。不传该参数时，默认为drawing.PointMode.POINTS。<br/>ArkTS-Sta: 绘制数组中的点的方式。当不传该参数，或者mode传入undefined时，默认为drawing.PointMode.POINTS。 |
+| mode | [PointMode](arkts-apis-graphics-drawing-e.md#pointmode12)                  | 否    | ArkTS-Dyn: 绘制数组中的点的方式。当mode传入undefined时，该方法将抛错误码。不传该参数时，默认值为drawing.PointMode.POINTS。<br/>ArkTS-Sta: 绘制数组中的点的方式。当不传该参数，或者mode传入undefined时，默认为drawing.PointMode.POINTS。 |
 
 **错误码：**
 
@@ -2113,20 +2111,20 @@ ArkTS-Sta: drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Arr
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**参数**
+**参数：**
 
-| 参数名          | 类型                                     | 必填 | 说明                                              |
+| 参数名          | 类型                                      | 必填  | 说明                                             |
 | ------         | -------------------                      | ---- | -----------                                      |
-| glyphIds       | ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<int\>               | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。|
-| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。<br>如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。<br>如果glyphIdOffset小于0则抛出错误码25900001。|
-| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。|
-| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。<br>如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。<br>如果positionOffset小于0则抛出错误码25900001。|
-| glyphCount     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容，并抛出错误码25900001。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。|
-| font           | [Font](arkts-apis-graphics-drawing-Font.md)                     | 是   | 用于绘图的字体。|
+| glyphIds       | ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<int\>                             | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。                                     |
+| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效glyphIds数组的范围为[glyphIds[m], glyphIds[m+n])。<br>如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。<br>如果glyphIdOffset小于0则抛出错误码25900001。|
+| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 每个字形对应的绘制位置坐标数组。如果glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])。                  |
+| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效positions数组的范围为[positions[m], positions[m+n])。<br>如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。<br>如果positionOffset小于0则抛出错误码25900001。|
+| glyphCount     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                      | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容，并抛出错误码25900001。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。                               |
+| font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 用于绘图的字体。                                 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2148,7 +2146,13 @@ class DrawingRenderNode extends RenderNode {
     font.setSize(20);
     canvas.attachBrush(brush);
     let glyphsArray : Array<number> = [100, 200, 300];
-    let positionArray : Array<common2D.Point> = [{ x: 100.0, y: 100.0 }, { x: 200.0, y: 100.0 }, { x: 150.0, y: 200.0 }];
+    let positionArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    positionArray.push(point1);
+    positionArray.push(point2);
+    positionArray.push(point3);
     canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
     canvas.detachBrush();
   }
@@ -2192,11 +2196,11 @@ ArkTS-Sta: drawTextBlob(blob: TextBlob, x: double, y: double): void
 
 **参数：**
 
-| 参数名 | 类型                                                | 必填 | 说明                                                         |
-| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| blob   | [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | 是   | TextBlob对象。                                               |
-| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
-| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
+| 参数名 | 类型                  | 必填 | 说明                                       |
+| ------ | --------------------- | ---- | ------------------------------------------ |
+| blob   | [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | 是   | TextBlob对象。                             |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。单位为物理像素px。 |
 
 ![Text-Blob.png](figures/Text-Blob.png)
 
@@ -2273,8 +2277,8 @@ ArkTS-Sta: drawSingleCharacter(text: string, font: Font, x: double, y: double): 
 | ------ | ------------------- | ---- | ----------- |
 | text   | string | 是   | 待绘制的单个字符，字符串长度必须为1。  |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 字型对象。  |
-| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。单位为物理像素px。 |
-| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。单位为物理像素px。 |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 ![Text-Blob.png](figures/Text-Blob.png)
 
@@ -2377,8 +2381,8 @@ class DrawingRenderNode extends RenderNode {
     let fontFeatures : Array<drawing.FontFeature> = [];
     fontFeatures.push({name: 'calt', value: 0});
     canvas.attachBrush(brush);
-    canvas.drawSingleCharacterWithFeatures("你", font, 100.0, 100.0, fontFeatures);
-    canvas.drawSingleCharacterWithFeatures("好", font, 180.0, 100.0, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures('你', font, 100, 100, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures('好', font, 180, 100, fontFeatures);
     canvas.detachBrush();
   }
 }
@@ -2723,8 +2727,8 @@ clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
 | 参数名       | 类型               | 必填 | 说明                                |
 | ------------ | ----------------- | ---- | ------------------------------------|
 | path         | [Path](arkts-apis-graphics-drawing-Path.md)     | 是   | 路径对象。                                                 |
-| clipOp       | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12) | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
-| doAntiAlias  | boolean           | 否   | ArkTS-Dyn: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
+| clipOp       | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12) | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。                                     |
+| doAntiAlias  | boolean           | 否   | ArkTS-Dyn: 表示是否使用抗锯齿绘制。true表示使用，false表示不使用。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
 
 **错误码：**
 
@@ -2789,8 +2793,8 @@ clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 需要裁剪的矩形区域。      |
-| clipOp      | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)                  | 否    | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。     |
-| doAntiAlias | boolean           | 否   | ArkTS-Dyn: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
+| clipOp      | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)                  | 否    | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认值为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。     |
+| doAntiAlias | boolean           | 否   | ArkTS-Dyn: 表示是否使用抗锯齿绘制。true表示使用，false表示不使用。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认值为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
 
 **错误码：**
 
@@ -2900,8 +2904,8 @@ ArkTS-Sta: saveLayer(rect?: common2D.Rect \| null, brush?: Brush \| null): long
 
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ---- | ----------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect)\|null | 否   | ArkTS-Dyn: 矩形对象，用于限制图层大小。当rect传入undefined时，该方法将抛错误码。不传该参数时，默认为当前画布大小。<br/>ArkTS-Sta: 矩形对象，用于限制图层大小。当不传该参数，或者rect传入undefined时，默认为当前画布大小。 |
-| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md)\|null | 否   | ArkTS-Dyn: 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式。当brush传入undefined时，该方法将抛错误码。不传该参数时，默认不设置额外效果。<br/>ArkTS-Sta: 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式。当不传该参数，或者brush传入undefined时，默认不设置额外效果。 |
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null | 否   | ArkTS-Dyn: 矩形对象，用于限制图层大小。当rect传入undefined时，该方法将抛错误码。不传该参数时，默认为当前画布大小。<br/>ArkTS-Sta: 矩形对象，用于限制图层大小。当不传该参数，或者rect传入undefined时，默认为当前画布大小。 |
+| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md) \| null | 否   | ArkTS-Dyn: 画刷对象，绘制位图时会应用画刷对象的透明度、颜色滤波器效果和混合模式。当brush传入undefined时，该方法将抛错误码。不传该参数时，默认不设置额外效果。<br/>ArkTS-Sta: 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式。当不传该参数，或者brush传入undefined时，默认不设置额外效果。 |
 
 **返回值：**
 
@@ -3001,8 +3005,8 @@ ArkTS-Sta: scale(sx: double, sy: double): void
 
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ---- | ----------------- |
-| sx   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的缩放比例，该参数为浮点数。 |
-| sy   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的缩放比例，该参数为浮点数。 |
+| sx   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的缩放比例，该参数为浮点数。正值表示正常缩放，负值表示镜像缩放。 |
+| sy   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的缩放比例，该参数为浮点数。正值表示正常缩放，负值表示镜像缩放。 |
 
 **错误码：**
 
@@ -3140,8 +3144,8 @@ ArkTS-Sta: rotate(degrees: double, sx: double, sy: double) : void
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ------ | ------------------------ |
 | degrees       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转角度，单位为度，该参数为浮点数，正数为顺时针旋转，负数为逆时针旋转。  |
-| sx            | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的横坐标，该参数为浮点数。单位为物理像素px。 |
-| sy            | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的纵坐标，该参数为浮点数。单位为物理像素px。 |
+| sx            | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| sy            | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -3209,8 +3213,8 @@ ArkTS-Sta: translate(dx: double, dy: double): void
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ----- | ------ | ---- | ------------------- |
-| dx    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的移动距离，该参数为浮点数。   |
-| dy    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的移动距离，该参数为浮点数。   |
+| dx    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的移动距离，该参数为浮点数。单位为物理像素px。   |
+| dy    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的移动距离，该参数为浮点数。单位为物理像素px。   |
 
 **错误码：**
 
@@ -3646,7 +3650,7 @@ clipRegion(region: Region, clipOp?: ClipOp): void
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | region | [Region](arkts-apis-graphics-drawing-Region.md) | 是   | 区域对象，表示裁剪范围。 |
-| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
+| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认值为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
 
 **错误码：**
 
@@ -3709,8 +3713,8 @@ clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): voi
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | roundRect | [RoundRect](arkts-apis-graphics-drawing-RoundRect.md) | 是   | 圆角矩形对象，表示裁剪范围。 |
-| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
-| doAntiAlias | boolean | 否   | ArkTS-Dyn: 表示是否使能抗锯齿。true表示使能，false表示不使能。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
+| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认值为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
+| doAntiAlias | boolean | 否   | ArkTS-Dyn: 表示是否使用抗锯齿。true表示使用，false表示不使用。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认值为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
 
 **错误码：**
 
@@ -3820,22 +3824,22 @@ isOpaque(): boolean
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| boolean | 返回当前绘制到设备的图层是否不透明的结果，true表示不透明，false表示透明。 |
+| boolean | 返回当前Canvas绘制目标的图层是否不透明的结果，true表示不透明，false表示透明。 |
 
 **示例：**
 
 ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     if (canvas.isOpaque()) {
-      console.info("canvas.isOpaque() returned true");
+      console.info('canvas.isOpaque() returned true');
     } else {
-      console.info("canvas.isOpaque() returned false");
+      console.info('canvas.isOpaque() returned false');
     }
   }
 }
@@ -4050,7 +4054,7 @@ ArkTS-Sta: drawArcWithCenter(arc: common2D.Rect, startAngle: double, sweepAngle:
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | arc   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 包含要绘制的圆弧的椭圆的矩形边界。 |
 | startAngle      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的起始角度，单位为度，该参数为浮点数。0度时起始点位于椭圆的右端点，为正数时以顺时针方向放置起始点，为负数时以逆时针方向放置起始点。 |
-| sweepAngle      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。扫描角度可以超过360度，将绘制一个完整的椭圆。 |
+| sweepAngle      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。扫描角度可以超过360度，超过360度时将绘制一个完整的椭圆。 |
 | useCenter       | boolean | 是   | 绘制时弧形的起点和终点是否连接弧形的中心点。true表示连接，false表示不连接。 |
 
 **示例：**
@@ -4386,7 +4390,7 @@ class DrawingRenderNode extends RenderNode {
 
 drawRecordCmd(recordCmd: RecordCmd): void
 
-回放已录制的绘制指令。该接口会按录制顺序在当前画布上执行[RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd)中记录的所有绘制操作。录制指令对象由[RecordCmdUtils.finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)生成。
+回放已录制的绘制指令。该接口会按照录制顺序在当前画布上执行[RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd)中记录的所有绘制操作。录制指令对象由[RecordCmdUtils.finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)生成。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -4399,7 +4403,7 @@ drawRecordCmd(recordCmd: RecordCmd): void
 **参数：**
 
 | 参数名     | 类型                | 必填 | 说明                       |
-| ------     | ------------------- | ---- | -------------------------- |
+| ------    | ------------------- | ---- | -------------------------- |
 | recordCmd | [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd) | 是   | 已录制的绘制指令对象，由[finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)生成。 |
 
 **示例：**
@@ -4407,13 +4411,12 @@ drawRecordCmd(recordCmd: RecordCmd): void
 ArkTS-Dyn示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     const recordCmdUtils = new drawing.RecordCmdUtils();
-    const recordCanvas = recordCmdUtils.beginRecording(200.0, 200.0);
+    const recordCanvas = recordCmdUtils.beginRecording(200, 200);
     const pen = new drawing.Pen();
     pen.setStrokeWidth(5);
     pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });

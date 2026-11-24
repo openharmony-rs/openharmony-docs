@@ -29,6 +29,24 @@ Invalid windowId. Possible causes: The window id does not belong to the current 
 
 请检查并传入当前进程的窗口ID，可通过windowClass.[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)接口获取当前窗口属性，窗口属性中含有窗口ID。
 
+## 26500002 无法清除非调用者设置的全局高优先级光标
+
+**错误信息**
+
+The global high-priority cursor was not set by the caller and cannot be cleared.
+
+**错误描述**
+
+全局高优先级光标未被当前调用方设置，无法清除。
+
+**可能原因**
+
+当前调用者并未调用setGlobalPriorityCursor接口。
+
+**处理步骤**
+
+请确认当前调用者已通过setGlobalPriorityCursor设置全局高优先级光标后，再调用unsetGlobalPriorityCursor清除；如需变更其他调用者设置的全局高优先级光标，可调用setGlobalPriorityCursor设置新的全局高优先级光标进行覆盖。
+
 ## 3800001 多模输入服务内部错误
 
 **错误信息**

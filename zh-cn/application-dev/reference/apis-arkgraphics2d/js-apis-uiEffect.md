@@ -147,7 +147,6 @@ ArkTS-Sta: hdrBrightnessRatio(ratio: double): Filter
 > 使用HDR提亮效果会带来一定的性能功耗开销，建议在已有HDR图片或视频的场景使用。
 
 **需要权限：** ohos.permission.HDR_BRIGHTNESS
-<!--Del-->系统应用无需申请此权限。<!--DelEnd-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

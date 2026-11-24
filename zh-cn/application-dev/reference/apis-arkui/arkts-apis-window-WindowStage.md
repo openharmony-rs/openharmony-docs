@@ -1668,7 +1668,7 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    windowStage.loadContent('page/Index', (err) => {
+    windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
@@ -2603,13 +2603,13 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息                       |
-| -------- | ------------------------------ |
+| 错误码ID | 错误信息                                                                                                         |
+| -------- | -------------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300003  | This window manager service works abnormally. |
-| 1300005 | This window stage is abnormal. Possible cause: The window is not created or destroyed.<br>适用版本：20+ |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
+| 1300003  | This window manager service works abnormally.                                                                |
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed.<br>适用版本：20+     |
 
 **示例：**
 

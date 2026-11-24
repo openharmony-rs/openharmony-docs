@@ -29,30 +29,35 @@
    ```
 
 2. 调用[cameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[createSession](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11)方法创建一个会话。
-     
-   ```ts
+
+   <!-- @[camera_createSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
    // 此处以videoSession为例。
-   function getSession(cameraManager: camera.CameraManager): camera.VideoSession | undefined {
+   createSessionFn(cameraManager: camera.CameraManager): camera.VideoSession | undefined {
      let videoSession: camera.VideoSession | undefined = undefined;
      try {
        videoSession = cameraManager.createSession(camera.SceneMode.NORMAL_VIDEO) as camera.VideoSession;
      } catch (error) {
        let err = error as BusinessError;
-       console.error(`Failed to create the session instance. error: ${err.code}`);
+       console.error(`Failed to create session instance. err code: ${err.code}`);
      }
      return videoSession;
    }
    ```
 
 3. 调用[VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)中的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
-     
-   ```ts
-   function beginConfig(videoSession: camera.VideoSession): void {
+
+   <!-- @[camera_beginConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   // 此处以videoSession为例。
+   beginConfigFn(videoSession: camera.VideoSession): void {
      try {
        videoSession.beginConfig();
      } catch (error) {
        let err = error as BusinessError;
-       console.error(`Failed to beginConfig. error: ${err.code}`);
+       console.error(`Failed to beginConfig. err code: ${err.code}`);
      }
    }
    ```
@@ -65,22 +70,26 @@
    >
    > 在调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流前，可通过[canAddOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#canaddoutput11)判断当前相机输出流是否可以添加到session中。
    > 相机输入流cameraInput创建流程请参考[设备输入](camera-device-input.md)，相机预览输出流previewOutput和拍照输出流photoOutput创建流程请分别参考[预览](camera-preview.md)和[拍照](camera-shooting.md)。
-     
-   ```ts
-   async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+
+   <!-- @[camera_commit_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   // 此处以videoSession为例。
+   async startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput,
+     previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
      try {
        videoSession.addInput(cameraInput);
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to addInput. error: ${err.code}`);
      }
-     let canAddPreviewOutput : boolean = false;
+     let canAddPreviewOutput: boolean = false;
      try {
        canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to add previewOutput. error: ${err.code}`);
-     } 
+     }
      if (!canAddPreviewOutput) {
        console.error(`Failed to add preview output.`);
        return;
@@ -91,7 +100,7 @@
        let err = error as BusinessError;
        console.error(`Failed to add previewOutput. error: ${err.code}`);
      }
-     let canAddPhotoOutput : boolean = false
+     let canAddPhotoOutput: boolean = false;
      try {
        canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
      } catch (error) {
@@ -113,9 +122,9 @@
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to commitConfig. error: ${err.code}`);
-      return;
+       return;
      }
-   
+
      try {
        await videoSession.start();
      } catch (error) {
@@ -127,15 +136,18 @@
 
 5. 会话控制。调用VideoSession中的[stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11)方法可以停止当前会话。调用[removeOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#removeoutput11)和[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)方法可以完成会话切换控制。以下示例代码以移除拍照流photoOutput，添加视频流videoOutput为例，完成了拍照到录像的切换。
 
-   ```ts
-   async function switchOutput(videoSession: camera.VideoSession, videoOutput: camera.VideoOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+   <!-- @[camera_switch_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   async switchOutput(videoSession: camera.VideoSession,
+     videoOutput: camera.VideoOutput, photoOutput: camera.PhotoOutput): Promise<void> {
      try {
        await videoSession.stop();
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to stop. error: ${err.code}`);
      }
-   
+
      try {
        videoSession.beginConfig();
      } catch (error) {
@@ -149,14 +161,18 @@
        let err = error as BusinessError;
        console.error(`Failed to remove photoOutput. error: ${err.code}`);
      }
+     let canAddVideoOutput: boolean = false;
      try {
-       videoSession.canAddOutput(videoOutput);
+       canAddVideoOutput = videoSession.canAddOutput(videoOutput);
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to add videoOutput error: ${err.code}`);
      }
      // 向会话中添加视频输出流。
      try {
+       if (!canAddVideoOutput) {
+         return;
+       }
        videoSession.addOutput(videoOutput);
      } catch (error) {
        let err = error as BusinessError;
@@ -168,7 +184,7 @@
        let err = error as BusinessError;
        console.error(`Failed to commitConfig. error: ${err.code}`);
      }
-   
+
      try {
        await videoSession.start();
      } catch (error) {

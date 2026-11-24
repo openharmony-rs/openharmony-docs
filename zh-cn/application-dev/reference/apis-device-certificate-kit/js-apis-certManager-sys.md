@@ -2,7 +2,7 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @chaceli-->
+<!--Owner: @liutianqi-->
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
@@ -62,7 +62,7 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
@@ -239,7 +239,7 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401 | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -364,7 +364,7 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong, the certType's value is invalid or not supported. |
+| 401 | [Sync] Parameter error. Possible causes: 1. The URI is null or the URI format is wrong; 2. The certType's value is invalid or not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -477,7 +477,7 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -545,7 +545,7 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -666,7 +666,7 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -729,7 +729,7 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -796,7 +796,7 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -925,7 +925,7 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -994,7 +994,7 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -1060,7 +1060,7 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -1132,5 +1132,81 @@ try {
   })
 } catch (error) {
   console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## ConfigItem
+
+表示证书管理配置项。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| name | string | 否 | 否 | 配置项名称。 |
+| value | string | 否 | 否 | 配置项值。 |
+
+## certificateManager.getCertManagerConfig
+
+getCertManagerConfig(configNames: Array\<string>) : Promise\<Array\<ConfigItem>>
+
+查询证书管理系统配置信息。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| configNames | Array\<string> | 是 | 证书管理配置项名称。<br>最大长度为16且不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<Array\<[ConfigItem](#configitem)>> | 返回配置数据的Promise。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500011 | The input parameters validation failed. Possible causes: The length of configNames exceeds the limit, or the array is empty, or the array element value is invalid. |
+
+**示例：**
+
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let configNames: Array<string> = ['installGlobalUserCA_defaultConfig'];
+try {
+  certificateManager.getCertManagerConfig(configNames).then((configList) => {
+    console.info('Succeeded in getting cert manager config.');
+    console.info('Config name: ' + configList[0].name + ', value: ' + configList[0].value);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get cert manager config. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to get cert manager config. Code: ${error.code}, message: ${error.message}`);
 }
 ```

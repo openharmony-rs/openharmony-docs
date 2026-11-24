@@ -63,7 +63,7 @@ Search初始化参数。
 | ----------- | ------------- | ---- | ---- | ------------- |
 | value<sup>8+</sup>       | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: string \| Bindable\<string>  | 否   | 是 | 设置当前显示的搜索文本内容。当需要设置搜索框的初始文本内容时传入此参数，不传入时搜索框为空。<br>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br>从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br>该属性支持Bindable双向绑定变量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>从API version 20开始，支持Resource类型。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
 | placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 设置无输入时的提示文本。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23  |
-| icon<sup>8+</sup>        | string                                               | 否   | 是 | 设置搜索图标路径，默认使用系统搜索图标。<br>**说明：** <br>icon的数据源支持[使用相对路径显示图片](./ts-basic-components-image.md#示例25使用相对路径显示图片)和网络图片。<br>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br>如果与属性searchIcon同时设置，则searchIcon优先。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23  |
+| icon<sup>8+</sup>        | string                                               | 否   | 是 | 设置搜索图标路径，默认使用系统搜索图标。<br>**说明：** <br>icon的数据源支持[使用相对路径显示图片](./ts-basic-components-image.md#示例24使用相对路径显示图片)和网络图片。<br>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br>如果与属性searchIcon同时设置，则searchIcon优先。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23  |
 | controller<sup>8+</sup>  | [SearchController](#searchcontroller) | 否   | 是 | 设置Search组件控制器。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23   |
 
 ## 属性
@@ -1115,7 +1115,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>**说明：** <br>当同时设置strokeWidth和[shaderStyle](#shaderstyle)时，shaderStyle不生效。<br>[strokeJoinStyle](#strokejoinstyle)仅在使用strokeWidth设置文本描边时生效。<br>设置undefined时按默认值处理。 |
+| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>**说明：** <br>当同时设置strokeWidth和[shaderStyle](#shaderstyle)时，shaderStyle不生效。<br>[strokeJoinStyle](#strokejoinstyle)仅在使用strokeWidth设置文本描边时生效。<br>设置undefined时按默认值处理。 |
 
 ### strokeColor<sup>20+</sup>
 
@@ -1273,6 +1273,16 @@ ArkTS-Sta: includeFontPadding(include: boolean | undefined)
 
 设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
+从API版本26.1.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1296,6 +1306,16 @@ ArkTS-Dyn: fallbackLineSpacing(enabled: Optional\<boolean>)
 ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
+
+从API版本26.1.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2628,9 +2648,7 @@ struct SearchExample {
   }
 }
 ```
-<!--RP2-->
-![searchEditMenuOptions](figures/searchEditMenuOptions-2.png)
-<!--RP2End-->
+![searchEditMenuOptions](figures/searchEditMenuOptions-3.gif)
 
 ### 示例11（设置symbol类型清除按钮）
 

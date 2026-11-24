@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍网页alert、confirm、prompt三种JavaScript弹框的应用侧自定义实现，通过监听弹框请求并自定义弹窗组件处理用户确认与输入。"
+keywords: [Web弹框, onAlert, onConfirm, onPrompt, window.alert, window.confirm, window.prompt, AlertDialog, CustomContentDialog]
+doctype: guide
+status: active
+---
+
 # 使用Web组件显示网页弹框
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -18,7 +26,7 @@
 
 应用可以通过[onAlert](../reference/apis-arkweb/arkts-basic-components-web-events.md#onalert)事件监听网页`alert`方法，并创建合适的弹框。
 
-- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
+- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)方法创建弹框。
     
     ArkTS-Dyn示例：
     <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) --> 
@@ -153,7 +161,7 @@
   </html>
   ```
 
-- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
+- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)组件创建弹框。
 
     ArkTS-Dyn示例：
     <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) -->
@@ -321,7 +329,7 @@
 
 应用可以通过[onConfirm](../reference/apis-arkweb/arkts-basic-components-web-events.md#onconfirm)事件监听网页`confirm`方法，并创建合适的弹框。
 
-- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
+- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)方法创建弹框。
 
     ArkTS-Dyn示例：
     <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 

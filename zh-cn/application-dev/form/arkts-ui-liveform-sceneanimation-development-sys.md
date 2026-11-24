@@ -113,7 +113,7 @@
           // 卡片提供方需在激活态页面准备就绪时，通过session发送信息告知卡片使用方
           session.sendData({['isFormReady']: true});
         } catch (e) {
-          console.info(`sth wrong when load content ${e.code}, ${e.message}`);
+          console.error(`sth wrong when load content ${e.code}, ${e.message}`);
         }
       }
     
@@ -194,7 +194,7 @@
           console.info(`data: ${JSON.stringify(data)}, status: ${status}`);
           await that.handleFormStatus(status);
         } catch (e) {
-          console.info(`sth wrong when handleMessage, code: ${e.code}, message: ${e.message}`);
+          console.error(`sth wrong when handleMessage, code: ${e.code}, message: ${e.message}`);
         }
       }
 
@@ -474,11 +474,11 @@
           formProvider.activateSceneAnimation(formId).then(() => {
             console.info('activateSceneAnimation succeed');
           }).catch((error: BusinessError) => {
-            console.info(`activateSceneAnimation catch error` +
+            console.error(`activateSceneAnimation catch error` +
               `, code: ${error.code}, message: ${error.message}`);
           })
         } catch (e) {
-          console.info(`activateSceneAnimation call requestOverflow catch error` +
+          console.error(`activateSceneAnimation call catch error` +
             `, code: ${e.code}, message: ${e.message}`);
         }
       }

@@ -185,7 +185,7 @@ Stacktrace:
 
 ### Page switch history
 
-从API 20起，使用Page switch history段记录页面切换的历史，故障日志最多记录最新的10条历史轨迹。单条记录的格式如下：
+从API version 20起，使用Page switch history段记录页面切换的历史，故障日志最多记录最新的10条历史轨迹。单条记录的格式如下：
 ```text
   14:08:30:327 /ets/pages/Index:JsError
        ^             ^            ^
@@ -308,7 +308,7 @@ at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 
 ### HybridStack格式
 
-从API 22起，在ARM 64位系统下，HybridStack中支持打印CPP和JS之间跨语言的代码调用栈。
+从API version 22起，在ARM 64位系统下，HybridStack中支持打印CPP和JS之间跨语言的代码调用栈。
 
 CPP代码调用栈详细说明[CPP异常代码调用栈格式规范](cppcrash-guidelines.md#一般故障场景日志规格)。
 

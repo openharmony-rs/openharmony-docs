@@ -539,7 +539,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 function photoAssetAvailableCallback(err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void {
   if (err) {
-    console.info(`photoAssetAvailable error: ${JSON.stringify(err)}.`);
+    console.error(`photoAssetAvailable error code: ${err.code}.`);
     return;
   }
   console.info('photoOutPutCallBack photoAssetAvailable');
@@ -1448,6 +1448,201 @@ function enableAutoExtendedGainmapDelivery(photoOutput: camera.PhotoOutput): voi
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
     console.error(`The enableAutoExtendedGainmapDelivery call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## isAutoAuxiliaryPhotoDeliverySupported
+
+isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): boolean
+
+查询设备是否支持拍摄输出指定类型的辅助图。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| auxPhotoType  | [CameraAuxiliaryPhotoType](arkts-apis-camera-e.md#cameraauxiliaryphototype)                | 是   | 拍照回传的目标辅助图类型。     |
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| boolean | 设备是否支持回传指定类型的辅助图。true表示支持回传；false表示不支持回传。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |------------------------------------------------|
+| 7400115  | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isAutoAuxiliaryPhotoDeliverySupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isAutoAuxiliaryPhotoDeliverySupported(camera.CameraAuxiliaryPhotoType.OXYGEN);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isAutoAuxiliaryPhotoDeliverySupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## setAutoAuxiliaryPhotosDeliveryEnabled
+
+setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[], enable: boolean): void
+
+启用或禁用拍照自动回传指定类型的辅助图。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| auxPhotoTypes  | [CameraAuxiliaryPhotoType](arkts-apis-camera-e.md#cameraauxiliaryphototype)[]                | 是   | 回传的目标辅助图类型。     |
+| enable  | boolean                | 是   | 表示是否启用拍照自动回传指定类型的辅助图。true表示启用，false表示禁用。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |------------------------------------------------|
+| 801      | Capability not supported. Check if the camera device supports the required auxiliary photo types by using capability query APIs. |
+| 7400115  | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
+| 7400201  | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function setAutoAuxiliaryPhotosDeliveryEnabled(photoOutput: camera.PhotoOutput): void {
+  try {
+    photoOutput.setAutoAuxiliaryPhotosDeliveryEnabled(
+      [camera.CameraAuxiliaryPhotoType.OXYGEN, camera.CameraAuxiliaryPhotoType.PIGMENTATION], true);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setAutoAuxiliaryPhotosDeliveryEnabled call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## isC2PASignatureSupported
+
+isC2PASignatureSupported(): boolean
+
+判断设备是否支持C2PA（Coalition for Content Provenance and Authenticity）签名功能。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型      | 说明                                         |
+|---------|----------------------------------------------|
+| boolean | 是否支持C2PA签名功能。返回true表示支持，返回false表示不支持。若接口调用失败，返回undefined。|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isC2PASignatureSupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isC2PASignatureSupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isC2PASignatureSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## configureC2PASignature
+
+configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void
+
+是否启用C2PA签名功能，并传入签名相关数据。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                                                                | 必填 | 说明                                      |
+| -------- |-------------------------------------------------------------------|---|-----------------------------------------|
+| enableC2PA | boolean                                                           | 是 | 是否启用C2PA签名功能。true表示启用，false表示不启用。       |
+| config | [C2PASignatureConfig](arkts-apis-camera-i.md#c2pasignatureconfig) | 否 | 启用C2PA签名时，使用的姓名和ID。若签名时不想加上相关信息，可不传此参数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                                   |
+| -------- |--------------------------------------------------------|
+| 7400201  | Camera service fatal error.                            |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function configureC2PASignature(photoOutput: camera.PhotoOutput): void {
+  try {
+    let signature: camera.C2PASignatureConfig = {
+      authorName: 'wang',
+      authorID: '9527'
+    };
+    photoOutput.configureC2PASignature(true, signature);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The configureC2PASignature call failed. error code: ${err.code}`);
   }
 }
 ```

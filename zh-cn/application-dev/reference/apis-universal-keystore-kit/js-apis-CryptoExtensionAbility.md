@@ -23,6 +23,8 @@ ExtensionAbility功能与约束：
 
 > **说明**
 >
+> 本模块仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 约束限制
@@ -146,17 +148,34 @@ onOpenResource(resourceId: string, params: Array\<huksExternalCrypto.HuksExterna
 **示例：**
 
 ```ts
-import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult, HuksCryptoExtensionResultCode } from '@kit.UniversalKeystoreKit';
+import { deviceInfo } from '@kit.BasicServicesKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     // 解析resourceId，打开底层句柄，并映射为新的句柄返回。
     let result: HuksCryptoExtensionResult = {
-      resultCode: 0,
-      handle: "test handle"
+      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
     };
 
+    // 解析resource index，API版本22需要解析index字段，在API版本26.0.0及以上可直接使用。
+    const apiVersion = deviceInfo.sdkApiVersion;
+    let index: string;
+    if (apiVersion >= 26) {
+      index = resourceId;
+    } else {
+      try {
+        index = JSON.parse(resourceId)['index'];
+      } catch (e) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        return Promise.resolve(result);
+      }
+    }
+
     // ...
+
+    result.handle = "your handle";
+    result.resultCode = 0;
     return Promise.resolve(result);
   }
 }

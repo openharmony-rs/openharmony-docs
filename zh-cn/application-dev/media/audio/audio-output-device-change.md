@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者在音频流输出设备变更时合理暂停播放，介绍如何通过监听输出设备变更事件获取变更原因，并参考示例完成耳机拔出、设备切换等场景的播放适配。"
+keywords: [输出设备变更, outputDeviceChangeWithInfo, currentOutputDeviceChanged, AudioStreamDeviceChangeReason, 耳机拔出, 蓝牙断开, 设备下线, 播放暂停, 听歌中断]
+doctype: guide
+status: active
+---
 # 响应输出设备变更时合理暂停
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -17,8 +24,8 @@
 ## 音频流输出设备变更原因
 
 > **说明：**
-> 
-> 当发生下述四种情况（[AudioStreamDeviceChangeReason](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostreamdevicechangereason11)）时，系统将向应用发送设备变更回调。
+>
+> 设备变更原因由[AudioStreamDeviceChangeReason](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostreamdevicechangereason11)体现。应用应根据回调中的原因处理业务，不能将任意设备的连接或断开都视为当前输出设备变更。各枚举值的支持版本以API参考为准。
 
 - **REASON_NEW_DEVICE_AVAILABLE**：新设备可用。
 
@@ -41,6 +48,10 @@
   - 音乐场景：暂停
   - 视频场景：暂停
 
+  > **说明：**
+  > 
+  > 若应用已激活音频会话，建议暂停音频播放后调用[deactivateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)停用音频会话，否则可能影响其他应用播放。
+
 - **REASON_OVERRODE**：用户强制选择设备。
 
   **触发场景：**
@@ -49,15 +60,23 @@
 
 - **REASON_UNKNOWN**：未知原因。
 
+  应用可自查其他情况，结合业务状态处理，避免无条件启动或恢复播放。
+
 ## 参考示例
 
 以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
 
 ### AudioRenderer示例
 
+适用于应用直接使用AudioRenderer播放音频，并需要针对该音频流处理耳机断开等设备变更的场景。监听注册在具体的AudioRenderer实例上，回调中的设备信息和变更原因用于处理该实例对应的音频流。
+
+> **说明：**
+>
+> 示例省略了音频数据写入、启动播放和界面更新过程。`usage`应与实际业务一致，例如音乐播放应配置相应的媒体用途，不能仅为监听设备变更而修改音频流用途。
+
   ArkTS-Dyn示例：
 
-  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -89,7 +108,7 @@
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
@@ -124,7 +143,7 @@
 
 ArkTS-Sta示例：
 
-<!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+<!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->    
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -151,7 +170,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
     audioRenderer = data as audio.AudioRenderer;
     // ...
   }).catch((err) => {
-    console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
   // ...
@@ -181,9 +200,15 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 
 ### AudioSessionManager示例
 
+适用于应用使用AudioSession管理音频焦点，并需要在当前输出设备变化时调整播放状态的场景。与AudioRenderer示例相比，监听注册在AudioSessionManager上，使用播放器SDK且不持有AudioRenderer对象的应用也可以采用此方式。
+
+> **说明：**
+>
+> 下方使用AudioRenderer演示实际执行暂停的播放对象，AudioSessionManager负责设备变化通知，不会代替播放器执行暂停。应用应在暂停成功后更新界面，收到推荐继续播放的通知时维持原有播放状态。若需取消本业务的监听，`off`需传入与`on`注册时绑定的同一回调函数。
+
   ArkTS-Dyn示例：
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->    
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -217,7 +242,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
@@ -269,7 +294,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 
   ArkTS-Sta示例：
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->    
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -296,7 +321,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
       audioRenderer = data as audio.AudioRenderer;
       // ...
     }).catch((err) => {
-      console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
       // ...
     });
     // ...
@@ -325,3 +350,9 @@ let audioRendererOptions: audio.AudioRendererOptions = {
       }
     });
   ```
+
+## 相关主题推荐
+
+- [查询和监听音频输出设备](audio-output-device-management.md)
+- [实现音频输出设备路由切换](audio-output-device-switcher.md)
+- [播放无声定位指导](audio-playback-no-sound-troubleshooting.md)

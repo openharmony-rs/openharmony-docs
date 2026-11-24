@@ -31,7 +31,8 @@ import { InsightIntentContext } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| instanceId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 意图实例唯一ID。用于通过[insightIntentProvider.sendExecuteResult接口](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)和[insightIntentProvider.sendIntentResult接口](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)返回指定意图的执行结果。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| instanceId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 意图实例唯一ID。用于通过[insightIntentProvider.sendExecuteResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)和[insightIntentProvider.sendIntentResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)返回指定意图的执行结果。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| insightIntentExecutionInfo | [insightIntent.InsightIntentExecutionInfo](./js-apis-app-ability-insightIntent.md#insightintentexecutioninfo) | 是 | 是 | 表示意图执行信息。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 **示例：**
 

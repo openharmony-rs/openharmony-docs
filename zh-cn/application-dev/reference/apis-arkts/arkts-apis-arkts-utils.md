@@ -11,6 +11,7 @@
 - [ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md)：异步锁。
 - [ArkTSUtils.ASON](arkts-apis-arkts-utils-ASON.md)：ASON工具。
 - [ArkTSUtils.SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md)：SendableLruCache缓存。 
+- [ArkTSUtils.Atomics](arkts-apis-arkts-utils-Atomics.md)：ArkTS整数TypedArray的原子操作。
 
 
 >

@@ -1,4 +1,18 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍过度绘制调试功能的使用方法，指导开发者识别过度绘制组件并优化布局以降低渲染负载。"
+keywords: [过度绘制, Overdraw, 调试, 扁平化布局, 渲染负载]
+doctype: guide
+status: active
+---
+
 # 过度绘制调试使用指导
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 当应用页面布局的嵌套程度过深时，应用渲染阶段会存在一些组件的绘制指令被其他组件的绘制指令部分或完全覆盖遮挡的情况，造成冗余的CPU、GPU等计算资源的使用。这种一个屏幕上的像素点被重复绘制了多次的情况被称为过度绘制（Overdraw）。开发者可通过系统提供的过度绘制调试指令，查看引起过度绘制的组件位置及其层级，从而减轻应用渲染时的负载。
 
@@ -12,7 +26,7 @@
 
 - 开启过度绘制调试功能：
 
-  ```
+  ``` bash
   param set debug.graphic.overdraw true
   ```
 
@@ -20,7 +34,7 @@
 
 - 关闭过度绘制调试功能：
 
-  ```
+  ``` bash
   param set debug.graphic.overdraw false
   ```
 
@@ -30,7 +44,7 @@
 
   true表示开启了过度绘制功能，false则表示未开启。
 
-  ```
+  ``` bash
   param get debug.graphic.overdraw
   ```
 

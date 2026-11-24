@@ -759,11 +759,11 @@ Repeated PiP operation.
 **处理步骤**<br>
 不要重复启动/停止画中画。<br>
 
-## 1300016 参数校验错误
+## 1300016 参数错误
 
 **错误信息**
 
-Parameter validation error.
+Parameter error.
 
 **错误描述**
 
@@ -1039,6 +1039,26 @@ Updating static template-based floating balls is not supported.
 
 请删除已有的静态模板类型闪控球，然后创建新的闪控球。
 
+<!--Del-->
+## 1300029 窗口类型无效
+ 
+**错误信息**
+ 
+This window type is invalid.
+ 
+**错误描述**
+ 
+窗口类型不支持该操作。
+ 
+**可能原因**
+ 
+主窗、子窗、dialog、TYPE_FLOAT非系统窗类型不支持某些操作。
+ 
+**处理步骤**
+ 
+返回该错误码表示当前窗口类型不支持该操作，应用需要更改窗口类型。
+<!--DelEnd-->
+
 ## 1300030 重复操作闪控窗
 
 **错误信息**
@@ -1160,6 +1180,24 @@ This operation conflicts with other floating windows.
 **处理步骤**
 
 启动闪控窗前，请先停止闪控球窗口和画中画窗口。
+
+## 1300035 不允许创建子窗口
+
+**错误信息**
+
+ Creating a subwindow is not allowed in the current context.
+
+**错误描述**
+
+当前上下文不允许创建子窗口。
+
+**可能原因**
+
+应用Ability继承自AgentUIExtensionAbility。
+
+**处理步骤**
+
+创建子窗口前，检查应用Ability是否继承自AgentUIExtensionAbility。
 
 ## 1001 窗口空指针异常<sup>(deprecated)</sup>
 **错误信息**<br>

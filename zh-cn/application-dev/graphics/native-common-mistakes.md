@@ -1,3 +1,10 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "汇总NativeWindow、NativeImage、NativeBuffer开发中引用计数不匹配导致的内存泄漏、崩溃与卡死等常见稳定性问题，结合典型错误代码给出修复方案，帮助C/C++图形应用开发者快速定位并规避风险。"
+keywords: [内存泄漏, 引用计数, 崩溃, 卡死, NativeWindow, NativeImage, NativeWindowBuffer, 生命周期管理, Buffer归还]
+doctype: faq
+status: active
+---
 # 图形缓冲区常见稳定性问题 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->

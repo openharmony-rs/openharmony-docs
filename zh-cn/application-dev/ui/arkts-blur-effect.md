@@ -1376,7 +1376,7 @@ import { curves } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct motionBlurTest {
+struct MotionBlurTest {
   @State widthSize: number = 300;
   @State heightSize: number = 240;
   @State flag: boolean = true;
@@ -1469,4 +1469,4 @@ struct motionBlurTest {
 }
 ```
 
-![motionBlurTest](figures/motionBlur.gif)
+![MotionBlurTest](figures/motionBlur.gif)

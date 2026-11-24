@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "指导在DevEco Studio中开启ArkGuard源码混淆并配置obfuscation-rules.txt规则，介绍场景适配、效果查看与报错栈还原方法。"
+keywords: [混淆, 源码混淆, 开启混淆, ArkGuard, obfuscation-rules.txt, 混淆规则, 查看混淆效果, 报错栈还原, DevEco Studio]
+doctype: guide
+status: active
+---
+
 # ArkGuard混淆开启指南
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -6,7 +14,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-本指南旨在帮助开发者了解和使用ArkGuard源码混淆功能，保护应用代码安全。通过启用源码混淆，开发者可以对ArkTS代码中的变量名、属性名、文件名等进行混淆处理，增加代码逆向难度，提升应用的安全性。文章将详细介绍如何在DevEco Studio中开启混淆、配置混淆规则、适配不同混淆场景，以及如何查看混淆效果和还原混淆后的报错栈。
+本指南旨在帮助开发者了解和使用ArkGuard源码混淆功能，保护应用代码安全。通过启用源码混淆，开发者可以对ArkTS代码中的变量名、属性名、文件名等进行混淆处理，增加代码逆向难度，提升应用的安全性。文章将详细介绍如何在DevEco Studio中开启混淆、配置混淆规则、适配不同混淆场景，以及如何查看混淆效果和还原混淆后的报错堆栈。
 
 ## 开启源码混淆步骤
 

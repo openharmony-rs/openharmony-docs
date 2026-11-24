@@ -74,6 +74,8 @@ ArkTS-Sta: SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
@@ -82,6 +84,7 @@ ArkTS-Sta: SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensio
 | -------- | -------- | -------- |
 | FOLLOW_HOST_DPI | 0 | 表示分辨率跟随宿主。 |
 | FOLLOW_UI_EXTENSION_ABILITY_DPI | 1 | 表示分辨率跟随UIExtensionAbility。 |
+| FOLLOW_HOST_DPI_ALL | 2 | 表示UIExtensionAbility的UI和子窗分辨率均跟随宿主。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## ReceiveCallback
 

@@ -13,6 +13,10 @@ UkeyAuthExtensionContext是[UkeyAuthExtensionAbility](js-apis-UkeyAuthExtensionA
 
 **ArkTS-Sta起始版本**：26.0.1
 
+> **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## 导入模块
 
 ```ts

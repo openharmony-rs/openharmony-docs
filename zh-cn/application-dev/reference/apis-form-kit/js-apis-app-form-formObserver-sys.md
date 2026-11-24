@@ -232,7 +232,7 @@ try {
 
 ## formObserver.off('formAdd')
 
-off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
+off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void
 
 取消订阅卡片新增事件。使用callback异步回调。
 

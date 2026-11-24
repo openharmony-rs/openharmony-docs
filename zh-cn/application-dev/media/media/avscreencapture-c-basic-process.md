@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVScreenCapture的C API进行屏幕录制的基础流程，涵盖实例创建、音视频参数配置、回调设置、录屏启停及资源释放等步骤，适用于屏幕录制、会议共享、直播等场景。"
+keywords: [AVScreenCapture, OH_AVScreenCaptureConfig, 屏幕录制, 码流输出, 文件输出]
+doctype: guide
+status: active
+---
+
 # AVScreenCapture录屏基础流程
 
 <!--Kit: Media Kit-->
@@ -85,7 +93,7 @@ g_avCapture = OH_AVScreenCapture_Create();
 如果配置了采集麦克风音频数据，需：
 
 - 配置麦克风权限ohos.permission.MICROPHONE，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)。
-- 申请长时任务，申请方式请参见[申请长时任务](../../task-management/continuous-task.md)。
+- 申请长时任务，申请方式请参见[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
 录屏存文件时默认只开启内录。录制过程中，麦克风可以动态开启/关闭，开启后，可同时启动内外录制。
 
@@ -542,7 +550,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 <!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 在config中配置录虚拟扩展屏幕的宽度、高度。
+// 在config中配置待录制的虚拟扩展屏幕的宽度、高度。
 int32_t width = 1920;
 int32_t height = 1080;
 config.videoInfo.videoCapInfo.videoFrameWidth = width;

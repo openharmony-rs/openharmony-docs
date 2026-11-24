@@ -663,7 +663,7 @@ struct WebComponent {
    }
    ```
 
-   在“src\main\resources\rawfile”文件夹下创建index.html：
+   在“src/main/resources/rawfile”文件夹下创建index.html：
    ```html
    <!-- index.html -->
    <!DOCTYPE html>
@@ -2559,7 +2559,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -2743,7 +2743,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -2976,7 +2976,7 @@ struct WebComponent {
               try {
                 if (result.getErrorDescription()) {
                   // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                   return;
                 }
                 let type = result.getType();
@@ -3139,7 +3139,7 @@ struct WebComponent {
                 try {
                   if (result.getErrorDescription()) {
                     // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                     return;
                   }
                   let type = result.getType();
@@ -4525,6 +4525,263 @@ struct WebComponent {
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## setZoomFactor
+
+ArkTS-Dyn: setZoomFactor(zoomFactor: number): void
+
+ArkTS-Sta: setZoomFactor(zoomFactor: double): void
+
+设置当前网页的页面缩放倍率。页面缩放会同时缩放文字和图片，并触发页面重新布局以适应Web组件宽度。
+
+> **说明：**
+>
+> - 页面缩放倍率按网页的主机名（Host）管理。在同一浏览数据上下文中，设置成功后，已打开的同Host Web组件会同步缩放，后续打开的同Host网页也会使用已保存的倍率；不同Host互不影响。当前Web组件导航至其他Host时，使用目标Host的页面缩放倍率，而非继续沿用原Host的倍率。
+> - 如需让不同Host的网页使用相同倍率，可在网页开始加载时通过[onPageBegin](./arkts-basic-components-web-events.md#onpagebegin)针对当前Web组件再次调用本接口；原Host的倍率不会自动应用到目标Host。
+> - [zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)是Web组件的用户缩放开关：设置为`true`时，用户可通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整页面缩放倍率；设置为`false`时，上述用户操作无效。该开关不限制本接口的程序化设置。
+> - 需要按指定倍率调整页面布局时，建议使用本接口；[zoom](#zoom)、[zoomIn](#zoomin)、[zoomOut](#zoomout)适用于视觉缩放，[textZoomRatio](./arkts-basic-components-web-attributes.md#textzoomratio9)适用于文字缩放，三者相互独立。
+> - 本接口需在Controller关联Web组件后调用，无需等待网页加载完成。若浏览器实例尚未创建，设置的倍率会在缩放控制器可用后应用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| zoomFactor | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 要设置的页面缩放倍率。`1`表示不缩放，小于`1`表示缩小，大于`1`表示放大。取值范围为[0.25, 5]；有限数值超出范围时按边界裁剪。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+以下示例通过按钮设置当前网页的页面缩放倍率。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+以下示例将目标倍率应用于首次加载的网页，并在同一Web组件切换到不同Host时，于页面开始加载阶段再次设置该倍率。
+
+ArkTS-Dyn跨Host示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebZoomAcrossHosts {
+  private controller: webview.WebviewController = new webview.WebviewController();
+  private controllerAttached: boolean = false;
+  private targetFactor: number = 1.5;
+
+  private applyTargetFactor(): void {
+    if (this.controllerAttached) {
+      this.controller.setZoomFactor(this.targetFactor);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('网页A').onClick(() => this.controller.loadUrl('https://www.example.com'))
+        Button('网页B').onClick(() => this.controller.loadUrl('https://www.example.org'))
+      }
+
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          this.controllerAttached = true;
+          this.applyTargetFactor();
+        })
+        .onPageBegin(() => {
+          this.applyTargetFactor();
+        })
+        .height('80%')
+    }
+  }
+}
+```
+
+ArkTS-Sta跨Host示例：
+```ts
+// xxx.ets
+import { Web, Column, Row, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebZoomAcrossHosts {
+  private controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private controllerAttached: boolean = false;
+  private targetFactor: double = 1.5;
+
+  private applyTargetFactor(): void {
+    if (this.controllerAttached) {
+      this.controller.setZoomFactor(this.targetFactor);
+    }
+  }
+
+  build(): void {
+    Column() {
+      Row() {
+        Button('网页A').onClick((): void => {
+          this.controller.loadUrl('https://www.example.com');
+        })
+        Button('网页B').onClick((): void => {
+          this.controller.loadUrl('https://www.example.org');
+        })
+      }
+
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached((): void => {
+          this.controllerAttached = true;
+          this.applyTargetFactor();
+        })
+        .onPageBegin((): void => {
+          this.applyTargetFactor();
+        })
+        .height('80%')
+    }
+  }
+}
+```
+
+## getZoomFactor
+
+ArkTS-Dyn: getZoomFactor(): number
+
+ArkTS-Sta: getZoomFactor(): double
+
+获取当前网页的页面缩放倍率。
+
+> **说明：**
+>
+> - 本接口返回当前Web组件实际生效的页面缩放倍率。该倍率可能由本Controller通过[setZoomFactor](#setzoomfactor)设置，也可能在`zoomControlAccess`开启时由用户通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整，还可能受其他同Host Web组件的缩放操作影响，因此不一定等于本Controller上次设置的值。
+>
+> - 当设置的倍率已生效且未被其他操作改变时，由于内部浮点换算，查询值可能与设置后预期的倍率存在小于`0.001`的数值差异。例如，设置为`5`时可能查询到`4.999999999999999`，不影响页面缩放效果。
+>
+> - 浏览器实例尚未创建时，`getZoomFactor`返回默认值`1.0`，不会返回尚待应用的设置值。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 当前页面缩放倍率。`1`表示不缩放，小于`1`表示缩小，大于`1`表示放大。取值范围为[0.25, 5]。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('get zoom factor')
+        .onClick(() => {
+          console.info(`zoom factor: ${this.controller.getZoomFactor()}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('get zoom factor')
+        .onClick(() => {
+          console.info(`zoom factor: ${this.controller.getZoomFactor()}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
     }
   }
 }
@@ -6388,7 +6645,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除应用内所有Webview产生的资源缓存。
+清除与当前WebView上下文相关的资源缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8653,6 +8910,157 @@ struct WebComponent {
   }
 }
 ```
+
+## setNavigationThrottle
+
+ArkTS-Dyn: setNavigationThrottle(throttle: NavigationThrottle): void
+
+ArkTS-Sta: setNavigationThrottle(throttle: NavigationThrottle | null): void
+
+设置NavigationThrottle，在四个导航阶段拦截Web组件的导航请求，由应用决策放行、取消或挂起。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| throttle | ArkTS-Dyn: [NavigationThrottle](./arkts-apis-webview-NavigationThrottle.md)<br>ArkTS-Sta: [NavigationThrottle](./arkts-apis-webview-NavigationThrottle.md) \| null | 是 | 导航拦截器实例。ArkTS-Sta下传入null时清除当前设置的NavigationThrottle；ArkTS-Dyn下传入undefined或null时清除，清除后导航行为与未注册时一致。 |
+
+> **说明：**
+>
+> - 每个WebviewController至多一个生效的NavigationThrottle，重复调用本接口会替换旧实例，被替换的实例不再收到回调。
+>
+> - 本接口不影响[onOverrideUrlLoading](./arkts-basic-components-web-events.md#onoverrideurlloading12)。两者同时设置时，先回调onOverrideUrlLoading，其返回true（应用接管）时本次导航不再触发NavigationThrottle回调。
+>
+> - 需在WebviewController关联Web组件后调用，否则抛出错误码17100001。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyThrottle implements webview.NavigationThrottle {
+  willStartRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    // 拦截未授权外链，其余放行。
+    if (!info.url.startsWith('https://www.example.com')) {
+      return webview.NavigationThrottleAction.CANCEL;
+    }
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willRedirectRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willProcessResponse(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willFailRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setNavigationThrottle')
+        .onClick(() => {
+          try {
+            this.controller.setNavigationThrottle(new MyThrottle());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+'use static'
+import { Entry, Component, Column, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyThrottle implements webview.NavigationThrottle {
+  willStartRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    // 拦截未授权外链，其余放行。
+    if (!info.url.startsWith('https://www.example.com')) {
+      return webview.NavigationThrottleAction.CANCEL;
+    }
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willRedirectRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willProcessResponse(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willFailRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setNavigationThrottle')
+        .onClick(() => {
+          try {
+            this.controller.setNavigationThrottle(new MyThrottle());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 
 ## setDownloadDelegate<sup>11+</sup>
 
@@ -18469,28 +18877,33 @@ stopMicrophone(): void
 
 static setUserAgentClientHintsEnabled(enabled: boolean): void
 
-设置是否开启UserAgent Client Hints功能。
+设置是否开启User-Agent Client Hints功能。
 
 > **说明：**
 >
-> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+> - User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
 >
-> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+> - 不使用该方法时，默认不开启UserAgent Client Hints功能。
+>
+> - 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](#initializewebengine)），必须先调用[initializeWebEngine](#initializewebengine)完成初始化，否则接口调用无效。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+| enabled | boolean | 是   | 是否开启User-Agent Client Hints功能。<br/>true表示开启，false表示不开启。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -18526,7 +18939,7 @@ struct WebComponent {
             metadata.setWow64(false);
             this.controller.setUserAgentMetadata(this.userAgent, metadata);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('getUserAgentMetadata').fontSize(20)
@@ -18552,7 +18965,7 @@ struct WebComponent {
             console.info("PlatformVersion:" + metadata.getPlatformVersion());
             console.info("Wow64:" + metadata.getWow64());
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'https://www.example.com', controller: this.controller })
@@ -18566,7 +18979,7 @@ struct WebComponent {
             console.info("isUserAgentClientHintsEnabled:", enabled);
             webview.WebviewController.setUserAgentClientHintsEnabled(true);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
     }
@@ -18574,34 +18987,7 @@ struct WebComponent {
 }
 ```
 
-## setUserAgentClientHintsEnabled<sup>24+</sup>
-
-static setUserAgentClientHintsEnabled(enabled: boolean): void
-
-设置是否开启User-Agent Client Hints功能。
-
-> **说明：**
->
-> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
->
-> 不使用该方法时，默认不开启User-Agent Client Hints功能。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名              | 类型    | 必填   |  说明 |
-| ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | 是   | 是否开启User-Agent Client Hints功能。<br/>true表示开启，false表示不开启。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 // xxx.ets
 'use static'
@@ -18640,7 +19026,7 @@ struct WebComponent {
             metadata.setWow64(false);
             this.controller.setUserAgentMetadata(this.userAgent, metadata);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('getUserAgentMetadata').fontSize(20)
@@ -18666,7 +19052,7 @@ struct WebComponent {
             console.info("PlatformVersion:" + metadata.getPlatformVersion());
             console.info("Wow64:" + metadata.getWow64());
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'https://www.example.com', controller: this.controller })
@@ -18680,7 +19066,7 @@ struct WebComponent {
             console.info("isUserAgentClientHintsEnabled:", enabled);
             webview.WebviewController.setUserAgentClientHintsEnabled(true);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
     }
@@ -18696,33 +19082,11 @@ static getUserAgentClientHintsEnabled(): boolean
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 24
 
-**返回值：**
-
-| 类型    | 说明                                     |
-| ------- | --------------------------------------- |
-| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
-
-**示例：**
-
-完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
-
-## getUserAgentClientHintsEnabled<sup>24+</sup>
-
-static getUserAgentClientHintsEnabled(): boolean
-
-查询UserAgent Client Hints功能当前是否开启。
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -18752,44 +19116,11 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 24
 
-**参数：**
-
-| 参数名              | 类型    | 必填   |  说明 |
-| ------------------ | ------- | ---- | ------------- |
-| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
-| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) | 是   | userAgent对应的UserAgentMetadata。可以先使用[getUserAgentMetadata](#getuseragentmetadata24)获取当前默认值，然后用相应方法进行修改。 |
-
-**示例：**
-
-完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
-
-## setUserAgentMetadata<sup>24+</sup>
-
-setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
-
-设置与User-Agent相对应的UserAgent Metadata数据。
-
-> **说明：**
->
-> User-Agent Metadata将用于填充用户代理客户端提示，它们可以提供客户端的品牌和版本信息、底层操作系统的品牌和主要版本，以及底层设备的详细信息。
->
-> 用户代理可以通过setCustomUserAgent、setAppCustomUserAgent或setUserAgentForHosts来设置。
->
-> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，且覆盖后的User-Agent包含系统默认的User-Agent，则将使用系统默认值。
->
-> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -18810,39 +19141,11 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 24
 
-**参数：**
-
-| 参数名              | 类型    | 必填   |  说明 |
-| ------------------ | ------- | ---- | ------------- |
-| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
-
-**返回值：**
-
-| 类型    | 说明                                     |
-| ------- | --------------------------------------- |
-| UserAgentMetadata | userAgent对应的[UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)。 |
-
-**示例：**
-
-完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
-
-## getUserAgentMetadata<sup>24+</sup>
-
-getUserAgentMetadata(userAgent: string): UserAgentMetadata
-
-查询userAgent对应的UserAgent Metadata信息。
-
-**系统能力：**  SystemCapability.Web.Webview.Core
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -19366,7 +19669,9 @@ struct WebComponent {
 </html>
 ```
 
-> **示例说明：** 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
+> **说明：**
+>
+> 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
 
 ## getSubframeErrorPageEnabled
 
@@ -19399,3 +19704,624 @@ getSubframeErrorPageEnabled(): boolean
 **示例：**
 
 完整示例代码参考[setErrorPageEnabled](#seterrorpageenabled)。
+
+## enableAutoReload
+
+enableAutoReload(enable: boolean): void
+
+设置是否启用错误页面的自动重新加载。
+
+启用后，Web组件会在出现网络错误时自动重新加载，每次重试的时间间隔依次为：1s → 5s → 30s → 1min → 5min → 10min → 30min。最多重试7次后停止。
+
+> **说明：**
+>
+> - 只有网络错误才会触发自动重新加载。不包括以下内容：证书错误、SSL（安全套接字层）协议错误、身份验证错误、POST请求、非HTTP(S)协议和客户端拦截的错误。
+>
+> - 自动重新加载不会影响[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调。
+>
+> - 当触发自动重新加载时，每次重试时[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调都会被重新调用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| enable | boolean | 是 | 是否启用自动重新加载。true表示启用，false表示不启用。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 启用错误页面的自动重新加载
+          this.controller.enableAutoReload(true);
+          // 查询是否已启用
+          let isEnabled: boolean = this.controller.isAutoReloadEnabled();
+          console.info("已启用自动重新加载: " + isEnabled);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 启用错误页面的自动重新加载
+          this.controller.enableAutoReload(true);
+          // 查询是否已启用
+          let isEnabled: boolean = this.controller.isAutoReloadEnabled();
+          console.info("已启用自动重新加载: " + isEnabled);
+        })
+    }
+  }
+}
+```
+
+## isAutoReloadEnabled
+
+isAutoReloadEnabled(): boolean
+
+获取是否启用错误页面的自动重新加载。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                 | 说明                      |
+| -------------------- | ------------------------- |
+| boolean | 是否启用自动重新加载。如果启用，则返回true，否则返回false。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
+**示例：**
+
+完整示例代码参考[enableAutoReload](#enableautoreload)。
+
+## setNavigationEntryUserData
+
+setNavigationEntryUserData(key: string, value: string): void
+
+在当前导航条目上设置用户数据的键值对。
+
+用户数据与导航条目生命周期相关联。当前导航条目是指导航历史记录中的活动条目。当条目被销毁时（例如，通过历史导航或clearHistory）会清除用户数据。如果已存在相同键的用户数据，则原值会被覆盖。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| key    | string | 是   | 用户数据的键。 |
+| value  | string | 是   | 用户数据的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 在当前导航条目上设置用户数据
+          this.controller.setNavigationEntryUserData('key', 'value');
+          // 获取用户数据
+          let value: string = this.controller.getNavigationEntryUserData('key');
+          console.info("获取用户数据: " + value);
+          // 删除用户数据
+          this.controller.removeNavigationEntryUserData('key');
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 在当前导航条目上设置用户数据
+          this.controller.setNavigationEntryUserData('key', 'value');
+          // 获取用户数据
+          let value: string = this.controller.getNavigationEntryUserData('key');
+          console.info("获取用户数据: " + value);
+          // 删除用户数据
+          this.controller.removeNavigationEntryUserData('key');
+        })
+    }
+  }
+}
+```
+
+## getNavigationEntryUserData
+
+getNavigationEntryUserData(key: string): string
+
+获取与当前导航条目的指定键关联的用户数据值。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| key    | string | 是   | 用户数据的键。 |
+
+**返回值：**
+
+| 类型   | 说明                                       |
+| ------ | ------------------------------------------ |
+| string | 用户数据的值。如果键不存在，则返回为空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
+**示例：**
+
+完整示例代码参考[setNavigationEntryUserData](#setnavigationentryuserdata)。
+
+## removeNavigationEntryUserData
+
+removeNavigationEntryUserData(key: string): void
+
+从当前导航条目中删除与指定键关联的用户数据。如果键不存在，则此API不执行任何操作。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| key    | string | 是   | 要删除的用户数据的键。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
+**示例：**
+
+完整示例代码参考[setNavigationEntryUserData](#setnavigationentryuserdata)。
+
+## setDataDirectorySuffix
+
+static setDataDirectorySuffix(suffix: string): void
+
+设置当前进程 ArkWeb 的数据目录后缀。
+
+> **说明：**
+>
+> 同一应用不同进程的Web组件共享一份数据目录（cookie/缓存/存储），多账号、多业务线数据互相污染。
+>
+> 通过本接口为进程设置数据目录后缀后，该进程内Web内核初始化时的用户数据目录将由默认的 `<filesDir>/../files/__arkweb`、`<filesDir>/../cache/web` 变为  
+> `<filesDir>/../files/__arkweb_<suffix>`、`<filesDir>/../cache/web_<suffix>`，从而实现按后缀的数据隔离。
+>
+> 该接口为全局静态API，必须在initializeWebEngine()初始化内核之前调用，否则设置无效。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| suffix | string | 是 | 数据目录后缀。仅支持字母与数字，长度为 1~128。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. The suffix only supports letters and digits with length 1 to 128. |
+| 17100025 | Engine already initialized. The suffix must be set before the web engine is initialized. |
+| 17100026 | Data directory suffix has already been set. Only one suffix can be set per process. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate");
+    webview.WebviewController.setDataDirectorySuffix("myCustomSuffix");
+    if (webview.WebviewController.getDataDirectorySuffix() == "myCustomSuffix") {
+      console.info("DataDirectorySuffix is set to myCustomSuffix");
+    }
+    console.info("EntryAbility onCreate done");
+    webview.WebviewController.initializeWebEngine();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    console.info("EntryAbility onCreate");
+    webview.WebviewController.setDataDirectorySuffix("myCustomSuffix");
+    if (webview.WebviewController.getDataDirectorySuffix() == "myCustomSuffix") {
+      console.info("DataDirectorySuffix is set to myCustomSuffix");
+    }
+    console.info("EntryAbility onCreate done");
+    webview.WebviewController.initializeWebEngine();
+  }
+}
+```
+
+## getDataDirectorySuffix
+
+static getDataDirectorySuffix(): string
+
+获取当前进程通过setDataDirectorySuffix设置的数据目录后缀。
+
+本接口仅返回已记录的后缀，不需要在Web内核初始化之前调用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------------------------------------------------ |
+| string | 当前进程的数据目录后缀；未设置时返回空字符串。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// pages/Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getDataDirectorySuffix')
+        .onClick(() => {
+          const suffix: string = webview.WebviewController.getDataDirectorySuffix();
+          console.info(`DataDirectorySuffix is ${suffix}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+// pages/Index.ets
+import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getDataDirectorySuffix')
+        .onClick(() => {
+          const suffix: string = webview.WebviewController.getDataDirectorySuffix();
+          console.info(`DataDirectorySuffix is ${suffix}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## removeVisitedLinksSince
+
+ArkTS-Dyn: static removeVisitedLinksSince(date: Date, callback: Callback\<void\>): void
+
+ArkTS-Sta: static removeVisitedLinksSince(date: Date, callback: Callback\<void\>): void
+
+删除指定日期之后发生变化的已访问链接记录。使用callback异步回调。
+
+本接口是静态方法，通过`WebviewController`类调用。日期用于指定删除的起始时间，不用于删除该日期之前的过期记录。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| date | Date | 是 | 数据删除的时间点，删除该日期之后发生变化的已访问链接记录。 |
+| callback | Callback\<void\> | 是 | 回调函数，用于返回结果。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (callback)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince, () => {
+            console.info('Visited link removal completed.');
+          });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+'use static'
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (callback)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince, () => {
+            console.info('Visited link removal completed.');
+          });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
+    }
+  }
+}
+```
+
+## removeVisitedLinksSince
+
+ArkTS-Dyn: static removeVisitedLinksSince(date: Date): Promise\<void\>
+
+ArkTS-Sta: static removeVisitedLinksSince(date: Date): Promise\<void\>
+
+删除指定日期之后发生变化的已访问链接记录。使用Promise异步回调。
+
+本接口是静态方法，通过`WebviewController`类调用。日期用于指定删除的起始时间，不用于删除该日期之前的过期记录。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| date | Date | 是 | 数据删除的时间点，删除该日期之后发生变化的已访问链接记录。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (promise)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince)
+            .then(() => {
+              console.info('Visited link removal completed.');
+            })
+            .catch((error: BusinessError) => {
+              console.error(`Failed to remove visited links. Code: ${error.code}, message: ${error.message}`);
+            });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+'use static'
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (promise)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince)
+            .then(() => {
+              console.info('Visited link removal completed.');
+            })
+            .catch((error: Error) => {
+              console.error(`Failed to remove visited links. Message: ${error.message}`);
+            });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
+    }
+  }
+}
+```

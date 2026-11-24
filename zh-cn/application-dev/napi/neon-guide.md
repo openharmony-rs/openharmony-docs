@@ -1,5 +1,13 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍在OpenHarmony NDK工程中使用ARM Neon SIMD指令扩展的方法，涵盖arm64-v8a和armeabi-v7a架构下的Neon支持情况、Neon intrinsics库使用、Auto-Vectorization特性及CMake编译参数配置，适用于多媒体编解码和图形处理等计算密集型场景的性能优化。"
+keywords: [Neon, SIMD, ARM, arm_neon.h, intrinsics, Auto-Vectorization, armeabi-v7a, arm64-v8a, -mfpu]
+doctype: guide
+status: active
+---
+
 # 使用Neon指令扩展
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @liyiming13-->
 <!--Designer: @liyiming13-->
@@ -45,7 +53,7 @@ ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都�
 
 ## 如何使用
 
-使用Neon扩展的主要通过如下几种方式：
+使用Neon扩展主要通过如下几种方式：
 
 - 使用LLVM的Auto-Vectorization特性，由编译器来生成对应指令，默认开启，可以通过-fno-vectorize关闭，具体参考《[Auto-Vectorization in LLVM](https://llvm.org/docs/Vectorizers.html)》。
 

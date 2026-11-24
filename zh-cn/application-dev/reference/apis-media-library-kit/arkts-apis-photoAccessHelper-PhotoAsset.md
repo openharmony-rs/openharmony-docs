@@ -57,8 +57,8 @@ get(member: string): MemberType
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000014     | The provided member must be a property name of PhotoKey.         |
+| 13900020     | Invalid parameter. Possible causes: <br>The member parameter is invalid, must be a valid member key of the asset data.         |
+| 14000014     | member not exist.         |
 
 **示例：**
 
@@ -99,7 +99,7 @@ set(member: string, value: string): void
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
 | member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度的取值范围为[1, 255]字符。 |
-| value | string | 是    | 设置成员参数的值，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
+| value | string | 是    | 设置成员参数的值，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现非法英文字符。<br>- 在API版本26.1.0之前，非法字符包括：` . \ / : * ? " ' < > \| { } [ ] `。<br>- 从API版本26.1.0开始，非法字符包括：`` \ / : * ? " ' ` < > \| { } [ ] ``，允许包含英文句点`.`，但不允许以英文句点`.`作为首字符。 |
 
 **错误码：**
 
@@ -107,7 +107,7 @@ set(member: string, value: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 1 or 2 parameters.<br>2. The member parameter must be a string. |
 | 14000014 | member not exist. |
 
@@ -163,7 +163,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+ |
 | 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The member parameter must be a string. |
@@ -236,7 +236,7 @@ commitModify(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+ |
 | 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The member parameter must be a string. |
@@ -302,7 +302,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes:<br>The member parameter is invalid, must be a valid member key. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd().<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
@@ -368,9 +368,9 @@ close(fd: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit, maximum 2 parameters.<br>2. Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The PhotoAsset object is not a valid PhotoAsset.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>3. Failed to query the thumbnail, possible causes: <br>(1) Thumbnail does not exist; <br>(2) Database exception. Please retry and check logs. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>The member parameter is invalid, must be a valid member key. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd().<br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -425,10 +425,10 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020     | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters.<br>2.Invalid parameter type.         |
+| 14000011       |  MediaLibrary inner fail. Possible causes: <br>1.The PhotoAsset object is not a valid PhotoAsset.<br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs.<br>3.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs.         |
 
 **示例：**
 
@@ -484,7 +484,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit, maximum 2 parameters.<br>2. Invalid parameter type. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Invalid number of parameters, expected 0 to 2 parameters.<br>2. The PhotoAsset object is not a valid PhotoAsset.<br>3. The size parameter is not a valid image.Size object, please check if width and height are valid numbers.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. Failed to query the thumbnail, possible causes: <br>(1) Thumbnail does not exist; <br>(2) Database exception. Please retry and check logs. |
@@ -554,7 +554,7 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit, maximum 2 parameters.<br>2. Invalid parameter type. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Invalid number of parameters, expected 0 to 2 parameters.<br>2. The PhotoAsset object is not a valid PhotoAsset.<br>3. The size parameter is not a valid image.Size object, please check if width and height are valid numbers.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. Failed to query the thumbnail, possible causes: <br>(1) Thumbnail does not exist; <br>(2) Database exception. Please retry and check logs. |
@@ -601,7 +601,7 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]字符（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
+| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]字符（资产文件名为标题+扩展名）。<br>- 不允许出现非法英文字符。<br>- 在API版本26.1.0之前，非法字符包括：` . \ / : * ? " ' < > \| { } [ ] `。<br>- 从API版本26.1.0开始，非法字符包括：`` \ / : * ? " ' ` < > \| { } [ ] ``，允许包含英文句点`.`，但不允许以英文句点`.`作为首字符。 |
 
 **返回值：**
 
@@ -616,8 +616,8 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -675,7 +675,7 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit or invalid PhotoAsset object.<br>2. The PhotoAsset is not a valid PhotoAsset object. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. Failed to open the file, please check if the file exists and the application has permission to access it. |
@@ -738,7 +738,7 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit or invalid PhotoAsset object.<br>2. The PhotoAsset is not a valid PhotoAsset object. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. Failed to open the file, please check if the file exists and the application has permission to access it. |
@@ -766,7 +766,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     let fd: number = await photoAsset.getReadOnlyFd();
-    if (!err) {
+    if (fd !== undefined) {
       console.info('File fd' + fd);
       photoAsset.close(fd);
     } else {

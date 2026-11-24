@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "面向HAP、HAR、HSP三种包类型的共享与复用特点，分别提供源码混淆推荐功能及按包依赖关系配置保留白名单的建议，避免共享代码被误混淆。"
+keywords: [混淆, 源码混淆, 混淆建议, HAP, HAR, HSP, 包类型, 白名单, 共享包]
+doctype: guide
+status: active
+---
+
 # 不同包类型的源码混淆建议
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -111,7 +119,7 @@
 2. 对于集成态HSP包的内部混淆效果，开发者可以参阅[HAP包混淆建议](#hap包混淆建议)中的所有建议。
 3. 集成态HSP包在发布后会被各方依赖，需要充分验证使用方开启混淆时HSP包接口可以被正常调用。
 
-> **说明**
+> **说明**：
 >
 > HSP生成`obfuscation.txt`的规则仅来源于当前模块的`consumer-rules.txt`文件。不包括依赖模块的`consumer-rules.txt`文件或`obfuscation.txt`文件。
 >

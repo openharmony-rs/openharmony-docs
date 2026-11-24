@@ -1,8 +1,8 @@
 # jsvm_types.h
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -54,6 +54,7 @@
 | [JSVM_CpuProfiler__*](capi-jsvm-jsvm-cpuprofiler--8h.md)                                          | JSVM_CpuProfiler                        | 表示一个JavaScript CPU时间性能分析器。                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [JSVM_Value__*](capi-jsvm-jsvm-value--8h.md)                                                      | JSVM_Value                              | 表示JavaScript值。                                                                                                                                                                                                                                                                                                                                                                                                              |
 | [JSVM_Data__*](capi-jsvm-jsvm-data--8h.md)                                                        | JSVM_Data                               | 表示一个 JavaScript Data。                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [JSVM_BackingStore__*](capi-jsvm-jsvm-backingstore--8h.md)                                        | JSVM_BackingStore                       | 表示一个与虚拟机无关的共享内存（BackingStore）句柄，持有对SharedArrayBuffer底层内存的一个独立引用，可跨线程、跨虚拟机传递（必须先定义JSVM_EXPERIMENTAL宏才能使用此类型）。                                                                                                                                                                                                                                                                       |
 | [JSVM_Ref__*](capi-jsvm-jsvm-ref--8h.md)                                                          | JSVM_Ref                                | 表示JavaScript值的引用。                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [JSVM_HandleScope__*](capi-jsvm-jsvm-handlescope--8h.md)                                          | JSVM_HandleScope                        | 表示JavaScript值的作用域，用于控制和修改在特定范围内创建的对象的生命周期。通常，JSVM-API值是在JSVM_HandleScope的上下文中创建的。当从JavaScript调用native方法时，将存在默认JSVM_HandleScope。如果用户没有显式创建新的JSVM_HandleScope，将在默认JSVM_HandleScope中创建JSVM-API值。对于native方法执行之外的任何代码调用（例如，在libuv回调调用期间），模块需要在调用任何可能导致创建JavaScript值的函数之前创建一个作用域。JSVM_HandleScope是使用OH_JSVM_OpenHandleScope创建的，并使用OH_JSVM_CloseHandleScope销毁的。关闭作用域代表向GC指示在JSVM_HandleScope作用域的生命周期内创建的所有JSVM_Value将不再从当前堆的栈帧中引用。 |
 | [JSVM_EscapableHandleScope__*](capi-jsvm-jsvm-escapablehandlescope--8h.md)                        | JSVM_EscapableHandleScope               | 表示一种特殊类型的handle scope，用于将在特定handle scope内创建的值返回到父作用域。                                                                                                                                                                                                                                                                                                                                                                       |
@@ -665,6 +666,15 @@ GC回调的函数指针类型。
 
 **起始版本：** 18
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | [入参]调用JSVM-API的VM实例。 |
+| [JSVM_GCType](#jsvm_gctype) gcType | [入参]GC类型。 |
+| [JSVM_GCCallbackFlags](#jsvm_gccallbackflags) flags | [入参]GC回调标志。 |
+| void* data | [入参]原生指针数据。 |
+
 ### JSVM_HandlerForOOMError()
 
 ```c
@@ -676,6 +686,14 @@ typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const ch
 OOM-Error回调的函数指针类型。
 
 **起始版本：** 18
+
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| const char* location | [入参]OOM错误的位置信息。 |
+| const char* detail | [入参]OOM错误的详细信息。 |
+| bool isHeapOOM | [入参]判断OOM类型是否为堆内存OOM。 |
 
 ### JSVM_HandlerForFatalError()
 
@@ -689,6 +707,13 @@ Fatal-Error回调的函数指针类型。
 
 **起始版本：** 18
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| const char* location | [入参]Fatal错误的位置信息。 |
+| const char* message | [入参]Fatal错误的信息。 |
+
 ### JSVM_HandlerForPromiseReject()
 
 ```c
@@ -701,4 +726,10 @@ Promise-Reject回调的函数指针类型。
 
 **起始版本：** 18
 
-
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [入参]调用该函数的环境。 |
+| [JSVM_PromiseRejectEvent](#jsvm_promiserejectevent) rejectEvent | [入参]promise-reject事件。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rejectInfo | [入参]包含`promise`和`value`两个属性的JS对象。<br>`promise`表示被拒绝的Promise对象的引用。<br>`value`表示与该Promise关联的拒绝原因。 |

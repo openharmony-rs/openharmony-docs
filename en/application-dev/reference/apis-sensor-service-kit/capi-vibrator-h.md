@@ -59,6 +59,12 @@ Controls the vibrator to vibrate continuously for a given duration.
 | -- | -- |
 | int32_t | Returns **0** if the operation is successful; returns a non-zero value otherwise. For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode).|
 
+**Reference**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) Stops the ongoing vibration.
+
+[OH_Vibrator_PlayVibrationCustom](capi-vibrator-h.md#oh_vibrator_playvibrationcustom) Configures the vibrator to vibrate with the custom sequence.
+
 ### OH_Vibrator_PlayVibrationCustom()
 
 ```c
@@ -85,6 +91,10 @@ Configure the vibrator to vibrate with the custom sequence.
 | Type| Description|
 | -- | -- |
 | int32_t | Returns **0** if the operation is successful; returns a non-zero value otherwise. For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode).|
+
+**Reference**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) Stops the ongoing vibration.
 
 ### OH_Vibrator_Cancel()
 

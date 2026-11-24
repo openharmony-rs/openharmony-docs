@@ -163,6 +163,7 @@ atm dump -d -p *********
 #     "grantMode": "SYSTEM_GRANT",
 #     "availableLevel": "SYSTEM_CORE",
 #     "availableType": "SYSTEM",
+#     "provisionEnable": true,
 #     "distributedSceneEnable": true,
 #     "isKernelEffect": true,
 #     "hasValue": true,

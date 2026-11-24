@@ -524,7 +524,7 @@ LazyForEach的开发者配置项，用于配置内存优化策略，以及绑定
 | 名称 | 类型                       | 只读 | 可选 | 说明            |
 | ------ | --------------- | ---- | ---- | ------- |
 | memoryOptimizationStrategy   | [LazyForEachMemOptStrategy](#lazyforeachmemoptstrategy) | 否 | 是   | LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。<br>默认值：DEFAULT |
-| controller   | [LazyForEachController](#lazyforeachcontroller) | 否 | 是   | 绑定到LazyForEach组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。该控制器仅在创建LazyForEach时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| controller   | [LazyForEachController](#lazyforeachcontroller) | 否 | 是   | 绑定到LazyForEach组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。该控制器仅在创建LazyForEach时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## LazyForEachMemOptStrategy
 
@@ -635,7 +635,7 @@ LazyForEach组件的控制器。通过[LazyForEachOptions](#lazyforeachoptions)�
 > 1. controller仅在LazyForEach创建时绑定，不支持动态修改。
 > 2. 一个控制器只能控制一个LazyForEach组件。若将控制器绑定到另一个LazyForEach，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -647,7 +647,7 @@ constructor()
 
 LazyForEachController的构造函数。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -659,7 +659,7 @@ clearCache(): void
 
 清理该控制器绑定的LazyForEach组件预加载的子组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -669,7 +669,7 @@ clearCache(): void
 
 以下示例中，通过[LazyForEachOptions](#lazyforeachoptions)的controller属性绑定了[LazyForEachController](#lazyforeachcontroller)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
 
-从API版本26.2.0开始，LazyForEachOptions新增controller属性。
+从API版本26.1.0开始，LazyForEachOptions新增controller属性。
 
 ```ts
 import { Entry, Component, Column, Text, List, ListItem, LazyForEach, LazyForEachController, IDataSource, DataChangeListener, Button, ClickEvent } from '@ohos.arkui.component';

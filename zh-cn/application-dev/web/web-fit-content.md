@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过layoutMode使Web组件高度随网页内容自适应，适用于长文章等Web与ArkUI组件共同滚动场景，并说明规格约束与常见问题。"
+keywords: [ArkWeb, layoutMode, WebLayoutMode.FIT_CONTENT, 自适应布局, 同步渲染, overScrollMode, metaviewport, Web组件高度, 滚动条]
+doctype: guide
+status: active
+---
+
 # Web组件大小自适应页面内容布局
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -36,7 +44,7 @@
 ## 规格与约束
 
 1. 建议配置[渲染模式](web-render-mode.md)为[同步渲染模式](web-render-mode.md#同步渲染模式)，避免因为组件大小超出限制导致异常场景（白屏，布局错误）。
-2. 建议配置[overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11)（过滚动模式）为关闭状态。当过滚动模式开启时，用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
+2. 建议配置[overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11)（过滚动模式）为关闭状态。当过滚动模式开启，用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
 3. [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12)（键盘避让）属性配置为RESIZE_CONTENT时，该避让模式不生效。
 4. 不支持对页面进行手势缩放。
 5. 不支持通过Web组件的height属性修改组件高度。
@@ -164,7 +172,7 @@ fit_content.html页面代码如下：
             <li><p>维测能力：DevTools工具调试能力，使用crashpad收集Web组件崩溃信息。
             </p></li>
             <li><p>
-                其他高阶能力：与系统组件同层渲染、Web组件的网络托管、Web组件的媒体播放托管、Web组件输入框拉起自定义输入法、等。</p>
+                其他高阶能力：与系统组件同层渲染、Web组件的网络托管、Web组件的媒体播放托管、Web组件输入框拉起自定义输入法等。</p>
             </li>
         </ul>
     </div>

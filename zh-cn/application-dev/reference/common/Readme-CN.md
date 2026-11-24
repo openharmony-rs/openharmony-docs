@@ -14,7 +14,7 @@
   - [Timer (定时器)](js-apis-timer.md)
 - C API<!--common-basic-c-->
   - 模块<!--common-basic-module-->
-    - [Init](init.md)
+    - [SyscapNdk](capi-syscap-ndk.md)
     - [JSVM](capi-jsvm.md)
   - 头文件<!--common-basic-headerfile-->
     - [syscap_ndk.h](syscap-ndk-8h.md)
@@ -52,3 +52,4 @@
     - [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
     - [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md)
     - [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)
+    - [JSVM_BackingStore__*](capi-jsvm-jsvm-backingstore--8h.md)

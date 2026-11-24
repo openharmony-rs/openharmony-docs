@@ -1,6 +1,13 @@
 # \@Watch装饰器：状态变量更改通知
 
-\@Watch应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调方法。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+[\@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-static.md#watch-1)应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调方法。
 
 \@Watch提供了状态变量的监听能力，仅能监听可以观察到的变化。
 

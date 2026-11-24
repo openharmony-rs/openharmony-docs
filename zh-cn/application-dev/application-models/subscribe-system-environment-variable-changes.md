@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍Stage模型中获取、设置和订阅语言、深浅色、字体大小、屏幕方向等环境变量的接口与开发步骤。"
+keywords: [环境变量, Configuration, 订阅回调, setColorMode, setLanguage, setFontSizeScale, getConfigurationSync]
+doctype: guide
+status: active
+---
 # 获取/设置环境变量
 
 <!--Kit: Ability Kit-->
@@ -646,7 +653,7 @@ export default class EnvAbility9 extends UIAbility {
 >
 > 当应用通过回调方法订阅环境变量变化时，该订阅会随着所在ExtensionAbility的生命周期持续有效。一旦ExtensionAbility被销毁，之前注册的所有回调订阅将自动失效，同时应用将不会再收到订阅的回调信息。
 
-以[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)为例说明。例如，在[onConfigurationUpdate()](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonconfigurationupdate)回调方法中实现环境变量的变化。
+以[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)为例说明。例如，在[onConfigurationUpdate()](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonconfigurationupdate)回调方法中订阅环境变量的变化。
 
 ArkTS-Dyn示例：
 <!-- @[envconf_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvFormExtensionAbility/EnvFormExtensionAbility.ets) --> 

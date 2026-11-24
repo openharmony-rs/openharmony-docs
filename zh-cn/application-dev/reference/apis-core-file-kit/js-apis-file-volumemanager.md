@@ -8,7 +8,7 @@
 
 该模块提供外置存储磁盘设备和卷设备信息查询的相关功能，包括获取外置存储物理磁盘信息和外置存储卷设备信息等。适用于外置存储设备管理、存储空间查询等场景，帮助开发者获取外置存储设备的磁盘和卷设备详情。
 
-**起始版本**：26.0.1
+**起始版本**：9
 
 > **说明：**
 >
@@ -21,7 +21,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-## volumemanager.getExternalDiskInfos
+## volumeManager.getExternalDiskInfos
 
 getExternalDiskInfos(): Promise&lt;Array&lt;ExternalDiskInfo&gt;&gt;
 
@@ -79,7 +79,7 @@ volumeManager.getExternalDiskInfos().then((disks: Array<volumeManager.ExternalDi
 });
 ```
 
-## volumemanager.getExternalVolumeInfos
+## volumeManager.getExternalVolumeInfos
 
 getExternalVolumeInfos(): Promise&lt;Array&lt;ExternalVolumeInfo&gt;&gt;
 
@@ -137,6 +137,210 @@ volumeManager.getExternalVolumeInfos().then((volumes: Array<volumeManager.Extern
 });
 ```
 
+## volumeManager.getLocalDiskInfos
+
+getLocalDiskInfos(): Promise&lt;Array&lt;LocalDiskInfo&gt;&gt;
+
+获取所有本地磁盘的硬件信息。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**需要权限**：ohos.permission.GET_STORAGE_VOLUME_INFO
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[LocalDiskInfo](#localdiskinfo)&gt;&gt; | Promise对象，返回本地磁盘硬件信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 13600001 | IPC error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+volumeManager.getLocalDiskInfos().then((disks: Array<volumeManager.LocalDiskInfo>) => {
+  console.info("getLocalDiskInfos successfully:" + JSON.stringify(disks));
+}).catch((error: BusinessError) => {
+  console.error(`Failed to getLocalDiskInfos. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+volumeManager.getLocalDiskInfos().then((disks: Array<volumeManager.LocalDiskInfo>) => {
+  console.info("getLocalDiskInfos successfully:" + JSON.stringify(disks));
+}).catch((error: Error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to getLocalDiskInfos. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## volumeManager.getDiskPowerCycleCount
+
+ArkTS-Dyn: getDiskPowerCycleCount(sysPath: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getDiskPowerCycleCount(sysPath: string): Promise&lt;int&gt;
+
+获取指定磁盘自出厂以来的完整启停次数。使用Promise异步回调。
+
+如果读取失败（如SATA HDD不支持），返回0。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_DISK
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sysPath | string | 是 | 磁盘设备节点的物理路径，如/sys/block/nvme0n1。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回磁盘启停次数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 13600001 | IPC error. |
+| 13900042 | Unknown error. The sysPath is invalid or the disk does not exist. |
+| 13600002 | The file system is not supported. |
+| 13600008 | The object does not exist. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sysPath: string = "/sys/block/nvme0n1";
+volumeManager.getDiskPowerCycleCount(sysPath).then((count: number) => {
+  console.info("getDiskPowerCycleCount successfully:" + count);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to getDiskPowerCycleCount. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sysPath: string = "/sys/block/nvme0n1";
+volumeManager.getDiskPowerCycleCount(sysPath).then((count: number) => {
+  console.info("getDiskPowerCycleCount successfully:" + count);
+}).catch((error: Error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to getDiskPowerCycleCount. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## volumeManager.getDiskPowerOnHours
+
+ArkTS-Dyn: getDiskPowerOnHours(sysPath: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getDiskPowerOnHours(sysPath: string): Promise&lt;int&gt;
+
+获取指定磁盘自出厂以来的总通电时长。使用Promise异步回调。
+
+如果读取失败（如SATA HDD不支持），返回0。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_DISK
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sysPath | string | 是 | 磁盘设备节点的物理路径，如/sys/block/nvme0n1。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回磁盘通电时长。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 13600001 | IPC error. |
+| 13900042 | Unknown error. The sysPath is invalid or the disk does not exist. |
+| 13600002 | The file system is not supported. |
+| 13600008 | The object does not exist. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sysPath: string = "/sys/block/nvme0n1";
+volumeManager.getDiskPowerOnHours(sysPath).then((hours: number) => {
+  console.info("getDiskPowerOnHours successfully:" + hours);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to getDiskPowerOnHours. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sysPath: string = "/sys/block/nvme0n1";
+volumeManager.getDiskPowerOnHours(sysPath).then((hours: number) => {
+  console.info("getDiskPowerOnHours successfully:" + hours);
+}).catch((error: Error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to getDiskPowerOnHours. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## ExternalDiskInfo
 
 外置磁盘信息。
@@ -180,3 +384,22 @@ volumeManager.getExternalVolumeInfos().then((volumes: Array<volumeManager.Extern
 | freeSize | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 卷设备可用大小。单位：Byte。 |
 | path | string | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。卷设备的格式化会改变挂载路径。 |
 | fsType | string | 否 | 否 | 文件系统类型。常见的文件系统有fat32、ntfs、exfat、ext4、udf和iso9660。 |
+
+## LocalDiskInfo
+
+本地磁盘硬件信息。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| sysPath | string | 否 | 否 | 磁盘设备节点的物理路径，如/sys/block/nvme0n1。 |
+| model | string | 否 | 否 | 磁盘型号，由厂商定义。 |
+| description | string | 否 | 否 | 磁盘描述信息，与model字段取值相同。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 磁盘总空间大小。单位：Byte。 |
+| mediaType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 磁盘介质类型：<br>1：SSD（固态硬盘）。<br>2：HDD（机械硬盘）。<br>255：未知。<br>值为整数。 |
+| state | string | 否 | 否 | 磁盘运行状态，取值包括"live"、"connecting"、"resetting"、"dead"。 |

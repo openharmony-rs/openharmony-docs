@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -113,7 +113,7 @@ ArkTS-Sta: getSkewX(): double
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setSkewX(-1.0);
+font.setSkewX(-1);
 console.info("values=" + font.getSkewX());
 ```
 
@@ -175,7 +175,7 @@ ArkTS-Sta: getScaleX(): double
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setScaleX(2.0);
+font.setScaleX(2);
 console.info("values=" + font.getScaleX());
 ```
 
@@ -388,7 +388,7 @@ ArkTS-Sta: setSize(textSize: double): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
-font.setSize(5.0);
+font.setSize(5);
 ```
 
 ## getSize
@@ -419,7 +419,7 @@ ArkTS-Sta: getSize(): double
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
-font.setSize(5.0);
+font.setSize(5);
 let fontSize = font.getSize();
 ```
 
@@ -553,7 +553,7 @@ ArkTS-Sta: measureText(text: string, encoding: TextEncoding): double
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 文本的宽度，浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 文本的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -599,14 +599,6 @@ measureTextWithFallback(text: string, encoding: TextEncoding): number
 | --- | --- |
 | number | 返回包含回退字体的文本宽度，浮点数。单位为物理像素px。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
-
 **示例：**
 
 ```ts
@@ -642,7 +634,7 @@ ArkTS-Sta: measureSingleCharacter(text: string): double
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -710,7 +702,7 @@ ArkTS-Sta: measureSingleCharacterWithFeatures(text: string, features: Array\<Fon
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数，单位为px。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -731,7 +723,7 @@ class DrawingRenderNode extends RenderNode {
     const font = new drawing.Font();
     font.setSize(20);
     let fontFeatures : Array<drawing.FontFeature> = [];
-    fontFeatures.push({name: 'calt', value: 0.0});
+    fontFeatures.push({name: 'calt', value: 0});
     let width = font.measureSingleCharacterWithFeatures("你", fontFeatures);
   }
 }
@@ -790,7 +782,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1246,7 +1238,7 @@ ArkTS-Sta: getWidths(glyphs: Array\<int>): Array\<double> | undefined
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> \| undefined | 返回字形宽度数组，浮点数，单位为物理像素px。获取失败时返回undefined。 |
+| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> \| undefined | 返回字形宽度数组，浮点数。单位为物理像素px。获取失败时返回undefined。 |
 
 **错误码：**
 
@@ -1638,7 +1630,7 @@ ArkTS-Sta: createPathForGlyph(index: int): Path | undefined
 
 ArkTS-Dyn示例：
 ```ts
-import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -1720,7 +1712,7 @@ font.setThemeFontFollowed(true);
 console.info("font is theme font followed: " + font.isThemeFontFollowed());
 ```
 
-## isThemeFontFollowed()<sup>15+</sup>
+## isThemeFontFollowed<sup>15+</sup>
 
 isThemeFontFollowed(): boolean
 
