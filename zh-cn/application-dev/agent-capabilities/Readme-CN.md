@@ -13,6 +13,6 @@
   - [CLI命令规范](cli-command-specification.md)
   - [申请CLI访问权限](cli-permission-guide.md)
   - [实现CLI调用](cli-invocation-guide.md)
-  - 预置CLI命令<!--preset-cli-commands-->
+  - 预置CLI命令<!--cli-preset-commands-->
     - [启动应用命令（start）](cli-command-start.md)
     - [查询应用信息命令（public-dump）](cli-public-dump.md)
