@@ -68,13 +68,15 @@ ML-DSA（44/65/87）支持三种签名模式，通过`HUKS_TAG_PQC_SIG_MODE`指�
 
 | 模式 | inData | 额外参数 | 说明 |
 | ---- | ------ | -------- | ---- |
-| HUKS_PQC_SIG_MODE_PURE | 原始消息M | 可选HUKS_TAG_CONTEXT（≤255字节） | 默认模式 |
-| HUKS_PQC_SIG_MODE_PREHASH | 摘要PH(M) | HUKS_TAG_DIGEST（SHA-256/384/512、SHAKE128/256）+ 可选context | HashML-DSA，HUKS不计算摘要 |
-| HUKS_PQC_SIG_MODE_EXTERNAL_MU | 64字节μ | 无（context被忽略） | μ由调用方计算 |
+| HUKS_PQC_SIG_MODE_PURE | 原始消息M | 可选HUKS_TAG_CONTEXT（≤255字节） | 默认模式。 |
+| HUKS_PQC_SIG_MODE_PREHASH | 摘要PH(M) | HUKS_TAG_DIGEST（SHA-256/384/512、SHAKE128/256）+ 可选context | HashML-DSA，HUKS不计算摘要。 |
+| HUKS_PQC_SIG_MODE_EXTERNAL_MU | 64字节μ | 无（context被忽略） | μ由调用方计算。 |
 
-模式与密钥的绑定是可选的：生成/导入密钥时不传`HUKS_TAG_PQC_SIG_MODE`，密钥不绑定模式，签名/验签时可自由选择（缺省纯模式）；传了则密钥绑定该模式，签名/验签必须使用相同模式。预哈希模式示例：
+模式与密钥的绑定是可选的：生成/导入密钥时不传`HUKS_TAG_PQC_SIG_MODE`，密钥不绑定模式，签名/验签时可自由选择（缺省纯模式）；传了则密钥绑定该模式，签名/验签必须使用相同模式。
 
-``` TypeScript
+预哈希模式示例：
+
+``` ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
 let properties: huks.HuksParam[] = [{
