@@ -1439,6 +1439,55 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   ```
 
 <!--RP2--><!--RP2End-->
+### 开启图像AI分析
+
+该示例使用[enableAnalyzer](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#enableanalyzer11)接口开启图像AI分析。
+<!--RP4-->
+```ts
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct ImageExample4 {
+  @State imagePixelMap: image.PixelMap | undefined = undefined;
+  private aiController: ImageAnalyzerController = new ImageAnalyzerController();
+  private options: ImageAIOptions = {
+    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT],
+    aiController: this.aiController
+  };
+
+  async aboutToAppear() {
+    // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+    this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.app_icon'));
+  }
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap, this.options)
+        .enableAnalyzer(true)
+        .width(200)
+        .height(200)
+        .margin({bottom:10})
+      Button('getTypes', { type: ButtonType.Circle, stateEffect: false })
+        .width(100)
+        .height(100)
+        .onClick(() => {
+          this.aiController.getImageAnalyzerSupportTypes();
+        })
+    }
+  }
+  private async getPixmapFromMedia(resource: Resource) {
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap({
+      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+    });
+    await imageSource.release();
+    return pixelMap;
+  }
+}
+```
+<!--RP4End-->
 
 ## 事件调用
 
