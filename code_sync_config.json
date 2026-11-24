@@ -52132,6 +52132,36 @@
 						"end_line":881,
 						"name":"image_effect_lookup_filter_info_by_condition",
 						"start_line":867
+					},
+					{
+						"end_line":1153,
+						"name":"image_effect_texture_input",
+						"start_line":1143
+					},
+					{
+						"end_line":953,
+						"name":"image_effect_get_surface_id",
+						"start_line":911
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"image_effect_cmake_libraries",
+						"start_line":35
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/ets/pages/ImageEditPage.ets",
+				"functions":[
+					{
+						"end_line":172,
+						"name":"image_effect_add_xcomponent",
+						"start_line":155
 					}
 				]
 			}
