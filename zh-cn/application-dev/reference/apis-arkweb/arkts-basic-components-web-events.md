@@ -3032,14 +3032,14 @@ struct Index {
         try {
           const data = await bundleManager.getBundleInfoForSelf(bundleFlags)
             .catch((err: BusinessError) => {
-              console.error('getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+              console.error(`getBundleInfoForSelf failed. Cause: ${err.message}`);
               return null;
             });
           this.appUid = data?.appInfo?.uid?.toString() ?? '';
-          console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(data));
+          console.info(`getBundleInfoForSelf successfully. Data: ${JSON.stringify(data)}`);
         } catch (err) {
           let message = (err as BusinessError).message;
-          console.error('getBundleInfoForSelf failed: %{public}s', message);
+          console.error(`getBundleInfoForSelf failed: ${message}`);
         }
 
         // 注：需要在MainAbility.ts文件的onCreate函数里添加GlobalContext.getContext().setObject("AbilityContext", this.context)
@@ -8796,7 +8796,7 @@ ArkTS-Sta示例：
   }
   ```
 
-> **示例说明：**
+> **说明：**
 >
 > 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
 
