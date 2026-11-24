@@ -125,6 +125,7 @@ static bool HandleKeyEvent(const OH_Input_Event* event)
         int32_t action = OH_Input_GetKeyEventAction(keyEvent);
         int32_t keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
         int64_t actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
+        // ...
         // 按业务规则决策：例如拦截某个按键的按下事件，其余再分发
         if (action == KEY_ACTION_DOWN && keyCode == KEYCODE_1) {
             return true; // 拦截该事件
@@ -144,6 +145,7 @@ static bool HandleMouseEvent(const OH_Input_Event* event)
         int32_t button = OH_Input_GetMouseEventButton(mouseEvent);
         int64_t actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
         // ...
+        // ...
     }
     return false;
 }
@@ -158,6 +160,7 @@ static bool HandleTouchEvent(const OH_Input_Event* event)
         int32_t displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
         int32_t displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
         int64_t actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
+        // ...
         // ...
     }
     return false;
@@ -179,6 +182,7 @@ static bool HandleAxisEvent(const OH_Input_Event* event)
             OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_VERTICAL, &scrollValue);
             // ...
         }
+        // ...
         // ...
     }
     return false;
