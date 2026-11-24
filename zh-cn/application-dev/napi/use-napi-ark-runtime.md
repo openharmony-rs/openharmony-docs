@@ -94,7 +94,7 @@ status: active
       .reserved = { 0 },
   };
 
-  extern "C" __attribute__((constructor)) void RegisterQueueWorkModule()
+  extern "C" __attribute__((constructor)) void RegisterEntryModule()
   {
       napi_module_register(&nativeModule);
   }
