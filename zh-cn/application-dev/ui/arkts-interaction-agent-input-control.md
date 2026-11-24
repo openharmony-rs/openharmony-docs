@@ -54,7 +54,7 @@ Agent生成的事件包括系统Agent生成的事件，以及具有[ohos.permiss
 声明权限后，即可按需完成以下两项：
 
 - 设置Agent输入管控策略：在目标组件上设置[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)，选择允许或阻止Agent输入。
-- 监听敏感节点输入：注册敏感节点输入监听，获取节点的输入事件通知，包括被管控阻止的输入事件。
+- 监听节点交互事件：注册敏感节点输入监听，获取节点的输入事件通知，包括被管控阻止的输入事件。
 
 ## 设置Agent输入管控策略
 
@@ -105,7 +105,18 @@ struct AgentControlModeExample {
 }
 ```
 
-## 监听敏感节点输入
+### 策略作用域与优先级
+
+[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)是组件属性，作用于命中该组件的Agent输入，并沿手势树影响其祖先组件的响应。
+
+Agent输入沿手势树从最深（最先命中）的组件向外逐层派发，因此管控级别按以下规则生效：
+
+- 某组件设置为DENY时，该组件及其所有祖先组件被阻止响应该次Agent输入。
+- 比该组件更深、且自身为ALLOW（或默认允许）的组件不受该DENY影响，仍可响应该次Agent输入。
+
+例如，容器组件设置DENY、其子按钮保持ALLOW时，Agent点击子按钮，子按钮仍可响应，但该容器及其祖先组件被阻止响应。
+
+## 监听节点交互事件
 
 通过敏感节点输入监听，在输入事件分发到节点前获取通知，包括被管控阻止的输入尝试。
 
