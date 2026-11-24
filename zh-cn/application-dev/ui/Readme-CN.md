@@ -6,6 +6,7 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 - [ArkUI简介](arkui-overview.md)
+- [ArkUI指南配套示例代码](arkui-kit-samples.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
