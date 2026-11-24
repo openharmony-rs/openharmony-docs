@@ -8,6 +8,7 @@
 
 ```c
 struct OH_PixelmapNative
+typedef struct OH_PixelmapNative OH_PixelmapNative
 ```
 
 ## 概述

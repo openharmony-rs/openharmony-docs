@@ -8,6 +8,7 @@
 
 ```c
 struct OH_Pixelmap_ImageInfo
+typedef struct OH_Pixelmap_ImageInfo OH_Pixelmap_ImageInfo
 ```
 
 ## 概述

@@ -8,6 +8,7 @@
 
 ```c
 struct OH_NativeBuffer
+typedef struct OH_NativeBuffer OH_NativeBuffer
 ```
 
 ## 概述
