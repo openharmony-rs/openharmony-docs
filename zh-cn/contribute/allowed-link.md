@@ -27,3 +27,4 @@
 | docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md            | [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractpropertyt9) | ArkUI Kit | ArkUI | 是 | 2026-08-14 |
 | docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcController.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-08-20 |
 | docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcTag.md.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-08-20 |
+| docs/zh-cn/application-dev/reference/apis-kernel-enhance-kit/capi-purgeable-memory-h.md | [OH_PurgeableMemory](capi-memory-purgmem.md) | Kernel Enhance Kit | 内核 | 是 | 2026-11-24 |
