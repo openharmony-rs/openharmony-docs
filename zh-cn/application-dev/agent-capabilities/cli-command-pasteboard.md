@@ -96,7 +96,7 @@ ohos-pasteboard get-data
 
 ### 约束限制
 
-- **设备与权限要求**：设备要求详见[面向Agent的CLI命令概述](cli-for-agent-overview.md#约束与限制)；执行本命令需申请`ohos.permission.READ_PASTEBOARD`权限，申请方式参见[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。
+- **设备与权限要求**：设备要求详见[面向Agent的CLI命令概述](cli-for-agent-overview.md#约束与限制)；执行本命令需申请[ohos.permission.READ_PASTEBOARD](../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限，申请方式参见[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。
 - **数据类型约束**：仅支持获取HTML、URI或纯文本数据，不适用于非文本数据类型的获取。
 
 ### 参数说明
