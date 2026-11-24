@@ -5,6 +5,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=be058247299781b8fcce73c87e37d86517901bd8 translatedAt=2026-11-23T02:49:05.848Z pushedAt=2026-11-24T12:07:23.378Z nl=1 -->
 
 This module provides basic Wi-Fi functionalities (such as wireless access, wireless encryption, and wireless roaming), basic peer-to-peer (P2P) services, and Wi-Fi notification services. It allows applications to interact with other devices through Wi-Fi.
 
@@ -24,6 +25,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 isWifiActive(): boolean
 
 Checks whether Wi-Fi is activated.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -63,6 +66,8 @@ enableWifi(): void
 
 Enables Wi-Fi.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications) or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION (available only to enterprise applications)
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -96,6 +101,8 @@ disableWifi(): void
 
 Disables Wi-Fi.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications) or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION (available only to enterprise applications)
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -128,6 +135,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 scan(): void
 
 Starts Wi-Fi scanning. Wi-Fi must be enabled before this method is called.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [wifiManager.startScan](#wifimanagerstartscan21) instead.
@@ -168,6 +177,8 @@ Starts Wi-Fi scanning.
 - At most one scan can be initiated within 30 minutes while the application is running in the background.
 - You can subscribe to the scan status change event by calling [on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) to listen for scan completion notifications.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -202,6 +213,8 @@ Obtains the scan result. This API uses a promise to return the result.
 
 - The promise is used to return an array of **WifiScanInfo** objects, and each object indicates the scanning information about a Wi-Fi network.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
 
@@ -232,6 +245,8 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 Obtains the scan result. This API uses an asynchronous callback to return the result.
 
 - The callback is used to return an array of **WifiScanInfo** objects, and each object indicates the scanning information about a Wi-Fi network.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
@@ -305,6 +320,8 @@ getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;
 
 Obtains the scanning result. This API returns an array of **WifiScanInfo** objects synchronously. Each object indicates the scanning information about a Wi-Fi network.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
@@ -364,6 +381,8 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 Obtains the cached scan results within 30s before the current time point.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -422,7 +441,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 Represents the Wi-Fi hotspot information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
-
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -550,7 +568,7 @@ Represents the Wi-Fi configuration information.
 | bssid | string | No| Yes| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | bssidType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | No| Yes| BSSID type of the hotspot.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preSharedKey | string | No| No| PSK of the hotspot, which cannot exceed 64 bytes.<br>When **securityType** is **WIFI_SEC_TYPE_OPEN**, this parameter must be an empty string. When **securityType** is any other value, this parameter cannot be empty.<br>When **securityType** is **WIFI_SEC_TYPE_WEP**, the PSK must be of 5, 10, 13, 26, 16, or 32 bytes. If the PSK length is 10, 26, 16, or 32 bytes, the PSK must be a hexadecimal number.<br>When **securityType** is **WIFI_SEC_TYPE_SAE**, the minimum PSK length is 1 byte.<br>When **securityType** is **WIFI_SEC_TYPE_PSK**, the minimum PSK length is 8 bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isHiddenSsid | boolean | No| Yes| Whether the network is hidden. The value **true** indicates that the network is hidden; the value **false** indicates the opposite.|
+| isHiddenSsid | boolean | No | Yes | Whether it is a hidden network. The value true indicates a hidden network, and false indicates a non-hidden network.<br>When adding a network configuration, if the value is true, it is recommended that after calling [addDeviceConfig](#wifimanageradddeviceconfig15) or [addCandidateConfig](#wifimanageraddcandidateconfig) to add the network configuration, the connection be initiated only after [startScan](#wifimanagerstartscan21) is called and the [wifiScanStateChange](#wifimanageronwifiscanstatechange) scan callback is successfully received. |
 | securityType | [WifiSecurityType](#wifisecuritytype)| No| No| Security type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | netId<sup>22+</sup> | number | No| Yes| Network ID allocated.|
 | eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | No| Yes| EAP configuration. This parameter is mandatory only when **securityType** is **WIFI_SEC_TYPE_EAP**.|
@@ -700,7 +718,7 @@ Represents the Wi-Fi connection settings information.
 | networkId | number | No| No| ID of the candidate network configuration.|
 | withUserAction | boolean | No| Yes| Whether to prompt the user to trust the Wi-Fi connection. The value **true** indicates that the API should have the same function as that of the **connectToCandidateConfigWithUserAction** API. The value **false** indicates not prompting the user to trust the Wi-Fi connection. The default value is **false**.|
 | userActionTimeout | number | No| Yes| Display time of the dialog box for the user to confirm, in seconds. The value ranges from 1 to 30, and the default value is **10**.|
-| addNetworkToSystem | boolean | No| Yes| Whether to add the network to the system. The value **true** indicates adding the recommended network to the system, and the value **false** indicates leaving the recommended network in its previous state. The default value is **false**.|
+| addNetworkToSystem | boolean | No | Yes | Whether to add the network to the system. The value **true** indicates adding the candidate network to the system network, and the value **false** indicates leaving the candidate network in its previous state. The default value is **false**. |
 
 
 ## wifiManager.addCandidateConfig
@@ -711,6 +729,8 @@ Adds the candidate network configuration. This API uses a promise to return the 
 
 - You can pass a [WifiDeviceConfig](#wifideviceconfig) object to configure the Wi-Fi network, such as the SSID, password, and security type.
 - This API uses a promise to return the configuration ID to distinguish and manage different Wi-Fi settings. This ID is a number.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -770,6 +790,8 @@ Adds the configuration of a candidate network. This API uses an asynchronous cal
 - Adds the specified Wi-Fi as a candidate network. Automatic reconnection with the candidate network cannot be triggered without connection records. You can call [connectToCandidateConfig](#wifimanagerconnecttocandidateconfig) or [connectToCandidateConfigWithUserAction](#wifimanagerconnecttocandidateconfigwithuseraction20) to connect to the candidate network. After the connection is confirmed, automatic reconnection can be implemented.
 - Candidate networks are added on the application level and are isolated from system network configurations. They are not displayed on the system Wi-Fi page.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -820,6 +842,8 @@ Removes the configuration of a candidate network. This API uses a promise to ret
 
 - This API can be used to delete the configuration of the candidate Wi-Fi network with the specified network ID from the system to release system resources.
 - Only the candidate configuration added by calling [addCandidateConfig](#wifimanageraddcandidateconfig) can be removed. After the candidate configuration is removed, the candidate network will not be automatically connected.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -877,6 +901,8 @@ Removes the candidate network configuration of a specified network. This API use
 - This API can be used to delete the configuration of the candidate Wi-Fi network with the specified network ID from the system to release system resources.
 - Only the candidate configuration added by calling [addCandidateConfig](#wifimanageraddcandidateconfig) can be removed. After the candidate configuration is removed, the candidate network will not be automatically connected.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -925,6 +951,8 @@ Removes the network configuration.
 - Deletes the saved Wi-Fi network configuration information according to the network configuration ID.
 - After the removal, the corresponding network configuration is no longer available, and the device does not automatically connect to the network.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications) or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION (available only to enterprise applications)
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -968,6 +996,8 @@ Obtains candidate network configuration.
 - A candidate network refers to a network that has been connected to or manually added.
 - This API obtains the configurations of all Wi-Fi networks that have been saved but are not connected to by the current application.
 - This API is used to display a list of networks that can be connected to.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -1021,6 +1051,8 @@ connectToCandidateConfig(networkId: number): void
 
 Connects to a candidate network.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -1064,11 +1096,13 @@ connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
 
 Connects to a candidate network. Custom parameters can be set.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Since**: 26.0.0
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -1103,10 +1137,15 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 **Example**
 ```ts
   import { wifiManager } from '@kit.ConnectivityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let setting:wifiManager.ConnectSettings = { networkId: 0 }; // Candidate network ID, which is generated when a candidate network is added.
-    wifiManager.connectToCandidateConfig(setting);
+    wifiManager.connectToCandidateConfig(setting).then(() => {
+      console.info("connect success");
+    }).catch((error: BusinessError) => {
+      console.error(`connectToCandidateConfig failed. Code: ${error.code}, message: ${error.message}`);
+    });
   }catch(error){
     console.error("failed:" + JSON.stringify(error));
   }
@@ -1122,6 +1161,8 @@ This API is used to connect an application to a candidate network added by a use
 - When this API is called, the system prompts the user to confirm whether to trust and connect to the specified candidate network.
 - User confirmation is a necessary step in the connection process. The connection operation will not be performed until the user's confirmation is obtained.
 - You are advised to trigger a Wi-Fi scan by calling the **startScan** API before initiating a connection, and then connect to the candidate network after the updated scan result is detected by using the [wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) method. This improves the connection success rate.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 > **NOTE**
 > If [wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig) is used to connect to a candidate network, no user response is returned.
@@ -1180,6 +1221,10 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 Adds network configuration. This API uses a promise to return the result.
 
+Similarly, you can also use [addCandidateConfig](#wifimanageraddcandidateconfig) in combination with [connectToCandidateConfig](#wifimanagerconnecttocandidateconfig), and set addNetworkToSystem in [ConnectSettings](#connectsettings) to true, to implement the function of adding a candidate network to the system network.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -1234,6 +1279,10 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
 Adds network configuration. This API uses an asynchronous callback to return the result.
 
+You can call [addCandidateConfig](#wifimanageraddcandidateconfig) together with [connectToCandidateConfig](#wifimanagerconnecttocandidateconfig), set addNetworkToSystem in [ConnectSettings](#connectsettings) to true, to implement the function of adding a candidate network to the system network.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -1282,6 +1331,8 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 Obtains network configuration.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -1321,6 +1372,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 connectToNetwork(networkId: number): void
 
 Connects to a hotspot.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications) or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION (available only to enterprise applications)
 
@@ -1362,6 +1415,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 getSignalLevel(rssi: number, band: number): number
 
 Queries the Wi-Fi signal strength.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1412,6 +1467,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 Obtains Wi-Fi connection information. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 > **NOTE**
@@ -1445,7 +1502,9 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 Obtains Wi-Fi connection information. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO 
 
 > **NOTE**
 > - If **macType** is set to **1** (device MAC address), you also need to apply for the ohos.permission.GET_WIFI_LOCAL_MAC permission to obtain the value of **macAddress**. (For API versions 8 to 15, this permission is available only to system applications. For API version 16 and later, this permission is available to common applications on PCs/2-in-1 devices, and is available only to system applications on other devices.) If the ohos.permission.GET_WIFI_LOCAL_MAC permission is not granted, no value is returned for **macAddress**.
@@ -1489,7 +1548,9 @@ getLinkedInfoSync(): WifiLinkedInfo
 
 Obtains Wi-Fi connection information. This method returns the result synchronously.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO 
 
 > **NOTE**
 > - If **macType** is set to **1** (device MAC address), you also need to apply for the ohos.permission.GET_WIFI_LOCAL_MAC permission to obtain the value of **macAddress**. (For API versions 8 to 15, this permission is available only to system applications. For API version 16 and later, this permission is available to common applications on PCs/2-in-1 devices, and is available only to system applications on other devices.) If the ohos.permission.GET_WIFI_LOCAL_MAC permission is not granted, no value is returned for **macAddress**.
@@ -1547,7 +1608,7 @@ Provides information about a Wi-Fi connection.
 | isRestricted | boolean | No| No| Whether data volume is restricted at the Wi-Fi access point. The value **true** indicates that data volume is restricted, and the value **false** indicates the opposite.|
 | macType | number | No| No| MAC address type. <br>The value **0** indicates a random MAC address, and the value **1** indicates device MAC address.|
 | macAddress | string | No| No| MAC address of the device.|
-| ipAddress | number | No| No| IP address of the Wi-Fi connection.<br>1. You can view the IP address in Wi-Fi connection information and in **Settings** > **About phone** > **Status**.<br>2. The **ipAddress** value is of the number type and needs to be converted to an IP address in dotted decimal notation (for example, **192.168.1.1**). For details, see [How do I obtain the IP address of the current device after it is connected to a Wi-Fi network?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-connectivity-4).|
+| ipAddress | number | No | No | IP address of the Wi-Fi connection.<br>1. You can view the IP address in Wi-Fi connection information and in **Settings** > **About phone** > **Status**.<br>2. The **ipAddress** value is of the number type and needs to be converted to an IP address in dotted decimal notation (for example, **192.168.1.1**). For details, see IP format conversion. |
 | connState | [ConnState](#connstate) | No| No| Wi-Fi connection status.|
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | No| No| Channel bandwidth of the connected hotspot.|
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | No| No| Highest Wi-Fi standard supported by the router.|
@@ -1592,6 +1653,8 @@ isConnected(): boolean
 
 Checks whether the Wi-Fi connection is established.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -1633,6 +1696,8 @@ disconnect(): void
 
 Disconnects the Wi-Fi connection.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications) or
    ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION (available only to enterprise applications)
 
@@ -1666,6 +1731,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 isFeatureSupported(featureId: number): boolean
 
 Checks whether the device supports the specified Wi-Fi feature.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1729,6 +1796,10 @@ getDeviceMacAddress(): string[]
 
 Obtains the device MAC address.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
 **Required permissions**: ohos.permission.GET_WIFI_LOCAL_MAC and ohos.permission.GET_WIFI_INFO
 
 This permission is available only to system applications in API versions 8 to 15. From API version 16, it is also available to normal applications on PCs/2-in-1 devices while remaining exclusive to system applications on other devices.
@@ -1772,6 +1843,8 @@ getIpInfo(): IpInfo
 
 Obtains IPv4 information.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -1808,11 +1881,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 
 Represents IPv4 information.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | No| No| IP address. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see [How do I obtain the IP address of the current device after it is connected to a Wi-Fi network?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-connectivity-4).|
+| ipAddress | number | No | No | IP address. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see IP format conversion. |
 | gateway | number | No| No| Gateway.|
 | netmask | number | No| No| Subnet mask.|
 | primaryDns | number | No| No| IP address of the preferred DNS server.|
@@ -1826,6 +1901,8 @@ Represents IPv4 information.
 getIpv6Info(): Ipv6Info
 
 Obtains IPv6 information.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1882,6 +1959,8 @@ getCountryCode(): string
 
 Obtains the country code.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.Core
@@ -1919,6 +1998,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 isBandTypeSupported(bandType: WifiBandType): boolean
 
 Checks whether the current frequency band is supported.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1966,6 +2047,8 @@ isMeteredHotspot(): boolean
 
 Checks whether the Wi-Fi network connected to the device is a smartphone hotspot.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
@@ -2007,6 +2090,8 @@ isHotspotActive(): boolean
 
 Checks whether the hotspot is enabled.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Core
@@ -2038,7 +2123,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
     console.error("failed:" + JSON.stringify(error));
   }
 ```
-
 
 ## wifiManager.getP2pLinkedInfo
 
@@ -2074,6 +2158,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 Obtains P2P connection information. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2146,6 +2232,8 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 Obtains the current P2P group information. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**:
 
 API version 10 and later: ohos.permission.GET_WIFI_INFO
@@ -2173,6 +2261,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
 Obtains the current P2P group information. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -2219,6 +2309,8 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
 Obtains the P2P peer device list. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**:
 
 API version 10 and later: ohos.permission.GET_WIFI_INFO
@@ -2246,6 +2338,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
 Obtains the P2P peer device list. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -2324,7 +2418,9 @@ getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
 Obtains the local device information in the P2P connection. This API uses a promise to return the result.
 
-**Required permissions**:
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
+**Required permissions**: 
 
 API version 11 and later: ohos.permission.GET_WIFI_INFO
 
@@ -2351,6 +2447,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 getP2pLocalDevice(callback: AsyncCallback&lt;WifiP2pDevice&gt;): void
 
 Obtains the local device information in the P2P connection. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -2395,6 +2493,8 @@ API version 11 and later: ohos.permission.GET_WIFI_INFO
 createGroup(config: WifiP2PConfig): void
 
 Creates a P2P group. After a group is created, you can call [removeGroup](#wifimanagerremovegroup) to remove the group.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2473,6 +2573,8 @@ removeGroup(): void
 
 Removes this P2P group.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
@@ -2504,10 +2606,12 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 p2pConnect(config: WifiP2PConfig): void
 
 Sets up a P2P connection. You can call [p2pCancelConnect](#wifimanagerp2pcancelconnect) to cancel the connection.
- 
+
 If **deviceAddressType** in **WifiP2PConfig** is **1** (indicating the actual MAC address) and the device MAC address is obtained through [wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2ppeerdevicechange), the **ohos.permission.GET_WIFI_PEERS_MAC permission** is required.
- 
+
 Since API version 26.0.0, you can pass the **passphrase** and **groupName** parameters through **WifiP2PConfig** for key-based connection. In this case, set the **deviceAddress** parameter to **00:00:00:00:00:00**.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -2606,7 +2710,9 @@ p2pCancelConnect(): void
 
 Cancels the P2P connection being set up.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO 
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
@@ -2637,6 +2743,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 startDiscoverDevices(): void
 
 Starts to discover devices. You can call [stopDiscoverDevices](#wifimanagerstopdiscoverdevices) to stop discovering devices and release resources.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -2672,6 +2780,8 @@ stopDiscoverDevices(): void
 
 Stops discovering devices.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
@@ -2703,6 +2813,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
 Obtains Wi-Fi connection information for multi-link operation (MLO).
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2766,6 +2878,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to Wi-Fi state changes. When the service exits, call **off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -2790,7 +2904,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-**WLAN states** 
+**WLAN states**
 
 | Value| Description|
 | -------- | -------- |
@@ -2805,6 +2919,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from Wi-Fi status change events. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2838,10 +2954,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive power state change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
 ```
 
@@ -2851,6 +2967,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to Wi-Fi connection state changes. When the service exits, call **off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2889,6 +3007,8 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from Wi-Fi connection status change events. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -2921,10 +3041,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive wifi connection change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 ```
 
@@ -2933,6 +3053,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to WLAN scan state changes. When the service exits, call off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2971,6 +3093,8 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from WLAN scan state changes. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -3003,10 +3127,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive Wifi scan state change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("wifiScanStateChange", recvWifiScanStateChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 ```
 
@@ -3015,6 +3139,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to Wi-Fi received signal strength indicator (RSSI) changes. When the service exits, you need to call **off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)** to remove the registered callback. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3043,6 +3169,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from Wi-Fi RSSI changes. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3074,10 +3202,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive wifi rssi change event: " + result);
   }
   
-  // Register an event.
+  // Register the event.
   wifiManager.on("wifiRssiChange", recvWifiRssiChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("wifiRssiChange", recvWifiRssiChangeFunc);
 ```
  
@@ -3086,6 +3214,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to hotspot state changes. When the service exits, call off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3124,6 +3254,8 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from hotspot state changes. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Core
@@ -3154,10 +3286,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive hotspot state change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("hotspotStateChange", recvHotspotStateChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("hotspotStateChange", recvHotspotStateChangeFunc);
 ```
 
@@ -3167,6 +3299,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3206,6 +3340,8 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from P2P state changes. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
@@ -3236,10 +3372,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive p2p state change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("p2pStateChange", recvP2pStateChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("p2pStateChange", recvP2pStateChangeFunc);
 ```
 
@@ -3248,6 +3384,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 Subscribes to P2P connection state changes. When the service exits, call off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3276,6 +3414,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 Unsubscribes from P2P connection state changes. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3307,10 +3447,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive p2p connection change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("p2pConnectionChange", recvP2pConnectionChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
 
@@ -3319,6 +3459,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 Subscribes to P2P device state changes. When the service exits, call off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -3350,6 +3492,8 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 Unsubscribes from P2P device state changes. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
@@ -3378,10 +3522,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive p2p device change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 ```
 
@@ -3390,6 +3534,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 Subscribes to P2P peer device state changes. When the service exits, call off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**:
 
@@ -3421,6 +3567,8 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 Unsubscribes from P2P peer device state changes. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
@@ -3449,10 +3597,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive p2p peer device change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 ```
 
@@ -3461,6 +3609,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 Subscribes to P2P persistent group changes. When the service exits, call off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3489,6 +3639,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 Unsubscribes from P2P persistent group state changes. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3520,10 +3672,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive p2p persistent group change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 ```
 
@@ -3532,6 +3684,8 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to P2P device discovery changes. When the service exits, call off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3568,6 +3722,8 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from P2P device discovery state changes. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](#wifimanageriswlansupported) to query whether the device supports Wi-Fi.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
@@ -3598,10 +3754,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
       console.info("Receive p2p discovery change event: " + result);
   }
   
-  // Register an event.
+  // Register a event.
   wifiManager.on("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
   
-  // Unregister an event.
+  // Unregister the event.
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
 ```
 

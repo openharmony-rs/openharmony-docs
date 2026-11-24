@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=0d195fb5653baa3b61b9b3436733f67b33a5d055 translatedAt=2026-10-09T12:16:38.457Z pushedAt=2026-10-10T02:18:06.970Z -->
+<!-- md-trans-meta sourceCommit=b2abee6fde0080e246d10ff0f94cb54cace432c9 translatedAt=2026-11-23T02:17:35.452Z pushedAt=2026-11-24T11:38:53.894Z nl=1 -->
 
 The **usb** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control.
 
@@ -197,7 +197,7 @@ Before you do this, call [usb.getDevices](#usbgetdevices) to obtain the USB devi
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| Device pipe, which is used to determine the bus number and device address.|
 | iface | [USBInterface](#usbinterface) | Yes| USB interface, which is used to determine the index of the interface to claim.|
-| force | boolean | No| Whether to forcibly claim the USB interface. The default value is **false**, indicating not to forcibly claim the USB interface.|
+| force | boolean | No | Whether to forcibly obtain control. This is an optional parameter. The default value is **false**, which indicates not to forcibly obtain control. If no kernel driver occupies this API, the operation is successful; otherwise, the operation fails. If it is set to **true**, the control of this API is forcibly released from the kernel driver and handed over to the user-space program. |
 
 **Return value**
 

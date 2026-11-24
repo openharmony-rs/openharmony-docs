@@ -5,7 +5,7 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:27:07.040Z pushedAt=2026-10-10T07:16:24.943Z -->
+<!-- md-trans-meta sourceCommit=37ca604503d451441f6924864481deef5fcc486f translatedAt=2026-11-23T02:26:10.242Z pushedAt=2026-11-24T11:52:57.065Z nl=1 -->
 
 
 This module provides the capabilities of connecting to and managing NearLink remote devices, including connecting to and disconnecting from remote devices, pairing with a trusted device and confirmation, adjusting the connection interval, and subscribing to pairing requests.
@@ -14,7 +14,7 @@ This module provides the capabilities of connecting to and managing NearLink rem
 
 > **NOTE**
 >
-> The APIs provided by this module are system APIs.
+> This page contains only the System APIs of this module. For other public APIs, see [@ohos.nearlink.remoteDevice (NearLink remote device connection capability)](js-apis-nearlink-remote-device.md).
 
 
 ## Modules to Import
@@ -33,6 +33,8 @@ Enumerates the connection intervals.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API:** This is a system API.
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 | Type | Description |
@@ -47,6 +49,8 @@ Describes the model of a remote device.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API:** This is a system API.
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 | Name | Type | Read-only | Optional | Description |
@@ -54,6 +58,100 @@ Describes the model of a remote device.
 | modelId | string | No | No | Model ID of the remote device. |
 | subModelId | string | No | No | Sub-model ID of the remote device. |
 | iconId | string | No | No | Icon ID of the remote device. |
+
+## remoteDevice.onPairingRequest
+
+onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
+
+Subscribes to the pairing request event. This API uses an asynchronous callback to return the result.
+
+The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
+
+By default, a random address is returned for the event. If the app has the system permission **ohos.permission.GET_NEARLINK_PEER_MAC**, the actual device address is returned.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | Yes | Callback used to return the pairing request field. |
+
+**Error codes**
+
+For details about the error codes, see [General Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 36100099 | Operation failed. |
+
+**Example**
+```typescript
+import { remoteDevice } from '@kit.ConnectivityKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<remoteDevice.PairingRequestParam> = (data: remoteDevice.PairingRequestParam) => {
+  console.info('pairing request param: ' + JSON.stringify(data));
+};
+
+try {
+  remoteDevice.onPairingRequest(callback);
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## remoteDevice.offPairingRequest
+
+offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
+
+Unsubscribes from the pairing request event. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | No | Callback used to return the pairing request field.<br>If this parameter is specified, the subscription of the current callback is canceled. If this parameter is not specified, all callbacks corresponding to this event are canceled. |
+
+**Error codes**
+
+For details about the error codes, see [General Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 36100099 | Operation failed. |
+
+**Example**
+```typescript
+import { remoteDevice } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  remoteDevice.offPairingRequest();
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## RemoteDevice
 
@@ -92,8 +190,8 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -139,8 +237,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -186,8 +284,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -231,8 +329,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -278,8 +376,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -325,8 +423,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100046 | String exceeds maximum length. |
 | 36100099 | Operation failed. |
@@ -373,8 +471,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -419,7 +517,7 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -464,8 +562,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -519,8 +617,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100045 | Passcode must be a 6-digit number. |
 | 36100099 | Operation failed. |
@@ -570,8 +668,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -619,8 +717,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -634,98 +732,6 @@ try {
   let device: remoteDevice.RemoteDevice = remoteDevice.createRemoteDevice(addr);
   let interval: nearlinkConstant.ConnectionInterval = nearlinkConstant.ConnectionInterval.HIGH_SPEED_INTERVAL_4_5;
   device.setConnectionInterval(interval);
-} catch (err) {
-  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-### remoteDevice.onPairingRequest
-
-onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
-
-Subscribes to the pairing request event. This API uses an asynchronous callback to return the result.
-
-The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
-
-By default, a random address is returned for the event. If the app has the system permission **ohos.permission.GET_NEARLINK_PEER_MAC**, the actual device address is returned.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System API:** This is a system API.
-
-**System capability:** SystemCapability.Communication.NearLink.Base
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | Yes | Callback used to return the pairing request field. |
-
-**Error codes**
-
-For details about the error codes, see [General Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
-
-| ID | Error Message |
-| -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
-| 36100099 | Operation failed. |
-
-**Example**
-```typescript
-import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError, Callback } from '@kit.BasicServicesKit';
-
-let callback: Callback<remoteDevice.PairingRequestParam> = (data: remoteDevice.PairingRequestParam) => {
-  console.info('pairing request param: ' + JSON.stringify(data));
-};
-
-try {
-  remoteDevice.onPairingRequest(callback);
-} catch (err) {
-  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-### remoteDevice.offPairingRequest
-
-offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
-
-Unsubscribes from the pairing request event. This API uses an asynchronous callback to return the result.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System API:** This is a system API.
-
-**System capability:** SystemCapability.Communication.NearLink.Base
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | No | Callback used to return the pairing request field.<br>If this parameter is specified, the subscription of the current callback is canceled. If this parameter is not specified, all callbacks corresponding to this event are canceled. |
-
-**Error codes**
-
-For details about the error codes, see [General Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
-
-| ID | Error Message |
-| -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
-| 36100099 | Operation failed. |
-
-**Example**
-```typescript
-import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  remoteDevice.offPairingRequest();
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

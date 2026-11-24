@@ -1,16 +1,18 @@
 # @ohos.nearlink.scan (NearLink Scanning Capability)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=aa9545020692baaf11004432a3eb3c2a031071bf translatedAt=2026-08-17T08:50:49.790Z pushedAt=2026-08-19T01:21:14.143Z -->
+<!-- md-trans-meta sourceCommit=37ca604503d451441f6924864481deef5fcc486f translatedAt=2026-11-23T02:30:19.838Z pushedAt=2026-11-24T11:58:57.640Z nl=1 -->
+
 
 This module provides the NearLink scanning capability, including starting and stopping scanning and subscribing to scanning results.
 
+
 **Since**: 26.0.0
+
 
 ## Modules to Import
 
@@ -23,6 +25,8 @@ import { scan } from '@kit.ConnectivityKit';
 startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise&lt;void&gt;
 
 Starts NearLink scanning. This API uses a promise to return the result. You need to call [scan.onDeviceFound](#scanondevicefound) to subscribe to the scanning results. After this API initiates scanning, the scanned device information is reported through the [scan.onDeviceFound](#scanondevicefound) callback. After the scanning is complete, you can call [scan.stopScan](#scanstopscan) to stop scanning.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -47,12 +51,12 @@ Starts NearLink scanning. This API uses a promise to return the result. You need
 
 **Error codes**
 
-For details about the error codes, see [General Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Integer out of range. |
 | 36100041 | Invalid address. |
@@ -60,7 +64,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { scan } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -92,11 +95,14 @@ try {
 }
 ```
 
+
 ## scan.stopScan
 
 stopScan(): Promise&lt;void&gt;
 
 Stops NearLink scanning. This API uses a promise to return the result.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -114,17 +120,16 @@ Stops NearLink scanning. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [General Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [NearLink Error Codes](errorcode-nearlink-service.md).
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { scan } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -140,6 +145,7 @@ try {
 }
 ```
 
+
 ## scan.onDeviceFound
 
 onDeviceFound(callback: Callback\<ScanResults[]\>): void
@@ -147,6 +153,8 @@ onDeviceFound(callback: Callback\<ScanResults[]\>): void
 Subscribes to NearLink scanning results. This API uses an asynchronous callback to return the result.
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -166,10 +174,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example** 
-
 ```typescript
 import { scan } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -184,11 +191,14 @@ try {
 }
 ```
 
+
 ## scan.offDeviceFound
 
 offDeviceFound(callback?: Callback\<ScanResults[]\>): void
 
 Unsubscribes from NearLink scanning results. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -208,10 +218,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example** 
-
 ```typescript
 import { scan } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -222,6 +231,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## ScanResults
 
@@ -242,6 +252,7 @@ Represents the scanning results.
 | isConnectable | boolean | No | No | Whether the discovered device is connectable. The value **true** indicates that the discovered device is connectable, and the value **false** indicates the opposite. |
 | deviceClass | [nearlinkConstant.DeviceClass](js-apis-nearlink-constant.md#deviceclass) | No | Yes | Type of the device discovered. This field is not returned if the device advertising information does not carry the device type. |
 
+
 ## ScanFilters
 
 Defines the scan filters
@@ -261,6 +272,7 @@ Defines the scan filters
 | manufacturerDataMask | ArrayBuffer | No | Yes | Manufacturer data mask. By default, this field is not used if it is not set. This field must be set along with **manufacturerData**, and the lengths of the two fields must be the same. A bitwise AND operation is performed on the mask and manufacturer data to accurately match the specified bits in the manufacturer data. |
 | rssi | number | No | Yes | RSSI threshold, in dBm. The value range is [–128, 127]. Broadcast packets whose RSSI is greater than or equal to this threshold will be filtered out. You are advised to set the threshold within the range of [–90, 20]. By default, the signal strength is not filtered if this parameter is not set. |
 
+
 ## ScanOptions
 
 Represents the scan options.
@@ -275,6 +287,7 @@ Represents the scan options.
 | -------- | -------- | -------- | -------- | -------- |
 | scanMode | [ScanMode](#scanmode) | No | Yes | Scan mode. The default value is **'SCAN_MODE_LOW_POWER'**. |
 | duration | number | No | Yes | Scan duration, in seconds. The value range is [10, 60]. Full-time scanning is used by default. |
+
 
 ## ScanMode
 

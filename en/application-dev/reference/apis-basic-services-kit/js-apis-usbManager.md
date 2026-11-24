@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=ea08578efad8e4ded5f29c20a3dbf9914ded2a10 translatedAt=2026-11-23T02:30:31.868Z pushedAt=2026-11-24T11:42:36.697Z nl=1 -->
 
 This module provides APIs for managing USB devices, including USB device list query, bulk data transfer, control transfer, and permission control on the host side as well as port management, and function switch and query on the device side. This module can be used to exchange data with USB devices, manage USB device permissions, and dynamically switch the USB device mode.
 
@@ -35,17 +36,21 @@ Perform the following steps when using the APIs with the [USBDevicePipe](#usbdev
 
 Call [usbManager.closePipe](#usbmanagerclosepipe) to disable the USB connection channel.
 
+**Figure 1** usbManager API usage flowchart
+
 ![usbManager](../figures/usbManager.png)
 
 ## usbManager.getDevices
 
 getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
-Obtains the list of USB devices connected to the host. After the API is called successfully, a list of connected devices is returned, including the device name, manufacturer, and product information.
+Obtains the list of USB devices connected to the host. After the call succeeds, a list of connected devices is returned, including the device name, manufacturer, and product information.
 
 > **NOTE**
 >
-> Third-party apps cannot directly obtain the device serial number from the **serial** field through the **getDevices()** API. This field is unavailable to third-party apps. To obtain the serial number, third-party apps need to request permissions to access the device and then initiate a control transfer.
+> A third-party application cannot directly obtain the device serial number in the `serial` field through the `getDevices()` API (this field is unavailable to third-party applications). To obtain the serial number, the application must apply for device access permission and then initiate a control transfer on its own.
+>
+> If the device is managed by an enterprise device management (EDM) restriction policy for USB (for example, disabling the USB capability, setting an trustlist of USB devices, or disabling specific USB device types), the obtained device list may be empty or contain only allowed devices. For details, see [@ohos.enterprise.restrictions (Restriction Policies)](../apis-mdm-kit/js-apis-enterprise-restrictions.md) and [@ohos.enterprise.usbManager (USB Management)](../apis-mdm-kit/js-apis-enterprise-usbManager.md).
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -66,8 +71,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-console.info(`devicesList = ${devicesList}`);
+try {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  console.info(`devicesList = ${JSON.stringify(devicesList)}`);
+} catch (err) {
+  console.error(`getDevices failed. Code: ${err.code}, message: ${err.message}`);
+}
 /*
   The following is a simple example of the data structure for devicesList:
   [
@@ -125,10 +134,10 @@ console.info(`devicesList = ${devicesList}`);
 
 connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
-Connects to the USB device based on the device information returned by **getDevices()**. After the API is called successfully, a device connection channel is established for subsequent data transmission and device control operations. After using the channel, you can call [usbManager.closePipe](#usbmanagerclosepipe) to disable the USB connection channel. If the USB service is abnormal, **undefined** is returned. Check whether the return value of the API is empty.
+Connects to the USB device based on the device information returned by `getDevices()`. After the call succeeds, a device connection channel is established for subsequent data transfer and device control operations. After use, call [usbManager.closePipe](#usbmanagerclosepipe) to close the device connection channel. If the USB service is abnormal, `undefined` is returned. Note that the API returns need to be checked for null.
 
-1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device information and the **USBDevice** value.
-2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the device access permission.
+1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
+2. Call [usbManager.requestRight](#usbmanagerrequestright) to obtain device access permission.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -136,7 +145,7 @@ Connects to the USB device based on the device information returned by **getDevi
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | Yes| USB device. The **busNum** and **devAddress** parameters obtained by [getDevices](#usbmanagergetdevices) are used to determine a USB device. Other attributes (such as **name** and **vendorId**) are not involved in device matching.|
+| device | [USBDevice](#usbdevice) | Yes | USB device. The `busNum` and `devAddress` parameters obtained by [getDevices](#usbmanagergetdevices) are used to determine a USB device. Other attributes (such as `name` and `vendorId`) are not involved in device matching. |
 
 **Return value**
 
@@ -165,11 +174,13 @@ async function connectDevice() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  let rightResult = await usbManager.requestRight(device.name);
-  if (!rightResult) {
-    console.error(`request right failed`);
+  try {
+    let rightResult = await usbManager.requestRight(device.name);
+  } catch (err) {
+    console.error(`request right failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
+  // Open the USB device and establish a connection channel. If a USB service exception occurs, undefined is returned. After use, call closePipe to close the channel.
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicePipe == undefined) {
     console.error(`connect device failed`);
@@ -184,7 +195,7 @@ async function connectDevice() {
 
 hasRight(deviceName: string): boolean
 
-Checks whether the application has the permission to access the device.
+Checks whether the application has permission to access the device. This API is applicable to the scenario of confirming whether the application already has access permission to the device before calling requestRight to apply for permission or connectDevice to establish a connection, so as to avoid repeated requests.
 
 The value **true** is returned if the app has the device access permissions; the value **false** is returned otherwise.
 
@@ -194,7 +205,7 @@ The value **true** is returned if the app has the device access permissions; the
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| deviceName | string | Yes| Device name, which comes from the USB device name obtained by [getDevices](#usbmanagergetdevices).|
+| deviceName | string | Yes | Device name, which comes from the `name` of the USBDevice in the device list obtained by [getDevices](#usbmanagergetdevices). |
 
 **Return value**
 
@@ -222,7 +233,12 @@ async function hasRight(): Promise<boolean> {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  try {
+    await usbManager.requestRight(device.name);
+    } catch (err) {
+    console.error(`request right failed. Code: ${err.code}, message: ${err.message}`);
+    return false;
+  }
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
   return right;
@@ -272,8 +288,6 @@ function requestRight() {
   let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to request right. Code: ${error.code}, message: ${error.message}`);
   });
 }
 ```
@@ -282,7 +296,7 @@ function requestRight() {
 
 removeRight(deviceName: string): boolean
 
-Removes the permission for an app to access the device. System apps are granted the device access permission by default, and calling this API will not revoke the permission.
+Removes the application's permission to access the device. System applications have device access permission by default, and calling this API has no effect on them. The value **true** is returned if the permission is removed successfully; the value **false** is returned otherwise.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -318,9 +332,13 @@ function removeRight(): boolean {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
+  try {
   if (usbManager.removeRight(device.name)) {
     console.info(`Succeed in removing right`);
     return true;
+    }
+  } catch (err) {
+    console.error(`remove right failed. Code: ${err.code}, message: ${err.message}`);
   }
   return false;
 }
@@ -328,16 +346,16 @@ function removeRight(): boolean {
 
 ## usbManager.claimInterface
 
-claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number
+claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number
 
-Claims a USB device interface. After this API is called successfully, the app obtains exclusive control over the interface and can perform operations such as data transfer. Other apps cannot access the interface. After using the interface, call [releaseInterface](#usbmanagerreleaseinterface) to release the control over the interface.
-
-**Usage scenarios**: Before transferring data over a USB device, you need to claim control over the interface to exclusively access the interface. For example, you need to claim control over the interface before reading data from or writing data to a USB storage device, collecting data from a USB camera, or communicating with a USB serial port.
+Claims control over an interface of a USB device. USBManager obtains exclusive control and can perform operations such as data transfer through the APIs provided by USBManager. To claim an exclusive interface and detect claim conflicts from other applications, use [claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive). After use, call [releaseInterface](#usbmanagerreleaseinterface) to release control of the interface.
 
 > **NOTE**
 >
 > In USB programming, **claimInterface** is a common operation, which indicates that an app requests the operating system to release a USB interface from the kernel driver and hand over the USB interface to a user space program for control.<br>
 > All the **claim** communication interfaces used below refer to the claim interface operations.
+
+**Use scenarios**: Before transferring data over a USB device, claim control over the interface to exclusively access the interface. For example, claim control over the interface before reading data from or writing data to a USB storage device, collecting data from a USB camera, or communicating with a USB serial port.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -346,8 +364,8 @@ Claims a USB device interface. After this API is called successfully, the app ob
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus address and device address. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
-| iface | [USBInterface](#usbinterface) | Yes| USB interface. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB interface based on its **id**.|
-| force | boolean | No| Optional parameter that determines whether to forcibly claim the USB interface. The default value is **false**, indicating that the USB interface is not forcibly claimed. If this parameter is set to **true**, control over the interface of the kernel driver or another program is forcibly released and handed over to a user space program. If the interface is claimed by another program, you can forcibly claim the interface by setting this parameter to **true**, but this may cause the program to malfunction. If the interface is not claimed, you are advised to set this parameter to **false** to avoid unnecessary forcible operations. Set this parameter as required.|
+| iface | [USBInterface](#usbinterface) | Yes | USB interface. [getDevices](#usbmanagergetdevices) needs to be called to obtain device information and identify the USB interface based on its `id`. |
+| force | boolean | No | Whether to forcibly obtain control. This is an optional parameter. The default value is **false**, which means not to forcibly obtain control. If no kernel driver occupies the interface, the control is obtained successfully; otherwise, the operation fails. If this parameter is set to **true**, the control of the interface is forcibly released from the kernel driver and transferred to the user-space program. |
 
 **Return value**
 
@@ -386,6 +404,7 @@ async function claimInterface() {
     return;
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  // Claim API control. Returns 0 if the claim succeeds; otherwise, close the device channel and exit.
   let ret: number = usbManager.claimInterface(devicePipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
@@ -393,9 +412,111 @@ async function claimInterface() {
     return;
   }
   console.info(`claimInterface = ${ret}`);
+  // Release the previously claimed API control.
   ret = usbManager.releaseInterface(devicePipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
   usbManager.closePipe(devicePipe);
+}
+```
+
+## usbManager.claimInterfaceExclusive
+
+claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback&lt;InterfaceConflictInfo&gt;): void
+
+Declares a USB interface exclusively. When this API is called, it checks whether other processes have occupied the specified USB interface to avoid conflicts during declaration. When **force** is set to **true**, the operating system first releases the interface from the kernel driver and then grants control to the calling application. After the exclusive declaration succeeds, other processes can still declare the same interface through [usbManager.claimInterface](#usbmanagerclaiminterface). That is, the exclusive declaration of this API does not prevent other processes from declaring the interface, which differs from the exclusive semantics of claimInterface, where other programs cannot access the interface after a successful declaration. You can use the **onConflict** callback to receive notifications of such conflicts. After use, you must call [releaseInterface](#usbmanagerreleaseinterface) to release control of the interface.
+
+**Usage scenario:** This API is applicable to scenarios where exclusive access to a USB interface is required and conflicts from other processes need to be detected in a timely manner (for example, multiple processes competing to use the same USB interface). If you do not need to detect conflicting access from other processes, use [usbManager.claimInterface](#usbmanagerclaiminterface) directly.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.USB.USBManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, obtained by calling [connectDevice](#usbmanagerconnectdevice). |
+| iface | [USBInterface](#usbinterface) | Yes | Target USB interface object. You can call [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB interface by ID. |
+| force | boolean | No | Whether to forcibly declare the USB interface. The default value is **false**, which means the USB interface is not forcibly declared. |
+| onConflict | Callback&lt;[InterfaceConflictInfo](#interfaceconflictinfo)&gt; | No | Callback used to return the conflict information when other processes declare the same USB interface through the non-exclusive [usbManager.claimInterface](#usbmanagerclaiminterface) API after the exclusive declaration succeeds. If this parameter is not specified, no notification is sent when such a conflict occurs. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 14400001 | Permission denied. |
+| 14400004 | Service exception. |
+| 14400007 | Resource busy. Possible cause: The interface is claimed by another program or driver. |
+| 14400010 | USB driver error. Possible causes: 1. The device is not connected using [connectDevice](#usbmanagerconnectdevice). 2. The USB device state is abnormal. |
+
+**Example**
+
+```ts
+async function claimInterfaceExclusive() {
+  // Obtain the USB device list.
+  let devicesList: Array<usbManager.USBDevice>;
+  try {
+    devicesList = usbManager.getDevices();
+  } catch (err) {
+    console.error(`getDevices failed, err=${JSON.stringify(err)}`);
+    return;
+  }
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
+
+  let device: usbManager.USBDevice = devicesList?.[0];
+  // Request device access permission.
+  let rightResult: boolean;
+  try {
+    rightResult = await usbManager.requestRight(device.name);
+  } catch (err) {
+    console.error(`requestRight failed, err=${JSON.stringify(err)}`);
+    return;
+  }
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
+  // Establish a device connection.
+  let devicePipe: usbManager.USBDevicePipe;
+  try {
+    devicePipe = usbManager.connectDevice(device);
+  } catch (err) {
+    console.error(`connectDevice failed, err=${JSON.stringify(err)}`);
+    return;
+  }
+  if (devicePipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  // Claim the API exclusively and register the conflict callback.
+  try {
+    usbManager.claimInterfaceExclusive(devicePipe, interfaces, false, (conflictInfo: usbManager.InterfaceConflictInfo) => {
+      console.info(`interface conflict: busNum=${conflictInfo.busNum}, devAddr=${conflictInfo.devAddr}, interfaceId=${conflictInfo.interfaceId}`);
+    });
+  } catch (err) {
+    console.error(`claimInterfaceExclusive failed, err=${JSON.stringify(err)}`);
+  }
+  console.info(`claimInterfaceExclusive success`);
+  // Release the API and close the connection.
+  try {
+    let ret: number = usbManager.releaseInterface(devicePipe, interfaces);
+    console.info(`releaseInterface = ${ret}`);
+  } catch (err) {
+    console.error(`releaseInterface failed, err=${JSON.stringify(err)}`);
+  }
+  try {
+    usbManager.closePipe(devicePipe);
+  } catch (err) {
+    console.error(`closePipe failed, err=${JSON.stringify(err)}`);
+  }
 }
 ```
 
@@ -416,7 +537,7 @@ Releases the claimed communication interface.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus address and device address. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
-| iface | [USBInterface](#usbinterface) | Yes| USB interface. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB interface based on its **id**.|
+| iface | [USBInterface](#usbinterface) | Yes | USB interface used to determine the interface object whose control needs to be released. Call [getDevices](#usbmanagergetdevices) to obtain device information and determine the unique interface based on its `id`. |
 
 **Return value**
 
@@ -471,7 +592,7 @@ async function releaseInterface() {
 
 setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
-Sets the device configuration. This API can be used to switch the working mode of a multi-functional USB device. For example, it can be used to switch to the printing mode or scanning mode for a device combining the printer and scanner functions, or switch a device from a low-power configuration to a high-power configuration to enable all functions. After the API is successfully called, the device configuration is switched to the specified configuration. Subsequent data transfer and device operations are performed based on the new configuration.
+Sets the device configuration. This API is applicable to scenarios where a multi-functional USB device needs to switch its working mode. For example, it can be used to switch to the printing mode or scanning mode for a device combining the printer and scanner functions, or switch a device from a low-power configuration to a high-power configuration to enable all functions. After the call succeeds, the system switches the device configuration to the specified configuration. Subsequent data transfer and device operations are performed based on the new configuration.
 
 > **NOTE**
 >
@@ -484,13 +605,13 @@ Sets the device configuration. This API can be used to switch the working mode o
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus address and device address. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
-| config | [USBConfiguration](#usbconfiguration) | Yes| USB configuration. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB configuration based on it **id**.|
+| config | [USBConfiguration](#usbconfiguration) | Yes | USB configuration. You need to call [getDevices](#usbmanagergetdevices) to obtain device information and determine the unique configuration based on the `id`. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Result of the USB configuration. Returns **0** if the USB configuration is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No permission to access the device. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal. Possible causes: 1. The device connection is unstable or the device is disconnected. 2. The USB driver fails to be loaded. 3. The kernel USB module is abnormal.<br>- -17: I/O failure. Possible causes: 1. The I/O operation fails due to abnormal device communication. 2. The data transfer is interrupted.|
+| number | Result of the operation to set the device configuration. Returns 0 if the device configuration is set successfully; returns another error code on failure.<br>- 88080389: service not started. Possible causes: 1. no device inserted; 2. service exits abnormally.<br>- 88080486: service initializing, try again later.<br>- 88080488: no device access permission. Call [requestRight](#usbmanagerrequestright) first to apply for API authorization.<br>- -1: driver exception. Possible causes: 1. device connection is unstable or disconnected; 2. USB driver loading failure; 3. kernel USB module exception.<br>- -17: I/O (Input/Output) failure. Possible causes: 1. device communication exception causes I/O operation failure; 2. interrupted during activation transfer.|
 
 **Error codes**
 
@@ -523,6 +644,14 @@ async function setConfiguration() {
     return;
   }
   let config: usbManager.USBConfiguration = device.configs?.[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let claimRet: number = usbManager.claimInterface(devicePipe, interfaces);
+  if (claimRet !== 0) {
+    console.error(`claim interface failed`);
+    usbManager.closePipe(devicePipe);
+    return;
+  }
+  // Set the device configuration to switch the device to the specified configuration.
   let ret: number = usbManager.setConfiguration(devicePipe, config);
   console.info(`setConfiguration = ${ret}`);
   usbManager.closePipe(devicePipe);
@@ -533,13 +662,11 @@ async function setConfiguration() {
 
 setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
-Sets a USB interface. After the API is successfully called, the specified alternate setting is switched for the interfaces, and the endpoint configuration changes accordingly to match the transmission type.
+Sets a USB interface. After the call succeeds, the system switches the interface to the specified alternate setting, and the endpoint configuration changes accordingly to match the transfer type requirements.
 
 > **NOTE**
 >
-> A USB interface may have multiple selection modes and supports dynamic switching. It is used to reset the endpoint to match the transmission type during data transmission.
->
-> Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
+> A USB interface may have multiple selection modes (alternateSetting) and supports dynamic switching. Usage scenario: during data transfer, this API can be used to reset the endpoint so that the endpoint matches the transfer type. Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -548,13 +675,13 @@ Sets a USB interface. After the API is successfully called, the specified altern
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus address and device address. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
-| iface | [USBInterface](#usbinterface)   | Yes| USB interface. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB interface based on its **id** and **alternateSetting**. **id** is the unique identifier of the interface. **alternateSetting** is used to switch between optional modes of the same interface. If **alternateSetting* is **0**, optional modes are not supported.|
+| iface | [USBInterface](#usbinterface) | Yes | USB interface. Call [getDevices](#usbmanagergetdevices) to obtain device information, and determine the unique interface based on the `id` and `alternateSetting` of the interface. `id` is the unique identifier of the interface. `alternateSetting` is used to switch between optional modes of the same interface. If `alternateSetting` is `0`, optional modes are not supported. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Result of the device interface setting. Returns **0** if the USB interface is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No permission to access the device. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal. Possible causes: 1. The device connection is unstable or the device is disconnected. 2. The USB driver fails to be loaded. 3. The kernel USB module is abnormal.|
+| number | Returns the operation result of the set device API. The set device API returns 0 on success; the set device API returns another error code on failure.<br>- 88080389: service not started. Possible causes: 1. no device inserted; 2. service exits abnormally.<br>- 88080486: service initializing, try again later.<br>- 88080488: no device access permission. Call the [requestRight](#usbmanagerrequestright) API first to apply for authorization.<br>- -1: driver exception. Possible causes: 1. device connection is unstable or disconnected; 2. USB driver loading failure; 3. kernel USB module exception.|
 
 **Error codes**
 
@@ -593,6 +720,7 @@ async function setInterface() {
     usbManager.closePipe(devicePipe);
     return;
   }
+  // Switch the API to the specified alternate setting so that the endpoint configuration matches the transfer type.
   ret = usbManager.setInterface(devicePipe, interfaces);
   console.info(`setInterface = ${ret}`);
   ret = usbManager.releaseInterface(devicePipe, interfaces);
@@ -605,7 +733,7 @@ async function setInterface() {
 
 getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
-Obtains a raw USB descriptor. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
+Obtains the raw USB descriptor. This API is applicable to the scenario of obtaining the raw descriptor data of a device and parsing it by yourself. If a USB service exception occurs, `undefined` is returned. Note that API returns need to be null-checked.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -619,7 +747,7 @@ Obtains a raw USB descriptor. If the USB service is abnormal, **undefined** may 
 
 | Type| Description|
 | -------- | -------- |
-| Uint8Array | Returns a raw USB descriptor if the operation is successful; returns **undefined** otherwise.|
+| Uint8Array | Returns a raw USB descriptor if the operation is successful; returns `undefined` otherwise. |
 
 **Error codes**
 
@@ -640,9 +768,10 @@ async function getRawDescriptor() {
     return;
   }
 
+  try {
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
-  if (!rightResult) {
-    console.error(`request right failed`);
+  } catch (err) {
+    console.error(`request right failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
@@ -650,6 +779,7 @@ async function getRawDescriptor() {
     console.error(`connect device failed`);
     return;
   }
+  // Obtain the raw USB descriptor data. undefined may be returned on failure, and a null check is required.
   usbManager.getRawDescriptor(devicePipe);
   usbManager.closePipe(devicePipe);
 }
@@ -659,7 +789,7 @@ async function getRawDescriptor() {
 
 getFileDescriptor(pipe: USBDevicePipe): number
 
-Obtains a file descriptor. If the USB service is abnormal, an error code may be returned. Check whether the return value of the API is empty or check the error code.
+Obtains the file descriptor. This API is applicable to the scenario of accessing a USB device through a file descriptor. After the file descriptor is obtained, you can interact with the device for data exchange by combining the file read/write capability. If a USB service exception occurs, an error code is returned. Note that API returns need to be checked for error codes.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -673,7 +803,7 @@ Obtains a file descriptor. If the USB service is abnormal, an error code may be 
 
 | Type    | Description                  |
 | ------ | -------------------- |
-| number | Returns the file descriptor corresponding to the device if this API is successfully called; returns an error code otherwise. The error codes are as follows:<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No permission to access the device. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal. Possible causes: 1. The device connection is unstable or the device is disconnected. 2. The USB driver fails to be loaded. 3. The kernel USB module is abnormal.|
+| number | Returns the file descriptor corresponding to the device if this API is successfully called; returns an error code otherwise.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No permission to access the device. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal. Possible causes: 1. The device connection is unstable or the device is disconnected. 2. The USB driver fails to be loaded. 3. The kernel USB module is abnormal. |
 
 **Error codes**
 
@@ -704,6 +834,7 @@ async function getFileDescriptor() {
     console.error(`connect device failed`);
     return;
   }
+  // Obtain the file descriptor of the device.
   let ret: number = usbManager.getFileDescriptor(devicePipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: number = usbManager.closePipe(devicePipe);
@@ -713,9 +844,9 @@ async function getFileDescriptor() {
 
 ## usbManager.usbControlTransfer<sup>12+</sup>
 
-usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
+usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: number): Promise&lt;number&gt;
 
-Performs control transfer. After the control command is transferred successfully, the size of the transferred or received data block is returned. This API can be used to exchange control commands with a USB device, such as obtaining the device descriptor, setting the device address, sending vendor-defined commands, and configuring HID device features. This API uses a promise to return the result.
+Performs control transfer. After the control transfer is complete, the size of the transferred or received data block is returned. This API is applicable to the scenario of interacting with a USB device through control commands, such as obtaining the device descriptor, setting the device address, sending vendor-defined commands, and configuring HID (Human Interface Device) features. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -724,8 +855,8 @@ Performs control transfer. After the control command is transferred successfully
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus address and device address. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
-| requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | Yes| Control transfer parameters, including the **bmRequestType**, **bRequest**, **wValue**, **wIndex**, **wLength**, and **data** fields. For details about the parameter types, see the USB protocol specifications. Set the parameters based on the device and control request type.|
-| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. If a negative number is passed, a parameter error is thrown. Set this parameter as required.|
+| requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | Yes | Control transfer parameters, including the `bmRequestType`, `bRequest`, `wValue`, `wIndex`, `wLength`, and `data` fields. For details about the parameter types, see the USB protocol specifications. Set the parameters based on the device and control request type. |
+| timeout | number | No | Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. If a negative number is passed, a parameter error is thrown. |
 
 **Return value**
 
@@ -791,15 +922,13 @@ async function usbControlTransfer() {
 
 ## usbManager.bulkTransfer
 
-bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
+bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Performs bulk transfer. After the bulk transfer is complete, the size of the transferred or received data block is returned. This API uses a promise to return the result. Compared with **usbSubmitTransfer**, **bulkTransfer** is suitable for simple bulk transfer. It directly transfers data and endpoints through independent parameters and uses a promise to return the result. **usbSubmitTransfer** is suitable for scenarios that require more flexible control. It encapsulates parameters in the **UsbDataTransferParams** object, supports asynchronous callback, and allows you to cancel a transfer request using **usbCancelTransfer**.
+Performs bulk transfer. After the bulk transfer is complete, the size of the transferred or received data block is returned. This API uses a promise to return the result. Compared with `usbSubmitTransfer`, `bulkTransfer` is suitable for simple bulk transfer. It directly transfers data and endpoints through independent parameters and uses a promise to return the result. `usbSubmitTransfer` is suitable for scenarios that require more flexible control. It encapsulates parameters in the `UsbDataTransferParams` object, supports asynchronous callback, and allows you to cancel a transfer request using `usbCancelTransfer`.
 
 > **NOTE**
 >
-> The total size of data (including **pipe**, **endpoint**, **buffer**, and **timeout**) to be transferred in a single bulk transfer must be less than 200 KB. Otherwise, the transfer fails and **-1** is returned.
->
-> Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
+> The total size of data (including `pipe`, `endpoint`, `buffer`, and `timeout`) to be transferred in a single bulk transfer must be less than 200 KB. Otherwise, the transfer fails and -1 is returned. Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -808,9 +937,9 @@ Performs bulk transfer. After the bulk transfer is complete, the size of the tra
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus address and device address. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
-| endpoint | [USBEndpoint](#usbendpoint) | Yes| USB endpoint, which is used to determine the USB port for data transfer. You need to call [getDevices](#usbmanagergetdevices) to obtain the device information list. In the **USBEndpoint** API, the **address** parameter indicates the endpoint address. The **direction** parameter indicates the transmission direction of the endpoint, the value **0** indicates output, and **128** indicates input. The **interfaceId** parameter identifies the interface to which the endpoint belongs. Currently, other attributes are not processed.|
+| endpoint | [USBEndpoint](#usbendpoint) | Yes | USB endpoint, which is used to determine the endpoint for data transfer. Need to call [getDevices](#usbmanagergetdevices) to obtain the device information list. The `address` attribute of `endpoint` determines the endpoint address, `direction` is used to determine the transfer direction of the endpoint (0 indicates output, 128 indicates input), and `interfaceId` is used to determine the interface to which the endpoint belongs. Currently, other attributes are not handled. |
 | buffer | Uint8Array | Yes| Buffer for writing or reading data. The array length indicates the buffer size. This parameter is used to write or read data during bulk transfer.|
-| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the bulk transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. If a negative number is passed, a parameter error is thrown. Set this parameter as required.|
+| timeout | number | No | Timeout duration (unit: ms), an optional parameter. Wait within the specified time for the bulk transfer to complete. If the transfer is completed within the specified time, it returns normally; otherwise, a timeout is returned. The default value is 0, which indicates waiting indefinitely until the transfer is complete. If a negative number is passed in, a parameter error exception is thrown. |
 
 **Return value**
 
@@ -829,9 +958,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-> **NOTE**
+> **NOTE** 
 >
-> The following sample code is only a basic process for calling the **bulkTransfer** API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
+> The following sample code is only a basic process for calling the `bulkTransfer` API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
@@ -856,28 +985,23 @@ async function bulkTransfer() {
     console.error(`connect device failed`);
     return;
   }
-  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+  for (let i = 0; i < device.configs?.[0]?.interfaces?.length; i++) {
+    // Filter the endpoints whose transfer type is bulk transfer (attributes value 2 indicates a bulk endpoint).
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: number = usbManager.claimInterface(devicePipe, interfaces);
-      if (ret !== 0) {
-        console.error(`claim interface failed`);
-        continue;
-      }
+      if (ret !== 0) { console.error(`claimInterface failed, code: ${ret}`); continue; }
       let buffer = new Uint8Array(128);
-      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
-        console.info(`bulkTransfer = ${ret}`);
-        ret = usbManager.releaseInterface(devicePipe, interfaces);
-        console.info(`releaseInterface = ${ret}`);
-        if (i === device.configs?.[0]?.interfaces.length - 1) {
-          usbManager.closePipe(devicePipe);
-        }
+      await usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((size: number) => {
+        console.info(`bulkTransfer = ${size}`);
       }).catch((error: BusinessError) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
+      usbManager.releaseInterface(devicePipe, interfaces);
     }
   }
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -889,9 +1013,7 @@ Submits an asynchronous transfer request. The result is returned immediately aft
 
 > **NOTE**
 >
-> This API uses an asynchronous callback to return the result.
->
-> Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
+> This API is an asynchronous API. It returns immediately after being called, and the actual read/write operation result is returned through a callback. Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -899,7 +1021,7 @@ Submits an asynchronous transfer request. The result is returned immediately aft
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| As a USB data transfer interface, it is required for a client to initiate a transfer request. Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes | This parameter object is used for universal USB data transfer. The client needs to fill in the parameters in it to initiate a transfer request. Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface. |
 
 **Error codes**
 
@@ -916,15 +1038,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-> **NOTE**
+> **NOTE** 
 >
-> The following sample code is only a basic process for calling the **usbSubmitTransfer** API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
+> The following sample code needs to be placed in a specific method for execution. It is only a basic process for calling the `usbSubmitTransfer` API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
 
 <!--code_no_check-->
 ```ts
 // Call usbManager.getDevices to obtain a data set. Then, obtain a USB device and its access permission.
-// Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
-// Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
+// Pass the obtained device object as a parameter to usbManager.connectDevice; after usbManager.connectDevice returns successfully;
+// can call the third API usbManager.claimInterface. After usbManager.claimInterface is called successfully, call this API.
 async function usbSubmitTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -934,7 +1056,7 @@ async function usbSubmitTransfer() {
   let device: usbManager.USBDevice = devicesList?.[0];
   await usbManager.requestRight(device.name);
   if (!usbManager.hasRight(device.name)) {
-    console.info(`request right fail`);
+    console.error(`request right fail`);
     return;
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
@@ -942,12 +1064,13 @@ async function usbSubmitTransfer() {
     console.error(`connect device failed`);
     return;
   }
-  // Obtain the endpoint address.
+  // Obtain the endpoint address: filter the endpoint whose direction is output (direction is 0) and whose transfer type is bulk transfer (type is 2).
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2;
   });
   // Claim control over the interface. If force is set to true, the interface control is forcibly claimed.
-  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     usbManager.closePipe(devicePipe);
@@ -982,6 +1105,8 @@ async function usbSubmitTransfer() {
     console.info('USB transfer request submitted.');
   } catch (error) {
     console.error(`USB transfer failed. Code: ${error.code}, message: ${error.message}`);
+    usbManager.releaseInterface(devicePipe, interfaces);
+    usbManager.closePipe(devicePipe);
   }
 }
 ```
@@ -990,11 +1115,11 @@ async function usbSubmitTransfer() {
 
 usbCancelTransfer(transfer: UsbDataTransferParams): void
 
-Cancels an asynchronous USB data transfer request. This API can be used to proactively terminate an ongoing USB data transfer, for example, when a user manually cancels a long-time data transfer, when an error occurs after a transfer times out, or when the current transfer needs to be terminated during an app switch.
+Cancels an asynchronous transfer request. This API can be used to proactively terminate an ongoing USB data transfer, for example, when a user manually cancels a data transfer in progress, when an error occurs after a transfer times out, or when the current transfer needs to be terminated during an app switch.
 
 > **NOTE**
 >
-> This API can be used to proactively cancel an unfinished USB data transfer request, such as the request submitted by **usbSubmitTransfer**.<br>
+> This API can be used to proactively cancel an unfinished USB data transfer request, such as the request submitted by `usbSubmitTransfer`.<br>
 > Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
 
 **System capability**: SystemCapability.USB.USBManager
@@ -1019,9 +1144,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-> **NOTE**
+> **NOTE** 
 >
-> The following sample code is only a basic process for calling the **usbCancelTransfer** API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
+> The following sample code is only a basic process for calling the `usbCancelTransfer` API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
 
 <!--code_no_check-->
 ```ts
@@ -1042,7 +1167,7 @@ async function usbCancelTransfer() {
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicePipe === undefined) {
-    console.info(`connect device fail`);
+    console.error(`connect device fail`);
     return;
   }
   // Obtain the endpoint address.
@@ -1050,11 +1175,12 @@ async function usbCancelTransfer() {
     return value.direction === 0 && value.type === 2;
   });
   if (endpoint === undefined) {
-    console.info(`invalid endpoint`);
+    console.error(`invalid endpoint`);
     return;
   }
   // Claim control over the interface. If force is set to true, the interface control is forcibly claimed.
-  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     usbManager.closePipe(devicePipe);
@@ -1093,10 +1219,10 @@ async function usbCancelTransfer() {
 
 closePipe(pipe: USBDevicePipe): number
 
-Closes the USB device pipe.
+Closes the device connection channel. This API can be used to release the device connection after data transfer and device control operations are completed using USBDevicePipe.
 
-1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the device list.
-2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the device access permission.
+1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
+2. Call [usbManager.requestRight](#usbmanagerrequestright) to obtain the device access permission.
 3. Call [usbManager.connectDevice](#usbmanagerconnectdevice) to obtain **devicepipe** as an input parameter.
 
 **System capability**: SystemCapability.USB.USBManager
@@ -1111,7 +1237,7 @@ Closes the USB device pipe.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 22: The service is abnormal. Possible causes: 1. The USB service is abnormal. 2. The USB device pipe is abnormal.|
+| number | Returns **0** if the device connection channel is closed successfully; returns an error code otherwise.<br>- 22: The service is abnormal. Possible causes: 1. The USB service is not running properly. 2. The device connection channel is abnormal. |
 
 **Error codes**
 
@@ -1151,7 +1277,7 @@ async function closePipe() {
 
 hasAccessoryRight(accessory: USBAccessory): boolean
 
-Checks whether the app has the permission to access the USB accessory.
+Checks whether an application has the permission to access a USB accessory. This API can be used to check whether the application already has the accessory access permission before calling requestAccessoryRight to apply for the permission or openAccessory to open the accessory.
 
 You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to obtain the accessory list and use [USBAccessory](#usbaccessory14) as a parameter.
 
@@ -1184,12 +1310,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
   let flag = usbManager.hasAccessoryRight(accList?.[0]);
-  console.info(`hasAccessoryRight success, ret:${flag}`);
+  console.info(`Succeeded in hasAccessoryRight, ret:${flag}`);
 } catch (error) {
-  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`hasAccessoryRight error ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1197,7 +1325,7 @@ try {
 
 requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
-Requests the permission to access USB accessories for a specified app. This API uses a promise to return the result.
+Requests the permission to access USB accessories for the current application. This API uses a promise to return the result.
 
 You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to obtain the accessory list and use [USBAccessory](#usbaccessory14) as a parameter.
 
@@ -1230,13 +1358,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function requestAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
     let flag = await usbManager.requestAccessoryRight(accList?.[0]);
-    console.info(`requestAccessoryRight success, ret:${flag}`);
+    console.info(`Succeeded in requestAccessoryRight, ret:${flag}`);
   } catch (error) {
-    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`requestAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1245,7 +1375,7 @@ async function requestAccessoryRight() {
 
 cancelAccessoryRight(accessory: USBAccessory): void
 
-Cancels the permission of the current app to access USB accessories. This API is called to to cancel the accessory access permission requested using **requestAccessoryRight()**. This API must be used with **requestAccessoryRight()** in pairs.
+Cancels the permission of the current app to access USB accessories. This API is called to cancel the accessory access permission requested using `requestAccessoryRight()`. This API must be used with `requestAccessoryRight()` in pairs.
 
 You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to obtain the accessory list and use [USBAccessory](#usbaccessory14) as a parameter.
 
@@ -1273,6 +1403,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function cancelAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1281,18 +1412,19 @@ async function cancelAccessoryRight() {
       return;
     }
     usbManager.cancelAccessoryRight(accList?.[0]);
-    console.info(`cancelAccessoryRight success`);
+    console.info(`Succeeded in cancelAccessoryRight`);
   } catch (error) {
-    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`cancelAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```
 
 ## usbManager.getAccessoryList<sup>14+</sup>
 
-getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
+getAccessoryList(): Array&lt;Readonly&lt;USBAccessory&gt;&gt;
 
-Obtains the list of USB accessories connected to the host.
+Obtains the list of USB accessories currently connected to the host. This API can be used as a prerequisite for subsequent operations such as calling `requestAccessoryRight` to apply for the accessory access permission and `openAccessory` to open an accessory.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -1300,7 +1432,7 @@ Obtains the list of USB accessories connected to the host.
 
 | Type                         | Description                                              |
 | ----------------------------- | -------------------------------------------------- |
-| Array<Readonly&lt;[USBAccessory](#usbaccessory14)&gt;> | List of USB accessories (read-only), including all available USB accessories.|
+| Array&lt;Readonly&lt;[USBAccessory](#usbaccessory14)&gt;&gt; | List of USB accessories (read-only), including all available USB accessories. |
 
 **Error codes**
 
@@ -1314,11 +1446,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
-  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`);
+  console.info(`Succeeded in getAccessoryList, accList: ${JSON.stringify(accList)}`);
 } catch (error) {
-  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`getAccessoryList error ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1363,6 +1497,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 async function openAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1371,13 +1506,16 @@ async function openAccessory() {
       return;
     }
     let handle = usbManager.openAccessory(accList?.[0]);
-    console.info(`openAccessory success`);
+    console.info(`Succeeded in openAccessory`);
     let arrayBuffer = new ArrayBuffer(4096);
+    // Read the activation sent by the accessory through the file descriptor in the accessory handle.
     let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
     console.info('readSync ret: ' + readLength.toString(10));
+    // Close the accessory file descriptor and release the handle resources.
     usbManager.closeAccessory(handle);
   } catch (error) {
-    console.error(`openAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`openAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1412,6 +1550,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function closeAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1421,9 +1560,10 @@ async function closeAccessory() {
     }
     let handle = usbManager.openAccessory(accList?.[0]);
     usbManager.closeAccessory(handle);
-    console.info(`closeAccessory success`);
+    console.info(`Succeeded in closeAccessory`);
   } catch (error) {
-    console.error(`closeAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`closeAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1432,7 +1572,7 @@ async function closeAccessory() {
 
 resetUsbDevice(pipe: USBDevicePipe): boolean
 
-Resets the USB device. This API is applicable to scenarios where the USB device needs to be restored due to communication exceptions. For example, the device needs to be reinitialized after a device firmware upgrade, the device status needs to be restored when it is abnormal, or the device status needs to be reset during debugging. After this API is successfully called, the device is reset to the initial state. The previously set configurations and interface settings are cleared, and the device needs to be reinitialized.
+Resets the USB device. This API is applicable to scenarios where the USB device needs to be restored due to communication exceptions. For example, the device needs to be reinitialized after a device firmware upgrade, the device status needs to be restored when it is abnormal, or the device status needs to be reset during debugging. After the call succeeds, the system resets the device to the initial state and clears the previously set configuration and interface settings, and the device needs to be reinitialized.
 
 > **NOTE**
 >
@@ -1476,7 +1616,7 @@ import {BusinessError} from '@kit.BasicServicesKit';
 async function resetUsbDevice() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
-    console.error(`device list is empty`);
+    console.info(`device list is empty`);
     return;
   }
 
@@ -1491,9 +1631,11 @@ async function resetUsbDevice() {
     return;
   }
   try {
+    // Reset the USB device. After the reset, the previously set configuration and API settings will be cleared. Before calling, need to confirm that the related services have ended.
     let ret: boolean = usbManager.resetUsbDevice(devicePipe);
     console.info(`resetUsbDevice  = ${ret}`);
-  } catch (err) {
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
     console.error(`Failed to reset USB device. Code: ${err.code}, message: ${err.message}`);
   }
   usbManager.closePipe(devicePipe);
@@ -1502,7 +1644,7 @@ async function resetUsbDevice() {
 
 ## usbManager.controlTransfer<sup>(deprecated)</sup>
 
-controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
+controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise&lt;number&gt;
 
 Performs control transfer. This API uses a promise to return the result.
 
@@ -1518,7 +1660,7 @@ Performs control transfer. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is obtained by calling [connectDevice](#usbmanagerconnectdevice).|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | Yes| Control transfer parameters, including the **request**, **target**, **reqType**, **value**, **index**, and **data** fields. For details about the parameter types, see the USB protocol specifications. Set the parameters based on the device and control request type.|
-| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. If a negative number is passed, a parameter error is thrown. Set this parameter as required.|
+| timeout | number | No | Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is 0, indicating that the system waits infinitely until the control transfer is complete. If a negative number is passed, a parameter error is thrown. Set this parameter as required. |
 
 **Return value**
 
@@ -1540,8 +1682,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
-  reqType: 0x80,
-  target: 0,
+  reqType: usbManager.USBControlRequestType.USB_REQUEST_TYPE_STANDARD,
+  target: usbManager.USBRequestTargetType.USB_REQUEST_TARGET_DEVICE,
   value: 0x01 << 8 | 0,
   index: 0,
   data: new Uint8Array(18)
@@ -1564,6 +1706,7 @@ async function controlTransfer() {
     console.error(`connect device failed`);
     return;
   }
+  // Initiate a control transfer. The Promise returns the size of the transferred or received data block. After completion, close the device channel in finally.
   usbManager.controlTransfer(devicePipe, param).then((ret: number) => {
     console.info(`controlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
@@ -1578,11 +1721,13 @@ async function controlTransfer() {
 
 Defines a USB endpoint, which is used for data transfer between the host and the USB device. You can obtain the USB endpoint through [USBInterface](#usbinterface).
 
->**NOTE**
+> **NOTE**
 >
-> The host controller schedules endpoints based on their types. Different scheduling policies are used for different types of endpoints. Bandwidth sharing scheduling is used for bulk endpoints, which is suitable for non-real-time transmission of a large amount of data. Fixed polling scheduling is used for interrupt endpoints, which is suitable for real-time transmission of a small amount of data. Bandwidth reservation scheduling is used for isochronous endpoints, which is suitable for real-time data streams such as audio and video.
+> The host controller schedules endpoints by endpoint type, and different types of endpoints use different scheduling policies: bulk endpoints use bandwidth-sharing scheduling, which is suitable for non-real-time transfer of large amounts of data; interrupt endpoints use fixed polling scheduling, which is suitable for real-time transfer of small amounts of data; isochronous endpoints use bandwidth-reservation scheduling, which is suitable for real-time data streams such as audio and video.
 >
-> The transmission characteristics, including the data packet format, error processing mechanism, and timeout policy, are determined based on the endpoint type during protocol layer packaging.
+> The type field determines the transfer features used by the protocol layer when packing data, including the packet format, error handling mechanism, and timeout policy.
+
+**Figure 2** USB endpoint diagram
 
 ![USBEndpoint](../figures/USBEndpoint.png)
 
@@ -1592,11 +1737,11 @@ Defines a USB endpoint, which is used for data transfer between the host and the
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | number                                      | No  | No|Endpoint address.        |
 | attributes    | number                                      | No  | No|Endpoint attributes, indicating the transfer characteristics of the endpoint, including the transfer type (bulk, interrupt, or isochronous) and synchronization type. The value must comply with the USB endpoint descriptor specifications.|
-| interval      | number                                      | No  | No|Endpoint interval, in milliseconds. This parameter indicates the interval for interrupt and isochronous endpoints. This field is not used for bulk endpoints.|
-| maxPacketSize | number                                      | No  | No|Maximum size of data packets on the endpoint, in bytes.   |
+| interval      | number                                      | No   | No | Endpoint interval, in milliseconds. This parameter indicates the interval for interrupt and isochronous endpoints. This field is not used for bulk endpoints. |
+| maxPacketSize | number                                      | No   | No | Maximum size of data packets on the endpoint, in bytes.    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | No  | No|Endpoint direction.       |
 | number        | number                                      | No  | No|Endpoint number.         |
-| type          | number                                      | No  | No|Endpoint type. For details, see [UsbEndpointTransferType](#usbendpointtransfertype18).        |
+| type          | number                                      | No   | No | Endpoint type. For details, see [UsbEndpointTransferType](#usbendpointtransfertype18).         |
 | interfaceId   | number                                      | No  | No|Unique ID of the interface to which the endpoint belongs.|
 
 ## USBInterface
@@ -1609,11 +1754,31 @@ Describes a USB interface. One [USBConfiguration](#usbconfiguration) object can 
 | ---------------- | ---------------------------------------- | ---- | ------------- |--------------------- |
 | id               | number                                   | No| No|Unique ID of the USB interface.             |
 | protocol         | number                                   | No| No|Interface protocol.               |
-| clazz            | number                                   | No| No|Device type.                |
+| clazz            | number                                   | No | No | API type (interface class code), which indicates the functional category to which this API belongs. The value follows the USB interface descriptor specification. |
 | subClass         | number                                   | No| No|Device subclass.                |
 | alternateSetting | number                                   | No| No|Alternative setting index of the interface, which is used to switch between multiple optional descriptors of the same interface. The value **0** indicates the default setting, and other values indicate specific alternative settings.|
 | name             | string                                   | No| No|Interface name.                |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | No| No|Endpoints that belong to the USB interface.          |
+
+## InterfaceConflictInfo
+
+Describes the conflict information when an exclusively claimed USB API is claimed by other processes in a non-exclusive manner. It is used after the API is exclusively claimed through calling [usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive).
+
+> **NOTE**
+>
+> This callback is triggered when other processes call the non-exclusive [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim the same USB API. The exclusive holder can learn of potential access conflicts through this callback.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.USB.USBManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name         | Type   | Read-Only | Optional | Description                                                                 |
+| ------------ | ------ | ---- | ---- | --------------------------------------------------------------------------- |
+| busNum       | number | No | No | Bus address of the USB device. The value is limited to an integer.              |
+| devAddr      | number | No | No | Device address of the USB device.                                           |
+| interfaceId  | number | No | No | ID of the USB API claimed by other processes.           |
 
 ## USBConfiguration
 
@@ -1625,11 +1790,11 @@ Describes the USB configuration. One [USBDevice](#usbdevice) can contain multipl
 | -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
 | id             | number                                           | No| No|Unique ID of the USB configuration.       |
 | attributes     | number                                           | No| No|Configuration attributes, indicating features such as the power supply mode and remote wakeup capability. The value must comply with the USB configuration descriptor specifications.|
-| maxPower       | number                                           | No| No|Maximum power consumption, in mA.   |
+| maxPower       | number                                           | No | No | Maximum power consumption, in mA.    |
 | name           | string                                           | No| No|Configuration name, which can be an empty string.    |
 | isRemoteWakeup | boolean                                          | No| No|Whether remote wakeup is supported. **true** if supported, and **false** otherwise.|
 | isSelfPowered  | boolean                                          | No| No|Whether an independent power supply is supported. **true** if supported, and **false** otherwise.|
-| interfaces     | Array<[USBInterface](#usbinterface)>             | No| No|List of supported interfaces.     |
+| interfaces     | Array&lt;[USBInterface](#usbinterface)&gt;             | No | No | List of supported interfaces.      |
 
 ## USBDevice
 
@@ -1672,7 +1837,7 @@ Describes control transfer parameters.
 
 | Name     | Type                                           | Read-Only| Optional              |Description              |
 | ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| bmRequestType | number                                    | No| No  |Request control type, which specifies the direction and type of the control transfer. The value must comply with the USB protocol specifications. Common values are as follows: **0x00**: standard request from the host to the device; **0x20**: class request from the host to the device; **0x40**: vendor request from the host to the device; 0x80: standard request from the device to the host.|
+| bmRequestType | number                                    | No  | No   |Request control type, which specifies the direction and type of the control transfer. The value must comply with the USB protocol specification. Common values are as follows: 0x00 (standard request, host to device), 0x20 (class request, host to device), 0x40 (vendor request, host to device), 0x80 (standard request, device to host).|
 | bRequest  | number                                        | No| No  |Request type, which indicates a specific USB control request command such as obtaining the descriptor or setting the address.         |
 | wValue | number                                           | No| No  |Request parameter, which is used to transfer the parameters required by the control request to the USB device.         |
 | wIndex   | number                                         | No| No  |Index value corresponding to the request parameter **wValue**, which is used to specify the target interface or endpoint of the control request.           |
@@ -1727,7 +1892,7 @@ Describes the USB accessory information.
 | product      | string | No| No  | Product type of an accessory.|
 | description  | string | No| No  | Description of an accessory, which is provided by the manufacturer to describe the functions, usage, or features of the accessory.    |
 | version      | string | No| No  | Version of an accessory.    |
-| serialNumber | string | No| No  | SN of an accessory.    |
+| serialNumber | string | No | No | Serial number (SN) of the accessory. |
 
 ## USBAccessoryHandle<sup>14+</sup>
 
@@ -1748,12 +1913,12 @@ Defines a USB data transfer parameter object, which contains all parameters requ
 | Name        | Type  | Read-Only | Optional   |Description   |
 | ---------- | ------ | ---- | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | No| No| USB device pipe, which is used to determine the bus address and device address. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
-| flags | [UsbTransferFlags](#usbtransferflags18) | No|No| USB transfer flag, which is used to control the transfer behavior. The options are as follows: **0**: Report short frames as errors; **1**: Automatically release the transfer buffer; **2**: Automatically release transfer resources after the callback is complete; **3**: Add an extra data packet to be transferred.|
+| flags | [UsbTransferFlags](#usbtransferflags18) | No | No | USB transfer flag, which is used to control the transfer behavior. The options are as follows: **0**: Report short frames as errors; **1**: Automatically release the transfer buffer; **2**: Automatically release transfer resources after the callback is complete; **3**: Add an extra zero-length data packet to be transferred. |
 | endpoint | number | No| No| Endpoint address. The value is a positive integer within the range of [1, 255]. You need to call [getDevices](#usbmanagergetdevices) to obtain the device information, use the **address** attribute of the endpoint to determine the endpoint information, and use the **direction** attribute to determine the endpoint direction.|
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | No|No| Transfer type, which specifies the USB data transfer mode. The options are as follows: **0x1**: real-time transfer, suitable for real-time data streams such as audio and video; **0x2**: bulk transfer, suitable for non-real-time transfer of a large amount of data; **0x3**: interrupt transfer, suitable for real-time transfer of a small amount of data.|
-| timeout | number | No| No| Timeout interval, in milliseconds. If the transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. If a negative number is passed, a parameter error is thrown.|
-| length | number | No|No| Expected length of the data buffer, in bytes. The value must be a non-negative number in the range of [0, **INT_MAX**].Length of the data buffer, in bytes. The value must be a non-negative number in the range of [0, **INT_MAX**].|
-| callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | No|No| Callback invoked when the transfer is complete. The signature is **(err: Error, data: SubmitTransferCallback) => void**. If the operation is successful, **err** is **null**; if the operation fails, **err** is an error object. **data** contains information such as the transfer status and actual length.|
+| timeout | number | No | No | Timeout duration, in ms. The system waits within the specified time for the transfer to complete. If the transfer is completed within the specified time, it returns normally; otherwise, a timeout error is returned. The value **0** indicates that the system waits infinitely until the transfer is complete. It throws a Command-line options vs. Parameters vs. Arguments error exception when a negative number is passed in. |
+| length | number | No | No | Expected length of the data buffer, in bytes. The value must be a non-negative number in the range of [0, **INT_MAX**]. |
+| callback | [AsyncCallback](js-apis-base.md#asynccallback)&lt;[SubmitTransferCallback](#submittransfercallback18)&gt; | No | No | Callback invoked when the transfer is complete. The signature is **(err: Error, data: SubmitTransferCallback) => void**. If the operation is successful, **err** is **null**; if the operation fails, **err** is an error object. **data** contains information such as the transfer status and actual length. |
 | userData | Uint8Array | No| No| User context data, which is used to pass custom context information in the callback. The size and format are defined by the user and specified in the transfer request. The data is returned in the callback without any modification.|
 | buffer | Uint8Array | No| No| Buffer, which is used to store data for read or write requests.|
 | isoPacketCount | number | No| No| Number of data packets during real-time transfer, used only for I/Os with real-time transfer endpoints. The value must be a non-negative number in the range of [0, **INT_MAX**].|
@@ -1766,10 +1931,10 @@ Enumerates USB transfer flags.
 
 | Name                        | Value  | Description  |
 | ---------------------------- | ---- | ------ |
-| USB_TRANSFER_SHORT_NOT_OK    | 0    | Reports short frames as errors.|
+| USB_TRANSFER_SHORT_NOT_OK    | 0    | Reports a short frame as an error. A short frame refers to a data packet whose actual transferred data length is less than the endpoint `maxPacketSize`. |
 | USB_TRANSFER_FREE_BUFFER | 1    | Automatically releases the transfer buffer.|
 | USB_TRANSFER_FREE_TRANSFER  | 2    | Automatically releases transfer resources after the callback is complete.|
-| USB_TRANSFER_ADD_ZERO_PACKET     | 3    | Adds an additional data packet to be transferred.|
+| USB_TRANSFER_ADD_ZERO_PACKET     | 3    | Adds an additional zero-length data packet to be transferred. |
 
 ## UsbEndpointTransferType<sup>18+</sup>
 
@@ -1791,9 +1956,9 @@ Transfers USB data packets in an asynchronous manner.
 
 | Name       | Type| Read-Only| Optional  | Description   |
 | ---------- | ------ | ---- | ----- | ------ |
-| actualLength | number | No|  No|Actual length of data to be read or written, in bytes.|
+| actualLength | number | No | No | Actual length of data to be read or written, in bytes. |
 | status | [UsbTransferStatus](#usbtransferstatus18) | No| No|Status after reading or writing is complete.|
-| isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | No| No|Packet information transferred in real time.|
+| isoPacketDescs | Array&lt;Readonly&lt;[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)&gt;&gt; | No | No | Packet information transferred in real time. |
 
 ## UsbTransferStatus<sup>18+</sup>
 
@@ -1819,8 +1984,8 @@ Describes packet information returned in real time by the transfer callback.
 
 | Name        | Type| Read-Only | Optional| Description   |
 | ---------- | ------ | ----| ----- | ------ |
-| length | number | No| No|Expected length of data to be read or written, in bytes.|
-| actualLength | number|No| No|Actual length of data to be read or written, in bytes.|
+| length | number | No | No | Expected length of data to be read or written, in B. |
+| actualLength | number | No | No | Actual length of data to be read or written, in B. |
 | status | [UsbTransferStatus](#usbtransferstatus18) | No| No|Status returned by callback.|
 
 ## USBControlParams<sup>(deprecated)</sup>

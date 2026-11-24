@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=d06ef92503ddf1ae094571d4eeefc1087fd8cbdb translatedAt=2026-10-09T13:31:59.660Z pushedAt=2026-10-10T07:17:31.750Z -->
+<!-- md-trans-meta sourceCommit=73994c4c4ea6022c00782dd468e1cb3936302c87 translatedAt=2026-11-23T02:45:47.845Z pushedAt=2026-11-24T12:04:00.871Z nl=2 -->
 
 This module provides Wi-Fi extension APIs for non-universal products.
 
@@ -27,6 +27,8 @@ import wifiext from '@ohos.wifiext';
 enableHotspot(): boolean;
 
 Enables the Wi-Fi hotspot.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -49,6 +51,8 @@ disableHotspot(): boolean;
 
 Disables the Wi-Fi hotspot.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.disableHotspot](js-apis-wifiManagerExt.md#wifimanagerextdisablehotspotdeprecated) instead.
@@ -70,9 +74,11 @@ getSupportedPowerModel(): Promise&lt;Array&lt;PowerModel&gt;&gt;
 
 Obtains the supported power models. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.getSupportedPowerModel](js-apis-wifiManagerExt.md#wifimanagerextgetsupportedpowermode) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.getSupportedPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetsupportedpowermode) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -125,6 +131,8 @@ getPowerModel(): Promise&lt;PowerModel&gt;
 
 Obtains the power model. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.getPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode) instead.
@@ -146,6 +154,8 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
 Obtains the power model. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.getPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode-1) instead.
@@ -166,6 +176,8 @@ Obtains the power model. This API uses an asynchronous callback to return the re
 setPowerModel(model: PowerModel) : boolean;
 
 Sets the power mode.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >

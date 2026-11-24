@@ -6,16 +6,15 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1e01ee9a229e85b1a042d263115901930531c529 translatedAt=2026-11-23T02:38:42.838Z pushedAt=2026-11-24T12:02:01.815Z nl=1 -->
 
 The **nfctech** module provides APIs for reading and writing tags that use different Near-Field Communication (NFC) technologies.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-> **NOTE**
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest version.
 >
-> If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
+> - If an error is reported by the editor when importing the tag module, the capability on a specific device model may exceed the capability set defined by the project's default device. To use this capability, a custom syscap must be configured additionally. For details, see [syscap Development Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## Modules to Import
 
@@ -271,7 +270,7 @@ let dsfId : number = nfcV.getDsfId();
 console.info("nfcV dsfId: " + dsfId);
 ```
 
-## IsoDepTag<sup>9+</sup> 
+## IsoDepTag<sup>9+</sup>
 
 Provides APIs to access ISO-DEP (ISO 14443-4) properties and I/O operations on a tag. This class inherits from **TagSession**.
 
@@ -360,7 +359,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -418,7 +417,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -439,13 +438,13 @@ function nfcTechDemo() {
     try {
         isoDep.isExtendedApduSupported((err: BusinessError, response: boolean) => {
             if (err) {
-                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}`);
+                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("isoDep isExtendedApduSupported AsyncCallback response: " + response);
             }
         });
     } catch (businessError) {
-        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, message: ${(businessError as Business).message}`);
+        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -596,7 +595,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -654,7 +653,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -720,7 +719,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -783,7 +782,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -809,7 +808,7 @@ function nfcTechDemo() {
     try {
         ndefTag.writeNdef(ndefMessage, (err : BusinessError)=> {
             if (err) {
-                console.error("ndef writeNdef AsyncCallback Code: ${err.code}, message: ${err.message}");
+                console.error(`ndef writeNdef AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndef writeNdef AsyncCallback success.");
             }
@@ -884,7 +883,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -907,7 +906,7 @@ function nfcTechDemo() {
         ndefTag.setReadOnly().then(() => {
             console.info("ndef setReadOnly Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndef setReadOnly Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef setReadOnly Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndef setReadOnly Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -942,7 +941,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -1066,7 +1065,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1087,11 +1086,11 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes. 
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes.
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic authenticateSector Promise errCode: ${err.code}, " + "message: ${err.message}");
+            console.error(`mifareClassic authenticateSector Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`mifareClassic authenticateSector Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1129,7 +1128,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 ```js
@@ -1149,7 +1148,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes. 
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes.
         mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
@@ -1196,7 +1195,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1256,7 +1255,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -1324,7 +1323,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1350,7 +1349,7 @@ function nfcTechDemo() {
         mifareClassic.writeSingleBlock(blockIndex, rawData).then(() => {
             console.info("mifareClassic writeSingleBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`mifareClassic writeSingleBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1387,7 +1386,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -1457,7 +1456,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1519,7 +1518,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -1588,7 +1587,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1612,8 +1611,8 @@ function nfcTechDemo() {
         let value = 0x20; // Set the correct data.
         mifareClassic.decrementBlock(blockIndex, value).then(() => {
             console.info("mifareClassic decrementBlock Promise success.");
-        }).catch((err : BusinessError)=> {
-            console.error("mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}");
+        }).catch((err: BusinessError)=> {
+            console.error(`mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`mifareClassic decrementBlock Promise catch businessError: Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1650,7 +1649,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -1672,10 +1671,9 @@ function nfcTechDemo() {
     try {
         let blockIndex = 1; // Set a correct index.
         let value = 0x20; // Set the correct data.
-        mifareClassic.decrementBlock(blockIndex, value, (err : BusinessError)=> {
+        mifareClassic.decrementBlock(blockIndex, value, (err: BusinessError)=> {
             if (err) {
-                console.error("mifareClassic decrementBlock AsyncCallback errCode:" + 
-                  "${err.code}, message: ${err.message}");
+                console.error(`mifareClassic decrementBlock AsyncCallback errCode: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic decrementBlock AsyncCallback success.");
             }
@@ -1719,7 +1717,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1742,7 +1740,7 @@ function nfcTechDemo() {
         let blockIndex = 1; // Set a correct index.
         mifareClassic.transferToBlock(blockIndex).then(() => {
             console.info("mifareClassic transferToBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -1779,7 +1777,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -1846,7 +1844,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1869,7 +1867,7 @@ function nfcTechDemo() {
         let blockIndex = 1; // Set a correct index.
         mifareClassic.restoreFromBlock(blockIndex).then(() => {
             console.info("mifareClassic restoreFromBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -1906,7 +1904,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -1927,7 +1925,7 @@ function nfcTechDemo() {
 
     try {
         let blockIndex = 1; // Set a correct index.
-        mifareClassic.restoreFromBlock(blockIndex, (err : BusinessError)=> {
+        mifareClassic.restoreFromBlock(blockIndex, (err: BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
@@ -2231,7 +2229,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -2253,9 +2251,9 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // Set a correct index.
-        mifareUltralight.readMultiplePages(pageIndex).then((data : number[]) => {
+        mifareUltralight.readMultiplePages(pageIndex).then((data: number[]) => {
             console.info("mifareUltralight readMultiplePages Promise data = " + data);
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -2292,7 +2290,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -2313,7 +2311,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // Set a correct index.
-        mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
+        mifareUltralight.readMultiplePages(pageIndex, (err: BusinessError, data: number[])=> {
             if (err) {
                 console.error(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
@@ -2360,7 +2358,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -2384,7 +2382,7 @@ function nfcTechDemo() {
         let rawData = [0x01, 0x02, 0x03, 0x04]; // Set the correct data. The value must contain 4 bytes.
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -2422,7 +2420,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -2444,7 +2442,7 @@ function nfcTechDemo() {
     try {
         let pageIndex = 1; // Set a correct index.
         let rawData = [0x01, 0x02, 0x03, 0x04];  // Set the correct data. The value must contain 4 bytes.
-        mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
+        mifareUltralight.writeSinglePage(pageIndex, rawData, (err: BusinessError)=> {
         if (err) {
                 console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
@@ -2526,7 +2524,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -2553,7 +2551,7 @@ function nfcTechDemo() {
 
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -2590,7 +2588,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -2660,7 +2658,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -2724,7 +2722,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>Applicable version: 12+ |
 
 **Example**
 

@@ -5,7 +5,7 @@
 <!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=cc1b47676eee26de6dfb56618584b714fd3922f9 translatedAt=2026-11-04T04:07:24.412Z pushedAt=2026-11-04T10:12:33.458Z nl=1 -->
+<!-- md-trans-meta sourceCommit=537457c317362655cd4915767b03828ac418846c translatedAt=2026-11-23T02:50:46.879Z pushedAt=2026-11-24T12:09:37.676Z nl=1 -->
 
 The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
 
@@ -772,7 +772,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
+| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameter are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
 
 **Example**
 
