@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1131f25f94c09b310a6e67ef6adb8c71963ba154 translatedAt=2026-10-08T13:05:48.469Z pushedAt=2026-10-12T11:50:52.936Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-18T03:33:32.905Z pushedAt=2026-11-20T04:52:23.621Z nl=1 -->
 
 PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -540,7 +540,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 function photoAssetAvailableCallback(err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void {
   if (err) {
-    console.info(`photoAssetAvailable error: ${JSON.stringify(err)}.`);
+    console.error(`photoAssetAvailable error code: ${err.code}.`);
     return;
   }
   console.info('photoOutPutCallBack photoAssetAvailable');
@@ -1445,6 +1445,108 @@ function enableAutoExtendedGainmapDelivery(photoOutput: camera.PhotoOutput): voi
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
     console.error(`The enableAutoExtendedGainmapDelivery call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## isAutoAuxiliaryPhotoDeliverySupported
+
+isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): boolean
+
+Checks whether the device supports shooting and outputting the specified type of auxiliary image.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name      | Type                    | Mandatory | Description                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| auxPhotoType  | [CameraAuxiliaryPhotoType](arkts-apis-camera-e.md#cameraauxiliaryphototype)                | Yes   | Target auxiliary photo type to be returned for photo capture.     |
+
+**Return value**
+
+| Type            | Description                     |
+| -------------- | ----------------------- |
+| boolean | Whether the device supports returning the specified type of auxiliary image. The value **true** indicates it is supported; **false** indicates otherwise. |
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID    | Error Message                                           |
+| -------- |------------------------------------------------|
+| 7400115  | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isAutoAuxiliaryPhotoDeliverySupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isAutoAuxiliaryPhotoDeliverySupported(camera.CameraAuxiliaryPhotoType.OXYGEN);
+  } catch (error) {
+    // An error code is returned upon failure and handled.
+    let err = error as BusinessError;
+    console.error(`The isAutoAuxiliaryPhotoDeliverySupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## setAutoAuxiliaryPhotosDeliveryEnabled
+
+setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[], enable: boolean): void
+
+Enables or disables the automatic return of the specified type of auxiliary images during photo capture.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name      | Type                    | Mandatory | Description                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| auxPhotoTypes  | [CameraAuxiliaryPhotoType](arkts-apis-camera-e.md#cameraauxiliaryphototype)[]                | Yes   | Target auxiliary photo type.     |
+| enable  | boolean                | Yes   | Whether to enable automatically returning the specified type of auxiliary photos during photo capture. The value **true** indicates enabled, and **false** indicates disabled.     |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
+
+| ID    | Error Message                                           |
+| -------- |------------------------------------------------|
+| 801      | Capability not supported. Check if the camera device supports the required auxiliary photo types by using capability query APIs. |
+| 7400115  | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
+| 7400201  | Camera service fatal error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function setAutoAuxiliaryPhotosDeliveryEnabled(photoOutput: camera.PhotoOutput): void {
+  try {
+    photoOutput.setAutoAuxiliaryPhotosDeliveryEnabled(
+      [camera.CameraAuxiliaryPhotoType.OXYGEN, camera.CameraAuxiliaryPhotoType.PIGMENTATION], true);
+  } catch (error) {
+    // An error code is returned upon failure and handled.
+    let err = error as BusinessError;
+    console.error(`The setAutoAuxiliaryPhotosDeliveryEnabled call failed. error code: ${err.code}`);
   }
 }
 ```

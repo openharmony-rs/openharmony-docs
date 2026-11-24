@@ -1010,7 +1010,7 @@ udp.off('error');
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | address<sup>11+</sup> | string | 否   | 否   | IP地址。                                           |
 | port    | number | 否   | 否   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
-| family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain（从API version 18开始支持）。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
+| family  | number | 否   | 否  | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain（从API version 18开始支持）。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
 
 ## ProxyOptions<sup>18+</sup>
 
@@ -4981,7 +4981,7 @@ client.connect(connectOpt).then(() => {
   client.getExtraOptions().then((options : socket.ExtraOptionsBase) => {
     console.info('options: ' + JSON.stringify(options));
   }).catch((err: Object) => {
-    console.error('setExtraOptions fail: ' + JSON.stringify(err));
+    console.error('getExtraOptions fail: ' + JSON.stringify(err));
   });
 }).catch((err: Object) => {
   console.error('connect fail: ' + JSON.stringify(err));
@@ -5077,12 +5077,13 @@ let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 client.on('message', (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
+  uintArray.forEach((code: number) => {
+    messageView += String.fromCharCode(code);
+  });
   console.info('total: ' + JSON.stringify(value));
   console.info('message information: ' + messageView);
 });
+
 ```
 
 ### off('message')<sup>11+</sup>
@@ -5118,9 +5119,9 @@ let messageView = '';
 let callback = (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
+  uintArray.forEach((code: number) => {
+    messageView += String.fromCharCode(code);
+  });
   console.info('total: ' + JSON.stringify(value));
   console.info('message information: ' + messageView);
 }
@@ -6216,33 +6217,44 @@ on(type: 'message', callback: Callback\<LocalSocketMessageInfo\>): void
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-<!--code_no_check-->
 ```ts
 import { socket } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 
-let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
-let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let sandboxPath: string = context.filesDir + '/testSocket';
-let listenAddr: socket.LocalAddress = {
-  address: sandboxPath
-}
-server.listen(listenAddr).then(() => {
-  console.info("listen success");
-}).catch((err: Object) => {
-  console.error("listen fail: " + JSON.stringify(err));
-});
-server.on('connect', (connection: socket.LocalSocketConnection) => {
-  connection.on('message', (value: socket.LocalSocketMessageInfo) => {
-    const uintArray = new Uint8Array(value.message);
-    let messageView = '';
-    for (let i = 0; i < uintArray.length; i++) {
-      messageView += String.fromCharCode(uintArray[i]);
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let sandboxPath: string = context.filesDir + '/testSocket';
+    let listenAddr: socket.LocalAddress = {
+      address: sandboxPath
     }
-    console.info('total: ' + JSON.stringify(value));
-    console.info('message information: ' + messageView);
-  });
-});
+    server.listen(listenAddr).then(() => {
+      console.info("listen success");
+    }).catch((err: Object) => {
+      console.error("listen fail: " + JSON.stringify(err));
+    });
+    server.on('connect', (connection: socket.LocalSocketConnection) => {
+      connection.on('message', (value: socket.LocalSocketMessageInfo) => {
+        const uintArray = new Uint8Array(value.message);
+        let messageView = '';
+        uintArray.forEach((code: number) => {
+          messageView += String.fromCharCode(code);
+        });
+        console.info('total: ' + JSON.stringify(value));
+        console.info('message information: ' + messageView);
+      });
+    });
+  }
+
+  build() {
+    Column() {
+      Text('LocalSocketServer')
+    }
+  }
+}
 ```
 
 ### off('message')<sup>11+</sup>
@@ -6277,9 +6289,9 @@ let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance
 let callback = (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
+  uintArray.forEach((code: number) => {
+    messageView += String.fromCharCode(code);
+  });
   console.info('total: ' + JSON.stringify(value));
   console.info('message information: ' + messageView);
 }

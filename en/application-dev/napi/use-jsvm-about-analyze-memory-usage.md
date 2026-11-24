@@ -2,8 +2,8 @@
 
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=d520c126c4207370617e595d71649ce8b1cf22f9 translatedAt=2026-08-12T11:19:51.201Z pushedAt=2026-08-12T11:25:10.319Z -->

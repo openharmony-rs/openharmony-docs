@@ -349,7 +349,7 @@ struct TabsComponent {
 }
 ```
 
-在系统配置文件`route_map.json`中配置子页信息如下：
+在系统配置文件`router_map.json`中配置子页信息如下：
 ```json5
 {
   "routerMap": [
@@ -372,7 +372,7 @@ struct TabsComponent {
 {
   "module": {
     // ···
-    "routerMap": "$profile:route_map",
+    "routerMap": "$profile:router_map",
     // ···
   }
 }

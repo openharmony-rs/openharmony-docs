@@ -10922,9 +10922,11 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 > **说明：**
 >
-> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+> - User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
 >
-> 不使用该方法时，默认不开启User-Agent Client Hints功能。
+> - 不使用该方法时，默认不开启User-Agent Client Hints功能。
+>
+> - 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](#initializewebengine)），必须先调用[initializeWebEngine](#initializewebengine)完成初始化，否则接口调用无效。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -11406,7 +11408,7 @@ struct WebComponent {
 </html>
 ```
 
-> **示例说明：**
+> **说明：**
 >
 > 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
 

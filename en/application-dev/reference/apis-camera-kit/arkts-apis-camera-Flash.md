@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:30:12.043Z pushedAt=2026-11-19T11:50:46.909Z nl=1 -->
 
 **Flash** inherits from [FlashQuery](arkts-apis-camera-FlashQuery.md).
 
@@ -53,11 +54,11 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function setFlashMode(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.setFlashMode(camera.FlashMode.FLASH_MODE_AUTO);
+    if (photoSession.hasFlash() && photoSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO)) {
+      photoSession.setFlashMode(camera.FlashMode.FLASH_MODE_AUTO);
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -71,6 +72,8 @@ function setFlashMode(photoSession: camera.PhotoSession): void {
 getFlashMode(): FlashMode
 
 Obtains the flash mode in use.
+
+Before obtaining the flash mode, you must first use [hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11) to check whether the device supports flash.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -98,7 +101,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function getFlashMode(photoSession: camera.PhotoSession): camera.FlashMode | undefined {
   let flashMode: camera.FlashMode | undefined = undefined;
   try {
-    flashMode = photoSession.getFlashMode();
+    if (photoSession.hasFlash()) {
+      flashMode = photoSession.getFlashMode();
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;

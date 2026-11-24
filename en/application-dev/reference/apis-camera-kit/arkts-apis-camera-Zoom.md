@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:37:06.498Z pushedAt=2026-11-20T07:31:26.005Z nl=1 -->
 
 **Zoom** inherits from [ZoomQuery](arkts-apis-camera-ZoomQuery.md).
 
@@ -41,7 +42,7 @@ Sets a zoom ratio, with a maximum precision of two decimal places.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -50,11 +51,12 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<number>): void {
-  if (zoomRatioRange === undefined || zoomRatioRange.length <= 0) {
+function setZoomRatio(photoSession: camera.PhotoSession, zoomRatio: number): void {
+  let zoomRatioRange = photoSession.getZoomRatioRange();
+  if (zoomRatio < zoomRatioRange[0] || zoomRatio > zoomRatioRange[1]) {
+    console.error(`invalid zoomRatio`);
     return;
   }
-  let zoomRatio = zoomRatioRange[0];
   try {
     photoSession.setZoomRatio(zoomRatio);
   } catch (error) {
@@ -85,7 +87,7 @@ Obtains the zoom ratio in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.<br>Applicable versions: 12 and later          |
@@ -130,14 +132,28 @@ Sets smooth zoom.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.<br>Applicable versions: 11-17            |
 
 **Example**
 
 ```ts
-function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number, mode: camera.SmoothZoomMode): void {
-  sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
+  photoSession: camera.PhotoSession, mode: camera.SmoothZoomMode): void {
+  let zoomRatioRange = photoSession.getZoomRatioRange();
+  if (targetZoomRatio < zoomRatioRange[0] || targetZoomRatio > zoomRatioRange[1]) {
+    console.error(`invalid targetZoomRatio.`);
+    return;
+  }
+  try {
+    sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
+  } catch (error) {
+    // Returns an error code on failure and handles error.code.
+    let err = error as BusinessError;
+    console.error(`The setSmoothZoom call failed. error code: ${err.code}`);
+  }
 }
 ```

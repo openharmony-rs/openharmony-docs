@@ -85,7 +85,7 @@ g_avCapture = OH_AVScreenCapture_Create();
 如果配置了采集麦克风音频数据，需：
 
 - 配置麦克风权限ohos.permission.MICROPHONE，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)。
-- 申请长时任务，申请方式请参见[申请长时任务](../../task-management/continuous-task.md)。
+- 申请长时任务，申请方式请参见[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
 录屏存文件时默认只开启内录。录制过程中，麦克风可以动态开启/关闭，开启后，可同时启动内外录制。
 

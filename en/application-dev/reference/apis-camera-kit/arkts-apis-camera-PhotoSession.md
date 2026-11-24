@@ -5,13 +5,15 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:05:58.452Z pushedAt=2026-10-12T11:53:36.594Z -->
+<!-- md-trans-meta sourceCommit=fefd645189e794d80ae9ee3e4a15dff8502cd619 translatedAt=2026-11-18T03:33:33.207Z pushedAt=2026-11-20T04:58:30.004Z nl=1 -->
 
 **PhotoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), [ManualExposure](arkts-apis-camera-ManualExposure.md), [ManualFocus](arkts-apis-camera-ManualFocus.md), [ManualIso](arkts-apis-camera-ManualIso.md), [OIS](arkts-apis-camera-OIS.md), and [Aperture](arkts-apis-camera-Aperture.md).
 
 It implements a photo session, which provides operations on the flash, exposure, white balance, focus, zoom, color space, macro mode, manual exposure, manual focus, manual ISO setting, optical image stabilization (OIS), and aperture.
 
 **PhotoSession** is provided for the default photo mode. It is used to take standard photos. It supports multiple photo formats and resolutions, which are suitable for most daily photo capture scenarios.
+
+Before creating a photo mode session, use [getSupportedSceneModes](./arkts-apis-camera-CameraManager.md#getsupportedscenemodes11) to obtain the modes supported by the current camera to determine whether a photo mode session is supported.
 
 > **NOTE**
 >
@@ -308,6 +310,8 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 
 Subscribes to automatic camera switch status change events. This API uses an asynchronous callback to return the result.
 
+You can first use [isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13) to obtain whether the current device supports automatic lens switching.
+
 > **NOTE**
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
@@ -337,7 +341,9 @@ function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceS
 }
 
 function registerAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
-  photoSession.on('autoDeviceSwitchStatusChange', callback);
+  if (photoSession.isAutoDeviceSwitchSupported()) {
+    photoSession.on('autoDeviceSwitchStatusChange', callback);
+  }
 }
 ```
 
@@ -346,6 +352,8 @@ function registerAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void
 off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSwitchStatus\>): void
 
 Unsubscribes from automatic camera switch status change events.
+
+You can first use [isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13) to obtain whether the current device supports automatic lens switching.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -361,8 +369,10 @@ Unsubscribes from automatic camera switch status change events.
 **Example**
 
 ```ts
-function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
-  photoSession.off('autoDeviceSwitchStatusChange');
+function unregisterAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
+  if (photoSession.isAutoDeviceSwitchSupported()) {
+    photoSession.off('autoDeviceSwitchStatusChange');
+  }
 }
 ```
 
@@ -436,6 +446,8 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 Subscribes to macro state change events. This API uses an asynchronous callback to return the result.
 
+Before listening, you can use [isMacroSupported](arkts-apis-camera-MacroQuery.md#ismacrosupported19) to check whether macro capability is supported.
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -461,7 +473,9 @@ function callback(err: BusinessError, macroStatus: boolean): void {
 }
 
 function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
-  photoSession.on('macroStatusChanged', callback);
+  if (photoSession.isMacroSupported()) {
+    photoSession.on('macroStatusChanged', callback);
+  }
 }
 ```
 
@@ -470,6 +484,8 @@ function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
 off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 Unsubscribes from macro state change events.
+
+You can use [isMacroSupported](arkts-apis-camera-MacroQuery.md#ismacrosupported19) to query whether macro capability is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -486,7 +502,9 @@ Unsubscribes from macro state change events.
 
 ```ts
 function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
-  photoSession.off('macroStatusChanged');
+  if (photoSession.isMacroSupported()) {
+    photoSession.off('macroStatusChanged');
+  }
 }
 ```
 
@@ -595,5 +613,63 @@ Unsubscribes from exposure information change events. If you have subscribed to 
 ```ts
 function offExposureInfoChange(photoSession: camera.PhotoSession): void {
   photoSession.offExposureInfoChange();
+}
+```
+
+## onCameraSwitchRequest
+
+onCameraSwitchRequest(callback: Callback\<CameraDevice\>): void
+
+Subscribes to the camera switch request event.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type            | Mandatory | Description       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | Yes   | Callback used to return the target camera device. |
+
+**Example**
+
+```ts
+function onCameraSwitchRequest(photoSession: camera.PhotoSession): void {
+  photoSession.onCameraSwitchRequest((cameraDevice: camera.CameraDevice) => {
+    console.info(`Camera switch request to cameraId: ${cameraDevice.cameraId}`);
+  });
+}
+```
+
+## offCameraSwitchRequest
+
+offCameraSwitchRequest(callback?: Callback\<CameraDevice\>): void
+
+Unsubscribes from the camera switch request event.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type            | Mandatory | Description       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | No   | Callback used to return the result. If this parameter is specified, the callback specified by this parameter is unregistered. (The callback object cannot be an anonymous function.) Otherwise, all callbacks are unregistered. |
+
+**Example**
+
+```ts
+function offCameraSwitchRequest(photoSession: camera.PhotoSession): void {
+  photoSession.offCameraSwitchRequest();
 }
 ```

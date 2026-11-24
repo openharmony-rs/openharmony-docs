@@ -68,8 +68,9 @@ RTC模块提供的主要接口如表1所示，具体API[详见](https://gitcode.
 
 RTC驱动加载成功后，使用驱动框架提供的查询接口并调用RTC设备驱动接口。
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
-> 当前操作系统仅支持一个RTC设备。本文涉及的RTC的所有接口，支持内核态及用户态使用。
+>**说明：**
+>
+>当前操作系统仅支持一个RTC设备。本文涉及的RTC的所有接口，支持内核态及用户态使用。
 
 ```c
 DevHandle RtcOpen(void);
@@ -80,9 +81,11 @@ DevHandle RtcOpen(void);
 | **参数** | **描述** |
 | -------- | -------- |
 | void | NA |
+
 | **返回值** | **描述** |
+| -------- | -------- |
 | handle | 获取对应的RTC设备句柄成功 |
-| NULL | 获取对应的RTC设备句柄成功失败 |
+| NULL | 获取对应的RTC设备句柄失败 |
 
 
 ```c
@@ -111,8 +114,10 @@ int32_t RtcRegisterAlarmCallback(DevHandle handle, enum RtcAlarmIndex alarmIndex
 | -------- | -------- |
 | handle | DevHandle类型，RTC设备句柄 | 
 | alarmIndex | 枚举类型，报警索引 | 
-| cb | 定时报警回调函数 | 
+| cb | 定时报警回调函数 |
+
 | **返回值** | **描述** | 
+| -------- | -------- |
 | HDF_SUCCESS | 操作成功 | 
 | 负数 | 操作失败 | 
 
@@ -164,7 +169,9 @@ if (ret != HDF_SUCCESS) {
     | -------- | -------- |
     | handle | DevHandle类型，RTC设备句柄 |
     | time | 结构体指针类型，RTC读取时间信息，包括年、月、星期、日、时、分、秒、毫秒 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 读取RTC时间成功 |
     | 负数 | 读取RTC时间失败 |
 
@@ -186,7 +193,7 @@ if (ret != HDF_SUCCESS) {
     设置RTC时间，则可以通过以下函数完成：
 
     ```c
-    int32_t RtcWriteTime(DevHandle handle, struct RtcTime *time);
+    int32_t RtcWriteTime(DevHandle handle, const struct RtcTime *time);
     ```
 
     **表 5** RtcWriteTime参数和返回值描述
@@ -195,12 +202,15 @@ if (ret != HDF_SUCCESS) {
     | -------- | -------- |
     | handle | DevHandle类型，RTC设备句柄 |
     | time | 结构体指针类型，写RTC时间信息，包括年、月、星期、日、时、分、秒、毫秒 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 设置RTC时间成功 |
     | 负数 | 设置RTC时间失败 |
 
-    > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
-    > RTC起始时间为UTC 1970/01/01 Thursday 00:00:00，年的最大取值按照用户器件手册要求计算配置，星期不用配置。
+    >**说明：**
+    >
+    >RTC起始时间为UTC 1970/01/01 Thursday 00:00:00，年的最大取值按照用户器件手册要求计算配置，星期不用配置。
 
     ```c
     int32_t ret;
@@ -238,7 +248,9 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，RTC设备句柄 |
     | alarmIndex | 枚举类型，报警索引 |
     | time | 结构体指针类型，RTC报警时间信息，包括年、月、星期、日、时、分、秒、毫秒 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 读取RTC报警时间成功 |
     | 负数 | 读取RTC报警时间失败 |
 
@@ -260,7 +272,7 @@ if (ret != HDF_SUCCESS) {
     根据报警索引设置RTC报警时间，通过以下函数完成：
 
     ```c
-    int32_t RtcWriteAlarm(DevHandle handle, enum RtcAlarmIndex alarmIndex, struct RtcTime *time);
+    int32_t RtcWriteAlarm(DevHandle handle, enum RtcAlarmIndex alarmIndex, const struct RtcTime *time);
     ```
 
     **表 7** RtcWriteAlarm参数和返回值描述
@@ -270,12 +282,15 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，RTC设备句柄 |
     | alarmIndex | 枚举类型，报警索引 |
     | time | 结构体指针类型，RTC报警时间信息，包括年、月、星期、日、时、分、秒、毫秒 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 设置RTC报警时间成功 |
     | 负数 | 设置RTC报警时间失败 |
 
-    > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**</br>
-    > RTC起始时间为UTC 1970/01/01 Thursday 00:00:00，年的最大取值按照用户器件手册要求计算配置，星期不用配置。
+    >**说明：**
+    >
+    >RTC起始时间为UTC 1970/01/01 Thursday 00:00:00，年的最大取值按照用户器件手册要求计算配置，星期不用配置。
 
     ```c
     int32_t ret;
@@ -313,7 +328,9 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，RTC设备句柄 |
     | alarmIndex | 枚举类型，报警索引 |
     | enable | uint8_t类型，RTC报警中断配置，1：使能，0：去使能 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 设置定时报警中断使能或去使能成功 |
     | 负数 | 设置定时报警中断使能或去使能失败 |
 
@@ -343,7 +360,9 @@ if (ret != HDF_SUCCESS) {
     | -------- | -------- |
     | handle | DevHandle类型，RTC设备句柄 |
     | freq | uint32_t类型指针，RTC的外接晶体振荡频率，单位（HZ） |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 读取RTC外频成功 |
     | 负数 | 读取RTC外频失败 |
 
@@ -373,7 +392,9 @@ if (ret != HDF_SUCCESS) {
     | -------- | -------- |
     | handle | DevHandle类型，RTC设备句柄 |
     | freq | uint32_t类型，RTC的外接晶体振荡频率，单位（HZ） |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 配置RTC外频成功 |
     | 负数 | 配置RTC外频失败 |
 
@@ -403,7 +424,9 @@ if (ret != HDF_SUCCESS) {
     | **参数** | **描述** |
     | -------- | -------- |
     | handle | DevHandle类型，RTC设备句柄 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 复位RTC成功 |
     | 负数 | 复位RTC失败 |
 
@@ -434,7 +457,9 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，RTC设备句柄 |
     | usrDefIndex | uint8_t类型，用户定义的寄存器对应索引 |
     | value | uint8_t类型指针，待读取寄存器值 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 读取RTC自定义寄存器配置成功 |
     | 负数 | 读取RTC自定义寄存器配置失败 |
 
@@ -467,7 +492,9 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，RTC设备句柄 |
     | usrDefIndex | uint8_t类型，用户定义的寄存器对应索引 |
     | value |  uint8_t类型，寄存器值 |
+
     | **返回值** | **描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 设置RTC自定义寄存器配置成功 |
     | 负数 | 设置RTC自定义寄存器配置失败 |
 

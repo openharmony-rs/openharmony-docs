@@ -5,17 +5,18 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-11-17T04:02:03.669Z pushedAt=2026-11-19T08:20:04.868Z nl=1 -->
 
-The **Hyperlink** component implements a link from a location in the component to another location.
+The **Hyperlink** component supports two display forms: text and image. Tapping within the component area redirects to a specified web page. It is suitable for scenarios where external web links are opened within an app. This component must be used with the system browser.
 
 >  **NOTE**
 >
 >  - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
->  - This component must be used with the system browser.
+>  - This component can only be used with the system browser.
 
 ## Required Permissions
 
-If Internet access is required, you must apply for the **ohos.permission.INTERNET** permission. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+When a network connection is required to redirect to the target web page, you need to apply for the **ohos.permission.INTERNET** permission. For details about how to apply, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 ## Child Components
 
@@ -33,8 +34,8 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes| Web page to which the hyperlink is redirected.|
-| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>Default value: **''**. If this parameter is not passed and the component does not have child components, the value of the **address** parameter is displayed by default.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
+| address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes | Web page address of the jump of the Hyperlink component. |
+| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | Text displayed by the **Hyperlink** component.<br>Default value: ''. If this parameter is not set and the component has no child component, the value of the address parameter is displayed by default.<br>**Note:** <br>If the component has child components, the hyperlink text is not displayed. |
 
 ## Attributes
 
@@ -50,7 +51,7 @@ Sets the color of the hyperlink text.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
@@ -76,8 +77,7 @@ struct HyperlinkExample {
       }
 
       Column() {
-        Hyperlink('https://example.com/', 'Go to the developer website') {
-        }
+        Hyperlink('https://example.com/', 'Go to the developer website')
         .color(Color.Blue)
       }
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)

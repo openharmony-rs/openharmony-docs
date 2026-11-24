@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:00:22.521Z pushedAt=2026-10-12T11:25:34.557Z -->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:28:20.449Z pushedAt=2026-11-19T11:49:16.128Z nl=1 -->
 
 **ColorManagement** inherits from [ColorManagementQuery](arkts-apis-camera-ColorManagementQuery.md).
 
@@ -90,12 +90,14 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 import { BusinessError } from '@kit.BasicServicesKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
-function setColorSpace(session: camera.PhotoSession, colorSpaces: Array<colorSpaceManager.ColorSpace>): void {
-  if (colorSpaces === undefined || colorSpaces.length <= 0) {
+function setColorSpace(session: camera.PhotoSession, colorSpace: colorSpaceManager.ColorSpace): void {
+  let colors = session.getSupportedColorSpaces();
+  if (!colors.includes(colorSpace)) {
+    console.error(`invalid colorSpaces.`);
     return;
   }
   try {
-    session.setColorSpace(colorSpaces[0]);
+    session.setColorSpace(colorSpace);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setColorSpace call failed, error code: ${err.code}`);

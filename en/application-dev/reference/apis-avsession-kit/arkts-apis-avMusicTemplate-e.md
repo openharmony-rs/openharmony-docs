@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=83c78b95356cba75797d3f6ccd4c240675466231 translatedAt=2026-11-18T03:15:20.503Z pushedAt=2026-11-19T10:55:14.787Z nl=1 -->
 
 > **NOTE**
 >
@@ -144,6 +145,10 @@ Enumerates the search playback information types.
 | ---------- | ----------- | ---------- |
 | PLAY_MUSIC | 'playMusic' | Plays music.|
 | PLAY_VIDEO | 'playVideo' | Plays a video.|
+| PLAY_MUSIC_LIST | 'playMusicList' | Music playlist (specified playlist).<br>**Since:** 26.0.1  |
+| PLAY_VIDEO_LIST | 'playVideoList' | Video playlist (specified video).<br>**Since:** 26.0.1  |
+| PLAY_KARAOKE | 'playKaraoke' | Karaoke playback.<br>**Since:** 26.0.1 |
+| PLAY_KARAOKE_LIST | 'playKaraokeList' | Karaoke playlist (specified playlist).<br>**Since:** 26.0.1 |
 
 ## DownloadStatus
 

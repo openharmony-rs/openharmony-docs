@@ -31,6 +31,7 @@ PKCS #12是一种用于存储和传输用户私钥、证书及其相关证书链
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // string转Uint8Array。
 function stringToUint8Array(str: string): Uint8Array {
@@ -53,7 +54,9 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -183,7 +186,9 @@ async function doTestCreatePkcs12() {
       console.info(`otherCerts is empty or not an array.`);
     }
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTestCreatePkcs12 failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -195,6 +200,7 @@ async function doTestCreatePkcs12() {
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // string转Uint8Array。
 function stringToUint8Array(str: string): Uint8Array {
@@ -217,7 +223,9 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -354,7 +362,9 @@ async function doTestCreatePkcs12Sync() {
       console.info(`otherCerts is empty or not an array.`);
     }
   } catch (err) {
-    console.error(`doTestCreatePkcs12Sync failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTestCreatePkcs12Sync failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

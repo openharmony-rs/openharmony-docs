@@ -60,11 +60,11 @@
 
     - [Interface (ManualExposureQuery)](arkts-apis-camera-ManualExposureQuery.md)
 
-    - [Interface (ManualFocus)](arkts-apis-camera-ManualFocus.md)
+    - [APIs (ManualFocus)](arkts-apis-camera-ManualFocus.md)
 
     - [Interface (ManualFocusQuery)](arkts-apis-camera-ManualFocusQuery.md)
 
-    - [Interface (ManualIso)](arkts-apis-camera-ManualIso.md)
+    - [APIs (ManualIso)](arkts-apis-camera-ManualIso.md)
 
     - [Interface (ManualIsoQuery)](arkts-apis-camera-ManualIsoQuery.md)
 

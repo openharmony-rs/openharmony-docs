@@ -135,7 +135,7 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：创建音频格式转换器成功，可以正常执行后续流程。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：函数输入参数无效，需要检查传入的音频格式转换器指针是否非nullptr。<br>         AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT：音频输入/输出格式组合不支持，输入或输出格式超出允许范围，需要检查配置的音频格式。<br>          AUDIOCONVERTER_ERROR_SYSTEM：系统错误，需要检查是否使用已销毁的音频格式转换器执行格式转换。 |
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：创建音频格式转换器成功，可以正常执行后续流程。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：函数输入参数无效，需要检查传入的音频格式转换器指针是否非nullptr。<br>         AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT：音频输入/输出格式组合不支持，输入或输出格式超出允许范围，需要检查配置的音频格式。<br>          AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED：创建音频格式转换器内存分配失败。<br>          AUDIOCONVERTER_ERROR_SYSTEM：系统错误，需要检查是否使用已销毁的音频格式转换器执行格式转换。 |
 
 ### OH_AudioConverter_Destroy()
 

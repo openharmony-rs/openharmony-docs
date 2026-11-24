@@ -1,12 +1,11 @@
 # Interface (AutoExposure)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:58:07.759Z pushedAt=2026-08-11T09:02:39.828Z -->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:27:49.302Z pushedAt=2026-11-19T11:47:07.391Z nl=1 -->
 
 **AutoExposure** inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
 
@@ -99,9 +98,11 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setExposureMode(photoSession: camera.PhotoSession): void {
+function setExposureMode(photoSession: camera.PhotoSession, mode: camera.ExposureMode): void {
   try {
-    photoSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_LOCKED);
+    if (photoSession.isExposureModeSupported(mode)) {
+      photoSession.setExposureMode(mode);
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;

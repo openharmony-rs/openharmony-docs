@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=83c78b95356cba75797d3f6ccd4c240675466231 translatedAt=2026-11-18T03:17:09.680Z pushedAt=2026-11-19T11:15:52.951Z nl=1 -->
 
 > **NOTE**
 >
@@ -396,6 +397,49 @@ Defines the search and playback information.
 | --------- | ------------------------------------------- | ---- | ---- | ---------------- |
 | musicInfo | [SearchPlayMusicInfo](#searchplaymusicinfo) | No  | Yes  | Audio information for search and playback.|
 | videoInfo | [SearchPlayVideoInfo](#searchplayvideoinfo) | No  | Yes  | Video information for search and playback.|
+| karaokeInfo | [SearchPlayKaraokeInfo](#searchplaykaraokeinfo) | No   | Yes   | Karaoke information of search and play. If this parameter is left empty, only the karaoke application is started.<br>**Since:** 26.0.1 |
+ 
+## SearchPlayKaraokeInfo
+ 
+Defines the karaoke information for search and playback.
+ 
+**Since:** 26.0.1
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+ 
+| Name          | Type                                              | Read-Only | Optional | Description             |
+| ------------- | ------------------------------------------------- | --------- | -------- | ----------------------- |
+| songName      | string                                            | No        | Yes      | Song name search slot.  |
+| artist        | string                                            | No        | Yes      | Singer search slot.     |
+| albumName     | string                                            | No        | Yes      | Album name search slot. |
+| billBoard     | string                                            | No        | Yes      | Chart search slot.      |
+| scene         | string                                            | No        | Yes      | Scene search slot.      |
+| genre         | string                                            | No        | Yes      | Genre search slot.      |
+| instrument    | string                                            | No        | Yes      | Instrument search slot. |
+| language      | string                                            | No        | Yes      | Language search slot.   |
+| decade        | string                                            | No        | Yes      | Decade search slot.     |
+| mood          | string                                            | No        | Yes      | Mood search slot.       |
+| gender        | string                                            | No        | Yes      | Gender search slot.     |
+| queryKeyWords | string                                            | No        | Yes      | Keyword search slot.    |
+| extra         | string                                            | No        | Yes      | Extra information about karaoke. |
+| items         | [SearchPlayKaraokeItem](#searchplaykaraokeitem)[] | No        | Yes      | Karaoke track list.     |
+ 
+## SearchPlayKaraokeItem
+ 
+Defines the karaoke item for search and play.
+ 
+**Since:** 26.0.1
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+ 
+| Name       | Type   | Read-Only | Optional | Description               |
+| ---------- | ------ | --------- | -------- | ------------------------- |
+| entityId   | string | No        | No       | Unique identifier of the karaoke media resource. |
+| entityName | string | No        | Yes      | Name of the karaoke media resource.     |
 
 ## SearchPlayMusicInfo
 
@@ -412,6 +456,7 @@ Defines the audio information for search and playback.
 | description   | string                                        | No  | Yes  | Description of the audio.                                     |
 | playMusicOnly | boolean                                       | No  | Yes  | Whether to play only audio. **true**: yes; **false**: no. No default value.|
 | playMode      | string                                        | No  | Yes  | Playback mode of the audio.                                   |
+| extras        | string                                        | No   | Yes   | Additional information about the audio.<br>**Since:** 26.0.1                                   |
 
 ## SearchPlayMusicItem
 

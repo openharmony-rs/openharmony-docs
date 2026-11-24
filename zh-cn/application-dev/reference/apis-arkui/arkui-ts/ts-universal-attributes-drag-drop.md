@@ -1299,8 +1299,7 @@ struct CustomCard {
 
 ```ts
 // xxx.ets
-import { ImageModifier } from '@kit.ArkUI';
-import { uiMaterial } from '@kit.ArkUI';
+import { ImageModifier,uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component

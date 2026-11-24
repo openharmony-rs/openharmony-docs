@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T13:17:39.056Z pushedAt=2026-10-10T07:12:17.365Z -->
+<!-- md-trans-meta sourceCommit=e06bdec9665394bf8fabd0892f64576c335f101e translatedAt=2026-11-18T04:15:06.042Z pushedAt=2026-11-20T09:27:05.646Z nl=1 -->
 
 This module uses Bluetooth communication technology to provide device discovery and device offline notification features for applications. The module can:
 
@@ -16,7 +16,8 @@ This module uses Bluetooth communication technology to provide device discovery 
 - Notify the applications of registered devices through the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) API.
 
 > **NOTE**
-> - The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 23. Newly added APIs in later versions are marked with a superscript to indicate their earliest version.
+> - This page contains only the system APIs of this module. For other public APIs, see [@ohos.FusionConnectivity.partnerAgent (Device Status Notification Module)](js-apis-fusionConnectivity-partnerAgent.md).
 
 ## Modules to Import
 
@@ -39,6 +40,8 @@ Enables peripheral interconnection. This API uses a promise to return the result
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.FusionConnectivity.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -94,7 +97,7 @@ disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
 Disables peripheral interconnection. This API uses a promise to return the result. This API is applicable to scenarios where an app no longer needs the peripheral interconnection capability.
 
-- This API takes effect only for devices registered by an app using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will disable the device interconnection capability [partnerAgent](js-apis-fusionConnectivity-partnerAgent.md) for the app.
+- This API takes effect only for devices registered by an app using [bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will disable the device interconnection capability [partnerAgent](js-apis-fusionConnectivity-partnerAgent.md) for the app.
 - You can call [isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled) to check whether the peripheral interconnection feature is enabled. If the feature has been disabled, the repeated calling does not take effect.
 - After the feature is disabled, the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process registered by the application will not be started when the devices registered by other applications using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice) are discovered. You can call [enableDeviceControl](#partneragentenabledevicecontrol) to enable the peripheral interconnection feature again.
 
@@ -103,6 +106,8 @@ Disables peripheral interconnection. This API uses a promise to return the resul
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.FusionConnectivity.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

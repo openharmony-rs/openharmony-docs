@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T12:38:01.041Z pushedAt=2026-10-10T06:58:25.249Z -->
+<!-- md-trans-meta sourceCommit=1533e3b9c2e1f6338d66cec2b3bebc32c9125cd1 translatedAt=2026-11-18T03:53:26.265Z pushedAt=2026-11-20T09:05:53.965Z nl=1 -->
 
 The **a2dp** module provides Bluetooth media audio capabilities based on the Advanced Audio Distribution Profile ([A2DP](../../connectivity/bluetooth/terminology.md#a2dp)), such as obtaining the media playback status and connection status.
 
@@ -29,30 +29,30 @@ type BaseProfile = baseProfile.BaseProfile
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [baseProfile.BaseProfile](js-apis-bluetooth-baseProfile.md#baseprofile) | **BaseProfile** API definition.|
+| [baseProfile.BaseProfile](js-apis-bluetooth-baseProfile.md#baseprofile) | **BaseProfile** API definition. |
 
 
 ## a2dp.createA2dpSrcProfile
 
 createA2dpSrcProfile(): A2dpSourceProfile
 
-Creates an [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) instance. Through this instance, you can use the methods provided by the local device when it functions as the A2DP Source device, such as obtaining the audio playback state based on the Bluetooth protocol between the local device and other devices.
+Creates an [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) instance. Through this instance, you can use the methods provided by the local device when it functions as the A2DP source device, such as obtaining the audio playback state based on the Bluetooth protocol between the local device and other devices.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [A2dpSourceProfile](#a2dpsourceprofile) | **A2dpSourceProfile** instance.|
+| [A2dpSourceProfile](#a2dpsourceprofile) | **A2dpSourceProfile** instance. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                         |
 |801 | Capability not supported.                |
@@ -75,27 +75,27 @@ try {
 
 createA2dpSnkProfile(): A2dpSinkProfile
 
-Creates an [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) instance. Through this instance, you can call the methods required when the local device functions as an A2DP Sink device.
+Creates a Bluetooth media [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) instance. Through this instance, you can call the APIs required when the local device acts as an A2DP Sink device.
 
 **Since:** 26.0.1
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [A2dpSinkProfile](#a2dpsinkprofile) | **A2dpSinkProfile** instance. |
+| [A2dpSinkProfile](#a2dpsinkprofile) | Returns the Bluetooth media audio sink instance. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
-|801 | Capability not supported. |
+|801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -113,9 +113,9 @@ try {
 ## A2dpSourceProfile
 
 Represents the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role in A2DP.
-- The **A2dpSourceProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
+- This class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
 - Before using the APIs of this class, you need to construct an **A2dpSourceProfile** instance by calling [createA2dpSrcProfile](#a2dpcreatea2dpsrcprofile).
-- The counterpart of the A2DP Source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
+- The counterpart of the A2DP source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
 
 ### getPlayingState
 
@@ -131,21 +131,21 @@ Obtains the media audio playback status between the local and peer devices. For 
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type     | Mandatory   | Description      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, ***XX*:*XX*:*XX*:*XX*:*XX*:*XX***.|
+| deviceId | string | Yes    | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [PlayingState](#playingstate) | Bluetooth media audio playback status.|
+| [PlayingState](#playingstate) | Bluetooth media audio playback status. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -171,15 +171,15 @@ try {
 ## A2dpSinkProfile
 
 Represents the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role in A2DP.
-- The **A2dpSinkProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
+- This class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
 - Before using the APIs of this class, you need to construct an **A2dpSinkProfile** instance by calling [createA2dpSnkProfile](#a2dpcreatea2dpsnkprofile).
-- The counterpart of the A2DP Sink role is the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role.
+- The role corresponding to this instance is the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role.
 
 **Since:** 26.0.1
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 
 ## PlayingState
@@ -188,10 +188,10 @@ Enumerates the Bluetooth media audio playback states.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name               | Value   | Description     |
+| Name                | Value    | Description      |
 | ----------------- | ------ | ------- |
-| STATE_NOT_PLAYING | 0 | Media audio is not played. |
-| STATE_PLAYING     | 1 | Media audio is being played.|
+| STATE_NOT_PLAYING | 0 | Media audio is not played.  |
+| STATE_PLAYING     | 1 | Media audio is being played. |
 
 
 ## CodecInfo<sup>11+</sup>
@@ -200,12 +200,12 @@ Defines the codec used by the Bluetooth media audio.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name       | Type                   | Read-Only  | Optional  | Description                                    |
+| Name        | Type                    | Read-Only   | Optional   | Description                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| codecType           | [CodecType](#codectype11)      | No   | No   | Codec type. The default value is **CODEC_TYPE_SBC**.|
-| codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | No   | No   | Bit depth of each sampling point. The default value is **CODEC_BITS_PER_SAMPLE_NONE**.|
-| codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | No   | No   | Channel mode of the codec. The default value is **CODEC_CHANNEL_MODE_NONE**.|
-| codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | No   | No   | Sampling rate of the codec. The default value is **CODEC_SAMPLE_RATE_NONE**.|
+| codecType           | [CodecType](#codectype11)      | No    | No    | Codec type. The default value is **CODEC_TYPE_SBC**. |
+| codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | No    | No    | Bit depth of each sampling point. The default value is **CODEC_BITS_PER_SAMPLE_NONE**. |
+| codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | No    | No    | Channel mode of the codec. The default value is **CODEC_CHANNEL_MODE_NONE**. |
+| codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | No    | No    | Sampling rate of the codec. The default value is **CODEC_SAMPLE_RATE_NONE**. |
 | codecBitRate<sup>19+</sup>     | [CodecBitRate](#codecbitrate19) | No    | Yes    | Bit rate of the codec. The default value is **CODEC_BIT_RATE_ABR**. |
 | codecFrameLength<sup>19+</sup>     | [CodecFrameLength](#codecframelength19) | No    | Yes    | Frame length of the codec. The default value is **CODEC_FRAME_LENGTH_10MS**. |
 
@@ -215,14 +215,14 @@ Defines the capabilities supported by the Bluetooth media audio codec. The bit d
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name       | Type                   | Read-Only  | Optional  | Description                                    |
+| Name        | Type                    | Read-Only   | Optional   | Description                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| codecType           | [CodecType](#codectype11)      | No   | No   | Codec type.|
-| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | No   | No   | Bit depth capability set supported by the codec.|
-| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | No   | No   | Audio channel mode capabilities supported by the codec.|
-| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | No   | No   | Sampling rate capabilities supported by the codec.|
-| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | No   | No   | Bit rate capabilities supported by the codec.|
-| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | No   | No   | Frame length capabilities supported by the codec.|
+| codecType           | [CodecType](#codectype11)      | No    | No    | Codec type. |
+| codecBitsPerSampleArray  | [CodecBitsPerSample](#codecbitspersample11)[] | No    | No    | Bit depth capability set supported by the codec. |
+| codecChannelModeArray    | [CodecChannelMode](#codecchannelmode11)[] | No    | No    | Audio channel mode capabilities supported by the codec. |
+| codecSampleRateArray     | [CodecSampleRate](#codecsamplerate11)[] | No    | No    | Sampling rate capabilities supported by the codec. |
+| codecBitRateArray     | [CodecBitRate](#codecbitrate19)[] | No    | No    | Bit rate capabilities supported by the codec. |
+| codecFrameLengthArray     | [CodecFrameLength](#codecframelength19)[] | No    | No    | Frame length capabilities supported by the codec. |
 
 ## CodecType<sup>11+</sup>
 
@@ -230,9 +230,9 @@ Enumerates the Bluetooth media audio codec types.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name               | Value   | Description     |
+| Name                | Value    | Description      |
 | ----------------- | ------ | ------- |
-| CODEC_TYPE_INVALID | -1 | Codec type unknown. |
+| CODEC_TYPE_INVALID | -1 | Codec type unknown.  |
 | CODEC_TYPE_SBC     | 0 | SBC |
 | CODEC_TYPE_AAC     | 1 | AAC |
 | CODEC_TYPE_L2HC    | 2 | L2HC |
@@ -246,11 +246,11 @@ Enumerates the audio channel modes of Bluetooth media audio codec. A channel mod
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name               | Value   | Description     |
+| Name                | Value    | Description      |
 | ----------------- | ------ | ------- |
-| CODEC_CHANNEL_MODE_NONE   | 0 | Channel unknown.|
-| CODEC_CHANNEL_MODE_MONO   | 1 | Mono. |
-| CODEC_CHANNEL_MODE_STEREO | 2 | Stereo. |
+| CODEC_CHANNEL_MODE_NONE   | 0 | Channel unknown. |
+| CODEC_CHANNEL_MODE_MONO   | 1 | One audio channel (mono).  |
+| CODEC_CHANNEL_MODE_STEREO | 2 | Two audio channels (stereo).  |
 
 
 ## CodecBitsPerSample<sup>11+</sup>
@@ -259,9 +259,9 @@ Enumerates the bit depths of the Bluetooth media codec. A bit depth indicates th
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name               | Value   | Description     |
+| Name                | Value    | Description      |
 | ----------------- | ------ | ------- |
-| CODEC_BITS_PER_SAMPLE_NONE | 0 | Bit depth unknown.|
+| CODEC_BITS_PER_SAMPLE_NONE | 0 | Bit depth unknown. |
 | CODEC_BITS_PER_SAMPLE_16   | 1 | 16bit |
 | CODEC_BITS_PER_SAMPLE_24   | 2 | 24bit |
 | CODEC_BITS_PER_SAMPLE_32   | 3 | 32bit |
@@ -273,9 +273,9 @@ Enumerates the sampling rates of the Bluetooth media audio codec. A sampling rat
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name               | Value   | Description     |
+| Name                | Value    | Description      |
 | ----------------- | ------ | ------- |
-| CODEC_SAMPLE_RATE_NONE    | 0 | Sampling rate unknown.|
+| CODEC_SAMPLE_RATE_NONE    | 0 | Sampling rate unknown. |
 | CODEC_SAMPLE_RATE_44100   | 1 | 44.1kHz |
 | CODEC_SAMPLE_RATE_48000   | 2 | 48kHz |
 | CODEC_SAMPLE_RATE_88200   | 3 | 88.2kHz |
@@ -289,7 +289,7 @@ Enumerates the bit rates of the Bluetooth media audio codec. A bit rate indicate
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name               | Value   | Description     |
+| Name                | Value    | Description      |
 | ----------------- | ------ | ------- |
 | CODEC_BIT_RATE_96000    | 0 | 96kbps |
 | CODEC_BIT_RATE_128000   | 1 | 128kbps |
@@ -309,7 +309,7 @@ Enumerates frame lengths of the Bluetooth media audio codec. A frame length indi
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name               | Value   | Description     |
+| Name                | Value    | Description      |
 | ----------------- | ------ | ------- |
-| CODEC_FRAME_LENGTH_5MS    | 0 | 5 ms|
-| CODEC_FRAME_LENGTH_10MS   | 1 | 10 ms|
+| CODEC_FRAME_LENGTH_5MS    | 0 | 5 ms |
+| CODEC_FRAME_LENGTH_10MS   | 1 | 10 ms |

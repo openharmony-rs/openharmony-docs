@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a4eab6e7bdd3ad1999a7158ff624116e2e9baf1b translatedAt=2026-11-18T03:18:57.180Z pushedAt=2026-11-19T11:16:30.861Z nl=1 -->
 
 > **NOTE**
 >
@@ -527,6 +528,31 @@ Defines the media search and playback event. This API uses a promise to return t
 | Type                                                        | Description                                 |
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise used to return the result of the search and playback operation.|
+
+## CustomCommandEvent
+
+type CustomCommandEvent = (command: string, args: string) => Promise&lt;OperResult&gt;
+
+Defines the custom control command event. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**Parameters**
+
+| Name     | Type   | Mandatory |      Description       |
+| ---------- | ------ | ---- | -------------- |
+| command    | string | Yes   | Custom control command. |
+| args       | string | Yes   | Parameter of the custom control command event. |
+
+**Return value**
+
+| Type                                                         | Description                                  |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise used to return the result of the custom control command action. |
 
 ## ExecuteActionEvent
 

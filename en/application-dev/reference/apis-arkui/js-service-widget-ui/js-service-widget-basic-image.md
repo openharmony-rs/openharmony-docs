@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=88508a7bb30626a1ee5afb54e6f736edb0f144ed translatedAt=2026-11-18T03:05:21.544Z pushedAt=2026-11-19T08:39:18.704Z nl=1 -->
 
 The **\<image>** component is used to render and display images.
 
@@ -48,17 +49,17 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | scale-down | The image is displayed in the middle with its aspect ratio retained. The size is equal to or smaller than the original size.|
 
 >  **NOTE**
->  When using an SVG image, note that:
+>  When using SVG image resources:
 >
->  - The SVG image will not be drawn if the length or width of the **\<image>** component is infinity.
+>  - It is recommended that the width and height of the image component be set. Otherwise, the SVG resource will not be drawn when the width or height of the parent component is infinite.
 >
->  - If the image length and width are not specified in the SVG description, the SVG image fills the **\<image>** component area.
+>  - If the width and height are not specified in the SVG description, the SVG will fill the image component area.
 >
->  - If the image length and width are specified in the SVG description, the following rules are adopted to decide the final display effect:
+>  - If the width and height are specified in the SVG description, the effect of the width and height of the image component itself is as follows:
 >
->    - If the **\<image>** component is too small to afford the SVG image, the SVG image is cropped and only its upper left part is displayed in the component.
+>    - If the width and height of the image component itself are smaller than those in the SVG, the SVG will be cropped, and only the upper left part will be displayed.
 >
->    - If the **\<image>** component is big enough to afford the SVG image, this SVG image is displayed in the upper left corner of the component.
+>    - If the width and height of the image component itself are greater than those in the SVG, the SVG will be placed in the upper left corner of the image component, and the rest of the image component will be blank.
 
 
 ## Events
@@ -90,3 +91,4 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 **4 x 4 widget**
 
 ![image.jpg](figures/image.jpg)
+
