@@ -75184,6 +75184,26 @@
 						"start_line":71
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIAgentGetPageText/Library/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":124,
+						"name":"ui_agent_get_page_text",
+						"start_line":88
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIAgentGetPageText/Library/src/main/ets/PageText.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"ui_page_text_parse",
+						"start_line":19
+					}
+				]
 			}
 		]
 	},
