@@ -234,7 +234,7 @@ hilog_param=40960
 | 类别 | 路径 | 说明 |
 | -------- | -------- | -------- |
 | 内核参数    | /proc/cmdline | 将内核参数中的部分值转化成系统参数，并保存。内核参数中.xxx=valXXX类型的参数都转换成ohos.boot.xxx=valXXX系统参数。 |
-| OS系统参数 | /system/etc/param/ohos_const/*.para | OS固定系统参数值参数优先加载。                               |
+| OS系统参数 | /system/etc/param/ohos_const/*.para | OS固定系统参数值优先加载。                               |
 | vendor参数 | /vendor/etc/param/*.para | 厂商定义的系统参数次优先级加载。                             |
 | system参数 | /system/etc/param/*.para | 加载各子系统定义的参数。如果系统参数已经存在，则忽略掉。 |
 | persist参数 | /data/parameters/ | 如果持久化参数存在，则最后加载持久化系统参数。持久化系统参数会覆盖加载的默认系统参数。 |
