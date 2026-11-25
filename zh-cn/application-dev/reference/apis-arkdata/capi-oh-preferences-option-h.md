@@ -114,7 +114,7 @@ int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *f
 
 **参考：**
 
-OH_Preferences_ErrCode
+[OH_Preferences_ErrCode](capi-oh-preferences-err-code-h.md#oh_preferences_errcode)
 
 ### OH_PreferencesOption_SetBundleName()
 
