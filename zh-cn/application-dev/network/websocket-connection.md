@@ -237,6 +237,8 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
        hilog.error(0x0000, 'testTag', 'server stop service failed');
        // ...
      }
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + 'errMessage: ' + err.message);
    });
    ```
 
