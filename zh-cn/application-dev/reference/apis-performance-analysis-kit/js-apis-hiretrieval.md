@@ -37,7 +37,7 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 init(): void
 
-初始化应用灰度模块。多实例应用不支持调用此接口。
+初始化应用灰度模块。
 
 **起始版本：** 26.0.0
 
