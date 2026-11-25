@@ -127,7 +127,7 @@ OHIPCParcel* OH_IPCParcel_Create(void)
 
 **起始版本：** 12
 
-**资源释放：** [OH_IPCParcel_Destroy](##oh_ipcparcel_destroy)
+**资源释放：** [OH_IPCParcel_Destroy](#oh_ipcparcel_destroy)
 
 **返回：**
 
