@@ -1,8 +1,8 @@
 # OH_MIDIClientStruct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=1921c8e6e7890c2fb18f9ddb830a4261dd424757 translatedAt=2026-11-03T04:30:28.691Z pushedAt=2026-11-04T03:11:47.046Z nl=1 -->
