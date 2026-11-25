@@ -880,11 +880,11 @@ injectText(text: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | Permissions check fails. |
+| 201 | permissions check fails. |
 | 801 | Capability not supported. |
-| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
-| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800016 | Input method client is not editable. |
+| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | input method client is not editable. |
 
 **示例：**
 
@@ -946,11 +946,11 @@ injectTextSync(text: string): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | Permissions check fails. |
+| 201 | permissions check fails. |
 | 801 | Capability not supported. |
-| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
-| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800016 | Input method client is not editable. |
+| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | input method client is not editable. |
 
 **示例：**
 
