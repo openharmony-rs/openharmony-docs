@@ -212,7 +212,6 @@
   - [添加交互响应](arkts-interaction-development-guide-overview.md)
     - [交互响应概述](arkts-interaction-capability-overview.md)
     - [交互基础机制说明](arkts-interaction-basic-principles.md)
-    - [管控Agent输入的交互事件](arkts-interaction-agent-input-control.md)
     - [输入设备与事件](arkts-interaction-development-guide-raw-input-event.md)
       - [支持触屏输入事件](arkts-interaction-development-guide-touch-screen.md)
       - [支持鼠标输入事件](arkts-interaction-development-guide-mouse.md)
@@ -229,6 +228,7 @@
       - [手势冲突处理](arkts-gesture-events-gesture-judge.md)
     - [支持统一拖拽](arkts-common-events-drag-event.md)
     - [支持焦点处理](arkts-common-events-focus-event.md)
+    - [管控Agent输入的交互事件](arkts-interaction-agent-input-control.md)
   - 使用动画<!--arkts-use-animation-->
     - [动画概述](arkts-animation.md)
     - 属性动画<!--arkts-animation-attribute-->
