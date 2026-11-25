@@ -1053,7 +1053,7 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 
 **参考：**
 
-[OH_AudioRenderer_OnWriteDataCallback](capi-native-audiostream-base-h#oh_audiorenderer_onwritedatacallback)
+[OH_AudioRenderer_OnWriteDataCallback()](capi-native-audiostream-base-h#oh_audiorenderer_onwritedatacallback)
 
 ### OH_AudioRenderer_GetLatency()
 
