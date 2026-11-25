@@ -624,8 +624,29 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[recorder_video_buffer_input_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
    ```c++
-   // videoInputStopping_单独结束视频输入线程，停止读取相机图像、提交普通帧，让输出线程继续排空编码数据。
-   while (isStarted_.load() && !videoInputStopping_.load()) {
+   while (isStarted_.load()) {
+       // videoInputStopping_请求停止Buffer视频供帧；在此提交EOS，不清零控制输出排空的isStarted_。
+       if (videoInputStopping_.load()) {
+           CodecBufferInfo info;
+           int32_t ret = videoEncoder_->GetInputBuffer(info, DRAIN_WAIT_US);
+           if (!isStarted_.load()) {
+               break;
+           }
+           if (ret == AVCODEC_SAMPLE_ERR_OK) {
+               info.attr.size = 0;
+               info.attr.offset = 0;
+               info.attr.pts = lastVideoInputPtsUs_;
+               info.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
+               ret = videoEncoder_->PushInputBuffer(info);
+           }
+           if (ret != AVCODEC_SAMPLE_ERR_OK) {
+               failure_.Record("recorder.video.input.eos", ret, "Submit video EOS input buffer failed");
+               AbortRecording("Submit video EOS input buffer failed");
+               break;
+           }
+           AVCODEC_SAMPLE_LOGI("Sync video input submitted EOS, thread exiting");
+           break;
+       }
        // ...
        CodecBufferInfo info;
        // 同步模式主动Query输入索引，再Get对应的编码器Buffer。
@@ -635,16 +656,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        }
        /**
         * 示例：配置输入文件。
-        * std::string_view inputFilePath = "/*yourpath*.yuv";
+        * std::string_view inputFilePath = "/data/storage/el2/base/files/input.yuv";
         * std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
         * if (inputFile != nullptr) {
         *     inputFile->open(inputFilePath.data(), std::ios::in | std::ios::binary);
         * }
         */
-       if (ret != AVCODEC_SAMPLE_ERR_OK || !InitSyncVideoInputContext()) {
-           AbortRecording("Get video input buffer or input description failed");
-           break;
-       }
        // ...
    }
    ```
