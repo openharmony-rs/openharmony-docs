@@ -107,7 +107,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<[ToolSummary](js-apis-inner-application-ToolInfo-sys.md#toolsummary)>> | Promise对象，返回工具摘要信息列表。 |
+| Promise\<Array\<<!--RP1-->[ToolSummary](js-apis-inner-application-ToolInfo-sys.md#toolsummary)<!--RP1End-->>> | Promise对象，返回工具摘要信息列表。 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)\>\> | Promise对象，返回工具详细信息列表。 |
+| Promise\<Array\<<!--RP2-->[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)<!--RP2End-->\>\> | Promise对象，返回工具详细信息列表。 |
 
 **错误码：**
 
@@ -217,7 +217,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 | 类型                                         | 说明                               |
 | -------------------------------------------- | ---------------------------------- |
-| Promise\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)> | Promise对象，返回工具的详细信息。 |
+| Promise\<<!--RP3-->[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)<!--RP3End-->> | Promise对象，返回工具的详细信息。 |
 
 **错误码：**
 
